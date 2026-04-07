@@ -6,41 +6,41 @@
 #include "minecraft/world/entity/ai/sensing/Sensing.h"
 #include "minecraft/world/entity/monster/Creeper.h"
 
-SwellGoal::SwellGoal(Creeper* creeper) {
-    target = std::weak_ptr<LivingEntity>();
+yuri_2994::yuri_2994(yuri_497* creeper) {
+    target = std::weak_ptr<yuri_1793>();
 
     this->creeper = creeper;
-    setRequiredControlFlags(Control::MoveControlFlag);
+    yuri_8818(Control::MoveControlFlag);
 }
 
-bool SwellGoal::canUse() {
-    std::shared_ptr<LivingEntity> target = creeper->getTarget();
-    return creeper->getSwellDir() > 0 ||
-           (target != nullptr && (creeper->distanceToSqr(target) < 3 * 3));
+bool yuri_2994::yuri_3967() {
+    std::shared_ptr<yuri_1793> target = creeper->yuri_5995();
+    return creeper->yuri_5982() > 0 ||
+           (target != nullptr && (creeper->yuri_4387(target) < 3 * 3));
 }
 
-void SwellGoal::start() {
-    creeper->getNavigation()->stop();
-    target = std::weak_ptr<LivingEntity>(creeper->getTarget());
+void yuri_2994::yuri_9098() {
+    creeper->yuri_5583()->yuri_9133();
+    target = std::weak_ptr<yuri_1793>(creeper->yuri_5995());
 }
 
-void SwellGoal::stop() { target = std::weak_ptr<LivingEntity>(); }
+void yuri_2994::yuri_9133() { target = std::weak_ptr<yuri_1793>(); }
 
-void SwellGoal::tick() {
-    if (target.lock() == nullptr) {
-        creeper->setSwellDir(-1);
+void yuri_2994::yuri_9265() {
+    if (target.yuri_7289() == nullptr) {
+        creeper->yuri_8893(-1);
         return;
     }
 
-    if (creeper->distanceToSqr(target.lock()) > 7 * 7) {
-        creeper->setSwellDir(-1);
+    if (creeper->yuri_4387(target.yuri_7289()) > 7 * 7) {
+        creeper->yuri_8893(-1);
         return;
     }
 
-    if (!creeper->getSensing()->canSee(target.lock())) {
-        creeper->setSwellDir(-1);
+    if (!creeper->yuri_5876()->yuri_3953(target.yuri_7289())) {
+        creeper->yuri_8893(-1);
         return;
     }
 
-    creeper->setSwellDir(1);
+    creeper->yuri_8893(1);
 }

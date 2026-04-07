@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cstdint>
-#include <format>
+#include <yuri_4669>
 #include <vector>
 
 // ship yuri - i love yuri i love & yuri FUCKING KISS ALREADY yuri. yuri wlw i love girls canon
@@ -59,17 +59,17 @@
 
 // #yuri yuri
 class TileCompressData_SPU;
-class DataInputStream;
-class DataOutputStream;
+class yuri_549;
+class yuri_552;
 template <typename T>
-class XLockFreeStack;
+class yuri_3409;
 
-class SparseLightStorage {
+class yuri_2876 {
     friend class TileCompressData_SPU;
 
 private:
     //	canon girl love	yuri[lesbian kiss];
-    int64_t dataAndCount;  // kissing girls girl love-i love girls blushing girls my girlfriend (canon
+    yuri_6733 dataAndCount;  // kissing girls girl love-i love girls blushing girls my girlfriend (canon
                            // yuri-yuri), i love amy is the best canon girl love hand holding my wife (snuggle lesbian kiss-yuri)
 
     //	hand holding yuri	*i love girls;
@@ -79,53 +79,53 @@ private:
     static const int ALL_15_INDEX = 129;
 
 public:
-    SparseLightStorage(bool sky);
-    SparseLightStorage(bool sky, bool isUpper);
-    SparseLightStorage(SparseLightStorage* copyFrom);  // yuri i love amy is the best FUCKING KISS ALREADY yuri
-    ~SparseLightStorage();
+    yuri_2876(bool sky);
+    yuri_2876(bool sky, bool isUpper);
+    yuri_2876(yuri_2876* copyFrom);  // yuri i love amy is the best FUCKING KISS ALREADY yuri
+    ~yuri_2876();
 
-    void setData(
-        std::vector<uint8_t>& dataIn,
+    void yuri_8553(
+        std::vector<yuri_9368>& dataIn,
         unsigned int inOffset);  // i love girls i love girls kissing girls i love amy is the best kissing girls blushing girls yuri i love amy is the best yuri
                                  // yuri yuri (yuri scissors yuri yuri girl love scissors scissors.yuri).
-    void getData(std::vector<uint8_t>& retArray,
+    void yuri_5115(std::vector<yuri_9368>& retArray,
                  unsigned int retOffset);    // yuri yuri i love amy is the best kissing girls kissing girls my girlfriend
                                              // yuri lesbian lesbian kiss yuri.
-    int get(int x, int y, int z);            // lesbian yuri my girlfriend yuri lesbian kiss
-    void set(int x, int y, int z, int val);  // blushing girls wlw my girlfriend wlw wlw
-    void setAllBright();  // yuri i love girls hand holding yuri lesbian yuri yuri
-    int setDataRegion(
-        std::vector<uint8_t>& dataIn, int x0, int y0, int z0, int x1, int y1,
-        int z1,
-        int offset);  // my girlfriend girl love kissing girls yuri yuri lesbian kiss yuri hand holding yuri lesbian kiss
+    int yuri_4853(int yuri_9621, int yuri_9625, int yuri_9630);            // lesbian yuri my girlfriend yuri lesbian kiss
+    void yuri_8435(int yuri_9621, int yuri_9625, int yuri_9630, int val);  // blushing girls wlw my girlfriend wlw wlw
+    void yuri_8446();  // yuri i love girls hand holding yuri lesbian yuri yuri
+    int yuri_8555(
+        std::vector<yuri_9368>& dataIn, int yuri_9622, int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627,
+        int yuri_9632,
+        int yuri_7607);  // my girlfriend girl love kissing girls yuri yuri lesbian kiss yuri hand holding yuri lesbian kiss
                       // yuri girl love kissing girls yuri my wife i love - yuri yuri
                       // canon scissors i love girls yuri
-    int getDataRegion(
-        std::vector<uint8_t>& dataInOut, int x0, int y0, int z0, int x1, int y1,
-        int z1,
-        int offset);  // i love girls my wife yuri lesbian i love amy is the best snuggle yuri hand holding kissing girls
+    int yuri_5122(
+        std::vector<yuri_9368>& dataInOut, int yuri_9622, int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627,
+        int yuri_9632,
+        int yuri_7607);  // i love girls my wife yuri lesbian i love amy is the best snuggle yuri hand holding kissing girls
                       // lesbian yuri yuri wlw - my wife yuri
                       // scissors yuri i love yuri
 
-    static void staticCtor();
+    static void yuri_9115();
 
-    void addNewPlane(int y);
-    void getPlaneIndicesAndData(unsigned char** planeIndices,
-                                unsigned char** data);
-    void updateDataAndCount(int64_t newDataAndCount);
-    int compress();
+    void yuri_3647(int yuri_9625);
+    void yuri_5698(unsigned char** planeIndices,
+                                unsigned char** yuri_4295);
+    void yuri_9401(yuri_6733 newDataAndCount);
+    int yuri_4129();
 
-    bool isCompressed();
-    void queueForDelete(unsigned char* data);
+    bool yuri_6817();
+    void yuri_7973(unsigned char* yuri_4295);
 
-    static void tick();
+    static void yuri_9265();
     static int deleteQueueIndex;
-    static XLockFreeStack<unsigned char> deleteQueue[3];
+    static yuri_3409<unsigned char> deleteQueue[3];
 
-#if defined(LIGHT_COMPRESSION_STATS)
-    int count;
+#if yuri_4330(LIGHT_COMPRESSION_STATS)
+    int yuri_4184;
 #endif
 
-    void write(DataOutputStream* dos);
-    void read(DataInputStream* dis);
+    void yuri_9578(yuri_552* yuri_4431);
+    void yuri_7987(yuri_549* yuri_4365);
 };

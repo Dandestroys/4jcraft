@@ -1,39 +1,39 @@
 #pragma once
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
-#include <string>
+#include <yuri_9151>
 
 #include "Item.h"
 
-class FireworksItem : public Item {
+class yuri_827 : public yuri_1687 {
 public:
-    static const std::wstring TAG_FIREWORKS;
-    static const std::wstring TAG_EXPLOSION;
-    static const std::wstring TAG_EXPLOSIONS;
-    static const std::wstring TAG_FLIGHT;
-    static const std::wstring TAG_E_TYPE;
-    static const std::wstring TAG_E_TRAIL;
-    static const std::wstring TAG_E_FLICKER;
-    static const std::wstring TAG_E_COLORS;
-    static const std::wstring TAG_E_FADECOLORS;
+    static const std::yuri_9616 TAG_FIREWORKS;
+    static const std::yuri_9616 TAG_EXPLOSION;
+    static const std::yuri_9616 TAG_EXPLOSIONS;
+    static const std::yuri_9616 TAG_FLIGHT;
+    static const std::yuri_9616 TAG_E_TYPE;
+    static const std::yuri_9616 TAG_E_TRAIL;
+    static const std::yuri_9616 TAG_E_FLICKER;
+    static const std::yuri_9616 TAG_E_COLORS;
+    static const std::yuri_9616 TAG_E_FADECOLORS;
 
-    static const uint8_t TYPE_SMALL = 0;
-    static const uint8_t TYPE_BIG = 1;
-    static const uint8_t TYPE_STAR = 2;
-    static const uint8_t TYPE_CREEPER = 3;
-    static const uint8_t TYPE_BURST = 4;
+    static const yuri_9368 TYPE_SMALL = 0;
+    static const yuri_9368 TYPE_BIG = 1;
+    static const yuri_9368 TYPE_STAR = 2;
+    static const yuri_9368 TYPE_CREEPER = 3;
+    static const yuri_9368 TYPE_BURST = 4;
 
-    static const uint8_t TYPE_MIN = TYPE_SMALL;
-    static const uint8_t TYPE_MAX = TYPE_BURST;
+    static const yuri_9368 TYPE_MIN = TYPE_SMALL;
+    static const yuri_9368 TYPE_MAX = TYPE_BURST;
 
-    FireworksItem(int id);
+    yuri_827(int yuri_6674);
 
-    bool useOn(std::shared_ptr<ItemInstance> instance,
-               std::shared_ptr<Player> player, Level* level, int x, int y,
-               int z, int face, float clickX, float clickY, float clickZ,
+    bool yuri_9492(std::shared_ptr<yuri_1693> instance,
+               std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194, int yuri_9621, int yuri_9625,
+               int yuri_9630, int face, float clickX, float clickY, float clickZ,
                bool bTestUseOnOnly = false);
-    void appendHoverText(std::shared_ptr<ItemInstance> itemInstance,
-                         std::shared_ptr<Player> player,
-                         std::vector<HtmlString>* lines, bool advanced);
+    void yuri_3722(std::shared_ptr<yuri_1693> itemInstance,
+                         std::shared_ptr<yuri_2126> yuri_7839,
+                         std::vector<yuri_1298>* lines, bool advanced);
 };

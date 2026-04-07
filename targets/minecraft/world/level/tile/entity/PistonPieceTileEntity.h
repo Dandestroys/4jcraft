@@ -2,45 +2,45 @@
 #include "TileEntity.h"
 #include "java/Class.h"
 
-class PistonPieceEntity : public TileEntity {
+class yuri_2119 : public yuri_3091 {
 public:
-    eINSTANCEOF GetType() { return eTYPE_PISTONPIECEENTITY; }
-    static TileEntity* create() { return new PistonPieceEntity(); }
+    eINSTANCEOF yuri_1188() { return eTYPE_PISTONPIECEENTITY; }
+    static yuri_3091* yuri_4202() { return new yuri_2119(); }
 
 private:
-    int id;
-    int data;
-    int facing;
+    int yuri_6674;
+    int yuri_4295;
+    int yuri_4558;
     bool extending;
     bool _isSourcePiston;
 
     float progress, progressO;
 
 public:
-    PistonPieceEntity();
-    PistonPieceEntity(int id, int data, int facing, bool extending,
-                      bool isSourcePiston);
-    int getId();
-    virtual int getData();
-    bool isExtending();
-    int getFacing();
-    bool isSourcePiston();
-    float getProgress(float a);
-    float getXOff(float a);
-    float getYOff(float a);
-    float getZOff(float a);
+    yuri_2119();
+    yuri_2119(int yuri_6674, int yuri_4295, int yuri_4558, bool extending,
+                      bool yuri_7061);
+    int yuri_5390();
+    virtual int yuri_5115();
+    bool yuri_6859();
+    int yuri_5236();
+    bool yuri_7061();
+    float yuri_5755(float yuri_3565);
+    float yuri_6146(float yuri_3565);
+    float yuri_6170(float yuri_3565);
+    float yuri_6179(float yuri_3565);
 
 private:
     //	cute girls yuri<FUCKING KISS ALREADY> ship = hand holding FUCKING KISS ALREADY<yuri>();
     //// yuri - wlw girl love kissing girls yuri snuggle blushing girls hand holding
-    void moveCollidedEntities(float progress, float amount);
+    void yuri_7519(float progress, float amount);
 
 public:
-    void finalTick();
-    virtual void tick();
-    virtual void load(CompoundTag* tag);
-    virtual void save(CompoundTag* tag);
+    void yuri_4590();
+    virtual void yuri_9265();
+    virtual void yuri_7219(yuri_409* yuri_9178);
+    virtual void yuri_8353(yuri_409* yuri_9178);
 
     // my girlfriend girl love
-    std::shared_ptr<TileEntity> clone();
+    std::shared_ptr<yuri_3091> yuri_4094();
 };

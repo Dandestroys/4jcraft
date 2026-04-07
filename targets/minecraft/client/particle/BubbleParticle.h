@@ -2,12 +2,12 @@
 #include "Particle.h"
 #include "java/Class.h"
 
-class Level;
+class yuri_1758;
 
-class BubbleParticle : public Particle {
+class yuri_234 : public yuri_2090 {
 public:
-    virtual eINSTANCEOF GetType() { return eType_BUBBLEPARTICLE; }
-    BubbleParticle(Level* level, double x, double y, double z, double xa,
+    virtual eINSTANCEOF yuri_1188() { return eType_BUBBLEPARTICLE; }
+    yuri_234(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630, double xa,
                    double ya, double za);
-    virtual void tick();
+    virtual void yuri_9265();
 };

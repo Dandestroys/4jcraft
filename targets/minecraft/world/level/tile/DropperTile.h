@@ -2,24 +2,24 @@
 
 #include "DispenserTile.h"
 
-class DispenseItemBehavior;
+class yuri_624;
 
-class DropperTile : public DispenserTile {
+class yuri_658 : public yuri_625 {
 private:
-    DispenseItemBehavior* DISPENSE_BEHAVIOUR;
+    yuri_624* DISPENSE_BEHAVIOUR;
 
 public:
-    DropperTile(int id);
+    yuri_658(int yuri_6674);
 
-    virtual void registerIcons(IconRegister* iconRegister);
+    virtual void yuri_8072(IconRegister* iconRegister);
 
 protected:
-    virtual DispenseItemBehavior* getDispenseMethod(
-        std::shared_ptr<ItemInstance> item);
+    virtual yuri_624* yuri_5166(
+        std::shared_ptr<yuri_1693> item);
 
 public:
-    virtual std::shared_ptr<TileEntity> newTileEntity(Level* level);
+    virtual std::shared_ptr<yuri_3091> yuri_7569(yuri_1758* yuri_7194);
 
 protected:
-    virtual void dispenseFrom(Level* level, int x, int y, int z);
+    virtual void yuri_4373(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
 };

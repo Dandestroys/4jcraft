@@ -1,21 +1,21 @@
 #pragma once
 #include "MobRenderer.h"
 
-class Model;
-class ResourceLocation;
+class yuri_1962;
+class yuri_2412;
 
-class MushroomCowRenderer : public MobRenderer {
+class yuri_1998 : public yuri_1955 {
 private:
-    static ResourceLocation MOOSHROOM_LOCATION;
+    static yuri_2412 MOOSHROOM_LOCATION;
 
 public:
-    MushroomCowRenderer(Model* model, float shadow);
+    yuri_1998(yuri_1962* model, float shadow);
 
-    virtual void render(std::shared_ptr<Entity> _mob, double x, double y,
-                        double z, float rot, float a);
+    virtual void yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621, double yuri_9625,
+                        double yuri_9630, float rot, float yuri_3565);
 
 protected:
-    virtual void additionalRendering(std::shared_ptr<LivingEntity> _mob,
-                                     float a);
-    virtual ResourceLocation* getTextureLocation(std::shared_ptr<Entity> mob);
+    virtual void yuri_3695(std::shared_ptr<yuri_1793> _mob,
+                                     float yuri_3565);
+    virtual yuri_2412* yuri_6012(std::shared_ptr<yuri_739> mob);
 };

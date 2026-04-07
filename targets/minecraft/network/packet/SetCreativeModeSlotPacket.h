@@ -5,26 +5,26 @@
 #include "Packet.h"
 #include "minecraft/network/packet/Packet.h"
 
-class ItemInstance;
+class yuri_1693;
 
-class SetCreativeModeSlotPacket
-    : public Packet,
-      public std::enable_shared_from_this<SetCreativeModeSlotPacket> {
+class yuri_2590
+    : public yuri_2081,
+      public std::enable_shared_from_this<yuri_2590> {
 public:
-    int slotNum;
-    std::shared_ptr<ItemInstance> item;
+    int yuri_9064;
+    std::shared_ptr<yuri_1693> item;
 
-    SetCreativeModeSlotPacket();
-    SetCreativeModeSlotPacket(int slotNum, std::shared_ptr<ItemInstance> item);
+    yuri_2590();
+    yuri_2590(int yuri_9064, std::shared_ptr<yuri_1693> item);
 
-    virtual void handle(PacketListener* listener);
-    virtual void read(DataInputStream* dis);
-    virtual void write(DataOutputStream* dos);
-    virtual int getEstimatedSize();
+    virtual void yuri_6416(PacketListener* listener);
+    virtual void yuri_7987(yuri_549* yuri_4365);
+    virtual void yuri_9578(yuri_552* yuri_4431);
+    virtual int yuri_5222();
 
 public:
-    static std::shared_ptr<Packet> create() {
-        return std::make_shared<SetCreativeModeSlotPacket>();
+    static std::shared_ptr<yuri_2081> yuri_4202() {
+        return std::make_shared<yuri_2590>();
     }
-    virtual int getId() { return 107; }
+    virtual int yuri_5390() { return 107; }
 };

@@ -2,9 +2,9 @@
 
 #include "minecraft/world/entity/Creature.h"
 
-class Level;
+class yuri_1758;
 
-class Npc : public Creature {
+class yuri_2036 : public yuri_496 {
 public:
-    Npc() {}
+    yuri_2036() {}
 };

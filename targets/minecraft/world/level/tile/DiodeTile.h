@@ -1,88 +1,88 @@
 #pragma once
 #include "DirectionalTile.h"
 
-class Player;
-class Random;
-class Level;
-class LevelSource;
+class yuri_2126;
+class yuri_2302;
+class yuri_1758;
+class yuri_1771;
 
-class DiodeTile : public DirectionalTile {
-    friend class Tile;
+class yuri_613 : public yuri_614 {
+    friend class yuri_3088;
 
 protected:
     bool on;
 
 protected:
-    DiodeTile(int id, bool on);
+    yuri_613(int yuri_6674, bool on);
 
 public:
-    virtual void updateDefaultShape();  // i love yuri girl love
-    virtual bool isCubeShaped();
-    virtual bool mayPlace(Level* level, int x, int y, int z);
-    virtual bool canSurvive(Level* level, int x, int y, int z);
-    virtual void tick(Level* level, int x, int y, int z, Random* random);
-    virtual Icon* getTexture(int face, int data);
-    virtual bool shouldRenderFace(LevelSource* level, int x, int y, int z,
+    virtual void yuri_9402();  // i love yuri girl love
+    virtual bool yuri_6827();
+    virtual bool yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual bool yuri_3961(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual void yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981);
+    virtual yuri_1346* yuri_6007(int face, int yuri_4295);
+    virtual bool yuri_9016(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                                   int face);
-    virtual int getRenderShape();
+    virtual int yuri_5806();
 
 protected:
-    virtual bool isOn(int data);
+    virtual bool yuri_6976(int yuri_4295);
 
 public:
-    virtual int getDirectSignal(LevelSource* level, int x, int y, int z,
-                                int dir);
-    virtual int getSignal(LevelSource* level, int x, int y, int z, int facing);
-    virtual void neighborChanged(Level* level, int x, int y, int z, int type);
+    virtual int yuri_5161(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                                int yuri_4361);
+    virtual int yuri_5898(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4558);
+    virtual void yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364);
 
 protected:
-    virtual void checkTickOnNeighbor(Level* level, int x, int y, int z,
-                                     int type);
+    virtual void yuri_4032(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                                     int yuri_9364);
 
 public:
-    virtual bool isLocked(LevelSource* level, int x, int y, int z, int data);
+    virtual bool yuri_6949(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295);
 
 protected:
-    virtual bool shouldTurnOn(Level* level, int x, int y, int z, int data);
-    virtual int getInputSignal(Level* level, int x, int y, int z, int data);
-    virtual int getAlternateSignal(LevelSource* level, int x, int y, int z,
-                                   int data);
-    virtual int getAlternateSignalAt(LevelSource* level, int x, int y, int z,
-                                     int facing);
+    virtual bool yuri_9022(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295);
+    virtual int yuri_5402(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295);
+    virtual int yuri_4879(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                                   int yuri_4295);
+    virtual int yuri_4880(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                                     int yuri_4558);
 
 public:
-    virtual bool isSignalSource();
-    virtual void setPlacedBy(Level* level, int x, int y, int z,
-                             std::shared_ptr<LivingEntity> by,
-                             std::shared_ptr<ItemInstance> itemInstance);
-    virtual void onPlace(Level* level, int x, int y, int z);
+    virtual bool yuri_7041();
+    virtual void yuri_8766(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                             std::shared_ptr<yuri_1793> by,
+                             std::shared_ptr<yuri_1693> itemInstance);
+    virtual void yuri_7637(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
 
 protected:
-    virtual void updateNeighborsInFront(Level* level, int x, int y, int z);
+    virtual void yuri_9436(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
 
 public:
-    virtual void destroy(Level* level, int x, int y, int z, int data);
-    virtual bool isSolidRender(bool isServerLevel = false);
-    virtual int getResource(int data, Random* random, int playerBonusLevel) = 0;
-    virtual int cloneTileId(Level* level, int x, int y, int z) = 0;
+    virtual void yuri_4347(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295);
+    virtual bool yuri_7058(bool isServerLevel = false);
+    virtual int yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel) = 0;
+    virtual int yuri_4096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) = 0;
 
 protected:
-    virtual bool isAlternateInput(int tile);
-    virtual int getOutputSignal(LevelSource* level, int x, int y, int z,
-                                int data);
+    virtual bool yuri_6768(int tile);
+    virtual int yuri_5630(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                                int yuri_4295);
 
 public:
-    static bool isDiode(int id);
-    virtual bool isSameDiode(int id);
-    virtual bool shouldPrioritize(Level* level, int x, int y, int z, int data);
+    static bool yuri_6840(int yuri_6674);
+    virtual bool yuri_7026(int yuri_6674);
+    virtual bool yuri_9010(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295);
 
 protected:
-    virtual int getTurnOffDelay(int data);
+    virtual int yuri_6063(int yuri_4295);
 
-    virtual int getTurnOnDelay(int data) = 0;
-    virtual DiodeTile* getOnTile() = 0;
-    virtual DiodeTile* getOffTile() = 0;
+    virtual int yuri_6064(int yuri_4295) = 0;
+    virtual yuri_613* yuri_5619() = 0;
+    virtual yuri_613* yuri_5613() = 0;
 
 public:
-    virtual bool isMatching(int id);
+    virtual bool yuri_6958(int yuri_6674);
 };

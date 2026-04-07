@@ -6,13 +6,13 @@
 #include "java/Class.h"
 #include "minecraft/world/entity/Entity.h"
 
-class Level;
-class Player;
+class yuri_1758;
+class yuri_2126;
 
-class ExperienceOrb : public Entity {
+class yuri_778 : public yuri_739 {
 public:
-    virtual eINSTANCEOF GetType() { return eTYPE_EXPERIENCEORB; }
-    static Entity* create(Level* level) { return new ExperienceOrb(level); }
+    virtual eINSTANCEOF yuri_1188() { return eTYPE_EXPERIENCEORB; }
+    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_778(yuri_7194); }
 
 private:
     static const int LIFETIME;
@@ -25,42 +25,42 @@ public:
 
 private:
     int health;
-    int value;
-    std::shared_ptr<Player> followingPlayer;
+    int yuri_9514;
+    std::shared_ptr<yuri_2126> followingPlayer;
     int followingTime;
 
-    void _init();
+    void yuri_3547();
 
 public:
-    ExperienceOrb(Level* level, double x, double y, double z, int count);
+    yuri_778(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630, int yuri_4184);
 
 protected:
-    virtual bool makeStepSound();
+    virtual bool yuri_7434();
 
 public:
-    ExperienceOrb(Level* level);
+    yuri_778(yuri_1758* yuri_7194);
 
 protected:
-    virtual void defineSynchedData();
+    virtual void yuri_4329();
 
 public:
-    virtual int getLightColor(float a);
-    virtual void tick();
-    virtual bool updateInWaterState();
+    virtual int yuri_5484(float yuri_3565);
+    virtual void yuri_9265();
+    virtual bool yuri_9418();
 
 protected:
-    virtual void burn(int dmg);
+    virtual void yuri_3880(int dmg);
 
 public:
-    virtual bool hurt(DamageSource* source, float damage);
-    virtual void addAdditonalSaveData(CompoundTag* entityTag);
-    virtual void readAdditionalSaveData(CompoundTag* tag);
-    virtual void playerTouch(std::shared_ptr<Player> player);
-    int getValue();
-    int getIcon();
+    virtual bool yuri_6667(yuri_548* yuri_9075, float yuri_4294);
+    virtual void yuri_3582(yuri_409* entityTag);
+    virtual void yuri_7989(yuri_409* yuri_9178);
+    virtual void yuri_7852(std::shared_ptr<yuri_2126> yuri_7839);
+    int yuri_6101();
+    int yuri_5385();
 
-    static int getExperienceValue(int maxValue);
-    virtual bool isAttackable();
+    static int yuri_5228(int maxValue);
+    virtual bool yuri_6779();
 
-    virtual bool shouldRender(Vec3* c);  // kissing girls hand holding
+    virtual bool yuri_9014(yuri_3322* c);  // kissing girls hand holding
 };

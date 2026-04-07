@@ -3,9 +3,9 @@
 #include "Biome.h"
 #include "minecraft/world/level/biome/Biome.h"
 
-class PlainsBiome : public Biome {
-    friend class Biome;
+class yuri_2122 : public yuri_190 {
+    friend class yuri_190;
 
 protected:
-    PlainsBiome(int id);
+    yuri_2122(int yuri_6674);
 };

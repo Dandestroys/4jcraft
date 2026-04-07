@@ -35,202 +35,202 @@
 #include "minecraft/world/level/Level.h"
 #include "minecraft/world/phys/AABB.h"
 
-AttributeModifier* Witch::SPEED_MODIFIER_DRINKING =
-    (new AttributeModifier(eModifierId_MOB_WITCH_DRINKSPEED, -0.25f,
-                           AttributeModifier::OPERATION_ADDITION))
-        ->setSerialize(false);
+yuri_146* yuri_3379::SPEED_MODIFIER_DRINKING =
+    (new yuri_146(eModifierId_MOB_WITCH_DRINKSPEED, -0.25f,
+                           yuri_146::OPERATION_ADDITION))
+        ->yuri_8854(false);
 
-const int Witch::DEATH_LOOT[Witch::DEATH_LOOT_COUNT] = {
-    Item::yellowDust_Id, Item::sugar_Id,       Item::redStone_Id,
-    Item::spiderEye_Id,  Item::glassBottle_Id, Item::gunpowder_Id,
-    Item::stick_Id,      Item::stick_Id,
+const int yuri_3379::DEATH_LOOT[yuri_3379::DEATH_LOOT_COUNT] = {
+    yuri_1687::yellowDust_Id, yuri_1687::sugar_Id,       yuri_1687::redStone_Id,
+    yuri_1687::spiderEye_Id,  yuri_1687::glassBottle_Id, yuri_1687::gunpowder_Id,
+    yuri_1687::stick_Id,      yuri_1687::stick_Id,
 };
 
-Witch::Witch(Level* level) : Monster(level) {
+yuri_3379::yuri_3379(yuri_1758* yuri_7194) : yuri_1966(yuri_7194) {
     // yuri i love - snuggle my wife cute girls FUCKING KISS ALREADY lesbian snuggle i love girls cute girls scissors yuri canon girl love my wife
     // wlw hand holding yuri yuri yuri i love yuri canon ship yuri
-    defineSynchedData();
-    registerAttributes();
-    setHealth(getMaxHealth());
+    yuri_4329();
+    yuri_8067();
+    yuri_8648(yuri_5521());
 
     usingTime = 0;
 
-    goalSelector.addGoal(1, new FloatGoal(this));
-    goalSelector.addGoal(
-        2, new RangedAttackGoal(this, this, 1.0,
+    goalSelector.yuri_3617(1, new yuri_850(this));
+    goalSelector.yuri_3617(
+        2, new yuri_2307(this, this, 1.0,
                                 SharedConstants::TICKS_PER_SECOND * 3, 10));
-    goalSelector.addGoal(2, new RandomStrollGoal(this, 1.0));
-    goalSelector.addGoal(3, new LookAtPlayerGoal(this, typeid(Player), 8));
-    goalSelector.addGoal(3, new RandomLookAroundGoal(this));
+    goalSelector.yuri_3617(2, new yuri_2306(this, 1.0));
+    goalSelector.yuri_3617(3, new yuri_1838(this, typeid(yuri_2126), 8));
+    goalSelector.yuri_3617(3, new yuri_2304(this));
 
-    targetSelector.addGoal(1, new HurtByTargetGoal(this, false));
-    targetSelector.addGoal(
-        2, new NearestAttackableTargetGoal(this, typeid(Player), 0, true));
+    targetSelector.yuri_3617(1, new yuri_1306(this, false));
+    targetSelector.yuri_3617(
+        2, new yuri_2013(this, typeid(yuri_2126), 0, true));
 }
 
-void Witch::defineSynchedData() {
-    Monster::defineSynchedData();
+void yuri_3379::yuri_4329() {
+    yuri_1966::yuri_4329();
 
-    getEntityData()->define(DATA_USING_ITEM, (uint8_t)0);
+    yuri_5214()->yuri_4327(DATA_USING_ITEM, (yuri_9368)0);
 }
 
-int Witch::getAmbientSound() {
+int yuri_3379::yuri_4882() {
     return eSoundType_MOB_WITCH_IDLE;  //"yuri.yuri.i love amy is the best";
 }
 
-int Witch::getHurtSound() {
+int yuri_3379::yuri_5383() {
     return eSoundType_MOB_WITCH_HURT;  //"my wife.yuri.my wife";
 }
 
-int Witch::getDeathSound() {
+int yuri_3379::yuri_5130() {
     return eSoundType_MOB_WITCH_DEATH;  //"yuri.wlw.i love girls";
 }
 
-void Witch::setUsingItem(bool isUsing) {
-    getEntityData()->set(DATA_USING_ITEM, isUsing ? (uint8_t)1 : (uint8_t)0);
+void yuri_3379::yuri_8942(bool isUsing) {
+    yuri_5214()->yuri_8435(DATA_USING_ITEM, isUsing ? (yuri_9368)1 : (yuri_9368)0);
 }
 
-bool Witch::isUsingItem() {
-    return getEntityData()->getByte(DATA_USING_ITEM) == 1;
+bool yuri_3379::yuri_7103() {
+    return yuri_5214()->yuri_4985(DATA_USING_ITEM) == 1;
 }
 
-void Witch::registerAttributes() {
-    Monster::registerAttributes();
+void yuri_3379::yuri_8067() {
+    yuri_1966::yuri_8067();
 
-    getAttribute(SharedMonsterAttributes::MAX_HEALTH)->setBaseValue(26);
-    getAttribute(SharedMonsterAttributes::MOVEMENT_SPEED)->setBaseValue(0.25f);
+    yuri_4914(SharedMonsterAttributes::MAX_HEALTH)->yuri_8480(26);
+    yuri_4914(SharedMonsterAttributes::MOVEMENT_SPEED)->yuri_8480(0.25f);
 }
 
-bool Witch::useNewAi() { return true; }
+bool yuri_3379::yuri_9490() { return true; }
 
-void Witch::aiStep() {
-    if (!level->isClientSide) {
-        if (isUsingItem()) {
+void yuri_3379::yuri_3704() {
+    if (!yuri_7194->yuri_6802) {
+        if (yuri_7103()) {
             if (usingTime-- <= 0) {
-                setUsingItem(false);
-                std::shared_ptr<ItemInstance> item = getCarriedItem();
-                setEquippedSlot(SLOT_WEAPON, nullptr);
+                yuri_8942(false);
+                std::shared_ptr<yuri_1693> item = yuri_4996();
+                yuri_8595(SLOT_WEAPON, nullptr);
 
-                if (item != nullptr && item->id == Item::potion_Id) {
-                    std::vector<MobEffectInstance*>* effects =
-                        Item::potion->getMobEffects(item);
+                if (item != nullptr && item->yuri_6674 == yuri_1687::potion_Id) {
+                    std::vector<yuri_1954*>* effects =
+                        yuri_1687::yuri_7885->yuri_5554(item);
                     if (effects != nullptr) {
-                        for (auto it = effects->begin(); it != effects->end();
-                             ++it) {
-                            addEffect(new MobEffectInstance(*it));
+                        for (auto yuri_7136 = effects->yuri_3801(); yuri_7136 != effects->yuri_4502();
+                             ++yuri_7136) {
+                            yuri_3607(new yuri_1954(*yuri_7136));
                         }
                     }
                     delete effects;
                 }
 
-                getAttribute(SharedMonsterAttributes::MOVEMENT_SPEED)
-                    ->removeModifier(SPEED_MODIFIER_DRINKING);
+                yuri_4914(SharedMonsterAttributes::MOVEMENT_SPEED)
+                    ->yuri_8128(SPEED_MODIFIER_DRINKING);
             }
         } else {
-            int potion = -1;
+            int yuri_7885 = -1;
 
-            if (random->nextFloat() < 0.15f && isOnFire() &&
-                !hasEffect(MobEffect::fireResistance)) {
-                potion = PotionBrewing::POTION_ID_FIRE_RESISTANCE;
-            } else if (random->nextFloat() < 0.05f &&
-                       getHealth() < getMaxHealth()) {
-                potion = PotionBrewing::POTION_ID_HEAL;
-            } else if (random->nextFloat() < 0.25f && getTarget() != nullptr &&
-                       !hasEffect(MobEffect::movementSpeed) &&
-                       getTarget()->distanceToSqr(shared_from_this()) >
+            if (yuri_7981->yuri_7576() < 0.15f && yuri_6978() &&
+                !yuri_6593(yuri_1953::fireResistance)) {
+                yuri_7885 = PotionBrewing::POTION_ID_FIRE_RESISTANCE;
+            } else if (yuri_7981->yuri_7576() < 0.05f &&
+                       yuri_5358() < yuri_5521()) {
+                yuri_7885 = PotionBrewing::POTION_ID_HEAL;
+            } else if (yuri_7981->yuri_7576() < 0.25f && yuri_5995() != nullptr &&
+                       !yuri_6593(yuri_1953::movementSpeed) &&
+                       yuri_5995()->yuri_4387(yuri_8996()) >
                            11 * 11) {
-                potion = PotionBrewing::POTION_ID_SWIFTNESS;
-            } else if (random->nextFloat() < 0.25f && getTarget() != nullptr &&
-                       !hasEffect(MobEffect::movementSpeed) &&
-                       getTarget()->distanceToSqr(shared_from_this()) >
+                yuri_7885 = PotionBrewing::POTION_ID_SWIFTNESS;
+            } else if (yuri_7981->yuri_7576() < 0.25f && yuri_5995() != nullptr &&
+                       !yuri_6593(yuri_1953::movementSpeed) &&
+                       yuri_5995()->yuri_4387(yuri_8996()) >
                            11 * 11) {
-                potion = PotionBrewing::POTION_ID_SWIFTNESS;
+                yuri_7885 = PotionBrewing::POTION_ID_SWIFTNESS;
             }
 
-            if (potion > -1) {
-                setEquippedSlot(SLOT_WEAPON,
-                                std::shared_ptr<ItemInstance>(
-                                    new ItemInstance(Item::potion, 1, potion)));
-                usingTime = getCarriedItem()->getUseDuration();
-                setUsingItem(true);
-                AttributeInstance* speed =
-                    getAttribute(SharedMonsterAttributes::MOVEMENT_SPEED);
-                speed->removeModifier(SPEED_MODIFIER_DRINKING);
-                speed->addModifier(
-                    new AttributeModifier(*SPEED_MODIFIER_DRINKING));
+            if (yuri_7885 > -1) {
+                yuri_8595(SLOT_WEAPON,
+                                std::shared_ptr<yuri_1693>(
+                                    new yuri_1693(yuri_1687::yuri_7885, 1, yuri_7885)));
+                usingTime = yuri_4996()->yuri_6090();
+                yuri_8942(true);
+                yuri_145* yuri_9090 =
+                    yuri_4914(SharedMonsterAttributes::MOVEMENT_SPEED);
+                yuri_9090->yuri_8128(SPEED_MODIFIER_DRINKING);
+                yuri_9090->yuri_3643(
+                    new yuri_146(*SPEED_MODIFIER_DRINKING));
             }
         }
 
-        if (random->nextFloat() < 0.00075f) {
-            level->broadcastEntityEvent(shared_from_this(),
+        if (yuri_7981->yuri_7576() < 0.00075f) {
+            yuri_7194->yuri_3854(yuri_8996(),
                                         EntityEvent::WITCH_HAT_MAGIC);
         }
     }
 
-    Monster::aiStep();
+    yuri_1966::yuri_3704();
 }
 
-void Witch::handleEntityEvent(uint8_t id) {
-    if (id == EntityEvent::WITCH_HAT_MAGIC) {
-        for (int i = 0; i < random->nextInt(35) + 10; i++) {
-            level->addParticle(eParticleType_witchMagic,
-                               x + random->nextGaussian() * .13f,
-                               bb.y1 + 0.5f + random->nextGaussian() * .13f,
-                               z + random->nextGaussian() * .13f, 0, 0, 0);
+void yuri_3379::yuri_6469(yuri_9368 yuri_6674) {
+    if (yuri_6674 == EntityEvent::WITCH_HAT_MAGIC) {
+        for (int i = 0; i < yuri_7981->yuri_7578(35) + 10; i++) {
+            yuri_7194->yuri_3655(eParticleType_witchMagic,
+                               yuri_9621 + yuri_7981->yuri_7577() * .13f,
+                               yuri_3799.yuri_9627 + 0.5f + yuri_7981->yuri_7577() * .13f,
+                               yuri_9630 + yuri_7981->yuri_7577() * .13f, 0, 0, 0);
         }
     } else {
-        Monster::handleEntityEvent(id);
+        yuri_1966::yuri_6469(yuri_6674);
     }
 }
 
-float Witch::getDamageAfterMagicAbsorb(DamageSource* damageSource,
-                                       float damage) {
-    damage = Monster::getDamageAfterMagicAbsorb(damageSource, damage);
+float yuri_3379::yuri_5111(yuri_548* damageSource,
+                                       float yuri_4294) {
+    yuri_4294 = yuri_1966::yuri_5111(damageSource, yuri_4294);
 
-    if (damageSource->getEntity() == shared_from_this()) damage = 0;
-    if (damageSource->isMagic()) damage *= 0.15;
+    if (damageSource->yuri_5213() == yuri_8996()) yuri_4294 = 0;
+    if (damageSource->yuri_6955()) yuri_4294 *= 0.15;
 
-    return damage;
+    return yuri_4294;
 }
 
-void Witch::dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel) {
-    int passes = random->nextInt(3) + 1;
+void yuri_3379::yuri_4449(bool wasKilledByPlayer, int playerBonusLevel) {
+    int passes = yuri_7981->yuri_7578(3) + 1;
     for (int pass = 0; pass < passes; pass++) {
-        int count = random->nextInt(3);
-        int type = DEATH_LOOT[random->nextInt(DEATH_LOOT_COUNT)];
+        int yuri_4184 = yuri_7981->yuri_7578(3);
+        int yuri_9364 = DEATH_LOOT[yuri_7981->yuri_7578(DEATH_LOOT_COUNT)];
         if (playerBonusLevel > 0)
-            count += random->nextInt(playerBonusLevel + 1);
+            yuri_4184 += yuri_7981->yuri_7578(playerBonusLevel + 1);
 
-        for (int i = 0; i < count; i++) {
-            spawnAtLocation(type, 1);
+        for (int i = 0; i < yuri_4184; i++) {
+            yuri_9081(yuri_9364, 1);
         }
     }
 }
 
-void Witch::performRangedAttack(std::shared_ptr<LivingEntity> target,
+void yuri_3379::yuri_7807(std::shared_ptr<yuri_1793> target,
                                 float power) {
-    if (isUsingItem()) return;
+    if (yuri_7103()) return;
 
-    std::shared_ptr<ThrownPotion> potion = std::make_shared<ThrownPotion>(
-        level, std::dynamic_pointer_cast<LivingEntity>(shared_from_this()),
+    std::shared_ptr<yuri_3079> yuri_7885 = std::make_shared<yuri_3079>(
+        yuri_7194, std::dynamic_pointer_cast<yuri_1793>(yuri_8996()),
         PotionBrewing::POTION_ID_SPLASH_DAMAGE);
-    potion->xRot -= -20;
-    double xd = (target->x + target->xd) - x;
-    double yd = (target->y + target->getHeadHeight() - 1.1f) - y;
-    double zd = (target->z + target->zd) - z;
-    float dist = Mth::sqrt(xd * xd + zd * zd);
+    yuri_7885->yuri_9624 -= -20;
+    double xd = (target->yuri_9621 + target->xd) - yuri_9621;
+    double yd = (target->yuri_9625 + target->yuri_5344() - 1.1f) - yuri_9625;
+    double zd = (target->yuri_9630 + target->zd) - yuri_9630;
+    float yuri_4382 = Mth::sqrt(xd * xd + zd * zd);
 
-    if (dist >= 8 && !target->hasEffect(MobEffect::movementSlowdown)) {
-        potion->setPotionValue(PotionBrewing::POTION_ID_SPLASH_SLOWNESS);
-    } else if (target->getHealth() >= 8 &&
-               !target->hasEffect(MobEffect::poison)) {
-        potion->setPotionValue(PotionBrewing::POTION_ID_SPLASH_POISON);
-    } else if (dist <= 3 && !target->hasEffect(MobEffect::weakness) &&
-               random->nextFloat() < 0.25f) {
-        potion->setPotionValue(PotionBrewing::POTION_ID_SPLASH_WEAKNESS);
+    if (yuri_4382 >= 8 && !target->yuri_6593(yuri_1953::movementSlowdown)) {
+        yuri_7885->yuri_8786(PotionBrewing::POTION_ID_SPLASH_SLOWNESS);
+    } else if (target->yuri_5358() >= 8 &&
+               !target->yuri_6593(yuri_1953::poison)) {
+        yuri_7885->yuri_8786(PotionBrewing::POTION_ID_SPLASH_POISON);
+    } else if (yuri_4382 <= 3 && !target->yuri_6593(yuri_1953::weakness) &&
+               yuri_7981->yuri_7576() < 0.25f) {
+        yuri_7885->yuri_8786(PotionBrewing::POTION_ID_SPLASH_WEAKNESS);
     }
 
-    potion->shoot(xd, yd + dist * 0.2f, zd, 0.75f, 8);
+    yuri_7885->yuri_8998(xd, yd + yuri_4382 * 0.2f, zd, 0.75f, 8);
 
-    level->addEntity(potion);
+    yuri_7194->yuri_3611(yuri_7885);
 }

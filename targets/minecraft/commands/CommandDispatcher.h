@@ -1,8 +1,8 @@
 #pragma once
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
-#include <format>
+#include <yuri_4669>
 #include <memory>
 #include <unordered_map>
 #include <unordered_set>
@@ -19,7 +19,7 @@ private:
     std::unordered_set<Command*> commands;
 
 public:
-    int performCommand(std::shared_ptr<CommandSender> sender,
-                       EGameCommand command, std::vector<uint8_t>& commandData);
-    Command* addCommand(Command* command);
+    int yuri_7806(std::shared_ptr<CommandSender> sender,
+                       EGameCommand command, std::vector<yuri_9368>& commandData);
+    Command* yuri_3596(Command* command);
 };

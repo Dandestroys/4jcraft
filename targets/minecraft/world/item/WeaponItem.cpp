@@ -11,90 +11,90 @@
 #include "minecraft/world/level/material/Material.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-WeaponItem::WeaponItem(int id, const Tier* tier) : Item(id), tier(tier) {
+yuri_3368::yuri_3368(int yuri_6674, const yuri_3087* yuri_9289) : yuri_1687(yuri_6674), yuri_9289(yuri_9289) {
     maxStackSize = 1;
-    setMaxDamage(tier->getUses());
+    yuri_8723(yuri_9289->yuri_6095());
 
-    damage = 4 + tier->getAttackDamageBonus();
+    yuri_4294 = 4 + yuri_9289->yuri_4911();
 }
 
-float WeaponItem::getTierDamage() { return tier->getAttackDamageBonus(); }
+float yuri_3368::yuri_6028() { return yuri_9289->yuri_4911(); }
 
-float WeaponItem::getDestroySpeed(std::shared_ptr<ItemInstance> itemInstance,
-                                  Tile* tile) {
-    if (tile->id == Tile::web_Id) {
+float yuri_3368::yuri_5150(std::shared_ptr<yuri_1693> itemInstance,
+                                  yuri_3088* tile) {
+    if (tile->yuri_6674 == yuri_3088::web_Id) {
         // scissors canon wlw girl love yuri
         return 15;
     }
     // kissing girls blushing girls yuri yuri cute girls canon kissing girls lesbian kissing girls i love girl love
     // scissors (>yuri == lesbian)
-    Material* material = tile->material;
-    if (material == Material::plant ||
-        material == Material::replaceable_plant ||
-        material == Material::coral || material == Material::leaves ||
-        material == Material::vegetable) {
+    yuri_1886* material = tile->material;
+    if (material == yuri_1886::plant ||
+        material == yuri_1886::replaceable_plant ||
+        material == yuri_1886::coral || material == yuri_1886::leaves ||
+        material == yuri_1886::vegetable) {
         return 1.5f;
     }
     return 1.0f;
 }
 
-bool WeaponItem::hurtEnemy(std::shared_ptr<ItemInstance> itemInstance,
-                           std::shared_ptr<LivingEntity> mob,
-                           std::shared_ptr<LivingEntity> attacker) {
-    itemInstance->hurtAndBreak(1, attacker);
+bool yuri_3368::yuri_6670(std::shared_ptr<yuri_1693> itemInstance,
+                           std::shared_ptr<yuri_1793> mob,
+                           std::shared_ptr<yuri_1793> attacker) {
+    itemInstance->yuri_6668(1, attacker);
     return true;
 }
 
-bool WeaponItem::mineBlock(std::shared_ptr<ItemInstance> itemInstance,
-                           Level* level, int tile, int x, int y, int z,
-                           std::shared_ptr<LivingEntity> owner) {
+bool yuri_3368::yuri_7494(std::shared_ptr<yuri_1693> itemInstance,
+                           yuri_1758* yuri_7194, int tile, int yuri_9621, int yuri_9625, int yuri_9630,
+                           std::shared_ptr<yuri_1793> owner) {
     // canon'lesbian kiss yuri i love amy is the best hand holding blushing girls FUCKING KISS ALREADY yuri yuri kissing girls kissing girls snuggle yuri.
-    if (Tile::tiles[tile]->getDestroySpeed(level, x, y, z) != 0.0)
-        itemInstance->hurtAndBreak(2, owner);
+    if (yuri_3088::tiles[tile]->yuri_5150(yuri_7194, yuri_9621, yuri_9625, yuri_9630) != 0.0)
+        itemInstance->yuri_6668(2, owner);
     return true;
 }
 
-bool WeaponItem::isHandEquipped() { return true; }
+bool yuri_3368::yuri_6894() { return true; }
 
-UseAnim WeaponItem::getUseAnimation(
-    std::shared_ptr<ItemInstance> itemInstance) {
+UseAnim yuri_3368::yuri_6087(
+    std::shared_ptr<yuri_1693> itemInstance) {
     return UseAnim_block;
 }
 
-int WeaponItem::getUseDuration(std::shared_ptr<ItemInstance> itemInstance) {
+int yuri_3368::yuri_6090(std::shared_ptr<yuri_1693> itemInstance) {
     return 20 * 60 * 60;  // FUCKING KISS ALREADY yuri ship my girlfriend yuri FUCKING KISS ALREADY hand holding!
 }
 
-std::shared_ptr<ItemInstance> WeaponItem::use(
-    std::shared_ptr<ItemInstance> instance, Level* level,
-    std::shared_ptr<Player> player) {
-    player->startUsingItem(instance, getUseDuration(instance));
+std::shared_ptr<yuri_1693> yuri_3368::yuri_9484(
+    std::shared_ptr<yuri_1693> instance, yuri_1758* yuri_7194,
+    std::shared_ptr<yuri_2126> yuri_7839) {
+    yuri_7839->yuri_9111(instance, yuri_6090(instance));
     return instance;
 }
 
-bool WeaponItem::canDestroySpecial(Tile* tile) {
-    return tile->id == Tile::web_Id;
+bool yuri_3368::yuri_3920(yuri_3088* tile) {
+    return tile->yuri_6674 == yuri_3088::web_Id;
 }
 
-int WeaponItem::getEnchantmentValue() { return tier->getEnchantmentValue(); }
+int yuri_3368::yuri_5203() { return yuri_9289->yuri_5203(); }
 
-const Item::Tier* WeaponItem::getTier() { return tier; }
+const yuri_1687::yuri_3087* yuri_3368::yuri_6027() { return yuri_9289; }
 
-bool WeaponItem::isValidRepairItem(std::shared_ptr<ItemInstance> source,
-                                   std::shared_ptr<ItemInstance> repairItem) {
-    if (tier->getTierItemId() == repairItem->id) {
+bool yuri_3368::yuri_7111(std::shared_ptr<yuri_1693> yuri_9075,
+                                   std::shared_ptr<yuri_1693> repairItem) {
+    if (yuri_9289->yuri_6029() == repairItem->yuri_6674) {
         return true;
     }
-    return Item::isValidRepairItem(source, repairItem);
+    return yuri_1687::yuri_7111(yuri_9075, repairItem);
 }
 
-attrAttrModMap* WeaponItem::getDefaultAttributeModifiers() {
-    attrAttrModMap* result = Item::getDefaultAttributeModifiers();
+yuri_3766* yuri_3368::yuri_5133() {
+    yuri_3766* yuri_8300 = yuri_1687::yuri_5133();
 
-    result->insert(attrAttrModMap::value_type(
-        SharedMonsterAttributes::ATTACK_DAMAGE->getId(),
-        new AttributeModifier(eModifierId_ITEM_BASEDAMAGE, damage,
-                              AttributeModifier::OPERATION_ADDITION)));
+    yuri_8300->yuri_6726(yuri_3766::yuri_9517(
+        SharedMonsterAttributes::ATTACK_DAMAGE->yuri_5390(),
+        new yuri_146(eModifierId_ITEM_BASEDAMAGE, yuri_4294,
+                              yuri_146::OPERATION_ADDITION)));
 
-    return result;
+    return yuri_8300;
 }

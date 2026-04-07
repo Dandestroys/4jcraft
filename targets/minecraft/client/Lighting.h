@@ -1,16 +1,16 @@
 #pragma once
-class FloatBuffer;
+class yuri_849;
 
 class Lighting {
 private:
-    static FloatBuffer* lb;
+    static yuri_849* lb;
 
 public:
-    static void turnOff();
-    static void turnOn();
-    static void turnOnGui();
+    static void yuri_9358();
+    static void yuri_9360();
+    static void yuri_9361();
 
 private:
-    static FloatBuffer* getBuffer(double a, double b, double c, double d);
-    static FloatBuffer* getBuffer(float a, float b, float c, float d);
+    static yuri_849* yuri_4979(double yuri_3565, double yuri_3775, double c, double d);
+    static yuri_849* yuri_4979(float yuri_3565, float yuri_3775, float c, float d);
 };

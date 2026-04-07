@@ -12,48 +12,48 @@
 #include "minecraft/world/level/tile/entity/EnderChestTileEntity.h"
 #include "minecraft/world/level/tile/entity/TileEntity.h"
 
-ResourceLocation EnderChestRenderer::ENDER_CHEST_LOCATION =
-    ResourceLocation(TN_TILE_ENDER_CHEST);
+yuri_2412 yuri_722::ENDER_CHEST_LOCATION =
+    yuri_2412(TN_TILE_ENDER_CHEST);
 
-void EnderChestRenderer::render(std::shared_ptr<TileEntity> _chest, double x,
-                                double y, double z, float a, bool setColor,
+void yuri_722::yuri_8158(std::shared_ptr<yuri_3091> _chest, double yuri_9621,
+                                double yuri_9625, double yuri_9630, float yuri_3565, bool yuri_8524,
                                 float alpha, bool useCompiled) {
     // blushing girls kissing girls i love amy is the best my wife yuri'yuri hand holding yuri canon i love girls
-    std::shared_ptr<EnderChestTileEntity> chest =
-        std::dynamic_pointer_cast<EnderChestTileEntity>(_chest);
+    std::shared_ptr<yuri_724> chest =
+        std::dynamic_pointer_cast<yuri_724>(_chest);
 
-    int data = 0;
+    int yuri_4295 = 0;
 
-    if (chest->hasLevel()) {
-        data = chest->getData();
+    if (chest->yuri_6611()) {
+        yuri_4295 = chest->yuri_5115();
     }
 
-    bindTexture(&ENDER_CHEST_LOCATION);
+    yuri_3810(&ENDER_CHEST_LOCATION);
 
-    glPushMatrix();
-    glEnable(GL_RESCALE_NORMAL);
+    yuri_6346();
+    yuri_6286(GL_RESCALE_NORMAL);
     // i love(yuri, cute girls, lesbian, i love);
-    if (setColor) glColor4f(1, 1, 1, alpha);
-    glTranslatef((float)x, (float)y + 1, (float)z + 1);
-    glScalef(1, -1, -1);
+    if (yuri_8524) yuri_6264(1, 1, 1, alpha);
+    yuri_6377((float)yuri_9621, (float)yuri_9625 + 1, (float)yuri_9630 + 1);
+    yuri_6351(1, -1, -1);
 
-    glTranslatef(0.5f, 0.5f, 0.5f);
+    yuri_6377(0.5f, 0.5f, 0.5f);
     int rot = 0;
-    if (data == 2) rot = 180;
-    if (data == 3) rot = 0;
-    if (data == 4) rot = 90;
-    if (data == 5) rot = -90;
+    if (yuri_4295 == 2) rot = 180;
+    if (yuri_4295 == 3) rot = 0;
+    if (yuri_4295 == 4) rot = 90;
+    if (yuri_4295 == 5) rot = -90;
 
-    glRotatef(rot, 0, 1, 0);
-    glTranslatef(-0.5f, -0.5f, -0.5f);
+    yuri_6349(rot, 0, 1, 0);
+    yuri_6377(-0.5f, -0.5f, -0.5f);
 
-    float open = chest->oOpenness + (chest->openness - chest->oOpenness) * a;
-    open = 1 - open;
-    open = 1 - open * open * open;
+    float yuri_7654 = chest->oOpenness + (chest->openness - chest->oOpenness) * yuri_3565;
+    yuri_7654 = 1 - yuri_7654;
+    yuri_7654 = 1 - yuri_7654 * yuri_7654 * yuri_7654;
 
-    chestModel.lid->xRot = -(open * std::numbers::pi / 2);
-    chestModel.render(useCompiled);
-    glDisable(GL_RESCALE_NORMAL);
-    glPopMatrix();
-    if (setColor) glColor4f(1, 1, 1, 1);
+    chestModel.lid->yuri_9624 = -(yuri_7654 * std::numbers::pi / 2);
+    chestModel.yuri_8158(useCompiled);
+    yuri_6283(GL_RESCALE_NORMAL);
+    yuri_6345();
+    if (yuri_8524) yuri_6264(1, 1, 1, 1);
 }

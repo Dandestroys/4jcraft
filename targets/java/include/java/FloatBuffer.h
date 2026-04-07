@@ -3,17 +3,17 @@
 
 #include "Buffer.h"
 
-class FloatBuffer : public Buffer {
+class yuri_849 : public yuri_238 {
 private:
-    float* buffer;
+    float* yuri_3862;
 
 public:
-    FloatBuffer(unsigned int capacity);
-    FloatBuffer(unsigned int capacity, float* backingArray);
-    virtual ~FloatBuffer();
+    yuri_849(unsigned int yuri_3975);
+    yuri_849(unsigned int yuri_3975, float* backingArray);
+    virtual ~yuri_849();
 
-    FloatBuffer* flip();
-    FloatBuffer* put(float f);
-    void get(std::vector<float>* dst);
-    float* _getDataPointer() { return buffer; }
+    yuri_849* yuri_4641();
+    yuri_849* yuri_7955(float yuri_4554);
+    void yuri_4853(std::vector<float>* dst);
+    float* yuri_3537() { return yuri_3862; }
 };

@@ -3,20 +3,20 @@
 #include "Particle.h"
 #include "java/Class.h"
 
-class Level;
+class yuri_1758;
 
-class SpellParticle : public Particle {
+class yuri_2881 : public yuri_2090 {
 private:
     int baseTex;
 
 public:
-    virtual eINSTANCEOF GetType() { return eTYPE_SPELLPARTICLE; }
+    virtual eINSTANCEOF yuri_1188() { return eTYPE_SPELLPARTICLE; }
 
-    SpellParticle(Level* level, double x, double y, double z, double xa,
+    yuri_2881(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630, double xa,
                   double ya, double za);
 
-    virtual void render(Tesselator* t, float a, float xa, float ya, float za,
+    virtual void yuri_8158(yuri_3032* t, float yuri_3565, float xa, float ya, float za,
                         float xa2, float za2);
-    virtual void tick();
-    virtual void setBaseTex(int baseTex);
+    virtual void yuri_9265();
+    virtual void yuri_8479(int baseTex);
 };

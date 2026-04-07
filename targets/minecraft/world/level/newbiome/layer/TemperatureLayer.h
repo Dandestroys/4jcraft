@@ -4,9 +4,9 @@
 
 #include "Layer.h"
 
-class TemperatureLayer : public Layer {
+class yuri_3026 : public yuri_1742 {
 public:
-    TemperatureLayer(std::shared_ptr<Layer> parent);
+    yuri_3026(std::shared_ptr<yuri_1742> yuri_7791);
 
-    virtual std::vector<int> getArea(int xo, int yo, int w, int h);
+    virtual std::vector<int> yuri_4897(int xo, int yo, int yuri_9535, int yuri_6412);
 };

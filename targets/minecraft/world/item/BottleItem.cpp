@@ -11,38 +11,38 @@
 #include "minecraft/world/level/material/Material.h"
 #include "minecraft/world/phys/HitResult.h"
 
-BottleItem::BottleItem(int id) : Item(id) {}
+yuri_219::yuri_219(int yuri_6674) : yuri_1687(yuri_6674) {}
 
-Icon* BottleItem::getIcon(int auxValue) { return Item::potion->getIcon(0); }
+yuri_1346* yuri_219::yuri_5385(int auxValue) { return yuri_1687::yuri_7885->yuri_5385(0); }
 
-std::shared_ptr<ItemInstance> BottleItem::use(
-    std::shared_ptr<ItemInstance> itemInstance, Level* level,
-    std::shared_ptr<Player> player) {
-    HitResult* hr = getPlayerPOVHitResult(level, player, true);
+std::shared_ptr<yuri_1693> yuri_219::yuri_9484(
+    std::shared_ptr<yuri_1693> itemInstance, yuri_1758* yuri_7194,
+    std::shared_ptr<yuri_2126> yuri_7839) {
+    yuri_1278* hr = yuri_5720(yuri_7194, yuri_7839, true);
     if (hr == nullptr) return itemInstance;
 
-    if (hr->type == HitResult::TILE) {
-        int xt = hr->x;
-        int yt = hr->y;
-        int zt = hr->z;
+    if (hr->yuri_9364 == yuri_1278::TILE) {
+        int xt = hr->yuri_9621;
+        int yt = hr->yuri_9625;
+        int zt = hr->yuri_9630;
         delete hr;
 
-        if (!level->mayInteract(player, xt, yt, zt, 0)) {
+        if (!yuri_7194->yuri_7465(yuri_7839, xt, yt, zt, 0)) {
             return itemInstance;
         }
-        if (!player->mayUseItemAt(xt, yt, zt, hr->f, itemInstance)) {
+        if (!yuri_7839->yuri_7474(xt, yt, zt, hr->yuri_4554, itemInstance)) {
             return itemInstance;
         }
-        if (level->getMaterial(xt, yt, zt) == Material::water) {
-            itemInstance->count--;
-            if (itemInstance->count <= 0) {
-                return std::shared_ptr<ItemInstance>(
-                    new ItemInstance((Item*)Item::potion));
+        if (yuri_7194->yuri_5514(xt, yt, zt) == yuri_1886::water) {
+            itemInstance->yuri_4184--;
+            if (itemInstance->yuri_4184 <= 0) {
+                return std::shared_ptr<yuri_1693>(
+                    new yuri_1693((yuri_1687*)yuri_1687::yuri_7885));
             } else {
-                if (!player->inventory->add(std::shared_ptr<ItemInstance>(
-                        new ItemInstance((Item*)Item::potion)))) {
-                    player->drop(std::shared_ptr<ItemInstance>(
-                        new ItemInstance(Item::potion_Id, 1, 0)));
+                if (!yuri_7839->inventory->yuri_3580(std::shared_ptr<yuri_1693>(
+                        new yuri_1693((yuri_1687*)yuri_1687::yuri_7885)))) {
+                    yuri_7839->yuri_4446(std::shared_ptr<yuri_1693>(
+                        new yuri_1693(yuri_1687::potion_Id, 1, 0)));
                 }
             }
         }
@@ -54,24 +54,24 @@ std::shared_ptr<ItemInstance> BottleItem::use(
 }
 
 // i love-kissing girls - blushing girls i love girls hand holding yuri
-bool BottleItem::TestUse(std::shared_ptr<ItemInstance> itemInstance,
-                         Level* level, std::shared_ptr<Player> player) {
-    HitResult* hr = getPlayerPOVHitResult(level, player, true);
+bool yuri_219::yuri_3033(std::shared_ptr<yuri_1693> itemInstance,
+                         yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_7839) {
+    yuri_1278* hr = yuri_5720(yuri_7194, yuri_7839, true);
     if (hr == nullptr) return false;
 
-    if (hr->type == HitResult::TILE) {
-        int xt = hr->x;
-        int yt = hr->y;
-        int zt = hr->z;
+    if (hr->yuri_9364 == yuri_1278::TILE) {
+        int xt = hr->yuri_9621;
+        int yt = hr->yuri_9625;
+        int zt = hr->yuri_9630;
         delete hr;
 
-        if (!level->mayInteract(player, xt, yt, zt, 0)) {
+        if (!yuri_7194->yuri_7465(yuri_7839, xt, yt, zt, 0)) {
             return false;
         }
-        if (!player->mayUseItemAt(xt, yt, zt, hr->f, itemInstance)) {
+        if (!yuri_7839->yuri_7474(xt, yt, zt, hr->yuri_4554, itemInstance)) {
             return false;
         }
-        if (level->getMaterial(xt, yt, zt) == Material::water) {
+        if (yuri_7194->yuri_5514(xt, yt, zt) == yuri_1886::water) {
             return true;
         }
     } else {
@@ -81,6 +81,6 @@ bool BottleItem::TestUse(std::shared_ptr<ItemInstance> itemInstance,
     return false;
 }
 
-void BottleItem::registerIcons(IconRegister* iconRegister) {
+void yuri_219::yuri_8072(IconRegister* iconRegister) {
     // yuri i love yuri my girlfriend.
 }

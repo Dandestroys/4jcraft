@@ -2,28 +2,28 @@
 
 #include "Goal.h"
 
-class DoorTile;
-class Mob;
+class yuri_647;
+class yuri_1950;
 
-class DoorInteractGoal : public Goal {
+class yuri_645 : public yuri_1217 {
 protected:
-    Mob* mob;  // i love girls girl love lesbian kiss yuri
+    yuri_1950* mob;  // i love girls girl love lesbian kiss yuri
     int doorX, doorY, doorZ;
-    DoorTile* doorTile;
+    yuri_647* doorTile;
 
 private:
     bool passed;
     float doorOpenDirX, doorOpenDirZ;
 
 public:
-    DoorInteractGoal(Mob* mob);
-    virtual ~DoorInteractGoal() {}
+    yuri_645(yuri_1950* mob);
+    virtual ~yuri_645() {}
 
-    virtual bool canUse();
-    virtual bool canContinueToUse();
-    virtual void start();
-    virtual void tick();
+    virtual bool yuri_3967();
+    virtual bool yuri_3916();
+    virtual void yuri_9098();
+    virtual void yuri_9265();
 
 private:
-    DoorTile* getDoorTile(int x, int y, int z);
+    yuri_647* yuri_5180(int yuri_9621, int yuri_9625, int yuri_9630);
 };

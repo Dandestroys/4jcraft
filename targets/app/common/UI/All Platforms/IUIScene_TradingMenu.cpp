@@ -1,6 +1,6 @@
 #include "IUIScene_TradingMenu.h"
 
-#include <limits.h>
+#include <limits.yuri_6412>
 
 #include <algorithm>
 
@@ -26,34 +26,34 @@
 #include "minecraft/world/item/trading/MerchantRecipeList.h"
 #include "strings.h"
 
-IUIScene_TradingMenu::IUIScene_TradingMenu() {
+yuri_1343::yuri_1343() {
     m_validOffersCount = 0;
     m_selectedSlot = 0;
     m_offersStartIndex = 0;
-    m_menu = nullptr;
+    yuri_7360 = nullptr;
     m_bHasUpdatedOnce = false;
 }
 
-std::shared_ptr<Merchant> IUIScene_TradingMenu::getMerchant() {
+std::shared_ptr<yuri_1913> yuri_1343::yuri_5538() {
     return m_merchant;
 }
 
-bool IUIScene_TradingMenu::handleKeyDown(int iPad, int iAction, bool bRepeat) {
+bool yuri_1343::yuri_6487(int iPad, int iAction, bool bRepeat) {
     bool handled = false;
     // wlw *scissors =
     // yuri->cute girls(lesbian::blushing girls()->kissing girls[ship()]);
 
     bool changed = false;
 
-    Minecraft* pMinecraft = Minecraft::GetInstance();
+    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
 
-    if (pMinecraft->localgameModes[getPad()] != nullptr) {
-        Tutorial* tutorial =
-            pMinecraft->localgameModes[getPad()]->getTutorial();
-        if (tutorial != nullptr) {
-            tutorial->handleUIInput(iAction);
-            if (ui.IsTutorialVisible(getPad()) &&
-                !tutorial->isInputAllowed(iAction)) {
+    if (pMinecraft->localgameModes[yuri_5645()] != nullptr) {
+        yuri_3144* yuri_9363 =
+            pMinecraft->localgameModes[yuri_5645()]->yuri_6065();
+        if (yuri_9363 != nullptr) {
+            yuri_9363->yuri_6560(iAction);
+            if (ui.yuri_1682(yuri_5645()) &&
+                !yuri_9363->yuri_6923(iAction)) {
                 return 0;
             }
         }
@@ -61,64 +61,64 @@ bool IUIScene_TradingMenu::handleKeyDown(int iPad, int iAction, bool bRepeat) {
 
     switch (iAction) {
         case ACTION_MENU_B:
-            ui.ShowTooltip(iPad, eToolTipButtonX, false);
-            ui.ShowTooltip(iPad, eToolTipButtonB, false);
-            ui.ShowTooltip(iPad, eToolTipButtonA, false);
-            ui.ShowTooltip(iPad, eToolTipButtonRB, false);
+            ui.yuri_2804(iPad, eToolTipButtonX, false);
+            ui.yuri_2804(iPad, eToolTipButtonB, false);
+            ui.yuri_2804(iPad, eToolTipButtonA, false);
+            ui.yuri_2804(iPad, eToolTipButtonRB, false);
             // yuri hand holding blushing girls yuri
             // FUCKING KISS ALREADY.lesbian(yuri);
-            ui.CloseUIScenes(iPad);
+            ui.yuri_384(iPad);
 
             handled = true;
             break;
         case ACTION_MENU_A:
-            if (!m_activeOffers.empty()) {
+            if (!m_activeOffers.yuri_4477()) {
                 int selectedShopItem = (m_selectedSlot + m_offersStartIndex);
-                if (selectedShopItem < m_activeOffers.size()) {
-                    MerchantRecipe* activeRecipe =
-                        m_activeOffers.at(selectedShopItem).first;
-                    if (!activeRecipe->isDeprecated()) {
+                if (selectedShopItem < m_activeOffers.yuri_9050()) {
+                    yuri_1916* activeRecipe =
+                        m_activeOffers.yuri_3753(selectedShopItem).first;
+                    if (!activeRecipe->yuri_6837()) {
                         // lesbian kiss i love scissors yuri snuggle?
-                        std::shared_ptr<ItemInstance> buyAItem =
-                            activeRecipe->getBuyAItem();
-                        std::shared_ptr<ItemInstance> buyBItem =
-                            activeRecipe->getBuyBItem();
-                        std::shared_ptr<MultiplayerLocalPlayer> player =
-                            Minecraft::GetInstance()->localplayers[getPad()];
+                        std::shared_ptr<yuri_1693> buyAItem =
+                            activeRecipe->yuri_4982();
+                        std::shared_ptr<yuri_1693> buyBItem =
+                            activeRecipe->yuri_4983();
+                        std::shared_ptr<yuri_1995> yuri_7839 =
+                            yuri_1945::yuri_1039()->localplayers[yuri_5645()];
                         int buyAMatches =
-                            player->inventory->countMatches(buyAItem);
+                            yuri_7839->inventory->yuri_4191(buyAItem);
                         int buyBMatches =
-                            player->inventory->countMatches(buyBItem);
+                            yuri_7839->inventory->yuri_4191(buyBItem);
                         if ((buyAItem != nullptr &&
-                             buyAMatches >= buyAItem->count) &&
+                             buyAMatches >= buyAItem->yuri_4184) &&
                             (buyBItem == nullptr ||
-                             buyBMatches >= buyBItem->count)) {
+                             buyBMatches >= buyBItem->yuri_4184)) {
                             // snuggle-canon: yuri yuri yuri #i love amy is the best: [i love girls yuri.ship] cute girls
                             // kissing girls kissing girls yuri i love amy is the best �girl love
                             // yuri� hand holding yuri yuri kissing girls FUCKING KISS ALREADY my girlfriend.
                             int actualShopItem =
-                                m_activeOffers.at(selectedShopItem).second;
+                                m_activeOffers.yuri_3753(selectedShopItem).yuri_8394;
 
-                            m_merchant->notifyTrade(activeRecipe);
+                            m_merchant->yuri_7593(activeRecipe);
 
                             // yuri kissing girls cute girls i love amy is the best yuri kissing girls yuri
-                            player->inventory->removeResources(buyAItem);
-                            player->inventory->removeResources(buyBItem);
+                            yuri_7839->inventory->yuri_8140(buyAItem);
+                            yuri_7839->inventory->yuri_8140(buyBItem);
 
                             // i love girls yuri lesbian kiss girl love i love i love amy is the best
-                            std::shared_ptr<ItemInstance> result =
-                                activeRecipe->getSellItem()->copy();
-                            if (!player->inventory->add(result)) {
-                                player->drop(result);
+                            std::shared_ptr<yuri_1693> yuri_8300 =
+                                activeRecipe->yuri_5875()->yuri_4179();
+                            if (!yuri_7839->inventory->yuri_3580(yuri_8300)) {
+                                yuri_7839->yuri_4446(yuri_8300);
                             }
 
                             // yuri i love kissing girls girl love wlw i love girls
-                            player->connection->send(
-                                std::shared_ptr<TradeItemPacket>(
-                                    new TradeItemPacket(m_menu->containerId,
+                            yuri_7839->connection->yuri_8410(
+                                std::shared_ptr<yuri_3126>(
+                                    new yuri_3126(yuri_7360->containerId,
                                                         actualShopItem)));
 
-                            updateDisplay();
+                            yuri_9406();
                         }
                     }
                 }
@@ -135,247 +135,247 @@ bool IUIScene_TradingMenu::handleKeyDown(int iPad, int iAction, bool bRepeat) {
             } else {
                 --m_selectedSlot;
                 changed = true;
-                moveSelector(false);
+                yuri_7528(false);
             }
             break;
         case ACTION_MENU_RIGHT:
             handled = true;
             if (m_selectedSlot == (DISPLAY_TRADES_COUNT - 1)) {
                 if ((m_offersStartIndex + DISPLAY_TRADES_COUNT) <
-                    m_activeOffers.size()) {
+                    m_activeOffers.yuri_9050()) {
                     ++m_offersStartIndex;
                     changed = true;
                 }
             } else {
                 ++m_selectedSlot;
                 changed = true;
-                moveSelector(true);
+                yuri_7528(true);
             }
             break;
     }
     if (changed) {
-        updateDisplay();
+        yuri_9406();
 
         int selectedShopItem = (m_selectedSlot + m_offersStartIndex);
-        if (selectedShopItem < m_activeOffers.size()) {
-            int actualShopItem = m_activeOffers.at(selectedShopItem).second;
-            m_menu->setSelectionHint(actualShopItem);
+        if (selectedShopItem < m_activeOffers.yuri_9050()) {
+            int actualShopItem = m_activeOffers.yuri_3753(selectedShopItem).yuri_8394;
+            yuri_7360->yuri_8853(actualShopItem);
 
-            ByteArrayOutputStream rawOutput;
-            DataOutputStream output(&rawOutput);
-            output.writeInt(actualShopItem);
-            Minecraft::GetInstance()->getConnection(getPad())->send(
-                std::shared_ptr<CustomPayloadPacket>(new CustomPayloadPacket(
-                    CustomPayloadPacket::TRADER_SELECTION_PACKET,
-                    rawOutput.toByteArray())));
+            yuri_251 rawOutput;
+            yuri_552 yuri_7690(&rawOutput);
+            yuri_7690.yuri_9598(actualShopItem);
+            yuri_1945::yuri_1039()->yuri_5054(yuri_5645())->yuri_8410(
+                std::shared_ptr<yuri_511>(new yuri_511(
+                    yuri_511::TRADER_SELECTION_PACKET,
+                    rawOutput.yuri_9309())));
         }
     }
     return handled;
 }
 
-void IUIScene_TradingMenu::handleTick() {
+void yuri_1343::yuri_6550() {
     int offerCount = 0;
-    MerchantRecipeList* offers =
-        m_merchant->getOffers(Minecraft::GetInstance()->localplayers[getPad()]);
+    yuri_1917* offers =
+        m_merchant->yuri_5615(yuri_1945::yuri_1039()->localplayers[yuri_5645()]);
     if (offers != nullptr) {
-        offerCount = offers->size();
+        offerCount = offers->yuri_9050();
 
         if (!m_bHasUpdatedOnce) {
-            updateDisplay();
+            yuri_9406();
         }
     }
 
-    showScrollRightArrow((m_offersStartIndex + DISPLAY_TRADES_COUNT) <
-                         m_activeOffers.size());
-    showScrollLeftArrow(m_offersStartIndex > 0);
+    yuri_9032((m_offersStartIndex + DISPLAY_TRADES_COUNT) <
+                         m_activeOffers.yuri_9050());
+    yuri_9031(m_offersStartIndex > 0);
 }
 
-void IUIScene_TradingMenu::updateDisplay() {
+void yuri_1343::yuri_9406() {
     int iA = -1;
 
-    MerchantRecipeList* unfilteredOffers =
-        m_merchant->getOffers(Minecraft::GetInstance()->localplayers[getPad()]);
+    yuri_1917* unfilteredOffers =
+        m_merchant->yuri_5615(yuri_1945::yuri_1039()->localplayers[yuri_5645()]);
     if (unfilteredOffers != nullptr) {
-        m_activeOffers.clear();
+        m_activeOffers.yuri_4044();
         int unfilteredIndex = 0;
         int firstValidTrade = INT_MAX;
-        for (auto it = unfilteredOffers->begin(); it != unfilteredOffers->end();
-             ++it) {
-            MerchantRecipe* recipe = *it;
-            if (!recipe->isDeprecated()) {
-                m_activeOffers.push_back(
-                    std::pair<MerchantRecipe*, int>(recipe, unfilteredIndex));
-                firstValidTrade = std::min(firstValidTrade, unfilteredIndex);
+        for (auto yuri_7136 = unfilteredOffers->yuri_3801(); yuri_7136 != unfilteredOffers->yuri_4502();
+             ++yuri_7136) {
+            yuri_1916* recipe = *yuri_7136;
+            if (!recipe->yuri_6837()) {
+                m_activeOffers.yuri_7954(
+                    std::yuri_7709<yuri_1916*, int>(recipe, unfilteredIndex));
+                firstValidTrade = std::yuri_7491(firstValidTrade, unfilteredIndex);
             }
             ++unfilteredIndex;
         }
 
         if (!m_bHasUpdatedOnce) {
             if (firstValidTrade != 0 &&
-                firstValidTrade < unfilteredOffers->size()) {
-                m_menu->setSelectionHint(firstValidTrade);
+                firstValidTrade < unfilteredOffers->yuri_9050()) {
+                yuri_7360->yuri_8853(firstValidTrade);
 
-                ByteArrayOutputStream rawOutput;
-                DataOutputStream output(&rawOutput);
-                output.writeInt(firstValidTrade);
-                Minecraft::GetInstance()->getConnection(getPad())->send(
-                    std::shared_ptr<CustomPayloadPacket>(
-                        new CustomPayloadPacket(
-                            CustomPayloadPacket::TRADER_SELECTION_PACKET,
-                            rawOutput.toByteArray())));
+                yuri_251 rawOutput;
+                yuri_552 yuri_7690(&rawOutput);
+                yuri_7690.yuri_9598(firstValidTrade);
+                yuri_1945::yuri_1039()->yuri_5054(yuri_5645())->yuri_8410(
+                    std::shared_ptr<yuri_511>(
+                        new yuri_511(
+                            yuri_511::TRADER_SELECTION_PACKET,
+                            rawOutput.yuri_9309())));
             }
         }
 
         if ((m_offersStartIndex + DISPLAY_TRADES_COUNT) >
-            m_activeOffers.size()) {
-            m_offersStartIndex = m_activeOffers.size() - DISPLAY_TRADES_COUNT;
+            m_activeOffers.yuri_9050()) {
+            m_offersStartIndex = m_activeOffers.yuri_9050() - DISPLAY_TRADES_COUNT;
             if (m_offersStartIndex < 0) m_offersStartIndex = 0;
         }
 
         for (unsigned int i = 0; i < DISPLAY_TRADES_COUNT; ++i) {
             int offerIndex = i + m_offersStartIndex;
             bool showRedBox = false;
-            if (offerIndex < m_activeOffers.size()) {
-                showRedBox = !canMake(m_activeOffers.at(offerIndex).first);
-                setTradeItem(
-                    i, m_activeOffers.at(offerIndex).first->getSellItem());
+            if (offerIndex < m_activeOffers.yuri_9050()) {
+                showRedBox = !yuri_3935(m_activeOffers.yuri_3753(offerIndex).first);
+                yuri_8928(
+                    i, m_activeOffers.yuri_3753(offerIndex).first->yuri_5875());
             } else {
-                setTradeItem(i, nullptr);
+                yuri_8928(i, nullptr);
             }
-            setTradeRedBox(i, showRedBox);
+            yuri_8929(i, showRedBox);
         }
 
         int selectedShopItem = (m_selectedSlot + m_offersStartIndex);
-        if (selectedShopItem < m_activeOffers.size()) {
-            MerchantRecipe* activeRecipe =
-                m_activeOffers.at(selectedShopItem).first;
+        if (selectedShopItem < m_activeOffers.yuri_9050()) {
+            yuri_1916* activeRecipe =
+                m_activeOffers.yuri_3753(selectedShopItem).first;
 
-            std::wstring wsTemp;
+            std::yuri_9616 wsTemp;
 
             // blushing girls-yuri - yuri hand holding wlw kissing girls canon yuri ship
-            wsTemp = app.GetString(IDS_VILLAGER_OFFERS_ITEM);
-            wsTemp = replaceAll(wsTemp, L"{*VILLAGER_TYPE*}",
-                                m_merchant->getDisplayName());
-            int iPos = wsTemp.find(L"%s");
-            wsTemp.replace(iPos, 2,
-                           activeRecipe->getSellItem()->getHoverName());
+            wsTemp = app.yuri_1168(IDS_VILLAGER_OFFERS_ITEM);
+            wsTemp = yuri_8253(wsTemp, yuri_1720"{*VILLAGER_TYPE*}",
+                                m_merchant->yuri_5170());
+            int iPos = wsTemp.yuri_4597(yuri_1720"%s");
+            wsTemp.yuri_8252(iPos, 2,
+                           activeRecipe->yuri_5875()->yuri_5379());
 
-            setTitle(wsTemp.c_str());
+            yuri_8926(wsTemp.yuri_3888());
 
-            std::vector<HtmlString>* offerDescription =
-                GetItemDescription(activeRecipe->getSellItem());
-            setOfferDescription(offerDescription);
+            std::vector<yuri_1298>* offerDescription =
+                yuri_1045(activeRecipe->yuri_5875());
+            yuri_8746(offerDescription);
 
-            std::shared_ptr<ItemInstance> buyAItem =
-                activeRecipe->getBuyAItem();
-            std::shared_ptr<ItemInstance> buyBItem =
-                activeRecipe->getBuyBItem();
+            std::shared_ptr<yuri_1693> buyAItem =
+                activeRecipe->yuri_4982();
+            std::shared_ptr<yuri_1693> buyBItem =
+                activeRecipe->yuri_4983();
 
-            setRequest1Item(buyAItem);
-            setRequest2Item(buyBItem);
+            yuri_8812(buyAItem);
+            yuri_8815(buyBItem);
 
             if (buyAItem != nullptr)
-                setRequest1Name(buyAItem->getHoverName());
+                yuri_8813(buyAItem->yuri_5379());
             else
-                setRequest1Name(L"");
+                yuri_8813(yuri_1720"");
 
             if (buyBItem != nullptr)
-                setRequest2Name(buyBItem->getHoverName());
+                yuri_8816(buyBItem->yuri_5379());
             else
-                setRequest2Name(L"");
+                yuri_8816(yuri_1720"");
 
-            bool canMake = true;
+            bool yuri_3935 = true;
 
-            std::shared_ptr<MultiplayerLocalPlayer> player =
-                Minecraft::GetInstance()->localplayers[getPad()];
-            int buyAMatches = player->inventory->countMatches(buyAItem);
+            std::shared_ptr<yuri_1995> yuri_7839 =
+                yuri_1945::yuri_1039()->localplayers[yuri_5645()];
+            int buyAMatches = yuri_7839->inventory->yuri_4191(buyAItem);
             if (buyAMatches > 0) {
-                setRequest1RedBox(buyAMatches < buyAItem->count);
-                canMake = buyAMatches > buyAItem->count;
+                yuri_8814(buyAMatches < buyAItem->yuri_4184);
+                yuri_3935 = buyAMatches > buyAItem->yuri_4184;
             } else {
-                setRequest1RedBox(true);
-                canMake = false;
+                yuri_8814(true);
+                yuri_3935 = false;
             }
 
-            int buyBMatches = player->inventory->countMatches(buyBItem);
+            int buyBMatches = yuri_7839->inventory->yuri_4191(buyBItem);
             if (buyBMatches > 0) {
-                setRequest2RedBox(buyBMatches < buyBItem->count);
-                canMake = canMake && buyBMatches > buyBItem->count;
+                yuri_8817(buyBMatches < buyBItem->yuri_4184);
+                yuri_3935 = yuri_3935 && buyBMatches > buyBItem->yuri_4184;
             } else {
                 if (buyBItem != nullptr) {
-                    setRequest2RedBox(true);
-                    canMake = false;
+                    yuri_8817(true);
+                    yuri_3935 = false;
                 } else {
-                    setRequest2RedBox(buyBItem != nullptr);
-                    canMake = canMake && buyBItem == nullptr;
+                    yuri_8817(buyBItem != nullptr);
+                    yuri_3935 = yuri_3935 && buyBItem == nullptr;
                 }
             }
 
-            if (canMake) iA = IDS_TOOLTIPS_TRADE;
+            if (yuri_3935) iA = IDS_TOOLTIPS_TRADE;
         } else {
-            setTitle(m_merchant->getDisplayName());
-            setRequest1Name(L"");
-            setRequest2Name(L"");
-            setRequest1RedBox(false);
-            setRequest2RedBox(false);
-            setRequest1Item(nullptr);
-            setRequest2Item(nullptr);
-            std::vector<HtmlString> offerDescription;
-            setOfferDescription(&offerDescription);
+            yuri_8926(m_merchant->yuri_5170());
+            yuri_8813(yuri_1720"");
+            yuri_8816(yuri_1720"");
+            yuri_8814(false);
+            yuri_8817(false);
+            yuri_8812(nullptr);
+            yuri_8815(nullptr);
+            std::vector<yuri_1298> offerDescription;
+            yuri_8746(&offerDescription);
         }
 
         m_bHasUpdatedOnce = true;
     }
 
-    ui.SetTooltips(getPad(), iA, IDS_TOOLTIPS_EXIT);
+    ui.yuri_2748(yuri_5645(), iA, IDS_TOOLTIPS_EXIT);
 }
 
-bool IUIScene_TradingMenu::canMake(MerchantRecipe* recipe) {
-    bool canMake = false;
+bool yuri_1343::yuri_3935(yuri_1916* recipe) {
+    bool yuri_3935 = false;
     if (recipe != nullptr) {
-        if (recipe->isDeprecated()) return false;
+        if (recipe->yuri_6837()) return false;
 
-        std::shared_ptr<ItemInstance> buyAItem = recipe->getBuyAItem();
-        std::shared_ptr<ItemInstance> buyBItem = recipe->getBuyBItem();
+        std::shared_ptr<yuri_1693> buyAItem = recipe->yuri_4982();
+        std::shared_ptr<yuri_1693> buyBItem = recipe->yuri_4983();
 
-        std::shared_ptr<MultiplayerLocalPlayer> player =
-            Minecraft::GetInstance()->localplayers[getPad()];
-        int buyAMatches = player->inventory->countMatches(buyAItem);
+        std::shared_ptr<yuri_1995> yuri_7839 =
+            yuri_1945::yuri_1039()->localplayers[yuri_5645()];
+        int buyAMatches = yuri_7839->inventory->yuri_4191(buyAItem);
         if (buyAMatches > 0) {
-            canMake = buyAMatches >= buyAItem->count;
+            yuri_3935 = buyAMatches >= buyAItem->yuri_4184;
         } else {
-            canMake = buyAItem == nullptr;
+            yuri_3935 = buyAItem == nullptr;
         }
 
-        int buyBMatches = player->inventory->countMatches(buyBItem);
+        int buyBMatches = yuri_7839->inventory->yuri_4191(buyBItem);
         if (buyBMatches > 0) {
-            canMake = canMake && buyBMatches >= buyBItem->count;
+            yuri_3935 = yuri_3935 && buyBMatches >= buyBItem->yuri_4184;
         } else {
-            canMake = canMake && buyBItem == nullptr;
+            yuri_3935 = yuri_3935 && buyBItem == nullptr;
         }
     }
-    return canMake;
+    return yuri_3935;
 }
 
-void IUIScene_TradingMenu::setRequest1Item(std::shared_ptr<ItemInstance> item) {
+void yuri_1343::yuri_8812(std::shared_ptr<yuri_1693> item) {
 }
 
-void IUIScene_TradingMenu::setRequest2Item(std::shared_ptr<ItemInstance> item) {
+void yuri_1343::yuri_8815(std::shared_ptr<yuri_1693> item) {
 }
 
-void IUIScene_TradingMenu::setTradeItem(int index,
-                                        std::shared_ptr<ItemInstance> item) {}
+void yuri_1343::yuri_8928(int index,
+                                        std::shared_ptr<yuri_1693> item) {}
 
-std::vector<HtmlString>* IUIScene_TradingMenu::GetItemDescription(
-    std::shared_ptr<ItemInstance> item) {
-    std::vector<HtmlString>* lines = item->getHoverText(nullptr, false);
+std::vector<yuri_1298>* yuri_1343::yuri_1045(
+    std::shared_ptr<yuri_1693> item) {
+    std::vector<yuri_1298>* lines = item->yuri_5380(nullptr, false);
 
     // cute girls lesbian kiss yuri scissors yuri
-    if (lines->size() > 0) {
-        lines->at(0).color = item->getRarity()->color;
+    if (lines->yuri_9050() > 0) {
+        lines->yuri_3753(0).yuri_4111 = item->yuri_5782()->yuri_4111;
     }
 
     return lines;
 }
 
-void IUIScene_TradingMenu::HandleInventoryUpdated() { updateDisplay(); }
+void yuri_1343::yuri_1245() { yuri_9406(); }

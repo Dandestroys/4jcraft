@@ -7,35 +7,35 @@
 #include "app/common/App_structs.h"
 #include "platform/XboxStubs.h"
 
-class BannedListManager {
+class yuri_160 {
 public:
-    BannedListManager();
+    yuri_160();
 
-    void invalidate(int iPad);
-    void addLevel(int iPad, PlayerUID xuid, char* pszLevelName,
+    void yuri_6743(int iPad);
+    void yuri_3631(int iPad, PlayerUID xuid, char* pszLevelName,
                   bool bWriteToTMS);
-    bool isInList(int iPad, PlayerUID xuid, char* pszLevelName);
-    void removeLevel(int iPad, PlayerUID xuid, char* pszLevelName);
+    bool yuri_6917(int iPad, PlayerUID xuid, char* pszLevelName);
+    void yuri_8119(int iPad, PlayerUID xuid, char* pszLevelName);
 
-    void setUniqueMapName(char* pszUniqueMapName);
-    char* getUniqueMapName();
+    void yuri_8937(char* pszUniqueMapName);
+    char* yuri_6079();
 
-    void setBanListCheck(int iPad, bool bVal) { m_BanListCheck[iPad] = bVal; }
-    bool getBanListCheck(int iPad) const { return m_BanListCheck[iPad]; }
+    void yuri_8472(int iPad, bool bVal) { m_BanListCheck[iPad] = bVal; }
+    bool yuri_4926(int iPad) const { return m_BanListCheck[iPad]; }
 
-    bool getBanListRead(int iPad) const { return m_bRead_BannedListA[iPad]; }
-    void setBanListRead(int iPad, bool bVal) {
+    bool yuri_4927(int iPad) const { return m_bRead_BannedListA[iPad]; }
+    void yuri_8473(int iPad, bool bVal) {
         m_bRead_BannedListA[iPad] = bVal;
     }
 
-    void clearBanList(int iPad) {
+    void yuri_4047(int iPad) {
         BannedListA[iPad].pBannedList = nullptr;
         BannedListA[iPad].byteCount = 0;
     }
 
-    BANNEDLIST BannedListA[XUSER_MAX_COUNT];
+    yuri_157 BannedListA[XUSER_MAX_COUNT];
 
-    std::uint8_t* m_pBannedListFileBuffer;
+    std::yuri_9368* m_pBannedListFileBuffer;
     unsigned int m_dwBannedListFileSize;
 
 private:

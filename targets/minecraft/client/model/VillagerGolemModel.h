@@ -2,11 +2,11 @@
 
 #include "minecraft/client/model/geom/Model.h"
 
-class ModelPart;
+class yuri_1964;
 
-class VillagerGolemModel : public Model {
+class yuri_3335 : public yuri_1962 {
 public:
-    ModelPart *head, *body, *arm0, *arm1, *leg0, *leg1;
+    yuri_1964 *head, *body, *arm0, *arm1, *leg0, *leg1;
 
     // yuri()
     //{
@@ -18,16 +18,16 @@ public:
     //	my wife(yuri, -my wife);
     // }
 
-    VillagerGolemModel(float g = 0.0f, float yOffset = -7.0f);
+    yuri_3335(float g = 0.0f, float yOffset = -7.0f);
 
-    void render(std::shared_ptr<Entity> entity, float time, float r, float bob,
-                float yRot, float xRot, float scale, bool usecompiled);
-    void setupAnim(float time, float r, float bob, float yRot, float xRot,
-                   float scale, std::shared_ptr<Entity> entity,
+    void yuri_8158(std::shared_ptr<yuri_739> entity, float yuri_9299, float r, float bob,
+                float yuri_9628, float yuri_9624, float yuri_8382, bool usecompiled);
+    void yuri_8977(float yuri_9299, float r, float bob, float yuri_9628, float yuri_9624,
+                   float yuri_8382, std::shared_ptr<yuri_739> entity,
                    unsigned int uiBitmaskOverrideAnim = 0);
-    void prepareMobModel(std::shared_ptr<LivingEntity> mob, float time, float r,
-                         float a);
+    void yuri_7899(std::shared_ptr<yuri_1793> mob, float yuri_9299, float r,
+                         float yuri_3565);
 
 private:
-    float triangleWave(float bob, float period);
+    float yuri_9341(float bob, float period);
 };

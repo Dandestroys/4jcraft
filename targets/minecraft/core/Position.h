@@ -1,9 +1,9 @@
 #pragma once
 
-class Position {
+class yuri_2155 {
 public:
-    virtual ~Position() = default;
-    virtual double getX() = 0;
-    virtual double getY() = 0;
-    virtual double getZ() = 0;
+    virtual ~yuri_2155() = default;
+    virtual double yuri_6142() = 0;
+    virtual double yuri_6164() = 0;
+    virtual double yuri_6176() = 0;
 };

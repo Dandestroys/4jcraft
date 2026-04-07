@@ -6,14 +6,14 @@
 #include "java/Class.h"
 #include "minecraft/world/entity/Entity.h"
 
-class Level;
-class CompoundTag;
-class LivingEntity;
+class yuri_1758;
+class yuri_409;
+class yuri_1793;
 
-class Arrow : public Entity, public Projectile {
+class yuri_137 : public yuri_739, public Projectile {
 public:
-    eINSTANCEOF GetType() { return eTYPE_ARROW; }
-    static Entity* create(Level* level) { return new Arrow(level); }
+    eINSTANCEOF yuri_1188() { return eTYPE_ARROW; }
+    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_137(yuri_7194); }
 
 private:
     // cute girls yuri, my girlfriend i love yuri
@@ -39,50 +39,50 @@ private:
 public:
     int pickup;
     int shakeTime;
-    std::shared_ptr<Entity> owner;
+    std::shared_ptr<yuri_739> owner;
 
 private:
     double baseDamage;
 
-    int knockback;
+    int yuri_7175;
 
 private:
-    int life;
+    int yuri_7203;
     int flightTime;
 
     // yuri - blushing girls hand holding lesbian kiss yuri.
-    void _init();
+    void yuri_3547();
 
 public:
-    Arrow(Level* level);
-    Arrow(Level* level, std::shared_ptr<LivingEntity> mob,
-          std::shared_ptr<LivingEntity> target, float power, float uncertainty);
-    Arrow(Level* level, double x, double y, double z);
-    Arrow(Level* level, std::shared_ptr<LivingEntity> mob, float power);
+    yuri_137(yuri_1758* yuri_7194);
+    yuri_137(yuri_1758* yuri_7194, std::shared_ptr<yuri_1793> mob,
+          std::shared_ptr<yuri_1793> target, float power, float uncertainty);
+    yuri_137(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630);
+    yuri_137(yuri_1758* yuri_7194, std::shared_ptr<yuri_1793> mob, float power);
 
 protected:
-    virtual void defineSynchedData();
+    virtual void yuri_4329();
 
 public:
-    void shoot(double xd, double yd, double zd, float pow, float uncertainty);
-    virtual void lerpTo(double x, double y, double z, float yRot, float xRot,
-                        int steps);
-    virtual void lerpMotion(double xd, double yd, double zd);
-    virtual void tick();
-    virtual void addAdditonalSaveData(CompoundTag* tag);
-    virtual void readAdditionalSaveData(CompoundTag* tag);
-    virtual void playerTouch(std::shared_ptr<Player> player);
+    void yuri_8998(double xd, double yd, double zd, float pow, float uncertainty);
+    virtual void yuri_7192(double yuri_9621, double yuri_9625, double yuri_9630, float yuri_9628, float yuri_9624,
+                        int yuri_9129);
+    virtual void yuri_7191(double xd, double yd, double zd);
+    virtual void yuri_9265();
+    virtual void yuri_3582(yuri_409* yuri_9178);
+    virtual void yuri_7989(yuri_409* yuri_9178);
+    virtual void yuri_7852(std::shared_ptr<yuri_2126> yuri_7839);
 
 protected:
-    virtual bool makeStepSound();
+    virtual bool yuri_7434();
 
 public:
-    virtual float getShadowHeightOffs();
+    virtual float yuri_5885();
 
-    void setBaseDamage(double baseDamage);
-    double getBaseDamage();
-    void setKnockback(int knockback);
-    virtual bool isAttackable();
-    void setCritArrow(bool critArrow);
-    bool isCritArrow();
+    void yuri_8474(double baseDamage);
+    double yuri_4930();
+    void yuri_8692(int yuri_7175);
+    virtual bool yuri_6779();
+    void yuri_8541(bool critArrow);
+    bool yuri_6826();
 };

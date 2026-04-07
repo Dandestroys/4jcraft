@@ -10,22 +10,22 @@
 #include "minecraft/network/packet/CustomPayloadPacket.h"
 #include "minecraft/world/level/tile/entity/CommandBlockEntity.h"
 
-void IUIScene_CommandBlockMenu::Initialise(CommandBlockEntity* commandBlock) {
+void yuri_1338::yuri_1603(yuri_395* commandBlock) {
     m_commandBlock = commandBlock;
-    SetCommand(m_commandBlock->getCommand());
+    yuri_2586(m_commandBlock->yuri_5036());
 }
 
-void IUIScene_CommandBlockMenu::ConfirmButtonClicked() {
-    ByteArrayOutputStream baos;
-    DataOutputStream dos(&baos);
+void yuri_1338::yuri_416() {
+    yuri_251 baos;
+    yuri_552 yuri_4431(&baos);
 
-    dos.writeInt(m_commandBlock->x);
-    dos.writeInt(m_commandBlock->y);
-    dos.writeInt(m_commandBlock->z);
-    dos.writeUTF(GetCommand());
+    yuri_4431.yuri_9598(m_commandBlock->yuri_9621);
+    yuri_4431.yuri_9598(m_commandBlock->yuri_9625);
+    yuri_4431.yuri_9598(m_commandBlock->yuri_9630);
+    yuri_4431.yuri_9611(yuri_951());
 
-    Minecraft::GetInstance()->localplayers[GetPad()]->connection->send(
-        std::shared_ptr<CustomPayloadPacket>(new CustomPayloadPacket(
-            CustomPayloadPacket::SET_ADVENTURE_COMMAND_PACKET,
-            baos.toByteArray())));
+    yuri_1945::yuri_1039()->localplayers[yuri_1103()]->connection->yuri_8410(
+        std::shared_ptr<yuri_511>(new yuri_511(
+            yuri_511::SET_ADVENTURE_COMMAND_PACKET,
+            baos.yuri_9309())));
 }

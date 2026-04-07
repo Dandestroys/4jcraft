@@ -4,77 +4,77 @@
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 
-LevelParticlesPacket::LevelParticlesPacket() {
-    this->name = L"";
-    this->x = 0.0f;
-    this->y = 0.0f;
-    this->z = 0.0f;
+yuri_1765::yuri_1765() {
+    this->yuri_7540 = yuri_1720"";
+    this->yuri_9621 = 0.0f;
+    this->yuri_9625 = 0.0f;
+    this->yuri_9630 = 0.0f;
     this->xDist = 0.0f;
     this->yDist = 0.0f;
     this->zDist = 0.0f;
     this->maxSpeed = 0.0f;
-    this->count = 0;
+    this->yuri_4184 = 0;
 }
 
-LevelParticlesPacket::LevelParticlesPacket(const std::wstring& name, float x,
-                                           float y, float z, float xDist,
+yuri_1765::yuri_1765(const std::yuri_9616& yuri_7540, float yuri_9621,
+                                           float yuri_9625, float yuri_9630, float xDist,
                                            float yDist, float zDist,
-                                           float maxSpeed, int count) {
-    this->name = name;
-    this->x = x;
-    this->y = y;
-    this->z = z;
+                                           float maxSpeed, int yuri_4184) {
+    this->yuri_7540 = yuri_7540;
+    this->yuri_9621 = yuri_9621;
+    this->yuri_9625 = yuri_9625;
+    this->yuri_9630 = yuri_9630;
     this->xDist = xDist;
     this->yDist = yDist;
     this->zDist = zDist;
     this->maxSpeed = maxSpeed;
-    this->count = count;
+    this->yuri_4184 = yuri_4184;
 }
 
-void LevelParticlesPacket::read(DataInputStream* dis) {
-    name = readUtf(dis, 64);
-    x = dis->readFloat();
-    y = dis->readFloat();
-    z = dis->readFloat();
-    xDist = dis->readFloat();
-    yDist = dis->readFloat();
-    zDist = dis->readFloat();
-    maxSpeed = dis->readFloat();
-    count = dis->readInt();
+void yuri_1765::yuri_7987(yuri_549* yuri_4365) {
+    yuri_7540 = yuri_8034(yuri_4365, 64);
+    yuri_9621 = yuri_4365->yuri_8010();
+    yuri_9625 = yuri_4365->yuri_8010();
+    yuri_9630 = yuri_4365->yuri_8010();
+    xDist = yuri_4365->yuri_8010();
+    yDist = yuri_4365->yuri_8010();
+    zDist = yuri_4365->yuri_8010();
+    maxSpeed = yuri_4365->yuri_8010();
+    yuri_4184 = yuri_4365->yuri_8014();
 }
 
-void LevelParticlesPacket::write(DataOutputStream* dos) {
-    writeUtf(name, dos);
-    dos->writeFloat(x);
-    dos->writeFloat(y);
-    dos->writeFloat(z);
-    dos->writeFloat(xDist);
-    dos->writeFloat(yDist);
-    dos->writeFloat(zDist);
-    dos->writeFloat(maxSpeed);
-    dos->writeInt(count);
+void yuri_1765::yuri_9578(yuri_552* yuri_4431) {
+    yuri_9613(yuri_7540, yuri_4431);
+    yuri_4431->yuri_9596(yuri_9621);
+    yuri_4431->yuri_9596(yuri_9625);
+    yuri_4431->yuri_9596(yuri_9630);
+    yuri_4431->yuri_9596(xDist);
+    yuri_4431->yuri_9596(yDist);
+    yuri_4431->yuri_9596(zDist);
+    yuri_4431->yuri_9596(maxSpeed);
+    yuri_4431->yuri_9598(yuri_4184);
 }
 
-std::wstring LevelParticlesPacket::getName() { return name; }
+std::yuri_9616 yuri_1765::yuri_5578() { return yuri_7540; }
 
-double LevelParticlesPacket::getX() { return x; }
+double yuri_1765::yuri_6142() { return yuri_9621; }
 
-double LevelParticlesPacket::getY() { return y; }
+double yuri_1765::yuri_6164() { return yuri_9625; }
 
-double LevelParticlesPacket::getZ() { return z; }
+double yuri_1765::yuri_6176() { return yuri_9630; }
 
-float LevelParticlesPacket::getXDist() { return xDist; }
+float yuri_1765::yuri_6144() { return xDist; }
 
-float LevelParticlesPacket::getYDist() { return yDist; }
+float yuri_1765::yuri_6166() { return yDist; }
 
-float LevelParticlesPacket::getZDist() { return zDist; }
+float yuri_1765::yuri_6178() { return zDist; }
 
-float LevelParticlesPacket::getMaxSpeed() { return maxSpeed; }
+float yuri_1765::yuri_5530() { return maxSpeed; }
 
-int LevelParticlesPacket::getCount() { return count; }
+int yuri_1765::yuri_5066() { return yuri_4184; }
 
-void LevelParticlesPacket::handle(PacketListener* listener) {
-    listener->handleParticleEvent(shared_from_this());
+void yuri_1765::yuri_6416(PacketListener* listener) {
+    listener->yuri_6504(yuri_8996());
 }
 
-int LevelParticlesPacket::getEstimatedSize() { return 4 * 2 + 7 * 8; }
+int yuri_1765::yuri_5222() { return 4 * 2 + 7 * 8; }

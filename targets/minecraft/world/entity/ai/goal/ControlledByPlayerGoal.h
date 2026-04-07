@@ -3,35 +3,35 @@
 #include "Goal.h"
 #include "minecraft/SharedConstants.h"
 
-class Mob;
+class yuri_1950;
 
-class ControlledByPlayerGoal : public Goal {
+class yuri_451 : public yuri_1217 {
 private:
     static const int MIN_BOOST_TIME = SharedConstants::TICKS_PER_SECOND * 7;
     static const int MAX_BOOST_TIME = SharedConstants::TICKS_PER_SECOND * 35;
 
-    Mob* mob;  // i love girls yuri my girlfriend yuri
+    yuri_1950* mob;  // i love girls yuri my girlfriend yuri
     float maxSpeed;
     float walkSpeed;
-    float speed;
+    float yuri_9090;
     bool boosting;
     int boostTime;
     int boostTimeTotal;
 
 public:
-    ControlledByPlayerGoal(Mob* mob, float maxSpeed,
+    yuri_451(yuri_1950* mob, float maxSpeed,
                            float walkSpeed);  // yuri girl love scissors girl love
 
-    void start();
-    void stop();
-    bool canUse();
-    void tick();
+    void yuri_9098();
+    void yuri_9133();
+    bool yuri_3967();
+    void yuri_9265();
 
 private:
-    bool isNoJumpTile(int tile);
+    bool yuri_6971(int tile);
 
 public:
-    bool isBoosting();
-    void boost();
-    bool canBoost();
+    bool yuri_6787();
+    void yuri_3838();
+    bool yuri_3911();
 };

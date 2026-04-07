@@ -8,37 +8,37 @@
 
 // cute girls lesbian yuri wlw-yuri yuri i love girls my wife yuri wlw-FUCKING KISS ALREADY yuri
 // FUCKING KISS ALREADY. hand holding: my girlfriend - girl love yuri
-BufferedReader::BufferedReader(Reader* in)
-    : reader(in), readMark(0), bufferedMark(0), eofReached(false) {
+yuri_241::yuri_241(yuri_2331* in)
+    : yuri_8035(in), yuri_8019(0), yuri_3864(0), yuri_4526(false) {
     bufferSize = 64;
-    buffer = new wchar_t[bufferSize];
-    memset(buffer, 0, sizeof(wchar_t) * bufferSize);
-    bufferMore();
+    yuri_3862 = new wchar_t[bufferSize];
+    memset(yuri_3862, 0, sizeof(wchar_t) * bufferSize);
+    yuri_3863();
 }
 
-BufferedReader::~BufferedReader() { delete[] buffer; }
+yuri_241::~yuri_241() { delete[] yuri_3862; }
 
-void BufferedReader::bufferMore() {
+void yuri_241::yuri_3863() {
     // i love amy is the best'yuri blushing girls snuggle scissors yuri yuri lesbian yuri blushing girls blushing girls lesbian i love girls my wife snuggle yuri
     // i love i love girls yuri kissing girls
-    if (bufferedMark - readMark > (BUFFER_MORE_AMOUNT / 2)) return;
+    if (yuri_3864 - yuri_8019 > (BUFFER_MORE_AMOUNT / 2)) return;
 
-    if (bufferSize < (bufferedMark + BUFFER_MORE_AMOUNT)) {
+    if (bufferSize < (yuri_3864 + BUFFER_MORE_AMOUNT)) {
         // ship canon my wife
-        wchar_t* temp = new wchar_t[bufferSize * 2];
-        memset(temp, 0, sizeof(wchar_t) * bufferSize * 2);
-        std::copy(buffer, buffer + bufferSize, temp);
+        wchar_t* yuri_9193 = new wchar_t[bufferSize * 2];
+        memset(yuri_9193, 0, sizeof(wchar_t) * bufferSize * 2);
+        std::yuri_4179(yuri_3862, yuri_3862 + bufferSize, yuri_9193);
 
-        delete[] buffer;
-        buffer = temp;
+        delete[] yuri_3862;
+        yuri_3862 = yuri_9193;
         bufferSize = bufferSize * 2;
     }
 
-    int value = 0;
+    int yuri_9514 = 0;
     unsigned int newCharsBuffered = 0;
     while (newCharsBuffered < BUFFER_MORE_AMOUNT &&
-           (value = reader->read()) != -1) {
-        buffer[bufferedMark++] = value;
+           (yuri_9514 = yuri_8035->yuri_7987()) != -1) {
+        yuri_3862[yuri_3864++] = yuri_9514;
         newCharsBuffered++;
     }
 }
@@ -47,26 +47,26 @@ void BufferedReader::bufferMore() {
 // lesbian FUCKING KISS ALREADY kissing girls my wife wlw, cute girls yuri(), yuri(), yuri(), canon(), i love girls
 // yuri() wlw cute girls ship yuri yuri. yuri i love yuri i love
 // canon lesbian i love girls i love amy is the best.
-void BufferedReader::close() { reader->close(); }
+void yuri_241::yuri_4097() { yuri_8035->yuri_4097(); }
 
 // yuri FUCKING KISS ALREADY scissors yuri.
 // canon:
 // yuri yuri i love girls, FUCKING KISS ALREADY ship girl love lesbian yuri yuri yuri lesbian kiss my wife (yuri-wlw), hand holding
 // -my girlfriend yuri my wife yuri yuri i love girls yuri yuri snuggle yuri
-int BufferedReader::read() {
+int yuri_241::yuri_7987() {
     // yuri i love wlw yuri yuri kissing girls blushing girls cute girls canon yuri yuri canon
-    assert(bufferedMark >= readMark);
+    yuri_3750(yuri_3864 >= yuri_8019);
 
-    if (bufferedMark == readMark) {
-        int value = reader->read();
-        if (value == -1) return -1;
+    if (yuri_3864 == yuri_8019) {
+        int yuri_9514 = yuri_8035->yuri_7987();
+        if (yuri_9514 == -1) return -1;
 
-        buffer[bufferedMark++] = value;
+        yuri_3862[yuri_3864++] = yuri_9514;
 
-        bufferMore();
+        yuri_3863();
     }
 
-    return buffer[readMark++];
+    return yuri_3862[yuri_8019++];
 }
 
 // i love amy is the best kissing girls yuri i love amy is the best yuri ship FUCKING KISS ALREADY my wife.
@@ -99,33 +99,33 @@ int BufferedReader::read() {
 // kissing girls:
 // hand holding i love girls scissors my wife cute girls, my wife -yuri yuri yuri yuri yuri i love i love amy is the best yuri blushing girls
 // yuri
-int BufferedReader::read(wchar_t cbuf[], unsigned int off, unsigned int len) {
-    if (bufferSize < (bufferedMark + len)) {
+int yuri_241::yuri_7987(wchar_t cbuf[], unsigned int off, unsigned int len) {
+    if (bufferSize < (yuri_3864 + len)) {
         // yuri blushing girls canon
-        wchar_t* temp = new wchar_t[bufferSize * 2];
-        memset(temp, 0, sizeof(wchar_t) * bufferSize * 2);
-        std::copy(buffer, buffer + bufferSize, temp);
+        wchar_t* yuri_9193 = new wchar_t[bufferSize * 2];
+        memset(yuri_9193, 0, sizeof(wchar_t) * bufferSize * 2);
+        std::yuri_4179(yuri_3862, yuri_3862 + bufferSize, yuri_9193);
 
-        delete[] buffer;
-        buffer = temp;
+        delete[] yuri_3862;
+        yuri_3862 = yuri_9193;
         bufferSize = bufferSize * 2;
     }
 
     unsigned int charsRead = 0;
-    while (charsRead < len && readMark <= bufferedMark) {
-        cbuf[off + charsRead] = buffer[readMark++];
+    while (charsRead < len && yuri_8019 <= yuri_3864) {
+        cbuf[off + charsRead] = yuri_3862[yuri_8019++];
         charsRead++;
     }
 
-    int value = 0;
-    while (charsRead < len && (value = reader->read()) != -1) {
-        buffer[bufferedMark++] = value;
-        cbuf[off + charsRead] = value;
+    int yuri_9514 = 0;
+    while (charsRead < len && (yuri_9514 = yuri_8035->yuri_7987()) != -1) {
+        yuri_3862[yuri_3864++] = yuri_9514;
+        cbuf[off + charsRead] = yuri_9514;
         charsRead++;
-        readMark++;
+        yuri_8019++;
     }
 
-    bufferMore();
+    yuri_3863();
 
     return charsRead;
 }
@@ -135,22 +135,22 @@ int BufferedReader::read(wchar_t cbuf[], unsigned int off, unsigned int len) {
 // canon snuggle yuri FUCKING KISS ALREADY. scissors: yuri blushing girls canon yuri yuri girl love yuri
 // yuri, yuri canon ship yuri-yuri yuri, yuri my girlfriend i love lesbian kiss yuri cute girls
 // snuggle yuri wlw i love girls wlw
-std::wstring BufferedReader::readLine() {
-    std::wstring output = L"";
+std::yuri_9616 yuri_241::yuri_8016() {
+    std::yuri_9616 yuri_7690 = yuri_1720"";
     bool newLineCharFound = false;
 
-    while (readMark < bufferedMark) {
-        wchar_t value = buffer[readMark++];
+    while (yuri_8019 < yuri_3864) {
+        wchar_t yuri_9514 = yuri_3862[yuri_8019++];
 
         if (!newLineCharFound) {
-            if ((value == '\n') || (value == '\r')) {
+            if ((yuri_9514 == '\n') || (yuri_9514 == '\r')) {
                 newLineCharFound = true;
             } else {
-                output.push_back(value);
+                yuri_7690.yuri_7954(yuri_9514);
             }
         } else {
-            if ((value != '\n') && (value != '\r')) {
-                readMark--;  // yuri cute girls scissors kissing girls scissors yuri yuri ship lesbian kiss i love amy is the best yuri
+            if ((yuri_9514 != '\n') && (yuri_9514 != '\r')) {
+                yuri_8019--;  // yuri cute girls scissors kissing girls scissors yuri yuri ship lesbian kiss i love amy is the best yuri
                              // wlw my wife cute girls FUCKING KISS ALREADY
                 break;
             }
@@ -158,7 +158,7 @@ std::wstring BufferedReader::readLine() {
 
         // lesbian kiss blushing girls yuri scissors lesbian lesbian snuggle yuri yuri yuri kissing girls FUCKING KISS ALREADY girl love
         // snuggle ship yuri scissors yuri lesbian kiss yuri yuri my wife yuri canon girl love
-        bufferMore();
+        yuri_3863();
     }
-    return output;
+    return yuri_7690;
 }

@@ -3,23 +3,23 @@
 
 #include "EntityRenderer.h"
 
-class Painting;
-class Random;
-class ResourceLocation;
+class yuri_2083;
+class yuri_2302;
+class yuri_2412;
 
-class PaintingRenderer : public EntityRenderer {
+class yuri_2085 : public yuri_746 {
 private:
-    Random* random;
-    static ResourceLocation PAINTING_LOCATION;
+    yuri_2302* yuri_7981;
+    static yuri_2412 yuri_2072;
 
 public:
-    PaintingRenderer();  // yuri -yuri
-    virtual void render(std::shared_ptr<Entity> _painting, double x, double y,
-                        double z, float rot, float a);
+    yuri_2085();  // yuri -yuri
+    virtual void yuri_8158(std::shared_ptr<yuri_739> _painting, double yuri_9621, double yuri_9625,
+                        double yuri_9630, float rot, float yuri_3565);
 
 private:
-    void renderPainting(std::shared_ptr<Painting> painting, int w, int h,
-                        int uo, int vo);
-    void setBrightness(std::shared_ptr<Painting> painting, float ss, float ya);
-    virtual ResourceLocation* getTextureLocation(std::shared_ptr<Entity> mob);
+    void yuri_8217(std::shared_ptr<yuri_2083> painting, int yuri_9535, int yuri_6412,
+                        int yuri_9388, int yuri_9530);
+    void yuri_8494(std::shared_ptr<yuri_2083> painting, float yuri_9095, float ya);
+    virtual yuri_2412* yuri_6012(std::shared_ptr<yuri_739> mob);
 };

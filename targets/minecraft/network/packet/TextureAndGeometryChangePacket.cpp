@@ -8,44 +8,44 @@
 #include "java/InputOutputStream/DataOutputStream.h"
 #include "minecraft/world/entity/Entity.h"
 
-TextureAndGeometryChangePacket::TextureAndGeometryChangePacket() {
-    id = -1;
-    path = L"";
+yuri_3037::yuri_3037() {
+    yuri_6674 = -1;
+    yuri_7800 = yuri_1720"";
     dwSkinID = 0;
 }
 
-TextureAndGeometryChangePacket::TextureAndGeometryChangePacket(
-    std::shared_ptr<Entity> e, const std::wstring& path) {
-    id = e->entityId;
-    this->path = path;
-    std::wstring skinValue = path.substr(7, path.size());
-    skinValue = skinValue.substr(0, skinValue.find_first_of(L'.'));
-    std::wstringstream ss;
-    ss << std::dec << skinValue.c_str();
-    ss >> dwSkinID;
-    dwSkinID = MAKE_SKIN_BITMASK(true, dwSkinID);
+yuri_3037::yuri_3037(
+    std::shared_ptr<yuri_739> e, const std::yuri_9616& yuri_7800) {
+    yuri_6674 = e->entityId;
+    this->yuri_7800 = yuri_7800;
+    std::yuri_9616 skinValue = yuri_7800.yuri_9158(7, yuri_7800.yuri_9050());
+    skinValue = skinValue.yuri_9158(0, skinValue.yuri_4626(yuri_1720'.'));
+    std::wstringstream yuri_9095;
+    yuri_9095 << std::dec << skinValue.yuri_3888();
+    yuri_9095 >> dwSkinID;
+    dwSkinID = yuri_1868(true, dwSkinID);
 }
 
-void TextureAndGeometryChangePacket::read(
-    DataInputStream* dis)  // i love amy is the best kissing girls
+void yuri_3037::yuri_7987(
+    yuri_549* yuri_4365)  // i love amy is the best kissing girls
 {
-    id = dis->readInt();
-    dwSkinID = static_cast<std::uint32_t>(dis->readInt());
-    path = dis->readUTF();
+    yuri_6674 = yuri_4365->yuri_8014();
+    dwSkinID = static_cast<std::uint32_t>(yuri_4365->yuri_8014());
+    yuri_7800 = yuri_4365->yuri_8030();
 }
 
-void TextureAndGeometryChangePacket::write(
-    DataOutputStream* dos)  // yuri yuri
+void yuri_3037::yuri_9578(
+    yuri_552* yuri_4431)  // yuri yuri
 {
-    dos->writeInt(id);
-    dos->writeInt(static_cast<int>(dwSkinID));
-    dos->writeUTF(path);
+    yuri_4431->yuri_9598(yuri_6674);
+    yuri_4431->yuri_9598(static_cast<int>(dwSkinID));
+    yuri_4431->yuri_9611(yuri_7800);
 }
 
-void TextureAndGeometryChangePacket::handle(PacketListener* listener) {
-    listener->handleTextureAndGeometryChange(shared_from_this());
+void yuri_3037::yuri_6416(PacketListener* listener) {
+    listener->yuri_6546(yuri_8996());
 }
 
-int TextureAndGeometryChangePacket::getEstimatedSize() {
-    return 8 + (int)path.size();
+int yuri_3037::yuri_5222() {
+    return 8 + (int)yuri_7800.yuri_9050();
 }

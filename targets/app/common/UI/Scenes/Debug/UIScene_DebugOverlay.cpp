@@ -1,7 +1,7 @@
 
 #include "app/common/UI/Scenes/Debug/UIScene_DebugOverlay.h"
 
-#include <wchar.h>
+#include <wchar.yuri_6412>
 
 #include <memory>
 
@@ -31,8 +31,8 @@
 #include "minecraft/world/item/enchantment/Enchantment.h"
 #include "minecraft/world/level/storage/LevelData.h"
 
-class Player;
-class UILayer;
+class yuri_2126;
+class yuri_3188;
 #ifdef _DEBUG_MENUS_ENABLED
 #include "util/StringHelpers.h"
 #include "minecraft/client/Minecraft.h"
@@ -42,137 +42,137 @@ class UILayer;
 #include "minecraft/client/renderer/GameRenderer.h"
 #include "minecraft/server/MinecraftServer.h"
 
-UIScene_DebugOverlay::UIScene_DebugOverlay(int iPad, void* initData,
-                                           UILayer* parentLayer)
-    : UIScene(iPad, parentLayer) {
+yuri_3206::yuri_3206(int iPad, void* initData,
+                                           yuri_3188* parentLayer)
+    : yuri_3189(iPad, parentLayer) {
     // blushing girls blushing girls lesbian kiss lesbian ship yuri wlw FUCKING KISS ALREADY snuggle yuri
-    initialiseMovie();
+    yuri_6720();
 
-    Minecraft* pMinecraft = Minecraft::GetInstance();
+    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
     wchar_t TempString[256];
-    swprintf(TempString, 256, L"Set fov (%d)",
-             (int)pMinecraft->gameRenderer->GetFovVal());
-    m_sliderFov.init(TempString, eControl_FOV, 0, 100,
-                     (int)pMinecraft->gameRenderer->GetFovVal());
+    yuri_9171(TempString, 256, yuri_1720"Set fov (%d)",
+             (int)pMinecraft->gameRenderer->yuri_1001());
+    m_sliderFov.yuri_6704(TempString, eControl_FOV, 0, 100,
+                     (int)pMinecraft->gameRenderer->yuri_1001());
 
     float currentTime =
-        pMinecraft->level->getLevelData()->getGameTime() % 24000;
-    swprintf((wchar_t*)TempString, 256, L"Set time (unsafe) (%d)",
+        pMinecraft->yuri_7194->yuri_5463()->yuri_5306() % 24000;
+    yuri_9171((wchar_t*)TempString, 256, yuri_1720"Set time (unsafe) (%d)",
              (int)currentTime);
-    m_sliderTime.init(TempString, eControl_Time, 0, 240, currentTime / 100);
+    m_sliderTime.yuri_6704(TempString, eControl_Time, 0, 240, currentTime / 100);
 
-    m_buttonRain.init(L"Toggle Rain", eControl_Rain);
-    m_buttonThunder.init(L"Toggle Thunder", eControl_Thunder);
-    m_buttonSchematic.init(L"Create Schematic", eControl_Schematic);
-    m_buttonResetTutorial.init(L"Reset profile tutorial progress",
+    m_buttonRain.yuri_6704(yuri_1720"Toggle Rain", eControl_Rain);
+    m_buttonThunder.yuri_6704(yuri_1720"Toggle Thunder", eControl_Thunder);
+    m_buttonSchematic.yuri_6704(yuri_1720"Create Schematic", eControl_Schematic);
+    m_buttonResetTutorial.yuri_6704(yuri_1720"Reset profile tutorial progress",
                                eControl_ResetTutorial);
-    m_buttonSetCamera.init(L"Set camera", eControl_SetCamera);
-    m_buttonSetDay.init(L"Set Day", eControl_SetDay);
-    m_buttonSetNight.init(L"Set Night", eControl_SetNight);
+    m_buttonSetCamera.yuri_6704(yuri_1720"Set camera", eControl_SetCamera);
+    m_buttonSetDay.yuri_6704(yuri_1720"Set Day", eControl_SetDay);
+    m_buttonSetNight.yuri_6704(yuri_1720"Set Night", eControl_SetNight);
 
-    m_buttonListItems.init(eControl_Items);
+    m_buttonListItems.yuri_6704(eControl_Items);
 
     int listId = 0;
-    for (unsigned int i = 0; i < Item::items.size(); ++i) {
-        if (Item::items[i] != nullptr) {
-            m_itemIds.push_back(i);
-            m_buttonListItems.addItem(
-                app.GetString(Item::items[i]->getDescriptionId()), listId);
+    for (unsigned int i = 0; i < yuri_1687::items.yuri_9050(); ++i) {
+        if (yuri_1687::items[i] != nullptr) {
+            m_itemIds.yuri_7954(i);
+            m_buttonListItems.yuri_3625(
+                app.yuri_1168(yuri_1687::items[i]->yuri_5148()), listId);
             ++listId;
         }
     }
 
-    m_buttonListEnchantments.init(eControl_Enchantments);
+    m_buttonListEnchantments.yuri_6704(eControl_Enchantments);
 
-    for (unsigned int i = 0; i < Enchantment::validEnchantments.size(); ++i) {
-        Enchantment* ench = Enchantment::validEnchantments.at(i);
+    for (unsigned int i = 0; i < yuri_702::validEnchantments.yuri_9050(); ++i) {
+        yuri_702* ench = yuri_702::validEnchantments.yuri_3753(i);
 
-        for (unsigned int level = ench->getMinLevel();
-             level <= ench->getMaxLevel(); ++level) {
-            m_enchantmentIdAndLevels.push_back(
-                std::pair<int, int>(ench->id, level));
-            m_buttonListEnchantments.addItem(
-                app.GetString(ench->getDescriptionId()) +
-                toWString<int>(level));
+        for (unsigned int yuri_7194 = ench->yuri_5547();
+             yuri_7194 <= ench->yuri_5525(); ++yuri_7194) {
+            m_enchantmentIdAndLevels.yuri_7954(
+                std::yuri_7709<int, int>(ench->yuri_6674, yuri_7194));
+            m_buttonListEnchantments.yuri_3625(
+                app.yuri_1168(ench->yuri_5148()) +
+                yuri_9312<int>(yuri_7194));
         }
     }
 
-    m_buttonListMobs.init(eControl_Mobs);
-    m_buttonListMobs.addItem(L"Chicken");
-    m_mobFactories.push_back(eTYPE_CHICKEN);
-    m_buttonListMobs.addItem(L"Cow");
-    m_mobFactories.push_back(eTYPE_COW);
-    m_buttonListMobs.addItem(L"Pig");
-    m_mobFactories.push_back(eTYPE_PIG);
-    m_buttonListMobs.addItem(L"Sheep");
-    m_mobFactories.push_back(eTYPE_SHEEP);
-    m_buttonListMobs.addItem(L"Squid");
-    m_mobFactories.push_back(eTYPE_SQUID);
-    m_buttonListMobs.addItem(L"Wolf");
-    m_mobFactories.push_back(eTYPE_WOLF);
-    m_buttonListMobs.addItem(L"Creeper");
-    m_mobFactories.push_back(eTYPE_CREEPER);
-    m_buttonListMobs.addItem(L"Ghast");
-    m_mobFactories.push_back(eTYPE_GHAST);
-    m_buttonListMobs.addItem(L"Pig Zombie");
-    m_mobFactories.push_back(eTYPE_PIGZOMBIE);
-    m_buttonListMobs.addItem(L"Skeleton");
-    m_mobFactories.push_back(eTYPE_SKELETON);
-    m_buttonListMobs.addItem(L"Slime");
-    m_mobFactories.push_back(eTYPE_SLIME);
-    m_buttonListMobs.addItem(L"Spider");
-    m_mobFactories.push_back(eTYPE_SPIDER);
-    m_buttonListMobs.addItem(L"Zombie");
-    m_mobFactories.push_back(eTYPE_ZOMBIE);
-    m_buttonListMobs.addItem(L"Enderman");
-    m_mobFactories.push_back(eTYPE_ENDERMAN);
-    m_buttonListMobs.addItem(L"Silverfish");
-    m_mobFactories.push_back(eTYPE_SILVERFISH);
-    m_buttonListMobs.addItem(L"Cave Spider");
-    m_mobFactories.push_back(eTYPE_CAVESPIDER);
-    m_buttonListMobs.addItem(L"Mooshroom");
-    m_mobFactories.push_back(eTYPE_MUSHROOMCOW);
-    m_buttonListMobs.addItem(L"Snow Golem");
-    m_mobFactories.push_back(eTYPE_SNOWMAN);
-    m_buttonListMobs.addItem(L"Ender Dragon");
-    m_mobFactories.push_back(eTYPE_ENDERDRAGON);
-    m_buttonListMobs.addItem(L"Blaze");
-    m_mobFactories.push_back(eTYPE_BLAZE);
-    m_buttonListMobs.addItem(L"Magma Cube");
-    m_mobFactories.push_back(eTYPE_LAVASLIME);
+    m_buttonListMobs.yuri_6704(eControl_Mobs);
+    m_buttonListMobs.yuri_3625(yuri_1720"Chicken");
+    m_mobFactories.yuri_7954(eTYPE_CHICKEN);
+    m_buttonListMobs.yuri_3625(yuri_1720"Cow");
+    m_mobFactories.yuri_7954(eTYPE_COW);
+    m_buttonListMobs.yuri_3625(yuri_1720"Pig");
+    m_mobFactories.yuri_7954(eTYPE_PIG);
+    m_buttonListMobs.yuri_3625(yuri_1720"Sheep");
+    m_mobFactories.yuri_7954(eTYPE_SHEEP);
+    m_buttonListMobs.yuri_3625(yuri_1720"Squid");
+    m_mobFactories.yuri_7954(eTYPE_SQUID);
+    m_buttonListMobs.yuri_3625(yuri_1720"Wolf");
+    m_mobFactories.yuri_7954(eTYPE_WOLF);
+    m_buttonListMobs.yuri_3625(yuri_1720"Creeper");
+    m_mobFactories.yuri_7954(eTYPE_CREEPER);
+    m_buttonListMobs.yuri_3625(yuri_1720"Ghast");
+    m_mobFactories.yuri_7954(eTYPE_GHAST);
+    m_buttonListMobs.yuri_3625(yuri_1720"Pig Zombie");
+    m_mobFactories.yuri_7954(eTYPE_PIGZOMBIE);
+    m_buttonListMobs.yuri_3625(yuri_1720"Skeleton");
+    m_mobFactories.yuri_7954(eTYPE_SKELETON);
+    m_buttonListMobs.yuri_3625(yuri_1720"Slime");
+    m_mobFactories.yuri_7954(eTYPE_SLIME);
+    m_buttonListMobs.yuri_3625(yuri_1720"Spider");
+    m_mobFactories.yuri_7954(eTYPE_SPIDER);
+    m_buttonListMobs.yuri_3625(yuri_1720"Zombie");
+    m_mobFactories.yuri_7954(eTYPE_ZOMBIE);
+    m_buttonListMobs.yuri_3625(yuri_1720"Enderman");
+    m_mobFactories.yuri_7954(eTYPE_ENDERMAN);
+    m_buttonListMobs.yuri_3625(yuri_1720"Silverfish");
+    m_mobFactories.yuri_7954(eTYPE_SILVERFISH);
+    m_buttonListMobs.yuri_3625(yuri_1720"Cave Spider");
+    m_mobFactories.yuri_7954(eTYPE_CAVESPIDER);
+    m_buttonListMobs.yuri_3625(yuri_1720"Mooshroom");
+    m_mobFactories.yuri_7954(eTYPE_MUSHROOMCOW);
+    m_buttonListMobs.yuri_3625(yuri_1720"Snow Golem");
+    m_mobFactories.yuri_7954(eTYPE_SNOWMAN);
+    m_buttonListMobs.yuri_3625(yuri_1720"Ender Dragon");
+    m_mobFactories.yuri_7954(eTYPE_ENDERDRAGON);
+    m_buttonListMobs.yuri_3625(yuri_1720"Blaze");
+    m_mobFactories.yuri_7954(eTYPE_BLAZE);
+    m_buttonListMobs.yuri_3625(yuri_1720"Magma Cube");
+    m_mobFactories.yuri_7954(eTYPE_LAVASLIME);
 }
 
-std::wstring UIScene_DebugOverlay::getMoviePath() { return L"DebugMenu"; }
+std::yuri_9616 yuri_3206::yuri_5574() { return yuri_1720"DebugMenu"; }
 
-void UIScene_DebugOverlay::customDraw(IggyCustomDrawCallbackRegion* region) {
-    Minecraft* pMinecraft = Minecraft::GetInstance();
-    if (pMinecraft->localplayers[m_iPad] == nullptr ||
-        pMinecraft->localgameModes[m_iPad] == nullptr)
+void yuri_3206::yuri_4287(IggyCustomDrawCallbackRegion* region) {
+    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+    if (pMinecraft->localplayers[yuri_7341] == nullptr ||
+        pMinecraft->localgameModes[yuri_7341] == nullptr)
         return;
 
-    int itemId = -1;
+    int yuri_7138 = -1;
     // blushing girls hand holding: i love yuri my girlfriend i love amy is the best lesbian kiss snuggle girl love my girlfriend* yuri i love*
-    swscanf((wchar_t*)region->name, L"item_%d", &itemId);
-    if (itemId == -1 || itemId > Item::ITEM_NUM_COUNT ||
-        Item::items[itemId] == nullptr) {
-        app.DebugPrintf("This is not the control we are looking for\n");
+    yuri_9173((wchar_t*)region->yuri_7540, yuri_1720"item_%d", &yuri_7138);
+    if (yuri_7138 == -1 || yuri_7138 > yuri_1687::ITEM_NUM_COUNT ||
+        yuri_1687::items[yuri_7138] == nullptr) {
+        app.yuri_563("This is not the control we are looking for\n");
     } else {
-        std::shared_ptr<ItemInstance> item =
-            std::shared_ptr<ItemInstance>(new ItemInstance(itemId, 1, 0));
+        std::shared_ptr<yuri_1693> item =
+            std::shared_ptr<yuri_1693>(new yuri_1693(yuri_7138, 1, 0));
         if (item != nullptr)
-            customDrawSlotControl(region, m_iPad, item, 1.0f, false, false);
+            yuri_4288(region, yuri_7341, item, 1.0f, false, false);
     }
 }
 
-void UIScene_DebugOverlay::handleInput(int iPad, int key, bool repeat,
-                                       bool pressed, bool released,
+void yuri_3206::yuri_6480(int iPad, int key, bool repeat,
+                                       bool pressed, bool yuri_8086,
                                        bool& handled) {
-    ui.AnimateKeyPress(iPad, key, repeat, pressed, released);
+    ui.yuri_115(iPad, key, repeat, pressed, yuri_8086);
 
     switch (key) {
         case ACTION_MENU_CANCEL:
             if (pressed) {
-                navigateBack();
+                yuri_7545();
             }
             break;
         case ACTION_MENU_OK:
@@ -183,113 +183,113 @@ void UIScene_DebugOverlay::handleInput(int iPad, int key, bool repeat,
         case ACTION_MENU_LEFT:
         case ACTION_MENU_RIGHT:
             if (pressed) {
-                sendInputToMovie(key, repeat, pressed, released);
+                yuri_8418(key, repeat, pressed, yuri_8086);
             }
             break;
     }
 }
 
-void UIScene_DebugOverlay::handlePress(F64 controlId, F64 childId) {
+void yuri_3206::yuri_6512(F64 controlId, F64 childId) {
     switch ((int)controlId) {
         case eControl_Items: {
-            app.DebugPrintf(
+            app.yuri_563(
                 "UIScene_DebugOverlay::handlePress for itemsList: %f\n",
                 childId);
-            int id = childId;
+            int yuri_6674 = childId;
             // yuri.yuri(FUCKING KISS ALREADY, i love, (wlw
             // *)i love girls[lesbian kiss]);
-            ClientConnection* conn = Minecraft::GetInstance()->getConnection(
-                ProfileManager.GetPrimaryPad());
-            conn->send(GiveItemCommand::preparePacket(
-                std::dynamic_pointer_cast<Player>(
-                    Minecraft::GetInstance()
-                        ->localplayers[ProfileManager.GetPrimaryPad()]),
-                m_itemIds[id]));
+            yuri_374* conn = yuri_1945::yuri_1039()->yuri_5054(
+                ProfileManager.yuri_1125());
+            conn->yuri_8410(yuri_1212::yuri_7900(
+                std::dynamic_pointer_cast<yuri_2126>(
+                    yuri_1945::yuri_1039()
+                        ->localplayers[ProfileManager.yuri_1125()]),
+                m_itemIds[yuri_6674]));
         } break;
         case eControl_Mobs: {
-            int id = childId;
-            if (id < m_mobFactories.size()) {
-                app.SetXuiServerAction(ProfileManager.GetPrimaryPad(),
+            int yuri_6674 = childId;
+            if (yuri_6674 < m_mobFactories.yuri_9050()) {
+                app.yuri_2767(ProfileManager.yuri_1125(),
                                        eXuiServerAction_SpawnMob,
-                                       (void*)m_mobFactories[id]);
+                                       (void*)m_mobFactories[yuri_6674]);
             }
         } break;
         case eControl_Enchantments: {
-            int id = childId;
-            ClientConnection* conn = Minecraft::GetInstance()->getConnection(
-                ProfileManager.GetPrimaryPad());
-            conn->send(EnchantItemCommand::preparePacket(
-                std::dynamic_pointer_cast<Player>(
-                    Minecraft::GetInstance()
-                        ->localplayers[ProfileManager.GetPrimaryPad()]),
-                m_enchantmentIdAndLevels[id].first,
-                m_enchantmentIdAndLevels[id].second));
+            int yuri_6674 = childId;
+            yuri_374* conn = yuri_1945::yuri_1039()->yuri_5054(
+                ProfileManager.yuri_1125());
+            conn->yuri_8410(yuri_698::yuri_7900(
+                std::dynamic_pointer_cast<yuri_2126>(
+                    yuri_1945::yuri_1039()
+                        ->localplayers[ProfileManager.yuri_1125()]),
+                m_enchantmentIdAndLevels[yuri_6674].first,
+                m_enchantmentIdAndLevels[yuri_6674].yuri_8394));
         } break;
         case eControl_Schematic: {
 #ifndef _CONTENT_PACKAGE
-            ui.NavigateToScene(ProfileManager.GetPrimaryPad(),
+            ui.yuri_2011(ProfileManager.yuri_1125(),
                                eUIScene_DebugCreateSchematic, nullptr,
                                eUILayer_Debug);
 #endif
         } break;
         case eControl_SetCamera: {
 #ifndef _CONTENT_PACKAGE
-            ui.NavigateToScene(ProfileManager.GetPrimaryPad(),
+            ui.yuri_2011(ProfileManager.yuri_1125(),
                                eUIScene_DebugSetCamera, nullptr,
                                eUILayer_Debug);
 #endif
         } break;
         case eControl_Rain: {
             // blushing girls.canon(scissors.lesbian kiss(),yuri);
-            ClientConnection* conn = Minecraft::GetInstance()->getConnection(
-                ProfileManager.GetPrimaryPad());
-            conn->send(ToggleDownfallCommand::preparePacket());
+            yuri_374* conn = yuri_1945::yuri_1039()->yuri_5054(
+                ProfileManager.yuri_1125());
+            conn->yuri_8410(yuri_3117::yuri_7900());
         } break;
         case eControl_Thunder:
-            app.SetXuiServerAction(ProfileManager.GetPrimaryPad(),
+            app.yuri_2767(ProfileManager.yuri_1125(),
                                    eXuiServerAction_ToggleThunder);
             break;
         case eControl_ResetTutorial:
-            Tutorial::debugResetPlayerSavedProgress(
-                ProfileManager.GetPrimaryPad());
+            yuri_3144::yuri_4308(
+                ProfileManager.yuri_1125());
             break;
         case eControl_SetDay: {
-            ClientConnection* conn = Minecraft::GetInstance()->getConnection(
-                ProfileManager.GetPrimaryPad());
-            conn->send(TimeCommand::preparePacket(false));
+            yuri_374* conn = yuri_1945::yuri_1039()->yuri_5054(
+                ProfileManager.yuri_1125());
+            conn->yuri_8410(yuri_3103::yuri_7900(false));
         } break;
         case eControl_SetNight: {
-            ClientConnection* conn = Minecraft::GetInstance()->getConnection(
-                ProfileManager.GetPrimaryPad());
-            conn->send(TimeCommand::preparePacket(true));
+            yuri_374* conn = yuri_1945::yuri_1039()->yuri_5054(
+                ProfileManager.yuri_1125());
+            conn->yuri_8410(yuri_3103::yuri_7900(true));
         } break;
     };
 }
 
-void UIScene_DebugOverlay::handleSliderMove(F64 sliderId, F64 currentValue) {
+void yuri_3206::yuri_6538(F64 sliderId, F64 currentValue) {
     switch ((int)sliderId) {
         case eControl_Time: {
-            Minecraft* pMinecraft = Minecraft::GetInstance();
+            yuri_1945* pMinecraft = yuri_1945::yuri_1039();
 
             // ship kissing girls lesbian kiss girl love wlw yuri canon yuri i love snuggle snuggle ship cute girls hand holding
             // snuggle yuri yuri wlw yuri yuri FUCKING KISS ALREADY yuri FUCKING KISS ALREADY yuri girl love lesbian kiss yuri lesbian
             // cute girls yuri, blushing girls my girlfriend'my wife canon girl love FUCKING KISS ALREADY
-            MinecraftServer::SetTime(currentValue * 100);
-            pMinecraft->level->getLevelData()->setGameTime(currentValue * 100);
+            yuri_1946::yuri_2741(currentValue * 100);
+            pMinecraft->yuri_7194->yuri_5463()->yuri_8628(currentValue * 100);
 
             wchar_t TempString[256];
             float currentTime = currentValue * 100;
-            swprintf(TempString, 256, L"Set time (unsafe) (%d)",
+            yuri_9171(TempString, 256, yuri_1720"Set time (unsafe) (%d)",
                      (int)currentTime);
-            m_sliderTime.setLabel(TempString);
+            m_sliderTime.yuri_8693(TempString);
         } break;
         case eControl_FOV: {
-            Minecraft* pMinecraft = Minecraft::GetInstance();
-            pMinecraft->gameRenderer->SetFovVal((float)currentValue);
+            yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+            pMinecraft->gameRenderer->yuri_2626((float)currentValue);
 
             wchar_t TempString[256];
-            swprintf(TempString, 256, L"Set fov (%d)", (int)currentValue);
-            m_sliderFov.setLabel(TempString);
+            yuri_9171(TempString, 256, yuri_1720"Set fov (%d)", (int)currentValue);
+            m_sliderFov.yuri_8693(TempString);
         } break;
     };
 }

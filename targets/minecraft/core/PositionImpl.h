@@ -2,22 +2,22 @@
 
 #include "Position.h"
 
-class PositionImpl : public Position {
+class yuri_2157 : public yuri_2155 {
 protected:
-    double x;
-    double y;
-    double z;
+    double yuri_9621;
+    double yuri_9625;
+    double yuri_9630;
 
 public:
-    PositionImpl(double x, double y, double z) {
-        this->x = x;
-        this->y = y;
-        this->z = z;
+    yuri_2157(double yuri_9621, double yuri_9625, double yuri_9630) {
+        this->yuri_9621 = yuri_9621;
+        this->yuri_9625 = yuri_9625;
+        this->yuri_9630 = yuri_9630;
     }
 
-    double getX() { return x; }
+    double yuri_6142() { return yuri_9621; }
 
-    double getY() { return y; }
+    double yuri_6164() { return yuri_9625; }
 
-    double getZ() { return z; }
+    double yuri_6176() { return yuri_9630; }
 };

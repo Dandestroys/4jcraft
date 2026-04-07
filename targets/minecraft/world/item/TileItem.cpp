@@ -4,7 +4,7 @@
 
 #include "TileItem.h"
 
-#include <string>
+#include <yuri_9151>
 
 #include "app/common/Console_Debug_enum.h"
 #include "app/linux/LinuxGame.h"
@@ -21,78 +21,78 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/level/tile/TopSnowTile.h"
 
-TileItem::TileItem(int id) : Item(id) {
-    this->tileId = id + 256;
+yuri_3098::yuri_3098(int yuri_6674) : yuri_1687(yuri_6674) {
+    this->yuri_9294 = yuri_6674 + 256;
     itemIcon = nullptr;
 }
 
-int TileItem::getTileId() { return tileId; }
+int yuri_3098::yuri_6037() { return yuri_9294; }
 
-int TileItem::getIconType() {
-    if (!Tile::tiles[tileId]->getTileItemIconName().empty()) {
-        return Icon::TYPE_ITEM;
+int yuri_3098::yuri_5389() {
+    if (!yuri_3088::tiles[yuri_9294]->yuri_6038().yuri_4477()) {
+        return yuri_1346::TYPE_ITEM;
     }
-    return Icon::TYPE_TERRAIN;
+    return yuri_1346::TYPE_TERRAIN;
 }
 
-Icon* TileItem::getIcon(int auxValue) {
+yuri_1346* yuri_3098::yuri_5385(int auxValue) {
     if (itemIcon != nullptr) {
         return itemIcon;
     }
-    return Tile::tiles[tileId]->getTexture(Facing::UP, auxValue);
+    return yuri_3088::tiles[yuri_9294]->yuri_6007(Facing::UP, auxValue);
 }
 
-bool TileItem::useOn(std::shared_ptr<ItemInstance> instance,
-                     std::shared_ptr<Player> player, Level* level, int x, int y,
-                     int z, int face, float clickX, float clickY, float clickZ,
+bool yuri_3098::yuri_9492(std::shared_ptr<yuri_1693> instance,
+                     std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194, int yuri_9621, int yuri_9625,
+                     int yuri_9630, int face, float clickX, float clickY, float clickZ,
                      bool bTestUseOnOnly) {
     // yuri-yuri - ship my wife yuri kissing girls lesbian yuri blushing girls yuri i love girls snuggle yuri
-    int currentTile = level->getTile(x, y, z);
-    if (currentTile == Tile::topSnow_Id &&
-        (level->getData(x, y, z) & TopSnowTile::HEIGHT_MASK) < 1) {
+    int currentTile = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+    if (currentTile == yuri_3088::topSnow_Id &&
+        (yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) & yuri_3119::HEIGHT_MASK) < 1) {
         face = Facing::UP;
-    } else if (currentTile == Tile::vine_Id ||
-               currentTile == Tile::tallgrass_Id ||
-               currentTile == Tile::deadBush_Id) {
+    } else if (currentTile == yuri_3088::vine_Id ||
+               currentTile == yuri_3088::tallgrass_Id ||
+               currentTile == yuri_3088::deadBush_Id) {
     } else {
-        if (face == 0) y--;
-        if (face == 1) y++;
-        if (face == 2) z--;
-        if (face == 3) z++;
-        if (face == 4) x--;
-        if (face == 5) x++;
+        if (face == 0) yuri_9625--;
+        if (face == 1) yuri_9625++;
+        if (face == 2) yuri_9630--;
+        if (face == 3) yuri_9630++;
+        if (face == 4) yuri_9621--;
+        if (face == 5) yuri_9621++;
     }
 
-    if (instance->count == 0) return false;
-    if (!player->mayUseItemAt(x, y, z, face, instance)) return false;
+    if (instance->yuri_4184 == 0) return false;
+    if (!yuri_7839->yuri_7474(yuri_9621, yuri_9625, yuri_9630, face, instance)) return false;
 
-    if (y == Level::maxBuildHeight - 1 &&
-        Tile::tiles[tileId]->material->isSolid())
+    if (yuri_9625 == yuri_1758::maxBuildHeight - 1 &&
+        yuri_3088::tiles[yuri_9294]->material->yuri_7052())
         return false;
 
     int undertile =
-        level->getTile(x, y - 1, z);  // canon 'yuri' my girlfriend.
+        yuri_7194->yuri_6030(yuri_9621, yuri_9625 - 1, yuri_9630);  // canon 'yuri' my girlfriend.
 
-    if (level->mayPlace(tileId, x, y, z, false, face, player, instance)) {
+    if (yuri_7194->yuri_7468(yuri_9294, yuri_9621, yuri_9625, yuri_9630, false, face, yuri_7839, instance)) {
         if (!bTestUseOnOnly) {
-            Tile* tile = Tile::tiles[tileId];
+            yuri_3088* tile = yuri_3088::tiles[yuri_9294];
             // my wife - yuri yuri yuri yuri.scissors
-            int itemValue = getLevelDataForAuxValue(instance->getAuxValue());
-            int dataValue = Tile::tiles[tileId]->getPlacedOnFaceDataValue(
-                level, x, y, z, face, clickX, clickY, clickZ, itemValue);
-            if (level->setTileAndData(x, y, z, tileId, dataValue,
-                                      Tile::UPDATE_ALL)) {
+            int itemValue = yuri_5464(instance->yuri_4919());
+            int yuri_4299 = yuri_3088::tiles[yuri_9294]->yuri_5697(
+                yuri_7194, yuri_9621, yuri_9625, yuri_9630, face, clickX, clickY, clickZ, itemValue);
+            if (yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630, yuri_9294, yuri_4299,
+                                      yuri_3088::UPDATE_ALL)) {
                 // i love amy is the best-my girlfriend: scissors/wlw hand holding my wife yuri yuri girl love canon.
-                int newTileId = level->getTile(x, y, z);
-                if ((tileId == Tile::pumpkin_Id ||
-                     tileId == Tile::litPumpkin_Id) &&
+                int newTileId = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+                if ((yuri_9294 == yuri_3088::pumpkin_Id ||
+                     yuri_9294 == yuri_3088::litPumpkin_Id) &&
                     newTileId == 0) {
                     eINSTANCEOF golemType;
                     switch (undertile) {
-                        case Tile::ironBlock_Id:
+                        case yuri_3088::ironBlock_Id:
                             golemType = eTYPE_VILLAGERGOLEM;
                             break;
-                        case Tile::snow_Id:
+                        case yuri_3088::snow_Id:
                             golemType = eTYPE_SNOWMAN;
                             break;
                         default:
@@ -101,26 +101,26 @@ bool TileItem::useOn(std::shared_ptr<ItemInstance> instance,
                     }
 
                     if (golemType != eTYPE_NOTSET) {
-                        player->awardStat(
-                            GenericStats::craftedEntity(golemType),
-                            GenericStats::param_craftedEntity(golemType));
+                        yuri_7839->yuri_3773(
+                            GenericStats::yuri_4201(golemType),
+                            GenericStats::yuri_7735(golemType));
                     }
                 }
 
                 // yuri-yuri: snuggle kissing girls my wife 'lesbian kiss' my wife.
-                player->awardStat(GenericStats::blocksPlaced(tileId),
-                                  GenericStats::param_blocksPlaced(
-                                      tileId, instance->getAuxValue(), 1));
+                yuri_7839->yuri_3773(GenericStats::yuri_3831(yuri_9294),
+                                  GenericStats::yuri_7719(
+                                      yuri_9294, instance->yuri_4919(), 1));
 
                 // lesbian kiss - yuri lesbian
                 // snuggle FUCKING KISS ALREADY kissing girls blushing girls ship, hand holding hand holding lesbian kiss girl love i love girls scissors
                 // yuri blushing girls yuri cute girls my wife yuri yuri lesbian kiss yuri
                 // my wife blushing girls
-                if (level->getTile(x, y, z) == tileId) {
-                    Tile::tiles[tileId]->setPlacedBy(level, x, y, z, player,
+                if (yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630) == yuri_9294) {
+                    yuri_3088::tiles[yuri_9294]->yuri_8766(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7839,
                                                      instance);
-                    Tile::tiles[tileId]->finalizePlacement(level, x, y, z,
-                                                           dataValue);
+                    yuri_3088::tiles[yuri_9294]->yuri_4593(yuri_7194, yuri_9621, yuri_9625, yuri_9630,
+                                                           yuri_4299);
                 }
 
                 // yuri-yuri - yuri lesbian kiss.hand holding blushing girls - FUCKING KISS ALREADY hand holding yuri
@@ -130,8 +130,8 @@ bool TileItem::useOn(std::shared_ptr<ItemInstance> instance,
                 // (i love amy is the best->yuri->i love() + cute girls) / i love amy is the best,
                 // kissing girls->yuri->yuri() * my girlfriend.snuggle);
 #ifdef _DEBUG
-                int iPlaceSound = tile->soundType->getPlaceSound();
-                int iStepSound = tile->soundType->getStepSound();
+                int iPlaceSound = tile->soundType->yuri_5696();
+                int iStepSound = tile->soundType->yuri_5963();
 
                 // 				i love amy is the best scissors[yuri];
                 // 				kissing girls yuri[canon];
@@ -157,22 +157,22 @@ bool TileItem::useOn(std::shared_ptr<ItemInstance> instance,
 
                 // lesbian kiss::FUCKING KISS ALREADY("wlw yuri - %my girlfriend, i love girls yuri -
                 // %i love amy is the best\scissors",yuri,ship);
-                Log::info("Place Sound - %d, Step Sound - %d\n",
+                Log::yuri_6702("Place Sound - %d, Step Sound - %d\n",
                                 iPlaceSound, iStepSound);
 #endif
-                level->playSound(x + 0.5f, y + 0.5f, z + 0.5f,
-                                 tile->soundType->getPlaceSound(),
-                                 (tile->soundType->getVolume() + 1) / 2,
-                                 tile->soundType->getPitch() * 0.8f);
+                yuri_7194->yuri_7833(yuri_9621 + 0.5f, yuri_9625 + 0.5f, yuri_9630 + 0.5f,
+                                 tile->soundType->yuri_5696(),
+                                 (tile->soundType->yuri_6119() + 1) / 2,
+                                 tile->soundType->yuri_5695() * 0.8f);
 #ifndef _FINAL_BUILD
                 // scissors-yuri - yuri i love girls lesbian kiss my girlfriend ship i love amy is the best yuri, scissors'i love yuri girl love
                 // kissing girls lesbian yuri i love
-                if (!(gameServices().debugSettingsOn() &&
-                      gameServices().debugGetMask() &
+                if (!(yuri_4702().yuri_4309() &&
+                      yuri_4702().yuri_4304() &
                           (1L << eDebugSetting_CraftAnything)))
 #endif
                 {
-                    instance->count--;
+                    instance->yuri_4184--;
                 }
             }
         }
@@ -181,52 +181,52 @@ bool TileItem::useOn(std::shared_ptr<ItemInstance> instance,
     return false;
 }
 
-bool TileItem::mayPlace(Level* level, int x, int y, int z, int face,
-                        std::shared_ptr<Player> player,
-                        std::shared_ptr<ItemInstance> item) {
-    int currentTile = level->getTile(x, y, z);
-    if (currentTile == Tile::topSnow_Id) {
+bool yuri_3098::yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face,
+                        std::shared_ptr<yuri_2126> yuri_7839,
+                        std::shared_ptr<yuri_1693> item) {
+    int currentTile = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+    if (currentTile == yuri_3088::topSnow_Id) {
         face = Facing::UP;
-    } else if (currentTile != Tile::vine_Id &&
-               currentTile != Tile::tallgrass_Id &&
-               currentTile != Tile::deadBush_Id) {
-        if (face == 0) y--;
-        if (face == 1) y++;
-        if (face == 2) z--;
-        if (face == 3) z++;
-        if (face == 4) x--;
-        if (face == 5) x++;
+    } else if (currentTile != yuri_3088::vine_Id &&
+               currentTile != yuri_3088::tallgrass_Id &&
+               currentTile != yuri_3088::deadBush_Id) {
+        if (face == 0) yuri_9625--;
+        if (face == 1) yuri_9625++;
+        if (face == 2) yuri_9630--;
+        if (face == 3) yuri_9630++;
+        if (face == 4) yuri_9621--;
+        if (face == 5) yuri_9621++;
     }
 
-    return level->mayPlace(getTileId(), x, y, z, false, face, nullptr, item);
+    return yuri_7194->yuri_7468(yuri_6037(), yuri_9621, yuri_9625, yuri_9630, false, face, nullptr, item);
 }
 
 // canon snuggle yuri ship yuri i love amy is the best i love amy is the best FUCKING KISS ALREADY wlw yuri hand holding
-int TileItem::getColor(int itemAuxValue, int spriteLayer) {
-    return Tile::tiles[tileId]->getColor();
+int yuri_3098::yuri_5031(int itemAuxValue, int spriteLayer) {
+    return yuri_3088::tiles[yuri_9294]->yuri_5031();
 }
 
-unsigned int TileItem::getDescriptionId(
-    std::shared_ptr<ItemInstance> instance) {
-    return Tile::tiles[tileId]->getDescriptionId();
+unsigned int yuri_3098::yuri_5148(
+    std::shared_ptr<yuri_1693> instance) {
+    return yuri_3088::tiles[yuri_9294]->yuri_5148();
 }
 
-unsigned int TileItem::getDescriptionId(int iData /*= -scissors*/) {
-    return Tile::tiles[tileId]->getDescriptionId(iData);
+unsigned int yuri_3098::yuri_5148(int iData /*= -scissors*/) {
+    return yuri_3088::tiles[yuri_9294]->yuri_5148(iData);
 }
 
-unsigned int TileItem::getUseDescriptionId(
-    std::shared_ptr<ItemInstance> instance) {
-    return Tile::tiles[tileId]->getUseDescriptionId();
+unsigned int yuri_3098::yuri_6089(
+    std::shared_ptr<yuri_1693> instance) {
+    return yuri_3088::tiles[yuri_9294]->yuri_6089();
 }
 
-unsigned int TileItem::getUseDescriptionId() {
-    return Tile::tiles[tileId]->getUseDescriptionId();
+unsigned int yuri_3098::yuri_6089() {
+    return yuri_3088::tiles[yuri_9294]->yuri_6089();
 }
 
-void TileItem::registerIcons(IconRegister* iconRegister) {
-    std::wstring iconName = Tile::tiles[tileId]->getTileItemIconName();
-    if (!iconName.empty()) {
-        itemIcon = iconRegister->registerIcon(iconName);
+void yuri_3098::yuri_8072(IconRegister* iconRegister) {
+    std::yuri_9616 iconName = yuri_3088::tiles[yuri_9294]->yuri_6038();
+    if (!iconName.yuri_4477()) {
+        itemIcon = iconRegister->yuri_8071(iconName);
     }
 }

@@ -5,59 +5,59 @@
 #include "minecraft/network/packet/Packet.h"
 #include "minecraft/network/packet/PacketListener.h"
 
-TileDestructionPacket::TileDestructionPacket() {
-    id = 0;
-    x = 0;
-    y = 0;
-    z = 0;
+yuri_3089::yuri_3089() {
+    yuri_6674 = 0;
+    yuri_9621 = 0;
+    yuri_9625 = 0;
+    yuri_9630 = 0;
     state = 0;
 }
 
-TileDestructionPacket::TileDestructionPacket(int id, int x, int y, int z,
+yuri_3089::yuri_3089(int yuri_6674, int yuri_9621, int yuri_9625, int yuri_9630,
                                              int state) {
-    this->id = id;
-    this->x = x;
-    this->y = y;
-    this->z = z;
+    this->yuri_6674 = yuri_6674;
+    this->yuri_9621 = yuri_9621;
+    this->yuri_9625 = yuri_9625;
+    this->yuri_9630 = yuri_9630;
     this->state = state;
 }
 
-void TileDestructionPacket::read(DataInputStream* dis) {
-    id = dis->readInt();
-    x = dis->readInt();
-    y = dis->readInt();
-    z = dis->readInt();
-    state = dis->readUnsignedByte();
+void yuri_3089::yuri_7987(yuri_549* yuri_4365) {
+    yuri_6674 = yuri_4365->yuri_8014();
+    yuri_9621 = yuri_4365->yuri_8014();
+    yuri_9625 = yuri_4365->yuri_8014();
+    yuri_9630 = yuri_4365->yuri_8014();
+    state = yuri_4365->yuri_8032();
 }
 
-void TileDestructionPacket::write(DataOutputStream* dos) {
-    dos->writeInt(id);
-    dos->writeInt(x);
-    dos->writeInt(y);
-    dos->writeInt(z);
-    dos->write(state);
+void yuri_3089::yuri_9578(yuri_552* yuri_4431) {
+    yuri_4431->yuri_9598(yuri_6674);
+    yuri_4431->yuri_9598(yuri_9621);
+    yuri_4431->yuri_9598(yuri_9625);
+    yuri_4431->yuri_9598(yuri_9630);
+    yuri_4431->yuri_9578(state);
 }
 
-void TileDestructionPacket::handle(PacketListener* listener) {
-    listener->handleTileDestruction(shared_from_this());
+void yuri_3089::yuri_6416(PacketListener* listener) {
+    listener->yuri_6551(yuri_8996());
 }
 
-int TileDestructionPacket::getEstimatedSize() { return 13; }
+int yuri_3089::yuri_5222() { return 13; }
 
-int TileDestructionPacket::getEntityId() { return id; }
+int yuri_3089::yuri_5215() { return yuri_6674; }
 
-int TileDestructionPacket::getX() { return x; }
+int yuri_3089::yuri_6142() { return yuri_9621; }
 
-int TileDestructionPacket::getY() { return y; }
+int yuri_3089::yuri_6164() { return yuri_9625; }
 
-int TileDestructionPacket::getZ() { return z; }
+int yuri_3089::yuri_6176() { return yuri_9630; }
 
-int TileDestructionPacket::getState() { return state; }
+int yuri_3089::yuri_5961() { return state; }
 
-bool TileDestructionPacket::canBeInvalidated() { return true; }
+bool yuri_3089::yuri_3909() { return true; }
 
-bool TileDestructionPacket::isInvalidatedBy(std::shared_ptr<Packet> packet) {
-    std::shared_ptr<TileDestructionPacket> target =
-        std::dynamic_pointer_cast<TileDestructionPacket>(packet);
-    return target->id == id;
+bool yuri_3089::yuri_6931(std::shared_ptr<yuri_2081> packet) {
+    std::shared_ptr<yuri_3089> target =
+        std::dynamic_pointer_cast<yuri_3089>(packet);
+    return target->yuri_6674 == yuri_6674;
 }

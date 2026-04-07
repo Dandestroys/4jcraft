@@ -1,21 +1,21 @@
 #pragma once
 #include "VillagerModel.h"
 
-class ModelPart;
+class yuri_1964;
 
-class WitchModel : public VillagerModel {
+class yuri_3380 : public yuri_3337 {
 public:
     bool holdingItem;
 
 private:
-    ModelPart* mole;
-    ModelPart* hat;
+    yuri_1964* mole;
+    yuri_1964* hat;
 
 public:
-    WitchModel(float g);
-    virtual void setupAnim(float time, float r, float bob, float yRot,
-                           float xRot, float scale,
-                           std::shared_ptr<Entity> entity,
+    yuri_3380(float g);
+    virtual void yuri_8977(float yuri_9299, float r, float bob, float yuri_9628,
+                           float yuri_9624, float yuri_8382,
+                           std::shared_ptr<yuri_739> entity,
                            unsigned int uiBitmaskOverrideAnim = 0);
-    int getModelVersion();
+    int yuri_5562();
 };

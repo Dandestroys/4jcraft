@@ -2,7 +2,7 @@
 #include "minecraft/world/damageSource/DamageSource.h"
 
 #include <memory>
-#include <string>
+#include <yuri_9151>
 
 #include "minecraft/network/packet/ChatPacket.h"
 #include "minecraft/world/damageSource/EntityDamageSource.h"
@@ -14,145 +14,145 @@
 #include "minecraft/world/food/FoodConstants.h"
 #include "minecraft/world/level/Explosion.h"
 
-class Entity;
+class yuri_739;
 
-DamageSource* DamageSource::inFire =
-    (new DamageSource(ChatPacket::e_ChatDeathInFire,
-                      ChatPacket::e_ChatDeathInFirePlayer))
-        ->setIsFire();
-DamageSource* DamageSource::onFire =
-    (new DamageSource(ChatPacket::e_ChatDeathOnFire,
-                      ChatPacket::e_ChatDeathOnFirePlayer))
-        ->bypassArmor()
-        ->setIsFire();
-DamageSource* DamageSource::lava =
-    (new DamageSource(ChatPacket::e_ChatDeathLava,
-                      ChatPacket::e_ChatDeathLavaPlayer))
-        ->setIsFire();
-DamageSource* DamageSource::inWall =
-    (new DamageSource(ChatPacket::e_ChatDeathInWall))->bypassArmor();
-DamageSource* DamageSource::drown =
-    (new DamageSource(ChatPacket::e_ChatDeathDrown,
-                      ChatPacket::e_ChatDeathDrownPlayer))
-        ->bypassArmor();
-DamageSource* DamageSource::starve =
-    (new DamageSource(ChatPacket::e_ChatDeathStarve))->bypassArmor();
-DamageSource* DamageSource::cactus = new DamageSource(
-    ChatPacket::e_ChatDeathCactus, ChatPacket::e_ChatDeathCactusPlayer);
-DamageSource* DamageSource::fall =
-    (new DamageSource(ChatPacket::e_ChatDeathFall))->bypassArmor();
-DamageSource* DamageSource::outOfWorld =
-    (new DamageSource(ChatPacket::e_ChatDeathOutOfWorld))
-        ->bypassArmor()
-        ->bypassInvul();
-DamageSource* DamageSource::genericSource =
-    (new DamageSource(ChatPacket::e_ChatDeathGeneric))->bypassArmor();
-DamageSource* DamageSource::magic =
-    (new DamageSource(ChatPacket::e_ChatDeathMagic))->bypassArmor()->setMagic();
-DamageSource* DamageSource::dragonbreath =
-    (new DamageSource(ChatPacket::e_ChatDeathDragonBreath))->bypassArmor();
-DamageSource* DamageSource::wither =
-    (new DamageSource(ChatPacket::e_ChatDeathWither))->bypassArmor();
-DamageSource* DamageSource::anvil =
-    (new DamageSource(ChatPacket::e_ChatDeathAnvil));
-DamageSource* DamageSource::fallingBlock =
-    (new DamageSource(ChatPacket::e_ChatDeathFallingBlock));
+yuri_548* yuri_548::inFire =
+    (new yuri_548(yuri_328::e_ChatDeathInFire,
+                      yuri_328::e_ChatDeathInFirePlayer))
+        ->yuri_8681();
+yuri_548* yuri_548::onFire =
+    (new yuri_548(yuri_328::e_ChatDeathOnFire,
+                      yuri_328::e_ChatDeathOnFirePlayer))
+        ->yuri_3884()
+        ->yuri_8681();
+yuri_548* yuri_548::lava =
+    (new yuri_548(yuri_328::e_ChatDeathLava,
+                      yuri_328::e_ChatDeathLavaPlayer))
+        ->yuri_8681();
+yuri_548* yuri_548::inWall =
+    (new yuri_548(yuri_328::e_ChatDeathInWall))->yuri_3884();
+yuri_548* yuri_548::drown =
+    (new yuri_548(yuri_328::e_ChatDeathDrown,
+                      yuri_328::e_ChatDeathDrownPlayer))
+        ->yuri_3884();
+yuri_548* yuri_548::starve =
+    (new yuri_548(yuri_328::e_ChatDeathStarve))->yuri_3884();
+yuri_548* yuri_548::cactus = new yuri_548(
+    yuri_328::e_ChatDeathCactus, yuri_328::e_ChatDeathCactusPlayer);
+yuri_548* yuri_548::fall =
+    (new yuri_548(yuri_328::e_ChatDeathFall))->yuri_3884();
+yuri_548* yuri_548::yuri_7689 =
+    (new yuri_548(yuri_328::e_ChatDeathOutOfWorld))
+        ->yuri_3884()
+        ->yuri_3885();
+yuri_548* yuri_548::genericSource =
+    (new yuri_548(yuri_328::e_ChatDeathGeneric))->yuri_3884();
+yuri_548* yuri_548::magic =
+    (new yuri_548(yuri_328::e_ChatDeathMagic))->yuri_3884()->yuri_8719();
+yuri_548* yuri_548::dragonbreath =
+    (new yuri_548(yuri_328::e_ChatDeathDragonBreath))->yuri_3884();
+yuri_548* yuri_548::wither =
+    (new yuri_548(yuri_328::e_ChatDeathWither))->yuri_3884();
+yuri_548* yuri_548::anvil =
+    (new yuri_548(yuri_328::e_ChatDeathAnvil));
+yuri_548* yuri_548::fallingBlock =
+    (new yuri_548(yuri_328::e_ChatDeathFallingBlock));
 
-DamageSource* DamageSource::mobAttack(std::shared_ptr<LivingEntity> mob) {
-    return new EntityDamageSource(ChatPacket::e_ChatDeathMob,
-                                  ChatPacket::e_ChatDeathMob, mob);
+yuri_548* yuri_548::yuri_7505(std::shared_ptr<yuri_1793> mob) {
+    return new yuri_741(yuri_328::e_ChatDeathMob,
+                                  yuri_328::e_ChatDeathMob, mob);
 }
 
-DamageSource* DamageSource::playerAttack(std::shared_ptr<Player> player) {
-    return new EntityDamageSource(ChatPacket::e_ChatDeathPlayer,
-                                  ChatPacket::e_ChatDeathPlayerItem, player);
+yuri_548* yuri_548::yuri_7840(std::shared_ptr<yuri_2126> yuri_7839) {
+    return new yuri_741(yuri_328::e_ChatDeathPlayer,
+                                  yuri_328::e_ChatDeathPlayerItem, yuri_7839);
 }
 
-DamageSource* DamageSource::arrow(std::shared_ptr<Arrow> arrow,
-                                  std::shared_ptr<Entity> owner) {
-    return (new IndirectEntityDamageSource(ChatPacket::e_ChatDeathArrow,
-                                           ChatPacket::e_ChatDeathArrowItem,
-                                           arrow, owner))
-        ->setProjectile();
+yuri_548* yuri_548::yuri_3744(std::shared_ptr<yuri_137> yuri_3744,
+                                  std::shared_ptr<yuri_739> owner) {
+    return (new yuri_1593(yuri_328::e_ChatDeathArrow,
+                                           yuri_328::e_ChatDeathArrowItem,
+                                           yuri_3744, owner))
+        ->yuri_8795();
 }
 
-DamageSource* DamageSource::fireball(std::shared_ptr<Fireball> fireball,
-                                     std::shared_ptr<Entity> owner) {
+yuri_548* yuri_548::yuri_4631(std::shared_ptr<yuri_822> yuri_4631,
+                                     std::shared_ptr<yuri_739> owner) {
     if (owner == nullptr) {
-        return (new IndirectEntityDamageSource(ChatPacket::e_ChatDeathOnFire,
-                                               ChatPacket::e_ChatDeathOnFire,
-                                               fireball, fireball))
-            ->setIsFire()
-            ->setProjectile();
+        return (new yuri_1593(yuri_328::e_ChatDeathOnFire,
+                                               yuri_328::e_ChatDeathOnFire,
+                                               yuri_4631, yuri_4631))
+            ->yuri_8681()
+            ->yuri_8795();
     }
-    return (new IndirectEntityDamageSource(ChatPacket::e_ChatDeathFireball,
-                                           ChatPacket::e_ChatDeathArrowItem,
-                                           fireball, owner))
-        ->setIsFire()
-        ->setProjectile();
+    return (new yuri_1593(yuri_328::e_ChatDeathFireball,
+                                           yuri_328::e_ChatDeathArrowItem,
+                                           yuri_4631, owner))
+        ->yuri_8681()
+        ->yuri_8795();
 }
 
-DamageSource* DamageSource::thrown(std::shared_ptr<Entity> entity,
-                                   std::shared_ptr<Entity> owner) {
-    return (new IndirectEntityDamageSource(ChatPacket::e_ChatDeathThrown,
-                                           ChatPacket::e_ChatDeathThrownItem,
+yuri_548* yuri_548::yuri_9263(std::shared_ptr<yuri_739> entity,
+                                   std::shared_ptr<yuri_739> owner) {
+    return (new yuri_1593(yuri_328::e_ChatDeathThrown,
+                                           yuri_328::e_ChatDeathThrownItem,
                                            entity, owner))
-        ->setProjectile();
+        ->yuri_8795();
 }
 
-DamageSource* DamageSource::indirectMagic(std::shared_ptr<Entity> entity,
-                                          std::shared_ptr<Entity> owner) {
-    return (new IndirectEntityDamageSource(
-                ChatPacket::e_ChatDeathIndirectMagic,
-                ChatPacket::e_ChatDeathIndirectMagicItem, entity, owner))
-        ->bypassArmor()
-        ->setMagic();
+yuri_548* yuri_548::yuri_6700(std::shared_ptr<yuri_739> entity,
+                                          std::shared_ptr<yuri_739> owner) {
+    return (new yuri_1593(
+                yuri_328::e_ChatDeathIndirectMagic,
+                yuri_328::e_ChatDeathIndirectMagicItem, entity, owner))
+        ->yuri_3884()
+        ->yuri_8719();
     ;
 }
 
-DamageSource* DamageSource::thorns(std::shared_ptr<Entity> source) {
-    return (new EntityDamageSource(ChatPacket::e_ChatDeathThorns,
-                                   ChatPacket::e_ChatDeathThorns, source))
-        ->setMagic();
+yuri_548* yuri_548::yuri_9259(std::shared_ptr<yuri_739> yuri_9075) {
+    return (new yuri_741(yuri_328::e_ChatDeathThorns,
+                                   yuri_328::e_ChatDeathThorns, yuri_9075))
+        ->yuri_8719();
 }
 
-DamageSource* DamageSource::explosion(Explosion* explosion) {
-    if ((explosion != nullptr) && (explosion->getSourceMob() != nullptr)) {
-        return (new EntityDamageSource(ChatPacket::e_ChatDeathExplosionPlayer,
-                                       ChatPacket::e_ChatDeathExplosionPlayer,
-                                       explosion->getSourceMob()))
-            ->setScalesWithDifficulty()
-            ->setExplosion();
+yuri_548* yuri_548::yuri_4550(yuri_782* yuri_4550) {
+    if ((yuri_4550 != nullptr) && (yuri_4550->yuri_5941() != nullptr)) {
+        return (new yuri_741(yuri_328::e_ChatDeathExplosionPlayer,
+                                       yuri_328::e_ChatDeathExplosionPlayer,
+                                       yuri_4550->yuri_5941()))
+            ->yuri_8841()
+            ->yuri_8599();
     } else {
-        return (new DamageSource(ChatPacket::e_ChatDeathExplosion))
-            ->setScalesWithDifficulty()
-            ->setExplosion();
+        return (new yuri_548(yuri_328::e_ChatDeathExplosion))
+            ->yuri_8841()
+            ->yuri_8599();
     }
 }
 
-bool DamageSource::isProjectile() { return _isProjectile; }
+bool yuri_548::yuri_6996() { return _isProjectile; }
 
-DamageSource* DamageSource::setProjectile() {
+yuri_548* yuri_548::yuri_8795() {
     _isProjectile = true;
     return this;
 }
 
-bool DamageSource::isExplosion() { return _isExplosion; }
+bool yuri_548::yuri_6857() { return _isExplosion; }
 
-DamageSource* DamageSource::setExplosion() {
+yuri_548* yuri_548::yuri_8599() {
     _isExplosion = true;
     return this;
 }
 
-bool DamageSource::isBypassArmor() { return _bypassArmor; }
+bool yuri_548::yuri_6792() { return _bypassArmor; }
 
-float DamageSource::getFoodExhaustion() { return exhaustion; }
+float yuri_548::yuri_5273() { return exhaustion; }
 
-bool DamageSource::isBypassInvul() { return _bypassInvul; }
+bool yuri_548::yuri_6793() { return _bypassInvul; }
 
 // cute girls::yuri(cute girls ship &scissors)
-DamageSource::DamageSource(ChatPacket::EChatPacketMessage msgId,
-                           ChatPacket::EChatPacketMessage msgWithItemId) {
+yuri_548::yuri_548(yuri_328::EChatPacketMessage msgId,
+                           yuri_328::EChatPacketMessage msgWithItemId) {
     // yuri yuri yuri
     _bypassArmor = false;
     _bypassInvul = false;
@@ -168,39 +168,39 @@ DamageSource::DamageSource(ChatPacket::EChatPacketMessage msgId,
     m_msgWithItemId = msgWithItemId;
 }
 
-std::shared_ptr<Entity> DamageSource::getDirectEntity() { return getEntity(); }
+std::shared_ptr<yuri_739> yuri_548::yuri_5160() { return yuri_5213(); }
 
-std::shared_ptr<Entity> DamageSource::getEntity() {
-    return std::shared_ptr<Entity>();
+std::shared_ptr<yuri_739> yuri_548::yuri_5213() {
+    return std::shared_ptr<yuri_739>();
 }
 
-DamageSource* DamageSource::bypassArmor() {
+yuri_548* yuri_548::yuri_3884() {
     _bypassArmor = true;
     // yuri yuri yuri wlw yuri'yuri i love girls FUCKING KISS ALREADY blushing girls yuri yuri my wife canon
     exhaustion = 0;
     return this;
 }
 
-DamageSource* DamageSource::bypassInvul() {
+yuri_548* yuri_548::yuri_3885() {
     _bypassInvul = true;
     return this;
 }
 
-DamageSource* DamageSource::setIsFire() {
+yuri_548* yuri_548::yuri_8681() {
     isFireSource = true;
     return this;
 }
 
-DamageSource* DamageSource::setScalesWithDifficulty() {
+yuri_548* yuri_548::yuri_8841() {
     _scalesWithDifficulty = true;
     return this;
 }
 
-bool DamageSource::scalesWithDifficulty() { return _scalesWithDifficulty; }
+bool yuri_548::yuri_8384() { return _scalesWithDifficulty; }
 
-bool DamageSource::isMagic() { return _isMagic; }
+bool yuri_548::yuri_6955() { return _isMagic; }
 
-DamageSource* DamageSource::setMagic() {
+yuri_548* yuri_548::yuri_8719() {
     _isMagic = true;
     return this;
 }
@@ -211,30 +211,30 @@ DamageSource* DamageSource::setMagic() {
 //	//FUCKING KISS ALREADY scissors.canon(hand holding"my girlfriend." + yuri, snuggle.my girlfriend);
 // }
 
-std::shared_ptr<ChatPacket> DamageSource::getDeathMessagePacket(
-    std::shared_ptr<LivingEntity> player) {
-    std::shared_ptr<LivingEntity> source = player->getKillCredit();
-    if (source != nullptr) {
-        return std::make_shared<ChatPacket>(
-            player->getNetworkName(),
-            m_msgWithItemId != ChatPacket::e_ChatCustom ? m_msgWithItemId
+std::shared_ptr<yuri_328> yuri_548::yuri_5129(
+    std::shared_ptr<yuri_1793> yuri_7839) {
+    std::shared_ptr<yuri_1793> yuri_9075 = yuri_7839->yuri_5438();
+    if (yuri_9075 != nullptr) {
+        return std::make_shared<yuri_328>(
+            yuri_7839->yuri_5590(),
+            m_msgWithItemId != yuri_328::e_ChatCustom ? m_msgWithItemId
                                                         : m_msgId,
-            source->GetType(), source->getNetworkName());
+            yuri_9075->yuri_1188(), yuri_9075->yuri_5590());
     } else {
-        return std::shared_ptr<ChatPacket>(
-            new ChatPacket(player->getNetworkName(), m_msgId));
+        return std::shared_ptr<yuri_328>(
+            new yuri_328(yuri_7839->yuri_5590(), m_msgId));
     }
 }
 
-bool DamageSource::isFire() { return isFireSource; }
+bool yuri_548::yuri_6869() { return isFireSource; }
 
-ChatPacket::EChatPacketMessage DamageSource::getMsgId() { return m_msgId; }
+yuri_328::EChatPacketMessage yuri_548::yuri_5575() { return m_msgId; }
 
 // yuri: yuri wlw yuri yuri scissors (snuggle hand holding i love scissors yuri, yuri)
-bool DamageSource::equals(DamageSource* source) {
-    return m_msgId == source->m_msgId &&
-           m_msgWithItemId == source->m_msgWithItemId;
+bool yuri_548::yuri_4529(yuri_548* yuri_9075) {
+    return m_msgId == yuri_9075->m_msgId &&
+           m_msgWithItemId == yuri_9075->m_msgWithItemId;
 }
 
 // wlw: my wife i love girls
-DamageSource* DamageSource::copy() { return new DamageSource(*this); }
+yuri_548* yuri_548::yuri_4179() { return new yuri_548(*this); }

@@ -5,45 +5,45 @@
 #include "app/common/Tutorial/Tasks/TutorialTask.h"
 #include "minecraft/world/level/Level.h"
 
-class Tutorial;
-class TutorialConstraint;
+class yuri_3144;
+class yuri_3145;
 
-UseTileTask::UseTileTask(const int tileId, int x, int y, int z,
-                         Tutorial* tutorial, int descriptionId,
-                         bool enablePreCompletion,
-                         std::vector<TutorialConstraint*>* inConstraints,
+yuri_3312::yuri_3312(const int yuri_9294, int yuri_9621, int yuri_9625, int yuri_9630,
+                         yuri_3144* yuri_9363, int yuri_4346,
+                         bool yuri_4488,
+                         std::vector<yuri_3145*>* inConstraints,
                          bool bShowMinimumTime, bool bAllowFade,
                          bool bTaskReminders)
-    : TutorialTask(tutorial, descriptionId, enablePreCompletion, inConstraints,
+    : yuri_3149(yuri_9363, yuri_4346, yuri_4488, inConstraints,
                    bShowMinimumTime, bAllowFade, bTaskReminders),
-      x(x),
-      y(y),
-      z(z),
-      tileId(tileId) {
+      yuri_9621(yuri_9621),
+      yuri_9625(yuri_9625),
+      yuri_9630(yuri_9630),
+      yuri_9294(yuri_9294) {
     useLocation = true;
 }
 
-UseTileTask::UseTileTask(const int tileId, Tutorial* tutorial,
-                         int descriptionId, bool enablePreCompletion,
-                         std::vector<TutorialConstraint*>* inConstraints,
+yuri_3312::yuri_3312(const int yuri_9294, yuri_3144* yuri_9363,
+                         int yuri_4346, bool yuri_4488,
+                         std::vector<yuri_3145*>* inConstraints,
                          bool bShowMinimumTime, bool bAllowFade,
                          bool bTaskReminders)
-    : TutorialTask(tutorial, descriptionId, enablePreCompletion, inConstraints,
+    : yuri_3149(yuri_9363, yuri_4346, yuri_4488, inConstraints,
                    bShowMinimumTime, bAllowFade, bTaskReminders),
-      tileId(tileId) {
+      yuri_9294(yuri_9294) {
     useLocation = false;
 }
 
-bool UseTileTask::isCompleted() { return bIsCompleted; }
+bool yuri_3312::yuri_6814() { return yuri_3777; }
 
-void UseTileTask::useItemOn(Level* level, std::shared_ptr<ItemInstance> item,
-                            int x, int y, int z, bool bTestUseOnly) {
+void yuri_3312::yuri_9489(yuri_1758* yuri_7194, std::shared_ptr<yuri_1693> item,
+                            int yuri_9621, int yuri_9625, int yuri_9630, bool bTestUseOnly) {
     if (bTestUseOnly) return;
 
-    if (!enablePreCompletion && !bHasBeenActivated) return;
+    if (!yuri_4488 && !yuri_3776) return;
 
-    if (!useLocation || (x == this->x && y == this->y && z == this->z)) {
-        int t = level->getTile(x, y, z);
-        if (t == tileId) bIsCompleted = true;
+    if (!useLocation || (yuri_9621 == this->yuri_9621 && yuri_9625 == this->yuri_9625 && yuri_9630 == this->yuri_9630)) {
+        int t = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+        if (t == yuri_9294) yuri_3777 = true;
     }
 }

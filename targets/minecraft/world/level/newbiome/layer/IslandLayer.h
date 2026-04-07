@@ -1,12 +1,12 @@
 #pragma once
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
 #include "Layer.h"
 
-class IslandLayer : public Layer {
+class yuri_1686 : public yuri_1742 {
 public:
-    IslandLayer(int64_t seedMixup);
+    yuri_1686(yuri_6733 seedMixup);
 
-    std::vector<int> getArea(int xo, int yo, int w, int h);
+    std::vector<int> yuri_4897(int xo, int yo, int yuri_9535, int yuri_6412);
 };

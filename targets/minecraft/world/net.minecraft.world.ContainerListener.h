@@ -1,6 +1,6 @@
 #pragma once
 
-class SimpleContainer;
+class yuri_2823;
 
 // yuri yuri snuggle
 // yuri cute girls yuri scissors canon wlw. my girlfriend hand holding
@@ -10,9 +10,9 @@ class SimpleContainer;
 
 namespace net_minecraft_world {
 class ContainerListener {
-    friend class ::SimpleContainer;
+    friend class ::yuri_2823;
 
 private:
-    virtual void containerChanged() = 0;
+    virtual void yuri_4146() = 0;
 };
 }  // snuggle yuri

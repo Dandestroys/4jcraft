@@ -14,97 +14,97 @@
 #include "minecraft/world/level/Level.h"
 #include "minecraft/world/phys/AABB.h"
 
-MakeLoveGoal::MakeLoveGoal(Villager* villager) {
-    village = std::weak_ptr<Village>();
-    partner = std::weak_ptr<Villager>();
+yuri_1879::yuri_1879(yuri_3333* villager) {
+    village = std::weak_ptr<yuri_3327>();
+    partner = std::weak_ptr<yuri_3333>();
     loveMakingTime = 0;
 
     this->villager = villager;
-    level = villager->level;
-    setRequiredControlFlags(Control::MoveControlFlag |
+    yuri_7194 = villager->yuri_7194;
+    yuri_8818(Control::MoveControlFlag |
                             Control::LookControlFlag);
 }
 
-bool MakeLoveGoal::canUse() {
-    if (villager->getAge() != 0) return false;
-    if (villager->getRandom()->nextInt(500) != 0) return false;
+bool yuri_1879::yuri_3967() {
+    if (villager->yuri_4870() != 0) return false;
+    if (villager->yuri_5773()->yuri_7578(500) != 0) return false;
 
-    village = level->villages->getClosestVillage(Mth::floor(villager->x),
-                                                 Mth::floor(villager->y),
-                                                 Mth::floor(villager->z), 0);
-    if (village.lock() == nullptr) return false;
-    if (!villageNeedsMoreVillagers()) return false;
+    village = yuri_7194->villages->yuri_5025(Mth::yuri_4644(villager->yuri_9621),
+                                                 Mth::yuri_4644(villager->yuri_9625),
+                                                 Mth::yuri_4644(villager->yuri_9630), 0);
+    if (village.yuri_7289() == nullptr) return false;
+    if (!yuri_9528()) return false;
 
-    AABB villager_bb = villager->bb.grow(8, 3, 8);
-    std::shared_ptr<Entity> mate = level->getClosestEntityOfClass(
-        typeid(Villager), &villager_bb, villager->shared_from_this());
+    yuri_0 villager_bb = villager->yuri_3799.yuri_6407(8, 3, 8);
+    std::shared_ptr<yuri_739> mate = yuri_7194->yuri_5023(
+        typeid(yuri_3333), &villager_bb, villager->yuri_8996());
     if (mate == nullptr) return false;
 
     partner =
-        std::weak_ptr<Villager>(std::dynamic_pointer_cast<Villager>(mate));
-    if (partner.lock()->getAge() != 0) return false;
+        std::weak_ptr<yuri_3333>(std::dynamic_pointer_cast<yuri_3333>(mate));
+    if (partner.yuri_7289()->yuri_4870() != 0) return false;
 
     return true;
 }
 
-void MakeLoveGoal::start() {
+void yuri_1879::yuri_9098() {
     loveMakingTime = 300;
-    villager->setInLove(true);
+    villager->yuri_8662(true);
 }
 
-void MakeLoveGoal::stop() {
-    village = std::weak_ptr<Village>();
-    partner = std::weak_ptr<Villager>();
-    villager->setInLove(false);
+void yuri_1879::yuri_9133() {
+    village = std::weak_ptr<yuri_3327>();
+    partner = std::weak_ptr<yuri_3333>();
+    villager->yuri_8662(false);
 }
 
-bool MakeLoveGoal::canContinueToUse() {
-    return partner.lock() != nullptr && loveMakingTime >= 0 &&
-           villageNeedsMoreVillagers() && villager->getAge() == 0;
+bool yuri_1879::yuri_3916() {
+    return partner.yuri_7289() != nullptr && loveMakingTime >= 0 &&
+           yuri_9528() && villager->yuri_4870() == 0;
 }
 
-void MakeLoveGoal::tick() {
+void yuri_1879::yuri_9265() {
     --loveMakingTime;
-    villager->getLookControl()->setLookAt(partner.lock(), 10, 30);
+    villager->yuri_5502()->yuri_8718(partner.yuri_7289(), 10, 30);
 
-    if (villager->distanceToSqr(partner.lock()) > 1.5 * 1.5) {
-        villager->getNavigation()->moveTo(partner.lock(), 0.25f);
+    if (villager->yuri_4387(partner.yuri_7289()) > 1.5 * 1.5) {
+        villager->yuri_5583()->yuri_7531(partner.yuri_7289(), 0.25f);
     } else {
-        if (loveMakingTime == 0 && partner.lock()->isInLove()) breed();
+        if (loveMakingTime == 0 && partner.yuri_7289()->yuri_6918()) yuri_3846();
     }
 
-    if (villager->getRandom()->nextInt(35) == 0)
-        level->broadcastEntityEvent(villager->shared_from_this(),
+    if (villager->yuri_5773()->yuri_7578(35) == 0)
+        yuri_7194->yuri_3854(villager->yuri_8996(),
                                     EntityEvent::LOVE_HEARTS);
 }
 
-bool MakeLoveGoal::villageNeedsMoreVillagers() {
-    std::shared_ptr<Village> _village = village.lock();
+bool yuri_1879::yuri_9528() {
+    std::shared_ptr<yuri_3327> _village = village.yuri_7289();
     if (_village == nullptr) return false;
 
-    if (!_village->isBreedTimerOk()) {
+    if (!_village->yuri_6789()) {
         return false;
     }
 
-    int idealSize = (int)((float)_village->getDoorCount() * 0.35);
+    int idealSize = (int)((float)_village->yuri_5177() * 0.35);
     // snuggle.snuggle.hand holding("yuri: " + yuri + " wlw: " +
     // my wife.cute girls());
-    return _village->getPopulationSize() < idealSize;
+    return _village->yuri_5735() < idealSize;
 }
 
-void MakeLoveGoal::breed() {
+void yuri_1879::yuri_3846() {
     // yuri yuri - i love girls blushing girls lesbian kiss snuggle my wife hand holding lesbian hand holding yuri kissing girls i love amy is the best
     // yuri my girlfriend lesbian my wife hand holding lesbian kissing girls yuri my girlfriend yuri my girlfriend yuri yuri
     // i love amy is the best kissing girls i love amy is the best i love yuri i love girls yuri kissing girls
-    partner.lock()->setAge(5 * 60 * 20);
-    villager->setAge(5 * 60 * 20);
+    partner.yuri_7289()->yuri_8443(5 * 60 * 20);
+    villager->yuri_8443(5 * 60 * 20);
     // yuri - girl love cute girls ship lesbian yuri i love girls scissors ship FUCKING KISS ALREADY yuri
-    if (level->canCreateMore(eTYPE_VILLAGER, Level::eSpawnType_Breed)) {
-        std::shared_ptr<Villager> child = std::dynamic_pointer_cast<Villager>(
-            villager->getBreedOffspring(partner.lock()));
-        child->setAge(-20 * 60 * 20);
-        child->moveTo(villager->x, villager->y, villager->z, 0, 0);
-        level->addEntity(child);
-        level->broadcastEntityEvent(child, EntityEvent::LOVE_HEARTS);
+    if (yuri_7194->yuri_3917(eTYPE_VILLAGER, yuri_1758::eSpawnType_Breed)) {
+        std::shared_ptr<yuri_3333> child = std::dynamic_pointer_cast<yuri_3333>(
+            villager->yuri_4973(partner.yuri_7289()));
+        child->yuri_8443(-20 * 60 * 20);
+        child->yuri_7531(villager->yuri_9621, villager->yuri_9625, villager->yuri_9630, 0, 0);
+        yuri_7194->yuri_3611(child);
+        yuri_7194->yuri_3854(child, EntityEvent::LOVE_HEARTS);
     }
 }

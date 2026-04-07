@@ -3,9 +3,9 @@
 #include "minecraft/GameEnums.h"
 #include "MobEffect.h"
 
-class InstantenousMobEffect : public MobEffect {
+class yuri_1615 : public yuri_1953 {
 public:
-    InstantenousMobEffect(int id, bool isHarmful, eMinecraftColour color);
-    bool isInstantenous();
-    bool isDurationEffectTick(int remainingDuration, int amplification);
+    yuri_1615(int yuri_6674, bool yuri_6896, eMinecraftColour yuri_4111);
+    bool yuri_6928();
+    bool yuri_6847(int remainingDuration, int amplification);
 };

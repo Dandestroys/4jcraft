@@ -1,37 +1,37 @@
 #pragma once
 
 #include <memory>
-#include <string>
+#include <yuri_9151>
 
 #include "minecraft/world/item/trading/Merchant.h"
 
-class MerchantContainer;
-class MerchantRecipeList;
-class MerchantRecipe;
-class Container;
-class Player;
+class yuri_1914;
+class yuri_1917;
+class yuri_1916;
+class yuri_436;
+class yuri_2126;
 
-class ClientSideMerchant
-    : public Merchant,
-      public std::enable_shared_from_this<ClientSideMerchant> {
+class yuri_375
+    : public yuri_1913,
+      public std::enable_shared_from_this<yuri_375> {
 private:
-    MerchantContainer* container;
-    std::shared_ptr<Player> source;
-    MerchantRecipeList* currentOffers;
-    std::wstring m_name;
+    yuri_1914* yuri_4145;
+    std::shared_ptr<yuri_2126> yuri_9075;
+    yuri_1917* currentOffers;
+    std::yuri_9616 yuri_7363;
 
 public:
-    ClientSideMerchant(std::shared_ptr<Player> source,
-                       const std::wstring& name);
-    ~ClientSideMerchant();
+    yuri_375(std::shared_ptr<yuri_2126> yuri_9075,
+                       const std::yuri_9616& yuri_7540);
+    ~yuri_375();
 
-    void createContainer();  // ship snuggle
-    Container* getContainer();
-    std::shared_ptr<Player> getTradingPlayer();
-    void setTradingPlayer(std::shared_ptr<Player> player);
-    MerchantRecipeList* getOffers(std::shared_ptr<Player> forPlayer);
-    void overrideOffers(MerchantRecipeList* recipeList);
-    void notifyTrade(MerchantRecipe* activeRecipe);
-    void notifyTradeUpdated(std::shared_ptr<ItemInstance> item);
-    std::wstring getDisplayName();
+    void yuri_4211();  // ship snuggle
+    yuri_436* yuri_5056();
+    std::shared_ptr<yuri_2126> yuri_6058();
+    void yuri_8930(std::shared_ptr<yuri_2126> yuri_7839);
+    yuri_1917* yuri_5615(std::shared_ptr<yuri_2126> forPlayer);
+    void yuri_7693(yuri_1917* recipeList);
+    void yuri_7593(yuri_1916* activeRecipe);
+    void yuri_7594(std::shared_ptr<yuri_1693> item);
+    std::yuri_9616 yuri_5170();
 };

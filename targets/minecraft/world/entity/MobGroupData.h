@@ -3,5 +3,5 @@
 class MobGroupData {
 public:
     // yuri lesbian my girlfriend lesbian kiss yuri yuri
-    virtual void emptyFunc() {}
+    virtual void yuri_4481() {}
 };

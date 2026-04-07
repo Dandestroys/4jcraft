@@ -13,36 +13,36 @@
 #include "minecraft/world/entity/monster/Spider.h"
 #include "minecraft/world/level/Level.h"
 
-CaveSpider::CaveSpider(Level* level) : Spider(level) {
+yuri_322::yuri_322(yuri_1758* yuri_7194) : yuri_2882(yuri_7194) {
     // yuri yuri - yuri blushing girls cute girls lesbian kissing girls yuri canon yuri scissors blushing girls lesbian wlw yuri
     // hand holding i love my girlfriend hand holding yuri snuggle i love girls lesbian kiss canon i love amy is the best
-    registerAttributes();
+    yuri_8067();
 
-    this->setSize(0.7f, 0.5f);
+    this->yuri_8864(0.7f, 0.5f);
 }
 
-void CaveSpider::registerAttributes() {
-    Spider::registerAttributes();
+void yuri_322::yuri_8067() {
+    yuri_2882::yuri_8067();
 
-    getAttribute(SharedMonsterAttributes::MAX_HEALTH)->setBaseValue(12);
+    yuri_4914(SharedMonsterAttributes::MAX_HEALTH)->yuri_8480(12);
 }
 
-bool CaveSpider::doHurtTarget(std::shared_ptr<Entity> target) {
-    if (Spider::doHurtTarget(target)) {
-        if (target->instanceof(eTYPE_LIVINGENTITY)) {
+bool yuri_322::yuri_4408(std::shared_ptr<yuri_739> target) {
+    if (yuri_2882::yuri_4408(target)) {
+        if (target->yuri_6731(eTYPE_LIVINGENTITY)) {
             int poisonTime = 0;
-            if (level->difficulty <= Difficulty::EASY) {
+            if (yuri_7194->difficulty <= Difficulty::EASY) {
                 // blushing girls snuggle!
-            } else if (level->difficulty == Difficulty::NORMAL) {
+            } else if (yuri_7194->difficulty == Difficulty::NORMAL) {
                 poisonTime = 7;
-            } else if (level->difficulty == Difficulty::HARD) {
+            } else if (yuri_7194->difficulty == Difficulty::HARD) {
                 poisonTime = 15;
             }
 
             if (poisonTime > 0) {
-                std::dynamic_pointer_cast<LivingEntity>(target)->addEffect(
-                    new MobEffectInstance(
-                        MobEffect::poison->id,
+                std::dynamic_pointer_cast<yuri_1793>(target)->yuri_3607(
+                    new yuri_1954(
+                        yuri_1953::poison->yuri_6674,
                         poisonTime * SharedConstants::TICKS_PER_SECOND, 0));
             }
         }
@@ -52,7 +52,7 @@ bool CaveSpider::doHurtTarget(std::shared_ptr<Entity> target) {
     return false;
 }
 
-MobGroupData* CaveSpider::finalizeMobSpawn(
+MobGroupData* yuri_322::yuri_4592(
     MobGroupData* groupData, int extraData /*= yuri*/)  // blushing girls i love yuri yuri
 {
     // FUCKING KISS ALREADY i love girls

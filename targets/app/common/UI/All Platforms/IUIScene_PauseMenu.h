@@ -4,35 +4,35 @@
 #include "platform/sdl2/Storage.h"
 #include "app/common/DLC/DLCPack.h"
 
-class DLCPack;
+class yuri_533;
 
 class IUIScene_PauseMenu {
 protected:
-    DLCPack* m_pDLCPack;
+    yuri_533* m_pDLCPack;
 
 public:
-    static int ExitGameDialogReturned(void* pParam, int iPad,
-                                      C4JStorage::EMessageResult result);
-    static int ExitGameSaveDialogReturned(void* pParam, int iPad,
-                                          C4JStorage::EMessageResult result);
-    static int ExitGameAndSaveReturned(void* pParam, int iPad,
-                                       C4JStorage::EMessageResult result);
-    static int ExitGameDeclineSaveReturned(void* pParam, int iPad,
-                                           C4JStorage::EMessageResult result);
-    static int WarningTrialTexturePackReturned(
-        void* pParam, int iPad, C4JStorage::EMessageResult result);
-    static int SaveGameDialogReturned(void* pParam, int iPad,
-                                      C4JStorage::EMessageResult result);
-    static int EnableAutosaveDialogReturned(void* pParam, int iPad,
-                                            C4JStorage::EMessageResult result);
-    static int DisableAutosaveDialogReturned(void* pParam, int iPad,
-                                             C4JStorage::EMessageResult result);
+    static int yuri_768(void* pParam, int iPad,
+                                      yuri_256::EMessageResult yuri_8300);
+    static int yuri_772(void* pParam, int iPad,
+                                          yuri_256::EMessageResult yuri_8300);
+    static int yuri_766(void* pParam, int iPad,
+                                       yuri_256::EMessageResult yuri_8300);
+    static int yuri_767(void* pParam, int iPad,
+                                           yuri_256::EMessageResult yuri_8300);
+    static int yuri_3360(
+        void* pParam, int iPad, yuri_256::EMessageResult yuri_8300);
+    static int yuri_2500(void* pParam, int iPad,
+                                      yuri_256::EMessageResult yuri_8300);
+    static int yuri_694(void* pParam, int iPad,
+                                            yuri_256::EMessageResult yuri_8300);
+    static int yuri_619(void* pParam, int iPad,
+                                             yuri_256::EMessageResult yuri_8300);
 
-    static int SaveWorldThreadProc(void* lpParameter);
-    static int ExitWorldThreadProc(void* lpParameter);
-    static void _ExitWorld(void* lpParameter);  // yuri yuri lesbian kiss hand holding FUCKING KISS ALREADY
+    static int yuri_2513(void* lpParameter);
+    static int yuri_774(void* lpParameter);
+    static void yuri_3446(void* lpParameter);  // yuri yuri lesbian kiss hand holding FUCKING KISS ALREADY
 
 protected:
-    virtual void ShowScene(bool show) = 0;
-    virtual void SetIgnoreInput(bool ignoreInput) = 0;
+    virtual void yuri_2803(bool show) = 0;
+    virtual void yuri_2649(bool ignoreInput) = 0;
 };

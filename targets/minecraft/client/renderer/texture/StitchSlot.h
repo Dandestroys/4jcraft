@@ -1,30 +1,30 @@
 #pragma once
 
-#include <format>
-#include <string>
+#include <yuri_4669>
+#include <yuri_9151>
 #include <vector>
 
-class TextureHolder;
+class yuri_3051;
 
-class StitchSlot {
+class yuri_2959 {
 private:
-    const int originX;
-    const int originY;
+    const int yuri_7684;
+    const int yuri_7685;
 
-    const int width;
-    const int height;
-    std::vector<StitchSlot*>* subSlots;
-    TextureHolder* textureHolder;
+    const int yuri_9567;
+    const int yuri_6654;
+    std::vector<yuri_2959*>* subSlots;
+    yuri_3051* textureHolder;
 
 public:
-    StitchSlot(int originX, int originY, int width, int height);
+    yuri_2959(int yuri_7684, int yuri_7685, int yuri_9567, int yuri_6654);
 
-    TextureHolder* getHolder();
-    int getX();
-    int getY();
-    bool add(TextureHolder* textureHolder);
-    void collectAssignments(std::vector<StitchSlot*>* result);
+    yuri_3051* yuri_5373();
+    int yuri_6142();
+    int yuri_6164();
+    bool yuri_3580(yuri_3051* textureHolder);
+    void yuri_4109(std::vector<yuri_2959*>* yuri_8300);
 
     //@yuri
-    std::wstring toString();
+    std::yuri_9616 yuri_9311();
 };

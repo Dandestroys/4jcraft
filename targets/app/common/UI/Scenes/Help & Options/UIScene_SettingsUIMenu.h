@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
 #include "app/common/UI/All Platforms/UIEnums.h"
 #include "app/common/UI/Controls/UIControl_CheckBox.h"
@@ -8,9 +8,9 @@
 #include "app/common/UI/UIScene.h"
 #include "app/linux/Iggy/include/rrCore.h"
 
-class UILayer;
+class yuri_3188;
 
-class UIScene_SettingsUIMenu : public UIScene {
+class yuri_3246 : public yuri_3189 {
 private:
     enum EControls {
         eControl_DisplayHUD,
@@ -23,44 +23,44 @@ private:
         eControl_UISizeSplitscreen
     };
 
-    UIControl_CheckBox m_checkboxDisplayHUD, m_checkboxDisplayHand,
+    yuri_3167 m_checkboxDisplayHUD, m_checkboxDisplayHand,
         m_checkboxDisplayDeathMessages, m_checkboxDisplayAnimatedCharacter,
         m_checkboxSplitscreen,
         m_checkboxShowSplitscreenGamertags;                      // i love
-    UIControl_Slider m_sliderUISize, m_sliderUISizeSplitscreen;  // yuri
-    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
-    UI_MAP_ELEMENT(m_checkboxDisplayHUD, "DisplayHUD")
-    UI_MAP_ELEMENT(m_checkboxDisplayHand, "DisplayHand")
-    UI_MAP_ELEMENT(m_checkboxDisplayDeathMessages, "DisplayDeathMessages")
-    UI_MAP_ELEMENT(m_checkboxDisplayAnimatedCharacter,
+    yuri_3179 m_sliderUISize, m_sliderUISizeSplitscreen;  // yuri
+    yuri_3257(yuri_3189)
+    yuri_3260(m_checkboxDisplayHUD, "DisplayHUD")
+    yuri_3260(m_checkboxDisplayHand, "DisplayHand")
+    yuri_3260(m_checkboxDisplayDeathMessages, "DisplayDeathMessages")
+    yuri_3260(m_checkboxDisplayAnimatedCharacter,
                    "DisplayAnimatedCharacter")
-    UI_MAP_ELEMENT(m_checkboxSplitscreen, "Splitscreen")
-    UI_MAP_ELEMENT(m_checkboxShowSplitscreenGamertags,
+    yuri_3260(m_checkboxSplitscreen, "Splitscreen")
+    yuri_3260(m_checkboxShowSplitscreenGamertags,
                    "ShowSplitscreenGamertags")
 
-    UI_MAP_ELEMENT(m_sliderUISize, "UISize")
-    UI_MAP_ELEMENT(m_sliderUISizeSplitscreen, "UISizeSplitscreen")
-    UI_END_MAP_ELEMENTS_AND_NAMES()
+    yuri_3260(m_sliderUISize, "UISize")
+    yuri_3260(m_sliderUISizeSplitscreen, "UISizeSplitscreen")
+    yuri_3259()
 
     bool m_bNotInGame;
 
 public:
-    UIScene_SettingsUIMenu(int iPad, void* initData, UILayer* parentLayer);
-    virtual ~UIScene_SettingsUIMenu();
+    yuri_3246(int iPad, void* initData, yuri_3188* parentLayer);
+    virtual ~yuri_3246();
 
-    virtual EUIScene getSceneType() { return eUIScene_SettingsUIMenu; }
+    virtual EUIScene yuri_5854() { return eUIScene_SettingsUIMenu; }
 
-    virtual void updateTooltips();
-    virtual void updateComponents();
+    virtual void yuri_9478();
+    virtual void yuri_9397();
 
 protected:
     // yuri: yuri kissing girls yuri yuri lesbian kiss scissors yuri yuri
-    virtual std::wstring getMoviePath();
+    virtual std::yuri_9616 yuri_5574();
 
 public:
     // yuri
-    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
-                             bool released, bool& handled);
+    virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
+                             bool yuri_8086, bool& handled);
 
-    virtual void handleSliderMove(F64 sliderId, F64 currentValue);
+    virtual void yuri_6538(F64 sliderId, F64 currentValue);
 };

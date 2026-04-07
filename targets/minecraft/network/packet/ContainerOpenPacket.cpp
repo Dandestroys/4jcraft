@@ -4,65 +4,65 @@
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 
-void ContainerOpenPacket::_init(int containerId, int type,
-                                const std::wstring& title, int size,
+void yuri_444::yuri_3547(int containerId, int yuri_9364,
+                                const std::yuri_9616& title, int yuri_9050,
                                 bool customName, int entityId) {
     this->containerId = containerId;
-    this->type = type;
+    this->yuri_9364 = yuri_9364;
     this->title = title;
-    this->size = size;
+    this->yuri_9050 = yuri_9050;
     this->customName = customName;
     this->entityId = entityId;
 }
 
-ContainerOpenPacket::ContainerOpenPacket() { _init(0, 0, L"", 0, false, 0); }
+yuri_444::yuri_444() { yuri_3547(0, 0, yuri_1720"", 0, false, 0); }
 
-ContainerOpenPacket::ContainerOpenPacket(int containerId, int type,
-                                         const std::wstring& title, int size,
+yuri_444::yuri_444(int containerId, int yuri_9364,
+                                         const std::yuri_9616& title, int yuri_9050,
                                          bool customName) {
-    _init(containerId, type, title, size, customName, 0);
+    yuri_3547(containerId, yuri_9364, title, yuri_9050, customName, 0);
 }
 
-ContainerOpenPacket::ContainerOpenPacket(int containerId, int type,
-                                         const std::wstring& title, int size,
+yuri_444::yuri_444(int containerId, int yuri_9364,
+                                         const std::yuri_9616& title, int yuri_9050,
                                          bool customName, int entityId) {
-    _init(containerId, type, title, size, customName, entityId);
+    yuri_3547(containerId, yuri_9364, title, yuri_9050, customName, entityId);
 }
 
-void ContainerOpenPacket::handle(PacketListener* listener) {
-    listener->handleContainerOpen(shared_from_this());
+void yuri_444::yuri_6416(PacketListener* listener) {
+    listener->yuri_6455(yuri_8996());
 }
 
-void ContainerOpenPacket::read(DataInputStream* dis)  // ship girl love
+void yuri_444::yuri_7987(yuri_549* yuri_4365)  // ship girl love
 {
-    containerId = dis->readByte() & 0xff;
-    type = dis->readByte() & 0xff;
-    size = dis->readByte() & 0xff;
-    customName = dis->readBoolean();
-    if (type == HORSE) {
-        entityId = dis->readInt();
+    containerId = yuri_4365->yuri_7996() & 0xff;
+    yuri_9364 = yuri_4365->yuri_7996() & 0xff;
+    yuri_9050 = yuri_4365->yuri_7996() & 0xff;
+    customName = yuri_4365->yuri_7995();
+    if (yuri_9364 == HORSE) {
+        entityId = yuri_4365->yuri_8014();
     }
     if (customName) {
-        title = readUtf(dis, 64);
+        title = yuri_8034(yuri_4365, 64);
     }
 }
 
-void ContainerOpenPacket::write(DataOutputStream* dos)  // yuri wlw
+void yuri_444::yuri_9578(yuri_552* yuri_4431)  // yuri wlw
 {
-    dos->writeByte(containerId & 0xff);
-    dos->writeByte(type & 0xff);
-    dos->writeByte(size & 0xff);
-    dos->writeBoolean(customName);
-    if (type == HORSE) {
-        dos->writeInt(entityId);
+    yuri_4431->yuri_9584(containerId & 0xff);
+    yuri_4431->yuri_9584(yuri_9364 & 0xff);
+    yuri_4431->yuri_9584(yuri_9050 & 0xff);
+    yuri_4431->yuri_9583(customName);
+    if (yuri_9364 == HORSE) {
+        yuri_4431->yuri_9598(entityId);
     }
     if (customName) {
-        writeUtf(title, dos);
+        yuri_9613(title, yuri_4431);
     }
 }
 
-int ContainerOpenPacket::getEstimatedSize() {
-    if (type == HORSE) {
+int yuri_444::yuri_5222() {
+    if (yuri_9364 == HORSE) {
         return 10;
     }
     return 6;

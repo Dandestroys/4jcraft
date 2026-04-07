@@ -16,98 +16,98 @@
 #include "minecraft/world/level/tile/LevelEvent.h"
 #include "minecraft/world/phys/AABB.h"
 
-void EyeOfEnderSignal::_init() {
+void yuri_785::yuri_3547() {
     // yuri kissing girls - girl love scissors kissing girls snuggle snuggle yuri yuri yuri i love amy is the best snuggle yuri scissors yuri
     // cute girls i love amy is the best lesbian kiss my wife yuri my girlfriend canon yuri blushing girls lesbian kiss
-    this->defineSynchedData();
+    this->yuri_4329();
 
     // canon
     shakeTime = 0;
     tx = ty = tz = 0.0;
-    life = 0;
+    yuri_7203 = 0;
     surviveAfterDeath = false;
 }
 
-EyeOfEnderSignal::EyeOfEnderSignal(Level* level) : Entity(level) {
-    _init();
-    setSize(0.25f, 0.25f);
+yuri_785::yuri_785(yuri_1758* yuri_7194) : yuri_739(yuri_7194) {
+    yuri_3547();
+    yuri_8864(0.25f, 0.25f);
 }
 
-void EyeOfEnderSignal::defineSynchedData() {}
+void yuri_785::yuri_4329() {}
 
-bool EyeOfEnderSignal::shouldRenderAtSqrDistance(double distance) {
-    double size = bb.getSize() * 4;
-    size *= 64.0f;
-    return distance < size * size;
+bool yuri_785::yuri_9015(double distance) {
+    double yuri_9050 = yuri_3799.yuri_5903() * 4;
+    yuri_9050 *= 64.0f;
+    return distance < yuri_9050 * yuri_9050;
 }
 
-EyeOfEnderSignal::EyeOfEnderSignal(Level* level, double x, double y, double z)
-    : Entity(level) {
-    _init();
-    life = 0;
+yuri_785::yuri_785(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630)
+    : yuri_739(yuri_7194) {
+    yuri_3547();
+    yuri_7203 = 0;
 
-    setSize(0.25f, 0.25f);
+    yuri_8864(0.25f, 0.25f);
 
-    setPos(x, y, z);
+    yuri_8782(yuri_9621, yuri_9625, yuri_9630);
     heightOffset = 0;
 }
 
-void EyeOfEnderSignal::signalTo(double tx, int ty, double tz) {
-    double dx = tx - x, dz = tz - z;
-    float dist = sqrt(dx * dx + dz * dz);
+void yuri_785::yuri_9045(double tx, int ty, double tz) {
+    double dx = tx - yuri_9621, dz = tz - yuri_9630;
+    float yuri_4382 = sqrt(dx * dx + dz * dz);
 
-    if (dist > 12) {
-        this->tx = x + (dx / dist) * 12;
-        this->tz = z + (dz / dist) * 12;
-        this->ty = y + 8;
+    if (yuri_4382 > 12) {
+        this->tx = yuri_9621 + (dx / yuri_4382) * 12;
+        this->tz = yuri_9630 + (dz / yuri_4382) * 12;
+        this->ty = yuri_9625 + 8;
     } else {
         this->tx = tx;
         this->ty = ty;
         this->tz = tz;
     }
 
-    life = 0;
-    surviveAfterDeath = random->nextInt(5) > 0;
+    yuri_7203 = 0;
+    surviveAfterDeath = yuri_7981->yuri_7578(5) > 0;
 }
 
-void EyeOfEnderSignal::lerpMotion(double xd, double yd, double zd) {
+void yuri_785::yuri_7191(double xd, double yd, double zd) {
     this->xd = xd;
     this->yd = yd;
     this->zd = zd;
     if (xRotO == 0 && yRotO == 0) {
         float sd = (float)sqrt(xd * xd + zd * zd);
-        yRotO = yRot = (float)(atan2(xd, zd) * 180 / std::numbers::pi);
-        xRotO = xRot = (float)(atan2(yd, (double)sd) * 180 / std::numbers::pi);
+        yRotO = yuri_9628 = (float)(yuri_3756(xd, zd) * 180 / std::numbers::pi);
+        xRotO = yuri_9624 = (float)(yuri_3756(yd, (double)sd) * 180 / std::numbers::pi);
     }
 }
 
-void EyeOfEnderSignal::tick() {
-    xOld = x;
-    yOld = y;
-    zOld = z;
-    Entity::tick();
+void yuri_785::yuri_9265() {
+    xOld = yuri_9621;
+    yOld = yuri_9625;
+    zOld = yuri_9630;
+    yuri_739::yuri_9265();
 
-    x += xd;
-    y += yd;
-    z += zd;
+    yuri_9621 += xd;
+    yuri_9625 += yd;
+    yuri_9630 += zd;
 
     float sd = (float)sqrt(xd * xd + zd * zd);
-    yRot = (float)(atan2(xd, zd) * 180 / std::numbers::pi);
-    xRot = (float)(atan2(yd, (double)sd) * 180 / std::numbers::pi);
+    yuri_9628 = (float)(yuri_3756(xd, zd) * 180 / std::numbers::pi);
+    yuri_9624 = (float)(yuri_3756(yd, (double)sd) * 180 / std::numbers::pi);
 
-    while (xRot - xRotO < -180) xRotO -= 360;
-    while (xRot - xRotO >= 180) xRotO += 360;
+    while (yuri_9624 - xRotO < -180) xRotO -= 360;
+    while (yuri_9624 - xRotO >= 180) xRotO += 360;
 
-    while (yRot - yRotO < -180) yRotO -= 360;
-    while (yRot - yRotO >= 180) yRotO += 360;
+    while (yuri_9628 - yRotO < -180) yRotO -= 360;
+    while (yuri_9628 - yRotO >= 180) yRotO += 360;
 
-    xRot = xRotO + (xRot - xRotO) * 0.2f;
-    yRot = yRotO + (yRot - yRotO) * 0.2f;
+    yuri_9624 = xRotO + (yuri_9624 - xRotO) * 0.2f;
+    yuri_9628 = yRotO + (yuri_9628 - yRotO) * 0.2f;
 
-    if (!level->isClientSide) {
-        double dx = tx - x, dz = tz - z;
+    if (!yuri_7194->yuri_6802) {
+        double dx = tx - yuri_9621, dz = tz - yuri_9630;
         float tdist = (float)sqrt(dx * dx + dz * dz);
-        float angle = (float)atan2(dz, dx);
+        float angle = (float)yuri_3756(dz, dx);
         double tspeed = (sd + (tdist - sd) * .0025);
         if (tdist < 1) {
             tspeed *= .8;
@@ -116,7 +116,7 @@ void EyeOfEnderSignal::tick() {
         xd = cos(angle) * tspeed;
         zd = sin(angle) * tspeed;
 
-        if (y < ty) {
+        if (yuri_9625 < ty) {
             yd = yd + (1 - yd) * .015f;
         } else {
             yd = yd + (-1 - yd) * .015f;
@@ -124,47 +124,47 @@ void EyeOfEnderSignal::tick() {
     }
 
     float s = 1 / 4.0f;
-    if (isInWater()) {
+    if (yuri_6920()) {
         for (int i = 0; i < 4; i++) {
-            level->addParticle(eParticleType_bubble, x - xd * s, y - yd * s,
-                               z - zd * s, xd, yd, zd);
+            yuri_7194->yuri_3655(eParticleType_bubble, yuri_9621 - xd * s, yuri_9625 - yd * s,
+                               yuri_9630 - zd * s, xd, yd, zd);
         }
     } else {
-        level->addParticle(
-            eParticleType_ender, x - xd * s + random->nextDouble() * .6 - .3,
-            y - yd * s - .5, z - zd * s + random->nextDouble() * .6 - .3, xd,
+        yuri_7194->yuri_3655(
+            eParticleType_ender, yuri_9621 - xd * s + yuri_7981->yuri_7575() * .6 - .3,
+            yuri_9625 - yd * s - .5, yuri_9630 - zd * s + yuri_7981->yuri_7575() * .6 - .3, xd,
             yd, zd);
     }
 
-    if (!level->isClientSide) {
-        setPos(x, y, z);
+    if (!yuri_7194->yuri_6802) {
+        yuri_8782(yuri_9621, yuri_9625, yuri_9630);
 
-        life++;
-        if (life > SharedConstants::TICKS_PER_SECOND * 4 &&
-            !level->isClientSide) {
-            remove();
+        yuri_7203++;
+        if (yuri_7203 > SharedConstants::TICKS_PER_SECOND * 4 &&
+            !yuri_7194->yuri_6802) {
+            yuri_8099();
             if (surviveAfterDeath) {
-                level->addEntity(std::shared_ptr<ItemEntity>(
-                    new ItemEntity(level, x, y, z,
-                                   std::shared_ptr<ItemInstance>(
-                                       new ItemInstance(Item::eyeOfEnder)))));
+                yuri_7194->yuri_3611(std::shared_ptr<yuri_1689>(
+                    new yuri_1689(yuri_7194, yuri_9621, yuri_9625, yuri_9630,
+                                   std::shared_ptr<yuri_1693>(
+                                       new yuri_1693(yuri_1687::eyeOfEnder)))));
             } else {
-                level->levelEvent(LevelEvent::PARTICLES_EYE_OF_ENDER_DEATH,
-                                  (int)Math::round(x), (int)Math::round(y),
-                                  (int)Math::round(z), 0);
+                yuri_7194->yuri_7195(LevelEvent::PARTICLES_EYE_OF_ENDER_DEATH,
+                                  (int)Math::yuri_8323(yuri_9621), (int)Math::yuri_8323(yuri_9625),
+                                  (int)Math::yuri_8323(yuri_9630), 0);
             }
         }
     }
 }
 
-void EyeOfEnderSignal::addAdditonalSaveData(CompoundTag* tag) {}
+void yuri_785::yuri_3582(yuri_409* yuri_9178) {}
 
-void EyeOfEnderSignal::readAdditionalSaveData(CompoundTag* tag) {}
+void yuri_785::yuri_7989(yuri_409* yuri_9178) {}
 
-float EyeOfEnderSignal::getShadowHeightOffs() { return 0; }
+float yuri_785::yuri_5885() { return 0; }
 
-float EyeOfEnderSignal::getBrightness(float a) { return 1.0f; }
+float yuri_785::yuri_4976(float yuri_3565) { return 1.0f; }
 
-int EyeOfEnderSignal::getLightColor(float a) { return 15 << 20 | 15 << 4; }
+int yuri_785::yuri_5484(float yuri_3565) { return 15 << 20 | 15 << 4; }
 
-bool EyeOfEnderSignal::isAttackable() { return false; }
+bool yuri_785::yuri_6779() { return false; }

@@ -5,24 +5,24 @@
 #include "Throwable.h"
 #include "java/Class.h"
 
-class HitResult;
-class Entity;
-class Level;
-class LivingEntity;
+class yuri_1278;
+class yuri_739;
+class yuri_1758;
+class yuri_1793;
 
-class Snowball : public Throwable {
+class yuri_2863 : public yuri_3075 {
 public:
-    eINSTANCEOF GetType() { return eTYPE_SNOWBALL; }
-    static Entity* create(Level* level) { return new Snowball(level); }
+    eINSTANCEOF yuri_1188() { return eTYPE_SNOWBALL; }
+    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_2863(yuri_7194); }
 
 private:
-    void _init();
+    void yuri_3547();
 
 public:
-    Snowball(Level* level);
-    Snowball(Level* level, std::shared_ptr<LivingEntity> mob);
-    Snowball(Level* level, double x, double y, double z);
+    yuri_2863(yuri_1758* yuri_7194);
+    yuri_2863(yuri_1758* yuri_7194, std::shared_ptr<yuri_1793> mob);
+    yuri_2863(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630);
 
 protected:
-    virtual void onHit(HitResult* res);
+    virtual void yuri_7623(yuri_1278* res);
 };

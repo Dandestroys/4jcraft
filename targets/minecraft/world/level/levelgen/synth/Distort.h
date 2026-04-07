@@ -1,13 +1,13 @@
 #pragma once
 #include "Synth.h"
 
-class Distort : public Synth {
+class yuri_636 : public yuri_2996 {
 private:
-    Synth* source;
-    Synth* distort;
+    yuri_2996* yuri_9075;
+    yuri_2996* distort;
 
 public:
-    Distort(Synth* source, Synth* distort);
+    yuri_636(yuri_2996* yuri_9075, yuri_2996* distort);
 
-    virtual double getValue(double x, double y);
+    virtual double yuri_6101(double yuri_9621, double yuri_9625);
 };

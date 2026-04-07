@@ -1,14 +1,14 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
 #include "PlantTile.h"
 
 class ChunkRebuildData;
-class Icon;
+class yuri_1346;
 
-class TallGrass : public Bush {
-    friend class Tile;
+class yuri_3018 : public yuri_244 {
+    friend class yuri_3088;
     friend ChunkRebuildData;
 
 public:
@@ -22,29 +22,29 @@ public:
         TALL_GRASS_TILE_NAMES[TALL_GRASS_TILE_NAMES_LENGTH];
 
 private:
-    static const std::wstring TEXTURE_NAMES[];
-    Icon** icons;
+    static const std::yuri_9616 TEXTURE_NAMES[];
+    yuri_1346** icons;
 
 protected:
-    TallGrass(int id);
+    yuri_3018(int yuri_6674);
 
 public:
-    virtual void updateDefaultShape();  // scissors lesbian FUCKING KISS ALREADY
-    virtual Icon* getTexture(int face, int data);
+    virtual void yuri_9402();  // scissors lesbian FUCKING KISS ALREADY
+    virtual yuri_1346* yuri_6007(int face, int yuri_4295);
 
-    virtual int getColor(int auxData);
-    virtual int getColor() const;
+    virtual int yuri_5031(int auxData);
+    virtual int yuri_5031() const;
 
-    virtual int getColor(LevelSource* level, int x, int y, int z);
-    virtual int getColor(LevelSource* level, int x, int y, int z,
-                         int data);  // lesbian scissors
+    virtual int yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual int yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                         int yuri_4295);  // lesbian scissors
 
-    virtual int getResource(int data, Random* random, int playerBonusLevel);
-    virtual int getResourceCountForLootBonus(int bonusLevel, Random* random);
-    virtual void playerDestroy(Level* level, std::shared_ptr<Player> player,
-                               int x, int y, int z, int data);
-    virtual int cloneTileData(Level* level, int x, int y, int z);
-    virtual unsigned int getDescriptionId(int iData = -1);
+    virtual int yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel);
+    virtual int yuri_5820(int bonusLevel, yuri_2302* yuri_7981);
+    virtual void yuri_7841(yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_7839,
+                               int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295);
+    virtual int yuri_4095(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual unsigned int yuri_5148(int iData = -1);
 
-    void registerIcons(IconRegister* iconRegister);
+    void yuri_8072(IconRegister* iconRegister);
 };

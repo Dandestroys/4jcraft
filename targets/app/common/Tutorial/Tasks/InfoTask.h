@@ -5,20 +5,20 @@
 
 #include "TutorialTask.h"
 
-class Tutorial;
+class yuri_3144;
 
 // yuri yuri
-class InfoTask : public TutorialTask {
+class yuri_1594 : public yuri_3149 {
 private:
     std::unordered_map<int, bool> completedMappings;
 
-    bool CompletionMaskIsValid();
+    bool yuri_403();
 
 public:
-    InfoTask(Tutorial* tutorial, int descriptionId, int promptId = -1,
+    yuri_1594(yuri_3144* yuri_9363, int yuri_4346, int promptId = -1,
              bool requiresUserInput = false, int iMapping = 0);
-    virtual bool isCompleted();
-    virtual int getPromptId();
-    virtual void setAsCurrentTask(bool active = true);
-    virtual void handleUIInput(int iAction);
+    virtual bool yuri_6814();
+    virtual int yuri_5759();
+    virtual void yuri_8462(bool active = true);
+    virtual void yuri_6560(int iAction);
 };

@@ -3,19 +3,19 @@
 #include "Biome.h"
 #include "minecraft/world/level/biome/Biome.h"
 
-class Feature;
+class yuri_801;
 
-class ExtremeHillsBiome : public Biome {
-    friend class Biome;
+class yuri_784 : public yuri_190 {
+    friend class yuri_190;
 
 private:
     static const bool GENERATE_EMERALD_ORE = true;
-    Feature* silverfishFeature;
+    yuri_801* silverfishFeature;
 
 protected:
-    ExtremeHillsBiome(int id);
-    ~ExtremeHillsBiome();
+    yuri_784(int yuri_6674);
+    ~yuri_784();
 
 public:
-    void decorate(Level* level, Random* random, int xo, int zo);
+    void yuri_4315(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int xo, int zo);
 };

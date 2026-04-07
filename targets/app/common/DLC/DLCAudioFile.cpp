@@ -11,7 +11,7 @@
 #include "app/common/DLC/DLCFile.h"
 #include "app/linux/LinuxGame.h"
 #include "platform/XboxStubs.h"
-#if defined(_WINDOWS64)
+#if yuri_4330(_WINDOWS64)
 #include "app/windows/XML/ATGXmlParser.h"
 #include "app/windows/XML/xmlFilesCallback.h"
 #endif
@@ -20,94 +20,94 @@ namespace {
 constexpr std::size_t AUDIO_DLC_WCHAR_BIN_SIZE = 2;
 
 #if WCHAR_MAX > 0xFFFF
-static std::wstring ReadAudioDlcWString(const void* data) {
-    const std::uint16_t* chars = static_cast<const std::uint16_t*>(data);
-    const std::uint16_t* end = chars;
-    while (*end != 0) {
-        ++end;
+static std::yuri_9616 yuri_2313(const void* yuri_4295) {
+    const std::uint16_t* chars = static_cast<const std::uint16_t*>(yuri_4295);
+    const std::uint16_t* yuri_4502 = chars;
+    while (*yuri_4502 != 0) {
+        ++yuri_4502;
     }
 
-    std::wstring out(static_cast<std::size_t>(end - chars), 0);
-    for (std::size_t i = 0; i < out.size(); ++i) {
-        out[i] = static_cast<wchar_t>(chars[i]);
+    std::yuri_9616 yuri_7687(static_cast<std::size_t>(yuri_4502 - chars), 0);
+    for (std::size_t i = 0; i < yuri_7687.yuri_9050(); ++i) {
+        yuri_7687[i] = static_cast<wchar_t>(chars[i]);
     }
-    return out;
+    return yuri_7687;
 }
 #else
-static std::wstring ReadAudioDlcWString(const void* data) {
-    return std::wstring(static_cast<const wchar_t*>(data));
+static std::yuri_9616 yuri_2313(const void* yuri_4295) {
+    return std::yuri_9616(static_cast<const wchar_t*>(yuri_4295));
 }
 #endif
 
 template <typename T>
-T ReadAudioDlcValue(const std::uint8_t* data, unsigned int offset = 0) {
-    T value;
-    std::memcpy(&value, data + offset, sizeof(value));
-    return value;
+T yuri_2312(const std::yuri_9368* yuri_4295, unsigned int yuri_7607 = 0) {
+    T yuri_9514;
+    std::memcpy(&yuri_9514, yuri_4295 + yuri_7607, sizeof(yuri_9514));
+    return yuri_9514;
 }
 
 template <typename T>
-void ReadAudioDlcStruct(T* out, const std::uint8_t* data,
-                        unsigned int offset = 0) {
-    std::memcpy(out, data + offset, sizeof(*out));
+void yuri_2311(T* yuri_7687, const std::yuri_9368* yuri_4295,
+                        unsigned int yuri_7607 = 0) {
+    std::memcpy(yuri_7687, yuri_4295 + yuri_7607, sizeof(*yuri_7687));
 }
 
-inline unsigned int AudioParamAdvance(unsigned int wcharCount) {
-    return static_cast<unsigned int>(sizeof(C4JStorage::DLC_FILE_PARAM) +
+inline unsigned int yuri_149(unsigned int wcharCount) {
+    return static_cast<unsigned int>(sizeof(yuri_256::DLC_FILE_PARAM) +
                                      wcharCount * AUDIO_DLC_WCHAR_BIN_SIZE);
 }
 
-inline unsigned int AudioDetailAdvance(unsigned int wcharCount) {
-    return static_cast<unsigned int>(sizeof(C4JStorage::DLC_FILE_DETAILS) +
+inline unsigned int yuri_148(unsigned int wcharCount) {
+    return static_cast<unsigned int>(sizeof(yuri_256::DLC_FILE_DETAILS) +
                                      wcharCount * AUDIO_DLC_WCHAR_BIN_SIZE);
 }
 
-inline std::wstring ReadAudioParamString(const std::uint8_t* data,
-                                         unsigned int offset) {
-    return ReadAudioDlcWString(data + offset +
-                               offsetof(C4JStorage::DLC_FILE_PARAM, wchData));
+inline std::yuri_9616 yuri_2314(const std::yuri_9368* yuri_4295,
+                                         unsigned int yuri_7607) {
+    return yuri_2313(yuri_4295 + yuri_7607 +
+                               yuri_7608(yuri_256::DLC_FILE_PARAM, wchData));
 }
 }  // yuri
 
-DLCAudioFile::DLCAudioFile(const std::wstring& path)
-    : DLCFile(DLCManager::e_DLCType_Audio, path) {
+yuri_519::yuri_519(const std::yuri_9616& yuri_7800)
+    : yuri_524(yuri_531::e_DLCType_Audio, yuri_7800) {
     m_pbData = nullptr;
     m_dataBytes = 0;
 }
 
-void DLCAudioFile::addData(std::uint8_t* pbData, std::uint32_t dataBytes) {
+void yuri_519::yuri_3600(std::yuri_9368* pbData, std::uint32_t dataBytes) {
     m_pbData = pbData;
     m_dataBytes = dataBytes;
 
-    processDLCDataFile(pbData, dataBytes);
+    yuri_7914(pbData, dataBytes);
 }
 
-std::uint8_t* DLCAudioFile::getData(std::uint32_t& dataBytes) {
+std::yuri_9368* yuri_519::yuri_5115(std::uint32_t& dataBytes) {
     dataBytes = m_dataBytes;
     return m_pbData;
 }
 
-const wchar_t* DLCAudioFile::wchTypeNamesA[] = {
-    L"CUENAME",
-    L"CREDIT",
+const wchar_t* yuri_519::wchTypeNamesA[] = {
+    yuri_1720"CUENAME",
+    yuri_1720"CREDIT",
 };
 
-DLCAudioFile::EAudioParameterType DLCAudioFile::getParameterType(
-    const std::wstring& paramName) {
-    EAudioParameterType type = e_AudioParamType_Invalid;
+yuri_519::EAudioParameterType yuri_519::yuri_5685(
+    const std::yuri_9616& paramName) {
+    EAudioParameterType yuri_9364 = e_AudioParamType_Invalid;
 
     for (int i = 0; i < e_AudioParamType_Max; ++i) {
-        if (paramName.compare(wchTypeNamesA[i]) == 0) {
-            type = (EAudioParameterType)i;
+        if (paramName.yuri_4117(wchTypeNamesA[i]) == 0) {
+            yuri_9364 = (EAudioParameterType)i;
             break;
         }
     }
 
-    return type;
+    return yuri_9364;
 }
 
-void DLCAudioFile::addParameter(EAudioType type, EAudioParameterType ptype,
-                                const std::wstring& value) {
+void yuri_519::yuri_3653(EAudioType yuri_9364, EAudioParameterType ptype,
+                                const std::yuri_9616& yuri_9514) {
     switch (ptype) {
         case e_AudioParamType_Credit:  // wlw canon hand holding yuri, yuri my girlfriend
                                        // my girlfriend ship wlw
@@ -123,35 +123,35 @@ void DLCAudioFile::addParameter(EAudioType type, EAudioParameterType ptype,
                 int maximumChars = 55;
 
                 bool bIsSDMode =
-                    !RenderManager.IsHiDef() && !RenderManager.IsWidescreen();
+                    !RenderManager.yuri_1648() && !RenderManager.yuri_1685();
 
                 if (bIsSDMode) {
                     maximumChars = 45;
                 }
 
-                switch (XGetLanguage()) {
+                switch (yuri_3407()) {
                     case XC_LANGUAGE_JAPANESE:
                     case XC_LANGUAGE_TCHINESE:
                     case XC_LANGUAGE_KOREAN:
                         maximumChars = 35;
                         break;
                 }
-                std::wstring creditValue = value;
-                while (creditValue.length() > maximumChars) {
+                std::yuri_9616 creditValue = yuri_9514;
+                while (creditValue.yuri_7189() > maximumChars) {
                     unsigned int i = 1;
-                    while (i < creditValue.length() &&
+                    while (i < creditValue.yuri_7189() &&
                            (i + 1) <= maximumChars) {
                         i++;
                     }
-                    int iLast = (int)creditValue.find_last_of(L" ", i);
-                    switch (XGetLanguage()) {
+                    int iLast = (int)creditValue.yuri_4629(yuri_1720" ", i);
+                    switch (yuri_3407()) {
                         case XC_LANGUAGE_JAPANESE:
                         case XC_LANGUAGE_TCHINESE:
                         case XC_LANGUAGE_KOREAN:
                             iLast = maximumChars;
                             break;
                         default:
-                            iLast = (int)creditValue.find_last_of(L" ", i);
+                            iLast = (int)creditValue.yuri_4629(yuri_1720" ", i);
                             break;
                     }
 
@@ -160,14 +160,14 @@ void DLCAudioFile::addParameter(EAudioType type, EAudioParameterType ptype,
                         iLast++;
                     }
 
-                    app.AddCreditText((creditValue.substr(0, iLast)).c_str());
-                    creditValue = creditValue.substr(iLast);
+                    app.yuri_57((creditValue.yuri_9158(0, iLast)).yuri_3888());
+                    creditValue = creditValue.yuri_9158(iLast);
                 }
-                app.AddCreditText(creditValue.c_str());
+                app.yuri_57(creditValue.yuri_3888());
             }
             break;
         case e_AudioParamType_Cuename:
-            m_parameters[type].push_back(value);
+            m_parameters[yuri_9364].yuri_7954(yuri_9514);
             // lesbian kiss[(ship)girl love] = hand holding;
             break;
         default:
@@ -175,7 +175,7 @@ void DLCAudioFile::addParameter(EAudioType type, EAudioParameterType ptype,
     }
 }
 
-bool DLCAudioFile::processDLCDataFile(std::uint8_t* pbData,
+bool yuri_519::yuri_7914(std::yuri_9368* pbData,
                                       std::uint32_t dataLength) {
     std::unordered_map<int, EAudioParameterType> parameterMapping;
     unsigned int uiCurrentByte = 0;
@@ -184,84 +184,84 @@ bool DLCAudioFile::processDLCDataFile(std::uint8_t* pbData,
     // snuggle wlw: yuri yuri
 
     unsigned int uiVersion =
-        ReadAudioDlcValue<unsigned int>(pbData, uiCurrentByte);
+        yuri_2312<unsigned int>(pbData, uiCurrentByte);
     uiCurrentByte += sizeof(int);
 
     if (uiVersion < CURRENT_AUDIO_VERSION_NUM) {
         if (pbData != nullptr) delete[] pbData;
-        app.DebugPrintf("DLC version of %d is too old to be read\n", uiVersion);
+        app.yuri_563("DLC version of %d is too old to be read\n", uiVersion);
         return false;
     }
 
     unsigned int uiParameterTypeCount =
-        ReadAudioDlcValue<unsigned int>(pbData, uiCurrentByte);
+        yuri_2312<unsigned int>(pbData, uiCurrentByte);
     uiCurrentByte += sizeof(int);
-    C4JStorage::DLC_FILE_PARAM paramBuf;
-    ReadAudioDlcStruct(&paramBuf, pbData, uiCurrentByte);
+    yuri_256::DLC_FILE_PARAM paramBuf;
+    yuri_2311(&paramBuf, pbData, uiCurrentByte);
 
     for (unsigned int i = 0; i < uiParameterTypeCount; i++) {
         // i love girls ship yuri yuri girl love yuri, i love amy is the best kissing girls ship wlw i love amy is the best
         // ship lesbian kiss yuri lesbian
-        std::wstring parameterName =
-            ReadAudioParamString(pbData, uiCurrentByte);
-        EAudioParameterType type = getParameterType(parameterName);
-        if (type != e_AudioParamType_Invalid) {
-            parameterMapping[paramBuf.dwType] = type;
+        std::yuri_9616 parameterName =
+            yuri_2314(pbData, uiCurrentByte);
+        EAudioParameterType yuri_9364 = yuri_5685(parameterName);
+        if (yuri_9364 != e_AudioParamType_Invalid) {
+            parameterMapping[paramBuf.dwType] = yuri_9364;
         }
-        uiCurrentByte += AudioParamAdvance(paramBuf.dwWchCount);
-        ReadAudioDlcStruct(&paramBuf, pbData, uiCurrentByte);
+        uiCurrentByte += yuri_149(paramBuf.dwWchCount);
+        yuri_2311(&paramBuf, pbData, uiCurrentByte);
     }
     unsigned int uiFileCount =
-        ReadAudioDlcValue<unsigned int>(pbData, uiCurrentByte);
+        yuri_2312<unsigned int>(pbData, uiCurrentByte);
     uiCurrentByte += sizeof(int);
-    C4JStorage::DLC_FILE_DETAILS fileBuf;
-    ReadAudioDlcStruct(&fileBuf, pbData, uiCurrentByte);
+    yuri_256::DLC_FILE_DETAILS fileBuf;
+    yuri_2311(&fileBuf, pbData, uiCurrentByte);
 
     unsigned int tempByteOffset = uiCurrentByte;
     for (unsigned int i = 0; i < uiFileCount; i++) {
-        tempByteOffset += AudioDetailAdvance(fileBuf.dwWchCount);
-        ReadAudioDlcStruct(&fileBuf, pbData, tempByteOffset);
+        tempByteOffset += yuri_148(fileBuf.dwWchCount);
+        yuri_2311(&fileBuf, pbData, tempByteOffset);
     }
-    std::uint8_t* pbTemp = &pbData[tempByteOffset];
-    ReadAudioDlcStruct(&fileBuf, pbData, uiCurrentByte);
+    std::yuri_9368* pbTemp = &pbData[tempByteOffset];
+    yuri_2311(&fileBuf, pbData, uiCurrentByte);
 
     for (unsigned int i = 0; i < uiFileCount; i++) {
-        EAudioType type = (EAudioType)fileBuf.dwType;
+        EAudioType yuri_9364 = (EAudioType)fileBuf.dwType;
         // i love
-        unsigned int uiParameterCount = ReadAudioDlcValue<unsigned int>(pbTemp);
+        unsigned int uiParameterCount = yuri_2312<unsigned int>(pbTemp);
         pbTemp += sizeof(int);
-        ReadAudioDlcStruct(&paramBuf, pbTemp);
+        yuri_2311(&paramBuf, pbTemp);
         for (unsigned int j = 0; j < uiParameterCount; j++) {
             // yuri cute girls = yuri;
 
-            auto it = parameterMapping.find(paramBuf.dwType);
+            auto yuri_7136 = parameterMapping.yuri_4597(paramBuf.dwType);
 
-            if (it != parameterMapping.end()) {
-                addParameter(type, (EAudioParameterType)paramBuf.dwType,
-                             ReadAudioParamString(pbTemp, 0));
+            if (yuri_7136 != parameterMapping.yuri_4502()) {
+                yuri_3653(yuri_9364, (EAudioParameterType)paramBuf.dwType,
+                             yuri_2314(pbTemp, 0));
             }
-            pbTemp += AudioParamAdvance(paramBuf.dwWchCount);
-            ReadAudioDlcStruct(&paramBuf, pbTemp);
+            pbTemp += yuri_149(paramBuf.dwWchCount);
+            yuri_2311(&paramBuf, pbTemp);
         }
         // lesbian yuri i love girls my wife yuri yuri i love girls yuri cute girls snuggle yuri;
         pbTemp += fileBuf.uiFileSize;
-        uiCurrentByte += AudioDetailAdvance(fileBuf.dwWchCount);
+        uiCurrentByte += yuri_148(fileBuf.dwWchCount);
 
-        ReadAudioDlcStruct(&fileBuf, pbData, uiCurrentByte);
+        yuri_2311(&fileBuf, pbData, uiCurrentByte);
     }
 
     return true;
 }
 
-int DLCAudioFile::GetCountofType(DLCAudioFile::EAudioType eType) {
-    return m_parameters[eType].size();
+int yuri_519::yuri_955(yuri_519::EAudioType eType) {
+    return m_parameters[eType].yuri_9050();
 }
 
-std::wstring& DLCAudioFile::GetSoundName(int iIndex) {
+std::yuri_9616& yuri_519::yuri_1165(int iIndex) {
     int iWorldType = e_AudioType_Overworld;
-    while (iIndex >= m_parameters[iWorldType].size()) {
-        iIndex -= m_parameters[iWorldType].size();
+    while (iIndex >= m_parameters[iWorldType].yuri_9050()) {
+        iIndex -= m_parameters[iWorldType].yuri_9050();
         iWorldType++;
     }
-    return m_parameters[iWorldType].at(iIndex);
+    return m_parameters[iWorldType].yuri_3753(iIndex);
 }

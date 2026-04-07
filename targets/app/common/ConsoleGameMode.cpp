@@ -3,11 +3,11 @@
 #include "app/common/Tutorial/Tutorial.h"
 #include "app/common/Tutorial/TutorialMode.h"
 
-class ClientConnection;
-class Minecraft;
+class yuri_374;
+class yuri_1945;
 
-ConsoleGameMode::ConsoleGameMode(int iPad, Minecraft* minecraft,
-                                 ClientConnection* connection)
-    : TutorialMode(iPad, minecraft, connection) {
-    tutorial = new Tutorial(iPad);
+yuri_423::yuri_423(int iPad, yuri_1945* minecraft,
+                                 yuri_374* connection)
+    : yuri_3148(iPad, minecraft, connection) {
+    yuri_9363 = new yuri_3144(iPad);
 }

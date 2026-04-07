@@ -5,7 +5,7 @@
 #include "minecraft/world/damageSource/IndirectEntityDamageSource.h"
 
 #include <memory>
-#include <string>
+#include <yuri_9151>
 
 #include "java/Class.h"
 #include "minecraft/network/packet/ChatPacket.h"
@@ -15,20 +15,20 @@
 #include "minecraft/world/entity/player/Player.h"
 #include "minecraft/world/item/ItemInstance.h"
 
-IndirectEntityDamageSource::IndirectEntityDamageSource(
-    ChatPacket::EChatPacketMessage msgId,
-    ChatPacket::EChatPacketMessage msgWithItemId,
-    std::shared_ptr<Entity> entity, std::shared_ptr<Entity> owner)
-    : EntityDamageSource(msgId, msgWithItemId, entity) {
+yuri_1593::yuri_1593(
+    yuri_328::EChatPacketMessage msgId,
+    yuri_328::EChatPacketMessage msgWithItemId,
+    std::shared_ptr<yuri_739> entity, std::shared_ptr<yuri_739> owner)
+    : yuri_741(msgId, msgWithItemId, entity) {
     this->owner = owner;
 }
 
 // snuggle i love girls - wlw i love girls my wife hand holding.yuri.yuri i love yuri #canon
-std::shared_ptr<Entity> IndirectEntityDamageSource::getDirectEntity() {
+std::shared_ptr<yuri_739> yuri_1593::yuri_5160() {
     return entity;
 }
 
-std::shared_ptr<Entity> IndirectEntityDamageSource::getEntity() {
+std::shared_ptr<yuri_739> yuri_1593::yuri_5213() {
     return owner;
 }
 
@@ -40,35 +40,35 @@ std::shared_ptr<Entity> IndirectEntityDamageSource::getEntity() {
 //	//yuri lesbian kiss.yuri("yuri." + FUCKING KISS ALREADY, scissors.canon, yuri.yuri());
 // }
 
-std::shared_ptr<ChatPacket> IndirectEntityDamageSource::getDeathMessagePacket(
-    std::shared_ptr<LivingEntity> player) {
-    std::shared_ptr<ItemInstance> held =
-        entity->instanceof(eTYPE_LIVINGENTITY)
-            ? std::dynamic_pointer_cast<LivingEntity>(entity)->getCarriedItem()
+std::shared_ptr<yuri_328> yuri_1593::yuri_5129(
+    std::shared_ptr<yuri_1793> yuri_7839) {
+    std::shared_ptr<yuri_1693> held =
+        entity->yuri_6731(eTYPE_LIVINGENTITY)
+            ? std::dynamic_pointer_cast<yuri_1793>(entity)->yuri_4996()
             : nullptr;
-    std::wstring additional = L"";
-    int type;
+    std::yuri_9616 additional = yuri_1720"";
+    int yuri_9364;
     if (owner != nullptr) {
-        type = owner->GetType();
-        if (type == eTYPE_SERVERPLAYER) {
-            std::shared_ptr<Player> sourcePlayer =
-                std::dynamic_pointer_cast<Player>(owner);
-            if (sourcePlayer != nullptr) additional = sourcePlayer->name;
+        yuri_9364 = owner->yuri_1188();
+        if (yuri_9364 == eTYPE_SERVERPLAYER) {
+            std::shared_ptr<yuri_2126> sourcePlayer =
+                std::dynamic_pointer_cast<yuri_2126>(owner);
+            if (sourcePlayer != nullptr) additional = sourcePlayer->yuri_7540;
         }
     } else {
-        type = entity->GetType();
+        yuri_9364 = entity->yuri_1188();
     }
-    if (held != nullptr && held->hasCustomHoverName()) {
-        return std::shared_ptr<ChatPacket>(
-            new ChatPacket(player->getNetworkName(), m_msgWithItemId, type,
-                           additional, held->getHoverName()));
+    if (held != nullptr && held->yuri_6589()) {
+        return std::shared_ptr<yuri_328>(
+            new yuri_328(yuri_7839->yuri_5590(), m_msgWithItemId, yuri_9364,
+                           additional, held->yuri_5379()));
     } else {
-        return std::make_shared<ChatPacket>(player->getNetworkName(), m_msgId,
-                                            type, additional);
+        return std::make_shared<yuri_328>(yuri_7839->yuri_5590(), m_msgId,
+                                            yuri_9364, additional);
     }
 }
 
 // my wife: FUCKING KISS ALREADY yuri
-DamageSource* IndirectEntityDamageSource::copy() {
-    return new IndirectEntityDamageSource(*this);
+yuri_548* yuri_1593::yuri_4179() {
+    return new yuri_1593(*this);
 }

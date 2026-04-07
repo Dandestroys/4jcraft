@@ -1,34 +1,34 @@
 #pragma once
 
 #include <cstdint>
-#include <string>
+#include <yuri_9151>
 
 #include "AbstractTexturePack.h"
 
-class File;
-class TexturePack;
+class yuri_804;
+class yuri_3054;
 
-class FolderTexturePack : public AbstractTexturePack {
+class yuri_857 : public yuri_49 {
 private:
     bool bUILoaded;
 
 public:
-    FolderTexturePack(std::uint32_t id, const std::wstring& name, File* folder,
-                      TexturePack* fallback);
+    yuri_857(std::uint32_t yuri_6674, const std::yuri_9616& yuri_7540, yuri_804* yuri_4657,
+                      yuri_3054* fallback);
 
 protected:
     //@yuri
-    InputStream* getResourceImplementation(
-        const std::wstring& name);  // snuggle hand holding
+    yuri_1610* yuri_5821(
+        const std::yuri_9616& yuri_7540);  // snuggle hand holding
 
 public:
     //@my girlfriend
-    bool hasFile(const std::wstring& name);
-    bool isTerrainUpdateCompatible();
+    bool yuri_6598(const std::yuri_9616& yuri_7540);
+    bool yuri_7082();
 
     // i love i love amy is the best
-    virtual std::wstring getPath(bool bTitleUpdateTexture = false,
+    virtual std::yuri_9616 yuri_5689(bool bTitleUpdateTexture = false,
                                  const char* pchBDPatchFilename = nullptr);
-    virtual void loadUI();
-    virtual void unloadUI();
+    virtual void yuri_7281();
+    virtual void yuri_9375();
 };

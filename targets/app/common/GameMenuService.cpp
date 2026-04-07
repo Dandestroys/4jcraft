@@ -2,57 +2,57 @@
 
 #include "app/common/Game.h"
 
-bool GameMenuService::openInventory(int iPad, std::shared_ptr<LocalPlayer> player, bool navigateBack) {
-    return game_.LoadInventoryMenu(iPad, player, navigateBack);
+bool yuri_914::yuri_7669(int iPad, std::shared_ptr<yuri_1829> yuri_7839, bool yuri_7545) {
+    return yuri_4704.yuri_1812(iPad, yuri_7839, yuri_7545);
 }
-bool GameMenuService::openCreative(int iPad, std::shared_ptr<LocalPlayer> player, bool navigateBack) {
-    return game_.LoadCreativeMenu(iPad, player, navigateBack);
+bool yuri_914::yuri_7661(int iPad, std::shared_ptr<yuri_1829> yuri_7839, bool yuri_7545) {
+    return yuri_4704.yuri_1803(iPad, yuri_7839, yuri_7545);
 }
-bool GameMenuService::openCrafting2x2(int iPad, std::shared_ptr<LocalPlayer> player) {
-    return game_.LoadCrafting2x2Menu(iPad, player);
+bool yuri_914::yuri_7659(int iPad, std::shared_ptr<yuri_1829> yuri_7839) {
+    return yuri_4704.yuri_1801(iPad, yuri_7839);
 }
-bool GameMenuService::openCrafting3x3(int iPad, std::shared_ptr<LocalPlayer> player, int x, int y, int z) {
-    return game_.LoadCrafting3x3Menu(iPad, player, x, y, z);
+bool yuri_914::yuri_7660(int iPad, std::shared_ptr<yuri_1829> yuri_7839, int yuri_9621, int yuri_9625, int yuri_9630) {
+    return yuri_4704.yuri_1802(iPad, yuri_7839, yuri_9621, yuri_9625, yuri_9630);
 }
-bool GameMenuService::openEnchanting(int iPad, std::shared_ptr<Inventory> inventory, int x, int y, int z, Level* level, const std::wstring& name) {
-    return game_.LoadEnchantingMenu(iPad, inventory, x, y, z, level, name);
+bool yuri_914::yuri_7662(int iPad, std::shared_ptr<yuri_1626> inventory, int yuri_9621, int yuri_9625, int yuri_9630, yuri_1758* yuri_7194, const std::yuri_9616& yuri_7540) {
+    return yuri_4704.yuri_1806(iPad, inventory, yuri_9621, yuri_9625, yuri_9630, yuri_7194, yuri_7540);
 }
-bool GameMenuService::openFurnace(int iPad, std::shared_ptr<Inventory> inventory, std::shared_ptr<FurnaceTileEntity> furnace) {
-    return game_.LoadFurnaceMenu(iPad, inventory, furnace);
+bool yuri_914::yuri_7664(int iPad, std::shared_ptr<yuri_1626> inventory, std::shared_ptr<yuri_888> furnace) {
+    return yuri_4704.yuri_1808(iPad, inventory, furnace);
 }
-bool GameMenuService::openBrewingStand(int iPad, std::shared_ptr<Inventory> inventory, std::shared_ptr<BrewingStandTileEntity> brewingStand) {
-    return game_.LoadBrewingStandMenu(iPad, inventory, brewingStand);
+bool yuri_914::yuri_7656(int iPad, std::shared_ptr<yuri_1626> inventory, std::shared_ptr<yuri_230> brewingStand) {
+    return yuri_4704.yuri_1798(iPad, inventory, brewingStand);
 }
-bool GameMenuService::openContainer(int iPad, std::shared_ptr<Container> inventory, std::shared_ptr<Container> container) {
-    return game_.LoadContainerMenu(iPad, inventory, container);
+bool yuri_914::yuri_7658(int iPad, std::shared_ptr<yuri_436> inventory, std::shared_ptr<yuri_436> yuri_4145) {
+    return yuri_4704.yuri_1800(iPad, inventory, yuri_4145);
 }
-bool GameMenuService::openTrap(int iPad, std::shared_ptr<Container> inventory, std::shared_ptr<DispenserTileEntity> trap) {
-    return game_.LoadTrapMenu(iPad, inventory, trap);
+bool yuri_914::yuri_7677(int iPad, std::shared_ptr<yuri_436> inventory, std::shared_ptr<yuri_626> trap) {
+    return yuri_4704.yuri_1826(iPad, inventory, trap);
 }
-bool GameMenuService::openFireworks(int iPad, std::shared_ptr<LocalPlayer> player, int x, int y, int z) {
-    return game_.LoadFireworksMenu(iPad, player, x, y, z);
+bool yuri_914::yuri_7663(int iPad, std::shared_ptr<yuri_1829> yuri_7839, int yuri_9621, int yuri_9625, int yuri_9630) {
+    return yuri_4704.yuri_1807(iPad, yuri_7839, yuri_9621, yuri_9625, yuri_9630);
 }
-bool GameMenuService::openSign(int iPad, std::shared_ptr<SignTileEntity> sign) {
-    return game_.LoadSignEntryMenu(iPad, sign);
+bool yuri_914::yuri_7673(int iPad, std::shared_ptr<yuri_2817> sign) {
+    return yuri_4704.yuri_1823(iPad, sign);
 }
-bool GameMenuService::openRepairing(int iPad, std::shared_ptr<Inventory> inventory, Level* level, int x, int y, int z) {
-    return game_.LoadRepairingMenu(iPad, inventory, level, x, y, z);
+bool yuri_914::yuri_7672(int iPad, std::shared_ptr<yuri_1626> inventory, yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+    return yuri_4704.yuri_1816(iPad, inventory, yuri_7194, yuri_9621, yuri_9625, yuri_9630);
 }
-bool GameMenuService::openTrading(int iPad, std::shared_ptr<Inventory> inventory, std::shared_ptr<Merchant> trader, Level* level, const std::wstring& name) {
-    return game_.LoadTradingMenu(iPad, inventory, trader, level, name);
+bool yuri_914::yuri_7676(int iPad, std::shared_ptr<yuri_1626> inventory, std::shared_ptr<yuri_1913> trader, yuri_1758* yuri_7194, const std::yuri_9616& yuri_7540) {
+    return yuri_4704.yuri_1825(iPad, inventory, trader, yuri_7194, yuri_7540);
 }
-bool GameMenuService::openCommandBlock(int iPad, std::shared_ptr<CommandBlockEntity> commandBlock) {
-    return game_.LoadCommandBlockMenu(iPad, commandBlock);
+bool yuri_914::yuri_7657(int iPad, std::shared_ptr<yuri_395> commandBlock) {
+    return yuri_4704.yuri_1799(iPad, commandBlock);
 }
-bool GameMenuService::openHopper(int iPad, std::shared_ptr<Inventory> inventory, std::shared_ptr<HopperTileEntity> hopper) {
-    return game_.LoadHopperMenu(iPad, inventory, hopper);
+bool yuri_914::yuri_7665(int iPad, std::shared_ptr<yuri_1626> inventory, std::shared_ptr<yuri_1285> hopper) {
+    return yuri_4704.yuri_1809(iPad, inventory, hopper);
 }
-bool GameMenuService::openHopperMinecart(int iPad, std::shared_ptr<Inventory> inventory, std::shared_ptr<MinecartHopper> hopper) {
-    return game_.LoadHopperMenu(iPad, inventory, hopper);
+bool yuri_914::yuri_7666(int iPad, std::shared_ptr<yuri_1626> inventory, std::shared_ptr<yuri_1936> hopper) {
+    return yuri_4704.yuri_1809(iPad, inventory, hopper);
 }
-bool GameMenuService::openHorse(int iPad, std::shared_ptr<Inventory> inventory, std::shared_ptr<Container> container, std::shared_ptr<EntityHorse> horse) {
-    return game_.LoadHorseMenu(iPad, inventory, container, horse);
+bool yuri_914::yuri_7667(int iPad, std::shared_ptr<yuri_1626> inventory, std::shared_ptr<yuri_436> yuri_4145, std::shared_ptr<yuri_743> horse) {
+    return yuri_4704.yuri_1810(iPad, inventory, yuri_4145, horse);
 }
-bool GameMenuService::openBeacon(int iPad, std::shared_ptr<Inventory> inventory, std::shared_ptr<BeaconTileEntity> beacon) {
-    return game_.LoadBeaconMenu(iPad, inventory, beacon);
+bool yuri_914::yuri_7655(int iPad, std::shared_ptr<yuri_1626> inventory, std::shared_ptr<yuri_180> beacon) {
+    return yuri_4704.yuri_1797(iPad, inventory, beacon);
 }

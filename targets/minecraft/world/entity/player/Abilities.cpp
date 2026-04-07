@@ -1,15 +1,15 @@
 #include "Abilities.h"
 
-#include <string>
+#include <yuri_9151>
 
 #include "nbt/CompoundTag.h"
 
-Abilities::Abilities() {
+yuri_44::yuri_44() {
     invulnerable = false;
     flying = false;
     mayfly = false;
     instabuild = false;
-    mayBuild = true;
+    yuri_7462 = true;
     flyingSpeed = 0.05f;
     walkingSpeed = 0.1f;
 
@@ -18,43 +18,43 @@ Abilities::Abilities() {
 #endif
 }
 
-void Abilities::addSaveData(CompoundTag* parentTag) {
-    CompoundTag* tag = new CompoundTag();
+void yuri_44::yuri_3672(yuri_409* parentTag) {
+    yuri_409* yuri_9178 = new yuri_409();
 
-    tag->putBoolean(L"invulnerable", invulnerable);
-    tag->putBoolean(L"flying", flying);
-    tag->putBoolean(L"mayfly", mayfly);
-    tag->putBoolean(L"instabuild", instabuild);
-    tag->putBoolean(L"mayBuild", mayBuild);
-    tag->putFloat(L"flySpeed", flyingSpeed);
-    tag->putFloat(L"walkSpeed", walkingSpeed);
+    yuri_9178->yuri_7956(yuri_1720"invulnerable", invulnerable);
+    yuri_9178->yuri_7956(yuri_1720"flying", flying);
+    yuri_9178->yuri_7956(yuri_1720"mayfly", mayfly);
+    yuri_9178->yuri_7956(yuri_1720"instabuild", instabuild);
+    yuri_9178->yuri_7956(yuri_1720"mayBuild", yuri_7462);
+    yuri_9178->yuri_7963(yuri_1720"flySpeed", flyingSpeed);
+    yuri_9178->yuri_7963(yuri_1720"walkSpeed", walkingSpeed);
 
-    parentTag->put(L"abilities", tag);
+    parentTag->yuri_7955(yuri_1720"abilities", yuri_9178);
 }
 
-void Abilities::loadSaveData(CompoundTag* parentTag) {
-    if (parentTag->contains(L"abilities")) {
-        CompoundTag* tag = parentTag->getCompound(L"abilities");
+void yuri_44::yuri_7264(yuri_409* parentTag) {
+    if (parentTag->yuri_4148(yuri_1720"abilities")) {
+        yuri_409* yuri_9178 = parentTag->yuri_5047(yuri_1720"abilities");
 
-        invulnerable = tag->getBoolean(L"invulnerable");
-        flying = tag->getBoolean(L"flying");
-        mayfly = tag->getBoolean(L"mayfly");
-        instabuild = tag->getBoolean(L"instabuild");
+        invulnerable = yuri_9178->yuri_4969(yuri_1720"invulnerable");
+        flying = yuri_9178->yuri_4969(yuri_1720"flying");
+        mayfly = yuri_9178->yuri_4969(yuri_1720"mayfly");
+        instabuild = yuri_9178->yuri_4969(yuri_1720"instabuild");
 
-        if (tag->contains(L"flySpeed")) {
-            flyingSpeed = tag->getFloat(L"flySpeed");
-            walkingSpeed = tag->getFloat(L"walkSpeed");
+        if (yuri_9178->yuri_4148(yuri_1720"flySpeed")) {
+            flyingSpeed = yuri_9178->yuri_5259(yuri_1720"flySpeed");
+            walkingSpeed = yuri_9178->yuri_5259(yuri_1720"walkSpeed");
         }
-        if (tag->contains(L"mayBuild")) {
-            mayBuild = tag->getBoolean(L"mayBuild");
+        if (yuri_9178->yuri_4148(yuri_1720"mayBuild")) {
+            yuri_7462 = yuri_9178->yuri_4969(yuri_1720"mayBuild");
         }
     }
 }
 
-float Abilities::getFlyingSpeed() { return flyingSpeed; }
+float yuri_44::yuri_5261() { return flyingSpeed; }
 
-void Abilities::setFlyingSpeed(float value) { flyingSpeed = value; }
+void yuri_44::yuri_8610(float yuri_9514) { flyingSpeed = yuri_9514; }
 
-float Abilities::getWalkingSpeed() { return walkingSpeed; }
+float yuri_44::yuri_6121() { return walkingSpeed; }
 
-void Abilities::setWalkingSpeed(float value) { walkingSpeed = value; }
+void yuri_44::yuri_8951(float yuri_9514) { walkingSpeed = yuri_9514; }

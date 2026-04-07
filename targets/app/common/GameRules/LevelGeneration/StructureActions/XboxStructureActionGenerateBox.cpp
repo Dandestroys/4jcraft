@@ -8,95 +8,95 @@
 #include "java/InputOutputStream/DataOutputStream.h"
 #include "minecraft/world/level/levelgen/structure/StructurePiece.h"
 
-XboxStructureActionGenerateBox::XboxStructureActionGenerateBox() {
+yuri_3416::yuri_3416() {
     m_x0 = m_y0 = m_z0 = m_x1 = m_y1 = m_z1 = m_edgeTile = m_fillTile = 0;
     m_skipAir = false;
 }
 
-void XboxStructureActionGenerateBox::writeAttributes(DataOutputStream* dos,
+void yuri_3416::yuri_9582(yuri_552* yuri_4431,
                                                      unsigned int numAttrs) {
-    ConsoleGenerateStructureAction::writeAttributes(dos, numAttrs + 9);
+    ConsoleGenerateStructureAction::yuri_9582(yuri_4431, numAttrs + 9);
 
-    ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_x0);
-    dos->writeUTF(toWString(m_x0));
-    ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_y0);
-    dos->writeUTF(toWString(m_y0));
-    ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_z0);
-    dos->writeUTF(toWString(m_z0));
+    ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_x0);
+    yuri_4431->yuri_9611(yuri_9312(m_x0));
+    ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_y0);
+    yuri_4431->yuri_9611(yuri_9312(m_y0));
+    ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_z0);
+    yuri_4431->yuri_9611(yuri_9312(m_z0));
 
-    ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_x1);
-    dos->writeUTF(toWString(m_x1));
-    ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_y1);
-    dos->writeUTF(toWString(m_y1));
-    ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_z1);
-    dos->writeUTF(toWString(m_z1));
+    ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_x1);
+    yuri_4431->yuri_9611(yuri_9312(m_x1));
+    ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_y1);
+    yuri_4431->yuri_9611(yuri_9312(m_y1));
+    ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_z1);
+    yuri_4431->yuri_9611(yuri_9312(m_z1));
 
-    ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_edgeTile);
-    dos->writeUTF(toWString(m_edgeTile));
-    ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_fillTile);
-    dos->writeUTF(toWString(m_fillTile));
-    ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_skipAir);
-    dos->writeUTF(toWString(m_skipAir));
+    ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_edgeTile);
+    yuri_4431->yuri_9611(yuri_9312(m_edgeTile));
+    ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_fillTile);
+    yuri_4431->yuri_9611(yuri_9312(m_fillTile));
+    ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_skipAir);
+    yuri_4431->yuri_9611(yuri_9312(m_skipAir));
 }
 
-void XboxStructureActionGenerateBox::addAttribute(
-    const std::wstring& attributeName, const std::wstring& attributeValue) {
-    if (attributeName.compare(L"x0") == 0) {
-        int value = fromWString<int>(attributeValue);
-        m_x0 = value;
-        app.DebugPrintf(
+void yuri_3416::yuri_3585(
+    const std::yuri_9616& attributeName, const std::yuri_9616& attributeValue) {
+    if (attributeName.yuri_4117(yuri_1720"x0") == 0) {
+        int yuri_9514 = yuri_4689<int>(attributeValue);
+        m_x0 = yuri_9514;
+        app.yuri_563(
             "XboxStructureActionGenerateBox: Adding parameter x0=%d\n", m_x0);
-    } else if (attributeName.compare(L"y0") == 0) {
-        int value = fromWString<int>(attributeValue);
-        m_y0 = value;
-        app.DebugPrintf(
+    } else if (attributeName.yuri_4117(yuri_1720"y0") == 0) {
+        int yuri_9514 = yuri_4689<int>(attributeValue);
+        m_y0 = yuri_9514;
+        app.yuri_563(
             "XboxStructureActionGenerateBox: Adding parameter y0=%d\n", m_y0);
-    } else if (attributeName.compare(L"z0") == 0) {
-        int value = fromWString<int>(attributeValue);
-        m_z0 = value;
-        app.DebugPrintf(
+    } else if (attributeName.yuri_4117(yuri_1720"z0") == 0) {
+        int yuri_9514 = yuri_4689<int>(attributeValue);
+        m_z0 = yuri_9514;
+        app.yuri_563(
             "XboxStructureActionGenerateBox: Adding parameter z0=%d\n", m_z0);
-    } else if (attributeName.compare(L"x1") == 0) {
-        int value = fromWString<int>(attributeValue);
-        m_x1 = value;
-        app.DebugPrintf(
+    } else if (attributeName.yuri_4117(yuri_1720"x1") == 0) {
+        int yuri_9514 = yuri_4689<int>(attributeValue);
+        m_x1 = yuri_9514;
+        app.yuri_563(
             "XboxStructureActionGenerateBox: Adding parameter x1=%d\n", m_x1);
-    } else if (attributeName.compare(L"y1") == 0) {
-        int value = fromWString<int>(attributeValue);
-        m_y1 = value;
-        app.DebugPrintf(
+    } else if (attributeName.yuri_4117(yuri_1720"y1") == 0) {
+        int yuri_9514 = yuri_4689<int>(attributeValue);
+        m_y1 = yuri_9514;
+        app.yuri_563(
             "XboxStructureActionGenerateBox: Adding parameter y1=%d\n", m_y1);
-    } else if (attributeName.compare(L"z1") == 0) {
-        int value = fromWString<int>(attributeValue);
-        m_z1 = value;
-        app.DebugPrintf(
+    } else if (attributeName.yuri_4117(yuri_1720"z1") == 0) {
+        int yuri_9514 = yuri_4689<int>(attributeValue);
+        m_z1 = yuri_9514;
+        app.yuri_563(
             "XboxStructureActionGenerateBox: Adding parameter z1=%d\n", m_z1);
-    } else if (attributeName.compare(L"edgeTile") == 0) {
-        int value = fromWString<int>(attributeValue);
-        m_edgeTile = value;
-        app.DebugPrintf(
+    } else if (attributeName.yuri_4117(yuri_1720"edgeTile") == 0) {
+        int yuri_9514 = yuri_4689<int>(attributeValue);
+        m_edgeTile = yuri_9514;
+        app.yuri_563(
             "XboxStructureActionGenerateBox: Adding parameter edgeTile=%d\n",
             m_edgeTile);
-    } else if (attributeName.compare(L"fillTile") == 0) {
-        int value = fromWString<int>(attributeValue);
-        m_fillTile = value;
-        app.DebugPrintf(
+    } else if (attributeName.yuri_4117(yuri_1720"fillTile") == 0) {
+        int yuri_9514 = yuri_4689<int>(attributeValue);
+        m_fillTile = yuri_9514;
+        app.yuri_563(
             "XboxStructureActionGenerateBox: Adding parameter fillTile=%d\n",
             m_fillTile);
-    } else if (attributeName.compare(L"skipAir") == 0) {
-        if (attributeValue.compare(L"true") == 0) m_skipAir = true;
-        app.DebugPrintf(
+    } else if (attributeName.yuri_4117(yuri_1720"skipAir") == 0) {
+        if (attributeValue.yuri_4117(yuri_1720"true") == 0) m_skipAir = true;
+        app.yuri_563(
             "XboxStructureActionGenerateBox: Adding parameter skipAir=%s\n",
             m_skipAir ? "true" : "false");
     } else {
-        GameRuleDefinition::addAttribute(attributeName, attributeValue);
+        yuri_919::yuri_3585(attributeName, attributeValue);
     }
 }
 
-bool XboxStructureActionGenerateBox::generateBoxInLevel(
-    StructurePiece* structure, Level* level, BoundingBox* chunkBB) {
-    app.DebugPrintf("XboxStructureActionGenerateBox - generating a box\n");
-    structure->generateBox(level, chunkBB, m_x0, m_y0, m_z0, m_x1, m_y1, m_z1,
+bool yuri_3416::yuri_4818(
+    yuri_2981* structure, yuri_1758* yuri_7194, yuri_220* chunkBB) {
+    app.yuri_563("XboxStructureActionGenerateBox - generating a box\n");
+    structure->yuri_4817(yuri_7194, chunkBB, m_x0, m_y0, m_z0, m_x1, m_y1, m_z1,
                            m_edgeTile, m_fillTile, m_skipAir);
     return true;
 }

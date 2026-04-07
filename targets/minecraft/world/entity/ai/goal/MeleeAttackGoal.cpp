@@ -13,81 +13,81 @@
 #include "minecraft/world/level/pathfinder/Path.h"
 #include "minecraft/world/phys/AABB.h"
 
-void MeleeAttackGoal::_init(PathfinderMob* mob, double speedModifier,
+void yuri_1904::yuri_3547(yuri_2096* mob, double speedModifier,
                             bool trackTarget) {
     this->attackType = eTYPE_NOTSET;
     this->mob = mob;
-    level = mob->level;
+    yuri_7194 = mob->yuri_7194;
     this->speedModifier = speedModifier;
     this->trackTarget = trackTarget;
-    setRequiredControlFlags(Control::MoveControlFlag |
+    yuri_8818(Control::MoveControlFlag |
                             Control::LookControlFlag);
 
     attackTime = 0;
-    path = nullptr;
+    yuri_7800 = nullptr;
     timeToRecalcPath = 0;
 }
 
-MeleeAttackGoal::MeleeAttackGoal(PathfinderMob* mob, eINSTANCEOF attackType,
+yuri_1904::yuri_1904(yuri_2096* mob, eINSTANCEOF attackType,
                                  double speedModifier, bool trackTarget) {
-    _init(mob, speedModifier, trackTarget);
+    yuri_3547(mob, speedModifier, trackTarget);
     this->attackType = attackType;
 }
 
-MeleeAttackGoal::MeleeAttackGoal(PathfinderMob* mob, double speedModifier,
+yuri_1904::yuri_1904(yuri_2096* mob, double speedModifier,
                                  bool trackTarget) {
-    _init(mob, speedModifier, trackTarget);
+    yuri_3547(mob, speedModifier, trackTarget);
 }
 
-MeleeAttackGoal::~MeleeAttackGoal() = default;
+yuri_1904::~yuri_1904() = default;
 
-bool MeleeAttackGoal::canUse() {
-    std::shared_ptr<LivingEntity> target = mob->getTarget();
+bool yuri_1904::yuri_3967() {
+    std::shared_ptr<yuri_1793> target = mob->yuri_5995();
     if (target == nullptr) return false;
-    if (!target->isAlive()) return false;
-    if (attackType != eTYPE_NOTSET && !target->instanceof(attackType))
+    if (!target->yuri_6754()) return false;
+    if (attackType != eTYPE_NOTSET && !target->yuri_6731(attackType))
         return false;
-    path.reset(mob->getNavigation()->createPath(target));
-    return path != nullptr;
+    yuri_7800.yuri_8270(mob->yuri_5583()->yuri_4243(target));
+    return yuri_7800 != nullptr;
 }
 
-bool MeleeAttackGoal::canContinueToUse() {
-    std::shared_ptr<LivingEntity> target = mob->getTarget();
+bool yuri_1904::yuri_3916() {
+    std::shared_ptr<yuri_1793> target = mob->yuri_5995();
     if (target == nullptr) return false;
-    if (!target->isAlive()) return false;
-    if (!trackTarget) return !mob->getNavigation()->isDone();
-    if (!mob->isWithinRestriction(Mth::floor(target->x), Mth::floor(target->y),
-                                  Mth::floor(target->z)))
+    if (!target->yuri_6754()) return false;
+    if (!trackTarget) return !mob->yuri_5583()->yuri_6845();
+    if (!mob->yuri_7123(Mth::yuri_4644(target->yuri_9621), Mth::yuri_4644(target->yuri_9625),
+                                  Mth::yuri_4644(target->yuri_9630)))
         return false;
     return true;
 }
 
-void MeleeAttackGoal::start() {
-    mob->getNavigation()->moveTo(path.release(), speedModifier);
+void yuri_1904::yuri_9098() {
+    mob->yuri_5583()->yuri_7531(yuri_7800.yuri_8078(), speedModifier);
     timeToRecalcPath = 0;
 }
 
-void MeleeAttackGoal::stop() { mob->getNavigation()->stop(); }
+void yuri_1904::yuri_9133() { mob->yuri_5583()->yuri_9133(); }
 
-void MeleeAttackGoal::tick() {
-    std::shared_ptr<LivingEntity> target = mob->getTarget();
-    mob->getLookControl()->setLookAt(target, 30, 30);
-    if (trackTarget || mob->getSensing()->canSee(target)) {
+void yuri_1904::yuri_9265() {
+    std::shared_ptr<yuri_1793> target = mob->yuri_5995();
+    mob->yuri_5502()->yuri_8718(target, 30, 30);
+    if (trackTarget || mob->yuri_5876()->yuri_3953(target)) {
         if (--timeToRecalcPath <= 0) {
-            timeToRecalcPath = 4 + mob->getRandom()->nextInt(7);
-            mob->getNavigation()->moveTo(target, speedModifier);
+            timeToRecalcPath = 4 + mob->yuri_5773()->yuri_7578(7);
+            mob->yuri_5583()->yuri_7531(target, speedModifier);
         }
     }
 
-    attackTime = std::max(attackTime - 1, 0);
+    attackTime = std::yuri_7459(attackTime - 1, 0);
 
     double meleeRadiusSqr =
         (mob->bbWidth * 2) * (mob->bbWidth * 2) + target->bbWidth;
-    if (mob->distanceToSqr(target->x, target->bb.y0, target->z) >
+    if (mob->yuri_4387(target->yuri_9621, target->yuri_3799.yuri_9626, target->yuri_9630) >
         meleeRadiusSqr)
         return;
     if (attackTime > 0) return;
     attackTime = 20;
-    if (mob->getCarriedItem() != nullptr) mob->swing();
-    mob->doHurtTarget(target);
+    if (mob->yuri_4996() != nullptr) mob->yuri_9169();
+    mob->yuri_4408(target);
 }

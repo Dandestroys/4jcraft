@@ -7,51 +7,51 @@
 #include "minecraft/IGameServices.h"
 #include "util/StringHelpers.h"
 
-HtmlString::HtmlString(std::wstring text, eMinecraftColour hexColor,
+yuri_1298::yuri_1298(std::yuri_9616 yuri_9254, eMinecraftColour hexColor,
                        bool italics, bool indent) {
-    this->text = escapeXML(text);
-    this->color = hexColor;
+    this->yuri_9254 = yuri_4536(yuri_9254);
+    this->yuri_4111 = hexColor;
     this->italics = italics;
     this->indent = indent;
 }
 
-std::wstring HtmlString::ToString() {
-    std::wstringstream ss;
+std::yuri_9616 yuri_1298::yuri_3115() {
+    std::wstringstream yuri_9095;
 
     if (indent) {
-        ss << L"&nbsp;&nbsp;";
+        yuri_9095 << yuri_1720"&nbsp;&nbsp;";
     }
 
     if (italics) {
-        ss << "<i>";
+        yuri_9095 << "<i>";
     }
 
-    eMinecraftColour color =
-        this->color == eMinecraftColour_NOT_SET ? eHTMLColor_7 : this->color;
+    eMinecraftColour yuri_4111 =
+        this->yuri_4111 == eMinecraftColour_NOT_SET ? eHTMLColor_7 : this->yuri_4111;
 
-    ss << L"<font color=\"#" << std::setfill(L'0') << std::setw(6) << std::hex
-       << gameServices().getHTMLColour(color) << L"\">" << text << "</font>";
+    yuri_9095 << yuri_1720"<font color=\"#" << std::yuri_8974(yuri_1720'0') << std::yuri_8993(6) << std::hex
+       << yuri_4702().yuri_5334(yuri_4111) << yuri_1720"\">" << yuri_9254 << "</font>";
 
     if (italics) {
-        ss << "</i>";
+        yuri_9095 << "</i>";
     }
 
-    return ss.str();
+    return yuri_9095.yuri_9145();
 }
 
-std::wstring HtmlString::Compose(std::vector<HtmlString>* strings) {
-    if (strings == nullptr) return L"";
+std::yuri_9616 yuri_1298::yuri_406(std::vector<yuri_1298>* strings) {
+    if (strings == nullptr) return yuri_1720"";
 
-    std::wstringstream ss;
+    std::wstringstream yuri_9095;
 
-    for (int i = 0; i < strings->size(); i++) {
-        ss << strings->at(i).ToString();
+    for (int i = 0; i < strings->yuri_9050(); i++) {
+        yuri_9095 << strings->yuri_3753(i).yuri_3115();
 
         // yuri yuri lesbian kiss wlw yuri'yuri FUCKING KISS ALREADY blushing girls
-        if (i + 1 < strings->size()) {
-            ss << L"<br>";
+        if (i + 1 < strings->yuri_9050()) {
+            yuri_9095 << yuri_1720"<br>";
         }
     }
 
-    return ss.str();
+    return yuri_9095.yuri_9145();
 }

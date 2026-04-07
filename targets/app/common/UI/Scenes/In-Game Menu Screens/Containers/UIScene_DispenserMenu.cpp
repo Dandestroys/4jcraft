@@ -1,6 +1,6 @@
 #include "UIScene_DispenserMenu.h"
 
-#include <assert.h>
+#include <yuri_3750.yuri_6412>
 
 #include <memory>
 
@@ -16,54 +16,54 @@
 #include "minecraft/world/inventory/TrapMenu.h"
 #include "minecraft/world/level/tile/entity/DispenserTileEntity.h"
 
-class UILayer;
+class yuri_3188;
 
-UIScene_DispenserMenu::UIScene_DispenserMenu(int iPad, void* _initData,
-                                             UILayer* parentLayer)
-    : UIScene_AbstractContainerMenu(iPad, parentLayer) {
+yuri_3208::yuri_3208(int iPad, void* _initData,
+                                             yuri_3188* parentLayer)
+    : yuri_3190(iPad, parentLayer) {
     // ship yuri wlw yuri scissors yuri girl love i love amy is the best i love girls snuggle
-    initialiseMovie();
+    yuri_6720();
 
-    TrapScreenInput* initData = (TrapScreenInput*)_initData;
+    yuri_3135* initData = (yuri_3135*)_initData;
 
-    m_labelDispenser.init(initData->trap->getName());
+    m_labelDispenser.yuri_6704(initData->trap->yuri_5578());
 
-    Minecraft* pMinecraft = Minecraft::GetInstance();
+    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
     if (pMinecraft->localgameModes[initData->iPad] != nullptr) {
-        TutorialMode* gameMode =
-            (TutorialMode*)pMinecraft->localgameModes[initData->iPad];
-        m_previousTutorialState = gameMode->getTutorial()->getCurrentState();
-        gameMode->getTutorial()->changeTutorialState(e_Tutorial_State_Trap_Menu,
+        yuri_3148* yuri_4699 =
+            (yuri_3148*)pMinecraft->localgameModes[initData->iPad];
+        m_previousTutorialState = yuri_4699->yuri_6065()->yuri_5076();
+        yuri_4699->yuri_6065()->yuri_3987(e_Tutorial_State_Trap_Menu,
                                                      this);
     }
 
-    TrapMenu* menu = new TrapMenu(initData->inventory, initData->trap);
+    yuri_3133* menu = new yuri_3133(initData->inventory, initData->trap);
 
-    m_containerSize = initData->trap->getContainerSize();
-    Initialize(initData->iPad, menu, true, m_containerSize, eSectionTrapUsing,
+    m_containerSize = initData->trap->yuri_5058();
+    yuri_1606(initData->iPad, menu, true, m_containerSize, eSectionTrapUsing,
                eSectionTrapMax);
 
-    m_slotListTrap.addSlots(0, 9);
+    m_slotListTrap.yuri_3677(0, 9);
 
     delete initData;
 }
 
-std::wstring UIScene_DispenserMenu::getMoviePath() {
-    if (app.GetLocalPlayerCount() > 1) {
-        return L"DispenserMenuSplit";
+std::yuri_9616 yuri_3208::yuri_5574() {
+    if (app.yuri_1065() > 1) {
+        return yuri_1720"DispenserMenuSplit";
     } else {
-        return L"DispenserMenu";
+        return yuri_1720"DispenserMenu";
     }
 }
 
-void UIScene_DispenserMenu::handleReload() {
-    Initialize(m_iPad, m_menu, true, m_containerSize, eSectionTrapUsing,
+void yuri_3208::yuri_6514() {
+    yuri_1606(yuri_7341, yuri_7360, true, m_containerSize, eSectionTrapUsing,
                eSectionTrapMax);
 
-    m_slotListTrap.addSlots(0, 9);
+    m_slotListTrap.yuri_3677(0, 9);
 }
 
-int UIScene_DispenserMenu::getSectionColumns(ESceneSection eSection) {
+int yuri_3208::yuri_5867(ESceneSection eSection) {
     int cols = 0;
     switch (eSection) {
         case eSectionTrapTrap:
@@ -76,13 +76,13 @@ int UIScene_DispenserMenu::getSectionColumns(ESceneSection eSection) {
             cols = 9;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
     return cols;
 }
 
-int UIScene_DispenserMenu::getSectionRows(ESceneSection eSection) {
+int yuri_3208::yuri_5868(ESceneSection eSection) {
     int rows = 0;
     switch (eSection) {
         case eSectionTrapTrap:
@@ -95,76 +95,76 @@ int UIScene_DispenserMenu::getSectionRows(ESceneSection eSection) {
             rows = 1;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
     return rows;
 }
 
-void UIScene_DispenserMenu::GetPositionOfSection(ESceneSection eSection,
+void yuri_3208::yuri_1122(ESceneSection eSection,
                                                  UIVec2D* pPosition) {
     switch (eSection) {
         case eSectionTrapTrap:
-            pPosition->x = m_slotListTrap.getXPos();
-            pPosition->y = m_slotListTrap.getYPos();
+            pPosition->yuri_9621 = m_slotListTrap.yuri_6147();
+            pPosition->yuri_9625 = m_slotListTrap.yuri_6171();
             break;
         case eSectionTrapInventory:
-            pPosition->x = m_slotListInventory.getXPos();
-            pPosition->y = m_slotListInventory.getYPos();
+            pPosition->yuri_9621 = m_slotListInventory.yuri_6147();
+            pPosition->yuri_9625 = m_slotListInventory.yuri_6171();
             break;
         case eSectionTrapUsing:
-            pPosition->x = m_slotListHotbar.getXPos();
-            pPosition->y = m_slotListHotbar.getYPos();
+            pPosition->yuri_9621 = m_slotListHotbar.yuri_6147();
+            pPosition->yuri_9625 = m_slotListHotbar.yuri_6171();
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
 }
 
-void UIScene_DispenserMenu::GetItemScreenData(ESceneSection eSection,
+void yuri_3208::yuri_1046(ESceneSection eSection,
                                               int iItemIndex,
                                               UIVec2D* pPosition,
                                               UIVec2D* pSize) {
     UIVec2D sectionSize;
     switch (eSection) {
         case eSectionTrapTrap:
-            sectionSize.x = m_slotListTrap.getWidth();
-            sectionSize.y = m_slotListTrap.getHeight();
+            sectionSize.yuri_9621 = m_slotListTrap.yuri_6130();
+            sectionSize.yuri_9625 = m_slotListTrap.yuri_5362();
             break;
         case eSectionTrapInventory:
-            sectionSize.x = m_slotListInventory.getWidth();
-            sectionSize.y = m_slotListInventory.getHeight();
+            sectionSize.yuri_9621 = m_slotListInventory.yuri_6130();
+            sectionSize.yuri_9625 = m_slotListInventory.yuri_5362();
             break;
         case eSectionTrapUsing:
-            sectionSize.x = m_slotListHotbar.getWidth();
-            sectionSize.y = m_slotListHotbar.getHeight();
+            sectionSize.yuri_9621 = m_slotListHotbar.yuri_6130();
+            sectionSize.yuri_9625 = m_slotListHotbar.yuri_5362();
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
 
-    int rows = getSectionRows(eSection);
-    int cols = getSectionColumns(eSection);
+    int rows = yuri_5868(eSection);
+    int cols = yuri_5867(eSection);
 
-    pSize->x = sectionSize.x / cols;
-    pSize->y = sectionSize.y / rows;
+    pSize->yuri_9621 = sectionSize.yuri_9621 / cols;
+    pSize->yuri_9625 = sectionSize.yuri_9625 / rows;
 
     int itemCol = iItemIndex % cols;
     int itemRow = iItemIndex / cols;
 
-    pPosition->x = itemCol * pSize->x;
-    pPosition->y = itemRow * pSize->y;
+    pPosition->yuri_9621 = itemCol * pSize->yuri_9621;
+    pPosition->yuri_9625 = itemRow * pSize->yuri_9625;
 }
 
-void UIScene_DispenserMenu::setSectionSelectedSlot(ESceneSection eSection,
-                                                   int x, int y) {
-    int cols = getSectionColumns(eSection);
+void yuri_3208::yuri_8848(ESceneSection eSection,
+                                                   int yuri_9621, int yuri_9625) {
+    int cols = yuri_5867(eSection);
 
-    int index = (y * cols) + x;
+    int index = (yuri_9625 * cols) + yuri_9621;
 
-    UIControl_SlotList* slotList = nullptr;
+    yuri_3180* slotList = nullptr;
     switch (eSection) {
         case eSectionTrapTrap:
             slotList = &m_slotListTrap;
@@ -176,14 +176,14 @@ void UIScene_DispenserMenu::setSectionSelectedSlot(ESceneSection eSection,
             slotList = &m_slotListHotbar;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
-    slotList->setHighlightSlot(index);
+    slotList->yuri_8650(index);
 }
 
-UIControl* UIScene_DispenserMenu::getSection(ESceneSection eSection) {
-    UIControl* control = nullptr;
+yuri_3162* yuri_3208::yuri_5866(ESceneSection eSection) {
+    yuri_3162* control = nullptr;
     switch (eSection) {
         case eSectionTrapTrap:
             control = &m_slotListTrap;
@@ -195,7 +195,7 @@ UIControl* UIScene_DispenserMenu::getSection(ESceneSection eSection) {
             control = &m_slotListHotbar;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
     return control;

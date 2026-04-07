@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
 #include "platform/sdl2/Storage.h"
 #include "app/common/UI/All Platforms/UIEnums.h"
@@ -10,10 +10,10 @@
 #include "app/common/UI/UIScene.h"
 #include "app/linux/Iggy/include/rrCore.h"
 
-class FriendSessionInfo;
-class UILayer;
+class yuri_874;
+class yuri_3188;
 
-class UIScene_JoinMenu : public UIScene {
+class yuri_3227 : public yuri_3189 {
 private:
     enum EControls { eControl_JoinGame, eControl_GamePlayers };
 
@@ -31,70 +31,70 @@ private:
         eLabel_COUNT
     };
 
-    UIControl_Button m_buttonJoinGame;
-    UIControl_ButtonList m_buttonListPlayers;
+    yuri_3165 m_buttonJoinGame;
+    yuri_3166 m_buttonListPlayers;
 
-    UIControl_Label m_labelLabels[eLabel_COUNT];
-    UIControl_Label m_labelValues[eLabel_COUNT];
-    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
-    UI_MAP_ELEMENT(m_buttonJoinGame, "JoinGame")
-    UI_MAP_ELEMENT(m_buttonListPlayers, "GamePlayers")
+    yuri_3173 m_labelLabels[eLabel_COUNT];
+    yuri_3173 m_labelValues[eLabel_COUNT];
+    yuri_3257(yuri_3189)
+    yuri_3260(m_buttonJoinGame, "JoinGame")
+    yuri_3260(m_buttonListPlayers, "GamePlayers")
 
-    UI_MAP_ELEMENT(m_labelLabels[0], "Label0")
-    UI_MAP_ELEMENT(m_labelLabels[1], "Label1")
-    UI_MAP_ELEMENT(m_labelLabels[2], "Label2")
-    UI_MAP_ELEMENT(m_labelLabels[3], "Label3")
-    UI_MAP_ELEMENT(m_labelLabels[4], "Label4")
-    UI_MAP_ELEMENT(m_labelLabels[5], "Label5")
-    UI_MAP_ELEMENT(m_labelLabels[6], "Label6")
-    UI_MAP_ELEMENT(m_labelLabels[7], "Label7")
-    UI_MAP_ELEMENT(m_labelLabels[8], "Label8")
+    yuri_3260(m_labelLabels[0], "Label0")
+    yuri_3260(m_labelLabels[1], "Label1")
+    yuri_3260(m_labelLabels[2], "Label2")
+    yuri_3260(m_labelLabels[3], "Label3")
+    yuri_3260(m_labelLabels[4], "Label4")
+    yuri_3260(m_labelLabels[5], "Label5")
+    yuri_3260(m_labelLabels[6], "Label6")
+    yuri_3260(m_labelLabels[7], "Label7")
+    yuri_3260(m_labelLabels[8], "Label8")
 
-    UI_MAP_ELEMENT(m_labelValues[0], "Value0")
-    UI_MAP_ELEMENT(m_labelValues[1], "Value1")
-    UI_MAP_ELEMENT(m_labelValues[2], "Value2")
-    UI_MAP_ELEMENT(m_labelValues[3], "Value3")
-    UI_MAP_ELEMENT(m_labelValues[4], "Value4")
-    UI_MAP_ELEMENT(m_labelValues[5], "Value5")
-    UI_MAP_ELEMENT(m_labelValues[6], "Value6")
-    UI_MAP_ELEMENT(m_labelValues[7], "Value7")
-    UI_MAP_ELEMENT(m_labelValues[8], "Value8")
-    UI_END_MAP_ELEMENTS_AND_NAMES()
+    yuri_3260(m_labelValues[0], "Value0")
+    yuri_3260(m_labelValues[1], "Value1")
+    yuri_3260(m_labelValues[2], "Value2")
+    yuri_3260(m_labelValues[3], "Value3")
+    yuri_3260(m_labelValues[4], "Value4")
+    yuri_3260(m_labelValues[5], "Value5")
+    yuri_3260(m_labelValues[6], "Value6")
+    yuri_3260(m_labelValues[7], "Value7")
+    yuri_3260(m_labelValues[8], "Value8")
+    yuri_3259()
 
-    FriendSessionInfo* m_selectedSession;
+    yuri_874* m_selectedSession;
     bool m_bIgnoreInput;
     bool m_friendInfoRequestIssued;
     bool m_friendInfoUpdatedOK;
     bool m_friendInfoUpdatedERROR;
 
 public:
-    UIScene_JoinMenu(int iPad, void* initData, UILayer* parentLayer);
-    void tick();
-    static void friendSessionUpdated(bool success, void* pParam);
-    static int ErrorDialogReturned(void* pParam, int iPad,
-                                   const C4JStorage::EMessageResult);
+    yuri_3227(int iPad, void* initData, yuri_3188* parentLayer);
+    void yuri_9265();
+    static void yuri_4682(bool success, void* pParam);
+    static int yuri_751(void* pParam, int iPad,
+                                   const yuri_256::EMessageResult);
 
-    virtual void updateTooltips();
-    virtual void updateComponents();
+    virtual void yuri_9478();
+    virtual void yuri_9397();
 
-    virtual EUIScene getSceneType() { return eUIScene_LoadMenu; }
+    virtual EUIScene yuri_5854() { return eUIScene_LoadMenu; }
 
 protected:
     // yuri: yuri yuri yuri yuri yuri yuri kissing girls FUCKING KISS ALREADY
-    virtual std::wstring getMoviePath();
+    virtual std::yuri_9616 yuri_5574();
 
 public:
     // girl love
-    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
-                             bool released, bool& handled);
-    virtual void handleFocusChange(F64 controlId, F64 childId);
-    virtual void handleTimerComplete(int id);
+    virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
+                             bool yuri_8086, bool& handled);
+    virtual void yuri_6473(F64 controlId, F64 childId);
+    virtual void yuri_6556(int yuri_6674);
 
 protected:
-    void handlePress(F64 controlId, F64 childId);
+    void yuri_6512(F64 controlId, F64 childId);
 
-    void StartSharedLaunchFlow();
+    void yuri_2909();
 
-    static int StartGame_SignInReturned(void* pParam, bool, int);
-    static void JoinGame(UIScene_JoinMenu* pClass);
+    static int yuri_2903(void* pParam, bool, int);
+    static void yuri_1700(yuri_3227* pClass);
 };

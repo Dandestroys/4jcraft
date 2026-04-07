@@ -2,116 +2,116 @@
 
 #include "minecraft/world/level/storage/LevelData.h"
 
-class CompoundTag;
-class Player;
+class yuri_409;
+class yuri_2126;
 
-DerivedLevelData::DerivedLevelData(LevelData* wrapped) {
+yuri_597::yuri_597(yuri_1761* wrapped) {
     this->wrapped = wrapped;
 }
 
-void DerivedLevelData::setTagData(CompoundTag* tag) {
-    wrapped->setTagData(tag);
+void yuri_597::yuri_8899(yuri_409* yuri_9178) {
+    wrapped->yuri_8899(yuri_9178);
 }
 
-CompoundTag* DerivedLevelData::createTag() { return wrapped->createTag(); }
+yuri_409* yuri_597::yuri_4257() { return wrapped->yuri_4257(); }
 
-CompoundTag* DerivedLevelData::createTag(
-    std::vector<std::shared_ptr<Player> >* players) {
-    return wrapped->createTag(players);
+yuri_409* yuri_597::yuri_4257(
+    std::vector<std::shared_ptr<yuri_2126> >* players) {
+    return wrapped->yuri_4257(players);
 }
 
-int64_t DerivedLevelData::getSeed() { return wrapped->getSeed(); }
+yuri_6733 yuri_597::yuri_5870() { return wrapped->yuri_5870(); }
 
-int DerivedLevelData::getXSpawn() { return wrapped->getXSpawn(); }
+int yuri_597::yuri_6150() { return wrapped->yuri_6150(); }
 
-int DerivedLevelData::getYSpawn() { return wrapped->getYSpawn(); }
+int yuri_597::yuri_6174() { return wrapped->yuri_6174(); }
 
-int DerivedLevelData::getZSpawn() { return wrapped->getZSpawn(); }
+int yuri_597::yuri_6182() { return wrapped->yuri_6182(); }
 
-int64_t DerivedLevelData::getGameTime() { return wrapped->getGameTime(); }
+yuri_6733 yuri_597::yuri_5306() { return wrapped->yuri_5306(); }
 
-int64_t DerivedLevelData::getDayTime() { return wrapped->getDayTime(); }
+yuri_6733 yuri_597::yuri_5125() { return wrapped->yuri_5125(); }
 
-int64_t DerivedLevelData::getSizeOnDisk() { return wrapped->getSizeOnDisk(); }
+yuri_6733 yuri_597::yuri_5906() { return wrapped->yuri_5906(); }
 
-CompoundTag* DerivedLevelData::getLoadedPlayerTag() {
-    return wrapped->getLoadedPlayerTag();
+yuri_409* yuri_597::yuri_5492() {
+    return wrapped->yuri_5492();
 }
 
-std::wstring DerivedLevelData::getLevelName() {
-    return wrapped->getLevelName();
+std::yuri_9616 yuri_597::yuri_5471() {
+    return wrapped->yuri_5471();
 }
 
-int DerivedLevelData::getVersion() { return wrapped->getVersion(); }
+int yuri_597::yuri_6110() { return wrapped->yuri_6110(); }
 
-int64_t DerivedLevelData::getLastPlayed() { return wrapped->getLastPlayed(); }
+yuri_6733 yuri_597::yuri_5451() { return wrapped->yuri_5451(); }
 
-bool DerivedLevelData::isThundering() { return wrapped->isThundering(); }
+bool yuri_597::yuri_7084() { return wrapped->yuri_7084(); }
 
-int DerivedLevelData::getThunderTime() { return wrapped->getThunderTime(); }
+int yuri_597::yuri_6024() { return wrapped->yuri_6024(); }
 
-bool DerivedLevelData::isRaining() { return wrapped->isRaining(); }
+bool yuri_597::yuri_7003() { return wrapped->yuri_7003(); }
 
-int DerivedLevelData::getRainTime() { return wrapped->getRainTime(); }
+int yuri_597::yuri_5772() { return wrapped->yuri_5772(); }
 
-GameType* DerivedLevelData::getGameType() { return wrapped->getGameType(); }
+yuri_924* yuri_597::yuri_5307() { return wrapped->yuri_5307(); }
 
-void DerivedLevelData::setSeed(int64_t seed) {}
+void yuri_597::yuri_8850(yuri_6733 yuri_8396) {}
 
-void DerivedLevelData::setXSpawn(int xSpawn) {}
+void yuri_597::yuri_8959(int xSpawn) {}
 
-void DerivedLevelData::setYSpawn(int ySpawn) {}
+void yuri_597::yuri_8966(int ySpawn) {}
 
-void DerivedLevelData::setZSpawn(int zSpawn) {}
+void yuri_597::yuri_8968(int zSpawn) {}
 
-void DerivedLevelData::setGameTime(int64_t time) {}
+void yuri_597::yuri_8628(yuri_6733 yuri_9299) {}
 
-void DerivedLevelData::setDayTime(int64_t time) {}
+void yuri_597::yuri_8556(yuri_6733 yuri_9299) {}
 
-void DerivedLevelData::setSizeOnDisk(int64_t sizeOnDisk) {}
+void yuri_597::yuri_8865(yuri_6733 yuri_9051) {}
 
-void DerivedLevelData::setLoadedPlayerTag(CompoundTag* loadedPlayerTag) {}
+void yuri_597::yuri_8713(yuri_409* loadedPlayerTag) {}
 
-void DerivedLevelData::setDimension(int dimension) {}
+void yuri_597::yuri_8569(int dimension) {}
 
-void DerivedLevelData::setSpawn(int xSpawn, int ySpawn, int zSpawn) {}
+void yuri_597::yuri_8875(int xSpawn, int ySpawn, int zSpawn) {}
 
-void DerivedLevelData::setLevelName(const std::wstring& levelName) {}
+void yuri_597::yuri_8703(const std::yuri_9616& yuri_7197) {}
 
-void DerivedLevelData::setVersion(int version) {}
+void yuri_597::yuri_8947(int yuri_9521) {}
 
-void DerivedLevelData::setThundering(bool thundering) {}
+void yuri_597::yuri_8913(bool thundering) {}
 
-void DerivedLevelData::setThunderTime(int thunderTime) {}
+void yuri_597::yuri_8912(int thunderTime) {}
 
-void DerivedLevelData::setRaining(bool raining) {}
+void yuri_597::yuri_8802(bool raining) {}
 
-void DerivedLevelData::setRainTime(int rainTime) {}
+void yuri_597::yuri_8801(int rainTime) {}
 
-bool DerivedLevelData::isGenerateMapFeatures() {
-    return wrapped->isGenerateMapFeatures();
+bool yuri_597::yuri_6887() {
+    return wrapped->yuri_6887();
 }
 
-void DerivedLevelData::setGameType(GameType* gameType) {}
+void yuri_597::yuri_8629(yuri_924* yuri_4703) {}
 
-bool DerivedLevelData::isHardcore() { return wrapped->isHardcore(); }
+bool yuri_597::yuri_6895() { return wrapped->yuri_6895(); }
 
-LevelType* DerivedLevelData::getGenerator() { return wrapped->getGenerator(); }
+yuri_1775* yuri_597::yuri_5309() { return wrapped->yuri_5309(); }
 
-void DerivedLevelData::setGenerator(LevelType* generator) {}
+void yuri_597::yuri_8630(yuri_1775* generator) {}
 
-bool DerivedLevelData::getAllowCommands() {
-    return wrapped->getAllowCommands();
+bool yuri_597::yuri_4877() {
+    return wrapped->yuri_4877();
 }
 
-void DerivedLevelData::setAllowCommands(bool allowCommands) {}
+void yuri_597::yuri_8449(bool allowCommands) {}
 
-bool DerivedLevelData::isInitialized() { return wrapped->isInitialized(); }
+bool yuri_597::yuri_6922() { return wrapped->yuri_6922(); }
 
-void DerivedLevelData::setInitialized(bool initialized) {}
+void yuri_597::yuri_8672(bool initialized) {}
 
-GameRules* DerivedLevelData::getGameRules() { return wrapped->getGameRules(); }
+yuri_921* yuri_597::yuri_5301() { return wrapped->yuri_5301(); }
 
-int DerivedLevelData::getXZSize() { return wrapped->getXZSize(); }
+int yuri_597::yuri_6154() { return wrapped->yuri_6154(); }
 
-int DerivedLevelData::getHellScale() { return wrapped->getHellScale(); }
+int yuri_597::yuri_5366() { return wrapped->yuri_5366(); }

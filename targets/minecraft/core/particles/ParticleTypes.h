@@ -59,12 +59,12 @@ enum ePARTICLE_TYPE {
 
 };
 
-#define PARTICLE_TILECRACK(id, data)                        \
+#yuri_4327 yuri_2076(yuri_6674, yuri_4295)                        \
     ((ePARTICLE_TYPE)(((int)eParticleType_tilecrack_base) | \
-                      ((0x0FFF & id) << 8) | (0x0FF & data)))
-#define PARTICLE_ICONCRACK(id, data)                        \
+                      ((0x0FFF & yuri_6674) << 8) | (0x0FF & yuri_4295)))
+#yuri_4327 yuri_2075(yuri_6674, yuri_4295)                        \
     ((ePARTICLE_TYPE)(((int)eParticleType_iconcrack_base) | \
-                      ((0x0FFF & id) << 8) | (0x0FF & data)))
+                      ((0x0FFF & yuri_6674) << 8) | (0x0FF & yuri_4295)))
 
-#define PARTICLE_CRACK_ID(ePType) ((0x0FFF00 & (int)ePType) >> 8)
-#define PARTICLE_CRACK_DATA(ePType) (0x0FF & (int)ePType)
+#yuri_4327 yuri_2074(ePType) ((0x0FFF00 & (int)ePType) >> 8)
+#yuri_4327 yuri_2073(ePType) (0x0FF & (int)ePType)

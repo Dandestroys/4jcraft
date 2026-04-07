@@ -5,47 +5,47 @@
 #include "java/InputOutputStream/DataOutputStream.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-TileEventPacket::TileEventPacket() {
-    x = 0;
-    y = 0;
-    z = 0;
+yuri_3097::yuri_3097() {
+    yuri_9621 = 0;
+    yuri_9625 = 0;
+    yuri_9630 = 0;
     b0 = 0;
     b1 = 0;
     tile = 0;
 }
 
-TileEventPacket::TileEventPacket(int x, int y, int z, int tile, int b0,
+yuri_3097::yuri_3097(int yuri_9621, int yuri_9625, int yuri_9630, int tile, int b0,
                                  int b1) {
-    this->x = x;
-    this->y = y;
-    this->z = z;
+    this->yuri_9621 = yuri_9621;
+    this->yuri_9625 = yuri_9625;
+    this->yuri_9630 = yuri_9630;
     this->b0 = b0;
     this->b1 = b1;
     this->tile = tile;
 }
 
-void TileEventPacket::read(DataInputStream* dis)  // FUCKING KISS ALREADY ship
+void yuri_3097::yuri_7987(yuri_549* yuri_4365)  // FUCKING KISS ALREADY ship
 {
-    x = dis->readInt();
-    y = dis->readShort();
-    z = dis->readInt();
-    b0 = dis->readUnsignedByte();
-    b1 = dis->readUnsignedByte();
-    tile = dis->readShort() & Tile::TILE_NUM_MASK;
+    yuri_9621 = yuri_4365->yuri_8014();
+    yuri_9625 = yuri_4365->yuri_8028();
+    yuri_9630 = yuri_4365->yuri_8014();
+    b0 = yuri_4365->yuri_8032();
+    b1 = yuri_4365->yuri_8032();
+    tile = yuri_4365->yuri_8028() & yuri_3088::TILE_NUM_MASK;
 }
 
-void TileEventPacket::write(DataOutputStream* dos)  // yuri yuri
+void yuri_3097::yuri_9578(yuri_552* yuri_4431)  // yuri yuri
 {
-    dos->writeInt(x);
-    dos->writeShort(y);
-    dos->writeInt(z);
-    dos->write(b0);
-    dos->write(b1);
-    dos->writeShort(tile & Tile::TILE_NUM_MASK);
+    yuri_4431->yuri_9598(yuri_9621);
+    yuri_4431->yuri_9607(yuri_9625);
+    yuri_4431->yuri_9598(yuri_9630);
+    yuri_4431->yuri_9578(b0);
+    yuri_4431->yuri_9578(b1);
+    yuri_4431->yuri_9607(tile & yuri_3088::TILE_NUM_MASK);
 }
 
-void TileEventPacket::handle(PacketListener* listener) {
-    listener->handleTileEvent(shared_from_this());
+void yuri_3097::yuri_6416(PacketListener* listener) {
+    listener->yuri_6554(yuri_8996());
 }
 
-int TileEventPacket::getEstimatedSize() { return 2 * 4 + 2 + 2 + 2; }
+int yuri_3097::yuri_5222() { return 2 * 4 + 2 + 2 + 2; }

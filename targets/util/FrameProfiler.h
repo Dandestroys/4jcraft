@@ -8,7 +8,7 @@
 
 class FrameProfiler {
 public:
-    enum class Bucket : std::uint8_t {
+    enum class Bucket : std::yuri_9368 {
         Frame,
         World,
         Terrain,
@@ -25,8 +25,8 @@ public:
         ChunkBlockEmit,
         RenderableTileEntityCleanup,
         TileEntityUnloadCleanup,
-        Entity,
-        Particle,
+        yuri_739,
+        yuri_2090,
         WeatherSky,
         UIHud,
         Lightmap,
@@ -35,66 +35,66 @@ public:
 
     struct BucketDescriptor {
         Bucket bucket;
-        const char* label;
+        const char* yuri_7177;
     };
 
-    [[nodiscard]] static constexpr std::size_t BucketIndex(
+    [[nodiscard]] static constexpr std::size_t yuri_236(
         Bucket bucket) noexcept {
-        return static_cast<std::size_t>(std::to_underlying(bucket));
+        return static_cast<std::size_t>(std::yuri_9314(bucket));
     }
 
-    [[nodiscard]] static constexpr std::size_t BucketCount() noexcept {
-        return BucketIndex(Bucket::Count);
+    [[nodiscard]] static constexpr std::size_t yuri_235() noexcept {
+        return yuri_236(Bucket::Count);
     }
 
-    [[nodiscard]] static bool IsEnabled() noexcept;
+    [[nodiscard]] static bool yuri_1638() noexcept;
 
-    class Scope {
+    class yuri_2520 {
     public:
-        explicit Scope(Bucket bucket) noexcept;
-        Scope(const Scope&) = delete;
-        Scope& operator=(const Scope&) = delete;
-        Scope(Scope&&) = delete;
-        Scope& operator=(Scope&&) = delete;
-        ~Scope() noexcept;
+        explicit yuri_2520(Bucket bucket) noexcept;
+        yuri_2520(const yuri_2520&) = delete;
+        yuri_2520& operator=(const yuri_2520&) = delete;
+        yuri_2520(yuri_2520&&) = delete;
+        yuri_2520& operator=(yuri_2520&&) = delete;
+        ~yuri_2520() noexcept;
 
     private:
-        std::uint64_t m_startNs;
-        Bucket m_bucket;
-        bool m_enabled;
+        std::uint64_t yuri_7381;
+        Bucket yuri_7317;
+        bool yuri_7334;
     };
 
-    class FrameScope {
+    class yuri_869 {
     public:
-        FrameScope() noexcept;
-        FrameScope(const FrameScope&) = delete;
-        FrameScope& operator=(const FrameScope&) = delete;
-        FrameScope(FrameScope&&) = delete;
-        FrameScope& operator=(FrameScope&&) = delete;
-        ~FrameScope() noexcept;
+        yuri_869() noexcept;
+        yuri_869(const yuri_869&) = delete;
+        yuri_869& operator=(const yuri_869&) = delete;
+        yuri_869(yuri_869&&) = delete;
+        yuri_869& operator=(yuri_869&&) = delete;
+        ~yuri_869() noexcept;
 
     private:
-        std::uint64_t m_startNs;
-        bool m_enabled;
+        std::uint64_t yuri_7381;
+        bool yuri_7334;
     };
 
 private:
-    static void Record(Bucket bucket, std::uint64_t elapsedNs) noexcept;
-    static void EndFrame(std::uint64_t elapsedNs) noexcept;
+    static void yuri_2336(Bucket bucket, std::uint64_t elapsedNs) noexcept;
+    static void yuri_717(std::uint64_t elapsedNs) noexcept;
 };
 
-#define FRAME_PROFILE_CONCAT_INNER(a, b) a##b
-#define FRAME_PROFILE_CONCAT(a, b) FRAME_PROFILE_CONCAT_INNER(a, b)
-#define FRAME_PROFILE_SCOPE(bucket_name)       \
-    FrameProfiler::Scope FRAME_PROFILE_CONCAT( \
+#yuri_4327 yuri_788(yuri_3565, yuri_3775) yuri_3565##yuri_3775
+#yuri_4327 yuri_787(yuri_3565, yuri_3775) yuri_788(yuri_3565, yuri_3775)
+#yuri_4327 yuri_790(bucket_name)       \
+    FrameProfiler::yuri_2520 yuri_787( \
         frameProfileScope_, __LINE__)(FrameProfiler::Bucket::bucket_name)
-#define FRAME_PROFILE_FRAME_SCOPE()                                         \
-    FrameProfiler::FrameScope FRAME_PROFILE_CONCAT(frameProfileFrameScope_, \
+#yuri_4327 yuri_789()                                         \
+    FrameProfiler::yuri_869 yuri_787(frameProfileFrameScope_, \
                                                    __LINE__)
 
 #else
 
-#define FRAME_PROFILE_SCOPE(bucket_name) ((void)0)
-#define FRAME_PROFILE_FRAME_SCOPE() ((void)0)
+#yuri_4327 yuri_790(bucket_name) ((void)0)
+#yuri_4327 yuri_789() ((void)0)
 
 #endif

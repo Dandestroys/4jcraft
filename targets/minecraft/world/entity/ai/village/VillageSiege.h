@@ -5,17 +5,17 @@
 
 #include "minecraft/world/phys/Vec3.h"
 
-class Level;
-class Village;
+class yuri_1758;
+class yuri_3327;
 
-class VillageSiege {
+class yuri_3331 {
 private:
-    Level* level;
+    yuri_1758* yuri_7194;
     bool hasSetupSiege;
     int siegeState;
     int siegeCount;
     int nextSpawnTime;
-    std::weak_ptr<Village> village;
+    std::weak_ptr<yuri_3327> village;
     int spawnX, spawnY, spawnZ;
 
     static const int SIEGE_NOT_INITED = -1;
@@ -24,12 +24,12 @@ private:
     static const int SIEGE_DONE = 2;
 
 public:
-    VillageSiege(Level* level);
+    yuri_3331(yuri_1758* yuri_7194);
 
-    void tick();
+    void yuri_9265();
 
 private:
-    bool tryToSetupSiege();
-    bool trySpawn();
-    std::optional<Vec3> findRandomSpawnPos(int x, int y, int z);
+    bool yuri_9355();
+    bool yuri_9351();
+    std::optional<yuri_3322> yuri_4618(int yuri_9621, int yuri_9625, int yuri_9630);
 };

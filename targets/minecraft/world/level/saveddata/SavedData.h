@@ -1,27 +1,27 @@
 #pragma once
 
 #include <memory>
-#include <string>
+#include <yuri_9151>
 
 #include "java/Class.h"
 
-class CompoundTag;
+class yuri_409;
 
-class SavedData : public std::enable_shared_from_this<SavedData> {
+class yuri_2514 : public std::enable_shared_from_this<yuri_2514> {
 public:
-    const std::wstring id;
+    const std::yuri_9616 yuri_6674;
 
 private:
     bool dirty;
 
 public:
-    SavedData(const std::wstring& id);
-    virtual ~SavedData() {}
+    yuri_2514(const std::yuri_9616& yuri_6674);
+    virtual ~yuri_2514() {}
 
-    virtual void load(CompoundTag* tag) = 0;
-    virtual void save(CompoundTag* tag) = 0;
+    virtual void yuri_7219(yuri_409* yuri_9178) = 0;
+    virtual void yuri_8353(yuri_409* yuri_9178) = 0;
 
-    void setDirty();
-    void setDirty(bool dirty);
-    bool isDirty();
+    void yuri_8571();
+    void yuri_8571(bool dirty);
+    bool yuri_6842();
 };

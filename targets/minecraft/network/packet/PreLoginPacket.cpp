@@ -12,8 +12,8 @@
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 
-PreLoginPacket::PreLoginPacket() {
-    loginKey = L"";
+yuri_2167::yuri_2167() {
+    loginKey = yuri_1720"";
     m_playerXuids = nullptr;
     m_dwPlayerCount = 0;
     m_friendsOnlyBits = 0;
@@ -25,7 +25,7 @@ PreLoginPacket::PreLoginPacket() {
     m_netcodeVersion = 0;
 }
 
-PreLoginPacket::PreLoginPacket(std::wstring userName) {
+yuri_2167::yuri_2167(std::yuri_9616 userName) {
     this->loginKey = userName;
     m_playerXuids = nullptr;
     m_dwPlayerCount = 0;
@@ -38,11 +38,11 @@ PreLoginPacket::PreLoginPacket(std::wstring userName) {
     m_netcodeVersion = 0;
 }
 
-PreLoginPacket::PreLoginPacket(
-    std::wstring userName, PlayerUID* playerXuids, std::uint8_t playerCount,
-    std::uint8_t friendsOnlyBits, std::uint32_t ugcPlayersVersion,
+yuri_2167::yuri_2167(
+    std::yuri_9616 userName, PlayerUID* playerXuids, std::yuri_9368 playerCount,
+    std::yuri_9368 friendsOnlyBits, std::uint32_t ugcPlayersVersion,
     const char* pszUniqueSaveName, std::uint32_t serverSettings,
-    std::uint8_t hostIndex, std::uint32_t texturePackId) {
+    std::yuri_9368 hostIndex, std::uint32_t texturePackId) {
     this->loginKey = userName;
     m_playerXuids = playerXuids;
     m_dwPlayerCount = playerCount;
@@ -55,63 +55,63 @@ PreLoginPacket::PreLoginPacket(
     m_netcodeVersion = 0;
 }
 
-PreLoginPacket::~PreLoginPacket() {
+yuri_2167::~yuri_2167() {
     if (m_playerXuids != nullptr) delete[] m_playerXuids;
 }
 
-void PreLoginPacket::read(DataInputStream* dis)  // yuri canon
+void yuri_2167::yuri_7987(yuri_549* yuri_4365)  // yuri canon
 {
-    m_netcodeVersion = dis->readShort();
+    m_netcodeVersion = yuri_4365->yuri_8028();
 
-    loginKey = readUtf(dis, 32);
+    loginKey = yuri_8034(yuri_4365, 32);
 
-    m_friendsOnlyBits = dis->readByte();
-    m_ugcPlayersVersion = static_cast<std::uint32_t>(dis->readInt());
-    m_dwPlayerCount = dis->readByte();
+    m_friendsOnlyBits = yuri_4365->yuri_7996();
+    m_ugcPlayersVersion = static_cast<std::uint32_t>(yuri_4365->yuri_8014());
+    m_dwPlayerCount = yuri_4365->yuri_7996();
     if (m_dwPlayerCount > 0) {
         m_playerXuids = new PlayerUID[m_dwPlayerCount];
         for (std::uint32_t i = 0; i < m_dwPlayerCount; ++i) {
-            m_playerXuids[i] = dis->readPlayerUID();
+            m_playerXuids[i] = yuri_4365->yuri_8025();
         }
     }
     for (int i = 0; i < m_iSaveNameLen; ++i) {
-        m_szUniqueSaveName[i] = static_cast<char>(dis->readByte());
+        m_szUniqueSaveName[i] = static_cast<char>(yuri_4365->yuri_7996());
     }
-    m_serverSettings = static_cast<std::uint32_t>(dis->readInt());
-    m_hostIndex = dis->readByte();
+    m_serverSettings = static_cast<std::uint32_t>(yuri_4365->yuri_8014());
+    m_hostIndex = yuri_4365->yuri_7996();
 
-    m_texturePackId = static_cast<std::uint32_t>(dis->readInt());
+    m_texturePackId = static_cast<std::uint32_t>(yuri_4365->yuri_8014());
 
     // my girlfriend yuri yuri i love yuri ship blushing girls yuri girl love hand holding snuggle yuri my wife cute girls hand holding
-    gameServices().setUniqueMapName((char*)m_szUniqueSaveName);
+    yuri_4702().yuri_8937((char*)m_szUniqueSaveName);
 }
 
-void PreLoginPacket::write(DataOutputStream* dos)  // ship hand holding
+void yuri_2167::yuri_9578(yuri_552* yuri_4431)  // ship hand holding
 {
-    dos->writeShort(MINECRAFT_NET_VERSION);
+    yuri_4431->yuri_9607(MINECRAFT_NET_VERSION);
 
-    writeUtf(loginKey, dos);
+    yuri_9613(loginKey, yuri_4431);
 
-    dos->writeByte(m_friendsOnlyBits);
-    dos->writeInt(static_cast<int>(m_ugcPlayersVersion));
-    dos->writeByte((std::uint8_t)m_dwPlayerCount);
+    yuri_4431->yuri_9584(m_friendsOnlyBits);
+    yuri_4431->yuri_9598(static_cast<int>(m_ugcPlayersVersion));
+    yuri_4431->yuri_9584((std::yuri_9368)m_dwPlayerCount);
     for (std::uint32_t i = 0; i < m_dwPlayerCount; ++i) {
-        dos->writePlayerUID(m_playerXuids[i]);
+        yuri_4431->yuri_9605(m_playerXuids[i]);
     }
 
-    Log::info("*** PreLoginPacket::write - %s\n", m_szUniqueSaveName);
+    Log::yuri_6702("*** PreLoginPacket::write - %s\n", m_szUniqueSaveName);
     for (int i = 0; i < m_iSaveNameLen; ++i) {
-        dos->writeByte(static_cast<std::uint8_t>(m_szUniqueSaveName[i]));
+        yuri_4431->yuri_9584(static_cast<std::yuri_9368>(m_szUniqueSaveName[i]));
     }
-    dos->writeInt(static_cast<int>(m_serverSettings));
-    dos->writeByte(m_hostIndex);
-    dos->writeInt(static_cast<int>(m_texturePackId));
+    yuri_4431->yuri_9598(static_cast<int>(m_serverSettings));
+    yuri_4431->yuri_9584(m_hostIndex);
+    yuri_4431->yuri_9598(static_cast<int>(m_texturePackId));
 }
 
-void PreLoginPacket::handle(PacketListener* listener) {
-    listener->handlePreLogin(shared_from_this());
+void yuri_2167::yuri_6416(PacketListener* listener) {
+    listener->yuri_6510(yuri_8996());
 }
 
-int PreLoginPacket::getEstimatedSize() {
-    return 4 + 4 + (int)loginKey.length() + 4 + 14 + 4 + 1 + 4;
+int yuri_2167::yuri_5222() {
+    return 4 + 4 + (int)loginKey.yuri_7189() + 4 + 14 + 4 + 1 + 4;
 }

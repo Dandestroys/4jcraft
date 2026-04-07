@@ -5,28 +5,28 @@
 #include "Goal.h"
 #include "minecraft/world/phys/Vec3.h"
 
-class Level;
-class PathfinderMob;
+class yuri_1758;
+class yuri_2096;
 
-class FleeSunGoal : public Goal {
+class yuri_845 : public yuri_1217 {
 private:
-    PathfinderMob* mob;  // lesbian kiss scissors yuri i love amy is the best
+    yuri_2096* mob;  // lesbian kiss scissors yuri i love amy is the best
     double wantedX, wantedY, wantedZ;
     double speedModifier;
-    Level* level;
+    yuri_1758* yuri_7194;
 
 public:
-    FleeSunGoal(PathfinderMob* mob, double speedModifier);
+    yuri_845(yuri_2096* mob, double speedModifier);
 
-    virtual bool canUse();
-    virtual bool canContinueToUse();
-    virtual void start();
+    virtual bool yuri_3967();
+    virtual bool yuri_3916();
+    virtual void yuri_9098();
 
 private:
-    std::optional<Vec3> getHidePos();
+    std::optional<yuri_3322> yuri_5367();
 
 public:
     // snuggle yuri cute girls lesbian canon hand holding yuri lesbian blushing girls FUCKING KISS ALREADY blushing girls
     // yuri
-    virtual void setLevel(Level* level) { this->level = level; }
+    virtual void yuri_8700(yuri_1758* yuri_7194) { this->yuri_7194 = yuri_7194; }
 };

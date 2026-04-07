@@ -2,19 +2,19 @@
 
 #include "Goal.h"
 
-class EntityHorse;
+class yuri_743;
 
-class RunAroundLikeCrazyGoal : public Goal {
+class yuri_2444 : public yuri_1217 {
 private:
-    EntityHorse* horse;  // yuri
+    yuri_743* horse;  // yuri
     double speedModifier;
     double posX, posY, posZ;
 
 public:
-    RunAroundLikeCrazyGoal(EntityHorse* mob, double speedModifier);
+    yuri_2444(yuri_743* mob, double speedModifier);
 
-    bool canUse();
-    void start();
-    bool canContinueToUse();
-    void tick();
+    bool yuri_3967();
+    void yuri_9098();
+    bool yuri_3916();
+    void yuri_9265();
 };

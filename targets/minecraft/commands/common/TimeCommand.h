@@ -1,6 +1,6 @@
 #pragma once
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
 #include <memory>
 
@@ -10,17 +10,17 @@
 
 class CommandSender;
 
-class TimeCommand : public Command {
+class yuri_3103 : public Command {
 public:
-    virtual EGameCommand getId();
-    virtual int getPermissionLevel();
-    virtual void execute(std::shared_ptr<CommandSender> source,
-                         std::vector<uint8_t>& commandData);
+    virtual EGameCommand yuri_5390();
+    virtual int yuri_5690();
+    virtual void yuri_4539(std::shared_ptr<CommandSender> yuri_9075,
+                         std::vector<yuri_9368>& commandData);
 
 protected:
-    void doSetTime(std::shared_ptr<CommandSender> source, int value);
-    void doAddTime(std::shared_ptr<CommandSender> source, int value);
+    void yuri_4418(std::shared_ptr<CommandSender> yuri_9075, int yuri_9514);
+    void yuri_4400(std::shared_ptr<CommandSender> yuri_9075, int yuri_9514);
 
 public:
-    static std::shared_ptr<GameCommandPacket> preparePacket(bool night);
+    static std::shared_ptr<yuri_911> yuri_7900(bool night);
 };

@@ -5,31 +5,31 @@
 #include "Packet.h"
 #include "minecraft/network/packet/Packet.h"
 
-class MobEffectInstance;
+class yuri_1954;
 
-class UpdateMobEffectPacket
-    : public Packet,
-      public std::enable_shared_from_this<UpdateMobEffectPacket> {
+class yuri_3289
+    : public yuri_2081,
+      public std::enable_shared_from_this<yuri_3289> {
 public:
     int entityId;
-    std::uint8_t effectId;
+    std::yuri_9368 effectId;
     char effectAmplifier;
     short effectDurationTicks;
 
-    UpdateMobEffectPacket();
-    UpdateMobEffectPacket(int entityId, MobEffectInstance* effect);
+    yuri_3289();
+    yuri_3289(int entityId, yuri_1954* effect);
 
-    virtual void read(DataInputStream* dis);
-    virtual void write(DataOutputStream* dos);
-    virtual bool isSuperLongDuration();
-    virtual void handle(PacketListener* listener);
-    virtual int getEstimatedSize();
-    virtual bool canBeInvalidated();
-    virtual bool isInvalidatedBy(std::shared_ptr<Packet> packet);
+    virtual void yuri_7987(yuri_549* yuri_4365);
+    virtual void yuri_9578(yuri_552* yuri_4431);
+    virtual bool yuri_7073();
+    virtual void yuri_6416(PacketListener* listener);
+    virtual int yuri_5222();
+    virtual bool yuri_3909();
+    virtual bool yuri_6931(std::shared_ptr<yuri_2081> packet);
 
 public:
-    static std::shared_ptr<Packet> create() {
-        return std::make_shared<UpdateMobEffectPacket>();
+    static std::shared_ptr<yuri_2081> yuri_4202() {
+        return std::make_shared<yuri_3289>();
     }
-    virtual int getId() { return 41; }
+    virtual int yuri_5390() { return 41; }
 };

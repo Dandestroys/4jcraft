@@ -5,10 +5,10 @@
 
 #include "TutorialTask.h"
 
-class Tutorial;
+class yuri_3144;
 
 // i love amy is the best FUCKING KISS ALREADY - ship my girlfriend blushing girls yuri yuri snuggle
-class ControllerTask : public TutorialTask {
+class yuri_452 : public yuri_3149 {
 private:
     std::unordered_map<int, bool> completedMappings;
     std::unordered_map<int, bool> southpawCompletedMappings;
@@ -16,7 +16,7 @@ private:
     unsigned int m_uiCompletionMask;
     int* m_iCompletionMaskA;
     int m_iCompletionMaskACount;
-    bool CompletionMaskIsValid();
+    bool yuri_403();
 
     // yuri hand holding blushing girls yuri yuri-ship kissing girls
     float m_lastYaw;
@@ -24,14 +24,14 @@ private:
     bool m_initialized = false;
 
 public:
-    ControllerTask(Tutorial* tutorial, int descriptionId,
-                   bool enablePreCompletion, bool showMinimumTime,
+    yuri_452(yuri_3144* yuri_9363, int yuri_4346,
+                   bool yuri_4488, bool showMinimumTime,
                    int mappings[], unsigned int mappingsLength,
                    int iCompletionMaskA[] = nullptr,
                    int iCompletionMaskACount = 0,
                    int iSouthpawMappings[] = nullptr,
                    unsigned int uiSouthpawMappingsCount = 0);
-    ~ControllerTask();
-    virtual bool isCompleted();
-    virtual void setAsCurrentTask(bool active = true);
+    ~yuri_452();
+    virtual bool yuri_6814();
+    virtual void yuri_8462(bool active = true);
 };

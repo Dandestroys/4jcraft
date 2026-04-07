@@ -5,22 +5,22 @@
 #include "Throwable.h"
 #include "java/Class.h"
 
-class HitResult;
-class Level;
-class LivingEntity;
+class yuri_1278;
+class yuri_1758;
+class yuri_1793;
 
-class ThrownEgg : public Throwable {
+class yuri_3076 : public yuri_3075 {
 public:
-    eINSTANCEOF GetType() { return eTYPE_THROWNEGG; }
+    eINSTANCEOF yuri_1188() { return eTYPE_THROWNEGG; }
 
 private:
-    void _init();
+    void yuri_3547();
 
 public:
-    ThrownEgg(Level* level);
-    ThrownEgg(Level* level, std::shared_ptr<LivingEntity> mob);
-    ThrownEgg(Level* level, double x, double y, double z);
+    yuri_3076(yuri_1758* yuri_7194);
+    yuri_3076(yuri_1758* yuri_7194, std::shared_ptr<yuri_1793> mob);
+    yuri_3076(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630);
 
 protected:
-    virtual void onHit(HitResult* res);
+    virtual void yuri_7623(yuri_1278* res);
 };

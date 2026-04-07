@@ -1,18 +1,18 @@
 #pragma once
 #include "SpiderRenderer.h"
 
-class CaveSpider;
-class ResourceLocation;
+class yuri_322;
+class yuri_2412;
 
-class CaveSpiderRenderer : public SpiderRenderer {
+class yuri_323 : public yuri_2885 {
 private:
-    static ResourceLocation CAVE_SPIDER_LOCATION;
+    static yuri_2412 CAVE_SPIDER_LOCATION;
     static float s_scale;
 
 public:
-    CaveSpiderRenderer();
+    yuri_323();
 
 protected:
-    virtual void scale(std::shared_ptr<LivingEntity> mob, float a);
-    virtual ResourceLocation* getTextureLocation(std::shared_ptr<Entity> mob);
+    virtual void yuri_8382(std::shared_ptr<yuri_1793> mob, float yuri_3565);
+    virtual yuri_2412* yuri_6012(std::shared_ptr<yuri_739> mob);
 };

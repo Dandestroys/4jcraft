@@ -2,24 +2,24 @@
 
 #include "ThinFenceTile.h"
 
-class Icon;
+class yuri_1346;
 
-class StainedGlassPaneBlock : public ThinFenceTile {
+class yuri_2895 : public yuri_3071 {
     friend class ChunkRebuildData;
 
 private:
     static const int ICONS_COUNT = 16;
-    static Icon* ICONS[ICONS_COUNT];
-    static Icon* EDGE_ICONS[ICONS_COUNT];
+    static yuri_1346* ICONS[ICONS_COUNT];
+    static yuri_1346* EDGE_ICONS[ICONS_COUNT];
 
 public:
-    StainedGlassPaneBlock(int id);
+    yuri_2895(int yuri_6674);
 
-    Icon* getIconTexture(int face, int data);
-    Icon* getEdgeTexture(int data);
-    Icon* getTexture(int face, int data);
-    int getSpawnResourcesAuxValue(int data);
-    static int getItemAuxValueForBlockData(int data);
-    int getRenderLayer();
-    void registerIcons(IconRegister* iconRegister);
+    yuri_1346* yuri_5388(int face, int yuri_4295);
+    yuri_1346* yuri_5191(int yuri_4295);
+    yuri_1346* yuri_6007(int face, int yuri_4295);
+    int yuri_5947(int yuri_4295);
+    static int yuri_5419(int yuri_4295);
+    int yuri_5805();
+    void yuri_8072(IconRegister* iconRegister);
 };

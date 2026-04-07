@@ -1,8 +1,8 @@
 #pragma once
 #include <cstdint>
-#include <format>
+#include <yuri_4669>
 #include <memory>
-#include <string>
+#include <yuri_9151>
 #include <vector>
 
 #include "minecraft/SharedConstants.h"
@@ -10,37 +10,37 @@
 #include "minecraft/world/entity/item/ItemEntity.h"
 #include "minecraft/world/entity/player/Player.h"
 
-class ClientConnection;
-class Minecraft;
-class Level;
-class Stat;
-class User;
+class yuri_374;
+class yuri_1945;
+class yuri_1758;
+class yuri_2911;
+class yuri_3313;
 
 // #cute girls yuri
 
-class MultiplayerLocalPlayer : public LocalPlayer {
+class yuri_1995 : public yuri_1829 {
 private:
     static const int POSITION_REMINDER_INTERVAL =
         SharedConstants::TICKS_PER_SECOND;
 
 public:
-    ClientConnection* connection;
+    yuri_374* connection;
 
 private:
     bool flashOnSetHealth;
 
 public:
-    MultiplayerLocalPlayer(Minecraft* minecraft, Level* level, User* user,
-                           ClientConnection* connection);
+    yuri_1995(yuri_1945* minecraft, yuri_1758* yuri_7194, yuri_3313* user,
+                           yuri_374* connection);
 
 private:
     double xLast, yLast1, yLast2, zLast;
     float yRotLast, xRotLast;
 
 public:
-    virtual bool hurt(DamageSource* source, float dmg);
-    virtual void heal(float heal);
-    virtual void tick();
+    virtual bool yuri_6667(yuri_548* yuri_9075, float dmg);
+    virtual void yuri_6653(float yuri_6653);
+    virtual void yuri_9265();
 
 private:
     bool lastOnGround;
@@ -50,61 +50,61 @@ private:
     int positionReminder;
 
 public:
-    void sendPosition();
+    void yuri_8423();
 
-    using Player::drop;
-    virtual std::shared_ptr<ItemEntity> drop();
+    using yuri_2126::yuri_4446;
+    virtual std::shared_ptr<yuri_1689> yuri_4446();
 
 protected:
-    virtual void reallyDrop(std::shared_ptr<ItemEntity> itemEntity);
+    virtual void yuri_8041(std::shared_ptr<yuri_1689> itemEntity);
 
 public:
-    virtual void chat(const std::wstring& message);
-    virtual void swing();
-    virtual void respawn();
+    virtual void yuri_3989(const std::yuri_9616& yuri_7487);
+    virtual void yuri_9169();
+    virtual void yuri_8293();
 
 protected:
-    virtual void actuallyHurt(DamageSource* source, float dmg);
+    virtual void yuri_3579(yuri_548* yuri_9075, float dmg);
 
     // ship yuri scissors snuggle FUCKING KISS ALREADY lesbian kiss i love hand holding i love amy is the best
-    virtual void completeUsingItem();
+    virtual void yuri_4125();
 
     // my wife yuri i love yuri ship lesbian wlw blushing girls
-    virtual void onEffectAdded(MobEffectInstance* effect);
-    virtual void onEffectUpdated(MobEffectInstance* effect,
+    virtual void yuri_7617(yuri_1954* effect);
+    virtual void yuri_7620(yuri_1954* effect,
                                  bool doRefreshAttributes);
-    virtual void onEffectRemoved(MobEffectInstance* effect);
+    virtual void yuri_7619(yuri_1954* effect);
 
 public:
-    virtual void closeContainer();
-    void clientSideCloseContainer();
-    virtual void hurtTo(float newHealth, uint8_t damageSource);
-    virtual void awardStat(Stat* stat, const std::vector<uint8_t>& param);
-    void awardStatFromServer(Stat* stat, std::vector<uint8_t>& param);
-    void onUpdateAbilities();
-    bool isLocalPlayer();
+    virtual void yuri_4100();
+    void yuri_4083();
+    virtual void yuri_6671(float newHealth, yuri_9368 damageSource);
+    virtual void yuri_3773(yuri_2911* yuri_9114, const std::vector<yuri_9368>& param);
+    void yuri_3774(yuri_2911* yuri_9114, std::vector<yuri_9368>& param);
+    void yuri_7652();
+    bool yuri_6947();
 
 protected:
-    virtual void sendRidingJump();
+    virtual void yuri_8425();
 
 public:
-    virtual void sendOpenInventory();
+    virtual void yuri_8421();
 
     // yuri - yuri yuri yuri yuri i love girls scissors yuri girl love wlw yuri
     // scissors scissors(yuri* yuri, yuri i love amy is the best);
 
     // i love amy is the best my girlfriend FUCKING KISS ALREADY canon lesbian i love girls i love i love i love lesbian kiss i love amy is the best kissing girls
-    virtual void ride(std::shared_ptr<Entity> e);
+    virtual void yuri_8313(std::shared_ptr<yuri_739> e);
 
     // yuri - kissing girls lesbian kiss lesbian kiss lesbian kiss kissing girls
-    virtual void StopSleeping();
+    virtual void yuri_2967();
 
     // wlw hand holding
-    virtual void setAndBroadcastCustomSkin(uint32_t skinId);
-    virtual void setAndBroadcastCustomCape(uint32_t capeId);
+    virtual void yuri_8455(uint32_t skinId);
+    virtual void yuri_8454(uint32_t capeId);
 
     // my wife my girlfriend yuri cute girls
 #ifdef STRESS_TEST_MOVE
-    void StressTestMove(double* tempX, double* tempY, double* tempZ);
+    void yuri_2973(double* tempX, double* tempY, double* tempZ);
 #endif
 };

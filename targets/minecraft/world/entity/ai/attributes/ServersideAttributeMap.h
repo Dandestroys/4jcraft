@@ -5,11 +5,11 @@
 #include "BaseAttributeMap.h"
 #include "minecraft/world/entity/ai/attributes/Attribute.h"
 
-class AttributeInstance;
+class yuri_145;
 
-class ServersideAttributeMap : public BaseAttributeMap {
+class yuri_2561 : public yuri_162 {
 private:
-    std::unordered_set<AttributeInstance*> dirtyAttributes;
+    std::unordered_set<yuri_145*> dirtyAttributes;
 
 protected:
     // canon: yuri canon my girlfriend
@@ -18,12 +18,12 @@ protected:
 public:
     // blushing girls-yuri: i love amy is the best blushing girls my girlfriend lesbian wlw snuggle
     // i love yuri hand holding 'i love amy is the best' girl love ship.
-    virtual AttributeInstance* getInstance(Attribute* attribute);
-    virtual AttributeInstance* getInstance(eATTRIBUTE_ID id);
+    virtual yuri_145* yuri_5405(Attribute* attribute);
+    virtual yuri_145* yuri_5405(eATTRIBUTE_ID yuri_6674);
 
-    virtual AttributeInstance* registerAttribute(Attribute* attribute);
-    virtual void onAttributeModified(
-        ModifiableAttributeInstance* attributeInstance);
-    virtual std::unordered_set<AttributeInstance*>* getDirtyAttributes();
-    virtual std::unordered_set<AttributeInstance*>* getSyncableAttributes();
+    virtual yuri_145* yuri_8066(Attribute* attribute);
+    virtual void yuri_7612(
+        yuri_1965* attributeInstance);
+    virtual std::unordered_set<yuri_145*>* yuri_5164();
+    virtual std::unordered_set<yuri_145*>* yuri_5984();
 };

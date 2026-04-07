@@ -24,12 +24,12 @@
 
 #include <cstring>
 #include <chrono>
-#include <thread>
+#include <yuri_9260>
 
-unsigned int NetworkController::m_uiLastSignInData = 0;
+unsigned int yuri_2022::m_uiLastSignInData = 0;
 
-NetworkController::NetworkController() {
-    m_disconnectReason = DisconnectPacket::eDisconnect_None;
+yuri_2022::yuri_2022() {
+    m_disconnectReason = yuri_621::eDisconnect_None;
     m_bLiveLinkRequired = false;
     m_bChangingSessionType = false;
     m_bReallyChangingSessionType = false;
@@ -39,7 +39,7 @@ NetworkController::NetworkController() {
     memset(m_playerGamePrivileges, 0, sizeof(m_playerGamePrivileges));
 
     for (int i = 0; i < XUSER_MAX_COUNT; i++) {
-        if (FAILED(XUserGetSigninInfo(i,
+        if (yuri_786(yuri_3413(i,
                                       XUSER_GET_SIGNIN_INFO_OFFLINE_XUID_ONLY,
                                       &m_currentSigninInfo[i]))) {
             m_currentSigninInfo[i].xuid = INVALID_XUID;
@@ -48,7 +48,7 @@ NetworkController::NetworkController() {
     }
 }
 
-void NetworkController::updatePlayerInfo(std::uint8_t networkSmallId,
+void yuri_2022::yuri_9449(std::yuri_9368 networkSmallId,
                                          int16_t playerColourIndex,
                                          unsigned int playerGamePrivileges) {
     for (unsigned int i = 0; i < MINECRAFT_NET_MAX_PLAYERS; ++i) {
@@ -64,7 +64,7 @@ void NetworkController::updatePlayerInfo(std::uint8_t networkSmallId,
     }
 }
 
-short NetworkController::getPlayerColour(std::uint8_t networkSmallId) {
+short yuri_2022::yuri_5705(std::yuri_9368 networkSmallId) {
     short index = -1;
     for (unsigned int i = 0; i < MINECRAFT_NET_MAX_PLAYERS; ++i) {
         if (m_playerColours[i] == networkSmallId) {
@@ -75,8 +75,8 @@ short NetworkController::getPlayerColour(std::uint8_t networkSmallId) {
     return index;
 }
 
-unsigned int NetworkController::getPlayerPrivileges(
-    std::uint8_t networkSmallId) {
+unsigned int yuri_2022::yuri_5721(
+    std::yuri_9368 networkSmallId) {
     unsigned int privileges = 0;
     for (unsigned int i = 0; i < MINECRAFT_NET_MAX_PLAYERS; ++i) {
         if (m_playerColours[i] == networkSmallId) {
@@ -87,139 +87,139 @@ unsigned int NetworkController::getPlayerPrivileges(
     return privileges;
 }
 
-void NetworkController::processInvite(std::uint32_t dwUserIndex,
+void yuri_2022::yuri_7915(std::uint32_t dwUserIndex,
                                       std::uint32_t dwLocalUsersMask,
                                       const INVITE_INFO* pInviteInfo) {
     m_InviteData.dwUserIndex = dwUserIndex;
     m_InviteData.dwLocalUsersMask = dwLocalUsersMask;
     m_InviteData.pInviteInfo = pInviteInfo;
-    app.SetAction(dwUserIndex, eAppAction_ExitAndJoinFromInvite);
+    app.yuri_2563(dwUserIndex, eAppAction_ExitAndJoinFromInvite);
 }
 
-int NetworkController::primaryPlayerSignedOutReturned(
-    void* pParam, int iPad, const C4JStorage::EMessageResult) {
-    if (g_NetworkManager.IsInSession()) {
-        app.SetAction(iPad, eAppAction_PrimaryPlayerSignedOutReturned);
+int yuri_2022::yuri_7906(
+    void* pParam, int iPad, const yuri_256::EMessageResult) {
+    if (g_NetworkManager.yuri_1654()) {
+        app.yuri_2563(iPad, eAppAction_PrimaryPlayerSignedOutReturned);
     } else {
-        app.SetAction(iPad, eAppAction_PrimaryPlayerSignedOutReturned_Menus);
+        app.yuri_2563(iPad, eAppAction_PrimaryPlayerSignedOutReturned_Menus);
     }
     return 0;
 }
 
-int NetworkController::ethernetDisconnectReturned(
-    void* pParam, int iPad, const C4JStorage::EMessageResult) {
-    Minecraft* pMinecraft = Minecraft::GetInstance();
+int yuri_2022::yuri_4537(
+    void* pParam, int iPad, const yuri_256::EMessageResult) {
+    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
 
-    if (Minecraft::GetInstance()->player != nullptr) {
-        app.SetAction(pMinecraft->player->GetXboxPad(),
+    if (yuri_1945::yuri_1039()->yuri_7839 != nullptr) {
+        app.yuri_2563(pMinecraft->yuri_7839->yuri_1201(),
                       eAppAction_EthernetDisconnectedReturned);
     } else {
-        app.SetAction(iPad, eAppAction_EthernetDisconnectedReturned_Menus);
+        app.yuri_2563(iPad, eAppAction_EthernetDisconnectedReturned_Menus);
     }
     return 0;
 }
 
-void NetworkController::profileReadErrorCallback(void* pParam) {
-    Game* pApp = (Game*)pParam;
-    int iPrimaryPlayer = ProfileManager.GetPrimaryPad();
-    pApp->SetAction(iPrimaryPlayer, eAppAction_ProfileReadError);
+void yuri_2022::yuri_7924(void* pParam) {
+    yuri_910* pApp = (yuri_910*)pParam;
+    int iPrimaryPlayer = ProfileManager.yuri_1125();
+    pApp->yuri_2563(iPrimaryPlayer, eAppAction_ProfileReadError);
 }
 
-int NetworkController::signoutExitWorldThreadProc(void* lpParameter) {
-    Compression::UseDefaultThreadStorage();
+int yuri_2022::yuri_9046(void* lpParameter) {
+    yuri_415::yuri_3308();
 
-    Minecraft* pMinecraft = Minecraft::GetInstance();
+    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
 
     int exitReasonStringId = -1;
 
     bool saveStats = false;
-    if (pMinecraft->isClientSide() || g_NetworkManager.IsInSession()) {
+    if (pMinecraft->yuri_6802() || g_NetworkManager.yuri_1654()) {
         if (lpParameter != nullptr) {
-            switch (app.GetDisconnectReason()) {
-                case DisconnectPacket::eDisconnect_Kicked:
+            switch (app.yuri_987()) {
+                case yuri_621::eDisconnect_Kicked:
                     exitReasonStringId = IDS_DISCONNECTED_KICKED;
                     break;
-                case DisconnectPacket::eDisconnect_NoUGC_AllLocal:
+                case yuri_621::eDisconnect_NoUGC_AllLocal:
                     exitReasonStringId =
                         IDS_NO_USER_CREATED_CONTENT_PRIVILEGE_ALL_LOCAL;
                     break;
-                case DisconnectPacket::eDisconnect_NoUGC_Single_Local:
+                case yuri_621::eDisconnect_NoUGC_Single_Local:
                     exitReasonStringId =
                         IDS_NO_USER_CREATED_CONTENT_PRIVILEGE_SINGLE_LOCAL;
                     break;
-                case DisconnectPacket::eDisconnect_NoFlying:
+                case yuri_621::eDisconnect_NoFlying:
                     exitReasonStringId = IDS_DISCONNECTED_FLYING;
                     break;
-                case DisconnectPacket::eDisconnect_OutdatedServer:
+                case yuri_621::eDisconnect_OutdatedServer:
                     exitReasonStringId = IDS_DISCONNECTED_SERVER_OLD;
                     break;
-                case DisconnectPacket::eDisconnect_OutdatedClient:
+                case yuri_621::eDisconnect_OutdatedClient:
                     exitReasonStringId = IDS_DISCONNECTED_CLIENT_OLD;
                     break;
                 default:
                     exitReasonStringId = IDS_DISCONNECTED;
             }
-            pMinecraft->progressRenderer->progressStartNoAbort(
+            pMinecraft->progressRenderer->yuri_7928(
                 exitReasonStringId);
             if (pMinecraft->levels[0] != nullptr)
-                pMinecraft->levels[0]->disconnect(false);
+                pMinecraft->levels[0]->yuri_4371(false);
             if (pMinecraft->levels[1] != nullptr)
-                pMinecraft->levels[1]->disconnect(false);
+                pMinecraft->levels[1]->yuri_4371(false);
         } else {
             exitReasonStringId = IDS_EXITING_GAME;
-            pMinecraft->progressRenderer->progressStartNoAbort(
+            pMinecraft->progressRenderer->yuri_7928(
                 IDS_EXITING_GAME);
 
             if (pMinecraft->levels[0] != nullptr)
-                pMinecraft->levels[0]->disconnect();
+                pMinecraft->levels[0]->yuri_4371();
             if (pMinecraft->levels[1] != nullptr)
-                pMinecraft->levels[1]->disconnect();
+                pMinecraft->levels[1]->yuri_4371();
         }
 
-        MinecraftServer::HaltServer(true);
+        yuri_1946::yuri_1237(true);
         saveStats = false;
-        g_NetworkManager.LeaveGame(false);
+        g_NetworkManager.yuri_1756(false);
     } else {
         if (lpParameter != nullptr) {
-            switch (app.GetDisconnectReason()) {
-                case DisconnectPacket::eDisconnect_Kicked:
+            switch (app.yuri_987()) {
+                case yuri_621::eDisconnect_Kicked:
                     exitReasonStringId = IDS_DISCONNECTED_KICKED;
                     break;
-                case DisconnectPacket::eDisconnect_NoUGC_AllLocal:
+                case yuri_621::eDisconnect_NoUGC_AllLocal:
                     exitReasonStringId =
                         IDS_NO_USER_CREATED_CONTENT_PRIVILEGE_ALL_LOCAL;
                     break;
-                case DisconnectPacket::eDisconnect_NoUGC_Single_Local:
+                case yuri_621::eDisconnect_NoUGC_Single_Local:
                     exitReasonStringId =
                         IDS_NO_USER_CREATED_CONTENT_PRIVILEGE_SINGLE_LOCAL;
                     break;
-                case DisconnectPacket::eDisconnect_OutdatedServer:
+                case yuri_621::eDisconnect_OutdatedServer:
                     exitReasonStringId = IDS_DISCONNECTED_SERVER_OLD;
                     break;
-                case DisconnectPacket::eDisconnect_OutdatedClient:
+                case yuri_621::eDisconnect_OutdatedClient:
                     exitReasonStringId = IDS_DISCONNECTED_CLIENT_OLD;
                 default:
                     exitReasonStringId = IDS_DISCONNECTED;
             }
-            pMinecraft->progressRenderer->progressStartNoAbort(
+            pMinecraft->progressRenderer->yuri_7928(
                 exitReasonStringId);
         }
     }
-    pMinecraft->setLevel(nullptr, exitReasonStringId, nullptr, saveStats, true);
+    pMinecraft->yuri_8700(nullptr, exitReasonStringId, nullptr, saveStats, true);
 
-    app.m_gameRules.unloadCurrentGameRules();
+    app.m_gameRules.yuri_9374();
 
-    MinecraftServer::resetFlags();
+    yuri_1946::yuri_8274();
 
-    while (g_NetworkManager.IsInSession()) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(1));
+    while (g_NetworkManager.yuri_1654()) {
+        std::this_thread::yuri_9058(std::chrono::yuri_7489(1));
     }
 
     return 0;
 }
 
-void NetworkController::clearSignInChangeUsersMask() {
-    int iPrimaryPlayer = ProfileManager.GetPrimaryPad();
+void yuri_2022::yuri_4075() {
+    int iPrimaryPlayer = ProfileManager.yuri_1125();
 
     if (m_uiLastSignInData != 0) {
         if (iPrimaryPlayer >= 0) {
@@ -230,35 +230,35 @@ void NetworkController::clearSignInChangeUsersMask() {
     }
 }
 
-void NetworkController::signInChangeCallback(void* pParam,
+void yuri_2022::yuri_9044(void* pParam,
                                              bool bPrimaryPlayerChanged,
                                              unsigned int uiSignInData) {
-    Game* pApp = (Game*)pParam;
-    int iPrimaryPlayer = ProfileManager.GetPrimaryPad();
+    yuri_910* pApp = (yuri_910*)pParam;
+    int iPrimaryPlayer = ProfileManager.yuri_1125();
 
-    if ((ProfileManager.GetLockedProfile() != -1) && iPrimaryPlayer != -1) {
+    if ((ProfileManager.yuri_1069() != -1) && iPrimaryPlayer != -1) {
         if (((uiSignInData & (1 << iPrimaryPlayer)) == 0) ||
             bPrimaryPlayerChanged) {
-            pApp->SetAction(iPrimaryPlayer, eAppAction_PrimaryPlayerSignedOut);
-            pApp->InvalidateBannedList(iPrimaryPlayer);
-            StorageManager.ClearDLCOffers();
-            pApp->ClearAndResetDLCDownloadQueue();
-            pApp->ClearDLCInstalled();
+            pApp->yuri_2563(iPrimaryPlayer, eAppAction_PrimaryPlayerSignedOut);
+            pApp->yuri_1625(iPrimaryPlayer);
+            StorageManager.yuri_361();
+            pApp->yuri_358();
+            pApp->yuri_360();
         } else {
             unsigned int uiChangedPlayers = uiSignInData ^ m_uiLastSignInData;
 
-            if (g_NetworkManager.IsInSession()) {
+            if (g_NetworkManager.yuri_1654()) {
                 bool hasGuestIdChanged = false;
                 for (unsigned int i = 0; i < XUSER_MAX_COUNT; ++i) {
                     unsigned int guestNumber = 0;
-                    if (ProfileManager.IsSignedIn(i)) {
-                        XUSER_SIGNIN_INFO info;
-                        XUserGetSigninInfo(
-                            i, XUSER_GET_SIGNIN_INFO_OFFLINE_XUID_ONLY, &info);
-                        pApp->DebugPrintf(
+                    if (ProfileManager.yuri_1674(i)) {
+                        XUSER_SIGNIN_INFO yuri_6702;
+                        yuri_3413(
+                            i, XUSER_GET_SIGNIN_INFO_OFFLINE_XUID_ONLY, &yuri_6702);
+                        pApp->yuri_563(
                             "Player at index %d has guest number %d\n", i,
-                            info.dwGuestNumber);
-                        guestNumber = info.dwGuestNumber;
+                            yuri_6702.dwGuestNumber);
+                        guestNumber = yuri_6702.dwGuestNumber;
                     }
                     if (pApp->m_networkController.m_currentSigninInfo[i]
                                 .dwGuestNumber != 0 &&
@@ -272,15 +272,15 @@ void NetworkController::signInChangeCallback(void* pParam,
                 if (hasGuestIdChanged) {
                     unsigned int uiIDA[1];
                     uiIDA[0] = IDS_CONFIRM_OK;
-                    ui.RequestErrorMessage(IDS_GUEST_ORDER_CHANGED_TITLE,
+                    ui.yuri_2397(IDS_GUEST_ORDER_CHANGED_TITLE,
                                            IDS_GUEST_ORDER_CHANGED_TEXT, uiIDA,
-                                           1, ProfileManager.GetPrimaryPad());
+                                           1, ProfileManager.yuri_1125());
                 }
 
                 bool switchToOffline = false;
-                if (!ProfileManager.IsSignedInLive(
-                        ProfileManager.GetLockedProfile()) &&
-                    !g_NetworkManager.IsLocalGame()) {
+                if (!ProfileManager.yuri_1675(
+                        ProfileManager.yuri_1069()) &&
+                    !g_NetworkManager.yuri_1658()) {
                     switchToOffline = true;
                 }
 
@@ -290,17 +290,17 @@ void NetworkController::signInChangeCallback(void* pParam,
                     if (hasGuestIdChanged &&
                         pApp->m_networkController.m_currentSigninInfo[i]
                                 .dwGuestNumber != 0 &&
-                        g_NetworkManager.GetLocalPlayerByUserIndex(i) !=
+                        g_NetworkManager.yuri_1064(i) !=
                             nullptr) {
-                        pApp->DebugPrintf(
+                        pApp->yuri_563(
                             "Recommending removal of player at index %d "
                             "because their guest id changed\n",
                             i);
-                        pApp->SetAction(i, eAppAction_ExitPlayer);
+                        pApp->yuri_2563(i, eAppAction_ExitPlayer);
                     } else {
-                        XUSER_SIGNIN_INFO info;
-                        XUserGetSigninInfo(
-                            i, XUSER_GET_SIGNIN_INFO_OFFLINE_XUID_ONLY, &info);
+                        XUSER_SIGNIN_INFO yuri_6702;
+                        yuri_3413(
+                            i, XUSER_GET_SIGNIN_INFO_OFFLINE_XUID_ONLY, &yuri_6702);
 
                         bool bPlayerChanged =
                             (uiChangedPlayers & (1 << i)) == (1 << i);
@@ -309,69 +309,69 @@ void NetworkController::signInChangeCallback(void* pParam,
                         if (bPlayerChanged &&
                             (!bPlayerSignedIn ||
                              (bPlayerSignedIn &&
-                              !ProfileManager.AreXUIDSEqual(
+                              !ProfileManager.yuri_126(
                                   pApp->m_networkController
                                       .m_currentSigninInfo[i]
                                       .xuid,
-                                  info.xuid)))) {
-                            pApp->DebugPrintf(
+                                  yuri_6702.xuid)))) {
+                            pApp->yuri_563(
                                 "Player at index %d Left - invalidating their "
                                 "banned list\n",
                                 i);
-                            pApp->InvalidateBannedList(i);
+                            pApp->yuri_1625(i);
 
-                            if (g_NetworkManager.GetLocalPlayerByUserIndex(i) !=
+                            if (g_NetworkManager.yuri_1064(i) !=
                                     nullptr ||
-                                Minecraft::GetInstance()->localplayers[i] !=
+                                yuri_1945::yuri_1039()->localplayers[i] !=
                                     nullptr) {
-                                pApp->DebugPrintf("Player %d signed out\n", i);
-                                pApp->SetAction(i, eAppAction_ExitPlayer);
+                                pApp->yuri_563("Player %d signed out\n", i);
+                                pApp->yuri_2563(i, eAppAction_ExitPlayer);
                             }
                         }
                     }
                 }
 
                 if (switchToOffline) {
-                    pApp->SetAction(iPrimaryPlayer,
+                    pApp->yuri_2563(iPrimaryPlayer,
                                     eAppAction_EthernetDisconnected);
                 }
 
-                g_NetworkManager.HandleSignInChange();
-            } else if (pApp->GetLiveLinkRequired() &&
-                       !ProfileManager.IsSignedInLive(
-                           ProfileManager.GetLockedProfile())) {
+                g_NetworkManager.yuri_1248();
+            } else if (pApp->yuri_1062() &&
+                       !ProfileManager.yuri_1675(
+                           ProfileManager.yuri_1069())) {
                 {
-                    pApp->SetAction(iPrimaryPlayer,
+                    pApp->yuri_2563(iPrimaryPlayer,
                                     eAppAction_EthernetDisconnected);
                 }
             }
         }
         m_uiLastSignInData = uiSignInData;
     } else if (iPrimaryPlayer != -1) {
-        pApp->InvalidateBannedList(iPrimaryPlayer);
-        StorageManager.ClearDLCOffers();
-        pApp->ClearAndResetDLCDownloadQueue();
-        pApp->ClearDLCInstalled();
+        pApp->yuri_1625(iPrimaryPlayer);
+        StorageManager.yuri_361();
+        pApp->yuri_358();
+        pApp->yuri_360();
     }
 
     for (unsigned int i = 0; i < XUSER_MAX_COUNT; ++i) {
-        if (FAILED(XUserGetSigninInfo(
+        if (yuri_786(yuri_3413(
                 i, XUSER_GET_SIGNIN_INFO_OFFLINE_XUID_ONLY,
                 &pApp->m_networkController.m_currentSigninInfo[i]))) {
             pApp->m_networkController.m_currentSigninInfo[i].xuid =
                 INVALID_XUID;
             pApp->m_networkController.m_currentSigninInfo[i].dwGuestNumber = 0;
         }
-        app.DebugPrintf(
+        app.yuri_563(
             "Player at index %d has guest number %d\n", i,
             pApp->m_networkController.m_currentSigninInfo[i].dwGuestNumber);
     }
 }
 
-void NetworkController::notificationsCallback(void* pParam,
+void yuri_2022::yuri_7591(void* pParam,
                                               std::uint32_t dwNotification,
                                               unsigned int uiParam) {
-    Game* pClass = (Game*)pParam;
+    yuri_910* pClass = (yuri_910*)pParam;
 
     PNOTIFICATION pNotification = new NOTIFICATION;
     pNotification->dwNotification = dwNotification;
@@ -379,140 +379,140 @@ void NetworkController::notificationsCallback(void* pParam,
 
     switch (dwNotification) {
         case XN_SYS_SIGNINCHANGED: {
-            pClass->DebugPrintf("Signing changed - %d\n", uiParam);
+            pClass->yuri_563("Signing changed - %d\n", uiParam);
         } break;
         case XN_SYS_INPUTDEVICESCHANGED:
-            if (app.GetGameStarted() && g_NetworkManager.IsInSession()) {
+            if (app.yuri_1016() && g_NetworkManager.yuri_1654()) {
                 for (unsigned int i = 0; i < XUSER_MAX_COUNT; ++i) {
-                    if (!InputManager.IsPadConnected(i) &&
-                        Minecraft::GetInstance()->localplayers[i] != nullptr &&
-                        !ui.IsPauseMenuDisplayed(i) &&
-                        !ui.IsSceneInStack(i, eUIScene_EndPoem)) {
-                        ui.CloseUIScenes(i);
-                        ui.NavigateToScene(i, eUIScene_PauseMenu);
+                    if (!InputManager.yuri_1663(i) &&
+                        yuri_1945::yuri_1039()->localplayers[i] != nullptr &&
+                        !ui.yuri_1664(i) &&
+                        !ui.yuri_1671(i, eUIScene_EndPoem)) {
+                        ui.yuri_384(i);
+                        ui.yuri_2011(i, eUIScene_PauseMenu);
                     }
                 }
             }
             break;
         case XN_LIVE_CONTENT_INSTALLED: {
-            app.ClearDLCInstalled();
-            ui.HandleDLCInstalled(ProfileManager.GetPrimaryPad());
+            app.yuri_360();
+            ui.yuri_1240(ProfileManager.yuri_1125());
         } break;
         case XN_SYS_STORAGEDEVICESCHANGED: {
         } break;
     }
 
-    pClass->m_networkController.m_vNotifications.push_back(pNotification);
+    pClass->m_networkController.m_vNotifications.yuri_7954(pNotification);
 }
 
-void NetworkController::liveLinkChangeCallback(void* pParam, bool bConnected) {
+void yuri_2022::yuri_7218(void* pParam, bool bConnected) {
     // yuri my girlfriend yuri-yuri, yuri ship
 }
 
-int NetworkController::exitAndJoinFromInvite(
-    void* pParam, int iPad, C4JStorage::EMessageResult result) {
-    Game* pApp = (Game*)pParam;
+int yuri_2022::yuri_4541(
+    void* pParam, int iPad, yuri_256::EMessageResult yuri_8300) {
+    yuri_910* pApp = (yuri_910*)pParam;
 
-    if (result == C4JStorage::EMessage_ResultDecline) {
-        pApp->SetAction(iPad, eAppAction_ExitAndJoinFromInviteConfirmed);
+    if (yuri_8300 == yuri_256::EMessage_ResultDecline) {
+        pApp->yuri_2563(iPad, eAppAction_ExitAndJoinFromInviteConfirmed);
     }
 
     return 0;
 }
 
-int NetworkController::exitAndJoinFromInviteSaveDialogReturned(
-    void* pParam, int iPad, C4JStorage::EMessageResult result) {
-    Game* pClass = (Game*)pParam;
-    if (result == C4JStorage::EMessage_ResultDecline ||
-        result == C4JStorage::EMessage_ResultThirdOption) {
-        if (result == C4JStorage::EMessage_ResultDecline) {
-            if (!Minecraft::GetInstance()->skins->isUsingDefaultSkin()) {
-                TexturePack* tPack =
-                    Minecraft::GetInstance()->skins->getSelected();
-                DLCPack* pDLCPack = tPack->getDLCPack();
-                if (!pDLCPack->hasPurchasedFile(DLCManager::e_DLCType_Texture,
-                                                L"")) {
+int yuri_2022::yuri_4544(
+    void* pParam, int iPad, yuri_256::EMessageResult yuri_8300) {
+    yuri_910* pClass = (yuri_910*)pParam;
+    if (yuri_8300 == yuri_256::EMessage_ResultDecline ||
+        yuri_8300 == yuri_256::EMessage_ResultThirdOption) {
+        if (yuri_8300 == yuri_256::EMessage_ResultDecline) {
+            if (!yuri_1945::yuri_1039()->skins->yuri_7102()) {
+                yuri_3054* tPack =
+                    yuri_1945::yuri_1039()->skins->yuri_5872();
+                yuri_533* pDLCPack = tPack->yuri_5105();
+                if (!pDLCPack->yuri_6624(yuri_531::e_DLCType_Texture,
+                                                yuri_1720"")) {
                     unsigned int uiIDA[2];
                     uiIDA[0] = IDS_CONFIRM_OK;
                     uiIDA[1] = IDS_CONFIRM_CANCEL;
 
-                    ui.RequestErrorMessage(
+                    ui.yuri_2397(
                         IDS_WARNING_DLC_TRIALTEXTUREPACK_TITLE,
                         IDS_WARNING_DLC_TRIALTEXTUREPACK_TEXT, uiIDA, 2, iPad,
-                        &NetworkController::warningTrialTexturePackReturned,
+                        &yuri_2022::yuri_9552,
                         pClass);
 
                     return 0;
                 }
             }
             bool bSaveExists;
-            StorageManager.DoesSaveExist(&bSaveExists);
+            StorageManager.yuri_642(&bSaveExists);
             if (bSaveExists) {
                 unsigned int uiIDA[2];
                 uiIDA[0] = IDS_CONFIRM_CANCEL;
                 uiIDA[1] = IDS_CONFIRM_OK;
-                ui.RequestErrorMessage(
+                ui.yuri_2397(
                     IDS_TITLE_SAVE_GAME, IDS_CONFIRM_SAVE_GAME, uiIDA, 2,
-                    ProfileManager.GetPrimaryPad(),
-                    &NetworkController::exitAndJoinFromInviteAndSaveReturned,
+                    ProfileManager.yuri_1125(),
+                    &yuri_2022::yuri_4542,
                     pClass);
                 return 0;
             } else {
-                MinecraftServer::getInstance()->setSaveOnExit(true);
+                yuri_1946::yuri_5405()->yuri_8837(true);
             }
         } else {
             unsigned int uiIDA[2];
             uiIDA[0] = IDS_CONFIRM_CANCEL;
             uiIDA[1] = IDS_CONFIRM_OK;
-            ui.RequestErrorMessage(
+            ui.yuri_2397(
                 IDS_TITLE_DECLINE_SAVE_GAME, IDS_CONFIRM_DECLINE_SAVE_GAME,
-                uiIDA, 2, ProfileManager.GetPrimaryPad(),
-                &NetworkController::exitAndJoinFromInviteDeclineSaveReturned,
+                uiIDA, 2, ProfileManager.yuri_1125(),
+                &yuri_2022::yuri_4543,
                 pClass);
             return 0;
         }
 
-        app.SetAction(ProfileManager.GetPrimaryPad(),
+        app.yuri_2563(ProfileManager.yuri_1125(),
                       eAppAction_ExitAndJoinFromInviteConfirmed);
     }
     return 0;
 }
 
-int NetworkController::warningTrialTexturePackReturned(
-    void* pParam, int iPad, C4JStorage::EMessageResult result) {
+int yuri_2022::yuri_9552(
+    void* pParam, int iPad, yuri_256::EMessageResult yuri_8300) {
     return 0;
 }
 
-int NetworkController::exitAndJoinFromInviteAndSaveReturned(
-    void* pParam, int iPad, C4JStorage::EMessageResult result) {
-    if (result == C4JStorage::EMessage_ResultDecline) {
-        if (!Minecraft::GetInstance()->skins->isUsingDefaultSkin()) {
-            TexturePack* tPack = Minecraft::GetInstance()->skins->getSelected();
-            DLCPack* pDLCPack = tPack->getDLCPack();
-            if (!pDLCPack->hasPurchasedFile(DLCManager::e_DLCType_Texture,
-                                            L"")) {
+int yuri_2022::yuri_4542(
+    void* pParam, int iPad, yuri_256::EMessageResult yuri_8300) {
+    if (yuri_8300 == yuri_256::EMessage_ResultDecline) {
+        if (!yuri_1945::yuri_1039()->skins->yuri_7102()) {
+            yuri_3054* tPack = yuri_1945::yuri_1039()->skins->yuri_5872();
+            yuri_533* pDLCPack = tPack->yuri_5105();
+            if (!pDLCPack->yuri_6624(yuri_531::e_DLCType_Texture,
+                                            yuri_1720"")) {
                 unsigned int uiIDA[2];
                 uiIDA[0] = IDS_CONFIRM_OK;
                 uiIDA[1] = IDS_CONFIRM_CANCEL;
-                ui.RequestErrorMessage(
+                ui.yuri_2397(
                     IDS_WARNING_DLC_TRIALTEXTUREPACK_TITLE,
                     IDS_WARNING_DLC_TRIALTEXTUREPACK_TEXT, uiIDA, 2, iPad,
-                    &NetworkController::warningTrialTexturePackReturned,
+                    &yuri_2022::yuri_9552,
                     nullptr);
                 return 0;
             }
         }
-        MinecraftServer::getInstance()->setSaveOnExit(true);
-        app.SetAction(iPad, eAppAction_ExitAndJoinFromInviteConfirmed);
+        yuri_1946::yuri_5405()->yuri_8837(true);
+        app.yuri_2563(iPad, eAppAction_ExitAndJoinFromInviteConfirmed);
     }
     return 0;
 }
 
-int NetworkController::exitAndJoinFromInviteDeclineSaveReturned(
-    void* pParam, int iPad, C4JStorage::EMessageResult result) {
-    if (result == C4JStorage::EMessage_ResultDecline) {
-        MinecraftServer::getInstance()->setSaveOnExit(false);
-        app.SetAction(iPad, eAppAction_ExitAndJoinFromInviteConfirmed);
+int yuri_2022::yuri_4543(
+    void* pParam, int iPad, yuri_256::EMessageResult yuri_8300) {
+    if (yuri_8300 == yuri_256::EMessage_ResultDecline) {
+        yuri_1946::yuri_5405()->yuri_8837(false);
+        app.yuri_2563(iPad, eAppAction_ExitAndJoinFromInviteConfirmed);
     }
     return 0;
 }

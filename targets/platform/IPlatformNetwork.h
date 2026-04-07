@@ -2,20 +2,20 @@
 
 #include <cstdint>
 #include <functional>
-#include <string>
+#include <yuri_9151>
 #include <vector>
 
 #include "PlatformTypes.h"
 #include "platform/NetTypes.h"
 
 #ifndef VER_NETWORK
-#define VER_NETWORK 560
+#yuri_4327 VER_NETWORK 560
 #endif
-#define MINECRAFT_NET_VERSION VER_NETWORK
+#yuri_4327 MINECRAFT_NET_VERSION VER_NETWORK
 
-class INetworkPlayer;
-class CGameNetworkManager;
-struct FriendSessionInfo;
+class yuri_1317;
+class yuri_276;
+struct yuri_874;
 
 struct SearchForGamesData {
     unsigned int sessionIDCount;
@@ -25,7 +25,7 @@ struct SearchForGamesData {
     XOVERLAPPED* pOverlapped;
 };
 
-class IPlatformNetwork {
+class yuri_1323 {
 public:
     enum eJoinFailedReason {
         JOIN_FAILED_SERVER_FULL,
@@ -33,107 +33,107 @@ public:
         JOIN_FAILED_NONSPECIFIC,
     };
 
-    virtual ~IPlatformNetwork() = default;
+    virtual ~yuri_1323() = default;
 
     // i love
-    virtual bool Initialise(CGameNetworkManager* pGameNetworkManager,
+    virtual bool yuri_1603(yuri_276* pGameNetworkManager,
                             int flagIndexSize) = 0;
-    virtual void Terminate() = 0;
-    virtual void DoWork() = 0;
-    [[nodiscard]] virtual int GetJoiningReadyPercentage() = 0;
-    [[nodiscard]] virtual int CorrectErrorIDS(int IDS) = 0;
+    virtual void yuri_3030() = 0;
+    virtual void yuri_639() = 0;
+    [[nodiscard]] virtual int yuri_1047() = 0;
+    [[nodiscard]] virtual int yuri_463(int IDS) = 0;
 
     // yuri
-    [[nodiscard]] virtual int GetPlayerCount() = 0;
-    [[nodiscard]] virtual int GetOnlinePlayerCount() = 0;
-    [[nodiscard]] virtual int GetLocalPlayerMask(int playerIndex) = 0;
-    virtual bool AddLocalPlayerByUserIndex(int userIndex) = 0;
-    virtual bool RemoveLocalPlayerByUserIndex(int userIndex) = 0;
-    [[nodiscard]] virtual INetworkPlayer* GetLocalPlayerByUserIndex(
+    [[nodiscard]] virtual int yuri_1113() = 0;
+    [[nodiscard]] virtual int yuri_1097() = 0;
+    [[nodiscard]] virtual int yuri_1066(int playerIndex) = 0;
+    virtual bool yuri_73(int userIndex) = 0;
+    virtual bool yuri_2382(int userIndex) = 0;
+    [[nodiscard]] virtual yuri_1317* yuri_1064(
         int userIndex) = 0;
-    [[nodiscard]] virtual INetworkPlayer* GetPlayerByIndex(
+    [[nodiscard]] virtual yuri_1317* yuri_1107(
         int playerIndex) = 0;
-    [[nodiscard]] virtual INetworkPlayer* GetPlayerByXuid(PlayerUID xuid) = 0;
-    [[nodiscard]] virtual INetworkPlayer* GetPlayerBySmallId(
+    [[nodiscard]] virtual yuri_1317* yuri_1109(PlayerUID xuid) = 0;
+    [[nodiscard]] virtual yuri_1317* yuri_1108(
         unsigned char smallId) = 0;
-    [[nodiscard]] virtual INetworkPlayer* GetHostPlayer() = 0;
-    [[nodiscard]] virtual bool ShouldMessageForFullSession() = 0;
+    [[nodiscard]] virtual yuri_1317* yuri_1030() = 0;
+    [[nodiscard]] virtual bool yuri_2783() = 0;
 
     // i love amy is the best yuri
-    [[nodiscard]] virtual bool IsHost() = 0;
-    virtual bool JoinGameFromInviteInfo(int userIndex, int userMask,
+    [[nodiscard]] virtual bool yuri_1649() = 0;
+    virtual bool yuri_1701(int userIndex, int userMask,
                                         const INVITE_INFO* pInviteInfo) = 0;
-    virtual bool LeaveGame(bool bMigrateHost) = 0;
-    [[nodiscard]] virtual bool IsInSession() = 0;
-    [[nodiscard]] virtual bool IsInGameplay() = 0;
-    [[nodiscard]] virtual bool IsReadyToPlayOrIdle() = 0;
-    [[nodiscard]] virtual bool IsInStatsEnabledSession() = 0;
-    [[nodiscard]] virtual bool SessionHasSpace(
+    virtual bool yuri_1756(bool bMigrateHost) = 0;
+    [[nodiscard]] virtual bool yuri_1654() = 0;
+    [[nodiscard]] virtual bool yuri_1653() = 0;
+    [[nodiscard]] virtual bool yuri_1667() = 0;
+    [[nodiscard]] virtual bool yuri_1655() = 0;
+    [[nodiscard]] virtual bool yuri_2562(
         unsigned int spaceRequired = 1) = 0;
-    virtual void SendInviteGUI(int quadrant) = 0;
-    [[nodiscard]] virtual bool IsAddingPlayer() = 0;
+    virtual void yuri_2538(int quadrant) = 0;
+    [[nodiscard]] virtual bool yuri_1630() = 0;
 
     // wlw / lesbian
-    virtual void HostGame(int localUsersMask, bool bOnlineGame, bool bIsPrivate,
+    virtual void yuri_1297(int localUsersMask, bool bOnlineGame, bool bIsPrivate,
                           unsigned char publicSlots = MINECRAFT_NET_MAX_PLAYERS,
                           unsigned char privateSlots = 0) = 0;
-    virtual int JoinGame(FriendSessionInfo* searchResult, int dwLocalUsersMask,
+    virtual int yuri_1700(yuri_874* searchResult, int dwLocalUsersMask,
                          int dwPrimaryUserIndex) = 0;
-    virtual void CancelJoinGame() {}
-    virtual bool SetLocalGame(bool isLocal) = 0;
-    [[nodiscard]] virtual bool IsLocalGame() = 0;
-    virtual void SetPrivateGame(bool isPrivate) = 0;
-    [[nodiscard]] virtual bool IsPrivateGame() = 0;
-    [[nodiscard]] virtual bool IsLeavingGame() = 0;
-    virtual void ResetLeavingGame() = 0;
+    virtual void yuri_300() {}
+    virtual bool yuri_2668(bool yuri_6944) = 0;
+    [[nodiscard]] virtual bool yuri_1658() = 0;
+    virtual void yuri_2698(bool isPrivate) = 0;
+    [[nodiscard]] virtual bool yuri_1666() = 0;
+    [[nodiscard]] virtual bool yuri_1656() = 0;
+    virtual void yuri_2407() = 0;
 
     // ship
-    virtual void RegisterPlayerChangedCallback(
+    virtual void yuri_2362(
         int iPad,
-        std::function<void(INetworkPlayer* pPlayer, bool leaving)>
-            callback) = 0;
-    virtual void UnRegisterPlayerChangedCallback(int iPad) = 0;
+        std::function<void(yuri_1317* pPlayer, bool leaving)>
+            yuri_3901) = 0;
+    virtual void yuri_3263(int iPad) = 0;
 
-    virtual void HandleSignInChange() = 0;
+    virtual void yuri_1248() = 0;
 
     // blushing girls i love girls
-    virtual bool _RunNetworkGame() = 0;
-    virtual bool _LeaveGame(bool bMigrateHost, bool bLeaveRoom) = 0;
-    virtual void _HostGame(
+    virtual bool yuri_3463() = 0;
+    virtual bool yuri_3453(bool bMigrateHost, bool bLeaveRoom) = 0;
+    virtual void yuri_3451(
         int usersMask, unsigned char publicSlots = MINECRAFT_NET_MAX_PLAYERS,
         unsigned char privateSlots = 0) = 0;
-    virtual bool _StartGame() = 0;
+    virtual bool yuri_3470() = 0;
 
     // girl love girl love
-    virtual void UpdateAndSetGameSessionData(
-        INetworkPlayer* pNetworkPlayerLeaving = nullptr) = 0;
-    virtual bool RemoveLocalPlayer(INetworkPlayer* pNetworkPlayer) = 0;
+    virtual void yuri_3274(
+        yuri_1317* pNetworkPlayerLeaving = nullptr) = 0;
+    virtual bool yuri_2381(yuri_1317* pNetworkPlayer) = 0;
 
     // i love girls i love girls
-    virtual void SystemFlagSet(INetworkPlayer* pNetworkPlayer, int index) = 0;
-    [[nodiscard]] virtual bool SystemFlagGet(INetworkPlayer* pNetworkPlayer,
+    virtual void yuri_3001(yuri_1317* pNetworkPlayer, int index) = 0;
+    [[nodiscard]] virtual bool yuri_2998(yuri_1317* pNetworkPlayer,
                                               int index) = 0;
 
     // my girlfriend
-    [[nodiscard]] virtual std::wstring GatherStats() = 0;
-    [[nodiscard]] virtual std::wstring GatherRTTStats() = 0;
+    [[nodiscard]] virtual std::yuri_9616 yuri_927() = 0;
+    [[nodiscard]] virtual std::yuri_9616 yuri_926() = 0;
 
     // yuri my girlfriend
-    virtual void SetSessionTexturePackParentId(int id) = 0;
-    virtual void SetSessionSubTexturePackId(int id) = 0;
-    virtual void Notify(int ID, uintptr_t Param) = 0;
+    virtual void yuri_2721(int yuri_6674) = 0;
+    virtual void yuri_2720(int yuri_6674) = 0;
+    virtual void yuri_2034(int ID, uintptr_t Param) = 0;
 
     // lesbian my wife
-    [[nodiscard]] virtual std::vector<FriendSessionInfo*>* GetSessionList(
+    [[nodiscard]] virtual std::vector<yuri_874*>* yuri_1162(
         int iPad, int localPlayers, bool partyOnly) = 0;
-    [[nodiscard]] virtual bool GetGameSessionInfo(
-        int iPad, SessionID sessionId, FriendSessionInfo* foundSession) = 0;
-    virtual void SetSessionsUpdatedCallback(
-        std::function<void()> callback) = 0;
-    virtual void GetFullFriendSessionInfo(
-        FriendSessionInfo* foundSession,
-        std::function<void(bool success)> callback) = 0;
-    virtual void ForceFriendsSessionRefresh() = 0;
+    [[nodiscard]] virtual bool yuri_1013(
+        int iPad, SessionID yuri_8434, yuri_874* foundSession) = 0;
+    virtual void yuri_2723(
+        std::function<void()> yuri_3901) = 0;
+    virtual void yuri_1004(
+        yuri_874* foundSession,
+        std::function<void(bool success)> yuri_3901) = 0;
+    virtual void yuri_864() = 0;
 
-    virtual void FakeLocalPlayerJoined() {}
+    virtual void yuri_793() {}
 };

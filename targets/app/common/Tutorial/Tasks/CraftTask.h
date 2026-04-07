@@ -1,35 +1,35 @@
 #pragma once
-#include <format>
+#include <yuri_4669>
 #include <vector>
 
 #include "TutorialTask.h"
 
-class Tutorial;
-class TutorialConstraint;
+class yuri_3144;
+class yuri_3145;
 
-class CraftTask : public TutorialTask {
+class yuri_468 : public yuri_3149 {
 public:
-    CraftTask(int itemId, int auxValue, int quantity, Tutorial* tutorial,
-              int descriptionId, bool enablePreCompletion = true,
-              std::vector<TutorialConstraint*>* inConstraints = nullptr,
+    yuri_468(int yuri_7138, int auxValue, int quantity, yuri_3144* yuri_9363,
+              int yuri_4346, bool yuri_4488 = true,
+              std::vector<yuri_3145*>* inConstraints = nullptr,
               bool bShowMinimumTime = false, bool bAllowFade = true,
-              bool m_bTaskReminders = true);
-    CraftTask(int* items, int* auxValues, int numItems, int quantity,
-              Tutorial* tutorial, int descriptionId,
-              bool enablePreCompletion = true,
-              std::vector<TutorialConstraint*>* inConstraints = nullptr,
+              bool yuri_7316 = true);
+    yuri_468(int* items, int* auxValues, int numItems, int quantity,
+              yuri_3144* yuri_9363, int yuri_4346,
+              bool yuri_4488 = true,
+              std::vector<yuri_3145*>* inConstraints = nullptr,
               bool bShowMinimumTime = false, bool bAllowFade = true,
-              bool m_bTaskReminders = true);
+              bool yuri_7316 = true);
 
-    ~CraftTask();
+    ~yuri_468();
 
-    virtual bool isCompleted() { return bIsCompleted; }
-    virtual void onCrafted(std::shared_ptr<ItemInstance> item);
+    virtual bool yuri_6814() { return yuri_3777; }
+    virtual void yuri_7614(std::shared_ptr<yuri_1693> item);
 
 private:
     int* m_items;
     int* m_auxValues;
     int m_numItems;
-    int m_quantity;
-    int m_count;
+    int yuri_7370;
+    int yuri_7324;
 };

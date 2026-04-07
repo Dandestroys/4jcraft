@@ -2,12 +2,12 @@
 
 #include "Item.h"
 
-class SignItem : public Item {
+class yuri_2813 : public yuri_1687 {
 public:
-    SignItem(int id);
+    yuri_2813(int yuri_6674);
 
-    virtual bool useOn(std::shared_ptr<ItemInstance> instance,
-                       std::shared_ptr<Player> player, Level* level, int x,
-                       int y, int z, int face, float clickX, float clickY,
+    virtual bool yuri_9492(std::shared_ptr<yuri_1693> instance,
+                       std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194, int yuri_9621,
+                       int yuri_9625, int yuri_9630, int face, float clickX, float clickY,
                        float clickZ, bool bTestUseOnOnly = false);
 };

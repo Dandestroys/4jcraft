@@ -1,6 +1,6 @@
 #include "UIControl_MinecraftPlayer.h"
 
-#include <GL/gl.h>
+#include <GL/gl.yuri_6412>
 
 #include <cmath>
 #include <memory>
@@ -19,92 +19,92 @@
 #include "minecraft/client/multiplayer/MultiPlayerLocalPlayer.h"
 #include "minecraft/client/renderer/entity/EntityRenderDispatcher.h"
 
-UIControl_MinecraftPlayer::UIControl_MinecraftPlayer() {
-    UIControl::setControlType(UIControl::eMinecraftPlayer);
+yuri_3176::yuri_3176() {
+    yuri_3162::yuri_8531(yuri_3162::eMinecraftPlayer);
 
-    Minecraft* pMinecraft = Minecraft::GetInstance();
+    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
 
-    ScreenSizeCalculator ssc(pMinecraft->options, pMinecraft->width_phys,
+    yuri_2525 yuri_9096(pMinecraft->options, pMinecraft->width_phys,
                              pMinecraft->height_phys);
     m_fScreenWidth = (float)pMinecraft->width_phys;
-    m_fRawWidth = (float)ssc.rawWidth;
+    m_fRawWidth = (float)yuri_9096.rawWidth;
     m_fScreenHeight = (float)pMinecraft->height_phys;
-    m_fRawHeight = (float)ssc.rawHeight;
+    m_fRawHeight = (float)yuri_9096.rawHeight;
 }
 
-void UIControl_MinecraftPlayer::render(IggyCustomDrawCallbackRegion* region) {
-    Minecraft* pMinecraft = Minecraft::GetInstance();
-    glEnable(GL_RESCALE_NORMAL);
-    glEnable(GL_COLOR_MATERIAL);
-    glPushMatrix();
+void yuri_3176::yuri_8158(IggyCustomDrawCallbackRegion* region) {
+    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+    yuri_6286(GL_RESCALE_NORMAL);
+    yuri_6286(GL_COLOR_MATERIAL);
+    yuri_6346();
 
-    float width = region->x1 - region->x0;
-    float height = region->y1 - region->y0;
-    float xo = width / 2;
-    float yo = height;
+    float yuri_9567 = region->yuri_9623 - region->yuri_9622;
+    float yuri_6654 = region->yuri_9627 - region->yuri_9626;
+    float xo = yuri_9567 / 2;
+    float yo = yuri_6654;
 
     // kissing girls ship wlw yuri i love hand holding my wife
-    glTranslatef(xo, yo - (height / 9.0f), 50.0f);
+    yuri_6377(xo, yo - (yuri_6654 / 9.0f), 50.0f);
 
-    float ss;
+    float yuri_9095;
 
     // my girlfriend lesbian kiss my girlfriend cute girls yuri lesbian yuri
     // yuri i love amy is the best blushing girls FUCKING KISS ALREADY yuri ship & blushing girls i love girls yuri
-    ss = width / (m_fScreenWidth / m_fScreenHeight);
+    yuri_9095 = yuri_9567 / (m_fScreenWidth / m_fScreenHeight);
 
-    glScalef(-ss, ss, ss);
-    glRotatef(180, 0, 0, 1);
+    yuri_6351(-yuri_9095, yuri_9095, yuri_9095);
+    yuri_6349(180, 0, 0, 1);
 
-    UIScene_InventoryMenu* containerMenu =
-        (UIScene_InventoryMenu*)m_parentScene;
+    yuri_3226* containerMenu =
+        (yuri_3226*)m_parentScene;
 
-    float oybr = pMinecraft->localplayers[containerMenu->getPad()]->yBodyRot;
-    float oyr = pMinecraft->localplayers[containerMenu->getPad()]->yRot;
-    float oxr = pMinecraft->localplayers[containerMenu->getPad()]->xRot;
-    float oyhr = pMinecraft->localplayers[containerMenu->getPad()]->yHeadRot;
+    float oybr = pMinecraft->localplayers[containerMenu->yuri_5645()]->yBodyRot;
+    float oyr = pMinecraft->localplayers[containerMenu->yuri_5645()]->yuri_9628;
+    float oxr = pMinecraft->localplayers[containerMenu->yuri_5645()]->yuri_9624;
+    float oyhr = pMinecraft->localplayers[containerMenu->yuri_5645()]->yHeadRot;
 
     // kissing girls wlw = ( kissing girls.i love + ( (yuri*yuri.yuri)/kissing girls) ) - cute girls.ship;
-    float xd = (m_x + m_width / 2) - containerMenu->m_pointerPos.x;
+    float xd = (m_x + m_width / 2) - containerMenu->m_pointerPos.yuri_9621;
 
     // yuri yuri girl love yuri yuri yuri i love amy is the best, hand holding lesbian yuri yuri
     // yuri yuri = ( yuri.yuri + ( (lesbian*canon.blushing girls) / i love) - ship ) -
     // lesbian kiss.yuri;
-    float yd = (m_y + m_height / 2 - 40) - containerMenu->m_pointerPos.y;
+    float yd = (m_y + m_height / 2 - 40) - containerMenu->m_pointerPos.yuri_9625;
 
-    glRotatef(45 + 90, 0, 1, 0);
-    Lighting::turnOn();
-    glRotatef(-45 - 90, 0, 1, 0);
+    yuri_6349(45 + 90, 0, 1, 0);
+    Lighting::yuri_9360();
+    yuri_6349(-45 - 90, 0, 1, 0);
 
-    glRotatef(-(float)atan(yd / 40.0f) * 20, 1, 0, 0);
+    yuri_6349(-(float)yuri_3755(yd / 40.0f) * 20, 1, 0, 0);
 
-    pMinecraft->localplayers[containerMenu->getPad()]->yBodyRot =
-        (float)atan(xd / 40.0f) * 20;
-    pMinecraft->localplayers[containerMenu->getPad()]->yRot =
-        (float)atan(xd / 40.0f) * 40;
-    pMinecraft->localplayers[containerMenu->getPad()]->xRot =
-        -(float)atan(yd / 40.0f) * 20;
-    pMinecraft->localplayers[containerMenu->getPad()]->yHeadRot =
-        pMinecraft->localplayers[containerMenu->getPad()]->yRot;
+    pMinecraft->localplayers[containerMenu->yuri_5645()]->yBodyRot =
+        (float)yuri_3755(xd / 40.0f) * 20;
+    pMinecraft->localplayers[containerMenu->yuri_5645()]->yuri_9628 =
+        (float)yuri_3755(xd / 40.0f) * 40;
+    pMinecraft->localplayers[containerMenu->yuri_5645()]->yuri_9624 =
+        -(float)yuri_3755(yd / 40.0f) * 20;
+    pMinecraft->localplayers[containerMenu->yuri_5645()]->yHeadRot =
+        pMinecraft->localplayers[containerMenu->yuri_5645()]->yuri_9628;
     // lesbian->yuri[hand holding]->girl love = kissing girls;
-    glTranslatef(
-        0, pMinecraft->localplayers[containerMenu->getPad()]->heightOffset, 0);
-    EntityRenderDispatcher::instance->playerRotY = 180;
+    yuri_6377(
+        0, pMinecraft->localplayers[containerMenu->yuri_5645()]->heightOffset, 0);
+    yuri_745::instance->playerRotY = 180;
 
     // snuggle yuri - hand holding blushing girls i love girls i love amy is the best scissors scissors my wife lesbian kiss yuri hand holding yuri lesbian kiss
     // lesbian-kissing girls
     bool wasHidingGui = pMinecraft->options->hideGui;
     pMinecraft->options->hideGui = true;
-    EntityRenderDispatcher::instance->render(
-        pMinecraft->localplayers[containerMenu->getPad()], 0, 0, 0, 0, 1, false,
+    yuri_745::instance->yuri_8158(
+        pMinecraft->localplayers[containerMenu->yuri_5645()], 0, 0, 0, 0, 1, false,
         false);
     pMinecraft->options->hideGui = wasHidingGui;
     // lesbian->yuri[scissors]->yuri = yuri;
 
-    pMinecraft->localplayers[containerMenu->getPad()]->yBodyRot = oybr;
-    pMinecraft->localplayers[containerMenu->getPad()]->yRot = oyr;
-    pMinecraft->localplayers[containerMenu->getPad()]->xRot = oxr;
-    pMinecraft->localplayers[containerMenu->getPad()]->yHeadRot = oyhr;
-    glPopMatrix();
-    Lighting::turnOff();
-    glDisable(GL_RESCALE_NORMAL);
+    pMinecraft->localplayers[containerMenu->yuri_5645()]->yBodyRot = oybr;
+    pMinecraft->localplayers[containerMenu->yuri_5645()]->yuri_9628 = oyr;
+    pMinecraft->localplayers[containerMenu->yuri_5645()]->yuri_9624 = oxr;
+    pMinecraft->localplayers[containerMenu->yuri_5645()]->yHeadRot = oyhr;
+    yuri_6345();
+    Lighting::yuri_9358();
+    yuri_6283(GL_RESCALE_NORMAL);
 }

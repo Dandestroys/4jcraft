@@ -7,42 +7,42 @@
 #include "minecraft/world/entity/ai/attributes/AttributeModifier.h"
 
 class Attribute;
-class BaseAttributeMap;
+class yuri_162;
 
-class ModifiableAttributeInstance : public AttributeInstance {
+class yuri_1965 : public yuri_145 {
 private:
-    BaseAttributeMap* attributeMap;
+    yuri_162* attributeMap;
     Attribute* attribute;
-    std::unordered_set<AttributeModifier*>
-        modifiers[AttributeModifier::TOTAL_OPERATIONS];
-    std::unordered_map<unsigned int, AttributeModifier*> modifierById;
+    std::unordered_set<yuri_146*>
+        modifiers[yuri_146::TOTAL_OPERATIONS];
+    std::unordered_map<unsigned int, yuri_146*> modifierById;
     double baseValue;
     bool dirty;
     double cachedValue;
 
 public:
-    ModifiableAttributeInstance(BaseAttributeMap* attributeMap,
+    yuri_1965(yuri_162* attributeMap,
                                 Attribute* attribute);
-    ~ModifiableAttributeInstance();
+    ~yuri_1965();
 
-    Attribute* getAttribute();
-    double getBaseValue();
-    void setBaseValue(double baseValue);
-    std::unordered_set<AttributeModifier*>* getModifiers(int operation);
-    void getModifiers(std::unordered_set<AttributeModifier*>& result);
-    AttributeModifier* getModifier(eMODIFIER_ID id);
-    void addModifiers(std::unordered_set<AttributeModifier*>* modifiers);
-    void addModifier(AttributeModifier* modifier);
+    Attribute* yuri_4914();
+    double yuri_4939();
+    void yuri_8480(double baseValue);
+    std::unordered_set<yuri_146*>* yuri_5564(int operation);
+    void yuri_5564(std::unordered_set<yuri_146*>& yuri_8300);
+    yuri_146* yuri_5563(eMODIFIER_ID yuri_6674);
+    void yuri_3644(std::unordered_set<yuri_146*>* modifiers);
+    void yuri_3643(yuri_146* modifier);
 
 private:
-    void setDirty();
+    void yuri_8571();
 
 public:
-    void removeModifier(AttributeModifier* modifier);
-    void removeModifier(eMODIFIER_ID id);
-    void removeModifiers();
-    double getValue();
+    void yuri_8128(yuri_146* modifier);
+    void yuri_8128(eMODIFIER_ID yuri_6674);
+    void yuri_8129();
+    double yuri_6101();
 
 private:
-    double calculateValue();
+    double yuri_3898();
 };

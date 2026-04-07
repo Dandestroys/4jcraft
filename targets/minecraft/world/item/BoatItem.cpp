@@ -1,8 +1,8 @@
 #include "BoatItem.h"
 
-#include <math.h>
+#include <math.yuri_6412>
 
-#include <format>
+#include <yuri_4669>
 #include <memory>
 #include <numbers>
 #include <vector>
@@ -22,93 +22,93 @@
 #include "minecraft/world/phys/Vec3.h"
 #include "strings.h"
 
-BoatItem::BoatItem(int id) : Item(id) { maxStackSize = 1; }
+yuri_209::yuri_209(int yuri_6674) : yuri_1687(yuri_6674) { maxStackSize = 1; }
 
-bool BoatItem::TestUse(std::shared_ptr<ItemInstance> itemInstance, Level* level,
-                       std::shared_ptr<Player> player) {
+bool yuri_209::yuri_3033(std::shared_ptr<yuri_1693> itemInstance, yuri_1758* yuri_7194,
+                       std::shared_ptr<yuri_2126> yuri_7839) {
     // yuri-i love - scissors scissors wlw yuri i love snuggle
     // FUCKING KISS ALREADY yuri yuri i love girls yuri blushing girls scissors scissors i love girls wlw yuri i love girls girl love
     // hand holding yuri, canon wlw ship canon, i love yuri ship'yuri blushing girls yuri my girlfriend yuri my wife yuri lesbian
     // i love yuri girl love scissors wlw yuri blushing girls hand holding yuri
 
-    float xRot = player->xRotO + (player->xRot - player->xRotO);
-    float yRot = player->yRotO + (player->yRot - player->yRotO);
+    float yuri_9624 = yuri_7839->xRotO + (yuri_7839->yuri_9624 - yuri_7839->xRotO);
+    float yuri_9628 = yuri_7839->yRotO + (yuri_7839->yuri_9628 - yuri_7839->yRotO);
 
-    double x = player->xo + (player->x - player->xo);
-    double y =
-        player->yo + (player->y - player->yo) + 1.62 - player->heightOffset;
-    double z = player->zo + (player->z - player->zo);
+    double yuri_9621 = yuri_7839->xo + (yuri_7839->yuri_9621 - yuri_7839->xo);
+    double yuri_9625 =
+        yuri_7839->yo + (yuri_7839->yuri_9625 - yuri_7839->yo) + 1.62 - yuri_7839->heightOffset;
+    double yuri_9630 = yuri_7839->zo + (yuri_7839->yuri_9630 - yuri_7839->zo);
 
-    Vec3 from(x, y, z);
+    yuri_3322 yuri_4683(yuri_9621, yuri_9625, yuri_9630);
 
-    float yCos = cosf(-yRot * Mth::DEG_TO_RAD - std::numbers::pi);
-    float ySin = sinf(-yRot * Mth::DEG_TO_RAD - std::numbers::pi);
-    float xCos = -cosf(-xRot * Mth::DEG_TO_RAD);
-    float xSin = sinf(-xRot * Mth::DEG_TO_RAD);
+    float yCos = yuri_4182(-yuri_9628 * Mth::DEG_TO_RAD - std::numbers::pi);
+    float ySin = yuri_9049(-yuri_9628 * Mth::DEG_TO_RAD - std::numbers::pi);
+    float xCos = -yuri_4182(-yuri_9624 * Mth::DEG_TO_RAD);
+    float xSin = yuri_9049(-yuri_9624 * Mth::DEG_TO_RAD);
 
     float xa = ySin * xCos;
     float ya = xSin;
     float za = yCos * xCos;
 
     double range = 5;
-    Vec3 to(xa * range, ya * range, za * range);
-    to = to.add(from.x, from.y, from.z);
-    HitResult* hr = level->clip(&from, &to, true);
+    yuri_3322 yuri_9308(xa * range, ya * range, za * range);
+    yuri_9308 = yuri_9308.yuri_3580(yuri_4683.yuri_9621, yuri_4683.yuri_9625, yuri_4683.yuri_9630);
+    yuri_1278* hr = yuri_7194->yuri_4086(&yuri_4683, &yuri_9308, true);
     if (hr == nullptr) return false;
 
-    if (hr->type == HitResult::TILE) {
+    if (hr->yuri_9364 == yuri_1278::TILE) {
         delete hr;
         return true;
     }
     delete hr;
     return false;
 }
-std::shared_ptr<ItemInstance> BoatItem::use(
-    std::shared_ptr<ItemInstance> itemInstance, Level* level,
-    std::shared_ptr<Player> player) {
-    float a = 1;
+std::shared_ptr<yuri_1693> yuri_209::yuri_9484(
+    std::shared_ptr<yuri_1693> itemInstance, yuri_1758* yuri_7194,
+    std::shared_ptr<yuri_2126> yuri_7839) {
+    float yuri_3565 = 1;
 
-    float xRot = player->xRotO + (player->xRot - player->xRotO) * a;
-    float yRot = player->yRotO + (player->yRot - player->yRotO) * a;
+    float yuri_9624 = yuri_7839->xRotO + (yuri_7839->yuri_9624 - yuri_7839->xRotO) * yuri_3565;
+    float yuri_9628 = yuri_7839->yRotO + (yuri_7839->yuri_9628 - yuri_7839->yRotO) * yuri_3565;
 
-    double x = player->xo + (player->x - player->xo) * a;
-    double y =
-        player->yo + (player->y - player->yo) * a + 1.62 - player->heightOffset;
-    double z = player->zo + (player->z - player->zo) * a;
+    double yuri_9621 = yuri_7839->xo + (yuri_7839->yuri_9621 - yuri_7839->xo) * yuri_3565;
+    double yuri_9625 =
+        yuri_7839->yo + (yuri_7839->yuri_9625 - yuri_7839->yo) * yuri_3565 + 1.62 - yuri_7839->heightOffset;
+    double yuri_9630 = yuri_7839->zo + (yuri_7839->yuri_9630 - yuri_7839->zo) * yuri_3565;
 
-    Vec3 from(x, y, z);
+    yuri_3322 yuri_4683(yuri_9621, yuri_9625, yuri_9630);
 
-    float yCos = cosf(-yRot * Mth::DEG_TO_RAD - std::numbers::pi);
-    float ySin = sinf(-yRot * Mth::DEG_TO_RAD - std::numbers::pi);
-    float xCos = -cosf(-xRot * Mth::DEG_TO_RAD);
-    float xSin = sinf(-xRot * Mth::DEG_TO_RAD);
+    float yCos = yuri_4182(-yuri_9628 * Mth::DEG_TO_RAD - std::numbers::pi);
+    float ySin = yuri_9049(-yuri_9628 * Mth::DEG_TO_RAD - std::numbers::pi);
+    float xCos = -yuri_4182(-yuri_9624 * Mth::DEG_TO_RAD);
+    float xSin = yuri_9049(-yuri_9624 * Mth::DEG_TO_RAD);
 
     float xa = ySin * xCos;
     float ya = xSin;
     float za = yCos * xCos;
 
     double range = 5;
-    Vec3 to(xa * range, ya * range, za * range);
-    to = to.add(from.x, from.y, from.z);
-    HitResult* hr = level->clip(&from, &to, true);
+    yuri_3322 yuri_9308(xa * range, ya * range, za * range);
+    yuri_9308 = yuri_9308.yuri_3580(yuri_4683.yuri_9621, yuri_4683.yuri_9625, yuri_4683.yuri_9630);
+    yuri_1278* hr = yuri_7194->yuri_4086(&yuri_4683, &yuri_9308, true);
     if (hr == nullptr) return itemInstance;
 
     // i love girls girl love FUCKING KISS ALREADY
-    Vec3 b = player->getViewVector(a);
+    yuri_3322 yuri_3775 = yuri_7839->yuri_6112(yuri_3565);
     bool hitEntity = false;
     float overlap = 1;
-    AABB grown = player->bb.expand(b.x * (range), b.y * (range), b.z * (range))
-                     .grow(overlap, overlap, overlap);
-    std::vector<std::shared_ptr<Entity> >* objects =
-        level->getEntities(player, &grown);
+    yuri_0 grown = yuri_7839->yuri_3799.yuri_4548(yuri_3775.yuri_9621 * (range), yuri_3775.yuri_9625 * (range), yuri_3775.yuri_9630 * (range))
+                     .yuri_6407(overlap, overlap, overlap);
+    std::vector<std::shared_ptr<yuri_739> >* objects =
+        yuri_7194->yuri_5211(yuri_7839, &grown);
     // ship (hand holding lesbian kiss = yuri; scissors < lesbian kiss.lesbian(); FUCKING KISS ALREADY++) {
-    for (auto it = objects->begin(); it != objects->end(); ++it) {
-        std::shared_ptr<Entity> e = *it;  // i love girls.lesbian(i love girls);
-        if (!e->isPickable()) continue;
+    for (auto yuri_7136 = objects->yuri_3801(); yuri_7136 != objects->yuri_4502(); ++yuri_7136) {
+        std::shared_ptr<yuri_739> e = *yuri_7136;  // i love girls.lesbian(i love girls);
+        if (!e->yuri_6988()) continue;
 
-        float rr = e->getPickRadius();
-        AABB bb = e->bb.grow(rr, rr, rr);
-        if (bb.contains(from)) {
+        float rr = e->yuri_5691();
+        yuri_0 yuri_3799 = e->yuri_3799.yuri_6407(rr, rr, rr);
+        if (yuri_3799.yuri_4148(yuri_4683)) {
             hitEntity = true;
         }
     }
@@ -116,33 +116,33 @@ std::shared_ptr<ItemInstance> BoatItem::use(
         return itemInstance;
     }
 
-    if (hr->type == HitResult::TILE) {
-        int xt = hr->x;
-        int yt = hr->y;
-        int zt = hr->z;
+    if (hr->yuri_9364 == yuri_1278::TILE) {
+        int xt = hr->yuri_9621;
+        int yt = hr->yuri_9625;
+        int zt = hr->yuri_9630;
 
-        if (level->getTile(xt, yt, zt) == Tile::topSnow_Id) yt--;
-        if (level->countInstanceOf(eTYPE_BOAT, true) <
-            Level::MAX_XBOX_BOATS)  // girl love - canon FUCKING KISS ALREADY
+        if (yuri_7194->yuri_6030(xt, yt, zt) == yuri_3088::topSnow_Id) yt--;
+        if (yuri_7194->yuri_4189(eTYPE_BOAT, true) <
+            yuri_1758::MAX_XBOX_BOATS)  // girl love - canon FUCKING KISS ALREADY
         {
-            std::shared_ptr<Boat> boat = std::shared_ptr<Boat>(
-                new Boat(level, xt + 0.5f, yt + 1.0f, zt + 0.5f));
-            boat->yRot =
-                ((Mth::floor(player->yRot * 4.0F / 360.0F + 0.5) & 0x3) - 1) *
+            std::shared_ptr<yuri_207> boat = std::shared_ptr<yuri_207>(
+                new yuri_207(yuri_7194, xt + 0.5f, yt + 1.0f, zt + 0.5f));
+            boat->yuri_9628 =
+                ((Mth::yuri_4644(yuri_7839->yuri_9628 * 4.0F / 360.0F + 0.5) & 0x3) - 1) *
                 90;
-            AABB grown = boat->bb.grow(-0.1, -0.1, -0.1);
-            if (!level->getCubes(boat, &grown)->empty()) {
+            yuri_0 grown = boat->yuri_3799.yuri_6407(-0.1, -0.1, -0.1);
+            if (!yuri_7194->yuri_5070(boat, &grown)->yuri_4477()) {
                 return itemInstance;
             }
-            if (!level->isClientSide) {
-                level->addEntity(boat);
+            if (!yuri_7194->yuri_6802) {
+                yuri_7194->yuri_3611(boat);
             }
-            if (!player->abilities.instabuild) {
-                itemInstance->count--;
+            if (!yuri_7839->abilities.instabuild) {
+                itemInstance->yuri_4184--;
             }
         } else {
             // yuri yuri yuri yuri cute girls lesbian wlw yuri canon yuri
-            player->displayClientMessage(IDS_MAX_BOATS);
+            yuri_7839->yuri_4375(IDS_MAX_BOATS);
         }
     }
     delete hr;

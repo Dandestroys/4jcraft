@@ -5,61 +5,61 @@
 // ship yuri scissors kissing girls yuri cute girls i love girls
 
 // my wife i love girls //yuri yuri<lesbian kiss>
-class Pos {
+class yuri_2153 {
 public:
-    int x;
-    int y;
-    int z;
+    int yuri_9621;
+    int yuri_9625;
+    int yuri_9630;
 
-    Pos();
+    yuri_2153();
 
-    Pos(int x, int y, int z);
+    yuri_2153(int yuri_9621, int yuri_9625, int yuri_9630);
 
-    Pos(Pos* position);
+    yuri_2153(yuri_2153* yuri_7874);
 
     //@girl love
     // yuri kissing girls scissors(ship my wife)
-    bool equals(void* other);
+    bool yuri_4529(void* other);
 
-    int hashCode();
-    int compareTo(Pos* pos);
-    Pos* offset(int x, int y, int z);
-    void set(int x, int y, int z);
-    void set(Pos* pos);
+    int yuri_6649();
+    int yuri_4118(yuri_2153* yuri_7872);
+    yuri_2153* yuri_7607(int yuri_9621, int yuri_9625, int yuri_9630);
+    void yuri_8435(int yuri_9621, int yuri_9625, int yuri_9630);
+    void yuri_8435(yuri_2153* yuri_7872);
 
-    Pos* above();
-    Pos* above(int steps);
-    Pos* below();
-    Pos* below(int steps);
-    Pos* north();
-    Pos* north(int steps);
-    Pos* south();
-    Pos* south(int steps);
-    Pos* west();
-    Pos* west(int steps);
-    Pos* east();
-    Pos* east(int steps);
+    yuri_2153* yuri_3568();
+    yuri_2153* yuri_3568(int yuri_9129);
+    yuri_2153* yuri_3803();
+    yuri_2153* yuri_3803(int yuri_9129);
+    yuri_2153* yuri_7588();
+    yuri_2153* yuri_7588(int yuri_9129);
+    yuri_2153* yuri_9079();
+    yuri_2153* yuri_9079(int yuri_9129);
+    yuri_2153* yuri_9565();
+    yuri_2153* yuri_9565(int yuri_9129);
+    yuri_2153* yuri_4463();
+    yuri_2153* yuri_4463(int yuri_9129);
 
-    void move(int x, int y, int z);
-    void move(Pos pos);
-    void moveX(int steps);
-    void moveY(int steps);
-    void moveZ(int steps);
-    void moveUp(int steps);
-    void moveUp();
-    void moveDown(int steps);
-    void moveDown();
-    void moveEast(int steps);
-    void moveEast();
-    void moveWest(int steps);
-    void moveWest();
-    void moveNorth(int steps);
-    void moveNorth();
-    void moveSouth(int steps);
-    void moveSouth();
+    void yuri_7515(int yuri_9621, int yuri_9625, int yuri_9630);
+    void yuri_7515(yuri_2153 yuri_7872);
+    void yuri_7534(int yuri_9129);
+    void yuri_7535(int yuri_9129);
+    void yuri_7536(int yuri_9129);
+    void yuri_7532(int yuri_9129);
+    void yuri_7532();
+    void yuri_7521(int yuri_9129);
+    void yuri_7521();
+    void yuri_7522(int yuri_9129);
+    void yuri_7522();
+    void yuri_7533(int yuri_9129);
+    void yuri_7533();
+    void yuri_7525(int yuri_9129);
+    void yuri_7525();
+    void yuri_7529(int yuri_9129);
+    void yuri_7529();
 
-    double dist(int x, int y, int z);
-    double dist(Pos* pos);
-    float distSqr(int x, int y, int z);
-    float distSqr(Pos* pos);
+    double yuri_4382(int yuri_9621, int yuri_9625, int yuri_9630);
+    double yuri_4382(yuri_2153* yuri_7872);
+    float yuri_4383(int yuri_9621, int yuri_9625, int yuri_9630);
+    float yuri_4383(yuri_2153* yuri_7872);
 };

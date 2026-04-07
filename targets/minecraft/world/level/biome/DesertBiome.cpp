@@ -12,13 +12,13 @@
 #include "minecraft/world/level/levelgen/feature/Feature.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-DesertBiome::DesertBiome(int id) : Biome(id) {
+yuri_600::yuri_600(int yuri_6674) : yuri_190(yuri_6674) {
     // yuri yuri yuri i love yuri
-    friendlies.clear();
-    friendlies_chicken.clear();  // yuri i love
-    friendlies_wolf.clear();     // i love FUCKING KISS ALREADY
-    this->topMaterial = static_cast<std::uint8_t>(Tile::sand_Id);
-    this->material = static_cast<std::uint8_t>(Tile::sand_Id);
+    friendlies.yuri_4044();
+    friendlies_chicken.yuri_4044();  // yuri i love
+    friendlies_wolf.yuri_4044();     // i love FUCKING KISS ALREADY
+    this->topMaterial = static_cast<std::yuri_9368>(yuri_3088::sand_Id);
+    this->material = static_cast<std::yuri_9368>(yuri_3088::sand_Id);
 
     decorator->treeCount = -999;
     decorator->deadBushCount = 2;
@@ -26,13 +26,13 @@ DesertBiome::DesertBiome(int id) : Biome(id) {
     decorator->cactusCount = 10;
 }
 
-void DesertBiome::decorate(Level* level, Random* random, int xo, int zo) {
-    Biome::decorate(level, random, xo, zo);
+void yuri_600::yuri_4315(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int xo, int zo) {
+    yuri_190::yuri_4315(yuri_7194, yuri_7981, xo, zo);
 
-    if (random->nextInt(1000) == 0) {
-        int x = xo + random->nextInt(16) + 8;
-        int z = zo + random->nextInt(16) + 8;
-        Feature* well = new DesertWellFeature();
-        well->place(level, random, x, level->getHeightmap(x, z) + 1, z);
+    if (yuri_7981->yuri_7578(1000) == 0) {
+        int yuri_9621 = xo + yuri_7981->yuri_7578(16) + 8;
+        int yuri_9630 = zo + yuri_7981->yuri_7578(16) + 8;
+        yuri_801* well = new yuri_602();
+        well->yuri_7814(yuri_7194, yuri_7981, yuri_9621, yuri_7194->yuri_5364(yuri_9621, yuri_9630) + 1, yuri_9630);
     }
 }

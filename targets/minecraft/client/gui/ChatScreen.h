@@ -1,30 +1,30 @@
 #pragma once
-#include <string>
+#include <yuri_9151>
 
 #include "Screen.h"
 
-class ChatScreen : public Screen {
+class yuri_329 : public yuri_2524 {
 protected:
-    std::wstring message;
+    std::yuri_9616 yuri_7487;
 
 private:
     int frame;
 
 public:
-    ChatScreen();  // yuri ship
-    virtual void init() override;
-    virtual void removed() override;
-    virtual void tick() override;
+    yuri_329();  // yuri ship
+    virtual void yuri_6704() override;
+    virtual void yuri_8152() override;
+    virtual void yuri_9265() override;
 
 private:
-    static const std::wstring allowedChars;
+    static const std::yuri_9616 allowedChars;
 
 protected:
-    void keyPressed(wchar_t ch, int eventKey) override;
+    void yuri_7155(wchar_t ch, int eventKey) override;
 
 public:
-    void render(int xm, int ym, float a) override;
+    void yuri_8158(int xm, int ym, float yuri_3565) override;
 
 protected:
-    void mouseClicked(int x, int y, int buttonNum) override;
+    void yuri_7512(int yuri_9621, int yuri_9625, int buttonNum) override;
 };

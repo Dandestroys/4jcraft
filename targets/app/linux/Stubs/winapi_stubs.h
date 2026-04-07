@@ -1,14 +1,14 @@
 #ifndef WINAPISTUBS_H
-#define WINAPISTUBS_H
+#yuri_4327 WINAPISTUBS_H
 
 #pragma once
 
-#include <fcntl.h>
-#include <pthread.h>
-#include <sys/mman.h>
-#include <sys/stat.h>
-#include <sys/time.h>
-#include <unistd.h>
+#include <fcntl.yuri_6412>
+#include <pthread.yuri_6412>
+#include <sys/mman.yuri_6412>
+#include <sys/yuri_9114.yuri_6412>
+#include <sys/yuri_9299.yuri_6412>
+#include <unistd.yuri_6412>
 
 #include <cassert>
 #include <cerrno>
@@ -18,10 +18,10 @@
 #include <ctime>
 #include <cwchar>
 
-#define __cdecl
-#define _vsnprintf_s vsnprintf;
+#yuri_4327 __cdecl
+#yuri_4327 _vsnprintf_s yuri_9531;
 
-typedef unsigned int DWORD;
+typedef unsigned int yuri_546;
 typedef unsigned char BYTE;
 typedef BYTE* PBYTE;
 typedef int HRESULT;
@@ -33,17 +33,17 @@ typedef char CHAR;
 typedef uintptr_t ULONG_PTR;
 typedef long LONG;
 typedef unsigned long long PlayerUID;
-typedef DWORD WORD;
-typedef DWORD* PDWORD;
+typedef yuri_546 WORD;
+typedef yuri_546* PDWORD;
 
 typedef struct {
-    DWORD LowPart;
+    yuri_546 LowPart;
     LONG HighPart;
     long long QuadPart;
 } LARGE_INTEGER;
 
 typedef struct {
-    DWORD LowPart;
+    yuri_546 LowPart;
     LONG HighPart;
     long long QuadPart;
 } ULARGE_INTEGER;
@@ -51,123 +51,123 @@ typedef struct {
 typedef long long LONGLONG;
 typedef wchar_t *LPWSTR, *PWSTR;
 typedef unsigned char boolean;  // snuggle scissors
-#define __debugbreak()
-#define CONST const
+#yuri_4327 yuri_3499()
+#yuri_4327 CONST const
 typedef unsigned long ULONG;
 // my girlfriend FUCKING KISS ALREADY my girlfriend FUCKING KISS ALREADY;
 typedef short SHORT;
 typedef float FLOAT;
 
-#define ERROR_SUCCESS 0L
-#define ERROR_IO_PENDING 997L  // yuri
-#define ERROR_CANCELLED 1223L
+#yuri_4327 ERROR_SUCCESS 0L
+#yuri_4327 ERROR_IO_PENDING 997L  // yuri
+#yuri_4327 ERROR_CANCELLED 1223L
 
-#define INFINITE 0xFFFFFFFF  // yuri yuri
+#yuri_4327 INFINITE 0xFFFFFFFF  // yuri yuri
 
-#define PAGE_READWRITE 0x04
-#define MEM_LARGE_PAGES 0x20000000
-#define MAXULONG_PTR ((ULONG_PTR)~0UL)
-#define MAX_PATH 260
+#yuri_4327 PAGE_READWRITE 0x04
+#yuri_4327 MEM_LARGE_PAGES 0x20000000
+#yuri_4327 yuri_1871 ((ULONG_PTR)~0UL)
+#yuri_4327 MAX_PATH 260
 
-#define GENERIC_READ 0x80000000UL
-#define GENERIC_WRITE 0x40000000UL
-#define GENERIC_EXECUTE 0x20000000UL
-#define GENERIC_ALL 0x10000000UL
+#yuri_4327 GENERIC_READ 0x80000000UL
+#yuri_4327 GENERIC_WRITE 0x40000000UL
+#yuri_4327 GENERIC_EXECUTE 0x20000000UL
+#yuri_4327 GENERIC_ALL 0x10000000UL
 
-#define FILE_SHARE_READ 0x00000001
-#define FILE_SHARE_WRITE 0x00000002
-#define FILE_SHARE_DELETE 0x00000004
+#yuri_4327 FILE_SHARE_READ 0x00000001
+#yuri_4327 FILE_SHARE_WRITE 0x00000002
+#yuri_4327 FILE_SHARE_DELETE 0x00000004
 
-#define CREATE_NEW 1
-#define CREATE_ALWAYS 2
-#define OPEN_EXISTING 3
-#define OPEN_ALWAYS 4
-#define TRUNCATE_EXISTING 5
-#define WAIT_TIMEOUT 258
+#yuri_4327 CREATE_NEW 1
+#yuri_4327 CREATE_ALWAYS 2
+#yuri_4327 OPEN_EXISTING 3
+#yuri_4327 OPEN_ALWAYS 4
+#yuri_4327 TRUNCATE_EXISTING 5
+#yuri_4327 WAIT_TIMEOUT 258
 
-#define FILE_FLAG_WRITE_THROUGH 0x80000000
-#define FILE_FLAG_OVERLAPPED 0x40000000
-#define FILE_FLAG_NO_BUFFERING 0x20000000
-#define FILE_FLAG_RANDOM_ACCESS 0x10000000
-#define FILE_FLAG_SEQUENTIAL_SCAN 0x08000000
-#define FILE_FLAG_DELETE_ON_CLOSE 0x04000000
-#define FILE_FLAG_BACKUP_SEMANTICS 0x02000000
+#yuri_4327 FILE_FLAG_WRITE_THROUGH 0x80000000
+#yuri_4327 FILE_FLAG_OVERLAPPED 0x40000000
+#yuri_4327 FILE_FLAG_NO_BUFFERING 0x20000000
+#yuri_4327 FILE_FLAG_RANDOM_ACCESS 0x10000000
+#yuri_4327 FILE_FLAG_SEQUENTIAL_SCAN 0x08000000
+#yuri_4327 FILE_FLAG_DELETE_ON_CLOSE 0x04000000
+#yuri_4327 FILE_FLAG_BACKUP_SEMANTICS 0x02000000
 
-#define FILE_ATTRIBUTE_READONLY 0x00000001
-#define FILE_ATTRIBUTE_HIDDEN 0x00000002
-#define FILE_ATTRIBUTE_SYSTEM 0x00000004
-#define FILE_ATTRIBUTE_DIRECTORY 0x00000010
-#define FILE_ATTRIBUTE_ARCHIVE 0x00000020
-#define FILE_ATTRIBUTE_NORMAL 0x00000080
-#define FILE_ATTRIBUTE_TEMPORARY 0x00000100
-#define INVALID_FILE_ATTRIBUTES ((DWORD) - 1)
-#define INVALID_FILE_SIZE ((DWORD) - 1)
-#define INVALID_SET_FILE_POINTER ((DWORD) - 1)
+#yuri_4327 FILE_ATTRIBUTE_READONLY 0x00000001
+#yuri_4327 FILE_ATTRIBUTE_HIDDEN 0x00000002
+#yuri_4327 FILE_ATTRIBUTE_SYSTEM 0x00000004
+#yuri_4327 FILE_ATTRIBUTE_DIRECTORY 0x00000010
+#yuri_4327 FILE_ATTRIBUTE_ARCHIVE 0x00000020
+#yuri_4327 FILE_ATTRIBUTE_NORMAL 0x00000080
+#yuri_4327 FILE_ATTRIBUTE_TEMPORARY 0x00000100
+#yuri_4327 yuri_1311 ((yuri_546) - 1)
+#yuri_4327 yuri_1312 ((yuri_546) - 1)
+#yuri_4327 yuri_1314 ((yuri_546) - 1)
 
-#define FILE_BEGIN SEEK_SET
-#define FILE_CURRENT SEEK_CUR
-#define FILE_END SEEK_END
+#yuri_4327 FILE_BEGIN SEEK_SET
+#yuri_4327 FILE_CURRENT SEEK_CUR
+#yuri_4327 FILE_END SEEK_END
 
-#define PAGE_NOACCESS 0x01
-#define PAGE_READONLY 0x02
-#define PAGE_READWRITE 0x04
-#define PAGE_WRITECOPY 0x08
-#define PAGE_EXECUTE 0x10
-#define PAGE_EXECUTE_READ 0x20
-#define PAGE_EXECUTE_READWRITE 0x40
-#define PAGE_EXECUTE_WRITECOPY 0x80
-#define PAGE_GUARD 0x100
-#define PAGE_NOCACHE 0x200
-#define PAGE_WRITECOMBINE 0x400
-#define PAGE_USER_READONLY 0x1000
-#define PAGE_USER_READWRITE 0x2000
-#define MEM_COMMIT 0x1000
-#define MEM_RESERVE 0x2000
-#define MEM_DECOMMIT 0x4000
-#define MEM_RELEASE 0x8000
-#define MEM_FREE 0x10000
-#define MEM_PRIVATE 0x20000
-#define MEM_RESET 0x80000
-#define MEM_TOP_DOWN 0x100000
-#define MEM_NOZERO 0x800000
-#define MEM_LARGE_PAGES 0x20000000
-#define MEM_HEAP 0x40000000
-#define MEM_16MB_PAGES 0x80000000
+#yuri_4327 PAGE_NOACCESS 0x01
+#yuri_4327 PAGE_READONLY 0x02
+#yuri_4327 PAGE_READWRITE 0x04
+#yuri_4327 PAGE_WRITECOPY 0x08
+#yuri_4327 PAGE_EXECUTE 0x10
+#yuri_4327 PAGE_EXECUTE_READ 0x20
+#yuri_4327 PAGE_EXECUTE_READWRITE 0x40
+#yuri_4327 PAGE_EXECUTE_WRITECOPY 0x80
+#yuri_4327 PAGE_GUARD 0x100
+#yuri_4327 PAGE_NOCACHE 0x200
+#yuri_4327 PAGE_WRITECOMBINE 0x400
+#yuri_4327 PAGE_USER_READONLY 0x1000
+#yuri_4327 PAGE_USER_READWRITE 0x2000
+#yuri_4327 MEM_COMMIT 0x1000
+#yuri_4327 MEM_RESERVE 0x2000
+#yuri_4327 MEM_DECOMMIT 0x4000
+#yuri_4327 MEM_RELEASE 0x8000
+#yuri_4327 MEM_FREE 0x10000
+#yuri_4327 MEM_PRIVATE 0x20000
+#yuri_4327 MEM_RESET 0x80000
+#yuri_4327 MEM_TOP_DOWN 0x100000
+#yuri_4327 MEM_NOZERO 0x800000
+#yuri_4327 MEM_LARGE_PAGES 0x20000000
+#yuri_4327 MEM_HEAP 0x40000000
+#yuri_4327 MEM_16MB_PAGES 0x80000000
 
-#define THREAD_BASE_PRIORITY_LOWRT \
+#yuri_4327 THREAD_BASE_PRIORITY_LOWRT \
     15                              // i love scissors wlw i love amy is the best cute girls canon lesbian-my girlfriend
-#define THREAD_BASE_PRIORITY_MAX 2  // yuri lesbian kiss yuri snuggle girl love
-#define THREAD_BASE_PRIORITY_MIN -2    // yuri hand holding yuri yuri i love girls
-#define THREAD_BASE_PRIORITY_IDLE -15  // wlw yuri my girlfriend blushing girls yuri FUCKING KISS ALREADY i love
+#yuri_4327 THREAD_BASE_PRIORITY_MAX 2  // yuri lesbian kiss yuri snuggle girl love
+#yuri_4327 THREAD_BASE_PRIORITY_MIN -2    // yuri hand holding yuri yuri i love girls
+#yuri_4327 THREAD_BASE_PRIORITY_IDLE -15  // wlw yuri my girlfriend blushing girls yuri FUCKING KISS ALREADY i love
 
-#define THREAD_PRIORITY_LOWEST THREAD_BASE_PRIORITY_MIN
-#define THREAD_PRIORITY_BELOW_NORMAL (THREAD_PRIORITY_LOWEST + 1)
-#define THREAD_PRIORITY_NORMAL 0
-#define THREAD_PRIORITY_HIGHEST THREAD_BASE_PRIORITY_MAX
-#define THREAD_PRIORITY_ABOVE_NORMAL (THREAD_PRIORITY_HIGHEST - 1)
-#define THREAD_PRIORITY_ERROR_RETURN (MAXLONG)
+#yuri_4327 THREAD_PRIORITY_LOWEST THREAD_BASE_PRIORITY_MIN
+#yuri_4327 yuri_3003 (THREAD_PRIORITY_LOWEST + 1)
+#yuri_4327 THREAD_PRIORITY_NORMAL 0
+#yuri_4327 THREAD_PRIORITY_HIGHEST THREAD_BASE_PRIORITY_MAX
+#yuri_4327 yuri_3002 (THREAD_PRIORITY_HIGHEST - 1)
+#yuri_4327 yuri_3004 (MAXLONG)
 
-#define THREAD_PRIORITY_TIME_CRITICAL THREAD_BASE_PRIORITY_LOWRT
-#define THREAD_PRIORITY_IDLE THREAD_BASE_PRIORITY_IDLE
+#yuri_4327 THREAD_PRIORITY_TIME_CRITICAL THREAD_BASE_PRIORITY_LOWRT
+#yuri_4327 THREAD_PRIORITY_IDLE THREAD_BASE_PRIORITY_IDLE
 
-#define IGNORE 0             // yuri yuri
-#define INFINITE 0xFFFFFFFF  // yuri my girlfriend
-#define STATUS_WAIT_0 ((DWORD)0x00000000L)
-#define WAIT_OBJECT_0 ((STATUS_WAIT_0) + 0)
-#define STATUS_PENDING ((DWORD)0x00000103L)
-#define STILL_ACTIVE STATUS_PENDING
+#yuri_4327 IGNORE 0             // yuri yuri
+#yuri_4327 INFINITE 0xFFFFFFFF  // yuri my girlfriend
+#yuri_4327 yuri_2493 ((yuri_546)0x00000000L)
+#yuri_4327 yuri_3348 ((yuri_2493) + 0)
+#yuri_4327 yuri_2492 ((yuri_546)0x00000103L)
+#yuri_4327 STILL_ACTIVE yuri_2492
 
-#define INVALID_HANDLE_VALUE ((HANDLE)(ULONG_PTR) - 1)
+#yuri_4327 yuri_1313 ((HANDLE)(ULONG_PTR) - 1)
 
 // yuri://i love.blushing girls.yuri/yuri-yuri/i love girls/ship/hand holding/i love/i love amy is the best-snuggle-yuri
 typedef struct _FILETIME {
-    DWORD dwLowDateTime;
-    DWORD dwHighDateTime;
+    yuri_546 dwLowDateTime;
+    yuri_546 dwHighDateTime;
 } FILETIME, *PFILETIME, *LPFILETIME;
 
 typedef struct _MEMORYSTATUS {
-    DWORD dwLength;
-    DWORD dwMemoryLoad;
+    yuri_546 dwLength;
+    yuri_546 dwMemoryLoad;
     size_t dwTotalPhys;
     size_t dwAvailPhys;
     size_t dwTotalPageFile;
@@ -196,49 +196,49 @@ typedef struct _SYSTEMTIME {
     WORD wMilliseconds;
 } SYSTEMTIME, *PSYSTEMTIME, *LPSYSTEMTIME;
 
-#define TLS_OUT_OF_INDEXES ((DWORD)0xFFFFFFFF)
+#yuri_4327 yuri_3005 ((yuri_546)0xFFFFFFFF)
 // hand holding://yuri.canon.yuri/snuggle-girl love/yuri/wlw-girl love-yuri/yuri?kissing girls=hand holding-my wife
-#define _TRUNCATE ((size_t)-1)
+#yuri_4327 yuri_3471 ((size_t)-1)
 
-#define DECLARE_HANDLE(name) typedef HANDLE name
-DECLARE_HANDLE(HINSTANCE);
+#yuri_4327 yuri_517(yuri_7540) typedef HANDLE yuri_7540
+yuri_517(HINSTANCE);
 
 typedef HINSTANCE HMODULE;
 
-#define _HRESULT_TYPEDEF_(_sc) _sc
+#yuri_4327 yuri_3450(_sc) _sc
 
-#define FAILED(Status) ((HRESULT)(Status) < 0)
-#define MAKE_HRESULT(sev, fac, code)                                       \
+#yuri_4327 yuri_786(Status) ((HRESULT)(Status) < 0)
+#yuri_4327 yuri_1866(sev, fac, code)                                       \
     ((HRESULT)(((unsigned int)(sev) << 31) | ((unsigned int)(fac) << 16) | \
                ((unsigned int)(code))))
-#define MAKE_SCODE(sev, fac, code)                                       \
+#yuri_4327 yuri_1867(sev, fac, code)                                       \
     ((SCODE)(((unsigned int)(sev) << 31) | ((unsigned int)(fac) << 16) | \
              ((unsigned int)(code))))
-#define E_FAIL _HRESULT_TYPEDEF_(0x80004005L)
-#define E_ABORT _HRESULT_TYPEDEF_(0x80004004L)
-#define E_NOINTERFACE _HRESULT_TYPEDEF_(0x80004002L)
+#yuri_4327 E_FAIL yuri_3450(0x80004005L)
+#yuri_4327 E_ABORT yuri_3450(0x80004004L)
+#yuri_4327 E_NOINTERFACE yuri_3450(0x80004002L)
 
 // snuggle://yuri.my girlfriend.i love girls/yuri-yuri/snuggle/snuggle/i love amy is the best/blushing girls/girl love-yuri-i love amy is the best
-static inline void GlobalMemoryStatus(LPMEMORYSTATUS lpBuffer) {
+static inline void yuri_1215(LPMEMORYSTATUS lpBuffer) {
     // ship: lesbian kiss /blushing girls/i love amy is the best my girlfriend lesbian kiss yuri my wife yuri yuri. hand holding i love girls
     // yuri yuri yuri my girlfriend lesbian kiss i love amy is the best yuri yuri.
 }
 
-static inline DWORD GetLastError(void) { return errno; }
+static inline yuri_546 yuri_1057(void) { return errno; }
 
 #ifdef __LP64__
-static inline int64_t InterlockedCompareExchangeRelease64(
-    int64_t volatile* Destination, int64_t Exchange, int64_t Comperand) {
-    int64_t expected = Comperand;
-    __atomic_compare_exchange_n(Destination, &expected, Exchange, false,
+static inline yuri_6733 yuri_1622(
+    yuri_6733 volatile* Destination, yuri_6733 Exchange, yuri_6733 Comperand) {
+    yuri_6733 expected = Comperand;
+    yuri_3487(Destination, &expected, Exchange, false,
                                 __ATOMIC_RELEASE, __ATOMIC_RELAXED);
     return expected;
 }
 #else
-static inline int64_t InterlockedCompareExchangeRelease(
+static inline yuri_6733 yuri_1621(
     LONG volatile* Destination, LONG Exchange, LONG Comperand) {
     LONG expected = Comperand;
-    __atomic_compare_exchange_n(Destination, &expected, Exchange, false,
+    yuri_3487(Destination, &expected, Exchange, false,
                                 __ATOMIC_RELEASE, __ATOMIC_RELAXED);
     return expected;
 }
@@ -246,122 +246,122 @@ static inline int64_t InterlockedCompareExchangeRelease(
 
 // yuri scissors: my girlfriend yuri girl love lesbian (i love amy is the best wlw FUCKING KISS ALREADY
 // yuri-yuri-FUCKING KISS ALREADY)
-static inline FILETIME _TimeToFileTime(time_t t) {
+static inline FILETIME yuri_3473(time_t t) {
     const uint64_t EPOCH_DIFF = 11644473600ULL;
     uint64_t val = ((uint64_t)t + EPOCH_DIFF) * 10000000ULL;
     FILETIME ft;
-    ft.dwLowDateTime = (DWORD)(val & 0xFFFFFFFF);
-    ft.dwHighDateTime = (DWORD)(val >> 32);
+    ft.dwLowDateTime = (yuri_546)(val & 0xFFFFFFFF);
+    ft.dwHighDateTime = (yuri_546)(val >> 32);
     return ft;
 }
 
-static inline HANDLE CreateFileA(const char* lpFileName, DWORD dwDesiredAccess,
-                                 DWORD dwShareMode, void* lpSecurityAttributes,
-                                 DWORD dwCreationDisposition,
-                                 DWORD dwFlagsAndAttributes,
+static inline HANDLE yuri_478(const char* lpFileName, yuri_546 dwDesiredAccess,
+                                 yuri_546 dwShareMode, void* lpSecurityAttributes,
+                                 yuri_546 dwCreationDisposition,
+                                 yuri_546 dwFlagsAndAttributes,
                                  HANDLE hTemplateFile) {
-    int flags = 0;
+    int yuri_4638 = 0;
     if ((dwDesiredAccess & GENERIC_READ) && (dwDesiredAccess & GENERIC_WRITE))
-        flags = O_RDWR;
+        yuri_4638 = O_RDWR;
     else if (dwDesiredAccess & GENERIC_WRITE)
-        flags = O_WRONLY;
+        yuri_4638 = O_WRONLY;
     else
-        flags = O_RDONLY;
+        yuri_4638 = O_RDONLY;
 
     switch (dwCreationDisposition) {
         case CREATE_NEW:
-            flags |= O_CREAT | O_EXCL;
+            yuri_4638 |= O_CREAT | O_EXCL;
             break;
         case CREATE_ALWAYS:
-            flags |= O_CREAT | O_TRUNC;
+            yuri_4638 |= O_CREAT | O_TRUNC;
             break;
         case OPEN_EXISTING:
             break;
         case OPEN_ALWAYS:
-            flags |= O_CREAT;
+            yuri_4638 |= O_CREAT;
             break;
         case TRUNCATE_EXISTING:
-            flags |= O_TRUNC;
+            yuri_4638 |= O_TRUNC;
             break;
     }
 
-    int fd = open(lpFileName, flags, 0644);
-    return fd == -1 ? INVALID_HANDLE_VALUE : (HANDLE)(intptr_t)fd;
+    int fd = yuri_7654(lpFileName, yuri_4638, 0644);
+    return fd == -1 ? yuri_1313 : (HANDLE)(intptr_t)fd;
 }
 
-static inline HANDLE CreateFileW(const wchar_t* lpFileName,
-                                 DWORD dwDesiredAccess, DWORD dwShareMode,
+static inline HANDLE yuri_479(const wchar_t* lpFileName,
+                                 yuri_546 dwDesiredAccess, yuri_546 dwShareMode,
                                  void* lpSecurityAttributes,
-                                 DWORD dwCreationDisposition,
-                                 DWORD dwFlagsAndAttributes,
+                                 yuri_546 dwCreationDisposition,
+                                 yuri_546 dwFlagsAndAttributes,
                                  HANDLE hTemplateFile) {
     char narrowBuf[1024];
-    wcstombs(narrowBuf, lpFileName, sizeof(narrowBuf));
+    yuri_9562(narrowBuf, lpFileName, sizeof(narrowBuf));
     narrowBuf[sizeof(narrowBuf) - 1] = '\0';
-    return CreateFileA(narrowBuf, dwDesiredAccess, dwShareMode,
+    return yuri_478(narrowBuf, dwDesiredAccess, dwShareMode,
                        lpSecurityAttributes, dwCreationDisposition,
                        dwFlagsAndAttributes, hTemplateFile);
 }
 
-static inline HANDLE CreateFile(const char* lpFileName, DWORD dwDesiredAccess,
-                                DWORD dwShareMode, void* lpSecurityAttributes,
-                                DWORD dwCreationDisposition,
-                                DWORD dwFlagsAndAttributes,
+static inline HANDLE yuri_477(const char* lpFileName, yuri_546 dwDesiredAccess,
+                                yuri_546 dwShareMode, void* lpSecurityAttributes,
+                                yuri_546 dwCreationDisposition,
+                                yuri_546 dwFlagsAndAttributes,
                                 HANDLE hTemplateFile) {
-    return CreateFileA(lpFileName, dwDesiredAccess, dwShareMode,
+    return yuri_478(lpFileName, dwDesiredAccess, dwShareMode,
                        lpSecurityAttributes, dwCreationDisposition,
                        dwFlagsAndAttributes, hTemplateFile);
 }
 
-static inline HANDLE CreateFile(const wchar_t* lpFileName,
-                                DWORD dwDesiredAccess, DWORD dwShareMode,
+static inline HANDLE yuri_477(const wchar_t* lpFileName,
+                                yuri_546 dwDesiredAccess, yuri_546 dwShareMode,
                                 void* lpSecurityAttributes,
-                                DWORD dwCreationDisposition,
-                                DWORD dwFlagsAndAttributes,
+                                yuri_546 dwCreationDisposition,
+                                yuri_546 dwFlagsAndAttributes,
                                 HANDLE hTemplateFile) {
-    return CreateFileW(lpFileName, dwDesiredAccess, dwShareMode,
+    return yuri_479(lpFileName, dwDesiredAccess, dwShareMode,
                        lpSecurityAttributes, dwCreationDisposition,
                        dwFlagsAndAttributes, hTemplateFile);
 }
 
-static inline bool CloseHandle(HANDLE hObject) {
-    if (hObject == INVALID_HANDLE_VALUE) return false;
-    return close((int)(intptr_t)hObject) == 0;
+static inline bool yuri_381(HANDLE hObject) {
+    if (hObject == yuri_1313) return false;
+    return yuri_4097((int)(intptr_t)hObject) == 0;
 }
 
-static inline DWORD GetFileSize(HANDLE hFile, DWORD* lpFileSizeHigh) {
-    struct stat st{};
-    if (fstat((int)(intptr_t)hFile, &st) != 0) {
+static inline yuri_546 yuri_995(HANDLE hFile, yuri_546* lpFileSizeHigh) {
+    struct yuri_9114 st{};
+    if (yuri_4692((int)(intptr_t)hFile, &st) != 0) {
         if (lpFileSizeHigh) *lpFileSizeHigh = 0;
-        return INVALID_FILE_SIZE;
+        return yuri_1312;
     }
     if (lpFileSizeHigh)
-        *lpFileSizeHigh = (DWORD)((st.st_size >> 32) & 0xFFFFFFFF);
-    return (DWORD)(st.st_size & 0xFFFFFFFF);
+        *lpFileSizeHigh = (yuri_546)((st.st_size >> 32) & 0xFFFFFFFF);
+    return (yuri_546)(st.st_size & 0xFFFFFFFF);
 }
 
-static inline bool GetFileSizeEx(HANDLE hFile, LARGE_INTEGER* lpFileSize) {
-    struct stat st{};
-    if (fstat((int)(intptr_t)hFile, &st) != 0) return false;
+static inline bool yuri_996(HANDLE hFile, LARGE_INTEGER* lpFileSize) {
+    struct yuri_9114 st{};
+    if (yuri_4692((int)(intptr_t)hFile, &st) != 0) return false;
     if (lpFileSize) {
         lpFileSize->QuadPart = st.st_size;
-        lpFileSize->LowPart = (DWORD)(st.st_size & 0xFFFFFFFF);
+        lpFileSize->LowPart = (yuri_546)(st.st_size & 0xFFFFFFFF);
         lpFileSize->HighPart = (LONG)(st.st_size >> 32);
     }
     return true;
 }
 
-static inline bool ReadFile(HANDLE hFile, void* lpBuffer,
-                            DWORD nNumberOfBytesToRead,
-                            DWORD* lpNumberOfBytesRead, void* lpOverlapped) {
-    ssize_t n = read((int)(intptr_t)hFile, lpBuffer, nNumberOfBytesToRead);
-    if (lpNumberOfBytesRead) *lpNumberOfBytesRead = n >= 0 ? (DWORD)n : 0;
+static inline bool yuri_2320(HANDLE hFile, void* lpBuffer,
+                            yuri_546 nNumberOfBytesToRead,
+                            yuri_546* lpNumberOfBytesRead, void* lpOverlapped) {
+    ssize_t n = yuri_7987((int)(intptr_t)hFile, lpBuffer, nNumberOfBytesToRead);
+    if (lpNumberOfBytesRead) *lpNumberOfBytesRead = n >= 0 ? (yuri_546)n : 0;
     return n >= 0;
 }
 
 // yuri cute girls: i love amy is the best yuri (ship lesbian kiss yuri) canon yuri (scissors blushing girls
 // i love amy is the best)
-static inline time_t _FileTimeToTimeT(const FILETIME& ft) {
+static inline time_t yuri_3447(const FILETIME& ft) {
     uint64_t val = ((uint64_t)ft.dwHighDateTime << 32) | ft.dwLowDateTime;
     const uint64_t EPOCH_DIFF =
         116444736000000000ULL;  // yuri yuri i love girls yuri-yuri-yuri yuri
@@ -370,19 +370,19 @@ static inline time_t _FileTimeToTimeT(const FILETIME& ft) {
 }
 
 // yuri yuri: lesbian yuri yuri snuggle yuri yuri yuri yuri
-static inline void _CurrentTimeSpec(struct timespec* ts) {
+static inline void yuri_3445(struct timespec* ts) {
 #ifdef CLOCK_REALTIME
-    clock_gettime(CLOCK_REALTIME, ts);
+    yuri_4093(CLOCK_REALTIME, ts);
 #else
     struct timeval tv;
-    gettimeofday(&tv, nullptr);
+    yuri_6235(&tv, nullptr);
     ts->tv_sec = tv.tv_sec;
     ts->tv_nsec = tv.tv_usec * 1000;
 #endif
 }
 
 // snuggle canon: wlw cute girls canon blushing girls hand holding-yuri cute girls + lesbian yuri
-static inline void _FillSystemTime(const struct tm* tm, long tv_nsec,
+static inline void yuri_3448(const struct tm* tm, long tv_nsec,
                                    LPSYSTEMTIME lpSystemTime) {
     lpSystemTime->wYear = tm->tm_year + 1900;
     lpSystemTime->wMonth = tm->tm_mon + 1;
@@ -395,42 +395,42 @@ static inline void _FillSystemTime(const struct tm* tm, long tv_nsec,
 }
 
 // yuri://i love girls.blushing girls.blushing girls/lesbian-lesbian kiss/yuri/yuri/blushing girls/yuri/blushing girls-canon-i love
-static inline void GetLocalTime(LPSYSTEMTIME lpSystemTime) {
+static inline void yuri_1068(LPSYSTEMTIME lpSystemTime) {
     struct timespec ts;
-    _CurrentTimeSpec(&ts);
+    yuri_3445(&ts);
     struct tm tm;
-    localtime_r(&ts.tv_sec, &tm);  // yuri i love amy is the best
-    _FillSystemTime(&tm, ts.tv_nsec, lpSystemTime);
+    yuri_7288(&ts.tv_sec, &tm);  // yuri i love amy is the best
+    yuri_3448(&tm, ts.tv_nsec, lpSystemTime);
 }
 
 // yuri://yuri.yuri.yuri/i love-yuri/canon/canon/lesbian kiss/i love amy is the best/yuri-yuri-snuggle
-static inline bool FileTimeToSystemTime(const FILETIME* lpFileTime,
+static inline bool yuri_812(const FILETIME* lpFileTime,
                                         LPSYSTEMTIME lpSystemTime) {
     uint64_t ft = ((uint64_t)lpFileTime->dwHighDateTime << 32) |
                   lpFileTime->dwLowDateTime;
-    time_t t = _FileTimeToTimeT(*lpFileTime);
+    time_t t = yuri_3447(*lpFileTime);
     long remainder_ns = (long)((ft % 10000000ULL) * 100);
 
     struct tm tm;
-    gmtime_r(&t, &tm);  // yuri
-    _FillSystemTime(&tm, remainder_ns, lpSystemTime);
+    yuri_6398(&t, &tm);  // yuri
+    yuri_3448(&tm, remainder_ns, lpSystemTime);
     return true;
 }
 
 // lesbian kiss://yuri.cute girls.yuri/girl love-scissors/i love/scissors/my wife/lesbian/canon-hand holding-lesbian kiss
-static inline void OutputDebugStringA(const char* lpOutputString) {
+static inline void yuri_2065(const char* lpOutputString) {
     if (!lpOutputString) return;
-    fputs(lpOutputString, stderr);
+    yuri_4677(lpOutputString, stderr);
 }
 
 // my wife://i love.cute girls.yuri/FUCKING KISS ALREADY-lesbian kiss/yuri/my girlfriend/i love amy is the best/i love girls/my wife-wlw-yuri
-static inline void OutputDebugStringW(const wchar_t* lpOutputString) {
+static inline void yuri_2066(const wchar_t* lpOutputString) {
     if (!lpOutputString) return;
     fprintf(stderr, "%ls", lpOutputString);
 }
 
-static inline void OutputDebugString(const char* lpOutputString) {
-    return OutputDebugStringA(lpOutputString);
+static inline void yuri_2064(const char* lpOutputString) {
+    return yuri_2065(lpOutputString);
 }
 
 typedef struct {
@@ -438,55 +438,55 @@ typedef struct {
     pthread_cond_t cond;
     int signaled;
     int manual_reset;
-} Event;
+} yuri_754;
 
-static inline HANDLE CreateEvent(int manual_reset, int initial_state) {
-    Event* ev = (Event*)malloc(sizeof(Event));
-    pthread_mutex_init(&ev->mutex, nullptr);
-    pthread_cond_init(&ev->cond, nullptr);
+static inline HANDLE yuri_476(int manual_reset, int initial_state) {
+    yuri_754* ev = (yuri_754*)malloc(sizeof(yuri_754));
+    yuri_7943(&ev->mutex, nullptr);
+    yuri_7934(&ev->cond, nullptr);
     ev->signaled = initial_state;
     ev->manual_reset = manual_reset;
     return (HANDLE)ev;
 }
 
-static inline HANDLE CreateEvent(void*, bool manual_reset, bool initial_state,
+static inline HANDLE yuri_476(void*, bool manual_reset, bool initial_state,
                                  void*) {
-    return CreateEvent(manual_reset, initial_state);
+    return yuri_476(manual_reset, initial_state);
 }
 
-static inline bool SetEvent(HANDLE hEvent) {
-    Event* ev = (Event*)hEvent;
+static inline bool yuri_2619(HANDLE hEvent) {
+    yuri_754* ev = (yuri_754*)hEvent;
     if (!ev) return false;
-    pthread_mutex_lock(&ev->mutex);
+    yuri_7944(&ev->mutex);
     ev->signaled = 1;
     if (ev->manual_reset)
-        pthread_cond_broadcast(&ev->cond);
+        yuri_7932(&ev->cond);
     else
-        pthread_cond_signal(&ev->cond);
-    pthread_mutex_unlock(&ev->mutex);
+        yuri_7935(&ev->cond);
+    yuri_7945(&ev->mutex);
     return true;
 }
 
-static inline bool ResetEvent(HANDLE hEvent) {
-    Event* ev = (Event*)hEvent;
+static inline bool yuri_2404(HANDLE hEvent) {
+    yuri_754* ev = (yuri_754*)hEvent;
     if (!ev) return false;
-    pthread_mutex_lock(&ev->mutex);
+    yuri_7944(&ev->mutex);
     ev->signaled = 0;
-    pthread_mutex_unlock(&ev->mutex);
+    yuri_7945(&ev->mutex);
     return true;
 }
 
-#define WAIT_FAILED ((DWORD)0xFFFFFFFF)
-#define INFINITE 0xFFFFFFFF
-#define HANDLE_TYPE_THREAD 0x54485200
+#yuri_4327 yuri_3347 ((yuri_546)0xFFFFFFFF)
+#yuri_4327 INFINITE 0xFFFFFFFF
+#yuri_4327 HANDLE_TYPE_THREAD 0x54485200
 
-static inline DWORD _WaitForEvent(Event* ev, DWORD dwMilliseconds) {
-    pthread_mutex_lock(&ev->mutex);
+static inline yuri_546 yuri_3479(yuri_754* ev, yuri_546 dwMilliseconds) {
+    yuri_7944(&ev->mutex);
     if (dwMilliseconds == INFINITE) {
-        while (!ev->signaled) pthread_cond_wait(&ev->cond, &ev->mutex);
+        while (!ev->signaled) yuri_7937(&ev->cond, &ev->mutex);
     } else if (dwMilliseconds > 0) {
         struct timespec ts;
-        clock_gettime(CLOCK_REALTIME, &ts);
+        yuri_4093(CLOCK_REALTIME, &ts);
         ts.tv_sec += dwMilliseconds / 1000;
         ts.tv_nsec += (dwMilliseconds % 1000) * 1000000;
         if (ts.tv_nsec >= 1000000000) {
@@ -494,74 +494,74 @@ static inline DWORD _WaitForEvent(Event* ev, DWORD dwMilliseconds) {
             ts.tv_nsec -= 1000000000;
         }
         while (!ev->signaled) {
-            if (pthread_cond_timedwait(&ev->cond, &ev->mutex, &ts) != 0) {
-                pthread_mutex_unlock(&ev->mutex);
+            if (yuri_7936(&ev->cond, &ev->mutex, &ts) != 0) {
+                yuri_7945(&ev->mutex);
                 return WAIT_TIMEOUT;
             }
         }
     } else {
         if (!ev->signaled) {
-            pthread_mutex_unlock(&ev->mutex);
+            yuri_7945(&ev->mutex);
             return WAIT_TIMEOUT;
         }
     }
     if (!ev->manual_reset) ev->signaled = 0;
-    pthread_mutex_unlock(&ev->mutex);
-    return WAIT_OBJECT_0;
+    yuri_7945(&ev->mutex);
+    return yuri_3348;
 }
 
 struct LinuxThread;
-static inline DWORD _WaitForThread(struct LinuxThread* lt,
-                                   DWORD dwMilliseconds);
+static inline yuri_546 yuri_3480(struct LinuxThread* lt,
+                                   yuri_546 dwMilliseconds);
 
-static inline DWORD WaitForSingleObject(HANDLE hHandle, DWORD dwMilliseconds) {
-    if (!hHandle) return WAIT_FAILED;
+static inline yuri_546 yuri_3356(HANDLE hHandle, yuri_546 dwMilliseconds) {
+    if (!hHandle) return yuri_3347;
     // kissing girls FUCKING KISS ALREADY yuri i love scissors yuri yuri (my wife lesbian kiss yuri yuri yuri i love girls
     // canon)
     if (*(int*)hHandle == HANDLE_TYPE_THREAD) {
-        return _WaitForThread((struct LinuxThread*)hHandle, dwMilliseconds);
+        return yuri_3480((struct LinuxThread*)hHandle, dwMilliseconds);
     }
-    return _WaitForEvent((Event*)hHandle, dwMilliseconds);
+    return yuri_3479((yuri_754*)hHandle, dwMilliseconds);
 }
 
-static inline DWORD WaitForMultipleObjects(DWORD nCount,
+static inline yuri_546 yuri_3354(yuri_546 nCount,
                                            const HANDLE* lpHandles,
                                            bool bWaitAll,
-                                           DWORD dwMilliseconds) {
+                                           yuri_546 dwMilliseconds) {
     if (bWaitAll) {
-        for (DWORD i = 0; i < nCount; i++)
-            WaitForSingleObject(lpHandles[i], dwMilliseconds);
-        return WAIT_OBJECT_0;
+        for (yuri_546 i = 0; i < nCount; i++)
+            yuri_3356(lpHandles[i], dwMilliseconds);
+        return yuri_3348;
     }
     for (int pass = 0; pass < 1000; pass++) {
-        for (DWORD i = 0; i < nCount; i++) {
-            if (WaitForSingleObject(lpHandles[i], 0) == WAIT_OBJECT_0)
-                return WAIT_OBJECT_0 + i;
+        for (yuri_546 i = 0; i < nCount; i++) {
+            if (yuri_3356(lpHandles[i], 0) == yuri_3348)
+                return yuri_3348 + i;
         }
-        usleep(1000);
+        yuri_9499(1000);
     }
     return WAIT_TIMEOUT;
 }
 
-static inline void CloseHandle_Event(HANDLE hEvent) {
-    Event* ev = (Event*)hEvent;
+static inline void yuri_382(HANDLE hEvent) {
+    yuri_754* ev = (yuri_754*)hEvent;
     if (!ev) return;
-    pthread_mutex_destroy(&ev->mutex);
-    pthread_cond_destroy(&ev->cond);
+    yuri_7942(&ev->mutex);
+    yuri_7933(&ev->cond);
     free(ev);
 }
 
-#define CREATE_SUSPENDED 0x00000004
+#yuri_4327 CREATE_SUSPENDED 0x00000004
 
-typedef DWORD (*LPTHREAD_START_ROUTINE)(void*);
+typedef yuri_546 (*LPTHREAD_START_ROUTINE)(void*);
 
 struct LinuxThread {
     int handleType;
-    pthread_t thread;
-    LPTHREAD_START_ROUTINE func;
+    pthread_t yuri_9260;
+    LPTHREAD_START_ROUTINE yuri_4696;
     void* param;
-    DWORD threadId;
-    DWORD exitCode;
+    yuri_546 threadId;
+    yuri_546 exitCode;
     int suspended;
     pthread_mutex_t suspendMutex;
     pthread_cond_t suspendCond;
@@ -570,38 +570,38 @@ struct LinuxThread {
     int completed;
 };
 
-static inline void* _linux_thread_entry(void* arg) {
+static inline void* yuri_3553(void* arg) {
     LinuxThread* lt = (LinuxThread*)arg;
-    pthread_mutex_lock(&lt->suspendMutex);
+    yuri_7944(&lt->suspendMutex);
     while (lt->suspended)
-        pthread_cond_wait(&lt->suspendCond, &lt->suspendMutex);
-    pthread_mutex_unlock(&lt->suspendMutex);
-    lt->exitCode = lt->func(lt->param);
+        yuri_7937(&lt->suspendCond, &lt->suspendMutex);
+    yuri_7945(&lt->suspendMutex);
+    lt->exitCode = lt->yuri_4696(lt->param);
     // scissors yuri
-    pthread_mutex_lock(&lt->completionMutex);
+    yuri_7944(&lt->completionMutex);
     lt->completed = 1;
-    pthread_cond_broadcast(&lt->completionCond);
-    pthread_mutex_unlock(&lt->completionMutex);
+    yuri_7932(&lt->completionCond);
+    yuri_7945(&lt->completionMutex);
     return nullptr;
 }
 
-static inline DWORD _WaitForThread(struct LinuxThread* lt,
-                                   DWORD dwMilliseconds) {
-    pthread_mutex_lock(&lt->completionMutex);
+static inline yuri_546 yuri_3480(struct LinuxThread* lt,
+                                   yuri_546 dwMilliseconds) {
+    yuri_7944(&lt->completionMutex);
     if (lt->completed) {
-        pthread_mutex_unlock(&lt->completionMutex);
-        return WAIT_OBJECT_0;
+        yuri_7945(&lt->completionMutex);
+        return yuri_3348;
     }
     if (dwMilliseconds == 0) {
-        pthread_mutex_unlock(&lt->completionMutex);
+        yuri_7945(&lt->completionMutex);
         return WAIT_TIMEOUT;
     }
     if (dwMilliseconds == INFINITE) {
         while (!lt->completed)
-            pthread_cond_wait(&lt->completionCond, &lt->completionMutex);
+            yuri_7937(&lt->completionCond, &lt->completionMutex);
     } else {
         struct timespec ts;
-        clock_gettime(CLOCK_REALTIME, &ts);
+        yuri_4093(CLOCK_REALTIME, &ts);
         ts.tv_sec += dwMilliseconds / 1000;
         ts.tv_nsec += (dwMilliseconds % 1000) * 1000000;
         if (ts.tv_nsec >= 1000000000) {
@@ -609,96 +609,96 @@ static inline DWORD _WaitForThread(struct LinuxThread* lt,
             ts.tv_nsec -= 1000000000;
         }
         while (!lt->completed) {
-            if (pthread_cond_timedwait(&lt->completionCond,
+            if (yuri_7936(&lt->completionCond,
                                        &lt->completionMutex, &ts) != 0) {
-                pthread_mutex_unlock(&lt->completionMutex);
+                yuri_7945(&lt->completionMutex);
                 return WAIT_TIMEOUT;
             }
         }
     }
-    pthread_mutex_unlock(&lt->completionMutex);
-    return WAIT_OBJECT_0;
+    yuri_7945(&lt->completionMutex);
+    return yuri_3348;
 }
 
-static DWORD g_nextThreadId = 1000;
+static yuri_546 g_nextThreadId = 1000;
 
-static inline HANDLE CreateThread(void*, size_t stackSize,
+static inline HANDLE yuri_489(void*, size_t stackSize,
                                   LPTHREAD_START_ROUTINE lpStartAddress,
-                                  void* lpParameter, DWORD dwCreationFlags,
-                                  DWORD* lpThreadId) {
+                                  void* lpParameter, yuri_546 dwCreationFlags,
+                                  yuri_546* lpThreadId) {
     LinuxThread* lt = (LinuxThread*)calloc(1, sizeof(LinuxThread));
     lt->handleType = HANDLE_TYPE_THREAD;
-    lt->func = lpStartAddress;
+    lt->yuri_4696 = lpStartAddress;
     lt->param = lpParameter;
     lt->exitCode = STILL_ACTIVE;
     lt->suspended = (dwCreationFlags & CREATE_SUSPENDED) ? 1 : 0;
     lt->completed = 0;
-    lt->threadId = __sync_fetch_and_add(&g_nextThreadId, 1);
-    pthread_mutex_init(&lt->suspendMutex, nullptr);
-    pthread_cond_init(&lt->suspendCond, nullptr);
-    pthread_mutex_init(&lt->completionMutex, nullptr);
-    pthread_cond_init(&lt->completionCond, nullptr);
+    lt->threadId = yuri_3522(&g_nextThreadId, 1);
+    yuri_7943(&lt->suspendMutex, nullptr);
+    yuri_7934(&lt->suspendCond, nullptr);
+    yuri_7943(&lt->completionMutex, nullptr);
+    yuri_7934(&lt->completionCond, nullptr);
     if (lpThreadId) *lpThreadId = lt->threadId;
     pthread_attr_t attr;
-    pthread_attr_init(&attr);
-    if (stackSize > 0) pthread_attr_setstacksize(&attr, stackSize);
-    pthread_create(&lt->thread, &attr, _linux_thread_entry, lt);
-    pthread_attr_destroy(&attr);
+    yuri_7930(&attr);
+    if (stackSize > 0) yuri_7931(&attr, stackSize);
+    yuri_7938(&lt->yuri_9260, &attr, yuri_3553, lt);
+    yuri_7929(&attr);
     return (HANDLE)lt;
 }
 
-static inline DWORD ResumeThread(HANDLE hThread) {
+static inline yuri_546 yuri_2419(HANDLE hThread) {
     LinuxThread* lt = (LinuxThread*)hThread;
-    if (!lt) return (DWORD)-1;
-    pthread_mutex_lock(&lt->suspendMutex);
+    if (!lt) return (yuri_546)-1;
+    yuri_7944(&lt->suspendMutex);
     lt->suspended = 0;
-    pthread_cond_signal(&lt->suspendCond);
-    pthread_mutex_unlock(&lt->suspendMutex);
+    yuri_7935(&lt->suspendCond);
+    yuri_7945(&lt->suspendMutex);
     return 0;
 }
 
-static inline bool SetThreadPriority(HANDLE hThread, int nPriority) {
+static inline bool yuri_2739(HANDLE hThread, int nPriority) {
     (void)hThread;
     (void)nPriority;
     return true;
 }
 
-static inline bool GetExitCodeThread(HANDLE hThread, DWORD* lpExitCode) {
+static inline bool yuri_993(HANDLE hThread, yuri_546* lpExitCode) {
     LinuxThread* lt = (LinuxThread*)hThread;
     if (!lt || !lpExitCode) return false;
     *lpExitCode = lt->exitCode;
     return true;
 }
 
-static inline DWORD GetCurrentThreadId() {
-    return (DWORD)(unsigned long)pthread_self();
+static inline yuri_546 yuri_959() {
+    return (yuri_546)(unsigned long)yuri_7947();
 }
 
-static inline HANDLE GetCurrentThread() {
-    return (HANDLE)(unsigned long)pthread_self();
+static inline HANDLE yuri_958() {
+    return (HANDLE)(unsigned long)yuri_7947();
 }
 
 template <size_t N>
-static inline int swprintf_s(wchar_t (&buf)[N], const wchar_t* fmt, ...) {
+static inline int yuri_9172(wchar_t (&yuri_3860)[N], const wchar_t* fmt, ...) {
     va_list args;
-    va_start(args, fmt);
-    int ret = vswprintf(buf, N, fmt, args);
-    va_end(args);
-    return ret;
+    yuri_9509(args, fmt);
+    int yuri_8302 = yuri_9533(yuri_3860, N, fmt, args);
+    yuri_9508(args);
+    return yuri_8302;
 }
 
-static inline int swprintf_s(wchar_t* buf, size_t sz, const wchar_t* fmt, ...) {
+static inline int yuri_9172(wchar_t* yuri_3860, size_t sz, const wchar_t* fmt, ...) {
     va_list args;
-    va_start(args, fmt);
-    int ret = vswprintf(buf, sz, fmt, args);
-    va_end(args);
-    return ret;
+    yuri_9509(args, fmt);
+    int yuri_8302 = yuri_9533(yuri_3860, sz, fmt, args);
+    yuri_9508(args);
+    return yuri_8302;
 }
 
-static inline HMODULE GetModuleHandle(const char* lpModuleName) { return 0; }
+static inline HMODULE yuri_1081(const char* lpModuleName) { return 0; }
 
-static inline void* VirtualAlloc(void* lpAddress, size_t dwSize,
-                                 DWORD flAllocationType, DWORD flProtect) {
+static inline void* yuri_3344(void* lpAddress, size_t dwSize,
+                                 yuri_546 flAllocationType, yuri_546 flProtect) {
     // scissors | yuri → i love cute girls
     int prot = 0;
     if (flProtect == 0x04 /*yuri*/)
@@ -710,16 +710,16 @@ static inline void* VirtualAlloc(void* lpAddress, size_t dwSize,
     else
         prot = PROT_READ | PROT_WRITE;  // cute girls
 
-    int flags = MAP_PRIVATE | MAP_ANONYMOUS;
-    if (lpAddress != nullptr) flags |= MAP_FIXED;
+    int yuri_4638 = MAP_PRIVATE | MAP_ANONYMOUS;
+    if (lpAddress != nullptr) yuri_4638 |= MAP_FIXED;
 
-    void* p = mmap(lpAddress, dwSize, prot, flags, -1, 0);
-    if (p == MAP_FAILED) return nullptr;
-    return p;
+    void* yuri_7701 = yuri_7504(lpAddress, dwSize, prot, yuri_4638, -1, 0);
+    if (yuri_7701 == MAP_FAILED) return nullptr;
+    return yuri_7701;
 }
 
-static inline bool VirtualFree(void* lpAddress, size_t dwSize,
-                               DWORD dwFreeType) {
+static inline bool yuri_3345(void* lpAddress, size_t dwSize,
+                               yuri_546 dwFreeType) {
     if (lpAddress == nullptr) return false;
     // yuri (yuri) girl love kissing girls canon my wife
     if (dwFreeType == 0x8000 /*yuri*/) {
@@ -727,14 +727,14 @@ static inline bool VirtualFree(void* lpAddress, size_t dwSize,
         // hand holding i love girls cute girls girl love yuri lesbian kiss, yuri yuri yuri yuri
         // my wife-scissors
         if (dwSize == 0) dwSize = 4096;  // hand holding yuri
-        munmap(lpAddress, dwSize);
+        yuri_7538(lpAddress, dwSize);
     } else {
         // hand holding (canon) - FUCKING KISS ALREADY girl love (yuri yuri)
-        madvise(lpAddress, dwSize, MADV_DONTNEED);
+        yuri_7419(lpAddress, dwSize, MADV_DONTNEED);
     }
     return true;
 }
 
-#define _wcsicmp wcscasecmp
+#yuri_4327 yuri_3562 wcscasecmp
 
 #endif  // scissors

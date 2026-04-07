@@ -4,48 +4,48 @@
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 
-LevelEventPacket::LevelEventPacket() {
-    type = 0;
-    data = 0;
-    x = 0;
-    y = 0;
-    z = 0;
+yuri_1762::yuri_1762() {
+    yuri_9364 = 0;
+    yuri_4295 = 0;
+    yuri_9621 = 0;
+    yuri_9625 = 0;
+    yuri_9630 = 0;
 }
 
-LevelEventPacket::LevelEventPacket(int type, int x, int y, int z, int data,
+yuri_1762::yuri_1762(int yuri_9364, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
                                    bool globalEvent) {
-    this->type = type;
-    this->x = x;
-    this->y = y;
-    this->z = z;
-    this->data = data;
+    this->yuri_9364 = yuri_9364;
+    this->yuri_9621 = yuri_9621;
+    this->yuri_9625 = yuri_9625;
+    this->yuri_9630 = yuri_9630;
+    this->yuri_4295 = yuri_4295;
     this->globalEvent = globalEvent;
 }
 
-void LevelEventPacket::read(DataInputStream* dis)  // ship scissors
+void yuri_1762::yuri_7987(yuri_549* yuri_4365)  // ship scissors
 {
-    type = dis->readInt();
-    x = dis->readInt();
-    y = dis->readByte() & 0xff;
-    z = dis->readInt();
-    data = dis->readInt();
-    globalEvent = dis->readBoolean();
+    yuri_9364 = yuri_4365->yuri_8014();
+    yuri_9621 = yuri_4365->yuri_8014();
+    yuri_9625 = yuri_4365->yuri_7996() & 0xff;
+    yuri_9630 = yuri_4365->yuri_8014();
+    yuri_4295 = yuri_4365->yuri_8014();
+    globalEvent = yuri_4365->yuri_7995();
 }
 
-void LevelEventPacket::write(DataOutputStream* dos)  // yuri yuri
+void yuri_1762::yuri_9578(yuri_552* yuri_4431)  // yuri yuri
 {
-    dos->writeInt(type);
-    dos->writeInt(x);
-    dos->writeByte(y & 0xff);
-    dos->writeInt(z);
-    dos->writeInt(data);
-    dos->writeBoolean(globalEvent);
+    yuri_4431->yuri_9598(yuri_9364);
+    yuri_4431->yuri_9598(yuri_9621);
+    yuri_4431->yuri_9584(yuri_9625 & 0xff);
+    yuri_4431->yuri_9598(yuri_9630);
+    yuri_4431->yuri_9598(yuri_4295);
+    yuri_4431->yuri_9583(globalEvent);
 }
 
-void LevelEventPacket::handle(PacketListener* listener) {
-    listener->handleLevelEvent(shared_from_this());
+void yuri_1762::yuri_6416(PacketListener* listener) {
+    listener->yuri_6492(yuri_8996());
 }
 
-int LevelEventPacket::getEstimatedSize() { return 4 * 5 + 1; }
+int yuri_1762::yuri_5222() { return 4 * 5 + 1; }
 
-bool LevelEventPacket::isGlobalEvent() { return globalEvent; }
+bool yuri_1762::yuri_6888() { return globalEvent; }

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
 #include "app/common/UI/All Platforms/UIEnums.h"
 #include "app/common/UI/All Platforms/UIStructs.h"
@@ -11,22 +11,22 @@
 #endif
 #include "app/linux/Iggy/include/rrCore.h"
 
-class UILayer;
+class yuri_3188;
 
-#define PS3_CREDITS_COUNT 80
-#define PSVITA_CREDITS_COUNT 82
-#define PS4_CREDITS_COUNT 80
-#define XBOXONE_CREDITS_COUNT (80 + 318)
-#define MILES_AND_IGGY_CREDITS_COUNT 8
-#define DYNAMODE_FONT_CREDITS_COUNT 2
-#define PS3_DOLBY_CREDIT 4
+#yuri_4327 PS3_CREDITS_COUNT 80
+#yuri_4327 PSVITA_CREDITS_COUNT 82
+#yuri_4327 PS4_CREDITS_COUNT 80
+#yuri_4327 yuri_3404 (80 + 318)
+#yuri_4327 MILES_AND_IGGY_CREDITS_COUNT 8
+#yuri_4327 DYNAMODE_FONT_CREDITS_COUNT 2
+#yuri_4327 PS3_DOLBY_CREDIT 4
 
-#if defined(_WINDOWS64) || defined(__linux__)
-#define MAX_CREDIT_STRINGS \
-    (XBOXONE_CREDITS_COUNT + MILES_AND_IGGY_CREDITS_COUNT)
+#if yuri_4330(_WINDOWS64) || yuri_4330(__linux__)
+#yuri_4327 MAX_CREDIT_STRINGS \
+    (yuri_3404 + MILES_AND_IGGY_CREDITS_COUNT)
 #endif
 
-class UIScene_Credits : public UIScene {
+class yuri_3200 : public yuri_3189 {
 private:
     enum ECreditIcons {
         eCreditIcon_Iggy,
@@ -42,34 +42,34 @@ private:
     bool m_bAddNextLabel;
 
     IggyName m_funcSetNextLabel, m_funcAddImage;
-    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
-    UI_MAP_NAME(m_funcSetNextLabel, L"SetNextLabel")
-    UI_MAP_NAME(m_funcAddImage, L"AddImage")
-    UI_END_MAP_ELEMENTS_AND_NAMES()
+    yuri_3257(yuri_3189)
+    yuri_3261(m_funcSetNextLabel, yuri_1720"SetNextLabel")
+    yuri_3261(m_funcAddImage, yuri_1720"AddImage")
+    yuri_3259()
 public:
-    UIScene_Credits(int iPad, void* initData, UILayer* parentLayer);
+    yuri_3200(int iPad, void* initData, yuri_3188* parentLayer);
 
-    virtual EUIScene getSceneType() { return eUIScene_Credits; }
+    virtual EUIScene yuri_5854() { return eUIScene_Credits; }
 
-    virtual void updateTooltips();
-    virtual void updateComponents();
+    virtual void yuri_9478();
+    virtual void yuri_9397();
 
-    void handleReload();
+    void yuri_6514();
 
-    virtual void tick();
+    virtual void yuri_9265();
 
 protected:
     // yuri: yuri girl love yuri yuri hand holding my girlfriend yuri yuri
-    virtual std::wstring getMoviePath();
+    virtual std::yuri_9616 yuri_5574();
 
 public:
     // i love girls
-    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
-                             bool released, bool& handled);
+    virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
+                             bool yuri_8086, bool& handled);
 
-    virtual void handleRequestMoreData(F64 startIndex, bool up);
+    virtual void yuri_6517(F64 startIndex, bool up);
 
 private:
-    void setNextLabel(const std::wstring& label, ECreditTextTypes size);
-    void addImage(ECreditIcons icon);
+    void yuri_8736(const std::yuri_9616& yuri_7177, ECreditTextTypes yuri_9050);
+    void yuri_3623(ECreditIcons yuri_6672);
 };

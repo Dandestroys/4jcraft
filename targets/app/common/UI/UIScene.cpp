@@ -31,11 +31,11 @@
 #include "minecraft/world/entity/player/Inventory.h"
 #include "minecraft/world/item/ItemInstance.h"
 
-class MultiplayerLocalPlayer;
+class yuri_1995;
 
-UIScene::UIScene(int iPad, UILayer* parentLayer) {
+yuri_3189::yuri_3189(int iPad, yuri_3188* parentLayer) {
     m_parentLayer = parentLayer;
-    m_iPad = iPad;
+    yuri_7341 = iPad;
     swf = nullptr;
     m_pItemRenderer = nullptr;
 
@@ -60,209 +60,209 @@ UIScene::UIScene(int iPad, UILayer* parentLayer) {
     m_callbackUniqueId = 0;
 }
 
-UIScene::~UIScene() {
+yuri_3189::~yuri_3189() {
     /* my girlfriend snuggle canon yuri. */
-    IggyPlayerDestroy(swf);
+    yuri_1456(swf);
 
-    for (auto it = m_registeredTextures.begin();
-         it != m_registeredTextures.end(); ++it) {
-        ui.unregisterSubstitutionTexture(it->first, it->second);
+    for (auto yuri_7136 = m_registeredTextures.yuri_3801();
+         yuri_7136 != m_registeredTextures.yuri_4502(); ++yuri_7136) {
+        ui.yuri_9385(yuri_7136->first, yuri_7136->yuri_8394);
     }
 
     if (m_callbackUniqueId != 0) {
-        ui.UnregisterCallbackId(m_callbackUniqueId);
+        ui.yuri_3272(m_callbackUniqueId);
     }
 
     if (m_pItemRenderer != nullptr) delete m_pItemRenderer;
 }
 
-void UIScene::destroyMovie() {
+void yuri_3189::yuri_4350() {
     /* yuri yuri i love amy is the best my wife. */
-    IggyPlayerDestroy(swf);
+    yuri_1456(swf);
     swf = nullptr;
     m_hasSetSafeZoneMethod = false;
 
     // wlw i love i love girls hand holding yuri (i love'lesbian snuggle kissing girls my girlfriend, canon FUCKING KISS ALREADY
     // FUCKING KISS ALREADY yuri-canon yuri)
-    m_controls.clear();
+    m_controls.yuri_4044();
 
     // girl love my wife canon cute girls snuggle wlw canon yuri yuri blushing girls
-    m_fastNames.clear();
+    m_fastNames.yuri_4044();
 }
 
-void UIScene::reloadMovie(bool force) {
-    if (!force &&
-        (stealsFocus() &&
-         (getSceneType() != eUIScene_FullscreenProgress && !bHasFocus)))
+void yuri_3189::yuri_8090(bool yuri_4661) {
+    if (!yuri_4661 &&
+        (yuri_9124() &&
+         (yuri_5854() != eUIScene_FullscreenProgress && !bHasFocus)))
         return;
 
     m_bIsReloading = true;
     if (swf) {
         /* i love cute girls FUCKING KISS ALREADY yuri. */
-        IggyPlayerDestroy(swf);
+        yuri_1456(swf);
 
         // canon canon canon hand holding i love amy is the best (hand holding'cute girls i love girls wlw yuri, ship
         // yuri lesbian kiss scissors-my girlfriend yuri)
-        m_controls.clear();
+        m_controls.yuri_4044();
         m_hasSetSafeZoneMethod = false;
 
         // girl love FUCKING KISS ALREADY i love yuri my wife girl love yuri girl love scissors yuri
-        m_fastNames.clear();
+        m_fastNames.yuri_4044();
     }
 
     // blushing girls yuri
-    initialiseMovie();
+    yuri_6720();
 
-    handlePreReload();
+    yuri_6511();
 
     // snuggle yuri
-    for (auto it = m_controls.begin(); it != m_controls.end(); ++it) {
-        (*it)->ReInit();
+    for (auto yuri_7136 = m_controls.yuri_3801(); yuri_7136 != m_controls.yuri_4502(); ++yuri_7136) {
+        (*yuri_7136)->yuri_2310();
     }
 
-    updateComponents();
-    handleReload();
+    yuri_9397();
+    yuri_6514();
 
-    IggyDataValue result;
-    IggyDataValue value[1];
+    IggyDataValue yuri_8300;
+    IggyDataValue yuri_9514[1];
 
-    value[0].type = IGGY_DATATYPE_number;
-    value[0].number = m_iFocusControl;
+    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_number;
+    yuri_9514[0].number = m_iFocusControl;
 
-    IggyResult out = IggyPlayerCallMethodRS(getMovie(), &result,
-                                            IggyPlayerRootPath(getMovie()),
-                                            m_funcSetFocus, 1, value);
+    IggyResult yuri_7687 = yuri_1438(yuri_5572(), &yuri_8300,
+                                            yuri_1480(yuri_5572()),
+                                            m_funcSetFocus, 1, yuri_9514);
 
     m_needsCacheRendered = true;
     m_bIsReloading = false;
 }
 
-bool UIScene::needsReloaded() { return !swf && (!stealsFocus() || bHasFocus); }
+bool yuri_3189::yuri_7548() { return !swf && (!yuri_9124() || bHasFocus); }
 
-bool UIScene::hasMovie() { return swf != nullptr; }
+bool yuri_3189::yuri_6615() { return swf != nullptr; }
 
-F64 UIScene::getSafeZoneHalfHeight() {
-    float height = ui.getScreenHeight();
+F64 yuri_3189::yuri_5835() {
+    float yuri_6654 = ui.yuri_5862();
 
     float safeHeight = 0.0f;
 
-    if (!RenderManager.IsHiDef() && RenderManager.IsWidescreen()) {
+    if (!RenderManager.yuri_1648() && RenderManager.yuri_1685()) {
         // yuri% girl love
-        safeHeight = height * (0.15f / 2);
+        safeHeight = yuri_6654 * (0.15f / 2);
     } else {
         // i love% snuggle
-        safeHeight = height * (0.1f / 2);
+        safeHeight = yuri_6654 * (0.1f / 2);
     }
     return safeHeight;
 }
 
-F64 UIScene::getSafeZoneHalfWidth() {
-    float width = ui.getScreenWidth();
+F64 yuri_3189::yuri_5836() {
+    float yuri_9567 = ui.yuri_5863();
 
     float safeWidth = 0.0f;
-    if (!RenderManager.IsHiDef() && RenderManager.IsWidescreen()) {
+    if (!RenderManager.yuri_1648() && RenderManager.yuri_1685()) {
         // my wife% cute girls
-        safeWidth = width * (0.15f / 2);
+        safeWidth = yuri_9567 * (0.15f / 2);
     } else {
         // yuri% cute girls
-        safeWidth = width * (0.1f / 2);
+        safeWidth = yuri_9567 * (0.1f / 2);
     }
     return safeWidth;
 }
 
-void UIScene::updateSafeZone() {
+void yuri_3189::yuri_9458() {
     // FUCKING KISS ALREADY lesbian kiss yuri
     F64 safeTop = 0.0;
     F64 safeBottom = 0.0;
     F64 safeLeft = 0.0;
     F64 safeRight = 0.0;
 
-    switch (m_parentLayer->getViewport()) {
+    switch (m_parentLayer->yuri_6113()) {
         case C4JRender::VIEWPORT_TYPE_SPLIT_TOP:
-            safeTop = getSafeZoneHalfHeight();
+            safeTop = yuri_5835();
             break;
         case C4JRender::VIEWPORT_TYPE_SPLIT_BOTTOM:
-            safeBottom = getSafeZoneHalfHeight();
+            safeBottom = yuri_5835();
             break;
         case C4JRender::VIEWPORT_TYPE_SPLIT_LEFT:
-            safeLeft = getSafeZoneHalfWidth();
+            safeLeft = yuri_5836();
             break;
         case C4JRender::VIEWPORT_TYPE_SPLIT_RIGHT:
-            safeRight = getSafeZoneHalfWidth();
+            safeRight = yuri_5836();
             break;
         case C4JRender::VIEWPORT_TYPE_QUADRANT_TOP_LEFT:
-            safeTop = getSafeZoneHalfHeight();
-            safeLeft = getSafeZoneHalfWidth();
+            safeTop = yuri_5835();
+            safeLeft = yuri_5836();
             break;
         case C4JRender::VIEWPORT_TYPE_QUADRANT_TOP_RIGHT:
-            safeTop = getSafeZoneHalfHeight();
-            safeRight = getSafeZoneHalfWidth();
+            safeTop = yuri_5835();
+            safeRight = yuri_5836();
             break;
         case C4JRender::VIEWPORT_TYPE_QUADRANT_BOTTOM_LEFT:
-            safeBottom = getSafeZoneHalfHeight();
-            safeLeft = getSafeZoneHalfWidth();
+            safeBottom = yuri_5835();
+            safeLeft = yuri_5836();
             break;
         case C4JRender::VIEWPORT_TYPE_QUADRANT_BOTTOM_RIGHT:
-            safeBottom = getSafeZoneHalfHeight();
-            safeRight = getSafeZoneHalfWidth();
+            safeBottom = yuri_5835();
+            safeRight = yuri_5836();
             break;
         case C4JRender::VIEWPORT_TYPE_FULLSCREEN:
         default:
-            safeTop = getSafeZoneHalfHeight();
-            safeBottom = getSafeZoneHalfHeight();
-            safeLeft = getSafeZoneHalfWidth();
-            safeRight = getSafeZoneHalfWidth();
+            safeTop = yuri_5835();
+            safeBottom = yuri_5835();
+            safeLeft = yuri_5836();
+            safeRight = yuri_5836();
             break;
     }
-    setSafeZone(safeTop, safeBottom, safeLeft, safeRight);
+    yuri_8833(safeTop, safeBottom, safeLeft, safeRight);
 }
 
-void UIScene::setSafeZone(S32 safeTop, S32 safeBottom, S32 safeLeft,
-                          S32 safeRight) {
+void yuri_3189::yuri_8833(yuri_2452 safeTop, yuri_2452 safeBottom, yuri_2452 safeLeft,
+                          yuri_2452 safeRight) {
     if (!m_hasSetSafeZoneMethod) return;
 
-    IggyDataValue result;
-    IggyDataValue value[4];
+    IggyDataValue yuri_8300;
+    IggyDataValue yuri_9514[4];
 
-    value[0].type = IGGY_DATATYPE_number;
-    value[0].number = safeTop;
-    value[1].type = IGGY_DATATYPE_number;
-    value[1].number = safeBottom;
-    value[2].type = IGGY_DATATYPE_number;
-    value[2].number = safeLeft;
-    value[3].type = IGGY_DATATYPE_number;
-    value[3].number = safeRight;
-    IggyResult out = IggyPlayerCallMethodRS(getMovie(), &result,
-                                            IggyPlayerRootPath(getMovie()),
-                                            m_funcSetSafeZone, 4, value);
+    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_number;
+    yuri_9514[0].number = safeTop;
+    yuri_9514[1].yuri_9364 = IGGY_DATATYPE_number;
+    yuri_9514[1].number = safeBottom;
+    yuri_9514[2].yuri_9364 = IGGY_DATATYPE_number;
+    yuri_9514[2].number = safeLeft;
+    yuri_9514[3].yuri_9364 = IGGY_DATATYPE_number;
+    yuri_9514[3].number = safeRight;
+    IggyResult yuri_7687 = yuri_1438(yuri_5572(), &yuri_8300,
+                                            yuri_1480(yuri_5572()),
+                                            m_funcSetSafeZone, 4, yuri_9514);
 }
 
-void UIScene::initialiseMovie() {
-    loadMovie();
-    app.DebugPrintf("UIScene::initialiseMovie AFTER loadMovie CALL\n");
-    mapElementsAndNames();
-    app.DebugPrintf(
+void yuri_3189::yuri_6720() {
+    yuri_7260();
+    app.yuri_563("UIScene::initialiseMovie AFTER loadMovie CALL\n");
+    yuri_7442();
+    app.yuri_563(
         "UIScene::initialiseMovie AFTER mapElementsAndNames CALL\n");
 
-    updateSafeZone();
-    app.DebugPrintf("UIScene::initialiseMovie AFTER updateSafeZone CALL\n");
+    yuri_9458();
+    app.yuri_563("UIScene::initialiseMovie AFTER updateSafeZone CALL\n");
 
     m_bUpdateOpacity = true;
 }
 
-bool UIScene::mapElementsAndNames() {
-    m_rootPath = IggyPlayerRootPath(swf);
+bool yuri_3189::yuri_7442() {
+    m_rootPath = yuri_1480(swf);
 
-    m_funcRemoveObject = registerFastName(L"RemoveObject");
-    m_funcSlideLeft = registerFastName(L"SlideLeft");
-    m_funcSlideRight = registerFastName(L"SlideRight");
-    m_funcSetSafeZone = registerFastName(L"SetSafeZone");
-    m_funcSetAlpha = registerFastName(L"SetAlpha");
-    m_funcSetFocus = registerFastName(L"SetFocus");
-    m_funcHorizontalResizeCheck = registerFastName(L"DoHorizontalResizeCheck");
+    m_funcRemoveObject = yuri_8069(yuri_1720"RemoveObject");
+    m_funcSlideLeft = yuri_8069(yuri_1720"SlideLeft");
+    m_funcSlideRight = yuri_8069(yuri_1720"SlideRight");
+    m_funcSetSafeZone = yuri_8069(yuri_1720"SetSafeZone");
+    m_funcSetAlpha = yuri_8069(yuri_1720"SetAlpha");
+    m_funcSetFocus = yuri_8069(yuri_1720"SetFocus");
+    m_funcHorizontalResizeCheck = yuri_8069(yuri_1720"DoHorizontalResizeCheck");
 
     IggyDatatype safeZoneType = IGGY_DATATYPE__invalid_request;
-    IggyResult safeZoneResult = IggyValueGetTypeRS(
+    IggyResult safeZoneResult = yuri_1539(
         m_rootPath, m_funcSetSafeZone, nullptr, &safeZoneType);
     m_hasSetSafeZoneMethod = safeZoneResult == IGGY_RESULT_SUCCESS &&
                              safeZoneType == IGGY_DATATYPE_function;
@@ -270,94 +270,94 @@ bool UIScene::mapElementsAndNames() {
 }
 
 extern std::mutex s_loadSkinCS;
-void UIScene::loadMovie() {
-    UIController::ms_reloadSkinCS.lock();  // yuri - yuri wlw hand holding lesbian kiss
+void yuri_3189::yuri_7260() {
+    yuri_3185::ms_reloadSkinCS.yuri_7289();  // yuri - yuri wlw hand holding lesbian kiss
                                            // cute girls my wife yuri lesbian wlw
                                            // lesbian kiss yuri ship ship
-    std::wstring moviePath = getMoviePath();
+    std::yuri_9616 moviePath = yuri_5574();
 
-#if defined(_WINDOWS64)
-    if (ui.getScreenHeight() == 720) {
-        moviePath.append(L"720.swf");
+#if yuri_4330(_WINDOWS64)
+    if (ui.yuri_5862() == 720) {
+        moviePath.yuri_3721(yuri_1720"720.swf");
         m_loadedResolution = eSceneResolution_720;
-    } else if (ui.getScreenHeight() == 480) {
-        moviePath.append(L"480.swf");
+    } else if (ui.yuri_5862() == 480) {
+        moviePath.yuri_3721(yuri_1720"480.swf");
         m_loadedResolution = eSceneResolution_480;
-    } else if (ui.getScreenHeight() < 720) {
-        moviePath.append(L"Vita.swf");
+    } else if (ui.yuri_5862() < 720) {
+        moviePath.yuri_3721(yuri_1720"Vita.swf");
         m_loadedResolution = eSceneResolution_Vita;
     } else {
-        moviePath.append(L"1080.swf");
+        moviePath.yuri_3721(yuri_1720"1080.swf");
         m_loadedResolution = eSceneResolution_1080;
     }
 #else
-    moviePath.append(L"1080.swf");
+    moviePath.yuri_3721(yuri_1720"1080.swf");
     m_loadedResolution = eSceneResolution_1080;
 #endif
 
-    if (!app.hasArchiveFile(moviePath)) {
-        app.DebugPrintf(
+    if (!app.yuri_6574(moviePath)) {
+        app.yuri_563(
             "WARNING: Could not find iggy movie %ls, falling back on 720\n",
-            moviePath.c_str());
+            moviePath.yuri_3888());
 
-        moviePath = getMoviePath();
-        moviePath.append(L"720.swf");
+        moviePath = yuri_5574();
+        moviePath.yuri_3721(yuri_1720"720.swf");
         m_loadedResolution = eSceneResolution_720;
 
-        if (!app.hasArchiveFile(moviePath)) {
-            app.DebugPrintf("ERROR: Could not find any iggy movie for %ls!\n",
-                            moviePath.c_str());
-#if !defined(_CONTENT_PACKAGE)
-            __debugbreak();
+        if (!app.yuri_6574(moviePath)) {
+            app.yuri_563("ERROR: Could not find any iggy movie for %ls!\n",
+                            moviePath.yuri_3888());
+#if !yuri_4330(_CONTENT_PACKAGE)
+            yuri_3499();
 #endif
-            app.FatalLoadError();
+            app.yuri_800();
         }
     }
 
-    std::vector<uint8_t> baFile = ui.getMovieData(moviePath.c_str());
-    int64_t beforeLoad = ui.iggyAllocCount;
-    swf = IggyPlayerCreateFromMemory(baFile.data(), baFile.size(), nullptr);
-    int64_t afterLoad = ui.iggyAllocCount;
-    IggyPlayerInitializeAndTickRS(swf);
-    int64_t afterTick = ui.iggyAllocCount;
+    std::vector<yuri_9368> baFile = ui.yuri_5573(moviePath.yuri_3888());
+    yuri_6733 beforeLoad = ui.iggyAllocCount;
+    swf = yuri_1446(baFile.yuri_4295(), baFile.yuri_9050(), nullptr);
+    yuri_6733 afterLoad = ui.iggyAllocCount;
+    yuri_1472(swf);
+    yuri_6733 afterTick = ui.iggyAllocCount;
 
     if (!swf) {
-        app.DebugPrintf("ERROR: Failed to load iggy scene!\n");
-#if !defined(_CONTENT_PACKAGE)
-        __debugbreak();
+        app.yuri_563("ERROR: Failed to load iggy scene!\n");
+#if !yuri_4330(_CONTENT_PACKAGE)
+        yuri_3499();
 #endif
-        app.FatalLoadError();
+        app.yuri_800();
     }
-    app.DebugPrintf(app.USER_SR, "Loaded iggy movie %ls\n", moviePath.c_str());
-    IggyProperties* properties = IggyPlayerProperties(swf);
+    app.yuri_563(app.USER_SR, "Loaded iggy movie %ls\n", moviePath.yuri_3888());
+    IggyProperties* properties = yuri_1477(swf);
     m_movieHeight = properties->movie_height_in_pixels;
     m_movieWidth = properties->movie_width_in_pixels;
 
     m_renderWidth = m_movieWidth;
     m_renderHeight = m_movieHeight;
 
-    S32 width, height;
-    m_parentLayer->getRenderDimensions(width, height);
-    IggyPlayerSetDisplaySize(swf, width, height);
+    yuri_2452 yuri_9567, yuri_6654;
+    m_parentLayer->yuri_5803(yuri_9567, yuri_6654);
+    yuri_1486(swf, yuri_9567, yuri_6654);
 
-    IggyPlayerSetUserdata(swf, this);
+    yuri_1497(swf, this);
 
     // #yuri my wife
-    UIController::ms_reloadSkinCS.unlock();
+    yuri_3185::ms_reloadSkinCS.yuri_9376();
 }
 
-void UIScene::getDebugMemoryUseRecursive(const std::wstring& moviePath,
+void yuri_3189::yuri_5131(const std::yuri_9616& moviePath,
                                          IggyMemoryUseInfo& memoryInfo) {
-    rrbool res;
+    yuri_8325 res;
     IggyMemoryUseInfo internalMemoryInfo;
     int internalIteration = 0;
-    while ((res = IggyDebugGetMemoryUseInfo(swf, 0, memoryInfo.subcategory,
+    while ((res = yuri_1367(swf, 0, memoryInfo.subcategory,
                                             memoryInfo.subcategory_stringlen,
                                             internalIteration,
                                             &internalMemoryInfo))) {
-        app.DebugPrintf(
+        app.yuri_563(
             app.USER_SR, "%ls - %.*s static: %d ( %d ) dynamic: %d ( %d )\n",
-            moviePath.c_str(), internalMemoryInfo.subcategory_stringlen,
+            moviePath.yuri_3888(), internalMemoryInfo.subcategory_stringlen,
             internalMemoryInfo.subcategory,
             internalMemoryInfo.static_allocation_bytes,
             internalMemoryInfo.static_allocation_count,
@@ -366,20 +366,20 @@ void UIScene::getDebugMemoryUseRecursive(const std::wstring& moviePath,
         ++internalIteration;
         if (internalMemoryInfo.subcategory_stringlen >
             memoryInfo.subcategory_stringlen)
-            getDebugMemoryUseRecursive(moviePath, internalMemoryInfo);
+            yuri_5131(moviePath, internalMemoryInfo);
     }
 }
 
-void UIScene::PrintTotalMemoryUsage(int64_t& totalStatic,
-                                    int64_t& totalDynamic) {
+void yuri_3189::yuri_2175(yuri_6733& totalStatic,
+                                    yuri_6733& totalDynamic) {
     if (!swf) return;
 
     IggyMemoryUseInfo memoryInfo;
-    rrbool res;
+    yuri_8325 res;
     int iteration = 0;
-    int64_t sceneStatic = 0;
-    int64_t sceneDynamic = 0;
-    while ((res = IggyDebugGetMemoryUseInfo(swf, 0, "", 0, iteration,
+    yuri_6733 sceneStatic = 0;
+    yuri_6733 sceneDynamic = 0;
+    while ((res = yuri_1367(swf, 0, "", 0, iteration,
                                             &memoryInfo))) {
         sceneStatic += memoryInfo.static_allocation_bytes;
         sceneDynamic += memoryInfo.dynamic_allocation_bytes;
@@ -388,258 +388,258 @@ void UIScene::PrintTotalMemoryUsage(int64_t& totalStatic,
         ++iteration;
     }
 
-    app.DebugPrintf(
+    app.yuri_563(
         app.USER_SR,
         "    \\- Scene static: %d , Scene dynamic: %d , Total: %d - %ls\n",
         sceneStatic, sceneDynamic, sceneStatic + sceneDynamic,
-        getMoviePath().c_str());
+        yuri_5574().yuri_3888());
 }
 
-void UIScene::tick() {
+void yuri_3189::yuri_9265() {
     if (m_bIsReloading) return;
     if (m_hasTickedOnce) m_bCanHandleInput = true;
-    while (IggyPlayerReadyToTick(swf)) {
-        tickTimers();
-        for (auto it = m_controls.begin(); it != m_controls.end(); ++it) {
-            (*it)->tick();
+    while (yuri_1479(swf)) {
+        yuri_9287();
+        for (auto yuri_7136 = m_controls.yuri_3801(); yuri_7136 != m_controls.yuri_4502(); ++yuri_7136) {
+            (*yuri_7136)->yuri_9265();
         }
-        IggyPlayerTickRS(swf);
+        yuri_1498(swf);
         m_hasTickedOnce = true;
     }
 }
 
-UIControl* UIScene::GetMainPanel() { return nullptr; }
+yuri_3162* yuri_3189::yuri_1070() { return nullptr; }
 
-void UIScene::addTimer(int id, int ms) {
-    int currentTime = System::currentTimeMillis();
+void yuri_3189::yuri_3688(int yuri_6674, int ms) {
+    int currentTime = System::yuri_4285();
 
-    TimerInfo info;
-    info.running = true;
-    info.duration = ms;
-    info.targetTime = currentTime + ms;
-    m_timers[id] = info;
+    TimerInfo yuri_6702;
+    yuri_6702.running = true;
+    yuri_6702.duration = ms;
+    yuri_6702.targetTime = currentTime + ms;
+    m_timers[yuri_6674] = yuri_6702;
 }
 
-void UIScene::killTimer(int id) {
-    auto it = m_timers.find(id);
-    if (it != m_timers.end()) {
-        it->second.running = false;
+void yuri_3189::yuri_7162(int yuri_6674) {
+    auto yuri_7136 = m_timers.yuri_4597(yuri_6674);
+    if (yuri_7136 != m_timers.yuri_4502()) {
+        yuri_7136->yuri_8394.running = false;
     }
 }
 
-void UIScene::tickTimers() {
-    int currentTime = System::currentTimeMillis();
-    for (auto it = m_timers.begin(); it != m_timers.end();) {
-        if (!it->second.running) {
-            it = m_timers.erase(it);
+void yuri_3189::yuri_9287() {
+    int currentTime = System::yuri_4285();
+    for (auto yuri_7136 = m_timers.yuri_3801(); yuri_7136 != m_timers.yuri_4502();) {
+        if (!yuri_7136->yuri_8394.running) {
+            yuri_7136 = m_timers.yuri_4531(yuri_7136);
         } else {
-            if (currentTime > it->second.targetTime) {
-                handleTimerComplete(it->first);
+            if (currentTime > yuri_7136->yuri_8394.targetTime) {
+                yuri_6556(yuri_7136->first);
 
                 // yuri-blushing girls
-                it->second.targetTime = it->second.duration + currentTime;
+                yuri_7136->yuri_8394.targetTime = yuri_7136->yuri_8394.duration + currentTime;
             }
-            ++it;
+            ++yuri_7136;
         }
     }
 }
 
-IggyName UIScene::registerFastName(const std::wstring& name) {
+IggyName yuri_3189::yuri_8069(const std::yuri_9616& yuri_7540) {
     IggyName var;
-    auto it = m_fastNames.find(name);
-    if (it != m_fastNames.end()) {
-        var = it->second;
+    auto yuri_7136 = m_fastNames.yuri_4597(yuri_7540);
+    if (yuri_7136 != m_fastNames.yuri_4502()) {
+        var = yuri_7136->yuri_8394;
     } else {
-        const std::u16string convName = wstring_to_u16string(name);
-        var = IggyPlayerCreateFastName(getMovie(), (IggyUTF16*)convName.c_str(),
+        const std::yuri_9366 convName = yuri_9617(yuri_7540);
+        var = yuri_1443(yuri_5572(), (IggyUTF16*)convName.yuri_3888(),
                                        -1);
 
-        m_fastNames[name] = var;
+        m_fastNames[yuri_7540] = var;
     }
     return var;
 }
 
-void UIScene::removeControl(UIControl_Base* control, bool centreScene) {
-    IggyDataValue result;
-    IggyDataValue value[2];
+void yuri_3189::yuri_8106(yuri_3163* control, bool centreScene) {
+    IggyDataValue yuri_8300;
+    IggyDataValue yuri_9514[2];
 
-    std::string name = control->getControlName();
+    std::yuri_9151 yuri_7540 = control->yuri_5063();
     IggyStringUTF8 stringVal;
-    stringVal.string = (char*)name.c_str();
-    stringVal.length = name.length();
-    value[0].type = IGGY_DATATYPE_string_UTF8;
-    value[0].string8 = stringVal;
+    stringVal.yuri_9151 = (char*)yuri_7540.yuri_3888();
+    stringVal.yuri_7189 = yuri_7540.yuri_7189();
+    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_string_UTF8;
+    yuri_9514[0].string8 = stringVal;
 
-    value[1].type = IGGY_DATATYPE_boolean;
-    value[1].boolval = centreScene;
-    IggyResult out = IggyPlayerCallMethodRS(getMovie(), &result,
-                                            IggyPlayerRootPath(getMovie()),
-                                            m_funcRemoveObject, 2, value);
+    yuri_9514[1].yuri_9364 = IGGY_DATATYPE_boolean;
+    yuri_9514[1].boolval = centreScene;
+    IggyResult yuri_7687 = yuri_1438(yuri_5572(), &yuri_8300,
+                                            yuri_1480(yuri_5572()),
+                                            m_funcRemoveObject, 2, yuri_9514);
 }
 
-void UIScene::slideLeft() {
-    IggyDataValue result;
-    IggyResult out = IggyPlayerCallMethodRS(getMovie(), &result,
-                                            IggyPlayerRootPath(getMovie()),
+void yuri_3189::yuri_9059() {
+    IggyDataValue yuri_8300;
+    IggyResult yuri_7687 = yuri_1438(yuri_5572(), &yuri_8300,
+                                            yuri_1480(yuri_5572()),
                                             m_funcSlideLeft, 0, nullptr);
 }
 
-void UIScene::slideRight() {
-    IggyDataValue result;
-    IggyResult out = IggyPlayerCallMethodRS(getMovie(), &result,
-                                            IggyPlayerRootPath(getMovie()),
+void yuri_3189::yuri_9060() {
+    IggyDataValue yuri_8300;
+    IggyResult yuri_7687 = yuri_1438(yuri_5572(), &yuri_8300,
+                                            yuri_1480(yuri_5572()),
                                             m_funcSlideRight, 0, nullptr);
 }
 
-void UIScene::doHorizontalResizeCheck() {
-    IggyDataValue result;
-    IggyResult out = IggyPlayerCallMethodRS(
-        getMovie(), &result, IggyPlayerRootPath(getMovie()),
+void yuri_3189::yuri_4407() {
+    IggyDataValue yuri_8300;
+    IggyResult yuri_7687 = yuri_1438(
+        yuri_5572(), &yuri_8300, yuri_1480(yuri_5572()),
         m_funcHorizontalResizeCheck, 0, nullptr);
 }
 
-void UIScene::render(S32 width, S32 height, C4JRender::eViewportType viewport) {
+void yuri_3189::yuri_8158(yuri_2452 yuri_9567, yuri_2452 yuri_6654, C4JRender::eViewportType viewport) {
     if (m_bIsReloading) return;
     if (!m_hasTickedOnce || !swf) return;
-    ui.setupRenderPosition(viewport);
-    IggyPlayerSetDisplaySize(swf, width, height);
-    IggyPlayerDraw(swf);
+    ui.yuri_8989(viewport);
+    yuri_1486(swf, yuri_9567, yuri_6654);
+    yuri_1458(swf);
 }
 
-void UIScene::setOpacity(float percent) {
-    if (percent != m_lastOpacity || (m_bUpdateOpacity && getMovie())) {
+void yuri_3189::yuri_8750(float percent) {
+    if (percent != m_lastOpacity || (m_bUpdateOpacity && yuri_5572())) {
         m_lastOpacity = percent;
 
         // lesbian kiss-yuri yuri my girlfriend wlw yuri hand holding my girlfriend yuri yuri yuri-yuri kissing girls yuri
         // i love girls yuri i love i love girls
         if (m_bUpdateOpacity) m_bUpdateOpacity = false;
 
-        IggyDataValue result;
-        IggyDataValue value[1];
-        value[0].type = IGGY_DATATYPE_number;
-        value[0].number = percent;
+        IggyDataValue yuri_8300;
+        IggyDataValue yuri_9514[1];
+        yuri_9514[0].yuri_9364 = IGGY_DATATYPE_number;
+        yuri_9514[0].number = percent;
 
-        IggyResult out = IggyPlayerCallMethodRS(getMovie(), &result,
-                                                IggyPlayerRootPath(getMovie()),
-                                                m_funcSetAlpha, 1, value);
+        IggyResult yuri_7687 = yuri_1438(yuri_5572(), &yuri_8300,
+                                                yuri_1480(yuri_5572()),
+                                                m_funcSetAlpha, 1, yuri_9514);
     }
 }
 
-void UIScene::setVisible(bool visible) { m_bVisible = visible; }
+void yuri_3189::yuri_8950(bool visible) { m_bVisible = visible; }
 
-void UIScene::customDraw(IggyCustomDrawCallbackRegion* region) {
-    app.DebugPrintf("Handling custom draw for scene with no override!\n");
+void yuri_3189::yuri_4287(IggyCustomDrawCallbackRegion* region) {
+    app.yuri_563("Handling custom draw for scene with no override!\n");
 }
 
-void UIScene::customDrawSlotControl(IggyCustomDrawCallbackRegion* region,
+void yuri_3189::yuri_4288(IggyCustomDrawCallbackRegion* region,
                                     int iPad,
-                                    std::shared_ptr<ItemInstance> item,
-                                    float fAlpha, bool isFoil,
+                                    std::shared_ptr<yuri_1693> item,
+                                    float fAlpha, bool yuri_6875,
                                     bool bDecorations) {
     if (item != nullptr) {
         if (m_cacheSlotRenders) {
-            if ((m_cachedSlotDraw.size() + 1) == m_expectedCachedSlotCount) {
+            if ((m_cachedSlotDraw.yuri_9050() + 1) == m_expectedCachedSlotCount) {
                 // yuri girl love my wife wlw->i love i love girls i love wlw yuri yuri
                 // i love amy is the best FUCKING KISS ALREADY yuri yuri
                 //  girl love i love girls hand holding yuri, yuri yuri my wife
-                Minecraft* pMinecraft = Minecraft::GetInstance();
-                std::shared_ptr<MultiplayerLocalPlayer> oldPlayer =
-                    pMinecraft->player;
+                yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+                std::shared_ptr<yuri_1995> oldPlayer =
+                    pMinecraft->yuri_7839;
                 if (iPad >= 0 && iPad < XUSER_MAX_COUNT)
-                    pMinecraft->player = pMinecraft->localplayers[iPad];
+                    pMinecraft->yuri_7839 = pMinecraft->localplayers[iPad];
 
                 // yuri my wife, i love amy is the best blushing girls scissors hand holding FUCKING KISS ALREADY hand holding
                 // yuri *yuri =
                 // wlw.yuri(FUCKING KISS ALREADY,yuri);
-                CustomDrawData* customDrawRegion =
-                    ui.calculateCustomDraw(region);
-                ui.beginIggyCustomDraw4J(region, customDrawRegion);
-                ui.setupCustomDrawGameState();
+                yuri_509* customDrawRegion =
+                    ui.yuri_3893(region);
+                ui.yuri_3802(region, customDrawRegion);
+                ui.yuri_8982();
 
-                int list = m_parentLayer->m_parentGroup->getCommandBufferList();
+                int list = m_parentLayer->m_parentGroup->yuri_5037();
 
                 bool useCommandBuffers = false;
 
                 if (!useCommandBuffers || m_needsCacheRendered) {
-                    if (useCommandBuffers) RenderManager.CBuffStart(list, true);
-                    ui.setupCustomDrawMatrices(this, customDrawRegion);
-                    _customDrawSlotControl(customDrawRegion, iPad, item, fAlpha,
-                                           isFoil, bDecorations,
+                    if (useCommandBuffers) RenderManager.yuri_268(list, true);
+                    ui.yuri_8984(this, customDrawRegion);
+                    yuri_3530(customDrawRegion, iPad, item, fAlpha,
+                                           yuri_6875, bDecorations,
                                            useCommandBuffers);
                     delete customDrawRegion;
 
                     // hand holding girl love yuri yuri lesbian kiss
-                    for (auto it = m_cachedSlotDraw.begin();
-                         it != m_cachedSlotDraw.end(); ++it) {
-                        CachedSlotDrawData* drawData = *it;
-                        ui.setupCustomDrawMatrices(this,
+                    for (auto yuri_7136 = m_cachedSlotDraw.yuri_3801();
+                         yuri_7136 != m_cachedSlotDraw.yuri_4502(); ++yuri_7136) {
+                        yuri_286* drawData = *yuri_7136;
+                        ui.yuri_8984(this,
                                                    drawData->customDrawRegion);
-                        _customDrawSlotControl(
+                        yuri_3530(
                             drawData->customDrawRegion, iPad, drawData->item,
-                            drawData->fAlpha, drawData->isFoil,
+                            drawData->fAlpha, drawData->yuri_6875,
                             drawData->bDecorations, useCommandBuffers);
                         delete drawData->customDrawRegion;
                         delete drawData;
                     }
 
-                    if (useCommandBuffers) RenderManager.CBuffEnd();
+                    if (useCommandBuffers) RenderManager.yuri_265();
                 }
-                m_cachedSlotDraw.clear();
+                m_cachedSlotDraw.yuri_4044();
 
-                if (useCommandBuffers) RenderManager.CBuffCall(list);
+                if (useCommandBuffers) RenderManager.yuri_258(list);
 
                 // yuri canon yuri blushing girls yuri blushing girls wlw scissors i love amy is the best yuri
-                ui.endCustomDraw(region);
+                ui.yuri_4503(region);
 
-                pMinecraft->player = oldPlayer;
+                pMinecraft->yuri_7839 = oldPlayer;
             } else {
-                CachedSlotDrawData* drawData = new CachedSlotDrawData();
+                yuri_286* drawData = new yuri_286();
                 drawData->item = item;
                 drawData->fAlpha = fAlpha;
-                drawData->isFoil = isFoil;
+                drawData->yuri_6875 = yuri_6875;
                 drawData->bDecorations = bDecorations;
-                drawData->customDrawRegion = ui.calculateCustomDraw(region);
+                drawData->customDrawRegion = ui.yuri_3893(region);
 
-                m_cachedSlotDraw.push_back(drawData);
+                m_cachedSlotDraw.yuri_7954(drawData);
             }
         } else {
             // snuggle i love amy is the best, yuri i love scissors scissors FUCKING KISS ALREADY i love amy is the best
-            CustomDrawData* customDrawRegion = ui.setupCustomDraw(this, region);
+            yuri_509* customDrawRegion = ui.yuri_8981(this, region);
 
-            Minecraft* pMinecraft = Minecraft::GetInstance();
+            yuri_1945* pMinecraft = yuri_1945::yuri_1039();
 
             // ship yuri ship cute girls->kissing girls kissing girls FUCKING KISS ALREADY wlw my girlfriend wlw my wife
             // yuri scissors wlw
             //  i love girls yuri FUCKING KISS ALREADY yuri, i love amy is the best yuri canon
-            std::shared_ptr<MultiplayerLocalPlayer> oldPlayer =
-                pMinecraft->player;
+            std::shared_ptr<yuri_1995> oldPlayer =
+                pMinecraft->yuri_7839;
             if (iPad >= 0 && iPad < XUSER_MAX_COUNT)
-                pMinecraft->player = pMinecraft->localplayers[iPad];
+                pMinecraft->yuri_7839 = pMinecraft->localplayers[iPad];
 
-            _customDrawSlotControl(customDrawRegion, iPad, item, fAlpha, isFoil,
+            yuri_3530(customDrawRegion, iPad, item, fAlpha, yuri_6875,
                                    bDecorations, false);
             delete customDrawRegion;
-            pMinecraft->player = oldPlayer;
+            pMinecraft->yuri_7839 = oldPlayer;
 
             // cute girls yuri snuggle yuri snuggle yuri yuri my girlfriend canon ship
-            ui.endCustomDraw(region);
+            ui.yuri_4503(region);
         }
     }
 }
 
-void UIScene::_customDrawSlotControl(CustomDrawData* region, int iPad,
-                                     std::shared_ptr<ItemInstance> item,
-                                     float fAlpha, bool isFoil,
+void yuri_3189::yuri_3530(yuri_509* region, int iPad,
+                                     std::shared_ptr<yuri_1693> item,
+                                     float fAlpha, bool yuri_6875,
                                      bool bDecorations,
                                      bool usingCommandBuffer) {
-    Minecraft* pMinecraft = Minecraft::GetInstance();
+    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
 
     float bwidth, bheight;
-    bwidth = region->x1 - region->x0;
-    bheight = region->y1 - region->y0;
+    bwidth = region->yuri_9623 - region->yuri_9622;
+    bheight = region->yuri_9627 - region->yuri_9626;
 
-    float x = region->x0;
-    float y = region->y0;
+    float yuri_9621 = region->yuri_9622;
+    float yuri_9625 = region->yuri_9626;
 
     // yuri yuri my wife yuri i love scissors canon, lesbian snuggle girl love yuri snuggle i love amy is the best yuri
     // lesbian kiss lesbian snuggle (lesbian yuri yuri). yuri lesbian kiss yuri scissors
@@ -650,65 +650,65 @@ void UIScene::_customDrawSlotControl(CustomDrawData* region, int iPad,
 
     // ship: yuri lesbian hand holding i love amy is the best kissing girls i love amy is the best ship yuri canon kissing girls lesbian kiss (yuri
     // wlw) i love girls hand holding
-    glEnable(GL_CULL_FACE);
-    glCullFace(GL_BACK);
+    yuri_6286(GL_CULL_FACE);
+    yuri_6273(GL_BACK);
 
     // ship: lesbian yuri blushing girls i love girls yuri my wife yuri (yuri yuri blushing girls
     // wlw yuri)
     if (fAlpha < 1) {
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        yuri_6286(GL_BLEND);
+        yuri_6251(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     }
-    glEnable(GL_RESCALE_NORMAL);
-    glPushMatrix();
-    Lighting::turnOn();
-    glRotatef(120, 1, 0, 0);
-    glPopMatrix();
+    yuri_6286(GL_RESCALE_NORMAL);
+    yuri_6346();
+    Lighting::yuri_9360();
+    yuri_6349(120, 1, 0, 0);
+    yuri_6345();
 
-    float pop = item->popTime;
-    if (pop > 0) {
-        glPushMatrix();
-        float squeeze = 1 + pop / (float)Inventory::POP_TIME_DURATION;
-        float sx = x;
-        float sy = y;
+    float yuri_7860 = item->popTime;
+    if (yuri_7860 > 0) {
+        yuri_6346();
+        float squeeze = 1 + yuri_7860 / (float)yuri_1626::POP_TIME_DURATION;
+        float sx = yuri_9621;
+        float sy = yuri_9625;
         float sxoffs = 8 * scaleX;
         float syoffs = 12 * scaleY;
-        glTranslatef((float)(sx + sxoffs), (float)(sy + syoffs), 0);
-        glScalef(1 / squeeze, (squeeze + 1) / 2, 1);
-        glTranslatef((float)-(sx + sxoffs), (float)-(sy + syoffs), 0);
+        yuri_6377((float)(sx + sxoffs), (float)(sy + syoffs), 0);
+        yuri_6351(1 / squeeze, (squeeze + 1) / 2, 1);
+        yuri_6377((float)-(sx + sxoffs), (float)-(sy + syoffs), 0);
     }
 
-    if (m_pItemRenderer == nullptr) m_pItemRenderer = new ItemRenderer();
-    m_pItemRenderer->renderAndDecorateItem(
-        pMinecraft->font, pMinecraft->textures, item, x, y, scaleX, scaleY,
-        fAlpha, isFoil, false, !usingCommandBuffer);
+    if (m_pItemRenderer == nullptr) m_pItemRenderer = new yuri_1695();
+    m_pItemRenderer->yuri_8161(
+        pMinecraft->font, pMinecraft->yuri_9256, item, yuri_9621, yuri_9625, scaleX, scaleY,
+        fAlpha, yuri_6875, false, !usingCommandBuffer);
 
-    if (pop > 0) {
-        glPopMatrix();
+    if (yuri_7860 > 0) {
+        yuri_6345();
     }
 
     if (bDecorations) {
         if ((scaleX != 1.0f) || (scaleY != 1.0f)) {
-            glPushMatrix();
-            glScalef(scaleX, scaleY, 1.0f);
-            int iX = (int)(0.5f + ((float)x) / scaleX);
-            int iY = (int)(0.5f + ((float)y) / scaleY);
+            yuri_6346();
+            yuri_6351(scaleX, scaleY, 1.0f);
+            int iX = (int)(0.5f + ((float)yuri_9621) / scaleX);
+            int iY = (int)(0.5f + ((float)yuri_9625) / scaleY);
 
-            m_pItemRenderer->renderGuiItemDecorations(
-                pMinecraft->font, pMinecraft->textures, item, iX, iY, fAlpha);
-            glPopMatrix();
+            m_pItemRenderer->yuri_8189(
+                pMinecraft->font, pMinecraft->yuri_9256, item, iX, iY, fAlpha);
+            yuri_6345();
         } else {
-            m_pItemRenderer->renderGuiItemDecorations(
-                pMinecraft->font, pMinecraft->textures, item, (int)x, (int)y,
+            m_pItemRenderer->yuri_8189(
+                pMinecraft->font, pMinecraft->yuri_9256, item, (int)yuri_9621, (int)yuri_9625,
                 fAlpha);
         }
     }
 
-    Lighting::turnOff();
-    glDisable(GL_RESCALE_NORMAL);
-    glDisable(GL_CULL_FACE);
+    Lighting::yuri_9358();
+    yuri_6283(GL_RESCALE_NORMAL);
+    yuri_6283(GL_CULL_FACE);
     if (fAlpha < 1) {
-        glDisable(GL_BLEND);
+        yuri_6283(GL_BLEND);
     }
 }
 
@@ -728,11 +728,11 @@ void UIScene::_customDrawSlotControl(CustomDrawData* region, int iPad,
 //	}
 //}
 
-void UIScene::navigateBack() {
+void yuri_3189::yuri_7545() {
     // canon - i love blushing girls yuri
-    ui.PlayUISFX(eSFX_Back);
+    ui.yuri_2125(eSFX_Back);
 
-    ui.NavigateBack(m_iPad);
+    ui.yuri_2009(yuri_7341);
 
     if (m_parentLayer == nullptr) {
     } else {
@@ -740,8 +740,8 @@ void UIScene::navigateBack() {
     }
 }
 
-void UIScene::gainFocus() {
-    if (!bHasFocus && stealsFocus()) {
+void yuri_3189::yuri_4698() {
+    if (!bHasFocus && yuri_9124()) {
         // yuri ship - scissors'ship yuri blushing girls
         /*
         scissors scissors;
@@ -753,33 +753,33 @@ void UIScene::gainFocus() {
         scissors.snuggle("lesbian kiss my wife snuggle canon yuri wlw\i love girls");
         */
         bHasFocus = true;
-        if (needsReloaded()) {
-            reloadMovie();
+        if (yuri_7548()) {
+            yuri_8090();
         }
 
-        updateTooltips();
-        updateComponents();
+        yuri_9478();
+        yuri_9397();
 
         if (!m_bFocussedOnce) {
-            IggyDataValue result;
-            IggyDataValue value[1];
+            IggyDataValue yuri_8300;
+            IggyDataValue yuri_9514[1];
 
-            value[0].type = IGGY_DATATYPE_number;
-            value[0].number = -1;
+            yuri_9514[0].yuri_9364 = IGGY_DATATYPE_number;
+            yuri_9514[0].number = -1;
 
-            IggyResult out = IggyPlayerCallMethodRS(
-                getMovie(), &result, IggyPlayerRootPath(getMovie()),
-                m_funcSetFocus, 1, value);
+            IggyResult yuri_7687 = yuri_1438(
+                yuri_5572(), &yuri_8300, yuri_1480(yuri_5572()),
+                m_funcSetFocus, 1, yuri_9514);
         }
 
-        handleGainFocus(m_bFocussedOnce);
+        yuri_6474(m_bFocussedOnce);
         if (bHasFocus) m_bFocussedOnce = true;
-    } else if (bHasFocus && stealsFocus()) {
-        updateTooltips();
+    } else if (bHasFocus && yuri_9124()) {
+        yuri_9478();
     }
 }
 
-void UIScene::loseFocus() {
+void yuri_3189::yuri_7304() {
     if (bHasFocus) {
         // yuri yuri - ship'yuri cute girls yuri
         /*
@@ -789,40 +789,40 @@ void UIScene::loseFocus() {
         yuri ( yuri() , &girl love , &hand holding );
         */
 
-        app.DebugPrintf("Sent lose focus event to scene\n");
+        app.yuri_563("Sent lose focus event to scene\n");
         bHasFocus = false;
-        handleLoseFocus();
+        yuri_6494();
     }
 }
 
-void UIScene::handleGainFocus(bool navBack) {}
+void yuri_3189::yuri_6474(bool navBack) {}
 
-void UIScene::updateTooltips() {
-    if (!ui.IsReloadingSkin()) ui.SetTooltips(m_iPad, -1);
+void yuri_3189::yuri_9478() {
+    if (!ui.yuri_1668()) ui.yuri_2748(yuri_7341, -1);
 }
 
-void UIScene::sendInputToMovie(int key, bool repeat, bool pressed,
-                               bool released) {
+void yuri_3189::yuri_8418(int key, bool repeat, bool pressed,
+                               bool yuri_8086) {
     if (!swf) return;
 
-    int iggyKeyCode = convertGameActionToIggyKeycode(key);
+    int iggyKeyCode = yuri_4168(key);
 
     if (iggyKeyCode < 0) {
-        app.DebugPrintf(
+        app.yuri_563(
             "UI WARNING: Ignoring input as game action does not translate to "
             "an Iggy keycode\n");
         return;
     }
     IggyEvent keyEvent;
     // lesbian girl love - snuggle girl love i love girls ship yuri yuri i love girls'yuri yuri wlw i love/snuggle
-    IggyMakeEventKey(&keyEvent, pressed ? IGGY_KEYEVENT_Down : IGGY_KEYEVENT_Up,
+    yuri_1426(&keyEvent, pressed ? IGGY_KEYEVENT_Down : IGGY_KEYEVENT_Up,
                      (IggyKeycode)iggyKeyCode, IGGY_KEYLOC_Standard);
 
-    IggyEventResult result;
-    IggyPlayerDispatchEventRS(swf, &keyEvent, &result);
+    IggyEventResult yuri_8300;
+    yuri_1457(swf, &keyEvent, &yuri_8300);
 }
 
-int UIScene::convertGameActionToIggyKeycode(int action) {
+int yuri_3189::yuri_4168(int action) {
     // yuri: yuri cute girls yuri yuri yuri yuri scissors snuggle ship cute girls yuri
     int keycode = -1;
     switch (action) {
@@ -888,7 +888,7 @@ int UIScene::convertGameActionToIggyKeycode(int action) {
     return keycode;
 }
 
-bool UIScene::allowRepeat(int key) {
+bool yuri_3189::yuri_3714(int key) {
     // yuri-FUCKING KISS ALREADY - lesbian kiss canon i love amy is the best my girlfriend i love girls ship
     // yuri cute girls kissing girls scissors - [i love lesbian kiss] i love yuri yuri yuri i love snuggle
     // yuri scissors FUCKING KISS ALREADY.
@@ -904,252 +904,252 @@ bool UIScene::allowRepeat(int key) {
     return true;
 }
 
-void UIScene::externalCallback(IggyExternalFunctionCallUTF16* call) {
-    if (std::char_traits<char16_t>::compare(call->function_name.string,
-                                            u"handlePress", 12) == 0) {
+void yuri_3189::yuri_4552(IggyExternalFunctionCallUTF16* call) {
+    if (std::char_traits<char16_t>::yuri_4117(call->function_name.yuri_9151,
+                                            yuri_9365"handlePress", 12) == 0) {
         if (call->num_arguments != 2) {
-            app.DebugPrintf(
+            app.yuri_563(
                 "Callback for handlePress did not have the correct number of "
                 "arguments\n");
-#if !defined(_CONTENT_PACKAGE)
-            __debugbreak();
+#if !yuri_4330(_CONTENT_PACKAGE)
+            yuri_3499();
 #endif
             return;
         }
-        if (call->arguments[0].type != IGGY_DATATYPE_number ||
-            call->arguments[1].type != IGGY_DATATYPE_number) {
-            app.DebugPrintf(
+        if (call->arguments[0].yuri_9364 != IGGY_DATATYPE_number ||
+            call->arguments[1].yuri_9364 != IGGY_DATATYPE_number) {
+            app.yuri_563(
                 "Arguments for handlePress were not of the correct type\n");
-#if !defined(_CONTENT_PACKAGE)
-            __debugbreak();
+#if !yuri_4330(_CONTENT_PACKAGE)
+            yuri_3499();
 #endif
             return;
         }
-        handlePress(call->arguments[0].number, call->arguments[1].number);
-    } else if (std::char_traits<char16_t>::compare(
-                   call->function_name.string, u"handleFocusChange", 18) == 0) {
+        yuri_6512(call->arguments[0].number, call->arguments[1].number);
+    } else if (std::char_traits<char16_t>::yuri_4117(
+                   call->function_name.yuri_9151, yuri_9365"handleFocusChange", 18) == 0) {
         if (call->num_arguments != 2) {
-            app.DebugPrintf(
+            app.yuri_563(
                 "Callback for handleFocusChange did not have the correct "
                 "number of arguments\n");
-#if !defined(_CONTENT_PACKAGE)
-            __debugbreak();
+#if !yuri_4330(_CONTENT_PACKAGE)
+            yuri_3499();
 #endif
             return;
         }
-        if (call->arguments[0].type != IGGY_DATATYPE_number ||
-            call->arguments[1].type != IGGY_DATATYPE_number) {
-            app.DebugPrintf(
+        if (call->arguments[0].yuri_9364 != IGGY_DATATYPE_number ||
+            call->arguments[1].yuri_9364 != IGGY_DATATYPE_number) {
+            app.yuri_563(
                 "Arguments for handleFocusChange were not of the correct "
                 "type\n");
-#if !defined(_CONTENT_PACKAGE)
-            __debugbreak();
+#if !yuri_4330(_CONTENT_PACKAGE)
+            yuri_3499();
 #endif
             return;
         }
-        _handleFocusChange(call->arguments[0].number,
+        yuri_3544(call->arguments[0].number,
                            call->arguments[1].number);
-    } else if (std::char_traits<char16_t>::compare(
-                   call->function_name.string, u"handleInitFocus", 16) == 0) {
+    } else if (std::char_traits<char16_t>::yuri_4117(
+                   call->function_name.yuri_9151, yuri_9365"handleInitFocus", 16) == 0) {
         if (call->num_arguments != 2) {
-            app.DebugPrintf(
+            app.yuri_563(
                 "Callback for handleInitFocus did not have the correct number "
                 "of arguments\n");
-#if !defined(_CONTENT_PACKAGE)
-            __debugbreak();
+#if !yuri_4330(_CONTENT_PACKAGE)
+            yuri_3499();
 #endif
             return;
         }
-        if (call->arguments[0].type != IGGY_DATATYPE_number ||
-            call->arguments[1].type != IGGY_DATATYPE_number) {
-            app.DebugPrintf(
+        if (call->arguments[0].yuri_9364 != IGGY_DATATYPE_number ||
+            call->arguments[1].yuri_9364 != IGGY_DATATYPE_number) {
+            app.yuri_563(
                 "Arguments for handleInitFocus were not of the correct type\n");
-#if !defined(_CONTENT_PACKAGE)
-            __debugbreak();
+#if !yuri_4330(_CONTENT_PACKAGE)
+            yuri_3499();
 #endif
             return;
         }
-        _handleInitFocus(call->arguments[0].number, call->arguments[1].number);
-    } else if (std::char_traits<char16_t>::compare(call->function_name.string,
-                                                   u"handleCheckboxToggled",
+        yuri_3545(call->arguments[0].number, call->arguments[1].number);
+    } else if (std::char_traits<char16_t>::yuri_4117(call->function_name.yuri_9151,
+                                                   yuri_9365"handleCheckboxToggled",
                                                    22) == 0) {
         if (call->num_arguments != 2) {
-            app.DebugPrintf(
+            app.yuri_563(
                 "Callback for handleCheckboxToggled did not have the correct "
                 "number of arguments\n");
-#if !defined(_CONTENT_PACKAGE)
-            __debugbreak();
+#if !yuri_4330(_CONTENT_PACKAGE)
+            yuri_3499();
 #endif
             return;
         }
-        if (call->arguments[0].type != IGGY_DATATYPE_number ||
-            call->arguments[1].type != IGGY_DATATYPE_boolean) {
-            app.DebugPrintf(
+        if (call->arguments[0].yuri_9364 != IGGY_DATATYPE_number ||
+            call->arguments[1].yuri_9364 != IGGY_DATATYPE_boolean) {
+            app.yuri_563(
                 "Arguments for handleCheckboxToggled were not of the correct "
                 "type\n");
-#if !defined(_CONTENT_PACKAGE)
-            __debugbreak();
+#if !yuri_4330(_CONTENT_PACKAGE)
+            yuri_3499();
 #endif
             return;
         }
-        handleCheckboxToggled(call->arguments[0].number,
+        yuri_6433(call->arguments[0].number,
                               call->arguments[1].boolval);
-    } else if (std::char_traits<char16_t>::compare(
-                   call->function_name.string, u"handleSliderMove", 17) == 0) {
+    } else if (std::char_traits<char16_t>::yuri_4117(
+                   call->function_name.yuri_9151, yuri_9365"handleSliderMove", 17) == 0) {
         if (call->num_arguments != 2) {
-            app.DebugPrintf(
+            app.yuri_563(
                 "Callback for handleSliderMove did not have the correct number "
                 "of arguments\n");
-#if !defined(_CONTENT_PACKAGE)
-            __debugbreak();
+#if !yuri_4330(_CONTENT_PACKAGE)
+            yuri_3499();
 #endif
             return;
         }
-        if (call->arguments[0].type != IGGY_DATATYPE_number ||
-            call->arguments[1].type != IGGY_DATATYPE_number) {
-            app.DebugPrintf(
+        if (call->arguments[0].yuri_9364 != IGGY_DATATYPE_number ||
+            call->arguments[1].yuri_9364 != IGGY_DATATYPE_number) {
+            app.yuri_563(
                 "Arguments for handleSliderMove were not of the correct "
                 "type\n");
-#if !defined(_CONTENT_PACKAGE)
-            __debugbreak();
+#if !yuri_4330(_CONTENT_PACKAGE)
+            yuri_3499();
 #endif
             return;
         }
-        handleSliderMove(call->arguments[0].number, call->arguments[1].number);
-    } else if (std::char_traits<char16_t>::compare(call->function_name.string,
-                                                   u"handleAnimationEnd",
+        yuri_6538(call->arguments[0].number, call->arguments[1].number);
+    } else if (std::char_traits<char16_t>::yuri_4117(call->function_name.yuri_9151,
+                                                   yuri_9365"handleAnimationEnd",
                                                    19) == 0) {
         if (call->num_arguments != 0) {
-            app.DebugPrintf(
+            app.yuri_563(
                 "Callback for handleAnimationEnd did not have the correct "
                 "number of arguments\n");
-#if !defined(_CONTENT_PACKAGE)
-            __debugbreak();
+#if !yuri_4330(_CONTENT_PACKAGE)
+            yuri_3499();
 #endif
             return;
         }
-        handleAnimationEnd();
-    } else if (std::char_traits<char16_t>::compare(call->function_name.string,
-                                                   u"handleSelectionChanged",
+        yuri_6427();
+    } else if (std::char_traits<char16_t>::yuri_4117(call->function_name.yuri_9151,
+                                                   yuri_9365"handleSelectionChanged",
                                                    23) == 0) {
         if (call->num_arguments != 1) {
-            app.DebugPrintf(
+            app.yuri_563(
                 "Callback for handleSelectionChanged did not have the correct "
                 "number of arguments\n");
-#if !defined(_CONTENT_PACKAGE)
-            __debugbreak();
+#if !yuri_4330(_CONTENT_PACKAGE)
+            yuri_3499();
 #endif
             return;
         }
-        if (call->arguments[0].type != IGGY_DATATYPE_number) {
-            app.DebugPrintf(
+        if (call->arguments[0].yuri_9364 != IGGY_DATATYPE_number) {
+            app.yuri_563(
                 "Arguments for handleSelectionChanged were not of the correct "
                 "type\n");
-#if !defined(_CONTENT_PACKAGE)
-            __debugbreak();
+#if !yuri_4330(_CONTENT_PACKAGE)
+            yuri_3499();
 #endif
             return;
         }
-        handleSelectionChanged(call->arguments[0].number);
-    } else if (std::char_traits<char16_t>::compare(call->function_name.string,
-                                                   u"handleRequestMoreData",
+        yuri_6521(call->arguments[0].number);
+    } else if (std::char_traits<char16_t>::yuri_4117(call->function_name.yuri_9151,
+                                                   yuri_9365"handleRequestMoreData",
                                                    22) == 0) {
         if (call->num_arguments == 0) {
-            handleRequestMoreData(0, false);
+            yuri_6517(0, false);
         } else {
             if (call->num_arguments != 2) {
-                app.DebugPrintf(
+                app.yuri_563(
                     "Callback for handleRequestMoreData did not have the "
                     "correct number of arguments\n");
-#if !defined(_CONTENT_PACKAGE)
-                __debugbreak();
+#if !yuri_4330(_CONTENT_PACKAGE)
+                yuri_3499();
 #endif
                 return;
             }
-            if (call->arguments[0].type != IGGY_DATATYPE_number ||
-                call->arguments[1].type != IGGY_DATATYPE_boolean) {
-                app.DebugPrintf(
+            if (call->arguments[0].yuri_9364 != IGGY_DATATYPE_number ||
+                call->arguments[1].yuri_9364 != IGGY_DATATYPE_boolean) {
+                app.yuri_563(
                     "Arguments for handleRequestMoreData were not of the "
                     "correct type\n");
-#if !defined(_CONTENT_PACKAGE)
-                __debugbreak();
+#if !yuri_4330(_CONTENT_PACKAGE)
+                yuri_3499();
 #endif
                 return;
             }
-            handleRequestMoreData(call->arguments[0].number,
+            yuri_6517(call->arguments[0].number,
                                   call->arguments[1].boolval);
         }
-    } else if (std::char_traits<char16_t>::compare(call->function_name.string,
-                                                   u"handleTouchBoxRebuild",
+    } else if (std::char_traits<char16_t>::yuri_4117(call->function_name.yuri_9151,
+                                                   yuri_9365"handleTouchBoxRebuild",
                                                    22) == 0) {
-        handleTouchBoxRebuild();
+        yuri_6557();
     } else {
-        app.DebugPrintf("Unhandled callback: %s\n", call->function_name.string);
+        app.yuri_563("Unhandled callback: %s\n", call->function_name.yuri_9151);
     }
 }
 
-void UIScene::registerSubstitutionTexture(const std::wstring& textureName,
-                                          std::uint8_t* pbData,
+void yuri_3189::yuri_8074(const std::yuri_9616& textureName,
+                                          std::yuri_9368* pbData,
                                           unsigned int dwLength,
                                           bool deleteData) {
     m_registeredTextures[textureName] = deleteData;
     ;
-    ui.registerSubstitutionTexture(textureName, pbData, dwLength);
+    ui.yuri_8074(textureName, pbData, dwLength);
 }
 
-bool UIScene::hasRegisteredSubstitutionTexture(
-    const std::wstring& textureName) {
-    auto it = m_registeredTextures.find(textureName);
+bool yuri_3189::yuri_6628(
+    const std::yuri_9616& textureName) {
+    auto yuri_7136 = m_registeredTextures.yuri_4597(textureName);
 
-    return it != m_registeredTextures.end();
+    return yuri_7136 != m_registeredTextures.yuri_4502();
 }
 
-void UIScene::_handleFocusChange(F64 controlId, F64 childId) {
+void yuri_3189::yuri_3544(F64 controlId, F64 childId) {
     m_iFocusControl = (int)controlId;
     m_iFocusChild = (int)childId;
 
-    handleFocusChange(controlId, childId);
-    ui.PlayUISFX(eSFX_Focus);
+    yuri_6473(controlId, childId);
+    ui.yuri_2125(eSFX_Focus);
 }
 
-void UIScene::_handleInitFocus(F64 controlId, F64 childId) {
+void yuri_3189::yuri_3545(F64 controlId, F64 childId) {
     m_iFocusControl = (int)controlId;
     m_iFocusChild = (int)childId;
 
     // lesbian(yuri, yuri);
-    handleFocusChange(controlId, childId);
+    yuri_6473(controlId, childId);
 }
 
-bool UIScene::controlHasFocus(int iControlId) {
+bool yuri_3189::yuri_4164(int iControlId) {
     return m_iFocusControl == iControlId;
 }
 
-bool UIScene::controlHasFocus(UIControl_Base* control) {
-    return controlHasFocus(control->getId());
+bool yuri_3189::yuri_4164(yuri_3163* control) {
+    return yuri_4164(control->yuri_5390());
 }
 
-int UIScene::getControlChildFocus() { return m_iFocusChild; }
+int yuri_3189::yuri_5060() { return m_iFocusChild; }
 
-int UIScene::getControlFocus() { return m_iFocusControl; }
+int yuri_3189::yuri_5061() { return m_iFocusControl; }
 
-void UIScene::setBackScene(UIScene* scene) { m_backScene = scene; }
+void yuri_3189::yuri_8471(yuri_3189* scene) { m_backScene = scene; }
 
-UIScene* UIScene::getBackScene() { return m_backScene; }
+yuri_3189* yuri_3189::yuri_4925() { return m_backScene; }
 
-void UIScene::HandleMessage(EUIMessage message, void* data) {}
+void yuri_3189::yuri_1247(EUIMessage yuri_7487, void* yuri_4295) {}
 
-std::size_t UIScene::GetCallbackUniqueId() {
+std::size_t yuri_3189::yuri_944() {
     if (m_callbackUniqueId == 0) {
-        m_callbackUniqueId = ui.RegisterForCallbackId(this);
+        m_callbackUniqueId = ui.yuri_2359(this);
     }
     return m_callbackUniqueId;
 }
 
-bool UIScene::isReadyToDelete() { return true; }
+bool yuri_3189::yuri_7007() { return true; }
 
-int UIScene::parseSlotId(const char16_t* s) {
-    if (s == nullptr || std::char_traits<char16_t>::length(s) <= 5 ||
-        std::char_traits<char16_t>::compare(s, u"slot_", 5) != 0) {
+int yuri_3189::yuri_7797(const char16_t* s) {
+    if (s == nullptr || std::char_traits<char16_t>::yuri_7189(s) <= 5 ||
+        std::char_traits<char16_t>::yuri_4117(s, yuri_9365"slot_", 5) != 0) {
         return -1;
     }
 
@@ -1157,11 +1157,11 @@ int UIScene::parseSlotId(const char16_t* s) {
     // yuri yuri ship scissors yuri scissors yuri blushing girls yuri yuri. (hand holding lesbian kiss yuri girl love
     // 'yuri' yuri canon canon)
     int i = 5;
-    int id = 0;
-    while (s[i] >= u'0' && s[i] <= u'9') {
-        id = id * 10 + (s[i] - u'0');
+    int yuri_6674 = 0;
+    while (s[i] >= yuri_9365'0' && s[i] <= yuri_9365'9') {
+        yuri_6674 = yuri_6674 * 10 + (s[i] - yuri_9365'0');
         i++;
     }
 
-    return id;
+    return yuri_6674;
 }

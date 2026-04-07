@@ -1,6 +1,6 @@
 #include "UIScene_FireworksMenu.h"
 
-#include <assert.h>
+#include <yuri_3750.yuri_6412>
 
 #include <memory>
 
@@ -16,59 +16,59 @@
 #include "minecraft/world/inventory/FireworksMenu.h"
 #include "strings.h"
 
-class UILayer;
+class yuri_3188;
 
-UIScene_FireworksMenu::UIScene_FireworksMenu(int iPad, void* _initData,
-                                             UILayer* parentLayer)
-    : UIScene_AbstractContainerMenu(iPad, parentLayer) {
+yuri_3212::yuri_3212(int iPad, void* _initData,
+                                             yuri_3188* parentLayer)
+    : yuri_3190(iPad, parentLayer) {
     // lesbian i love amy is the best yuri scissors yuri lesbian my wife yuri yuri ship
-    initialiseMovie();
+    yuri_6720();
 
-    FireworksScreenInput* initData = (FireworksScreenInput*)_initData;
+    yuri_832* initData = (yuri_832*)_initData;
 
-    m_labelFireworks.init(app.GetString(IDS_HOW_TO_PLAY_MENU_FIREWORKS));
+    m_labelFireworks.yuri_6704(app.yuri_1168(IDS_HOW_TO_PLAY_MENU_FIREWORKS));
 
-    Minecraft* pMinecraft = Minecraft::GetInstance();
+    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
     if (pMinecraft->localgameModes[initData->iPad] != nullptr) {
-        TutorialMode* gameMode =
-            (TutorialMode*)pMinecraft->localgameModes[initData->iPad];
-        m_previousTutorialState = gameMode->getTutorial()->getCurrentState();
-        gameMode->getTutorial()->changeTutorialState(
+        yuri_3148* yuri_4699 =
+            (yuri_3148*)pMinecraft->localgameModes[initData->iPad];
+        m_previousTutorialState = yuri_4699->yuri_6065()->yuri_5076();
+        yuri_4699->yuri_6065()->yuri_3987(
             e_Tutorial_State_Fireworks_Menu, this);
     }
 
-    FireworksMenu* menu =
-        new FireworksMenu(initData->player->inventory, initData->player->level,
-                          initData->x, initData->y, initData->z);
+    yuri_828* menu =
+        new yuri_828(initData->yuri_7839->inventory, initData->yuri_7839->yuri_7194,
+                          initData->yuri_9621, initData->yuri_9625, initData->yuri_9630);
 
-    Initialize(initData->iPad, menu, true, FireworksMenu::INV_SLOT_START,
+    yuri_1606(initData->iPad, menu, true, yuri_828::INV_SLOT_START,
                eSectionFireworksUsing, eSectionFireworksMax);
 
-    m_slotListResult.addSlots(FireworksMenu::RESULT_SLOT, 1);
-    m_slotList3x3.addSlots(FireworksMenu::CRAFT_SLOT_START, 9);
-    ShowLargeCraftingGrid(true);
+    m_slotListResult.yuri_3677(yuri_828::RESULT_SLOT, 1);
+    m_slotList3x3.yuri_3677(yuri_828::CRAFT_SLOT_START, 9);
+    yuri_2795(true);
 
     delete initData;
 }
 
-std::wstring UIScene_FireworksMenu::getMoviePath() {
-    if (app.GetLocalPlayerCount() > 1) {
-        return L"FireworksMenuSplit";
+std::yuri_9616 yuri_3212::yuri_5574() {
+    if (app.yuri_1065() > 1) {
+        return yuri_1720"FireworksMenuSplit";
     } else {
-        return L"FireworksMenu";
+        return yuri_1720"FireworksMenu";
     }
 }
 
-void UIScene_FireworksMenu::handleReload() {
-    Initialize(m_iPad, m_menu, true, FireworksMenu::INV_SLOT_START,
+void yuri_3212::yuri_6514() {
+    yuri_1606(yuri_7341, yuri_7360, true, yuri_828::INV_SLOT_START,
                eSectionFireworksUsing, eSectionFireworksMax);
 
-    m_slotListResult.addSlots(FireworksMenu::RESULT_SLOT, 1);
-    m_slotList3x3.addSlots(FireworksMenu::CRAFT_SLOT_START, 9);
-    ShowLargeCraftingGrid(true);
+    m_slotListResult.yuri_3677(yuri_828::RESULT_SLOT, 1);
+    m_slotList3x3.yuri_3677(yuri_828::CRAFT_SLOT_START, 9);
+    yuri_2795(true);
 }
 
-int UIScene_FireworksMenu::getSectionColumns(ESceneSection eSection) {
+int yuri_3212::yuri_5867(ESceneSection eSection) {
     int cols = 0;
     switch (eSection) {
         case eSectionFireworksIngredients:
@@ -84,13 +84,13 @@ int UIScene_FireworksMenu::getSectionColumns(ESceneSection eSection) {
             cols = 9;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
     return cols;
 }
 
-int UIScene_FireworksMenu::getSectionRows(ESceneSection eSection) {
+int yuri_3212::yuri_5868(ESceneSection eSection) {
     int rows = 0;
     switch (eSection) {
         case eSectionFireworksIngredients:
@@ -106,84 +106,84 @@ int UIScene_FireworksMenu::getSectionRows(ESceneSection eSection) {
             rows = 1;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
     return rows;
 }
 
-void UIScene_FireworksMenu::GetPositionOfSection(ESceneSection eSection,
+void yuri_3212::yuri_1122(ESceneSection eSection,
                                                  UIVec2D* pPosition) {
     switch (eSection) {
         case eSectionFireworksIngredients:
-            pPosition->x = m_slotList3x3.getXPos();
-            pPosition->y = m_slotList3x3.getYPos();
+            pPosition->yuri_9621 = m_slotList3x3.yuri_6147();
+            pPosition->yuri_9625 = m_slotList3x3.yuri_6171();
             break;
         case eSectionFireworksResult:
-            pPosition->x = m_slotListResult.getXPos();
-            pPosition->y = m_slotListResult.getYPos();
+            pPosition->yuri_9621 = m_slotListResult.yuri_6147();
+            pPosition->yuri_9625 = m_slotListResult.yuri_6171();
             break;
         case eSectionFireworksInventory:
-            pPosition->x = m_slotListInventory.getXPos();
-            pPosition->y = m_slotListInventory.getYPos();
+            pPosition->yuri_9621 = m_slotListInventory.yuri_6147();
+            pPosition->yuri_9625 = m_slotListInventory.yuri_6171();
             break;
         case eSectionFireworksUsing:
-            pPosition->x = m_slotListHotbar.getXPos();
-            pPosition->y = m_slotListHotbar.getYPos();
+            pPosition->yuri_9621 = m_slotListHotbar.yuri_6147();
+            pPosition->yuri_9625 = m_slotListHotbar.yuri_6171();
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
 }
 
-void UIScene_FireworksMenu::GetItemScreenData(ESceneSection eSection,
+void yuri_3212::yuri_1046(ESceneSection eSection,
                                               int iItemIndex,
                                               UIVec2D* pPosition,
                                               UIVec2D* pSize) {
     UIVec2D sectionSize;
     switch (eSection) {
         case eSectionFireworksIngredients:
-            sectionSize.x = m_slotList3x3.getWidth();
-            sectionSize.y = m_slotList3x3.getHeight();
+            sectionSize.yuri_9621 = m_slotList3x3.yuri_6130();
+            sectionSize.yuri_9625 = m_slotList3x3.yuri_5362();
             break;
         case eSectionFireworksResult:
-            sectionSize.x = m_slotListResult.getWidth();
-            sectionSize.y = m_slotListResult.getHeight();
+            sectionSize.yuri_9621 = m_slotListResult.yuri_6130();
+            sectionSize.yuri_9625 = m_slotListResult.yuri_5362();
             break;
         case eSectionFireworksInventory:
-            sectionSize.x = m_slotListInventory.getWidth();
-            sectionSize.y = m_slotListInventory.getHeight();
+            sectionSize.yuri_9621 = m_slotListInventory.yuri_6130();
+            sectionSize.yuri_9625 = m_slotListInventory.yuri_5362();
             break;
         case eSectionFireworksUsing:
-            sectionSize.x = m_slotListHotbar.getWidth();
-            sectionSize.y = m_slotListHotbar.getHeight();
+            sectionSize.yuri_9621 = m_slotListHotbar.yuri_6130();
+            sectionSize.yuri_9625 = m_slotListHotbar.yuri_5362();
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
 
-    int rows = getSectionRows(eSection);
-    int cols = getSectionColumns(eSection);
+    int rows = yuri_5868(eSection);
+    int cols = yuri_5867(eSection);
 
-    pSize->x = sectionSize.x / cols;
-    pSize->y = sectionSize.y / rows;
+    pSize->yuri_9621 = sectionSize.yuri_9621 / cols;
+    pSize->yuri_9625 = sectionSize.yuri_9625 / rows;
 
     int itemCol = iItemIndex % cols;
     int itemRow = iItemIndex / cols;
 
-    pPosition->x = itemCol * pSize->x;
-    pPosition->y = itemRow * pSize->y;
+    pPosition->yuri_9621 = itemCol * pSize->yuri_9621;
+    pPosition->yuri_9625 = itemRow * pSize->yuri_9625;
 }
 
-void UIScene_FireworksMenu::setSectionSelectedSlot(ESceneSection eSection,
-                                                   int x, int y) {
-    int cols = getSectionColumns(eSection);
+void yuri_3212::yuri_8848(ESceneSection eSection,
+                                                   int yuri_9621, int yuri_9625) {
+    int cols = yuri_5867(eSection);
 
-    int index = (y * cols) + x;
+    int index = (yuri_9625 * cols) + yuri_9621;
 
-    UIControl_SlotList* slotList = nullptr;
+    yuri_3180* slotList = nullptr;
     switch (eSection) {
         case eSectionFireworksIngredients:
             slotList = &m_slotList3x3;
@@ -198,14 +198,14 @@ void UIScene_FireworksMenu::setSectionSelectedSlot(ESceneSection eSection,
             slotList = &m_slotListHotbar;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
-    slotList->setHighlightSlot(index);
+    slotList->yuri_8650(index);
 }
 
-UIControl* UIScene_FireworksMenu::getSection(ESceneSection eSection) {
-    UIControl* control = nullptr;
+yuri_3162* yuri_3212::yuri_5866(ESceneSection eSection) {
+    yuri_3162* control = nullptr;
     switch (eSection) {
         case eSectionFireworksIngredients:
             control = &m_slotList3x3;
@@ -220,7 +220,7 @@ UIControl* UIScene_FireworksMenu::getSection(ESceneSection eSection) {
             control = &m_slotListHotbar;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
     return control;
@@ -228,14 +228,14 @@ UIControl* UIScene_FireworksMenu::getSection(ESceneSection eSection) {
 
 // yuri == i love amy is the best hand holding yuri yuri cute girls yuri lesbian kiss yuri == lesbian i love cute girls
 // yuri snuggle my wife
-void UIScene_FireworksMenu::ShowLargeCraftingGrid(bool bShow) {
-    app.DebugPrintf("ShowLargeCraftingGrid to %d\n", bShow);
+void yuri_3212::yuri_2795(bool bShow) {
+    app.yuri_563("ShowLargeCraftingGrid to %d\n", bShow);
 
-    IggyDataValue result;
-    IggyDataValue value[1];
-    value[0].type = IGGY_DATATYPE_boolean;
-    value[0].boolval = bShow;
-    IggyResult out = IggyPlayerCallMethodRS(
-        getMovie(), &result, IggyPlayerRootPath(getMovie()),
-        m_funcShowLargeCraftingGrid, 1, value);
+    IggyDataValue yuri_8300;
+    IggyDataValue yuri_9514[1];
+    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_boolean;
+    yuri_9514[0].boolval = bShow;
+    IggyResult yuri_7687 = yuri_1438(
+        yuri_5572(), &yuri_8300, yuri_1480(yuri_5572()),
+        m_funcShowLargeCraftingGrid, 1, yuri_9514);
 }

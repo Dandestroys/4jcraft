@@ -1,14 +1,14 @@
 #pragma once
 #include "Synth.h"
 
-class Rotate : public Synth {
+class yuri_2439 : public yuri_2996 {
 private:
-    Synth* synth;
+    yuri_2996* synth;
     double _sin;
     double _cos;
 
 public:
-    Rotate(Synth* synth, float angle);
+    yuri_2439(yuri_2996* synth, float angle);
 
-    virtual double getValue(double x, double y);
+    virtual double yuri_6101(double yuri_9621, double yuri_9625);
 };

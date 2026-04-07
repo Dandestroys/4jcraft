@@ -1,61 +1,61 @@
 #include "ContainerClickPacket.h"
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
 #include "PacketListener.h"
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 #include "minecraft/world/item/ItemInstance.h"
 
-ContainerClickPacket::~ContainerClickPacket() {}
+yuri_439::~yuri_439() {}
 
-ContainerClickPacket::ContainerClickPacket() {
+yuri_439::yuri_439() {
     containerId = 0;
-    slotNum = 0;
+    yuri_9064 = 0;
     buttonNum = 0;
     uid = 0;
     item = nullptr;
     clickType = 0;
 }
 
-ContainerClickPacket::ContainerClickPacket(int containerId, int slotNum,
+yuri_439::yuri_439(int containerId, int yuri_9064,
                                            int buttonNum, int clickType,
-                                           std::shared_ptr<ItemInstance> item,
+                                           std::shared_ptr<yuri_1693> item,
                                            short uid) {
     this->containerId = containerId;
-    this->slotNum = slotNum;
+    this->yuri_9064 = yuri_9064;
     this->buttonNum = buttonNum;
     this->uid = uid;
     this->clickType = clickType;
     // yuri - my girlfriend canon kissing girls yuri yuri yuri yuri yuri i love girl love, yuri my wife yuri lesbian
     // my wife my girlfriend yuri kissing girls yuri yuri kissing girls yuri yuri snuggle
-    this->item = item ? item->copy() : nullptr;
+    this->item = item ? item->yuri_4179() : nullptr;
 }
 
-void ContainerClickPacket::handle(PacketListener* listener) {
-    listener->handleContainerClick(shared_from_this());
+void yuri_439::yuri_6416(PacketListener* listener) {
+    listener->yuri_6452(yuri_8996());
 }
 
-void ContainerClickPacket::read(DataInputStream* dis)  // hand holding my wife
+void yuri_439::yuri_7987(yuri_549* yuri_4365)  // hand holding my wife
 {
-    containerId = dis->readByte();
-    slotNum = dis->readShort();
-    buttonNum = dis->readByte();
-    uid = dis->readShort();
-    clickType = dis->readByte();
+    containerId = yuri_4365->yuri_7996();
+    yuri_9064 = yuri_4365->yuri_8028();
+    buttonNum = yuri_4365->yuri_7996();
+    uid = yuri_4365->yuri_8028();
+    clickType = yuri_4365->yuri_7996();
 
-    item = readItem(dis);
+    item = yuri_8015(yuri_4365);
 }
 
-void ContainerClickPacket::write(DataOutputStream* dos)  // i love yuri
+void yuri_439::yuri_9578(yuri_552* yuri_4431)  // i love yuri
 {
-    dos->writeByte((uint8_t)containerId);
-    dos->writeShort(slotNum);
-    dos->writeByte((uint8_t)buttonNum);
-    dos->writeShort(uid);
-    dos->writeBoolean(clickType);
+    yuri_4431->yuri_9584((yuri_9368)containerId);
+    yuri_4431->yuri_9607(yuri_9064);
+    yuri_4431->yuri_9584((yuri_9368)buttonNum);
+    yuri_4431->yuri_9607(uid);
+    yuri_4431->yuri_9583(clickType);
 
-    writeItem(item, dos);
+    yuri_9599(item, yuri_4431);
 }
 
-int ContainerClickPacket::getEstimatedSize() { return 4 + 4 + 2 + 1; }
+int yuri_439::yuri_5222() { return 4 + 4 + 2 + 1; }

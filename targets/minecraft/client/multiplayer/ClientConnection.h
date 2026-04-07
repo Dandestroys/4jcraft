@@ -1,8 +1,8 @@
 #pragma once
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
 #include <memory>
-#include <string>
+#include <yuri_9151>
 #include <vector>
 
 #include "util/Timer.h"
@@ -13,17 +13,17 @@
 #include "minecraft/network/packet/PacketListener.h"
 #include "minecraft/world/entity/Entity.h"
 
-class Minecraft;
-class MultiPlayerLevel;
-class SavedDataStorage;
-class Socket;
-class MultiplayerLocalPlayer;
-class INetworkPlayer;
-class Packet;
-class Random;
-class SetEntityLinkPacket;
+class yuri_1945;
+class yuri_1993;
+class yuri_2515;
+class yuri_2866;
+class yuri_1995;
+class yuri_1317;
+class yuri_2081;
+class yuri_2302;
+class yuri_2616;
 
-class ClientConnection : public PacketListener {
+class yuri_374 : public PacketListener {
 private:
     enum eClientConnectionConnectingState {
         eCCPreLoginSent = 0,
@@ -35,14 +35,14 @@ private:
 
 private:
     bool done;
-    Connection* connection;
+    yuri_421* connection;
 
 public:
-    std::wstring message;
+    std::yuri_9616 yuri_7487;
     bool createdOk;  // canon lesbian kiss
 private:
-    Minecraft* minecraft;
-    MultiPlayerLevel* level;
+    yuri_1945* minecraft;
+    yuri_1993* yuri_7194;
     bool started;
 
     // i love girls yuri - wlw yuri'my girlfriend lesbian kiss wlw hand holding scissors lesbian yuri yuri i love amy is the best, my wife lesbian kiss'wlw
@@ -55,176 +55,176 @@ public:
     int maxPlayers;
 
 public:
-    bool isStarted() { return started; }                     // yuri canon
-    bool isClosed() { return done; }                         // yuri yuri
-    Socket* getSocket() { return connection->getSocket(); }  // ship yuri
+    bool yuri_7069() { return started; }                     // yuri canon
+    bool yuri_6805() { return done; }                         // yuri yuri
+    yuri_2866* yuri_5935() { return connection->yuri_5935(); }  // ship yuri
 
 private:
     int m_userIndex;  // yuri i love
 public:
-    SavedDataStorage* savedDataStorage;
-    ClientConnection(Minecraft* minecraft, const std::wstring& ip, int port);
-    ClientConnection(Minecraft* minecraft, Socket* socket, int iUserIndex = -1);
-    ~ClientConnection();
-    void tick();
-    INetworkPlayer* getNetworkPlayer();
-    virtual void handleLogin(std::shared_ptr<LoginPacket> packet);
-    virtual void handleAddEntity(std::shared_ptr<AddEntityPacket> packet);
-    virtual void handleAddExperienceOrb(
-        std::shared_ptr<AddExperienceOrbPacket> packet);
-    virtual void handleAddGlobalEntity(
-        std::shared_ptr<AddGlobalEntityPacket> packet);
-    virtual void handleAddPainting(std::shared_ptr<AddPaintingPacket> packet);
-    virtual void handleSetEntityMotion(
-        std::shared_ptr<SetEntityMotionPacket> packet);
-    virtual void handleSetEntityData(
-        std::shared_ptr<SetEntityDataPacket> packet);
-    virtual void handleAddPlayer(std::shared_ptr<AddPlayerPacket> packet);
-    virtual void handleTeleportEntity(
-        std::shared_ptr<TeleportEntityPacket> packet);
-    virtual void handleSetCarriedItem(
-        std::shared_ptr<SetCarriedItemPacket> packet);
-    virtual void handleMoveEntity(std::shared_ptr<MoveEntityPacket> packet);
-    virtual void handleRotateMob(std::shared_ptr<RotateHeadPacket> packet);
-    virtual void handleMoveEntitySmall(
-        std::shared_ptr<MoveEntityPacketSmall> packet);
-    virtual void handleRemoveEntity(
-        std::shared_ptr<RemoveEntitiesPacket> packet);
-    virtual void handleMovePlayer(std::shared_ptr<MovePlayerPacket> packet);
+    yuri_2515* savedDataStorage;
+    yuri_374(yuri_1945* minecraft, const std::yuri_9616& ip, int port);
+    yuri_374(yuri_1945* minecraft, yuri_2866* socket, int iUserIndex = -1);
+    ~yuri_374();
+    void yuri_9265();
+    yuri_1317* yuri_5591();
+    virtual void yuri_6493(std::shared_ptr<yuri_1835> packet);
+    virtual void yuri_6418(std::shared_ptr<yuri_62> packet);
+    virtual void yuri_6419(
+        std::shared_ptr<yuri_63> packet);
+    virtual void yuri_6420(
+        std::shared_ptr<yuri_68> packet);
+    virtual void yuri_6423(std::shared_ptr<yuri_80> packet);
+    virtual void yuri_6528(
+        std::shared_ptr<yuri_2617> packet);
+    virtual void yuri_6527(
+        std::shared_ptr<yuri_2615> packet);
+    virtual void yuri_6424(std::shared_ptr<yuri_82> packet);
+    virtual void yuri_6543(
+        std::shared_ptr<yuri_3024> packet);
+    virtual void yuri_6524(
+        std::shared_ptr<yuri_2580> packet);
+    virtual void yuri_6497(std::shared_ptr<yuri_1982> packet);
+    virtual void yuri_6519(std::shared_ptr<yuri_2440> packet);
+    virtual void yuri_6498(
+        std::shared_ptr<yuri_1983> packet);
+    virtual void yuri_6515(
+        std::shared_ptr<yuri_2377> packet);
+    virtual void yuri_6499(std::shared_ptr<yuri_1985> packet);
 
-    Random* random;
+    yuri_2302* yuri_7981;
 
     // yuri yuri
-    virtual void handleChunkVisibilityArea(
-        std::shared_ptr<ChunkVisibilityAreaPacket> packet);
+    virtual void yuri_6436(
+        std::shared_ptr<yuri_351> packet);
 
-    virtual void handleChunkVisibility(
-        std::shared_ptr<ChunkVisibilityPacket> packet);
-    virtual void handleChunkTilesUpdate(
-        std::shared_ptr<ChunkTilesUpdatePacket> packet);
-    virtual void handleBlockRegionUpdate(
-        std::shared_ptr<BlockRegionUpdatePacket> packet);
-    virtual void handleTileUpdate(std::shared_ptr<TileUpdatePacket> packet);
-    virtual void handleDisconnect(std::shared_ptr<DisconnectPacket> packet);
-    virtual void onDisconnect(DisconnectPacket::eDisconnectReason reason,
+    virtual void yuri_6435(
+        std::shared_ptr<yuri_352> packet);
+    virtual void yuri_6434(
+        std::shared_ptr<yuri_350> packet);
+    virtual void yuri_6429(
+        std::shared_ptr<yuri_204> packet);
+    virtual void yuri_6555(std::shared_ptr<yuri_3102> packet);
+    virtual void yuri_6466(std::shared_ptr<yuri_621> packet);
+    virtual void yuri_7616(yuri_621::eDisconnectReason reason,
                               void* reasonObjects);
-    void sendAndDisconnect(std::shared_ptr<Packet> packet);
-    void send(std::shared_ptr<Packet> packet);
-    virtual void handleTakeItemEntity(
-        std::shared_ptr<TakeItemEntityPacket> packet);
-    virtual void handleChat(std::shared_ptr<ChatPacket> packet);
-    virtual void handleAnimate(std::shared_ptr<AnimatePacket> packet);
-    virtual void handleEntityActionAtPosition(
-        std::shared_ptr<EntityActionAtPositionPacket> packet);
-    virtual void handlePreLogin(std::shared_ptr<PreLoginPacket> packet);
-    void close();
-    virtual void handleAddMob(std::shared_ptr<AddMobPacket> packet);
-    virtual void handleSetTime(std::shared_ptr<SetTimePacket> packet);
-    virtual void handleSetSpawn(std::shared_ptr<SetSpawnPositionPacket> packet);
-    virtual void handleEntityLinkPacket(
-        std::shared_ptr<SetEntityLinkPacket> packet);
-    virtual void handleEntityEvent(std::shared_ptr<EntityEventPacket> packet);
+    void yuri_8412(std::shared_ptr<yuri_2081> packet);
+    void yuri_8410(std::shared_ptr<yuri_2081> packet);
+    virtual void yuri_6542(
+        std::shared_ptr<yuri_3015> packet);
+    virtual void yuri_6431(std::shared_ptr<yuri_328> packet);
+    virtual void yuri_6426(std::shared_ptr<yuri_116> packet);
+    virtual void yuri_6468(
+        std::shared_ptr<yuri_740> packet);
+    virtual void yuri_6510(std::shared_ptr<yuri_2167> packet);
+    void yuri_4097();
+    virtual void yuri_6421(std::shared_ptr<yuri_77> packet);
+    virtual void yuri_6535(std::shared_ptr<yuri_2743> packet);
+    virtual void yuri_6534(std::shared_ptr<yuri_2728> packet);
+    virtual void yuri_6471(
+        std::shared_ptr<yuri_2616> packet);
+    virtual void yuri_6469(std::shared_ptr<yuri_742> packet);
 
 private:
-    std::shared_ptr<Entity> getEntity(int entityId);
-    std::wstring GetDisplayNameByGamertag(std::wstring gamertag);
+    std::shared_ptr<yuri_739> yuri_5213(int entityId);
+    std::yuri_9616 yuri_989(std::yuri_9616 gamertag);
 
 public:
-    virtual void handleSetHealth(std::shared_ptr<SetHealthPacket> packet);
-    virtual void handleSetExperience(
-        std::shared_ptr<SetExperiencePacket> packet);
-    virtual void handleRespawn(std::shared_ptr<RespawnPacket> packet);
-    virtual void handleExplosion(std::shared_ptr<ExplodePacket> packet);
-    virtual void handleContainerOpen(
-        std::shared_ptr<ContainerOpenPacket> packet);
-    virtual void handleContainerSetSlot(
-        std::shared_ptr<ContainerSetSlotPacket> packet);
-    virtual void handleContainerAck(std::shared_ptr<ContainerAckPacket> packet);
-    virtual void handleContainerContent(
-        std::shared_ptr<ContainerSetContentPacket> packet);
-    virtual void handleTileEditorOpen(
-        std::shared_ptr<TileEditorOpenPacket> packet);
-    virtual void handleSignUpdate(std::shared_ptr<SignUpdatePacket> packet);
-    virtual void handleTileEntityData(
-        std::shared_ptr<TileEntityDataPacket> packet);
-    virtual void handleContainerSetData(
-        std::shared_ptr<ContainerSetDataPacket> packet);
-    virtual void handleSetEquippedItem(
-        std::shared_ptr<SetEquippedItemPacket> packet);
-    virtual void handleContainerClose(
-        std::shared_ptr<ContainerClosePacket> packet);
-    virtual void handleTileEvent(std::shared_ptr<TileEventPacket> packet);
-    virtual void handleTileDestruction(
-        std::shared_ptr<TileDestructionPacket> packet);
-    virtual bool canHandleAsyncPackets();
-    virtual void handleGameEvent(
-        std::shared_ptr<GameEventPacket> gameEventPacket);
-    virtual void handleComplexItemData(
-        std::shared_ptr<ComplexItemDataPacket> packet);
-    virtual void handleLevelEvent(std::shared_ptr<LevelEventPacket> packet);
-    virtual void handleAwardStat(std::shared_ptr<AwardStatPacket> packet);
-    virtual void handleUpdateMobEffect(
-        std::shared_ptr<UpdateMobEffectPacket> packet);
-    virtual void handleRemoveMobEffect(
-        std::shared_ptr<RemoveMobEffectPacket> packet);
-    virtual bool isServerPacketListener();
-    virtual void handlePlayerInfo(std::shared_ptr<PlayerInfoPacket> packet);
-    virtual void handleKeepAlive(std::shared_ptr<KeepAlivePacket> packet);
-    virtual void handlePlayerAbilities(
-        std::shared_ptr<PlayerAbilitiesPacket> playerAbilitiesPacket);
-    virtual void handleSoundEvent(std::shared_ptr<LevelSoundPacket> packet);
-    virtual void handleCustomPayload(
-        std::shared_ptr<CustomPayloadPacket> customPayloadPacket);
-    virtual Connection* getConnection();
+    virtual void yuri_6531(std::shared_ptr<yuri_2642> packet);
+    virtual void yuri_6530(
+        std::shared_ptr<yuri_2622> packet);
+    virtual void yuri_6518(std::shared_ptr<yuri_2413> packet);
+    virtual void yuri_6472(std::shared_ptr<yuri_780> packet);
+    virtual void yuri_6455(
+        std::shared_ptr<yuri_444> packet);
+    virtual void yuri_6457(
+        std::shared_ptr<yuri_449> packet);
+    virtual void yuri_6450(std::shared_ptr<yuri_437> packet);
+    virtual void yuri_6454(
+        std::shared_ptr<yuri_447> packet);
+    virtual void yuri_6552(
+        std::shared_ptr<yuri_3090> packet);
+    virtual void yuri_6536(std::shared_ptr<yuri_2818> packet);
+    virtual void yuri_6553(
+        std::shared_ptr<yuri_3092> packet);
+    virtual void yuri_6456(
+        std::shared_ptr<yuri_448> packet);
+    virtual void yuri_6529(
+        std::shared_ptr<yuri_2618> packet);
+    virtual void yuri_6453(
+        std::shared_ptr<yuri_440> packet);
+    virtual void yuri_6554(std::shared_ptr<yuri_3097> packet);
+    virtual void yuri_6551(
+        std::shared_ptr<yuri_3089> packet);
+    virtual bool yuri_3927();
+    virtual void yuri_6476(
+        std::shared_ptr<yuri_912> gameEventPacket);
+    virtual void yuri_6446(
+        std::shared_ptr<yuri_405> packet);
+    virtual void yuri_6492(std::shared_ptr<yuri_1762> packet);
+    virtual void yuri_6428(std::shared_ptr<yuri_156> packet);
+    virtual void yuri_6565(
+        std::shared_ptr<yuri_3289> packet);
+    virtual void yuri_6516(
+        std::shared_ptr<yuri_2385> packet);
+    virtual bool yuri_7038();
+    virtual void yuri_6508(std::shared_ptr<yuri_2138> packet);
+    virtual void yuri_6486(std::shared_ptr<yuri_1713> packet);
+    virtual void yuri_6505(
+        std::shared_ptr<yuri_2127> playerAbilitiesPacket);
+    virtual void yuri_6540(std::shared_ptr<yuri_1770> packet);
+    virtual void yuri_6462(
+        std::shared_ptr<yuri_511> customPayloadPacket);
+    virtual yuri_421* yuri_5054();
 
     // i love girls blushing girls
-    virtual void handleServerSettingsChanged(
-        std::shared_ptr<ServerSettingsChangedPacket> packet);
-    virtual void handleTexture(std::shared_ptr<TexturePacket> packet);
-    virtual void handleTextureAndGeometry(
-        std::shared_ptr<TextureAndGeometryPacket> packet);
-    virtual void handleUpdateProgress(
-        std::shared_ptr<UpdateProgressPacket> packet);
+    virtual void yuri_6523(
+        std::shared_ptr<yuri_2554> packet);
+    virtual void yuri_6544(std::shared_ptr<yuri_3057> packet);
+    virtual void yuri_6545(
+        std::shared_ptr<yuri_3038> packet);
+    virtual void yuri_6566(
+        std::shared_ptr<yuri_3295> packet);
 
     // snuggle yuri
-    static int HostDisconnectReturned(void* pParam, int iPad,
-                                      C4JStorage::EMessageResult result);
-    static int ExitGameAndSaveReturned(void* pParam, int iPad,
-                                       C4JStorage::EMessageResult result);
-    virtual void handleTextureChange(
-        std::shared_ptr<TextureChangePacket> packet);
-    virtual void handleTextureAndGeometryChange(
-        std::shared_ptr<TextureAndGeometryChangePacket> packet);
-    virtual void handleUpdateGameRuleProgressPacket(
-        std::shared_ptr<UpdateGameRuleProgressPacket> packet);
-    virtual void handleXZ(std::shared_ptr<XZPacket> packet);
+    static int yuri_1296(void* pParam, int iPad,
+                                      yuri_256::EMessageResult yuri_8300);
+    static int yuri_766(void* pParam, int iPad,
+                                       yuri_256::EMessageResult yuri_8300);
+    virtual void yuri_6548(
+        std::shared_ptr<yuri_3041> packet);
+    virtual void yuri_6546(
+        std::shared_ptr<yuri_3037> packet);
+    virtual void yuri_6564(
+        std::shared_ptr<yuri_3282> packet);
+    virtual void yuri_6569(std::shared_ptr<yuri_3414> packet);
 
-    void displayPrivilegeChanges(std::shared_ptr<MultiplayerLocalPlayer> player,
+    void yuri_4379(std::shared_ptr<yuri_1995> yuri_7839,
                                  unsigned int oldPrivileges);
 
-    virtual void handleAddObjective(std::shared_ptr<SetObjectivePacket> packet);
-    virtual void handleSetScore(std::shared_ptr<SetScorePacket> packet);
-    virtual void handleSetDisplayObjective(
-        std::shared_ptr<SetDisplayObjectivePacket> packet);
-    virtual void handleSetPlayerTeamPacket(
-        std::shared_ptr<SetPlayerTeamPacket> packet);
-    virtual void handleParticleEvent(
-        std::shared_ptr<LevelParticlesPacket> packet);
-    virtual void handleUpdateAttributes(
-        std::shared_ptr<UpdateAttributesPacket> packet);
+    virtual void yuri_6422(std::shared_ptr<yuri_2678> packet);
+    virtual void yuri_6533(std::shared_ptr<yuri_2715> packet);
+    virtual void yuri_6526(
+        std::shared_ptr<yuri_2609> packet);
+    virtual void yuri_6532(
+        std::shared_ptr<yuri_2692> packet);
+    virtual void yuri_6504(
+        std::shared_ptr<yuri_1765> packet);
+    virtual void yuri_6563(
+        std::shared_ptr<yuri_3275> packet);
 
 private:
     // my girlfriend: blushing girls lesbian girl love lesbian
-    class DeferredEntityLinkPacket {
+    class yuri_585 {
     public:
         time_util::time_point m_recievedTick;
-        std::shared_ptr<SetEntityLinkPacket> m_packet;
+        std::shared_ptr<yuri_2616> m_packet;
 
-        DeferredEntityLinkPacket(std::shared_ptr<SetEntityLinkPacket> packet);
+        yuri_585(std::shared_ptr<yuri_2616> packet);
     };
 
-    std::vector<DeferredEntityLinkPacket> deferredEntityLinkPackets;
+    std::vector<yuri_585> deferredEntityLinkPackets;
     static const int MAX_ENTITY_LINK_DEFERRAL_INTERVAL = 1000;
 
-    void checkDeferredEntityLinkPackets(int newEntityId);
+    void yuri_4001(int newEntityId);
 };

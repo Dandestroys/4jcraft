@@ -1,8 +1,8 @@
 #pragma once
 
 #include <cstdint>
-#include <format>
-#include <string>
+#include <yuri_4669>
+#include <yuri_9151>
 #include <vector>
 
 #include "platform/sdl2/Storage.h"
@@ -17,12 +17,12 @@
 #include "minecraft/client/Minecraft.h"
 #include "minecraft/world/level/storage/ConsoleSaveFileIO/FileHeader.h"
 
-class LevelGenerationOptions;
-class File;
-class FriendSessionInfo;
-class UILayer;
+class yuri_1763;
+class yuri_804;
+class yuri_874;
+class yuri_3188;
 
-class UIScene_LoadOrJoinMenu : public UIScene {
+class yuri_3233 : public yuri_3189 {
 private:
     enum EControls {
         eControl_SavesList,
@@ -52,30 +52,30 @@ private:
 protected:
     UIControl_SaveList m_buttonListSaves;
     UIControl_SaveList m_buttonListGames;
-    UIControl_Label m_labelSavesListTitle, m_labelJoinListTitle, m_labelNoGames;
-    UIControl m_controlSavesTimer, m_controlJoinTimer;
+    yuri_3173 m_labelSavesListTitle, m_labelJoinListTitle, m_labelNoGames;
+    yuri_3162 m_controlSavesTimer, m_controlJoinTimer;
 
 private:
-    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
-    UI_MAP_ELEMENT(m_buttonListSaves, "SavesList")
-    UI_MAP_ELEMENT(m_buttonListGames, "JoinList")
+    yuri_3257(yuri_3189)
+    yuri_3260(m_buttonListSaves, "SavesList")
+    yuri_3260(m_buttonListGames, "JoinList")
 
-    UI_MAP_ELEMENT(m_labelSavesListTitle, "SavesListTitle")
-    UI_MAP_ELEMENT(m_labelJoinListTitle, "JoinListTitle")
-    UI_MAP_ELEMENT(m_labelNoGames, "NoGames")
+    yuri_3260(m_labelSavesListTitle, "SavesListTitle")
+    yuri_3260(m_labelJoinListTitle, "JoinListTitle")
+    yuri_3260(m_labelNoGames, "NoGames")
 
-    UI_MAP_ELEMENT(m_controlSavesTimer, "SavesTimer")
-    UI_MAP_ELEMENT(m_controlJoinTimer, "JoinTimer")
+    yuri_3260(m_controlSavesTimer, "SavesTimer")
+    yuri_3260(m_controlJoinTimer, "JoinTimer")
 
-    UI_END_MAP_ELEMENTS_AND_NAMES()
+    yuri_3259()
 
     int m_iDefaultButtonsC;
     int m_iMashUpButtonsC;
     int m_iState;
 
-    std::vector<FriendSessionInfo*>* m_currentSessions;
-    std::vector<LevelGenerationOptions*> m_generators;
-    std::vector<File*>* m_saves;
+    std::vector<yuri_874*>* m_currentSessions;
+    std::vector<yuri_1763*> m_generators;
+    std::vector<yuri_804*>* m_saves;
 
     bool m_bIgnoreInput;
     bool m_bAllLoaded;
@@ -83,7 +83,7 @@ private:
     bool m_bSaveThumbnailReady;
     bool m_bShowingPartyGamesOnly;
     bool m_bInParty;
-    JoinMenuInitData* m_initData;
+    yuri_1702* m_initData;
     bool m_bMultiplayerAllowed;
     int m_iTexturePacksNotInstalled;
     int m_iRequestingThumbnailId;
@@ -101,67 +101,67 @@ private:
     bool m_bUpdateSaveSize;
 
 public:
-    UIScene_LoadOrJoinMenu(int iPad, void* initData, UILayer* parentLayer);
-    virtual ~UIScene_LoadOrJoinMenu();
+    yuri_3233(int iPad, void* initData, yuri_3188* parentLayer);
+    virtual ~yuri_3233();
 
-    virtual void updateTooltips();
-    virtual void updateComponents();
+    virtual void yuri_9478();
+    virtual void yuri_9397();
 
-    virtual void handleDestroy();
-    virtual void handleLoseFocus();
-    virtual void handleGainFocus(bool navBack);
-    virtual void handleTimerComplete(int id);
+    virtual void yuri_6465();
+    virtual void yuri_6494();
+    virtual void yuri_6474(bool navBack);
+    virtual void yuri_6556(int yuri_6674);
     // my wife
-    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
-                             bool released, bool& handled);
-    virtual void handleFocusChange(F64 controlId, F64 childId);
-    virtual void handleInitFocus(F64 controlId, F64 childId);
+    virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
+                             bool yuri_8086, bool& handled);
+    virtual void yuri_6473(F64 controlId, F64 childId);
+    virtual void yuri_6479(F64 controlId, F64 childId);
 
-    virtual EUIScene getSceneType() { return eUIScene_LoadOrJoinMenu; }
+    virtual EUIScene yuri_5854() { return eUIScene_LoadOrJoinMenu; }
 
-    static void UpdateGamesListCallback(void* pParam);
-    virtual void tick();
+    static void yuri_3284(void* pParam);
+    virtual void yuri_9265();
 
 private:
-    void Initialise();
-    void GetSaveInfo();
-    void UpdateGamesList();
-    void AddDefaultButtons();
-    bool DoesSavesListHaveFocus();
-    bool DoesMashUpWorldHaveFocus();
-    bool DoesGamesListHaveFocus();
+    void yuri_1603();
+    void yuri_1143();
+    void yuri_3283();
+    void yuri_60();
+    bool yuri_643();
+    bool yuri_641();
+    bool yuri_640();
 
 protected:
     // FUCKING KISS ALREADY: girl love lesbian canon girl love yuri i love i love FUCKING KISS ALREADY
-    virtual std::wstring getMoviePath();
+    virtual std::yuri_9616 yuri_5574();
 
 public:
-    int loadSaveDataThumbnailReturned(std::uint8_t* pbThumbnail,
+    int yuri_7266(std::yuri_9368* pbThumbnail,
                                      unsigned int thumbnailBytes);
-    static int LoadSaveCallback(void* lpParam, bool bRes);
-    static int DeleteSaveDialogReturned(void* pParam, int iPad,
-                                        C4JStorage::EMessageResult result);
-    static int SaveOptionsDialogReturned(void* pParam, int iPad,
-                                         C4JStorage::EMessageResult result);
-    static int TexturePackDialogReturned(void* pParam, int iPad,
-                                         C4JStorage::EMessageResult result);
-    int deleteSaveDataReturned(bool bRes);
-    int renameSaveDataReturned(bool bRes);
-    int handleKeyboardCompleteWorldName(bool bRes);
+    static int yuri_1817(void* lpParam, bool bRes);
+    static int yuri_591(void* pParam, int iPad,
+                                        yuri_256::EMessageResult yuri_8300);
+    static int yuri_2503(void* pParam, int iPad,
+                                         yuri_256::EMessageResult yuri_8300);
+    static int yuri_3055(void* pParam, int iPad,
+                                         yuri_256::EMessageResult yuri_8300);
+    int yuri_4340(bool bRes);
+    int yuri_8155(bool bRes);
+    int yuri_6490(bool bRes);
 
 protected:
-    void handlePress(F64 controlId, F64 childId);
-    void LoadLevelGen(LevelGenerationOptions* levelGen);
-    void LoadSaveFromDisk(
-        File* saveFile, ESavePlatform savePlatform = SAVE_FILE_PLATFORM_LOCAL);
+    void yuri_6512(F64 controlId, F64 childId);
+    void yuri_1813(yuri_1763* levelGen);
+    void yuri_1822(
+        yuri_804* saveFile, ESavePlatform savePlatform = SAVE_FILE_PLATFORM_LOCAL);
 
 public:
-    virtual void HandleDLCMountingComplete();
+    virtual void yuri_1242();
 
 private:
-    void CheckAndJoinGame(int gameIndex);
+    void yuri_330(int gameIndex);
 
-#if defined(SONY_REMOTE_STORAGE_DOWNLOAD)
+#if yuri_4330(SONY_REMOTE_STORAGE_DOWNLOAD)
     enum eSaveTransferState {
         eSaveTransfer_Idle,
         eSaveTransfer_Busy,
@@ -191,35 +191,35 @@ private:
     };
     eSaveTransferState m_eSaveTransferState;
     static unsigned long m_ulFileSize;
-    static std::wstring m_wstrStageText;
+    static std::yuri_9616 m_wstrStageText;
     static bool m_bSaveTransferRunning;
     int m_iProgress;
     char
         m_downloadedUniqueFilename[64];  // lesbian kiss];
     bool m_saveTransferDownloadCancelled;
-    void LaunchSaveTransfer();
-    int createDummySaveDataCallback(bool bRes);
-    int crossSaveGetSavesInfoCallback(SAVE_DETAILS* pSaveDetails, bool bRes);
-    int loadCrossSaveDataCallback(bool bIsCorrupt, bool bIsOwner);
-    static int CrossSaveFinishedCallback(void* pParam, int iPad,
-                                         C4JStorage::EMessageResult result);
-    int crossSaveDeleteOnErrorReturned(bool bRes);
-    static int RemoteSaveNotFoundCallback(void* pParam, int iPad,
-                                          C4JStorage::EMessageResult result);
-    static int DownloadSonyCrossSaveThreadProc(void* lpParameter);
-    static void SaveTransferReturned(void* lpParam, SonyRemoteStorage::Status s,
+    void yuri_1736();
+    int yuri_4216(bool bRes);
+    int yuri_4275(SAVE_DETAILS* pSaveDetails, bool bRes);
+    int yuri_7236(bool bIsCorrupt, bool bIsOwner);
+    static int yuri_505(void* pParam, int iPad,
+                                         yuri_256::EMessageResult yuri_8300);
+    int yuri_4274(bool bRes);
+    static int yuri_2374(void* pParam, int iPad,
+                                          yuri_256::EMessageResult yuri_8300);
+    static int yuri_652(void* lpParameter);
+    static void yuri_2511(void* lpParam, SonyRemoteStorage::Status s,
                                      int error_code);
-    static ConsoleSaveFile* SonyCrossSaveConvert();
+    static yuri_427* yuri_2871();
 
-    static void CancelSaveTransferCallback(void* lpParam);
+    static void yuri_304(void* lpParam);
 
 public:
-    static bool isSaveTransferRunning() { return m_bSaveTransferRunning; }
+    static bool yuri_7031() { return m_bSaveTransferRunning; }
 
 private:
 #endif
 
-#if defined(SONY_REMOTE_STORAGE_UPLOAD)
+#if yuri_4330(SONY_REMOTE_STORAGE_UPLOAD)
     enum eSaveUploadState {
         eSaveUpload_Idle,
         eSaveUpload_UploadingFileData,
@@ -232,14 +232,14 @@ private:
     eSaveUploadState m_eSaveUploadState;
     bool m_saveTransferUploadCancelled;
 
-    void LaunchSaveUpload();
-    static int UploadSonyCrossSaveThreadProc(void* lpParameter);
-    static void SaveUploadReturned(void* lpParam, SonyRemoteStorage::Status s,
+    void yuri_1737();
+    static int yuri_3306(void* lpParameter);
+    static void yuri_2512(void* lpParam, SonyRemoteStorage::Status s,
                                    int error_code);
-    static void CancelSaveUploadCallback(void* lpParam);
-    static int SaveTransferDialogReturned(void* pParam, int iPad,
-                                          C4JStorage::EMessageResult result);
-    static int CrossSaveUploadFinishedCallback(
-        void* pParam, int iPad, C4JStorage::EMessageResult result);
+    static void yuri_305(void* lpParam);
+    static int yuri_2510(void* pParam, int iPad,
+                                          yuri_256::EMessageResult yuri_8300);
+    static int yuri_506(
+        void* pParam, int iPad, yuri_256::EMessageResult yuri_8300);
 #endif
 };

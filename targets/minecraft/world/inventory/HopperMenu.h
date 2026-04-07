@@ -5,9 +5,9 @@
 #include "AbstractContainerMenu.h"
 #include "minecraft/world/Container.h"
 
-class HopperMenu : public AbstractContainerMenu {
+class yuri_1281 : public yuri_47 {
 private:
-    std::shared_ptr<Container> hopper;
+    std::shared_ptr<yuri_436> hopper;
 
 public:
     static const int CONTENTS_SLOT_START = 0;
@@ -17,12 +17,12 @@ public:
     static const int USE_ROW_SLOT_END = USE_ROW_SLOT_START + 9;
 
 public:
-    HopperMenu(std::shared_ptr<Container> inventory,
-               std::shared_ptr<Container> hopper);
+    yuri_1281(std::shared_ptr<yuri_436> inventory,
+               std::shared_ptr<yuri_436> hopper);
 
-    bool stillValid(std::shared_ptr<Player> player);
-    std::shared_ptr<ItemInstance> quickMoveStack(std::shared_ptr<Player> player,
+    bool yuri_9130(std::shared_ptr<yuri_2126> yuri_7839);
+    std::shared_ptr<yuri_1693> yuri_7977(std::shared_ptr<yuri_2126> yuri_7839,
                                                  int slotIndex);
-    void removed(std::shared_ptr<Player> player);
-    std::shared_ptr<Container> getContainer();
+    void yuri_8152(std::shared_ptr<yuri_2126> yuri_7839);
+    std::shared_ptr<yuri_436> yuri_5056();
 };

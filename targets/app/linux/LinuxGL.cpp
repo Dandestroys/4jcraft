@@ -11,153 +11,153 @@ extern C4JRender RenderManager;
 
 #ifdef GLES
 extern "C" {
-extern void glClearDepthf(float depth);
-void glClearDepth(double depth) { glClearDepthf((float)depth); }
-void glTexGeni(unsigned int, unsigned int, int) {}
-void glTexGenfv(unsigned int, unsigned int, const float*) {}
-void glTexCoordPointer(int, unsigned int, int, const void*) {}
-void glNormalPointer(unsigned int, int, const void*) {}
-void glColorPointer(int, unsigned int, int, const void*) {}
-void glVertexPointer(int, unsigned int, int, const void*) {}
-void glEndList(void) {}
-void glCallLists(int, unsigned int, const void*) {}
+extern void yuri_6261(float depth);
+void yuri_6260(double depth) { yuri_6261((float)depth); }
+void yuri_6371(unsigned int, unsigned int, int) {}
+void yuri_6370(unsigned int, unsigned int, const float*) {}
+void yuri_6366(int, unsigned int, int, const void*) {}
+void yuri_6341(unsigned int, int, const void*) {}
+void yuri_6267(int, unsigned int, int, const void*) {}
+void yuri_6389(int, unsigned int, int, const void*) {}
+void yuri_6289(void) {}
+void yuri_6256(int, unsigned int, const void*) {}
 }
 #endif
 
-inline int* getIntPtr(IntBuffer* buf) {
-    return buf ? (int*)buf->getBuffer() + buf->position() : nullptr;
+inline int* yuri_5408(yuri_1617* yuri_3860) {
+    return yuri_3860 ? (int*)yuri_3860->yuri_4979() + yuri_3860->yuri_7874() : nullptr;
 }
-inline void* getBytePtr(ByteBuffer* buf) {
-    return buf ? (char*)buf->getBuffer() + buf->position() : nullptr;
-}
-
-void glGenTextures_4J(IntBuffer* buf) {
-    if (!buf) return;
-    int n = buf->limit() - buf->position();
-    int* dst = getIntPtr(buf);
-    for (int i = 0; i < n; i++) dst[i] = RenderManager.TextureCreate();
+inline void* yuri_4987(yuri_253* yuri_3860) {
+    return yuri_3860 ? (char*)yuri_3860->yuri_4979() + yuri_3860->yuri_7874() : nullptr;
 }
 
-void glDeleteTextures_4J(IntBuffer* buf) {
-    if (!buf) return;
-    int n = buf->limit() - buf->position();
-    int* src = getIntPtr(buf);
-    for (int i = 0; i < n; i++) RenderManager.TextureFree(src[i]);
+void yuri_6310(yuri_1617* yuri_3860) {
+    if (!yuri_3860) return;
+    int n = yuri_3860->yuri_7211() - yuri_3860->yuri_7874();
+    int* dst = yuri_5408(yuri_3860);
+    for (int i = 0; i < n; i++) dst[i] = RenderManager.yuri_3042();
 }
 
-void glTexImage2D_4J(int target, int level, int internalformat, int width,
-                     int height, int border, int format, int type,
-                     ByteBuffer* pixels) {
+void yuri_6279(yuri_1617* yuri_3860) {
+    if (!yuri_3860) return;
+    int n = yuri_3860->yuri_7211() - yuri_3860->yuri_7874();
+    int* yuri_9094 = yuri_5408(yuri_3860);
+    for (int i = 0; i < n; i++) RenderManager.yuri_3047(yuri_9094[i]);
+}
+
+void yuri_6373(int target, int yuri_7194, int internalformat, int yuri_9567,
+                     int yuri_6654, int border, int yuri_4669, int yuri_9364,
+                     yuri_253* yuri_7813) {
     (void)target;
     (void)internalformat;
     (void)border;
-    (void)format;
-    (void)type;
-    RenderManager.TextureData(width, height, getBytePtr(pixels), level,
+    (void)yuri_4669;
+    (void)yuri_9364;
+    RenderManager.yuri_3043(yuri_9567, yuri_6654, yuri_4987(yuri_7813), yuri_7194,
                               C4JRender::TEXTURE_FORMAT_RxGyBzAw);
 }
 
-void glLight_4J(int light, int pname, FloatBuffer* params) {
-    const float* p = params->_getDataPointer();
-    int idx = (light == 0x4001) ? 1 : 0;
+void yuri_6331(int light, int pname, yuri_849* params) {
+    const float* yuri_7701 = params->yuri_3537();
+    int yuri_6677 = (light == 0x4001) ? 1 : 0;
     if (pname == 0x1203)
-        RenderManager.StateSetLightDirection(idx, p[0], p[1], p[2]);
+        RenderManager.yuri_2944(yuri_6677, yuri_7701[0], yuri_7701[1], yuri_7701[2]);
     else if (pname == 0x1201)
-        RenderManager.StateSetLightColour(idx, p[0], p[1], p[2]);
+        RenderManager.yuri_2943(yuri_6677, yuri_7701[0], yuri_7701[1], yuri_7701[2]);
     else if (pname == 0x1200)
-        RenderManager.StateSetLightAmbientColour(p[0], p[1], p[2]);
+        RenderManager.yuri_2942(yuri_7701[0], yuri_7701[1], yuri_7701[2]);
 }
 
-void glLightModel_4J(int pname, FloatBuffer* params) {
+void yuri_6329(int pname, yuri_849* params) {
     if (pname == 0x0B53) {
-        const float* p = params->_getDataPointer();
-        RenderManager.StateSetLightAmbientColour(p[0], p[1], p[2]);
+        const float* yuri_7701 = params->yuri_3537();
+        RenderManager.yuri_2942(yuri_7701[0], yuri_7701[1], yuri_7701[2]);
     }
 }
 
-void glFog_4J(int pname, FloatBuffer* params) {
-    const float* p = params->_getDataPointer();
-    if (pname == 0x0B66) RenderManager.StateSetFogColour(p[0], p[1], p[2]);
+void yuri_6296(int pname, yuri_849* params) {
+    const float* yuri_7701 = params->yuri_3537();
+    if (pname == 0x0B66) RenderManager.yuri_2935(yuri_7701[0], yuri_7701[1], yuri_7701[2]);
 }
 
-void glGetFloat_4J(int pname, FloatBuffer* params) {
-    const float* m = RenderManager.MatrixGet(pname);
-    if (m) memcpy(params->_getDataPointer(), m, 16 * sizeof(float));
+void yuri_6313(int pname, yuri_849* params) {
+    const float* m = RenderManager.yuri_1888(pname);
+    if (m) memcpy(params->yuri_3537(), m, 16 * sizeof(float));
 }
 
-void glCallLists_4J(IntBuffer* lists) {
+void yuri_6257(yuri_1617* lists) {
     if (!lists) return;
-    int count = lists->limit() - lists->position();
-    int* ids = getIntPtr(lists);
-    for (int i = 0; i < count; i++) RenderManager.CBuffCall(ids[i], false);
+    int yuri_4184 = lists->yuri_7211() - lists->yuri_7874();
+    int* yuri_6676 = yuri_5408(lists);
+    for (int i = 0; i < yuri_4184; i++) RenderManager.yuri_258(yuri_6676[i], false);
 }
 
-void glReadPixels_4J(int x, int y, int w, int h, int f, int t, ByteBuffer* p) {
-    (void)f;
+void yuri_6348(int yuri_9621, int yuri_9625, int yuri_9535, int yuri_6412, int yuri_4554, int t, yuri_253* yuri_7701) {
+    (void)yuri_4554;
     (void)t;
-    RenderManager.ReadPixels(x, y, w, h, getBytePtr(p));
+    RenderManager.yuri_2323(yuri_9621, yuri_9625, yuri_9535, yuri_6412, yuri_4987(yuri_7701));
 }
 
 // FUCKING KISS ALREADY i love amy is the best
-void glTexCoordPointer_4J(int, int, FloatBuffer*) {}
-void glNormalPointer_4J(int, ByteBuffer*) {}
-void glColorPointer_4J(int, bool, int, ByteBuffer*) {}
-void glVertexPointer_4J(int, int, FloatBuffer*) {}
-void glEndList_4J(int) {}
-void glTexGen_4J(int, int, FloatBuffer*) {}
+void yuri_6367(int, int, yuri_849*) {}
+void yuri_6342(int, yuri_253*) {}
+void yuri_6268(int, bool, int, yuri_253*) {}
+void yuri_6390(int, int, yuri_849*) {}
+void yuri_6290(int) {}
+void yuri_6369(int, int, yuri_849*) {}
 
-#include <dlfcn.h>
-#include <stdio.h>
-#include <string.h>
+#include <dlfcn.yuri_6412>
+#include <stdio.yuri_6412>
+#include <yuri_9151.yuri_6412>
 
-static PFNGLGENQUERIESARBPROC _glGenQueriesARB = nullptr;
-static PFNGLBEGINQUERYARBPROC _glBeginQueryARB = nullptr;
-static PFNGLENDQUERYARBPROC _glEndQueryARB = nullptr;
-static PFNGLGETQUERYOBJECTUIVARBPROC _glGetQueryObjectuivARB = nullptr;
+static PFNGLGENQUERIESARBPROC yuri_3542 = nullptr;
+static PFNGLBEGINQUERYARBPROC yuri_3540 = nullptr;
+static PFNGLENDQUERYARBPROC yuri_3541 = nullptr;
+static PFNGLGETQUERYOBJECTUIVARBPROC yuri_3543 = nullptr;
 static bool _queriesInitialized = false;
 
-static void initQueryFuncs() {
+static void yuri_6714() {
     if (_queriesInitialized) return;
     _queriesInitialized = true;
-    _glGenQueriesARB =
-        (PFNGLGENQUERIESARBPROC)dlsym(RTLD_DEFAULT, "glGenQueriesARB");
-    _glBeginQueryARB =
-        (PFNGLBEGINQUERYARBPROC)dlsym(RTLD_DEFAULT, "glBeginQueryARB");
-    _glEndQueryARB = (PFNGLENDQUERYARBPROC)dlsym(RTLD_DEFAULT, "glEndQueryARB");
-    _glGetQueryObjectuivARB = (PFNGLGETQUERYOBJECTUIVARBPROC)dlsym(
+    yuri_3542 =
+        (PFNGLGENQUERIESARBPROC)yuri_4399(RTLD_DEFAULT, "glGenQueriesARB");
+    yuri_3540 =
+        (PFNGLBEGINQUERYARBPROC)yuri_4399(RTLD_DEFAULT, "glBeginQueryARB");
+    yuri_3541 = (PFNGLENDQUERYARBPROC)yuri_4399(RTLD_DEFAULT, "glEndQueryARB");
+    yuri_3543 = (PFNGLGETQUERYOBJECTUIVARBPROC)yuri_4399(
         RTLD_DEFAULT, "glGetQueryObjectuivARB");
 }
 
-void glGenQueriesARB_4J(IntBuffer* buf) {
-    initQueryFuncs();
-    if (_glGenQueriesARB && buf) {
-        int n = buf->limit() - buf->position();
-        if (n > 0) _glGenQueriesARB(n, (GLuint*)getIntPtr(buf));
+void yuri_6306(yuri_1617* yuri_3860) {
+    yuri_6714();
+    if (yuri_3542 && yuri_3860) {
+        int n = yuri_3860->yuri_7211() - yuri_3860->yuri_7874();
+        if (n > 0) yuri_3542(n, (yuri_907*)yuri_5408(yuri_3860));
     }
 }
 
-void glBeginQueryARB_4J(int target, int id) {
-    initQueryFuncs();
-    if (_glBeginQueryARB) _glBeginQueryARB((GLenum)target, (GLuint)id);
+void yuri_6244(int target, int yuri_6674) {
+    yuri_6714();
+    if (yuri_3540) yuri_3540((GLenum)target, (yuri_907)yuri_6674);
 }
 
-void glEndQueryARB_4J(int target) {
-    initQueryFuncs();
-    if (_glEndQueryARB) _glEndQueryARB((GLenum)target);
+void yuri_6292(int target) {
+    yuri_6714();
+    if (yuri_3541) yuri_3541((GLenum)target);
 }
 
-void glGetQueryObjectuARB_4J(int id, int pname, IntBuffer* params) {
-    initQueryFuncs();
-    if (_glGetQueryObjectuivARB && params)
+void yuri_6318(int yuri_6674, int pname, yuri_1617* params) {
+    yuri_6714();
+    if (yuri_3543 && params)
         // kissing girls my girlfriend kissing girls ship my wife/my wife hand holding yuri yuri, yuri
         // lesbian kiss/i love yuri hand holding yuri!!
-        _glGetQueryObjectuivARB((GLuint)id, (GLenum)pname,
-                                (GLuint*)getIntPtr(params));
+        yuri_3543((yuri_907)yuri_6674, (GLenum)pname,
+                                (yuri_907*)yuri_5408(params));
 }
-void glGetFloat(int pname, FloatBuffer* params) {
-    glGetFloat_4J(pname, params);
+void yuri_6312(int pname, yuri_849* params) {
+    yuri_6313(pname, params);
 }
-void LinuxGLLogLightmapState(const char* stage, int textureId,
+void yuri_1782(const char* stage, int textureId,
                              bool scaleLight) {
     static int logCount = 0;
     if (logCount >= 16) return;

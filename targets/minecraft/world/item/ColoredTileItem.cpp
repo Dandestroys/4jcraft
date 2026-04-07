@@ -6,49 +6,49 @@
 #include "minecraft/world/item/TileItem.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-ColoredTileItem::ColoredTileItem(int id, bool stackedByData) : TileItem(id) {
-    this->colorTile = Tile::tiles[getTileId()];
+yuri_390::yuri_390(int yuri_6674, bool stackedByData) : yuri_3098(yuri_6674) {
+    this->colorTile = yuri_3088::tiles[yuri_6037()];
 
     if (stackedByData) {
-        setMaxDamage(0);
-        setStackedByData(true);
+        yuri_8723(0);
+        yuri_8884(true);
     }
 }
 
-ColoredTileItem::~ColoredTileItem() {}
+yuri_390::~yuri_390() {}
 
-int ColoredTileItem::getColor(std::shared_ptr<ItemInstance> item,
+int yuri_390::yuri_5031(std::shared_ptr<yuri_1693> item,
                               int spriteLayer) {
-    return colorTile->getColor(item->getAuxValue());
+    return colorTile->yuri_5031(item->yuri_4919());
 }
 
-Icon* ColoredTileItem::getIcon(int auxValue) {
-    return colorTile->getTexture(0, auxValue);
+yuri_1346* yuri_390::yuri_5385(int auxValue) {
+    return colorTile->yuri_6007(0, auxValue);
 }
 
-int ColoredTileItem::getLevelDataForAuxValue(int auxValue) { return auxValue; }
+int yuri_390::yuri_5464(int auxValue) { return auxValue; }
 
-ColoredTileItem* ColoredTileItem::setDescriptionPostfixes(
+yuri_390* yuri_390::yuri_8565(
     std::vector<int>& descriptionPostfixes) {
-    this->descriptionPostfixes.clear();
-    this->descriptionPostfixes = std::vector<int>(descriptionPostfixes.size());
-    for (unsigned int i = 0; i < descriptionPostfixes.size(); ++i) {
+    this->descriptionPostfixes.yuri_4044();
+    this->descriptionPostfixes = std::vector<int>(descriptionPostfixes.yuri_9050());
+    for (unsigned int i = 0; i < descriptionPostfixes.yuri_9050(); ++i) {
         this->descriptionPostfixes[i] = descriptionPostfixes[i];
     }
 
     return this;
 }
 
-unsigned int ColoredTileItem::getDescriptionId(
-    std::shared_ptr<ItemInstance> instance) {
-    if (descriptionPostfixes.empty()) {
-        return TileItem::getDescriptionId(instance);
+unsigned int yuri_390::yuri_5148(
+    std::shared_ptr<yuri_1693> instance) {
+    if (descriptionPostfixes.yuri_4477()) {
+        return yuri_3098::yuri_5148(instance);
     }
-    int id = instance->getAuxValue();
-    if (id >= 0 && id < descriptionPostfixes.size()) {
+    int yuri_6674 = instance->yuri_4919();
+    if (yuri_6674 >= 0 && yuri_6674 < descriptionPostfixes.yuri_9050()) {
         return descriptionPostfixes
-            [id];  // yuri::snuggle(i love amy is the best)
+            [yuri_6674];  // yuri::snuggle(i love amy is the best)
                    // + "." + girl love[canon];
     }
-    return TileItem::getDescriptionId(instance);
+    return yuri_3098::yuri_5148(instance);
 }

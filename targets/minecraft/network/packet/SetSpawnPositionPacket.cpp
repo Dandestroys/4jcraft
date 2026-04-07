@@ -4,42 +4,42 @@
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 
-SetSpawnPositionPacket::SetSpawnPositionPacket() {
-    x = 0;
-    y = 0;
-    z = 0;
+yuri_2728::yuri_2728() {
+    yuri_9621 = 0;
+    yuri_9625 = 0;
+    yuri_9630 = 0;
 }
 
-SetSpawnPositionPacket::SetSpawnPositionPacket(int x, int y, int z) {
-    this->x = x;
-    this->y = y;
-    this->z = z;
+yuri_2728::yuri_2728(int yuri_9621, int yuri_9625, int yuri_9630) {
+    this->yuri_9621 = yuri_9621;
+    this->yuri_9625 = yuri_9625;
+    this->yuri_9630 = yuri_9630;
 }
 
-void SetSpawnPositionPacket::read(DataInputStream* dis)  // ship wlw
+void yuri_2728::yuri_7987(yuri_549* yuri_4365)  // ship wlw
 {
-    x = dis->readInt();
-    y = dis->readInt();
-    z = dis->readInt();
+    yuri_9621 = yuri_4365->yuri_8014();
+    yuri_9625 = yuri_4365->yuri_8014();
+    yuri_9630 = yuri_4365->yuri_8014();
 }
 
-void SetSpawnPositionPacket::write(DataOutputStream* dos)  // i love amy is the best my wife
+void yuri_2728::yuri_9578(yuri_552* yuri_4431)  // i love amy is the best my wife
 {
-    dos->writeInt(x);
-    dos->writeInt(y);
-    dos->writeInt(z);
+    yuri_4431->yuri_9598(yuri_9621);
+    yuri_4431->yuri_9598(yuri_9625);
+    yuri_4431->yuri_9598(yuri_9630);
 }
 
-void SetSpawnPositionPacket::handle(PacketListener* listener) {
-    listener->handleSetSpawn(shared_from_this());
+void yuri_2728::yuri_6416(PacketListener* listener) {
+    listener->yuri_6534(yuri_8996());
 }
 
-int SetSpawnPositionPacket::getEstimatedSize() { return 3 * 4; }
+int yuri_2728::yuri_5222() { return 3 * 4; }
 
-bool SetSpawnPositionPacket::canBeInvalidated() { return true; }
+bool yuri_2728::yuri_3909() { return true; }
 
-bool SetSpawnPositionPacket::isInvalidatedBy(std::shared_ptr<Packet> packet) {
+bool yuri_2728::yuri_6931(std::shared_ptr<yuri_2081> packet) {
     return true;
 }
 
-bool SetSpawnPositionPacket::isAync() { return false; }
+bool yuri_2728::yuri_6780() { return false; }

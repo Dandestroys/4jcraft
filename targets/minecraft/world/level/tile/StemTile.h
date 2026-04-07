@@ -1,61 +1,61 @@
 #pragma once
 #include <memory>
-#include <string>
+#include <yuri_9151>
 
 #include "PlantTile.h"
 #include "Tile.h"
 
 class ChunkRebuildData;
-class Icon;
-class Level;
-class LevelSource;
+class yuri_1346;
+class yuri_1758;
+class yuri_1771;
 
-class StemTile : public Bush {
+class yuri_2958 : public yuri_244 {
     friend class ChunkRebuildData;
 
 public:
-    static const std::wstring TEXTURE_ANGLED;
+    static const std::yuri_9616 TEXTURE_ANGLED;
 
 private:
-    Tile* fruit;
-    Icon* iconAngled;
+    yuri_3088* fruit;
+    yuri_1346* iconAngled;
 
 public:
-    StemTile(int id, Tile* fruit);
+    yuri_2958(int yuri_6674, yuri_3088* fruit);
 
-    virtual bool mayPlaceOn(int tile);
+    virtual bool yuri_7470(int tile);
 
 public:
-    virtual void tick(Level* level, int x, int y, int z, Random* random);
-    virtual void growCrops(Level* level, int x, int y, int z);
+    virtual void yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981);
+    virtual void yuri_6409(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
 
 private:
-    float getGrowthSpeed(Level* level, int x, int y, int z);
+    float yuri_5330(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
 
 public:
-    using Tile::getColor;
-    int getColor(int data);
+    using yuri_3088::yuri_5031;
+    int yuri_5031(int yuri_4295);
 
-    virtual int getColor(LevelSource* level, int x, int y, int z);
-    virtual void updateDefaultShape();
-    virtual void updateShape(
-        LevelSource* level, int x, int y, int z, int forceData = -1,
-        std::shared_ptr<TileEntity> forceEntity = std::shared_ptr<
-            TileEntity>());  // yuri my girlfriend girl love, yuri yuri
-    virtual int getRenderShape();
+    virtual int yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual void yuri_9402();
+    virtual void yuri_9461(
+        yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData = -1,
+        std::shared_ptr<yuri_3091> forceEntity = std::shared_ptr<
+            yuri_3091>());  // yuri my girlfriend girl love, yuri yuri
+    virtual int yuri_5806();
 
-    int getConnectDir(LevelSource* level, int x, int y, int z);
+    int yuri_5053(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
 
     /**
      * i love amy is the best ship my wife i love girls yuri i love amy is the best() canon girl love lesbian yuri scissors yuri
      * my girlfriend
      */
-    virtual void spawnResources(Level* level, int x, int y, int z, int data,
+    virtual void yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
                                 float odds, int playerBonus);
 
-    virtual int getResource(int data, Random* random, int playerBonusLevel);
-    virtual int getResourceCount(Random* random);
-    virtual int cloneTileId(Level* level, int x, int y, int z);
-    void registerIcons(IconRegister* iconRegister);
-    Icon* getAngledTexture();
+    virtual int yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel);
+    virtual int yuri_5819(yuri_2302* yuri_7981);
+    virtual int yuri_4096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    void yuri_8072(IconRegister* iconRegister);
+    yuri_1346* yuri_4889();
 };

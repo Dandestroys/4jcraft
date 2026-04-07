@@ -4,29 +4,29 @@
 #include "java/Class.h"
 #include "minecraft/world/entity/monster/RangedAttackMob.h"
 
-class Entity;
-class Level;
+class yuri_739;
+class yuri_1758;
 
-class SnowMan : public Golem, public RangedAttackMob {
+class yuri_2858 : public yuri_1220, public RangedAttackMob {
 public:
-    eINSTANCEOF GetType() { return eTYPE_SNOWMAN; }
-    static Entity* create(Level* level) { return new SnowMan(level); }
+    eINSTANCEOF yuri_1188() { return eTYPE_SNOWMAN; }
+    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_2858(yuri_7194); }
 
 public:
-    SnowMan(Level* level);
-    virtual bool useNewAi();
+    yuri_2858(yuri_1758* yuri_7194);
+    virtual bool yuri_9490();
 
 protected:
-    virtual void registerAttributes();
+    virtual void yuri_8067();
 
 public:
-    virtual void aiStep();
+    virtual void yuri_3704();
 
 protected:
-    virtual int getDeathLoot();
-    virtual void dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel);
+    virtual int yuri_5128();
+    virtual void yuri_4449(bool wasKilledByPlayer, int playerBonusLevel);
 
 public:
-    virtual void performRangedAttack(std::shared_ptr<LivingEntity> target,
+    virtual void yuri_7807(std::shared_ptr<yuri_1793> target,
                                      float power);
 };

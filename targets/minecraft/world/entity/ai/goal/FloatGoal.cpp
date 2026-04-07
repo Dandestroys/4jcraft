@@ -6,14 +6,14 @@
 #include "minecraft/world/entity/ai/control/JumpControl.h"
 #include "minecraft/world/entity/ai/navigation/PathNavigation.h"
 
-FloatGoal::FloatGoal(Mob* mob) {
+yuri_850::yuri_850(yuri_1950* mob) {
     this->mob = mob;
-    setRequiredControlFlags(Control::JumpControlFlag);
-    mob->getNavigation()->setCanFloat(true);
+    yuri_8818(Control::JumpControlFlag);
+    mob->yuri_5583()->yuri_8500(true);
 }
 
-bool FloatGoal::canUse() { return (mob->isInWater() || mob->isInLava()); }
+bool yuri_850::yuri_3967() { return (mob->yuri_6920() || mob->yuri_6915()); }
 
-void FloatGoal::tick() {
-    if (mob->getRandom()->nextFloat() < 0.8f) mob->getJumpControl()->jump();
+void yuri_850::yuri_9265() {
+    if (mob->yuri_5773()->yuri_7576() < 0.8f) mob->yuri_5432()->yuri_7151();
 }

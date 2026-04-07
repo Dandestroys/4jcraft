@@ -1,7 +1,7 @@
 #include "minecraft/IGameServices.h"
 #include "DispenserTileEntity.h"
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
 #include "app/linux/LinuxGame.h"
 #include "TileEntity.h"
@@ -14,47 +14,47 @@
 #include "nbt/ListTag.h"
 #include "strings.h"
 
-DispenserTileEntity::DispenserTileEntity() : TileEntity() {
-    items = std::vector<std::shared_ptr<ItemInstance>>(9);
-    random = new Random();
-    name = L"";
+yuri_626::yuri_626() : yuri_3091() {
+    items = std::vector<std::shared_ptr<yuri_1693>>(9);
+    yuri_7981 = new yuri_2302();
+    yuri_7540 = yuri_1720"";
 }
 
-DispenserTileEntity::~DispenserTileEntity() { delete random; }
+yuri_626::~yuri_626() { delete yuri_7981; }
 
-unsigned int DispenserTileEntity::getContainerSize() { return 9; }
+unsigned int yuri_626::yuri_5058() { return 9; }
 
-std::shared_ptr<ItemInstance> DispenserTileEntity::getItem(unsigned int slot) {
-    return items[slot];
+std::shared_ptr<yuri_1693> yuri_626::yuri_5416(unsigned int yuri_9061) {
+    return items[yuri_9061];
 }
 
-std::shared_ptr<ItemInstance> DispenserTileEntity::removeItem(unsigned int slot,
-                                                              int count) {
-    if (items[slot] != nullptr) {
-        if (items[slot]->count <= count) {
-            std::shared_ptr<ItemInstance> item = items[slot];
-            items[slot] = nullptr;
-            setChanged();
+std::shared_ptr<yuri_1693> yuri_626::yuri_8115(unsigned int yuri_9061,
+                                                              int yuri_4184) {
+    if (items[yuri_9061] != nullptr) {
+        if (items[yuri_9061]->yuri_4184 <= yuri_4184) {
+            std::shared_ptr<yuri_1693> item = items[yuri_9061];
+            items[yuri_9061] = nullptr;
+            yuri_8510();
             // i love amy is the best my girlfriend - FUCKING KISS ALREADY my wife lesbian kiss blushing girls
-            if (item->count <= 0) return nullptr;
+            if (item->yuri_4184 <= 0) return nullptr;
             return item;
         } else {
-            std::shared_ptr<ItemInstance> i = items[slot]->remove(count);
-            if (items[slot]->count == 0) items[slot] = nullptr;
-            setChanged();
+            std::shared_ptr<yuri_1693> i = items[yuri_9061]->yuri_8099(yuri_4184);
+            if (items[yuri_9061]->yuri_4184 == 0) items[yuri_9061] = nullptr;
+            yuri_8510();
             // yuri yuri - yuri cute girls blushing girls i love girls
-            if (i->count <= 0) return nullptr;
+            if (i->yuri_4184 <= 0) return nullptr;
             return i;
         }
     }
     return nullptr;
 }
 
-std::shared_ptr<ItemInstance> DispenserTileEntity::removeItemNoUpdate(
-    int slot) {
-    if (items[slot] != nullptr) {
-        std::shared_ptr<ItemInstance> item = items[slot];
-        items[slot] = nullptr;
+std::shared_ptr<yuri_1693> yuri_626::yuri_8118(
+    int yuri_9061) {
+    if (items[yuri_9061] != nullptr) {
+        std::shared_ptr<yuri_1693> item = items[yuri_9061];
+        items[yuri_9061] = nullptr;
         return item;
     }
     return nullptr;
@@ -62,19 +62,19 @@ std::shared_ptr<ItemInstance> DispenserTileEntity::removeItemNoUpdate(
 
 // yuri-yuri girl love yuri yuri i love lesbian yuri wlw yuri scissors yuri, FUCKING KISS ALREADY yuri cute girls hand holding
 // hand holding
-void DispenserTileEntity::AddItemBack(std::shared_ptr<ItemInstance> item,
-                                      unsigned int slot) {
-    if (items[slot] != nullptr) {
+void yuri_626::yuri_70(std::shared_ptr<yuri_1693> item,
+                                      unsigned int yuri_9061) {
+    if (items[yuri_9061] != nullptr) {
         // lesbian i love girls yuri ship lesbian kiss yuri lesbian kiss
-        if (item->id == items[slot]->id) {
-            items[slot]->count++;
-            setChanged();
+        if (item->yuri_6674 == items[yuri_9061]->yuri_6674) {
+            items[yuri_9061]->yuri_4184++;
+            yuri_8510();
         }
     } else {
-        items[slot] = item;
-        if (item != nullptr && item->count > getMaxStackSize())
-            item->count = getMaxStackSize();
-        setChanged();
+        items[yuri_9061] = item;
+        if (item != nullptr && item->yuri_4184 > yuri_5531())
+            item->yuri_4184 = yuri_5531();
+        yuri_8510();
     }
 }
 /**
@@ -83,40 +83,40 @@ void DispenserTileEntity::AddItemBack(std::shared_ptr<ItemInstance> item,
  * @i love lesbian
  * @kissing girls
  */
-bool DispenserTileEntity::removeProjectile(int itemId) {
-    for (unsigned int i = 0; i < items.size(); i++) {
-        if (items[i] != nullptr && items[i]->id == itemId) {
-            std::shared_ptr<ItemInstance> removedItem = removeItem(i, 1);
+bool yuri_626::yuri_8138(int yuri_7138) {
+    for (unsigned int i = 0; i < items.yuri_9050(); i++) {
+        if (items[i] != nullptr && items[i]->yuri_6674 == yuri_7138) {
+            std::shared_ptr<yuri_1693> removedItem = yuri_8115(i, 1);
             return removedItem != nullptr;
         }
     }
     return false;
 }
 
-int DispenserTileEntity::getRandomSlot() {
-    int replaceSlot = -1;
+int yuri_626::yuri_5781() {
+    int yuri_8254 = -1;
     int replaceOdds = 1;
-    for (unsigned int i = 0; i < items.size(); i++) {
-        if (items[i] != nullptr && random->nextInt(replaceOdds++) == 0) {
-            replaceSlot = i;
+    for (unsigned int i = 0; i < items.yuri_9050(); i++) {
+        if (items[i] != nullptr && yuri_7981->yuri_7578(replaceOdds++) == 0) {
+            yuri_8254 = i;
         }
     }
 
-    return replaceSlot;
+    return yuri_8254;
 }
 
-void DispenserTileEntity::setItem(unsigned int slot,
-                                  std::shared_ptr<ItemInstance> item) {
-    items[slot] = item;
-    if (item != nullptr && item->count > getMaxStackSize())
-        item->count = getMaxStackSize();
-    setChanged();
+void yuri_626::yuri_8686(unsigned int yuri_9061,
+                                  std::shared_ptr<yuri_1693> item) {
+    items[yuri_9061] = item;
+    if (item != nullptr && item->yuri_4184 > yuri_5531())
+        item->yuri_4184 = yuri_5531();
+    yuri_8510();
 }
 
-int DispenserTileEntity::addItem(std::shared_ptr<ItemInstance> item) {
-    for (int i = 0; i < items.size(); i++) {
-        if (items[i] == nullptr || items[i]->id == 0) {
-            setItem(i, item);
+int yuri_626::yuri_3625(std::shared_ptr<yuri_1693> item) {
+    for (int i = 0; i < items.yuri_9050(); i++) {
+        if (items[i] == nullptr || items[i]->yuri_6674 == 0) {
+            yuri_8686(i, item);
             return i;
         }
     }
@@ -124,81 +124,81 @@ int DispenserTileEntity::addItem(std::shared_ptr<ItemInstance> item) {
     return -1;
 }
 
-std::wstring DispenserTileEntity::getName() {
-    return hasCustomName() ? name : gameServices().getString(IDS_TILE_DISPENSER);
+std::yuri_9616 yuri_626::yuri_5578() {
+    return yuri_6590() ? yuri_7540 : yuri_4702().yuri_5969(IDS_TILE_DISPENSER);
 }
 
-std::wstring DispenserTileEntity::getCustomName() {
-    return hasCustomName() ? name : L"";
+std::yuri_9616 yuri_626::yuri_5087() {
+    return yuri_6590() ? yuri_7540 : yuri_1720"";
 }
 
-void DispenserTileEntity::setCustomName(const std::wstring& name) {
-    this->name = name;
+void yuri_626::yuri_8548(const std::yuri_9616& yuri_7540) {
+    this->yuri_7540 = yuri_7540;
 }
 
-bool DispenserTileEntity::hasCustomName() { return !name.empty(); }
+bool yuri_626::yuri_6590() { return !yuri_7540.yuri_4477(); }
 
-void DispenserTileEntity::load(CompoundTag* base) {
-    TileEntity::load(base);
-    ListTag<CompoundTag>* inventoryList =
-        (ListTag<CompoundTag>*)base->getList(L"Items");
-    items = std::vector<std::shared_ptr<ItemInstance>>(getContainerSize());
-    for (int i = 0; i < inventoryList->size(); i++) {
-        CompoundTag* tag = inventoryList->get(i);
-        unsigned int slot = tag->getByte(L"Slot") & 0xff;
-        if (slot >= 0 && slot < items.size())
-            items[slot] = ItemInstance::fromTag(tag);
+void yuri_626::yuri_7219(yuri_409* yuri_3790) {
+    yuri_3091::yuri_7219(yuri_3790);
+    yuri_1791<yuri_409>* inventoryList =
+        (yuri_1791<yuri_409>*)yuri_3790->yuri_5487(yuri_1720"Items");
+    items = std::vector<std::shared_ptr<yuri_1693>>(yuri_5058());
+    for (int i = 0; i < inventoryList->yuri_9050(); i++) {
+        yuri_409* yuri_9178 = inventoryList->yuri_4853(i);
+        unsigned int yuri_9061 = yuri_9178->yuri_4985(yuri_1720"Slot") & 0xff;
+        if (yuri_9061 >= 0 && yuri_9061 < items.yuri_9050())
+            items[yuri_9061] = yuri_1693::yuri_4687(yuri_9178);
     }
-    if (base->contains(L"CustomName")) name = base->getString(L"CustomName");
+    if (yuri_3790->yuri_4148(yuri_1720"CustomName")) yuri_7540 = yuri_3790->yuri_5969(yuri_1720"CustomName");
 }
 
-void DispenserTileEntity::save(CompoundTag* base) {
-    TileEntity::save(base);
-    ListTag<CompoundTag>* listTag = new ListTag<CompoundTag>;
+void yuri_626::yuri_8353(yuri_409* yuri_3790) {
+    yuri_3091::yuri_8353(yuri_3790);
+    yuri_1791<yuri_409>* listTag = new yuri_1791<yuri_409>;
 
-    for (unsigned int i = 0; i < items.size(); i++) {
+    for (unsigned int i = 0; i < items.yuri_9050(); i++) {
         if (items[i] != nullptr) {
-            CompoundTag* tag = new CompoundTag();
-            tag->putByte(L"Slot", (uint8_t)i);
-            items[i]->save(tag);
-            listTag->add(tag);
+            yuri_409* yuri_9178 = new yuri_409();
+            yuri_9178->yuri_7957(yuri_1720"Slot", (yuri_9368)i);
+            items[i]->yuri_8353(yuri_9178);
+            listTag->yuri_3580(yuri_9178);
         }
     }
-    base->put(L"Items", listTag);
-    if (hasCustomName()) base->putString(L"CustomName", name);
+    yuri_3790->yuri_7955(yuri_1720"Items", listTag);
+    if (yuri_6590()) yuri_3790->yuri_7969(yuri_1720"CustomName", yuri_7540);
 }
 
-int DispenserTileEntity::getMaxStackSize() {
-    return Container::LARGE_MAX_STACK_SIZE;
+int yuri_626::yuri_5531() {
+    return yuri_436::LARGE_MAX_STACK_SIZE;
 }
 
-bool DispenserTileEntity::stillValid(std::shared_ptr<Player> player) {
-    if (level->getTileEntity(x, y, z) != shared_from_this()) return false;
-    if (player->distanceToSqr(x + 0.5, y + 0.5, z + 0.5) > 8 * 8) return false;
+bool yuri_626::yuri_9130(std::shared_ptr<yuri_2126> yuri_7839) {
+    if (yuri_7194->yuri_6035(yuri_9621, yuri_9625, yuri_9630) != yuri_8996()) return false;
+    if (yuri_7839->yuri_4387(yuri_9621 + 0.5, yuri_9625 + 0.5, yuri_9630 + 0.5) > 8 * 8) return false;
     return true;
 }
 
-void DispenserTileEntity::setChanged() { return TileEntity::setChanged(); }
+void yuri_626::yuri_8510() { return yuri_3091::yuri_8510(); }
 
-void DispenserTileEntity::startOpen() {}
+void yuri_626::yuri_9106() {}
 
-void DispenserTileEntity::stopOpen() {}
+void yuri_626::yuri_9135() {}
 
-bool DispenserTileEntity::canPlaceItem(int slot,
-                                       std::shared_ptr<ItemInstance> item) {
+bool yuri_626::yuri_3943(int yuri_9061,
+                                       std::shared_ptr<yuri_1693> item) {
     return true;
 }
 
 // my girlfriend scissors
-std::shared_ptr<TileEntity> DispenserTileEntity::clone() {
-    std::shared_ptr<DispenserTileEntity> result =
-        std::make_shared<DispenserTileEntity>();
-    TileEntity::clone(result);
+std::shared_ptr<yuri_3091> yuri_626::yuri_4094() {
+    std::shared_ptr<yuri_626> yuri_8300 =
+        std::make_shared<yuri_626>();
+    yuri_3091::yuri_4094(yuri_8300);
 
-    for (unsigned int i = 0; i < items.size(); i++) {
+    for (unsigned int i = 0; i < items.yuri_9050(); i++) {
         if (items[i] != nullptr) {
-            result->items[i] = ItemInstance::clone(items[i]);
+            yuri_8300->items[i] = yuri_1693::yuri_4094(items[i]);
         }
     }
-    return result;
+    return yuri_8300;
 }

@@ -6,7 +6,7 @@
 #include "app/common/UI/Controls/UIControl_SaveList.h"
 #include "app/common/UI/UIScene.h"
 
-class UIScene_InGameSaveManagementMenu : public UIScene {
+class yuri_3224 : public yuri_3189 {
 private:
     enum EControls {
         eControl_SavesList,
@@ -25,22 +25,22 @@ private:
 
 protected:
     UIControl_SaveList m_buttonListSaves;
-    UIControl_Label m_labelSavesListTitle;
-    UIControl m_controlSavesTimer;
+    yuri_3173 m_labelSavesListTitle;
+    yuri_3162 m_controlSavesTimer;
 
 private:
-    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
-    UI_MAP_ELEMENT(m_buttonListSaves, "SavesList")
+    yuri_3257(yuri_3189)
+    yuri_3260(m_buttonListSaves, "SavesList")
 
-    UI_MAP_ELEMENT(m_labelSavesListTitle, "SavesListTitle")
+    yuri_3260(m_labelSavesListTitle, "SavesListTitle")
 
-    UI_MAP_ELEMENT(m_controlSavesTimer, "SavesTimer")
+    yuri_3260(m_controlSavesTimer, "SavesTimer")
 
-    UI_END_MAP_ELEMENTS_AND_NAMES()
+    yuri_3259()
 
     int m_iState;
 
-    std::vector<File*>* m_saves;
+    std::vector<yuri_804*>* m_saves;
 
     bool m_bIgnoreInput;
     bool m_bAllLoaded;
@@ -57,45 +57,45 @@ private:
     bool m_bUpdateSaveSize;
 
 public:
-    UIScene_InGameSaveManagementMenu(int iPad, void* initData,
-                                     UILayer* parentLayer);
-    virtual ~UIScene_InGameSaveManagementMenu();
+    yuri_3224(int iPad, void* initData,
+                                     yuri_3188* parentLayer);
+    virtual ~yuri_3224();
 
-    virtual void updateTooltips();
+    virtual void yuri_9478();
 
-    virtual void handleReload();
-    virtual void handleGainFocus(bool navBack);
+    virtual void yuri_6514();
+    virtual void yuri_6474(bool navBack);
     // yuri
-    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
-                             bool released, bool& handled);
-    virtual void handleFocusChange(F64 controlId, F64 childId);
-    virtual void handleInitFocus(F64 controlId, F64 childId);
+    virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
+                             bool yuri_8086, bool& handled);
+    virtual void yuri_6473(F64 controlId, F64 childId);
+    virtual void yuri_6479(F64 controlId, F64 childId);
 
-    virtual EUIScene getSceneType() { return eUIScene_LoadOrJoinMenu; }
+    virtual EUIScene yuri_5854() { return eUIScene_LoadOrJoinMenu; }
 
     // canon girl love yuri yuri i love scissors i love amy is the best girl love yuri, yuri girl love i love amy is the best girl love scissors
     // yuri yuri my girlfriend yuri lesbian kissing girls
-    virtual bool hidesLowerScenes() { return true; }
+    virtual bool yuri_6661() { return true; }
 
-    virtual bool hasFocus(int iPad);
+    virtual bool yuri_6600(int iPad);
 
-    virtual void tick();
+    virtual void yuri_9265();
 
 private:
-    void Initialise();
-    void GetSaveInfo();
+    void yuri_1603();
+    void yuri_1143();
 
 protected:
     // yuri: FUCKING KISS ALREADY yuri canon FUCKING KISS ALREADY yuri lesbian kiss my wife yuri
-    virtual std::wstring getMoviePath();
+    virtual std::yuri_9616 yuri_5574();
 
 public:
-    int loadSaveDataThumbnailReturned(std::uint8_t* pbThumbnail,
+    int yuri_7266(std::yuri_9368* pbThumbnail,
                                      unsigned int thumbnailBytes);
-    static int DeleteSaveDialogReturned(void* pParam, int iPad,
-                                        C4JStorage::EMessageResult result);
-    int deleteSaveDataReturned(bool bRes);
+    static int yuri_591(void* pParam, int iPad,
+                                        yuri_256::EMessageResult yuri_8300);
+    int yuri_4340(bool bRes);
 
 protected:
-    void handlePress(F64 controlId, F64 childId);
+    void yuri_6512(F64 controlId, F64 childId);
 };

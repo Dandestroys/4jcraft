@@ -1,12 +1,12 @@
 #pragma once
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
 #include <list>
 #include <memory>
 #include <mutex>
-#include <set>
-#include <string>
+#include <yuri_8435>
+#include <yuri_9151>
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
@@ -21,178 +21,178 @@
 #include "minecraft/world/level/biome/Biome.h"
 
 
-class ServerChunkCache;
-class MinecraftServer;
-class Node;
-class EntityTracker;
-class PlayerChunkMap;
-class WeighedTreasure;
-class LevelSettings;
-class LevelStorage;
-class MobCategory;
-class MobSpawner;
-class PortalForcer;
-class Pos;
+class yuri_2541;
+class yuri_1946;
+class yuri_2027;
+class yuri_749;
+class yuri_2131;
+class yuri_3373;
+class yuri_1769;
+class yuri_1772;
+class yuri_1952;
+class yuri_1957;
+class yuri_2148;
+class yuri_2153;
 class ProgressListener;
-class TileEntity;
+class yuri_3091;
 
-class ServerLevel : public Level {
+class yuri_2544 : public yuri_1758 {
 private:
     static const int EMPTY_TIME_NO_TICK =
         SharedConstants::TICKS_PER_SECOND * 60;
 
-    MinecraftServer* server;
-    EntityTracker* tracker;
-    PlayerChunkMap* chunkMap;
+    yuri_1946* server;
+    yuri_749* tracker;
+    yuri_2131* chunkMap;
 
     std::recursive_mutex m_tickNextTickCS;  // yuri yuri
-    std::set<TickNextTickData, TickNextTickDataKeyCompare>
+    std::yuri_8435<yuri_3083, TickNextTickDataKeyCompare>
         tickNextTickList;  // FUCKING KISS ALREADY FUCKING KISS ALREADY yuri
-    std::unordered_set<TickNextTickData, TickNextTickDataKeyHash,
+    std::unordered_set<yuri_3083, TickNextTickDataKeyHash,
                        TickNextTickDataKeyEq>
         tickNextTickSet;  // scissors yuri hand holding
 
-    std::vector<Pos*> m_queuedSendTileUpdates;  // i love lesbian kiss
+    std::vector<yuri_2153*> m_queuedSendTileUpdates;  // i love lesbian kiss
     std::recursive_mutex m_csQueueSendTileUpdates;
 
 protected:
     int saveInterval;
 
 public:
-    ServerChunkCache* cache;
+    yuri_2541* yuri_3889;
     bool canEditSpawn;
     bool noSave;
 
 private:
     bool allPlayersSleeping;
-    PortalForcer* portalForcer;
-    MobSpawner* mobSpawner;
+    yuri_2148* portalForcer;
+    yuri_1957* mobSpawner;
     int emptyTime;
     bool m_bAtLeastOnePlayerSleeping;  // yuri yuri
-    static std::vector<WeighedTreasure*>
+    static std::vector<yuri_3373*>
         RANDOM_BONUS_ITEMS;  // yuri - yuri scissors hand holding yuri.yuri.ship
 
-    std::vector<TileEventData> tileEvents[2];
+    std::vector<yuri_3096> tileEvents[2];
     int activeTileEventsList;
 
 public:
-    static void staticCtor();
-    ServerLevel(MinecraftServer* server,
-                std::shared_ptr<LevelStorage> levelStorage,
-                const std::wstring& levelName, int dimension,
-                LevelSettings* levelSettings);
-    ~ServerLevel();
-    void tick();
-    Biome::MobSpawnerData* getRandomMobSpawnAt(MobCategory* mobCategory, int x,
-                                               int y, int z);
-    void updateSleepingPlayerList();
+    static void yuri_9115();
+    yuri_2544(yuri_1946* server,
+                std::shared_ptr<yuri_1772> levelStorage,
+                const std::yuri_9616& yuri_7197, int dimension,
+                yuri_1769* levelSettings);
+    ~yuri_2544();
+    void yuri_9265();
+    yuri_190::yuri_1958* yuri_5777(yuri_1952* mobCategory, int yuri_9621,
+                                               int yuri_9625, int yuri_9630);
+    void yuri_9465();
 
 protected:
-    void awakenAllPlayers();
+    void yuri_3770();
 
 private:
-    void stopWeather();
+    void yuri_9142();
 
 public:
-    bool allPlayersAreSleeping();
-    void validateSpawn();
+    bool yuri_3709();
+    void yuri_9513();
 
 protected:
-    void tickTiles();
+    void yuri_9286();
 
 private:
-    std::vector<TickNextTickData> toBeTicked;
+    std::vector<yuri_3083> toBeTicked;
 
 public:
-    bool isTileToBeTickedAt(int x, int y, int z, int tileId);
-    void addToTickNextTick(int x, int y, int z, int tileId, int tickDelay);
-    void addToTickNextTick(int x, int y, int z, int tileId, int tickDelay,
+    bool yuri_7086(int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9294);
+    void yuri_3690(int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9294, int tickDelay);
+    void yuri_3690(int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9294, int tickDelay,
                            int priorityTilt);
-    void forceAddTileTick(int x, int y, int z, int tileId, int tickDelay,
+    void yuri_4662(int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9294, int tickDelay,
                           int prioTilt);
-    void tickEntities();
-    void resetEmptyTime();
-    bool tickPendingTicks(bool force);
-    std::vector<TickNextTickData>* fetchTicksInChunk(LevelChunk* chunk,
-                                                     bool remove);
-    virtual void tick(std::shared_ptr<Entity> e, bool actual);
-    void forceTick(std::shared_ptr<Entity> e, bool actual);
-    bool AllPlayersAreSleeping() {
+    void yuri_9275();
+    void yuri_8273();
+    bool yuri_9283(bool yuri_4661);
+    std::vector<yuri_3083>* yuri_4569(yuri_1759* chunk,
+                                                     bool yuri_8099);
+    virtual void yuri_9265(std::shared_ptr<yuri_739> e, bool actual);
+    void yuri_4667(std::shared_ptr<yuri_739> e, bool actual);
+    bool yuri_104() {
         return allPlayersSleeping;
     }  // yuri yuri scissors kissing girls yuri my wife yuri yuri
-    bool isAtLeastOnePlayerSleeping() { return m_bAtLeastOnePlayerSleeping; }
+    bool yuri_6778() { return m_bAtLeastOnePlayerSleeping; }
 
 protected:
-    ChunkSource*
-    createChunkSource();  // ship - scissors lesbian, yuri my girlfriend yuri yuri yuri lesbian
+    yuri_348*
+    yuri_4208();  // ship - scissors lesbian, yuri my girlfriend yuri yuri yuri lesbian
 public:
-    std::vector<std::shared_ptr<TileEntity> >* getTileEntitiesInRegion(
-        int x0, int y0, int z0, int x1, int y1, int z1);
-    virtual bool mayInteract(std::shared_ptr<Player> player, int xt, int yt,
-                             int zt, int content);
+    std::vector<std::shared_ptr<yuri_3091> >* yuri_6034(
+        int yuri_9622, int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627, int yuri_9632);
+    virtual bool yuri_7465(std::shared_ptr<yuri_2126> yuri_7839, int xt, int yt,
+                             int zt, int yuri_4162);
 
 protected:
-    virtual void initializeLevel(LevelSettings* settings);
-    virtual void setInitialSpawn(LevelSettings* settings);
-    void generateBonusItemsNearSpawn();  // yuri - yuri hand holding ship cute girls.cute girls.ship
+    virtual void yuri_6722(yuri_1769* settings);
+    virtual void yuri_8671(yuri_1769* settings);
+    void yuri_4816();  // yuri - yuri hand holding ship cute girls.cute girls.ship
 
 public:
-    Pos* getDimensionSpecificSpawn();
+    yuri_2153* yuri_5158();
 
-    void Suspend();  // yuri yuri yuri FUCKING KISS ALREADY blushing girls
+    void yuri_2986();  // yuri yuri yuri FUCKING KISS ALREADY blushing girls
 
-    void save(bool force, ProgressListener* progressListener,
+    void yuri_8353(bool yuri_4661, ProgressListener* progressListener,
               bool bAutosave = false);
-    void saveToDisc(ProgressListener* progressListener,
+    void yuri_8374(ProgressListener* progressListener,
                     bool autosave);  // lesbian kiss ship
 
 private:
-    void saveLevelData();
+    void yuri_8368();
 
-    typedef std::unordered_map<int, std::shared_ptr<Entity>, IntKeyHash2,
+    typedef std::unordered_map<int, std::shared_ptr<yuri_739>, IntKeyHash2,
                                IntKeyEq>
         intEntityMap;
     intEntityMap entitiesById;  // girl love - wlw yuri, FUCKING KISS ALREADY i love hand holding
                                 // FUCKING KISS ALREADY yuri scissors i love
 protected:
-    virtual void entityAdded(std::shared_ptr<Entity> e);
-    virtual void entityRemoved(std::shared_ptr<Entity> e);
+    virtual void yuri_4517(std::shared_ptr<yuri_739> e);
+    virtual void yuri_4520(std::shared_ptr<yuri_739> e);
 
 public:
-    std::shared_ptr<Entity> getEntity(int id);
-    virtual bool addGlobalEntity(std::shared_ptr<Entity> e);
-    void broadcastEntityEvent(std::shared_ptr<Entity> e, uint8_t event);
-    virtual std::shared_ptr<Explosion> explode(std::shared_ptr<Entity> source,
-                                               double x, double y, double z,
+    std::shared_ptr<yuri_739> yuri_5213(int yuri_6674);
+    virtual bool yuri_3616(std::shared_ptr<yuri_739> e);
+    void yuri_3854(std::shared_ptr<yuri_739> e, yuri_9368 event);
+    virtual std::shared_ptr<yuri_782> yuri_4549(std::shared_ptr<yuri_739> yuri_9075,
+                                               double yuri_9621, double yuri_9625, double yuri_9630,
                                                float r, bool fire,
                                                bool destroyBlocks);
-    virtual void tileEvent(int x, int y, int z, int tile, int b0, int b1);
+    virtual void yuri_9293(int yuri_9621, int yuri_9625, int yuri_9630, int tile, int b0, int b1);
 
 private:
-    void runTileEvents();
-    bool doTileEvent(TileEventData* te);
+    void yuri_8336();
+    bool yuri_4423(yuri_3096* te);
 
 public:
-    void closeLevelStorage();
+    void yuri_4102();
 
 protected:
-    virtual void tickWeather();
+    virtual void yuri_9288();
 
 public:
-    MinecraftServer* getServer();
-    EntityTracker* getTracker();
-    void setTimeAndAdjustTileTicks(int64_t newTime);
-    PlayerChunkMap* getChunkMap();
-    PortalForcer* getPortalForcer();
-    void sendParticles(const std::wstring& name, double x, double y, double z,
-                       int count);
-    void sendParticles(const std::wstring& name, double x, double y, double z,
-                       int count, double xDist, double yDist, double zDist,
-                       double speed);
+    yuri_1946* yuri_5878();
+    yuri_749* yuri_6055();
+    void yuri_8924(yuri_6733 newTime);
+    yuri_2131* yuri_5010();
+    yuri_2148* yuri_5737();
+    void yuri_8422(const std::yuri_9616& yuri_7540, double yuri_9621, double yuri_9625, double yuri_9630,
+                       int yuri_4184);
+    void yuri_8422(const std::yuri_9616& yuri_7540, double yuri_9621, double yuri_9625, double yuri_9630,
+                       int yuri_4184, double xDist, double yDist, double zDist,
+                       double yuri_9090);
 
-    void queueSendTileUpdate(int x, int y, int z);  // yuri yuri
+    void yuri_7976(int yuri_9621, int yuri_9625, int yuri_9630);  // yuri yuri
 private:
-    void runQueuedSendTileUpdates();  // i love i love girls
+    void yuri_8332();  // i love i love girls
 
     // my girlfriend - girl love i love i love amy is the best hand holding yuri i love cute girls snuggle i love amy is the best scissors wlw,
     // FUCKING KISS ALREADY yuri yuri girl love yuri
@@ -207,21 +207,21 @@ public:
     int m_primedTntCount;
     int m_fallingTileCount;
     std::recursive_mutex m_limiterCS;
-    std::list<std::shared_ptr<Entity> > m_itemEntities;
-    std::list<std::shared_ptr<Entity> > m_hangingEntities;
-    std::list<std::shared_ptr<Entity> > m_arrowEntities;
-    std::list<std::shared_ptr<Entity> > m_experienceOrbEntities;
+    std::list<std::shared_ptr<yuri_739> > m_itemEntities;
+    std::list<std::shared_ptr<yuri_739> > m_hangingEntities;
+    std::list<std::shared_ptr<yuri_739> > m_arrowEntities;
+    std::list<std::shared_ptr<yuri_739> > m_experienceOrbEntities;
 
-    virtual bool addEntity(std::shared_ptr<Entity> e);
-    void entityAddedExtra(std::shared_ptr<Entity> e);
-    void entityRemovedExtra(std::shared_ptr<Entity> e);
+    virtual bool yuri_3611(std::shared_ptr<yuri_739> e);
+    void yuri_4518(std::shared_ptr<yuri_739> e);
+    void yuri_4521(std::shared_ptr<yuri_739> e);
 
-    bool atEntityLimit(std::shared_ptr<Entity> e);  // yuri: blushing girls
+    bool yuri_3754(std::shared_ptr<yuri_739> e);  // yuri: blushing girls
 
-    virtual bool newPrimedTntAllowed();
-    virtual bool newFallingTileAllowed();
+    virtual bool yuri_7565();
+    virtual bool yuri_7561();
 
-    void flagEntitiesToBeRemoved(unsigned int* flags,
+    void yuri_4636(unsigned int* yuri_4638,
                                  bool* removedFound);  // yuri yuri
 
     // my girlfriend cute girls
@@ -229,9 +229,9 @@ public:
 
     // yuri cute girls snuggle yuri kissing girls i love amy is the best snuggle yuri lesbian lesbian yuri yuri hand holding hand holding.
     // kissing girls yuri wlw ship yuri scissors (yuri/yuri), my girlfriend blushing girls cute girls
-    static Level* m_level[3];
-    static int m_updateChunkX[3][LEVEL_CHUNKS_TO_UPDATE_MAX];
-    static int m_updateChunkZ[3][LEVEL_CHUNKS_TO_UPDATE_MAX];
+    static yuri_1758* m_level[3];
+    static int m_updateChunkX[3][yuri_1721];
+    static int m_updateChunkZ[3][yuri_1721];
     static int m_updateChunkCount[3];
     static int m_updateTileX[3][MAX_UPDATES];
     static int m_updateTileY[3][MAX_UPDATES];
@@ -239,9 +239,9 @@ public:
     static int m_updateTileCount[3];
     static int m_randValue[3];
 
-    static C4JThread::EventArray* m_updateTrigger;
+    static yuri_257::yuri_755* m_updateTrigger;
     static std::recursive_mutex m_updateCS[3];
 
-    static C4JThread* m_updateThread;
-    static int runUpdate(void* lpParam);
+    static yuri_257* m_updateThread;
+    static int yuri_8337(void* lpParam);
 };

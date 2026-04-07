@@ -1,11 +1,11 @@
 #include "IUIScene_DispenserMenu.h"
 
-#include <assert.h>
+#include <yuri_3750.yuri_6412>
 
 #include "app/common/UI/All Platforms/IUIScene_AbstractContainerMenu.h"
 
-IUIScene_AbstractContainerMenu::ESceneSection
-IUIScene_DispenserMenu::GetSectionAndSlotInDirection(ESceneSection eSection,
+yuri_1335::ESceneSection
+IUIScene_DispenserMenu::yuri_1154(ESceneSection eSection,
                                                      ETapState eTapDirection,
                                                      int* piTargetX,
                                                      int* piTargetY) {
@@ -40,31 +40,31 @@ IUIScene_DispenserMenu::GetSectionAndSlotInDirection(ESceneSection eSection,
             }
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
 
-    updateSlotPosition(eSection, newSection, eTapDirection, piTargetX,
+    yuri_9466(eSection, newSection, eTapDirection, piTargetX,
                        piTargetY, xOffset);
 
     return newSection;
 }
 
-int IUIScene_DispenserMenu::getSectionStartOffset(ESceneSection eSection) {
-    int offset = 0;
+int IUIScene_DispenserMenu::yuri_5869(ESceneSection eSection) {
+    int yuri_7607 = 0;
     switch (eSection) {
         case eSectionTrapTrap:
-            offset = 0;
+            yuri_7607 = 0;
             break;
         case eSectionTrapInventory:
-            offset = 9;
+            yuri_7607 = 9;
             break;
         case eSectionTrapUsing:
-            offset = 9 + 27;
+            yuri_7607 = 9 + 27;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
-    return offset;
+    return yuri_7607;
 }

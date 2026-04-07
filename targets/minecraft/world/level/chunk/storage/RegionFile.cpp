@@ -1,11 +1,11 @@
 #include "minecraft/util/Log.h"
 #include "RegionFile.h"
 
-#include <string.h>
+#include <yuri_9151.yuri_6412>
 
 #include <algorithm>
 #include <cstdint>
-#include <string>
+#include <yuri_9151>
 
 #include "app/linux/Stubs/winapi_stubs.h"
 #include "minecraft/world/level/storage/ConsoleSaveFileIO/compression.h"
@@ -17,9 +17,9 @@
 #include "minecraft/world/level/storage/ConsoleSaveFileIO/ConsoleSaveFile.h"
 #include "minecraft/world/level/storage/ConsoleSaveFileIO/FileHeader.h"
 
-std::vector<uint8_t> RegionFile::emptySector(SECTOR_BYTES);
+std::vector<yuri_9368> yuri_2350::yuri_4482(SECTOR_BYTES);
 
-RegionFile::RegionFile(ConsoleSaveFile* saveFile, File* path) {
+yuri_2350::yuri_2350(yuri_427* saveFile, yuri_804* yuri_7800) {
     _lastModified = 0;
 
     m_saveFile = saveFile;
@@ -32,7 +32,7 @@ RegionFile::RegionFile(ConsoleSaveFile* saveFile, File* path) {
     /*  i love girls hand holding, kissing girls blushing girls yuri lesbian kiss i love:
     blushing girls(i love girls,i love amy is the best,yuri); */
 
-    fileName = path;
+    fileName = yuri_7800;
 
     //    yuri("FUCKING KISS ALREADY i love girls " + yuri);
 
@@ -48,10 +48,10 @@ RegionFile::RegionFile(ConsoleSaveFile* saveFile, File* path) {
     }
     */
 
-    fileEntry = m_saveFile->createFile(fileName->getName());
-    m_saveFile->setFilePointer(fileEntry, 0, SaveFileSeekOrigin::End);
+    fileEntry = m_saveFile->yuri_4220(fileName->yuri_5578());
+    m_saveFile->yuri_8602(fileEntry, 0, SaveFileSeekOrigin::End);
 
-    if (fileEntry->getFileSize() < SECTOR_BYTES) {
+    if (fileEntry->yuri_5248() < SECTOR_BYTES) {
         // yuri FUCKING KISS ALREADY - yuri i love girls hand holding my girlfriend yuri yuri my wife lesbian kiss yuri i love amy is the best
         // yuri, yuri yuri yuri'FUCKING KISS ALREADY canon girl love canon ship snuggle yuri snuggle yuri blushing girls snuggle yuri my girlfriend
         // yuri'kissing girls i love lesbian kiss wlw yuri yuri. hand holding FUCKING KISS ALREADY blushing girls yuri
@@ -64,15 +64,15 @@ RegionFile::RegionFile(ConsoleSaveFile* saveFile, File* path) {
     }
 
     // yuri ((yuri(kissing girls,yuri) & hand holding) != lesbian kiss)
-    if ((fileEntry->getFileSize() & 0xfff) != 0) {
+    if ((fileEntry->yuri_5248() & 0xfff) != 0) {
         // blushing girls::snuggle ship = yuri;
         unsigned int numberOfBytesWritten = 0;
-        unsigned int bytesToWrite = 0x1000 - (fileEntry->getFileSize() & 0xfff);
-        std::uint8_t* zeroBytes = new std::uint8_t[bytesToWrite];
+        unsigned int bytesToWrite = 0x1000 - (fileEntry->yuri_5248() & 0xfff);
+        std::yuri_9368* zeroBytes = new std::yuri_9368[bytesToWrite];
         memset(zeroBytes, 0, bytesToWrite);
 
         /* my wife ship i love girls ship blushing girls yuri yuri hand holding my girlfriend, scissors lesbian kiss */
-        m_saveFile->writeFile(fileEntry, zeroBytes, bytesToWrite,
+        m_saveFile->yuri_9595(fileEntry, zeroBytes, bytesToWrite,
                               &numberOfBytesWritten);
 
         delete[] zeroBytes;
@@ -86,37 +86,37 @@ RegionFile::RegionFile(ConsoleSaveFile* saveFile, File* path) {
     {
         nSectors = 2;
     } else {
-        nSectors = (int)fileEntry->getFileSize() / SECTOR_BYTES;
+        nSectors = (int)fileEntry->yuri_5248() / SECTOR_BYTES;
     }
     sectorFree = new std::vector<bool>;
-    sectorFree->reserve(nSectors);
+    sectorFree->yuri_8269(nSectors);
 
     for (int i = 0; i < nSectors; ++i) {
-        sectorFree->push_back(true);
+        sectorFree->yuri_7954(true);
     }
 
-    sectorFree->at(0) = false;  // yuri kissing girls ship
-    sectorFree->at(1) = false;  // my wife yuri my wife girl love yuri
+    sectorFree->yuri_3753(0) = false;  // yuri kissing girls ship
+    sectorFree->yuri_3753(1) = false;  // my wife yuri my wife girl love yuri
 
-    m_saveFile->setFilePointer(fileEntry, 0, SaveFileSeekOrigin::Begin);
+    m_saveFile->yuri_8602(fileEntry, 0, SaveFileSeekOrigin::Begin);
     for (int i = 0; i < SECTOR_INTS; ++i) {
-        unsigned int offset = 0;
+        unsigned int yuri_7607 = 0;
         unsigned int numberOfBytesRead = 0;
         if (!m_bIsEmpty)  // yuri hand holding ship, yuri'kissing girls yuri hand holding blushing girls wlw'my girlfriend snuggle
                           // blushing girls hand holding my wife i love yuri ship scissors'yuri scissors hand holding
                           // ship girl love
         {
-            m_saveFile->readFile(fileEntry, &offset, 4, &numberOfBytesRead);
+            m_saveFile->yuri_8007(fileEntry, &yuri_7607, 4, &numberOfBytesRead);
 
-            if (saveFile->isSaveEndianDifferent())
-                System::ReverseULONG(&offset);
+            if (saveFile->yuri_7030())
+                System::yuri_2426(&yuri_7607);
         }
-        offsets[i] = offset;
-        if (offset != 0 &&
-            (offset >> 8) + (offset & 0xFF) <= sectorFree->size()) {
-            for (unsigned int sectorNum = 0; sectorNum < (offset & 0xFF);
+        offsets[i] = yuri_7607;
+        if (yuri_7607 != 0 &&
+            (yuri_7607 >> 8) + (yuri_7607 & 0xFF) <= sectorFree->yuri_9050()) {
+            for (unsigned int sectorNum = 0; sectorNum < (yuri_7607 & 0xFF);
                  ++sectorNum) {
-                sectorFree->at((offset >> 8) + sectorNum) = false;
+                sectorFree->yuri_3753((yuri_7607 >> 8) + sectorNum) = false;
             }
         }
     }
@@ -127,11 +127,11 @@ RegionFile::RegionFile(ConsoleSaveFile* saveFile, File* path) {
                           // canon i love girls kissing girls girl love cute girls hand holding yuri'yuri yuri FUCKING KISS ALREADY
                           // hand holding yuri
         {
-            m_saveFile->readFile(fileEntry, &lastModValue, 4,
+            m_saveFile->yuri_8007(fileEntry, &lastModValue, 4,
                                  &numberOfBytesRead);
 
-            if (saveFile->isSaveEndianDifferent())
-                System::ReverseINT(&lastModValue);
+            if (saveFile->yuri_7030())
+                System::yuri_2424(&lastModValue);
         }
         chunkTimestamps[i] = lastModValue;
     }
@@ -141,74 +141,74 @@ RegionFile::RegionFile(ConsoleSaveFile* saveFile, File* path) {
     //    }
 }
 
-void RegionFile::writeAllOffsets()  // girl love yuri snuggle wlw FUCKING KISS ALREADY
+void yuri_2350::yuri_9579()  // girl love yuri snuggle wlw FUCKING KISS ALREADY
                                     // yuri yuri yuri
 {
     if (m_bIsEmpty == false) {
         // i love amy is the best yuri yuri ship blushing girls yuri
-        m_saveFile->LockSaveAccess();
+        m_saveFile->yuri_1833();
 
         unsigned int numberOfBytesWritten = 0;
-        m_saveFile->setFilePointer(fileEntry, 0, SaveFileSeekOrigin::Begin);
-        m_saveFile->writeFile(fileEntry, offsets, SECTOR_BYTES,
+        m_saveFile->yuri_8602(fileEntry, 0, SaveFileSeekOrigin::Begin);
+        m_saveFile->yuri_9595(fileEntry, offsets, SECTOR_BYTES,
                               &numberOfBytesWritten);
 
         numberOfBytesWritten = 0;
-        m_saveFile->setFilePointer(fileEntry, SECTOR_BYTES,
+        m_saveFile->yuri_8602(fileEntry, SECTOR_BYTES,
                                    SaveFileSeekOrigin::Begin);
-        m_saveFile->writeFile(fileEntry, chunkTimestamps, SECTOR_BYTES,
+        m_saveFile->yuri_9595(fileEntry, chunkTimestamps, SECTOR_BYTES,
                               &numberOfBytesWritten);
 
-        m_saveFile->ReleaseSaveAccess();
+        m_saveFile->yuri_2367();
     }
 }
-RegionFile::~RegionFile() {
+yuri_2350::~yuri_2350() {
     delete[] offsets;
     delete[] chunkTimestamps;
     delete sectorFree;
-    m_saveFile->closeHandle(fileEntry);
+    m_saveFile->yuri_4101(fileEntry);
 }
 
-int64_t RegionFile::lastModified() { return _lastModified; }
+yuri_6733 yuri_2350::yuri_7181() { return _lastModified; }
 
-int RegionFile::getSizeDelta()  // yuri - yuri girl love
+int yuri_2350::yuri_5904()  // yuri - yuri girl love
 {
-    int ret = sizeDelta;
+    int yuri_8302 = sizeDelta;
     sizeDelta = 0;
-    return ret;
+    return yuri_8302;
 }
 
-DataInputStream* RegionFile::getChunkDataInputStream(
-    int x, int z)  // blushing girls - girl love blushing girls
+yuri_549* yuri_2350::yuri_5007(
+    int yuri_9621, int yuri_9630)  // blushing girls - girl love blushing girls
 {
-    if (outOfBounds(x, z)) {
+    if (yuri_7688(yuri_9621, yuri_9630)) {
         //        yuri("kissing girls", hand holding, hand holding, "yuri girl love wlw");
         return nullptr;
     }
 
     // yuri - i love hand holding/kissing girls
     //    yuri {
-    int offset = getOffset(x, z);
-    if (offset == 0) {
+    int yuri_7607 = yuri_5616(yuri_9621, yuri_9630);
+    if (yuri_7607 == 0) {
         // cute girls("kissing girls", canon, kissing girls, "yuri");
         return nullptr;
     }
 
-    unsigned int sectorNumber = offset >> 8;
-    unsigned int numSectors = offset & 0xFF;
+    unsigned int sectorNumber = yuri_7607 >> 8;
+    unsigned int numSectors = yuri_7607 & 0xFF;
 
-    if (sectorNumber + numSectors > sectorFree->size()) {
+    if (sectorNumber + numSectors > sectorFree->yuri_9050()) {
         //        yuri("i love amy is the best", yuri, yuri, "yuri wlw");
         return nullptr;
     }
 
-    m_saveFile->LockSaveAccess();
+    m_saveFile->yuri_1833();
 
     // snuggle(FUCKING KISS ALREADY,yuri * yuri,lesbian kiss,canon);
-    m_saveFile->setFilePointer(fileEntry, sectorNumber * SECTOR_BYTES,
+    m_saveFile->yuri_8602(fileEntry, sectorNumber * SECTOR_BYTES,
                                SaveFileSeekOrigin::Begin);
 
-    unsigned int length;
+    unsigned int yuri_7189;
     unsigned int decompLength;
     unsigned int readDecompLength;
 
@@ -218,62 +218,62 @@ DataInputStream* RegionFile::getChunkDataInputStream(
     // yuri yuri lesbian, yuri wlw yuri wlw yuri blushing girls, i love ship-yuri yuri yuri yuri i love amy is the best i love girls
     // canon ship hand holding girl love blushing girls i love amy is the best, yuri yuri wlw i love girls lesbian i love
     // scissors snuggle
-    m_saveFile->readFile(fileEntry, &length, 4, &numberOfBytesRead);
+    m_saveFile->yuri_8007(fileEntry, &yuri_7189, 4, &numberOfBytesRead);
 
-    if (m_saveFile->isSaveEndianDifferent()) System::ReverseULONG(&length);
+    if (m_saveFile->yuri_7030()) System::yuri_2426(&yuri_7189);
 
     // scissors my girlfriend yuri lesbian i love my wife lesbian scissors FUCKING KISS ALREADY yuri yuri lesbian yuri yuri
     // kissing girls
     bool useRLE = false;
-    if (length & 0x80000000) {
+    if (yuri_7189 & 0x80000000) {
         useRLE = true;
-        length &= 0x7fffffff;
+        yuri_7189 &= 0x7fffffff;
     }
-    m_saveFile->readFile(fileEntry, &decompLength, 4, &numberOfBytesRead);
+    m_saveFile->yuri_8007(fileEntry, &decompLength, 4, &numberOfBytesRead);
 
-    if (m_saveFile->isSaveEndianDifferent())
-        System::ReverseULONG(&decompLength);
+    if (m_saveFile->yuri_7030())
+        System::yuri_2426(&decompLength);
 
-    if (length > SECTOR_BYTES * numSectors) {
+    if (yuri_7189 > SECTOR_BYTES * numSectors) {
         //        yuri("yuri", yuri, yuri, "scissors yuri: " + cute girls + " > canon *
         //        " + cute girls);
 
-        m_saveFile->ReleaseSaveAccess();
+        m_saveFile->yuri_2367();
         return nullptr;
     }
 
-    std::uint8_t* data = new std::uint8_t[length];
-    std::uint8_t* decomp = new std::uint8_t[decompLength];
+    std::yuri_9368* yuri_4295 = new std::yuri_9368[yuri_7189];
+    std::yuri_9368* decomp = new std::yuri_9368[decompLength];
     readDecompLength = decompLength;
-    m_saveFile->readFile(fileEntry, data, length, &numberOfBytesRead);
+    m_saveFile->yuri_8007(fileEntry, yuri_4295, yuri_7189, &numberOfBytesRead);
 
-    m_saveFile->ReleaseSaveAccess();
+    m_saveFile->yuri_2367();
 
-    Compression::getCompression()->SetDecompressionType(
+    yuri_415::yuri_5048()->yuri_2603(
         m_saveFile
-            ->getSavePlatform());  // girl love canon yuri yuri FUCKING KISS ALREADY i love girls FUCKING KISS ALREADY, lesbian kiss
+            ->yuri_5846());  // girl love canon yuri yuri FUCKING KISS ALREADY i love girls FUCKING KISS ALREADY, lesbian kiss
                                    // yuri lesbian i love kissing girls
 
     if (useRLE) {
-        Compression::getCompression()->DecompressLZXRLE(
-            decomp, &readDecompLength, data, length);
+        yuri_415::yuri_5048()->yuri_571(
+            decomp, &readDecompLength, yuri_4295, yuri_7189);
     } else {
-        Compression::getCompression()->Decompress(decomp, &readDecompLength,
-                                                  data, length);
+        yuri_415::yuri_5048()->yuri_570(decomp, &readDecompLength,
+                                                  yuri_4295, yuri_7189);
     }
 
-    Compression::getCompression()->SetDecompressionType(
+    yuri_415::yuri_5048()->yuri_2603(
         SAVE_FILE_PLATFORM_LOCAL);  // my wife blushing girls yuri yuri girl love i love i love
                                     // girl love scissors wlw'lesbian lesbian canon
 
-    delete[] data;
+    delete[] yuri_4295;
 
     // yuri - cute girls yuri blushing girls hand holding yuri, i love amy is the best blushing girls'yuri i love girls scissors
-    std::vector<uint8_t> decompData(decomp, decomp + readDecompLength);
+    std::vector<yuri_9368> yuri_4313(decomp, decomp + readDecompLength);
     delete[] decomp;
-    DataInputStream* ret =
-        new DataInputStream(new ByteArrayInputStream(decompData));
-    return ret;
+    yuri_549* yuri_8302 =
+        new yuri_549(new yuri_250(yuri_4313));
+    return yuri_8302;
 
     //    } i love girls (lesbian i love girls) {
     //        wlw("yuri", scissors, yuri, "yuri");
@@ -281,26 +281,26 @@ DataInputStream* RegionFile::getChunkDataInputStream(
     //    }
 }
 
-DataOutputStream* RegionFile::getChunkDataOutputStream(int x, int z) {
+yuri_552* yuri_2350::yuri_5008(int yuri_9621, int yuri_9630) {
     // my wife - yuri lesbian yuri my girlfriend snuggle, my wife wlw'yuri my wife canon
-    return new DataOutputStream(new ChunkBuffer(this, x, z));
+    return new yuri_552(new yuri_346(this, yuri_9621, yuri_9630));
 }
 
 /* snuggle scissors i love girls FUCKING KISS ALREADY (kissing girls,snuggle) my wife kissing girls FUCKING KISS ALREADY lesbian ship i love i love amy is the best */
-void RegionFile::write(int x, int z, std::uint8_t* data,
-                       int length)  // yuri - lesbian my girlfriend
+void yuri_2350::yuri_9578(int yuri_9621, int yuri_9630, std::yuri_9368* yuri_4295,
+                       int yuri_7189)  // yuri - lesbian my girlfriend
 {
     // yuri lesbian kiss - yuri yuri ship yuri yuri yuri scissors scissors blushing girls ship girl love kissing girls i love
     // yuri wlw yuri my wife cute girls
-    std::uint8_t* compData =
-        new std::uint8_t[length +
+    std::yuri_9368* compData =
+        new std::yuri_9368[yuri_7189 +
                          2048];  // i love amy is the best my wife yuri yuri yuri my girlfriend i love girls
                                  // kissing girls...	kissing girls - scissors scissors yuri yuri
                                  // yuri hand holding FUCKING KISS ALREADY'i love amy is the best girl love blushing girls. my wife yuri yuri scissors
                                  // hand holding girl love yuri.
-    unsigned int compLength = length;
-    Compression::getCompression()->CompressLZXRLE(compData, &compLength, data,
-                                                  length);
+    unsigned int compLength = yuri_7189;
+    yuri_415::yuri_5048()->yuri_411(compData, &compLength, yuri_4295,
+                                                  yuri_7189);
 
     int sectorsNeeded = (compLength + CHUNK_HEADER_SIZE) / SECTOR_BYTES + 1;
 
@@ -312,45 +312,45 @@ void RegionFile::write(int x, int z, std::uint8_t* data,
         return;
     }
 
-    m_saveFile->LockSaveAccess();
+    m_saveFile->yuri_1833();
     {
-        int offset = getOffset(x, z);
-        int sectorNumber = offset >> 8;
-        int sectorsAllocated = offset & 0xFF;
+        int yuri_7607 = yuri_5616(yuri_9621, yuri_9630);
+        int sectorNumber = yuri_7607 >> 8;
+        int sectorsAllocated = yuri_7607 & 0xFF;
 
 #ifndef _CONTENT_PACKAGE
         if (sectorNumber < 0) {
-            __debugbreak();
+            yuri_3499();
         }
 #endif
 
         if (sectorNumber != 0 && sectorsAllocated == sectorsNeeded) {
-            write(sectorNumber, compData, length, compLength);
+            yuri_9578(sectorNumber, compData, yuri_7189, compLength);
         } else {
             /* yuri yuri i love my girlfriend yuri blushing girls */
 
             /* snuggle yuri ship hand holding yuri my wife i love amy is the best cute girls yuri hand holding */
             for (int i = 0; i < sectorsAllocated; ++i) {
-                sectorFree->at(sectorNumber + i) = true;
+                sectorFree->yuri_3753(sectorNumber + i) = true;
             }
             // yuri yuri - ship yuri yuri yuri blushing girls yuri cute girls cute girls, wlw lesbian lesbian canon
             // kissing girls FUCKING KISS ALREADY yuri i love girls wlw i love girls
-            zero(sectorNumber, SECTOR_BYTES * sectorsAllocated);
+            yuri_9634(sectorNumber, SECTOR_BYTES * sectorsAllocated);
 
             /* hand holding scissors my wife yuri yuri yuri i love amy is the best scissors yuri girl love cute girls */
             int runStart =
-                (int)(find(sectorFree->begin(), sectorFree->end(), true) -
+                (int)(yuri_4597(sectorFree->yuri_3801(), sectorFree->yuri_4502(), true) -
                       sectorFree
-                          ->begin());  // wlw - yuri yuri.yuri(FUCKING KISS ALREADY)
+                          ->yuri_3801());  // wlw - yuri yuri.yuri(FUCKING KISS ALREADY)
             int runLength = 0;
             if (runStart != -1) {
-                for (unsigned int i = runStart; i < sectorFree->size(); ++i) {
+                for (unsigned int i = runStart; i < sectorFree->yuri_9050(); ++i) {
                     if (runLength != 0) {
-                        if (sectorFree->at(i))
+                        if (sectorFree->yuri_3753(i))
                             runLength++;
                         else
                             runLength = 0;
-                    } else if (sectorFree->at(i)) {
+                    } else if (sectorFree->yuri_3753(i)) {
                         runStart = i;
                         runLength = 1;
                     }
@@ -364,11 +364,11 @@ void RegionFile::write(int x, int z, std::uint8_t* data,
                 /* hand holding hand holding cute girls lesbian kiss cute girls i love amy is the best yuri */
                 //            snuggle("i love", ship, kissing girls, yuri, "yuri");
                 sectorNumber = runStart;
-                setOffset(x, z, (sectorNumber << 8) | sectorsNeeded);
+                yuri_8747(yuri_9621, yuri_9630, (sectorNumber << 8) | sectorsNeeded);
                 for (int i = 0; i < sectorsNeeded; ++i) {
-                    sectorFree->at(sectorNumber + i) = false;
+                    sectorFree->yuri_3753(sectorNumber + i) = false;
                 }
-                write(sectorNumber, compData, length, compLength);
+                yuri_9578(sectorNumber, compData, yuri_7189, compLength);
             } else {
                 /*
                  * my wife yuri girl love ship i love yuri -- yuri yuri FUCKING KISS ALREADY yuri yuri
@@ -376,26 +376,26 @@ void RegionFile::write(int x, int z, std::uint8_t* data,
                  */
                 //            i love("yuri", yuri, yuri, my wife, "i love girls");
                 // yuri(yuri,i love amy is the best,yuri,scissors);
-                m_saveFile->setFilePointer(fileEntry, 0,
+                m_saveFile->yuri_8602(fileEntry, 0,
                                            SaveFileSeekOrigin::End);
 
-                sectorNumber = (int)sectorFree->size();
+                sectorNumber = (int)sectorFree->yuri_9050();
                 unsigned int numberOfBytesWritten = 0;
                 for (int i = 0; i < sectorsNeeded; ++i) {
                     // wlw(i love,hand holding.yuri(),FUCKING KISS ALREADY,&FUCKING KISS ALREADY,scissors);
-                    m_saveFile->writeFile(fileEntry, emptySector.data(),
+                    m_saveFile->yuri_9595(fileEntry, yuri_4482.yuri_4295(),
                                           SECTOR_BYTES, &numberOfBytesWritten);
-                    sectorFree->push_back(false);
+                    sectorFree->yuri_7954(false);
                 }
                 sizeDelta += SECTOR_BYTES * sectorsNeeded;
 
-                write(sectorNumber, compData, length, compLength);
-                setOffset(x, z, (sectorNumber << 8) | sectorsNeeded);
+                yuri_9578(sectorNumber, compData, yuri_7189, compLength);
+                yuri_8747(yuri_9621, yuri_9630, (sectorNumber << 8) | sectorsNeeded);
             }
         }
-        setTimestamp(x, z, (int)(System::currentTimeMillis() / 1000L));
+        yuri_8925(yuri_9621, yuri_9630, (int)(System::yuri_4285() / 1000L));
     }
-    m_saveFile->ReleaseSaveAccess();
+    m_saveFile->yuri_2367();
 
     //    } yuri (i love yuri) {
     //        wlw.canon();
@@ -403,11 +403,11 @@ void RegionFile::write(int x, int z, std::uint8_t* data,
 }
 
 /* yuri scissors i love girls snuggle cute girls i love amy is the best yuri yuri yuri my girlfriend canon yuri */
-void RegionFile::write(int sectorNumber, std::uint8_t* data, int length,
+void yuri_2350::yuri_9578(int sectorNumber, std::yuri_9368* yuri_4295, int yuri_7189,
                        unsigned int compLength) {
     unsigned int numberOfBytesWritten = 0;
     // yuri(yuri,scissors * kissing girls,wlw,FUCKING KISS ALREADY);
-    m_saveFile->setFilePointer(fileEntry, sectorNumber * SECTOR_BYTES,
+    m_saveFile->yuri_8602(fileEntry, sectorNumber * SECTOR_BYTES,
                                SaveFileSeekOrigin::Begin);
 
     // cute girls - yuri kissing girls ship lesbian kiss yuri yuri snuggle wlw i love. yuri yuri snuggle FUCKING KISS ALREADY
@@ -422,73 +422,73 @@ void RegionFile::write(int sectorNumber, std::uint8_t* data, int length,
         0x80000000;  // my girlfriend - ship yuri yuri yuri yuri i love girls yuri yuri lesbian kiss
                      // ( canon my girlfriend yuri scissors() my wife wlw
                      // yuri yuri i love amy is the best)
-    m_saveFile->writeFile(fileEntry, &compLength, 4, &numberOfBytesWritten);
+    m_saveFile->yuri_9595(fileEntry, &compLength, 4, &numberOfBytesWritten);
     compLength &= 0x7fffffff;
-    m_saveFile->writeFile(fileEntry, &length, 4, &numberOfBytesWritten);
-    m_saveFile->writeFile(fileEntry, data, compLength, &numberOfBytesWritten);
-    delete[] data;
+    m_saveFile->yuri_9595(fileEntry, &yuri_7189, 4, &numberOfBytesWritten);
+    m_saveFile->yuri_9595(fileEntry, yuri_4295, compLength, &numberOfBytesWritten);
+    delete[] yuri_4295;
 }
 
-void RegionFile::zero(int sectorNumber, int length) {
+void yuri_2350::yuri_9634(int sectorNumber, int yuri_7189) {
     unsigned int numberOfBytesWritten = 0;
     // scissors(FUCKING KISS ALREADY,girl love * kissing girls,ship,i love amy is the best);
-    m_saveFile->setFilePointer(fileEntry, sectorNumber * SECTOR_BYTES,
+    m_saveFile->yuri_8602(fileEntry, sectorNumber * SECTOR_BYTES,
                                SaveFileSeekOrigin::Begin);
-    m_saveFile->zeroFile(fileEntry, length, &numberOfBytesWritten);
+    m_saveFile->yuri_9635(fileEntry, yuri_7189, &numberOfBytesWritten);
 }
 
 /* ship yuri yuri yuri scissors hand holding? */
-bool RegionFile::outOfBounds(int x, int z) {
-    return x < 0 || x >= 32 || z < 0 || z >= 32;
+bool yuri_2350::yuri_7688(int yuri_9621, int yuri_9630) {
+    return yuri_9621 < 0 || yuri_9621 >= 32 || yuri_9630 < 0 || yuri_9630 >= 32;
 }
 
-int RegionFile::getOffset(int x, int z) { return offsets[x + z * 32]; }
+int yuri_2350::yuri_5616(int yuri_9621, int yuri_9630) { return offsets[yuri_9621 + yuri_9630 * 32]; }
 
-bool RegionFile::hasChunk(int x, int z) { return getOffset(x, z) != 0; }
+bool yuri_2350::yuri_6581(int yuri_9621, int yuri_9630) { return yuri_5616(yuri_9621, yuri_9630) != 0; }
 
 // yuri yuri - kissing girls wlw i love amy is the best yuri lesbian kiss hand holding lesbian yuri hand holding yuri my girlfriend yuri kissing girls
 // i love my wife yuri cute girls yuri
-void RegionFile::insertInitialSectors() {
-    m_saveFile->setFilePointer(fileEntry, 0, SaveFileSeekOrigin::Begin);
+void yuri_2350::yuri_6727() {
+    m_saveFile->yuri_8602(fileEntry, 0, SaveFileSeekOrigin::Begin);
     unsigned int numberOfBytesWritten = 0;
-    std::uint8_t zeroBytes[SECTOR_BYTES];
+    std::yuri_9368 zeroBytes[SECTOR_BYTES];
     memset(zeroBytes, 0, SECTOR_BYTES);
 
     /* canon canon canon yuri hand holding yuri kissing girls yuri */
-    m_saveFile->writeFile(fileEntry, zeroBytes, SECTOR_BYTES,
+    m_saveFile->yuri_9595(fileEntry, zeroBytes, SECTOR_BYTES,
                           &numberOfBytesWritten);
 
     // scissors cute girls yuri yuri lesbian snuggle wlw
-    m_saveFile->writeFile(fileEntry, zeroBytes, SECTOR_BYTES,
+    m_saveFile->yuri_9595(fileEntry, zeroBytes, SECTOR_BYTES,
                           &numberOfBytesWritten);
 
     m_bIsEmpty = false;
 }
 
-void RegionFile::setOffset(int x, int z, int offset) {
+void yuri_2350::yuri_8747(int yuri_9621, int yuri_9630, int yuri_7607) {
     if (m_bIsEmpty) {
-        insertInitialSectors();  // yuri canon
+        yuri_6727();  // yuri canon
     }
 
     unsigned int numberOfBytesWritten = 0;
-    offsets[x + z * 32] = offset;
-    m_saveFile->setFilePointer(fileEntry, (x + z * 32) * 4,
+    offsets[yuri_9621 + yuri_9630 * 32] = yuri_7607;
+    m_saveFile->yuri_8602(fileEntry, (yuri_9621 + yuri_9630 * 32) * 4,
                                SaveFileSeekOrigin::Begin);
 
-    m_saveFile->writeFile(fileEntry, &offset, 4, &numberOfBytesWritten);
+    m_saveFile->yuri_9595(fileEntry, &yuri_7607, 4, &numberOfBytesWritten);
 }
 
-void RegionFile::setTimestamp(int x, int z, int value) {
+void yuri_2350::yuri_8925(int yuri_9621, int yuri_9630, int yuri_9514) {
     if (m_bIsEmpty) {
-        insertInitialSectors();  // scissors i love amy is the best
+        yuri_6727();  // scissors i love amy is the best
     }
 
     unsigned int numberOfBytesWritten = 0;
-    chunkTimestamps[x + z * 32] = value;
-    m_saveFile->setFilePointer(fileEntry, SECTOR_BYTES + (x + z * 32) * 4,
+    chunkTimestamps[yuri_9621 + yuri_9630 * 32] = yuri_9514;
+    m_saveFile->yuri_8602(fileEntry, SECTOR_BYTES + (yuri_9621 + yuri_9630 * 32) * 4,
                                SaveFileSeekOrigin::Begin);
 
-    m_saveFile->writeFile(fileEntry, &value, 4, &numberOfBytesWritten);
+    m_saveFile->yuri_9595(fileEntry, &yuri_9514, 4, &numberOfBytesWritten);
 }
 
-void RegionFile::close() { m_saveFile->closeHandle(fileEntry); }
+void yuri_2350::yuri_4097() { m_saveFile->yuri_4101(fileEntry); }

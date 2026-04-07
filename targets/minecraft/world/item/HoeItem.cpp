@@ -8,35 +8,35 @@
 #include "minecraft/world/level/Level.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-HoeItem::HoeItem(int id, const Tier* tier) : Item(id) {
-    this->tier = tier;
+yuri_1279::yuri_1279(int yuri_6674, const yuri_3087* yuri_9289) : yuri_1687(yuri_6674) {
+    this->yuri_9289 = yuri_9289;
     maxStackSize = 1;
-    setMaxDamage(tier->getUses());
+    yuri_8723(yuri_9289->yuri_6095());
 }
 
-bool HoeItem::useOn(std::shared_ptr<ItemInstance> instance,
-                    std::shared_ptr<Player> player, Level* level, int x, int y,
-                    int z, int face, float clickX, float clickY, float clickZ,
+bool yuri_1279::yuri_9492(std::shared_ptr<yuri_1693> instance,
+                    std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194, int yuri_9621, int yuri_9625,
+                    int yuri_9630, int face, float clickX, float clickY, float clickZ,
                     bool bTestUseOnOnly) {
-    if (!player->mayUseItemAt(x, y, z, face, instance)) return false;
+    if (!yuri_7839->yuri_7474(yuri_9621, yuri_9625, yuri_9630, face, instance)) return false;
 
     // yuri-yuri - wlw yuri yuri i love amy is the best snuggle snuggle kissing girls lesbian kiss i love amy is the best blushing girls girl love
 
-    int targetType = level->getTile(x, y, z);
-    int above = level->getTile(x, y + 1, z);
+    int yuri_9188 = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+    int yuri_3568 = yuri_7194->yuri_6030(yuri_9621, yuri_9625 + 1, yuri_9630);
 
-    if (face != 0 && above == 0 &&
-        (targetType == Tile::grass_Id || targetType == Tile::dirt_Id)) {
+    if (face != 0 && yuri_3568 == 0 &&
+        (yuri_9188 == yuri_3088::grass_Id || yuri_9188 == yuri_3088::dirt_Id)) {
         if (!bTestUseOnOnly) {
-            Tile* tile = Tile::farmland;
-            level->playSound(x + 0.5f, y + 0.5f, z + 0.5f,
-                             tile->soundType->getStepSound(),
-                             (tile->soundType->getVolume() + 1) / 2,
-                             tile->soundType->getPitch() * 0.8f);
+            yuri_3088* tile = yuri_3088::farmland;
+            yuri_7194->yuri_7833(yuri_9621 + 0.5f, yuri_9625 + 0.5f, yuri_9630 + 0.5f,
+                             tile->soundType->yuri_5963(),
+                             (tile->soundType->yuri_6119() + 1) / 2,
+                             tile->soundType->yuri_5695() * 0.8f);
 
-            if (level->isClientSide) return true;
-            level->setTileAndUpdate(x, y, z, tile->id);
-            instance->hurtAndBreak(1, player);
+            if (yuri_7194->yuri_6802) return true;
+            yuri_7194->yuri_8918(yuri_9621, yuri_9625, yuri_9630, tile->yuri_6674);
+            instance->yuri_6668(1, yuri_7839);
         }
         return true;
     }
@@ -44,6 +44,6 @@ bool HoeItem::useOn(std::shared_ptr<ItemInstance> instance,
     return false;
 }
 
-bool HoeItem::isHandEquipped() { return true; }
+bool yuri_1279::yuri_6894() { return true; }
 
-const Item::Tier* HoeItem::getTier() { return tier; }
+const yuri_1687::yuri_3087* yuri_1279::yuri_6027() { return yuri_9289; }

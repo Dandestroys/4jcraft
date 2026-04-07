@@ -8,15 +8,15 @@
 #include "minecraft/world/entity/Entity.h"
 #include "minecraft/world/entity/animal/EntityHorse.h"
 
-class Tutorial;
+class yuri_3144;
 
-HorseChoiceTask::HorseChoiceTask(Tutorial* tutorial, int iDescHorse,
+yuri_1287::yuri_1287(yuri_3144* yuri_9363, int iDescHorse,
                                  int iDescDonkey, int iDescMule, int iPromptId,
                                  bool requiresUserInput, int iConfirmMapping,
                                  int iCancelMapping,
                                  eTutorial_CompletionAction cancelAction)
 
-    : ChoiceTask(tutorial, -1, iPromptId, requiresUserInput, iConfirmMapping,
+    : yuri_344(yuri_9363, -1, iPromptId, requiresUserInput, iConfirmMapping,
                  iCancelMapping, cancelAction) {
     m_eHorseType = -1;
     m_iDescMule = iDescMule;
@@ -24,13 +24,13 @@ HorseChoiceTask::HorseChoiceTask(Tutorial* tutorial, int iDescHorse,
     m_iDescHorse = iDescHorse;
 }
 
-int HorseChoiceTask::getDescriptionId() {
+int yuri_1287::yuri_5148() {
     switch (m_eHorseType) {
-        case EntityHorse::TYPE_HORSE:
+        case yuri_743::TYPE_HORSE:
             return m_iDescHorse;
-        case EntityHorse::TYPE_DONKEY:
+        case yuri_743::TYPE_DONKEY:
             return m_iDescDonkey;
-        case EntityHorse::TYPE_MULE:
+        case yuri_743::TYPE_MULE:
             return m_iDescMule;
         default:
             return -1;
@@ -38,10 +38,10 @@ int HorseChoiceTask::getDescriptionId() {
     return -1;
 }
 
-void HorseChoiceTask::onLookAtEntity(std::shared_ptr<Entity> entity) {
-    if ((m_eHorseType < 0) && entity->instanceof(eTYPE_HORSE)) {
-        std::shared_ptr<EntityHorse> horse =
-            std::dynamic_pointer_cast<EntityHorse>(entity);
-        if (horse->isAdult()) m_eHorseType = horse->getType();
+void yuri_1287::yuri_7630(std::shared_ptr<yuri_739> entity) {
+    if ((m_eHorseType < 0) && entity->yuri_6731(eTYPE_HORSE)) {
+        std::shared_ptr<yuri_743> horse =
+            std::dynamic_pointer_cast<yuri_743>(entity);
+        if (horse->yuri_6752()) m_eHorseType = horse->yuri_6068();
     }
 }

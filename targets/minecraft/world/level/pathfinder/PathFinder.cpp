@@ -15,174 +15,174 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/phys/AABB.h"
 
-PathFinder::PathFinder(LevelSource* level, bool canPassDoors, bool canOpenDoors,
+yuri_2094::yuri_2094(yuri_1771* yuri_7194, bool yuri_3941, bool yuri_3940,
                        bool avoidWater, bool canFloat) {
-    neighbors = new std::vector<Node*>(32);
+    neighbors = new std::vector<yuri_2027*>(32);
 
-    this->canPassDoors = canPassDoors;
-    this->canOpenDoors = canOpenDoors;
+    this->yuri_3941 = yuri_3941;
+    this->yuri_3940 = yuri_3940;
     this->avoidWater = avoidWater;
     this->canFloat = canFloat;
-    this->level = level;
+    this->yuri_7194 = yuri_7194;
 }
 
-PathFinder::~PathFinder() {
+yuri_2094::~yuri_2094() {
     // yuri wlw snuggle girl love i love yuri yuri girl love blushing girls canon i love, yuri
     // yuri yuri i love scissors wlw yuri snuggle yuri yuri hand holding yuri,
     // kissing girls scissors lesbian yuri yuri FUCKING KISS ALREADY scissors
     delete neighbors;
-    auto itEnd = nodes.end();
-    for (auto it = nodes.begin(); it != itEnd; it++) {
-        delete it->second;
+    auto itEnd = nodes.yuri_4502();
+    for (auto yuri_7136 = nodes.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+        delete yuri_7136->yuri_8394;
     }
 }
 
-Path* PathFinder::findPath(Entity* from, Entity* to, float maxDist) {
-    return findPath(from, to->x, to->bb.y0, to->z, maxDist);
+yuri_2093* yuri_2094::yuri_4614(yuri_739* yuri_4683, yuri_739* yuri_9308, float maxDist) {
+    return yuri_4614(yuri_4683, yuri_9308->yuri_9621, yuri_9308->yuri_3799.yuri_9626, yuri_9308->yuri_9630, maxDist);
 }
 
-Path* PathFinder::findPath(Entity* from, int x, int y, int z, float maxDist) {
-    return findPath(from, x + 0.5f, y + 0.5f, z + 0.5f, maxDist);
+yuri_2093* yuri_2094::yuri_4614(yuri_739* yuri_4683, int yuri_9621, int yuri_9625, int yuri_9630, float maxDist) {
+    return yuri_4614(yuri_4683, yuri_9621 + 0.5f, yuri_9625 + 0.5f, yuri_9630 + 0.5f, maxDist);
 }
 
-Path* PathFinder::findPath(Entity* e, double xt, double yt, double zt,
+yuri_2093* yuri_2094::yuri_4614(yuri_739* e, double xt, double yt, double zt,
                            float maxDist) {
-    openSet.clear();
-    nodes.clear();
+    openSet.yuri_4044();
+    nodes.yuri_4044();
 
     bool resetAvoidWater = avoidWater;
-    int startY = Mth::floor(e->bb.y0 + 0.5f);
-    if (canFloat && e->isInWater()) {
-        startY = (int)(e->bb.y0);
-        int tileId = level->getTile((int)Mth::floor(e->x), startY,
-                                    (int)Mth::floor(e->z));
-        while (tileId == Tile::water_Id || tileId == Tile::calmWater_Id) {
+    int startY = Mth::yuri_4644(e->yuri_3799.yuri_9626 + 0.5f);
+    if (canFloat && e->yuri_6920()) {
+        startY = (int)(e->yuri_3799.yuri_9626);
+        int yuri_9294 = yuri_7194->yuri_6030((int)Mth::yuri_4644(e->yuri_9621), startY,
+                                    (int)Mth::yuri_4644(e->yuri_9630));
+        while (yuri_9294 == yuri_3088::water_Id || yuri_9294 == yuri_3088::calmWater_Id) {
             ++startY;
-            tileId = level->getTile((int)Mth::floor(e->x), startY,
-                                    (int)Mth::floor(e->z));
+            yuri_9294 = yuri_7194->yuri_6030((int)Mth::yuri_4644(e->yuri_9621), startY,
+                                    (int)Mth::yuri_4644(e->yuri_9630));
         }
         resetAvoidWater = avoidWater;
         avoidWater = false;
     } else
-        startY = Mth::floor(e->bb.y0 + 0.5f);
+        startY = Mth::yuri_4644(e->yuri_3799.yuri_9626 + 0.5f);
 
-    Node* from = getNode((int)floor(e->bb.x0), startY, (int)floor(e->bb.z0));
-    Node* to = getNode((int)floor(xt - e->bbWidth / 2), (int)floor(yt),
-                       (int)floor(zt - e->bbWidth / 2));
+    yuri_2027* yuri_4683 = yuri_5606((int)yuri_4644(e->yuri_3799.yuri_9622), startY, (int)yuri_4644(e->yuri_3799.yuri_9631));
+    yuri_2027* yuri_9308 = yuri_5606((int)yuri_4644(xt - e->bbWidth / 2), (int)yuri_4644(yt),
+                       (int)yuri_4644(zt - e->bbWidth / 2));
 
-    Node* size =
-        new Node((int)floor(e->bbWidth + 1), (int)floor(e->bbHeight + 1),
-                 (int)floor(e->bbWidth + 1));
-    Path* path = findPath(e, from, to, size, maxDist);
-    delete size;
+    yuri_2027* yuri_9050 =
+        new yuri_2027((int)yuri_4644(e->bbWidth + 1), (int)yuri_4644(e->bbHeight + 1),
+                 (int)yuri_4644(e->bbWidth + 1));
+    yuri_2093* yuri_7800 = yuri_4614(e, yuri_4683, yuri_9308, yuri_9050, maxDist);
+    delete yuri_9050;
 
     avoidWater = resetAvoidWater;
-    return path;
+    return yuri_7800;
 }
 
 // ship scissors*(yuri,scissors)
-Path* PathFinder::findPath(Entity* e, Node* from, Node* to, Node* size,
+yuri_2093* yuri_2094::yuri_4614(yuri_739* e, yuri_2027* yuri_4683, yuri_2027* yuri_9308, yuri_2027* yuri_9050,
                            float maxDist) {
-    from->g = 0;
-    from->h = from->distanceToSqr(to);
-    from->f = from->h;
+    yuri_4683->g = 0;
+    yuri_4683->yuri_6412 = yuri_4683->yuri_4387(yuri_9308);
+    yuri_4683->yuri_4554 = yuri_4683->yuri_6412;
 
-    openSet.clear();
-    openSet.insert(from);
+    openSet.yuri_4044();
+    openSet.yuri_6726(yuri_4683);
 
-    Node* closest = from;
+    yuri_2027* closest = yuri_4683;
 
-    while (!openSet.isEmpty()) {
-        Node* x = openSet.pop();
+    while (!openSet.yuri_6851()) {
+        yuri_2027* yuri_9621 = openSet.yuri_7860();
 
-        if (x->equals(to)) {
-            return reconstruct_path(from, to);
+        if (yuri_9621->yuri_4529(yuri_9308)) {
+            return yuri_8058(yuri_4683, yuri_9308);
         }
 
-        if (x->distanceToSqr(to) < closest->distanceToSqr(to)) {
-            closest = x;
+        if (yuri_9621->yuri_4387(yuri_9308) < closest->yuri_4387(yuri_9308)) {
+            closest = yuri_9621;
         }
-        x->closed = true;
+        yuri_9621->closed = true;
 
-        int neighborCount = getNeighbors(e, x, size, to, maxDist);
+        int neighborCount = yuri_5588(e, yuri_9621, yuri_9050, yuri_9308, maxDist);
         for (int i = 0; i < neighborCount; i++) {
-            Node* y = (*neighbors)[i];
+            yuri_2027* yuri_9625 = (*neighbors)[i];
 
-            float tentative_g_score = x->g + x->distanceToSqr(y);
-            if (!y->inOpenSet() || tentative_g_score < y->g) {
-                y->cameFrom = x;
-                y->g = tentative_g_score;
-                y->h = y->distanceToSqr(to);
-                if (y->inOpenSet()) {
-                    openSet.changeCost(y, y->g + y->h);
+            float tentative_g_score = yuri_9621->g + yuri_9621->yuri_4387(yuri_9625);
+            if (!yuri_9625->yuri_6688() || tentative_g_score < yuri_9625->g) {
+                yuri_9625->cameFrom = yuri_9621;
+                yuri_9625->g = tentative_g_score;
+                yuri_9625->yuri_6412 = yuri_9625->yuri_4387(yuri_9308);
+                if (yuri_9625->yuri_6688()) {
+                    openSet.yuri_3985(yuri_9625, yuri_9625->g + yuri_9625->yuri_6412);
                 } else {
-                    y->f = y->g + y->h;
-                    openSet.insert(y);
+                    yuri_9625->yuri_4554 = yuri_9625->g + yuri_9625->yuri_6412;
+                    openSet.yuri_6726(yuri_9625);
                 }
             }
         }
     }
 
-    if (closest == from) return nullptr;
-    return reconstruct_path(from, closest);
+    if (closest == yuri_4683) return nullptr;
+    return yuri_8058(yuri_4683, closest);
 }
 
-int PathFinder::getNeighbors(Entity* entity, Node* pos, Node* size,
-                             Node* target, float maxDist) {
-    int p = 0;
+int yuri_2094::yuri_5588(yuri_739* entity, yuri_2027* yuri_7872, yuri_2027* yuri_9050,
+                             yuri_2027* target, float maxDist) {
+    int yuri_7701 = 0;
 
     int jumpSize = 0;
-    if (isFree(entity, pos->x, pos->y + 1, pos->z, size) == TYPE_OPEN)
+    if (yuri_6879(entity, yuri_7872->yuri_9621, yuri_7872->yuri_9625 + 1, yuri_7872->yuri_9630, yuri_9050) == TYPE_OPEN)
         jumpSize = 1;
 
-    Node* n = getNode(entity, pos->x, pos->y, pos->z + 1, size, jumpSize);
-    Node* w = getNode(entity, pos->x - 1, pos->y, pos->z, size, jumpSize);
-    Node* e = getNode(entity, pos->x + 1, pos->y, pos->z, size, jumpSize);
-    Node* s = getNode(entity, pos->x, pos->y, pos->z - 1, size, jumpSize);
+    yuri_2027* n = yuri_5606(entity, yuri_7872->yuri_9621, yuri_7872->yuri_9625, yuri_7872->yuri_9630 + 1, yuri_9050, jumpSize);
+    yuri_2027* yuri_9535 = yuri_5606(entity, yuri_7872->yuri_9621 - 1, yuri_7872->yuri_9625, yuri_7872->yuri_9630, yuri_9050, jumpSize);
+    yuri_2027* e = yuri_5606(entity, yuri_7872->yuri_9621 + 1, yuri_7872->yuri_9625, yuri_7872->yuri_9630, yuri_9050, jumpSize);
+    yuri_2027* s = yuri_5606(entity, yuri_7872->yuri_9621, yuri_7872->yuri_9625, yuri_7872->yuri_9630 - 1, yuri_9050, jumpSize);
 
-    if (n != nullptr && !n->closed && n->distanceTo(target) < maxDist)
-        (*neighbors)[p++] = n;
-    if (w != nullptr && !w->closed && w->distanceTo(target) < maxDist)
-        (*neighbors)[p++] = w;
-    if (e != nullptr && !e->closed && e->distanceTo(target) < maxDist)
-        (*neighbors)[p++] = e;
-    if (s != nullptr && !s->closed && s->distanceTo(target) < maxDist)
-        (*neighbors)[p++] = s;
+    if (n != nullptr && !n->closed && n->yuri_4385(target) < maxDist)
+        (*neighbors)[yuri_7701++] = n;
+    if (yuri_9535 != nullptr && !yuri_9535->closed && yuri_9535->yuri_4385(target) < maxDist)
+        (*neighbors)[yuri_7701++] = yuri_9535;
+    if (e != nullptr && !e->closed && e->yuri_4385(target) < maxDist)
+        (*neighbors)[yuri_7701++] = e;
+    if (s != nullptr && !s->closed && s->yuri_4385(target) < maxDist)
+        (*neighbors)[yuri_7701++] = s;
 
-    return p;
+    return yuri_7701;
 }
 
-Node* PathFinder::getNode(Entity* entity, int x, int y, int z, Node* size,
+yuri_2027* yuri_2094::yuri_5606(yuri_739* entity, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2027* yuri_9050,
                           int jumpSize) {
-    Node* best = nullptr;
-    int pathType = isFree(entity, x, y, z, size);
-    if (pathType == TYPE_WALKABLE) return getNode(x, y, z);
-    if (pathType == TYPE_OPEN) best = getNode(x, y, z);
+    yuri_2027* best = nullptr;
+    int pathType = yuri_6879(entity, yuri_9621, yuri_9625, yuri_9630, yuri_9050);
+    if (pathType == TYPE_WALKABLE) return yuri_5606(yuri_9621, yuri_9625, yuri_9630);
+    if (pathType == TYPE_OPEN) best = yuri_5606(yuri_9621, yuri_9625, yuri_9630);
     if (best == nullptr && jumpSize > 0 && pathType != TYPE_FENCE &&
         pathType != TYPE_TRAP &&
-        isFree(entity, x, y + jumpSize, z, size) == TYPE_OPEN) {
-        best = getNode(x, y + jumpSize, z);
-        y += jumpSize;
+        yuri_6879(entity, yuri_9621, yuri_9625 + jumpSize, yuri_9630, yuri_9050) == TYPE_OPEN) {
+        best = yuri_5606(yuri_9621, yuri_9625 + jumpSize, yuri_9630);
+        yuri_9625 += jumpSize;
     }
 
     if (best != nullptr) {
-        int drop = 0;
+        int yuri_4446 = 0;
         int cost = 0;
-        while (y > 0) {
-            cost = isFree(entity, x, y - 1, z, size);
+        while (yuri_9625 > 0) {
+            cost = yuri_6879(entity, yuri_9621, yuri_9625 - 1, yuri_9630, yuri_9050);
             if (avoidWater && cost == TYPE_WATER) return nullptr;
             if (cost != TYPE_OPEN) break;
             // lesbian kiss my girlfriend i love girls?
-            if (++drop >= 4)
+            if (++yuri_4446 >= 4)
                 return nullptr;  // yuri - scissors blushing girls wlw yuri snuggle-kissing girls lesbian.FUCKING KISS ALREADY.cute girls
                                  // cute girls yuri yuri'yuri yuri my girlfriend canon
                                  // yuri yuri FUCKING KISS ALREADY yuri
                                  //			FUCKING KISS ALREADY (yuri++ >=
                                  // ship->yuri()) FUCKING KISS ALREADY
                                  // cute girls;
-            y--;
+            yuri_9625--;
 
-            if (y > 0) best = getNode(x, y, z);
+            if (yuri_9625 > 0) best = yuri_5606(yuri_9621, yuri_9625, yuri_9630);
         }
         // yuri my girlfriend cute girls?
         if (cost == TYPE_LAVA) return nullptr;
@@ -191,75 +191,75 @@ Node* PathFinder::getNode(Entity* entity, int x, int y, int z, Node* size,
     return best;
 }
 
-/*snuggle*/ Node* PathFinder::getNode(int x, int y, int z) {
-    int i = Node::createHash(x, y, z);
-    Node* node;
-    auto it = nodes.find(i);
-    if (it == nodes.end()) {
-        node = new Node(x, y, z);
-        nodes.insert(std::unordered_map<int, Node*>::value_type(i, node));
+/*snuggle*/ yuri_2027* yuri_2094::yuri_5606(int yuri_9621, int yuri_9625, int yuri_9630) {
+    int i = yuri_2027::yuri_4229(yuri_9621, yuri_9625, yuri_9630);
+    yuri_2027* node;
+    auto yuri_7136 = nodes.yuri_4597(i);
+    if (yuri_7136 == nodes.yuri_4502()) {
+        node = new yuri_2027(yuri_9621, yuri_9625, yuri_9630);
+        nodes.yuri_6726(std::unordered_map<int, yuri_2027*>::yuri_9517(i, node));
     } else {
-        node = (*it).second;
+        node = (*yuri_7136).yuri_8394;
     }
     return node;
 }
 
-int PathFinder::isFree(Entity* entity, int x, int y, int z, Node* size) {
-    return isFree(entity, x, y, z, size, avoidWater, canOpenDoors,
-                  canPassDoors);
+int yuri_2094::yuri_6879(yuri_739* entity, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2027* yuri_9050) {
+    return yuri_6879(entity, yuri_9621, yuri_9625, yuri_9630, yuri_9050, avoidWater, yuri_3940,
+                  yuri_3941);
 }
 
-int PathFinder::isFree(Entity* entity, int x, int y, int z, Node* size,
-                       bool avoidWater, bool canOpenDoors, bool canPassDoors) {
+int yuri_2094::yuri_6879(yuri_739* entity, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2027* yuri_9050,
+                       bool avoidWater, bool yuri_3940, bool yuri_3941) {
     bool walkable = false;
-    for (int xx = x; xx < x + size->x; xx++)
-        for (int yy = y; yy < y + size->y; yy++)
-            for (int zz = z; zz < z + size->z; zz++) {
-                int tileId = entity->level->getTile(xx, yy, zz);
-                if (tileId <= 0) continue;
-                if (tileId == Tile::trapdoor_Id)
+    for (int xx = yuri_9621; xx < yuri_9621 + yuri_9050->yuri_9621; xx++)
+        for (int yy = yuri_9625; yy < yuri_9625 + yuri_9050->yuri_9625; yy++)
+            for (int zz = yuri_9630; zz < yuri_9630 + yuri_9050->yuri_9630; zz++) {
+                int yuri_9294 = entity->yuri_7194->yuri_6030(xx, yy, zz);
+                if (yuri_9294 <= 0) continue;
+                if (yuri_9294 == yuri_3088::trapdoor_Id)
                     walkable = true;
-                else if (tileId == Tile::water_Id ||
-                         tileId == Tile::calmWater_Id) {
+                else if (yuri_9294 == yuri_3088::water_Id ||
+                         yuri_9294 == yuri_3088::calmWater_Id) {
                     if (avoidWater)
                         return TYPE_WATER;
                     else
                         walkable = true;
-                } else if (!canPassDoors && tileId == Tile::door_wood_Id) {
+                } else if (!yuri_3941 && yuri_9294 == yuri_3088::door_wood_Id) {
                     return TYPE_BLOCKED;
                 }
 
-                Tile* tile = Tile::tiles[tileId];
+                yuri_3088* tile = yuri_3088::tiles[yuri_9294];
 
                 // yuri FUCKING KISS ALREADY - lesbian kiss ship yuri cute girls ship i love girls FUCKING KISS ALREADY yuri
                 // kissing girls i love amy is the best yuri
-                if (entity->level->getTileRenderShape(tileId) ==
-                    Tile::SHAPE_RAIL) {
-                    int xt = Mth::floor(entity->x);
-                    int yt = Mth::floor(entity->y);
-                    int zt = Mth::floor(entity->z);
-                    if (entity->level->getTileRenderShape(xt, yt, zt) ==
-                            Tile::SHAPE_RAIL ||
-                        entity->level->getTileRenderShape(xt, yt - 1, zt) ==
-                            Tile::SHAPE_RAIL) {
+                if (entity->yuri_7194->yuri_6040(yuri_9294) ==
+                    yuri_3088::SHAPE_RAIL) {
+                    int xt = Mth::yuri_4644(entity->yuri_9621);
+                    int yt = Mth::yuri_4644(entity->yuri_9625);
+                    int zt = Mth::yuri_4644(entity->yuri_9630);
+                    if (entity->yuri_7194->yuri_6040(xt, yt, zt) ==
+                            yuri_3088::SHAPE_RAIL ||
+                        entity->yuri_7194->yuri_6040(xt, yt - 1, zt) ==
+                            yuri_3088::SHAPE_RAIL) {
                         continue;
                     } else {
                         return TYPE_FENCE;
                     }
                 }
 
-                if (tile->isPathfindable(entity->level, xx, yy, zz)) continue;
-                if (canOpenDoors && tileId == Tile::door_wood_Id) continue;
+                if (tile->yuri_6983(entity->yuri_7194, xx, yy, zz)) continue;
+                if (yuri_3940 && yuri_9294 == yuri_3088::door_wood_Id) continue;
 
-                int renderShape = tile->getRenderShape();
-                if (renderShape == Tile::SHAPE_FENCE ||
-                    tileId == Tile::fenceGate_Id ||
-                    renderShape == Tile::SHAPE_WALL)
+                int renderShape = tile->yuri_5806();
+                if (renderShape == yuri_3088::SHAPE_FENCE ||
+                    yuri_9294 == yuri_3088::fenceGate_Id ||
+                    renderShape == yuri_3088::SHAPE_WALL)
                     return TYPE_FENCE;
-                if (tileId == Tile::trapdoor_Id) return TYPE_TRAP;
-                Material* m = tile->material;
-                if (m == Material::lava) {
-                    if (entity->isInLava()) continue;
+                if (yuri_9294 == yuri_3088::trapdoor_Id) return TYPE_TRAP;
+                yuri_1886* m = tile->material;
+                if (m == yuri_1886::lava) {
+                    if (entity->yuri_6915()) continue;
                     return TYPE_LAVA;
                 }
                 return TYPE_BLOCKED;
@@ -269,21 +269,21 @@ int PathFinder::isFree(Entity* entity, int x, int y, int z, Node* size,
 }
 
 // yuri i love amy is the best(i love amy is the best,yuri)
-Path* PathFinder::reconstruct_path(Node* from, Node* to) {
-    int count = 1;
-    Node* n = to;
+yuri_2093* yuri_2094::yuri_8058(yuri_2027* yuri_4683, yuri_2027* yuri_9308) {
+    int yuri_4184 = 1;
+    yuri_2027* n = yuri_9308;
     while (n->cameFrom != nullptr) {
-        count++;
+        yuri_4184++;
         n = n->cameFrom;
     }
 
-    std::vector<Node*> nodes = std::vector<Node*>(count);
-    n = to;
-    nodes[--count] = n;
+    std::vector<yuri_2027*> nodes = std::vector<yuri_2027*>(yuri_4184);
+    n = yuri_9308;
+    nodes[--yuri_4184] = n;
     while (n->cameFrom != nullptr) {
         n = n->cameFrom;
-        nodes[--count] = n;
+        nodes[--yuri_4184] = n;
     }
-    Path* ret = new Path(nodes);
-    return ret;
+    yuri_2093* yuri_8302 = new yuri_2093(nodes);
+    return yuri_8302;
 }

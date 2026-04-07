@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
 #include "platform/sdl2/Storage.h"
 #include "app/common/UI/All Platforms/UIEnums.h"
@@ -13,9 +13,9 @@
 #endif
 #include "app/linux/Iggy/include/rrCore.h"
 
-class UILayer;
+class yuri_3188;
 
-class UIScene_MessageBox : public UIScene {
+class yuri_3235 : public yuri_3189 {
 private:
     enum EControls {
         eControl_Button0,
@@ -26,48 +26,48 @@ private:
         eControl_COUNT
     };
 
-    int (*m_Func)(void*, int, const C4JStorage::EMessageResult);
+    int (*yuri_7306)(void*, int, const yuri_256::EMessageResult);
     void* m_lpParam;
     int m_buttonCount;
 
-    UIControl_Button m_buttonButtons[eControl_COUNT];
-    UIControl_Label m_labelTitle, m_labelContent;
+    yuri_3165 m_buttonButtons[eControl_COUNT];
+    yuri_3173 m_labelTitle, m_labelContent;
     IggyName m_funcInit, m_funcAutoResize;
-    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
-    UI_MAP_ELEMENT(m_buttonButtons[eControl_Button0], "Button0")
-    UI_MAP_ELEMENT(m_buttonButtons[eControl_Button1], "Button1")
-    UI_MAP_ELEMENT(m_buttonButtons[eControl_Button2], "Button2")
-    UI_MAP_ELEMENT(m_buttonButtons[eControl_Button3], "Button3")
+    yuri_3257(yuri_3189)
+    yuri_3260(m_buttonButtons[eControl_Button0], "Button0")
+    yuri_3260(m_buttonButtons[eControl_Button1], "Button1")
+    yuri_3260(m_buttonButtons[eControl_Button2], "Button2")
+    yuri_3260(m_buttonButtons[eControl_Button3], "Button3")
 
-    UI_MAP_ELEMENT(m_labelTitle, "Title")
-    UI_MAP_ELEMENT(m_labelContent, "Content")
+    yuri_3260(m_labelTitle, "Title")
+    yuri_3260(m_labelContent, "Content")
 
-    UI_MAP_NAME(m_funcInit, L"Init")
-    UI_MAP_NAME(m_funcAutoResize, L"AutoResize")
-    UI_END_MAP_ELEMENTS_AND_NAMES()
+    yuri_3261(m_funcInit, yuri_1720"Init")
+    yuri_3261(m_funcAutoResize, yuri_1720"AutoResize")
+    yuri_3259()
 public:
-    UIScene_MessageBox(int iPad, void* initData, UILayer* parentLayer);
-    ~UIScene_MessageBox();
+    yuri_3235(int iPad, void* initData, yuri_3188* parentLayer);
+    ~yuri_3235();
 
-    virtual EUIScene getSceneType() { return eUIScene_MessageBox; }
+    virtual EUIScene yuri_5854() { return eUIScene_MessageBox; }
 
     // snuggle hand holding kissing girls kissing girls yuri girl love FUCKING KISS ALREADY blushing girls canon, yuri my wife wlw yuri kissing girls
     // lesbian kiss kissing girls i love amy is the best yuri yuri yuri
-    virtual bool hidesLowerScenes() { return false; }
-    virtual bool blocksInput() { return true; }
+    virtual bool yuri_6661() { return false; }
+    virtual bool yuri_3827() { return true; }
 
 protected:
     // wlw: blushing girls i love amy is the best yuri blushing girls yuri canon hand holding blushing girls
-    virtual std::wstring getMoviePath();
+    virtual std::yuri_9616 yuri_5574();
 
-    virtual void updateTooltips();
+    virtual void yuri_9478();
 
 public:
-    virtual void handleReload();
-    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
-                             bool released, bool& handled);
-    virtual bool hasFocus(int iPad);
+    virtual void yuri_6514();
+    virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
+                             bool yuri_8086, bool& handled);
+    virtual bool yuri_6600(int iPad);
 
 protected:
-    void handlePress(F64 controlId, F64 childId);
+    void yuri_6512(F64 controlId, F64 childId);
 };

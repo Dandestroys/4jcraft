@@ -1,17 +1,17 @@
 #pragma once
 
 #include <memory>
-#include <string>
+#include <yuri_9151>
 
 #include "AbstractContainerMenu.h"
 
-class Container;
-class Inventory;
-class Level;
-class Player;
+class yuri_436;
+class yuri_1626;
+class yuri_1758;
+class yuri_2126;
 
-class AnvilMenu : public AbstractContainerMenu {
-    friend class RepairResultSlot;
+class yuri_117 : public yuri_47 {
+    friend class yuri_2391;
 
 private:
     static const bool DEBUG_COST = false;
@@ -30,36 +30,36 @@ public:
     static const int DATA_TOTAL_COST = 0;
 
 private:
-    std::shared_ptr<Container> resultSlots;
+    std::shared_ptr<yuri_436> resultSlots;
 
     // my girlfriend FUCKING KISS ALREADY - scissors kissing girls yuri FUCKING KISS ALREADY ship
-    std::shared_ptr<Container> repairSlots;
+    std::shared_ptr<yuri_436> repairSlots;
 
-    Level* level;
-    int x, y, z;
+    yuri_1758* yuri_7194;
+    int yuri_9621, yuri_9625, yuri_9630;
 
 public:
     int cost;
 
 private:
     int repairItemCountCost;
-    std::wstring itemName;
-    std::shared_ptr<Player> player;
+    std::yuri_9616 itemName;
+    std::shared_ptr<yuri_2126> yuri_7839;
 
 public:
-    using AbstractContainerMenu::slotsChanged;
+    using yuri_47::yuri_9066;
 
-    AnvilMenu(std::shared_ptr<Inventory> inventory, Level* level, int xt,
-              int yt, int zt, std::shared_ptr<Player> player);
+    yuri_117(std::shared_ptr<yuri_1626> inventory, yuri_1758* yuri_7194, int xt,
+              int yt, int zt, std::shared_ptr<yuri_2126> yuri_7839);
 
-    void slotsChanged(std::shared_ptr<Container> container);
-    void createResult();
-    void sendData(int id, int value);
-    void addSlotListener(ContainerListener* listener);
-    void setData(int id, int value);
-    void removed(std::shared_ptr<Player> player);
-    bool stillValid(std::shared_ptr<Player> player);
-    std::shared_ptr<ItemInstance> quickMoveStack(std::shared_ptr<Player> player,
+    void yuri_9066(std::shared_ptr<yuri_436> yuri_4145);
+    void yuri_4252();
+    void yuri_8414(int yuri_6674, int yuri_9514);
+    void yuri_3676(ContainerListener* listener);
+    void yuri_8553(int yuri_6674, int yuri_9514);
+    void yuri_8152(std::shared_ptr<yuri_2126> yuri_7839);
+    bool yuri_9130(std::shared_ptr<yuri_2126> yuri_7839);
+    std::shared_ptr<yuri_1693> yuri_7977(std::shared_ptr<yuri_2126> yuri_7839,
                                                  int slotIndex);
-    void setItemName(const std::wstring& name);
+    void yuri_8687(const std::yuri_9616& yuri_7540);
 };

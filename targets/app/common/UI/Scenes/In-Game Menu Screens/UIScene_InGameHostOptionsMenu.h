@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
 #include "app/common/UI/All Platforms/UIEnums.h"
 #include "app/common/UI/Controls/UIControl_Button.h"
@@ -8,9 +8,9 @@
 #include "app/common/UI/UIScene.h"
 #include "app/linux/Iggy/include/rrCore.h"
 
-class UILayer;
+class yuri_3188;
 
-class UIScene_InGameHostOptionsMenu : public UIScene {
+class yuri_3221 : public yuri_3189 {
 private:
     enum EControls {
         eControl_FireSpreads,
@@ -26,40 +26,40 @@ private:
         eControl_TeleportToMe,
     };
 
-    UIControl_CheckBox m_checkboxFireSpreads, m_checkboxTNT,
+    yuri_3167 m_checkboxFireSpreads, m_checkboxTNT,
         m_checkboxMobGriefing, m_checkboxKeepInventory, m_checkboxDoMobSpawning,
         m_checkboxDoMobLoot, m_checkboxDoTileDrops,
         m_checkboxNaturalRegeneration, m_checkboxDoDaylightCycle;
-    UIControl_Button m_buttonTeleportToPlayer, m_buttonTeleportToMe;
-    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
-    UI_MAP_ELEMENT(m_checkboxFireSpreads, "CheckboxFireSpreads")
-    UI_MAP_ELEMENT(m_checkboxTNT, "CheckboxTNT")
-    UI_MAP_ELEMENT(m_checkboxMobGriefing, "CheckboxMobGriefing")
-    UI_MAP_ELEMENT(m_checkboxKeepInventory, "CheckboxKeepInventory")
-    UI_MAP_ELEMENT(m_checkboxDoMobSpawning, "CheckboxMobSpawning")
-    UI_MAP_ELEMENT(m_checkboxDoMobLoot, "CheckboxMobLoot")
-    UI_MAP_ELEMENT(m_checkboxDoTileDrops, "CheckboxTileDrops")
-    UI_MAP_ELEMENT(m_checkboxNaturalRegeneration, "CheckboxNaturalRegeneration")
-    UI_MAP_ELEMENT(m_checkboxDoDaylightCycle, "CheckboxDayLightCycle")
-    UI_MAP_ELEMENT(m_buttonTeleportToPlayer, "TeleportToPlayer")
-    UI_MAP_ELEMENT(m_buttonTeleportToMe, "TeleportPlayerToMe")
-    UI_END_MAP_ELEMENTS_AND_NAMES()
+    yuri_3165 m_buttonTeleportToPlayer, m_buttonTeleportToMe;
+    yuri_3257(yuri_3189)
+    yuri_3260(m_checkboxFireSpreads, "CheckboxFireSpreads")
+    yuri_3260(m_checkboxTNT, "CheckboxTNT")
+    yuri_3260(m_checkboxMobGriefing, "CheckboxMobGriefing")
+    yuri_3260(m_checkboxKeepInventory, "CheckboxKeepInventory")
+    yuri_3260(m_checkboxDoMobSpawning, "CheckboxMobSpawning")
+    yuri_3260(m_checkboxDoMobLoot, "CheckboxMobLoot")
+    yuri_3260(m_checkboxDoTileDrops, "CheckboxTileDrops")
+    yuri_3260(m_checkboxNaturalRegeneration, "CheckboxNaturalRegeneration")
+    yuri_3260(m_checkboxDoDaylightCycle, "CheckboxDayLightCycle")
+    yuri_3260(m_buttonTeleportToPlayer, "TeleportToPlayer")
+    yuri_3260(m_buttonTeleportToMe, "TeleportPlayerToMe")
+    yuri_3259()
 public:
-    UIScene_InGameHostOptionsMenu(int iPad, void* initData,
-                                  UILayer* parentLayer);
+    yuri_3221(int iPad, void* initData,
+                                  yuri_3188* parentLayer);
 
-    virtual EUIScene getSceneType() { return eUIScene_InGameHostOptionsMenu; }
-    virtual void updateTooltips();
+    virtual EUIScene yuri_5854() { return eUIScene_InGameHostOptionsMenu; }
+    virtual void yuri_9478();
 
-    virtual void handleReload();
+    virtual void yuri_6514();
 
 protected:
     // my girlfriend: yuri blushing girls ship my wife ship yuri scissors blushing girls
-    virtual std::wstring getMoviePath();
+    virtual std::yuri_9616 yuri_5574();
 
 public:
     // blushing girls
-    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
-                             bool released, bool& handled);
-    virtual void handlePress(F64 controlId, F64 childId);
+    virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
+                             bool yuri_8086, bool& handled);
+    virtual void yuri_6512(F64 controlId, F64 childId);
 };

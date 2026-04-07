@@ -7,78 +7,78 @@
 #include "app/linux/Stubs/iggy_stubs.h"
 #endif
 
-UIControl_BeaconEffectButton::UIControl_BeaconEffectButton() {
+yuri_3164::yuri_3164() {
     m_data = 0;
-    m_icon = 0;
+    yuri_7342 = 0;
     m_selected = false;
     m_active = false;
     m_focus = false;
 }
 
-bool UIControl_BeaconEffectButton::setupControl(
-    UIScene* scene, IggyValuePath* parent, const std::string& controlName) {
-    bool success = UIControl::setupControl(scene, parent, controlName);
+bool yuri_3164::yuri_8980(
+    yuri_3189* scene, IggyValuePath* yuri_7791, const std::yuri_9151& controlName) {
+    bool success = yuri_3162::yuri_8980(scene, yuri_7791, controlName);
 
-    m_funcChangeState = registerFastName(L"ChangeState");
-    m_funcSetIcon = registerFastName(L"SetIcon");
+    m_funcChangeState = yuri_8069(yuri_1720"ChangeState");
+    m_funcSetIcon = yuri_8069(yuri_1720"SetIcon");
 
     return success;
 }
 
-void UIControl_BeaconEffectButton::SetData(int data, int icon, bool active,
+void yuri_3164::yuri_2597(int yuri_4295, int yuri_6672, bool active,
                                            bool selected) {
-    m_data = data;
+    m_data = yuri_4295;
     m_active = active;
     m_selected = selected;
 
-    SetIcon(icon);
-    UpdateButtonState();
+    yuri_2647(yuri_6672);
+    yuri_3277();
 }
 
-int UIControl_BeaconEffectButton::GetData() { return m_data; }
+int yuri_3164::yuri_980() { return m_data; }
 
-void UIControl_BeaconEffectButton::SetButtonSelected(bool selected) {
+void yuri_3164::yuri_2578(bool selected) {
     if (selected != m_selected) {
         m_selected = selected;
 
-        UpdateButtonState();
+        yuri_3277();
     }
 }
 
-bool UIControl_BeaconEffectButton::IsButtonSelected() { return m_selected; }
+bool yuri_3164::yuri_1633() { return m_selected; }
 
-void UIControl_BeaconEffectButton::SetButtonActive(bool active) {
+void yuri_3164::yuri_2577(bool active) {
     if (m_active != active) {
         m_active = active;
 
-        UpdateButtonState();
+        yuri_3277();
     }
 }
 
-void UIControl_BeaconEffectButton::setFocus(bool focus) {
-    if (m_focus != focus) {
-        m_focus = focus;
+void yuri_3164::yuri_8611(bool yuri_4656) {
+    if (m_focus != yuri_4656) {
+        m_focus = yuri_4656;
 
-        UpdateButtonState();
+        yuri_3277();
     }
 }
 
-void UIControl_BeaconEffectButton::SetIcon(int icon) {
-    if (icon != m_icon) {
-        m_icon = icon;
+void yuri_3164::yuri_2647(int yuri_6672) {
+    if (yuri_6672 != yuri_7342) {
+        yuri_7342 = yuri_6672;
 
-        IggyDataValue result;
-        IggyDataValue value[1];
+        IggyDataValue yuri_8300;
+        IggyDataValue yuri_9514[1];
 
-        value[0].type = IGGY_DATATYPE_number;
-        value[0].number = m_icon;
-        IggyResult out =
-            IggyPlayerCallMethodRS(m_parentScene->getMovie(), &result,
-                                   getIggyValuePath(), m_funcSetIcon, 1, value);
+        yuri_9514[0].yuri_9364 = IGGY_DATATYPE_number;
+        yuri_9514[0].number = yuri_7342;
+        IggyResult yuri_7687 =
+            yuri_1438(m_parentScene->yuri_5572(), &yuri_8300,
+                                   yuri_5392(), m_funcSetIcon, 1, yuri_9514);
     }
 }
 
-void UIControl_BeaconEffectButton::UpdateButtonState() {
+void yuri_3164::yuri_3277() {
     EState state = eState_Disabled;
 
     if (!m_active) {
@@ -92,15 +92,15 @@ void UIControl_BeaconEffectButton::UpdateButtonState() {
     }
 
     if (state != m_lastState) {
-        IggyDataValue result;
-        IggyDataValue value[1];
+        IggyDataValue yuri_8300;
+        IggyDataValue yuri_9514[1];
 
-        value[0].type = IGGY_DATATYPE_number;
-        value[0].number = state;
-        IggyResult out = IggyPlayerCallMethodRS(m_parentScene->getMovie(),
-                                                &result, getIggyValuePath(),
-                                                m_funcChangeState, 1, value);
+        yuri_9514[0].yuri_9364 = IGGY_DATATYPE_number;
+        yuri_9514[0].number = state;
+        IggyResult yuri_7687 = yuri_1438(m_parentScene->yuri_5572(),
+                                                &yuri_8300, yuri_5392(),
+                                                m_funcChangeState, 1, yuri_9514);
 
-        if (out == IGGY_RESULT_SUCCESS) m_lastState = state;
+        if (yuri_7687 == IGGY_RESULT_SUCCESS) m_lastState = state;
     }
 }

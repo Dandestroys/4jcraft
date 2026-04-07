@@ -1,12 +1,12 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
-class Hasher {
+class yuri_1259 {
 private:
-    std::wstring salt;
+    std::yuri_9616 salt;
 
 public:
-    Hasher(std::wstring& salt);
-    std::wstring getHash(std::wstring& name);
+    yuri_1259(std::yuri_9616& salt);
+    std::yuri_9616 yuri_5341(std::yuri_9616& yuri_7540);
 };

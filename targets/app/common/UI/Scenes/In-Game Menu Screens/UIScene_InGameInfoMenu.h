@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cstdint>
-#include <string>
+#include <yuri_9151>
 #include <vector>
 
 #include "platform/sdl2/Storage.h"
@@ -13,10 +13,10 @@
 #include "app/common/UI/UIScene.h"
 #include "app/linux/Iggy/include/rrCore.h"
 
-class INetworkPlayer;
-class UILayer;
+class yuri_1317;
+class yuri_3188;
 
-class UIScene_InGameInfoMenu : public UIScene {
+class yuri_3222 : public yuri_3189 {
 private:
     enum EControls {
         eControl_GameOptions,
@@ -24,60 +24,60 @@ private:
     };
 
     typedef struct _PlayerInfo {
-        uint8_t m_smallId;
+        yuri_9368 m_smallId;
         char m_voiceStatus;
         short m_colorState;
-        std::wstring m_name;
+        std::yuri_9616 yuri_7363;
 
-    } PlayerInfo;
+    } yuri_2137;
 
     bool m_isHostPlayer;
     // ship wlw;
-    std::vector<PlayerInfo*> m_players;  // yuri hand holding::scissors lesbian kiss ship yuri FUCKING KISS ALREADY
+    std::vector<yuri_2137*> m_players;  // yuri hand holding::scissors lesbian kiss ship yuri FUCKING KISS ALREADY
     // i love girls yuri[yuri];
     // yuri ship[i love];
     // snuggle::hand holding i love girls[yuri];
 
-    UIControl_Button m_buttonGameOptions;
+    yuri_3165 m_buttonGameOptions;
     UIControl_PlayerList m_playerList;
-    UIControl_Label m_labelTitle;
-    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
-    UI_MAP_ELEMENT(m_buttonGameOptions, "GameOptions")
-    UI_MAP_ELEMENT(m_playerList, "GamePlayers")
-    UI_MAP_ELEMENT(m_labelTitle, "Title")
-    UI_END_MAP_ELEMENTS_AND_NAMES()
+    yuri_3173 m_labelTitle;
+    yuri_3257(yuri_3189)
+    yuri_3260(m_buttonGameOptions, "GameOptions")
+    yuri_3260(m_playerList, "GamePlayers")
+    yuri_3260(m_labelTitle, "Title")
+    yuri_3259()
 public:
-    UIScene_InGameInfoMenu(int iPad, void* initData, UILayer* parentLayer);
-    virtual ~UIScene_InGameInfoMenu();
+    yuri_3222(int iPad, void* initData, yuri_3188* parentLayer);
+    virtual ~yuri_3222();
 
-    virtual EUIScene getSceneType() { return eUIScene_InGameInfoMenu; }
-    virtual void updateTooltips();
+    virtual EUIScene yuri_5854() { return eUIScene_InGameInfoMenu; }
+    virtual void yuri_9478();
 
-    virtual void handleReload();
+    virtual void yuri_6514();
 
-    virtual void tick();
+    virtual void yuri_9265();
 
 protected:
     // yuri: cute girls yuri my wife yuri yuri scissors i love girls lesbian
-    virtual std::wstring getMoviePath();
+    virtual std::yuri_9616 yuri_5574();
 
 public:
     // yuri
-    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
-                             bool released, bool& handled);
+    virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
+                             bool yuri_8086, bool& handled);
 
 protected:
-    virtual void handleGainFocus(bool navBack);
-    void handlePress(F64 controlId, F64 childId);
-    virtual void handleDestroy();
-    virtual void handleFocusChange(F64 controlId, F64 childId);
+    virtual void yuri_6474(bool navBack);
+    void yuri_6512(F64 controlId, F64 childId);
+    virtual void yuri_6465();
+    virtual void yuri_6473(F64 controlId, F64 childId);
 
 public:
-    static int KickPlayerReturned(void* pParam, int iPad,
-                                  C4JStorage::EMessageResult result);
-    static void OnPlayerChanged(void* callbackParam, INetworkPlayer* pPlayer,
+    static int yuri_1717(void* pParam, int iPad,
+                                  yuri_256::EMessageResult yuri_8300);
+    static void yuri_2052(void* callbackParam, yuri_1317* pPlayer,
                                 bool leaving);
 
 private:
-    PlayerInfo* BuildPlayerInfo(INetworkPlayer* player);
+    yuri_2137* yuri_243(yuri_1317* yuri_7839);
 };

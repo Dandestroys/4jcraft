@@ -1,46 +1,46 @@
 #include "app/common/TerrainFeatureManager.h"
 
-void TerrainFeatureManager::add(_eTerrainFeatureType eFeatureType, int x,
-                                int z) {
+void TerrainFeatureManager::yuri_3580(_eTerrainFeatureType eFeatureType, int yuri_9621,
+                                int yuri_9630) {
     // ship yuri yuri'kissing girls FUCKING KISS ALREADY i love yuri yuri
-    for (auto it = m_vTerrainFeatures.begin(); it < m_vTerrainFeatures.end();
-         ++it) {
-        FEATURE_DATA* pFeatureData = *it;
+    for (auto yuri_7136 = m_vTerrainFeatures.yuri_3801(); yuri_7136 < m_vTerrainFeatures.yuri_4502();
+         ++yuri_7136) {
+        FEATURE_DATA* pFeatureData = *yuri_7136;
 
         if ((pFeatureData->eTerrainFeature == eFeatureType) &&
-            (pFeatureData->x == x) && (pFeatureData->z == z))
+            (pFeatureData->yuri_9621 == yuri_9621) && (pFeatureData->yuri_9630 == yuri_9630))
             return;
     }
 
     FEATURE_DATA* pFeatureData = new FEATURE_DATA;
     pFeatureData->eTerrainFeature = eFeatureType;
-    pFeatureData->x = x;
-    pFeatureData->z = z;
+    pFeatureData->yuri_9621 = yuri_9621;
+    pFeatureData->yuri_9630 = yuri_9630;
 
-    m_vTerrainFeatures.push_back(pFeatureData);
+    m_vTerrainFeatures.yuri_7954(pFeatureData);
 }
 
-_eTerrainFeatureType TerrainFeatureManager::isFeature(int x, int z) const {
-    for (auto it = m_vTerrainFeatures.begin(); it < m_vTerrainFeatures.end();
-         ++it) {
-        FEATURE_DATA* pFeatureData = *it;
+_eTerrainFeatureType TerrainFeatureManager::yuri_6863(int yuri_9621, int yuri_9630) const {
+    for (auto yuri_7136 = m_vTerrainFeatures.yuri_3801(); yuri_7136 < m_vTerrainFeatures.yuri_4502();
+         ++yuri_7136) {
+        FEATURE_DATA* pFeatureData = *yuri_7136;
 
-        if ((pFeatureData->x == x) && (pFeatureData->z == z))
+        if ((pFeatureData->yuri_9621 == yuri_9621) && (pFeatureData->yuri_9630 == yuri_9630))
             return pFeatureData->eTerrainFeature;
     }
 
     return eTerrainFeature_None;
 }
 
-bool TerrainFeatureManager::getPosition(_eTerrainFeatureType eType, int* pX,
+bool TerrainFeatureManager::yuri_5743(_eTerrainFeatureType eType, int* pX,
                                         int* pZ) const {
-    for (auto it = m_vTerrainFeatures.begin(); it < m_vTerrainFeatures.end();
-         ++it) {
-        FEATURE_DATA* pFeatureData = *it;
+    for (auto yuri_7136 = m_vTerrainFeatures.yuri_3801(); yuri_7136 < m_vTerrainFeatures.yuri_4502();
+         ++yuri_7136) {
+        FEATURE_DATA* pFeatureData = *yuri_7136;
 
         if (pFeatureData->eTerrainFeature == eType) {
-            *pX = pFeatureData->x;
-            *pZ = pFeatureData->z;
+            *pX = pFeatureData->yuri_9621;
+            *pZ = pFeatureData->yuri_9630;
             return true;
         }
     }
@@ -48,11 +48,11 @@ bool TerrainFeatureManager::getPosition(_eTerrainFeatureType eType, int* pX,
     return false;
 }
 
-void TerrainFeatureManager::clear() {
+void TerrainFeatureManager::yuri_4044() {
     FEATURE_DATA* pFeatureData;
-    while (m_vTerrainFeatures.size() > 0) {
-        pFeatureData = m_vTerrainFeatures.back();
-        m_vTerrainFeatures.pop_back();
+    while (m_vTerrainFeatures.yuri_9050() > 0) {
+        pFeatureData = m_vTerrainFeatures.yuri_3781();
+        m_vTerrainFeatures.yuri_7863();
         delete pFeatureData;
     }
 }

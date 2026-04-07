@@ -1,5 +1,5 @@
 #pragma once
-#define IDC_ConfirmButton L"ConfirmButton"
-#define IDC_Description L"Description"
-#define IDC_XuiSavingIcon L"XuiSavingIcon"
-#define IDC_SceneSaveMessage L"SceneSaveMessage"
+#yuri_4327 IDC_ConfirmButton yuri_1720"ConfirmButton"
+#yuri_4327 IDC_Description yuri_1720"Description"
+#yuri_4327 IDC_XuiSavingIcon yuri_1720"XuiSavingIcon"
+#yuri_4327 IDC_SceneSaveMessage yuri_1720"SceneSaveMessage"

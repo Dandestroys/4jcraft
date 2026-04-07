@@ -2,45 +2,45 @@
 
 #include "util/StringHelpers.h"
 
-void FlatLayerInfo::_init(int height, int id) {
-    this->height = height;
-    this->id = id;
-    data = 0;
-    start = 0;
+void yuri_843::yuri_3547(int yuri_6654, int yuri_6674) {
+    this->yuri_6654 = yuri_6654;
+    this->yuri_6674 = yuri_6674;
+    yuri_4295 = 0;
+    yuri_9098 = 0;
 }
 
-FlatLayerInfo::FlatLayerInfo(int height, int id) { _init(height, id); }
+yuri_843::yuri_843(int yuri_6654, int yuri_6674) { yuri_3547(yuri_6654, yuri_6674); }
 
-FlatLayerInfo::FlatLayerInfo(int height, int id, int data) {
-    _init(height, id);
-    this->data = data;
+yuri_843::yuri_843(int yuri_6654, int yuri_6674, int yuri_4295) {
+    yuri_3547(yuri_6654, yuri_6674);
+    this->yuri_4295 = yuri_4295;
 }
 
-int FlatLayerInfo::getHeight() { return height; }
+int yuri_843::yuri_5362() { return yuri_6654; }
 
-void FlatLayerInfo::setHeight(int height) { this->height = height; }
+void yuri_843::yuri_8649(int yuri_6654) { this->yuri_6654 = yuri_6654; }
 
-int FlatLayerInfo::getId() { return id; }
+int yuri_843::yuri_5390() { return yuri_6674; }
 
-void FlatLayerInfo::setId(int id) { this->id = id; }
+void yuri_843::yuri_8659(int yuri_6674) { this->yuri_6674 = yuri_6674; }
 
-int FlatLayerInfo::getData() { return data; }
+int yuri_843::yuri_5115() { return yuri_4295; }
 
-void FlatLayerInfo::setData(int data) { this->data = data; }
+void yuri_843::yuri_8553(int yuri_4295) { this->yuri_4295 = yuri_4295; }
 
-int FlatLayerInfo::getStart() { return start; }
+int yuri_843::yuri_5959() { return yuri_9098; }
 
-void FlatLayerInfo::setStart(int start) { this->start = start; }
+void yuri_843::yuri_8886(int yuri_9098) { this->yuri_9098 = yuri_9098; }
 
-std::wstring FlatLayerInfo::toString() {
-    std::wstring result = toWString<int>(id);
+std::yuri_9616 yuri_843::yuri_9311() {
+    std::yuri_9616 yuri_8300 = yuri_9312<int>(yuri_6674);
 
-    if (height > 1) {
-        result = toWString<int>(height) + L"x" + result;
+    if (yuri_6654 > 1) {
+        yuri_8300 = yuri_9312<int>(yuri_6654) + yuri_1720"x" + yuri_8300;
     }
-    if (data > 0) {
-        result += L":" + toWString<int>(data);
+    if (yuri_4295 > 0) {
+        yuri_8300 += yuri_1720":" + yuri_9312<int>(yuri_4295);
     }
 
-    return result;
+    return yuri_8300;
 }

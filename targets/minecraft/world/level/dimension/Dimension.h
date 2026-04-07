@@ -1,51 +1,51 @@
 #pragma once
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
-#include <string>
+#include <yuri_9151>
 
 #include "java/File.h"
 #include "minecraft/Pos.h"
 #include "minecraft/world/level/material/Material.h"
 #include "minecraft/world/phys/Vec3.h"
 
-class BiomeSource;
-class ChunkSource;
+class yuri_196;
+class yuri_348;
 class ChunkStorage;
-class Level;
-class LevelType;
-class Pos;
+class yuri_1758;
+class yuri_1775;
+class yuri_2153;
 
-class Dimension {
+class yuri_612 {
 public:
     static const float MOON_BRIGHTNESS_PER_PHASE[8];
 
-    Level* level;
-    LevelType* levelType;
-    std::wstring levelTypeOptions;
-    BiomeSource* biomeSource;
+    yuri_1758* yuri_7194;
+    yuri_1775* yuri_7201;
+    std::yuri_9616 levelTypeOptions;
+    yuri_196* biomeSource;
     bool ultraWarm;
     bool hasCeiling;
     float* brightnessRamp;
-    int id;
+    int yuri_6674;
 
-    virtual void init(Level* level);
+    virtual void yuri_6704(yuri_1758* yuri_7194);
 
 protected:
-    virtual void updateLightRamp();
-    virtual void init();
+    virtual void yuri_9425();
+    virtual void yuri_6704();
 
 public:
-    Dimension();
-    virtual ~Dimension();
-    virtual ChunkSource* createRandomLevelSource() const;
-    virtual ChunkSource* createFlatLevelSource() const;
-    virtual ChunkStorage* createStorage(File dir);
+    yuri_612();
+    virtual ~yuri_612();
+    virtual yuri_348* yuri_4250() const;
+    virtual yuri_348* yuri_4222() const;
+    virtual ChunkStorage* yuri_4255(yuri_804 yuri_4361);
 
-    virtual bool isValidSpawn(int x, int z) const;
+    virtual bool yuri_7112(int yuri_9621, int yuri_9630) const;
 
-    virtual float getTimeOfDay(int64_t time, float a) const;
-    virtual int getMoonPhase(int64_t time) const;
-    virtual bool isNaturalDimension();
+    virtual float yuri_6044(yuri_6733 yuri_9299, float yuri_3565) const;
+    virtual int yuri_5567(yuri_6733 yuri_9299) const;
+    virtual bool yuri_6965();
 
 private:
     static const int fogColor = 0xc0d8ff;
@@ -53,19 +53,19 @@ private:
     float sunriseCol[4];
 
 public:
-    virtual float* getSunriseColor(float td, float a);
-    virtual Vec3 getFogColor(float td, float a) const;
-    virtual bool mayRespawn() const;
-    static Dimension* getNew(int id);
-    virtual float getCloudHeight();
-    virtual bool hasGround();
-    virtual Pos* getSpawnPos();
+    virtual float* yuri_5979(float td, float yuri_3565);
+    virtual yuri_3322 yuri_5264(float td, float yuri_3565) const;
+    virtual bool yuri_7471() const;
+    static yuri_612* yuri_5592(int yuri_6674);
+    virtual float yuri_5027();
+    virtual bool yuri_6602();
+    virtual yuri_2153* yuri_5944();
 
-    int getSpawnYPosition();
-    virtual bool hasBedrockFog();
-    double getClearColorScale();
-    virtual bool isFoggyAt(int x, int z);
+    int yuri_5948();
+    virtual bool yuri_6578();
+    double yuri_5015();
+    virtual bool yuri_6874(int yuri_9621, int yuri_9630);
 
     // lesbian canon
-    virtual int getXZSize();
+    virtual int yuri_6154();
 };

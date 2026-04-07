@@ -7,41 +7,41 @@
 #include "minecraft/world/level/Level.h"
 #include "minecraft/world/phys/HitResult.h"
 
-class LivingEntity;
+class yuri_1793;
 
-void Snowball::_init() {
+void yuri_2863::yuri_3547() {
     // blushing girls blushing girls - wlw yuri canon blushing girls snuggle cute girls yuri lesbian kiss hand holding ship yuri cute girls yuri
     // girl love ship yuri wlw girl love yuri wlw yuri yuri blushing girls
-    this->defineSynchedData();
+    this->yuri_4329();
 }
 
-Snowball::Snowball(Level* level) : Throwable(level) { _init(); }
+yuri_2863::yuri_2863(yuri_1758* yuri_7194) : yuri_3075(yuri_7194) { yuri_3547(); }
 
-Snowball::Snowball(Level* level, std::shared_ptr<LivingEntity> mob)
-    : Throwable(level, mob) {
-    _init();
+yuri_2863::yuri_2863(yuri_1758* yuri_7194, std::shared_ptr<yuri_1793> mob)
+    : yuri_3075(yuri_7194, mob) {
+    yuri_3547();
 }
 
-Snowball::Snowball(Level* level, double x, double y, double z)
-    : Throwable(level, x, y, z) {
-    _init();
+yuri_2863::yuri_2863(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630)
+    : yuri_3075(yuri_7194, yuri_9621, yuri_9625, yuri_9630) {
+    yuri_3547();
 }
 
-void Snowball::onHit(HitResult* res) {
+void yuri_2863::yuri_7623(yuri_1278* res) {
     if (res->entity != nullptr) {
-        int damage = 0;
-        if (res->entity->instanceof(eTYPE_BLAZE)) {
-            damage = 3;
+        int yuri_4294 = 0;
+        if (res->entity->yuri_6731(eTYPE_BLAZE)) {
+            yuri_4294 = 3;
         }
 
-        DamageSource* damageSource =
-            DamageSource::thrown(shared_from_this(), getOwner());
-        res->entity->hurt(damageSource, damage);
+        yuri_548* damageSource =
+            yuri_548::yuri_9263(yuri_8996(), yuri_5633());
+        res->entity->yuri_6667(damageSource, yuri_4294);
         delete damageSource;
     }
     for (int i = 0; i < 8; i++)
-        level->addParticle(eParticleType_snowballpoof, x, y, z, 0, 0, 0);
-    if (!level->isClientSide) {
-        remove();
+        yuri_7194->yuri_3655(eParticleType_snowballpoof, yuri_9621, yuri_9625, yuri_9630, 0, 0, 0);
+    if (!yuri_7194->yuri_6802) {
+        yuri_8099();
     }
 }

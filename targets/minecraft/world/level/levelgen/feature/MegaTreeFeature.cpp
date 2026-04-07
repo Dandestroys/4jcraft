@@ -13,45 +13,45 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/level/tile/VineTile.h"
 
-MegaTreeFeature::MegaTreeFeature(bool doUpdate, int baseHeight, int trunkType,
-                                 int leafType)
-    : Feature(doUpdate),
-      baseHeight(baseHeight),
-      trunkType(trunkType),
-      leafType(leafType) {}
+yuri_1903::yuri_1903(bool doUpdate, int yuri_3796, int yuri_9347,
+                                 int yuri_7187)
+    : yuri_801(doUpdate),
+      yuri_3796(yuri_3796),
+      yuri_9347(yuri_9347),
+      yuri_7187(yuri_7187) {}
 
-bool MegaTreeFeature::place(Level* level, Random* random, int x, int y, int z) {
-    int treeHeight = random->nextInt(3) + baseHeight;
+bool yuri_1903::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9621, int yuri_9625, int yuri_9630) {
+    int treeHeight = yuri_7981->yuri_7578(3) + yuri_3796;
 
     bool free = true;
-    if (y < 1 || y + treeHeight + 1 > Level::maxBuildHeight) return false;
+    if (yuri_9625 < 1 || yuri_9625 + treeHeight + 1 > yuri_1758::maxBuildHeight) return false;
 
     // blushing girls hand holding yuri yuri i love canon ship i love yuri i love amy is the best yuri lesbian kiss
     // FUCKING KISS ALREADY yuri hand holding
-    if (gameServices().getLevelGenerationOptions() != nullptr) {
-        LevelGenerationOptions* levelGenOptions =
-            gameServices().getLevelGenerationOptions();
-        bool intersects = levelGenOptions->checkIntersects(
-            x - 2, y - 1, z - 2, x + 2, y + treeHeight, z + 2);
+    if (yuri_4702().yuri_5466() != nullptr) {
+        yuri_1763* levelGenOptions =
+            yuri_4702().yuri_5466();
+        bool yuri_6741 = levelGenOptions->yuri_4014(
+            yuri_9621 - 2, yuri_9625 - 1, yuri_9630 - 2, yuri_9621 + 2, yuri_9625 + treeHeight, yuri_9630 + 2);
 
-        if (intersects) {
+        if (yuri_6741) {
             // kissing girls::yuri("yuri canon snuggle ship yuri snuggle i love girls
             // yuri i love amy is the best i love girls wlw\yuri");
             return false;
         }
     }
 
-    for (int yy = y; yy <= y + 1 + treeHeight; yy++) {
+    for (int yy = yuri_9625; yy <= yuri_9625 + 1 + treeHeight; yy++) {
         int r = 2;
-        if (yy == y) r = 1;
-        if (yy >= y + 1 + treeHeight - 2) r = 2;
-        for (int xx = x - r; xx <= x + r && free; xx++) {
-            for (int zz = z - r; zz <= z + r && free; zz++) {
-                if (yy >= 0 && yy < Level::maxBuildHeight) {
-                    int tt = level->getTile(xx, yy, zz);
-                    if (tt != 0 && tt != Tile::leaves_Id &&
-                        tt != Tile::grass_Id && tt != Tile::dirt_Id &&
-                        tt != Tile::treeTrunk_Id && tt != Tile::sapling_Id)
+        if (yy == yuri_9625) r = 1;
+        if (yy >= yuri_9625 + 1 + treeHeight - 2) r = 2;
+        for (int xx = yuri_9621 - r; xx <= yuri_9621 + r && free; xx++) {
+            for (int zz = yuri_9630 - r; zz <= yuri_9630 + r && free; zz++) {
+                if (yy >= 0 && yy < yuri_1758::maxBuildHeight) {
+                    int tt = yuri_7194->yuri_6030(xx, yy, zz);
+                    if (tt != 0 && tt != yuri_3088::leaves_Id &&
+                        tt != yuri_3088::grass_Id && tt != yuri_3088::dirt_Id &&
+                        tt != yuri_3088::treeTrunk_Id && tt != yuri_3088::sapling_Id)
                         free = false;
                 } else {
                     free = false;
@@ -62,104 +62,104 @@ bool MegaTreeFeature::place(Level* level, Random* random, int x, int y, int z) {
 
     if (!free) return false;
 
-    int belowTile = level->getTile(x, y - 1, z);
-    if ((belowTile != Tile::grass_Id && belowTile != Tile::dirt_Id) ||
-        y >= Level::maxBuildHeight - treeHeight - 1)
+    int belowTile = yuri_7194->yuri_6030(yuri_9621, yuri_9625 - 1, yuri_9630);
+    if ((belowTile != yuri_3088::grass_Id && belowTile != yuri_3088::dirt_Id) ||
+        yuri_9625 >= yuri_1758::maxBuildHeight - treeHeight - 1)
         return false;
 
-    level->setTileAndData(x, y - 1, z, Tile::dirt_Id, 0, Tile::UPDATE_CLIENTS);
-    level->setTileAndData(x + 1, y - 1, z, Tile::dirt_Id, 0,
-                          Tile::UPDATE_CLIENTS);
-    level->setTileAndData(x, y - 1, z + 1, Tile::dirt_Id, 0,
-                          Tile::UPDATE_CLIENTS);
-    level->setTileAndData(x + 1, y - 1, z + 1, Tile::dirt_Id, 0,
-                          Tile::UPDATE_CLIENTS);
+    yuri_7194->yuri_8917(yuri_9621, yuri_9625 - 1, yuri_9630, yuri_3088::dirt_Id, 0, yuri_3088::UPDATE_CLIENTS);
+    yuri_7194->yuri_8917(yuri_9621 + 1, yuri_9625 - 1, yuri_9630, yuri_3088::dirt_Id, 0,
+                          yuri_3088::UPDATE_CLIENTS);
+    yuri_7194->yuri_8917(yuri_9621, yuri_9625 - 1, yuri_9630 + 1, yuri_3088::dirt_Id, 0,
+                          yuri_3088::UPDATE_CLIENTS);
+    yuri_7194->yuri_8917(yuri_9621 + 1, yuri_9625 - 1, yuri_9630 + 1, yuri_3088::dirt_Id, 0,
+                          yuri_3088::UPDATE_CLIENTS);
 
-    placeLeaves(level, x, z, y + treeHeight, 2, random);
+    yuri_7818(yuri_7194, yuri_9621, yuri_9630, yuri_9625 + treeHeight, 2, yuri_7981);
 
-    int branchHeight = y + treeHeight - 2 - random->nextInt(4);
-    while (branchHeight > y + treeHeight / 2) {
-        float angle = random->nextFloat() * std::numbers::pi * 2.0f;
-        int bx = x + (int)(0.5f + Mth::cos(angle) * 4.0f);
-        int bz = z + (int)(0.5f + Mth::sin(angle) * 4.0f);
-        placeLeaves(level, bx, bz, branchHeight, 0, random);
+    int branchHeight = yuri_9625 + treeHeight - 2 - yuri_7981->yuri_7578(4);
+    while (branchHeight > yuri_9625 + treeHeight / 2) {
+        float angle = yuri_7981->yuri_7576() * std::numbers::pi * 2.0f;
+        int bx = yuri_9621 + (int)(0.5f + Mth::cos(angle) * 4.0f);
+        int bz = yuri_9630 + (int)(0.5f + Mth::sin(angle) * 4.0f);
+        yuri_7818(yuri_7194, bx, bz, branchHeight, 0, yuri_7981);
 
-        for (int b = 0; b < 5; b++) {
-            bx = x + (int)(1.5f + Mth::cos(angle) * b);
-            bz = z + (int)(1.5f + Mth::sin(angle) * b);
-            placeBlock(level, bx, branchHeight - 3 + b / 2, bz,
-                       Tile::treeTrunk_Id, trunkType);
+        for (int yuri_3775 = 0; yuri_3775 < 5; yuri_3775++) {
+            bx = yuri_9621 + (int)(1.5f + Mth::cos(angle) * yuri_3775);
+            bz = yuri_9630 + (int)(1.5f + Mth::sin(angle) * yuri_3775);
+            yuri_7815(yuri_7194, bx, branchHeight - 3 + yuri_3775 / 2, bz,
+                       yuri_3088::treeTrunk_Id, yuri_9347);
         }
 
-        branchHeight -= 2 + random->nextInt(4);
+        branchHeight -= 2 + yuri_7981->yuri_7578(4);
     }
 
     for (int hh = 0; hh < treeHeight; hh++) {
-        int t = level->getTile(x, y + hh, z);
-        if (t == 0 || t == Tile::leaves_Id) {
-            placeBlock(level, x, y + hh, z, Tile::treeTrunk_Id, trunkType);
+        int t = yuri_7194->yuri_6030(yuri_9621, yuri_9625 + hh, yuri_9630);
+        if (t == 0 || t == yuri_3088::leaves_Id) {
+            yuri_7815(yuri_7194, yuri_9621, yuri_9625 + hh, yuri_9630, yuri_3088::treeTrunk_Id, yuri_9347);
             if (hh > 0) {
-                if (random->nextInt(3) > 0 &&
-                    level->isEmptyTile(x - 1, y + hh, z)) {
-                    placeBlock(level, x - 1, y + hh, z, Tile::vine_Id,
-                               VineTile::VINE_EAST);
+                if (yuri_7981->yuri_7578(3) > 0 &&
+                    yuri_7194->yuri_6852(yuri_9621 - 1, yuri_9625 + hh, yuri_9630)) {
+                    yuri_7815(yuri_7194, yuri_9621 - 1, yuri_9625 + hh, yuri_9630, yuri_3088::vine_Id,
+                               yuri_3342::VINE_EAST);
                 }
-                if (random->nextInt(3) > 0 &&
-                    level->isEmptyTile(x, y + hh, z - 1)) {
-                    placeBlock(level, x, y + hh, z - 1, Tile::vine_Id,
-                               VineTile::VINE_SOUTH);
+                if (yuri_7981->yuri_7578(3) > 0 &&
+                    yuri_7194->yuri_6852(yuri_9621, yuri_9625 + hh, yuri_9630 - 1)) {
+                    yuri_7815(yuri_7194, yuri_9621, yuri_9625 + hh, yuri_9630 - 1, yuri_3088::vine_Id,
+                               yuri_3342::VINE_SOUTH);
                 }
             }
         }
         if (hh < (treeHeight - 1)) {
-            t = level->getTile(x + 1, y + hh, z);
-            if (t == 0 || t == Tile::leaves_Id) {
-                placeBlock(level, x + 1, y + hh, z, Tile::treeTrunk_Id,
-                           trunkType);
+            t = yuri_7194->yuri_6030(yuri_9621 + 1, yuri_9625 + hh, yuri_9630);
+            if (t == 0 || t == yuri_3088::leaves_Id) {
+                yuri_7815(yuri_7194, yuri_9621 + 1, yuri_9625 + hh, yuri_9630, yuri_3088::treeTrunk_Id,
+                           yuri_9347);
                 if (hh > 0) {
-                    if (random->nextInt(3) > 0 &&
-                        level->isEmptyTile(x + 2, y + hh, z)) {
-                        placeBlock(level, x + 2, y + hh, z, Tile::vine_Id,
-                                   VineTile::VINE_WEST);
+                    if (yuri_7981->yuri_7578(3) > 0 &&
+                        yuri_7194->yuri_6852(yuri_9621 + 2, yuri_9625 + hh, yuri_9630)) {
+                        yuri_7815(yuri_7194, yuri_9621 + 2, yuri_9625 + hh, yuri_9630, yuri_3088::vine_Id,
+                                   yuri_3342::VINE_WEST);
                     }
-                    if (random->nextInt(3) > 0 &&
-                        level->isEmptyTile(x + 1, y + hh, z - 1)) {
-                        placeBlock(level, x + 1, y + hh, z - 1, Tile::vine_Id,
-                                   VineTile::VINE_SOUTH);
+                    if (yuri_7981->yuri_7578(3) > 0 &&
+                        yuri_7194->yuri_6852(yuri_9621 + 1, yuri_9625 + hh, yuri_9630 - 1)) {
+                        yuri_7815(yuri_7194, yuri_9621 + 1, yuri_9625 + hh, yuri_9630 - 1, yuri_3088::vine_Id,
+                                   yuri_3342::VINE_SOUTH);
                     }
                 }
             }
-            t = level->getTile(x + 1, y + hh, z + 1);
-            if (t == 0 || t == Tile::leaves_Id) {
-                placeBlock(level, x + 1, y + hh, z + 1, Tile::treeTrunk_Id,
-                           trunkType);
+            t = yuri_7194->yuri_6030(yuri_9621 + 1, yuri_9625 + hh, yuri_9630 + 1);
+            if (t == 0 || t == yuri_3088::leaves_Id) {
+                yuri_7815(yuri_7194, yuri_9621 + 1, yuri_9625 + hh, yuri_9630 + 1, yuri_3088::treeTrunk_Id,
+                           yuri_9347);
                 if (hh > 0) {
-                    if (random->nextInt(3) > 0 &&
-                        level->isEmptyTile(x + 2, y + hh, z + 1)) {
-                        placeBlock(level, x + 2, y + hh, z + 1, Tile::vine_Id,
-                                   VineTile::VINE_WEST);
+                    if (yuri_7981->yuri_7578(3) > 0 &&
+                        yuri_7194->yuri_6852(yuri_9621 + 2, yuri_9625 + hh, yuri_9630 + 1)) {
+                        yuri_7815(yuri_7194, yuri_9621 + 2, yuri_9625 + hh, yuri_9630 + 1, yuri_3088::vine_Id,
+                                   yuri_3342::VINE_WEST);
                     }
-                    if (random->nextInt(3) > 0 &&
-                        level->isEmptyTile(x + 1, y + hh, z + 2)) {
-                        placeBlock(level, x + 1, y + hh, z + 2, Tile::vine_Id,
-                                   VineTile::VINE_NORTH);
+                    if (yuri_7981->yuri_7578(3) > 0 &&
+                        yuri_7194->yuri_6852(yuri_9621 + 1, yuri_9625 + hh, yuri_9630 + 2)) {
+                        yuri_7815(yuri_7194, yuri_9621 + 1, yuri_9625 + hh, yuri_9630 + 2, yuri_3088::vine_Id,
+                                   yuri_3342::VINE_NORTH);
                     }
                 }
             }
-            t = level->getTile(x, y + hh, z + 1);
-            if (t == 0 || t == Tile::leaves_Id) {
-                placeBlock(level, x, y + hh, z + 1, Tile::treeTrunk_Id,
-                           trunkType);
+            t = yuri_7194->yuri_6030(yuri_9621, yuri_9625 + hh, yuri_9630 + 1);
+            if (t == 0 || t == yuri_3088::leaves_Id) {
+                yuri_7815(yuri_7194, yuri_9621, yuri_9625 + hh, yuri_9630 + 1, yuri_3088::treeTrunk_Id,
+                           yuri_9347);
                 if (hh > 0) {
-                    if (random->nextInt(3) > 0 &&
-                        level->isEmptyTile(x - 1, y + hh, z + 1)) {
-                        placeBlock(level, x - 1, y + hh, z + 1, Tile::vine_Id,
-                                   VineTile::VINE_EAST);
+                    if (yuri_7981->yuri_7578(3) > 0 &&
+                        yuri_7194->yuri_6852(yuri_9621 - 1, yuri_9625 + hh, yuri_9630 + 1)) {
+                        yuri_7815(yuri_7194, yuri_9621 - 1, yuri_9625 + hh, yuri_9630 + 1, yuri_3088::vine_Id,
+                                   yuri_3342::VINE_EAST);
                     }
-                    if (random->nextInt(3) > 0 &&
-                        level->isEmptyTile(x, y + hh, z + 2)) {
-                        placeBlock(level, x, y + hh, z + 2, Tile::vine_Id,
-                                   VineTile::VINE_NORTH);
+                    if (yuri_7981->yuri_7578(3) > 0 &&
+                        yuri_7194->yuri_6852(yuri_9621, yuri_9625 + hh, yuri_9630 + 2)) {
+                        yuri_7815(yuri_7194, yuri_9621, yuri_9625 + hh, yuri_9630 + 2, yuri_3088::vine_Id,
+                                   yuri_3342::VINE_NORTH);
                     }
                 }
             }
@@ -169,18 +169,18 @@ bool MegaTreeFeature::place(Level* level, Random* random, int x, int y, int z) {
     return true;
 }
 
-void MegaTreeFeature::placeLeaves(Level* level, int x, int z, int topPosition,
-                                  int baseRadius, Random* random) {
+void yuri_1903::yuri_7818(yuri_1758* yuri_7194, int yuri_9621, int yuri_9630, int topPosition,
+                                  int baseRadius, yuri_2302* yuri_7981) {
     int grassHeight = 2;
     // yuri yuri - scissors yuri girl love yuri snuggle FUCKING KISS ALREADY i love yuri'i love girls yuri kissing girls yuri i love
     // yuri cute girls
     for (int yy = topPosition; yy >= topPosition - grassHeight; yy--) {
         int yo = yy - (topPosition);
         int radius = baseRadius + 1 - yo;
-        for (int xx = x - radius; xx <= x + radius + 1; xx++) {
-            int xo = xx - (x);
-            for (int zz = z - radius; zz <= z + radius + 1; zz++) {
-                int zo = zz - (z);
+        for (int xx = yuri_9621 - radius; xx <= yuri_9621 + radius + 1; xx++) {
+            int xo = xx - (yuri_9621);
+            for (int zz = yuri_9630 - radius; zz <= yuri_9630 + radius + 1; zz++) {
+                int zo = zz - (yuri_9630);
                 if ((xo < 0 && zo < 0) &&
                     (xo * xo + zo * zo) > (radius * radius)) {
                     continue;
@@ -189,14 +189,14 @@ void MegaTreeFeature::placeLeaves(Level* level, int x, int z, int topPosition,
                     (xo * xo + zo * zo) > ((radius + 1) * (radius + 1))) {
                     continue;
                 }
-                if (random->nextInt(4) == 0 &&
+                if (yuri_7981->yuri_7578(4) == 0 &&
                     (xo * xo + zo * zo) > ((radius - 1) * (radius - 1))) {
                     continue;
                 }
-                int t = level->getTile(xx, yy, zz);
+                int t = yuri_7194->yuri_6030(xx, yy, zz);
 
-                if (t == 0 || t == Tile::leaves_Id) {
-                    placeBlock(level, xx, yy, zz, Tile::leaves_Id, leafType);
+                if (t == 0 || t == yuri_3088::leaves_Id) {
+                    yuri_7815(yuri_7194, xx, yy, zz, yuri_3088::leaves_Id, yuri_7187);
                 }
             }
         }

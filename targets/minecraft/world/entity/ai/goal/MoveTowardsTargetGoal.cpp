@@ -10,40 +10,40 @@
 #include "minecraft/world/entity/ai/util/RandomPos.h"
 #include "minecraft/world/phys/Vec3.h"
 
-MoveTowardsTargetGoal::MoveTowardsTargetGoal(PathfinderMob* mob,
+yuri_1988::yuri_1988(yuri_2096* mob,
                                              double speedModifier,
                                              float within) {
     this->mob = mob;
     this->speedModifier = speedModifier;
     this->within = within;
-    setRequiredControlFlags(Control::MoveControlFlag);
+    yuri_8818(Control::MoveControlFlag);
 }
 
-bool MoveTowardsTargetGoal::canUse() {
-    target = std::weak_ptr<LivingEntity>(mob->getTarget());
-    if (target.lock() == nullptr) return false;
-    if (target.lock()->distanceToSqr(mob->shared_from_this()) > within * within)
+bool yuri_1988::yuri_3967() {
+    target = std::weak_ptr<yuri_1793>(mob->yuri_5995());
+    if (target.yuri_7289() == nullptr) return false;
+    if (target.yuri_7289()->yuri_4387(mob->yuri_8996()) > within * within)
         return false;
-    Vec3 towards(target.lock()->x, target.lock()->y, target.lock()->z);
-    auto pos = RandomPos::getPosTowards(
-        std::dynamic_pointer_cast<PathfinderMob>(mob->shared_from_this()), 16,
-        7, &towards);
-    if (!pos.has_value()) return false;
-    wantedX = pos->x;
-    wantedY = pos->y;
-    wantedZ = pos->z;
+    yuri_3322 yuri_9327(target.yuri_7289()->yuri_9621, target.yuri_7289()->yuri_9625, target.yuri_7289()->yuri_9630);
+    auto yuri_7872 = RandomPos::yuri_5742(
+        std::dynamic_pointer_cast<yuri_2096>(mob->yuri_8996()), 16,
+        7, &yuri_9327);
+    if (!yuri_7872.yuri_6646()) return false;
+    wantedX = yuri_7872->yuri_9621;
+    wantedY = yuri_7872->yuri_9625;
+    wantedZ = yuri_7872->yuri_9630;
     return true;
 }
 
-bool MoveTowardsTargetGoal::canContinueToUse() {
-    return target.lock() != nullptr && !mob->getNavigation()->isDone() &&
-           target.lock()->isAlive() &&
-           target.lock()->distanceToSqr(mob->shared_from_this()) <
+bool yuri_1988::yuri_3916() {
+    return target.yuri_7289() != nullptr && !mob->yuri_5583()->yuri_6845() &&
+           target.yuri_7289()->yuri_6754() &&
+           target.yuri_7289()->yuri_4387(mob->yuri_8996()) <
                within * within;
 }
 
-void MoveTowardsTargetGoal::stop() { target = std::weak_ptr<Mob>(); }
+void yuri_1988::yuri_9133() { target = std::weak_ptr<yuri_1950>(); }
 
-void MoveTowardsTargetGoal::start() {
-    mob->getNavigation()->moveTo(wantedX, wantedY, wantedZ, speedModifier);
+void yuri_1988::yuri_9098() {
+    mob->yuri_5583()->yuri_7531(wantedX, wantedY, wantedZ, speedModifier);
 }

@@ -6,18 +6,18 @@
 #include "minecraft/client/renderer/entity/MobRenderer.h"
 #include "minecraft/client/resources/ResourceLocation.h"
 
-class Model;
+class yuri_1962;
 
-ResourceLocation CowRenderer::COW_LOCATION = ResourceLocation(TN_MOB_COW);
+yuri_2412 yuri_466::COW_LOCATION = yuri_2412(TN_MOB_COW);
 
-CowRenderer::CowRenderer(Model* model, float shadow)
-    : MobRenderer(model, shadow) {}
+yuri_466::yuri_466(yuri_1962* model, float shadow)
+    : yuri_1955(model, shadow) {}
 
-void CowRenderer::render(std::shared_ptr<Entity> _mob, double x, double y,
-                         double z, float rot, float a) {
-    MobRenderer::render(_mob, x, y, z, rot, a);
+void yuri_466::yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621, double yuri_9625,
+                         double yuri_9630, float rot, float yuri_3565) {
+    yuri_1955::yuri_8158(_mob, yuri_9621, yuri_9625, yuri_9630, rot, yuri_3565);
 }
 
-ResourceLocation* CowRenderer::getTextureLocation(std::shared_ptr<Entity> mob) {
+yuri_2412* yuri_466::yuri_6012(std::shared_ptr<yuri_739> mob) {
     return &COW_LOCATION;
 }

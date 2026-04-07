@@ -3,19 +3,19 @@
 #include "Culler.h"
 #include "Frustum.h"
 
-class FrustumData;
+class yuri_877;
 
-class FrustumCuller : public Culler {
+class yuri_876 : public Culler {
 public:
-    FrustumData* frustum;
-    FrustumCuller();
+    yuri_877* frustum;
+    yuri_876();
     double xOff, yOff, zOff;
 
 public:
-    virtual void prepare(double xOff, double yOff, double zOff);
-    virtual bool cubeFullyInFrustum(double x0, double y0, double z0, double x1,
-                                    double y1, double z1);
-    virtual bool cubeInFrustum(double x0, double y0, double z0, double x1,
-                               double y1, double z1);
-    virtual bool isVisible(AABB* bb);
+    virtual void yuri_7890(double xOff, double yOff, double zOff);
+    virtual bool yuri_4277(double yuri_9622, double yuri_9626, double yuri_9631, double yuri_9623,
+                                    double yuri_9627, double yuri_9632);
+    virtual bool yuri_4278(double yuri_9622, double yuri_9626, double yuri_9631, double yuri_9623,
+                               double yuri_9627, double yuri_9632);
+    virtual bool yuri_7117(yuri_0* yuri_3799);
 };

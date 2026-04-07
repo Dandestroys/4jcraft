@@ -9,33 +9,33 @@
 
 class DispenserBootstrap {
 public:
-    static void bootStrap() {
-        DispenserTile::REGISTRY.add(Item::arrow, new ArrowDispenseBehavior());
-        DispenserTile::REGISTRY.add(Item::egg, new EggDispenseBehavior());
-        DispenserTile::REGISTRY.add(Item::snowBall,
-                                    new SnowballDispenseBehavior());
-        DispenserTile::REGISTRY.add(Item::expBottle,
-                                    new ExpBottleDispenseBehavior());
+    static void yuri_3839() {
+        yuri_625::REGISTRY.yuri_3580(yuri_1687::yuri_3744, new yuri_139());
+        yuri_625::REGISTRY.yuri_3580(yuri_1687::egg, new yuri_684());
+        yuri_625::REGISTRY.yuri_3580(yuri_1687::snowBall,
+                                    new yuri_2864());
+        yuri_625::REGISTRY.yuri_3580(yuri_1687::expBottle,
+                                    new yuri_775());
 
-        DispenserTile::REGISTRY.add(Item::potion, new PotionDispenseBehavior());
-        DispenserTile::REGISTRY.add(Item::spawnEgg,
-                                    new SpawnEggDispenseBehavior());
-        DispenserTile::REGISTRY.add(Item::fireworks,
-                                    new FireworksDispenseBehavior());
-        DispenserTile::REGISTRY.add(Item::fireball,
-                                    new FireballDispenseBehavior());
-        DispenserTile::REGISTRY.add(Item::boat, new BoatDispenseBehavior());
-        DispenserTile::REGISTRY.add(Item::bucket_lava,
-                                    new FilledBucketDispenseBehavior());
-        DispenserTile::REGISTRY.add(Item::bucket_water,
-                                    new FilledBucketDispenseBehavior());
-        DispenserTile::REGISTRY.add(Item::bucket_empty,
-                                    new EmptyBucketDispenseBehavior());
-        DispenserTile::REGISTRY.add(Item::flintAndSteel,
-                                    new FlintAndSteelDispenseBehavior());
-        DispenserTile::REGISTRY.add(Item::dye_powder,
-                                    new DyeDispenseBehavior());
-        DispenserTile::REGISTRY.add(Item::items[Tile::tnt_Id],
-                                    new TntDispenseBehavior());
+        yuri_625::REGISTRY.yuri_3580(yuri_1687::yuri_7885, new yuri_2162());
+        yuri_625::REGISTRY.yuri_3580(yuri_1687::spawnEgg,
+                                    new yuri_2878());
+        yuri_625::REGISTRY.yuri_3580(yuri_1687::fireworks,
+                                    new yuri_826());
+        yuri_625::REGISTRY.yuri_3580(yuri_1687::yuri_4631,
+                                    new yuri_823());
+        yuri_625::REGISTRY.yuri_3580(yuri_1687::boat, new yuri_208());
+        yuri_625::REGISTRY.yuri_3580(yuri_1687::bucket_lava,
+                                    new yuri_814());
+        yuri_625::REGISTRY.yuri_3580(yuri_1687::bucket_water,
+                                    new yuri_814());
+        yuri_625::REGISTRY.yuri_3580(yuri_1687::bucket_empty,
+                                    new yuri_691());
+        yuri_625::REGISTRY.yuri_3580(yuri_1687::flintAndSteel,
+                                    new yuri_846());
+        yuri_625::REGISTRY.yuri_3580(yuri_1687::dye_powder,
+                                    new yuri_670());
+        yuri_625::REGISTRY.yuri_3580(yuri_1687::items[yuri_3088::tnt_Id],
+                                    new yuri_3108());
     }
 };

@@ -3,27 +3,27 @@
 
 #include "EntityRenderer.h"
 
-class Minecart;
-class Model;
-class ResourceLocation;
-class Tile;
-class TileRenderer;
+class yuri_1931;
+class yuri_1962;
+class yuri_2412;
+class yuri_3088;
+class yuri_3101;
 
-class MinecartRenderer : public EntityRenderer {
+class yuri_1940 : public yuri_746 {
 private:
-    static ResourceLocation MINECART_LOCATION;
+    static yuri_2412 yuri_1875;
 
 protected:
-    Model* model;
-    TileRenderer* renderer;
+    yuri_1962* model;
+    yuri_3101* renderer;
 
 public:
-    MinecartRenderer();
-    virtual void render(std::shared_ptr<Entity> _cart, double x, double y,
-                        double z, float rot, float a);
-    virtual ResourceLocation* getTextureLocation(std::shared_ptr<Entity> mob);
+    yuri_1940();
+    virtual void yuri_8158(std::shared_ptr<yuri_739> _cart, double yuri_9621, double yuri_9625,
+                        double yuri_9630, float rot, float yuri_3565);
+    virtual yuri_2412* yuri_6012(std::shared_ptr<yuri_739> mob);
 
 protected:
-    virtual void renderMinecartContents(std::shared_ptr<Minecart> cart, float a,
-                                        Tile* tile, int tileData);
+    virtual void yuri_8209(std::shared_ptr<yuri_1931> cart, float yuri_3565,
+                                        yuri_3088* tile, int tileData);
 };

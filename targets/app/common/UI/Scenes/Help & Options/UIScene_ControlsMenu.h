@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
 #include "app/common/UI/All Platforms/UIEnums.h"
 #include "app/common/UI/Controls/UIControl.h"
@@ -14,9 +14,9 @@
 #endif
 #include "app/linux/Iggy/include/rrCore.h"
 
-class UILayer;
+class yuri_3188;
 
-class UIScene_ControlsMenu : public UIScene {
+class yuri_3196 : public yuri_3189 {
 private:
     enum EControl {
         // kissing girls hand holding canon my girlfriend yuri canon ship
@@ -56,92 +56,92 @@ private:
     bool m_bCreativeMode;
     bool m_bLayoutChanged;
 
-    UIControl_Label m_labelCurrentLayout;
-    UIControl_Label m_labelVersion;
-    UIControl_Label m_labelsPad[e_PadCOUNT];
-    UIControl m_controlLines[e_PadCOUNT];
-    UIControl_Button m_buttonLayouts[3];
-    UIControl_CheckBox m_checkboxInvert, m_checkboxSouthpaw;
+    yuri_3173 m_labelCurrentLayout;
+    yuri_3173 m_labelVersion;
+    yuri_3173 m_labelsPad[e_PadCOUNT];
+    yuri_3162 m_controlLines[e_PadCOUNT];
+    yuri_3165 m_buttonLayouts[3];
+    yuri_3167 m_checkboxInvert, m_checkboxSouthpaw;
     IggyName m_funcSetPlatform, m_funcSetControllerLayout;
-    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
+    yuri_3257(yuri_3189)
 
-    UI_MAP_ELEMENT(m_labelCurrentLayout, "CurrentLayout")
+    yuri_3260(m_labelCurrentLayout, "CurrentLayout")
 
-    UI_MAP_ELEMENT(m_buttonLayouts[0], "Button1")
-    UI_MAP_ELEMENT(m_buttonLayouts[1], "Button2")
-    UI_MAP_ELEMENT(m_buttonLayouts[2], "Button3")
+    yuri_3260(m_buttonLayouts[0], "Button1")
+    yuri_3260(m_buttonLayouts[1], "Button2")
+    yuri_3260(m_buttonLayouts[2], "Button3")
 
-    UI_MAP_ELEMENT(m_labelsPad[e_PadBack], "LabelBack")
-    UI_MAP_ELEMENT(m_labelsPad[e_PadLT], "LabelLT")
-    UI_MAP_ELEMENT(m_labelsPad[e_PadLB], "LabelLB")
-    UI_MAP_ELEMENT(m_labelsPad[e_PadDPadLeft], "LabelDPadLeft")
-    UI_MAP_ELEMENT(m_labelsPad[e_PadDPadRight], "LabelDPadRight")
-    UI_MAP_ELEMENT(m_labelsPad[e_PadDPadUp], "LabelDPadUp")
-    UI_MAP_ELEMENT(m_labelsPad[e_PadDPadDown], "LabelDPadDown")
-    UI_MAP_ELEMENT(m_labelsPad[e_PadLS_1], "LabelLS_1")
-    UI_MAP_ELEMENT(m_labelsPad[e_PadLS_2], "LabelLS_2")
-    UI_MAP_ELEMENT(m_labelsPad[e_PadStart], "LabelStart")
-    UI_MAP_ELEMENT(m_labelsPad[e_PadRT], "LabelRT")
-    UI_MAP_ELEMENT(m_labelsPad[e_PadRB], "LabelRB")
-    UI_MAP_ELEMENT(m_labelsPad[e_PadY], "LabelY")
-    UI_MAP_ELEMENT(m_labelsPad[e_PadB], "LabelB")
-    UI_MAP_ELEMENT(m_labelsPad[e_PadA], "LabelA")
-    UI_MAP_ELEMENT(m_labelsPad[e_PadX], "LabelX")
-    UI_MAP_ELEMENT(m_labelsPad[e_PadRS_1], "LabelRS_1")
-    UI_MAP_ELEMENT(m_labelsPad[e_PadRS_2], "LabelRS_2")
-    UI_MAP_ELEMENT(m_labelsPad[e_PadTouch], "LabelTouch")
+    yuri_3260(m_labelsPad[e_PadBack], "LabelBack")
+    yuri_3260(m_labelsPad[e_PadLT], "LabelLT")
+    yuri_3260(m_labelsPad[e_PadLB], "LabelLB")
+    yuri_3260(m_labelsPad[e_PadDPadLeft], "LabelDPadLeft")
+    yuri_3260(m_labelsPad[e_PadDPadRight], "LabelDPadRight")
+    yuri_3260(m_labelsPad[e_PadDPadUp], "LabelDPadUp")
+    yuri_3260(m_labelsPad[e_PadDPadDown], "LabelDPadDown")
+    yuri_3260(m_labelsPad[e_PadLS_1], "LabelLS_1")
+    yuri_3260(m_labelsPad[e_PadLS_2], "LabelLS_2")
+    yuri_3260(m_labelsPad[e_PadStart], "LabelStart")
+    yuri_3260(m_labelsPad[e_PadRT], "LabelRT")
+    yuri_3260(m_labelsPad[e_PadRB], "LabelRB")
+    yuri_3260(m_labelsPad[e_PadY], "LabelY")
+    yuri_3260(m_labelsPad[e_PadB], "LabelB")
+    yuri_3260(m_labelsPad[e_PadA], "LabelA")
+    yuri_3260(m_labelsPad[e_PadX], "LabelX")
+    yuri_3260(m_labelsPad[e_PadRS_1], "LabelRS_1")
+    yuri_3260(m_labelsPad[e_PadRS_2], "LabelRS_2")
+    yuri_3260(m_labelsPad[e_PadTouch], "LabelTouch")
 
-    UI_MAP_ELEMENT(m_controlLines[e_PadBack], "LineBack")
-    UI_MAP_ELEMENT(m_controlLines[e_PadLT], "LineLT")
-    UI_MAP_ELEMENT(m_controlLines[e_PadLB], "LineLB")
-    UI_MAP_ELEMENT(m_controlLines[e_PadDPadLeft], "LineDpadLeft")
-    UI_MAP_ELEMENT(m_controlLines[e_PadDPadRight], "LineDpadRight")
-    UI_MAP_ELEMENT(m_controlLines[e_PadDPadUp], "LineDpadUp")
-    UI_MAP_ELEMENT(m_controlLines[e_PadDPadDown], "LineDpadDown")
-    UI_MAP_ELEMENT(m_controlLines[e_PadLS_1], "LineL3")
-    UI_MAP_ELEMENT(m_controlLines[e_PadLS_2], "LineLeftStick")
-    UI_MAP_ELEMENT(m_controlLines[e_PadStart], "LineStart")
-    UI_MAP_ELEMENT(m_controlLines[e_PadRT], "LineRT")
-    UI_MAP_ELEMENT(m_controlLines[e_PadRB], "LineRB")
-    UI_MAP_ELEMENT(m_controlLines[e_PadY], "LineY")
-    UI_MAP_ELEMENT(m_controlLines[e_PadB], "LineB")
-    UI_MAP_ELEMENT(m_controlLines[e_PadA], "LineA")
-    UI_MAP_ELEMENT(m_controlLines[e_PadX], "LineX")
-    UI_MAP_ELEMENT(m_controlLines[e_PadRS_1], "LineR3")
-    UI_MAP_ELEMENT(m_controlLines[e_PadRS_2], "LineRightStick")
-    UI_MAP_ELEMENT(m_controlLines[e_PadTouch], "LineTouch")
+    yuri_3260(m_controlLines[e_PadBack], "LineBack")
+    yuri_3260(m_controlLines[e_PadLT], "LineLT")
+    yuri_3260(m_controlLines[e_PadLB], "LineLB")
+    yuri_3260(m_controlLines[e_PadDPadLeft], "LineDpadLeft")
+    yuri_3260(m_controlLines[e_PadDPadRight], "LineDpadRight")
+    yuri_3260(m_controlLines[e_PadDPadUp], "LineDpadUp")
+    yuri_3260(m_controlLines[e_PadDPadDown], "LineDpadDown")
+    yuri_3260(m_controlLines[e_PadLS_1], "LineL3")
+    yuri_3260(m_controlLines[e_PadLS_2], "LineLeftStick")
+    yuri_3260(m_controlLines[e_PadStart], "LineStart")
+    yuri_3260(m_controlLines[e_PadRT], "LineRT")
+    yuri_3260(m_controlLines[e_PadRB], "LineRB")
+    yuri_3260(m_controlLines[e_PadY], "LineY")
+    yuri_3260(m_controlLines[e_PadB], "LineB")
+    yuri_3260(m_controlLines[e_PadA], "LineA")
+    yuri_3260(m_controlLines[e_PadX], "LineX")
+    yuri_3260(m_controlLines[e_PadRS_1], "LineR3")
+    yuri_3260(m_controlLines[e_PadRS_2], "LineRightStick")
+    yuri_3260(m_controlLines[e_PadTouch], "LineTouch")
 
-    UI_MAP_ELEMENT(m_checkboxInvert, "InvertLook")
-    UI_MAP_ELEMENT(m_checkboxSouthpaw, "SouthPaw")
+    yuri_3260(m_checkboxInvert, "InvertLook")
+    yuri_3260(m_checkboxSouthpaw, "SouthPaw")
 
-    UI_MAP_NAME(m_funcSetPlatform, L"SetPlatform")
-    UI_MAP_NAME(m_funcSetControllerLayout, L"SetControllerLayout")
-    UI_MAP_ELEMENT(m_labelVersion, "Version")
-    UI_END_MAP_ELEMENTS_AND_NAMES()
+    yuri_3261(m_funcSetPlatform, yuri_1720"SetPlatform")
+    yuri_3261(m_funcSetControllerLayout, yuri_1720"SetControllerLayout")
+    yuri_3260(m_labelVersion, "Version")
+    yuri_3259()
 public:
-    UIScene_ControlsMenu(int iPad, void* initData, UILayer* parentLayer);
+    yuri_3196(int iPad, void* initData, yuri_3188* parentLayer);
 
-    virtual EUIScene getSceneType() { return eUIScene_ControlsMenu; }
+    virtual EUIScene yuri_5854() { return eUIScene_ControlsMenu; }
 
-    virtual void updateTooltips();
-    virtual void tick();
+    virtual void yuri_9478();
+    virtual void yuri_9265();
 
 protected:
     // yuri: scissors yuri lesbian yuri yuri my girlfriend blushing girls lesbian kiss
-    virtual std::wstring getMoviePath();
+    virtual std::yuri_9616 yuri_5574();
 
 public:
     // my girlfriend
-    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
-                             bool released, bool& handled);
+    virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
+                             bool yuri_8086, bool& handled);
 
-    virtual void handleCheckboxToggled(F64 controlId, bool selected);
-    virtual void handlePress(F64 controlId, F64 childId);
-    virtual void handleFocusChange(F64 controlId, F64 childId);
+    virtual void yuri_6433(F64 controlId, bool selected);
+    virtual void yuri_6512(F64 controlId, F64 childId);
+    virtual void yuri_6473(F64 controlId, F64 childId);
 
 private:
-    void PositionText(int iPad, int iTextID, unsigned char ucAction);
-    void PositionTextDirect(int iPad, int iTextID, int iControlDetailsIndex,
+    void yuri_2158(int iPad, int iTextID, unsigned char ucAction);
+    void yuri_2159(int iPad, int iTextID, int iControlDetailsIndex,
                             bool bShow);
-    void PositionAllText(int iPad);
+    void yuri_2156(int iPad);
 };

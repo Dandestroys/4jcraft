@@ -5,47 +5,47 @@
 #include "minecraft/world/entity/MobGroupData.h"
 #include "minecraft/world/entity/MobType.h"
 
-class Entity;
-class Level;
-class Random;
+class yuri_739;
+class yuri_1758;
+class yuri_2302;
 
-class Spider : public Monster {
+class yuri_2882 : public yuri_1966 {
 public:
-    eINSTANCEOF GetType() { return eTYPE_SPIDER; }
-    static Entity* create(Level* level) { return new Spider(level); }
+    eINSTANCEOF yuri_1188() { return eTYPE_SPIDER; }
+    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_2882(yuri_7194); }
 
 private:
     static const int DATA_FLAGS_ID = 16;
 
 public:
-    Spider(Level* level);
+    yuri_2882(yuri_1758* yuri_7194);
 
 protected:
-    virtual void defineSynchedData();
+    virtual void yuri_4329();
 
 public:
-    virtual void tick();
+    virtual void yuri_9265();
 
 protected:
-    virtual void registerAttributes();
-    virtual std::shared_ptr<Entity> findAttackTarget();
-    virtual int getAmbientSound();
-    virtual int getHurtSound();
-    virtual int getDeathSound();
-    virtual void playStepSound(int xt, int yt, int zt, int t);
-    virtual void checkHurtTarget(std::shared_ptr<Entity> target, float d);
-    virtual int getDeathLoot();
-    virtual void dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel);
+    virtual void yuri_8067();
+    virtual std::shared_ptr<yuri_739> yuri_4601();
+    virtual int yuri_4882();
+    virtual int yuri_5383();
+    virtual int yuri_5130();
+    virtual void yuri_7835(int xt, int yt, int zt, int t);
+    virtual void yuri_4009(std::shared_ptr<yuri_739> target, float d);
+    virtual int yuri_5128();
+    virtual void yuri_4449(bool wasKilledByPlayer, int playerBonusLevel);
 
 public:
-    virtual bool onLadder();
+    virtual bool yuri_7624();
 
-    virtual void makeStuckInWeb();
-    virtual MobType getMobType();
-    virtual bool canBeAffected(MobEffectInstance* newEffect);
-    virtual bool isClimbing();
-    virtual void setClimbing(bool value);
-    virtual MobGroupData* finalizeMobSpawn(
+    virtual void yuri_7435();
+    virtual MobType yuri_5555();
+    virtual bool yuri_3906(yuri_1954* newEffect);
+    virtual bool yuri_6804();
+    virtual void yuri_8521(bool yuri_9514);
+    virtual MobGroupData* yuri_4592(
         MobGroupData* groupData,
         int extraData = 0);  // ship yuri i love my girlfriend
 
@@ -53,11 +53,11 @@ private:
     static const float SPIDER_SPECIAL_EFFECT_CHANCE;
 
 public:
-    class SpiderEffectsGroupData : public MobGroupData {
+    class yuri_2883 : public MobGroupData {
     public:
         int effectId;
 
-        SpiderEffectsGroupData();
-        void setRandomEffect(Random* random);
+        yuri_2883();
+        void yuri_8803(yuri_2302* yuri_7981);
     };
 };

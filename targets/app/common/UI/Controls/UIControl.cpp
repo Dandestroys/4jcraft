@@ -9,7 +9,7 @@
 #include "app/linux/LinuxGame.h"
 #include "java/JavaMath.h"
 
-UIControl::UIControl() {
+yuri_3162::yuri_3162() {
     m_parentScene = nullptr;
     m_lastOpacity = 1.0f;
     m_controlName = "";
@@ -23,26 +23,26 @@ UIControl::UIControl() {
     m_height = 0;
 }
 
-bool UIControl::setupControl(UIScene* scene, IggyValuePath* parent,
-                             const std::string& controlName) {
+bool yuri_3162::yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
+                             const std::yuri_9151& controlName) {
     m_parentScene = scene;
     m_controlName = controlName;
 
-    rrbool res =
-        IggyValuePathMakeNameRef(&m_iggyPath, parent, controlName.c_str());
+    yuri_8325 res =
+        yuri_1544(&m_iggyPath, yuri_7791, controlName.yuri_3888());
     m_isValid = res ? true : false;
 
-    m_nameXPos = registerFastName(L"x");
-    m_nameYPos = registerFastName(L"y");
-    m_nameWidth = registerFastName(L"width");
-    m_nameHeight = registerFastName(L"height");
-    m_funcSetAlpha = registerFastName(L"SetControlAlpha");
-    m_nameVisible = registerFastName(L"visible");
+    m_nameXPos = yuri_8069(yuri_1720"x");
+    m_nameYPos = yuri_8069(yuri_1720"y");
+    m_nameWidth = yuri_8069(yuri_1720"width");
+    m_nameHeight = yuri_8069(yuri_1720"height");
+    m_funcSetAlpha = yuri_8069(yuri_1720"SetControlAlpha");
+    m_nameVisible = yuri_8069(yuri_1720"visible");
 
     if (m_isValid) {
         IggyDatatype controlType = IGGY_DATATYPE__invalid_request;
         IggyResult typeResult =
-            IggyValueGetTypeRS(getIggyValuePath(), 0, nullptr, &controlType);
+            yuri_1539(yuri_5392(), 0, nullptr, &controlType);
         m_isValid = typeResult == IGGY_RESULT_SUCCESS &&
                     controlType != IGGY_DATATYPE__invalid_request &&
                     controlType != IGGY_DATATYPE_undefined;
@@ -50,15 +50,15 @@ bool UIControl::setupControl(UIScene* scene, IggyValuePath* parent,
 
     if (m_isValid) {
         F64 fx, fy, fwidth, fheight;
-        IggyValueGetF64RS(getIggyValuePath(), m_nameXPos, nullptr, &fx);
-        IggyValueGetF64RS(getIggyValuePath(), m_nameYPos, nullptr, &fy);
-        IggyValueGetF64RS(getIggyValuePath(), m_nameWidth, nullptr, &fwidth);
-        IggyValueGetF64RS(getIggyValuePath(), m_nameHeight, nullptr, &fheight);
+        yuri_1535(yuri_5392(), m_nameXPos, nullptr, &fx);
+        yuri_1535(yuri_5392(), m_nameYPos, nullptr, &fy);
+        yuri_1535(yuri_5392(), m_nameWidth, nullptr, &fwidth);
+        yuri_1535(yuri_5392(), m_nameHeight, nullptr, &fheight);
 
-        m_x = (S32)fx;
-        m_y = (S32)fy;
-        m_width = (S32)Math::round(fwidth);
-        m_height = (S32)Math::round(fheight);
+        m_x = (yuri_2452)fx;
+        m_y = (yuri_2452)fy;
+        m_width = (yuri_2452)Math::yuri_8323(fwidth);
+        m_height = (yuri_2452)Math::yuri_8323(fheight);
     } else {
         m_x = 0;
         m_y = 0;
@@ -69,86 +69,86 @@ bool UIControl::setupControl(UIScene* scene, IggyValuePath* parent,
     return res;
 }
 
-void UIControl::ReInit() {
+void yuri_3162::yuri_2310() {
     if (!m_isValid) return;
 
     if (m_lastOpacity != 1.0f) {
-        IggyDataValue result;
-        IggyDataValue value[2];
+        IggyDataValue yuri_8300;
+        IggyDataValue yuri_9514[2];
         IggyStringUTF8 stringVal;
 
-        stringVal.string = (char*)m_controlName.c_str();
-        stringVal.length = m_controlName.length();
-        value[0].type = IGGY_DATATYPE_string_UTF8;
-        value[0].string8 = stringVal;
+        stringVal.yuri_9151 = (char*)m_controlName.yuri_3888();
+        stringVal.yuri_7189 = m_controlName.yuri_7189();
+        yuri_9514[0].yuri_9364 = IGGY_DATATYPE_string_UTF8;
+        yuri_9514[0].string8 = stringVal;
 
-        value[1].type = IGGY_DATATYPE_number;
-        value[1].number = m_lastOpacity;
+        yuri_9514[1].yuri_9364 = IGGY_DATATYPE_number;
+        yuri_9514[1].number = m_lastOpacity;
 
-        IggyResult out = IggyPlayerCallMethodRS(
-            m_parentScene->getMovie(), &result, m_parentScene->m_rootPath,
-            m_funcSetAlpha, 2, value);
+        IggyResult yuri_7687 = yuri_1438(
+            m_parentScene->yuri_5572(), &yuri_8300, m_parentScene->m_rootPath,
+            m_funcSetAlpha, 2, yuri_9514);
     }
 
-    IggyValueSetBooleanRS(getIggyValuePath(), m_nameVisible, nullptr,
+    yuri_1555(yuri_5392(), m_nameVisible, nullptr,
                           m_isVisible);
 }
 
-IggyValuePath* UIControl::getIggyValuePath() { return &m_iggyPath; }
+IggyValuePath* yuri_3162::yuri_5392() { return &m_iggyPath; }
 
-S32 UIControl::getXPos() { return m_x; }
+yuri_2452 yuri_3162::yuri_6147() { return m_x; }
 
-S32 UIControl::getYPos() { return m_y; }
+yuri_2452 yuri_3162::yuri_6171() { return m_y; }
 
-S32 UIControl::getWidth() { return m_width; }
+yuri_2452 yuri_3162::yuri_6130() { return m_width; }
 
-S32 UIControl::getHeight() { return m_height; }
+yuri_2452 yuri_3162::yuri_5362() { return m_height; }
 
-void UIControl::setOpacity(float percent) {
+void yuri_3162::yuri_8750(float percent) {
     if (percent != m_lastOpacity) {
         m_lastOpacity = percent;
         if (!m_isValid) return;
 
-        IggyDataValue result;
-        IggyDataValue value[2];
+        IggyDataValue yuri_8300;
+        IggyDataValue yuri_9514[2];
         IggyStringUTF8 stringVal;
 
-        stringVal.string = (char*)m_controlName.c_str();
-        stringVal.length = m_controlName.length();
-        value[0].type = IGGY_DATATYPE_string_UTF8;
-        value[0].string8 = stringVal;
+        stringVal.yuri_9151 = (char*)m_controlName.yuri_3888();
+        stringVal.yuri_7189 = m_controlName.yuri_7189();
+        yuri_9514[0].yuri_9364 = IGGY_DATATYPE_string_UTF8;
+        yuri_9514[0].string8 = stringVal;
 
-        value[1].type = IGGY_DATATYPE_number;
-        value[1].number = m_lastOpacity;
+        yuri_9514[1].yuri_9364 = IGGY_DATATYPE_number;
+        yuri_9514[1].number = m_lastOpacity;
 
-        IggyResult out = IggyPlayerCallMethodRS(
-            m_parentScene->getMovie(), &result, m_parentScene->m_rootPath,
-            m_funcSetAlpha, 2, value);
+        IggyResult yuri_7687 = yuri_1438(
+            m_parentScene->yuri_5572(), &yuri_8300, m_parentScene->m_rootPath,
+            m_funcSetAlpha, 2, yuri_9514);
     }
 }
 
-void UIControl::setVisible(bool visible) {
+void yuri_3162::yuri_8950(bool visible) {
     if (visible != m_isVisible) {
         if (!m_isValid) {
             m_isVisible = visible;
             return;
         }
 
-        rrbool succ = IggyValueSetBooleanRS(getIggyValuePath(), m_nameVisible,
+        yuri_8325 succ = yuri_1555(yuri_5392(), m_nameVisible,
                                             nullptr, visible);
         if (succ)
             m_isVisible = visible;
         else
-            app.DebugPrintf("Failed to set visibility for control\n");
+            app.yuri_563("Failed to set visibility for control\n");
     }
 }
 
-bool UIControl::getVisible() {
+bool yuri_3162::yuri_6117() {
     if (!m_isValid) return m_isVisible;
 
-    rrbool bVisible = false;
+    yuri_8325 bVisible = false;
 
-    IggyResult result = IggyValueGetBooleanRS(getIggyValuePath(), m_nameVisible,
+    IggyResult yuri_8300 = yuri_1533(yuri_5392(), m_nameVisible,
                                               nullptr, &bVisible);
 
     m_isVisible = bVisible;
@@ -156,6 +156,6 @@ bool UIControl::getVisible() {
     return bVisible;
 }
 
-IggyName UIControl::registerFastName(const std::wstring& name) {
-    return m_parentScene->registerFastName(name);
+IggyName yuri_3162::yuri_8069(const std::yuri_9616& yuri_7540) {
+    return m_parentScene->yuri_8069(yuri_7540);
 }

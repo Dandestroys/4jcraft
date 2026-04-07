@@ -2,20 +2,20 @@
 #include "minecraft/world/entity/Creature.h"
 #include "minecraft/world/entity/PathfinderMob.h"
 
-class Player;
-class Level;
+class yuri_2126;
+class yuri_1758;
 
-class WaterAnimal : public PathfinderMob, public Creature {
+class yuri_3361 : public yuri_2096, public yuri_496 {
 public:
-    WaterAnimal(Level* level);
-    virtual bool isWaterMob();
-    virtual bool canSpawn();
-    virtual int getAmbientSoundInterval();
+    yuri_3361(yuri_1758* yuri_7194);
+    virtual bool yuri_7119();
+    virtual bool yuri_3958();
+    virtual int yuri_4883();
 
 protected:
-    virtual bool removeWhenFarAway();
-    virtual int getExperienceReward(std::shared_ptr<Player> killedBy);
+    virtual bool yuri_8151();
+    virtual int yuri_5227(std::shared_ptr<yuri_2126> killedBy);
 
 public:
-    virtual void baseTick();
+    virtual void yuri_3797();
 };

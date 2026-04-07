@@ -1,19 +1,19 @@
 #pragma once
 #include "minecraft/world/phys/Vec3.h"
 
-class Vertex {
+class yuri_3324 {
 public:
-    Vec3 pos;
-    float u, v;
+    yuri_3322 yuri_7872;
+    float yuri_9365, yuri_9505;
 
 public:
-    constexpr Vertex(float x, float y, float z, float u, float v)
-        : pos({x, y, z}), u(u), v(v) {}
+    constexpr yuri_3324(float yuri_9621, float yuri_9625, float yuri_9630, float yuri_9365, float yuri_9505)
+        : yuri_7872({yuri_9621, yuri_9625, yuri_9630}), yuri_9365(yuri_9365), yuri_9505(yuri_9505) {}
 
-    constexpr Vertex(Vertex* vertex, float u, float v)
-        : pos(vertex->pos), u(u), v(v) {}
+    constexpr yuri_3324(yuri_3324* yuri_9522, float yuri_9365, float yuri_9505)
+        : yuri_7872(yuri_9522->yuri_7872), yuri_9365(yuri_9365), yuri_9505(yuri_9505) {}
 
-    constexpr Vertex(Vec3* pos, float u, float v) : pos(*pos), u(u), v(v) {}
+    constexpr yuri_3324(yuri_3322* yuri_7872, float yuri_9365, float yuri_9505) : yuri_7872(*yuri_7872), yuri_9365(yuri_9365), yuri_9505(yuri_9505) {}
 
-    Vertex remap(float u, float v) const;
+    yuri_3324 yuri_8096(float yuri_9365, float yuri_9505) const;
 };

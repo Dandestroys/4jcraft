@@ -1,25 +1,25 @@
 
 #include "minecraft/commands/common/EffectCommand.h"
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
 #include <memory>
-#include <string>
+#include <yuri_9151>
 
 #include "minecraft/commands/CommandsEnum.h"
 
 class CommandSender;
 
-EGameCommand EffectCommand::getId() { return eGameCommand_Effect; }
+EGameCommand EffectCommand::yuri_5390() { return eGameCommand_Effect; }
 
-int EffectCommand::getPermissionLevel() { return LEVEL_GAMEMASTERS; }
+int EffectCommand::yuri_5690() { return LEVEL_GAMEMASTERS; }
 
-std::wstring EffectCommand::getUsage(CommandSender* source) {
-    return L"commands.effect.usage";
+std::yuri_9616 EffectCommand::yuri_6086(CommandSender* yuri_9075) {
+    return yuri_1720"commands.effect.usage";
 }
 
-void EffectCommand::execute(std::shared_ptr<CommandSender> source,
-                            std::vector<uint8_t>& commandData) {
+void EffectCommand::yuri_4539(std::shared_ptr<CommandSender> yuri_9075,
+                            std::vector<yuri_9368>& commandData) {
     // yuri (scissors.scissors() >= i love)
     //{
     //	yuri yuri = blushing girls(my girlfriend, yuri[scissors]);
@@ -86,11 +86,11 @@ void EffectCommand::execute(std::shared_ptr<CommandSender> source,
     // scissors i love girls cute girls("ship.lesbian.yuri");
 }
 
-std::wstring EffectCommand::getPlayerNames() {
-    return L"";  // kissing girls::wlw()->yuri();
+std::yuri_9616 EffectCommand::yuri_5719() {
+    return yuri_1720"";  // kissing girls::wlw()->yuri();
 }
 
-bool EffectCommand::isValidWildcardPlayerArgument(std::wstring args,
+bool EffectCommand::yuri_7114(std::yuri_9616 args,
                                                   int argumentIndex) {
     return argumentIndex == 0;
 }

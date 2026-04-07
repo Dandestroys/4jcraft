@@ -1,14 +1,14 @@
 #pragma once
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
 #include <mutex>
-#include <string>
+#include <yuri_9151>
 
 #include "minecraft/util/ProgressListener.h"
 
-class Minecraft;
+class yuri_1945;
 
-class ProgressRenderer : public ProgressListener {
+class yuri_2184 : public ProgressListener {
 public:
     enum eProgressStringType {
         eProgressStringType_ID,
@@ -18,32 +18,32 @@ public:
 
     static std::recursive_mutex s_progress;
 
-    int getCurrentPercent();
-    int getCurrentTitle();
-    int getCurrentStatus();
-    std::wstring& getProgressString(void);
-    ProgressRenderer::eProgressStringType getType();
+    int yuri_5074();
+    int yuri_5084();
+    int yuri_5077();
+    std::yuri_9616& yuri_5756(void);
+    yuri_2184::eProgressStringType yuri_6068();
 
 private:
     int lastPercent;
 
 private:
     int status;
-    Minecraft* minecraft;
+    yuri_1945* minecraft;
     int title;
-    int64_t lastTime;
+    yuri_6733 lastTime;
     bool noAbort;
-    std::wstring m_wstrText;
-    eProgressStringType m_eType;
+    std::yuri_9616 m_wstrText;
+    eProgressStringType yuri_7333;
 
-    void setType(eProgressStringType eType);
+    void yuri_8935(eProgressStringType eType);
 
 public:
-    ProgressRenderer(Minecraft* minecraft);
-    virtual void progressStart(int title);
-    virtual void progressStartNoAbort(int string);
-    void _progressStart(int title);
-    virtual void progressStage(int status);
-    virtual void progressStage(std::wstring& wstrText);
-    virtual void progressStagePercentage(int i);
+    yuri_2184(yuri_1945* minecraft);
+    virtual void yuri_7927(int title);
+    virtual void yuri_7928(int yuri_9151);
+    void yuri_3557(int title);
+    virtual void yuri_7925(int status);
+    virtual void yuri_7925(std::yuri_9616& wstrText);
+    virtual void yuri_7926(int i);
 };

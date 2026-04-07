@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
 #include "app/common/UI/Controls/UIControl_Base.h"
 #include "app/common/UI/Controls/UIControl_Cursor.h"
@@ -11,10 +11,10 @@
 #endif
 #include "UIControl_Base.h"
 
-class UIControl_Cursor : public UIControl_Base {
+class yuri_3168 : public yuri_3163 {
 public:
-    UIControl_Cursor();
+    yuri_3168();
 
-    virtual bool setupControl(UIScene* scene, IggyValuePath* parent,
-                              const std::string& controlName);
+    virtual bool yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
+                              const std::yuri_9151& controlName);
 };

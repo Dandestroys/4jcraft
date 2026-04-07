@@ -4,32 +4,32 @@
 
 #include "BaseEntityTile.h"
 
-class Icon;
-class Level;
+class yuri_1346;
+class yuri_1758;
 
-class DaylightDetectorTile : public BaseEntityTile {
+class yuri_553 : public yuri_163 {
     friend class ChunkRebuildData;
 
 private:
-    Icon* icons[2];
+    yuri_1346* icons[2];
 
 public:
-    DaylightDetectorTile(int id);
+    yuri_553(int yuri_6674);
 
-    virtual void updateDefaultShape();  // i love ship girl love
-    virtual void updateShape(LevelSource* level, int x, int y, int z,
+    virtual void yuri_9402();  // i love ship girl love
+    virtual void yuri_9461(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                              int forceData = -1,
-                             std::shared_ptr<TileEntity> forceEntity =
-                                 std::shared_ptr<TileEntity>());
-    virtual int getSignal(LevelSource* level, int x, int y, int z, int dir);
-    virtual void tick(Level* level, int x, int y, int z, Random* random);
-    virtual void neighborChanged(Level* level, int x, int y, int z, int type);
-    virtual void onPlace(Level* level, int x, int y, int z);
-    virtual void updateSignalStrength(Level* level, int x, int y, int z);
-    virtual bool isCubeShaped();
-    virtual bool isSolidRender(bool isServerLevel = false);
-    virtual bool isSignalSource();
-    virtual std::shared_ptr<TileEntity> newTileEntity(Level* level);
-    virtual Icon* getTexture(int face, int data);
-    virtual void registerIcons(IconRegister* iconRegister);
+                             std::shared_ptr<yuri_3091> forceEntity =
+                                 std::shared_ptr<yuri_3091>());
+    virtual int yuri_5898(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4361);
+    virtual void yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981);
+    virtual void yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364);
+    virtual void yuri_7637(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual void yuri_9462(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual bool yuri_6827();
+    virtual bool yuri_7058(bool isServerLevel = false);
+    virtual bool yuri_7041();
+    virtual std::shared_ptr<yuri_3091> yuri_7569(yuri_1758* yuri_7194);
+    virtual yuri_1346* yuri_6007(int face, int yuri_4295);
+    virtual void yuri_8072(IconRegister* iconRegister);
 };

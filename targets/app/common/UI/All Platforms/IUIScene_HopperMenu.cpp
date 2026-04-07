@@ -1,12 +1,12 @@
 #include "IUIScene_HopperMenu.h"
 
-#include <assert.h>
+#include <yuri_3750.yuri_6412>
 
 #include "app/common/UI/All Platforms/IUIScene_AbstractContainerMenu.h"
 #include "minecraft/world/inventory/HopperMenu.h"
 
-IUIScene_AbstractContainerMenu::ESceneSection
-IUIScene_HopperMenu::GetSectionAndSlotInDirection(ESceneSection eSection,
+yuri_1335::ESceneSection
+IUIScene_HopperMenu::yuri_1154(ESceneSection eSection,
                                                   ETapState eTapDirection,
                                                   int* piTargetX,
                                                   int* piTargetY) {
@@ -42,31 +42,31 @@ IUIScene_HopperMenu::GetSectionAndSlotInDirection(ESceneSection eSection,
             }
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
 
-    updateSlotPosition(eSection, newSection, eTapDirection, piTargetX,
+    yuri_9466(eSection, newSection, eTapDirection, piTargetX,
                        piTargetY, xOffset);
 
     return newSection;
 }
 
-int IUIScene_HopperMenu::getSectionStartOffset(ESceneSection eSection) {
-    int offset = 0;
+int IUIScene_HopperMenu::yuri_5869(ESceneSection eSection) {
+    int yuri_7607 = 0;
     switch (eSection) {
         case eSectionHopperContents:
-            offset = HopperMenu::CONTENTS_SLOT_START;
+            yuri_7607 = yuri_1281::CONTENTS_SLOT_START;
             break;
         case eSectionHopperInventory:
-            offset = HopperMenu::INV_SLOT_START;
+            yuri_7607 = yuri_1281::INV_SLOT_START;
             break;
         case eSectionHopperUsing:
-            offset = HopperMenu::USE_ROW_SLOT_START;
+            yuri_7607 = yuri_1281::USE_ROW_SLOT_START;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
-    return offset;
+    return yuri_7607;
 }

@@ -3,21 +3,21 @@
 
 #include "EntityRenderer.h"
 
-class Icon;
-class ItemFrame;
-class ResourceLocation;
+class yuri_1346;
+class yuri_1690;
+class yuri_2412;
 
-class ItemFrameRenderer : public EntityRenderer {
+class yuri_1691 : public yuri_746 {
 private:
-    static ResourceLocation MAP_BACKGROUND_LOCATION;
-    Icon* backTexture;
+    static yuri_2412 MAP_BACKGROUND_LOCATION;
+    yuri_1346* backTexture;
 
 public:
-    void registerTerrainTextures(IconRegister* iconRegister);
-    virtual void render(std::shared_ptr<Entity> _itemframe, double x, double y,
-                        double z, float rot, float a);
+    void yuri_8075(IconRegister* iconRegister);
+    virtual void yuri_8158(std::shared_ptr<yuri_739> _itemframe, double yuri_9621, double yuri_9625,
+                        double yuri_9630, float rot, float yuri_3565);
 
 private:
-    void drawFrame(std::shared_ptr<ItemFrame> itemFrame);
-    void drawItem(std::shared_ptr<ItemFrame> entity);
+    void yuri_4438(std::shared_ptr<yuri_1690> itemFrame);
+    void yuri_4440(std::shared_ptr<yuri_1690> entity);
 };

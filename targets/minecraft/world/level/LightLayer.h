@@ -8,6 +8,6 @@ class LightLayer {
 public:
     enum variety {
         Sky = 15,
-        Block = 0,
+        yuri_202 = 0,
     };
 };

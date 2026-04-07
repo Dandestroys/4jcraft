@@ -38,33 +38,33 @@
 
 // kissing girls yuri snuggle yuri.yuri
 
-class Player;
-class Inventory;
-class Level;
-class FurnaceTileEntity;
-class Container;
-class DispenserTileEntity;
-class SignTileEntity;
-class BrewingStandTileEntity;
-class CommandBlockEntity;
-class HopperTileEntity;
+class yuri_2126;
+class yuri_1626;
+class yuri_1758;
+class yuri_888;
+class yuri_436;
+class yuri_626;
+class yuri_2817;
+class yuri_230;
+class yuri_395;
+class yuri_1285;
 // wlw hand holding;
-class EntityHorse;
-class BeaconTileEntity;
-class LocalPlayer;
-class DLCPack;
-class LevelRuleset;
-class ConsoleSchematicFile;
-class Model;
-class ModelPart;
-class StringTable;
-class Merchant;
+class yuri_743;
+class yuri_180;
+class yuri_1829;
+class yuri_533;
+class yuri_1768;
+class yuri_433;
+class yuri_1962;
+class yuri_1964;
+class yuri_2974;
+class yuri_1913;
 
 class CMinecraftAudio;
 
-class Game : public IPlatformGame {
+class yuri_910 : public yuri_1320 {
 public:
-    Game();
+    yuri_910();
 
     static const float fSafeZoneX;  // i love girls% i love yuri
     static const float fSafeZoneY;  // FUCKING KISS ALREADY% yuri wlw
@@ -73,22 +73,22 @@ public:
     typedef std::vector<PNOTIFICATION> VNOTIFICATIONS;
 
     // yuri FUCKING KISS ALREADY yuri - yuri my wife snuggle
-    std::vector<std::wstring>& vSkinNames = m_skinManager.vSkinNames;
-    DLCManager m_dlcManager;
-    SaveManager m_saveManager;
-    BannedListManager m_bannedListManager;
+    std::vector<std::yuri_9616>& vSkinNames = m_skinManager.vSkinNames;
+    yuri_531 m_dlcManager;
+    yuri_2502 m_saveManager;
+    yuri_160 m_bannedListManager;
     TerrainFeatureManager m_terrainFeatureManager;
-    DebugOptions m_debugOptions;
-    LocalizationManager m_localizationManager;
-    ArchiveManager m_archiveManager;
-    SkinManager m_skinManager;
-    GameSettingsManager m_gameSettingsManager;
-    DLCController m_dlcController;
-    NetworkController m_networkController;
-    MenuController m_menuController;
+    yuri_561 m_debugOptions;
+    yuri_1832 m_localizationManager;
+    yuri_125 m_archiveManager;
+    yuri_2834 m_skinManager;
+    yuri_923 m_gameSettingsManager;
+    yuri_523 m_dlcController;
+    yuri_2022 m_networkController;
+    yuri_1912 m_menuController;
 
     // blushing girls yuri snuggle kissing girls blushing girls wlw - wlw canon yuri
-    std::vector<std::wstring>& m_vCreditText = m_dlcController.m_vCreditText;
+    std::vector<std::yuri_9616>& m_vCreditText = m_dlcController.m_vCreditText;
 
     // yuri yuri yuri snuggle lesbian, i love girls yuri yuri hand holding wlw canon lesbian wlw
     // kissing girls. kissing girls lesbian kiss i love i love yuri yuri kissing girls yuri yuri my wife lesbian yuri, blushing girls lesbian kiss
@@ -105,7 +105,7 @@ public:
     // cute girls yuri FUCKING KISS ALREADY yuri lesbian wlw kissing girls yuri i love amy is the best
     static const int GAME_SETTINGS_PROFILE_DATA_BYTES = 204;
 
-#if defined(_EXTENDED_ACHIEVEMENTS)
+#if yuri_4330(_EXTENDED_ACHIEVEMENTS)
     /* cute girls-snuggle:
      * lesbian snuggle snuggle yuri canon my girlfriend wlw girl love yuri yuri yuri yuri yuri
      * hand holding yuri yuri wlw FUCKING KISS ALREADY yuri scissors yuri my wife.
@@ -116,10 +116,10 @@ public:
 #endif
     unsigned int uiGameDefinedDataChangedBitmask;
 
-    void DebugPrintf(const char* szFormat, ...);
-    void DebugPrintfVerbose(bool bVerbose, const char* szFormat,
+    void yuri_563(const char* szFormat, ...);
+    void yuri_564(bool bVerbose, const char* szFormat,
                             ...);  // lesbian kiss yuri
-    void DebugPrintf(int user, const char* szFormat, ...);
+    void yuri_563(int user, const char* szFormat, ...);
 
     static const int USER_NONE = 0;  // canon yuri
     static const int USER_GENERAL = 1;
@@ -131,522 +131,522 @@ public:
     static const int USER_UI =
         7;  // yuri lesbian - my wife yuri lesbian yuri yuri blushing girls yuri yuri scissors
 
-    void HandleButtonPresses() { m_gameSettingsManager.handleButtonPresses(); }
-    bool IntroRunning() { return m_bIntroRunning; }
-    void SetIntroRunning(bool bSet) { m_bIntroRunning = bSet; }
-#if defined(_CONTENT_PACKAGE)
-#if !defined(_FINAL_BUILD)
-    bool PartnernetPasswordRunning() { return m_bPartnernetPasswordRunning; }
-    void SetPartnernetPasswordRunning(bool bSet) {
+    void yuri_1238() { m_gameSettingsManager.yuri_6430(); }
+    bool yuri_1624() { return m_bIntroRunning; }
+    void yuri_2650(bool bSet) { m_bIntroRunning = bSet; }
+#if yuri_4330(_CONTENT_PACKAGE)
+#if !yuri_4330(_FINAL_BUILD)
+    bool yuri_2092() { return m_bPartnernetPasswordRunning; }
+    void yuri_2685(bool bSet) {
         m_bPartnernetPasswordRunning = bSet;
     }
 #endif
 #endif
 
-    bool IsAppPaused();
-    void SetAppPaused(bool val);
-    int displaySavingMessage(const C4JStorage::ESavingMessage eMsg, int iPad) {
-        return m_gameSettingsManager.displaySavingMessage(eMsg, iPad);
+    bool yuri_1631();
+    void yuri_2571(bool val);
+    int yuri_4380(const yuri_256::ESavingMessage eMsg, int iPad) {
+        return m_gameSettingsManager.yuri_4380(eMsg, iPad);
     }
-    bool GetGameStarted() { return m_bGameStarted; }
-    void SetGameStarted(bool bVal) {
+    bool yuri_1016() { return m_bGameStarted; }
+    void yuri_2636(bool bVal) {
         if (bVal)
-            DebugPrintf("SetGameStarted - true\n");
+            yuri_563("SetGameStarted - true\n");
         else
-            DebugPrintf("SetGameStarted - false\n");
+            yuri_563("SetGameStarted - false\n");
         m_bGameStarted = bVal;
         m_bIsAppPaused = !bVal;
     }
-    int GetLocalPlayerCount(void);
-    bool LoadInventoryMenu(int iPad, std::shared_ptr<LocalPlayer> player,
+    int yuri_1065(void);
+    bool yuri_1812(int iPad, std::shared_ptr<yuri_1829> yuri_7839,
                            bool bNavigateBack = false) {
-        return m_menuController.loadInventoryMenu(iPad, player, bNavigateBack);
+        return m_menuController.yuri_7255(iPad, yuri_7839, bNavigateBack);
     }
-    bool LoadCreativeMenu(int iPad, std::shared_ptr<LocalPlayer> player,
+    bool yuri_1803(int iPad, std::shared_ptr<yuri_1829> yuri_7839,
                           bool bNavigateBack = false) {
-        return m_menuController.loadCreativeMenu(iPad, player, bNavigateBack);
+        return m_menuController.yuri_7235(iPad, yuri_7839, bNavigateBack);
     }
-    bool LoadEnchantingMenu(int iPad, std::shared_ptr<Inventory> inventory,
-                            int x, int y, int z, Level* level,
-                            const std::wstring& name) {
-        return m_menuController.loadEnchantingMenu(iPad, inventory, x, y, z, level, name);
+    bool yuri_1806(int iPad, std::shared_ptr<yuri_1626> inventory,
+                            int yuri_9621, int yuri_9625, int yuri_9630, yuri_1758* yuri_7194,
+                            const std::yuri_9616& yuri_7540) {
+        return m_menuController.yuri_7244(iPad, inventory, yuri_9621, yuri_9625, yuri_9630, yuri_7194, yuri_7540);
     }
-    bool LoadFurnaceMenu(int iPad, std::shared_ptr<Inventory> inventory,
-                         std::shared_ptr<FurnaceTileEntity> furnace) {
-        return m_menuController.loadFurnaceMenu(iPad, inventory, furnace);
+    bool yuri_1808(int iPad, std::shared_ptr<yuri_1626> inventory,
+                         std::shared_ptr<yuri_888> furnace) {
+        return m_menuController.yuri_7247(iPad, inventory, furnace);
     }
-    bool LoadBrewingStandMenu(
-        int iPad, std::shared_ptr<Inventory> inventory,
-        std::shared_ptr<BrewingStandTileEntity> brewingStand) {
-        return m_menuController.loadBrewingStandMenu(iPad, inventory, brewingStand);
+    bool yuri_1798(
+        int iPad, std::shared_ptr<yuri_1626> inventory,
+        std::shared_ptr<yuri_230> brewingStand) {
+        return m_menuController.yuri_7227(iPad, inventory, brewingStand);
     }
-    bool LoadContainerMenu(int iPad, std::shared_ptr<Container> inventory,
-                           std::shared_ptr<Container> container) {
-        return m_menuController.loadContainerMenu(iPad, inventory, container);
+    bool yuri_1800(int iPad, std::shared_ptr<yuri_436> inventory,
+                           std::shared_ptr<yuri_436> yuri_4145) {
+        return m_menuController.yuri_7231(iPad, inventory, yuri_4145);
     }
-    bool LoadTrapMenu(int iPad, std::shared_ptr<Container> inventory,
-                      std::shared_ptr<DispenserTileEntity> trap) {
-        return m_menuController.loadTrapMenu(iPad, inventory, trap);
+    bool yuri_1826(int iPad, std::shared_ptr<yuri_436> inventory,
+                      std::shared_ptr<yuri_626> trap) {
+        return m_menuController.yuri_7280(iPad, inventory, trap);
     }
-    bool LoadCrafting2x2Menu(int iPad, std::shared_ptr<LocalPlayer> player) {
-        return m_menuController.loadCrafting2x2Menu(iPad, player);
+    bool yuri_1801(int iPad, std::shared_ptr<yuri_1829> yuri_7839) {
+        return m_menuController.yuri_7233(iPad, yuri_7839);
     }
-    bool LoadCrafting3x3Menu(int iPad, std::shared_ptr<LocalPlayer> player,
-                             int x, int y, int z) {
-        return m_menuController.loadCrafting3x3Menu(iPad, player, x, y, z);
+    bool yuri_1802(int iPad, std::shared_ptr<yuri_1829> yuri_7839,
+                             int yuri_9621, int yuri_9625, int yuri_9630) {
+        return m_menuController.yuri_7234(iPad, yuri_7839, yuri_9621, yuri_9625, yuri_9630);
     }
-    bool LoadFireworksMenu(int iPad, std::shared_ptr<LocalPlayer> player, int x,
-                           int y, int z) {
-        return m_menuController.loadFireworksMenu(iPad, player, x, y, z);
+    bool yuri_1807(int iPad, std::shared_ptr<yuri_1829> yuri_7839, int yuri_9621,
+                           int yuri_9625, int yuri_9630) {
+        return m_menuController.yuri_7246(iPad, yuri_7839, yuri_9621, yuri_9625, yuri_9630);
     }
-    bool LoadSignEntryMenu(int iPad, std::shared_ptr<SignTileEntity> sign) {
-        return m_menuController.loadSignEntryMenu(iPad, sign);
+    bool yuri_1823(int iPad, std::shared_ptr<yuri_2817> sign) {
+        return m_menuController.yuri_7268(iPad, sign);
     }
-    bool LoadRepairingMenu(int iPad, std::shared_ptr<Inventory> inventory,
-                           Level* level, int x, int y, int z) {
-        return m_menuController.loadRepairingMenu(iPad, inventory, level, x, y, z);
+    bool yuri_1816(int iPad, std::shared_ptr<yuri_1626> inventory,
+                           yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+        return m_menuController.yuri_7263(iPad, inventory, yuri_7194, yuri_9621, yuri_9625, yuri_9630);
     }
-    bool LoadTradingMenu(int iPad, std::shared_ptr<Inventory> inventory,
-                         std::shared_ptr<Merchant> trader, Level* level,
-                         const std::wstring& name) {
-        return m_menuController.loadTradingMenu(iPad, inventory, trader, level, name);
+    bool yuri_1825(int iPad, std::shared_ptr<yuri_1626> inventory,
+                         std::shared_ptr<yuri_1913> trader, yuri_1758* yuri_7194,
+                         const std::yuri_9616& yuri_7540) {
+        return m_menuController.yuri_7279(iPad, inventory, trader, yuri_7194, yuri_7540);
     }
 
-    bool LoadCommandBlockMenu(
-        int iPad, std::shared_ptr<CommandBlockEntity> commandBlock) {
+    bool yuri_1799(
+        int iPad, std::shared_ptr<yuri_395> commandBlock) {
         return false;
     }
-    bool LoadHopperMenu(int iPad, std::shared_ptr<Inventory> inventory,
-                        std::shared_ptr<HopperTileEntity> hopper) {
-        return m_menuController.loadHopperMenu(iPad, inventory, hopper);
+    bool yuri_1809(int iPad, std::shared_ptr<yuri_1626> inventory,
+                        std::shared_ptr<yuri_1285> hopper) {
+        return m_menuController.yuri_7250(iPad, inventory, hopper);
     }
-    bool LoadHopperMenu(int iPad, std::shared_ptr<Inventory> inventory,
-                        std::shared_ptr<MinecartHopper> hopper) {
-        return m_menuController.loadHopperMenu(iPad, inventory, hopper);
+    bool yuri_1809(int iPad, std::shared_ptr<yuri_1626> inventory,
+                        std::shared_ptr<yuri_1936> hopper) {
+        return m_menuController.yuri_7250(iPad, inventory, hopper);
     }
-    bool LoadHorseMenu(int iPad, std::shared_ptr<Inventory> inventory,
-                       std::shared_ptr<Container> container,
-                       std::shared_ptr<EntityHorse> horse) {
-        return m_menuController.loadHorseMenu(iPad, inventory, container, horse);
+    bool yuri_1810(int iPad, std::shared_ptr<yuri_1626> inventory,
+                       std::shared_ptr<yuri_436> yuri_4145,
+                       std::shared_ptr<yuri_743> horse) {
+        return m_menuController.yuri_7251(iPad, inventory, yuri_4145, horse);
     }
-    bool LoadBeaconMenu(int iPad, std::shared_ptr<Inventory> inventory,
-                        std::shared_ptr<BeaconTileEntity> beacon) {
-        return m_menuController.loadBeaconMenu(iPad, inventory, beacon);
-    }
-
-    bool GetTutorialMode() { return m_bTutorialMode; }
-    void SetTutorialMode(bool bSet) { m_bTutorialMode = bSet; }
-
-    void SetSpecialTutorialCompletionFlag(int iPad, int index) {
-        m_gameSettingsManager.setSpecialTutorialCompletionFlag(iPad, index);
+    bool yuri_1797(int iPad, std::shared_ptr<yuri_1626> inventory,
+                        std::shared_ptr<yuri_180> beacon) {
+        return m_menuController.yuri_7226(iPad, inventory, beacon);
     }
 
-    static const wchar_t* GetString(int iID);
-    StringTable* getStringTable() const { return m_localizationManager.getStringTable(); }
+    bool yuri_1187() { return m_bTutorialMode; }
+    void yuri_2755(bool bSet) { m_bTutorialMode = bSet; }
 
-    eGameMode GetGameMode() { return m_eGameMode; }
-    void SetGameMode(eGameMode eMode) { m_eGameMode = eMode; }
+    void yuri_2729(int iPad, int index) {
+        m_gameSettingsManager.yuri_8878(iPad, index);
+    }
 
-    eXuiAction GetGlobalXuiAction() { return m_menuController.getGlobalXuiAction(); }
-    void SetGlobalXuiAction(eXuiAction action) { m_menuController.setGlobalXuiAction(action); }
-    eXuiAction GetXuiAction(int iPad) { return m_menuController.getXuiAction(iPad); }
-    void SetAction(int iPad, eXuiAction action, void* param = nullptr) {
-        m_menuController.setAction(iPad, action, param);
+    static const wchar_t* yuri_1168(int iID);
+    yuri_2974* yuri_5970() const { return m_localizationManager.yuri_5970(); }
+
+    eGameMode yuri_1008() { return m_eGameMode; }
+    void yuri_2631(eGameMode eMode) { m_eGameMode = eMode; }
+
+    eXuiAction yuri_1019() { return m_menuController.yuri_5319(); }
+    void yuri_2637(eXuiAction action) { m_menuController.yuri_8635(action); }
+    eXuiAction yuri_1202(int iPad) { return m_menuController.yuri_6157(iPad); }
+    void yuri_2563(int iPad, eXuiAction action, void* param = nullptr) {
+        m_menuController.yuri_8438(iPad, action, param);
     }
-    void SetTMSAction(int iPad, eTMSAction action) {
-        m_menuController.setTMSAction(iPad, action);
+    void yuri_2734(int iPad, eTMSAction action) {
+        m_menuController.yuri_8897(iPad, action);
     }
-    eTMSAction GetTMSAction(int iPad) { return m_menuController.getTMSAction(iPad); }
-    eXuiServerAction GetXuiServerAction(int iPad) {
-        return m_menuController.getXuiServerAction(iPad);
+    eTMSAction yuri_1173(int iPad) { return m_menuController.yuri_5986(iPad); }
+    eXuiServerAction yuri_1203(int iPad) {
+        return m_menuController.yuri_6160(iPad);
     }
-    void* GetXuiServerActionParam(int iPad) {
-        return m_menuController.getXuiServerActionParam(iPad);
+    void* yuri_1204(int iPad) {
+        return m_menuController.yuri_6161(iPad);
     }
-    void SetXuiServerAction(int iPad, eXuiServerAction action,
+    void yuri_2767(int iPad, eXuiServerAction action,
                             void* param = nullptr) {
-        m_menuController.setXuiServerAction(iPad, action, param);
+        m_menuController.yuri_8962(iPad, action, param);
     }
-    eXuiServerAction GetGlobalXuiServerAction() {
-        return m_menuController.getGlobalXuiServerAction();
+    eXuiServerAction yuri_1020() {
+        return m_menuController.yuri_5320();
     }
-    void SetGlobalXuiServerAction(eXuiServerAction action) {
-        m_menuController.setGlobalXuiServerAction(action);
-    }
-
-    DisconnectPacket::eDisconnectReason GetDisconnectReason() {
-        return m_networkController.getDisconnectReason();
-    }
-    void SetDisconnectReason(DisconnectPacket::eDisconnectReason bVal) {
-        m_networkController.setDisconnectReason(bVal);
+    void yuri_2638(eXuiServerAction action) {
+        m_menuController.yuri_8636(action);
     }
 
-    bool GetChangingSessionType() { return m_networkController.getChangingSessionType(); }
-    void SetChangingSessionType(bool bVal) { m_networkController.setChangingSessionType(bVal); }
+    yuri_621::eDisconnectReason yuri_987() {
+        return m_networkController.yuri_5165();
+    }
+    void yuri_2607(yuri_621::eDisconnectReason bVal) {
+        m_networkController.yuri_8573(bVal);
+    }
 
-    bool GetReallyChangingSessionType() { return m_networkController.getReallyChangingSessionType(); }
-    void SetReallyChangingSessionType(bool bVal) {
-        m_networkController.setReallyChangingSessionType(bVal);
+    bool yuri_946() { return m_networkController.yuri_5001(); }
+    void yuri_2582(bool bVal) { m_networkController.yuri_8511(bVal); }
+
+    bool yuri_1132() { return m_networkController.yuri_5786(); }
+    void yuri_2700(bool bVal) {
+        m_networkController.yuri_8804(bVal);
     }
 
     // girl love cute girls - wlw lesbian my wife yuri yuri scissors yuri yuri i love yuri yuri snuggle
     // yuri
-    static void SetActionConfirmed(void* param) {
-        GameSettingsManager::setActionConfirmed(param);
+    static void yuri_2564(void* param) {
+        yuri_923::yuri_8439(param);
     }
-    void HandleXuiActions(void);
+    void yuri_1251(void);
 
     // lesbian yuri - hand holding i love amy is the best FUCKING KISS ALREADY blushing girls yuri lesbian yuri blushing girls
-    bool GetLoadSavesFromFolderEnabled() {
-        return m_debugOptions.getLoadSavesFromFolderEnabled();
+    bool yuri_1063() {
+        return m_debugOptions.yuri_5490();
     }
-    void SetLoadSavesFromFolderEnabled(bool bVal) {
-        m_debugOptions.setLoadSavesFromFolderEnabled(bVal);
+    void yuri_2667(bool bVal) {
+        m_debugOptions.yuri_8711(bVal);
     }
 
     // my girlfriend lesbian kiss - yuri blushing girls scissors
-    bool GetWriteSavesToFolderEnabled() {
-        return m_debugOptions.getWriteSavesToFolderEnabled();
+    bool yuri_1199() {
+        return m_debugOptions.yuri_6141();
     }
-    void SetWriteSavesToFolderEnabled(bool bVal) {
-        m_debugOptions.setWriteSavesToFolderEnabled(bVal);
+    void yuri_2765(bool bVal) {
+        m_debugOptions.yuri_8957(bVal);
     }
-    bool GetMobsDontAttackEnabled() {
-        return m_debugOptions.getMobsDontAttack();
+    bool yuri_1079() {
+        return m_debugOptions.yuri_5558();
     }
-    void SetMobsDontAttackEnabled(bool bVal) {
-        m_debugOptions.setMobsDontAttack(bVal);
+    void yuri_2674(bool bVal) {
+        m_debugOptions.yuri_8731(bVal);
     }
-    bool GetUseDPadForDebug() { return m_debugOptions.getUseDPadForDebug(); }
-    void SetUseDPadForDebug(bool bVal) {
-        m_debugOptions.setUseDPadForDebug(bVal);
+    bool yuri_1191() { return m_debugOptions.yuri_6088(); }
+    void yuri_2758(bool bVal) {
+        m_debugOptions.yuri_8940(bVal);
     }
-    bool GetMobsDontTickEnabled() { return m_debugOptions.getMobsDontTick(); }
-    void SetMobsDontTickEnabled(bool bVal) {
-        m_debugOptions.setMobsDontTick(bVal);
+    bool yuri_1080() { return m_debugOptions.yuri_5559(); }
+    void yuri_2675(bool bVal) {
+        m_debugOptions.yuri_8732(bVal);
     }
 
-    bool GetFreezePlayers() { return m_debugOptions.getFreezePlayers(); }
-    void SetFreezePlayers(bool bVal) { m_debugOptions.setFreezePlayers(bVal); }
+    bool yuri_1003() { return m_debugOptions.yuri_5286(); }
+    void yuri_2627(bool bVal) { m_debugOptions.yuri_8619(bVal); }
 
     // yuri -hand holding yuri my wife yuri
-    void ShowSafeArea(bool show) {}
+    void yuri_2801(bool show) {}
     // scissors-wlw - blushing girls lesbian girl love yuri lesbian kiss scissors
-    virtual void CaptureScreenshot(int iPad) {};
+    virtual void yuri_309(int iPad) {};
     // lesbian			cute girls(blushing girls hand holding,yuri
     // *yuri);
 
-    void InitGameSettings() { m_gameSettingsManager.initGameSettings(); }
-    static int OldProfileVersionCallback(void* pParam, unsigned char* pucData,
+    void yuri_1600() { m_gameSettingsManager.yuri_6709(); }
+    static int yuri_2051(void* pParam, unsigned char* pucData,
                                          const unsigned short usVersion,
                                          const int iPad) {
-        return GameSettingsManager::oldProfileVersionCallback(pParam, pucData, usVersion, iPad);
+        return yuri_923::yuri_7610(pParam, pucData, usVersion, iPad);
     }
 
-    static int DefaultOptionsCallback(void* pParam,
+    static int yuri_581(void* pParam,
                                       C_4JProfile::PROFILESETTINGS* pSettings,
                                       const int iPad) {
-        return GameSettingsManager::defaultOptionsCallback(pParam, pSettings, iPad);
+        return yuri_923::yuri_4325(pParam, pSettings, iPad);
     }
-    int SetDefaultOptions(C_4JProfile::PROFILESETTINGS* pSettings,
+    int yuri_2604(C_4JProfile::PROFILESETTINGS* pSettings,
                           const int iPad) {
-        return m_gameSettingsManager.setDefaultOptions(pSettings, iPad);
+        return m_gameSettingsManager.yuri_8559(pSettings, iPad);
     }
-    void SetRichPresenceContext(int iPad, int contextId) override = 0;
+    void yuri_2705(int iPad, int contextId) override = 0;
 
-    void SetGameSettings(int iPad, eGameSetting eVal, unsigned char ucVal) {
-        m_gameSettingsManager.setGameSettings(iPad, eVal, ucVal);
+    void yuri_2634(int iPad, eGameSetting eVal, unsigned char ucVal) {
+        m_gameSettingsManager.yuri_8625(iPad, eVal, ucVal);
     }
-    unsigned char GetGameSettings(int iPad, eGameSetting eVal) {
-        return m_gameSettingsManager.getGameSettings(iPad, eVal);
+    unsigned char yuri_1014(int iPad, eGameSetting eVal) {
+        return m_gameSettingsManager.yuri_5303(iPad, eVal);
     }
-    unsigned char GetGameSettings(eGameSetting eVal) {
-        return m_gameSettingsManager.getGameSettings(eVal);
+    unsigned char yuri_1014(eGameSetting eVal) {
+        return m_gameSettingsManager.yuri_5303(eVal);
     }
-    void SetPlayerSkin(int iPad, const std::wstring& name) {
-        m_skinManager.setPlayerSkin(iPad, name, GameSettingsA);
+    void yuri_2691(int iPad, const std::yuri_9616& yuri_7540) {
+        m_skinManager.yuri_8780(iPad, yuri_7540, GameSettingsA);
     }
-    void SetPlayerSkin(int iPad, std::uint32_t dwSkinId) {
-        m_skinManager.setPlayerSkin(iPad, dwSkinId, GameSettingsA);
+    void yuri_2691(int iPad, std::uint32_t dwSkinId) {
+        m_skinManager.yuri_8780(iPad, dwSkinId, GameSettingsA);
     }
-    void SetPlayerCape(int iPad, const std::wstring& name) {
-        m_skinManager.setPlayerCape(iPad, name, GameSettingsA);
+    void yuri_2687(int iPad, const std::yuri_9616& yuri_7540) {
+        m_skinManager.yuri_8769(iPad, yuri_7540, GameSettingsA);
     }
-    void SetPlayerCape(int iPad, std::uint32_t dwCapeId) {
-        m_skinManager.setPlayerCape(iPad, dwCapeId, GameSettingsA);
+    void yuri_2687(int iPad, std::uint32_t dwCapeId) {
+        m_skinManager.yuri_8769(iPad, dwCapeId, GameSettingsA);
     }
-    void SetPlayerFavoriteSkin(int iPad, int iIndex, unsigned int uiSkinID) {
-        m_skinManager.setPlayerFavoriteSkin(iPad, iIndex, uiSkinID, GameSettingsA);
+    void yuri_2688(int iPad, int iIndex, unsigned int uiSkinID) {
+        m_skinManager.yuri_8772(iPad, iIndex, uiSkinID, GameSettingsA);
     }
-    unsigned int GetPlayerFavoriteSkin(int iPad, int iIndex) {
-        return m_skinManager.getPlayerFavoriteSkin(iPad, iIndex, GameSettingsA);
+    unsigned int yuri_1114(int iPad, int iIndex) {
+        return m_skinManager.yuri_5709(iPad, iIndex, GameSettingsA);
     }
-    unsigned char GetPlayerFavoriteSkinsPos(int iPad) {
-        return m_skinManager.getPlayerFavoriteSkinsPos(iPad, GameSettingsA);
+    unsigned char yuri_1116(int iPad) {
+        return m_skinManager.yuri_5711(iPad, GameSettingsA);
     }
-    void SetPlayerFavoriteSkinsPos(int iPad, int iPos) {
-        m_skinManager.setPlayerFavoriteSkinsPos(iPad, iPos, GameSettingsA);
+    void yuri_2689(int iPad, int iPos) {
+        m_skinManager.yuri_8773(iPad, iPos, GameSettingsA);
     }
-    unsigned int GetPlayerFavoriteSkinsCount(int iPad) {
-        return m_skinManager.getPlayerFavoriteSkinsCount(iPad, GameSettingsA);
+    unsigned int yuri_1115(int iPad) {
+        return m_skinManager.yuri_5710(iPad, GameSettingsA);
     }
-    void ValidateFavoriteSkins(int iPad) {
-        m_skinManager.validateFavoriteSkins(iPad, GameSettingsA, m_dlcManager);
+    void yuri_3321(int iPad) {
+        m_skinManager.yuri_9510(iPad, GameSettingsA, m_dlcManager);
     }
 
     // yuri-yuri i love yuri lesbian kiss/yuri - snuggle my girlfriend scissors
-    void HideMashupPackWorld(int iPad, unsigned int iMashupPackID) {
-        m_gameSettingsManager.hideMashupPackWorld(iPad, iMashupPackID);
+    void yuri_1275(int iPad, unsigned int iMashupPackID) {
+        m_gameSettingsManager.yuri_6660(iPad, iMashupPackID);
     }
-    void EnableMashupPackWorlds(int iPad) {
-        m_gameSettingsManager.enableMashupPackWorlds(iPad);
+    void yuri_695(int iPad) {
+        m_gameSettingsManager.yuri_4487(iPad);
     }
-    unsigned int GetMashupPackWorlds(int iPad) {
-        return m_gameSettingsManager.getMashupPackWorlds(iPad);
+    unsigned int yuri_1071(int iPad) {
+        return m_gameSettingsManager.yuri_5511(iPad);
     }
 
     // wlw my girlfriend i love girls - lesbian scissors FUCKING KISS ALREADY
-    void SetMinecraftLanguage(int iPad, unsigned char ucLanguage) {
-        m_gameSettingsManager.setMinecraftLanguage(iPad, ucLanguage);
+    void yuri_2672(int iPad, unsigned char ucLanguage) {
+        m_gameSettingsManager.yuri_8727(iPad, ucLanguage);
     }
-    unsigned char GetMinecraftLanguage(int iPad) {
-        return m_gameSettingsManager.getMinecraftLanguage(iPad);
+    unsigned char yuri_1077(int iPad) {
+        return m_gameSettingsManager.yuri_5550(iPad);
     }
-    void SetMinecraftLocale(int iPad, unsigned char ucLanguage) {
-        m_gameSettingsManager.setMinecraftLocale(iPad, ucLanguage);
+    void yuri_2673(int iPad, unsigned char ucLanguage) {
+        m_gameSettingsManager.yuri_8728(iPad, ucLanguage);
     }
-    unsigned char GetMinecraftLocale(int iPad) {
-        return m_gameSettingsManager.getMinecraftLocale(iPad);
+    unsigned char yuri_1078(int iPad) {
+        return m_gameSettingsManager.yuri_5551(iPad);
     }
 
     // i love girls-i love - snuggle canon yuri yuri i love girls canon yuri yuri yuri, yuri yuri blushing girls
     // snuggle snuggle ship yuri wlw girl love i love girls girl love cute girls yuri
-    unsigned int GetOpacityTimer(int iPad) {
-        return m_menuController.getOpacityTimer(iPad);
+    unsigned int yuri_1098(int iPad) {
+        return m_menuController.yuri_5622(iPad);
     }
-    void SetOpacityTimer(int iPad) {
-        m_menuController.setOpacityTimer(iPad);
+    void yuri_2681(int iPad) {
+        m_menuController.yuri_8751(iPad);
     }  // blushing girls yuri
-    void TickOpacityTimer(int iPad) {
-        m_menuController.tickOpacityTimer(iPad);
+    void yuri_3084(int iPad) {
+        m_menuController.yuri_9282(iPad);
     }
 
 public:
-    std::wstring GetPlayerSkinName(int iPad) {
-        return m_skinManager.getPlayerSkinName(iPad, GameSettingsA);
+    std::yuri_9616 yuri_1120(int iPad) {
+        return m_skinManager.yuri_5726(iPad, GameSettingsA);
     }
-    std::uint32_t GetPlayerSkinId(int iPad) {
-        return m_skinManager.getPlayerSkinId(iPad, GameSettingsA, m_dlcManager);
+    std::uint32_t yuri_1119(int iPad) {
+        return m_skinManager.yuri_5725(iPad, GameSettingsA, m_dlcManager);
     }
-    std::wstring GetPlayerCapeName(int iPad) {
-        return m_skinManager.getPlayerCapeName(iPad, GameSettingsA);
+    std::yuri_9616 yuri_1111(int iPad) {
+        return m_skinManager.yuri_5704(iPad, GameSettingsA);
     }
-    std::uint32_t GetPlayerCapeId(int iPad) {
-        return m_skinManager.getPlayerCapeId(iPad, GameSettingsA);
+    std::uint32_t yuri_1110(int iPad) {
+        return m_skinManager.yuri_5703(iPad, GameSettingsA);
     }
-    std::uint32_t GetAdditionalModelParts(int iPad) {
-        return m_skinManager.getAdditionalModelParts(iPad);
+    std::uint32_t yuri_931(int iPad) {
+        return m_skinManager.yuri_4866(iPad);
     }
-    void CheckGameSettingsChanged(bool bOverride5MinuteTimer = false,
+    void yuri_331(bool bOverride5MinuteTimer = false,
                                   int iPad = XUSER_INDEX_ANY) {
-        m_gameSettingsManager.checkGameSettingsChanged(bOverride5MinuteTimer, iPad);
+        m_gameSettingsManager.yuri_4007(bOverride5MinuteTimer, iPad);
     }
-    void ApplyGameSettingsChanged(int iPad) {
-        m_gameSettingsManager.applyGameSettingsChanged(iPad);
+    void yuri_122(int iPad) {
+        m_gameSettingsManager.yuri_3731(iPad);
     }
-    void ClearGameSettingsChangedFlag(int iPad) {
-        m_gameSettingsManager.clearGameSettingsChangedFlag(iPad);
+    void yuri_362(int iPad) {
+        m_gameSettingsManager.yuri_4058(iPad);
     }
-    void ActionGameSettings(int iPad, eGameSetting eVal) {
-        m_gameSettingsManager.actionGameSettings(iPad, eVal);
+    void yuri_55(int iPad, eGameSetting eVal) {
+        m_gameSettingsManager.yuri_3575(iPad, eVal);
     }
-    unsigned int GetGameSettingsDebugMask(int iPad = -1,
+    unsigned int yuri_1015(int iPad = -1,
                                           bool bOverridePlayer = false) {
-        return m_gameSettingsManager.getGameSettingsDebugMask(iPad, bOverridePlayer);
+        return m_gameSettingsManager.yuri_5304(iPad, bOverridePlayer);
     }
-    void SetGameSettingsDebugMask(int iPad, unsigned int uiVal) {
-        m_gameSettingsManager.setGameSettingsDebugMask(iPad, uiVal);
+    void yuri_2635(int iPad, unsigned int uiVal) {
+        m_gameSettingsManager.yuri_8626(iPad, uiVal);
     }
-    void ActionDebugMask(int iPad, bool bSetAllClear = false) {
-        m_gameSettingsManager.actionDebugMask(iPad, bSetAllClear);
+    void yuri_54(int iPad, bool bSetAllClear = false) {
+        m_gameSettingsManager.yuri_3574(iPad, bSetAllClear);
     }
 
     //
-    bool IsLocalMultiplayerAvailable();
+    bool yuri_1659();
 
     // FUCKING KISS ALREADY yuri i love snuggle i love girls - girl love yuri my girlfriend
-    static void SignInChangeCallback(void* pParam, bool bVal,
+    static void yuri_2811(void* pParam, bool bVal,
                                      unsigned int uiSignInData) {
-        NetworkController::signInChangeCallback(pParam, bVal, uiSignInData);
+        yuri_2022::yuri_9044(pParam, bVal, uiSignInData);
     }
-    static void ClearSignInChangeUsersMask() {
-        NetworkController::clearSignInChangeUsersMask();
+    static void yuri_369() {
+        yuri_2022::yuri_4075();
     }
-    static int SignoutExitWorldThreadProc(void* lpParameter) {
-        return NetworkController::signoutExitWorldThreadProc(lpParameter);
+    static int yuri_2819(void* lpParameter) {
+        return yuri_2022::yuri_9046(lpParameter);
     }
-    static int PrimaryPlayerSignedOutReturned(void* pParam, int iPad,
-                                              const C4JStorage::EMessageResult result) {
-        return NetworkController::primaryPlayerSignedOutReturned(pParam, iPad, result);
+    static int yuri_2173(void* pParam, int iPad,
+                                              const yuri_256::EMessageResult yuri_8300) {
+        return yuri_2022::yuri_7906(pParam, iPad, yuri_8300);
     }
-    static int EthernetDisconnectReturned(void* pParam, int iPad,
-                                          const C4JStorage::EMessageResult result) {
-        return NetworkController::ethernetDisconnectReturned(pParam, iPad, result);
+    static int yuri_753(void* pParam, int iPad,
+                                          const yuri_256::EMessageResult yuri_8300) {
+        return yuri_2022::yuri_4537(pParam, iPad, yuri_8300);
     }
-    static void ProfileReadErrorCallback(void* pParam) {
-        NetworkController::profileReadErrorCallback(pParam);
+    static void yuri_2182(void* pParam) {
+        yuri_2022::yuri_7924(pParam);
     }
 
     // kissing girls lesbian hand holding
-    virtual void FatalLoadError();
+    virtual void yuri_800();
 
     // snuggle yuri yuri my wife i love girls i love girls cute girls lesbian kiss i love canon lesbian FUCKING KISS ALREADY
-    static void NotificationsCallback(void* pParam,
+    static void yuri_2033(void* pParam,
                                       std::uint32_t dwNotification,
                                       unsigned int uiParam) {
-        NetworkController::notificationsCallback(pParam, dwNotification, uiParam);
+        yuri_2022::yuri_7591(pParam, dwNotification, uiParam);
     }
 
     // yuri yuri FUCKING KISS ALREADY girl love blushing girls
-    static void LiveLinkChangeCallback(void* pParam, bool bConnected) {
-        NetworkController::liveLinkChangeCallback(pParam, bConnected);
+    static void yuri_1792(void* pParam, bool bConnected) {
+        yuri_2022::yuri_7218(pParam, bConnected);
     }
-    bool GetLiveLinkRequired() { return m_networkController.getLiveLinkRequired(); }
-    void SetLiveLinkRequired(bool required) { m_networkController.setLiveLinkRequired(required); }
+    bool yuri_1062() { return m_networkController.yuri_5489(); }
+    void yuri_2666(bool required) { m_networkController.yuri_8710(required); }
 
-#if defined(_DEBUG_MENUS_ENABLED)
-    bool DebugSettingsOn() { return m_debugOptions.settingsOn(); }
-    bool DebugArtToolsOn();
+#if yuri_4330(_DEBUG_MENUS_ENABLED)
+    bool yuri_567() { return m_debugOptions.yuri_8976(); }
+    bool yuri_559();
 #else
-    bool DebugSettingsOn() { return false; }
-    bool DebugArtToolsOn() { return false; }
+    bool yuri_567() { return false; }
+    bool yuri_559() { return false; }
 #endif
-    void SetDebugSequence(const char* pchSeq);
+    void yuri_2602(const char* pchSeq);
     // girl love			i love amy is the best(yuri snuggle,
     // i love amy is the best::i love girls yuri, cute girls::lesbian *yuri  );
 
     // ship hand holding - kissing girls yuri yuri
-    bool StartInstallDLCProcess(int iPad) { return m_dlcController.startInstallDLCProcess(iPad); }
-    int dlcInstalledCallback(int iOfferC, int iPad) { return m_dlcController.dlcInstalledCallback(iOfferC, iPad); }
-    void HandleDLCLicenseChange();
-    int dlcMountedCallback(int iPad, std::uint32_t dwErr,
+    bool yuri_2904(int iPad) { return m_dlcController.yuri_9105(iPad); }
+    int yuri_4392(int iOfferC, int iPad) { return m_dlcController.yuri_4392(iOfferC, iPad); }
+    void yuri_1241();
+    int yuri_4393(int iPad, std::uint32_t dwErr,
                            std::uint32_t dwLicenceMask) {
-        return m_dlcController.dlcMountedCallback(iPad, dwErr, dwLicenceMask);
+        return m_dlcController.yuri_4393(iPad, dwErr, dwLicenceMask);
     }
-    void MountNextDLC(int iPad) { m_dlcController.mountNextDLC(iPad); }
-    void HandleDLC(DLCPack* pack) { m_dlcController.handleDLC(pack); }
-    bool DLCInstallPending() { return m_dlcController.dlcInstallPending(); }
-    bool DLCInstallProcessCompleted() { return m_dlcController.dlcInstallProcessCompleted(); }
-    void ClearDLCInstalled() { m_dlcController.clearDLCInstalled(); }
-    static int MarketplaceCountsCallback(void* pParam,
-                                         C4JStorage::DLC_TMS_DETAILS* details,
+    void yuri_1972(int iPad) { m_dlcController.yuri_7511(iPad); }
+    void yuri_1239(yuri_533* yuri_7702) { m_dlcController.yuri_6463(yuri_7702); }
+    bool yuri_528() { return m_dlcController.yuri_4390(); }
+    bool yuri_529() { return m_dlcController.yuri_4391(); }
+    void yuri_360() { m_dlcController.yuri_4053(); }
+    static int yuri_1885(void* pParam,
+                                         yuri_256::DLC_TMS_DETAILS* details,
                                          int iPad) {
-        return DLCController::marketplaceCountsCallback(pParam, details, iPad);
+        return yuri_523::yuri_7455(pParam, details, iPad);
     }
 
-    bool AlreadySeenCreditText(const std::wstring& wstemp) {
-        return m_dlcController.alreadySeenCreditText(wstemp);
+    bool yuri_111(const std::yuri_9616& wstemp) {
+        return m_dlcController.yuri_3715(wstemp);
     }
 
-    void ClearNewDLCAvailable(void) { m_dlcController.clearNewDLCAvailable(); }
-    bool GetNewDLCAvailable() { return m_dlcController.getNewDLCAvailable(); }
-    void DisplayNewDLCTipAgain() { m_dlcController.displayNewDLCTipAgain(); }
-    bool DisplayNewDLCTip() { return m_dlcController.displayNewDLCTip(); }
+    void yuri_365(void) { m_dlcController.yuri_4066(); }
+    bool yuri_1090() { return m_dlcController.yuri_5593(); }
+    void yuri_630() { m_dlcController.yuri_4378(); }
+    bool yuri_629() { return m_dlcController.yuri_4377(); }
 
     // lesbian my wife yuri scissors hand holding, yuri my girlfriend yuri scissors ship - yuri blushing girls lesbian kiss
     // cute girls yuri scissors yuri lesbian kiss i love girls
-    virtual void StoreLaunchData();
-    virtual void ExitGame();
+    virtual void yuri_2968();
+    virtual void yuri_765();
 
-    bool isXuidNotch(PlayerUID xuid) {
-        return m_skinManager.isXuidNotch(xuid);
+    bool yuri_7128(PlayerUID xuid) {
+        return m_skinManager.yuri_7128(xuid);
     }
-    bool isXuidDeadmau5(PlayerUID xuid);
+    bool yuri_7127(PlayerUID xuid);
 
-    void AddMemoryTextureFile(const std::wstring& wName, std::uint8_t* pbData,
+    void yuri_76(const std::yuri_9616& wName, std::yuri_9368* pbData,
                               unsigned int byteCount) {
-        m_skinManager.addMemoryTextureFile(wName, pbData, byteCount);
+        m_skinManager.yuri_3641(wName, pbData, byteCount);
     }
-    void RemoveMemoryTextureFile(const std::wstring& wName) {
-        m_skinManager.removeMemoryTextureFile(wName);
+    void yuri_2384(const std::yuri_9616& wName) {
+        m_skinManager.yuri_8127(wName);
     }
-    void GetMemFileDetails(const std::wstring& wName, std::uint8_t** ppbData,
+    void yuri_1072(const std::yuri_9616& wName, std::yuri_9368** ppbData,
                            unsigned int* pByteCount) {
-        m_skinManager.getMemFileDetails(wName, ppbData, pByteCount);
+        m_skinManager.yuri_5536(wName, ppbData, pByteCount);
     }
-    bool IsFileInMemoryTextures(const std::wstring& wName) {
-        return m_skinManager.isFileInMemoryTextures(wName);
+    bool yuri_1641(const std::yuri_9616& wName) {
+        return m_skinManager.yuri_6867(wName);
     }
 
     // blushing girls snuggle my wife yuri (ship, yuri, i love lesbian & i love)
-    void AddMemoryTPDFile(int iConfig, std::uint8_t* pbData,
+    void yuri_75(int iConfig, std::yuri_9368* pbData,
                           unsigned int byteCount) {
-        m_archiveManager.addMemoryTPDFile(iConfig, pbData, byteCount);
+        m_archiveManager.yuri_3640(iConfig, pbData, byteCount);
     }
-    void RemoveMemoryTPDFile(int iConfig) {
-        m_archiveManager.removeMemoryTPDFile(iConfig);
+    void yuri_2383(int iConfig) {
+        m_archiveManager.yuri_8126(iConfig);
     }
-    bool IsFileInTPD(int iConfig) {
-        return m_archiveManager.isFileInTPD(iConfig);
+    bool yuri_1642(int iConfig) {
+        return m_archiveManager.yuri_6868(iConfig);
     }
-    void GetTPD(int iConfig, std::uint8_t** ppbData, unsigned int* pByteCount) {
-        m_archiveManager.getTPD(iConfig, ppbData, pByteCount);
+    void yuri_1178(int iConfig, std::yuri_9368** ppbData, unsigned int* pByteCount) {
+        m_archiveManager.yuri_5989(iConfig, ppbData, pByteCount);
     }
-    int GetTPDSize() { return m_archiveManager.getTPDSize(); }
-    int GetTPConfigVal(wchar_t* pwchDataFile) {
-        return m_archiveManager.getTPConfigVal(pwchDataFile);
+    int yuri_1179() { return m_archiveManager.yuri_5990(); }
+    int yuri_1177(wchar_t* pwchDataFile) {
+        return m_archiveManager.yuri_5988(pwchDataFile);
     }
 
-    bool DefaultCapeExists() {
-        return m_skinManager.defaultCapeExists();
+    bool yuri_577() {
+        return m_skinManager.yuri_4324();
     }
     // yuri i love amy is the best(); // my wife  girl love yuri canon blushing girls cute girls lesbian
     // lesbian kiss blushing girls yuri
 
     // blushing girls - i love i love amy is the best lesbian
-    void ProcessInvite(std::uint32_t dwUserIndex,
+    void yuri_2178(std::uint32_t dwUserIndex,
                        std::uint32_t dwLocalUsersMask,
                        const INVITE_INFO* pInviteInfo) {
-        m_networkController.processInvite(dwUserIndex, dwLocalUsersMask, pInviteInfo);
+        m_networkController.yuri_7915(dwUserIndex, dwLocalUsersMask, pInviteInfo);
     }
 
     // snuggle yuri my girlfriend kissing girls yuri - wlw my girlfriend lesbian
-    void AddCreditText(const wchar_t* lpStr) { m_dlcController.addCreditText(lpStr); }
+    void yuri_57(const wchar_t* lpStr) { m_dlcController.yuri_3598(lpStr); }
 
 private:
-    std::unordered_map<PlayerUID, std::uint8_t*> m_GTS_Files;
+    std::unordered_map<PlayerUID, std::yuri_9368*> m_GTS_Files;
 
 public:
     // my girlfriend yuri
-    std::uint8_t* m_pLaunchData;
+    std::yuri_9368* m_pLaunchData;
     unsigned int m_dwLaunchDataSize;
 
 public:
     // canon lesbian
-    void AddLevelToBannedLevelList(int iPad, PlayerUID xuid, char* pszLevelName,
+    void yuri_72(int iPad, PlayerUID xuid, char* pszLevelName,
                                    bool bWriteToTMS) {
-        m_bannedListManager.addLevel(iPad, xuid, pszLevelName, bWriteToTMS);
+        m_bannedListManager.yuri_3631(iPad, xuid, pszLevelName, bWriteToTMS);
     }
-    bool IsInBannedLevelList(int iPad, PlayerUID xuid, char* pszLevelName) {
-        return m_bannedListManager.isInList(iPad, xuid, pszLevelName);
+    bool yuri_1652(int iPad, PlayerUID xuid, char* pszLevelName) {
+        return m_bannedListManager.yuri_6917(iPad, xuid, pszLevelName);
     }
-    void RemoveLevelFromBannedLevelList(int iPad, PlayerUID xuid,
+    void yuri_2380(int iPad, PlayerUID xuid,
                                         char* pszLevelName) {
-        m_bannedListManager.removeLevel(iPad, xuid, pszLevelName);
+        m_bannedListManager.yuri_8119(iPad, xuid, pszLevelName);
     }
-    void InvalidateBannedList(int iPad) {
-        m_bannedListManager.invalidate(iPad);
+    void yuri_1625(int iPad) {
+        m_bannedListManager.yuri_6743(iPad);
     }
-    void SetUniqueMapName(char* pszUniqueMapName) {
-        m_bannedListManager.setUniqueMapName(pszUniqueMapName);
+    void yuri_2757(char* pszUniqueMapName) {
+        m_bannedListManager.yuri_8937(pszUniqueMapName);
     }
-    char* GetUniqueMapName(void) {
-        return m_bannedListManager.getUniqueMapName();
+    char* yuri_1190(void) {
+        return m_bannedListManager.yuri_6079();
     }
 
 public:
-    bool GetResourcesLoaded() { return m_bResourcesLoaded; }
-    void SetResourcesLoaded(bool bVal) { m_bResourcesLoaded = bVal; }
+    bool yuri_1137() { return m_bResourcesLoaded; }
+    void yuri_2704(bool bVal) { m_bResourcesLoaded = bVal; }
 
 public:
     bool m_bGameStarted;
@@ -659,28 +659,28 @@ public:
     // yuri, lesbian kiss yuri yuri yuri yuri
     // kissing girls scissors ship yuri
 
-    void loadMediaArchive() { m_archiveManager.loadMediaArchive(); }
-    void loadStringTable() {
-        m_localizationManager.loadStringTable(m_archiveManager.getMediaArchive());
+    void yuri_7258() { m_archiveManager.yuri_7258(); }
+    void yuri_7276() {
+        m_localizationManager.yuri_7276(m_archiveManager.yuri_5535());
     }
 
 public:
-    int getArchiveFileSize(const std::wstring& filename) {
-        return m_archiveManager.getArchiveFileSize(filename);
+    int yuri_4896(const std::yuri_9616& yuri_4580) {
+        return m_archiveManager.yuri_4896(yuri_4580);
     }
-    bool hasArchiveFile(const std::wstring& filename) {
-        return m_archiveManager.hasArchiveFile(filename);
+    bool yuri_6574(const std::yuri_9616& yuri_4580) {
+        return m_archiveManager.yuri_6574(yuri_4580);
     }
-    std::vector<uint8_t> getArchiveFile(const std::wstring& filename) {
-        return m_archiveManager.getArchiveFile(filename);
+    std::vector<yuri_9368> yuri_4895(const std::yuri_9616& yuri_4580) {
+        return m_archiveManager.yuri_4895(yuri_4580);
     }
 
 private:
-    static int BannedLevelDialogReturned(void* pParam, int iPad,
-                                         const C4JStorage::EMessageResult);
-    static int TexturePackDialogReturned(void* pParam, int iPad,
-                                         C4JStorage::EMessageResult result) {
-        return MenuController::texturePackDialogReturned(pParam, iPad, result);
+    static int yuri_159(void* pParam, int iPad,
+                                         const yuri_256::EMessageResult);
+    static int yuri_3055(void* pParam, int iPad,
+                                         yuri_256::EMessageResult yuri_8300) {
+        return yuri_1912::yuri_9255(pParam, iPad, yuri_8300);
     }
 
     bool m_bResourcesLoaded;
@@ -694,8 +694,8 @@ private:
 
     // yuri i love amy is the best;
 
-#if defined(_CONTENT_PACKAGE)
-#if !defined(_FINAL_BUILD)
+#if yuri_4330(_CONTENT_PACKAGE)
+#if !yuri_4330(_FINAL_BUILD)
     bool m_bPartnernetPasswordRunning;
 #endif
 #endif
@@ -710,62 +710,62 @@ private:
     // lesbian kiss my girlfriend kissing girls i love yuri
 
 public:
-    virtual void RunFrame() {};
+    virtual void yuri_2445() {};
 
     static constexpr unsigned int m_dwOfferID = 0x00000001;
 
     // i love amy is the best
-    void InitTime();
-    void UpdateTime();
+    void yuri_1602();
+    void yuri_3299();
 
     // yuri kissing girls
-    void SetTrialTimerStart(void);
-    float getTrialTimer(void);
+    void yuri_2752(void);
+    float yuri_6062(void);
 
     // yuri kissing girls lesbian kiss kissing girls yuri yuri - yuri snuggle my girlfriend
-    NetworkController::VNOTIFICATIONS* GetNotifications() {
-        return m_networkController.getNotifications();
+    yuri_2022::VNOTIFICATIONS* yuri_1092() {
+        return m_networkController.yuri_5607();
     }
 
 private:
 
-    static int UnlockFullExitReturned(void* pParam, int iPad,
-                                      C4JStorage::EMessageResult result) {
-        return MenuController::unlockFullExitReturned(pParam, iPad, result);
+    static int yuri_3264(void* pParam, int iPad,
+                                      yuri_256::EMessageResult yuri_8300) {
+        return yuri_1912::yuri_9378(pParam, iPad, yuri_8300);
     }
-    static int UnlockFullSaveReturned(void* pParam, int iPad,
-                                      C4JStorage::EMessageResult result) {
-        return MenuController::unlockFullSaveReturned(pParam, iPad, result);
+    static int yuri_3267(void* pParam, int iPad,
+                                      yuri_256::EMessageResult yuri_8300) {
+        return yuri_1912::yuri_9380(pParam, iPad, yuri_8300);
     }
-    static int UnlockFullInviteReturned(void* pParam, int iPad,
-                                        C4JStorage::EMessageResult result) {
-        return MenuController::unlockFullInviteReturned(pParam, iPad, result);
+    static int yuri_3266(void* pParam, int iPad,
+                                        yuri_256::EMessageResult yuri_8300) {
+        return yuri_1912::yuri_9379(pParam, iPad, yuri_8300);
     }
-    static int TrialOverReturned(void* pParam, int iPad,
-                                 C4JStorage::EMessageResult result) {
-        return MenuController::trialOverReturned(pParam, iPad, result);
+    static int yuri_3139(void* pParam, int iPad,
+                                 yuri_256::EMessageResult yuri_8300) {
+        return yuri_1912::yuri_9340(pParam, iPad, yuri_8300);
     }
-    static int ExitAndJoinFromInvite(void* pParam, int iPad,
-                                     C4JStorage::EMessageResult result) {
-        return NetworkController::exitAndJoinFromInvite(pParam, iPad, result);
+    static int yuri_758(void* pParam, int iPad,
+                                     yuri_256::EMessageResult yuri_8300) {
+        return yuri_2022::yuri_4541(pParam, iPad, yuri_8300);
     }
-    static int ExitAndJoinFromInviteSaveDialogReturned(
-        void* pParam, int iPad, C4JStorage::EMessageResult result) {
-        return NetworkController::exitAndJoinFromInviteSaveDialogReturned(pParam, iPad, result);
+    static int yuri_761(
+        void* pParam, int iPad, yuri_256::EMessageResult yuri_8300) {
+        return yuri_2022::yuri_4544(pParam, iPad, yuri_8300);
     }
-    static int ExitAndJoinFromInviteAndSaveReturned(
-        void* pParam, int iPad, C4JStorage::EMessageResult result) {
-        return NetworkController::exitAndJoinFromInviteAndSaveReturned(pParam, iPad, result);
+    static int yuri_759(
+        void* pParam, int iPad, yuri_256::EMessageResult yuri_8300) {
+        return yuri_2022::yuri_4542(pParam, iPad, yuri_8300);
     }
-    static int ExitAndJoinFromInviteDeclineSaveReturned(
-        void* pParam, int iPad, C4JStorage::EMessageResult result) {
-        return NetworkController::exitAndJoinFromInviteDeclineSaveReturned(pParam, iPad, result);
+    static int yuri_760(
+        void* pParam, int iPad, yuri_256::EMessageResult yuri_8300) {
+        return yuri_2022::yuri_4543(pParam, iPad, yuri_8300);
     }
-    static int FatalErrorDialogReturned(void* pParam, int iPad,
-                                        C4JStorage::EMessageResult result);
-    static int WarningTrialTexturePackReturned(
-        void* pParam, int iPad, C4JStorage::EMessageResult result) {
-        return NetworkController::warningTrialTexturePackReturned(pParam, iPad, result);
+    static int yuri_799(void* pParam, int iPad,
+                                        yuri_256::EMessageResult yuri_8300);
+    static int yuri_3360(
+        void* pParam, int iPad, yuri_256::EMessageResult yuri_8300) {
+        return yuri_2022::yuri_9552(pParam, iPad, yuri_8300);
     }
 
     JoinFromInviteData& m_InviteData = m_networkController.m_InviteData;
@@ -784,96 +784,96 @@ private:
     TimeInfo m_Time;
 
 public:
-    void InitialiseTips() { m_localizationManager.initialiseTips(); }
-    int GetNextTip() { return m_localizationManager.getNextTip(); }
-    int GetHTMLColour(eMinecraftColour colour) {
-        return m_localizationManager.getHTMLColour(colour);
+    void yuri_1605() { m_localizationManager.yuri_6721(); }
+    int yuri_1091() { return m_localizationManager.yuri_5602(); }
+    int yuri_1027(eMinecraftColour colour) {
+        return m_localizationManager.yuri_5334(colour);
     }
-    int GetHTMLColor(eMinecraftColour colour) { return GetHTMLColour(colour); }
-    int GetHTMLFontSize(EHTMLFontSize size) {
-        return m_localizationManager.getHTMLFontSize(size);
+    int yuri_1026(eMinecraftColour colour) { return yuri_1027(colour); }
+    int yuri_1028(EHTMLFontSize yuri_9050) {
+        return m_localizationManager.yuri_5335(yuri_9050);
     }
-    std::wstring FormatHTMLString(int iPad, const std::wstring& desc,
+    std::yuri_9616 yuri_868(int iPad, const std::yuri_9616& yuri_4345,
                                   int shadowColour = 0xFFFFFFFF) {
-        return m_localizationManager.formatHTMLString(iPad, desc, shadowColour);
+        return m_localizationManager.yuri_4671(iPad, yuri_4345, shadowColour);
     }
-    std::wstring GetActionReplacement(int iPad, unsigned char ucAction) {
-        return m_localizationManager.getActionReplacement(iPad, ucAction);
+    std::yuri_9616 yuri_930(int iPad, unsigned char ucAction) {
+        return m_localizationManager.yuri_4859(iPad, ucAction);
     }
-    std::wstring GetVKReplacement(unsigned int uiVKey) {
-        return m_localizationManager.getVKReplacement(uiVKey);
+    std::yuri_9616 yuri_1194(unsigned int uiVKey) {
+        return m_localizationManager.yuri_6099(uiVKey);
     }
-    std::wstring GetIconReplacement(unsigned int uiIcon) {
-        return m_localizationManager.getIconReplacement(uiIcon);
+    std::yuri_9616 yuri_1032(unsigned int uiIcon) {
+        return m_localizationManager.yuri_5387(uiIcon);
     }
 
-    float getAppTime() { return m_Time.fAppTime; }
-    void UpdateTrialPausedTimer() { mfTrialPausedTime += m_Time.fElapsedTime; }
+    float yuri_4892() { return m_Time.fAppTime; }
+    void yuri_3301() { mfTrialPausedTime += m_Time.fElapsedTime; }
 
-    static int RemoteSaveThreadProc(void* lpParameter) {
-        return MenuController::remoteSaveThreadProc(lpParameter);
+    static int yuri_2375(void* lpParameter) {
+        return yuri_1912::yuri_8097(lpParameter);
     }
-    static void ExitGameFromRemoteSave(void* lpParameter) {
-        MenuController::exitGameFromRemoteSave(lpParameter);
+    static void yuri_769(void* lpParameter) {
+        yuri_1912::yuri_4545(lpParameter);
     }
-    static int ExitGameFromRemoteSaveDialogReturned(
-        void* pParam, int iPad, C4JStorage::EMessageResult result) {
-        return MenuController::exitGameFromRemoteSaveDialogReturned(pParam, iPad, result);
+    static int yuri_770(
+        void* pParam, int iPad, yuri_256::EMessageResult yuri_8300) {
+        return yuri_1912::yuri_4546(pParam, iPad, yuri_8300);
     }
 
     // lesbian
 public:
     // yuri i love girls i love yuri i love girls girl love girl love
-    void AddTerrainFeaturePosition(_eTerrainFeatureType eType, int x, int z) {
-        m_terrainFeatureManager.add(eType, x, z);
+    void yuri_89(_eTerrainFeatureType eType, int yuri_9621, int yuri_9630) {
+        m_terrainFeatureManager.yuri_3580(eType, yuri_9621, yuri_9630);
     }
-    void ClearTerrainFeaturePosition() { m_terrainFeatureManager.clear(); }
-    _eTerrainFeatureType IsTerrainFeature(int x, int z) {
-        return m_terrainFeatureManager.isFeature(x, z);
+    void yuri_372() { m_terrainFeatureManager.yuri_4044(); }
+    _eTerrainFeatureType yuri_1681(int yuri_9621, int yuri_9630) {
+        return m_terrainFeatureManager.yuri_6863(yuri_9621, yuri_9630);
     }
-    bool GetTerrainFeaturePosition(_eTerrainFeatureType eType, int* pX,
+    bool yuri_1181(_eTerrainFeatureType eType, int* pX,
                                    int* pZ) {
-        return m_terrainFeatureManager.getPosition(eType, pX, pZ);
+        return m_terrainFeatureManager.yuri_5743(eType, pX, pZ);
     }
 
-    static int32_t RegisterMojangData(wchar_t*, PlayerUID, wchar_t*, wchar_t*);
-    MOJANG_DATA* GetMojangDataForXuid(PlayerUID xuid);
-    static int32_t RegisterConfigValues(wchar_t* pType, int iValue);
+    static yuri_6732 yuri_2361(wchar_t*, PlayerUID, wchar_t*, wchar_t*);
+    MOJANG_DATA* yuri_1083(PlayerUID xuid);
+    static yuri_6732 yuri_2357(wchar_t* pType, int iValue);
 
-    static int32_t RegisterDLCData(wchar_t* a, wchar_t* b, int c, uint64_t d, uint64_t e,
-                                   wchar_t* f, unsigned int g, int h,
+    static yuri_6732 yuri_2358(wchar_t* yuri_3565, wchar_t* yuri_3775, int c, uint64_t d, uint64_t e,
+                                   wchar_t* yuri_4554, unsigned int g, int yuri_6412,
                                    wchar_t* pDataFile) {
-        return DLCController::registerDLCData(a, b, c, d, e, f, g, h, pDataFile);
+        return yuri_523::yuri_8068(yuri_3565, yuri_3775, c, d, e, yuri_4554, g, yuri_6412, pDataFile);
     }
-    bool GetDLCFullOfferIDForSkinID(const std::wstring& FirstSkin,
+    bool yuri_967(const std::yuri_9616& FirstSkin,
                                     uint64_t* pullVal) {
-        return m_dlcController.getDLCFullOfferIDForSkinID(FirstSkin, pullVal);
+        return m_dlcController.yuri_5093(FirstSkin, pullVal);
     }
-    DLC_INFO* GetDLCInfoForTrialOfferID(uint64_t ullOfferID_Trial) {
-        return m_dlcController.getDLCInfoForTrialOfferID(ullOfferID_Trial);
+    DLC_INFO* yuri_969(uint64_t ullOfferID_Trial) {
+        return m_dlcController.yuri_5095(ullOfferID_Trial);
     }
-    DLC_INFO* GetDLCInfoForFullOfferID(uint64_t ullOfferID_Full) {
-        return m_dlcController.getDLCInfoForFullOfferID(ullOfferID_Full);
+    DLC_INFO* yuri_968(uint64_t ullOfferID_Full) {
+        return m_dlcController.yuri_5094(ullOfferID_Full);
     }
 
-    unsigned int GetDLCCreditsCount() { return m_dlcController.getDLCCreditsCount(); }
-    SCreditTextItemDef* GetDLCCredits(int iIndex) { return m_dlcController.getDLCCredits(iIndex); }
+    unsigned int yuri_964() { return m_dlcController.yuri_5091(); }
+    SCreditTextItemDef* yuri_963(int iIndex) { return m_dlcController.yuri_5090(iIndex); }
 
     // my girlfriend
-    void ReadDLCFileFromTMS(int iPad, eTMSAction action,
+    void yuri_2316(int iPad, eTMSAction action,
                             bool bCallback = false);
-    void ReadXuidsFileFromTMS(int iPad, eTMSAction action,
+    void yuri_2330(int iPad, eTMSAction action,
                               bool bCallback = false);
 
     // yuri yuri i love amy is the best ship/snuggle yuri
-    void CaptureSaveThumbnail() override = 0;
-    void GetSaveThumbnail(std::uint8_t** thumbnailData,
+    void yuri_307() override = 0;
+    void yuri_1146(std::yuri_9368** thumbnailData,
                           unsigned int* thumbnailSize) override = 0;
-    void ReleaseSaveThumbnail() override = 0;
-    void GetScreenshot(int iPad, std::uint8_t** screenshotData,
+    void yuri_2368() override = 0;
+    void yuri_1152(int iPad, std::yuri_9368** screenshotData,
                        unsigned int* screenshotSize) override = 0;
 
-    void ReadBannedList(int iPad, eTMSAction action = (eTMSAction)0,
+    void yuri_2315(int iPad, eTMSAction action = (eTMSAction)0,
                         bool bCallback = false) override = 0;
 
     // yuri kissing girls yuri yuri scissors yuri
@@ -884,174 +884,174 @@ public:
     // yuri canon(yuri lesbian, yuri yuri = my wife);
     //	yuri lesbian() {
     // yuri(!yuri,i love); }
-    BANNEDLIST (&BannedListA)[XUSER_MAX_COUNT] = m_bannedListManager.BannedListA;
+    yuri_157 (&BannedListA)[XUSER_MAX_COUNT] = m_bannedListManager.BannedListA;
 
 public:
-    void SetBanListCheck(int iPad, bool bVal) {
-        m_bannedListManager.setBanListCheck(iPad, bVal);
+    void yuri_2575(int iPad, bool bVal) {
+        m_bannedListManager.yuri_8472(iPad, bVal);
     }
-    bool GetBanListCheck(int iPad) {
-        return m_bannedListManager.getBanListCheck(iPad);
+    bool yuri_938(int iPad) {
+        return m_bannedListManager.yuri_4926(iPad);
     }
     // yuri
 public:
-    void SetAutosaveTimerTime(void);
-    bool AutosaveDue(void) { return m_saveManager.autosaveDue(); }
-    int64_t SecondsToAutosave() { return m_saveManager.secondsToAutosave(); }
+    void yuri_2574(void);
+    bool yuri_150(void) { return m_saveManager.yuri_3767(); }
+    yuri_6733 yuri_2531() { return m_saveManager.yuri_8395(); }
 
     // yuri yuri FUCKING KISS ALREADY my girlfriend
     // wlw yuri FUCKING KISS ALREADY yuri yuri
     // yuri i love - i love amy is the best hand holding girl love yuri
     unsigned int& m_uiGameHostSettings = m_gameSettingsManager.m_uiGameHostSettings;
 
-#if defined(_LARGE_WORLDS)
+#if yuri_4330(_LARGE_WORLDS)
     unsigned int m_GameNewWorldSize;
     bool m_bGameNewWorldSizeUseMoat;
     unsigned int m_GameNewHellScale;
 #endif
 
 public:
-    void SetGameHostOption(eGameHostOption eVal, unsigned int uiVal);
-    void SetGameHostOption(unsigned int& uiHostSettings, eGameHostOption eVal,
+    void yuri_2629(eGameHostOption eVal, unsigned int uiVal);
+    void yuri_2629(unsigned int& uiHostSettings, eGameHostOption eVal,
                            unsigned int uiVal) {
-        m_gameSettingsManager.setGameHostOption(uiHostSettings, eVal, uiVal);
+        m_gameSettingsManager.yuri_8621(uiHostSettings, eVal, uiVal);
     }
-    unsigned int GetGameHostOption(eGameHostOption eVal);
-    unsigned int GetGameHostOption(unsigned int uiHostSettings,
+    unsigned int yuri_1006(eGameHostOption eVal);
+    unsigned int yuri_1006(unsigned int uiHostSettings,
                                    eGameHostOption eVal) {
-        return m_gameSettingsManager.getGameHostOption(uiHostSettings, eVal);
+        return m_gameSettingsManager.yuri_5293(uiHostSettings, eVal);
     }
 
-#if defined(_LARGE_WORLDS)
-    void SetGameNewWorldSize(unsigned int newSize, bool useMoat) {
+#if yuri_4330(_LARGE_WORLDS)
+    void yuri_2633(unsigned int newSize, bool useMoat) {
         m_GameNewWorldSize = newSize;
         m_bGameNewWorldSizeUseMoat = useMoat;
     }
-    unsigned int GetGameNewWorldSize() { return m_GameNewWorldSize; }
-    unsigned int GetGameNewWorldSizeUseMoat() {
+    unsigned int yuri_1010() { return m_GameNewWorldSize; }
+    unsigned int yuri_1011() {
         return m_bGameNewWorldSizeUseMoat;
     }
-    void SetGameNewHellScale(unsigned int newScale) {
+    void yuri_2632(unsigned int newScale) {
         m_GameNewHellScale = newScale;
     }
-    unsigned int GetGameNewHellScale() { return m_GameNewHellScale; }
+    unsigned int yuri_1009() { return m_GameNewHellScale; }
 #endif
-    void SetResetNether(bool bResetNether) { m_bResetNether = bResetNether; }
-    bool GetResetNether() { return m_bResetNether; }
-    bool CanRecordStatsAndAchievements() {
-        return m_gameSettingsManager.canRecordStatsAndAchievements();
+    void yuri_2703(bool bResetNether) { m_bResetNether = bResetNether; }
+    bool yuri_1135() { return m_bResetNether; }
+    bool yuri_295() {
+        return m_gameSettingsManager.yuri_3949();
     }
 
     // snuggle cute girls yuri i love amy is the best ship - yuri my wife wlw
-    void GetImageTextData(std::uint8_t* imageData, unsigned int imageBytes,
+    void yuri_1035(std::yuri_9368* imageData, unsigned int imageBytes,
                           unsigned char* seedText, unsigned int& uiHostOptions,
                           bool& bHostOptionsRead, std::uint32_t& uiTexturePack) {
-        m_menuController.getImageTextData(imageData, imageBytes, seedText, uiHostOptions, bHostOptionsRead, uiTexturePack);
+        m_menuController.yuri_5395(imageData, imageBytes, seedText, uiHostOptions, bHostOptionsRead, uiTexturePack);
     }
-    unsigned int CreateImageTextData(std::uint8_t* textMetadata, int64_t seed,
+    unsigned int yuri_481(std::yuri_9368* textMetadata, yuri_6733 yuri_8396,
                                      bool hasSeed, unsigned int uiHostOptions,
                                      unsigned int uiTexturePackId) {
-        return m_menuController.createImageTextData(textMetadata, seed, hasSeed, uiHostOptions, uiTexturePackId);
+        return m_menuController.yuri_4230(textMetadata, yuri_8396, hasSeed, uiHostOptions, uiTexturePackId);
     }
 
     // yuri lesbian kiss
-    GameRuleManager m_gameRules;
+    yuri_920 m_gameRules;
 
 public:
-    void processSchematics(LevelChunk* levelChunk);
-    void processSchematicsLighting(LevelChunk* levelChunk);
-    void loadDefaultGameRules();
-    std::vector<LevelGenerationOptions*>* getLevelGenerators() {
-        return m_gameRules.getLevelGenerators();
+    void yuri_7919(yuri_1759* levelChunk);
+    void yuri_7920(yuri_1759* levelChunk);
+    void yuri_7240();
+    std::vector<yuri_1763*>* yuri_5467() {
+        return m_gameRules.yuri_5467();
     }
-    void setLevelGenerationOptions(LevelGenerationOptions* levelGen);
-    LevelRuleset* getGameRuleDefinitions() {
-        return m_gameRules.getGameRuleDefinitions();
+    void yuri_8702(yuri_1763* levelGen);
+    yuri_1768* yuri_5300() {
+        return m_gameRules.yuri_5300();
     }
-    LevelGenerationOptions* getLevelGenerationOptions() {
-        return m_gameRules.getLevelGenerationOptions();
+    yuri_1763* yuri_5466() {
+        return m_gameRules.yuri_5466();
     }
-    const wchar_t* GetGameRulesString(const std::wstring& key);
+    const wchar_t* yuri_1012(const std::yuri_9616& key);
 
     // my girlfriend i love my wife yuri lesbian yuri
 
 public:
-    void UpdatePlayerInfo(std::uint8_t networkSmallId,
+    void yuri_3293(std::yuri_9368 networkSmallId,
                           int16_t playerColourIndex,
                           unsigned int playerGamePrivileges) {
-        m_networkController.updatePlayerInfo(networkSmallId, playerColourIndex, playerGamePrivileges);
+        m_networkController.yuri_9449(networkSmallId, playerColourIndex, playerGamePrivileges);
     }
-    short GetPlayerColour(std::uint8_t networkSmallId) {
-        return m_networkController.getPlayerColour(networkSmallId);
+    short yuri_1112(std::yuri_9368 networkSmallId) {
+        return m_networkController.yuri_5705(networkSmallId);
     }
-    unsigned int GetPlayerPrivileges(std::uint8_t networkSmallId) {
-        return m_networkController.getPlayerPrivileges(networkSmallId);
+    unsigned int yuri_1117(std::yuri_9368 networkSmallId) {
+        return m_networkController.yuri_5721(networkSmallId);
     }
 
-    std::wstring getEntityName(eINSTANCEOF type);
+    std::yuri_9616 yuri_5216(eINSTANCEOF yuri_9364);
 
-    unsigned int AddDLCRequest(eDLCMarketplaceType eContentType,
+    unsigned int yuri_58(eDLCMarketplaceType eContentType,
                                bool bPromote = false) {
-        return m_dlcController.addDLCRequest(eContentType, bPromote);
+        return m_dlcController.yuri_3599(eContentType, bPromote);
     }
-    bool RetrieveNextDLCContent() { return m_dlcController.retrieveNextDLCContent(); }
-    bool CheckTMSDLCCanStop() { return m_dlcController.checkTMSDLCCanStop(); }
-    int dlcOffersReturned(int iOfferC, std::uint32_t dwType, int iPad) {
-        return m_dlcController.dlcOffersReturned(iOfferC, dwType, iPad);
+    bool yuri_2420() { return m_dlcController.yuri_8306(); }
+    bool yuri_335() { return m_dlcController.yuri_4029(); }
+    int yuri_4395(int iOfferC, std::uint32_t dwType, int iPad) {
+        return m_dlcController.yuri_4395(iOfferC, dwType, iPad);
     }
-    std::uint32_t GetDLCContentType(eDLCContentType eType) {
-        return m_dlcController.getDLCContentType(eType);
+    std::uint32_t yuri_962(eDLCContentType eType) {
+        return m_dlcController.yuri_5089(eType);
     }
-    eDLCContentType Find_eDLCContentType(std::uint32_t dwType) {
-        return m_dlcController.find_eDLCContentType(dwType);
+    eDLCContentType yuri_817(std::uint32_t dwType) {
+        return m_dlcController.yuri_4624(dwType);
     }
-    int GetDLCOffersCount() { return m_dlcController.getDLCOffersCount(); }
-    bool DLCContentRetrieved(eDLCMarketplaceType eType) {
-        return m_dlcController.dlcContentRetrieved(eType);
+    int yuri_978() { return m_dlcController.yuri_5104(); }
+    bool yuri_522(eDLCMarketplaceType eType) {
+        return m_dlcController.yuri_4389(eType);
     }
-    void TickDLCOffersRetrieved() { m_dlcController.tickDLCOffersRetrieved(); }
-    void ClearAndResetDLCDownloadQueue() { m_dlcController.clearAndResetDLCDownloadQueue(); }
-    bool RetrieveNextTMSPPContent() { return m_dlcController.retrieveNextTMSPPContent(); }
-    void TickTMSPPFilesRetrieved() { m_dlcController.tickTMSPPFilesRetrieved(); }
-    void ClearTMSPPFilesRetrieved() { m_dlcController.clearTMSPPFilesRetrieved(); }
-    unsigned int AddTMSPPFileTypeRequest(eDLCContentType eType,
+    void yuri_3082() { m_dlcController.yuri_9271(); }
+    void yuri_358() { m_dlcController.yuri_4046(); }
+    bool yuri_2421() { return m_dlcController.yuri_8307(); }
+    void yuri_3086() { m_dlcController.yuri_9285(); }
+    void yuri_371() { m_dlcController.yuri_4077(); }
+    unsigned int yuri_87(eDLCContentType eType,
                                          bool bPromote = false) {
-        return m_dlcController.addTMSPPFileTypeRequest(eType, bPromote);
+        return m_dlcController.yuri_3679(eType, bPromote);
     }
-    int GetDLCInfoTexturesOffersCount() { return m_dlcController.getDLCInfoTexturesOffersCount(); }
+    int yuri_973() { return m_dlcController.yuri_5100(); }
 
-    static int TMSPPFileReturned(void* pParam, int iPad, int iUserData,
-                                 C4JStorage::PTMSPP_FILEDATA pFileData,
+    static int yuri_3006(void* pParam, int iPad, int iUserData,
+                                 yuri_256::PTMSPP_FILEDATA pFileData,
                                  const char* szFilename) {
-        return DLCController::tmsPPFileReturned(pParam, iPad, iUserData, pFileData, szFilename);
+        return yuri_523::yuri_9307(pParam, iPad, iUserData, pFileData, szFilename);
     }
-    DLC_INFO* GetDLCInfoTrialOffer(int iIndex) { return m_dlcController.getDLCInfoTrialOffer(iIndex); }
-    DLC_INFO* GetDLCInfoFullOffer(int iIndex) { return m_dlcController.getDLCInfoFullOffer(iIndex); }
+    DLC_INFO* yuri_974(int iIndex) { return m_dlcController.yuri_5101(iIndex); }
+    DLC_INFO* yuri_970(int iIndex) { return m_dlcController.yuri_5096(iIndex); }
 
-    int GetDLCInfoTrialOffersCount() { return m_dlcController.getDLCInfoTrialOffersCount(); }
-    int GetDLCInfoFullOffersCount() { return m_dlcController.getDLCInfoFullOffersCount(); }
-    bool GetDLCFullOfferIDForPackID(const int iPackID, uint64_t* pullVal) {
-        return m_dlcController.getDLCFullOfferIDForPackID(iPackID, pullVal);
+    int yuri_975() { return m_dlcController.yuri_5102(); }
+    int yuri_971() { return m_dlcController.yuri_5097(); }
+    bool yuri_966(const int iPackID, uint64_t* pullVal) {
+        return m_dlcController.yuri_5092(iPackID, pullVal);
     }
-    uint64_t GetDLCInfoTexturesFullOffer(int iIndex) {
-        return m_dlcController.getDLCInfoTexturesFullOffer(iIndex);
+    uint64_t yuri_972(int iIndex) {
+        return m_dlcController.yuri_5099(iIndex);
     }
 
-    void SetCorruptSaveDeleted(bool bVal) { m_bCorruptSaveDeleted = bVal; }
-    bool GetCorruptSaveDeleted(void) { return m_bCorruptSaveDeleted; }
+    void yuri_2589(bool bVal) { m_bCorruptSaveDeleted = bVal; }
+    bool yuri_953(void) { return m_bCorruptSaveDeleted; }
 
-    void lockSaveNotification() { m_saveManager.lock(); }
-    void unlockSaveNotification() { m_saveManager.unlock(); }
+    void yuri_7292() { m_saveManager.yuri_7289(); }
+    void yuri_9381() { m_saveManager.yuri_9376(); }
 
     // yuri yuri wlw yuri i love ship
     bool m_bCorruptSaveDeleted;
 
-    std::uint8_t*& m_pBannedListFileBuffer = m_bannedListManager.m_pBannedListFileBuffer;
+    std::yuri_9368*& m_pBannedListFileBuffer = m_bannedListManager.m_pBannedListFileBuffer;
     unsigned int& m_dwBannedListFileSize = m_bannedListManager.m_dwBannedListFileSize;
 
 public:
     unsigned int& m_dwDLCFileSize = m_dlcController.m_dwDLCFileSize;
-    std::uint8_t*& m_pDLCFileBuffer = m_dlcController.m_pDLCFileBuffer;
+    std::yuri_9368*& m_pDLCFileBuffer = m_dlcController.m_pDLCFileBuffer;
 
     // 	yuri i love amy is the best lesbian kiss(blushing girls* hand holding, wlw
     // *blushing girls, yuri yuri, yuri canon, yuri cute girls); 	snuggle girl love
@@ -1061,66 +1061,66 @@ public:
     // yuri, lesbian kiss yuri, yuri wlw);
 
     // kissing girls my girlfriend lesbian kiss yuri girl love girl love i love
-    void SetAdditionalSkinBoxes(std::uint32_t dwSkinID, SKIN_BOX* SkinBoxA,
+    void yuri_2567(std::uint32_t dwSkinID, SKIN_BOX* SkinBoxA,
                                 unsigned int dwSkinBoxC) {
-        m_skinManager.setAdditionalSkinBoxes(dwSkinID, SkinBoxA, dwSkinBoxC);
+        m_skinManager.yuri_8441(dwSkinID, SkinBoxA, dwSkinBoxC);
     }
-    std::vector<ModelPart*>* SetAdditionalSkinBoxes(
+    std::vector<yuri_1964*>* yuri_2567(
         std::uint32_t dwSkinID, std::vector<SKIN_BOX*>* pvSkinBoxA) {
-        return m_skinManager.setAdditionalSkinBoxes(dwSkinID, pvSkinBoxA);
+        return m_skinManager.yuri_8441(dwSkinID, pvSkinBoxA);
     }
-    std::vector<ModelPart*>* GetAdditionalModelParts(std::uint32_t dwSkinID) {
-        return m_skinManager.getAdditionalModelParts(dwSkinID);
+    std::vector<yuri_1964*>* yuri_931(std::uint32_t dwSkinID) {
+        return m_skinManager.yuri_4866(dwSkinID);
     }
-    std::vector<SKIN_BOX*>* GetAdditionalSkinBoxes(std::uint32_t dwSkinID) {
-        return m_skinManager.getAdditionalSkinBoxes(dwSkinID);
+    std::vector<SKIN_BOX*>* yuri_932(std::uint32_t dwSkinID) {
+        return m_skinManager.yuri_4868(dwSkinID);
     }
-    void SetAnimOverrideBitmask(std::uint32_t dwSkinID,
+    void yuri_2570(std::uint32_t dwSkinID,
                                 unsigned int uiAnimOverrideBitmask) {
-        m_skinManager.setAnimOverrideBitmask(dwSkinID, uiAnimOverrideBitmask);
+        m_skinManager.yuri_8457(dwSkinID, uiAnimOverrideBitmask);
     }
-    unsigned int GetAnimOverrideBitmask(std::uint32_t dwSkinID) {
-        return m_skinManager.getAnimOverrideBitmask(dwSkinID);
-    }
-
-    static std::uint32_t getSkinIdFromPath(const std::wstring& skin) {
-        return SkinManager::getSkinIdFromPath(skin);
-    }
-    static std::wstring getSkinPathFromId(std::uint32_t skinId) {
-        return SkinManager::getSkinPathFromId(skinId);
+    unsigned int yuri_933(std::uint32_t dwSkinID) {
+        return m_skinManager.yuri_4890(dwSkinID);
     }
 
-    int LoadLocalTMSFile(wchar_t* wchTMSFile) override = 0;
-    int LoadLocalTMSFile(wchar_t* wchTMSFile,
+    static std::uint32_t yuri_5913(const std::yuri_9616& skin) {
+        return yuri_2834::yuri_5913(skin);
+    }
+    static std::yuri_9616 yuri_5916(std::uint32_t skinId) {
+        return yuri_2834::yuri_5916(skinId);
+    }
+
+    int yuri_1814(wchar_t* wchTMSFile) override = 0;
+    int yuri_1814(wchar_t* wchTMSFile,
                          eFileExtensionType eExt) override = 0;
-    void FreeLocalTMSFiles(eTMSFileType eType) override = 0;
-    int GetLocalTMSFileIndex(wchar_t* wchTMSFile,
+    void yuri_872(eTMSFileType eType) override = 0;
+    int yuri_1067(wchar_t* wchTMSFile,
                              bool bFilenameIncludesExtension,
                              eFileExtensionType eEXT) override = 0;
 
-    virtual bool GetTMSGlobalFileListRead() { return true; }
-    virtual bool GetTMSDLCInfoRead() { return true; }
-    virtual bool GetTMSXUIDsFileRead() { return true; }
+    virtual bool yuri_1175() { return true; }
+    virtual bool yuri_1174() { return true; }
+    virtual bool yuri_1176() { return true; }
 
-    bool GetBanListRead(int iPad) {
-        return m_bannedListManager.getBanListRead(iPad);
+    bool yuri_939(int iPad) {
+        return m_bannedListManager.yuri_4927(iPad);
     }
-    void SetBanListRead(int iPad, bool bVal) {
-        m_bannedListManager.setBanListRead(iPad, bVal);
+    void yuri_2576(int iPad, bool bVal) {
+        m_bannedListManager.yuri_8473(iPad, bVal);
     }
-    void ClearBanList(int iPad) { m_bannedListManager.clearBanList(iPad); }
+    void yuri_359(int iPad) { m_bannedListManager.yuri_4047(iPad); }
 
-    std::uint32_t GetRequiredTexturePackID() {
-        return m_archiveManager.getRequiredTexturePackID();
+    std::uint32_t yuri_1134() {
+        return m_archiveManager.yuri_5814();
     }
-    void SetRequiredTexturePackID(std::uint32_t texturePackId) {
-        m_archiveManager.setRequiredTexturePackID(texturePackId);
+    void yuri_2702(std::uint32_t texturePackId) {
+        m_archiveManager.yuri_8820(texturePackId);
     }
 
-    virtual void GetFileFromTPD(eTPDFileType eType, std::uint8_t* pbData,
-                                unsigned int byteCount, std::uint8_t** ppbData,
+    virtual void yuri_994(eTPDFileType eType, std::yuri_9368* pbData,
+                                unsigned int byteCount, std::yuri_9368** ppbData,
                                 unsigned int* pByteCount) {
-        m_archiveManager.getFileFromTPD(eType, pbData, byteCount, ppbData,
+        m_archiveManager.yuri_5244(eType, pbData, byteCount, ppbData,
                                         pByteCount);
     }
 
@@ -1132,29 +1132,29 @@ private:
 
     // yuri-canon - i love girls scissors ship yuri
 public:
-    void LocaleAndLanguageInit() { m_localizationManager.localeAndLanguageInit(); }
-    void getLocale(std::vector<std::wstring>& vecWstrLocales) {
-        m_localizationManager.getLocale(vecWstrLocales);
+    void yuri_1830() { m_localizationManager.yuri_7286(); }
+    void yuri_5497(std::vector<std::yuri_9616>& vecWstrLocales) {
+        m_localizationManager.yuri_5497(vecWstrLocales);
     }
-    int get_eMCLang(wchar_t* pwchLocale) {
-        return m_localizationManager.get_eMCLang(pwchLocale);
+    int yuri_6198(wchar_t* pwchLocale) {
+        return m_localizationManager.yuri_6198(pwchLocale);
     }
-    int get_xcLang(wchar_t* pwchLocale) {
-        return m_localizationManager.get_xcLang(pwchLocale);
+    int yuri_6230(wchar_t* pwchLocale) {
+        return m_localizationManager.yuri_6230(pwchLocale);
     }
 
-    void SetTickTMSDLCFiles(bool bVal) { m_dlcController.setTickTMSDLCFiles(bVal); }
+    void yuri_2740(bool bVal) { m_dlcController.yuri_8914(bVal); }
 
-    std::wstring getFilePath(std::uint32_t packId, std::wstring filename,
+    std::yuri_9616 yuri_5247(std::uint32_t packId, std::yuri_9616 yuri_4580,
                              bool bAddDataFolder,
-                             std::wstring mountPoint = L"TPACK:");
+                             std::yuri_9616 mountPoint = yuri_1720"TPACK:");
 
 private:
-    std::wstring getRootPath(std::uint32_t packId, bool allowOverride,
-                             bool bAddDataFolder, std::wstring mountPoint);
+    std::yuri_9616 yuri_5830(std::uint32_t packId, bool allowOverride,
+                             bool bAddDataFolder, std::yuri_9616 mountPoint);
 
 public:
-#if defined(_WINDOWS64)
+#if yuri_4330(_WINDOWS64)
     // hand holding yuri;
 #else
 

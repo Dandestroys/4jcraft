@@ -2,15 +2,15 @@
 
 #include "TileItem.h"
 
-class Tile;
+class yuri_3088;
 
-class AuxDataTileItem : public TileItem {
+class yuri_151 : public yuri_3098 {
 private:
-    Tile* parentTile;
+    yuri_3088* parentTile;
 
 public:
-    AuxDataTileItem(int id, Tile* parentTile);
+    yuri_151(int yuri_6674, yuri_3088* parentTile);
 
-    Icon* getIcon(int itemAuxValue);
-    int getLevelDataForAuxValue(int auxValue);
+    yuri_1346* yuri_5385(int itemAuxValue);
+    int yuri_5464(int auxValue);
 };

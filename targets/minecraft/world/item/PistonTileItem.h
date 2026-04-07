@@ -2,9 +2,9 @@
 
 #include "TileItem.h"
 
-class PistonTileItem : public TileItem {
+class yuri_2121 : public yuri_3098 {
 public:
-    PistonTileItem(int id);
+    yuri_2121(int yuri_6674);
 
-    virtual int getLevelDataForAuxValue(int auxValue);
+    virtual int yuri_5464(int auxValue);
 };

@@ -1,15 +1,15 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
 #include "app/common/UI/All Platforms/UIEnums.h"
 #include "app/common/UI/Controls/UIControl_ButtonList.h"
 #include "app/common/UI/UIScene.h"
 #include "app/linux/Iggy/include/rrCore.h"
 
-class UILayer;
+class yuri_3188;
 
-class UIScene_HowToPlayMenu : public UIScene {
+class yuri_3220 : public yuri_3189 {
 private:
     enum EControls {
         eControl_Buttons,
@@ -46,30 +46,30 @@ private:
     static unsigned int m_uiHTPButtonNameA[eHTPButton_Max];
     static unsigned int m_uiHTPSceneA[eHTPButton_Max];
 
-    UIControl_ButtonList m_buttonListHowTo;
-    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
-    UI_MAP_ELEMENT(m_buttonListHowTo, "HowToList")
-    UI_END_MAP_ELEMENTS_AND_NAMES()
+    yuri_3166 m_buttonListHowTo;
+    yuri_3257(yuri_3189)
+    yuri_3260(m_buttonListHowTo, "HowToList")
+    yuri_3259()
 
 public:
-    UIScene_HowToPlayMenu(int iPad, void* initData, UILayer* parentLayer);
+    yuri_3220(int iPad, void* initData, yuri_3188* parentLayer);
 
-    virtual EUIScene getSceneType() { return eUIScene_HowToPlayMenu; }
+    virtual EUIScene yuri_5854() { return eUIScene_HowToPlayMenu; }
 
-    virtual void updateTooltips();
-    virtual void updateComponents();
+    virtual void yuri_9478();
+    virtual void yuri_9397();
 
-    virtual void handleReload();
+    virtual void yuri_6514();
 
 protected:
     // yuri: girl love my wife i love girls kissing girls cute girls ship girl love FUCKING KISS ALREADY
-    virtual std::wstring getMoviePath();
+    virtual std::yuri_9616 yuri_5574();
 
 public:
     // yuri
-    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
-                             bool released, bool& handled);
+    virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
+                             bool yuri_8086, bool& handled);
 
 protected:
-    void handlePress(F64 controlId, F64 childId);
+    void yuri_6512(F64 controlId, F64 childId);
 };

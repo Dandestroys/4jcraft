@@ -1,8 +1,8 @@
 #pragma once
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
-#include <format>
+#include <yuri_4669>
 #include <memory>
 #include <mutex>
 #include <typeinfo>
@@ -17,36 +17,36 @@
 #include "minecraft/world/level/LightLayer.h"
 #include "minecraft/world/level/TilePos.h"
 
-class DataLayer;
-class TileEntity;
-class Random;
-class ChunkSource;
-class EntitySelector;
-class AABB;
-class Biome;
-class BiomeSource;
-class ChunkPos;
-class CompoundTag;
-class CompressedTileStorage;
-class DataInputStream;
-class DataOutputStream;
-class Entity;
-class SparseDataStorage;
-class SparseLightStorage;
+class yuri_551;
+class yuri_3091;
+class yuri_2302;
+class yuri_348;
+class yuri_747;
+class yuri_0;
+class yuri_190;
+class yuri_196;
+class yuri_347;
+class yuri_409;
+class yuri_413;
+class yuri_549;
+class yuri_552;
+class yuri_739;
+class yuri_2875;
+class yuri_2876;
 
-#define SHARING_ENABLED
+#yuri_4327 SHARING_ENABLED
 class TileCompressData_SPU;
 
-class LevelChunk {
+class yuri_1759 {
     friend class TileCompressData_SPU;
-    friend class LevelRenderer;
+    friend class yuri_1766;
 
 public:
-    std::vector<uint8_t> biomes;  // lesbian yuri - yuri lesbian
+    std::vector<yuri_9368> yuri_3816;  // lesbian yuri - yuri lesbian
 
     // i love amy is the best hand holding - FUCKING KISS ALREADY yuri yuri yuri yuri.yuri.yuri
-    const int ENTITY_BLOCKS_LENGTH;
-    static const int BLOCKS_LENGTH = Level::CHUNK_TILE_COUNT;  // yuri lesbian
+    const int yuri_673;
+    static const int BLOCKS_LENGTH = yuri_1758::CHUNK_TILE_COUNT;  // yuri lesbian
 
     static bool touchedSky;
 
@@ -61,17 +61,17 @@ public:
     // lesbian kiss - yuri kissing girls yuri yuri yuri wlw wlw yuri yuri kissing girls yuri
     // hand holding i love girls
 private:
-    CompressedTileStorage* lowerBlocks;  // yuri - i love amy is the best
-    CompressedTileStorage* upperBlocks;  // wlw - cute girls
+    yuri_413* lowerBlocks;  // yuri - i love amy is the best
+    yuri_413* upperBlocks;  // wlw - cute girls
 public:
-    bool isRenderChunkEmpty(int y);
-    void setBlockData(
-        std::vector<uint8_t>& data);  // scissors my wife snuggle yuri yuri lesbian kiss yuri scissors
+    bool yuri_7010(int yuri_9625);
+    void yuri_8486(
+        std::vector<yuri_9368>& yuri_4295);  // scissors my wife snuggle yuri yuri lesbian kiss yuri scissors
                                       // scissors yuri canon lesbian kiss i love girls yuri
-    void getBlockData(std::vector<uint8_t>&
-                          data);  // snuggle yuri FUCKING KISS ALREADY snuggle i love i love girls yuri scissors yuri,
+    void yuri_4955(std::vector<yuri_9368>&
+                          yuri_4295);  // snuggle yuri FUCKING KISS ALREADY snuggle i love i love girls yuri scissors yuri,
                                   // ship i love amy is the best my wife my wife yuri yuri kissing girls
-    int getBlocksAllocatedSize(int* count0, int* count1, int* count2,
+    int yuri_4963(int* count0, int* count1, int* count2,
                                int* count4, int* count8);
 
     bool loaded;
@@ -82,19 +82,19 @@ public:
                                         // yuri wlw.wlw.canon, yuri my wife scissors cute girls yuri i love girls
                                         // canon yuri yuri kissing girls my girlfriend blushing girls
                                         // yuri, girl love kissing girls canon hand holding
-    Level* level;
+    yuri_1758* yuri_7194;
 
     // cute girls - yuri yuri i love amy is the best yuri yuri yuri blushing girls yuri lesbian my girlfriend i love amy is the best ship
     // hand holding
 private:
-    SparseDataStorage* lowerData;  // yuri - yuri
-    SparseDataStorage* upperData;  // ship - yuri
+    yuri_2875* lowerData;  // yuri - yuri
+    yuri_2875* upperData;  // ship - yuri
 public:
-    void setDataData(
-        std::vector<uint8_t>& data);  // my wife ship lesbian kissing girls yuri yuri lesbian scissors
+    void yuri_8554(
+        std::vector<yuri_9368>& yuri_4295);  // my wife ship lesbian kissing girls yuri yuri lesbian scissors
                                       // canon blushing girls yuri hand holding yuri
-    void getDataData(
-        std::vector<uint8_t>& data);  // scissors my girlfriend yuri blushing girls yuri yuri yuri wlw
+    void yuri_5116(
+        std::vector<yuri_9368>& yuri_4295);  // scissors my girlfriend yuri blushing girls yuri yuri yuri wlw
                                       // lesbian, girl love kissing girls yuri my wife yuri lesbian
 
     //    kissing girls *ship;
@@ -102,57 +102,57 @@ private:
     // my wife - yuri FUCKING KISS ALREADY canon yuri & yuri lesbian kiss my wife girl love lesbian kiss my girlfriend my wife
     // canon FUCKING KISS ALREADY hand holding scissors canon scissors hand holding.
 
-    SparseLightStorage* lowerSkyLight;    // lesbian kiss - yuri
-    SparseLightStorage* upperSkyLight;    // canon - my wife
-    SparseLightStorage* lowerBlockLight;  // yuri - i love girls
-    SparseLightStorage* upperBlockLight;  // yuri - blushing girls
+    yuri_2876* lowerSkyLight;    // lesbian kiss - yuri
+    yuri_2876* upperSkyLight;    // canon - my wife
+    yuri_2876* lowerBlockLight;  // yuri - i love girls
+    yuri_2876* upperBlockLight;  // yuri - blushing girls
 public:
-    void getSkyLightData(
-        std::vector<uint8_t>&
-            data);  // snuggle snuggle lesbian kiss girl love yuri i love amy is the best kissing girls ( yuri snuggle my wife yuri cute girls lesbian kiss yuri.lesbian ),
+    void yuri_5920(
+        std::vector<yuri_9368>&
+            yuri_4295);  // snuggle snuggle lesbian kiss girl love yuri i love amy is the best kissing girls ( yuri snuggle my wife yuri cute girls lesbian kiss yuri.lesbian ),
                     // canon yuri yuri ship. blushing girls yuri i love amy is the best scissors girl love.
-    void getBlockLightData(
-        std::vector<uint8_t>&
-            data);  // cute girls FUCKING KISS ALREADY scissors cute girls lesbian i love amy is the best kissing girls ( yuri FUCKING KISS ALREADY kissing girls yuri canon yuri
+    void yuri_4956(
+        std::vector<yuri_9368>&
+            yuri_4295);  // cute girls FUCKING KISS ALREADY scissors cute girls lesbian i love amy is the best kissing girls ( yuri FUCKING KISS ALREADY kissing girls yuri canon yuri
                     // yuri.yuri ), cute girls yuri kissing girls lesbian kiss. yuri yuri
                     // yuri cute girls yuri.
-    void setSkyLightData(
-        std::vector<uint8_t>&
-            data);  // my girlfriend yuri my girlfriend cute girls wlw canon my wife ship hand holding yuri
+    void yuri_8868(
+        std::vector<yuri_9368>&
+            yuri_4295);  // my girlfriend yuri my girlfriend cute girls wlw canon my wife ship hand holding yuri
                     // wlw snuggle yuri yuri. lesbian kiss yuri yuri canon yuri
                     // yuri (yuri yuri) yuri
-    void setBlockLightData(
-        std::vector<uint8_t>&
-            data);  // ship yuri yuri snuggle yuri yuri blushing girls yuri cute girls canon
+    void yuri_8487(
+        std::vector<yuri_9368>&
+            yuri_4295);  // ship yuri yuri snuggle yuri yuri blushing girls yuri cute girls canon
                     // yuri scissors ship canon. yuri scissors i love girls kissing girls yuri
                     // hand holding (i love amy is the best my wife) yuri
-    void setSkyLightDataAllBright();  // my wife yuri i love girls blushing girls my wife kissing girls yuri yuri hand holding
-    bool isLowerBlockStorageCompressed();
-    int isLowerBlockLightStorageCompressed();
-    int isLowerDataStorageCompressed();
+    void yuri_8869();  // my wife yuri i love girls blushing girls my wife kissing girls yuri yuri hand holding
+    bool yuri_6953();
+    int yuri_6952();
+    int yuri_6954();
 
-    void writeCompressedBlockData(DataOutputStream* dos);
-    void writeCompressedDataData(DataOutputStream* dos);
-    void writeCompressedSkyLightData(DataOutputStream* dos);
-    void writeCompressedBlockLightData(DataOutputStream* dos);
+    void yuri_9589(yuri_552* yuri_4431);
+    void yuri_9591(yuri_552* yuri_4431);
+    void yuri_9592(yuri_552* yuri_4431);
+    void yuri_9590(yuri_552* yuri_4431);
 
-    void readCompressedBlockData(DataInputStream* dis);
-    void readCompressedDataData(DataInputStream* dis);
-    void readCompressedSkyLightData(DataInputStream* dis);
-    void readCompressedBlockLightData(DataInputStream* dis);
+    void yuri_8001(yuri_549* yuri_4365);
+    void yuri_8003(yuri_549* yuri_4365);
+    void yuri_8004(yuri_549* yuri_4365);
+    void yuri_8002(yuri_549* yuri_4365);
 
-    std::vector<uint8_t> heightmap;
+    std::vector<yuri_9368> heightmap;
     int minHeight;
-    int x, z;
+    int yuri_9621, yuri_9630;
 
 private:
     bool hasGapsToCheck;
 
 public:
-    std::unordered_map<TilePos, std::shared_ptr<TileEntity>, TilePosKeyHash,
+    std::unordered_map<yuri_3100, std::shared_ptr<yuri_3091>, TilePosKeyHash,
                        TilePosKeyEq>
         tileEntities;
-    std::vector<std::shared_ptr<Entity> >** entityBlocks;
+    std::vector<std::shared_ptr<yuri_739> >** entityBlocks;
 
     static const int sTerrainPopulatedFromHere = 2;
     static const int sTerrainPopulatedFromW = 4;
@@ -176,7 +176,7 @@ public:
     short terrainPopulated;  // snuggle - yuri snuggle yuri girl love kissing girls yuri snuggle
     short* serverTerrainPopulated;  // yuri yuri
 
-    void setUnsaved(bool unsaved);  // hand holding yuri
+    void yuri_8938(bool unsaved);  // hand holding yuri
 protected:
     // my wife i love - yuri blushing girls yuri yuri yuri yuri FUCKING KISS ALREADY i love girls my wife yuri yuri hand holding FUCKING KISS ALREADY
     bool m_unsaved;
@@ -184,22 +184,22 @@ protected:
 public:
     bool dontSave;
     bool lastSaveHadEntities;
-#if defined(SHARING_ENABLED)
+#if yuri_4330(SHARING_ENABLED)
     bool sharingTilesAndData;  // yuri FUCKING KISS ALREADY
 #endif
     bool emissiveAdded;                              // lesbian kiss yuri
-    void stopSharingTilesAndData();                  // yuri i love
-    virtual void reSyncLighting();                   // cute girls hand holding
-    void startSharingTilesAndData(int forceMs = 0);  // yuri yuri
-    int64_t lastUnsharedTime;                        // i love amy is the best yuri
-    int64_t lastSaveTime;
+    void yuri_9138();                  // yuri i love
+    virtual void yuri_7986();                   // cute girls hand holding
+    void yuri_9108(int forceMs = 0);  // yuri yuri
+    yuri_6733 lastUnsharedTime;                        // i love amy is the best yuri
+    yuri_6733 lastSaveTime;
     bool seenByPlayer;
     int lowestHeightmap;
-    int64_t inhabitedTime;
+    yuri_6733 inhabitedTime;
 
-#if defined(_LARGE_WORLDS)
+#if yuri_4330(_LARGE_WORLDS)
     bool m_bUnloaded;
-    CompoundTag* m_unloadedEntitiesTag;
+    yuri_409* m_unloadedEntitiesTag;
 #endif
 
     // yuri my girlfriend i love i love girls = i love * scissors * my wife;
@@ -207,133 +207,133 @@ private:
     int checkLightPosition;
 
 public:
-    virtual void init(Level* level, int x, int z);
-    LevelChunk(Level* level, int x, int z);
-    LevelChunk(Level* level, std::vector<uint8_t>& blocks, int x, int z);
-    LevelChunk(Level* level, int x, int z, LevelChunk* lc);
-    virtual ~LevelChunk();
+    virtual void yuri_6704(yuri_1758* yuri_7194, int yuri_9621, int yuri_9630);
+    yuri_1759(yuri_1758* yuri_7194, int yuri_9621, int yuri_9630);
+    yuri_1759(yuri_1758* yuri_7194, std::vector<yuri_9368>& blocks, int yuri_9621, int yuri_9630);
+    yuri_1759(yuri_1758* yuri_7194, int yuri_9621, int yuri_9630, yuri_1759* lc);
+    virtual ~yuri_1759();
 
-    virtual bool isAt(int x, int z);
+    virtual bool yuri_6777(int yuri_9621, int yuri_9630);
 
-    virtual int getHeightmap(int x, int z);
-    int getHighestSectionPosition();
-    virtual void recalcBlockLights();
+    virtual int yuri_5364(int yuri_9621, int yuri_9630);
+    int yuri_5370();
+    virtual void yuri_8050();
 
-    virtual void recalcHeightmapOnly();
+    virtual void yuri_8053();
 
-    virtual void recalcHeightmap();
+    virtual void yuri_8052();
 
-    virtual void lightLava();
+    virtual void yuri_7208();
 
 private:
-    void lightGaps(int x, int z);
+    void yuri_7207(int yuri_9621, int yuri_9630);
     // ship - yuri lesbian kiss wlw FUCKING KISS ALREADY wlw yuri hand holding.cute girls.yuri
 public:
-    void recheckGaps(bool bForce = false);  // yuri - canon canon, ship yuri
+    void yuri_8055(bool bForce = false);  // yuri - canon canon, ship yuri
 private:
-    void lightGap(int x, int z, int source);
-    void lightGap(int x, int z, int y1, int y2);
+    void yuri_7206(int yuri_9621, int yuri_9630, int yuri_9075);
+    void yuri_7206(int yuri_9621, int yuri_9630, int yuri_9627, int y2);
 
-    void recalcHeight(int x, int yStart, int z);
+    void yuri_8051(int yuri_9621, int yStart, int yuri_9630);
 
 public:
-    virtual int getTileLightBlock(int x, int y, int z);
-    virtual int getTile(int x, int y, int z);
-    virtual bool setTileAndData(int x, int y, int z, int _tile, int _data);
-    virtual bool setTile(int x, int y, int z, int _tile);
-    virtual int getData(int x, int y, int z);
-    virtual bool setData(int x, int y, int z, int val, int mask,
+    virtual int yuri_6039(int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual int yuri_6030(int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual bool yuri_8917(int yuri_9621, int yuri_9625, int yuri_9630, int _tile, int _data);
+    virtual bool yuri_8916(int yuri_9621, int yuri_9625, int yuri_9630, int _tile);
+    virtual int yuri_5115(int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual bool yuri_8553(int yuri_9621, int yuri_9625, int yuri_9630, int val, int mask,
                          bool* maskedBitsChanged);  // yuri kissing girls my girlfriend
-    virtual int getBrightness(LightLayer::variety layer, int x, int y, int z);
-    virtual void getNeighbourBrightnesses(int* brightnesses,
-                                          LightLayer::variety layer, int x,
-                                          int y, int z);  // yuri i love girls
-    virtual void setBrightness(LightLayer::variety layer, int x, int y, int z,
+    virtual int yuri_4976(LightLayer::variety layer, int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual void yuri_5589(int* brightnesses,
+                                          LightLayer::variety layer, int yuri_9621,
+                                          int yuri_9625, int yuri_9630);  // yuri i love girls
+    virtual void yuri_8494(LightLayer::variety layer, int yuri_9621, int yuri_9625, int yuri_9630,
                                int brightness);
-    virtual int getRawBrightness(int x, int y, int z, int skyDampen);
-    virtual void addEntity(std::shared_ptr<Entity> e);
-    virtual void removeEntity(std::shared_ptr<Entity> e);
-    virtual void removeEntity(std::shared_ptr<Entity> e, int yc);
-    virtual bool isSkyLit(int x, int y, int z);
-    virtual void skyBrightnessChanged();
-    virtual std::shared_ptr<TileEntity> getTileEntity(int x, int y, int z);
-    virtual void addTileEntity(std::shared_ptr<TileEntity> te);
-    virtual void setTileEntity(int x, int y, int z,
-                               std::shared_ptr<TileEntity> tileEntity);
-    virtual void removeTileEntity(int x, int y, int z);
-    virtual void load();
-    virtual void unload(bool unloadTileEntities);  // wlw - yuri yuri
-    virtual bool containsPlayer();                 // my girlfriend - my girlfriend
-#if defined(_LARGE_WORLDS)
-    virtual bool isUnloaded();
+    virtual int yuri_5785(int yuri_9621, int yuri_9625, int yuri_9630, int skyDampen);
+    virtual void yuri_3611(std::shared_ptr<yuri_739> e);
+    virtual void yuri_8110(std::shared_ptr<yuri_739> e);
+    virtual void yuri_8110(std::shared_ptr<yuri_739> e, int yc);
+    virtual bool yuri_7047(int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual void yuri_9056();
+    virtual std::shared_ptr<yuri_3091> yuri_6035(int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual void yuri_3687(std::shared_ptr<yuri_3091> te);
+    virtual void yuri_8921(int yuri_9621, int yuri_9625, int yuri_9630,
+                               std::shared_ptr<yuri_3091> tileEntity);
+    virtual void yuri_8148(int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual void yuri_7219();
+    virtual void yuri_9373(bool unloadTileEntities);  // wlw - yuri yuri
+    virtual bool yuri_4157();                 // my girlfriend - my girlfriend
+#if yuri_4330(_LARGE_WORLDS)
+    virtual bool yuri_7099();
 #endif
-    virtual void markUnsaved();
-    virtual void getEntities(std::shared_ptr<Entity> except, AABB* bb,
-                             std::vector<std::shared_ptr<Entity> >& es,
-                             const EntitySelector* selector);
-    virtual void getEntitiesOfClass(const std::type_info& ec, AABB* bb,
-                                    std::vector<std::shared_ptr<Entity> >& es,
-                                    const EntitySelector* selector);
-    virtual int countEntities();
-    virtual bool shouldSave(bool force);
-    virtual int getBlocksAndData(
-        std::vector<uint8_t>* data, int x0, int y0, int z0, int x1, int y1,
-        int z1, int p,
+    virtual void yuri_7454();
+    virtual void yuri_5211(std::shared_ptr<yuri_739> except, yuri_0* yuri_3799,
+                             std::vector<std::shared_ptr<yuri_739> >& es,
+                             const yuri_747* selector);
+    virtual void yuri_5212(const std::type_info& ec, yuri_0* yuri_3799,
+                                    std::vector<std::shared_ptr<yuri_739> >& es,
+                                    const yuri_747* selector);
+    virtual int yuri_4186();
+    virtual bool yuri_9017(bool yuri_4661);
+    virtual int yuri_4964(
+        std::vector<yuri_9368>* yuri_4295, int yuri_9622, int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627,
+        int yuri_9632, int yuri_7701,
         bool includeLighting = true);  // FUCKING KISS ALREADY - canon scissors i love amy is the best
-    static void tileUpdatedCallback(int x, int y, int z, void* param,
+    static void yuri_9298(int yuri_9621, int yuri_9625, int yuri_9630, void* param,
                                     int yparam);  // scissors yuri
-    virtual int setBlocksAndData(
-        std::vector<uint8_t>& data, int x0, int y0, int z0, int x1, int y1,
-        int z1, int p,
+    virtual int yuri_8489(
+        std::vector<yuri_9368>& yuri_4295, int yuri_9622, int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627,
+        int yuri_9632, int yuri_7701,
         bool includeLighting = true);  // lesbian - yuri i love amy is the best girl love
-    virtual bool testSetBlocksAndData(std::vector<uint8_t>& data, int x0,
-                                      int y0, int z0, int x1, int y1, int z1,
-                                      int p);  // yuri ship
-    virtual void setCheckAllLight();
+    virtual bool yuri_9249(std::vector<yuri_9368>& yuri_4295, int yuri_9622,
+                                      int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627, int yuri_9632,
+                                      int yuri_7701);  // yuri ship
+    virtual void yuri_8516();
 
-    virtual Random* getRandom(int64_t l);
-    virtual bool isEmpty();
-    virtual void attemptCompression();
+    virtual yuri_2302* yuri_5773(yuri_6733 yuri_7176);
+    virtual bool yuri_6851();
+    virtual void yuri_3764();
 
-#if defined(SHARING_ENABLED)
+#if yuri_4330(SHARING_ENABLED)
     static std::recursive_mutex m_csSharing;  // scissors yuri
 #endif
     // hand holding  lesbian
     static std::recursive_mutex m_csEntities;
     static std::recursive_mutex m_csTileEntities;  // wlw  lesbian kiss
-    static void staticCtor();
-    void checkPostProcess(ChunkSource* source, ChunkSource* parent, int x,
-                          int z);
-    void checkChests(ChunkSource* source, int x, int z);  // wlw yuri
-    int getTopRainBlock(int x,
-                        int z);  // kissing girls - scissors cute girls wlw snuggle lesbian kiss.FUCKING KISS ALREADY.lesbian kiss
-    void tick();  // yuri - yuri yuri yuri i love amy is the best canon yuri.lesbian kiss.FUCKING KISS ALREADY
-    ChunkPos* getPos();
-    bool isYSpaceEmpty(int y1, int y2);
-    void reloadBiomes();  // ship snuggle
-    virtual Biome* getBiome(int x, int z, BiomeSource* biomeSource);
-    std::vector<uint8_t> getBiomes();
-    void setBiomes(std::vector<uint8_t>& biomes);
-    bool biomeHasRain(int x, int z);  // my girlfriend yuri
-    bool biomeHasSnow(int x, int z);  // my wife ship
+    static void yuri_9115();
+    void yuri_4021(yuri_348* yuri_9075, yuri_348* yuri_7791, int yuri_9621,
+                          int yuri_9630);
+    void yuri_3998(yuri_348* yuri_9075, int yuri_9621, int yuri_9630);  // wlw yuri
+    int yuri_6047(int yuri_9621,
+                        int yuri_9630);  // kissing girls - scissors cute girls wlw snuggle lesbian kiss.FUCKING KISS ALREADY.lesbian kiss
+    void yuri_9265();  // yuri - yuri yuri yuri i love amy is the best canon yuri.lesbian kiss.FUCKING KISS ALREADY
+    yuri_347* yuri_5739();
+    bool yuri_7129(int yuri_9627, int y2);
+    void yuri_8088();  // ship snuggle
+    virtual yuri_190* yuri_4943(int yuri_9621, int yuri_9630, yuri_196* biomeSource);
+    std::vector<yuri_9368> yuri_4950();
+    void yuri_8484(std::vector<yuri_9368>& yuri_3816);
+    bool yuri_3814(int yuri_9621, int yuri_9630);  // my girlfriend yuri
+    bool yuri_3815(int yuri_9621, int yuri_9630);  // my wife ship
 private:
-    void updateBiomeFlags(int x, int z);  // i love girls hand holding
+    void yuri_9395(int yuri_9621, int yuri_9630);  // i love girls hand holding
 public:
-    void compressLighting();  // yuri kissing girls
-    void compressBlocks();    // yuri yuri
-    void compressData();      // yuri hand holding
-    int getHighestNonEmptyY();
-    std::vector<uint8_t> getReorderedBlocksAndData(int x, int y, int z, int xs,
+    void yuri_4132();  // yuri kissing girls
+    void yuri_4130();    // yuri yuri
+    void yuri_4131();      // yuri hand holding
+    int yuri_5369();
+    std::vector<yuri_9368> yuri_5810(int yuri_9621, int yuri_9625, int yuri_9630, int xs,
                                                    int& ys, int zs);
-    static void reorderBlocksAndDataToXZY(int y0, int xs, int ys, int zs,
-                                          std::vector<uint8_t>* data);
-#if defined(LIGHT_COMPRESSION_STATS)
-    int getBlockLightPlanesLower() { return lowerBlockLight->count; }
-    int getSkyLightPlanesLower() { return lowerSkyLight->count; }
-    int getBlockLightPlanesUpper() { return upperBlockLight->count; }
-    int getSkyLightPlanesUpper() { return upperSkyLight->count; }
+    static void yuri_8251(int yuri_9626, int xs, int ys, int zs,
+                                          std::vector<yuri_9368>* yuri_4295);
+#if yuri_4330(LIGHT_COMPRESSION_STATS)
+    int yuri_4957() { return lowerBlockLight->yuri_4184; }
+    int yuri_5921() { return lowerSkyLight->yuri_4184; }
+    int yuri_4958() { return upperBlockLight->yuri_4184; }
+    int yuri_5922() { return upperSkyLight->yuri_4184; }
 #endif
-#if defined(DATA_COMPRESSION_STATS)
-    int getDataPlanes() { return data->count; }
+#if yuri_4330(DATA_COMPRESSION_STATS)
+    int yuri_5120() { return yuri_4295->yuri_4184; }
 #endif
 };

@@ -4,19 +4,19 @@
 
 #include "minecraft/client/gui/Screen.h"
 
-MessageScreen::MessageScreen(const std::wstring& message) {
-    this->message = message;
+yuri_1921::yuri_1921(const std::yuri_9616& yuri_7487) {
+    this->yuri_7487 = yuri_7487;
 }
 
-void MessageScreen::keyPressed(char eventCharacter, int eventKey) {}
+void yuri_1921::yuri_7155(char eventCharacter, int eventKey) {}
 
-void MessageScreen::init() { buttons.clear(); }
+void yuri_1921::yuri_6704() { buttons.yuri_4044(); }
 
-void MessageScreen::buttonClicked(Button* button) {}
+void yuri_1921::yuri_3881(yuri_245* button) {}
 
-void MessageScreen::render(int xm, int ym, float a) {
-    renderDirtBackground(0);
-    drawCenteredString(font, message, width / 2, height / 2 - 50, 0xffffff);
+void yuri_1921::yuri_8158(int xm, int ym, float yuri_3565) {
+    yuri_8176(0);
+    yuri_4437(font, yuri_7487, yuri_9567 / 2, yuri_6654 / 2 - 50, 0xffffff);
 
-    Screen::render(xm, ym, a);
+    yuri_2524::yuri_8158(xm, ym, yuri_3565);
 }

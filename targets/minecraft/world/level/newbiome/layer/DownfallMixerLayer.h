@@ -4,13 +4,13 @@
 
 #include "Layer.h"
 
-class DownfallMixerLayer : public Layer {
+class yuri_651 : public yuri_1742 {
 private:
-    std::shared_ptr<Layer> downfall;
+    std::shared_ptr<yuri_1742> downfall;
     int layer;
 
 public:
-    DownfallMixerLayer(std::shared_ptr<Layer> downfall,
-                       std::shared_ptr<Layer> parent, int layer);
-    std::vector<int> getArea(int xo, int yo, int w, int h);
+    yuri_651(std::shared_ptr<yuri_1742> downfall,
+                       std::shared_ptr<yuri_1742> yuri_7791, int layer);
+    std::vector<int> yuri_4897(int xo, int yo, int yuri_9535, int yuri_6412);
 };

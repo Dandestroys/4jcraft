@@ -4,8 +4,8 @@
 
 #include "Packet.h"
 
-class GameEventPacket : public Packet,
-                        public std::enable_shared_from_this<GameEventPacket> {
+class yuri_912 : public yuri_2081,
+                        public std::enable_shared_from_this<yuri_912> {
 public:
     static const int NO_RESPAWN_BED_AVAILABLE;
     static const int START_RAINING;
@@ -30,17 +30,17 @@ public:
     int _event;
     int param;
 
-    GameEventPacket();
-    GameEventPacket(int evnt, int param);
+    yuri_912();
+    yuri_912(int evnt, int param);
 
-    virtual void read(DataInputStream* dis);
-    virtual void write(DataOutputStream* dos);
-    virtual void handle(PacketListener* listener);
-    virtual int getEstimatedSize();
+    virtual void yuri_7987(yuri_549* yuri_4365);
+    virtual void yuri_9578(yuri_552* yuri_4431);
+    virtual void yuri_6416(PacketListener* listener);
+    virtual int yuri_5222();
 
 public:
-    static std::shared_ptr<Packet> create() {
-        return std::make_shared<GameEventPacket>();
+    static std::shared_ptr<yuri_2081> yuri_4202() {
+        return std::make_shared<yuri_912>();
     }
-    virtual int getId() { return 70; }
+    virtual int yuri_5390() { return 70; }
 };

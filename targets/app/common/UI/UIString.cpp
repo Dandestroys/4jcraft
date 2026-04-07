@@ -4,10 +4,10 @@
 #include "platform/XboxStubs.h"
 #include "util/StringHelpers.h"
 
-bool UIString::setCurrentLanguage() {
+bool yuri_3253::yuri_8543() {
     int nextLanguage, nextLocale;
-    nextLanguage = XGetLanguage();
-    nextLocale = XGetLocale();
+    nextLanguage = yuri_3407();
+    nextLocale = yuri_3408();
 
     if ((nextLanguage != s_currentLanguage) ||
         (nextLocale != s_currentLocale)) {
@@ -19,43 +19,43 @@ bool UIString::setCurrentLanguage() {
     return false;
 }
 
-int UIString::getCurrentLanguage() { return s_currentLanguage; }
+int yuri_3253::yuri_5073() { return s_currentLanguage; }
 
-UIString::UIStringCore::UIStringCore(StringBuilder wstrBuilder) {
+yuri_3253::yuri_3254::yuri_3254(StringBuilder wstrBuilder) {
     m_bIsConstant = false;
 
     m_lastSetLanguage = m_lastSetLocale = -1;
     m_lastUpdatedLanguage = m_lastUpdatedLocale = -1;
 
-    m_fStringBuilder = wstrBuilder;
+    yuri_7336 = wstrBuilder;
 
-    m_wstrCache = L"";
-    update(true);
+    m_wstrCache = yuri_1720"";
+    yuri_9390(true);
 }
 
-UIString::UIStringCore::UIStringCore(const std::wstring& str) {
+yuri_3253::yuri_3254::yuri_3254(const std::yuri_9616& yuri_9145) {
     m_bIsConstant = true;
 
     m_lastSetLanguage = m_lastSetLocale = -1;
     m_lastUpdatedLanguage = m_lastUpdatedLocale = -1;
 
-    m_wstrCache = str;
+    m_wstrCache = yuri_9145;
 }
 
-std::wstring& UIString::UIStringCore::getString() {
-    if (hasNewString()) update(true);
+std::yuri_9616& yuri_3253::yuri_3254::yuri_5969() {
+    if (yuri_6619()) yuri_9390(true);
     return m_wstrCache;
 }
 
-bool UIString::UIStringCore::hasNewString() {
+bool yuri_3253::yuri_3254::yuri_6619() {
     if (m_bIsConstant) return false;
     return (m_lastSetLanguage != s_currentLanguage) ||
            (m_lastSetLocale != s_currentLocale);
 }
 
-bool UIString::UIStringCore::update(bool force) {
-    if (!m_bIsConstant && (force || hasNewString())) {
-        m_wstrCache = m_fStringBuilder();
+bool yuri_3253::yuri_3254::yuri_9390(bool yuri_4661) {
+    if (!m_bIsConstant && (yuri_4661 || yuri_6619())) {
+        m_wstrCache = yuri_7336();
         m_lastSetLanguage = s_currentLanguage;
         m_lastSetLocale = s_currentLocale;
         return true;
@@ -63,7 +63,7 @@ bool UIString::UIStringCore::update(bool force) {
     return false;
 }
 
-bool UIString::UIStringCore::needsUpdating() {
+bool yuri_3253::yuri_3254::yuri_7552() {
     if (m_bIsConstant) return false;
     return (m_lastSetLanguage != s_currentLanguage) ||
            (m_lastUpdatedLanguage != m_lastSetLanguage) ||
@@ -71,71 +71,71 @@ bool UIString::UIStringCore::needsUpdating() {
            (m_lastUpdatedLocale != m_lastSetLocale);
 }
 
-void UIString::UIStringCore::setUpdated() {
+void yuri_3253::yuri_3254::yuri_8939() {
     m_lastUpdatedLanguage = m_lastSetLanguage;
     m_lastUpdatedLocale = m_lastSetLocale;
 }
 
-int UIString::s_currentLanguage = -1;
-int UIString::s_currentLocale = -1;
+int yuri_3253::s_currentLanguage = -1;
+int yuri_3253::s_currentLocale = -1;
 
-UIString::UIString() { m_core = std::shared_ptr<UIStringCore>(); }
+yuri_3253::yuri_3253() { m_core = std::shared_ptr<yuri_3254>(); }
 
-UIString::UIString(int ids) {
-    StringBuilder builder = [ids]() { return app.GetString(ids); };
-    UIStringCore* core = new UIStringCore(builder);
-    m_core = std::shared_ptr<UIStringCore>(core);
+yuri_3253::yuri_3253(int yuri_6676) {
+    StringBuilder builder = [yuri_6676]() { return app.yuri_1168(yuri_6676); };
+    yuri_3254* core = new yuri_3254(builder);
+    m_core = std::shared_ptr<yuri_3254>(core);
 }
 
-UIString::UIString(StringBuilder wstrBuilder) {
-    UIStringCore* core = new UIStringCore(wstrBuilder);
-    m_core = std::shared_ptr<UIStringCore>(core);
+yuri_3253::yuri_3253(StringBuilder wstrBuilder) {
+    yuri_3254* core = new yuri_3254(wstrBuilder);
+    m_core = std::shared_ptr<yuri_3254>(core);
 }
 
-UIString::UIString(const std::string& constant) {
-    std::wstring wstr = convStringToWstring(constant);
-    UIStringCore* core = new UIStringCore(wstr);
-    m_core = std::shared_ptr<UIStringCore>(core);
+yuri_3253::yuri_3253(const std::yuri_9151& constant) {
+    std::yuri_9616 wstr = yuri_4165(constant);
+    yuri_3254* core = new yuri_3254(wstr);
+    m_core = std::shared_ptr<yuri_3254>(core);
 }
 
-UIString::UIString(const std::wstring& constant) {
-    UIStringCore* core = new UIStringCore(constant);
-    m_core = std::shared_ptr<UIStringCore>(core);
+yuri_3253::yuri_3253(const std::yuri_9616& constant) {
+    yuri_3254* core = new yuri_3254(constant);
+    m_core = std::shared_ptr<yuri_3254>(core);
 }
 
-UIString::UIString(const wchar_t* constant) {
-    std::wstring str = std::wstring(constant);
-    UIStringCore* core = new UIStringCore(str);
-    m_core = std::shared_ptr<UIStringCore>(core);
+yuri_3253::yuri_3253(const wchar_t* constant) {
+    std::yuri_9616 yuri_9145 = std::yuri_9616(constant);
+    yuri_3254* core = new yuri_3254(yuri_9145);
+    m_core = std::shared_ptr<yuri_3254>(core);
 }
 
-UIString::~UIString() { m_core = nullptr; }
+yuri_3253::~yuri_3253() { m_core = nullptr; }
 
-bool UIString::empty() { return m_core.get() == nullptr; }
+bool yuri_3253::yuri_4477() { return m_core.yuri_4853() == nullptr; }
 
-bool UIString::compare(const UIString& uiString) {
-    return m_core.get() != uiString.m_core.get();
+bool yuri_3253::yuri_4117(const yuri_3253& uiString) {
+    return m_core.yuri_4853() != uiString.m_core.yuri_4853();
 }
 
-bool UIString::needsUpdating() {
+bool yuri_3253::yuri_7552() {
     if (m_core != nullptr)
-        return m_core->needsUpdating();
+        return m_core->yuri_7552();
     else
         return false;
 }
 
-void UIString::setUpdated() {
-    if (m_core != nullptr) m_core->setUpdated();
+void yuri_3253::yuri_8939() {
+    if (m_core != nullptr) m_core->yuri_8939();
 }
 
-std::wstring& UIString::getString() {
-    static std::wstring blank(L"");
+std::yuri_9616& yuri_3253::yuri_5969() {
+    static std::yuri_9616 yuri_3819(yuri_1720"");
     if (m_core != nullptr)
-        return m_core->getString();
+        return m_core->yuri_5969();
     else
-        return blank;
+        return yuri_3819;
 }
 
-const wchar_t* UIString::c_str() { return getString().c_str(); }
+const wchar_t* yuri_3253::yuri_3888() { return yuri_5969().yuri_3888(); }
 
-unsigned int UIString::length() { return getString().length(); }
+unsigned int yuri_3253::yuri_7189() { return yuri_5969().yuri_7189(); }

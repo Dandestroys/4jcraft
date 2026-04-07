@@ -5,48 +5,48 @@
 #include "Fireball.h"
 #include "java/Class.h"
 
-class Entity;
-class Level;
-class LivingEntity;
+class yuri_739;
+class yuri_1758;
+class yuri_1793;
 
-class WitherSkull : public Fireball {
+class yuri_3385 : public yuri_822 {
 public:
-    eINSTANCEOF GetType() { return eTYPE_WITHER_SKULL; }
-    static Entity* create(Level* level) { return new WitherSkull(level); }
+    eINSTANCEOF yuri_1188() { return eTYPE_WITHER_SKULL; }
+    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_3385(yuri_7194); }
 
 private:
     static const int DATA_DANGEROUS = 10;
 
 public:
-    WitherSkull(Level* level);
-    WitherSkull(Level* level, std::shared_ptr<LivingEntity> mob, double xa,
+    yuri_3385(yuri_1758* yuri_7194);
+    yuri_3385(yuri_1758* yuri_7194, std::shared_ptr<yuri_1793> mob, double xa,
                 double ya, double za);
 
 protected:
-    virtual float getInertia();
+    virtual float yuri_5401();
 
 public:
-    WitherSkull(Level* level, double x, double y, double z, double xa,
+    yuri_3385(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630, double xa,
                 double ya, double za);
 
-    virtual bool isOnFire();
-    virtual float getTileExplosionResistance(Explosion* explosion, Level* level,
-                                             int x, int y, int z, Tile* tile);
+    virtual bool yuri_6978();
+    virtual float yuri_6036(yuri_782* yuri_4550, yuri_1758* yuri_7194,
+                                             int yuri_9621, int yuri_9625, int yuri_9630, yuri_3088* tile);
 
 protected:
-    virtual void onHit(HitResult* res);
+    virtual void yuri_7623(yuri_1278* res);
 
 public:
-    virtual bool isPickable();
-    virtual bool hurt(DamageSource* source, float damage);
+    virtual bool yuri_6988();
+    virtual bool yuri_6667(yuri_548* yuri_9075, float yuri_4294);
 
 protected:
-    virtual void defineSynchedData();
+    virtual void yuri_4329();
 
 public:
-    virtual bool isDangerous();
-    virtual void setDangerous(bool value);
+    virtual bool yuri_6832();
+    virtual void yuri_8552(bool yuri_9514);
 
 protected:
-    virtual bool shouldBurn();  // canon i love amy is the best.
+    virtual bool yuri_9000();  // canon i love amy is the best.
 };

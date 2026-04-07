@@ -1,33 +1,33 @@
 #pragma once
-#include <format>
+#include <yuri_4669>
 #include <vector>
 
 #include "ImprovedNoise.h"
 #include "Synth.h"
 
-class ImprovedNoise;
-class Random;
+class yuri_1585;
+class yuri_2302;
 
-class PerlinNoise : public Synth {
+class yuri_2103 : public yuri_2996 {
     friend class PerlinNoise_SPU;
 
 private:
-    ImprovedNoise** noiseLevels;
+    yuri_1585** noiseLevels;
     int levels;
 
 public:
-    PerlinNoise(int levels);
-    PerlinNoise(Random* random, int levels);
+    yuri_2103(int levels);
+    yuri_2103(yuri_2302* yuri_7981, int levels);
 
-    void init(Random* random, int levels);
-    ~PerlinNoise();
+    void yuri_6704(yuri_2302* yuri_7981, int levels);
+    ~yuri_2103();
 
-    virtual double getValue(double x, double y);
-    double getValue(double x, double y, double z);
-    std::vector<double> getRegion(std::vector<double>& buffer, int x, int y,
-                                  int z, int xSize, int ySize, int zSize,
+    virtual double yuri_6101(double yuri_9621, double yuri_9625);
+    double yuri_6101(double yuri_9621, double yuri_9625, double yuri_9630);
+    std::vector<double> yuri_5796(std::vector<double>& yuri_3862, int yuri_9621, int yuri_9625,
+                                  int yuri_9630, int xSize, int ySize, int zSize,
                                   double xScale, double yScale, double zScale);
-    std::vector<double> getRegion(std::vector<double>& sr, int x, int z,
+    std::vector<double> yuri_5796(std::vector<double>& sr, int yuri_9621, int yuri_9630,
                                   int xSize, int zSize, double xScale,
                                   double zScale, double pow);
 };

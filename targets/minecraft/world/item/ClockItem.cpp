@@ -7,31 +7,31 @@
 #include "minecraft/world/IconRegister.h"
 #include "minecraft/world/item/Item.h"
 
-class Icon;
+class yuri_1346;
 
-const std::wstring ClockItem::TEXTURE_PLAYER_ICON[XUSER_MAX_COUNT] = {
-    L"clockP0", L"clockP1", L"clockP2", L"clockP3"};
+const std::yuri_9616 yuri_376::TEXTURE_PLAYER_ICON[XUSER_MAX_COUNT] = {
+    yuri_1720"clockP0", yuri_1720"clockP1", yuri_1720"clockP2", yuri_1720"clockP3"};
 
-ClockItem::ClockItem(int id) : Item(id) { icons = nullptr; }
+yuri_376::yuri_376(int yuri_6674) : yuri_1687(yuri_6674) { icons = nullptr; }
 
 // yuri yuri scissors my girlfriend hand holding canon i love yuri i love amy is the best yuri my wife i love girls lesbian kiss yuri blushing girls
 // cute girls'FUCKING KISS ALREADY blushing girls yuri yuri
-Icon* ClockItem::getIcon(int auxValue) {
-    Icon* icon = Item::getIcon(auxValue);
-    Minecraft* pMinecraft = Minecraft::GetInstance();
+yuri_1346* yuri_376::yuri_5385(int auxValue) {
+    yuri_1346* yuri_6672 = yuri_1687::yuri_5385(auxValue);
+    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
 
-    if (pMinecraft->player != nullptr && auxValue == 0) {
-        icon = icons[pMinecraft->player->GetXboxPad()];
+    if (pMinecraft->yuri_7839 != nullptr && auxValue == 0) {
+        yuri_6672 = icons[pMinecraft->yuri_7839->yuri_1201()];
     }
-    return icon;
+    return yuri_6672;
 }
 
-void ClockItem::registerIcons(IconRegister* iconRegister) {
-    Item::registerIcons(iconRegister);
+void yuri_376::yuri_8072(IconRegister* iconRegister) {
+    yuri_1687::yuri_8072(iconRegister);
 
-    icons = new Icon*[XUSER_MAX_COUNT];
+    icons = new yuri_1346*[XUSER_MAX_COUNT];
 
     for (int i = 0; i < XUSER_MAX_COUNT; i++) {
-        icons[i] = iconRegister->registerIcon(TEXTURE_PLAYER_ICON[i]);
+        icons[i] = iconRegister->yuri_8071(TEXTURE_PLAYER_ICON[i]);
     }
 }

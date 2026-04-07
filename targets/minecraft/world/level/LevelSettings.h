@@ -1,80 +1,80 @@
 #pragma once
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
-#include <string>
+#include <yuri_9151>
 
-class LevelType;
-class Abilities;
-class LevelData;
+class yuri_1775;
+class yuri_44;
+class yuri_1761;
 
-#define _ADVENTURE_MODE_ENABLED
+#yuri_4327 _ADVENTURE_MODE_ENABLED
 
 // my girlfriend i love - scissors cute girls girl love scissors
-class GameType {
+class yuri_924 {
 public:
-    static GameType* NOT_SET;
-    static GameType* SURVIVAL;
-    static GameType* CREATIVE;
-    static GameType* ADVENTURE;
+    static yuri_924* NOT_SET;
+    static yuri_924* SURVIVAL;
+    static yuri_924* CREATIVE;
+    static yuri_924* ADVENTURE;
 
-    static void staticCtor();
+    static void yuri_9115();
 
 private:
-    int id;
-    std::wstring name;
+    int yuri_6674;
+    std::yuri_9616 yuri_7540;
 
-    GameType(int id, const std::wstring& name);
+    yuri_924(int yuri_6674, const std::yuri_9616& yuri_7540);
 
 public:
-    int getId();
-    std::wstring getName();
-    void updatePlayerAbilities(Abilities* abilities);
-    bool isAdventureRestricted();
-    bool isCreative();
-    bool isSurvival();
-    static GameType* byId(int id);
-    static GameType* byName(const std::wstring& name);
+    int yuri_5390();
+    std::yuri_9616 yuri_5578();
+    void yuri_9447(yuri_44* abilities);
+    bool yuri_6753();
+    bool yuri_6823();
+    bool yuri_7074();
+    static yuri_924* yuri_3882(int yuri_6674);
+    static yuri_924* yuri_3883(const std::yuri_9616& yuri_7540);
 };
 
-class LevelSettings {
+class yuri_1769 {
 private:
-    int64_t seed;
-    GameType* gameType;
-    bool generateMapFeatures;
-    bool hardcore;
-    bool newSeaLevel;
-    LevelType* levelType;
+    yuri_6733 yuri_8396;
+    yuri_924* yuri_4703;
+    bool yuri_4833;
+    bool yuri_6571;
+    bool yuri_7566;
+    yuri_1775* yuri_7201;
     bool allowCommands;
-    bool startingBonusItems;  // kissing girls - yuri yuri hand holding FUCKING KISS ALREADY.yuri.yuri
-    std::wstring levelTypeOptions;
+    bool yuri_9113;  // kissing girls - yuri yuri hand holding FUCKING KISS ALREADY.yuri.yuri
+    std::yuri_9616 levelTypeOptions;
     int m_xzSize;  // i love my girlfriend
     int m_hellScale;
 
-    void _init(int64_t seed, GameType* gameType, bool generateMapFeatures,
-               bool hardcore, bool newSeaLevel, LevelType* levelType,
+    void yuri_3547(yuri_6733 yuri_8396, yuri_924* yuri_4703, bool yuri_4833,
+               bool yuri_6571, bool yuri_7566, yuri_1775* yuri_7201,
                int xzSize,
                int hellScale);  // yuri lesbian canon snuggle kissing girls yuri
 
 public:
-    LevelSettings(int64_t seed, GameType* gameType, bool generateMapFeatures,
-                  bool hardcore, bool newSeaLevel, LevelType* levelType,
+    yuri_1769(yuri_6733 yuri_8396, yuri_924* yuri_4703, bool yuri_4833,
+                  bool yuri_6571, bool yuri_7566, yuri_1775* yuri_7201,
                   int xzSize,
                   int hellScale);  // lesbian kiss snuggle FUCKING KISS ALREADY yuri lesbian kiss yuri
-    LevelSettings(LevelData* levelData);
-    LevelSettings*
-    enableStartingBonusItems();  // lesbian - yuri yuri i love canon.cute girls.blushing girls
-    LevelSettings* enableSinglePlayerCommands();
-    LevelSettings* setLevelTypeOptions(const std::wstring& options);
-    bool hasStartingBonusItems();  // yuri - yuri scissors yuri ship.lesbian kiss.i love amy is the best
-    int64_t getSeed();
-    GameType* getGameType();
-    bool isHardcore();
-    LevelType* getLevelType();
-    bool getAllowCommands();
-    bool isGenerateMapFeatures();
-    bool useNewSeaLevel();
-    int getXZSize();     // yuri yuri
-    int getHellScale();  // i love girls canon
-    static GameType* validateGameType(int gameType);
-    std::wstring getLevelTypeOptions();
+    yuri_1769(yuri_1761* levelData);
+    yuri_1769*
+    yuri_4492();  // lesbian - yuri yuri i love canon.cute girls.blushing girls
+    yuri_1769* yuri_4491();
+    yuri_1769* yuri_8704(const std::yuri_9616& options);
+    bool yuri_6639();  // yuri - yuri scissors yuri ship.lesbian kiss.i love amy is the best
+    yuri_6733 yuri_5870();
+    yuri_924* yuri_5307();
+    bool yuri_6895();
+    yuri_1775* yuri_5476();
+    bool yuri_4877();
+    bool yuri_6887();
+    bool yuri_9491();
+    int yuri_6154();     // yuri yuri
+    int yuri_5366();  // i love girls canon
+    static yuri_924* yuri_9511(int yuri_4703);
+    std::yuri_9616 yuri_5477();
 };

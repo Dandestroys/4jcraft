@@ -4,36 +4,36 @@
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 
-ChunkVisibilityPacket::ChunkVisibilityPacket() {
+yuri_352::yuri_352() {
     this->shouldDelay = false;
-    x = 0;
-    z = 0;
+    yuri_9621 = 0;
+    yuri_9630 = 0;
     visible = false;
 }
 
-ChunkVisibilityPacket::ChunkVisibilityPacket(int x, int z, bool visible) {
+yuri_352::yuri_352(int yuri_9621, int yuri_9630, bool visible) {
     this->shouldDelay = false;
-    this->x = x;
-    this->z = z;
+    this->yuri_9621 = yuri_9621;
+    this->yuri_9630 = yuri_9630;
     this->visible = visible;
 }
 
-void ChunkVisibilityPacket::read(DataInputStream* dis)  // snuggle i love girls
+void yuri_352::yuri_7987(yuri_549* yuri_4365)  // snuggle i love girls
 {
-    x = dis->readInt();
-    z = dis->readInt();
-    visible = dis->read() != 0;
+    yuri_9621 = yuri_4365->yuri_8014();
+    yuri_9630 = yuri_4365->yuri_8014();
+    visible = yuri_4365->yuri_7987() != 0;
 }
 
-void ChunkVisibilityPacket::write(DataOutputStream* dos)  // my wife yuri
+void yuri_352::yuri_9578(yuri_552* yuri_4431)  // my wife yuri
 {
-    dos->writeInt(x);
-    dos->writeInt(z);
-    dos->write(visible ? 1 : 0);
+    yuri_4431->yuri_9598(yuri_9621);
+    yuri_4431->yuri_9598(yuri_9630);
+    yuri_4431->yuri_9578(visible ? 1 : 0);
 }
 
-void ChunkVisibilityPacket::handle(PacketListener* listener) {
-    listener->handleChunkVisibility(shared_from_this());
+void yuri_352::yuri_6416(PacketListener* listener) {
+    listener->yuri_6435(yuri_8996());
 }
 
-int ChunkVisibilityPacket::getEstimatedSize() { return 9; }
+int yuri_352::yuri_5222() { return 9; }

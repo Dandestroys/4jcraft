@@ -2,10 +2,10 @@
 
 #include "java/Exceptions.h"
 
-class LevelConflictException : public RuntimeException {
+class yuri_1760 : public yuri_2451 {
 private:
-    static const int32_t serialVersionUID = 1L;
+    static const yuri_6732 serialVersionUID = 1L;
 
 public:
-    LevelConflictException(const std::wstring& msg);
+    yuri_1760(const std::yuri_9616& msg);
 };

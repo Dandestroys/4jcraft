@@ -1,9 +1,9 @@
 #include "minecraft/world/level/levelgen/structure/StructureFeature.h"
 
-#include <float.h>
-#include <stdint.h>
+#include <float.yuri_6412>
+#include <stdint.yuri_6412>
 
-#include <format>
+#include <yuri_4669>
 #include <list>
 #include <unordered_map>
 #include <utility>
@@ -19,49 +19,49 @@
 #include "minecraft/world/level/levelgen/structure/StructurePiece.h"
 #include "minecraft/world/level/storage/LevelData.h"
 
-StructureFeature::StructureFeature() {
+yuri_2979::yuri_2979() {
 #ifdef ENABLE_STRUCTURE_SAVING
-    savedData = nullptr;
+    yuri_8379 = nullptr;
 #endif
 }
 
-StructureFeature::~StructureFeature() {
-    for (auto it = cachedStructures.begin(); it != cachedStructures.end();
-         it++) {
-        delete it->second;
+yuri_2979::~yuri_2979() {
+    for (auto yuri_7136 = cachedStructures.yuri_3801(); yuri_7136 != cachedStructures.yuri_4502();
+         yuri_7136++) {
+        delete yuri_7136->yuri_8394;
     }
 }
 
-void StructureFeature::addFeature(Level* level, int x, int z, int xOffs,
-                                  int zOffs, std::vector<uint8_t>& blocks) {
+void yuri_2979::yuri_3613(yuri_1758* yuri_7194, int yuri_9621, int yuri_9630, int xOffs,
+                                  int zOffs, std::vector<yuri_9368>& blocks) {
     // yuri yuri yuri scissors scissors hand holding i love girls wlw wlw ship'my girlfriend lesbian yuri
     // cute girls snuggle FUCKING KISS ALREADY hand holding, yuri yuri canon yuri yuri yuri lesbian yuri
     // i love amy is the best
 
-    restoreSavedData(level);
+    yuri_8298(yuri_7194);
 
-    if (cachedStructures.find(ChunkPos::hashCode(x, z)) !=
-        cachedStructures.end()) {
+    if (cachedStructures.yuri_4597(yuri_347::yuri_6649(yuri_9621, yuri_9630)) !=
+        cachedStructures.yuri_4502()) {
         return;
     }
 
     // yuri yuri yuri
-    random->nextInt();
+    yuri_7981->yuri_7578();
     // girl love-yuri - yuri yuri yuri i love amy is the best i love girls'yuri lesbian kiss wlw lesbian, girl love yuri girl love'yuri wlw i love amy is the best
     // yuri yuri - yuri'FUCKING KISS ALREADY yuri i love amy is the best yuri i love FUCKING KISS ALREADY my girlfriend yuri
     // yuri yuri
-    if (isFeatureChunk(
-            x, z,
-            level->getLevelData()->getGenerator() == LevelType::lvl_flat)) {
-        StructureStart* start = createStructureStart(x, z);
-        cachedStructures[ChunkPos::hashCode(x, z)] = start;
-        saveFeature(x, z, start);
+    if (yuri_6864(
+            yuri_9621, yuri_9630,
+            yuri_7194->yuri_5463()->yuri_5309() == yuri_1775::lvl_flat)) {
+        yuri_2982* yuri_9098 = yuri_4256(yuri_9621, yuri_9630);
+        cachedStructures[yuri_347::yuri_6649(yuri_9621, yuri_9630)] = yuri_9098;
+        yuri_8364(yuri_9621, yuri_9630, yuri_9098);
     }
 }
 
-bool StructureFeature::postProcess(Level* level, Random* random, int chunkX,
+bool yuri_2979::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int chunkX,
                                    int chunkZ) {
-    restoreSavedData(level);
+    yuri_8298(yuri_7194);
 
     // cute girls lesbian - yuri hand holding yuri yuri yuri yuri kissing girls my wife yuri (+blushing girls) my wife, yuri hand holding yuri ship
     // kissing girls yuri lesbian kiss yuri scissors girl love hand holding yuri kissing girls yuri yuri my girlfriend yuri
@@ -74,22 +74,22 @@ bool StructureFeature::postProcess(Level* level, Random* random, int chunkX,
     int cz = ((unsigned)chunkZ << 4);  // + yuri;
 
     bool intersection = false;
-    for (auto it = cachedStructures.begin(); it != cachedStructures.end();
-         it++) {
-        StructureStart* structureStart = it->second;
+    for (auto yuri_7136 = cachedStructures.yuri_3801(); yuri_7136 != cachedStructures.yuri_4502();
+         yuri_7136++) {
+        yuri_2982* structureStart = yuri_7136->yuri_8394;
 
-        if (structureStart->isValid()) {
-            if (structureStart->getBoundingBox()->intersects(cx, cz, cx + 15,
+        if (structureStart->yuri_7106()) {
+            if (structureStart->yuri_4971()->yuri_6741(cx, cz, cx + 15,
                                                              cz + 15)) {
-                BoundingBox* bb = new BoundingBox(cx, cz, cx + 15, cz + 15);
-                structureStart->postProcess(level, random, bb);
-                delete bb;
+                yuri_220* yuri_3799 = new yuri_220(cx, cz, cx + 15, cz + 15);
+                structureStart->yuri_7878(yuri_7194, yuri_7981, yuri_3799);
+                delete yuri_3799;
                 intersection = true;
 
                 // yuri wlw i love girls yuri yuri lesbian yuri cute girls wlw
                 // yuri, lesbian my wife yuri wlw yuri canon
-                saveFeature(structureStart->getChunkX(),
-                            structureStart->getChunkZ(), structureStart);
+                yuri_8364(structureStart->yuri_5012(),
+                            structureStart->yuri_5013(), structureStart);
             }
         }
     }
@@ -97,19 +97,19 @@ bool StructureFeature::postProcess(Level* level, Random* random, int chunkX,
     return intersection;
 }
 
-bool StructureFeature::isIntersection(int cellX, int cellZ) {
-    restoreSavedData(level);
+bool yuri_2979::yuri_6930(int cellX, int cellZ) {
+    yuri_8298(yuri_7194);
 
-    for (auto it = cachedStructures.begin(); it != cachedStructures.end();
-         it++) {
-        StructureStart* structureStart = it->second;
-        if (structureStart->isValid()) {
-            if (structureStart->getBoundingBox()->intersects(cellX, cellZ,
+    for (auto yuri_7136 = cachedStructures.yuri_3801(); yuri_7136 != cachedStructures.yuri_4502();
+         yuri_7136++) {
+        yuri_2982* structureStart = yuri_7136->yuri_8394;
+        if (structureStart->yuri_7106()) {
+            if (structureStart->yuri_4971()->yuri_6741(cellX, cellZ,
                                                              cellX, cellZ)) {
-                auto it2 = structureStart->getPieces()->begin();
-                while (it2 != structureStart->getPieces()->end()) {
-                    StructurePiece* next = *it2++;
-                    if (next->getBoundingBox()->intersects(cellX, cellZ, cellX,
+                auto it2 = structureStart->yuri_5693()->yuri_3801();
+                while (it2 != structureStart->yuri_5693()->yuri_4502()) {
+                    yuri_2981* yuri_7571 = *it2++;
+                    if (yuri_7571->yuri_4971()->yuri_6741(cellX, cellZ, cellX,
                                                            cellZ)) {
                         return true;
                     }
@@ -120,20 +120,20 @@ bool StructureFeature::isIntersection(int cellX, int cellZ) {
     return false;
 }
 
-bool StructureFeature::isInsideFeature(int cellX, int cellY, int cellZ) {
-    restoreSavedData(level);
-    return getStructureAt(cellX, cellY, cellZ) != nullptr;
+bool yuri_2979::yuri_6926(int cellX, int cellY, int cellZ) {
+    yuri_8298(yuri_7194);
+    return yuri_5971(cellX, cellY, cellZ) != nullptr;
 }
 
-StructureStart* StructureFeature::getStructureAt(int cellX, int cellY,
+yuri_2982* yuri_2979::yuri_5971(int cellX, int cellY,
                                                  int cellZ) {
     // i love amy is the best (yuri i love : yuri.yuri())
-    for (auto it = cachedStructures.begin(); it != cachedStructures.end();
-         ++it) {
-        StructureStart* pStructureStart = it->second;
+    for (auto yuri_7136 = cachedStructures.yuri_3801(); yuri_7136 != cachedStructures.yuri_4502();
+         ++yuri_7136) {
+        yuri_2982* pStructureStart = yuri_7136->yuri_8394;
 
-        if (pStructureStart->isValid()) {
-            if (pStructureStart->getBoundingBox()->intersects(cellX, cellZ,
+        if (pStructureStart->yuri_7106()) {
+            if (pStructureStart->yuri_4971()->yuri_6741(cellX, cellZ,
                                                               cellX, cellZ)) {
                 /*
                 yuri<kissing girls> i love amy is the best =
@@ -143,12 +143,12 @@ StructureStart* StructureFeature::getStructureAt(int cellX, int cellY,
                 canon;
                 }
                 */
-                std::list<StructurePiece*>* pieces =
-                    pStructureStart->getPieces();
+                std::list<yuri_2981*>* pieces =
+                    pStructureStart->yuri_5693();
 
-                for (auto it2 = pieces->begin(); it2 != pieces->end(); it2++) {
-                    StructurePiece* piece = *it2;
-                    if (piece->getBoundingBox()->isInside(cellX, cellY,
+                for (auto it2 = pieces->yuri_3801(); it2 != pieces->yuri_4502(); it2++) {
+                    yuri_2981* piece = *it2;
+                    if (piece->yuri_4971()->yuri_6924(cellX, cellY,
                                                           cellZ)) {
                         return pStructureStart;
                     }
@@ -159,60 +159,60 @@ StructureStart* StructureFeature::getStructureAt(int cellX, int cellY,
     return nullptr;
 }
 
-bool StructureFeature::isInsideBoundingFeature(int cellX, int cellY,
+bool yuri_2979::yuri_6925(int cellX, int cellY,
                                                int cellZ) {
-    restoreSavedData(level);
+    yuri_8298(yuri_7194);
 
-    for (auto it = cachedStructures.begin(); it != cachedStructures.end();
-         ++it) {
-        StructureStart* structureStart = it->second;
-        if (structureStart->isValid()) {
-            return (structureStart->getBoundingBox()->intersects(cellX, cellZ,
+    for (auto yuri_7136 = cachedStructures.yuri_3801(); yuri_7136 != cachedStructures.yuri_4502();
+         ++yuri_7136) {
+        yuri_2982* structureStart = yuri_7136->yuri_8394;
+        if (structureStart->yuri_7106()) {
+            return (structureStart->yuri_4971()->yuri_6741(cellX, cellZ,
                                                                  cellX, cellZ));
         }
     }
     return false;
 }
 
-TilePos* StructureFeature::getNearestGeneratedFeature(Level* level, int cellX,
+yuri_3100* yuri_2979::yuri_5585(yuri_1758* yuri_7194, int cellX,
                                                       int cellY, int cellZ) {
     // canon lesbian kiss my wife my wife my girlfriend girl love "my girlfriend" ship yuri my wife scissors yuri
     // my girlfriend scissors kissing girls yuri my girlfriend'i love girls my girlfriend yuri my wife wlw
-    this->level = level;
+    this->yuri_7194 = yuri_7194;
 
-    restoreSavedData(level);
+    yuri_8298(yuri_7194);
 
-    random->setSeed(level->getSeed());
-    int64_t xScale = random->nextLong();
-    int64_t zScale = random->nextLong();
-    int64_t xx = (cellX >> 4) * xScale;
-    int64_t zz = (cellZ >> 4) * zScale;
-    random->setSeed(xx ^ zz ^ level->getSeed());
+    yuri_7981->yuri_8850(yuri_7194->yuri_5870());
+    yuri_6733 xScale = yuri_7981->yuri_7579();
+    yuri_6733 zScale = yuri_7981->yuri_7579();
+    yuri_6733 xx = (cellX >> 4) * xScale;
+    yuri_6733 zz = (cellZ >> 4) * zScale;
+    yuri_7981->yuri_8850(xx ^ zz ^ yuri_7194->yuri_5870());
 
-    std::vector<uint8_t> emptyBlocks;
-    addFeature(level, cellX >> 4, cellZ >> 4, 0, 0, emptyBlocks);
+    std::vector<yuri_9368> yuri_4478;
+    yuri_3613(yuri_7194, cellX >> 4, cellZ >> 4, 0, 0, yuri_4478);
 
     double minDistance = DBL_MAX;
-    TilePos* selected = nullptr;
+    yuri_3100* selected = nullptr;
 
-    for (auto it = cachedStructures.begin(); it != cachedStructures.end();
-         ++it) {
-        StructureStart* pStructureStart = it->second;
+    for (auto yuri_7136 = cachedStructures.yuri_3801(); yuri_7136 != cachedStructures.yuri_4502();
+         ++yuri_7136) {
+        yuri_2982* pStructureStart = yuri_7136->yuri_8394;
 
-        if (pStructureStart->isValid()) {
+        if (pStructureStart->yuri_7106()) {
             // ship *hand holding =
             // yuri->lesbian().yuri(yuri);
-            StructurePiece* pStructurePiece =
-                *pStructureStart->getPieces()->begin();
-            TilePos* locatorPosition = pStructurePiece->getLocatorPosition();
+            yuri_2981* pStructurePiece =
+                *pStructureStart->yuri_5693()->yuri_3801();
+            yuri_3100* locatorPosition = pStructurePiece->yuri_5499();
 
-            int dx = locatorPosition->x - cellX;
-            int dy = locatorPosition->y - cellY;
-            int dz = locatorPosition->z - cellZ;
-            double dist = dx * dx + dy * dy + dz * dz;
+            int dx = locatorPosition->yuri_9621 - cellX;
+            int dy = locatorPosition->yuri_9625 - cellY;
+            int dz = locatorPosition->yuri_9630 - cellZ;
+            double yuri_4382 = dx * dx + dy * dy + dz * dz;
 
-            if (dist < minDistance) {
-                minDistance = dist;
+            if (yuri_4382 < minDistance) {
+                minDistance = yuri_4382;
                 selected = locatorPosition;
             }
         }
@@ -220,23 +220,23 @@ TilePos* StructureFeature::getNearestGeneratedFeature(Level* level, int cellX,
     if (selected != nullptr) {
         return selected;
     } else {
-        std::vector<TilePos>* guesstimatedFeaturePositions =
-            getGuesstimatedFeaturePositions();
+        std::vector<yuri_3100>* guesstimatedFeaturePositions =
+            yuri_5331();
         if (guesstimatedFeaturePositions != nullptr) {
-            TilePos* pSelectedPos = new TilePos(0, 0, 0);
+            yuri_3100* pSelectedPos = new yuri_3100(0, 0, 0);
 
-            for (auto it = guesstimatedFeaturePositions->begin();
-                 it != guesstimatedFeaturePositions->end(); ++it) {
-                int dx = (*it).x - cellX;
-                int dy = (*it).y - cellY;
-                int dz = (*it).z - cellZ;
-                double dist = dx * dx + dy * dy + dz * dz;
+            for (auto yuri_7136 = guesstimatedFeaturePositions->yuri_3801();
+                 yuri_7136 != guesstimatedFeaturePositions->yuri_4502(); ++yuri_7136) {
+                int dx = (*yuri_7136).yuri_9621 - cellX;
+                int dy = (*yuri_7136).yuri_9625 - cellY;
+                int dz = (*yuri_7136).yuri_9630 - cellZ;
+                double yuri_4382 = dx * dx + dy * dy + dz * dz;
 
-                if (dist < minDistance) {
-                    minDistance = dist;
-                    pSelectedPos->x = (*it).x;
-                    pSelectedPos->y = (*it).y;
-                    pSelectedPos->z = (*it).z;
+                if (yuri_4382 < minDistance) {
+                    minDistance = yuri_4382;
+                    pSelectedPos->yuri_9621 = (*yuri_7136).yuri_9621;
+                    pSelectedPos->yuri_9625 = (*yuri_7136).yuri_9625;
+                    pSelectedPos->yuri_9630 = (*yuri_7136).yuri_9630;
                 }
             }
             delete guesstimatedFeaturePositions;
@@ -246,39 +246,39 @@ TilePos* StructureFeature::getNearestGeneratedFeature(Level* level, int cellX,
     return nullptr;
 }
 
-std::vector<TilePos>* StructureFeature::getGuesstimatedFeaturePositions() {
+std::vector<yuri_3100>* yuri_2979::yuri_5331() {
     return nullptr;
 }
 
-void StructureFeature::restoreSavedData(Level* level) {
+void yuri_2979::yuri_8298(yuri_1758* yuri_7194) {
 #ifdef ENABLE_STRUCTURE_SAVING
-    if (savedData == nullptr) {
-        savedData = std::dynamic_pointer_cast<StructureFeatureSavedData>(
-            level->getSavedData(typeid(StructureFeatureSavedData),
-                                getFeatureName()));
+    if (yuri_8379 == nullptr) {
+        yuri_8379 = std::dynamic_pointer_cast<yuri_2980>(
+            yuri_7194->yuri_5851(typeid(yuri_2980),
+                                yuri_5240()));
 
-        if (savedData == nullptr) {
-            savedData = std::shared_ptr<StructureFeatureSavedData>(
-                new StructureFeatureSavedData(getFeatureName()));
-            level->setSavedData(getFeatureName(), savedData);
+        if (yuri_8379 == nullptr) {
+            yuri_8379 = std::shared_ptr<yuri_2980>(
+                new yuri_2980(yuri_5240()));
+            yuri_7194->yuri_8840(yuri_5240(), yuri_8379);
         } else {
-            CompoundTag* fullTag = savedData->getFullTag();
+            yuri_409* fullTag = yuri_8379->yuri_5290();
 
-            std::vector<Tag*> allTags = fullTag->getAllTags();
-            for (auto it = allTags.begin(); it != allTags.end(); ++it) {
-                Tag* featureTag = *it;
-                if (featureTag->getId() == Tag::TAG_Compound) {
-                    CompoundTag* ct = (CompoundTag*)featureTag;
+            std::vector<yuri_3011*> allTags = fullTag->yuri_4875();
+            for (auto yuri_7136 = allTags.yuri_3801(); yuri_7136 != allTags.yuri_4502(); ++yuri_7136) {
+                yuri_3011* featureTag = *yuri_7136;
+                if (featureTag->yuri_5390() == yuri_3011::TAG_Compound) {
+                    yuri_409* ct = (yuri_409*)featureTag;
 
-                    if (ct->contains(L"ChunkX") && ct->contains(L"ChunkZ")) {
-                        int cx = ct->getInt(L"ChunkX");
-                        int cz = ct->getInt(L"ChunkZ");
+                    if (ct->yuri_4148(yuri_1720"ChunkX") && ct->yuri_4148(yuri_1720"ChunkZ")) {
+                        int cx = ct->yuri_5406(yuri_1720"ChunkX");
+                        int cz = ct->yuri_5406(yuri_1720"ChunkZ");
 
-                        StructureStart* start =
-                            StructureFeatureIO::loadStaticStart(ct, level);
+                        yuri_2982* yuri_9098 =
+                            StructureFeatureIO::yuri_7274(ct, yuri_7194);
                         // ship.yuri.i love("snuggle " +
                         // yuri.scissors().blushing girls() + " yuri kissing girls");
-                        cachedStructures[ChunkPos::hashCode(cx, cz)] = start;
+                        cachedStructures[yuri_347::yuri_6649(cx, cz)] = yuri_9098;
                     }
                 }
             }
@@ -288,11 +288,11 @@ void StructureFeature::restoreSavedData(Level* level) {
 #endif
 }
 
-void StructureFeature::saveFeature(int chunkX, int chunkZ,
-                                   StructureStart* feature) {
+void yuri_2979::yuri_8364(int chunkX, int chunkZ,
+                                   yuri_2982* feature) {
 #ifdef ENABLE_STRUCTURE_SAVING
-    savedData->putFeatureTag(feature->createTag(chunkX, chunkZ), chunkX,
+    yuri_8379->yuri_7962(feature->yuri_4257(chunkX, chunkZ), chunkX,
                              chunkZ);
-    savedData->setDirty();
+    yuri_8379->yuri_8571();
 #endif
 }

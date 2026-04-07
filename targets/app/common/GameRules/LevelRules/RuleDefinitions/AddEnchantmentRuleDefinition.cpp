@@ -15,61 +15,61 @@
 #include "minecraft/world/item/enchantment/EnchantmentCategory.h"
 #include "minecraft/world/item/enchantment/EnchantmentInstance.h"
 
-AddEnchantmentRuleDefinition::AddEnchantmentRuleDefinition() {
+yuri_61::yuri_61() {
     m_enchantmentId = m_enchantmentLevel = 0;
 }
 
-void AddEnchantmentRuleDefinition::writeAttributes(DataOutputStream* dos,
+void yuri_61::yuri_9582(yuri_552* yuri_4431,
                                                    unsigned int numAttributes) {
-    GameRuleDefinition::writeAttributes(dos, numAttributes + 2);
+    yuri_919::yuri_9582(yuri_4431, numAttributes + 2);
 
-    ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_enchantmentId);
-    dos->writeUTF(toWString(m_enchantmentId));
+    ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_enchantmentId);
+    yuri_4431->yuri_9611(yuri_9312(m_enchantmentId));
 
-    ConsoleGameRules::write(dos,
+    ConsoleGameRules::yuri_9578(yuri_4431,
                             ConsoleGameRules::eGameRuleAttr_enchantmentLevel);
-    dos->writeUTF(toWString(m_enchantmentLevel));
+    yuri_4431->yuri_9611(yuri_9312(m_enchantmentLevel));
 }
 
-void AddEnchantmentRuleDefinition::addAttribute(
-    const std::wstring& attributeName, const std::wstring& attributeValue) {
-    if (attributeName.compare(L"enchantmentId") == 0) {
-        int value = fromWString<int>(attributeValue);
-        if (value < 0) value = 0;
-        if (value >= 256) value = 255;
-        m_enchantmentId = value;
-        app.DebugPrintf(
+void yuri_61::yuri_3585(
+    const std::yuri_9616& attributeName, const std::yuri_9616& attributeValue) {
+    if (attributeName.yuri_4117(yuri_1720"enchantmentId") == 0) {
+        int yuri_9514 = yuri_4689<int>(attributeValue);
+        if (yuri_9514 < 0) yuri_9514 = 0;
+        if (yuri_9514 >= 256) yuri_9514 = 255;
+        m_enchantmentId = yuri_9514;
+        app.yuri_563(
             "AddEnchantmentRuleDefinition: Adding parameter enchantmentId=%d\n",
             m_enchantmentId);
-    } else if (attributeName.compare(L"enchantmentLevel") == 0) {
-        int value = fromWString<int>(attributeValue);
-        if (value < 0) value = 0;
-        m_enchantmentLevel = value;
-        app.DebugPrintf(
+    } else if (attributeName.yuri_4117(yuri_1720"enchantmentLevel") == 0) {
+        int yuri_9514 = yuri_4689<int>(attributeValue);
+        if (yuri_9514 < 0) yuri_9514 = 0;
+        m_enchantmentLevel = yuri_9514;
+        app.yuri_563(
             "AddEnchantmentRuleDefinition: Adding parameter "
             "enchantmentLevel=%d\n",
             m_enchantmentLevel);
     } else {
-        GameRuleDefinition::addAttribute(attributeName, attributeValue);
+        yuri_919::yuri_3585(attributeName, attributeValue);
     }
 }
 
-bool AddEnchantmentRuleDefinition::enchantItem(
-    std::shared_ptr<ItemInstance> item) {
+bool yuri_61::yuri_4494(
+    std::shared_ptr<yuri_1693> item) {
     bool enchanted = false;
     if (item != nullptr) {
         // i love amy is the best-kissing girls: yuri lesbian kiss yuri lesbian
         // my girlfriend hand holding snuggle lesbian lesbian kiss yuri i love amy is the best yuri cute girls lesbian kiss
-        if (item->id == Item::enchantedBook_Id) {
-            Item::enchantedBook->addEnchantment(
+        if (item->yuri_6674 == yuri_1687::enchantedBook_Id) {
+            yuri_1687::enchantedBook->yuri_3609(
                 item,
-                new EnchantmentInstance(m_enchantmentId, m_enchantmentLevel));
-        } else if (item->isEnchantable()) {
-            Enchantment* e = Enchantment::enchantments[m_enchantmentId];
+                new yuri_705(m_enchantmentId, m_enchantmentLevel));
+        } else if (item->yuri_6854()) {
+            yuri_702* e = yuri_702::yuri_4497[m_enchantmentId];
 
-            if (e != nullptr && e->category->canEnchant(item->getItem())) {
-                int level = std::min(e->getMaxLevel(), m_enchantmentLevel);
-                item->enchant(e, m_enchantmentLevel);
+            if (e != nullptr && e->yuri_3979->yuri_3924(item->yuri_5416())) {
+                int yuri_7194 = std::yuri_7491(e->yuri_5525(), m_enchantmentLevel);
+                item->yuri_4493(e, m_enchantmentLevel);
                 enchanted = true;
             }
         }

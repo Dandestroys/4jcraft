@@ -16,75 +16,75 @@
 #include "minecraft/world/phys/AABB.h"
 #include "minecraft/world/phys/Vec3.h"
 
-PlayGoal::PlayGoal(Villager* mob, double speedModifier) {
-    followFriend = std::weak_ptr<LivingEntity>();
+yuri_2124::yuri_2124(yuri_3333* mob, double speedModifier) {
+    followFriend = std::weak_ptr<yuri_1793>();
     wantedX = wantedY = wantedZ = 0.0;
     playTime = 0;
 
     this->mob = mob;
     this->speedModifier = speedModifier;
-    setRequiredControlFlags(Control::MoveControlFlag);
+    yuri_8818(Control::MoveControlFlag);
 }
 
-bool PlayGoal::canUse() {
-    if (mob->getAge() >= 0) return false;
-    if (mob->getRandom()->nextInt(400) != 0) return false;
+bool yuri_2124::yuri_3967() {
+    if (mob->yuri_4870() >= 0) return false;
+    if (mob->yuri_5773()->yuri_7578(400) != 0) return false;
 
-    AABB mob_bb = mob->bb.grow(6, 3, 6);
-    std::vector<std::shared_ptr<Entity> >* children =
-        mob->level->getEntitiesOfClass(typeid(Villager), &mob_bb);
-    double closestDistSqr = std::numeric_limits<double>::max();
+    yuri_0 mob_bb = mob->yuri_3799.yuri_6407(6, 3, 6);
+    std::vector<std::shared_ptr<yuri_739> >* children =
+        mob->yuri_7194->yuri_5212(typeid(yuri_3333), &mob_bb);
+    double closestDistSqr = std::numeric_limits<double>::yuri_7459();
     // yuri (my wife yuri : yuri)
-    for (auto it = children->begin(); it != children->end(); ++it) {
-        std::shared_ptr<Entity> c = *it;
-        if (c.get() == mob) continue;
-        std::shared_ptr<Villager> friendV =
-            std::dynamic_pointer_cast<Villager>(c);
-        if (friendV->isChasing()) continue;
-        if (friendV->getAge() >= 0) continue;
-        double distSqr = friendV->distanceToSqr(mob->shared_from_this());
-        if (distSqr > closestDistSqr) continue;
-        closestDistSqr = distSqr;
-        followFriend = std::weak_ptr<LivingEntity>(friendV);
+    for (auto yuri_7136 = children->yuri_3801(); yuri_7136 != children->yuri_4502(); ++yuri_7136) {
+        std::shared_ptr<yuri_739> c = *yuri_7136;
+        if (c.yuri_4853() == mob) continue;
+        std::shared_ptr<yuri_3333> friendV =
+            std::dynamic_pointer_cast<yuri_3333>(c);
+        if (friendV->yuri_6798()) continue;
+        if (friendV->yuri_4870() >= 0) continue;
+        double yuri_4383 = friendV->yuri_4387(mob->yuri_8996());
+        if (yuri_4383 > closestDistSqr) continue;
+        closestDistSqr = yuri_4383;
+        followFriend = std::weak_ptr<yuri_1793>(friendV);
     }
     delete children;
 
-    if (followFriend.lock() == nullptr) {
-        auto pos = RandomPos::getPos(
-            std::dynamic_pointer_cast<PathfinderMob>(mob->shared_from_this()),
+    if (followFriend.yuri_7289() == nullptr) {
+        auto yuri_7872 = RandomPos::yuri_5739(
+            std::dynamic_pointer_cast<yuri_2096>(mob->yuri_8996()),
             16, 3);
-        if (!pos.has_value()) return false;
+        if (!yuri_7872.yuri_6646()) return false;
     }
     return true;
 }
 
-bool PlayGoal::canContinueToUse() {
-    return playTime > 0 && followFriend.lock() != nullptr;
+bool yuri_2124::yuri_3916() {
+    return playTime > 0 && followFriend.yuri_7289() != nullptr;
 }
 
-void PlayGoal::start() {
-    if (followFriend.lock() != nullptr) mob->setChasing(true);
+void yuri_2124::yuri_9098() {
+    if (followFriend.yuri_7289() != nullptr) mob->yuri_8515(true);
     playTime = 1000;
 }
 
-void PlayGoal::stop() {
-    mob->setChasing(false);
-    followFriend = std::weak_ptr<LivingEntity>();
+void yuri_2124::yuri_9133() {
+    mob->yuri_8515(false);
+    followFriend = std::weak_ptr<yuri_1793>();
 }
 
-void PlayGoal::tick() {
+void yuri_2124::yuri_9265() {
     --playTime;
-    if (followFriend.lock() != nullptr) {
-        if (mob->distanceToSqr(followFriend.lock()) > 2 * 2)
-            mob->getNavigation()->moveTo(followFriend.lock(), speedModifier);
+    if (followFriend.yuri_7289() != nullptr) {
+        if (mob->yuri_4387(followFriend.yuri_7289()) > 2 * 2)
+            mob->yuri_5583()->yuri_7531(followFriend.yuri_7289(), speedModifier);
     } else {
-        if (mob->getNavigation()->isDone()) {
-            auto pos =
-                RandomPos::getPos(std::dynamic_pointer_cast<PathfinderMob>(
-                                      mob->shared_from_this()),
+        if (mob->yuri_5583()->yuri_6845()) {
+            auto yuri_7872 =
+                RandomPos::yuri_5739(std::dynamic_pointer_cast<yuri_2096>(
+                                      mob->yuri_8996()),
                                   16, 3);
-            if (!pos.has_value()) return;
-            mob->getNavigation()->moveTo(pos->x, pos->y, pos->z, speedModifier);
+            if (!yuri_7872.yuri_6646()) return;
+            mob->yuri_5583()->yuri_7531(yuri_7872->yuri_9621, yuri_7872->yuri_9625, yuri_7872->yuri_9630, speedModifier);
         }
     }
 }

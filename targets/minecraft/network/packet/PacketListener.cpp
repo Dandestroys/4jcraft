@@ -89,323 +89,323 @@
 #include "minecraft/network/packet/UseItemPacket.h"
 #include "minecraft/network/packet/XZPacket.h"
 
-void PacketListener::handleBlockRegionUpdate(
-    std::shared_ptr<BlockRegionUpdatePacket> packet) {}
+void PacketListener::yuri_6429(
+    std::shared_ptr<yuri_204> packet) {}
 
-void PacketListener::onUnhandledPacket(std::shared_ptr<Packet> packet) {}
+void PacketListener::yuri_7651(std::shared_ptr<yuri_2081> packet) {}
 
-void PacketListener::onDisconnect(DisconnectPacket::eDisconnectReason reason,
+void PacketListener::yuri_7616(yuri_621::eDisconnectReason reason,
                                   void* reasonObjects) {}
 
-void PacketListener::handleDisconnect(
-    std::shared_ptr<DisconnectPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6466(
+    std::shared_ptr<yuri_621> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleLogin(std::shared_ptr<LoginPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6493(std::shared_ptr<yuri_1835> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleMovePlayer(
-    std::shared_ptr<MovePlayerPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6499(
+    std::shared_ptr<yuri_1985> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleChunkTilesUpdate(
-    std::shared_ptr<ChunkTilesUpdatePacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6434(
+    std::shared_ptr<yuri_350> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handlePlayerAction(
-    std::shared_ptr<PlayerActionPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6506(
+    std::shared_ptr<yuri_2128> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleTileUpdate(
-    std::shared_ptr<TileUpdatePacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6555(
+    std::shared_ptr<yuri_3102> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleChunkVisibility(
-    std::shared_ptr<ChunkVisibilityPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6435(
+    std::shared_ptr<yuri_352> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleAddPlayer(std::shared_ptr<AddPlayerPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6424(std::shared_ptr<yuri_82> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleMoveEntity(
-    std::shared_ptr<MoveEntityPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6497(
+    std::shared_ptr<yuri_1982> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleMoveEntitySmall(
-    std::shared_ptr<MoveEntityPacketSmall> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6498(
+    std::shared_ptr<yuri_1983> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleTeleportEntity(
-    std::shared_ptr<TeleportEntityPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6543(
+    std::shared_ptr<yuri_3024> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleUseItem(std::shared_ptr<UseItemPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6567(std::shared_ptr<yuri_3309> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleSetCarriedItem(
-    std::shared_ptr<SetCarriedItemPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6524(
+    std::shared_ptr<yuri_2580> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleRemoveEntity(
-    std::shared_ptr<RemoveEntitiesPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6515(
+    std::shared_ptr<yuri_2377> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleTakeItemEntity(
-    std::shared_ptr<TakeItemEntityPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6542(
+    std::shared_ptr<yuri_3015> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleChat(std::shared_ptr<ChatPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6431(std::shared_ptr<yuri_328> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleAddEntity(std::shared_ptr<AddEntityPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6418(std::shared_ptr<yuri_62> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleAnimate(std::shared_ptr<AnimatePacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6426(std::shared_ptr<yuri_116> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handlePlayerCommand(
-    std::shared_ptr<PlayerCommandPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6507(
+    std::shared_ptr<yuri_2133> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handlePreLogin(std::shared_ptr<PreLoginPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6510(std::shared_ptr<yuri_2167> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleAddMob(std::shared_ptr<AddMobPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6421(std::shared_ptr<yuri_77> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleSetTime(std::shared_ptr<SetTimePacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6535(std::shared_ptr<yuri_2743> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleSetSpawn(
-    std::shared_ptr<SetSpawnPositionPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6534(
+    std::shared_ptr<yuri_2728> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleSetEntityMotion(
-    std::shared_ptr<SetEntityMotionPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6528(
+    std::shared_ptr<yuri_2617> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleSetEntityData(
-    std::shared_ptr<SetEntityDataPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6527(
+    std::shared_ptr<yuri_2615> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleEntityLinkPacket(
-    std::shared_ptr<SetEntityLinkPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6471(
+    std::shared_ptr<yuri_2616> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleInteract(std::shared_ptr<InteractPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6482(std::shared_ptr<yuri_1620> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleEntityEvent(
-    std::shared_ptr<EntityEventPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6469(
+    std::shared_ptr<yuri_742> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleSetHealth(std::shared_ptr<SetHealthPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6531(std::shared_ptr<yuri_2642> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleRespawn(std::shared_ptr<RespawnPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6518(std::shared_ptr<yuri_2413> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleTexture(std::shared_ptr<TexturePacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6544(std::shared_ptr<yuri_3057> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleTextureAndGeometry(
-    std::shared_ptr<TextureAndGeometryPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6545(
+    std::shared_ptr<yuri_3038> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleExplosion(std::shared_ptr<ExplodePacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6472(std::shared_ptr<yuri_780> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleContainerOpen(
-    std::shared_ptr<ContainerOpenPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6455(
+    std::shared_ptr<yuri_444> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleContainerClose(
-    std::shared_ptr<ContainerClosePacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6453(
+    std::shared_ptr<yuri_440> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleContainerClick(
-    std::shared_ptr<ContainerClickPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6452(
+    std::shared_ptr<yuri_439> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleContainerSetSlot(
-    std::shared_ptr<ContainerSetSlotPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6457(
+    std::shared_ptr<yuri_449> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleContainerContent(
-    std::shared_ptr<ContainerSetContentPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6454(
+    std::shared_ptr<yuri_447> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleSignUpdate(
-    std::shared_ptr<SignUpdatePacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6536(
+    std::shared_ptr<yuri_2818> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleContainerSetData(
-    std::shared_ptr<ContainerSetDataPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6456(
+    std::shared_ptr<yuri_448> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleSetEquippedItem(
-    std::shared_ptr<SetEquippedItemPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6529(
+    std::shared_ptr<yuri_2618> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleContainerAck(
-    std::shared_ptr<ContainerAckPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6450(
+    std::shared_ptr<yuri_437> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleAddPainting(
-    std::shared_ptr<AddPaintingPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6423(
+    std::shared_ptr<yuri_80> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleTileEvent(std::shared_ptr<TileEventPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6554(std::shared_ptr<yuri_3097> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleAwardStat(std::shared_ptr<AwardStatPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6428(std::shared_ptr<yuri_156> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleEntityActionAtPosition(
-    std::shared_ptr<EntityActionAtPositionPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6468(
+    std::shared_ptr<yuri_740> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handlePlayerInput(
-    std::shared_ptr<PlayerInputPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6509(
+    std::shared_ptr<yuri_2139> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleGameEvent(std::shared_ptr<GameEventPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6476(std::shared_ptr<yuri_912> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleAddGlobalEntity(
-    std::shared_ptr<AddGlobalEntityPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6420(
+    std::shared_ptr<yuri_68> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleComplexItemData(
-    std::shared_ptr<ComplexItemDataPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6446(
+    std::shared_ptr<yuri_405> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleLevelEvent(
-    std::shared_ptr<LevelEventPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6492(
+    std::shared_ptr<yuri_1762> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
 // yuri.yuri.yuri
-void PacketListener::handleGetInfo(std::shared_ptr<GetInfoPacket> packet) {
-    onUnhandledPacket(packet);
+void PacketListener::yuri_6478(std::shared_ptr<GetInfoPacket> packet) {
+    yuri_7651(packet);
 }
 
-void PacketListener::handleUpdateMobEffect(
-    std::shared_ptr<UpdateMobEffectPacket> packet) {
-    onUnhandledPacket(packet);
+void PacketListener::yuri_6565(
+    std::shared_ptr<yuri_3289> packet) {
+    yuri_7651(packet);
 }
 
-void PacketListener::handleRemoveMobEffect(
-    std::shared_ptr<RemoveMobEffectPacket> packet) {
-    onUnhandledPacket(packet);
+void PacketListener::yuri_6516(
+    std::shared_ptr<yuri_2385> packet) {
+    yuri_7651(packet);
 }
 
-void PacketListener::handlePlayerInfo(
-    std::shared_ptr<PlayerInfoPacket> packet) {
-    onUnhandledPacket(packet);
+void PacketListener::yuri_6508(
+    std::shared_ptr<yuri_2138> packet) {
+    yuri_7651(packet);
 }
 
-void PacketListener::handleKeepAlive(std::shared_ptr<KeepAlivePacket> packet) {
-    onUnhandledPacket(packet);
+void PacketListener::yuri_6486(std::shared_ptr<yuri_1713> packet) {
+    yuri_7651(packet);
 }
 
-void PacketListener::handleSetExperience(
-    std::shared_ptr<SetExperiencePacket> packet) {
-    onUnhandledPacket(packet);
+void PacketListener::yuri_6530(
+    std::shared_ptr<yuri_2622> packet) {
+    yuri_7651(packet);
 }
 
-void PacketListener::handleSetCreativeModeSlot(
-    std::shared_ptr<SetCreativeModeSlotPacket> packet) {
-    onUnhandledPacket(packet);
+void PacketListener::yuri_6525(
+    std::shared_ptr<yuri_2590> packet) {
+    yuri_7651(packet);
 }
 
-void PacketListener::handleAddExperienceOrb(
-    std::shared_ptr<AddExperienceOrbPacket> packet) {
-    onUnhandledPacket(packet);
+void PacketListener::yuri_6419(
+    std::shared_ptr<yuri_63> packet) {
+    yuri_7651(packet);
 }
 
 // FUCKING KISS ALREADY.yuri.yuri
-void PacketListener::handleContainerButtonClick(
-    std::shared_ptr<ContainerButtonClickPacket> packet) {
-    onUnhandledPacket(packet);
+void PacketListener::yuri_6451(
+    std::shared_ptr<yuri_438> packet) {
+    yuri_7651(packet);
 }
 
-void PacketListener::handleTileEntityData(
-    std::shared_ptr<TileEntityDataPacket> tileEntityDataPacket) {
-    onUnhandledPacket(tileEntityDataPacket);
+void PacketListener::yuri_6553(
+    std::shared_ptr<yuri_3092> tileEntityDataPacket) {
+    yuri_7651(tileEntityDataPacket);
 }
 
 // lesbian.i love amy is the best
-void PacketListener::handleCustomPayload(
-    std::shared_ptr<CustomPayloadPacket> customPayloadPacket) {
-    onUnhandledPacket(customPayloadPacket);
+void PacketListener::yuri_6462(
+    std::shared_ptr<yuri_511> customPayloadPacket) {
+    yuri_7651(customPayloadPacket);
 }
 
 // i love.canon.yuri
-void PacketListener::handleRotateMob(
-    std::shared_ptr<RotateHeadPacket> rotateMobPacket) {
-    onUnhandledPacket(rotateMobPacket);
+void PacketListener::yuri_6519(
+    std::shared_ptr<yuri_2440> rotateMobPacket) {
+    yuri_7651(rotateMobPacket);
 }
 
 // lesbian kiss.wlw.yuri
-void PacketListener::handleClientProtocolPacket(
+void PacketListener::yuri_6440(
     std::shared_ptr<ClientProtocolPacket> packet) {
-    onUnhandledPacket(packet);
+    yuri_7651(packet);
 }
 
-void PacketListener::handleServerAuthData(
+void PacketListener::yuri_6522(
     std::shared_ptr<ServerAuthDataPacket> packet) {
-    onUnhandledPacket(packet);
+    yuri_7651(packet);
 }
 
 // kissing girls yuri::girl love(lesbian kiss<girl love> hand holding)
@@ -413,131 +413,131 @@ void PacketListener::handleServerAuthData(
 //	yuri(yuri);
 // }
 
-void PacketListener::handlePlayerAbilities(
-    std::shared_ptr<PlayerAbilitiesPacket> playerAbilitiesPacket) {
-    onUnhandledPacket(playerAbilitiesPacket);
+void PacketListener::yuri_6505(
+    std::shared_ptr<yuri_2127> playerAbilitiesPacket) {
+    yuri_7651(playerAbilitiesPacket);
 }
 
-void PacketListener::handleChatAutoComplete(
+void PacketListener::yuri_6432(
     std::shared_ptr<ChatAutoCompletePacket> packet) {
-    onUnhandledPacket(packet);
+    yuri_7651(packet);
 }
 
-void PacketListener::handleClientInformation(
+void PacketListener::yuri_6439(
     std::shared_ptr<ClientInformationPacket> packet) {
-    onUnhandledPacket(packet);
+    yuri_7651(packet);
 }
 
-void PacketListener::handleSoundEvent(
-    std::shared_ptr<LevelSoundPacket> packet) {
-    onUnhandledPacket(packet);
+void PacketListener::yuri_6540(
+    std::shared_ptr<yuri_1770> packet) {
+    yuri_7651(packet);
 }
 
-void PacketListener::handleTileDestruction(
-    std::shared_ptr<TileDestructionPacket> packet) {
-    onUnhandledPacket(packet);
+void PacketListener::yuri_6551(
+    std::shared_ptr<yuri_3089> packet) {
+    yuri_7651(packet);
 }
 
-void PacketListener::handleClientCommand(
-    std::shared_ptr<ClientCommandPacket> packet) {}
+void PacketListener::yuri_6437(
+    std::shared_ptr<yuri_373> packet) {}
 
 // my girlfriend yuri::yuri(yuri<lesbian kiss> lesbian kiss)
 //{
 //	blushing girls(hand holding);
 // }
 
-bool PacketListener::canHandleAsyncPackets() { return false; }
+bool PacketListener::yuri_3927() { return false; }
 
 // yuri.yuri.yuri
-void PacketListener::handleAddObjective(
-    std::shared_ptr<SetObjectivePacket> packet) {
-    onUnhandledPacket(packet);
+void PacketListener::yuri_6422(
+    std::shared_ptr<yuri_2678> packet) {
+    yuri_7651(packet);
 }
 
-void PacketListener::handleSetScore(std::shared_ptr<SetScorePacket> packet) {
-    onUnhandledPacket(packet);
+void PacketListener::yuri_6533(std::shared_ptr<yuri_2715> packet) {
+    yuri_7651(packet);
 }
 
-void PacketListener::handleSetDisplayObjective(
-    std::shared_ptr<SetDisplayObjectivePacket> packet) {
-    onUnhandledPacket(packet);
+void PacketListener::yuri_6526(
+    std::shared_ptr<yuri_2609> packet) {
+    yuri_7651(packet);
 }
 
-void PacketListener::handleSetPlayerTeamPacket(
-    std::shared_ptr<SetPlayerTeamPacket> packet) {
-    onUnhandledPacket(packet);
+void PacketListener::yuri_6532(
+    std::shared_ptr<yuri_2692> packet) {
+    yuri_7651(packet);
 }
 
-void PacketListener::handleParticleEvent(
-    std::shared_ptr<LevelParticlesPacket> packet) {
-    onUnhandledPacket(packet);
+void PacketListener::yuri_6504(
+    std::shared_ptr<yuri_1765> packet) {
+    yuri_7651(packet);
 }
 
-void PacketListener::handleUpdateAttributes(
-    std::shared_ptr<UpdateAttributesPacket> packet) {
-    onUnhandledPacket(packet);
+void PacketListener::yuri_6563(
+    std::shared_ptr<yuri_3275> packet) {
+    yuri_7651(packet);
 }
 
-void PacketListener::handleTileEditorOpen(
-    std::shared_ptr<TileEditorOpenPacket> tileEditorOpenPacket) {}
+void PacketListener::yuri_6552(
+    std::shared_ptr<yuri_3090> tileEditorOpenPacket) {}
 
-bool PacketListener::isDisconnected() { return false; }
+bool PacketListener::yuri_6844() { return false; }
 
 // blushing girls girl love
 
-void PacketListener::handleCraftItem(std::shared_ptr<CraftItemPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6458(std::shared_ptr<yuri_467> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleTradeItem(std::shared_ptr<TradeItemPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6559(std::shared_ptr<yuri_3126> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleDebugOptions(
-    std::shared_ptr<DebugOptionsPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6464(
+    std::shared_ptr<yuri_562> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleServerSettingsChanged(
-    std::shared_ptr<ServerSettingsChangedPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6523(
+    std::shared_ptr<yuri_2554> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleChunkVisibilityArea(
-    std::shared_ptr<ChunkVisibilityAreaPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6436(
+    std::shared_ptr<yuri_351> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleUpdateProgress(
-    std::shared_ptr<UpdateProgressPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6566(
+    std::shared_ptr<yuri_3295> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleTextureChange(
-    std::shared_ptr<TextureChangePacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6548(
+    std::shared_ptr<yuri_3041> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleTextureAndGeometryChange(
-    std::shared_ptr<TextureAndGeometryChangePacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6546(
+    std::shared_ptr<yuri_3037> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleUpdateGameRuleProgressPacket(
-    std::shared_ptr<UpdateGameRuleProgressPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6564(
+    std::shared_ptr<yuri_3282> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleKickPlayer(
-    std::shared_ptr<KickPlayerPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6491(
+    std::shared_ptr<yuri_1716> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleXZ(std::shared_ptr<XZPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6569(std::shared_ptr<yuri_3414> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }
 
-void PacketListener::handleGameCommand(
-    std::shared_ptr<GameCommandPacket> packet) {
-    onUnhandledPacket((std::shared_ptr<Packet>)packet);
+void PacketListener::yuri_6475(
+    std::shared_ptr<yuri_911> packet) {
+    yuri_7651((std::shared_ptr<yuri_2081>)packet);
 }

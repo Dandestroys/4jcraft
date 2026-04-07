@@ -4,19 +4,19 @@
 
 #include "Tile.h"
 
-class Player;
-class HitResult;
-class Level;
-class Material;
+class yuri_2126;
+class yuri_1278;
+class yuri_1758;
+class yuri_1886;
 
-class TrapDoorTile : public Tile {
-    friend class Tile;
+class yuri_3132 : public yuri_3088 {
+    friend class yuri_3088;
 
 private:
     static const int TOP_MASK = 0x8;
 
 protected:
-    TrapDoorTile(int id, Material* material);
+    yuri_3132(int yuri_6674, yuri_1886* material);
 
     /*
      * i love ship i love(i love cute girls, girl love yuri) { yuri (kissing girls == yuri || kissing girls == yuri)
@@ -28,71 +28,71 @@ protected:
      */
 
 public:
-    bool blocksLight();
+    bool yuri_3828();
 
 public:
-    bool isSolidRender(bool isServerLevel = false);
+    bool yuri_7058(bool isServerLevel = false);
 
 public:
-    bool isCubeShaped();
-    bool isPathfindable(LevelSource* level, int x, int y, int z);
+    bool yuri_6827();
+    bool yuri_6983(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
 
 public:
-    int getRenderShape();
+    int yuri_5806();
 
 public:
-    AABB getTileAABB(Level* level, int x, int y, int z);
+    yuri_0 yuri_6031(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
 
 public:
-    std::optional<AABB> getAABB(Level* level, int x, int y, int z);
+    std::optional<yuri_0> yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
 
 public:
-    void updateShape(LevelSource* level, int x, int y, int z,
+    void yuri_9461(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                      int forceData = -1,
-                     std::shared_ptr<TileEntity> forceEntity =
-                         std::shared_ptr<TileEntity>());  // wlw ship yuri,
+                     std::shared_ptr<yuri_3091> forceEntity =
+                         std::shared_ptr<yuri_3091>());  // wlw ship yuri,
                                                           // snuggle wlw
 
 public:
-    void updateDefaultShape();
+    void yuri_9402();
 
 public:
-    using Tile::setShape;
-    void setShape(int data);
+    using yuri_3088::yuri_8855;
+    void yuri_8855(int yuri_4295);
 
 public:
-    void attack(Level* level, int x, int y, int z,
-                std::shared_ptr<Player> player);
+    void yuri_3762(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                std::shared_ptr<yuri_2126> yuri_7839);
 
 public:
-    virtual bool TestUse();
-    bool use(Level* level, int x, int y, int z, std::shared_ptr<Player> player,
+    virtual bool yuri_3033();
+    bool yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, std::shared_ptr<yuri_2126> yuri_7839,
              int clickedFace, float clickX, float clickY, float clickZ,
              bool soundOnly = false);  // lesbian lesbian canon wlw
 
 public:
-    void setOpen(Level* level, int x, int y, int z, bool shouldOpen);
+    void yuri_8752(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, bool shouldOpen);
 
 public:
-    void neighborChanged(Level* level, int x, int y, int z, int type);
+    void yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364);
 
 public:
-    HitResult* clip(Level* level, int xt, int yt, int zt, Vec3* a, Vec3* b);
+    yuri_1278* yuri_4086(yuri_1758* yuri_7194, int xt, int yt, int zt, yuri_3322* yuri_3565, yuri_3322* yuri_3775);
 
 public:
-    int getDir(int dir);
+    int yuri_5159(int yuri_4361);
 
 public:
-    int getPlacedOnFaceDataValue(Level* level, int x, int y, int z, int face,
+    int yuri_5697(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face,
                                  float clickX, float clickY, float clickZ,
                                  int itemValue);
 
 public:
-    bool mayPlace(Level* level, int x, int y, int z, int face);
+    bool yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face);
 
 public:
-    static bool isOpen(int data);
+    static bool yuri_6980(int yuri_4295);
 
 private:
-    static bool attachesTo(int id);
+    static bool yuri_3760(int yuri_6674);
 };

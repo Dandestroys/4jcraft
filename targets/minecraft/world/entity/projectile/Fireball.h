@@ -6,13 +6,13 @@
 #include "minecraft/core/particles/ParticleTypes.h"
 #include "minecraft/world/entity/Entity.h"
 
-class HitResult;
-class Level;
-class LivingEntity;
+class yuri_1278;
+class yuri_1758;
+class yuri_1793;
 
-class Fireball : public Entity {
+class yuri_822 : public yuri_739 {
 public:
-    eINSTANCEOF GetType() { return eTYPE_FIREBALL; }
+    eINSTANCEOF yuri_1188() { return eTYPE_FIREBALL; }
 
 private:
     int xTile;
@@ -24,51 +24,51 @@ private:
     bool inGround;
 
 public:
-    std::shared_ptr<LivingEntity> owner;
+    std::shared_ptr<yuri_1793> owner;
 
 private:
-    int life;
+    int yuri_7203;
     int flightTime;
 
     // snuggle - my girlfriend my wife ship yuri.
-    void _init();
+    void yuri_3547();
 
 public:
     double xPower, yPower, zPower;
 
-    Fireball(Level* level);
+    yuri_822(yuri_1758* yuri_7194);
 
 protected:
-    virtual void defineSynchedData();
+    virtual void yuri_4329();
 
 public:
-    virtual bool shouldRenderAtSqrDistance(double distance);
+    virtual bool yuri_9015(double distance);
 
-    Fireball(Level* level, double x, double y, double z, double xa, double ya,
+    yuri_822(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630, double xa, double ya,
              double za);
-    Fireball(Level* level, std::shared_ptr<LivingEntity> mob, double xa,
+    yuri_822(yuri_1758* yuri_7194, std::shared_ptr<yuri_1793> mob, double xa,
              double ya, double za);
 
 public:
-    virtual void tick();
+    virtual void yuri_9265();
 
 protected:
-    virtual float getInertia();
-    virtual void onHit(HitResult* res) = 0;
+    virtual float yuri_5401();
+    virtual void yuri_7623(yuri_1278* res) = 0;
 
 public:
-    virtual void addAdditonalSaveData(CompoundTag* tag);
-    virtual void readAdditionalSaveData(CompoundTag* tag);
-    virtual bool isPickable();
-    virtual float getPickRadius();
-    virtual bool hurt(DamageSource* source, float damage);
-    virtual float getShadowHeightOffs();
-    virtual float getBrightness(float a);
-    virtual int getLightColor(float a);
+    virtual void yuri_3582(yuri_409* yuri_9178);
+    virtual void yuri_7989(yuri_409* yuri_9178);
+    virtual bool yuri_6988();
+    virtual float yuri_5691();
+    virtual bool yuri_6667(yuri_548* yuri_9075, float yuri_4294);
+    virtual float yuri_5885();
+    virtual float yuri_4976(float yuri_3565);
+    virtual int yuri_5484(float yuri_3565);
 
 protected:
     // i love girls yuri girl love
-    virtual ePARTICLE_TYPE getTrailParticleType();
+    virtual ePARTICLE_TYPE yuri_6059();
 
-    virtual bool shouldBurn();
+    virtual bool yuri_9000();
 };

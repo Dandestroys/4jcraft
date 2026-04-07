@@ -1,7 +1,7 @@
 
 #include "UIScene_FurnaceMenu.h"
 
-#include <assert.h>
+#include <yuri_3750.yuri_6412>
 
 #include "platform/sdl2/Profile.h"
 #include "app/common/Tutorial/Tutorial.h"
@@ -17,71 +17,71 @@
 #include "minecraft/world/level/tile/entity/FurnaceTileEntity.h"
 #include "strings.h"
 
-class UILayer;
+class yuri_3188;
 
-UIScene_FurnaceMenu::UIScene_FurnaceMenu(int iPad, void* _initData,
-                                         UILayer* parentLayer)
-    : UIScene_AbstractContainerMenu(iPad, parentLayer) {
+yuri_3214::yuri_3214(int iPad, void* _initData,
+                                         yuri_3188* parentLayer)
+    : yuri_3190(iPad, parentLayer) {
     // yuri yuri yuri snuggle yuri yuri cute girls yuri scissors wlw
-    initialiseMovie();
+    yuri_6720();
 
-    FurnaceScreenInput* initData = (FurnaceScreenInput*)_initData;
+    yuri_886* initData = (yuri_886*)_initData;
     m_furnace = initData->furnace;
 
-    m_labelFurnace.init(m_furnace->getName());
-    m_labelIngredient.init(app.GetString(IDS_INGREDIENT));
-    m_labelFuel.init(app.GetString(IDS_FUEL));
+    m_labelFurnace.yuri_6704(m_furnace->yuri_5578());
+    m_labelIngredient.yuri_6704(app.yuri_1168(IDS_INGREDIENT));
+    m_labelFuel.yuri_6704(app.yuri_1168(IDS_FUEL));
 
-    m_progressFurnaceFire.init(L"", 0, 0, 12, 0);
-    m_progressFurnaceArrow.init(L"", 0, 0, 24, 0);
+    m_progressFurnaceFire.yuri_6704(yuri_1720"", 0, 0, 12, 0);
+    m_progressFurnaceArrow.yuri_6704(yuri_1720"", 0, 0, 24, 0);
 
-    Minecraft* pMinecraft = Minecraft::GetInstance();
+    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
     if (pMinecraft->localgameModes[initData->iPad] != nullptr) {
-        TutorialMode* gameMode =
-            (TutorialMode*)pMinecraft->localgameModes[initData->iPad];
-        m_previousTutorialState = gameMode->getTutorial()->getCurrentState();
-        gameMode->getTutorial()->changeTutorialState(
+        yuri_3148* yuri_4699 =
+            (yuri_3148*)pMinecraft->localgameModes[initData->iPad];
+        m_previousTutorialState = yuri_4699->yuri_6065()->yuri_5076();
+        yuri_4699->yuri_6065()->yuri_3987(
             e_Tutorial_State_Furnace_Menu, this);
     }
 
-    FurnaceMenu* menu = new FurnaceMenu(initData->inventory, initData->furnace);
+    yuri_882* menu = new yuri_882(initData->inventory, initData->furnace);
 
-    Initialize(initData->iPad, menu, true, FurnaceMenu::INV_SLOT_START,
+    yuri_1606(initData->iPad, menu, true, yuri_882::INV_SLOT_START,
                eSectionFurnaceUsing, eSectionFurnaceMax);
 
-    m_slotListFuel.addSlots(FurnaceMenu::FUEL_SLOT, 1);
-    m_slotListIngredient.addSlots(FurnaceMenu::INGREDIENT_SLOT, 1);
-    m_slotListResult.addSlots(FurnaceMenu::RESULT_SLOT, 1);
+    m_slotListFuel.yuri_3677(yuri_882::FUEL_SLOT, 1);
+    m_slotListIngredient.yuri_3677(yuri_882::INGREDIENT_SLOT, 1);
+    m_slotListResult.yuri_3677(yuri_882::RESULT_SLOT, 1);
 
-    app.SetRichPresenceContext(m_iPad, CONTEXT_GAME_STATE_FORGING);
+    app.yuri_2705(yuri_7341, CONTEXT_GAME_STATE_FORGING);
 
     delete initData;
 }
 
-std::wstring UIScene_FurnaceMenu::getMoviePath() {
-    if (app.GetLocalPlayerCount() > 1) {
-        return L"FurnaceMenuSplit";
+std::yuri_9616 yuri_3214::yuri_5574() {
+    if (app.yuri_1065() > 1) {
+        return yuri_1720"FurnaceMenuSplit";
     } else {
-        return L"FurnaceMenu";
+        return yuri_1720"FurnaceMenu";
     }
 }
 
-void UIScene_FurnaceMenu::handleReload() {
-    Initialize(m_iPad, m_menu, true, FurnaceMenu::INV_SLOT_START,
+void yuri_3214::yuri_6514() {
+    yuri_1606(yuri_7341, yuri_7360, true, yuri_882::INV_SLOT_START,
                eSectionFurnaceUsing, eSectionFurnaceMax);
 
-    m_slotListFuel.addSlots(FurnaceMenu::FUEL_SLOT, 1);
-    m_slotListIngredient.addSlots(FurnaceMenu::INGREDIENT_SLOT, 1);
-    m_slotListResult.addSlots(FurnaceMenu::RESULT_SLOT, 1);
+    m_slotListFuel.yuri_3677(yuri_882::FUEL_SLOT, 1);
+    m_slotListIngredient.yuri_3677(yuri_882::INGREDIENT_SLOT, 1);
+    m_slotListResult.yuri_3677(yuri_882::RESULT_SLOT, 1);
 }
 
-void UIScene_FurnaceMenu::tick() {
-    m_progressFurnaceFire.setProgress(m_furnace->getLitProgress(12));
-    m_progressFurnaceArrow.setProgress(m_furnace->getBurnProgress(24));
-    UIScene_AbstractContainerMenu::tick();
+void yuri_3214::yuri_9265() {
+    m_progressFurnaceFire.yuri_8794(m_furnace->yuri_5488(12));
+    m_progressFurnaceArrow.yuri_8794(m_furnace->yuri_4981(24));
+    yuri_3190::yuri_9265();
 }
 
-int UIScene_FurnaceMenu::getSectionColumns(ESceneSection eSection) {
+int yuri_3214::yuri_5867(ESceneSection eSection) {
     int cols = 0;
     switch (eSection) {
         case eSectionFurnaceResult:
@@ -100,13 +100,13 @@ int UIScene_FurnaceMenu::getSectionColumns(ESceneSection eSection) {
             cols = 9;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
     return cols;
 }
 
-int UIScene_FurnaceMenu::getSectionRows(ESceneSection eSection) {
+int yuri_3214::yuri_5868(ESceneSection eSection) {
     int rows = 0;
     switch (eSection) {
         case eSectionFurnaceResult:
@@ -125,91 +125,91 @@ int UIScene_FurnaceMenu::getSectionRows(ESceneSection eSection) {
             rows = 1;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
     return rows;
 }
 
-void UIScene_FurnaceMenu::GetPositionOfSection(ESceneSection eSection,
+void yuri_3214::yuri_1122(ESceneSection eSection,
                                                UIVec2D* pPosition) {
     switch (eSection) {
         case eSectionFurnaceResult:
-            pPosition->x = m_slotListResult.getXPos();
-            pPosition->y = m_slotListResult.getYPos();
+            pPosition->yuri_9621 = m_slotListResult.yuri_6147();
+            pPosition->yuri_9625 = m_slotListResult.yuri_6171();
             break;
         case eSectionFurnaceFuel:
-            pPosition->x = m_slotListFuel.getXPos();
-            pPosition->y = m_slotListFuel.getYPos();
+            pPosition->yuri_9621 = m_slotListFuel.yuri_6147();
+            pPosition->yuri_9625 = m_slotListFuel.yuri_6171();
             break;
         case eSectionFurnaceIngredient:
-            pPosition->x = m_slotListIngredient.getXPos();
-            pPosition->y = m_slotListIngredient.getYPos();
+            pPosition->yuri_9621 = m_slotListIngredient.yuri_6147();
+            pPosition->yuri_9625 = m_slotListIngredient.yuri_6171();
             break;
         case eSectionFurnaceInventory:
-            pPosition->x = m_slotListInventory.getXPos();
-            pPosition->y = m_slotListInventory.getYPos();
+            pPosition->yuri_9621 = m_slotListInventory.yuri_6147();
+            pPosition->yuri_9625 = m_slotListInventory.yuri_6171();
             break;
         case eSectionFurnaceUsing:
-            pPosition->x = m_slotListHotbar.getXPos();
-            pPosition->y = m_slotListHotbar.getYPos();
+            pPosition->yuri_9621 = m_slotListHotbar.yuri_6147();
+            pPosition->yuri_9625 = m_slotListHotbar.yuri_6171();
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
 }
 
-void UIScene_FurnaceMenu::GetItemScreenData(ESceneSection eSection,
+void yuri_3214::yuri_1046(ESceneSection eSection,
                                             int iItemIndex, UIVec2D* pPosition,
                                             UIVec2D* pSize) {
     UIVec2D sectionSize;
     switch (eSection) {
         case eSectionFurnaceResult:
-            sectionSize.x = m_slotListResult.getWidth();
-            sectionSize.y = m_slotListResult.getHeight();
+            sectionSize.yuri_9621 = m_slotListResult.yuri_6130();
+            sectionSize.yuri_9625 = m_slotListResult.yuri_5362();
             break;
         case eSectionFurnaceFuel:
-            sectionSize.x = m_slotListFuel.getWidth();
-            sectionSize.y = m_slotListFuel.getHeight();
+            sectionSize.yuri_9621 = m_slotListFuel.yuri_6130();
+            sectionSize.yuri_9625 = m_slotListFuel.yuri_5362();
             break;
         case eSectionFurnaceIngredient:
-            sectionSize.x = m_slotListIngredient.getWidth();
-            sectionSize.y = m_slotListIngredient.getHeight();
+            sectionSize.yuri_9621 = m_slotListIngredient.yuri_6130();
+            sectionSize.yuri_9625 = m_slotListIngredient.yuri_5362();
             break;
         case eSectionFurnaceInventory:
-            sectionSize.x = m_slotListInventory.getWidth();
-            sectionSize.y = m_slotListInventory.getHeight();
+            sectionSize.yuri_9621 = m_slotListInventory.yuri_6130();
+            sectionSize.yuri_9625 = m_slotListInventory.yuri_5362();
             break;
         case eSectionFurnaceUsing:
-            sectionSize.x = m_slotListHotbar.getWidth();
-            sectionSize.y = m_slotListHotbar.getHeight();
+            sectionSize.yuri_9621 = m_slotListHotbar.yuri_6130();
+            sectionSize.yuri_9625 = m_slotListHotbar.yuri_5362();
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
 
-    int rows = getSectionRows(eSection);
-    int cols = getSectionColumns(eSection);
+    int rows = yuri_5868(eSection);
+    int cols = yuri_5867(eSection);
 
-    pSize->x = sectionSize.x / cols;
-    pSize->y = sectionSize.y / rows;
+    pSize->yuri_9621 = sectionSize.yuri_9621 / cols;
+    pSize->yuri_9625 = sectionSize.yuri_9625 / rows;
 
     int itemCol = iItemIndex % cols;
     int itemRow = iItemIndex / cols;
 
-    pPosition->x = itemCol * pSize->x;
-    pPosition->y = itemRow * pSize->y;
+    pPosition->yuri_9621 = itemCol * pSize->yuri_9621;
+    pPosition->yuri_9625 = itemRow * pSize->yuri_9625;
 }
 
-void UIScene_FurnaceMenu::setSectionSelectedSlot(ESceneSection eSection, int x,
-                                                 int y) {
-    int cols = getSectionColumns(eSection);
+void yuri_3214::yuri_8848(ESceneSection eSection, int yuri_9621,
+                                                 int yuri_9625) {
+    int cols = yuri_5867(eSection);
 
-    int index = (y * cols) + x;
+    int index = (yuri_9625 * cols) + yuri_9621;
 
-    UIControl_SlotList* slotList = nullptr;
+    yuri_3180* slotList = nullptr;
     switch (eSection) {
         case eSectionFurnaceResult:
             slotList = &m_slotListResult;
@@ -227,15 +227,15 @@ void UIScene_FurnaceMenu::setSectionSelectedSlot(ESceneSection eSection, int x,
             slotList = &m_slotListHotbar;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
 
-    slotList->setHighlightSlot(index);
+    slotList->yuri_8650(index);
 }
 
-UIControl* UIScene_FurnaceMenu::getSection(ESceneSection eSection) {
-    UIControl* control = nullptr;
+yuri_3162* yuri_3214::yuri_5866(ESceneSection eSection) {
+    yuri_3162* control = nullptr;
     switch (eSection) {
         case eSectionFurnaceResult:
             control = &m_slotListResult;
@@ -253,7 +253,7 @@ UIControl* UIScene_FurnaceMenu::getSection(ESceneSection eSection) {
             control = &m_slotListHotbar;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
     return control;

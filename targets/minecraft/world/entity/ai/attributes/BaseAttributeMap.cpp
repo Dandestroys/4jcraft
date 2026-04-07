@@ -8,43 +8,43 @@
 #include "minecraft/world/entity/ai/attributes/AttributeModifier.h"
 #include "minecraft/world/item/ItemInstance.h"
 
-BaseAttributeMap::~BaseAttributeMap() {
-    for (auto it = attributesById.begin(); it != attributesById.end(); ++it) {
-        delete it->second;
+yuri_162::~yuri_162() {
+    for (auto yuri_7136 = attributesById.yuri_3801(); yuri_7136 != attributesById.yuri_4502(); ++yuri_7136) {
+        delete yuri_7136->yuri_8394;
     }
 }
 
-AttributeInstance* BaseAttributeMap::getInstance(Attribute* attribute) {
-    return getInstance(attribute->getId());
+yuri_145* yuri_162::yuri_5405(Attribute* attribute) {
+    return yuri_5405(attribute->yuri_5390());
 }
 
-AttributeInstance* BaseAttributeMap::getInstance(eATTRIBUTE_ID id) {
-    auto it = attributesById.find(id);
-    if (it != attributesById.end()) {
-        return it->second;
+yuri_145* yuri_162::yuri_5405(eATTRIBUTE_ID yuri_6674) {
+    auto yuri_7136 = attributesById.yuri_4597(yuri_6674);
+    if (yuri_7136 != attributesById.yuri_4502()) {
+        return yuri_7136->yuri_8394;
     } else {
         return nullptr;
     }
 }
 
-void BaseAttributeMap::getAttributes(std::vector<AttributeInstance*>& atts) {
-    for (auto it = attributesById.begin(); it != attributesById.end(); ++it) {
-        atts.push_back(it->second);
+void yuri_162::yuri_4917(std::vector<yuri_145*>& atts) {
+    for (auto yuri_7136 = attributesById.yuri_3801(); yuri_7136 != attributesById.yuri_4502(); ++yuri_7136) {
+        atts.yuri_7954(yuri_7136->yuri_8394);
     }
 }
 
-void BaseAttributeMap::onAttributeModified(
-    ModifiableAttributeInstance* attributeInstance) {}
+void yuri_162::yuri_7612(
+    yuri_1965* attributeInstance) {}
 
-void BaseAttributeMap::removeItemModifiers(std::shared_ptr<ItemInstance> item) {
-    attrAttrModMap* modifiers = item->getAttributeModifiers();
+void yuri_162::yuri_8117(std::shared_ptr<yuri_1693> item) {
+    yuri_3766* modifiers = item->yuri_4916();
 
-    for (auto it = modifiers->begin(); it != modifiers->end(); ++it) {
-        AttributeInstance* attribute = getInstance(it->first);
-        AttributeModifier* modifier = it->second;
+    for (auto yuri_7136 = modifiers->yuri_3801(); yuri_7136 != modifiers->yuri_4502(); ++yuri_7136) {
+        yuri_145* attribute = yuri_5405(yuri_7136->first);
+        yuri_146* modifier = yuri_7136->yuri_8394;
 
         if (attribute != nullptr) {
-            attribute->removeModifier(modifier);
+            attribute->yuri_8128(modifier);
         }
 
         delete modifier;
@@ -53,16 +53,16 @@ void BaseAttributeMap::removeItemModifiers(std::shared_ptr<ItemInstance> item) {
     delete modifiers;
 }
 
-void BaseAttributeMap::addItemModifiers(std::shared_ptr<ItemInstance> item) {
-    attrAttrModMap* modifiers = item->getAttributeModifiers();
+void yuri_162::yuri_3628(std::shared_ptr<yuri_1693> item) {
+    yuri_3766* modifiers = item->yuri_4916();
 
-    for (auto it = modifiers->begin(); it != modifiers->end(); ++it) {
-        AttributeInstance* attribute = getInstance(it->first);
-        AttributeModifier* modifier = it->second;
+    for (auto yuri_7136 = modifiers->yuri_3801(); yuri_7136 != modifiers->yuri_4502(); ++yuri_7136) {
+        yuri_145* attribute = yuri_5405(yuri_7136->first);
+        yuri_146* modifier = yuri_7136->yuri_8394;
 
         if (attribute != nullptr) {
-            attribute->removeModifier(modifier);
-            attribute->addModifier(new AttributeModifier(*modifier));
+            attribute->yuri_8128(modifier);
+            attribute->yuri_3643(new yuri_146(*modifier));
         }
 
         delete modifier;

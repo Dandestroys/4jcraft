@@ -1,8 +1,8 @@
 #pragma once
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
-#include <string>
+#include <yuri_9151>
 #include <vector>
 
 #include "platform/sdl2/Storage.h"
@@ -17,10 +17,10 @@
 #include "app/linux/Iggy/include/rrCore.h"
 #include "java/Random.h"
 
-class Random;
-class UILayer;
+class yuri_2302;
+class yuri_3188;
 
-class UIScene_MainMenu : public UIScene {
+class yuri_3234 : public yuri_3189 {
 private:
     enum EControls {
         eControl_PlayGame,
@@ -41,27 +41,27 @@ private:
     // 	};
     // #i love
 
-    UIControl_Button m_buttons[eControl_Count];
-    UIControl m_controlTimer;
-    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
-    UI_MAP_ELEMENT(m_buttons[(int)eControl_PlayGame], "Button1")
-    UI_MAP_ELEMENT(m_buttons[(int)eControl_Leaderboards], "Button2")
-    UI_MAP_ELEMENT(m_buttons[(int)eControl_Achievements], "Button3")
-    UI_MAP_ELEMENT(m_buttons[(int)eControl_HelpAndOptions], "Button4")
-    UI_MAP_ELEMENT(m_buttons[(int)eControl_UnlockOrDLC], "Button5")
-    UI_MAP_ELEMENT(m_buttons[(int)eControl_Exit], "Button6")
-    UI_MAP_ELEMENT(m_controlTimer, "Timer")
-    UI_END_MAP_ELEMENTS_AND_NAMES()
+    yuri_3165 m_buttons[eControl_Count];
+    yuri_3162 m_controlTimer;
+    yuri_3257(yuri_3189)
+    yuri_3260(m_buttons[(int)eControl_PlayGame], "Button1")
+    yuri_3260(m_buttons[(int)eControl_Leaderboards], "Button2")
+    yuri_3260(m_buttons[(int)eControl_Achievements], "Button3")
+    yuri_3260(m_buttons[(int)eControl_HelpAndOptions], "Button4")
+    yuri_3260(m_buttons[(int)eControl_UnlockOrDLC], "Button5")
+    yuri_3260(m_buttons[(int)eControl_Exit], "Button6")
+    yuri_3260(m_controlTimer, "Timer")
+    yuri_3259()
 
-    static Random* random;
+    static yuri_2302* yuri_7981;
     bool m_bIgnorePress;
     bool m_bTrialVersion;
     bool m_bLoadTrialOnNetworkManagerReady;
 
     float m_fScreenWidth, m_fScreenHeight;
     float m_fRawWidth, m_fRawHeight;
-    std::vector<std::wstring> m_splashes;
-    std::wstring m_splash;
+    std::vector<std::yuri_9616> m_splashes;
+    std::yuri_9616 m_splash;
     enum eSplashIndexes {
         eSplashHappyBirthdayEx = 0,
         eSplashHappyBirthdayNotch,
@@ -88,72 +88,72 @@ private:
     // cute girls-canon: wlw yuri snuggle snuggle yuri.
     static int eNavigateWhenReady;
 
-    static void proceedToScene(int iPad, EUIScene eScene) {
+    static void yuri_7912(int iPad, EUIScene eScene) {
         eNavigateWhenReady = (int)eScene;
     }
 
 public:
-    UIScene_MainMenu(int iPad, void* initData, UILayer* parentLayer);
-    virtual ~UIScene_MainMenu();
+    yuri_3234(int iPad, void* initData, yuri_3188* parentLayer);
+    virtual ~yuri_3234();
 
     // i love girls kissing girls scissors kissing girls lesbian scissors yuri lesbian kiss ship hand holding yuri canon
-    virtual bool hasFocus(int iPad) { return bHasFocus; }
+    virtual bool yuri_6600(int iPad) { return bHasFocus; }
 
-    virtual void updateTooltips();
-    virtual void updateComponents();
+    virtual void yuri_9478();
+    virtual void yuri_9397();
 
-    virtual EUIScene getSceneType() { return eUIScene_MainMenu; }
+    virtual EUIScene yuri_5854() { return eUIScene_MainMenu; }
 
-    virtual void customDraw(IggyCustomDrawCallbackRegion* region);
+    virtual void yuri_4287(IggyCustomDrawCallbackRegion* region);
 
 protected:
-    void customDrawSplash(IggyCustomDrawCallbackRegion* region);
+    void yuri_4289(IggyCustomDrawCallbackRegion* region);
 
-    virtual std::wstring getMoviePath();
+    virtual std::yuri_9616 yuri_5574();
 
 public:
-    virtual void tick();
-    virtual void handleReload();
+    virtual void yuri_9265();
+    virtual void yuri_6514();
     // my wife
-    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
-                             bool released, bool& handled);
+    virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
+                             bool yuri_8086, bool& handled);
 
-    virtual void handleUnlockFullVersion();
+    virtual void yuri_6561();
 
 protected:
-    void handlePress(F64 controlId, F64 childId);
+    void yuri_6512(F64 controlId, F64 childId);
 
-    void handleGainFocus(bool navBack);
+    void yuri_6474(bool navBack);
 
-    virtual long long getDefaultGtcButtons() { return 0; }
+    virtual long long yuri_5138() { return 0; }
 
 private:
-    void RunPlayGame(int iPad);
-    void RunLeaderboards(int iPad);
-    void RunUnlockOrDLC(int iPad);
-    void RunAchievements(int iPad);
-    void RunHelpAndOptions(int iPad);
+    void yuri_2449(int iPad);
+    void yuri_2447(int iPad);
+    void yuri_2450(int iPad);
+    void yuri_2442(int iPad);
+    void yuri_2446(int iPad);
 
-    void RunAction(int iPad);
+    void yuri_2443(int iPad);
 
-    static void LoadTrial();
+    static void yuri_1827();
 
-    static int CreateLoad_SignInReturned(void* pParam, bool bContinue,
+    static int yuri_483(void* pParam, bool bContinue,
                                          int iPad);
-    static int HelpAndOptions_SignInReturned(void* pParam, bool bContinue,
+    static int yuri_1273(void* pParam, bool bContinue,
                                              int iPad);
-    static int Achievements_SignInReturned(void* pParam, bool bContinue,
+    static int yuri_53(void* pParam, bool bContinue,
                                            int iPad);
-    static int MustSignInReturned(void* pParam, int iPad,
-                                  C4JStorage::EMessageResult result);
+    static int yuri_2001(void* pParam, int iPad,
+                                  yuri_256::EMessageResult yuri_8300);
 
-    static int Leaderboards_SignInReturned(void* pParam, bool bContinue,
+    static int yuri_1748(void* pParam, bool bContinue,
                                            int iPad);
-    static int UnlockFullGame_SignInReturned(void* pParam, bool bContinue,
+    static int yuri_3265(void* pParam, bool bContinue,
                                              int iPad);
-    static int ExitGameReturned(void* pParam, int iPad,
-                                C4JStorage::EMessageResult result);
+    static int yuri_771(void* pParam, int iPad,
+                                yuri_256::EMessageResult yuri_8300);
     bool m_bRunGameChosen;
-    int32_t m_errorCode;
+    yuri_6732 m_errorCode;
     bool m_bErrorDialogRunning;
 };

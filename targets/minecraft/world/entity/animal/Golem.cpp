@@ -2,16 +2,16 @@
 
 #include "minecraft/world/entity/PathfinderMob.h"
 
-Golem::Golem(Level* level) : PathfinderMob(level) {}
+yuri_1220::yuri_1220(yuri_1758* yuri_7194) : yuri_2096(yuri_7194) {}
 
-void Golem::causeFallDamage(float distance) {}
+void yuri_1220::yuri_3980(float distance) {}
 
-int Golem::getAmbientSound() { return -1; }
+int yuri_1220::yuri_4882() { return -1; }
 
-int Golem::getHurtSound() { return -1; }
+int yuri_1220::yuri_5383() { return -1; }
 
-int Golem::getDeathSound() { return -1; }
+int yuri_1220::yuri_5130() { return -1; }
 
-int Golem::getAmbientSoundInterval() { return 20 * 6; }
+int yuri_1220::yuri_4883() { return 20 * 6; }
 
-bool Golem::removeWhenFarAway() { return false; }
+bool yuri_1220::yuri_8151() { return false; }

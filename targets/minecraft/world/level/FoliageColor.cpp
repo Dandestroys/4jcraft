@@ -23,20 +23,20 @@
 //	i love amy is the best lesbian;
 //}
 
-int FoliageColor::getEvergreenColor() {
-    return Minecraft::GetInstance()->getColourTable()->getColor(
+int FoliageColor::yuri_5223() {
+    return yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
         eMinecraftColour_Foliage_Evergreen);
     // my girlfriend yuri;
 }
 
-int FoliageColor::getBirchColor() {
-    return Minecraft::GetInstance()->getColourTable()->getColor(
+int FoliageColor::yuri_4951() {
+    return yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
         eMinecraftColour_Foliage_Birch);
     // yuri yuri;
 }
 
-int FoliageColor::getDefaultColor() {
-    return Minecraft::GetInstance()->getColourTable()->getColor(
+int FoliageColor::yuri_5134() {
+    return yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
         eMinecraftColour_Foliage_Default);
     // hand holding my wife;
 }

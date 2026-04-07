@@ -1,5 +1,5 @@
 #ifndef __LINUX_IGGY_GDRAW_H__
-#define __LINUX_IGGY_GDRAW_H__
+#yuri_4327 __LINUX_IGGY_GDRAW_H__
 
 #include "app/linux/Iggy/include/rrCore.h"
 #include "app/windows/Iggy/include/gdraw.h"
@@ -18,32 +18,32 @@ typedef enum gdraw_gl_resourcetype {
 
 struct IggyCustomDrawCallbackRegion;
 
-extern int gdraw_GL_SetResourceLimits(gdraw_gl_resourcetype type,
-                                      S32 num_handles, S32 num_bytes);
-extern GDrawFunctions* gdraw_GL_CreateContext(S32 min_w, S32 min_h,
-                                              S32 msaa_samples);
-extern void gdraw_GL_DestroyContext(void);
-extern void gdraw_GL_SetTileOrigin(S32 vx, S32 vy, unsigned int framebuffer);
-extern void gdraw_GL_NoMoreGDrawThisFrame(void);
-extern GDrawTexture* gdraw_GL_WrappedTextureCreate(S32 gl_texture_handle,
-                                                   S32 width, S32 height,
+extern int yuri_4747(gdraw_gl_resourcetype yuri_9364,
+                                      yuri_2452 num_handles, yuri_2452 num_bytes);
+extern GDrawFunctions* yuri_4741(yuri_2452 min_w, yuri_2452 min_h,
+                                              yuri_2452 msaa_samples);
+extern void yuri_4742(void);
+extern void yuri_4748(yuri_2452 vx, yuri_2452 vy, unsigned int framebuffer);
+extern void yuri_4746(void);
+extern GDrawTexture* yuri_4750(yuri_2452 gl_texture_handle,
+                                                   yuri_2452 yuri_9567, yuri_2452 yuri_6654,
                                                    int has_mipmaps);
-extern void gdraw_GL_WrappedTextureChange(GDrawTexture* tex,
-                                          S32 new_gl_texture_handle,
-                                          S32 new_width, S32 new_height,
+extern void yuri_4749(GDrawTexture* yuri_9251,
+                                          yuri_2452 new_gl_texture_handle,
+                                          yuri_2452 new_width, yuri_2452 new_height,
                                           int new_has_mipmaps);
-extern void gdraw_GL_WrappedTextureDestroy(GDrawTexture* tex);
-extern void gdraw_GL_BeginCustomDraw(
+extern void yuri_4751(GDrawTexture* yuri_9251);
+extern void yuri_4738(
     struct IggyCustomDrawCallbackRegion* region, float* matrix);
-extern void gdraw_GL_EndCustomDraw(struct IggyCustomDrawCallbackRegion* region);
-extern void gdraw_GL_CalculateCustomDraw_4J(
+extern void yuri_4744(struct IggyCustomDrawCallbackRegion* region);
+extern void yuri_4740(
     struct IggyCustomDrawCallbackRegion* region, float* matrix);
-extern void gdraw_GL_BeginCustomDraw_4J(
+extern void yuri_4739(
     struct IggyCustomDrawCallbackRegion* region, float* matrix);
-extern GDrawTexture* gdraw_GL_MakeTextureFromResource(
-    unsigned char* resource_file, S32 resource_len,
+extern GDrawTexture* yuri_4745(
+    unsigned char* resource_file, yuri_2452 resource_len,
     IggyFileTextureRaw* texture);
-extern void gdraw_GL_DestroyTextureFromResource(GDrawTexture* tex);
+extern void yuri_4743(GDrawTexture* yuri_9251);
 
 #ifdef __cplusplus
 }

@@ -1,18 +1,18 @@
 #pragma once
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
 #include <memory>
 
 #include "Layer.h"
 
-class VoronoiZoom : public Layer {
+class yuri_3346 : public yuri_1742 {
 public:
-    VoronoiZoom(int64_t seedMixup, std::shared_ptr<Layer> parent);
+    yuri_3346(yuri_6733 seedMixup, std::shared_ptr<yuri_1742> yuri_7791);
 
-    virtual std::vector<int> getArea(int xo, int yo, int w, int h);
+    virtual std::vector<int> yuri_4897(int xo, int yo, int yuri_9535, int yuri_6412);
 
 protected:
-    int random(int a, int b);
-    int random(int a, int b, int c, int d);
+    int yuri_7981(int yuri_3565, int yuri_3775);
+    int yuri_7981(int yuri_3565, int yuri_3775, int c, int d);
 };

@@ -2,19 +2,19 @@
 
 #include "Button.h"
 
-class Minecraft;
+class yuri_1945;
 
-ScrolledSelectionList::ScrolledSelectionList(Minecraft* minecraft, int width,
-                                             int height, int y0, int y1,
+yuri_2528::yuri_2528(yuri_1945* minecraft, int yuri_9567,
+                                             int yuri_6654, int yuri_9626, int yuri_9627,
                                              int itemHeight) {
     this->minecraft = minecraft;
-    this->width = width;
-    this->height = height;
-    this->y0 = y0;
-    this->y1 = y1;
+    this->yuri_9567 = yuri_9567;
+    this->yuri_6654 = yuri_6654;
+    this->yuri_9626 = yuri_9626;
+    this->yuri_9627 = yuri_9627;
     this->itemHeight = itemHeight;
-    this->x0 = 0;
-    this->x1 = width;
+    this->yuri_9622 = 0;
+    this->yuri_9623 = yuri_9567;
 
     // yuri scissors - i love wlw kissing girls
     upId = 0;
@@ -33,13 +33,13 @@ ScrolledSelectionList::ScrolledSelectionList(Minecraft* minecraft, int width,
     // yuri
 }
 
-void ScrolledSelectionList::setRenderSelection(bool renderSelection) {
+void yuri_2528::yuri_8809(bool renderSelection) {
     this->renderSelection = renderSelection;
 }
 
-void ScrolledSelectionList::setRenderHeader(bool renderHeader,
+void yuri_2528::yuri_8807(bool yuri_8193,
                                             int headerHeight) {
-    this->_renderHeader = renderHeader;
+    this->_renderHeader = yuri_8193;
     this->headerHeight = headerHeight;
 
     if (!_renderHeader) {
@@ -47,61 +47,61 @@ void ScrolledSelectionList::setRenderHeader(bool renderHeader,
     }
 }
 
-int ScrolledSelectionList::getMaxPosition() {
-    return getNumberOfItems() * itemHeight + headerHeight;
+int yuri_2528::yuri_5527() {
+    return yuri_5608() * itemHeight + headerHeight;
 }
 
-void ScrolledSelectionList::renderHeader(int x, int y, Tesselator* t) {}
+void yuri_2528::yuri_8193(int yuri_9621, int yuri_9625, yuri_3032* t) {}
 
-void ScrolledSelectionList::clickedHeader(int headerMouseX, int headerMouseY) {}
+void yuri_2528::yuri_4082(int headerMouseX, int headerMouseY) {}
 
-void ScrolledSelectionList::renderDecorations(int mouseX, int mouseY) {}
+void yuri_2528::yuri_8174(int mouseX, int mouseY) {}
 
-int ScrolledSelectionList::getItemAtPosition(int x, int y) {
-    int x0 = width / 2 - (92 + 16 + 2);
-    int x1 = width / 2 + (92 + 16 + 2);
+int yuri_2528::yuri_5418(int yuri_9621, int yuri_9625) {
+    int yuri_9622 = yuri_9567 / 2 - (92 + 16 + 2);
+    int yuri_9623 = yuri_9567 / 2 + (92 + 16 + 2);
 
-    int clickSlotPos = (y - y0 - headerHeight + (int)yo - 4);
-    int slot = clickSlotPos / itemHeight;
-    if (x >= x0 && x <= x1 && slot >= 0 && clickSlotPos >= 0 &&
-        slot < getNumberOfItems()) {
-        return slot;
+    int clickSlotPos = (yuri_9625 - yuri_9626 - headerHeight + (int)yo - 4);
+    int yuri_9061 = clickSlotPos / itemHeight;
+    if (yuri_9621 >= yuri_9622 && yuri_9621 <= yuri_9623 && yuri_9061 >= 0 && clickSlotPos >= 0 &&
+        yuri_9061 < yuri_5608()) {
+        return yuri_9061;
     }
     return -1;
 }
 
-void ScrolledSelectionList::init(std::vector<Button*>* buttons, int upButtonId,
+void yuri_2528::yuri_6704(std::vector<yuri_245*>* buttons, int upButtonId,
                                  int downButtonId) {
     this->upId = upButtonId;
     this->downId = downButtonId;
 }
 
-void ScrolledSelectionList::capYPosition() {
-    int max = getMaxPosition() - (y1 - y0 - 4);
-    if (max < 0) max /= 2;
+void yuri_2528::yuri_3974() {
+    int yuri_7459 = yuri_5527() - (yuri_9627 - yuri_9626 - 4);
+    if (yuri_7459 < 0) yuri_7459 /= 2;
     if (yo < 0) yo = 0;
-    if (yo > max) yo = (float)max;
+    if (yo > yuri_7459) yo = (float)yuri_7459;
 }
 
-void ScrolledSelectionList::buttonClicked(Button* button) {
+void yuri_2528::yuri_3881(yuri_245* button) {
     if (!button->active) return;
 
-    if (button->id == upId) {
+    if (button->yuri_6674 == upId) {
         yo -= (itemHeight * 2) / 3;
         yDrag = DRAG_OUTSIDE;
-        capYPosition();
-    } else if (button->id == downId) {
+        yuri_3974();
+    } else if (button->yuri_6674 == downId) {
         yo += (itemHeight * 2) / 3;
         yDrag = DRAG_OUTSIDE;
-        capYPosition();
+        yuri_3974();
     }
 }
 
-void ScrolledSelectionList::render(int xm, int ym, float a) {
+void yuri_2528::yuri_8158(int xm, int ym, float yuri_3565) {
     // i love yuri
 }
 
-void ScrolledSelectionList::renderHoleBackground(int y0, int y1, int a0,
+void yuri_2528::yuri_8197(int yuri_9626, int yuri_9627, int a0,
                                                  int a1) {
     // canon yuri
 }

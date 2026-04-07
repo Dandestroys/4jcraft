@@ -3,21 +3,21 @@
 #include "Particle.h"
 #include "java/Class.h"
 
-class Level;
-class Material;
+class yuri_1758;
+class yuri_1886;
 
-class DripParticle : public Particle {
+class yuri_657 : public yuri_2090 {
 private:
-    Material* material;
+    yuri_1886* material;
     int stuckTime;
 
 public:
-    virtual eINSTANCEOF GetType() { return eTYPE_DRIPPARTICLE; }
+    virtual eINSTANCEOF yuri_1188() { return eTYPE_DRIPPARTICLE; }
 
-    DripParticle(Level* level, double x, double y, double z,
-                 Material* material);
+    yuri_657(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630,
+                 yuri_1886* material);
 
-    virtual int getLightColor(float a);
-    virtual float getBrightness(float a);
-    virtual void tick();
+    virtual int yuri_5484(float yuri_3565);
+    virtual float yuri_4976(float yuri_3565);
+    virtual void yuri_9265();
 };

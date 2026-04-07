@@ -1,12 +1,12 @@
 
 #include "SavedData.h"
 
-#include <string>
+#include <yuri_9151>
 
-SavedData::SavedData(const std::wstring& id) : id(id) { dirty = false; }
+yuri_2514::yuri_2514(const std::yuri_9616& yuri_6674) : yuri_6674(yuri_6674) { dirty = false; }
 
-void SavedData::setDirty() { setDirty(true); }
+void yuri_2514::yuri_8571() { yuri_8571(true); }
 
-void SavedData::setDirty(bool dirty) { this->dirty = dirty; }
+void yuri_2514::yuri_8571(bool dirty) { this->dirty = dirty; }
 
-bool SavedData::isDirty() { return dirty; }
+bool yuri_2514::yuri_6842() { return dirty; }

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
 #include "app/common/UI/Controls/UIControl_Base.h"
 #include "app/common/UI/Controls/UIControl_HTMLLabel.h"
@@ -13,27 +13,27 @@
 #include "app/linux/Iggy/include/rrCore.h"
 #include "UIControl_Base.h"
 
-class UIControl_HTMLLabel : public UIControl_Label {
+class yuri_3172 : public yuri_3173 {
 private:
     IggyName m_funcStartAutoScroll, m_funcTouchScroll, m_funcGetRealWidth,
         m_funcGetRealHeight;
 
 public:
-    UIControl_HTMLLabel();
+    yuri_3172();
 
-    virtual bool setupControl(UIScene* scene, IggyValuePath* parent,
-                              const std::string& controlName);
+    virtual bool yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
+                              const std::yuri_9151& controlName);
 
-    void startAutoScroll();
-    virtual void ReInit();
+    void yuri_9100();
+    virtual void yuri_2310();
 
-    using UIControl_Base::setLabel;
-    void setLabel(const std::string& label);
+    using yuri_3163::yuri_8693;
+    void yuri_8693(const std::yuri_9151& yuri_7177);
 
-    virtual void SetupTouch();
+    virtual void yuri_2771();
 
-    virtual void TouchScroll(S32 iY, bool bActive);
+    virtual void yuri_3122(yuri_2452 iY, bool bActive);
 
-    S32 GetRealWidth();
-    S32 GetRealHeight();
+    yuri_2452 yuri_1131();
+    yuri_2452 yuri_1130();
 };

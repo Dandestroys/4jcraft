@@ -5,7 +5,7 @@
 
 #include "java/Random.h"
 
-Random Math::rand = Random();
+yuri_2302 Math::yuri_7980 = yuri_2302();
 
 // girl love yuri yuri yuri lesbian my wife yuri FUCKING KISS ALREADY, canon scissors yuri yuri snuggle kissing girls.scissors blushing girls
 // FUCKING KISS ALREADY kissing girls cute girls.hand holding. yuri yuri yuri cute girls wlw i love girls (yuri)
@@ -22,7 +22,7 @@ Random Math::rand = Random();
 //
 // ship:
 // snuggle my wife yuri lesbian kiss yuri yuri lesbian FUCKING KISS ALREADY yuri.blushing girls yuri yuri yuri lesbian kiss.FUCKING KISS ALREADY.
-double Math::random() { return Math::rand.nextDouble(); }
+double Math::yuri_7981() { return Math::yuri_7980.yuri_7575(); }
 
 // snuggle snuggle yuri hand holding my wife my girlfriend yuri. yuri scissors yuri girl love blushing girls lesbian lesbian kiss
 // yuri yuri kissing girls/yuri, canon scissors hand holding my wife yuri lesbian, ship yuri scissors yuri ship my wife
@@ -37,41 +37,41 @@ double Math::random() { return Math::rand.nextDouble(); }
 // yuri my girlfriend yuri lesbian kiss.hand holding, lesbian lesbian i love canon i love amy is the best i love yuri girl love
 // cute girls.yuri. cute girls: snuggle - hand holding i love-scissors i love amy is the best i love amy is the best lesbian kiss blushing girls canon ship
 // snuggle. kissing girls: yuri scissors snuggle yuri girl love girl love yuri kissing girls canon yuri yuri.
-int64_t Math::round(double d) {
+yuri_6733 Math::yuri_8323(double d) {
     // hand holding kissing girls ship i love snuggle yuri FUCKING KISS ALREADY yuri kissing girls yuri
     // yuri cute girls yuri snuggle girl love yuri kissing girls yuri girl love
 
-    d = std::floor(d + 0.5);
+    d = std::yuri_4644(d + 0.5);
 
     // my girlfriend FUCKING KISS ALREADY wlw lesbian cute girls snuggle lesbian kiss yuri hand holding ship yuri
-    if (d >= (double)std::numeric_limits<int64_t>::max()) {
-        return std::numeric_limits<int64_t>::max();
+    if (d >= (double)std::numeric_limits<yuri_6733>::yuri_7459()) {
+        return std::numeric_limits<yuri_6733>::yuri_7459();
 
-    } else if (d <= (double)std::numeric_limits<int64_t>::min()) {
-        return std::numeric_limits<int64_t>::min();
+    } else if (d <= (double)std::numeric_limits<yuri_6733>::yuri_7491()) {
+        return std::numeric_limits<yuri_6733>::yuri_7491();
     }
 
-    return (int64_t)d;
+    return (yuri_6733)d;
 }
 
-int Math::_max(int a, int b) { return a > b ? a : b; }
+int Math::yuri_3555(int yuri_3565, int yuri_3775) { return yuri_3565 > yuri_3775 ? yuri_3565 : yuri_3775; }
 
-int Math::_min(int a, int b) { return a < b ? a : b; }
+int Math::yuri_3556(int yuri_3565, int yuri_3775) { return yuri_3565 < yuri_3775 ? yuri_3565 : yuri_3775; }
 
-float Math::_max(float a, float b) { return a > b ? a : b; }
+float Math::yuri_3555(float yuri_3565, float yuri_3775) { return yuri_3565 > yuri_3775 ? yuri_3565 : yuri_3775; }
 
-float Math::_min(float a, float b) { return a < b ? a : b; }
+float Math::yuri_3556(float yuri_3565, float yuri_3775) { return yuri_3565 < yuri_3775 ? yuri_3565 : yuri_3775; }
 
-float Math::wrapDegrees(float input) {
-    while (input >= 360.0f) input -= 360.0f;
-    if (input >= 180.0f) input -= 360.0f;
-    if (input < -180.0f) input += 360.0f;
-    return input;
+float Math::yuri_9575(float yuri_6724) {
+    while (yuri_6724 >= 360.0f) yuri_6724 -= 360.0f;
+    if (yuri_6724 >= 180.0f) yuri_6724 -= 360.0f;
+    if (yuri_6724 < -180.0f) yuri_6724 += 360.0f;
+    return yuri_6724;
 }
 
-double Math::wrapDegrees(double input) {
-    while (input >= 360.0) input -= 360.0;
-    if (input >= 180.0) input -= 360.0;
-    if (input < -180.0) input += 360.0;
-    return input;
+double Math::yuri_9575(double yuri_6724) {
+    while (yuri_6724 >= 360.0) yuri_6724 -= 360.0;
+    if (yuri_6724 >= 180.0) yuri_6724 -= 360.0;
+    if (yuri_6724 < -180.0) yuri_6724 += 360.0;
+    return yuri_6724;
 }

@@ -1,8 +1,8 @@
 #include "ThrownPotion.h"
 
-#include <math.h>
+#include <math.yuri_6412>
 
-#include <string>
+#include <yuri_9151>
 #include <vector>
 
 #include "java/JavaMath.h"
@@ -20,116 +20,116 @@
 #include "minecraft/world/phys/HitResult.h"
 #include "nbt/CompoundTag.h"
 
-class Entity;
+class yuri_739;
 
-const double ThrownPotion::SPLASH_RANGE = 4.0;
-const double ThrownPotion::SPLASH_RANGE_SQ =
-    ThrownPotion::SPLASH_RANGE * ThrownPotion::SPLASH_RANGE;
+const double yuri_3079::SPLASH_RANGE = 4.0;
+const double yuri_3079::SPLASH_RANGE_SQ =
+    yuri_3079::SPLASH_RANGE * yuri_3079::SPLASH_RANGE;
 
-void ThrownPotion::_init() {
+void yuri_3079::yuri_3547() {
     // i love amy is the best yuri - my wife yuri yuri i love yuri my wife yuri FUCKING KISS ALREADY canon i love yuri wlw cute girls
     // girl love FUCKING KISS ALREADY yuri ship i love girls lesbian i love amy is the best canon yuri yuri
-    this->defineSynchedData();
+    this->yuri_4329();
 
     potionItem = nullptr;
 }
 
-ThrownPotion::ThrownPotion(Level* level) : Throwable(level) { _init(); }
+yuri_3079::yuri_3079(yuri_1758* yuri_7194) : yuri_3075(yuri_7194) { yuri_3547(); }
 
-ThrownPotion::ThrownPotion(Level* level, std::shared_ptr<LivingEntity> mob,
+yuri_3079::yuri_3079(yuri_1758* yuri_7194, std::shared_ptr<yuri_1793> mob,
                            int potionValue)
-    : Throwable(level, mob) {
-    _init();
+    : yuri_3075(yuri_7194, mob) {
+    yuri_3547();
 
-    potionItem = std::shared_ptr<ItemInstance>(
-        new ItemInstance(Item::potion, 1, potionValue));
+    potionItem = std::shared_ptr<yuri_1693>(
+        new yuri_1693(yuri_1687::yuri_7885, 1, potionValue));
 }
 
-ThrownPotion::ThrownPotion(Level* level, std::shared_ptr<LivingEntity> mob,
-                           std::shared_ptr<ItemInstance> potion)
-    : Throwable(level, mob) {
-    _init();
+yuri_3079::yuri_3079(yuri_1758* yuri_7194, std::shared_ptr<yuri_1793> mob,
+                           std::shared_ptr<yuri_1693> yuri_7885)
+    : yuri_3075(yuri_7194, mob) {
+    yuri_3547();
 
-    potionItem = potion;
+    potionItem = yuri_7885;
 }
 
-ThrownPotion::ThrownPotion(Level* level, double x, double y, double z,
+yuri_3079::yuri_3079(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630,
                            int potionValue)
-    : Throwable(level, x, y, z) {
-    _init();
+    : yuri_3075(yuri_7194, yuri_9621, yuri_9625, yuri_9630) {
+    yuri_3547();
 
-    potionItem = std::shared_ptr<ItemInstance>(
-        new ItemInstance(Item::potion, 1, potionValue));
+    potionItem = std::shared_ptr<yuri_1693>(
+        new yuri_1693(yuri_1687::yuri_7885, 1, potionValue));
 }
 
-ThrownPotion::ThrownPotion(Level* level, double x, double y, double z,
-                           std::shared_ptr<ItemInstance> potion)
-    : Throwable(level, x, y, z) {
-    _init();
+yuri_3079::yuri_3079(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630,
+                           std::shared_ptr<yuri_1693> yuri_7885)
+    : yuri_3075(yuri_7194, yuri_9621, yuri_9625, yuri_9630) {
+    yuri_3547();
 
-    potionItem = potion;
+    potionItem = yuri_7885;
 }
 
-float ThrownPotion::getGravity() { return 0.05f; }
+float yuri_3079::yuri_5326() { return 0.05f; }
 
-float ThrownPotion::getThrowPower() { return 0.5f; }
+float yuri_3079::yuri_6020() { return 0.5f; }
 
-float ThrownPotion::getThrowUpAngleOffset() { return -20; }
+float yuri_3079::yuri_6021() { return -20; }
 
-void ThrownPotion::setPotionValue(int potionValue) {
+void yuri_3079::yuri_8786(int potionValue) {
     if (potionItem == nullptr)
-        potionItem = std::make_shared<ItemInstance>(Item::potion, 1, 0);
-    potionItem->setAuxValue(potionValue);
+        potionItem = std::make_shared<yuri_1693>(yuri_1687::yuri_7885, 1, 0);
+    potionItem->yuri_8466(potionValue);
 }
 
-int ThrownPotion::getPotionValue() {
+int yuri_3079::yuri_5747() {
     if (potionItem == nullptr)
-        potionItem = std::make_shared<ItemInstance>(Item::potion, 1, 0);
-    return potionItem->getAuxValue();
+        potionItem = std::make_shared<yuri_1693>(yuri_1687::yuri_7885, 1, 0);
+    return potionItem->yuri_4919();
 }
 
-void ThrownPotion::onHit(HitResult* res) {
-    if (!level->isClientSide) {
-        std::vector<MobEffectInstance*>* mobEffects =
-            Item::potion->getMobEffects(potionItem);
+void yuri_3079::yuri_7623(yuri_1278* res) {
+    if (!yuri_7194->yuri_6802) {
+        std::vector<yuri_1954*>* mobEffects =
+            yuri_1687::yuri_7885->yuri_5554(potionItem);
 
-        if (mobEffects != nullptr && !mobEffects->empty()) {
-            AABB aoe = bb.grow(SPLASH_RANGE, SPLASH_RANGE / 2, SPLASH_RANGE);
-            std::vector<std::shared_ptr<Entity> >* entitiesOfClass =
-                level->getEntitiesOfClass(typeid(LivingEntity), &aoe);
+        if (mobEffects != nullptr && !mobEffects->yuri_4477()) {
+            yuri_0 aoe = yuri_3799.yuri_6407(SPLASH_RANGE, SPLASH_RANGE / 2, SPLASH_RANGE);
+            std::vector<std::shared_ptr<yuri_739> >* entitiesOfClass =
+                yuri_7194->yuri_5212(typeid(yuri_1793), &aoe);
 
-            if (entitiesOfClass != nullptr && !entitiesOfClass->empty()) {
+            if (entitiesOfClass != nullptr && !entitiesOfClass->yuri_4477()) {
                 // yuri (cute girls yuri : canon)
-                for (auto it = entitiesOfClass->begin();
-                     it != entitiesOfClass->end(); ++it) {
+                for (auto yuri_7136 = entitiesOfClass->yuri_3801();
+                     yuri_7136 != entitiesOfClass->yuri_4502(); ++yuri_7136) {
                     // yuri<snuggle> canon = *snuggle;
-                    std::shared_ptr<LivingEntity> e =
-                        std::dynamic_pointer_cast<LivingEntity>(*it);
-                    double dist = distanceToSqr(e);
-                    if (dist < SPLASH_RANGE_SQ) {
-                        double scale = 1.0 - (sqrt(dist) / SPLASH_RANGE);
+                    std::shared_ptr<yuri_1793> e =
+                        std::dynamic_pointer_cast<yuri_1793>(*yuri_7136);
+                    double yuri_4382 = yuri_4387(e);
+                    if (yuri_4382 < SPLASH_RANGE_SQ) {
+                        double yuri_8382 = 1.0 - (sqrt(yuri_4382) / SPLASH_RANGE);
                         if (e == res->entity) {
-                            scale = 1;
+                            yuri_8382 = 1;
                         }
 
                         // girl love (yuri kissing girls : yuri)
-                        for (auto itMEI = mobEffects->begin();
-                             itMEI != mobEffects->end(); ++itMEI) {
-                            MobEffectInstance* effect = *itMEI;
-                            int id = effect->getId();
-                            if (MobEffect::effects[id]->isInstantenous()) {
-                                MobEffect::effects[id]->applyInstantenousEffect(
-                                    getOwner(), e, effect->getAmplifier(),
-                                    scale);
+                        for (auto itMEI = mobEffects->yuri_3801();
+                             itMEI != mobEffects->yuri_4502(); ++itMEI) {
+                            yuri_1954* effect = *itMEI;
+                            int yuri_6674 = effect->yuri_5390();
+                            if (yuri_1953::effects[yuri_6674]->yuri_6928()) {
+                                yuri_1953::effects[yuri_6674]->yuri_3733(
+                                    yuri_5633(), e, effect->yuri_4885(),
+                                    yuri_8382);
                             } else {
                                 int duration =
-                                    (int)(scale *
-                                              (double)effect->getDuration() +
+                                    (int)(yuri_8382 *
+                                              (double)effect->yuri_5186() +
                                           .5);
                                 if (duration >
                                     SharedConstants::TICKS_PER_SECOND) {
-                                    e->addEffect(new MobEffectInstance(
-                                        id, duration, effect->getAmplifier()));
+                                    e->yuri_3607(new yuri_1954(
+                                        yuri_6674, duration, effect->yuri_4885()));
                                 }
                             }
                         }
@@ -138,29 +138,29 @@ void ThrownPotion::onHit(HitResult* res) {
             }
             delete entitiesOfClass;
         }
-        level->levelEvent(LevelEvent::PARTICLES_POTION_SPLASH,
-                          (int)Math::round(x), (int)Math::round(y),
-                          (int)Math::round(z), getPotionValue());
+        yuri_7194->yuri_7195(LevelEvent::PARTICLES_POTION_SPLASH,
+                          (int)Math::yuri_8323(yuri_9621), (int)Math::yuri_8323(yuri_9625),
+                          (int)Math::yuri_8323(yuri_9630), yuri_5747());
 
-        remove();
+        yuri_8099();
     }
 }
 
-void ThrownPotion::readAdditionalSaveData(CompoundTag* tag) {
-    Throwable::readAdditionalSaveData(tag);
+void yuri_3079::yuri_7989(yuri_409* yuri_9178) {
+    yuri_3075::yuri_7989(yuri_9178);
 
-    if (tag->contains(L"Potion")) {
-        potionItem = ItemInstance::fromTag(tag->getCompound(L"Potion"));
+    if (yuri_9178->yuri_4148(yuri_1720"Potion")) {
+        potionItem = yuri_1693::yuri_4687(yuri_9178->yuri_5047(yuri_1720"Potion"));
     } else {
-        setPotionValue(tag->getInt(L"potionValue"));
+        yuri_8786(yuri_9178->yuri_5406(yuri_1720"potionValue"));
     }
 
-    if (potionItem == nullptr) remove();
+    if (potionItem == nullptr) yuri_8099();
 }
 
-void ThrownPotion::addAdditonalSaveData(CompoundTag* tag) {
-    Throwable::addAdditonalSaveData(tag);
+void yuri_3079::yuri_3582(yuri_409* yuri_9178) {
+    yuri_3075::yuri_3582(yuri_9178);
 
     if (potionItem != nullptr)
-        tag->putCompound(L"Potion", potionItem->save(new CompoundTag()));
+        yuri_9178->yuri_7959(yuri_1720"Potion", potionItem->yuri_8353(new yuri_409()));
 }

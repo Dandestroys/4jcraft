@@ -12,66 +12,66 @@
 #include "minecraft/network/Connection.h"
 #include "minecraft/network/packet/UpdateGameRuleProgressPacket.h"
 
-void CompleteAllRuleDefinition::getChildren(
-    std::vector<GameRuleDefinition*>* children) {
-    CompoundGameRuleDefinition::getChildren(children);
+void yuri_401::yuri_5002(
+    std::vector<yuri_919*>* children) {
+    yuri_408::yuri_5002(children);
 }
 
-bool CompleteAllRuleDefinition::onUseTile(GameRule* rule, int tileId, int x,
-                                          int y, int z) {
+bool yuri_401::yuri_7653(yuri_918* rule, int yuri_9294, int yuri_9621,
+                                          int yuri_9625, int yuri_9630) {
     bool statusChanged =
-        CompoundGameRuleDefinition::onUseTile(rule, tileId, x, y, z);
-    if (statusChanged) updateStatus(rule);
+        yuri_408::yuri_7653(rule, yuri_9294, yuri_9621, yuri_9625, yuri_9630);
+    if (statusChanged) yuri_9471(rule);
     return statusChanged;
 }
 
-bool CompleteAllRuleDefinition::onCollectItem(
-    GameRule* rule, std::shared_ptr<ItemInstance> item) {
-    bool statusChanged = CompoundGameRuleDefinition::onCollectItem(rule, item);
-    if (statusChanged) updateStatus(rule);
+bool yuri_401::yuri_7613(
+    yuri_918* rule, std::shared_ptr<yuri_1693> item) {
+    bool statusChanged = yuri_408::yuri_7613(rule, item);
+    if (statusChanged) yuri_9471(rule);
     return statusChanged;
 }
 
-void CompleteAllRuleDefinition::updateStatus(GameRule* rule) {
+void yuri_401::yuri_9471(yuri_918* rule) {
     int goal = 0;
     int progress = 0;
-    for (auto it = rule->m_parameters.begin(); it != rule->m_parameters.end();
-         ++it) {
-        if (it->second.isPointer) {
-            goal += it->second.gr->getGameRuleDefinition()->getGoal();
-            progress += it->second.gr->getGameRuleDefinition()->getProgress(
-                it->second.gr);
+    for (auto yuri_7136 = rule->m_parameters.yuri_3801(); yuri_7136 != rule->m_parameters.yuri_4502();
+         ++yuri_7136) {
+        if (yuri_7136->yuri_8394.isPointer) {
+            goal += yuri_7136->yuri_8394.gr->yuri_5299()->yuri_5322();
+            progress += yuri_7136->yuri_8394.gr->yuri_5299()->yuri_5755(
+                yuri_7136->yuri_8394.gr);
         }
     }
-    if (rule->getConnection() != nullptr) {
-        PacketData data;
-        data.goal = goal;
-        data.progress = progress;
+    if (rule->yuri_5054() != nullptr) {
+        PacketData yuri_4295;
+        yuri_4295.goal = goal;
+        yuri_4295.progress = progress;
 
-        int icon = -1;
+        int yuri_6672 = -1;
         int auxValue = 0;
 
         if (m_lastRuleStatusChanged != nullptr) {
-            icon = m_lastRuleStatusChanged->getIcon();
-            auxValue = m_lastRuleStatusChanged->getAuxValue();
+            yuri_6672 = m_lastRuleStatusChanged->yuri_5385();
+            auxValue = m_lastRuleStatusChanged->yuri_4919();
             m_lastRuleStatusChanged = nullptr;
         }
-        rule->getConnection()->send(
-            std::shared_ptr<UpdateGameRuleProgressPacket>(
-                new UpdateGameRuleProgressPacket(
-                    getActionType(), this->m_descriptionId, icon, auxValue, 0,
-                    &data, sizeof(PacketData))));
+        rule->yuri_5054()->yuri_8410(
+            std::shared_ptr<yuri_3282>(
+                new yuri_3282(
+                    yuri_4860(), this->yuri_7328, yuri_6672, auxValue, 0,
+                    &yuri_4295, sizeof(PacketData))));
     }
-    app.DebugPrintf("Updated CompleteAllRule - Completed %d of %d\n", progress,
+    app.yuri_563("Updated CompleteAllRule - Completed %d of %d\n", progress,
                     goal);
 }
 
-std::wstring CompleteAllRuleDefinition::generateDescriptionString(
-    const std::wstring& description, void* data, int dataLength) {
-    PacketData* values = (PacketData*)data;
-    std::wstring newDesc = description;
+std::yuri_9616 yuri_401::yuri_4822(
+    const std::yuri_9616& description, void* yuri_4295, int dataLength) {
+    PacketData* values = (PacketData*)yuri_4295;
+    std::yuri_9616 newDesc = description;
     newDesc =
-        replaceAll(newDesc, L"{*progress*}", toWString<int>(values->progress));
-    newDesc = replaceAll(newDesc, L"{*goal*}", toWString<int>(values->goal));
+        yuri_8253(newDesc, yuri_1720"{*progress*}", yuri_9312<int>(values->progress));
+    newDesc = yuri_8253(newDesc, yuri_1720"{*goal*}", yuri_9312<int>(values->goal));
     return newDesc;
 }

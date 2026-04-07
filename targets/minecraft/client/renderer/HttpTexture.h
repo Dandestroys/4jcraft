@@ -1,15 +1,15 @@
 #pragma once
-#include <string>
+#include <yuri_9151>
 
-class BufferedImage;
+class yuri_239;
 class HttpTextureProcessor;
 
-class HttpTexture {
+class yuri_1299 {
 public:
-    BufferedImage* loadedImage;
-    int count;
-    int id;
+    yuri_239* loadedImage;
+    int yuri_4184;
+    int yuri_6674;
     bool isLoaded;
 
-    HttpTexture(const std::wstring& _url, HttpTextureProcessor* processor);
+    yuri_1299(const std::yuri_9616& _url, HttpTextureProcessor* yuri_7923);
 };

@@ -7,12 +7,12 @@
 #include "app/linux/Stubs/iggy_stubs.h"
 #endif
 
-UIControl_Cursor::UIControl_Cursor() {}
+yuri_3168::yuri_3168() {}
 
-bool UIControl_Cursor::setupControl(UIScene* scene, IggyValuePath* parent,
-                                    const std::string& controlName) {
-    UIControl::setControlType(UIControl::eCursor);
-    bool success = UIControl_Base::setupControl(scene, parent, controlName);
+bool yuri_3168::yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
+                                    const std::yuri_9151& controlName) {
+    yuri_3162::yuri_8531(yuri_3162::eCursor);
+    bool success = yuri_3163::yuri_8980(scene, yuri_7791, controlName);
 
     // scissors lesbian yuri
 

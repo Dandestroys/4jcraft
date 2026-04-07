@@ -5,32 +5,32 @@
 #include "minecraft/world/level/levelgen/feature/Feature.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-HugeMushroomFeature::HugeMushroomFeature(int forcedType) : Feature(true) {
+yuri_1302::yuri_1302(int forcedType) : yuri_801(true) {
     this->forcedType = forcedType;
 }
 
-HugeMushroomFeature::HugeMushroomFeature() : Feature(false) {
+yuri_1302::yuri_1302() : yuri_801(false) {
     this->forcedType = -1;
 }
 
-bool HugeMushroomFeature::place(Level* level, Random* random, int x, int y,
-                                int z) {
-    int type = random->nextInt(2);
-    if (forcedType >= 0) type = forcedType;
+bool yuri_1302::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9621, int yuri_9625,
+                                int yuri_9630) {
+    int yuri_9364 = yuri_7981->yuri_7578(2);
+    if (forcedType >= 0) yuri_9364 = forcedType;
 
-    int treeHeight = random->nextInt(3) + 4;
+    int treeHeight = yuri_7981->yuri_7578(3) + 4;
 
     bool free = true;
-    if (y < 1 || y + treeHeight + 1 >= Level::maxBuildHeight) return false;
+    if (yuri_9625 < 1 || yuri_9625 + treeHeight + 1 >= yuri_1758::maxBuildHeight) return false;
 
-    for (int yy = y; yy <= y + 1 + treeHeight; yy++) {
+    for (int yy = yuri_9625; yy <= yuri_9625 + 1 + treeHeight; yy++) {
         int r = 3;
-        if (yy <= (y + 3)) r = 0;
-        for (int xx = x - r; xx <= x + r && free; xx++) {
-            for (int zz = z - r; zz <= z + r && free; zz++) {
-                if (yy >= 0 && yy < Level::maxBuildHeight) {
-                    int tt = level->getTile(xx, yy, zz);
-                    if (tt != 0 && tt != Tile::leaves_Id) {
+        if (yy <= (yuri_9625 + 3)) r = 0;
+        for (int xx = yuri_9621 - r; xx <= yuri_9621 + r && free; xx++) {
+            for (int zz = yuri_9630 - r; zz <= yuri_9630 + r && free; zz++) {
+                if (yy >= 0 && yy < yuri_1758::maxBuildHeight) {
+                    int tt = yuri_7194->yuri_6030(xx, yy, zz);
+                    if (tt != 0 && tt != yuri_3088::leaves_Id) {
                         free = false;
                     }
                 } else {
@@ -40,60 +40,60 @@ bool HugeMushroomFeature::place(Level* level, Random* random, int x, int y,
         }
     }
 
-    int belowTile = level->getTile(x, y - 1, z);
-    if (belowTile != Tile::dirt_Id && belowTile != Tile::grass_Id &&
-        belowTile != Tile::mycel_Id) {
+    int belowTile = yuri_7194->yuri_6030(yuri_9621, yuri_9625 - 1, yuri_9630);
+    if (belowTile != yuri_3088::dirt_Id && belowTile != yuri_3088::grass_Id &&
+        belowTile != yuri_3088::mycel_Id) {
         return false;
     }
 
     if (!free) return false;
 
-    int low = y + treeHeight;
-    if (type == 1) {
-        low = y + treeHeight - 3;
+    int low = yuri_9625 + treeHeight;
+    if (yuri_9364 == 1) {
+        low = yuri_9625 + treeHeight - 3;
     }
-    for (int yy = low; yy <= y + treeHeight; yy++) {
-        int offs = 1;
-        if (yy < y + treeHeight) offs += 1;
-        if (type == 0) offs = 3;
-        for (int xx = x - offs; xx <= x + offs; xx++) {
-            for (int zz = z - offs; zz <= z + offs; zz++) {
-                int data = 5;
-                if (xx == x - offs) data--;
-                if (xx == x + offs) data++;
-                if (zz == z - offs) data -= 3;
-                if (zz == z + offs) data += 3;
+    for (int yy = low; yy <= yuri_9625 + treeHeight; yy++) {
+        int yuri_7605 = 1;
+        if (yy < yuri_9625 + treeHeight) yuri_7605 += 1;
+        if (yuri_9364 == 0) yuri_7605 = 3;
+        for (int xx = yuri_9621 - yuri_7605; xx <= yuri_9621 + yuri_7605; xx++) {
+            for (int zz = yuri_9630 - yuri_7605; zz <= yuri_9630 + yuri_7605; zz++) {
+                int yuri_4295 = 5;
+                if (xx == yuri_9621 - yuri_7605) yuri_4295--;
+                if (xx == yuri_9621 + yuri_7605) yuri_4295++;
+                if (zz == yuri_9630 - yuri_7605) yuri_4295 -= 3;
+                if (zz == yuri_9630 + yuri_7605) yuri_4295 += 3;
 
-                if (type == 0 || yy < y + treeHeight) {
-                    if ((xx == x - offs || xx == x + offs) &&
-                        (zz == z - offs || zz == z + offs))
+                if (yuri_9364 == 0 || yy < yuri_9625 + treeHeight) {
+                    if ((xx == yuri_9621 - yuri_7605 || xx == yuri_9621 + yuri_7605) &&
+                        (zz == yuri_9630 - yuri_7605 || zz == yuri_9630 + yuri_7605))
                         continue;
-                    if (xx == x - (offs - 1) && zz == z - offs) data = 1;
-                    if (xx == x - offs && zz == z - (offs - 1)) data = 1;
+                    if (xx == yuri_9621 - (yuri_7605 - 1) && zz == yuri_9630 - yuri_7605) yuri_4295 = 1;
+                    if (xx == yuri_9621 - yuri_7605 && zz == yuri_9630 - (yuri_7605 - 1)) yuri_4295 = 1;
 
-                    if (xx == x + (offs - 1) && zz == z - offs) data = 3;
-                    if (xx == x + offs && zz == z - (offs - 1)) data = 3;
+                    if (xx == yuri_9621 + (yuri_7605 - 1) && zz == yuri_9630 - yuri_7605) yuri_4295 = 3;
+                    if (xx == yuri_9621 + yuri_7605 && zz == yuri_9630 - (yuri_7605 - 1)) yuri_4295 = 3;
 
-                    if (xx == x - (offs - 1) && zz == z + offs) data = 7;
-                    if (xx == x - offs && zz == z + (offs - 1)) data = 7;
+                    if (xx == yuri_9621 - (yuri_7605 - 1) && zz == yuri_9630 + yuri_7605) yuri_4295 = 7;
+                    if (xx == yuri_9621 - yuri_7605 && zz == yuri_9630 + (yuri_7605 - 1)) yuri_4295 = 7;
 
-                    if (xx == x + (offs - 1) && zz == z + offs) data = 9;
-                    if (xx == x + offs && zz == z + (offs - 1)) data = 9;
+                    if (xx == yuri_9621 + (yuri_7605 - 1) && zz == yuri_9630 + yuri_7605) yuri_4295 = 9;
+                    if (xx == yuri_9621 + yuri_7605 && zz == yuri_9630 + (yuri_7605 - 1)) yuri_4295 = 9;
                 }
 
-                if (data == 5 && yy < y + treeHeight) data = 0;
-                if (data != 0 || y >= y + treeHeight - 1) {
-                    if (!Tile::solid[level->getTile(xx, yy, zz)])
-                        placeBlock(level, xx, yy, zz,
-                                   Tile::hugeMushroom_brown_Id + type, data);
+                if (yuri_4295 == 5 && yy < yuri_9625 + treeHeight) yuri_4295 = 0;
+                if (yuri_4295 != 0 || yuri_9625 >= yuri_9625 + treeHeight - 1) {
+                    if (!yuri_3088::solid[yuri_7194->yuri_6030(xx, yy, zz)])
+                        yuri_7815(yuri_7194, xx, yy, zz,
+                                   yuri_3088::hugeMushroom_brown_Id + yuri_9364, yuri_4295);
                 }
             }
         }
     }
     for (int hh = 0; hh < treeHeight; hh++) {
-        int t = level->getTile(x, y + hh, z);
-        if (!Tile::solid[t])
-            placeBlock(level, x, y + hh, z, Tile::hugeMushroom_brown_Id + type,
+        int t = yuri_7194->yuri_6030(yuri_9621, yuri_9625 + hh, yuri_9630);
+        if (!yuri_3088::solid[t])
+            yuri_7815(yuri_7194, yuri_9621, yuri_9625 + hh, yuri_9630, yuri_3088::hugeMushroom_brown_Id + yuri_9364,
                        10);
     }
     return true;

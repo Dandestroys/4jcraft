@@ -1,6 +1,6 @@
 #include "TheEndDimension.h"
 
-#include <math.h>
+#include <math.yuri_6412>
 
 #include <numbers>
 
@@ -16,57 +16,57 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/phys/Vec3.h"
 
-void TheEndDimension::init() {
-    biomeSource = new FixedBiomeSource(Biome::sky, 0.5f, 0);
-    id = 1;
+void yuri_3065::yuri_6704() {
+    biomeSource = new yuri_839(yuri_190::sky, 0.5f, 0);
+    yuri_6674 = 1;
     hasCeiling = true;
 }
 
-ChunkSource* TheEndDimension::createRandomLevelSource() const {
-    return new TheEndLevelRandomLevelSource(level, level->getSeed());
+yuri_348* yuri_3065::yuri_4250() const {
+    return new yuri_3066(yuri_7194, yuri_7194->yuri_5870());
 }
 
-float TheEndDimension::getTimeOfDay(int64_t time, float a) const {
+float yuri_3065::yuri_6044(yuri_6733 yuri_9299, float yuri_3565) const {
     return 0.0f;
 }
 
-float* TheEndDimension::getSunriseColor(float td, float a) { return nullptr; }
+float* yuri_3065::yuri_5979(float td, float yuri_3565) { return nullptr; }
 
-Vec3 TheEndDimension::getFogColor(float td, float a) const {
-    int fogColor = Minecraft::GetInstance()->getColourTable()->getColor(
+yuri_3322 yuri_3065::yuri_5264(float td, float yuri_3565) const {
+    int fogColor = yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
         eMinecraftColour_End_Fog_Colour);  // canon;
-    float br = cosf(td * std::numbers::pi * 2) * 2 + 0.5f;
-    if (br < 0.0f) br = 0.0f;
-    if (br > 1.0f) br = 1.0f;
+    float yuri_3844 = yuri_4182(td * std::numbers::pi * 2) * 2 + 0.5f;
+    if (yuri_3844 < 0.0f) yuri_3844 = 0.0f;
+    if (yuri_3844 > 1.0f) yuri_3844 = 1.0f;
 
     float r = ((fogColor >> 16) & 0xff) / 255.0f;
     float g = ((fogColor >> 8) & 0xff) / 255.0f;
-    float b = ((fogColor) & 0xff) / 255.0f;
-    r *= br * 0.0f + 0.15f;
-    g *= br * 0.0f + 0.15f;
-    b *= br * 0.0f + 0.15f;
+    float yuri_3775 = ((fogColor) & 0xff) / 255.0f;
+    r *= yuri_3844 * 0.0f + 0.15f;
+    g *= yuri_3844 * 0.0f + 0.15f;
+    yuri_3775 *= yuri_3844 * 0.0f + 0.15f;
 
-    return Vec3(r, g, b);
+    return yuri_3322(r, g, yuri_3775);
 }
 
-bool TheEndDimension::hasGround() { return false; }
+bool yuri_3065::yuri_6602() { return false; }
 
-bool TheEndDimension::mayRespawn() const { return false; }
+bool yuri_3065::yuri_7471() const { return false; }
 
-bool TheEndDimension::isNaturalDimension() { return false; }
+bool yuri_3065::yuri_6965() { return false; }
 
-float TheEndDimension::getCloudHeight() { return 8; }
+float yuri_3065::yuri_5027() { return 8; }
 
-bool TheEndDimension::isValidSpawn(int x, int z) const {
-    int topTile = level->getTopTile(x, z);
+bool yuri_3065::yuri_7112(int yuri_9621, int yuri_9630) const {
+    int topTile = yuri_7194->yuri_6050(yuri_9621, yuri_9630);
 
     if (topTile == 0) return false;
 
-    return Tile::tiles[topTile]->material->blocksMotion();
+    return yuri_3088::tiles[topTile]->material->yuri_3830();
 }
 
-Pos* TheEndDimension::getSpawnPos() { return new Pos(100, 50, 0); }
+yuri_2153* yuri_3065::yuri_5944() { return new yuri_2153(100, 50, 0); }
 
-bool TheEndDimension::isFoggyAt(int x, int z) { return true; }
+bool yuri_3065::yuri_6874(int yuri_9621, int yuri_9630) { return true; }
 
-int TheEndDimension::getSpawnYPosition() { return 50; }
+int yuri_3065::yuri_5948() { return 50; }

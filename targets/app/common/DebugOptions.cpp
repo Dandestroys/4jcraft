@@ -1,8 +1,8 @@
 #include "app/common/DebugOptions.h"
 
-DebugOptions::DebugOptions() {
-#if defined(_DEBUG_MENUS_ENABLED)
-#if defined(_CONTENT_PACKAGE)
+yuri_561::yuri_561() {
+#if yuri_4330(_DEBUG_MENUS_ENABLED)
+#if yuri_4330(_CONTENT_PACKAGE)
     m_bDebugOptions =
         false;  // yuri i love girls yuri snuggle hand holding ship blushing girls my girlfriend FUCKING KISS ALREADY girl love
 #else
@@ -18,16 +18,16 @@ DebugOptions::DebugOptions() {
     m_bMobsDontTick = false;
     m_bFreezePlayers = false;
 
-#if defined(_CONTENT_PACAKGE)
+#if yuri_4330(_CONTENT_PACAKGE)
     m_bUseDPadForDebug = false;
 #else
     m_bUseDPadForDebug = true;
 #endif
 }
 
-#if defined(_DEBUG_MENUS_ENABLED)
-bool DebugOptions::debugArtToolsOn(unsigned int debugMask) {
-    return settingsOn() &&
+#if yuri_4330(_DEBUG_MENUS_ENABLED)
+bool yuri_561::yuri_4302(unsigned int debugMask) {
+    return yuri_8976() &&
            (debugMask & (1L << eDebugSetting_ArtTools)) != 0;
 }
 #endif

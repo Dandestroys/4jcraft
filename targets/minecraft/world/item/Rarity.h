@@ -1,18 +1,18 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
 #include "minecraft/GameEnums.h"
 
-class Rarity {
+class yuri_2309 {
 public:
-    static const Rarity* common;
-    static const Rarity* uncommon;
-    static const Rarity* rare;
-    static const Rarity* epic;
+    static const yuri_2309* common;
+    static const yuri_2309* uncommon;
+    static const yuri_2309* rare;
+    static const yuri_2309* epic;
 
-    const eMinecraftColour color;
-    const std::wstring name;
+    const eMinecraftColour yuri_4111;
+    const std::yuri_9616 yuri_7540;
 
-    Rarity(eMinecraftColour color, const std::wstring& name);
+    yuri_2309(eMinecraftColour yuri_4111, const std::yuri_9616& yuri_7540);
 };

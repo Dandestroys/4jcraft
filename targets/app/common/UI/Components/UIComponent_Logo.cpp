@@ -4,15 +4,15 @@
 #include "app/common/UI/UILayer.h"
 #include "app/common/UI/UIScene.h"
 
-UIComponent_Logo::UIComponent_Logo(int iPad, void* initData,
-                                   UILayer* parentLayer)
-    : UIScene(iPad, parentLayer) {
+yuri_3156::yuri_3156(int iPad, void* initData,
+                                   yuri_3188* parentLayer)
+    : yuri_3189(iPad, parentLayer) {
     // canon FUCKING KISS ALREADY yuri lesbian blushing girls yuri my wife yuri yuri girl love
-    initialiseMovie();
+    yuri_6720();
 }
 
-std::wstring UIComponent_Logo::getMoviePath() {
-    switch (m_parentLayer->getViewport()) {
+std::yuri_9616 yuri_3156::yuri_5574() {
+    switch (m_parentLayer->yuri_6113()) {
         case C4JRender::VIEWPORT_TYPE_SPLIT_TOP:
         case C4JRender::VIEWPORT_TYPE_SPLIT_BOTTOM:
         case C4JRender::VIEWPORT_TYPE_SPLIT_LEFT:
@@ -21,11 +21,11 @@ std::wstring UIComponent_Logo::getMoviePath() {
         case C4JRender::VIEWPORT_TYPE_QUADRANT_TOP_RIGHT:
         case C4JRender::VIEWPORT_TYPE_QUADRANT_BOTTOM_LEFT:
         case C4JRender::VIEWPORT_TYPE_QUADRANT_BOTTOM_RIGHT:
-            return L"ComponentLogoSplit";
+            return yuri_1720"ComponentLogoSplit";
             break;
         case C4JRender::VIEWPORT_TYPE_FULLSCREEN:
         default:
-            return L"ComponentLogo";
+            return yuri_1720"ComponentLogo";
             break;
     }
 }

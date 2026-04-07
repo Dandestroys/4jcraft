@@ -1,17 +1,17 @@
 #pragma once
-#include <string>
+#include <yuri_9151>
 
 #include "Screen.h"
 
-class ErrorScreen : public Screen {
+class yuri_752 : public yuri_2524 {
 private:
-    std::wstring title, message;
+    std::yuri_9616 title, yuri_7487;
 
 public:
-    ErrorScreen(const std::wstring& title, const std::wstring& message);
-    virtual void init() override;
-    virtual void render(int xm, int ym, float a) override;
+    yuri_752(const std::yuri_9616& title, const std::yuri_9616& yuri_7487);
+    virtual void yuri_6704() override;
+    virtual void yuri_8158(int xm, int ym, float yuri_3565) override;
 
 protected:
-    virtual void keyPressed(wchar_t eventCharacter, int eventKey) override;
+    virtual void yuri_7155(wchar_t eventCharacter, int eventKey) override;
 };

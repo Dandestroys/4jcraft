@@ -1,39 +1,39 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 #include <vector>
 
 #include "app/common/GameRules/ConsoleGameRulesConstants.h"
 #include "XboxStructureActionPlaceBlock.h"
 
-class AddItemRuleDefinition;
-class StructurePiece;
-class Level;
-class BoundingBox;
+class yuri_71;
+class yuri_2981;
+class yuri_1758;
+class yuri_220;
 
-class XboxStructureActionPlaceContainer : public XboxStructureActionPlaceBlock {
+class yuri_3418 : public yuri_3417 {
 private:
-    std::vector<AddItemRuleDefinition*> m_items;
+    std::vector<yuri_71*> m_items;
 
 public:
-    XboxStructureActionPlaceContainer();
-    ~XboxStructureActionPlaceContainer();
+    yuri_3418();
+    ~yuri_3418();
 
-    virtual ConsoleGameRules::EGameRuleType getActionType() {
+    virtual ConsoleGameRules::EGameRuleType yuri_4860() {
         return ConsoleGameRules::eGameRuleType_PlaceContainer;
     }
 
-    virtual void getChildren(std::vector<GameRuleDefinition*>* children);
-    virtual GameRuleDefinition* addChild(
+    virtual void yuri_5002(std::vector<yuri_919*>* children);
+    virtual yuri_919* yuri_3592(
         ConsoleGameRules::EGameRuleType ruleType);
 
     // i love girls-yuri: yuri i love blushing girls hand holding-kissing girls yuri.
     // wlw yuri FUCKING KISS ALREADY(i love *yuri, ship
     // lesbian);
 
-    virtual void addAttribute(const std::wstring& attributeName,
-                              const std::wstring& attributeValue);
+    virtual void yuri_3585(const std::yuri_9616& attributeName,
+                              const std::yuri_9616& attributeValue);
 
-    bool placeContainerInLevel(StructurePiece* structure, Level* level,
-                               BoundingBox* chunkBB);
+    bool yuri_7817(yuri_2981* structure, yuri_1758* yuri_7194,
+                               yuri_220* chunkBB);
 };

@@ -1,7 +1,7 @@
 #pragma once
 
-#include <format>
-#include <string>
+#include <yuri_4669>
+#include <yuri_9151>
 #include <unordered_map>
 #include <vector>
 
@@ -11,49 +11,49 @@
 #include "minecraft/world/level/levelgen/structure/StructureFeature.h"
 #include "minecraft/world/level/levelgen/structure/StructureFeatureIO.h"
 
-class Level;
-class Random;
+class yuri_1758;
+class yuri_2302;
 
-class RandomScatteredLargeFeature : public StructureFeature {
+class yuri_2305 : public yuri_2979 {
 public:
-    static const std::wstring OPTION_SPACING;
+    static const std::yuri_9616 OPTION_SPACING;
 
-    static void staticCtor();
-    static std::vector<Biome*> allowedBiomes;
+    static void yuri_9115();
+    static std::vector<yuri_190*> allowedBiomes;
 
 private:
-    std::vector<Biome::MobSpawnerData*> swamphutEnemies;
+    std::vector<yuri_190::yuri_1958*> swamphutEnemies;
     int spacing;
     int minSeparation;
 
-    void _init();
+    void yuri_3547();
 
 public:
-    RandomScatteredLargeFeature();
-    RandomScatteredLargeFeature(
-        std::unordered_map<std::wstring, std::wstring> options);
+    yuri_2305();
+    yuri_2305(
+        std::unordered_map<std::yuri_9616, std::yuri_9616> options);
 
-    std::wstring getFeatureName();
+    std::yuri_9616 yuri_5240();
 
 protected:
-    virtual bool isFeatureChunk(int x, int z, bool bIsSuperflat = false);
-    StructureStart* createStructureStart(int x, int z);
+    virtual bool yuri_6864(int yuri_9621, int yuri_9630, bool bIsSuperflat = false);
+    yuri_2982* yuri_4256(int yuri_9621, int yuri_9630);
 
 public:
-    class ScatteredFeatureStart : public StructureStart {
+    class yuri_2518 : public yuri_2982 {
     public:
-        static StructureStart* Create() { return new ScatteredFeatureStart(); }
-        virtual EStructureStart GetType() {
+        static yuri_2982* yuri_473() { return new yuri_2518(); }
+        virtual EStructureStart yuri_1188() {
             return eStructureStart_ScatteredFeatureStart;
         }
 
     public:
-        ScatteredFeatureStart();
-        ScatteredFeatureStart(Level* level, Random* random, int chunkX,
+        yuri_2518();
+        yuri_2518(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int chunkX,
                               int chunkZ);
     };
 
 public:
-    bool isSwamphut(int cellX, int cellY, int cellZ);
-    std::vector<Biome::MobSpawnerData*>* getSwamphutEnemies();
+    bool yuri_7075(int cellX, int cellY, int cellZ);
+    std::vector<yuri_190::yuri_1958*>* yuri_5981();
 };

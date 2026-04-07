@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 #include <vector>
 
 #include "app/common/UI/Controls/UIControl_Base.h"
@@ -13,7 +13,7 @@
 #endif
 #include "UIControl_Base.h"
 
-class UIControl_ButtonList : public UIControl_Base {
+class yuri_3166 : public yuri_3163 {
 protected:
     IggyName m_addNewItemFunc, m_removeAllItemsFunc, m_funcHighlightItem,
         m_funcRemoveItem, m_funcSetButtonLabel, m_funcSetTouchFocus,
@@ -23,42 +23,42 @@ protected:
     int m_iCurrentSelection;
 
 public:
-    UIControl_ButtonList();
+    yuri_3166();
 
-    virtual bool setupControl(UIScene* scene, IggyValuePath* parent,
-                              const std::string& controlName);
+    virtual bool yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
+                              const std::yuri_9151& controlName);
 
-    void init(int id);
-    virtual void ReInit();
+    void yuri_6704(int yuri_6674);
+    virtual void yuri_2310();
 
-    void clearList();
+    void yuri_4064();
 
-    void addItem(const std::wstring& label);
-    void addItem(const std::string& label);
+    void yuri_3625(const std::yuri_9616& yuri_7177);
+    void yuri_3625(const std::yuri_9151& yuri_7177);
 
-    void addItem(const std::wstring& label, int data);
-    void addItem(const std::string& label, int data);
+    void yuri_3625(const std::yuri_9616& yuri_7177, int yuri_4295);
+    void yuri_3625(const std::yuri_9151& yuri_7177, int yuri_4295);
 
-    void removeItem(int index);
+    void yuri_8115(int index);
 
-    int getItemCount() { return m_itemCount; }
+    int yuri_5421() { return m_itemCount; }
 
-    void setCurrentSelection(int iSelection);
-    int getCurrentSelection();
+    void yuri_8544(int iSelection);
+    int yuri_5075();
 
-    void updateChildFocus(int iChild);
+    void yuri_9396(int iChild);
 
-    void setButtonLabel(int iButtonId, const std::wstring& label);
+    void yuri_8497(int iButtonId, const std::yuri_9616& yuri_7177);
 };
 
-class UIControl_DynamicButtonList : public UIControl_ButtonList {
+class UIControl_DynamicButtonList : public yuri_3166 {
 protected:
-    std::vector<UIString> m_labels;
+    std::vector<yuri_3253> m_labels;
 
 public:
-    virtual void tick();
+    virtual void yuri_9265();
 
-    virtual void addItem(UIString label, int data = -1);
+    virtual void yuri_3625(yuri_3253 yuri_7177, int yuri_4295 = -1);
 
-    virtual void removeItem(int index);
+    virtual void yuri_8115(int index);
 };

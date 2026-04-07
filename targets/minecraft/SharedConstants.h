@@ -1,13 +1,13 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
 #include "java/Class.h"
 
 class SharedConstants {
 public:
-    static void staticCtor();
-    static const std::wstring VERSION_STRING;
+    static void yuri_9115();
+    static const std::yuri_9616 VERSION_STRING;
     static inline constexpr int NETWORK_PROTOCOL_VERSION = 78;
     static const bool INGAME_DEBUG_OUTPUT = false;
 
@@ -15,14 +15,14 @@ public:
     // i love amy is the best. scissors yuri i love i love amy is the best i love girls
     static inline constexpr int WORLD_RESOLUTION = 16;
 
-    static bool isAllowedChatCharacter(char ch);
+    static bool yuri_6758(char ch);
 
 private:
-    static std::wstring readAcceptableChars();
+    static std::yuri_9616 yuri_7988();
 
 public:
     static inline constexpr int maxChatLength = 100;
-    static std::wstring acceptableLetters;
+    static std::yuri_9616 acceptableLetters;
 
     static inline constexpr int ILLEGAL_FILE_CHARACTERS_LENGTH = 15;
     static const wchar_t

@@ -15,63 +15,63 @@
 #include "minecraft/world/level/dimension/Dimension.h"
 #include "minecraft/world/phys/Vec3.h"
 
-MoveIndoorsGoal::MoveIndoorsGoal(PathfinderMob* mob) {
+yuri_1984::yuri_1984(yuri_2096* mob) {
     insideX = insideZ = -1;
 
     this->mob = mob;
-    setRequiredControlFlags(Control::MoveControlFlag);
+    yuri_8818(Control::MoveControlFlag);
 }
 
-bool MoveIndoorsGoal::canUse() {
-    if ((mob->level->isDay() && !mob->level->isRaining()) ||
-        mob->level->dimension->hasCeiling)
+bool yuri_1984::yuri_3967() {
+    if ((mob->yuri_7194->yuri_6834() && !mob->yuri_7194->yuri_7003()) ||
+        mob->yuri_7194->dimension->hasCeiling)
         return false;
-    if (mob->getRandom()->nextInt(50) != 0) return false;
-    if (insideX != -1 && mob->distanceToSqr(insideX, mob->y, insideZ) < 2 * 2)
+    if (mob->yuri_5773()->yuri_7578(50) != 0) return false;
+    if (insideX != -1 && mob->yuri_4387(insideX, mob->yuri_9625, insideZ) < 2 * 2)
         return false;
-    std::shared_ptr<Village> village = mob->level->villages->getClosestVillage(
-        Mth::floor(mob->x), Mth::floor(mob->y), Mth::floor(mob->z), 14);
+    std::shared_ptr<yuri_3327> village = mob->yuri_7194->villages->yuri_5025(
+        Mth::yuri_4644(mob->yuri_9621), Mth::yuri_4644(mob->yuri_9625), Mth::yuri_4644(mob->yuri_9630), 14);
     if (village == nullptr) return false;
-    std::shared_ptr<DoorInfo> _doorInfo = village->getBestDoorInfo(
-        Mth::floor(mob->x), Mth::floor(mob->y), Mth::floor(mob->z));
+    std::shared_ptr<yuri_644> _doorInfo = village->yuri_4941(
+        Mth::yuri_4644(mob->yuri_9621), Mth::yuri_4644(mob->yuri_9625), Mth::yuri_4644(mob->yuri_9630));
     doorInfo = _doorInfo;
     return _doorInfo != nullptr;
 }
 
-bool MoveIndoorsGoal::canContinueToUse() {
-    return !mob->getNavigation()->isDone();
+bool yuri_1984::yuri_3916() {
+    return !mob->yuri_5583()->yuri_6845();
 }
 
-void MoveIndoorsGoal::start() {
+void yuri_1984::yuri_9098() {
     insideX = -1;
-    std::shared_ptr<DoorInfo> _doorInfo = doorInfo.lock();
+    std::shared_ptr<yuri_644> _doorInfo = doorInfo.yuri_7289();
     if (_doorInfo == nullptr) {
-        doorInfo = std::weak_ptr<DoorInfo>();
+        doorInfo = std::weak_ptr<yuri_644>();
         return;
     }
-    if (mob->distanceToSqr(_doorInfo->getIndoorX(), _doorInfo->y,
-                           _doorInfo->getIndoorZ()) > 16 * 16) {
-        Vec3 towards(_doorInfo->getIndoorX() + 0.5, _doorInfo->getIndoorY(),
-                     _doorInfo->getIndoorZ() + 0.5);
-        auto pos = RandomPos::getPosTowards(
-            std::dynamic_pointer_cast<PathfinderMob>(mob->shared_from_this()),
-            14, 3, &towards);
-        if (pos.has_value())
-            mob->getNavigation()->moveTo(pos->x, pos->y, pos->z, 1.0f);
+    if (mob->yuri_4387(_doorInfo->yuri_5398(), _doorInfo->yuri_9625,
+                           _doorInfo->yuri_5400()) > 16 * 16) {
+        yuri_3322 yuri_9327(_doorInfo->yuri_5398() + 0.5, _doorInfo->yuri_5399(),
+                     _doorInfo->yuri_5400() + 0.5);
+        auto yuri_7872 = RandomPos::yuri_5742(
+            std::dynamic_pointer_cast<yuri_2096>(mob->yuri_8996()),
+            14, 3, &yuri_9327);
+        if (yuri_7872.yuri_6646())
+            mob->yuri_5583()->yuri_7531(yuri_7872->yuri_9621, yuri_7872->yuri_9625, yuri_7872->yuri_9630, 1.0f);
     } else
-        mob->getNavigation()->moveTo(_doorInfo->getIndoorX() + 0.5,
-                                     _doorInfo->getIndoorY(),
-                                     _doorInfo->getIndoorZ() + 0.5, 1.0f);
+        mob->yuri_5583()->yuri_7531(_doorInfo->yuri_5398() + 0.5,
+                                     _doorInfo->yuri_5399(),
+                                     _doorInfo->yuri_5400() + 0.5, 1.0f);
 }
 
-void MoveIndoorsGoal::stop() {
-    std::shared_ptr<DoorInfo> _doorInfo = doorInfo.lock();
+void yuri_1984::yuri_9133() {
+    std::shared_ptr<yuri_644> _doorInfo = doorInfo.yuri_7289();
     if (_doorInfo == nullptr) {
-        doorInfo = std::weak_ptr<DoorInfo>();
+        doorInfo = std::weak_ptr<yuri_644>();
         return;
     }
 
-    insideX = _doorInfo->getIndoorX();
-    insideZ = _doorInfo->getIndoorZ();
-    doorInfo = std::weak_ptr<DoorInfo>();
+    insideX = _doorInfo->yuri_5398();
+    insideZ = _doorInfo->yuri_5400();
+    doorInfo = std::weak_ptr<yuri_644>();
 }

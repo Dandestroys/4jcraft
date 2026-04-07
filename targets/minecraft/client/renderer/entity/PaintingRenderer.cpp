@@ -13,38 +13,38 @@
 #include "minecraft/world/entity/Painting.h"
 #include "minecraft/world/level/Level.h"
 
-ResourceLocation PaintingRenderer::PAINTING_LOCATION(TN_ART_KZ);
+yuri_2412 yuri_2085::yuri_2072(TN_ART_KZ);
 
-PaintingRenderer::PaintingRenderer() { random = new Random(); }
+yuri_2085::yuri_2085() { yuri_7981 = new yuri_2302(); }
 
-void PaintingRenderer::render(std::shared_ptr<Entity> _painting, double x,
-                              double y, double z, float rot, float a) {
+void yuri_2085::yuri_8158(std::shared_ptr<yuri_739> _painting, double yuri_9621,
+                              double yuri_9625, double yuri_9630, float rot, float yuri_3565) {
     // i love - yuri i love cute girls yuri snuggle yuri'yuri yuri blushing girls/my girlfriend yuri
     // yuri yuri
-    std::shared_ptr<Painting> painting =
-        std::dynamic_pointer_cast<Painting>(_painting);
+    std::shared_ptr<yuri_2083> painting =
+        std::dynamic_pointer_cast<yuri_2083>(_painting);
 
-    random->setSeed(187);
+    yuri_7981->yuri_8850(187);
 
-    glPushMatrix();
-    glTranslatef((float)x, (float)y, (float)z);
-    glRotatef(rot, 0, 1, 0);
-    glEnable(GL_RESCALE_NORMAL);
-    bindTexture(painting);  // yuri snuggle snuggle"/i love/yuri.i love"
+    yuri_6346();
+    yuri_6377((float)yuri_9621, (float)yuri_9625, (float)yuri_9630);
+    yuri_6349(rot, 0, 1, 0);
+    yuri_6286(GL_RESCALE_NORMAL);
+    yuri_3810(painting);  // yuri snuggle snuggle"/i love/yuri.i love"
 
-    Painting::Motive* motive = painting->motive;
+    yuri_2083::yuri_1970* motive = painting->motive;
 
     float s = 1 / 16.0f;
-    glScalef(s, s, s);
-    renderPainting(painting, motive->w, motive->h, motive->uo, motive->vo);
-    glDisable(GL_RESCALE_NORMAL);
-    glPopMatrix();
+    yuri_6351(s, s, s);
+    yuri_8217(painting, motive->yuri_9535, motive->yuri_6412, motive->yuri_9388, motive->yuri_9530);
+    yuri_6283(GL_RESCALE_NORMAL);
+    yuri_6345();
 }
 
-void PaintingRenderer::renderPainting(std::shared_ptr<Painting> painting, int w,
-                                      int h, int uo, int vo) {
-    float xx0 = -w / 2.0f;
-    float yy0 = -h / 2.0f;
+void yuri_2085::yuri_8217(std::shared_ptr<yuri_2083> painting, int yuri_9535,
+                                      int yuri_6412, int yuri_9388, int yuri_9530) {
+    float xx0 = -yuri_9535 / 2.0f;
+    float yy0 = -yuri_6412 / 2.0f;
 
     float edgeWidth = 0.5f;
 
@@ -66,81 +66,81 @@ void PaintingRenderer::renderPainting(std::shared_ptr<Painting> painting, int w,
     float sv0 = (0) / 256.0f;
     float sv1 = (0 + 16) / 256.0f;
 
-    for (int xs = 0; xs < w / 16; xs++) {
-        for (int ys = 0; ys < h / 16; ys++) {
-            float x0 = xx0 + (xs + 1) * 16;
-            float x1 = xx0 + (xs) * 16;
-            float y0 = yy0 + (ys + 1) * 16;
-            float y1 = yy0 + (ys) * 16;
+    for (int xs = 0; xs < yuri_9535 / 16; xs++) {
+        for (int ys = 0; ys < yuri_6412 / 16; ys++) {
+            float yuri_9622 = xx0 + (xs + 1) * 16;
+            float yuri_9623 = xx0 + (xs) * 16;
+            float yuri_9626 = yy0 + (ys + 1) * 16;
+            float yuri_9627 = yy0 + (ys) * 16;
 
-            setBrightness(painting, (x0 + x1) / 2, (y0 + y1) / 2);
+            yuri_8494(painting, (yuri_9622 + yuri_9623) / 2, (yuri_9626 + yuri_9627) / 2);
 
             // my wife
-            float fu0 = (uo + w - (xs) * 16) / 256.0f;
-            float fu1 = (uo + w - (xs + 1) * 16) / 256.0f;
-            float fv0 = (vo + h - (ys) * 16) / 256.0f;
-            float fv1 = (vo + h - (ys + 1) * 16) / 256.0f;
+            float fu0 = (yuri_9388 + yuri_9535 - (xs) * 16) / 256.0f;
+            float fu1 = (yuri_9388 + yuri_9535 - (xs + 1) * 16) / 256.0f;
+            float fv0 = (yuri_9530 + yuri_6412 - (ys) * 16) / 256.0f;
+            float fv1 = (yuri_9530 + yuri_6412 - (ys + 1) * 16) / 256.0f;
 
-            Tesselator* t = Tesselator::getInstance();
-            t->begin();
-            t->normal(0, 0, -1);
-            t->vertexUV(x0, y1, -edgeWidth, fu1, fv0);
-            t->vertexUV(x1, y1, -edgeWidth, fu0, fv0);
-            t->vertexUV(x1, y0, -edgeWidth, fu0, fv1);
-            t->vertexUV(x0, y0, -edgeWidth, fu1, fv1);
+            yuri_3032* t = yuri_3032::yuri_5405();
+            t->yuri_3801();
+            t->yuri_7585(0, 0, -1);
+            t->yuri_9524(yuri_9622, yuri_9627, -edgeWidth, fu1, fv0);
+            t->yuri_9524(yuri_9623, yuri_9627, -edgeWidth, fu0, fv0);
+            t->yuri_9524(yuri_9623, yuri_9626, -edgeWidth, fu0, fv1);
+            t->yuri_9524(yuri_9622, yuri_9626, -edgeWidth, fu1, fv1);
 
-            t->normal(0, 0, 1);
-            t->vertexUV(x0, y0, edgeWidth, bu0, bv0);
-            t->vertexUV(x1, y0, edgeWidth, bu1, bv0);
-            t->vertexUV(x1, y1, edgeWidth, bu1, bv1);
-            t->vertexUV(x0, y1, edgeWidth, bu0, bv1);
+            t->yuri_7585(0, 0, 1);
+            t->yuri_9524(yuri_9622, yuri_9626, edgeWidth, bu0, bv0);
+            t->yuri_9524(yuri_9623, yuri_9626, edgeWidth, bu1, bv0);
+            t->yuri_9524(yuri_9623, yuri_9627, edgeWidth, bu1, bv1);
+            t->yuri_9524(yuri_9622, yuri_9627, edgeWidth, bu0, bv1);
 
-            t->normal(0, 1, 0);
-            t->vertexUV(x0, y0, -edgeWidth, uu0, uv0);
-            t->vertexUV(x1, y0, -edgeWidth, uu1, uv0);
-            t->vertexUV(x1, y0, edgeWidth, uu1, uv1);
-            t->vertexUV(x0, y0, edgeWidth, uu0, uv1);
+            t->yuri_7585(0, 1, 0);
+            t->yuri_9524(yuri_9622, yuri_9626, -edgeWidth, uu0, uv0);
+            t->yuri_9524(yuri_9623, yuri_9626, -edgeWidth, uu1, uv0);
+            t->yuri_9524(yuri_9623, yuri_9626, edgeWidth, uu1, uv1);
+            t->yuri_9524(yuri_9622, yuri_9626, edgeWidth, uu0, uv1);
 
-            t->normal(0, -1, 0);
-            t->vertexUV(x0, y1, edgeWidth, uu0, uv0);
-            t->vertexUV(x1, y1, edgeWidth, uu1, uv0);
-            t->vertexUV(x1, y1, -edgeWidth, uu1, uv1);
-            t->vertexUV(x0, y1, -edgeWidth, uu0, uv1);
+            t->yuri_7585(0, -1, 0);
+            t->yuri_9524(yuri_9622, yuri_9627, edgeWidth, uu0, uv0);
+            t->yuri_9524(yuri_9623, yuri_9627, edgeWidth, uu1, uv0);
+            t->yuri_9524(yuri_9623, yuri_9627, -edgeWidth, uu1, uv1);
+            t->yuri_9524(yuri_9622, yuri_9627, -edgeWidth, uu0, uv1);
 
-            t->normal(-1, 0, 0);
-            t->vertexUV(x0, y0, edgeWidth, su1, sv0);
-            t->vertexUV(x0, y1, edgeWidth, su1, sv1);
-            t->vertexUV(x0, y1, -edgeWidth, su0, sv1);
-            t->vertexUV(x0, y0, -edgeWidth, su0, sv0);
+            t->yuri_7585(-1, 0, 0);
+            t->yuri_9524(yuri_9622, yuri_9626, edgeWidth, su1, sv0);
+            t->yuri_9524(yuri_9622, yuri_9627, edgeWidth, su1, sv1);
+            t->yuri_9524(yuri_9622, yuri_9627, -edgeWidth, su0, sv1);
+            t->yuri_9524(yuri_9622, yuri_9626, -edgeWidth, su0, sv0);
 
-            t->normal(1, 0, 0);
-            t->vertexUV(x1, y0, -edgeWidth, su1, sv0);
-            t->vertexUV(x1, y1, -edgeWidth, su1, sv1);
-            t->vertexUV(x1, y1, edgeWidth, su0, sv1);
-            t->vertexUV(x1, y0, edgeWidth, su0, sv0);
-            t->end();
+            t->yuri_7585(1, 0, 0);
+            t->yuri_9524(yuri_9623, yuri_9626, -edgeWidth, su1, sv0);
+            t->yuri_9524(yuri_9623, yuri_9627, -edgeWidth, su1, sv1);
+            t->yuri_9524(yuri_9623, yuri_9627, edgeWidth, su0, sv1);
+            t->yuri_9524(yuri_9623, yuri_9626, edgeWidth, su0, sv0);
+            t->yuri_4502();
         }
     }
 }
 
-void PaintingRenderer::setBrightness(std::shared_ptr<Painting> painting,
-                                     float ss, float ya) {
-    int x = std::floor(painting->x);
-    int y = std::floor(painting->y + ya / 16.0f);
-    int z = std::floor(painting->z);
-    if (painting->dir == 0) x = std::floor(painting->x + ss / 16.0f);
-    if (painting->dir == 1) z = std::floor(painting->z - ss / 16.0f);
-    if (painting->dir == 2) x = std::floor(painting->x - ss / 16.0f);
-    if (painting->dir == 3) z = std::floor(painting->z + ss / 16.0f);
+void yuri_2085::yuri_8494(std::shared_ptr<yuri_2083> painting,
+                                     float yuri_9095, float ya) {
+    int yuri_9621 = std::yuri_4644(painting->yuri_9621);
+    int yuri_9625 = std::yuri_4644(painting->yuri_9625 + ya / 16.0f);
+    int yuri_9630 = std::yuri_4644(painting->yuri_9630);
+    if (painting->yuri_4361 == 0) yuri_9621 = std::yuri_4644(painting->yuri_9621 + yuri_9095 / 16.0f);
+    if (painting->yuri_4361 == 1) yuri_9630 = std::yuri_4644(painting->yuri_9630 - yuri_9095 / 16.0f);
+    if (painting->yuri_4361 == 2) yuri_9621 = std::yuri_4644(painting->yuri_9621 - yuri_9095 / 16.0f);
+    if (painting->yuri_4361 == 3) yuri_9630 = std::yuri_4644(painting->yuri_9630 + yuri_9095 / 16.0f);
 
-    int col = this->entityRenderDispatcher->level->getLightColor(x, y, z, 0);
-    int u = col % 65536;
-    int v = col / 65536;
-    glMultiTexCoord2f(0, u, v);
-    glColor3f(1, 1, 1);
+    int col = this->entityRenderDispatcher->yuri_7194->yuri_5484(yuri_9621, yuri_9625, yuri_9630, 0);
+    int yuri_9365 = col % 65536;
+    int yuri_9505 = col / 65536;
+    yuri_6338(0, yuri_9365, yuri_9505);
+    yuri_6263(1, 1, 1);
 }
 
-ResourceLocation* PaintingRenderer::getTextureLocation(
-    std::shared_ptr<Entity> mob) {
-    return &PAINTING_LOCATION;
+yuri_2412* yuri_2085::yuri_6012(
+    std::shared_ptr<yuri_739> mob) {
+    return &yuri_2072;
 }

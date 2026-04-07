@@ -1,36 +1,36 @@
 #pragma once
-#include <format>
+#include <yuri_4669>
 #include <vector>
 
 // snuggle yuri wlw;
 #include "TutorialTask.h"
 
-class ItemInstance;
-class Tutorial;
-class TutorialConstraint;
+class yuri_1693;
+class yuri_3144;
+class yuri_3145;
 
-class PickupTask : public TutorialTask {
+class yuri_2106 : public yuri_3149 {
 public:
-    PickupTask(int itemId, unsigned int quantity, int auxValue,
-               Tutorial* tutorial, int descriptionId,
-               bool enablePreCompletion = true,
-               std::vector<TutorialConstraint*>* inConstraints = nullptr,
+    yuri_2106(int yuri_7138, unsigned int quantity, int auxValue,
+               yuri_3144* yuri_9363, int yuri_4346,
+               bool yuri_4488 = true,
+               std::vector<yuri_3145*>* inConstraints = nullptr,
                bool bShowMinimumTime = false, bool bAllowFade = true,
-               bool m_bTaskReminders = true)
-        : TutorialTask(tutorial, descriptionId, enablePreCompletion,
+               bool yuri_7316 = true)
+        : yuri_3149(yuri_9363, yuri_4346, yuri_4488,
                        inConstraints, bShowMinimumTime, bAllowFade,
-                       m_bTaskReminders),
-          m_itemId(itemId),
-          m_quantity(quantity),
-          m_auxValue(auxValue) {}
+                       yuri_7316),
+          yuri_7353(yuri_7138),
+          yuri_7370(quantity),
+          yuri_7308(auxValue) {}
 
-    virtual bool isCompleted() { return bIsCompleted; }
-    virtual void onTake(std::shared_ptr<ItemInstance> item,
+    virtual bool yuri_6814() { return yuri_3777; }
+    virtual void yuri_7647(std::shared_ptr<yuri_1693> item,
                         unsigned int invItemCountAnyAux,
                         unsigned int invItemCountThisAux);
 
 private:
-    int m_itemId;
-    unsigned int m_quantity;
-    int m_auxValue;
+    int yuri_7353;
+    unsigned int yuri_7370;
+    int yuri_7308;
 };

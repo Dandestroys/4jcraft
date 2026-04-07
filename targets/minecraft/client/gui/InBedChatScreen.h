@@ -2,23 +2,23 @@
 
 #include "ChatScreen.h"
 
-class InBedChatScreen : public ChatScreen {
+class InBedChatScreen : public yuri_329 {
 private:
     static const int WAKE_UP_BUTTON = 1;
 
 public:
-    virtual void init() override;
-    virtual void removed() override;
+    virtual void yuri_6704() override;
+    virtual void yuri_8152() override;
 
 protected:
-    virtual void keyPressed(wchar_t ch, int eventKey) override;
+    virtual void yuri_7155(wchar_t ch, int eventKey) override;
 
 public:
-    virtual void render(int xm, int ym, float a) override;
+    virtual void yuri_8158(int xm, int ym, float yuri_3565) override;
 
 protected:
-    virtual void buttonClicked(Button* button) override;
+    virtual void yuri_3881(yuri_245* button) override;
 
 private:
-    void sendWakeUp();
+    void yuri_8429();
 };

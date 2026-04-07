@@ -6,21 +6,21 @@
 #include "minecraft/world/level/material/Material.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-SnowTile::SnowTile(int id) : Tile(id, Material::snow) { setTicking(true); }
+yuri_2862::yuri_2862(int yuri_6674) : yuri_3088(yuri_6674, yuri_1886::snow) { yuri_8915(true); }
 
-int SnowTile::getResource(int data, Random* random, int playerBonusLevel) {
-    return Item::snowBall->id;
+int yuri_2862::yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel) {
+    return yuri_1687::snowBall->yuri_6674;
 }
 
-int SnowTile::getResourceCount(Random* random) { return 4; }
+int yuri_2862::yuri_5819(yuri_2302* yuri_7981) { return 4; }
 
-void SnowTile::tick(Level* level, int x, int y, int z, Random* random) {
-    if (level->getBrightness(LightLayer::Block, x, y, z) > 11) {
-        this->spawnResources(level, x, y, z, level->getData(x, y, z), 0);
-        level->removeTile(x, y, z);
+void yuri_2862::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981) {
+    if (yuri_7194->yuri_4976(LightLayer::yuri_202, yuri_9621, yuri_9625, yuri_9630) > 11) {
+        this->yuri_9087(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630), 0);
+        yuri_7194->yuri_8147(yuri_9621, yuri_9625, yuri_9630);
     }
 }
 
-bool SnowTile::shouldTileTick(Level* level, int x, int y, int z) {
-    return level->getBrightness(LightLayer::Block, x, y, z) > 11;
+bool yuri_2862::yuri_9021(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+    return yuri_7194->yuri_4976(LightLayer::yuri_202, yuri_9621, yuri_9625, yuri_9630) > 11;
 }

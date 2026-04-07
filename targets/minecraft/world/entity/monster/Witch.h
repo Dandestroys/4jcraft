@@ -1,22 +1,22 @@
 #pragma once
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
 #include "Monster.h"
 #include "RangedAttackMob.h"
 #include "java/Class.h"
 
-class AttributeModifier;
-class Entity;
-class Level;
+class yuri_146;
+class yuri_739;
+class yuri_1758;
 
-class Witch : public Monster, public RangedAttackMob {
+class yuri_3379 : public yuri_1966, public RangedAttackMob {
 public:
-    eINSTANCEOF GetType() { return eTYPE_WITCH; }
-    static Entity* create(Level* level) { return new Witch(level); }
+    eINSTANCEOF yuri_1188() { return eTYPE_WITCH; }
+    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_3379(yuri_7194); }
 
 private:
-    static AttributeModifier* SPEED_MODIFIER_DRINKING;
+    static yuri_146* SPEED_MODIFIER_DRINKING;
 
     static const int DATA_USING_ITEM = 21;
     static const int DEATH_LOOT_COUNT = 8;
@@ -25,32 +25,32 @@ private:
     int usingTime;
 
 public:
-    Witch(Level* level);
+    yuri_3379(yuri_1758* yuri_7194);
 
 protected:
-    virtual void defineSynchedData();
-    virtual int getAmbientSound();
-    virtual int getHurtSound();
-    virtual int getDeathSound();
+    virtual void yuri_4329();
+    virtual int yuri_4882();
+    virtual int yuri_5383();
+    virtual int yuri_5130();
 
 public:
-    virtual void setUsingItem(bool isUsing);
-    virtual bool isUsingItem();
+    virtual void yuri_8942(bool isUsing);
+    virtual bool yuri_7103();
 
 protected:
-    virtual void registerAttributes();
+    virtual void yuri_8067();
 
 public:
-    virtual bool useNewAi();
-    virtual void aiStep();
-    virtual void handleEntityEvent(uint8_t id);
+    virtual bool yuri_9490();
+    virtual void yuri_3704();
+    virtual void yuri_6469(yuri_9368 yuri_6674);
 
 protected:
-    virtual float getDamageAfterMagicAbsorb(DamageSource* damageSource,
-                                            float damage);
-    virtual void dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel);
+    virtual float yuri_5111(yuri_548* damageSource,
+                                            float yuri_4294);
+    virtual void yuri_4449(bool wasKilledByPlayer, int playerBonusLevel);
 
 public:
-    virtual void performRangedAttack(std::shared_ptr<LivingEntity> target,
+    virtual void yuri_7807(std::shared_ptr<yuri_1793> target,
                                      float power);
 };

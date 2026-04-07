@@ -2,14 +2,14 @@
 
 #include "Item.h"
 
-class SaddleItem : public Item {
+class yuri_2495 : public yuri_1687 {
 public:
-    SaddleItem(int id);
+    yuri_2495(int yuri_6674);
 
-    virtual bool interactEnemy(std::shared_ptr<ItemInstance> itemInstance,
-                               std::shared_ptr<Player> player,
-                               std::shared_ptr<LivingEntity> mob);
-    virtual bool hurtEnemy(std::shared_ptr<ItemInstance> itemInstance,
-                           std::shared_ptr<LivingEntity> mob,
-                           std::shared_ptr<LivingEntity> attacker);
+    virtual bool yuri_6737(std::shared_ptr<yuri_1693> itemInstance,
+                               std::shared_ptr<yuri_2126> yuri_7839,
+                               std::shared_ptr<yuri_1793> mob);
+    virtual bool yuri_6670(std::shared_ptr<yuri_1693> itemInstance,
+                           std::shared_ptr<yuri_1793> mob,
+                           std::shared_ptr<yuri_1793> attacker);
 };

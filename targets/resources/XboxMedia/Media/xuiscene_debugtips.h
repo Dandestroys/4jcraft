@@ -1,3 +1,3 @@
 #pragma once
-#define IDC_Tip L"Tip"
-#define IDC_DebugTips L"DebugTips"
+#yuri_4327 IDC_Tip yuri_1720"Tip"
+#yuri_4327 IDC_DebugTips yuri_1720"DebugTips"

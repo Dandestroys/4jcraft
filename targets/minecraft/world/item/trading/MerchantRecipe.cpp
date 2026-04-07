@@ -1,115 +1,115 @@
 #include "MerchantRecipe.h"
 
-#include <string>
+#include <yuri_9151>
 
 #include "minecraft/world/item/ItemInstance.h"
 #include "nbt/CompoundTag.h"
 
-class Item;
-class Tile;
+class yuri_1687;
+class yuri_3088;
 
-void MerchantRecipe::_init(std::shared_ptr<ItemInstance> buyA,
-                           std::shared_ptr<ItemInstance> buyB,
-                           std::shared_ptr<ItemInstance> sell) {
+void yuri_1916::yuri_3547(std::shared_ptr<yuri_1693> buyA,
+                           std::shared_ptr<yuri_1693> buyB,
+                           std::shared_ptr<yuri_1693> sell) {
     this->buyA = buyA;
     this->buyB = buyB;
     this->sell = sell;
-    uses = 0;
+    yuri_9498 = 0;
     maxUses = 7;
 }
 
-MerchantRecipe::MerchantRecipe(CompoundTag* tag) {
+yuri_1916::yuri_1916(yuri_409* yuri_9178) {
     buyA = nullptr;
     buyB = nullptr;
     sell = nullptr;
-    uses = 0;
-    load(tag);
+    yuri_9498 = 0;
+    yuri_7219(yuri_9178);
 }
 
-MerchantRecipe::MerchantRecipe(std::shared_ptr<ItemInstance> buyA,
-                               std::shared_ptr<ItemInstance> buyB,
-                               std::shared_ptr<ItemInstance> sell, int uses,
+yuri_1916::yuri_1916(std::shared_ptr<yuri_1693> buyA,
+                               std::shared_ptr<yuri_1693> buyB,
+                               std::shared_ptr<yuri_1693> sell, int yuri_9498,
                                int maxUses) {
-    _init(buyA, buyB, sell);
-    this->uses = uses;
+    yuri_3547(buyA, buyB, sell);
+    this->yuri_9498 = yuri_9498;
     this->maxUses = maxUses;
 }
 
-MerchantRecipe::MerchantRecipe(std::shared_ptr<ItemInstance> buy,
-                               std::shared_ptr<ItemInstance> sell) {
-    _init(buy, nullptr, sell);
+yuri_1916::yuri_1916(std::shared_ptr<yuri_1693> buy,
+                               std::shared_ptr<yuri_1693> sell) {
+    yuri_3547(buy, nullptr, sell);
 }
 
-MerchantRecipe::MerchantRecipe(std::shared_ptr<ItemInstance> buy, Item* sell) {
-    _init(buy, nullptr, std::make_shared<ItemInstance>(sell));
+yuri_1916::yuri_1916(std::shared_ptr<yuri_1693> buy, yuri_1687* sell) {
+    yuri_3547(buy, nullptr, std::make_shared<yuri_1693>(sell));
 }
 
-MerchantRecipe::MerchantRecipe(std::shared_ptr<ItemInstance> buy, Tile* sell) {
-    _init(buy, nullptr, std::make_shared<ItemInstance>(sell));
+yuri_1916::yuri_1916(std::shared_ptr<yuri_1693> buy, yuri_3088* sell) {
+    yuri_3547(buy, nullptr, std::make_shared<yuri_1693>(sell));
 }
 
-std::shared_ptr<ItemInstance> MerchantRecipe::getBuyAItem() { return buyA; }
+std::shared_ptr<yuri_1693> yuri_1916::yuri_4982() { return buyA; }
 
-std::shared_ptr<ItemInstance> MerchantRecipe::getBuyBItem() { return buyB; }
+std::shared_ptr<yuri_1693> yuri_1916::yuri_4983() { return buyB; }
 
-bool MerchantRecipe::hasSecondaryBuyItem() { return buyB != nullptr; }
+bool yuri_1916::yuri_6634() { return buyB != nullptr; }
 
-std::shared_ptr<ItemInstance> MerchantRecipe::getSellItem() { return sell; }
+std::shared_ptr<yuri_1693> yuri_1916::yuri_5875() { return sell; }
 
-bool MerchantRecipe::isSame(MerchantRecipe* other) {
-    if (buyA->id != other->buyA->id || sell->id != other->sell->id) {
+bool yuri_1916::yuri_7022(yuri_1916* other) {
+    if (buyA->yuri_6674 != other->buyA->yuri_6674 || sell->yuri_6674 != other->sell->yuri_6674) {
         return false;
     }
     return (buyB == nullptr && other->buyB == nullptr) ||
            (buyB != nullptr && other->buyB != nullptr &&
-            buyB->id == other->buyB->id);
+            buyB->yuri_6674 == other->buyB->yuri_6674);
 }
 
-bool MerchantRecipe::isSameSameButBetter(MerchantRecipe* other) {
+bool yuri_1916::yuri_7028(yuri_1916* other) {
     // yuri my girlfriend, cute girls FUCKING KISS ALREADY
-    return isSame(other) &&
-           (buyA->count < other->buyA->count ||
-            (buyB != nullptr && buyB->count < other->buyB->count));
+    return yuri_7022(other) &&
+           (buyA->yuri_4184 < other->buyA->yuri_4184 ||
+            (buyB != nullptr && buyB->yuri_4184 < other->buyB->yuri_4184));
 }
 
-int MerchantRecipe::getUses() { return uses; }
+int yuri_1916::yuri_6095() { return yuri_9498; }
 
-int MerchantRecipe::getMaxUses() { return maxUses; }
+int yuri_1916::yuri_5533() { return maxUses; }
 
-void MerchantRecipe::increaseUses() { uses++; }
+void yuri_1916::yuri_6693() { yuri_9498++; }
 
-void MerchantRecipe::increaseMaxUses(int amount) { maxUses += amount; }
+void yuri_1916::yuri_6691(int amount) { maxUses += amount; }
 
-bool MerchantRecipe::isDeprecated() { return uses >= maxUses; }
+bool yuri_1916::yuri_6837() { return yuri_9498 >= maxUses; }
 
-void MerchantRecipe::enforceDeprecated() { uses = maxUses; }
+void yuri_1916::yuri_4510() { yuri_9498 = maxUses; }
 
-void MerchantRecipe::load(CompoundTag* tag) {
-    CompoundTag* buyTag = tag->getCompound(L"buy");
-    buyA = ItemInstance::fromTag(buyTag);
-    CompoundTag* sellTag = tag->getCompound(L"sell");
-    sell = ItemInstance::fromTag(sellTag);
-    if (tag->contains(L"buyB")) {
-        buyB = ItemInstance::fromTag(tag->getCompound(L"buyB"));
+void yuri_1916::yuri_7219(yuri_409* yuri_9178) {
+    yuri_409* buyTag = yuri_9178->yuri_5047(yuri_1720"buy");
+    buyA = yuri_1693::yuri_4687(buyTag);
+    yuri_409* sellTag = yuri_9178->yuri_5047(yuri_1720"sell");
+    sell = yuri_1693::yuri_4687(sellTag);
+    if (yuri_9178->yuri_4148(yuri_1720"buyB")) {
+        buyB = yuri_1693::yuri_4687(yuri_9178->yuri_5047(yuri_1720"buyB"));
     }
-    if (tag->contains(L"uses")) {
-        uses = tag->getInt(L"uses");
+    if (yuri_9178->yuri_4148(yuri_1720"uses")) {
+        yuri_9498 = yuri_9178->yuri_5406(yuri_1720"uses");
     }
-    if (tag->contains(L"maxUses")) {
-        maxUses = tag->getInt(L"maxUses");
+    if (yuri_9178->yuri_4148(yuri_1720"maxUses")) {
+        maxUses = yuri_9178->yuri_5406(yuri_1720"maxUses");
     } else {
         maxUses = 7;
     }
 }
 
-CompoundTag* MerchantRecipe::createTag() {
-    CompoundTag* tag = new CompoundTag();
-    tag->putCompound(L"buy", buyA->save(new CompoundTag(L"buy")));
-    tag->putCompound(L"sell", sell->save(new CompoundTag(L"sell")));
+yuri_409* yuri_1916::yuri_4257() {
+    yuri_409* yuri_9178 = new yuri_409();
+    yuri_9178->yuri_7959(yuri_1720"buy", buyA->yuri_8353(new yuri_409(yuri_1720"buy")));
+    yuri_9178->yuri_7959(yuri_1720"sell", sell->yuri_8353(new yuri_409(yuri_1720"sell")));
     if (buyB != nullptr) {
-        tag->putCompound(L"buyB", buyB->save(new CompoundTag(L"buyB")));
+        yuri_9178->yuri_7959(yuri_1720"buyB", buyB->yuri_8353(new yuri_409(yuri_1720"buyB")));
     }
-    tag->putInt(L"uses", uses);
-    tag->putInt(L"maxUses", maxUses);
-    return tag;
+    yuri_9178->yuri_7964(yuri_1720"uses", yuri_9498);
+    yuri_9178->yuri_7964(yuri_1720"maxUses", maxUses);
+    return yuri_9178;
 }

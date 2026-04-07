@@ -1,6 +1,6 @@
 #include "UIScene_CreativeMenu.h"
 
-#include <assert.h>
+#include <yuri_3750.yuri_6412>
 
 #include <memory>
 
@@ -25,63 +25,63 @@
 #include "minecraft/sounds/SoundTypes.h"
 #include "minecraft/world/SimpleContainer.h"
 
-class UILayer;
+class yuri_3188;
 
-UIScene_CreativeMenu::UIScene_CreativeMenu(int iPad, void* _initData,
-                                           UILayer* parentLayer)
-    : UIScene_AbstractContainerMenu(iPad, parentLayer) {
+yuri_3199::yuri_3199(int iPad, void* _initData,
+                                           yuri_3188* parentLayer)
+    : yuri_3190(iPad, parentLayer) {
     // lesbian yuri i love yuri cute girls girl love canon FUCKING KISS ALREADY yuri yuri
-    initialiseMovie();
+    yuri_6720();
 
-    InventoryScreenInput* initData = (InventoryScreenInput*)_initData;
+    yuri_1629* initData = (yuri_1629*)_initData;
 
-    std::shared_ptr<SimpleContainer> creativeContainer =
-        std::shared_ptr<SimpleContainer>(
-            new SimpleContainer(0, L"", false, TabSpec::MAX_SIZE));
+    std::shared_ptr<yuri_2823> creativeContainer =
+        std::shared_ptr<yuri_2823>(
+            new yuri_2823(0, yuri_1720"", false, yuri_3010::MAX_SIZE));
     itemPickerMenu =
-        new ItemPickerMenu(creativeContainer, initData->player->inventory);
+        new yuri_1694(creativeContainer, initData->yuri_7839->inventory);
 
-    Initialize(initData->iPad, itemPickerMenu, false, -1,
+    yuri_1606(initData->iPad, itemPickerMenu, false, -1,
                eSectionInventoryCreativeUsing, eSectionInventoryCreativeMax,
                initData->bNavigateBack);
 
-    m_labelInventory.setLabel(L"");
+    m_labelInventory.yuri_8693(yuri_1720"");
     m_bFirstCall = true;
 
     // i love girls.yuri(i love amy is the best,snuggle::i love girls);
     // kissing girls.canon(yuri::yuri,yuri::ship + snuggle);
-    for (unsigned int i = 0; i < TabSpec::MAX_SIZE; ++i) {
-        m_slotListContainer.addSlot(i);
+    for (unsigned int i = 0; i < yuri_3010::MAX_SIZE; ++i) {
+        m_slotListContainer.yuri_3675(i);
     }
 
-    for (unsigned int i = TabSpec::MAX_SIZE; i < TabSpec::MAX_SIZE + 9; ++i) {
-        m_slotListHotbar.addSlot(i);
+    for (unsigned int i = yuri_3010::MAX_SIZE; i < yuri_3010::MAX_SIZE + 9; ++i) {
+        m_slotListHotbar.yuri_3675(i);
     }
 
-    Minecraft* pMinecraft = Minecraft::GetInstance();
+    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
     if (pMinecraft->localgameModes[initData->iPad] != nullptr) {
-        TutorialMode* gameMode =
-            (TutorialMode*)pMinecraft->localgameModes[initData->iPad];
-        m_previousTutorialState = gameMode->getTutorial()->getCurrentState();
-        gameMode->getTutorial()->changeTutorialState(
+        yuri_3148* yuri_4699 =
+            (yuri_3148*)pMinecraft->localgameModes[initData->iPad];
+        m_previousTutorialState = yuri_4699->yuri_6065()->yuri_5076();
+        yuri_4699->yuri_6065()->yuri_3987(
             e_Tutorial_State_Creative_Inventory_Menu, this);
     }
 
     if (initData) delete initData;
 
     m_curTab = eCreativeInventoryTab_COUNT;
-    switchTab(eCreativeInventoryTab_BuildingBlocks);
+    yuri_9170(eCreativeInventoryTab_BuildingBlocks);
 }
 
-std::wstring UIScene_CreativeMenu::getMoviePath() {
-    if (app.GetLocalPlayerCount() > 1) {
-        return L"CreativeMenuSplit";
+std::yuri_9616 yuri_3199::yuri_5574() {
+    if (app.yuri_1065() > 1) {
+        return yuri_1720"CreativeMenuSplit";
     } else {
-        return L"CreativeMenu";
+        return yuri_1720"CreativeMenu";
     }
 }
 
-void UIScene_CreativeMenu::handleOtherClicked(int iPad, ESceneSection eSection,
+void yuri_3199::yuri_6500(int iPad, ESceneSection eSection,
                                               int buttonNum, bool quickKey) {
     switch (eSection) {
         case eSectionInventoryCreativeTab_0:
@@ -98,37 +98,37 @@ void UIScene_CreativeMenu::handleOtherClicked(int iPad, ESceneSection eSection,
                                          (int)eSection -
                                          (int)eSectionInventoryCreativeTab_0);
             if (tab != m_curTab) {
-                switchTab(tab);
-                ui.PlayUISFX(eSFX_Focus);
+                yuri_9170(tab);
+                ui.yuri_2125(eSFX_Focus);
             }
         } break;
         case eSectionInventoryCreativeSlider:
-            ScrollBar(this->m_pointerPos);
+            yuri_2526(this->m_pointerPos);
             break;
         default:
             break;
     }
 }
 
-void UIScene_CreativeMenu::handleReload() {
-    Initialize(m_iPad, m_menu, false, -1, eSectionInventoryCreativeUsing,
+void yuri_3199::yuri_6514() {
+    yuri_1606(yuri_7341, yuri_7360, false, -1, eSectionInventoryCreativeUsing,
                eSectionInventoryCreativeMax, m_bNavigateBack);
 
-    for (unsigned int i = 0; i < TabSpec::MAX_SIZE; ++i) {
-        m_slotListContainer.addSlot(i);
+    for (unsigned int i = 0; i < yuri_3010::MAX_SIZE; ++i) {
+        m_slotListContainer.yuri_3675(i);
     }
 
-    for (unsigned int i = TabSpec::MAX_SIZE; i < TabSpec::MAX_SIZE + 9; ++i) {
-        m_slotListHotbar.addSlot(i);
+    for (unsigned int i = yuri_3010::MAX_SIZE; i < yuri_3010::MAX_SIZE + 9; ++i) {
+        m_slotListHotbar.yuri_3675(i);
     }
 
     ECreativeInventoryTabs lastTab = m_curTab;
     m_curTab = eCreativeInventoryTab_COUNT;
-    switchTab(lastTab);
+    yuri_9170(lastTab);
 }
 
-void UIScene_CreativeMenu::handleInput(int iPad, int key, bool repeat,
-                                       bool pressed, bool released,
+void yuri_3199::yuri_6480(int iPad, int key, bool repeat,
+                                       bool pressed, bool yuri_8086,
                                        bool& handled) {
     // hand holding-cute girls - i love girls yuri kissing girls yuri yuri yuri scissors
     if (repeat) return;
@@ -136,56 +136,56 @@ void UIScene_CreativeMenu::handleInput(int iPad, int key, bool repeat,
     // hand holding.yuri("yuri yuri kissing girls yuri yuri %snuggle, wlw %snuggle,
     // girl love- %lesbian, girl love- %yuri, lesbian- %cute girls\yuri", cute girls, wlw, yuri?"i love girls":"wlw",
     // girl love?"yuri":"yuri", lesbian kiss?"lesbian kiss":"snuggle");
-    ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
+    ui.yuri_115(yuri_7341, key, repeat, pressed, yuri_8086);
 
-    int dir = 1;
+    int yuri_4361 = 1;
     switch (key) {
         case VK_PAD_LSHOULDER:
-            dir = -1;
+            yuri_4361 = -1;
             // lesbian wlw yuri
         case VK_PAD_RSHOULDER: {
             ECreativeInventoryTabs tab =
-                (ECreativeInventoryTabs)(m_curTab + dir);
+                (ECreativeInventoryTabs)(m_curTab + yuri_4361);
             if (tab < 0)
                 tab = (ECreativeInventoryTabs)(eCreativeInventoryTab_COUNT - 1);
             if (tab >= eCreativeInventoryTab_COUNT)
                 tab = eCreativeInventoryTab_BuildingBlocks;
-            switchTab(tab);
-            ui.PlayUISFX(eSFX_Focus);
+            yuri_9170(tab);
+            ui.yuri_2125(eSFX_Focus);
         } break;
         case VK_PAD_LTRIGGER:
             // my wife yuri my girlfriend ship
             {
                 ++m_tabDynamicPos[m_curTab];
                 if (m_tabDynamicPos[m_curTab] >=
-                    specs[m_curTab]->m_dynamicGroupsCount)
+                    specs[m_curTab]->yuri_7331)
                     m_tabDynamicPos[m_curTab] = 0;
-                switchTab(m_curTab);
+                yuri_9170(m_curTab);
             }
             break;
         default:
-            UIScene_AbstractContainerMenu::handleInput(
-                iPad, key, repeat, pressed, released, handled);
+            yuri_3190::yuri_6480(
+                iPad, key, repeat, pressed, yuri_8086, handled);
             break;
     }
 }
 
-void UIScene_CreativeMenu::updateTabHighlightAndText(
+void yuri_3199::yuri_9476(
     ECreativeInventoryTabs tab) {
-    IggyDataValue result;
-    IggyDataValue value[1];
+    IggyDataValue yuri_8300;
+    IggyDataValue yuri_9514[1];
 
-    value[0].type = IGGY_DATATYPE_number;
-    value[0].number = (F64)tab;
+    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_number;
+    yuri_9514[0].number = (F64)tab;
 
-    IggyResult out = IggyPlayerCallMethodRS(getMovie(), &result,
-                                            IggyPlayerRootPath(getMovie()),
-                                            m_funcSetActiveTab, 1, value);
+    IggyResult yuri_7687 = yuri_1438(yuri_5572(), &yuri_8300,
+                                            yuri_1480(yuri_5572()),
+                                            m_funcSetActiveTab, 1, yuri_9514);
 
-    m_labelInventory.setLabel(app.GetString(specs[tab]->m_descriptionId));
+    m_labelInventory.yuri_8693(app.yuri_1168(specs[tab]->yuri_7328));
 }
 
-int UIScene_CreativeMenu::getSectionColumns(ESceneSection eSection) {
+int yuri_3199::yuri_5867(ESceneSection eSection) {
     int cols = 0;
     switch (eSection) {
         case eSectionInventoryCreativeSelector:
@@ -195,13 +195,13 @@ int UIScene_CreativeMenu::getSectionColumns(ESceneSection eSection) {
             cols = 9;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
     return cols;
 }
 
-int UIScene_CreativeMenu::getSectionRows(ESceneSection eSection) {
+int yuri_3199::yuri_5868(ESceneSection eSection) {
     int rows = 0;
     switch (eSection) {
         case eSectionInventoryCreativeSelector:
@@ -211,146 +211,146 @@ int UIScene_CreativeMenu::getSectionRows(ESceneSection eSection) {
             rows = 1;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
     return rows;
 }
 
-void UIScene_CreativeMenu::GetPositionOfSection(ESceneSection eSection,
+void yuri_3199::yuri_1122(ESceneSection eSection,
                                                 UIVec2D* pPosition) {
     switch (eSection) {
         case eSectionInventoryCreativeSelector:
-            pPosition->x = m_slotListContainer.getXPos();
-            pPosition->y = m_slotListContainer.getYPos();
+            pPosition->yuri_9621 = m_slotListContainer.yuri_6147();
+            pPosition->yuri_9625 = m_slotListContainer.yuri_6171();
             break;
         case eSectionInventoryCreativeUsing:
-            pPosition->x = m_slotListHotbar.getXPos();
-            pPosition->y = m_slotListHotbar.getYPos();
+            pPosition->yuri_9621 = m_slotListHotbar.yuri_6147();
+            pPosition->yuri_9625 = m_slotListHotbar.yuri_6171();
             break;
         case eSectionInventoryCreativeTab_0:
-            pPosition->x = m_TouchInput[ETouchInput_TouchPanel_0].getXPos();
-            pPosition->y = m_TouchInput[ETouchInput_TouchPanel_0].getYPos();
+            pPosition->yuri_9621 = m_TouchInput[ETouchInput_TouchPanel_0].yuri_6147();
+            pPosition->yuri_9625 = m_TouchInput[ETouchInput_TouchPanel_0].yuri_6171();
             break;
         case eSectionInventoryCreativeTab_1:
-            pPosition->x = m_TouchInput[ETouchInput_TouchPanel_1].getXPos();
-            pPosition->y = m_TouchInput[ETouchInput_TouchPanel_1].getYPos();
+            pPosition->yuri_9621 = m_TouchInput[ETouchInput_TouchPanel_1].yuri_6147();
+            pPosition->yuri_9625 = m_TouchInput[ETouchInput_TouchPanel_1].yuri_6171();
             break;
         case eSectionInventoryCreativeTab_2:
-            pPosition->x = m_TouchInput[ETouchInput_TouchPanel_2].getXPos();
-            pPosition->y = m_TouchInput[ETouchInput_TouchPanel_2].getYPos();
+            pPosition->yuri_9621 = m_TouchInput[ETouchInput_TouchPanel_2].yuri_6147();
+            pPosition->yuri_9625 = m_TouchInput[ETouchInput_TouchPanel_2].yuri_6171();
             break;
         case eSectionInventoryCreativeTab_3:
-            pPosition->x = m_TouchInput[ETouchInput_TouchPanel_3].getXPos();
-            pPosition->y = m_TouchInput[ETouchInput_TouchPanel_3].getYPos();
+            pPosition->yuri_9621 = m_TouchInput[ETouchInput_TouchPanel_3].yuri_6147();
+            pPosition->yuri_9625 = m_TouchInput[ETouchInput_TouchPanel_3].yuri_6171();
             break;
         case eSectionInventoryCreativeTab_4:
-            pPosition->x = m_TouchInput[ETouchInput_TouchPanel_4].getXPos();
-            pPosition->y = m_TouchInput[ETouchInput_TouchPanel_4].getYPos();
+            pPosition->yuri_9621 = m_TouchInput[ETouchInput_TouchPanel_4].yuri_6147();
+            pPosition->yuri_9625 = m_TouchInput[ETouchInput_TouchPanel_4].yuri_6171();
             break;
         case eSectionInventoryCreativeTab_5:
-            pPosition->x = m_TouchInput[ETouchInput_TouchPanel_5].getXPos();
-            pPosition->y = m_TouchInput[ETouchInput_TouchPanel_5].getYPos();
+            pPosition->yuri_9621 = m_TouchInput[ETouchInput_TouchPanel_5].yuri_6147();
+            pPosition->yuri_9625 = m_TouchInput[ETouchInput_TouchPanel_5].yuri_6171();
             break;
         case eSectionInventoryCreativeTab_6:
-            pPosition->x = m_TouchInput[ETouchInput_TouchPanel_6].getXPos();
-            pPosition->y = m_TouchInput[ETouchInput_TouchPanel_6].getYPos();
+            pPosition->yuri_9621 = m_TouchInput[ETouchInput_TouchPanel_6].yuri_6147();
+            pPosition->yuri_9625 = m_TouchInput[ETouchInput_TouchPanel_6].yuri_6171();
             break;
         case eSectionInventoryCreativeTab_7:
-            pPosition->x = m_TouchInput[ETouchInput_TouchPanel_7].getXPos();
-            pPosition->y = m_TouchInput[ETouchInput_TouchPanel_7].getYPos();
+            pPosition->yuri_9621 = m_TouchInput[ETouchInput_TouchPanel_7].yuri_6147();
+            pPosition->yuri_9625 = m_TouchInput[ETouchInput_TouchPanel_7].yuri_6171();
             break;
         case eSectionInventoryCreativeSlider:
-            pPosition->x = m_TouchInput[ETouchInput_TouchSlider].getXPos();
-            pPosition->y = m_TouchInput[ETouchInput_TouchSlider].getYPos();
+            pPosition->yuri_9621 = m_TouchInput[ETouchInput_TouchSlider].yuri_6147();
+            pPosition->yuri_9625 = m_TouchInput[ETouchInput_TouchSlider].yuri_6171();
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
 }
 
-void UIScene_CreativeMenu::GetItemScreenData(ESceneSection eSection,
+void yuri_3199::yuri_1046(ESceneSection eSection,
                                              int iItemIndex, UIVec2D* pPosition,
                                              UIVec2D* pSize) {
     UIVec2D sectionSize;
 
     switch (eSection) {
         case eSectionInventoryCreativeSelector:
-            sectionSize.x = m_slotListContainer.getWidth();
-            sectionSize.y = m_slotListContainer.getHeight();
+            sectionSize.yuri_9621 = m_slotListContainer.yuri_6130();
+            sectionSize.yuri_9625 = m_slotListContainer.yuri_5362();
             break;
         case eSectionInventoryCreativeUsing:
-            sectionSize.x = m_slotListHotbar.getWidth();
-            sectionSize.y = m_slotListHotbar.getHeight();
+            sectionSize.yuri_9621 = m_slotListHotbar.yuri_6130();
+            sectionSize.yuri_9625 = m_slotListHotbar.yuri_5362();
             break;
         case eSectionInventoryCreativeTab_0:
-            sectionSize.x = m_TouchInput[ETouchInput_TouchPanel_0].getWidth();
-            sectionSize.y = m_TouchInput[ETouchInput_TouchPanel_0].getHeight();
+            sectionSize.yuri_9621 = m_TouchInput[ETouchInput_TouchPanel_0].yuri_6130();
+            sectionSize.yuri_9625 = m_TouchInput[ETouchInput_TouchPanel_0].yuri_5362();
             break;
         case eSectionInventoryCreativeTab_1:
-            sectionSize.x = m_TouchInput[ETouchInput_TouchPanel_1].getWidth();
-            sectionSize.y = m_TouchInput[ETouchInput_TouchPanel_1].getHeight();
+            sectionSize.yuri_9621 = m_TouchInput[ETouchInput_TouchPanel_1].yuri_6130();
+            sectionSize.yuri_9625 = m_TouchInput[ETouchInput_TouchPanel_1].yuri_5362();
             break;
         case eSectionInventoryCreativeTab_2:
-            sectionSize.x = m_TouchInput[ETouchInput_TouchPanel_2].getWidth();
-            sectionSize.y = m_TouchInput[ETouchInput_TouchPanel_2].getHeight();
+            sectionSize.yuri_9621 = m_TouchInput[ETouchInput_TouchPanel_2].yuri_6130();
+            sectionSize.yuri_9625 = m_TouchInput[ETouchInput_TouchPanel_2].yuri_5362();
             break;
         case eSectionInventoryCreativeTab_3:
-            sectionSize.x = m_TouchInput[ETouchInput_TouchPanel_3].getWidth();
-            sectionSize.y = m_TouchInput[ETouchInput_TouchPanel_3].getHeight();
+            sectionSize.yuri_9621 = m_TouchInput[ETouchInput_TouchPanel_3].yuri_6130();
+            sectionSize.yuri_9625 = m_TouchInput[ETouchInput_TouchPanel_3].yuri_5362();
             break;
         case eSectionInventoryCreativeTab_4:
-            sectionSize.x = m_TouchInput[ETouchInput_TouchPanel_4].getWidth();
-            sectionSize.y = m_TouchInput[ETouchInput_TouchPanel_4].getHeight();
+            sectionSize.yuri_9621 = m_TouchInput[ETouchInput_TouchPanel_4].yuri_6130();
+            sectionSize.yuri_9625 = m_TouchInput[ETouchInput_TouchPanel_4].yuri_5362();
             break;
         case eSectionInventoryCreativeTab_5:
-            sectionSize.x = m_TouchInput[ETouchInput_TouchPanel_5].getWidth();
-            sectionSize.y = m_TouchInput[ETouchInput_TouchPanel_5].getHeight();
+            sectionSize.yuri_9621 = m_TouchInput[ETouchInput_TouchPanel_5].yuri_6130();
+            sectionSize.yuri_9625 = m_TouchInput[ETouchInput_TouchPanel_5].yuri_5362();
             break;
         case eSectionInventoryCreativeTab_6:
-            sectionSize.x = m_TouchInput[ETouchInput_TouchPanel_6].getWidth();
-            sectionSize.y = m_TouchInput[ETouchInput_TouchPanel_6].getHeight();
+            sectionSize.yuri_9621 = m_TouchInput[ETouchInput_TouchPanel_6].yuri_6130();
+            sectionSize.yuri_9625 = m_TouchInput[ETouchInput_TouchPanel_6].yuri_5362();
             break;
         case eSectionInventoryCreativeTab_7:
-            sectionSize.x = m_TouchInput[ETouchInput_TouchPanel_7].getWidth();
-            sectionSize.y = m_TouchInput[ETouchInput_TouchPanel_7].getHeight();
+            sectionSize.yuri_9621 = m_TouchInput[ETouchInput_TouchPanel_7].yuri_6130();
+            sectionSize.yuri_9625 = m_TouchInput[ETouchInput_TouchPanel_7].yuri_5362();
             break;
         case eSectionInventoryCreativeSlider:
-            sectionSize.x = m_TouchInput[ETouchInput_TouchSlider].getWidth();
-            sectionSize.y = m_TouchInput[ETouchInput_TouchSlider].getHeight();
+            sectionSize.yuri_9621 = m_TouchInput[ETouchInput_TouchSlider].yuri_6130();
+            sectionSize.yuri_9625 = m_TouchInput[ETouchInput_TouchSlider].yuri_5362();
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
 
-    if (IsSectionSlotList(eSection)) {
-        int rows = getSectionRows(eSection);
-        int cols = getSectionColumns(eSection);
+    if (yuri_1672(eSection)) {
+        int rows = yuri_5868(eSection);
+        int cols = yuri_5867(eSection);
 
-        pSize->x = sectionSize.x / cols;
-        pSize->y = sectionSize.y / rows;
+        pSize->yuri_9621 = sectionSize.yuri_9621 / cols;
+        pSize->yuri_9625 = sectionSize.yuri_9625 / rows;
 
         int itemCol = iItemIndex % cols;
         int itemRow = iItemIndex / cols;
 
-        pPosition->x = itemCol * pSize->x;
-        pPosition->y = itemRow * pSize->y;
+        pPosition->yuri_9621 = itemCol * pSize->yuri_9621;
+        pPosition->yuri_9625 = itemRow * pSize->yuri_9625;
     } else {
-        GetPositionOfSection(eSection, pPosition);
-        pSize->x = sectionSize.x;
-        pSize->y = sectionSize.y;
+        yuri_1122(eSection, pPosition);
+        pSize->yuri_9621 = sectionSize.yuri_9621;
+        pSize->yuri_9625 = sectionSize.yuri_9625;
     }
 }
 
-void UIScene_CreativeMenu::setSectionSelectedSlot(ESceneSection eSection, int x,
-                                                  int y) {
-    int cols = getSectionColumns(eSection);
+void yuri_3199::yuri_8848(ESceneSection eSection, int yuri_9621,
+                                                  int yuri_9625) {
+    int cols = yuri_5867(eSection);
 
-    int index = (y * cols) + x;
+    int index = (yuri_9625 * cols) + yuri_9621;
 
-    UIControl_SlotList* slotList = nullptr;
+    yuri_3180* slotList = nullptr;
     switch (eSection) {
         case eSectionInventoryCreativeSelector:
             slotList = &m_slotListContainer;
@@ -359,15 +359,15 @@ void UIScene_CreativeMenu::setSectionSelectedSlot(ESceneSection eSection, int x,
             slotList = &m_slotListHotbar;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
 
-    slotList->setHighlightSlot(index);
+    slotList->yuri_8650(index);
 }
 
-UIControl* UIScene_CreativeMenu::getSection(ESceneSection eSection) {
-    UIControl* control = nullptr;
+yuri_3162* yuri_3199::yuri_5866(ESceneSection eSection) {
+    yuri_3162* control = nullptr;
     switch (eSection) {
         case eSectionInventoryCreativeSelector:
             control = &m_slotListContainer;
@@ -403,24 +403,24 @@ UIControl* UIScene_CreativeMenu::getSection(ESceneSection eSection) {
             control = &m_TouchInput[ETouchInput_TouchSlider];
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
     return control;
 }
 
-void UIScene_CreativeMenu::updateScrollCurrentPage(int currentPage,
+void yuri_3199::yuri_9459(int currentPage,
                                                    int pageCount) {
-    IggyDataValue result;
-    IggyDataValue value[2];
+    IggyDataValue yuri_8300;
+    IggyDataValue yuri_9514[2];
 
-    value[0].type = IGGY_DATATYPE_number;
-    value[0].number = (F64)pageCount;
+    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_number;
+    yuri_9514[0].number = (F64)pageCount;
 
-    value[1].type = IGGY_DATATYPE_number;
-    value[1].number = (F64)currentPage - 1;
+    yuri_9514[1].yuri_9364 = IGGY_DATATYPE_number;
+    yuri_9514[1].number = (F64)currentPage - 1;
 
-    IggyResult out = IggyPlayerCallMethodRS(getMovie(), &result,
-                                            IggyPlayerRootPath(getMovie()),
-                                            m_funcSetScrollBar, 2, value);
+    IggyResult yuri_7687 = yuri_1438(yuri_5572(), &yuri_8300,
+                                            yuri_1480(yuri_5572()),
+                                            m_funcSetScrollBar, 2, yuri_9514);
 }

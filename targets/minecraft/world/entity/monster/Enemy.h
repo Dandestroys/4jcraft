@@ -2,10 +2,10 @@
 #include "minecraft/world/entity/Creature.h"
 #include "minecraft/world/entity/EntitySelector.h"
 
-class Enemy : public Creature {
+class Enemy : public yuri_496 {
 public:
-    class EnemyEntitySelector : public EntitySelector {
-        bool matches(std::shared_ptr<Entity> entity) const;
+    class yuri_736 : public yuri_747 {
+        bool yuri_7458(std::shared_ptr<yuri_739> entity) const;
     };
 
     static const int XP_REWARD_NONE = 0;
@@ -15,5 +15,5 @@ public:
     static const int XP_REWARD_HUGE = 20;
     static const int XP_REWARD_BOSS = 50;
 
-    static EntitySelector* ENEMY_SELECTOR;
+    static yuri_747* ENEMY_SELECTOR;
 };

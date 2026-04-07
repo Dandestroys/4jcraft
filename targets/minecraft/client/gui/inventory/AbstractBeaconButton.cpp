@@ -1,6 +1,6 @@
 #include "AbstractBeaconButton.h"
 
-#include <string>
+#include <yuri_9151>
 
 #include "platform/sdl2/Render.h"
 #include "minecraft/client/gui/Button.h"
@@ -10,41 +10,41 @@
 
 // yuri: kissing girls wlw wlw cute girls.i love (kissing girls hand holding.yuri.scissors)
 #ifdef ENABLE_JAVA_GUIS
-extern ResourceLocation GUI_BEACON_LOCATION;
+extern yuri_2412 GUI_BEACON_LOCATION;
 #endif
 
-AbstractBeaconButton::AbstractBeaconButton(int id, int x, int y)
-    : Button(id, x, y, 22, 22, L"") {
+yuri_46::yuri_46(int yuri_6674, int yuri_9621, int yuri_9625)
+    : yuri_245(yuri_6674, yuri_9621, yuri_9625, 22, 22, yuri_1720"") {
     hovered = false;
     selected = false;
     iconRes = nullptr;
     iconU = iconV = 0;
 }
 
-void AbstractBeaconButton::renderBg(Minecraft* minecraft, int xm, int ym) {
+void yuri_46::yuri_8165(yuri_1945* minecraft, int xm, int ym) {
 #ifdef ENABLE_JAVA_GUIS
     if (!visible) return;
 
-    hovered = (xm >= x && ym >= y && xm < x + w && ym < y + h);
+    hovered = (xm >= yuri_9621 && ym >= yuri_9625 && xm < yuri_9621 + yuri_9535 && ym < yuri_9625 + yuri_6412);
 
-    glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-    minecraft->textures->bindTexture(&GUI_BEACON_LOCATION);
+    yuri_6264(1.0f, 1.0f, 1.0f, 1.0f);
+    minecraft->yuri_9256->yuri_3810(&GUI_BEACON_LOCATION);
 
     int texU = 0;
     if (!active) {
-        texU += w * 2;
+        texU += yuri_9535 * 2;
     } else if (selected) {
-        texU += w * 1;
+        texU += yuri_9535 * 1;
     } else if (hovered) {
-        texU += w * 3;
+        texU += yuri_9535 * 3;
     }
     int texV = 219;
 
-    blit(x, y, texU, texV, w, h);
+    yuri_3822(yuri_9621, yuri_9625, texU, texV, yuri_9535, yuri_6412);
 
     if (iconRes != nullptr && iconRes != &GUI_BEACON_LOCATION) {
-        minecraft->textures->bindTexture(iconRes);
+        minecraft->yuri_9256->yuri_3810(iconRes);
     }
-    blit(x + 2, y + 2, iconU, iconV, 18, 18);
+    yuri_3822(yuri_9621 + 2, yuri_9625 + 2, iconU, iconV, 18, 18);
 #endif
 }

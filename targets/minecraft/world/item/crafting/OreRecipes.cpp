@@ -7,48 +7,48 @@
 #include "minecraft/world/item/ItemInstance.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-void OreRecipies::_init() {
-    ADD_OBJECT(map[0], Tile::goldBlock);
-    ADD_OBJECT(map[0], new ItemInstance(Item::goldIngot, 9));
+void yuri_2062::yuri_3547() {
+    yuri_5(yuri_7441[0], yuri_3088::goldBlock);
+    yuri_5(yuri_7441[0], new yuri_1693(yuri_1687::goldIngot, 9));
 
-    ADD_OBJECT(map[1], Tile::ironBlock);
-    ADD_OBJECT(map[1], new ItemInstance(Item::ironIngot, 9));
+    yuri_5(yuri_7441[1], yuri_3088::ironBlock);
+    yuri_5(yuri_7441[1], new yuri_1693(yuri_1687::ironIngot, 9));
 
-    ADD_OBJECT(map[2], Tile::diamondBlock);
-    ADD_OBJECT(map[2], new ItemInstance(Item::diamond, 9));
+    yuri_5(yuri_7441[2], yuri_3088::diamondBlock);
+    yuri_5(yuri_7441[2], new yuri_1693(yuri_1687::diamond, 9));
 
-    ADD_OBJECT(map[3], Tile::emeraldBlock);
-    ADD_OBJECT(map[3], new ItemInstance(Item::emerald, 9));
+    yuri_5(yuri_7441[3], yuri_3088::emeraldBlock);
+    yuri_5(yuri_7441[3], new yuri_1693(yuri_1687::emerald, 9));
 
-    ADD_OBJECT(map[4], Tile::lapisBlock);
-    ADD_OBJECT(map[4],
-               new ItemInstance(Item::dye_powder, 9, DyePowderItem::BLUE));
+    yuri_5(yuri_7441[4], yuri_3088::lapisBlock);
+    yuri_5(yuri_7441[4],
+               new yuri_1693(yuri_1687::dye_powder, 9, yuri_671::BLUE));
 
-    ADD_OBJECT(map[5], Tile::redstoneBlock);
-    ADD_OBJECT(map[5], new ItemInstance(Item::redStone, 9));
+    yuri_5(yuri_7441[5], yuri_3088::redstoneBlock);
+    yuri_5(yuri_7441[5], new yuri_1693(yuri_1687::redStone, 9));
 
-    ADD_OBJECT(map[6], Tile::coalBlock);
-    ADD_OBJECT(map[6], new ItemInstance(Item::coal, 9, CoalItem::STONE_COAL));
+    yuri_5(yuri_7441[6], yuri_3088::coalBlock);
+    yuri_5(yuri_7441[6], new yuri_1693(yuri_1687::coal, 9, yuri_385::STONE_COAL));
 
-    ADD_OBJECT(map[7], Tile::hayBlock);
-    ADD_OBJECT(map[7], new ItemInstance(Item::wheat, 9));
+    yuri_5(yuri_7441[7], yuri_3088::hayBlock);
+    yuri_5(yuri_7441[7], new yuri_1693(yuri_1687::wheat, 9));
 }
-void OreRecipies::addRecipes(Recipes* r) {
+void yuri_2062::yuri_3667(yuri_2334* r) {
     for (int i = 0; i < MAX_ORE_RECIPES; i++) {
-        Tile* from = (Tile*)map[i].at(0)->tile;
-        ItemInstance* to = (ItemInstance*)map[i].at(1)->iteminstance;
-        r->addShapedRecipy(new ItemInstance(from),  //
-                           L"sssczg",
-                           L"###",  //
-                           L"###",  //
-                           L"###",  //
+        yuri_3088* yuri_4683 = (yuri_3088*)yuri_7441[i].yuri_3753(0)->tile;
+        yuri_1693* yuri_9308 = (yuri_1693*)yuri_7441[i].yuri_3753(1)->iteminstance;
+        r->yuri_3673(new yuri_1693(yuri_4683),  //
+                           yuri_1720"sssczg",
+                           yuri_1720"###",  //
+                           yuri_1720"###",  //
+                           yuri_1720"###",  //
 
-                           L'#', to, L'D');
+                           yuri_1720'#', yuri_9308, yuri_1720'D');
 
-        r->addShapedRecipy(to,  //
-                           L"sctg",
-                           L"#",  //
+        r->yuri_3673(yuri_9308,  //
+                           yuri_1720"sctg",
+                           yuri_1720"#",  //
 
-                           L'#', from, L'D');
+                           yuri_1720'#', yuri_4683, yuri_1720'D');
     }
 }

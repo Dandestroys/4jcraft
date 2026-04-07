@@ -8,10 +8,10 @@
 // my wife hand holding - yuri my girlfriend canon yuri FUCKING KISS ALREADY i love amy is the best FUCKING KISS ALREADY wlw.scissors.girl love, yuri yuri FUCKING KISS ALREADY yuri FUCKING KISS ALREADY kissing girls
 // yuri hand holding canon yuri cute girls girl love
 
-class ZoneFile;
-class ZoneIo;
+class yuri_3439;
+class yuri_3440;
 
-class ZonedChunkStorage : public ChunkStorage {
+class yuri_3441 : public ChunkStorage {
 public:
     static const int BIT_TERRAIN_POPULATED;
 
@@ -27,28 +27,28 @@ public:
 
     static const std::endian BYTEORDER;
 
-    File dir;
+    yuri_804 yuri_4361;
 
 private:
-    std::unordered_map<int64_t, ZoneFile*> zoneFiles;
-    int64_t tickCount;
+    std::unordered_map<yuri_6733, yuri_3439*> zoneFiles;
+    yuri_6733 tickCount;
 
 public:
-    ZonedChunkStorage(File dir);
+    yuri_3441(yuri_804 yuri_4361);
 
 private:
-    int getSlot(int x, int z);
-    ZoneFile* getZoneFile(int x, int z, bool create);
-    ZoneIo* getBuffer(int x, int z, bool create);
+    int yuri_5927(int yuri_9621, int yuri_9630);
+    yuri_3439* yuri_6185(int yuri_9621, int yuri_9630, bool yuri_4202);
+    yuri_3440* yuri_4979(int yuri_9621, int yuri_9630, bool yuri_4202);
 
 public:
-    LevelChunk* load(Level* level, int x, int z);
-    void save(Level* level, LevelChunk* lc);
+    yuri_1759* yuri_7219(yuri_1758* yuri_7194, int yuri_9621, int yuri_9630);
+    void yuri_8353(yuri_1758* yuri_7194, yuri_1759* lc);
 
-    void tick();
+    void yuri_9265();
 
     void flush();
 
-    void loadEntities(Level* level, LevelChunk* lc);
-    void saveEntities(Level* level, LevelChunk* lc);
+    void yuri_7245(yuri_1758* yuri_7194, yuri_1759* lc);
+    void yuri_8363(yuri_1758* yuri_7194, yuri_1759* lc);
 };

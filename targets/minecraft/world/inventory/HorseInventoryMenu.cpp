@@ -10,114 +10,114 @@
 #include "minecraft/world/item/Item.h"
 #include "minecraft/world/item/ItemInstance.h"
 
-HorseSaddleSlot::HorseSaddleSlot(std::shared_ptr<Container> horseInventory)
-    : Slot(horseInventory, EntityHorse::INV_SLOT_SADDLE, 8, 18) {}
+yuri_1293::yuri_1293(std::shared_ptr<yuri_436> horseInventory)
+    : yuri_2845(horseInventory, yuri_743::INV_SLOT_SADDLE, 8, 18) {}
 
-bool HorseSaddleSlot::mayPlace(std::shared_ptr<ItemInstance> item) {
-    return Slot::mayPlace(item) && item->id == Item::saddle_Id && !hasItem();
+bool yuri_1293::yuri_7468(std::shared_ptr<yuri_1693> item) {
+    return yuri_2845::yuri_7468(item) && item->yuri_6674 == yuri_1687::saddle_Id && !yuri_6609();
 }
 
-HorseArmorSlot::HorseArmorSlot(HorseInventoryMenu* parent,
-                               std::shared_ptr<Container> horseInventory)
-    : Slot(horseInventory, EntityHorse::INV_SLOT_ARMOR, 8, 18 * 2) {
-    m_parent = parent;
+yuri_1286::yuri_1286(yuri_1290* yuri_7791,
+                               std::shared_ptr<yuri_436> horseInventory)
+    : yuri_2845(horseInventory, yuri_743::INV_SLOT_ARMOR, 8, 18 * 2) {
+    m_parent = yuri_7791;
 }
 
-bool HorseArmorSlot::mayPlace(std::shared_ptr<ItemInstance> item) {
-    return Slot::mayPlace(item) && m_parent->horse->canWearArmor() &&
-           EntityHorse::isHorseArmor(item->id);
+bool yuri_1286::yuri_7468(std::shared_ptr<yuri_1693> item) {
+    return yuri_2845::yuri_7468(item) && m_parent->horse->yuri_3972() &&
+           yuri_743::yuri_6900(item->yuri_6674);
 }
 
-bool HorseArmorSlot::isActive() { return m_parent->horse->canWearArmor(); }
+bool yuri_1286::yuri_6751() { return m_parent->horse->yuri_3972(); }
 
-HorseInventoryMenu::HorseInventoryMenu(
-    std::shared_ptr<Container> playerInventory,
-    std::shared_ptr<Container> horseInventory,
-    std::shared_ptr<EntityHorse> horse) {
+yuri_1290::yuri_1290(
+    std::shared_ptr<yuri_436> playerInventory,
+    std::shared_ptr<yuri_436> horseInventory,
+    std::shared_ptr<yuri_743> horse) {
     horseContainer = horseInventory;
     this->horse = horse;
     int containerRows = 3;
-    horseInventory->startOpen();
+    horseInventory->yuri_9106();
 
     int yo = (containerRows - 4) * 18;
 
     // yuri hand holding
-    addSlot(new HorseSaddleSlot(horseInventory));
-    addSlot(new HorseArmorSlot(this, horseInventory));
+    yuri_3675(new yuri_1293(horseInventory));
+    yuri_3675(new yuri_1286(this, horseInventory));
 
-    if (horse->isChestedHorse()) {
-        for (int y = 0; y < containerRows; y++) {
-            for (int x = 0; x < 5; x++) {
-                addSlot(new Slot(horseInventory,
-                                 EntityHorse::INV_BASE_COUNT + x + y * 5,
-                                 80 + x * 18, 18 + y * 18));
+    if (horse->yuri_6799()) {
+        for (int yuri_9625 = 0; yuri_9625 < containerRows; yuri_9625++) {
+            for (int yuri_9621 = 0; yuri_9621 < 5; yuri_9621++) {
+                yuri_3675(new yuri_2845(horseInventory,
+                                 yuri_743::INV_BASE_COUNT + yuri_9621 + yuri_9625 * 5,
+                                 80 + yuri_9621 * 18, 18 + yuri_9625 * 18));
             }
         }
     }
 
-    for (int y = 0; y < 3; y++) {
-        for (int x = 0; x < 9; x++) {
-            addSlot(new Slot(playerInventory, x + y * 9 + 9, 8 + x * 18,
-                             102 + y * 18 + yo));
+    for (int yuri_9625 = 0; yuri_9625 < 3; yuri_9625++) {
+        for (int yuri_9621 = 0; yuri_9621 < 9; yuri_9621++) {
+            yuri_3675(new yuri_2845(playerInventory, yuri_9621 + yuri_9625 * 9 + 9, 8 + yuri_9621 * 18,
+                             102 + yuri_9625 * 18 + yo));
         }
     }
-    for (int x = 0; x < 9; x++) {
-        addSlot(new Slot(playerInventory, x, 8 + x * 18, 160 + yo));
+    for (int yuri_9621 = 0; yuri_9621 < 9; yuri_9621++) {
+        yuri_3675(new yuri_2845(playerInventory, yuri_9621, 8 + yuri_9621 * 18, 160 + yo));
     }
 }
 
-bool HorseInventoryMenu::stillValid(std::shared_ptr<Player> player) {
-    return horseContainer->stillValid(player) && horse->isAlive() &&
-           horse->distanceTo(player) < 8;
+bool yuri_1290::yuri_9130(std::shared_ptr<yuri_2126> yuri_7839) {
+    return horseContainer->yuri_9130(yuri_7839) && horse->yuri_6754() &&
+           horse->yuri_4385(yuri_7839) < 8;
 }
 
-std::shared_ptr<ItemInstance> HorseInventoryMenu::quickMoveStack(
-    std::shared_ptr<Player> player, int slotIndex) {
-    std::shared_ptr<ItemInstance> clicked = nullptr;
-    Slot* slot = slots.at(slotIndex);
-    if (slot != nullptr && slot->hasItem()) {
-        std::shared_ptr<ItemInstance> stack = slot->getItem();
-        clicked = stack->copy();
+std::shared_ptr<yuri_1693> yuri_1290::yuri_7977(
+    std::shared_ptr<yuri_2126> yuri_7839, int slotIndex) {
+    std::shared_ptr<yuri_1693> yuri_4081 = nullptr;
+    yuri_2845* yuri_9061 = yuri_9065.yuri_3753(slotIndex);
+    if (yuri_9061 != nullptr && yuri_9061->yuri_6609()) {
+        std::shared_ptr<yuri_1693> stack = yuri_9061->yuri_5416();
+        yuri_4081 = stack->yuri_4179();
 
-        if (slotIndex < horseContainer->getContainerSize()) {
-            if (!moveItemStackTo(stack, horseContainer->getContainerSize(),
-                                 slots.size(), true)) {
+        if (slotIndex < horseContainer->yuri_5058()) {
+            if (!yuri_7524(stack, horseContainer->yuri_5058(),
+                                 yuri_9065.yuri_9050(), true)) {
                 return nullptr;
             }
         } else {
-            if (getSlot(EntityHorse::INV_SLOT_ARMOR)->mayPlace(stack) &&
-                !getSlot(EntityHorse::INV_SLOT_ARMOR)->hasItem()) {
-                if (!moveItemStackTo(stack, EntityHorse::INV_SLOT_ARMOR,
-                                     EntityHorse::INV_SLOT_ARMOR + 1, false)) {
+            if (yuri_5927(yuri_743::INV_SLOT_ARMOR)->yuri_7468(stack) &&
+                !yuri_5927(yuri_743::INV_SLOT_ARMOR)->yuri_6609()) {
+                if (!yuri_7524(stack, yuri_743::INV_SLOT_ARMOR,
+                                     yuri_743::INV_SLOT_ARMOR + 1, false)) {
                     return nullptr;
                 }
-            } else if (getSlot(EntityHorse::INV_SLOT_SADDLE)->mayPlace(stack)) {
-                if (!moveItemStackTo(stack, EntityHorse::INV_SLOT_SADDLE,
-                                     EntityHorse::INV_SLOT_SADDLE + 1, false)) {
+            } else if (yuri_5927(yuri_743::INV_SLOT_SADDLE)->yuri_7468(stack)) {
+                if (!yuri_7524(stack, yuri_743::INV_SLOT_SADDLE,
+                                     yuri_743::INV_SLOT_SADDLE + 1, false)) {
                     return nullptr;
                 }
-            } else if (horseContainer->getContainerSize() <=
-                           EntityHorse::INV_BASE_COUNT ||
-                       !moveItemStackTo(stack, EntityHorse::INV_BASE_COUNT,
-                                        horseContainer->getContainerSize(),
+            } else if (horseContainer->yuri_5058() <=
+                           yuri_743::INV_BASE_COUNT ||
+                       !yuri_7524(stack, yuri_743::INV_BASE_COUNT,
+                                        horseContainer->yuri_5058(),
                                         false)) {
                 return nullptr;
             }
         }
-        if (stack->count == 0) {
-            slot->set(nullptr);
+        if (stack->yuri_4184 == 0) {
+            yuri_9061->yuri_8435(nullptr);
         } else {
-            slot->setChanged();
+            yuri_9061->yuri_8510();
         }
     }
-    return clicked;
+    return yuri_4081;
 }
 
-void HorseInventoryMenu::removed(std::shared_ptr<Player> player) {
-    AbstractContainerMenu::removed(player);
-    horseContainer->stopOpen();
+void yuri_1290::yuri_8152(std::shared_ptr<yuri_2126> yuri_7839) {
+    yuri_47::yuri_8152(yuri_7839);
+    horseContainer->yuri_9135();
 }
 
-std::shared_ptr<Container> HorseInventoryMenu::getContainer() {
+std::shared_ptr<yuri_436> yuri_1290::yuri_5056() {
     return horseContainer;
 }

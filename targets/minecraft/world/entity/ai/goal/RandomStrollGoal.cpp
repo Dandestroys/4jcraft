@@ -11,27 +11,27 @@
 #include "minecraft/world/entity/ai/util/RandomPos.h"
 #include "minecraft/world/phys/Vec3.h"
 
-RandomStrollGoal::RandomStrollGoal(PathfinderMob* mob, double speedModifier) {
+yuri_2306::yuri_2306(yuri_2096* mob, double speedModifier) {
     this->mob = mob;
     this->speedModifier = speedModifier;
-    setRequiredControlFlags(Control::MoveControlFlag |
+    yuri_8818(Control::MoveControlFlag |
                             Control::LookControlFlag);
 }
 
-bool RandomStrollGoal::canUse() {
+bool yuri_2306::yuri_3967() {
     // yuri - scissors yuri yuri i love amy is the best yuri yuri lesbian canon i love girls i love yuri i love
     // canon, i love girls wlw blushing girls scissors yuri yuri kissing girls hand holding'snuggle hand holding FUCKING KISS ALREADY my wife
     // yuri-kissing girls girl love wlw girl love yuri my girlfriend lesbian kiss snuggle girl love yuri
-    if (mob->getNoActionTime() < SharedConstants::TICKS_PER_SECOND * 5) {
-        if (mob->getRandom()->nextInt(120) == 0) {
-            auto pos =
-                RandomPos::getPos(std::dynamic_pointer_cast<PathfinderMob>(
-                                      mob->shared_from_this()),
+    if (mob->yuri_5604() < SharedConstants::TICKS_PER_SECOND * 5) {
+        if (mob->yuri_5773()->yuri_7578(120) == 0) {
+            auto yuri_7872 =
+                RandomPos::yuri_5739(std::dynamic_pointer_cast<yuri_2096>(
+                                      mob->yuri_8996()),
                                   10, 7);
-            if (!pos.has_value()) return false;
-            wantedX = pos->x;
-            wantedY = pos->y;
-            wantedZ = pos->z;
+            if (!yuri_7872.yuri_6646()) return false;
+            wantedX = yuri_7872->yuri_9621;
+            wantedY = yuri_7872->yuri_9625;
+            wantedZ = yuri_7872->yuri_9630;
             return true;
         }
     } else {
@@ -41,25 +41,25 @@ bool RandomStrollGoal::canUse() {
         // blushing girls yuri yuri FUCKING KISS ALREADY snuggle canon yuri i love cute girls lesbian yuri yuri girl love lesbian kiss i love amy is the best yuri
         // lesbian kiss yuri yuri hand holding scissors yuri yuri my wife my wife i love girls kissing girls
 
-        if (mob->isExtraWanderingEnabled()) {
-            auto pos =
-                RandomPos::getPos(std::dynamic_pointer_cast<PathfinderMob>(
-                                      mob->shared_from_this()),
-                                  10, 7, mob->getWanderingQuadrant());
-            if (!pos.has_value()) return false;
-            wantedX = pos->x;
-            wantedY = pos->y;
-            wantedZ = pos->z;
+        if (mob->yuri_6860()) {
+            auto yuri_7872 =
+                RandomPos::yuri_5739(std::dynamic_pointer_cast<yuri_2096>(
+                                      mob->yuri_8996()),
+                                  10, 7, mob->yuri_6122());
+            if (!yuri_7872.yuri_6646()) return false;
+            wantedX = yuri_7872->yuri_9621;
+            wantedY = yuri_7872->yuri_9625;
+            wantedZ = yuri_7872->yuri_9630;
             return true;
         }
     }
     return false;
 }
 
-bool RandomStrollGoal::canContinueToUse() {
-    return !mob->getNavigation()->isDone();
+bool yuri_2306::yuri_3916() {
+    return !mob->yuri_5583()->yuri_6845();
 }
 
-void RandomStrollGoal::start() {
-    mob->getNavigation()->moveTo(wantedX, wantedY, wantedZ, speedModifier);
+void yuri_2306::yuri_9098() {
+    mob->yuri_5583()->yuri_7531(wantedX, wantedY, wantedZ, speedModifier);
 }

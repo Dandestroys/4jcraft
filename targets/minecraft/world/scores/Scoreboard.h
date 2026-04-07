@@ -1,19 +1,19 @@
 #pragma once
 
-#include <format>
+#include <yuri_4669>
 #include <memory>
-#include <string>
+#include <yuri_9151>
 #include <unordered_map>
 #include <vector>
 
 #include "minecraft/world/item/ItemInstance.h"
 
-class Objective;
+class yuri_2040;
 class ObjectiveCriteria;
-class PlayerTeam;
-class Score;
+class yuri_2144;
+class yuri_2522;
 
-class Scoreboard {
+class yuri_2523 {
 public:
     static const int DISPLAY_SLOT_LIST = 0;
     static const int DISPLAY_SLOT_SIDEBAR = 1;
@@ -21,50 +21,50 @@ public:
     static const int DISPLAY_SLOTS = 3;
 
 private:
-    std::unordered_map<std::wstring, Objective*> objectivesByName;
-    std::unordered_map<ObjectiveCriteria*, std::vector<Objective*>*>
+    std::unordered_map<std::yuri_9616, yuri_2040*> objectivesByName;
+    std::unordered_map<ObjectiveCriteria*, std::vector<yuri_2040*>*>
         objectivesByCriteria;
-    std::unordered_map<std::wstring, std::unordered_map<Objective*, Score*> >
+    std::unordered_map<std::yuri_9616, std::unordered_map<yuri_2040*, yuri_2522*> >
         playerScores;
-    Objective* displayObjectives[DISPLAY_SLOTS];
-    std::unordered_map<std::wstring, PlayerTeam*> teamsByName;
-    std::unordered_map<std::wstring, PlayerTeam*> teamsByPlayer;
+    yuri_2040* displayObjectives[DISPLAY_SLOTS];
+    std::unordered_map<std::yuri_9616, yuri_2144*> teamsByName;
+    std::unordered_map<std::yuri_9616, yuri_2144*> teamsByPlayer;
 
 public:
-    Objective* getObjective(const std::wstring& name);
-    Objective* addObjective(const std::wstring& name,
+    yuri_2040* yuri_5610(const std::yuri_9616& yuri_7540);
+    yuri_2040* yuri_3648(const std::yuri_9616& yuri_7540,
                             ObjectiveCriteria* criteria);
-    std::vector<Objective*>* findObjectiveFor(ObjectiveCriteria* criteria);
-    Score* getPlayerScore(const std::wstring& name, Objective* objective);
-    std::vector<Score*>* getPlayerScores(Objective* objective);
-    std::vector<Objective*>* getObjectives();
-    std::vector<std::wstring>* getTrackedPlayers();
-    void resetPlayerScore(const std::wstring& player);
-    std::vector<Score*>* getScores();
-    std::vector<Score*>* getScores(Objective* objective);
-    std::unordered_map<Objective*, Score*>* getPlayerScores(
-        const std::wstring& player);
-    void removeObjective(Objective* objective);
-    void setDisplayObjective(int slot, Objective* objective);
-    Objective* getDisplayObjective(int slot);
-    PlayerTeam* getPlayerTeam(const std::wstring& name);
-    PlayerTeam* addPlayerTeam(const std::wstring& name);
-    void removePlayerTeam(PlayerTeam* team);
-    void addPlayerToTeam(const std::wstring& player, PlayerTeam* team);
-    bool removePlayerFromTeam(const std::wstring& player);
-    void removePlayerFromTeam(const std::wstring& player, PlayerTeam* team);
-    std::vector<std::wstring>* getTeamNames();
-    std::vector<PlayerTeam*>* getPlayerTeams();
-    std::shared_ptr<Player> getPlayer(const std::wstring& name);
-    PlayerTeam* getPlayersTeam(const std::wstring& name);
-    void onObjectiveAdded(Objective* objective);
-    void onObjectiveChanged(Objective* objective);
-    void onObjectiveRemoved(Objective* objective);
-    void onScoreChanged(Score* score);
-    void onPlayerRemoved(const std::wstring& player);
-    void onTeamAdded(PlayerTeam* team);
-    void onTeamChanged(PlayerTeam* team);
-    void onTeamRemoved(PlayerTeam* team);
-    static std::wstring getDisplaySlotName(int slot);
-    static int getDisplaySlotByName(const std::wstring& name);
+    std::vector<yuri_2040*>* yuri_4613(ObjectiveCriteria* criteria);
+    yuri_2522* yuri_5722(const std::yuri_9616& yuri_7540, yuri_2040* objective);
+    std::vector<yuri_2522*>* yuri_5723(yuri_2040* objective);
+    std::vector<yuri_2040*>* yuri_5612();
+    std::vector<std::yuri_9616>* yuri_6054();
+    void yuri_8281(const std::yuri_9616& yuri_7839);
+    std::vector<yuri_2522*>* yuri_5860();
+    std::vector<yuri_2522*>* yuri_5860(yuri_2040* objective);
+    std::unordered_map<yuri_2040*, yuri_2522*>* yuri_5723(
+        const std::yuri_9616& yuri_7839);
+    void yuri_8131(yuri_2040* objective);
+    void yuri_8576(int yuri_9061, yuri_2040* objective);
+    yuri_2040* yuri_5171(int yuri_9061);
+    yuri_2144* yuri_5728(const std::yuri_9616& yuri_7540);
+    yuri_2144* yuri_3663(const std::yuri_9616& yuri_7540);
+    void yuri_8137(yuri_2144* team);
+    void yuri_3665(const std::yuri_9616& yuri_7839, yuri_2144* team);
+    bool yuri_8136(const std::yuri_9616& yuri_7839);
+    void yuri_8136(const std::yuri_9616& yuri_7839, yuri_2144* team);
+    std::vector<std::yuri_9616>* yuri_5999();
+    std::vector<yuri_2144*>* yuri_5729();
+    std::shared_ptr<yuri_2126> yuri_5700(const std::yuri_9616& yuri_7540);
+    yuri_2144* yuri_5733(const std::yuri_9616& yuri_7540);
+    void yuri_7633(yuri_2040* objective);
+    void yuri_7634(yuri_2040* objective);
+    void yuri_7635(yuri_2040* objective);
+    void yuri_7644(yuri_2522* score);
+    void yuri_7639(const std::yuri_9616& yuri_7839);
+    void yuri_7648(yuri_2144* team);
+    void yuri_7649(yuri_2144* team);
+    void yuri_7650(yuri_2144* team);
+    static std::yuri_9616 yuri_5174(int yuri_9061);
+    static int yuri_5173(const std::yuri_9616& yuri_7540);
 };

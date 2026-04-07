@@ -3,4 +3,4 @@
 #include "minecraft/world/level/material/Material.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-DirtTile::DirtTile(int id) : Tile(id, Material::dirt) {}
+yuri_617::yuri_617(int yuri_6674) : yuri_3088(yuri_6674, yuri_1886::dirt) {}

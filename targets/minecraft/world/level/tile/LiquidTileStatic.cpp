@@ -6,67 +6,67 @@
 #include "minecraft/world/level/tile/LiquidTile.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-LiquidTileStatic::LiquidTileStatic(int id, Material* material)
-    : LiquidTile(id, material) {
-    setTicking(false);
-    if (material == Material::lava) setTicking(true);
+yuri_1790::yuri_1790(int yuri_6674, yuri_1886* material)
+    : yuri_1788(yuri_6674, material) {
+    yuri_8915(false);
+    if (material == yuri_1886::lava) yuri_8915(true);
 }
 
-bool LiquidTileStatic::isPathfindable(LevelSource* level, int x, int y, int z) {
-    return material != Material::lava;
+bool yuri_1790::yuri_6983(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+    return material != yuri_1886::lava;
 }
 
-void LiquidTileStatic::neighborChanged(Level* level, int x, int y, int z,
-                                       int type) {
-    LiquidTile::neighborChanged(level, x, y, z, type);
-    if (level->getTile(x, y, z) == id) {
-        setDynamic(level, x, y, z);
+void yuri_1790::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                                       int yuri_9364) {
+    yuri_1788::yuri_7553(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_9364);
+    if (yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630) == yuri_6674) {
+        yuri_8582(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
     }
 }
 
-void LiquidTileStatic::setDynamic(Level* level, int x, int y, int z) {
-    int d = level->getData(x, y, z);
-    level->setTileAndData(x, y, z, id - 1, d, Tile::UPDATE_CLIENTS);
-    level->addToTickNextTick(x, y, z, id - 1, getTickDelay(level));
+void yuri_1790::yuri_8582(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+    int d = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+    yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630, yuri_6674 - 1, d, yuri_3088::UPDATE_CLIENTS);
+    yuri_7194->yuri_3690(yuri_9621, yuri_9625, yuri_9630, yuri_6674 - 1, yuri_6025(yuri_7194));
 }
 
-void LiquidTileStatic::tick(Level* level, int x, int y, int z, Random* random) {
-    if (material == Material::lava) {
-        int h = random->nextInt(3);
-        for (int i = 0; i < h; i++) {
-            x += random->nextInt(3) - 1;
-            y++;
-            z += random->nextInt(3) - 1;
-            int t = level->getTile(x, y, z);
+void yuri_1790::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981) {
+    if (material == yuri_1886::lava) {
+        int yuri_6412 = yuri_7981->yuri_7578(3);
+        for (int i = 0; i < yuri_6412; i++) {
+            yuri_9621 += yuri_7981->yuri_7578(3) - 1;
+            yuri_9625++;
+            yuri_9630 += yuri_7981->yuri_7578(3) - 1;
+            int t = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
             if (t == 0) {
-                if (isFlammable(level, x - 1, y, z) ||
-                    isFlammable(level, x + 1, y, z) ||
-                    isFlammable(level, x, y, z - 1) ||
-                    isFlammable(level, x, y, z + 1) ||
-                    isFlammable(level, x, y - 1, z) ||
-                    isFlammable(level, x, y + 1, z)) {
-                    level->setTileAndUpdate(x, y, z, Tile::fire_Id);
+                if (yuri_6871(yuri_7194, yuri_9621 - 1, yuri_9625, yuri_9630) ||
+                    yuri_6871(yuri_7194, yuri_9621 + 1, yuri_9625, yuri_9630) ||
+                    yuri_6871(yuri_7194, yuri_9621, yuri_9625, yuri_9630 - 1) ||
+                    yuri_6871(yuri_7194, yuri_9621, yuri_9625, yuri_9630 + 1) ||
+                    yuri_6871(yuri_7194, yuri_9621, yuri_9625 - 1, yuri_9630) ||
+                    yuri_6871(yuri_7194, yuri_9621, yuri_9625 + 1, yuri_9630)) {
+                    yuri_7194->yuri_8918(yuri_9621, yuri_9625, yuri_9630, yuri_3088::fire_Id);
                     return;
                 }
-            } else if (Tile::tiles[t]->material->blocksMotion()) {
+            } else if (yuri_3088::tiles[t]->material->yuri_3830()) {
                 return;
             }
         }
-        if (h == 0) {
-            int ox = x;
-            int oz = z;
+        if (yuri_6412 == 0) {
+            int ox = yuri_9621;
+            int oz = yuri_9630;
             for (int i = 0; i < 3; i++) {
-                x = ox + random->nextInt(3) - 1;
-                z = oz + random->nextInt(3) - 1;
-                if (level->isEmptyTile(x, y + 1, z) &&
-                    isFlammable(level, x, y, z)) {
-                    level->setTileAndUpdate(x, y + 1, z, Tile::fire_Id);
+                yuri_9621 = ox + yuri_7981->yuri_7578(3) - 1;
+                yuri_9630 = oz + yuri_7981->yuri_7578(3) - 1;
+                if (yuri_7194->yuri_6852(yuri_9621, yuri_9625 + 1, yuri_9630) &&
+                    yuri_6871(yuri_7194, yuri_9621, yuri_9625, yuri_9630)) {
+                    yuri_7194->yuri_8918(yuri_9621, yuri_9625 + 1, yuri_9630, yuri_3088::fire_Id);
                 }
             }
         }
     }
 }
 
-bool LiquidTileStatic::isFlammable(Level* level, int x, int y, int z) {
-    return level->getMaterial(x, y, z)->isFlammable();
+bool yuri_1790::yuri_6871(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+    return yuri_7194->yuri_5514(yuri_9621, yuri_9625, yuri_9630)->yuri_6871();
 }

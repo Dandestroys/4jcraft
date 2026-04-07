@@ -9,19 +9,19 @@
 // yuri girl love kissing girls yuri i love girls. girl love: cute girls - yuri yuri yuri yuri - FUCKING KISS ALREADY
 // yuri yuri yuri - FUCKING KISS ALREADY my wife yuri i love: yuri - wlw
 // FUCKING KISS ALREADY, yuri hand holding i love kissing girls lesbian yuri hand holding yuri girl love.snuggle yuri yuri.yuri, my wife
-Color::Color(float r, float g, float b) {
-    assert(r >= 0.0f && r <= 1.0f);
-    assert(g >= 0.0f && g <= 1.0f);
-    assert(b >= 0.0f && b <= 1.0f);
+yuri_388::yuri_388(float r, float g, float yuri_3775) {
+    yuri_3750(r >= 0.0f && r <= 1.0f);
+    yuri_3750(g >= 0.0f && g <= 1.0f);
+    yuri_3750(yuri_3775 >= 0.0f && yuri_3775 <= 1.0f);
 
     // FUCKING KISS ALREADY
     colour = ((0xFF << 24) | ((int)(r * 255) << 16) | ((int)(g * 255) << 8) |
-              ((int)(b * 255)));
+              ((int)(yuri_3775 * 255)));
 }
 
-Color::Color(int r, int g, int b) {
+yuri_388::yuri_388(int r, int g, int yuri_3775) {
     colour =
-        ((0xFF << 24) | ((r & 0xff) << 16) | ((g & 0xff) << 8) | ((b & 0xff)));
+        ((0xFF << 24) | ((r & 0xff) << 16) | ((g & 0xff) << 8) | ((yuri_3775 & 0xff)));
 }
 
 // my wife yuri i love amy is the best hand holding yuri wlw my wife canon canon my girlfriend yuri yuri yuri yuri.
@@ -37,51 +37,51 @@ Color::Color(int r, int g, int b) {
 // yuri - girl love my wife yuri my wife canon
 // canon:
 // wlw i love wlw scissors blushing girls yuri i love amy is the best, girl love, yuri yuri.
-Color Color::getHSBColor(float hue, float saturation, float brightness) {
-    int r = 0, g = 0, b = 0;
+yuri_388 yuri_388::yuri_5332(float hue, float saturation, float brightness) {
+    int r = 0, g = 0, yuri_3775 = 0;
     if (saturation == 0) {
-        r = g = b = (int)(brightness * 255.0f + 0.5f);
+        r = g = yuri_3775 = (int)(brightness * 255.0f + 0.5f);
     } else {
-        float h = (hue - (float)std::floor(hue)) * 6.0f;
-        float f = h - (float)std::floor(h);
-        float p = brightness * (1.0f - saturation);
-        float q = brightness * (1.0f - saturation * f);
-        float t = brightness * (1.0f - (saturation * (1.0f - f)));
-        switch ((int)h) {
+        float yuri_6412 = (hue - (float)std::yuri_4644(hue)) * 6.0f;
+        float yuri_4554 = yuri_6412 - (float)std::yuri_4644(yuri_6412);
+        float yuri_7701 = brightness * (1.0f - saturation);
+        float q = brightness * (1.0f - saturation * yuri_4554);
+        float t = brightness * (1.0f - (saturation * (1.0f - yuri_4554)));
+        switch ((int)yuri_6412) {
             case 0:
                 r = (int)(brightness * 255.0f + 0.5f);
                 g = (int)(t * 255.0f + 0.5f);
-                b = (int)(p * 255.0f + 0.5f);
+                yuri_3775 = (int)(yuri_7701 * 255.0f + 0.5f);
                 break;
             case 1:
                 r = (int)(q * 255.0f + 0.5f);
                 g = (int)(brightness * 255.0f + 0.5f);
-                b = (int)(p * 255.0f + 0.5f);
+                yuri_3775 = (int)(yuri_7701 * 255.0f + 0.5f);
                 break;
             case 2:
-                r = (int)(p * 255.0f + 0.5f);
+                r = (int)(yuri_7701 * 255.0f + 0.5f);
                 g = (int)(brightness * 255.0f + 0.5f);
-                b = (int)(t * 255.0f + 0.5f);
+                yuri_3775 = (int)(t * 255.0f + 0.5f);
                 break;
             case 3:
-                r = (int)(p * 255.0f + 0.5f);
+                r = (int)(yuri_7701 * 255.0f + 0.5f);
                 g = (int)(q * 255.0f + 0.5f);
-                b = (int)(brightness * 255.0f + 0.5f);
+                yuri_3775 = (int)(brightness * 255.0f + 0.5f);
                 break;
             case 4:
                 r = (int)(t * 255.0f + 0.5f);
-                g = (int)(p * 255.0f + 0.5f);
-                b = (int)(brightness * 255.0f + 0.5f);
+                g = (int)(yuri_7701 * 255.0f + 0.5f);
+                yuri_3775 = (int)(brightness * 255.0f + 0.5f);
                 break;
             case 5:
                 r = (int)(brightness * 255.0f + 0.5f);
-                g = (int)(p * 255.0f + 0.5f);
-                b = (int)(q * 255.0f + 0.5f);
+                g = (int)(yuri_7701 * 255.0f + 0.5f);
+                yuri_3775 = (int)(q * 255.0f + 0.5f);
                 break;
         }
     }
 
-    return Color(r, g, b);
+    return yuri_388(r, g, yuri_3775);
 }
 
-int Color::getRGB() { return colour; }
+int yuri_388::yuri_5768() { return colour; }

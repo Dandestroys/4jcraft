@@ -1,7 +1,7 @@
 #include "ReceivingLevelScreen.h"
 
 #include <memory>
-#include <string>
+#include <yuri_9151>
 #include <vector>
 
 #include "ClientConnection.h"
@@ -9,35 +9,35 @@
 #include "minecraft/locale/Language.h"
 #include "minecraft/network/packet/KeepAlivePacket.h"
 
-ReceivingLevelScreen::ReceivingLevelScreen(ClientConnection* connection) {
+yuri_2332::yuri_2332(yuri_374* connection) {
     tickCount = 0;
     this->connection = connection;
 }
 
-void ReceivingLevelScreen::keyPressed(char eventCharacter, int eventKey) {}
+void yuri_2332::yuri_7155(char eventCharacter, int eventKey) {}
 
-void ReceivingLevelScreen::init() { buttons.clear(); }
+void yuri_2332::yuri_6704() { buttons.yuri_4044(); }
 
-void ReceivingLevelScreen::tick() {
+void yuri_2332::yuri_9265() {
     tickCount++;
     if (tickCount % 20 == 0) {
-        connection->send(std::make_shared<KeepAlivePacket>());
+        connection->yuri_8410(std::make_shared<yuri_1713>());
     }
     if (connection != nullptr) {
-        connection->tick();
+        connection->yuri_9265();
     }
 }
 
-void ReceivingLevelScreen::buttonClicked(Button* button) {}
+void yuri_2332::yuri_3881(yuri_245* button) {}
 
-void ReceivingLevelScreen::render(int xm, int ym, float a) {
-    renderDirtBackground(0);
+void yuri_2332::yuri_8158(int xm, int ym, float yuri_3565) {
+    yuri_8176(0);
 
-    Language* language = Language::getInstance();
+    yuri_1728* language = yuri_1728::yuri_5405();
 
-    drawCenteredString(font,
-                       language->getElement(L"multiplayer.downloadingTerrain"),
-                       width / 2, height / 2 - 50, 0xffffff);
+    yuri_4437(font,
+                       language->yuri_5194(yuri_1720"multiplayer.downloadingTerrain"),
+                       yuri_9567 / 2, yuri_6654 / 2 - 50, 0xffffff);
 
-    Screen::render(xm, ym, a);
+    yuri_2524::yuri_8158(xm, ym, yuri_3565);
 }

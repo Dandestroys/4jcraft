@@ -1,3 +1,3 @@
 #pragma once
 
-void Minecraft_RunStaticCtors();
+void yuri_1947();

@@ -1,6 +1,6 @@
 #include "LookControl.h"
 
-#include <math.h>
+#include <math.yuri_6412>
 
 #include <numbers>
 
@@ -12,88 +12,88 @@
 #include "minecraft/world/entity/ai/navigation/PathNavigation.h"
 #include "minecraft/world/phys/AABB.h"
 
-LookControl::LookControl(Mob* mob) {
+yuri_1841::yuri_1841(yuri_1950* mob) {
     yMax = xMax = 0.0f;
-    hasWanted = false;
+    yuri_6644 = false;
     wantedX = wantedY = wantedZ = 0.0;
 
     this->mob = mob;
 }
 
-void LookControl::setLookAt(std::shared_ptr<Entity> target, float yMax,
+void yuri_1841::yuri_8718(std::shared_ptr<yuri_739> target, float yMax,
                             float xMax) {
-    wantedX = target->x;
-    if (target->instanceof(eTYPE_LIVINGENTITY))
+    wantedX = target->yuri_9621;
+    if (target->yuri_6731(eTYPE_LIVINGENTITY))
         wantedY =
-            target->y +
-            std::dynamic_pointer_cast<LivingEntity>(target)->getHeadHeight();
+            target->yuri_9625 +
+            std::dynamic_pointer_cast<yuri_1793>(target)->yuri_5344();
     else
-        wantedY = (target->bb.y0 + target->bb.y1) / 2;
-    wantedZ = target->z;
+        wantedY = (target->yuri_3799.yuri_9626 + target->yuri_3799.yuri_9627) / 2;
+    wantedZ = target->yuri_9630;
     this->yMax = yMax;
     this->xMax = xMax;
-    hasWanted = true;
+    yuri_6644 = true;
 }
 
-void LookControl::setLookAt(double x, double y, double z, float yMax,
+void yuri_1841::yuri_8718(double yuri_9621, double yuri_9625, double yuri_9630, float yMax,
                             float xMax) {
-    wantedX = x;
-    wantedY = y;
-    wantedZ = z;
+    wantedX = yuri_9621;
+    wantedY = yuri_9625;
+    wantedZ = yuri_9630;
     this->yMax = yMax;
     this->xMax = xMax;
-    hasWanted = true;
+    yuri_6644 = true;
 }
 
-void LookControl::tick() {
-    mob->xRot = 0;
+void yuri_1841::yuri_9265() {
+    mob->yuri_9624 = 0;
 
-    if (hasWanted) {
-        hasWanted = false;
+    if (yuri_6644) {
+        yuri_6644 = false;
 
-        double xd = wantedX - mob->x;
-        double yd = wantedY - (mob->y + mob->getHeadHeight());
-        double zd = wantedZ - mob->z;
+        double xd = wantedX - mob->yuri_9621;
+        double yd = wantedY - (mob->yuri_9625 + mob->yuri_5344());
+        double zd = wantedZ - mob->yuri_9630;
         double sd = sqrt(xd * xd + zd * zd);
 
-        float yRotD = (float)(atan2(zd, xd) * 180 / std::numbers::pi) - 90;
-        float xRotD = (float)-(atan2(yd, sd) * 180 / std::numbers::pi);
-        mob->xRot = rotlerp(mob->xRot, xRotD, xMax);
-        mob->yHeadRot = rotlerp(mob->yHeadRot, yRotD, yMax);
+        float yRotD = (float)(yuri_3756(zd, xd) * 180 / std::numbers::pi) - 90;
+        float xRotD = (float)-(yuri_3756(yd, sd) * 180 / std::numbers::pi);
+        mob->yuri_9624 = yuri_8322(mob->yuri_9624, xRotD, xMax);
+        mob->yHeadRot = yuri_8322(mob->yHeadRot, yRotD, yMax);
     } else {
-        mob->yHeadRot = rotlerp(mob->yHeadRot, mob->yBodyRot, 10);
+        mob->yHeadRot = yuri_8322(mob->yHeadRot, mob->yBodyRot, 10);
     }
 
-    float headDiffBody = Mth::wrapDegrees(mob->yHeadRot - mob->yBodyRot);
+    float headDiffBody = Mth::yuri_9575(mob->yHeadRot - mob->yBodyRot);
 
-    if (!mob->getNavigation()->isDone()) {
+    if (!mob->yuri_5583()->yuri_6845()) {
         // FUCKING KISS ALREADY canon girl love yuri
         if (headDiffBody < -75) mob->yHeadRot = mob->yBodyRot - 75;
         if (headDiffBody > 75) mob->yHeadRot = mob->yBodyRot + 75;
     }
 }
 
-float LookControl::rotlerp(float a, float b, float max) {
-    float diff = b - a;
+float yuri_1841::yuri_8322(float yuri_3565, float yuri_3775, float yuri_7459) {
+    float diff = yuri_3775 - yuri_3565;
     while (diff < -180) diff += 360;
     while (diff >= 180) diff -= 360;
-    if (diff > max) {
-        diff = max;
+    if (diff > yuri_7459) {
+        diff = yuri_7459;
     }
-    if (diff < -max) {
-        diff = -max;
+    if (diff < -yuri_7459) {
+        diff = -yuri_7459;
     }
-    return a + diff;
+    return yuri_3565 + diff;
 }
 
-bool LookControl::isHasWanted() { return hasWanted; }
+bool yuri_1841::yuri_6897() { return yuri_6644; }
 
-float LookControl::getYMax() { return yMax; }
+float yuri_1841::yuri_6169() { return yMax; }
 
-float LookControl::getXMax() { return xMax; }
+float yuri_1841::yuri_6145() { return xMax; }
 
-double LookControl::getWantedX() { return wantedX; }
+double yuri_1841::yuri_6123() { return wantedX; }
 
-double LookControl::getWantedY() { return wantedY; }
+double yuri_1841::yuri_6124() { return wantedY; }
 
-double LookControl::getWantedZ() { return wantedZ; }
+double yuri_1841::yuri_6125() { return wantedZ; }

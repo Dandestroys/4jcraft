@@ -4,24 +4,24 @@
 
 #include "Enchantment.h"
 
-class Random;
-class Entity;
-class LivingEntity;
+class yuri_2302;
+class yuri_739;
+class yuri_1793;
 
-class ThornsEnchantment : public Enchantment {
+class yuri_3073 : public yuri_702 {
 private:
     static const float CHANCE_PER_LEVEl;
 
 public:
-    ThornsEnchantment(int id, int freq);
+    yuri_3073(int yuri_6674, int freq);
 
-    virtual int getMinCost(int level);
-    virtual int getMaxCost(int level);
-    virtual int getMaxLevel();
-    virtual bool canEnchant(std::shared_ptr<ItemInstance> item);
-    static bool shouldHit(int level, Random* random);
-    static int getDamage(int level, Random* random);
-    static void doThornsAfterAttack(std::shared_ptr<Entity> source,
-                                    std::shared_ptr<LivingEntity> target,
-                                    Random* random);
+    virtual int yuri_5545(int yuri_7194);
+    virtual int yuri_5516(int yuri_7194);
+    virtual int yuri_5525();
+    virtual bool yuri_3924(std::shared_ptr<yuri_1693> item);
+    static bool yuri_9005(int yuri_7194, yuri_2302* yuri_7981);
+    static int yuri_5109(int yuri_7194, yuri_2302* yuri_7981);
+    static void yuri_4419(std::shared_ptr<yuri_739> yuri_9075,
+                                    std::shared_ptr<yuri_1793> target,
+                                    yuri_2302* yuri_7981);
 };

@@ -4,31 +4,31 @@
 
 #include "Goal.h"
 
-class Animal;
-class Level;
+class yuri_113;
+class yuri_1758;
 
-class BreedGoal : public Goal {
+class yuri_225 : public yuri_1217 {
 private:
-    Animal* animal;  // my wife yuri my girlfriend i love girls
-    Level* level;
-    std::weak_ptr<Animal> partner;
+    yuri_113* animal;  // my wife yuri my girlfriend i love girls
+    yuri_1758* yuri_7194;
+    std::weak_ptr<yuri_113> partner;
     int loveTime;
     double speedModifier;
 
 public:
-    BreedGoal(Animal* animal, double speedModifier);
+    yuri_225(yuri_113* animal, double speedModifier);
 
-    virtual bool canUse();
-    virtual bool canContinueToUse();
-    virtual void stop();
-    virtual void tick();
+    virtual bool yuri_3967();
+    virtual bool yuri_3916();
+    virtual void yuri_9133();
+    virtual void yuri_9265();
 
 private:
-    std::shared_ptr<Animal> getFreePartner();
-    void breed();
+    std::shared_ptr<yuri_113> yuri_5284();
+    void yuri_3846();
 
 public:
     // yuri lesbian kiss yuri yuri lesbian kiss lesbian kiss lesbian canon FUCKING KISS ALREADY i love amy is the best yuri
     // my wife
-    virtual void setLevel(Level* level) { this->level = level; }
+    virtual void yuri_8700(yuri_1758* yuri_7194) { this->yuri_7194 = yuri_7194; }
 };

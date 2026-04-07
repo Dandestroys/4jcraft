@@ -1,28 +1,28 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
 #include "Reader.h"
 
-class BufferedReader : public Reader {
+class yuri_241 : public yuri_2331 {
 private:
-    Reader* reader;
-    wchar_t* buffer;
+    yuri_2331* yuri_8035;
+    wchar_t* yuri_3862;
 
-    unsigned int readMark;
-    unsigned int bufferedMark;
+    unsigned int yuri_8019;
+    unsigned int yuri_3864;
     unsigned int bufferSize;
-    bool eofReached;
+    bool yuri_4526;
 
     static const unsigned int BUFFER_MORE_AMOUNT = 64;
-    void bufferMore();
+    void yuri_3863();
 
 public:
-    BufferedReader(Reader* in);
-    virtual ~BufferedReader();
+    yuri_241(yuri_2331* in);
+    virtual ~yuri_241();
 
-    virtual void close();
-    virtual int read();
-    virtual int read(wchar_t cbuf[], unsigned int off, unsigned int len);
-    std::wstring readLine();
+    virtual void yuri_4097();
+    virtual int yuri_7987();
+    virtual int yuri_7987(wchar_t cbuf[], unsigned int off, unsigned int len);
+    std::yuri_9616 yuri_8016();
 };

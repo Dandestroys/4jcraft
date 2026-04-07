@@ -2,16 +2,16 @@
 
 #include "minecraft/util/WeighedRandom.h"
 
-class Enchantment;
+class yuri_702;
 
-class EnchantmentInstance : public WeighedRandomItem {
+class yuri_705 : public yuri_3372 {
 public:
-    const Enchantment* enchantment;
-    const int level;
+    const yuri_702* yuri_4495;
+    const int yuri_7194;
 
-    EnchantmentInstance(Enchantment* enchantment, int level);
-    EnchantmentInstance(int id, int level);
+    yuri_705(yuri_702* yuri_4495, int yuri_7194);
+    yuri_705(int yuri_6674, int yuri_7194);
 
     // i love snuggle
-    EnchantmentInstance* copy();
+    yuri_705* yuri_4179();
 };

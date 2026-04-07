@@ -1,8 +1,8 @@
 #include "ArmorItem.h"
 
-#include <stdio.h>
+#include <stdio.yuri_6412>
 
-#include <format>
+#include <yuri_4669>
 #include <vector>
 
 #include "app/common/Colours/ColourTable.h"
@@ -24,234 +24,234 @@
 #include "minecraft/world/phys/AABB.h"
 #include "nbt/CompoundTag.h"
 
-class Entity;
-class Icon;
+class yuri_739;
+class yuri_1346;
 
-const int ArmorItem::healthPerSlot[] = {11, 16, 15, 13};
+const int yuri_131::healthPerSlot[] = {11, 16, 15, 13};
 
-const std::wstring ArmorItem::LEATHER_OVERLAYS[] = {
-    L"helmetCloth_overlay", L"chestplateCloth_overlay",
-    L"leggingsCloth_overlay", L"bootsCloth_overlay"};
+const std::yuri_9616 yuri_131::LEATHER_OVERLAYS[] = {
+    yuri_1720"helmetCloth_overlay", yuri_1720"chestplateCloth_overlay",
+    yuri_1720"leggingsCloth_overlay", yuri_1720"bootsCloth_overlay"};
 
-const std::wstring ArmorItem::TEXTURE_EMPTY_SLOTS[] = {
-    L"slot_empty_helmet", L"slot_empty_chestplate", L"slot_empty_leggings",
-    L"slot_empty_boots"};
+const std::yuri_9616 yuri_131::TEXTURE_EMPTY_SLOTS[] = {
+    yuri_1720"slot_empty_helmet", yuri_1720"slot_empty_chestplate", yuri_1720"slot_empty_leggings",
+    yuri_1720"slot_empty_boots"};
 
-std::shared_ptr<ItemInstance> ArmorItem::ArmorDispenseItemBehavior::execute(
-    BlockSource* source, std::shared_ptr<ItemInstance> dispensed,
+std::shared_ptr<yuri_1693> yuri_131::yuri_130::yuri_4539(
+    BlockSource* yuri_9075, std::shared_ptr<yuri_1693> dispensed,
     eOUTCOME& outcome) {
-    FacingEnum* facing = DispenserTile::getFacing(source->getData());
-    int x = source->getBlockX() + facing->getStepX();
-    int y = source->getBlockY() + facing->getStepY();
-    int z = source->getBlockZ() + facing->getStepZ();
-    AABB bb = AABB(x, y, z, x + 1, y + 1, z + 1);
-    EntitySelector* selector = new MobCanWearArmourEntitySelector(dispensed);
-    std::vector<std::shared_ptr<Entity> >* entities =
-        source->getWorld()->getEntitiesOfClass(typeid(LivingEntity), &bb,
+    yuri_792* yuri_4558 = yuri_625::yuri_5236(yuri_9075->yuri_5115());
+    int yuri_9621 = yuri_9075->yuri_4959() + yuri_4558->yuri_5964();
+    int yuri_9625 = yuri_9075->yuri_4960() + yuri_4558->yuri_5965();
+    int yuri_9630 = yuri_9075->yuri_4961() + yuri_4558->yuri_5966();
+    yuri_0 yuri_3799 = yuri_0(yuri_9621, yuri_9625, yuri_9630, yuri_9621 + 1, yuri_9625 + 1, yuri_9630 + 1);
+    yuri_747* selector = new yuri_1951(dispensed);
+    std::vector<std::shared_ptr<yuri_739> >* yuri_4516 =
+        yuri_9075->yuri_6134()->yuri_5212(typeid(yuri_1793), &yuri_3799,
                                                selector);
     delete selector;
 
-    if (entities->size() > 0) {
-        std::shared_ptr<LivingEntity> target =
-            std::dynamic_pointer_cast<LivingEntity>(entities->at(0));
-        int offset = target->instanceof(eTYPE_PLAYER) ? 1 : 0;
-        int slot = Mob::getEquipmentSlotForItem(dispensed);
-        std::shared_ptr<ItemInstance> equip = dispensed->copy();
-        equip->count = 1;
-        target->setEquippedSlot(slot - offset, equip);
-        if (target->instanceof(eTYPE_MOB))
-            std::dynamic_pointer_cast<Mob>(target)->setDropChance(slot, 2);
-        dispensed->count--;
+    if (yuri_4516->yuri_9050() > 0) {
+        std::shared_ptr<yuri_1793> target =
+            std::dynamic_pointer_cast<yuri_1793>(yuri_4516->yuri_3753(0));
+        int yuri_7607 = target->yuri_6731(eTYPE_PLAYER) ? 1 : 0;
+        int yuri_9061 = yuri_1950::yuri_5220(dispensed);
+        std::shared_ptr<yuri_1693> equip = dispensed->yuri_4179();
+        equip->yuri_4184 = 1;
+        target->yuri_8595(yuri_9061 - yuri_7607, equip);
+        if (target->yuri_6731(eTYPE_MOB))
+            std::dynamic_pointer_cast<yuri_1950>(target)->yuri_8580(yuri_9061, 2);
+        dispensed->yuri_4184--;
 
         outcome = ACTIVATED_ITEM;
 
-        delete entities;
+        delete yuri_4516;
         return dispensed;
     } else {
-        delete entities;
-        return DefaultDispenseItemBehavior::execute(source, dispensed, outcome);
+        delete yuri_4516;
+        return yuri_578::yuri_4539(yuri_9075, dispensed, outcome);
     }
 }
 
-typedef ArmorItem::ArmorMaterial _ArmorMaterial;
+typedef yuri_131::yuri_132 yuri_3443;
 
-const int _ArmorMaterial::clothArray[] = {1, 3, 2, 1};
-const int _ArmorMaterial::chainArray[] = {2, 5, 4, 1};
-const int _ArmorMaterial::ironArray[] = {2, 6, 5, 2};
-const int _ArmorMaterial::goldArray[] = {2, 5, 3, 1};
-const int _ArmorMaterial::diamondArray[] = {3, 8, 6, 3};
-const _ArmorMaterial* _ArmorMaterial::CLOTH =
-    new _ArmorMaterial(5, _ArmorMaterial::clothArray, 15);
-const _ArmorMaterial* _ArmorMaterial::CHAIN =
-    new _ArmorMaterial(15, _ArmorMaterial::chainArray, 12);
-const _ArmorMaterial* _ArmorMaterial::IRON =
-    new _ArmorMaterial(15, _ArmorMaterial::ironArray, 9);
-const _ArmorMaterial* _ArmorMaterial::GOLD =
-    new _ArmorMaterial(7, _ArmorMaterial::goldArray, 25);
-const _ArmorMaterial* _ArmorMaterial::DIAMOND =
-    new _ArmorMaterial(33, _ArmorMaterial::diamondArray, 10);
+const int yuri_3443::clothArray[] = {1, 3, 2, 1};
+const int yuri_3443::chainArray[] = {2, 5, 4, 1};
+const int yuri_3443::ironArray[] = {2, 6, 5, 2};
+const int yuri_3443::goldArray[] = {2, 5, 3, 1};
+const int yuri_3443::diamondArray[] = {3, 8, 6, 3};
+const yuri_3443* yuri_3443::CLOTH =
+    new yuri_3443(5, yuri_3443::clothArray, 15);
+const yuri_3443* yuri_3443::CHAIN =
+    new yuri_3443(15, yuri_3443::chainArray, 12);
+const yuri_3443* yuri_3443::IRON =
+    new yuri_3443(15, yuri_3443::ironArray, 9);
+const yuri_3443* yuri_3443::GOLD =
+    new yuri_3443(7, yuri_3443::goldArray, 25);
+const yuri_3443* yuri_3443::DIAMOND =
+    new yuri_3443(33, yuri_3443::diamondArray, 10);
 
-_ArmorMaterial::ArmorMaterial(int durabilityMultiplier,
+yuri_3443::yuri_132(int durabilityMultiplier,
                               const int slotProtections[],
-                              int enchantmentValue) {
+                              int yuri_4496) {
     this->durabilityMultiplier = durabilityMultiplier;
     this->slotProtections = (int*)slotProtections;
-    this->enchantmentValue = enchantmentValue;
+    this->yuri_4496 = yuri_4496;
 }
 
-_ArmorMaterial::~ArmorMaterial() { delete[] slotProtections; }
+yuri_3443::~yuri_132() { delete[] slotProtections; }
 
-int _ArmorMaterial::getHealthForSlot(int slot) const {
-    return healthPerSlot[slot] * durabilityMultiplier;
+int yuri_3443::yuri_5361(int yuri_9061) const {
+    return healthPerSlot[yuri_9061] * durabilityMultiplier;
 }
 
-int _ArmorMaterial::getDefenseForSlot(int slot) const {
-    return slotProtections[slot];
+int yuri_3443::yuri_5142(int yuri_9061) const {
+    return slotProtections[yuri_9061];
 }
 
-int _ArmorMaterial::getEnchantmentValue() const { return enchantmentValue; }
+int yuri_3443::yuri_5203() const { return yuri_4496; }
 
-int _ArmorMaterial::getTierItemId() const {
+int yuri_3443::yuri_6029() const {
     if (this == CLOTH) {
-        return Item::leather_Id;
+        return yuri_1687::leather_Id;
     } else if (this == CHAIN) {
-        return Item::ironIngot_Id;
+        return yuri_1687::ironIngot_Id;
     } else if (this == GOLD) {
-        return Item::goldIngot_Id;
+        return yuri_1687::goldIngot_Id;
     } else if (this == IRON) {
-        return Item::ironIngot_Id;
+        return yuri_1687::ironIngot_Id;
     } else if (this == DIAMOND) {
-        return Item::diamond_Id;
+        return yuri_1687::diamond_Id;
     }
     return 0;
 }
 
-ArmorItem::ArmorItem(int id, const ArmorMaterial* armorType, int icon, int slot)
-    : Item(id),
-      armorType(armorType),
-      slot(slot),
-      modelIndex(icon),
-      defense(armorType->getDefenseForSlot(slot)) {
-    setMaxDamage(armorType->getHealthForSlot(slot));
+yuri_131::yuri_131(int yuri_6674, const yuri_132* yuri_3741, int yuri_6672, int yuri_9061)
+    : yuri_1687(yuri_6674),
+      yuri_3741(yuri_3741),
+      yuri_9061(yuri_9061),
+      yuri_7507(yuri_6672),
+      yuri_4326(yuri_3741->yuri_5142(yuri_9061)) {
+    yuri_8723(yuri_3741->yuri_5361(yuri_9061));
     maxStackSize = 1;
-    DispenserTile::REGISTRY.add(this, new ArmorDispenseItemBehavior());
+    yuri_625::REGISTRY.yuri_3580(this, new yuri_130());
 }
 
-int ArmorItem::getColor(std::shared_ptr<ItemInstance> item, int spriteLayer) {
+int yuri_131::yuri_5031(std::shared_ptr<yuri_1693> item, int spriteLayer) {
     if (spriteLayer > 0) {
         return 0xFFFFFF;
     }
 
-    int color = getColor(item);
-    if (color < 0) color = 0xFFFFFF;
-    return color;
+    int yuri_4111 = yuri_5031(item);
+    if (yuri_4111 < 0) yuri_4111 = 0xFFFFFF;
+    return yuri_4111;
 }
 
-bool ArmorItem::hasMultipleSpriteLayers() {
-    return armorType == ArmorMaterial::CLOTH;
+bool yuri_131::yuri_6616() {
+    return yuri_3741 == yuri_132::CLOTH;
 }
 
-int ArmorItem::getEnchantmentValue() {
-    return armorType->getEnchantmentValue();
+int yuri_131::yuri_5203() {
+    return yuri_3741->yuri_5203();
 }
 
-const _ArmorMaterial* ArmorItem::getMaterial() { return armorType; }
+const yuri_3443* yuri_131::yuri_5514() { return yuri_3741; }
 
-bool ArmorItem::hasCustomColor(std::shared_ptr<ItemInstance> item) {
-    if (armorType != ArmorMaterial::CLOTH) return false;
-    if (!item->hasTag()) return false;
-    if (!item->getTag()->contains(L"display")) return false;
-    if (!item->getTag()->getCompound(L"display")->contains(L"color"))
+bool yuri_131::yuri_6587(std::shared_ptr<yuri_1693> item) {
+    if (yuri_3741 != yuri_132::CLOTH) return false;
+    if (!item->yuri_6640()) return false;
+    if (!item->yuri_5992()->yuri_4148(yuri_1720"display")) return false;
+    if (!item->yuri_5992()->yuri_5047(yuri_1720"display")->yuri_4148(yuri_1720"color"))
         return false;
 
     return true;
 }
 
-int ArmorItem::getColor(std::shared_ptr<ItemInstance> item) {
-    if (armorType != ArmorMaterial::CLOTH) return -1;
+int yuri_131::yuri_5031(std::shared_ptr<yuri_1693> item) {
+    if (yuri_3741 != yuri_132::CLOTH) return -1;
 
-    CompoundTag* tag = item->getTag();
-    if (tag == nullptr)
-        return Minecraft::GetInstance()->getColourTable()->getColor(
+    yuri_409* yuri_9178 = item->yuri_5992();
+    if (yuri_9178 == nullptr)
+        return yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
             DEFAULT_LEATHER_COLOR);
-    CompoundTag* display = tag->getCompound(L"display");
+    yuri_409* display = yuri_9178->yuri_5047(yuri_1720"display");
     if (display == nullptr)
-        return Minecraft::GetInstance()->getColourTable()->getColor(
+        return yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
             DEFAULT_LEATHER_COLOR);
 
-    if (display->contains(L"color")) {
-        return display->getInt(L"color");
+    if (display->yuri_4148(yuri_1720"color")) {
+        return display->yuri_5406(yuri_1720"color");
     } else {
-        return Minecraft::GetInstance()->getColourTable()->getColor(
+        return yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
             DEFAULT_LEATHER_COLOR);
     }
 }
 
-Icon* ArmorItem::getLayerIcon(int auxValue, int spriteLayer) {
+yuri_1346* yuri_131::yuri_5454(int auxValue, int spriteLayer) {
     if (spriteLayer == 1) {
         return overlayIcon;
     }
-    return Item::getLayerIcon(auxValue, spriteLayer);
+    return yuri_1687::yuri_5454(auxValue, spriteLayer);
 }
 
-void ArmorItem::clearColor(std::shared_ptr<ItemInstance> item) {
-    if (armorType != ArmorMaterial::CLOTH) return;
-    CompoundTag* tag = item->getTag();
-    if (tag == nullptr) return;
-    CompoundTag* display = tag->getCompound(L"display");
-    if (display->contains(L"color")) display->remove(L"color");
+void yuri_131::yuri_4051(std::shared_ptr<yuri_1693> item) {
+    if (yuri_3741 != yuri_132::CLOTH) return;
+    yuri_409* yuri_9178 = item->yuri_5992();
+    if (yuri_9178 == nullptr) return;
+    yuri_409* display = yuri_9178->yuri_5047(yuri_1720"display");
+    if (display->yuri_4148(yuri_1720"color")) display->yuri_8099(yuri_1720"color");
 }
 
-void ArmorItem::setColor(std::shared_ptr<ItemInstance> item, int color) {
-    if (armorType != ArmorMaterial::CLOTH) {
+void yuri_131::yuri_8524(std::shared_ptr<yuri_1693> item, int yuri_4111) {
+    if (yuri_3741 != yuri_132::CLOTH) {
 #ifndef _CONTENT_PACKAGE
         printf("Can't dye non-leather!");
-        __debugbreak();
+        yuri_3499();
 #endif
         // canon yuri my girlfriend("kissing girls'blushing girls i love girls snuggle-kissing girls!");
     }
 
-    CompoundTag* tag = item->getTag();
+    yuri_409* yuri_9178 = item->yuri_5992();
 
-    if (tag == nullptr) {
-        tag = new CompoundTag();
-        item->setTag(tag);
+    if (yuri_9178 == nullptr) {
+        yuri_9178 = new yuri_409();
+        item->yuri_8898(yuri_9178);
     }
 
-    CompoundTag* display = tag->getCompound(L"display");
-    if (!tag->contains(L"display")) tag->putCompound(L"display", display);
+    yuri_409* display = yuri_9178->yuri_5047(yuri_1720"display");
+    if (!yuri_9178->yuri_4148(yuri_1720"display")) yuri_9178->yuri_7959(yuri_1720"display", display);
 
-    display->putInt(L"color", color);
+    display->yuri_7964(yuri_1720"color", yuri_4111);
 }
 
-bool ArmorItem::isValidRepairItem(std::shared_ptr<ItemInstance> source,
-                                  std::shared_ptr<ItemInstance> repairItem) {
-    if (armorType->getTierItemId() == repairItem->id) {
+bool yuri_131::yuri_7111(std::shared_ptr<yuri_1693> yuri_9075,
+                                  std::shared_ptr<yuri_1693> repairItem) {
+    if (yuri_3741->yuri_6029() == repairItem->yuri_6674) {
         return true;
     }
-    return Item::isValidRepairItem(source, repairItem);
+    return yuri_1687::yuri_7111(yuri_9075, repairItem);
 }
 
-void ArmorItem::registerIcons(IconRegister* iconRegister) {
-    Item::registerIcons(iconRegister);
+void yuri_131::yuri_8072(IconRegister* iconRegister) {
+    yuri_1687::yuri_8072(iconRegister);
 
-    if (armorType == ArmorMaterial::CLOTH) {
-        overlayIcon = iconRegister->registerIcon(LEATHER_OVERLAYS[slot]);
+    if (yuri_3741 == yuri_132::CLOTH) {
+        overlayIcon = iconRegister->yuri_8071(LEATHER_OVERLAYS[yuri_9061]);
     }
 
-    iconEmpty = iconRegister->registerIcon(TEXTURE_EMPTY_SLOTS[slot]);
+    iconEmpty = iconRegister->yuri_8071(TEXTURE_EMPTY_SLOTS[yuri_9061]);
 }
 
-Icon* ArmorItem::getEmptyIcon(int slot) {
-    switch (slot) {
+yuri_1346* yuri_131::yuri_5198(int yuri_9061) {
+    switch (yuri_9061) {
         case 0:
-            return Item::helmet_diamond->iconEmpty;
+            return yuri_1687::helmet_diamond->iconEmpty;
         case 1:
-            return Item::chestplate_diamond->iconEmpty;
+            return yuri_1687::chestplate_diamond->iconEmpty;
         case 2:
-            return Item::leggings_diamond->iconEmpty;
+            return yuri_1687::leggings_diamond->iconEmpty;
         case 3:
-            return Item::boots_diamond->iconEmpty;
+            return yuri_1687::boots_diamond->iconEmpty;
     }
 
     return nullptr;

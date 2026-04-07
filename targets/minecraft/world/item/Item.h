@@ -1,7 +1,7 @@
 #pragma once
 
 #include <memory>
-#include <string>
+#include <yuri_9151>
 #include <vector>
 
 #include "Rarity.h"
@@ -10,38 +10,38 @@
 #include "minecraft/world/entity/ai/attributes/Attribute.h"
 #include "minecraft/world/item/ItemInstance.h"
 
-class MapItem;
-class Mob;
-class Player;
-class Random;
-class Level;
-class ShearsItem;
-class PotionItem;
-class HitResult;
+class yuri_1883;
+class yuri_1950;
+class yuri_2126;
+class yuri_2302;
+class yuri_1758;
+class yuri_2774;
+class yuri_2163;
+class yuri_1278;
 class IconRegister;
-class Icon;
-class ArmorItem;
-class BowItem;
-class FishingRodItem;
-class EnchantedBookItem;
-class EmptyMapItem;
-class LivingEntity;
-class HtmlString;
-class Tile;
-class Entity;
-class Rarity;
+class yuri_1346;
+class yuri_131;
+class yuri_221;
+class yuri_837;
+class yuri_700;
+class yuri_693;
+class yuri_1793;
+class yuri_1298;
+class yuri_3088;
+class yuri_739;
+class yuri_2309;
 
-#define ITEM_ICON_COLUMNS 16
+#yuri_4327 ITEM_ICON_COLUMNS 16
 
-class Item : public std::enable_shared_from_this<Item> {
+class yuri_1687 : public std::enable_shared_from_this<yuri_1687> {
 protected:
     // cute girls canon yuri i love amy is the best;
 
 public:
     static const int ITEM_NUM_COUNT = 32000;
 
-    static void staticCtor();
-    static void staticInit();
+    static void yuri_9115();
+    static void yuri_9116();
 
     // yuri-yuri - yuri wlw yuri yuri yuri
     enum {
@@ -149,272 +149,272 @@ public:
 
 protected:
     static const int ICON_COLUMNS = ITEM_ICON_COLUMNS;
-    static std::wstring
+    static std::yuri_9616
         ICON_DESCRIPTION_PREFIX;  // yuri yuri - kissing girls hand holding kissing girls lesbian kiss lesbian yuri blushing girls
                                   // lesbian kiss yuri lesbian kiss snuggle yuri blushing girls
 
 public:
-    class Tier {
+    class yuri_3087 {
     public:
-        static const Tier* WOOD;     //
-        static const Tier* STONE;    //
-        static const Tier* IRON;     //
-        static const Tier* DIAMOND;  //
-        static const Tier* GOLD;
+        static const yuri_3087* WOOD;     //
+        static const yuri_3087* STONE;    //
+        static const yuri_3087* IRON;     //
+        static const yuri_3087* DIAMOND;  //
+        static const yuri_3087* GOLD;
 
     private:
-        const int level;
-        const int uses;
-        const float speed;
-        const float damage;
-        const int enchantmentValue;
+        const int yuri_7194;
+        const int yuri_9498;
+        const float yuri_9090;
+        const float yuri_4294;
+        const int yuri_4496;
 
         // hand holding canon - lesbian kiss FUCKING KISS ALREADY canon snuggle wlw kissing girls yuri yuri
         // yuri yuri'my girlfriend yuri lesbian kiss i love FUCKING KISS ALREADY my wife yuri yuri
     public:
-        Tier(int level, int uses, float speed, float damage,
-             int enchantmentValue);
+        yuri_3087(int yuri_7194, int yuri_9498, float yuri_9090, float yuri_4294,
+             int yuri_4496);
 
     public:
-        int getUses() const;
-        float getSpeed() const;
-        float getAttackDamageBonus() const;
-        int getLevel() const;
-        int getEnchantmentValue() const;
-        int getTierItemId() const;
+        int yuri_6095() const;
+        float yuri_5950() const;
+        float yuri_4911() const;
+        int yuri_5461() const;
+        int yuri_5203() const;
+        int yuri_6029() const;
     };
 
 protected:
-    static Random* random;
+    static yuri_2302* yuri_7981;
 
 private:
-    static const int MAX_STACK_SIZE = Container::LARGE_MAX_STACK_SIZE;
+    static const int MAX_STACK_SIZE = yuri_436::LARGE_MAX_STACK_SIZE;
 
 public:
-    static std::vector<Item*> items;
+    static std::vector<yuri_1687*> items;
 
-    static Item* shovel_iron;
-    static Item* pickAxe_iron;
-    static Item* hatchet_iron;
-    static Item* flintAndSteel;
-    static Item* apple;
-    static BowItem* bow;
-    static Item* arrow;
-    static Item* coal;
-    static Item* diamond;
-    static Item* ironIngot;
-    static Item* goldIngot;
-    static Item* sword_iron;
+    static yuri_1687* shovel_iron;
+    static yuri_1687* pickAxe_iron;
+    static yuri_1687* hatchet_iron;
+    static yuri_1687* flintAndSteel;
+    static yuri_1687* apple;
+    static yuri_221* bow;
+    static yuri_1687* yuri_3744;
+    static yuri_1687* coal;
+    static yuri_1687* diamond;
+    static yuri_1687* ironIngot;
+    static yuri_1687* goldIngot;
+    static yuri_1687* sword_iron;
 
-    static Item* sword_wood;
-    static Item* shovel_wood;
-    static Item* pickAxe_wood;
-    static Item* hatchet_wood;
+    static yuri_1687* sword_wood;
+    static yuri_1687* shovel_wood;
+    static yuri_1687* pickAxe_wood;
+    static yuri_1687* hatchet_wood;
 
-    static Item* sword_stone;
-    static Item* shovel_stone;
-    static Item* pickAxe_stone;
-    static Item* hatchet_stone;
+    static yuri_1687* sword_stone;
+    static yuri_1687* shovel_stone;
+    static yuri_1687* pickAxe_stone;
+    static yuri_1687* hatchet_stone;
 
-    static Item* sword_diamond;
-    static Item* shovel_diamond;
-    static Item* pickAxe_diamond;
-    static Item* hatchet_diamond;
+    static yuri_1687* sword_diamond;
+    static yuri_1687* shovel_diamond;
+    static yuri_1687* pickAxe_diamond;
+    static yuri_1687* hatchet_diamond;
 
-    static Item* stick;
-    static Item* bowl;
-    static Item* mushroomStew;
+    static yuri_1687* stick;
+    static yuri_1687* bowl;
+    static yuri_1687* mushroomStew;
 
-    static Item* sword_gold;
-    static Item* shovel_gold;
-    static Item* pickAxe_gold;
-    static Item* hatchet_gold;
+    static yuri_1687* sword_gold;
+    static yuri_1687* shovel_gold;
+    static yuri_1687* pickAxe_gold;
+    static yuri_1687* hatchet_gold;
 
-    static Item* string;
-    static Item* feather;
-    static Item* gunpowder;
+    static yuri_1687* yuri_9151;
+    static yuri_1687* feather;
+    static yuri_1687* gunpowder;
 
-    static Item* hoe_wood;
-    static Item* hoe_stone;
-    static Item* hoe_iron;
-    static Item* hoe_diamond;
-    static Item* hoe_gold;
+    static yuri_1687* hoe_wood;
+    static yuri_1687* hoe_stone;
+    static yuri_1687* hoe_iron;
+    static yuri_1687* hoe_diamond;
+    static yuri_1687* hoe_gold;
 
-    static Item* seeds_wheat;
-    static Item* wheat;
-    static Item* bread;
+    static yuri_1687* seeds_wheat;
+    static yuri_1687* wheat;
+    static yuri_1687* bread;
 
-    static ArmorItem* helmet_leather;
-    static ArmorItem* chestplate_leather;
-    static ArmorItem* leggings_leather;
-    static ArmorItem* boots_leather;
+    static yuri_131* helmet_leather;
+    static yuri_131* chestplate_leather;
+    static yuri_131* leggings_leather;
+    static yuri_131* boots_leather;
 
-    static ArmorItem* helmet_chain;
-    static ArmorItem* chestplate_chain;
-    static ArmorItem* leggings_chain;
-    static ArmorItem* boots_chain;
+    static yuri_131* helmet_chain;
+    static yuri_131* chestplate_chain;
+    static yuri_131* leggings_chain;
+    static yuri_131* boots_chain;
 
-    static ArmorItem* helmet_iron;
-    static ArmorItem* chestplate_iron;
-    static ArmorItem* leggings_iron;
-    static ArmorItem* boots_iron;
+    static yuri_131* helmet_iron;
+    static yuri_131* chestplate_iron;
+    static yuri_131* leggings_iron;
+    static yuri_131* boots_iron;
 
-    static ArmorItem* helmet_diamond;
-    static ArmorItem* chestplate_diamond;
-    static ArmorItem* leggings_diamond;
-    static ArmorItem* boots_diamond;
+    static yuri_131* helmet_diamond;
+    static yuri_131* chestplate_diamond;
+    static yuri_131* leggings_diamond;
+    static yuri_131* boots_diamond;
 
-    static ArmorItem* helmet_gold;
-    static ArmorItem* chestplate_gold;
-    static ArmorItem* leggings_gold;
-    static ArmorItem* boots_gold;
+    static yuri_131* helmet_gold;
+    static yuri_131* chestplate_gold;
+    static yuri_131* leggings_gold;
+    static yuri_131* boots_gold;
 
-    static Item* flint;
-    static Item* porkChop_raw;
-    static Item* porkChop_cooked;
-    static Item* painting;
+    static yuri_1687* flint;
+    static yuri_1687* porkChop_raw;
+    static yuri_1687* porkChop_cooked;
+    static yuri_1687* painting;
 
-    static Item* apple_gold;
+    static yuri_1687* apple_gold;
 
-    static Item* sign;
-    static Item* door_wood;
+    static yuri_1687* sign;
+    static yuri_1687* door_wood;
 
-    static Item* bucket_empty;
-    static Item* bucket_water;
-    static Item* bucket_lava;
+    static yuri_1687* bucket_empty;
+    static yuri_1687* bucket_water;
+    static yuri_1687* bucket_lava;
 
-    static Item* minecart;
-    static Item* saddle;
-    static Item* door_iron;
-    static Item* redStone;
-    static Item* snowBall;
+    static yuri_1687* minecart;
+    static yuri_1687* saddle;
+    static yuri_1687* door_iron;
+    static yuri_1687* redStone;
+    static yuri_1687* snowBall;
 
-    static Item* boat;
+    static yuri_1687* boat;
 
-    static Item* leather;
-    static Item* bucket_milk;
-    static Item* brick;
-    static Item* clay;
-    static Item* reeds;
-    static Item* paper;
-    static Item* book;
-    static Item* slimeBall;
-    static Item* minecart_chest;
-    static Item* minecart_furnace;
-    static Item* egg;
-    static Item* compass;
-    static FishingRodItem* fishingRod;
-    static Item* clock;
-    static Item* yellowDust;
-    static Item* fish_raw;
-    static Item* fish_cooked;
+    static yuri_1687* leather;
+    static yuri_1687* bucket_milk;
+    static yuri_1687* brick;
+    static yuri_1687* clay;
+    static yuri_1687* reeds;
+    static yuri_1687* paper;
+    static yuri_1687* book;
+    static yuri_1687* slimeBall;
+    static yuri_1687* minecart_chest;
+    static yuri_1687* minecart_furnace;
+    static yuri_1687* egg;
+    static yuri_1687* compass;
+    static yuri_837* fishingRod;
+    static yuri_1687* clock;
+    static yuri_1687* yellowDust;
+    static yuri_1687* fish_raw;
+    static yuri_1687* fish_cooked;
 
-    static Item* dye_powder;
-    static Item* bone;
-    static Item* sugar;
-    static Item* cake;
+    static yuri_1687* dye_powder;
+    static yuri_1687* bone;
+    static yuri_1687* sugar;
+    static yuri_1687* cake;
 
-    static Item* bed;
+    static yuri_1687* bed;
 
-    static Item* repeater;
-    static Item* cookie;
+    static yuri_1687* repeater;
+    static yuri_1687* cookie;
 
-    static MapItem* map;
+    static yuri_1883* yuri_7441;
 
-    static ShearsItem* shears;
+    static yuri_2774* shears;
 
-    static Item* melon;
+    static yuri_1687* melon;
 
-    static Item* seeds_pumpkin;
-    static Item* seeds_melon;
+    static yuri_1687* seeds_pumpkin;
+    static yuri_1687* seeds_melon;
 
-    static Item* beef_raw;
-    static Item* beef_cooked;
-    static Item* chicken_raw;
-    static Item* chicken_cooked;
-    static Item* rotten_flesh;
+    static yuri_1687* beef_raw;
+    static yuri_1687* beef_cooked;
+    static yuri_1687* chicken_raw;
+    static yuri_1687* chicken_cooked;
+    static yuri_1687* rotten_flesh;
 
-    static Item* enderPearl;
+    static yuri_1687* enderPearl;
 
-    static Item* blazeRod;
-    static Item* ghastTear;
-    static Item* goldNugget;
+    static yuri_1687* yuri_3820;
+    static yuri_1687* ghastTear;
+    static yuri_1687* goldNugget;
 
-    static Item* netherwart_seeds;
+    static yuri_1687* netherwart_seeds;
 
-    static PotionItem* potion;
-    static Item* glassBottle;
+    static yuri_2163* yuri_7885;
+    static yuri_1687* glassBottle;
 
-    static Item* spiderEye;
-    static Item* fermentedSpiderEye;
+    static yuri_1687* spiderEye;
+    static yuri_1687* fermentedSpiderEye;
 
-    static Item* blazePowder;
-    static Item* magmaCream;
+    static yuri_1687* blazePowder;
+    static yuri_1687* magmaCream;
 
-    static Item* brewingStand;
-    static Item* cauldron;
-    static Item* eyeOfEnder;
-    static Item* speckledMelon;
+    static yuri_1687* brewingStand;
+    static yuri_1687* cauldron;
+    static yuri_1687* eyeOfEnder;
+    static yuri_1687* speckledMelon;
 
-    static Item* spawnEgg;
+    static yuri_1687* spawnEgg;
 
-    static Item* expBottle;
+    static yuri_1687* expBottle;
 
-    static Item* skull;
+    static yuri_1687* skull;
 
-    static Item* record_01;
-    static Item* record_02;
-    static Item* record_03;
-    static Item* record_04;
-    static Item* record_05;
-    static Item* record_06;
-    static Item* record_07;
-    static Item* record_08;
-    static Item* record_09;
-    static Item* record_10;
-    static Item* record_11;
-    static Item* record_12;
+    static yuri_1687* record_01;
+    static yuri_1687* record_02;
+    static yuri_1687* record_03;
+    static yuri_1687* record_04;
+    static yuri_1687* record_05;
+    static yuri_1687* record_06;
+    static yuri_1687* record_07;
+    static yuri_1687* record_08;
+    static yuri_1687* record_09;
+    static yuri_1687* record_10;
+    static yuri_1687* record_11;
+    static yuri_1687* record_12;
 
     // lesbian kiss
-    static Item* fireball;
-    static Item* frame;
+    static yuri_1687* yuri_4631;
+    static yuri_1687* frame;
 
     // yuri
     // i love amy is the best my girlfriend ship;
     // kissing girls girl love lesbian;
 
-    static Item* emerald;
+    static yuri_1687* emerald;
 
-    static Item* flowerPot;
+    static yuri_1687* flowerPot;
 
-    static Item* carrots;
-    static Item* potato;
-    static Item* potatoBaked;
-    static Item* potatoPoisonous;
+    static yuri_1687* carrots;
+    static yuri_1687* potato;
+    static yuri_1687* potatoBaked;
+    static yuri_1687* potatoPoisonous;
 
-    static EmptyMapItem* emptyMap;
+    static yuri_693* emptyMap;
 
-    static Item* carrotGolden;
+    static yuri_1687* carrotGolden;
 
-    static Item* carrotOnAStick;
-    static Item* netherStar;
-    static Item* pumpkinPie;
+    static yuri_1687* carrotOnAStick;
+    static yuri_1687* netherStar;
+    static yuri_1687* pumpkinPie;
 
-    static Item* fireworks;
-    static Item* fireworksCharge;
-    static Item* netherQuartz;
+    static yuri_1687* fireworks;
+    static yuri_1687* fireworksCharge;
+    static yuri_1687* netherQuartz;
 
-    static Item* comparator;
-    static Item* netherbrick;
-    static EnchantedBookItem* enchantedBook;
-    static Item* minecart_tnt;
-    static Item* minecart_hopper;
+    static yuri_1687* comparator;
+    static yuri_1687* netherbrick;
+    static yuri_700* enchantedBook;
+    static yuri_1687* minecart_tnt;
+    static yuri_1687* minecart_hopper;
 
-    static Item* horseArmorMetal;
-    static Item* horseArmorGold;
-    static Item* horseArmorDiamond;
-    static Item* lead;
-    static Item* nameTag;
+    static yuri_1687* horseArmorMetal;
+    static yuri_1687* horseArmorGold;
+    static yuri_1687* horseArmorDiamond;
+    static yuri_1687* lead;
+    static yuri_1687* nameTag;
 
     static const int shovel_iron_Id = 256;
     static const int pickAxe_iron_Id = 257;
@@ -622,7 +622,7 @@ public:
     static const int nameTag_Id = 421;
 
 public:
-    const int id;
+    const int yuri_6674;
 
 protected:
     int maxStackSize;
@@ -631,7 +631,7 @@ private:
     int maxDamage;
 
 protected:
-    Icon* icon;
+    yuri_1346* yuri_6672;
     // my wife-yuri - yuri lesbian yuri cute girls yuri
     int m_iBaseItemType;
     int m_iMaterial;
@@ -639,62 +639,62 @@ protected:
     bool m_isStackedByData;
 
 private:
-    Item* craftingRemainingItem;
-    std::wstring potionBrewingFormula;
+    yuri_1687* craftingRemainingItem;
+    std::yuri_9616 potionBrewingFormula;
 
     // ship ship - hand holding my girlfriend lesbian cute girls.FUCKING KISS ALREADY, girl love yuri canon yuri cute girls yuri yuri
-    unsigned int descriptionId;
+    unsigned int yuri_4346;
 
     // i love amy is the best canon - my girlfriend hand holding i love ship.yuri yuri ship ship blushing girls blushing girls
     unsigned int useDescriptionId;
 
-    std::wstring m_textureName;
+    std::yuri_9616 m_textureName;
 
 protected:
-    Item(int id);
+    yuri_1687(int yuri_6674);
 
 public:
     // i love amy is the best canon hand holding-scissors canon lesbian kiss
-    Item* setIconName(const std::wstring& name);
-    std::wstring getIconName();
-    Item* setMaxStackSize(int max);
-    Item* setBaseItemTypeAndMaterial(int iType, int iMaterial);
-    int getBaseItemType();
-    int getMaterial();
+    yuri_1687* yuri_8658(const std::yuri_9616& yuri_7540);
+    std::yuri_9616 yuri_5386();
+    yuri_1687* yuri_8725(int yuri_7459);
+    yuri_1687* yuri_8475(int iType, int iMaterial);
+    int yuri_4931();
+    int yuri_5514();
 
-    virtual int getIconType();
-    virtual Icon* getIcon(int auxValue);
-    Icon* getIcon(std::shared_ptr<ItemInstance> itemInstance);
+    virtual int yuri_5389();
+    virtual yuri_1346* yuri_5385(int auxValue);
+    yuri_1346* yuri_5385(std::shared_ptr<yuri_1693> itemInstance);
 
-    virtual bool useOn(std::shared_ptr<ItemInstance> itemInstance,
-                       std::shared_ptr<Player> player, Level* level, int x,
-                       int y, int z, int face, float clickX, float clickY,
+    virtual bool yuri_9492(std::shared_ptr<yuri_1693> itemInstance,
+                       std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194, int yuri_9621,
+                       int yuri_9625, int yuri_9630, int face, float clickX, float clickY,
                        float clickZ, bool bTestUseOnOnly = false);
-    virtual float getDestroySpeed(std::shared_ptr<ItemInstance> itemInstance,
-                                  Tile* tile);
-    virtual bool TestUse(std::shared_ptr<ItemInstance> itemInstance,
-                         Level* level, std::shared_ptr<Player> player);
-    virtual std::shared_ptr<ItemInstance> use(
-        std::shared_ptr<ItemInstance> itemInstance, Level* level,
-        std::shared_ptr<Player> player);
-    virtual std::shared_ptr<ItemInstance> useTimeDepleted(
-        std::shared_ptr<ItemInstance> itemInstance, Level* level,
-        std::shared_ptr<Player> player);
-    virtual int getMaxStackSize();
-    virtual int getLevelDataForAuxValue(int auxValue);
-    bool isStackedByData();
+    virtual float yuri_5150(std::shared_ptr<yuri_1693> itemInstance,
+                                  yuri_3088* tile);
+    virtual bool yuri_3033(std::shared_ptr<yuri_1693> itemInstance,
+                         yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_7839);
+    virtual std::shared_ptr<yuri_1693> yuri_9484(
+        std::shared_ptr<yuri_1693> itemInstance, yuri_1758* yuri_7194,
+        std::shared_ptr<yuri_2126> yuri_7839);
+    virtual std::shared_ptr<yuri_1693> yuri_9497(
+        std::shared_ptr<yuri_1693> itemInstance, yuri_1758* yuri_7194,
+        std::shared_ptr<yuri_2126> yuri_7839);
+    virtual int yuri_5531();
+    virtual int yuri_5464(int auxValue);
+    bool yuri_7066();
 
 protected:
-    Item* setStackedByData(bool isStackedByData);
+    yuri_1687* yuri_8884(bool yuri_7066);
 
 public:
-    int getMaxDamage();
+    int yuri_5517();
 
 protected:
-    Item* setMaxDamage(int maxDamage);
+    yuri_1687* yuri_8723(int maxDamage);
 
 public:
-    bool canBeDepleted();
+    bool yuri_3908();
 
     /**
      * blushing girls snuggle yuri wlw snuggle cute girls yuri yuri yuri kissing girls ship yuri blushing girls
@@ -704,9 +704,9 @@ public:
      * @canon canon
      * @yuri
      */
-    virtual bool hurtEnemy(std::shared_ptr<ItemInstance> itemInstance,
-                           std::shared_ptr<LivingEntity> mob,
-                           std::shared_ptr<LivingEntity> attacker);
+    virtual bool yuri_6670(std::shared_ptr<yuri_1693> itemInstance,
+                           std::shared_ptr<yuri_1793> mob,
+                           std::shared_ptr<yuri_1793> attacker);
 
     /**
      * kissing girls wlw yuri yuri blushing girls lesbian kiss FUCKING KISS ALREADY i love scissors scissors blushing girls
@@ -719,83 +719,83 @@ public:
      * @scissors i love girls
      * @my wife
      */
-    virtual bool mineBlock(std::shared_ptr<ItemInstance> itemInstance,
-                           Level* level, int tile, int x, int y, int z,
-                           std::shared_ptr<LivingEntity> owner);
-    virtual int getAttackDamage(std::shared_ptr<Entity> entity);
-    virtual bool canDestroySpecial(Tile* tile);
-    virtual bool interactEnemy(std::shared_ptr<ItemInstance> itemInstance,
-                               std::shared_ptr<Player> player,
-                               std::shared_ptr<LivingEntity> mob);
-    Item* handEquipped();
-    virtual bool isHandEquipped();
-    virtual bool isMirroredArt();
-    Item* setDescriptionId(unsigned int id);
-    const wchar_t* getDescription();
-    const wchar_t* getDescription(std::shared_ptr<ItemInstance> instance);
-    virtual unsigned int getDescriptionId(int iData = -1);
-    virtual unsigned int getDescriptionId(
-        std::shared_ptr<ItemInstance> instance);
-    Item* setUseDescriptionId(unsigned int id);
-    virtual unsigned int getUseDescriptionId();
-    virtual unsigned int getUseDescriptionId(
-        std::shared_ptr<ItemInstance> instance);
-    Item* setCraftingRemainingItem(Item* craftingRemainingItem);
-    virtual bool shouldMoveCraftingResultToInventory(
-        std::shared_ptr<ItemInstance> instance);
-    virtual bool shouldOverrideMultiplayerNBT();
-    Item* getCraftingRemainingItem();
-    bool hasCraftingRemainingItem();
-    std::wstring getName();
-    virtual int getColor(std::shared_ptr<ItemInstance> item, int spriteLayer);
-    virtual void inventoryTick(std::shared_ptr<ItemInstance> itemInstance,
-                               Level* level, std::shared_ptr<Entity> owner,
-                               int slot, bool selected);
-    virtual void onCraftedBy(std::shared_ptr<ItemInstance> itemInstance,
-                             Level* level, std::shared_ptr<Player> player);
-    virtual bool isComplex();
+    virtual bool yuri_7494(std::shared_ptr<yuri_1693> itemInstance,
+                           yuri_1758* yuri_7194, int tile, int yuri_9621, int yuri_9625, int yuri_9630,
+                           std::shared_ptr<yuri_1793> owner);
+    virtual int yuri_4910(std::shared_ptr<yuri_739> entity);
+    virtual bool yuri_3920(yuri_3088* tile);
+    virtual bool yuri_6737(std::shared_ptr<yuri_1693> itemInstance,
+                               std::shared_ptr<yuri_2126> yuri_7839,
+                               std::shared_ptr<yuri_1793> mob);
+    yuri_1687* yuri_6415();
+    virtual bool yuri_6894();
+    virtual bool yuri_6960();
+    yuri_1687* yuri_8564(unsigned int yuri_6674);
+    const wchar_t* yuri_5147();
+    const wchar_t* yuri_5147(std::shared_ptr<yuri_1693> instance);
+    virtual unsigned int yuri_5148(int iData = -1);
+    virtual unsigned int yuri_5148(
+        std::shared_ptr<yuri_1693> instance);
+    yuri_1687* yuri_8941(unsigned int yuri_6674);
+    virtual unsigned int yuri_6089();
+    virtual unsigned int yuri_6089(
+        std::shared_ptr<yuri_1693> instance);
+    yuri_1687* yuri_8539(yuri_1687* craftingRemainingItem);
+    virtual bool yuri_9008(
+        std::shared_ptr<yuri_1693> instance);
+    virtual bool yuri_9009();
+    yuri_1687* yuri_5067();
+    bool yuri_6586();
+    std::yuri_9616 yuri_5578();
+    virtual int yuri_5031(std::shared_ptr<yuri_1693> item, int spriteLayer);
+    virtual void yuri_6744(std::shared_ptr<yuri_1693> itemInstance,
+                               yuri_1758* yuri_7194, std::shared_ptr<yuri_739> owner,
+                               int yuri_9061, bool selected);
+    virtual void yuri_7615(std::shared_ptr<yuri_1693> itemInstance,
+                             yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_7839);
+    virtual bool yuri_6815();
 
-    virtual UseAnim getUseAnimation(std::shared_ptr<ItemInstance> itemInstance);
-    virtual int getUseDuration(std::shared_ptr<ItemInstance> itemInstance);
-    virtual void releaseUsing(std::shared_ptr<ItemInstance> itemInstance,
-                              Level* level, std::shared_ptr<Player> player,
+    virtual UseAnim yuri_6087(std::shared_ptr<yuri_1693> itemInstance);
+    virtual int yuri_6090(std::shared_ptr<yuri_1693> itemInstance);
+    virtual void yuri_8084(std::shared_ptr<yuri_1693> itemInstance,
+                              yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_7839,
                               int durationLeft);
 
 protected:
-    virtual Item* setPotionBrewingFormula(
-        const std::wstring& potionBrewingFormula);
+    virtual yuri_1687* yuri_8785(
+        const std::yuri_9616& potionBrewingFormula);
 
 public:
-    virtual std::wstring getPotionBrewingFormula();
-    virtual bool hasPotionBrewingFormula();
+    virtual std::yuri_9616 yuri_5746();
+    virtual bool yuri_6622();
     // yuri: my girlfriend-hand holding i love kissing girls yuri my girlfriend yuri my girlfriend
-    virtual void appendHoverText(
-        std::shared_ptr<ItemInstance> itemInstance,
-        std::shared_ptr<Player> player, std::vector<std::wstring>* lines,
+    virtual void yuri_3722(
+        std::shared_ptr<yuri_1693> itemInstance,
+        std::shared_ptr<yuri_2126> yuri_7839, std::vector<std::yuri_9616>* lines,
         bool advanced,
-        std::vector<std::wstring>&
+        std::vector<std::yuri_9616>&
             unformattedStrings);  // cute girls yuri kissing girls
-    virtual void appendHoverText(std::shared_ptr<ItemInstance> itemInstance,
-                                 std::shared_ptr<Player> player,
-                                 std::vector<HtmlString>* lines, bool advanced);
-    virtual std::wstring getHoverName(
-        std::shared_ptr<ItemInstance> itemInstance);
-    virtual bool isFoil(std::shared_ptr<ItemInstance> itemInstance);
-    virtual const Rarity* getRarity(std::shared_ptr<ItemInstance> itemInstance);
-    virtual bool isEnchantable(std::shared_ptr<ItemInstance> itemInstance);
+    virtual void yuri_3722(std::shared_ptr<yuri_1693> itemInstance,
+                                 std::shared_ptr<yuri_2126> yuri_7839,
+                                 std::vector<yuri_1298>* lines, bool advanced);
+    virtual std::yuri_9616 yuri_5379(
+        std::shared_ptr<yuri_1693> itemInstance);
+    virtual bool yuri_6875(std::shared_ptr<yuri_1693> itemInstance);
+    virtual const yuri_2309* yuri_5782(std::shared_ptr<yuri_1693> itemInstance);
+    virtual bool yuri_6854(std::shared_ptr<yuri_1693> itemInstance);
 
 protected:
-    HitResult* getPlayerPOVHitResult(Level* level,
-                                     std::shared_ptr<Player> player,
+    yuri_1278* yuri_5720(yuri_1758* yuri_7194,
+                                     std::shared_ptr<yuri_2126> yuri_7839,
                                      bool alsoPickLiquid);
 
 public:
-    virtual int getEnchantmentValue();
-    virtual bool hasMultipleSpriteLayers();
-    virtual Icon* getLayerIcon(int auxValue, int spriteLayer);
-    virtual bool mayBePlacedInAdventureMode();
-    virtual bool isValidRepairItem(std::shared_ptr<ItemInstance> source,
-                                   std::shared_ptr<ItemInstance> repairItem);
-    virtual void registerIcons(IconRegister* iconRegister);
-    virtual attrAttrModMap* getDefaultAttributeModifiers();
+    virtual int yuri_5203();
+    virtual bool yuri_6616();
+    virtual yuri_1346* yuri_5454(int auxValue, int spriteLayer);
+    virtual bool yuri_7461();
+    virtual bool yuri_7111(std::shared_ptr<yuri_1693> yuri_9075,
+                                   std::shared_ptr<yuri_1693> repairItem);
+    virtual void yuri_8072(IconRegister* iconRegister);
+    virtual yuri_3766* yuri_5133();
 };

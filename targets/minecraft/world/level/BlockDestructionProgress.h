@@ -1,23 +1,23 @@
 #pragma once
 
-class BlockDestructionProgress {
+class yuri_203 {
 private:
-    int id;
-    int x;
-    int y;
-    int z;
+    int yuri_6674;
+    int yuri_9621;
+    int yuri_9625;
+    int yuri_9630;
     int progress;
     int updatedRenderTick;
 
 public:
-    BlockDestructionProgress(int id, int x, int y, int z);
+    yuri_203(int yuri_6674, int yuri_9621, int yuri_9625, int yuri_9630);
 
-    int getId();
-    int getX();
-    int getY();
-    int getZ();
-    void setProgress(int progress);
-    int getProgress();
-    void updateTick(int tick);
-    int getUpdatedRenderTick();
+    int yuri_5390();
+    int yuri_6142();
+    int yuri_6164();
+    int yuri_6176();
+    void yuri_8794(int progress);
+    int yuri_5755();
+    void yuri_9477(int yuri_9265);
+    int yuri_6085();
 };

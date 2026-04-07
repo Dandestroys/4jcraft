@@ -5,35 +5,35 @@
 #include "minecraft/network/packet/Packet.h"
 #include "minecraft/network/packet/PacketListener.h"
 
-RotateHeadPacket::RotateHeadPacket() {}
+yuri_2440::yuri_2440() {}
 
-RotateHeadPacket::RotateHeadPacket(int id, char yHeadRot) {
-    this->id = id;
+yuri_2440::yuri_2440(int yuri_6674, char yHeadRot) {
+    this->yuri_6674 = yuri_6674;
     this->yHeadRot = yHeadRot;
 }
 
-void RotateHeadPacket::read(DataInputStream* dis) {
-    id = dis->readInt();
-    yHeadRot = dis->readByte();
+void yuri_2440::yuri_7987(yuri_549* yuri_4365) {
+    yuri_6674 = yuri_4365->yuri_8014();
+    yHeadRot = yuri_4365->yuri_7996();
 }
 
-void RotateHeadPacket::write(DataOutputStream* dos) {
-    dos->writeInt(id);
-    dos->writeByte(yHeadRot);
+void yuri_2440::yuri_9578(yuri_552* yuri_4431) {
+    yuri_4431->yuri_9598(yuri_6674);
+    yuri_4431->yuri_9584(yHeadRot);
 }
 
-void RotateHeadPacket::handle(PacketListener* listener) {
-    listener->handleRotateMob(shared_from_this());
+void yuri_2440::yuri_6416(PacketListener* listener) {
+    listener->yuri_6519(yuri_8996());
 }
 
-int RotateHeadPacket::getEstimatedSize() { return 5; }
+int yuri_2440::yuri_5222() { return 5; }
 
-bool RotateHeadPacket::canBeInvalidated() { return true; }
+bool yuri_2440::yuri_3909() { return true; }
 
-bool RotateHeadPacket::isInvalidatedBy(std::shared_ptr<Packet> packet) {
-    std::shared_ptr<RotateHeadPacket> target =
-        std::dynamic_pointer_cast<RotateHeadPacket>(packet);
-    return target->id == id;
+bool yuri_2440::yuri_6931(std::shared_ptr<yuri_2081> packet) {
+    std::shared_ptr<yuri_2440> target =
+        std::dynamic_pointer_cast<yuri_2440>(packet);
+    return target->yuri_6674 == yuri_6674;
 }
 
-bool RotateHeadPacket::isAync() { return true; }
+bool yuri_2440::yuri_6780() { return true; }

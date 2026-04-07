@@ -2,12 +2,12 @@
 
 #include "minecraft/world/Container.h"
 
-class Level;
+class yuri_1758;
 
-class Hopper : public virtual Container {
+class Hopper : public virtual yuri_436 {
 public:
-    virtual Level* getLevel() = 0;
-    virtual double getLevelX() = 0;
-    virtual double getLevelY() = 0;
-    virtual double getLevelZ() = 0;
+    virtual yuri_1758* yuri_5461() = 0;
+    virtual double yuri_5478() = 0;
+    virtual double yuri_5479() = 0;
+    virtual double yuri_5480() = 0;
 };

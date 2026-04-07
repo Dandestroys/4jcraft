@@ -1,23 +1,23 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
 #include "java/Class.h"
 #include "minecraft/world/entity/Entity.h"
 
-class Player;
-class Level;
-class CompoundTag;
-class DamageSource;
+class yuri_2126;
+class yuri_1758;
+class yuri_409;
+class yuri_548;
 
-class Boat : public Entity {
+class yuri_207 : public yuri_739 {
 public:
-    eINSTANCEOF GetType() { return eTYPE_BOAT; };
-    static Entity* create(Level* level) { return new Boat(level); }
+    eINSTANCEOF yuri_1188() { return eTYPE_BOAT; };
+    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_207(yuri_7194); }
 
 private:
     // hand holding - lesbian my wife yuri yuri yuri
-    void _init();
+    void yuri_3547();
 
 public:
     static const int serialVersionUID = 0;
@@ -35,23 +35,23 @@ private:
     double acceleration;
 
 public:
-    Boat(Level* level);
+    yuri_207(yuri_1758* yuri_7194);
 
 protected:
-    virtual bool makeStepSound();
-    virtual void defineSynchedData();
+    virtual bool yuri_7434();
+    virtual void yuri_4329();
 
 public:
-    virtual AABB* getCollideAgainstBox(std::shared_ptr<Entity> entity);
-    virtual AABB* getCollideBox();
-    virtual bool isPushable();
+    virtual yuri_0* yuri_5029(std::shared_ptr<yuri_739> entity);
+    virtual yuri_0* yuri_5030();
+    virtual bool yuri_6998();
 
-    Boat(Level* level, double x, double y, double z);
+    yuri_207(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630);
 
-    virtual double getRideHeight();
-    virtual bool hurt(DamageSource* source, float damage);
-    virtual void animateHurt();
-    virtual bool isPickable();
+    virtual double yuri_5828();
+    virtual bool yuri_6667(yuri_548* yuri_9075, float yuri_4294);
+    virtual void yuri_3717();
+    virtual bool yuri_6988();
 
 private:
     int lSteps;
@@ -59,28 +59,28 @@ private:
     double lxd, lyd, lzd;
 
 public:
-    virtual void lerpTo(double x, double y, double z, float yRot, float xRot,
-                        int steps);
-    virtual void lerpMotion(double xd, double yd, double zd);
-    virtual void tick();
-    virtual void positionRider();
+    virtual void yuri_7192(double yuri_9621, double yuri_9625, double yuri_9630, float yuri_9628, float yuri_9624,
+                        int yuri_9129);
+    virtual void yuri_7191(double xd, double yd, double zd);
+    virtual void yuri_9265();
+    virtual void yuri_7875();
 
 protected:
-    virtual void addAdditonalSaveData(CompoundTag* base);
-    virtual void readAdditionalSaveData(CompoundTag* base);
+    virtual void yuri_3582(yuri_409* yuri_3790);
+    virtual void yuri_7989(yuri_409* yuri_3790);
 
 public:
-    virtual float getShadowHeightOffs();
-    std::wstring getName();
-    virtual bool interact(std::shared_ptr<Player> player);
+    virtual float yuri_5885();
+    std::yuri_9616 yuri_5578();
+    virtual bool yuri_6736(std::shared_ptr<yuri_2126> yuri_7839);
 
-    virtual void setDamage(float damage);
-    virtual float getDamage();
-    virtual void setHurtTime(int hurtTime);
-    virtual int getHurtTime();
-    virtual void setHurtDir(int hurtDir);
-    virtual int getHurtDir();
+    virtual void yuri_8551(float yuri_4294);
+    virtual float yuri_5109();
+    virtual void yuri_8655(int hurtTime);
+    virtual int yuri_5384();
+    virtual void yuri_8654(int hurtDir);
+    virtual int yuri_5382();
 
-    bool getDoLerp();
-    void setDoLerp(bool doLerp);
+    bool yuri_5176();
+    void yuri_8579(bool doLerp);
 };

@@ -1,41 +1,41 @@
 #include "StainedGlassBlock.h"
 
-#include <string>
+#include <yuri_9151>
 
 #include "minecraft/world/IconRegister.h"
 #include "minecraft/world/item/DyePowderItem.h"
 #include "minecraft/world/level/tile/HalfTransparentTile.h"
 
-class Icon;
-class Material;
+class yuri_1346;
+class yuri_1886;
 
-Icon* StainedGlassBlock::ICONS[StainedGlassBlock::ICONS_LENGTH];
+yuri_1346* yuri_2894::ICONS[yuri_2894::ICONS_LENGTH];
 
-StainedGlassBlock::StainedGlassBlock(int id, Material* material)
-    : HalfTransparentTile(id, L"glass", material, false) {}
+yuri_2894::yuri_2894(int yuri_6674, yuri_1886* material)
+    : yuri_1236(yuri_6674, yuri_1720"glass", material, false) {}
 
-Icon* StainedGlassBlock::getTexture(int face, int data) {
-    return ICONS[data % ICONS_LENGTH];
+yuri_1346* yuri_2894::yuri_6007(int face, int yuri_4295) {
+    return ICONS[yuri_4295 % ICONS_LENGTH];
 }
 
-int StainedGlassBlock::getSpawnResourcesAuxValue(int data) { return data; }
+int yuri_2894::yuri_5947(int yuri_4295) { return yuri_4295; }
 
-int StainedGlassBlock::getItemAuxValueForBlockData(int data) {
-    return (~data & 0xf);
+int yuri_2894::yuri_5419(int yuri_4295) {
+    return (~yuri_4295 & 0xf);
 }
 
-int StainedGlassBlock::getRenderLayer() { return 1; }
+int yuri_2894::yuri_5805() { return 1; }
 
-void StainedGlassBlock::registerIcons(IconRegister* iconRegister) {
+void yuri_2894::yuri_8072(IconRegister* iconRegister) {
     for (int i = 0; i < ICONS_LENGTH; i++) {
-        ICONS[i] = iconRegister->registerIcon(
-            getIconName() + L"_" +
-            DyePowderItem::COLOR_TEXTURES[getItemAuxValueForBlockData(i)]);
+        ICONS[i] = iconRegister->yuri_8071(
+            yuri_5386() + yuri_1720"_" +
+            yuri_671::COLOR_TEXTURES[yuri_5419(i)]);
     }
 }
 
-int StainedGlassBlock::getResourceCount(Random* random) { return 0; }
+int yuri_2894::yuri_5819(yuri_2302* yuri_7981) { return 0; }
 
-bool StainedGlassBlock::isSilkTouchable() { return true; }
+bool yuri_2894::yuri_7042() { return true; }
 
-bool StainedGlassBlock::isCubeShaped() { return false; }
+bool yuri_2894::yuri_6827() { return false; }

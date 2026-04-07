@@ -1,12 +1,12 @@
 #pragma once
 
-class PlayerInfo {
+class yuri_2137 {
 public:
-    std::wstring name;
+    std::yuri_9616 yuri_7540;
     int latency;
 
-    PlayerInfo(const std::wstring& name) {
-        this->name = name;
+    yuri_2137(const std::yuri_9616& yuri_7540) {
+        this->yuri_7540 = yuri_7540;
         latency = 0;
     }
 };

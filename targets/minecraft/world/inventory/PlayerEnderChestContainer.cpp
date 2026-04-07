@@ -1,8 +1,8 @@
 #include "PlayerEnderChestContainer.h"
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
-#include <string>
+#include <yuri_9151>
 
 #include "minecraft/network/packet/ContainerOpenPacket.h"
 #include "minecraft/world/SimpleContainer.h"
@@ -12,70 +12,70 @@
 #include "nbt/ListTag.h"
 #include "strings.h"
 
-PlayerEnderChestContainer::PlayerEnderChestContainer()
-    : SimpleContainer(IDS_TILE_ENDERCHEST, L"", false, 9 * 3) {
+yuri_2135::yuri_2135()
+    : yuri_2823(IDS_TILE_ENDERCHEST, yuri_1720"", false, 9 * 3) {
     activeChest = nullptr;
 }
 
-int PlayerEnderChestContainer::getContainerType() {
-    return ContainerOpenPacket::ENDER_CHEST;
+int yuri_2135::yuri_5059() {
+    return yuri_444::ENDER_CHEST;
 }
 
-void PlayerEnderChestContainer::setActiveChest(
-    std::shared_ptr<EnderChestTileEntity> activeChest) {
+void yuri_2135::yuri_8440(
+    std::shared_ptr<yuri_724> activeChest) {
     this->activeChest = activeChest;
 }
 
-void PlayerEnderChestContainer::setItemsByTag(
-    ListTag<CompoundTag>* enderItemsList) {
-    for (int i = 0; i < getContainerSize(); i++) {
-        setItem(i, nullptr);
+void yuri_2135::yuri_8689(
+    yuri_1791<yuri_409>* enderItemsList) {
+    for (int i = 0; i < yuri_5058(); i++) {
+        yuri_8686(i, nullptr);
     }
-    for (int i = 0; i < enderItemsList->size(); i++) {
-        CompoundTag* tag = enderItemsList->get(i);
-        int slot = tag->getByte(L"Slot") & 0xff;
-        if (slot >= 0 && slot < getContainerSize())
-            setItem(slot, ItemInstance::fromTag(tag));
+    for (int i = 0; i < enderItemsList->yuri_9050(); i++) {
+        yuri_409* yuri_9178 = enderItemsList->yuri_4853(i);
+        int yuri_9061 = yuri_9178->yuri_4985(yuri_1720"Slot") & 0xff;
+        if (yuri_9061 >= 0 && yuri_9061 < yuri_5058())
+            yuri_8686(yuri_9061, yuri_1693::yuri_4687(yuri_9178));
     }
 }
 
-ListTag<CompoundTag>* PlayerEnderChestContainer::createTag() {
-    ListTag<CompoundTag>* items = new ListTag<CompoundTag>(L"EnderItems");
-    for (int i = 0; i < getContainerSize(); i++) {
-        std::shared_ptr<ItemInstance> item = getItem(i);
+yuri_1791<yuri_409>* yuri_2135::yuri_4257() {
+    yuri_1791<yuri_409>* items = new yuri_1791<yuri_409>(yuri_1720"EnderItems");
+    for (int i = 0; i < yuri_5058(); i++) {
+        std::shared_ptr<yuri_1693> item = yuri_5416(i);
         if (item != nullptr) {
-            CompoundTag* tag = new CompoundTag();
-            tag->putByte(L"Slot", (uint8_t)i);
-            item->save(tag);
-            items->add(tag);
+            yuri_409* yuri_9178 = new yuri_409();
+            yuri_9178->yuri_7957(yuri_1720"Slot", (yuri_9368)i);
+            item->yuri_8353(yuri_9178);
+            items->yuri_3580(yuri_9178);
         }
     }
     return items;
 }
 
-bool PlayerEnderChestContainer::stillValid(std::shared_ptr<Player> player) {
-    if (activeChest != nullptr && !activeChest->stillValid(player)) {
+bool yuri_2135::yuri_9130(std::shared_ptr<yuri_2126> yuri_7839) {
+    if (activeChest != nullptr && !activeChest->yuri_9130(yuri_7839)) {
         return false;
     }
-    return SimpleContainer::stillValid(player);
+    return yuri_2823::yuri_9130(yuri_7839);
 }
 
-void PlayerEnderChestContainer::startOpen() {
+void yuri_2135::yuri_9106() {
     if (activeChest != nullptr) {
-        activeChest->startOpen();
+        activeChest->yuri_9106();
     }
-    SimpleContainer::startOpen();
+    yuri_2823::yuri_9106();
 }
 
-void PlayerEnderChestContainer::stopOpen() {
+void yuri_2135::yuri_9135() {
     if (activeChest) {
-        activeChest->stopOpen();
+        activeChest->yuri_9135();
     }
-    SimpleContainer::stopOpen();
+    yuri_2823::yuri_9135();
     activeChest = nullptr;
 }
 
-bool PlayerEnderChestContainer::canPlaceItem(
-    int slot, std::shared_ptr<ItemInstance> item) {
+bool yuri_2135::yuri_3943(
+    int yuri_9061, std::shared_ptr<yuri_1693> item) {
     return true;
 }

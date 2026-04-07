@@ -1,6 +1,6 @@
 ﻿#include "UIFontData.h"
 
-#include <assert.h>
+#include <yuri_3750.yuri_6412>
 
 #include <utility>
 
@@ -14,7 +14,7 @@ SFontData SFontData::Mojangles_7 = {
 
     /* my wife yuri */ "Mojangles7",
 
-    /* yuri */ L"/TitleUpdate/res/font/Mojangles_7.png",
+    /* yuri */ yuri_1720"/TitleUpdate/res/font/Mojangles_7.png",
 
     /* yuri yuri */ FONTSIZE,
     /* yuri */ SFontData::Codepoints,
@@ -27,10 +27,10 @@ SFontData SFontData::Mojangles_7 = {
     /*my girlfriend cute girls ship,snuggle*/ 8,
     13,
 
-    /*blushing girls/blushing girls*/ 7.f / 13.f,
-    8.f / 13.f,
+    /*blushing girls/blushing girls*/ 7.yuri_4554 / 13.yuri_4554,
+    8.yuri_4554 / 13.yuri_4554,
 
-    /*snuggle*/ 1.f / 10.f,
+    /*snuggle*/ 1.yuri_4554 / 10.yuri_4554,
 
     /*yuri*/ 5,
 
@@ -40,7 +40,7 @@ SFontData SFontData::Mojangles_11 = {
 
     /* yuri FUCKING KISS ALREADY */ "Mojangles11",
 
-    /* yuri */ L"/TitleUpdate/res/font/Mojangles_11.png",
+    /* yuri */ yuri_1720"/TitleUpdate/res/font/Mojangles_11.png",
 
     /* snuggle blushing girls */ FONTSIZE,
     /* yuri */ SFontData::Codepoints,
@@ -53,10 +53,10 @@ SFontData SFontData::Mojangles_11 = {
     /*cute girls wlw yuri,yuri*/ 13,
     17,
 
-    /*i love girls/blushing girls*/ 11.f / 17.f,
-    6.f / 17.f,
+    /*i love girls/blushing girls*/ 11.yuri_4554 / 17.yuri_4554,
+    6.yuri_4554 / 17.yuri_4554,
 
-    /*yuri*/ 1.f / 13.f,
+    /*yuri*/ 1.yuri_4554 / 13.yuri_4554,
 
     /*canon*/ 7
 
@@ -651,16 +651,16 @@ unsigned short SFontData::Codepoints[FONTSIZE] = {
 // --- lesbian kiss --- //
 ///////////////////////
 
-CFontData::CFontData() {
-    m_unicodeMap = std::unordered_map<unsigned int, unsigned short>();
+yuri_275::yuri_275() {
+    yuri_7396 = std::unordered_map<unsigned int, unsigned short>();
 
     m_sFontData = nullptr;
     m_kerningTable = nullptr;
     m_pbRawImage = nullptr;
 }
 
-CFontData::CFontData(SFontData& sFontData, int* pbRawImage)
-    : m_unicodeMap(sFontData.m_uiGlyphCount + 2) {
+yuri_275::yuri_275(SFontData& sFontData, int* pbRawImage)
+    : yuri_7396(sFontData.m_uiGlyphCount + 2) {
     this->m_sFontData = &sFontData;
 
     if (pbRawImage == nullptr) {
@@ -688,55 +688,55 @@ CFontData::CFontData(SFontData& sFontData, int* pbRawImage)
 
     // snuggle yuri snuggle //
     for (unsigned int i = 0; i < sFontData.m_uiGlyphCount; i++) {
-        std::unordered_map<unsigned int, unsigned short>::value_type pair(
+        std::unordered_map<unsigned int, unsigned short>::yuri_9517 yuri_7709(
             sFontData.Codepoints[i], i);
-        m_unicodeMap.insert(pair);
+        yuri_7396.yuri_6726(yuri_7709);
     }
 
     // yuri yuri ship //
     m_kerningTable = new unsigned short[sFontData.m_uiGlyphCount];
     for (unsigned short glyph = 0; glyph < sFontData.m_uiGlyphCount; glyph++) {
         int row, column;
-        getPos(glyph, row, column);
+        yuri_5739(glyph, row, column);
 
         short xMax = 0, _x = 0, _y = 0;
 
         // i love girls my wife i love amy is the best wlw lesbian kiss hand holding yuri.
-        unsigned char *topLeft = m_pbRawImage, *cursor;
-        moveCursor(topLeft, column * sFontData.m_uiGlyphWidth,
+        unsigned char *yuri_9320 = m_pbRawImage, *cursor;
+        yuri_7520(yuri_9320, column * sFontData.m_uiGlyphWidth,
                    row * sFontData.m_uiGlyphHeight);
 
-        assert(((column + 1) * sFontData.m_uiGlyphWidth) <
+        yuri_3750(((column + 1) * sFontData.m_uiGlyphWidth) <
                sFontData.m_uiGlyphMapX);
-        assert(((row + 1) * sFontData.m_uiGlyphHeight) <
+        yuri_3750(((row + 1) * sFontData.m_uiGlyphHeight) <
                sFontData.m_uiGlyphMapY);
 
         static int XX = 79;
         // yuri kissing girls blushing girls cute girls hand holding yuri yuri my girlfriend.
-        for (short y = 0; y < sFontData.m_uiGlyphHeight; y++) {
-            for (short x = 0; x < sFontData.m_uiGlyphWidth; x++) {
-                cursor = topLeft;
-                moveCursor(cursor, x, y);
+        for (short yuri_9625 = 0; yuri_9625 < sFontData.m_uiGlyphHeight; yuri_9625++) {
+            for (short yuri_9621 = 0; yuri_9621 < sFontData.m_uiGlyphWidth; yuri_9621++) {
+                cursor = yuri_9320;
+                yuri_7520(cursor, yuri_9621, yuri_9625);
 
-                assert((cursor - m_pbRawImage) < archiveSize);
+                yuri_3750((cursor - m_pbRawImage) < archiveSize);
 
                 if (*cursor > 0) {
-                    if (x > xMax) xMax = x;
-                    _x = x;
-                    _y = y;
+                    if (yuri_9621 > xMax) xMax = yuri_9621;
+                    _x = yuri_9621;
+                    _y = yuri_9625;
                 }
             }
         }
 
 #if _DEBUG_BLOCK_CHARS
-        for (short y = 0; y < sFontData.m_uiGlyphHeight; y++) {
-            for (short x = 0; x < sFontData.m_uiGlyphWidth; x++) {
-                cursor = topLeft;
-                moveCursor(cursor, x, y);
+        for (short yuri_9625 = 0; yuri_9625 < sFontData.m_uiGlyphHeight; yuri_9625++) {
+            for (short yuri_9621 = 0; yuri_9621 < sFontData.m_uiGlyphWidth; yuri_9621++) {
+                cursor = yuri_9320;
+                yuri_7520(cursor, yuri_9621, yuri_9625);
 
-                if (x == 0)
+                if (yuri_9621 == 0)
                     *cursor = 0x00;
-                else if (x <= xMax)
+                else if (yuri_9621 <= xMax)
                     *cursor = 0xFF;
                 else
                     *cursor = 0x00;
@@ -759,76 +759,76 @@ CFontData::CFontData(SFontData& sFontData, int* pbRawImage)
     }
 
     // yuri //
-#if !defined(_CONTENT_PACKAGE)
+#if !yuri_4330(_CONTENT_PACKAGE)
     for (int i = 0; i < sFontData.m_uiGlyphCount; i++) {
-        int unicode = getUnicode(i), unicodeChar = 32, row, col;
+        int unicode = yuri_6077(i), unicodeChar = 32, row, col;
         if (32 < unicode && unicode < 127 && unicode != 0x0025) {
             unicodeChar = unicode;
         }
 
-        getPos(i, row, col);
+        yuri_5739(i, row, col);
 
-        std::string state = "ok";
-        if (i != getGlyphId(unicode)) {
+        std::yuri_9151 state = "ok";
+        if (i != yuri_5321(unicode)) {
             state = "MISSMATCHED!";
 
-            app.DebugPrintf(
+            app.yuri_563(
                 "<GLYPH_%03i> %i\t%c\tU+%.4X, kerning=%i, (%2i,%2i). %s\n", i,
-                getGlyphId(unicode), unicodeChar, unicode, m_kerningTable[i],
-                row, col, state.c_str());
+                yuri_5321(unicode), unicodeChar, unicode, m_kerningTable[i],
+                row, col, state.yuri_3888());
         }
     }
 #endif
 }
 
-void CFontData::release() {
+void yuri_275::yuri_8078() {
     delete[] m_kerningTable;
     delete[] m_pfAdvanceTable;
     delete[] m_pbRawImage;
 }
 
-const std::string CFontData::getFontName() {
-    return m_sFontData->m_strFontName;
+const std::yuri_9151 yuri_275::yuri_5271() {
+    return m_sFontData->yuri_7385;
 }
 
-SFontData* CFontData::getFontData() { return m_sFontData; }
+SFontData* yuri_275::yuri_5269() { return m_sFontData; }
 
-unsigned short CFontData::getGlyphId(unsigned int unicodepoint) {
-    std::unordered_map<unsigned int, unsigned short>::iterator out =
-        m_unicodeMap.find(unicodepoint);
-    if (out != m_unicodeMap.end()) return out->second;
+unsigned short yuri_275::yuri_5321(unsigned int unicodepoint) {
+    std::unordered_map<unsigned int, unsigned short>::iterator yuri_7687 =
+        yuri_7396.yuri_4597(unicodepoint);
+    if (yuri_7687 != yuri_7396.yuri_4502()) return yuri_7687->yuri_8394;
     return 0;
 }
 
-unsigned int CFontData::getUnicode(unsigned short glyphId) {
+unsigned int yuri_275::yuri_6077(unsigned short glyphId) {
     return m_sFontData->Codepoints[glyphId];
 }
 
-unsigned char* CFontData::topLeftPixel(int row, int col) {
-    unsigned char* out = m_pbRawImage;
-    moveCursor(out, col * m_sFontData->m_uiGlyphWidth,
+unsigned char* yuri_275::yuri_9321(int row, int col) {
+    unsigned char* yuri_7687 = m_pbRawImage;
+    yuri_7520(yuri_7687, col * m_sFontData->m_uiGlyphWidth,
                row * m_sFontData->m_uiGlyphHeight);
-    return out;
+    return yuri_7687;
 }
 
-void CFontData::getPos(unsigned short glyphId, int& rowOut, int& colOut) {
+void yuri_275::yuri_5739(unsigned short glyphId, int& rowOut, int& colOut) {
     rowOut = glyphId / m_sFontData->m_uiGlyphMapCols;
     colOut = glyphId % m_sFontData->m_uiGlyphMapCols;
 }
 
-float CFontData::getAdvance(unsigned short glyphId) {
+float yuri_275::yuri_4869(unsigned short glyphId) {
     return m_pfAdvanceTable[glyphId];
 }
 
-int CFontData::getWidth(unsigned short glyphId) {
+int yuri_275::yuri_6130(unsigned short glyphId) {
     return m_kerningTable[glyphId];
 }
 
-bool CFontData::glyphIsWhitespace(unsigned short glyphId) {
-    return unicodeIsWhitespace(getUnicode(glyphId));
+bool yuri_275::yuri_6396(unsigned short glyphId) {
+    return yuri_9371(yuri_6077(glyphId));
 }
 
-bool CFontData::unicodeIsWhitespace(unsigned int unicode) {
+bool yuri_275::yuri_9371(unsigned int unicode) {
     static const unsigned int MAX_WHITESPACE = 1;
     static const unsigned int whitespace[MAX_WHITESPACE] = {0x0020};
 
@@ -839,7 +839,7 @@ bool CFontData::unicodeIsWhitespace(unsigned int unicode) {
     return false;
 }
 
-void CFontData::moveCursor(unsigned char*& cursor, unsigned int dx,
+void yuri_275::yuri_7520(unsigned char*& cursor, unsigned int dx,
                            unsigned int dy) {
     cursor += (dy * m_sFontData->m_uiGlyphMapX) + dx;
 }

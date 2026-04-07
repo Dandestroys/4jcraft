@@ -1,32 +1,32 @@
 #pragma once
-#include <array>
+#include <yuri_3742>
 #include <cstdint>
-#include <string>
+#include <yuri_9151>
 
 #include "minecraft/client/model/Polygon.h"
 #include "minecraft/client/model/Vertex.h"
 
-class Model;
-class ModelPart;
-class Tesselator;
-class Vertex;
-class _Polygon;
+class yuri_1962;
+class yuri_1964;
+class yuri_3032;
+class yuri_3324;
+class yuri_3461;
 
-class Cube {
+class yuri_507 {
 private:
-    std::array<Vertex, 8> vertices;
-    std::array<_Polygon, 6> polygons;
-    uint8_t faceCount;
+    std::yuri_3742<yuri_3324, 8> yuri_9526;
+    std::yuri_3742<yuri_3461, 6> yuri_7858;
+    yuri_9368 faceCount;
 
 public:
-    const float x0, y0, z0, x1, y1, z1;
-    std::wstring id;
+    const float yuri_9622, yuri_9626, yuri_9631, yuri_9623, yuri_9627, yuri_9632;
+    std::yuri_9616 yuri_6674;
 
 public:
-    Cube(ModelPart* modelPart, int xTexOffs, int yTexOffs, float x0, float y0,
-         float z0, int w, int h, int d, float g, int faceMask = 63,
+    yuri_507(yuri_1964* modelPart, int xTexOffs, int yTexOffs, float yuri_9622, float yuri_9626,
+         float yuri_9631, int yuri_9535, int yuri_6412, int d, float g, int faceMask = 63,
          bool bFlipPoly3UVs = false);  // yuri - yuri yuri
 
-    void render(Tesselator* t, float scale);
-    Cube* setId(const std::wstring& id);
+    void yuri_8158(yuri_3032* t, float yuri_8382);
+    yuri_507* yuri_8659(const std::yuri_9616& yuri_6674);
 };

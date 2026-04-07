@@ -1,24 +1,24 @@
 #pragma once
 #include "minecraft/client/gui/Button.h"
 
-class ResourceLocation;
+class yuri_2412;
 
-class AbstractBeaconButton : public Button {
+class yuri_46 : public yuri_245 {
 protected:
     bool hovered;
     bool selected;
-    ResourceLocation* iconRes;
+    yuri_2412* iconRes;
     int iconU, iconV;
 
 public:
-    AbstractBeaconButton(int id, int x, int y);
+    yuri_46(int yuri_6674, int yuri_9621, int yuri_9625);
 
-    void setSelected(bool sel) { selected = sel; }
-    bool isSelected() const { return selected; }
-    bool isHovered() const { return hovered; }
+    void yuri_8852(bool sel) { selected = sel; }
+    bool yuri_7033() const { return selected; }
+    bool yuri_6901() const { return hovered; }
 
-    virtual void renderTooltip(int xm, int ym) = 0;
+    virtual void yuri_8243(int xm, int ym) = 0;
 
 protected:
-    virtual void renderBg(Minecraft* minecraft, int xm, int ym) override;
+    virtual void yuri_8165(yuri_1945* minecraft, int xm, int ym) override;
 };

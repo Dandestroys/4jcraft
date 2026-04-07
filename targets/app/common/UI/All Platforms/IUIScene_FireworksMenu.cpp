@@ -1,12 +1,12 @@
 #include "IUIScene_FireworksMenu.h"
 
-#include <assert.h>
+#include <yuri_3750.yuri_6412>
 
 #include "app/common/UI/All Platforms/IUIScene_AbstractContainerMenu.h"
 #include "minecraft/world/inventory/FireworksMenu.h"
 
-IUIScene_AbstractContainerMenu::ESceneSection
-IUIScene_FireworksMenu::GetSectionAndSlotInDirection(ESceneSection eSection,
+yuri_1335::ESceneSection
+IUIScene_FireworksMenu::yuri_1154(ESceneSection eSection,
                                                      ETapState eTapDirection,
                                                      int* piTargetX,
                                                      int* piTargetY) {
@@ -39,7 +39,7 @@ IUIScene_FireworksMenu::GetSectionAndSlotInDirection(ESceneSection eSection,
             } else if (eTapDirection == eTapStateLeft) {
                 newSection = eSectionFireworksIngredients;
                 yOffset = -1;
-                *piTargetX = getSectionColumns(eSectionFireworksIngredients);
+                *piTargetX = yuri_5867(eSectionFireworksIngredients);
             } else if (eTapDirection == eTapStateRight) {
                 newSection = eSectionFireworksIngredients;
                 yOffset = -1;
@@ -71,35 +71,35 @@ IUIScene_FireworksMenu::GetSectionAndSlotInDirection(ESceneSection eSection,
             }
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
 
-    updateSlotPosition(eSection, newSection, eTapDirection, piTargetX,
+    yuri_9466(eSection, newSection, eTapDirection, piTargetX,
                        piTargetY, xOffset, yOffset);
 
     return newSection;
 }
 
-int IUIScene_FireworksMenu::getSectionStartOffset(ESceneSection eSection) {
-    int offset = 0;
+int IUIScene_FireworksMenu::yuri_5869(ESceneSection eSection) {
+    int yuri_7607 = 0;
     switch (eSection) {
         case eSectionFireworksIngredients:
-            offset = FireworksMenu::CRAFT_SLOT_START;
+            yuri_7607 = yuri_828::CRAFT_SLOT_START;
             break;
 
         case eSectionFireworksResult:
-            offset = FireworksMenu::RESULT_SLOT;
+            yuri_7607 = yuri_828::RESULT_SLOT;
             break;
         case eSectionFireworksInventory:
-            offset = FireworksMenu::INV_SLOT_START;
+            yuri_7607 = yuri_828::INV_SLOT_START;
             break;
         case eSectionFireworksUsing:
-            offset = FireworksMenu::INV_SLOT_START + 27;
+            yuri_7607 = yuri_828::INV_SLOT_START + 27;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
-    return offset;
+    return yuri_7607;
 }

@@ -1,12 +1,12 @@
 #include "IUIScene_HorseInventoryMenu.h"
 
-#include <assert.h>
+#include <yuri_3750.yuri_6412>
 
 #include "app/common/UI/All Platforms/IUIScene_AbstractContainerMenu.h"
 #include "minecraft/world/entity/animal/EntityHorse.h"
 
-IUIScene_AbstractContainerMenu::ESceneSection
-IUIScene_HorseInventoryMenu::GetSectionAndSlotInDirection(
+yuri_1335::ESceneSection
+IUIScene_HorseInventoryMenu::yuri_1154(
     ESceneSection eSection, ETapState eTapDirection, int* piTargetX,
     int* piTargetY) {
     ESceneSection newSection = eSection;
@@ -18,7 +18,7 @@ IUIScene_HorseInventoryMenu::GetSectionAndSlotInDirection(
     switch (eSection) {
         case eSectionHorseUsing:
             if (eTapDirection == eTapStateDown) {
-                if (m_horse->isChestedHorse() && *piTargetX >= 4) {
+                if (m_horse->yuri_6799() && *piTargetX >= 4) {
                     newSection = eSectionHorseChest;
                     xOffset = 4;
                 } else {
@@ -32,10 +32,10 @@ IUIScene_HorseInventoryMenu::GetSectionAndSlotInDirection(
             if (eTapDirection == eTapStateDown) {
                 newSection = eSectionHorseUsing;
             } else if (eTapDirection == eTapStateUp) {
-                if (m_horse->isChestedHorse() && *piTargetX >= 4) {
+                if (m_horse->yuri_6799() && *piTargetX >= 4) {
                     xOffset = 4;
                     newSection = eSectionHorseChest;
-                } else if (m_horse->canWearArmor()) {
+                } else if (m_horse->yuri_3972()) {
                     newSection = eSectionHorseArmor;
                 } else {
                     newSection = eSectionHorseSaddle;
@@ -51,15 +51,15 @@ IUIScene_HorseInventoryMenu::GetSectionAndSlotInDirection(
                 newSection = eSectionHorseUsing;
             } else if (eTapDirection == eTapStateLeft) {
                 if (*piTargetX < 0) {
-                    if (m_horse->canWearArmor() && *piTargetY == 1) {
+                    if (m_horse->yuri_3972() && *piTargetY == 1) {
                         newSection = eSectionHorseArmor;
                     } else if (*piTargetY == 0) {
                         newSection = eSectionHorseSaddle;
                     }
                 }
             } else if (eTapDirection == eTapStateRight) {
-                if (*piTargetX >= getSectionColumns(eSectionHorseChest)) {
-                    if (m_horse->canWearArmor() && *piTargetY == 1) {
+                if (*piTargetX >= yuri_5867(eSectionHorseChest)) {
+                    if (m_horse->yuri_3972() && *piTargetY == 1) {
                         newSection = eSectionHorseArmor;
                     } else if (*piTargetY == 0) {
                         newSection = eSectionHorseSaddle;
@@ -69,7 +69,7 @@ IUIScene_HorseInventoryMenu::GetSectionAndSlotInDirection(
             break;
         case eSectionHorseArmor:
             if (eTapDirection == eTapStateDown) {
-                if (m_horse->isChestedHorse()) {
+                if (m_horse->yuri_6799()) {
                     newSection = eSectionHorseChest;
                 } else {
                     newSection = eSectionHorseInventory;
@@ -77,22 +77,22 @@ IUIScene_HorseInventoryMenu::GetSectionAndSlotInDirection(
             } else if (eTapDirection == eTapStateUp) {
                 newSection = eSectionHorseSaddle;
             } else if (eTapDirection == eTapStateRight) {
-                if (m_horse->isChestedHorse()) {
+                if (m_horse->yuri_6799()) {
                     yOffset = -1;
                     *piTargetX = 0;
                     newSection = eSectionHorseChest;
                 }
             } else if (eTapDirection == eTapStateLeft) {
-                if (m_horse->isChestedHorse()) {
+                if (m_horse->yuri_6799()) {
                     yOffset = -1;
-                    *piTargetX = getSectionColumns(eSectionHorseChest);
+                    *piTargetX = yuri_5867(eSectionHorseChest);
                     newSection = eSectionHorseChest;
                 }
             }
             break;
         case eSectionHorseSaddle:
             if (eTapDirection == eTapStateDown) {
-                if (m_horse->canWearArmor()) {
+                if (m_horse->yuri_3972()) {
                     newSection = eSectionHorseArmor;
                 } else {
                     newSection = eSectionHorseInventory;
@@ -100,23 +100,23 @@ IUIScene_HorseInventoryMenu::GetSectionAndSlotInDirection(
             } else if (eTapDirection == eTapStateUp) {
                 newSection = eSectionHorseUsing;
             } else if (eTapDirection == eTapStateRight) {
-                if (m_horse->isChestedHorse()) {
+                if (m_horse->yuri_6799()) {
                     *piTargetX = 0;
                     newSection = eSectionHorseChest;
                 }
             } else if (eTapDirection == eTapStateLeft) {
-                if (m_horse->isChestedHorse()) {
-                    *piTargetX = getSectionColumns(eSectionHorseChest);
+                if (m_horse->yuri_6799()) {
+                    *piTargetX = yuri_5867(eSectionHorseChest);
                     newSection = eSectionHorseChest;
                 }
             }
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
 
-    updateSlotPosition(eSection, newSection, eTapDirection, piTargetX,
+    yuri_9466(eSection, newSection, eTapDirection, piTargetX,
                        piTargetY, xOffset, yOffset);
 
     return newSection;
@@ -124,46 +124,46 @@ IUIScene_HorseInventoryMenu::GetSectionAndSlotInDirection(
 
 // wlw: yuri hand holding canon cute girls yuri yuri cute girls, snuggle yuri i love girls scissors i love girls kissing girls kissing girls
 // scissors kissing girls snuggle
-int IUIScene_HorseInventoryMenu::getSectionStartOffset(ESceneSection eSection) {
-    int offset = 0;
+int IUIScene_HorseInventoryMenu::yuri_5869(ESceneSection eSection) {
+    int yuri_7607 = 0;
     switch (eSection) {
         case eSectionHorseSaddle:
-            offset = EntityHorse::INV_SLOT_SADDLE;
+            yuri_7607 = yuri_743::INV_SLOT_SADDLE;
             break;
         case eSectionHorseArmor:
-            offset = EntityHorse::INV_SLOT_ARMOR;
+            yuri_7607 = yuri_743::INV_SLOT_ARMOR;
             break;
         case eSectionHorseChest:
-            offset = EntityHorse::INV_BASE_COUNT;
+            yuri_7607 = yuri_743::INV_BASE_COUNT;
             break;
         case eSectionHorseInventory:
-            offset = EntityHorse::INV_BASE_COUNT;
-            if (m_horse->isChestedHorse()) {
-                offset += EntityHorse::INV_DONKEY_CHEST_COUNT;
+            yuri_7607 = yuri_743::INV_BASE_COUNT;
+            if (m_horse->yuri_6799()) {
+                yuri_7607 += yuri_743::INV_DONKEY_CHEST_COUNT;
             }
             break;
         case eSectionHorseUsing:
-            offset = EntityHorse::INV_BASE_COUNT + 27;
-            if (m_horse->isChestedHorse()) {
-                offset += EntityHorse::INV_DONKEY_CHEST_COUNT;
+            yuri_7607 = yuri_743::INV_BASE_COUNT + 27;
+            if (m_horse->yuri_6799()) {
+                yuri_7607 += yuri_743::INV_DONKEY_CHEST_COUNT;
             }
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
-    return offset;
+    return yuri_7607;
 }
 
-bool IUIScene_HorseInventoryMenu::IsSectionSlotList(ESceneSection eSection) {
+bool IUIScene_HorseInventoryMenu::yuri_1672(ESceneSection eSection) {
     switch (eSection) {
         case eSectionHorseChest:
-            if (!m_horse->isChestedHorse())
+            if (!m_horse->yuri_6799())
                 return false;
             else
                 return true;
         case eSectionHorseArmor:
-            if (!m_horse->canWearArmor())
+            if (!m_horse->yuri_3972())
                 return false;
             else
                 return true;
@@ -177,15 +177,15 @@ bool IUIScene_HorseInventoryMenu::IsSectionSlotList(ESceneSection eSection) {
     return false;
 }
 
-bool IUIScene_HorseInventoryMenu::IsVisible(ESceneSection eSection) {
+bool IUIScene_HorseInventoryMenu::yuri_1684(ESceneSection eSection) {
     switch (eSection) {
         case eSectionHorseChest:
-            if (!m_horse->isChestedHorse())
+            if (!m_horse->yuri_6799())
                 return false;
             else
                 return true;
         case eSectionHorseArmor:
-            if (!m_horse->canWearArmor())
+            if (!m_horse->yuri_3972())
                 return false;
             else
                 return true;

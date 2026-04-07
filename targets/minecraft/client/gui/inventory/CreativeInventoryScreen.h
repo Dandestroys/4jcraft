@@ -7,14 +7,14 @@
 #include "minecraft/client/multiplayer/MultiPlayerLocalPlayer.h"
 #include "minecraft/world/inventory/AbstractContainerMenu.h"
 
-class Player;
-class SimpleContainer;
-class Inventory;
-class Slot;
-class ItemInstance;
-class ItemRenderer;
+class yuri_2126;
+class yuri_2823;
+class yuri_1626;
+class yuri_2845;
+class yuri_1693;
+class yuri_1695;
 
-class CreativeInventoryScreen : public AbstractContainerScreen {
+class yuri_494 : public yuri_48 {
 private:
     static constexpr int ROWS = 5;
     static constexpr int COLUMNS = 9;
@@ -26,17 +26,17 @@ private:
 
     // snuggle yuri yuri cute girls yuri i love yuri cute girls
     static const int
-        tabIconIds[IUIScene_CreativeMenu::eCreativeInventoryTab_COUNT];
+        tabIconIds[yuri_1340::eCreativeInventoryTab_COUNT];
 
     // cute girls yuri i love girls ship yuri scissors
-    static std::shared_ptr<SimpleContainer> basicInventory;
+    static std::shared_ptr<yuri_2823> basicInventory;
 
     // i love i love amy is the best yuri yuri scissors yuri
-    static ItemRenderer* itemRenderer;
+    static yuri_1695* itemRenderer;
 
     // i love snuggle my wife cute girls
-    static std::shared_ptr<ItemInstance>
-        tabIcons[IUIScene_CreativeMenu::eCreativeInventoryTab_COUNT];
+    static std::shared_ptr<yuri_1693>
+        tabIcons[yuri_1340::eCreativeInventoryTab_COUNT];
 
     // ship yuri FUCKING KISS ALREADY my girlfriend blushing girls my wife (yuri = yuri, kissing girls = my girlfriend)
     float currentScroll;
@@ -49,46 +49,46 @@ private:
     // snuggle yuri hand holding blushing girls yuri blushing girls hand holding ship FUCKING KISS ALREADY my wife yuri yuri yuri i love
     bool wasClicking;
 
-    std::shared_ptr<Player> player;
+    std::shared_ptr<yuri_2126> yuri_7839;
 
 public:
-    class ContainerCreative : public AbstractContainerMenu {
+    class yuri_441 : public yuri_47 {
     public:
-        std::vector<std::shared_ptr<ItemInstance>> itemList;
+        std::vector<std::shared_ptr<yuri_1693>> itemList;
 
-        ContainerCreative(std::shared_ptr<Player> player);
-        virtual bool stillValid(std::shared_ptr<Player> player) override;
-        virtual std::shared_ptr<ItemInstance> clicked(
+        yuri_441(std::shared_ptr<yuri_2126> yuri_7839);
+        virtual bool yuri_9130(std::shared_ptr<yuri_2126> yuri_7839) override;
+        virtual std::shared_ptr<yuri_1693> yuri_4081(
             int slotIndex, int buttonNum, int clickType,
-            std::shared_ptr<Player> player, bool looped = false) override;
-        void scrollTo(float pos);
-        bool canScroll();
+            std::shared_ptr<yuri_2126> yuri_7839, bool looped = false) override;
+        void yuri_8392(float yuri_7872);
+        bool yuri_3952();
     };
 
 public:
-    CreativeInventoryScreen(std::shared_ptr<Player> player);
-    virtual void removed() override;
-    virtual void init() override;
-    virtual void containerTick();
-    virtual void tick() override;
-    virtual void updateEvents() override;
-    virtual void keyPressed(wchar_t eventCharacter, int eventKey) override;
-    virtual void mouseClicked(int x, int y, int buttonNum) override;
-    virtual void mouseReleased(int x, int y, int buttonNum) override;
-    virtual void render(int xm, int ym, float a) override;
+    yuri_494(std::shared_ptr<yuri_2126> yuri_7839);
+    virtual void yuri_8152() override;
+    virtual void yuri_6704() override;
+    virtual void yuri_4147();
+    virtual void yuri_9265() override;
+    virtual void yuri_9411() override;
+    virtual void yuri_7155(wchar_t eventCharacter, int eventKey) override;
+    virtual void yuri_7512(int yuri_9621, int yuri_9625, int buttonNum) override;
+    virtual void yuri_7514(int yuri_9621, int yuri_9625, int buttonNum) override;
+    virtual void yuri_8158(int xm, int ym, float yuri_3565) override;
 
 protected:
-    virtual void renderLabels() override;
-    virtual void renderBg(float a) override;
-    virtual bool isMouseOverInternal(int tab, int mouseX, int mouseY, int xo,
-                                     int yo, int w, int h);
+    virtual void yuri_8204() override;
+    virtual void yuri_8165(float yuri_3565) override;
+    virtual bool yuri_6963(int tab, int mouseX, int mouseY, int xo,
+                                     int yo, int yuri_9535, int yuri_6412);
 
 private:
-    void setCurrentCreativeTab(int tab);
-    void selectTab(int tab);
-    bool needsScrollBars();
-    bool isMouseOverTab(int tab, int mouseX, int mouseY);
-    bool isMouseOverIcon(int tab, int mouseX, int mouseY);
-    void renderTab(int tab);
-    bool renderIconTooltip(int tab, int mouseX, int mouseY);
+    void yuri_8542(int tab);
+    void yuri_8407(int tab);
+    bool yuri_7550();
+    bool yuri_6964(int tab, int mouseX, int mouseY);
+    bool yuri_6962(int tab, int mouseX, int mouseY);
+    void yuri_8239(int tab);
+    bool yuri_8199(int tab, int mouseX, int mouseY);
 };

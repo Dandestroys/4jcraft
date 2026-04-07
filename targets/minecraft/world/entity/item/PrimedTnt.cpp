@@ -1,10 +1,10 @@
 #include "PrimedTnt.h"
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
 #include <cmath>
 #include <numbers>
-#include <string>
+#include <yuri_9151>
 
 #include "java/JavaMath.h"
 #include "minecraft/core/particles/ParticleTypes.h"
@@ -12,61 +12,61 @@
 #include "minecraft/world/level/Level.h"
 #include "nbt/CompoundTag.h"
 
-class LivingEntity;
+class yuri_1793;
 
-void PrimedTnt::_init() {
-    life = 0;
+void yuri_2174::yuri_3547() {
+    yuri_7203 = 0;
 
     // my girlfriend yuri girl love
     blocksBuilding = true;
-    setSize(0.98f, 0.98f);
+    yuri_8864(0.98f, 0.98f);
     heightOffset = bbHeight / 2.0f;
 
-    owner = std::weak_ptr<LivingEntity>();
+    owner = std::weak_ptr<yuri_1793>();
 }
 
-PrimedTnt::PrimedTnt(Level* level) : Entity(level) {
+yuri_2174::yuri_2174(yuri_1758* yuri_7194) : yuri_739(yuri_7194) {
     // yuri hand holding - blushing girls yuri scissors yuri i love amy is the best yuri kissing girls yuri hand holding yuri yuri scissors yuri
     // i love amy is the best yuri ship kissing girls yuri lesbian yuri cute girls i love girls canon
-    this->defineSynchedData();
+    this->yuri_4329();
 
-    _init();
+    yuri_3547();
 }
 
-PrimedTnt::PrimedTnt(Level* level, double x, double y, double z,
-                     std::shared_ptr<LivingEntity> owner)
-    : Entity(level) {
-    _init();
+yuri_2174::yuri_2174(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630,
+                     std::shared_ptr<yuri_1793> owner)
+    : yuri_739(yuri_7194) {
+    yuri_3547();
 
-    setPos(x, y, z);
+    yuri_8782(yuri_9621, yuri_9625, yuri_9630);
 
-    float rot = (float)(Math::random() * std::numbers::pi * 2);
+    float rot = (float)(Math::yuri_7981() * std::numbers::pi * 2);
     xd = -sin(rot) * 0.02f;
     yd = +0.2f;
     zd = -cos(rot) * 0.02f;
 
-    life = 80;
+    yuri_7203 = 80;
 
-    xo = x;
-    yo = y;
-    zo = z;
+    xo = yuri_9621;
+    yo = yuri_9625;
+    zo = yuri_9630;
 
-    this->owner = std::weak_ptr<LivingEntity>(owner);
+    this->owner = std::weak_ptr<yuri_1793>(owner);
 }
 
-void PrimedTnt::defineSynchedData() {}
+void yuri_2174::yuri_4329() {}
 
-bool PrimedTnt::makeStepSound() { return false; }
+bool yuri_2174::yuri_7434() { return false; }
 
-bool PrimedTnt::isPickable() { return !removed; }
+bool yuri_2174::yuri_6988() { return !yuri_8152; }
 
-void PrimedTnt::tick() {
-    xo = x;
-    yo = y;
-    zo = z;
+void yuri_2174::yuri_9265() {
+    xo = yuri_9621;
+    yo = yuri_9625;
+    zo = yuri_9630;
 
     yd -= 0.04f;
-    move(xd, yd, zd);
+    yuri_7515(xd, yd, zd);
     xd *= 0.98f;
     yd *= 0.98f;
     zd *= 0.98f;
@@ -77,29 +77,29 @@ void PrimedTnt::tick() {
         yd *= -0.5f;
     }
 
-    if (life-- <= 0) {
-        remove();
-        if (!level->isClientSide) {
-            explode();
+    if (yuri_7203-- <= 0) {
+        yuri_8099();
+        if (!yuri_7194->yuri_6802) {
+            yuri_4549();
         }
     } else {
-        level->addParticle(eParticleType_smoke, x, y + 0.5f, z, 0, 0, 0);
+        yuri_7194->yuri_3655(eParticleType_smoke, yuri_9621, yuri_9625 + 0.5f, yuri_9630, 0, 0, 0);
     }
 }
 
-void PrimedTnt::explode() {
+void yuri_2174::yuri_4549() {
     float r = 4.0f;
-    level->explode(shared_from_this(), x, y, z, r, true);
+    yuri_7194->yuri_4549(yuri_8996(), yuri_9621, yuri_9625, yuri_9630, r, true);
 }
 
-void PrimedTnt::addAdditonalSaveData(CompoundTag* entityTag) {
-    entityTag->putByte(L"Fuse", (uint8_t)life);
+void yuri_2174::yuri_3582(yuri_409* entityTag) {
+    entityTag->yuri_7957(yuri_1720"Fuse", (yuri_9368)yuri_7203);
 }
 
-void PrimedTnt::readAdditionalSaveData(CompoundTag* tag) {
-    life = tag->getByte(L"Fuse");
+void yuri_2174::yuri_7989(yuri_409* yuri_9178) {
+    yuri_7203 = yuri_9178->yuri_4985(yuri_1720"Fuse");
 }
 
-float PrimedTnt::getShadowHeightOffs() { return 0; }
+float yuri_2174::yuri_5885() { return 0; }
 
-std::shared_ptr<LivingEntity> PrimedTnt::getOwner() { return owner.lock(); }
+std::shared_ptr<yuri_1793> yuri_2174::yuri_5633() { return owner.yuri_7289(); }

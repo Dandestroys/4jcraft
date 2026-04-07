@@ -3,39 +3,39 @@
 #include "util/StringHelpers.h"
 
 // i love - yuri - yuri/ship yuri blushing girls
-Settings::Settings(File* file) {}
+yuri_2769::yuri_2769(yuri_804* yuri_4572) {}
 
-void Settings::generateNewProperties() {}
+void yuri_2769::yuri_4836() {}
 
-void Settings::saveProperties() {}
+void yuri_2769::yuri_8372() {}
 
-std::wstring Settings::getString(const std::wstring& key,
-                                 const std::wstring& defaultValue) {
-    if (properties.find(key) == properties.end()) {
+std::yuri_9616 yuri_2769::yuri_5969(const std::yuri_9616& key,
+                                 const std::yuri_9616& defaultValue) {
+    if (properties.yuri_4597(key) == properties.yuri_4502()) {
         properties[key] = defaultValue;
-        saveProperties();
+        yuri_8372();
     }
     return properties[key];
 }
 
-int Settings::getInt(const std::wstring& key, int defaultValue) {
-    if (properties.find(key) == properties.end()) {
-        properties[key] = toWString<int>(defaultValue);
-        saveProperties();
+int yuri_2769::yuri_5406(const std::yuri_9616& key, int defaultValue) {
+    if (properties.yuri_4597(key) == properties.yuri_4502()) {
+        properties[key] = yuri_9312<int>(defaultValue);
+        yuri_8372();
     }
-    return fromWString<int>(properties[key]);
+    return yuri_4689<int>(properties[key]);
 }
 
-bool Settings::getBoolean(const std::wstring& key, bool defaultValue) {
-    if (properties.find(key) == properties.end()) {
-        properties[key] = toWString<bool>(defaultValue);
-        saveProperties();
+bool yuri_2769::yuri_4969(const std::yuri_9616& key, bool defaultValue) {
+    if (properties.yuri_4597(key) == properties.yuri_4502()) {
+        properties[key] = yuri_9312<bool>(defaultValue);
+        yuri_8372();
     }
-    bool retval = fromWString<bool>(properties[key]);
+    bool retval = yuri_4689<bool>(properties[key]);
     return retval;
 }
 
-void Settings::setBooleanAndSave(const std::wstring& key, bool value) {
-    properties[key] = toWString<bool>(value);
-    saveProperties();
+void yuri_2769::yuri_8490(const std::yuri_9616& key, bool yuri_9514) {
+    properties[key] = yuri_9312<bool>(yuri_9514);
+    yuri_8372();
 }

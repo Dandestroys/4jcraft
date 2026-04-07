@@ -2,17 +2,17 @@
 
 #include "Item.h"
 
-class Tile;
+class yuri_3088;
 
-class TilePlanterItem : public Item {
+class yuri_3099 : public yuri_1687 {
 private:
-    int tileId;
+    int yuri_9294;
 
 public:
-    TilePlanterItem(int id, Tile* tile);
+    yuri_3099(int yuri_6674, yuri_3088* tile);
 
-    virtual bool useOn(std::shared_ptr<ItemInstance> instance,
-                       std::shared_ptr<Player> player, Level* level, int x,
-                       int y, int z, int face, float clickX, float clickY,
+    virtual bool yuri_9492(std::shared_ptr<yuri_1693> instance,
+                       std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194, int yuri_9621,
+                       int yuri_9625, int yuri_9630, int face, float clickX, float clickY,
                        float clickZ, bool bTestUseOnOnly = false);
 };

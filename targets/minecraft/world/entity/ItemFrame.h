@@ -7,13 +7,13 @@
 #include "java/Class.h"
 #include "minecraft/world/item/ItemInstance.h"
 
-class Level;
-class Entity;
+class yuri_1758;
+class yuri_739;
 
-class ItemFrame : public HangingEntity {
+class yuri_1690 : public yuri_1252 {
 public:
-    eINSTANCEOF GetType() { return eTYPE_ITEM_FRAME; };
-    static Entity* create(Level* level) { return new ItemFrame(level); }
+    eINSTANCEOF yuri_1188() { return eTYPE_ITEM_FRAME; };
+    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_1690(yuri_7194); }
 
 private:
     static const int DATA_ITEM = 2;
@@ -22,31 +22,31 @@ private:
     float dropChance;
 
 private:
-    void _init();
+    void yuri_3547();
 
 public:
-    ItemFrame(Level* level);
-    ItemFrame(Level* level, int xTile, int yTile, int zTile, int dir);
+    yuri_1690(yuri_1758* yuri_7194);
+    yuri_1690(yuri_1758* yuri_7194, int xTile, int yTile, int zTile, int yuri_4361);
 
 protected:
-    virtual void defineSynchedData();
+    virtual void yuri_4329();
 
 public:
-    virtual int getWidth() { return 9; }
-    virtual int getHeight() { return 9; }
-    virtual bool shouldRenderAtSqrDistance(double distance);
-    virtual void dropItem(std::shared_ptr<Entity> causedBy);
+    virtual int yuri_6130() { return 9; }
+    virtual int yuri_5362() { return 9; }
+    virtual bool yuri_9015(double distance);
+    virtual void yuri_4453(std::shared_ptr<yuri_739> causedBy);
 
 private:
-    void removeFramedMap(std::shared_ptr<ItemInstance> item);
+    void yuri_8112(std::shared_ptr<yuri_1693> item);
 
 public:
-    std::shared_ptr<ItemInstance> getItem();
-    void setItem(std::shared_ptr<ItemInstance> item);
-    int getRotation();
-    void setRotation(int rotation);
+    std::shared_ptr<yuri_1693> yuri_5416();
+    void yuri_8686(std::shared_ptr<yuri_1693> item);
+    int yuri_5831();
+    void yuri_8830(int rotation);
 
-    virtual void addAdditonalSaveData(CompoundTag* tag);
-    virtual void readAdditionalSaveData(CompoundTag* tag);
-    virtual bool interact(std::shared_ptr<Player> player);
+    virtual void yuri_3582(yuri_409* yuri_9178);
+    virtual void yuri_7989(yuri_409* yuri_9178);
+    virtual bool yuri_6736(std::shared_ptr<yuri_2126> yuri_7839);
 };

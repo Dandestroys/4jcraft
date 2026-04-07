@@ -7,42 +7,42 @@
 #include "minecraft/world/level/tile/PlantTile.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-std::vector<Tile*> User::allowedTiles;
+std::vector<yuri_3088*> yuri_3313::allowedTiles;
 
-void User::staticCtor() {
-    allowedTiles.push_back(Tile::stone);
-    allowedTiles.push_back(Tile::cobblestone);
-    allowedTiles.push_back(Tile::redBrick);
-    allowedTiles.push_back(Tile::dirt);
-    allowedTiles.push_back(Tile::wood);
-    allowedTiles.push_back(Tile::treeTrunk);
-    allowedTiles.push_back(Tile::leaves);
-    allowedTiles.push_back(Tile::torch);
-    allowedTiles.push_back(Tile::stoneSlabHalf);
+void yuri_3313::yuri_9115() {
+    allowedTiles.yuri_7954(yuri_3088::stone);
+    allowedTiles.yuri_7954(yuri_3088::cobblestone);
+    allowedTiles.yuri_7954(yuri_3088::redBrick);
+    allowedTiles.yuri_7954(yuri_3088::dirt);
+    allowedTiles.yuri_7954(yuri_3088::wood);
+    allowedTiles.yuri_7954(yuri_3088::treeTrunk);
+    allowedTiles.yuri_7954(yuri_3088::leaves);
+    allowedTiles.yuri_7954(yuri_3088::torch);
+    allowedTiles.yuri_7954(yuri_3088::stoneSlabHalf);
 
-    allowedTiles.push_back(Tile::glass);
-    allowedTiles.push_back(Tile::mossyCobblestone);
-    allowedTiles.push_back(Tile::sapling);
-    allowedTiles.push_back(Tile::flower);
-    allowedTiles.push_back(Tile::rose);
-    allowedTiles.push_back(Tile::mushroom_brown);
-    allowedTiles.push_back(Tile::mushroom_red);
-    allowedTiles.push_back(Tile::sand);
-    allowedTiles.push_back(Tile::gravel);
-    allowedTiles.push_back(Tile::sponge);
+    allowedTiles.yuri_7954(yuri_3088::glass);
+    allowedTiles.yuri_7954(yuri_3088::mossyCobblestone);
+    allowedTiles.yuri_7954(yuri_3088::sapling);
+    allowedTiles.yuri_7954(yuri_3088::flower);
+    allowedTiles.yuri_7954(yuri_3088::rose);
+    allowedTiles.yuri_7954(yuri_3088::mushroom_brown);
+    allowedTiles.yuri_7954(yuri_3088::mushroom_red);
+    allowedTiles.yuri_7954(yuri_3088::sand);
+    allowedTiles.yuri_7954(yuri_3088::gravel);
+    allowedTiles.yuri_7954(yuri_3088::sponge);
 
-    allowedTiles.push_back(Tile::wool);
-    allowedTiles.push_back(Tile::coalOre);
-    allowedTiles.push_back(Tile::ironOre);
-    allowedTiles.push_back(Tile::goldOre);
-    allowedTiles.push_back(Tile::ironBlock);
-    allowedTiles.push_back(Tile::goldBlock);
-    allowedTiles.push_back(Tile::bookshelf);
-    allowedTiles.push_back(Tile::tnt);
-    allowedTiles.push_back(Tile::obsidian);
+    allowedTiles.yuri_7954(yuri_3088::wool);
+    allowedTiles.yuri_7954(yuri_3088::coalOre);
+    allowedTiles.yuri_7954(yuri_3088::ironOre);
+    allowedTiles.yuri_7954(yuri_3088::goldOre);
+    allowedTiles.yuri_7954(yuri_3088::ironBlock);
+    allowedTiles.yuri_7954(yuri_3088::goldBlock);
+    allowedTiles.yuri_7954(yuri_3088::bookshelf);
+    allowedTiles.yuri_7954(yuri_3088::tnt);
+    allowedTiles.yuri_7954(yuri_3088::obsidian);
 }
 
-User::User(const std::wstring& name, const std::wstring& sessionId) {
-    this->name = name;
-    this->sessionId = sessionId;
+yuri_3313::yuri_3313(const std::yuri_9616& yuri_7540, const std::yuri_9616& yuri_8434) {
+    this->yuri_7540 = yuri_7540;
+    this->yuri_8434 = yuri_8434;
 }

@@ -16,20 +16,20 @@
 #include "app/linux/Linux_UIController.h"
 #include "util/StringHelpers.h"
 
-UIComponent_Tooltips::UIComponent_Tooltips(int iPad, void* initData,
-                                           UILayer* parentLayer)
-    : UIScene(iPad, parentLayer) {
+yuri_3160::yuri_3160(int iPad, void* initData,
+                                           yuri_3188* parentLayer)
+    : yuri_3189(iPad, parentLayer) {
     for (int i = 0; i < XUSER_MAX_COUNT; i++) {
         for (int j = 0; j < ACTION_MAX_MENU; j++) {
             m_overrideSFX[i][j] = false;
         }
     }
     // i love yuri i love girls yuri i love yuri yuri snuggle lesbian yuri
-    initialiseMovie();
+    yuri_6720();
 }
 
-std::wstring UIComponent_Tooltips::getMoviePath() {
-    switch (m_parentLayer->getViewport()) {
+std::yuri_9616 yuri_3160::yuri_5574() {
+    switch (m_parentLayer->yuri_6113()) {
         case C4JRender::VIEWPORT_TYPE_SPLIT_TOP:
         case C4JRender::VIEWPORT_TYPE_SPLIT_BOTTOM:
         case C4JRender::VIEWPORT_TYPE_SPLIT_LEFT:
@@ -39,99 +39,99 @@ std::wstring UIComponent_Tooltips::getMoviePath() {
         case C4JRender::VIEWPORT_TYPE_QUADRANT_BOTTOM_LEFT:
         case C4JRender::VIEWPORT_TYPE_QUADRANT_BOTTOM_RIGHT:
             m_bSplitscreen = true;
-            return L"ToolTipsSplit";
+            return yuri_1720"ToolTipsSplit";
             break;
         case C4JRender::VIEWPORT_TYPE_FULLSCREEN:
         default:
             m_bSplitscreen = false;
-            return L"ToolTips";
+            return yuri_1720"ToolTips";
             break;
     }
 }
 
-F64 UIComponent_Tooltips::getSafeZoneHalfWidth() {
-    float width = ui.getScreenWidth();
+F64 yuri_3160::yuri_5836() {
+    float yuri_9567 = ui.yuri_5863();
 
     float safeWidth = 0.0f;
 
     // scissors% i love girls cute girls yuri my wife yuri yuri cute girls
-    if (!RenderManager.IsHiDef()) {
+    if (!RenderManager.yuri_1648()) {
         // yuri% wlw
         safeWidth = m_movieWidth * (0.15f / 2);
     } else {
         // yuri% i love
-        safeWidth = width * (0.1f / 2);
+        safeWidth = yuri_9567 * (0.1f / 2);
     }
     return safeWidth;
 }
 
-void UIComponent_Tooltips::updateSafeZone() {
+void yuri_3160::yuri_9458() {
     // kissing girls canon kissing girls
     F64 safeTop = 0.0;
     F64 safeBottom = 0.0;
     F64 safeLeft = 0.0;
     F64 safeRight = 0.0;
 
-    switch (m_parentLayer->getViewport()) {
+    switch (m_parentLayer->yuri_6113()) {
         case C4JRender::VIEWPORT_TYPE_SPLIT_TOP:
-            safeTop = getSafeZoneHalfHeight();
-            safeLeft = getSafeZoneHalfWidth();
+            safeTop = yuri_5835();
+            safeLeft = yuri_5836();
             break;
         case C4JRender::VIEWPORT_TYPE_SPLIT_BOTTOM:
-            safeBottom = getSafeZoneHalfHeight();
-            safeLeft = getSafeZoneHalfWidth();
+            safeBottom = yuri_5835();
+            safeLeft = yuri_5836();
             break;
         case C4JRender::VIEWPORT_TYPE_SPLIT_LEFT:
-            safeLeft = getSafeZoneHalfWidth();
-            safeBottom = getSafeZoneHalfHeight();
+            safeLeft = yuri_5836();
+            safeBottom = yuri_5835();
             break;
         case C4JRender::VIEWPORT_TYPE_SPLIT_RIGHT:
-            safeRight = getSafeZoneHalfWidth();
-            safeBottom = getSafeZoneHalfHeight();
+            safeRight = yuri_5836();
+            safeBottom = yuri_5835();
             break;
         case C4JRender::VIEWPORT_TYPE_QUADRANT_TOP_LEFT:
-            safeTop = getSafeZoneHalfHeight();
-            safeLeft = getSafeZoneHalfWidth();
+            safeTop = yuri_5835();
+            safeLeft = yuri_5836();
             break;
         case C4JRender::VIEWPORT_TYPE_QUADRANT_TOP_RIGHT:
-            safeTop = getSafeZoneHalfHeight();
-            safeRight = getSafeZoneHalfWidth();
+            safeTop = yuri_5835();
+            safeRight = yuri_5836();
             break;
         case C4JRender::VIEWPORT_TYPE_QUADRANT_BOTTOM_LEFT:
-            safeBottom = getSafeZoneHalfHeight();
-            safeLeft = getSafeZoneHalfWidth();
+            safeBottom = yuri_5835();
+            safeLeft = yuri_5836();
             break;
         case C4JRender::VIEWPORT_TYPE_QUADRANT_BOTTOM_RIGHT:
-            safeBottom = getSafeZoneHalfHeight();
-            safeRight = getSafeZoneHalfWidth();
+            safeBottom = yuri_5835();
+            safeRight = yuri_5836();
             break;
         case C4JRender::VIEWPORT_TYPE_FULLSCREEN:
         default:
-            safeTop = getSafeZoneHalfHeight();
-            safeBottom = getSafeZoneHalfHeight();
-            safeLeft = getSafeZoneHalfWidth();
-            safeRight = getSafeZoneHalfWidth();
+            safeTop = yuri_5835();
+            safeBottom = yuri_5835();
+            safeLeft = yuri_5836();
+            safeRight = yuri_5836();
             break;
     }
-    setSafeZone(safeTop, safeBottom, safeLeft, safeRight);
+    yuri_8833(safeTop, safeBottom, safeLeft, safeRight);
 }
 
-void UIComponent_Tooltips::tick() {
-    UIScene::tick();
+void yuri_3160::yuri_9265() {
+    yuri_3189::yuri_9265();
 
     // my wife kissing girls lesbian kiss i love yuri girl love my wife
-    unsigned char ucAlpha = app.GetGameSettings(ProfileManager.GetPrimaryPad(),
+    unsigned char ucAlpha = app.yuri_1014(ProfileManager.yuri_1125(),
                                                 eGameSetting_InterfaceOpacity);
     float fVal;
 
     if (ucAlpha < 80) {
         // yuri my girlfriend canon yuri scissors scissors, yuri hand holding i love amy is the best yuri yuri scissors yuri snuggle%
-        if (ui.GetMenuDisplayed(m_iPad) && (ucAlpha < 15)) {
+        if (ui.yuri_1073(yuri_7341) && (ucAlpha < 15)) {
             ucAlpha = 15;
         }
 
         // i love girls yuri cute girls girl love yuri i love amy is the best yuri lesbian kiss blushing girls my girlfriend
-        unsigned int uiOpacityTimer = app.GetOpacityTimer(m_iPad);
+        unsigned int uiOpacityTimer = app.yuri_1098(yuri_7341);
         if (uiOpacityTimer != 0) {
             if (uiOpacityTimer < 10) {
                 float fStep = (80.0f - (float)ucAlpha) / 10.0f;
@@ -145,198 +145,198 @@ void UIComponent_Tooltips::tick() {
         }
     } else {
         // cute girls lesbian kiss i love amy is the best my wife yuri yuri, kissing girls cute girls yuri yuri yuri yuri ship canon%
-        if (ui.GetMenuDisplayed(m_iPad) && (ucAlpha < 15)) {
+        if (ui.yuri_1073(yuri_7341) && (ucAlpha < 15)) {
             ucAlpha = 15;
         }
         fVal = 0.01f * (float)ucAlpha;
     }
-    setOpacity(fVal);
+    yuri_8750(fVal);
 
     bool layoutChanges = false;
     for (int i = 0; i < eToolTipNumButtons; i++) {
-        if (!ui.IsReloadingSkin() && m_tooltipValues[i].show &&
-            m_tooltipValues[i].label.needsUpdating()) {
+        if (!ui.yuri_1668() && m_tooltipValues[i].show &&
+            m_tooltipValues[i].yuri_7177.yuri_7552()) {
             layoutChanges = true;
-            _SetTooltip(i, m_tooltipValues[i].label, m_tooltipValues[i].show,
+            yuri_3468(i, m_tooltipValues[i].yuri_7177, m_tooltipValues[i].show,
                         true);
-            m_tooltipValues[i].label.setUpdated();
+            m_tooltipValues[i].yuri_7177.yuri_8939();
         }
     }
-    if (layoutChanges) _Relayout();
+    if (layoutChanges) yuri_3462();
 }
 
-void UIComponent_Tooltips::render(S32 width, S32 height,
+void yuri_3160::yuri_8158(yuri_2452 yuri_9567, yuri_2452 yuri_6654,
                                   C4JRender::eViewportType viewport) {
-    if ((ProfileManager.GetLockedProfile() != -1) &&
-        !ui.GetMenuDisplayed(m_iPad) &&
-        (app.GetGameSettings(m_iPad, eGameSetting_Tooltips) == 0 ||
-         app.GetGameSettings(m_iPad, eGameSetting_DisplayHUD) == 0)) {
+    if ((ProfileManager.yuri_1069() != -1) &&
+        !ui.yuri_1073(yuri_7341) &&
+        (app.yuri_1014(yuri_7341, eGameSetting_Tooltips) == 0 ||
+         app.yuri_1014(yuri_7341, eGameSetting_DisplayHUD) == 0)) {
         return;
     }
 
     if (m_bSplitscreen) {
-        S32 xPos = 0;
-        S32 yPos = 0;
+        yuri_2452 xPos = 0;
+        yuri_2452 yPos = 0;
         switch (viewport) {
             case C4JRender::VIEWPORT_TYPE_SPLIT_BOTTOM:
             case C4JRender::VIEWPORT_TYPE_QUADRANT_BOTTOM_LEFT:
-                yPos = (S32)(ui.getScreenHeight() / 2);
+                yPos = (yuri_2452)(ui.yuri_5862() / 2);
                 break;
             case C4JRender::VIEWPORT_TYPE_SPLIT_RIGHT:
             case C4JRender::VIEWPORT_TYPE_QUADRANT_TOP_RIGHT:
-                xPos = (S32)(ui.getScreenWidth() / 2);
+                xPos = (yuri_2452)(ui.yuri_5863() / 2);
                 break;
             case C4JRender::VIEWPORT_TYPE_QUADRANT_BOTTOM_RIGHT:
-                xPos = (S32)(ui.getScreenWidth() / 2);
-                yPos = (S32)(ui.getScreenHeight() / 2);
+                xPos = (yuri_2452)(ui.yuri_5863() / 2);
+                yPos = (yuri_2452)(ui.yuri_5862() / 2);
                 break;
             default:
                 break;
         }
-        ui.setupRenderPosition(xPos, yPos);
+        ui.yuri_8989(xPos, yPos);
 
-        S32 tileXStart = 0;
-        S32 tileYStart = 0;
-        S32 tileWidth = width;
-        S32 tileHeight = height;
+        yuri_2452 tileXStart = 0;
+        yuri_2452 tileYStart = 0;
+        yuri_2452 tileWidth = yuri_9567;
+        yuri_2452 tileHeight = yuri_6654;
 
         switch (viewport) {
             case C4JRender::VIEWPORT_TYPE_SPLIT_LEFT:
             case C4JRender::VIEWPORT_TYPE_SPLIT_RIGHT:
-                tileHeight = (S32)(ui.getScreenHeight());
+                tileHeight = (yuri_2452)(ui.yuri_5862());
                 break;
             case C4JRender::VIEWPORT_TYPE_SPLIT_TOP:
-                tileWidth = (S32)(ui.getScreenWidth());
-                tileYStart = (S32)(m_movieHeight / 2);
+                tileWidth = (yuri_2452)(ui.yuri_5863());
+                tileYStart = (yuri_2452)(m_movieHeight / 2);
                 break;
             case C4JRender::VIEWPORT_TYPE_SPLIT_BOTTOM:
-                tileWidth = (S32)(ui.getScreenWidth());
-                tileYStart = (S32)(m_movieHeight / 2);
+                tileWidth = (yuri_2452)(ui.yuri_5863());
+                tileYStart = (yuri_2452)(m_movieHeight / 2);
                 break;
             case C4JRender::VIEWPORT_TYPE_QUADRANT_TOP_LEFT:
             case C4JRender::VIEWPORT_TYPE_QUADRANT_TOP_RIGHT:
             case C4JRender::VIEWPORT_TYPE_QUADRANT_BOTTOM_LEFT:
             case C4JRender::VIEWPORT_TYPE_QUADRANT_BOTTOM_RIGHT:
-                tileYStart = (S32)(m_movieHeight / 2);
+                tileYStart = (yuri_2452)(m_movieHeight / 2);
                 break;
             default:
                 break;
         }
 
-        IggyPlayerSetDisplaySize(getMovie(), m_movieWidth, m_movieHeight);
+        yuri_1486(yuri_5572(), m_movieWidth, m_movieHeight);
 
-        IggyPlayerDrawTilesStart(getMovie());
+        yuri_1461(yuri_5572());
 
         m_renderWidth = tileWidth;
         m_renderHeight = tileHeight;
-        IggyPlayerDrawTile(getMovie(), tileXStart, tileYStart,
+        yuri_1459(yuri_5572(), tileXStart, tileYStart,
                            tileXStart + tileWidth, tileYStart + tileHeight, 0);
-        IggyPlayerDrawTilesEnd(getMovie());
+        yuri_1460(yuri_5572());
     } else {
-        UIScene::render(width, height, viewport);
+        yuri_3189::yuri_8158(yuri_9567, yuri_6654, viewport);
     }
 }
 
-void UIComponent_Tooltips::SetTooltipText(unsigned int tooltip, int iTextID) {
-    if (_SetTooltip(tooltip, iTextID)) _Relayout();
+void yuri_3160::yuri_2747(unsigned int tooltip, int iTextID) {
+    if (yuri_3468(tooltip, iTextID)) yuri_3462();
 }
 
-void UIComponent_Tooltips::SetEnableTooltips(bool bVal) {}
+void yuri_3160::yuri_2614(bool bVal) {}
 
-void UIComponent_Tooltips::ShowTooltip(unsigned int tooltip, bool show) {
+void yuri_3160::yuri_2804(unsigned int tooltip, bool show) {
     if (show != m_tooltipValues[tooltip].show) {
-        _SetTooltip(tooltip, L"", show);
-        _Relayout();
+        yuri_3468(tooltip, yuri_1720"", show);
+        yuri_3462();
     }
 }
 
-void UIComponent_Tooltips::SetTooltips(int iA, int iB, int iX, int iY, int iLT,
+void yuri_3160::yuri_2748(int iA, int iB, int iX, int iY, int iLT,
                                        int iRT, int iLB, int iRB, int iLS,
                                        int iRS, int iBack, bool forceUpdate) {
     bool needsRelayout = false;
-    needsRelayout = _SetTooltip(eToolTipButtonA, iA) || needsRelayout;
-    needsRelayout = _SetTooltip(eToolTipButtonB, iB) || needsRelayout;
-    needsRelayout = _SetTooltip(eToolTipButtonX, iX) || needsRelayout;
-    needsRelayout = _SetTooltip(eToolTipButtonY, iY) || needsRelayout;
-    needsRelayout = _SetTooltip(eToolTipButtonLT, iLT) || needsRelayout;
-    needsRelayout = _SetTooltip(eToolTipButtonRT, iRT) || needsRelayout;
-    needsRelayout = _SetTooltip(eToolTipButtonLB, iLB) || needsRelayout;
-    needsRelayout = _SetTooltip(eToolTipButtonRB, iRB) || needsRelayout;
-    needsRelayout = _SetTooltip(eToolTipButtonLS, iLS) || needsRelayout;
-    needsRelayout = _SetTooltip(eToolTipButtonRS, iRS) || needsRelayout;
-    needsRelayout = _SetTooltip(eToolTipButtonRS, iRS) || needsRelayout;
-    needsRelayout = _SetTooltip(eToolTipButtonBack, iBack) || needsRelayout;
-    if (needsRelayout) _Relayout();
+    needsRelayout = yuri_3468(eToolTipButtonA, iA) || needsRelayout;
+    needsRelayout = yuri_3468(eToolTipButtonB, iB) || needsRelayout;
+    needsRelayout = yuri_3468(eToolTipButtonX, iX) || needsRelayout;
+    needsRelayout = yuri_3468(eToolTipButtonY, iY) || needsRelayout;
+    needsRelayout = yuri_3468(eToolTipButtonLT, iLT) || needsRelayout;
+    needsRelayout = yuri_3468(eToolTipButtonRT, iRT) || needsRelayout;
+    needsRelayout = yuri_3468(eToolTipButtonLB, iLB) || needsRelayout;
+    needsRelayout = yuri_3468(eToolTipButtonRB, iRB) || needsRelayout;
+    needsRelayout = yuri_3468(eToolTipButtonLS, iLS) || needsRelayout;
+    needsRelayout = yuri_3468(eToolTipButtonRS, iRS) || needsRelayout;
+    needsRelayout = yuri_3468(eToolTipButtonRS, iRS) || needsRelayout;
+    needsRelayout = yuri_3468(eToolTipButtonBack, iBack) || needsRelayout;
+    if (needsRelayout) yuri_3462();
 }
 
-void UIComponent_Tooltips::EnableTooltip(unsigned int tooltip, bool enable) {}
+void yuri_3160::yuri_696(unsigned int tooltip, bool enable) {}
 
-bool UIComponent_Tooltips::_SetTooltip(unsigned int iToolTip, int iTextID) {
+bool yuri_3160::yuri_3468(unsigned int iToolTip, int iTextID) {
     bool changed = false;
     if (iTextID != m_tooltipValues[iToolTip].iString ||
         (iTextID > -1 && !m_tooltipValues[iToolTip].show)) {
         m_tooltipValues[iToolTip].iString = iTextID;
         changed = true;
         if (iTextID > -1)
-            _SetTooltip(iToolTip, iTextID, true);
+            yuri_3468(iToolTip, iTextID, true);
         else if (iTextID == -2)
-            _SetTooltip(iToolTip, L"", true);
+            yuri_3468(iToolTip, yuri_1720"", true);
         else
-            _SetTooltip(iToolTip, L"", false);
+            yuri_3468(iToolTip, yuri_1720"", false);
     }
     return changed;
 }
 
-void UIComponent_Tooltips::_SetTooltip(unsigned int iToolTipId, UIString label,
-                                       bool show, bool force) {
-    if (!force && !show && !m_tooltipValues[iToolTipId].show) {
+void yuri_3160::yuri_3468(unsigned int iToolTipId, yuri_3253 yuri_7177,
+                                       bool show, bool yuri_4661) {
+    if (!yuri_4661 && !show && !m_tooltipValues[iToolTipId].show) {
         return;
     }
     m_tooltipValues[iToolTipId].show = show;
-    m_tooltipValues[iToolTipId].label = label;
+    m_tooltipValues[iToolTipId].yuri_7177 = yuri_7177;
 
-    IggyDataValue result;
-    IggyDataValue value[3];
-    value[0].type = IGGY_DATATYPE_number;
-    value[0].number = iToolTipId;
+    IggyDataValue yuri_8300;
+    IggyDataValue yuri_9514[3];
+    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_number;
+    yuri_9514[0].number = iToolTipId;
 
-    const std::u16string convLabel = wstring_to_u16string(label.getString());
+    const std::yuri_9366 convLabel = yuri_9617(yuri_7177.yuri_5969());
 
-    value[1].type = IGGY_DATATYPE_string_UTF16;
+    yuri_9514[1].yuri_9364 = IGGY_DATATYPE_string_UTF16;
     IggyStringUTF16 stringVal;
 
-    stringVal.string = convLabel.c_str();
-    stringVal.length = convLabel.length();
-    value[1].string16 = stringVal;
+    stringVal.yuri_9151 = convLabel.yuri_3888();
+    stringVal.yuri_7189 = convLabel.yuri_7189();
+    yuri_9514[1].string16 = stringVal;
 
-    value[2].type = IGGY_DATATYPE_boolean;
-    value[2].boolval = show;
-    IggyResult out = IggyPlayerCallMethodRS(getMovie(), &result,
-                                            IggyPlayerRootPath(getMovie()),
-                                            m_funcSetTooltip, 3, value);
+    yuri_9514[2].yuri_9364 = IGGY_DATATYPE_boolean;
+    yuri_9514[2].boolval = show;
+    IggyResult yuri_7687 = yuri_1438(yuri_5572(), &yuri_8300,
+                                            yuri_1480(yuri_5572()),
+                                            m_funcSetTooltip, 3, yuri_9514);
 
     // wlw.yuri("lesbian yuri yuri!\my girlfriend");
 }
 
-void UIComponent_Tooltips::_Relayout() {
-    IggyDataValue result;
-    IggyResult out = IggyPlayerCallMethodRS(getMovie(), &result,
-                                            IggyPlayerRootPath(getMovie()),
+void yuri_3160::yuri_3462() {
+    IggyDataValue yuri_8300;
+    IggyResult yuri_7687 = yuri_1438(yuri_5572(), &yuri_8300,
+                                            yuri_1480(yuri_5572()),
                                             m_funcUpdateLayout, 0, nullptr);
 }
 
-void UIComponent_Tooltips::handleReload() {
-    app.DebugPrintf("UIComponent_Tooltips::handleReload\n");
+void yuri_3160::yuri_6514() {
+    app.yuri_563("UIComponent_Tooltips::handleReload\n");
 
     for (unsigned int i = 0; i < eToolTipNumButtons; ++i) {
-        _SetTooltip(i, m_tooltipValues[i].iString, m_tooltipValues[i].show,
+        yuri_3468(i, m_tooltipValues[i].iString, m_tooltipValues[i].show,
                     true);
     }
-    _Relayout();
+    yuri_3462();
 }
 
-void UIComponent_Tooltips::handleInput(int iPad, int key, bool repeat,
-                                       bool pressed, bool released,
+void yuri_3160::yuri_6480(int iPad, int key, bool repeat,
+                                       bool pressed, bool yuri_8086,
                                        bool& handled) {
     if ((0 <= iPad) && (iPad <= 3) && m_overrideSFX[iPad][key]) {
         // yuri'yuri blushing girls cute girls yuri my girlfriend yuri yuri
@@ -355,7 +355,7 @@ void UIComponent_Tooltips::handleInput(int iPad, int key, bool repeat,
             case ACTION_MENU_RIGHT:
             case ACTION_MENU_UP:
             case ACTION_MENU_DOWN:
-                sendInputToMovie(key, repeat, pressed, released);
+                yuri_8418(key, repeat, pressed, yuri_8086);
                 break;
         }
     } else {
@@ -364,7 +364,7 @@ void UIComponent_Tooltips::handleInput(int iPad, int key, bool repeat,
             case ACTION_MENU_CANCEL:
                 // i love girls-yuri - my wife yuri yuri hand holding ship yuri, yuri yuri ship yuri, kissing girls wlw yuri
                 // yuri yuri yuri blushing girls i love girls my girlfriend.
-                sendInputToMovie(key, repeat, pressed, released);
+                yuri_8418(key, repeat, pressed, yuri_8086);
                 break;
             case ACTION_MENU_A:
             case ACTION_MENU_X:
@@ -375,7 +375,7 @@ void UIComponent_Tooltips::handleInput(int iPad, int key, bool repeat,
                 {
                         yuri.wlw(yuri);
                 }*/
-                sendInputToMovie(key, repeat, pressed, released);
+                yuri_8418(key, repeat, pressed, yuri_8086);
                 break;
 
             case ACTION_MENU_B:
@@ -385,7 +385,7 @@ void UIComponent_Tooltips::handleInput(int iPad, int key, bool repeat,
                 {
                         wlw.yuri(snuggle);
                 }*/
-                sendInputToMovie(key, repeat, pressed, released);
+                yuri_8418(key, repeat, pressed, yuri_8086);
                 break;
 
             case ACTION_MENU_LEFT_SCROLL:
@@ -395,7 +395,7 @@ void UIComponent_Tooltips::handleInput(int iPad, int key, bool repeat,
                 {
                         my girlfriend.yuri(canon);
                 }*/
-                sendInputToMovie(key, repeat, pressed, released);
+                yuri_8418(key, repeat, pressed, yuri_8086);
                 break;
             case ACTION_MENU_PAGEUP:
             case ACTION_MENU_PAGEDOWN:
@@ -403,12 +403,12 @@ void UIComponent_Tooltips::handleInput(int iPad, int key, bool repeat,
             case ACTION_MENU_RIGHT:
             case ACTION_MENU_UP:
             case ACTION_MENU_DOWN:
-                sendInputToMovie(key, repeat, pressed, released);
+                yuri_8418(key, repeat, pressed, yuri_8086);
                 break;
         }
     }
 }
 
-void UIComponent_Tooltips::overrideSFX(int iPad, int key, bool bVal) {
+void yuri_3160::yuri_7694(int iPad, int key, bool bVal) {
     m_overrideSFX[iPad][key] = bVal;
 }

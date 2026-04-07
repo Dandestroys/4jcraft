@@ -1,14 +1,14 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
 #include "Stat.h"
 
 class StatFormatter;
 
-class GeneralStat : public Stat {
+class yuri_928 : public yuri_2911 {
 public:
-    GeneralStat(int id, const std::wstring& name, StatFormatter* formatter);
-    GeneralStat(int id, const std::wstring& name);
-    Stat* postConstruct();
+    yuri_928(int yuri_6674, const std::yuri_9616& yuri_7540, StatFormatter* yuri_4675);
+    yuri_928(int yuri_6674, const std::yuri_9616& yuri_7540);
+    yuri_2911* yuri_7876();
 };

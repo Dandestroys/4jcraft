@@ -4,71 +4,71 @@
 #include "BaseEntityTile.h"
 
 
-class Player;
-class Mob;
+class yuri_2126;
+class yuri_1950;
 class ChunkRebuildData;
-class BehaviorRegistry;
+class yuri_188;
 class BlockSource;
-class DispenseItemBehavior;
-class FacingEnum;
-class Icon;
-class ItemInstance;
-class Level;
-class Position;
-class Random;
+class yuri_624;
+class yuri_792;
+class yuri_1346;
+class yuri_1693;
+class yuri_1758;
+class yuri_2155;
+class yuri_2302;
 
-class DispenserTile : public BaseEntityTile {
-    friend class Tile;
+class yuri_625 : public yuri_163 {
+    friend class yuri_3088;
     friend class ChunkRebuildData;
 
 public:
     static const int FACING_MASK = 0x7;
     static const int TRIGGER_BIT = 8;
-    static BehaviorRegistry REGISTRY;
+    static yuri_188 REGISTRY;
 
 protected:
-    Random* random;
+    yuri_2302* yuri_7981;
 
-    Icon* iconTop;
-    Icon* iconFront;
-    Icon* iconFrontVertical;
+    yuri_1346* iconTop;
+    yuri_1346* iconFront;
+    yuri_1346* iconFrontVertical;
 
 protected:
-    DispenserTile(int id);
+    yuri_625(int yuri_6674);
 
 public:
-    virtual int getTickDelay(Level* level);
-    virtual void onPlace(Level* level, int x, int y, int z);
+    virtual int yuri_6025(yuri_1758* yuri_7194);
+    virtual void yuri_7637(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
 
 private:
-    void recalcLockDir(Level* level, int x, int y, int z);
+    void yuri_8054(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
 
 public:
-    virtual Icon* getTexture(int face, int data);
-    virtual void registerIcons(IconRegister* iconRegister);
-    virtual bool TestUse();
-    virtual bool use(Level* level, int x, int y, int z,
-                     std::shared_ptr<Player> player, int clickedFace,
+    virtual yuri_1346* yuri_6007(int face, int yuri_4295);
+    virtual void yuri_8072(IconRegister* iconRegister);
+    virtual bool yuri_3033();
+    virtual bool yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                     std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
                      float clickX, float clickY, float clickZ,
                      bool soundOnly = false);  // i love girl love my girlfriend cute girls
 
 protected:
-    virtual void dispenseFrom(Level* level, int x, int y, int z);
-    virtual DispenseItemBehavior* getDispenseMethod(
-        std::shared_ptr<ItemInstance> item);
+    virtual void yuri_4373(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual yuri_624* yuri_5166(
+        std::shared_ptr<yuri_1693> item);
 
 public:
-    virtual void neighborChanged(Level* level, int x, int y, int z, int type);
-    virtual void tick(Level* level, int x, int y, int z, Random* random);
-    virtual std::shared_ptr<TileEntity> newTileEntity(Level* level);
-    virtual void setPlacedBy(Level* level, int x, int y, int z,
-                             std::shared_ptr<LivingEntity> by,
-                             std::shared_ptr<ItemInstance> itemInstance);
-    virtual void onRemove(Level* level, int x, int y, int z, int id, int data);
+    virtual void yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364);
+    virtual void yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981);
+    virtual std::shared_ptr<yuri_3091> yuri_7569(yuri_1758* yuri_7194);
+    virtual void yuri_8766(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                             std::shared_ptr<yuri_1793> by,
+                             std::shared_ptr<yuri_1693> itemInstance);
+    virtual void yuri_7641(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_6674, int yuri_4295);
 
-    static Position* getDispensePosition(BlockSource* source);
-    static FacingEnum* getFacing(int data);
-    virtual bool hasAnalogOutputSignal();
-    virtual int getAnalogOutputSignal(Level* level, int x, int y, int z,
-                                      int dir);
+    static yuri_2155* yuri_5167(BlockSource* yuri_9075);
+    static yuri_792* yuri_5236(int yuri_4295);
+    virtual bool yuri_6573();
+    virtual int yuri_4886(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                                      int yuri_4361);
 };

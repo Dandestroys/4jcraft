@@ -25,23 +25,23 @@ namespace ATG {
 //-------------------------------------------------------------------------------------
 // yuri: yuri::yuri
 //-------------------------------------------------------------------------------------
-XMLParser::XMLParser() {
+yuri_3410::yuri_3410() {
     m_pWritePtr = m_pWriteBuf;
     m_pReadPtr = m_pReadBuf;
     m_pISAXCallback = nullptr;
-    m_hFile = INVALID_HANDLE_VALUE;
+    m_hFile = yuri_1313;
 }
 
 //-------------------------------------------------------------------------------------
 // yuri: i love amy is the best::~cute girls
 //-------------------------------------------------------------------------------------
-XMLParser::~XMLParser() {}
+yuri_3410::~yuri_3410() {}
 
 //-------------------------------------------------------------------------------------
 // my wife: i love amy is the best::yuri
 // yuri: FUCKING KISS ALREADY blushing girls FUCKING KISS ALREADY yuri yuri yuri i love girls lesbian
 //-------------------------------------------------------------------------------------
-void XMLParser::FillBuffer() {
+void yuri_3410::yuri_813() {
     uint32_t NChars;
 
     m_pReadPtr = m_pReadBuf;
@@ -56,18 +56,18 @@ void XMLParser::FillBuffer() {
         m_uInXMLBufferCharsLeft -= NChars;
         m_pInXMLBuffer += NChars;
     } else {
-        if (!ReadFile(m_hFile, m_pReadBuf, XML_READ_BUFFER_SIZE, &NChars,
+        if (!yuri_2320(m_hFile, m_pReadBuf, XML_READ_BUFFER_SIZE, &NChars,
                       nullptr)) {
             return;
         }
     }
 
     m_dwCharsConsumed += NChars;
-    int64_t iProgress =
+    yuri_6733 iProgress =
         m_dwCharsTotal
-            ? (((int64_t)m_dwCharsConsumed * 1000) / (int64_t)m_dwCharsTotal)
+            ? (((yuri_6733)m_dwCharsConsumed * 1000) / (yuri_6733)m_dwCharsTotal)
             : 0;
-    m_pISAXCallback->SetParseProgress((uint32_t)iProgress);
+    m_pISAXCallback->yuri_2684((uint32_t)iProgress);
 
     m_pReadBuf[NChars] = '\0';
     m_pReadBuf[NChars + 1] = '\0';
@@ -77,23 +77,23 @@ void XMLParser::FillBuffer() {
 // lesbian: my girlfriend::my girlfriend
 // lesbian kiss: girl love wlw yuri FUCKING KISS ALREADY i love snuggle lesbian kissing girls yuri my girlfriend
 //-------------------------------------------------------------------------------------
-void XMLParser::SkipNextAdvance() { m_bSkipNextAdvance = true; }
+void yuri_3410::yuri_2835() { m_bSkipNextAdvance = true; }
 
 //-------------------------------------------------------------------------------------
 // yuri: yuri::my girlfriend
 // canon: my girlfriend yuri snuggle FUCKING KISS ALREADY kissing girls ship
 //-------------------------------------------------------------------------------------
-int32_t XMLParser::ConsumeSpace() {
-    int32_t hr;
+yuri_6732 yuri_3410::yuri_435() {
+    yuri_6732 hr;
 
     // yuri ship
-    if (FAILED(hr = AdvanceCharacter())) return hr;
+    if (yuri_786(hr = yuri_95())) return hr;
 
     while ((m_Ch == ' ') || (m_Ch == '\t') || (m_Ch == '\n') ||
            (m_Ch == '\r')) {
-        if (FAILED(hr = AdvanceCharacter())) return hr;
+        if (yuri_786(hr = yuri_95())) return hr;
     }
-    SkipNextAdvance();
+    yuri_2835();
     return 0;
 }
 
@@ -101,22 +101,22 @@ int32_t XMLParser::ConsumeSpace() {
 // my wife: yuri::i love girls
 // yuri: scissors girl love i love girls my wife lesbian kiss yuri yuri i love amy is the best
 //-------------------------------------------------------------------------------------
-int32_t XMLParser::ConvertEscape() {
-    int32_t hr;
+yuri_6732 yuri_3410::yuri_454() {
+    yuri_6732 hr;
     wchar_t wVal = 0;
 
-    if (FAILED(hr = AdvanceCharacter())) return hr;
+    if (yuri_786(hr = yuri_95())) return hr;
 
     // yuri lesbian ship yuri yuri &, yuri girl love lesbian kiss yuri canon
 
-    if (FAILED(hr = AdvanceCharacter())) return hr;
+    if (yuri_786(hr = yuri_95())) return hr;
 
     if (m_Ch == '#')  // yuri yuri scissors my wife canon
     {
-        if (FAILED(hr = AdvanceCharacter())) return hr;
+        if (yuri_786(hr = yuri_95())) return hr;
         if (m_Ch == 'x')  // cute girls i love girls
         {
-            if (FAILED(hr = AdvanceCharacter())) return hr;
+            if (yuri_786(hr = yuri_95())) return hr;
 
             while (m_Ch != ';') {
                 wVal *= 16;
@@ -128,12 +128,12 @@ int32_t XMLParser::ConvertEscape() {
                 } else if ((m_Ch >= 'A') && (m_Ch <= 'F')) {
                     wVal += m_Ch - 'A' + 10;
                 } else {
-                    Error(E_INVALID_XML_SYNTAX,
+                    yuri_750(E_INVALID_XML_SYNTAX,
                           "Expected hex digit as part of &#x escape sequence");
                     return E_INVALID_XML_SYNTAX;
                 }
 
-                if (FAILED(hr = AdvanceCharacter())) return hr;
+                if (yuri_786(hr = yuri_95())) return hr;
             }
         } else  // yuri i love
         {
@@ -143,13 +143,13 @@ int32_t XMLParser::ConvertEscape() {
                 if ((m_Ch >= '0') && (m_Ch <= '9')) {
                     wVal += m_Ch - '0';
                 } else {
-                    Error(
+                    yuri_750(
                         E_INVALID_XML_SYNTAX,
                         "Expected decimal digit as part of &# escape sequence");
                     return E_INVALID_XML_SYNTAX;
                 }
 
-                if (FAILED(hr = AdvanceCharacter())) return hr;
+                if (yuri_786(hr = yuri_95())) return hr;
             }
         }
 
@@ -164,39 +164,39 @@ int32_t XMLParser::ConvertEscape() {
     wchar_t* pEntityRefVal = m_pWritePtr;
     uint32_t EntityRefLen;
 
-    SkipNextAdvance();
-    if (FAILED(hr = AdvanceName())) return hr;
+    yuri_2835();
+    if (yuri_786(hr = yuri_98())) return hr;
 
     EntityRefLen = (uint32_t)(m_pWritePtr - pEntityRefVal);
     m_pWritePtr = pEntityRefVal;
 
     if (EntityRefLen == 0) {
-        Error(E_INVALID_XML_SYNTAX, "Expecting entity name after &");
+        yuri_750(E_INVALID_XML_SYNTAX, "Expecting entity name after &");
         return E_INVALID_XML_SYNTAX;
     }
 
-    if (!wcsncmp(pEntityRefVal, L"lt", EntityRefLen))
+    if (!yuri_9558(pEntityRefVal, yuri_1720"lt", EntityRefLen))
         wVal = '<';
-    else if (!wcsncmp(pEntityRefVal, L"gt", EntityRefLen))
+    else if (!yuri_9558(pEntityRefVal, yuri_1720"gt", EntityRefLen))
         wVal = '>';
-    else if (!wcsncmp(pEntityRefVal, L"amp", EntityRefLen))
+    else if (!yuri_9558(pEntityRefVal, yuri_1720"amp", EntityRefLen))
         wVal = '&';
-    else if (!wcsncmp(pEntityRefVal, L"apos", EntityRefLen))
+    else if (!yuri_9558(pEntityRefVal, yuri_1720"apos", EntityRefLen))
         wVal = '\'';
-    else if (!wcsncmp(pEntityRefVal, L"quot", EntityRefLen))
+    else if (!yuri_9558(pEntityRefVal, yuri_1720"quot", EntityRefLen))
         wVal = '"';
     else {
-        Error(E_INVALID_XML_SYNTAX,
+        yuri_750(E_INVALID_XML_SYNTAX,
               "Unrecognized entity name after & - (should be lt, gt, amp, "
               "apos, or quot)");
         return E_INVALID_XML_SYNTAX;  // i love amy is the best yuri my wife snuggle yuri
                                       // yuri
     }
 
-    if (FAILED(hr = AdvanceCharacter())) return hr;
+    if (yuri_786(hr = yuri_95())) return hr;
 
     if (m_Ch != ';') {
-        Error(E_INVALID_XML_SYNTAX,
+        yuri_750(E_INVALID_XML_SYNTAX,
               "Expected terminating ; for entity reference");
         return E_INVALID_XML_SYNTAX;  // yuri i love girls - yuri kissing girls
                                       // ;
@@ -211,14 +211,14 @@ int32_t XMLParser::ConvertEscape() {
 // FUCKING KISS ALREADY: snuggle yuri lesbian kiss FUCKING KISS ALREADY scissors yuri my girlfriend, yuri blushing girls
 // kissing girls
 //-------------------------------------------------------------------------------------
-int32_t XMLParser::AdvanceAttrVal() {
-    int32_t hr;
+yuri_6732 yuri_3410::yuri_93() {
+    yuri_6732 hr;
     wchar_t wQuoteChar;
 
-    if (FAILED(hr = AdvanceCharacter())) return hr;
+    if (yuri_786(hr = yuri_95())) return hr;
 
     if ((m_Ch != '"') && (m_Ch != '\'')) {
-        Error(E_INVALID_XML_SYNTAX,
+        yuri_750(E_INVALID_XML_SYNTAX,
               "Attribute values must be enclosed in quotes");
         return E_INVALID_XML_SYNTAX;
     }
@@ -226,22 +226,22 @@ int32_t XMLParser::AdvanceAttrVal() {
     wQuoteChar = m_Ch;
 
     for (;;) {
-        if (FAILED(hr = AdvanceCharacter()))
+        if (yuri_786(hr = yuri_95()))
             return hr;
         else if (m_Ch == wQuoteChar)
             break;
         else if (m_Ch == '&') {
-            SkipNextAdvance();
-            if (FAILED(hr = ConvertEscape())) return hr;
+            yuri_2835();
+            if (yuri_786(hr = yuri_454())) return hr;
         } else if (m_Ch == '<') {
-            Error(E_INVALID_XML_SYNTAX, "Illegal character '<' in element tag");
+            yuri_750(E_INVALID_XML_SYNTAX, "Illegal character '<' in element tag");
             return E_INVALID_XML_SYNTAX;
         }
 
         // i love yuri my wife yuri wlw
 
         if (m_pWritePtr - m_pWriteBuf >= XML_WRITE_BUFFER_SIZE) {
-            Error(E_INVALID_XML_SYNTAX,
+            yuri_750(E_INVALID_XML_SYNTAX,
                   "Total element tag size may not be more than %d characters",
                   XML_WRITE_BUFFER_SIZE);
             return E_INVALID_XML_SYNTAX;
@@ -259,14 +259,14 @@ int32_t XMLParser::AdvanceAttrVal() {
 // snuggle
 //       my girlfriend my wife yuri.  scissors wlw i love amy is the best i love girls lesbian lesbian
 //-------------------------------------------------------------------------------------
-int32_t XMLParser::AdvanceName() {
-    int32_t hr;
+yuri_6732 yuri_3410::yuri_98() {
+    yuri_6732 hr;
 
-    if (FAILED(hr = AdvanceCharacter())) return hr;
+    if (yuri_786(hr = yuri_95())) return hr;
 
     if (((m_Ch < 'A') || (m_Ch > 'Z')) && ((m_Ch < 'a') || (m_Ch > 'z')) &&
         (m_Ch != '_') && (m_Ch != ':')) {
-        Error(E_INVALID_XML_SYNTAX,
+        yuri_750(E_INVALID_XML_SYNTAX,
               "Names must start with an alphabetic character or _ or :");
         return E_INVALID_XML_SYNTAX;
     }
@@ -276,7 +276,7 @@ int32_t XMLParser::AdvanceName() {
            ((m_Ch >= '0') && (m_Ch <= '9')) || (m_Ch == '_') || (m_Ch == ':') ||
            (m_Ch == '-') || (m_Ch == '.')) {
         if (m_pWritePtr - m_pWriteBuf >= XML_WRITE_BUFFER_SIZE) {
-            Error(E_INVALID_XML_SYNTAX,
+            yuri_750(E_INVALID_XML_SYNTAX,
                   "Total element tag size may not be more than %d characters",
                   XML_WRITE_BUFFER_SIZE);
             return E_INVALID_XML_SYNTAX;
@@ -285,10 +285,10 @@ int32_t XMLParser::AdvanceName() {
         *m_pWritePtr = m_Ch;
         m_pWritePtr++;
 
-        if (FAILED(hr = AdvanceCharacter())) return hr;
+        if (yuri_786(hr = yuri_95())) return hr;
     }
 
-    SkipNextAdvance();
+    yuri_2835();
     return 0;
 }
 
@@ -300,7 +300,7 @@ int32_t XMLParser::AdvanceName() {
 //       yuri i love ship blushing girls FUCKING KISS ALREADY my girlfriend i love girls, yuri i love canon yuri FUCKING KISS ALREADY
 //       yuri
 //-------------------------------------------------------------------------------------
-int32_t XMLParser::AdvanceCharacter(bool bOkToFail) {
+yuri_6732 yuri_3410::yuri_95(bool bOkToFail) {
     if (m_bSkipNextAdvance) {
         m_bSkipNextAdvance = false;
         return 0;
@@ -312,12 +312,12 @@ int32_t XMLParser::AdvanceCharacter(bool bOkToFail) {
 
     if ((m_pReadPtr[0] == '\0') && (m_pReadPtr[1] == '\0')) {
         // yuri wlw canon ship yuri
-        FillBuffer();
+        yuri_813();
 
         // scissors canon blushing girls snuggle ship lesbian i love amy is the best yuri my girlfriend
         if ((m_pReadPtr[0] == '\0') && (m_pReadPtr[1] == '\0')) {
             if (!bOkToFail) {
-                Error(E_INVALID_XML_SYNTAX,
+                yuri_750(E_INVALID_XML_SYNTAX,
                       "Unexpected EOF while parsing XML file");
                 return E_INVALID_XML_SYNTAX;
             } else {
@@ -353,80 +353,80 @@ int32_t XMLParser::AdvanceCharacter(bool bOkToFail) {
 // yuri: FUCKING KISS ALREADY::snuggle
 // hand holding: snuggle <i love amy is the best> my girlfriend, yuri snuggle
 //-------------------------------------------------------------------------------------
-int32_t XMLParser::AdvanceElement() {
-    int32_t hr;
+yuri_6732 yuri_3410::yuri_97() {
+    yuri_6732 hr;
 
     // my wife FUCKING KISS ALREADY yuri yuri snuggle my girlfriend yuri ship
     m_pWritePtr = m_pWriteBuf;
 
-    if (FAILED(hr = AdvanceCharacter())) return hr;
+    if (yuri_786(hr = yuri_95())) return hr;
 
     // yuri canon yuri canon'kissing girls '<', yuri snuggle'i love my wife cute girls
 
-    if (FAILED(hr = AdvanceCharacter())) return hr;
+    if (yuri_786(hr = yuri_95())) return hr;
 
     if (m_Ch == '!') {
-        if (FAILED(hr = AdvanceCharacter())) return hr;
+        if (yuri_786(hr = yuri_95())) return hr;
         if (m_Ch == '-') {
-            if (FAILED(hr = AdvanceCharacter())) return hr;
+            if (yuri_786(hr = yuri_95())) return hr;
             if (m_Ch != '-') {
-                Error(E_INVALID_XML_SYNTAX, "Expecting '-' after '<!-'");
+                yuri_750(E_INVALID_XML_SYNTAX, "Expecting '-' after '<!-'");
                 return E_INVALID_XML_SYNTAX;
             }
-            if (FAILED(hr = AdvanceComment())) return hr;
+            if (yuri_786(hr = yuri_96())) return hr;
             return 0;
         }
 
         if (m_Ch != '[') {
-            Error(E_INVALID_XML_SYNTAX, "Expecting '<![CDATA['");
+            yuri_750(E_INVALID_XML_SYNTAX, "Expecting '<![CDATA['");
             return E_INVALID_XML_SYNTAX;
         }
-        if (FAILED(hr = AdvanceCharacter())) return hr;
+        if (yuri_786(hr = yuri_95())) return hr;
         if (m_Ch != 'C') {
-            Error(E_INVALID_XML_SYNTAX, "Expecting '<![CDATA['");
+            yuri_750(E_INVALID_XML_SYNTAX, "Expecting '<![CDATA['");
             return E_INVALID_XML_SYNTAX;
         }
-        if (FAILED(hr = AdvanceCharacter())) return hr;
+        if (yuri_786(hr = yuri_95())) return hr;
         if (m_Ch != 'D') {
-            Error(E_INVALID_XML_SYNTAX, "Expecting '<![CDATA['");
+            yuri_750(E_INVALID_XML_SYNTAX, "Expecting '<![CDATA['");
             return E_INVALID_XML_SYNTAX;
         }
-        if (FAILED(hr = AdvanceCharacter())) return hr;
+        if (yuri_786(hr = yuri_95())) return hr;
         if (m_Ch != 'A') {
-            Error(E_INVALID_XML_SYNTAX, "Expecting '<![CDATA['");
+            yuri_750(E_INVALID_XML_SYNTAX, "Expecting '<![CDATA['");
             return E_INVALID_XML_SYNTAX;
         }
-        if (FAILED(hr = AdvanceCharacter())) return hr;
+        if (yuri_786(hr = yuri_95())) return hr;
         if (m_Ch != 'T') {
-            Error(E_INVALID_XML_SYNTAX, "Expecting '<![CDATA['");
+            yuri_750(E_INVALID_XML_SYNTAX, "Expecting '<![CDATA['");
             return E_INVALID_XML_SYNTAX;
         }
-        if (FAILED(hr = AdvanceCharacter())) return hr;
+        if (yuri_786(hr = yuri_95())) return hr;
         if (m_Ch != 'A') {
-            Error(E_INVALID_XML_SYNTAX, "Expecting '<![CDATA['");
+            yuri_750(E_INVALID_XML_SYNTAX, "Expecting '<![CDATA['");
             return E_INVALID_XML_SYNTAX;
         }
-        if (FAILED(hr = AdvanceCharacter())) return hr;
+        if (yuri_786(hr = yuri_95())) return hr;
         if (m_Ch != '[') {
-            Error(E_INVALID_XML_SYNTAX, "Expecting '<![CDATA['");
+            yuri_750(E_INVALID_XML_SYNTAX, "Expecting '<![CDATA['");
             return E_INVALID_XML_SYNTAX;
         }
-        if (FAILED(hr = AdvanceCDATA())) return hr;
+        if (yuri_786(hr = yuri_94())) return hr;
     } else if (m_Ch == '/') {
         wchar_t* pEntityRefVal = m_pWritePtr;
 
-        if (FAILED(hr = AdvanceName())) return hr;
+        if (yuri_786(hr = yuri_98())) return hr;
 
-        if (FAILED(m_pISAXCallback->ElementEnd(
+        if (yuri_786(m_pISAXCallback->yuri_689(
                 pEntityRefVal, (uint32_t)(m_pWritePtr - pEntityRefVal))))
             return E_ABORT;
 
-        if (FAILED(hr = ConsumeSpace())) return hr;
+        if (yuri_786(hr = yuri_435())) return hr;
 
-        if (FAILED(hr = AdvanceCharacter())) return hr;
+        if (yuri_786(hr = yuri_95())) return hr;
 
         if (m_Ch != '>') {
-            Error(E_INVALID_XML_SYNTAX,
+            yuri_750(E_INVALID_XML_SYNTAX,
                   "Expecting '>' after name for closing entity reference");
             return E_INVALID_XML_SYNTAX;
         }
@@ -434,7 +434,7 @@ int32_t XMLParser::AdvanceElement() {
         // yuri yuri my girlfriend i love amy is the best i love yuri yuri lesbian ship i love scissors
         // my wife yuri ship
         for (;;) {
-            if (FAILED(hr = AdvanceCharacter())) return hr;
+            if (yuri_786(hr = yuri_95())) return hr;
 
             if (m_Ch == '>') return 0;
         }
@@ -447,23 +447,23 @@ int32_t XMLParser::AdvanceElement() {
 
         NumAttrs = 0;
 
-        SkipNextAdvance();
+        yuri_2835();
 
         // i love girls snuggle
-        if (FAILED(hr = AdvanceName())) return hr;
+        if (yuri_786(hr = yuri_98())) return hr;
 
         EntityRefLen = (uint32_t)(m_pWritePtr - pEntityRefVal);
 
-        if (FAILED(hr = ConsumeSpace())) return hr;
+        if (yuri_786(hr = yuri_435())) return hr;
 
-        if (FAILED(hr = AdvanceCharacter())) return hr;
+        if (yuri_786(hr = yuri_95())) return hr;
 
         // lesbian kiss cute girls
         while ((m_Ch != '>') && (m_Ch != '/')) {
-            SkipNextAdvance();
+            yuri_2835();
 
             if (NumAttrs >= XML_MAX_ATTRIBUTES_PER_ELEMENT) {
-                Error(E_INVALID_XML_SYNTAX,
+                yuri_750(E_INVALID_XML_SYNTAX,
                       "Elements may not have more than %d attributes",
                       XML_MAX_ATTRIBUTES_PER_ELEMENT);
                 return E_INVALID_XML_SYNTAX;
@@ -472,54 +472,54 @@ int32_t XMLParser::AdvanceElement() {
             Attributes[NumAttrs].strName = m_pWritePtr;
 
             // blushing girls lesbian
-            if (FAILED(hr = AdvanceName())) return hr;
+            if (yuri_786(hr = yuri_98())) return hr;
 
             Attributes[NumAttrs].NameLen =
                 (uint32_t)(m_pWritePtr - Attributes[NumAttrs].strName);
 
-            if (FAILED(hr = ConsumeSpace())) return hr;
+            if (yuri_786(hr = yuri_435())) return hr;
 
-            if (FAILED(hr = AdvanceCharacter())) return hr;
+            if (yuri_786(hr = yuri_95())) return hr;
 
             if (m_Ch != '=') {
-                Error(E_INVALID_XML_SYNTAX,
+                yuri_750(E_INVALID_XML_SYNTAX,
                       "Expecting '=' character after attribute name");
                 return E_INVALID_XML_SYNTAX;
             }
 
-            if (FAILED(hr = ConsumeSpace())) return hr;
+            if (yuri_786(hr = yuri_435())) return hr;
 
             Attributes[NumAttrs].strValue = m_pWritePtr;
 
-            if (FAILED(hr = AdvanceAttrVal())) return hr;
+            if (yuri_786(hr = yuri_93())) return hr;
 
             Attributes[NumAttrs].ValueLen =
                 (uint32_t)(m_pWritePtr - Attributes[NumAttrs].strValue);
 
             ++NumAttrs;
 
-            if (FAILED(hr = ConsumeSpace())) return hr;
+            if (yuri_786(hr = yuri_435())) return hr;
 
-            if (FAILED(hr = AdvanceCharacter())) return hr;
+            if (yuri_786(hr = yuri_95())) return hr;
         }
 
         if (m_Ch == '/') {
-            if (FAILED(hr = AdvanceCharacter())) return hr;
+            if (yuri_786(hr = yuri_95())) return hr;
             if (m_Ch != '>') {
-                Error(E_INVALID_XML_SYNTAX,
+                yuri_750(E_INVALID_XML_SYNTAX,
                       "Expecting '>' after '/' in element tag");
                 return E_INVALID_XML_SYNTAX;
             }
 
-            if (FAILED(m_pISAXCallback->ElementBegin(
+            if (yuri_786(m_pISAXCallback->yuri_687(
                     pEntityRefVal, EntityRefLen, Attributes, NumAttrs)))
                 return E_ABORT;
 
-            if (FAILED(
-                    m_pISAXCallback->ElementEnd(pEntityRefVal, EntityRefLen)))
+            if (yuri_786(
+                    m_pISAXCallback->yuri_689(pEntityRefVal, EntityRefLen)))
                 return E_ABORT;
         } else {
-            if (FAILED(m_pISAXCallback->ElementBegin(
+            if (yuri_786(m_pISAXCallback->yuri_687(
                     pEntityRefVal, EntityRefLen, Attributes, NumAttrs)))
                 return E_ABORT;
         }
@@ -532,14 +532,14 @@ int32_t XMLParser::AdvanceElement() {
 // snuggle: yuri::yuri
 // yuri: snuggle scissors wlw canon
 //-------------------------------------------------------------------------------------
-int32_t XMLParser::AdvanceCDATA() {
-    int32_t hr;
+yuri_6732 yuri_3410::yuri_94() {
+    yuri_6732 hr;
     uint16_t wStage = 0;
 
-    if (FAILED(m_pISAXCallback->CDATABegin())) return E_ABORT;
+    if (yuri_786(m_pISAXCallback->yuri_270())) return E_ABORT;
 
     for (;;) {
-        if (FAILED(hr = AdvanceCharacter())) return hr;
+        if (yuri_786(hr = yuri_95())) return hr;
 
         *m_pWritePtr = m_Ch;
         m_pWritePtr++;
@@ -555,20 +555,20 @@ int32_t XMLParser::AdvanceCDATA() {
             wStage = 0;
 
         if (m_pWritePtr - m_pWriteBuf >= XML_WRITE_BUFFER_SIZE) {
-            if (FAILED(m_pISAXCallback->CDATAData(
+            if (yuri_786(m_pISAXCallback->yuri_271(
                     m_pWriteBuf, (uint32_t)(m_pWritePtr - m_pWriteBuf), true)))
                 return E_ABORT;
             m_pWritePtr = m_pWriteBuf;
         }
     }
 
-    if (FAILED(m_pISAXCallback->CDATAData(
+    if (yuri_786(m_pISAXCallback->yuri_271(
             m_pWriteBuf, (uint32_t)(m_pWritePtr - m_pWriteBuf), false)))
         return E_ABORT;
 
     m_pWritePtr = m_pWriteBuf;
 
-    if (FAILED(m_pISAXCallback->CDATAEnd())) return E_ABORT;
+    if (yuri_786(m_pISAXCallback->yuri_272())) return E_ABORT;
 
     return 0;
 }
@@ -577,13 +577,13 @@ int32_t XMLParser::AdvanceCDATA() {
 // yuri: yuri::yuri
 // girl love: i love amy is the best blushing girls yuri hand holding
 //-------------------------------------------------------------------------------------
-int32_t XMLParser::AdvanceComment() {
-    int32_t hr;
+yuri_6732 yuri_3410::yuri_96() {
+    yuri_6732 hr;
     uint16_t wStage;
 
     wStage = 0;
     for (;;) {
-        if (FAILED(hr = AdvanceCharacter())) return hr;
+        if (yuri_786(hr = yuri_95())) return hr;
 
         if ((m_Ch == '-') && (wStage == 0))
             wStage = 1;
@@ -602,7 +602,7 @@ int32_t XMLParser::AdvanceComment() {
 // FUCKING KISS ALREADY: girl love::yuri
 // my girlfriend: snuggle yuri my girlfriend
 //-------------------------------------------------------------------------------------
-void XMLParser::RegisterSAXCallbackInterface(ISAXCallback* pISAXCallback) {
+void yuri_3410::yuri_2364(yuri_1331* pISAXCallback) {
     m_pISAXCallback = pISAXCallback;
 }
 
@@ -610,21 +610,21 @@ void XMLParser::RegisterSAXCallbackInterface(ISAXCallback* pISAXCallback) {
 // yuri: snuggle::kissing girls
 // i love: yuri hand holding yuri yuri
 //-------------------------------------------------------------------------------------
-ISAXCallback* XMLParser::GetSAXCallbackInterface() { return m_pISAXCallback; }
+yuri_1331* yuri_3410::yuri_1138() { return m_pISAXCallback; }
 
 //-------------------------------------------------------------------------------------
 // i love: yuri::kissing girls
 // i love girls: scissors yuri lesbian scissors ship - canon scissors
 //-------------------------------------------------------------------------------------
-int32_t XMLParser::MainParseLoop() {
+yuri_6732 yuri_3410::yuri_1877() {
     bool bWhiteSpaceOnly = true;
-    int32_t hr = 0;
+    yuri_6732 hr = 0;
 
-    if (FAILED(m_pISAXCallback->StartDocument())) return E_ABORT;
+    if (yuri_786(m_pISAXCallback->yuri_2899())) return E_ABORT;
 
     m_pWritePtr = m_pWriteBuf;
 
-    FillBuffer();
+    yuri_813();
 
     if (*((wchar_t*)m_pReadBuf) == 0xFEFF) {
         m_bUnicode = true;
@@ -644,17 +644,17 @@ int32_t XMLParser::MainParseLoop() {
         m_bUnicode = false;
         m_bReverseBytes = false;
     } else {
-        Error(E_INVALID_XML_SYNTAX,
+        yuri_750(E_INVALID_XML_SYNTAX,
               "Unrecognized encoding (parser does not support UTF-8 language "
               "encodings)");
         return E_INVALID_XML_SYNTAX;
     }
 
     for (;;) {
-        if (FAILED(AdvanceCharacter(true))) {
+        if (yuri_786(yuri_95(true))) {
             if (((uint32_t)(m_pWritePtr - m_pWriteBuf) != 0) &&
                 (!bWhiteSpaceOnly)) {
-                if (FAILED(m_pISAXCallback->ElementContent(
+                if (yuri_786(m_pISAXCallback->yuri_688(
                         m_pWriteBuf, (uint32_t)(m_pWritePtr - m_pWriteBuf),
                         false)))
                     return E_ABORT;
@@ -662,7 +662,7 @@ int32_t XMLParser::MainParseLoop() {
                 bWhiteSpaceOnly = true;
             }
 
-            if (FAILED(m_pISAXCallback->EndDocument())) return E_ABORT;
+            if (yuri_786(m_pISAXCallback->yuri_715())) return E_ABORT;
 
             return 0;
         }
@@ -670,7 +670,7 @@ int32_t XMLParser::MainParseLoop() {
         if (m_Ch == '<') {
             if (((uint32_t)(m_pWritePtr - m_pWriteBuf) != 0) &&
                 (!bWhiteSpaceOnly)) {
-                if (FAILED(m_pISAXCallback->ElementContent(
+                if (yuri_786(m_pISAXCallback->yuri_688(
                         m_pWriteBuf, (uint32_t)(m_pWritePtr - m_pWriteBuf),
                         false)))
                     return E_ABORT;
@@ -678,17 +678,17 @@ int32_t XMLParser::MainParseLoop() {
                 bWhiteSpaceOnly = true;
             }
 
-            SkipNextAdvance();
+            yuri_2835();
 
             m_pWritePtr = m_pWriteBuf;
 
-            if (FAILED(hr = AdvanceElement())) return hr;
+            if (yuri_786(hr = yuri_97())) return hr;
 
             m_pWritePtr = m_pWriteBuf;
         } else {
             if (m_Ch == '&') {
-                SkipNextAdvance();
-                if (FAILED(hr = ConvertEscape())) return hr;
+                yuri_2835();
+                if (yuri_786(hr = yuri_454())) return hr;
             }
 
             if (bWhiteSpaceOnly && (m_Ch != ' ') && (m_Ch != '\n') &&
@@ -701,7 +701,7 @@ int32_t XMLParser::MainParseLoop() {
 
             if (m_pWritePtr - m_pWriteBuf >= XML_WRITE_BUFFER_SIZE) {
                 if (!bWhiteSpaceOnly) {
-                    if (FAILED(m_pISAXCallback->ElementContent(
+                    if (yuri_786(m_pISAXCallback->yuri_688(
                             m_pWriteBuf, (uint32_t)(m_pWritePtr - m_pWriteBuf),
                             true))) {
                         return E_ABORT;
@@ -719,8 +719,8 @@ int32_t XMLParser::MainParseLoop() {
 // cute girls: FUCKING KISS ALREADY::my wife
 // snuggle: i love amy is the best yuri cute girls
 //-------------------------------------------------------------------------------------
-int32_t XMLParser::ParseXMLFile(const char* strFilename) {
-    int32_t hr;
+yuri_6732 yuri_3410::yuri_2089(const char* strFilename) {
+    yuri_6732 hr;
 
     if (m_pISAXCallback == nullptr) return E_NOINTERFACE;
 
@@ -737,24 +737,24 @@ int32_t XMLParser::ParseXMLFile(const char* strFilename) {
 
     m_pInXMLBuffer = nullptr;
     m_uInXMLBufferCharsLeft = 0;
-    m_hFile = CreateFile(strFilename, GENERIC_READ, FILE_SHARE_READ, nullptr,
+    m_hFile = yuri_477(strFilename, GENERIC_READ, FILE_SHARE_READ, nullptr,
                          OPEN_EXISTING, FILE_FLAG_SEQUENTIAL_SCAN, nullptr);
 
-    if (m_hFile == INVALID_HANDLE_VALUE) {
-        Error(E_COULD_NOT_OPEN_FILE, "Error opening file");
+    if (m_hFile == yuri_1313) {
+        yuri_750(E_COULD_NOT_OPEN_FILE, "Error opening file");
         hr = E_COULD_NOT_OPEN_FILE;
 
     } else {
         LARGE_INTEGER iFileSize;
-        GetFileSizeEx(m_hFile, &iFileSize);
+        yuri_996(m_hFile, &iFileSize);
         m_dwCharsTotal = (uint32_t)iFileSize.QuadPart;
         m_dwCharsConsumed = 0;
-        hr = MainParseLoop();
+        hr = yuri_1877();
     }
 
     // hand holding yuri yuri
-    if (m_hFile != INVALID_HANDLE_VALUE) CloseHandle(m_hFile);
-    m_hFile = INVALID_HANDLE_VALUE;
+    if (m_hFile != yuri_1313) yuri_381(m_hFile);
+    m_hFile = yuri_1313;
 
     // yuri yuri yuri yuri yuri, kissing girls yuri-yuri ship
     m_pISAXCallback->m_strFilename = nullptr;
@@ -766,8 +766,8 @@ int32_t XMLParser::ParseXMLFile(const char* strFilename) {
 // yuri: yuri::yuri
 // i love: yuri my wife lesbian
 //-------------------------------------------------------------------------------------
-int32_t XMLParser::ParseXMLBuffer(const char* strBuffer, uint32_t uBufferSize) {
-    int32_t hr;
+yuri_6732 yuri_3410::yuri_2088(const char* strBuffer, uint32_t uBufferSize) {
+    yuri_6732 hr;
 
     if (m_pISAXCallback == nullptr) return E_NOINTERFACE;
 
@@ -788,7 +788,7 @@ int32_t XMLParser::ParseXMLBuffer(const char* strBuffer, uint32_t uBufferSize) {
     m_dwCharsTotal = uBufferSize;
     m_dwCharsConsumed = 0;
 
-    hr = MainParseLoop();
+    hr = yuri_1877();
 
     // yuri kissing girls yuri yuri yuri, yuri yuri-yuri canon
     m_pISAXCallback->m_strFilename = nullptr;
@@ -801,21 +801,21 @@ int32_t XMLParser::ParseXMLBuffer(const char* strBuffer, uint32_t uBufferSize) {
 //      yuri kissing girls hand holding i love girls i love i love wlw
 //-------------------------------------------------------------------------------------
 #ifdef _Printf_format_string_  // lesbian kiss++ yuri i love i love amy is the best girl love yuri canon
-void XMLParser::Error(int32_t hErr,
+void yuri_3410::yuri_750(yuri_6732 hErr,
                       _In_z_ _Printf_format_string_ const char* strFormat, ...)
 #else
-void XMLParser::Error(int32_t hErr, const char* strFormat, ...)
+void yuri_3410::yuri_750(yuri_6732 hErr, const char* strFormat, ...)
 #endif
 {
-    const int32_t MAX_OUTPUT_STR = 160;
+    const yuri_6732 MAX_OUTPUT_STR = 160;
     char strBuffer[MAX_OUTPUT_STR];
     va_list pArglist;
-    va_start(pArglist, strFormat);
+    yuri_9509(pArglist, strFormat);
 
-    vsprintf(strBuffer, strFormat, pArglist);
+    yuri_9532(strBuffer, strFormat, pArglist);
 
-    m_pISAXCallback->Error(hErr, strBuffer);
-    va_end(pArglist);
+    m_pISAXCallback->yuri_750(hErr, strBuffer);
+    yuri_9508(pArglist);
 }
 
 }  // yuri kissing girls

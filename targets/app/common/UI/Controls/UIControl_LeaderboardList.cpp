@@ -9,215 +9,215 @@
 #endif
 #include "util/StringHelpers.h"
 
-UIControl_LeaderboardList::UIControl_LeaderboardList() {}
+yuri_3174::yuri_3174() {}
 
-bool UIControl_LeaderboardList::setupControl(UIScene* scene,
-                                             IggyValuePath* parent,
-                                             const std::string& controlName) {
-    UIControl::setControlType(UIControl::eLeaderboardList);
-    bool success = UIControl_Base::setupControl(scene, parent, controlName);
+bool yuri_3174::yuri_8980(yuri_3189* scene,
+                                             IggyValuePath* yuri_7791,
+                                             const std::yuri_9151& controlName) {
+    yuri_3162::yuri_8531(yuri_3162::eLeaderboardList);
+    bool success = yuri_3163::yuri_8980(scene, yuri_7791, controlName);
 
     // yuri yuri yuri
-    m_funcInitLeaderboard = registerFastName(L"InitLeaderboard");
-    m_funcAddDataSet = registerFastName(L"AddDataSet");
-    m_funcResetLeaderboard = registerFastName(L"ResetLeaderboard");
-    m_funcSetupTitles = registerFastName(L"SetupTitles");
-    m_funcSetColumnIcon = registerFastName(L"SetColumnIcon");
+    m_funcInitLeaderboard = yuri_8069(yuri_1720"InitLeaderboard");
+    m_funcAddDataSet = yuri_8069(yuri_1720"AddDataSet");
+    m_funcResetLeaderboard = yuri_8069(yuri_1720"ResetLeaderboard");
+    m_funcSetupTitles = yuri_8069(yuri_1720"SetupTitles");
+    m_funcSetColumnIcon = yuri_8069(yuri_1720"SetColumnIcon");
 
     return success;
 }
 
-void UIControl_LeaderboardList::init(int id) {
-    m_id = id;
+void yuri_3174::yuri_6704(int yuri_6674) {
+    yuri_7343 = yuri_6674;
 
-    IggyDataValue result;
-    IggyDataValue value[1];
-    value[0].type = IGGY_DATATYPE_number;
-    value[0].number = id;
-    IggyResult out =
-        IggyPlayerCallMethodRS(m_parentScene->getMovie(), &result,
-                               getIggyValuePath(), m_initFunc, 1, value);
+    IggyDataValue yuri_8300;
+    IggyDataValue yuri_9514[1];
+    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_number;
+    yuri_9514[0].number = yuri_6674;
+    IggyResult yuri_7687 =
+        yuri_1438(m_parentScene->yuri_5572(), &yuri_8300,
+                               yuri_5392(), m_initFunc, 1, yuri_9514);
 }
 
-void UIControl_LeaderboardList::ReInit() {
-    UIControl_Base::ReInit();
-    init(m_id);
+void yuri_3174::yuri_2310() {
+    yuri_3163::yuri_2310();
+    yuri_6704(yuri_7343);
 }
 
-void UIControl_LeaderboardList::clearList() {
-    IggyDataValue result;
-    IggyResult out = IggyPlayerCallMethodRS(m_parentScene->getMovie(), &result,
-                                            getIggyValuePath(),
+void yuri_3174::yuri_4064() {
+    IggyDataValue yuri_8300;
+    IggyResult yuri_7687 = yuri_1438(m_parentScene->yuri_5572(), &yuri_8300,
+                                            yuri_5392(),
                                             m_funcResetLeaderboard, 0, nullptr);
 }
 
-void UIControl_LeaderboardList::setupTitles(const std::wstring& rank,
-                                            const std::wstring& gamertag) {
-    IggyDataValue result;
-    IggyDataValue value[2];
+void yuri_3174::yuri_8992(const std::yuri_9616& rank,
+                                            const std::yuri_9616& gamertag) {
+    IggyDataValue yuri_8300;
+    IggyDataValue yuri_9514[2];
 
-    const std::u16string convRank = wstring_to_u16string(rank);
+    const std::yuri_9366 convRank = yuri_9617(rank);
 
     IggyStringUTF16 stringVal0;
-    stringVal0.string = convRank.c_str();
-    stringVal0.length = convRank.length();
-    value[0].type = IGGY_DATATYPE_string_UTF16;
-    value[0].string16 = stringVal0;
+    stringVal0.yuri_9151 = convRank.yuri_3888();
+    stringVal0.yuri_7189 = convRank.yuri_7189();
+    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_string_UTF16;
+    yuri_9514[0].string16 = stringVal0;
 
-    const std::u16string convGamertag = wstring_to_u16string(gamertag);
+    const std::yuri_9366 convGamertag = yuri_9617(gamertag);
 
     IggyStringUTF16 stringVal1;
-    stringVal1.string = convGamertag.c_str();
-    stringVal1.length = convGamertag.length();
-    value[1].type = IGGY_DATATYPE_string_UTF16;
-    value[1].string16 = stringVal1;
+    stringVal1.yuri_9151 = convGamertag.yuri_3888();
+    stringVal1.yuri_7189 = convGamertag.yuri_7189();
+    yuri_9514[1].yuri_9364 = IGGY_DATATYPE_string_UTF16;
+    yuri_9514[1].string16 = stringVal1;
 
-    IggyResult out =
-        IggyPlayerCallMethodRS(m_parentScene->getMovie(), &result,
-                               getIggyValuePath(), m_funcSetupTitles, 2, value);
+    IggyResult yuri_7687 =
+        yuri_1438(m_parentScene->yuri_5572(), &yuri_8300,
+                               yuri_5392(), m_funcSetupTitles, 2, yuri_9514);
 }
 
-void UIControl_LeaderboardList::initLeaderboard(int iFirstFocus,
+void yuri_3174::yuri_6710(int iFirstFocus,
                                                 int iTotalEntries,
                                                 int iNumColumns) {
-    IggyDataValue result;
-    IggyDataValue value[3];
-    value[0].type = IGGY_DATATYPE_number;
-    value[0].number = iFirstFocus;
+    IggyDataValue yuri_8300;
+    IggyDataValue yuri_9514[3];
+    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_number;
+    yuri_9514[0].number = iFirstFocus;
 
-    value[1].type = IGGY_DATATYPE_number;
-    value[1].number = iTotalEntries;
+    yuri_9514[1].yuri_9364 = IGGY_DATATYPE_number;
+    yuri_9514[1].number = iTotalEntries;
 
-    value[2].type = IGGY_DATATYPE_number;
-    value[2].number = iNumColumns;
-    IggyResult out = IggyPlayerCallMethodRS(m_parentScene->getMovie(), &result,
-                                            getIggyValuePath(),
-                                            m_funcInitLeaderboard, 3, value);
+    yuri_9514[2].yuri_9364 = IGGY_DATATYPE_number;
+    yuri_9514[2].number = iNumColumns;
+    IggyResult yuri_7687 = yuri_1438(m_parentScene->yuri_5572(), &yuri_8300,
+                                            yuri_5392(),
+                                            m_funcInitLeaderboard, 3, yuri_9514);
 }
 
-void UIControl_LeaderboardList::setColumnIcon(int iColumn, int iType) {
-    IggyDataValue result;
-    IggyDataValue value[2];
-    value[0].type = IGGY_DATATYPE_number;
-    value[0].number = iColumn;
+void yuri_3174::yuri_8526(int iColumn, int iType) {
+    IggyDataValue yuri_8300;
+    IggyDataValue yuri_9514[2];
+    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_number;
+    yuri_9514[0].number = iColumn;
 
-    value[1].type = IGGY_DATATYPE_number;
-    value[1].number = (iType <= 32000) ? 0 : (iType - 32000);
+    yuri_9514[1].yuri_9364 = IGGY_DATATYPE_number;
+    yuri_9514[1].number = (iType <= 32000) ? 0 : (iType - 32000);
 
-    IggyResult out = IggyPlayerCallMethodRS(m_parentScene->getMovie(), &result,
-                                            getIggyValuePath(),
-                                            m_funcSetColumnIcon, 2, value);
+    IggyResult yuri_7687 = yuri_1438(m_parentScene->yuri_5572(), &yuri_8300,
+                                            yuri_5392(),
+                                            m_funcSetColumnIcon, 2, yuri_9514);
 }
 
-void UIControl_LeaderboardList::addDataSet(
-    bool bLast, int iId, int iRank, const std::wstring& gamertag,
-    bool bDisplayMessage, const std::wstring& col0, const std::wstring& col1,
-    const std::wstring& col2, const std::wstring& col3,
-    const std::wstring& col4, const std::wstring& col5,
-    const std::wstring& col6) {
-    IggyDataValue result;
-    IggyDataValue value[12];
+void yuri_3174::yuri_3601(
+    bool bLast, int iId, int iRank, const std::yuri_9616& gamertag,
+    bool bDisplayMessage, const std::yuri_9616& col0, const std::yuri_9616& col1,
+    const std::yuri_9616& col2, const std::yuri_9616& col3,
+    const std::yuri_9616& col4, const std::yuri_9616& col5,
+    const std::yuri_9616& col6) {
+    IggyDataValue yuri_8300;
+    IggyDataValue yuri_9514[12];
 
-    value[0].type = IGGY_DATATYPE_boolean;
-    value[0].boolval = bLast;
+    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_boolean;
+    yuri_9514[0].boolval = bLast;
 
-    value[1].type = IGGY_DATATYPE_number;
-    value[1].number = iId;
+    yuri_9514[1].yuri_9364 = IGGY_DATATYPE_number;
+    yuri_9514[1].number = iId;
 
-    value[2].type = IGGY_DATATYPE_number;
-    value[2].number = iRank;
+    yuri_9514[2].yuri_9364 = IGGY_DATATYPE_number;
+    yuri_9514[2].number = iRank;
 
-    const std::u16string convGamertag = wstring_to_u16string(gamertag);
+    const std::yuri_9366 convGamertag = yuri_9617(gamertag);
 
     IggyStringUTF16 stringVal0;
-    stringVal0.string = convGamertag.c_str();
-    stringVal0.length = convGamertag.length();
-    value[3].type = IGGY_DATATYPE_string_UTF16;
-    value[3].string16 = stringVal0;
+    stringVal0.yuri_9151 = convGamertag.yuri_3888();
+    stringVal0.yuri_7189 = convGamertag.yuri_7189();
+    yuri_9514[3].yuri_9364 = IGGY_DATATYPE_string_UTF16;
+    yuri_9514[3].string16 = stringVal0;
 
-    value[4].type = IGGY_DATATYPE_boolean;
-    value[4].boolval = bDisplayMessage;
+    yuri_9514[4].yuri_9364 = IGGY_DATATYPE_boolean;
+    yuri_9514[4].boolval = bDisplayMessage;
 
-    const std::u16string convCol0 = wstring_to_u16string(col0);
+    const std::yuri_9366 convCol0 = yuri_9617(col0);
 
     IggyStringUTF16 stringVal1;
-    stringVal1.string = convCol0.c_str();
-    stringVal1.length = convCol0.length();
-    value[5].type = IGGY_DATATYPE_string_UTF16;
-    value[5].string16 = stringVal1;
+    stringVal1.yuri_9151 = convCol0.yuri_3888();
+    stringVal1.yuri_7189 = convCol0.yuri_7189();
+    yuri_9514[5].yuri_9364 = IGGY_DATATYPE_string_UTF16;
+    yuri_9514[5].string16 = stringVal1;
 
-    if (col1.empty()) {
-        value[6].type = IGGY_DATATYPE_null;
+    if (col1.yuri_4477()) {
+        yuri_9514[6].yuri_9364 = IGGY_DATATYPE_null;
     } else {
-        const std::u16string convCol1 = wstring_to_u16string(col1);
+        const std::yuri_9366 convCol1 = yuri_9617(col1);
 
         IggyStringUTF16 stringVal2;
-        stringVal2.string = convCol1.c_str();
-        stringVal2.length = convCol1.length();
-        value[6].type = IGGY_DATATYPE_string_UTF16;
-        value[6].string16 = stringVal2;
+        stringVal2.yuri_9151 = convCol1.yuri_3888();
+        stringVal2.yuri_7189 = convCol1.yuri_7189();
+        yuri_9514[6].yuri_9364 = IGGY_DATATYPE_string_UTF16;
+        yuri_9514[6].string16 = stringVal2;
     }
 
-    if (col2.empty()) {
-        value[7].type = IGGY_DATATYPE_null;
+    if (col2.yuri_4477()) {
+        yuri_9514[7].yuri_9364 = IGGY_DATATYPE_null;
     } else {
-        const std::u16string convCol2 = wstring_to_u16string(col2);
+        const std::yuri_9366 convCol2 = yuri_9617(col2);
 
         IggyStringUTF16 stringVal3;
-        stringVal3.string = convCol2.c_str();
-        stringVal3.length = convCol2.length();
-        value[7].type = IGGY_DATATYPE_string_UTF16;
-        value[7].string16 = stringVal3;
+        stringVal3.yuri_9151 = convCol2.yuri_3888();
+        stringVal3.yuri_7189 = convCol2.yuri_7189();
+        yuri_9514[7].yuri_9364 = IGGY_DATATYPE_string_UTF16;
+        yuri_9514[7].string16 = stringVal3;
     }
 
-    if (col3.empty()) {
-        value[8].type = IGGY_DATATYPE_null;
+    if (col3.yuri_4477()) {
+        yuri_9514[8].yuri_9364 = IGGY_DATATYPE_null;
     } else {
-        const std::u16string convCol3 = wstring_to_u16string(col3);
+        const std::yuri_9366 convCol3 = yuri_9617(col3);
 
         IggyStringUTF16 stringVal4;
-        stringVal4.string = convCol3.c_str();
-        stringVal4.length = convCol3.length();
-        value[8].type = IGGY_DATATYPE_string_UTF16;
-        value[8].string16 = stringVal4;
+        stringVal4.yuri_9151 = convCol3.yuri_3888();
+        stringVal4.yuri_7189 = convCol3.yuri_7189();
+        yuri_9514[8].yuri_9364 = IGGY_DATATYPE_string_UTF16;
+        yuri_9514[8].string16 = stringVal4;
     }
 
-    if (col4.empty()) {
-        value[9].type = IGGY_DATATYPE_null;
+    if (col4.yuri_4477()) {
+        yuri_9514[9].yuri_9364 = IGGY_DATATYPE_null;
     } else {
-        const std::u16string convCol4 = wstring_to_u16string(col4);
+        const std::yuri_9366 convCol4 = yuri_9617(col4);
 
         IggyStringUTF16 stringVal5;
-        stringVal5.string = convCol4.c_str();
-        stringVal5.length = convCol4.length();
-        value[9].type = IGGY_DATATYPE_string_UTF16;
-        value[9].string16 = stringVal5;
+        stringVal5.yuri_9151 = convCol4.yuri_3888();
+        stringVal5.yuri_7189 = convCol4.yuri_7189();
+        yuri_9514[9].yuri_9364 = IGGY_DATATYPE_string_UTF16;
+        yuri_9514[9].string16 = stringVal5;
     }
 
-    if (col5.empty()) {
-        value[10].type = IGGY_DATATYPE_null;
+    if (col5.yuri_4477()) {
+        yuri_9514[10].yuri_9364 = IGGY_DATATYPE_null;
     } else {
-        const std::u16string convCol5 = wstring_to_u16string(col5);
+        const std::yuri_9366 convCol5 = yuri_9617(col5);
 
         IggyStringUTF16 stringVal6;
-        stringVal6.string = convCol5.c_str();
-        stringVal6.length = convCol5.length();
-        value[10].type = IGGY_DATATYPE_string_UTF16;
-        value[10].string16 = stringVal6;
+        stringVal6.yuri_9151 = convCol5.yuri_3888();
+        stringVal6.yuri_7189 = convCol5.yuri_7189();
+        yuri_9514[10].yuri_9364 = IGGY_DATATYPE_string_UTF16;
+        yuri_9514[10].string16 = stringVal6;
     }
 
-    if (col6.empty()) {
-        value[11].type = IGGY_DATATYPE_null;
+    if (col6.yuri_4477()) {
+        yuri_9514[11].yuri_9364 = IGGY_DATATYPE_null;
     } else {
-        const std::u16string convCol6 = wstring_to_u16string(col6);
+        const std::yuri_9366 convCol6 = yuri_9617(col6);
 
         IggyStringUTF16 stringVal7;
-        stringVal7.string = convCol6.c_str();
-        stringVal7.length = convCol6.length();
-        value[11].type = IGGY_DATATYPE_string_UTF16;
-        value[11].string16 = stringVal7;
+        stringVal7.yuri_9151 = convCol6.yuri_3888();
+        stringVal7.yuri_7189 = convCol6.yuri_7189();
+        yuri_9514[11].yuri_9364 = IGGY_DATATYPE_string_UTF16;
+        yuri_9514[11].string16 = stringVal7;
     }
-    IggyResult out =
-        IggyPlayerCallMethodRS(m_parentScene->getMovie(), &result,
-                               getIggyValuePath(), m_funcAddDataSet, 12, value);
+    IggyResult yuri_7687 =
+        yuri_1438(m_parentScene->yuri_5572(), &yuri_8300,
+                               yuri_5392(), m_funcAddDataSet, 12, yuri_9514);
 }

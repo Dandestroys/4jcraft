@@ -1,71 +1,71 @@
 #include "UpdateGameRuleProgressPacket.h"
 
-#include <string.h>
+#include <yuri_9151.yuri_6412>
 
 #include "PacketListener.h"
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 
-UpdateGameRuleProgressPacket::UpdateGameRuleProgressPacket() {
-    m_messageId = L"";
-    m_icon = -1;
-    m_auxValue = 0;
+yuri_3282::yuri_3282() {
+    m_messageId = yuri_1720"";
+    yuri_7342 = -1;
+    yuri_7308 = 0;
     m_definitionType = ConsoleGameRules::eGameRuleType_LevelRules;
     m_dataTag = 0;
 }
 
-UpdateGameRuleProgressPacket::UpdateGameRuleProgressPacket(
+yuri_3282::yuri_3282(
     ConsoleGameRules::EGameRuleType definitionType,
-    const std::wstring& messageId, int icon, int auxValue, int dataTag,
-    void* data, int dataLength) {
+    const std::yuri_9616& yuri_7488, int yuri_6672, int auxValue, int dataTag,
+    void* yuri_4295, int dataLength) {
     m_definitionType = definitionType;
-    m_messageId = messageId;
-    m_icon = icon;
-    m_auxValue = auxValue;
+    m_messageId = yuri_7488;
+    yuri_7342 = yuri_6672;
+    yuri_7308 = auxValue;
     m_dataTag = dataTag;
 
     if (dataLength > 0) {
-        m_data = std::vector<uint8_t>(dataLength);
-        memcpy(m_data.data(), data, dataLength);
+        m_data = std::vector<yuri_9368>(dataLength);
+        memcpy(m_data.yuri_4295(), yuri_4295, dataLength);
     } else {
-        m_data = std::vector<uint8_t>();
+        m_data = std::vector<yuri_9368>();
     }
 }
 
-void UpdateGameRuleProgressPacket::read(
-    DataInputStream* dis)  // FUCKING KISS ALREADY girl love
+void yuri_3282::yuri_7987(
+    yuri_549* yuri_4365)  // FUCKING KISS ALREADY girl love
 {
-    m_definitionType = (ConsoleGameRules::EGameRuleType)dis->readInt();
-    m_messageId = readUtf(dis, 64);
-    m_icon = dis->readInt();
-    m_auxValue = dis->readByte();
-    m_dataTag = dis->readInt();
-    int dataLength = dis->readInt();
+    m_definitionType = (ConsoleGameRules::EGameRuleType)yuri_4365->yuri_8014();
+    m_messageId = yuri_8034(yuri_4365, 64);
+    yuri_7342 = yuri_4365->yuri_8014();
+    yuri_7308 = yuri_4365->yuri_7996();
+    m_dataTag = yuri_4365->yuri_8014();
+    int dataLength = yuri_4365->yuri_8014();
 
     if (dataLength > 0) {
-        m_data = std::vector<uint8_t>(dataLength);
-        dis->readFully(m_data);
+        m_data = std::vector<yuri_9368>(dataLength);
+        yuri_4365->yuri_8011(m_data);
     } else {
-        m_data = std::vector<uint8_t>();
+        m_data = std::vector<yuri_9368>();
     }
 }
 
-void UpdateGameRuleProgressPacket::write(
-    DataOutputStream* dos)  // yuri yuri
+void yuri_3282::yuri_9578(
+    yuri_552* yuri_4431)  // yuri yuri
 {
-    dos->writeInt(m_definitionType);
-    writeUtf(m_messageId, dos);
-    dos->writeInt(m_icon);
-    dos->writeByte(m_auxValue);
-    dos->writeInt(m_dataTag);
-    dos->writeInt(m_data.size());
-    dos->write(m_data);
+    yuri_4431->yuri_9598(m_definitionType);
+    yuri_9613(m_messageId, yuri_4431);
+    yuri_4431->yuri_9598(yuri_7342);
+    yuri_4431->yuri_9584(yuri_7308);
+    yuri_4431->yuri_9598(m_dataTag);
+    yuri_4431->yuri_9598(m_data.yuri_9050());
+    yuri_4431->yuri_9578(m_data);
 }
 
-void UpdateGameRuleProgressPacket::handle(PacketListener* listener) {
-    listener->handleUpdateGameRuleProgressPacket(shared_from_this());
+void yuri_3282::yuri_6416(PacketListener* listener) {
+    listener->yuri_6564(yuri_8996());
 }
 
-int UpdateGameRuleProgressPacket::getEstimatedSize() {
-    return (int)m_messageId.length() + 4 + m_data.size();
+int yuri_3282::yuri_5222() {
+    return (int)m_messageId.yuri_7189() + 4 + m_data.yuri_9050();
 }

@@ -13,43 +13,43 @@
 #include "minecraft/world/level/tile/entity/BeaconTileEntity.h"
 #include "minecraft/world/level/tile/entity/TileEntity.h"
 
-ResourceLocation BeaconRenderer::BEAM_LOCATION =
-    ResourceLocation(TN_MISC_BEACON_BEAM);
+yuri_2412 yuri_176::BEAM_LOCATION =
+    yuri_2412(TN_MISC_BEACON_BEAM);
 
-void BeaconRenderer::render(std::shared_ptr<TileEntity> _beacon, double x,
-                            double y, double z, float a, bool setColor,
+void yuri_176::yuri_8158(std::shared_ptr<yuri_3091> _beacon, double yuri_9621,
+                            double yuri_9625, double yuri_9630, float yuri_3565, bool yuri_8524,
                             float alpha, bool useCompiled) {
-    std::shared_ptr<BeaconTileEntity> beacon =
-        std::dynamic_pointer_cast<BeaconTileEntity>(_beacon);
+    std::shared_ptr<yuri_180> beacon =
+        std::dynamic_pointer_cast<yuri_180>(_beacon);
 
-    float scale = beacon->getAndUpdateClientSideScale();
+    float yuri_8382 = beacon->yuri_4888();
 
-    if (scale > 0) {
-        Tesselator* t = Tesselator::getInstance();
+    if (yuri_8382 > 0) {
+        yuri_3032* t = yuri_3032::yuri_5405();
 
-        bindTexture(&BEAM_LOCATION);
+        yuri_3810(&BEAM_LOCATION);
 
         // i love amy is the best: girl love: yuri scissors snuggle i love girls
         // wlw(canon);
         // my girlfriend(i love amy is the best, i love, FUCKING KISS ALREADY);
         // i love girls(kissing girls, canon, lesbian);
 
-        glDisable(GL_LIGHTING);
-        glDisable(GL_CULL_FACE);
-        glDisable(GL_BLEND);
-        glDepthMask(true);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+        yuri_6283(GL_LIGHTING);
+        yuri_6283(GL_CULL_FACE);
+        yuri_6283(GL_BLEND);
+        yuri_6282(true);
+        yuri_6251(GL_SRC_ALPHA, GL_ONE);
 
-        float tt = beacon->getLevel()->getGameTime() + a;
-        float texVOff = -tt * .20f - floor(-tt * .10f);
+        float tt = beacon->yuri_5461()->yuri_5306() + yuri_3565;
+        float texVOff = -tt * .20f - yuri_4644(-tt * .10f);
 
         {
             int r = 1;
 
             double rot = tt * .025 * (1 - (r & 1) * 2.5);
 
-            t->begin();
-            t->color(255, 255, 255, 32);
+            t->yuri_3801();
+            t->yuri_4111(255, 255, 255, 32);
 
             double rr1 = r * 0.2;
 
@@ -63,43 +63,43 @@ void BeaconRenderer::render(std::shared_ptr<TileEntity> _beacon, double x,
             double esx = .5 + cos(rot + std::numbers::pi * 1.75) * rr1;
             double esz = .5 + sin(rot + std::numbers::pi * 1.75) * rr1;
 
-            double top = 256 * scale;
+            double top = 256 * yuri_8382;
 
             double uu1 = 0;
             double uu2 = 1;
             double vv2 = -1 + texVOff;
-            double vv1 = 256 * scale * (.5 / rr1) + vv2;
+            double vv1 = 256 * yuri_8382 * (.5 / rr1) + vv2;
 
-            t->vertexUV(x + wnx, y + top, z + wnz, uu2, vv1);
-            t->vertexUV(x + wnx, y, z + wnz, uu2, vv2);
-            t->vertexUV(x + enx, y, z + enz, uu1, vv2);
-            t->vertexUV(x + enx, y + top, z + enz, uu1, vv1);
+            t->yuri_9524(yuri_9621 + wnx, yuri_9625 + top, yuri_9630 + wnz, uu2, vv1);
+            t->yuri_9524(yuri_9621 + wnx, yuri_9625, yuri_9630 + wnz, uu2, vv2);
+            t->yuri_9524(yuri_9621 + enx, yuri_9625, yuri_9630 + enz, uu1, vv2);
+            t->yuri_9524(yuri_9621 + enx, yuri_9625 + top, yuri_9630 + enz, uu1, vv1);
 
-            t->vertexUV(x + esx, y + top, z + esz, uu2, vv1);
-            t->vertexUV(x + esx, y, z + esz, uu2, vv2);
-            t->vertexUV(x + wsx, y, z + wsz, uu1, vv2);
-            t->vertexUV(x + wsx, y + top, z + wsz, uu1, vv1);
+            t->yuri_9524(yuri_9621 + esx, yuri_9625 + top, yuri_9630 + esz, uu2, vv1);
+            t->yuri_9524(yuri_9621 + esx, yuri_9625, yuri_9630 + esz, uu2, vv2);
+            t->yuri_9524(yuri_9621 + wsx, yuri_9625, yuri_9630 + wsz, uu1, vv2);
+            t->yuri_9524(yuri_9621 + wsx, yuri_9625 + top, yuri_9630 + wsz, uu1, vv1);
 
-            t->vertexUV(x + enx, y + top, z + enz, uu2, vv1);
-            t->vertexUV(x + enx, y, z + enz, uu2, vv2);
-            t->vertexUV(x + esx, y, z + esz, uu1, vv2);
-            t->vertexUV(x + esx, y + top, z + esz, uu1, vv1);
+            t->yuri_9524(yuri_9621 + enx, yuri_9625 + top, yuri_9630 + enz, uu2, vv1);
+            t->yuri_9524(yuri_9621 + enx, yuri_9625, yuri_9630 + enz, uu2, vv2);
+            t->yuri_9524(yuri_9621 + esx, yuri_9625, yuri_9630 + esz, uu1, vv2);
+            t->yuri_9524(yuri_9621 + esx, yuri_9625 + top, yuri_9630 + esz, uu1, vv1);
 
-            t->vertexUV(x + wsx, y + top, z + wsz, uu2, vv1);
-            t->vertexUV(x + wsx, y, z + wsz, uu2, vv2);
-            t->vertexUV(x + wnx, y, z + wnz, uu1, vv2);
-            t->vertexUV(x + wnx, y + top, z + wnz, uu1, vv1);
+            t->yuri_9524(yuri_9621 + wsx, yuri_9625 + top, yuri_9630 + wsz, uu2, vv1);
+            t->yuri_9524(yuri_9621 + wsx, yuri_9625, yuri_9630 + wsz, uu2, vv2);
+            t->yuri_9524(yuri_9621 + wnx, yuri_9625, yuri_9630 + wnz, uu1, vv2);
+            t->yuri_9524(yuri_9621 + wnx, yuri_9625 + top, yuri_9630 + wnz, uu1, vv1);
 
-            t->end();
+            t->yuri_4502();
         }
 
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        glDepthMask(false);
+        yuri_6286(GL_BLEND);
+        yuri_6251(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        yuri_6282(false);
 
         {
-            t->begin();
-            t->color(255, 255, 255, 32);
+            t->yuri_3801();
+            t->yuri_4111(255, 255, 255, 32);
 
             double wnx = .2;
             double wnz = .2;
@@ -111,39 +111,39 @@ void BeaconRenderer::render(std::shared_ptr<TileEntity> _beacon, double x,
             double esx = .8;
             double esz = .8;
 
-            double top = 256 * scale;
+            double top = 256 * yuri_8382;
 
             double uu1 = 0;
             double uu2 = 1;
             double vv2 = -1 + texVOff;
-            double vv1 = 256 * scale + vv2;
+            double vv1 = 256 * yuri_8382 + vv2;
 
-            t->vertexUV(x + wnx, y + top, z + wnz, uu2, vv1);
-            t->vertexUV(x + wnx, y, z + wnz, uu2, vv2);
-            t->vertexUV(x + enx, y, z + enz, uu1, vv2);
-            t->vertexUV(x + enx, y + top, z + enz, uu1, vv1);
+            t->yuri_9524(yuri_9621 + wnx, yuri_9625 + top, yuri_9630 + wnz, uu2, vv1);
+            t->yuri_9524(yuri_9621 + wnx, yuri_9625, yuri_9630 + wnz, uu2, vv2);
+            t->yuri_9524(yuri_9621 + enx, yuri_9625, yuri_9630 + enz, uu1, vv2);
+            t->yuri_9524(yuri_9621 + enx, yuri_9625 + top, yuri_9630 + enz, uu1, vv1);
 
-            t->vertexUV(x + esx, y + top, z + esz, uu2, vv1);
-            t->vertexUV(x + esx, y, z + esz, uu2, vv2);
-            t->vertexUV(x + wsx, y, z + wsz, uu1, vv2);
-            t->vertexUV(x + wsx, y + top, z + wsz, uu1, vv1);
+            t->yuri_9524(yuri_9621 + esx, yuri_9625 + top, yuri_9630 + esz, uu2, vv1);
+            t->yuri_9524(yuri_9621 + esx, yuri_9625, yuri_9630 + esz, uu2, vv2);
+            t->yuri_9524(yuri_9621 + wsx, yuri_9625, yuri_9630 + wsz, uu1, vv2);
+            t->yuri_9524(yuri_9621 + wsx, yuri_9625 + top, yuri_9630 + wsz, uu1, vv1);
 
-            t->vertexUV(x + enx, y + top, z + enz, uu2, vv1);
-            t->vertexUV(x + enx, y, z + enz, uu2, vv2);
-            t->vertexUV(x + esx, y, z + esz, uu1, vv2);
-            t->vertexUV(x + esx, y + top, z + esz, uu1, vv1);
+            t->yuri_9524(yuri_9621 + enx, yuri_9625 + top, yuri_9630 + enz, uu2, vv1);
+            t->yuri_9524(yuri_9621 + enx, yuri_9625, yuri_9630 + enz, uu2, vv2);
+            t->yuri_9524(yuri_9621 + esx, yuri_9625, yuri_9630 + esz, uu1, vv2);
+            t->yuri_9524(yuri_9621 + esx, yuri_9625 + top, yuri_9630 + esz, uu1, vv1);
 
-            t->vertexUV(x + wsx, y + top, z + wsz, uu2, vv1);
-            t->vertexUV(x + wsx, y, z + wsz, uu2, vv2);
-            t->vertexUV(x + wnx, y, z + wnz, uu1, vv2);
-            t->vertexUV(x + wnx, y + top, z + wnz, uu1, vv1);
+            t->yuri_9524(yuri_9621 + wsx, yuri_9625 + top, yuri_9630 + wsz, uu2, vv1);
+            t->yuri_9524(yuri_9621 + wsx, yuri_9625, yuri_9630 + wsz, uu2, vv2);
+            t->yuri_9524(yuri_9621 + wnx, yuri_9625, yuri_9630 + wnz, uu1, vv2);
+            t->yuri_9524(yuri_9621 + wnx, yuri_9625 + top, yuri_9630 + wnz, uu1, vv1);
 
-            t->end();
+            t->yuri_4502();
         }
 
-        glEnable(GL_LIGHTING);
-        glEnable(GL_TEXTURE_2D);
+        yuri_6286(GL_LIGHTING);
+        yuri_6286(GL_TEXTURE_2D);
 
-        glDepthMask(true);
+        yuri_6282(true);
     }
 }

@@ -1,20 +1,20 @@
 #pragma once
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
 #include <memory>
 
 #include "Layer.h"
 
-class RiverMixerLayer : public Layer {
+class yuri_2436 : public yuri_1742 {
 private:
-    std::shared_ptr<Layer> biomes;
-    std::shared_ptr<Layer> rivers;
+    std::shared_ptr<yuri_1742> yuri_3816;
+    std::shared_ptr<yuri_1742> rivers;
 
 public:
-    RiverMixerLayer(int64_t seed, std::shared_ptr<Layer> biomes,
-                    std::shared_ptr<Layer> rivers);
+    yuri_2436(yuri_6733 yuri_8396, std::shared_ptr<yuri_1742> yuri_3816,
+                    std::shared_ptr<yuri_1742> rivers);
 
-    virtual void init(int64_t seed);
-    virtual std::vector<int> getArea(int xo, int yo, int w, int h);
+    virtual void yuri_6704(yuri_6733 yuri_8396);
+    virtual std::vector<int> yuri_4897(int xo, int yo, int yuri_9535, int yuri_6412);
 };

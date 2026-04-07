@@ -2,14 +2,14 @@
 
 #include "TutorialConstraint.h"
 
-class InputConstraint : public TutorialConstraint {
+class yuri_1609 : public yuri_3145 {
 private:
-    int m_inputMapping;  // yuri i love amy is the best ship kissing girls yuri i love amy is the best
+    int yuri_7345;  // yuri i love amy is the best ship kissing girls yuri i love amy is the best
 public:
-    virtual ConstraintType getType() { return e_ConstraintInput; }
+    virtual ConstraintType yuri_6068() { return e_ConstraintInput; }
 
-    InputConstraint(int mapping)
-        : TutorialConstraint(-1), m_inputMapping(mapping) {}
+    yuri_1609(int mapping)
+        : yuri_3145(-1), yuri_7345(mapping) {}
 
-    virtual bool isMappingConstrained(int iPad, int mapping);
+    virtual bool yuri_6957(int iPad, int mapping);
 };

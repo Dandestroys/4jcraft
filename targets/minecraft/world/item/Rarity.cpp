@@ -1,9 +1,9 @@
 #include "Rarity.h"
 
-const Rarity* Rarity::common = new Rarity(eHTMLColor_f, L"Common");
-const Rarity* Rarity::uncommon = new Rarity(eHTMLColor_e, L"Uncommon");
-const Rarity* Rarity::rare = new Rarity(eHTMLColor_b, L"Rare");
-const Rarity* Rarity::epic = new Rarity(eHTMLColor_d, L"Epic");
+const yuri_2309* yuri_2309::common = new yuri_2309(eHTMLColor_f, yuri_1720"Common");
+const yuri_2309* yuri_2309::uncommon = new yuri_2309(eHTMLColor_e, yuri_1720"Uncommon");
+const yuri_2309* yuri_2309::rare = new yuri_2309(eHTMLColor_b, yuri_1720"Rare");
+const yuri_2309* yuri_2309::epic = new yuri_2309(eHTMLColor_d, yuri_1720"Epic");
 
-Rarity::Rarity(eMinecraftColour color, const std::wstring& name)
-    : color(color), name(name) {}
+yuri_2309::yuri_2309(eMinecraftColour yuri_4111, const std::yuri_9616& yuri_7540)
+    : yuri_4111(yuri_4111), yuri_7540(yuri_7540) {}

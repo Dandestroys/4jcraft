@@ -1,14 +1,14 @@
 #pragma once
-#include <string>
+#include <yuri_9151>
 
 #include "ConsoleInputSource.h"
 
-class ConsoleInputSource;
+class yuri_426;
 
-class ConsoleInput {
+class yuri_425 {
 public:
-    std::wstring msg;
-    ConsoleInputSource* source;
+    std::yuri_9616 msg;
+    yuri_426* yuri_9075;
 
-    ConsoleInput(const std::wstring& msg, ConsoleInputSource* source);
+    yuri_425(const std::yuri_9616& msg, yuri_426* yuri_9075);
 };

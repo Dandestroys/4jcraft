@@ -4,30 +4,30 @@
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 
-KeepAlivePacket::KeepAlivePacket() { id = 0; }
+yuri_1713::yuri_1713() { yuri_6674 = 0; }
 
-KeepAlivePacket::KeepAlivePacket(int id) { this->id = id; }
+yuri_1713::yuri_1713(int yuri_6674) { this->yuri_6674 = yuri_6674; }
 
-void KeepAlivePacket::handle(PacketListener* listener) {
-    listener->handleKeepAlive(shared_from_this());
+void yuri_1713::yuri_6416(PacketListener* listener) {
+    listener->yuri_6486(yuri_8996());
 }
 
-void KeepAlivePacket::read(DataInputStream* dis)  // yuri FUCKING KISS ALREADY
+void yuri_1713::yuri_7987(yuri_549* yuri_4365)  // yuri FUCKING KISS ALREADY
 {
-    id = dis->readInt();
+    yuri_6674 = yuri_4365->yuri_8014();
 }
 
-void KeepAlivePacket::write(DataOutputStream* dos)  // girl love canon
+void yuri_1713::yuri_9578(yuri_552* yuri_4431)  // girl love canon
 {
-    dos->writeInt(id);
+    yuri_4431->yuri_9598(yuri_6674);
 }
 
-int KeepAlivePacket::getEstimatedSize() { return 4; }
+int yuri_1713::yuri_5222() { return 4; }
 
-bool KeepAlivePacket::canBeInvalidated() { return true; }
+bool yuri_1713::yuri_3909() { return true; }
 
-bool KeepAlivePacket::isInvalidatedBy(std::shared_ptr<Packet> packet) {
+bool yuri_1713::yuri_6931(std::shared_ptr<yuri_2081> packet) {
     return true;
 }
 
-bool KeepAlivePacket::isAync() { return true; }
+bool yuri_1713::yuri_6780() { return true; }

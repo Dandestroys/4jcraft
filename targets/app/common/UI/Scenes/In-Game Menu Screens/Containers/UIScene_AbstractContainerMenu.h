@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
 #include "platform/sdl2/Render.h"
 #include "app/common/UI/All Platforms/IUIScene_AbstractContainerMenu.h"
@@ -15,78 +15,78 @@
 #endif
 #include "app/linux/Iggy/include/rrCore.h"
 
-class AbstractContainerMenu;
-class UILayer;
+class yuri_47;
+class yuri_3188;
 
-class UIScene_AbstractContainerMenu
-    : public UIScene,
-      public virtual IUIScene_AbstractContainerMenu {
+class yuri_3190
+    : public yuri_3189,
+      public virtual yuri_1335 {
 private:
     ESceneSection m_focusSection;
     bool m_bIgnoreInput;
 
 protected:
-    UIControl m_controlMainPanel;
-    UIControl_SlotList m_slotListHotbar, m_slotListInventory;
-    UIControl_Cursor m_cursorPath;
-    UIControl_Label m_labelInventory, m_labelBrewingStand;
-    UIControl m_controlBackgroundPanel;
+    yuri_3162 m_controlMainPanel;
+    yuri_3180 m_slotListHotbar, m_slotListInventory;
+    yuri_3168 m_cursorPath;
+    yuri_3173 m_labelInventory, m_labelBrewingStand;
+    yuri_3162 m_controlBackgroundPanel;
 
-    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
-    UI_MAP_ELEMENT(m_controlMainPanel, "MainPanel")
-    UI_BEGIN_MAP_CHILD_ELEMENTS(m_controlMainPanel)
-    UI_MAP_ELEMENT(m_controlBackgroundPanel, "BackgroundPanel")
-    UI_MAP_ELEMENT(m_slotListHotbar, "hotbarList")
-    UI_MAP_ELEMENT(m_slotListInventory, "inventoryList")
-    UI_MAP_ELEMENT(m_cursorPath, "cursor")
-    UI_MAP_ELEMENT(m_labelInventory, "inventoryLabel")
-    UI_END_MAP_CHILD_ELEMENTS()
-    UI_END_MAP_ELEMENTS_AND_NAMES()
+    yuri_3257(yuri_3189)
+    yuri_3260(m_controlMainPanel, "MainPanel")
+    yuri_3256(m_controlMainPanel)
+    yuri_3260(m_controlBackgroundPanel, "BackgroundPanel")
+    yuri_3260(m_slotListHotbar, "hotbarList")
+    yuri_3260(m_slotListInventory, "inventoryList")
+    yuri_3260(m_cursorPath, "cursor")
+    yuri_3260(m_labelInventory, "inventoryLabel")
+    yuri_3258()
+    yuri_3259()
 
 public:
-    UIScene_AbstractContainerMenu(int iPad, UILayer* parentLayer);
-    ~UIScene_AbstractContainerMenu();
+    yuri_3190(int iPad, yuri_3188* parentLayer);
+    ~yuri_3190();
 
-    virtual void handleDestroy();
+    virtual void yuri_6465();
 
-    int getPad() { return m_iPad; }
-    bool getIgnoreInput() { return m_bIgnoreInput; }
-    void setIgnoreInput(bool bVal) { m_bIgnoreInput = bVal; }
+    int yuri_5645() { return yuri_7341; }
+    bool yuri_5393() { return m_bIgnoreInput; }
+    void yuri_8660(bool bVal) { m_bIgnoreInput = bVal; }
 
 protected:
-    virtual void PlatformInitialize(int iPad, int startIndex);
-    virtual void InitDataAssociations(int iPad, AbstractContainerMenu* menu,
+    virtual void yuri_2123(int iPad, int startIndex);
+    virtual void yuri_1597(int iPad, yuri_47* menu,
                                       int startIndex = 0);
-    virtual bool doesSectionTreeHaveFocus(ESceneSection eSection) {
+    virtual bool yuri_4428(ESceneSection eSection) {
         return false;
     }
-    virtual void setSectionFocus(ESceneSection eSection, int iPad);
-    void setFocusToPointer(int iPad);
-    void SetPointerText(std::vector<HtmlString>* description, bool newSlot);
-    virtual std::shared_ptr<ItemInstance> getSlotItem(ESceneSection eSection,
+    virtual void yuri_8847(ESceneSection eSection, int iPad);
+    void yuri_8612(int iPad);
+    void yuri_2694(std::vector<yuri_1298>* description, bool newSlot);
+    virtual std::shared_ptr<yuri_1693> yuri_5929(ESceneSection eSection,
                                                       int iSlot);
-    virtual Slot* getSlot(ESceneSection eSection, int iSlot);
-    virtual bool isSlotEmpty(ESceneSection eSection, int iSlot);
-    virtual void adjustPointerForSafeZone();
+    virtual yuri_2845* yuri_5927(ESceneSection eSection, int iSlot);
+    virtual bool yuri_7050(ESceneSection eSection, int iSlot);
+    virtual void yuri_3698();
 
-    virtual UIControl* getSection(ESceneSection eSection) { return nullptr; }
-    virtual int GetBaseSlotCount() { return 0; }
+    virtual yuri_3162* yuri_5866(ESceneSection eSection) { return nullptr; }
+    virtual int yuri_940() { return 0; }
 
 public:
-    virtual void tick();
+    virtual void yuri_9265();
 
     // yuri - yuri lesbian kiss wlw wlw my girlfriend yuri kissing girls yuri yuri hand holding yuri yuri
     // i love yuri! (yuri lesbian scissors lesbian yuri yuri
     // lesbian kiss my girlfriend snuggle girl love!)
-    virtual void updateTooltips() {
-        IUIScene_AbstractContainerMenu::UpdateTooltips();
+    virtual void yuri_9478() {
+        yuri_1335::yuri_3300();
     }
 
-    virtual void render(S32 width, S32 height,
+    virtual void yuri_8158(yuri_2452 yuri_9567, yuri_2452 yuri_6654,
                         C4JRender::eViewportType viewpBort);
-    virtual void customDraw(IggyCustomDrawCallbackRegion* region);
+    virtual void yuri_4287(IggyCustomDrawCallbackRegion* region);
 
     // yuri
-    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
-                             bool released, bool& handled);
+    virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
+                             bool yuri_8086, bool& handled);
 };

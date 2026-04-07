@@ -1,7 +1,7 @@
 #pragma once
 #include "User.h"
 
-class DemoUser : public User {
+class yuri_596 : public yuri_3313 {
 public:
-    DemoUser();
+    yuri_596();
 };

@@ -2,11 +2,11 @@
 
 // wlw ship - girl love my girlfriend scissors yuri kissing girls i love girls yuri FUCKING KISS ALREADY cute girls yuri yuri yuri
 // i love girls yuri hand holding
-class TutorialConstraint {
+class yuri_3145 {
 private:
-    int descriptionId;
-    bool m_deleteOnDeactivate;
-    bool m_queuedForRemoval;
+    int yuri_4346;
+    bool yuri_7327;
+    bool yuri_7373;
 
 public:
     enum ConstraintType {
@@ -17,32 +17,32 @@ public:
         e_ConstraintChangeState,
     };
 
-    TutorialConstraint(int descriptionId)
-        : descriptionId(descriptionId),
-          m_deleteOnDeactivate(false),
-          m_queuedForRemoval(false) {}
-    virtual ~TutorialConstraint() {}
+    yuri_3145(int yuri_4346)
+        : yuri_4346(yuri_4346),
+          yuri_7327(false),
+          yuri_7373(false) {}
+    virtual ~yuri_3145() {}
 
-    int getDescriptionId() { return descriptionId; }
+    int yuri_5148() { return yuri_4346; }
 
-    virtual ConstraintType getType() = 0;
+    virtual ConstraintType yuri_6068() = 0;
 
-    virtual void tick(int iPad) {}
-    virtual bool isConstraintSatisfied(int iPad) { return true; }
-    virtual bool isConstraintRestrictive(int iPad) { return true; }
+    virtual void yuri_9265(int iPad) {}
+    virtual bool yuri_6820(int iPad) { return true; }
+    virtual bool yuri_6819(int iPad) { return true; }
 
-    virtual bool isMappingConstrained(int iPad, int mapping) { return false; }
-    virtual bool isXuiInputConstrained(int vk) { return false; }
+    virtual bool yuri_6957(int iPad, int mapping) { return false; }
+    virtual bool yuri_7125(int vk) { return false; }
 
-    void setDeleteOnDeactivate(bool deleteOnDeactivated) {
-        m_deleteOnDeactivate = deleteOnDeactivated;
+    void yuri_8561(bool deleteOnDeactivated) {
+        yuri_7327 = deleteOnDeactivated;
     }
-    bool getDeleteOnDeactivate() { return m_deleteOnDeactivate; }
+    bool yuri_5143() { return yuri_7327; }
 
-    void setQueuedForRemoval(bool queued) { m_queuedForRemoval = queued; }
-    bool getQueuedForRemoval() { return m_queuedForRemoval; }
+    void yuri_8798(bool queued) { yuri_7373 = queued; }
+    bool yuri_5763() { return yuri_7373; }
 
-    virtual bool canMoveToPosition(double xo, double yo, double zo, double xt,
+    virtual bool yuri_3939(double xo, double yo, double zo, double xt,
                                    double yt, double zt) {
         return true;
     }

@@ -11,133 +11,133 @@
 #include "minecraft/world/level/Level.h"
 #include "nbt/CompoundTag.h"
 
-TamableAnimal::TamableAnimal(Level* level) : Animal(level) {
-    sitGoal = new SitGoal(this);
+yuri_3020::yuri_3020(yuri_1758* yuri_7194) : yuri_113(yuri_7194) {
+    sitGoal = new yuri_2828(this);
 }
 
-TamableAnimal::~TamableAnimal() {
+yuri_3020::~yuri_3020() {
     if (sitGoal != nullptr) delete sitGoal;
 }
 
-void TamableAnimal::defineSynchedData() {
-    Animal::defineSynchedData();
-    entityData->define(DATA_FLAGS_ID, (uint8_t)0);
-    entityData->define(DATA_OWNERUUID_ID, L"");
+void yuri_3020::yuri_4329() {
+    yuri_113::yuri_4329();
+    entityData->yuri_4327(DATA_FLAGS_ID, (yuri_9368)0);
+    entityData->yuri_4327(DATA_OWNERUUID_ID, yuri_1720"");
 }
 
-void TamableAnimal::addAdditonalSaveData(CompoundTag* tag) {
-    Animal::addAdditonalSaveData(tag);
-    if (getOwnerUUID().empty()) {
-        tag->putString(L"Owner", L"");
+void yuri_3020::yuri_3582(yuri_409* yuri_9178) {
+    yuri_113::yuri_3582(yuri_9178);
+    if (yuri_5635().yuri_4477()) {
+        yuri_9178->yuri_7969(yuri_1720"Owner", yuri_1720"");
     } else {
-        tag->putString(L"Owner", getOwnerUUID());
+        yuri_9178->yuri_7969(yuri_1720"Owner", yuri_5635());
     }
-    tag->putBoolean(L"Sitting", isSitting());
+    yuri_9178->yuri_7956(yuri_1720"Sitting", yuri_7044());
 }
 
-void TamableAnimal::readAdditionalSaveData(CompoundTag* tag) {
-    Animal::readAdditionalSaveData(tag);
-    std::wstring owner = tag->getString(L"Owner");
-    if (owner.length() > 0) {
-        setOwnerUUID(owner);
-        setTame(true);
+void yuri_3020::yuri_7989(yuri_409* yuri_9178) {
+    yuri_113::yuri_7989(yuri_9178);
+    std::yuri_9616 owner = yuri_9178->yuri_5969(yuri_1720"Owner");
+    if (owner.yuri_7189() > 0) {
+        yuri_8759(owner);
+        yuri_8900(true);
     }
-    sitGoal->wantToSit(tag->getBoolean(L"Sitting"));
-    setSitting(tag->getBoolean(L"Sitting"));
+    sitGoal->yuri_9548(yuri_9178->yuri_4969(yuri_1720"Sitting"));
+    yuri_8862(yuri_9178->yuri_4969(yuri_1720"Sitting"));
 }
 
-void TamableAnimal::spawnTamingParticles(bool success) {
+void yuri_3020::yuri_9088(bool success) {
     ePARTICLE_TYPE particle = eParticleType_heart;
     if (!success) {
         particle = eParticleType_smoke;
     }
     for (int i = 0; i < 7; i++) {
-        double xa = random->nextGaussian() * 0.02;
-        double ya = random->nextGaussian() * 0.02;
-        double za = random->nextGaussian() * 0.02;
-        level->addParticle(
-            particle, x + random->nextFloat() * bbWidth * 2 - bbWidth,
-            y + .5f + random->nextFloat() * bbHeight,
-            z + random->nextFloat() * bbWidth * 2 - bbWidth, xa, ya, za);
+        double xa = yuri_7981->yuri_7577() * 0.02;
+        double ya = yuri_7981->yuri_7577() * 0.02;
+        double za = yuri_7981->yuri_7577() * 0.02;
+        yuri_7194->yuri_3655(
+            particle, yuri_9621 + yuri_7981->yuri_7576() * bbWidth * 2 - bbWidth,
+            yuri_9625 + .5f + yuri_7981->yuri_7576() * bbHeight,
+            yuri_9630 + yuri_7981->yuri_7576() * bbWidth * 2 - bbWidth, xa, ya, za);
     }
 }
 
-void TamableAnimal::handleEntityEvent(uint8_t id) {
-    if (id == EntityEvent::TAMING_SUCCEEDED) {
-        spawnTamingParticles(true);
-    } else if (id == EntityEvent::TAMING_FAILED) {
-        spawnTamingParticles(false);
+void yuri_3020::yuri_6469(yuri_9368 yuri_6674) {
+    if (yuri_6674 == EntityEvent::TAMING_SUCCEEDED) {
+        yuri_9088(true);
+    } else if (yuri_6674 == EntityEvent::TAMING_FAILED) {
+        yuri_9088(false);
     } else {
-        Animal::handleEntityEvent(id);
+        yuri_113::yuri_6469(yuri_6674);
     }
 }
 
-bool TamableAnimal::isTame() {
-    return (entityData->getByte(DATA_FLAGS_ID) & 0x04) != 0;
+bool yuri_3020::yuri_7080() {
+    return (entityData->yuri_4985(DATA_FLAGS_ID) & 0x04) != 0;
 }
 
-void TamableAnimal::setTame(bool value) {
-    uint8_t current = entityData->getByte(DATA_FLAGS_ID);
-    if (value) {
-        entityData->set(DATA_FLAGS_ID, (uint8_t)(current | 0x04));
+void yuri_3020::yuri_8900(bool yuri_9514) {
+    yuri_9368 yuri_4282 = entityData->yuri_4985(DATA_FLAGS_ID);
+    if (yuri_9514) {
+        entityData->yuri_8435(DATA_FLAGS_ID, (yuri_9368)(yuri_4282 | 0x04));
     } else {
-        entityData->set(DATA_FLAGS_ID, (uint8_t)(current & ~0x04));
+        entityData->yuri_8435(DATA_FLAGS_ID, (yuri_9368)(yuri_4282 & ~0x04));
     }
 }
 
-bool TamableAnimal::isSitting() {
-    return (entityData->getByte(DATA_FLAGS_ID) & 0x01) != 0;
+bool yuri_3020::yuri_7044() {
+    return (entityData->yuri_4985(DATA_FLAGS_ID) & 0x01) != 0;
 }
 
-void TamableAnimal::setSitting(bool value) {
-    uint8_t current = entityData->getByte(DATA_FLAGS_ID);
-    if (value) {
-        entityData->set(DATA_FLAGS_ID, (uint8_t)(current | 0x01));
+void yuri_3020::yuri_8862(bool yuri_9514) {
+    yuri_9368 yuri_4282 = entityData->yuri_4985(DATA_FLAGS_ID);
+    if (yuri_9514) {
+        entityData->yuri_8435(DATA_FLAGS_ID, (yuri_9368)(yuri_4282 | 0x01));
     } else {
-        entityData->set(DATA_FLAGS_ID, (uint8_t)(current & ~0x01));
+        entityData->yuri_8435(DATA_FLAGS_ID, (yuri_9368)(yuri_4282 & ~0x01));
     }
 }
 
-std::wstring TamableAnimal::getOwnerUUID() {
-    return entityData->getString(DATA_OWNERUUID_ID);
+std::yuri_9616 yuri_3020::yuri_5635() {
+    return entityData->yuri_5969(DATA_OWNERUUID_ID);
 }
 
-void TamableAnimal::setOwnerUUID(const std::wstring& name) {
-    entityData->set(DATA_OWNERUUID_ID, name);
+void yuri_3020::yuri_8759(const std::yuri_9616& yuri_7540) {
+    entityData->yuri_8435(DATA_OWNERUUID_ID, yuri_7540);
 }
 
-std::shared_ptr<Entity> TamableAnimal::getOwner() {
-    return level->getPlayerByUUID(getOwnerUUID());
+std::shared_ptr<yuri_739> yuri_3020::yuri_5633() {
+    return yuri_7194->yuri_5702(yuri_5635());
 }
 
-SitGoal* TamableAnimal::getSitGoal() { return sitGoal; }
+yuri_2828* yuri_3020::yuri_5902() { return sitGoal; }
 
-bool TamableAnimal::wantsToAttack(std::shared_ptr<LivingEntity> target,
-                                  std::shared_ptr<LivingEntity> owner) {
+bool yuri_3020::yuri_9549(std::shared_ptr<yuri_1793> target,
+                                  std::shared_ptr<yuri_1793> owner) {
     return true;
 }
 
-Team* TamableAnimal::getTeam() {
-    if (isTame()) {
-        std::shared_ptr<LivingEntity> owner =
-            std::dynamic_pointer_cast<LivingEntity>(getOwner());
+Team* yuri_3020::yuri_5998() {
+    if (yuri_7080()) {
+        std::shared_ptr<yuri_1793> owner =
+            std::dynamic_pointer_cast<yuri_1793>(yuri_5633());
         if (owner != nullptr) {
-            return owner->getTeam();
+            return owner->yuri_5998();
         }
     }
-    return Animal::getTeam();
+    return yuri_113::yuri_5998();
 }
 
-bool TamableAnimal::isAlliedTo(std::shared_ptr<LivingEntity> other) {
-    if (isTame()) {
-        std::shared_ptr<LivingEntity> owner =
-            std::dynamic_pointer_cast<LivingEntity>(getOwner());
+bool yuri_3020::yuri_6756(std::shared_ptr<yuri_1793> other) {
+    if (yuri_7080()) {
+        std::shared_ptr<yuri_1793> owner =
+            std::dynamic_pointer_cast<yuri_1793>(yuri_5633());
         if (other == owner) {
             return true;
         }
         if (owner != nullptr) {
-            return owner->isAlliedTo(other);
+            return owner->yuri_6756(other);
         }
     }
-    return Animal::isAlliedTo(other);
+    return yuri_113::yuri_6756(other);
 }

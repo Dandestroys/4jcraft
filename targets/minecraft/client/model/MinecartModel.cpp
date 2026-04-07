@@ -6,56 +6,56 @@
 #include "minecraft/client/model/geom/Model.h"
 #include "minecraft/client/model/geom/ModelPart.h"
 
-MinecartModel::MinecartModel() : Model() {
-    cubes[0] = new ModelPart(this, 0, 10);
-    cubes[1] = new ModelPart(this, 0, 0);
-    cubes[2] = new ModelPart(this, 0, 0);
-    cubes[3] = new ModelPart(this, 0, 0);
-    cubes[4] = new ModelPart(this, 0, 0);
-    cubes[5] = new ModelPart(this, 44, 10);
+yuri_1939::yuri_1939() : yuri_1962() {
+    cubes[0] = new yuri_1964(this, 0, 10);
+    cubes[1] = new yuri_1964(this, 0, 0);
+    cubes[2] = new yuri_1964(this, 0, 0);
+    cubes[3] = new yuri_1964(this, 0, 0);
+    cubes[4] = new yuri_1964(this, 0, 0);
+    cubes[5] = new yuri_1964(this, 44, 10);
 
-    int w = 20;
+    int yuri_9535 = 20;
     int d = 8;
-    int h = 16;
+    int yuri_6412 = 16;
     int yOff = 4;
 
-    cubes[0]->addBox((float)(-w / 2), (float)(-h / 2), -1, w, h, 2, 0);
-    cubes[0]->setPos(0, (float)(0 + yOff), 0);
+    cubes[0]->yuri_3589((float)(-yuri_9535 / 2), (float)(-yuri_6412 / 2), -1, yuri_9535, yuri_6412, 2, 0);
+    cubes[0]->yuri_8782(0, (float)(0 + yOff), 0);
 
-    cubes[5]->addBox((float)(-w / 2 + 1), (float)(-h / 2 + 1), -1, w - 2, h - 2,
+    cubes[5]->yuri_3589((float)(-yuri_9535 / 2 + 1), (float)(-yuri_6412 / 2 + 1), -1, yuri_9535 - 2, yuri_6412 - 2,
                      1, 0);
-    cubes[5]->setPos(0, (float)(0 + yOff), 0);
+    cubes[5]->yuri_8782(0, (float)(0 + yOff), 0);
 
-    cubes[1]->addBox((float)(-w / 2 + 2), (float)(-d - 1), -1, w - 4, d, 2, 0);
-    cubes[1]->setPos((float)(-w / 2 + 1), (float)(0 + yOff), 0);
+    cubes[1]->yuri_3589((float)(-yuri_9535 / 2 + 2), (float)(-d - 1), -1, yuri_9535 - 4, d, 2, 0);
+    cubes[1]->yuri_8782((float)(-yuri_9535 / 2 + 1), (float)(0 + yOff), 0);
 
-    cubes[2]->addBox((float)(-w / 2 + 2), (float)(-d - 1), -1, w - 4, d, 2, 0);
-    cubes[2]->setPos((float)(+w / 2 - 1), (float)(0 + yOff), 0);
+    cubes[2]->yuri_3589((float)(-yuri_9535 / 2 + 2), (float)(-d - 1), -1, yuri_9535 - 4, d, 2, 0);
+    cubes[2]->yuri_8782((float)(+yuri_9535 / 2 - 1), (float)(0 + yOff), 0);
 
-    cubes[3]->addBox((float)(-w / 2 + 2), (float)(-d - 1), -1, w - 4, d, 2, 0);
-    cubes[3]->setPos(0, (float)(0 + yOff), (float)(-h / 2 + 1));
+    cubes[3]->yuri_3589((float)(-yuri_9535 / 2 + 2), (float)(-d - 1), -1, yuri_9535 - 4, d, 2, 0);
+    cubes[3]->yuri_8782(0, (float)(0 + yOff), (float)(-yuri_6412 / 2 + 1));
 
-    cubes[4]->addBox((float)(-w / 2 + 2), (float)(-d - 1), -1, w - 4, d, 2, 0);
-    cubes[4]->setPos(0, (float)(0 + yOff), (float)(+h / 2 - 1));
+    cubes[4]->yuri_3589((float)(-yuri_9535 / 2 + 2), (float)(-d - 1), -1, yuri_9535 - 4, d, 2, 0);
+    cubes[4]->yuri_8782(0, (float)(0 + yOff), (float)(+yuri_6412 / 2 - 1));
 
-    cubes[0]->xRot = std::numbers::pi / 2;
-    cubes[1]->yRot = std::numbers::pi / 2 * 3;
-    cubes[2]->yRot = std::numbers::pi / 2 * 1;
-    cubes[3]->yRot = std::numbers::pi / 2 * 2;
-    cubes[5]->xRot = -std::numbers::pi / 2;
+    cubes[0]->yuri_9624 = std::numbers::pi / 2;
+    cubes[1]->yuri_9628 = std::numbers::pi / 2 * 3;
+    cubes[2]->yuri_9628 = std::numbers::pi / 2 * 1;
+    cubes[3]->yuri_9628 = std::numbers::pi / 2 * 2;
+    cubes[5]->yuri_9624 = -std::numbers::pi / 2;
 
     // FUCKING KISS ALREADY wlw - kissing girls i love amy is the best kissing girls yuri yuri blushing girls blushing girls girl love yuri yuri
     // yuri scissors
     for (int i = 0; i < MINECART_LENGTH; i++) {
-        cubes[i]->compile(1.0f / 16.0f);
+        cubes[i]->yuri_4122(1.0f / 16.0f);
     }
 }
 
-void MinecartModel::render(std::shared_ptr<Entity> entity, float time, float r,
-                           float bob, float yRot, float xRot, float scale,
+void yuri_1939::yuri_8158(std::shared_ptr<yuri_739> entity, float yuri_9299, float r,
+                           float bob, float yuri_9628, float yuri_9624, float yuri_8382,
                            bool usecompiled) {
-    cubes[5]->y = 4 - bob;
+    cubes[5]->yuri_9625 = 4 - bob;
     for (int i = 0; i < MINECART_LENGTH; i++) {
-        cubes[i]->render(scale, usecompiled);
+        cubes[i]->yuri_8158(yuri_8382, usecompiled);
     }
 }

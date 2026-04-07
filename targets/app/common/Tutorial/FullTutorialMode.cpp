@@ -5,15 +5,15 @@
 #include "app/common/Tutorial/TutorialMode.h"
 #include "minecraft/client/Minecraft.h"
 
-class ClientConnection;
+class yuri_374;
 
-FullTutorialMode::FullTutorialMode(int iPad, Minecraft* minecraft,
-                                   ClientConnection* connection)
-    : TutorialMode(iPad, minecraft, connection) {
-    tutorial = new FullTutorial(iPad);
-    minecraft->playerStartedTutorial(iPad);
+yuri_880::yuri_880(int iPad, yuri_1945* minecraft,
+                                   yuri_374* connection)
+    : yuri_3148(iPad, minecraft, connection) {
+    yuri_9363 = new yuri_878(iPad);
+    minecraft->yuri_7851(iPad);
 }
 
-bool FullTutorialMode::isTutorial() {
-    return !tutorial->m_fullTutorialComplete;
+bool yuri_880::yuri_7093() {
+    return !yuri_9363->m_fullTutorialComplete;
 }

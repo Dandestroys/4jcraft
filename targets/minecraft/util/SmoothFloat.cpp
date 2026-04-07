@@ -1,12 +1,12 @@
 #include "SmoothFloat.h"
 
-SmoothFloat::SmoothFloat() {
+yuri_2852::yuri_2852() {
     targetValue = 0.0f;
     remainingValue = 0.0f;
     lastAmount = 0.0f;
 }
 
-float SmoothFloat::getNewDeltaValue(float deltaValue,
+float yuri_2852::yuri_5594(float deltaValue,
                                     float accelerationAmount) {
     targetValue += deltaValue;
 
@@ -21,4 +21,4 @@ float SmoothFloat::getNewDeltaValue(float deltaValue,
     return deltaValue;
 }
 
-float SmoothFloat::getTargetValue() { return targetValue; }
+float yuri_2852::yuri_5996() { return targetValue; }

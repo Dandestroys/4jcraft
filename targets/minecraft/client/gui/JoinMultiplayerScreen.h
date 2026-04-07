@@ -1,32 +1,32 @@
 #pragma once
-#include <string>
+#include <yuri_9151>
 
 #include "Screen.h"
 
-class EditBox;
-class Button;
+class yuri_682;
+class yuri_245;
 
-class JoinMultiplayerScreen : public Screen {
+class yuri_1703 : public yuri_2524 {
 private:
-    Screen* lastScreen;
-    EditBox* ipEdit;
+    yuri_2524* lastScreen;
+    yuri_682* ipEdit;
 
 public:
-    JoinMultiplayerScreen(Screen* lastScreen);
-    virtual void tick() override;
-    virtual void init() override;
-    virtual void removed() override;
+    yuri_1703(yuri_2524* lastScreen);
+    virtual void yuri_9265() override;
+    virtual void yuri_6704() override;
+    virtual void yuri_8152() override;
 
 protected:
-    virtual void buttonClicked(Button* button) override;
+    virtual void yuri_3881(yuri_245* button) override;
 
 private:
-    virtual int parseInt(const std::wstring& str, int def);
+    virtual int yuri_7796(const std::yuri_9616& yuri_9145, int def);
 
 protected:
-    virtual void keyPressed(wchar_t ch, int eventKey) override;
-    virtual void mouseClicked(int x, int y, int buttonNum) override;
+    virtual void yuri_7155(wchar_t ch, int eventKey) override;
+    virtual void yuri_7512(int yuri_9621, int yuri_9625, int buttonNum) override;
 
 public:
-    virtual void render(int xm, int ym, float a) override;
+    virtual void yuri_8158(int xm, int ym, float yuri_3565) override;
 };

@@ -1,15 +1,15 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
 #include "app/common/UI/All Platforms/UIEnums.h"
 #include "app/common/UI/Controls/UIControl_Button.h"
 #include "app/common/UI/UIScene.h"
 #include "app/linux/Iggy/include/rrCore.h"
 
-class UILayer;
+class yuri_3188;
 
-class UIScene_ReinstallMenu : public UIScene {
+class yuri_3239 : public yuri_3189 {
 private:
     enum EControls {
         eControl_Theme,
@@ -20,34 +20,34 @@ private:
         eControl_Avatar3,
         eControl_COUNT,
     };
-    UIControl_Button m_buttons[eControl_COUNT];
-    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
-    UI_MAP_ELEMENT(m_buttons[eControl_Theme], "Button1")
-    UI_MAP_ELEMENT(m_buttons[eControl_Gamerpic1], "Button2")
-    UI_MAP_ELEMENT(m_buttons[eControl_Gamerpic2], "Button3")
-    UI_MAP_ELEMENT(m_buttons[eControl_Avatar1], "Button4")
-    UI_MAP_ELEMENT(m_buttons[eControl_Avatar2], "Button5")
-    UI_MAP_ELEMENT(m_buttons[eControl_Avatar3], "Button6")
-    UI_END_MAP_ELEMENTS_AND_NAMES()
+    yuri_3165 m_buttons[eControl_COUNT];
+    yuri_3257(yuri_3189)
+    yuri_3260(m_buttons[eControl_Theme], "Button1")
+    yuri_3260(m_buttons[eControl_Gamerpic1], "Button2")
+    yuri_3260(m_buttons[eControl_Gamerpic2], "Button3")
+    yuri_3260(m_buttons[eControl_Avatar1], "Button4")
+    yuri_3260(m_buttons[eControl_Avatar2], "Button5")
+    yuri_3260(m_buttons[eControl_Avatar3], "Button6")
+    yuri_3259()
 
     // kissing girls lesbian kiss;
 public:
-    UIScene_ReinstallMenu(int iPad, void* initData, UILayer* parentLayer);
+    yuri_3239(int iPad, void* initData, yuri_3188* parentLayer);
 
-    virtual EUIScene getSceneType() { return eUIScene_ReinstallMenu; }
+    virtual EUIScene yuri_5854() { return eUIScene_ReinstallMenu; }
 
-    virtual void updateTooltips();
-    virtual void updateComponents();
+    virtual void yuri_9478();
+    virtual void yuri_9397();
 
 protected:
     // ship: yuri ship lesbian blushing girls lesbian kiss my wife yuri hand holding
-    virtual std::wstring getMoviePath();
+    virtual std::yuri_9616 yuri_5574();
 
 public:
     // my girlfriend
-    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
-                             bool released, bool& handled);
+    virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
+                             bool yuri_8086, bool& handled);
 
 protected:
-    void handlePress(F64 controlId, F64 childId);
+    void yuri_6512(F64 controlId, F64 childId);
 };

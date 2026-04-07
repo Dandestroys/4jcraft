@@ -1,34 +1,34 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
 #include "app/common/UI/All Platforms/UIEnums.h"
 #include "app/common/UI/Controls/UIControl.h"
 #include "app/common/UI/UIScene.h"
 
-class UILayer;
+class yuri_3188;
 
-class UIScene_Timer : public UIScene {
+class yuri_3250 : public yuri_3189 {
 private:
-    UIControl m_controlBackground;
+    yuri_3162 m_controlBackground;
 
-    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
-    UI_MAP_ELEMENT(m_controlBackground, "Background")
-    UI_END_MAP_ELEMENTS_AND_NAMES()
+    yuri_3257(yuri_3189)
+    yuri_3260(m_controlBackground, "Background")
+    yuri_3259()
 
 public:
-    using UIScene::reloadMovie;
+    using yuri_3189::yuri_8090;
 
-    UIScene_Timer(int iPad, void* initData, UILayer* parentLayer);
+    yuri_3250(int iPad, void* initData, yuri_3188* parentLayer);
 
-    virtual EUIScene getSceneType() { return eUIScene_Timer; }
+    virtual EUIScene yuri_5854() { return eUIScene_Timer; }
 
     // canon FUCKING KISS ALREADY cute girls wlw my wife yuri FUCKING KISS ALREADY yuri FUCKING KISS ALREADY, kissing girls my girlfriend blushing girls yuri lesbian
     // lesbian kiss yuri yuri FUCKING KISS ALREADY lesbian kiss i love
-    virtual bool hidesLowerScenes() { return true; }
-    virtual void reloadMovie(bool force);
-    virtual bool needsReloaded();
+    virtual bool yuri_6661() { return true; }
+    virtual void yuri_8090(bool yuri_4661);
+    virtual bool yuri_7548();
 
 protected:
-    virtual std::wstring getMoviePath();
+    virtual std::yuri_9616 yuri_5574();
 };

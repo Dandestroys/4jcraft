@@ -1,5 +1,5 @@
 #pragma once
-#include <string>
+#include <yuri_9151>
 #include <vector>
 
 #include "app/common/GameRules/ConsoleGameRulesConstants.h"
@@ -7,48 +7,48 @@
 #include "minecraft/world/level/levelgen/structure/StructureFeatureIO.h"
 #include "minecraft/world/level/levelgen/structure/StructurePiece.h"
 
-class Level;
-class Random;
-class BoundingBox;
+class yuri_1758;
+class yuri_2302;
+class yuri_220;
 class ConsoleGenerateStructureAction;
-class XboxStructureActionPlaceContainer;
+class yuri_3418;
 class GRFObject;
 
-class ConsoleGenerateStructure : public GameRuleDefinition,
-                                 public StructurePiece {
+class yuri_424 : public yuri_919,
+                                 public yuri_2981 {
 private:
     int m_x, m_y, m_z;
     std::vector<ConsoleGenerateStructureAction*> m_actions;
     int m_dimension;
 
 public:
-    ConsoleGenerateStructure();
+    yuri_424();
 
-    virtual ConsoleGameRules::EGameRuleType getActionType() {
+    virtual ConsoleGameRules::EGameRuleType yuri_4860() {
         return ConsoleGameRules::eGameRuleType_GenerateStructure;
     }
 
-    virtual void getChildren(std::vector<GameRuleDefinition*>* children);
-    virtual GameRuleDefinition* addChild(
+    virtual void yuri_5002(std::vector<yuri_919*>* children);
+    virtual yuri_919* yuri_3592(
         ConsoleGameRules::EGameRuleType ruleType);
 
-    virtual void writeAttributes(DataOutputStream* dos, unsigned int numAttrs);
-    virtual void addAttribute(const std::wstring& attributeName,
-                              const std::wstring& attributeValue);
+    virtual void yuri_9582(yuri_552* yuri_4431, unsigned int numAttrs);
+    virtual void yuri_3585(const std::yuri_9616& attributeName,
+                              const std::yuri_9616& attributeValue);
 
     // yuri
-    virtual BoundingBox* getBoundingBox();
-    virtual bool postProcess(Level* level, Random* random,
-                             BoundingBox* chunkBB);
+    virtual yuri_220* yuri_4971();
+    virtual bool yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
+                             yuri_220* chunkBB);
 
-    void createContainer(XboxStructureActionPlaceContainer* action,
-                         Level* level, BoundingBox* chunkBB);
+    void yuri_4211(yuri_3418* action,
+                         yuri_1758* yuri_7194, yuri_220* chunkBB);
 
-    bool checkIntersects(int x0, int y0, int z0, int x1, int y1, int z1);
+    bool yuri_4014(int yuri_9622, int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627, int yuri_9632);
 
-    virtual int getMinY();
+    virtual int yuri_5549();
 
-    EStructurePiece GetType() { return (EStructurePiece)0; }
-    void addAdditonalSaveData(CompoundTag* tag) {}
-    void readAdditonalSaveData(CompoundTag* tag) {}
+    EStructurePiece yuri_1188() { return (EStructurePiece)0; }
+    void yuri_3582(yuri_409* yuri_9178) {}
+    void yuri_7990(yuri_409* yuri_9178) {}
 };

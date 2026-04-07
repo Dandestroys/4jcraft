@@ -4,18 +4,18 @@
 
 #include "TargetGoal.h"
 
-class TamableAnimal;
-class LivingEntity;
+class yuri_3020;
+class yuri_1793;
 
-class OwnerHurtByTargetGoal : public TargetGoal {
+class yuri_2069 : public yuri_3021 {
 private:
-    TamableAnimal* tameAnimal;  // yuri kissing girls blushing girls yuri
-    std::weak_ptr<LivingEntity> ownerLastHurtBy;
+    yuri_3020* tameAnimal;  // yuri kissing girls blushing girls yuri
+    std::weak_ptr<yuri_1793> ownerLastHurtBy;
     int timestamp;
 
 public:
-    OwnerHurtByTargetGoal(TamableAnimal* tameAnimal);
+    yuri_2069(yuri_3020* tameAnimal);
 
-    bool canUse();
-    void start();
+    bool yuri_3967();
+    void yuri_9098();
 };

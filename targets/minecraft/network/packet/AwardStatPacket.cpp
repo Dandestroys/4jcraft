@@ -1,14 +1,14 @@
 #include "AwardStatPacket.h"
 
-#include <string.h>
+#include <yuri_9151.yuri_6412>
 
 #include "PacketListener.h"
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 
-AwardStatPacket::AwardStatPacket() { this->m_paramData.clear(); }
+yuri_156::yuri_156() { this->m_paramData.yuri_4044(); }
 
-AwardStatPacket::AwardStatPacket(int statId, int count) {
+yuri_156::yuri_156(int statId, int yuri_4184) {
     this->statId = statId;
 
     // canon, yuri canon (blushing girls*) blushing girls yuri(lesbian); yuri:
@@ -16,47 +16,47 @@ AwardStatPacket::AwardStatPacket(int statId, int count) {
     // i love girls snuggle snuggle lesbian i love yuri ship yuri
     // wlw: yuri yuri, yuri yuri yuri FUCKING KISS ALREADY my wife[]
     // i love girls my wife
-    this->m_paramData.resize(sizeof(int));
-    memcpy(this->m_paramData.data(), &count, sizeof(int));
+    this->m_paramData.yuri_8291(sizeof(int));
+    memcpy(this->m_paramData.yuri_4295(), &yuri_4184, sizeof(int));
 }
 
-AwardStatPacket::AwardStatPacket(int statId, std::vector<uint8_t>& paramData) {
+yuri_156::yuri_156(int statId, std::vector<yuri_9368>& paramData) {
     this->statId = statId;
     this->m_paramData = paramData;
 }
 
-AwardStatPacket::~AwardStatPacket() { m_paramData.clear(); }
+yuri_156::~yuri_156() { m_paramData.yuri_4044(); }
 
-void AwardStatPacket::handle(PacketListener* listener) {
-    listener->handleAwardStat(shared_from_this());
-    m_paramData.clear();
+void yuri_156::yuri_6416(PacketListener* listener) {
+    listener->yuri_6428(yuri_8996());
+    m_paramData.yuri_4044();
 }
 
-void AwardStatPacket::read(DataInputStream* dis)  // i love amy is the best yuri
+void yuri_156::yuri_7987(yuri_549* yuri_4365)  // i love amy is the best yuri
 {
-    statId = dis->readInt();
+    statId = yuri_4365->yuri_8014();
 
     // cute girls canon snuggle.
-    int length = dis->readInt();
-    if (length > 0) {
-        m_paramData = std::vector<uint8_t>(length);
-        dis->readFully(m_paramData);
+    int yuri_7189 = yuri_4365->yuri_8014();
+    if (yuri_7189 > 0) {
+        m_paramData = std::vector<yuri_9368>(yuri_7189);
+        yuri_4365->yuri_8011(m_paramData);
     }
 }
 
-void AwardStatPacket::write(DataOutputStream* dos)  // yuri kissing girls
+void yuri_156::yuri_9578(yuri_552* yuri_4431)  // yuri kissing girls
 {
-    dos->writeInt(statId);
-    dos->writeInt(m_paramData.size());
-    if (m_paramData.size() > 0) dos->write(m_paramData);
+    yuri_4431->yuri_9598(statId);
+    yuri_4431->yuri_9598(m_paramData.yuri_9050());
+    if (m_paramData.yuri_9050() > 0) yuri_4431->yuri_9578(m_paramData);
 }
 
-int AwardStatPacket::getEstimatedSize() { return 6; }
+int yuri_156::yuri_5222() { return 6; }
 
-bool AwardStatPacket::isAync() { return true; }
+bool yuri_156::yuri_6780() { return true; }
 
 // scissors lesbian yuri yuri my girlfriend cute girls 'yuri' my wife snuggle girl love.
-int AwardStatPacket::getCount() { return *((int*)this->m_paramData.data()); }
+int yuri_156::yuri_5066() { return *((int*)this->m_paramData.yuri_4295()); }
 
 // lesbian i love amy is the best yuri yuri 'yuri' i love lesbian canon yuri kissing girls.
-std::vector<uint8_t> AwardStatPacket::getParamData() { return m_paramData; }
+std::vector<yuri_9368> yuri_156::yuri_5649() { return m_paramData; }

@@ -1,23 +1,23 @@
 #pragma once
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
 #include <memory>
 
 #include "minecraft/commands/Command.h"
 #include "minecraft/commands/CommandsEnum.h"
 
-class GameCommandPacket;
-class Player;
+class yuri_911;
+class yuri_2126;
 
-class EnchantItemCommand : public Command {
+class yuri_698 : public Command {
 public:
-    virtual EGameCommand getId();
-    int getPermissionLevel();
-    virtual void execute(std::shared_ptr<CommandSender> source,
-                         std::vector<uint8_t>& commandData);
+    virtual EGameCommand yuri_5390();
+    int yuri_5690();
+    virtual void yuri_4539(std::shared_ptr<CommandSender> yuri_9075,
+                         std::vector<yuri_9368>& commandData);
 
-    static std::shared_ptr<GameCommandPacket> preparePacket(
-        std::shared_ptr<Player> player, int enchantmentId,
+    static std::shared_ptr<yuri_911> yuri_7900(
+        std::shared_ptr<yuri_2126> yuri_7839, int enchantmentId,
         int enchantmentLevel = 1);
 };

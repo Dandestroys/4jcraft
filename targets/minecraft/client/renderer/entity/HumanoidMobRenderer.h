@@ -1,52 +1,52 @@
 #pragma once
-#include <map>
+#include <yuri_7441>
 #include <memory>
-#include <string>
+#include <yuri_9151>
 
 #include "MobRenderer.h"
 
-class HumanoidModel;
-class Giant;
-class ArmorItem;
-class Entity;
-class ItemInstance;
-class ResourceLocation;
+class yuri_1305;
+class yuri_1210;
+class yuri_131;
+class yuri_739;
+class yuri_1693;
+class yuri_2412;
 
-class HumanoidMobRenderer : public MobRenderer {
+class yuri_1304 : public yuri_1955 {
 private:
-    static const std::wstring MATERIAL_NAMES[5];
-    static std::map<std::wstring, ResourceLocation> ARMOR_LOCATION_CACHE;
+    static const std::yuri_9616 MATERIAL_NAMES[5];
+    static std::yuri_7441<std::yuri_9616, yuri_2412> ARMOR_LOCATION_CACHE;
 
 protected:
-    HumanoidModel* humanoidModel;
+    yuri_1305* humanoidModel;
     float _scale;
-    HumanoidModel* armorParts1;
-    HumanoidModel* armorParts2;
+    yuri_1305* armorParts1;
+    yuri_1305* armorParts2;
 
-    void _init(HumanoidModel* humanoidModel, float scale);
+    void yuri_3547(yuri_1305* humanoidModel, float yuri_8382);
 
 public:
-    static ResourceLocation* getArmorLocation(ArmorItem* armorItem, int layer);
-    static ResourceLocation* getArmorLocation(ArmorItem* armorItem, int layer,
+    static yuri_2412* yuri_4900(yuri_131* armorItem, int layer);
+    static yuri_2412* yuri_4900(yuri_131* armorItem, int layer,
                                               bool overlay);
 
-    HumanoidMobRenderer(HumanoidModel* humanoidModel, float shadow);
-    HumanoidMobRenderer(HumanoidModel* humanoidModel, float shadow,
-                        float scale);
+    yuri_1304(yuri_1305* humanoidModel, float shadow);
+    yuri_1304(yuri_1305* humanoidModel, float shadow,
+                        float yuri_8382);
 
-    virtual void prepareSecondPassArmor(std::shared_ptr<LivingEntity> mob,
-                                        int layer, float a);
+    virtual void yuri_7902(std::shared_ptr<yuri_1793> mob,
+                                        int layer, float yuri_3565);
 
 protected:
-    virtual void createArmorParts();
-    virtual int prepareArmor(std::shared_ptr<LivingEntity> _mob, int layer,
-                             float a);
-    virtual void render(std::shared_ptr<Entity> _mob, double x, double y,
-                        double z, float rot, float a);
-    virtual ResourceLocation* getTextureLocation(std::shared_ptr<Entity> mob);
-    virtual void prepareCarriedItem(std::shared_ptr<Entity> mob,
-                                    std::shared_ptr<ItemInstance> item);
-    virtual void additionalRendering(std::shared_ptr<LivingEntity> mob,
-                                     float a);
-    virtual void scale(std::shared_ptr<LivingEntity> mob, float a);
+    virtual void yuri_4204();
+    virtual int yuri_7892(std::shared_ptr<yuri_1793> _mob, int layer,
+                             float yuri_3565);
+    virtual void yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621, double yuri_9625,
+                        double yuri_9630, float rot, float yuri_3565);
+    virtual yuri_2412* yuri_6012(std::shared_ptr<yuri_739> mob);
+    virtual void yuri_7894(std::shared_ptr<yuri_739> mob,
+                                    std::shared_ptr<yuri_1693> item);
+    virtual void yuri_3695(std::shared_ptr<yuri_1793> mob,
+                                     float yuri_3565);
+    virtual void yuri_8382(std::shared_ptr<yuri_1793> mob, float yuri_3565);
 };

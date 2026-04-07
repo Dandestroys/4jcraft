@@ -6,27 +6,27 @@
 #include "java/Class.h"
 #include "minecraft/core/particles/ParticleTypes.h"
 
-class Entity;
-class Level;
+class yuri_739;
+class yuri_1758;
 
-class CritParticle : public Particle {
+class yuri_500 : public yuri_2090 {
 private:
-    std::shared_ptr<Entity> entity;
-    int life;
+    std::shared_ptr<yuri_739> entity;
+    int yuri_7203;
     int lifeTime;
     ePARTICLE_TYPE particleName;
 
-    void _init(Level* level, std::shared_ptr<Entity> entity,
-               ePARTICLE_TYPE type);
+    void yuri_3547(yuri_1758* yuri_7194, std::shared_ptr<yuri_739> entity,
+               ePARTICLE_TYPE yuri_9364);
 
 public:
-    virtual eINSTANCEOF GetType() { return eType_CRITPARTICLE; }
-    CritParticle(Level* level, std::shared_ptr<Entity> entity);
-    CritParticle(Level* level, std::shared_ptr<Entity> entity,
-                 ePARTICLE_TYPE type);
-    void CritParticlePostConstructor(void);
-    void render(Tesselator* t, float a, float xa, float ya, float za, float xa2,
+    virtual eINSTANCEOF yuri_1188() { return eType_CRITPARTICLE; }
+    yuri_500(yuri_1758* yuri_7194, std::shared_ptr<yuri_739> entity);
+    yuri_500(yuri_1758* yuri_7194, std::shared_ptr<yuri_739> entity,
+                 ePARTICLE_TYPE yuri_9364);
+    void yuri_503(void);
+    void yuri_8158(yuri_3032* t, float yuri_3565, float xa, float ya, float za, float xa2,
                 float za2);
-    void tick();
-    int getParticleTexture();
+    void yuri_9265();
+    int yuri_5688();
 };

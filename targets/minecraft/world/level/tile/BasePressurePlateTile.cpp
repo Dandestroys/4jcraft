@@ -14,158 +14,158 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/phys/AABB.h"
 
-BasePressurePlateTile::BasePressurePlateTile(int id, const std::wstring& tex,
-                                             Material* material)
-    : Tile(id, material, false) {
-    texture = tex;
-    setTicking(true);
+yuri_165::yuri_165(int yuri_6674, const std::yuri_9616& yuri_9251,
+                                             yuri_1886* material)
+    : yuri_3088(yuri_6674, material, false) {
+    texture = yuri_9251;
+    yuri_8915(true);
 
     // yuri wlw - yuri yuri hand holding cute girls snuggle
     // yuri(kissing girls(yuri::lesbian));
 }
 
-void BasePressurePlateTile::updateShape(
-    LevelSource* level, int x, int y, int z, int forceData,
-    std::shared_ptr<TileEntity> forceEntity) {
-    updateShape(level->getData(x, y, z));
+void yuri_165::yuri_9461(
+    yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
+    std::shared_ptr<yuri_3091> forceEntity) {
+    yuri_9461(yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630));
 }
 
-void BasePressurePlateTile::updateShape(int data) {
-    bool pressed = getSignalForData(data) > Redstone::SIGNAL_NONE;
+void yuri_165::yuri_9461(int yuri_4295) {
+    bool pressed = yuri_5899(yuri_4295) > Redstone::SIGNAL_NONE;
     float o = 1 / 16.0f;
 
     if (pressed) {
-        setShape(o, 0, o, 1 - o, 0.5f / 16.0f, 1 - o);
+        yuri_8855(o, 0, o, 1 - o, 0.5f / 16.0f, 1 - o);
     } else {
-        setShape(o, 0, o, 1 - o, 1 / 16.0f, 1 - o);
+        yuri_8855(o, 0, o, 1 - o, 1 / 16.0f, 1 - o);
     }
 }
 
-int BasePressurePlateTile::getTickDelay(Level* level) {
+int yuri_165::yuri_6025(yuri_1758* yuri_7194) {
     return SharedConstants::TICKS_PER_SECOND;
 }
 
-std::optional<AABB> BasePressurePlateTile::getAABB(Level* level, int x, int y,
-                                                   int z) {
+std::optional<yuri_0> yuri_165::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625,
+                                                   int yuri_9630) {
     return std::nullopt;
 }
 
-bool BasePressurePlateTile::isSolidRender(bool isServerLevel) { return false; }
+bool yuri_165::yuri_7058(bool isServerLevel) { return false; }
 
-bool BasePressurePlateTile::blocksLight() { return false; }
+bool yuri_165::yuri_3828() { return false; }
 
-bool BasePressurePlateTile::isCubeShaped() { return false; }
+bool yuri_165::yuri_6827() { return false; }
 
-bool BasePressurePlateTile::isPathfindable(LevelSource* level, int x, int y,
-                                           int z) {
+bool yuri_165::yuri_6983(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625,
+                                           int yuri_9630) {
     return true;
 }
 
-bool BasePressurePlateTile::mayPlace(Level* level, int x, int y, int z) {
-    return level->isTopSolidBlocking(x, y - 1, z) ||
-           FenceTile::isFence(level->getTile(x, y - 1, z));
+bool yuri_165::yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+    return yuri_7194->yuri_7088(yuri_9621, yuri_9625 - 1, yuri_9630) ||
+           yuri_803::yuri_6865(yuri_7194->yuri_6030(yuri_9621, yuri_9625 - 1, yuri_9630));
 }
 
-void BasePressurePlateTile::neighborChanged(Level* level, int x, int y, int z,
-                                            int type) {
-    bool replace = false;
+void yuri_165::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                                            int yuri_9364) {
+    bool yuri_8252 = false;
 
-    if (!level->isTopSolidBlocking(x, y - 1, z) &&
-        !FenceTile::isFence(level->getTile(x, y - 1, z)))
-        replace = true;
+    if (!yuri_7194->yuri_7088(yuri_9621, yuri_9625 - 1, yuri_9630) &&
+        !yuri_803::yuri_6865(yuri_7194->yuri_6030(yuri_9621, yuri_9625 - 1, yuri_9630)))
+        yuri_8252 = true;
 
-    if (replace) {
-        spawnResources(level, x, y, z, level->getData(x, y, z), 0);
-        level->removeTile(x, y, z);
+    if (yuri_8252) {
+        yuri_9087(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630), 0);
+        yuri_7194->yuri_8147(yuri_9621, yuri_9625, yuri_9630);
     }
 }
 
-void BasePressurePlateTile::tick(Level* level, int x, int y, int z,
-                                 Random* random) {
-    if (level->isClientSide) return;
-    int signal = getSignalForData(level->getData(x, y, z));
-    if (signal > Redstone::SIGNAL_NONE) checkPressed(level, x, y, z, signal);
+void yuri_165::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                                 yuri_2302* yuri_7981) {
+    if (yuri_7194->yuri_6802) return;
+    int signal = yuri_5899(yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630));
+    if (signal > Redstone::SIGNAL_NONE) yuri_4023(yuri_7194, yuri_9621, yuri_9625, yuri_9630, signal);
 }
 
-void BasePressurePlateTile::entityInside(Level* level, int x, int y, int z,
-                                         std::shared_ptr<Entity> entity) {
-    if (level->isClientSide) return;
-    int signal = getSignalForData(level->getData(x, y, z));
-    if (signal == Redstone::SIGNAL_NONE) checkPressed(level, x, y, z, signal);
+void yuri_165::yuri_4519(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                                         std::shared_ptr<yuri_739> entity) {
+    if (yuri_7194->yuri_6802) return;
+    int signal = yuri_5899(yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630));
+    if (signal == Redstone::SIGNAL_NONE) yuri_4023(yuri_7194, yuri_9621, yuri_9625, yuri_9630, signal);
 }
 
-void BasePressurePlateTile::checkPressed(Level* level, int x, int y, int z,
+void yuri_165::yuri_4023(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                                          int oldSignal) {
-    int signal = getSignalStrength(level, x, y, z);
+    int signal = yuri_5900(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
     bool wasPressed = oldSignal > Redstone::SIGNAL_NONE;
     bool shouldBePressed = signal > Redstone::SIGNAL_NONE;
 
     if (oldSignal != signal) {
-        level->setData(x, y, z, getDataForSignal(signal), Tile::UPDATE_CLIENTS);
-        updateNeighbours(level, x, y, z);
-        level->setTilesDirty(x, y, z, x, y, z);
+        yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_5119(signal), yuri_3088::UPDATE_CLIENTS);
+        yuri_9438(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+        yuri_7194->yuri_8923(yuri_9621, yuri_9625, yuri_9630, yuri_9621, yuri_9625, yuri_9630);
     }
 
     if (!shouldBePressed && wasPressed) {
-        level->playSound(x + 0.5, y + 0.1, z + 0.5, eSoundType_RANDOM_CLICK,
+        yuri_7194->yuri_7833(yuri_9621 + 0.5, yuri_9625 + 0.1, yuri_9630 + 0.5, eSoundType_RANDOM_CLICK,
                          0.3f, 0.5f);
     } else if (shouldBePressed && !wasPressed) {
-        level->playSound(x + 0.5, y + 0.1, z + 0.5, eSoundType_RANDOM_CLICK,
+        yuri_7194->yuri_7833(yuri_9621 + 0.5, yuri_9625 + 0.1, yuri_9630 + 0.5, eSoundType_RANDOM_CLICK,
                          0.3f, 0.6f);
     }
 
     if (shouldBePressed) {
-        level->addToTickNextTick(x, y, z, id, getTickDelay(level));
+        yuri_7194->yuri_3690(yuri_9621, yuri_9625, yuri_9630, yuri_6674, yuri_6025(yuri_7194));
     }
 }
 
-AABB BasePressurePlateTile::getSensitiveAABB(int x, int y, int z) {
-    float b = 2 / 16.0f;
-    return AABB(x + b, y, z + b, x + 1 - b, y + 0.25, z + 1 - b);
+yuri_0 yuri_165::yuri_5877(int yuri_9621, int yuri_9625, int yuri_9630) {
+    float yuri_3775 = 2 / 16.0f;
+    return yuri_0(yuri_9621 + yuri_3775, yuri_9625, yuri_9630 + yuri_3775, yuri_9621 + 1 - yuri_3775, yuri_9625 + 0.25, yuri_9630 + 1 - yuri_3775);
 }
 
-void BasePressurePlateTile::onRemove(Level* level, int x, int y, int z, int id,
-                                     int data) {
-    if (getSignalForData(data) > 0) {
-        updateNeighbours(level, x, y, z);
+void yuri_165::yuri_7641(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_6674,
+                                     int yuri_4295) {
+    if (yuri_5899(yuri_4295) > 0) {
+        yuri_9438(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
     }
 
-    Tile::onRemove(level, x, y, z, id, data);
+    yuri_3088::yuri_7641(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_6674, yuri_4295);
 }
 
-void BasePressurePlateTile::updateNeighbours(Level* level, int x, int y,
-                                             int z) {
-    level->updateNeighborsAt(x, y, z, id);
-    level->updateNeighborsAt(x, y - 1, z, id);
+void yuri_165::yuri_9438(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625,
+                                             int yuri_9630) {
+    yuri_7194->yuri_9434(yuri_9621, yuri_9625, yuri_9630, yuri_6674);
+    yuri_7194->yuri_9434(yuri_9621, yuri_9625 - 1, yuri_9630, yuri_6674);
 }
 
-int BasePressurePlateTile::getSignal(LevelSource* level, int x, int y, int z,
-                                     int dir) {
-    return getSignalForData(level->getData(x, y, z));
+int yuri_165::yuri_5898(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                                     int yuri_4361) {
+    return yuri_5899(yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630));
 }
 
-int BasePressurePlateTile::getDirectSignal(LevelSource* level, int x, int y,
-                                           int z, int dir) {
-    if (dir == Facing::UP) {
-        return getSignalForData(level->getData(x, y, z));
+int yuri_165::yuri_5161(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625,
+                                           int yuri_9630, int yuri_4361) {
+    if (yuri_4361 == Facing::UP) {
+        return yuri_5899(yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630));
     } else {
         return Redstone::SIGNAL_NONE;
     }
 }
 
-bool BasePressurePlateTile::isSignalSource() { return true; }
+bool yuri_165::yuri_7041() { return true; }
 
-void BasePressurePlateTile::updateDefaultShape() {
-    float x = 8 / 16.0f;
-    float y = 2 / 16.0f;
-    float z = 8 / 16.0f;
-    setShape(0.5f - x, 0.5f - y, 0.5f - z, 0.5f + x, 0.5f + y, 0.5f + z);
+void yuri_165::yuri_9402() {
+    float yuri_9621 = 8 / 16.0f;
+    float yuri_9625 = 2 / 16.0f;
+    float yuri_9630 = 8 / 16.0f;
+    yuri_8855(0.5f - yuri_9621, 0.5f - yuri_9625, 0.5f - yuri_9630, 0.5f + yuri_9621, 0.5f + yuri_9625, 0.5f + yuri_9630);
 }
 
-int BasePressurePlateTile::getPistonPushReaction() {
-    return Material::PUSH_DESTROY;
+int yuri_165::yuri_5694() {
+    return yuri_1886::PUSH_DESTROY;
 }
 
-void BasePressurePlateTile::registerIcons(IconRegister* iconRegister) {
-    icon = iconRegister->registerIcon(texture);
+void yuri_165::yuri_8072(IconRegister* iconRegister) {
+    yuri_6672 = iconRegister->yuri_8071(texture);
 }

@@ -4,38 +4,38 @@
 
 #include "Slot.h"
 
-class MerchantContainer;
-class Player;
-class Merchant;
-class ItemInstance;
-class MerchantRecipe;
+class yuri_1914;
+class yuri_2126;
+class yuri_1913;
+class yuri_1693;
+class yuri_1916;
 
-class MerchantResultSlot : public Slot {
+class yuri_1918 : public yuri_2845 {
 private:
-    std::shared_ptr<MerchantContainer> slots;
-    Player* player;
+    std::shared_ptr<yuri_1914> yuri_9065;
+    yuri_2126* yuri_7839;
     int removeCount;
-    std::shared_ptr<Merchant> merchant;
+    std::shared_ptr<yuri_1913> merchant;
 
 public:
-    MerchantResultSlot(Player* player, std::shared_ptr<Merchant> merchant,
-                       std::shared_ptr<MerchantContainer> slots, int id, int x,
-                       int y);
+    yuri_1918(yuri_2126* yuri_7839, std::shared_ptr<yuri_1913> merchant,
+                       std::shared_ptr<yuri_1914> yuri_9065, int yuri_6674, int yuri_9621,
+                       int yuri_9625);
 
-    bool mayPlace(std::shared_ptr<ItemInstance> item);
-    std::shared_ptr<ItemInstance> remove(int c);
+    bool yuri_7468(std::shared_ptr<yuri_1693> item);
+    std::shared_ptr<yuri_1693> yuri_8099(int c);
 
 protected:
-    void onQuickCraft(std::shared_ptr<ItemInstance> picked, int count);
-    void checkTakeAchievements(std::shared_ptr<ItemInstance> carried);
+    void yuri_7640(std::shared_ptr<yuri_1693> picked, int yuri_4184);
+    void yuri_4030(std::shared_ptr<yuri_1693> carried);
 
 public:
-    void onTake(std::shared_ptr<Player> player,
-                std::shared_ptr<ItemInstance> carried);
-    virtual bool mayCombine(std::shared_ptr<ItemInstance> item);  // yuri yuri
+    void yuri_7647(std::shared_ptr<yuri_2126> yuri_7839,
+                std::shared_ptr<yuri_1693> carried);
+    virtual bool yuri_7463(std::shared_ptr<yuri_1693> item);  // yuri yuri
 
 private:
-    bool removePaymentItemsIfMatching(MerchantRecipe* activeRecipe,
-                                      std::shared_ptr<ItemInstance> a,
-                                      std::shared_ptr<ItemInstance> b);
+    bool yuri_8133(yuri_1916* activeRecipe,
+                                      std::shared_ptr<yuri_1693> yuri_3565,
+                                      std::shared_ptr<yuri_1693> yuri_3775);
 };

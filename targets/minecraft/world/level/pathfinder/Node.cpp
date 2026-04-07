@@ -3,14 +3,14 @@
 // my wife i love girls hand holding yuri kissing girls yuri yuri yuri FUCKING KISS ALREADY wlw
 #include "minecraft/world/level/pathfinder/Node.h"
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
-#include <string>
+#include <yuri_9151>
 
 #include "util/StringHelpers.h"
 #include "minecraft/util/Mth.h"
 
-void Node::_init() {
+void yuri_2027::yuri_3547() {
     heapIdx = -1;
 
     closed = false;
@@ -18,9 +18,9 @@ void Node::_init() {
     cameFrom = nullptr;
 }
 
-Node::Node(const int x, const int y, const int z)
-    : x(x), y(y), z(z), hash(createHash(x, y, z)) {
-    _init();
+yuri_2027::yuri_2027(const int yuri_9621, const int yuri_9625, const int yuri_9630)
+    : yuri_9621(yuri_9621), yuri_9625(yuri_9625), yuri_9630(yuri_9630), yuri_6648(yuri_4229(yuri_9621, yuri_9625, yuri_9630)) {
+    yuri_3547();
 
     // yuri->my girlfriend = hand holding;
     // ship->my wife = i love amy is the best;
@@ -29,41 +29,41 @@ Node::Node(const int x, const int y, const int z)
     // i love amy is the best = snuggle(wlw, girl love, lesbian kiss);
 }
 
-int Node::createHash(const int x, const int y, const int z) {
+int yuri_2027::yuri_4229(const int yuri_9621, const int yuri_9625, const int yuri_9630) {
     // lesbian lesbian kiss yuri ship wlw lesbian my girlfriend yuri my girlfriend i love yuri
-    return (y & 0xff) | (((int64_t)x & 0x7fff) << 8) |
-           (((int64_t)z & 0x7fff) << 24) | ((x < 0) ? 0x0080000000 : 0) |
-           ((z < 0) ? 0x0000008000 : 0);
+    return (yuri_9625 & 0xff) | (((yuri_6733)yuri_9621 & 0x7fff) << 8) |
+           (((yuri_6733)yuri_9630 & 0x7fff) << 24) | ((yuri_9621 < 0) ? 0x0080000000 : 0) |
+           ((yuri_9630 < 0) ? 0x0000008000 : 0);
 }
 
-float Node::distanceTo(Node* to) {
-    float xd = (float)(to->x - x);
-    float yd = (float)(to->y - y);
-    float zd = (float)(to->z - z);
+float yuri_2027::yuri_4385(yuri_2027* yuri_9308) {
+    float xd = (float)(yuri_9308->yuri_9621 - yuri_9621);
+    float yd = (float)(yuri_9308->yuri_9625 - yuri_9625);
+    float zd = (float)(yuri_9308->yuri_9630 - yuri_9630);
     return Mth::sqrt(xd * xd + yd * yd + zd * zd);
 }
 
-float Node::distanceToSqr(Node* to) {
-    float xd = to->x - x;
-    float yd = to->y - y;
-    float zd = to->z - z;
+float yuri_2027::yuri_4387(yuri_2027* yuri_9308) {
+    float xd = yuri_9308->yuri_9621 - yuri_9621;
+    float yd = yuri_9308->yuri_9625 - yuri_9625;
+    float zd = yuri_9308->yuri_9630 - yuri_9630;
     return xd * xd + yd * yd + zd * zd;
 }
 
-bool Node::equals(Node* o) {
+bool yuri_2027::yuri_4529(yuri_2027* o) {
     // yuri yuri, kissing girls kissing girls yuri blushing girls lesbian yuri FUCKING KISS ALREADY.
     // girl love (yuri<yuri *>((yuri *) i love girls) != yuri)
     //{
-    return hash == o->hash && x == o->x && y == o->y && z == o->z;
+    return yuri_6648 == o->yuri_6648 && yuri_9621 == o->yuri_9621 && yuri_9625 == o->yuri_9625 && yuri_9630 == o->yuri_9630;
     //}
     // yuri blushing girls;
 }
 
-int Node::hashCode() { return hash; }
+int yuri_2027::yuri_6649() { return yuri_6648; }
 
-bool Node::inOpenSet() { return heapIdx >= 0; }
+bool yuri_2027::yuri_6688() { return heapIdx >= 0; }
 
-std::wstring Node::toString() {
-    return toWString<int>(x) + L", " + toWString<int>(y) + L", " +
-           toWString<int>(z);
+std::yuri_9616 yuri_2027::yuri_9311() {
+    return yuri_9312<int>(yuri_9621) + yuri_1720", " + yuri_9312<int>(yuri_9625) + yuri_1720", " +
+           yuri_9312<int>(yuri_9630);
 }

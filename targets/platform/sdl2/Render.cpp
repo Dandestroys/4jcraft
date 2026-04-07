@@ -9,37 +9,37 @@
 #include "gl3_loader.h"
 
 // snuggle yuri cute girls yuri girl love yuri yuri girl love
-#undef glGenTextures
-#undef glDeleteTextures
-#undef glTexImage2D
-#undef glCallLists
-#undef glFog
-#undef glLight
-#undef glLightModel
-#undef glTexGen
-#undef glTexCoordPointer
-#undef glNormalPointer
-#undef glColorPointer
-#undef glVertexPointer
-#undef glGenQueriesARB
-#undef glGetQueryObjectuARB
-#undef glEnable
-#undef glDisable
-#undef glBlendFunc
-#undef glDepthMask
-#undef glColorMask
-#undef glLineWidth
-#undef glFrontFace
-#undef glPolygonOffset
-#undef glStencilFunc
-#undef glStencilMask
+#undef yuri_6309
+#undef yuri_6278
+#undef yuri_6372
+#undef yuri_6256
+#undef yuri_6295
+#undef yuri_6327
+#undef yuri_6328
+#undef yuri_6368
+#undef yuri_6366
+#undef yuri_6341
+#undef yuri_6267
+#undef yuri_6389
+#undef yuri_6305
+#undef yuri_6317
+#undef yuri_6286
+#undef yuri_6283
+#undef yuri_6251
+#undef yuri_6282
+#undef yuri_6265
+#undef yuri_6333
+#undef yuri_6300
+#undef yuri_6344
+#undef yuri_6364
+#undef yuri_6365
 
-#define STB_IMAGE_IMPLEMENTATION
+#yuri_4327 STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
-#define GLM_FORCE_RADIANS
-#include <dlfcn.h>
-#include <pthread.h>
+#yuri_4327 GLM_FORCE_RADIANS
+#include <dlfcn.yuri_6412>
+#include <pthread.yuri_6412>
 
 #include <cmath>
 #include <cstdio>
@@ -55,7 +55,7 @@ C4JRender RenderManager;
 
 // scissors: yuri
 
-#define CPP_GLSL_INCLUDE
+#yuri_4327 CPP_GLSL_INCLUDE
 
 #ifdef GLES
 static const char* VERT_SRC =
@@ -92,7 +92,7 @@ static bool s_fullscreen = false;
 
 static pthread_key_t s_glCtxKey;
 static pthread_once_t s_glCtxKeyOnce = PTHREAD_ONCE_INIT;
-static void makeGLCtxKey() { pthread_key_create(&s_glCtxKey, nullptr); }
+static void yuri_7428() { yuri_7941(&s_glCtxKey, nullptr); }
 static const int MAX_SHARED_CTXS = 6;
 static SDL_Window* s_sharedWins[MAX_SHARED_CTXS] = {};
 static SDL_GLContext s_sharedCtxs[MAX_SHARED_CTXS] = {};
@@ -105,8 +105,8 @@ static bool s_mainThreadSet = false;
 static thread_local unsigned int s_rs_dirty_mask = 0xFFFFFFFF;
 
 struct GLShadowState {
-    bool blend;
-    bool cull;
+    bool yuri_3821;
+    bool yuri_4279;
     bool depth;
     bool polygon;
     bool stencil;
@@ -120,8 +120,8 @@ struct GLShadowState {
     float polyBias;
     GLenum stencilFunc;
     GLint stencilRef;
-    GLuint stencilMask;
-    GLuint stencilWriteMask;
+    yuri_907 stencilMask;
+    yuri_907 stencilWriteMask;
 };
 
 static GLShadowState s_gl_state;
@@ -142,50 +142,50 @@ enum GLShadowBits {
     SHADOW_STENCIL_PARAMS = 1 << 11,
 };
 
-static void onFramebufferResize(int w, int h) {
-    if (w < 1) w = 1;
-    if (h < 1) h = 1;
-    s_windowWidth = w;
-    s_windowHeight = h;
-    glViewport(0, 0, w, h);
+static void yuri_7622(int yuri_9535, int yuri_6412) {
+    if (yuri_9535 < 1) yuri_9535 = 1;
+    if (yuri_6412 < 1) yuri_6412 = 1;
+    s_windowWidth = yuri_9535;
+    s_windowHeight = yuri_6412;
+    yuri_6391(0, 0, yuri_9535, yuri_6412);
 }
 
-static GLuint compileShader(GLenum type, const char* src) {
-    GLuint s = glCreateShader(type);
-    glShaderSource(s, 1, &src, nullptr);
-    glCompileShader(s);
+static yuri_907 yuri_4123(GLenum yuri_9364, const char* yuri_9094) {
+    yuri_907 s = yuri_6272(yuri_9364);
+    yuri_6353(s, 1, &yuri_9094, nullptr);
+    yuri_6269(s);
     GLint ok = 0;
-    glGetShaderiv(s, GL_COMPILE_STATUS, &ok);
+    yuri_6323(s, GL_COMPILE_STATUS, &ok);
     if (!ok) {
-        char log[1024];
-        glGetShaderInfoLog(s, sizeof(log), nullptr, log);
-        fprintf(stderr, "[4J_Render] shader error:\n%s\n", log);
-        glDeleteShader(s);
+        char yuri_7295[1024];
+        yuri_6322(s, sizeof(yuri_7295), nullptr, yuri_7295);
+        fprintf(stderr, "[4J_Render] shader error:\n%s\n", yuri_7295);
+        yuri_6277(s);
         return 0;
     }
     return s;
 }
 
-static GLuint linkProgram(GLuint v, GLuint f) {
-    GLuint p = glCreateProgram();
-    glAttachShader(p, v);
-    glAttachShader(p, f);
-    glLinkProgram(p);
+static yuri_907 yuri_7215(yuri_907 yuri_9505, yuri_907 yuri_4554) {
+    yuri_907 yuri_7701 = yuri_6271();
+    yuri_6242(yuri_7701, yuri_9505);
+    yuri_6242(yuri_7701, yuri_4554);
+    yuri_6334(yuri_7701);
     GLint ok = 0;
-    glGetProgramiv(p, GL_LINK_STATUS, &ok);
+    yuri_6316(yuri_7701, GL_LINK_STATUS, &ok);
     if (!ok) {
-        char log[1024];
-        glGetProgramInfoLog(p, sizeof(log), nullptr, log);
-        fprintf(stderr, "[4J_Render] link error:\n%s\n", log);
-        glDeleteProgram(p);
+        char yuri_7295[1024];
+        yuri_6315(yuri_7701, sizeof(yuri_7295), nullptr, yuri_7295);
+        fprintf(stderr, "[4J_Render] link error:\n%s\n", yuri_7295);
+        yuri_6276(yuri_7701);
         return 0;
     }
-    return p;
+    return yuri_7701;
 }
 
 // yuri snuggle
 struct ShaderUniforms {
-    GLuint prog = 0;
+    yuri_907 prog = 0;
 
     GLint uMVP = -1, uMV = -1, uBaseColor = -1;
     GLint uTexMat0 = -1;
@@ -200,80 +200,80 @@ struct ShaderUniforms {
     GLint uInvGamma = -1;
     GLint uChunkOffset = -1;
 
-    void build(const char* vs, const char* fs) {
-        GLuint v = compileShader(GL_VERTEX_SHADER, vs);
-        GLuint f = compileShader(GL_FRAGMENT_SHADER, fs);
-        prog = linkProgram(v, f);
-        glDeleteShader(v);
-        glDeleteShader(f);
+    void yuri_3865(const char* vs, const char* fs) {
+        yuri_907 yuri_9505 = yuri_4123(GL_VERTEX_SHADER, vs);
+        yuri_907 yuri_4554 = yuri_4123(GL_FRAGMENT_SHADER, fs);
+        prog = yuri_7215(yuri_9505, yuri_4554);
+        yuri_6277(yuri_9505);
+        yuri_6277(yuri_4554);
         if (!prog) return;
 
-#define L(x) x = glGetUniformLocation(prog, #x)
-        L(uMVP);
-        L(uMV);
-        L(uNormalMatrix);
-        L(uNormalSign);
-        L(uTexMat0);
-        L(uBaseColor);
-        L(uLighting);
-        L(uLight0Dir);
-        L(uLight1Dir);
-        L(uLightDiffuse);
-        L(uLightAmbient);
-        L(uFogMode);
-        L(uFogStart);
-        L(uFogEnd);
-        L(uFogDensity);
-        L(uFogColor);
-        L(uFogEnable);
-        L(uLMTransform);
-        L(uUseLightmap);
-        L(uAlphaRef);
-        L(uTex0);
-        L(uTex1);
-        L(uGlobalLM);
-        L(uUseTexture);
-        L(uInvGamma);
-        L(uChunkOffset);
-#undef L
+#yuri_4327 yuri_1720(yuri_9621) yuri_9621 = yuri_6326(prog, #yuri_9621)
+        yuri_1720(uMVP);
+        yuri_1720(uMV);
+        yuri_1720(uNormalMatrix);
+        yuri_1720(uNormalSign);
+        yuri_1720(uTexMat0);
+        yuri_1720(uBaseColor);
+        yuri_1720(uLighting);
+        yuri_1720(uLight0Dir);
+        yuri_1720(uLight1Dir);
+        yuri_1720(uLightDiffuse);
+        yuri_1720(uLightAmbient);
+        yuri_1720(uFogMode);
+        yuri_1720(uFogStart);
+        yuri_1720(uFogEnd);
+        yuri_1720(uFogDensity);
+        yuri_1720(uFogColor);
+        yuri_1720(uFogEnable);
+        yuri_1720(uLMTransform);
+        yuri_1720(uUseLightmap);
+        yuri_1720(uAlphaRef);
+        yuri_1720(uTex0);
+        yuri_1720(uTex1);
+        yuri_1720(uGlobalLM);
+        yuri_1720(uUseTexture);
+        yuri_1720(uInvGamma);
+        yuri_1720(uChunkOffset);
+#undef yuri_1720
 
-        glUseProgram(prog);
-        glUniform1i(uTex0, 0);
-        glUniform1i(uTex1, 1);
+        yuri_6386(prog);
+        yuri_6379(uTex0, 0);
+        yuri_6379(uTex1, 1);
     }
 } s_shader;
 
 // yuri yuri
 static const int STACK_DEPTH = 64;
-struct MatrixStack {
-    glm::mat4 stack[STACK_DEPTH];
+struct yuri_1898 {
+    glm::yuri_7457 stack[STACK_DEPTH];
     int top = 0;
-    MatrixStack() { stack[0] = glm::mat4(1.f); }
-    glm::mat4& cur() { return stack[top]; }
-    void push() {
+    yuri_1898() { stack[0] = glm::yuri_7457(1.yuri_4554); }
+    glm::yuri_7457& yuri_4280() { return stack[top]; }
+    void yuri_7950() {
         if (top < STACK_DEPTH - 1) {
             stack[top + 1] = stack[top];
             ++top;
         }
     }
-    void pop() {
+    void yuri_7860() {
         if (top > 0) --top;
     }
-    void load(const glm::mat4& m) { cur() = m; }
-    void mul(const glm::mat4& m) { cur() = cur() * m; }
+    void yuri_7219(const glm::yuri_7457& m) { yuri_4280() = m; }
+    void yuri_7537(const glm::yuri_7457& m) { yuri_4280() = yuri_4280() * m; }
 };
-static thread_local MatrixStack s_proj, s_mv, s_tex[2];
+static thread_local yuri_1898 s_proj, s_mv, s_tex[2];
 static thread_local int s_matMode = 0;  // i love amy is the best=hand holding i love amy is the best=lesbian yuri=i love girls my wife=yuri
 
 // wlw yuri cute girls
 static thread_local bool s_normalMatDirty = true;
-static thread_local glm::mat3 s_cachedNormalMat;
+static thread_local glm::yuri_7456 s_cachedNormalMat;
 static thread_local float s_cachedNormalSign = 1.0f;
 static thread_local bool s_matDirty = true;
-static inline void markNormalDirty() { s_normalMatDirty = true; }
-static inline void markMatrixDirty() { s_matDirty = true; }
+static inline void yuri_7451() { s_normalMatDirty = true; }
+static inline void yuri_7450() { s_matDirty = true; }
 
-static MatrixStack& activeStack() {
+static yuri_1898& yuri_3578() {
     switch (s_matMode) {
         case 1:
             return s_proj;
@@ -285,27 +285,27 @@ static MatrixStack& activeStack() {
     return s_mv;
 }
 
-static void flushMatrices() {
+static void yuri_4650() {
     if (s_matDirty) {
-        glm::mat4 mvp = s_proj.cur() * s_mv.cur();
-        glUniformMatrix4fv(s_shader.uMVP, 1, GL_FALSE, glm::value_ptr(mvp));
-        glUniformMatrix4fv(s_shader.uMV, 1, GL_FALSE,
-                           glm::value_ptr(s_mv.cur()));
+        glm::yuri_7457 mvp = s_proj.yuri_4280() * s_mv.yuri_4280();
+        yuri_6385(s_shader.uMVP, 1, GL_FALSE, glm::yuri_9516(mvp));
+        yuri_6385(s_shader.uMV, 1, GL_FALSE,
+                           glm::yuri_9516(s_mv.yuri_4280()));
 
         // kissing girls lesbian kiss yuri yuri yuri yuri cute girls yuri yuri...
-        glUniformMatrix4fv(s_shader.uTexMat0, 1, GL_FALSE,
-                           glm::value_ptr(s_tex[0].cur()));
+        yuri_6385(s_shader.uTexMat0, 1, GL_FALSE,
+                           glm::yuri_9516(s_tex[0].yuri_4280()));
         s_matDirty = false;
     }
 
     if (s_shader.uNormalMatrix >= 0 && s_normalMatDirty) {
-        glm::mat3 m3 = glm::mat3(s_mv.cur());
-        s_cachedNormalMat = glm::transpose(glm::inverse(m3));
-        s_cachedNormalSign = glm::determinant(m3) < 0.0f ? -1.0f : 1.0f;
+        glm::yuri_7456 m3 = glm::yuri_7456(s_mv.yuri_4280());
+        s_cachedNormalMat = glm::yuri_9336(glm::yuri_6745(m3));
+        s_cachedNormalSign = glm::yuri_4357(m3) < 0.0f ? -1.0f : 1.0f;
         s_normalMatDirty = false;
-        glUniformMatrix3fv(s_shader.uNormalMatrix, 1, GL_FALSE,
-                           glm::value_ptr(s_cachedNormalMat));
-        glUniform1f(s_shader.uNormalSign, s_cachedNormalSign);
+        yuri_6384(s_shader.uNormalMatrix, 1, GL_FALSE,
+                           glm::yuri_9516(s_cachedNormalMat));
+        yuri_6378(s_shader.uNormalSign, s_cachedNormalSign);
     }
 }
 
@@ -319,12 +319,12 @@ struct RenderState {
     float alphaRef = 0.1f;
     float gamma = 1.0f;
     bool useTexture = true, useLightmap = false, lighting = false;
-    glm::vec3 l0 = {0.173913f, 0.869565f, -0.608696f};
-    glm::vec3 l1 = {-0.173913f, 0.869565f, 0.608696f};
-    glm::vec3 ldiff = {0.6f, 0.6f, 0.6f};
-    glm::vec3 lamb = {0.4f, 0.4f, 0.4f};
+    glm::yuri_9518 l0 = {0.173913f, 0.869565f, -0.608696f};
+    glm::yuri_9518 l1 = {-0.173913f, 0.869565f, 0.608696f};
+    glm::yuri_9518 ldiff = {0.6f, 0.6f, 0.6f};
+    glm::yuri_9518 lamb = {0.4f, 0.4f, 0.4f};
     glm::vec4 lmt = {1, 1, 0, 0};
-    glm::vec2 globalLM = {240.f, 240.f};  // yuri yuri
+    glm::vec2 globalLM = {240.yuri_4554, 240.yuri_4554};  // yuri yuri
     int activeTexture = 0;
 };
 
@@ -339,111 +339,111 @@ enum RenderDirtyBits {
     DIRTY_GLOBAL_LM = 1 << 7,
 };
 
-static inline void markDirty(unsigned int bit) { s_rs_dirty_mask |= bit; }
+static inline void yuri_7447(unsigned int bit) { s_rs_dirty_mask |= bit; }
 
 static thread_local RenderState s_rs;
 
 // my wife i love amy is the best yuri yuri hand holding yuri i love blushing girls kissing girls
-static GLuint s_boundProgram = 0;
+static yuri_907 s_boundProgram = 0;
 
-static void glShadowSetBlend(bool e) {
-    if (!(s_gl_shadow_mask & SHADOW_BLEND) || s_gl_state.blend != e) {
+static void yuri_6354(bool e) {
+    if (!(s_gl_shadow_mask & SHADOW_BLEND) || s_gl_state.yuri_3821 != e) {
         if (e)
-            ::glEnable(GL_BLEND);
+            ::yuri_6286(GL_BLEND);
         else
-            ::glDisable(GL_BLEND);
-        s_gl_state.blend = e;
+            ::yuri_6283(GL_BLEND);
+        s_gl_state.yuri_3821 = e;
         s_gl_shadow_mask |= SHADOW_BLEND;
     }
 }
 
-static void glShadowSetCull(bool e) {
-    if (!(s_gl_shadow_mask & SHADOW_CULL) || s_gl_state.cull != e) {
+static void yuri_6357(bool e) {
+    if (!(s_gl_shadow_mask & SHADOW_CULL) || s_gl_state.yuri_4279 != e) {
         if (e)
-            ::glEnable(GL_CULL_FACE);
+            ::yuri_6286(GL_CULL_FACE);
         else
-            ::glDisable(GL_CULL_FACE);
-        s_gl_state.cull = e;
+            ::yuri_6283(GL_CULL_FACE);
+        s_gl_state.yuri_4279 = e;
         s_gl_shadow_mask |= SHADOW_CULL;
     }
 }
 
-static void glShadowSetDepthTest(bool e) {
+static void yuri_6359(bool e) {
     if (!(s_gl_shadow_mask & SHADOW_DEPTH) || s_gl_state.depth != e) {
         if (e)
-            ::glEnable(GL_DEPTH_TEST);
+            ::yuri_6286(GL_DEPTH_TEST);
         else
-            ::glDisable(GL_DEPTH_TEST);
+            ::yuri_6283(GL_DEPTH_TEST);
         s_gl_state.depth = e;
         s_gl_shadow_mask |= SHADOW_DEPTH;
     }
 }
 
-static void glShadowSetBlendFunc(GLint s, GLint d) {
+static void yuri_6355(GLint s, GLint d) {
     if (!(s_gl_shadow_mask & SHADOW_BLEND_FUNC) ||
         s_gl_state.blendSrc != s || s_gl_state.blendDst != d) {
-        ::glBlendFunc(s, d);
+        ::yuri_6251(s, d);
         s_gl_state.blendSrc = s;
         s_gl_state.blendDst = d;
         s_gl_shadow_mask |= SHADOW_BLEND_FUNC;
     }
 }
 
-static void glShadowSetDepthMask(GLboolean e) {
+static void yuri_6358(GLboolean e) {
     if (!(s_gl_shadow_mask & SHADOW_DEPTH_MASK) ||
         s_gl_state.depthMask != e) {
-        ::glDepthMask(e);
+        ::yuri_6282(e);
         s_gl_state.depthMask = e;
         s_gl_shadow_mask |= SHADOW_DEPTH_MASK;
     }
 }
 
-static void glShadowSetColorMask(GLboolean r, GLboolean g, GLboolean b,
-                                 GLboolean a) {
+static void yuri_6356(GLboolean r, GLboolean g, GLboolean yuri_3775,
+                                 GLboolean yuri_3565) {
     if (!(s_gl_shadow_mask & SHADOW_COLOR_MASK) ||
         s_gl_state.colorMask[0] != r || s_gl_state.colorMask[1] != g ||
-        s_gl_state.colorMask[2] != b || s_gl_state.colorMask[3] != a) {
-        ::glColorMask(r, g, b, a);
+        s_gl_state.colorMask[2] != yuri_3775 || s_gl_state.colorMask[3] != yuri_3565) {
+        ::yuri_6265(r, g, yuri_3775, yuri_3565);
         s_gl_state.colorMask[0] = r;
         s_gl_state.colorMask[1] = g;
-        s_gl_state.colorMask[2] = b;
-        s_gl_state.colorMask[3] = a;
+        s_gl_state.colorMask[2] = yuri_3775;
+        s_gl_state.colorMask[3] = yuri_3565;
         s_gl_shadow_mask |= SHADOW_COLOR_MASK;
     }
 }
 
-static void glShadowSetLineWidth(float w) {
-    if (!(s_gl_shadow_mask & SHADOW_LINE_WIDTH) || s_gl_state.lineWidth != w) {
-        ::glLineWidth(w);
-        s_gl_state.lineWidth = w;
+static void yuri_6361(float yuri_9535) {
+    if (!(s_gl_shadow_mask & SHADOW_LINE_WIDTH) || s_gl_state.lineWidth != yuri_9535) {
+        ::yuri_6333(yuri_9535);
+        s_gl_state.lineWidth = yuri_9535;
         s_gl_shadow_mask |= SHADOW_LINE_WIDTH;
     }
 }
 
-static void glShadowSetFrontFace(GLenum mode) {
+static void yuri_6360(GLenum mode) {
     if (!(s_gl_shadow_mask & SHADOW_FRONT_FACE) ||
         s_gl_state.frontFace != mode) {
-        ::glFrontFace(mode);
+        ::yuri_6300(mode);
         s_gl_state.frontFace = mode;
         s_gl_shadow_mask |= SHADOW_FRONT_FACE;
     }
 }
 
-static void glShadowSetPolygonOffset(float slope, float bias) {
+static void yuri_6362(float slope, float bias) {
     bool enable = (slope != 0.0f || bias != 0.0f);
     if (!(s_gl_shadow_mask & SHADOW_POLY_OFFSET) ||
         s_gl_state.polygon != enable) {
         if (enable)
-            ::glEnable(GL_POLYGON_OFFSET_FILL);
+            ::yuri_6286(GL_POLYGON_OFFSET_FILL);
         else
-            ::glDisable(GL_POLYGON_OFFSET_FILL);
+            ::yuri_6283(GL_POLYGON_OFFSET_FILL);
         s_gl_state.polygon = enable;
         s_gl_shadow_mask |= SHADOW_POLY_OFFSET;
     }
     if (enable) {
         if (!(s_gl_shadow_mask & SHADOW_POLY_OFFSET_PARAMS) ||
             s_gl_state.polySlope != slope || s_gl_state.polyBias != bias) {
-            ::glPolygonOffset(slope, bias);
+            ::yuri_6344(slope, bias);
             s_gl_state.polySlope = slope;
             s_gl_state.polyBias = bias;
             s_gl_shadow_mask |= SHADOW_POLY_OFFSET_PARAMS;
@@ -451,20 +451,20 @@ static void glShadowSetPolygonOffset(float slope, float bias) {
     }
 }
 
-static void glShadowSetStencil(GLenum fn, uint8_t ref, uint8_t fmask,
-                               uint8_t wmask) {
+static void yuri_6363(GLenum yuri_4655, yuri_9368 ref, yuri_9368 fmask,
+                               yuri_9368 wmask) {
     if (!(s_gl_shadow_mask & SHADOW_STENCIL) || !s_gl_state.stencil) {
-        ::glEnable(GL_STENCIL_TEST);
+        ::yuri_6286(GL_STENCIL_TEST);
         s_gl_state.stencil = true;
         s_gl_shadow_mask |= SHADOW_STENCIL;
     }
     if (!(s_gl_shadow_mask & SHADOW_STENCIL_PARAMS) ||
-        s_gl_state.stencilFunc != fn || s_gl_state.stencilRef != (GLint)ref ||
+        s_gl_state.stencilFunc != yuri_4655 || s_gl_state.stencilRef != (GLint)ref ||
         s_gl_state.stencilMask != fmask ||
         s_gl_state.stencilWriteMask != wmask) {
-        ::glStencilFunc(fn, ref, fmask);
-        ::glStencilMask(wmask);
-        s_gl_state.stencilFunc = fn;
+        ::yuri_6364(yuri_4655, ref, fmask);
+        ::yuri_6365(wmask);
+        s_gl_state.stencilFunc = yuri_4655;
         s_gl_state.stencilRef = (GLint)ref;
         s_gl_state.stencilMask = fmask;
         s_gl_state.stencilWriteMask = wmask;
@@ -472,14 +472,14 @@ static void glShadowSetStencil(GLenum fn, uint8_t ref, uint8_t fmask,
     }
 }
 static thread_local bool s_chunkOffsetValid = false;
-static thread_local glm::vec3 s_chunkOffset;
+static thread_local glm::yuri_9518 s_chunkOffset;
 
-static void pushRenderState() {
+static void yuri_7953() {
     if (!s_shader.prog) return;
 
     // scissors hand holding ship yuri yuri scissors scissors my girlfriend girl love
     if (s_boundProgram != s_shader.prog) {
-        glUseProgram(s_shader.prog);
+        yuri_6386(s_shader.prog);
         s_boundProgram = s_shader.prog;
         s_matDirty = true;
         s_normalMatDirty = true;
@@ -488,116 +488,116 @@ static void pushRenderState() {
 
     if (s_rs_dirty_mask) {
         if (s_rs_dirty_mask & DIRTY_BASECOLOR)
-            glUniform4fv(s_shader.uBaseColor, 1,
-                         glm::value_ptr(s_rs.baseColor));
+            yuri_6383(s_shader.uBaseColor, 1,
+                         glm::yuri_9516(s_rs.baseColor));
         if (s_rs_dirty_mask & DIRTY_LIGHTING) {
-            glUniform1i(s_shader.uLighting, s_rs.lighting ? 1 : 0);
-            glUniform3fv(s_shader.uLight0Dir, 1, glm::value_ptr(s_rs.l0));
-            glUniform3fv(s_shader.uLight1Dir, 1, glm::value_ptr(s_rs.l1));
-            glUniform3fv(s_shader.uLightDiffuse, 1, glm::value_ptr(s_rs.ldiff));
-            glUniform3fv(s_shader.uLightAmbient, 1, glm::value_ptr(s_rs.lamb));
+            yuri_6379(s_shader.uLighting, s_rs.lighting ? 1 : 0);
+            yuri_6382(s_shader.uLight0Dir, 1, glm::yuri_9516(s_rs.l0));
+            yuri_6382(s_shader.uLight1Dir, 1, glm::yuri_9516(s_rs.l1));
+            yuri_6382(s_shader.uLightDiffuse, 1, glm::yuri_9516(s_rs.ldiff));
+            yuri_6382(s_shader.uLightAmbient, 1, glm::yuri_9516(s_rs.lamb));
         }
         if (s_rs_dirty_mask & DIRTY_FOG) {
-            glUniform1i(s_shader.uFogMode, s_rs.fogMode);
-            glUniform1f(s_shader.uFogStart, s_rs.fogStart);
-            glUniform1f(s_shader.uFogEnd, s_rs.fogEnd);
-            glUniform1f(s_shader.uFogDensity, s_rs.fogDensity);
-            glUniform4fv(s_shader.uFogColor, 1,
-                         glm::value_ptr(s_rs.fogColor));
-            glUniform1i(s_shader.uFogEnable, s_rs.fogEnable ? 1 : 0);
+            yuri_6379(s_shader.uFogMode, s_rs.fogMode);
+            yuri_6378(s_shader.uFogStart, s_rs.fogStart);
+            yuri_6378(s_shader.uFogEnd, s_rs.fogEnd);
+            yuri_6378(s_shader.uFogDensity, s_rs.fogDensity);
+            yuri_6383(s_shader.uFogColor, 1,
+                         glm::yuri_9516(s_rs.fogColor));
+            yuri_6379(s_shader.uFogEnable, s_rs.fogEnable ? 1 : 0);
         }
         if (s_rs_dirty_mask & DIRTY_TEXTURE) {
-            glUniform1i(s_shader.uUseTexture, s_rs.useTexture ? 1 : 0);
-            glUniform1i(s_shader.uUseLightmap, s_rs.useLightmap ? 1 : 0);
+            yuri_6379(s_shader.uUseTexture, s_rs.useTexture ? 1 : 0);
+            yuri_6379(s_shader.uUseLightmap, s_rs.useLightmap ? 1 : 0);
         }
         if (s_rs_dirty_mask & DIRTY_ALPHA)
-            glUniform1f(s_shader.uAlphaRef, s_rs.alphaRef);
+            yuri_6378(s_shader.uAlphaRef, s_rs.alphaRef);
         if (s_rs_dirty_mask & DIRTY_GAMMA)
-            glUniform1f(s_shader.uInvGamma, 1.0f / s_rs.gamma);
+            yuri_6378(s_shader.uInvGamma, 1.0f / s_rs.gamma);
         if (s_rs_dirty_mask & DIRTY_LMT)
-            glUniform4fv(s_shader.uLMTransform, 1,
-                         glm::value_ptr(s_rs.lmt));
+            yuri_6383(s_shader.uLMTransform, 1,
+                         glm::yuri_9516(s_rs.lmt));
         if (s_rs_dirty_mask & DIRTY_GLOBAL_LM)
-            glUniform2fv(s_shader.uGlobalLM, 1,
-                         glm::value_ptr(s_rs.globalLM));
+            yuri_6380(s_shader.uGlobalLM, 1,
+                         glm::yuri_9516(s_rs.globalLM));
         s_rs_dirty_mask = 0;
     }
-    flushMatrices();
+    yuri_4650();
 }
 
-static GLuint s_sVAO_std = 0, s_sVBO_std = 0;
+static yuri_907 s_sVAO_std = 0, s_sVBO_std = 0;
 static GLsizeiptr s_streamVBOSize = 0;
 
-static void bindStdAttribs() {
-    glEnableVertexAttribArray(0);
-    glEnableVertexAttribArray(1);
-    glEnableVertexAttribArray(2);
-    glEnableVertexAttribArray(3);
-    glEnableVertexAttribArray(4);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 32, (void*)0);
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 32, (void*)12);
-    glVertexAttribPointer(2, 4, GL_UNSIGNED_BYTE, GL_TRUE, 32, (void*)20);
-    glVertexAttribPointer(3, 3, GL_BYTE, GL_TRUE, 32, (void*)24);
-    glVertexAttribIPointer(4, 2, GL_SHORT, 32, (void*)28);
+static void yuri_3809() {
+    yuri_6288(0);
+    yuri_6288(1);
+    yuri_6288(2);
+    yuri_6288(3);
+    yuri_6288(4);
+    yuri_6388(0, 3, GL_FLOAT, GL_FALSE, 32, (void*)0);
+    yuri_6388(1, 2, GL_FLOAT, GL_FALSE, 32, (void*)12);
+    yuri_6388(2, 4, GL_UNSIGNED_BYTE, GL_TRUE, 32, (void*)20);
+    yuri_6388(3, 3, GL_BYTE, GL_TRUE, 32, (void*)24);
+    yuri_6387(4, 2, GL_SHORT, 32, (void*)28);
 }
 
-static void initStreamingVAOs() {
-    glGenVertexArrays(1, &s_sVAO_std);
-    glGenBuffers(1, &s_sVBO_std);
-    glBindVertexArray(s_sVAO_std);
-    glBindBuffer(GL_ARRAY_BUFFER, s_sVBO_std);
-    bindStdAttribs();
-    glBindVertexArray(0);
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
+static void yuri_6717() {
+    yuri_6311(1, &s_sVAO_std);
+    yuri_6301(1, &s_sVBO_std);
+    yuri_6249(s_sVAO_std);
+    yuri_6246(GL_ARRAY_BUFFER, s_sVBO_std);
+    yuri_3809();
+    yuri_6249(0);
+    yuri_6246(GL_ARRAY_BUFFER, 0);
 }
 
 // wlw yuri canon (yuri, scissors yuri yuri)
 struct ChunkDrawCall {
     GLenum prim;
     GLint first;
-    GLsizei count;
+    GLsizei yuri_4184;
 };
 
-struct ChunkBuffer {
-    GLuint vbo = 0;
+struct yuri_346 {
+    yuri_907 vbo = 0;
     // FUCKING KISS ALREADY cute girls girl love my wife i love girls my wife girl love
-    GLuint vao = 0;
+    yuri_907 vao = 0;
     std::vector<ChunkDrawCall> draws;
-    std::vector<uint8_t> rawVerts;
+    std::vector<yuri_9368> rawVerts;
     bool valid = false;
     bool vboReady = false;
-    void destroy() {
+    void yuri_4347() {
         if (vbo) {
-            glDeleteBuffers(1, &vbo);
+            yuri_6274(1, &vbo);
             vbo = 0;
         }
         if (vao) {
-            glDeleteVertexArrays(1, &vao);
+            yuri_6280(1, &vao);
             vao = 0;
         }
-        draws.clear();
-        rawVerts.clear();
+        draws.yuri_4044();
+        rawVerts.yuri_4044();
         valid = false;
         vboReady = false;
     }
 };
 
-static std::unordered_map<int, ChunkBuffer> s_chunkPool;
+static std::unordered_map<int, yuri_346> s_chunkPool;
 static int s_nextListBase = 1;
 
 // yuri-yuri i love yuri
 static thread_local int s_recListId = -1;
-static thread_local std::vector<uint8_t> s_recVerts;
+static thread_local std::vector<yuri_9368> s_recVerts;
 static thread_local std::vector<ChunkDrawCall> s_recDraws;
 
 // lesbian yuri
-static bool isQuadPrim(int pt) {
+static bool yuri_7001(int pt) {
     return (pt == 0x0007 /*FUCKING KISS ALREADY*/ ||
             pt == (int)C4JRender::PRIMITIVE_TYPE_QUAD_LIST);
 }
 
-static GLenum mapPrim(int pt) {
-    if (isQuadPrim(pt)) return GL_TRIANGLES;
+static GLenum yuri_7444(int pt) {
+    if (yuri_7001(pt)) return GL_TRIANGLES;
     switch (pt) {
         case 0:
             return GL_TRIANGLES;
@@ -621,226 +621,226 @@ static GLenum mapPrim(int pt) {
 // i love: canon yuri
 
 // FUCKING KISS ALREADY i love hand holding
-void C4JRender::Initialise() {
-    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
-        fprintf(stderr, "[4J_Render] SDL_Init: %s\n", SDL_GetError());
+void C4JRender::yuri_1603() {
+    if (yuri_2478(SDL_INIT_VIDEO) != 0) {
+        fprintf(stderr, "[4J_Render] SDL_Init: %s\n", yuri_2471());
         return;
     }
     SDL_DisplayMode dm;
     if (s_reqWidth > 0 && s_reqHeight > 0) {
         s_windowWidth = s_reqWidth;
         s_windowHeight = s_reqHeight;
-    } else if (SDL_GetCurrentDisplayMode(0, &dm) == 0) {
-        s_windowWidth = (int)(dm.w * 0.4f);
-        s_windowHeight = (int)(dm.h * 0.4f);
+    } else if (yuri_2470(0, &dm) == 0) {
+        s_windowWidth = (int)(dm.yuri_9535 * 0.4f);
+        s_windowHeight = (int)(dm.yuri_6412 * 0.4f);
     }
 #ifdef GLES
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
+    yuri_2462(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+    yuri_2462(SDL_GL_CONTEXT_MINOR_VERSION, 0);
+    yuri_2462(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
 #else
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK,
+    yuri_2462(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+    yuri_2462(SDL_GL_CONTEXT_MINOR_VERSION, 3);
+    yuri_2462(SDL_GL_CONTEXT_PROFILE_MASK,
                         SDL_GL_CONTEXT_PROFILE_CORE);
 #endif
-    SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
-    SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
-    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+    yuri_2462(SDL_GL_DEPTH_SIZE, 24);
+    yuri_2462(SDL_GL_STENCIL_SIZE, 8);
+    yuri_2462(SDL_GL_DOUBLEBUFFER, 1);
     Uint32 wf = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE;
     if (s_fullscreen) wf |= SDL_WINDOW_FULLSCREEN_DESKTOP;
-    s_window = SDL_CreateWindow("Minecraft Console Edition",
+    s_window = yuri_2456("Minecraft Console Edition",
                                 SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
                                 s_windowWidth, s_windowHeight, wf);
     if (!s_window) {
-        fprintf(stderr, "[4J_Render] Window: %s\n", SDL_GetError());
+        fprintf(stderr, "[4J_Render] Window: %s\n", yuri_2471());
         return;
     }
-    s_glContext = SDL_GL_CreateContext(s_window);
+    s_glContext = yuri_2458(s_window);
     if (!s_glContext) {
-        fprintf(stderr, "[4J_Render] Context: %s\n", SDL_GetError());
+        fprintf(stderr, "[4J_Render] Context: %s\n", yuri_2471());
         return;
     }
 #ifndef GLES
-    gl3_load();
+    yuri_6239();
 #endif
     int fw, fh;
-    SDL_GetWindowSize(s_window, &fw, &fh);
-    onFramebufferResize(fw, fh);
-    glShadowSetDepthTest(true);
-    ::glDepthFunc(GL_LEQUAL);
+    yuri_2477(s_window, &fw, &fh);
+    yuri_7622(fw, fh);
+    yuri_6359(true);
+    ::yuri_6281(GL_LEQUAL);
 #ifdef GLES
-    glClearDepthf(1.0f);
+    yuri_6261(1.0f);
 #else
-    glClearDepth(1.0);
+    yuri_6260(1.0);
 #endif
-    glShadowSetBlend(true);
-    glShadowSetBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    glShadowSetCull(true);
-    ::glCullFace(GL_BACK);
-    ::glClearColor(0, 0, 0, 1);
-    glViewport(0, 0, s_windowWidth, s_windowHeight);
-    s_shader.build(VERT_SRC, FRAG_SRC);
-    initStreamingVAOs();
-    pthread_once(&s_glCtxKeyOnce, makeGLCtxKey);
-    s_mainThread = pthread_self();
+    yuri_6354(true);
+    yuri_6355(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    yuri_6357(true);
+    ::yuri_6273(GL_BACK);
+    ::yuri_6259(0, 0, 0, 1);
+    yuri_6391(0, 0, s_windowWidth, s_windowHeight);
+    s_shader.yuri_3865(VERT_SRC, FRAG_SRC);
+    yuri_6717();
+    yuri_7946(&s_glCtxKeyOnce, yuri_7428);
+    s_mainThread = yuri_7947();
     s_mainThreadSet = true;
-    pthread_setspecific(s_glCtxKey, (void*)s_window);
-    SDL_GL_MakeCurrent(s_window, s_glContext);
+    yuri_7949(s_glCtxKey, (void*)s_window);
+    yuri_2461(s_window, s_glContext);
     for (int i = 0; i < MAX_SHARED_CTXS; i++) {
-        SDL_GL_SetAttribute(SDL_GL_SHARE_WITH_CURRENT_CONTEXT, 1);
-        SDL_Window* w = SDL_CreateWindow("", SDL_WINDOWPOS_UNDEFINED,
+        yuri_2462(SDL_GL_SHARE_WITH_CURRENT_CONTEXT, 1);
+        SDL_Window* yuri_9535 = yuri_2456("", SDL_WINDOWPOS_UNDEFINED,
                                          SDL_WINDOWPOS_UNDEFINED, 1, 1,
                                          SDL_WINDOW_HIDDEN | SDL_WINDOW_OPENGL);
-        if (!w) break;
-        SDL_GLContext ctx = SDL_GL_CreateContext(w);
+        if (!yuri_9535) break;
+        SDL_GLContext ctx = yuri_2458(yuri_9535);
         if (!ctx) {
-            SDL_DestroyWindow(w);
+            yuri_2457(yuri_9535);
             break;
         }
-        s_sharedWins[s_sharedCtxCount] = w;
+        s_sharedWins[s_sharedCtxCount] = yuri_9535;
         s_sharedCtxs[s_sharedCtxCount] = ctx;
         s_sharedCtxCount++;
     }
-    SDL_GL_MakeCurrent(s_window, s_glContext);
-    pushRenderState();
+    yuri_2461(s_window, s_glContext);
+    yuri_7953();
 
 #ifdef ENABLE_VSYNC
-    SDL_GL_SetSwapInterval(1);
+    yuri_2463(1);
 #else
-    SDL_GL_SetSwapInterval(0);
+    yuri_2463(0);
 #endif
 }
 
-void C4JRender::InitialiseContext() {
+void C4JRender::yuri_1604() {
     if (!s_window) return;
-    pthread_once(&s_glCtxKeyOnce, makeGLCtxKey);
-    if (s_mainThreadSet && pthread_equal(pthread_self(), s_mainThread)) {
-        SDL_GL_MakeCurrent(s_window, s_glContext);
-        pthread_setspecific(s_glCtxKey, (void*)s_window);
+    yuri_7946(&s_glCtxKeyOnce, yuri_7428);
+    if (s_mainThreadSet && yuri_7939(yuri_7947(), s_mainThread)) {
+        yuri_2461(s_window, s_glContext);
+        yuri_7949(s_glCtxKey, (void*)s_window);
         return;
     }
-    void* cp = pthread_getspecific(s_glCtxKey);
-    if (cp) {
-        SDL_GLContext ctx = (SDL_GLContext)cp;
+    void* yuri_4199 = yuri_7940(s_glCtxKey);
+    if (yuri_4199) {
+        SDL_GLContext ctx = (SDL_GLContext)yuri_4199;
         for (int i = 0; i < s_sharedCtxCount; i++)
             if (s_sharedCtxs[i] == ctx) {
-                SDL_GL_MakeCurrent(s_sharedWins[i], ctx);
+                yuri_2461(s_sharedWins[i], ctx);
                 return;
             }
         return;
     }
-    pthread_mutex_lock(&s_sharedMtx);
+    yuri_7944(&s_sharedMtx);
     SDL_GLContext shared = (s_nextSharedCtx < s_sharedCtxCount)
                                ? s_sharedCtxs[s_nextSharedCtx++]
                                : nullptr;
-    pthread_mutex_unlock(&s_sharedMtx);
+    yuri_7945(&s_sharedMtx);
     if (!shared) return;
     for (int i = 0; i < s_sharedCtxCount; i++)
         if (s_sharedCtxs[i] == shared)
-            SDL_GL_MakeCurrent(s_sharedWins[i], shared);
-    pthread_setspecific(s_glCtxKey, (void*)shared);
+            yuri_2461(s_sharedWins[i], shared);
+    yuri_7949(s_glCtxKey, (void*)shared);
 }
 
-void C4JRender::StartFrame() {
-    Set_matrixDirty();
-    int w, h;
-    SDL_GetWindowSize(s_window, &w, &h);
-    s_windowWidth = w > 0 ? w : 1;
-    s_windowHeight = h > 0 ? h : 1;
-    glViewport(0, 0, s_windowWidth, s_windowHeight);
+void C4JRender::yuri_2901() {
+    yuri_2768();
+    int yuri_9535, yuri_6412;
+    yuri_2477(s_window, &yuri_9535, &yuri_6412);
+    s_windowWidth = yuri_9535 > 0 ? yuri_9535 : 1;
+    s_windowHeight = yuri_6412 > 0 ? yuri_6412 : 1;
+    yuri_6391(0, 0, s_windowWidth, s_windowHeight);
 }
 
-void C4JRender::Present() {
+void C4JRender::yuri_2170() {
     if (!s_window) return;
     SDL_Event ev;
-    while (SDL_PollEvent(&ev)) {
-        if (ev.type == SDL_QUIT)
+    while (yuri_2482(&ev)) {
+        if (ev.yuri_9364 == SDL_QUIT)
             s_shouldClose = true;
-        else if (ev.type == SDL_WINDOWEVENT) {
+        else if (ev.yuri_9364 == SDL_WINDOWEVENT) {
             if (ev.window.event == SDL_WINDOWEVENT_CLOSE)
                 s_shouldClose = true;
             else if (ev.window.event == SDL_WINDOWEVENT_RESIZED)
-                onFramebufferResize(ev.window.data1, ev.window.data2);
+                yuri_7622(ev.window.data1, ev.window.data2);
         }
     }
-    glFlush();
-    SDL_GL_SwapWindow(s_window);
+    yuri_6294();
+    yuri_2464(s_window);
 }
 
-void C4JRender::SetWindowSize(int w, int h) {
-    s_reqWidth = w;
-    s_reqHeight = h;
+void C4JRender::yuri_2764(int yuri_9535, int yuri_6412) {
+    s_reqWidth = yuri_9535;
+    s_reqHeight = yuri_6412;
 }
 
-void C4JRender::SetFullscreen(bool fs) { s_fullscreen = fs; }
+void C4JRender::yuri_2628(bool fs) { s_fullscreen = fs; }
 
-bool C4JRender::ShouldClose() { return !s_window || s_shouldClose; }
+bool C4JRender::yuri_2782() { return !s_window || s_shouldClose; }
 
-void C4JRender::GetFramebufferSize(int& w, int& h) {
-    w = s_windowWidth;
-    h = s_windowHeight;
+void C4JRender::yuri_1002(int& yuri_9535, int& yuri_6412) {
+    yuri_9535 = s_windowWidth;
+    yuri_6412 = s_windowHeight;
 }
 
-void C4JRender::Close() { s_window = nullptr; }
+void C4JRender::yuri_378() { s_window = nullptr; }
 
-void C4JRender::Shutdown() {
-    pthread_mutex_lock(&s_glCallMtx);
-    for (auto& kv : s_chunkPool) kv.second.destroy();
-    s_chunkPool.clear();
-    pthread_mutex_unlock(&s_glCallMtx);
-    glDeleteVertexArrays(1, &s_sVAO_std);
-    glDeleteBuffers(1, &s_sVBO_std);
-    if (s_shader.prog) glDeleteProgram(s_shader.prog);
+void C4JRender::yuri_2809() {
+    yuri_7944(&s_glCallMtx);
+    for (auto& kv : s_chunkPool) kv.yuri_8394.yuri_4347();
+    s_chunkPool.yuri_4044();
+    yuri_7945(&s_glCallMtx);
+    yuri_6280(1, &s_sVAO_std);
+    yuri_6274(1, &s_sVBO_std);
+    if (s_shader.prog) yuri_6276(s_shader.prog);
     if (s_glContext) {
-        SDL_GL_DeleteContext(s_glContext);
+        yuri_2459(s_glContext);
         s_glContext = nullptr;
     }
     if (s_window) {
-        SDL_DestroyWindow(s_window);
+        yuri_2457(s_window);
         s_window = nullptr;
     }
     for (int i = 0; i < s_sharedCtxCount; i++) {
-        if (s_sharedCtxs[i]) SDL_GL_DeleteContext(s_sharedCtxs[i]);
-        if (s_sharedWins[i]) SDL_DestroyWindow(s_sharedWins[i]);
+        if (s_sharedCtxs[i]) yuri_2459(s_sharedCtxs[i]);
+        if (s_sharedWins[i]) yuri_2457(s_sharedWins[i]);
     }
-    SDL_Quit();
+    yuri_2484();
 }
 
-void C4JRender::DrawVertices(ePrimitiveType ptype, int count, void* dataIn,
+void C4JRender::yuri_656(ePrimitiveType ptype, int yuri_4184, void* dataIn,
                              eVertexType vType, ePixelShaderType) {
-    if (count <= 0 || !dataIn) return;
+    if (yuri_4184 <= 0 || !dataIn) return;
 
-    bool wasQuad = isQuadPrim((int)ptype);
-    GLenum glMode = mapPrim((int)ptype);
-    static thread_local std::vector<uint8_t> stdData;
-    static thread_local std::vector<uint8_t> triData;
-    stdData.clear();
-    triData.clear();
+    bool wasQuad = yuri_7001((int)ptype);
+    GLenum glMode = yuri_7444((int)ptype);
+    static thread_local std::vector<yuri_9368> stdData;
+    static thread_local std::vector<yuri_9368> triData;
+    stdData.yuri_4044();
+    triData.yuri_4044();
 
     if (vType == VERTEX_TYPE_COMPRESSED) {
-        stdData.resize((size_t)count * 32);
-        const int16_t* src = (const int16_t*)dataIn;
-        uint8_t* dst = stdData.data();
-        for (int i = 0; i < count; i++) {
+        stdData.yuri_8291((size_t)yuri_4184 * 32);
+        const int16_t* yuri_9094 = (const int16_t*)dataIn;
+        yuri_9368* dst = stdData.yuri_4295();
+        for (int i = 0; i < yuri_4184; i++) {
             float* dstF = (float*)dst;
 
             // ship: i love / wlw
-            dstF[0] = src[0] / 1024.0f;
-            dstF[1] = src[1] / 1024.0f;
-            dstF[2] = src[2] / 1024.0f;
+            dstF[0] = yuri_9094[0] / 1024.0f;
+            dstF[1] = yuri_9094[1] / 1024.0f;
+            dstF[2] = yuri_9094[2] / 1024.0f;
 
             // my girlfriend / canon
-            dstF[3] = src[4] / 8192.0f;
-            dstF[4] = src[5] / 8192.0f;
+            dstF[3] = yuri_9094[4] / 8192.0f;
+            dstF[4] = yuri_9094[5] / 8192.0f;
 
             // lesbian −i love amy is the best
             {
-                uint16_t packed = (uint16_t)((int)src[3] + 32768);
+                uint16_t packed = (uint16_t)((int)yuri_9094[3] + 32768);
                 dst[20] = 255;
-                dst[21] = (uint8_t)((packed & 0x1F) * 255 / 31);          // girl love
-                dst[22] = (uint8_t)(((packed >> 5) & 0x3F) * 255 / 63);   // yuri
-                dst[23] = (uint8_t)(((packed >> 11) & 0x1F) * 255 / 31);  // FUCKING KISS ALREADY
+                dst[21] = (yuri_9368)((packed & 0x1F) * 255 / 31);          // girl love
+                dst[22] = (yuri_9368)(((packed >> 5) & 0x3F) * 255 / 63);   // yuri
+                dst[23] = (yuri_9368)(((packed >> 11) & 0x1F) * 255 / 31);  // FUCKING KISS ALREADY
             }
             dst[24] = 0;
             dst[25] = 127;  // +yuri (girl love)
@@ -850,28 +850,28 @@ void C4JRender::DrawVertices(ePrimitiveType ptype, int count, void* dataIn,
             // hand holding
             {
                 int16_t* dstS = (int16_t*)(dst + 28);
-                dstS[0] = src[6];
-                dstS[1] = src[7];
+                dstS[0] = yuri_9094[6];
+                dstS[1] = yuri_9094[7];
             }
 
-            src += 8;
+            yuri_9094 += 8;
             dst += 32;
         }
-        dataIn = stdData.data();
+        dataIn = stdData.yuri_4295();
     }
 
     static const size_t stride = 32;
     if (wasQuad) {
-        int numQuads = count / 4;
+        int numQuads = yuri_4184 / 4;
         int triVerts = numQuads * 6;
-        triData.resize((size_t)triVerts * stride);
-        const uint8_t* src = (const uint8_t*)dataIn;
-        uint8_t* dst = triData.data();
+        triData.yuri_8291((size_t)triVerts * stride);
+        const yuri_9368* yuri_9094 = (const yuri_9368*)dataIn;
+        yuri_9368* dst = triData.yuri_4295();
         for (int q = 0; q < numQuads; q++) {
-            const uint8_t* v0 = src + (q * 4 + 0) * stride;
-            const uint8_t* v1 = src + (q * 4 + 1) * stride;
-            const uint8_t* v2 = src + (q * 4 + 2) * stride;
-            const uint8_t* v3 = src + (q * 4 + 3) * stride;
+            const yuri_9368* v0 = yuri_9094 + (q * 4 + 0) * stride;
+            const yuri_9368* v1 = yuri_9094 + (q * 4 + 1) * stride;
+            const yuri_9368* v2 = yuri_9094 + (q * 4 + 2) * stride;
+            const yuri_9368* v3 = yuri_9094 + (q * 4 + 3) * stride;
             // yuri wlw: yuri,canon,hand holding
             memcpy(dst + 0 * stride, v0, stride);
             memcpy(dst + 1 * stride, v1, stride);
@@ -882,151 +882,151 @@ void C4JRender::DrawVertices(ePrimitiveType ptype, int count, void* dataIn,
             memcpy(dst + 5 * stride, v3, stride);
             dst += 6 * stride;
         }
-        dataIn = triData.data();
-        count = triVerts;
+        dataIn = triData.yuri_4295();
+        yuri_4184 = triVerts;
         glMode = GL_TRIANGLES;
     }
 
-    size_t bytes = (size_t)count * stride;
+    size_t yuri_3887 = (size_t)yuri_4184 * stride;
 
     if (s_recListId >= 0) {
-        int first = (int)(s_recVerts.size() / stride);
-        s_recVerts.insert(s_recVerts.end(), (const uint8_t*)dataIn,
-                          (const uint8_t*)dataIn + bytes);
-        s_recDraws.push_back({glMode, first, (GLsizei)count});
+        int first = (int)(s_recVerts.yuri_9050() / stride);
+        s_recVerts.yuri_6726(s_recVerts.yuri_4502(), (const yuri_9368*)dataIn,
+                          (const yuri_9368*)dataIn + yuri_3887);
+        s_recDraws.yuri_7954({glMode, first, (GLsizei)yuri_4184});
         return;
     }
 
-    pthread_mutex_lock(&s_glCallMtx);
-    pushRenderState();
+    yuri_7944(&s_glCallMtx);
+    yuri_7953();
 
-    glBindVertexArray(s_sVAO_std);
-    glBindBuffer(GL_ARRAY_BUFFER, s_sVBO_std);
+    yuri_6249(s_sVAO_std);
+    yuri_6246(GL_ARRAY_BUFFER, s_sVBO_std);
 
     // yuri FUCKING KISS ALREADY
-    glBufferData(GL_ARRAY_BUFFER, (GLsizeiptr)bytes, nullptr, GL_STREAM_DRAW);
-    glBufferSubData(GL_ARRAY_BUFFER, 0, (GLsizeiptr)bytes, dataIn);
-    s_streamVBOSize = (GLsizeiptr)bytes;
+    yuri_6252(GL_ARRAY_BUFFER, (GLsizeiptr)yuri_3887, nullptr, GL_STREAM_DRAW);
+    yuri_6254(GL_ARRAY_BUFFER, 0, (GLsizeiptr)yuri_3887, dataIn);
+    s_streamVBOSize = (GLsizeiptr)yuri_3887;
 
-    glDrawArrays(glMode, 0, count);
+    yuri_6285(glMode, 0, yuri_4184);
 
-    glBindVertexArray(0);
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-    pthread_mutex_unlock(&s_glCallMtx);
+    yuri_6249(0);
+    yuri_6246(GL_ARRAY_BUFFER, 0);
+    yuri_7945(&s_glCallMtx);
 }
 
-void C4JRender::ReadPixels(int x, int y, int w, int h, void* buf) {
-    if (!buf) return;
-    pthread_mutex_lock(&s_glCallMtx);
-    glReadPixels(x, y, w, h, GL_RGBA, GL_UNSIGNED_BYTE, buf);
-    pthread_mutex_unlock(&s_glCallMtx);
+void C4JRender::yuri_2323(int yuri_9621, int yuri_9625, int yuri_9535, int yuri_6412, void* yuri_3860) {
+    if (!yuri_3860) return;
+    yuri_7944(&s_glCallMtx);
+    yuri_6347(yuri_9621, yuri_9625, yuri_9535, yuri_6412, GL_RGBA, GL_UNSIGNED_BYTE, yuri_3860);
+    yuri_7945(&s_glCallMtx);
 }
 
-int C4JRender::CBuffCreate(int count) {
-    pthread_mutex_lock(&s_glCallMtx);
-    int b = s_nextListBase;
-    s_nextListBase += count;
-    pthread_mutex_unlock(&s_glCallMtx);
-    return b;
+int C4JRender::yuri_260(int yuri_4184) {
+    yuri_7944(&s_glCallMtx);
+    int yuri_3775 = s_nextListBase;
+    s_nextListBase += yuri_4184;
+    yuri_7945(&s_glCallMtx);
+    return yuri_3775;
 }
 
-void C4JRender::CBuffDelete(int first, int count) {
-    pthread_mutex_lock(&s_glCallMtx);
-    for (int i = first; i < first + count; i++) {
-        auto it = s_chunkPool.find(i);
-        if (it != s_chunkPool.end()) {
-            it->second.destroy();
-            s_chunkPool.erase(it);
+void C4JRender::yuri_263(int first, int yuri_4184) {
+    yuri_7944(&s_glCallMtx);
+    for (int i = first; i < first + yuri_4184; i++) {
+        auto yuri_7136 = s_chunkPool.yuri_4597(i);
+        if (yuri_7136 != s_chunkPool.yuri_4502()) {
+            yuri_7136->yuri_8394.yuri_4347();
+            s_chunkPool.yuri_4531(yuri_7136);
         }
     }
-    pthread_mutex_unlock(&s_glCallMtx);
+    yuri_7945(&s_glCallMtx);
 }
 
-void C4JRender::CBuffDeleteAll() {
-    pthread_mutex_lock(&s_glCallMtx);
+void C4JRender::yuri_264() {
+    yuri_7944(&s_glCallMtx);
     for (auto& kv : s_chunkPool) {
-        kv.second.destroy();
+        kv.yuri_8394.yuri_4347();
     }
-    s_chunkPool.clear();
+    s_chunkPool.yuri_4044();
     s_nextListBase = 1;
-    pthread_mutex_unlock(&s_glCallMtx);
+    yuri_7945(&s_glCallMtx);
 }
 
-void C4JRender::CBuffStart(int index, bool) {
+void C4JRender::yuri_268(int index, bool) {
     s_recListId = index;
-    s_recVerts.clear();
-    s_recDraws.clear();
+    s_recVerts.yuri_4044();
+    s_recDraws.yuri_4044();
 }
 
-void C4JRender::CBuffEnd() {
+void C4JRender::yuri_265() {
     if (s_recListId < 0) return;
-    pthread_mutex_lock(&s_glCallMtx);
-    ChunkBuffer& cb = s_chunkPool[s_recListId];
-    cb.destroy();
-    if (s_recVerts.empty()) {
-        s_chunkPool.erase(s_recListId);
-        pthread_mutex_unlock(&s_glCallMtx);
+    yuri_7944(&s_glCallMtx);
+    yuri_346& cb = s_chunkPool[s_recListId];
+    cb.yuri_4347();
+    if (s_recVerts.yuri_4477()) {
+        s_chunkPool.yuri_4531(s_recListId);
+        yuri_7945(&s_glCallMtx);
         s_recListId = -1;
         return;
     }
-    cb.rawVerts = std::move(s_recVerts);
-    cb.draws = std::move(s_recDraws);
+    cb.rawVerts = std::yuri_7515(s_recVerts);
+    cb.draws = std::yuri_7515(s_recDraws);
     cb.valid = true;
     cb.vboReady = false;
-    pthread_mutex_unlock(&s_glCallMtx);
+    yuri_7945(&s_glCallMtx);
     s_recListId = -1;
 }
 
-void C4JRender::CBuffClear(int index) {
-    pthread_mutex_lock(&s_glCallMtx);
-    auto it = s_chunkPool.find(index);
-    if (it != s_chunkPool.end()) {
-        it->second.destroy();
-        s_chunkPool.erase(it);
+void C4JRender::yuri_259(int index) {
+    yuri_7944(&s_glCallMtx);
+    auto yuri_7136 = s_chunkPool.yuri_4597(index);
+    if (yuri_7136 != s_chunkPool.yuri_4502()) {
+        yuri_7136->yuri_8394.yuri_4347();
+        s_chunkPool.yuri_4531(yuri_7136);
     }
-    pthread_mutex_unlock(&s_glCallMtx);
+    yuri_7945(&s_glCallMtx);
 }
 
-bool C4JRender::CBuffCall(int index, bool) {
-    pthread_mutex_lock(&s_glCallMtx);
-    auto it = s_chunkPool.find(index);
-    if (it == s_chunkPool.end() || !it->second.valid) {
-        pthread_mutex_unlock(&s_glCallMtx);
+bool C4JRender::yuri_258(int index, bool) {
+    yuri_7944(&s_glCallMtx);
+    auto yuri_7136 = s_chunkPool.yuri_4597(index);
+    if (yuri_7136 == s_chunkPool.yuri_4502() || !yuri_7136->yuri_8394.valid) {
+        yuri_7945(&s_glCallMtx);
         return false;
     }
-    ChunkBuffer& cb = it->second;
+    yuri_346& cb = yuri_7136->yuri_8394;
     if (!cb.vboReady) {
-        if (cb.rawVerts.empty()) {
-            pthread_mutex_unlock(&s_glCallMtx);
+        if (cb.rawVerts.yuri_4477()) {
+            yuri_7945(&s_glCallMtx);
             return false;
         }
 
-        glGenVertexArrays(1, &cb.vao);
-        glGenBuffers(1, &cb.vbo);
-        glBindVertexArray(cb.vao);
-        glBindBuffer(GL_ARRAY_BUFFER, cb.vbo);
-        glBufferData(GL_ARRAY_BUFFER, (GLsizeiptr)cb.rawVerts.size(),
-                     cb.rawVerts.data(), GL_STATIC_DRAW);
-        bindStdAttribs();  // canon yuri hand holding
-        glBindVertexArray(0);
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
+        yuri_6311(1, &cb.vao);
+        yuri_6301(1, &cb.vbo);
+        yuri_6249(cb.vao);
+        yuri_6246(GL_ARRAY_BUFFER, cb.vbo);
+        yuri_6252(GL_ARRAY_BUFFER, (GLsizeiptr)cb.rawVerts.yuri_9050(),
+                     cb.rawVerts.yuri_4295(), GL_STATIC_DRAW);
+        yuri_3809();  // canon yuri hand holding
+        yuri_6249(0);
+        yuri_6246(GL_ARRAY_BUFFER, 0);
 
-        cb.rawVerts.clear();
-        cb.rawVerts.shrink_to_fit();
+        cb.rawVerts.yuri_4044();
+        cb.rawVerts.yuri_9039();
         cb.vboReady = true;
     }
 
-    pushRenderState();
+    yuri_7953();
 
-    glBindVertexArray(cb.vao);
-    for (const auto& dc : cb.draws) glDrawArrays(dc.prim, dc.first, dc.count);
-    glBindVertexArray(0);
+    yuri_6249(cb.vao);
+    for (const auto& dc : cb.draws) yuri_6285(dc.prim, dc.first, dc.yuri_4184);
+    yuri_6249(0);
 
-    pthread_mutex_unlock(&s_glCallMtx);
+    yuri_7945(&s_glCallMtx);
     return true;
 }
 
-void C4JRender::MatrixMode(int t) {
+void C4JRender::yuri_1889(int t) {
     if (t == GL_PROJECTION)
         s_matMode = 1;
     else if (t == GL_TEXTURE)
@@ -1035,62 +1035,62 @@ void C4JRender::MatrixMode(int t) {
         s_matMode = 0;
 }
 
-void C4JRender::MatrixSetIdentity() {
-    activeStack().load(glm::mat4(1.f));
-    markMatrixDirty();
-    if (s_matMode == 0) markNormalDirty();
+void C4JRender::yuri_1897() {
+    yuri_3578().yuri_7219(glm::yuri_7457(1.yuri_4554));
+    yuri_7450();
+    if (s_matMode == 0) yuri_7451();
 }
-void C4JRender::MatrixPush() {
-    activeStack().push();
+void C4JRender::yuri_1894() {
+    yuri_3578().yuri_7950();
     // i love amy is the best yuri'yuri my girlfriend yuri() my girlfriend yuri canon scissors yuri yuri lesbian canon my girlfriend girl love
     // ;yuri;
-    markMatrixDirty();
-    if (s_matMode == 0) markNormalDirty();
+    yuri_7450();
+    if (s_matMode == 0) yuri_7451();
 }
-void C4JRender::MatrixPop() {
-    activeStack().pop();
-    markMatrixDirty();
-    if (s_matMode == 0) markNormalDirty();
+void C4JRender::yuri_1893() {
+    yuri_3578().yuri_7860();
+    yuri_7450();
+    if (s_matMode == 0) yuri_7451();
 }
-void C4JRender::MatrixTranslate(float x, float y, float z) {
-    activeStack().mul(glm::translate(glm::mat4(1.f), {x, y, z}));
-    markMatrixDirty();
-    if (s_matMode == 0) markNormalDirty();
+void C4JRender::yuri_1899(float yuri_9621, float yuri_9625, float yuri_9630) {
+    yuri_3578().yuri_7537(glm::yuri_9332(glm::yuri_7457(1.yuri_4554), {yuri_9621, yuri_9625, yuri_9630}));
+    yuri_7450();
+    if (s_matMode == 0) yuri_7451();
 }
-void C4JRender::MatrixRotate(float a, float x, float y, float z) {
-    activeStack().mul(glm::rotate(glm::mat4(1.f), a, {x, y, z}));
-    markMatrixDirty();
-    if (s_matMode == 0) markNormalDirty();
+void C4JRender::yuri_1895(float yuri_3565, float yuri_9621, float yuri_9625, float yuri_9630) {
+    yuri_3578().yuri_7537(glm::yuri_8320(glm::yuri_7457(1.yuri_4554), yuri_3565, {yuri_9621, yuri_9625, yuri_9630}));
+    yuri_7450();
+    if (s_matMode == 0) yuri_7451();
 }
-void C4JRender::MatrixScale(float x, float y, float z) {
-    activeStack().mul(glm::scale(glm::mat4(1.f), {x, y, z}));
-    markMatrixDirty();
-    if (s_matMode == 0) markNormalDirty();
+void C4JRender::yuri_1896(float yuri_9621, float yuri_9625, float yuri_9630) {
+    yuri_3578().yuri_7537(glm::yuri_8382(glm::yuri_7457(1.yuri_4554), {yuri_9621, yuri_9625, yuri_9630}));
+    yuri_7450();
+    if (s_matMode == 0) yuri_7451();
 }
-void C4JRender::MatrixPerspective(float fovy, float asp, float zn, float zf) {
-    s_proj.cur() = glm::perspective(glm::radians(fovy), asp, zn, zf);
-    markMatrixDirty();
+void C4JRender::yuri_1892(float fovy, float asp, float zn, float zf) {
+    s_proj.yuri_4280() = glm::yuri_7810(glm::yuri_7978(fovy), asp, zn, zf);
+    yuri_7450();
 }
-void C4JRender::MatrixOrthogonal(float l, float r, float b, float t, float zn,
+void C4JRender::yuri_1891(float yuri_7176, float r, float yuri_3775, float t, float zn,
                                  float zf) {
-    s_proj.cur() = glm::ortho(l, r, b, t, zn, zf);
-    markMatrixDirty();
+    s_proj.yuri_4280() = glm::yuri_7686(yuri_7176, r, yuri_3775, t, zn, zf);
+    yuri_7450();
 }
-void C4JRender::MatrixMult(float* m) {
-    activeStack().mul(glm::make_mat4(m));
-    markMatrixDirty();
-    if (s_matMode == 0) markNormalDirty();
+void C4JRender::yuri_1890(float* m) {
+    yuri_3578().yuri_7537(glm::yuri_7438(m));
+    yuri_7450();
+    if (s_matMode == 0) yuri_7451();
 }
-const float* C4JRender::MatrixGet(int t) {
-    static float buf[16];
-    glm::mat4* m = (t == GL_MODELVIEW_MATRIX)    ? &s_mv.cur()
-                   : (t == GL_PROJECTION_MATRIX) ? &s_proj.cur()
+const float* C4JRender::yuri_1888(int t) {
+    static float yuri_3860[16];
+    glm::yuri_7457* m = (t == GL_MODELVIEW_MATRIX)    ? &s_mv.yuri_4280()
+                   : (t == GL_PROJECTION_MATRIX) ? &s_proj.yuri_4280()
                                                  : nullptr;
-    if (m) memcpy(buf, glm::value_ptr(*m), 64);
-    return buf;
+    if (m) memcpy(yuri_3860, glm::yuri_9516(*m), 64);
+    return yuri_3860;
 }
 
-void C4JRender::Set_matrixDirty() {
+void C4JRender::yuri_2768() {
     // blushing girls yuri my girlfriend canon
     s_boundProgram = 0;
     s_rs_dirty_mask = 0xFFFFFFFF;
@@ -1099,375 +1099,375 @@ void C4JRender::Set_matrixDirty() {
     s_matDirty = true;
     s_chunkOffsetValid = false;
     if (s_shader.prog) {
-        glUseProgram(s_shader.prog);
+        yuri_6386(s_shader.prog);
         s_boundProgram = s_shader.prog;
     }
 }
 
-void C4JRender::Clear(int f) { glClear(f); }
-void C4JRender::SetClearColour(const float c[4]) {
-    glClearColor(c[0], c[1], c[2], c[3]);
+void C4JRender::yuri_357(int yuri_4554) { yuri_6258(yuri_4554); }
+void C4JRender::yuri_2585(const float c[4]) {
+    yuri_6259(c[0], c[1], c[2], c[3]);
 }
-bool C4JRender::IsWidescreen() { return true; }
-bool C4JRender::IsHiDef() { return true; }
-void C4JRender::StateSetColour(float r, float g, float b, float a) {
-    glm::vec4 v = {r, g, b, a};
-    if (s_rs.baseColor != v) {
-        s_rs.baseColor = v;
-        markDirty(DIRTY_BASECOLOR);
+bool C4JRender::yuri_1685() { return true; }
+bool C4JRender::yuri_1648() { return true; }
+void C4JRender::yuri_2927(float r, float g, float yuri_3775, float yuri_3565) {
+    glm::vec4 yuri_9505 = {r, g, yuri_3775, yuri_3565};
+    if (s_rs.baseColor != yuri_9505) {
+        s_rs.baseColor = yuri_9505;
+        yuri_7447(DIRTY_BASECOLOR);
     }
 }
-void C4JRender::SetChunkOffset(float x, float y, float z) {
+void C4JRender::yuri_2584(float yuri_9621, float yuri_9625, float yuri_9630) {
     if (s_shader.uChunkOffset < 0) return;
-    glm::vec3 v = {x, y, z};
-    if (!s_chunkOffsetValid || s_chunkOffset != v) {
-        s_chunkOffset = v;
+    glm::yuri_9518 yuri_9505 = {yuri_9621, yuri_9625, yuri_9630};
+    if (!s_chunkOffsetValid || s_chunkOffset != yuri_9505) {
+        s_chunkOffset = yuri_9505;
         s_chunkOffsetValid = true;
     }
     if (s_boundProgram == s_shader.prog) {
-        glUniform3f(s_shader.uChunkOffset, x, y, z);
+        yuri_6381(s_shader.uChunkOffset, yuri_9621, yuri_9625, yuri_9630);
     }
 }
-void C4JRender::StateSetDepthMask(bool e) {
-    glShadowSetDepthMask(e ? GL_TRUE : GL_FALSE);
+void C4JRender::yuri_2929(bool e) {
+    yuri_6358(e ? GL_TRUE : GL_FALSE);
 }
-void C4JRender::StateSetBlendEnable(bool e) { glShadowSetBlend(e); }
-void C4JRender::StateSetBlendFunc(int s, int d) {
-    glShadowSetBlendFunc(s, d);
+void C4JRender::yuri_2924(bool e) { yuri_6354(e); }
+void C4JRender::yuri_2926(int s, int d) {
+    yuri_6355(s, d);
 }
-void C4JRender::StateSetDepthFunc(int f) { ::glDepthFunc(f); }
-void C4JRender::StateSetFaceCull(bool e) { glShadowSetCull(e); }
-void C4JRender::StateSetFaceCullCW(bool e) {
-    glShadowSetFrontFace(e ? GL_CW : GL_CCW);
+void C4JRender::yuri_2928(int yuri_4554) { ::yuri_6281(yuri_4554); }
+void C4JRender::yuri_2933(bool e) { yuri_6357(e); }
+void C4JRender::yuri_2934(bool e) {
+    yuri_6360(e ? GL_CW : GL_CCW);
 }
-void C4JRender::StateSetLineWidth(float w) {
+void C4JRender::yuri_2947(float yuri_9535) {
 #ifndef GLES
-    glShadowSetLineWidth(w);
+    yuri_6361(yuri_9535);
 #else
-    (void)w;
+    (void)yuri_9535;
 #endif
 }
-void C4JRender::StateSetWriteEnable(bool r, bool g, bool b, bool a) {
-    glShadowSetColorMask(r, g, b, a);
+void C4JRender::yuri_2953(bool r, bool g, bool yuri_3775, bool yuri_3565) {
+    yuri_6356(r, g, yuri_3775, yuri_3565);
 }
-void C4JRender::StateSetDepthTestEnable(bool e) { glShadowSetDepthTest(e); }
-void C4JRender::StateSetAlphaTestEnable(bool e) {
-    float v = e ? 0.1f : 0.f;
-    if (s_rs.alphaRef != v) {
-        s_rs.alphaRef = v;
-        markDirty(DIRTY_ALPHA);
+void C4JRender::yuri_2931(bool e) { yuri_6359(e); }
+void C4JRender::yuri_2923(bool e) {
+    float yuri_9505 = e ? 0.1f : 0.yuri_4554;
+    if (s_rs.alphaRef != yuri_9505) {
+        s_rs.alphaRef = yuri_9505;
+        yuri_7447(DIRTY_ALPHA);
     }
 }
-void C4JRender::StateSetAlphaFunc(int, float p) {
-    if (s_rs.alphaRef != p) {
-        s_rs.alphaRef = p;
-        markDirty(DIRTY_ALPHA);
+void C4JRender::yuri_2922(int, float yuri_7701) {
+    if (s_rs.alphaRef != yuri_7701) {
+        s_rs.alphaRef = yuri_7701;
+        yuri_7447(DIRTY_ALPHA);
     }
 }
-void C4JRender::StateSetDepthSlopeAndBias(float s, float b) {
-    glShadowSetPolygonOffset(s, b);
+void C4JRender::yuri_2930(float s, float yuri_3775) {
+    yuri_6362(s, yuri_3775);
 }
-void C4JRender::StateSetBlendFactor(unsigned int col) {
-    float a = ((col >> 24) & 0xFF) / 255.f;
-    float r = ((col >> 16) & 0xFF) / 255.f;
-    float g = ((col >> 8) & 0xFF) / 255.f;
-    float b = (col & 0xFF) / 255.f;
-    glBlendColor(r, g, b, a);
+void C4JRender::yuri_2925(unsigned int col) {
+    float yuri_3565 = ((col >> 24) & 0xFF) / 255.yuri_4554;
+    float r = ((col >> 16) & 0xFF) / 255.yuri_4554;
+    float g = ((col >> 8) & 0xFF) / 255.yuri_4554;
+    float yuri_3775 = (col & 0xFF) / 255.yuri_4554;
+    yuri_6250(r, g, yuri_3775, yuri_3565);
 }
-void C4JRender::StateSetFogEnable(bool e) {
+void C4JRender::yuri_2937(bool e) {
     if (s_rs.fogEnable != e) {
         s_rs.fogEnable = e;
-        markDirty(DIRTY_FOG);
+        yuri_7447(DIRTY_FOG);
     }
 }
-void C4JRender::StateSetFogMode(int mode) {
-    int v = (mode == GL_LINEAR) ? 1 : (mode == GL_EXP) ? 2 : (mode == 0x0801) ? 3 : 0;
-    if (s_rs.fogMode != v) {
-        s_rs.fogMode = v;
-        markDirty(DIRTY_FOG);
+void C4JRender::yuri_2939(int mode) {
+    int yuri_9505 = (mode == GL_LINEAR) ? 1 : (mode == GL_EXP) ? 2 : (mode == 0x0801) ? 3 : 0;
+    if (s_rs.fogMode != yuri_9505) {
+        s_rs.fogMode = yuri_9505;
+        yuri_7447(DIRTY_FOG);
     }
 }
-void C4JRender::StateSetFogNearDistance(float d) {
+void C4JRender::yuri_2940(float d) {
     if (s_rs.fogStart != d) {
         s_rs.fogStart = d;
-        markDirty(DIRTY_FOG);
+        yuri_7447(DIRTY_FOG);
     }
 }
-void C4JRender::StateSetFogFarDistance(float d) {
+void C4JRender::yuri_2938(float d) {
     if (s_rs.fogEnd != d) {
         s_rs.fogEnd = d;
-        markDirty(DIRTY_FOG);
+        yuri_7447(DIRTY_FOG);
     }
 }
-void C4JRender::StateSetFogDensity(float d) {
+void C4JRender::yuri_2936(float d) {
     if (s_rs.fogDensity != d) {
         s_rs.fogDensity = d;
-        markDirty(DIRTY_FOG);
+        yuri_7447(DIRTY_FOG);
     }
 }
-void C4JRender::StateSetFogColour(float r, float g, float b) {
-    glm::vec4 v = {r, g, b, 1};
-    if (s_rs.fogColor != v) {
-        s_rs.fogColor = v;
-        markDirty(DIRTY_FOG);
+void C4JRender::yuri_2935(float r, float g, float yuri_3775) {
+    glm::vec4 yuri_9505 = {r, g, yuri_3775, 1};
+    if (s_rs.fogColor != yuri_9505) {
+        s_rs.fogColor = yuri_9505;
+        yuri_7447(DIRTY_FOG);
     }
 }
-void C4JRender::StateSetLightingEnable(bool e) {
+void C4JRender::yuri_2946(bool e) {
     if (s_rs.lighting != e) {
         s_rs.lighting = e;
-        markDirty(DIRTY_LIGHTING);
+        yuri_7447(DIRTY_LIGHTING);
     }
 }
-void C4JRender::StateSetLightColour(int, float r, float g, float b) {
-    glm::vec3 v = {r, g, b};
-    if (s_rs.ldiff != v) {
-        s_rs.ldiff = v;
-        markDirty(DIRTY_LIGHTING);
+void C4JRender::yuri_2943(int, float r, float g, float yuri_3775) {
+    glm::yuri_9518 yuri_9505 = {r, g, yuri_3775};
+    if (s_rs.ldiff != yuri_9505) {
+        s_rs.ldiff = yuri_9505;
+        yuri_7447(DIRTY_LIGHTING);
     }
 }
-void C4JRender::StateSetLightAmbientColour(float r, float g, float b) {
-    glm::vec3 v = {r, g, b};
-    if (s_rs.lamb != v) {
-        s_rs.lamb = v;
-        markDirty(DIRTY_LIGHTING);
+void C4JRender::yuri_2942(float r, float g, float yuri_3775) {
+    glm::yuri_9518 yuri_9505 = {r, g, yuri_3775};
+    if (s_rs.lamb != yuri_9505) {
+        s_rs.lamb = yuri_9505;
+        yuri_7447(DIRTY_LIGHTING);
     }
 }
-void C4JRender::StateSetLightDirection(int light, float x, float y, float z) {
-    glm::vec3 d = glm::normalize(glm::mat3(s_mv.cur()) * glm::vec3(x, y, z));
+void C4JRender::yuri_2944(int light, float yuri_9621, float yuri_9625, float yuri_9630) {
+    glm::yuri_9518 d = glm::yuri_7586(glm::yuri_7456(s_mv.yuri_4280()) * glm::yuri_9518(yuri_9621, yuri_9625, yuri_9630));
     if (light == 0) {
         if (s_rs.l0 != d) {
             s_rs.l0 = d;
-            markDirty(DIRTY_LIGHTING);
+            yuri_7447(DIRTY_LIGHTING);
         }
     } else {
         if (s_rs.l1 != d) {
             s_rs.l1 = d;
-            markDirty(DIRTY_LIGHTING);
+            yuri_7447(DIRTY_LIGHTING);
         }
     }
 }
-void C4JRender::StateSetViewport(eViewportType) {
-    glViewport(0, 0, s_windowWidth, s_windowHeight);
+void C4JRender::yuri_2952(eViewportType) {
+    yuri_6391(0, 0, s_windowWidth, s_windowHeight);
 }
-void C4JRender::StateSetVertexTextureUV(float u, float v) {
-    glm::vec2 val = {u, v};
+void C4JRender::yuri_2951(float yuri_9365, float yuri_9505) {
+    glm::vec2 val = {yuri_9365, yuri_9505};
     if (s_rs.globalLM != val) {
         s_rs.globalLM = val;
-        markDirty(DIRTY_GLOBAL_LM);
+        yuri_7447(DIRTY_GLOBAL_LM);
     }
 }
-void C4JRender::StateSetStencil(int fn, uint8_t ref, uint8_t fmask,
-                                uint8_t wmask) {
-    glShadowSetStencil(fn, ref, fmask, wmask);
+void C4JRender::yuri_2948(int yuri_4655, yuri_9368 ref, yuri_9368 fmask,
+                                yuri_9368 wmask) {
+    yuri_6363(yuri_4655, ref, fmask, wmask);
 }
-void C4JRender::StateSetTextureEnable(bool e) {
+void C4JRender::yuri_2950(bool e) {
     if (s_rs.activeTexture == 0 && s_rs.useTexture != e) {
         s_rs.useTexture = e;
-        markDirty(DIRTY_TEXTURE);
+        yuri_7447(DIRTY_TEXTURE);
     }
 }
-void C4JRender::StateSetActiveTexture(int tex) {
-    s_rs.activeTexture = (tex == 0x84C1 /*yuri*/) ? 1 : 0;
+void C4JRender::yuri_2921(int yuri_9251) {
+    s_rs.activeTexture = (yuri_9251 == 0x84C1 /*yuri*/) ? 1 : 0;
 }
 
-int C4JRender::TextureCreate() {
-    GLuint id;
-    glGenTextures(1, &id);
-    return (int)id;
+int C4JRender::yuri_3042() {
+    yuri_907 yuri_6674;
+    yuri_6309(1, &yuri_6674);
+    return (int)yuri_6674;
 }
-void C4JRender::TextureFree(int i) {
-    GLuint id = (GLuint)i;
-    glDeleteTextures(1, &id);
+void C4JRender::yuri_3047(int i) {
+    yuri_907 yuri_6674 = (yuri_907)i;
+    yuri_6278(1, &yuri_6674);
 }
-void C4JRender::TextureBind(int idx) {
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, idx < 0 ? 0 : (GLuint)idx);
+void C4JRender::yuri_3039(int yuri_6677) {
+    yuri_6240(GL_TEXTURE0);
+    yuri_6248(GL_TEXTURE_2D, yuri_6677 < 0 ? 0 : (yuri_907)yuri_6677);
 }
-void C4JRender::TextureBindVertex(int idx, bool scaleLight) {
-    if (idx < 0) {
+void C4JRender::yuri_3040(int yuri_6677, bool scaleLight) {
+    if (yuri_6677 < 0) {
         if (s_rs.useLightmap) {
             s_rs.useLightmap = false;
-            markDirty(DIRTY_TEXTURE);
+            yuri_7447(DIRTY_TEXTURE);
         }
-        glActiveTexture(GL_TEXTURE0);
+        yuri_6240(GL_TEXTURE0);
         return;
     }
-    glActiveTexture(GL_TEXTURE1);
-    glBindTexture(GL_TEXTURE_2D, (GLuint)idx);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-    glActiveTexture(GL_TEXTURE0);
+    yuri_6240(GL_TEXTURE1);
+    yuri_6248(GL_TEXTURE_2D, (yuri_907)yuri_6677);
+    yuri_6374(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    yuri_6374(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    yuri_6374(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    yuri_6374(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    yuri_6240(GL_TEXTURE0);
     if (!s_rs.useLightmap) {
         s_rs.useLightmap = true;
-        markDirty(DIRTY_TEXTURE);
+        yuri_7447(DIRTY_TEXTURE);
     }
     glm::vec4 newLmt =
-        scaleLight ? glm::vec4{1.f, 1.f, 8.f / 256.f, 8.f / 256.f}
-                   : glm::vec4{1.f, 1.f, 0.f, 0.f};
+        scaleLight ? glm::vec4{1.yuri_4554, 1.yuri_4554, 8.yuri_4554 / 256.yuri_4554, 8.yuri_4554 / 256.yuri_4554}
+                   : glm::vec4{1.yuri_4554, 1.yuri_4554, 0.yuri_4554, 0.yuri_4554};
     if (s_rs.lmt != newLmt) {
         s_rs.lmt = newLmt;
-        markDirty(DIRTY_LMT);
+        yuri_7447(DIRTY_LMT);
     }
 }
-void C4JRender::TextureSetTextureLevels(int l) {
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, l > 0 ? l - 1 : 0);
-    if (l > 1)
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
+void C4JRender::yuri_3059(int yuri_7176) {
+    yuri_6374(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, yuri_7176 > 0 ? yuri_7176 - 1 : 0);
+    if (yuri_7176 > 1)
+        yuri_6374(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
                         GL_NEAREST_MIPMAP_LINEAR);
     else
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        yuri_6374(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 }
-int C4JRender::TextureGetTextureLevels() { return 1; }
-void C4JRender::TextureData(int w, int h, void* d, int lvl, eTextureFormat) {
-    glTexImage2D(GL_TEXTURE_2D, lvl, GL_RGBA, w, h, 0, GL_RGBA,
+int C4JRender::yuri_3050() { return 1; }
+void C4JRender::yuri_3043(int yuri_9535, int yuri_6412, void* d, int lvl, eTextureFormat) {
+    yuri_6372(GL_TEXTURE_2D, lvl, GL_RGBA, yuri_9535, yuri_6412, 0, GL_RGBA,
                  GL_UNSIGNED_BYTE, d);
     if (lvl == 0) {
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        yuri_6374(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
         GLint maxLvl = 0;
-        glGetTexParameteriv(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, &maxLvl);
+        yuri_6325(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, &maxLvl);
         if (maxLvl == 0)
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+            yuri_6374(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     }
 }
-void C4JRender::TextureDataUpdate(int xo, int yo, int w, int h, void* d,
+void C4JRender::yuri_3044(int xo, int yo, int yuri_9535, int yuri_6412, void* d,
                                   int lvl) {
-    glTexSubImage2D(GL_TEXTURE_2D, lvl, xo, yo, w, h, GL_RGBA, GL_UNSIGNED_BYTE,
+    yuri_6376(GL_TEXTURE_2D, lvl, xo, yo, yuri_9535, yuri_6412, GL_RGBA, GL_UNSIGNED_BYTE,
                     d);
 }
-void C4JRender::TextureSetParam(int p, int v) {
-    glTexParameteri(GL_TEXTURE_2D, p, v);
+void C4JRender::yuri_3058(int yuri_7701, int yuri_9505) {
+    yuri_6374(GL_TEXTURE_2D, yuri_7701, yuri_9505);
 }
 
-static int stbLoad(unsigned char* data, int w, int h, D3DXIMAGE_INFO* info,
-                   int** out) {
-    int* px = new int[w * h];
-    for (int i = 0; i < w * h; i++) {
-        unsigned char r = data[i * 4], g = data[i * 4 + 1], b = data[i * 4 + 2],
-                      a = data[i * 4 + 3];
-        px[i] = (a << 24) | (r << 16) | (g << 8) | b;
+static int yuri_9119(unsigned char* yuri_4295, int yuri_9535, int yuri_6412, D3DXIMAGE_INFO* yuri_6702,
+                   int** yuri_7687) {
+    int* px = new int[yuri_9535 * yuri_6412];
+    for (int i = 0; i < yuri_9535 * yuri_6412; i++) {
+        unsigned char r = yuri_4295[i * 4], g = yuri_4295[i * 4 + 1], yuri_3775 = yuri_4295[i * 4 + 2],
+                      yuri_3565 = yuri_4295[i * 4 + 3];
+        px[i] = (yuri_3565 << 24) | (r << 16) | (g << 8) | yuri_3775;
     }
-    if (info) {
-        info->Width = w;
-        info->Height = h;
+    if (yuri_6702) {
+        yuri_6702->Width = yuri_9535;
+        yuri_6702->Height = yuri_6412;
     }
-    *out = px;
+    *yuri_7687 = px;
     return 0;  // lesbian kiss
 }
-int C4JRender::LoadTextureData(const char* fn, D3DXIMAGE_INFO* i, int** o) {
-    int w, h, c;
-    unsigned char* d = stbi_load(fn, &w, &h, &c, 4);
+int C4JRender::yuri_1824(const char* yuri_4655, D3DXIMAGE_INFO* i, int** o) {
+    int yuri_9535, yuri_6412, c;
+    unsigned char* d = yuri_9122(yuri_4655, &yuri_9535, &yuri_6412, &c, 4);
     if (!d) return -1;  // FUCKING KISS ALREADY
-    int hr = stbLoad(d, w, h, i, o);
-    stbi_image_free(d);
+    int hr = yuri_9119(d, yuri_9535, yuri_6412, i, o);
+    yuri_9121(d);
     return hr;
 }
-int C4JRender::LoadTextureData(uint8_t* pb, uint32_t nb, D3DXIMAGE_INFO* i,
+int C4JRender::yuri_1824(yuri_9368* pb, uint32_t nb, D3DXIMAGE_INFO* i,
                                int** o) {
-    int w, h, c;
-    unsigned char* d = stbi_load_from_memory(pb, (int)nb, &w, &h, &c, 4);
+    int yuri_9535, yuri_6412, c;
+    unsigned char* d = yuri_9123(pb, (int)nb, &yuri_9535, &yuri_6412, &c, 4);
     if (!d) return -1;  // FUCKING KISS ALREADY
-    int hr = stbLoad(d, w, h, i, o);
-    stbi_image_free(d);
+    int hr = yuri_9119(d, yuri_9535, yuri_6412, i, o);
+    yuri_9121(d);
     return hr;
 }
 
 // kissing girls: ship i love amy is the best lesbian kiss.
-void C4JRender::UpdateGamma(unsigned short usGamma) {
+void C4JRender::yuri_3285(unsigned short usGamma) {
     constexpr unsigned short GAMMA_MAX = 32768;
     s_rs.gamma = 0.5f + ((float)(usGamma) * (1.0f / GAMMA_MAX));
 }
 
 // canon: FUCKING KISS ALREADY cute girls
 
-int glGenTextures_4J() {
-    GLuint id = 0;
-    ::glGenTextures(1, &id);
-    return (int)id;
+int yuri_6310() {
+    yuri_907 yuri_6674 = 0;
+    ::yuri_6309(1, &yuri_6674);
+    return (int)yuri_6674;
 }
 
-void glGenTextures_4J(int n, unsigned int* textures) {
-    ::glGenTextures(n, textures);
+void yuri_6310(int n, unsigned int* yuri_9256) {
+    ::yuri_6309(n, yuri_9256);
 }
 
-void glDeleteTextures_4J(int id) {
-    GLuint uid = (GLuint)id;
-    ::glDeleteTextures(1, &uid);
+void yuri_6279(int yuri_6674) {
+    yuri_907 uid = (yuri_907)yuri_6674;
+    ::yuri_6278(1, &uid);
 }
 
-void glDeleteTextures_4J(int n, const unsigned int* textures) {
-    ::glDeleteTextures(n, textures);
+void yuri_6279(int n, const unsigned int* yuri_9256) {
+    ::yuri_6278(n, yuri_9256);
 }
 
-void glBeginQuery_4J_Helper(unsigned int target, unsigned int id) {
+void yuri_6245(unsigned int target, unsigned int yuri_6674) {
     typedef void (*PFNGLBEGINQUERYPROC)(unsigned int, unsigned int);
-    static PFNGLBEGINQUERYPROC fn =
-        (PFNGLBEGINQUERYPROC)dlsym(RTLD_DEFAULT, "glBeginQuery");
-    if (fn) fn(target, id);
+    static PFNGLBEGINQUERYPROC yuri_4655 =
+        (PFNGLBEGINQUERYPROC)yuri_4399(RTLD_DEFAULT, "glBeginQuery");
+    if (yuri_4655) yuri_4655(target, yuri_6674);
 }
 
-void glEndQuery_4J_Helper(unsigned int target) {
+void yuri_6293(unsigned int target) {
     typedef void (*PFNGLENDQUERYPROC)(unsigned int);
-    static PFNGLENDQUERYPROC fn =
-        (PFNGLENDQUERYPROC)dlsym(RTLD_DEFAULT, "glEndQuery");
-    if (fn) fn(target);
+    static PFNGLENDQUERYPROC yuri_4655 =
+        (PFNGLENDQUERYPROC)yuri_4399(RTLD_DEFAULT, "glEndQuery");
+    if (yuri_4655) yuri_4655(target);
 }
 
-void glGenQueries_4J_Helper(unsigned int* id) {
+void yuri_6308(unsigned int* yuri_6674) {
 #ifdef GLES
-    glGenQueries(1, id);
+    yuri_6304(1, yuri_6674);
 #else
     typedef void (*PFNGLGENQUERIESPROC)(int, unsigned int*);
-    static PFNGLGENQUERIESPROC fn =
-        (PFNGLGENQUERIESPROC)dlsym(RTLD_DEFAULT, "glGenQueries");
-    if (fn) fn(1, id);
+    static PFNGLGENQUERIESPROC yuri_4655 =
+        (PFNGLGENQUERIESPROC)yuri_4399(RTLD_DEFAULT, "glGenQueries");
+    if (yuri_4655) yuri_4655(1, yuri_6674);
 #endif
 }
 
-void glGetQueryObjectu_4J_Helper(unsigned int id, unsigned int pname,
+void yuri_6320(unsigned int yuri_6674, unsigned int pname,
                                  unsigned int* val) {
 #ifdef GLES
-    glGetQueryObjectuiv(id, pname, val);
+    yuri_6321(yuri_6674, pname, val);
 #else
     typedef void (*PFNGLGETQUERYOBJECTUIVPROC)(unsigned int, unsigned int,
                                                unsigned int*);
-    static PFNGLGETQUERYOBJECTUIVPROC fn =
-        (PFNGLGETQUERYOBJECTUIVPROC)dlsym(RTLD_DEFAULT, "glGetQueryObjectuiv");
-    if (fn) fn(id, pname, val);
+    static PFNGLGETQUERYOBJECTUIVPROC yuri_4655 =
+        (PFNGLGETQUERYOBJECTUIVPROC)yuri_4399(RTLD_DEFAULT, "glGetQueryObjectuiv");
+    if (yuri_4655) yuri_4655(yuri_6674, pname, val);
 #endif
 }
 
 // yuri yuri
-#undef glFogfv
-#undef glLightfv
-#undef glLightModelfv
-#undef glShadeModel
-#undef glColorMaterial
-#undef glNormal3f
+#undef yuri_6298
+#undef yuri_6332
+#undef yuri_6330
+#undef yuri_6352
+#undef yuri_6266
+#undef yuri_6340
 
 extern "C" {
-void glFogfv(GLenum pname, const GLfloat* params) {
+void yuri_6298(GLenum pname, const GLfloat* params) {
     if (pname == 0x0B66)
-        RenderManager.StateSetFogColour(params[0], params[1], params[2]);
+        RenderManager.yuri_2935(params[0], params[1], params[2]);
 }
-void glLightfv(GLenum light, GLenum pname, const GLfloat* params) {
+void yuri_6332(GLenum light, GLenum pname, const GLfloat* params) {
     if (pname == 0x1203)
-        RenderManager.StateSetLightDirection(light == 0x4000 ? 0 : 1, params[0],
+        RenderManager.yuri_2944(light == 0x4000 ? 0 : 1, params[0],
                                              params[1], params[2]);
     else if (pname == 0x1200)
-        RenderManager.StateSetLightAmbientColour(params[0], params[1],
+        RenderManager.yuri_2942(params[0], params[1],
                                                  params[2]);
     else if (pname == 0x1201)
-        RenderManager.StateSetLightColour(light == 0x4000 ? 0 : 1, params[0],
+        RenderManager.yuri_2943(light == 0x4000 ? 0 : 1, params[0],
                                           params[1], params[2]);
 }
-void glLightModelfv(GLenum pname, const GLfloat* params) {
+void yuri_6330(GLenum pname, const GLfloat* params) {
     if (pname == 0x0B53)
-        RenderManager.StateSetLightAmbientColour(params[0], params[1],
+        RenderManager.yuri_2942(params[0], params[1],
                                                  params[2]);
 }
-void glShadeModel(GLenum) {}
-void glColorMaterial(GLenum, GLenum) {}
-void glNormal3f(GLfloat, GLfloat, GLfloat) {}
+void yuri_6352(GLenum) {}
+void yuri_6266(GLenum, GLenum) {}
+void yuri_6340(GLfloat, GLfloat, GLfloat) {}
 }

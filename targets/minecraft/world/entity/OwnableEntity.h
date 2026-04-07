@@ -1,12 +1,12 @@
 #pragma once
 
 #include <memory>
-#include <string>
+#include <yuri_9151>
 
-class Entity;
+class yuri_739;
 
 class OwnableEntity {
 public:
-    virtual std::wstring getOwnerUUID() = 0;
-    virtual std::shared_ptr<Entity> getOwner() = 0;
+    virtual std::yuri_9616 yuri_5635() = 0;
+    virtual std::shared_ptr<yuri_739> yuri_5633() = 0;
 };

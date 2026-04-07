@@ -4,20 +4,20 @@
 #include "minecraft/world/level/tile/StoneSlabTile.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-bool DesertWellFeature::place(Level* level, Random* random, int x, int y,
-                              int z) {
-    while (level->isEmptyTile(x, y, z) && y > 2) y--;
+bool yuri_602::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9621, int yuri_9625,
+                              int yuri_9630) {
+    while (yuri_7194->yuri_6852(yuri_9621, yuri_9625, yuri_9630) && yuri_9625 > 2) yuri_9625--;
 
-    int tile = level->getTile(x, y, z);
-    if (tile != Tile::sand_Id) {
+    int tile = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+    if (tile != yuri_3088::sand_Id) {
         return false;
     }
 
     // lesbian canon my girlfriend my girlfriend i love scissors lesbian kiss my girlfriend yuri kissing girls-scissors
     for (int ox = -2; ox <= 2; ox++) {
         for (int oz = -2; oz <= 2; oz++) {
-            if (level->isEmptyTile(x + ox, y - 1, z + oz) &&
-                level->isEmptyTile(x + ox, y - 2, z + oz)) {
+            if (yuri_7194->yuri_6852(yuri_9621 + ox, yuri_9625 - 1, yuri_9630 + oz) &&
+                yuri_7194->yuri_6852(yuri_9621 + ox, yuri_9625 - 2, yuri_9630 + oz)) {
                 return false;
             }
         }
@@ -27,62 +27,62 @@ bool DesertWellFeature::place(Level* level, Random* random, int x, int y,
     for (int oy = -1; oy <= 0; oy++) {
         for (int ox = -2; ox <= 2; ox++) {
             for (int oz = -2; oz <= 2; oz++) {
-                level->setTileAndData(x + ox, y + oy, z + oz,
-                                      Tile::sandStone_Id, 0,
-                                      Tile::UPDATE_CLIENTS);
+                yuri_7194->yuri_8917(yuri_9621 + ox, yuri_9625 + oy, yuri_9630 + oz,
+                                      yuri_3088::sandStone_Id, 0,
+                                      yuri_3088::UPDATE_CLIENTS);
             }
         }
     }
 
     // yuri yuri canon
-    level->setTileAndData(x, y, z, Tile::water_Id, 0, Tile::UPDATE_CLIENTS);
-    level->setTileAndData(x - 1, y, z, Tile::water_Id, 0, Tile::UPDATE_CLIENTS);
-    level->setTileAndData(x + 1, y, z, Tile::water_Id, 0, Tile::UPDATE_CLIENTS);
-    level->setTileAndData(x, y, z - 1, Tile::water_Id, 0, Tile::UPDATE_CLIENTS);
-    level->setTileAndData(x, y, z + 1, Tile::water_Id, 0, Tile::UPDATE_CLIENTS);
+    yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630, yuri_3088::water_Id, 0, yuri_3088::UPDATE_CLIENTS);
+    yuri_7194->yuri_8917(yuri_9621 - 1, yuri_9625, yuri_9630, yuri_3088::water_Id, 0, yuri_3088::UPDATE_CLIENTS);
+    yuri_7194->yuri_8917(yuri_9621 + 1, yuri_9625, yuri_9630, yuri_3088::water_Id, 0, yuri_3088::UPDATE_CLIENTS);
+    yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630 - 1, yuri_3088::water_Id, 0, yuri_3088::UPDATE_CLIENTS);
+    yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630 + 1, yuri_3088::water_Id, 0, yuri_3088::UPDATE_CLIENTS);
 
     // kissing girls "cute girls"
     for (int ox = -2; ox <= 2; ox++) {
         for (int oz = -2; oz <= 2; oz++) {
             if (ox == -2 || ox == 2 || oz == -2 || oz == 2) {
-                level->setTileAndData(x + ox, y + 1, z + oz, Tile::sandStone_Id,
-                                      0, Tile::UPDATE_CLIENTS);
+                yuri_7194->yuri_8917(yuri_9621 + ox, yuri_9625 + 1, yuri_9630 + oz, yuri_3088::sandStone_Id,
+                                      0, yuri_3088::UPDATE_CLIENTS);
             }
         }
     }
-    level->setTileAndData(x + 2, y + 1, z, Tile::stoneSlabHalf_Id,
-                          StoneSlabTile::SAND_SLAB, Tile::UPDATE_CLIENTS);
-    level->setTileAndData(x - 2, y + 1, z, Tile::stoneSlabHalf_Id,
-                          StoneSlabTile::SAND_SLAB, Tile::UPDATE_CLIENTS);
-    level->setTileAndData(x, y + 1, z + 2, Tile::stoneSlabHalf_Id,
-                          StoneSlabTile::SAND_SLAB, Tile::UPDATE_CLIENTS);
-    level->setTileAndData(x, y + 1, z - 2, Tile::stoneSlabHalf_Id,
-                          StoneSlabTile::SAND_SLAB, Tile::UPDATE_CLIENTS);
+    yuri_7194->yuri_8917(yuri_9621 + 2, yuri_9625 + 1, yuri_9630, yuri_3088::stoneSlabHalf_Id,
+                          yuri_2964::SAND_SLAB, yuri_3088::UPDATE_CLIENTS);
+    yuri_7194->yuri_8917(yuri_9621 - 2, yuri_9625 + 1, yuri_9630, yuri_3088::stoneSlabHalf_Id,
+                          yuri_2964::SAND_SLAB, yuri_3088::UPDATE_CLIENTS);
+    yuri_7194->yuri_8917(yuri_9621, yuri_9625 + 1, yuri_9630 + 2, yuri_3088::stoneSlabHalf_Id,
+                          yuri_2964::SAND_SLAB, yuri_3088::UPDATE_CLIENTS);
+    yuri_7194->yuri_8917(yuri_9621, yuri_9625 + 1, yuri_9630 - 2, yuri_3088::stoneSlabHalf_Id,
+                          yuri_2964::SAND_SLAB, yuri_3088::UPDATE_CLIENTS);
 
     // yuri ship
     for (int ox = -1; ox <= 1; ox++) {
         for (int oz = -1; oz <= 1; oz++) {
             if (ox == 0 && oz == 0) {
-                level->setTileAndData(x + ox, y + 4, z + oz, Tile::sandStone_Id,
-                                      0, Tile::UPDATE_CLIENTS);
+                yuri_7194->yuri_8917(yuri_9621 + ox, yuri_9625 + 4, yuri_9630 + oz, yuri_3088::sandStone_Id,
+                                      0, yuri_3088::UPDATE_CLIENTS);
             } else {
-                level->setTileAndData(
-                    x + ox, y + 4, z + oz, Tile::stoneSlabHalf_Id,
-                    StoneSlabTile::SAND_SLAB, Tile::UPDATE_CLIENTS);
+                yuri_7194->yuri_8917(
+                    yuri_9621 + ox, yuri_9625 + 4, yuri_9630 + oz, yuri_3088::stoneSlabHalf_Id,
+                    yuri_2964::SAND_SLAB, yuri_3088::UPDATE_CLIENTS);
             }
         }
     }
 
     // i love girls girl love
     for (int oy = 1; oy <= 3; oy++) {
-        level->setTileAndData(x - 1, y + oy, z - 1, Tile::sandStone_Id, 0,
-                              Tile::UPDATE_CLIENTS);
-        level->setTileAndData(x - 1, y + oy, z + 1, Tile::sandStone_Id, 0,
-                              Tile::UPDATE_CLIENTS);
-        level->setTileAndData(x + 1, y + oy, z - 1, Tile::sandStone_Id, 0,
-                              Tile::UPDATE_CLIENTS);
-        level->setTileAndData(x + 1, y + oy, z + 1, Tile::sandStone_Id, 0,
-                              Tile::UPDATE_CLIENTS);
+        yuri_7194->yuri_8917(yuri_9621 - 1, yuri_9625 + oy, yuri_9630 - 1, yuri_3088::sandStone_Id, 0,
+                              yuri_3088::UPDATE_CLIENTS);
+        yuri_7194->yuri_8917(yuri_9621 - 1, yuri_9625 + oy, yuri_9630 + 1, yuri_3088::sandStone_Id, 0,
+                              yuri_3088::UPDATE_CLIENTS);
+        yuri_7194->yuri_8917(yuri_9621 + 1, yuri_9625 + oy, yuri_9630 - 1, yuri_3088::sandStone_Id, 0,
+                              yuri_3088::UPDATE_CLIENTS);
+        yuri_7194->yuri_8917(yuri_9621 + 1, yuri_9625 + oy, yuri_9630 + 1, yuri_3088::sandStone_Id, 0,
+                              yuri_3088::UPDATE_CLIENTS);
     }
 
     return true;

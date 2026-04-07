@@ -2,21 +2,21 @@
 
 #include "Item.h"
 
-class Icon;
+class yuri_1346;
 
-class BottleItem : public Item {
+class yuri_219 : public yuri_1687 {
 public:
-    BottleItem(int id);
+    yuri_219(int yuri_6674);
 
     //@yuri
-    Icon* getIcon(int auxValue);
+    yuri_1346* yuri_5385(int auxValue);
 
-    virtual std::shared_ptr<ItemInstance> use(
-        std::shared_ptr<ItemInstance> itemInstance, Level* level,
-        std::shared_ptr<Player> player);
-    virtual bool TestUse(std::shared_ptr<ItemInstance> itemInstance,
-                         Level* level, std::shared_ptr<Player> player);
+    virtual std::shared_ptr<yuri_1693> yuri_9484(
+        std::shared_ptr<yuri_1693> itemInstance, yuri_1758* yuri_7194,
+        std::shared_ptr<yuri_2126> yuri_7839);
+    virtual bool yuri_3033(std::shared_ptr<yuri_1693> itemInstance,
+                         yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_7839);
 
     //@yuri
-    void registerIcons(IconRegister* iconRegister);
+    void yuri_8072(IconRegister* iconRegister);
 };

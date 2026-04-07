@@ -1,23 +1,23 @@
 #pragma once
 #include "TileEntityRenderer.h"
 
-class BookModel;
-class ResourceLocation;
+class yuri_216;
+class yuri_2412;
 
-class EnchantTableRenderer : public TileEntityRenderer {
+class yuri_699 : public yuri_3095 {
     friend class CXuiCtrlEnchantmentBook;
-    friend class UIControl_EnchantmentBook;
+    friend class yuri_3170;
 
 private:
-    static ResourceLocation BOOK_LOCATION;
+    static yuri_2412 BOOK_LOCATION;
 
-    BookModel* bookModel;
+    yuri_216* bookModel;
 
 public:
-    EnchantTableRenderer();
-    ~EnchantTableRenderer();
+    yuri_699();
+    ~yuri_699();
 
-    virtual void render(std::shared_ptr<TileEntity> _table, double x, double y,
-                        double z, float a, bool setColor, float alpha = 1.0f,
+    virtual void yuri_8158(std::shared_ptr<yuri_3091> _table, double yuri_9621, double yuri_9625,
+                        double yuri_9630, float yuri_3565, bool yuri_8524, float alpha = 1.0f,
                         bool useCompiled = true);
 };

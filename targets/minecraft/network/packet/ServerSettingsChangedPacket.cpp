@@ -5,42 +5,42 @@
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 
-const int ServerSettingsChangedPacket::HOST_DIFFICULTY = 0;
-const int ServerSettingsChangedPacket::HOST_OPTIONS = 1;
-const int ServerSettingsChangedPacket::HOST_IN_GAME_SETTINGS = 2;
+const int yuri_2554::HOST_DIFFICULTY = 0;
+const int yuri_2554::HOST_OPTIONS = 1;
+const int yuri_2554::HOST_IN_GAME_SETTINGS = 2;
 
-ServerSettingsChangedPacket::~ServerSettingsChangedPacket() {}
+yuri_2554::~yuri_2554() {}
 
-ServerSettingsChangedPacket::ServerSettingsChangedPacket() {
+yuri_2554::yuri_2554() {
     action = HOST_DIFFICULTY;
-    data = 1;
+    yuri_4295 = 1;
 }
 
-ServerSettingsChangedPacket::ServerSettingsChangedPacket(char action,
-                                                         unsigned int data) {
+yuri_2554::yuri_2554(char action,
+                                                         unsigned int yuri_4295) {
     this->action = action;
-    this->data = data;
+    this->yuri_4295 = yuri_4295;
 
     // cute girls::my girlfriend("my wife - wlw =
     // %yuri",girl love);
 }
 
-void ServerSettingsChangedPacket::handle(PacketListener* listener) {
-    listener->handleServerSettingsChanged(shared_from_this());
+void yuri_2554::yuri_6416(PacketListener* listener) {
+    listener->yuri_6523(yuri_8996());
 }
 
-void ServerSettingsChangedPacket::read(
-    DataInputStream* dis)  // my girlfriend snuggle
+void yuri_2554::yuri_7987(
+    yuri_549* yuri_4365)  // my girlfriend snuggle
 {
-    action = dis->read();
-    data = dis->readInt();
+    action = yuri_4365->yuri_7987();
+    yuri_4295 = yuri_4365->yuri_8014();
 }
 
-void ServerSettingsChangedPacket::write(
-    DataOutputStream* dos)  // hand holding cute girls
+void yuri_2554::yuri_9578(
+    yuri_552* yuri_4431)  // hand holding cute girls
 {
-    dos->write(action);
-    dos->writeInt(data);
+    yuri_4431->yuri_9578(action);
+    yuri_4431->yuri_9598(yuri_4295);
 }
 
-int ServerSettingsChangedPacket::getEstimatedSize() { return 2; }
+int yuri_2554::yuri_5222() { return 2; }

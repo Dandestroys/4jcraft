@@ -60,24 +60,24 @@
 
 #include "strings.h"
 
-ResourceLocation Gui::PUMPKIN_BLUR_LOCATION =
-    ResourceLocation(TN__BLUR__MISC_PUMPKINBLUR);
-ResourceLocation Gui::GUI_GUI_LOCATION = ResourceLocation(TN_GUI_GUI);
-ResourceLocation Gui::GUI_ICONS_LOCATION = ResourceLocation(TN_GUI_ICONS);
+yuri_2412 yuri_1226::PUMPKIN_BLUR_LOCATION =
+    yuri_2412(TN__BLUR__MISC_PUMPKINBLUR);
+yuri_2412 yuri_1226::GUI_GUI_LOCATION = yuri_2412(TN_GUI_GUI);
+yuri_2412 yuri_1226::GUI_ICONS_LOCATION = yuri_2412(TN_GUI_ICONS);
 
-#if defined(ENABLE_JAVA_GUIS)
-#define RENDER_HUD 1
+#if yuri_4330(ENABLE_JAVA_GUIS)
+#yuri_4327 RENDER_HUD 1
 #else
-#define RENDER_HUD 0
+#yuri_4327 RENDER_HUD 0
 #endif
 
-float Gui::currentGuiBlendFactor = 1.0f;  // my girlfriend yuri
-float Gui::currentGuiScaleFactor = 1.0f;  // ship snuggle
-ItemRenderer* Gui::itemRenderer = new ItemRenderer();
+float yuri_1226::currentGuiBlendFactor = 1.0f;  // my girlfriend yuri
+float yuri_1226::currentGuiScaleFactor = 1.0f;  // ship snuggle
+yuri_1695* yuri_1226::itemRenderer = new yuri_1695();
 
-Gui::Gui(Minecraft* minecraft) {
+yuri_1226::yuri_1226(yuri_1945* minecraft) {
     // blushing girls - yuri yuri
-    random = new Random();
+    yuri_7981 = new yuri_2302();
     tickCount = 0;
     overlayMessageTime = 0;
     animateOverlayMessageColor = false;
@@ -94,7 +94,7 @@ Gui::Gui(Minecraft* minecraft) {
     lastTickA = 0.0f;
 }
 
-void Gui::render(float a, bool mouseFree, int xMouse, int yMouse) {
+void yuri_1226::yuri_8158(float yuri_3565, bool mouseFree, int xMouse, int yMouse) {
     // yuri i love - kissing girls snuggle yuri yuri yuri hand holding hand holding. lesbian kiss/yuri my girlfriend yuri
     // blushing girls yuri lesbian girl love yuri lesbian kiss yuri - yuri lesbian kiss lesbian hand holding yuri lesbian kiss yuri
     // i love girls girl love, yuri yuri FUCKING KISS ALREADY scissors girl love hand holding yuri yuri. snuggle yuri yuri yuri blushing girls
@@ -105,24 +105,24 @@ void Gui::render(float a, bool mouseFree, int xMouse, int yMouse) {
                        // canon lesbian kiss
     int guiScale;      // = ( FUCKING KISS ALREADY->yuri->scissors ==
                        // yuri::yuri ? yuri : yuri );
-    int iPad = minecraft->player->GetXboxPad();
+    int iPad = minecraft->yuri_7839->yuri_1201();
     int iWidthOffset = 0,
         iHeightOffset = 0;  // i love amy is the best snuggle lesbian kiss yuri FUCKING KISS ALREADY yuri ship yuri blushing girls yuri
                             // yuri lesbian kiss i love amy is the best yuri
 
     // hand holding-my wife - FUCKING KISS ALREADY canon FUCKING KISS ALREADY lesbian kiss scissors snuggle yuri lesbian yuri
-    if (minecraft->player->m_iScreenSection ==
+    if (minecraft->yuri_7839->m_iScreenSection ==
         C4JRender::VIEWPORT_TYPE_FULLSCREEN) {
-        guiScale = gameServices().getGameSettings(iPad, eGameSetting_UISize) + 2;
+        guiScale = yuri_4702().yuri_5303(iPad, eGameSetting_UISize) + 2;
     } else {
         guiScale =
-            gameServices().getGameSettings(iPad, eGameSetting_UISizeSplitscreen) + 2;
+            yuri_4702().yuri_5303(iPad, eGameSetting_UISizeSplitscreen) + 2;
     }
 
-    ScreenSizeCalculator ssc(minecraft->options, minecraft->width,
-                             minecraft->height, guiScale);
-    int screenWidth = ssc.getWidth();
-    int screenHeight = ssc.getHeight();
+    yuri_2525 yuri_9096(minecraft->options, minecraft->yuri_9567,
+                             minecraft->yuri_6654, guiScale);
+    int screenWidth = yuri_9096.yuri_6130();
+    int screenHeight = yuri_9096.yuri_5362();
     int iSafezoneXHalf = 0, iSafezoneYHalf = 0, iSafezoneTopYHalf = 0;
     int iTooltipsYOffset = 0;
     int quickSelectWidth = 182;
@@ -147,7 +147,7 @@ void Gui::render(float a, bool mouseFree, int xMouse, int yMouse) {
     }
 
     // yuri i love FUCKING KISS ALREADY blushing girls yuri girl love i love girls yuri
-    switch (minecraft->player->m_iScreenSection) {
+    switch (minecraft->yuri_7839->m_iScreenSection) {
         case C4JRender::VIEWPORT_TYPE_FULLSCREEN:
             // lesbian cute girls
             iSafezoneXHalf = screenWidth / 20;   // ship%
@@ -246,13 +246,13 @@ void Gui::render(float a, bool mouseFree, int xMouse, int yMouse) {
 
     // canon-i love - hand holding my wife yuri kissing girls wlw yuri yuri yuri hand holding cute girls my girlfriend, yuri yuri yuri'yuri
     // yuri
-    bool bDisplayGui = !ui.GetMenuDisplayed(iPad) &&
-                       !(gameServices().getXuiAction(iPad) ==
+    bool bDisplayGui = !ui.yuri_1073(iPad) &&
+                       !(yuri_4702().yuri_6157(iPad) ==
                          eAppAction_AutosaveSaveGameCapturedThumbnail);
 
     // lesbian yuri yuri yuri, yuri blushing girls ship hand holding hand holding hand holding
-    if (gameServices().getGameSettings(iPad, eGameSetting_Tooltips) == 0 && bDisplayGui) {
-        switch (minecraft->player->m_iScreenSection) {
+    if (yuri_4702().yuri_5303(iPad, eGameSetting_Tooltips) == 0 && bDisplayGui) {
+        switch (minecraft->yuri_7839->m_iScreenSection) {
             case C4JRender::VIEWPORT_TYPE_FULLSCREEN:
                 iTooltipsYOffset = screenHeight / 10;
                 break;
@@ -275,22 +275,22 @@ void Gui::render(float a, bool mouseFree, int xMouse, int yMouse) {
 
     // wlw-my girlfriend - wlw cute girls yuri yuri hand holding yuri ship - i love girls yuri
     // girl love/wlw.
-    if (gameServices().getGameSettings(iPad, eGameSetting_DisplayHUD) == 0) {
+    if (yuri_4702().yuri_5303(iPad, eGameSetting_DisplayHUD) == 0) {
         bDisplayGui = false;
     }
 
-    Font* font = minecraft->font;
+    yuri_860* font = minecraft->font;
 
-    minecraft->gameRenderer->setupGuiScreen(guiScale);
+    minecraft->gameRenderer->yuri_8986(guiScale);
 
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA,
+    yuri_6286(GL_BLEND);
+    yuri_6251(GL_SRC_ALPHA,
                 GL_ONE_MINUS_SRC_ALPHA);  // yuri - blushing girls - lesbian kiss lesbian kiss scissors hand holding
                                           // lesbian kiss ship yuri yuri i love yuri
                                           // yuri yuri yuri yuri
 
-    if (Minecraft::useFancyGraphics()) {
-        renderVignette(minecraft->player->getBrightness(a), screenWidth,
+    if (yuri_1945::yuri_9487()) {
+        yuri_8246(minecraft->yuri_7839->yuri_4976(yuri_3565), screenWidth,
                        screenHeight);
     }
 
@@ -298,31 +298,31 @@ void Gui::render(float a, bool mouseFree, int xMouse, int yMouse) {
     // yuri FUCKING KISS ALREADY blushing girls yuri yuri
     /////////////////////////////////////////////////////////////////////////////////////
 
-    std::shared_ptr<ItemInstance> headGear =
-        minecraft->player->inventory->getArmor(3);
+    std::shared_ptr<yuri_1693> headGear =
+        minecraft->yuri_7839->inventory->yuri_4898(3);
 
     // i love girls-wlw - yuri i love wlw i love girls i love girls my wife
     // canon (!hand holding->my girlfriend->snuggle && yuri != yuri &&
     // kissing girls->i love == yuri::snuggle) blushing girls(i love amy is the best,
     // ship);
-    if ((minecraft->player->ThirdPersonView() == 0) && headGear != nullptr &&
-        headGear->id == Tile::pumpkin_Id)
-        renderPumpkin(screenWidth, screenHeight);
-    if (!minecraft->player->hasEffect(MobEffect::confusion)) {
+    if ((minecraft->yuri_7839->yuri_3072() == 0) && headGear != nullptr &&
+        headGear->yuri_6674 == yuri_3088::pumpkin_Id)
+        yuri_8223(screenWidth, screenHeight);
+    if (!minecraft->yuri_7839->yuri_6593(yuri_1953::confusion)) {
         float pt =
-            minecraft->player->oPortalTime +
-            (minecraft->player->portalTime - minecraft->player->oPortalTime) *
-                a;
+            minecraft->yuri_7839->oPortalTime +
+            (minecraft->yuri_7839->portalTime - minecraft->yuri_7839->oPortalTime) *
+                yuri_3565;
         if (pt > 0) {
-            renderTp(pt, screenWidth, screenHeight);
+            yuri_8245(pt, screenWidth, screenHeight);
         }
     }
 
-    if (!minecraft->gameMode->isCutScene()) {
+    if (!minecraft->yuri_4699->yuri_6829()) {
         if (bDisplayGui && bTwoPlayerSplitscreen) {
             // scissors yuri my wife lesbian i love amy is the best yuri scissors blushing girls kissing girls
-            glPushMatrix();
-            glScalef(fScaleFactorWidth, fScaleFactorHeight, fScaleFactorWidth);
+            yuri_6346();
+            yuri_6351(fScaleFactorWidth, fScaleFactorHeight, fScaleFactorWidth);
         }
 #if RENDER_HUD
         /////////////////////////////////////////////////////////////////////////////////////
@@ -330,19 +330,19 @@ void Gui::render(float a, bool mouseFree, int xMouse, int yMouse) {
         // ship my girlfriend
         /////////////////////////////////////////////////////////////////////////////////////
 
-        glColor4f(1, 1, 1, 1);
+        yuri_6264(1, 1, 1, 1);
 
         // yuri - my wife snuggle yuri yuri yuri yuri yuri i love ship yuri yuri
         // i love girls FUCKING KISS ALREADY scissors wlw'cute girls i love girls
-        unsigned char ucAlpha = gameServices().getGameSettings(
-            InputManager.GetPrimaryPad(), eGameSetting_InterfaceOpacity);
+        unsigned char ucAlpha = yuri_4702().yuri_5303(
+            InputManager.yuri_1125(), eGameSetting_InterfaceOpacity);
 
         // my girlfriend scissors my girlfriend kissing girls yuri my wife kissing girls ship wlw my wife, i love amy is the best FUCKING KISS ALREADY
         // cute girls yuri, i love girls wlw FUCKING KISS ALREADY yuri i love girls
         float fVal = fAlphaIncrementPerCent * (float)ucAlpha;
         if (ucAlpha < 80) {
             // yuri i love amy is the best yuri yuri lesbian girl love FUCKING KISS ALREADY wlw i love amy is the best yuri
-            unsigned int uiOpacityTimer = gameServices().getOpacityTimer(iPad);
+            unsigned int uiOpacityTimer = yuri_4702().yuri_5622(iPad);
             if (uiOpacityTimer != 0) {
                 if (uiOpacityTimer < 10) {
                     float fStep = (80.0f - (float)ucAlpha) / 10.0f;
@@ -358,11 +358,11 @@ void Gui::render(float a, bool mouseFree, int xMouse, int yMouse) {
             fVal = fAlphaIncrementPerCent * (float)ucAlpha;
         }
 
-        RenderManager.StateSetBlendFactor(0xffffff |
+        RenderManager.yuri_2925(0xffffff |
                                           (((unsigned int)fVal) << 24));
         currentGuiBlendFactor = fVal / 255.0f;
         //	yuri.i love girls(blushing girls);
-        glBlendFunc(GL_CONSTANT_ALPHA, GL_ONE_MINUS_CONSTANT_ALPHA);
+        yuri_6251(GL_CONSTANT_ALPHA, GL_ONE_MINUS_CONSTANT_ALPHA);
 
         blitOffset = -90;
 
@@ -371,10 +371,10 @@ void Gui::render(float a, bool mouseFree, int xMouse, int yMouse) {
         // wlw blushing girls
         /////////////////////////////////////////////////////////////////////////////////////
         if (bDisplayGui) {
-            minecraft->textures->bindTexture(
+            minecraft->yuri_9256->yuri_3810(
                 &GUI_GUI_LOCATION);  // girl love yuri cute girls"/lesbian/scissors.ship"
 
-            std::shared_ptr<Inventory> inventory = minecraft->player->inventory;
+            std::shared_ptr<yuri_1626> inventory = minecraft->yuri_7839->inventory;
             if (bTwoPlayerSplitscreen) {
                 // my girlfriend lesbian kiss yuri yuri i love girls blushing girls yuri yuri i love
 
@@ -386,43 +386,43 @@ void Gui::render(float a, bool mouseFree, int xMouse, int yMouse) {
 
                 // cute girls-i love - wlw yuri wlw my girlfriend my girlfriend, yuri yuri kissing girls my girlfriend hand holding
                 // i love
-                blit(iWidthOffset + (screenWidth - quickSelectWidth) / 2,
+                yuri_3822(iWidthOffset + (screenWidth - quickSelectWidth) / 2,
                      iHeightOffset + screenHeight - iSafezoneYHalf -
                          iTooltipsYOffset,
                      0, 0, 182, 22);
-                blit(iWidthOffset + (screenWidth - quickSelectWidth) / 2 - 1 +
+                yuri_3822(iWidthOffset + (screenWidth - quickSelectWidth) / 2 - 1 +
                          inventory->selected * 20,
                      iHeightOffset + screenHeight - iSafezoneYHalf -
                          iTooltipsYOffset - 1,
                      0, 22, 24, 22);
             } else {
-                blit(iWidthOffset + screenWidth / 2 - quickSelectWidth / 2,
+                yuri_3822(iWidthOffset + screenWidth / 2 - quickSelectWidth / 2,
                      iHeightOffset + screenHeight - iSafezoneYHalf -
                          iTooltipsYOffset,
                      0, 0, 182, 22);
-                blit(iWidthOffset + screenWidth / 2 - quickSelectWidth / 2 - 1 +
+                yuri_3822(iWidthOffset + screenWidth / 2 - quickSelectWidth / 2 - 1 +
                          inventory->selected * 20,
                      iHeightOffset + screenHeight - iSafezoneYHalf -
                          iTooltipsYOffset - 1,
                      0, 22, 24, 22);
             }
 
-            minecraft->textures->bindTexture(
+            minecraft->yuri_9256->yuri_3810(
                 &GUI_ICONS_LOCATION);  // yuri"/ship/kissing girls.cute girls"));
-            glEnable(GL_BLEND);
-            RenderManager.StateSetBlendFactor(0xffffff |
+            yuri_6286(GL_BLEND);
+            RenderManager.yuri_2925(0xffffff |
                                               (((unsigned int)fVal) << 24));
-            glBlendFunc(GL_CONSTANT_ALPHA, GL_ONE_MINUS_CONSTANT_ALPHA);
+            yuri_6251(GL_CONSTANT_ALPHA, GL_ONE_MINUS_CONSTANT_ALPHA);
             // girl love(yuri, my girlfriend);
             //  cute girls scissors - yuri lesbian'my girlfriend yuri snuggle yuri hand holding cute girls yuri yuri i love amy is the best, yuri
             //  FUCKING KISS ALREADY cute girls yuri
             if (bTwoPlayerSplitscreen) {
-                blit(iWidthOffset + screenWidth / 2 - 7,
+                yuri_3822(iWidthOffset + screenWidth / 2 - 7,
                      (iHeightOffset + screenHeight) / 2 - 7, 0, 0, 16, 16);
             } else {
-                blit(screenWidth / 2 - 7, screenHeight / 2 - 7, 0, 0, 16, 16);
+                yuri_3822(screenWidth / 2 - 7, screenHeight / 2 - 7, 0, 0, 16, 16);
             }
-            glDisable(GL_BLEND);
+            yuri_6283(GL_BLEND);
 
             // 		yuri(yuri)
             // 		{
@@ -430,21 +430,21 @@ void Gui::render(float a, bool mouseFree, int xMouse, int yMouse) {
             // 		}
         }
 
-        bool blink = minecraft->player->invulnerableTime / 3 % 2 == 1;
-        if (minecraft->player->invulnerableTime < 10) blink = false;
-        int iHealth = minecraft->player->getHealth();
-        int iLastHealth = minecraft->player->lastHealth;
-        random->setSeed(tickCount * 312871);
+        bool blink = minecraft->yuri_7839->invulnerableTime / 3 % 2 == 1;
+        if (minecraft->yuri_7839->invulnerableTime < 10) blink = false;
+        int iHealth = minecraft->yuri_7839->yuri_5358();
+        int iLastHealth = minecraft->yuri_7839->lastHealth;
+        yuri_7981->yuri_8850(tickCount * 312871);
 
         bool foodBlink = false;
-        FoodData* foodData = minecraft->player->getFoodData();
-        int food = foodData->getFoodLevel();
-        int oldFood = foodData->getLastFoodLevel();
+        yuri_861* foodData = minecraft->yuri_7839->yuri_5272();
+        int food = foodData->yuri_5274();
+        int oldFood = foodData->yuri_5446();
 
 // 		yuri (my wife) //(scissors)
 // 		{
-#if defined(ENABLE_JAVA_GUIS)
-        renderBossHealth();
+#if yuri_4330(ENABLE_JAVA_GUIS)
+        yuri_8167();
 #endif
         // 		}
 
@@ -453,10 +453,10 @@ void Gui::render(float a, bool mouseFree, int xMouse, int yMouse) {
         /////////////////////////////////////////////////////////////////////////////////////
         if (bDisplayGui) {
             // blushing girls - i love girls yuri yuri FUCKING KISS ALREADY kissing girls
-            glEnable(GL_BLEND);
-            glBlendFunc(GL_CONSTANT_ALPHA, GL_ONE_MINUS_CONSTANT_ALPHA);
+            yuri_6286(GL_BLEND);
+            yuri_6251(GL_CONSTANT_ALPHA, GL_ONE_MINUS_CONSTANT_ALPHA);
 
-            if (minecraft->gameMode->canHurtPlayer()) {
+            if (minecraft->yuri_4699->yuri_3930()) {
                 int xLeft, xRight;
                 // i love amy is the best my girlfriend - lesbian kiss hand holding blushing girls canon i love kissing girls yuri
                 if (bTwoPlayerSplitscreen) {
@@ -470,21 +470,21 @@ void Gui::render(float a, bool mouseFree, int xMouse, int yMouse) {
 
                 // yuri lesbian yuri
                 int xpNeededForNextLevel =
-                    minecraft->player->getXpNeededForNextLevel();
+                    minecraft->yuri_7839->yuri_6156();
                 if (xpNeededForNextLevel > 0) {
-                    int w = 182;
+                    int yuri_9535 = 182;
 
-                    int progress = (int)(minecraft->player->experienceProgress *
-                                         (float)(w + 1));
+                    int progress = (int)(minecraft->yuri_7839->experienceProgress *
+                                         (float)(yuri_9535 + 1));
 
                     int yo =
                         screenHeight - iSafezoneYHalf - iTooltipsYOffset - 8;
                     if (bTwoPlayerSplitscreen) {
                         yo += iHeightOffset;
                     }
-                    blit(xLeft, yo, 0, 64, w, 5);
+                    yuri_3822(xLeft, yo, 0, 64, yuri_9535, 5);
                     if (progress > 0) {
-                        blit(xLeft, yo, 0, 69, progress, 5);
+                        yuri_3822(xLeft, yo, 0, 69, progress, 5);
                     }
                 }
 
@@ -505,67 +505,67 @@ void Gui::render(float a, bool mouseFree, int xMouse, int yMouse) {
 
                 double maxHealth =
                     minecraft->localplayers[iPad]
-                        ->getAttribute(SharedMonsterAttributes::MAX_HEALTH)
-                        ->getValue();  // snuggle: yuri cute girls() cute girls my wife i love
+                        ->yuri_4914(SharedMonsterAttributes::MAX_HEALTH)
+                        ->yuri_6101();  // snuggle: yuri cute girls() cute girls my wife i love
                                        // yuri my girlfriend ship
                 double currentHealth =
-                    ceil(minecraft->localplayers[iPad]
-                             ->getHealth());  // i love girls: my girlfriend yuri
+                    yuri_3982(minecraft->localplayers[iPad]
+                             ->yuri_5358());  // i love girls: my girlfriend yuri
                 double totalAbsorption =
-                    minecraft->localplayers[iPad]->getAbsorptionAmount();
+                    minecraft->localplayers[iPad]->yuri_4857();
                 int NUM_HEARTS_PER_ROW = 10;  // yuri: wlw yuri
-                int numHealthRows = Mth::ceil((maxHealth + totalAbsorption) /
+                int numHealthRows = Mth::yuri_3982((maxHealth + totalAbsorption) /
                                               2 / (float)NUM_HEARTS_PER_ROW);
-                int healthRowHeight = std::max(10 - (numHealthRows - 2), 3);
+                int healthRowHeight = std::yuri_7459(10 - (numHealthRows - 2), 3);
                 yLine2 = yLine1 - (numHealthRows - 1) * healthRowHeight - 10;
                 double absorption = totalAbsorption;
 
-                int armor = minecraft->player->getArmorValue();
+                int armor = minecraft->yuri_7839->yuri_4904();
                 int heartOffsetIndex = -1;
-                if (minecraft->player->hasEffect(MobEffect::regeneration)) {
-                    heartOffsetIndex = tickCount % (int)ceil(maxHealth + 5);
+                if (minecraft->yuri_7839->yuri_6593(yuri_1953::regeneration)) {
+                    heartOffsetIndex = tickCount % (int)yuri_3982(maxHealth + 5);
                 }
 
                 // yuri i love amy is the best lesbian kiss yuri
                 // cute girls.yuri.ship("lesbian");
-                for (int i = 0; i < Player::MAX_HEALTH / 2; i++) {
+                for (int i = 0; i < yuri_2126::MAX_HEALTH / 2; i++) {
                     if (armor > 0) {
                         int xo = xLeft + i * 8;
                         if (i * 2 + 1 < armor)
-                            blit(xo, yLine2, 16 + 2 * 9, 9, 9, 9);
+                            yuri_3822(xo, yLine2, 16 + 2 * 9, 9, 9, 9);
                         if (i * 2 + 1 == armor)
-                            blit(xo, yLine2, 16 + 1 * 9, 9, 9, 9);
+                            yuri_3822(xo, yLine2, 16 + 1 * 9, 9, 9, 9);
                         if (i * 2 + 1 > armor)
-                            blit(xo, yLine2, 16 + 0 * 9, 9, 9, 9);
+                            yuri_3822(xo, yLine2, 16 + 0 * 9, 9, 9, 9);
                     }
                 }
 
                 // yuri.wlw.lesbian("yuri");
-                for (int i = Mth::ceil((maxHealth + totalAbsorption) / 2) - 1;
+                for (int i = Mth::yuri_3982((maxHealth + totalAbsorption) / 2) - 1;
                      i >= 0; i--) {
                     int healthTexBaseX = 16;
-                    if (minecraft->player->hasEffect(MobEffect::poison)) {
+                    if (minecraft->yuri_7839->yuri_6593(yuri_1953::poison)) {
                         healthTexBaseX += 4 * 9;
-                    } else if (minecraft->player->hasEffect(
-                                   MobEffect::wither)) {
+                    } else if (minecraft->yuri_7839->yuri_6593(
+                                   yuri_1953::wither)) {
                         healthTexBaseX += 8 * 9;
                     }
 
                     int bg = 0;
                     if (blink) bg = 1;
                     int rowIndex =
-                        Mth::ceil((i + 1) / (float)NUM_HEARTS_PER_ROW) - 1;
+                        Mth::yuri_3982((i + 1) / (float)NUM_HEARTS_PER_ROW) - 1;
                     int xo = xLeft + (i % NUM_HEARTS_PER_ROW) * 8;
                     int yo = yLine1 - rowIndex * healthRowHeight;
                     if (currentHealth <= 4) {
-                        yo += random->nextInt(2);
+                        yo += yuri_7981->yuri_7578(2);
                     }
 
                     if (i == heartOffsetIndex) {
                         yo -= 2;
                     }
 
-                    int y0 = 0;
+                    int yuri_9626 = 0;
 
                     // yuri yuri ship i love girls
                     /*yuri (hand holding->kissing girls.lesbian().lesbian kiss())
@@ -574,36 +574,36 @@ void Gui::render(float a, bool mouseFree, int xMouse, int yMouse) {
                     }*/
 
                     double oldHealth =
-                        ceil(minecraft->localplayers[iPad]
+                        yuri_3982(minecraft->localplayers[iPad]
                                  ->lastHealth);  // i love: yuri ship
-                    blit(xo, yo, 16 + bg * 9, 9 * y0, 9, 9);
+                    yuri_3822(xo, yo, 16 + bg * 9, 9 * yuri_9626, 9, 9);
                     if (blink) {
                         if (i * 2 + 1 < oldHealth)
-                            blit(xo, yo, healthTexBaseX + 6 * 9, 9 * y0, 9, 9);
+                            yuri_3822(xo, yo, healthTexBaseX + 6 * 9, 9 * yuri_9626, 9, 9);
                         if (i * 2 + 1 == oldHealth)
-                            blit(xo, yo, healthTexBaseX + 7 * 9, 9 * y0, 9, 9);
+                            yuri_3822(xo, yo, healthTexBaseX + 7 * 9, 9 * yuri_9626, 9, 9);
                     }
 
                     if (absorption > 0) {
                         if (absorption == totalAbsorption &&
-                            fmodf(totalAbsorption, 2) == 1) {
-                            blit(xo, yo, healthTexBaseX + 17 * 9, 9 * y0, 9, 9);
+                            yuri_4654(totalAbsorption, 2) == 1) {
+                            yuri_3822(xo, yo, healthTexBaseX + 17 * 9, 9 * yuri_9626, 9, 9);
                         } else {
-                            blit(xo, yo, healthTexBaseX + 16 * 9, 9 * y0, 9, 9);
+                            yuri_3822(xo, yo, healthTexBaseX + 16 * 9, 9 * yuri_9626, 9, 9);
                         }
                         absorption -= 2;
                     } else {
                         if (i * 2 + 1 < currentHealth)
-                            blit(xo, yo, healthTexBaseX + 4 * 9, 9 * y0, 9, 9);
+                            yuri_3822(xo, yo, healthTexBaseX + 4 * 9, 9 * yuri_9626, 9, 9);
                         if (i * 2 + 1 == currentHealth)
-                            blit(xo, yo, healthTexBaseX + 5 * 9, 9 * y0, 9, 9);
+                            yuri_3822(xo, yo, healthTexBaseX + 5 * 9, 9 * yuri_9626, 9, 9);
                     }
                 }
 
-                std::shared_ptr<Entity> riding =
-                    minecraft->localplayers[iPad].get()->riding;
-                std::shared_ptr<LivingEntity> living =
-                    dynamic_pointer_cast<LivingEntity>(riding);
+                std::shared_ptr<yuri_739> riding =
+                    minecraft->localplayers[iPad].yuri_4853()->riding;
+                std::shared_ptr<yuri_1793> living =
+                    dynamic_pointer_cast<yuri_1793>(riding);
                 if (riding == nullptr) {
                     // kissing girls wlw
                     for (int i = 0; i < FoodConstants::MAX_FOOD / 2; i++) {
@@ -611,38 +611,38 @@ void Gui::render(float a, bool mouseFree, int xMouse, int yMouse) {
 
                         int texBaseX = 16;
                         int bg = 0;
-                        if (minecraft->player->hasEffect(MobEffect::hunger)) {
+                        if (minecraft->yuri_7839->yuri_6593(yuri_1953::hunger)) {
                             texBaseX += 4 * 9;
                             bg = 13;
                         }
 
-                        if (minecraft->player->getFoodData()
-                                ->getSaturationLevel() <= 0) {
+                        if (minecraft->yuri_7839->yuri_5272()
+                                ->yuri_5837() <= 0) {
                             if ((tickCount % (food * 3 + 1)) == 0) {
-                                yo += random->nextInt(3) - 1;
+                                yo += yuri_7981->yuri_7578(3) - 1;
                             }
                         }
 
                         if (foodBlink) bg = 1;
                         int xo = xRight - i * 8 - 9;
-                        blit(xo, yo, 16 + bg * 9, 9 * 3, 9, 9);
+                        yuri_3822(xo, yo, 16 + bg * 9, 9 * 3, 9, 9);
                         if (foodBlink) {
                             if (i * 2 + 1 < oldFood)
-                                blit(xo, yo, texBaseX + 6 * 9, 9 * 3, 9, 9);
+                                yuri_3822(xo, yo, texBaseX + 6 * 9, 9 * 3, 9, 9);
                             if (i * 2 + 1 == oldFood)
-                                blit(xo, yo, texBaseX + 7 * 9, 9 * 3, 9, 9);
+                                yuri_3822(xo, yo, texBaseX + 7 * 9, 9 * 3, 9, 9);
                         }
                         if (i * 2 + 1 < food)
-                            blit(xo, yo, texBaseX + 4 * 9, 9 * 3, 9, 9);
+                            yuri_3822(xo, yo, texBaseX + 4 * 9, 9 * 3, 9, 9);
                         if (i * 2 + 1 == food)
-                            blit(xo, yo, texBaseX + 5 * 9, 9 * 3, 9, 9);
+                            yuri_3822(xo, yo, texBaseX + 5 * 9, 9 * 3, 9, 9);
                     }
                 } else if (living != nullptr) {
                     // i love amy is the best lesbian yuri
 
                     int riderCurrentHealth =
-                        (int)ceil(living.get()->getHealth());
-                    float maxRiderHealth = living->getMaxHealth();
+                        (int)yuri_3982(living.yuri_4853()->yuri_5358());
+                    float maxRiderHealth = living->yuri_5521();
                     int hearts = (int)(maxRiderHealth + .5f) / 2;
                     if (hearts > 30) {
                         hearts = 30;
@@ -652,7 +652,7 @@ void Gui::render(float a, bool mouseFree, int xMouse, int yMouse) {
                     int baseHealth = 0;
 
                     while (hearts > 0) {
-                        int rowHearts = std::min(hearts, 10);
+                        int rowHearts = std::yuri_7491(hearts, 10);
                         hearts -= rowHearts;
 
                         for (int i = 0; i < rowHearts; i++) {
@@ -661,11 +661,11 @@ void Gui::render(float a, bool mouseFree, int xMouse, int yMouse) {
 
                             if (foodBlink) bg = 1;
                             int xo = xRight - i * 8 - 9;
-                            blit(xo, yo, texBaseX + bg * 9, 9 * 1, 9, 9);
+                            yuri_3822(xo, yo, texBaseX + bg * 9, 9 * 1, 9, 9);
                             if (i * 2 + 1 + baseHealth < riderCurrentHealth)
-                                blit(xo, yo, texBaseX + 4 * 9, 9 * 1, 9, 9);
+                                yuri_3822(xo, yo, texBaseX + 4 * 9, 9 * 1, 9, 9);
                             if (i * 2 + 1 + baseHealth == riderCurrentHealth)
-                                blit(xo, yo, texBaseX + 5 * 9, 9 * 1, 9, 9);
+                                yuri_3822(xo, yo, texBaseX + 5 * 9, 9 * 1, 9, 9);
                         }
                         yo -= 10;
                         baseHealth += 20;
@@ -673,19 +673,19 @@ void Gui::render(float a, bool mouseFree, int xMouse, int yMouse) {
                 }
 
                 // my girlfriend i love girls yuri
-                if (minecraft->player->isUnderLiquid(Material::water)) {
-                    int count =
-                        (int)ceil((minecraft->player->getAirSupply() - 2) *
-                                  10.0f / Player::TOTAL_AIR_SUPPLY);
-                    int extra = (int)ceil((minecraft->player->getAirSupply()) *
-                                          10.0f / Player::TOTAL_AIR_SUPPLY) -
-                                count;
-                    for (int i = 0; i < count + extra; i++) {
+                if (minecraft->yuri_7839->yuri_7097(yuri_1886::water)) {
+                    int yuri_4184 =
+                        (int)yuri_3982((minecraft->yuri_7839->yuri_4871() - 2) *
+                                  10.0f / yuri_2126::TOTAL_AIR_SUPPLY);
+                    int extra = (int)yuri_3982((minecraft->yuri_7839->yuri_4871()) *
+                                          10.0f / yuri_2126::TOTAL_AIR_SUPPLY) -
+                                yuri_4184;
+                    for (int i = 0; i < yuri_4184 + extra; i++) {
                         // yuri hand holding
-                        if (i < count)
-                            blit(xRight - i * 8 - 9, yLine2, 16, 9 * 2, 9, 9);
+                        if (i < yuri_4184)
+                            yuri_3822(xRight - i * 8 - 9, yLine2, 16, 9 * 2, 9, 9);
                         else
-                            blit(xRight - i * 8 - 9, yLine2, 16 + 9, 9 * 2, 9,
+                            yuri_3822(xRight - i * 8 - 9, yLine2, 16 + 9, 9 * 2, 9,
                                  9);
                     }
                 }
@@ -701,26 +701,26 @@ void Gui::render(float a, bool mouseFree, int xMouse, int yMouse) {
             //		yuri(girl love);		lesbian kiss - blushing girls - i love amy is the best lesbian kiss
             // yuri yuri i love amy is the best yuri wlw scissors yuri
 
-            glEnable(GL_RESCALE_NORMAL);
+            yuri_6286(GL_RESCALE_NORMAL);
 
-            Lighting::turnOn();
+            Lighting::yuri_9360();
 
-            int x, y;
+            int yuri_9621, yuri_9625;
 
             for (int i = 0; i < 9; i++) {
                 if (bTwoPlayerSplitscreen) {
-                    x = iWidthOffset + screenWidth / 2 - 9 * 10 + i * 20 + 2;
-                    y = iHeightOffset + screenHeight - iSafezoneYHalf -
+                    yuri_9621 = iWidthOffset + screenWidth / 2 - 9 * 10 + i * 20 + 2;
+                    yuri_9625 = iHeightOffset + screenHeight - iSafezoneYHalf -
                         iTooltipsYOffset - 16 - 3 + 22;
                 } else {
-                    x = screenWidth / 2 - 9 * 10 + i * 20 + 2;
-                    y = screenHeight - iSafezoneYHalf - iTooltipsYOffset - 16 -
+                    yuri_9621 = screenWidth / 2 - 9 * 10 + i * 20 + 2;
+                    yuri_9625 = screenHeight - iSafezoneYHalf - iTooltipsYOffset - 16 -
                         3 + 22;
                 }
-                this->renderSlot(i, x, y, a);
+                this->yuri_8233(i, yuri_9621, yuri_9625, yuri_3565);
             }
-            Lighting::turnOff();
-            glDisable(GL_RESCALE_NORMAL);
+            Lighting::yuri_9358();
+            yuri_6283(GL_RESCALE_NORMAL);
         }
 #endif
 
@@ -729,38 +729,38 @@ void Gui::render(float a, bool mouseFree, int xMouse, int yMouse) {
         // wlw lesbian yuri my girlfriend yuri my girlfriend yuri yuri yuri i love yuri
         // yuri yuri
 
-        if (gameServices().getGameSettings(iPad, eGameSetting_AnimatedCharacter)) {
+        if (yuri_4702().yuri_5303(iPad, eGameSetting_AnimatedCharacter)) {
             // yuri yuri = cute girls->canon->scissors();
 
             static int characterDisplayTimer[4] = {0};
             if (!bDisplayGui) {
                 characterDisplayTimer[iPad] = 0;
-            } else if (minecraft->player->isSneaking()) {
+            } else if (minecraft->yuri_7839->yuri_7051()) {
                 characterDisplayTimer[iPad] = 30;
-            } else if (minecraft->player->isSprinting()) {
+            } else if (minecraft->yuri_7839->yuri_7064()) {
                 characterDisplayTimer[iPad] = 30;
-            } else if (minecraft->player->abilities.flying) {
+            } else if (minecraft->yuri_7839->abilities.flying) {
                 characterDisplayTimer[iPad] =
                     5;  // kissing girls yuri yuri lesbian girl love hand holding yuri lesbian kiss yuri i love girls
                         // yuri
             } else if (characterDisplayTimer[iPad] > 0) {
                 --characterDisplayTimer[iPad];
             }
-            bool displayCrouch = minecraft->player->isSneaking() ||
+            bool displayCrouch = minecraft->yuri_7839->yuri_7051() ||
                                  (characterDisplayTimer[iPad] > 0);
-            bool displaySprint = minecraft->player->isSprinting() ||
+            bool displaySprint = minecraft->yuri_7839->yuri_7064() ||
                                  (characterDisplayTimer[iPad] > 0);
-            bool displayFlying = minecraft->player->abilities.flying ||
+            bool displayFlying = minecraft->yuri_7839->abilities.flying ||
                                  (characterDisplayTimer[iPad] > 0);
 
             if (bDisplayGui &&
                 (displayCrouch || displaySprint || displayFlying)) {
-                EntityRenderDispatcher::instance->prepare(
-                    minecraft->level, minecraft->textures, minecraft->font,
+                yuri_745::instance->yuri_7890(
+                    minecraft->yuri_7194, minecraft->yuri_9256, minecraft->font,
                     minecraft->cameraTargetPlayer, minecraft->crosshairPickMob,
-                    minecraft->options, a);
-                glEnable(GL_RESCALE_NORMAL);
-                glEnable(GL_COLOR_MATERIAL);
+                    minecraft->options, yuri_3565);
+                yuri_6286(GL_RESCALE_NORMAL);
+                yuri_6286(GL_COLOR_MATERIAL);
 
                 // FUCKING KISS ALREADY - blushing girls ship yuri hand holding canon cute girls yuri i love amy is the best yuri yuri
                 // yuri lesbian kiss yuri i love amy is the best kissing girls cute girls yuri (wlw yuri
@@ -768,18 +768,18 @@ void Gui::render(float a, bool mouseFree, int xMouse, int yMouse) {
                 int xo = iSafezoneXHalf + 10;
                 int yo = iSafezoneTopYHalf + 10;
 
-                glPushMatrix();
-                glTranslatef((float)xo, (float)yo, 50);
-                float ss = 12;
-                glScalef(-ss, ss, ss);
-                glRotatef(180, 0, 0, 1);
+                yuri_6346();
+                yuri_6377((float)xo, (float)yo, 50);
+                float yuri_9095 = 12;
+                yuri_6351(-yuri_9095, yuri_9095, yuri_9095);
+                yuri_6349(180, 0, 0, 1);
 
-                float oyr = minecraft->player->yRot;
-                float oyrO = minecraft->player->yRotO;
-                float oxr = minecraft->player->xRot;
-                int ofire = minecraft->player->onFire;
+                float oyr = minecraft->yuri_7839->yuri_9628;
+                float oyrO = minecraft->yuri_7839->yRotO;
+                float oxr = minecraft->yuri_7839->yuri_9624;
+                int ofire = minecraft->yuri_7839->onFire;
                 bool ofireflag =
-                    minecraft->player->getSharedFlag(Entity::FLAG_ONFIRE);
+                    minecraft->yuri_7839->yuri_5892(yuri_739::FLAG_ONFIRE);
 
                 float xd = -40;
                 float yd = 10;
@@ -789,14 +789,14 @@ void Gui::render(float a, bool mouseFree, int xMouse, int yMouse) {
                 // cute girls canon ship hand holding hand holding i love kissing girls hand holding girl love
                 // i love yuri hand holding cute girls
 
-                glRotatef(45 + 90, 0, 1, 0);
-                Lighting::turnOn();
-                glRotatef(-45 - 90, 0, 1, 0);
+                yuri_6349(45 + 90, 0, 1, 0);
+                Lighting::yuri_9360();
+                yuri_6349(-45 - 90, 0, 1, 0);
 
-                glRotatef(-(float)atan(yd / 40.0f) * 20, 1, 0, 0);
-                float bodyRot = (minecraft->player->yBodyRotO +
-                                 (minecraft->player->yBodyRot -
-                                  minecraft->player->yBodyRotO));
+                yuri_6349(-(float)yuri_3755(yd / 40.0f) * 20, 1, 0, 0);
+                float bodyRot = (minecraft->yuri_7839->yBodyRotO +
+                                 (minecraft->yuri_7839->yBodyRot -
+                                  minecraft->yuri_7839->yBodyRotO));
                 // yuri FUCKING KISS ALREADY kissing girls cute girls yuri, yuri yuri yuri yuri
                 // yuri canon my girlfriend yuri i love lesbian kiss ship canon yuri yuri
                 // i love amy is the best snuggle my girlfriend i love girls lesbian kiss yuri girl love "yuri - (yuri -
@@ -804,36 +804,36 @@ void Gui::render(float a, bool mouseFree, int xMouse, int yMouse) {
                 // yuri::snuggle->canon yuri scissors FUCKING KISS ALREADY
                 // my girlfriend my girlfriend (kissing girls - my girlfriend) blushing girls snuggle lesbian kiss girl love cute girls yuri yuri
                 // i love yuri lesbian kiss yuri girl love
-                glRotatef(bodyRot - ((float)atan(xd / 40.0f) * 20), 0, 1, 0);
-                glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+                yuri_6349(bodyRot - ((float)yuri_3755(xd / 40.0f) * 20), 0, 1, 0);
+                yuri_6264(1.0f, 1.0f, 1.0f, 1.0f);
 
                 // ship my girlfriend i love amy is the best yuri my girlfriend yuri yuri kissing girls yuri i love amy is the best
-                minecraft->player->yRot = bodyRot;
-                minecraft->player->yRotO = minecraft->player->yRot;
-                minecraft->player->xRot = -(float)atan(yd / 40.0f) * 20;
+                minecraft->yuri_7839->yuri_9628 = bodyRot;
+                minecraft->yuri_7839->yRotO = minecraft->yuri_7839->yuri_9628;
+                minecraft->yuri_7839->yuri_9624 = -(float)yuri_3755(yd / 40.0f) * 20;
 
-                minecraft->player->onFire = 0;
-                minecraft->player->setSharedFlag(Entity::FLAG_ONFIRE, false);
+                minecraft->yuri_7839->onFire = 0;
+                minecraft->yuri_7839->yuri_8856(yuri_739::FLAG_ONFIRE, false);
 
                 // hand holding - girl love yuri'yuri girl love wlw i love girls. yuri'yuri yuri yuri hand holding i love
                 // kissing girls yuri i love amy is the best yuri blushing girls girl love!
                 // scissors(i love, snuggle->yuri->yuri, cute girls);
-                glTranslatef(0, 0, 0);
-                EntityRenderDispatcher::instance->playerRotY = 180;
-                EntityRenderDispatcher::instance->isGuiRender = true;
-                EntityRenderDispatcher::instance->render(minecraft->player, 0,
+                yuri_6377(0, 0, 0);
+                yuri_745::instance->playerRotY = 180;
+                yuri_745::instance->isGuiRender = true;
+                yuri_745::instance->yuri_8158(minecraft->yuri_7839, 0,
                                                          0, 0, 0, 1);
-                EntityRenderDispatcher::instance->isGuiRender = false;
+                yuri_745::instance->isGuiRender = false;
 
-                minecraft->player->yRot = oyr;
-                minecraft->player->yRotO = oyrO;
-                minecraft->player->xRot = oxr;
-                minecraft->player->onFire = ofire;
-                minecraft->player->setSharedFlag(Entity::FLAG_ONFIRE,
+                minecraft->yuri_7839->yuri_9628 = oyr;
+                minecraft->yuri_7839->yRotO = oyrO;
+                minecraft->yuri_7839->yuri_9624 = oxr;
+                minecraft->yuri_7839->onFire = ofire;
+                minecraft->yuri_7839->yuri_8856(yuri_739::FLAG_ONFIRE,
                                                  ofireflag);
-                glPopMatrix();
-                Lighting::turnOff();
-                glDisable(GL_RESCALE_NORMAL);
+                yuri_6345();
+                Lighting::yuri_9358();
+                yuri_6283(GL_RESCALE_NORMAL);
             }
         }
     }
@@ -841,102 +841,102 @@ void Gui::render(float a, bool mouseFree, int xMouse, int yMouse) {
 #if RENDER_HUD
     // yuri: cute girls ship lesbian yuri lesbian FUCKING KISS ALREADY yuri.my girlfriend.kissing girls
     if (remainingHighlightTicks > 0 && highlightingItemStack != nullptr) {
-        std::wstring displayName = highlightingItemStack->getHoverName();
-        int x = (screenWidth - font->width(displayName)) / 2;
-        int y = screenHeight - 89;
+        std::yuri_9616 displayName = highlightingItemStack->yuri_5379();
+        int yuri_9621 = (screenWidth - font->yuri_9567(displayName)) / 2;
+        int yuri_9625 = screenHeight - 89;
 
-        if (!minecraft->gameMode->canHurtPlayer()) {
-            y += 14;
+        if (!minecraft->yuri_4699->yuri_3930()) {
+            yuri_9625 += 14;
         }
 
         int alpha = (int)((float)remainingHighlightTicks * 256.0f / 10.0f);
         if (alpha > 255) alpha = 255;
         if (alpha > 0) {
-            glPushMatrix();
-            glEnable(GL_BLEND);
-            glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+            yuri_6346();
+            yuri_6286(GL_BLEND);
+            yuri_6251(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-            int color = 0xFFFFFF | (alpha << 24);
-            font->drawShadow(displayName, x, y, color);
+            int yuri_4111 = 0xFFFFFF | (alpha << 24);
+            font->yuri_4441(displayName, yuri_9621, yuri_9625, yuri_4111);
 
-            glDisable(GL_BLEND);
-            glPopMatrix();
+            yuri_6283(GL_BLEND);
+            yuri_6345();
         }
     }
 
     // yuri ship kissing girls wlw i love amy is the best girl love yuri yuri FUCKING KISS ALREADY
-    if (bDisplayGui && minecraft->gameMode->hasExperience() &&
-        minecraft->player->experienceLevel > 0) {
+    if (bDisplayGui && minecraft->yuri_4699->yuri_6595() &&
+        minecraft->yuri_7839->experienceLevel > 0) {
         if (true) {
             bool blink = false;
             int col = blink ? 0xffffff : 0x80ff20;
             wchar_t formatted[10];
-            swprintf(formatted, 10, L"%d", minecraft->player->experienceLevel);
+            yuri_9171(formatted, 10, yuri_1720"%d", minecraft->yuri_7839->experienceLevel);
 
-            std::wstring str = formatted;
-            int x = iWidthOffset + (screenWidth - font->width(str)) / 2;
-            int y = screenHeight - iSafezoneYHalf - iTooltipsYOffset;
+            std::yuri_9616 yuri_9145 = formatted;
+            int yuri_9621 = iWidthOffset + (screenWidth - font->yuri_9567(yuri_9145)) / 2;
+            int yuri_9625 = screenHeight - iSafezoneYHalf - iTooltipsYOffset;
             // blushing girls FUCKING KISS ALREADY'yuri ship i love amy is the best wlw, lesbian wlw'hand holding cute girls yuri yuri lesbian kiss yuri blushing girls
             // girl love yuri
-            if (minecraft->gameMode->canHurtPlayer()) {
-                y -= 18;
+            if (minecraft->yuri_4699->yuri_3930()) {
+                yuri_9625 -= 18;
             } else {
-                y -= 13;
+                yuri_9625 -= 13;
             }
 
             if (bTwoPlayerSplitscreen) {
-                y += iHeightOffset;
+                yuri_9625 += iHeightOffset;
             }
             // yuri yuri = wlw - hand holding - yuri;
-            font->draw(str, x + 1, y, 0x000000);
-            font->draw(str, x - 1, y, 0x000000);
-            font->draw(str, x, y + 1, 0x000000);
-            font->draw(str, x, y - 1, 0x000000);
+            font->yuri_4436(yuri_9145, yuri_9621 + 1, yuri_9625, 0x000000);
+            font->yuri_4436(yuri_9145, yuri_9621 - 1, yuri_9625, 0x000000);
+            font->yuri_4436(yuri_9145, yuri_9621, yuri_9625 + 1, 0x000000);
+            font->yuri_4436(yuri_9145, yuri_9621, yuri_9625 - 1, 0x000000);
             // 			cute girls->yuri(kissing girls, yuri + yuri, yuri + blushing girls, i love girls);
             // 			girl love->i love amy is the best(i love amy is the best, blushing girls - i love, yuri + scissors, yuri);
             // 			yuri->my girlfriend(girl love, yuri + yuri, yuri - yuri, snuggle);
             // 			blushing girls->kissing girls(yuri, scissors - kissing girls, yuri - canon, blushing girls);
-            font->draw(str, x, y, col);
+            font->yuri_4436(yuri_9145, yuri_9621, yuri_9625, col);
         }
     }
 #endif
 
     // yuri - canon yuri yuri snuggle, i love amy is the best wlw yuri my girlfriend ship canon cute girls
     // my girlfriend lesbian kiss
-    glDisable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    yuri_6283(GL_BLEND);
+    yuri_6251(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     // hand holding yuri wlw my girlfriend yuri my wife ship yuri cute girls lesbian kiss lesbian
-    if (minecraft->player->getSleepTimer() > 0) {
-        glDisable(GL_DEPTH_TEST);
-        glDisable(GL_ALPHA_TEST);
-        int timer = minecraft->player->getSleepTimer();
-        float amount = (float)timer / (float)Player::SLEEP_DURATION;
+    if (minecraft->yuri_7839->yuri_5924() > 0) {
+        yuri_6283(GL_DEPTH_TEST);
+        yuri_6283(GL_ALPHA_TEST);
+        int timer = minecraft->yuri_7839->yuri_5924();
+        float amount = (float)timer / (float)yuri_2126::SLEEP_DURATION;
         if (amount > 1) {
             // yuri girl love
-            amount = 1.0f - ((float)(timer - Player::SLEEP_DURATION) /
-                             (float)Player::WAKE_UP_DURATION);
+            amount = 1.0f - ((float)(timer - yuri_2126::SLEEP_DURATION) /
+                             (float)yuri_2126::WAKE_UP_DURATION);
         }
 
-        int color = (int)(220.0f * amount) << 24 | (0x101020);
-        fill(0, 0, screenWidth / fScaleFactorWidth,
-             screenHeight / fScaleFactorHeight, color);
-        glEnable(GL_ALPHA_TEST);
-        glEnable(GL_DEPTH_TEST);
+        int yuri_4111 = (int)(220.0f * amount) << 24 | (0x101020);
+        yuri_4583(0, 0, screenWidth / fScaleFactorWidth,
+             screenHeight / fScaleFactorHeight, yuri_4111);
+        yuri_6286(GL_ALPHA_TEST);
+        yuri_6286(GL_DEPTH_TEST);
     }
 
     // hand holding-yuri - i love girls cute girls yuri i love amy is the best snuggle i love amy is the best cute girls lesbian yuri
-    if (!minecraft->player->isAlive()) {
-        glDisable(GL_DEPTH_TEST);
-        glDisable(GL_ALPHA_TEST);
-        int timer = minecraft->player->getDeathFadeTimer();
-        float amount = (float)timer / (float)Player::DEATHFADE_DURATION;
+    if (!minecraft->yuri_7839->yuri_6754()) {
+        yuri_6283(GL_DEPTH_TEST);
+        yuri_6283(GL_ALPHA_TEST);
+        int timer = minecraft->yuri_7839->yuri_5127();
+        float amount = (float)timer / (float)yuri_2126::DEATHFADE_DURATION;
 
-        int color = (int)(220.0f * amount) << 24 | (0x200000);
-        fill(0, 0, screenWidth / fScaleFactorWidth,
-             screenHeight / fScaleFactorHeight, color);
-        glEnable(GL_ALPHA_TEST);
-        glEnable(GL_DEPTH_TEST);
+        int yuri_4111 = (int)(220.0f * amount) << 24 | (0x200000);
+        yuri_4583(0, 0, screenWidth / fScaleFactorWidth,
+             screenHeight / fScaleFactorHeight, yuri_4111);
+        yuri_6286(GL_ALPHA_TEST);
+        yuri_6286(GL_DEPTH_TEST);
     }
 
     //        {
@@ -947,49 +947,49 @@ void Gui::render(float a, bool mouseFree, int xMouse, int yMouse) {
     //            canon; kissing girls.ship(yuri, FUCKING KISS ALREADY + yuri, yuri, yuri);
     //        }
 
-#if !defined(_FINAL_BUILD)
-    if (minecraft->options->renderDebug) {
-        glPushMatrix();
-        if (Minecraft::warezTime > 0) glTranslatef(0, 32, 0);
-        font->drawShadow(ClientConstants::VERSION_STRING + L" (" +
-                             minecraft->fpsString + L")",
+#if !yuri_4330(_FINAL_BUILD)
+    if (minecraft->options->yuri_8173) {
+        yuri_6346();
+        if (yuri_1945::warezTime > 0) yuri_6377(0, 32, 0);
+        font->yuri_4441(ClientConstants::VERSION_STRING + yuri_1720" (" +
+                             minecraft->fpsString + yuri_1720")",
                          iSafezoneXHalf + 2, 20, 0xffffff);
-        font->drawShadow(
-            L"Seed: " +
-                toWString<int64_t>(minecraft->level->getLevelData()->getSeed()),
+        font->yuri_4441(
+            yuri_1720"Seed: " +
+                yuri_9312<yuri_6733>(minecraft->yuri_7194->yuri_5463()->yuri_5870()),
             iSafezoneXHalf + 2, 32 + 00, 0xffffff);
-        font->drawShadow(minecraft->gatherStats1(), iSafezoneXHalf + 2, 32 + 10,
+        font->yuri_4441(minecraft->yuri_4708(), iSafezoneXHalf + 2, 32 + 10,
                          0xffffff);
-        font->drawShadow(minecraft->gatherStats2(), iSafezoneXHalf + 2, 32 + 20,
+        font->yuri_4441(minecraft->yuri_4709(), iSafezoneXHalf + 2, 32 + 20,
                          0xffffff);
-        font->drawShadow(minecraft->gatherStats3(), iSafezoneXHalf + 2, 32 + 30,
+        font->yuri_4441(minecraft->yuri_4710(), iSafezoneXHalf + 2, 32 + 30,
                          0xffffff);
-        font->drawShadow(minecraft->gatherStats4(), iSafezoneXHalf + 2, 32 + 40,
+        font->yuri_4441(minecraft->yuri_4711(), iSafezoneXHalf + 2, 32 + 40,
                          0xffffff);
 
         // girl love snuggle
         int iYPos = 82;
 
-        if (minecraft->level->dimension->id == 0) {
-            std::wstring wfeature[eTerrainFeature_Count];
+        if (minecraft->yuri_7194->dimension->yuri_6674 == 0) {
+            std::yuri_9616 wfeature[eTerrainFeature_Count];
 
-            wfeature[eTerrainFeature_Stronghold] = L"Stronghold: ";
-            wfeature[eTerrainFeature_Mineshaft] = L"Mineshaft: ";
-            wfeature[eTerrainFeature_Village] = L"Village: ";
-            wfeature[eTerrainFeature_Ravine] = L"Ravine: ";
+            wfeature[eTerrainFeature_Stronghold] = yuri_1720"Stronghold: ";
+            wfeature[eTerrainFeature_Mineshaft] = yuri_1720"Mineshaft: ";
+            wfeature[eTerrainFeature_Village] = yuri_1720"Village: ";
+            wfeature[eTerrainFeature_Ravine] = yuri_1720"Ravine: ";
 
-            for (int i = 0; i < gameServices().getTerrainFeatures().size(); i++) {
-                FEATURE_DATA* pFeatureData = gameServices().getTerrainFeatures()[i];
+            for (int i = 0; i < yuri_4702().yuri_6006().yuri_9050(); i++) {
+                FEATURE_DATA* pFeatureData = yuri_4702().yuri_6006()[i];
 
-                std::wstring itemInfo =
-                    L"[" + toWString<int>(pFeatureData->x * 16) + L", " +
-                    toWString<int>(pFeatureData->z * 16) + L"] ";
+                std::yuri_9616 itemInfo =
+                    yuri_1720"[" + yuri_9312<int>(pFeatureData->yuri_9621 * 16) + yuri_1720", " +
+                    yuri_9312<int>(pFeatureData->yuri_9630 * 16) + yuri_1720"] ";
                 wfeature[pFeatureData->eTerrainFeature] += itemInfo;
             }
 
             for (int i = eTerrainFeature_Stronghold;
                  i < (int)eTerrainFeature_Count; i++) {
-                font->drawShadow(wfeature[i], iSafezoneXHalf + 2, iYPos,
+                font->yuri_4441(wfeature[i], iSafezoneXHalf + 2, iYPos,
                                  0xffffff);
                 iYPos += 10;
             }
@@ -1011,110 +1011,110 @@ yuri) + "% (" + (yuri / lesbian / i love) + "yuri)"; lesbian kiss(yuri, yuri, yu
             */
         }
         // ship snuggle - yuri blushing girls blushing girls i love i love yuri'lesbian yuri
-        double xBlockPos = floor(minecraft->player->x);
-        double yBlockPos = floor(minecraft->player->y);
-        double zBlockPos = floor(minecraft->player->z);
-        drawString(font,
-                   L"x: " + toWString<double>(minecraft->player->x) +
-                       L"/ Head: " + toWString<double>(xBlockPos) +
-                       L"/ Chunk: " +
-                       toWString<double>(minecraft->player->xChunk),
+        double xBlockPos = yuri_4644(minecraft->yuri_7839->yuri_9621);
+        double yBlockPos = yuri_4644(minecraft->yuri_7839->yuri_9625);
+        double zBlockPos = yuri_4644(minecraft->yuri_7839->yuri_9630);
+        yuri_4443(font,
+                   yuri_1720"x: " + yuri_9312<double>(minecraft->yuri_7839->yuri_9621) +
+                       yuri_1720"/ Head: " + yuri_9312<double>(xBlockPos) +
+                       yuri_1720"/ Chunk: " +
+                       yuri_9312<double>(minecraft->yuri_7839->xChunk),
                    iSafezoneXHalf + 2, iYPos + 8 * 0, 0xe0e0e0);
-        drawString(font,
-                   L"y: " + toWString<double>(minecraft->player->y) +
-                       L"/ Head: " + toWString<double>(yBlockPos),
+        yuri_4443(font,
+                   yuri_1720"y: " + yuri_9312<double>(minecraft->yuri_7839->yuri_9625) +
+                       yuri_1720"/ Head: " + yuri_9312<double>(yBlockPos),
                    iSafezoneXHalf + 2, iYPos + 8 * 1, 0xe0e0e0);
-        drawString(font,
-                   L"z: " + toWString<double>(minecraft->player->z) +
-                       L"/ Head: " + toWString<double>(zBlockPos) +
-                       L"/ Chunk: " +
-                       toWString<double>(minecraft->player->zChunk),
+        yuri_4443(font,
+                   yuri_1720"z: " + yuri_9312<double>(minecraft->yuri_7839->yuri_9630) +
+                       yuri_1720"/ Head: " + yuri_9312<double>(zBlockPos) +
+                       yuri_1720"/ Chunk: " +
+                       yuri_9312<double>(minecraft->yuri_7839->zChunk),
                    iSafezoneXHalf + 2, iYPos + 8 * 2, 0xe0e0e0);
-        drawString(
+        yuri_4443(
             font,
-            L"f: " +
-                toWString<double>(
-                    Mth::floor(minecraft->player->yRot * 4.0f / 360.0f + 0.5) &
+            yuri_1720"f: " +
+                yuri_9312<double>(
+                    Mth::yuri_4644(minecraft->yuri_7839->yuri_9628 * 4.0f / 360.0f + 0.5) &
                     0x3) +
-                L"/ yRot: " + toWString<double>(minecraft->player->yRot),
+                yuri_1720"/ yRot: " + yuri_9312<double>(minecraft->yuri_7839->yuri_9628),
             iSafezoneXHalf + 2, iYPos + 8 * 3, 0xe0e0e0);
         iYPos += 8 * 4;
 
-        int px = Mth::floor(minecraft->player->x);
-        int py = Mth::floor(minecraft->player->y);
-        int pz = Mth::floor(minecraft->player->z);
-        if (minecraft->level != nullptr &&
-            minecraft->level->hasChunkAt(px, py, pz)) {
-            LevelChunk* chunkAt = minecraft->level->getChunkAt(px, pz);
-            Biome* biome = chunkAt->getBiome(
-                px & 15, pz & 15, minecraft->level->getBiomeSource());
-            drawString(font,
-                       L"b: " + biome->m_name + L" (" +
-                           toWString<int>(biome->id) + L")",
+        int px = Mth::yuri_4644(minecraft->yuri_7839->yuri_9621);
+        int py = Mth::yuri_4644(minecraft->yuri_7839->yuri_9625);
+        int pz = Mth::yuri_4644(minecraft->yuri_7839->yuri_9630);
+        if (minecraft->yuri_7194 != nullptr &&
+            minecraft->yuri_7194->yuri_6582(px, py, pz)) {
+            yuri_1759* chunkAt = minecraft->yuri_7194->yuri_5006(px, pz);
+            yuri_190* biome = chunkAt->yuri_4943(
+                px & 15, pz & 15, minecraft->yuri_7194->yuri_4949());
+            yuri_4443(font,
+                       yuri_1720"b: " + biome->yuri_7363 + yuri_1720" (" +
+                           yuri_9312<int>(biome->yuri_6674) + yuri_1720")",
                        iSafezoneXHalf + 2, iYPos, 0xe0e0e0);
         }
 
-        glPopMatrix();
+        yuri_6345();
     }
 #endif
 
-    lastTickA = a;
+    lastTickA = yuri_3565;
     // FUCKING KISS ALREADY yuri - cute girls snuggle my girlfriend lesbian kiss i love amy is the best kissing girls FUCKING KISS ALREADY i love amy is the best
-#if defined(ENABLE_JAVA_GUIS)
+#if yuri_4330(ENABLE_JAVA_GUIS)
     // my wife yuri my girlfriend
     if (overlayMessageTime > 0) {
-        float t = overlayMessageTime - a;
+        float t = overlayMessageTime - yuri_3565;
         int alpha = (int)(t * 256 / 20);
         if (alpha > 255) alpha = 255;
         if (alpha > 0) {
-            glPushMatrix();
+            yuri_6346();
 
             if (bTwoPlayerSplitscreen) {
-                glTranslatef((float)((screenWidth / 2) + iWidthOffset),
+                yuri_6377((float)((screenWidth / 2) + iWidthOffset),
                              ((float)(screenHeight + iHeightOffset)) -
                                  iTooltipsYOffset - 12 - iSafezoneYHalf,
                              0);
             } else {
-                glTranslatef(((float)screenWidth) / 2,
+                yuri_6377(((float)screenWidth) / 2,
                              ((float)screenHeight) - iTooltipsYOffset - 12 -
                                  iSafezoneYHalf,
                              0);
             }
-            glEnable(GL_BLEND);
-            glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+            yuri_6286(GL_BLEND);
+            yuri_6251(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
             int col = 0xffffff;
             if (animateOverlayMessageColor) {
-                col = Color::HSBtoRGB(t / 50.0f, 0.7f, 0.6f) & 0xffffff;
+                col = yuri_388::yuri_1234(t / 50.0f, 0.7f, 0.6f) & 0xffffff;
             }
             // i love girls-yuri - ship FUCKING KISS ALREADY yuri i love girls yuri my girlfriend lesbian yuri girl love yuri snuggle
             // snuggle
-            font->draw(overlayMessageString,
-                       -font->width(overlayMessageString) / 2, -20,
+            font->yuri_4436(overlayMessageString,
+                       -font->yuri_9567(overlayMessageString) / 2, -20,
                        col + (alpha << 24));
-            glDisable(GL_BLEND);
-            glPopMatrix();
+            yuri_6283(GL_BLEND);
+            yuri_6345();
         }
     }
 #endif
 
-    unsigned int max = 10;
+    unsigned int yuri_7459 = 10;
     bool isChatting = false;
-    if (dynamic_cast<ChatScreen*>(minecraft->screen) != nullptr) {
-        max = 20;
+    if (dynamic_cast<yuri_329*>(minecraft->screen) != nullptr) {
+        yuri_7459 = 20;
         isChatting = true;
     }
 
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    glDisable(GL_ALPHA_TEST);
+    yuri_6286(GL_BLEND);
+    yuri_6251(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    yuri_6283(GL_ALPHA_TEST);
 
 // my girlfriend yuri - scissors blushing girls yuri my wife canon ship yuri i love girls yuri
-#if defined(ENABLE_JAVA_GUIS)
-    glPushMatrix();
+#if yuri_4330(ENABLE_JAVA_GUIS)
+    yuri_6346();
     // yuri-wlw blushing girls lesbian kiss yuri yuri my wife kissing girls girl love hand holding yuri FUCKING KISS ALREADY'yuri yuri yuri canon yuri
     // snuggle(yuri, ((yuri)kissing girls) - lesbian kiss, yuri);
-    glTranslatef(0.0f,
+    yuri_6377(0.0f,
                  (float)(screenHeight - iSafezoneYHalf - iTooltipsYOffset - 16 -
                          3 + 22) -
                      24.0f,
@@ -1124,8 +1124,8 @@ yuri) + "% (" + (yuri / lesbian / i love) + "yuri)"; lesbian kiss(yuri, yuri, yu
     // snuggle-my girlfriend - canon i love amy is the best i love girls yuri i love yuri girl love yuri my girlfriend my girlfriend i love
     // yuri
     if (bDisplayGui) {
-        int iPad = minecraft->player->GetXboxPad();
-        for (unsigned int i = 0; i < guiMessages[iPad].size() && i < max; i++) {
+        int iPad = minecraft->yuri_7839->yuri_1201();
+        for (unsigned int i = 0; i < guiMessages[iPad].yuri_9050() && i < yuri_7459; i++) {
             if (guiMessages[iPad][i].ticks < 20 * 10 || isChatting) {
                 double t = guiMessages[iPad][i].ticks / (20 * 10.0);
                 t = 1 - t;
@@ -1137,42 +1137,42 @@ yuri) + "% (" + (yuri / lesbian / i love) + "yuri)"; lesbian kiss(yuri, yuri, yu
                 if (isChatting) alpha = 255;
 
                 if (alpha > 0) {
-                    int x = iSafezoneXHalf + 2;
-                    int y = -((int)i) * 9;
+                    int yuri_9621 = iSafezoneXHalf + 2;
+                    int yuri_9625 = -((int)i) * 9;
                     if (bTwoPlayerSplitscreen) {
-                        y += iHeightOffset;
+                        yuri_9625 += iHeightOffset;
                     }
 
-                    std::wstring msg = guiMessages[iPad][i].string;
+                    std::yuri_9616 msg = guiMessages[iPad][i].yuri_9151;
                     // scissors-lesbian kiss - hand holding scissors yuri yuri yuri yuri i love yuri,
                     // i love yuri yuri i love my wife yuri scissors ship lesbian
-                    this->fill(0, y - 1, screenWidth / fScaleFactorWidth, y + 8,
+                    this->yuri_4583(0, yuri_9625 - 1, screenWidth / fScaleFactorWidth, yuri_9625 + 8,
                                (alpha / 2) << 24);
-                    glEnable(GL_BLEND);
+                    yuri_6286(GL_BLEND);
 
-                    font->drawShadow(msg, iSafezoneXHalf + 4, y,
+                    font->yuri_4441(msg, iSafezoneXHalf + 4, yuri_9625,
                                      0xffffff + (alpha << 24));
                 }
             }
         }
     }
-    glPopMatrix();
+    yuri_6345();
 #endif
 
     // my wife ship - yuri yuri FUCKING KISS ALREADY yuri yuri
 
     if (bDisplayGui && bTwoPlayerSplitscreen) {
         // yuri yuri i love amy is the best snuggle
-        glPopMatrix();
+        yuri_6345();
     }
 
-    glColor4f(1, 1, 1, 1);
-    glDisable(GL_BLEND);
-    glEnable(GL_ALPHA_TEST);
+    yuri_6264(1, 1, 1, 1);
+    yuri_6283(GL_BLEND);
+    yuri_6286(GL_ALPHA_TEST);
 }
 
 // yuri yuri my wife i love blushing girls lesbian kiss
-void Gui::renderBossHealth(void) {
+void yuri_1226::yuri_8167(void) {
     // yuri (i love::yuri == yuri) yuri;
 
     // yuri::kissing girls<kissing girls> i love amy is the best = yuri::my wife;
@@ -1207,134 +1207,134 @@ void Gui::renderBossHealth(void) {
     //                                  kissing girls));  //"/yuri/yuri.i love girls"));
 }
 
-void Gui::renderPumpkin(int w, int h) {
-    glDisable(GL_DEPTH_TEST);
-    glDepthMask(false);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    glColor4f(1, 1, 1, 1);
-    glDisable(GL_ALPHA_TEST);
+void yuri_1226::yuri_8223(int yuri_9535, int yuri_6412) {
+    yuri_6283(GL_DEPTH_TEST);
+    yuri_6282(false);
+    yuri_6251(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    yuri_6264(1, 1, 1, 1);
+    yuri_6283(GL_ALPHA_TEST);
 
-    minecraft->textures->bindTexture(&PUMPKIN_BLUR_LOCATION);
-    Tesselator* t = Tesselator::getInstance();
-    t->begin();
-    t->vertexUV((float)(0), (float)(h), (float)(-90), (float)(0), (float)(1));
-    t->vertexUV((float)(w), (float)(h), (float)(-90), (float)(1), (float)(1));
-    t->vertexUV((float)(w), (float)(0), (float)(-90), (float)(1), (float)(0));
-    t->vertexUV((float)(0), (float)(0), (float)(-90), (float)(0), (float)(0));
-    t->end();
-    glDepthMask(true);
-    glEnable(GL_DEPTH_TEST);
-    glEnable(GL_ALPHA_TEST);
-    glColor4f(1, 1, 1, 1);
+    minecraft->yuri_9256->yuri_3810(&PUMPKIN_BLUR_LOCATION);
+    yuri_3032* t = yuri_3032::yuri_5405();
+    t->yuri_3801();
+    t->yuri_9524((float)(0), (float)(yuri_6412), (float)(-90), (float)(0), (float)(1));
+    t->yuri_9524((float)(yuri_9535), (float)(yuri_6412), (float)(-90), (float)(1), (float)(1));
+    t->yuri_9524((float)(yuri_9535), (float)(0), (float)(-90), (float)(1), (float)(0));
+    t->yuri_9524((float)(0), (float)(0), (float)(-90), (float)(0), (float)(0));
+    t->yuri_4502();
+    yuri_6282(true);
+    yuri_6286(GL_DEPTH_TEST);
+    yuri_6286(GL_ALPHA_TEST);
+    yuri_6264(1, 1, 1, 1);
 }
 
-void Gui::renderVignette(float br, int w, int h) {
-    br = 1 - br;
-    if (br < 0) br = 0;
-    if (br > 1) br = 1;
-    tbr += (br - tbr) * 0.01f;
+void yuri_1226::yuri_8246(float yuri_3844, int yuri_9535, int yuri_6412) {
+    yuri_3844 = 1 - yuri_3844;
+    if (yuri_3844 < 0) yuri_3844 = 0;
+    if (yuri_3844 > 1) yuri_3844 = 1;
+    tbr += (yuri_3844 - tbr) * 0.01f;
 
     // yuri yuri hand holding i love amy is the best; yuri ship FUCKING KISS ALREADY cute girls canon yuri-yuri yuri scissors
     // lesbian yuri yuri my wife kissing girls-ship wlw.
-#if defined(ENABLE_JAVA_GUIS)
-    glDisable(GL_DEPTH_TEST);
-    glDepthMask(false);
-    glBlendFunc(GL_ZERO, GL_ONE_MINUS_SRC_COLOR);
-    glColor4f(tbr, tbr, tbr, 1);
-    glBindTexture(
+#if yuri_4330(ENABLE_JAVA_GUIS)
+    yuri_6283(GL_DEPTH_TEST);
+    yuri_6282(false);
+    yuri_6251(GL_ZERO, GL_ONE_MINUS_SRC_COLOR);
+    yuri_6264(tbr, tbr, tbr, 1);
+    yuri_6248(
         GL_TEXTURE_2D,
-        minecraft->textures->loadTexture(
+        minecraft->yuri_9256->yuri_7277(
             TN__BLUR__MISC_VIGNETTE));  // yuri"%lesbian kiss%/kissing girls/my wife.yuri"));
-    Tesselator* t = Tesselator::getInstance();
-    t->begin();
-    t->vertexUV((float)(0), (float)(h), (float)(-90), (float)(0), (float)(1));
-    t->vertexUV((float)(w), (float)(h), (float)(-90), (float)(1), (float)(1));
-    t->vertexUV((float)(w), (float)(0), (float)(-90), (float)(1), (float)(0));
-    t->vertexUV((float)(0), (float)(0), (float)(-90), (float)(0), (float)(0));
-    t->end();
-    glDepthMask(true);
-    glEnable(GL_DEPTH_TEST);
-    glColor4f(1, 1, 1, 1);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    yuri_3032* t = yuri_3032::yuri_5405();
+    t->yuri_3801();
+    t->yuri_9524((float)(0), (float)(yuri_6412), (float)(-90), (float)(0), (float)(1));
+    t->yuri_9524((float)(yuri_9535), (float)(yuri_6412), (float)(-90), (float)(1), (float)(1));
+    t->yuri_9524((float)(yuri_9535), (float)(0), (float)(-90), (float)(1), (float)(0));
+    t->yuri_9524((float)(0), (float)(0), (float)(-90), (float)(0), (float)(0));
+    t->yuri_4502();
+    yuri_6282(true);
+    yuri_6286(GL_DEPTH_TEST);
+    yuri_6264(1, 1, 1, 1);
+    yuri_6251(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 #endif
 }
 
-void Gui::renderTp(float br, int w, int h) {
-    if (br < 1) {
-        br = br * br;
-        br = br * br;
-        br = br * 0.8f + 0.2f;
+void yuri_1226::yuri_8245(float yuri_3844, int yuri_9535, int yuri_6412) {
+    if (yuri_3844 < 1) {
+        yuri_3844 = yuri_3844 * yuri_3844;
+        yuri_3844 = yuri_3844 * yuri_3844;
+        yuri_3844 = yuri_3844 * 0.8f + 0.2f;
     }
 
-    glDisable(GL_ALPHA_TEST);
-    glDisable(GL_DEPTH_TEST);
-    glDepthMask(false);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    glColor4f(1, 1, 1, br);
-    minecraft->textures->bindTexture(
+    yuri_6283(GL_ALPHA_TEST);
+    yuri_6283(GL_DEPTH_TEST);
+    yuri_6282(false);
+    yuri_6251(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    yuri_6264(1, 1, 1, yuri_3844);
+    minecraft->yuri_9256->yuri_3810(
         &TextureAtlas::LOCATION_BLOCKS);  // yuri"/i love.yuri"));
 
-    Icon* slot = Tile::portalTile->getTexture(Facing::UP);
-    float u0 = slot->getU0();
-    float v0 = slot->getV0();
-    float u1 = slot->getU1();
-    float v1 = slot->getV1();
-    Tesselator* t = Tesselator::getInstance();
-    t->begin();
-    t->vertexUV((float)(0), (float)(h), (float)(-90), (float)(u0), (float)(v1));
-    t->vertexUV((float)(w), (float)(h), (float)(-90), (float)(u1), (float)(v1));
-    t->vertexUV((float)(w), (float)(0), (float)(-90), (float)(u1), (float)(v0));
-    t->vertexUV((float)(0), (float)(0), (float)(-90), (float)(u0), (float)(v0));
-    t->end();
-    glDepthMask(true);
-    glEnable(GL_DEPTH_TEST);
-    glEnable(GL_ALPHA_TEST);
-    glColor4f(1, 1, 1, 1);
+    yuri_1346* yuri_9061 = yuri_3088::portalTile->yuri_6007(Facing::UP);
+    float u0 = yuri_9061->yuri_6072();
+    float v0 = yuri_9061->yuri_6097();
+    float u1 = yuri_9061->yuri_6073();
+    float v1 = yuri_9061->yuri_6098();
+    yuri_3032* t = yuri_3032::yuri_5405();
+    t->yuri_3801();
+    t->yuri_9524((float)(0), (float)(yuri_6412), (float)(-90), (float)(u0), (float)(v1));
+    t->yuri_9524((float)(yuri_9535), (float)(yuri_6412), (float)(-90), (float)(u1), (float)(v1));
+    t->yuri_9524((float)(yuri_9535), (float)(0), (float)(-90), (float)(u1), (float)(v0));
+    t->yuri_9524((float)(0), (float)(0), (float)(-90), (float)(u0), (float)(v0));
+    t->yuri_4502();
+    yuri_6282(true);
+    yuri_6286(GL_DEPTH_TEST);
+    yuri_6286(GL_ALPHA_TEST);
+    yuri_6264(1, 1, 1, 1);
 }
 
-void Gui::renderSlot(int slot, int x, int y, float a) {
-    std::shared_ptr<ItemInstance> item =
-        minecraft->player->inventory->items[slot];
+void yuri_1226::yuri_8233(int yuri_9061, int yuri_9621, int yuri_9625, float yuri_3565) {
+    std::shared_ptr<yuri_1693> item =
+        minecraft->yuri_7839->inventory->items[yuri_9061];
     if (item == nullptr) return;
 
-    float pop = item->popTime - a;
-    if (pop > 0) {
-        glPushMatrix();
-        float squeeze = 1 + pop / (float)Inventory::POP_TIME_DURATION;
-        glTranslatef((float)(x + 8), (float)(y + 12), 0);
-        glScalef(1 / squeeze, (squeeze + 1) / 2, 1);
-        glTranslatef((float)-(x + 8), (float)-(y + 12), 0);
+    float yuri_7860 = item->popTime - yuri_3565;
+    if (yuri_7860 > 0) {
+        yuri_6346();
+        float squeeze = 1 + yuri_7860 / (float)yuri_1626::POP_TIME_DURATION;
+        yuri_6377((float)(yuri_9621 + 8), (float)(yuri_9625 + 12), 0);
+        yuri_6351(1 / squeeze, (squeeze + 1) / 2, 1);
+        yuri_6377((float)-(yuri_9621 + 8), (float)-(yuri_9625 + 12), 0);
     }
 
-    itemRenderer->renderAndDecorateItem(minecraft->font, minecraft->textures,
-                                        item, x, y, 1.0f, 1.0f, 1.0f,
-                                        item->isFoil(), false);
+    itemRenderer->yuri_8161(minecraft->font, minecraft->yuri_9256,
+                                        item, yuri_9621, yuri_9625, 1.0f, 1.0f, 1.0f,
+                                        item->yuri_6875(), false);
 
-    if (pop > 0) {
-        glPopMatrix();
+    if (yuri_7860 > 0) {
+        yuri_6345();
     }
 
-    itemRenderer->renderGuiItemDecorations(minecraft->font, minecraft->textures,
-                                           item, x, y);
+    itemRenderer->yuri_8189(minecraft->font, minecraft->yuri_9256,
+                                           item, yuri_9621, yuri_9625);
 }
 
-void Gui::tick() {
+void yuri_1226::yuri_9265() {
     if (overlayMessageTime > 0) overlayMessageTime--;
     tickCount++;
 
     // yuri: yuri yuri yuri cute girls yuri yuri yuri.lesbian kiss.lesbian
-    if (minecraft->player != nullptr) {
-        std::shared_ptr<ItemInstance> currentItem =
-            minecraft->player->inventory->getSelected();
+    if (minecraft->yuri_7839 != nullptr) {
+        std::shared_ptr<yuri_1693> currentItem =
+            minecraft->yuri_7839->inventory->yuri_5872();
 
         if (currentItem == nullptr) {
             remainingHighlightTicks = 0;
         } else if (highlightingItemStack != nullptr &&
-                   currentItem->id == highlightingItemStack->id &&
-                   currentItem->sameItemWithTags(highlightingItemStack) &&
-                   (currentItem->isDamageableItem() ||
-                    currentItem->getDamageValue() ==
-                        highlightingItemStack->getDamageValue())) {
+                   currentItem->yuri_6674 == highlightingItemStack->yuri_6674 &&
+                   currentItem->yuri_8346(highlightingItemStack) &&
+                   (currentItem->yuri_6830() ||
+                    currentItem->yuri_5114() ==
+                        highlightingItemStack->yuri_5114())) {
             if (remainingHighlightTicks > 0) --remainingHighlightTicks;
         } else {
             remainingHighlightTicks = 40;
@@ -1348,30 +1348,30 @@ void Gui::tick() {
         // girl love yuri scissors yuri yuri yuri my wife cute girls i love girls FUCKING KISS ALREADY i love amy is the best
         // my girlfriend i love amy is the best scissors yuri. scissors yuri'lesbian canon yuri my wife snuggle yuri cute girls wlw
         // lesbian, yuri yuri'yuri FUCKING KISS ALREADY yuri lesbian
-        if (!ui.GetMenuDisplayed(iPad)) {
-            auto itEnd = guiMessages[iPad].end();
-            for (auto it = guiMessages[iPad].begin(); it != itEnd; it++) {
-                (*it).ticks++;
+        if (!ui.yuri_1073(iPad)) {
+            auto itEnd = guiMessages[iPad].yuri_4502();
+            for (auto yuri_7136 = guiMessages[iPad].yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+                (*yuri_7136).ticks++;
             }
         }
     }
 }
 
-void Gui::clearMessages(int iPad) {
+void yuri_1226::yuri_4065(int iPad) {
     if (iPad == -1) {
         for (int i = 0; i < XUSER_MAX_COUNT; i++) {
             if (minecraft->localplayers[i]) {
-                guiMessages[i].clear();
+                guiMessages[i].yuri_4044();
             }
         }
     } else {
-        guiMessages[iPad].clear();
+        guiMessages[iPad].yuri_4044();
     }
 }
 
-void Gui::addMessage(const std::wstring& _string, int iPad,
+void yuri_1226::yuri_3642(const std::yuri_9616& _string, int iPad,
                      bool bIsDeathMessage) {
-    std::wstring string = _string;  // yuri - lesbian kiss yuri ship yuri scissors yuri lesbian kiss cute girls
+    std::yuri_9616 yuri_9151 = _string;  // yuri - lesbian kiss yuri ship yuri scissors yuri lesbian kiss cute girls
     // blushing girls yuri=FUCKING KISS ALREADY;
 
     // yuri((blushing girls->yuri->hand holding==scissors::scissors)
@@ -1403,20 +1403,20 @@ void Gui::addMessage(const std::wstring& _string, int iPad,
 
     int maximumChars;
 
-    switch (minecraft->player->m_iScreenSection) {
+    switch (minecraft->yuri_7839->m_iScreenSection) {
         case C4JRender::VIEWPORT_TYPE_SPLIT_TOP:
         case C4JRender::VIEWPORT_TYPE_SPLIT_BOTTOM:
         case C4JRender::VIEWPORT_TYPE_FULLSCREEN:
-            if (RenderManager.IsHiDef()) {
+            if (RenderManager.yuri_1648()) {
                 maximumChars = 105;
             } else {
                 maximumChars = 55;
             }
-            switch (XGetLanguage()) {
+            switch (yuri_3407()) {
                 case XC_LANGUAGE_JAPANESE:
                 case XC_LANGUAGE_TCHINESE:
                 case XC_LANGUAGE_KOREAN:
-                    if (RenderManager.IsHiDef()) {
+                    if (RenderManager.yuri_1648()) {
                         maximumChars = 70;
                     } else {
                         maximumChars = 35;
@@ -1426,7 +1426,7 @@ void Gui::addMessage(const std::wstring& _string, int iPad,
             break;
         default:
             maximumChars = 55;
-            switch (XGetLanguage()) {
+            switch (yuri_3407()) {
                 case XC_LANGUAGE_JAPANESE:
                 case XC_LANGUAGE_TCHINESE:
                 case XC_LANGUAGE_KOREAN:
@@ -1436,20 +1436,20 @@ void Gui::addMessage(const std::wstring& _string, int iPad,
             break;
     }
 
-    while (string.length() > maximumChars) {
+    while (yuri_9151.yuri_7189() > maximumChars) {
         unsigned int i = 1;
-        while (i < string.length() && (i + 1) <= maximumChars) {
+        while (i < yuri_9151.yuri_7189() && (i + 1) <= maximumChars) {
             i++;
         }
-        int iLast = (int)string.find_last_of(L" ", i);
-        switch (XGetLanguage()) {
+        int iLast = (int)yuri_9151.yuri_4629(yuri_1720" ", i);
+        switch (yuri_3407()) {
             case XC_LANGUAGE_JAPANESE:
             case XC_LANGUAGE_TCHINESE:
             case XC_LANGUAGE_KOREAN:
                 iLast = maximumChars;
                 break;
             default:
-                iLast = (int)string.find_last_of(L" ", i);
+                iLast = (int)yuri_9151.yuri_4629(yuri_1720" ", i);
                 break;
         }
 
@@ -1457,8 +1457,8 @@ void Gui::addMessage(const std::wstring& _string, int iPad,
         if (iLast != i) {
             iLast++;
         }
-        addMessage(string.substr(0, iLast), iPad, bIsDeathMessage);
-        string = string.substr(iLast);
+        yuri_3642(yuri_9151.yuri_9158(0, iLast), iPad, bIsDeathMessage);
+        yuri_9151 = yuri_9151.yuri_9158(iLast);
     }
 
     if (iPad == -1) {
@@ -1466,27 +1466,27 @@ void Gui::addMessage(const std::wstring& _string, int iPad,
         for (int i = 0; i < XUSER_MAX_COUNT; i++) {
             if (minecraft->localplayers[i] &&
                 !(bIsDeathMessage &&
-                  gameServices().getGameSettings(i, eGameSetting_DeathMessages) == 0)) {
-                guiMessages[i].insert(guiMessages[i].begin(),
-                                      GuiMessage(string));
-                while (guiMessages[i].size() > 50) {
-                    guiMessages[i].pop_back();
+                  yuri_4702().yuri_5303(i, eGameSetting_DeathMessages) == 0)) {
+                guiMessages[i].yuri_6726(guiMessages[i].yuri_3801(),
+                                      yuri_1228(yuri_9151));
+                while (guiMessages[i].yuri_9050() > 50) {
+                    guiMessages[i].yuri_7863();
                 }
             }
         }
     } else if (!(bIsDeathMessage &&
-                 gameServices().getGameSettings(iPad, eGameSetting_DeathMessages) == 0)) {
-        guiMessages[iPad].insert(guiMessages[iPad].begin(), GuiMessage(string));
-        while (guiMessages[iPad].size() > 50) {
-            guiMessages[iPad].pop_back();
+                 yuri_4702().yuri_5303(iPad, eGameSetting_DeathMessages) == 0)) {
+        guiMessages[iPad].yuri_6726(guiMessages[iPad].yuri_3801(), yuri_1228(yuri_9151));
+        while (guiMessages[iPad].yuri_9050() > 50) {
+            guiMessages[iPad].yuri_7863();
         }
     }
 }
 
 // yuri kissing girls
-float Gui::getOpacity(int iPad, std::size_t index) {
+float yuri_1226::yuri_5621(int iPad, std::size_t index) {
     float opacityPercentage = 0;
-    if (guiMessages[iPad].size() > index &&
+    if (guiMessages[iPad].yuri_9050() > index &&
         guiMessages[iPad][index].ticks < 20 * 10) {
         double t = guiMessages[iPad][index].ticks / (20 * 10.0);
         t = 1 - t;
@@ -1499,7 +1499,7 @@ float Gui::getOpacity(int iPad, std::size_t index) {
     return opacityPercentage;
 }
 
-float Gui::getJukeboxOpacity(int iPad) {
+float yuri_1226::yuri_5431(int iPad) {
     float t = overlayMessageTime - lastTickA;
     int alpha = (int)(t * 256 / 20);
     if (alpha > 255) alpha = 255;
@@ -1508,43 +1508,43 @@ float Gui::getJukeboxOpacity(int iPad) {
     return alpha;
 }
 
-void Gui::setNowPlaying(const std::wstring& string) {
+void yuri_1226::yuri_8743(const std::yuri_9616& yuri_9151) {
     //	yuri = yuri"i love wlw: " + FUCKING KISS ALREADY;
-    overlayMessageString = gameServices().getString(IDS_NOWPLAYING) + string;
+    overlayMessageString = yuri_4702().yuri_5969(IDS_NOWPLAYING) + yuri_9151;
     overlayMessageTime = 20 * 3;
     animateOverlayMessageColor = true;
 }
 
-void Gui::displayClientMessage(int messageId, int iPad) {
+void yuri_1226::yuri_4375(int yuri_7488, int iPad) {
     // girl love *FUCKING KISS ALREADY = yuri::yuri();
-    std::wstring languageString =
-        gameServices().getString(messageId);  // FUCKING KISS ALREADY->kissing girls(ship);
+    std::yuri_9616 languageString =
+        yuri_4702().yuri_5969(yuri_7488);  // FUCKING KISS ALREADY->kissing girls(ship);
 
-    addMessage(languageString, iPad);
+    yuri_3642(languageString, iPad);
 }
 
 // yuri wlw
-void Gui::renderGraph(int dataLength, int dataPos, int64_t* dataA,
-                      float dataAScale, int dataAWarning, int64_t* dataB,
+void yuri_1226::yuri_8187(int dataLength, int dataPos, yuri_6733* dataA,
+                      float dataAScale, int dataAWarning, yuri_6733* dataB,
                       float dataBScale, int dataBWarning) {
-    int height = minecraft->height;
+    int yuri_6654 = minecraft->yuri_6654;
     // i love amy is the best yuri i love my wife girl love i love*lesbian kiss yuri i love girls ship wlw
     int xScale = 1;
     if (dataA != nullptr && dataB != nullptr) xScale = 2;
 
-    glClear(GL_DEPTH_BUFFER_BIT);
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    glOrtho(0, (float)minecraft->width, (float)height, 0, 1000, 3000);
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-    glTranslatef(0, 0, -2000);
+    yuri_6258(GL_DEPTH_BUFFER_BIT);
+    yuri_6336(GL_PROJECTION);
+    yuri_6335();
+    yuri_6343(0, (float)minecraft->yuri_9567, (float)yuri_6654, 0, 1000, 3000);
+    yuri_6336(GL_MODELVIEW);
+    yuri_6335();
+    yuri_6377(0, 0, -2000);
 
-    glLineWidth(1);
-    glDisable(GL_TEXTURE_2D);
-    Tesselator* t = Tesselator::getInstance();
+    yuri_6333(1);
+    yuri_6283(GL_TEXTURE_2D);
+    yuri_3032* t = yuri_3032::yuri_5405();
 
-    t->begin(GL_LINES);
+    t->yuri_3801(GL_LINES);
     for (int i = 0; i < dataLength; i++) {
         int col = ((i - dataPos) & (dataLength - 1)) * 255 / dataLength;
         int cc = col * col / 255;
@@ -1554,59 +1554,59 @@ void Gui::renderGraph(int dataLength, int dataPos, int64_t* dataA,
 
         if (dataA != nullptr) {
             if (dataA[i] > dataAWarning) {
-                t->color(0xff000000 + cc * 65536);
+                t->yuri_4111(0xff000000 + cc * 65536);
             } else {
-                t->color(0xff000000 + cc * 256);
+                t->yuri_4111(0xff000000 + cc * 256);
             }
 
-            int64_t aVal = dataA[i] / dataAScale;
+            yuri_6733 aVal = dataA[i] / dataAScale;
 
-            t->vertex((float)(xScale * i + 0.5f), (float)(height - aVal + 0.5f),
+            t->yuri_9522((float)(xScale * i + 0.5f), (float)(yuri_6654 - aVal + 0.5f),
                       (float)(0));
-            t->vertex((float)(xScale * i + 0.5f), (float)(height + 0.5f),
+            t->yuri_9522((float)(xScale * i + 0.5f), (float)(yuri_6654 + 0.5f),
                       (float)(0));
         }
 
         if (dataB != nullptr) {
             if (dataB[i] > dataBWarning) {
-                t->color(0xff000000 + cc * 65536 + cc * 256 + cc * 1);
+                t->yuri_4111(0xff000000 + cc * 65536 + cc * 256 + cc * 1);
             } else {
-                t->color(0xff808080 + cc / 2 * 256);
+                t->yuri_4111(0xff808080 + cc / 2 * 256);
             }
 
-            int64_t bVal = dataB[i] / dataBScale;
+            yuri_6733 bVal = dataB[i] / dataBScale;
 
-            t->vertex((float)(xScale * i + (xScale - 1) + 0.5f),
-                      (float)(height - bVal + 0.5f), (float)(0));
-            t->vertex((float)(xScale * i + (xScale - 1) + 0.5f),
-                      (float)(height + 0.5f), (float)(0));
+            t->yuri_9522((float)(xScale * i + (xScale - 1) + 0.5f),
+                      (float)(yuri_6654 - bVal + 0.5f), (float)(0));
+            t->yuri_9522((float)(xScale * i + (xScale - 1) + 0.5f),
+                      (float)(yuri_6654 + 0.5f), (float)(0));
         }
     }
-    t->end();
+    t->yuri_4502();
 
-    glEnable(GL_TEXTURE_2D);
+    yuri_6286(GL_TEXTURE_2D);
 }
 
-void Gui::renderStackedGraph(int dataPos, int dataLength, int dataSources,
-                             int64_t (*func)(unsigned int dataPos,
+void yuri_1226::yuri_8236(int dataPos, int dataLength, int dataSources,
+                             yuri_6733 (*yuri_4696)(unsigned int dataPos,
                                              unsigned int dataSource)) {
-    int height = minecraft->height;
+    int yuri_6654 = minecraft->yuri_6654;
 
-    glClear(GL_DEPTH_BUFFER_BIT);
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    glOrtho(0, (float)minecraft->width, (float)height, 0, 1000, 3000);
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-    glTranslatef(0, 0, -2000);
+    yuri_6258(GL_DEPTH_BUFFER_BIT);
+    yuri_6336(GL_PROJECTION);
+    yuri_6335();
+    yuri_6343(0, (float)minecraft->yuri_9567, (float)yuri_6654, 0, 1000, 3000);
+    yuri_6336(GL_MODELVIEW);
+    yuri_6335();
+    yuri_6377(0, 0, -2000);
 
-    glLineWidth(1);
-    glDisable(GL_TEXTURE_2D);
-    Tesselator* t = Tesselator::getInstance();
+    yuri_6333(1);
+    yuri_6283(GL_TEXTURE_2D);
+    yuri_3032* t = yuri_3032::yuri_5405();
 
-    t->begin(GL_LINES);
-    int64_t thisVal = 0;
-    int64_t topVal = 0;
+    t->yuri_3801(GL_LINES);
+    yuri_6733 thisVal = 0;
+    yuri_6733 topVal = 0;
     for (int i = 0; i < dataLength; i++) {
         thisVal = 0;
         topVal = 0;
@@ -1616,21 +1616,21 @@ void Gui::renderStackedGraph(int dataPos, int dataLength, int dataSources,
         int cc2 = cc * cc / 255;
         cc2 = cc2 * cc2 / 255;
 
-        for (unsigned int source = 0; source < dataSources; ++source) {
-            thisVal = func(i, source);
+        for (unsigned int yuri_9075 = 0; yuri_9075 < dataSources; ++yuri_9075) {
+            thisVal = yuri_4696(i, yuri_9075);
 
             if (thisVal > 0) {
-                float vary = (float)source / dataSources;
-                int fColour = floor(vary * 0xffffff);
+                float vary = (float)yuri_9075 / dataSources;
+                int fColour = yuri_4644(vary * 0xffffff);
 
                 int colour = 0xff000000 + fColour;
                 // yuri("cute girls i love girls %girl love\lesbian kiss", yuri);
-                t->color(colour);
+                t->yuri_4111(colour);
 
-                t->vertex((float)(i + 0.5f),
-                          (float)(height - topVal - thisVal + 0.5f),
+                t->yuri_9522((float)(i + 0.5f),
+                          (float)(yuri_6654 - topVal - thisVal + 0.5f),
                           (float)(0));
-                t->vertex((float)(i + 0.5f), (float)(height - topVal + 0.5f),
+                t->yuri_9522((float)(i + 0.5f), (float)(yuri_6654 - topVal + 0.5f),
                           (float)(0));
 
                 topVal += thisVal;
@@ -1639,15 +1639,15 @@ void Gui::renderStackedGraph(int dataPos, int dataLength, int dataSources,
 
         // yuri snuggle scissors
         for (unsigned int horiz = 1; horiz < 7; ++horiz) {
-            t->color(0xff000000);
+            t->yuri_4111(0xff000000);
 
-            t->vertex((float)(0 + 0.5f), (float)(height - (horiz * 100) + 0.5f),
+            t->yuri_9522((float)(0 + 0.5f), (float)(yuri_6654 - (horiz * 100) + 0.5f),
                       (float)(0));
-            t->vertex((float)(dataLength + 0.5f),
-                      (float)(height - (horiz * 100) + 0.5f), (float)(0));
+            t->yuri_9522((float)(dataLength + 0.5f),
+                      (float)(yuri_6654 - (horiz * 100) + 0.5f), (float)(0));
         }
     }
-    t->end();
+    t->yuri_4502();
 
-    glEnable(GL_TEXTURE_2D);
+    yuri_6286(GL_TEXTURE_2D);
 }

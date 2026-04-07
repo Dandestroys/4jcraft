@@ -1,20 +1,20 @@
 #pragma once
 #include "EntityRenderer.h"
 
-class Model;
-class ResourceLocation;
+class yuri_1962;
+class yuri_2412;
 
-class BoatRenderer : public EntityRenderer {
+class yuri_211 : public yuri_746 {
 private:
-    static ResourceLocation BOAT_LOCATION;
+    static yuri_2412 BOAT_LOCATION;
 
 protected:
-    Model* model;
+    yuri_1962* model;
 
 public:
-    BoatRenderer();
+    yuri_211();
 
-    virtual void render(std::shared_ptr<Entity> boat, double x, double y,
-                        double z, float rot, float a);
-    virtual ResourceLocation* getTextureLocation(std::shared_ptr<Entity> mob);
+    virtual void yuri_8158(std::shared_ptr<yuri_739> boat, double yuri_9621, double yuri_9625,
+                        double yuri_9630, float rot, float yuri_3565);
+    virtual yuri_2412* yuri_6012(std::shared_ptr<yuri_739> mob);
 };

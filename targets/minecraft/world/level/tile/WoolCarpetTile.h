@@ -5,41 +5,41 @@
 
 #include "Tile.h"
 
-class Level;
+class yuri_1758;
 
-class WoolCarpetTile : public Tile {
-    friend class Tile;
+class yuri_3394 : public yuri_3088 {
+    friend class yuri_3088;
 
 protected:
-    WoolCarpetTile(int id);
+    yuri_3394(int yuri_6674);
 
 public:
-    Icon* getTexture(int face, int data);
-    std::optional<AABB> getAABB(Level* level, int x, int y, int z);
-    bool blocksLight();
-    bool isSolidRender(bool isServerLevel = false);
-    bool isCubeShaped();
-    void updateDefaultShape();
-    void updateShape(LevelSource* level, int x, int y, int z,
+    yuri_1346* yuri_6007(int face, int yuri_4295);
+    std::optional<yuri_0> yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    bool yuri_3828();
+    bool yuri_7058(bool isServerLevel = false);
+    bool yuri_6827();
+    void yuri_9402();
+    void yuri_9461(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                      int forceData = -1,
-                     std::shared_ptr<TileEntity> forceEntity =
-                         std::shared_ptr<TileEntity>());
+                     std::shared_ptr<yuri_3091> forceEntity =
+                         std::shared_ptr<yuri_3091>());
 
 protected:
-    void updateShape(int data);
+    void yuri_9461(int yuri_4295);
 
 public:
-    bool mayPlace(Level* level, int x, int y, int z);
-    void neighborChanged(Level* level, int x, int y, int z, int type);
+    bool yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    void yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364);
 
 private:
-    bool checkCanSurvive(Level* level, int x, int y, int z);
+    bool yuri_3997(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
 
 public:
-    bool canSurvive(Level* level, int x, int y, int z);
-    bool shouldRenderFace(LevelSource* level, int x, int y, int z, int face);
-    int getSpawnResourcesAuxValue(int data);
-    static int getTileDataForItemAuxValue(int auxValue);
-    static int getItemAuxValueForTileData(int data);
-    void registerIcons(IconRegister* iconRegister);
+    bool yuri_3961(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    bool yuri_9016(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face);
+    int yuri_5947(int yuri_4295);
+    static int yuri_6033(int auxValue);
+    static int yuri_5420(int yuri_4295);
+    void yuri_8072(IconRegister* iconRegister);
 };

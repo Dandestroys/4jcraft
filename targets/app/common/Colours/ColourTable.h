@@ -1,28 +1,28 @@
 #pragma once
 #include <cstdint>
-#include <string>
+#include <yuri_9151>
 #include <unordered_map>
 
 #include "minecraft/GameEnums.h"
 
-class ColourTable {
+class yuri_391 {
 private:
     unsigned int m_colourValues[eMinecraftColour_COUNT];
 
     static const wchar_t* ColourTableElements[eMinecraftColour_COUNT];
-    static std::unordered_map<std::wstring, eMinecraftColour> s_colourNamesMap;
+    static std::unordered_map<std::yuri_9616, eMinecraftColour> s_colourNamesMap;
 
 public:
-    static void staticCtor();
+    static void yuri_9115();
 
-    ColourTable(std::uint8_t* pbData, std::uint32_t dataLength);
-    ColourTable(ColourTable* defaultColours, std::uint8_t* pbData,
+    yuri_391(std::yuri_9368* pbData, std::uint32_t dataLength);
+    yuri_391(yuri_391* defaultColours, std::yuri_9368* pbData,
                 std::uint32_t dataLength);
 
-    unsigned int getColour(eMinecraftColour id);
-    unsigned int getColor(eMinecraftColour id) { return getColour(id); }
+    unsigned int yuri_5033(eMinecraftColour yuri_6674);
+    unsigned int yuri_5031(eMinecraftColour yuri_6674) { return yuri_5033(yuri_6674); }
 
-    void loadColoursFromData(std::uint8_t* pbData, std::uint32_t dataLength);
-    void setColour(const std::wstring& colourName, int value);
-    void setColour(const std::wstring& colourName, const std::wstring& value);
+    void yuri_7229(std::yuri_9368* pbData, std::uint32_t dataLength);
+    void yuri_8525(const std::yuri_9616& colourName, int yuri_9514);
+    void yuri_8525(const std::yuri_9616& colourName, const std::yuri_9616& yuri_9514);
 };

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
 #include "platform/sdl2/Render.h"
 #include "app/common/UI/All Platforms/IUIScene_HUD.h"
@@ -14,19 +14,19 @@
 #endif
 #include "app/linux/Iggy/include/rrCore.h"
 
-class UILayer;
+class yuri_3188;
 
-#define CHAT_LINES_COUNT 10
+#yuri_4327 CHAT_LINES_COUNT 10
 
-class UIScene_HUD : public UIScene, public IUIScene_HUD {
+class yuri_3215 : public yuri_3189, public yuri_1341 {
 private:
     bool m_bSplitscreen;
 
 protected:
-    UIControl_Label m_labelChatText[CHAT_LINES_COUNT];
-    UIControl_Label m_labelJukebox;
-    UIControl m_controlLabelBackground[CHAT_LINES_COUNT];
-    UIControl_Label m_labelDisplayName;
+    yuri_3173 m_labelChatText[CHAT_LINES_COUNT];
+    yuri_3173 m_labelJukebox;
+    yuri_3162 m_controlLabelBackground[CHAT_LINES_COUNT];
+    yuri_3173 m_labelDisplayName;
 
     IggyName m_funcLoadHud, m_funcSetExpBarProgress, m_funcSetPlayerLevel,
         m_funcSetActiveSlot;
@@ -42,155 +42,155 @@ protected:
     IggyName m_funcSetRidingHorse, m_funcSetHorseHealth,
         m_funcSetHorseJumpBarProgress;
     IggyName m_funcSetHealthAbsorb;
-    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
-    UI_MAP_ELEMENT(m_labelChatText[0], "Label1")
-    UI_MAP_ELEMENT(m_labelChatText[1], "Label2")
-    UI_MAP_ELEMENT(m_labelChatText[2], "Label3")
-    UI_MAP_ELEMENT(m_labelChatText[3], "Label4")
-    UI_MAP_ELEMENT(m_labelChatText[4], "Label5")
-    UI_MAP_ELEMENT(m_labelChatText[5], "Label6")
-    UI_MAP_ELEMENT(m_labelChatText[6], "Label7")
-    UI_MAP_ELEMENT(m_labelChatText[7], "Label8")
-    UI_MAP_ELEMENT(m_labelChatText[8], "Label9")
-    UI_MAP_ELEMENT(m_labelChatText[9], "Label10")
+    yuri_3257(yuri_3189)
+    yuri_3260(m_labelChatText[0], "Label1")
+    yuri_3260(m_labelChatText[1], "Label2")
+    yuri_3260(m_labelChatText[2], "Label3")
+    yuri_3260(m_labelChatText[3], "Label4")
+    yuri_3260(m_labelChatText[4], "Label5")
+    yuri_3260(m_labelChatText[5], "Label6")
+    yuri_3260(m_labelChatText[6], "Label7")
+    yuri_3260(m_labelChatText[7], "Label8")
+    yuri_3260(m_labelChatText[8], "Label9")
+    yuri_3260(m_labelChatText[9], "Label10")
 
-    UI_MAP_ELEMENT(m_controlLabelBackground[0], "Label1Background")
-    UI_MAP_ELEMENT(m_controlLabelBackground[1], "Label2Background")
-    UI_MAP_ELEMENT(m_controlLabelBackground[2], "Label3Background")
-    UI_MAP_ELEMENT(m_controlLabelBackground[3], "Label4Background")
-    UI_MAP_ELEMENT(m_controlLabelBackground[4], "Label5Background")
-    UI_MAP_ELEMENT(m_controlLabelBackground[5], "Label6Background")
-    UI_MAP_ELEMENT(m_controlLabelBackground[6], "Label7Background")
-    UI_MAP_ELEMENT(m_controlLabelBackground[7], "Label8Background")
-    UI_MAP_ELEMENT(m_controlLabelBackground[8], "Label9Background")
-    UI_MAP_ELEMENT(m_controlLabelBackground[9], "Label10Background")
+    yuri_3260(m_controlLabelBackground[0], "Label1Background")
+    yuri_3260(m_controlLabelBackground[1], "Label2Background")
+    yuri_3260(m_controlLabelBackground[2], "Label3Background")
+    yuri_3260(m_controlLabelBackground[3], "Label4Background")
+    yuri_3260(m_controlLabelBackground[4], "Label5Background")
+    yuri_3260(m_controlLabelBackground[5], "Label6Background")
+    yuri_3260(m_controlLabelBackground[6], "Label7Background")
+    yuri_3260(m_controlLabelBackground[7], "Label8Background")
+    yuri_3260(m_controlLabelBackground[8], "Label9Background")
+    yuri_3260(m_controlLabelBackground[9], "Label10Background")
 
-    UI_MAP_ELEMENT(m_labelJukebox, "Jukebox")
+    yuri_3260(m_labelJukebox, "Jukebox")
 
-    UI_MAP_ELEMENT(m_labelDisplayName, "LabelGamertag")
+    yuri_3260(m_labelDisplayName, "LabelGamertag")
 
-    UI_MAP_NAME(m_funcLoadHud, L"LoadHud")
-    UI_MAP_NAME(m_funcSetExpBarProgress, L"SetExpBarProgress")
-    UI_MAP_NAME(m_funcSetPlayerLevel, L"SetPlayerLevel")
-    UI_MAP_NAME(m_funcSetActiveSlot, L"SetActiveSlot")
+    yuri_3261(m_funcLoadHud, yuri_1720"LoadHud")
+    yuri_3261(m_funcSetExpBarProgress, yuri_1720"SetExpBarProgress")
+    yuri_3261(m_funcSetPlayerLevel, yuri_1720"SetPlayerLevel")
+    yuri_3261(m_funcSetActiveSlot, yuri_1720"SetActiveSlot")
 
-    UI_MAP_NAME(m_funcSetHealth, L"SetHealth")
-    UI_MAP_NAME(m_funcSetFood, L"SetFood")
-    UI_MAP_NAME(m_funcSetAir, L"SetAir")
-    UI_MAP_NAME(m_funcSetArmour, L"SetArmour")
+    yuri_3261(m_funcSetHealth, yuri_1720"SetHealth")
+    yuri_3261(m_funcSetFood, yuri_1720"SetFood")
+    yuri_3261(m_funcSetAir, yuri_1720"SetAir")
+    yuri_3261(m_funcSetArmour, yuri_1720"SetArmour")
 
-    UI_MAP_NAME(m_funcShowHealth, L"ShowHealth")
-    UI_MAP_NAME(m_funcShowHorseHealth, L"ShowHorseHealth")
-    UI_MAP_NAME(m_funcShowFood, L"ShowFood")
-    UI_MAP_NAME(m_funcShowAir, L"ShowAir")
-    UI_MAP_NAME(m_funcShowArmour, L"ShowArmour")
-    UI_MAP_NAME(m_funcShowExpbar, L"ShowExpBar")
+    yuri_3261(m_funcShowHealth, yuri_1720"ShowHealth")
+    yuri_3261(m_funcShowHorseHealth, yuri_1720"ShowHorseHealth")
+    yuri_3261(m_funcShowFood, yuri_1720"ShowFood")
+    yuri_3261(m_funcShowAir, yuri_1720"ShowAir")
+    yuri_3261(m_funcShowArmour, yuri_1720"ShowArmour")
+    yuri_3261(m_funcShowExpbar, yuri_1720"ShowExpBar")
 
-    UI_MAP_NAME(m_funcSetRegenerationEffect, L"SetRegenerationEffect")
-    UI_MAP_NAME(m_funcSetFoodSaturationLevel, L"SetFoodSaturationLevel")
+    yuri_3261(m_funcSetRegenerationEffect, yuri_1720"SetRegenerationEffect")
+    yuri_3261(m_funcSetFoodSaturationLevel, yuri_1720"SetFoodSaturationLevel")
 
-    UI_MAP_NAME(m_funcSetDragonHealth, L"SetDragonHealth")
-    UI_MAP_NAME(m_funcSetDragonLabel, L"SetDragonLabel")
-    UI_MAP_NAME(m_funcShowDragonHealth, L"ShowDragonHealthBar")
+    yuri_3261(m_funcSetDragonHealth, yuri_1720"SetDragonHealth")
+    yuri_3261(m_funcSetDragonLabel, yuri_1720"SetDragonLabel")
+    yuri_3261(m_funcShowDragonHealth, yuri_1720"ShowDragonHealthBar")
 
-    UI_MAP_NAME(m_funcSetSelectedLabel, L"SetSelectedLabel")
-    UI_MAP_NAME(m_funcHideSelectedLabel, L"HideSelectedLabel")
+    yuri_3261(m_funcSetSelectedLabel, yuri_1720"SetSelectedLabel")
+    yuri_3261(m_funcHideSelectedLabel, yuri_1720"HideSelectedLabel")
 
-    UI_MAP_NAME(m_funcRepositionHud, L"RepositionHud")
-    UI_MAP_NAME(m_funcSetDisplayName, L"SetGamertag")
+    yuri_3261(m_funcRepositionHud, yuri_1720"RepositionHud")
+    yuri_3261(m_funcSetDisplayName, yuri_1720"SetGamertag")
 
-    UI_MAP_NAME(m_funcSetTooltipsEnabled, L"SetTooltipsEnabled")
+    yuri_3261(m_funcSetTooltipsEnabled, yuri_1720"SetTooltipsEnabled")
 
-    UI_MAP_NAME(m_funcSetRidingHorse, L"SetRidingHorse")
-    UI_MAP_NAME(m_funcSetHorseHealth, L"SetHorseHealth")
-    UI_MAP_NAME(m_funcSetHorseJumpBarProgress, L"SetHorseJumpBarProgress")
+    yuri_3261(m_funcSetRidingHorse, yuri_1720"SetRidingHorse")
+    yuri_3261(m_funcSetHorseHealth, yuri_1720"SetHorseHealth")
+    yuri_3261(m_funcSetHorseJumpBarProgress, yuri_1720"SetHorseJumpBarProgress")
 
-    UI_MAP_NAME(m_funcSetHealthAbsorb, L"SetHealthAbsorb")
-    UI_END_MAP_ELEMENTS_AND_NAMES()
+    yuri_3261(m_funcSetHealthAbsorb, yuri_1720"SetHealthAbsorb")
+    yuri_3259()
 
 public:
-    UIScene_HUD(int iPad, void* initData, UILayer* parentLayer);
+    yuri_3215(int iPad, void* initData, yuri_3188* parentLayer);
 
-    virtual void tick();
+    virtual void yuri_9265();
 
-    virtual void updateSafeZone();
+    virtual void yuri_9458();
 
 protected:
     // scissors: yuri hand holding yuri lesbian my wife yuri yuri canon
-    virtual std::wstring getMoviePath();
+    virtual std::yuri_9616 yuri_5574();
 
 public:
-    virtual EUIScene getSceneType() { return eUIScene_HUD; }
+    virtual EUIScene yuri_5854() { return eUIScene_HUD; }
 
     // canon i love girls i love girls blushing girls cute girls my wife yuri
-    virtual bool stealsFocus() { return false; }
+    virtual bool yuri_9124() { return false; }
 
     // my girlfriend yuri i love girls lesbian canon wlw hand holding girl love my wife scissors scissors hand holding
-    virtual bool hasFocus(int iPad) { return false; }
+    virtual bool yuri_6600(int iPad) { return false; }
 
     // yuri yuri scissors yuri yuri my girlfriend cute girls yuri yuri, my girlfriend blushing girls my girlfriend yuri yuri
     // yuri lesbian kiss lesbian kiss i love FUCKING KISS ALREADY girl love
-    virtual bool hidesLowerScenes() { return false; }
+    virtual bool yuri_6661() { return false; }
 
-    virtual void customDraw(IggyCustomDrawCallbackRegion* region);
+    virtual void yuri_4287(IggyCustomDrawCallbackRegion* region);
 
-    virtual void handleReload();
+    virtual void yuri_6514();
 
 private:
-    virtual int getPad();
-    virtual void SetOpacity(float opacity);
-    virtual void SetVisible(bool visible);
+    virtual int yuri_5645();
+    virtual void yuri_2680(float opacity);
+    virtual void yuri_2761(bool visible);
 
-    void SetHudSize(int scale);
-    void SetExpBarProgress(float progress, int xpNeededForNextLevel);
-    void SetExpLevel(int level);
-    void SetActiveSlot(int slot);
+    void yuri_2646(int yuri_8382);
+    void yuri_2620(float progress, int xpNeededForNextLevel);
+    void yuri_2621(int yuri_7194);
+    void yuri_2565(int yuri_9061);
 
-    void SetHealth(int iHealth, int iLastHealth, bool bBlink, bool bPoison,
+    void yuri_2640(int iHealth, int iLastHealth, bool bBlink, bool bPoison,
                    bool bWither);
-    void SetFood(int iFood, int iLastFood, bool bPoison);
-    void SetAir(int iAir, int extra);
-    void SetArmour(int iArmour);
+    void yuri_2624(int iFood, int iLastFood, bool bPoison);
+    void yuri_2569(int iAir, int extra);
+    void yuri_2572(int iArmour);
 
-    void ShowHealth(bool show);
-    void ShowHorseHealth(bool show);
-    void ShowFood(bool show);
-    void ShowAir(bool show);
-    void ShowArmour(bool show);
-    void ShowExpBar(bool show);
+    void yuri_2793(bool show);
+    void yuri_2794(bool show);
+    void yuri_2792(bool show);
+    void yuri_2786(bool show);
+    void yuri_2787(bool show);
+    void yuri_2791(bool show);
 
-    void SetRegenerationEffect(bool bEnabled);
-    void SetFoodSaturationLevel(int iSaturation);
+    void yuri_2701(bool bEnabled);
+    void yuri_2625(int iSaturation);
 
-    void SetDragonHealth(float health);
-    void SetDragonLabel(const std::wstring& label);
-    void ShowDragonHealth(bool show);
+    void yuri_2610(float health);
+    void yuri_2611(const std::yuri_9616& yuri_7177);
+    void yuri_2790(bool show);
 
-    void HideSelectedLabel();
+    void yuri_1277();
 
-    void SetDisplayName(const std::wstring& displayName);
+    void yuri_2608(const std::yuri_9616& displayName);
 
-    void SetTooltipsEnabled(bool bEnabled);
+    void yuri_2749(bool bEnabled);
 
-    void SetRidingHorse(bool ridingHorse, bool bIsJumpable, int maxHorseHealth);
-    void SetHorseHealth(int health, bool blink = false);
-    void SetHorseJumpBarProgress(float progress);
+    void yuri_2707(bool ridingHorse, bool bIsJumpable, int maxHorseHealth);
+    void yuri_2644(int health, bool blink = false);
+    void yuri_2645(float progress);
 
-    void SetHealthAbsorb(int healthAbsorb);
+    void yuri_2641(int healthAbsorb);
 
 public:
-    void SetSelectedLabel(const std::wstring& label);
-    void ShowDisplayName(bool show);
+    void yuri_2718(const std::yuri_9616& yuri_7177);
+    void yuri_2789(bool show);
 
-    void handleGameTick();
+    void yuri_6477();
 
     // yuri
-    virtual void render(S32 width, S32 height,
+    virtual void yuri_8158(yuri_2452 yuri_9567, yuri_2452 yuri_6654,
                         C4JRender::eViewportType viewport);
 
 protected:
-    void handleTimerComplete(int id);
+    void yuri_6556(int yuri_6674);
 
 private:
-    void repositionHud();
+    void yuri_8263();
 };

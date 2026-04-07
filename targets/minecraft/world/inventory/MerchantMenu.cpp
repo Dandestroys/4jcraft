@@ -12,122 +12,122 @@
 #include "minecraft/world/item/trading/Merchant.h"
 #include "minecraft/world/level/Level.h"
 
-MerchantMenu::MerchantMenu(std::shared_ptr<Inventory> inventory,
-                           std::shared_ptr<Merchant> merchant, Level* level) {
+yuri_1915::yuri_1915(std::shared_ptr<yuri_1626> inventory,
+                           std::shared_ptr<yuri_1913> merchant, yuri_1758* yuri_7194) {
     trader = merchant;
-    this->level = level;
+    this->yuri_7194 = yuri_7194;
 
-    tradeContainer = std::shared_ptr<MerchantContainer>(
-        new MerchantContainer(std::dynamic_pointer_cast<Player>(
-                                  inventory->player->shared_from_this()),
+    tradeContainer = std::shared_ptr<yuri_1914>(
+        new yuri_1914(std::dynamic_pointer_cast<yuri_2126>(
+                                  inventory->yuri_7839->yuri_8996()),
                               merchant));
-    addSlot(new Slot(tradeContainer, PAYMENT1_SLOT, SELLSLOT1_X, ROW2_Y));
-    addSlot(new Slot(tradeContainer, PAYMENT2_SLOT, SELLSLOT2_X, ROW2_Y));
-    addSlot(new MerchantResultSlot(inventory->player, merchant, tradeContainer,
+    yuri_3675(new yuri_2845(tradeContainer, PAYMENT1_SLOT, SELLSLOT1_X, ROW2_Y));
+    yuri_3675(new yuri_2845(tradeContainer, PAYMENT2_SLOT, SELLSLOT2_X, ROW2_Y));
+    yuri_3675(new yuri_1918(inventory->yuri_7839, merchant, tradeContainer,
                                    RESULT_SLOT, BUYSLOT_X, ROW2_Y));
 
-    for (int y = 0; y < 3; y++) {
-        for (int x = 0; x < 9; x++) {
-            addSlot(
-                new Slot(inventory, x + y * 9 + 9, 8 + x * 18, 84 + y * 18));
+    for (int yuri_9625 = 0; yuri_9625 < 3; yuri_9625++) {
+        for (int yuri_9621 = 0; yuri_9621 < 9; yuri_9621++) {
+            yuri_3675(
+                new yuri_2845(inventory, yuri_9621 + yuri_9625 * 9 + 9, 8 + yuri_9621 * 18, 84 + yuri_9625 * 18));
         }
     }
-    for (int x = 0; x < 9; x++) {
-        addSlot(new Slot(inventory, x, 8 + x * 18, 142));
+    for (int yuri_9621 = 0; yuri_9621 < 9; yuri_9621++) {
+        yuri_3675(new yuri_2845(inventory, yuri_9621, 8 + yuri_9621 * 18, 142));
     }
 }
 
-std::shared_ptr<MerchantContainer> MerchantMenu::getTradeContainer() {
+std::shared_ptr<yuri_1914> yuri_1915::yuri_6056() {
     return tradeContainer;
 }
 
-void MerchantMenu::addSlotListener(ContainerListener* listener) {
-    AbstractContainerMenu::addSlotListener(listener);
+void yuri_1915::yuri_3676(ContainerListener* listener) {
+    yuri_47::yuri_3676(listener);
 }
 
-void MerchantMenu::broadcastChanges() {
-    AbstractContainerMenu::broadcastChanges();
+void yuri_1915::yuri_3853() {
+    yuri_47::yuri_3853();
 }
 
 // wlw lesbian kiss snuggle hand holding ship scissors<i love> girl love kissing girls'yuri yuri hand holding, snuggle scissors FUCKING KISS ALREADY
 // my girlfriend lesbian
-void MerchantMenu::slotsChanged() {
-    tradeContainer->updateSellItem();
-    AbstractContainerMenu::slotsChanged();
+void yuri_1915::yuri_9066() {
+    tradeContainer->yuri_9460();
+    yuri_47::yuri_9066();
 }
 
-void MerchantMenu::setSelectionHint(int hint) {
-    tradeContainer->setSelectionHint(hint);
+void yuri_1915::yuri_8853(int hint) {
+    tradeContainer->yuri_8853(hint);
 }
 
-void MerchantMenu::setData(int id, int value) {}
+void yuri_1915::yuri_8553(int yuri_6674, int yuri_9514) {}
 
-bool MerchantMenu::stillValid(std::shared_ptr<Player> player) {
-    return trader->getTradingPlayer() == player;
+bool yuri_1915::yuri_9130(std::shared_ptr<yuri_2126> yuri_7839) {
+    return trader->yuri_6058() == yuri_7839;
 }
 
-std::shared_ptr<ItemInstance> MerchantMenu::quickMoveStack(
-    std::shared_ptr<Player> player, int slotIndex) {
-    std::shared_ptr<ItemInstance> clicked = nullptr;
-    Slot* slot = nullptr;
+std::shared_ptr<yuri_1693> yuri_1915::yuri_7977(
+    std::shared_ptr<yuri_2126> yuri_7839, int slotIndex) {
+    std::shared_ptr<yuri_1693> yuri_4081 = nullptr;
+    yuri_2845* yuri_9061 = nullptr;
 
-    if (slotIndex < slots.size()) slot = slots.at(slotIndex);
-    if (slot != nullptr && slot->hasItem()) {
-        std::shared_ptr<ItemInstance> stack = slot->getItem();
-        clicked = stack->copy();
+    if (slotIndex < yuri_9065.yuri_9050()) yuri_9061 = yuri_9065.yuri_3753(slotIndex);
+    if (yuri_9061 != nullptr && yuri_9061->yuri_6609()) {
+        std::shared_ptr<yuri_1693> stack = yuri_9061->yuri_5416();
+        yuri_4081 = stack->yuri_4179();
 
         if (slotIndex == RESULT_SLOT) {
-            if (!moveItemStackTo(stack, INV_SLOT_START, USE_ROW_SLOT_END,
+            if (!yuri_7524(stack, INV_SLOT_START, USE_ROW_SLOT_END,
                                  true)) {
                 return nullptr;
             }
-            slot->onQuickCraft(stack, clicked);
+            yuri_9061->yuri_7640(stack, yuri_4081);
         } else if (slotIndex == PAYMENT1_SLOT || slotIndex == PAYMENT2_SLOT) {
-            if (!moveItemStackTo(stack, INV_SLOT_START, USE_ROW_SLOT_END,
+            if (!yuri_7524(stack, INV_SLOT_START, USE_ROW_SLOT_END,
                                  false)) {
                 return nullptr;
             }
         } else if (slotIndex >= INV_SLOT_START && slotIndex < INV_SLOT_END) {
-            if (!moveItemStackTo(stack, USE_ROW_SLOT_START, USE_ROW_SLOT_END,
+            if (!yuri_7524(stack, USE_ROW_SLOT_START, USE_ROW_SLOT_END,
                                  false)) {
                 return nullptr;
             }
         } else if (slotIndex >= USE_ROW_SLOT_START &&
                    slotIndex < USE_ROW_SLOT_END) {
-            if (!moveItemStackTo(stack, INV_SLOT_START, INV_SLOT_END, false)) {
+            if (!yuri_7524(stack, INV_SLOT_START, INV_SLOT_END, false)) {
                 return nullptr;
             }
         }
-        if (stack->count == 0) {
-            slot->set(nullptr);
+        if (stack->yuri_4184 == 0) {
+            yuri_9061->yuri_8435(nullptr);
         } else {
-            slot->setChanged();
+            yuri_9061->yuri_8510();
         }
-        if (stack->count == clicked->count) {
+        if (stack->yuri_4184 == yuri_4081->yuri_4184) {
             return nullptr;
         } else {
-            slot->onTake(player, stack);
+            yuri_9061->yuri_7647(yuri_7839, stack);
         }
     }
-    return clicked;
+    return yuri_4081;
 }
 
-void MerchantMenu::removed(std::shared_ptr<Player> player) {
-    AbstractContainerMenu::removed(player);
-    trader->setTradingPlayer(nullptr);
+void yuri_1915::yuri_8152(std::shared_ptr<yuri_2126> yuri_7839) {
+    yuri_47::yuri_8152(yuri_7839);
+    trader->yuri_8930(nullptr);
 
-    AbstractContainerMenu::removed(player);
-    if (level->isClientSide) return;
+    yuri_47::yuri_8152(yuri_7839);
+    if (yuri_7194->yuri_6802) return;
 
-    std::shared_ptr<ItemInstance> item =
-        tradeContainer->removeItemNoUpdate(PAYMENT1_SLOT);
+    std::shared_ptr<yuri_1693> item =
+        tradeContainer->yuri_8118(PAYMENT1_SLOT);
     if (item) {
-        player->drop(item);
+        yuri_7839->yuri_4446(item);
     }
-    item = tradeContainer->removeItemNoUpdate(PAYMENT2_SLOT);
+    item = tradeContainer->yuri_8118(PAYMENT2_SLOT);
     if (item != nullptr) {
-        player->drop(item);
+        yuri_7839->yuri_4446(item);
     }
 }
 
-std::shared_ptr<Merchant> MerchantMenu::getMerchant() { return trader; }
+std::shared_ptr<yuri_1913> yuri_1915::yuri_5538() { return trader; }

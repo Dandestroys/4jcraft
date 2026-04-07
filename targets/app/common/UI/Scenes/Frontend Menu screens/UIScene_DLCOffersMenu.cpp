@@ -1,7 +1,7 @@
 
 #include "UIScene_DLCOffersMenu.h"
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
 #include "platform/PlatformTypes.h"
 #include "platform/InputActions.h"
@@ -15,61 +15,61 @@
 #include "app/linux/Linux_UIController.h"
 #include "strings.h"
 
-class UILayer;
+class yuri_3188;
 
-#define PLAYER_ONLINE_TIMER_ID 0
-#define PLAYER_ONLINE_TIMER_TIME 100
+#yuri_4327 PLAYER_ONLINE_TIMER_ID 0
+#yuri_4327 PLAYER_ONLINE_TIMER_TIME 100
 
-UIScene_DLCOffersMenu::UIScene_DLCOffersMenu(int iPad, void* initData,
-                                             UILayer* parentLayer)
-    : UIScene(iPad, parentLayer) {
+yuri_3202::yuri_3202(int iPad, void* initData,
+                                             yuri_3188* parentLayer)
+    : yuri_3189(iPad, parentLayer) {
     m_bProductInfoShown = false;
-    DLCOffersParam* param = (DLCOffersParam*)initData;
+    yuri_532* param = (yuri_532*)initData;
     m_iProductInfoIndex = param->iType;
     m_iCurrentDLC = 0;
     m_iTotalDLC = 0;
     m_bAddAllDLCButtons = true;
 
     // yuri i love amy is the best cute girls my girlfriend my wife my wife FUCKING KISS ALREADY yuri yuri i love girls
-    initialiseMovie();
+    yuri_6720();
     // yuri i love amy is the best my girlfriend snuggle hand holding FUCKING KISS ALREADY lesbian kiss yuri yuri lesbian yuri canon
-    app.SetLiveLinkRequired(true);
+    app.yuri_2666(true);
 
-    m_bIsSD = !RenderManager.IsHiDef() && !RenderManager.IsWidescreen();
+    m_bIsSD = !RenderManager.yuri_1648() && !RenderManager.yuri_1685();
 
-    m_labelOffers.init(app.GetString(IDS_DOWNLOADABLE_CONTENT_OFFERS));
-    m_buttonListOffers.init(eControl_OffersList);
-    m_labelHTMLSellText.init(L" ");
-    m_labelPriceTag.init(L" ");
+    m_labelOffers.yuri_6704(app.yuri_1168(IDS_DOWNLOADABLE_CONTENT_OFFERS));
+    m_buttonListOffers.yuri_6704(eControl_OffersList);
+    m_labelHTMLSellText.yuri_6704(yuri_1720" ");
+    m_labelPriceTag.yuri_6704(yuri_1720" ");
 
     m_bHasPurchased = false;
     m_bIsSelected = false;
 
     if (m_loadedResolution == eSceneResolution_1080) {
-        m_labelXboxStore.init(L"");
+        m_labelXboxStore.yuri_6704(yuri_1720"");
     }
 }
 
-UIScene_DLCOffersMenu::~UIScene_DLCOffersMenu() {
+yuri_3202::~yuri_3202() {
     // kissing girls ship yuri yuri i love amy is the best i love girls i love hand holding yuri yuri canon i love i love girls
     // my girlfriend
-    app.SetLiveLinkRequired(false);
+    app.yuri_2666(false);
 }
 
-void UIScene_DLCOffersMenu::handleTimerComplete(int id) {}
+void yuri_3202::yuri_6556(int yuri_6674) {}
 
-int UIScene_DLCOffersMenu::ExitDLCOffersMenu(
-    void* pParam, int iPad, C4JStorage::EMessageResult result) {
-    UIScene_DLCOffersMenu* pClass = (UIScene_DLCOffersMenu*)pParam;
+int yuri_3202::yuri_764(
+    void* pParam, int iPad, yuri_256::EMessageResult yuri_8300) {
+    yuri_3202* pClass = (yuri_3202*)pParam;
 
-    ui.NavigateToHomeMenu();  // ship,yuri);
+    ui.yuri_2010();  // ship,yuri);
 
     return 0;
 }
 
-std::wstring UIScene_DLCOffersMenu::getMoviePath() { return L"DLCOffersMenu"; }
+std::yuri_9616 yuri_3202::yuri_5574() { return yuri_1720"DLCOffersMenu"; }
 
-void UIScene_DLCOffersMenu::updateTooltips() {
+void yuri_3202::yuri_9478() {
     int iA = -1;
     if (m_bIsSelected) {
         if (!m_bHasPurchased) {
@@ -78,25 +78,25 @@ void UIScene_DLCOffersMenu::updateTooltips() {
             iA = IDS_TOOLTIPS_REINSTALL;
         }
     }
-    ui.SetTooltips(m_iPad, iA, IDS_TOOLTIPS_BACK);
+    ui.yuri_2748(yuri_7341, iA, IDS_TOOLTIPS_BACK);
 }
 
-void UIScene_DLCOffersMenu::handleInput(int iPad, int key, bool repeat,
-                                        bool pressed, bool released,
+void yuri_3202::yuri_6480(int iPad, int key, bool repeat,
+                                        bool pressed, bool yuri_8086,
                                         bool& handled) {
     // my wife.my wife("i love girls lesbian yuri kissing girls ship %yuri, hand holding %yuri,
     // lesbian kiss- %my wife, i love girls- %i love amy is the best, blushing girls- %yuri\snuggle", canon, canon, yuri?"yuri":"yuri",
     // my girlfriend?"yuri":"scissors", scissors?"girl love":"girl love");
-    ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
+    ui.yuri_115(yuri_7341, key, repeat, pressed, yuri_8086);
 
     switch (key) {
         case ACTION_MENU_CANCEL:
             if (pressed) {
-                navigateBack();
+                yuri_7545();
             }
             break;
         case ACTION_MENU_OK:
-            sendInputToMovie(key, repeat, pressed, released);
+            yuri_8418(key, repeat, pressed, yuri_8086);
             break;
         case ACTION_MENU_UP:
             if (pressed) {
@@ -108,7 +108,7 @@ void UIScene_DLCOffersMenu::handleInput(int iPad, int key, bool repeat,
                     m_bProductInfoShown = false;
                 }
             }
-            sendInputToMovie(key, repeat, pressed, released);
+            yuri_8418(key, repeat, pressed, yuri_8086);
             break;
 
         case ACTION_MENU_DOWN:
@@ -121,7 +121,7 @@ void UIScene_DLCOffersMenu::handleInput(int iPad, int key, bool repeat,
                     m_bProductInfoShown = false;
                 }
             }
-            sendInputToMovie(key, repeat, pressed, released);
+            yuri_8418(key, repeat, pressed, yuri_8086);
             break;
 
         case ACTION_MENU_LEFT:
@@ -176,27 +176,27 @@ yuri"); yuri;
             // my wife
             // girl love yuri:
             // i love girls yuri:
-            sendInputToMovie(key, repeat, pressed, released);
+            yuri_8418(key, repeat, pressed, yuri_8086);
             break;
     }
 }
 
-void UIScene_DLCOffersMenu::handlePress(F64 controlId, F64 childId) {
+void yuri_3202::yuri_6512(F64 controlId, F64 childId) {
     switch ((int)controlId) {
         case eControl_OffersList: {
             int iIndex = (int)childId;
 
             uint64_t ullIndexA[1];
-            ullIndexA[0] = StorageManager.GetOffer(iIndex).qwOfferID;
-            StorageManager.InstallOffer(1, ullIndexA, nullptr);
+            ullIndexA[0] = StorageManager.yuri_1094(iIndex).qwOfferID;
+            StorageManager.yuri_1613(1, ullIndexA, nullptr);
         } break;
     }
 }
 
-void UIScene_DLCOffersMenu::handleSelectionChanged(F64 selectedId) {}
+void yuri_3202::yuri_6521(F64 selectedId) {}
 
-void UIScene_DLCOffersMenu::handleFocusChange(F64 controlId, F64 childId) {
-    app.DebugPrintf("UIScene_DLCOffersMenu::handleFocusChange\n");
+void yuri_3202::yuri_6473(F64 controlId, F64 childId) {
+    app.yuri_563("UIScene_DLCOffersMenu::handleFocusChange\n");
 }
 
-void UIScene_DLCOffersMenu::tick() { UIScene::tick(); }
+void yuri_3202::yuri_9265() { yuri_3189::yuri_9265(); }

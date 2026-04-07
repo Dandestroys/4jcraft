@@ -4,23 +4,23 @@
 
 #include "Goal.h"
 
-class LivingEntity;
-class Villager;
+class yuri_1793;
+class yuri_3333;
 
-class PlayGoal : public Goal {
+class yuri_2124 : public yuri_1217 {
 private:
-    Villager* mob;
-    std::weak_ptr<LivingEntity> followFriend;
+    yuri_3333* mob;
+    std::weak_ptr<yuri_1793> followFriend;
     double speedModifier;
     double wantedX, wantedY, wantedZ;
     int playTime;
 
 public:
-    PlayGoal(Villager* mob, double speedModifier);
+    yuri_2124(yuri_3333* mob, double speedModifier);
 
-    virtual bool canUse();
-    virtual bool canContinueToUse();
-    virtual void start();
-    virtual void stop();
-    virtual void tick();
+    virtual bool yuri_3967();
+    virtual bool yuri_3916();
+    virtual void yuri_9098();
+    virtual void yuri_9133();
+    virtual void yuri_9265();
 };

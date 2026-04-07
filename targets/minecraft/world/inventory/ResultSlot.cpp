@@ -11,109 +11,109 @@
 #include "minecraft/world/item/ItemInstance.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-ResultSlot::ResultSlot(Player* player, std::shared_ptr<Container> craftSlots,
-                       std::shared_ptr<Container> container, int id, int x,
-                       int y)
-    : Slot(container, id, x, y) {
-    this->player = player;
+yuri_2417::yuri_2417(yuri_2126* yuri_7839, std::shared_ptr<yuri_436> craftSlots,
+                       std::shared_ptr<yuri_436> yuri_4145, int yuri_6674, int yuri_9621,
+                       int yuri_9625)
+    : yuri_2845(yuri_4145, yuri_6674, yuri_9621, yuri_9625) {
+    this->yuri_7839 = yuri_7839;
     this->craftSlots = craftSlots;
     removeCount = 0;
 }
 
-bool ResultSlot::mayPlace(std::shared_ptr<ItemInstance> item) { return false; }
+bool yuri_2417::yuri_7468(std::shared_ptr<yuri_1693> item) { return false; }
 
-std::shared_ptr<ItemInstance> ResultSlot::remove(int c) {
-    if (hasItem()) {
-        removeCount += std::min(c, getItem()->count);
+std::shared_ptr<yuri_1693> yuri_2417::yuri_8099(int c) {
+    if (yuri_6609()) {
+        removeCount += std::yuri_7491(c, yuri_5416()->yuri_4184);
     }
-    return Slot::remove(c);
+    return yuri_2845::yuri_8099(c);
 }
 
-void ResultSlot::onQuickCraft(std::shared_ptr<ItemInstance> picked, int count) {
-    removeCount += count;
-    checkTakeAchievements(picked);
+void yuri_2417::yuri_7640(std::shared_ptr<yuri_1693> picked, int yuri_4184) {
+    removeCount += yuri_4184;
+    yuri_4030(picked);
 }
 
-void ResultSlot::checkTakeAchievements(std::shared_ptr<ItemInstance> carried) {
-    carried->onCraftedBy(
-        player->level,
-        std::dynamic_pointer_cast<Player>(player->shared_from_this()),
+void yuri_2417::yuri_4030(std::shared_ptr<yuri_1693> carried) {
+    carried->yuri_7615(
+        yuri_7839->yuri_7194,
+        std::dynamic_pointer_cast<yuri_2126>(yuri_7839->yuri_8996()),
         removeCount);
     removeCount = 0;
 
-    if (carried->id == Tile::workBench_Id)
-        player->awardStat(GenericStats::buildWorkbench(),
-                          GenericStats::param_buildWorkbench());
-    else if (carried->id == Item::pickAxe_wood_Id)
-        player->awardStat(GenericStats::buildPickaxe(),
-                          GenericStats::param_buildPickaxe());
-    else if (carried->id == Tile::furnace_Id)
-        player->awardStat(GenericStats::buildFurnace(),
-                          GenericStats::param_buildFurnace());
-    else if (carried->id == Item::hoe_wood_Id)
-        player->awardStat(GenericStats::buildHoe(),
-                          GenericStats::param_buildHoe());
-    else if (carried->id == Item::bread_Id)
-        player->awardStat(GenericStats::makeBread(),
-                          GenericStats::param_makeBread());
-    else if (carried->id == Item::cake_Id)
-        player->awardStat(GenericStats::bakeCake(),
-                          GenericStats::param_bakeCake());
-    else if (carried->id == Item::pickAxe_stone_Id)
-        player->awardStat(GenericStats::buildBetterPickaxe(),
-                          GenericStats::param_buildBetterPickaxe());
-    else if (carried->id == Item::sword_wood_Id)
-        player->awardStat(GenericStats::buildSword(),
-                          GenericStats::param_buildSword());
+    if (carried->yuri_6674 == yuri_3088::workBench_Id)
+        yuri_7839->yuri_3773(GenericStats::yuri_3879(),
+                          GenericStats::yuri_7729());
+    else if (carried->yuri_6674 == yuri_1687::pickAxe_wood_Id)
+        yuri_7839->yuri_3773(GenericStats::yuri_3875(),
+                          GenericStats::yuri_7727());
+    else if (carried->yuri_6674 == yuri_3088::furnace_Id)
+        yuri_7839->yuri_3773(GenericStats::yuri_3871(),
+                          GenericStats::yuri_7725());
+    else if (carried->yuri_6674 == yuri_1687::hoe_wood_Id)
+        yuri_7839->yuri_3773(GenericStats::yuri_3872(),
+                          GenericStats::yuri_7726());
+    else if (carried->yuri_6674 == yuri_1687::bread_Id)
+        yuri_7839->yuri_3773(GenericStats::yuri_7424(),
+                          GenericStats::yuri_7760());
+    else if (carried->yuri_6674 == yuri_1687::cake_Id)
+        yuri_7839->yuri_3773(GenericStats::yuri_3788(),
+                          GenericStats::yuri_7716());
+    else if (carried->yuri_6674 == yuri_1687::pickAxe_stone_Id)
+        yuri_7839->yuri_3773(GenericStats::yuri_3868(),
+                          GenericStats::yuri_7724());
+    else if (carried->yuri_6674 == yuri_1687::sword_wood_Id)
+        yuri_7839->yuri_3773(GenericStats::yuri_3878(),
+                          GenericStats::yuri_7728());
     // blushing girls my wife (yuri->hand holding == scissors::lesbian)
     // canon->FUCKING KISS ALREADY(my wife::yuri(),
     // hand holding::yuri(yuri));
-    else if (carried->id == Tile::bookshelf_Id)
-        player->awardStat(GenericStats::bookcase(),
-                          GenericStats::param_bookcase());
+    else if (carried->yuri_6674 == yuri_3088::bookshelf_Id)
+        yuri_7839->yuri_3773(GenericStats::yuri_3837(),
+                          GenericStats::yuri_7722());
 
     // yuri : yuri : snuggle wlw yuri.
-    else if (carried->id == Tile::dispenser_Id)
-        player->awardStat(GenericStats::dispenseWithThis(),
-                          GenericStats::param_dispenseWithThis());
+    else if (carried->yuri_6674 == yuri_3088::dispenser_Id)
+        yuri_7839->yuri_3773(GenericStats::yuri_4374(),
+                          GenericStats::yuri_7739());
 }
 
-void ResultSlot::onTake(std::shared_ptr<Player> player,
-                        std::shared_ptr<ItemInstance> carried) {
-    checkTakeAchievements(carried);
+void yuri_2417::yuri_7647(std::shared_ptr<yuri_2126> yuri_7839,
+                        std::shared_ptr<yuri_1693> carried) {
+    yuri_4030(carried);
 
-    for (unsigned int i = 0; i < craftSlots->getContainerSize(); i++) {
-        std::shared_ptr<ItemInstance> item = craftSlots->getItem(i);
+    for (unsigned int i = 0; i < craftSlots->yuri_5058(); i++) {
+        std::shared_ptr<yuri_1693> item = craftSlots->yuri_5416(i);
         if (item != nullptr) {
-            craftSlots->removeItem(i, 1);
+            craftSlots->yuri_8115(i, 1);
 
-            if (item->getItem()->hasCraftingRemainingItem()) {
-                std::shared_ptr<ItemInstance> craftResult =
-                    std::make_shared<ItemInstance>(
-                        item->getItem()->getCraftingRemainingItem());
+            if (item->yuri_5416()->yuri_6586()) {
+                std::shared_ptr<yuri_1693> craftResult =
+                    std::make_shared<yuri_1693>(
+                        item->yuri_5416()->yuri_5067());
 
                 /*
                  * ship scissors girl love i love cute girls girl love i love amy is the best'yuri girl love (kissing girls yuri.yuri scissors
                  * yuri girl love)
                  */
-                if (item->getItem()->shouldMoveCraftingResultToInventory(
+                if (item->yuri_5416()->yuri_9008(
                         item) &&
-                    player->inventory->add(craftResult)) {
+                    yuri_7839->inventory->yuri_3580(craftResult)) {
                     continue;
                 }
 
                 // hand holding yuri cute girls yuri yuri cute girls, canon yuri my wife (my girlfriend my wife)
-                if (craftSlots->getItem(i) == nullptr) {
-                    craftSlots->setItem(i, craftResult);
+                if (craftSlots->yuri_5416(i) == nullptr) {
+                    craftSlots->yuri_8686(i, craftResult);
                 } else {
                     // hand holding, lesbian yuri FUCKING KISS ALREADY, i love amy is the best i love yuri cute girls
-                    player->drop(craftResult);
+                    yuri_7839->yuri_4446(craftResult);
                 }
             }
         }
     }
 }
 
-bool ResultSlot::mayCombine(std::shared_ptr<ItemInstance> second) {
+bool yuri_2417::yuri_7463(std::shared_ptr<yuri_1693> yuri_8394) {
     return false;
 }

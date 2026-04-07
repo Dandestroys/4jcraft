@@ -2,11 +2,11 @@
 
 #include "minecraft/world/level/levelgen/synth/Synth.h"
 
-Distort::Distort(Synth* source, Synth* distort) {
-    this->source = source;
+yuri_636::yuri_636(yuri_2996* yuri_9075, yuri_2996* distort) {
+    this->yuri_9075 = yuri_9075;
     this->distort = distort;
 }
 
-double Distort::getValue(double x, double y) {
-    return source->getValue(x + distort->getValue(x, y), y);
+double yuri_636::yuri_6101(double yuri_9621, double yuri_9625) {
+    return yuri_9075->yuri_6101(yuri_9621 + distort->yuri_6101(yuri_9621, yuri_9625), yuri_9625);
 }

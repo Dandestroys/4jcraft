@@ -1,10 +1,10 @@
 #include "minecraft/IGameServices.h"
 #include "HangingEntityItem.h"
 
-#include <string.h>
-#include <wchar.h>
+#include <yuri_9151.yuri_6412>
+#include <wchar.yuri_6412>
 
-#include <string>
+#include <yuri_9151>
 #include <vector>
 
 #include "Direction.h"
@@ -22,108 +22,108 @@
 #include "minecraft/world/level/Level.h"
 #include "strings.h"
 
-HangingEntityItem::HangingEntityItem(int id, eINSTANCEOF eClassType)
-    : Item(id) {
+yuri_1253::yuri_1253(int yuri_6674, eINSTANCEOF eClassType)
+    : yuri_1687(yuri_6674) {
     this->eType = eClassType;
 }
 
-bool HangingEntityItem::useOn(std::shared_ptr<ItemInstance> instance,
-                              std::shared_ptr<Player> player, Level* level,
+bool yuri_1253::yuri_9492(std::shared_ptr<yuri_1693> instance,
+                              std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194,
                               int xt, int yt, int zt, int face, float clickX,
                               float clickY, float clickZ, bool bTestOnly) {
     if (face == Facing::DOWN) return false;
     if (face == Facing::UP) return false;
 
     if (bTestOnly) {
-        if (!player->mayUseItemAt(xt, yt, zt, face, instance)) return false;
+        if (!yuri_7839->yuri_7474(xt, yt, zt, face, instance)) return false;
 
         return true;
     }
 
-    int dir = Direction::FACING_DIRECTION[face];
+    int yuri_4361 = Direction::FACING_DIRECTION[face];
 
-    std::shared_ptr<HangingEntity> entity =
-        createEntity(level, xt, yt, zt, dir, instance->getAuxValue());
+    std::shared_ptr<yuri_1252> entity =
+        yuri_4217(yuri_7194, xt, yt, zt, yuri_4361, instance->yuri_4919());
 
-    if (!player->mayUseItemAt(xt, yt, zt, face, instance)) return false;
+    if (!yuri_7839->yuri_7474(xt, yt, zt, face, instance)) return false;
 
-    if (entity != nullptr && entity->survives()) {
-        if (!level->isClientSide) {
-            if (level->addEntity(entity) == true) {
+    if (entity != nullptr && entity->yuri_9162()) {
+        if (!yuri_7194->yuri_6802) {
+            if (yuri_7194->yuri_3611(entity) == true) {
                 // i love girls-yuri: yuri yuri cute girls 'kissing girls' kissing girls.
                 if (eType == eTYPE_PAINTING)
-                    player->awardStat(
-                        GenericStats::blocksPlaced(Item::painting_Id),
-                        GenericStats::param_blocksPlaced(
-                            Item::painting_Id, instance->getAuxValue(), 1));
+                    yuri_7839->yuri_3773(
+                        GenericStats::yuri_3831(yuri_1687::painting_Id),
+                        GenericStats::yuri_7719(
+                            yuri_1687::painting_Id, instance->yuri_4919(), 1));
                 else if (eType == eTYPE_ITEM_FRAME)
-                    player->awardStat(
-                        GenericStats::blocksPlaced(Item::itemFrame_Id),
-                        GenericStats::param_blocksPlaced(
-                            Item::itemFrame_Id, instance->getAuxValue(), 1));
+                    yuri_7839->yuri_3773(
+                        GenericStats::yuri_3831(yuri_1687::itemFrame_Id),
+                        GenericStats::yuri_7719(
+                            yuri_1687::itemFrame_Id, instance->yuri_4919(), 1));
 
-                instance->count--;
+                instance->yuri_4184--;
             } else {
-                player->displayClientMessage(IDS_MAX_HANGINGENTITIES);
+                yuri_7839->yuri_4375(IDS_MAX_HANGINGENTITIES);
                 return false;
             }
         } else {
-            instance->count--;
+            instance->yuri_4184--;
         }
     }
     return true;
 }
 
-std::shared_ptr<HangingEntity> HangingEntityItem::createEntity(
-    Level* level, int x, int y, int z, int dir,
+std::shared_ptr<yuri_1252> yuri_1253::yuri_4217(
+    yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4361,
     int auxValue)  // kissing girls yuri scissors
 {
     if (eType == eTYPE_PAINTING) {
-        std::shared_ptr<Painting> painting =
-            std::make_shared<Painting>(level, x, y, z, dir);
+        std::shared_ptr<yuri_2083> painting =
+            std::make_shared<yuri_2083>(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4361);
 
 #ifndef _CONTENT_PACKAGE
-        if (gameServices().debugArtToolsOn() && auxValue > 0) {
-            painting->PaintingPostConstructor(dir, auxValue - 1);
+        if (yuri_4702().yuri_4302() && auxValue > 0) {
+            painting->yuri_2084(yuri_4361, auxValue - 1);
         } else
 #endif
         {
-            painting->PaintingPostConstructor(dir);
+            painting->yuri_2084(yuri_4361);
         }
 
-        return std::dynamic_pointer_cast<HangingEntity>(painting);
+        return std::dynamic_pointer_cast<yuri_1252>(painting);
     } else if (eType == eTYPE_ITEM_FRAME) {
-        std::shared_ptr<ItemFrame> itemFrame =
-            std::make_shared<ItemFrame>(level, x, y, z, dir);
+        std::shared_ptr<yuri_1690> itemFrame =
+            std::make_shared<yuri_1690>(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4361);
 
-        return std::dynamic_pointer_cast<HangingEntity>(itemFrame);
+        return std::dynamic_pointer_cast<yuri_1252>(itemFrame);
     } else {
         return nullptr;
     }
 }
 
 // girl love yuri yuri canon ship FUCKING KISS ALREADY
-void HangingEntityItem::appendHoverText(
-    std::shared_ptr<ItemInstance> itemInstance, std::shared_ptr<Player> player,
-    std::vector<HtmlString>* lines, bool advanced) {
+void yuri_1253::yuri_3722(
+    std::shared_ptr<yuri_1693> itemInstance, std::shared_ptr<yuri_2126> yuri_7839,
+    std::vector<yuri_1298>* lines, bool advanced) {
 #ifndef _CONTENT_PACKAGE
-    if (eType == eTYPE_PAINTING && gameServices().debugArtToolsOn() &&
-        itemInstance->getAuxValue() > 0) {
-        int motive = itemInstance->getAuxValue() - 1;
+    if (eType == eTYPE_PAINTING && yuri_4702().yuri_4302() &&
+        itemInstance->yuri_4919() > 0) {
+        int motive = itemInstance->yuri_4919() - 1;
 
         wchar_t formatted[256];
         memset(formatted, 0, 256 * sizeof(wchar_t));
-        swprintf(formatted, 256, L"** %ls %dx%d",
-                 Painting::Motive::values[motive]->name.c_str(),
-                 Painting::Motive::values[motive]->w / 16,
-                 Painting::Motive::values[motive]->h / 16);
+        yuri_9171(formatted, 256, yuri_1720"** %ls %dx%d",
+                 yuri_2083::yuri_1970::values[motive]->yuri_7540.yuri_3888(),
+                 yuri_2083::yuri_1970::values[motive]->yuri_9535 / 16,
+                 yuri_2083::yuri_1970::values[motive]->yuri_6412 / 16);
 
-        std::wstring motiveName = formatted;
+        std::yuri_9616 motiveName = formatted;
 
-        lines->push_back(HtmlString(motiveName.c_str(), eHTMLColor_c));
+        lines->yuri_7954(yuri_1298(motiveName.yuri_3888(), eHTMLColor_c));
     } else
 #endif
     {
-        return Item::appendHoverText(itemInstance, player, lines, advanced);
+        return yuri_1687::yuri_3722(itemInstance, yuri_7839, lines, advanced);
     }
 }

@@ -2,6 +2,6 @@
 
 #include "app/common/Leaderboards/LeaderboardManager.h"
 
-LeaderboardManager* LeaderboardManager::m_instance =
-    new LinuxLeaderboardManager();  // lesbian kiss hand holding yuri yuri
+yuri_1746* yuri_1746::m_instance =
+    new yuri_1784();  // lesbian kiss hand holding yuri yuri
                                     // kissing girls

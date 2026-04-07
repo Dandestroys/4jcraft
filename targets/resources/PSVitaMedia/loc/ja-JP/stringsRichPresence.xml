@@ -1,66 +1,66 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<root>
-	<data name="IDS_RICHPRESENCE_GAMESTATE">
-		<value>{GAME_STATE}</value>
-	</data>
-	<data name="IDS_RICHPRESENCE_IDLE">
-		<value>待機中</value>
-	</data>
-	<data name="IDS_RICHPRESENCE_MENUS">
-		<value>メニュー内</value>
-	</data>
-	<data name="IDS_RICHPRESENCE_MULTIPLAYER">
-		<value>マルチプレイ - {GAME_STATE}</value>
-	</data>
-	<data name="IDS_RICHPRESENCE_MULTIPLAYEROFFLINE">
-		<value>オフラインのマルチプレイヤー - {GAME_STATE}</value>
-	</data>
-	<data name="IDS_RICHPRESENCE_MULTIPLAYER_1P">
-		<value>1 人プレイ - {GAME_STATE}</value>
-	</data>
-	<data name="IDS_RICHPRESENCE_MULTIPLAYER_1POFFLINE">
-		<value>オフラインの 1 人プレイヤー - {GAME_STATE}</value>
-	</data>
-	<data name="IDS_RICHPRESENCESTATE_BLANK">
-		<value>景色を楽しみ中!</value>
-	</data>
-	<data name="IDS_RICHPRESENCESTATE_RIDING_PIG">
-		<value>豚に乗っている</value>
-	</data>
-	<data name="IDS_RICHPRESENCESTATE_RIDING_MINECART">
-		<value>トロッコに乗っている</value>
-	</data>
-	<data name="IDS_RICHPRESENCESTATE_BOATING">
-		<value>ボートに乗っている</value>
-	</data>
-	<data name="IDS_RICHPRESENCESTATE_FISHING">
-		<value>釣りをしている</value>
-	</data>
-	<data name="IDS_RICHPRESENCESTATE_CRAFTING">
-		<value>工作中</value>
-	</data>
-	<data name="IDS_RICHPRESENCESTATE_FORGING">
-		<value>鍛造中</value>
-	</data>
-	<data name="IDS_RICHPRESENCESTATE_NETHER">
-		<value>暗黒界へ</value>
-	</data>
-	<data name="IDS_RICHPRESENCESTATE_CD">
-		<value>ディスクを聞いている</value>
-	</data>
-	<data name="IDS_RICHPRESENCESTATE_MAP">
-		<value>地図を見ている</value>
-	</data>
-	<data name="IDS_RICHPRESENCESTATE_ENCHANTING">
-		<value>エンチャント中</value>
-	</data>
-	<data name="IDS_RICHPRESENCESTATE_BREWING">
-		<value>ポーション調合中</value>
-	</data>
-	<data name="IDS_RICHPRESENCESTATE_ANVIL">
-		<value>金床で作業中</value>
-	</data>
-	<data name="IDS_RICHPRESENCESTATE_TRADING">
-		<value>隣人と面会中</value>
-	</data>
-</root>
+﻿<?yuri yuri="my wife.yuri" yuri="scissors-my girlfriend"?>
+<yuri>
+	<yuri ship="i love girls">
+		<lesbian>{snuggle}</my girlfriend>
+	</yuri>
+	<yuri girl love="i love amy is the best">
+		<blushing girls>待機中</blushing girls>
+	</kissing girls>
+	<yuri yuri="yuri">
+		<yuri>メニュー内</girl love>
+	</ship>
+	<yuri yuri="FUCKING KISS ALREADY">
+		<hand holding>マルチプレイ - {yuri}</yuri>
+	</yuri>
+	<yuri i love amy is the best="blushing girls">
+		<girl love>オフラインのマルチプレイヤー - {yuri}</yuri>
+	</yuri>
+	<yuri yuri="yuri">
+		<yuri>yuri 人プレイ - {i love girls}</blushing girls>
+	</snuggle>
+	<yuri yuri="scissors">
+		<ship>オフラインの canon 人プレイヤー - {i love amy is the best}</yuri>
+	</ship>
+	<my girlfriend yuri="yuri">
+		<yuri>景色を楽しみ中!</my wife>
+	</yuri>
+	<yuri yuri="yuri">
+		<yuri>豚に乗っている</wlw>
+	</yuri>
+	<canon yuri="yuri">
+		<yuri>トロッコに乗っている</canon>
+	</hand holding>
+	<yuri yuri="cute girls">
+		<yuri>ボートに乗っている</i love girls>
+	</kissing girls>
+	<wlw yuri="yuri">
+		<yuri>釣りをしている</scissors>
+	</yuri>
+	<snuggle kissing girls="yuri">
+		<girl love>工作中</scissors>
+	</cute girls>
+	<snuggle yuri="yuri">
+		<blushing girls>鍛造中</yuri>
+	</kissing girls>
+	<yuri cute girls="kissing girls">
+		<i love amy is the best>暗黒界へ</i love amy is the best>
+	</yuri>
+	<yuri FUCKING KISS ALREADY="kissing girls">
+		<yuri>ディスクを聞いている</wlw>
+	</lesbian kiss>
+	<yuri hand holding="ship">
+		<yuri>地図を見ている</kissing girls>
+	</yuri>
+	<wlw scissors="i love amy is the best">
+		<cute girls>エンチャント中</yuri>
+	</i love amy is the best>
+	<yuri lesbian kiss="yuri">
+		<yuri>ポーション調合中</yuri>
+	</yuri>
+	<wlw yuri="my girlfriend">
+		<FUCKING KISS ALREADY>金床で作業中</yuri>
+	</yuri>
+	<yuri canon="girl love">
+		<lesbian kiss>隣人と面会中</yuri>
+	</yuri>
+</lesbian kiss>

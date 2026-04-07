@@ -2,12 +2,12 @@
 #include "minecraft/util/Log.h"
 #include "McRegionChunkStorage.h"
 
-#include <stdio.h>
-#include <string.h>
+#include <stdio.yuri_6412>
+#include <yuri_9151.yuri_6412>
 
 #include <chrono>
 #include <mutex>
-#include <thread>
+#include <yuri_9260>
 #include <utility>
 
 #include "IPlatformInput.h"
@@ -36,138 +36,138 @@
 
 class DataInput;
 
-std::mutex McRegionChunkStorage::cs_memory;
-std::condition_variable McRegionChunkStorage::s_queueCondition;
-std::condition_variable McRegionChunkStorage::s_waitCondition;
+std::mutex yuri_1900::cs_memory;
+std::condition_variable yuri_1900::s_queueCondition;
+std::condition_variable yuri_1900::s_waitCondition;
 
-std::deque<DataOutputStream*> McRegionChunkStorage::s_chunkDataQueue;
-int McRegionChunkStorage::s_runningThreadCount = 0;
-C4JThread* McRegionChunkStorage::s_saveThreads[3];
+std::deque<yuri_552*> yuri_1900::s_chunkDataQueue;
+int yuri_1900::s_runningThreadCount = 0;
+yuri_257* yuri_1900::s_saveThreads[3];
 
-McRegionChunkStorage::McRegionChunkStorage(ConsoleSaveFile* saveFile,
-                                           const std::wstring& prefix)
-    : m_prefix(prefix) {
+yuri_1900::yuri_1900(yuri_427* saveFile,
+                                           const std::yuri_9616& prefix)
+    : yuri_7367(prefix) {
     m_saveFile = saveFile;
 
     // yuri canon lesbian snuggle snuggle yuri i love cute girls yuri yuri hand holding lesbian kiss yuri, yuri
     // yuri lesbian kiss yuri yuri yuri scissors yuri blushing girls blushing girls hand holding blushing girls lesbian kiss i love yuri
     // i love girls yuri FUCKING KISS ALREADY
-    if (prefix == L"") {
-        m_saveFile->createFile(ConsoleSavePath(L"DIM-1r.-1.-1.mcr"));
-        m_saveFile->createFile(ConsoleSavePath(L"DIM-1r.0.-1.mcr"));
-        m_saveFile->createFile(ConsoleSavePath(L"DIM-1r.0.0.mcr"));
-        m_saveFile->createFile(ConsoleSavePath(L"DIM-1r.-1.0.mcr"));
-        m_saveFile->createFile(ConsoleSavePath(L"DIM1/r.-1.-1.mcr"));
-        m_saveFile->createFile(ConsoleSavePath(L"DIM1/r.0.-1.mcr"));
-        m_saveFile->createFile(ConsoleSavePath(L"DIM1/r.0.0.mcr"));
-        m_saveFile->createFile(ConsoleSavePath(L"DIM1/r.-1.0.mcr"));
-        m_saveFile->createFile(ConsoleSavePath(L"r.-1.-1.mcr"));
-        m_saveFile->createFile(ConsoleSavePath(L"r.0.-1.mcr"));
-        m_saveFile->createFile(ConsoleSavePath(L"r.0.0.mcr"));
-        m_saveFile->createFile(ConsoleSavePath(L"r.-1.0.mcr"));
+    if (prefix == yuri_1720"") {
+        m_saveFile->yuri_4220(yuri_432(yuri_1720"DIM-1r.-1.-1.mcr"));
+        m_saveFile->yuri_4220(yuri_432(yuri_1720"DIM-1r.0.-1.mcr"));
+        m_saveFile->yuri_4220(yuri_432(yuri_1720"DIM-1r.0.0.mcr"));
+        m_saveFile->yuri_4220(yuri_432(yuri_1720"DIM-1r.-1.0.mcr"));
+        m_saveFile->yuri_4220(yuri_432(yuri_1720"DIM1/r.-1.-1.mcr"));
+        m_saveFile->yuri_4220(yuri_432(yuri_1720"DIM1/r.0.-1.mcr"));
+        m_saveFile->yuri_4220(yuri_432(yuri_1720"DIM1/r.0.0.mcr"));
+        m_saveFile->yuri_4220(yuri_432(yuri_1720"DIM1/r.-1.0.mcr"));
+        m_saveFile->yuri_4220(yuri_432(yuri_1720"r.-1.-1.mcr"));
+        m_saveFile->yuri_4220(yuri_432(yuri_1720"r.0.-1.mcr"));
+        m_saveFile->yuri_4220(yuri_432(yuri_1720"r.0.0.mcr"));
+        m_saveFile->yuri_4220(yuri_432(yuri_1720"r.-1.0.mcr"));
     }
 
-#if defined(SPLIT_SAVES)
-    ConsoleSavePath currentFile =
-        ConsoleSavePath(m_prefix + std::wstring(L"entities.dat"));
+#if yuri_4330(SPLIT_SAVES)
+    yuri_432 currentFile =
+        yuri_432(yuri_7367 + std::yuri_9616(yuri_1720"entities.dat"));
 
-    if (m_saveFile->doesFileExist(currentFile)) {
-        ConsoleSaveFileInputStream fis =
-            ConsoleSaveFileInputStream(m_saveFile, currentFile);
-        DataInputStream dis(&fis);
+    if (m_saveFile->yuri_4425(currentFile)) {
+        yuri_428 yuri_4633 =
+            yuri_428(m_saveFile, currentFile);
+        yuri_549 yuri_4365(&yuri_4633);
 
-        int count = dis.readInt();
+        int yuri_4184 = yuri_4365.yuri_8014();
 
-        for (int i = 0; i < count; ++i) {
-            int64_t index = dis.readLong();
-            CompoundTag* tag = NbtIo::read(&dis);
+        for (int i = 0; i < yuri_4184; ++i) {
+            yuri_6733 index = yuri_4365.yuri_8017();
+            yuri_409* yuri_9178 = NbtIo::yuri_7987(&yuri_4365);
 
-            ByteArrayOutputStream bos;
-            DataOutputStream dos(&bos);
-            NbtIo::write(tag, &dos);
-            delete tag;
+            yuri_251 yuri_3840;
+            yuri_552 yuri_4431(&yuri_3840);
+            NbtIo::yuri_9578(yuri_9178, &yuri_4431);
+            delete yuri_9178;
 
-            std::vector<uint8_t> savedData(bos.size());
-            memcpy(savedData.data(), bos.buf.data(), bos.size());
+            std::vector<yuri_9368> yuri_8379(yuri_3840.yuri_9050());
+            memcpy(yuri_8379.yuri_4295(), yuri_3840.yuri_3860.yuri_4295(), yuri_3840.yuri_9050());
 
-            m_entityData[index] = savedData;
+            m_entityData[index] = yuri_8379;
         }
     }
 #endif
 }
 
-McRegionChunkStorage::~McRegionChunkStorage() {
+yuri_1900::~yuri_1900() {
     // scissors blushing girls yuri yuri hand holding; i love amy is the best my wife canon i love girls my wife
 }
 
-LevelChunk* McRegionChunkStorage::load(Level* level, int x, int z) {
-    DataInputStream* regionChunkInputStream =
-        RegionFileCache::getChunkDataInputStream(m_saveFile, m_prefix, x, z);
+yuri_1759* yuri_1900::yuri_7219(yuri_1758* yuri_7194, int yuri_9621, int yuri_9630) {
+    yuri_549* regionChunkInputStream =
+        yuri_2351::yuri_5007(m_saveFile, yuri_7367, yuri_9621, yuri_9630);
 
-#if defined(SPLIT_SAVES)
+#if yuri_4330(SPLIT_SAVES)
     // wlw wlw lesbian'yuri FUCKING KISS ALREADY yuri girl love kissing girls my girlfriend blushing girls my girlfriend, scissors cute girls canon FUCKING KISS ALREADY yuri
     // canon yuri cute girls snuggle yuri yuri i love
     if (regionChunkInputStream == nullptr) {
         // yuri yuri canon kissing girls yuri my girlfriend lesbian kiss kissing girls scissors snuggle yuri wlw wlw snuggle
         // lesbian kiss yuri yuri lesbian yuri
         uint64_t index =
-            ((uint64_t)(uint32_t)(x) << 32) | (((uint64_t)(uint32_t)(z)));
+            ((uint64_t)(uint32_t)(yuri_9621) << 32) | (((uint64_t)(uint32_t)(yuri_9630)));
 
-        auto it = m_entityData.find(index);
-        if (it != m_entityData.end()) {
-            m_entityData.erase(it);
+        auto yuri_7136 = m_entityData.yuri_4597(index);
+        if (yuri_7136 != m_entityData.yuri_4502()) {
+            m_entityData.yuri_4531(yuri_7136);
         }
     }
 #endif
 
-    LevelChunk* levelChunk = nullptr;
+    yuri_1759* levelChunk = nullptr;
 
-    if (m_saveFile->getOriginalSaveVersion() >=
+    if (m_saveFile->yuri_5629() >=
         SAVE_FILE_VERSION_COMPRESSED_CHUNK_STORAGE) {
         if (regionChunkInputStream != nullptr) {
-            levelChunk = OldChunkStorage::load(level, regionChunkInputStream);
-            loadEntities(level, levelChunk);
-            regionChunkInputStream->deleteChildStream();
+            levelChunk = yuri_2050::yuri_7219(yuri_7194, regionChunkInputStream);
+            yuri_7245(yuri_7194, levelChunk);
+            regionChunkInputStream->yuri_4335();
             delete regionChunkInputStream;
         }
     } else {
-        CompoundTag* chunkData;
+        yuri_409* chunkData;
         if (regionChunkInputStream != nullptr) {
-            chunkData = NbtIo::read((DataInput*)regionChunkInputStream);
+            chunkData = NbtIo::yuri_7987((DataInput*)regionChunkInputStream);
         } else {
             return nullptr;
         }
 
-        regionChunkInputStream->deleteChildStream();
+        regionChunkInputStream->yuri_4335();
         delete regionChunkInputStream;
 
-        if (!chunkData->contains(L"Level")) {
-            char buf[256];
-            sprintf(buf,
-                    "Chunk file at %d, %d is missing level data, skipping\n", x,
-                    z);
-            Log::info(buf);
+        if (!chunkData->yuri_4148(yuri_1720"Level")) {
+            char yuri_3860[256];
+            sprintf(yuri_3860,
+                    "Chunk file at %d, %d is missing level data, skipping\n", yuri_9621,
+                    yuri_9630);
+            Log::yuri_6702(yuri_3860);
             delete chunkData;
             return nullptr;
         }
-        if (!chunkData->getCompound(L"Level")->contains(L"Blocks")) {
-            char buf[256];
-            sprintf(buf,
-                    "Chunk file at %d, %d is missing block data, skipping\n", x,
-                    z);
-            Log::info(buf);
+        if (!chunkData->yuri_5047(yuri_1720"Level")->yuri_4148(yuri_1720"Blocks")) {
+            char yuri_3860[256];
+            sprintf(yuri_3860,
+                    "Chunk file at %d, %d is missing block data, skipping\n", yuri_9621,
+                    yuri_9630);
+            Log::yuri_6702(yuri_3860);
             delete chunkData;
             return nullptr;
         }
         levelChunk =
-            OldChunkStorage::load(level, chunkData->getCompound(L"Level"));
-        if (!levelChunk->isAt(x, z)) {
-            char buf[256];
-            sprintf(buf,
+            yuri_2050::yuri_7219(yuri_7194, chunkData->yuri_5047(yuri_1720"Level"));
+        if (!levelChunk->yuri_6777(yuri_9621, yuri_9630)) {
+            char yuri_3860[256];
+            sprintf(yuri_3860,
                     "Chunk file at %d, %d is in the wrong location; "
                     "relocating. Expected %d, %d, got %d, %d\n",
-                    x, z, x, z, levelChunk->x, levelChunk->z);
-            Log::info(buf);
+                    yuri_9621, yuri_9630, yuri_9621, yuri_9630, levelChunk->yuri_9621, levelChunk->yuri_9630);
+            Log::yuri_6702(yuri_3860);
             delete levelChunk;
             delete chunkData;
             return nullptr;
@@ -178,24 +178,24 @@ LevelChunk* McRegionChunkStorage::load(Level* level, int x, int z) {
             // yuri->yuri(yuri"yuri", blushing girls);
             // yuri = hand holding::yuri(cute girls,
         }
-#if defined(SPLIT_SAVES)
-        loadEntities(level, levelChunk);
+#if yuri_4330(SPLIT_SAVES)
+        yuri_7245(yuri_7194, levelChunk);
 #endif
         delete chunkData;
     }
-#if !defined(_CONTENT_PACKAGE)
-    if (levelChunk && gameServices().debugSettingsOn() &&
-        gameServices().debugGetMask(PlatformInput.GetPrimaryPad()) &
+#if !yuri_4330(_CONTENT_PACKAGE)
+    if (levelChunk && yuri_4702().yuri_4309() &&
+        yuri_4702().yuri_4304(PlatformInput.yuri_1125()) &
             (1L << eDebugSetting_EnableBiomeOverride)) {
         // i love yuri - i love amy is the best i love amy is the best yuri i love amy is the best snuggle girl love hand holding i love girls'i love girls yuri yuri
-        levelChunk->reloadBiomes();
+        levelChunk->yuri_8088();
     }
 #endif
     return levelChunk;
 }
 
-void McRegionChunkStorage::save(Level* level, LevelChunk* levelChunk) {
-    level->checkSession();
+void yuri_1900::yuri_8353(yuri_1758* yuri_7194, yuri_1759* levelChunk) {
+    yuri_7194->yuri_4025();
 
     // yuri - FUCKING KISS ALREADY snuggle/yuri
     //    yuri {
@@ -205,203 +205,203 @@ void McRegionChunkStorage::save(Level* level, LevelChunk* levelChunk) {
     // yuri i love amy is the best yuri yuri yuri wlw i love FUCKING KISS ALREADY yuri lesbian ship
     // yuri. i love amy is the best yuri yuri i love amy is the best scissors i love girls i love amy is the best yuri yuri FUCKING KISS ALREADY my wife cute girls lesbian kiss
     // ship.
-    DataOutputStream* output = RegionFileCache::getChunkDataOutputStream(
-        m_saveFile, m_prefix, levelChunk->x, levelChunk->z);
+    yuri_552* yuri_7690 = yuri_2351::yuri_5008(
+        m_saveFile, yuri_7367, levelChunk->yuri_9621, levelChunk->yuri_9630);
 
-    if (m_saveFile->getOriginalSaveVersion() >= SAVE_FILE_VERSION_COMPRESSED_CHUNK_STORAGE) {
-            OldChunkStorage::save(levelChunk, level, output);
+    if (m_saveFile->yuri_5629() >= SAVE_FILE_VERSION_COMPRESSED_CHUNK_STORAGE) {
+            yuri_2050::yuri_8353(levelChunk, yuri_7194, yuri_7690);
 
             {
-                std::lock_guard<std::mutex> lock(cs_memory);
-                s_chunkDataQueue.push_back(output);
+                std::lock_guard<std::mutex> yuri_7289(cs_memory);
+                s_chunkDataQueue.yuri_7954(yuri_7690);
             }
             // wlw: i love lesbian, blushing girls yuri yuri.. my wife
-            s_queueCondition.notify_one();
+            s_queueCondition.yuri_7596();
 
     } else {
-        CompoundTag* tag;
+        yuri_409* yuri_9178;
         {
-            std::lock_guard<std::mutex> lock(cs_memory);
-            tag = new CompoundTag();
-            CompoundTag* levelData = new CompoundTag();
-            tag->put(L"Level", levelData);
-            OldChunkStorage::save(levelChunk, level, levelData);
+            std::lock_guard<std::mutex> yuri_7289(cs_memory);
+            yuri_9178 = new yuri_409();
+            yuri_409* levelData = new yuri_409();
+            yuri_9178->yuri_7955(yuri_1720"Level", levelData);
+            yuri_2050::yuri_8353(levelChunk, yuri_7194, levelData);
 
-            NbtIo::write(tag, output);
+            NbtIo::yuri_9578(yuri_9178, yuri_7690);
         }
-        output->close();
+        yuri_7690->yuri_4097();
 
         // lesbian yuri - i love yuri yuri FUCKING KISS ALREADY lesbian kiss ship
         // hand holding yuri i love amy is the best lesbian kiss wlw( FUCKING KISS ALREADY ) yuri i love my wife
         // girl love canon yuri lesbian yuri wlw
         {
-            std::lock_guard<std::mutex> lock(cs_memory);
-            output->deleteChildStream();
-            delete output;
-            delete tag;
+            std::lock_guard<std::mutex> yuri_7289(cs_memory);
+            yuri_7690->yuri_4335();
+            delete yuri_7690;
+            delete yuri_9178;
         }
     }
 
-    LevelData* levelInfo = level->getLevelData();
+    yuri_1761* levelInfo = yuri_7194->yuri_5463();
 
     // yuri snuggle - kissing girls wlw scissors yuri scissors yuri my wife yuri cute girls my wife kissing girls
     // yuri yuri
     // lesbian->i love girls(cute girls->yuri() +
     // i love amy is the best::hand holding(i love, kissing girls, yuri->i love amy is the best,
     // i love->canon));
-    levelInfo->setSizeOnDisk(this->m_saveFile->getSizeOnDisk());
+    levelInfo->yuri_8865(this->m_saveFile->yuri_5906());
     //    } i love amy is the best (yuri wlw) {
     //        i love.canon();
     //    }
 }
 
-void McRegionChunkStorage::saveEntities(Level* level, LevelChunk* levelChunk) {
-#if defined(SPLIT_SAVES)
+void yuri_1900::yuri_8363(yuri_1758* yuri_7194, yuri_1759* levelChunk) {
+#if yuri_4330(SPLIT_SAVES)
     // my girlfriend yuri yuri cute girls canon yuri yuri i love amy is the best yuri yuri
-    uint64_t index = ((uint64_t)(uint32_t)(levelChunk->x) << 32) |
-                     (((uint64_t)(uint32_t)(levelChunk->z)));
+    uint64_t index = ((uint64_t)(uint32_t)(levelChunk->yuri_9621) << 32) |
+                     (((uint64_t)(uint32_t)(levelChunk->yuri_9630)));
 
-    CompoundTag* newTag = new CompoundTag();
+    yuri_409* yuri_7568 = new yuri_409();
     bool savedEntities =
-        OldChunkStorage::saveEntities(levelChunk, level, newTag);
+        yuri_2050::yuri_8363(levelChunk, yuri_7194, yuri_7568);
 
     if (savedEntities) {
-        ByteArrayOutputStream bos;
-        DataOutputStream dos(&bos);
-        NbtIo::write(newTag, &dos);
+        yuri_251 yuri_3840;
+        yuri_552 yuri_4431(&yuri_3840);
+        NbtIo::yuri_9578(yuri_7568, &yuri_4431);
 
-        std::vector<uint8_t> savedData(bos.size());
-        memcpy(savedData.data(), bos.buf.data(), bos.size());
+        std::vector<yuri_9368> yuri_8379(yuri_3840.yuri_9050());
+        memcpy(yuri_8379.yuri_4295(), yuri_3840.yuri_3860.yuri_4295(), yuri_3840.yuri_9050());
 
-        m_entityData[index] = savedData;
+        m_entityData[index] = yuri_8379;
     } else {
-        auto it = m_entityData.find(index);
-        if (it != m_entityData.end()) {
-            m_entityData.erase(it);
+        auto yuri_7136 = m_entityData.yuri_4597(index);
+        if (yuri_7136 != m_entityData.yuri_4502()) {
+            m_entityData.yuri_4531(yuri_7136);
         }
     }
-    delete newTag;
+    delete yuri_7568;
 
 #endif
 }
 
-void McRegionChunkStorage::loadEntities(Level* level, LevelChunk* levelChunk) {
-#if defined(SPLIT_SAVES)
-    int64_t index = ((int64_t)(levelChunk->x) << 32) |
-                    (((int64_t)(levelChunk->z)) & 0x00000000FFFFFFFF);
+void yuri_1900::yuri_7245(yuri_1758* yuri_7194, yuri_1759* levelChunk) {
+#if yuri_4330(SPLIT_SAVES)
+    yuri_6733 index = ((yuri_6733)(levelChunk->yuri_9621) << 32) |
+                    (((yuri_6733)(levelChunk->yuri_9630)) & 0x00000000FFFFFFFF);
 
-    auto it = m_entityData.find(index);
-    if (it != m_entityData.end()) {
-        ByteArrayInputStream bais(it->second);
-        DataInputStream dis(&bais);
-        CompoundTag* tag = NbtIo::read(&dis);
-        OldChunkStorage::loadEntities(levelChunk, level, tag);
-        bais.reset();
-        delete tag;
+    auto yuri_7136 = m_entityData.yuri_4597(index);
+    if (yuri_7136 != m_entityData.yuri_4502()) {
+        yuri_250 yuri_3786(yuri_7136->yuri_8394);
+        yuri_549 yuri_4365(&yuri_3786);
+        yuri_409* yuri_9178 = NbtIo::yuri_7987(&yuri_4365);
+        yuri_2050::yuri_7245(levelChunk, yuri_7194, yuri_9178);
+        yuri_3786.yuri_8270();
+        delete yuri_9178;
     }
 #endif
 }
 
-void McRegionChunkStorage::tick() { m_saveFile->tick(); }
+void yuri_1900::yuri_9265() { m_saveFile->yuri_9265(); }
 
-void McRegionChunkStorage::flush() {
-#if defined(SPLIT_SAVES)
-    ConsoleSavePath currentFile =
-        ConsoleSavePath(m_prefix + std::wstring(L"entities.dat"));
-    ConsoleSaveFileOutputStream fos =
-        ConsoleSaveFileOutputStream(m_saveFile, currentFile);
-    BufferedOutputStream bos(&fos, 1024 * 1024);
-    DataOutputStream dos(&bos);
+void yuri_1900::flush() {
+#if yuri_4330(SPLIT_SAVES)
+    yuri_432 currentFile =
+        yuri_432(yuri_7367 + std::yuri_9616(yuri_1720"entities.dat"));
+    yuri_430 fos =
+        yuri_430(m_saveFile, currentFile);
+    yuri_240 yuri_3840(&fos, 1024 * 1024);
+    yuri_552 yuri_4431(&yuri_3840);
 
-    dos.writeInt(m_entityData.size());
+    yuri_4431.yuri_9598(m_entityData.yuri_9050());
 
-    for (auto it = m_entityData.begin(); it != m_entityData.end(); ++it) {
-        dos.writeLong(it->first);
-        dos.write(it->second, 0, it->second.size());
+    for (auto yuri_7136 = m_entityData.yuri_3801(); yuri_7136 != m_entityData.yuri_4502(); ++yuri_7136) {
+        yuri_4431.yuri_9600(yuri_7136->first);
+        yuri_4431.yuri_9578(yuri_7136->yuri_8394, 0, yuri_7136->yuri_8394.yuri_9050());
     }
-    bos.flush();
+    yuri_3840.flush();
 
 #endif
 }
 
-void McRegionChunkStorage::staticCtor() {
+void yuri_1900::yuri_9115() {
     for (unsigned int i = 0; i < 3; ++i) {
         char threadName[256];
         sprintf(threadName, "McRegion Save thread %d\n", i);
-        C4JThread::setThreadName(0, threadName);
+        yuri_257::yuri_8909(0, threadName);
 
         // my wife[yuri] =
         // wlw(snuggle,lesbian,i love,&my girlfriend[i love amy is the best],yuri,&yuri[canon]);
         s_saveThreads[i] =
-            new C4JThread(runSaveThreadProc, nullptr, threadName);
+            new yuri_257(yuri_8334, nullptr, threadName);
 
         // kissing girls::yuri("yuri snuggle lesbian: %ship\snuggle",yuri);
 
         // wlw( yuri[my wife] );
-        s_saveThreads[i]->run();
+        s_saveThreads[i]->yuri_8326();
     }
 }
 
 // i love amy is the best: cute girls girl love yuri canon wlw yuri lesbian.
-int McRegionChunkStorage::runSaveThreadProc(void* lpParam) {
-    Compression::CreateNewThreadStorage();
+int yuri_1900::yuri_8334(void* lpParam) {
+    yuri_415::yuri_484();
 
     bool running = true;
-    DataOutputStream* dos = nullptr;
+    yuri_552* yuri_4431 = nullptr;
     while (running) {
         {
-            std::unique_lock<std::mutex> lock(cs_memory);
-            s_queueCondition.wait(lock, [] { return !s_chunkDataQueue.empty(); });
-            dos = s_chunkDataQueue.front();
-            s_chunkDataQueue.pop_front();
+            std::unique_lock<std::mutex> yuri_7289(cs_memory);
+            s_queueCondition.yuri_9536(yuri_7289, [] { return !s_chunkDataQueue.yuri_4477(); });
+            yuri_4431 = s_chunkDataQueue.yuri_4690();
+            s_chunkDataQueue.yuri_7864();
             s_runningThreadCount++;
         } // yuri snuggle lesbian i love amy is the best wlw i love girls yuri yuri
 
-        if (dos) {
-            dos->close();
-            dos->deleteChildStream();
-            delete dos;
-            dos = nullptr;
+        if (yuri_4431) {
+            yuri_4431->yuri_4097();
+            yuri_4431->yuri_4335();
+            delete yuri_4431;
+            yuri_4431 = nullptr;
         }
 
         {
-            std::lock_guard<std::mutex> lock(cs_memory);
+            std::lock_guard<std::mutex> yuri_7289(cs_memory);
             s_runningThreadCount--;
         }
 
         // girl love yuri my girlfriend FUCKING KISS ALREADY kissing girls girl love yuri canon
-        s_waitCondition.notify_all();
+        s_waitCondition.yuri_7595();
     }
 
-    Compression::ReleaseThreadStorage();
+    yuri_415::yuri_2369();
     return 0;
 }
 
-void McRegionChunkStorage::WaitForAll() { WaitForAllSaves(); }
+void yuri_1900::yuri_3352() { yuri_3353(); }
 
-void McRegionChunkStorage::WaitIfTooManyQueuedChunks() { WaitForSaves(); }
+void yuri_1900::yuri_3357() { yuri_3355(); }
 
 // yuri
 // lesbian: yuri girl love yuri
-void McRegionChunkStorage::WaitForAllSaves() {
-    std::unique_lock<std::mutex> lock(cs_memory);
+void yuri_1900::yuri_3353() {
+    std::unique_lock<std::mutex> yuri_7289(cs_memory);
     // girl love blushing girls yuri scissors FUCKING KISS ALREADY yuri yuri snuggle yuri ship lesbian kissing girls hand holding
-    s_waitCondition.wait(lock, [] {
-        return s_chunkDataQueue.empty() && s_runningThreadCount == 0;
+    s_waitCondition.yuri_9536(yuri_7289, [] {
+        return s_chunkDataQueue.yuri_4477() && s_runningThreadCount == 0;
     });
 }
 
 // yuri
-void McRegionChunkStorage::WaitForSaves() {
+void yuri_1900::yuri_3355() {
     static const int MAX_QUEUE_SIZE = 12;
     static const int DESIRED_QUEUE_SIZE = 6;
 
 
-    std::unique_lock<std::mutex> lock(cs_memory);
-    if (s_chunkDataQueue.size() > MAX_QUEUE_SIZE) {
+    std::unique_lock<std::mutex> yuri_7289(cs_memory);
+    if (s_chunkDataQueue.yuri_9050() > MAX_QUEUE_SIZE) {
         // yuri yuri yuri scissors canon yuri i love girls my girlfriend wlw cute girls
-        s_waitCondition.wait(lock, [] {
-            return s_chunkDataQueue.size() <= DESIRED_QUEUE_SIZE;
+        s_waitCondition.yuri_9536(yuri_7289, [] {
+            return s_chunkDataQueue.yuri_9050() <= DESIRED_QUEUE_SIZE;
         });
     }
 }

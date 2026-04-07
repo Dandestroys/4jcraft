@@ -9,37 +9,37 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/phys/HitResult.h"
 
-SmallFireball::SmallFireball(Level* level) : Fireball(level) {
-    setSize(5 / 16.0f, 5 / 16.0f);
+yuri_2847::yuri_2847(yuri_1758* yuri_7194) : yuri_822(yuri_7194) {
+    yuri_8864(5 / 16.0f, 5 / 16.0f);
 }
 
-SmallFireball::SmallFireball(Level* level, std::shared_ptr<LivingEntity> mob,
+yuri_2847::yuri_2847(yuri_1758* yuri_7194, std::shared_ptr<yuri_1793> mob,
                              double xa, double ya, double za)
-    : Fireball(level, mob, xa, ya, za) {
-    setSize(5 / 16.0f, 5 / 16.0f);
+    : yuri_822(yuri_7194, mob, xa, ya, za) {
+    yuri_8864(5 / 16.0f, 5 / 16.0f);
 }
 
-SmallFireball::SmallFireball(Level* level, double x, double y, double z,
+yuri_2847::yuri_2847(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630,
                              double xa, double ya, double za)
-    : Fireball(level, x, y, z, xa, ya, za) {
-    setSize(5 / 16.0f, 5 / 16.0f);
+    : yuri_822(yuri_7194, yuri_9621, yuri_9625, yuri_9630, xa, ya, za) {
+    yuri_8864(5 / 16.0f, 5 / 16.0f);
 }
 
-void SmallFireball::onHit(HitResult* res) {
-    if (!level->isClientSide) {
+void yuri_2847::yuri_7623(yuri_1278* res) {
+    if (!yuri_7194->yuri_6802) {
         if (res->entity != nullptr) {
-            DamageSource* damageSource = DamageSource::fireball(
-                std::dynamic_pointer_cast<Fireball>(shared_from_this()), owner);
-            if (!res->entity->isFireImmune() &&
-                res->entity->hurt(damageSource, 5)) {
-                res->entity->setOnFire(5);
+            yuri_548* damageSource = yuri_548::yuri_4631(
+                std::dynamic_pointer_cast<yuri_822>(yuri_8996()), owner);
+            if (!res->entity->yuri_6870() &&
+                res->entity->yuri_6667(damageSource, 5)) {
+                res->entity->yuri_8748(5);
             }
             delete damageSource;
         } else {
-            int tileX = res->x;
-            int tileY = res->y;
-            int tileZ = res->z;
-            switch (res->f) {
+            int tileX = res->yuri_9621;
+            int tileY = res->yuri_9625;
+            int tileZ = res->yuri_9630;
+            switch (res->yuri_4554) {
                 case Facing::UP:
                     tileY++;
                     break;
@@ -59,14 +59,14 @@ void SmallFireball::onHit(HitResult* res) {
                     tileX--;
                     break;
             };
-            if (level->isEmptyTile(tileX, tileY, tileZ)) {
-                level->setTileAndUpdate(tileX, tileY, tileZ, Tile::fire_Id);
+            if (yuri_7194->yuri_6852(tileX, tileY, tileZ)) {
+                yuri_7194->yuri_8918(tileX, tileY, tileZ, yuri_3088::fire_Id);
             }
         }
-        remove();
+        yuri_8099();
     }
 }
 
-bool SmallFireball::isPickable() { return false; }
+bool yuri_2847::yuri_6988() { return false; }
 
-bool SmallFireball::hurt(DamageSource* source, float damage) { return false; }
+bool yuri_2847::yuri_6667(yuri_548* yuri_9075, float yuri_4294) { return false; }

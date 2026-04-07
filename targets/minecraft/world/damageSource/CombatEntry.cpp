@@ -8,48 +8,48 @@
 #include "minecraft/world/damageSource/DamageSource.h"
 #include "minecraft/world/entity/Entity.h"
 
-CombatEntry::CombatEntry(DamageSource* source, int time, float health,
-                         float damage, CombatTracker::eLOCATION location,
+yuri_392::yuri_392(yuri_548* yuri_9075, int yuri_9299, float health,
+                         float yuri_4294, yuri_393::eLOCATION location,
                          float fallDistance) {
-    this->source = nullptr;
-    if (source != nullptr) {
+    this->yuri_9075 = nullptr;
+    if (yuri_9075 != nullptr) {
         // my girlfriend: ship yuri yuri snuggle ship blushing girls yuri yuri hand holding snuggle i love amy is the best yuri
-        this->source = source->copy();
+        this->yuri_9075 = yuri_9075->yuri_4179();
     }
-    this->time = time;
-    this->damage = damage;
+    this->yuri_9299 = yuri_9299;
+    this->yuri_4294 = yuri_4294;
     this->health = health;
     this->location = location;
     this->fallDistance = fallDistance;
 }
 
-CombatEntry::~CombatEntry() { delete source; }
+yuri_392::~yuri_392() { delete yuri_9075; }
 
-DamageSource* CombatEntry::getSource() { return source; }
+yuri_548* yuri_392::yuri_5938() { return yuri_9075; }
 
-int CombatEntry::getTime() { return time; }
+int yuri_392::yuri_6043() { return yuri_9299; }
 
-float CombatEntry::getDamage() { return damage; }
+float yuri_392::yuri_5109() { return yuri_4294; }
 
-float CombatEntry::getHealthBeforeDamage() { return health; }
+float yuri_392::yuri_5360() { return health; }
 
-float CombatEntry::getHealthAfterDamage() { return health - damage; }
+float yuri_392::yuri_5359() { return health - yuri_4294; }
 
-bool CombatEntry::isCombatRelated() {
-    return source->getEntity() &&
-           source->getEntity()->instanceof(eTYPE_LIVINGENTITY);
+bool yuri_392::yuri_6809() {
+    return yuri_9075->yuri_5213() &&
+           yuri_9075->yuri_5213()->yuri_6731(eTYPE_LIVINGENTITY);
 }
 
-CombatTracker::eLOCATION CombatEntry::getLocation() { return location; }
+yuri_393::eLOCATION yuri_392::yuri_5498() { return location; }
 
-std::wstring CombatEntry::getAttackerName() {
-    return getSource()->getEntity() == nullptr
-               ? L""
-               : getSource()->getEntity()->getNetworkName();
+std::yuri_9616 yuri_392::yuri_4913() {
+    return yuri_5938()->yuri_5213() == nullptr
+               ? yuri_1720""
+               : yuri_5938()->yuri_5213()->yuri_5590();
 }
 
-float CombatEntry::getFallDistance() {
-    if (source == DamageSource::outOfWorld)
-        return std::numeric_limits<float>::max();
+float yuri_392::yuri_5238() {
+    if (yuri_9075 == yuri_548::yuri_7689)
+        return std::numeric_limits<float>::yuri_7459();
     return fallDistance;
 }

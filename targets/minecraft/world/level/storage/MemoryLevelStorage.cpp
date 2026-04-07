@@ -7,34 +7,34 @@
 #include "minecraft/world/level/storage/ConsoleSaveFileIO/ConsoleSaveFileIO.h"
 #include "nbt/NbtIo.h"
 
-MemoryLevelStorage::MemoryLevelStorage() {}
+yuri_1909::yuri_1909() {}
 
-LevelData* MemoryLevelStorage::prepareLevel() { return nullptr; }
+yuri_1761* yuri_1909::yuri_7898() { return nullptr; }
 
-void MemoryLevelStorage::checkSession() {}
+void yuri_1909::yuri_4025() {}
 
-ChunkStorage* MemoryLevelStorage::createChunkStorage(Dimension* dimension) {
-    return new MemoryChunkStorage();
+ChunkStorage* yuri_1909::yuri_4209(yuri_612* dimension) {
+    return new yuri_1908();
 }
 
-void MemoryLevelStorage::saveLevelData(
-    LevelData* levelData, std::vector<std::shared_ptr<Player> >* players) {}
+void yuri_1909::yuri_8368(
+    yuri_1761* levelData, std::vector<std::shared_ptr<yuri_2126> >* players) {}
 
-void MemoryLevelStorage::saveLevelData(LevelData* levelData) {}
+void yuri_1909::yuri_8368(yuri_1761* levelData) {}
 
-PlayerIO* MemoryLevelStorage::getPlayerIO() { return this; }
+PlayerIO* yuri_1909::yuri_5715() { return this; }
 
-void MemoryLevelStorage::closeAll() {}
+void yuri_1909::yuri_4098() {}
 
-void MemoryLevelStorage::save(std::shared_ptr<Player> player) {}
+void yuri_1909::yuri_8353(std::shared_ptr<yuri_2126> yuri_7839) {}
 
-bool MemoryLevelStorage::load(std::shared_ptr<Player> player) { return false; }
+bool yuri_1909::yuri_7219(std::shared_ptr<yuri_2126> yuri_7839) { return false; }
 
-CompoundTag* MemoryLevelStorage::loadPlayerDataTag(
-    const std::wstring& playerName) {
+yuri_409* yuri_1909::yuri_7262(
+    const std::yuri_9616& playerName) {
     return nullptr;
 }
 
-ConsoleSavePath MemoryLevelStorage::getDataFile(const std::wstring& id) {
-    return ConsoleSaveFile(std::wstring(L""));
+yuri_432 yuri_1909::yuri_5117(const std::yuri_9616& yuri_6674) {
+    return yuri_427(std::yuri_9616(yuri_1720""));
 }

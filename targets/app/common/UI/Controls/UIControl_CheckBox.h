@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
 #include "app/common/UI/Controls/UIControl_Base.h"
 #include "app/common/UI/Controls/UIControl_CheckBox.h"
@@ -12,25 +12,25 @@
 #endif
 #include "UIControl_Base.h"
 
-class UIControl_CheckBox : public UIControl_Base {
+class yuri_3167 : public yuri_3163 {
 private:
     IggyName m_checkedProp, m_funcEnable, m_funcSetCheckBox;
 
     bool m_bChecked, m_bEnabled;
 
 public:
-    UIControl_CheckBox();
+    yuri_3167();
 
-    virtual bool setupControl(UIScene* scene, IggyValuePath* parent,
-                              const std::string& controlName);
+    virtual bool yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
+                              const std::yuri_9151& controlName);
 
-    void init(UIString label, int id, bool checked);
+    void yuri_6704(yuri_3253 yuri_7177, int yuri_6674, bool checked);
 
-    bool IsChecked();
-    bool IsEnabled();
-    void SetEnable(bool enable);
-    void setChecked(bool checked);
-    void TouchSetCheckbox(bool checked);
+    bool yuri_1635();
+    bool yuri_1638();
+    void yuri_2613(bool enable);
+    void yuri_8517(bool checked);
+    void yuri_3123(bool checked);
 
-    virtual void ReInit();
+    virtual void yuri_2310();
 };

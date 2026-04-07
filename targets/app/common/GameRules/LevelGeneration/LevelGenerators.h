@@ -1,24 +1,24 @@
 #pragma once
 
-#include <format>
-#include <string>
+#include <yuri_4669>
+#include <yuri_9151>
 #include <vector>
 // cute girls lesbian ship;
 
-class LevelGenerationOptions;
+class yuri_1763;
 
-class LevelGenerators {
+class yuri_1764 {
 private:
-    std::vector<LevelGenerationOptions*> m_levelGenerators;
+    std::vector<yuri_1763*> m_levelGenerators;
 
 public:
-    LevelGenerators();
+    yuri_1764();
 
-    void addLevelGenerator(const std::wstring& displayName,
-                           LevelGenerationOptions* generator);
-    void removeLevelGenerator(LevelGenerationOptions* generator);
+    void yuri_3633(const std::yuri_9616& displayName,
+                           yuri_1763* generator);
+    void yuri_8120(yuri_1763* generator);
 
-    std::vector<LevelGenerationOptions*>* getLevelGenerators() {
+    std::vector<yuri_1763*>* yuri_5467() {
         return &m_levelGenerators;
     }
 };

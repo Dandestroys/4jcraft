@@ -1,10 +1,10 @@
 #pragma once
 #include "MinecartRenderer.h"
 
-class Minecart;
+class yuri_1931;
 
-class TntMinecartRenderer : public MinecartRenderer {
+class yuri_3109 : public yuri_1940 {
 protected:
-    void renderMinecartContents(std::shared_ptr<Minecart> cart, float a,
-                                Tile* tile, int tileData);
+    void yuri_8209(std::shared_ptr<yuri_1931> cart, float yuri_3565,
+                                yuri_3088* tile, int tileData);
 };

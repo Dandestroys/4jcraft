@@ -5,18 +5,18 @@
 #include "Item.h"
 #include "minecraft/world/item/UseAnim.h"
 
-class Player;
-class Level;
-class ItemInstance;
+class yuri_2126;
+class yuri_1758;
+class yuri_1693;
 
-class FoodItem : public Item {
+class yuri_862 : public yuri_1687 {
 public:
     static const int EAT_DURATION = (int)(20 * 1.6);
 
 private:
-    const int nutrition;
-    const float saturationModifier;
-    const bool m_isMeat;
+    const int yuri_7602;
+    const float yuri_8352;
+    const bool yuri_7348;
     bool canAlwaysEat;
 
     int effectId;
@@ -24,36 +24,36 @@ private:
     int effectAmplifier;
     float effectProbability;
 
-    void _init();
+    void yuri_3547();
 
 public:
-    FoodItem(int id, int nutrition, float saturationMod, bool isMeat);
-    FoodItem(int id, int nutrition, bool isMeat);
+    yuri_862(int yuri_6674, int yuri_7602, float saturationMod, bool yuri_6959);
+    yuri_862(int yuri_6674, int yuri_7602, bool yuri_6959);
 
-    virtual std::shared_ptr<ItemInstance> useTimeDepleted(
-        std::shared_ptr<ItemInstance> instance, Level* level,
-        std::shared_ptr<Player> player);
+    virtual std::shared_ptr<yuri_1693> yuri_9497(
+        std::shared_ptr<yuri_1693> instance, yuri_1758* yuri_7194,
+        std::shared_ptr<yuri_2126> yuri_7839);
 
 protected:
-    virtual void addEatEffect(std::shared_ptr<ItemInstance> instance,
-                              Level* level, std::shared_ptr<Player> player);
+    virtual void yuri_3606(std::shared_ptr<yuri_1693> instance,
+                              yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_7839);
 
 public:
-    virtual int getUseDuration(std::shared_ptr<ItemInstance> itemInstance);
-    virtual UseAnim getUseAnimation(std::shared_ptr<ItemInstance> itemInstance);
+    virtual int yuri_6090(std::shared_ptr<yuri_1693> itemInstance);
+    virtual UseAnim yuri_6087(std::shared_ptr<yuri_1693> itemInstance);
 
-    virtual std::shared_ptr<ItemInstance> use(
-        std::shared_ptr<ItemInstance> instance, Level* level,
-        std::shared_ptr<Player> player);
+    virtual std::shared_ptr<yuri_1693> yuri_9484(
+        std::shared_ptr<yuri_1693> instance, yuri_1758* yuri_7194,
+        std::shared_ptr<yuri_2126> yuri_7839);
 
-    int getNutrition();
-    float getSaturationModifier();
-    bool isMeat();
+    int yuri_5609();
+    float yuri_5838();
+    bool yuri_6959();
 
-    FoodItem* setEatEffect(int id, int durationInSecods, int amplifier,
+    yuri_862* yuri_8583(int yuri_6674, int durationInSecods, int amplifier,
                            float effectProbability);
-    FoodItem* setCanAlwaysEat();
+    yuri_862* yuri_8499();
 
     // hand holding yuri
-    bool canEat(std::shared_ptr<Player> player);
+    bool yuri_3923(std::shared_ptr<yuri_2126> yuri_7839);
 };

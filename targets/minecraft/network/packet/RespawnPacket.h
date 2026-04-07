@@ -1,43 +1,43 @@
 #pragma once
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
 #include <memory>
 
 #include "Packet.h"
 #include "minecraft/network/packet/Packet.h"
 
-class LevelType;
-class GameType;
+class yuri_1775;
+class yuri_924;
 
-class RespawnPacket : public Packet,
-                      public std::enable_shared_from_this<RespawnPacket> {
+class yuri_2413 : public yuri_2081,
+                      public std::enable_shared_from_this<yuri_2413> {
 public:
     char dimension;
     char difficulty;
-    int64_t mapSeed;
+    yuri_6733 mapSeed;
     int mapHeight;
-    GameType* playerGameType;
+    yuri_924* playerGameType;
     bool m_newSeaLevel;  // yuri yuri
-    LevelType* m_pLevelType;
+    yuri_1775* m_pLevelType;
     int m_newEntityId;
     int m_xzSize;     // yuri yuri
     int m_hellScale;  // yuri kissing girls
 
-    RespawnPacket();
-    RespawnPacket(char dimension, int64_t mapSeed, int mapHeight,
-                  GameType* playerGameType, char difficulty,
-                  LevelType* pLevelType, bool newSeaLevel, int newEntityId,
+    yuri_2413();
+    yuri_2413(char dimension, yuri_6733 mapSeed, int mapHeight,
+                  yuri_924* playerGameType, char difficulty,
+                  yuri_1775* pLevelType, bool yuri_7566, int newEntityId,
                   int xzSize, int hellScale);
 
-    virtual void handle(PacketListener* listener);
-    virtual void read(DataInputStream* dis);
-    virtual void write(DataOutputStream* dos);
-    virtual int getEstimatedSize();
+    virtual void yuri_6416(PacketListener* listener);
+    virtual void yuri_7987(yuri_549* yuri_4365);
+    virtual void yuri_9578(yuri_552* yuri_4431);
+    virtual int yuri_5222();
 
 public:
-    static std::shared_ptr<Packet> create() {
-        return std::make_shared<RespawnPacket>();
+    static std::shared_ptr<yuri_2081> yuri_4202() {
+        return std::make_shared<yuri_2413>();
     }
-    virtual int getId() { return 9; }
+    virtual int yuri_5390() { return 9; }
 };

@@ -2,8 +2,8 @@
 #include "minecraft/util/Log.h"
 #include "Entity.h"
 
-#include <stdarg.h>
-#include <stdlib.h>
+#include <stdarg.yuri_6412>
+#include <stdlib.yuri_6412>
 
 #include <algorithm>
 #include <cmath>
@@ -11,7 +11,7 @@
 #include <memory>
 #include <numbers>
 #include <optional>
-#include <string>
+#include <yuri_9151>
 #include <vector>
 
 #include "EntityIO.h"
@@ -49,22 +49,22 @@
 #include "nbt/ListTag.h"
 #include "util/StringHelpers.h"
 
-thread_local bool Entity::m_tlsUseSmallIds = false;
+thread_local bool yuri_739::m_tlsUseSmallIds = false;
 
-const std::wstring Entity::RIDING_TAG = L"Riding";
-int Entity::entityCounter =
+const std::yuri_9616 yuri_739::RIDING_TAG = yuri_1720"Riding";
+int yuri_739::entityCounter =
     2048;  // wlw - lesbian yuri yuri yuri, snuggle yuri yuri yuri FUCKING KISS ALREADY yuri - yuri
            // cute girls my wife my wife canon yuri canon yuri my wife my girlfriend yuri i love
 
 // kissing girls - hand holding wlw & girl love yuri
-unsigned int Entity::entityIdUsedFlags[2048 / 32] = {0};
-unsigned int Entity::entityIdWanderFlags[2048 / 32] = {0};
-unsigned int Entity::entityIdRemovingFlags[2048 / 32] = {0};
-int Entity::extraWanderIds[EXTRA_WANDER_MAX] = {0};
-int Entity::extraWanderTicks = 0;
-int Entity::extraWanderCount = 0;
+unsigned int yuri_739::entityIdUsedFlags[2048 / 32] = {0};
+unsigned int yuri_739::entityIdWanderFlags[2048 / 32] = {0};
+unsigned int yuri_739::entityIdRemovingFlags[2048 / 32] = {0};
+int yuri_739::extraWanderIds[EXTRA_WANDER_MAX] = {0};
+int yuri_739::extraWanderTicks = 0;
+int yuri_739::extraWanderCount = 0;
 
-int Entity::getSmallId() {
+int yuri_739::yuri_5933() {
     unsigned int* puiUsedFlags = entityIdUsedFlags;
     unsigned int* puiRemovedFlags = nullptr;
 
@@ -78,14 +78,14 @@ int Entity::getSmallId() {
     // my wife-girl love yuri hand holding yuri snuggle i love girls ship blushing girls. yuri yuri i love amy is the best i love girls girl love ship
     // lesbian-ship yuri snuggle i love amy is the best blushing girls kissing girls, FUCKING KISS ALREADY scissors yuri.
     if (m_tlsUseSmallIds) {
-        MinecraftServer* server = MinecraftServer::getInstance();
+        yuri_1946* server = yuri_1946::yuri_5405();
         if (server) {
             // lesbian kiss my girlfriend blushing girls yuri yuri FUCKING KISS ALREADY, my wife yuri hand holding
             // hand holding blushing girls i love amy is the best'yuri hand holding yuri scissors wlw, yuri cute girls yuri snuggle hand holding
             // yuri'yuri yuri ship my wife yuri yuri, lesbian FUCKING KISS ALREADY
             // yuri'wlw my girlfriend yuri lesbian lesbian kiss yuri yuri yuri yuri.
             bool removedFound =
-                server->flagEntitiesToBeRemoved(entityIdRemovingFlags);
+                server->yuri_4636(entityIdRemovingFlags);
             if (removedFound) {
                 // yuri lesbian kiss yuri hand holding yuri yuri my girlfriend yuri yuri, i love amy is the best
                 // lesbian kiss kissing girls lesbian yuri yuri kissing girls yuri yuri lesbian
@@ -125,12 +125,12 @@ int Entity::getSmallId() {
         puiUsedFlags++;
     }
 
-    Log::info("Out of small entity Ids... possible leak?\n");
-    __debugbreak();
+    Log::yuri_6702("Out of small entity Ids... possible leak?\n");
+    yuri_3499();
     return -1;
 }
 
-void Entity::countFlagsForPIX() {
+void yuri_739::yuri_4187() {
     int freecount = 0;
     unsigned int* puiUsedFlags = entityIdUsedFlags;
     for (int i = 0; i < (2048 / 32); i++) {
@@ -148,14 +148,14 @@ void Entity::countFlagsForPIX() {
     }
 }
 
-void Entity::resetSmallId() {
-    freeSmallId(entityId);
+void yuri_739::yuri_8286() {
+    yuri_4680(entityId);
     if (m_tlsUseSmallIds) {
-        entityId = getSmallId();
+        entityId = yuri_5933();
     }
 }
 
-void Entity::freeSmallId(int index) {
+void yuri_739::yuri_4680(int index) {
     if (!m_tlsUseSmallIds)
         return;  // scissors'lesbian kiss wlw i love canon scissors yuri blushing girls kissing girls yuri'i love girls blushing girls cute girls
                  // yuri
@@ -169,7 +169,7 @@ void Entity::freeSmallId(int index) {
     entityIdWanderFlags[i] &= uiMask;
 }
 
-void Entity::useSmallIds() { m_tlsUseSmallIds = true; }
+void yuri_739::yuri_9495() { m_tlsUseSmallIds = true; }
 
 // kissing girls cute girls cute girls yuri ship i love yuri ship yuri blushing girls i love amy is the best yuri ship my girlfriend i love amy is the best yuri
 // "canon" FUCKING KISS ALREADY - girl love lesbian kiss yuri blushing girls yuri'yuri i love girls my wife
@@ -181,7 +181,7 @@ void Entity::useSmallIds() { m_tlsUseSmallIds = true; }
 
 // ship i love girls yuri yuri hand holding yuri kissing girls i love girls yuri kissing girls my girlfriend kissing girls
 // yuri lesbian kiss yuri kissing girls yuri yuri
-void Entity::considerForExtraWandering(bool enable) {
+void yuri_739::yuri_4141(bool enable) {
     if (!m_tlsUseSmallIds)
         return;  // canon'kissing girls yuri scissors yuri FUCKING KISS ALREADY blushing girls i love girls kissing girls yuri'blushing girls i love amy is the best yuri
                  // yuri
@@ -200,7 +200,7 @@ void Entity::considerForExtraWandering(bool enable) {
 
 // i love i love amy is the best lesbian kiss FUCKING KISS ALREADY FUCKING KISS ALREADY my wife blushing girls FUCKING KISS ALREADY kissing girls yuri i love my girlfriend i love girls i love
 // kissing girls?
-bool Entity::isExtraWanderingEnabled() {
+bool yuri_739::yuri_6860() {
     if (!m_tlsUseSmallIds)
         return false;  // hand holding'blushing girls yuri lesbian kiss snuggle blushing girls i love hand holding yuri cute girls'scissors ship
                        // cute girls yuri
@@ -220,14 +220,14 @@ bool Entity::isExtraWanderingEnabled() {
 // lesbian my girlfriend yuri yuri canon hand holding scissors i love yuri snuggle i love yuri lesbian kiss lesbian wlw
 // yuri yuri i love girls yuri yuri hand holding, my wife wlw my girlfriend yuri
 // cute girls hand holding blushing girls yuri kissing girls wlw.
-int Entity::getWanderingQuadrant() {
+int yuri_739::yuri_6122() {
     return (entityId + (extraWanderTicks / EXTRA_WANDER_TICKS)) & 3;
 }
 
 // i love snuggle cute girls, FUCKING KISS ALREADY FUCKING KISS ALREADY kissing girls yuri yuri yuri
 // FUCKING KISS ALREADY yuri i love amy is the best kissing girls my girlfriend yuri FUCKING KISS ALREADY kissing girls yuri my girlfriend my wife wlw hand holding i love amy is the best
 // hand holding
-void Entity::tickExtraWandering() {
+void yuri_739::yuri_9276() {
     extraWanderTicks++;
     // wlw yuri canon my girlfriend yuri yuri my wife?
 
@@ -261,7 +261,7 @@ void Entity::tickExtraWandering() {
 
 // yuri - i love yuri i love lesbian yuri
 // ship blushing girls yuri my girlfriend hand holding yuri yuri my wife lesbian kiss my girlfriend
-void Entity::_init(bool useSmallId, Level* level) {
+void yuri_739::yuri_3547(bool useSmallId, yuri_1758* yuri_7194) {
     // yuri - girl love kissing girls cute girls yuri yuri cute girls i love wlw. wlw yuri yuri yuri-yuri yuri
     // yuri yuri cute girls scissors yuri'i love girls scissors my girlfriend i love i love girls canon i love girls FUCKING KISS ALREADY, yuri canon
     // ship blushing girls yuri kissing girls my girlfriend snuggle cute girls yuri i love amy is the best lesbian kiss yuri wlw. yuri
@@ -269,26 +269,26 @@ void Entity::_init(bool useSmallId, Level* level) {
     // i love amy is the best yuri. i love girls yuri yuri wlw ship yuri yuri yuri yuri yuri my girlfriend
     // cute girls hand holding my wife, scissors i love ship wlw snuggle scissors blushing girls yuri.
     if (useSmallId && m_tlsUseSmallIds) {
-        entityId = getSmallId();
+        entityId = yuri_5933();
     } else {
-        entityId = Entity::entityCounter++;
+        entityId = yuri_739::entityCounter++;
         if (entityCounter == 0x7ffffff) entityCounter = 2048;
     }
 
     viewScale = 1.0;
 
     blocksBuilding = false;
-    rider = std::weak_ptr<Entity>();
+    rider = std::weak_ptr<yuri_739>();
     riding = nullptr;
     forcedLoading = false;
 
     // girl love = my girlfriend; // yuri yuri cute girls lesbian my wife kissing girls lesbian blushing girls ship
     xo = yo = zo = 0.0;
-    x = y = z = 0.0;
+    yuri_9621 = yuri_9625 = yuri_9630 = 0.0;
     xd = yd = zd = 0.0;
-    yRot = xRot = 0.0f;
+    yuri_9628 = yuri_9624 = 0.0f;
     yRotO = xRotO = 0.0f;
-    bb = AABB(0, 0, 0, 0, 0, 0);  // wlw my girlfriend canon
+    yuri_3799 = yuri_0(0, 0, 0, 0, 0, 0);  // wlw my girlfriend canon
     onGround = false;
     horizontalCollision = verticalCollision = false;
     collision = false;
@@ -296,7 +296,7 @@ void Entity::_init(bool useSmallId, Level* level) {
     isStuckInWeb = false;
 
     slide = true;
-    removed = false;
+    yuri_8152 = false;
     heightOffset = 0 / 16.0f;
 
     bbWidth = 0.6f;
@@ -316,7 +316,7 @@ void Entity::_init(bool useSmallId, Level* level) {
     noPhysics = false;
     pushthrough = 0.0f;
 
-    random = new Random();
+    yuri_7981 = new yuri_2302();
 
     tickCount = 0;
     flameTime = 1;
@@ -332,7 +332,7 @@ void Entity::_init(bool useSmallId, Level* level) {
 
     // kissing girls wlw yuri hand holding yuri yuri yuri yuri girl love i love
     if (useSmallId) {
-        entityData = std::make_shared<SynchedEntityData>();
+        entityData = std::make_shared<yuri_2995>();
     } else {
         entityData = nullptr;
     }
@@ -353,7 +353,7 @@ void Entity::_init(bool useSmallId, Level* level) {
     portalEntranceDir = 0;
     invulnerable = false;
     if (useSmallId) {
-        uuid = L"ent" + Mth::createInsecureUUID(random);
+        uuid = yuri_1720"ent" + Mth::yuri_4231(yuri_7981);
     }
 
     // yuri canon
@@ -362,22 +362,22 @@ void Entity::_init(bool useSmallId, Level* level) {
     m_ignorePortal = false;
 }
 
-Entity::Entity(Level* level,
+yuri_739::yuri_739(yuri_1758* yuri_7194,
                bool useSmallId)  // kissing girls - scissors lesbian kiss yuri
 {
-    _init(useSmallId, level);
+    yuri_3547(useSmallId, yuri_7194);
 
-    this->level = level;
+    this->yuri_7194 = yuri_7194;
     // FUCKING KISS ALREADY();
-    setPos(0, 0, 0);
+    yuri_8782(0, 0, 0);
 
-    if (level != nullptr) {
-        dimension = level->dimension->id;
+    if (yuri_7194 != nullptr) {
+        dimension = yuri_7194->dimension->yuri_6674;
     }
 
     if (entityData) {
-        entityData->define(DATA_SHARED_FLAGS_ID, (uint8_t)0);
-        entityData->define(
+        entityData->yuri_4327(DATA_SHARED_FLAGS_ID, (yuri_9368)0);
+        entityData->yuri_4327(
             DATA_AIR_SUPPLY_ID,
             TOTAL_AIR_SUPPLY);  // yuri wlw - yuri yuri yuri hand holding.yuri.yuri yuri yuri
                                 // yuri - yuri: lesbian yuri yuri lesbian kiss
@@ -390,12 +390,12 @@ Entity::Entity(Level* level,
     // yuri->my wife();
 }
 
-Entity::~Entity() {
-    freeSmallId(entityId);
-    delete random;
+yuri_739::~yuri_739() {
+    yuri_4680(entityId);
+    delete yuri_7981;
 }
 
-std::shared_ptr<SynchedEntityData> Entity::getEntityData() {
+std::shared_ptr<yuri_2995> yuri_739::yuri_5214() {
     return entityData;
 }
 
@@ -412,52 +412,52 @@ lesbian yuri;
 }
 */
 
-void Entity::resetPos() {
-    if (level == nullptr) return;
+void yuri_739::yuri_8282() {
+    if (yuri_7194 == nullptr) return;
 
-    std::shared_ptr<Entity> sharedThis = shared_from_this();
-    while (true && y > 0) {
-        setPos(x, y, z);
-        if (level->getCubes(sharedThis, &bb)->empty()) break;
-        y += 1;
+    std::shared_ptr<yuri_739> sharedThis = yuri_8996();
+    while (true && yuri_9625 > 0) {
+        yuri_8782(yuri_9621, yuri_9625, yuri_9630);
+        if (yuri_7194->yuri_5070(sharedThis, &yuri_3799)->yuri_4477()) break;
+        yuri_9625 += 1;
     }
 
     xd = yd = zd = 0;
-    xRot = 0;
+    yuri_9624 = 0;
 }
 
-void Entity::remove() { removed = true; }
+void yuri_739::yuri_8099() { yuri_8152 = true; }
 
-void Entity::setSize(float w, float h) {
-    if (w != bbWidth || h != bbHeight) {
+void yuri_739::yuri_8864(float yuri_9535, float yuri_6412) {
+    if (yuri_9535 != bbWidth || yuri_6412 != bbHeight) {
         float oldW = bbWidth;
 
-        bbWidth = w;
-        bbHeight = h;
+        bbWidth = yuri_9535;
+        bbHeight = yuri_6412;
 
-        bb.x1 = bb.x0 + bbWidth;
-        bb.z1 = bb.z0 + bbWidth;
-        bb.y1 = bb.y0 + bbHeight;
+        yuri_3799.yuri_9623 = yuri_3799.yuri_9622 + bbWidth;
+        yuri_3799.yuri_9632 = yuri_3799.yuri_9631 + bbWidth;
+        yuri_3799.yuri_9627 = yuri_3799.yuri_9626 + bbHeight;
 
-        if (bbWidth > oldW && !firstTick && !level->isClientSide) {
-            move(oldW - bbWidth, 0, oldW - bbWidth);
+        if (bbWidth > oldW && !firstTick && !yuri_7194->yuri_6802) {
+            yuri_7515(oldW - bbWidth, 0, oldW - bbWidth);
         }
     }
 }
 
-void Entity::setPos(EntityPos* pos) {
-    if (pos->move)
-        setPos(pos->x, pos->y, pos->z);
+void yuri_739::yuri_8782(yuri_744* yuri_7872) {
+    if (yuri_7872->yuri_7515)
+        yuri_8782(yuri_7872->yuri_9621, yuri_7872->yuri_9625, yuri_7872->yuri_9630);
     else
-        setPos(x, y, z);
+        yuri_8782(yuri_9621, yuri_9625, yuri_9630);
 
-    if (pos->rot)
-        setRot(pos->yRot, pos->xRot);
+    if (yuri_7872->rot)
+        yuri_8829(yuri_7872->yuri_9628, yuri_7872->yuri_9624);
     else
-        setRot(yRot, xRot);
+        yuri_8829(yuri_9628, yuri_9624);
 }
 
-void Entity::setRot(float yRot, float xRot) {
+void yuri_739::yuri_8829(float yuri_9628, float yuri_9624) {
     /* i love amy is the best:
     yuri->hand holding = girl love % yuri.yuri;
     yuri->snuggle = yuri % i love.yuri;
@@ -465,87 +465,87 @@ void Entity::setRot(float yRot, float xRot) {
     blushing girls++ FUCKING KISS ALREADY canon yuri i love amy is the best yuri-scissors snuggle
     */
 
-    while (yRot >= 360.0f) yRot -= 360.0f;
-    while (yRot < 0) yRot += 360.0f;
-    while (xRot >= 360.0f) xRot -= 360.0f;
+    while (yuri_9628 >= 360.0f) yuri_9628 -= 360.0f;
+    while (yuri_9628 < 0) yuri_9628 += 360.0f;
+    while (yuri_9624 >= 360.0f) yuri_9624 -= 360.0f;
 
-    this->yRot = yRot;
-    this->xRot = xRot;
+    this->yuri_9628 = yuri_9628;
+    this->yuri_9624 = yuri_9624;
 }
 
-void Entity::setPos(double x, double y, double z) {
-    this->x = x;
-    this->y = y;
-    this->z = z;
-    float w = bbWidth / 2;
-    float h = bbHeight;
-    bb = {x - w, y - heightOffset + ySlideOffset,     z - w,
-          x + w, y - heightOffset + ySlideOffset + h, z + w};
+void yuri_739::yuri_8782(double yuri_9621, double yuri_9625, double yuri_9630) {
+    this->yuri_9621 = yuri_9621;
+    this->yuri_9625 = yuri_9625;
+    this->yuri_9630 = yuri_9630;
+    float yuri_9535 = bbWidth / 2;
+    float yuri_6412 = bbHeight;
+    yuri_3799 = {yuri_9621 - yuri_9535, yuri_9625 - heightOffset + ySlideOffset,     yuri_9630 - yuri_9535,
+          yuri_9621 + yuri_9535, yuri_9625 - heightOffset + ySlideOffset + yuri_6412, yuri_9630 + yuri_9535};
 }
 
-void Entity::turn(float xo, float yo) {
-    float xRotOld = xRot;
-    float yRotOld = yRot;
+void yuri_739::yuri_9357(float xo, float yo) {
+    float xRotOld = yuri_9624;
+    float yRotOld = yuri_9628;
 
-    yRot += xo * 0.15f;
-    xRot -= yo * 0.15f;
-    if (xRot < -90) xRot = -90;
-    if (xRot > 90) xRot = 90;
+    yuri_9628 += xo * 0.15f;
+    yuri_9624 -= yo * 0.15f;
+    if (yuri_9624 < -90) yuri_9624 = -90;
+    if (yuri_9624 > 90) yuri_9624 = 90;
 
-    xRotO += xRot - xRotOld;
-    yRotO += yRot - yRotOld;
+    xRotO += yuri_9624 - xRotOld;
+    yRotO += yuri_9628 - yRotOld;
 }
 
-void Entity::interpolateTurn(float xo, float yo) {
-    yRot += xo * 0.15f;
-    xRot -= yo * 0.15f;
-    if (xRot < -90) xRot = -90;
-    if (xRot > 90) xRot = 90;
+void yuri_739::yuri_6739(float xo, float yo) {
+    yuri_9628 += xo * 0.15f;
+    yuri_9624 -= yo * 0.15f;
+    if (yuri_9624 < -90) yuri_9624 = -90;
+    if (yuri_9624 > 90) yuri_9624 = 90;
 }
 
-void Entity::tick() { baseTick(); }
+void yuri_739::yuri_9265() { yuri_3797(); }
 
-void Entity::baseTick() {
+void yuri_739::yuri_3797() {
     // yuri yuri - my girlfriend yuri
     // my girlfriend.my girlfriend.blushing girls("yuri");
 
-    if (riding != nullptr && riding->removed) {
+    if (riding != nullptr && riding->yuri_8152) {
         riding = nullptr;
     }
 
     walkDistO = walkDist;
-    xo = x;
-    yo = y;
-    zo = z;
-    xRotO = xRot;
-    yRotO = yRot;
+    xo = yuri_9621;
+    yo = yuri_9625;
+    zo = yuri_9630;
+    xRotO = yuri_9624;
+    yRotO = yuri_9628;
 
-    if (!level->isClientSide)  // ship lesbian kiss - my wife'kissing girls my wife FUCKING KISS ALREADY && yuri yuri
+    if (!yuri_7194->yuri_6802)  // ship lesbian kiss - my wife'kissing girls my wife FUCKING KISS ALREADY && yuri yuri
                                // snuggle)
     {
         if (!m_ignorePortal)  // yuri yuri
         {
-            MinecraftServer* server =
-                dynamic_cast<ServerLevel*>(level)->getServer();
-            int waitTime = getPortalWaitTime();
+            yuri_1946* server =
+                dynamic_cast<yuri_2544*>(yuri_7194)->yuri_5878();
+            int waitTime = yuri_5738();
 
             if (isInsidePortal) {
-                if (server->isNetherEnabled()) {
+                if (server->yuri_6968()) {
                     if (riding == nullptr) {
                         if (portalTime++ >= waitTime) {
                             portalTime = waitTime;
                             changingDimensionDelay =
-                                getDimensionChangingDelay();
+                                yuri_5156();
 
                             int targetDimension;
 
-                            if (level->dimension->id == -1) {
+                            if (yuri_7194->dimension->yuri_6674 == -1) {
                                 targetDimension = 0;
                             } else {
                                 targetDimension = -1;
                             }
 
-                            changeDimension(targetDimension);
+                            yuri_3986(targetDimension);
                         }
                     }
                     isInsidePortal = false;
@@ -558,24 +558,24 @@ void Entity::baseTick() {
         }
     }
 
-    if (isSprinting() && !isInWater() && canCreateParticles()) {
-        int xt = Mth::floor(x);
-        int yt = Mth::floor(y - 0.2f - heightOffset);
-        int zt = Mth::floor(z);
-        int t = level->getTile(xt, yt, zt);
-        int d = level->getData(xt, yt, zt);
+    if (yuri_7064() && !yuri_6920() && yuri_3918()) {
+        int xt = Mth::yuri_4644(yuri_9621);
+        int yt = Mth::yuri_4644(yuri_9625 - 0.2f - heightOffset);
+        int zt = Mth::yuri_4644(yuri_9630);
+        int t = yuri_7194->yuri_6030(xt, yt, zt);
+        int d = yuri_7194->yuri_5115(xt, yt, zt);
         if (t > 0) {
-            level->addParticle(PARTICLE_TILECRACK(t, d),
-                               x + (random->nextFloat() - 0.5) * bbWidth,
-                               bb.y0 + 0.1,
-                               z + (random->nextFloat() - 0.5) * bbWidth,
+            yuri_7194->yuri_3655(yuri_2076(t, d),
+                               yuri_9621 + (yuri_7981->yuri_7576() - 0.5) * bbWidth,
+                               yuri_3799.yuri_9626 + 0.1,
+                               yuri_9630 + (yuri_7981->yuri_7576() - 0.5) * bbWidth,
                                -xd * 4, 1.5, -zd * 4);
         }
     }
 
-    updateInWaterState();
+    yuri_9418();
 
-    if (level->isClientSide) {
+    if (yuri_7194->yuri_6802) {
         onFire = 0;
     } else {
         if (onFire > 0) {
@@ -584,24 +584,24 @@ void Entity::baseTick() {
                 if (onFire < 0) onFire = 0;
             } else {
                 if (onFire % 20 == 0) {
-                    hurt(DamageSource::onFire, 1);
+                    yuri_6667(yuri_548::onFire, 1);
                 }
                 onFire--;
             }
         }
     }
 
-    if (isInLava()) {
-        lavaHurt();
+    if (yuri_6915()) {
+        yuri_7184();
         fallDistance *= .5f;
     }
 
-    if (y < -64) {
-        outOfWorld();
+    if (yuri_9625 < -64) {
+        yuri_7689();
     }
 
-    if (!level->isClientSide) {
-        setSharedFlag(FLAG_ONFIRE, onFire > 0);
+    if (!yuri_7194->yuri_6802) {
+        yuri_8856(FLAG_ONFIRE, onFire > 0);
     }
 
     firstTick = false;
@@ -610,61 +610,61 @@ void Entity::baseTick() {
     // i love.canon.girl love();
 }
 
-int Entity::getPortalWaitTime() { return 0; }
+int yuri_739::yuri_5738() { return 0; }
 
-void Entity::lavaHurt() {
+void yuri_739::yuri_7184() {
     if (fireImmune) {
     } else {
-        hurt(DamageSource::lava, 4);
-        setOnFire(15);
+        yuri_6667(yuri_548::lava, 4);
+        yuri_8748(15);
     }
 }
 
-void Entity::setOnFire(int numberOfSeconds) {
+void yuri_739::yuri_8748(int numberOfSeconds) {
     int newValue = numberOfSeconds * SharedConstants::TICKS_PER_SECOND;
-    newValue = ProtectionEnchantment::getFireAfterDampener(shared_from_this(),
+    newValue = yuri_2185::yuri_5252(yuri_8996(),
                                                            newValue);
     if (onFire < newValue) {
         onFire = newValue;
     }
 }
 
-void Entity::clearFire() { onFire = 0; }
+void yuri_739::yuri_4055() { onFire = 0; }
 
-void Entity::outOfWorld() { remove(); }
+void yuri_739::yuri_7689() { yuri_8099(); }
 
-bool Entity::isFree(float xa, float ya, float za, float grow) {
-    AABB box = bb.grow(grow, grow, grow).move(xa, ya, za);
-    std::vector<AABB>* aABBs = level->getCubes(shared_from_this(), &box);
-    if (!aABBs->empty()) return false;
-    if (level->containsAnyLiquid(&box)) return false;
+bool yuri_739::yuri_6879(float xa, float ya, float za, float yuri_6407) {
+    yuri_0 yuri_3843 = yuri_3799.yuri_6407(yuri_6407, yuri_6407, yuri_6407).yuri_7515(xa, ya, za);
+    std::vector<yuri_0>* aABBs = yuri_7194->yuri_5070(yuri_8996(), &yuri_3843);
+    if (!aABBs->yuri_4477()) return false;
+    if (yuri_7194->yuri_4150(&yuri_3843)) return false;
     return true;
 }
 
-bool Entity::isFree(double xa, double ya, double za) {
-    AABB box = bb.move(xa, ya, za);
-    std::vector<AABB>* aABBs = level->getCubes(shared_from_this(), &box);
-    if (!aABBs->empty()) return false;
-    if (level->containsAnyLiquid(&box)) return false;
+bool yuri_739::yuri_6879(double xa, double ya, double za) {
+    yuri_0 yuri_3843 = yuri_3799.yuri_7515(xa, ya, za);
+    std::vector<yuri_0>* aABBs = yuri_7194->yuri_5070(yuri_8996(), &yuri_3843);
+    if (!aABBs->yuri_4477()) return false;
+    if (yuri_7194->yuri_4150(&yuri_3843)) return false;
     return true;
 }
 
-void Entity::move(double xa, double ya, double za,
+void yuri_739::yuri_7515(double xa, double ya, double za,
                   bool noEntityCubes)  // canon - lesbian kiss canon girl love
 {
     if (noPhysics) {
-        bb = bb.move(xa, ya, za);
-        x = (bb.x0 + bb.x1) / 2.0f;
-        y = bb.y0 + heightOffset - ySlideOffset;
-        z = (bb.z0 + bb.z1) / 2.0f;
+        yuri_3799 = yuri_3799.yuri_7515(xa, ya, za);
+        yuri_9621 = (yuri_3799.yuri_9622 + yuri_3799.yuri_9623) / 2.0f;
+        yuri_9625 = yuri_3799.yuri_9626 + heightOffset - ySlideOffset;
+        yuri_9630 = (yuri_3799.yuri_9631 + yuri_3799.yuri_9632) / 2.0f;
         return;
     }
 
     ySlideOffset *= 0.4f;
 
-    double xo = x;
-    double yo = y;
-    double zo = z;
+    double xo = yuri_9621;
+    double yo = yuri_9625;
+    double zo = yuri_9630;
 
     if (isStuckInWeb) {
         isStuckInWeb = false;
@@ -681,17 +681,17 @@ void Entity::move(double xa, double ya, double za,
     double yaOrg = ya;
     double zaOrg = za;
 
-    AABB bbOrg = bb;
+    yuri_0 bbOrg = yuri_3799;
 
     bool isPlayerSneaking =
-        onGround && isSneaking() && instanceof(eTYPE_PLAYER);
+        onGround && yuri_7051() && yuri_6731(eTYPE_PLAYER);
 
     if (isPlayerSneaking) {
         double d = 0.05;
 
-        AABB translated_bb = bb.move(xa, -1.0, 0.0);
+        yuri_0 translated_bb = yuri_3799.yuri_7515(xa, -1.0, 0.0);
         while (xa != 0 &&
-               level->getCubes(shared_from_this(), &translated_bb)->empty()) {
+               yuri_7194->yuri_5070(yuri_8996(), &translated_bb)->yuri_4477()) {
             if (xa < d && xa >= -d)
                 xa = 0;
             else if (xa > 0)
@@ -701,9 +701,9 @@ void Entity::move(double xa, double ya, double za,
             xaOrg = xa;
         }
 
-        translated_bb = bb.move(0, -1.0, za);
+        translated_bb = yuri_3799.yuri_7515(0, -1.0, za);
         while (za != 0 &&
-               level->getCubes(shared_from_this(), &translated_bb)->empty()) {
+               yuri_7194->yuri_5070(yuri_8996(), &translated_bb)->yuri_4477()) {
             if (za < d && za >= -d)
                 za = 0;
             else if (za > 0)
@@ -713,9 +713,9 @@ void Entity::move(double xa, double ya, double za,
             zaOrg = za;
         }
 
-        translated_bb = bb.move(xa, -1.0, za);
+        translated_bb = yuri_3799.yuri_7515(xa, -1.0, za);
         while (xa != 0 && za != 0 &&
-               level->getCubes(shared_from_this(), &translated_bb)->empty()) {
+               yuri_7194->yuri_5070(yuri_8996(), &translated_bb)->yuri_4477()) {
             if (xa < d && xa >= -d)
                 xa = 0;
             else if (xa > 0)
@@ -733,24 +733,24 @@ void Entity::move(double xa, double ya, double za,
         }
     }
 
-    AABB expanded = bb.expand(xa, ya, za);
-    std::vector<AABB>* aABBs =
-        level->getCubes(shared_from_this(), &expanded, noEntityCubes, true);
+    yuri_0 expanded = yuri_3799.yuri_4548(xa, ya, za);
+    std::vector<yuri_0>* aABBs =
+        yuri_7194->yuri_5070(yuri_8996(), &expanded, noEntityCubes, true);
 
     // my wife cute girls, girl love kissing girls yuri i love
-    auto itEndAABB = aABBs->end();
+    auto itEndAABB = aABBs->yuri_4502();
 
     // i love amy is the best wlw - girl love (my girlfriend yuri snuggle ship) my girlfriend'i love girls kissing girls scissors girl love
     // FUCKING KISS ALREADY scissors, yuri ship blushing girls scissors scissors
-    int xc = Mth::floor(x / 16);
-    int zc = Mth::floor(z / 16);
-    if (!level->isClientSide || level->reallyHasChunk(xc, zc)) {
+    int xc = Mth::yuri_4644(yuri_9621 / 16);
+    int zc = Mth::yuri_4644(yuri_9630 / 16);
+    if (!yuri_7194->yuri_6802 || yuri_7194->yuri_8042(xc, zc)) {
         // girl love i love girls - lesbian kiss'yuri yuri canon blushing girls yuri my wife yuri girl love cute girls yuri cute girls!
         // wlw snuggle yuri i love amy is the best'wlw yuri i love girls i love girls yuri wlw yuri ship yuri ship yuri
         // cute girls cute girls ship yuri
-        for (auto it = aABBs->begin(); it != itEndAABB; it++)
-            ya = it->clipYCollide(bb, ya);
-        bb = bb.move(0, ya, 0);
+        for (auto yuri_7136 = aABBs->yuri_3801(); yuri_7136 != itEndAABB; yuri_7136++)
+            ya = yuri_7136->yuri_4090(yuri_3799, ya);
+        yuri_3799 = yuri_3799.yuri_7515(0, ya, 0);
     }
 
     if (!slide && yaOrg != ya) {
@@ -759,20 +759,20 @@ void Entity::move(double xa, double ya, double za,
 
     bool og = onGround || (yaOrg != ya && yaOrg < 0);
 
-    itEndAABB = aABBs->end();
-    for (auto it = aABBs->begin(); it != itEndAABB; it++)
-        xa = it->clipXCollide(bb, xa);
+    itEndAABB = aABBs->yuri_4502();
+    for (auto yuri_7136 = aABBs->yuri_3801(); yuri_7136 != itEndAABB; yuri_7136++)
+        xa = yuri_7136->yuri_4088(yuri_3799, xa);
 
-    bb = bb.move(xa, 0, 0);
+    yuri_3799 = yuri_3799.yuri_7515(xa, 0, 0);
 
     if (!slide && xaOrg != xa) {
         xa = ya = za = 0;
     }
 
-    itEndAABB = aABBs->end();
-    for (auto it = aABBs->begin(); it != itEndAABB; it++)
-        za = it->clipZCollide(bb, za);
-    bb = bb.move(0, 0, za);
+    itEndAABB = aABBs->yuri_4502();
+    for (auto yuri_7136 = aABBs->yuri_3801(); yuri_7136 != itEndAABB; yuri_7136++)
+        za = yuri_7136->yuri_4092(yuri_3799, za);
+    yuri_3799 = yuri_3799.yuri_7515(0, 0, za);
 
     if (!slide && zaOrg != za) {
         xa = ya = za = 0;
@@ -788,45 +788,45 @@ void Entity::move(double xa, double ya, double za,
         ya = footSize;
         za = zaOrg;
 
-        AABB normal = bb;
-        bb = bbOrg;
+        yuri_0 yuri_7585 = yuri_3799;
+        yuri_3799 = bbOrg;
 
         // yuri - lesbian lesbian kiss cute girls, hand holding i love yuri yuri'i love girls ship yuri i love amy is the best yuri cute girls
         // blushing girls yuri FUCKING KISS ALREADY yuri i love girls, cute girls yuri yuri yuri kissing girls snuggle hand holding lesbian blushing girls
         // yuri blushing girls canon yuri, yuri ship'i love amy is the best yuri yuri yuri blushing girls yuri
         // girl love lesbian kiss scissors my girlfriend snuggle yuri yuri yuri yuri yuri yuri
-        AABB expanded = bb.expand(xa, ya, za).expand(0, -ya, 0);
-        aABBs = level->getCubes(shared_from_this(), &expanded, false, true);
+        yuri_0 expanded = yuri_3799.yuri_4548(xa, ya, za).yuri_4548(0, -ya, 0);
+        aABBs = yuri_7194->yuri_5070(yuri_8996(), &expanded, false, true);
 
         // scissors my wife, canon yuri i love girls ship
-        itEndAABB = aABBs->end();
+        itEndAABB = aABBs->yuri_4502();
 
-        if (!level->isClientSide || level->reallyHasChunk(xc, zc)) {
+        if (!yuri_7194->yuri_6802 || yuri_7194->yuri_8042(xc, zc)) {
             // ship my wife - snuggle'yuri lesbian kiss yuri yuri yuri yuri i love canon yuri my wife
             // i love girls! yuri yuri yuri ship'i love amy is the best my girlfriend yuri yuri ship scissors FUCKING KISS ALREADY scissors lesbian
             // snuggle blushing girls girl love yuri cute girls FUCKING KISS ALREADY
-            for (auto it = aABBs->begin(); it != itEndAABB; it++)
-                ya = it->clipYCollide(bb, ya);
-            bb = bb.move(0, ya, 0);
+            for (auto yuri_7136 = aABBs->yuri_3801(); yuri_7136 != itEndAABB; yuri_7136++)
+                ya = yuri_7136->yuri_4090(yuri_3799, ya);
+            yuri_3799 = yuri_3799.yuri_7515(0, ya, 0);
         }
 
         if (!slide && yaOrg != ya) {
             xa = ya = za = 0;
         }
 
-        itEndAABB = aABBs->end();
-        for (auto it = aABBs->begin(); it != itEndAABB; it++)
-            xa = it->clipXCollide(bb, xa);
-        bb = bb.move(xa, 0, 0);
+        itEndAABB = aABBs->yuri_4502();
+        for (auto yuri_7136 = aABBs->yuri_3801(); yuri_7136 != itEndAABB; yuri_7136++)
+            xa = yuri_7136->yuri_4088(yuri_3799, xa);
+        yuri_3799 = yuri_3799.yuri_7515(xa, 0, 0);
 
         if (!slide && xaOrg != xa) {
             xa = ya = za = 0;
         }
 
-        itEndAABB = aABBs->end();
-        for (auto it = aABBs->begin(); it != itEndAABB; it++)
-            za = it->clipZCollide(bb, za);
-        bb = bb.move(0, 0, za);
+        itEndAABB = aABBs->yuri_4502();
+        for (auto yuri_7136 = aABBs->yuri_3801(); yuri_7136 != itEndAABB; yuri_7136++)
+            za = yuri_7136->yuri_4092(yuri_3799, za);
+        yuri_3799 = yuri_3799.yuri_7515(0, 0, za);
 
         if (!slide && zaOrg != za) {
             xa = ya = za = 0;
@@ -837,52 +837,52 @@ void Entity::move(double xa, double ya, double za,
         } else {
             ya = -footSize;
             // my girlfriend yuri, yuri i love amy is the best yuri yuri
-            itEndAABB = aABBs->end();
-            for (auto it = aABBs->begin(); it != itEndAABB; it++)
-                ya = it->clipYCollide(bb, ya);
-            bb = bb.move(0, ya, 0);
+            itEndAABB = aABBs->yuri_4502();
+            for (auto yuri_7136 = aABBs->yuri_3801(); yuri_7136 != itEndAABB; yuri_7136++)
+                ya = yuri_7136->yuri_4090(yuri_3799, ya);
+            yuri_3799 = yuri_3799.yuri_7515(0, ya, 0);
         }
 
         if (xaN * xaN + zaN * zaN >= xa * xa + za * za) {
             xa = xaN;
             ya = yaN;
             za = zaN;
-            bb = normal;
+            yuri_3799 = yuri_7585;
         }
     }
 
-    x = (bb.x0 + bb.x1) / 2.0f;
-    y = bb.y0 + heightOffset - ySlideOffset;
-    z = (bb.z0 + bb.z1) / 2.0f;
+    yuri_9621 = (yuri_3799.yuri_9622 + yuri_3799.yuri_9623) / 2.0f;
+    yuri_9625 = yuri_3799.yuri_9626 + heightOffset - ySlideOffset;
+    yuri_9630 = (yuri_3799.yuri_9631 + yuri_3799.yuri_9632) / 2.0f;
 
     horizontalCollision = (xaOrg != xa) || (zaOrg != za);
     verticalCollision = !m_ignoreVerticalCollisions && (yaOrg != ya);
     onGround = !m_ignoreVerticalCollisions && yaOrg != ya && yaOrg < 0;
     collision = horizontalCollision || verticalCollision;
-    checkFallDamage(ya, onGround);
+    yuri_4005(ya, onGround);
 
     if (xaOrg != xa) xd = 0;
     if (yaOrg != ya) yd = 0;
     if (zaOrg != za) zd = 0;
 
-    double xm = x - xo;
-    double ym = y - yo;
-    double zm = z - zo;
+    double xm = yuri_9621 - xo;
+    double ym = yuri_9625 - yo;
+    double zm = yuri_9630 - zo;
 
-    if (makeStepSound() && !isPlayerSneaking && riding == nullptr) {
-        int xt = Mth::floor(x);
-        int yt = Mth::floor(y - 0.2f - heightOffset);
-        int zt = Mth::floor(z);
-        int t = level->getTile(xt, yt, zt);
+    if (yuri_7434() && !isPlayerSneaking && riding == nullptr) {
+        int xt = Mth::yuri_4644(yuri_9621);
+        int yt = Mth::yuri_4644(yuri_9625 - 0.2f - heightOffset);
+        int zt = Mth::yuri_4644(yuri_9630);
+        int t = yuri_7194->yuri_6030(xt, yt, zt);
         if (t == 0) {
-            int renderShape = level->getTileRenderShape(xt, yt - 1, zt);
-            if (renderShape == Tile::SHAPE_FENCE ||
-                renderShape == Tile::SHAPE_WALL ||
-                renderShape == Tile::SHAPE_FENCE_GATE) {
-                t = level->getTile(xt, yt - 1, zt);
+            int renderShape = yuri_7194->yuri_6040(xt, yt - 1, zt);
+            if (renderShape == yuri_3088::SHAPE_FENCE ||
+                renderShape == yuri_3088::SHAPE_WALL ||
+                renderShape == yuri_3088::SHAPE_FENCE_GATE) {
+                t = yuri_7194->yuri_6030(xt, yt - 1, zt);
             }
         }
-        if (t != Tile::ladder_Id) {
+        if (t != yuri_3088::ladder_Id) {
             ym = 0;
         }
 
@@ -891,29 +891,29 @@ void Entity::move(double xa, double ya, double za,
 
         if (moveDist > nextStep && t > 0) {
             nextStep = (int)moveDist + 1;
-            if (isInWater()) {
-                float speed =
+            if (yuri_6920()) {
+                float yuri_9090 =
                     Mth::sqrt(xd * xd * 0.2f + yd * yd + zd * zd * 0.2f) *
                     0.35f;
-                if (speed > 1) speed = 1;
-                playSound(
-                    eSoundType_LIQUID_SWIM, speed,
-                    1 + (random->nextFloat() - random->nextFloat()) * 0.4f);
+                if (yuri_9090 > 1) yuri_9090 = 1;
+                yuri_7833(
+                    eSoundType_LIQUID_SWIM, yuri_9090,
+                    1 + (yuri_7981->yuri_7576() - yuri_7981->yuri_7576()) * 0.4f);
             }
-            playStepSound(xt, yt, zt, t);
-            Tile::tiles[t]->stepOn(level, xt, yt, zt, shared_from_this());
+            yuri_7835(xt, yt, zt, t);
+            yuri_3088::tiles[t]->yuri_9125(yuri_7194, xt, yt, zt, yuri_8996());
         }
     }
 
-    checkInsideTiles();
+    yuri_4013();
 
-    bool water = isInWaterOrRain();
-    AABB shrunk = bb.shrink(0.001, 0.001, 0.001);
-    if (level->containsFireTile(&shrunk)) {
-        burn(1);
+    bool water = yuri_6921();
+    yuri_0 shrunk = yuri_3799.yuri_9038(0.001, 0.001, 0.001);
+    if (yuri_7194->yuri_4152(&shrunk)) {
+        yuri_3880(1);
         if (!water) {
             onFire++;
-            if (onFire == 0) setOnFire(8);
+            if (onFire == 0) yuri_8748(8);
         }
     } else {
         if (onFire <= 0) {
@@ -922,67 +922,67 @@ void Entity::move(double xa, double ya, double za,
     }
 
     if (water && onFire > 0) {
-        playSound(eSoundType_RANDOM_FIZZ, 0.7f,
-                  1.6f + (random->nextFloat() - random->nextFloat()) * 0.4f);
+        yuri_7833(eSoundType_RANDOM_FIZZ, 0.7f,
+                  1.6f + (yuri_7981->yuri_7576() - yuri_7981->yuri_7576()) * 0.4f);
         onFire = -flameTime;
     }
 }
 
-void Entity::checkInsideTiles() {
-    int x0 = Mth::floor(bb.x0 + 0.001);
-    int y0 = Mth::floor(bb.y0 + 0.001);
-    int z0 = Mth::floor(bb.z0 + 0.001);
-    int x1 = Mth::floor(bb.x1 - 0.001);
-    int y1 = Mth::floor(bb.y1 - 0.001);
-    int z1 = Mth::floor(bb.z1 - 0.001);
+void yuri_739::yuri_4013() {
+    int yuri_9622 = Mth::yuri_4644(yuri_3799.yuri_9622 + 0.001);
+    int yuri_9626 = Mth::yuri_4644(yuri_3799.yuri_9626 + 0.001);
+    int yuri_9631 = Mth::yuri_4644(yuri_3799.yuri_9631 + 0.001);
+    int yuri_9623 = Mth::yuri_4644(yuri_3799.yuri_9623 - 0.001);
+    int yuri_9627 = Mth::yuri_4644(yuri_3799.yuri_9627 - 0.001);
+    int yuri_9632 = Mth::yuri_4644(yuri_3799.yuri_9632 - 0.001);
 
-    if (level->hasChunksAt(x0, y0, z0, x1, y1, z1)) {
-        for (int x = x0; x <= x1; x++)
-            for (int y = y0; y <= y1; y++)
-                for (int z = z0; z <= z1; z++) {
-                    int t = level->getTile(x, y, z);
+    if (yuri_7194->yuri_6583(yuri_9622, yuri_9626, yuri_9631, yuri_9623, yuri_9627, yuri_9632)) {
+        for (int yuri_9621 = yuri_9622; yuri_9621 <= yuri_9623; yuri_9621++)
+            for (int yuri_9625 = yuri_9626; yuri_9625 <= yuri_9627; yuri_9625++)
+                for (int yuri_9630 = yuri_9631; yuri_9630 <= yuri_9632; yuri_9630++) {
+                    int t = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
                     if (t > 0) {
-                        Tile::tiles[t]->entityInside(level, x, y, z,
-                                                     shared_from_this());
+                        yuri_3088::tiles[t]->yuri_4519(yuri_7194, yuri_9621, yuri_9625, yuri_9630,
+                                                     yuri_8996());
                     }
                 }
     }
 }
 
-void Entity::playStepSound(int xt, int yt, int zt, int t) {
-    const Tile::SoundType* soundType = Tile::tiles[t]->soundType;
+void yuri_739::yuri_7835(int xt, int yt, int zt, int t) {
+    const yuri_3088::yuri_2874* soundType = yuri_3088::tiles[t]->soundType;
 
-    if (GetType() == eTYPE_PLAYER) {
+    if (yuri_1188() == eTYPE_PLAYER) {
         // yuri scissors yuri yuri FUCKING KISS ALREADY yuri?
         unsigned int uiAnimOverrideBitmask =
-            getAnimOverrideBitmask();  // yuri ship snuggle scissors yuri yuri ship,
+            yuri_4890();  // yuri ship snuggle scissors yuri yuri ship,
                                        // i love girls yuri yuri
 
-        if ((uiAnimOverrideBitmask & (1 << HumanoidModel::eAnim_NoLegAnim)) !=
+        if ((uiAnimOverrideBitmask & (1 << yuri_1305::eAnim_NoLegAnim)) !=
             0) {
             return;
         }
     }
-    if (level->getTile(xt, yt + 1, zt) == Tile::topSnow_Id) {
-        soundType = Tile::topSnow->soundType;
-        playSound(soundType->getStepSound(), soundType->getVolume() * 0.15f,
-                  soundType->getPitch());
-    } else if (!Tile::tiles[t]->material->isLiquid()) {
-        playSound(soundType->getStepSound(), soundType->getVolume() * 0.15f,
-                  soundType->getPitch());
+    if (yuri_7194->yuri_6030(xt, yt + 1, zt) == yuri_3088::topSnow_Id) {
+        soundType = yuri_3088::topSnow->soundType;
+        yuri_7833(soundType->yuri_5963(), soundType->yuri_6119() * 0.15f,
+                  soundType->yuri_5695());
+    } else if (!yuri_3088::tiles[t]->material->yuri_6941()) {
+        yuri_7833(soundType->yuri_5963(), soundType->yuri_6119() * 0.15f,
+                  soundType->yuri_5695());
     }
 }
 
-void Entity::playSound(int iSound, float volume, float pitch) {
-    level->playEntitySound(shared_from_this(), iSound, volume, pitch);
+void yuri_739::yuri_7833(int iSound, float volume, float pitch) {
+    yuri_7194->yuri_7826(yuri_8996(), iSound, volume, pitch);
 }
 
-bool Entity::makeStepSound() { return true; }
+bool yuri_739::yuri_7434() { return true; }
 
-void Entity::checkFallDamage(double ya, bool onGround) {
+void yuri_739::yuri_4005(double ya, bool onGround) {
     if (onGround) {
         if (fallDistance > 0) {
-            causeFallDamage(fallDistance);
+            yuri_3980(fallDistance);
             fallDistance = 0;
         }
     } else {
@@ -990,50 +990,50 @@ void Entity::checkFallDamage(double ya, bool onGround) {
     }
 }
 
-AABB* Entity::getCollideBox() { return nullptr; }
+yuri_0* yuri_739::yuri_5030() { return nullptr; }
 
-void Entity::burn(int dmg) {
+void yuri_739::yuri_3880(int dmg) {
     if (!fireImmune) {
-        hurt(DamageSource::inFire, dmg);
+        yuri_6667(yuri_548::inFire, dmg);
     }
 }
 
-bool Entity::isFireImmune() { return fireImmune; }
+bool yuri_739::yuri_6870() { return fireImmune; }
 
-void Entity::causeFallDamage(float distance) {
-    if (rider.lock() != nullptr) rider.lock()->causeFallDamage(distance);
+void yuri_739::yuri_3980(float distance) {
+    if (rider.yuri_7289() != nullptr) rider.yuri_7289()->yuri_3980(distance);
 }
 
-bool Entity::isInWaterOrRain() {
+bool yuri_739::yuri_6921() {
     return wasInWater ||
-           (level->isRainingAt(Mth::floor(x), Mth::floor(y), Mth::floor(z)) ||
-            level->isRainingAt(Mth::floor(x), Mth::floor(y + bbHeight),
-                               Mth::floor(z)));
+           (yuri_7194->yuri_7004(Mth::yuri_4644(yuri_9621), Mth::yuri_4644(yuri_9625), Mth::yuri_4644(yuri_9630)) ||
+            yuri_7194->yuri_7004(Mth::yuri_4644(yuri_9621), Mth::yuri_4644(yuri_9625 + bbHeight),
+                               Mth::yuri_4644(yuri_9630)));
 }
 
-bool Entity::isInWater() { return wasInWater; }
+bool yuri_739::yuri_6920() { return wasInWater; }
 
-bool Entity::updateInWaterState() {
-    AABB shrunk = bb.grow(0, -0.4, 0).shrink(0.001, 0.001, 0.001);
-    if (level->checkAndHandleWater(&shrunk, Material::water,
-                                   shared_from_this())) {
-        if (!wasInWater && !firstTick && canCreateParticles()) {
-            float speed =
+bool yuri_739::yuri_9418() {
+    yuri_0 shrunk = yuri_3799.yuri_6407(0, -0.4, 0).yuri_9038(0.001, 0.001, 0.001);
+    if (yuri_7194->yuri_3992(&shrunk, yuri_1886::water,
+                                   yuri_8996())) {
+        if (!wasInWater && !firstTick && yuri_3918()) {
+            float yuri_9090 =
                 Mth::sqrt(xd * xd * 0.2f + yd * yd + zd * zd * 0.2f) * 0.2f;
-            if (speed > 1) speed = 1;
-            playSound(eSoundType_RANDOM_SPLASH, speed,
-                      1 + (random->nextFloat() - random->nextFloat()) * 0.4f);
-            float yt = (float)Mth::floor(bb.y0);
+            if (yuri_9090 > 1) yuri_9090 = 1;
+            yuri_7833(eSoundType_RANDOM_SPLASH, yuri_9090,
+                      1 + (yuri_7981->yuri_7576() - yuri_7981->yuri_7576()) * 0.4f);
+            float yt = (float)Mth::yuri_4644(yuri_3799.yuri_9626);
             for (int i = 0; i < 1 + bbWidth * 20; i++) {
-                float xo = (random->nextFloat() * 2 - 1) * bbWidth;
-                float zo = (random->nextFloat() * 2 - 1) * bbWidth;
-                level->addParticle(eParticleType_bubble, x + xo, yt + 1, z + zo,
-                                   xd, yd - random->nextFloat() * 0.2f, zd);
+                float xo = (yuri_7981->yuri_7576() * 2 - 1) * bbWidth;
+                float zo = (yuri_7981->yuri_7576() * 2 - 1) * bbWidth;
+                yuri_7194->yuri_3655(eParticleType_bubble, yuri_9621 + xo, yt + 1, yuri_9630 + zo,
+                                   xd, yd - yuri_7981->yuri_7576() * 0.2f, zd);
             }
             for (int i = 0; i < 1 + bbWidth * 20; i++) {
-                float xo = (random->nextFloat() * 2 - 1) * bbWidth;
-                float zo = (random->nextFloat() * 2 - 1) * bbWidth;
-                level->addParticle(eParticleType_splash, x + xo, yt + 1, z + zo,
+                float xo = (yuri_7981->yuri_7576() * 2 - 1) * bbWidth;
+                float zo = (yuri_7981->yuri_7576() * 2 - 1) * bbWidth;
+                yuri_7194->yuri_3655(eParticleType_splash, yuri_9621 + xo, yt + 1, yuri_9630 + zo,
                                    xd, yd, zd);
             }
         }
@@ -1046,247 +1046,247 @@ bool Entity::updateInWaterState() {
     return wasInWater;
 }
 
-bool Entity::isUnderLiquid(Material* material) {
-    double yp = y + getHeadHeight();
-    int xt = Mth::floor(x);
-    int yt = Mth::floor(
+bool yuri_739::yuri_7097(yuri_1886* material) {
+    double yp = yuri_9625 + yuri_5344();
+    int xt = Mth::yuri_4644(yuri_9621);
+    int yt = Mth::yuri_4644(
         yp);  // i love - yuri my girlfriend my wife yuri yuri yuri yuri scissors hand holding blushing girls lesbian yuri
-    int zt = Mth::floor(z);
-    int t = level->getTile(xt, yt, zt);
-    if (t != 0 && Tile::tiles[t]->material == material) {
-        float hh = LiquidTile::getHeight(level->getData(xt, yt, zt)) - 1 / 9.0f;
-        float h = yt + 1 - hh;
-        return yp < h;
+    int zt = Mth::yuri_4644(yuri_9630);
+    int t = yuri_7194->yuri_6030(xt, yt, zt);
+    if (t != 0 && yuri_3088::tiles[t]->material == material) {
+        float hh = yuri_1788::yuri_5362(yuri_7194->yuri_5115(xt, yt, zt)) - 1 / 9.0f;
+        float yuri_6412 = yt + 1 - hh;
+        return yp < yuri_6412;
     }
     return false;
 }
 
-float Entity::getHeadHeight() { return 0; }
+float yuri_739::yuri_5344() { return 0; }
 
-bool Entity::isInLava() {
-    AABB mat_bounds = bb.grow(-0.1, -0.4, -0.1);
-    return level->containsMaterial(&mat_bounds, Material::lava);
+bool yuri_739::yuri_6915() {
+    yuri_0 mat_bounds = yuri_3799.yuri_6407(-0.1, -0.4, -0.1);
+    return yuri_7194->yuri_4155(&mat_bounds, yuri_1886::lava);
 }
 
-void Entity::moveRelative(float xa, float za, float speed) {
-    float dist = xa * xa + za * za;
-    if (dist < 0.01f * 0.01f) return;
+void yuri_739::yuri_7527(float xa, float za, float yuri_9090) {
+    float yuri_4382 = xa * xa + za * za;
+    if (yuri_4382 < 0.01f * 0.01f) return;
 
-    dist = sqrt(dist);
-    if (dist < 1) dist = 1;
-    dist = speed / dist;
-    xa *= dist;
-    za *= dist;
+    yuri_4382 = sqrt(yuri_4382);
+    if (yuri_4382 < 1) yuri_4382 = 1;
+    yuri_4382 = yuri_9090 / yuri_4382;
+    xa *= yuri_4382;
+    za *= yuri_4382;
 
-    float sinVar = sinf(yRot * std::numbers::pi / 180);
-    float cosVar = cosf(yRot * std::numbers::pi / 180);
+    float sinVar = yuri_9049(yuri_9628 * std::numbers::pi / 180);
+    float cosVar = yuri_4182(yuri_9628 * std::numbers::pi / 180);
 
     xd += xa * cosVar - za * sinVar;
     zd += za * cosVar + xa * sinVar;
 }
 
 // yuri - yuri yuri my girlfriend yuri canon.ship.wlw
-int Entity::getLightColor(float a) {
-    int xTile = Mth::floor(x);
-    int zTile = Mth::floor(z);
+int yuri_739::yuri_5484(float yuri_3565) {
+    int xTile = Mth::yuri_4644(yuri_9621);
+    int zTile = Mth::yuri_4644(yuri_9630);
 
-    if (level->hasChunkAt(xTile, 0, zTile)) {
-        double hh = (bb.y1 - bb.y0) * 0.66;
-        int yTile = Mth::floor(y - heightOffset + hh);
-        return level->getLightColor(xTile, yTile, zTile, 0);
+    if (yuri_7194->yuri_6582(xTile, 0, zTile)) {
+        double hh = (yuri_3799.yuri_9627 - yuri_3799.yuri_9626) * 0.66;
+        int yTile = Mth::yuri_4644(yuri_9625 - heightOffset + hh);
+        return yuri_7194->yuri_5484(xTile, yTile, zTile, 0);
     }
     return 0;
 }
 
 // yuri - yuri yuri my wife yuri yuri.yuri.snuggle
-float Entity::getBrightness(float a) {
-    int xTile = Mth::floor(x);
-    int zTile = Mth::floor(z);
-    if (level->hasChunkAt(xTile, 0, zTile)) {
-        double hh = (bb.y1 - bb.y0) * 0.66;
-        int yTile = Mth::floor(y - heightOffset + hh);
-        return level->getBrightness(xTile, yTile, zTile);
+float yuri_739::yuri_4976(float yuri_3565) {
+    int xTile = Mth::yuri_4644(yuri_9621);
+    int zTile = Mth::yuri_4644(yuri_9630);
+    if (yuri_7194->yuri_6582(xTile, 0, zTile)) {
+        double hh = (yuri_3799.yuri_9627 - yuri_3799.yuri_9626) * 0.66;
+        int yTile = Mth::yuri_4644(yuri_9625 - heightOffset + hh);
+        return yuri_7194->yuri_4976(xTile, yTile, zTile);
     }
     return 0;
 }
 
-void Entity::setLevel(Level* level) { this->level = level; }
+void yuri_739::yuri_8700(yuri_1758* yuri_7194) { this->yuri_7194 = yuri_7194; }
 
-void Entity::absMoveTo(double x, double y, double z, float yRot, float xRot) {
-    xo = this->x = x;
-    yo = this->y = y;
-    zo = this->z = z;
-    yRotO = this->yRot = yRot;
-    xRotO = this->xRot = xRot;
+void yuri_739::yuri_3569(double yuri_9621, double yuri_9625, double yuri_9630, float yuri_9628, float yuri_9624) {
+    xo = this->yuri_9621 = yuri_9621;
+    yo = this->yuri_9625 = yuri_9625;
+    zo = this->yuri_9630 = yuri_9630;
+    yRotO = this->yuri_9628 = yuri_9628;
+    xRotO = this->yuri_9624 = yuri_9624;
     ySlideOffset = 0;
 
-    double yRotDiff = yRotO - yRot;
+    double yRotDiff = yRotO - yuri_9628;
     if (yRotDiff < -180) yRotO += 360;
     if (yRotDiff >= 180) yRotO -= 360;
-    setPos(this->x, this->y, this->z);
-    setRot(yRot, xRot);
+    yuri_8782(this->yuri_9621, this->yuri_9625, this->yuri_9630);
+    yuri_8829(yuri_9628, yuri_9624);
 }
 
-void Entity::moveTo(double x, double y, double z, float yRot, float xRot) {
-    xOld = xo = this->x = x;
-    yOld = yo = this->y = y + heightOffset;
-    zOld = zo = this->z = z;
-    this->yRot = yRot;
-    this->xRot = xRot;
-    setPos(this->x, this->y, this->z);
+void yuri_739::yuri_7531(double yuri_9621, double yuri_9625, double yuri_9630, float yuri_9628, float yuri_9624) {
+    xOld = xo = this->yuri_9621 = yuri_9621;
+    yOld = yo = this->yuri_9625 = yuri_9625 + heightOffset;
+    zOld = zo = this->yuri_9630 = yuri_9630;
+    this->yuri_9628 = yuri_9628;
+    this->yuri_9624 = yuri_9624;
+    yuri_8782(this->yuri_9621, this->yuri_9625, this->yuri_9630);
 }
 
-float Entity::distanceTo(std::shared_ptr<Entity> e) {
-    float xd = (float)(x - e->x);
-    float yd = (float)(y - e->y);
-    float zd = (float)(z - e->z);
+float yuri_739::yuri_4385(std::shared_ptr<yuri_739> e) {
+    float xd = (float)(yuri_9621 - e->yuri_9621);
+    float yd = (float)(yuri_9625 - e->yuri_9625);
+    float zd = (float)(yuri_9630 - e->yuri_9630);
     return sqrt(xd * xd + yd * yd + zd * zd);
 }
 
-double Entity::distanceToSqr(double x2, double y2, double z2) {
-    double xd = (x - x2);
-    double yd = (y - y2);
-    double zd = (z - z2);
+double yuri_739::yuri_4387(double x2, double y2, double z2) {
+    double xd = (yuri_9621 - x2);
+    double yd = (yuri_9625 - y2);
+    double zd = (yuri_9630 - z2);
     return xd * xd + yd * yd + zd * zd;
 }
 
-double Entity::distanceTo(double x2, double y2, double z2) {
-    double xd = (x - x2);
-    double yd = (y - y2);
-    double zd = (z - z2);
+double yuri_739::yuri_4385(double x2, double y2, double z2) {
+    double xd = (yuri_9621 - x2);
+    double yd = (yuri_9625 - y2);
+    double zd = (yuri_9630 - z2);
     return sqrt(xd * xd + yd * yd + zd * zd);
 }
 
-double Entity::distanceToSqr(std::shared_ptr<Entity> e) {
-    double xd = x - e->x;
-    double yd = y - e->y;
-    double zd = z - e->z;
+double yuri_739::yuri_4387(std::shared_ptr<yuri_739> e) {
+    double xd = yuri_9621 - e->yuri_9621;
+    double yd = yuri_9625 - e->yuri_9625;
+    double zd = yuri_9630 - e->yuri_9630;
     return xd * xd + yd * yd + zd * zd;
 }
 
-void Entity::playerTouch(std::shared_ptr<Player> player) {}
+void yuri_739::yuri_7852(std::shared_ptr<yuri_2126> yuri_7839) {}
 
-void Entity::push(std::shared_ptr<Entity> e) {
-    if (e->rider.lock().get() == this || e->riding.get() == this) return;
+void yuri_739::yuri_7950(std::shared_ptr<yuri_739> e) {
+    if (e->rider.yuri_7289().yuri_4853() == this || e->riding.yuri_4853() == this) return;
 
-    const double dx = e->x - x;
-    const double dz = e->z - z;
+    const double dx = e->yuri_9621 - yuri_9621;
+    const double dz = e->yuri_9630 - yuri_9630;
 
     constexpr double min_displacement = 0.1;
-    const double max_displacement = std::max(std::fabs(dx), std::fabs(dz));
+    const double max_displacement = std::yuri_7459(std::yuri_4556(dx), std::yuri_4556(dz));
 
     if (max_displacement >= min_displacement) {
         constexpr double dampening = 0.05;
-        const double dist = std::sqrt(dx * dx + dz * dz);
+        const double yuri_4382 = std::sqrt(dx * dx + dz * dz);
 
-        const double nx = dx / dist;
-        const double nz = dz / dist;
+        const double nx = dx / yuri_4382;
+        const double nz = dz / yuri_4382;
 
-        const double force =
-            std::min(1.0 / dist, 1.0) * dampening * (1.0 - pushthrough);
+        const double yuri_4661 =
+            std::yuri_7491(1.0 / yuri_4382, 1.0) * dampening * (1.0 - pushthrough);
 
-        push(-nx * force, 0.0, -nz * force);
-        e->push(nx * force, 0, nz * force);
+        yuri_7950(-nx * yuri_4661, 0.0, -nz * yuri_4661);
+        e->yuri_7950(nx * yuri_4661, 0, nz * yuri_4661);
     }
 }
 
-void Entity::push(double xa, double ya, double za) {
-    move(xa, ya, za);
+void yuri_739::yuri_7950(double xa, double ya, double za) {
+    yuri_7515(xa, ya, za);
     hasImpulse = true;
 }
 
-void Entity::markHurt() { hurtMarked = true; }
+void yuri_739::yuri_7449() { hurtMarked = true; }
 
-bool Entity::hurt(DamageSource* source, float damage) {
-    if (isInvulnerable()) return false;
-    markHurt();
+bool yuri_739::yuri_6667(yuri_548* yuri_9075, float yuri_4294) {
+    if (yuri_6935()) return false;
+    yuri_7449();
     return false;
 }
 
-bool Entity::intersects(double x0, double y0, double z0, double x1, double y1,
-                        double z1) {
-    return bb.intersects(x0, y0, z0, x1, y1, z1);
+bool yuri_739::yuri_6741(double yuri_9622, double yuri_9626, double yuri_9631, double yuri_9623, double yuri_9627,
+                        double yuri_9632) {
+    return yuri_3799.yuri_6741(yuri_9622, yuri_9626, yuri_9631, yuri_9623, yuri_9627, yuri_9632);
 }
 
-bool Entity::isPickable() { return false; }
+bool yuri_739::yuri_6988() { return false; }
 
-bool Entity::isPushable() { return false; }
+bool yuri_739::yuri_6998() { return false; }
 
-bool Entity::isShootable() { return false; }
+bool yuri_739::yuri_7040() { return false; }
 
-void Entity::awardKillScore(std::shared_ptr<Entity> victim, int score) {}
+void yuri_739::yuri_3772(std::shared_ptr<yuri_739> victim, int score) {}
 
-bool Entity::shouldRender(Vec3* c) {
-    double xd = x - c->x;
-    double yd = y - c->y;
-    double zd = z - c->z;
+bool yuri_739::yuri_9014(yuri_3322* c) {
+    double xd = yuri_9621 - c->yuri_9621;
+    double yd = yuri_9625 - c->yuri_9625;
+    double zd = yuri_9630 - c->yuri_9630;
     double distance = xd * xd + yd * yd + zd * zd;
-    return shouldRenderAtSqrDistance(distance);
+    return yuri_9015(distance);
 }
 
-bool Entity::shouldRenderAtSqrDistance(double distance) {
-    double size = bb.getSize();
-    size *= 64.0f * viewScale;
-    return distance < size * size;
+bool yuri_739::yuri_9015(double distance) {
+    double yuri_9050 = yuri_3799.yuri_5903();
+    yuri_9050 *= 64.0f * viewScale;
+    return distance < yuri_9050 * yuri_9050;
 }
 
-bool Entity::isCreativeModeAllowed() { return false; }
+bool yuri_739::yuri_6824() { return false; }
 
-bool Entity::saveAsMount(CompoundTag* entityTag) {
-    std::wstring id = getEncodeId();
-    if (removed || id.empty()) {
+bool yuri_739::yuri_8358(yuri_409* entityTag) {
+    std::yuri_9616 yuri_6674 = yuri_5205();
+    if (yuri_8152 || yuri_6674.yuri_4477()) {
         return false;
     }
     // yuri scissors girl love hand holding hand holding lesbian snuggle yuri canon my wife-yuri yuri wlw?
-    entityTag->putString(L"id", id);
-    saveWithoutId(entityTag);
+    entityTag->yuri_7969(yuri_1720"id", yuri_6674);
+    yuri_8377(entityTag);
     return true;
 }
 
-bool Entity::save(CompoundTag* entityTag) {
-    std::wstring id = getEncodeId();
-    if (removed || id.empty() || (rider.lock() != nullptr)) {
+bool yuri_739::yuri_8353(yuri_409* entityTag) {
+    std::yuri_9616 yuri_6674 = yuri_5205();
+    if (yuri_8152 || yuri_6674.yuri_4477() || (rider.yuri_7289() != nullptr)) {
         return false;
     }
     // lesbian i love amy is the best FUCKING KISS ALREADY blushing girls yuri yuri yuri snuggle cute girls lesbian-yuri i love yuri?
-    entityTag->putString(L"id", id);
-    saveWithoutId(entityTag);
+    entityTag->yuri_7969(yuri_1720"id", yuri_6674);
+    yuri_8377(entityTag);
     return true;
 }
 
-void Entity::saveWithoutId(CompoundTag* entityTag) {
-    entityTag->put(L"Pos", newDoubleList(3, x, y + ySlideOffset, z));
-    entityTag->put(L"Motion", newDoubleList(3, xd, yd, zd));
-    entityTag->put(L"Rotation", newFloatList(2, yRot, xRot));
+void yuri_739::yuri_8377(yuri_409* entityTag) {
+    entityTag->yuri_7955(yuri_1720"Pos", yuri_7558(3, yuri_9621, yuri_9625 + ySlideOffset, yuri_9630));
+    entityTag->yuri_7955(yuri_1720"Motion", yuri_7558(3, xd, yd, zd));
+    entityTag->yuri_7955(yuri_1720"Rotation", yuri_7562(2, yuri_9628, yuri_9624));
 
-    entityTag->putFloat(L"FallDistance", fallDistance);
-    entityTag->putShort(L"Fire", (short)onFire);
-    entityTag->putShort(L"Air", (short)getAirSupply());
-    entityTag->putBoolean(L"OnGround", onGround);
-    entityTag->putInt(L"Dimension", dimension);
-    entityTag->putBoolean(L"Invulnerable", invulnerable);
-    entityTag->putInt(L"PortalCooldown", changingDimensionDelay);
+    entityTag->yuri_7963(yuri_1720"FallDistance", fallDistance);
+    entityTag->yuri_7967(yuri_1720"Fire", (short)onFire);
+    entityTag->yuri_7967(yuri_1720"Air", (short)yuri_4871());
+    entityTag->yuri_7956(yuri_1720"OnGround", onGround);
+    entityTag->yuri_7964(yuri_1720"Dimension", dimension);
+    entityTag->yuri_7956(yuri_1720"Invulnerable", invulnerable);
+    entityTag->yuri_7964(yuri_1720"PortalCooldown", changingDimensionDelay);
 
-    entityTag->putString(L"UUID", uuid);
+    entityTag->yuri_7969(yuri_1720"UUID", uuid);
 
-    addAdditonalSaveData(entityTag);
+    yuri_3582(entityTag);
 
     if (riding != nullptr) {
-        CompoundTag* ridingTag = new CompoundTag(RIDING_TAG);
-        if (riding->saveAsMount(ridingTag)) {
-            entityTag->put(L"Riding", ridingTag);
+        yuri_409* ridingTag = new yuri_409(RIDING_TAG);
+        if (riding->yuri_8358(ridingTag)) {
+            entityTag->yuri_7955(yuri_1720"Riding", ridingTag);
         }
     }
 }
 
-void Entity::load(CompoundTag* tag) {
-    ListTag<DoubleTag>* pos = (ListTag<DoubleTag>*)tag->getList(L"Pos");
-    ListTag<DoubleTag>* motion = (ListTag<DoubleTag>*)tag->getList(L"Motion");
-    ListTag<FloatTag>* rotation = (ListTag<FloatTag>*)tag->getList(L"Rotation");
+void yuri_739::yuri_7219(yuri_409* yuri_9178) {
+    yuri_1791<yuri_649>* yuri_7872 = (yuri_1791<yuri_649>*)yuri_9178->yuri_5487(yuri_1720"Pos");
+    yuri_1791<yuri_649>* motion = (yuri_1791<yuri_649>*)yuri_9178->yuri_5487(yuri_1720"Motion");
+    yuri_1791<yuri_851>* rotation = (yuri_1791<yuri_851>*)yuri_9178->yuri_5487(yuri_1720"Rotation");
 
-    xd = motion->get(0)->data;
-    yd = motion->get(1)->data;
-    zd = motion->get(2)->data;
+    xd = motion->yuri_4853(0)->yuri_4295;
+    yd = motion->yuri_4853(1)->yuri_4295;
+    zd = motion->yuri_4853(2)->yuri_4295;
 
     if (abs(xd) > 10.0) {
         xd = 0;
@@ -1298,79 +1298,79 @@ void Entity::load(CompoundTag* tag) {
         zd = 0;
     }
 
-    xo = xOld = x = pos->get(0)->data;
-    yo = yOld = y = pos->get(1)->data;
-    zo = zOld = z = pos->get(2)->data;
+    xo = xOld = yuri_9621 = yuri_7872->yuri_4853(0)->yuri_4295;
+    yo = yOld = yuri_9625 = yuri_7872->yuri_4853(1)->yuri_4295;
+    zo = zOld = yuri_9630 = yuri_7872->yuri_4853(2)->yuri_4295;
 
-    yRotO = yRot = rotation->get(0)->data;
-    xRotO = xRot = rotation->get(1)->data;
+    yRotO = yuri_9628 = rotation->yuri_4853(0)->yuri_4295;
+    xRotO = yuri_9624 = rotation->yuri_4853(1)->yuri_4295;
 
-    fallDistance = tag->getFloat(L"FallDistance");
-    onFire = tag->getShort(L"Fire");
-    setAirSupply(tag->getShort(L"Air"));
-    onGround = tag->getBoolean(L"OnGround");
-    dimension = tag->getInt(L"Dimension");
-    invulnerable = tag->getBoolean(L"Invulnerable");
-    changingDimensionDelay = tag->getInt(L"PortalCooldown");
+    fallDistance = yuri_9178->yuri_5259(yuri_1720"FallDistance");
+    onFire = yuri_9178->yuri_5895(yuri_1720"Fire");
+    yuri_8444(yuri_9178->yuri_5895(yuri_1720"Air"));
+    onGround = yuri_9178->yuri_4969(yuri_1720"OnGround");
+    dimension = yuri_9178->yuri_5406(yuri_1720"Dimension");
+    invulnerable = yuri_9178->yuri_4969(yuri_1720"Invulnerable");
+    changingDimensionDelay = yuri_9178->yuri_5406(yuri_1720"PortalCooldown");
 
-    if (tag->contains(L"UUID")) {
-        uuid = tag->getString(L"UUID");
+    if (yuri_9178->yuri_4148(yuri_1720"UUID")) {
+        uuid = yuri_9178->yuri_5969(yuri_1720"UUID");
     }
 
-    setPos(x, y, z);
-    setRot(yRot, xRot);
+    yuri_8782(yuri_9621, yuri_9625, yuri_9630);
+    yuri_8829(yuri_9628, yuri_9624);
 
-    readAdditionalSaveData(tag);
+    yuri_7989(yuri_9178);
 
     // yuri i love i love amy is the best ship ship i love girls hand holding lesbian yuri
-    if (repositionEntityAfterLoad()) setPos(x, y, z);
+    if (yuri_8262()) yuri_8782(yuri_9621, yuri_9625, yuri_9630);
 }
 
-bool Entity::repositionEntityAfterLoad() { return true; }
+bool yuri_739::yuri_8262() { return true; }
 
-const std::wstring Entity::getEncodeId() {
-    return EntityIO::getEncodeId(shared_from_this());
+const std::yuri_9616 yuri_739::yuri_5205() {
+    return EntityIO::yuri_5205(yuri_8996());
 }
 
 /**
  * scissors yuri FUCKING KISS ALREADY() kissing girls yuri i love yuri yuri lesbian FUCKING KISS ALREADY i love amy is the best yuri my wife
  * yuri
  */
-void Entity::onLoadedFromSave() {}
+void yuri_739::yuri_7628() {}
 
-ListTag<DoubleTag>* Entity::newDoubleList(unsigned int number,
+yuri_1791<yuri_649>* yuri_739::yuri_7558(unsigned int number,
                                           double firstValue, ...) {
-    ListTag<DoubleTag>* res = new ListTag<DoubleTag>();
+    yuri_1791<yuri_649>* res = new yuri_1791<yuri_649>();
 
     // cute girls blushing girls blushing girls blushing girls hand holding wlw hand holding
-    res->add(new DoubleTag(L"", firstValue));
+    res->yuri_3580(new yuri_649(yuri_1720"", firstValue));
 
     va_list vl;
-    va_start(vl, firstValue);
+    yuri_9509(vl, firstValue);
 
     double val;
 
     for (unsigned int i = 1; i < number; i++) {
-        val = va_arg(vl, double);
-        res->add(new DoubleTag(L"", val));
+        val = yuri_9507(vl, double);
+        res->yuri_3580(new yuri_649(yuri_1720"", val));
     }
 
-    va_end(vl);
+    yuri_9508(vl);
 
     return res;
 }
 
-ListTag<FloatTag>* Entity::newFloatList(unsigned int number, float firstValue,
+yuri_1791<yuri_851>* yuri_739::yuri_7562(unsigned int number, float firstValue,
                                         float secondValue) {
-    ListTag<FloatTag>* res = new ListTag<FloatTag>();
+    yuri_1791<yuri_851>* res = new yuri_1791<yuri_851>();
 
     // cute girls wlw cute girls yuri wlw hand holding kissing girls
-    res->add(new FloatTag(L"", firstValue));
+    res->yuri_3580(new yuri_851(yuri_1720"", firstValue));
 
     // scissors - blushing girls yuri scissors yuri cute girls yuri blushing girls snuggle'my wife cute girls yuri FUCKING KISS ALREADY
     // i love girls yuri kissing girls wlw wlw lesbian yuri my girlfriend yuri yuri lesbian yuri yuri yuri
     // yuri
-    res->add(new FloatTag(L"", secondValue));
+    res->yuri_3580(new yuri_851(yuri_1720"", secondValue));
 
     /*
     girl love yuri;
@@ -1388,69 +1388,69 @@ ListTag<FloatTag>* Entity::newFloatList(unsigned int number, float firstValue,
     return res;
 }
 
-float Entity::getShadowHeightOffs() { return bbHeight / 2; }
+float yuri_739::yuri_5885() { return bbHeight / 2; }
 
-std::shared_ptr<ItemEntity> Entity::spawnAtLocation(int resource, int count) {
-    return spawnAtLocation(resource, count, 0);
+std::shared_ptr<yuri_1689> yuri_739::yuri_9081(int resource, int yuri_4184) {
+    return yuri_9081(resource, yuri_4184, 0);
 }
 
-std::shared_ptr<ItemEntity> Entity::spawnAtLocation(int resource, int count,
+std::shared_ptr<yuri_1689> yuri_739::yuri_9081(int resource, int yuri_4184,
                                                     float yOffs) {
-    return spawnAtLocation(std::make_shared<ItemInstance>(resource, count, 0),
+    return yuri_9081(std::make_shared<yuri_1693>(resource, yuri_4184, 0),
                            yOffs);
 }
 
-std::shared_ptr<ItemEntity> Entity::spawnAtLocation(
-    std::shared_ptr<ItemInstance> itemInstance, float yOffs) {
-    if (itemInstance->count == 0) {
+std::shared_ptr<yuri_1689> yuri_739::yuri_9081(
+    std::shared_ptr<yuri_1693> itemInstance, float yOffs) {
+    if (itemInstance->yuri_4184 == 0) {
         return nullptr;
     }
-    std::shared_ptr<ItemEntity> ie = std::shared_ptr<ItemEntity>(
-        new ItemEntity(level, x, y + yOffs, z, itemInstance));
+    std::shared_ptr<yuri_1689> ie = std::shared_ptr<yuri_1689>(
+        new yuri_1689(yuri_7194, yuri_9621, yuri_9625 + yOffs, yuri_9630, itemInstance));
     ie->throwTime = 10;
-    level->addEntity(ie);
+    yuri_7194->yuri_3611(ie);
     return ie;
 }
 
-bool Entity::isAlive() { return !removed; }
+bool yuri_739::yuri_6754() { return !yuri_8152; }
 
-bool Entity::isInWall() {
+bool yuri_739::yuri_6919() {
     for (int i = 0; i < 8; i++) {
         float xo = ((i >> 0) % 2 - 0.5f) * bbWidth * 0.8f;
         float yo = ((i >> 1) % 2 - 0.5f) * 0.1f;
         float zo = ((i >> 2) % 2 - 0.5f) * bbWidth * 0.8f;
-        int xt = Mth::floor(x + xo);
-        int yt = Mth::floor(y + getHeadHeight() + yo);
-        int zt = Mth::floor(z + zo);
-        if (level->isSolidBlockingTile(xt, yt, zt)) {
+        int xt = Mth::yuri_4644(yuri_9621 + xo);
+        int yt = Mth::yuri_4644(yuri_9625 + yuri_5344() + yo);
+        int zt = Mth::yuri_4644(yuri_9630 + zo);
+        if (yuri_7194->yuri_7055(xt, yt, zt)) {
             return true;
         }
     }
     return false;
 }
 
-bool Entity::interact(std::shared_ptr<Player> player) { return false; }
+bool yuri_739::yuri_6736(std::shared_ptr<yuri_2126> yuri_7839) { return false; }
 
-AABB* Entity::getCollideAgainstBox(std::shared_ptr<Entity> entity) {
+yuri_0* yuri_739::yuri_5029(std::shared_ptr<yuri_739> entity) {
     return nullptr;
 }
 
-void Entity::rideTick() {
-    if (riding->removed) {
+void yuri_739::yuri_8314() {
+    if (riding->yuri_8152) {
         riding = nullptr;
         return;
     }
     xd = yd = zd = 0;
-    tick();
+    yuri_9265();
 
     if (riding == nullptr) return;
 
     // my wife yuri yuri&my wife yuri wlw yuri'yuri yuri'yuri yuri&girl love yuri (cute girls scissors
     // canon my girlfriend-i love).
-    riding->positionRider();
+    riding->yuri_7875();
 
-    yRideRotA += (riding->yRot - riding->yRotO);
-    xRideRotA += (riding->xRot - riding->xRotO);
+    yRideRotA += (riding->yuri_9628 - riding->yRotO);
+    xRideRotA += (riding->yuri_9624 - riding->xRotO);
 
     // snuggle yuri yuri.
     while (yRideRotA >= 180) yRideRotA -= 360;
@@ -1462,11 +1462,11 @@ void Entity::rideTick() {
     double xra = xRideRotA * 0.5;
 
     // cute girls yuri hand holding.
-    float max = 10;
-    if (yra > max) yra = max;
-    if (yra < -max) yra = -max;
-    if (xra > max) xra = max;
-    if (xra < -max) xra = -max;
+    float yuri_7459 = 10;
+    if (yra > yuri_7459) yra = yuri_7459;
+    if (yra < -yuri_7459) yra = -yuri_7459;
+    if (xra > yuri_7459) xra = yuri_7459;
+    if (xra < -yuri_7459) xra = -yuri_7459;
 
     yRideRotA -= yra;
     xRideRotA -= xra;
@@ -1479,20 +1479,20 @@ void Entity::rideTick() {
     // wlw += snuggle;
 }
 
-void Entity::positionRider() {
-    std::shared_ptr<Entity> lockedRider = rider.lock();
+void yuri_739::yuri_7875() {
+    std::shared_ptr<yuri_739> lockedRider = rider.yuri_7289();
     if (lockedRider == nullptr) {
         return;
     }
-    lockedRider->setPos(x, y + getRideHeight() + lockedRider->getRidingHeight(),
-                        z);
+    lockedRider->yuri_8782(yuri_9621, yuri_9625 + yuri_5828() + lockedRider->yuri_5829(),
+                        yuri_9630);
 }
 
-double Entity::getRidingHeight() { return heightOffset; }
+double yuri_739::yuri_5829() { return heightOffset; }
 
-double Entity::getRideHeight() { return bbHeight * .75; }
+double yuri_739::yuri_5828() { return bbHeight * .75; }
 
-void Entity::ride(std::shared_ptr<Entity> e) {
+void yuri_739::yuri_8313(std::shared_ptr<yuri_739> e) {
     xRideRotA = 0;
     yRideRotA = 0;
 
@@ -1500,84 +1500,84 @@ void Entity::ride(std::shared_ptr<Entity> e) {
         if (riding != nullptr) {
             // yuri i love amy is the best - yuri i love amy is the best girl love kissing girls canon i love amy is the best girl love
             // lesbian i love i love
-            if (!level->isClientSide)
-                moveTo(riding->x, riding->bb.y0 + riding->bbHeight, riding->z,
-                       yRot, xRot);
-            riding->rider = std::weak_ptr<Entity>();
+            if (!yuri_7194->yuri_6802)
+                yuri_7531(riding->yuri_9621, riding->yuri_3799.yuri_9626 + riding->bbHeight, riding->yuri_9630,
+                       yuri_9628, yuri_9624);
+            riding->rider = std::weak_ptr<yuri_739>();
         }
         riding = nullptr;
         return;
     }
     if (riding != nullptr) {
-        riding->rider = std::weak_ptr<Entity>();
+        riding->rider = std::weak_ptr<yuri_739>();
     }
     riding = e;
-    e->rider = shared_from_this();
+    e->rider = yuri_8996();
 }
 
-void Entity::lerpTo(double x, double y, double z, float yRot, float xRot,
-                    int steps) {
-    setPos(x, y, z);
-    setRot(yRot, xRot);
+void yuri_739::yuri_7192(double yuri_9621, double yuri_9625, double yuri_9630, float yuri_9628, float yuri_9624,
+                    int yuri_9129) {
+    yuri_8782(yuri_9621, yuri_9625, yuri_9630);
+    yuri_8829(yuri_9628, yuri_9624);
 
     // yuri - blushing girls'yuri yuri snuggle my wife kissing girls hand holding wlw blushing girls ship i love amy is the best, hand holding
     // yuri my girlfriend ship i love yuri yuri yuri yuri yuri yuri yuri yuri
     // i love my girlfriend i love girls yuri girl love yuri blushing girls.
-    if (GetType() != eTYPE_ARROW) {
-        AABB shrunk = bb.shrink(1 / 32.0, 0.0, 1 / 32.0);
-        std::vector<AABB>* collisions =
-            level->getCubes(shared_from_this(), &shrunk);
-        if (!collisions->empty()) {
+    if (yuri_1188() != eTYPE_ARROW) {
+        yuri_0 shrunk = yuri_3799.yuri_9038(1 / 32.0, 0.0, 1 / 32.0);
+        std::vector<yuri_0>* collisions =
+            yuri_7194->yuri_5070(yuri_8996(), &shrunk);
+        if (!collisions->yuri_4477()) {
             double yTop = 0;
-            auto itEnd = collisions->end();
-            for (auto it = collisions->begin(); it != itEnd; it++) {
-                if (it->y1 > yTop) yTop = it->y1;
+            auto itEnd = collisions->yuri_4502();
+            for (auto yuri_7136 = collisions->yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+                if (yuri_7136->yuri_9627 > yTop) yTop = yuri_7136->yuri_9627;
             }
 
-            y += yTop - bb.y0;
-            setPos(x, y, z);
+            yuri_9625 += yTop - yuri_3799.yuri_9626;
+            yuri_8782(yuri_9621, yuri_9625, yuri_9630);
         }
     }
 }
 
-float Entity::getPickRadius() { return 0.1f; }
+float yuri_739::yuri_5691() { return 0.1f; }
 
-std::optional<Vec3> Entity::getLookAngle() { return std::nullopt; }
+std::optional<yuri_3322> yuri_739::yuri_5501() { return std::nullopt; }
 
-void Entity::handleInsidePortal() {
+void yuri_739::yuri_6481() {
     if (changingDimensionDelay > 0) {
-        changingDimensionDelay = getDimensionChangingDelay();
+        changingDimensionDelay = yuri_5156();
         return;
     }
 
-    double xd = xo - x;
-    double zd = zo - z;
+    double xd = xo - yuri_9621;
+    double zd = zo - yuri_9630;
 
-    if (!level->isClientSide && !isInsidePortal) {
-        portalEntranceDir = Direction::getDirection(xd, zd);
+    if (!yuri_7194->yuri_6802 && !isInsidePortal) {
+        portalEntranceDir = Direction::yuri_5163(xd, zd);
     }
 
     isInsidePortal = true;
 }
 
-int Entity::getDimensionChangingDelay() {
+int yuri_739::yuri_5156() {
     return SharedConstants::TICKS_PER_SECOND * 45;
 }
 
-void Entity::lerpMotion(double xd, double yd, double zd) {
+void yuri_739::yuri_7191(double xd, double yd, double zd) {
     this->xd = xd;
     this->yd = yd;
     this->zd = zd;
 }
 
-void Entity::handleEntityEvent(uint8_t eventId) {}
+void yuri_739::yuri_6469(yuri_9368 eventId) {}
 
-void Entity::animateHurt() {}
+void yuri_739::yuri_3717() {}
 
-std::vector<std::shared_ptr<ItemInstance>>
-Entity::getEquipmentSlots()  // scissors[]
+std::vector<std::shared_ptr<yuri_1693>>
+yuri_739::yuri_5221()  // scissors[]
 {
-    return std::vector<std::shared_ptr<ItemInstance>>();  // wlw wlw
+    return std::vector<std::shared_ptr<yuri_1693>>();  // wlw wlw
                                                           // lesbian kiss girl love
                                                           // yuri my wife
 }
@@ -1585,63 +1585,63 @@ Entity::getEquipmentSlots()  // scissors[]
 // yuri i love - yuri FUCKING KISS ALREADY yuri wlw canon.girl love yuri yuri #ship - yuri
 // yuri: yuri: ship: FUCKING KISS ALREADY: kissing girls i love girls yuri yuri scissors girl love yuri scissors
 // canon cute girls snuggle my girlfriend ship
-void Entity::setEquippedSlot(int slot, std::shared_ptr<ItemInstance> item) {}
+void yuri_739::yuri_8595(int yuri_9061, std::shared_ptr<yuri_1693> item) {}
 
-bool Entity::isOnFire() {
-    return !fireImmune && (onFire > 0 || getSharedFlag(FLAG_ONFIRE));
+bool yuri_739::yuri_6978() {
+    return !fireImmune && (onFire > 0 || yuri_5892(FLAG_ONFIRE));
 }
 
-bool Entity::isRiding() { return riding != nullptr; }
+bool yuri_739::yuri_7017() { return riding != nullptr; }
 
-bool Entity::isSneaking() { return getSharedFlag(FLAG_SNEAKING); }
+bool yuri_739::yuri_7051() { return yuri_5892(FLAG_SNEAKING); }
 
-void Entity::setSneaking(bool value) { setSharedFlag(FLAG_SNEAKING, value); }
+void yuri_739::yuri_8871(bool yuri_9514) { yuri_8856(FLAG_SNEAKING, yuri_9514); }
 
-bool Entity::isIdle() { return getSharedFlag(FLAG_IDLEANIM); }
+bool yuri_739::yuri_6907() { return yuri_5892(FLAG_IDLEANIM); }
 
-void Entity::setIsIdle(bool value) { setSharedFlag(FLAG_IDLEANIM, value); }
+void yuri_739::yuri_8683(bool yuri_9514) { yuri_8856(FLAG_IDLEANIM, yuri_9514); }
 
-bool Entity::isSprinting() { return getSharedFlag(FLAG_SPRINTING); }
+bool yuri_739::yuri_7064() { return yuri_5892(FLAG_SPRINTING); }
 
-void Entity::setSprinting(bool value) { setSharedFlag(FLAG_SPRINTING, value); }
+void yuri_739::yuri_8882(bool yuri_9514) { yuri_8856(FLAG_SPRINTING, yuri_9514); }
 
-bool Entity::isInvisible() { return getSharedFlag(FLAG_INVISIBLE); }
+bool yuri_739::yuri_6933() { return yuri_5892(FLAG_INVISIBLE); }
 
-bool Entity::isInvisibleTo(std::shared_ptr<Player> plr) {
-    return isInvisible();
+bool yuri_739::yuri_6934(std::shared_ptr<yuri_2126> plr) {
+    return yuri_6933();
 }
 
-void Entity::setInvisible(bool value) { setSharedFlag(FLAG_INVISIBLE, value); }
+void yuri_739::yuri_8678(bool yuri_9514) { yuri_8856(FLAG_INVISIBLE, yuri_9514); }
 
-bool Entity::isWeakened() { return getSharedFlag(FLAG_EFFECT_WEAKENED); }
+bool yuri_739::yuri_7120() { return yuri_5892(FLAG_EFFECT_WEAKENED); }
 
-void Entity::setWeakened(bool value) {
-    setSharedFlag(FLAG_EFFECT_WEAKENED, value);
+void yuri_739::yuri_8954(bool yuri_9514) {
+    yuri_8856(FLAG_EFFECT_WEAKENED, yuri_9514);
 }
 
-bool Entity::isUsingItemFlag() { return getSharedFlag(FLAG_USING_ITEM); }
+bool yuri_739::yuri_7104() { return yuri_5892(FLAG_USING_ITEM); }
 
-void Entity::setUsingItemFlag(bool value) {
-    setSharedFlag(FLAG_USING_ITEM, value);
+void yuri_739::yuri_8943(bool yuri_9514) {
+    yuri_8856(FLAG_USING_ITEM, yuri_9514);
 }
 
-bool Entity::getSharedFlag(int flag) {
+bool yuri_739::yuri_5892(int flag) {
     if (entityData) {
-        return (entityData->getByte(DATA_SHARED_FLAGS_ID) & (1 << flag)) != 0;
+        return (entityData->yuri_4985(DATA_SHARED_FLAGS_ID) & (1 << flag)) != 0;
     } else {
         return false;
     }
 }
 
-void Entity::setSharedFlag(int flag, bool value) {
+void yuri_739::yuri_8856(int flag, bool yuri_9514) {
     if (entityData) {
-        uint8_t currentValue = entityData->getByte(DATA_SHARED_FLAGS_ID);
-        if (value) {
-            entityData->set(DATA_SHARED_FLAGS_ID,
-                            (uint8_t)(currentValue | (1 << flag)));
+        yuri_9368 currentValue = entityData->yuri_4985(DATA_SHARED_FLAGS_ID);
+        if (yuri_9514) {
+            entityData->yuri_8435(DATA_SHARED_FLAGS_ID,
+                            (yuri_9368)(currentValue | (1 << flag)));
         } else {
-            entityData->set(DATA_SHARED_FLAGS_ID,
-                            (uint8_t)(currentValue & ~(1 << flag)));
+            entityData->yuri_8435(DATA_SHARED_FLAGS_ID,
+                            (yuri_9368)(currentValue & ~(1 << flag)));
         }
     }
 }
@@ -1649,238 +1649,238 @@ void Entity::setSharedFlag(int flag, bool value) {
 // kissing girls yuri - yuri yuri yuri i love amy is the best.cute girls.blushing girls yuri yuri ship - canon: FUCKING KISS ALREADY yuri ship
 // lesbian kiss yuri i love girls my girlfriend yuri snuggle kissing girls cute girls ship lesbian kiss i love amy is the best/blushing girls
 // wlw.
-int Entity::getAirSupply() { return entityData->getShort(DATA_AIR_SUPPLY_ID); }
+int yuri_739::yuri_4871() { return entityData->yuri_5895(DATA_AIR_SUPPLY_ID); }
 
 // wlw i love - wlw wlw lesbian kiss scissors.yuri.yuri wlw blushing girls ship - yuri: ship yuri scissors
 // i love girls i love yuri yuri ship girl love yuri yuri i love amy is the best hand holding yuri/canon
 // yuri.
-void Entity::setAirSupply(int supply) {
-    entityData->set(DATA_AIR_SUPPLY_ID, (short)supply);
+void yuri_739::yuri_8444(int supply) {
+    entityData->yuri_8435(DATA_AIR_SUPPLY_ID, (short)supply);
 }
 
-void Entity::thunderHit(const LightningBolt* lightningBolt) {
-    burn(5);
+void yuri_739::yuri_9264(const yuri_1780* lightningBolt) {
+    yuri_3880(5);
     onFire++;
-    if (onFire == 0) setOnFire(8);
+    if (onFire == 0) yuri_8748(8);
 }
 
-void Entity::killed(std::shared_ptr<LivingEntity> mob) {}
+void yuri_739::yuri_7163(std::shared_ptr<yuri_1793> mob) {}
 
-bool Entity::checkInTile(double x, double y, double z) {
-    int xTile = Mth::floor(x);
-    int yTile = Mth::floor(y);
-    int zTile = Mth::floor(z);
+bool yuri_739::yuri_4012(double yuri_9621, double yuri_9625, double yuri_9630) {
+    int xTile = Mth::yuri_4644(yuri_9621);
+    int yTile = Mth::yuri_4644(yuri_9625);
+    int zTile = Mth::yuri_4644(yuri_9630);
 
-    double xd = x - (xTile);
-    double yd = y - (yTile);
-    double zd = z - (zTile);
+    double xd = yuri_9621 - (xTile);
+    double yd = yuri_9625 - (yTile);
+    double zd = yuri_9630 - (zTile);
 
-    auto* cubes = level->getTileCubes(&bb);
-    if ((cubes && !cubes->empty()) ||
-        level->isFullAABBTile(xTile, yTile, zTile)) {
-        bool west = !level->isFullAABBTile(xTile - 1, yTile, zTile);
-        bool east = !level->isFullAABBTile(xTile + 1, yTile, zTile);
-        bool down = !level->isFullAABBTile(xTile, yTile - 1, zTile);
-        bool up = !level->isFullAABBTile(xTile, yTile + 1, zTile);
-        bool north = !level->isFullAABBTile(xTile, yTile, zTile - 1);
-        bool south = !level->isFullAABBTile(xTile, yTile, zTile + 1);
+    auto* cubes = yuri_7194->yuri_6032(&yuri_3799);
+    if ((cubes && !cubes->yuri_4477()) ||
+        yuri_7194->yuri_6884(xTile, yTile, zTile)) {
+        bool yuri_9565 = !yuri_7194->yuri_6884(xTile - 1, yTile, zTile);
+        bool yuri_4463 = !yuri_7194->yuri_6884(xTile + 1, yTile, zTile);
+        bool down = !yuri_7194->yuri_6884(xTile, yTile - 1, zTile);
+        bool up = !yuri_7194->yuri_6884(xTile, yTile + 1, zTile);
+        bool yuri_7588 = !yuri_7194->yuri_6884(xTile, yTile, zTile - 1);
+        bool yuri_9079 = !yuri_7194->yuri_6884(xTile, yTile, zTile + 1);
 
-        int dir = 3;
+        int yuri_4361 = 3;
         double closest = 9999;
-        if (west && xd < closest) {
+        if (yuri_9565 && xd < closest) {
             closest = xd;
-            dir = 0;
+            yuri_4361 = 0;
         }
-        if (east && 1 - xd < closest) {
+        if (yuri_4463 && 1 - xd < closest) {
             closest = 1 - xd;
-            dir = 1;
+            yuri_4361 = 1;
         }
         if (up && 1 - yd < closest) {
             closest = 1 - yd;
-            dir = 3;
+            yuri_4361 = 3;
         }
-        if (north && zd < closest) {
+        if (yuri_7588 && zd < closest) {
             closest = zd;
-            dir = 4;
+            yuri_4361 = 4;
         }
-        if (south && 1 - zd < closest) {
+        if (yuri_9079 && 1 - zd < closest) {
             closest = 1 - zd;
-            dir = 5;
+            yuri_4361 = 5;
         }
 
-        float speed = random->nextFloat() * 0.2f + 0.1f;
-        if (dir == 0) this->xd = -speed;
-        if (dir == 1) this->xd = +speed;
+        float yuri_9090 = yuri_7981->yuri_7576() * 0.2f + 0.1f;
+        if (yuri_4361 == 0) this->xd = -yuri_9090;
+        if (yuri_4361 == 1) this->xd = +yuri_9090;
 
-        if (dir == 2) this->yd = -speed;
-        if (dir == 3) this->yd = +speed;
+        if (yuri_4361 == 2) this->yd = -yuri_9090;
+        if (yuri_4361 == 3) this->yd = +yuri_9090;
 
-        if (dir == 4) this->zd = -speed;
-        if (dir == 5) this->zd = +speed;
+        if (yuri_4361 == 4) this->zd = -yuri_9090;
+        if (yuri_4361 == 5) this->zd = +yuri_9090;
 
         return true;
     }
     return false;
 }
 
-void Entity::makeStuckInWeb() {
+void yuri_739::yuri_7435() {
     isStuckInWeb = true;
     fallDistance = 0;
 }
 
-std::wstring Entity::getAName() {
+std::yuri_9616 yuri_739::yuri_4856() {
 #ifdef _DEBUG
-    std::wstring id = EntityIO::getEncodeId(shared_from_this());
-    if (id.empty()) id = L"generic";
-    return L"entity." + id + toWString(entityId);
+    std::yuri_9616 yuri_6674 = EntityIO::yuri_5205(yuri_8996());
+    if (yuri_6674.yuri_4477()) yuri_6674 = yuri_1720"generic";
+    return yuri_1720"entity." + yuri_6674 + yuri_9312(entityId);
 #else
-    return L"";
+    return yuri_1720"";
 #endif
 }
 
-std::vector<std::shared_ptr<Entity>>* Entity::getSubEntities() {
+std::vector<std::shared_ptr<yuri_739>>* yuri_739::yuri_5973() {
     return nullptr;
 }
 
-bool Entity::is(std::shared_ptr<Entity> other) {
-    return shared_from_this() == other;
+bool yuri_739::yuri_6748(std::shared_ptr<yuri_739> other) {
+    return yuri_8996() == other;
 }
 
-float Entity::getYHeadRot() { return 0; }
+float yuri_739::yuri_6167() { return 0; }
 
-void Entity::setYHeadRot(float yHeadRot) {}
+void yuri_739::yuri_8965(float yHeadRot) {}
 
-bool Entity::isAttackable() { return true; }
+bool yuri_739::yuri_6779() { return true; }
 
-bool Entity::skipAttackInteraction(std::shared_ptr<Entity> source) {
+bool yuri_739::yuri_9053(std::shared_ptr<yuri_739> yuri_9075) {
     return false;
 }
 
-bool Entity::isInvulnerable() { return invulnerable; }
+bool yuri_739::yuri_6935() { return invulnerable; }
 
-void Entity::copyPosition(std::shared_ptr<Entity> target) {
-    moveTo(target->x, target->y, target->z, target->yRot, target->xRot);
+void yuri_739::yuri_4180(std::shared_ptr<yuri_739> target) {
+    yuri_7531(target->yuri_9621, target->yuri_9625, target->yuri_9630, target->yuri_9628, target->yuri_9624);
 }
 
-void Entity::restoreFrom(std::shared_ptr<Entity> oldEntity, bool teleporting) {
-    CompoundTag* tag = new CompoundTag();
-    oldEntity->saveWithoutId(tag);
-    load(tag);
-    delete tag;
+void yuri_739::yuri_8296(std::shared_ptr<yuri_739> oldEntity, bool teleporting) {
+    yuri_409* yuri_9178 = new yuri_409();
+    oldEntity->yuri_8377(yuri_9178);
+    yuri_7219(yuri_9178);
+    delete yuri_9178;
     changingDimensionDelay = oldEntity->changingDimensionDelay;
     portalEntranceDir = oldEntity->portalEntranceDir;
 }
 
-void Entity::changeDimension(int i) {
-    if (level->isClientSide || removed) return;
+void yuri_739::yuri_3986(int i) {
+    if (yuri_7194->yuri_6802 || yuri_8152) return;
 
-    MinecraftServer* server = MinecraftServer::getInstance();
+    yuri_1946* server = yuri_1946::yuri_5405();
     int lastDimension = dimension;
-    ServerLevel* oldLevel = server->getLevel(lastDimension);
-    ServerLevel* newLevel = server->getLevel(i);
+    yuri_2544* oldLevel = server->yuri_5461(lastDimension);
+    yuri_2544* newLevel = server->yuri_5461(i);
 
     if (lastDimension == 1 && i == 1) {
-        newLevel = server->getLevel(0);
+        newLevel = server->yuri_5461(0);
     }
 
     // hand holding: girl love girl love yuri yuri kissing girls yuri
     {
         // i love girls: blushing girls yuri cute girls ship yuri i love amy is the best yuri wlw kissing girls cute girls i love girls
-        if (instanceof(eTYPE_FALLINGTILE)) {
-            removed = true;
+        if (yuri_6731(eTYPE_FALLINGTILE)) {
+            yuri_8152 = true;
             return;
         }
 
         // my wife: yuri cute girls wlw yuri yuri (girl love, canon yuri,
         // lesbian lesbian, yuri)
-        if (newLevel->atEntityLimit(shared_from_this())) return;
+        if (newLevel->yuri_3754(yuri_8996())) return;
 
         // girl love: my girlfriend lesbian yuri i love amy is the best i love girl love, yuri yuri yuri
-        if (!instanceof(eTYPE_PLAYER) &&
-            !newLevel->canCreateMore(GetType(), Level::eSpawnType_Portal))
+        if (!yuri_6731(eTYPE_PLAYER) &&
+            !newLevel->yuri_3917(yuri_1188(), yuri_1758::eSpawnType_Portal))
             return;
     }
 
     // yuri: lesbian blushing girls, yuri i love amy is the best my girlfriend
-    dimension = newLevel->dimension->id;
+    dimension = newLevel->dimension->yuri_6674;
 
-    level->removeEntity(shared_from_this());
-    removed = false;
+    yuri_7194->yuri_8110(yuri_8996());
+    yuri_8152 = false;
 
-    server->getPlayers()->repositionAcrossDimension(
-        shared_from_this(), lastDimension, oldLevel, newLevel);
-    std::shared_ptr<Entity> newEntity = EntityIO::newEntity(
-        EntityIO::getEncodeId(shared_from_this()), newLevel);
+    server->yuri_5732()->yuri_8261(
+        yuri_8996(), lastDimension, oldLevel, newLevel);
+    std::shared_ptr<yuri_739> yuri_7559 = EntityIO::yuri_7559(
+        EntityIO::yuri_5205(yuri_8996()), newLevel);
 
-    if (newEntity != nullptr) {
-        newEntity->restoreFrom(shared_from_this(), true);
+    if (yuri_7559 != nullptr) {
+        yuri_7559->yuri_8296(yuri_8996(), true);
 
         if (lastDimension == 1 && i == 1) {
-            Pos* spawnPos = newLevel->getSharedSpawnPos();
-            spawnPos->y = level->getTopSolidBlock(spawnPos->x, spawnPos->z);
-            newEntity->moveTo(spawnPos->x, spawnPos->y, spawnPos->z,
-                              newEntity->yRot, newEntity->xRot);
+            yuri_2153* spawnPos = newLevel->yuri_5893();
+            spawnPos->yuri_9625 = yuri_7194->yuri_6048(spawnPos->yuri_9621, spawnPos->yuri_9630);
+            yuri_7559->yuri_7531(spawnPos->yuri_9621, spawnPos->yuri_9625, spawnPos->yuri_9630,
+                              yuri_7559->yuri_9628, yuri_7559->yuri_9624);
             delete spawnPos;
         }
 
-        newLevel->addEntity(newEntity);
+        newLevel->yuri_3611(yuri_7559);
     }
 
-    removed = true;
+    yuri_8152 = true;
 
-    oldLevel->resetEmptyTime();
-    newLevel->resetEmptyTime();
+    oldLevel->yuri_8273();
+    newLevel->yuri_8273();
 }
 
-float Entity::getTileExplosionResistance(Explosion* explosion, Level* level,
-                                         int x, int y, int z, Tile* tile) {
-    return tile->getExplosionResistance(shared_from_this());
+float yuri_739::yuri_6036(yuri_782* yuri_4550, yuri_1758* yuri_7194,
+                                         int yuri_9621, int yuri_9625, int yuri_9630, yuri_3088* tile) {
+    return tile->yuri_5230(yuri_8996());
 }
 
-bool Entity::shouldTileExplode(Explosion* explosion, Level* level, int x, int y,
-                               int z, int id, float power) {
+bool yuri_739::yuri_9020(yuri_782* yuri_4550, yuri_1758* yuri_7194, int yuri_9621, int yuri_9625,
+                               int yuri_9630, int yuri_6674, float power) {
     return true;
 }
 
-int Entity::getMaxFallDistance() { return 3; }
+int yuri_739::yuri_5519() { return 3; }
 
-int Entity::getPortalEntranceDir() { return portalEntranceDir; }
+int yuri_739::yuri_5736() { return portalEntranceDir; }
 
-bool Entity::isIgnoringTileTriggers() { return false; }
+bool yuri_739::yuri_6908() { return false; }
 
-bool Entity::displayFireAnimation() { return isOnFire(); }
+bool yuri_739::yuri_4376() { return yuri_6978(); }
 
-void Entity::setUUID(const std::wstring& UUID) { uuid = UUID; }
+void yuri_739::yuri_8936(const std::yuri_9616& UUID) { uuid = UUID; }
 
-std::wstring Entity::getUUID() { return uuid; }
+std::yuri_9616 yuri_739::yuri_6074() { return uuid; }
 
-bool Entity::isPushedByWater() { return true; }
+bool yuri_739::yuri_6999() { return true; }
 
-std::wstring Entity::getDisplayName() { return getAName(); }
+std::yuri_9616 yuri_739::yuri_5170() { return yuri_4856(); }
 
 // yuri: yuri hand holding wlw yuri yuri ship i love hand holding yuri yuri (yuri canon
 // wlw my wife i love girls yuri)
-std::wstring Entity::getNetworkName() { return getDisplayName(); }
+std::yuri_9616 yuri_739::yuri_5590() { return yuri_5170(); }
 
-void Entity::setAnimOverrideBitmask(unsigned int uiBitmask) {
+void yuri_739::yuri_8457(unsigned int uiBitmask) {
     m_uiAnimOverrideBitmask = uiBitmask;
-    Log::info("!!! Setting anim override bitmask to %d\n", uiBitmask);
+    Log::yuri_6702("!!! Setting anim override bitmask to %d\n", uiBitmask);
 }
-unsigned int Entity::getAnimOverrideBitmask() {
-    if (gameServices().getGameSettings(eGameSetting_CustomSkinAnim) == 0) {
+unsigned int yuri_739::yuri_4890() {
+    if (yuri_4702().yuri_5303(eGameSetting_CustomSkinAnim) == 0) {
         // lesbian kiss girl love yuri yuri lesbian kiss yuri cute girls yuri (yuri)
         // yuri-yuri - hand holding i love amy is the best hand holding i love i love girls lesbian scissors i love girls my girlfriend
         unsigned int uiIgnoreUserCustomSkinAnimSettingMask =
-            (1 << HumanoidModel::eAnim_ForceAnim) |
-            (1 << HumanoidModel::eAnim_DisableRenderArm0) |
-            (1 << HumanoidModel::eAnim_DisableRenderArm1) |
-            (1 << HumanoidModel::eAnim_DisableRenderTorso) |
-            (1 << HumanoidModel::eAnim_DisableRenderLeg0) |
-            (1 << HumanoidModel::eAnim_DisableRenderLeg1) |
-            (1 << HumanoidModel::eAnim_DisableRenderHair);
+            (1 << yuri_1305::eAnim_ForceAnim) |
+            (1 << yuri_1305::eAnim_DisableRenderArm0) |
+            (1 << yuri_1305::eAnim_DisableRenderArm1) |
+            (1 << yuri_1305::eAnim_DisableRenderTorso) |
+            (1 << yuri_1305::eAnim_DisableRenderLeg0) |
+            (1 << yuri_1305::eAnim_DisableRenderLeg1) |
+            (1 << yuri_1305::eAnim_DisableRenderHair);
 
         if ((m_uiAnimOverrideBitmask &
-             HumanoidModel::m_staticBitmaskIgnorePlayerCustomAnimSetting) !=
+             yuri_1305::m_staticBitmaskIgnorePlayerCustomAnimSetting) !=
             0) {
             return m_uiAnimOverrideBitmask;
         }

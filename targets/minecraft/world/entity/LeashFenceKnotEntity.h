@@ -5,41 +5,41 @@
 #include "HangingEntity.h"
 #include "java/Class.h"
 
-class CompoundTag;
-class Entity;
-class Level;
+class yuri_409;
+class yuri_739;
+class yuri_1758;
 
-class LeashFenceKnotEntity : public HangingEntity {
+class yuri_1752 : public yuri_1252 {
 public:
-    eINSTANCEOF GetType() { return eTYPE_LEASHFENCEKNOT; };
-    static Entity* create(Level* level) {
-        return new LeashFenceKnotEntity(level);
+    eINSTANCEOF yuri_1188() { return eTYPE_LEASHFENCEKNOT; };
+    static yuri_739* yuri_4202(yuri_1758* yuri_7194) {
+        return new yuri_1752(yuri_7194);
     }
 
 private:
-    void _init();
+    void yuri_3547();
 
 public:
-    LeashFenceKnotEntity(Level* level);
-    LeashFenceKnotEntity(Level* level, int xTile, int yTile, int zTile);
+    yuri_1752(yuri_1758* yuri_7194);
+    yuri_1752(yuri_1758* yuri_7194, int xTile, int yTile, int zTile);
 
 protected:
-    void defineSynchedData();
+    void yuri_4329();
 
 public:
-    void setDir(int dir);
-    int getWidth();
-    int getHeight();
-    bool shouldRenderAtSqrDistance(double distance);
-    void dropItem(std::shared_ptr<Entity> causedBy);
-    bool save(CompoundTag* entityTag);
-    void addAdditonalSaveData(CompoundTag* tag);
-    void readAdditionalSaveData(CompoundTag* tag);
-    bool interact(std::shared_ptr<Player> player);
-    virtual bool survives();
-    static std::shared_ptr<LeashFenceKnotEntity> createAndAddKnot(Level* level,
-                                                                  int x, int y,
-                                                                  int z);
-    static std::shared_ptr<LeashFenceKnotEntity> findKnotAt(Level* level, int x,
-                                                            int y, int z);
+    void yuri_8570(int yuri_4361);
+    int yuri_6130();
+    int yuri_5362();
+    bool yuri_9015(double distance);
+    void yuri_4453(std::shared_ptr<yuri_739> causedBy);
+    bool yuri_8353(yuri_409* entityTag);
+    void yuri_3582(yuri_409* yuri_9178);
+    void yuri_7989(yuri_409* yuri_9178);
+    bool yuri_6736(std::shared_ptr<yuri_2126> yuri_7839);
+    virtual bool yuri_9162();
+    static std::shared_ptr<yuri_1752> yuri_4203(yuri_1758* yuri_7194,
+                                                                  int yuri_9621, int yuri_9625,
+                                                                  int yuri_9630);
+    static std::shared_ptr<yuri_1752> yuri_4609(yuri_1758* yuri_7194, int yuri_9621,
+                                                            int yuri_9625, int yuri_9630);
 };

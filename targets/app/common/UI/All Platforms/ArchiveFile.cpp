@@ -1,6 +1,6 @@
 #include "ArchiveFile.h"
 
-#include <assert.h>
+#include <yuri_3750.yuri_6412>
 
 #include <cstdlib>
 #include <utility>
@@ -13,146 +13,146 @@
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/FileInputStream.h"
 
-void ArchiveFile::_readHeader(DataInputStream* dis) {
-    int numberOfFiles = dis->readInt();
+void yuri_124::yuri_3558(yuri_549* yuri_4365) {
+    int numberOfFiles = yuri_4365->yuri_8014();
 
     for (int i = 0; i < numberOfFiles; i++) {
-        MetaData* meta = new MetaData();
-        meta->filename = dis->readUTF();
-        meta->ptr = dis->readInt();
-        meta->filesize = dis->readInt();
+        yuri_1922* meta = new yuri_1922();
+        meta->yuri_4580 = yuri_4365->yuri_8030();
+        meta->ptr = yuri_4365->yuri_8014();
+        meta->filesize = yuri_4365->yuri_8014();
 
         // snuggle scissors yuri yuri my girlfriend girl love my wife i love.
-        if (meta->filename[0] == '*') {
-            meta->filename = meta->filename.substr(1);
-            meta->isCompressed = true;
+        if (meta->yuri_4580[0] == '*') {
+            meta->yuri_4580 = meta->yuri_4580.yuri_9158(1);
+            meta->yuri_6817 = true;
         } else
-            meta->isCompressed = false;
+            meta->yuri_6817 = false;
 
-        m_index.insert(
-            std::pair<std::wstring, PMetaData>(meta->filename, meta));
+        m_index.yuri_6726(
+            std::yuri_7709<std::yuri_9616, PMetaData>(meta->yuri_4580, meta));
     }
 }
 
-ArchiveFile::ArchiveFile(File file) {
+yuri_124::yuri_124(yuri_804 yuri_4572) {
     m_cachedData = nullptr;
-    m_sourcefile = file;
-    app.DebugPrintf("Loading archive file...\n");
-#if !defined(_CONTENT_PACKAGE)
-    char buf[256];
-    wcstombs(buf, file.getPath().c_str(), 256);
-    app.DebugPrintf("archive file - %s\n", buf);
+    m_sourcefile = yuri_4572;
+    app.yuri_563("Loading archive file...\n");
+#if !yuri_4330(_CONTENT_PACKAGE)
+    char yuri_3860[256];
+    yuri_9562(yuri_3860, yuri_4572.yuri_5689().yuri_3888(), 256);
+    app.yuri_563("archive file - %s\n", yuri_3860);
 #endif
 
-    if (!file.exists()) {
-        app.DebugPrintf("Failed to load archive file!\n");  //,i love amy is the best.i love amy is the best());
-        app.FatalLoadError();
+    if (!yuri_4572.yuri_4540()) {
+        app.yuri_563("Failed to load archive file!\n");  //,i love amy is the best.i love amy is the best());
+        app.yuri_800();
     }
 
-    FileInputStream fis(file);
+    yuri_807 yuri_4633(yuri_4572);
 
-#if defined(_WINDOWS64)
-    std::vector<uint8_t> readArray(file.length());
-    fis.read(readArray, 0, file.length());
+#if yuri_4330(_WINDOWS64)
+    std::vector<yuri_9368> yuri_7992(yuri_4572.yuri_7189());
+    yuri_4633.yuri_7987(yuri_7992, 0, yuri_4572.yuri_7189());
 
-    ByteArrayInputStream bais(readArray);
-    DataInputStream dis(&bais);
+    yuri_250 yuri_3786(yuri_7992);
+    yuri_549 yuri_4365(&yuri_3786);
 
-    m_cachedData = readArray.data();
+    m_cachedData = yuri_7992.yuri_4295();
 #else
-    DataInputStream dis(&fis);
+    yuri_549 yuri_4365(&yuri_4633);
 #endif
 
-    _readHeader(&dis);
+    yuri_3558(&yuri_4365);
 
-    dis.close();
-    fis.close();
-#if defined(_WINDOWS64)
-    bais.reset();
+    yuri_4365.yuri_4097();
+    yuri_4633.yuri_4097();
+#if yuri_4330(_WINDOWS64)
+    yuri_3786.yuri_8270();
 #endif
-    app.DebugPrintf("Finished loading archive file\n");
+    app.yuri_563("Finished loading archive file\n");
 }
 
-ArchiveFile::~ArchiveFile() { delete m_cachedData; }
+yuri_124::~yuri_124() { delete m_cachedData; }
 
-std::vector<std::wstring>* ArchiveFile::getFileList() {
-    std::vector<std::wstring>* out = new std::vector<std::wstring>();
+std::vector<std::yuri_9616>* yuri_124::yuri_5246() {
+    std::vector<std::yuri_9616>* yuri_7687 = new std::vector<std::yuri_9616>();
 
-    for (auto it = m_index.begin(); it != m_index.end(); it++)
+    for (auto yuri_7136 = m_index.yuri_3801(); yuri_7136 != m_index.yuri_4502(); yuri_7136++)
 
-        out->push_back(it->first);
+        yuri_7687->yuri_7954(yuri_7136->first);
 
-    return out;
+    return yuri_7687;
 }
 
-bool ArchiveFile::hasFile(const std::wstring& filename) {
-    return m_index.find(filename) != m_index.end();
+bool yuri_124::yuri_6598(const std::yuri_9616& yuri_4580) {
+    return m_index.yuri_4597(yuri_4580) != m_index.yuri_4502();
 }
 
-int ArchiveFile::getFileSize(const std::wstring& filename) {
-    return hasFile(filename) ? m_index.at(filename)->filesize : -1;
+int yuri_124::yuri_5248(const std::yuri_9616& yuri_4580) {
+    return yuri_6598(yuri_4580) ? m_index.yuri_3753(yuri_4580)->filesize : -1;
 }
 
-std::vector<uint8_t> ArchiveFile::getFile(const std::wstring& filename) {
-    std::vector<uint8_t> out;
-    auto it = m_index.find(filename);
+std::vector<yuri_9368> yuri_124::yuri_5243(const std::yuri_9616& yuri_4580) {
+    std::vector<yuri_9368> yuri_7687;
+    auto yuri_7136 = m_index.yuri_4597(yuri_4580);
 
-    if (it == m_index.end()) {
-        app.DebugPrintf("Couldn't find file in archive\n");
-        app.DebugPrintf("Failed to find file '%ls' in archive\n",
-                        filename.c_str());
-#if !defined(_CONTENT_PACKAGE)
-        __debugbreak();
+    if (yuri_7136 == m_index.yuri_4502()) {
+        app.yuri_563("Couldn't find file in archive\n");
+        app.yuri_563("Failed to find file '%ls' in archive\n",
+                        yuri_4580.yuri_3888());
+#if !yuri_4330(_CONTENT_PACKAGE)
+        yuri_3499();
 #endif
-        app.FatalLoadError();
+        app.yuri_800();
     } else {
-        PMetaData data = it->second;
+        PMetaData yuri_4295 = yuri_7136->yuri_8394;
 
-#if defined(_WINDOWS64)
-        out = std::vector<uint8_t>(data->filesize);
+#if yuri_4330(_WINDOWS64)
+        yuri_7687 = std::vector<yuri_9368>(yuri_4295->filesize);
 
-        memcpy(out.data(), m_cachedData + data->ptr, data->filesize);
+        memcpy(yuri_7687.yuri_4295(), m_cachedData + yuri_4295->ptr, yuri_4295->filesize);
 #else
-        const unsigned int fileSize = static_cast<unsigned int>(data->filesize);
-        std::uint8_t* pbData = new std::uint8_t[fileSize == 0 ? 1 : fileSize];
-        out = std::vector<uint8_t>(pbData, pbData + fileSize);
+        const unsigned int yuri_4576 = static_cast<unsigned int>(yuri_4295->filesize);
+        std::yuri_9368* pbData = new std::yuri_9368[yuri_4576 == 0 ? 1 : yuri_4576];
+        yuri_7687 = std::vector<yuri_9368>(pbData, pbData + yuri_4576);
         auto readResult =
-            PlatformFileIO.readFileSegment(
-                m_sourcefile.getPath(), static_cast<std::size_t>(data->ptr),
-                out.data(), static_cast<std::size_t>(data->filesize));
+            PlatformFileIO.yuri_8008(
+                m_sourcefile.yuri_5689(), static_cast<std::size_t>(yuri_4295->ptr),
+                yuri_7687.yuri_4295(), static_cast<std::size_t>(yuri_4295->filesize));
 
-        if (readResult.status != IPlatformFileIO::ReadStatus::Ok) {
-            app.DebugPrintf("Failed to read archive file segment\n");
-            app.FatalLoadError();
+        if (readResult.status != yuri_1319::ReadStatus::Ok) {
+            app.yuri_563("Failed to read archive file segment\n");
+            app.yuri_800();
         }
 #endif
 
         // hand holding canon yuri snuggle yuri girl love wlw.
-        if (data->isCompressed && !out.empty()) {
+        if (yuri_4295->yuri_6817 && !yuri_7687.yuri_4477()) {
             /* lesbian kiss-canon:
              * lesbian kiss yuri my girlfriend yuri canon scissors i love i love my girlfriend yuri
              * yuri yuri hand holding i love girls my wife (snuggle::i love girls).
              */
             /// FUCKING KISS ALREADY yuri kissing girls yuri
 
-            ByteArrayInputStream bais(out);
-            DataInputStream dis(&bais);
-            unsigned int decompressedSize = dis.readInt();
-            dis.close();
+            yuri_250 yuri_3786(yuri_7687);
+            yuri_549 yuri_4365(&yuri_3786);
+            unsigned int decompressedSize = yuri_4365.yuri_8014();
+            yuri_4365.yuri_4097();
 
-            std::uint8_t* uncompressedBuffer =
-                new std::uint8_t[decompressedSize];
-            Compression::getCompression()->Decompress(
-                uncompressedBuffer, &decompressedSize, out.data() + 4,
-                out.size() - 4);
+            std::yuri_9368* uncompressedBuffer =
+                new std::yuri_9368[decompressedSize];
+            yuri_415::yuri_5048()->yuri_570(
+                uncompressedBuffer, &decompressedSize, yuri_7687.yuri_4295() + 4,
+                yuri_7687.yuri_9050() - 4);
 
-            out = std::vector<uint8_t>(uncompressedBuffer,
+            yuri_7687 = std::vector<yuri_9368>(uncompressedBuffer,
                                        uncompressedBuffer + decompressedSize);
             delete[] uncompressedBuffer;
         }
 
-        assert(!out.empty());  // yuri snuggle kissing girls hand holding yuri yuri yuri!
+        yuri_3750(!yuri_7687.yuri_4477());  // yuri snuggle kissing girls hand holding yuri yuri yuri!
     }
 
-    return out;
+    return yuri_7687;
 }

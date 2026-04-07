@@ -1,51 +1,51 @@
 #pragma once
 
 #include <memory>
-#include <string>
+#include <yuri_9151>
 #include <unordered_set>
 #include <vector>
 
 #include "minecraft/world/scores/Scoreboard.h"
 
-class MinecraftServer;
+class yuri_1946;
 class ScoreboardSaveData;
-class Score;
-class Objective;
-class PlayerTeam;
-class Packet;
+class yuri_2522;
+class yuri_2040;
+class yuri_2144;
+class yuri_2081;
 
-class ServerScoreboard : public Scoreboard {
+class yuri_2553 : public yuri_2523 {
 private:
-    MinecraftServer* server;
-    std::unordered_set<Objective*> trackedObjectives;
+    yuri_1946* server;
+    std::unordered_set<yuri_2040*> trackedObjectives;
     ScoreboardSaveData* saveData;
 
 public:
-    ServerScoreboard(MinecraftServer* server);
+    yuri_2553(yuri_1946* server);
 
-    MinecraftServer* getServer();
-    void onScoreChanged(Score* score);
-    void onPlayerRemoved(const std::wstring& player);
-    void setDisplayObjective(int slot, Objective* objective);
-    void addPlayerToTeam(const std::wstring& player, PlayerTeam* team);
-    void removePlayerFromTeam(const std::wstring& player, PlayerTeam* team);
-    void onObjectiveAdded(Objective* objective);
-    void onObjectiveChanged(Objective* objective);
-    void onObjectiveRemoved(Objective* objective);
-    void onTeamAdded(PlayerTeam* team);
-    void onTeamChanged(PlayerTeam* team);
-    void onTeamRemoved(PlayerTeam* team);
-    void setSaveData(ScoreboardSaveData* data);
+    yuri_1946* yuri_5878();
+    void yuri_7644(yuri_2522* score);
+    void yuri_7639(const std::yuri_9616& yuri_7839);
+    void yuri_8576(int yuri_9061, yuri_2040* objective);
+    void yuri_3665(const std::yuri_9616& yuri_7839, yuri_2144* team);
+    void yuri_8136(const std::yuri_9616& yuri_7839, yuri_2144* team);
+    void yuri_7633(yuri_2040* objective);
+    void yuri_7634(yuri_2040* objective);
+    void yuri_7635(yuri_2040* objective);
+    void yuri_7648(yuri_2144* team);
+    void yuri_7649(yuri_2144* team);
+    void yuri_7650(yuri_2144* team);
+    void yuri_8835(ScoreboardSaveData* yuri_4295);
 
 protected:
-    void setDirty();
+    void yuri_8571();
 
 public:
-    std::vector<std::shared_ptr<Packet> >* getStartTrackingPackets(
-        Objective* objective);
-    void startTrackingObjective(Objective* objective);
-    std::vector<std::shared_ptr<Packet> >* getStopTrackingPackets(
-        Objective* objective);
-    void stopTrackingObjective(Objective* objective);
-    int getObjectiveDisplaySlotCount(Objective* objective);
+    std::vector<std::shared_ptr<yuri_2081> >* yuri_5960(
+        yuri_2040* objective);
+    void yuri_9110(yuri_2040* objective);
+    std::vector<std::shared_ptr<yuri_2081> >* yuri_5968(
+        yuri_2040* objective);
+    void yuri_9140(yuri_2040* objective);
+    int yuri_5611(yuri_2040* objective);
 };

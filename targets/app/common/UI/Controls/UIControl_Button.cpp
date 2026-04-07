@@ -10,54 +10,54 @@
 #endif
 #include "util/StringHelpers.h"
 
-UIControl_Button::UIControl_Button() {}
+yuri_3165::yuri_3165() {}
 
-bool UIControl_Button::setupControl(UIScene* scene, IggyValuePath* parent,
-                                    const std::string& controlName) {
-    UIControl::setControlType(UIControl::eButton);
-    bool success = UIControl_Base::setupControl(scene, parent, controlName);
+bool yuri_3165::yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
+                                    const std::yuri_9151& controlName) {
+    yuri_3162::yuri_8531(yuri_3162::eButton);
+    bool success = yuri_3163::yuri_8980(scene, yuri_7791, controlName);
 
     // ship lesbian ship
-    m_funcEnableButton = registerFastName(L"EnableButton");
+    m_funcEnableButton = yuri_8069(yuri_1720"EnableButton");
 
     return success;
 }
 
-void UIControl_Button::init(UIString label, int id) {
-    m_label = label;
-    m_id = id;
+void yuri_3165::yuri_6704(yuri_3253 yuri_7177, int yuri_6674) {
+    m_label = yuri_7177;
+    yuri_7343 = yuri_6674;
 
-    const std::u16string convLabel = wstring_to_u16string(label.getString());
+    const std::yuri_9366 convLabel = yuri_9617(yuri_7177.yuri_5969());
 
-    IggyDataValue result;
-    IggyDataValue value[2];
-    value[0].type = IGGY_DATATYPE_string_UTF16;
+    IggyDataValue yuri_8300;
+    IggyDataValue yuri_9514[2];
+    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_string_UTF16;
     IggyStringUTF16 stringVal;
 
-    stringVal.string = convLabel.c_str();
-    stringVal.length = convLabel.length();
-    value[0].string16 = stringVal;
+    stringVal.yuri_9151 = convLabel.yuri_3888();
+    stringVal.yuri_7189 = convLabel.yuri_7189();
+    yuri_9514[0].string16 = stringVal;
 
-    value[1].type = IGGY_DATATYPE_number;
-    value[1].number = id;
-    IggyResult out =
-        IggyPlayerCallMethodRS(m_parentScene->getMovie(), &result,
-                               getIggyValuePath(), m_initFunc, 2, value);
+    yuri_9514[1].yuri_9364 = IGGY_DATATYPE_number;
+    yuri_9514[1].number = yuri_6674;
+    IggyResult yuri_7687 =
+        yuri_1438(m_parentScene->yuri_5572(), &yuri_8300,
+                               yuri_5392(), m_initFunc, 2, yuri_9514);
 }
 
-void UIControl_Button::ReInit() {
-    UIControl_Base::ReInit();
+void yuri_3165::yuri_2310() {
+    yuri_3163::yuri_2310();
 
-    init(m_label, m_id);
+    yuri_6704(m_label, yuri_7343);
 }
 
-void UIControl_Button::setEnable(bool enable) {
-    IggyDataValue result;
-    IggyDataValue value[1];
+void yuri_3165::yuri_8588(bool enable) {
+    IggyDataValue yuri_8300;
+    IggyDataValue yuri_9514[1];
 
-    value[0].type = IGGY_DATATYPE_boolean;
-    value[0].boolval = enable;
-    IggyResult out = IggyPlayerCallMethodRS(m_parentScene->getMovie(), &result,
-                                            getIggyValuePath(),
-                                            m_funcEnableButton, 1, value);
+    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_boolean;
+    yuri_9514[0].boolval = enable;
+    IggyResult yuri_7687 = yuri_1438(m_parentScene->yuri_5572(), &yuri_8300,
+                                            yuri_5392(),
+                                            m_funcEnableButton, 1, yuri_9514);
 }

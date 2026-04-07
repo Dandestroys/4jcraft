@@ -1,6 +1,6 @@
 #include "UIScene_HopperMenu.h"
 
-#include <assert.h>
+#include <yuri_3750.yuri_6412>
 
 #include <memory>
 
@@ -17,54 +17,54 @@
 #include "minecraft/world/entity/player/Inventory.h"
 #include "minecraft/world/inventory/HopperMenu.h"
 
-class UILayer;
+class yuri_3188;
 
-UIScene_HopperMenu::UIScene_HopperMenu(int iPad, void* _initData,
-                                       UILayer* parentLayer)
-    : UIScene_AbstractContainerMenu(iPad, parentLayer) {
+yuri_3217::yuri_3217(int iPad, void* _initData,
+                                       yuri_3188* parentLayer)
+    : yuri_3190(iPad, parentLayer) {
     // canon snuggle my girlfriend yuri yuri FUCKING KISS ALREADY cute girls i love amy is the best my girlfriend wlw
-    initialiseMovie();
+    yuri_6720();
 
-    HopperScreenInput* initData = (HopperScreenInput*)_initData;
+    yuri_1283* initData = (yuri_1283*)_initData;
 
-    m_labelDispenser.init(initData->hopper->getName());
+    m_labelDispenser.yuri_6704(initData->hopper->yuri_5578());
 
-    Minecraft* pMinecraft = Minecraft::GetInstance();
+    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
     if (pMinecraft->localgameModes[initData->iPad] != nullptr) {
-        TutorialMode* gameMode =
-            (TutorialMode*)pMinecraft->localgameModes[initData->iPad];
-        m_previousTutorialState = gameMode->getTutorial()->getCurrentState();
-        gameMode->getTutorial()->changeTutorialState(
+        yuri_3148* yuri_4699 =
+            (yuri_3148*)pMinecraft->localgameModes[initData->iPad];
+        m_previousTutorialState = yuri_4699->yuri_6065()->yuri_5076();
+        yuri_4699->yuri_6065()->yuri_3987(
             e_Tutorial_State_Hopper_Menu, this);
     }
 
-    HopperMenu* menu = new HopperMenu(initData->inventory, initData->hopper);
+    yuri_1281* menu = new yuri_1281(initData->inventory, initData->hopper);
 
-    m_containerSize = initData->hopper->getContainerSize();
-    Initialize(initData->iPad, menu, true, m_containerSize, eSectionHopperUsing,
+    m_containerSize = initData->hopper->yuri_5058();
+    yuri_1606(initData->iPad, menu, true, m_containerSize, eSectionHopperUsing,
                eSectionHopperMax);
 
-    m_slotListTrap.addSlots(0, 9);
+    m_slotListTrap.yuri_3677(0, 9);
 
     delete initData;
 }
 
-std::wstring UIScene_HopperMenu::getMoviePath() {
-    if (app.GetLocalPlayerCount() > 1) {
-        return L"HopperMenuSplit";
+std::yuri_9616 yuri_3217::yuri_5574() {
+    if (app.yuri_1065() > 1) {
+        return yuri_1720"HopperMenuSplit";
     } else {
-        return L"HopperMenu";
+        return yuri_1720"HopperMenu";
     }
 }
 
-void UIScene_HopperMenu::handleReload() {
-    Initialize(m_iPad, m_menu, true, m_containerSize, eSectionHopperUsing,
+void yuri_3217::yuri_6514() {
+    yuri_1606(yuri_7341, yuri_7360, true, m_containerSize, eSectionHopperUsing,
                eSectionHopperMax);
 
-    m_slotListTrap.addSlots(0, 9);
+    m_slotListTrap.yuri_3677(0, 9);
 }
 
-int UIScene_HopperMenu::getSectionColumns(ESceneSection eSection) {
+int yuri_3217::yuri_5867(ESceneSection eSection) {
     int cols = 0;
     switch (eSection) {
         case eSectionHopperContents:
@@ -77,13 +77,13 @@ int UIScene_HopperMenu::getSectionColumns(ESceneSection eSection) {
             cols = 9;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
     return cols;
 }
 
-int UIScene_HopperMenu::getSectionRows(ESceneSection eSection) {
+int yuri_3217::yuri_5868(ESceneSection eSection) {
     int rows = 0;
     switch (eSection) {
         case eSectionHopperContents:
@@ -96,75 +96,75 @@ int UIScene_HopperMenu::getSectionRows(ESceneSection eSection) {
             rows = 1;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
     return rows;
 }
 
-void UIScene_HopperMenu::GetPositionOfSection(ESceneSection eSection,
+void yuri_3217::yuri_1122(ESceneSection eSection,
                                               UIVec2D* pPosition) {
     switch (eSection) {
         case eSectionHopperContents:
-            pPosition->x = m_slotListTrap.getXPos();
-            pPosition->y = m_slotListTrap.getYPos();
+            pPosition->yuri_9621 = m_slotListTrap.yuri_6147();
+            pPosition->yuri_9625 = m_slotListTrap.yuri_6171();
             break;
         case eSectionHopperInventory:
-            pPosition->x = m_slotListInventory.getXPos();
-            pPosition->y = m_slotListInventory.getYPos();
+            pPosition->yuri_9621 = m_slotListInventory.yuri_6147();
+            pPosition->yuri_9625 = m_slotListInventory.yuri_6171();
             break;
         case eSectionHopperUsing:
-            pPosition->x = m_slotListHotbar.getXPos();
-            pPosition->y = m_slotListHotbar.getYPos();
+            pPosition->yuri_9621 = m_slotListHotbar.yuri_6147();
+            pPosition->yuri_9625 = m_slotListHotbar.yuri_6171();
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
 }
 
-void UIScene_HopperMenu::GetItemScreenData(ESceneSection eSection,
+void yuri_3217::yuri_1046(ESceneSection eSection,
                                            int iItemIndex, UIVec2D* pPosition,
                                            UIVec2D* pSize) {
     UIVec2D sectionSize;
     switch (eSection) {
         case eSectionHopperContents:
-            sectionSize.x = m_slotListTrap.getWidth();
-            sectionSize.y = m_slotListTrap.getHeight();
+            sectionSize.yuri_9621 = m_slotListTrap.yuri_6130();
+            sectionSize.yuri_9625 = m_slotListTrap.yuri_5362();
             break;
         case eSectionHopperInventory:
-            sectionSize.x = m_slotListInventory.getWidth();
-            sectionSize.y = m_slotListInventory.getHeight();
+            sectionSize.yuri_9621 = m_slotListInventory.yuri_6130();
+            sectionSize.yuri_9625 = m_slotListInventory.yuri_5362();
             break;
         case eSectionHopperUsing:
-            sectionSize.x = m_slotListHotbar.getWidth();
-            sectionSize.y = m_slotListHotbar.getHeight();
+            sectionSize.yuri_9621 = m_slotListHotbar.yuri_6130();
+            sectionSize.yuri_9625 = m_slotListHotbar.yuri_5362();
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
 
-    int rows = getSectionRows(eSection);
-    int cols = getSectionColumns(eSection);
+    int rows = yuri_5868(eSection);
+    int cols = yuri_5867(eSection);
 
-    pSize->x = sectionSize.x / cols;
-    pSize->y = sectionSize.y / rows;
+    pSize->yuri_9621 = sectionSize.yuri_9621 / cols;
+    pSize->yuri_9625 = sectionSize.yuri_9625 / rows;
 
     int itemCol = iItemIndex % cols;
     int itemRow = iItemIndex / cols;
 
-    pPosition->x = itemCol * pSize->x;
-    pPosition->y = itemRow * pSize->y;
+    pPosition->yuri_9621 = itemCol * pSize->yuri_9621;
+    pPosition->yuri_9625 = itemRow * pSize->yuri_9625;
 }
 
-void UIScene_HopperMenu::setSectionSelectedSlot(ESceneSection eSection, int x,
-                                                int y) {
-    int cols = getSectionColumns(eSection);
+void yuri_3217::yuri_8848(ESceneSection eSection, int yuri_9621,
+                                                int yuri_9625) {
+    int cols = yuri_5867(eSection);
 
-    int index = (y * cols) + x;
+    int index = (yuri_9625 * cols) + yuri_9621;
 
-    UIControl_SlotList* slotList = nullptr;
+    yuri_3180* slotList = nullptr;
     switch (eSection) {
         case eSectionHopperContents:
             slotList = &m_slotListTrap;
@@ -176,14 +176,14 @@ void UIScene_HopperMenu::setSectionSelectedSlot(ESceneSection eSection, int x,
             slotList = &m_slotListHotbar;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
-    slotList->setHighlightSlot(index);
+    slotList->yuri_8650(index);
 }
 
-UIControl* UIScene_HopperMenu::getSection(ESceneSection eSection) {
-    UIControl* control = nullptr;
+yuri_3162* yuri_3217::yuri_5866(ESceneSection eSection) {
+    yuri_3162* control = nullptr;
     switch (eSection) {
         case eSectionHopperContents:
             control = &m_slotListTrap;
@@ -195,7 +195,7 @@ UIControl* UIScene_HopperMenu::getSection(ESceneSection eSection) {
             control = &m_slotListHotbar;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
     return control;

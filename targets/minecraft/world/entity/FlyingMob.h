@@ -3,17 +3,17 @@
 #include "Mob.h"
 #include "minecraft/world/entity/Mob.h"
 
-class Level;
+class yuri_1758;
 
-class FlyingMob : public Mob {
+class yuri_856 : public yuri_1950 {
 public:
-    FlyingMob(Level* level);
+    yuri_856(yuri_1758* yuri_7194);
 
 protected:
-    virtual void causeFallDamage(float distance);
-    virtual void checkFallDamage(double ya, bool onGround);
+    virtual void yuri_3980(float distance);
+    virtual void yuri_4005(double ya, bool onGround);
 
 public:
-    virtual void travel(float xa, float ya);
-    virtual bool onLadder();
+    virtual void yuri_9337(float xa, float ya);
+    virtual bool yuri_7624();
 };

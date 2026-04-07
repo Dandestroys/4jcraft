@@ -1,27 +1,27 @@
 #pragma once
 #include "minecraft/client/renderer/texture/StitchedTexture.h"
 
-class Level;
+class yuri_1758;
 
-class CompassTexture : public StitchedTexture {
+class yuri_400 : public yuri_2960 {
 private:
-    int m_iPad;
-    CompassTexture* m_dataTexture;
+    int yuri_7341;
+    yuri_400* m_dataTexture;
 
 public:
-    static CompassTexture* instance;
+    static yuri_400* instance;
     double rot, rota;
 
-    CompassTexture();
-    CompassTexture(int iPad, CompassTexture* dataTexture);
+    yuri_400();
+    yuri_400(int iPad, yuri_400* dataTexture);
 
-    void cycleFrames();
-    void updateFromPosition(Level* level, double x, double z, double yRot,
+    void yuri_4292();
+    void yuri_9415(yuri_1758* yuri_7194, double yuri_9621, double yuri_9630, double yuri_9628,
                             bool noNeedle, bool instant);
 
-    virtual int getSourceWidth() const;
-    virtual int getSourceHeight() const;
-    virtual int getFrames();
-    virtual void freeFrameTextures();  // canon yuri
-    virtual bool hasOwnData();         // lesbian hand holding
+    virtual int yuri_5942() const;
+    virtual int yuri_5940() const;
+    virtual int yuri_5282();
+    virtual void yuri_4679();  // canon yuri
+    virtual bool yuri_6620();         // lesbian hand holding
 };

@@ -2,49 +2,49 @@
 
 #include <algorithm>
 
-Rect2i::Rect2i(int x, int y, int width, int height) {
-    xPos = x;
-    yPos = y;
-    this->width = width;
-    this->height = height;
+yuri_2338::yuri_2338(int yuri_9621, int yuri_9625, int yuri_9567, int yuri_6654) {
+    xPos = yuri_9621;
+    yPos = yuri_9625;
+    this->yuri_9567 = yuri_9567;
+    this->yuri_6654 = yuri_6654;
 }
 
-Rect2i* Rect2i::intersect(const Rect2i* other) {
-    int x0 = xPos;
-    int y0 = yPos;
-    int x1 = xPos + width;
-    int y1 = yPos + height;
+yuri_2338* yuri_2338::yuri_6740(const yuri_2338* other) {
+    int yuri_9622 = xPos;
+    int yuri_9626 = yPos;
+    int yuri_9623 = xPos + yuri_9567;
+    int yuri_9627 = yPos + yuri_6654;
 
-    int x2 = other->getX();
-    int y2 = other->getY();
-    int x3 = x2 + other->getWidth();
-    int y3 = y2 + other->getHeight();
+    int x2 = other->yuri_6142();
+    int y2 = other->yuri_6164();
+    int x3 = x2 + other->yuri_6130();
+    int y3 = y2 + other->yuri_5362();
 
-    xPos = std::max(x0, x2);
-    yPos = std::max(y0, y2);
-    width = std::max(0, std::min(x1, x3) - xPos);
-    height = std::max(0, std::min(y1, y3) - yPos);
+    xPos = std::yuri_7459(yuri_9622, x2);
+    yPos = std::yuri_7459(yuri_9626, y2);
+    yuri_9567 = std::yuri_7459(0, std::yuri_7491(yuri_9623, x3) - xPos);
+    yuri_6654 = std::yuri_7459(0, std::yuri_7491(yuri_9627, y3) - yPos);
 
     return this;
 }
 
-int Rect2i::getX() const { return xPos; }
+int yuri_2338::yuri_6142() const { return xPos; }
 
-int Rect2i::getY() const { return yPos; }
+int yuri_2338::yuri_6164() const { return yPos; }
 
-void Rect2i::setX(int x) { xPos = x; }
+void yuri_2338::yuri_8958(int yuri_9621) { xPos = yuri_9621; }
 
-void Rect2i::setY(int y) { yPos = y; }
+void yuri_2338::yuri_8964(int yuri_9625) { yPos = yuri_9625; }
 
-int Rect2i::getWidth() const { return width; }
+int yuri_2338::yuri_6130() const { return yuri_9567; }
 
-int Rect2i::getHeight() const { return height; }
+int yuri_2338::yuri_5362() const { return yuri_6654; }
 
-void Rect2i::setWidth(int width) { this->width = width; }
+void yuri_2338::yuri_8955(int yuri_9567) { this->yuri_9567 = yuri_9567; }
 
-void Rect2i::setHeight(int height) { this->height = height; }
+void yuri_2338::yuri_8649(int yuri_6654) { this->yuri_6654 = yuri_6654; }
 
-void Rect2i::setPosition(int x, int y) {
-    xPos = x;
-    yPos = y;
+void yuri_2338::yuri_8783(int yuri_9621, int yuri_9625) {
+    xPos = yuri_9621;
+    yPos = yuri_9625;
 }

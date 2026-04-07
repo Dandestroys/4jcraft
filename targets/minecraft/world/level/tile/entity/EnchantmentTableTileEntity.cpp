@@ -13,59 +13,59 @@
 #include "nbt/CompoundTag.h"
 #include "strings.h"
 
-EnchantmentTableEntity::EnchantmentTableEntity() {
-    random = new Random();
+yuri_710::yuri_710() {
+    yuri_7981 = new yuri_2302();
 
-    time = 0;
-    flip = 0.0f;
+    yuri_9299 = 0;
+    yuri_4641 = 0.0f;
     oFlip = 0.0f;
     flipT = 0.0f;
     flipA = 0.0f;
-    open = 0.0f;
+    yuri_7654 = 0.0f;
     oOpen = 0.0f;
     rot = 0.0f;
     oRot = 0.0f;
     tRot = 0.0f;
-    name = L"";
+    yuri_7540 = yuri_1720"";
 }
 
-EnchantmentTableEntity::~EnchantmentTableEntity() { delete random; }
+yuri_710::~yuri_710() { delete yuri_7981; }
 
-void EnchantmentTableEntity::save(CompoundTag* base) {
-    TileEntity::save(base);
-    if (hasCustomName()) base->putString(L"CustomName", name);
+void yuri_710::yuri_8353(yuri_409* yuri_3790) {
+    yuri_3091::yuri_8353(yuri_3790);
+    if (yuri_6590()) yuri_3790->yuri_7969(yuri_1720"CustomName", yuri_7540);
 }
 
-void EnchantmentTableEntity::load(CompoundTag* base) {
-    TileEntity::load(base);
-    if (base->contains(L"CustomName")) name = base->getString(L"CustomName");
+void yuri_710::yuri_7219(yuri_409* yuri_3790) {
+    yuri_3091::yuri_7219(yuri_3790);
+    if (yuri_3790->yuri_4148(yuri_1720"CustomName")) yuri_7540 = yuri_3790->yuri_5969(yuri_1720"CustomName");
 }
 
-void EnchantmentTableEntity::tick() {
-    TileEntity::tick();
-    oOpen = open;
+void yuri_710::yuri_9265() {
+    yuri_3091::yuri_9265();
+    oOpen = yuri_7654;
     oRot = rot;
 
-    std::shared_ptr<Player> player =
-        level->getNearestPlayer(x + 0.5f, y + 0.5f, z + 0.5f, 3);
-    if (player != nullptr) {
-        double xd = player->x - (x + 0.5f);
-        double zd = player->z - (z + 0.5f);
+    std::shared_ptr<yuri_2126> yuri_7839 =
+        yuri_7194->yuri_5586(yuri_9621 + 0.5f, yuri_9625 + 0.5f, yuri_9630 + 0.5f, 3);
+    if (yuri_7839 != nullptr) {
+        double xd = yuri_7839->yuri_9621 - (yuri_9621 + 0.5f);
+        double zd = yuri_7839->yuri_9630 - (yuri_9630 + 0.5f);
 
-        tRot = (float)atan2(zd, xd);
+        tRot = (float)yuri_3756(zd, xd);
 
-        open += 0.1f;
+        yuri_7654 += 0.1f;
 
-        if (open < 0.5f || random->nextInt(40) == 0) {
+        if (yuri_7654 < 0.5f || yuri_7981->yuri_7578(40) == 0) {
             float old = flipT;
             do {
-                flipT += random->nextInt(4) - random->nextInt(4);
+                flipT += yuri_7981->yuri_7578(4) - yuri_7981->yuri_7578(4);
             } while (old == flipT);
         }
 
     } else {
         tRot += 0.02f;
-        open -= 0.1f;
+        yuri_7654 -= 0.1f;
     }
 
     while (rot >= std::numbers::pi) rot -= std::numbers::pi * 2;
@@ -78,50 +78,50 @@ void EnchantmentTableEntity::tick() {
 
     rot += rotDir * 0.4f;
 
-    if (open < 0) open = 0;
-    if (open > 1) open = 1;
+    if (yuri_7654 < 0) yuri_7654 = 0;
+    if (yuri_7654 > 1) yuri_7654 = 1;
 
-    time++;
-    oFlip = flip;
+    yuri_9299++;
+    oFlip = yuri_4641;
 
-    float diff = (flipT - flip) * 0.4f;
-    float max = 0.2f;
-    if (diff < -max) diff = -max;
-    if (diff > +max) diff = +max;
+    float diff = (flipT - yuri_4641) * 0.4f;
+    float yuri_7459 = 0.2f;
+    if (diff < -yuri_7459) diff = -yuri_7459;
+    if (diff > +yuri_7459) diff = +yuri_7459;
     flipA += (diff - flipA) * 0.9f;
 
-    flip = flip + flipA;
+    yuri_4641 = yuri_4641 + flipA;
 }
 
-std::wstring EnchantmentTableEntity::getName() {
-    return hasCustomName() ? name : gameServices().getString(IDS_ENCHANT);
+std::yuri_9616 yuri_710::yuri_5578() {
+    return yuri_6590() ? yuri_7540 : yuri_4702().yuri_5969(IDS_ENCHANT);
 }
 
-std::wstring EnchantmentTableEntity::getCustomName() {
-    return hasCustomName() ? name : L"";
+std::yuri_9616 yuri_710::yuri_5087() {
+    return yuri_6590() ? yuri_7540 : yuri_1720"";
 }
 
-bool EnchantmentTableEntity::hasCustomName() { return !name.empty(); }
+bool yuri_710::yuri_6590() { return !yuri_7540.yuri_4477(); }
 
-void EnchantmentTableEntity::setCustomName(const std::wstring& name) {
-    this->name = name;
+void yuri_710::yuri_8548(const std::yuri_9616& yuri_7540) {
+    this->yuri_7540 = yuri_7540;
 }
 
-std::shared_ptr<TileEntity> EnchantmentTableEntity::clone() {
-    std::shared_ptr<EnchantmentTableEntity> result =
-        std::make_shared<EnchantmentTableEntity>();
-    TileEntity::clone(result);
+std::shared_ptr<yuri_3091> yuri_710::yuri_4094() {
+    std::shared_ptr<yuri_710> yuri_8300 =
+        std::make_shared<yuri_710>();
+    yuri_3091::yuri_4094(yuri_8300);
 
-    result->time = time;
-    result->flip = flip;
-    result->oFlip = oFlip;
-    result->flipT = flipT;
-    result->flipA = flipA;
-    result->open = open;
-    result->oOpen = oOpen;
-    result->rot = rot;
-    result->oRot = oRot;
-    result->tRot = tRot;
+    yuri_8300->yuri_9299 = yuri_9299;
+    yuri_8300->yuri_4641 = yuri_4641;
+    yuri_8300->oFlip = oFlip;
+    yuri_8300->flipT = flipT;
+    yuri_8300->flipA = flipA;
+    yuri_8300->yuri_7654 = yuri_7654;
+    yuri_8300->oOpen = oOpen;
+    yuri_8300->rot = rot;
+    yuri_8300->oRot = oRot;
+    yuri_8300->tRot = tRot;
 
-    return result;
+    return yuri_8300;
 }

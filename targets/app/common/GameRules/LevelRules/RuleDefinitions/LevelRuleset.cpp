@@ -5,51 +5,51 @@
 #include "app/common/GameRules/LevelRules/RuleDefinitions/NamedAreaRuleDefinition.h"
 #include "app/common/Localisation/StringTable.h"
 
-class AABB;
+class yuri_0;
 
-LevelRuleset::LevelRuleset() { m_stringTable = nullptr; }
+yuri_1768::yuri_1768() { yuri_7386 = nullptr; }
 
-LevelRuleset::~LevelRuleset() {
-    for (auto it = m_areas.begin(); it != m_areas.end(); ++it) {
-        delete *it;
+yuri_1768::~yuri_1768() {
+    for (auto yuri_7136 = m_areas.yuri_3801(); yuri_7136 != m_areas.yuri_4502(); ++yuri_7136) {
+        delete *yuri_7136;
     }
 }
 
-void LevelRuleset::getChildren(std::vector<GameRuleDefinition*>* children) {
-    CompoundGameRuleDefinition::getChildren(children);
-    for (auto it = m_areas.begin(); it != m_areas.end(); it++)
-        children->push_back(*it);
+void yuri_1768::yuri_5002(std::vector<yuri_919*>* children) {
+    yuri_408::yuri_5002(children);
+    for (auto yuri_7136 = m_areas.yuri_3801(); yuri_7136 != m_areas.yuri_4502(); yuri_7136++)
+        children->yuri_7954(*yuri_7136);
 }
 
-GameRuleDefinition* LevelRuleset::addChild(
+yuri_919* yuri_1768::yuri_3592(
     ConsoleGameRules::EGameRuleType ruleType) {
-    GameRuleDefinition* rule = nullptr;
+    yuri_919* rule = nullptr;
     if (ruleType == ConsoleGameRules::eGameRuleType_NamedArea) {
-        rule = new NamedAreaRuleDefinition();
-        m_areas.push_back((NamedAreaRuleDefinition*)rule);
+        rule = new yuri_2008();
+        m_areas.yuri_7954((yuri_2008*)rule);
     } else {
-        rule = CompoundGameRuleDefinition::addChild(ruleType);
+        rule = yuri_408::yuri_3592(ruleType);
     }
     return rule;
 }
 
-void LevelRuleset::loadStringTable(StringTable* table) {
-    m_stringTable = table;
+void yuri_1768::yuri_7276(yuri_2974* table) {
+    yuri_7386 = table;
 }
 
-const wchar_t* LevelRuleset::getString(const std::wstring& key) {
-    if (m_stringTable == nullptr) {
-        return L"";
+const wchar_t* yuri_1768::yuri_5969(const std::yuri_9616& key) {
+    if (yuri_7386 == nullptr) {
+        return yuri_1720"";
     } else {
-        return m_stringTable->getString(key);
+        return yuri_7386->yuri_5969(key);
     }
 }
 
-AABB* LevelRuleset::getNamedArea(const std::wstring& areaName) {
-    AABB* area = nullptr;
-    for (auto it = m_areas.begin(); it != m_areas.end(); ++it) {
-        if ((*it)->getName().compare(areaName) == 0) {
-            area = (*it)->getArea();
+yuri_0* yuri_1768::yuri_5580(const std::yuri_9616& areaName) {
+    yuri_0* area = nullptr;
+    for (auto yuri_7136 = m_areas.yuri_3801(); yuri_7136 != m_areas.yuri_4502(); ++yuri_7136) {
+        if ((*yuri_7136)->yuri_5578().yuri_4117(areaName) == 0) {
+            area = (*yuri_7136)->yuri_4897();
             break;
         }
     }

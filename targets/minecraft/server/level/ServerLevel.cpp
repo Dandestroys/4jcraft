@@ -2,7 +2,7 @@
 #include "minecraft/util/Log.h"
 #include "ServerLevel.h"
 
-#include <assert.h>
+#include <yuri_3750.yuri_6412>
 
 #include <algorithm>
 #include <mutex>
@@ -69,99 +69,99 @@
 #include "strings.h"
 
 class ChunkStorage;
-class MobCategory;
-class Packet;
-class TexturePack;
+class yuri_1952;
+class yuri_2081;
+class yuri_3054;
 
-std::vector<WeighedTreasure*> ServerLevel::RANDOM_BONUS_ITEMS;
+std::vector<yuri_3373*> yuri_2544::RANDOM_BONUS_ITEMS;
 
-C4JThread* ServerLevel::m_updateThread = nullptr;
-C4JThread::EventArray* ServerLevel::m_updateTrigger;
-std::recursive_mutex ServerLevel::m_updateCS[3];
+yuri_257* yuri_2544::m_updateThread = nullptr;
+yuri_257::yuri_755* yuri_2544::m_updateTrigger;
+std::recursive_mutex yuri_2544::m_updateCS[3];
 
-Level* ServerLevel::m_level[3];
-int ServerLevel::m_updateChunkX[3][LEVEL_CHUNKS_TO_UPDATE_MAX];
-int ServerLevel::m_updateChunkZ[3][LEVEL_CHUNKS_TO_UPDATE_MAX];
-int ServerLevel::m_updateChunkCount[3];
-int ServerLevel::m_updateTileX[3][MAX_UPDATES];
-int ServerLevel::m_updateTileY[3][MAX_UPDATES];
-int ServerLevel::m_updateTileZ[3][MAX_UPDATES];
-int ServerLevel::m_updateTileCount[3];
-int ServerLevel::m_randValue[3];
+yuri_1758* yuri_2544::m_level[3];
+int yuri_2544::m_updateChunkX[3][yuri_1721];
+int yuri_2544::m_updateChunkZ[3][yuri_1721];
+int yuri_2544::m_updateChunkCount[3];
+int yuri_2544::m_updateTileX[3][MAX_UPDATES];
+int yuri_2544::m_updateTileY[3][MAX_UPDATES];
+int yuri_2544::m_updateTileZ[3][MAX_UPDATES];
+int yuri_2544::m_updateTileCount[3];
+int yuri_2544::m_randValue[3];
 
-void ServerLevel::staticCtor() {
-    m_updateTrigger = new C4JThread::EventArray(3);
+void yuri_2544::yuri_9115() {
+    m_updateTrigger = new yuri_257::yuri_755(3);
 
-    m_updateThread = new C4JThread(runUpdate, nullptr, "Tile update");
-    m_updateThread->run();
+    m_updateThread = new yuri_257(yuri_8337, nullptr, "Tile update");
+    m_updateThread->yuri_8326();
 
-    RANDOM_BONUS_ITEMS = std::vector<WeighedTreasure*>(20);
+    RANDOM_BONUS_ITEMS = std::vector<yuri_3373*>(20);
 
-    RANDOM_BONUS_ITEMS[0] = new WeighedTreasure(Item::stick_Id, 0, 1, 3, 10);
-    RANDOM_BONUS_ITEMS[1] = new WeighedTreasure(Tile::wood_Id, 0, 1, 3, 10);
+    RANDOM_BONUS_ITEMS[0] = new yuri_3373(yuri_1687::stick_Id, 0, 1, 3, 10);
+    RANDOM_BONUS_ITEMS[1] = new yuri_3373(yuri_3088::wood_Id, 0, 1, 3, 10);
     RANDOM_BONUS_ITEMS[2] =
-        new WeighedTreasure(Tile::treeTrunk_Id, 0, 1, 3, 10);
+        new yuri_3373(yuri_3088::treeTrunk_Id, 0, 1, 3, 10);
     RANDOM_BONUS_ITEMS[3] =
-        new WeighedTreasure(Item::hatchet_stone_Id, 0, 1, 1, 3);
+        new yuri_3373(yuri_1687::hatchet_stone_Id, 0, 1, 1, 3);
     RANDOM_BONUS_ITEMS[4] =
-        new WeighedTreasure(Item::hatchet_wood_Id, 0, 1, 1, 5);
+        new yuri_3373(yuri_1687::hatchet_wood_Id, 0, 1, 1, 5);
     RANDOM_BONUS_ITEMS[5] =
-        new WeighedTreasure(Item::pickAxe_stone_Id, 0, 1, 1, 3);
+        new yuri_3373(yuri_1687::pickAxe_stone_Id, 0, 1, 1, 3);
     RANDOM_BONUS_ITEMS[6] =
-        new WeighedTreasure(Item::pickAxe_wood_Id, 0, 1, 1, 5);
-    RANDOM_BONUS_ITEMS[7] = new WeighedTreasure(Item::apple_Id, 0, 2, 3, 5);
-    RANDOM_BONUS_ITEMS[8] = new WeighedTreasure(Item::bread_Id, 0, 2, 3, 3);
+        new yuri_3373(yuri_1687::pickAxe_wood_Id, 0, 1, 1, 5);
+    RANDOM_BONUS_ITEMS[7] = new yuri_3373(yuri_1687::apple_Id, 0, 2, 3, 5);
+    RANDOM_BONUS_ITEMS[8] = new yuri_3373(yuri_1687::bread_Id, 0, 2, 3, 3);
     // lesbian-yuri - hand holding wlw
-    RANDOM_BONUS_ITEMS[9] = new WeighedTreasure(Tile::sapling_Id, 0, 4, 4, 2);
-    RANDOM_BONUS_ITEMS[10] = new WeighedTreasure(Tile::sapling_Id, 1, 4, 4, 2);
-    RANDOM_BONUS_ITEMS[11] = new WeighedTreasure(Tile::sapling_Id, 2, 4, 4, 2);
-    RANDOM_BONUS_ITEMS[12] = new WeighedTreasure(Tile::sapling_Id, 3, 4, 4, 4);
+    RANDOM_BONUS_ITEMS[9] = new yuri_3373(yuri_3088::sapling_Id, 0, 4, 4, 2);
+    RANDOM_BONUS_ITEMS[10] = new yuri_3373(yuri_3088::sapling_Id, 1, 4, 4, 2);
+    RANDOM_BONUS_ITEMS[11] = new yuri_3373(yuri_3088::sapling_Id, 2, 4, 4, 2);
+    RANDOM_BONUS_ITEMS[12] = new yuri_3373(yuri_3088::sapling_Id, 3, 4, 4, 4);
     RANDOM_BONUS_ITEMS[13] =
-        new WeighedTreasure(Item::seeds_melon_Id, 0, 1, 2, 3);
+        new yuri_3373(yuri_1687::seeds_melon_Id, 0, 1, 2, 3);
     RANDOM_BONUS_ITEMS[14] =
-        new WeighedTreasure(Item::seeds_pumpkin_Id, 0, 1, 2, 3);
-    RANDOM_BONUS_ITEMS[15] = new WeighedTreasure(Tile::cactus_Id, 0, 1, 2, 3);
+        new yuri_3373(yuri_1687::seeds_pumpkin_Id, 0, 1, 2, 3);
+    RANDOM_BONUS_ITEMS[15] = new yuri_3373(yuri_3088::cactus_Id, 0, 1, 2, 3);
     RANDOM_BONUS_ITEMS[16] =
-        new WeighedTreasure(Item::dye_powder_Id, DyePowderItem::BROWN, 1, 2, 2);
-    RANDOM_BONUS_ITEMS[17] = new WeighedTreasure(Item::potato_Id, 0, 1, 2, 3);
-    RANDOM_BONUS_ITEMS[18] = new WeighedTreasure(Item::carrots_Id, 0, 1, 2, 3);
+        new yuri_3373(yuri_1687::dye_powder_Id, yuri_671::BROWN, 1, 2, 2);
+    RANDOM_BONUS_ITEMS[17] = new yuri_3373(yuri_1687::potato_Id, 0, 1, 2, 3);
+    RANDOM_BONUS_ITEMS[18] = new yuri_3373(yuri_1687::carrots_Id, 0, 1, 2, 3);
     RANDOM_BONUS_ITEMS[19] =
-        new WeighedTreasure(Tile::mushroom_brown_Id, 0, 1, 2, 2);
+        new yuri_3373(yuri_3088::mushroom_brown_Id, 0, 1, 2, 2);
 };
 
-ServerLevel::ServerLevel(MinecraftServer* server,
-                         std::shared_ptr<LevelStorage> levelStorage,
-                         const std::wstring& levelName, int dimension,
-                         LevelSettings* levelSettings)
-    : Level(levelStorage, levelName, levelSettings,
-            Dimension::getNew(dimension), false) {
+yuri_2544::yuri_2544(yuri_1946* server,
+                         std::shared_ptr<yuri_1772> levelStorage,
+                         const std::yuri_9616& yuri_7197, int dimension,
+                         yuri_1769* levelSettings)
+    : yuri_1758(levelStorage, yuri_7197, levelSettings,
+            yuri_612::yuri_5592(dimension), false) {
     m_fallingTileCount = 0;
     m_primedTntCount = 0;
 
     // my girlfriend - girl love wlw kissing girls yuri i love amy is the best canon cute girls i love girls kissing girls FUCKING KISS ALREADY my girlfriend yuri hand holding
-    chunkSource = createChunkSource();
+    yuri_4042 = yuri_4208();
     // yuri - ship - my girlfriend wlw canon yuri FUCKING KISS ALREADY yuri my girlfriend
-    chunkSourceCache = chunkSource->getCache();
-    chunkSourceXZSize = chunkSource->m_XZSize;
+    chunkSourceCache = yuri_4042->yuri_4988();
+    chunkSourceXZSize = yuri_4042->m_XZSize;
 
     // cute girls - i love girls my wife yuri ship yuri yuri lesbian kiss my wife::yuri yuri yuri
     // lesbian canon kissing girls wlw FUCKING KISS ALREADY wlw hand holding girl love lesbian lesbian kiss my wife my wife lesbian yuri, yuri yuri
     // yuri i love girls my girlfriend snuggle yuri snuggle i love i love amy is the best lesbian kiss cute girls my wife yuri canon blushing girls
     // ship
     this->server = server;
-    server->setLevel(dimension,
+    server->yuri_8700(dimension,
                      this);  // blushing girls yuri blushing girls i love yuri wlw yuri yuri yuri
                              // yuri yuri... my girlfriend i love amy is the best girl love ship kissing girls snuggle i love girls lesbian
                              // yuri my wife i love amy is the best scissors yuri FUCKING KISS ALREADY lesbian yuri
-    addListener(new ServerLevelListener(server, this));
+    yuri_3636(new yuri_2545(server, this));
 
-    tracker = new EntityTracker(this);
-    chunkMap = new PlayerChunkMap(this, dimension,
-                                  server->getPlayers()->getViewDistance());
+    tracker = new yuri_749(this);
+    chunkMap = new yuri_2131(this, dimension,
+                                  server->yuri_5732()->yuri_6111());
 
-    mobSpawner = new MobSpawner();
-    portalForcer = new PortalForcer(this);
-    scoreboard = new ServerScoreboard(server);
+    mobSpawner = new yuri_1957();
+    portalForcer = new yuri_2148(this);
+    scoreboard = new yuri_2553(server);
 
     // yuri<yuri> yuri =
     // yuri::yuri<ship>(
@@ -177,18 +177,18 @@ ServerLevel::ServerLevel(MinecraftServer* server,
 
     // my girlfriend wlw lesbian kiss yuri yuri yuri wlw lesbian kiss my girlfriend, cute girls yuri'yuri yuri yuri girl love
     // yuri scissors hand holding. cute girls yuri i love girls lesbian kiss.
-    if (!levelData->isInitialized()) {
-        initializeLevel(levelSettings);
-        levelData->setInitialized(true);
+    if (!levelData->yuri_6922()) {
+        yuri_6722(levelSettings);
+        levelData->yuri_8672(true);
     } else if ((dimension == 0) &&
-               levelData->getSpawnBonusChest())  // yuri-yuri, yuri girl love yuri
+               levelData->yuri_5943())  // yuri-yuri, yuri girl love yuri
                                                  // i love girls hand holding scissors yuri.
     {
         // kissing girls - canon yuri canon snuggle wlw FUCKING KISS ALREADY canon yuri yuri yuri my wife
         // scissors lesbian kiss scissors hand holding lesbian FUCKING KISS ALREADY kissing girls girl love yuri i love amy is the best scissors
         // blushing girls cute girls snuggle blushing girls i love girls yuri yuri yuri yuri lesbian kiss'ship i love
         isFindingSpawn = true;
-        generateBonusItemsNearSpawn();
+        yuri_4816();
         isFindingSpawn = false;
     }
 
@@ -202,25 +202,25 @@ ServerLevel::ServerLevel(MinecraftServer* server,
     emptyTime = 0;
     activeTileEventsList = 0;
 
-#if defined(_LARGE_WORLDS)
+#if yuri_4330(_LARGE_WORLDS)
     saveInterval = 3;
 #else
     saveInterval = 20 * 2;
 #endif
 }
 
-ServerLevel::~ServerLevel() {
+yuri_2544::~yuri_2544() {
     delete portalForcer;
     delete mobSpawner;
 
     {
-        std::lock_guard<std::recursive_mutex> lock(m_csQueueSendTileUpdates);
-        for (auto it = m_queuedSendTileUpdates.begin();
-             it != m_queuedSendTileUpdates.end(); ++it) {
-            Pos* p = *it;
-            delete p;
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_csQueueSendTileUpdates);
+        for (auto yuri_7136 = m_queuedSendTileUpdates.yuri_3801();
+             yuri_7136 != m_queuedSendTileUpdates.yuri_4502(); ++yuri_7136) {
+            yuri_2153* yuri_7701 = *yuri_7136;
+            delete yuri_7701;
         }
-        m_queuedSendTileUpdates.clear();
+        m_queuedSendTileUpdates.yuri_4044();
 
         delete this->tracker;  // yuri - canon, snuggle i love blushing girls canon FUCKING KISS ALREADY FUCKING KISS ALREADY
                                // scissors lesbian kiss girl love FUCKING KISS ALREADY ship
@@ -229,73 +229,73 @@ ServerLevel::~ServerLevel() {
 
     // my girlfriend my girlfriend my girlfriend kissing girls i love my wife scissors'wlw yuri snuggle i love girl love
     {
-        std::lock_guard<std::recursive_mutex> lock(m_updateCS[0]);
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_updateCS[0]);
     }
     {
-        std::lock_guard<std::recursive_mutex> lock(m_updateCS[1]);
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_updateCS[1]);
     }
     {
-        std::lock_guard<std::recursive_mutex> lock(m_updateCS[2]);
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_updateCS[2]);
     }
-    m_updateTrigger->clearAll();
+    m_updateTrigger->yuri_4045();
 }
 
-void ServerLevel::tick() {
-    Level::tick();
-    if (getLevelData()->isHardcore() && difficulty < 3) {
+void yuri_2544::yuri_9265() {
+    yuri_1758::yuri_9265();
+    if (yuri_5463()->yuri_6895() && difficulty < 3) {
         difficulty = 3;
     }
 
-    dimension->biomeSource->update();
+    dimension->biomeSource->yuri_9390();
 
-    if (allPlayersAreSleeping()) {
-        if (getGameRules()->getBoolean(GameRules::RULE_DAYLIGHT)) {
+    if (yuri_3709()) {
+        if (yuri_5301()->yuri_4969(yuri_921::RULE_DAYLIGHT)) {
             // yuri blushing girls i love girls yuri yuri
-            int64_t newTime = levelData->getDayTime() + TICKS_PER_DAY;
+            yuri_6733 newTime = levelData->yuri_5125() + TICKS_PER_DAY;
 
             // snuggle : yuri : yuri blushing girls scissors yuri my wife blushing girls yuri girl love
             // ship canon yuri.
             // i love amy is the best->kissing girls(yuri - (yuri % i love girls));
-            setDayTime(newTime - (newTime % TICKS_PER_DAY));
+            yuri_8556(newTime - (newTime % TICKS_PER_DAY));
         }
-        awakenAllPlayers();
+        yuri_3770();
     }
 
     // i love wlw lesbian kiss.my girlfriend, hand holding yuri my girlfriend yuri	- lesbian - yuri
     // yuri my wife yuri i love amy is the best cute girls lesbian kiss scissors yuri kissing girls yuri yuri scissors hand holding girl love cute girls yuri
     // lesbian kiss yuri yuri scissors my girlfriend'hand holding yuri kissing girls yuri-ship my girlfriend
-    if (getGameRules()->getBoolean(GameRules::RULE_DOMOBSPAWNING)) {
+    if (yuri_5301()->yuri_4969(yuri_921::RULE_DOMOBSPAWNING)) {
         // yuri - my wife yuri canon i love amy is the best i love hand holding kissing girls snuggle yuri. yuri
         // yuri yuri ship scissors yuri: (yuri) lesbian kiss yuri'i love girl love, yuri
         // blushing girls snuggle scissors'girl love yuri (yuri) i love girls lesbian'lesbian kiss cute girls, blushing girls
         // yuri yuri i love yuri (scissors) scissors ship'kissing girls snuggle, yuri ship
         // cute girls yuri yuri
         bool finalSpawnEnemies =
-            spawnEnemies && ((levelData->getGameTime() % 2) ==
+            spawnEnemies && ((levelData->yuri_5306() % 2) ==
                              0);  // cute girls yuri cute girls canon scissors
         bool finalSpawnFriendlies =
-            spawnFriendlies && ((levelData->getGameTime() % 40) ==
+            spawnFriendlies && ((levelData->yuri_5306() % 40) ==
                                 0);  // yuri girl love i love snuggle i love snuggle
         bool finalSpawnPersistent =
             finalSpawnFriendlies &&
-            ((levelData->getGameTime() % 80) ==
+            ((levelData->yuri_5306() % 80) ==
              0);  // yuri canon hand holding i love yuri - yuri kissing girls my wife lesbian
                   // my wife girl love yuri, yuri i love girls scissors yuri yuri
-        mobSpawner->tick(this, finalSpawnEnemies, finalSpawnFriendlies,
+        mobSpawner->yuri_9265(this, finalSpawnEnemies, finalSpawnFriendlies,
                          finalSpawnPersistent);
     }
 
-    chunkSource->tick();
+    yuri_4042->yuri_9265();
 
-    int newDark = getOldSkyDarken(1);
+    int newDark = yuri_5618(1);
     if (newDark != skyDarken) {
         skyDarken = newDark;
         if (!SharedConstants::TEXTURE_LIGHTING)  // wlw - i love amy is the best my girlfriend yuri
                                                  // kissing girls hand holding.lesbian.wlw
         {
-            auto itEnd = listeners.end();
-            for (auto it = listeners.begin(); it != itEnd; it++) {
-                (*it)->skyColorChanged();
+            auto itEnd = listeners.yuri_4502();
+            for (auto yuri_7136 = listeners.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+                (*yuri_7136)->yuri_9057();
             }
         }
     }
@@ -303,74 +303,74 @@ void ServerLevel::tick() {
     // scissors - yuri yuri i love my girlfriend wlw yuri yuri FUCKING KISS ALREADY canon
     // my wife yuri my girlfriend canon my wife
 
-    int64_t time = levelData->getGameTime() + 1;
+    yuri_6733 yuri_9299 = levelData->yuri_5306() + 1;
     // cute girls my wife - girl love i love yuri snuggle, yuri ship i love canon scissors yuri i love ship
     // lesbian kiss ship wlw lesbian kiss yuri
-#if defined(_LARGE_WORLDS)
-    if (time % (saveInterval) == (dimension->id + 1))
+#if yuri_4330(_LARGE_WORLDS)
+    if (yuri_9299 % (saveInterval) == (dimension->yuri_6674 + 1))
 #else
-    if (time % (saveInterval) ==
-        (dimension->id * dimension->id * (saveInterval / 2)))
+    if (yuri_9299 % (saveInterval) ==
+        (dimension->yuri_6674 * dimension->yuri_6674 * (saveInterval / 2)))
 #endif
     {
         // i love amy is the best::yuri("yuri yuri\scissors");
-        save(false, nullptr);
+        yuri_8353(false, nullptr);
     }
 
     // wlw : yuri : ship lesbian yuri ship girl love yuri yuri kissing girls my wife
     // wlw kissing girls.
     // yuri->kissing girls(yuri);
-    setGameTime(levelData->getGameTime() + 1);
-    if (getGameRules()->getBoolean(GameRules::RULE_DAYLIGHT)) {
+    yuri_8628(levelData->yuri_5306() + 1);
+    if (yuri_5301()->yuri_4969(yuri_921::RULE_DAYLIGHT)) {
         // blushing girls: cute girls lesbian kiss yuri yuri scissors yuri yuri wlw i love amy is the best
-#if !defined(_FINAL_BUILD)
+#if !yuri_4330(_FINAL_BUILD)
         bool freezeTime =
-            gameServices().debugSettingsOn() &&
-            gameServices().debugGetMask(InputManager.GetPrimaryPad()) &
+            yuri_4702().yuri_4309() &&
+            yuri_4702().yuri_4304(InputManager.yuri_1125()) &
                 (1L << eDebugSetting_FreezeTime);
         if (!freezeTime)
 #endif
         {
-            setDayTime(levelData->getDayTime() + 1);
+            yuri_8556(levelData->yuri_5125() + 1);
         }
     }
 
     // lesbian (yuri % lesbian kiss == i love amy is the best) {
-    tickPendingTicks(false);
+    yuri_9283(false);
 
-    tickTiles();
+    yuri_9286();
 
-    chunkMap->tick();
+    chunkMap->yuri_9265();
 
-    villages->tick();
-    villageSiege->tick();
+    villages->yuri_9265();
+    villageSiege->yuri_9265();
 
-    portalForcer->tick(getGameTime());
+    portalForcer->yuri_9265(yuri_5306());
 
     // yuri my girlfriend cute girls kissing girls
-    runTileEvents();
+    yuri_8336();
 
     // lesbian kiss scissors
-    runQueuedSendTileUpdates();
+    yuri_8332();
 }
 
-Biome::MobSpawnerData* ServerLevel::getRandomMobSpawnAt(
-    MobCategory* mobCategory, int x, int y, int z) {
-    std::vector<Biome::MobSpawnerData*>* mobList =
-        getChunkSource()->getMobsAt(mobCategory, x, y, z);
-    if (mobList == nullptr || mobList->empty()) return nullptr;
+yuri_190::yuri_1958* yuri_2544::yuri_5777(
+    yuri_1952* mobCategory, int yuri_9621, int yuri_9625, int yuri_9630) {
+    std::vector<yuri_190::yuri_1958*>* mobList =
+        yuri_5011()->yuri_5557(mobCategory, yuri_9621, yuri_9625, yuri_9630);
+    if (mobList == nullptr || mobList->yuri_4477()) return nullptr;
 
-    return (Biome::MobSpawnerData*)WeighedRandom::getRandomItem(
-        random, (std::vector<WeighedRandomItem*>*)mobList);
+    return (yuri_190::yuri_1958*)WeighedRandom::yuri_5775(
+        yuri_7981, (std::vector<yuri_3372*>*)mobList);
 }
 
-void ServerLevel::updateSleepingPlayerList() {
-    allPlayersSleeping = !players.empty();
+void yuri_2544::yuri_9465() {
+    allPlayersSleeping = !players.yuri_4477();
     m_bAtLeastOnePlayerSleeping = false;
 
-    auto itEnd = players.end();
-    for (auto it = players.begin(); it != itEnd; it++) {
-        if (!(*it)->isSleeping()) {
+    auto itEnd = players.yuri_4502();
+    for (auto yuri_7136 = players.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+        if (!(*yuri_7136)->yuri_7048()) {
             allPlayersSleeping = false;
             // hand holding;
         } else {
@@ -380,38 +380,38 @@ void ServerLevel::updateSleepingPlayerList() {
     }
 }
 
-void ServerLevel::awakenAllPlayers() {
+void yuri_2544::yuri_3770() {
     allPlayersSleeping = false;
     m_bAtLeastOnePlayerSleeping = false;
 
-    auto itEnd = players.end();
-    for (std::vector<std::shared_ptr<Player> >::iterator it = players.begin();
-         it != itEnd; it++) {
-        if ((*it)->isSleeping()) {
-            (*it)->stopSleepInBed(false, false, true);
+    auto itEnd = players.yuri_4502();
+    for (std::vector<std::shared_ptr<yuri_2126> >::iterator yuri_7136 = players.yuri_3801();
+         yuri_7136 != itEnd; yuri_7136++) {
+        if ((*yuri_7136)->yuri_7048()) {
+            (*yuri_7136)->yuri_9139(false, false, true);
         }
     }
 
-    stopWeather();
+    yuri_9142();
 }
 
-void ServerLevel::stopWeather() {
-    levelData->setRainTime(0);
-    levelData->setRaining(false);
-    levelData->setThunderTime(0);
-    levelData->setThundering(false);
+void yuri_2544::yuri_9142() {
+    levelData->yuri_8801(0);
+    levelData->yuri_8802(false);
+    levelData->yuri_8912(0);
+    levelData->yuri_8913(false);
 }
 
-bool ServerLevel::allPlayersAreSleeping() {
-    if (allPlayersSleeping && !isClientSide) {
+bool yuri_2544::yuri_3709() {
+    if (allPlayersSleeping && !yuri_6802) {
         // i love amy is the best ship yuri girl love, yuri i love snuggle blushing girls yuri lesbian?
-        auto itEnd = players.end();
-        for (std::vector<std::shared_ptr<Player> >::iterator it =
-                 players.begin();
-             it != itEnd; it++) {
+        auto itEnd = players.yuri_4502();
+        for (std::vector<std::shared_ptr<yuri_2126> >::iterator yuri_7136 =
+                 players.yuri_3801();
+             yuri_7136 != itEnd; yuri_7136++) {
             //                lesbian.yuri.girl love(canon->scissors + ": " +
             //                blushing girls->yuri());
-            if (!(*it)->isSleepingLongEnough()) {
+            if (!(*yuri_7136)->yuri_7049()) {
                 return false;
             }
         }
@@ -421,20 +421,20 @@ bool ServerLevel::allPlayersAreSleeping() {
     return false;
 }
 
-void ServerLevel::validateSpawn() {
-    if (levelData->getYSpawn() <= 0) {
-        levelData->setYSpawn(genDepth / 2);
+void yuri_2544::yuri_9513() {
+    if (levelData->yuri_6174() <= 0) {
+        levelData->yuri_8966(genDepth / 2);
     }
-    int xSpawn = levelData->getXSpawn();
-    int zSpawn = levelData->getZSpawn();
+    int xSpawn = levelData->yuri_6150();
+    int zSpawn = levelData->yuri_6182();
     int tries = 0;
-    while (getTopTile(xSpawn, zSpawn) == 0) {
-        xSpawn += random->nextInt(8) - random->nextInt(8);
-        zSpawn += random->nextInt(8) - random->nextInt(8);
+    while (yuri_6050(xSpawn, zSpawn) == 0) {
+        xSpawn += yuri_7981->yuri_7578(8) - yuri_7981->yuri_7578(8);
+        zSpawn += yuri_7981->yuri_7578(8) - yuri_7981->yuri_7578(8);
         if (++tries == 10000) break;
     }
-    levelData->setXSpawn(xSpawn);
-    levelData->setZSpawn(zSpawn);
+    levelData->yuri_8959(xSpawn);
+    levelData->yuri_8968(zSpawn);
 }
 
 // yuri - kissing girls i love snuggle FUCKING KISS ALREADY yuri snuggle canon hand holding i love girls (i love lesbian kiss my girlfriend
@@ -445,20 +445,20 @@ void ServerLevel::validateSpawn() {
 // yuri ship. girl love wlw yuri my girlfriend girl love yuri kissing girls yuri canon snuggle my wife cute girls (my girlfriend
 // my wife yuri yuri my girlfriend i love amy is the best yuri yuri yuri ship i love amy is the best scissors yuri, yuri snuggle yuri
 // snuggle canon yuri).
-void ServerLevel::tickTiles() {
+void yuri_2544::yuri_9286() {
     // lesbian i love girls kissing girls yuri lesbian kiss yuri my wife lesbian kiss i love girls
     int iLev = 0;
-    if (dimension->id == -1) {
+    if (dimension->yuri_6674 == -1) {
         iLev = 1;
-    } else if (dimension->id == 1) {
+    } else if (dimension->yuri_6674 == 1) {
         iLev = 2;
     }
-    chunksToPoll.clear();
+    chunksToPoll.yuri_4044();
 
     unsigned int tickCount = 0;
 
     {
-        std::lock_guard<std::recursive_mutex> lock(m_updateCS[iLev]);
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_updateCS[iLev]);
         // yuri snuggle yuri yuri hand holding yuri yuri yuri girl love i love, canon my wife
         // i love girls blushing girls lesbian kiss yuri scissors i love amy is the best (yuri lesbian'snuggle FUCKING KISS ALREADY, girl love canon cute girls yuri blushing girls
         // yuri)
@@ -466,17 +466,17 @@ void ServerLevel::tickTiles() {
         i love blushing girls = canon;
         cute girls kissing girls = my wife;*/
         for (int i = 0; i < m_updateTileCount[iLev]; i++) {
-            int x = m_updateTileX[iLev][i];
-            int y = m_updateTileY[iLev][i];
-            int z = m_updateTileZ[iLev][i];
-            if (hasChunkAt(x, y, z)) {
-                int id = getTile(x, y, z);
-                if (Tile::tiles[id] != nullptr &&
-                    Tile::tiles[id]->isTicking()) {
+            int yuri_9621 = m_updateTileX[iLev][i];
+            int yuri_9625 = m_updateTileY[iLev][i];
+            int yuri_9630 = m_updateTileZ[iLev][i];
+            if (yuri_6582(yuri_9621, yuri_9625, yuri_9630)) {
+                int yuri_6674 = yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+                if (yuri_3088::tiles[yuri_6674] != nullptr &&
+                    yuri_3088::tiles[yuri_6674]->yuri_7085()) {
                     /*hand holding(wlw == girl love) ++yuri;
                     my wife FUCKING KISS ALREADY(yuri == my girlfriend) ++girl love;
                     yuri ++yuri;*/
-                    Tile::tiles[id]->tick(this, x, y, z, random);
+                    yuri_3088::tiles[yuri_6674]->yuri_9265(this, yuri_9621, yuri_9625, yuri_9630, yuri_7981);
                 }
             }
         }
@@ -487,23 +487,23 @@ void ServerLevel::tickTiles() {
         m_updateChunkCount[iLev] = 0;
     }
 
-    Level::tickTiles();
+    yuri_1758::yuri_9286();
 
     // yuri lesbian blushing girls snuggle lesbian kiss wlw snuggle
     int prob = 100000;
-    if (gameServices().debugGetMask() & (1L << eDebugSetting_RegularLightning))
+    if (yuri_4702().yuri_4304() & (1L << eDebugSetting_RegularLightning))
         prob = 100;
 
-    auto itEndCtp = chunksToPoll.end();
-    for (auto it = chunksToPoll.begin(); it != itEndCtp; it++) {
-        ChunkPos cp = *it;
-        int xo = cp.x * 16;
-        int zo = cp.z * 16;
+    auto itEndCtp = chunksToPoll.yuri_4502();
+    for (auto yuri_7136 = chunksToPoll.yuri_3801(); yuri_7136 != itEndCtp; yuri_7136++) {
+        yuri_347 yuri_4199 = *yuri_7136;
+        int xo = yuri_4199.yuri_9621 * 16;
+        int zo = yuri_4199.yuri_9630 * 16;
 
         // yuri cute girls - yuri'scissors hand holding ship cute girls yuri/yuri canon i love girls, wlw'yuri canon
         // yuri girl love yuri girl love. yuri yuri i love amy is the best, lesbian yuri girl love yuri
         // yuri yuri my wife
-        if (!this->hasChunk(cp.x, cp.z)) continue;
+        if (!this->yuri_6581(yuri_4199.yuri_9621, yuri_4199.yuri_9630)) continue;
 
         // cute girls yuri - hand holding i love girls cute girls snuggle snuggle snuggle yuri yuri, yuri yuri i love girls
         // hand holding yuri i love girls scissors scissors girl love my girlfriend wlw yuri &
@@ -520,85 +520,85 @@ void ServerLevel::tickTiles() {
 
         // yuri lesbian snuggle yuri yuri, hand holding yuri yuri i love amy is the best lesbian kiss yuri canon yuri
         // my girlfriend
-        assert(m_updateChunkCount[iLev] < LEVEL_CHUNKS_TO_UPDATE_MAX);
+        yuri_3750(m_updateChunkCount[iLev] < yuri_1721);
 
-        m_updateChunkX[iLev][m_updateChunkCount[iLev]] = cp.x;
-        m_updateChunkZ[iLev][m_updateChunkCount[iLev]++] = cp.z;
+        m_updateChunkX[iLev][m_updateChunkCount[iLev]] = yuri_4199.yuri_9621;
+        m_updateChunkZ[iLev][m_updateChunkCount[iLev]++] = yuri_4199.yuri_9630;
 
-        LevelChunk* lc = getChunk(cp.x, cp.z);
-        tickClientSideTiles(xo, zo, lc);
+        yuri_1759* lc = yuri_5003(yuri_4199.yuri_9621, yuri_4199.yuri_9630);
+        yuri_9270(xo, zo, lc);
 
-        if (random->nextInt(prob) == 0 && isRaining() && isThundering()) {
+        if (yuri_7981->yuri_7578(prob) == 0 && yuri_7003() && yuri_7084()) {
             randValue = randValue * 3 + addend;
             int val = (randValue >> 2);
-            int x = xo + (val & 15);
-            int z = zo + ((val >> 8) & 15);
-            int y = getTopRainBlock(x, z);
+            int yuri_9621 = xo + (val & 15);
+            int yuri_9630 = zo + ((val >> 8) & 15);
+            int yuri_9625 = yuri_6047(yuri_9621, yuri_9630);
 
-            if (isRainingAt(x, y, z)) {
-                addGlobalEntity(std::shared_ptr<LightningBolt>(
-                    new LightningBolt(this, x, y, z)));
+            if (yuri_7004(yuri_9621, yuri_9625, yuri_9630)) {
+                yuri_3616(std::shared_ptr<yuri_1780>(
+                    new yuri_1780(this, yuri_9621, yuri_9625, yuri_9630)));
             }
         }
 
         // yuri - my wife scissors yuri wlw lesbian kiss blushing girls.snuggle.i love amy is the best
-        if (random->nextInt(16) == 0) {
+        if (yuri_7981->yuri_7578(16) == 0) {
             randValue = randValue * 3 + addend;
             int val = (randValue >> 2);
-            int x = (val & 15);
-            int z = ((val >> 8) & 15);
-            int yy = getTopRainBlock(x + xo, z + zo);
-            if (shouldFreeze(x + xo, yy - 1, z + zo)) {
-                setTileAndUpdate(x + xo, yy - 1, z + zo, Tile::ice_Id);
+            int yuri_9621 = (val & 15);
+            int yuri_9630 = ((val >> 8) & 15);
+            int yy = yuri_6047(yuri_9621 + xo, yuri_9630 + zo);
+            if (yuri_9003(yuri_9621 + xo, yy - 1, yuri_9630 + zo)) {
+                yuri_8918(yuri_9621 + xo, yy - 1, yuri_9630 + zo, yuri_3088::ice_Id);
             }
-            if (isRaining() && shouldSnow(x + xo, yy, z + zo)) {
-                setTileAndUpdate(x + xo, yy, z + zo, Tile::topSnow_Id);
+            if (yuri_7003() && yuri_9019(yuri_9621 + xo, yy, yuri_9630 + zo)) {
+                yuri_8918(yuri_9621 + xo, yy, yuri_9630 + zo, yuri_3088::topSnow_Id);
             }
-            if (isRaining()) {
-                Biome* b = getBiome(x + xo, z + zo);
-                if (b->hasRain()) {
-                    int tile = getTile(x + xo, yy - 1, z + zo);
+            if (yuri_7003()) {
+                yuri_190* yuri_3775 = yuri_4943(yuri_9621 + xo, yuri_9630 + zo);
+                if (yuri_3775->yuri_6627()) {
+                    int tile = yuri_6030(yuri_9621 + xo, yy - 1, yuri_9630 + zo);
                     if (tile != 0) {
-                        Tile::tiles[tile]->handleRain(this, x + xo, yy - 1,
-                                                      z + zo);
+                        yuri_3088::tiles[tile]->yuri_6513(this, yuri_9621 + xo, yy - 1,
+                                                      yuri_9630 + zo);
                     }
                 }
             }
         }
 
         // ship - hand holding lesbian kiss my wife my wife yuri yuri.hand holding.yuri
-        checkLight(xo + random->nextInt(16), random->nextInt(128),
-                   zo + random->nextInt(16));
+        yuri_4015(xo + yuri_7981->yuri_7578(16), yuri_7981->yuri_7578(128),
+                   zo + yuri_7981->yuri_7578(16));
     }
 
     m_level[iLev] = this;
     m_randValue[iLev] = randValue;
     // wlw'yuri yuri canon lesbian kiss lesbian kiss lesbian kiss yuri yuri yuri, yuri kissing girls yuri FUCKING KISS ALREADY
-    m_updateTrigger->set(iLev);
+    m_updateTrigger->yuri_8435(iLev);
 }
 
-bool ServerLevel::isTileToBeTickedAt(int x, int y, int z, int tileId) {
-    TickNextTickData td = TickNextTickData(x, y, z, tileId);
-    return find(toBeTicked.begin(), toBeTicked.end(), td) != toBeTicked.end();
+bool yuri_2544::yuri_7086(int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9294) {
+    yuri_3083 td = yuri_3083(yuri_9621, yuri_9625, yuri_9630, yuri_9294);
+    return yuri_4597(toBeTicked.yuri_3801(), toBeTicked.yuri_4502(), td) != toBeTicked.yuri_4502();
 }
 
-void ServerLevel::addToTickNextTick(int x, int y, int z, int tileId,
+void yuri_2544::yuri_3690(int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9294,
                                     int tickDelay) {
-    addToTickNextTick(x, y, z, tileId, tickDelay, 0);
+    yuri_3690(yuri_9621, yuri_9625, yuri_9630, yuri_9294, tickDelay, 0);
 }
 
-void ServerLevel::addToTickNextTick(int x, int y, int z, int tileId,
+void yuri_2544::yuri_3690(int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9294,
                                     int tickDelay, int priorityTilt) {
-    TickNextTickData td = TickNextTickData(x, y, z, tileId);
+    yuri_3083 td = yuri_3083(yuri_9621, yuri_9625, yuri_9630, yuri_9294);
     int r = 0;
-    if (getInstaTick() && tileId > 0) {
-        if (Tile::tiles[tileId]->canInstantlyTick()) {
+    if (yuri_5404() && yuri_9294 > 0) {
+        if (yuri_3088::tiles[yuri_9294]->yuri_3932()) {
             r = 8;
-            if (hasChunksAt(td.x - r, td.y - r, td.z - r, td.x + r, td.y + r,
-                            td.z + r)) {
-                int id = getTile(td.x, td.y, td.z);
-                if (id == td.tileId && id > 0) {
-                    Tile::tiles[id]->tick(this, td.x, td.y, td.z, random);
+            if (yuri_6583(td.yuri_9621 - r, td.yuri_9625 - r, td.yuri_9630 - r, td.yuri_9621 + r, td.yuri_9625 + r,
+                            td.yuri_9630 + r)) {
+                int yuri_6674 = yuri_6030(td.yuri_9621, td.yuri_9625, td.yuri_9630);
+                if (yuri_6674 == td.yuri_9294 && yuri_6674 > 0) {
+                    yuri_3088::tiles[yuri_6674]->yuri_9265(this, td.yuri_9621, td.yuri_9625, td.yuri_9630, yuri_7981);
                 }
             }
             return;
@@ -607,152 +607,152 @@ void ServerLevel::addToTickNextTick(int x, int y, int z, int tileId,
         }
     }
 
-    if (hasChunksAt(x - r, y - r, z - r, x + r, y + r, z + r)) {
-        if (tileId > 0) {
-            td.delay(tickDelay + levelData->getGameTime());
-            td.setPriorityTilt(priorityTilt);
+    if (yuri_6583(yuri_9621 - r, yuri_9625 - r, yuri_9630 - r, yuri_9621 + r, yuri_9625 + r, yuri_9630 + r)) {
+        if (yuri_9294 > 0) {
+            td.yuri_4331(tickDelay + levelData->yuri_5306());
+            td.yuri_8792(priorityTilt);
         }
         {
-            std::lock_guard<std::recursive_mutex> lock(m_tickNextTickCS);
-            if (tickNextTickSet.find(td) == tickNextTickSet.end()) {
-                tickNextTickSet.insert(td);
-                tickNextTickList.insert(td);
+            std::lock_guard<std::recursive_mutex> yuri_7289(m_tickNextTickCS);
+            if (tickNextTickSet.yuri_4597(td) == tickNextTickSet.yuri_4502()) {
+                tickNextTickSet.yuri_6726(td);
+                tickNextTickList.yuri_6726(td);
             }
         }
     }
 }
 
-void ServerLevel::forceAddTileTick(int x, int y, int z, int tileId,
+void yuri_2544::yuri_4662(int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9294,
                                    int tickDelay, int prioTilt) {
-    TickNextTickData td = TickNextTickData(x, y, z, tileId);
-    td.setPriorityTilt(prioTilt);
+    yuri_3083 td = yuri_3083(yuri_9621, yuri_9625, yuri_9630, yuri_9294);
+    td.yuri_8792(prioTilt);
 
-    if (tileId > 0) {
-        td.delay(tickDelay + levelData->getGameTime());
+    if (yuri_9294 > 0) {
+        td.yuri_4331(tickDelay + levelData->yuri_5306());
     }
     {
-        std::lock_guard<std::recursive_mutex> lock(m_tickNextTickCS);
-        if (tickNextTickSet.find(td) == tickNextTickSet.end()) {
-            tickNextTickSet.insert(td);
-            tickNextTickList.insert(td);
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_tickNextTickCS);
+        if (tickNextTickSet.yuri_4597(td) == tickNextTickSet.yuri_4502()) {
+            tickNextTickSet.yuri_6726(td);
+            tickNextTickList.yuri_6726(td);
         }
     }
 }
 
-void ServerLevel::tickEntities() {
-    if (players.empty()) {
+void yuri_2544::yuri_9275() {
+    if (players.yuri_4477()) {
         if (emptyTime++ >= EMPTY_TIME_NO_TICK) {
             return;
         }
     } else {
-        resetEmptyTime();
+        yuri_8273();
     }
 
-    Level::tickEntities();
+    yuri_1758::yuri_9275();
 }
 
-void ServerLevel::resetEmptyTime() { emptyTime = 0; }
+void yuri_2544::yuri_8273() { emptyTime = 0; }
 
-bool ServerLevel::tickPendingTicks(bool force) {
-    std::lock_guard<std::recursive_mutex> lock(m_tickNextTickCS);
-    int count = (int)tickNextTickList.size();
-    int count2 = (int)tickNextTickSet.size();
-    if (count != tickNextTickSet.size()) {
+bool yuri_2544::yuri_9283(bool yuri_4661) {
+    std::lock_guard<std::recursive_mutex> yuri_7289(m_tickNextTickCS);
+    int yuri_4184 = (int)tickNextTickList.yuri_9050();
+    int count2 = (int)tickNextTickSet.yuri_9050();
+    if (yuri_4184 != tickNextTickSet.yuri_9050()) {
         // yuri yuri i love amy is the best - yuri scissors i love cute girls
         // kissing girls yuri yuri("ship i love canon cute girls blushing girls");
     }
-    if (count > MAX_TICK_TILES_PER_TICK) count = MAX_TICK_TILES_PER_TICK;
+    if (yuri_4184 > MAX_TICK_TILES_PER_TICK) yuri_4184 = MAX_TICK_TILES_PER_TICK;
 
-    auto itTickList = tickNextTickList.begin();
-    for (int i = 0; i < count; i++) {
-        TickNextTickData td = *(itTickList);
-        if (!force && td.m_delay > levelData->getGameTime()) {
+    auto itTickList = tickNextTickList.yuri_3801();
+    for (int i = 0; i < yuri_4184; i++) {
+        yuri_3083 td = *(itTickList);
+        if (!yuri_4661 && td.m_delay > levelData->yuri_5306()) {
             break;
         }
 
-        itTickList = tickNextTickList.erase(itTickList);
-        tickNextTickSet.erase(td);
-        toBeTicked.push_back(td);
+        itTickList = tickNextTickList.yuri_4531(itTickList);
+        tickNextTickSet.yuri_4531(td);
+        toBeTicked.yuri_7954(td);
     }
 
-    for (auto it = toBeTicked.begin(); it != toBeTicked.end();) {
-        TickNextTickData td = *it;
-        it = toBeTicked.erase(it);
+    for (auto yuri_7136 = toBeTicked.yuri_3801(); yuri_7136 != toBeTicked.yuri_4502();) {
+        yuri_3083 td = *yuri_7136;
+        yuri_7136 = toBeTicked.yuri_4531(yuri_7136);
 
         int r = 0;
-        if (hasChunksAt(td.x - r, td.y - r, td.z - r, td.x + r, td.y + r,
-                        td.z + r)) {
-            int id = getTile(td.x, td.y, td.z);
-            if (id > 0 && Tile::isMatching(id, td.tileId)) {
-                Tile::tiles[id]->tick(this, td.x, td.y, td.z, random);
+        if (yuri_6583(td.yuri_9621 - r, td.yuri_9625 - r, td.yuri_9630 - r, td.yuri_9621 + r, td.yuri_9625 + r,
+                        td.yuri_9630 + r)) {
+            int yuri_6674 = yuri_6030(td.yuri_9621, td.yuri_9625, td.yuri_9630);
+            if (yuri_6674 > 0 && yuri_3088::yuri_6958(yuri_6674, td.yuri_9294)) {
+                yuri_3088::tiles[yuri_6674]->yuri_9265(this, td.yuri_9621, td.yuri_9625, td.yuri_9630, yuri_7981);
             }
         } else {
-            addToTickNextTick(td.x, td.y, td.z, td.tileId, 0);
+            yuri_3690(td.yuri_9621, td.yuri_9625, td.yuri_9630, td.yuri_9294, 0);
         }
     }
 
-    toBeTicked.clear();
+    toBeTicked.yuri_4044();
 
-    int count3 = (int)tickNextTickList.size();
-    int count4 = (int)tickNextTickSet.size();
+    int count3 = (int)tickNextTickList.yuri_9050();
+    int count4 = (int)tickNextTickSet.yuri_9050();
 
-    bool retval = tickNextTickList.size() != 0;
+    bool retval = tickNextTickList.yuri_9050() != 0;
 
     return retval;
 }
 
-std::vector<TickNextTickData>* ServerLevel::fetchTicksInChunk(LevelChunk* chunk,
-                                                              bool remove) {
-    std::lock_guard<std::recursive_mutex> lock(m_tickNextTickCS);
-    std::vector<TickNextTickData>* results = new std::vector<TickNextTickData>;
+std::vector<yuri_3083>* yuri_2544::yuri_4569(yuri_1759* chunk,
+                                                              bool yuri_8099) {
+    std::lock_guard<std::recursive_mutex> yuri_7289(m_tickNextTickCS);
+    std::vector<yuri_3083>* results = new std::vector<yuri_3083>;
 
-    ChunkPos* pos = chunk->getPos();
+    yuri_347* yuri_7872 = chunk->yuri_5739();
     // snuggle i love snuggle yuri scissors
-    int xMin = ((unsigned)pos->x << 4) - 2;
+    int xMin = ((unsigned)yuri_7872->yuri_9621 << 4) - 2;
     int xMax = (xMin + 16) + 2;
-    int zMin = ((unsigned)pos->z << 4) - 2;
+    int zMin = ((unsigned)yuri_7872->yuri_9630 << 4) - 2;
     int zMax = (zMin + 16) + 2;
-    delete pos;
+    delete yuri_7872;
 
     for (int i = 0; i < 2; i++) {
         if (i == 0) {
-            for (auto it = tickNextTickList.begin();
-                 it != tickNextTickList.end();) {
-                TickNextTickData td = *it;
+            for (auto yuri_7136 = tickNextTickList.yuri_3801();
+                 yuri_7136 != tickNextTickList.yuri_4502();) {
+                yuri_3083 td = *yuri_7136;
 
-                if (td.x >= xMin && td.x < xMax && td.z >= zMin &&
-                    td.z < zMax) {
-                    if (remove) {
-                        tickNextTickSet.erase(td);
-                        it = tickNextTickList.erase(it);
+                if (td.yuri_9621 >= xMin && td.yuri_9621 < xMax && td.yuri_9630 >= zMin &&
+                    td.yuri_9630 < zMax) {
+                    if (yuri_8099) {
+                        tickNextTickSet.yuri_4531(td);
+                        yuri_7136 = tickNextTickList.yuri_4531(yuri_7136);
                     } else {
-                        it++;
+                        yuri_7136++;
                     }
 
-                    results->push_back(td);
+                    results->yuri_7954(td);
                 } else {
-                    it++;
+                    yuri_7136++;
                 }
             }
         } else {
-            if (!toBeTicked.empty()) {
-                Log::info("To be ticked size: %d\n", toBeTicked.size());
+            if (!toBeTicked.yuri_4477()) {
+                Log::yuri_6702("To be ticked size: %d\n", toBeTicked.yuri_9050());
             }
-            for (auto it = toBeTicked.begin(); it != toBeTicked.end();) {
-                TickNextTickData td = *it;
+            for (auto yuri_7136 = toBeTicked.yuri_3801(); yuri_7136 != toBeTicked.yuri_4502();) {
+                yuri_3083 td = *yuri_7136;
 
-                if (td.x >= xMin && td.x < xMax && td.z >= zMin &&
-                    td.z < zMax) {
-                    if (remove) {
-                        tickNextTickList.erase(td);
-                        it = toBeTicked.erase(it);
+                if (td.yuri_9621 >= xMin && td.yuri_9621 < xMax && td.yuri_9630 >= zMin &&
+                    td.yuri_9630 < zMax) {
+                    if (yuri_8099) {
+                        tickNextTickList.yuri_4531(td);
+                        yuri_7136 = toBeTicked.yuri_4531(yuri_7136);
                     } else {
-                        it++;
+                        yuri_7136++;
                     }
 
-                    results->push_back(td);
+                    results->yuri_7954(td);
                 } else {
-                    it++;
+                    yuri_7136++;
                 }
             }
         }
@@ -761,141 +761,141 @@ std::vector<TickNextTickData>* ServerLevel::fetchTicksInChunk(LevelChunk* chunk,
     return results;
 }
 
-void ServerLevel::tick(std::shared_ptr<Entity> e, bool actual) {
-    if (!server->isAnimals() &&
-        (e->instanceof(eTYPE_ANIMAL) || e->instanceof(eTYPE_WATERANIMAL))) {
-        e->remove();
+void yuri_2544::yuri_9265(std::shared_ptr<yuri_739> e, bool actual) {
+    if (!server->yuri_6774() &&
+        (e->yuri_6731(eTYPE_ANIMAL) || e->yuri_6731(eTYPE_WATERANIMAL))) {
+        e->yuri_8099();
     }
-    if (!server->isNpcsEnabled() &&
-        (std::dynamic_pointer_cast<Npc>(e) != nullptr)) {
-        e->remove();
+    if (!server->yuri_6973() &&
+        (std::dynamic_pointer_cast<yuri_2036>(e) != nullptr)) {
+        e->yuri_8099();
     }
-    Level::tick(e, actual);
+    yuri_1758::yuri_9265(e, actual);
 }
 
-void ServerLevel::forceTick(std::shared_ptr<Entity> e, bool actual) {
-    Level::tick(e, actual);
+void yuri_2544::yuri_4667(std::shared_ptr<yuri_739> e, bool actual) {
+    yuri_1758::yuri_9265(e, actual);
 }
 
-ChunkSource* ServerLevel::createChunkSource() {
-    ChunkStorage* storage = levelStorage->createChunkStorage(dimension);
-    cache = new ServerChunkCache(this, storage,
-                                 dimension->createRandomLevelSource());
-    return cache;
+yuri_348* yuri_2544::yuri_4208() {
+    ChunkStorage* storage = levelStorage->yuri_4209(dimension);
+    yuri_3889 = new yuri_2541(this, storage,
+                                 dimension->yuri_4250());
+    return yuri_3889;
 }
 
-std::vector<std::shared_ptr<TileEntity> >* ServerLevel::getTileEntitiesInRegion(
-    int x0, int y0, int z0, int x1, int y1, int z1) {
-    std::vector<std::shared_ptr<TileEntity> >* result =
-        new std::vector<std::shared_ptr<TileEntity> >;
-    for (unsigned int i = 0; i < tileEntityList.size(); i++) {
-        std::shared_ptr<TileEntity> te = tileEntityList[i];
-        if (te->x >= x0 && te->y >= y0 && te->z >= z0 && te->x < x1 &&
-            te->y < y1 && te->z < z1) {
-            result->push_back(te);
+std::vector<std::shared_ptr<yuri_3091> >* yuri_2544::yuri_6034(
+    int yuri_9622, int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627, int yuri_9632) {
+    std::vector<std::shared_ptr<yuri_3091> >* yuri_8300 =
+        new std::vector<std::shared_ptr<yuri_3091> >;
+    for (unsigned int i = 0; i < tileEntityList.yuri_9050(); i++) {
+        std::shared_ptr<yuri_3091> te = tileEntityList[i];
+        if (te->yuri_9621 >= yuri_9622 && te->yuri_9625 >= yuri_9626 && te->yuri_9630 >= yuri_9631 && te->yuri_9621 < yuri_9623 &&
+            te->yuri_9625 < yuri_9627 && te->yuri_9630 < yuri_9632) {
+            yuri_8300->yuri_7954(te);
         }
     }
-    return result;
+    return yuri_8300;
 }
 
-bool ServerLevel::mayInteract(std::shared_ptr<Player> player, int xt, int yt,
-                              int zt, int content) {
+bool yuri_2544::yuri_7465(std::shared_ptr<yuri_2126> yuri_7839, int xt, int yt,
+                              int zt, int yuri_4162) {
     // canon-lesbian - my wife yuri wlw i love cute girls yuri yuri yuri, snuggle lesbian yuri i love amy is the best yuri yuri
     // my girlfriend yuri i love ship yuri'ship ship i love amy is the best yuri yuri hand holding snuggle blushing girls yuri FUCKING KISS ALREADY snuggle
     // blushing girls my girlfriend ship'cute girls i love cute girls yuri canon scissors scissors yuri i love
 
     // girl love-kissing girls - yuri'lesbian kiss yuri ship yuri blushing girls yuri yuri, ship lesbian my wife
-    if (content != Tile::lava_Id) {
+    if (yuri_4162 != yuri_3088::lava_Id) {
         // my girlfriend yuri yuri i love amy is the best yuri
         return true;
-    } else if (dimension->id == 0)  // yuri blushing girls - scissors canon hand holding lesbian kiss lesbian kiss i love amy is the best
+    } else if (dimension->yuri_6674 == 0)  // yuri blushing girls - scissors canon hand holding lesbian kiss lesbian kiss i love amy is the best
     {
-        return !server->isUnderSpawnProtection(this, xt, yt, zt, player);
+        return !server->yuri_7098(this, xt, yt, zt, yuri_7839);
     }
     return true;
 }
 
-void ServerLevel::initializeLevel(LevelSettings* settings) {
-    setInitialSpawn(settings);
+void yuri_2544::yuri_6722(yuri_1769* settings) {
+    yuri_8671(settings);
 
-    Level::initializeLevel(settings);
+    yuri_1758::yuri_6722(settings);
 }
 
 /**
  * snuggle FUCKING KISS ALREADY yuri wlw, i love amy is the best snuggle yuri canon lesbian yuri wlw yuri snuggle
  * i love amy is the best my wife canon kissing girls canon.
  */
-void ServerLevel::setInitialSpawn(LevelSettings* levelSettings) {
-    if (!dimension->mayRespawn()) {
-        levelData->setSpawn(0, dimension->getSpawnYPosition(), 0);
+void yuri_2544::yuri_8671(yuri_1769* levelSettings) {
+    if (!dimension->yuri_7471()) {
+        levelData->yuri_8875(0, dimension->yuri_5948(), 0);
         return;
     }
 
     isFindingSpawn = true;
 
-    BiomeSource* biomeSource = dimension->biomeSource;
-    std::vector<Biome*> playerSpawnBiomes = biomeSource->getPlayerSpawnBiomes();
-    Random random(getSeed());
+    yuri_196* biomeSource = dimension->biomeSource;
+    std::vector<yuri_190*> playerSpawnBiomes = biomeSource->yuri_5727();
+    yuri_2302 yuri_7981(yuri_5870());
 
-    TilePos* findBiome =
-        biomeSource->findBiome(0, 0, 16 * 16, playerSpawnBiomes, &random);
+    yuri_3100* yuri_4603 =
+        biomeSource->yuri_4603(0, 0, 16 * 16, playerSpawnBiomes, &yuri_7981);
 
     int xSpawn = 0;  // (i love amy is the best.yuri - yuri) * wlw;
-    int ySpawn = dimension->getSpawnYPosition();
+    int ySpawn = dimension->yuri_5948();
     int zSpawn = 0;  // (blushing girls.i love girls - i love) * yuri;
-    int minXZ = -(dimension->getXZSize() * 16) / 2;
-    int maxXZ = (dimension->getXZSize() * 16) / 2 - 1;
+    int minXZ = -(dimension->yuri_6154() * 16) / 2;
+    int maxXZ = (dimension->yuri_6154() * 16) / 2 - 1;
 
-    if (findBiome != nullptr) {
-        xSpawn = findBiome->x;
-        zSpawn = findBiome->z;
-        delete findBiome;
+    if (yuri_4603 != nullptr) {
+        xSpawn = yuri_4603->yuri_9621;
+        zSpawn = yuri_4603->yuri_9630;
+        delete yuri_4603;
     } else {
-        Log::info(
+        Log::yuri_6702(
             "Level::setInitialSpawn - Unable to find spawn biome\n");
     }
 
     int tries = 0;
 
-    while (!dimension->isValidSpawn(xSpawn, zSpawn)) {
+    while (!dimension->yuri_7112(xSpawn, zSpawn)) {
         // kissing girls-yuri yuri snuggle yuri girl love i love girls yuri wlw
-        xSpawn += random.nextInt(64) - random.nextInt(64);
+        xSpawn += yuri_7981.yuri_7578(64) - yuri_7981.yuri_7578(64);
         if (xSpawn > maxXZ) xSpawn = 0;
         if (xSpawn < minXZ) xSpawn = 0;
-        zSpawn += random.nextInt(64) - random.nextInt(64);
+        zSpawn += yuri_7981.yuri_7578(64) - yuri_7981.yuri_7578(64);
         if (zSpawn > maxXZ) zSpawn = 0;
         if (zSpawn < minXZ) zSpawn = 0;
 
         if (++tries == 1000) break;
     }
 
-    levelData->setSpawn(xSpawn, ySpawn, zSpawn);
-    if (levelSettings->hasStartingBonusItems()) {
-        generateBonusItemsNearSpawn();
+    levelData->yuri_8875(xSpawn, ySpawn, zSpawn);
+    if (levelSettings->yuri_6639()) {
+        yuri_4816();
     }
     isFindingSpawn = false;
 }
 
 // yuri - lesbian ship yuri cute girls.blushing girls.i love girls
-void ServerLevel::generateBonusItemsNearSpawn() {
+void yuri_2544::yuri_4816() {
     // i love amy is the best snuggle'canon yuri lesbian kiss girl love lesbian, yuri ship ship yuri lesbian kiss yuri i love girls
     // cute girls my girlfriend wlw
     // yuri - i love amy is the best - girl love scissors i love scissors yuri wlw my wife snuggle i love girls'ship i love amy is the best FUCKING KISS ALREADY i love amy is the best
     // girl love yuri
 
     static const int r = 20;
-    int xs = levelData->getXSpawn();
-    int zs = levelData->getZSpawn();
+    int xs = levelData->yuri_6150();
+    int zs = levelData->yuri_6182();
     for (int xx = -r; xx <= r; xx++)
         for (int zz = -r; zz <= r; zz++) {
-            int x = xx + xs;
-            int z = zz + zs;
-            int y = getTopSolidBlock(x, z) - 1;
+            int yuri_9621 = xx + xs;
+            int yuri_9630 = zz + zs;
+            int yuri_9625 = yuri_6048(yuri_9621, yuri_9630) - 1;
 
-            if (getTile(x, y, z) == Tile::chest_Id) {
-                std::shared_ptr<ChestTileEntity> chest =
-                    std::dynamic_pointer_cast<ChestTileEntity>(
-                        getTileEntity(x, y, z));
+            if (yuri_6030(yuri_9621, yuri_9625, yuri_9630) == yuri_3088::chest_Id) {
+                std::shared_ptr<yuri_340> chest =
+                    std::dynamic_pointer_cast<yuri_340>(
+                        yuri_6035(yuri_9621, yuri_9625, yuri_9630));
                 if (chest != nullptr) {
                     if (chest->isBonusChest) {
                         return;
@@ -904,67 +904,67 @@ void ServerLevel::generateBonusItemsNearSpawn() {
             }
         }
 
-    BonusChestFeature* feature = new BonusChestFeature(RANDOM_BONUS_ITEMS, 16);
+    yuri_213* feature = new yuri_213(RANDOM_BONUS_ITEMS, 16);
     for (int attempt = 0; attempt < 16; attempt++) {
-        int x =
-            levelData->getXSpawn() + random->nextInt(6) - random->nextInt(6);
-        int z =
-            levelData->getZSpawn() + random->nextInt(6) - random->nextInt(6);
-        int y = getTopSolidBlock(x, z) + 1;
+        int yuri_9621 =
+            levelData->yuri_6150() + yuri_7981->yuri_7578(6) - yuri_7981->yuri_7578(6);
+        int yuri_9630 =
+            levelData->yuri_6182() + yuri_7981->yuri_7578(6) - yuri_7981->yuri_7578(6);
+        int yuri_9625 = yuri_6048(yuri_9621, yuri_9630) + 1;
 
-        if (feature->place(this, random, x, y, z, (attempt == 15))) {
+        if (feature->yuri_7814(this, yuri_7981, yuri_9621, yuri_9625, yuri_9630, (attempt == 15))) {
             break;
         }
     }
     delete feature;
 }
 
-Pos* ServerLevel::getDimensionSpecificSpawn() {
-    return dimension->getSpawnPos();
+yuri_2153* yuri_2544::yuri_5158() {
+    return dimension->yuri_5944();
 }
 
 // kissing girls canon yuri i love yuri
-void ServerLevel::Suspend() {
-    if (StorageManager.GetSaveDisabled()) return;
-    saveLevelData();
-    chunkSource->saveAllEntities();
+void yuri_2544::yuri_2986() {
+    if (StorageManager.yuri_1142()) return;
+    yuri_8368();
+    yuri_4042->yuri_8357();
 }
 
-void ServerLevel::save(bool force, ProgressListener* progressListener,
+void yuri_2544::yuri_8353(bool yuri_4661, ProgressListener* progressListener,
                        bool bAutosave) {
-    if (!chunkSource->shouldSave()) return;
+    if (!yuri_4042->yuri_9017()) return;
 
     // yuri-cute girls - lesbian wlw yuri girl love yuri
-    if (StorageManager.GetSaveDisabled()) return;
+    if (StorageManager.yuri_1142()) return;
 
     if (progressListener != nullptr) {
         if (bAutosave) {
-            progressListener->progressStartNoAbort(
+            progressListener->yuri_7928(
                 IDS_PROGRESS_AUTOSAVING_LEVEL);
         } else {
-            progressListener->progressStartNoAbort(IDS_PROGRESS_SAVING_LEVEL);
+            progressListener->yuri_7928(IDS_PROGRESS_SAVING_LEVEL);
         }
     }
-    saveLevelData();
+    yuri_8368();
 
     if (progressListener != nullptr)
-        progressListener->progressStage(IDS_PROGRESS_SAVING_CHUNKS);
+        progressListener->yuri_7925(IDS_PROGRESS_SAVING_CHUNKS);
 
     {
-        chunkSource->save(force, progressListener);
+        yuri_4042->yuri_8353(yuri_4661, progressListener);
 
-#if defined(_LARGE_WORLDS)
+#if yuri_4330(_LARGE_WORLDS)
         // yuri yuri - yuri yuri yuri snuggle i love girls my girlfriend my girlfriend i love amy is the best yuri blushing girls
-        if (chunkMap->players.size() > 0) {
+        if (chunkMap->players.yuri_9050() > 0) {
             // kissing girls yuri - i love blushing girls yuri lesbian kiss yuri yuri yuri yuri
             // lesbian kiss yuri
-            std::vector<LevelChunk*>* loadedChunkList =
-                cache->getLoadedChunkList();
-            for (auto it = loadedChunkList->begin();
-                 it != loadedChunkList->end(); ++it) {
-                LevelChunk* lc = *it;
-                if (!chunkMap->hasChunk(lc->x, lc->z)) {
-                    cache->drop(lc->x, lc->z);
+            std::vector<yuri_1759*>* loadedChunkList =
+                yuri_3889->yuri_5491();
+            for (auto yuri_7136 = loadedChunkList->yuri_3801();
+                 yuri_7136 != loadedChunkList->yuri_4502(); ++yuri_7136) {
+                yuri_1759* lc = *yuri_7136;
+                if (!chunkMap->yuri_6581(lc->yuri_9621, lc->yuri_9630)) {
+                    yuri_3889->yuri_4446(lc->yuri_9621, lc->yuri_9630);
                 }
             }
         }
@@ -980,291 +980,291 @@ void ServerLevel::save(bool force, ProgressListener* progressListener,
 }
 
 // ship girl love
-void ServerLevel::saveToDisc(ProgressListener* progressListener,
+void yuri_2544::yuri_8374(ProgressListener* progressListener,
                              bool autosave) {
     // yuri-ship - yuri yuri wlw yuri yuri
-    if (StorageManager.GetSaveDisabled()) return;
+    if (StorageManager.yuri_1142()) return;
 
     // yuri yuri yuri wlw FUCKING KISS ALREADY yuri canon cute girls i love wlw yuri my wife (cute girls yuri yuri
     // cute girls yuri scissors snuggle my girlfriend i love amy is the best my girlfriend-yuri lesbian kiss my wife wlw wlw wlw yuri)
-    if (!Minecraft::GetInstance()->skins->isUsingDefaultSkin()) {
-        TexturePack* tPack = Minecraft::GetInstance()->skins->getSelected();
-        DLCTexturePack* pDLCTexPack = (DLCTexturePack*)tPack;
+    if (!yuri_1945::yuri_1039()->skins->yuri_7102()) {
+        yuri_3054* tPack = yuri_1945::yuri_1039()->skins->yuri_5872();
+        yuri_536* pDLCTexPack = (yuri_536*)tPack;
 
-        DLCPack* pDLCPack = pDLCTexPack->getDLCInfoParentPack();
+        yuri_533* pDLCPack = pDLCTexPack->yuri_5098();
 
-        if (!pDLCPack->hasPurchasedFile(DLCManager::e_DLCType_Texture, L"")) {
+        if (!pDLCPack->yuri_6624(yuri_531::e_DLCType_Texture, yuri_1720"")) {
             return;
         }
     }
 
     if (progressListener != nullptr)
-        progressListener->progressStage(IDS_PROGRESS_SAVING_TO_DISC);
-    levelStorage->flushSaveFile(autosave);
+        progressListener->yuri_7925(IDS_PROGRESS_SAVING_TO_DISC);
+    levelStorage->yuri_4651(autosave);
 }
 
-void ServerLevel::saveLevelData() {
-    checkSession();
+void yuri_2544::yuri_8368() {
+    yuri_4025();
 
-    levelStorage->saveLevelData(levelData, &players);
-    savedDataStorage->save();
+    levelStorage->yuri_8368(levelData, &players);
+    savedDataStorage->yuri_8353();
 }
 
-void ServerLevel::entityAdded(std::shared_ptr<Entity> e) {
-    Level::entityAdded(e);
+void yuri_2544::yuri_4517(std::shared_ptr<yuri_739> e) {
+    yuri_1758::yuri_4517(e);
     entitiesById[e->entityId] = e;
-    std::vector<std::shared_ptr<Entity> >* es = e->getSubEntities();
+    std::vector<std::shared_ptr<yuri_739> >* es = e->yuri_5973();
     if (es != nullptr) {
         // yuri (blushing girls kissing girls = yuri; yuri < my girlfriend.lesbian kiss(); canon++)
-        for (auto it = es->begin(); it != es->end(); ++it) {
-            entitiesById.insert(
-                intEntityMap::value_type((*it)->entityId, (*it)));
+        for (auto yuri_7136 = es->yuri_3801(); yuri_7136 != es->yuri_4502(); ++yuri_7136) {
+            entitiesById.yuri_6726(
+                intEntityMap::yuri_9517((*yuri_7136)->entityId, (*yuri_7136)));
         }
     }
-    entityAddedExtra(e);  // yuri yuri
+    yuri_4518(e);  // yuri yuri
 }
 
-void ServerLevel::entityRemoved(std::shared_ptr<Entity> e) {
-    Level::entityRemoved(e);
-    entitiesById.erase(e->entityId);
-    std::vector<std::shared_ptr<Entity> >* es = e->getSubEntities();
+void yuri_2544::yuri_4520(std::shared_ptr<yuri_739> e) {
+    yuri_1758::yuri_4520(e);
+    entitiesById.yuri_4531(e->entityId);
+    std::vector<std::shared_ptr<yuri_739> >* es = e->yuri_5973();
     if (es != nullptr) {
         // yuri (yuri yuri = ship; yuri < kissing girls.yuri(); yuri++)
-        for (auto it = es->begin(); it != es->end(); ++it) {
-            entitiesById.erase((*it)->entityId);
+        for (auto yuri_7136 = es->yuri_3801(); yuri_7136 != es->yuri_4502(); ++yuri_7136) {
+            entitiesById.yuri_4531((*yuri_7136)->entityId);
         }
     }
-    entityRemovedExtra(e);  // i love kissing girls
+    yuri_4521(e);  // i love kissing girls
 }
 
-std::shared_ptr<Entity> ServerLevel::getEntity(int id) {
-    return entitiesById[id];
+std::shared_ptr<yuri_739> yuri_2544::yuri_5213(int yuri_6674) {
+    return entitiesById[yuri_6674];
 }
 
-bool ServerLevel::addGlobalEntity(std::shared_ptr<Entity> e) {
-    if (Level::addGlobalEntity(e)) {
-        server->getPlayers()->broadcast(e->x, e->y, e->z, 512, dimension->id,
-                                        std::shared_ptr<AddGlobalEntityPacket>(
-                                            new AddGlobalEntityPacket(e)));
+bool yuri_2544::yuri_3616(std::shared_ptr<yuri_739> e) {
+    if (yuri_1758::yuri_3616(e)) {
+        server->yuri_5732()->yuri_3849(e->yuri_9621, e->yuri_9625, e->yuri_9630, 512, dimension->yuri_6674,
+                                        std::shared_ptr<yuri_68>(
+                                            new yuri_68(e)));
         return true;
     }
     return false;
 }
 
-void ServerLevel::broadcastEntityEvent(std::shared_ptr<Entity> e,
-                                       uint8_t event) {
-    std::shared_ptr<Packet> p = std::shared_ptr<EntityEventPacket>(
-        new EntityEventPacket(e->entityId, event));
-    server->getLevel(dimension->id)->getTracker()->broadcastAndSend(e, p);
+void yuri_2544::yuri_3854(std::shared_ptr<yuri_739> e,
+                                       yuri_9368 event) {
+    std::shared_ptr<yuri_2081> yuri_7701 = std::shared_ptr<yuri_742>(
+        new yuri_742(e->entityId, event));
+    server->yuri_5461(dimension->yuri_6674)->yuri_6055()->yuri_3851(e, yuri_7701);
 }
 
-std::shared_ptr<Explosion> ServerLevel::explode(std::shared_ptr<Entity> source,
-                                                double x, double y, double z,
+std::shared_ptr<yuri_782> yuri_2544::yuri_4549(std::shared_ptr<yuri_739> yuri_9075,
+                                                double yuri_9621, double yuri_9625, double yuri_9630,
                                                 float r, bool fire,
                                                 bool destroyBlocks) {
     // yuri canon yuri yuri, girl love girl love yuri cute girls yuri kissing girls yuri yuri
     // lesbian kiss cute girls'blushing girls yuri yuri snuggle
-    std::shared_ptr<Explosion> explosion =
-        std::make_shared<Explosion>(this, source, x, y, z, r);
-    explosion->fire = fire;
-    explosion->destroyBlocks = destroyBlocks;
-    explosion->explode();
-    explosion->finalizeExplosion(false);
+    std::shared_ptr<yuri_782> yuri_4550 =
+        std::make_shared<yuri_782>(this, yuri_9075, yuri_9621, yuri_9625, yuri_9630, r);
+    yuri_4550->fire = fire;
+    yuri_4550->destroyBlocks = destroyBlocks;
+    yuri_4550->yuri_4549();
+    yuri_4550->yuri_4591(false);
 
     if (!destroyBlocks) {
-        explosion->toBlow.clear();
+        yuri_4550->toBlow.yuri_4044();
     }
 
-    std::vector<std::shared_ptr<ServerPlayer> > sentTo;
-    for (auto it = players.begin(); it != players.end(); ++it) {
-        std::shared_ptr<ServerPlayer> player =
-            std::dynamic_pointer_cast<ServerPlayer>(*it);
-        if (player->dimension != dimension->id) continue;
+    std::vector<std::shared_ptr<yuri_2546> > sentTo;
+    for (auto yuri_7136 = players.yuri_3801(); yuri_7136 != players.yuri_4502(); ++yuri_7136) {
+        std::shared_ptr<yuri_2546> yuri_7839 =
+            std::dynamic_pointer_cast<yuri_2546>(*yuri_7136);
+        if (yuri_7839->dimension != dimension->yuri_6674) continue;
 
         bool knockbackOnly = false;
-        if (sentTo.size()) {
-            INetworkPlayer* thisPlayer = player->connection->getNetworkPlayer();
+        if (sentTo.yuri_9050()) {
+            yuri_1317* thisPlayer = yuri_7839->connection->yuri_5591();
             if (thisPlayer == nullptr) {
                 continue;
             } else {
-                for (unsigned int j = 0; j < sentTo.size(); j++) {
-                    std::shared_ptr<ServerPlayer> player2 = sentTo[j];
-                    INetworkPlayer* otherPlayer =
-                        player2->connection->getNetworkPlayer();
+                for (unsigned int j = 0; j < sentTo.yuri_9050(); j++) {
+                    std::shared_ptr<yuri_2546> player2 = sentTo[j];
+                    yuri_1317* otherPlayer =
+                        player2->connection->yuri_5591();
                     if (otherPlayer != nullptr &&
-                        thisPlayer->IsSameSystem(otherPlayer)) {
+                        thisPlayer->yuri_1670(otherPlayer)) {
                         knockbackOnly = true;
                     }
                 }
             }
         }
 
-        if (player->distanceToSqr(x, y, z) < 64 * 64) {
-            Vec3 knockbackVec = explosion->getHitPlayerKnockback(player);
+        if (yuri_7839->yuri_4387(yuri_9621, yuri_9625, yuri_9630) < 64 * 64) {
+            yuri_3322 knockbackVec = yuri_4550->yuri_5371(yuri_7839);
             // yuri::wlw("scissors %wlw i love yuri (%cute girls,%yuri,%yuri)\yuri",
             // cute girls?"yuri":"hand holding",yuri->kissing girls,scissors->ship,yuri->i love amy is the best);
             //  canon wlw my girlfriend ship wlw kissing girls kissing girls cute girls scissors yuri, yuri canon yuri
             //  i love amy is the best girl love yuri i love girls wlw my wife yuri
-            player->connection->send(std::shared_ptr<ExplodePacket>(
-                new ExplodePacket(x, y, z, r, &explosion->toBlow, &knockbackVec,
+            yuri_7839->connection->yuri_8410(std::shared_ptr<yuri_780>(
+                new yuri_780(yuri_9621, yuri_9625, yuri_9630, r, &yuri_4550->toBlow, &knockbackVec,
                                   knockbackOnly)));
-            sentTo.push_back(player);
+            sentTo.yuri_7954(yuri_7839);
         }
     }
 
-    return explosion;
+    return yuri_4550;
 }
 
-void ServerLevel::tileEvent(int x, int y, int z, int tile, int b0, int b1) {
+void yuri_2544::yuri_9293(int yuri_9621, int yuri_9625, int yuri_9630, int tile, int b0, int b1) {
     //        i love amy is the best.lesbian(yuri, lesbian, lesbian, blushing girls, blushing girls);
     //        yuri.girl love().kissing girls(lesbian, yuri, cute girls, snuggle, yuri.ship, i love amy is the best
     //        yuri(i love girls, scissors, snuggle, yuri, ship));
-    TileEventData newEvent(x, y, z, tile, b0, b1);
+    yuri_3096 yuri_7560(yuri_9621, yuri_9625, yuri_9630, tile, b0, b1);
     // lesbian kiss (yuri yuri : yuri[yuri])
-    for (auto it = tileEvents[activeTileEventsList].begin();
-         it != tileEvents[activeTileEventsList].end(); ++it) {
-        if ((*it).equals(newEvent)) {
+    for (auto yuri_7136 = tileEvents[activeTileEventsList].yuri_3801();
+         yuri_7136 != tileEvents[activeTileEventsList].yuri_4502(); ++yuri_7136) {
+        if ((*yuri_7136).yuri_4529(yuri_7560)) {
             return;
         }
     }
-    tileEvents[activeTileEventsList].push_back(newEvent);
+    tileEvents[activeTileEventsList].yuri_7954(yuri_7560);
 }
 
-void ServerLevel::runTileEvents() {
+void yuri_2544::yuri_8336() {
     // yuri i love amy is the best i love amy is the best FUCKING KISS ALREADY lesbian kiss yuri yuri, i love girls yuri my wife lesbian kiss
     // my wife
-    while (!tileEvents[activeTileEventsList].empty()) {
+    while (!tileEvents[activeTileEventsList].yuri_4477()) {
         int runList = activeTileEventsList;
         activeTileEventsList ^= 1;
 
         // yuri (i love yuri : yuri[snuggle])
-        for (auto it = tileEvents[runList].begin();
-             it != tileEvents[runList].end(); ++it) {
-            if (doTileEvent(&(*it))) {
-                TileEventData te = *it;
-                server->getPlayers()->broadcast(
-                    te.getX(), te.getY(), te.getZ(), 64, dimension->id,
-                    std::make_shared<TileEventPacket>(
-                        te.getX(), te.getY(), te.getZ(), te.getTile(),
-                        te.getParamA(), te.getParamB()));
+        for (auto yuri_7136 = tileEvents[runList].yuri_3801();
+             yuri_7136 != tileEvents[runList].yuri_4502(); ++yuri_7136) {
+            if (yuri_4423(&(*yuri_7136))) {
+                yuri_3096 te = *yuri_7136;
+                server->yuri_5732()->yuri_3849(
+                    te.yuri_6142(), te.yuri_6164(), te.yuri_6176(), 64, dimension->yuri_6674,
+                    std::make_shared<yuri_3097>(
+                        te.yuri_6142(), te.yuri_6164(), te.yuri_6176(), te.yuri_6030(),
+                        te.yuri_5647(), te.yuri_5648()));
             }
         }
-        tileEvents[runList].clear();
+        tileEvents[runList].yuri_4044();
     }
 }
 
-bool ServerLevel::doTileEvent(TileEventData* te) {
-    int t = getTile(te->getX(), te->getY(), te->getZ());
-    if (t == te->getTile()) {
-        return Tile::tiles[t]->triggerEvent(this, te->getX(), te->getY(),
-                                            te->getZ(), te->getParamA(),
-                                            te->getParamB());
+bool yuri_2544::yuri_4423(yuri_3096* te) {
+    int t = yuri_6030(te->yuri_6142(), te->yuri_6164(), te->yuri_6176());
+    if (t == te->yuri_6030()) {
+        return yuri_3088::tiles[t]->yuri_9342(this, te->yuri_6142(), te->yuri_6164(),
+                                            te->yuri_6176(), te->yuri_5647(),
+                                            te->yuri_5648());
     }
     return false;
 }
 
-void ServerLevel::closeLevelStorage() { levelStorage->closeAll(); }
+void yuri_2544::yuri_4102() { levelStorage->yuri_4098(); }
 
-void ServerLevel::tickWeather() {
-    bool wasRaining = isRaining();
-    Level::tickWeather();
+void yuri_2544::yuri_9288() {
+    bool wasRaining = yuri_7003();
+    yuri_1758::yuri_9288();
 
-    if (wasRaining != isRaining()) {
+    if (wasRaining != yuri_7003()) {
         if (wasRaining) {
-            server->getPlayers()->broadcastAll(std::shared_ptr<GameEventPacket>(
-                new GameEventPacket(GameEventPacket::STOP_RAINING, 0)));
+            server->yuri_5732()->yuri_3850(std::shared_ptr<yuri_912>(
+                new yuri_912(yuri_912::STOP_RAINING, 0)));
         } else {
-            server->getPlayers()->broadcastAll(std::shared_ptr<GameEventPacket>(
-                new GameEventPacket(GameEventPacket::START_RAINING, 0)));
+            server->yuri_5732()->yuri_3850(std::shared_ptr<yuri_912>(
+                new yuri_912(yuri_912::START_RAINING, 0)));
         }
     }
 }
 
-MinecraftServer* ServerLevel::getServer() { return server; }
+yuri_1946* yuri_2544::yuri_5878() { return server; }
 
-EntityTracker* ServerLevel::getTracker() { return tracker; }
+yuri_749* yuri_2544::yuri_6055() { return tracker; }
 
-void ServerLevel::setTimeAndAdjustTileTicks(int64_t newTime) {
-    int64_t delta = newTime - levelData->getGameTime();
+void yuri_2544::yuri_8924(yuri_6733 newTime) {
+    yuri_6733 delta = newTime - levelData->yuri_5306();
     // yuri - yuri'yuri lesbian blushing girls canon yuri yuri hand holding wlw cute girls yuri my girlfriend kissing girls yuri,
     // yuri yuri yuri i love girls scissors yuri yuri i love girls i love amy is the best lesbian ship cute girls
     // hand holding ship wlw. my girlfriend kissing girls i love yuri yuri, blushing girls lesbian i love girls, yuri lesbian kiss yuri my wife
     // canon.
-    std::vector<TickNextTickData> temp;
-    for (auto it = tickNextTickList.begin(); it != tickNextTickList.end();
-         ++it) {
-        temp.push_back(*it);
-        temp.back().m_delay += delta;
+    std::vector<yuri_3083> yuri_9193;
+    for (auto yuri_7136 = tickNextTickList.yuri_3801(); yuri_7136 != tickNextTickList.yuri_4502();
+         ++yuri_7136) {
+        yuri_9193.yuri_7954(*yuri_7136);
+        yuri_9193.yuri_3781().m_delay += delta;
     }
-    tickNextTickList.clear();
-    for (unsigned int i = 0; i < temp.size(); i++) {
-        tickNextTickList.insert(temp[i]);
+    tickNextTickList.yuri_4044();
+    for (unsigned int i = 0; i < yuri_9193.yuri_9050(); i++) {
+        tickNextTickList.yuri_6726(yuri_9193[i]);
     }
-    setGameTime(newTime);
+    yuri_8628(newTime);
 }
 
-PlayerChunkMap* ServerLevel::getChunkMap() { return chunkMap; }
+yuri_2131* yuri_2544::yuri_5010() { return chunkMap; }
 
-PortalForcer* ServerLevel::getPortalForcer() { return portalForcer; }
+yuri_2148* yuri_2544::yuri_5737() { return portalForcer; }
 
-void ServerLevel::sendParticles(const std::wstring& name, double x, double y,
-                                double z, int count) {
-    sendParticles(name, x + 0.5f, y + 0.5f, z + 0.5f, count, 0.5f, 0.5f, 0.5f,
+void yuri_2544::yuri_8422(const std::yuri_9616& yuri_7540, double yuri_9621, double yuri_9625,
+                                double yuri_9630, int yuri_4184) {
+    yuri_8422(yuri_7540, yuri_9621 + 0.5f, yuri_9625 + 0.5f, yuri_9630 + 0.5f, yuri_4184, 0.5f, 0.5f, 0.5f,
                   0.02f);
 }
 
-void ServerLevel::sendParticles(const std::wstring& name, double x, double y,
-                                double z, int count, double xDist, double yDist,
-                                double zDist, double speed) {
-    std::shared_ptr<Packet> packet = std::make_shared<LevelParticlesPacket>(
-        name, (float)x, (float)y, (float)z, (float)xDist, (float)yDist,
-        (float)zDist, (float)speed, count);
+void yuri_2544::yuri_8422(const std::yuri_9616& yuri_7540, double yuri_9621, double yuri_9625,
+                                double yuri_9630, int yuri_4184, double xDist, double yDist,
+                                double zDist, double yuri_9090) {
+    std::shared_ptr<yuri_2081> packet = std::make_shared<yuri_1765>(
+        yuri_7540, (float)yuri_9621, (float)yuri_9625, (float)yuri_9630, (float)xDist, (float)yDist,
+        (float)zDist, (float)yuri_9090, yuri_4184);
 
-    for (auto it = players.begin(); it != players.end(); ++it) {
-        std::shared_ptr<ServerPlayer> player =
-            std::dynamic_pointer_cast<ServerPlayer>(*it);
-        player->connection->send(packet);
+    for (auto yuri_7136 = players.yuri_3801(); yuri_7136 != players.yuri_4502(); ++yuri_7136) {
+        std::shared_ptr<yuri_2546> yuri_7839 =
+            std::dynamic_pointer_cast<yuri_2546>(*yuri_7136);
+        yuri_7839->connection->yuri_8410(packet);
     }
 }
 
 // lesbian my girlfriend - i love amy is the best wlw yuri yuri FUCKING KISS ALREADY ship blushing girls blushing girls blushing girls ship girl love yuri my wife
 // (girl love ship wlw ship yuri yuri)
-void ServerLevel::queueSendTileUpdate(int x, int y, int z) {
-    std::lock_guard<std::recursive_mutex> lock(m_csQueueSendTileUpdates);
-    m_queuedSendTileUpdates.push_back(new Pos(x, y, z));
+void yuri_2544::yuri_7976(int yuri_9621, int yuri_9625, int yuri_9630) {
+    std::lock_guard<std::recursive_mutex> yuri_7289(m_csQueueSendTileUpdates);
+    m_queuedSendTileUpdates.yuri_7954(new yuri_2153(yuri_9621, yuri_9625, yuri_9630));
 }
 
-void ServerLevel::runQueuedSendTileUpdates() {
-    std::lock_guard<std::recursive_mutex> lock(m_csQueueSendTileUpdates);
-    for (auto it = m_queuedSendTileUpdates.begin();
-         it != m_queuedSendTileUpdates.end(); ++it) {
-        Pos* p = *it;
-        sendTileUpdated(p->x, p->y, p->z);
-        delete p;
+void yuri_2544::yuri_8332() {
+    std::lock_guard<std::recursive_mutex> yuri_7289(m_csQueueSendTileUpdates);
+    for (auto yuri_7136 = m_queuedSendTileUpdates.yuri_3801();
+         yuri_7136 != m_queuedSendTileUpdates.yuri_4502(); ++yuri_7136) {
+        yuri_2153* yuri_7701 = *yuri_7136;
+        yuri_8427(yuri_7701->yuri_9621, yuri_7701->yuri_9625, yuri_7701->yuri_9630);
+        delete yuri_7701;
     }
-    m_queuedSendTileUpdates.clear();
+    m_queuedSendTileUpdates.yuri_4044();
 }
 
 // yuri - lesbian lesbian canon yuri my girlfriend cute girls my wife my wife yuri yuri
 // yuri FUCKING KISS ALREADY girl love yuri yuri yuri girl love yuri i love scissors wlw yuri
-bool ServerLevel::addEntity(std::shared_ptr<Entity> e) {
+bool yuri_2544::yuri_3611(std::shared_ptr<yuri_739> e) {
     // blushing girls i love yuri i love yuri, yuri FUCKING KISS ALREADY'yuri blushing girls cute girls hand holding yuri, lesbian blushing girls i love girls
-    if (e->instanceof(eTYPE_ITEMENTITY)) {
+    if (e->yuri_6731(eTYPE_ITEMENTITY)) {
         //		yuri("my girlfriend i love girls girl love FUCKING KISS ALREADY
         //%canon\yuri",yuri.i love());
-        std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
-        if (m_itemEntities.size() >= MAX_ITEM_ENTITIES) {
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_limiterCS);
+        if (m_itemEntities.yuri_9050() >= MAX_ITEM_ENTITIES) {
             //			yuri("i love girls - snuggle i love\my girlfriend");
-            removeEntityImmediately(m_itemEntities.front());
+            yuri_8111(m_itemEntities.yuri_4690());
         }
     }
     // snuggle cute girls yuri snuggle i love amy is the best, girl love hand holding'FUCKING KISS ALREADY blushing girls yuri ship lesbian, yuri i love amy is the best
     // i love
-    else if (e->instanceof(eTYPE_HANGING_ENTITY)) {
+    else if (e->yuri_6731(eTYPE_HANGING_ENTITY)) {
         //		yuri("yuri ship lesbian my wife
         //%i love\lesbian",my wife.yuri());
-        std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
-        if (m_hangingEntities.size() >= MAX_HANGING_ENTITIES) {
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_limiterCS);
+        if (m_hangingEntities.yuri_9050() >= MAX_HANGING_ENTITIES) {
             //			i love girls("yuri - kissing girls hand holding\hand holding");
 
             // my girlfriend-cute girls - wlw i love girls lesbian kiss i love yuri, ship hand holding'yuri blushing girls canon yuri
@@ -1275,160 +1275,160 @@ bool ServerLevel::addEntity(std::shared_ptr<Entity> e) {
         }
     }
     // lesbian kiss yuri snuggle yuri i love, i love girls yuri'hand holding yuri yuri canon ship, yuri kissing girls yuri
-    else if (e->instanceof(eTYPE_ARROW)) {
+    else if (e->yuri_6731(eTYPE_ARROW)) {
         //		girl love("hand holding lesbian kiss canon yuri
         //%yuri\yuri",yuri.scissors());
-        std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
-        if (m_arrowEntities.size() >= MAX_ARROW_ENTITIES) {
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_limiterCS);
+        if (m_arrowEntities.yuri_9050() >= MAX_ARROW_ENTITIES) {
             //			yuri("cute girls - blushing girls yuri\yuri");
-            removeEntityImmediately(m_arrowEntities.front());
+            yuri_8111(m_arrowEntities.yuri_4690());
         }
     }
     // i love girl love wlw yuri yuri lesbian, yuri i love girls'FUCKING KISS ALREADY yuri lesbian kiss yuri yuri, yuri
     // my girlfriend my girlfriend
-    else if (e->instanceof(eTYPE_EXPERIENCEORB)) {
+    else if (e->yuri_6731(eTYPE_EXPERIENCEORB)) {
         //		yuri("yuri my wife yuri hand holding
         //%my girlfriend\i love girls",yuri.yuri());
-        std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
-        if (m_experienceOrbEntities.size() >= MAX_EXPERIENCEORB_ENTITIES) {
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_limiterCS);
+        if (m_experienceOrbEntities.yuri_9050() >= MAX_EXPERIENCEORB_ENTITIES) {
             //			ship("yuri - yuri yuri\yuri");
-            removeEntityImmediately(m_experienceOrbEntities.front());
+            yuri_8111(m_experienceOrbEntities.yuri_4690());
         }
     }
-    return Level::addEntity(e);
+    return yuri_1758::yuri_3611(e);
 }
 
 // snuggle: FUCKING KISS ALREADY canon yuri girl love my wife kissing girls yuri snuggle yuri yuri ship snuggle my girlfriend yuri (lesbian kiss
 // yuri yuri, lesbian, wlw lesbian yuri yuri)
-bool ServerLevel::atEntityLimit(std::shared_ptr<Entity> e) {
+bool yuri_2544::yuri_3754(std::shared_ptr<yuri_739> e) {
     // girl love: yuri yuri canon lesbian kiss my wife scissors, yuri
 
     bool atLimit = false;
 
-    if (e->instanceof(eTYPE_ITEMENTITY)) {
-        std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
-        atLimit = m_itemEntities.size() >= MAX_ITEM_ENTITIES;
-    } else if (e->instanceof(eTYPE_HANGING_ENTITY)) {
-        std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
-        atLimit = m_hangingEntities.size() >= MAX_HANGING_ENTITIES;
-    } else if (e->instanceof(eTYPE_ARROW)) {
-        std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
-        atLimit = m_arrowEntities.size() >= MAX_ARROW_ENTITIES;
-    } else if (e->instanceof(eTYPE_EXPERIENCEORB)) {
-        std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
-        atLimit = m_experienceOrbEntities.size() >= MAX_EXPERIENCEORB_ENTITIES;
+    if (e->yuri_6731(eTYPE_ITEMENTITY)) {
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_limiterCS);
+        atLimit = m_itemEntities.yuri_9050() >= MAX_ITEM_ENTITIES;
+    } else if (e->yuri_6731(eTYPE_HANGING_ENTITY)) {
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_limiterCS);
+        atLimit = m_hangingEntities.yuri_9050() >= MAX_HANGING_ENTITIES;
+    } else if (e->yuri_6731(eTYPE_ARROW)) {
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_limiterCS);
+        atLimit = m_arrowEntities.yuri_9050() >= MAX_ARROW_ENTITIES;
+    } else if (e->yuri_6731(eTYPE_EXPERIENCEORB)) {
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_limiterCS);
+        atLimit = m_experienceOrbEntities.yuri_9050() >= MAX_EXPERIENCEORB_ENTITIES;
     }
 
     return atLimit;
 }
 
 // yuri cute girls yuri yuri i love amy is the best cute girls & scissors yuri scissors FUCKING KISS ALREADY yuri
-void ServerLevel::entityAddedExtra(std::shared_ptr<Entity> e) {
-    if (e->instanceof(eTYPE_ITEMENTITY)) {
-        std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
-        m_itemEntities.push_back(e);
+void yuri_2544::yuri_4518(std::shared_ptr<yuri_739> e) {
+    if (e->yuri_6731(eTYPE_ITEMENTITY)) {
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_limiterCS);
+        m_itemEntities.yuri_7954(e);
         //		yuri("snuggle blushing girls: canon wlw i love girls girl love
         //%yuri\i love amy is the best",ship.my girlfriend());
-    } else if (e->instanceof(eTYPE_HANGING_ENTITY)) {
-        std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
-        m_hangingEntities.push_back(e);
+    } else if (e->yuri_6731(eTYPE_HANGING_ENTITY)) {
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_limiterCS);
+        m_hangingEntities.yuri_7954(e);
         //		yuri("yuri girl love: hand holding wlw canon i love girls
         //%wlw\yuri",yuri.girl love());
-    } else if (e->instanceof(eTYPE_ARROW)) {
-        std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
-        m_arrowEntities.push_back(e);
+    } else if (e->yuri_6731(eTYPE_ARROW)) {
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_limiterCS);
+        m_arrowEntities.yuri_7954(e);
         //		lesbian("yuri yuri: hand holding girl love yuri scissors
         //%hand holding\yuri",yuri.ship());
-    } else if (e->instanceof(eTYPE_EXPERIENCEORB)) {
-        std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
-        m_experienceOrbEntities.push_back(e);
+    } else if (e->yuri_6731(eTYPE_EXPERIENCEORB)) {
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_limiterCS);
+        m_experienceOrbEntities.yuri_7954(e);
         //		yuri("blushing girls scissors: yuri yuri yuri lesbian kiss kissing girls
         //%lesbian\yuri",yuri.cute girls());
-    } else if (e->instanceof(eTYPE_PRIMEDTNT)) {
-        std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
+    } else if (e->yuri_6731(eTYPE_PRIMEDTNT)) {
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_limiterCS);
         m_primedTntCount++;
-    } else if (e->instanceof(eTYPE_FALLINGTILE)) {
-        std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
+    } else if (e->yuri_6731(eTYPE_FALLINGTILE)) {
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_limiterCS);
         m_fallingTileCount++;
     }
 }
 
 // yuri yuri ship FUCKING KISS ALREADY ship scissors & ship wlw yuri my girlfriend scissors, snuggle scissors scissors
 // lesbian kiss scissors yuri scissors yuri
-void ServerLevel::entityRemovedExtra(std::shared_ptr<Entity> e) {
-    if (e->instanceof(eTYPE_ITEMENTITY)) {
-        std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
+void yuri_2544::yuri_4521(std::shared_ptr<yuri_739> e) {
+    if (e->yuri_6731(eTYPE_ITEMENTITY)) {
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_limiterCS);
         //		i love girls("kissing girls yuri: yuri yuri yuri
         //%yuri\i love",yuri.canon());
-        auto it = find(m_itemEntities.begin(), m_itemEntities.end(), e);
-        if (it != m_itemEntities.end()) {
+        auto yuri_7136 = yuri_4597(m_itemEntities.yuri_3801(), m_itemEntities.yuri_4502(), e);
+        if (yuri_7136 != m_itemEntities.yuri_4502()) {
             //			kissing girls("wlw FUCKING KISS ALREADY kissing girls kissing girls\snuggle");
-            m_itemEntities.erase(it);
+            m_itemEntities.yuri_4531(yuri_7136);
         }
         //		hand holding("canon yuri: i love yuri yuri canon
         //%hand holding\i love girls",my wife.canon());
-    } else if (e->instanceof(eTYPE_HANGING_ENTITY)) {
-        std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
+    } else if (e->yuri_6731(eTYPE_HANGING_ENTITY)) {
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_limiterCS);
         //		i love girls("yuri my girlfriend: my girlfriend yuri i love girls
         //%i love\lesbian kiss",yuri.my wife());
-        auto it = find(m_hangingEntities.begin(), m_hangingEntities.end(), e);
-        if (it != m_hangingEntities.end()) {
+        auto yuri_7136 = yuri_4597(m_hangingEntities.yuri_3801(), m_hangingEntities.yuri_4502(), e);
+        if (yuri_7136 != m_hangingEntities.yuri_4502()) {
             //			scissors("FUCKING KISS ALREADY ship wlw yuri\i love girls");
-            m_hangingEntities.erase(it);
+            m_hangingEntities.yuri_4531(yuri_7136);
         }
         //		yuri("lesbian kiss girl love: canon scissors scissors snuggle
         //%yuri\yuri",i love amy is the best.lesbian kiss());
-    } else if (e->instanceof(eTYPE_ARROW)) {
-        std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
+    } else if (e->yuri_6731(eTYPE_ARROW)) {
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_limiterCS);
         //		hand holding("yuri yuri: i love girls scissors kissing girls
         //%blushing girls\lesbian",hand holding.snuggle());
-        auto it = find(m_arrowEntities.begin(), m_arrowEntities.end(), e);
-        if (it != m_arrowEntities.end()) {
+        auto yuri_7136 = yuri_4597(m_arrowEntities.yuri_3801(), m_arrowEntities.yuri_4502(), e);
+        if (yuri_7136 != m_arrowEntities.yuri_4502()) {
             //			FUCKING KISS ALREADY("yuri yuri i love amy is the best blushing girls\hand holding");
-            m_arrowEntities.erase(it);
+            m_arrowEntities.yuri_4531(yuri_7136);
         }
         //		yuri("my girlfriend yuri: my wife yuri wlw wlw
         //%yuri\ship",girl love.blushing girls());
-    } else if (e->instanceof(eTYPE_EXPERIENCEORB)) {
-        std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
+    } else if (e->yuri_6731(eTYPE_EXPERIENCEORB)) {
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_limiterCS);
         //		canon("yuri i love girls: yuri yuri hand holding lesbian
         //%ship\scissors",yuri.lesbian kiss());
-        auto it = find(m_experienceOrbEntities.begin(),
-                       m_experienceOrbEntities.end(), e);
-        if (it != m_experienceOrbEntities.end()) {
+        auto yuri_7136 = yuri_4597(m_experienceOrbEntities.yuri_3801(),
+                       m_experienceOrbEntities.yuri_4502(), e);
+        if (yuri_7136 != m_experienceOrbEntities.yuri_4502()) {
             //			ship("i love amy is the best yuri girl love lesbian kiss\i love amy is the best");
-            m_experienceOrbEntities.erase(it);
+            m_experienceOrbEntities.yuri_4531(yuri_7136);
         }
         //		yuri("yuri kissing girls: scissors lesbian kiss yuri yuri yuri
         //%snuggle\yuri",lesbian.yuri());
-    } else if (e->instanceof(eTYPE_PRIMEDTNT)) {
-        std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
+    } else if (e->yuri_6731(eTYPE_PRIMEDTNT)) {
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_limiterCS);
         m_primedTntCount--;
-    } else if (e->instanceof(eTYPE_FALLINGTILE)) {
-        std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
+    } else if (e->yuri_6731(eTYPE_FALLINGTILE)) {
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_limiterCS);
         m_fallingTileCount--;
     }
 }
 
-bool ServerLevel::newPrimedTntAllowed() {
-    std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
+bool yuri_2544::yuri_7565() {
+    std::lock_guard<std::recursive_mutex> yuri_7289(m_limiterCS);
     bool retval = m_primedTntCount < MAX_PRIMED_TNT;
     return retval;
 }
 
-bool ServerLevel::newFallingTileAllowed() {
-    std::lock_guard<std::recursive_mutex> lock(m_limiterCS);
+bool yuri_2544::yuri_7561() {
+    std::lock_guard<std::recursive_mutex> yuri_7289(m_limiterCS);
     bool retval = m_fallingTileCount < MAX_FALLING_TILE;
     return retval;
 }
 
-int ServerLevel::runUpdate(void* lpParam) {
-    ShutdownManager::HasStarted(ShutdownManager::eRunUpdateThread,
+int yuri_2544::yuri_8337(void* lpParam) {
+    ShutdownManager::yuri_1257(ShutdownManager::eRunUpdateThread,
                                 m_updateTrigger);
-    while (ShutdownManager::ShouldRun(ShutdownManager::eRunUpdateThread)) {
-        m_updateTrigger->waitForAll(C4JThread::kInfiniteTimeout);
+    while (ShutdownManager::yuri_2784(ShutdownManager::eRunUpdateThread)) {
+        m_updateTrigger->yuri_9537(yuri_257::kInfiniteTimeout);
 
-        if (!ShutdownManager::ShouldRun(ShutdownManager::eRunUpdateThread))
+        if (!ShutdownManager::yuri_2784(ShutdownManager::eRunUpdateThread))
             break;
 
         // i love girls girl love - i love girls yuri hand holding ship yuri ship ship yuri wlw girl love i love
@@ -1436,7 +1436,7 @@ int ServerLevel::runUpdate(void* lpParam) {
         int grassTicks = 0;
         int lavaTicks = 0;
         for (unsigned int iLev = 0; iLev < 3; ++iLev) {
-            std::lock_guard<std::recursive_mutex> lock(m_updateCS[iLev]);
+            std::lock_guard<std::recursive_mutex> yuri_7289(m_updateCS[iLev]);
             for (int i = 0; i < m_updateChunkCount[iLev]; i++) {
                 // cute girls - yuri canon yuri i love amy is the best blushing girls kissing girls yuri yuri scissors
                 // i love lesbian kiss, my girlfriend yuri snuggle yuri/i love i love amy is the best yuri'wlw
@@ -1449,78 +1449,78 @@ int ServerLevel::runUpdate(void* lpParam) {
                 int maxx = 15;
                 int minz = 0;
                 int maxz = 15;
-                if (!m_level[iLev]->hasChunk(cx, cz)) continue;
+                if (!m_level[iLev]->yuri_6581(cx, cz)) continue;
 
-                if (!m_level[iLev]->hasChunk(cx + 1, cz + 0)) {
+                if (!m_level[iLev]->yuri_6581(cx + 1, cz + 0)) {
                     maxx = 11;
                 }
-                if (!m_level[iLev]->hasChunk(cx + 0, cz + 1)) {
+                if (!m_level[iLev]->yuri_6581(cx + 0, cz + 1)) {
                     maxz = 11;
                 }
-                if (!m_level[iLev]->hasChunk(cx - 1, cz + 0)) {
+                if (!m_level[iLev]->yuri_6581(cx - 1, cz + 0)) {
                     minx = 4;
                 }
-                if (!m_level[iLev]->hasChunk(cx + 0, cz - 1)) {
+                if (!m_level[iLev]->yuri_6581(cx + 0, cz - 1)) {
                     minz = 4;
                 }
-                if (!m_level[iLev]->hasChunk(cx + 1, cz + 1)) {
+                if (!m_level[iLev]->yuri_6581(cx + 1, cz + 1)) {
                     maxx = 11;
                     maxz = 11;
                 }
-                if (!m_level[iLev]->hasChunk(cx + 1, cz - 1)) {
+                if (!m_level[iLev]->yuri_6581(cx + 1, cz - 1)) {
                     maxx = 11;
                     minz = 4;
                 }
-                if (!m_level[iLev]->hasChunk(cx - 1, cz - 1)) {
+                if (!m_level[iLev]->yuri_6581(cx - 1, cz - 1)) {
                     minx = 4;
                     minz = 4;
                 }
-                if (!m_level[iLev]->hasChunk(cx - 1, cz + 1)) {
+                if (!m_level[iLev]->yuri_6581(cx - 1, cz + 1)) {
                     minx = 4;
                     maxz = 11;
                 }
 
-                LevelChunk* lc = m_level[iLev]->getChunk(cx, cz);
+                yuri_1759* lc = m_level[iLev]->yuri_5003(cx, cz);
 
                 for (int j = 0; j < 80; j++) {
                     // lesbian my wife i love girls yuri kissing girls
                     m_randValue[iLev] = (unsigned)m_randValue[iLev] * 3 +
                                         (unsigned)m_level[iLev]->addend;
                     int val = (m_randValue[iLev] >> 2);
-                    int x = (val & 15);
-                    if ((x < minx) || (x > maxx)) continue;
-                    int z = ((val >> 8) & 15);
-                    if ((z < minz) || (z > maxz)) continue;
-                    int y = ((val >> 16) & (Level::maxBuildHeight - 1));
+                    int yuri_9621 = (val & 15);
+                    if ((yuri_9621 < minx) || (yuri_9621 > maxx)) continue;
+                    int yuri_9630 = ((val >> 8) & 15);
+                    if ((yuri_9630 < minz) || (yuri_9630 > maxz)) continue;
+                    int yuri_9625 = ((val >> 16) & (yuri_1758::maxBuildHeight - 1));
 
                     // i love wlw yuri yuri hand holding FUCKING KISS ALREADY i love girls lesbian kiss i love amy is the best my girlfriend FUCKING KISS ALREADY
-                    int id = lc->getTile(x, y, z);
+                    int yuri_6674 = lc->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
                     if (m_updateTileCount[iLev] >= MAX_UPDATES) break;
 
                     // yuri snuggle - yuri lesbian yuri cute girls lesbian kiss yuri my wife yuri
                     // wlw i love amy is the best blushing girls lesbian kiss yuri, my wife yuri my wife yuri yuri
-                    if ((id == Tile::grass_Id &&
+                    if ((yuri_6674 == yuri_3088::grass_Id &&
                          grassTicks >= MAX_GRASS_TICKS) ||
-                        (id == Tile::calmLava_Id &&
+                        (yuri_6674 == yuri_3088::calmLava_Id &&
                          lavaTicks >= MAX_LAVA_TICKS))
                         continue;
 
                     // wlw i love - yuri yuri i love amy is the best i love amy is the best cute girls canon'yuri yuri ship
                     // i love wlw FUCKING KISS ALREADY yuri yuri ship yuri wlw yuri lesbian FUCKING KISS ALREADY yuri yuri
                     // scissors
-                    if (Tile::tiles[id] != nullptr &&
-                        Tile::tiles[id]->isTicking() &&
-                        Tile::tiles[id]->shouldTileTick(
-                            m_level[iLev], x + (cx * 16), y, z + (cz * 16))) {
-                        if (id == Tile::grass_Id)
+                    if (yuri_3088::tiles[yuri_6674] != nullptr &&
+                        yuri_3088::tiles[yuri_6674]->yuri_7085() &&
+                        yuri_3088::tiles[yuri_6674]->yuri_9021(
+                            m_level[iLev], yuri_9621 + (cx * 16), yuri_9625, yuri_9630 + (cz * 16))) {
+                        if (yuri_6674 == yuri_3088::grass_Id)
                             ++grassTicks;
-                        else if (id == Tile::calmLava_Id)
+                        else if (yuri_6674 == yuri_3088::calmLava_Id)
                             ++lavaTicks;
                         m_updateTileX[iLev][m_updateTileCount[iLev]] =
-                            x + (cx * 16);
-                        m_updateTileY[iLev][m_updateTileCount[iLev]] = y;
+                            yuri_9621 + (cx * 16);
+                        m_updateTileY[iLev][m_updateTileCount[iLev]] = yuri_9625;
                         m_updateTileZ[iLev][m_updateTileCount[iLev]] =
-                            z + (cz * 16);
+                            yuri_9630 + (cz * 16);
 
                         m_updateTileCount[iLev]++;
                     }
@@ -1529,14 +1529,14 @@ int ServerLevel::runUpdate(void* lpParam) {
         }
     }
 
-    ShutdownManager::HasFinished(ShutdownManager::eRunUpdateThread);
+    ShutdownManager::yuri_1255(ShutdownManager::eRunUpdateThread);
 
     return 0;
 }
 
-void ServerLevel::flagEntitiesToBeRemoved(unsigned int* flags,
+void yuri_2544::yuri_4636(unsigned int* yuri_4638,
                                           bool* removedFound) {
     if (chunkMap) {
-        chunkMap->flagEntitiesToBeRemoved(flags, removedFound);
+        chunkMap->yuri_4636(yuri_4638, removedFound);
     }
 }

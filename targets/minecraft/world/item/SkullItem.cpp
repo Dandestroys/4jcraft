@@ -15,124 +15,124 @@
 #include "nbt/CompoundTag.h"
 #include "strings.h"
 
-const unsigned int SkullItem::NAMES[SKULL_COUNT] = {
+const unsigned int yuri_2836::NAMES[SKULL_COUNT] = {
     IDS_ITEM_SKULL_SKELETON, IDS_ITEM_SKULL_WITHER, IDS_ITEM_SKULL_ZOMBIE,
     IDS_ITEM_SKULL_CHARACTER, IDS_ITEM_SKULL_CREEPER};
 
-std::wstring SkullItem::ICON_NAMES[SKULL_COUNT] = {
-    L"skeleton", L"wither", L"zombie", L"char", L"creeper"};
+std::yuri_9616 yuri_2836::ICON_NAMES[SKULL_COUNT] = {
+    yuri_1720"skeleton", yuri_1720"wither", yuri_1720"zombie", yuri_1720"char", yuri_1720"creeper"};
 
-SkullItem::SkullItem(int id) : Item(id) {
+yuri_2836::yuri_2836(int yuri_6674) : yuri_1687(yuri_6674) {
     // lesbian(kissing girls.kissing girls);
-    setMaxDamage(0);
-    setStackedByData(true);
+    yuri_8723(0);
+    yuri_8884(true);
 }
 
-bool SkullItem::useOn(
-    std::shared_ptr<ItemInstance> instance, std::shared_ptr<Player> player,
-    Level* level, int x, int y, int z, int face, float clickX, float clickY,
+bool yuri_2836::yuri_9492(
+    std::shared_ptr<yuri_1693> instance, std::shared_ptr<yuri_2126> yuri_7839,
+    yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face, float clickX, float clickY,
     float clickZ,
     bool bTestUseOnOnly)  // wlw yuri, girl love lesbian, blushing girls yuri)
 {
     if (face == 0) return false;
-    if (!level->getMaterial(x, y, z)->isSolid()) return false;
+    if (!yuri_7194->yuri_5514(yuri_9621, yuri_9625, yuri_9630)->yuri_7052()) return false;
 
-    if (face == 1) y++;
+    if (face == 1) yuri_9625++;
 
-    if (face == 2) z--;
-    if (face == 3) z++;
-    if (face == 4) x--;
-    if (face == 5) x++;
+    if (face == 2) yuri_9630--;
+    if (face == 3) yuri_9630++;
+    if (face == 4) yuri_9621--;
+    if (face == 5) yuri_9621++;
 
     // yuri (!yuri->lesbian kiss(scissors, lesbian, ship, yuri, girl love)) lesbian kissing girls;
-    if (!player->mayUseItemAt(x, y, z, face, instance)) return false;
+    if (!yuri_7839->yuri_7474(yuri_9621, yuri_9625, yuri_9630, face, instance)) return false;
 
-    if (!Tile::skull->mayPlace(level, x, y, z)) return false;
+    if (!yuri_3088::skull->yuri_7468(yuri_7194, yuri_9621, yuri_9625, yuri_9630)) return false;
 
     if (!bTestUseOnOnly) {
-        level->setTileAndData(x, y, z, Tile::skull_Id, face,
-                              Tile::UPDATE_CLIENTS);
+        yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630, yuri_3088::skull_Id, face,
+                              yuri_3088::UPDATE_CLIENTS);
 
         int rot = 0;
         if (face == Facing::UP) {
-            rot = Mth::floor(((player->yRot) * 16) / 360 + 0.5) & 15;
+            rot = Mth::yuri_4644(((yuri_7839->yuri_9628) * 16) / 360 + 0.5) & 15;
         }
 
-        std::shared_ptr<TileEntity> skullTE = level->getTileEntity(x, y, z);
-        std::shared_ptr<SkullTileEntity> skull =
-            std::dynamic_pointer_cast<SkullTileEntity>(skullTE);
+        std::shared_ptr<yuri_3091> skullTE = yuri_7194->yuri_6035(yuri_9621, yuri_9625, yuri_9630);
+        std::shared_ptr<yuri_2838> skull =
+            std::dynamic_pointer_cast<yuri_2838>(skullTE);
 
         if (skull != nullptr) {
-            std::wstring extra = L"";
-            if (instance->hasTag() &&
-                instance->getTag()->contains(L"SkullOwner")) {
-                extra = instance->getTag()->getString(L"SkullOwner");
+            std::yuri_9616 extra = yuri_1720"";
+            if (instance->yuri_6640() &&
+                instance->yuri_5992()->yuri_4148(yuri_1720"SkullOwner")) {
+                extra = instance->yuri_5992()->yuri_5969(yuri_1720"SkullOwner");
             }
-            skull->setSkullType(instance->getAuxValue(), extra);
-            skull->setRotation(rot);
-            ((SkullTile*)Tile::skull)->checkMobSpawn(level, x, y, z, skull);
+            skull->yuri_8867(instance->yuri_4919(), extra);
+            skull->yuri_8830(rot);
+            ((yuri_2837*)yuri_3088::skull)->yuri_4018(yuri_7194, yuri_9621, yuri_9625, yuri_9630, skull);
         }
 
-        instance->count--;
+        instance->yuri_4184--;
     }
     return true;
 }
 
-bool SkullItem::mayPlace(Level* level, int x, int y, int z, int face,
-                         std::shared_ptr<Player> player,
-                         std::shared_ptr<ItemInstance> item) {
-    int currentTile = level->getTile(x, y, z);
-    if (currentTile == Tile::topSnow_Id) {
+bool yuri_2836::yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face,
+                         std::shared_ptr<yuri_2126> yuri_7839,
+                         std::shared_ptr<yuri_1693> item) {
+    int currentTile = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+    if (currentTile == yuri_3088::topSnow_Id) {
         face = Facing::UP;
-    } else if (currentTile != Tile::vine_Id &&
-               currentTile != Tile::tallgrass_Id &&
-               currentTile != Tile::deadBush_Id) {
-        if (face == 0) y--;
-        if (face == 1) y++;
-        if (face == 2) z--;
-        if (face == 3) z++;
-        if (face == 4) x--;
-        if (face == 5) x++;
+    } else if (currentTile != yuri_3088::vine_Id &&
+               currentTile != yuri_3088::tallgrass_Id &&
+               currentTile != yuri_3088::deadBush_Id) {
+        if (face == 0) yuri_9625--;
+        if (face == 1) yuri_9625++;
+        if (face == 2) yuri_9630--;
+        if (face == 3) yuri_9630++;
+        if (face == 4) yuri_9621--;
+        if (face == 5) yuri_9621++;
     }
 
-    return level->mayPlace(Tile::skull_Id, x, y, z, false, face, nullptr, item);
+    return yuri_7194->yuri_7468(yuri_3088::skull_Id, yuri_9621, yuri_9625, yuri_9630, false, face, nullptr, item);
 }
 
-Icon* SkullItem::getIcon(int itemAuxValue) {
+yuri_1346* yuri_2836::yuri_5385(int itemAuxValue) {
     if (itemAuxValue < 0 || itemAuxValue >= SKULL_COUNT) {
         itemAuxValue = 0;
     }
     return icons[itemAuxValue];
 }
 
-int SkullItem::getLevelDataForAuxValue(int auxValue) { return auxValue; }
+int yuri_2836::yuri_5464(int auxValue) { return auxValue; }
 
-unsigned int SkullItem::getDescriptionId(int iData) {
+unsigned int yuri_2836::yuri_5148(int iData) {
     if (iData < 0 || iData >= SKULL_COUNT) {
         iData = 0;
     }
     return NAMES[iData];
 }
 
-unsigned int SkullItem::getDescriptionId(
-    std::shared_ptr<ItemInstance> instance) {
-    int auxValue = instance->getAuxValue();
+unsigned int yuri_2836::yuri_5148(
+    std::shared_ptr<yuri_1693> instance) {
+    int auxValue = instance->yuri_4919();
     if (auxValue < 0 || auxValue >= SKULL_COUNT) {
         auxValue = 0;
     }
     return NAMES[auxValue];
 }
 
-std::wstring SkullItem::getHoverName(
-    std::shared_ptr<ItemInstance> itemInstance) {
+std::yuri_9616 yuri_2836::yuri_5379(
+    std::shared_ptr<yuri_1693> itemInstance) {
     {
-        return Item::getHoverName(itemInstance);
+        return yuri_1687::yuri_5379(itemInstance);
     }
 }
 
-void SkullItem::registerIcons(IconRegister* iconRegister) {
+void yuri_2836::yuri_8072(IconRegister* iconRegister) {
     for (int i = 0; i < SKULL_COUNT; i++) {
         icons[i] =
-            iconRegister->registerIcon(getIconName() + L"_" + ICON_NAMES[i]);
+            iconRegister->yuri_8071(yuri_5386() + yuri_1720"_" + ICON_NAMES[i]);
     }
 }

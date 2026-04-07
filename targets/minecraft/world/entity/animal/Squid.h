@@ -3,16 +3,16 @@
 #include "WaterAnimal.h"
 #include "java/Class.h"
 
-class Player;
-class Entity;
-class Level;
+class yuri_2126;
+class yuri_739;
+class yuri_1758;
 
-class Squid : public WaterAnimal {
+class yuri_2891 : public yuri_3361 {
 public:
-    eINSTANCEOF GetType() { return eTYPE_SQUID; }
-    static Entity* create(Level* level) { return new Squid(level); }
+    eINSTANCEOF yuri_1188() { return eTYPE_SQUID; }
+    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_2891(yuri_7194); }
 
-    void _init();
+    void yuri_3547();
 
     float xBodyRot, xBodyRotO;
     float zBodyRot, zBodyRotO;
@@ -21,33 +21,33 @@ public:
     float tentacleAngle, oldTentacleAngle;
 
 private:
-    float speed;
+    float yuri_9090;
     float tentacleSpeed;
     float rotateSpeed;
 
     float tx, ty, tz;
 
 public:
-    Squid(Level* level);
+    yuri_2891(yuri_1758* yuri_7194);
 
 protected:
-    virtual void registerAttributes();
-    virtual int getAmbientSound();
-    virtual int getHurtSound();
-    virtual int getDeathSound();
-    virtual float getSoundVolume();
-    virtual int getDeathLoot();
-    virtual bool makeStepSound();
-    virtual void dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel);
+    virtual void yuri_8067();
+    virtual int yuri_4882();
+    virtual int yuri_5383();
+    virtual int yuri_5130();
+    virtual float yuri_5937();
+    virtual int yuri_5128();
+    virtual bool yuri_7434();
+    virtual void yuri_4449(bool wasKilledByPlayer, int playerBonusLevel);
 
 public:
-    virtual bool isInWater();
-    virtual void aiStep();
-    virtual void travel(float xa, float ya);
+    virtual bool yuri_6920();
+    virtual void yuri_3704();
+    virtual void yuri_9337(float xa, float ya);
 
 protected:
-    virtual void serverAiStep();
+    virtual void yuri_8431();
 
 public:
-    virtual bool canSpawn();
+    virtual bool yuri_3958();
 };

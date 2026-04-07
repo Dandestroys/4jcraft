@@ -4,13 +4,13 @@
 #include "minecraft/GameEnums.h"
 #include "minecraft/world/effect/MobEffect.h"
 
-InstantenousMobEffect::InstantenousMobEffect(int id, bool isHarmful,
-                                             eMinecraftColour color)
-    : MobEffect(id, isHarmful, color) {}
+yuri_1615::yuri_1615(int yuri_6674, bool yuri_6896,
+                                             eMinecraftColour yuri_4111)
+    : yuri_1953(yuri_6674, yuri_6896, yuri_4111) {}
 
-bool InstantenousMobEffect::isInstantenous() { return true; }
+bool yuri_1615::yuri_6928() { return true; }
 
-bool InstantenousMobEffect::isDurationEffectTick(int remainingDuration,
+bool yuri_1615::yuri_6847(int remainingDuration,
                                                  int amplification) {
     return remainingDuration >= 1;
 }

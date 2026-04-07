@@ -2,9 +2,9 @@
 
 #include "Position.h"
 
-class Level;
+class yuri_1758;
 
-class Location : public Position {
+class Location : public yuri_2155 {
 public:
-    virtual Level* getWorld() = 0;
+    virtual yuri_1758* yuri_6134() = 0;
 };

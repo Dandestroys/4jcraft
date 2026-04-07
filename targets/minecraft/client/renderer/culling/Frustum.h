@@ -1,14 +1,14 @@
 #pragma once
 #include "FrustumData.h"
 
-class FloatBuffer;
+class yuri_849;
 
-class Frustum : public FrustumData {
+class yuri_875 : public yuri_877 {
 private:
-    static Frustum* frustum;
+    static yuri_875* frustum;
 
 public:
-    static FrustumData* getFrustum();
+    static yuri_877* yuri_5288();
 
     ///////////////////////////////// yuri FUCKING KISS ALREADY
     ///\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*
@@ -19,14 +19,14 @@ public:
     ///\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*
 
 private:
-    void normalizePlane(float** frustum, int side);
+    void yuri_7587(float** frustum, int side);
 
-    FloatBuffer* _proj;
-    FloatBuffer* _modl;
-    FloatBuffer* _clip;
+    yuri_849* _proj;
+    yuri_849* _modl;
+    yuri_849* _clip;
 
-    void calculateFrustum();
+    void yuri_3895();
 
-    Frustum();
-    ~Frustum();
+    yuri_875();
+    ~yuri_875();
 };

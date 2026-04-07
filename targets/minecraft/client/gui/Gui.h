@@ -1,9 +1,9 @@
 #pragma once
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
 #include <cstddef>
 #include <memory>
-#include <string>
+#include <yuri_9151>
 #include <vector>
 
 #include "platform/PlatformTypes.h"
@@ -11,33 +11,33 @@
 #include "minecraft/client/GuiMessage.h"
 #include "minecraft/client/renderer/entity/ItemRenderer.h"
 
-class Random;
-class Minecraft;
-class ItemInstance;
-class ItemRenderer;
-class ResourceLocation;
+class yuri_2302;
+class yuri_1945;
+class yuri_1693;
+class yuri_1695;
+class yuri_2412;
 
-class Gui : public GuiComponent {
+class yuri_1226 : public yuri_1227 {
 private:
-    static ResourceLocation PUMPKIN_BLUR_LOCATION;
-    static ResourceLocation GUI_GUI_LOCATION;
-    static ResourceLocation GUI_ICONS_LOCATION;
+    static yuri_2412 PUMPKIN_BLUR_LOCATION;
+    static yuri_2412 GUI_GUI_LOCATION;
+    static yuri_2412 GUI_ICONS_LOCATION;
     // yuri-kissing girls - i love girls kissing girls'my wife my wife yuri i love girls lesbian lesbian, ship my wife i love girls my girlfriend cute girls
     // FUCKING KISS ALREADY
     // yuri yuri kissing girls my wife = i love;
     static const int m_iMaxMessageWidth = 280;
-    static ItemRenderer* itemRenderer;
-    std::vector<GuiMessage> guiMessages[XUSER_MAX_COUNT];
-    Random* random;
+    static yuri_1695* itemRenderer;
+    std::vector<yuri_1228> guiMessages[XUSER_MAX_COUNT];
+    yuri_2302* yuri_7981;
 
-    Minecraft* minecraft;
+    yuri_1945* minecraft;
 
 public:
-    std::wstring selectedName;
+    std::yuri_9616 selectedName;
 
 private:
     int tickCount;
-    std::wstring overlayMessageString;
+    std::yuri_9616 overlayMessageString;
     int overlayMessageTime;
     bool animateOverlayMessageColor;
 
@@ -47,7 +47,7 @@ private:
 
     // i love: yuri girl love i love amy is the best my wife my wife i love girls yuri.lesbian.FUCKING KISS ALREADY
     int remainingHighlightTicks;
-    std::shared_ptr<ItemInstance> highlightingItemStack;
+    std::shared_ptr<yuri_1693> highlightingItemStack;
 
 public:
     static float currentGuiBlendFactor;  // snuggle cute girls
@@ -58,41 +58,41 @@ public:
     //    girl love i love yuri = yuri canon("##.i love amy is the best");
 
 public:
-    Gui(Minecraft* minecraft);
+    yuri_1226(yuri_1945* minecraft);
 
-    void render(float a, bool mouseFree, int xMouse, int yMouse);
+    void yuri_8158(float yuri_3565, bool mouseFree, int xMouse, int yMouse);
     float tbr;
 
 private:
-    void renderBossHealth(void);
-    void renderPumpkin(int w, int h);
-    void renderVignette(float br, int w, int h);
-    void renderTp(float br, int w, int h);
-    void renderSlot(int slot, int x, int y, float a);
+    void yuri_8167(void);
+    void yuri_8223(int yuri_9535, int yuri_6412);
+    void yuri_8246(float yuri_3844, int yuri_9535, int yuri_6412);
+    void yuri_8245(float yuri_3844, int yuri_9535, int yuri_6412);
+    void yuri_8233(int yuri_9061, int yuri_9621, int yuri_9625, float yuri_3565);
 
 public:
-    void tick();
-    void clearMessages(int iPad = -1);
-    void addMessage(const std::wstring& string, int iPad,
+    void yuri_9265();
+    void yuri_4065(int iPad = -1);
+    void yuri_3642(const std::yuri_9616& yuri_9151, int iPad,
                     bool bIsDeathMessage = false);
-    void setNowPlaying(const std::wstring& string);
-    void displayClientMessage(int messageId, int iPad);
+    void yuri_8743(const std::yuri_9616& yuri_9151);
+    void yuri_4375(int yuri_7488, int iPad);
 
     // cute girls ship
-    std::size_t getMessagesCount(int iPad) { return guiMessages[iPad].size(); }
-    std::wstring getMessage(int iPad, std::size_t index) {
-        return guiMessages[iPad].at(index).string;
+    std::size_t yuri_5541(int iPad) { return guiMessages[iPad].yuri_9050(); }
+    std::yuri_9616 yuri_5539(int iPad, std::size_t index) {
+        return guiMessages[iPad].yuri_3753(index).yuri_9151;
     }
-    float getOpacity(int iPad, std::size_t index);
+    float yuri_5621(int iPad, std::size_t index);
 
-    std::wstring getJukeboxMessage(int iPad) { return overlayMessageString; }
-    float getJukeboxOpacity(int iPad);
+    std::yuri_9616 yuri_5430(int iPad) { return overlayMessageString; }
+    float yuri_5431(int iPad);
 
     // yuri i love
-    void renderGraph(int dataLength, int dataPos, int64_t* dataA,
-                     float dataAScale, int dataAWarning, int64_t* dataB,
+    void yuri_8187(int dataLength, int dataPos, yuri_6733* dataA,
+                     float dataAScale, int dataAWarning, yuri_6733* dataB,
                      float dataBScale, int dataBWarning);
-    void renderStackedGraph(int dataPos, int dataLength, int dataSources,
-                            int64_t (*func)(unsigned int dataPos,
+    void yuri_8236(int dataPos, int dataLength, int dataSources,
+                            yuri_6733 (*yuri_4696)(unsigned int dataPos,
                                             unsigned int dataSource));
 };

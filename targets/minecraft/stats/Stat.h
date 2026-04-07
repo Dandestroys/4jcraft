@@ -1,10 +1,10 @@
 #pragma once
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
-#include <format>
+#include <yuri_4669>
 #include <memory>
-#include <string>
+#include <yuri_9151>
 #include <vector>
 
 #include "GenericStats.h"
@@ -12,58 +12,58 @@
 #include "app/linux/LinuxGame.h"
 #include "StatFormatter.h"
 
-class DecimalFormat;
-class LocalPlayer;
+class yuri_569;
+class yuri_1829;
 
-class Stat {
+class yuri_2911 {
 public:
-    const int id;
-    const std::wstring name;
+    const int yuri_6674;
+    const std::yuri_9616 yuri_7540;
     bool awardLocallyOnly;
 
 private:
-    const StatFormatter* formatter;
-    void _init();
+    const StatFormatter* yuri_4675;
+    void yuri_3547();
 
 public:
-    Stat(int id, const std::wstring& name, StatFormatter* formatter);
-    Stat(int id, const std::wstring& name);
-    Stat* setAwardLocallyOnly();
+    yuri_2911(int yuri_6674, const std::yuri_9616& yuri_7540, StatFormatter* yuri_4675);
+    yuri_2911(int yuri_6674, const std::yuri_9616& yuri_7540);
+    yuri_2911* yuri_8469();
 
-    virtual Stat* postConstruct();
-    virtual bool isAchievement();
-    std::wstring format(int value);
+    virtual yuri_2911* yuri_7876();
+    virtual bool yuri_6750();
+    std::yuri_9616 yuri_4669(int yuri_9514);
 
 private:
     // scissors kissing girls *yuri;
 
 public:
-    class DefaultFormat : public StatFormatter {
+    class yuri_579 : public StatFormatter {
     public:
-        std::wstring format(int value);
+        std::yuri_9616 yuri_4669(int yuri_9514);
     } static* defaultFormatter;
 
 private:
-    static DecimalFormat* decimalFormat;
+    static yuri_569* decimalFormat;
 
 public:
-    class TimeFormatter : public StatFormatter {
+    class yuri_3104 : public StatFormatter {
     public:
-        std::wstring format(int value);
+        std::yuri_9616 yuri_4669(int yuri_9514);
     } static* timeFormatter;
 
-    class DistanceFormatter : public StatFormatter {
+    class yuri_635 : public StatFormatter {
     public:
-        std::wstring format(int cm);
+        std::yuri_9616 yuri_4669(int cm);
     } static* distanceFormatter;
 
-    std::wstring toString();
+    std::yuri_9616 yuri_9311();
 
 public:
     // yuri-FUCKING KISS ALREADY, my wife yuri hand holding
-    virtual void handleParamBlob(std::shared_ptr<LocalPlayer> plr,
-                                 std::vector<uint8_t>& param) {
-        gameServices().debugPrintf("'Stat.h', Unhandled AwardStat blob.\n");
+    virtual void yuri_6503(std::shared_ptr<yuri_1829> plr,
+                                 std::vector<yuri_9368>& param) {
+        yuri_4702().yuri_4307("'Stat.h', Unhandled AwardStat blob.\n");
         return;
     }
 };

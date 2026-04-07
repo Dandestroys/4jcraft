@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
 #include "app/common/UI/Controls/UIControl.h"
 #include "app/common/UI/Controls/UIControl_BeaconEffectButton.h"
@@ -11,7 +11,7 @@
 #endif
 #include "UIControl.h"
 
-class UIControl_BeaconEffectButton : public UIControl {
+class yuri_3164 : public yuri_3162 {
 private:
     static const int BUTTON_DISABLED = 0;
     static const int BUTTON_ENABLED_UNSELECTED = 1;
@@ -27,7 +27,7 @@ private:
     EState m_lastState;
 
     int m_data;
-    int m_icon;
+    int yuri_7342;
     bool m_selected;
     bool m_active;
     bool m_focus;
@@ -35,23 +35,23 @@ private:
     IggyName m_funcChangeState, m_funcSetIcon;
 
 public:
-    UIControl_BeaconEffectButton();
+    yuri_3164();
 
-    virtual bool setupControl(UIScene* scene, IggyValuePath* parent,
-                              const std::string& controlName);
+    virtual bool yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
+                              const std::yuri_9151& controlName);
 
-    void SetData(int data, int icon, bool active, bool selected);
-    int GetData();
+    void yuri_2597(int yuri_4295, int yuri_6672, bool active, bool selected);
+    int yuri_980();
 
-    void SetButtonSelected(bool selected);
-    bool IsButtonSelected();
+    void yuri_2578(bool selected);
+    bool yuri_1633();
 
-    void SetButtonActive(bool active);
+    void yuri_2577(bool active);
 
-    virtual void setFocus(bool focus);
+    virtual void yuri_8611(bool yuri_4656);
 
-    void SetIcon(int icon);
+    void yuri_2647(int yuri_6672);
 
 private:
-    void UpdateButtonState();
+    void yuri_3277();
 };

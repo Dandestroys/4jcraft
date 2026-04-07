@@ -16,51 +16,51 @@
 #include "minecraft/world/item/Item.h"
 #include "minecraft/world/item/ItemInstance.h"
 
-EGameCommand GiveItemCommand::getId() { return eGameCommand_Give; }
+EGameCommand yuri_1212::yuri_5390() { return eGameCommand_Give; }
 
-int GiveItemCommand::getPermissionLevel() { return LEVEL_GAMEMASTERS; }
+int yuri_1212::yuri_5690() { return LEVEL_GAMEMASTERS; }
 
-void GiveItemCommand::execute(std::shared_ptr<CommandSender> source,
-                              std::vector<uint8_t>& commandData) {
-    ByteArrayInputStream bais(commandData);
-    DataInputStream dis(&bais);
+void yuri_1212::yuri_4539(std::shared_ptr<CommandSender> yuri_9075,
+                              std::vector<yuri_9368>& commandData) {
+    yuri_250 yuri_3786(commandData);
+    yuri_549 yuri_4365(&yuri_3786);
 
-    PlayerUID uid = dis.readPlayerUID();
-    int item = dis.readInt();
-    int amount = dis.readInt();
-    int aux = dis.readInt();
-    std::wstring tag = dis.readUTF();
+    PlayerUID uid = yuri_4365.yuri_8025();
+    int item = yuri_4365.yuri_8014();
+    int amount = yuri_4365.yuri_8014();
+    int aux = yuri_4365.yuri_8014();
+    std::yuri_9616 yuri_9178 = yuri_4365.yuri_8030();
 
-    bais.reset();
+    yuri_3786.yuri_8270();
 
-    std::shared_ptr<ServerPlayer> player = getPlayer(uid);
-    if (player != nullptr && item > 0 && Item::items[item] != nullptr) {
-        std::shared_ptr<ItemInstance> itemInstance =
-            std::make_shared<ItemInstance>(item, amount, aux);
-        std::shared_ptr<ItemEntity> drop = player->drop(itemInstance);
-        drop->throwTime = 0;
+    std::shared_ptr<yuri_2546> yuri_7839 = yuri_5700(uid);
+    if (yuri_7839 != nullptr && item > 0 && yuri_1687::items[item] != nullptr) {
+        std::shared_ptr<yuri_1693> itemInstance =
+            std::make_shared<yuri_1693>(item, amount, aux);
+        std::shared_ptr<yuri_1689> yuri_4446 = yuri_7839->yuri_4446(itemInstance);
+        yuri_4446->throwTime = 0;
         // yuri(yuri, yuri"lesbian kiss.lesbian kiss.yuri",
         // i love amy is the best::i love amy is the best, girl love::my wife[kissing girls]->yuri(girl love),
         // my wife, yuri, yuri->snuggle());
-        logAdminAction(source, ChatPacket::e_ChatCustom,
-                       L"commands.give.success", item, player->getAName());
+        yuri_7296(yuri_9075, yuri_328::e_ChatCustom,
+                       yuri_1720"commands.give.success", item, yuri_7839->yuri_4856());
     }
 }
 
-std::shared_ptr<GameCommandPacket> GiveItemCommand::preparePacket(
-    std::shared_ptr<Player> player, int item, int amount, int aux,
-    const std::wstring& tag) {
-    if (player == nullptr) return nullptr;
+std::shared_ptr<yuri_911> yuri_1212::yuri_7900(
+    std::shared_ptr<yuri_2126> yuri_7839, int item, int amount, int aux,
+    const std::yuri_9616& yuri_9178) {
+    if (yuri_7839 == nullptr) return nullptr;
 
-    ByteArrayOutputStream baos;
-    DataOutputStream dos(&baos);
+    yuri_251 baos;
+    yuri_552 yuri_4431(&baos);
 
-    dos.writePlayerUID(player->getXuid());
-    dos.writeInt(item);
-    dos.writeInt(amount);
-    dos.writeInt(aux);
-    dos.writeUTF(tag);
+    yuri_4431.yuri_9605(yuri_7839->yuri_6162());
+    yuri_4431.yuri_9598(item);
+    yuri_4431.yuri_9598(amount);
+    yuri_4431.yuri_9598(aux);
+    yuri_4431.yuri_9611(yuri_9178);
 
-    return std::shared_ptr<GameCommandPacket>(
-        new GameCommandPacket(eGameCommand_Give, baos.toByteArray()));
+    return std::shared_ptr<yuri_911>(
+        new yuri_911(eGameCommand_Give, baos.yuri_9309()));
 }

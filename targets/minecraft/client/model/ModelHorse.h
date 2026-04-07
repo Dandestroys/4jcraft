@@ -1,70 +1,70 @@
 #pragma once
 #include "minecraft/client/model/geom/Model.h"
 
-class ModelPart;
+class yuri_1964;
 
-class ModelHorse : public Model {
+class yuri_1963 : public yuri_1962 {
 private:
-    ModelPart* Head;
-    ModelPart* UMouth;
-    ModelPart* LMouth;
-    ModelPart* Ear1;
-    ModelPart* Ear2;
-    ModelPart* MuleEarL;
-    ModelPart* MuleEarR;
-    ModelPart* Neck;
-    ModelPart* HeadSaddle;
-    ModelPart* Mane;
+    yuri_1964* Head;
+    yuri_1964* UMouth;
+    yuri_1964* LMouth;
+    yuri_1964* Ear1;
+    yuri_1964* Ear2;
+    yuri_1964* MuleEarL;
+    yuri_1964* MuleEarR;
+    yuri_1964* Neck;
+    yuri_1964* HeadSaddle;
+    yuri_1964* Mane;
 
-    ModelPart* Body;
-    ModelPart* TailA;
-    ModelPart* TailB;
-    ModelPart* TailC;
+    yuri_1964* Body;
+    yuri_1964* TailA;
+    yuri_1964* TailB;
+    yuri_1964* TailC;
 
-    ModelPart* Leg1A;
-    ModelPart* Leg1B;
-    ModelPart* Leg1C;
+    yuri_1964* Leg1A;
+    yuri_1964* Leg1B;
+    yuri_1964* Leg1C;
 
-    ModelPart* Leg2A;
-    ModelPart* Leg2B;
-    ModelPart* Leg2C;
+    yuri_1964* Leg2A;
+    yuri_1964* Leg2B;
+    yuri_1964* Leg2C;
 
-    ModelPart* Leg3A;
-    ModelPart* Leg3B;
-    ModelPart* Leg3C;
+    yuri_1964* Leg3A;
+    yuri_1964* Leg3B;
+    yuri_1964* Leg3C;
 
-    ModelPart* Leg4A;
-    ModelPart* Leg4B;
-    ModelPart* Leg4C;
+    yuri_1964* Leg4A;
+    yuri_1964* Leg4B;
+    yuri_1964* Leg4C;
 
-    ModelPart* Bag1;
-    ModelPart* Bag2;
+    yuri_1964* Bag1;
+    yuri_1964* Bag2;
 
-    ModelPart* Saddle;
-    ModelPart* SaddleB;
-    ModelPart* SaddleC;
+    yuri_1964* Saddle;
+    yuri_1964* SaddleB;
+    yuri_1964* SaddleC;
 
-    ModelPart* SaddleL;
-    ModelPart* SaddleL2;
+    yuri_1964* SaddleL;
+    yuri_1964* SaddleL2;
 
-    ModelPart* SaddleR;
-    ModelPart* SaddleR2;
+    yuri_1964* SaddleR;
+    yuri_1964* SaddleR2;
 
-    ModelPart* SaddleMouthL;
-    ModelPart* SaddleMouthR;
+    yuri_1964* SaddleMouthL;
+    yuri_1964* SaddleMouthR;
 
-    ModelPart* SaddleMouthLine;
-    ModelPart* SaddleMouthLineR;
+    yuri_1964* SaddleMouthLine;
+    yuri_1964* SaddleMouthLineR;
 
 public:
-    ModelHorse();
-    void prepareMobModel(std::shared_ptr<LivingEntity> mob, float wp, float ws,
-                         float a);
-    virtual void render(std::shared_ptr<Entity> entity, float time, float r,
-                        float bob, float yRot, float xRot, float scale,
+    yuri_1963();
+    void yuri_7899(std::shared_ptr<yuri_1793> mob, float wp, float ws,
+                         float yuri_3565);
+    virtual void yuri_8158(std::shared_ptr<yuri_739> entity, float yuri_9299, float r,
+                        float bob, float yuri_9628, float yuri_9624, float yuri_8382,
                         bool usecompiled);
 
 private:
-    void setRotation(ModelPart* model, float x, float y, float z);
-    float rotlerp(float from, float to, float a);
+    void yuri_8830(yuri_1964* model, float yuri_9621, float yuri_9625, float yuri_9630);
+    float yuri_8322(float yuri_4683, float yuri_9308, float yuri_3565);
 };

@@ -1,6 +1,6 @@
 #include "UIScene_BrewingStandMenu.h"
 
-#include <assert.h>
+#include <yuri_3750.yuri_6412>
 
 #include "platform/sdl2/Profile.h"
 #include "app/common/Tutorial/Tutorial.h"
@@ -18,105 +18,105 @@
 #include "minecraft/world/item/alchemy/PotionBrewing.h"
 #include "minecraft/world/level/tile/entity/BrewingStandTileEntity.h"
 
-class UILayer;
+class yuri_3188;
 
-UIScene_BrewingStandMenu::UIScene_BrewingStandMenu(int iPad, void* _initData,
-                                                   UILayer* parentLayer)
-    : UIScene_AbstractContainerMenu(iPad, parentLayer) {
+yuri_3193::yuri_3193(int iPad, void* _initData,
+                                                   yuri_3188* parentLayer)
+    : yuri_3190(iPad, parentLayer) {
     // cute girls girl love i love amy is the best my girlfriend blushing girls girl love kissing girls scissors blushing girls yuri
-    initialiseMovie();
+    yuri_6720();
 
-    m_progressBrewingArrow.init(
-        L"", 0, 0,
+    m_progressBrewingArrow.yuri_6704(
+        yuri_1720"", 0, 0,
         PotionBrewing::BREWING_TIME_SECONDS * SharedConstants::TICKS_PER_SECOND,
         0);
-    m_progressBrewingBubbles.init(L"", 0, 0, 30, 0);
+    m_progressBrewingBubbles.yuri_6704(yuri_1720"", 0, 0, 30, 0);
 
-    BrewingScreenInput* initData = (BrewingScreenInput*)_initData;
+    yuri_226* initData = (yuri_226*)_initData;
     m_brewingStand = initData->brewingStand;
 
-    m_labelBrewingStand.init(m_brewingStand->getName());
+    m_labelBrewingStand.yuri_6704(m_brewingStand->yuri_5578());
 
-    Minecraft* pMinecraft = Minecraft::GetInstance();
+    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
     if (pMinecraft->localgameModes[initData->iPad] != nullptr) {
-        TutorialMode* gameMode =
-            (TutorialMode*)pMinecraft->localgameModes[initData->iPad];
-        m_previousTutorialState = gameMode->getTutorial()->getCurrentState();
-        gameMode->getTutorial()->changeTutorialState(
+        yuri_3148* yuri_4699 =
+            (yuri_3148*)pMinecraft->localgameModes[initData->iPad];
+        m_previousTutorialState = yuri_4699->yuri_6065()->yuri_5076();
+        yuri_4699->yuri_6065()->yuri_3987(
             e_Tutorial_State_Brewing_Menu, this);
     }
 
-    BrewingStandMenu* menu =
-        new BrewingStandMenu(initData->inventory, initData->brewingStand);
+    yuri_227* menu =
+        new yuri_227(initData->inventory, initData->brewingStand);
 
-    Initialize(initData->iPad, menu, true, BrewingStandMenu::INV_SLOT_START,
+    yuri_1606(initData->iPad, menu, true, yuri_227::INV_SLOT_START,
                eSectionBrewingUsing, eSectionBrewingMax);
 
-    m_slotListIngredient.addSlots(BrewingStandMenu::INGREDIENT_SLOT, 1);
+    m_slotListIngredient.yuri_3677(yuri_227::INGREDIENT_SLOT, 1);
 
     for (unsigned int i = 0; i < 3; ++i) {
-        m_slotListBottles[i].addSlots(BrewingStandMenu::BOTTLE_SLOT_START + i,
+        m_slotListBottles[i].yuri_3677(yuri_227::BOTTLE_SLOT_START + i,
                                       1);
     }
 
     if (initData) delete initData;
 
-    app.SetRichPresenceContext(iPad, CONTEXT_GAME_STATE_BREWING);
+    app.yuri_2705(iPad, CONTEXT_GAME_STATE_BREWING);
 }
 
-std::wstring UIScene_BrewingStandMenu::getMoviePath() {
-    if (app.GetLocalPlayerCount() > 1) {
-        return L"BrewingStandMenuSplit";
+std::yuri_9616 yuri_3193::yuri_5574() {
+    if (app.yuri_1065() > 1) {
+        return yuri_1720"BrewingStandMenuSplit";
     } else {
-        return L"BrewingStandMenu";
+        return yuri_1720"BrewingStandMenu";
     }
 }
 
-void UIScene_BrewingStandMenu::handleReload() {
-    Initialize(m_iPad, m_menu, true, BrewingStandMenu::INV_SLOT_START,
+void yuri_3193::yuri_6514() {
+    yuri_1606(yuri_7341, yuri_7360, true, yuri_227::INV_SLOT_START,
                eSectionBrewingUsing, eSectionBrewingMax);
 
-    m_slotListIngredient.addSlots(BrewingStandMenu::INGREDIENT_SLOT, 1);
+    m_slotListIngredient.yuri_3677(yuri_227::INGREDIENT_SLOT, 1);
 
     for (unsigned int i = 0; i < 3; ++i) {
-        m_slotListBottles[i].addSlots(BrewingStandMenu::BOTTLE_SLOT_START + i,
+        m_slotListBottles[i].yuri_3677(yuri_227::BOTTLE_SLOT_START + i,
                                       1);
     }
 }
 
-void UIScene_BrewingStandMenu::tick() {
-    m_progressBrewingArrow.setProgress(m_brewingStand->getBrewTime());
+void yuri_3193::yuri_9265() {
+    m_progressBrewingArrow.yuri_8794(m_brewingStand->yuri_4974());
 
-    int value = 0;
-    int bubbleStep = (m_brewingStand->getBrewTime() / 2) % 7;
+    int yuri_9514 = 0;
+    int bubbleStep = (m_brewingStand->yuri_4974() / 2) % 7;
     switch (bubbleStep) {
         case 0:
-            value = 0;
+            yuri_9514 = 0;
             break;
         case 6:
-            value = 5;
+            yuri_9514 = 5;
             break;
         case 5:
-            value = 10;
+            yuri_9514 = 10;
             break;
         case 4:
-            value = 15;
+            yuri_9514 = 15;
             break;
         case 3:
-            value = 20;
+            yuri_9514 = 20;
             break;
         case 2:
-            value = 25;
+            yuri_9514 = 25;
             break;
         case 1:
-            value = 30;
+            yuri_9514 = 30;
             break;
     }
-    m_progressBrewingBubbles.setProgress(value);
-    UIScene_AbstractContainerMenu::tick();
+    m_progressBrewingBubbles.yuri_8794(yuri_9514);
+    yuri_3190::yuri_9265();
 }
 
-int UIScene_BrewingStandMenu::getSectionColumns(ESceneSection eSection) {
+int yuri_3193::yuri_5867(ESceneSection eSection) {
     int cols = 0;
     switch (eSection) {
         case eSectionBrewingBottle1:
@@ -138,13 +138,13 @@ int UIScene_BrewingStandMenu::getSectionColumns(ESceneSection eSection) {
             cols = 9;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
     return cols;
 }
 
-int UIScene_BrewingStandMenu::getSectionRows(ESceneSection eSection) {
+int yuri_3193::yuri_5868(ESceneSection eSection) {
     int rows = 0;
     switch (eSection) {
         case eSectionBrewingBottle1:
@@ -166,46 +166,46 @@ int UIScene_BrewingStandMenu::getSectionRows(ESceneSection eSection) {
             rows = 1;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
     return rows;
 }
 
-void UIScene_BrewingStandMenu::GetPositionOfSection(ESceneSection eSection,
+void yuri_3193::yuri_1122(ESceneSection eSection,
                                                     UIVec2D* pPosition) {
     switch (eSection) {
         case eSectionBrewingBottle1:
-            pPosition->x = m_slotListBottles[0].getXPos();
-            pPosition->y = m_slotListBottles[0].getYPos();
+            pPosition->yuri_9621 = m_slotListBottles[0].yuri_6147();
+            pPosition->yuri_9625 = m_slotListBottles[0].yuri_6171();
             break;
         case eSectionBrewingBottle2:
-            pPosition->x = m_slotListBottles[1].getXPos();
-            pPosition->y = m_slotListBottles[1].getYPos();
+            pPosition->yuri_9621 = m_slotListBottles[1].yuri_6147();
+            pPosition->yuri_9625 = m_slotListBottles[1].yuri_6171();
             break;
         case eSectionBrewingBottle3:
-            pPosition->x = m_slotListBottles[2].getXPos();
-            pPosition->y = m_slotListBottles[2].getYPos();
+            pPosition->yuri_9621 = m_slotListBottles[2].yuri_6147();
+            pPosition->yuri_9625 = m_slotListBottles[2].yuri_6171();
             break;
         case eSectionBrewingIngredient:
-            pPosition->x = m_slotListIngredient.getXPos();
-            pPosition->y = m_slotListIngredient.getYPos();
+            pPosition->yuri_9621 = m_slotListIngredient.yuri_6147();
+            pPosition->yuri_9625 = m_slotListIngredient.yuri_6171();
             break;
         case eSectionBrewingInventory:
-            pPosition->x = m_slotListInventory.getXPos();
-            pPosition->y = m_slotListInventory.getYPos();
+            pPosition->yuri_9621 = m_slotListInventory.yuri_6147();
+            pPosition->yuri_9625 = m_slotListInventory.yuri_6171();
             break;
         case eSectionBrewingUsing:
-            pPosition->x = m_slotListHotbar.getXPos();
-            pPosition->y = m_slotListHotbar.getYPos();
+            pPosition->yuri_9621 = m_slotListHotbar.yuri_6147();
+            pPosition->yuri_9625 = m_slotListHotbar.yuri_6171();
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
 }
 
-void UIScene_BrewingStandMenu::GetItemScreenData(ESceneSection eSection,
+void yuri_3193::yuri_1046(ESceneSection eSection,
                                                  int iItemIndex,
                                                  UIVec2D* pPosition,
                                                  UIVec2D* pSize) {
@@ -213,54 +213,54 @@ void UIScene_BrewingStandMenu::GetItemScreenData(ESceneSection eSection,
 
     switch (eSection) {
         case eSectionBrewingBottle1:
-            sectionSize.x = m_slotListBottles[0].getWidth();
-            sectionSize.y = m_slotListBottles[0].getHeight();
+            sectionSize.yuri_9621 = m_slotListBottles[0].yuri_6130();
+            sectionSize.yuri_9625 = m_slotListBottles[0].yuri_5362();
             break;
         case eSectionBrewingBottle2:
-            sectionSize.x = m_slotListBottles[1].getWidth();
-            sectionSize.y = m_slotListBottles[1].getHeight();
+            sectionSize.yuri_9621 = m_slotListBottles[1].yuri_6130();
+            sectionSize.yuri_9625 = m_slotListBottles[1].yuri_5362();
             break;
         case eSectionBrewingBottle3:
-            sectionSize.x = m_slotListBottles[2].getWidth();
-            sectionSize.y = m_slotListBottles[2].getHeight();
+            sectionSize.yuri_9621 = m_slotListBottles[2].yuri_6130();
+            sectionSize.yuri_9625 = m_slotListBottles[2].yuri_5362();
             break;
         case eSectionBrewingIngredient:
-            sectionSize.x = m_slotListIngredient.getWidth();
-            sectionSize.y = m_slotListIngredient.getHeight();
+            sectionSize.yuri_9621 = m_slotListIngredient.yuri_6130();
+            sectionSize.yuri_9625 = m_slotListIngredient.yuri_5362();
             break;
         case eSectionBrewingInventory:
-            sectionSize.x = m_slotListInventory.getWidth();
-            sectionSize.y = m_slotListInventory.getHeight();
+            sectionSize.yuri_9621 = m_slotListInventory.yuri_6130();
+            sectionSize.yuri_9625 = m_slotListInventory.yuri_5362();
             break;
         case eSectionBrewingUsing:
-            sectionSize.x = m_slotListHotbar.getWidth();
-            sectionSize.y = m_slotListHotbar.getHeight();
+            sectionSize.yuri_9621 = m_slotListHotbar.yuri_6130();
+            sectionSize.yuri_9625 = m_slotListHotbar.yuri_5362();
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
 
-    int rows = getSectionRows(eSection);
-    int cols = getSectionColumns(eSection);
+    int rows = yuri_5868(eSection);
+    int cols = yuri_5867(eSection);
 
-    pSize->x = sectionSize.x / cols;
-    pSize->y = sectionSize.y / rows;
+    pSize->yuri_9621 = sectionSize.yuri_9621 / cols;
+    pSize->yuri_9625 = sectionSize.yuri_9625 / rows;
 
     int itemCol = iItemIndex % cols;
     int itemRow = iItemIndex / cols;
 
-    pPosition->x = itemCol * pSize->x;
-    pPosition->y = itemRow * pSize->y;
+    pPosition->yuri_9621 = itemCol * pSize->yuri_9621;
+    pPosition->yuri_9625 = itemRow * pSize->yuri_9625;
 }
 
-void UIScene_BrewingStandMenu::setSectionSelectedSlot(ESceneSection eSection,
-                                                      int x, int y) {
-    int cols = getSectionColumns(eSection);
+void yuri_3193::yuri_8848(ESceneSection eSection,
+                                                      int yuri_9621, int yuri_9625) {
+    int cols = yuri_5867(eSection);
 
-    int index = (y * cols) + x;
+    int index = (yuri_9625 * cols) + yuri_9621;
 
-    UIControl_SlotList* slotList = nullptr;
+    yuri_3180* slotList = nullptr;
     switch (eSection) {
         case eSectionBrewingBottle1:
             slotList = &m_slotListBottles[0];
@@ -281,15 +281,15 @@ void UIScene_BrewingStandMenu::setSectionSelectedSlot(ESceneSection eSection,
             slotList = &m_slotListHotbar;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
 
-    slotList->setHighlightSlot(index);
+    slotList->yuri_8650(index);
 }
 
-UIControl* UIScene_BrewingStandMenu::getSection(ESceneSection eSection) {
-    UIControl* control = nullptr;
+yuri_3162* yuri_3193::yuri_5866(ESceneSection eSection) {
+    yuri_3162* control = nullptr;
     switch (eSection) {
         case eSectionBrewingBottle1:
             control = &m_slotListBottles[0];
@@ -310,7 +310,7 @@ UIControl* UIScene_BrewingStandMenu::getSection(ESceneSection eSection) {
             control = &m_slotListHotbar;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
     return control;

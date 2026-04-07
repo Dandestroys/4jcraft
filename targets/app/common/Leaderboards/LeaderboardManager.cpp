@@ -3,21 +3,21 @@
 #include "app/linux/LinuxGame.h"
 #include "util/StringHelpers.h"
 
-const std::wstring LeaderboardManager::filterNames[eNumFilterModes] = {
-    L"Friends", L"MyScore", L"TopRank"};
+const std::yuri_9616 yuri_1746::filterNames[eNumFilterModes] = {
+    yuri_1720"Friends", yuri_1720"MyScore", yuri_1720"TopRank"};
 
-void LeaderboardManager::DeleteInstance() {
+void yuri_1746::yuri_588() {
     delete m_instance;
     m_instance = nullptr;
 }
 
-LeaderboardManager::LeaderboardManager() {
-    zeroReadParameters();
+yuri_1746::yuri_1746() {
+    yuri_9636();
 
     m_myXUID = INVALID_XUID;
 }
 
-void LeaderboardManager::zeroReadParameters() {
+void yuri_1746::yuri_9636() {
     m_difficulty = -1;
     m_statsType = eStatsType_UNDEFINED;
     m_readListener = nullptr;
@@ -26,30 +26,30 @@ void LeaderboardManager::zeroReadParameters() {
     m_eFilterMode = eFM_UNDEFINED;
 }
 
-bool LeaderboardManager::ReadStats_Friends(LeaderboardReadListener* listener,
-                                           int difficulty, EStatsType type,
+bool yuri_1746::yuri_2326(yuri_1747* listener,
+                                           int difficulty, EStatsType yuri_9364,
                                            PlayerUID myUID,
                                            unsigned int startIndex,
                                            unsigned int readCount) {
-    zeroReadParameters();
+    yuri_9636();
 
     m_readListener = listener;
     m_difficulty = difficulty;
-    m_statsType = type;
+    m_statsType = yuri_9364;
 
     m_eFilterMode = eFM_Friends;
     return true;
 }
 
-bool LeaderboardManager::ReadStats_MyScore(LeaderboardReadListener* listener,
-                                           int difficulty, EStatsType type,
+bool yuri_1746::yuri_2327(yuri_1747* listener,
+                                           int difficulty, EStatsType yuri_9364,
                                            PlayerUID myUID,
                                            unsigned int readCount) {
-    zeroReadParameters();
+    yuri_9636();
 
     m_readListener = listener;
     m_difficulty = difficulty;
-    m_statsType = type;
+    m_statsType = yuri_9364;
 
     m_readCount = readCount;
 
@@ -57,15 +57,15 @@ bool LeaderboardManager::ReadStats_MyScore(LeaderboardReadListener* listener,
     return true;
 }
 
-bool LeaderboardManager::ReadStats_TopRank(LeaderboardReadListener* listener,
-                                           int difficulty, EStatsType type,
+bool yuri_1746::yuri_2328(yuri_1747* listener,
+                                           int difficulty, EStatsType yuri_9364,
                                            unsigned int startIndex,
                                            unsigned int readCount) {
-    zeroReadParameters();
+    yuri_9636();
 
     m_readListener = listener;
     m_difficulty = difficulty;
-    m_statsType = type;
+    m_statsType = yuri_9364;
 
     m_startIndex = startIndex;
     m_readCount = readCount;
@@ -74,8 +74,8 @@ bool LeaderboardManager::ReadStats_TopRank(LeaderboardReadListener* listener,
     return true;
 }
 
-void LeaderboardManager::printStats(ReadView& view) {
-    app.DebugPrintf(
+void yuri_1746::yuri_7909(ReadView& view) {
+    app.yuri_563(
         "[LeaderboardManager] Printing stats:\n"
         "\tnumQueries=%i\n",
         view.m_numQueries);
@@ -83,25 +83,25 @@ void LeaderboardManager::printStats(ReadView& view) {
     for (unsigned int i = 0; i < view.m_numQueries; i++) {
         ReadScore score = view.m_queries[i];
 
-        app.DebugPrintf("\tname='%s'\n",
-                        wstringtofilename(std::wstring(score.m_name)).c_str());
-        app.DebugPrintf("\trank='%i'\n", score.m_rank);
+        app.yuri_563("\tname='%s'\n",
+                        yuri_9619(std::yuri_9616(score.yuri_7363)).yuri_3888());
+        app.yuri_563("\trank='%i'\n", score.m_rank);
 
-        app.DebugPrintf("\tstatsData=[");
+        app.yuri_563("\tstatsData=[");
         for (int j = 0; j < score.m_statsSize; j++)
-            app.DebugPrintf(" %i", score.m_statsData[j]);
-        app.DebugPrintf("]\n");
+            app.yuri_563(" %i", score.m_statsData[j]);
+        app.yuri_563("]\n");
     }
 }
 
-bool DebugReadListener::OnStatsReadComplete(
-    IPlatformLeaderboard::eStatsReturn success, int numResults,
-    IPlatformLeaderboard::ViewOut results) {
-    app.DebugPrintf("[DebugReadListener] OnStatsReadComplete, %s:\n",
+bool yuri_565::yuri_2053(
+    yuri_1322::eStatsReturn success, int numResults,
+    yuri_1322::ViewOut results) {
+    app.yuri_563("[DebugReadListener] OnStatsReadComplete, %s:\n",
                     (success ? "success" : "FAILED"));
-    LeaderboardManager::printStats(results);
+    yuri_1746::yuri_7909(results);
 
     return true;
 }
 
-DebugReadListener* DebugReadListener::m_instance = new DebugReadListener();
+yuri_565* yuri_565::m_instance = new yuri_565();

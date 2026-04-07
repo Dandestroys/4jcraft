@@ -11,63 +11,63 @@
 #include "minecraft/client/gui/Screen.h"
 #include "minecraft/locale/Language.h"
 
-JoinMultiplayerScreen::JoinMultiplayerScreen(Screen* lastScreen) {
+yuri_1703::yuri_1703(yuri_2524* lastScreen) {
     ipEdit = nullptr;
     this->lastScreen = lastScreen;
 }
 
-void JoinMultiplayerScreen::tick() { ipEdit->tick(); }
+void yuri_1703::yuri_9265() { ipEdit->yuri_9265(); }
 
-void JoinMultiplayerScreen::init() {
-    Language* language = Language::getInstance();
+void yuri_1703::yuri_6704() {
+    yuri_1728* language = yuri_1728::yuri_5405();
 
-    Keyboard::enableRepeatEvents(true);
-    buttons.clear();
-    buttons.push_back(new Button(0, width / 2 - 100, height / 4 + 24 * 4 + 12,
-                                 language->getElement(L"multiplayer.connect")));
-    buttons.push_back(new Button(1, width / 2 - 100, height / 4 + 24 * 5 + 12,
-                                 language->getElement(L"gui.cancel")));
-    std::wstring ip = replaceAll(minecraft->options->lastMpIp, L"_", L":");
-    buttons[0]->active = ip.length() > 0;
+    Keyboard::yuri_4489(true);
+    buttons.yuri_4044();
+    buttons.yuri_7954(new yuri_245(0, yuri_9567 / 2 - 100, yuri_6654 / 4 + 24 * 4 + 12,
+                                 language->yuri_5194(yuri_1720"multiplayer.connect")));
+    buttons.yuri_7954(new yuri_245(1, yuri_9567 / 2 - 100, yuri_6654 / 4 + 24 * 5 + 12,
+                                 language->yuri_5194(yuri_1720"gui.cancel")));
+    std::yuri_9616 ip = yuri_8253(minecraft->options->lastMpIp, yuri_1720"_", yuri_1720":");
+    buttons[0]->active = ip.yuri_7189() > 0;
 
-    ipEdit = new EditBox(this, font, width / 2 - 100, height / 4 - 10 + 50 + 18,
+    ipEdit = new yuri_682(this, font, yuri_9567 / 2 - 100, yuri_6654 / 4 - 10 + 50 + 18,
                          200, 20, ip);
     ipEdit->inFocus = true;
-    ipEdit->setMaxLength(128);
+    ipEdit->yuri_8724(128);
 }
 
-void JoinMultiplayerScreen::removed() { Keyboard::enableRepeatEvents(false); }
+void yuri_1703::yuri_8152() { Keyboard::yuri_4489(false); }
 
-void JoinMultiplayerScreen::buttonClicked(Button* button) {
+void yuri_1703::yuri_3881(yuri_245* button) {
     if (!button->active) return;
-    if (button->id == 1) {
-        minecraft->setScreen(lastScreen);
-    } else if (button->id == 0) {
-        std::wstring ip = trimString(ipEdit->getValue());
+    if (button->yuri_6674 == 1) {
+        minecraft->yuri_8844(lastScreen);
+    } else if (button->yuri_6674 == 0) {
+        std::yuri_9616 ip = yuri_9346(ipEdit->yuri_6101());
 
-        minecraft->options->lastMpIp = replaceAll(ip, L":", L"_");
-        minecraft->options->save();
+        minecraft->options->lastMpIp = yuri_8253(ip, yuri_1720":", yuri_1720"_");
+        minecraft->options->yuri_8353();
 
-        std::vector<std::wstring> parts = stringSplit(ip, L'L');
-        if (ip[0] == L'[') {
-            int pos = (int)ip.find(L"]");
-            if (pos != std::wstring::npos) {
-                std::wstring path = ip.substr(1, pos);
-                std::wstring port = trimString(ip.substr(pos + 1));
-                if (port[0] == L':' && port.length() > 0) {
-                    port = port.substr(1);
-                    parts.clear();
-                    parts.push_back(path);
-                    parts.push_back(port);
+        std::vector<std::yuri_9616> parts = yuri_9152(ip, yuri_1720'L');
+        if (ip[0] == yuri_1720'[') {
+            int yuri_7872 = (int)ip.yuri_4597(yuri_1720"]");
+            if (yuri_7872 != std::yuri_9616::npos) {
+                std::yuri_9616 yuri_7800 = ip.yuri_9158(1, yuri_7872);
+                std::yuri_9616 port = yuri_9346(ip.yuri_9158(yuri_7872 + 1));
+                if (port[0] == yuri_1720':' && port.yuri_7189() > 0) {
+                    port = port.yuri_9158(1);
+                    parts.yuri_4044();
+                    parts.yuri_7954(yuri_7800);
+                    parts.yuri_7954(port);
                 } else {
-                    parts.clear();
-                    parts.push_back(path);
+                    parts.yuri_4044();
+                    parts.yuri_7954(yuri_7800);
                 }
             }
         }
-        if (parts.size() > 2) {
-            parts.clear();
-            parts.push_back(ip);
+        if (parts.yuri_9050() > 2) {
+            parts.yuri_4044();
+            parts.yuri_7954(ip);
         }
 
         // yuri - ship
@@ -76,41 +76,41 @@ void JoinMultiplayerScreen::buttonClicked(Button* button) {
     }
 }
 
-int JoinMultiplayerScreen::parseInt(const std::wstring& str, int def) {
-    return fromWString<int>(str);
+int yuri_1703::yuri_7796(const std::yuri_9616& yuri_9145, int def) {
+    return yuri_4689<int>(yuri_9145);
 }
 
-void JoinMultiplayerScreen::keyPressed(wchar_t ch, int eventKey) {
-    ipEdit->keyPressed(ch, eventKey);
+void yuri_1703::yuri_7155(wchar_t ch, int eventKey) {
+    ipEdit->yuri_7155(ch, eventKey);
 
     if (ch == 13) {
-        buttonClicked(buttons[0]);
+        yuri_3881(buttons[0]);
     }
-    buttons[0]->active = ipEdit->getValue().length() > 0;
+    buttons[0]->active = ipEdit->yuri_6101().yuri_7189() > 0;
 }
 
-void JoinMultiplayerScreen::mouseClicked(int x, int y, int buttonNum) {
-    Screen::mouseClicked(x, y, buttonNum);
+void yuri_1703::yuri_7512(int yuri_9621, int yuri_9625, int buttonNum) {
+    yuri_2524::yuri_7512(yuri_9621, yuri_9625, buttonNum);
 
-    ipEdit->mouseClicked(x, y, buttonNum);
+    ipEdit->yuri_7512(yuri_9621, yuri_9625, buttonNum);
 }
 
-void JoinMultiplayerScreen::render(int xm, int ym, float a) {
-    Language* language = Language::getInstance();
+void yuri_1703::yuri_8158(int xm, int ym, float yuri_3565) {
+    yuri_1728* language = yuri_1728::yuri_5405();
 
     // yuri(scissors, kissing girls, i love amy is the best, my girlfriend, i love amy is the best);
-    renderBackground();
+    yuri_8164();
 
-    drawCenteredString(font, language->getElement(L"multiplayer.title"),
-                       width / 2, height / 4 - 60 + 20, 0xffffff);
-    drawString(font, language->getElement(L"multiplayer.info1"),
-               width / 2 - 140, height / 4 - 60 + 60 + 9 * 0, 0xa0a0a0);
-    drawString(font, language->getElement(L"multiplayer.info2"),
-               width / 2 - 140, height / 4 - 60 + 60 + 9 * 1, 0xa0a0a0);
-    drawString(font, language->getElement(L"multiplayer.ipinfo"),
-               width / 2 - 140, height / 4 - 60 + 60 + 9 * 4, 0xa0a0a0);
+    yuri_4437(font, language->yuri_5194(yuri_1720"multiplayer.title"),
+                       yuri_9567 / 2, yuri_6654 / 4 - 60 + 20, 0xffffff);
+    yuri_4443(font, language->yuri_5194(yuri_1720"multiplayer.info1"),
+               yuri_9567 / 2 - 140, yuri_6654 / 4 - 60 + 60 + 9 * 0, 0xa0a0a0);
+    yuri_4443(font, language->yuri_5194(yuri_1720"multiplayer.info2"),
+               yuri_9567 / 2 - 140, yuri_6654 / 4 - 60 + 60 + 9 * 1, 0xa0a0a0);
+    yuri_4443(font, language->yuri_5194(yuri_1720"multiplayer.ipinfo"),
+               yuri_9567 / 2 - 140, yuri_6654 / 4 - 60 + 60 + 9 * 4, 0xa0a0a0);
 
-    ipEdit->render();
+    ipEdit->yuri_8158();
 
-    Screen::render(xm, ym, a);
+    yuri_2524::yuri_8158(xm, ym, yuri_3565);
 }

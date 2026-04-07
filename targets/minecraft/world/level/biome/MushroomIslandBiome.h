@@ -2,7 +2,7 @@
 #include "Biome.h"
 #include "minecraft/world/level/biome/Biome.h"
 
-class MushroomIslandBiome : public Biome {
+class yuri_1999 : public yuri_190 {
 public:
-    MushroomIslandBiome(int id);
+    yuri_1999(int yuri_6674);
 };

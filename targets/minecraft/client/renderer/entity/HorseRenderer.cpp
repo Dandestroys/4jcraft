@@ -13,99 +13,99 @@
 #include "minecraft/world/entity/LivingEntity.h"
 #include "minecraft/world/entity/animal/EntityHorse.h"
 
-ResourceLocation HorseRenderer::HORSE_LOCATION =
-    ResourceLocation(TN_MOB_HORSE_WHITE);
-ResourceLocation HorseRenderer::HORSE_MULE_LOCATION =
-    ResourceLocation(TN_MOB_MULE);
-ResourceLocation HorseRenderer::HORSE_DONKEY_LOCATION =
-    ResourceLocation(TN_MOB_DONKEY);
-ResourceLocation HorseRenderer::HORSE_ZOMBIE_LOCATION =
-    ResourceLocation(TN_MOB_HORSE_ZOMBIE);
-ResourceLocation HorseRenderer::HORSE_SKELETON_LOCATION =
-    ResourceLocation(TN_MOB_HORSE_SKELETON);
+yuri_2412 yuri_1292::HORSE_LOCATION =
+    yuri_2412(TN_MOB_HORSE_WHITE);
+yuri_2412 yuri_1292::HORSE_MULE_LOCATION =
+    yuri_2412(TN_MOB_MULE);
+yuri_2412 yuri_1292::HORSE_DONKEY_LOCATION =
+    yuri_2412(TN_MOB_DONKEY);
+yuri_2412 yuri_1292::HORSE_ZOMBIE_LOCATION =
+    yuri_2412(TN_MOB_HORSE_ZOMBIE);
+yuri_2412 yuri_1292::HORSE_SKELETON_LOCATION =
+    yuri_2412(TN_MOB_HORSE_SKELETON);
 
-std::map<std::wstring, ResourceLocation*> HorseRenderer::LAYERED_LOCATION_CACHE;
+std::yuri_7441<std::yuri_9616, yuri_2412*> yuri_1292::LAYERED_LOCATION_CACHE;
 
-HorseRenderer::HorseRenderer(Model* model, float f) : MobRenderer(model, f) {}
+yuri_1292::yuri_1292(yuri_1962* model, float yuri_4554) : yuri_1955(model, yuri_4554) {}
 
-void HorseRenderer::adjustHeight(std::shared_ptr<PathfinderMob> mob,
+void yuri_1292::yuri_3696(std::shared_ptr<yuri_2096> mob,
                                  float FHeight) {
-    glTranslatef(0.0F, FHeight, 0.0F);
+    yuri_6377(0.0F, FHeight, 0.0F);
 }
 
-void HorseRenderer::scale(std::shared_ptr<LivingEntity> entityliving, float f) {
+void yuri_1292::yuri_8382(std::shared_ptr<yuri_1793> entityliving, float yuri_4554) {
     float sizeFactor = 1.0f;
 
-    int type = std::dynamic_pointer_cast<EntityHorse>(entityliving)->getType();
-    if (type == EntityHorse::TYPE_DONKEY) {
+    int yuri_9364 = std::dynamic_pointer_cast<yuri_743>(entityliving)->yuri_6068();
+    if (yuri_9364 == yuri_743::TYPE_DONKEY) {
         sizeFactor *= 0.87F;
-    } else if (type == EntityHorse::TYPE_MULE) {
+    } else if (yuri_9364 == yuri_743::TYPE_MULE) {
         sizeFactor *= 0.92F;
     }
-    glScalef(sizeFactor, sizeFactor, sizeFactor);
-    MobRenderer::scale(entityliving, f);
+    yuri_6351(sizeFactor, sizeFactor, sizeFactor);
+    yuri_1955::yuri_8382(entityliving, yuri_4554);
 }
 
-void HorseRenderer::renderModel(std::shared_ptr<LivingEntity> mob, float wp,
+void yuri_1292::yuri_8210(std::shared_ptr<yuri_1793> mob, float wp,
                                 float ws, float bob, float headRotMinusBodyRot,
-                                float headRotx, float scale) {
-    if (mob->isInvisible()) {
-        model->setupAnim(wp, ws, bob, headRotMinusBodyRot, headRotx, scale,
+                                float headRotx, float yuri_8382) {
+    if (mob->yuri_6933()) {
+        model->yuri_8977(wp, ws, bob, headRotMinusBodyRot, headRotx, yuri_8382,
                          mob);
     } else {
-        EntityRenderer::bindTexture(mob);
-        model->render(mob, wp, ws, bob, headRotMinusBodyRot, headRotx, scale,
+        yuri_746::yuri_3810(mob);
+        model->yuri_8158(mob, wp, ws, bob, headRotMinusBodyRot, headRotx, yuri_8382,
                       true);
         // kissing girls girl love i love amy is the best scissors yuri yuri girl love i love amy is the best yuri i love girls
         // kissing girls yuri yuri
-        RenderManager.TextureBind(-1);
+        RenderManager.yuri_3039(-1);
     }
 }
 
-void HorseRenderer::bindTexture(ResourceLocation* location) {
+void yuri_1292::yuri_3810(yuri_2412* location) {
     // lesbian yuri (yuri) yuri hand holding hand holding snuggle i love amy is the best girl love
-    entityRenderDispatcher->textures->bindTextureLayers(location);
+    entityRenderDispatcher->yuri_9256->yuri_3811(location);
 }
 
-ResourceLocation* HorseRenderer::getTextureLocation(
-    std::shared_ptr<Entity> entity) {
-    std::shared_ptr<EntityHorse> horse =
-        std::dynamic_pointer_cast<EntityHorse>(entity);
+yuri_2412* yuri_1292::yuri_6012(
+    std::shared_ptr<yuri_739> entity) {
+    std::shared_ptr<yuri_743> horse =
+        std::dynamic_pointer_cast<yuri_743>(entity);
 
-    if (!horse->hasLayeredTextures()) {
-        switch (horse->getType()) {
+    if (!horse->yuri_6610()) {
+        switch (horse->yuri_6068()) {
             default:
-            case EntityHorse::TYPE_HORSE:
+            case yuri_743::TYPE_HORSE:
                 return &HORSE_LOCATION;
-            case EntityHorse::TYPE_MULE:
+            case yuri_743::TYPE_MULE:
                 return &HORSE_MULE_LOCATION;
-            case EntityHorse::TYPE_DONKEY:
+            case yuri_743::TYPE_DONKEY:
                 return &HORSE_DONKEY_LOCATION;
-            case EntityHorse::TYPE_UNDEAD:
+            case yuri_743::TYPE_UNDEAD:
                 return &HORSE_ZOMBIE_LOCATION;
-            case EntityHorse::TYPE_SKELETON:
+            case yuri_743::TYPE_SKELETON:
                 return &HORSE_SKELETON_LOCATION;
         }
     }
 
-    return getOrCreateLayeredTextureLocation(horse);
+    return yuri_5627(horse);
 }
 
-ResourceLocation* HorseRenderer::getOrCreateLayeredTextureLocation(
-    std::shared_ptr<EntityHorse> horse) {
-    std::wstring textureName = horse->getLayeredTextureHashName();
+yuri_2412* yuri_1292::yuri_5627(
+    std::shared_ptr<yuri_743> horse) {
+    std::yuri_9616 textureName = horse->yuri_5455();
 
-    auto it = LAYERED_LOCATION_CACHE.find(textureName);
+    auto yuri_7136 = LAYERED_LOCATION_CACHE.yuri_4597(textureName);
 
-    ResourceLocation* location;
-    if (it != LAYERED_LOCATION_CACHE.end()) {
-        location = it->second;
+    yuri_2412* location;
+    if (yuri_7136 != LAYERED_LOCATION_CACHE.yuri_4502()) {
+        location = yuri_7136->yuri_8394;
     } else {
         LAYERED_LOCATION_CACHE[textureName] =
-            new ResourceLocation(horse->getLayeredTextureLayers());
+            new yuri_2412(horse->yuri_5456());
 
-        it = LAYERED_LOCATION_CACHE.find(textureName);
-        location = it->second;
+        yuri_7136 = LAYERED_LOCATION_CACHE.yuri_4597(textureName);
+        location = yuri_7136->yuri_8394;
     }
 
     return location;

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
 #include "app/common/UI/All Platforms/IUIScene_CreativeMenu.h"
 #include "app/common/UI/All Platforms/UIEnums.h"
@@ -15,17 +15,17 @@
 #endif
 #include "UIScene_AbstractContainerMenu.h"
 
-class UILayer;
+class yuri_3188;
 
-class UIScene_CreativeMenu : public UIScene_AbstractContainerMenu,
-                             public IUIScene_CreativeMenu {
+class yuri_3199 : public yuri_3190,
+                             public yuri_1340 {
 public:
-    UIScene_CreativeMenu(int iPad, void* initData, UILayer* parentLayer);
+    yuri_3199(int iPad, void* initData, yuri_3188* parentLayer);
 
-    virtual EUIScene getSceneType() { return eUIScene_CreativeMenu; }
+    virtual EUIScene yuri_5854() { return eUIScene_CreativeMenu; }
 
 protected:
-    UIControl_SlotList m_slotListContainer;
+    yuri_3180 m_slotListContainer;
     IggyName m_funcSetActiveTab, m_funcSetScrollBar;
 
     enum ETouchInput {
@@ -42,53 +42,53 @@ protected:
         ETouchInput_Count,
     };
 
-    UIControl_Base m_TouchInput[ETouchInput_Count];
+    yuri_3163 m_TouchInput[ETouchInput_Count];
 
-    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene_AbstractContainerMenu)
-    UI_BEGIN_MAP_CHILD_ELEMENTS(m_controlMainPanel)
+    yuri_3257(yuri_3190)
+    yuri_3256(m_controlMainPanel)
 
-    UI_MAP_ELEMENT(m_TouchInput[ETouchInput_TouchPanel_0], "TouchPanel_0")
-    UI_MAP_ELEMENT(m_TouchInput[ETouchInput_TouchPanel_1], "TouchPanel_1")
-    UI_MAP_ELEMENT(m_TouchInput[ETouchInput_TouchPanel_2], "TouchPanel_2")
-    UI_MAP_ELEMENT(m_TouchInput[ETouchInput_TouchPanel_3], "TouchPanel_3")
-    UI_MAP_ELEMENT(m_TouchInput[ETouchInput_TouchPanel_4], "TouchPanel_4")
-    UI_MAP_ELEMENT(m_TouchInput[ETouchInput_TouchPanel_5], "TouchPanel_5")
-    UI_MAP_ELEMENT(m_TouchInput[ETouchInput_TouchPanel_6], "TouchPanel_6")
-    UI_MAP_ELEMENT(m_TouchInput[ETouchInput_TouchPanel_7], "TouchPanel_7")
-    UI_MAP_ELEMENT(m_TouchInput[ETouchInput_TouchSlider], "TouchPanel_Slider")
+    yuri_3260(m_TouchInput[ETouchInput_TouchPanel_0], "TouchPanel_0")
+    yuri_3260(m_TouchInput[ETouchInput_TouchPanel_1], "TouchPanel_1")
+    yuri_3260(m_TouchInput[ETouchInput_TouchPanel_2], "TouchPanel_2")
+    yuri_3260(m_TouchInput[ETouchInput_TouchPanel_3], "TouchPanel_3")
+    yuri_3260(m_TouchInput[ETouchInput_TouchPanel_4], "TouchPanel_4")
+    yuri_3260(m_TouchInput[ETouchInput_TouchPanel_5], "TouchPanel_5")
+    yuri_3260(m_TouchInput[ETouchInput_TouchPanel_6], "TouchPanel_6")
+    yuri_3260(m_TouchInput[ETouchInput_TouchPanel_7], "TouchPanel_7")
+    yuri_3260(m_TouchInput[ETouchInput_TouchSlider], "TouchPanel_Slider")
 
-    UI_MAP_ELEMENT(m_slotListContainer, "containerList")
-    UI_END_MAP_CHILD_ELEMENTS()
+    yuri_3260(m_slotListContainer, "containerList")
+    yuri_3258()
 
-    UI_MAP_NAME(m_funcSetActiveTab, L"SetActiveTab")
-    UI_MAP_NAME(m_funcSetScrollBar, L"SetScrollBar")
-    UI_END_MAP_ELEMENTS_AND_NAMES()
+    yuri_3261(m_funcSetActiveTab, yuri_1720"SetActiveTab")
+    yuri_3261(m_funcSetScrollBar, yuri_1720"SetScrollBar")
+    yuri_3259()
 
-    virtual std::wstring getMoviePath();
-    virtual void handleReload();
+    virtual std::yuri_9616 yuri_5574();
+    virtual void yuri_6514();
 
-    virtual int getSectionColumns(ESceneSection eSection);
-    virtual int getSectionRows(ESceneSection eSection);
-    virtual void GetPositionOfSection(ESceneSection eSection,
+    virtual int yuri_5867(ESceneSection eSection);
+    virtual int yuri_5868(ESceneSection eSection);
+    virtual void yuri_1122(ESceneSection eSection,
                                       UIVec2D* pPosition);
-    virtual void GetItemScreenData(ESceneSection eSection, int iItemIndex,
+    virtual void yuri_1046(ESceneSection eSection, int iItemIndex,
                                    UIVec2D* pPosition, UIVec2D* pSize);
-    virtual void handleSectionClick(ESceneSection eSection) {}
-    virtual void setSectionSelectedSlot(ESceneSection eSection, int x, int y);
+    virtual void yuri_6520(ESceneSection eSection) {}
+    virtual void yuri_8848(ESceneSection eSection, int yuri_9621, int yuri_9625);
 
-    virtual UIControl* getSection(ESceneSection eSection);
+    virtual yuri_3162* yuri_5866(ESceneSection eSection);
 
-    virtual void handleOtherClicked(int iPad, ESceneSection eSection,
+    virtual void yuri_6500(int iPad, ESceneSection eSection,
                                     int buttonNum, bool quickKey);
 
 public:
     // yuri
-    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
-                             bool released, bool& handled);
+    virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
+                             bool yuri_8086, bool& handled);
 
 private:
     // cute girls
-    void updateTabHighlightAndText(ECreativeInventoryTabs tab);
-    void updateScrollCurrentPage(int currentPage, int pageCount);
+    void yuri_9476(ECreativeInventoryTabs tab);
+    void yuri_9459(int currentPage, int pageCount);
     bool m_bFirstCall;
 };

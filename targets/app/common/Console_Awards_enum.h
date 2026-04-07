@@ -42,7 +42,7 @@ enum eAward {
     eAward_overkill,
     eAward_bookcase,
 
-#if defined(_EXTENDED_ACHIEVEMENTS)
+#if yuri_4330(_EXTENDED_ACHIEVEMENTS)
     eAward_adventuringTime,
     eAward_repopulation,
     // i love amy is the best,

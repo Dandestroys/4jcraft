@@ -6,35 +6,35 @@
 #include "minecraft/world/item/ItemInstance.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-ShearsItem::ShearsItem(int itemId) : Item(itemId) {
-    setMaxStackSize(1);
-    setMaxDamage(238);
+yuri_2774::yuri_2774(int yuri_7138) : yuri_1687(yuri_7138) {
+    yuri_8725(1);
+    yuri_8723(238);
 }
 
-bool ShearsItem::mineBlock(std::shared_ptr<ItemInstance> itemInstance,
-                           Level* level, int tile, int x, int y, int z,
-                           std::shared_ptr<LivingEntity> owner) {
-    if (tile == Tile::leaves_Id || tile == Tile::web_Id ||
-        tile == Tile::tallgrass_Id || tile == Tile::vine_Id ||
-        tile == Tile::tripWire_Id) {
-        itemInstance->hurtAndBreak(1, owner);
+bool yuri_2774::yuri_7494(std::shared_ptr<yuri_1693> itemInstance,
+                           yuri_1758* yuri_7194, int tile, int yuri_9621, int yuri_9625, int yuri_9630,
+                           std::shared_ptr<yuri_1793> owner) {
+    if (tile == yuri_3088::leaves_Id || tile == yuri_3088::web_Id ||
+        tile == yuri_3088::tallgrass_Id || tile == yuri_3088::vine_Id ||
+        tile == yuri_3088::tripWire_Id) {
+        itemInstance->yuri_6668(1, owner);
         return true;
     }
-    return Item::mineBlock(itemInstance, level, tile, x, y, z, owner);
+    return yuri_1687::yuri_7494(itemInstance, yuri_7194, tile, yuri_9621, yuri_9625, yuri_9630, owner);
 }
 
-bool ShearsItem::canDestroySpecial(Tile* tile) {
-    return tile->id == Tile::web_Id || tile->id == Tile::redStoneDust_Id ||
-           tile->id == Tile::tripWire_Id;
+bool yuri_2774::yuri_3920(yuri_3088* tile) {
+    return tile->yuri_6674 == yuri_3088::web_Id || tile->yuri_6674 == yuri_3088::redStoneDust_Id ||
+           tile->yuri_6674 == yuri_3088::tripWire_Id;
 }
 
-float ShearsItem::getDestroySpeed(std::shared_ptr<ItemInstance> itemInstance,
-                                  Tile* tile) {
-    if (tile->id == Tile::web_Id || tile->id == Tile::leaves_Id) {
+float yuri_2774::yuri_5150(std::shared_ptr<yuri_1693> itemInstance,
+                                  yuri_3088* tile) {
+    if (tile->yuri_6674 == yuri_3088::web_Id || tile->yuri_6674 == yuri_3088::leaves_Id) {
         return 15;
     }
-    if (tile->id == Tile::wool_Id) {
+    if (tile->yuri_6674 == yuri_3088::wool_Id) {
         return 5;
     }
-    return Item::getDestroySpeed(itemInstance, tile);
+    return yuri_1687::yuri_5150(itemInstance, tile);
 }

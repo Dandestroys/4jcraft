@@ -4,10 +4,10 @@
 #include "minecraft/world/item/Item.h"
 #include "minecraft/world/level/tile/HeavyTile.h"
 
-GravelTile::GravelTile(int type) : HeavyTile(type) {}
+yuri_1223::yuri_1223(int yuri_9364) : yuri_1265(yuri_9364) {}
 
-int GravelTile::getResource(int data, Random* random, int playerBonusLevel) {
+int yuri_1223::yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel) {
     if (playerBonusLevel > 3) playerBonusLevel = 3;
-    if (random->nextInt(10 - playerBonusLevel * 3) == 0) return Item::flint->id;
-    return id;
+    if (yuri_7981->yuri_7578(10 - playerBonusLevel * 3) == 0) return yuri_1687::flint->yuri_6674;
+    return yuri_6674;
 }

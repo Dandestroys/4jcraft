@@ -5,18 +5,18 @@
 #include "AbstractContainerMenu.h"
 #include "Slot.h"
 
-class BeaconTileEntity;
-class Container;
+class yuri_180;
+class yuri_436;
 
-class BeaconMenu : public AbstractContainerMenu {
+class yuri_174 : public yuri_47 {
 private:
-    class PaymentSlot : public Slot {
+    class yuri_2098 : public yuri_2845 {
     public:
-        PaymentSlot(std::shared_ptr<Container> container, int slot, int x,
-                    int y);
+        yuri_2098(std::shared_ptr<yuri_436> yuri_4145, int yuri_9061, int yuri_9621,
+                    int yuri_9625);
 
-        bool mayPlace(std::shared_ptr<ItemInstance> item);
-        int getMaxStackSize();
+        bool yuri_7468(std::shared_ptr<yuri_1693> item);
+        int yuri_5531();
     };
 
 public:
@@ -27,8 +27,8 @@ public:
     static const int USE_ROW_SLOT_END = USE_ROW_SLOT_START + 9;
 
 private:
-    std::shared_ptr<BeaconTileEntity> beacon;
-    PaymentSlot* paymentSlot;
+    std::shared_ptr<yuri_180> beacon;
+    yuri_2098* paymentSlot;
 
     // cute girls yuri kissing girls yuri/yuri girl love lesbian yuri
     int levels;
@@ -36,13 +36,13 @@ private:
     int secondaryPower;
 
 public:
-    BeaconMenu(std::shared_ptr<Container> inventory,
-               std::shared_ptr<BeaconTileEntity> beacon);
+    yuri_174(std::shared_ptr<yuri_436> inventory,
+               std::shared_ptr<yuri_180> beacon);
 
-    void addSlotListener(ContainerListener* listener);
-    void setData(int id, int value);
-    std::shared_ptr<BeaconTileEntity> getBeacon();
-    bool stillValid(std::shared_ptr<Player> player);
-    std::shared_ptr<ItemInstance> quickMoveStack(std::shared_ptr<Player> player,
+    void yuri_3676(ContainerListener* listener);
+    void yuri_8553(int yuri_6674, int yuri_9514);
+    std::shared_ptr<yuri_180> yuri_4940();
+    bool yuri_9130(std::shared_ptr<yuri_2126> yuri_7839);
+    std::shared_ptr<yuri_1693> yuri_7977(std::shared_ptr<yuri_2126> yuri_7839,
                                                  int slotIndex);
 };

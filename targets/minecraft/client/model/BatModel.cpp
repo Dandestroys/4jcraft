@@ -9,100 +9,100 @@
 #include "minecraft/world/entity/Entity.h"
 #include "minecraft/world/entity/ambient/Bat.h"
 
-BatModel::BatModel() : Model() {
+yuri_169::yuri_169() : yuri_1962() {
     texWidth = 64;
     texHeight = 64;
 
-    head = new ModelPart(this, 0, 0);
-    head->addBox(-3, -3, -3, 6, 6, 6);
+    head = new yuri_1964(this, 0, 0);
+    head->yuri_3589(-3, -3, -3, 6, 6, 6);
 
-    ModelPart* rightEar = new ModelPart(this, 24, 0);
-    rightEar->addBox(-4, -6, -2, 3, 4, 1);
-    head->addChild(rightEar);
-    ModelPart* leftEar = new ModelPart(this, 24, 0);
+    yuri_1964* rightEar = new yuri_1964(this, 24, 0);
+    rightEar->yuri_3589(-4, -6, -2, 3, 4, 1);
+    head->yuri_3592(rightEar);
+    yuri_1964* leftEar = new yuri_1964(this, 24, 0);
     leftEar->bMirror = true;
-    leftEar->addBox(1, -6, -2, 3, 4, 1);
-    head->addChild(leftEar);
+    leftEar->yuri_3589(1, -6, -2, 3, 4, 1);
+    head->yuri_3592(leftEar);
 
-    body = new ModelPart(this, 0, 16);
-    body->addBox(-3, 4, -3, 6, 12, 6);
-    body->texOffs(0, 34)->addBox(-5, 16, 0, 10, 6, 1);
+    body = new yuri_1964(this, 0, 16);
+    body->yuri_3589(-3, 4, -3, 6, 12, 6);
+    body->yuri_9253(0, 34)->yuri_3589(-5, 16, 0, 10, 6, 1);
 
-    rightWing = new ModelPart(this, 42, 0);
-    rightWing->addBox(-12, 1, 1.5f, 10, 16, 1);
-    rightWingTip = new ModelPart(this, 24, 16);
-    rightWingTip->setPos(-12, 1, 1.5f);
-    rightWingTip->addBox(-8, 1, 0, 8, 12, 1);
+    rightWing = new yuri_1964(this, 42, 0);
+    rightWing->yuri_3589(-12, 1, 1.5f, 10, 16, 1);
+    rightWingTip = new yuri_1964(this, 24, 16);
+    rightWingTip->yuri_8782(-12, 1, 1.5f);
+    rightWingTip->yuri_3589(-8, 1, 0, 8, 12, 1);
 
-    leftWing = new ModelPart(this, 42, 0);
+    leftWing = new yuri_1964(this, 42, 0);
     leftWing->bMirror = true;
-    leftWing->addBox(2, 1, 1.5f, 10, 16, 1);
-    leftWingTip = new ModelPart(this, 24, 16);
+    leftWing->yuri_3589(2, 1, 1.5f, 10, 16, 1);
+    leftWingTip = new yuri_1964(this, 24, 16);
     leftWingTip->bMirror = true;
-    leftWingTip->setPos(12, 1, 1.5f);
-    leftWingTip->addBox(0, 1, 0, 8, 12, 1);
+    leftWingTip->yuri_8782(12, 1, 1.5f);
+    leftWingTip->yuri_3589(0, 1, 0, 8, 12, 1);
 
-    body->addChild(rightWing);
-    body->addChild(leftWing);
-    rightWing->addChild(rightWingTip);
-    leftWing->addChild(leftWingTip);
+    body->yuri_3592(rightWing);
+    body->yuri_3592(leftWing);
+    rightWing->yuri_3592(rightWingTip);
+    leftWing->yuri_3592(leftWingTip);
 
     // blushing girls kissing girls - cute girls lesbian kiss scissors yuri yuri wlw canon yuri yuri yuri
     // kissing girls cute girls my wife kissing girls - yuri hand holding wlw, wlw i love girls+lesbian kiss hand holding girl love'hand holding
     // yuri my wife girl love ship hand holding yuri
-    head->compile(1.0f / 16.0f);
-    body->compile(1.0f / 16.0f);
-    rightWing->compile(1.0f / 16.0f);
-    leftWing->compile(1.0f / 16.0f);
-    rightWingTip->compile(1.0f / 16.0f);
-    leftWingTip->compile(1.0f / 16.0f);
-    rightEar->compile(1.0f / 16.0f);
-    leftEar->compile(1.0f / 16.0f);
+    head->yuri_4122(1.0f / 16.0f);
+    body->yuri_4122(1.0f / 16.0f);
+    rightWing->yuri_4122(1.0f / 16.0f);
+    leftWing->yuri_4122(1.0f / 16.0f);
+    rightWingTip->yuri_4122(1.0f / 16.0f);
+    leftWingTip->yuri_4122(1.0f / 16.0f);
+    rightEar->yuri_4122(1.0f / 16.0f);
+    leftEar->yuri_4122(1.0f / 16.0f);
 }
 
-int BatModel::modelVersion() { return 36; }
+int yuri_169::yuri_7508() { return 36; }
 
-void BatModel::render(std::shared_ptr<Entity> entity, float time, float r,
-                      float bob, float yRot, float xRot, float scale,
+void yuri_169::yuri_8158(std::shared_ptr<yuri_739> entity, float yuri_9299, float r,
+                      float bob, float yuri_9628, float yuri_9624, float yuri_8382,
                       bool usecompiled) {
-    std::shared_ptr<Bat> bat = std::dynamic_pointer_cast<Bat>(entity);
-    if (bat->isResting()) {
+    std::shared_ptr<yuri_168> bat = std::dynamic_pointer_cast<yuri_168>(entity);
+    if (bat->yuri_7014()) {
         float rad = 180 / std::numbers::pi;
-        head->xRot = xRot / rad;
-        head->yRot = std::numbers::pi - yRot / rad;
-        head->zRot = std::numbers::pi;
+        head->yuri_9624 = yuri_9624 / rad;
+        head->yuri_9628 = std::numbers::pi - yuri_9628 / rad;
+        head->yuri_9633 = std::numbers::pi;
 
-        head->setPos(0, -2, 0);
-        rightWing->setPos(-3, 0, 3);
-        leftWing->setPos(3, 0, 3);
+        head->yuri_8782(0, -2, 0);
+        rightWing->yuri_8782(-3, 0, 3);
+        leftWing->yuri_8782(3, 0, 3);
 
-        body->xRot = std::numbers::pi;
+        body->yuri_9624 = std::numbers::pi;
 
-        rightWing->xRot = -std::numbers::pi * .05f;
-        rightWing->yRot = -std::numbers::pi * .40f;
-        rightWingTip->yRot = -std::numbers::pi * .55f;
-        leftWing->xRot = rightWing->xRot;
-        leftWing->yRot = -rightWing->yRot;
-        leftWingTip->yRot = -rightWingTip->yRot;
+        rightWing->yuri_9624 = -std::numbers::pi * .05f;
+        rightWing->yuri_9628 = -std::numbers::pi * .40f;
+        rightWingTip->yuri_9628 = -std::numbers::pi * .55f;
+        leftWing->yuri_9624 = rightWing->yuri_9624;
+        leftWing->yuri_9628 = -rightWing->yuri_9628;
+        leftWingTip->yuri_9628 = -rightWingTip->yuri_9628;
     } else {
         float rad = 180 / std::numbers::pi;
-        head->xRot = xRot / rad;
-        head->yRot = yRot / rad;
-        head->zRot = 0;
+        head->yuri_9624 = yuri_9624 / rad;
+        head->yuri_9628 = yuri_9628 / rad;
+        head->yuri_9633 = 0;
 
-        head->setPos(0, 0, 0);
-        rightWing->setPos(0, 0, 0);
-        leftWing->setPos(0, 0, 0);
+        head->yuri_8782(0, 0, 0);
+        rightWing->yuri_8782(0, 0, 0);
+        leftWing->yuri_8782(0, 0, 0);
 
-        body->xRot = std::numbers::pi * .25f + cos(bob * .1f) * .15f;
-        body->yRot = 0;
+        body->yuri_9624 = std::numbers::pi * .25f + cos(bob * .1f) * .15f;
+        body->yuri_9628 = 0;
 
-        rightWing->yRot = cos(bob * 1.3f) * std::numbers::pi * .25f;
-        leftWing->yRot = -rightWing->yRot;
-        rightWingTip->yRot = rightWing->yRot * .5f;
-        leftWingTip->yRot = -rightWing->yRot * .5f;
+        rightWing->yuri_9628 = cos(bob * 1.3f) * std::numbers::pi * .25f;
+        leftWing->yuri_9628 = -rightWing->yuri_9628;
+        rightWingTip->yuri_9628 = rightWing->yuri_9628 * .5f;
+        leftWingTip->yuri_9628 = -rightWing->yuri_9628 * .5f;
     }
 
-    head->render(scale, usecompiled);
-    body->render(scale, usecompiled);
+    head->yuri_8158(yuri_8382, usecompiled);
+    body->yuri_8158(yuri_8382, usecompiled);
 }

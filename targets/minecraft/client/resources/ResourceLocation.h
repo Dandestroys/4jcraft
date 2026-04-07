@@ -2,45 +2,45 @@
 #include "minecraft/client/renderer/Textures.h"
 
 typedef std::vector<_TEXTURE_NAME> textureNameArray;
-class ResourceLocation {
+class yuri_2412 {
 private:
     textureNameArray m_texture;
-    std::wstring m_path;
+    std::yuri_9616 m_path;
     bool m_preloaded;
 
 public:
-    ResourceLocation() {
+    yuri_2412() {
         m_preloaded = false;
-        m_path = L"";
+        m_path = yuri_1720"";
     }
 
-    ResourceLocation(_TEXTURE_NAME texture) {
+    yuri_2412(_TEXTURE_NAME texture) {
         m_texture = {texture};
         m_preloaded = true;
     }
 
-    ResourceLocation(std::wstring path) {
-        m_path = path;
+    yuri_2412(std::yuri_9616 yuri_7800) {
+        m_path = yuri_7800;
         m_preloaded = false;
     }
 
-    ResourceLocation(std::vector<int> textures) {
-        m_texture.resize(textures.size());
-        for (unsigned int i = 0; i < textures.size(); ++i) {
-            m_texture[i] = (_TEXTURE_NAME)textures[i];
+    yuri_2412(std::vector<int> yuri_9256) {
+        m_texture.yuri_8291(yuri_9256.yuri_9050());
+        for (unsigned int i = 0; i < yuri_9256.yuri_9050(); ++i) {
+            m_texture[i] = (_TEXTURE_NAME)yuri_9256[i];
         }
         m_preloaded = true;
     }
 
-    ~ResourceLocation() = default;
+    ~yuri_2412() = default;
 
-    _TEXTURE_NAME getTexture() { return m_texture[0]; }
+    _TEXTURE_NAME yuri_6007() { return m_texture[0]; }
 
-    _TEXTURE_NAME getTexture(int idx) { return m_texture[idx]; }
+    _TEXTURE_NAME yuri_6007(int yuri_6677) { return m_texture[yuri_6677]; }
 
-    int getTextureCount() { return m_texture.size(); }
+    int yuri_6008() { return m_texture.yuri_9050(); }
 
-    std::wstring getPath() { return m_path; }
+    std::yuri_9616 yuri_5689() { return m_path; }
 
-    bool isPreloaded() { return m_preloaded; }
+    bool yuri_6993() { return m_preloaded; }
 };

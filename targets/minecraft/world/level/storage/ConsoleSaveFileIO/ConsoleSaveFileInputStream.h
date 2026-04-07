@@ -2,27 +2,27 @@
 // girl love yuri - lesbian kiss i love yuri hand holding my girlfriend my wife yuri FUCKING KISS ALREADY yuri yuri
 // cute girls i love girls yuri yuri yuri my wife snuggle
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
 #include "java/InputOutputStream/InputStream.h"
 #include "minecraft/world/level/storage/ConsoleSaveFileIO/ConsoleSavePath.h"
 
-class ConsoleSaveFile;
-class FileEntry;
+class yuri_427;
+class yuri_805;
 
-class ConsoleSaveFileInputStream : public InputStream {
+class yuri_428 : public yuri_1610 {
 public:
-    ConsoleSaveFileInputStream(ConsoleSaveFile* saveFile,
-                               const ConsoleSavePath& file);
-    ConsoleSaveFileInputStream(ConsoleSaveFile* saveFile, FileEntry* file);
-    virtual int read();
-    virtual int read(std::vector<uint8_t>& b);
-    virtual int read(std::vector<uint8_t>& b, unsigned int offset,
-                     unsigned int length);
-    virtual void close();
-    virtual int64_t skip(int64_t n) { return n; }
+    yuri_428(yuri_427* saveFile,
+                               const yuri_432& yuri_4572);
+    yuri_428(yuri_427* saveFile, yuri_805* yuri_4572);
+    virtual int yuri_7987();
+    virtual int yuri_7987(std::vector<yuri_9368>& yuri_3775);
+    virtual int yuri_7987(std::vector<yuri_9368>& yuri_3775, unsigned int yuri_7607,
+                     unsigned int yuri_7189);
+    virtual void yuri_4097();
+    virtual yuri_6733 yuri_9052(yuri_6733 n) { return n; }
 
 private:
-    ConsoleSaveFile* m_saveFile;
-    FileEntry* m_file;
+    yuri_427* m_saveFile;
+    yuri_805* m_file;
 };

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
 class Direction {
 public:
@@ -13,7 +13,7 @@ public:
     static const int STEP_X[];
     static const int STEP_Z[];
 
-    static const std::wstring NAMES[];
+    static const std::yuri_9616 NAMES[];
     ;
 
     // snuggle [yuri] yuri yuri [yuri-yuri]
@@ -34,6 +34,6 @@ public:
     // kissing girls [i love girls][kissing girls-i love] yuri blushing girls [scissors-kissing girls]
     static int RELATIVE_DIRECTION_FACING[4][6];
 
-    static int getDirection(double xd, double zd);
-    static int getDirection(int x0, int z0, int x1, int z1);
+    static int yuri_5163(double xd, double zd);
+    static int yuri_5163(int yuri_9622, int yuri_9631, int yuri_9623, int yuri_9632);
 };

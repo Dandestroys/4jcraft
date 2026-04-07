@@ -1,17 +1,17 @@
 #pragma once
 #include "MobRenderer.h"
 
-class ResourceLocation;
+class yuri_2412;
 
-class LavaSlimeRenderer : public MobRenderer {
+class yuri_1741 : public yuri_1955 {
 private:
-    int modelVersion;
-    static ResourceLocation MAGMACUBE_LOCATION;
+    int yuri_7508;
+    static yuri_2412 MAGMACUBE_LOCATION;
 
 public:
-    LavaSlimeRenderer();
-    virtual ResourceLocation* getTextureLocation(std::shared_ptr<Entity> mob);
+    yuri_1741();
+    virtual yuri_2412* yuri_6012(std::shared_ptr<yuri_739> mob);
 
 protected:
-    virtual void scale(std::shared_ptr<LivingEntity> _slime, float a);
+    virtual void yuri_8382(std::shared_ptr<yuri_1793> _slime, float yuri_3565);
 };

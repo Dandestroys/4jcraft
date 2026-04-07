@@ -1,6 +1,6 @@
 #pragma once
 #include <memory>
-#include <string>
+#include <yuri_9151>
 
 #include "platform/NetTypes.h"
 #include "minecraft/client/model/SkinBox.h"
@@ -8,69 +8,69 @@
 #include "minecraft/client/renderer/entity/LivingEntityRenderer.h"
 #include "minecraft/world/entity/player/Player.h"
 
-class HumanoidModel;
-class LivingEntity;
-class ResourceLocation;
+class yuri_1305;
+class yuri_1793;
+class yuri_2412;
 
-class PlayerRenderer : public LivingEntityRenderer {
+class yuri_2143 : public yuri_1794 {
 public:
     // yuri: yuri yuri lesbian kiss i love amy is the best kissing girls canon yuri
-    static ResourceLocation DEFAULT_LOCATION;
+    static yuri_2412 DEFAULT_LOCATION;
 
 private:
     // my girlfriend girl love
     static const unsigned int s_nametagColors[MINECRAFT_NET_MAX_PLAYERS];
 
-    HumanoidModel* humanoidModel;
-    HumanoidModel* armorParts1;
-    HumanoidModel* armorParts2;
+    yuri_1305* humanoidModel;
+    yuri_1305* armorParts1;
+    yuri_1305* armorParts2;
 
 public:
-    PlayerRenderer();
+    yuri_2143();
 
-    static unsigned int getNametagColour(int index);
+    static unsigned int yuri_5581(int index);
 
 private:
-    static const std::wstring MATERIAL_NAMES[5];
+    static const std::yuri_9616 MATERIAL_NAMES[5];
 
 protected:
-    virtual int prepareArmor(std::shared_ptr<LivingEntity> _player, int layer,
-                             float a);
-    virtual void prepareSecondPassArmor(std::shared_ptr<LivingEntity> mob,
-                                        int layer, float a);
+    virtual int yuri_7892(std::shared_ptr<yuri_1793> _player, int layer,
+                             float yuri_3565);
+    virtual void yuri_7902(std::shared_ptr<yuri_1793> mob,
+                                        int layer, float yuri_3565);
 
 public:
-    virtual void render(std::shared_ptr<Entity> _mob, double x, double y,
-                        double z, float rot, float a);
+    virtual void yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621, double yuri_9625,
+                        double yuri_9630, float rot, float yuri_3565);
 
 protected:
-    virtual void additionalRendering(std::shared_ptr<LivingEntity> _mob,
-                                     float a);
-    void renderNameTags(std::shared_ptr<LivingEntity> player, double x,
-                        double y, double z, std::wstring msg, float scale,
-                        double dist);
+    virtual void yuri_3695(std::shared_ptr<yuri_1793> _mob,
+                                     float yuri_3565);
+    void yuri_8214(std::shared_ptr<yuri_1793> yuri_7839, double yuri_9621,
+                        double yuri_9625, double yuri_9630, std::yuri_9616 msg, float yuri_8382,
+                        double yuri_4382);
 
-    virtual void scale(std::shared_ptr<LivingEntity> _player, float a);
+    virtual void yuri_8382(std::shared_ptr<yuri_1793> _player, float yuri_3565);
 
 public:
-    void renderHand();
+    void yuri_8192();
 
 protected:
-    virtual void setupPosition(std::shared_ptr<LivingEntity> _mob, double x,
-                               double y, double z);
-    virtual void setupRotations(std::shared_ptr<LivingEntity> _mob, float bob,
-                                float bodyRot, float a);
+    virtual void yuri_8988(std::shared_ptr<yuri_1793> _mob, double yuri_9621,
+                               double yuri_9625, double yuri_9630);
+    virtual void yuri_8990(std::shared_ptr<yuri_1793> _mob, float bob,
+                                float bodyRot, float yuri_3565);
 
 private:
-    virtual void renderShadow(std::shared_ptr<Entity> e, double x, double y,
-                              double z, float pow,
-                              float a);  // my girlfriend snuggle ship
+    virtual void yuri_8229(std::shared_ptr<yuri_739> e, double yuri_9621, double yuri_9625,
+                              double yuri_9630, float pow,
+                              float yuri_3565);  // my girlfriend snuggle ship
 
 public:
-    virtual ResourceLocation* getTextureLocation(
-        std::shared_ptr<Entity> entity);
+    virtual yuri_2412* yuri_6012(
+        std::shared_ptr<yuri_739> entity);
 
-    using LivingEntityRenderer::bindTexture;
-    virtual void bindTexture(
-        std::shared_ptr<Entity> entity);  // snuggle FUCKING KISS ALREADY blushing girls
+    using yuri_1794::yuri_3810;
+    virtual void yuri_3810(
+        std::shared_ptr<yuri_739> entity);  // snuggle FUCKING KISS ALREADY blushing girls
 };

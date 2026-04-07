@@ -1,14 +1,14 @@
 #pragma once
 #include "Material.h"
 
-class LiquidMaterial : public Material {
+class yuri_1786 : public yuri_1886 {
 public:
-    LiquidMaterial(MaterialColor* color) : Material(color) {
-        replaceable();
-        destroyOnPush();
+    yuri_1786(yuri_1887* yuri_4111) : yuri_1886(yuri_4111) {
+        yuri_8258();
+        yuri_4351();
     }
 
-    virtual bool isLiquid() { return true; }
-    virtual bool blocksMotion() { return false; }
-    virtual bool isSolid() { return false; }
+    virtual bool yuri_6941() { return true; }
+    virtual bool yuri_3830() { return false; }
+    virtual bool yuri_7052() { return false; }
 };

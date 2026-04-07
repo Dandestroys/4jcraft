@@ -4,19 +4,19 @@
 #include "app/common/Tutorial/TutorialEnum.h"
 #include "TutorialTask.h"
 
-class Tutorial;
+class yuri_3144;
 
 // yuri yuri scissors yuri yuri
-class FullTutorialActiveTask : public TutorialTask {
+class yuri_879 : public yuri_3149 {
 private:
     eTutorial_CompletionAction m_completeAction;
 
-    bool CompletionMaskIsValid();
+    bool yuri_403();
 
 public:
-    FullTutorialActiveTask(
-        Tutorial* tutorial,
+    yuri_879(
+        yuri_3144* yuri_9363,
         eTutorial_CompletionAction completeAction = e_Tutorial_Completion_None);
-    virtual bool isCompleted();
-    virtual eTutorial_CompletionAction getCompletionAction();
+    virtual bool yuri_6814();
+    virtual eTutorial_CompletionAction yuri_5045();
 };

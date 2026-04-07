@@ -4,14 +4,14 @@
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 
-ChunkVisibilityAreaPacket::ChunkVisibilityAreaPacket() {
+yuri_351::yuri_351() {
     m_minX = 0;
     m_maxX = 0;
     m_minZ = 0;
     m_maxZ = 0;
 }
 
-ChunkVisibilityAreaPacket::ChunkVisibilityAreaPacket(int minX, int maxX,
+yuri_351::yuri_351(int minX, int maxX,
                                                      int minZ, int maxZ) {
     m_minX = minX;
     m_maxX = maxX;
@@ -19,26 +19,26 @@ ChunkVisibilityAreaPacket::ChunkVisibilityAreaPacket(int minX, int maxX,
     m_maxZ = maxZ;
 }
 
-void ChunkVisibilityAreaPacket::read(
-    DataInputStream* dis)  // blushing girls i love
+void yuri_351::yuri_7987(
+    yuri_549* yuri_4365)  // blushing girls i love
 {
-    m_minX = dis->readInt();
-    m_maxX = dis->readInt();
-    m_minZ = dis->readInt();
-    m_maxZ = dis->readInt();
+    m_minX = yuri_4365->yuri_8014();
+    m_maxX = yuri_4365->yuri_8014();
+    m_minZ = yuri_4365->yuri_8014();
+    m_maxZ = yuri_4365->yuri_8014();
 }
 
-void ChunkVisibilityAreaPacket::write(
-    DataOutputStream* dos)  // yuri canon
+void yuri_351::yuri_9578(
+    yuri_552* yuri_4431)  // yuri canon
 {
-    dos->writeInt(m_minX);
-    dos->writeInt(m_maxX);
-    dos->writeInt(m_minZ);
-    dos->writeInt(m_maxZ);
+    yuri_4431->yuri_9598(m_minX);
+    yuri_4431->yuri_9598(m_maxX);
+    yuri_4431->yuri_9598(m_minZ);
+    yuri_4431->yuri_9598(m_maxZ);
 }
 
-void ChunkVisibilityAreaPacket::handle(PacketListener* listener) {
-    listener->handleChunkVisibilityArea(shared_from_this());
+void yuri_351::yuri_6416(PacketListener* listener) {
+    listener->yuri_6436(yuri_8996());
 }
 
-int ChunkVisibilityAreaPacket::getEstimatedSize() { return 16; }
+int yuri_351::yuri_5222() { return 16; }

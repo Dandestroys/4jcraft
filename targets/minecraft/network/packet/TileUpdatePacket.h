@@ -5,26 +5,26 @@
 #include "Packet.h"
 #include "minecraft/network/packet/Packet.h"
 
-class Level;
+class yuri_1758;
 
-class TileUpdatePacket : public Packet,
-                         public std::enable_shared_from_this<TileUpdatePacket> {
+class yuri_3102 : public yuri_2081,
+                         public std::enable_shared_from_this<yuri_3102> {
 public:
-    int x, y, z;
-    int block, data;
+    int yuri_9621, yuri_9625, yuri_9630;
+    int block, yuri_4295;
     int levelIdx;
 
-    TileUpdatePacket();
-    TileUpdatePacket(int x, int y, int z, Level* level);
+    yuri_3102();
+    yuri_3102(int yuri_9621, int yuri_9625, int yuri_9630, yuri_1758* yuri_7194);
 
-    virtual void read(DataInputStream* dis);
-    virtual void write(DataOutputStream* dos);
-    virtual void handle(PacketListener* listener);
-    virtual int getEstimatedSize();
+    virtual void yuri_7987(yuri_549* yuri_4365);
+    virtual void yuri_9578(yuri_552* yuri_4431);
+    virtual void yuri_6416(PacketListener* listener);
+    virtual int yuri_5222();
 
 public:
-    static std::shared_ptr<Packet> create() {
-        return std::make_shared<TileUpdatePacket>();
+    static std::shared_ptr<yuri_2081> yuri_4202() {
+        return std::make_shared<yuri_3102>();
     }
-    virtual int getId() { return 53; }
+    virtual int yuri_5390() { return 53; }
 };

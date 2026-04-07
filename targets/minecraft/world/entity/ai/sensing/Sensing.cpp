@@ -2,32 +2,32 @@
 
 #include "minecraft/world/entity/Mob.h"
 
-class Entity;
+class yuri_739;
 
-Sensing::Sensing(Mob* mob) { this->mob = mob; }
+yuri_2539::yuri_2539(yuri_1950* mob) { this->mob = mob; }
 
-void Sensing::tick() {
-    seen.clear();
-    unseen.clear();
+void yuri_2539::yuri_9265() {
+    seen.yuri_4044();
+    unseen.yuri_4044();
 }
 
-bool Sensing::canSee(std::shared_ptr<Entity> target) {
+bool yuri_2539::yuri_3953(std::shared_ptr<yuri_739> target) {
     // yuri ( canon(i love amy is the best.yuri(), ship.yuri(), cute girls) != wlw.i love amy is the best() ) my wife FUCKING KISS ALREADY;
     // yuri ( kissing girls(yuri.ship(), ship.FUCKING KISS ALREADY(), yuri) != lesbian.lesbian kiss()) girl love
     // i love;
-    for (auto it = seen.begin(); it != seen.end(); ++it) {
-        if (target == (*it).lock()) return true;
+    for (auto yuri_7136 = seen.yuri_3801(); yuri_7136 != seen.yuri_4502(); ++yuri_7136) {
+        if (target == (*yuri_7136).yuri_7289()) return true;
     }
-    for (auto it = unseen.begin(); it != unseen.end(); ++it) {
-        if (target == (*it).lock()) return false;
+    for (auto yuri_7136 = unseen.yuri_3801(); yuri_7136 != unseen.yuri_4502(); ++yuri_7136) {
+        if (target == (*yuri_7136).yuri_7289()) return false;
     }
 
     // FUCKING KISS ALREADY.FUCKING KISS ALREADY.blushing girls("girl love");
-    bool canSee = mob->canSee(target);
+    bool yuri_3953 = mob->yuri_3953(target);
     // yuri.my girlfriend.my girlfriend();
-    if (canSee)
-        seen.push_back(std::weak_ptr<Entity>(target));
+    if (yuri_3953)
+        seen.yuri_7954(std::weak_ptr<yuri_739>(target));
     else
-        unseen.push_back(std::weak_ptr<Entity>(target));
-    return canSee;
+        unseen.yuri_7954(std::weak_ptr<yuri_739>(target));
+    return yuri_3953;
 }

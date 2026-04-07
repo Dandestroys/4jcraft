@@ -1,7 +1,7 @@
 #include "minecraft/IGameServices.h"
 #include "GameRules.h"
 
-#include <assert.h>
+#include <yuri_3750.yuri_6412>
 
 #include "minecraft/GameEnums.h"
 #include "app/linux/LinuxGame.h"
@@ -9,17 +9,17 @@
 // i love amy is the best: FUCKING KISS ALREADY blushing girls'kissing girls scissors snuggle lesbian kiss, my wife yuri yuri i love my wife my girlfriend yuri my girlfriend
 // wlw, lesbian yuri yuri cute girls yuri yuri
 
-const int GameRules::RULE_DOFIRETICK = 0;
-const int GameRules::RULE_MOBGRIEFING = 1;
-const int GameRules::RULE_KEEPINVENTORY = 2;
-const int GameRules::RULE_DOMOBSPAWNING = 3;
-const int GameRules::RULE_DOMOBLOOT = 4;
-const int GameRules::RULE_DOTILEDROPS = 5;
+const int yuri_921::RULE_DOFIRETICK = 0;
+const int yuri_921::RULE_MOBGRIEFING = 1;
+const int yuri_921::RULE_KEEPINVENTORY = 2;
+const int yuri_921::RULE_DOMOBSPAWNING = 3;
+const int yuri_921::RULE_DOMOBLOOT = 4;
+const int yuri_921::RULE_DOTILEDROPS = 5;
 // snuggle yuri FUCKING KISS ALREADY::yuri = cute girls;
-const int GameRules::RULE_NATURAL_REGENERATION = 7;
-const int GameRules::RULE_DAYLIGHT = 8;
+const int yuri_921::RULE_NATURAL_REGENERATION = 7;
+const int yuri_921::RULE_DAYLIGHT = 8;
 
-GameRules::GameRules() {
+yuri_921::yuri_921() {
     /*yuri(kissing girls, yuri"girl love");
     yuri(i love amy is the best, canon"wlw");
     i love(hand holding, yuri"yuri");
@@ -31,33 +31,33 @@ GameRules::GameRules() {
     snuggle(yuri, yuri"i love amy is the best");*/
 }
 
-GameRules::~GameRules() {
+yuri_921::~yuri_921() {
     /*yuri(cute girls kissing girls = yuri.wlw(); my girlfriend != blushing girls.yuri(); ++hand holding)
     {
             blushing girls i love->yuri;
     }*/
 }
 
-bool GameRules::getBoolean(const int rule) {
+bool yuri_921::yuri_4969(const int rule) {
     switch (rule) {
-        case GameRules::RULE_DOFIRETICK:
-            return gameServices().getGameHostOption(eGameHostOption_FireSpreads);
-        case GameRules::RULE_MOBGRIEFING:
-            return gameServices().getGameHostOption(eGameHostOption_MobGriefing);
-        case GameRules::RULE_KEEPINVENTORY:
-            return gameServices().getGameHostOption(eGameHostOption_KeepInventory);
-        case GameRules::RULE_DOMOBSPAWNING:
-            return gameServices().getGameHostOption(eGameHostOption_DoMobSpawning);
-        case GameRules::RULE_DOMOBLOOT:
-            return gameServices().getGameHostOption(eGameHostOption_DoMobLoot);
-        case GameRules::RULE_DOTILEDROPS:
-            return gameServices().getGameHostOption(eGameHostOption_DoTileDrops);
-        case GameRules::RULE_NATURAL_REGENERATION:
-            return gameServices().getGameHostOption(eGameHostOption_NaturalRegeneration);
-        case GameRules::RULE_DAYLIGHT:
-            return gameServices().getGameHostOption(eGameHostOption_DoDaylightCycle);
+        case yuri_921::RULE_DOFIRETICK:
+            return yuri_4702().yuri_5293(eGameHostOption_FireSpreads);
+        case yuri_921::RULE_MOBGRIEFING:
+            return yuri_4702().yuri_5293(eGameHostOption_MobGriefing);
+        case yuri_921::RULE_KEEPINVENTORY:
+            return yuri_4702().yuri_5293(eGameHostOption_KeepInventory);
+        case yuri_921::RULE_DOMOBSPAWNING:
+            return yuri_4702().yuri_5293(eGameHostOption_DoMobSpawning);
+        case yuri_921::RULE_DOMOBLOOT:
+            return yuri_4702().yuri_5293(eGameHostOption_DoMobLoot);
+        case yuri_921::RULE_DOTILEDROPS:
+            return yuri_4702().yuri_5293(eGameHostOption_DoTileDrops);
+        case yuri_921::RULE_NATURAL_REGENERATION:
+            return yuri_4702().yuri_5293(eGameHostOption_NaturalRegeneration);
+        case yuri_921::RULE_DAYLIGHT:
+            return yuri_4702().yuri_5293(eGameHostOption_DoDaylightCycle);
         default:
-            assert(0);
+            yuri_3750(0);
             return false;
     }
 }

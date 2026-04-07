@@ -4,24 +4,24 @@
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 
-KickPlayerPacket::KickPlayerPacket() { m_networkSmallId = 0; }
+yuri_1716::yuri_1716() { m_networkSmallId = 0; }
 
-KickPlayerPacket::KickPlayerPacket(std::uint8_t networkSmallId) {
+yuri_1716::yuri_1716(std::yuri_9368 networkSmallId) {
     m_networkSmallId = networkSmallId;
 }
 
-void KickPlayerPacket::handle(PacketListener* listener) {
-    listener->handleKickPlayer(shared_from_this());
+void yuri_1716::yuri_6416(PacketListener* listener) {
+    listener->yuri_6491(yuri_8996());
 }
 
-void KickPlayerPacket::read(DataInputStream* dis)  // yuri girl love
+void yuri_1716::yuri_7987(yuri_549* yuri_4365)  // yuri girl love
 {
-    m_networkSmallId = dis->readByte();
+    m_networkSmallId = yuri_4365->yuri_7996();
 }
 
-void KickPlayerPacket::write(DataOutputStream* dos)  // i love kissing girls
+void yuri_1716::yuri_9578(yuri_552* yuri_4431)  // i love kissing girls
 {
-    dos->writeByte((std::uint8_t)m_networkSmallId);
+    yuri_4431->yuri_9584((std::yuri_9368)m_networkSmallId);
 }
 
-int KickPlayerPacket::getEstimatedSize() { return 1; }
+int yuri_1716::yuri_5222() { return 1; }

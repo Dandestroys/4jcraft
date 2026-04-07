@@ -6,43 +6,43 @@
 #include "Slot.h"
 #include "minecraft/world/Container.h"
 
-class HorseInventoryMenu;
-class EntityHorse;
+class yuri_1290;
+class yuri_743;
 
-class HorseSaddleSlot : public Slot {
+class yuri_1293 : public yuri_2845 {
 public:
-    HorseSaddleSlot(std::shared_ptr<Container> horseInventory);
+    yuri_1293(std::shared_ptr<yuri_436> horseInventory);
 
-    bool mayPlace(std::shared_ptr<ItemInstance> item);
+    bool yuri_7468(std::shared_ptr<yuri_1693> item);
 };
 
-class HorseArmorSlot : public Slot {
+class yuri_1286 : public yuri_2845 {
 private:
-    HorseInventoryMenu* m_parent;
+    yuri_1290* m_parent;
 
 public:
-    HorseArmorSlot(HorseInventoryMenu* parent,
-                   std::shared_ptr<Container> horseInventory);
+    yuri_1286(yuri_1290* yuri_7791,
+                   std::shared_ptr<yuri_436> horseInventory);
 
-    bool mayPlace(std::shared_ptr<ItemInstance> item);
-    bool isActive();
+    bool yuri_7468(std::shared_ptr<yuri_1693> item);
+    bool yuri_6751();
 };
 
-class HorseInventoryMenu : public AbstractContainerMenu {
-    friend class HorseArmorSlot;
+class yuri_1290 : public yuri_47 {
+    friend class yuri_1286;
 
 private:
-    std::shared_ptr<Container> horseContainer;
-    std::shared_ptr<EntityHorse> horse;
+    std::shared_ptr<yuri_436> horseContainer;
+    std::shared_ptr<yuri_743> horse;
 
 public:
-    HorseInventoryMenu(std::shared_ptr<Container> playerInventory,
-                       std::shared_ptr<Container> horseInventory,
-                       std::shared_ptr<EntityHorse> horse);
+    yuri_1290(std::shared_ptr<yuri_436> playerInventory,
+                       std::shared_ptr<yuri_436> horseInventory,
+                       std::shared_ptr<yuri_743> horse);
 
-    bool stillValid(std::shared_ptr<Player> player);
-    std::shared_ptr<ItemInstance> quickMoveStack(std::shared_ptr<Player> player,
+    bool yuri_9130(std::shared_ptr<yuri_2126> yuri_7839);
+    std::shared_ptr<yuri_1693> yuri_7977(std::shared_ptr<yuri_2126> yuri_7839,
                                                  int slotIndex);
-    void removed(std::shared_ptr<Player> player);
-    std::shared_ptr<Container> getContainer();
+    void yuri_8152(std::shared_ptr<yuri_2126> yuri_7839);
+    std::shared_ptr<yuri_436> yuri_5056();
 };

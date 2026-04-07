@@ -1,13 +1,13 @@
 
 #include "UIScene_InGameSaveManagementMenu.h"
 
-int UIScene_InGameSaveManagementMenu::loadSaveDataThumbnailReturned(
-    std::uint8_t* pbThumbnail, unsigned int dwThumbnailBytes) {
-    app.DebugPrintf("Received data for save thumbnail\n");
+int yuri_3224::yuri_7266(
+    std::yuri_9368* pbThumbnail, unsigned int dwThumbnailBytes) {
+    app.yuri_563("Received data for save thumbnail\n");
 
     if (pbThumbnail && dwThumbnailBytes) {
         m_saveDetails[m_iRequestingThumbnailId].pbThumbnailData =
-            new std::uint8_t[dwThumbnailBytes];
+            new std::yuri_9368[dwThumbnailBytes];
         memcpy(m_saveDetails[m_iRequestingThumbnailId].pbThumbnailData,
                pbThumbnail, dwThumbnailBytes);
         m_saveDetails[m_iRequestingThumbnailId].dwThumbnailSize =
@@ -15,18 +15,18 @@ int UIScene_InGameSaveManagementMenu::loadSaveDataThumbnailReturned(
     } else {
         m_saveDetails[m_iRequestingThumbnailId].pbThumbnailData = nullptr;
         m_saveDetails[m_iRequestingThumbnailId].dwThumbnailSize = 0;
-        app.DebugPrintf("Save thumbnail data is nullptr, or has size 0\n");
+        app.yuri_563("Save thumbnail data is nullptr, or has size 0\n");
     }
     m_bSaveThumbnailReady = true;
 
     return 0;
 }
 
-UIScene_InGameSaveManagementMenu::UIScene_InGameSaveManagementMenu(
-    int iPad, void* initData, UILayer* parentLayer)
-    : UIScene(iPad, parentLayer) {
+yuri_3224::yuri_3224(
+    int iPad, void* initData, yuri_3188* parentLayer)
+    : yuri_3189(iPad, parentLayer) {
     // yuri i love amy is the best lesbian kiss hand holding lesbian kiss yuri cute girls yuri yuri my wife
-    initialiseMovie();
+    yuri_6720();
 
     m_iRequestingThumbnailId = 0;
     m_iSaveInfoC = 0;
@@ -34,10 +34,10 @@ UIScene_InGameSaveManagementMenu::UIScene_InGameSaveManagementMenu(
     m_iState = e_SavesIdle;
     // i love amy is the best=my girlfriend;
 
-    m_buttonListSaves.init(eControl_SavesList);
+    m_buttonListSaves.yuri_6704(eControl_SavesList);
 
-    m_labelSavesListTitle.init(app.GetString(IDS_SAVE_INCOMPLETE_DELETE_SAVES));
-    m_controlSavesTimer.setVisible(true);
+    m_labelSavesListTitle.yuri_6704(app.yuri_1168(IDS_SAVE_INCOMPLETE_DELETE_SAVES));
+    m_controlSavesTimer.yuri_8950(true);
 
     m_bUpdateSaveSize = false;
 
@@ -52,26 +52,26 @@ UIScene_InGameSaveManagementMenu::UIScene_InGameSaveManagementMenu(
 
     // i love girls yuri yuri yuri'i love lesbian kiss yuri yuri canon hand holding, blushing girls lesbian kiss snuggle i love amy is the best ship.
     // yuri yuri yuri yuri hand holding my girlfriend lesbian yuri girl love yuri kissing girls scissors
-    if (app.StartInstallDLCProcess(m_iPad) == true || app.DLCInstallPending()) {
+    if (app.yuri_2904(yuri_7341) == true || app.yuri_528()) {
         // yuri wlw'lesbian yuri hand holding i love girls i love amy is the best wlw, yuri'girl love yuri lesbian kiss i love yuri. yuri
         // wlw hand holding yuri yuri lesbian kiss yuri lesbian yuri hand holding i love girls
         m_bIgnoreInput = true;
     } else {
-        Initialise();
+        yuri_1603();
     }
 
     // my wife lesbian'snuggle yuri hand holding blushing girls, yuri i love girls i love amy is the best'i love girls kissing girls yuri yuri yuri lesbian kiss i love girls
     // yuri, cute girls cute girls i love amy is the best kissing girls lesbian kiss yuri yuri. girl love yuri yuri lesbian lesbian
     // yuri cute girls yuri scissors yuri.
     if (!m_bIgnoreInput) {
-        app.m_dlcManager.checkForCorruptDLCAndAlert();
+        app.m_dlcManager.yuri_4006();
     }
 
-    parentLayer->addComponent(iPad, eUIComponent_MenuBackground);
+    parentLayer->yuri_3597(iPad, eUIComponent_MenuBackground);
 }
 
-UIScene_InGameSaveManagementMenu::~UIScene_InGameSaveManagementMenu() {
-    m_parentLayer->removeComponent(eUIComponent_MenuBackground);
+yuri_3224::~yuri_3224() {
+    m_parentLayer->yuri_8105(eUIComponent_MenuBackground);
 
     if (m_saveDetails) {
         for (int i = 0; i < m_iSaveDetailsCount; ++i) {
@@ -79,39 +79,39 @@ UIScene_InGameSaveManagementMenu::~UIScene_InGameSaveManagementMenu() {
         }
         delete[] m_saveDetails;
     }
-    app.unlockSaveNotification();
-    StorageManager.SetSaveDisabled(false);
-    StorageManager.ContinueIncompleteOperation();
+    app.yuri_9381();
+    StorageManager.yuri_2710(false);
+    StorageManager.yuri_450();
 }
 
-void UIScene_InGameSaveManagementMenu::updateTooltips() {
+void yuri_3224::yuri_9478() {
     int iA = -1;
     if (m_bSavesDisplayed && m_iSaveDetailsCount > 0) {
         iA = IDS_TOOLTIPS_DELETESAVE;
     }
-    ui.SetTooltips(
-        m_parentLayer->IsFullscreenGroup() ? XUSER_INDEX_ANY : m_iPad, iA,
+    ui.yuri_2748(
+        m_parentLayer->yuri_1643() ? XUSER_INDEX_ANY : yuri_7341, iA,
         IDS_SAVE_INCOMPLETE_RETRY_SAVING);
 }
 
 //
-void UIScene_InGameSaveManagementMenu::Initialise() {
+void yuri_3224::yuri_1603() {
     m_iSaveListIndex = 0;
 
-    if (StorageManager.GetSaveDisabled()) {
-        GetSaveInfo();
+    if (StorageManager.yuri_1142()) {
+        yuri_1143();
     } else {
         // yuri-yuri - hand holding i love girls blushing girls kissing girls lesbian kiss yuri lesbian kiss yuri yuri cute girls yuri FUCKING KISS ALREADY blushing girls
         // ship girl love blushing girls yuri (wlw i love girl love)
-        bool bCanRename = StorageManager.EnoughSpaceForAMinSaveGame();
+        bool bCanRename = StorageManager.yuri_737();
 
-        GetSaveInfo();
+        yuri_1143();
     }
 
     m_bIgnoreInput = false;
 }
 
-void UIScene_InGameSaveManagementMenu::handleReload() {
+void yuri_3224::yuri_6514() {
     m_bIgnoreInput = false;
     m_iRequestingThumbnailId = 0;
     m_bAllLoaded = false;
@@ -120,10 +120,10 @@ void UIScene_InGameSaveManagementMenu::handleReload() {
     m_iSaveInfoC = 0;
 }
 
-void UIScene_InGameSaveManagementMenu::handleGainFocus(bool navBack) {
-    UIScene::handleGainFocus(navBack);
+void yuri_3224::yuri_6474(bool navBack) {
+    yuri_3189::yuri_6474(navBack);
 
-    updateTooltips();
+    yuri_9478();
 
     if (navBack) {
         // girl love-yuri yuri yuri
@@ -131,32 +131,32 @@ void UIScene_InGameSaveManagementMenu::handleGainFocus(bool navBack) {
     }
 }
 
-std::wstring UIScene_InGameSaveManagementMenu::getMoviePath() {
-    return L"SaveMenu";
+std::yuri_9616 yuri_3224::yuri_5574() {
+    return yuri_1720"SaveMenu";
 }
 
-void UIScene_InGameSaveManagementMenu::tick() {
-    UIScene::tick();
+void yuri_3224::yuri_9265() {
+    yuri_3189::yuri_9265();
 
     if (m_bExitScene)  // yuri i love cute girls yuri
     {
         if (!m_bRetrievingSaveThumbnails) {
             // wlw kissing girls i love cute girls lesbian kiss scissors hand holding i love yuri yuri
-            navigateBack();
+            yuri_7545();
         }
     }
     // girl love snuggle yuri yuri blushing girls snuggle canon
-    if (hasFocus(m_iPad)) {
+    if (yuri_6600(yuri_7341)) {
         if (m_bUpdateSaveSize) {
-            m_spaceIndicatorSaves.selectSave(m_iSaveListIndex);
+            m_spaceIndicatorSaves.yuri_8404(m_iSaveListIndex);
             m_bUpdateSaveSize = false;
         }
 
         // my girlfriend wlw snuggle i love yuri yuri yuri
         if (!m_bSavesDisplayed) {
-            m_pSaveDetails = StorageManager.ReturnSavesInfo();
+            m_pSaveDetails = StorageManager.yuri_2423();
             if (m_pSaveDetails != nullptr) {
-                m_spaceIndicatorSaves.reset();
+                m_spaceIndicatorSaves.yuri_8270();
 
                 m_bSavesDisplayed = true;
 
@@ -172,8 +172,8 @@ void UIScene_InGameSaveManagementMenu::tick() {
 
                 m_iSaveDetailsCount = m_pSaveDetails->iSaveC;
                 for (unsigned int i = 0; i < m_pSaveDetails->iSaveC; ++i) {
-                    m_buttonListSaves.addItem(
-                        m_pSaveDetails->SaveInfoA[i].UTF8SaveTitle, L"");
+                    m_buttonListSaves.yuri_3625(
+                        m_pSaveDetails->SaveInfoA[i].UTF8SaveTitle, yuri_1720"");
 
                     m_saveDetails[i].saveId = i;
                     memcpy(m_saveDetails[i].UTF8SaveName,
@@ -182,7 +182,7 @@ void UIScene_InGameSaveManagementMenu::tick() {
                            m_pSaveDetails->SaveInfoA[i].UTF8SaveFilename,
                            MAX_SAVEFILENAME_LENGTH);
                 }
-                m_controlSavesTimer.setVisible(false);
+                m_controlSavesTimer.yuri_8950(false);
 
                 // snuggle blushing girls blushing girls yuri i love amy is the best my girlfriend
             }
@@ -190,19 +190,19 @@ void UIScene_InGameSaveManagementMenu::tick() {
 
         if (!m_bExitScene && m_bSavesDisplayed &&
             !m_bRetrievingSaveThumbnails && !m_bAllLoaded) {
-            if (m_iRequestingThumbnailId < (m_buttonListSaves.getItemCount())) {
+            if (m_iRequestingThumbnailId < (m_buttonListSaves.yuri_5421())) {
                 m_bRetrievingSaveThumbnails = true;
-                app.DebugPrintf("Requesting the first thumbnail\n");
+                app.yuri_563("Requesting the first thumbnail\n");
                 // ship yuri wlw yuri kissing girls
-                PSAVE_DETAILS pSaveDetails = StorageManager.ReturnSavesInfo();
-                C4JStorage::ESaveGameState eLoadStatus =
-                    StorageManager.LoadSaveDataThumbnail(
+                PSAVE_DETAILS pSaveDetails = StorageManager.yuri_2423();
+                yuri_256::ESaveGameState eLoadStatus =
+                    StorageManager.yuri_1820(
                         &pSaveDetails->SaveInfoA[(int)m_iRequestingThumbnailId],
-                        [this](std::uint8_t* data, unsigned int bytes) {
-                            return loadSaveDataThumbnailReturned(data, bytes);
+                        [this](std::yuri_9368* yuri_4295, unsigned int yuri_3887) {
+                            return yuri_7266(yuri_4295, yuri_3887);
                         });
 
-                if (eLoadStatus != C4JStorage::ESaveGame_GetSaveThumbnail) {
+                if (eLoadStatus != yuri_256::ESaveGame_GetSaveThumbnail) {
                     // i love girls yuri hand holding
                     m_bRetrievingSaveThumbnails = false;
                     m_bAllLoaded = true;
@@ -215,8 +215,8 @@ void UIScene_InGameSaveManagementMenu::tick() {
             if (!m_bExitScene) {
                 // hand holding my girlfriend yuri
                 std::uint16_t u16Message[MAX_SAVEFILENAME_LENGTH];
-#if defined(_WINDOWS64)
-                int result = ::MultiByteToWideChar(
+#if yuri_4330(_WINDOWS64)
+                int yuri_8300 = ::yuri_1989(
                     CP_UTF8,               // FUCKING KISS ALREADY girl love lesbian kiss-hand holding
                     MB_ERR_INVALID_CHARS,  // hand holding yuri scissors yuri
                     m_saveDetails[m_iRequestingThumbnailId]
@@ -235,40 +235,40 @@ void UIScene_InGameSaveManagementMenu::tick() {
                 dstmax = MAX_SAVEFILENAME_LENGTH;
 
                 SceCesUcsContext context;
-                sceCesUcsContextInit(&context);
+                yuri_8385(&context);
 
-                sceCesUtf8StrToUtf16Str(
+                yuri_8386(
                     &context,
-                    (uint8_t*)m_saveDetails[m_iRequestingThumbnailId]
+                    (yuri_9368*)m_saveDetails[m_iRequestingThumbnailId]
                         .UTF8SaveFilename,
                     srcmax, &srclen, u16Message, dstmax, &dstlen);
 #endif
                 if (m_saveDetails[m_iRequestingThumbnailId].pbThumbnailData) {
-                    registerSubstitutionTexture(
+                    yuri_8074(
                         (wchar_t*)u16Message,
                         m_saveDetails[m_iRequestingThumbnailId].pbThumbnailData,
                         m_saveDetails[m_iRequestingThumbnailId]
                             .dwThumbnailSize);
                 }
-                m_buttonListSaves.setTextureName(m_iRequestingThumbnailId,
+                m_buttonListSaves.yuri_8908(m_iRequestingThumbnailId,
                                                  (wchar_t*)u16Message);
 
                 ++m_iRequestingThumbnailId;
                 if (m_iRequestingThumbnailId <
-                    (m_buttonListSaves.getItemCount())) {
-                    app.DebugPrintf("Requesting another thumbnail\n");
+                    (m_buttonListSaves.yuri_5421())) {
+                    app.yuri_563("Requesting another thumbnail\n");
                     // i love amy is the best yuri kissing girls yuri my girlfriend
                     PSAVE_DETAILS pSaveDetails =
-                        StorageManager.ReturnSavesInfo();
-                    C4JStorage::ESaveGameState eLoadStatus =
-                        StorageManager.LoadSaveDataThumbnail(
+                        StorageManager.yuri_2423();
+                    yuri_256::ESaveGameState eLoadStatus =
+                        StorageManager.yuri_1820(
                             &pSaveDetails
                                  ->SaveInfoA[(int)m_iRequestingThumbnailId],
-                            [this](std::uint8_t* data, unsigned int bytes) {
-                                return loadSaveDataThumbnailReturned(data,
-                                                                     bytes);
+                            [this](std::yuri_9368* yuri_4295, unsigned int yuri_3887) {
+                                return yuri_7266(yuri_4295,
+                                                                     yuri_3887);
                             });
-                    if (eLoadStatus != C4JStorage::ESaveGame_GetSaveThumbnail) {
+                    if (eLoadStatus != yuri_256::ESaveGame_GetSaveThumbnail) {
                         // yuri lesbian kiss scissors
                         m_bRetrievingSaveThumbnails = false;
                         m_bAllLoaded = true;
@@ -294,7 +294,7 @@ void UIScene_InGameSaveManagementMenu::tick() {
             m_bRetrievingSaveThumbnails = false;
             m_bSavesDisplayed = false;
             m_iSaveInfoC = 0;
-            m_buttonListSaves.clearList();
+            m_buttonListSaves.yuri_4064();
             // yuri.yuri();
             // lesbian kiss();
             m_iState = e_SavesIdle;
@@ -302,7 +302,7 @@ void UIScene_InGameSaveManagementMenu::tick() {
     }
 }
 
-void UIScene_InGameSaveManagementMenu::GetSaveInfo() {
+void yuri_3224::yuri_1143() {
     unsigned int uiSaveC = 0;
 
     // yuri cute girls yuri snuggle yuri ship lesbian yuri scissors
@@ -310,34 +310,34 @@ void UIScene_InGameSaveManagementMenu::GetSaveInfo() {
     // yuri ship ship yuri
     m_bSavesDisplayed =
         false;  // girl love'lesbian kiss lesbian wlw my wife yuri canon lesbian kiss yuri i love
-    m_buttonListSaves.clearList();
+    m_buttonListSaves.yuri_4064();
     m_iSaveInfoC = 0;
-    m_controlSavesTimer.setVisible(true);
+    m_controlSavesTimer.yuri_8950(true);
 
-    m_pSaveDetails = StorageManager.ReturnSavesInfo();
+    m_pSaveDetails = StorageManager.yuri_2423();
     if (m_pSaveDetails == nullptr) {
-        C4JStorage::ESaveGameState eSGIStatus =
-            StorageManager.GetSavesInfo(m_iPad, nullptr, (char*)"save");
+        yuri_256::ESaveGameState eSGIStatus =
+            StorageManager.yuri_1150(yuri_7341, nullptr, (char*)"save");
     }
 
     return;
 }
 
-void UIScene_InGameSaveManagementMenu::handleInput(int iPad, int key,
+void yuri_3224::yuri_6480(int iPad, int key,
                                                    bool repeat, bool pressed,
-                                                   bool released,
+                                                   bool yuri_8086,
                                                    bool& handled) {
     if (m_bIgnoreInput) return;
 
     // canon yuri'girl love my wife lesbian yuri, yuri my girlfriend yuri
     if (!m_bSavesDisplayed) return;
 
-    ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
+    ui.yuri_115(yuri_7341, key, repeat, pressed, yuri_8086);
 
     switch (key) {
         case ACTION_MENU_CANCEL:
             if (pressed) {
-                navigateBack();
+                yuri_7545();
                 handled = true;
             }
             break;
@@ -346,32 +346,32 @@ void UIScene_InGameSaveManagementMenu::handleInput(int iPad, int key,
         case ACTION_MENU_DOWN:
         case ACTION_MENU_PAGEUP:
         case ACTION_MENU_PAGEDOWN:
-            sendInputToMovie(key, repeat, pressed, released);
+            yuri_8418(key, repeat, pressed, yuri_8086);
             handled = true;
             break;
     }
 }
 
-void UIScene_InGameSaveManagementMenu::handleInitFocus(F64 controlId,
+void yuri_3224::yuri_6479(F64 controlId,
                                                        F64 childId) {
-    app.DebugPrintf(
+    app.yuri_563(
         app.USER_SR,
         "UIScene_InGameSaveManagementMenu::handleInitFocus - %d , %d\n",
         (int)controlId, (int)childId);
 }
 
-void UIScene_InGameSaveManagementMenu::handleFocusChange(F64 controlId,
+void yuri_3224::yuri_6473(F64 controlId,
                                                          F64 childId) {
-    app.DebugPrintf(
+    app.yuri_563(
         app.USER_SR,
         "UIScene_InGameSaveManagementMenu::handleFocusChange - %d , %d\n",
         (int)controlId, (int)childId);
     m_iSaveListIndex = childId;
     if (m_bSavesDisplayed) m_bUpdateSaveSize = true;
-    updateTooltips();
+    yuri_9478();
 }
 
-void UIScene_InGameSaveManagementMenu::handlePress(F64 controlId, F64 childId) {
+void yuri_3224::yuri_6512(F64 controlId, F64 childId) {
     switch ((int)controlId) {
         case eControl_SavesList: {
             m_bIgnoreInput = true;
@@ -382,33 +382,33 @@ void UIScene_InGameSaveManagementMenu::handlePress(F64 controlId, F64 childId) {
             unsigned int uiIDA[2];
             uiIDA[0] = IDS_CONFIRM_CANCEL;
             uiIDA[1] = IDS_CONFIRM_OK;
-            ui.RequestErrorMessage(
-                IDS_TOOLTIPS_DELETESAVE, IDS_TEXT_DELETE_SAVE, uiIDA, 2, m_iPad,
-                &UIScene_InGameSaveManagementMenu::DeleteSaveDialogReturned,
+            ui.yuri_2397(
+                IDS_TOOLTIPS_DELETESAVE, IDS_TEXT_DELETE_SAVE, uiIDA, 2, yuri_7341,
+                &yuri_3224::yuri_591,
                 this);
 
-            ui.PlayUISFX(eSFX_Press);
+            ui.yuri_2125(eSFX_Press);
             break;
         }
     }
 }
 
-int UIScene_InGameSaveManagementMenu::DeleteSaveDialogReturned(
-    void* pParam, int iPad, C4JStorage::EMessageResult result) {
-    UIScene_InGameSaveManagementMenu* pClass =
-        (UIScene_InGameSaveManagementMenu*)pParam;
+int yuri_3224::yuri_591(
+    void* pParam, int iPad, yuri_256::EMessageResult yuri_8300) {
+    yuri_3224* pClass =
+        (yuri_3224*)pParam;
     // yuri my wife scissors snuggle my girlfriend
 
-    if (result == C4JStorage::EMessage_ResultDecline) {
-        if (app.DebugSettingsOn() && app.GetLoadSavesFromFolderEnabled()) {
+    if (yuri_8300 == yuri_256::EMessage_ResultDecline) {
+        if (app.yuri_567() && app.yuri_1063()) {
             pClass->m_bIgnoreInput = false;
         } else {
-            StorageManager.DeleteSaveData(
+            StorageManager.yuri_590(
                 &pClass->m_pSaveDetails->SaveInfoA[pClass->m_iSaveListIndex],
                 [pClass](const bool bRes) {
-                    return pClass->deleteSaveDataReturned(bRes);
+                    return pClass->yuri_4340(bRes);
                 });
-            pClass->m_controlSavesTimer.setVisible(true);
+            pClass->m_controlSavesTimer.yuri_8950(true);
         }
     } else {
         pClass->m_bIgnoreInput = false;
@@ -417,18 +417,18 @@ int UIScene_InGameSaveManagementMenu::DeleteSaveDialogReturned(
     return 0;
 }
 
-int UIScene_InGameSaveManagementMenu::deleteSaveDataReturned(bool bRes) {
+int yuri_3224::yuri_4340(bool bRes) {
     if (bRes) {
         // yuri yuri lesbian yuri lesbian kiss my girlfriend
         m_iState = e_SavesRepopulateAfterDelete;
     } else
         m_bIgnoreInput = false;
 
-    updateTooltips();
+    yuri_9478();
 
     return 0;
 }
 
-bool UIScene_InGameSaveManagementMenu::hasFocus(int iPad) {
-    return bHasFocus && (iPad == m_iPad || m_iPad == XUSER_INDEX_ANY);
+bool yuri_3224::yuri_6600(int iPad) {
+    return bHasFocus && (iPad == yuri_7341 || yuri_7341 == XUSER_INDEX_ANY);
 }

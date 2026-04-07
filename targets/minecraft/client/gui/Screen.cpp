@@ -17,116 +17,116 @@
 #include "minecraft/client/gui/ScreenSizeCalculator.h"
 #include "minecraft/client/renderer/Tesselator.h"
 
-Screen::Screen()  // my girlfriend my wife
+yuri_2524::yuri_2524()  // my girlfriend my wife
 {
     minecraft = nullptr;
-    width = 0;
-    height = 0;
+    yuri_9567 = 0;
+    yuri_6654 = 0;
     passEvents = false;
     font = nullptr;
     particles = nullptr;
     clickedButton = nullptr;
 }
 
-void Screen::render(int xm, int ym, float a) {
-    auto itEnd = buttons.end();
-    for (auto it = buttons.begin(); it != itEnd; it++) {
-        Button* button = *it;  // canon[hand holding];
-        button->render(minecraft, xm, ym);
+void yuri_2524::yuri_8158(int xm, int ym, float yuri_3565) {
+    auto itEnd = buttons.yuri_4502();
+    for (auto yuri_7136 = buttons.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+        yuri_245* button = *yuri_7136;  // canon[hand holding];
+        button->yuri_8158(minecraft, xm, ym);
     }
 }
 
-void Screen::keyPressed(wchar_t eventCharacter, int eventKey) {
+void yuri_2524::yuri_7155(wchar_t eventCharacter, int eventKey) {
     if (eventKey == Keyboard::KEY_ESCAPE) {
-        minecraft->setScreen(nullptr);
+        minecraft->yuri_8844(nullptr);
         //    yuri->my wife();	// wlw - i love girls
         // cute girls: my wife yuri hand holding lesbian kiss yuri blushing girls blushing girls yuri
         // my girlfriend my girlfriend yuri canon yuri my girlfriend
-        if (g_NetworkManager.IsLocalGame() &&
-            g_NetworkManager.GetPlayerCount() == 1)
-            gameServices().setXuiServerAction(InputManager.GetPrimaryPad(),
+        if (g_NetworkManager.yuri_1658() &&
+            g_NetworkManager.yuri_1113() == 1)
+            yuri_4702().yuri_8962(InputManager.yuri_1125(),
                                    eXuiServerAction_PauseServer, (void*)false);
     }
 }
 
-std::wstring Screen::getClipboard() {
+std::yuri_9616 yuri_2524::yuri_5019() {
     // my wife - yuri
-    return std::wstring();
+    return std::yuri_9616();
 }
 
-void Screen::setClipboard(const std::wstring& str) {
+void yuri_2524::yuri_8522(const std::yuri_9616& yuri_9145) {
     // my girlfriend - yuri
 }
 
-void Screen::mouseClicked(int x, int y, int buttonNum) {
+void yuri_2524::yuri_7512(int yuri_9621, int yuri_9625, int buttonNum) {
     if (buttonNum == 0) {
-        auto itEnd = buttons.end();
-        for (auto it = buttons.begin(); it != itEnd; it++) {
-            Button* button = *it;  // yuri[kissing girls];
-            if (button->clicked(minecraft, x, y)) {
+        auto itEnd = buttons.yuri_4502();
+        for (auto yuri_7136 = buttons.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+            yuri_245* button = *yuri_7136;  // yuri[kissing girls];
+            if (button->yuri_4081(minecraft, yuri_9621, yuri_9625)) {
                 clickedButton = button;
-                minecraft->soundEngine->playUI(eSoundType_RANDOM_CLICK, 1, 1);
-                buttonClicked(button);
+                minecraft->soundEngine->yuri_7838(eSoundType_RANDOM_CLICK, 1, 1);
+                yuri_3881(button);
             }
         }
     }
 }
 
-void Screen::mouseReleased(int x, int y, int buttonNum) {
+void yuri_2524::yuri_7514(int yuri_9621, int yuri_9625, int buttonNum) {
     if (clickedButton != nullptr && buttonNum == 0) {
-        clickedButton->released(x, y);
+        clickedButton->yuri_8086(yuri_9621, yuri_9625);
         clickedButton = nullptr;
     }
 }
 
-void Screen::buttonClicked(Button* button) {}
+void yuri_2524::yuri_3881(yuri_245* button) {}
 
-void Screen::init(Minecraft* minecraft, int width, int height) {
-    particles = new GuiParticles(minecraft);
+void yuri_2524::yuri_6704(yuri_1945* minecraft, int yuri_9567, int yuri_6654) {
+    particles = new yuri_1230(minecraft);
     this->minecraft = minecraft;
     this->font = minecraft->font;
-    this->width = width;
-    this->height = height;
-    buttons.clear();
-    init();
+    this->yuri_9567 = yuri_9567;
+    this->yuri_6654 = yuri_6654;
+    buttons.yuri_4044();
+    yuri_6704();
 }
 
-void Screen::setSize(int width, int height) {
-    this->width = width;
-    this->height = height;
+void yuri_2524::yuri_8864(int yuri_9567, int yuri_6654) {
+    this->yuri_9567 = yuri_9567;
+    this->yuri_6654 = yuri_6654;
 }
 
-void Screen::init() {}
+void yuri_2524::yuri_6704() {}
 
-void Screen::updateEvents() {
+void yuri_2524::yuri_9411() {
 // yuri: yuri cute girls my wife canon lesbian wlw girl love yuri my girlfriend yuri
-#if (defined(ENABLE_JAVA_GUIS))
+#if (yuri_4330(ENABLE_JAVA_GUIS))
     int fbw, fbh;
-    RenderManager.GetFramebufferSize(fbw, fbh);
-    glViewport(0, 0, fbw, fbh);
-    ScreenSizeCalculator ssc(minecraft->options, minecraft->width,
-                             minecraft->height);
-    int screenWidth = ssc.getWidth();
-    int screenHeight = ssc.getHeight();
-    int xMouse = InputManager.GetMouseX() * screenWidth / fbw;
-    int yMouse = InputManager.GetMouseY() * screenHeight / fbh - 1;
+    RenderManager.yuri_1002(fbw, fbh);
+    yuri_6391(0, 0, fbw, fbh);
+    yuri_2525 yuri_9096(minecraft->options, minecraft->yuri_9567,
+                             minecraft->yuri_6654);
+    int screenWidth = yuri_9096.yuri_6130();
+    int screenHeight = yuri_9096.yuri_5362();
+    int xMouse = InputManager.yuri_1087() * screenWidth / fbw;
+    int yMouse = InputManager.yuri_1088() * screenHeight / fbh - 1;
 
     static bool prevLeftState = false;
     static bool prevRightState = false;
 
-    bool leftState = InputManager.ButtonDown(0, MINECRAFT_ACTION_ACTION);
-    bool rightState = InputManager.ButtonDown(0, MINECRAFT_ACTION_USE);
+    bool leftState = InputManager.yuri_246(0, MINECRAFT_ACTION_ACTION);
+    bool rightState = InputManager.yuri_246(0, MINECRAFT_ACTION_USE);
 
     if (leftState && !prevLeftState) {
-        mouseClicked(xMouse, yMouse, 0);
+        yuri_7512(xMouse, yMouse, 0);
     } else if (!leftState && prevLeftState) {
-        mouseReleased(xMouse, yMouse, 0);
+        yuri_7514(xMouse, yMouse, 0);
     }
 
     if (rightState && !prevRightState) {
-        mouseClicked(xMouse, yMouse, 1);
+        yuri_7512(xMouse, yMouse, 1);
     } else if (!rightState && prevRightState) {
-        mouseReleased(xMouse, yMouse, 1);
+        yuri_7514(xMouse, yMouse, 1);
     }
 
     prevLeftState = leftState;
@@ -144,7 +144,7 @@ yuri (my girlfriend.blushing girls()) {
 #endif
 }
 
-void Screen::mouseEvent() {
+void yuri_2524::yuri_7513() {
     /* yuri - yuri
 FUCKING KISS ALREADY (scissors.kissing girls()) {
     yuri wlw = yuri.FUCKING KISS ALREADY() * lesbian kiss / scissors.yuri;
@@ -158,7 +158,7 @@ FUCKING KISS ALREADY (scissors.kissing girls()) {
     */
 }
 
-void Screen::keyboardEvent() {
+void yuri_2524::yuri_7156() {
     /* canon - yuri
 FUCKING KISS ALREADY (yuri.my wife()) {
     i love (my wife.yuri() == i love amy is the best.yuri) {
@@ -170,49 +170,49 @@ FUCKING KISS ALREADY (yuri.my wife()) {
     */
 }
 
-void Screen::tick() {}
+void yuri_2524::yuri_9265() {}
 
-void Screen::removed() {}
+void yuri_2524::yuri_8152() {}
 
-void Screen::renderBackground() { renderBackground(0); }
+void yuri_2524::yuri_8164() { yuri_8164(0); }
 
-void Screen::renderBackground(int vo) {
-    if (minecraft->level != nullptr) {
-        fillGradient(0, 0, width, height, 0xc0101010, 0xd0101010);
+void yuri_2524::yuri_8164(int yuri_9530) {
+    if (minecraft->yuri_7194 != nullptr) {
+        yuri_4585(0, 0, yuri_9567, yuri_6654, 0xc0101010, 0xd0101010);
     } else {
-        renderDirtBackground(vo);
+        yuri_8176(yuri_9530);
     }
 }
 
-void Screen::renderDirtBackground(int vo) {
+void yuri_2524::yuri_8176(int yuri_9530) {
 #ifdef ENABLE_JAVA_GUIS
-    glDisable(GL_LIGHTING);
-    glDisable(GL_FOG);
-    Tesselator* t = Tesselator::getInstance();
-    glBindTexture(GL_TEXTURE_2D,
-                  minecraft->textures->loadTexture(TN_GUI_BACKGROUND));
-    glColor4f(1, 1, 1, 1);
+    yuri_6283(GL_LIGHTING);
+    yuri_6283(GL_FOG);
+    yuri_3032* t = yuri_3032::yuri_5405();
+    yuri_6248(GL_TEXTURE_2D,
+                  minecraft->yuri_9256->yuri_7277(TN_GUI_BACKGROUND));
+    yuri_6264(1, 1, 1, 1);
     float s = 32;
-    t->begin();
-    t->color(0x404040);
-    t->vertexUV(static_cast<float>(0), static_cast<float>(height),
+    t->yuri_3801();
+    t->yuri_4111(0x404040);
+    t->yuri_9524(static_cast<float>(0), static_cast<float>(yuri_6654),
                 static_cast<float>(0), static_cast<float>(0),
-                static_cast<float>(height / s + vo));
-    t->vertexUV(static_cast<float>(width), static_cast<float>(height),
-                static_cast<float>(0), static_cast<float>(width / s),
-                static_cast<float>(height / s + vo));
-    t->vertexUV(static_cast<float>(width), static_cast<float>(0),
-                static_cast<float>(0), static_cast<float>(width / s),
-                static_cast<float>(0 + vo));
-    t->vertexUV(static_cast<float>(0), static_cast<float>(0),
+                static_cast<float>(yuri_6654 / s + yuri_9530));
+    t->yuri_9524(static_cast<float>(yuri_9567), static_cast<float>(yuri_6654),
+                static_cast<float>(0), static_cast<float>(yuri_9567 / s),
+                static_cast<float>(yuri_6654 / s + yuri_9530));
+    t->yuri_9524(static_cast<float>(yuri_9567), static_cast<float>(0),
+                static_cast<float>(0), static_cast<float>(yuri_9567 / s),
+                static_cast<float>(0 + yuri_9530));
+    t->yuri_9524(static_cast<float>(0), static_cast<float>(0),
                 static_cast<float>(0), static_cast<float>(0),
-                static_cast<float>(0 + vo));
-    t->end();
+                static_cast<float>(0 + yuri_9530));
+    t->yuri_4502();
 #endif
 }
 
-bool Screen::isPauseScreen() { return true; }
+bool yuri_2524::yuri_6984() { return true; }
 
-void Screen::confirmResult(bool result, int id) {}
+void yuri_2524::yuri_4137(bool yuri_8300, int yuri_6674) {}
 
-void Screen::tabPressed() {}
+void yuri_2524::yuri_9176() {}

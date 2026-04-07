@@ -1,8 +1,8 @@
 #pragma once
-class BufferedImage;
+class yuri_239;
 
-class MemTextureProcessor {
+class yuri_1907 {
 public:
-    virtual ~MemTextureProcessor() {}
-    virtual BufferedImage* process(BufferedImage* read) = 0;
+    virtual ~yuri_1907() {}
+    virtual yuri_239* yuri_7913(yuri_239* yuri_7987) = 0;
 };

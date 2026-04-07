@@ -1,13 +1,13 @@
 #pragma once
 #include "Feature.h"
 
-class Random;
-class Level;
+class yuri_2302;
+class yuri_1758;
 
-class SwampTreeFeature : public Feature {
+class yuri_2992 : public yuri_801 {
 public:
-    virtual bool place(Level* level, Random* random, int x, int y, int z);
+    virtual bool yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9621, int yuri_9625, int yuri_9630);
 
 private:
-    void addVine(Level* level, int xx, int yy, int zz, int dir);
+    void yuri_3694(yuri_1758* yuri_7194, int xx, int yy, int zz, int yuri_4361);
 };

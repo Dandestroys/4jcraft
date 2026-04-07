@@ -2,17 +2,17 @@
 
 #include "RotatedPillarTile.h"
 
-class HayBlockTile : public RotatedPillarTile {
+class yuri_1261 : public yuri_2441 {
     friend class ChunkRebuildData;
 
 public:
-    HayBlockTile(int id);
+    yuri_1261(int yuri_6674);
 
-    int getRenderShape();
+    int yuri_5806();
 
 protected:
-    Icon* getTypeTexture(int type);
+    yuri_1346* yuri_6070(int yuri_9364);
 
 public:
-    void registerIcons(IconRegister* iconRegister);
+    void yuri_8072(IconRegister* iconRegister);
 };

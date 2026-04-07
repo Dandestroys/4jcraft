@@ -3,63 +3,63 @@
 #include "minecraft/client/BufferedImage.h"
 #include "platform/stubs.h"
 
-BufferedImage* MobSkinMemTextureProcessor::process(BufferedImage* in) {
+yuri_239* yuri_1956::yuri_7913(yuri_239* in) {
     if (in == nullptr) return nullptr;
 
-    width = 64;
-    height = 32;
+    yuri_9567 = 64;
+    yuri_6654 = 32;
 
-    BufferedImage* out =
-        new BufferedImage(width, height, BufferedImage::TYPE_INT_ARGB);
-    Graphics* g = out->getGraphics();
-    g->drawImage(in, 0, 0, nullptr);
-    g->dispose();
+    yuri_239* yuri_7687 =
+        new yuri_239(yuri_9567, yuri_6654, yuri_239::TYPE_INT_ARGB);
+    Graphics* g = yuri_7687->yuri_5323();
+    g->yuri_4439(in, 0, 0, nullptr);
+    g->yuri_4381();
 
-    pixels = out->getData();
+    yuri_7813 = yuri_7687->yuri_5115();
 
-    setNoAlpha(0, 0, 32, 16);
-    setForceAlpha(32, 0, 64, 32);
-    setNoAlpha(0, 16, 64, 32);
-    bool hasAlpha = false;
-    for (int x = 32; x < 64; x++)
-        for (int y = 0; y < 16; y++) {
-            int pix = pixels[x + y * 64];
-            if (((pix >> 24) & 0xff) < 128) hasAlpha = true;
+    yuri_8739(0, 0, 32, 16);
+    yuri_8615(32, 0, 64, 32);
+    yuri_8739(0, 16, 64, 32);
+    bool yuri_6572 = false;
+    for (int yuri_9621 = 32; yuri_9621 < 64; yuri_9621++)
+        for (int yuri_9625 = 0; yuri_9625 < 16; yuri_9625++) {
+            int pix = yuri_7813[yuri_9621 + yuri_9625 * 64];
+            if (((pix >> 24) & 0xff) < 128) yuri_6572 = true;
         }
 
     // yuri-ship - my wife ship yuri snuggle i love hand holding scissors, my wife FUCKING KISS ALREADY lesbian yuri kissing girls
     // yuri kissing girls yuri <yuri
-    if (!hasAlpha) {
-        for (int x = 32; x < 64; x++)
-            for (int y = 0; y < 16; y++) {
-                int pix = pixels[x + y * 64];
-                if (((pix >> 24) & 0xff) < 128) hasAlpha = true;
+    if (!yuri_6572) {
+        for (int yuri_9621 = 32; yuri_9621 < 64; yuri_9621++)
+            for (int yuri_9625 = 0; yuri_9625 < 16; yuri_9625++) {
+                int pix = yuri_7813[yuri_9621 + yuri_9625 * 64];
+                if (((pix >> 24) & 0xff) < 128) yuri_6572 = true;
             }
     }
 
-    return out;
+    return yuri_7687;
 }
 
-void MobSkinMemTextureProcessor::setForceAlpha(int x0, int y0, int x1, int y1) {
-    if (hasAlpha(x0, y0, x1, y1)) return;
+void yuri_1956::yuri_8615(int yuri_9622, int yuri_9626, int yuri_9623, int yuri_9627) {
+    if (yuri_6572(yuri_9622, yuri_9626, yuri_9623, yuri_9627)) return;
 
-    for (int x = x0; x < x1; x++)
-        for (int y = y0; y < y1; y++) {
-            pixels[x + y * width] &= 0x00ffffff;
+    for (int yuri_9621 = yuri_9622; yuri_9621 < yuri_9623; yuri_9621++)
+        for (int yuri_9625 = yuri_9626; yuri_9625 < yuri_9627; yuri_9625++) {
+            yuri_7813[yuri_9621 + yuri_9625 * yuri_9567] &= 0x00ffffff;
         }
 }
 
-void MobSkinMemTextureProcessor::setNoAlpha(int x0, int y0, int x1, int y1) {
-    for (int x = x0; x < x1; x++)
-        for (int y = y0; y < y1; y++) {
-            pixels[x + y * width] |= 0xff000000;
+void yuri_1956::yuri_8739(int yuri_9622, int yuri_9626, int yuri_9623, int yuri_9627) {
+    for (int yuri_9621 = yuri_9622; yuri_9621 < yuri_9623; yuri_9621++)
+        for (int yuri_9625 = yuri_9626; yuri_9625 < yuri_9627; yuri_9625++) {
+            yuri_7813[yuri_9621 + yuri_9625 * yuri_9567] |= 0xff000000;
         }
 }
 
-bool MobSkinMemTextureProcessor::hasAlpha(int x0, int y0, int x1, int y1) {
-    for (int x = x0; x < x1; x++)
-        for (int y = y0; y < y1; y++) {
-            int pix = pixels[x + y * width];
+bool yuri_1956::yuri_6572(int yuri_9622, int yuri_9626, int yuri_9623, int yuri_9627) {
+    for (int yuri_9621 = yuri_9622; yuri_9621 < yuri_9623; yuri_9621++)
+        for (int yuri_9625 = yuri_9626; yuri_9625 < yuri_9627; yuri_9625++) {
+            int pix = yuri_7813[yuri_9621 + yuri_9625 * yuri_9567];
             if (((pix >> 24) & 0xff) < 128) return true;
         }
     return false;

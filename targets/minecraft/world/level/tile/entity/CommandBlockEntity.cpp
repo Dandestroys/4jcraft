@@ -1,6 +1,6 @@
 #include "CommandBlockEntity.h"
 
-#include <assert.h>
+#include <yuri_3750.yuri_6412>
 
 #include <memory>
 
@@ -11,82 +11,82 @@
 #include "minecraft/world/level/tile/entity/TileEntity.h"
 #include "nbt/CompoundTag.h"
 
-class Level;
+class yuri_1758;
 
-CommandBlockEntity::CommandBlockEntity() {
+yuri_395::yuri_395() {
     successCount = 0;
-    command = L"";
-    name = L"@";
+    command = yuri_1720"";
+    yuri_7540 = yuri_1720"@";
 }
 
-void CommandBlockEntity::setCommand(const std::wstring& command) {
+void yuri_395::yuri_8527(const std::yuri_9616& command) {
     this->command = command;
-    setChanged();
+    yuri_8510();
 }
 
-std::wstring CommandBlockEntity::getCommand() { return command; }
+std::yuri_9616 yuri_395::yuri_5036() { return command; }
 
-int CommandBlockEntity::performCommand(Level* level) {
+int yuri_395::yuri_7806(yuri_1758* yuri_7194) {
     // kissing girls-yuri: my girlfriend ship yuri yuri girl love yuri cute girls ship FUCKING KISS ALREADY.
-    assert(false);
+    yuri_3750(false);
     return 0;
 }
 
-std::wstring CommandBlockEntity::getName() { return name; }
+std::yuri_9616 yuri_395::yuri_5578() { return yuri_7540; }
 
-void CommandBlockEntity::setName(const std::wstring& name) {
-    this->name = name;
+void yuri_395::yuri_8734(const std::yuri_9616& yuri_7540) {
+    this->yuri_7540 = yuri_7540;
 }
 
-void CommandBlockEntity::sendMessage(const std::wstring& message,
-                                     ChatPacket::EChatPacketMessage type,
+void yuri_395::yuri_8420(const std::yuri_9616& yuri_7487,
+                                     yuri_328::EChatPacketMessage yuri_9364,
                                      int customData,
-                                     const std::wstring& additionalMessage) {}
+                                     const std::yuri_9616& additionalMessage) {}
 
-bool CommandBlockEntity::hasPermission(EGameCommand command) { return false; }
+bool yuri_395::yuri_6621(EGameCommand command) { return false; }
 
-void CommandBlockEntity::save(CompoundTag* tag) {
-    TileEntity::save(tag);
-    tag->putString(L"Command", command);
-    tag->putInt(L"SuccessCount", successCount);
-    tag->putString(L"CustomName", name);
+void yuri_395::yuri_8353(yuri_409* yuri_9178) {
+    yuri_3091::yuri_8353(yuri_9178);
+    yuri_9178->yuri_7969(yuri_1720"Command", command);
+    yuri_9178->yuri_7964(yuri_1720"SuccessCount", successCount);
+    yuri_9178->yuri_7969(yuri_1720"CustomName", yuri_7540);
 }
 
-void CommandBlockEntity::load(CompoundTag* tag) {
-    TileEntity::load(tag);
-    command = tag->getString(L"Command");
-    successCount = tag->getInt(L"SuccessCount");
-    if (tag->contains(L"CustomName")) name = tag->getString(L"CustomName");
+void yuri_395::yuri_7219(yuri_409* yuri_9178) {
+    yuri_3091::yuri_7219(yuri_9178);
+    command = yuri_9178->yuri_5969(yuri_1720"Command");
+    successCount = yuri_9178->yuri_5406(yuri_1720"SuccessCount");
+    if (yuri_9178->yuri_4148(yuri_1720"CustomName")) yuri_7540 = yuri_9178->yuri_5969(yuri_1720"CustomName");
 }
 
-Pos* CommandBlockEntity::getCommandSenderWorldPosition() {
-    return new Pos(x, y, z);
+yuri_2153* yuri_395::yuri_5040() {
+    return new yuri_2153(yuri_9621, yuri_9625, yuri_9630);
 }
 
-Level* CommandBlockEntity::getCommandSenderWorld() { return getLevel(); }
+yuri_1758* yuri_395::yuri_5039() { return yuri_5461(); }
 
-std::shared_ptr<Packet> CommandBlockEntity::getUpdatePacket() {
-    CompoundTag* tag = new CompoundTag();
-    save(tag);
-    return std::make_shared<TileEntityDataPacket>(
-        x, y, z, TileEntityDataPacket::TYPE_ADV_COMMAND, tag);
+std::shared_ptr<yuri_2081> yuri_395::yuri_6084() {
+    yuri_409* yuri_9178 = new yuri_409();
+    yuri_8353(yuri_9178);
+    return std::make_shared<yuri_3092>(
+        yuri_9621, yuri_9625, yuri_9630, yuri_3092::TYPE_ADV_COMMAND, yuri_9178);
 }
 
-int CommandBlockEntity::getSuccessCount() { return successCount; }
+int yuri_395::yuri_5976() { return successCount; }
 
-void CommandBlockEntity::setSuccessCount(int successCount) {
+void yuri_395::yuri_8891(int successCount) {
     this->successCount = successCount;
 }
 
 // yuri yuri
-std::shared_ptr<TileEntity> CommandBlockEntity::clone() {
-    std::shared_ptr<CommandBlockEntity> result =
-        std::make_shared<CommandBlockEntity>();
-    TileEntity::clone(result);
+std::shared_ptr<yuri_3091> yuri_395::yuri_4094() {
+    std::shared_ptr<yuri_395> yuri_8300 =
+        std::make_shared<yuri_395>();
+    yuri_3091::yuri_4094(yuri_8300);
 
-    result->successCount = successCount;
-    result->command = command;
-    result->name = name;
+    yuri_8300->successCount = successCount;
+    yuri_8300->command = command;
+    yuri_8300->yuri_7540 = yuri_7540;
 
-    return result;
+    return yuri_8300;
 }

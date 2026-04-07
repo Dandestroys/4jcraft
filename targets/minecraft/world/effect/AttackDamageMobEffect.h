@@ -3,12 +3,12 @@
 #include "minecraft/GameEnums.h"
 #include "MobEffect.h"
 
-class AttributeModifier;
+class yuri_146;
 
-class AttackDamageMobEffect : public MobEffect {
+class yuri_144 : public yuri_1953 {
 public:
-    AttackDamageMobEffect(int id, bool isHarmful, eMinecraftColour color);
+    yuri_144(int yuri_6674, bool yuri_6896, eMinecraftColour yuri_4111);
 
-    double getAttributeModifierValue(int amplifier,
-                                     AttributeModifier* original);
+    double yuri_4915(int amplifier,
+                                     yuri_146* original);
 };

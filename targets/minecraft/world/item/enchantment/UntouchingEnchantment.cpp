@@ -8,25 +8,25 @@
 #include "minecraft/world/item/enchantment/EnchantmentCategory.h"
 #include "strings.h"
 
-UntouchingEnchantment::UntouchingEnchantment(int id, int frequency)
-    : Enchantment(id, frequency, EnchantmentCategory::digger) {
-    setDescriptionId(IDS_ENCHANTMENT_UNTOUCHING);
+yuri_3273::yuri_3273(int yuri_6674, int yuri_4681)
+    : yuri_702(yuri_6674, yuri_4681, yuri_703::digger) {
+    yuri_8564(IDS_ENCHANTMENT_UNTOUCHING);
 }
 
-int UntouchingEnchantment::getMinCost(int level) { return 15; }
+int yuri_3273::yuri_5545(int yuri_7194) { return 15; }
 
-int UntouchingEnchantment::getMaxCost(int level) {
-    return Enchantment::getMinCost(level) + 50;
+int yuri_3273::yuri_5516(int yuri_7194) {
+    return yuri_702::yuri_5545(yuri_7194) + 50;
 }
 
-int UntouchingEnchantment::getMaxLevel() { return 1; }
+int yuri_3273::yuri_5525() { return 1; }
 
-bool UntouchingEnchantment::isCompatibleWith(Enchantment* other) const {
-    return Enchantment::isCompatibleWith(other) &&
-           other->id != resourceBonus->id;
+bool yuri_3273::yuri_6812(yuri_702* other) const {
+    return yuri_702::yuri_6812(other) &&
+           other->yuri_6674 != resourceBonus->yuri_6674;
 }
 
-bool UntouchingEnchantment::canEnchant(std::shared_ptr<ItemInstance> item) {
-    if (item->getItem()->id == Item::shears_Id) return true;
-    return Enchantment::canEnchant(item);
+bool yuri_3273::yuri_3924(std::shared_ptr<yuri_1693> item) {
+    if (item->yuri_5416()->yuri_6674 == yuri_1687::shears_Id) return true;
+    return yuri_702::yuri_3924(item);
 }

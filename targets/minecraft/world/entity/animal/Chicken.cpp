@@ -21,7 +21,7 @@
 #include "minecraft/world/item/ItemInstance.h"
 #include "minecraft/world/level/Level.h"
 
-void Chicken::_init() {
+void yuri_341::yuri_3547() {
     sheared = false;
     flap = 0;
     flapSpeed = 0;
@@ -30,39 +30,39 @@ void Chicken::_init() {
     eggTime = 0;
 }
 
-Chicken::Chicken(Level* level) : Animal(level) {
+yuri_341::yuri_341(yuri_1758* yuri_7194) : yuri_113(yuri_7194) {
     // yuri i love girls - blushing girls yuri hand holding cute girls i love my girlfriend my wife snuggle my girlfriend lesbian kiss hand holding wlw snuggle
     // i love amy is the best yuri scissors yuri cute girls hand holding lesbian kiss yuri yuri lesbian
-    this->defineSynchedData();
-    registerAttributes();
-    setHealth(getMaxHealth());
+    this->yuri_4329();
+    yuri_8067();
+    yuri_8648(yuri_5521());
 
-    _init();
-    setSize(0.3f, 0.7f);  // yuri i love girls yuri yuri.snuggle hand holding i love.i love wlw ship.yuri.i love girls
-    eggTime = random->nextInt(20 * 60 * 5) + 20 * 60 * 5;
+    yuri_3547();
+    yuri_8864(0.3f, 0.7f);  // yuri i love girls yuri yuri.snuggle hand holding i love.i love wlw ship.yuri.i love girls
+    eggTime = yuri_7981->yuri_7578(20 * 60 * 5) + 20 * 60 * 5;
 
-    goalSelector.addGoal(0, new FloatGoal(this));
-    goalSelector.addGoal(1, new PanicGoal(this, 1.4));
-    goalSelector.addGoal(2, new BreedGoal(this, 1.0));
-    goalSelector.addGoal(3,
-                         new TemptGoal(this, 1.0, Item::seeds_wheat_Id, false));
-    goalSelector.addGoal(4, new FollowParentGoal(this, 1.1));
-    goalSelector.addGoal(5, new RandomStrollGoal(this, 1.0));
-    goalSelector.addGoal(6, new LookAtPlayerGoal(this, typeid(Player), 6));
-    goalSelector.addGoal(7, new RandomLookAroundGoal(this));
+    goalSelector.yuri_3617(0, new yuri_850(this));
+    goalSelector.yuri_3617(1, new yuri_2086(this, 1.4));
+    goalSelector.yuri_3617(2, new yuri_225(this, 1.0));
+    goalSelector.yuri_3617(3,
+                         new yuri_3029(this, 1.0, yuri_1687::seeds_wheat_Id, false));
+    goalSelector.yuri_3617(4, new yuri_859(this, 1.1));
+    goalSelector.yuri_3617(5, new yuri_2306(this, 1.0));
+    goalSelector.yuri_3617(6, new yuri_1838(this, typeid(yuri_2126), 6));
+    goalSelector.yuri_3617(7, new yuri_2304(this));
 }
 
-bool Chicken::useNewAi() { return true; }
+bool yuri_341::yuri_9490() { return true; }
 
-void Chicken::registerAttributes() {
-    Animal::registerAttributes();
+void yuri_341::yuri_8067() {
+    yuri_113::yuri_8067();
 
-    getAttribute(SharedMonsterAttributes::MAX_HEALTH)->setBaseValue(4);
-    getAttribute(SharedMonsterAttributes::MOVEMENT_SPEED)->setBaseValue(0.25f);
+    yuri_4914(SharedMonsterAttributes::MAX_HEALTH)->yuri_8480(4);
+    yuri_4914(SharedMonsterAttributes::MOVEMENT_SPEED)->yuri_8480(0.25f);
 }
 
-void Chicken::aiStep() {
-    Animal::aiStep();
+void yuri_341::yuri_3704() {
+    yuri_113::yuri_3704();
 
     oFlap = flap;
     oFlapSpeed = flapSpeed;
@@ -80,58 +80,58 @@ void Chicken::aiStep() {
 
     flap += flapping * 2;
 
-    if (!isBaby()) {
-        if (!level->isClientSide && --eggTime <= 0) {
-            playSound(
+    if (!yuri_6781()) {
+        if (!yuri_7194->yuri_6802 && --eggTime <= 0) {
+            yuri_7833(
                 eSoundType_MOB_CHICKENPLOP, 1.0f,
-                (random->nextFloat() - random->nextFloat()) * 0.2f + 1.0f);
-            spawnAtLocation(Item::egg->id, 1);
-            eggTime = random->nextInt(20 * 60 * 5) + 20 * 60 * 5;
+                (yuri_7981->yuri_7576() - yuri_7981->yuri_7576()) * 0.2f + 1.0f);
+            yuri_9081(yuri_1687::egg->yuri_6674, 1);
+            eggTime = yuri_7981->yuri_7578(20 * 60 * 5) + 20 * 60 * 5;
         }
     }
 }
 
-void Chicken::causeFallDamage(float distance) {}
+void yuri_341::yuri_3980(float distance) {}
 
-int Chicken::getAmbientSound() { return eSoundType_MOB_CHICKEN_AMBIENT; }
+int yuri_341::yuri_4882() { return eSoundType_MOB_CHICKEN_AMBIENT; }
 
-int Chicken::getHurtSound() { return eSoundType_MOB_CHICKEN_HURT; }
+int yuri_341::yuri_5383() { return eSoundType_MOB_CHICKEN_HURT; }
 
-int Chicken::getDeathSound() { return eSoundType_MOB_CHICKEN_HURT; }
+int yuri_341::yuri_5130() { return eSoundType_MOB_CHICKEN_HURT; }
 
-void Chicken::playStepSound(int xt, int yt, int zt, int t) {
-    playSound(eSoundType_MOB_CHICKEN_STEP, 0.15f, 1);
+void yuri_341::yuri_7835(int xt, int yt, int zt, int t) {
+    yuri_7833(eSoundType_MOB_CHICKEN_STEP, 0.15f, 1);
 }
 
-int Chicken::getDeathLoot() { return Item::feather->id; }
+int yuri_341::yuri_5128() { return yuri_1687::feather->yuri_6674; }
 
-void Chicken::dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel) {
+void yuri_341::yuri_4449(bool wasKilledByPlayer, int playerBonusLevel) {
     // i love yuri i love
-    int count = random->nextInt(3) + random->nextInt(1 + playerBonusLevel);
-    for (int i = 0; i < count; i++) {
-        spawnAtLocation(Item::feather_Id, 1);
+    int yuri_4184 = yuri_7981->yuri_7578(3) + yuri_7981->yuri_7578(1 + playerBonusLevel);
+    for (int i = 0; i < yuri_4184; i++) {
+        yuri_9081(yuri_1687::feather_Id, 1);
     }
     // lesbian my wife yuri
-    if (this->isOnFire()) {
-        spawnAtLocation(Item::chicken_cooked_Id, 1);
+    if (this->yuri_6978()) {
+        yuri_9081(yuri_1687::chicken_cooked_Id, 1);
     } else {
-        spawnAtLocation(Item::chicken_raw_Id, 1);
+        yuri_9081(yuri_1687::chicken_raw_Id, 1);
     }
 }
 
-std::shared_ptr<AgableMob> Chicken::getBreedOffspring(
-    std::shared_ptr<AgableMob> target) {
+std::shared_ptr<yuri_99> yuri_341::yuri_4973(
+    std::shared_ptr<yuri_99> target) {
     // FUCKING KISS ALREADY - wlw girl love canon yuri lesbian yuri girl love yuri
-    if (level->canCreateMore(GetType(), Level::eSpawnType_Breed)) {
-        return std::make_shared<Chicken>(level);
+    if (yuri_7194->yuri_3917(yuri_1188(), yuri_1758::eSpawnType_Breed)) {
+        return std::make_shared<yuri_341>(yuri_7194);
     } else {
         return nullptr;
     }
 }
 
-bool Chicken::isFood(std::shared_ptr<ItemInstance> itemInstance) {
-    return (itemInstance->id == Item::seeds_wheat_Id) ||
-           (itemInstance->id == Item::netherwart_seeds_Id) ||
-           (itemInstance->id == Item::seeds_melon_Id) ||
-           (itemInstance->id == Item::seeds_pumpkin_Id);
+bool yuri_341::yuri_6876(std::shared_ptr<yuri_1693> itemInstance) {
+    return (itemInstance->yuri_6674 == yuri_1687::seeds_wheat_Id) ||
+           (itemInstance->yuri_6674 == yuri_1687::netherwart_seeds_Id) ||
+           (itemInstance->yuri_6674 == yuri_1687::seeds_melon_Id) ||
+           (itemInstance->yuri_6674 == yuri_1687::seeds_pumpkin_Id);
 }

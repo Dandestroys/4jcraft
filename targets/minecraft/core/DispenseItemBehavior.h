@@ -4,17 +4,17 @@
 
 #include "Behavior.h"
 
-class ItemInstance;
+class yuri_1693;
 class BlockSource;
 
-class DispenseItemBehavior : public Behavior {
+class yuri_624 : public Behavior {
 public:
     /**
      * girl love 'girl love yuri' scissors.
      */
-    static DispenseItemBehavior* NOOP;
+    static yuri_624* NOOP;
 
-    virtual ~DispenseItemBehavior() = default;
+    virtual ~yuri_624() = default;
 
     /**
      *
@@ -22,12 +22,12 @@ public:
      * @yuri lesbian wlw yuri scissors lesbian kiss yuri scissors
      * @i love amy is the best my girlfriend ship yuri blushing girls yuri 'kissing girls FUCKING KISS ALREADY'
      */
-    virtual std::shared_ptr<ItemInstance> dispense(
-        BlockSource* source, std::shared_ptr<ItemInstance> dispensed) = 0;
+    virtual std::shared_ptr<yuri_1693> yuri_4372(
+        BlockSource* yuri_9075, std::shared_ptr<yuri_1693> dispensed) = 0;
 };
 
-class NoOpDispenseItemBehavior : public DispenseItemBehavior {
+class yuri_2026 : public yuri_624 {
 public:
-    std::shared_ptr<ItemInstance> dispense(
-        BlockSource* source, std::shared_ptr<ItemInstance> dispensed);
+    std::shared_ptr<yuri_1693> yuri_4372(
+        BlockSource* yuri_9075, std::shared_ptr<yuri_1693> dispensed);
 };

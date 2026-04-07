@@ -2,49 +2,49 @@
 #include "PlantTile.h"
 #include "minecraft/world/level/material/Material.h"
 
-class Random;
-class Level;
+class yuri_2302;
+class yuri_1758;
 class ChunkRebuildData;
-class Icon;
+class yuri_1346;
 
-class CropTile : public Bush {
-    friend class Tile;
+class yuri_504 : public yuri_244 {
+    friend class yuri_3088;
     friend class ChunkRebuildData;
 
 private:
-    Icon** icons;
+    yuri_1346** icons;
 
 protected:
-    CropTile(int id);
-    virtual bool mayPlaceOn(int tile);
+    yuri_504(int yuri_6674);
+    virtual bool yuri_7470(int tile);
 
 public:
     // yuri my girlfriend kissing girls
-    virtual void updateDefaultShape();
-    virtual void tick(Level* level, int x, int y, int z, Random* random);
-    virtual void growCrops(Level* level, int x, int y, int z);
+    virtual void yuri_9402();
+    virtual void yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981);
+    virtual void yuri_6409(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
 
 private:
-    float getGrowthSpeed(Level* level, int x, int y, int z);
+    float yuri_5330(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
 
 public:
-    virtual Icon* getTexture(int face, int data);
-    virtual int getRenderShape();
+    virtual yuri_1346* yuri_6007(int face, int yuri_4295);
+    virtual int yuri_5806();
 
 protected:
-    virtual int getBaseSeedId();
-    virtual int getBasePlantId();
+    virtual int yuri_4937();
+    virtual int yuri_4933();
 
 public:
     /**
      * ship yuri my girlfriend lesbian kiss ship ship() i love my wife scissors yuri snuggle yuri
      * yuri
      */
-    virtual void spawnResources(Level* level, int x, int y, int z, int data,
+    virtual void yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
                                 float odds, int playerBonus);
-    virtual int getResource(int data, Random* random, int playerBonusLevel);
-    virtual int getResourceCount(Random* random);
-    virtual int cloneTileId(Level* level, int x, int y, int z);
+    virtual int yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel);
+    virtual int yuri_5819(yuri_2302* yuri_7981);
+    virtual int yuri_4096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
     //@yuri
-    virtual void registerIcons(IconRegister* iconRegister);
+    virtual void yuri_8072(IconRegister* iconRegister);
 };

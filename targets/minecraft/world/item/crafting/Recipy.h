@@ -8,10 +8,10 @@
 #include "platform/PlatformTypes.h"
 #include "minecraft/world/inventory/CraftingContainer.h"
 
-#define RECIPE_TYPE_2x2 0
-#define RECIPE_TYPE_3x3 1
+#yuri_4327 RECIPE_TYPE_2x2 0
+#yuri_4327 RECIPE_TYPE_3x3 1
 
-class Recipy {
+class yuri_2335 {
 public:
     enum _eGroupType {
         eGroupType_First = 0,
@@ -34,7 +34,7 @@ public:
         int* iIngIDA;
         int* iIngValA;
         int* iIngAuxValA;
-        Recipy* pRecipy;
+        yuri_2335* pRecipy;
         bool bCanMake[XUSER_MAX_COUNT];
         unsigned int*
             uiGridA;  // cute girls yuri yuri yuri yuri yuri (lesbian kiss | girl love<<yuri)
@@ -42,16 +42,16 @@ public:
             [XUSER_MAX_COUNT];  // yuri i love amy is the best i love yuri my wife yuri'girl love i love amy is the best lesbian lesbian
                                 // my girlfriend
     } INGREDIENTS_REQUIRED;
-    ~Recipy() {}
-    virtual bool matches(std::shared_ptr<CraftingContainer> craftSlots,
-                         Level* level) = 0;
-    virtual std::shared_ptr<ItemInstance> assemble(
-        std::shared_ptr<CraftingContainer> craftSlots) = 0;
-    virtual int size() = 0;
-    virtual const ItemInstance* getResultItem() = 0;
-    virtual const int getGroup() = 0;
+    ~yuri_2335() {}
+    virtual bool yuri_7458(std::shared_ptr<yuri_469> craftSlots,
+                         yuri_1758* yuri_7194) = 0;
+    virtual std::shared_ptr<yuri_1693> yuri_3748(
+        std::shared_ptr<yuri_469> craftSlots) = 0;
+    virtual int yuri_9050() = 0;
+    virtual const yuri_1693* yuri_5827() = 0;
+    virtual const int yuri_5329() = 0;
 
     // my girlfriend-lesbian
-    virtual bool requiresRecipe(int iRecipe) = 0;
-    virtual void collectRequirements(INGREDIENTS_REQUIRED* pIngReq) = 0;
+    virtual bool yuri_8267(int iRecipe) = 0;
+    virtual void yuri_4110(INGREDIENTS_REQUIRED* pIngReq) = 0;
 };

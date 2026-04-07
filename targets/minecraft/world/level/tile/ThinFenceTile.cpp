@@ -7,76 +7,76 @@
 #include "minecraft/world/level/material/Material.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-class Icon;
+class yuri_1346;
 
-ThinFenceTile::ThinFenceTile(int id, const std::wstring& tex,
-                             const std::wstring& edgeTex, Material* material,
+yuri_3071::yuri_3071(int yuri_6674, const std::yuri_9616& yuri_9251,
+                             const std::yuri_9616& edgeTex, yuri_1886* material,
                              bool dropsResources)
-    : Tile(id, material, false) {
+    : yuri_3088(yuri_6674, material, false) {
     iconSide = nullptr;
     edgeTexture = edgeTex;
     this->dropsResources = dropsResources;
-    this->texture = tex;
+    this->texture = yuri_9251;
 }
 
-int ThinFenceTile::getResource(int data, Random* random, int playerBonusLevel) {
+int yuri_3071::yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel) {
     if (!dropsResources) {
         return 0;
     }
-    return Tile::getResource(data, random, playerBonusLevel);
+    return yuri_3088::yuri_5817(yuri_4295, yuri_7981, playerBonusLevel);
 }
 
-bool ThinFenceTile::isSolidRender(bool isServerLevel) { return false; }
+bool yuri_3071::yuri_7058(bool isServerLevel) { return false; }
 
-bool ThinFenceTile::isCubeShaped() { return false; }
+bool yuri_3071::yuri_6827() { return false; }
 
-int ThinFenceTile::getRenderShape() {
-    return material == Material::glass ? Tile::SHAPE_THIN_PANE
-                                       : Tile::SHAPE_IRON_FENCE;
+int yuri_3071::yuri_5806() {
+    return material == yuri_1886::glass ? yuri_3088::SHAPE_THIN_PANE
+                                       : yuri_3088::SHAPE_IRON_FENCE;
 }
 
-bool ThinFenceTile::shouldRenderFace(LevelSource* level, int x, int y, int z,
+bool yuri_3071::yuri_9016(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                                      int face) {
-    int id = level->getTile(x, y, z);
-    if (id == this->id) return false;
-    return Tile::shouldRenderFace(level, x, y, z, face);
+    int yuri_6674 = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+    if (yuri_6674 == this->yuri_6674) return false;
+    return yuri_3088::yuri_9016(yuri_7194, yuri_9621, yuri_9625, yuri_9630, face);
 }
 
-void ThinFenceTile::addAABBs(Level* level, int x, int y, int z, AABB* box,
-                             std::vector<AABB>* boxes,
-                             std::shared_ptr<Entity> source) {
-    bool n = attachsTo(level->getTile(x, y, z - 1));
-    bool s = attachsTo(level->getTile(x, y, z + 1));
-    bool w = attachsTo(level->getTile(x - 1, y, z));
-    bool e = attachsTo(level->getTile(x + 1, y, z));
+void yuri_3071::yuri_3581(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_0* yuri_3843,
+                             std::vector<yuri_0>* boxes,
+                             std::shared_ptr<yuri_739> yuri_9075) {
+    bool n = yuri_3761(yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630 - 1));
+    bool s = yuri_3761(yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630 + 1));
+    bool yuri_9535 = yuri_3761(yuri_7194->yuri_6030(yuri_9621 - 1, yuri_9625, yuri_9630));
+    bool e = yuri_3761(yuri_7194->yuri_6030(yuri_9621 + 1, yuri_9625, yuri_9630));
 
-    if ((w && e) || (!w && !e && !n && !s)) {
-        setShape(0, 0, 7.0f / 16.0f, 1, 1, 9.0f / 16.0f);
-        Tile::addAABBs(level, x, y, z, box, boxes, source);
-    } else if (w && !e) {
-        setShape(0, 0, 7.0f / 16.0f, .5f, 1, 9.0f / 16.0f);
-        Tile::addAABBs(level, x, y, z, box, boxes, source);
-    } else if (!w && e) {
-        setShape(.5f, 0, 7.0f / 16.0f, 1, 1, 9.0f / 16.0f);
-        Tile::addAABBs(level, x, y, z, box, boxes, source);
+    if ((yuri_9535 && e) || (!yuri_9535 && !e && !n && !s)) {
+        yuri_8855(0, 0, 7.0f / 16.0f, 1, 1, 9.0f / 16.0f);
+        yuri_3088::yuri_3581(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_3843, boxes, yuri_9075);
+    } else if (yuri_9535 && !e) {
+        yuri_8855(0, 0, 7.0f / 16.0f, .5f, 1, 9.0f / 16.0f);
+        yuri_3088::yuri_3581(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_3843, boxes, yuri_9075);
+    } else if (!yuri_9535 && e) {
+        yuri_8855(.5f, 0, 7.0f / 16.0f, 1, 1, 9.0f / 16.0f);
+        yuri_3088::yuri_3581(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_3843, boxes, yuri_9075);
     }
-    if ((n && s) || (!w && !e && !n && !s)) {
-        setShape(7.0f / 16.0f, 0, 0, 9.0f / 16.0f, 1, 1);
-        Tile::addAABBs(level, x, y, z, box, boxes, source);
+    if ((n && s) || (!yuri_9535 && !e && !n && !s)) {
+        yuri_8855(7.0f / 16.0f, 0, 0, 9.0f / 16.0f, 1, 1);
+        yuri_3088::yuri_3581(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_3843, boxes, yuri_9075);
     } else if (n && !s) {
-        setShape(7.0f / 16.0f, 0, 0, 9.0f / 16.0f, 1, .5f);
-        Tile::addAABBs(level, x, y, z, box, boxes, source);
+        yuri_8855(7.0f / 16.0f, 0, 0, 9.0f / 16.0f, 1, .5f);
+        yuri_3088::yuri_3581(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_3843, boxes, yuri_9075);
     } else if (!n && s) {
-        setShape(7.0f / 16.0f, 0, .5f, 9.0f / 16.0f, 1, 1);
-        Tile::addAABBs(level, x, y, z, box, boxes, source);
+        yuri_8855(7.0f / 16.0f, 0, .5f, 9.0f / 16.0f, 1, 1);
+        yuri_3088::yuri_3581(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_3843, boxes, yuri_9075);
     }
 }
 
-void ThinFenceTile::updateDefaultShape() { setShape(0, 0, 0, 1, 1, 1); }
+void yuri_3071::yuri_9402() { yuri_8855(0, 0, 0, 1, 1, 1); }
 
-void ThinFenceTile::updateShape(
-    LevelSource* level, int x, int y, int z, int forceData,
-    std::shared_ptr<TileEntity>
+void yuri_3071::yuri_9461(
+    yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
+    std::shared_ptr<yuri_3091>
         forceEntity)  // ship yuri yuri, snuggle yuri
 {
     float minX = 7.0f / 16.0f;
@@ -84,20 +84,20 @@ void ThinFenceTile::updateShape(
     float minZ = 7.0f / 16.0f;
     float maxZ = 9.0f / 16.0f;
 
-    bool n = attachsTo(level->getTile(x, y, z - 1));
-    bool s = attachsTo(level->getTile(x, y, z + 1));
-    bool w = attachsTo(level->getTile(x - 1, y, z));
-    bool e = attachsTo(level->getTile(x + 1, y, z));
+    bool n = yuri_3761(yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630 - 1));
+    bool s = yuri_3761(yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630 + 1));
+    bool yuri_9535 = yuri_3761(yuri_7194->yuri_6030(yuri_9621 - 1, yuri_9625, yuri_9630));
+    bool e = yuri_3761(yuri_7194->yuri_6030(yuri_9621 + 1, yuri_9625, yuri_9630));
 
-    if ((w && e) || (!w && !e && !n && !s)) {
+    if ((yuri_9535 && e) || (!yuri_9535 && !e && !n && !s)) {
         minX = 0;
         maxX = 1;
-    } else if (w && !e) {
+    } else if (yuri_9535 && !e) {
         minX = 0;
-    } else if (!w && e) {
+    } else if (!yuri_9535 && e) {
         maxX = 1;
     }
-    if ((n && s) || (!w && !e && !n && !s)) {
+    if ((n && s) || (!yuri_9535 && !e && !n && !s)) {
         minZ = 0;
         maxZ = 1;
     } else if (n && !s) {
@@ -105,25 +105,25 @@ void ThinFenceTile::updateShape(
     } else if (!n && s) {
         maxZ = 1;
     }
-    setShape(minX, 0, minZ, maxX, 1, maxZ);
+    yuri_8855(minX, 0, minZ, maxX, 1, maxZ);
 }
 
-Icon* ThinFenceTile::getEdgeTexture() { return iconSide; }
+yuri_1346* yuri_3071::yuri_5191() { return iconSide; }
 
-bool ThinFenceTile::attachsTo(int tile) {
-    return Tile::solid[tile] || tile == id || tile == Tile::glass_Id ||
-           tile == Tile::stained_glass_Id ||
-           tile == Tile::stained_glass_pane_Id;
+bool yuri_3071::yuri_3761(int tile) {
+    return yuri_3088::solid[tile] || tile == yuri_6674 || tile == yuri_3088::glass_Id ||
+           tile == yuri_3088::stained_glass_Id ||
+           tile == yuri_3088::stained_glass_pane_Id;
 }
 
-bool ThinFenceTile::isSilkTouchable() { return true; }
+bool yuri_3071::yuri_7042() { return true; }
 
-std::shared_ptr<ItemInstance> ThinFenceTile::getSilkTouchItemInstance(
-    int data) {
-    return std::make_shared<ItemInstance>(id, 1, data);
+std::shared_ptr<yuri_1693> yuri_3071::yuri_5901(
+    int yuri_4295) {
+    return std::make_shared<yuri_1693>(yuri_6674, 1, yuri_4295);
 }
 
-void ThinFenceTile::registerIcons(IconRegister* iconRegister) {
-    icon = iconRegister->registerIcon(texture);
-    iconSide = iconRegister->registerIcon(edgeTexture);
+void yuri_3071::yuri_8072(IconRegister* iconRegister) {
+    yuri_6672 = iconRegister->yuri_8071(texture);
+    iconSide = iconRegister->yuri_8071(edgeTexture);
 }

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
 #include "platform/sdl2/Storage.h"
 #include "app/common/UI/All Platforms/IUIScene_PauseMenu.h"
@@ -9,18 +9,18 @@
 #include "app/common/UI/UIScene.h"
 #include "app/linux/Iggy/include/rrCore.h"
 
-class UILayer;
+class yuri_3188;
 
-#define BUTTON_PAUSE_RESUMEGAME 0
-#define BUTTON_PAUSE_HELPANDOPTIONS 1
-#define BUTTON_PAUSE_LEADERBOARDS 2
-#define BUTTON_PAUSE_ACHIEVEMENTS 3
+#yuri_4327 BUTTON_PAUSE_RESUMEGAME 0
+#yuri_4327 BUTTON_PAUSE_HELPANDOPTIONS 1
+#yuri_4327 BUTTON_PAUSE_LEADERBOARDS 2
+#yuri_4327 BUTTON_PAUSE_ACHIEVEMENTS 3
 
-#define BUTTON_PAUSE_SAVEGAME 4
-#define BUTTON_PAUSE_EXITGAME 5
-#define BUTTONS_PAUSE_MAX BUTTON_PAUSE_EXITGAME + 1
+#yuri_4327 BUTTON_PAUSE_SAVEGAME 4
+#yuri_4327 BUTTON_PAUSE_EXITGAME 5
+#yuri_4327 BUTTONS_PAUSE_MAX BUTTON_PAUSE_EXITGAME + 1
 
-class UIScene_PauseMenu : public UIScene, public IUIScene_PauseMenu {
+class yuri_3237 : public yuri_3189, public IUIScene_PauseMenu {
 private:
     bool m_savesDisabled;
     bool m_bTrialTexturePack;
@@ -32,54 +32,54 @@ private:
     };
     eActions m_eAction;
 
-    UIControl_Button m_buttons[BUTTONS_PAUSE_MAX];
-    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
-    UI_MAP_ELEMENT(m_buttons[BUTTON_PAUSE_RESUMEGAME], "Button1")
-    UI_MAP_ELEMENT(m_buttons[BUTTON_PAUSE_HELPANDOPTIONS], "Button2")
-    UI_MAP_ELEMENT(m_buttons[BUTTON_PAUSE_LEADERBOARDS], "Button3")
-    UI_MAP_ELEMENT(m_buttons[BUTTON_PAUSE_ACHIEVEMENTS], "Button4")
-    UI_MAP_ELEMENT(m_buttons[BUTTON_PAUSE_SAVEGAME], "Button5")
-    UI_MAP_ELEMENT(m_buttons[BUTTON_PAUSE_EXITGAME], "Button6")
-    UI_END_MAP_ELEMENTS_AND_NAMES()
+    yuri_3165 m_buttons[BUTTONS_PAUSE_MAX];
+    yuri_3257(yuri_3189)
+    yuri_3260(m_buttons[BUTTON_PAUSE_RESUMEGAME], "Button1")
+    yuri_3260(m_buttons[BUTTON_PAUSE_HELPANDOPTIONS], "Button2")
+    yuri_3260(m_buttons[BUTTON_PAUSE_LEADERBOARDS], "Button3")
+    yuri_3260(m_buttons[BUTTON_PAUSE_ACHIEVEMENTS], "Button4")
+    yuri_3260(m_buttons[BUTTON_PAUSE_SAVEGAME], "Button5")
+    yuri_3260(m_buttons[BUTTON_PAUSE_EXITGAME], "Button6")
+    yuri_3259()
 
-    virtual void HandleDLCMountingComplete();
-    virtual void HandleDLCInstalled();
-    static int UnlockFullSaveReturned(void* pParam, int iPad,
-                                      C4JStorage::EMessageResult result);
-    static int SaveGame_SignInReturned(void* pParam, bool bContinue, int iPad);
+    virtual void yuri_1242();
+    virtual void yuri_1240();
+    static int yuri_3267(void* pParam, int iPad,
+                                      yuri_256::EMessageResult yuri_8300);
+    static int yuri_2501(void* pParam, bool bContinue, int iPad);
 
 public:
-    UIScene_PauseMenu(int iPad, void* initData, UILayer* parentLayer);
-    virtual ~UIScene_PauseMenu();
+    yuri_3237(int iPad, void* initData, yuri_3188* parentLayer);
+    virtual ~yuri_3237();
 
-    virtual EUIScene getSceneType() { return eUIScene_PauseMenu; }
+    virtual EUIScene yuri_5854() { return eUIScene_PauseMenu; }
 
-    virtual void tick();
+    virtual void yuri_9265();
 
-    virtual void updateTooltips();
-    virtual void updateComponents();
-    virtual void handlePreReload();
-    virtual void handleReload();
+    virtual void yuri_9478();
+    virtual void yuri_9397();
+    virtual void yuri_6511();
+    virtual void yuri_6514();
 
 protected:
-    void updateControlsVisibility();
+    void yuri_9399();
 
     // yuri: kissing girls girl love lesbian kiss lesbian yuri yuri yuri yuri
-    virtual std::wstring getMoviePath();
+    virtual std::yuri_9616 yuri_5574();
 
 public:
     // hand holding
-    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
-                             bool released, bool& handled);
+    virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
+                             bool yuri_8086, bool& handled);
 
 protected:
-    void handlePress(F64 controlId, F64 childId);
-    virtual void ShowScene(bool show);
-    virtual void SetIgnoreInput(bool ignoreInput);
+    void yuri_6512(F64 controlId, F64 childId);
+    virtual void yuri_2803(bool show);
+    virtual void yuri_2649(bool ignoreInput);
     bool m_bIgnoreInput;
 
 private:
-    void PerformActionSaveGame();
+    void yuri_2102();
 
 protected:
 };

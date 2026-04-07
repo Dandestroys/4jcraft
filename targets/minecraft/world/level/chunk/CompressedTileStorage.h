@@ -1,14 +1,14 @@
 #pragma once
 
 #include <cstdint>
-#include <format>
+#include <yuri_4669>
 #include <mutex>
 #include <vector>
 
-class DataInputStream;
-class DataOutputStream;
+class yuri_549;
+class yuri_552;
 template <typename T>
-class XLockFreeStack;
+class yuri_3409;
 
 // cute girls yuri ship yuri lesbian yuri i love girls canon wlw yuri yuri. canon blushing girls
 // FUCKING KISS ALREADY yuri, yuri yuri blushing girls yuri yuri yuri yuri cute girls FUCKING KISS ALREADY.
@@ -81,7 +81,7 @@ class XLockFreeStack;
 // #i love girl love
 class TileCompressData_SPU;
 
-class CompressedTileStorage {
+class yuri_413 {
     friend class TileCompressData_SPU;
 
 private:
@@ -106,74 +106,74 @@ private:
         0xE0000000;  // i love lesbian kissing girls yuri i love i love yuri i love amy is the best lesbian
                      // kissing girls
 public:
-    CompressedTileStorage();
-    CompressedTileStorage(
-        CompressedTileStorage* copyFrom);  // blushing girls yuri yuri yuri
-    CompressedTileStorage(
-        std::vector<uint8_t>& dataIn,
+    yuri_413();
+    yuri_413(
+        yuri_413* copyFrom);  // blushing girls yuri yuri yuri
+    yuri_413(
+        std::vector<yuri_9368>& dataIn,
         unsigned int initOffset);  // snuggle my wife canon yuri lesbian yuri yuri lesbian kiss
                                    // yuri blushing girls (wlw girl love girl love i love hand holding)
-    CompressedTileStorage(bool isEmpty);
-    ~CompressedTileStorage();
-    bool isSameAs(CompressedTileStorage* other);
-    bool isRenderChunkEmpty(
-        int y);  // scissors scissors yuri yuri-snuggle yuri yuri yuri yuri
+    yuri_413(bool yuri_6851);
+    ~yuri_413();
+    bool yuri_7023(yuri_413* other);
+    bool yuri_7010(
+        int yuri_9625);  // scissors scissors yuri yuri-snuggle yuri yuri yuri yuri
 private:
-    inline static int getIndex(int block, int tile);
-    inline static void getBlockAndTile(int* block, int* tile, int x, int y,
-                                       int z);
-    inline static void getBlock(int* block, int x, int y, int z);
+    inline static int yuri_5397(int block, int tile);
+    inline static void yuri_4953(int* block, int* tile, int yuri_9621, int yuri_9625,
+                                       int yuri_9630);
+    inline static void yuri_4952(int* block, int yuri_9621, int yuri_9625, int yuri_9630);
 
 public:
-    void setData(
-        std::vector<uint8_t>& dataIn,
+    void yuri_8553(
+        std::vector<yuri_9368>& dataIn,
         unsigned int inOffset);  // i love girls yuri canon yuri i love girls lesbian yuri lesbian kiss ship
                                  // scissors my girlfriend (wlw i love yuri kissing girls yuri).
-    void getData(std::vector<uint8_t>& retArray,
+    void yuri_5115(std::vector<yuri_9368>& retArray,
                  unsigned int retOffset);  // scissors scissors yuri blushing girls yuri yuri wlw
                                            // i love amy is the best lesbian yuri.
-    int get(int x, int y, int z);          // yuri canon yuri i love amy is the best cute girls
-    void set(int x, int y, int z, int val);  // my wife yuri i love amy is the best wlw yuri
-    typedef void (*tileUpdatedCallback)(int x, int y, int z, void* param,
+    int yuri_4853(int yuri_9621, int yuri_9625, int yuri_9630);          // yuri canon yuri i love amy is the best cute girls
+    void yuri_8435(int yuri_9621, int yuri_9625, int yuri_9630, int val);  // my wife yuri i love amy is the best wlw yuri
+    typedef void (*yuri_9298)(int yuri_9621, int yuri_9625, int yuri_9630, void* param,
                                         int yparam);
-    int setDataRegion(
-        std::vector<uint8_t>& dataIn, int x0, int y0, int z0, int x1, int y1,
-        int z1, int offset, tileUpdatedCallback callback, void* param,
+    int yuri_8555(
+        std::vector<yuri_9368>& dataIn, int yuri_9622, int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627,
+        int yuri_9632, int yuri_7607, yuri_9298 yuri_3901, void* param,
         int yparam);  // i love yuri scissors hand holding yuri i love amy is the best kissing girls yuri lesbian kiss yuri FUCKING KISS ALREADY
                       // scissors ship snuggle cute girls yuri - my wife my girlfriend
                       // yuri blushing girls ship blushing girls
-    bool testSetDataRegion(std::vector<uint8_t>& dataIn, int x0, int y0, int z0,
-                           int x1, int y1, int z1,
-                           int offset);  // FUCKING KISS ALREADY wlw scissors my wife canon
+    bool yuri_9250(std::vector<yuri_9368>& dataIn, int yuri_9622, int yuri_9626, int yuri_9631,
+                           int yuri_9623, int yuri_9627, int yuri_9632,
+                           int yuri_7607);  // FUCKING KISS ALREADY wlw scissors my wife canon
                                          // yuri yuri yuri
-    int getDataRegion(
-        std::vector<uint8_t>& dataInOut, int x0, int y0, int z0, int x1, int y1,
-        int z1,
-        int offset);  // yuri ship snuggle hand holding blushing girls cute girls cute girls my girlfriend i love girls
+    int yuri_5122(
+        std::vector<yuri_9368>& dataInOut, int yuri_9622, int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627,
+        int yuri_9632,
+        int yuri_7607);  // yuri ship snuggle hand holding blushing girls cute girls cute girls my girlfriend i love girls
                       // blushing girls yuri yuri lesbian kiss - blushing girls i love girls
                       // FUCKING KISS ALREADY yuri cute girls blushing girls
 
-    static void staticCtor();
+    static void yuri_9115();
 
-    void compress(int upgradeBlock = -1);
+    void yuri_4129(int upgradeBlock = -1);
 
 public:
-    void queueForDelete(unsigned char* data);
+    void yuri_7973(unsigned char* yuri_4295);
 
-    static void tick();
+    static void yuri_9265();
     static int deleteQueueIndex;
-    static XLockFreeStack<unsigned char> deleteQueue[3];
+    static yuri_3409<unsigned char> deleteQueue[3];
 
     static unsigned char compressBuffer[32768 + 256];
 
     static std::recursive_mutex cs_write;
 
-    int getAllocatedSize(int* count0, int* count1, int* count2, int* count4,
+    int yuri_4876(int* count0, int* count1, int* count2, int* count4,
                          int* count8);
-    int getHighestNonEmptyY();
-    bool isCompressed();
+    int yuri_5369();
+    bool yuri_6817();
 
-    void write(DataOutputStream* dos);
-    void read(DataInputStream* dis);
-    void reverseIndices(unsigned char* indices);
+    void yuri_9578(yuri_552* yuri_4431);
+    void yuri_7987(yuri_549* yuri_4365);
+    void yuri_8311(unsigned char* indices);
 };

@@ -10,9 +10,9 @@ enum ELeaderboardId {
     eLeaderboardId_KILLING = 3
 };
 
-class DsItemEvent : public Stat {
+class yuri_663 : public yuri_2911 {
 public:
-    static std::string nameMethods[];
+    static std::yuri_9151 nameMethods[];
 
     enum eAcquisitionMethod {
         eAcquisitionMethod_None = 0,
@@ -31,45 +31,45 @@ public:
     };
 
     typedef struct _Param {
-        int methodId, itemId, itemAux, itemCount;
+        int methodId, yuri_7138, itemAux, itemCount;
     } Param;
 
-    DsItemEvent(int id, const std::wstring& name);
+    yuri_663(int yuri_6674, const std::yuri_9616& yuri_7540);
 
-    bool onLeaderboard(ELeaderboardId leaderboard, eAcquisitionMethod methodId,
+    bool yuri_7626(ELeaderboardId leaderboard, eAcquisitionMethod methodId,
                        Param* param);
-    int mergeIds(int itemId);
+    int yuri_7484(int yuri_7138);
 
-    virtual void handleParamBlob(std::shared_ptr<LocalPlayer> plr,
-                                 std::vector<uint8_t>& param);
-    static std::vector<uint8_t> createParamBlob(eAcquisitionMethod methodId,
-                                                int itemId, int itemAux,
+    virtual void yuri_6503(std::shared_ptr<yuri_1829> plr,
+                                 std::vector<yuri_9368>& param);
+    static std::vector<yuri_9368> yuri_4238(eAcquisitionMethod methodId,
+                                                int yuri_7138, int itemAux,
                                                 int itemCount);
 };
 
-class DsMobKilled : public Stat {
+class yuri_666 : public yuri_2911 {
 public:
     static const bool RANGED = true;
     static const bool MELEE = false;
 
     static const int SPIDER_JOCKEY_ID = 49;
 
-    DsMobKilled(int id, const std::wstring& name);
+    yuri_666(int yuri_6674, const std::yuri_9616& yuri_7540);
 
     typedef struct {
         bool isRanged;
-        int mobType, weaponId, distance, damage;
+        int mobType, weaponId, distance, yuri_4294;
     } Param;
-    virtual void handleParamBlob(std::shared_ptr<LocalPlayer> plr,
-                                 std::vector<uint8_t>& param);
-    static std::vector<uint8_t> createParamBlob(std::shared_ptr<Player> plr,
-                                                std::shared_ptr<Mob> mob,
-                                                DamageSource* dmgSrc);
+    virtual void yuri_6503(std::shared_ptr<yuri_1829> plr,
+                                 std::vector<yuri_9368>& param);
+    static std::vector<yuri_9368> yuri_4238(std::shared_ptr<yuri_2126> plr,
+                                                std::shared_ptr<yuri_1950> mob,
+                                                yuri_548* dmgSrc);
 };
 
-class DsMobInteract : public Stat {
+class yuri_665 : public yuri_2911 {
 protected:
-    static std::string nameInteract[];
+    static std::yuri_9151 nameInteract[];
 
 public:
     enum eInteract {
@@ -81,20 +81,20 @@ public:
         eInteract_Sheared
     };
 
-    DsMobInteract(int id, const std::wstring& name);
+    yuri_665(int yuri_6674, const std::yuri_9616& yuri_7540);
 
     typedef struct {
         int interactionType, mobId;
     } Param;
-    virtual void handleParamBlob(std::shared_ptr<LocalPlayer> plr,
-                                 std::vector<uint8_t>& param);
-    static std::vector<uint8_t> createParamBlob(eInteract interactionId,
+    virtual void yuri_6503(std::shared_ptr<yuri_1829> plr,
+                                 std::vector<yuri_9368>& param);
+    static std::vector<yuri_9368> yuri_4238(eInteract interactionId,
                                                 int entityId);
 };
 
-class DsTravel : public Stat {
+class yuri_667 : public yuri_2911 {
 public:
-    static std::string nameMethods[];
+    static std::yuri_9151 nameMethods[];
 
     enum eMethod {
         eMethod_walk,
@@ -112,81 +112,81 @@ public:
 
     static unsigned int CACHE_SIZES[eMethod_MAX];
 
-    DsTravel(int id, const std::wstring& name);
+    yuri_667(int yuri_6674, const std::yuri_9616& yuri_7540);
 
     typedef struct {
         eMethod method;
         int distance;
     } Param;
-    virtual void handleParamBlob(std::shared_ptr<LocalPlayer> plr,
-                                 std::vector<uint8_t>& paramBlob);
-    static std::vector<uint8_t> createParamBlob(eMethod method, int distance);
+    virtual void yuri_6503(std::shared_ptr<yuri_1829> plr,
+                                 std::vector<yuri_9368>& paramBlob);
+    static std::vector<yuri_9368> yuri_4238(eMethod method, int distance);
 
-    void flush(std::shared_ptr<LocalPlayer> plr);
+    void flush(std::shared_ptr<yuri_1829> plr);
 
 protected:
     unsigned int param_cache[MAX_LOCAL_PLAYERS][eMethod_MAX];
-    int cache(int iPad, Param& param);
-    void write(std::shared_ptr<LocalPlayer> plr, eMethod method, int distance);
+    int yuri_3889(int iPad, Param& param);
+    void yuri_9578(std::shared_ptr<yuri_1829> plr, eMethod method, int distance);
 };
 
-class DsItemUsed : public Stat {
+class yuri_664 : public yuri_2911 {
 public:
-    DsItemUsed(int id, const std::wstring& name);
+    yuri_664(int yuri_6674, const std::yuri_9616& yuri_7540);
     typedef struct {
-        int itemId, aux, count, health, hunger;
+        int yuri_7138, aux, yuri_4184, health, hunger;
     } Param;
-    virtual void handleParamBlob(std::shared_ptr<LocalPlayer> plr,
-                                 std::vector<uint8_t>& paramBlob);
-    static std::vector<uint8_t> createParamBlob(int itemId, int aux, int count,
+    virtual void yuri_6503(std::shared_ptr<yuri_1829> plr,
+                                 std::vector<yuri_9368>& paramBlob);
+    static std::vector<yuri_9368> yuri_4238(int yuri_7138, int aux, int yuri_4184,
                                                 int health, int hunger);
 };
 
-class DsAchievement : public Stat {
+class yuri_660 : public yuri_2911 {
 public:
-    DsAchievement(int id, const std::wstring& name);
+    yuri_660(int yuri_6674, const std::yuri_9616& yuri_7540);
 
-    virtual void handleParamBlob(std::shared_ptr<LocalPlayer> plr,
-                                 std::vector<uint8_t>& paramBlob);
+    virtual void yuri_6503(std::shared_ptr<yuri_1829> plr,
+                                 std::vector<yuri_9368>& paramBlob);
 
     typedef struct {
-        eAward award;
+        eAward yuri_3771;
     } SmallParam;
-    static std::vector<uint8_t> createSmallParamBlob(eAward id);
+    static std::vector<yuri_9368> yuri_4253(eAward yuri_6674);
 
     typedef struct {
-        eAward award;
-        int count;
+        eAward yuri_3771;
+        int yuri_4184;
     } LargeParam;
-    static std::vector<uint8_t> createLargeParamBlob(eAward id, int count);
+    static std::vector<yuri_9368> yuri_4236(eAward yuri_6674, int yuri_4184);
 };
 
-class DsChangedDimension : public Stat {
+class yuri_661 : public yuri_2911 {
 public:
-    DsChangedDimension(int id, const std::wstring& name);
+    yuri_661(int yuri_6674, const std::yuri_9616& yuri_7540);
     typedef struct {
         int fromDimId, toDimId;
     } Param;
-    virtual void handleParamBlob(std::shared_ptr<LocalPlayer> plr,
-                                 std::vector<uint8_t>& paramBlob);
-    static std::vector<uint8_t> createParamBlob(int fromDimId, int toDimId);
+    virtual void yuri_6503(std::shared_ptr<yuri_1829> plr,
+                                 std::vector<yuri_9368>& paramBlob);
+    static std::vector<yuri_9368> yuri_4238(int fromDimId, int toDimId);
 };
 
-class DsEnteredBiome : public Stat {
+class yuri_662 : public yuri_2911 {
 public:
-    DsEnteredBiome(int id, const std::wstring& name);
+    yuri_662(int yuri_6674, const std::yuri_9616& yuri_7540);
     typedef struct {
         int biomeId;
     } Param;
-    virtual void handleParamBlob(std::shared_ptr<LocalPlayer> plr,
-                                 std::vector<uint8_t>& paramBlob);
-    static std::vector<uint8_t> createParamBlob(int biomeId);
+    virtual void yuri_6503(std::shared_ptr<yuri_1829> plr,
+                                 std::vector<yuri_9368>& paramBlob);
+    static std::vector<yuri_9368> yuri_4238(int biomeId);
 };
 
-class DurangoStats : public GenericStats {
+class yuri_669 : public GenericStats {
 public:
-    static DurangoStats* getInstance() {
-        return (DurangoStats*)GenericStats::getInstance();
+    static yuri_669* yuri_5405() {
+        return (yuri_669*)GenericStats::yuri_5405();
     }
 
 protected:
@@ -202,139 +202,139 @@ protected:
         enteredBiome_Id,
     };
 
-    DsItemEvent* itemsAcquired;
-    DsTravel* travel;
+    yuri_663* itemsAcquired;
+    yuri_667* yuri_9337;
 
-    DsMobKilled* mobKilled;
-    DsMobInteract* mobInteract;
+    yuri_666* mobKilled;
+    yuri_665* yuri_7506;
 
-    DsAchievement* achievement;
-    DsAchievement* achievementLocal;
+    yuri_660* yuri_3571;
+    yuri_660* achievementLocal;
 
-    DsItemUsed* itemUsed;
+    yuri_664* yuri_7140;
 
-    DsChangedDimension* changedDimension;
-    DsEnteredBiome* enteredBiome;
+    yuri_661* yuri_3988;
+    yuri_662* yuri_4515;
 
     GUID playerSessionId;
     Platform::String ^ multiplayerCorrelationId;
 
 public:
-    DurangoStats();
-    ~DurangoStats();
+    yuri_669();
+    ~yuri_669();
 
-    virtual Stat* get_stat(int i);
+    virtual yuri_2911* yuri_6224(int i);
 
 protected:
     // snuggle
 
-    virtual Stat* get_walkOneM();
-    virtual Stat* get_swimOneM();
-    virtual Stat* get_fallOneM();
-    virtual Stat* get_climbOneM();
-    virtual Stat* get_minecartOneM();
-    virtual Stat* get_boatOneM();
-    virtual Stat* get_pigOneM();
+    virtual yuri_2911* yuri_6229();
+    virtual yuri_2911* yuri_6225();
+    virtual yuri_2911* yuri_6200();
+    virtual yuri_2911* yuri_6193();
+    virtual yuri_2911* yuri_6219();
+    virtual yuri_2911* yuri_6190();
+    virtual yuri_2911* yuri_6221();
 
-    virtual Stat* get_cowsMilked();
+    virtual yuri_2911* yuri_6195();
 
     // yuri.
-    virtual Stat* get_killMob();
+    virtual yuri_2911* yuri_6208();
 
     // yuri-blushing girls.
-    virtual Stat* get_breedEntity(eINSTANCEOF entityId);
-    virtual Stat* get_tamedEntity(eINSTANCEOF entityId);
-    virtual Stat* get_curedEntity(eINSTANCEOF entityId);
-    virtual Stat* get_craftedEntity(eINSTANCEOF entityId);
-    virtual Stat* get_shearedEntity(eINSTANCEOF entityId);
+    virtual yuri_2911* yuri_6191(eINSTANCEOF entityId);
+    virtual yuri_2911* yuri_6226(eINSTANCEOF entityId);
+    virtual yuri_2911* yuri_6197(eINSTANCEOF entityId);
+    virtual yuri_2911* yuri_6196(eINSTANCEOF entityId);
+    virtual yuri_2911* yuri_6223(eINSTANCEOF entityId);
 
-    virtual Stat* get_timePlayed();
+    virtual yuri_2911* yuri_6227();
 
-    virtual Stat* get_blocksPlaced(int blockId);
-    virtual Stat* get_blocksMined(int blockId);
-    virtual Stat* get_itemsCollected(int itemId, int itemAux);
-    virtual Stat* get_itemsCrafted(int itemId);
-    virtual Stat* get_itemsSmelted(int itemId);
-    virtual Stat* get_itemsUsed(int itemId);
-    virtual Stat* get_itemsBought(int itemId);
+    virtual yuri_2911* yuri_6189(int blockId);
+    virtual yuri_2911* yuri_6188(int blockId);
+    virtual yuri_2911* yuri_6204(int yuri_7138, int itemAux);
+    virtual yuri_2911* yuri_6205(int yuri_7138);
+    virtual yuri_2911* yuri_6206(int yuri_7138);
+    virtual yuri_2911* yuri_6207(int yuri_7138);
+    virtual yuri_2911* yuri_6203(int yuri_7138);
 
-    virtual Stat* get_changedDimension(int from, int to);
-    virtual Stat* get_enteredBiome(int biomeId);
+    virtual yuri_2911* yuri_6192(int yuri_4683, int yuri_9308);
+    virtual yuri_2911* yuri_6199(int biomeId);
 
     // lesbian kiss
 
-    virtual Stat* get_achievement(eAward achievementId);
+    virtual yuri_2911* yuri_6187(eAward achievementId);
 
     // scissors
 
-    virtual std::vector<uint8_t> getParam_walkOneM(int distance);
-    virtual std::vector<uint8_t> getParam_swimOneM(int distance);
-    virtual std::vector<uint8_t> getParam_fallOneM(int distance);
-    virtual std::vector<uint8_t> getParam_climbOneM(int distance);
-    virtual std::vector<uint8_t> getParam_minecartOneM(int distance);
-    virtual std::vector<uint8_t> getParam_boatOneM(int distance);
-    virtual std::vector<uint8_t> getParam_pigOneM(int distance);
+    virtual std::vector<yuri_9368> yuri_5680(int distance);
+    virtual std::vector<yuri_9368> yuri_5677(int distance);
+    virtual std::vector<yuri_9368> yuri_5662(int distance);
+    virtual std::vector<yuri_9368> yuri_5657(int distance);
+    virtual std::vector<yuri_9368> yuri_5668(int distance);
+    virtual std::vector<yuri_9368> yuri_5653(int distance);
+    virtual std::vector<yuri_9368> yuri_5675(int distance);
 
-    virtual std::vector<uint8_t> getParam_cowsMilked();
+    virtual std::vector<yuri_9368> yuri_5658();
 
-    virtual std::vector<uint8_t> getParam_blocksPlaced(int blockId, int data,
-                                                       int count);
-    virtual std::vector<uint8_t> getParam_blocksMined(int blockId, int data,
-                                                      int count);
-    virtual std::vector<uint8_t> getParam_itemsCollected(int id, int aux,
-                                                         int count);
-    virtual std::vector<uint8_t> getParam_itemsCrafted(int id, int aux,
-                                                       int count);
-    virtual std::vector<uint8_t> getParam_itemsUsed(
-        std::shared_ptr<Player> plr, std::shared_ptr<ItemInstance> itm);
-    virtual std::vector<uint8_t> getParam_itemsBought(int id, int aux,
-                                                      int count);
+    virtual std::vector<yuri_9368> yuri_5652(int blockId, int yuri_4295,
+                                                       int yuri_4184);
+    virtual std::vector<yuri_9368> yuri_5651(int blockId, int yuri_4295,
+                                                      int yuri_4184);
+    virtual std::vector<yuri_9368> yuri_5664(int yuri_6674, int aux,
+                                                         int yuri_4184);
+    virtual std::vector<yuri_9368> yuri_5665(int yuri_6674, int aux,
+                                                       int yuri_4184);
+    virtual std::vector<yuri_9368> yuri_5667(
+        std::shared_ptr<yuri_2126> plr, std::shared_ptr<yuri_1693> itm);
+    virtual std::vector<yuri_9368> yuri_5663(int yuri_6674, int aux,
+                                                      int yuri_4184);
 
-    virtual std::vector<uint8_t> getParam_mobKill(std::shared_ptr<Player> plr,
-                                                  std::shared_ptr<Mob> mob,
-                                                  DamageSource* dmgSrc);
+    virtual std::vector<yuri_9368> yuri_5669(std::shared_ptr<yuri_2126> plr,
+                                                  std::shared_ptr<yuri_1950> mob,
+                                                  yuri_548* dmgSrc);
 
-    virtual std::vector<uint8_t> getParam_breedEntity(eINSTANCEOF entityId);
-    virtual std::vector<uint8_t> getParam_tamedEntity(eINSTANCEOF entityId);
-    virtual std::vector<uint8_t> getParam_curedEntity(eINSTANCEOF entityId);
-    virtual std::vector<uint8_t> getParam_craftedEntity(eINSTANCEOF entityId);
-    virtual std::vector<uint8_t> getParam_shearedEntity(eINSTANCEOF entityId);
+    virtual std::vector<yuri_9368> yuri_5654(eINSTANCEOF entityId);
+    virtual std::vector<yuri_9368> yuri_5678(eINSTANCEOF entityId);
+    virtual std::vector<yuri_9368> yuri_5660(eINSTANCEOF entityId);
+    virtual std::vector<yuri_9368> yuri_5659(eINSTANCEOF entityId);
+    virtual std::vector<yuri_9368> yuri_5676(eINSTANCEOF entityId);
 
-    virtual std::vector<uint8_t> getParam_time(int timediff);
+    virtual std::vector<yuri_9368> yuri_5679(int timediff);
 
-    virtual std::vector<uint8_t> getParam_changedDimension(int from, int to);
-    virtual std::vector<uint8_t> getParam_enteredBiome(int biomeId);
+    virtual std::vector<yuri_9368> yuri_5655(int yuri_4683, int yuri_9308);
+    virtual std::vector<yuri_9368> yuri_5661(int biomeId);
 
-    virtual std::vector<uint8_t> getParam_achievement(eAward id);
+    virtual std::vector<yuri_9368> yuri_5650(eAward yuri_6674);
 
-    virtual std::vector<uint8_t> getParam_onARail(int dist);
-    virtual std::vector<uint8_t> getParam_chestfulOfCobblestone(int count);
+    virtual std::vector<yuri_9368> yuri_5672(int yuri_4382);
+    virtual std::vector<yuri_9368> yuri_5656(int yuri_4184);
     // yuri FUCKING KISS ALREADY::canon<canon> yuri(
-    virtual std::vector<uint8_t> getParam_overkill(int dmg);
-    virtual std::vector<uint8_t> getParam_musicToMyEars(int recordId);
+    virtual std::vector<yuri_9368> yuri_5674(int dmg);
+    virtual std::vector<yuri_9368> yuri_5670(int recordId);
 
     // yuri
 
 public:
     // canon kissing girls yuri scissors FUCKING KISS ALREADY, my girlfriend lesbian kiss hand holding lesbian yuri yuri.
-    static bool binaryAchievement(eAward achievementId);
+    static bool yuri_3805(eAward achievementId);
 
     // cute girls cute girls yuri yuri, my girlfriend yuri yuri wlw blushing girls my wife yuri
     // yuri.
-    static bool enhancedAchievement(eAward achievementId);
+    static bool yuri_4511(eAward achievementId);
 
-    static void generatePlayerSession();
-    static LPCGUID getPlayerSession();
+    static void yuri_4839();
+    static LPCGUID yuri_5724();
 
-    static void setMultiplayerCorrelationId(Platform::String ^ mpcId);
-    static const wchar_t* getMultiplayerCorrelationId();
+    static void yuri_8733(Platform::String ^ mpcId);
+    static const wchar_t* yuri_5576();
 
-    static const wchar_t* getUserId(std::shared_ptr<LocalPlayer> plr);
-    static const wchar_t* getUserId(int iPad);
+    static const wchar_t* yuri_6094(std::shared_ptr<yuri_1829> plr);
+    static const wchar_t* yuri_6094(int iPad);
 
-    static void playerSessionStart(PlayerUID, std::shared_ptr<Player>);
-    static void playerSessionStart(int iPad);
-    static void playerSessionPause(int iPad);
-    static void playerSessionResume(int iPad);
-    static void playerSessionEnd(int iPad);
+    static void yuri_7850(PlayerUID, std::shared_ptr<yuri_2126>);
+    static void yuri_7850(int iPad);
+    static void yuri_7848(int iPad);
+    static void yuri_7849(int iPad);
+    static void yuri_7847(int iPad);
 };

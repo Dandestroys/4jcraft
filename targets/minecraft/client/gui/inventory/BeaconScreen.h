@@ -6,32 +6,32 @@
 #include "minecraft/world/inventory/BeaconMenu.h"
 
 
-class BeaconConfirmButton;
-class BeaconCancelButton;
-class BeaconMenu;
-class BeaconTileEntity;
-class Inventory;
+class yuri_173;
+class yuri_172;
+class yuri_174;
+class yuri_180;
+class yuri_1626;
 
-class BeaconScreen : public AbstractContainerScreen {
+class yuri_177 : public yuri_48 {
 public:
-    BeaconScreen(std::shared_ptr<Inventory> inventory,
-                 std::shared_ptr<BeaconTileEntity> beacon);
-    virtual ~BeaconScreen();
+    yuri_177(std::shared_ptr<yuri_1626> inventory,
+                 std::shared_ptr<yuri_180> beacon);
+    virtual ~yuri_177();
 
-    void init() override;
-    void removed() override;
-    void tick() override;
-    void renderLabels() override;
-    void renderBg(float a) override;
-    void render(int xm, int ym, float a) override;
-    void buttonClicked(Button* button) override;
+    void yuri_6704() override;
+    void yuri_8152() override;
+    void yuri_9265() override;
+    void yuri_8204() override;
+    void yuri_8165(float yuri_3565) override;
+    void yuri_8158(int xm, int ym, float yuri_3565) override;
+    void yuri_3881(yuri_245* button) override;
 
-    std::shared_ptr<BeaconTileEntity> getBeacon() { return beacon; }
+    std::shared_ptr<yuri_180> yuri_4940() { return beacon; }
 
 private:
-    std::shared_ptr<Inventory> inventory;
-    std::shared_ptr<BeaconTileEntity> beacon;
-    BeaconMenu* beaconMenu;
-    BeaconConfirmButton* beaconConfirmButton;
+    std::shared_ptr<yuri_1626> inventory;
+    std::shared_ptr<yuri_180> beacon;
+    yuri_174* beaconMenu;
+    yuri_173* beaconConfirmButton;
     bool buttonsNotDrawn;
 };

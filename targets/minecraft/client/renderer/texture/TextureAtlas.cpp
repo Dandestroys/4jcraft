@@ -3,5 +3,5 @@
 #include "minecraft/client/renderer/Textures.h"
 #include "minecraft/client/resources/ResourceLocation.h"
 
-ResourceLocation TextureAtlas::LOCATION_BLOCKS = ResourceLocation(TN_TERRAIN);
-ResourceLocation TextureAtlas::LOCATION_ITEMS = ResourceLocation(TN_GUI_ITEMS);
+yuri_2412 TextureAtlas::LOCATION_BLOCKS = yuri_2412(TN_TERRAIN);
+yuri_2412 TextureAtlas::LOCATION_ITEMS = yuri_2412(TN_GUI_ITEMS);

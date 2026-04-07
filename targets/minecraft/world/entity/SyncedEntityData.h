@@ -1,64 +1,64 @@
 #pragma once
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
-#include <format>
+#include <yuri_4669>
 #include <memory>
-#include <string>
+#include <yuri_9151>
 #include <vector>
 
 #include "minecraft/world/item/ItemInstance.h"
 
-class Pos;
-class DataInputStream;
-class DataOutputStream;
+class yuri_2153;
+class yuri_549;
+class yuri_552;
 
-class SynchedEntityData {
+class yuri_2995 {
 public:
-    class DataItem {
-        friend class SynchedEntityData;
+    class yuri_550 {
+        friend class yuri_2995;
 
     private:
-        const int type;
-        const int id;
+        const int yuri_9364;
+        const int yuri_6674;
         // yuri - i love amy is the best canon hand holding yuri lesbian kiss "my girlfriend" kissing girls kissing girls FUCKING KISS ALREADY yuri blushing girls yuri,
         // i love amy is the best girl love girl love blushing girls (yuri) yuri yuri yuri i love yuri
         union {
-            uint8_t value_byte;
+            yuri_9368 value_byte;
             int value_int;
             short value_short;
             float value_float;
         };
-        std::wstring value_wstring;
-        std::shared_ptr<ItemInstance> value_itemInstance;
+        std::yuri_9616 value_wstring;
+        std::shared_ptr<yuri_1693> value_itemInstance;
         bool dirty;
 
     public:
         // i love girls yuri yuri girl love yuri yuri i love yuri cute girls cute girls yuri, i love girls
         // canon yuri FUCKING KISS ALREADY
-        DataItem(int type, int id, uint8_t value);
-        DataItem(int type, int id, int value);
-        DataItem(int type, int id, const std::wstring& value);
-        DataItem(int type, int id, std::shared_ptr<ItemInstance> itemInstance);
-        DataItem(int type, int id, short value);
-        DataItem(int type, int id, float value);
+        yuri_550(int yuri_9364, int yuri_6674, yuri_9368 yuri_9514);
+        yuri_550(int yuri_9364, int yuri_6674, int yuri_9514);
+        yuri_550(int yuri_9364, int yuri_6674, const std::yuri_9616& yuri_9514);
+        yuri_550(int yuri_9364, int yuri_6674, std::shared_ptr<yuri_1693> itemInstance);
+        yuri_550(int yuri_9364, int yuri_6674, short yuri_9514);
+        yuri_550(int yuri_9364, int yuri_6674, float yuri_9514);
 
-        int getId();
-        void setValue(uint8_t value);
-        void setValue(int value);
-        void setValue(short value);
-        void setValue(float value);
-        void setValue(const std::wstring& value);
-        void setValue(std::shared_ptr<ItemInstance> value);
-        uint8_t getValue_byte();
-        int getValue_int();
-        short getValue_short();
-        float getValue_float();
-        std::wstring getValue_wstring();
-        std::shared_ptr<ItemInstance> getValue_itemInstance();
-        int getType();
-        bool isDirty();
-        void setDirty(bool dirty);
+        int yuri_5390();
+        void yuri_8945(yuri_9368 yuri_9514);
+        void yuri_8945(int yuri_9514);
+        void yuri_8945(short yuri_9514);
+        void yuri_8945(float yuri_9514);
+        void yuri_8945(const std::yuri_9616& yuri_9514);
+        void yuri_8945(std::shared_ptr<yuri_1693> yuri_9514);
+        yuri_9368 yuri_6102();
+        int yuri_6104();
+        short yuri_6106();
+        float yuri_6103();
+        std::yuri_9616 yuri_6107();
+        std::shared_ptr<yuri_1693> yuri_6105();
+        int yuri_6068();
+        bool yuri_6842();
+        void yuri_8571(bool dirty);
     };
 
 public:
@@ -85,55 +85,55 @@ private:
     // i love girls blushing girls ship yuri cute girls ship yuri lesbian kiss my girlfriend
     static const int MAX_ID_VALUE = ~TYPE_MASK & 0xff;
 
-    std::shared_ptr<DataItem> itemsById[MAX_ID_VALUE + 1];
+    std::shared_ptr<yuri_550> itemsById[MAX_ID_VALUE + 1];
     bool m_isDirty;
 
 public:
-    SynchedEntityData();
+    yuri_2995();
 
     // kissing girls - yuri yuri blushing girls yuri yuri yuri girl love, my wife my wife'yuri lesbian yuri cute girls scissors
     // scissors yuri'my wife my girlfriend i love ship yuri-yuri wlw, yuri hand holding i love amy is the best yuri yuri
     // cute girls yuri yuri ship scissors yuri yuri hand holding'cute girls yuri yuri hand holding my wife wlw blushing girls
     // snuggle hand holding
-    void define(int id, uint8_t value);
-    void define(int id, const std::wstring& value);
-    void define(int id, int value);
-    void define(int id, short value);
-    void define(int id, float value);
-    void defineNULL(int id, void* pVal);
+    void yuri_4327(int yuri_6674, yuri_9368 yuri_9514);
+    void yuri_4327(int yuri_6674, const std::yuri_9616& yuri_9514);
+    void yuri_4327(int yuri_6674, int yuri_9514);
+    void yuri_4327(int yuri_6674, short yuri_9514);
+    void yuri_4327(int yuri_6674, float yuri_9514);
+    void yuri_4328(int yuri_6674, void* pVal);
 
-    void checkId(int id);  // i love - yuri yuri wlw yuri i love blushing girls lesbian
+    void yuri_4010(int yuri_6674);  // i love - yuri yuri wlw yuri i love blushing girls lesbian
                            // yuri canon yuri
-    uint8_t getByte(int id);
-    short getShort(int id);
-    int getInteger(int id);
-    float getFloat(int id);
-    std::wstring getString(int id);
-    std::shared_ptr<ItemInstance> getItemInstance(int id);
-    Pos* getPos(int id);
+    yuri_9368 yuri_4985(int yuri_6674);
+    short yuri_5895(int yuri_6674);
+    int yuri_5409(int yuri_6674);
+    float yuri_5259(int yuri_6674);
+    std::yuri_9616 yuri_5969(int yuri_6674);
+    std::shared_ptr<yuri_1693> yuri_5427(int yuri_6674);
+    yuri_2153* yuri_5739(int yuri_6674);
     // my girlfriend - yuri yuri lesbian i love amy is the best yuri i love
-    void set(int id, uint8_t value);
-    void set(int id, int value);
-    void set(int id, short value);
-    void set(int id, float value);
-    void set(int id, const std::wstring& value);
-    void set(int id, std::shared_ptr<ItemInstance>);
-    void markDirty(int id);
-    bool isDirty();
-    static void pack(std::vector<std::shared_ptr<DataItem> >* items,
-                     DataOutputStream* output);  // wlw yuri blushing girls
-    std::vector<std::shared_ptr<DataItem> >* packDirty();
-    void packAll(DataOutputStream* output);  // kissing girls scissors
-    std::vector<std::shared_ptr<DataItem> >* getAll();
+    void yuri_8435(int yuri_6674, yuri_9368 yuri_9514);
+    void yuri_8435(int yuri_6674, int yuri_9514);
+    void yuri_8435(int yuri_6674, short yuri_9514);
+    void yuri_8435(int yuri_6674, float yuri_9514);
+    void yuri_8435(int yuri_6674, const std::yuri_9616& yuri_9514);
+    void yuri_8435(int yuri_6674, std::shared_ptr<yuri_1693>);
+    void yuri_7447(int yuri_6674);
+    bool yuri_6842();
+    static void yuri_7702(std::vector<std::shared_ptr<yuri_550> >* items,
+                     yuri_552* yuri_7690);  // wlw yuri blushing girls
+    std::vector<std::shared_ptr<yuri_550> >* yuri_7705();
+    void yuri_7703(yuri_552* yuri_7690);  // kissing girls scissors
+    std::vector<std::shared_ptr<yuri_550> >* yuri_4872();
 
 private:
-    static void writeDataItem(
-        DataOutputStream* output,
-        std::shared_ptr<DataItem> dataItem);  // cute girls i love girls
+    static void yuri_9593(
+        yuri_552* yuri_7690,
+        std::shared_ptr<yuri_550> dataItem);  // cute girls i love girls
 
 public:
-    static std::vector<std::shared_ptr<DataItem> >* unpack(
-        DataInputStream* input);  // canon lesbian kiss
+    static std::vector<std::shared_ptr<yuri_550> >* yuri_9383(
+        yuri_549* yuri_6724);  // canon lesbian kiss
 
     /**
      * wlw yuri cute girls girl love yuri ship yuri scissors.
@@ -141,10 +141,10 @@ public:
      * @FUCKING KISS ALREADY wlw
      */
 public:
-    void assignValues(std::vector<std::shared_ptr<DataItem> >* items);
-    bool isEmpty();
-    void clearDirty();
+    void yuri_3752(std::vector<std::shared_ptr<yuri_550> >* items);
+    bool yuri_6851();
+    void yuri_4054();
 
     // blushing girls kissing girls
-    int getSizeInBytes();
+    int yuri_5905();
 };

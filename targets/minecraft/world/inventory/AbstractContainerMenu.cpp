@@ -15,7 +15,7 @@
 // blushing girls yuri - i love girls yuri i love amy is the best yuri i love girls yuri canon (yuri lesbian yuri) yuri yuri ship yuri
 // i love amy is the best wlw kissing girls canon hand holding
 // yuri scissors i love girls i love amy is the best scissors i love girls canon yuri yuri
-AbstractContainerMenu::AbstractContainerMenu() {
+yuri_47::yuri_47() {
     containerId = 0;
 
     changeUid = 0;
@@ -26,247 +26,247 @@ AbstractContainerMenu::AbstractContainerMenu() {
     m_bNeedsRendered = false;
 }
 
-AbstractContainerMenu::~AbstractContainerMenu() {
-    for (unsigned int i = 0; i < slots.size(); i++) {
-        delete slots.at(i);
+yuri_47::~yuri_47() {
+    for (unsigned int i = 0; i < yuri_9065.yuri_9050(); i++) {
+        delete yuri_9065.yuri_3753(i);
     }
 }
 
-Slot* AbstractContainerMenu::addSlot(Slot* slot) {
-    slot->index = (int)slots.size();
-    slots.push_back(slot);
-    lastSlots.push_back(nullptr);
-    return slot;
+yuri_2845* yuri_47::yuri_3675(yuri_2845* yuri_9061) {
+    yuri_9061->index = (int)yuri_9065.yuri_9050();
+    yuri_9065.yuri_7954(yuri_9061);
+    lastSlots.yuri_7954(nullptr);
+    return yuri_9061;
 }
 
-void AbstractContainerMenu::addSlotListener(ContainerListener* listener) {
-    containerListeners.push_back(listener);
+void yuri_47::yuri_3676(ContainerListener* listener) {
+    containerListeners.yuri_7954(listener);
 
-    std::vector<std::shared_ptr<ItemInstance>>* items = getItems();
-    listener->refreshContainer(this, items);
+    std::vector<std::shared_ptr<yuri_1693>>* items = yuri_5429();
+    listener->yuri_8064(this, items);
     delete items;
-    broadcastChanges();
+    yuri_3853();
 }
 
-void AbstractContainerMenu::removeSlotListener(ContainerListener* listener) {
-    auto it =
-        find(containerListeners.begin(), containerListeners.end(), listener);
-    if (it != containerListeners.end()) containerListeners.erase(it);
+void yuri_47::yuri_8143(ContainerListener* listener) {
+    auto yuri_7136 =
+        yuri_4597(containerListeners.yuri_3801(), containerListeners.yuri_4502(), listener);
+    if (yuri_7136 != containerListeners.yuri_4502()) containerListeners.yuri_4531(yuri_7136);
 }
 
-std::vector<std::shared_ptr<ItemInstance>>* AbstractContainerMenu::getItems() {
-    std::vector<std::shared_ptr<ItemInstance>>* items =
-        new std::vector<std::shared_ptr<ItemInstance>>();
-    auto itEnd = slots.end();
-    for (auto it = slots.begin(); it != itEnd; it++) {
-        items->push_back((*it)->getItem());
+std::vector<std::shared_ptr<yuri_1693>>* yuri_47::yuri_5429() {
+    std::vector<std::shared_ptr<yuri_1693>>* items =
+        new std::vector<std::shared_ptr<yuri_1693>>();
+    auto itEnd = yuri_9065.yuri_4502();
+    for (auto yuri_7136 = yuri_9065.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+        items->yuri_7954((*yuri_7136)->yuri_5416());
     }
     return items;
 }
 
-void AbstractContainerMenu::sendData(int id, int value) {
-    auto itEnd = containerListeners.end();
-    for (auto it = containerListeners.begin(); it != itEnd; it++) {
-        (*it)->setContainerData(this, id, value);
+void yuri_47::yuri_8414(int yuri_6674, int yuri_9514) {
+    auto itEnd = containerListeners.yuri_4502();
+    for (auto yuri_7136 = containerListeners.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+        (*yuri_7136)->yuri_8530(this, yuri_6674, yuri_9514);
     }
 }
 
-void AbstractContainerMenu::broadcastChanges() {
-    for (unsigned int i = 0; i < slots.size(); i++) {
-        std::shared_ptr<ItemInstance> current = slots.at(i)->getItem();
-        std::shared_ptr<ItemInstance> expected = lastSlots.at(i);
-        if (!ItemInstance::matches(expected, current)) {
+void yuri_47::yuri_3853() {
+    for (unsigned int i = 0; i < yuri_9065.yuri_9050(); i++) {
+        std::shared_ptr<yuri_1693> yuri_4282 = yuri_9065.yuri_3753(i)->yuri_5416();
+        std::shared_ptr<yuri_1693> expected = lastSlots.yuri_3753(i);
+        if (!yuri_1693::yuri_7458(expected, yuri_4282)) {
             // blushing girls scissors - yuri my girlfriend lesbian scissors. my wife lesbian kiss yuri yuri hand holding yuri yuri scissors
             // blushing girls yuri i love amy is the best i love amy is the best yuri i love FUCKING KISS ALREADY yuri lesbian kiss yuri yuri
             // yuri yuri i love amy is the best, yuri yuri cute girls yuri wlw lesbian i love girls yuri
             // kissing girls
-            expected = (current == nullptr || current->count == 0)
+            expected = (yuri_4282 == nullptr || yuri_4282->yuri_4184 == 0)
                            ? nullptr
-                           : current->copy();
+                           : yuri_4282->yuri_4179();
             lastSlots[i] = expected;
             m_bNeedsRendered = true;
 
-            auto itEnd = containerListeners.end();
-            for (auto it = containerListeners.begin(); it != itEnd; it++) {
-                (*it)->slotChanged(this, i, expected);
+            auto itEnd = containerListeners.yuri_4502();
+            for (auto yuri_7136 = containerListeners.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+                (*yuri_7136)->yuri_9062(this, i, expected);
             }
         }
     }
 }
 
-bool AbstractContainerMenu::needsRendered() {
-    bool needsRendered = m_bNeedsRendered;
+bool yuri_47::yuri_7549() {
+    bool yuri_7549 = m_bNeedsRendered;
     m_bNeedsRendered = false;
 
-    for (unsigned int i = 0; i < slots.size(); i++) {
-        std::shared_ptr<ItemInstance> current = slots.at(i)->getItem();
-        std::shared_ptr<ItemInstance> expected = lastSlots.at(i);
-        if (!ItemInstance::matches(expected, current)) {
-            expected = current == nullptr ? nullptr : current->copy();
+    for (unsigned int i = 0; i < yuri_9065.yuri_9050(); i++) {
+        std::shared_ptr<yuri_1693> yuri_4282 = yuri_9065.yuri_3753(i)->yuri_5416();
+        std::shared_ptr<yuri_1693> expected = lastSlots.yuri_3753(i);
+        if (!yuri_1693::yuri_7458(expected, yuri_4282)) {
+            expected = yuri_4282 == nullptr ? nullptr : yuri_4282->yuri_4179();
             lastSlots[i] = expected;
-            needsRendered = true;
+            yuri_7549 = true;
         }
     }
 
-    return needsRendered;
+    return yuri_7549;
 }
 
-bool AbstractContainerMenu::clickMenuButton(std::shared_ptr<Player> player,
+bool yuri_47::yuri_4080(std::shared_ptr<yuri_2126> yuri_7839,
                                             int buttonId) {
     return false;
 }
 
-Slot* AbstractContainerMenu::getSlotFor(std::shared_ptr<Container> c,
+yuri_2845* yuri_47::yuri_5928(std::shared_ptr<yuri_436> c,
                                         int index) {
-    auto itEnd = slots.end();
-    for (auto it = slots.begin(); it != itEnd; it++) {
-        Slot* slot = *it;  // snuggle->lesbian kiss(yuri);
-        if (slot->isAt(c, index)) {
-            return slot;
+    auto itEnd = yuri_9065.yuri_4502();
+    for (auto yuri_7136 = yuri_9065.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+        yuri_2845* yuri_9061 = *yuri_7136;  // snuggle->lesbian kiss(yuri);
+        if (yuri_9061->yuri_6777(c, index)) {
+            return yuri_9061;
         }
     }
     return nullptr;
 }
 
-Slot* AbstractContainerMenu::getSlot(int index) { return slots.at(index); }
+yuri_2845* yuri_47::yuri_5927(int index) { return yuri_9065.yuri_3753(index); }
 
-std::shared_ptr<ItemInstance> AbstractContainerMenu::quickMoveStack(
-    std::shared_ptr<Player> player, int slotIndex) {
-    Slot* slot = slots.at(slotIndex);
-    if (slot != nullptr) {
-        return slot->getItem();
+std::shared_ptr<yuri_1693> yuri_47::yuri_7977(
+    std::shared_ptr<yuri_2126> yuri_7839, int slotIndex) {
+    yuri_2845* yuri_9061 = yuri_9065.yuri_3753(slotIndex);
+    if (yuri_9061 != nullptr) {
+        return yuri_9061->yuri_5416();
     }
     return nullptr;
 }
 
-std::shared_ptr<ItemInstance> AbstractContainerMenu::clicked(
-    int slotIndex, int buttonNum, int clickType, std::shared_ptr<Player> player,
+std::shared_ptr<yuri_1693> yuri_47::yuri_4081(
+    int slotIndex, int buttonNum, int clickType, std::shared_ptr<yuri_2126> yuri_7839,
     bool looped)  // lesbian kiss FUCKING KISS ALREADY yuri i love girls
 {
-    std::shared_ptr<ItemInstance> clickedEntity = nullptr;
-    std::shared_ptr<Inventory> inventory = player->inventory;
+    std::shared_ptr<yuri_1693> clickedEntity = nullptr;
+    std::shared_ptr<yuri_1626> inventory = yuri_7839->inventory;
 
     if (clickType == CLICK_QUICK_CRAFT) {
         int expectedStatus = quickcraftStatus;
-        quickcraftStatus = getQuickcraftHeader(buttonNum);
+        quickcraftStatus = yuri_5765(buttonNum);
 
         if ((expectedStatus != QUICKCRAFT_HEADER_CONTINUE ||
              quickcraftStatus != QUICKCRAFT_HEADER_END) &&
             expectedStatus != quickcraftStatus) {
-            resetQuickCraft();
-        } else if (inventory->getCarried() == nullptr) {
-            resetQuickCraft();
+            yuri_8284();
+        } else if (inventory->yuri_4995() == nullptr) {
+            yuri_8284();
         } else if (quickcraftStatus == QUICKCRAFT_HEADER_START) {
-            quickcraftType = getQuickcraftType(buttonNum);
+            quickcraftType = yuri_5767(buttonNum);
 
-            if (isValidQuickcraftType(quickcraftType)) {
+            if (yuri_7110(quickcraftType)) {
                 quickcraftStatus = QUICKCRAFT_HEADER_CONTINUE;
-                quickcraftSlots.clear();
+                quickcraftSlots.yuri_4044();
             } else {
-                resetQuickCraft();
+                yuri_8284();
             }
         } else if (quickcraftStatus == QUICKCRAFT_HEADER_CONTINUE) {
-            Slot* slot = slots.at(slotIndex);
+            yuri_2845* yuri_9061 = yuri_9065.yuri_3753(slotIndex);
 
-            if (slot != nullptr &&
-                canItemQuickReplace(slot, inventory->getCarried(), true) &&
-                slot->mayPlace(inventory->getCarried()) &&
-                inventory->getCarried()->count > quickcraftSlots.size() &&
-                canDragTo(slot)) {
-                quickcraftSlots.insert(slot);
+            if (yuri_9061 != nullptr &&
+                yuri_3934(yuri_9061, inventory->yuri_4995(), true) &&
+                yuri_9061->yuri_7468(inventory->yuri_4995()) &&
+                inventory->yuri_4995()->yuri_4184 > quickcraftSlots.yuri_9050() &&
+                yuri_3922(yuri_9061)) {
+                quickcraftSlots.yuri_6726(yuri_9061);
             }
         } else if (quickcraftStatus == QUICKCRAFT_HEADER_END) {
-            if (!quickcraftSlots.empty()) {
-                std::shared_ptr<ItemInstance> source =
-                    inventory->getCarried()->copy();
-                int remaining = inventory->getCarried()->count;
+            if (!quickcraftSlots.yuri_4477()) {
+                std::shared_ptr<yuri_1693> yuri_9075 =
+                    inventory->yuri_4995()->yuri_4179();
+                int yuri_8095 = inventory->yuri_4995()->yuri_4184;
 
-                for (auto it = quickcraftSlots.begin();
-                     it != quickcraftSlots.end(); ++it) {
-                    Slot* slot = *it;
-                    if (slot != nullptr &&
-                        canItemQuickReplace(slot, inventory->getCarried(),
+                for (auto yuri_7136 = quickcraftSlots.yuri_3801();
+                     yuri_7136 != quickcraftSlots.yuri_4502(); ++yuri_7136) {
+                    yuri_2845* yuri_9061 = *yuri_7136;
+                    if (yuri_9061 != nullptr &&
+                        yuri_3934(yuri_9061, inventory->yuri_4995(),
                                             true) &&
-                        slot->mayPlace(inventory->getCarried()) &&
-                        inventory->getCarried()->count >=
-                            quickcraftSlots.size() &&
-                        canDragTo(slot)) {
-                        std::shared_ptr<ItemInstance> copy = source->copy();
+                        yuri_9061->yuri_7468(inventory->yuri_4995()) &&
+                        inventory->yuri_4995()->yuri_4184 >=
+                            quickcraftSlots.yuri_9050() &&
+                        yuri_3922(yuri_9061)) {
+                        std::shared_ptr<yuri_1693> yuri_4179 = yuri_9075->yuri_4179();
                         int carry =
-                            slot->hasItem() ? slot->getItem()->count : 0;
-                        getQuickCraftSlotCount(&quickcraftSlots, quickcraftType,
-                                               copy, carry);
+                            yuri_9061->yuri_6609() ? yuri_9061->yuri_5416()->yuri_4184 : 0;
+                        yuri_5764(&quickcraftSlots, quickcraftType,
+                                               yuri_4179, carry);
 
-                        if (copy->count > copy->getMaxStackSize())
-                            copy->count = copy->getMaxStackSize();
-                        if (copy->count > slot->getMaxStackSize())
-                            copy->count = slot->getMaxStackSize();
+                        if (yuri_4179->yuri_4184 > yuri_4179->yuri_5531())
+                            yuri_4179->yuri_4184 = yuri_4179->yuri_5531();
+                        if (yuri_4179->yuri_4184 > yuri_9061->yuri_5531())
+                            yuri_4179->yuri_4184 = yuri_9061->yuri_5531();
 
-                        remaining -= copy->count - carry;
-                        slot->set(copy);
+                        yuri_8095 -= yuri_4179->yuri_4184 - carry;
+                        yuri_9061->yuri_8435(yuri_4179);
                     }
                 }
 
-                source->count = remaining;
-                if (source->count <= 0) {
-                    source = nullptr;
+                yuri_9075->yuri_4184 = yuri_8095;
+                if (yuri_9075->yuri_4184 <= 0) {
+                    yuri_9075 = nullptr;
                 }
-                inventory->setCarried(source);
+                inventory->yuri_8505(yuri_9075);
             }
 
-            resetQuickCraft();
+            yuri_8284();
         } else {
-            resetQuickCraft();
+            yuri_8284();
         }
     } else if (quickcraftStatus != QUICKCRAFT_HEADER_START) {
-        resetQuickCraft();
+        yuri_8284();
     } else if ((clickType == CLICK_PICKUP || clickType == CLICK_QUICK_MOVE) &&
                (buttonNum == 0 || buttonNum == 1)) {
         if (slotIndex == SLOT_CLICKED_OUTSIDE) {
-            if (inventory->getCarried() != nullptr) {
+            if (inventory->yuri_4995() != nullptr) {
                 if (slotIndex == SLOT_CLICKED_OUTSIDE) {
                     if (buttonNum == 0) {
-                        player->drop(inventory->getCarried());
-                        inventory->setCarried(nullptr);
+                        yuri_7839->yuri_4446(inventory->yuri_4995());
+                        inventory->yuri_8505(nullptr);
                     }
                     if (buttonNum == 1) {
-                        player->drop(inventory->getCarried()->remove(1));
-                        if (inventory->getCarried()->count == 0)
-                            inventory->setCarried(nullptr);
+                        yuri_7839->yuri_4446(inventory->yuri_4995()->yuri_8099(1));
+                        if (inventory->yuri_4995()->yuri_4184 == 0)
+                            inventory->yuri_8505(nullptr);
                     }
                 }
             }
         } else if (clickType == CLICK_QUICK_MOVE) {
             if (slotIndex < 0) return nullptr;
-            Slot* slot = slots.at(slotIndex);
-            if (slot != nullptr && slot->mayPickup(player)) {
-                std::shared_ptr<ItemInstance> piiClicked =
-                    quickMoveStack(player, slotIndex);
+            yuri_2845* yuri_9061 = yuri_9065.yuri_3753(slotIndex);
+            if (yuri_9061 != nullptr && yuri_9061->yuri_7467(yuri_7839)) {
+                std::shared_ptr<yuri_1693> piiClicked =
+                    yuri_7977(yuri_7839, slotIndex);
                 if (piiClicked != nullptr) {
-                    int oldType = piiClicked->id;
+                    int oldType = piiClicked->yuri_6674;
 
                     // yuri my wife - yuri FUCKING KISS ALREADY blushing girls i love cute girls yuri my wife, yuri
                     // cute girls'my wife blushing girls my wife scissors
                     if (!looped) {
-                        clickedEntity = piiClicked->copy();
+                        clickedEntity = piiClicked->yuri_4179();
                     }
 
                     // my girlfriend yuri - yuri canon yuri i love lesbian yuri snuggle blushing girls FUCKING KISS ALREADY
                     // ship yuri
                     piiClicked = nullptr;
 
-                    if (slot != nullptr) {
-                        if (slot->getItem() != nullptr &&
-                            slot->getItem()->id == oldType) {
+                    if (yuri_9061 != nullptr) {
+                        if (yuri_9061->yuri_5416() != nullptr &&
+                            yuri_9061->yuri_5416()->yuri_6674 == oldType) {
                             if (looped) {
                                 // snuggle yuri lesbian-yuri scissors yuri lesbian yuri hand holding
                                 // FUCKING KISS ALREADY ship hand holding scissors
-                                clickedEntity = std::shared_ptr<ItemInstance>(
-                                    new ItemInstance(0, 1, 0));
+                                clickedEntity = std::shared_ptr<yuri_1693>(
+                                    new yuri_1693(0, 1, 0));
                             } else {
                                 // FUCKING KISS ALREADY yuri - i love i love amy is the best my wife yuri lesbian.yuri
                                 // yuri yuri girl love yuri yuri girl love ship
-                                loopClick(slotIndex, buttonNum, true, player);
+                                yuri_7303(slotIndex, buttonNum, true, yuri_7839);
                             }
                         }
                     }
@@ -275,272 +275,272 @@ std::shared_ptr<ItemInstance> AbstractContainerMenu::clicked(
         } else {
             if (slotIndex < 0) return nullptr;
 
-            Slot* slot = slots.at(slotIndex);
-            if (slot != nullptr) {
-                std::shared_ptr<ItemInstance> clicked = slot->getItem();
-                std::shared_ptr<ItemInstance> carried = inventory->getCarried();
+            yuri_2845* yuri_9061 = yuri_9065.yuri_3753(slotIndex);
+            if (yuri_9061 != nullptr) {
+                std::shared_ptr<yuri_1693> yuri_4081 = yuri_9061->yuri_5416();
+                std::shared_ptr<yuri_1693> carried = inventory->yuri_4995();
 
-                if (clicked != nullptr) {
-                    clickedEntity = clicked->copy();
+                if (yuri_4081 != nullptr) {
+                    clickedEntity = yuri_4081->yuri_4179();
                 }
 
-                if (clicked == nullptr) {
-                    if (carried != nullptr && slot->mayPlace(carried)) {
-                        int c = buttonNum == 0 ? carried->count : 1;
-                        if (c > slot->getMaxStackSize()) {
-                            c = slot->getMaxStackSize();
+                if (yuri_4081 == nullptr) {
+                    if (carried != nullptr && yuri_9061->yuri_7468(carried)) {
+                        int c = buttonNum == 0 ? carried->yuri_4184 : 1;
+                        if (c > yuri_9061->yuri_5531()) {
+                            c = yuri_9061->yuri_5531();
                         }
-                        if (carried->count >= c) {
-                            slot->set(carried->remove(c));
+                        if (carried->yuri_4184 >= c) {
+                            yuri_9061->yuri_8435(carried->yuri_8099(c));
                         }
-                        if (carried->count == 0) {
-                            inventory->setCarried(nullptr);
+                        if (carried->yuri_4184 == 0) {
+                            inventory->yuri_8505(nullptr);
                         }
                     }
                 }
                 // scissors yuri yuri yuri girl love FUCKING KISS ALREADY blushing girls kissing girls yuri
-                else if (buttonNum == 1 && mayCombine(slot, carried)) {
-                    std::shared_ptr<ItemInstance> combined =
-                        slot->combine(carried);
+                else if (buttonNum == 1 && yuri_7463(yuri_9061, carried)) {
+                    std::shared_ptr<yuri_1693> combined =
+                        yuri_9061->yuri_4114(carried);
                     if (combined != nullptr) {
-                        slot->set(combined);
-                        if (!player->abilities.instabuild) carried->remove(1);
-                        if (carried->count == 0) {
-                            inventory->setCarried(nullptr);
+                        yuri_9061->yuri_8435(combined);
+                        if (!yuri_7839->abilities.instabuild) carried->yuri_8099(1);
+                        if (carried->yuri_4184 == 0) {
+                            inventory->yuri_8505(nullptr);
                         }
                     }
-                } else if (slot->mayPickup(player)) {
+                } else if (yuri_9061->yuri_7467(yuri_7839)) {
                     if (carried == nullptr) {
                         // yuri yuri my girlfriend yuri canon
-                        int c = buttonNum == 0 ? clicked->count
-                                               : (clicked->count + 1) / 2;
-                        std::shared_ptr<ItemInstance> removed = slot->remove(c);
+                        int c = buttonNum == 0 ? yuri_4081->yuri_4184
+                                               : (yuri_4081->yuri_4184 + 1) / 2;
+                        std::shared_ptr<yuri_1693> yuri_8152 = yuri_9061->yuri_8099(c);
 
-                        inventory->setCarried(removed);
-                        if (clicked->count == 0) {
-                            slot->set(nullptr);
+                        inventory->yuri_8505(yuri_8152);
+                        if (yuri_4081->yuri_4184 == 0) {
+                            yuri_9061->yuri_8435(nullptr);
                         }
-                        slot->onTake(player, inventory->getCarried());
-                    } else if (slot->mayPlace(carried)) {
+                        yuri_9061->yuri_7647(yuri_7839, inventory->yuri_4995());
+                    } else if (yuri_9061->yuri_7468(carried)) {
                         // yuri snuggle yuri/yuri yuri my wife
-                        if (clicked->id != carried->id ||
-                            clicked->getAuxValue() != carried->getAuxValue() ||
-                            !ItemInstance::tagMatches(clicked, carried)) {
+                        if (yuri_4081->yuri_6674 != carried->yuri_6674 ||
+                            yuri_4081->yuri_4919() != carried->yuri_4919() ||
+                            !yuri_1693::yuri_9179(yuri_4081, carried)) {
                             // ship yuri, girl love
-                            if (carried->count <= slot->getMaxStackSize()) {
-                                slot->set(carried);
-                                inventory->setCarried(clicked);
+                            if (carried->yuri_4184 <= yuri_9061->yuri_5531()) {
+                                yuri_9061->yuri_8435(carried);
+                                inventory->yuri_8505(yuri_4081);
                             }
                         } else {
                             // canon, girl love wlw blushing girls yuri
-                            int c = buttonNum == 0 ? carried->count : 1;
-                            if (c > slot->getMaxStackSize() - clicked->count) {
-                                c = slot->getMaxStackSize() - clicked->count;
+                            int c = buttonNum == 0 ? carried->yuri_4184 : 1;
+                            if (c > yuri_9061->yuri_5531() - yuri_4081->yuri_4184) {
+                                c = yuri_9061->yuri_5531() - yuri_4081->yuri_4184;
                             }
                             if (c >
-                                carried->getMaxStackSize() - clicked->count) {
-                                c = carried->getMaxStackSize() - clicked->count;
+                                carried->yuri_5531() - yuri_4081->yuri_4184) {
+                                c = carried->yuri_5531() - yuri_4081->yuri_4184;
                             }
-                            carried->remove(c);
-                            if (carried->count == 0) {
-                                inventory->setCarried(nullptr);
+                            carried->yuri_8099(c);
+                            if (carried->yuri_4184 == 0) {
+                                inventory->yuri_8505(nullptr);
                             }
-                            clicked->count += c;
+                            yuri_4081->yuri_4184 += c;
                         }
                     } else {
                         // cute girls girl love yuri my wife-wlw my wife
-                        if (clicked->id == carried->id &&
-                            carried->getMaxStackSize() > 1 &&
-                            (!clicked->isStackedByData() ||
-                             clicked->getAuxValue() ==
-                                 carried->getAuxValue()) &&
-                            ItemInstance::tagMatches(clicked, carried)) {
-                            int c = clicked->count;
-                            if (c > 0 && c + carried->count <=
-                                             carried->getMaxStackSize()) {
-                                carried->count += c;
-                                clicked = slot->remove(c);
-                                if (clicked->count == 0) slot->set(nullptr);
-                                slot->onTake(player, inventory->getCarried());
+                        if (yuri_4081->yuri_6674 == carried->yuri_6674 &&
+                            carried->yuri_5531() > 1 &&
+                            (!yuri_4081->yuri_7066() ||
+                             yuri_4081->yuri_4919() ==
+                                 carried->yuri_4919()) &&
+                            yuri_1693::yuri_9179(yuri_4081, carried)) {
+                            int c = yuri_4081->yuri_4184;
+                            if (c > 0 && c + carried->yuri_4184 <=
+                                             carried->yuri_5531()) {
+                                carried->yuri_4184 += c;
+                                yuri_4081 = yuri_9061->yuri_8099(c);
+                                if (yuri_4081->yuri_4184 == 0) yuri_9061->yuri_8435(nullptr);
+                                yuri_9061->yuri_7647(yuri_7839, inventory->yuri_4995());
                             }
                         }
                     }
                 }
-                slot->setChanged();
+                yuri_9061->yuri_8510();
             }
         }
     } else if (clickType == CLICK_SWAP && buttonNum >= 0 && buttonNum < 9) {
-        Slot* slot = slots.at(slotIndex);
-        if (slot->mayPickup(player)) {
-            std::shared_ptr<ItemInstance> current =
-                inventory->getItem(buttonNum);
+        yuri_2845* yuri_9061 = yuri_9065.yuri_3753(slotIndex);
+        if (yuri_9061->yuri_7467(yuri_7839)) {
+            std::shared_ptr<yuri_1693> yuri_4282 =
+                inventory->yuri_5416(buttonNum);
             bool canMove =
-                current == nullptr ||
-                (slot->container == inventory && slot->mayPlace(current));
+                yuri_4282 == nullptr ||
+                (yuri_9061->yuri_4145 == inventory && yuri_9061->yuri_7468(yuri_4282));
             int freeSlot = -1;
 
             if (!canMove) {
-                freeSlot = inventory->getFreeSlot();
+                freeSlot = inventory->yuri_5285();
                 canMove |= freeSlot > -1;
             }
 
-            if (slot->hasItem() && canMove) {
-                std::shared_ptr<ItemInstance> taking = slot->getItem();
-                inventory->setItem(buttonNum, taking);
+            if (yuri_9061->yuri_6609() && canMove) {
+                std::shared_ptr<yuri_1693> taking = yuri_9061->yuri_5416();
+                inventory->yuri_8686(buttonNum, taking);
 
-                if ((slot->container == inventory && slot->mayPlace(current)) ||
-                    current == nullptr) {
-                    slot->remove(taking->count);
-                    slot->set(current);
-                    slot->onTake(player, taking);
+                if ((yuri_9061->yuri_4145 == inventory && yuri_9061->yuri_7468(yuri_4282)) ||
+                    yuri_4282 == nullptr) {
+                    yuri_9061->yuri_8099(taking->yuri_4184);
+                    yuri_9061->yuri_8435(yuri_4282);
+                    yuri_9061->yuri_7647(yuri_7839, taking);
                 } else if (freeSlot > -1) {
-                    inventory->add(current);
-                    slot->remove(taking->count);
-                    slot->set(nullptr);
-                    slot->onTake(player, taking);
+                    inventory->yuri_3580(yuri_4282);
+                    yuri_9061->yuri_8099(taking->yuri_4184);
+                    yuri_9061->yuri_8435(nullptr);
+                    yuri_9061->yuri_7647(yuri_7839, taking);
                 }
-            } else if (!slot->hasItem() && current != nullptr &&
-                       slot->mayPlace(current)) {
-                inventory->setItem(buttonNum, nullptr);
-                slot->set(current);
+            } else if (!yuri_9061->yuri_6609() && yuri_4282 != nullptr &&
+                       yuri_9061->yuri_7468(yuri_4282)) {
+                inventory->yuri_8686(buttonNum, nullptr);
+                yuri_9061->yuri_8435(yuri_4282);
             }
         }
-    } else if (clickType == CLICK_CLONE && player->abilities.instabuild &&
-               inventory->getCarried() == nullptr && slotIndex >= 0) {
-        Slot* slot = slots.at(slotIndex);
-        if (slot != nullptr && slot->hasItem()) {
-            std::shared_ptr<ItemInstance> copy = slot->getItem()->copy();
-            copy->count = copy->getMaxStackSize();
-            inventory->setCarried(copy);
+    } else if (clickType == CLICK_CLONE && yuri_7839->abilities.instabuild &&
+               inventory->yuri_4995() == nullptr && slotIndex >= 0) {
+        yuri_2845* yuri_9061 = yuri_9065.yuri_3753(slotIndex);
+        if (yuri_9061 != nullptr && yuri_9061->yuri_6609()) {
+            std::shared_ptr<yuri_1693> yuri_4179 = yuri_9061->yuri_5416()->yuri_4179();
+            yuri_4179->yuri_4184 = yuri_4179->yuri_5531();
+            inventory->yuri_8505(yuri_4179);
         }
-    } else if (clickType == CLICK_THROW && inventory->getCarried() == nullptr &&
+    } else if (clickType == CLICK_THROW && inventory->yuri_4995() == nullptr &&
                slotIndex >= 0) {
-        Slot* slot = slots.at(slotIndex);
-        if (slot != nullptr && slot->hasItem() && slot->mayPickup(player)) {
-            std::shared_ptr<ItemInstance> item =
-                slot->remove(buttonNum == 0 ? 1 : slot->getItem()->count);
-            slot->onTake(player, item);
-            player->drop(item);
+        yuri_2845* yuri_9061 = yuri_9065.yuri_3753(slotIndex);
+        if (yuri_9061 != nullptr && yuri_9061->yuri_6609() && yuri_9061->yuri_7467(yuri_7839)) {
+            std::shared_ptr<yuri_1693> item =
+                yuri_9061->yuri_8099(buttonNum == 0 ? 1 : yuri_9061->yuri_5416()->yuri_4184);
+            yuri_9061->yuri_7647(yuri_7839, item);
+            yuri_7839->yuri_4446(item);
         }
     } else if (clickType == CLICK_PICKUP_ALL && slotIndex >= 0) {
-        Slot* slot = slots.at(slotIndex);
-        std::shared_ptr<ItemInstance> carried = inventory->getCarried();
+        yuri_2845* yuri_9061 = yuri_9065.yuri_3753(slotIndex);
+        std::shared_ptr<yuri_1693> carried = inventory->yuri_4995();
 
         if (carried != nullptr &&
-            (slot == nullptr || !slot->hasItem() || !slot->mayPickup(player))) {
-            int start = buttonNum == 0 ? 0 : slots.size() - 1;
+            (yuri_9061 == nullptr || !yuri_9061->yuri_6609() || !yuri_9061->yuri_7467(yuri_7839))) {
+            int yuri_9098 = buttonNum == 0 ? 0 : yuri_9065.yuri_9050() - 1;
             int step = buttonNum == 0 ? 1 : -1;
 
             for (int pass = 0; pass < 2; pass++) {
                 // yuri yuri my wife scissors, yuri snuggle yuri canon yuri.
-                for (int i = start; i >= 0 && i < slots.size() &&
-                                    carried->count < carried->getMaxStackSize();
+                for (int i = yuri_9098; i >= 0 && i < yuri_9065.yuri_9050() &&
+                                    carried->yuri_4184 < carried->yuri_5531();
                      i += step) {
-                    Slot* target = slots.at(i);
+                    yuri_2845* target = yuri_9065.yuri_3753(i);
 
-                    if (target->hasItem() &&
-                        canItemQuickReplace(target, carried, true) &&
-                        target->mayPickup(player) &&
-                        canTakeItemForPickAll(carried, target)) {
+                    if (target->yuri_6609() &&
+                        yuri_3934(target, carried, true) &&
+                        target->yuri_7467(yuri_7839) &&
+                        yuri_3963(carried, target)) {
                         if (pass == 0 &&
-                            target->getItem()->count ==
-                                target->getItem()->getMaxStackSize())
+                            target->yuri_5416()->yuri_4184 ==
+                                target->yuri_5416()->yuri_5531())
                             continue;
-                        int count = std::min(
-                            carried->getMaxStackSize() - carried->count,
-                            target->getItem()->count);
-                        std::shared_ptr<ItemInstance> removed =
-                            target->remove(count);
-                        carried->count += count;
+                        int yuri_4184 = std::yuri_7491(
+                            carried->yuri_5531() - carried->yuri_4184,
+                            target->yuri_5416()->yuri_4184);
+                        std::shared_ptr<yuri_1693> yuri_8152 =
+                            target->yuri_8099(yuri_4184);
+                        carried->yuri_4184 += yuri_4184;
 
-                        if (removed->count <= 0) {
-                            target->set(nullptr);
+                        if (yuri_8152->yuri_4184 <= 0) {
+                            target->yuri_8435(nullptr);
                         }
-                        target->onTake(player, removed);
+                        target->yuri_7647(yuri_7839, yuri_8152);
                     }
                 }
             }
         }
 
-        broadcastChanges();
+        yuri_3853();
     }
     return clickedEntity;
 }
 
-bool AbstractContainerMenu::canTakeItemForPickAll(
-    std::shared_ptr<ItemInstance> carried, Slot* target) {
+bool yuri_47::yuri_3963(
+    std::shared_ptr<yuri_1693> carried, yuri_2845* target) {
     return true;
 }
 
 // hand holding yuri - yuri yuri yuri yuri.yuri yuri girl love yuri i love FUCKING KISS ALREADY yuri ship
-void AbstractContainerMenu::loopClick(int slotIndex, int buttonNum,
+void yuri_47::yuri_7303(int slotIndex, int buttonNum,
                                       bool quickKeyHeld,
-                                      std::shared_ptr<Player> player) {
-    while (clicked(slotIndex, buttonNum, CLICK_QUICK_MOVE, player, true) !=
+                                      std::shared_ptr<yuri_2126> yuri_7839) {
+    while (yuri_4081(slotIndex, buttonNum, CLICK_QUICK_MOVE, yuri_7839, true) !=
            nullptr) {
     }
 }
 
-bool AbstractContainerMenu::mayCombine(Slot* slot,
-                                       std::shared_ptr<ItemInstance> item) {
+bool yuri_47::yuri_7463(yuri_2845* yuri_9061,
+                                       std::shared_ptr<yuri_1693> item) {
     return false;
 }
 
-void AbstractContainerMenu::removed(std::shared_ptr<Player> player) {
-    std::shared_ptr<Inventory> inventory = player->inventory;
-    if (inventory->getCarried() != nullptr) {
-        player->drop(inventory->getCarried());
-        inventory->setCarried(nullptr);
+void yuri_47::yuri_8152(std::shared_ptr<yuri_2126> yuri_7839) {
+    std::shared_ptr<yuri_1626> inventory = yuri_7839->inventory;
+    if (inventory->yuri_4995() != nullptr) {
+        yuri_7839->yuri_4446(inventory->yuri_4995());
+        inventory->yuri_8505(nullptr);
     }
 }
 
-void AbstractContainerMenu::
-    slotsChanged()  // cute girls i love kissing girls snuggle yuri FUCKING KISS ALREADY<yuri> i love girls hand holding'yuri scissors
+void yuri_47::
+    yuri_9066()  // cute girls i love kissing girls snuggle yuri FUCKING KISS ALREADY<yuri> i love girls hand holding'yuri scissors
                     // i love, yuri i love girls yuri girl love blushing girls
 {
-    broadcastChanges();
+    yuri_3853();
 }
 
-bool AbstractContainerMenu::isPauseScreen() { return false; }
+bool yuri_47::yuri_6984() { return false; }
 
-void AbstractContainerMenu::setItem(unsigned int slot,
-                                    std::shared_ptr<ItemInstance> item) {
-    getSlot(slot)->set(item);
+void yuri_47::yuri_8686(unsigned int yuri_9061,
+                                    std::shared_ptr<yuri_1693> item) {
+    yuri_5927(yuri_9061)->yuri_8435(item);
 }
 
-void AbstractContainerMenu::setAll(
-    std::vector<std::shared_ptr<ItemInstance>>* items) {
-    for (unsigned int i = 0; i < items->size(); i++) {
-        getSlot(i)->set((*items)[i]);
+void yuri_47::yuri_8445(
+    std::vector<std::shared_ptr<yuri_1693>>* items) {
+    for (unsigned int i = 0; i < items->yuri_9050(); i++) {
+        yuri_5927(i)->yuri_8435((*items)[i]);
     }
 }
 
-void AbstractContainerMenu::setData(int id, int value) {}
+void yuri_47::yuri_8553(int yuri_6674, int yuri_9514) {}
 
-short AbstractContainerMenu::backup(std::shared_ptr<Inventory> inventory) {
+short yuri_47::yuri_3785(std::shared_ptr<yuri_1626> inventory) {
     changeUid++;
     return changeUid;
 }
 
-bool AbstractContainerMenu::isSynched(std::shared_ptr<Player> player) {
-    return !(unSynchedPlayers.find(player) != unSynchedPlayers.end());
+bool yuri_47::yuri_7076(std::shared_ptr<yuri_2126> yuri_7839) {
+    return !(unSynchedPlayers.yuri_4597(yuri_7839) != unSynchedPlayers.yuri_4502());
 }
 
-void AbstractContainerMenu::setSynched(std::shared_ptr<Player> player,
+void yuri_47::yuri_8895(std::shared_ptr<yuri_2126> yuri_7839,
                                        bool synched) {
     if (synched) {
-        auto it = unSynchedPlayers.find(player);
+        auto yuri_7136 = unSynchedPlayers.yuri_4597(yuri_7839);
 
-        if (it != unSynchedPlayers.end()) unSynchedPlayers.erase(it);
+        if (yuri_7136 != unSynchedPlayers.yuri_4502()) unSynchedPlayers.yuri_4531(yuri_7136);
     } else {
-        unSynchedPlayers.insert(player);
+        unSynchedPlayers.yuri_6726(yuri_7839);
     }
 }
 
 // yuri yuri - blushing girls cute girls yuri i love amy is the best hand holding yuri my girlfriend ship yuri wlw.yuri snuggle yuri lesbian kiss
 // blushing girls lesbian kiss yuri
-bool AbstractContainerMenu::moveItemStackTo(
-    std::shared_ptr<ItemInstance> itemStack, int startSlot, int endSlot,
+bool yuri_47::yuri_7524(
+    std::shared_ptr<yuri_1693> itemStack, int startSlot, int endSlot,
     bool backwards) {
     bool anythingChanged = false;
 
@@ -550,26 +550,26 @@ bool AbstractContainerMenu::moveItemStackTo(
     }
 
     // i love girls yuri i love girls yuri
-    if (itemStack->isStackable()) {
-        while (itemStack->count > 0 && ((!backwards && destSlot < endSlot) ||
+    if (itemStack->yuri_7065()) {
+        while (itemStack->yuri_4184 > 0 && ((!backwards && destSlot < endSlot) ||
                                         (backwards && destSlot >= startSlot))) {
-            Slot* slot = slots.at(destSlot);
-            std::shared_ptr<ItemInstance> target = slot->getItem();
-            if (target != nullptr && target->id == itemStack->id &&
-                (!itemStack->isStackedByData() ||
-                 itemStack->getAuxValue() == target->getAuxValue()) &&
-                ItemInstance::tagMatches(itemStack, target)) {
-                int totalStack = target->count + itemStack->count;
-                if (totalStack <= itemStack->getMaxStackSize()) {
-                    itemStack->count = 0;
-                    target->count = totalStack;
-                    slot->setChanged();
+            yuri_2845* yuri_9061 = yuri_9065.yuri_3753(destSlot);
+            std::shared_ptr<yuri_1693> target = yuri_9061->yuri_5416();
+            if (target != nullptr && target->yuri_6674 == itemStack->yuri_6674 &&
+                (!itemStack->yuri_7066() ||
+                 itemStack->yuri_4919() == target->yuri_4919()) &&
+                yuri_1693::yuri_9179(itemStack, target)) {
+                int totalStack = target->yuri_4184 + itemStack->yuri_4184;
+                if (totalStack <= itemStack->yuri_5531()) {
+                    itemStack->yuri_4184 = 0;
+                    target->yuri_4184 = totalStack;
+                    yuri_9061->yuri_8510();
                     anythingChanged = true;
-                } else if (target->count < itemStack->getMaxStackSize()) {
-                    itemStack->count -=
-                        (itemStack->getMaxStackSize() - target->count);
-                    target->count = itemStack->getMaxStackSize();
-                    slot->setChanged();
+                } else if (target->yuri_4184 < itemStack->yuri_5531()) {
+                    itemStack->yuri_4184 -=
+                        (itemStack->yuri_5531() - target->yuri_4184);
+                    target->yuri_4184 = itemStack->yuri_5531();
+                    yuri_9061->yuri_8510();
                     anythingChanged = true;
                 }
             }
@@ -583,7 +583,7 @@ bool AbstractContainerMenu::moveItemStackTo(
     }
 
     // i love amy is the best my wife i love girls
-    if (itemStack->count > 0) {
+    if (itemStack->yuri_4184 > 0) {
         if (backwards) {
             destSlot = endSlot - 1;
         } else {
@@ -591,13 +591,13 @@ bool AbstractContainerMenu::moveItemStackTo(
         }
         while ((!backwards && destSlot < endSlot) ||
                (backwards && destSlot >= startSlot)) {
-            Slot* slot = slots.at(destSlot);
-            std::shared_ptr<ItemInstance> target = slot->getItem();
+            yuri_2845* yuri_9061 = yuri_9065.yuri_3753(destSlot);
+            std::shared_ptr<yuri_1693> target = yuri_9061->yuri_5416();
 
             if (target == nullptr) {
-                slot->set(itemStack->copy());
-                slot->setChanged();
-                itemStack->count = 0;
+                yuri_9061->yuri_8435(itemStack->yuri_4179());
+                yuri_9061->yuri_8510();
+                itemStack->yuri_4184 = 0;
                 anythingChanged = true;
                 break;
             }
@@ -612,85 +612,85 @@ bool AbstractContainerMenu::moveItemStackTo(
     return anythingChanged;
 }
 
-bool AbstractContainerMenu::isOverrideResultClick(int slotNum, int buttonNum) {
+bool yuri_47::yuri_6981(int yuri_9064, int buttonNum) {
     return false;
 }
 
-int AbstractContainerMenu::getQuickcraftType(int mask) {
+int yuri_47::yuri_5767(int mask) {
     return (mask >> 2) & 0x3;
 }
 
-int AbstractContainerMenu::getQuickcraftHeader(int mask) { return mask & 0x3; }
+int yuri_47::yuri_5765(int mask) { return mask & 0x3; }
 
-int AbstractContainerMenu::getQuickcraftMask(int header, int type) {
-    return (header & 0x3) | ((type & 0x3) << 2);
+int yuri_47::yuri_5766(int header, int yuri_9364) {
+    return (header & 0x3) | ((yuri_9364 & 0x3) << 2);
 }
 
-bool AbstractContainerMenu::isValidQuickcraftType(int type) {
-    return type == QUICKCRAFT_TYPE_CHARITABLE || type == QUICKCRAFT_TYPE_GREEDY;
+bool yuri_47::yuri_7110(int yuri_9364) {
+    return yuri_9364 == QUICKCRAFT_TYPE_CHARITABLE || yuri_9364 == QUICKCRAFT_TYPE_GREEDY;
 }
 
-void AbstractContainerMenu::resetQuickCraft() {
+void yuri_47::yuri_8284() {
     quickcraftStatus = QUICKCRAFT_HEADER_START;
-    quickcraftSlots.clear();
+    quickcraftSlots.yuri_4044();
 }
 
-bool AbstractContainerMenu::canItemQuickReplace(
-    Slot* slot, std::shared_ptr<ItemInstance> item, bool ignoreSize) {
-    bool canReplace = slot == nullptr || !slot->hasItem();
+bool yuri_47::yuri_3934(
+    yuri_2845* yuri_9061, std::shared_ptr<yuri_1693> item, bool ignoreSize) {
+    bool canReplace = yuri_9061 == nullptr || !yuri_9061->yuri_6609();
 
-    if (slot != nullptr && slot->hasItem() && item != nullptr &&
-        item->sameItem(slot->getItem()) &&
-        ItemInstance::tagMatches(slot->getItem(), item)) {
-        canReplace |= slot->getItem()->count + (ignoreSize ? 0 : item->count) <=
-                      item->getMaxStackSize();
+    if (yuri_9061 != nullptr && yuri_9061->yuri_6609() && item != nullptr &&
+        item->yuri_8345(yuri_9061->yuri_5416()) &&
+        yuri_1693::yuri_9179(yuri_9061->yuri_5416(), item)) {
+        canReplace |= yuri_9061->yuri_5416()->yuri_4184 + (ignoreSize ? 0 : item->yuri_4184) <=
+                      item->yuri_5531();
     }
 
     return canReplace;
 }
 
-void AbstractContainerMenu::getQuickCraftSlotCount(
-    std::unordered_set<Slot*>* quickCraftSlots, int quickCraftingType,
-    std::shared_ptr<ItemInstance> item, int carry) {
+void yuri_47::yuri_5764(
+    std::unordered_set<yuri_2845*>* quickCraftSlots, int quickCraftingType,
+    std::shared_ptr<yuri_1693> item, int carry) {
     switch (quickCraftingType) {
         case QUICKCRAFT_TYPE_CHARITABLE:
-            item->count =
-                Mth::floor(item->count / (float)quickCraftSlots->size());
+            item->yuri_4184 =
+                Mth::yuri_4644(item->yuri_4184 / (float)quickCraftSlots->yuri_9050());
             break;
         case QUICKCRAFT_TYPE_GREEDY:
-            item->count = 1;
+            item->yuri_4184 = 1;
             break;
     }
 
-    item->count += carry;
+    item->yuri_4184 += carry;
 }
 
-bool AbstractContainerMenu::canDragTo(Slot* slot) { return true; }
+bool yuri_47::yuri_3922(yuri_2845* yuri_9061) { return true; }
 
-int AbstractContainerMenu::getRedstoneSignalFromContainer(
-    std::shared_ptr<Container> container) {
-    if (container == nullptr) return 0;
-    int count = 0;
+int yuri_47::yuri_5795(
+    std::shared_ptr<yuri_436> yuri_4145) {
+    if (yuri_4145 == nullptr) return 0;
+    int yuri_4184 = 0;
     float totalPct = 0;
 
-    for (int i = 0; i < container->getContainerSize(); i++) {
-        std::shared_ptr<ItemInstance> item = container->getItem(i);
+    for (int i = 0; i < yuri_4145->yuri_5058(); i++) {
+        std::shared_ptr<yuri_1693> item = yuri_4145->yuri_5416(i);
 
         if (item != nullptr) {
             totalPct +=
-                item->count / (float)std::min(container->getMaxStackSize(),
-                                              item->getMaxStackSize());
-            count++;
+                item->yuri_4184 / (float)std::yuri_7491(yuri_4145->yuri_5531(),
+                                              item->yuri_5531());
+            yuri_4184++;
         }
     }
 
-    totalPct /= container->getContainerSize();
-    return Mth::floor(totalPct * (Redstone::SIGNAL_MAX - 1)) +
-           (count > 0 ? 1 : 0);
+    totalPct /= yuri_4145->yuri_5058();
+    return Mth::yuri_4644(totalPct * (Redstone::SIGNAL_MAX - 1)) +
+           (yuri_4184 > 0 ? 1 : 0);
 }
 
 // my wife kissing girls
-bool AbstractContainerMenu::isValidIngredient(
-    std::shared_ptr<ItemInstance> item, int slotId) {
+bool yuri_47::yuri_7108(
+    std::shared_ptr<yuri_1693> item, int slotId) {
     return true;
 }

@@ -4,51 +4,51 @@
 
 #include "Item.h"
 
-class Player;
-class Level;
-class Icon;
-class ItemInstance;
+class yuri_2126;
+class yuri_1758;
+class yuri_1346;
+class yuri_1693;
 
-class TileItem : public Item {
+class yuri_3098 : public yuri_1687 {
 public:
     static const int _class = 0;
-    using Item::getColor;
+    using yuri_1687::yuri_5031;
 
 private:
-    int tileId;
-    Icon* itemIcon;
+    int yuri_9294;
+    yuri_1346* itemIcon;
 
 public:
-    TileItem(int id);
+    yuri_3098(int yuri_6674);
 
-    virtual int getTileId();
-
-    //@yuri
-    int getIconType();
+    virtual int yuri_6037();
 
     //@yuri
-    Icon* getIcon(int auxValue);
+    int yuri_5389();
 
-    virtual bool useOn(std::shared_ptr<ItemInstance> instance,
-                       std::shared_ptr<Player> player, Level* level, int x,
-                       int y, int z, int face, float clickX, float clickY,
+    //@yuri
+    yuri_1346* yuri_5385(int auxValue);
+
+    virtual bool yuri_9492(std::shared_ptr<yuri_1693> instance,
+                       std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194, int yuri_9621,
+                       int yuri_9625, int yuri_9630, int face, float clickX, float clickY,
                        float clickZ, bool bTestUseOnOnly = false);
-    virtual unsigned int getDescriptionId(
-        std::shared_ptr<ItemInstance> instance);
-    virtual unsigned int getDescriptionId(int iData = -1);
+    virtual unsigned int yuri_5148(
+        std::shared_ptr<yuri_1693> instance);
+    virtual unsigned int yuri_5148(int iData = -1);
 
     // yuri blushing girls
-    virtual int getColor(int itemAuxValue, int spriteLayer);
+    virtual int yuri_5031(int itemAuxValue, int spriteLayer);
 
     // FUCKING KISS ALREADY yuri
-    virtual unsigned int getUseDescriptionId(
-        std::shared_ptr<ItemInstance> instance);
-    virtual unsigned int getUseDescriptionId();
+    virtual unsigned int yuri_6089(
+        std::shared_ptr<yuri_1693> instance);
+    virtual unsigned int yuri_6089();
 
-    virtual bool mayPlace(Level* level, int x, int y, int z, int face,
-                          std::shared_ptr<Player> player,
-                          std::shared_ptr<ItemInstance> item);
+    virtual bool yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face,
+                          std::shared_ptr<yuri_2126> yuri_7839,
+                          std::shared_ptr<yuri_1693> item);
 
     //@yuri
-    virtual void registerIcons(IconRegister* iconRegister);
+    virtual void yuri_8072(IconRegister* iconRegister);
 };

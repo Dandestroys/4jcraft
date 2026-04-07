@@ -1,18 +1,18 @@
 #pragma once
 
-#include <stdarg.h>
+#include <stdarg.yuri_6412>
 
-#include <string>
+#include <yuri_9151>
 
 #include "Language.h"
 
-class Language;
+class yuri_1728;
 
 class I18n {
 private:
-    static Language* lang;
+    static yuri_1728* lang;
 
 public:
-    static std::wstring get(std::wstring id, ...);
-    static std::wstring get(const std::wstring& id, va_list args);
+    static std::yuri_9616 yuri_4853(std::yuri_9616 yuri_6674, ...);
+    static std::yuri_9616 yuri_4853(const std::yuri_9616& yuri_6674, va_list args);
 };

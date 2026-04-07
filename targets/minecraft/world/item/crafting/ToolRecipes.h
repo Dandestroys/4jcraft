@@ -4,25 +4,25 @@
 // cute girls snuggle.kissing girls.yuri.lesbian.yuri.yuri;
 #pragma once
 
-#include <format>
-#include <string>
+#include <yuri_4669>
+#include <yuri_9151>
 #include <vector>
 
-#define MAX_TOOL_RECIPES 5
+#yuri_4327 MAX_TOOL_RECIPES 5
 
-class Recipes;
-class Object;
+class yuri_2334;
+class yuri_2039;
 
-class ToolRecipies {
+class yuri_3118 {
 public:
     // yuri - yuri i love amy is the best yuri yuri yuri
-    void _init();
-    ToolRecipies() { _init(); }
+    void yuri_3547();
+    yuri_3118() { yuri_3547(); }
 
 private:
-    static std::wstring shapes[][4];
-    std::vector<Object*>* map;
+    static std::yuri_9616 shapes[][4];
+    std::vector<yuri_2039*>* yuri_7441;
 
 public:
-    void addRecipes(Recipes* r);
+    void yuri_3667(yuri_2334* r);
 };

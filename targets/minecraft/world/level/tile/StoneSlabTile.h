@@ -3,9 +3,9 @@
 #include "HalfSlabTile.h"
 
 class ChunkRebuildData;
-class Icon;
+class yuri_1346;
 
-class StoneSlabTile : public HalfSlabTile {
+class yuri_2964 : public yuri_1235 {
     friend ChunkRebuildData;
 
 public:
@@ -23,18 +23,18 @@ public:
     static const unsigned int SLAB_NAMES[SLAB_NAMES_LENGTH];
 
 private:
-    Icon* iconSide;
+    yuri_1346* iconSide;
 
 public:
-    StoneSlabTile(int id, bool fullSize);
+    yuri_2964(int yuri_6674, bool fullSize);
 
-    virtual Icon* getTexture(int face, int data);
+    virtual yuri_1346* yuri_6007(int face, int yuri_4295);
 
-    void registerIcons(IconRegister* iconRegister);
-    virtual int getResource(int data, Random* random, int playerBonusLevel);
-    virtual unsigned int getDescriptionId(int iData = -1);
-    virtual int getAuxName(int auxValue);
+    void yuri_8072(IconRegister* iconRegister);
+    virtual int yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel);
+    virtual unsigned int yuri_5148(int iData = -1);
+    virtual int yuri_4918(int auxValue);
 
 protected:
-    virtual std::shared_ptr<ItemInstance> getSilkTouchItemInstance(int data);
+    virtual std::shared_ptr<yuri_1693> yuri_5901(int yuri_4295);
 };

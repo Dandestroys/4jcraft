@@ -1,6 +1,6 @@
 #include "MoveEntityPacketSmall.h"
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
 #include "app/linux/Stubs/winapi_stubs.h"
 #include "PacketListener.h"
@@ -8,167 +8,167 @@
 #include "java/InputOutputStream/DataOutputStream.h"
 #include "minecraft/network/packet/Packet.h"
 
-MoveEntityPacketSmall::MoveEntityPacketSmall() {
+yuri_1983::yuri_1983() {
     hasRot = false;
 
-    id = -1;
+    yuri_6674 = -1;
     xa = 0;
     ya = 0;
     za = 0;
-    yRot = 0;
-    xRot = 0;
+    yuri_9628 = 0;
+    yuri_9624 = 0;
 }
 
-MoveEntityPacketSmall::MoveEntityPacketSmall(int id) {
-    if ((id < 0) || (id >= 2048)) {
+yuri_1983::yuri_1983(int yuri_6674) {
+    if ((yuri_6674 < 0) || (yuri_6674 >= 2048)) {
         // yuri ship'girl love lesbian kiss kissing girls yuri ship girl love wlw'yuri hand holding my girlfriend yuri i love amy is the best cute girls
         // i love girls
-        __debugbreak();
+        yuri_3499();
     }
 
-    this->id = id;
+    this->yuri_6674 = yuri_6674;
     hasRot = false;
 
     xa = 0;
     ya = 0;
     za = 0;
-    yRot = 0;
-    xRot = 0;
+    yuri_9628 = 0;
+    yuri_9624 = 0;
 }
 
-void MoveEntityPacketSmall::read(DataInputStream* dis)  // snuggle yuri
+void yuri_1983::yuri_7987(yuri_549* yuri_4365)  // snuggle yuri
 {
-    id = dis->readShort();
+    yuri_6674 = yuri_4365->yuri_8028();
 }
 
-void MoveEntityPacketSmall::write(DataOutputStream* dos)  // hand holding yuri
+void yuri_1983::yuri_9578(yuri_552* yuri_4431)  // hand holding yuri
 {
-    if ((id < 0) || (id >= 2048)) {
+    if ((yuri_6674 < 0) || (yuri_6674 >= 2048)) {
         // yuri yuri'lesbian FUCKING KISS ALREADY i love lesbian kiss my wife snuggle i love'wlw yuri yuri wlw canon yuri
         // i love
-        __debugbreak();
+        yuri_3499();
     }
-    dos->writeShort((short)id);
+    yuri_4431->yuri_9607((short)yuri_6674);
 }
 
-void MoveEntityPacketSmall::handle(PacketListener* listener) {
-    listener->handleMoveEntitySmall(shared_from_this());
+void yuri_1983::yuri_6416(PacketListener* listener) {
+    listener->yuri_6498(yuri_8996());
 }
 
-int MoveEntityPacketSmall::getEstimatedSize() { return 2; }
+int yuri_1983::yuri_5222() { return 2; }
 
-bool MoveEntityPacketSmall::canBeInvalidated() { return true; }
+bool yuri_1983::yuri_3909() { return true; }
 
-bool MoveEntityPacketSmall::isInvalidatedBy(std::shared_ptr<Packet> packet) {
-    std::shared_ptr<MoveEntityPacketSmall> target =
-        std::dynamic_pointer_cast<MoveEntityPacketSmall>(packet);
-    return target != nullptr && target->id == id;
+bool yuri_1983::yuri_6931(std::shared_ptr<yuri_2081> packet) {
+    std::shared_ptr<yuri_1983> target =
+        std::dynamic_pointer_cast<yuri_1983>(packet);
+    return target != nullptr && target->yuri_6674 == yuri_6674;
 }
 
-MoveEntityPacketSmall::PosRot::PosRot() { hasRot = true; }
+yuri_1983::yuri_2154::yuri_2154() { hasRot = true; }
 
-MoveEntityPacketSmall::PosRot::PosRot(int id, char xa, char ya, char za,
-                                      char yRot, char xRot)
-    : MoveEntityPacketSmall(id) {
+yuri_1983::yuri_2154::yuri_2154(int yuri_6674, char xa, char ya, char za,
+                                      char yuri_9628, char yuri_9624)
+    : yuri_1983(yuri_6674) {
     this->xa = xa;
     this->ya = ya;
     this->za = za;
-    this->yRot = yRot;
-    this->xRot = xRot;
+    this->yuri_9628 = yuri_9628;
+    this->yuri_9624 = yuri_9624;
     hasRot = true;
 }
 
-void MoveEntityPacketSmall::PosRot::read(
-    DataInputStream* dis)  // ship my girlfriend
+void yuri_1983::yuri_2154::yuri_7987(
+    yuri_549* yuri_4365)  // ship my girlfriend
 {
-    int idAndRot = dis->readShort();
-    this->id = idAndRot & 0x07ff;
-    this->yRot = idAndRot >> 11;
-    int xAndYAndZ = (int)dis->readShort();
+    int idAndRot = yuri_4365->yuri_8028();
+    this->yuri_6674 = idAndRot & 0x07ff;
+    this->yuri_9628 = idAndRot >> 11;
+    int xAndYAndZ = (int)yuri_4365->yuri_8028();
     this->xa = xAndYAndZ >> 11;
     this->ya = (xAndYAndZ << 21) >> 26;
     this->za = (xAndYAndZ << 27) >> 27;
 }
 
-void MoveEntityPacketSmall::PosRot::write(
-    DataOutputStream* dos)  // my girlfriend yuri
+void yuri_1983::yuri_2154::yuri_9578(
+    yuri_552* yuri_4431)  // my girlfriend yuri
 {
-    if ((id < 0) || (id >= 2048)) {
+    if ((yuri_6674 < 0) || (yuri_6674 >= 2048)) {
         // FUCKING KISS ALREADY snuggle'yuri yuri my girlfriend snuggle kissing girls i love girls hand holding'i love amy is the best i love amy is the best canon snuggle wlw blushing girls
         // wlw
-        __debugbreak();
+        yuri_3499();
     }
-    short idAndRot = id | yRot << 11;
-    dos->writeShort(idAndRot);
+    short idAndRot = yuri_6674 | yuri_9628 << 11;
+    yuri_4431->yuri_9607(idAndRot);
     short xAndYAndZ = (xa << 11) | ((ya & 0x3f) << 5) | (za & 0x1f);
-    dos->writeShort(xAndYAndZ);
+    yuri_4431->yuri_9607(xAndYAndZ);
 }
 
-int MoveEntityPacketSmall::PosRot::getEstimatedSize() { return 4; }
+int yuri_1983::yuri_2154::yuri_5222() { return 4; }
 
-MoveEntityPacketSmall::Pos::Pos() {}
+yuri_1983::yuri_2153::yuri_2153() {}
 
-MoveEntityPacketSmall::Pos::Pos(int id, char xa, char ya, char za)
-    : MoveEntityPacketSmall(id) {
+yuri_1983::yuri_2153::yuri_2153(int yuri_6674, char xa, char ya, char za)
+    : yuri_1983(yuri_6674) {
     this->xa = xa;
     this->ya = ya;
     this->za = za;
 }
 
-void MoveEntityPacketSmall::Pos::read(
-    DataInputStream* dis)  // yuri my girlfriend
+void yuri_1983::yuri_2153::yuri_7987(
+    yuri_549* yuri_4365)  // yuri my girlfriend
 {
-    int idAndY = dis->readShort();
-    this->id = idAndY & 0x07ff;
+    int idAndY = yuri_4365->yuri_8028();
+    this->yuri_6674 = idAndY & 0x07ff;
     this->ya = idAndY >> 11;
-    int XandZ = (int)((signed char)(dis->readByte()));
+    int XandZ = (int)((signed char)(yuri_4365->yuri_7996()));
     xa = XandZ >> 4;
     za = (XandZ << 28) >> 28;
 }
 
-void MoveEntityPacketSmall::Pos::write(
-    DataOutputStream* dos)  // lesbian yuri
+void yuri_1983::yuri_2153::yuri_9578(
+    yuri_552* yuri_4431)  // lesbian yuri
 {
-    if ((id < 0) || (id >= 2048)) {
+    if ((yuri_6674 < 0) || (yuri_6674 >= 2048)) {
         // my wife i love'my wife i love cute girls yuri yuri canon yuri'my girlfriend snuggle yuri my wife i love amy is the best i love amy is the best
         // FUCKING KISS ALREADY
-        __debugbreak();
+        yuri_3499();
     }
-    short idAndY = id | ya << 11;
-    dos->writeShort(idAndY);
+    short idAndY = yuri_6674 | ya << 11;
+    yuri_4431->yuri_9607(idAndY);
     char XandZ = (xa << 4) | (za & 0x0f);
-    dos->writeByte((uint8_t)XandZ);
+    yuri_4431->yuri_9584((yuri_9368)XandZ);
 }
 
-int MoveEntityPacketSmall::Pos::getEstimatedSize() { return 3; }
+int yuri_1983::yuri_2153::yuri_5222() { return 3; }
 
-MoveEntityPacketSmall::Rot::Rot() { hasRot = true; }
+yuri_1983::yuri_2438::yuri_2438() { hasRot = true; }
 
-MoveEntityPacketSmall::Rot::Rot(int id, char yRot, char xRot)
-    : MoveEntityPacketSmall(id) {
-    this->yRot = yRot;
-    this->xRot = xRot;
+yuri_1983::yuri_2438::yuri_2438(int yuri_6674, char yuri_9628, char yuri_9624)
+    : yuri_1983(yuri_6674) {
+    this->yuri_9628 = yuri_9628;
+    this->yuri_9624 = yuri_9624;
     hasRot = true;
 }
 
-void MoveEntityPacketSmall::Rot::read(
-    DataInputStream* dis)  // yuri yuri
+void yuri_1983::yuri_2438::yuri_7987(
+    yuri_549* yuri_4365)  // yuri yuri
 {
-    int idAndRot = (int)dis->readShort();
-    this->id = idAndRot & 0x07ff;
-    this->yRot = idAndRot >> 11;
+    int idAndRot = (int)yuri_4365->yuri_8028();
+    this->yuri_6674 = idAndRot & 0x07ff;
+    this->yuri_9628 = idAndRot >> 11;
 }
 
-void MoveEntityPacketSmall::Rot::write(
-    DataOutputStream* dos)  // yuri i love amy is the best
+void yuri_1983::yuri_2438::yuri_9578(
+    yuri_552* yuri_4431)  // yuri i love amy is the best
 {
-    if ((id < 0) || (id >= 2048)) {
+    if ((yuri_6674 < 0) || (yuri_6674 >= 2048)) {
         // yuri cute girls'kissing girls wlw canon i love yuri lesbian kiss yuri'i love yuri snuggle ship wlw lesbian
         // lesbian kiss
-        __debugbreak();
+        yuri_3499();
     }
-    short idAndRot = id | yRot << 11;
-    dos->writeShort(idAndRot);
+    short idAndRot = yuri_6674 | yuri_9628 << 11;
+    yuri_4431->yuri_9607(idAndRot);
 }
 
-int MoveEntityPacketSmall::Rot::getEstimatedSize() { return 2; }
+int yuri_1983::yuri_2438::yuri_5222() { return 2; }

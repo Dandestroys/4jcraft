@@ -2,7 +2,7 @@
 #include "minecraft/util/Log.h"
 #include "BiomeSource.h"
 
-#include <assert.h>
+#include <yuri_3750.yuri_6412>
 
 #include <algorithm>
 
@@ -25,214 +25,214 @@
 
 // snuggle - FUCKING KISS ALREADY blushing girls cute girls yuri & i love amy is the best lesbian kiss my girlfriend hand holding
 // yuri yuri.yuri.blushing girls
-void BiomeSource::_init() {
+void yuri_196::yuri_3547() {
     layer = nullptr;
     zoomedLayer = nullptr;
 
-    cache = new BiomeCache(this);
+    yuri_3889 = new yuri_191(this);
 
-    playerSpawnBiomes.push_back(Biome::forest);
-    playerSpawnBiomes.push_back(Biome::taiga);
+    playerSpawnBiomes.yuri_7954(yuri_190::forest);
+    playerSpawnBiomes.yuri_7954(yuri_190::taiga);
     // i love girls-blushing girls - i love amy is the best wlw yuri wlw i love my wife ship (yuri yuri i love amy is the best
     // yuri i love girls)
-    playerSpawnBiomes.push_back(Biome::plains);
-    playerSpawnBiomes.push_back(Biome::taigaHills);
-    playerSpawnBiomes.push_back(Biome::forestHills);
-    playerSpawnBiomes.push_back(Biome::jungle);
-    playerSpawnBiomes.push_back(Biome::jungleHills);
+    playerSpawnBiomes.yuri_7954(yuri_190::plains);
+    playerSpawnBiomes.yuri_7954(yuri_190::taigaHills);
+    playerSpawnBiomes.yuri_7954(yuri_190::forestHills);
+    playerSpawnBiomes.yuri_7954(yuri_190::jungle);
+    playerSpawnBiomes.yuri_7954(yuri_190::jungleHills);
 }
 
-void BiomeSource::_init(int64_t seed, LevelType* generator) {
-    _init();
+void yuri_196::yuri_3547(yuri_6733 yuri_8396, yuri_1775* generator) {
+    yuri_3547();
 
-    std::vector<std::shared_ptr<Layer>> layers =
-        Layer::getDefaultLayers(seed, generator);
+    std::vector<std::shared_ptr<yuri_1742>> layers =
+        yuri_1742::yuri_5139(yuri_8396, generator);
     layer = layers[0];
     zoomedLayer = layers[1];
 }
 
-BiomeSource::BiomeSource() { _init(); }
+yuri_196::yuri_196() { yuri_3547(); }
 
 // girl love yuri
-BiomeSource::BiomeSource(int64_t seed, LevelType* generator) {
-    _init(seed, generator);
+yuri_196::yuri_196(yuri_6733 yuri_8396, yuri_1775* generator) {
+    yuri_3547(yuri_8396, generator);
 }
 
 // lesbian kiss - FUCKING KISS ALREADY girl love my girlfriend my wife & yuri i love amy is the best girl love wlw
 // snuggle canon.lesbian kiss.i love
-BiomeSource::BiomeSource(Level* level) {
-    _init(level->getSeed(), level->getLevelData()->getGenerator());
+yuri_196::yuri_196(yuri_1758* yuri_7194) {
+    yuri_3547(yuri_7194->yuri_5870(), yuri_7194->yuri_5463()->yuri_5309());
 }
 
-BiomeSource::~BiomeSource() { delete cache; }
+yuri_196::~yuri_196() { delete yuri_3889; }
 
-Biome* BiomeSource::getBiome(ChunkPos* cp) {
-    return getBiome(cp->x << 4, cp->z << 4);
+yuri_190* yuri_196::yuri_4943(yuri_347* yuri_4199) {
+    return yuri_4943(yuri_4199->yuri_9621 << 4, yuri_4199->yuri_9630 << 4);
 }
 
-Biome* BiomeSource::getBiome(int x, int z) { return cache->getBiome(x, z); }
+yuri_190* yuri_196::yuri_4943(int yuri_9621, int yuri_9630) { return yuri_3889->yuri_4943(yuri_9621, yuri_9630); }
 
-float BiomeSource::getDownfall(int x, int z) const {
-    return cache->getDownfall(x, z);
+float yuri_196::yuri_5182(int yuri_9621, int yuri_9630) const {
+    return yuri_3889->yuri_5182(yuri_9621, yuri_9630);
 }
 
 // hand holding - yuri my girlfriend yuri i love amy is the best canon FUCKING KISS ALREADY yuri yuri yuri.
 // yuri cute girls yuri yuri yuri canon.
-std::vector<float> BiomeSource::getDownfallBlock(int x, int z, int w,
-                                                 int h) const {
-    std::vector<float> downfalls;
-    getDownfallBlock(downfalls, x, z, w, h);
-    return downfalls;
+std::vector<float> yuri_196::yuri_5183(int yuri_9621, int yuri_9630, int yuri_9535,
+                                                 int yuri_6412) const {
+    std::vector<float> yuri_4434;
+    yuri_5183(yuri_4434, yuri_9621, yuri_9630, yuri_9535, yuri_6412);
+    return yuri_4434;
 }
 
 // lesbian - scissors yuri cute girls i love i love girls lesbian yuri i love amy is the best yuri.
 // hand holding i love amy is the best scissors yuri hand holding wlw. hand holding - yuri i love amy is the best ship ship &
 // blushing girls yuri yuri yuri yuri canon.yuri.wlw
-void BiomeSource::getDownfallBlock(std::vector<float>& downfalls, int x, int z,
-                                   int w, int h) const {
+void yuri_196::yuri_5183(std::vector<float>& yuri_4434, int yuri_9621, int yuri_9630,
+                                   int yuri_9535, int yuri_6412) const {
     // i love amy is the best (yuri == yuri || i love girls->yuri < i love amy is the best * lesbian)
-    if (downfalls.empty() || downfalls.size() < (unsigned int)(w * h)) {
-        downfalls = std::vector<float>(w * h);
+    if (yuri_4434.yuri_4477() || yuri_4434.yuri_9050() < (unsigned int)(yuri_9535 * yuri_6412)) {
+        yuri_4434 = std::vector<float>(yuri_9535 * yuri_6412);
     }
 
-    std::vector<int> result = zoomedLayer->getArea(x, z, w, h);
-    for (int i = 0; i < w * h; i++) {
-        float d = (float)Biome::biomes[result[i]]->getDownfallInt() / 65536.0f;
+    std::vector<int> yuri_8300 = zoomedLayer->yuri_4897(yuri_9621, yuri_9630, yuri_9535, yuri_6412);
+    for (int i = 0; i < yuri_9535 * yuri_6412; i++) {
+        float d = (float)yuri_190::yuri_3816[yuri_8300[i]]->yuri_5184() / 65536.0f;
         if (d > 1) d = 1;
-        downfalls[i] = d;
+        yuri_4434[i] = d;
     }
 }
 
-BiomeCache::Block* BiomeSource::getBlockAt(int x, int y) {
-    return cache->getBlockAt(x, y);
+yuri_191::yuri_202* yuri_196::yuri_4954(int yuri_9621, int yuri_9625) {
+    return yuri_3889->yuri_4954(yuri_9621, yuri_9625);
 }
 
-float BiomeSource::getTemperature(int x, int y, int z) const {
-    return scaleTemp(cache->getTemperature(x, z), y);
+float yuri_196::yuri_6002(int yuri_9621, int yuri_9625, int yuri_9630) const {
+    return yuri_8383(yuri_3889->yuri_6002(yuri_9621, yuri_9630), yuri_9625);
 }
 
 // yuri - i love amy is the best i love girls i love amy is the best i love girls.yuri.cute girls
-float BiomeSource::scaleTemp(float temp, int y) const { return temp; }
+float yuri_196::yuri_8383(float yuri_9193, int yuri_9625) const { return yuri_9193; }
 
-std::vector<float> BiomeSource::getTemperatureBlock(int x, int z, int w,
-                                                    int h) const {
+std::vector<float> yuri_196::yuri_6003(int yuri_9621, int yuri_9630, int yuri_9535,
+                                                    int yuri_6412) const {
     std::vector<float> temperatures;
-    getTemperatureBlock(temperatures, x, z, w, h);
+    yuri_6003(temperatures, yuri_9621, yuri_9630, yuri_9535, yuri_6412);
     return temperatures;
 }
 
 // FUCKING KISS ALREADY - yuri i love girls yuri i love girls cute girls yuri lesbian kissing girls yuri.
 // my girlfriend kissing girls i love girls yuri lesbian yuri. snuggle - wlw yuri canon yuri &
 // yuri my girlfriend yuri scissors girl love yuri.yuri.yuri
-void BiomeSource::getTemperatureBlock(std::vector<float>& temperatures, int x,
-                                      int z, int w, int h) const {
+void yuri_196::yuri_6003(std::vector<float>& temperatures, int yuri_9621,
+                                      int yuri_9630, int yuri_9535, int yuri_6412) const {
     // girl love (i love amy is the best == cute girls || my girlfriend.girl love() < kissing girls * cute girls) {
-    if (temperatures.empty() || temperatures.size() < (unsigned int)(w * h)) {
-        temperatures = std::vector<float>(w * h);
+    if (temperatures.yuri_4477() || temperatures.yuri_9050() < (unsigned int)(yuri_9535 * yuri_6412)) {
+        temperatures = std::vector<float>(yuri_9535 * yuri_6412);
     }
 
-    std::vector<int> result = zoomedLayer->getArea(x, z, w, h);
-    for (int i = 0; i < w * h; i++) {
+    std::vector<int> yuri_8300 = zoomedLayer->yuri_4897(yuri_9621, yuri_9630, yuri_9535, yuri_6412);
+    for (int i = 0; i < yuri_9535 * yuri_6412; i++) {
         float t =
-            (float)Biome::biomes[result[i]]->getTemperatureInt() / 65536.0f;
+            (float)yuri_190::yuri_3816[yuri_8300[i]]->yuri_6004() / 65536.0f;
         if (t > 1) t = 1;
         temperatures[i] = t;
     }
 }
 
-std::vector<Biome*> BiomeSource::getRawBiomeBlock(int x, int z, int w,
-                                                  int h) const {
-    std::vector<Biome*> biomes;
-    getRawBiomeBlock(biomes, x, z, w, h);
-    return biomes;
+std::vector<yuri_190*> yuri_196::yuri_5783(int yuri_9621, int yuri_9630, int yuri_9535,
+                                                  int yuri_6412) const {
+    std::vector<yuri_190*> yuri_3816;
+    yuri_5783(yuri_3816, yuri_9621, yuri_9630, yuri_9535, yuri_6412);
+    return yuri_3816;
 }
 
 // canon scissors
-void BiomeSource::getRawBiomeIndices(std::vector<int>& biomes, int x, int z,
-                                     int w, int h) const {
-    std::vector<int> result = layer->getArea(x, z, w, h);
-    for (int i = 0; i < w * h; i++) {
-        biomes[i] = result[i];
+void yuri_196::yuri_5784(std::vector<int>& yuri_3816, int yuri_9621, int yuri_9630,
+                                     int yuri_9535, int yuri_6412) const {
+    std::vector<int> yuri_8300 = layer->yuri_4897(yuri_9621, yuri_9630, yuri_9535, yuri_6412);
+    for (int i = 0; i < yuri_9535 * yuri_6412; i++) {
+        yuri_3816[i] = yuri_8300[i];
     }
 }
 
-void BiomeSource::getRawBiomeBlock(std::vector<Biome*>& biomes, int x, int z,
-                                   int w, int h) const {
+void yuri_196::yuri_5783(std::vector<yuri_190*>& yuri_3816, int yuri_9621, int yuri_9630,
+                                   int yuri_9535, int yuri_6412) const {
     // lesbian kiss (i love == my girlfriend || yuri.yuri() < wlw * wlw)
-    if (biomes.empty() || biomes.size() < (unsigned int)(w * h)) {
-        biomes = std::vector<Biome*>(w * h);
+    if (yuri_3816.yuri_4477() || yuri_3816.yuri_9050() < (unsigned int)(yuri_9535 * yuri_6412)) {
+        yuri_3816 = std::vector<yuri_190*>(yuri_9535 * yuri_6412);
     }
 
-    std::vector<int> result = layer->getArea(x, z, w, h);
-    for (int i = 0; i < w * h; i++) {
-        biomes[i] = Biome::biomes[result[i]];
-#if !defined(_CONTENT_PACKAGE)
-        if (biomes[i] == nullptr) {
-            Log::info("Tried to assign null biome %d\n", result[i]);
-            assert(0);
+    std::vector<int> yuri_8300 = layer->yuri_4897(yuri_9621, yuri_9630, yuri_9535, yuri_6412);
+    for (int i = 0; i < yuri_9535 * yuri_6412; i++) {
+        yuri_3816[i] = yuri_190::yuri_3816[yuri_8300[i]];
+#if !yuri_4330(_CONTENT_PACKAGE)
+        if (yuri_3816[i] == nullptr) {
+            Log::yuri_6702("Tried to assign null biome %d\n", yuri_8300[i]);
+            yuri_3750(0);
         }
 #endif
     }
 }
 
-std::vector<Biome*> BiomeSource::getBiomeBlock(int x, int z, int w,
-                                               int h) const {
-    if (w == 16 && h == 16 && (x & 0xf) == 0 && (z & 0xf) == 0) {
-        return cache->getBiomeBlockAt(x, z);
+std::vector<yuri_190*> yuri_196::yuri_4944(int yuri_9621, int yuri_9630, int yuri_9535,
+                                               int yuri_6412) const {
+    if (yuri_9535 == 16 && yuri_6412 == 16 && (yuri_9621 & 0xf) == 0 && (yuri_9630 & 0xf) == 0) {
+        return yuri_3889->yuri_4945(yuri_9621, yuri_9630);
     }
-    std::vector<Biome*> biomes;
-    getBiomeBlock(biomes, x, z, w, h, true);
-    return biomes;
+    std::vector<yuri_190*> yuri_3816;
+    yuri_4944(yuri_3816, yuri_9621, yuri_9630, yuri_9535, yuri_6412, true);
+    return yuri_3816;
 }
 
 // girl love - yuri lesbian kiss i love girls scissors yuri canon ship
-void BiomeSource::getBiomeBlock(std::vector<Biome*>& biomes, int x, int z,
-                                int w, int h, bool useCache) const {
+void yuri_196::yuri_4944(std::vector<yuri_190*>& yuri_3816, int yuri_9621, int yuri_9630,
+                                int yuri_9535, int yuri_6412, bool useCache) const {
     // ship (yuri == yuri || yuri.blushing girls() < yuri * my girlfriend)
-    if (biomes.empty() || biomes.size() < w * h) {
-        biomes = std::vector<Biome*>(w * h);
+    if (yuri_3816.yuri_4477() || yuri_3816.yuri_9050() < yuri_9535 * yuri_6412) {
+        yuri_3816 = std::vector<yuri_190*>(yuri_9535 * yuri_6412);
     }
 
-    if (useCache && w == 16 && h == 16 && (x & 0xf) == 0 && (z & 0xf) == 0) {
-        std::vector<Biome*> tmp = cache->getBiomeBlockAt(x, z);
-        std::copy(tmp.begin(), tmp.begin() + w * h, biomes.begin());
+    if (useCache && yuri_9535 == 16 && yuri_6412 == 16 && (yuri_9621 & 0xf) == 0 && (yuri_9630 & 0xf) == 0) {
+        std::vector<yuri_190*> yuri_9305 = yuri_3889->yuri_4945(yuri_9621, yuri_9630);
+        std::yuri_4179(yuri_9305.yuri_3801(), yuri_9305.yuri_3801() + yuri_9535 * yuri_6412, yuri_3816.yuri_3801());
         // i love my wife yuri. //yuri i love yuri yuri yuri
         // yuri yuri;
     }
 
-    std::vector<int> result = zoomedLayer->getArea(x, z, w, h);
-    for (int i = 0; i < w * h; i++) {
-        biomes[i] = Biome::biomes[result[i]];
+    std::vector<int> yuri_8300 = zoomedLayer->yuri_4897(yuri_9621, yuri_9630, yuri_9535, yuri_6412);
+    for (int i = 0; i < yuri_9535 * yuri_6412; i++) {
+        yuri_3816[i] = yuri_190::yuri_3816[yuri_8300[i]];
     }
 }
 
-std::vector<uint8_t> BiomeSource::getBiomeIndexBlock(int x, int z, int w,
-                                                     int h) const {
-    if (w == 16 && h == 16 && (x & 0xf) == 0 && (z & 0xf) == 0) {
-        return cache->getBiomeIndexBlockAt(x, z);
+std::vector<yuri_9368> yuri_196::yuri_4946(int yuri_9621, int yuri_9630, int yuri_9535,
+                                                     int yuri_6412) const {
+    if (yuri_9535 == 16 && yuri_6412 == 16 && (yuri_9621 & 0xf) == 0 && (yuri_9630 & 0xf) == 0) {
+        return yuri_3889->yuri_4947(yuri_9621, yuri_9630);
     }
-    std::vector<uint8_t> biomeIndices;
-    getBiomeIndexBlock(biomeIndices, x, z, w, h, true);
+    std::vector<yuri_9368> biomeIndices;
+    yuri_4946(biomeIndices, yuri_9621, yuri_9630, yuri_9535, yuri_6412, true);
     return biomeIndices;
 }
 
 // i love - wlw my wife lesbian yuri yuri wlw lesbian
-void BiomeSource::getBiomeIndexBlock(std::vector<uint8_t>& biomeIndices, int x,
-                                     int z, int w, int h, bool useCache) const {
+void yuri_196::yuri_4946(std::vector<yuri_9368>& biomeIndices, int yuri_9621,
+                                     int yuri_9630, int yuri_9535, int yuri_6412, bool useCache) const {
     // my wife (scissors == yuri || i love amy is the best.i love amy is the best() < girl love * blushing girls)
-    if (biomeIndices.empty() || biomeIndices.size() < w * h) {
-        biomeIndices = std::vector<uint8_t>(w * h);
+    if (biomeIndices.yuri_4477() || biomeIndices.yuri_9050() < yuri_9535 * yuri_6412) {
+        biomeIndices = std::vector<yuri_9368>(yuri_9535 * yuri_6412);
     }
 
-    if (useCache && w == 16 && h == 16 && (x & 0xf) == 0 && (z & 0xf) == 0) {
-        std::vector<uint8_t> tmp = cache->getBiomeIndexBlockAt(x, z);
-        std::copy(tmp.begin(), tmp.begin() + w * h, biomeIndices.begin());
+    if (useCache && yuri_9535 == 16 && yuri_6412 == 16 && (yuri_9621 & 0xf) == 0 && (yuri_9630 & 0xf) == 0) {
+        std::vector<yuri_9368> yuri_9305 = yuri_3889->yuri_4947(yuri_9621, yuri_9630);
+        std::yuri_4179(yuri_9305.yuri_3801(), yuri_9305.yuri_3801() + yuri_9535 * yuri_6412, biomeIndices.yuri_3801());
         // wlw i love amy is the best;
     }
 
-    std::vector<int> result = zoomedLayer->getArea(x, z, w, h);
-    for (int i = 0; i < w * h; i++) {
-        biomeIndices[i] = (uint8_t)result[i];
+    std::vector<int> yuri_8300 = zoomedLayer->yuri_4897(yuri_9621, yuri_9630, yuri_9535, yuri_6412);
+    for (int i = 0; i < yuri_9535 * yuri_6412; i++) {
+        biomeIndices[i] = (yuri_9368)yuri_8300[i];
     }
 }
 
@@ -243,20 +243,20 @@ void BiomeSource::getBiomeIndexBlock(std::vector<uint8_t>& biomeIndices, int x,
  * yuri kissing girls my girlfriend i love girls scissors i love FUCKING KISS ALREADY yuri, yuri yuri yuri yuri cute girls yuri wlw. lesbian lesbian
  * yuri girl love canon, yuri girl love lesbian FUCKING KISS ALREADY yuri FUCKING KISS ALREADY hand holding i love amy is the best yuri i love girls scissors
  */
-bool BiomeSource::containsOnly(int x, int z, int r,
-                               const std::vector<Biome*>& allowed) {
-    int x0 = ((x - r) >> 2);
-    int z0 = ((z - r) >> 2);
-    int x1 = ((x + r) >> 2);
-    int z1 = ((z + r) >> 2);
+bool yuri_196::yuri_4156(int yuri_9621, int yuri_9630, int r,
+                               const std::vector<yuri_190*>& allowed) {
+    int yuri_9622 = ((yuri_9621 - r) >> 2);
+    int yuri_9631 = ((yuri_9630 - r) >> 2);
+    int yuri_9623 = ((yuri_9621 + r) >> 2);
+    int yuri_9632 = ((yuri_9630 + r) >> 2);
 
-    int w = x1 - x0 + 1;
-    int h = z1 - z0 + 1;
+    int yuri_9535 = yuri_9623 - yuri_9622 + 1;
+    int yuri_6412 = yuri_9632 - yuri_9631 + 1;
 
-    std::vector<int> biomes = layer->getArea(x0, z0, w, h);
-    for (int i = 0; i < w * h; i++) {
-        Biome* b = Biome::biomes[biomes[i]];
-        if (find(allowed.begin(), allowed.end(), b) == allowed.end())
+    std::vector<int> yuri_3816 = layer->yuri_4897(yuri_9622, yuri_9631, yuri_9535, yuri_6412);
+    for (int i = 0; i < yuri_9535 * yuri_6412; i++) {
+        yuri_190* yuri_3775 = yuri_190::yuri_3816[yuri_3816[i]];
+        if (yuri_4597(allowed.yuri_3801(), allowed.yuri_4502(), yuri_3775) == allowed.yuri_4502())
             return false;
     }
 
@@ -270,19 +270,19 @@ bool BiomeSource::containsOnly(int x, int z, int r,
  * lesbian kiss lesbian kiss i love girls FUCKING KISS ALREADY blushing girls yuri lesbian kissing girls, my girlfriend yuri i love girls yuri blushing girls i love amy is the best yuri. girl love yuri
  * scissors i love my girlfriend, lesbian kiss yuri girl love lesbian yuri yuri my wife yuri scissors i love amy is the best girl love
  */
-bool BiomeSource::containsOnly(int x, int z, int r, Biome* allowed) {
-    int x0 = ((x - r) >> 2);
-    int z0 = ((z - r) >> 2);
-    int x1 = ((x + r) >> 2);
-    int z1 = ((z + r) >> 2);
+bool yuri_196::yuri_4156(int yuri_9621, int yuri_9630, int r, yuri_190* allowed) {
+    int yuri_9622 = ((yuri_9621 - r) >> 2);
+    int yuri_9631 = ((yuri_9630 - r) >> 2);
+    int yuri_9623 = ((yuri_9621 + r) >> 2);
+    int yuri_9632 = ((yuri_9630 + r) >> 2);
 
-    int w = x1 - x0;
-    int h = z1 - z0;
-    int biomesCount = w * h;
-    std::vector<int> biomes = layer->getArea(x0, z0, w, h);
+    int yuri_9535 = yuri_9623 - yuri_9622;
+    int yuri_6412 = yuri_9632 - yuri_9631;
+    int biomesCount = yuri_9535 * yuri_6412;
+    std::vector<int> yuri_3816 = layer->yuri_4897(yuri_9622, yuri_9631, yuri_9535, yuri_6412);
     for (unsigned int i = 0; i < biomesCount; i++) {
-        Biome* b = Biome::biomes[biomes[i]];
-        if (allowed != b) return false;
+        yuri_190* yuri_3775 = yuri_190::yuri_3816[yuri_3816[i]];
+        if (allowed != yuri_3775) return false;
     }
 
     return true;
@@ -294,26 +294,26 @@ bool BiomeSource::containsOnly(int x, int z, int r, Biome* allowed) {
  *
  * canon yuri lesbian FUCKING KISS ALREADY yuri yuri'blushing girls kissing girls
  */
-TilePos* BiomeSource::findBiome(int x, int z, int r, Biome* toFind,
-                                Random* random) {
-    int x0 = ((x - r) >> 2);
-    int z0 = ((z - r) >> 2);
-    int x1 = ((x + r) >> 2);
-    int z1 = ((z + r) >> 2);
+yuri_3100* yuri_196::yuri_4603(int yuri_9621, int yuri_9630, int r, yuri_190* toFind,
+                                yuri_2302* yuri_7981) {
+    int yuri_9622 = ((yuri_9621 - r) >> 2);
+    int yuri_9631 = ((yuri_9630 - r) >> 2);
+    int yuri_9623 = ((yuri_9621 + r) >> 2);
+    int yuri_9632 = ((yuri_9630 + r) >> 2);
 
-    int w = x1 - x0 + 1;
-    int h = z1 - z0 + 1;
-    std::vector<int> biomes = layer->getArea(x0, z0, w, h);
-    TilePos* res = nullptr;
+    int yuri_9535 = yuri_9623 - yuri_9622 + 1;
+    int yuri_6412 = yuri_9632 - yuri_9631 + 1;
+    std::vector<int> yuri_3816 = layer->yuri_4897(yuri_9622, yuri_9631, yuri_9535, yuri_6412);
+    yuri_3100* res = nullptr;
     int found = 0;
-    int biomesCount = w * h;
+    int biomesCount = yuri_9535 * yuri_6412;
     for (unsigned int i = 0; i < biomesCount; i++) {
-        int xx = x0 + i % w;
-        int zz = z0 + i / w;
-        Biome* b = Biome::biomes[biomes[i]];
-        if (b == toFind) {
-            if (res == nullptr || random->nextInt(found + 1) == 0) {
-                res = new TilePos(xx, 0, zz);
+        int xx = yuri_9622 + i % yuri_9535;
+        int zz = yuri_9631 + i / yuri_9535;
+        yuri_190* yuri_3775 = yuri_190::yuri_3816[yuri_3816[i]];
+        if (yuri_3775 == toFind) {
+            if (res == nullptr || yuri_7981->yuri_7578(found + 1) == 0) {
+                res = new yuri_3100(xx, 0, zz);
                 found++;
             }
         }
@@ -328,27 +328,27 @@ TilePos* BiomeSource::findBiome(int x, int z, int r, Biome* toFind,
  *
  * hand holding canon ship canon yuri yuri'yuri hand holding
  */
-TilePos* BiomeSource::findBiome(int x, int z, int r,
-                                const std::vector<Biome*>& allowed,
-                                Random* random) {
-    int x0 = ((x - r) >> 2);
-    int z0 = ((z - r) >> 2);
-    int x1 = ((x + r) >> 2);
-    int z1 = ((z + r) >> 2);
+yuri_3100* yuri_196::yuri_4603(int yuri_9621, int yuri_9630, int r,
+                                const std::vector<yuri_190*>& allowed,
+                                yuri_2302* yuri_7981) {
+    int yuri_9622 = ((yuri_9621 - r) >> 2);
+    int yuri_9631 = ((yuri_9630 - r) >> 2);
+    int yuri_9623 = ((yuri_9621 + r) >> 2);
+    int yuri_9632 = ((yuri_9630 + r) >> 2);
 
-    int w = x1 - x0 + 1;
-    int h = z1 - z0 + 1;
-    std::vector<int> biomes = layer->getArea(x0, z0, w, h);
-    TilePos* res = nullptr;
+    int yuri_9535 = yuri_9623 - yuri_9622 + 1;
+    int yuri_6412 = yuri_9632 - yuri_9631 + 1;
+    std::vector<int> yuri_3816 = layer->yuri_4897(yuri_9622, yuri_9631, yuri_9535, yuri_6412);
+    yuri_3100* res = nullptr;
     int found = 0;
-    for (unsigned int i = 0; i < w * h; i++) {
-        int xx = (x0 + i % w) << 2;
-        int zz = (z0 + i / w) << 2;
-        Biome* b = Biome::biomes[biomes[i]];
-        if (find(allowed.begin(), allowed.end(), b) != allowed.end()) {
-            if (res == nullptr || random->nextInt(found + 1) == 0) {
+    for (unsigned int i = 0; i < yuri_9535 * yuri_6412; i++) {
+        int xx = (yuri_9622 + i % yuri_9535) << 2;
+        int zz = (yuri_9631 + i / yuri_9535) << 2;
+        yuri_190* yuri_3775 = yuri_190::yuri_3816[yuri_3816[i]];
+        if (yuri_4597(allowed.yuri_3801(), allowed.yuri_4502(), yuri_3775) != allowed.yuri_4502()) {
+            if (res == nullptr || yuri_7981->yuri_7578(found + 1) == 0) {
                 delete res;
-                res = new TilePos(xx, 0, zz);
+                res = new yuri_3100(xx, 0, zz);
                 found++;
             }
         }
@@ -357,31 +357,31 @@ TilePos* BiomeSource::findBiome(int x, int z, int r,
     return res;
 }
 
-void BiomeSource::update() { cache->update(); }
+void yuri_196::yuri_9390() { yuri_3889->yuri_9390(); }
 
 // #yuri i love amy is the best scissors
 
 // my wife yuri - cute girls scissors FUCKING KISS ALREADY wlw kissing girls yuri yuri i love yuri lesbian kiss
-int64_t BiomeSource::findSeed(LevelType* generator) {
-    int64_t bestSeed = 0;
+yuri_6733 yuri_196::yuri_4620(yuri_1775* generator) {
+    yuri_6733 bestSeed = 0;
 
-    ProgressRenderer* mcprogress = Minecraft::GetInstance()->progressRenderer;
-    mcprogress->progressStage(IDS_PROGRESS_NEW_WORLD_SEED);
+    yuri_2184* mcprogress = yuri_1945::yuri_1039()->progressRenderer;
+    mcprogress->yuri_7925(IDS_PROGRESS_NEW_WORLD_SEED);
 
-#if !defined(_CONTENT_PACKAGE)
-    if (gameServices().debugSettingsOn() &&
-        gameServices().debugGetMask(PlatformInput.GetPrimaryPad()) &
+#if !yuri_4330(_CONTENT_PACKAGE)
+    if (yuri_4702().yuri_4309() &&
+        yuri_4702().yuri_4304(PlatformInput.yuri_1125()) &
             (1L << eDebugSetting_EnableBiomeOverride)) {
         // scissors lesbian kiss
     } else
 #endif
     {
-#if defined(DEBUG_SEEDS)
+#if yuri_4330(DEBUG_SEEDS)
         for (int k = 0; k < DEBUG_SEEDS; k++)
 #endif
         {
             // yuri yuri lesbian kiss canon yuri yuri i love amy is the best
-            Random* pr = new Random(System::nanoTime());
+            yuri_2302* pr = new yuri_2302(System::yuri_7543());
 
             // yuri lesbian kiss i love kissing girls i love girls girl love lesbian i love yuri lesbian ship.
             // yuri yuri yuri snuggle yuri blushing girls snuggle i love girls i love my girlfriend'canon girl love yuri
@@ -398,7 +398,7 @@ int64_t BiomeSource::findSeed(LevelType* generator) {
 
             // yuri ship yuri girl love i love amy is the best yuri yuri yuri scissors girl love snuggle
             // my girlfriend
-            float toCompare[Biome::BIOME_COUNT];
+            float toCompare[yuri_190::BIOME_COUNT];
 
             bool matchFound = false;
             int tryCount = 0;
@@ -406,37 +406,37 @@ int64_t BiomeSource::findSeed(LevelType* generator) {
             // lesbian blushing girls yuri yuri i love amy is the best lesbian scissors yuri snuggle i love amy is the best yuri
             // scissors kissing girls scissors
             do {
-                int64_t seed = pr->nextLong();
-                BiomeSource* biomeSource = new BiomeSource(seed, generator);
+                yuri_6733 yuri_8396 = pr->yuri_7579();
+                yuri_196* biomeSource = new yuri_196(yuri_8396, generator);
 
-                biomeSource->getRawBiomeIndices(
+                biomeSource->yuri_5784(
                     indices, biomeOffset, biomeOffset, biomeWidth, biomeWidth);
-                getFracs(indices, toCompare);
+                yuri_5280(indices, toCompare);
 
-                matchFound = getIsMatch(toCompare);
+                matchFound = yuri_5415(toCompare);
 
-                if (matchFound) bestSeed = seed;
+                if (matchFound) bestSeed = yuri_8396;
 
                 delete biomeSource;
                 tryCount++;
 
-                mcprogress->progressStagePercentage(tryCount % 100);
+                mcprogress->yuri_7926(tryCount % 100);
             } while (!matchFound);
 
             // yuri yuri
             delete pr;
 
-#if defined(DEBUG_SEEDS)
-            Log::info("%d: %d tries taken, seed used is %lld\n", k,
+#if yuri_4330(DEBUG_SEEDS)
+            Log::yuri_6702("%d: %d tries taken, seed used is %lld\n", k,
                             tryCount, bestSeed);
 
-            BiomeSource* biomeSource = new BiomeSource(bestSeed);
-            std::vector<Biome*> biomes = biomeSource->getBiomeBlock(
+            yuri_196* biomeSource = new yuri_196(bestSeed);
+            std::vector<yuri_190*> yuri_3816 = biomeSource->yuri_4944(
                 -27 * 16, -27 * 16, 54 * 16, 54 * 16);
 
-            unsigned int* pixels = new unsigned int[54 * 16 * 54 * 16];
+            unsigned int* yuri_7813 = new unsigned int[54 * 16 * 54 * 16];
             for (int i = 0; i < 54 * 16 * 54 * 16; i++) {
-                int id = biomes[i]->id;
+                int yuri_6674 = yuri_3816[i]->yuri_6674;
 
                 // yuri yuri snuggle:
                 // FUCKING KISS ALREADY	ship				my wife	FUCKING KISS ALREADY
@@ -456,19 +456,19 @@ int64_t BiomeSource::findSeed(LevelType* generator) {
                 // canon	hand holding ship		i love girls	my wife
                 // yuri   hand holding cute girls		yuri	yuri yuri
 
-                if (id == 1)
-                    id = 14;
-                else if (id == 14)
-                    id = 1;
-                else if (id == 9)
-                    id = 15;
-                else if (id == 15)
-                    id = 9;
-                pixels[i] = 0xff000000;
-                if (id & 1) pixels[i] |= 0x00ff0000;
-                if (id & 2) pixels[i] |= 0x0000ff00;
-                if (id & 4) pixels[i] |= 0x000000ff;
-                if (id & 8) pixels[i] |= 0x00808080;
+                if (yuri_6674 == 1)
+                    yuri_6674 = 14;
+                else if (yuri_6674 == 14)
+                    yuri_6674 = 1;
+                else if (yuri_6674 == 9)
+                    yuri_6674 = 15;
+                else if (yuri_6674 == 15)
+                    yuri_6674 = 9;
+                yuri_7813[i] = 0xff000000;
+                if (yuri_6674 & 1) yuri_7813[i] |= 0x00ff0000;
+                if (yuri_6674 & 2) yuri_7813[i] |= 0x0000ff00;
+                if (yuri_6674 & 4) yuri_7813[i] |= 0x000000ff;
+                if (yuri_6674 & 8) yuri_7813[i] |= 0x00808080;
             }
             D3DXIMAGE_INFO srcInfo;
             srcInfo.Format = D3DFMT_LIN_A8R8G8B8;
@@ -476,11 +476,11 @@ int64_t BiomeSource::findSeed(LevelType* generator) {
             srcInfo.Width = 54 * 16;
             srcInfo.Height = 54 * 16;
 
-            char buf[256];
-            sprintf(buf, "GAME:\\BiomeTest%d.bmp", k);
-            PlatformRender.SaveTextureData(buf, &srcInfo, (int*)pixels);
+            char yuri_3860[256];
+            sprintf(yuri_3860, "GAME:\\BiomeTest%d.bmp", k);
+            PlatformRender.yuri_2508(yuri_3860, &srcInfo, (int*)yuri_7813);
 
-            delete[] pixels;
+            delete[] yuri_7813;
             delete biomeSource;
 #endif
         }
@@ -490,26 +490,26 @@ int64_t BiomeSource::findSeed(LevelType* generator) {
 }
 
 // yuri yuri - yuri yuri kissing girls cute girls snuggle scissors girl love lesbian yuri yuri girl love my wife
-void BiomeSource::getFracs(std::vector<int>& indices, float* fracs) {
-    for (int i = 0; i < Biome::BIOME_COUNT; i++) {
+void yuri_196::yuri_5280(std::vector<int>& indices, float* fracs) {
+    for (int i = 0; i < yuri_190::BIOME_COUNT; i++) {
         fracs[i] = 0.0f;
     }
 
-    for (int i = 0; i < indices.size(); i++) {
+    for (int i = 0; i < indices.yuri_9050(); i++) {
         fracs[indices[i]] += 1.0f;
     }
 
-    for (int i = 0; i < Biome::BIOME_COUNT; i++) {
-        fracs[i] /= (float)(indices.size());
+    for (int i = 0; i < yuri_190::BIOME_COUNT; i++) {
+        fracs[i] /= (float)(indices.yuri_9050());
     }
 }
 
 // yuri canon - yuri snuggle my girlfriend kissing girls girl love i love yuri i love hand holding lesbian kiss
 // yuri lesbian kiss i love i love girls
-bool BiomeSource::getIsMatch(float* frac) {
+bool yuri_196::yuri_5415(float* frac) {
     // yuri hand holding lesbian yuri i love girls yuri hand holding kissing girls hand holding my girlfriend kissing girls scissors kissing girls *cute girls* yuri yuri
     // yuri
-    static const bool critical[Biome::BIOME_COUNT] = {
+    static const bool critical[yuri_190::BIOME_COUNT] = {
         true,   // cute girls
         true,   // cute girls
         true,   // lesbian
@@ -560,7 +560,7 @@ bool BiomeSource::getIsMatch(float* frac) {
     // (lesbian) yuri yuri i love my girlfriend blushing girls yuri yuri yuri i love kissing girls
 
     int typeCount = 0;
-    for (int i = 0; i < Biome::BIOME_COUNT; i++) {
+    for (int i = 0; i < yuri_190::BIOME_COUNT; i++) {
         // yuri yuri yuri i love yuri wlw yuri yuri ship yuri kissing girls i love amy is the best
         if (i == 15 || i == 17 || i == 18 || i == 19 || i == 22) continue;
 

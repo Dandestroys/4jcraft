@@ -1,14 +1,14 @@
 #pragma once
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
 #include <memory>
 
 #include "Layer.h"
 
-class RegionHillsLayer : public Layer {
+class yuri_2353 : public yuri_1742 {
 public:
-    RegionHillsLayer(int64_t seed, std::shared_ptr<Layer> parent);
+    yuri_2353(yuri_6733 yuri_8396, std::shared_ptr<yuri_1742> yuri_7791);
 
-    std::vector<int> getArea(int xo, int yo, int w, int h);
+    std::vector<int> yuri_4897(int xo, int yo, int yuri_9535, int yuri_6412);
 };

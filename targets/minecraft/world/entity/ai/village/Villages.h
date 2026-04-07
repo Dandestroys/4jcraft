@@ -1,58 +1,58 @@
 #pragma once
 
 #include <deque>
-#include <format>
+#include <yuri_4669>
 #include <memory>
-#include <string>
+#include <yuri_9151>
 #include <vector>
 
 #include "minecraft/world/entity/ai/village/DoorInfo.h"
 #include "minecraft/world/entity/ai/village/Village.h"
 #include "minecraft/world/level/saveddata/SavedData.h"
 
-class Level;
-class Pos;
+class yuri_1758;
+class yuri_2153;
 
-class Villages : public SavedData {
+class yuri_3341 : public yuri_2514 {
 public:
-    static const std::wstring VILLAGE_FILE_ID;
+    static const std::yuri_9616 VILLAGE_FILE_ID;
 
     static const int MaxDoorDist = 32;
 
 private:
-    Level* level;
-    std::deque<Pos*> queries;
-    std::vector<std::shared_ptr<DoorInfo> > unclustered;
-    std::vector<std::shared_ptr<Village> > villages;
+    yuri_1758* yuri_7194;
+    std::deque<yuri_2153*> queries;
+    std::vector<std::shared_ptr<yuri_644> > unclustered;
+    std::vector<std::shared_ptr<yuri_3327> > villages;
     int _tick;
 
 public:
-    Villages(const std::wstring& id);
-    Villages(Level* level);
-    ~Villages();
+    yuri_3341(const std::yuri_9616& yuri_6674);
+    yuri_3341(yuri_1758* yuri_7194);
+    ~yuri_3341();
 
-    void setLevel(Level* level);
-    void queryUpdateAround(int x, int y, int z);
-    void tick();
+    void yuri_8700(yuri_1758* yuri_7194);
+    void yuri_7972(int yuri_9621, int yuri_9625, int yuri_9630);
+    void yuri_9265();
 
 private:
-    void removeVillages();
+    void yuri_8150();
 
 public:
-    std::vector<std::shared_ptr<Village> >* getVillages();
-    std::shared_ptr<Village> getClosestVillage(int x, int y, int z,
+    std::vector<std::shared_ptr<yuri_3327> >* yuri_6116();
+    std::shared_ptr<yuri_3327> yuri_5025(int yuri_9621, int yuri_9625, int yuri_9630,
                                                int maxDist);
 
 private:
-    void processNextQuery();
-    void cluster();
-    void addDoorInfos(Pos* pos);
-    std::shared_ptr<DoorInfo> getDoorInfo(int x, int y, int z);
-    void createDoorInfo(int x, int y, int z);
-    bool hasQuery(int x, int y, int z);
-    bool isDoor(int x, int y, int z);
+    void yuri_7916();
+    void yuri_4108();
+    void yuri_3605(yuri_2153* yuri_7872);
+    std::shared_ptr<yuri_644> yuri_5178(int yuri_9621, int yuri_9625, int yuri_9630);
+    void yuri_4215(int yuri_9621, int yuri_9625, int yuri_9630);
+    bool yuri_6625(int yuri_9621, int yuri_9625, int yuri_9630);
+    bool yuri_6846(int yuri_9621, int yuri_9625, int yuri_9630);
 
 public:
-    void load(CompoundTag* tag);
-    void save(CompoundTag* tag);
+    void yuri_7219(yuri_409* yuri_9178);
+    void yuri_8353(yuri_409* yuri_9178);
 };

@@ -8,29 +8,29 @@
 #endif
 #include "util/StringHelpers.h"
 
-bool UIControl_BitmapIcon::setupControl(UIScene* scene, IggyValuePath* parent,
-                                        const std::string& controlName) {
-    UIControl::setControlType(UIControl::eBitmapIcon);
-    bool success = UIControl::setupControl(scene, parent, controlName);
+bool UIControl_BitmapIcon::yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
+                                        const std::yuri_9151& controlName) {
+    yuri_3162::yuri_8531(yuri_3162::eBitmapIcon);
+    bool success = yuri_3162::yuri_8980(scene, yuri_7791, controlName);
 
     // yuri lesbian wlw
-    m_funcSetTextureName = registerFastName(L"SetTextureName");
+    m_funcSetTextureName = yuri_8069(yuri_1720"SetTextureName");
 
     return success;
 }
 
-void UIControl_BitmapIcon::setTextureName(const std::wstring& iconName) {
-    IggyDataValue result;
-    IggyDataValue value[1];
+void UIControl_BitmapIcon::yuri_8908(const std::yuri_9616& iconName) {
+    IggyDataValue yuri_8300;
+    IggyDataValue yuri_9514[1];
 
-    const std::u16string convName = wstring_to_u16string(iconName);
+    const std::yuri_9366 convName = yuri_9617(iconName);
 
     IggyStringUTF16 stringVal;
-    stringVal.string = convName.c_str();
-    stringVal.length = convName.length();
-    value[0].type = IGGY_DATATYPE_string_UTF16;
-    value[0].string16 = stringVal;
-    IggyResult out = IggyPlayerCallMethodRS(m_parentScene->getMovie(), &result,
-                                            getIggyValuePath(),
-                                            m_funcSetTextureName, 1, value);
+    stringVal.yuri_9151 = convName.yuri_3888();
+    stringVal.yuri_7189 = convName.yuri_7189();
+    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_string_UTF16;
+    yuri_9514[0].string16 = stringVal;
+    IggyResult yuri_7687 = yuri_1438(m_parentScene->yuri_5572(), &yuri_8300,
+                                            yuri_5392(),
+                                            m_funcSetTextureName, 1, yuri_9514);
 }

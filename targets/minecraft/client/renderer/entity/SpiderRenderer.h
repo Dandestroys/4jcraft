@@ -1,19 +1,19 @@
 #pragma once
 #include "MobRenderer.h"
 
-class ResourceLocation;
+class yuri_2412;
 
-class SpiderRenderer : public MobRenderer {
+class yuri_2885 : public yuri_1955 {
 private:
-    static ResourceLocation SPIDER_LOCATION;
-    static ResourceLocation SPIDER_EYES_LOCATION;
+    static yuri_2412 SPIDER_LOCATION;
+    static yuri_2412 SPIDER_EYES_LOCATION;
 
 public:
-    SpiderRenderer();
+    yuri_2885();
 
 protected:
-    virtual float getFlipDegrees(std::shared_ptr<LivingEntity> spider);
-    virtual int prepareArmor(std::shared_ptr<LivingEntity> _spider, int layer,
-                             float a);
-    virtual ResourceLocation* getTextureLocation(std::shared_ptr<Entity> mob);
+    virtual float yuri_5258(std::shared_ptr<yuri_1793> spider);
+    virtual int yuri_7892(std::shared_ptr<yuri_1793> _spider, int layer,
+                             float yuri_3565);
+    virtual yuri_2412* yuri_6012(std::shared_ptr<yuri_739> mob);
 };

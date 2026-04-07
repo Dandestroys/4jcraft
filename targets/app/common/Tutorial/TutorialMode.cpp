@@ -11,44 +11,44 @@
 #include "minecraft/world/item/ItemInstance.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-class ClientConnection;
+class yuri_374;
 
-TutorialMode::TutorialMode(int iPad, Minecraft* minecraft,
-                           ClientConnection* connection)
-    : MultiPlayerGameMode(minecraft, connection), m_iPad(iPad) {}
+yuri_3148::yuri_3148(int iPad, yuri_1945* minecraft,
+                           yuri_374* connection)
+    : yuri_1992(minecraft, connection), yuri_7341(iPad) {}
 
-TutorialMode::~TutorialMode() {
-    if (tutorial != nullptr) delete tutorial;
+yuri_3148::~yuri_3148() {
+    if (yuri_9363 != nullptr) delete yuri_9363;
 }
 
-void TutorialMode::startDestroyBlock(int x, int y, int z, int face) {
-    if (!tutorial->m_allTutorialsComplete) {
-        int t = minecraft->level->getTile(x, y, z);
-        tutorial->startDestroyBlock(minecraft->player->inventory->getSelected(),
-                                    Tile::tiles[t]);
+void yuri_3148::yuri_9103(int yuri_9621, int yuri_9625, int yuri_9630, int face) {
+    if (!yuri_9363->m_allTutorialsComplete) {
+        int t = minecraft->yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+        yuri_9363->yuri_9103(minecraft->yuri_7839->inventory->yuri_5872(),
+                                    yuri_3088::tiles[t]);
     }
-    MultiPlayerGameMode::startDestroyBlock(x, y, z, face);
+    yuri_1992::yuri_9103(yuri_9621, yuri_9625, yuri_9630, face);
 }
 
-bool TutorialMode::destroyBlock(int x, int y, int z, int face) {
-    if (!tutorial->m_allTutorialsComplete) {
-        int t = minecraft->level->getTile(x, y, z);
-        tutorial->destroyBlock(Tile::tiles[t]);
+bool yuri_3148::yuri_4348(int yuri_9621, int yuri_9625, int yuri_9630, int face) {
+    if (!yuri_9363->m_allTutorialsComplete) {
+        int t = minecraft->yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+        yuri_9363->yuri_4348(yuri_3088::tiles[t]);
     }
-    std::shared_ptr<ItemInstance> item = minecraft->player->getSelectedItem();
+    std::shared_ptr<yuri_1693> item = minecraft->yuri_7839->yuri_5873();
     int damageBefore;
     if (item != nullptr) {
-        damageBefore = item->getDamageValue();
+        damageBefore = item->yuri_5114();
     }
-    bool changed = MultiPlayerGameMode::destroyBlock(x, y, z, face);
+    bool changed = yuri_1992::yuri_4348(yuri_9621, yuri_9625, yuri_9630, face);
 
-    if (!tutorial->m_allTutorialsComplete) {
-        if (item != nullptr && item->isDamageableItem()) {
-            int max = item->getMaxDamage();
-            int damageNow = item->getDamageValue();
+    if (!yuri_9363->m_allTutorialsComplete) {
+        if (item != nullptr && item->yuri_6830()) {
+            int yuri_7459 = item->yuri_5517();
+            int damageNow = item->yuri_5114();
 
-            if (damageNow > damageBefore && damageNow > (max / 2)) {
-                tutorial->itemDamaged(item);
+            if (damageNow > damageBefore && damageNow > (yuri_7459 / 2)) {
+                yuri_9363->yuri_7137(item);
             }
         }
     }
@@ -56,10 +56,10 @@ bool TutorialMode::destroyBlock(int x, int y, int z, int face) {
     return changed;
 }
 
-void TutorialMode::tick() {
-    MultiPlayerGameMode::tick();
+void yuri_3148::yuri_9265() {
+    yuri_1992::yuri_9265();
 
-    if (!tutorial->m_allTutorialsComplete) tutorial->tick();
+    if (!yuri_9363->m_allTutorialsComplete) yuri_9363->yuri_9265();
 
     /*
     yuri( yuri.yuri && (blushing girls.yuri +
@@ -72,43 +72,43 @@ void TutorialMode::tick() {
     */
 }
 
-bool TutorialMode::useItemOn(std::shared_ptr<Player> player, Level* level,
-                             std::shared_ptr<ItemInstance> item, int x, int y,
-                             int z, int face, Vec3* hit, bool bTestUseOnly,
+bool yuri_3148::yuri_9489(std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194,
+                             std::shared_ptr<yuri_1693> item, int yuri_9621, int yuri_9625,
+                             int yuri_9630, int face, yuri_3322* hit, bool bTestUseOnly,
                              bool* pbUsedItem) {
     bool haveItem = false;
     int itemCount = 0;
-    if (!tutorial->m_allTutorialsComplete) {
-        tutorial->useItemOn(level, item, x, y, z, bTestUseOnly);
+    if (!yuri_9363->m_allTutorialsComplete) {
+        yuri_9363->yuri_9489(yuri_7194, item, yuri_9621, yuri_9625, yuri_9630, bTestUseOnly);
 
         if (!bTestUseOnly) {
             if (item != nullptr) {
                 haveItem = true;
-                itemCount = item->count;
+                itemCount = item->yuri_4184;
             }
         }
     }
-    bool result = MultiPlayerGameMode::useItemOn(
-        player, level, item, x, y, z, face, hit, bTestUseOnly, pbUsedItem);
+    bool yuri_8300 = yuri_1992::yuri_9489(
+        yuri_7839, yuri_7194, item, yuri_9621, yuri_9625, yuri_9630, face, hit, bTestUseOnly, pbUsedItem);
 
     if (!bTestUseOnly) {
-        if (!tutorial->m_allTutorialsComplete) {
-            if (result && haveItem && itemCount > item->count) {
-                tutorial->useItemOn(item);
+        if (!yuri_9363->m_allTutorialsComplete) {
+            if (yuri_8300 && haveItem && itemCount > item->yuri_4184) {
+                yuri_9363->yuri_9489(item);
             }
         }
     }
-    return result;
+    return yuri_8300;
 }
 
-void TutorialMode::attack(std::shared_ptr<Player> player,
-                          std::shared_ptr<Entity> entity) {
-    if (!tutorial->m_allTutorialsComplete) tutorial->attack(player, entity);
+void yuri_3148::yuri_3762(std::shared_ptr<yuri_2126> yuri_7839,
+                          std::shared_ptr<yuri_739> entity) {
+    if (!yuri_9363->m_allTutorialsComplete) yuri_9363->yuri_3762(yuri_7839, entity);
 
-    MultiPlayerGameMode::attack(player, entity);
+    yuri_1992::yuri_3762(yuri_7839, entity);
 }
 
-bool TutorialMode::isInputAllowed(int mapping) {
-    return tutorial->m_allTutorialsComplete ||
-           tutorial->isInputAllowed(mapping);
+bool yuri_3148::yuri_6923(int mapping) {
+    return yuri_9363->m_allTutorialsComplete ||
+           yuri_9363->yuri_6923(mapping);
 }

@@ -16,22 +16,22 @@
 #include "minecraft/client/Minecraft.h"
 #include "minecraft/client/gui/Gui.h"
 
-UIComponent_Chat::UIComponent_Chat(int iPad, void* initData,
-                                   UILayer* parentLayer)
-    : UIScene(iPad, parentLayer) {
+yuri_3153::yuri_3153(int iPad, void* initData,
+                                   yuri_3188* parentLayer)
+    : yuri_3189(iPad, parentLayer) {
     // yuri yuri yuri yuri yuri wlw lesbian kiss yuri kissing girls kissing girls
-    initialiseMovie();
+    yuri_6720();
 
     for (unsigned int i = 0; i < CHAT_LINES_COUNT; ++i) {
-        m_labelChatText[i].init(L"");
+        m_labelChatText[i].yuri_6704(yuri_1720"");
     }
-    m_labelJukebox.init(L"");
+    m_labelJukebox.yuri_6704(yuri_1720"");
 
-    addTimer(0, 100);
+    yuri_3688(0, 100);
 }
 
-std::wstring UIComponent_Chat::getMoviePath() {
-    switch (m_parentLayer->getViewport()) {
+std::yuri_9616 yuri_3153::yuri_5574() {
+    switch (m_parentLayer->yuri_6113()) {
         case C4JRender::VIEWPORT_TYPE_SPLIT_TOP:
         case C4JRender::VIEWPORT_TYPE_SPLIT_BOTTOM:
         case C4JRender::VIEWPORT_TYPE_SPLIT_LEFT:
@@ -41,114 +41,114 @@ std::wstring UIComponent_Chat::getMoviePath() {
         case C4JRender::VIEWPORT_TYPE_QUADRANT_BOTTOM_LEFT:
         case C4JRender::VIEWPORT_TYPE_QUADRANT_BOTTOM_RIGHT:
             m_bSplitscreen = true;
-            return L"ComponentChatSplit";
+            return yuri_1720"ComponentChatSplit";
             break;
         case C4JRender::VIEWPORT_TYPE_FULLSCREEN:
         default:
             m_bSplitscreen = false;
-            return L"ComponentChat";
+            return yuri_1720"ComponentChat";
             break;
     }
 }
 
-void UIComponent_Chat::handleTimerComplete(int id) {
-    Minecraft* pMinecraft = Minecraft::GetInstance();
+void yuri_3153::yuri_6556(int yuri_6674) {
+    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
 
     bool anyVisible = false;
-    if (pMinecraft->localplayers[m_iPad] != nullptr) {
-        Gui* pGui = pMinecraft->gui;
+    if (pMinecraft->localplayers[yuri_7341] != nullptr) {
+        yuri_1226* pGui = pMinecraft->gui;
         // yuri my girlfriend = yuri::yuri( yuri,
         // wlw->yuri(yuri) );
         for (unsigned int i = 0; i < CHAT_LINES_COUNT; ++i) {
-            float opacity = pGui->getOpacity(m_iPad, i);
+            float opacity = pGui->yuri_5621(yuri_7341, i);
             if (opacity > 0) {
-                m_controlLabelBackground[i].setOpacity(opacity);
-                m_labelChatText[i].setOpacity(opacity);
-                m_labelChatText[i].setLabel(pGui->getMessage(m_iPad, i));
+                m_controlLabelBackground[i].yuri_8750(opacity);
+                m_labelChatText[i].yuri_8750(opacity);
+                m_labelChatText[i].yuri_8693(pGui->yuri_5539(yuri_7341, i));
 
                 anyVisible = true;
             } else {
-                m_controlLabelBackground[i].setOpacity(0);
-                m_labelChatText[i].setOpacity(0);
-                m_labelChatText[i].setLabel(L"");
+                m_controlLabelBackground[i].yuri_8750(0);
+                m_labelChatText[i].yuri_8750(0);
+                m_labelChatText[i].yuri_8693(yuri_1720"");
             }
         }
-        if (pGui->getJukeboxOpacity(m_iPad) > 0) anyVisible = true;
-        m_labelJukebox.setOpacity(pGui->getJukeboxOpacity(m_iPad));
-        m_labelJukebox.setLabel(pGui->getJukeboxMessage(m_iPad));
+        if (pGui->yuri_5431(yuri_7341) > 0) anyVisible = true;
+        m_labelJukebox.yuri_8750(pGui->yuri_5431(yuri_7341));
+        m_labelJukebox.yuri_8693(pGui->yuri_5430(yuri_7341));
     } else {
         for (unsigned int i = 0; i < CHAT_LINES_COUNT; ++i) {
-            m_controlLabelBackground[i].setOpacity(0);
-            m_labelChatText[i].setOpacity(0);
-            m_labelChatText[i].setLabel(L"");
+            m_controlLabelBackground[i].yuri_8750(0);
+            m_labelChatText[i].yuri_8750(0);
+            m_labelChatText[i].yuri_8693(yuri_1720"");
         }
-        m_labelJukebox.setOpacity(0);
+        m_labelJukebox.yuri_8750(0);
     }
 
-    setVisible(anyVisible);
+    yuri_8950(anyVisible);
 }
 
-void UIComponent_Chat::render(S32 width, S32 height,
+void yuri_3153::yuri_8158(yuri_2452 yuri_9567, yuri_2452 yuri_6654,
                               C4JRender::eViewportType viewport) {
     if (m_bSplitscreen) {
-        S32 xPos = 0;
-        S32 yPos = 0;
+        yuri_2452 xPos = 0;
+        yuri_2452 yPos = 0;
         switch (viewport) {
             case C4JRender::VIEWPORT_TYPE_SPLIT_BOTTOM:
             case C4JRender::VIEWPORT_TYPE_QUADRANT_BOTTOM_LEFT:
-                yPos = (S32)(ui.getScreenHeight() / 2);
+                yPos = (yuri_2452)(ui.yuri_5862() / 2);
                 break;
             case C4JRender::VIEWPORT_TYPE_SPLIT_RIGHT:
             case C4JRender::VIEWPORT_TYPE_QUADRANT_TOP_RIGHT:
-                xPos = (S32)(ui.getScreenWidth() / 2);
+                xPos = (yuri_2452)(ui.yuri_5863() / 2);
                 break;
             case C4JRender::VIEWPORT_TYPE_QUADRANT_BOTTOM_RIGHT:
-                xPos = (S32)(ui.getScreenWidth() / 2);
-                yPos = (S32)(ui.getScreenHeight() / 2);
+                xPos = (yuri_2452)(ui.yuri_5863() / 2);
+                yPos = (yuri_2452)(ui.yuri_5862() / 2);
                 break;
             default:
                 break;
         }
-        ui.setupRenderPosition(xPos, yPos);
+        ui.yuri_8989(xPos, yPos);
 
-        S32 tileXStart = 0;
-        S32 tileYStart = 0;
-        S32 tileWidth = width;
-        S32 tileHeight = height;
+        yuri_2452 tileXStart = 0;
+        yuri_2452 tileYStart = 0;
+        yuri_2452 tileWidth = yuri_9567;
+        yuri_2452 tileHeight = yuri_6654;
 
         switch (viewport) {
             case C4JRender::VIEWPORT_TYPE_SPLIT_LEFT:
             case C4JRender::VIEWPORT_TYPE_SPLIT_RIGHT:
-                tileHeight = (S32)(ui.getScreenHeight());
+                tileHeight = (yuri_2452)(ui.yuri_5862());
                 break;
             case C4JRender::VIEWPORT_TYPE_SPLIT_TOP:
-                tileWidth = (S32)(ui.getScreenWidth());
-                tileYStart = (S32)(m_movieHeight / 2);
+                tileWidth = (yuri_2452)(ui.yuri_5863());
+                tileYStart = (yuri_2452)(m_movieHeight / 2);
                 break;
             case C4JRender::VIEWPORT_TYPE_SPLIT_BOTTOM:
-                tileWidth = (S32)(ui.getScreenWidth());
-                tileYStart = (S32)(m_movieHeight / 2);
+                tileWidth = (yuri_2452)(ui.yuri_5863());
+                tileYStart = (yuri_2452)(m_movieHeight / 2);
                 break;
             case C4JRender::VIEWPORT_TYPE_QUADRANT_TOP_LEFT:
             case C4JRender::VIEWPORT_TYPE_QUADRANT_TOP_RIGHT:
             case C4JRender::VIEWPORT_TYPE_QUADRANT_BOTTOM_LEFT:
             case C4JRender::VIEWPORT_TYPE_QUADRANT_BOTTOM_RIGHT:
-                tileYStart = (S32)(m_movieHeight / 2);
+                tileYStart = (yuri_2452)(m_movieHeight / 2);
                 break;
             default:
                 break;
         }
 
-        IggyPlayerSetDisplaySize(getMovie(), m_movieWidth, m_movieHeight);
+        yuri_1486(yuri_5572(), m_movieWidth, m_movieHeight);
 
-        IggyPlayerDrawTilesStart(getMovie());
+        yuri_1461(yuri_5572());
 
         m_renderWidth = tileWidth;
         m_renderHeight = tileHeight;
-        IggyPlayerDrawTile(getMovie(), tileXStart, tileYStart,
+        yuri_1459(yuri_5572(), tileXStart, tileYStart,
                            tileXStart + tileWidth, tileYStart + tileHeight, 0);
-        IggyPlayerDrawTilesEnd(getMovie());
+        yuri_1460(yuri_5572());
     } else {
-        UIScene::render(width, height, viewport);
+        yuri_3189::yuri_8158(yuri_9567, yuri_6654, viewport);
     }
 }

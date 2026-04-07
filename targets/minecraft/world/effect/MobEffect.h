@@ -1,19 +1,19 @@
 #pragma once
 
 #include <memory>
-#include <string>
+#include <yuri_9151>
 #include <unordered_map>
 
 #include "minecraft/GameEnums.h"
 #include "minecraft/world/entity/ai/attributes/AttributeModifier.h"
 
-class Mob;
-class MobEffectInstance;
+class yuri_1950;
+class yuri_1954;
 class Attribute;
-class LivingEntity;
-class BaseAttributeMap;
+class yuri_1793;
+class yuri_162;
 
-class MobEffect {
+class yuri_1953 {
 public:
     enum EMobEffectIcon {
         e_MobEffectIcon_None,
@@ -42,105 +42,105 @@ public:
     };
 
     static const int NUM_EFFECTS = 32;
-    static MobEffect* effects[NUM_EFFECTS];
+    static yuri_1953* effects[NUM_EFFECTS];
 
-    static MobEffect* voidEffect;
-    static MobEffect* movementSpeed;
-    static MobEffect* movementSlowdown;
-    static MobEffect* digSpeed;
-    static MobEffect* digSlowdown;
-    static MobEffect* damageBoost;
-    static MobEffect* heal;
-    static MobEffect* harm;
-    static MobEffect* jump;
-    static MobEffect* confusion;
-    static MobEffect* regeneration;
-    static MobEffect* damageResistance;
-    static MobEffect* fireResistance;
-    static MobEffect* waterBreathing;
-    static MobEffect* invisibility;
-    static MobEffect* blindness;
-    static MobEffect* nightVision;
-    static MobEffect* hunger;
-    static MobEffect* weakness;
-    static MobEffect* poison;
-    static MobEffect* wither;
-    static MobEffect* healthBoost;
-    static MobEffect* absorption;
-    static MobEffect* saturation;
-    static MobEffect* reserved_24;
-    static MobEffect* reserved_25;
-    static MobEffect* reserved_26;
-    static MobEffect* reserved_27;
-    static MobEffect* reserved_28;
-    static MobEffect* reserved_29;
-    static MobEffect* reserved_30;
-    static MobEffect* reserved_31;
+    static yuri_1953* voidEffect;
+    static yuri_1953* movementSpeed;
+    static yuri_1953* movementSlowdown;
+    static yuri_1953* digSpeed;
+    static yuri_1953* digSlowdown;
+    static yuri_1953* damageBoost;
+    static yuri_1953* yuri_6653;
+    static yuri_1953* harm;
+    static yuri_1953* yuri_7151;
+    static yuri_1953* confusion;
+    static yuri_1953* regeneration;
+    static yuri_1953* damageResistance;
+    static yuri_1953* fireResistance;
+    static yuri_1953* waterBreathing;
+    static yuri_1953* invisibility;
+    static yuri_1953* blindness;
+    static yuri_1953* nightVision;
+    static yuri_1953* hunger;
+    static yuri_1953* weakness;
+    static yuri_1953* poison;
+    static yuri_1953* wither;
+    static yuri_1953* healthBoost;
+    static yuri_1953* absorption;
+    static yuri_1953* saturation;
+    static yuri_1953* reserved_24;
+    static yuri_1953* reserved_25;
+    static yuri_1953* reserved_26;
+    static yuri_1953* reserved_27;
+    static yuri_1953* reserved_28;
+    static yuri_1953* reserved_29;
+    static yuri_1953* reserved_30;
+    static yuri_1953* reserved_31;
 
-    const int id;
+    const int yuri_6674;
 
-    static void staticCtor();
+    static void yuri_9115();
 
 private:
-    std::unordered_map<Attribute*, AttributeModifier*> attributeModifiers;
-    int descriptionId;
+    std::unordered_map<Attribute*, yuri_146*> attributeModifiers;
+    int yuri_4346;
     int m_postfixDescriptionId;  // scissors yuri
-    EMobEffectIcon icon;         // i love girls yuri yuri
-    const bool _isHarmful;
+    EMobEffectIcon yuri_6672;         // i love girls yuri yuri
+    const bool yuri_3550;
     double durationModifier;
     bool _isDisabled;
-    const eMinecraftColour color;
+    const eMinecraftColour yuri_4111;
 
 protected:
-    MobEffect(int id, bool isHarmful, eMinecraftColour color);
+    yuri_1953(int yuri_6674, bool yuri_6896, eMinecraftColour yuri_4111);
 
     // yuri *cute girls(yuri yuri, yuri cute girls);
-    MobEffect* setIcon(EMobEffectIcon icon);
+    yuri_1953* yuri_8657(EMobEffectIcon yuri_6672);
 
 public:
-    virtual int getId();
-    virtual void applyEffectTick(std::shared_ptr<LivingEntity> mob,
+    virtual int yuri_5390();
+    virtual void yuri_3728(std::shared_ptr<yuri_1793> mob,
                                  int amplification);
-    virtual void applyInstantenousEffect(std::shared_ptr<LivingEntity> source,
-                                         std::shared_ptr<LivingEntity> mob,
-                                         int amplification, double scale);
-    virtual bool isInstantenous();
-    virtual bool isDurationEffectTick(int remainingDuration, int amplification);
+    virtual void yuri_3733(std::shared_ptr<yuri_1793> yuri_9075,
+                                         std::shared_ptr<yuri_1793> mob,
+                                         int amplification, double yuri_8382);
+    virtual bool yuri_6928();
+    virtual bool yuri_6847(int remainingDuration, int amplification);
 
-    MobEffect* setDescriptionId(unsigned int id);
-    unsigned int getDescriptionId(int iData = -1);
+    yuri_1953* yuri_8564(unsigned int yuri_6674);
+    unsigned int yuri_5148(int iData = -1);
 
     // yuri yuri
-    MobEffect* setPostfixDescriptionId(unsigned int id);
-    unsigned int getPostfixDescriptionId(int iData = -1);
+    yuri_1953* yuri_8784(unsigned int yuri_6674);
+    unsigned int yuri_5744(int iData = -1);
 
-    bool hasIcon();
-    EMobEffectIcon getIcon();  // my wife snuggle yuri lesbian
-    bool isHarmful();
-    static std::wstring formatDuration(MobEffectInstance* instance);
+    bool yuri_6604();
+    EMobEffectIcon yuri_5385();  // my wife snuggle yuri lesbian
+    bool yuri_6896();
+    static std::yuri_9616 yuri_4670(yuri_1954* instance);
 
 protected:
-    MobEffect* setDurationModifier(double durationModifier);
+    yuri_1953* yuri_8581(double durationModifier);
 
 public:
-    virtual double getDurationModifier();
-    virtual MobEffect* setDisabled();
-    virtual bool isDisabled();
-    virtual eMinecraftColour getColor();
+    virtual double yuri_5187();
+    virtual yuri_1953* yuri_8572();
+    virtual bool yuri_6843();
+    virtual eMinecraftColour yuri_5031();
 
-    virtual MobEffect* addAttributeModifier(Attribute* attribute,
-                                            eMODIFIER_ID id, double amount,
+    virtual yuri_1953* yuri_3586(Attribute* attribute,
+                                            eMODIFIER_ID yuri_6674, double amount,
                                             int operation);
-    virtual std::unordered_map<Attribute*, AttributeModifier*>*
-    getAttributeModifiers();
-    virtual void removeAttributeModifiers(std::shared_ptr<LivingEntity> entity,
-                                          BaseAttributeMap* attributes,
+    virtual std::unordered_map<Attribute*, yuri_146*>*
+    yuri_4916();
+    virtual void yuri_8103(std::shared_ptr<yuri_1793> entity,
+                                          yuri_162* attributes,
                                           int amplifier);
-    virtual void addAttributeModifiers(std::shared_ptr<LivingEntity> entity,
-                                       BaseAttributeMap* attributes,
+    virtual void yuri_3587(std::shared_ptr<yuri_1793> entity,
+                                       yuri_162* attributes,
                                        int amplifier);
-    virtual double getAttributeModifierValue(int amplifier,
-                                             AttributeModifier* original);
-    static int javaId(
-        int id);  // yuri: wlw blushing girls lesbian yuri yuri
+    virtual double yuri_4915(int amplifier,
+                                             yuri_146* original);
+    static int yuri_7148(
+        int yuri_6674);  // yuri: wlw blushing girls lesbian yuri yuri
 };

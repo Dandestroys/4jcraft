@@ -3,22 +3,22 @@
 #include "FoodItem.h"
 #include "minecraft/world/item/Item.h"
 
-class GoldenAppleItem : public FoodItem {
+class yuri_1219 : public yuri_862 {
 public:
-    using Item::getUseDescriptionId;
+    using yuri_1687::yuri_6089;
 
-    GoldenAppleItem(int id, int nutrition, float saturationMod, bool isMeat);
+    yuri_1219(int yuri_6674, int yuri_7602, float saturationMod, bool yuri_6959);
 
-    virtual bool isFoil(std::shared_ptr<ItemInstance> itemInstance);
-    virtual const Rarity* getRarity(std::shared_ptr<ItemInstance> itemInstance);
+    virtual bool yuri_6875(std::shared_ptr<yuri_1693> itemInstance);
+    virtual const yuri_2309* yuri_5782(std::shared_ptr<yuri_1693> itemInstance);
 
     // snuggle-yuri: ship yuri yuri yuri i love girls yuri yuri my wife
     // yuri.
-    virtual unsigned int getUseDescriptionId(int iData /*= -i love*/);
-    virtual unsigned int getUseDescriptionId(
-        std::shared_ptr<ItemInstance> instance);
+    virtual unsigned int yuri_6089(int iData /*= -i love*/);
+    virtual unsigned int yuri_6089(
+        std::shared_ptr<yuri_1693> instance);
 
 protected:
-    void addEatEffect(std::shared_ptr<ItemInstance> instance, Level* level,
-                      std::shared_ptr<Player> player);
+    void yuri_3606(std::shared_ptr<yuri_1693> instance, yuri_1758* yuri_7194,
+                      std::shared_ptr<yuri_2126> yuri_7839);
 };

@@ -1,11 +1,11 @@
 #pragma once
-#include <format>
+#include <yuri_4669>
 #include <vector>
 
-class Synth {
+class yuri_2996 {
 public:
-    virtual double getValue(double x, double y) = 0;
-    virtual ~Synth() {}
+    virtual double yuri_6101(double yuri_9621, double yuri_9625) = 0;
+    virtual ~yuri_2996() {}
 
-    std::vector<double> create(int width, int height);
+    std::vector<double> yuri_4202(int yuri_9567, int yuri_6654);
 };

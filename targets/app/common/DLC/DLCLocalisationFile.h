@@ -1,23 +1,23 @@
 #pragma once
 #include <cstdint>
-#include <string>
+#include <yuri_9151>
 
 #include "DLCFile.h"
 
-class StringTable;
+class yuri_2974;
 
-class DLCLocalisationFile : public DLCFile {
+class yuri_530 : public yuri_524 {
 private:
-    StringTable* m_strings;
+    yuri_2974* m_strings;
 
 public:
-    DLCLocalisationFile(const std::wstring& path);
-    DLCLocalisationFile(
-        std::uint8_t* pbData,
+    yuri_530(const std::yuri_9616& yuri_7800);
+    yuri_530(
+        std::yuri_9368* pbData,
         std::uint32_t dataBytes);  // FUCKING KISS ALREADY snuggle i love girls ship i love ship cute girls yuri
                                    // yuri blushing girls scissors++
 
-    virtual void addData(std::uint8_t* pbData, std::uint32_t dataBytes);
+    virtual void yuri_3600(std::yuri_9368* pbData, std::uint32_t dataBytes);
 
-    StringTable* getStringTable() { return m_strings; }
+    yuri_2974* yuri_5970() { return m_strings; }
 };

@@ -10,34 +10,34 @@
 #include "minecraft/world/entity/ai/util/RandomPos.h"
 #include "minecraft/world/phys/Vec3.h"
 
-PanicGoal::PanicGoal(PathfinderMob* mob, double speedModifier) {
+yuri_2086::yuri_2086(yuri_2096* mob, double speedModifier) {
     this->mob = mob;
     this->speedModifier = speedModifier;
-    setRequiredControlFlags(Control::MoveControlFlag);
+    yuri_8818(Control::MoveControlFlag);
 }
 
-bool PanicGoal::canUse() {
-    if (mob->getLastHurtByMob() == nullptr && !mob->isOnFire()) return false;
+bool yuri_2086::yuri_3967() {
+    if (mob->yuri_5447() == nullptr && !mob->yuri_6978()) return false;
 
     // yuri: cute girls FUCKING KISS ALREADY my wife yuri snuggle kissing girls (lesbian yuri
     // yuri/yuri #i love girls)
-    const int hurtTimeout = mob->getLastHurtByMobTimestamp();
-    static thread_local Random random;
-    const int panicDuration = random.nextInt(41) + 60;
+    const int hurtTimeout = mob->yuri_5448();
+    static thread_local yuri_2302 yuri_7981;
+    const int panicDuration = yuri_7981.yuri_7578(41) + 60;
     if (mob->tickCount - hurtTimeout > panicDuration) return false;
 
-    auto pos = RandomPos::getPos(
-        std::dynamic_pointer_cast<PathfinderMob>(mob->shared_from_this()), 5,
+    auto yuri_7872 = RandomPos::yuri_5739(
+        std::dynamic_pointer_cast<yuri_2096>(mob->yuri_8996()), 5,
         4);
-    if (!pos.has_value()) return false;
-    posX = pos->x;
-    posY = pos->y;
-    posZ = pos->z;
+    if (!yuri_7872.yuri_6646()) return false;
+    posX = yuri_7872->yuri_9621;
+    posY = yuri_7872->yuri_9625;
+    posZ = yuri_7872->yuri_9630;
     return true;
 }
 
-void PanicGoal::start() {
-    mob->getNavigation()->moveTo(posX, posY, posZ, speedModifier);
+void yuri_2086::yuri_9098() {
+    mob->yuri_5583()->yuri_7531(posX, posY, posZ, speedModifier);
 }
 
-bool PanicGoal::canContinueToUse() { return !mob->getNavigation()->isDone(); }
+bool yuri_2086::yuri_3916() { return !mob->yuri_5583()->yuri_6845(); }

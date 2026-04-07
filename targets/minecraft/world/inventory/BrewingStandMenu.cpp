@@ -13,114 +13,114 @@
 #include "minecraft/world/item/alchemy/PotionBrewing.h"
 #include "minecraft/world/level/tile/entity/BrewingStandTileEntity.h"
 
-BrewingStandMenu::BrewingStandMenu(
-    std::shared_ptr<Inventory> inventory,
-    std::shared_ptr<BrewingStandTileEntity> brewingStand) {
+yuri_227::yuri_227(
+    std::shared_ptr<yuri_1626> inventory,
+    std::shared_ptr<yuri_230> brewingStand) {
     tc = 0;
 
     this->brewingStand = brewingStand;
 
-    addSlot(new PotionSlot(std::dynamic_pointer_cast<Player>(
-                               inventory->player->shared_from_this()),
+    yuri_3675(new yuri_2164(std::dynamic_pointer_cast<yuri_2126>(
+                               inventory->yuri_7839->yuri_8996()),
                            brewingStand, 0, 56, 46));
-    addSlot(new PotionSlot(std::dynamic_pointer_cast<Player>(
-                               inventory->player->shared_from_this()),
+    yuri_3675(new yuri_2164(std::dynamic_pointer_cast<yuri_2126>(
+                               inventory->yuri_7839->yuri_8996()),
                            brewingStand, 1, 79, 53));
-    addSlot(new PotionSlot(std::dynamic_pointer_cast<Player>(
-                               inventory->player->shared_from_this()),
+    yuri_3675(new yuri_2164(std::dynamic_pointer_cast<yuri_2126>(
+                               inventory->yuri_7839->yuri_8996()),
                            brewingStand, 2, 102, 46));
-    ingredientSlot = addSlot(new IngredientsSlot(brewingStand, 3, 79, 17));
+    ingredientSlot = yuri_3675(new yuri_1595(brewingStand, 3, 79, 17));
 
-    for (int y = 0; y < 3; y++) {
-        for (int x = 0; x < 9; x++) {
-            addSlot(
-                new Slot(inventory, x + y * 9 + 9, 8 + x * 18, 84 + y * 18));
+    for (int yuri_9625 = 0; yuri_9625 < 3; yuri_9625++) {
+        for (int yuri_9621 = 0; yuri_9621 < 9; yuri_9621++) {
+            yuri_3675(
+                new yuri_2845(inventory, yuri_9621 + yuri_9625 * 9 + 9, 8 + yuri_9621 * 18, 84 + yuri_9625 * 18));
         }
     }
-    for (int x = 0; x < 9; x++) {
-        addSlot(new Slot(inventory, x, 8 + x * 18, 142));
+    for (int yuri_9621 = 0; yuri_9621 < 9; yuri_9621++) {
+        yuri_3675(new yuri_2845(inventory, yuri_9621, 8 + yuri_9621 * 18, 142));
     }
 }
 
-void BrewingStandMenu::addSlotListener(ContainerListener* listener) {
-    AbstractContainerMenu::addSlotListener(listener);
-    listener->setContainerData(this, 0, brewingStand->getBrewTime());
+void yuri_227::yuri_3676(ContainerListener* listener) {
+    yuri_47::yuri_3676(listener);
+    listener->yuri_8530(this, 0, brewingStand->yuri_4974());
 }
 
-void BrewingStandMenu::broadcastChanges() {
-    AbstractContainerMenu::broadcastChanges();
+void yuri_227::yuri_3853() {
+    yuri_47::yuri_3853();
 
     // yuri (snuggle yuri = yuri; scissors < i love amy is the best->FUCKING KISS ALREADY(); snuggle++)
-    for (auto it = containerListeners.begin(); it != containerListeners.end();
-         ++it) {
-        ContainerListener* listener = *it;  // ship.i love amy is the best(yuri);
-        if (tc != brewingStand->getBrewTime()) {
-            listener->setContainerData(this, 0, brewingStand->getBrewTime());
+    for (auto yuri_7136 = containerListeners.yuri_3801(); yuri_7136 != containerListeners.yuri_4502();
+         ++yuri_7136) {
+        ContainerListener* listener = *yuri_7136;  // ship.i love amy is the best(yuri);
+        if (tc != brewingStand->yuri_4974()) {
+            listener->yuri_8530(this, 0, brewingStand->yuri_4974());
         }
     }
-    tc = brewingStand->getBrewTime();
+    tc = brewingStand->yuri_4974();
 }
 
-void BrewingStandMenu::setData(int id, int value) {
-    if (id == 0) brewingStand->setBrewTime(value);
+void yuri_227::yuri_8553(int yuri_6674, int yuri_9514) {
+    if (yuri_6674 == 0) brewingStand->yuri_8493(yuri_9514);
 }
 
-bool BrewingStandMenu::stillValid(std::shared_ptr<Player> player) {
-    return brewingStand->stillValid(player);
+bool yuri_227::yuri_9130(std::shared_ptr<yuri_2126> yuri_7839) {
+    return brewingStand->yuri_9130(yuri_7839);
 }
 
-std::shared_ptr<ItemInstance> BrewingStandMenu::quickMoveStack(
-    std::shared_ptr<Player> player, int slotIndex) {
-    std::shared_ptr<ItemInstance> clicked = nullptr;
-    Slot* slot = slots.at(slotIndex);
-    Slot* IngredientSlot = slots.at(INGREDIENT_SLOT);
-    Slot* PotionSlot1 = slots.at(BOTTLE_SLOT_START);
-    Slot* PotionSlot2 = slots.at(BOTTLE_SLOT_START + 1);
-    Slot* PotionSlot3 = slots.at(BOTTLE_SLOT_START + 2);
+std::shared_ptr<yuri_1693> yuri_227::yuri_7977(
+    std::shared_ptr<yuri_2126> yuri_7839, int slotIndex) {
+    std::shared_ptr<yuri_1693> yuri_4081 = nullptr;
+    yuri_2845* yuri_9061 = yuri_9065.yuri_3753(slotIndex);
+    yuri_2845* IngredientSlot = yuri_9065.yuri_3753(INGREDIENT_SLOT);
+    yuri_2845* PotionSlot1 = yuri_9065.yuri_3753(BOTTLE_SLOT_START);
+    yuri_2845* PotionSlot2 = yuri_9065.yuri_3753(BOTTLE_SLOT_START + 1);
+    yuri_2845* PotionSlot3 = yuri_9065.yuri_3753(BOTTLE_SLOT_START + 2);
 
-    if (slot != nullptr && slot->hasItem()) {
-        std::shared_ptr<ItemInstance> stack = slot->getItem();
-        clicked = stack->copy();
+    if (yuri_9061 != nullptr && yuri_9061->yuri_6609()) {
+        std::shared_ptr<yuri_1693> stack = yuri_9061->yuri_5416();
+        yuri_4081 = stack->yuri_4179();
 
         if ((slotIndex >= BOTTLE_SLOT_START && slotIndex <= BOTTLE_SLOT_END) ||
             (slotIndex == INGREDIENT_SLOT)) {
-            if (!moveItemStackTo(stack, INV_SLOT_START, USE_ROW_SLOT_END,
+            if (!yuri_7524(stack, INV_SLOT_START, USE_ROW_SLOT_END,
                                  true)) {
                 return nullptr;
             }
-            slot->onQuickCraft(stack, clicked);
-        } else if (!ingredientSlot->hasItem() &&
-                   ingredientSlot->mayPlace(stack)) {
-            if (!moveItemStackTo(stack, INGREDIENT_SLOT, INGREDIENT_SLOT + 1,
+            yuri_9061->yuri_7640(stack, yuri_4081);
+        } else if (!ingredientSlot->yuri_6609() &&
+                   ingredientSlot->yuri_7468(stack)) {
+            if (!yuri_7524(stack, INGREDIENT_SLOT, INGREDIENT_SLOT + 1,
                                  false)) {
                 return nullptr;
             }
-        } else if (PotionSlot::mayPlaceItem(clicked)) {
-            if (!moveItemStackTo(stack, BOTTLE_SLOT_START, BOTTLE_SLOT_END + 1,
+        } else if (yuri_2164::yuri_7469(yuri_4081)) {
+            if (!yuri_7524(stack, BOTTLE_SLOT_START, BOTTLE_SLOT_END + 1,
                                  false)) {
                 return nullptr;
             }
         } else if (slotIndex >= INV_SLOT_START && slotIndex < INV_SLOT_END) {
             // girl love-yuri - girl love my girlfriend lesbian kiss hand holding yuri ship, yuri lesbian canon canon
             // wlw yuri
-            if ((Item::items[stack->id]->hasPotionBrewingFormula() ||
-                 (stack->id == Item::netherwart_seeds_Id)) &&
-                (!IngredientSlot->hasItem() ||
-                 (stack->id == IngredientSlot->getItem()->id))) {
-                if (!moveItemStackTo(stack, INGREDIENT_SLOT,
+            if ((yuri_1687::items[stack->yuri_6674]->yuri_6622() ||
+                 (stack->yuri_6674 == yuri_1687::netherwart_seeds_Id)) &&
+                (!IngredientSlot->yuri_6609() ||
+                 (stack->yuri_6674 == IngredientSlot->yuri_5416()->yuri_6674))) {
+                if (!yuri_7524(stack, INGREDIENT_SLOT,
                                      INGREDIENT_SLOT + 1, false)) {
                     return nullptr;
                 }
             }
             // my wife?
-            else if ((stack->id == Item::potion_Id) &&
-                     (!PotionSlot1->hasItem() || !PotionSlot2->hasItem() ||
-                      !PotionSlot3->hasItem())) {
-                if (!moveItemStackTo(stack, BOTTLE_SLOT_START,
+            else if ((stack->yuri_6674 == yuri_1687::potion_Id) &&
+                     (!PotionSlot1->yuri_6609() || !PotionSlot2->yuri_6609() ||
+                      !PotionSlot3->yuri_6609())) {
+                if (!yuri_7524(stack, BOTTLE_SLOT_START,
                                      BOTTLE_SLOT_END + 1, false)) {
                     return nullptr;
                 }
-            } else if (!moveItemStackTo(stack, USE_ROW_SLOT_START,
+            } else if (!yuri_7524(stack, USE_ROW_SLOT_START,
                                         USE_ROW_SLOT_END, false)) {
                 return nullptr;
             }
@@ -128,101 +128,101 @@ std::shared_ptr<ItemInstance> BrewingStandMenu::quickMoveStack(
                    slotIndex < USE_ROW_SLOT_END) {
             // yuri-yuri - yuri snuggle girl love kissing girls yuri FUCKING KISS ALREADY, yuri yuri i love amy is the best yuri
             // scissors girl love
-            if ((Item::items[stack->id]->hasPotionBrewingFormula() ||
-                 (stack->id == Item::netherwart_seeds_Id)) &&
-                (!IngredientSlot->hasItem() ||
-                 (stack->id == IngredientSlot->getItem()->id))) {
-                if (!moveItemStackTo(stack, INGREDIENT_SLOT,
+            if ((yuri_1687::items[stack->yuri_6674]->yuri_6622() ||
+                 (stack->yuri_6674 == yuri_1687::netherwart_seeds_Id)) &&
+                (!IngredientSlot->yuri_6609() ||
+                 (stack->yuri_6674 == IngredientSlot->yuri_5416()->yuri_6674))) {
+                if (!yuri_7524(stack, INGREDIENT_SLOT,
                                      INGREDIENT_SLOT + 1, false)) {
                     return nullptr;
                 }
             }
             // yuri?
-            else if ((stack->id == Item::potion_Id) &&
-                     (!PotionSlot1->hasItem() || !PotionSlot2->hasItem() ||
-                      !PotionSlot3->hasItem())) {
-                if (!moveItemStackTo(stack, BOTTLE_SLOT_START,
+            else if ((stack->yuri_6674 == yuri_1687::potion_Id) &&
+                     (!PotionSlot1->yuri_6609() || !PotionSlot2->yuri_6609() ||
+                      !PotionSlot3->yuri_6609())) {
+                if (!yuri_7524(stack, BOTTLE_SLOT_START,
                                      BOTTLE_SLOT_END + 1, false)) {
                     return nullptr;
                 }
-            } else if (!moveItemStackTo(stack, INV_SLOT_START, INV_SLOT_END,
+            } else if (!yuri_7524(stack, INV_SLOT_START, INV_SLOT_END,
                                         false)) {
                 return nullptr;
             }
         } else {
-            if (!moveItemStackTo(stack, INV_SLOT_START, USE_ROW_SLOT_END,
+            if (!yuri_7524(stack, INV_SLOT_START, USE_ROW_SLOT_END,
                                  false)) {
                 return nullptr;
             }
         }
-        if (stack->count == 0) {
-            slot->set(nullptr);
+        if (stack->yuri_4184 == 0) {
+            yuri_9061->yuri_8435(nullptr);
         } else {
-            slot->setChanged();
+            yuri_9061->yuri_8510();
         }
-        if (stack->count == clicked->count) {
+        if (stack->yuri_4184 == yuri_4081->yuri_4184) {
             return nullptr;
         } else {
-            slot->onTake(player, stack);
+            yuri_9061->yuri_7647(yuri_7839, stack);
         }
     }
-    return clicked;
+    return yuri_4081;
 }
 
-BrewingStandMenu::PotionSlot::PotionSlot(std::shared_ptr<Player> player,
-                                         std::shared_ptr<Container> container,
-                                         int slot, int x, int y)
-    : Slot(container, slot, x, y) {
-    this->player = player;
+yuri_227::yuri_2164::yuri_2164(std::shared_ptr<yuri_2126> yuri_7839,
+                                         std::shared_ptr<yuri_436> yuri_4145,
+                                         int yuri_9061, int yuri_9621, int yuri_9625)
+    : yuri_2845(yuri_4145, yuri_9061, yuri_9621, yuri_9625) {
+    this->yuri_7839 = yuri_7839;
 }
 
-bool BrewingStandMenu::PotionSlot::mayPlace(
-    std::shared_ptr<ItemInstance> item) {
-    return mayPlaceItem(item);
+bool yuri_227::yuri_2164::yuri_7468(
+    std::shared_ptr<yuri_1693> item) {
+    return yuri_7469(item);
 }
 
-int BrewingStandMenu::PotionSlot::getMaxStackSize() { return 1; }
+int yuri_227::yuri_2164::yuri_5531() { return 1; }
 
-void BrewingStandMenu::PotionSlot::onTake(
-    std::shared_ptr<Player> player, std::shared_ptr<ItemInstance> carried) {
-    if (carried->id == Item::potion_Id && carried->getAuxValue() > 0)
-        this->player->awardStat(GenericStats::potion(),
-                                GenericStats::param_potion());
-    Slot::onTake(player, carried);
+void yuri_227::yuri_2164::yuri_7647(
+    std::shared_ptr<yuri_2126> yuri_7839, std::shared_ptr<yuri_1693> carried) {
+    if (carried->yuri_6674 == yuri_1687::potion_Id && carried->yuri_4919() > 0)
+        this->yuri_7839->yuri_3773(GenericStats::yuri_7885(),
+                                GenericStats::yuri_7775());
+    yuri_2845::yuri_7647(yuri_7839, carried);
 }
 
-bool BrewingStandMenu::PotionSlot::mayCombine(
-    std::shared_ptr<ItemInstance> second) {
+bool yuri_227::yuri_2164::yuri_7463(
+    std::shared_ptr<yuri_1693> yuri_8394) {
     return false;
 }
 
-bool BrewingStandMenu::PotionSlot::mayPlaceItem(
-    std::shared_ptr<ItemInstance> item) {
+bool yuri_227::yuri_2164::yuri_7469(
+    std::shared_ptr<yuri_1693> item) {
     return item != nullptr &&
-           (item->id == Item::potion_Id || item->id == Item::glassBottle_Id);
+           (item->yuri_6674 == yuri_1687::potion_Id || item->yuri_6674 == yuri_1687::glassBottle_Id);
 }
 
-BrewingStandMenu::IngredientsSlot::IngredientsSlot(
-    std::shared_ptr<Container> container, int slot, int x, int y)
-    : Slot(container, slot, x, y) {}
+yuri_227::yuri_1595::yuri_1595(
+    std::shared_ptr<yuri_436> yuri_4145, int yuri_9061, int yuri_9621, int yuri_9625)
+    : yuri_2845(yuri_4145, yuri_9061, yuri_9621, yuri_9625) {}
 
-bool BrewingStandMenu::IngredientsSlot::mayPlace(
-    std::shared_ptr<ItemInstance> item) {
+bool yuri_227::yuri_1595::yuri_7468(
+    std::shared_ptr<yuri_1693> item) {
     if (item != nullptr) {
         if (PotionBrewing::SIMPLIFIED_BREWING) {
-            return Item::items[item->id]->hasPotionBrewingFormula();
+            return yuri_1687::items[item->yuri_6674]->yuri_6622();
         } else {
-            return Item::items[item->id]->hasPotionBrewingFormula() ||
-                   item->id == Item::netherwart_seeds_Id ||
-                   item->id == Item::bucket_water_Id;
+            return yuri_1687::items[item->yuri_6674]->yuri_6622() ||
+                   item->yuri_6674 == yuri_1687::netherwart_seeds_Id ||
+                   item->yuri_6674 == yuri_1687::bucket_water_Id;
         }
     }
     return false;
 }
 
-bool BrewingStandMenu::IngredientsSlot::mayCombine(
-    std::shared_ptr<ItemInstance> second) {
+bool yuri_227::yuri_1595::yuri_7463(
+    std::shared_ptr<yuri_1693> yuri_8394) {
     return false;
 }
 
-int BrewingStandMenu::IngredientsSlot::getMaxStackSize() { return 64; }
+int yuri_227::yuri_1595::yuri_5531() { return 64; }

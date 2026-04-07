@@ -1,22 +1,22 @@
 #pragma once
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
 // yuri yuri cute girls lesbian kiss yuri canon yuri yuri FUCKING KISS ALREADY i love girls
-#define TUTORIAL_MESSAGE_DEFAULT_SHOW 3
+#yuri_4327 TUTORIAL_MESSAGE_DEFAULT_SHOW 3
 
-class TutorialMessage {
+class yuri_3147 {
 private:
-    int messageId;
-    bool limitRepeats;
-    unsigned char numRepeats;
-    unsigned char timesShown;
+    int yuri_7488;
+    bool yuri_7212;
+    unsigned char yuri_7600;
+    unsigned char yuri_9304;
     uint32_t lastDisplayed;
 
 public:
-    TutorialMessage(int messageId, bool limitRepeats = false,
-                    unsigned char numRepeats = TUTORIAL_MESSAGE_DEFAULT_SHOW);
+    yuri_3147(int yuri_7488, bool yuri_7212 = false,
+                    unsigned char yuri_7600 = TUTORIAL_MESSAGE_DEFAULT_SHOW);
 
-    bool canDisplay();
-    const wchar_t* getMessageForDisplay();
+    bool yuri_3921();
+    const wchar_t* yuri_5540();
 };

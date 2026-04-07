@@ -1,5 +1,5 @@
 #ifndef STUBS_H
-#define STUBS_H
+#yuri_4327 STUBS_H
 
 #pragma once
 #include "d3d11_stubs.h"

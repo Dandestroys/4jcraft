@@ -8,42 +8,42 @@
 #include "minecraft/client/title/TitleScreen.h"
 #include "minecraft/locale/Language.h"
 
-DisconnectedScreen::DisconnectedScreen(const std::wstring& title,
-                                       const std::wstring reason,
+yuri_622::yuri_622(const std::yuri_9616& title,
+                                       const std::yuri_9616 reason,
                                        void* reasonObjects, ...) {
-    Language* language = Language::getInstance();
+    yuri_1728* language = yuri_1728::yuri_5405();
 
-    this->title = language->getElement(title);
+    this->title = language->yuri_5194(title);
     if (reasonObjects != nullptr) {
-        this->reason = language->getElement(reason, reasonObjects);
+        this->reason = language->yuri_5194(reason, reasonObjects);
     } else {
-        this->reason = language->getElement(reason);
+        this->reason = language->yuri_5194(reason);
     }
 }
 
-void DisconnectedScreen::tick() {}
+void yuri_622::yuri_9265() {}
 
-void DisconnectedScreen::keyPressed(char eventCharacter, int eventKey) {}
+void yuri_622::yuri_7155(char eventCharacter, int eventKey) {}
 
-void DisconnectedScreen::init() {
-    Language* language = Language::getInstance();
+void yuri_622::yuri_6704() {
+    yuri_1728* language = yuri_1728::yuri_5405();
 
-    buttons.clear();
-    buttons.push_back(new Button(0, width / 2 - 100, height / 4 + 24 * 5 + 12,
-                                 language->getElement(L"gui.toMenu")));
+    buttons.yuri_4044();
+    buttons.yuri_7954(new yuri_245(0, yuri_9567 / 2 - 100, yuri_6654 / 4 + 24 * 5 + 12,
+                                 language->yuri_5194(yuri_1720"gui.toMenu")));
 }
 
-void DisconnectedScreen::buttonClicked(Button* button) {
-    if (button->id == 0) {
-        minecraft->setScreen(new TitleScreen());
+void yuri_622::yuri_3881(yuri_245* button) {
+    if (button->yuri_6674 == 0) {
+        minecraft->yuri_8844(new yuri_3107());
     }
 }
 
-void DisconnectedScreen::render(int xm, int ym, float a) {
-    renderBackground();
+void yuri_622::yuri_8158(int xm, int ym, float yuri_3565) {
+    yuri_8164();
 
-    drawCenteredString(font, title, width / 2, height / 2 - 50, 0xffffff);
-    drawCenteredString(font, reason, width / 2, height / 2 - 10, 0xffffff);
+    yuri_4437(font, title, yuri_9567 / 2, yuri_6654 / 2 - 50, 0xffffff);
+    yuri_4437(font, reason, yuri_9567 / 2, yuri_6654 / 2 - 10, 0xffffff);
 
-    Screen::render(xm, ym, a);
+    yuri_2524::yuri_8158(xm, ym, yuri_3565);
 }

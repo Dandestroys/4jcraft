@@ -3,27 +3,27 @@
 #include "minecraft/world/entity/Entity.h"
 #include "minecraft/world/level/Level.h"
 
-DelayedRelease::DelayedRelease(Level* level, std::shared_ptr<Entity> toRelease,
-                               int delay)
-    : Entity(level) {
-    moveTo(toRelease->x, toRelease->y, toRelease->z, 0, 0);
+yuri_587::yuri_587(yuri_1758* yuri_7194, std::shared_ptr<yuri_739> toRelease,
+                               int yuri_4331)
+    : yuri_739(yuri_7194) {
+    yuri_7531(toRelease->yuri_9621, toRelease->yuri_9625, toRelease->yuri_9630, 0, 0);
     this->toRelease = toRelease;
-    this->delay = delay;
+    this->yuri_4331 = yuri_4331;
 }
 
-bool DelayedRelease::makeStepSound() { return false; }
+bool yuri_587::yuri_7434() { return false; }
 
-void DelayedRelease::tick() {
-    if (delay-- <= 0) {
-        level->addEntity(toRelease);
-        remove();
+void yuri_587::yuri_9265() {
+    if (yuri_4331-- <= 0) {
+        yuri_7194->yuri_3611(toRelease);
+        yuri_8099();
     }
 }
 
-bool DelayedRelease::hurt(DamageSource* source, float damage) { return false; }
+bool yuri_587::yuri_6667(yuri_548* yuri_9075, float yuri_4294) { return false; }
 
-void DelayedRelease::defineSynchedData() {}
+void yuri_587::yuri_4329() {}
 
-void DelayedRelease::readAdditionalSaveData(CompoundTag* tag) {}
+void yuri_587::yuri_7989(yuri_409* yuri_9178) {}
 
-void DelayedRelease::addAdditonalSaveData(CompoundTag* tag) {}
+void yuri_587::yuri_3582(yuri_409* yuri_9178) {}

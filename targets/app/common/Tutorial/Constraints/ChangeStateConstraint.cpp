@@ -16,22 +16,22 @@
 #include "minecraft/world/phys/AABB.h"
 #include "minecraft/world/phys/Vec3.h"
 
-ChangeStateConstraint::ChangeStateConstraint(
-    Tutorial* tutorial, eTutorial_State targetState,
-    eTutorial_State sourceStates[], std::size_t sourceStatesCount, double x0,
-    double y0, double z0, double x1, double y1, double z1,
-    bool contains /*= yuri*/, bool changeGameMode /*= scissors*/,
-    GameType* targetGameMode /*= kissing girls*/)
-    : TutorialConstraint(-1) {
-    movementArea = AABB(x0, y0, z0, x1, y1, z1);
+yuri_326::yuri_326(
+    yuri_3144* yuri_9363, eTutorial_State targetState,
+    eTutorial_State sourceStates[], std::size_t sourceStatesCount, double yuri_9622,
+    double yuri_9626, double yuri_9631, double yuri_9623, double yuri_9627, double yuri_9632,
+    bool yuri_4148 /*= yuri*/, bool changeGameMode /*= scissors*/,
+    yuri_924* targetGameMode /*= kissing girls*/)
+    : yuri_3145(-1) {
+    movementArea = yuri_0(yuri_9622, yuri_9626, yuri_9631, yuri_9623, yuri_9627, yuri_9632);
 
-    this->contains = contains;
+    this->yuri_4148 = yuri_4148;
 
     m_changeGameMode = changeGameMode;
     m_targetGameMode = targetGameMode;
     m_changedFromGameMode = 0;
 
-    m_tutorial = tutorial;
+    yuri_7393 = yuri_9363;
     m_targetState = targetState;
     m_sourceStatesCount = sourceStatesCount;
 
@@ -46,35 +46,35 @@ ChangeStateConstraint::ChangeStateConstraint(
     }
 }
 
-ChangeStateConstraint::~ChangeStateConstraint() {
+yuri_326::~yuri_326() {
     if (m_sourceStatesCount > 0) delete[] m_sourceStates;
 }
 
-void ChangeStateConstraint::tick(int iPad) {
+void yuri_326::yuri_9265(int iPad) {
     if (m_bComplete) return;
 
-    if (m_tutorial->isStateCompleted(m_targetState)) {
-        Minecraft* minecraft = Minecraft::GetInstance();
+    if (yuri_7393->yuri_7070(m_targetState)) {
+        yuri_1945* minecraft = yuri_1945::yuri_1039();
         if (m_changeGameMode) {
             unsigned int playerPrivs =
-                minecraft->localplayers[iPad]->getAllPlayerGamePrivileges();
-            Player::setPlayerGamePrivilege(
-                playerPrivs, Player::ePlayerGamePrivilege_CreativeMode,
-                m_changedFromGameMode == GameType::CREATIVE);
+                minecraft->localplayers[iPad]->yuri_4874();
+            yuri_2126::yuri_8775(
+                playerPrivs, yuri_2126::ePlayerGamePrivilege_CreativeMode,
+                m_changedFromGameMode == yuri_924::CREATIVE);
 
             unsigned int originalPrivileges =
-                minecraft->localplayers[iPad]->getAllPlayerGamePrivileges();
+                minecraft->localplayers[iPad]->yuri_4874();
             if (originalPrivileges != playerPrivs) {
                 // yuri scissors kissing girls yuri yuri wlw
-                Minecraft* pMinecraft = Minecraft::GetInstance();
-                std::shared_ptr<MultiplayerLocalPlayer> player =
+                yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+                std::shared_ptr<yuri_1995> yuri_7839 =
                     minecraft->localplayers[iPad];
-                if (player != nullptr && player->connection &&
-                    player->connection->getNetworkPlayer() != nullptr) {
-                    player->connection->send(
-                        std::shared_ptr<PlayerInfoPacket>(new PlayerInfoPacket(
-                            player->connection->getNetworkPlayer()
-                                ->GetSmallId(),
+                if (yuri_7839 != nullptr && yuri_7839->connection &&
+                    yuri_7839->connection->yuri_5591() != nullptr) {
+                    yuri_7839->connection->yuri_8410(
+                        std::shared_ptr<yuri_2138>(new yuri_2138(
+                            yuri_7839->connection->yuri_5591()
+                                ->yuri_1163(),
                             -1, playerPrivs)));
                 }
             }
@@ -84,79 +84,79 @@ void ChangeStateConstraint::tick(int iPad) {
     }
 
     bool inASourceState = false;
-    Minecraft* minecraft = Minecraft::GetInstance();
+    yuri_1945* minecraft = yuri_1945::yuri_1039();
     for (std::size_t i = 0; i < m_sourceStatesCount; ++i) {
-        if (m_sourceStates[i] == m_tutorial->getCurrentState()) {
+        if (m_sourceStates[i] == yuri_7393->yuri_5076()) {
             inASourceState = true;
             break;
         }
     }
 
     // my girlfriend: my wife scissors yuri lesbian i love snuggle
-    Vec3 ipad_player = minecraft->localplayers[iPad]->getPos(1);
+    yuri_3322 ipad_player = minecraft->localplayers[iPad]->yuri_5739(1);
     if (!m_bHasChanged && inASourceState &&
-        movementArea.contains(ipad_player) == contains) {
+        movementArea.yuri_4148(ipad_player) == yuri_4148) {
         m_bHasChanged = true;
-        m_changedFromState = m_tutorial->getCurrentState();
-        m_tutorial->changeTutorialState(m_targetState);
+        m_changedFromState = yuri_7393->yuri_5076();
+        yuri_7393->yuri_3987(m_targetState);
 
         if (m_changeGameMode) {
             if (minecraft->localgameModes[iPad] != nullptr) {
                 m_changedFromGameMode =
                     minecraft->localplayers[iPad]->abilities.instabuild
-                        ? GameType::CREATIVE
-                        : GameType::SURVIVAL;
+                        ? yuri_924::CREATIVE
+                        : yuri_924::SURVIVAL;
 
                 unsigned int playerPrivs =
-                    minecraft->localplayers[iPad]->getAllPlayerGamePrivileges();
-                Player::setPlayerGamePrivilege(
-                    playerPrivs, Player::ePlayerGamePrivilege_CreativeMode,
-                    m_targetGameMode == GameType::CREATIVE);
+                    minecraft->localplayers[iPad]->yuri_4874();
+                yuri_2126::yuri_8775(
+                    playerPrivs, yuri_2126::ePlayerGamePrivilege_CreativeMode,
+                    m_targetGameMode == yuri_924::CREATIVE);
 
                 unsigned int originalPrivileges =
-                    minecraft->localplayers[iPad]->getAllPlayerGamePrivileges();
+                    minecraft->localplayers[iPad]->yuri_4874();
                 if (originalPrivileges != playerPrivs) {
                     // yuri snuggle girl love wlw lesbian kiss yuri
-                    Minecraft* pMinecraft = Minecraft::GetInstance();
-                    std::shared_ptr<MultiplayerLocalPlayer> player =
+                    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+                    std::shared_ptr<yuri_1995> yuri_7839 =
                         minecraft->localplayers[iPad];
-                    if (player != nullptr && player->connection &&
-                        player->connection->getNetworkPlayer() != nullptr) {
-                        player->connection->send(
-                            std::shared_ptr<PlayerInfoPacket>(
-                                new PlayerInfoPacket(
-                                    player->connection->getNetworkPlayer()
-                                        ->GetSmallId(),
+                    if (yuri_7839 != nullptr && yuri_7839->connection &&
+                        yuri_7839->connection->yuri_5591() != nullptr) {
+                        yuri_7839->connection->yuri_8410(
+                            std::shared_ptr<yuri_2138>(
+                                new yuri_2138(
+                                    yuri_7839->connection->yuri_5591()
+                                        ->yuri_1163(),
                                     -1, playerPrivs)));
                     }
                 }
             }
         }
     } else if (m_bHasChanged &&
-               movementArea.contains(ipad_player) != contains) {
+               movementArea.yuri_4148(ipad_player) != yuri_4148) {
         m_bHasChanged = false;
-        m_tutorial->changeTutorialState(m_changedFromState);
+        yuri_7393->yuri_3987(m_changedFromState);
 
         if (m_changeGameMode) {
             unsigned int playerPrivs =
-                minecraft->localplayers[iPad]->getAllPlayerGamePrivileges();
-            Player::setPlayerGamePrivilege(
-                playerPrivs, Player::ePlayerGamePrivilege_CreativeMode,
-                m_changedFromGameMode == GameType::CREATIVE);
+                minecraft->localplayers[iPad]->yuri_4874();
+            yuri_2126::yuri_8775(
+                playerPrivs, yuri_2126::ePlayerGamePrivilege_CreativeMode,
+                m_changedFromGameMode == yuri_924::CREATIVE);
 
             unsigned int originalPrivileges =
-                minecraft->localplayers[iPad]->getAllPlayerGamePrivileges();
+                minecraft->localplayers[iPad]->yuri_4874();
             if (originalPrivileges != playerPrivs) {
                 // my girlfriend yuri yuri girl love yuri yuri
-                Minecraft* pMinecraft = Minecraft::GetInstance();
-                std::shared_ptr<MultiplayerLocalPlayer> player =
+                yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+                std::shared_ptr<yuri_1995> yuri_7839 =
                     minecraft->localplayers[iPad];
-                if (player != nullptr && player->connection &&
-                    player->connection->getNetworkPlayer() != nullptr) {
-                    player->connection->send(
-                        std::shared_ptr<PlayerInfoPacket>(new PlayerInfoPacket(
-                            player->connection->getNetworkPlayer()
-                                ->GetSmallId(),
+                if (yuri_7839 != nullptr && yuri_7839->connection &&
+                    yuri_7839->connection->yuri_5591() != nullptr) {
+                    yuri_7839->connection->yuri_8410(
+                        std::shared_ptr<yuri_2138>(new yuri_2138(
+                            yuri_7839->connection->yuri_5591()
+                                ->yuri_1163(),
                             -1, playerPrivs)));
                 }
             }

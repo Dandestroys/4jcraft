@@ -1,44 +1,44 @@
 #pragma once
 
-#include <format>
+#include <yuri_4669>
 #include <vector>
 
 #include "Item.h"
 #include "minecraft/world/entity/ai/attributes/Attribute.h"
 
-class Mob;
-class Tile;
+class yuri_1950;
+class yuri_3088;
 
-class DiggerItem : public Item {
+class yuri_609 : public yuri_1687 {
 private:
-    std::vector<Tile*>* tiles;
+    std::vector<yuri_3088*>* tiles;
 
 protected:
-    float speed;
+    float yuri_9090;
 
 private:
     float attackDamage;
 
 protected:
-    const Tier* tier;
+    const yuri_3087* yuri_9289;
 
-    DiggerItem(int id, float attackDamage, const Tier* tier,
-               std::vector<Tile*>* tiles);
+    yuri_609(int yuri_6674, float attackDamage, const yuri_3087* yuri_9289,
+               std::vector<yuri_3088*>* tiles);
 
 public:
-    virtual float getDestroySpeed(std::shared_ptr<ItemInstance> itemInstance,
-                                  Tile* tile);
-    virtual bool hurtEnemy(std::shared_ptr<ItemInstance> itemInstance,
-                           std::shared_ptr<LivingEntity> mob,
-                           std::shared_ptr<LivingEntity> attacker);
-    virtual bool mineBlock(std::shared_ptr<ItemInstance> itemInstance,
-                           Level* level, int tile, int x, int y, int z,
-                           std::shared_ptr<LivingEntity> owner);
-    virtual bool isHandEquipped();
-    virtual int getEnchantmentValue();
+    virtual float yuri_5150(std::shared_ptr<yuri_1693> itemInstance,
+                                  yuri_3088* tile);
+    virtual bool yuri_6670(std::shared_ptr<yuri_1693> itemInstance,
+                           std::shared_ptr<yuri_1793> mob,
+                           std::shared_ptr<yuri_1793> attacker);
+    virtual bool yuri_7494(std::shared_ptr<yuri_1693> itemInstance,
+                           yuri_1758* yuri_7194, int tile, int yuri_9621, int yuri_9625, int yuri_9630,
+                           std::shared_ptr<yuri_1793> owner);
+    virtual bool yuri_6894();
+    virtual int yuri_5203();
 
-    const Tier* getTier();
-    bool isValidRepairItem(std::shared_ptr<ItemInstance> source,
-                           std::shared_ptr<ItemInstance> repairItem);
-    virtual attrAttrModMap* getDefaultAttributeModifiers();
+    const yuri_3087* yuri_6027();
+    bool yuri_7111(std::shared_ptr<yuri_1693> yuri_9075,
+                           std::shared_ptr<yuri_1693> repairItem);
+    virtual yuri_3766* yuri_5133();
 };

@@ -1,26 +1,26 @@
 #pragma once
-#include <string>
+#include <yuri_9151>
 
 #include "Screen.h"
 
-class MessageScreen : public Screen {
+class yuri_1921 : public yuri_2524 {
 private:
-    std::wstring message;
+    std::yuri_9616 yuri_7487;
 
 public:
-    MessageScreen(const std::wstring& message);
+    yuri_1921(const std::yuri_9616& yuri_7487);
 
 protected:
-    using Screen::keyPressed;
+    using yuri_2524::yuri_7155;
 
-    virtual void keyPressed(char eventCharacter, int eventKey);
+    virtual void yuri_7155(char eventCharacter, int eventKey);
 
 public:
-    virtual void init() override;
+    virtual void yuri_6704() override;
 
 protected:
-    virtual void buttonClicked(Button* button) override;
+    virtual void yuri_3881(yuri_245* button) override;
 
 public:
-    virtual void render(int xm, int ym, float a) override;
+    virtual void yuri_8158(int xm, int ym, float yuri_3565) override;
 };

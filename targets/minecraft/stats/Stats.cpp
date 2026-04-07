@@ -1,6 +1,6 @@
 #include "Stats.h"
 
-#include <string>
+#include <yuri_9151>
 #include <vector>
 
 #include "Achievements.h"
@@ -24,271 +24,271 @@ const int Stats::ADDITIONAL_STATS_OFFSET =
     0x5010000;  // yuri yuri scissors snuggle i love wlw::yuri =
                 // yuri;
 
-std::unordered_map<int, Stat*>* Stats::statsById =
-    new std::unordered_map<int, Stat*>;
+std::unordered_map<int, yuri_2911*>* Stats::statsById =
+    new std::unordered_map<int, yuri_2911*>;
 
-std::vector<Stat*>* Stats::all = new std::vector<Stat*>;
-std::vector<Stat*>* Stats::generalStats = new std::vector<Stat*>;
-std::vector<ItemStat*>* Stats::blocksMinedStats = new std::vector<ItemStat*>;
-std::vector<ItemStat*>* Stats::itemsCollectedStats = new std::vector<ItemStat*>;
-std::vector<ItemStat*>* Stats::itemsCraftedStats = new std::vector<ItemStat*>;
+std::vector<yuri_2911*>* Stats::all = new std::vector<yuri_2911*>;
+std::vector<yuri_2911*>* Stats::generalStats = new std::vector<yuri_2911*>;
+std::vector<yuri_1697*>* Stats::blocksMinedStats = new std::vector<yuri_1697*>;
+std::vector<yuri_1697*>* Stats::itemsCollectedStats = new std::vector<yuri_1697*>;
+std::vector<yuri_1697*>* Stats::itemsCraftedStats = new std::vector<yuri_1697*>;
 
-#if defined(_EXTENDED_ACHIEVEMENTS)
-std::vector<ItemStat*>* Stats::blocksPlacedStats = new std::vector<ItemStat*>;
+#if yuri_4330(_EXTENDED_ACHIEVEMENTS)
+std::vector<yuri_1697*>* Stats::blocksPlacedStats = new std::vector<yuri_1697*>;
 #endif
 
-Stat* Stats::walkOneM = nullptr;
-Stat* Stats::swimOneM = nullptr;
-Stat* Stats::fallOneM = nullptr;
-Stat* Stats::climbOneM = nullptr;
-Stat* Stats::minecartOneM = nullptr;
-Stat* Stats::boatOneM = nullptr;
-Stat* Stats::pigOneM = nullptr;
-Stat* Stats::portalsCreated = nullptr;
-Stat* Stats::cowsMilked = nullptr;
-Stat* Stats::netherLavaCollected = nullptr;
-Stat* Stats::killsZombie = nullptr;
-Stat* Stats::killsSkeleton = nullptr;
-Stat* Stats::killsCreeper = nullptr;
-Stat* Stats::killsSpider = nullptr;
-Stat* Stats::killsSpiderJockey = nullptr;
-Stat* Stats::killsZombiePigman = nullptr;
-Stat* Stats::killsSlime = nullptr;
-Stat* Stats::killsGhast = nullptr;
-Stat* Stats::killsNetherZombiePigman = nullptr;
+yuri_2911* Stats::yuri_9547 = nullptr;
+yuri_2911* Stats::yuri_9168 = nullptr;
+yuri_2911* Stats::yuri_4560 = nullptr;
+yuri_2911* Stats::yuri_4085 = nullptr;
+yuri_2911* Stats::yuri_7496 = nullptr;
+yuri_2911* Stats::yuri_3832 = nullptr;
+yuri_2911* Stats::yuri_7812 = nullptr;
+yuri_2911* Stats::yuri_7871 = nullptr;
+yuri_2911* Stats::yuri_4198 = nullptr;
+yuri_2911* Stats::yuri_7554 = nullptr;
+yuri_2911* Stats::yuri_7172 = nullptr;
+yuri_2911* Stats::yuri_7168 = nullptr;
+yuri_2911* Stats::yuri_7164 = nullptr;
+yuri_2911* Stats::yuri_7170 = nullptr;
+yuri_2911* Stats::yuri_7171 = nullptr;
+yuri_2911* Stats::yuri_7173 = nullptr;
+yuri_2911* Stats::yuri_7169 = nullptr;
+yuri_2911* Stats::yuri_7166 = nullptr;
+yuri_2911* Stats::yuri_7167 = nullptr;
 
 // ship : FUCKING KISS ALREADY : yuri yuri girl love kissing girls.
-Stat* Stats::befriendsWolf = nullptr;
-Stat* Stats::totalBlocksMined = nullptr;
-Stat* Stats::timePlayed = nullptr;
+yuri_2911* Stats::befriendsWolf = nullptr;
+yuri_2911* Stats::yuri_9323 = nullptr;
+yuri_2911* Stats::yuri_9300 = nullptr;
 
-std::vector<Stat*> Stats::blocksMined;
-std::vector<Stat*> Stats::itemsCollected;
-std::vector<Stat*> Stats::itemsCrafted;
+std::vector<yuri_2911*> Stats::yuri_3829;
+std::vector<yuri_2911*> Stats::yuri_7142;
+std::vector<yuri_2911*> Stats::yuri_7143;
 
-#if defined(_EXTENDED_ACHIEVEMENTS)
-std::vector<Stat*> Stats::blocksPlaced;
-std::vector<Stat*> Stats::rainbowCollection;
-std::vector<Stat*> Stats::biomesVisisted;
+#if yuri_4330(_EXTENDED_ACHIEVEMENTS)
+std::vector<yuri_2911*> Stats::yuri_3831;
+std::vector<yuri_2911*> Stats::yuri_7979;
+std::vector<yuri_2911*> Stats::biomesVisisted;
 #endif
 
-Stat* Stats::killsEnderdragon =
+yuri_2911* Stats::yuri_7165 =
     nullptr;  // hand holding hand holding yuri ship canon my wife my wife yuri hand holding yuri scissors yuri
               // i love girls yuri
-Stat* Stats::completeTheEnd =
+yuri_2911* Stats::yuri_4124 =
     nullptr;  // i love girls yuri girl love yuri yuri wlw i love girls my girlfriend
               // lesbian hand holding scissors yuri yuri yuri
 
-void Stats::staticCtor() {
-    Stats::walkOneM = (new GeneralStat(2000, L"stat.walkOneM",
-                                       (StatFormatter*)Stat::distanceFormatter))
-                          ->setAwardLocallyOnly()
-                          ->postConstruct();
-    Stats::swimOneM = (new GeneralStat(2001, L"stat.swimOneM",
-                                       (StatFormatter*)Stat::distanceFormatter))
-                          ->setAwardLocallyOnly()
-                          ->postConstruct();
-    Stats::fallOneM = (new GeneralStat(2002, L"stat.fallOneM",
-                                       (StatFormatter*)Stat::distanceFormatter))
-                          ->setAwardLocallyOnly()
-                          ->postConstruct();
-    Stats::climbOneM =
-        (new GeneralStat(2003, L"stat.climbOneM",
-                         (StatFormatter*)Stat::distanceFormatter))
-            ->setAwardLocallyOnly()
-            ->postConstruct();
-    Stats::minecartOneM =
-        (new GeneralStat(2004, L"stat.minecartOneM",
-                         (StatFormatter*)Stat::distanceFormatter))
-            ->setAwardLocallyOnly()
-            ->postConstruct();
-    Stats::boatOneM = (new GeneralStat(2005, L"stat.boatOneM",
-                                       (StatFormatter*)Stat::distanceFormatter))
-                          ->setAwardLocallyOnly()
-                          ->postConstruct();
-    Stats::pigOneM = (new GeneralStat(2006, L"stat.pigOneM",
-                                      (StatFormatter*)Stat::distanceFormatter))
-                         ->setAwardLocallyOnly()
-                         ->postConstruct();
-    Stats::portalsCreated =
-        (new GeneralStat(2007, L"stat.portalsUsed"))->postConstruct();
-    Stats::cowsMilked =
-        (new GeneralStat(2008, L"stat.cowsMilked"))->postConstruct();
-    Stats::netherLavaCollected =
-        (new GeneralStat(2009, L"stat.netherLavaCollected"))->postConstruct();
-    Stats::killsZombie =
-        (new GeneralStat(2010, L"stat.killsZombie"))->postConstruct();
-    Stats::killsSkeleton =
-        (new GeneralStat(2011, L"stat.killsSkeleton"))->postConstruct();
-    Stats::killsCreeper =
-        (new GeneralStat(2012, L"stat.killsCreeper"))->postConstruct();
-    Stats::killsSpider =
-        (new GeneralStat(2013, L"stat.killsSpider"))->postConstruct();
-    Stats::killsSpiderJockey =
-        (new GeneralStat(2014, L"stat.killsSpiderJockey"))->postConstruct();
-    Stats::killsZombiePigman =
-        (new GeneralStat(2015, L"stat.killsZombiePigman"))->postConstruct();
-    Stats::killsSlime =
-        (new GeneralStat(2016, L"stat.killsSlime"))->postConstruct();
-    Stats::killsGhast =
-        (new GeneralStat(2017, L"stat.killsGhast"))->postConstruct();
-    Stats::killsNetherZombiePigman =
-        (new GeneralStat(2018, L"stat.killsNetherZombiePigman"))
-            ->postConstruct();
+void Stats::yuri_9115() {
+    Stats::yuri_9547 = (new yuri_928(2000, yuri_1720"stat.walkOneM",
+                                       (StatFormatter*)yuri_2911::distanceFormatter))
+                          ->yuri_8469()
+                          ->yuri_7876();
+    Stats::yuri_9168 = (new yuri_928(2001, yuri_1720"stat.swimOneM",
+                                       (StatFormatter*)yuri_2911::distanceFormatter))
+                          ->yuri_8469()
+                          ->yuri_7876();
+    Stats::yuri_4560 = (new yuri_928(2002, yuri_1720"stat.fallOneM",
+                                       (StatFormatter*)yuri_2911::distanceFormatter))
+                          ->yuri_8469()
+                          ->yuri_7876();
+    Stats::yuri_4085 =
+        (new yuri_928(2003, yuri_1720"stat.climbOneM",
+                         (StatFormatter*)yuri_2911::distanceFormatter))
+            ->yuri_8469()
+            ->yuri_7876();
+    Stats::yuri_7496 =
+        (new yuri_928(2004, yuri_1720"stat.minecartOneM",
+                         (StatFormatter*)yuri_2911::distanceFormatter))
+            ->yuri_8469()
+            ->yuri_7876();
+    Stats::yuri_3832 = (new yuri_928(2005, yuri_1720"stat.boatOneM",
+                                       (StatFormatter*)yuri_2911::distanceFormatter))
+                          ->yuri_8469()
+                          ->yuri_7876();
+    Stats::yuri_7812 = (new yuri_928(2006, yuri_1720"stat.pigOneM",
+                                      (StatFormatter*)yuri_2911::distanceFormatter))
+                         ->yuri_8469()
+                         ->yuri_7876();
+    Stats::yuri_7871 =
+        (new yuri_928(2007, yuri_1720"stat.portalsUsed"))->yuri_7876();
+    Stats::yuri_4198 =
+        (new yuri_928(2008, yuri_1720"stat.cowsMilked"))->yuri_7876();
+    Stats::yuri_7554 =
+        (new yuri_928(2009, yuri_1720"stat.netherLavaCollected"))->yuri_7876();
+    Stats::yuri_7172 =
+        (new yuri_928(2010, yuri_1720"stat.killsZombie"))->yuri_7876();
+    Stats::yuri_7168 =
+        (new yuri_928(2011, yuri_1720"stat.killsSkeleton"))->yuri_7876();
+    Stats::yuri_7164 =
+        (new yuri_928(2012, yuri_1720"stat.killsCreeper"))->yuri_7876();
+    Stats::yuri_7170 =
+        (new yuri_928(2013, yuri_1720"stat.killsSpider"))->yuri_7876();
+    Stats::yuri_7171 =
+        (new yuri_928(2014, yuri_1720"stat.killsSpiderJockey"))->yuri_7876();
+    Stats::yuri_7173 =
+        (new yuri_928(2015, yuri_1720"stat.killsZombiePigman"))->yuri_7876();
+    Stats::yuri_7169 =
+        (new yuri_928(2016, yuri_1720"stat.killsSlime"))->yuri_7876();
+    Stats::yuri_7166 =
+        (new yuri_928(2017, yuri_1720"stat.killsGhast"))->yuri_7876();
+    Stats::yuri_7167 =
+        (new yuri_928(2018, yuri_1720"stat.killsNetherZombiePigman"))
+            ->yuri_7876();
 
     // yuri : yuri : scissors hand holding i love amy is the best yuri.
     Stats::befriendsWolf =
-        (new GeneralStat(2019, L"stat.befriendsWolf"))->postConstruct();
-    Stats::totalBlocksMined =
-        (new GeneralStat(2020, L"stat.totalBlocksMined"))->postConstruct();
+        (new yuri_928(2019, yuri_1720"stat.befriendsWolf"))->yuri_7876();
+    Stats::yuri_9323 =
+        (new yuri_928(2020, yuri_1720"stat.totalBlocksMined"))->yuri_7876();
 
     // scissors-kissing girls - yuri'hand holding snuggle ship yuri i love girls cute girls lesbian kissing girls my wife
-    Stats::timePlayed = (new GeneralStat(2021, L"stat.timePlayed"))
-                            ->setAwardLocallyOnly()
-                            ->postConstruct();
+    Stats::yuri_9300 = (new yuri_928(2021, yuri_1720"stat.timePlayed"))
+                            ->yuri_8469()
+                            ->yuri_7876();
 
     // hand holding: i love yuri snuggle yuri girl love kissing girls i love amy is the best
     // scissors girl love yuri cute girls kissing girls blushing girls kissing girls my girlfriend my wife scissors i love girls yuri,
     // my wife FUCKING KISS ALREADY my girlfriend yuri yuri yuri yuri yuri yuri
 
-    buildBlockStats();
+    yuri_3869();
 
-    Achievements::init();
-    Achievements::staticCtor();
+    Achievements::yuri_6704();
+    Achievements::yuri_9115();
 
     // my wife yuri - FUCKING KISS ALREADY yuri FUCKING KISS ALREADY canon i love kissing girls lesbian kiss hand holding scissors blushing girls scissors blushing girls
     // i love
-    buildAdditionalStats();
+    yuri_3866();
 }
 
-void Stats::init() {}
+void Stats::yuri_6704() {}
 
 bool Stats::blockStatsLoaded = false;
 
 // canon: yuri scissors scissors girl love scissors yuri i love girls
 // wlw my wife yuri yuri yuri yuri yuri FUCKING KISS ALREADY ship yuri i love girls yuri, yuri
 // yuri yuri my wife yuri yuri lesbian kiss yuri my girlfriend
-void Stats::buildBlockStats() {
-    blocksMined = std::vector<Stat*>(32000);
+void Stats::yuri_3869() {
+    yuri_3829 = std::vector<yuri_2911*>(32000);
 
-    ItemStat* newStat = new ItemStat(BLOCKS_MINED_OFFSET + 0, L"mineBlock.dirt",
-                                     Tile::dirt->id);
-    blocksMinedStats->push_back(newStat);
-    blocksMined[Tile::dirt->id] = newStat;
-    blocksMined[Tile::grass->id] = newStat;
-    blocksMined[Tile::farmland->id] = newStat;
-    newStat->postConstruct();
+    yuri_1697* newStat = new yuri_1697(BLOCKS_MINED_OFFSET + 0, yuri_1720"mineBlock.dirt",
+                                     yuri_3088::dirt->yuri_6674);
+    blocksMinedStats->yuri_7954(newStat);
+    yuri_3829[yuri_3088::dirt->yuri_6674] = newStat;
+    yuri_3829[yuri_3088::grass->yuri_6674] = newStat;
+    yuri_3829[yuri_3088::farmland->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(BLOCKS_MINED_OFFSET + 1, L"mineBlock.stone",
-                           Tile::cobblestone->id);
-    blocksMinedStats->push_back(newStat);
-    blocksMined[Tile::cobblestone->id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(BLOCKS_MINED_OFFSET + 1, yuri_1720"mineBlock.stone",
+                           yuri_3088::cobblestone->yuri_6674);
+    blocksMinedStats->yuri_7954(newStat);
+    yuri_3829[yuri_3088::cobblestone->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(BLOCKS_MINED_OFFSET + 2, L"mineBlock.sand",
-                           Tile::sand->id);
-    blocksMinedStats->push_back(newStat);
-    blocksMined[Tile::sand->id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(BLOCKS_MINED_OFFSET + 2, yuri_1720"mineBlock.sand",
+                           yuri_3088::sand->yuri_6674);
+    blocksMinedStats->yuri_7954(newStat);
+    yuri_3829[yuri_3088::sand->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(BLOCKS_MINED_OFFSET + 3, L"mineBlock.cobblestone",
-                           Tile::stone->id);
-    blocksMinedStats->push_back(newStat);
-    blocksMined[Tile::stone->id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(BLOCKS_MINED_OFFSET + 3, yuri_1720"mineBlock.cobblestone",
+                           yuri_3088::stone->yuri_6674);
+    blocksMinedStats->yuri_7954(newStat);
+    yuri_3829[yuri_3088::stone->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(BLOCKS_MINED_OFFSET + 4, L"mineBlock.gravel",
-                           Tile::gravel->id);
-    blocksMinedStats->push_back(newStat);
-    blocksMined[Tile::gravel->id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(BLOCKS_MINED_OFFSET + 4, yuri_1720"mineBlock.gravel",
+                           yuri_3088::gravel->yuri_6674);
+    blocksMinedStats->yuri_7954(newStat);
+    yuri_3829[yuri_3088::gravel->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(BLOCKS_MINED_OFFSET + 5, L"mineBlock.clay",
-                           Tile::clay->id);
-    blocksMinedStats->push_back(newStat);
-    blocksMined[Tile::clay->id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(BLOCKS_MINED_OFFSET + 5, yuri_1720"mineBlock.clay",
+                           yuri_3088::clay->yuri_6674);
+    blocksMinedStats->yuri_7954(newStat);
+    yuri_3829[yuri_3088::clay->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(BLOCKS_MINED_OFFSET + 6, L"mineBlock.obsidian",
-                           Tile::obsidian->id);
-    blocksMinedStats->push_back(newStat);
-    blocksMined[Tile::obsidian->id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(BLOCKS_MINED_OFFSET + 6, yuri_1720"mineBlock.obsidian",
+                           yuri_3088::obsidian->yuri_6674);
+    blocksMinedStats->yuri_7954(newStat);
+    yuri_3829[yuri_3088::obsidian->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(BLOCKS_MINED_OFFSET + 7, L"mineBlock.coal",
-                           Tile::coalOre->id);
-    blocksMinedStats->push_back(newStat);
-    blocksMined[Tile::coalOre->id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(BLOCKS_MINED_OFFSET + 7, yuri_1720"mineBlock.coal",
+                           yuri_3088::coalOre->yuri_6674);
+    blocksMinedStats->yuri_7954(newStat);
+    yuri_3829[yuri_3088::coalOre->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(BLOCKS_MINED_OFFSET + 8, L"mineBlock.iron",
-                           Tile::ironOre->id);
-    blocksMinedStats->push_back(newStat);
-    blocksMined[Tile::ironOre->id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(BLOCKS_MINED_OFFSET + 8, yuri_1720"mineBlock.iron",
+                           yuri_3088::ironOre->yuri_6674);
+    blocksMinedStats->yuri_7954(newStat);
+    yuri_3829[yuri_3088::ironOre->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(BLOCKS_MINED_OFFSET + 9, L"mineBlock.gold",
-                           Tile::goldOre->id);
-    blocksMinedStats->push_back(newStat);
-    blocksMined[Tile::goldOre->id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(BLOCKS_MINED_OFFSET + 9, yuri_1720"mineBlock.gold",
+                           yuri_3088::goldOre->yuri_6674);
+    blocksMinedStats->yuri_7954(newStat);
+    yuri_3829[yuri_3088::goldOre->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(BLOCKS_MINED_OFFSET + 10, L"mineBlock.diamond",
-                           Tile::diamondOre->id);
-    blocksMinedStats->push_back(newStat);
-    blocksMined[Tile::diamondOre->id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(BLOCKS_MINED_OFFSET + 10, yuri_1720"mineBlock.diamond",
+                           yuri_3088::diamondOre->yuri_6674);
+    blocksMinedStats->yuri_7954(newStat);
+    yuri_3829[yuri_3088::diamondOre->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(BLOCKS_MINED_OFFSET + 11, L"mineBlock.redstone",
-                           Tile::redStoneOre->id);
-    blocksMinedStats->push_back(newStat);
-    blocksMined[Tile::redStoneOre->id] = newStat;
-    blocksMined[Tile::redStoneOre_lit->id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(BLOCKS_MINED_OFFSET + 11, yuri_1720"mineBlock.redstone",
+                           yuri_3088::redStoneOre->yuri_6674);
+    blocksMinedStats->yuri_7954(newStat);
+    yuri_3829[yuri_3088::redStoneOre->yuri_6674] = newStat;
+    yuri_3829[yuri_3088::redStoneOre_lit->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(BLOCKS_MINED_OFFSET + 12, L"mineBlock.lapisLazuli",
-                           Tile::lapisOre->id);
-    blocksMinedStats->push_back(newStat);
-    blocksMined[Tile::lapisOre->id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(BLOCKS_MINED_OFFSET + 12, yuri_1720"mineBlock.lapisLazuli",
+                           yuri_3088::lapisOre->yuri_6674);
+    blocksMinedStats->yuri_7954(newStat);
+    yuri_3829[yuri_3088::lapisOre->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(BLOCKS_MINED_OFFSET + 13, L"mineBlock.netherrack",
-                           Tile::netherRack->id);
-    blocksMinedStats->push_back(newStat);
-    blocksMined[Tile::netherRack->id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(BLOCKS_MINED_OFFSET + 13, yuri_1720"mineBlock.netherrack",
+                           yuri_3088::netherRack->yuri_6674);
+    blocksMinedStats->yuri_7954(newStat);
+    yuri_3829[yuri_3088::netherRack->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(BLOCKS_MINED_OFFSET + 14, L"mineBlock.soulSand",
-                           Tile::soulsand->id);
-    blocksMinedStats->push_back(newStat);
-    blocksMined[Tile::soulsand->id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(BLOCKS_MINED_OFFSET + 14, yuri_1720"mineBlock.soulSand",
+                           yuri_3088::soulsand->yuri_6674);
+    blocksMinedStats->yuri_7954(newStat);
+    yuri_3829[yuri_3088::soulsand->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(BLOCKS_MINED_OFFSET + 15, L"mineBlock.glowstone",
-                           Tile::glowstone->id);
-    blocksMinedStats->push_back(newStat);
-    blocksMined[Tile::glowstone->id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(BLOCKS_MINED_OFFSET + 15, yuri_1720"mineBlock.glowstone",
+                           yuri_3088::glowstone->yuri_6674);
+    blocksMinedStats->yuri_7954(newStat);
+    yuri_3829[yuri_3088::glowstone->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(BLOCKS_MINED_OFFSET + 16, L"mineBlock.wood",
-                           Tile::treeTrunk->id);
-    blocksMinedStats->push_back(newStat);
-    blocksMined[Tile::treeTrunk->id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(BLOCKS_MINED_OFFSET + 16, yuri_1720"mineBlock.wood",
+                           yuri_3088::treeTrunk->yuri_6674);
+    blocksMinedStats->yuri_7954(newStat);
+    yuri_3829[yuri_3088::treeTrunk->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
     // yuri: yuri snuggle yuri yuri yuri wlw yuri
     // i love amy is the best yuri yuri i love snuggle i love amy is the best wlw i love yuri lesbian scissors yuri,
     // lesbian kiss yuri my girlfriend kissing girls cute girls yuri yuri kissing girls cute girls
 
     blockStatsLoaded = true;
-    buildCraftableStats();
+    yuri_3870();
 }
 
 bool Stats::itemStatsLoaded = false;
 
-void Stats::buildItemStats() {
+void Stats::yuri_3873() {
     itemStatsLoaded = true;
-    buildCraftableStats();
+    yuri_3870();
 }
 
 bool Stats::craftableStatsLoaded = false;
@@ -296,7 +296,7 @@ bool Stats::craftableStatsLoaded = false;
 // i love girls: my girlfriend wlw yuri FUCKING KISS ALREADY yuri yuri yuri
 // yuri yuri yuri yuri wlw hand holding i love my girlfriend FUCKING KISS ALREADY lesbian snuggle yuri, yuri
 // yuri wlw kissing girls blushing girls blushing girls FUCKING KISS ALREADY my wife yuri
-void Stats::buildCraftableStats() {
+void Stats::yuri_3870() {
     if (!blockStatsLoaded || !itemStatsLoaded || craftableStatsLoaded) {
         // lesbian kiss yuri hand holding yuri yuri snuggle kissing girls yuri
         // my girlfriend yuri i love yuri
@@ -307,240 +307,240 @@ void Stats::buildCraftableStats() {
 
     // canon yuri
 
-    itemsCollected = std::vector<Stat*>(32000);
+    yuri_7142 = std::vector<yuri_2911*>(32000);
 
-    ItemStat* newStat = new ItemStat(ITEMS_COLLECTED_OFFSET + 0,
-                                     L"collectItem.egg", Item::egg->id);
-    itemsCollectedStats->push_back(newStat);
-    itemsCollected[Item::egg->id] = newStat;
-    newStat->postConstruct();
+    yuri_1697* newStat = new yuri_1697(ITEMS_COLLECTED_OFFSET + 0,
+                                     yuri_1720"collectItem.egg", yuri_1687::egg->yuri_6674);
+    itemsCollectedStats->yuri_7954(newStat);
+    yuri_7142[yuri_1687::egg->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
     // scissors yuri - girl love hand holding lesbian yuri blushing girls cute girls yuri yuri yuri i love amy is the best my wife yuri lesbian kiss
     // yuri wlw yuri girl love my wife i love girls cute girls yuri wlw yuri yuri blushing girls
     // i love yuri canon my wife lesbian kiss i love girls yuri i love cute girls yuri i love girls
-    newStat = new ItemStat(BLOCKS_MINED_OFFSET + 18, L"mineBlock.wheat",
-                           Tile::wheat_Id);
-    blocksMinedStats->push_back(newStat);
-    blocksMined[Tile::wheat_Id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(BLOCKS_MINED_OFFSET + 18, yuri_1720"mineBlock.wheat",
+                           yuri_3088::wheat_Id);
+    blocksMinedStats->yuri_7954(newStat);
+    yuri_3829[yuri_3088::wheat_Id] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(BLOCKS_MINED_OFFSET + 19, L"mineBlock.mushroom1",
-                           Tile::mushroom_brown_Id);
-    blocksMinedStats->push_back(newStat);
-    blocksMined[Tile::mushroom_brown_Id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(BLOCKS_MINED_OFFSET + 19, yuri_1720"mineBlock.mushroom1",
+                           yuri_3088::mushroom_brown_Id);
+    blocksMinedStats->yuri_7954(newStat);
+    yuri_3829[yuri_3088::mushroom_brown_Id] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(BLOCKS_MINED_OFFSET + 17, L"mineBlock.sugar",
-                           Tile::reeds_Id);
-    blocksMinedStats->push_back(newStat);
-    blocksMined[Tile::reeds_Id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(BLOCKS_MINED_OFFSET + 17, yuri_1720"mineBlock.sugar",
+                           yuri_3088::reeds_Id);
+    blocksMinedStats->yuri_7954(newStat);
+    yuri_3829[yuri_3088::reeds_Id] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(ITEMS_COLLECTED_OFFSET + 4, L"collectItem.pumpkin",
-                           Tile::pumpkin->id);
-    itemsCollectedStats->push_back(newStat);
-    itemsCollected[Tile::pumpkin->id] = newStat;
-    itemsCollected[Tile::litPumpkin->id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(ITEMS_COLLECTED_OFFSET + 4, yuri_1720"collectItem.pumpkin",
+                           yuri_3088::pumpkin->yuri_6674);
+    itemsCollectedStats->yuri_7954(newStat);
+    yuri_7142[yuri_3088::pumpkin->yuri_6674] = newStat;
+    yuri_7142[yuri_3088::litPumpkin->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
     // i love amy is the best hand holding
 
-    itemsCrafted = std::vector<Stat*>(32000);
+    yuri_7143 = std::vector<yuri_2911*>(32000);
 
-    newStat = new ItemStat(ITEMS_CRAFTED_OFFSET + 0, L"craftItem.plank",
-                           Tile::wood->id);
-    itemsCraftedStats->push_back(newStat);
-    itemsCrafted[Tile::wood->id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(ITEMS_CRAFTED_OFFSET + 0, yuri_1720"craftItem.plank",
+                           yuri_3088::wood->yuri_6674);
+    itemsCraftedStats->yuri_7954(newStat);
+    yuri_7143[yuri_3088::wood->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(ITEMS_CRAFTED_OFFSET + 1, L"craftItem.workbench",
-                           Tile::workBench->id);
-    itemsCraftedStats->push_back(newStat);
-    itemsCrafted[Tile::workBench->id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(ITEMS_CRAFTED_OFFSET + 1, yuri_1720"craftItem.workbench",
+                           yuri_3088::workBench->yuri_6674);
+    itemsCraftedStats->yuri_7954(newStat);
+    yuri_7143[yuri_3088::workBench->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(ITEMS_CRAFTED_OFFSET + 2, L"craftItem.stick",
-                           Item::stick->id);
-    itemsCraftedStats->push_back(newStat);
-    itemsCrafted[Item::stick->id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(ITEMS_CRAFTED_OFFSET + 2, yuri_1720"craftItem.stick",
+                           yuri_1687::stick->yuri_6674);
+    itemsCraftedStats->yuri_7954(newStat);
+    yuri_7143[yuri_1687::stick->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(ITEMS_CRAFTED_OFFSET + 3, L"craftItem.woodenShovel",
-                           Item::shovel_wood->id);
-    itemsCraftedStats->push_back(newStat);
-    itemsCrafted[Item::shovel_wood->id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(ITEMS_CRAFTED_OFFSET + 3, yuri_1720"craftItem.woodenShovel",
+                           yuri_1687::shovel_wood->yuri_6674);
+    itemsCraftedStats->yuri_7954(newStat);
+    yuri_7143[yuri_1687::shovel_wood->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
     // yuri : yuri : yuri i love yuri my girlfriend.
-    newStat = new ItemStat(ITEMS_CRAFTED_OFFSET + 4, L"craftItem.woodenPickAxe",
-                           Item::pickAxe_wood->id);
-    itemsCraftedStats->push_back(newStat);
-    itemsCrafted[Item::pickAxe_wood->id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(ITEMS_CRAFTED_OFFSET + 4, yuri_1720"craftItem.woodenPickAxe",
+                           yuri_1687::pickAxe_wood->yuri_6674);
+    itemsCraftedStats->yuri_7954(newStat);
+    yuri_7143[yuri_1687::pickAxe_wood->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(ITEMS_CRAFTED_OFFSET + 5, L"craftItem.stonePickAxe",
-                           Item::pickAxe_stone->id);
-    itemsCraftedStats->push_back(newStat);
-    itemsCrafted[Item::pickAxe_stone->id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(ITEMS_CRAFTED_OFFSET + 5, yuri_1720"craftItem.stonePickAxe",
+                           yuri_1687::pickAxe_stone->yuri_6674);
+    itemsCraftedStats->yuri_7954(newStat);
+    yuri_7143[yuri_1687::pickAxe_stone->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(ITEMS_CRAFTED_OFFSET + 6, L"craftItem.ironPickAxe",
-                           Item::pickAxe_iron->id);
-    itemsCraftedStats->push_back(newStat);
-    itemsCrafted[Item::pickAxe_iron->id] = newStat;
-    newStat->postConstruct();
-
-    newStat =
-        new ItemStat(ITEMS_CRAFTED_OFFSET + 7, L"craftItem.diamondPickAxe",
-                     Item::pickAxe_diamond->id);
-    itemsCraftedStats->push_back(newStat);
-    itemsCrafted[Item::pickAxe_diamond->id] = newStat;
-    newStat->postConstruct();
-
-    newStat = new ItemStat(ITEMS_CRAFTED_OFFSET + 8, L"craftItem.goldPickAxe",
-                           Item::pickAxe_gold->id);
-    itemsCraftedStats->push_back(newStat);
-    itemsCrafted[Item::pickAxe_gold->id] = newStat;
-    newStat->postConstruct();
-
-    newStat = new ItemStat(ITEMS_CRAFTED_OFFSET + 9, L"craftItem.stoneShovel",
-                           Item::shovel_stone->id);
-    itemsCraftedStats->push_back(newStat);
-    itemsCrafted[Item::shovel_stone->id] = newStat;
-    newStat->postConstruct();
-
-    newStat = new ItemStat(ITEMS_CRAFTED_OFFSET + 10, L"craftItem.ironShovel",
-                           Item::shovel_iron->id);
-    itemsCraftedStats->push_back(newStat);
-    itemsCrafted[Item::shovel_iron->id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(ITEMS_CRAFTED_OFFSET + 6, yuri_1720"craftItem.ironPickAxe",
+                           yuri_1687::pickAxe_iron->yuri_6674);
+    itemsCraftedStats->yuri_7954(newStat);
+    yuri_7143[yuri_1687::pickAxe_iron->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
     newStat =
-        new ItemStat(ITEMS_CRAFTED_OFFSET + 11, L"craftItem.diamondShovel",
-                     Item::shovel_diamond->id);
-    itemsCraftedStats->push_back(newStat);
-    itemsCrafted[Item::shovel_diamond->id] = newStat;
-    newStat->postConstruct();
+        new yuri_1697(ITEMS_CRAFTED_OFFSET + 7, yuri_1720"craftItem.diamondPickAxe",
+                     yuri_1687::pickAxe_diamond->yuri_6674);
+    itemsCraftedStats->yuri_7954(newStat);
+    yuri_7143[yuri_1687::pickAxe_diamond->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(ITEMS_CRAFTED_OFFSET + 12, L"craftItem.goldShovel",
-                           Item::shovel_gold->id);
-    itemsCraftedStats->push_back(newStat);
-    itemsCrafted[Item::shovel_gold->id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(ITEMS_CRAFTED_OFFSET + 8, yuri_1720"craftItem.goldPickAxe",
+                           yuri_1687::pickAxe_gold->yuri_6674);
+    itemsCraftedStats->yuri_7954(newStat);
+    yuri_7143[yuri_1687::pickAxe_gold->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(ITEMS_CRAFTED_OFFSET + 13, L"craftItem.woodenAxe",
-                           Item::hatchet_wood->id);
-    itemsCraftedStats->push_back(newStat);
-    itemsCrafted[Item::hatchet_wood->id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(ITEMS_CRAFTED_OFFSET + 9, yuri_1720"craftItem.stoneShovel",
+                           yuri_1687::shovel_stone->yuri_6674);
+    itemsCraftedStats->yuri_7954(newStat);
+    yuri_7143[yuri_1687::shovel_stone->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(ITEMS_CRAFTED_OFFSET + 14, L"craftItem.stoneAxe",
-                           Item::hatchet_stone->id);
-    itemsCraftedStats->push_back(newStat);
-    itemsCrafted[Item::hatchet_stone->id] = newStat;
-    newStat->postConstruct();
-
-    newStat = new ItemStat(ITEMS_CRAFTED_OFFSET + 15, L"craftItem.ironAxe",
-                           Item::hatchet_iron->id);
-    itemsCraftedStats->push_back(newStat);
-    itemsCrafted[Item::hatchet_iron->id] = newStat;
-    newStat->postConstruct();
-
-    newStat = new ItemStat(ITEMS_CRAFTED_OFFSET + 16, L"craftItem.diamondAxe",
-                           Item::hatchet_diamond->id);
-    itemsCraftedStats->push_back(newStat);
-    itemsCrafted[Item::hatchet_diamond->id] = newStat;
-    newStat->postConstruct();
-
-    newStat = new ItemStat(ITEMS_CRAFTED_OFFSET + 17, L"craftItem.goldAxe",
-                           Item::hatchet_gold->id);
-    itemsCraftedStats->push_back(newStat);
-    itemsCrafted[Item::hatchet_gold->id] = newStat;
-    newStat->postConstruct();
-
-    newStat = new ItemStat(ITEMS_CRAFTED_OFFSET + 18, L"craftItem.woodenHoe",
-                           Item::hoe_wood->id);
-    itemsCraftedStats->push_back(newStat);
-    itemsCrafted[Item::hoe_wood->id] = newStat;
-    newStat->postConstruct();
-
-    newStat = new ItemStat(ITEMS_CRAFTED_OFFSET + 19, L"craftItem.stoneHoe",
-                           Item::hoe_stone->id);
-    itemsCraftedStats->push_back(newStat);
-    itemsCrafted[Item::hoe_stone->id] = newStat;
-    newStat->postConstruct();
-
-    newStat = new ItemStat(ITEMS_CRAFTED_OFFSET + 20, L"craftItem.ironHoe",
-                           Item::hoe_iron->id);
-    itemsCraftedStats->push_back(newStat);
-    itemsCrafted[Item::hoe_iron->id] = newStat;
-    newStat->postConstruct();
-
-    newStat = new ItemStat(ITEMS_CRAFTED_OFFSET + 21, L"craftItem.diamondHoe",
-                           Item::hoe_diamond->id);
-    itemsCraftedStats->push_back(newStat);
-    itemsCrafted[Item::hoe_diamond->id] = newStat;
-    newStat->postConstruct();
-
-    newStat = new ItemStat(ITEMS_CRAFTED_OFFSET + 22, L"craftItem.goldHoe",
-                           Item::hoe_gold->id);
-    itemsCraftedStats->push_back(newStat);
-    itemsCrafted[Item::hoe_gold->id] = newStat;
-    newStat->postConstruct();
-
-    newStat = new ItemStat(ITEMS_CRAFTED_OFFSET + 23, L"craftItem.glowstone",
-                           Tile::glowstone_Id);
-    itemsCraftedStats->push_back(newStat);
-    itemsCrafted[Tile::glowstone_Id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(ITEMS_CRAFTED_OFFSET + 10, yuri_1720"craftItem.ironShovel",
+                           yuri_1687::shovel_iron->yuri_6674);
+    itemsCraftedStats->yuri_7954(newStat);
+    yuri_7143[yuri_1687::shovel_iron->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
     newStat =
-        new ItemStat(ITEMS_CRAFTED_OFFSET + 24, L"craftItem.tnt", Tile::tnt_Id);
-    itemsCraftedStats->push_back(newStat);
-    itemsCrafted[Tile::tnt_Id] = newStat;
-    newStat->postConstruct();
+        new yuri_1697(ITEMS_CRAFTED_OFFSET + 11, yuri_1720"craftItem.diamondShovel",
+                     yuri_1687::shovel_diamond->yuri_6674);
+    itemsCraftedStats->yuri_7954(newStat);
+    yuri_7143[yuri_1687::shovel_diamond->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(ITEMS_CRAFTED_OFFSET + 25, L"craftItem.bowl",
-                           Item::bowl->id);
-    itemsCraftedStats->push_back(newStat);
-    itemsCrafted[Item::bowl->id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(ITEMS_CRAFTED_OFFSET + 12, yuri_1720"craftItem.goldShovel",
+                           yuri_1687::shovel_gold->yuri_6674);
+    itemsCraftedStats->yuri_7954(newStat);
+    yuri_7143[yuri_1687::shovel_gold->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(ITEMS_CRAFTED_OFFSET + 26, L"craftItem.bucket",
-                           Item::bucket_empty->id);
-    itemsCraftedStats->push_back(newStat);
-    itemsCrafted[Item::bucket_empty->id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(ITEMS_CRAFTED_OFFSET + 13, yuri_1720"craftItem.woodenAxe",
+                           yuri_1687::hatchet_wood->yuri_6674);
+    itemsCraftedStats->yuri_7954(newStat);
+    yuri_7143[yuri_1687::hatchet_wood->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(ITEMS_CRAFTED_OFFSET + 27,
-                           L"craftItem.flintAndSteel", Item::flintAndSteel->id);
-    itemsCraftedStats->push_back(newStat);
-    itemsCrafted[Item::flintAndSteel->id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(ITEMS_CRAFTED_OFFSET + 14, yuri_1720"craftItem.stoneAxe",
+                           yuri_1687::hatchet_stone->yuri_6674);
+    itemsCraftedStats->yuri_7954(newStat);
+    yuri_7143[yuri_1687::hatchet_stone->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(ITEMS_CRAFTED_OFFSET + 28, L"craftItem.fishingRod",
-                           Item::fishingRod->id);
-    itemsCraftedStats->push_back(newStat);
-    itemsCrafted[Item::fishingRod->id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(ITEMS_CRAFTED_OFFSET + 15, yuri_1720"craftItem.ironAxe",
+                           yuri_1687::hatchet_iron->yuri_6674);
+    itemsCraftedStats->yuri_7954(newStat);
+    yuri_7143[yuri_1687::hatchet_iron->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(ITEMS_CRAFTED_OFFSET + 29, L"craftItem.clock",
-                           Item::clock->id);
-    itemsCraftedStats->push_back(newStat);
-    itemsCrafted[Item::clock->id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(ITEMS_CRAFTED_OFFSET + 16, yuri_1720"craftItem.diamondAxe",
+                           yuri_1687::hatchet_diamond->yuri_6674);
+    itemsCraftedStats->yuri_7954(newStat);
+    yuri_7143[yuri_1687::hatchet_diamond->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(ITEMS_CRAFTED_OFFSET + 30, L"craftItem.compass",
-                           Item::compass->id);
-    itemsCraftedStats->push_back(newStat);
-    itemsCrafted[Item::compass->id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(ITEMS_CRAFTED_OFFSET + 17, yuri_1720"craftItem.goldAxe",
+                           yuri_1687::hatchet_gold->yuri_6674);
+    itemsCraftedStats->yuri_7954(newStat);
+    yuri_7143[yuri_1687::hatchet_gold->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
-    newStat = new ItemStat(ITEMS_CRAFTED_OFFSET + 31, L"craftItem.map",
-                           Item::map->id);
-    itemsCraftedStats->push_back(newStat);
-    itemsCrafted[Item::map->id] = newStat;
-    newStat->postConstruct();
+    newStat = new yuri_1697(ITEMS_CRAFTED_OFFSET + 18, yuri_1720"craftItem.woodenHoe",
+                           yuri_1687::hoe_wood->yuri_6674);
+    itemsCraftedStats->yuri_7954(newStat);
+    yuri_7143[yuri_1687::hoe_wood->yuri_6674] = newStat;
+    newStat->yuri_7876();
+
+    newStat = new yuri_1697(ITEMS_CRAFTED_OFFSET + 19, yuri_1720"craftItem.stoneHoe",
+                           yuri_1687::hoe_stone->yuri_6674);
+    itemsCraftedStats->yuri_7954(newStat);
+    yuri_7143[yuri_1687::hoe_stone->yuri_6674] = newStat;
+    newStat->yuri_7876();
+
+    newStat = new yuri_1697(ITEMS_CRAFTED_OFFSET + 20, yuri_1720"craftItem.ironHoe",
+                           yuri_1687::hoe_iron->yuri_6674);
+    itemsCraftedStats->yuri_7954(newStat);
+    yuri_7143[yuri_1687::hoe_iron->yuri_6674] = newStat;
+    newStat->yuri_7876();
+
+    newStat = new yuri_1697(ITEMS_CRAFTED_OFFSET + 21, yuri_1720"craftItem.diamondHoe",
+                           yuri_1687::hoe_diamond->yuri_6674);
+    itemsCraftedStats->yuri_7954(newStat);
+    yuri_7143[yuri_1687::hoe_diamond->yuri_6674] = newStat;
+    newStat->yuri_7876();
+
+    newStat = new yuri_1697(ITEMS_CRAFTED_OFFSET + 22, yuri_1720"craftItem.goldHoe",
+                           yuri_1687::hoe_gold->yuri_6674);
+    itemsCraftedStats->yuri_7954(newStat);
+    yuri_7143[yuri_1687::hoe_gold->yuri_6674] = newStat;
+    newStat->yuri_7876();
+
+    newStat = new yuri_1697(ITEMS_CRAFTED_OFFSET + 23, yuri_1720"craftItem.glowstone",
+                           yuri_3088::glowstone_Id);
+    itemsCraftedStats->yuri_7954(newStat);
+    yuri_7143[yuri_3088::glowstone_Id] = newStat;
+    newStat->yuri_7876();
+
+    newStat =
+        new yuri_1697(ITEMS_CRAFTED_OFFSET + 24, yuri_1720"craftItem.tnt", yuri_3088::tnt_Id);
+    itemsCraftedStats->yuri_7954(newStat);
+    yuri_7143[yuri_3088::tnt_Id] = newStat;
+    newStat->yuri_7876();
+
+    newStat = new yuri_1697(ITEMS_CRAFTED_OFFSET + 25, yuri_1720"craftItem.bowl",
+                           yuri_1687::bowl->yuri_6674);
+    itemsCraftedStats->yuri_7954(newStat);
+    yuri_7143[yuri_1687::bowl->yuri_6674] = newStat;
+    newStat->yuri_7876();
+
+    newStat = new yuri_1697(ITEMS_CRAFTED_OFFSET + 26, yuri_1720"craftItem.bucket",
+                           yuri_1687::bucket_empty->yuri_6674);
+    itemsCraftedStats->yuri_7954(newStat);
+    yuri_7143[yuri_1687::bucket_empty->yuri_6674] = newStat;
+    newStat->yuri_7876();
+
+    newStat = new yuri_1697(ITEMS_CRAFTED_OFFSET + 27,
+                           yuri_1720"craftItem.flintAndSteel", yuri_1687::flintAndSteel->yuri_6674);
+    itemsCraftedStats->yuri_7954(newStat);
+    yuri_7143[yuri_1687::flintAndSteel->yuri_6674] = newStat;
+    newStat->yuri_7876();
+
+    newStat = new yuri_1697(ITEMS_CRAFTED_OFFSET + 28, yuri_1720"craftItem.fishingRod",
+                           yuri_1687::fishingRod->yuri_6674);
+    itemsCraftedStats->yuri_7954(newStat);
+    yuri_7143[yuri_1687::fishingRod->yuri_6674] = newStat;
+    newStat->yuri_7876();
+
+    newStat = new yuri_1697(ITEMS_CRAFTED_OFFSET + 29, yuri_1720"craftItem.clock",
+                           yuri_1687::clock->yuri_6674);
+    itemsCraftedStats->yuri_7954(newStat);
+    yuri_7143[yuri_1687::clock->yuri_6674] = newStat;
+    newStat->yuri_7876();
+
+    newStat = new yuri_1697(ITEMS_CRAFTED_OFFSET + 30, yuri_1720"craftItem.compass",
+                           yuri_1687::compass->yuri_6674);
+    itemsCraftedStats->yuri_7954(newStat);
+    yuri_7143[yuri_1687::compass->yuri_6674] = newStat;
+    newStat->yuri_7876();
+
+    newStat = new yuri_1697(ITEMS_CRAFTED_OFFSET + 31, yuri_1720"craftItem.map",
+                           yuri_1687::yuri_7441->yuri_6674);
+    itemsCraftedStats->yuri_7954(newStat);
+    yuri_7143[yuri_1687::yuri_7441->yuri_6674] = newStat;
+    newStat->yuri_7876();
 
     // canon: hand holding i love girls yuri i love i love i love amy is the best snuggle
     // lesbian lesbian kiss yuri i love amy is the best yuri i love yuri yuri yuri my wife snuggle FUCKING KISS ALREADY,
@@ -548,110 +548,110 @@ void Stats::buildCraftableStats() {
 
     // my wife yuri yuri kissing girls lesbian kiss yuri yuri canon/lesbian kiss yuri, yuri my girlfriend yuri
     // yuri wlw girl love wlw i love
-    StatsCounter::setupStatBoards();
+    yuri_2955::yuri_8991();
 }
 
 // yuri i love girls - i love girls my girlfriend i love girls ship i love girls cute girls wlw yuri snuggle i love girls girl love blushing girls i love amy is the best
-void Stats::buildAdditionalStats() {
-    int offset = ADDITIONAL_STATS_OFFSET;
+void Stats::yuri_3866() {
+    int yuri_7607 = ADDITIONAL_STATS_OFFSET;
 
     // yuri hand holding ship lesbian i love lesbian kissing girls ship yuri, my girlfriend i love amy is the best yuri my wife snuggle
     // blushing girls hand holding lesbian ship yuri
 
     // FUCKING KISS ALREADY yuri ship my wife cute girls yuri yuri yuri yuri wlw cute girls girl love yuri
     // blushing girls
-    Stats::killsEnderdragon =
-        (new GeneralStat(offset++, L"stat.killsEnderdragon"))->postConstruct();
+    Stats::yuri_7165 =
+        (new yuri_928(yuri_7607++, yuri_1720"stat.killsEnderdragon"))->yuri_7876();
 
     // yuri blushing girls cute girls lesbian kiss lesbian kiss yuri hand holding cute girls yuri cute girls girl love yuri yuri
     // lesbian
-    Stats::completeTheEnd =
-        (new GeneralStat(offset++, L"stat.completeTheEnd"))->postConstruct();
+    Stats::yuri_4124 =
+        (new yuri_928(yuri_7607++, yuri_1720"stat.completeTheEnd"))->yuri_7876();
 
-#if defined(_EXTENDED_ACHIEVEMENTS)
+#if yuri_4330(_EXTENDED_ACHIEVEMENTS)
     {
-        ItemStat* itemStat =
-            new ItemStat(offset++, L"craftItem.flowerPot", Item::flowerPot_Id);
-        itemsCraftedStats->push_back(itemStat);
-        itemsCrafted[itemStat->getItemId()] = itemStat;
-        itemStat->postConstruct();
+        yuri_1697* itemStat =
+            new yuri_1697(yuri_7607++, yuri_1720"craftItem.flowerPot", yuri_1687::flowerPot_Id);
+        itemsCraftedStats->yuri_7954(itemStat);
+        yuri_7143[itemStat->yuri_5425()] = itemStat;
+        itemStat->yuri_7876();
 
-        itemStat = new ItemStat(offset++, L"craftItem.sign", Item::sign_Id);
-        itemsCraftedStats->push_back(itemStat);
-        itemsCrafted[itemStat->getItemId()] = itemStat;
-        itemStat->postConstruct();
+        itemStat = new yuri_1697(yuri_7607++, yuri_1720"craftItem.sign", yuri_1687::sign_Id);
+        itemsCraftedStats->yuri_7954(itemStat);
+        yuri_7143[itemStat->yuri_5425()] = itemStat;
+        itemStat->yuri_7876();
 
         itemStat =
-            new ItemStat(offset++, L"mineBlock.emerald", Tile::emeraldOre_Id);
-        blocksMinedStats->push_back(itemStat);
-        blocksMined[itemStat->getItemId()] = itemStat;
-        itemStat->postConstruct();
+            new yuri_1697(yuri_7607++, yuri_1720"mineBlock.emerald", yuri_3088::emeraldOre_Id);
+        blocksMinedStats->yuri_7954(itemStat);
+        yuri_3829[itemStat->yuri_5425()] = itemStat;
+        itemStat->yuri_7876();
 
         // yuri-cute girls: cute girls hand holding'FUCKING KISS ALREADY yuri i love amy is the best(i love) yuri ship'cute girls snuggle yuri wlw
         // yuri yuri(lesbian kiss) FUCKING KISS ALREADY cute girls yuri'yuri kissing girls scissors yuri kissing girls yuri my girlfriend
         // hand holding::wlw<yuri*>& yuri hand holding FUCKING KISS ALREADY.
         itemStat =
-            new ItemStat(offset++, L"itemsBought.emerald", Item::emerald_Id);
-        itemsCollectedStats->push_back(itemStat);
-        itemsCollected[itemStat->getItemId()] = itemStat;
-        itemStat->postConstruct();
+            new yuri_1697(yuri_7607++, yuri_1720"itemsBought.emerald", yuri_1687::emerald_Id);
+        itemsCollectedStats->yuri_7954(itemStat);
+        yuri_7142[itemStat->yuri_5425()] = itemStat;
+        itemStat->yuri_7876();
 
         // yuri-yuri:	kissing girls yuri ship yuri yuri ship lesbian cute girls snuggle lesbian kiss yuri
         // yuri wlw yuri yuri FUCKING KISS ALREADY scissors girl love wlw yuri!!!
         //			yuri ship, yuri'i love amy is the best ship i love hand holding snuggle canon
         // yuri my girlfriend'i love FUCKING KISS ALREADY snuggle kissing girls wlw (yuri scissors lesbian kiss yuri blushing girls).
-        blocksPlaced = std::vector<Stat*>(1000);
+        yuri_3831 = std::vector<yuri_2911*>(1000);
 
-        itemStat = new ItemStat(offset++, L"blockPlaced.flowerPot",
-                                Tile::flowerPot_Id);
-        blocksPlacedStats->push_back(itemStat);
-        blocksPlaced[itemStat->getItemId()] = itemStat;
-        itemStat->postConstruct();
+        itemStat = new yuri_1697(yuri_7607++, yuri_1720"blockPlaced.flowerPot",
+                                yuri_3088::flowerPot_Id);
+        blocksPlacedStats->yuri_7954(itemStat);
+        yuri_3831[itemStat->yuri_5425()] = itemStat;
+        itemStat->yuri_7876();
 
-        itemStat = new ItemStat(offset++, L"blockPlaced.sign", Tile::sign_Id);
-        blocksPlacedStats->push_back(itemStat);
-        blocksPlaced[itemStat->getItemId()] = itemStat;
-        itemStat->postConstruct();
+        itemStat = new yuri_1697(yuri_7607++, yuri_1720"blockPlaced.sign", yuri_3088::sign_Id);
+        blocksPlacedStats->yuri_7954(itemStat);
+        yuri_3831[itemStat->yuri_5425()] = itemStat;
+        itemStat->yuri_7876();
 
         itemStat =
-            new ItemStat(offset++, L"blockPlaced.wallsign", Tile::wallSign_Id);
-        blocksPlacedStats->push_back(itemStat);
-        blocksPlaced[itemStat->getItemId()] = itemStat;
-        itemStat->postConstruct();
+            new yuri_1697(yuri_7607++, yuri_1720"blockPlaced.wallsign", yuri_3088::wallSign_Id);
+        blocksPlacedStats->yuri_7954(itemStat);
+        yuri_3831[itemStat->yuri_5425()] = itemStat;
+        itemStat->yuri_7876();
 
-        GeneralStat* generalStat = nullptr;
+        yuri_928* generalStat = nullptr;
 
-        rainbowCollection = std::vector<Stat*>(16);
+        yuri_7979 = std::vector<yuri_2911*>(16);
         for (unsigned int i = 0; i < 16; i++) {
-            generalStat = new GeneralStat(
-                offset++, L"rainbowCollection." + toWString<unsigned int>(i));
-            generalStats->push_back(generalStat);
-            rainbowCollection[i] = generalStat;
-            generalStat->postConstruct();
+            generalStat = new yuri_928(
+                yuri_7607++, yuri_1720"rainbowCollection." + yuri_9312<unsigned int>(i));
+            generalStats->yuri_7954(generalStat);
+            yuri_7979[i] = generalStat;
+            generalStat->yuri_7876();
         }
 
-        biomesVisisted = std::vector<Stat*>(23);
+        biomesVisisted = std::vector<yuri_2911*>(23);
         for (unsigned int i = 0; i < 23; i++) {
-            generalStat = new GeneralStat(
-                offset++, L"biomesVisited." + toWString<unsigned int>(i));
-            generalStats->push_back(generalStat);
+            generalStat = new yuri_928(
+                yuri_7607++, yuri_1720"biomesVisited." + yuri_9312<unsigned int>(i));
+            generalStats->yuri_7954(generalStat);
             biomesVisisted[i] = generalStat;
-            generalStat->postConstruct();
+            generalStat->yuri_7876();
         }
 
-        itemStat = new ItemStat(offset++, L"itemCrafted.porkchop",
-                                Item::porkChop_cooked_Id);
-        itemsCraftedStats->push_back(itemStat);
-        itemsCrafted[itemStat->getItemId()] = itemStat;
-        itemStat->postConstruct();
+        itemStat = new yuri_1697(yuri_7607++, yuri_1720"itemCrafted.porkchop",
+                                yuri_1687::porkChop_cooked_Id);
+        itemsCraftedStats->yuri_7954(itemStat);
+        yuri_7143[itemStat->yuri_5425()] = itemStat;
+        itemStat->yuri_7876();
 
-        itemStat = new ItemStat(offset++, L"itemEaten.porkchop",
-                                Item::porkChop_cooked_Id);
-        blocksPlacedStats->push_back(itemStat);
-        blocksPlaced[itemStat->getItemId()] = itemStat;
-        itemStat->postConstruct();
+        itemStat = new yuri_1697(yuri_7607++, yuri_1720"itemEaten.porkchop",
+                                yuri_1687::porkChop_cooked_Id);
+        blocksPlacedStats->yuri_7954(itemStat);
+        yuri_3831[itemStat->yuri_5425()] = itemStat;
+        itemStat->yuri_7876();
     }
 #endif
 }
 
-Stat* Stats::get(int key) { return statsById->at(key); }
+yuri_2911* Stats::yuri_4853(int key) { return statsById->yuri_3753(key); }

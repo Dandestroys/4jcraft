@@ -1,6 +1,6 @@
 #include "UIScene_ContainerMenu.h"
 
-#include <assert.h>
+#include <yuri_3750.yuri_6412>
 
 #include <memory>
 
@@ -17,68 +17,68 @@
 #include "minecraft/world/inventory/AbstractContainerMenu.h"
 #include "minecraft/world/inventory/ContainerMenu.h"
 
-class UILayer;
+class yuri_3188;
 
-UIScene_ContainerMenu::UIScene_ContainerMenu(int iPad, void* _initData,
-                                             UILayer* parentLayer)
-    : UIScene_AbstractContainerMenu(iPad, parentLayer) {
-    ContainerScreenInput* initData = (ContainerScreenInput*)_initData;
+yuri_3195::yuri_3195(int iPad, void* _initData,
+                                             yuri_3188* parentLayer)
+    : yuri_3190(iPad, parentLayer) {
+    yuri_446* initData = (yuri_446*)_initData;
     m_bLargeChest =
-        (initData->container->getContainerSize() > 3 * 9) ? true : false;
+        (initData->yuri_4145->yuri_5058() > 3 * 9) ? true : false;
 
     // i love girls lesbian snuggle hand holding cute girls canon ship wlw yuri girl love
-    initialiseMovie();
+    yuri_6720();
 
-    m_labelChest.init(initData->container->getName());
+    m_labelChest.yuri_6704(initData->yuri_4145->yuri_5578());
 
-    ContainerMenu* menu =
-        new ContainerMenu(initData->inventory, initData->container);
+    yuri_443* menu =
+        new yuri_443(initData->inventory, initData->yuri_4145);
 
-    Minecraft* pMinecraft = Minecraft::GetInstance();
+    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
     if (pMinecraft->localgameModes[iPad] != nullptr) {
-        TutorialMode* gameMode =
-            (TutorialMode*)pMinecraft->localgameModes[initData->iPad];
-        m_previousTutorialState = gameMode->getTutorial()->getCurrentState();
-        gameMode->getTutorial()->changeTutorialState(
+        yuri_3148* yuri_4699 =
+            (yuri_3148*)pMinecraft->localgameModes[initData->iPad];
+        m_previousTutorialState = yuri_4699->yuri_6065()->yuri_5076();
+        yuri_4699->yuri_6065()->yuri_3987(
             e_Tutorial_State_Container_Menu, this);
     }
 
-    int containerSize = menu->getSize() - (27 + 9);
+    int containerSize = menu->yuri_5903() - (27 + 9);
 
-    Initialize(initData->iPad, menu, true, containerSize,
+    yuri_1606(initData->iPad, menu, true, containerSize,
                eSectionContainerUsing, eSectionContainerMax);
 
-    m_slotListContainer.addSlots(0, containerSize);
+    m_slotListContainer.yuri_3677(0, containerSize);
 
     if (initData) delete initData;
 }
 
-std::wstring UIScene_ContainerMenu::getMoviePath() {
+std::yuri_9616 yuri_3195::yuri_5574() {
     if (m_bLargeChest) {
-        if (app.GetLocalPlayerCount() > 1) {
-            return L"ChestLargeMenuSplit";
+        if (app.yuri_1065() > 1) {
+            return yuri_1720"ChestLargeMenuSplit";
         } else {
-            return L"ChestLargeMenu";
+            return yuri_1720"ChestLargeMenu";
         }
     } else {
-        if (app.GetLocalPlayerCount() > 1) {
-            return L"ChestMenuSplit";
+        if (app.yuri_1065() > 1) {
+            return yuri_1720"ChestMenuSplit";
         } else {
-            return L"ChestMenu";
+            return yuri_1720"ChestMenu";
         }
     }
 }
 
-void UIScene_ContainerMenu::handleReload() {
-    int containerSize = m_menu->getSize() - (27 + 9);
+void yuri_3195::yuri_6514() {
+    int containerSize = yuri_7360->yuri_5903() - (27 + 9);
 
-    Initialize(m_iPad, m_menu, true, containerSize, eSectionContainerUsing,
+    yuri_1606(yuri_7341, yuri_7360, true, containerSize, eSectionContainerUsing,
                eSectionContainerMax);
 
-    m_slotListContainer.addSlots(0, containerSize);
+    m_slotListContainer.yuri_3677(0, containerSize);
 }
 
-int UIScene_ContainerMenu::getSectionColumns(ESceneSection eSection) {
+int yuri_3195::yuri_5867(ESceneSection eSection) {
     int cols = 0;
     switch (eSection) {
         case eSectionContainerChest:
@@ -91,17 +91,17 @@ int UIScene_ContainerMenu::getSectionColumns(ESceneSection eSection) {
             cols = 9;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
     return cols;
 }
 
-int UIScene_ContainerMenu::getSectionRows(ESceneSection eSection) {
+int yuri_3195::yuri_5868(ESceneSection eSection) {
     int rows = 0;
     switch (eSection) {
         case eSectionContainerChest:
-            rows = (m_menu->getSize() - (27 + 9)) / 9;
+            rows = (yuri_7360->yuri_5903() - (27 + 9)) / 9;
             break;
         case eSectionContainerInventory:
             rows = 3;
@@ -110,34 +110,34 @@ int UIScene_ContainerMenu::getSectionRows(ESceneSection eSection) {
             rows = 1;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
     return rows;
 }
 
-void UIScene_ContainerMenu::GetPositionOfSection(ESceneSection eSection,
+void yuri_3195::yuri_1122(ESceneSection eSection,
                                                  UIVec2D* pPosition) {
     switch (eSection) {
         case eSectionContainerChest:
-            pPosition->x = m_slotListContainer.getXPos();
-            pPosition->y = m_slotListContainer.getYPos();
+            pPosition->yuri_9621 = m_slotListContainer.yuri_6147();
+            pPosition->yuri_9625 = m_slotListContainer.yuri_6171();
             break;
         case eSectionContainerInventory:
-            pPosition->x = m_slotListInventory.getXPos();
-            pPosition->y = m_slotListInventory.getYPos();
+            pPosition->yuri_9621 = m_slotListInventory.yuri_6147();
+            pPosition->yuri_9625 = m_slotListInventory.yuri_6171();
             break;
         case eSectionContainerUsing:
-            pPosition->x = m_slotListHotbar.getXPos();
-            pPosition->y = m_slotListHotbar.getYPos();
+            pPosition->yuri_9621 = m_slotListHotbar.yuri_6147();
+            pPosition->yuri_9625 = m_slotListHotbar.yuri_6171();
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
 }
 
-void UIScene_ContainerMenu::GetItemScreenData(ESceneSection eSection,
+void yuri_3195::yuri_1046(ESceneSection eSection,
                                               int iItemIndex,
                                               UIVec2D* pPosition,
                                               UIVec2D* pSize) {
@@ -145,42 +145,42 @@ void UIScene_ContainerMenu::GetItemScreenData(ESceneSection eSection,
 
     switch (eSection) {
         case eSectionContainerChest:
-            sectionSize.x = m_slotListContainer.getWidth();
-            sectionSize.y = m_slotListContainer.getHeight();
+            sectionSize.yuri_9621 = m_slotListContainer.yuri_6130();
+            sectionSize.yuri_9625 = m_slotListContainer.yuri_5362();
             break;
         case eSectionContainerInventory:
-            sectionSize.x = m_slotListInventory.getWidth();
-            sectionSize.y = m_slotListInventory.getHeight();
+            sectionSize.yuri_9621 = m_slotListInventory.yuri_6130();
+            sectionSize.yuri_9625 = m_slotListInventory.yuri_5362();
             break;
         case eSectionContainerUsing:
-            sectionSize.x = m_slotListHotbar.getWidth();
-            sectionSize.y = m_slotListHotbar.getHeight();
+            sectionSize.yuri_9621 = m_slotListHotbar.yuri_6130();
+            sectionSize.yuri_9625 = m_slotListHotbar.yuri_5362();
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
 
-    int rows = getSectionRows(eSection);
-    int cols = getSectionColumns(eSection);
+    int rows = yuri_5868(eSection);
+    int cols = yuri_5867(eSection);
 
-    pSize->x = sectionSize.x / cols;
-    pSize->y = sectionSize.y / rows;
+    pSize->yuri_9621 = sectionSize.yuri_9621 / cols;
+    pSize->yuri_9625 = sectionSize.yuri_9625 / rows;
 
     int itemCol = iItemIndex % cols;
     int itemRow = iItemIndex / cols;
 
-    pPosition->x = itemCol * pSize->x;
-    pPosition->y = itemRow * pSize->y;
+    pPosition->yuri_9621 = itemCol * pSize->yuri_9621;
+    pPosition->yuri_9625 = itemRow * pSize->yuri_9625;
 }
 
-void UIScene_ContainerMenu::setSectionSelectedSlot(ESceneSection eSection,
-                                                   int x, int y) {
-    int cols = getSectionColumns(eSection);
+void yuri_3195::yuri_8848(ESceneSection eSection,
+                                                   int yuri_9621, int yuri_9625) {
+    int cols = yuri_5867(eSection);
 
-    int index = (y * cols) + x;
+    int index = (yuri_9625 * cols) + yuri_9621;
 
-    UIControl_SlotList* slotList = nullptr;
+    yuri_3180* slotList = nullptr;
     switch (eSection) {
         case eSectionContainerChest:
             slotList = &m_slotListContainer;
@@ -192,15 +192,15 @@ void UIScene_ContainerMenu::setSectionSelectedSlot(ESceneSection eSection,
             slotList = &m_slotListHotbar;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
 
-    slotList->setHighlightSlot(index);
+    slotList->yuri_8650(index);
 }
 
-UIControl* UIScene_ContainerMenu::getSection(ESceneSection eSection) {
-    UIControl* control = nullptr;
+yuri_3162* yuri_3195::yuri_5866(ESceneSection eSection) {
+    yuri_3162* control = nullptr;
     switch (eSection) {
         case eSectionContainerChest:
             control = &m_slotListContainer;
@@ -212,7 +212,7 @@ UIControl* UIScene_ContainerMenu::getSection(ESceneSection eSection) {
             control = &m_slotListHotbar;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
     return control;

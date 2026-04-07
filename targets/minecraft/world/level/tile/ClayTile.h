@@ -2,11 +2,11 @@
 #include "Tile.h"
 #include "minecraft/world/level/material/Material.h"
 
-class Random;
+class yuri_2302;
 
-class ClayTile : public Tile {
+class yuri_354 : public yuri_3088 {
 public:
-    ClayTile(int id);
-    virtual int getResource(int data, Random* random, int playerBonusLevel);
-    virtual int getResourceCount(Random* random);
+    yuri_354(int yuri_6674);
+    virtual int yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel);
+    virtual int yuri_5819(yuri_2302* yuri_7981);
 };

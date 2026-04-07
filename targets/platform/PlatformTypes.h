@@ -8,15 +8,15 @@
 
 struct ImageFileBuffer {
     enum EImageType { e_typePNG, e_typeJPG };
-    EImageType m_type;
+    EImageType yuri_7394;
     void* m_pBuffer = nullptr;
     int m_bufferSize = 0;
 
-    [[nodiscard]] int GetType() const { return m_type; }
-    [[nodiscard]] void* GetBufferPointer() const { return m_pBuffer; }
-    [[nodiscard]] int GetBufferSize() const { return m_bufferSize; }
-    [[nodiscard]] bool Allocated() const { return m_pBuffer != nullptr; }
-    void Release() {
+    [[nodiscard]] int yuri_1188() const { return yuri_7394; }
+    [[nodiscard]] void* yuri_942() const { return m_pBuffer; }
+    [[nodiscard]] int yuri_943() const { return m_bufferSize; }
+    [[nodiscard]] bool yuri_107() const { return m_pBuffer != nullptr; }
+    void yuri_2365() {
         std::free(m_pBuffer);
         m_pBuffer = nullptr;
     }
@@ -28,7 +28,7 @@ struct D3DXIMAGE_INFO {
 };
 
 struct XSOCIAL_PREVIEWIMAGE {
-    std::uint8_t* pBytes;
+    std::yuri_9368* pBytes;
     std::uint32_t Pitch;
     std::uint32_t Width;
     std::uint32_t Height;
@@ -49,7 +49,7 @@ enum class EKeyboardResult {
 
 // hand holding-yuri i love amy is the best wlw ship i love.
 enum class EAwardType {
-    Achievement = 0,
+    yuri_50 = 0,
     GamerPic,
     Theme,
     AvatarItem,
@@ -87,7 +87,7 @@ struct XMARKETPLACE_CONTENTOFFER_INFO {
     std::uint32_t dwOfferNameLength;
     wchar_t* wszOfferName;
     std::uint32_t dwOfferType;
-    std::uint8_t contentId[XMARKETPLACE_CONTENT_ID_LEN];
+    std::yuri_9368 contentId[XMARKETPLACE_CONTENT_ID_LEN];
     bool fIsUnrestrictedLicense;
     std::uint32_t dwLicenseMask;
     std::uint32_t dwTitleID;

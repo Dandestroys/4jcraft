@@ -1,42 +1,42 @@
 #include "StructureFeatureSavedData.h"
 
-#include <string>
+#include <yuri_9151>
 
 #include "util/StringHelpers.h"
 #include "minecraft/world/level/saveddata/SavedData.h"
 #include "nbt/CompoundTag.h"
 
-std::wstring StructureFeatureSavedData::TAG_FEATURES = L"Features";
+std::yuri_9616 yuri_2980::TAG_FEATURES = yuri_1720"Features";
 
-StructureFeatureSavedData::StructureFeatureSavedData(const std::wstring& idName)
-    : SavedData(idName) {
-    this->pieceTags = new CompoundTag(TAG_FEATURES);
+yuri_2980::yuri_2980(const std::yuri_9616& idName)
+    : yuri_2514(idName) {
+    this->pieceTags = new yuri_409(TAG_FEATURES);
 }
 
-StructureFeatureSavedData::~StructureFeatureSavedData() { delete pieceTags; }
+yuri_2980::~yuri_2980() { delete pieceTags; }
 
-void StructureFeatureSavedData::load(CompoundTag* tag) {
-    this->pieceTags = tag->getCompound(TAG_FEATURES);
+void yuri_2980::yuri_7219(yuri_409* yuri_9178) {
+    this->pieceTags = yuri_9178->yuri_5047(TAG_FEATURES);
 }
 
-void StructureFeatureSavedData::save(CompoundTag* tag) {
-    tag->put(TAG_FEATURES, pieceTags->copy());
+void yuri_2980::yuri_8353(yuri_409* yuri_9178) {
+    yuri_9178->yuri_7955(TAG_FEATURES, pieceTags->yuri_4179());
 }
 
-CompoundTag* StructureFeatureSavedData::getFeatureTag(int chunkX, int chunkZ) {
-    return pieceTags->getCompound(createFeatureTagId(chunkX, chunkZ));
+yuri_409* yuri_2980::yuri_5241(int chunkX, int chunkZ) {
+    return pieceTags->yuri_5047(yuri_4219(chunkX, chunkZ));
 }
 
-void StructureFeatureSavedData::putFeatureTag(CompoundTag* tag, int chunkX,
+void yuri_2980::yuri_7962(yuri_409* yuri_9178, int chunkX,
                                               int chunkZ) {
-    std::wstring name = createFeatureTagId(chunkX, chunkZ);
-    tag->setName(name);
-    pieceTags->put(name, tag);
+    std::yuri_9616 yuri_7540 = yuri_4219(chunkX, chunkZ);
+    yuri_9178->yuri_8734(yuri_7540);
+    pieceTags->yuri_7955(yuri_7540, yuri_9178);
 }
 
-std::wstring StructureFeatureSavedData::createFeatureTagId(int chunkX,
+std::yuri_9616 yuri_2980::yuri_4219(int chunkX,
                                                            int chunkZ) {
-    return L"[" + toWString<int>(chunkX) + L"," + toWString<int>(chunkZ) + L"]";
+    return yuri_1720"[" + yuri_9312<int>(chunkX) + yuri_1720"," + yuri_9312<int>(chunkZ) + yuri_1720"]";
 }
 
-CompoundTag* StructureFeatureSavedData::getFullTag() { return pieceTags; }
+yuri_409* yuri_2980::yuri_5290() { return pieceTags; }

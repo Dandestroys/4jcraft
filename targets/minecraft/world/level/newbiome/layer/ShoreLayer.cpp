@@ -1,7 +1,7 @@
 
 #include "minecraft/world/level/newbiome/layer/ShoreLayer.h"
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
 #include <memory>
 #include <vector>
@@ -9,61 +9,61 @@
 #include "minecraft/world/level/biome/Biome.h"
 #include "minecraft/world/level/newbiome/layer/Layer.h"
 
-ShoreLayer::ShoreLayer(int64_t seed, std::shared_ptr<Layer> parent)
-    : Layer(seed) {
-    this->parent = parent;
+yuri_2780::yuri_2780(yuri_6733 yuri_8396, std::shared_ptr<yuri_1742> yuri_7791)
+    : yuri_1742(yuri_8396) {
+    this->yuri_7791 = yuri_7791;
 }
 
-std::vector<int> ShoreLayer::getArea(int xo, int yo, int w, int h) {
-    std::vector<int> b = parent->getArea(xo - 1, yo - 1, w + 2, h + 2);
+std::vector<int> yuri_2780::yuri_4897(int xo, int yo, int yuri_9535, int yuri_6412) {
+    std::vector<int> yuri_3775 = yuri_7791->yuri_4897(xo - 1, yo - 1, yuri_9535 + 2, yuri_6412 + 2);
 
-    std::vector<int> result(w * h);
-    for (int y = 0; y < h; y++) {
-        for (int x = 0; x < w; x++) {
-            initRandom(x + xo, y + yo);
-            int old = b[(x + 1) + (y + 1) * (w + 2)];
-            if (old == Biome::mushroomIsland->id) {
-                int _n = b[(x + 1) + (y + 1 - 1) * (w + 2)];
-                int _e = b[(x + 1 + 1) + (y + 1) * (w + 2)];
-                int _w = b[(x + 1 - 1) + (y + 1) * (w + 2)];
-                int _s = b[(x + 1) + (y + 1 + 1) * (w + 2)];
-                if (_n == Biome::ocean->id || _e == Biome::ocean->id ||
-                    _w == Biome::ocean->id || _s == Biome::ocean->id) {
-                    result[x + y * w] = Biome::mushroomIslandShore->id;
+    std::vector<int> yuri_8300(yuri_9535 * yuri_6412);
+    for (int yuri_9625 = 0; yuri_9625 < yuri_6412; yuri_9625++) {
+        for (int yuri_9621 = 0; yuri_9621 < yuri_9535; yuri_9621++) {
+            yuri_6715(yuri_9621 + xo, yuri_9625 + yo);
+            int old = yuri_3775[(yuri_9621 + 1) + (yuri_9625 + 1) * (yuri_9535 + 2)];
+            if (old == yuri_190::mushroomIsland->yuri_6674) {
+                int _n = yuri_3775[(yuri_9621 + 1) + (yuri_9625 + 1 - 1) * (yuri_9535 + 2)];
+                int _e = yuri_3775[(yuri_9621 + 1 + 1) + (yuri_9625 + 1) * (yuri_9535 + 2)];
+                int _w = yuri_3775[(yuri_9621 + 1 - 1) + (yuri_9625 + 1) * (yuri_9535 + 2)];
+                int _s = yuri_3775[(yuri_9621 + 1) + (yuri_9625 + 1 + 1) * (yuri_9535 + 2)];
+                if (_n == yuri_190::ocean->yuri_6674 || _e == yuri_190::ocean->yuri_6674 ||
+                    _w == yuri_190::ocean->yuri_6674 || _s == yuri_190::ocean->yuri_6674) {
+                    yuri_8300[yuri_9621 + yuri_9625 * yuri_9535] = yuri_190::mushroomIslandShore->yuri_6674;
                 } else {
-                    result[x + y * w] = old;
+                    yuri_8300[yuri_9621 + yuri_9625 * yuri_9535] = old;
                 }
-            } else if (old != Biome::ocean->id && old != Biome::river->id &&
-                       old != Biome::swampland->id &&
-                       old != Biome::extremeHills->id) {
-                int _n = b[(x + 1) + (y + 1 - 1) * (w + 2)];
-                int _e = b[(x + 1 + 1) + (y + 1) * (w + 2)];
-                int _w = b[(x + 1 - 1) + (y + 1) * (w + 2)];
-                int _s = b[(x + 1) + (y + 1 + 1) * (w + 2)];
-                if (_n == Biome::ocean->id || _e == Biome::ocean->id ||
-                    _w == Biome::ocean->id || _s == Biome::ocean->id) {
-                    result[x + y * w] = Biome::beaches->id;
+            } else if (old != yuri_190::ocean->yuri_6674 && old != yuri_190::river->yuri_6674 &&
+                       old != yuri_190::swampland->yuri_6674 &&
+                       old != yuri_190::extremeHills->yuri_6674) {
+                int _n = yuri_3775[(yuri_9621 + 1) + (yuri_9625 + 1 - 1) * (yuri_9535 + 2)];
+                int _e = yuri_3775[(yuri_9621 + 1 + 1) + (yuri_9625 + 1) * (yuri_9535 + 2)];
+                int _w = yuri_3775[(yuri_9621 + 1 - 1) + (yuri_9625 + 1) * (yuri_9535 + 2)];
+                int _s = yuri_3775[(yuri_9621 + 1) + (yuri_9625 + 1 + 1) * (yuri_9535 + 2)];
+                if (_n == yuri_190::ocean->yuri_6674 || _e == yuri_190::ocean->yuri_6674 ||
+                    _w == yuri_190::ocean->yuri_6674 || _s == yuri_190::ocean->yuri_6674) {
+                    yuri_8300[yuri_9621 + yuri_9625 * yuri_9535] = yuri_190::beaches->yuri_6674;
                 } else {
-                    result[x + y * w] = old;
+                    yuri_8300[yuri_9621 + yuri_9625 * yuri_9535] = old;
                 }
-            } else if (old == Biome::extremeHills->id) {
-                int _n = b[(x + 1) + (y + 1 - 1) * (w + 2)];
-                int _e = b[(x + 1 + 1) + (y + 1) * (w + 2)];
-                int _w = b[(x + 1 - 1) + (y + 1) * (w + 2)];
-                int _s = b[(x + 1) + (y + 1 + 1) * (w + 2)];
-                if (_n != Biome::extremeHills->id ||
-                    _e != Biome::extremeHills->id ||
-                    _w != Biome::extremeHills->id ||
-                    _s != Biome::extremeHills->id) {
-                    result[x + y * w] = Biome::smallerExtremeHills->id;
+            } else if (old == yuri_190::extremeHills->yuri_6674) {
+                int _n = yuri_3775[(yuri_9621 + 1) + (yuri_9625 + 1 - 1) * (yuri_9535 + 2)];
+                int _e = yuri_3775[(yuri_9621 + 1 + 1) + (yuri_9625 + 1) * (yuri_9535 + 2)];
+                int _w = yuri_3775[(yuri_9621 + 1 - 1) + (yuri_9625 + 1) * (yuri_9535 + 2)];
+                int _s = yuri_3775[(yuri_9621 + 1) + (yuri_9625 + 1 + 1) * (yuri_9535 + 2)];
+                if (_n != yuri_190::extremeHills->yuri_6674 ||
+                    _e != yuri_190::extremeHills->yuri_6674 ||
+                    _w != yuri_190::extremeHills->yuri_6674 ||
+                    _s != yuri_190::extremeHills->yuri_6674) {
+                    yuri_8300[yuri_9621 + yuri_9625 * yuri_9535] = yuri_190::smallerExtremeHills->yuri_6674;
                 } else {
-                    result[x + y * w] = old;
+                    yuri_8300[yuri_9621 + yuri_9625 * yuri_9535] = old;
                 }
             } else {
-                result[x + y * w] = old;
+                yuri_8300[yuri_9621 + yuri_9625 * yuri_9535] = old;
             }
         }
     }
 
-    return result;
+    return yuri_8300;
 }

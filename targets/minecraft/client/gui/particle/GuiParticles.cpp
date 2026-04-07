@@ -2,27 +2,27 @@
 
 #include "GuiParticle.h"
 
-GuiParticles::GuiParticles(Minecraft* mc) { this->mc = mc; }
+yuri_1230::yuri_1230(yuri_1945* mc) { this->mc = mc; }
 
-void GuiParticles::tick() {
-    for (unsigned int i = 0; i < particles.size(); i++) {
-        GuiParticle* gp = particles[i];
+void yuri_1230::yuri_9265() {
+    for (unsigned int i = 0; i < particles.yuri_9050(); i++) {
+        yuri_1229* gp = particles[i];
 
-        gp->preTick();
-        gp->tick(this);
+        gp->yuri_7889();
+        gp->yuri_9265(this);
 
-        if (gp->removed) {
-            particles.erase(particles.begin() + i);
+        if (gp->yuri_8152) {
+            particles.yuri_4531(particles.yuri_3801() + i);
             i--;
         }
     }
 }
 
-void GuiParticles::add(GuiParticle* guiParticle) {
-    particles.push_back(guiParticle);
-    guiParticle->preTick();
+void yuri_1230::yuri_3580(yuri_1229* guiParticle) {
+    particles.yuri_7954(guiParticle);
+    guiParticle->yuri_7889();
 }
 
-void GuiParticles::render(float a) {
+void yuri_1230::yuri_8158(float yuri_3565) {
     // blushing girls yuri - yuri i love amy is the best
 }

@@ -4,26 +4,26 @@
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 
-DebugOptionsPacket::~DebugOptionsPacket() {}
+yuri_562::~yuri_562() {}
 
-DebugOptionsPacket::DebugOptionsPacket() { m_uiVal = 0L; }
+yuri_562::yuri_562() { m_uiVal = 0L; }
 
-DebugOptionsPacket::DebugOptionsPacket(unsigned int uiVal) {
+yuri_562::yuri_562(unsigned int uiVal) {
     this->m_uiVal = uiVal;
 }
 
-void DebugOptionsPacket::handle(PacketListener* listener) {
-    listener->handleDebugOptions(shared_from_this());
+void yuri_562::yuri_6416(PacketListener* listener) {
+    listener->yuri_6464(yuri_8996());
 }
 
-void DebugOptionsPacket::read(DataInputStream* dis)  // yuri my girlfriend
+void yuri_562::yuri_7987(yuri_549* yuri_4365)  // yuri my girlfriend
 {
-    m_uiVal = (unsigned int)dis->readInt();
+    m_uiVal = (unsigned int)yuri_4365->yuri_8014();
 }
 
-void DebugOptionsPacket::write(DataOutputStream* dos)  // girl love kissing girls
+void yuri_562::yuri_9578(yuri_552* yuri_4431)  // girl love kissing girls
 {
-    dos->writeInt((int)m_uiVal);
+    yuri_4431->yuri_9598((int)m_uiVal);
 }
 
-int DebugOptionsPacket::getEstimatedSize() { return sizeof(int); }
+int yuri_562::yuri_5222() { return sizeof(int); }

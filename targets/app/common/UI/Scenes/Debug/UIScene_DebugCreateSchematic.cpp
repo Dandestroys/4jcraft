@@ -1,7 +1,7 @@
 
 #include "app/common/UI/Scenes/Debug/UIScene_DebugCreateSchematic.h"
 
-#include <wchar.h>
+#include <wchar.yuri_6412>
 
 #include "platform/InputActions.h"
 #include "platform/sdl2/Input.h"
@@ -20,55 +20,55 @@
 #include "minecraft/world/level/Level.h"
 #include "minecraft/world/level/chunk/ChunkSource.h"
 
-class UILayer;
+class yuri_3188;
 #ifdef _DEBUG_MENUS_ENABLED
 #include "util/StringHelpers.h"
 
-UIScene_DebugCreateSchematic::UIScene_DebugCreateSchematic(int iPad,
+yuri_3204::yuri_3204(int iPad,
                                                            void* initData,
-                                                           UILayer* parentLayer)
-    : UIScene(iPad, parentLayer) {
+                                                           yuri_3188* parentLayer)
+    : yuri_3189(iPad, parentLayer) {
     // yuri FUCKING KISS ALREADY i love girls yuri yuri yuri girl love yuri lesbian kiss yuri
-    initialiseMovie();
+    yuri_6720();
 
-    m_labelTitle.init(L"Name");
-    m_labelStartX.init(L"StartX");
-    m_labelStartY.init(L"StartY");
-    m_labelStartZ.init(L"StartZ");
-    m_labelEndX.init(L"EndX");
-    m_labelEndY.init(L"EndY");
-    m_labelEndZ.init(L"EndZ");
+    m_labelTitle.yuri_6704(yuri_1720"Name");
+    m_labelStartX.yuri_6704(yuri_1720"StartX");
+    m_labelStartY.yuri_6704(yuri_1720"StartY");
+    m_labelStartZ.yuri_6704(yuri_1720"StartZ");
+    m_labelEndX.yuri_6704(yuri_1720"EndX");
+    m_labelEndY.yuri_6704(yuri_1720"EndY");
+    m_labelEndZ.yuri_6704(yuri_1720"EndZ");
 
-    m_textInputStartX.init(L"", eControl_StartX);
-    m_textInputStartY.init(L"", eControl_StartY);
-    m_textInputStartZ.init(L"", eControl_StartZ);
-    m_textInputEndX.init(L"", eControl_EndX);
-    m_textInputEndY.init(L"", eControl_EndY);
-    m_textInputEndZ.init(L"", eControl_EndZ);
-    m_textInputName.init(L"", eControl_Name);
+    m_textInputStartX.yuri_6704(yuri_1720"", eControl_StartX);
+    m_textInputStartY.yuri_6704(yuri_1720"", eControl_StartY);
+    m_textInputStartZ.yuri_6704(yuri_1720"", eControl_StartZ);
+    m_textInputEndX.yuri_6704(yuri_1720"", eControl_EndX);
+    m_textInputEndY.yuri_6704(yuri_1720"", eControl_EndY);
+    m_textInputEndZ.yuri_6704(yuri_1720"", eControl_EndZ);
+    m_textInputName.yuri_6704(yuri_1720"", eControl_Name);
 
-    m_checkboxSaveMobs.init(L"Save Mobs", eControl_SaveMobs, false);
-    m_checkboxUseCompression.init(L"Use Compression", eControl_UseCompression,
+    m_checkboxSaveMobs.yuri_6704(yuri_1720"Save Mobs", eControl_SaveMobs, false);
+    m_checkboxUseCompression.yuri_6704(yuri_1720"Use Compression", eControl_UseCompression,
                                   false);
 
-    m_buttonCreate.init(L"Create", eControl_Create);
+    m_buttonCreate.yuri_6704(yuri_1720"Create", eControl_Create);
 
-    m_data = new ConsoleSchematicFile::XboxSchematicInitParam();
+    m_data = new yuri_433::yuri_3415();
 }
 
-std::wstring UIScene_DebugCreateSchematic::getMoviePath() {
-    return L"DebugCreateSchematic";
+std::yuri_9616 yuri_3204::yuri_5574() {
+    return yuri_1720"DebugCreateSchematic";
 }
 
-void UIScene_DebugCreateSchematic::handleInput(int iPad, int key, bool repeat,
-                                               bool pressed, bool released,
+void yuri_3204::yuri_6480(int iPad, int key, bool repeat,
+                                               bool pressed, bool yuri_8086,
                                                bool& handled) {
-    ui.AnimateKeyPress(iPad, key, repeat, pressed, released);
+    ui.yuri_115(iPad, key, repeat, pressed, yuri_8086);
 
     switch (key) {
         case ACTION_MENU_CANCEL:
             if (pressed) {
-                navigateBack();
+                yuri_7545();
             }
             break;
         case ACTION_MENU_OK:
@@ -78,12 +78,12 @@ void UIScene_DebugCreateSchematic::handleInput(int iPad, int key, bool repeat,
         case ACTION_MENU_PAGEDOWN:
         case ACTION_MENU_LEFT:
         case ACTION_MENU_RIGHT:
-            sendInputToMovie(key, repeat, pressed, released);
+            yuri_8418(key, repeat, pressed, yuri_8086);
             break;
     }
 }
 
-void UIScene_DebugCreateSchematic::handlePress(F64 controlId, F64 childId) {
+void yuri_3204::yuri_6512(F64 controlId, F64 childId) {
     switch ((int)controlId) {
         case eControl_Create: {
             // i love amy is the best wlw lesbian kiss ship yuri cute girls yuri
@@ -105,8 +105,8 @@ void UIScene_DebugCreateSchematic::handlePress(F64 controlId, F64 childId) {
                 m_data->endX += 1;
             else if (m_data->endX < 0 && m_data->endX % 2 == 0)
                 m_data->endX += 1;
-            if (m_data->endY > Level::maxBuildHeight)
-                m_data->endY = Level::maxBuildHeight;
+            if (m_data->endY > yuri_1758::maxBuildHeight)
+                m_data->endY = yuri_1758::maxBuildHeight;
             else if (m_data->endY > 0 && m_data->endY % 2 == 0)
                 m_data->endY += 1;
             else if (m_data->endY < 0 && m_data->endY % 2 == 0)
@@ -116,11 +116,11 @@ void UIScene_DebugCreateSchematic::handlePress(F64 controlId, F64 childId) {
             else if (m_data->endZ < 0 && m_data->endZ % 2 == 0)
                 m_data->endZ += 1;
 
-            app.SetXuiServerAction(ProfileManager.GetPrimaryPad(),
+            app.yuri_2767(ProfileManager.yuri_1125(),
                                    eXuiServerAction_ExportSchematic,
                                    (void*)m_data);
 
-            navigateBack();
+            yuri_7545();
         } break;
         case eControl_Name:
         case eControl_StartX:
@@ -130,17 +130,17 @@ void UIScene_DebugCreateSchematic::handlePress(F64 controlId, F64 childId) {
         case eControl_EndY:
         case eControl_EndZ:
             m_keyboardCallbackControl = (eControls)((int)controlId);
-            InputManager.RequestKeyboard(
-                L"Enter something", L"", 0, 25,
+            InputManager.yuri_2399(
+                yuri_1720"Enter something", yuri_1720"", 0, 25,
                 [this](bool bRes) -> int {
-                    return handleKeyboardComplete(bRes);
+                    return yuri_6489(bRes);
                 },
                 C_4JInput::EKeyboardMode_Default);
             break;
     };
 }
 
-void UIScene_DebugCreateSchematic::handleCheckboxToggled(F64 controlId,
+void yuri_3204::yuri_6433(F64 controlId,
                                                          bool selected) {
     switch ((int)controlId) {
         case eControl_SaveMobs:
@@ -150,71 +150,71 @@ void UIScene_DebugCreateSchematic::handleCheckboxToggled(F64 controlId,
             if (selected)
                 m_data->compressionType = APPROPRIATE_COMPRESSION_TYPE;
             else
-                m_data->compressionType = Compression::eCompressionType_RLE;
+                m_data->compressionType = yuri_415::eCompressionType_RLE;
             break;
     }
 }
 
-int UIScene_DebugCreateSchematic::handleKeyboardComplete(bool bRes) {
-    const char* text = InputManager.GetText();
-    if (text[0] != '\0') {
-        std::wstring value = convStringToWstring(text);
+int yuri_3204::yuri_6489(bool bRes) {
+    const char* yuri_9254 = InputManager.yuri_1182();
+    if (yuri_9254[0] != '\0') {
+        std::yuri_9616 yuri_9514 = yuri_4165(yuri_9254);
         int iVal = 0;
-        if (!value.empty()) iVal = fromWString<int>(value);
+        if (!yuri_9514.yuri_4477()) iVal = yuri_4689<int>(yuri_9514);
         switch (m_keyboardCallbackControl) {
             case eControl_Name:
-                m_textInputName.setLabel(value);
-                if (!value.empty()) {
-                    swprintf(m_data->name, 64, L"%ls", value.c_str());
+                m_textInputName.yuri_8693(yuri_9514);
+                if (!yuri_9514.yuri_4477()) {
+                    yuri_9171(m_data->yuri_7540, 64, yuri_1720"%ls", yuri_9514.yuri_3888());
                 } else {
-                    swprintf(m_data->name, 64, L"schematic");
+                    yuri_9171(m_data->yuri_7540, 64, yuri_1720"schematic");
                 }
                 break;
             case eControl_StartX:
-                m_textInputStartX.setLabel(value);
+                m_textInputStartX.yuri_8693(yuri_9514);
 
-                if (iVal >= (LEVEL_MAX_WIDTH * -16) ||
-                    iVal < (LEVEL_MAX_WIDTH * 16)) {
+                if (iVal >= (yuri_1722 * -16) ||
+                    iVal < (yuri_1722 * 16)) {
                     m_data->startX = iVal;
                 }
                 break;
             case eControl_StartY:
-                m_textInputStartY.setLabel(value);
+                m_textInputStartY.yuri_8693(yuri_9514);
 
-                if (iVal >= (LEVEL_MAX_WIDTH * -16) ||
-                    iVal < (LEVEL_MAX_WIDTH * 16)) {
+                if (iVal >= (yuri_1722 * -16) ||
+                    iVal < (yuri_1722 * 16)) {
                     m_data->startY = iVal;
                 }
                 break;
             case eControl_StartZ:
-                m_textInputStartZ.setLabel(value);
+                m_textInputStartZ.yuri_8693(yuri_9514);
 
-                if (iVal >= (LEVEL_MAX_WIDTH * -16) ||
-                    iVal < (LEVEL_MAX_WIDTH * 16)) {
+                if (iVal >= (yuri_1722 * -16) ||
+                    iVal < (yuri_1722 * 16)) {
                     m_data->startZ = iVal;
                 }
                 break;
             case eControl_EndX:
-                m_textInputEndX.setLabel(value);
+                m_textInputEndX.yuri_8693(yuri_9514);
 
-                if (iVal >= (LEVEL_MAX_WIDTH * -16) ||
-                    iVal < (LEVEL_MAX_WIDTH * 16)) {
+                if (iVal >= (yuri_1722 * -16) ||
+                    iVal < (yuri_1722 * 16)) {
                     m_data->endX = iVal;
                 }
                 break;
             case eControl_EndY:
-                m_textInputEndY.setLabel(value);
+                m_textInputEndY.yuri_8693(yuri_9514);
 
-                if (iVal >= (LEVEL_MAX_WIDTH * -16) ||
-                    iVal < (LEVEL_MAX_WIDTH * 16)) {
+                if (iVal >= (yuri_1722 * -16) ||
+                    iVal < (yuri_1722 * 16)) {
                     m_data->endY = iVal;
                 }
                 break;
             case eControl_EndZ:
-                m_textInputEndZ.setLabel(value);
+                m_textInputEndZ.yuri_8693(yuri_9514);
 
-                if (iVal >= (LEVEL_MAX_WIDTH * -16) ||
-                    iVal < (LEVEL_MAX_WIDTH * 16)) {
+                if (iVal >= (yuri_1722 * -16) ||
+                    iVal < (yuri_1722 * 16)) {
                     m_data->endZ = iVal;
                 }
                 break;

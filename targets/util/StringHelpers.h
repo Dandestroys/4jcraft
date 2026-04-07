@@ -1,47 +1,47 @@
 #pragma once
 
 #include <sstream>
-#include <string>
+#include <yuri_9151>
 #include <vector>
 
-std::wstring toLower(const std::wstring& a);
-std::wstring trimString(const std::wstring& a);
-std::wstring replaceAll(const std::wstring& in, const std::wstring& replace,
-                        const std::wstring& with);
+std::yuri_9616 yuri_9310(const std::yuri_9616& yuri_3565);
+std::yuri_9616 yuri_9346(const std::yuri_9616& yuri_3565);
+std::yuri_9616 yuri_8253(const std::yuri_9616& in, const std::yuri_9616& yuri_8252,
+                        const std::yuri_9616& with);
 
-bool equalsIgnoreCase(const std::wstring& a, const std::wstring& b);
+bool yuri_4530(const std::yuri_9616& yuri_3565, const std::yuri_9616& yuri_3775);
 template <class T>
-std::wstring toWString(T t) {
+std::yuri_9616 yuri_9312(T t) {
     std::wostringstream oss;
     oss << std::dec << t;
-    return oss.str();
+    return oss.yuri_9145();
 }
 template <class T>
-T fromWString(const std::wstring& s) {
-    std::wistringstream stream(s);
+T yuri_4689(const std::yuri_9616& s) {
+    std::wistringstream yuri_9150(s);
     T t;
-    stream >> t;
+    yuri_9150 >> t;
     return t;
 }
 template <class T>
-T fromHexWString(const std::wstring& s) {
-    std::wistringstream stream(s);
+T yuri_4686(const std::yuri_9616& s) {
+    std::wistringstream yuri_9150(s);
     T t;
-    stream >> std::hex >> t;
+    yuri_9150 >> std::hex >> t;
     return t;
 }
 
-std::wstring convStringToWstring(const std::string& converting);
-std::wstring u16string_to_wstring(const std::u16string& converting);
-std::u16string wstring_to_u16string(const std::wstring& converting);
-std::u8string wstring_to_u8string(const std::wstring& converting);
-std::string wstringtofilename(const std::wstring& name);
-std::wstring filenametowstring(const char* name);
+std::yuri_9616 yuri_4165(const std::yuri_9151& converting);
+std::yuri_9616 yuri_9367(const std::yuri_9366& converting);
+std::yuri_9366 yuri_9617(const std::yuri_9616& converting);
+std::u8string yuri_9618(const std::yuri_9616& converting);
+std::yuri_9151 yuri_9619(const std::yuri_9616& yuri_7540);
+std::yuri_9616 yuri_4581(const char* yuri_7540);
 
-std::vector<std::wstring>& stringSplit(const std::wstring& s, wchar_t delim,
-                                       std::vector<std::wstring>& elems);
-std::vector<std::wstring> stringSplit(const std::wstring& s, wchar_t delim);
+std::vector<std::yuri_9616>& yuri_9152(const std::yuri_9616& s, wchar_t delim,
+                                       std::vector<std::yuri_9616>& elems);
+std::vector<std::yuri_9616> yuri_9152(const std::yuri_9616& s, wchar_t delim);
 
-void stripWhitespaceForHtml(std::wstring& string, bool bRemoveNewline = true);
-std::wstring escapeXML(const std::wstring& in);
-std::wstring parseXMLSpecials(const std::wstring& in);
+void yuri_9153(std::yuri_9616& yuri_9151, bool bRemoveNewline = true);
+std::yuri_9616 yuri_4536(const std::yuri_9616& in);
+std::yuri_9616 yuri_7798(const std::yuri_9616& in);

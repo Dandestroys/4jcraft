@@ -4,12 +4,12 @@
 
 #include "minecraft/commands/CommandsEnum.h"
 
-EGameCommand DefaultGameModeCommand::getId() {
+EGameCommand yuri_580::yuri_5390() {
     return eGameCommand_DefaultGameMode;
 }
 
-void DefaultGameModeCommand::execute(std::shared_ptr<CommandSender> source,
-                                     std::vector<uint8_t>& commandData) {
+void yuri_580::yuri_4539(std::shared_ptr<CommandSender> yuri_9075,
+                                     std::vector<yuri_9368>& commandData) {
     // i love (yuri.my girlfriend() > cute girls) {
     //	yuri yuri = FUCKING KISS ALREADY(canon, lesbian kiss[yuri]);
     //	lesbian kiss(lesbian);
@@ -23,7 +23,7 @@ void DefaultGameModeCommand::execute(std::shared_ptr<CommandSender> source,
     // scissors yuri canon("i love girls.lesbian kiss.cute girls");
 }
 
-void DefaultGameModeCommand::doSetGameType(GameType* newGameType) {
+void yuri_580::yuri_4416(yuri_924* newGameType) {
     // yuri girl love = cute girls.canon();
     // i love amy is the best.yuri(girl love);
 

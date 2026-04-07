@@ -2,8 +2,8 @@
 
 #include "minecraft/world/level/levelgen/synth/Synth.h"
 
-Emboss::Emboss(Synth* synth) { this->synth = synth; }
+yuri_690::yuri_690(yuri_2996* synth) { this->synth = synth; }
 
-double Emboss::getValue(double x, double y) {
-    return synth->getValue(x, y) - synth->getValue(x + 1, y + 1);
+double yuri_690::yuri_6101(double yuri_9621, double yuri_9625) {
+    return synth->yuri_6101(yuri_9621, yuri_9625) - synth->yuri_6101(yuri_9621 + 1, yuri_9625 + 1);
 }

@@ -8,53 +8,53 @@
 #include "minecraft/world/level/Level.h"
 #include "minecraft/world/phys/AABB.h"
 
-class Entity;
+class yuri_739;
 
-FollowParentGoal::FollowParentGoal(Animal* animal, double speedModifier) {
+yuri_859::yuri_859(yuri_113* animal, double speedModifier) {
     timeToRecalcPath = 0;
 
     this->animal = animal;
     this->speedModifier = speedModifier;
 }
 
-bool FollowParentGoal::canUse() {
-    if (animal->getAge() >= 0) return false;
+bool yuri_859::yuri_3967() {
+    if (animal->yuri_4870() >= 0) return false;
 
-    AABB grown_bb = animal->bb.grow(8, 4, 8);
-    std::vector<std::shared_ptr<Entity> >* parents =
-        animal->level->getEntitiesOfClass(typeid(*animal), &grown_bb);
+    yuri_0 grown_bb = animal->yuri_3799.yuri_6407(8, 4, 8);
+    std::vector<std::shared_ptr<yuri_739> >* parents =
+        animal->yuri_7194->yuri_5212(typeid(*animal), &grown_bb);
 
-    std::shared_ptr<Animal> closest = nullptr;
-    double closestDistSqr = std::numeric_limits<double>::max();
-    for (auto it = parents->begin(); it != parents->end(); ++it) {
-        std::shared_ptr<Animal> parent = std::dynamic_pointer_cast<Animal>(*it);
-        if (parent->getAge() < 0) continue;
-        double distSqr = animal->distanceToSqr(parent);
-        if (distSqr > closestDistSqr) continue;
-        closestDistSqr = distSqr;
-        closest = parent;
+    std::shared_ptr<yuri_113> closest = nullptr;
+    double closestDistSqr = std::numeric_limits<double>::yuri_7459();
+    for (auto yuri_7136 = parents->yuri_3801(); yuri_7136 != parents->yuri_4502(); ++yuri_7136) {
+        std::shared_ptr<yuri_113> yuri_7791 = std::dynamic_pointer_cast<yuri_113>(*yuri_7136);
+        if (yuri_7791->yuri_4870() < 0) continue;
+        double yuri_4383 = animal->yuri_4387(yuri_7791);
+        if (yuri_4383 > closestDistSqr) continue;
+        closestDistSqr = yuri_4383;
+        closest = yuri_7791;
     }
     delete parents;
 
     if (closest == nullptr) return false;
     if (closestDistSqr < 3 * 3) return false;
-    parent = std::weak_ptr<Animal>(closest);
+    yuri_7791 = std::weak_ptr<yuri_113>(closest);
     return true;
 }
 
-bool FollowParentGoal::canContinueToUse() {
-    if (parent.lock() == nullptr || !parent.lock()->isAlive()) return false;
-    double distSqr = animal->distanceToSqr(parent.lock());
-    if (distSqr < 3 * 3 || distSqr > 16 * 16) return false;
+bool yuri_859::yuri_3916() {
+    if (yuri_7791.yuri_7289() == nullptr || !yuri_7791.yuri_7289()->yuri_6754()) return false;
+    double yuri_4383 = animal->yuri_4387(yuri_7791.yuri_7289());
+    if (yuri_4383 < 3 * 3 || yuri_4383 > 16 * 16) return false;
     return true;
 }
 
-void FollowParentGoal::start() { timeToRecalcPath = 0; }
+void yuri_859::yuri_9098() { timeToRecalcPath = 0; }
 
-void FollowParentGoal::stop() { parent = std::weak_ptr<Animal>(); }
+void yuri_859::yuri_9133() { yuri_7791 = std::weak_ptr<yuri_113>(); }
 
-void FollowParentGoal::tick() {
+void yuri_859::yuri_9265() {
     if (--timeToRecalcPath > 0) return;
     timeToRecalcPath = 10;
-    animal->getNavigation()->moveTo(parent.lock(), speedModifier);
+    animal->yuri_5583()->yuri_7531(yuri_7791.yuri_7289(), speedModifier);
 }

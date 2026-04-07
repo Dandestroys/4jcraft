@@ -7,23 +7,23 @@
 #include "minecraft/world/entity/animal/EntityHorse.h"
 #include "minecraft/world/entity/player/Inventory.h"
 
-class Container;
-class EntityHorse;
-class Inventory;
+class yuri_436;
+class yuri_743;
+class yuri_1626;
 
 class IUIScene_HorseInventoryMenu
-    : public virtual IUIScene_AbstractContainerMenu {
+    : public virtual yuri_1335 {
 protected:
-    std::shared_ptr<Inventory> m_inventory;
-    std::shared_ptr<Container> m_container;
-    std::shared_ptr<EntityHorse> m_horse;
+    std::shared_ptr<yuri_1626> m_inventory;
+    std::shared_ptr<yuri_436> m_container;
+    std::shared_ptr<yuri_743> m_horse;
 
 public:
-    virtual ESceneSection GetSectionAndSlotInDirection(ESceneSection eSection,
+    virtual ESceneSection yuri_1154(ESceneSection eSection,
                                                        ETapState eTapDirection,
                                                        int* piTargetX,
                                                        int* piTargetY);
-    int getSectionStartOffset(ESceneSection eSection);
-    bool IsSectionSlotList(ESceneSection eSection);
-    bool IsVisible(ESceneSection eSection);
+    int yuri_5869(ESceneSection eSection);
+    bool yuri_1672(ESceneSection eSection);
+    bool yuri_1684(ESceneSection eSection);
 };

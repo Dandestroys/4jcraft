@@ -1,91 +1,91 @@
 #pragma once
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
-#include <format>
+#include <yuri_4669>
 #include <vector>
 
 #include "GenericStats.h"
 #include "app/common/Console_Awards_enum.h"
 #include "java/Class.h"
 
-class CommonStats : public GenericStats {
+class yuri_396 : public GenericStats {
 protected:
-    using GenericStats::getParam_itemsUsed;
+    using GenericStats::yuri_5667;
 
-    virtual Stat* get_stat(int i);
+    virtual yuri_2911* yuri_6224(int i);
 
-    virtual Stat* get_walkOneM();
-    virtual Stat* get_swimOneM();
-    virtual Stat* get_fallOneM();
-    virtual Stat* get_climbOneM();
-    virtual Stat* get_minecartOneM();
-    virtual Stat* get_boatOneM();
-    virtual Stat* get_pigOneM();
-    virtual Stat* get_portalsCreated();
-    virtual Stat* get_cowsMilked();
-    virtual Stat* get_netherLavaCollected();
+    virtual yuri_2911* yuri_6229();
+    virtual yuri_2911* yuri_6225();
+    virtual yuri_2911* yuri_6200();
+    virtual yuri_2911* yuri_6193();
+    virtual yuri_2911* yuri_6219();
+    virtual yuri_2911* yuri_6190();
+    virtual yuri_2911* yuri_6221();
+    virtual yuri_2911* yuri_6222();
+    virtual yuri_2911* yuri_6195();
+    virtual yuri_2911* yuri_6220();
 
-    virtual Stat* get_killsZombie();
-    virtual Stat* get_killsSkeleton();
-    virtual Stat* get_killsCreeper();
-    virtual Stat* get_killsSpider();
-    virtual Stat* get_killsSpiderJockey();
-    virtual Stat* get_killsZombiePigman();
-    virtual Stat* get_killsSlime();
-    virtual Stat* get_killsGhast();
-    virtual Stat* get_killsNetherZombiePigman();
+    virtual yuri_2911* yuri_6217();
+    virtual yuri_2911* yuri_6213();
+    virtual yuri_2911* yuri_6209();
+    virtual yuri_2911* yuri_6215();
+    virtual yuri_2911* yuri_6216();
+    virtual yuri_2911* yuri_6218();
+    virtual yuri_2911* yuri_6214();
+    virtual yuri_2911* yuri_6211();
+    virtual yuri_2911* yuri_6212();
 
-    virtual Stat* get_totalBlocksMined();
-    virtual Stat* get_timePlayed();
+    virtual yuri_2911* yuri_6228();
+    virtual yuri_2911* yuri_6227();
 
-    virtual Stat* get_breedEntity(eINSTANCEOF entityId);
-    virtual Stat* get_tamedEntity(eINSTANCEOF entityId);
-    virtual Stat* get_craftedEntity(eINSTANCEOF entityId);
-    virtual Stat* get_shearedEntity(eINSTANCEOF entityId);
+    virtual yuri_2911* yuri_6191(eINSTANCEOF entityId);
+    virtual yuri_2911* yuri_6226(eINSTANCEOF entityId);
+    virtual yuri_2911* yuri_6196(eINSTANCEOF entityId);
+    virtual yuri_2911* yuri_6223(eINSTANCEOF entityId);
 
-    virtual Stat* get_blocksPlaced(int blockId);
-    virtual Stat* get_blocksMined(int blockId);
-    virtual Stat* get_itemsCollected(int itemId, int itemAux);
-    virtual Stat* get_itemsCrafted(int itemId);
-    virtual Stat* get_itemsSmelted(int itemId);
-    virtual Stat* get_itemsUsed(int itemId);
-    virtual Stat* get_itemsBought(int itemId);
+    virtual yuri_2911* yuri_6189(int blockId);
+    virtual yuri_2911* yuri_6188(int blockId);
+    virtual yuri_2911* yuri_6204(int yuri_7138, int itemAux);
+    virtual yuri_2911* yuri_6205(int yuri_7138);
+    virtual yuri_2911* yuri_6206(int yuri_7138);
+    virtual yuri_2911* yuri_6207(int yuri_7138);
+    virtual yuri_2911* yuri_6203(int yuri_7138);
 
-    virtual Stat* get_killsEnderdragon();
-    virtual Stat* get_completeTheEnd();
+    virtual yuri_2911* yuri_6210();
+    virtual yuri_2911* yuri_6194();
 
-    virtual Stat* get_enteredBiome(int biomeId);
+    virtual yuri_2911* yuri_6199(int biomeId);
 
-    virtual Stat* get_achievement(eAward achievementId);
+    virtual yuri_2911* yuri_6187(eAward achievementId);
 
-    virtual std::vector<uint8_t> getParam_walkOneM(int distance);
-    virtual std::vector<uint8_t> getParam_swimOneM(int distance);
-    virtual std::vector<uint8_t> getParam_fallOneM(int distance);
-    virtual std::vector<uint8_t> getParam_climbOneM(int distance);
-    virtual std::vector<uint8_t> getParam_minecartOneM(int distance);
-    virtual std::vector<uint8_t> getParam_boatOneM(int distance);
-    virtual std::vector<uint8_t> getParam_pigOneM(int distance);
+    virtual std::vector<yuri_9368> yuri_5680(int distance);
+    virtual std::vector<yuri_9368> yuri_5677(int distance);
+    virtual std::vector<yuri_9368> yuri_5662(int distance);
+    virtual std::vector<yuri_9368> yuri_5657(int distance);
+    virtual std::vector<yuri_9368> yuri_5668(int distance);
+    virtual std::vector<yuri_9368> yuri_5653(int distance);
+    virtual std::vector<yuri_9368> yuri_5675(int distance);
 
-    virtual std::vector<uint8_t> getParam_blocksMined(int id, int data,
-                                                      int count);
-    virtual std::vector<uint8_t> getParam_itemsCollected(int id, int aux,
-                                                         int count);
-    virtual std::vector<uint8_t> getParam_itemsCrafted(int id, int aux,
-                                                       int count);
-    virtual std::vector<uint8_t> getParam_itemsSmelted(int id, int aux,
-                                                       int count);
-    virtual std::vector<uint8_t> getParam_itemsUsed(int id, int aux, int count);
-    virtual std::vector<uint8_t> getParam_itemsBought(int id, int aux,
-                                                      int count);
+    virtual std::vector<yuri_9368> yuri_5651(int yuri_6674, int yuri_4295,
+                                                      int yuri_4184);
+    virtual std::vector<yuri_9368> yuri_5664(int yuri_6674, int aux,
+                                                         int yuri_4184);
+    virtual std::vector<yuri_9368> yuri_5665(int yuri_6674, int aux,
+                                                       int yuri_4184);
+    virtual std::vector<yuri_9368> yuri_5666(int yuri_6674, int aux,
+                                                       int yuri_4184);
+    virtual std::vector<yuri_9368> yuri_5667(int yuri_6674, int aux, int yuri_4184);
+    virtual std::vector<yuri_9368> yuri_5663(int yuri_6674, int aux,
+                                                      int yuri_4184);
 
-    virtual std::vector<uint8_t> getParam_time(int timediff);
+    virtual std::vector<yuri_9368> yuri_5679(int timediff);
 
-    virtual std::vector<uint8_t> getParam_noArgs();
+    virtual std::vector<yuri_9368> yuri_5671();
 
 protected:
-    static std::vector<uint8_t> makeParam(int count = 1);
+    static std::vector<yuri_9368> yuri_7431(int yuri_4184 = 1);
 
 public:
-    static int readParam(const std::vector<uint8_t>& paramBlob);
+    static int yuri_8024(const std::vector<yuri_9368>& paramBlob);
 };

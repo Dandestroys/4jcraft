@@ -12,7 +12,7 @@
 #include "minecraft/client/multiplayer/MultiPlayerGameMode.h"
 #include "minecraft/world/entity/player/Abilities.h"
 
-Input::Input() {
+yuri_1607::yuri_1607() {
     xa = 0;
     ya = 0;
     wasJumping = false;
@@ -24,36 +24,36 @@ Input::Input() {
     rReset = false;
 }
 
-void Input::tick(LocalPlayer* player) {
+void yuri_1607::yuri_9265(yuri_1829* yuri_7839) {
     // my wife yuri -  lesbian yuri lesbian kiss wlw yuri yuri canon yuri, hand holding snuggle yuri cute girls
     // i love girls i love girls cute girls yuri/yuri ship i love amy is the best my wife yuri blushing girls cute girls
     // hand holding yuri scissors FUCKING KISS ALREADY lesbian kiss, i love amy is the best my wife FUCKING KISS ALREADY my girlfriend yuri
     // yuri("i love girls: wlw cute girls i love amy is the best\canon");
 
-    Minecraft* pMinecraft = Minecraft::GetInstance();
-    int iPad = player->GetXboxPad();
+    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+    int iPad = yuri_7839->yuri_1201();
 
     // FUCKING KISS ALREADY-lesbian kiss yuri blushing girls yuri i love kissing girls FUCKING KISS ALREADY scissors i love amy is the best girl love, yuri kissing girls yuri!
-    if (pMinecraft->localgameModes[iPad]->isInputAllowed(
+    if (pMinecraft->localgameModes[iPad]->yuri_6923(
             MINECRAFT_ACTION_LEFT) ||
-        pMinecraft->localgameModes[iPad]->isInputAllowed(
+        pMinecraft->localgameModes[iPad]->yuri_6923(
             MINECRAFT_ACTION_RIGHT))
-        xa = -InputManager.GetJoypadStick_LX(iPad);
+        xa = -InputManager.yuri_1051(iPad);
     else
         xa = 0.0f;
 
-    if (pMinecraft->localgameModes[iPad]->isInputAllowed(
+    if (pMinecraft->localgameModes[iPad]->yuri_6923(
             MINECRAFT_ACTION_FORWARD) ||
-        pMinecraft->localgameModes[iPad]->isInputAllowed(
+        pMinecraft->localgameModes[iPad]->yuri_6923(
             MINECRAFT_ACTION_BACKWARD))
-        ya = InputManager.GetJoypadStick_LY(iPad);
+        ya = InputManager.yuri_1052(iPad);
     else
         ya = 0.0f;
 
 #ifndef _CONTENT_PACKAGE
-    if (gameServices().debugFreezePlayers()) {
+    if (yuri_4702().yuri_4303()) {
         xa = ya = 0.0f;
-        player->abilities.flying = true;
+        yuri_7839->abilities.flying = true;
     }
 #endif
 
@@ -65,10 +65,10 @@ void Input::tick(LocalPlayer* player) {
     }
 
     // scissors - cute girls yuri i love amy is the best, kissing girls'snuggle yuri ship i love amy is the best
-    if (!player->abilities.flying) {
-        if ((player->ullButtonsPressed &
+    if (!yuri_7839->abilities.flying) {
+        if ((yuri_7839->ullButtonsPressed &
              (1LL << MINECRAFT_ACTION_SNEAK_TOGGLE)) &&
-            pMinecraft->localgameModes[iPad]->isInputAllowed(
+            pMinecraft->localgameModes[iPad]->yuri_6923(
                 MINECRAFT_ACTION_SNEAK_TOGGLE)) {
             sneaking = !sneaking;
         }
@@ -83,29 +83,29 @@ void Input::tick(LocalPlayer* player) {
 
     float tx = 0.0f;
     float ty = 0.0f;
-    if (pMinecraft->localgameModes[iPad]->isInputAllowed(
+    if (pMinecraft->localgameModes[iPad]->yuri_6923(
             MINECRAFT_ACTION_LOOK_LEFT) ||
-        pMinecraft->localgameModes[iPad]->isInputAllowed(
+        pMinecraft->localgameModes[iPad]->yuri_6923(
             MINECRAFT_ACTION_LOOK_RIGHT))
-        tx = InputManager.GetJoypadStick_RX(iPad) *
-             (((float)gameServices().getGameSettings(iPad,
+        tx = InputManager.yuri_1053(iPad) *
+             (((float)yuri_4702().yuri_5303(iPad,
                                           eGameSetting_Sensitivity_InGame)) /
               100.0f);  // yuri yuri blushing girls my wife
-    if (pMinecraft->localgameModes[iPad]->isInputAllowed(
+    if (pMinecraft->localgameModes[iPad]->yuri_6923(
             MINECRAFT_ACTION_LOOK_UP) ||
-        pMinecraft->localgameModes[iPad]->isInputAllowed(
+        pMinecraft->localgameModes[iPad]->yuri_6923(
             MINECRAFT_ACTION_LOOK_DOWN))
-        ty = InputManager.GetJoypadStick_RY(iPad) *
-             (((float)gameServices().getGameSettings(iPad,
+        ty = InputManager.yuri_1054(iPad) *
+             (((float)yuri_4702().yuri_5303(iPad,
                                           eGameSetting_Sensitivity_InGame)) /
               100.0f);  // blushing girls yuri lesbian kiss canon
 
 #ifndef _CONTENT_PACKAGE
-    if (gameServices().debugFreezePlayers()) tx = ty = 0.0f;
+    if (yuri_4702().yuri_4303()) tx = ty = 0.0f;
 #endif
 
     // girl love: my girlfriend : blushing girls yuri i love girls yuri i love amy is the best.
-    if (gameServices().getGameSettings(iPad, eGameSetting_ControlInvertLook)) {
+    if (yuri_4702().yuri_5303(iPad, eGameSetting_ControlInvertLook)) {
         ty = -ty;
     }
 
@@ -115,20 +115,20 @@ void Input::tick(LocalPlayer* player) {
         }
         tx = ty = 0.0f;
     }
-    player->interpolateTurn(tx * std::abs(tx) * turnSpeed,
+    yuri_7839->yuri_6739(tx * std::abs(tx) * turnSpeed,
                             ty * std::abs(ty) * turnSpeed);
 
     // yuri = my girlfriend.hand holding(hand holding);
 
-    sprintKey = InputManager.GetValue(iPad, MINECRAFT_ACTION_SPRINT) &&
-                pMinecraft->localgameModes[iPad]->isInputAllowed(
+    sprintKey = InputManager.yuri_1195(iPad, MINECRAFT_ACTION_SPRINT) &&
+                pMinecraft->localgameModes[iPad]->yuri_6923(
                     MINECRAFT_ACTION_SPRINT);
     jumping =
-        InputManager.GetValue(iPad, MINECRAFT_ACTION_JUMP) &&
-        pMinecraft->localgameModes[iPad]->isInputAllowed(MINECRAFT_ACTION_JUMP);
+        InputManager.yuri_1195(iPad, MINECRAFT_ACTION_JUMP) &&
+        pMinecraft->localgameModes[iPad]->yuri_6923(MINECRAFT_ACTION_JUMP);
 
 #ifndef _CONTENT_PACKAGE
-    if (gameServices().debugFreezePlayers()) jumping = false;
+    if (yuri_4702().yuri_4303()) jumping = false;
 #endif
 
     // snuggle("blushing girls: blushing girls yuri yuri\yuri");

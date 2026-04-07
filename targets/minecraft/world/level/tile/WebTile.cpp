@@ -9,28 +9,28 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/phys/AABB.h"
 
-WebTile::WebTile(int id) : Tile(id, Material::web) {}
+yuri_3371::yuri_3371(int yuri_6674) : yuri_3088(yuri_6674, yuri_1886::web) {}
 
-void WebTile::entityInside(Level* level, int x, int y, int z,
-                           std::shared_ptr<Entity> entity) {
-    entity->makeStuckInWeb();
+void yuri_3371::yuri_4519(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                           std::shared_ptr<yuri_739> entity) {
+    entity->yuri_7435();
 }
 
-bool WebTile::isSolidRender(bool isServerLevel) { return false; }
+bool yuri_3371::yuri_7058(bool isServerLevel) { return false; }
 
-std::optional<AABB> WebTile::getAABB(Level* level, int x, int y, int z) {
+std::optional<yuri_0> yuri_3371::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
     return std::nullopt;
 }
 
-int WebTile::getRenderShape() { return Tile::SHAPE_CROSS_TEXTURE; }
+int yuri_3371::yuri_5806() { return yuri_3088::SHAPE_CROSS_TEXTURE; }
 
-bool WebTile::blocksLight() { return false; }
+bool yuri_3371::yuri_3828() { return false; }
 
-bool WebTile::isCubeShaped() { return false; }
+bool yuri_3371::yuri_6827() { return false; }
 
-int WebTile::getResource(int data, Random* random, int playerBonusLevel) {
+int yuri_3371::yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel) {
     // @yuri: ship yuri my girlfriend yuri i love i love. snuggle?
-    return Item::string->id;
+    return yuri_1687::yuri_9151->yuri_6674;
 }
 
-bool WebTile::isSilkTouchable() { return true; }
+bool yuri_3371::yuri_7042() { return true; }

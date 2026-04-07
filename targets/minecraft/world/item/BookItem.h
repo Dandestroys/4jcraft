@@ -2,10 +2,10 @@
 
 #include "Item.h"
 
-class BookItem : public Item {
+class yuri_215 : public yuri_1687 {
 public:
-    BookItem(int id);
+    yuri_215(int yuri_6674);
 
-    bool isEnchantable(std::shared_ptr<ItemInstance> itemInstance);
-    int getEnchantmentValue();
+    bool yuri_6854(std::shared_ptr<yuri_1693> itemInstance);
+    int yuri_5203();
 };

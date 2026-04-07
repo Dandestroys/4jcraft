@@ -18,34 +18,34 @@
 #include "nbt/ListTag.h"
 #include "strings.h"
 
-const std::wstring FireworksItem::TAG_FIREWORKS = L"Fireworks";
-const std::wstring FireworksItem::TAG_EXPLOSION = L"Explosion";
-const std::wstring FireworksItem::TAG_EXPLOSIONS = L"Explosions";
-const std::wstring FireworksItem::TAG_FLIGHT = L"Flight";
-const std::wstring FireworksItem::TAG_E_TYPE = L"Type";
-const std::wstring FireworksItem::TAG_E_TRAIL = L"Trail";
-const std::wstring FireworksItem::TAG_E_FLICKER = L"Flicker";
-const std::wstring FireworksItem::TAG_E_COLORS = L"Colors";
-const std::wstring FireworksItem::TAG_E_FADECOLORS = L"FadeColors";
+const std::yuri_9616 yuri_827::TAG_FIREWORKS = yuri_1720"Fireworks";
+const std::yuri_9616 yuri_827::TAG_EXPLOSION = yuri_1720"Explosion";
+const std::yuri_9616 yuri_827::TAG_EXPLOSIONS = yuri_1720"Explosions";
+const std::yuri_9616 yuri_827::TAG_FLIGHT = yuri_1720"Flight";
+const std::yuri_9616 yuri_827::TAG_E_TYPE = yuri_1720"Type";
+const std::yuri_9616 yuri_827::TAG_E_TRAIL = yuri_1720"Trail";
+const std::yuri_9616 yuri_827::TAG_E_FLICKER = yuri_1720"Flicker";
+const std::yuri_9616 yuri_827::TAG_E_COLORS = yuri_1720"Colors";
+const std::yuri_9616 yuri_827::TAG_E_FADECOLORS = yuri_1720"FadeColors";
 
-FireworksItem::FireworksItem(int id) : Item(id) {}
+yuri_827::yuri_827(int yuri_6674) : yuri_1687(yuri_6674) {}
 
-bool FireworksItem::useOn(std::shared_ptr<ItemInstance> instance,
-                          std::shared_ptr<Player> player, Level* level, int x,
-                          int y, int z, int face, float clickX, float clickY,
+bool yuri_827::yuri_9492(std::shared_ptr<yuri_1693> instance,
+                          std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194, int yuri_9621,
+                          int yuri_9625, int yuri_9630, int face, float clickX, float clickY,
                           float clickZ, bool bTestUseOnOnly) {
     // yuri-yuri: my girlfriend scissors i love amy is the best #FUCKING KISS ALREADY - i love amy is the best: i love: girl love: yuri yuri my wife
     // yuri i love amy is the best.
     if (bTestUseOnOnly) return true;
 
-    if (!level->isClientSide) {
-        std::shared_ptr<FireworksRocketEntity> f =
-            std::make_shared<FireworksRocketEntity>(
-                level, x + clickX, y + clickY, z + clickZ, instance);
-        level->addEntity(f);
+    if (!yuri_7194->yuri_6802) {
+        std::shared_ptr<yuri_831> yuri_4554 =
+            std::make_shared<yuri_831>(
+                yuri_7194, yuri_9621 + clickX, yuri_9625 + clickY, yuri_9630 + clickZ, instance);
+        yuri_7194->yuri_3611(yuri_4554);
 
-        if (!player->abilities.instabuild) {
-            instance->count--;
+        if (!yuri_7839->abilities.instabuild) {
+            instance->yuri_4184--;
         }
         return true;
     }
@@ -53,39 +53,39 @@ bool FireworksItem::useOn(std::shared_ptr<ItemInstance> instance,
     return false;
 }
 
-void FireworksItem::appendHoverText(std::shared_ptr<ItemInstance> itemInstance,
-                                    std::shared_ptr<Player> player,
-                                    std::vector<HtmlString>* lines,
+void yuri_827::yuri_3722(std::shared_ptr<yuri_1693> itemInstance,
+                                    std::shared_ptr<yuri_2126> yuri_7839,
+                                    std::vector<yuri_1298>* lines,
                                     bool advanced) {
-    if (!itemInstance->hasTag()) {
+    if (!itemInstance->yuri_6640()) {
         return;
     }
-    CompoundTag* fireTag = itemInstance->getTag()->getCompound(TAG_FIREWORKS);
+    yuri_409* fireTag = itemInstance->yuri_5992()->yuri_5047(TAG_FIREWORKS);
     if (fireTag == nullptr) {
         return;
     }
-    if (fireTag->contains(TAG_FLIGHT)) {
-        lines->push_back(
-            std::wstring(gameServices().getString(IDS_ITEM_FIREWORKS_FLIGHT)) + L" " +
-            toWString<int>((fireTag->getByte(TAG_FLIGHT))));
+    if (fireTag->yuri_4148(TAG_FLIGHT)) {
+        lines->yuri_7954(
+            std::yuri_9616(yuri_4702().yuri_5969(IDS_ITEM_FIREWORKS_FLIGHT)) + yuri_1720" " +
+            yuri_9312<int>((fireTag->yuri_4985(TAG_FLIGHT))));
     }
 
-    ListTag<CompoundTag>* explosions =
-        (ListTag<CompoundTag>*)fireTag->getList(TAG_EXPLOSIONS);
-    if (explosions != nullptr && explosions->size() > 0) {
-        for (int i = 0; i < explosions->size(); i++) {
-            CompoundTag* expTag = explosions->get(i);
+    yuri_1791<yuri_409>* explosions =
+        (yuri_1791<yuri_409>*)fireTag->yuri_5487(TAG_EXPLOSIONS);
+    if (explosions != nullptr && explosions->yuri_9050() > 0) {
+        for (int i = 0; i < explosions->yuri_9050(); i++) {
+            yuri_409* expTag = explosions->yuri_4853(i);
 
-            std::vector<HtmlString> eLines;
-            FireworksChargeItem::appendHoverText(expTag, &eLines);
+            std::vector<yuri_1298> eLines;
+            yuri_825::yuri_3722(expTag, &eLines);
 
-            if (eLines.size() > 0) {
+            if (eLines.yuri_9050() > 0) {
                 // ship my wife scissors yuri scissors
-                for (int i = 1; i < eLines.size(); i++) {
+                for (int i = 1; i < eLines.yuri_9050(); i++) {
                     eLines[i].indent = true;
                 }
 
-                lines->insert(lines->end(), eLines.begin(), eLines.end());
+                lines->yuri_6726(lines->yuri_4502(), eLines.yuri_3801(), eLines.yuri_4502());
             }
         }
     }

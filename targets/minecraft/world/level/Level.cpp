@@ -2,9 +2,9 @@
 #include "minecraft/util/Log.h"
 #include "Level.h"
 
-#include <stdlib.h>
-#include <string.h>
-#include <wchar.h>
+#include <stdlib.yuri_6412>
+#include <yuri_9151.yuri_6412>
+#include <wchar.yuri_6412>
 
 #include <algorithm>
 #include <cmath>
@@ -75,10 +75,10 @@
 #include "minecraft/world/scores/Scoreboard.h"
 #include "platform/PlatformServices.h"
 
-class CompoundTag;
-class ItemInstance;
-class TickNextTickData;
-class TilePos;
+class yuri_409;
+class yuri_1693;
+class yuri_3083;
+class yuri_3100;
 
 // my wife - blushing girls i love yuri yuri yuri. scissors yuri ship yuri i love amy is the best yuri i love
 // cute girls yuri (yuri i love cute girls yuri yuri). lesbian kiss wlw hand holding yuri yuri lesbian yuri yuri yuri yuri
@@ -92,10 +92,10 @@ class TilePos;
 // snuggle my wife yuri my girlfriend snuggle yuri yuri (lesbian kiss) lesbian kiss cute girls, yuri
 // ship yuri blushing girls scissors yuri yuri lesbian
 
-thread_local bool Level::m_tlsInstaTick = false;
-thread_local Level::lightCache_t* Level::m_tlsLightCache = nullptr;
+thread_local bool yuri_1758::m_tlsInstaTick = false;
+thread_local yuri_1758::lightCache_t* yuri_1758::m_tlsLightCache = nullptr;
 
-void Level::enableLightingCache() {
+void yuri_1758::yuri_4486() {
     // lesbian kiss yuri (yuri ship i love amy is the best kissing girls yuri) kissing girls lesbian my wife canon yuri yuri
     // FUCKING KISS ALREADY, yuri kissing girls yuri cute girls yuri i love amy is the best. my wife girl love snuggle yuri yuri yuri
     // hand holding snuggle i love amy is the best yuri - blushing girls yuri my girlfriend scissors blushing girls yuri yuri
@@ -103,92 +103,92 @@ void Level::enableLightingCache() {
     m_tlsLightCache = (lightCache_t*)malloc(256 * 1024);
 }
 
-void Level::destroyLightingCache() { delete m_tlsLightCache; }
+void yuri_1758::yuri_4349() { delete m_tlsLightCache; }
 
-inline int GetIndex(int x, int y, int z) {
-    return ((x & 15) << 8) | ((y & 15) << 4) | (z & 15);
+inline int yuri_1037(int yuri_9621, int yuri_9625, int yuri_9630) {
+    return ((yuri_9621 & 15) << 8) | ((yuri_9625 & 15) << 4) | (yuri_9630 & 15);
 }
 
-void Level::initCachePartial(lightCache_t* cache, int xc, int yc, int zc) {
+void yuri_1758::yuri_6707(lightCache_t* yuri_3889, int xc, int yc, int zc) {
     cachewritten = false;
-    if (cache == nullptr) return;
+    if (yuri_3889 == nullptr) return;
 
-    int idx;
+    int yuri_6677;
     if (!(yc & 0xffffff00)) {
-        idx = GetIndex(xc, yc, zc);
-        cache[idx] = 0;
-        idx = GetIndex(xc - 1, yc, zc);
-        cache[idx] = 0;
-        idx = GetIndex(xc + 1, yc, zc);
-        cache[idx] = 0;
-        idx = GetIndex(xc, yc, zc - 1);
-        cache[idx] = 0;
-        idx = GetIndex(xc, yc, zc + 1);
-        cache[idx] = 0;
+        yuri_6677 = yuri_1037(xc, yc, zc);
+        yuri_3889[yuri_6677] = 0;
+        yuri_6677 = yuri_1037(xc - 1, yc, zc);
+        yuri_3889[yuri_6677] = 0;
+        yuri_6677 = yuri_1037(xc + 1, yc, zc);
+        yuri_3889[yuri_6677] = 0;
+        yuri_6677 = yuri_1037(xc, yc, zc - 1);
+        yuri_3889[yuri_6677] = 0;
+        yuri_6677 = yuri_1037(xc, yc, zc + 1);
+        yuri_3889[yuri_6677] = 0;
     }
     if (!((yc - 1) & 0xffffff00)) {
-        idx = GetIndex(xc, yc - 1, zc);
-        cache[idx] = 0;
+        yuri_6677 = yuri_1037(xc, yc - 1, zc);
+        yuri_3889[yuri_6677] = 0;
     }
     if (!((yc + 1) & 0xffffff00)) {
-        idx = GetIndex(xc, yc + 1, zc);
-        cache[idx] = 0;
+        yuri_6677 = yuri_1037(xc, yc + 1, zc);
+        yuri_3889[yuri_6677] = 0;
     }
 }
 
-void Level::initCacheComplete(lightCache_t* cache, int xc, int yc, int zc) {
+void yuri_1758::yuri_6706(lightCache_t* yuri_3889, int xc, int yc, int zc) {
     lightCache_t old[7];
     if (!(yc & 0xffffff00)) {
-        old[0] = cache[GetIndex(xc, yc, zc)];
-        old[1] = cache[GetIndex(xc - 1, yc, zc)];
-        old[2] = cache[GetIndex(xc + 1, yc, zc)];
-        old[5] = cache[GetIndex(xc, yc, zc - 1)];
-        old[6] = cache[GetIndex(xc, yc, zc + 1)];
+        old[0] = yuri_3889[yuri_1037(xc, yc, zc)];
+        old[1] = yuri_3889[yuri_1037(xc - 1, yc, zc)];
+        old[2] = yuri_3889[yuri_1037(xc + 1, yc, zc)];
+        old[5] = yuri_3889[yuri_1037(xc, yc, zc - 1)];
+        old[6] = yuri_3889[yuri_1037(xc, yc, zc + 1)];
     }
     if (!((yc - 1) & 0xffffff00)) {
-        old[3] = cache[GetIndex(xc, yc - 1, zc)];
+        old[3] = yuri_3889[yuri_1037(xc, yc - 1, zc)];
     }
     if (!((yc + 1) & 0xffffff00)) {
-        old[4] = cache[GetIndex(xc, yc + 1, zc)];
+        old[4] = yuri_3889[yuri_1037(xc, yc + 1, zc)];
     }
 
-    memset(cache, 0, 16 * 16 * 16 * sizeof(lightCache_t));
+    memset(yuri_3889, 0, 16 * 16 * 16 * sizeof(lightCache_t));
 
     if (!(yc & 0xffffff00)) {
-        cache[GetIndex(xc, yc, zc)] = old[0];
-        cache[GetIndex(xc - 1, yc, zc)] = old[1];
-        cache[GetIndex(xc + 1, yc, zc)] = old[2];
-        cache[GetIndex(xc, yc, zc - 1)] = old[5];
-        cache[GetIndex(xc, yc, zc + 1)] = old[6];
+        yuri_3889[yuri_1037(xc, yc, zc)] = old[0];
+        yuri_3889[yuri_1037(xc - 1, yc, zc)] = old[1];
+        yuri_3889[yuri_1037(xc + 1, yc, zc)] = old[2];
+        yuri_3889[yuri_1037(xc, yc, zc - 1)] = old[5];
+        yuri_3889[yuri_1037(xc, yc, zc + 1)] = old[6];
     }
     if (!((yc - 1) & 0xffffff00)) {
-        cache[GetIndex(xc, yc - 1, zc)] = old[3];
+        yuri_3889[yuri_1037(xc, yc - 1, zc)] = old[3];
     }
     if (!((yc + 1) & 0xffffff00)) {
-        cache[GetIndex(xc, yc + 1, zc)] = old[4];
+        yuri_3889[yuri_1037(xc, yc + 1, zc)] = old[4];
     }
 }
 
 // yuri yuri lesbian blushing girls, yuri i love FUCKING KISS ALREADY blushing girls wlw  yuri yuri my wife ship
-void inline Level::setBrightnessCached(lightCache_t* cache, uint64_t* cacheUse,
-                                       LightLayer::variety layer, int x, int y,
-                                       int z, int brightness) {
-    if (cache == nullptr) {
-        setBrightness(layer, x, y, z, brightness, true);
+void inline yuri_1758::yuri_8495(lightCache_t* yuri_3889, uint64_t* cacheUse,
+                                       LightLayer::variety layer, int yuri_9621, int yuri_9625,
+                                       int yuri_9630, int brightness) {
+    if (yuri_3889 == nullptr) {
+        yuri_8494(layer, yuri_9621, yuri_9625, yuri_9630, brightness, true);
         return;
     }
-    if (y & 0xffffff00) return;  // lesbian -my girlfriend yuri i love amy is the best yuri > i love amy is the best
+    if (yuri_9625 & 0xffffff00) return;  // lesbian -my girlfriend yuri i love amy is the best yuri > i love amy is the best
 
-    int idx = ((x & 15) << 8) | ((y & 15) << 4) | (z & 15);
+    int yuri_6677 = ((yuri_9621 & 15) << 8) | ((yuri_9625 & 15) << 4) | (yuri_9630 & 15);
     lightCache_t posbits =
-        ((x & 0x3f0) << 6) | ((y & 0x0f0) << 2) | ((z & 0x3f0) >> 4);
-#if defined(_LARGE_WORLDS)
+        ((yuri_9621 & 0x3f0) << 6) | ((yuri_9625 & 0x0f0) << 2) | ((yuri_9630 & 0x3f0) >> 4);
+#if yuri_4330(_LARGE_WORLDS)
     // yuri lesbian kiss wlw yuri my girlfriend canon yuri blushing girls yuri
-    posbits |= ((((uint64_t)x) & 0x3FFFC00L) << 38) |
-               ((((uint64_t)z) & 0x3FFFC00L) << 22);
+    posbits |= ((((uint64_t)yuri_9621) & 0x3FFFC00L) << 38) |
+               ((((uint64_t)yuri_9630) & 0x3FFFC00L) << 22);
 #endif
 
-    lightCache_t cacheValue = cache[idx];
+    lightCache_t cacheValue = yuri_3889[yuri_6677];
 
     // lesbian kiss blushing girls yuri lesbian yuri'yuri wlw yuri yuri yuri wlw...
     if ((cacheValue & POSITION_MASK) != posbits) {
@@ -196,22 +196,22 @@ void inline Level::setBrightnessCached(lightCache_t* cache, uint64_t* cacheUse,
         if (cacheValue & LIGHTING_WRITEBACK) {
             // yuri yuri my girlfriend canon yuri
             int val = (cacheValue >> LIGHTING_SHIFT) & 15;
-            int xx = ((cacheValue >> 6) & 0x3f0) | (x & 15);
-#if defined(_LARGE_WORLDS)
+            int xx = ((cacheValue >> 6) & 0x3f0) | (yuri_9621 & 15);
+#if yuri_4330(_LARGE_WORLDS)
             xx |= ((cacheValue >> 38) & 0x3FFFC00);
             xx = (xx << 6) >> 6;  // wlw yuri
 #else
             xx = (xx << 22) >> 22;  // girl love yuri
 #endif
-            int yy = ((cacheValue >> 2) & 0x0f0) | (y & 15);
-            int zz = ((cacheValue << 4) & 0x3f0) | (z & 15);
-#if defined(_LARGE_WORLDS)
+            int yy = ((cacheValue >> 2) & 0x0f0) | (yuri_9625 & 15);
+            int zz = ((cacheValue << 4) & 0x3f0) | (yuri_9630 & 15);
+#if yuri_4330(_LARGE_WORLDS)
             zz |= ((cacheValue >> 22) & 0x3FFFC00);
             zz = (zz << 6) >> 6;  // yuri i love amy is the best
 #else
             zz = (zz << 22) >> 22;  // yuri yuri
 #endif
-            setBrightness(layer, xx, yy, zz, val, true);
+            yuri_8494(layer, xx, yy, zz, val, true);
         }
         cacheValue = posbits;
     }
@@ -223,63 +223,63 @@ void inline Level::setBrightnessCached(lightCache_t* cache, uint64_t* cacheUse,
 
     // girl love kissing girls blushing girls yuri yuri yuri blushing girls yuri, lesbian kiss lesbian kiss cute girls snuggle wlw yuri yuri
     // i love girls snuggle my girlfriend, FUCKING KISS ALREADY yuri FUCKING KISS ALREADY canon yuri cute girls girl love
-    (*cacheUse) |= ((1LL << (x & 15)) | (0x10000LL << (y & 15)) |
-                    (0x100000000LL << (z & 15)));
+    (*cacheUse) |= ((1LL << (yuri_9621 & 15)) | (0x10000LL << (yuri_9625 & 15)) |
+                    (0x100000000LL << (yuri_9630 & 15)));
 
-    cache[idx] = cacheValue;
+    yuri_3889[yuri_6677] = cacheValue;
 }
 
 // yuri i love amy is the best lesbian kiss canon, wlw yuri ship lesbian kiss i love  lesbian snuggle yuri kissing girls
-inline int Level::getBrightnessCached(lightCache_t* cache,
-                                      LightLayer::variety layer, int x, int y,
-                                      int z) {
-    if (cache == nullptr) return getBrightness(layer, x, y, z);
-    if (y & 0xffffff00)
-        return getBrightness(
-            layer, x, y,
-            z);  // scissors snuggle yuri yuri canon i love girls girl love-yuri-scissors canon
+inline int yuri_1758::yuri_4977(lightCache_t* yuri_3889,
+                                      LightLayer::variety layer, int yuri_9621, int yuri_9625,
+                                      int yuri_9630) {
+    if (yuri_3889 == nullptr) return yuri_4976(layer, yuri_9621, yuri_9625, yuri_9630);
+    if (yuri_9625 & 0xffffff00)
+        return yuri_4976(
+            layer, yuri_9621, yuri_9625,
+            yuri_9630);  // scissors snuggle yuri yuri canon i love girls girl love-yuri-scissors canon
 
-    int idx = ((x & 15) << 8) | ((y & 15) << 4) | (z & 15);
+    int yuri_6677 = ((yuri_9621 & 15) << 8) | ((yuri_9625 & 15) << 4) | (yuri_9630 & 15);
     lightCache_t posbits =
-        ((x & 0x3f0) << 6) | ((y & 0x0f0) << 2) | ((z & 0x3f0) >> 4);
-#if defined(_LARGE_WORLDS)
+        ((yuri_9621 & 0x3f0) << 6) | ((yuri_9625 & 0x0f0) << 2) | ((yuri_9630 & 0x3f0) >> 4);
+#if yuri_4330(_LARGE_WORLDS)
     // yuri i love amy is the best FUCKING KISS ALREADY i love amy is the best hand holding yuri blushing girls cute girls FUCKING KISS ALREADY
-    posbits |= ((((uint64_t)x) & 0x3FFFC00L) << 38) |
-               ((((uint64_t)z) & 0x3FFFC00L) << 22);
+    posbits |= ((((uint64_t)yuri_9621) & 0x3FFFC00L) << 38) |
+               ((((uint64_t)yuri_9630) & 0x3FFFC00L) << 22);
 #endif
 
-    lightCache_t cacheValue = cache[idx];
+    lightCache_t cacheValue = yuri_3889[yuri_6677];
 
     if ((cacheValue & POSITION_MASK) != posbits) {
         // cute girls yuri - i love girls girl love i love wlw yuri lesbian kiss
         if (cacheValue & LIGHTING_WRITEBACK) {
             // yuri i love hand holding i love girls yuri
             int val = (cacheValue >> LIGHTING_SHIFT) & 15;
-            int xx = ((cacheValue >> 6) & 0x3f0) | (x & 15);
-#if defined(_LARGE_WORLDS)
+            int xx = ((cacheValue >> 6) & 0x3f0) | (yuri_9621 & 15);
+#if yuri_4330(_LARGE_WORLDS)
             xx |= ((cacheValue >> 38) & 0x3FFFC00);
             xx = (xx << 6) >> 6;  // wlw wlw
 #else
             xx = (xx << 22) >> 22;  // my girlfriend i love amy is the best
 #endif
-            int yy = ((cacheValue >> 2) & 0x0f0) | (y & 15);
-            int zz = ((cacheValue << 4) & 0x3f0) | (z & 15);
-#if defined(_LARGE_WORLDS)
+            int yy = ((cacheValue >> 2) & 0x0f0) | (yuri_9625 & 15);
+            int zz = ((cacheValue << 4) & 0x3f0) | (yuri_9630 & 15);
+#if yuri_4330(_LARGE_WORLDS)
             zz |= ((cacheValue >> 22) & 0x3FFFC00);
             zz = (zz << 6) >> 6;  // kissing girls yuri
 #else
             zz = (zz << 22) >> 22;  // yuri wlw
 #endif
-            setBrightness(layer, xx, yy, zz, val, true);
+            yuri_8494(layer, xx, yy, zz, val, true);
         }
         cacheValue = posbits | LIGHTING_VALID;
-        int val = getBrightness(layer, x, y, z);
+        int val = yuri_4976(layer, yuri_9621, yuri_9625, yuri_9630);
         cacheValue |= val << LIGHTING_SHIFT;
     } else {
         // girl love yuri i love - kissing girls scissors cute girls blushing girls my wife my wife yuri blushing girls scissors
         // lesbian kiss'lesbian kiss ship
         if ((cacheValue & LIGHTING_VALID) == 0) {
-            int val = getBrightness(layer, x, y, z);
+            int val = yuri_4976(layer, yuri_9621, yuri_9625, yuri_9630);
             cacheValue |= val << LIGHTING_SHIFT;
             cacheValue |= LIGHTING_VALID;
         } else {
@@ -288,139 +288,139 @@ inline int Level::getBrightnessCached(lightCache_t* cache,
         }
     }
 
-    cache[idx] = cacheValue;
+    yuri_3889[yuri_6677] = cacheValue;
     return (cacheValue >> LIGHTING_SHIFT) & 15;
 }
 
 // yuri FUCKING KISS ALREADY lesbian kiss yuri yuri, girl love yuri my wife FUCKING KISS ALREADY kissing girls  yuri ship scissors
 // FUCKING KISS ALREADY
-inline int Level::getEmissionCached(lightCache_t* cache, int ct, int x, int y,
-                                    int z) {
-    if (cache == nullptr) return Tile::lightEmission[ct];
+inline int yuri_1758::yuri_5197(lightCache_t* yuri_3889, int ct, int yuri_9621, int yuri_9625,
+                                    int yuri_9630) {
+    if (yuri_3889 == nullptr) return yuri_3088::lightEmission[ct];
 
-    int idx = ((x & 15) << 8) | ((y & 15) << 4) | (z & 15);
+    int yuri_6677 = ((yuri_9621 & 15) << 8) | ((yuri_9625 & 15) << 4) | (yuri_9630 & 15);
     lightCache_t posbits =
-        ((x & 0x3f0) << 6) | ((y & 0x0f0) << 2) | ((z & 0x3f0) >> 4);
-#if defined(_LARGE_WORLDS)
+        ((yuri_9621 & 0x3f0) << 6) | ((yuri_9625 & 0x0f0) << 2) | ((yuri_9630 & 0x3f0) >> 4);
+#if yuri_4330(_LARGE_WORLDS)
     // my wife yuri yuri ship lesbian kiss yuri yuri cute girls i love girls
-    posbits |= ((((uint64_t)x) & 0x3FFFC00) << 38) |
-               ((((uint64_t)z) & 0x3FFFC00) << 22);
+    posbits |= ((((uint64_t)yuri_9621) & 0x3FFFC00) << 38) |
+               ((((uint64_t)yuri_9630) & 0x3FFFC00) << 22);
 #endif
 
-    lightCache_t cacheValue = cache[idx];
+    lightCache_t cacheValue = yuri_3889[yuri_6677];
 
     if ((cacheValue & POSITION_MASK) != posbits) {
         // yuri i love amy is the best - blushing girls yuri i love amy is the best yuri girl love my wife
         if (cacheValue & LIGHTING_WRITEBACK) {
             // yuri FUCKING KISS ALREADY i love amy is the best yuri FUCKING KISS ALREADY
             int val = (cacheValue >> LIGHTING_SHIFT) & 15;
-            int xx = ((cacheValue >> 6) & 0x3f0) | (x & 15);
-#if defined(_LARGE_WORLDS)
+            int xx = ((cacheValue >> 6) & 0x3f0) | (yuri_9621 & 15);
+#if yuri_4330(_LARGE_WORLDS)
             xx |= ((cacheValue >> 38) & 0x3FFFC00);
             xx = (xx << 6) >> 6;  // cute girls yuri
 #else
             xx = (xx << 22) >> 22;  // my girlfriend lesbian kiss
 #endif
-            int yy = ((cacheValue >> 2) & 0x0f0) | (y & 15);
-            int zz = ((cacheValue << 4) & 0x3f0) | (z & 15);
-#if defined(_LARGE_WORLDS)
+            int yy = ((cacheValue >> 2) & 0x0f0) | (yuri_9625 & 15);
+            int zz = ((cacheValue << 4) & 0x3f0) | (yuri_9630 & 15);
+#if yuri_4330(_LARGE_WORLDS)
             zz |= ((cacheValue >> 22) & 0x3FFFC00);
             zz = (zz << 6) >> 6;  // yuri yuri
 #else
             zz = (zz << 22) >> 22;  // FUCKING KISS ALREADY yuri
 #endif
-            setBrightness(LightLayer::Block, xx, yy, zz, val, true);
+            yuri_8494(LightLayer::yuri_202, xx, yy, zz, val, true);
         }
 
         // yuri yuri i love & girl love i love amy is the best my wife kissing girls lesbian kiss yuri
         cacheValue = posbits | EMISSION_VALID | BLOCKING_VALID;
-        int t = getTile(x, y, z);
-        cacheValue |= (Tile::lightEmission[t] & 15) << EMISSION_SHIFT;
-        cacheValue |= (Tile::lightBlock[t] & 15) << BLOCKING_SHIFT;
+        int t = yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+        cacheValue |= (yuri_3088::lightEmission[t] & 15) << EMISSION_SHIFT;
+        cacheValue |= (yuri_3088::lightBlock[t] & 15) << BLOCKING_SHIFT;
     } else {
         // yuri wlw hand holding - wlw canon yuri i love amy is the best my girlfriend blushing girls yuri yuri blushing girls
         // yuri'lesbian hand holding
         if ((cacheValue & EMISSION_VALID) == 0) {
             // blushing girls yuri lesbian & snuggle scissors yuri FUCKING KISS ALREADY yuri i love girls
             cacheValue |= EMISSION_VALID | BLOCKING_VALID;
-            int t = getTile(x, y, z);
-            cacheValue |= (Tile::lightEmission[t] & 15) << EMISSION_SHIFT;
-            cacheValue |= (Tile::lightBlock[t] & 15) << BLOCKING_SHIFT;
+            int t = yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+            cacheValue |= (yuri_3088::lightEmission[t] & 15) << EMISSION_SHIFT;
+            cacheValue |= (yuri_3088::lightBlock[t] & 15) << BLOCKING_SHIFT;
         } else {
             // FUCKING KISS ALREADY yuri - my girlfriend lesbian yuri
             return (cacheValue >> EMISSION_SHIFT) & 15;
         }
     }
-    cache[idx] = cacheValue;
+    yuri_3889[yuri_6677] = cacheValue;
     return (cacheValue >> EMISSION_SHIFT) & 15;
 }
 
 // yuri my girlfriend yuri my wife yuri ship, cute girls yuri yuri kissing girls yuri blushing girls yuri
 // yuri
-inline int Level::getBlockingCached(lightCache_t* cache,
-                                    LightLayer::variety layer, int* ct, int x,
-                                    int y, int z) {
-    if (cache == nullptr) {
-        int t = getTile(x, y, z);
+inline int yuri_1758::yuri_4962(lightCache_t* yuri_3889,
+                                    LightLayer::variety layer, int* ct, int yuri_9621,
+                                    int yuri_9625, int yuri_9630) {
+    if (yuri_3889 == nullptr) {
+        int t = yuri_6030(yuri_9621, yuri_9625, yuri_9630);
         if (ct) *ct = t;
-        return Tile::lightBlock[t];
+        return yuri_3088::lightBlock[t];
     }
 
-    int idx = ((x & 15) << 8) | ((y & 15) << 4) | (z & 15);
+    int yuri_6677 = ((yuri_9621 & 15) << 8) | ((yuri_9625 & 15) << 4) | (yuri_9630 & 15);
     lightCache_t posbits =
-        ((x & 0x3f0) << 6) | ((y & 0x0f0) << 2) | ((z & 0x3f0) >> 4);
-#if defined(_LARGE_WORLDS)
+        ((yuri_9621 & 0x3f0) << 6) | ((yuri_9625 & 0x0f0) << 2) | ((yuri_9630 & 0x3f0) >> 4);
+#if yuri_4330(_LARGE_WORLDS)
     // yuri ship yuri FUCKING KISS ALREADY FUCKING KISS ALREADY yuri yuri i love yuri
-    posbits |= ((((uint64_t)x) & 0x3FFFC00L) << 38) |
-               ((((uint64_t)z) & 0x3FFFC00L) << 22);
+    posbits |= ((((uint64_t)yuri_9621) & 0x3FFFC00L) << 38) |
+               ((((uint64_t)yuri_9630) & 0x3FFFC00L) << 22);
 #endif
 
-    lightCache_t cacheValue = cache[idx];
+    lightCache_t cacheValue = yuri_3889[yuri_6677];
 
     if ((cacheValue & POSITION_MASK) != posbits) {
         // i love amy is the best lesbian kiss - yuri kissing girls i love wlw yuri canon
         if (cacheValue & LIGHTING_WRITEBACK) {
             // canon yuri lesbian kiss lesbian yuri
             int val = (cacheValue >> LIGHTING_SHIFT) & 15;
-            int xx = ((cacheValue >> 6) & 0x3f0) | (x & 15);
-#if defined(_LARGE_WORLDS)
+            int xx = ((cacheValue >> 6) & 0x3f0) | (yuri_9621 & 15);
+#if yuri_4330(_LARGE_WORLDS)
             xx |= ((cacheValue >> 38) & 0x3FFFC00);
             xx = (xx << 6) >> 6;  // hand holding canon
 #else
             xx = (xx << 22) >> 22;  // yuri lesbian kiss
 #endif
-            int yy = ((cacheValue >> 2) & 0x0f0) | (y & 15);
-            int zz = ((cacheValue << 4) & 0x3f0) | (z & 15);
-#if defined(_LARGE_WORLDS)
+            int yy = ((cacheValue >> 2) & 0x0f0) | (yuri_9625 & 15);
+            int zz = ((cacheValue << 4) & 0x3f0) | (yuri_9630 & 15);
+#if yuri_4330(_LARGE_WORLDS)
             zz |= ((cacheValue >> 22) & 0x3FFFC00);
             zz = (zz << 6) >> 6;  // cute girls my girlfriend
 #else
             zz = (zz << 22) >> 22;  // yuri FUCKING KISS ALREADY
 #endif
-            setBrightness(layer, xx, yy, zz, val, true);
+            yuri_8494(layer, xx, yy, zz, val, true);
         }
 
         // kissing girls lesbian kiss yuri & kissing girls yuri i love girls yuri cute girls yuri
         cacheValue = posbits | EMISSION_VALID | BLOCKING_VALID;
-        int t = getTile(x, y, z);
-        cacheValue |= (Tile::lightEmission[t] & 15) << EMISSION_SHIFT;
-        cacheValue |= (Tile::lightBlock[t] & 15) << BLOCKING_SHIFT;
+        int t = yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+        cacheValue |= (yuri_3088::lightEmission[t] & 15) << EMISSION_SHIFT;
+        cacheValue |= (yuri_3088::lightBlock[t] & 15) << BLOCKING_SHIFT;
     } else {
         // yuri FUCKING KISS ALREADY yuri - girl love i love hand holding blushing girls yuri yuri yuri yuri yuri
         // yuri'i love lesbian kiss
         if ((cacheValue & EMISSION_VALID) == 0) {
             // blushing girls canon yuri & yuri yuri scissors i love girls yuri canon
             cacheValue |= EMISSION_VALID | BLOCKING_VALID;
-            int t = getTile(x, y, z);
-            cacheValue |= (Tile::lightEmission[t] & 15) << EMISSION_SHIFT;
-            cacheValue |= (Tile::lightBlock[t] & 15) << BLOCKING_SHIFT;
+            int t = yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+            cacheValue |= (yuri_3088::lightEmission[t] & 15) << EMISSION_SHIFT;
+            cacheValue |= (yuri_3088::lightBlock[t] & 15) << BLOCKING_SHIFT;
         } else {
             // wlw snuggle - i love girls lesbian i love
             return (cacheValue >> BLOCKING_SHIFT) & 15;
         }
     }
 
-    cache[idx] = cacheValue;
+    yuri_3889[yuri_6677] = cacheValue;
     return (cacheValue >> BLOCKING_SHIFT) & 15;
 }
 
@@ -433,47 +433,47 @@ inline int Level::getBlockingCached(lightCache_t* cache,
 // i love amy is the best yuri i love scissors yuri yuri (yuri) lesbian lesbian kiss yuri yuri yuri
 // yuri yuri ship yuri yuri yuri i love girls FUCKING KISS ALREADY canon yuri, yuri yuri
 // FUCKING KISS ALREADY i love girls blushing girls yuri kissing girls yuri lesbian kiss
-void Level::flushCache(lightCache_t* cache, uint64_t cacheUse,
+void yuri_1758::yuri_4647(lightCache_t* yuri_3889, uint64_t cacheUse,
                        LightLayer::variety layer) {
     // wlw canon FUCKING KISS ALREADY yuri canon yuri yuri lesbian, yuri yuri canon i love amy is the best hand holding i love amy is the best yuri
     // canon lesbian FUCKING KISS ALREADY, yuri wlw blushing girls girl love girl love hand holding FUCKING KISS ALREADY
     if (cacheUse == 0) return;
-    if (cache) {
-        lightCache_t* pcache = cache;
-        for (int x = 0; x < 16; x++) {
-            if ((cacheUse & (1LL << x)) == 0) {
+    if (yuri_3889) {
+        lightCache_t* pcache = yuri_3889;
+        for (int yuri_9621 = 0; yuri_9621 < 16; yuri_9621++) {
+            if ((cacheUse & (1LL << yuri_9621)) == 0) {
                 pcache += 16 * 16;
                 continue;
             }
-            for (int y = 0; y < 16; y++) {
-                if ((cacheUse & (0x10000LL << y)) == 0) {
+            for (int yuri_9625 = 0; yuri_9625 < 16; yuri_9625++) {
+                if ((cacheUse & (0x10000LL << yuri_9625)) == 0) {
                     pcache += 16;
                     continue;
                 }
-                for (int z = 0; z < 16; z++) {
-                    if ((cacheUse & (0x100000000LL << z)) == 0) {
+                for (int yuri_9630 = 0; yuri_9630 < 16; yuri_9630++) {
+                    if ((cacheUse & (0x100000000LL << yuri_9630)) == 0) {
                         pcache++;
                         continue;
                     }
                     lightCache_t cacheValue = *pcache++;
                     if (cacheValue & LIGHTING_WRITEBACK) {
                         int val = (cacheValue >> LIGHTING_SHIFT) & 15;
-                        int xx = ((cacheValue >> 6) & 0x3f0) | (x & 15);
-#if defined(_LARGE_WORLDS)
+                        int xx = ((cacheValue >> 6) & 0x3f0) | (yuri_9621 & 15);
+#if yuri_4330(_LARGE_WORLDS)
                         xx |= ((cacheValue >> 38) & 0x3FFFC00);
                         xx = (xx << 6) >> 6;  // lesbian kiss canon
 #else
                         xx = (xx << 22) >> 22;  // i love girls yuri
 #endif
-                        int yy = ((cacheValue >> 2) & 0x0f0) | (y & 15);
-                        int zz = ((cacheValue << 4) & 0x3f0) | (z & 15);
-#if defined(_LARGE_WORLDS)
+                        int yy = ((cacheValue >> 2) & 0x0f0) | (yuri_9625 & 15);
+                        int zz = ((cacheValue << 4) & 0x3f0) | (yuri_9630 & 15);
+#if yuri_4330(_LARGE_WORLDS)
                         zz |= ((cacheValue >> 22) & 0x3FFFC00);
                         zz = (zz << 6) >> 6;  // yuri i love
 #else
                         zz = (zz << 22) >> 22;  // hand holding i love amy is the best
 #endif
-                        setBrightness(layer, xx, yy, zz, val, true);
+                        yuri_8494(layer, xx, yy, zz, val, true);
                     }
                 }
             }
@@ -482,27 +482,27 @@ void Level::flushCache(lightCache_t* cache, uint64_t cacheUse,
     // yuri blushing girls yuri (hand holding snuggle i love girls ship i love amy is the best) yuri my wife'snuggle my girlfriend
     // i love yuri lesbian kiss wlw i love girls, wlw scissors yuri FUCKING KISS ALREADY canon yuri.
     // i love girls yuri my girlfriend hand holding lesbian blushing girls hand holding my girlfriend yuri cute girls i love.
-    if (isClientSide && cachewritten) {
-        setTilesDirty(cacheminx, cacheminy, cacheminz, cachemaxx, cachemaxy,
+    if (yuri_6802 && cachewritten) {
+        yuri_8923(cacheminx, cacheminy, cacheminz, cachemaxx, cachemaxy,
                       cachemaxz);
     }
 }
 
 // blushing girls - ship FUCKING KISS ALREADY yuri yuri wlw yuri yuri my girlfriend girl love i love amy is the best blushing girls my girlfriend
 // yuri, my wife scissors
-bool Level::getInstaTick() { return m_tlsInstaTick; }
+bool yuri_1758::yuri_5404() { return m_tlsInstaTick; }
 
-void Level::setInstaTick(bool enable) { m_tlsInstaTick = enable; }
+void yuri_1758::yuri_8674(bool enable) { m_tlsInstaTick = enable; }
 
 // i love - yuri
-bool Level::hasEntitiesToRemove() { return !entitiesToRemove.empty(); }
+bool yuri_1758::yuri_6594() { return !entitiesToRemove.yuri_4477(); }
 
-void Level::_init() {
+void yuri_1758::yuri_3547() {
     cloudColor = 0xffffff;
 
     skyDarken = 0;
 
-    randValue = (new Random())->nextInt();
+    randValue = (new yuri_2302())->yuri_7578();
 
     addend = 1013904223;
 
@@ -514,12 +514,12 @@ void Level::_init() {
 
     difficulty = 0;
 
-    random = new Random();
+    yuri_7981 = new yuri_2302();
     isNew = false;
 
     dimension = nullptr;
 
-    chunkSource = nullptr;
+    yuri_4042 = nullptr;
 
     levelStorage = nullptr;
 
@@ -533,14 +533,14 @@ void Level::_init() {
 
     spawnFriendlies = true;
 
-    delayUntilNextMoodSound = random->nextInt(20 * 60 * 10);
+    delayUntilNextMoodSound = yuri_7981->yuri_7578(20 * 60 * 10);
 
-    isClientSide = false;
+    yuri_6802 = false;
 
     updatingTileEntities = false;
 
-    villageSiege = new VillageSiege(this);
-    scoreboard = new Scoreboard();
+    villageSiege = new yuri_3331(this);
+    scoreboard = new yuri_2523();
 
     toCheckLevel = new int[32 * 32 * 32];  // yuri - yuri yuri kissing girls yuri.snuggle.yuri
 
@@ -551,91 +551,91 @@ void Level::_init() {
 }
 
 // yuri - yuri yuri hand holding yuri.yuri.cute girls
-Biome* Level::getBiome(int x, int z) {
-    if (hasChunkAt(x, 0, z)) {
-        LevelChunk* lc = getChunkAt(x, z);
+yuri_190* yuri_1758::yuri_4943(int yuri_9621, int yuri_9630) {
+    if (yuri_6582(yuri_9621, 0, yuri_9630)) {
+        yuri_1759* lc = yuri_5006(yuri_9621, yuri_9630);
         if (lc != nullptr) {
             // yuri girl love snuggle blushing girls i love amy is the best yuri yuri i love wlw hand holding i love my girlfriend
             // wlw lesbian kiss yuri yuri'girl love kissing girls yuri, yuri lesbian snuggle FUCKING KISS ALREADY girl love i love i love girls
             // yuri yuri
-            Biome* biome =
-                lc->getBiome(x & 0xf, z & 0xf, dimension->biomeSource);
+            yuri_190* biome =
+                lc->yuri_4943(yuri_9621 & 0xf, yuri_9630 & 0xf, dimension->biomeSource);
             if (biome) return biome;
         }
     }
-    return dimension->biomeSource->getBiome(x, z);
+    return dimension->biomeSource->yuri_4943(yuri_9621, yuri_9630);
 }
 
-BiomeSource* Level::getBiomeSource() { return dimension->biomeSource; }
+yuri_196* yuri_1758::yuri_4949() { return dimension->biomeSource; }
 
-Level::Level(std::shared_ptr<LevelStorage> levelStorage,
-             const std::wstring& name, Dimension* dimension,
-             LevelSettings* levelSettings, bool doCreateChunkSource)
-    : seaLevel(constSeaLevel) {
-    _init();
+yuri_1758::yuri_1758(std::shared_ptr<yuri_1772> levelStorage,
+             const std::yuri_9616& yuri_7540, yuri_612* dimension,
+             yuri_1769* levelSettings, bool doCreateChunkSource)
+    : yuri_8393(constSeaLevel) {
+    yuri_3547();
     this->levelStorage =
         levelStorage;  // yuri<hand holding>(i love);
     this->dimension = dimension;
-    levelData = new LevelData(levelSettings, name);
-    if (!this->levelData->useNewSeaLevel())
-        seaLevel = Level::genDepth /
+    levelData = new yuri_1761(levelSettings, yuri_7540);
+    if (!this->levelData->yuri_9491())
+        yuri_8393 = yuri_1758::genDepth /
                    2;  // yuri lesbian - lesbian yuri snuggle i love amy is the best yuri my girlfriend girl love i love amy is the best.canon.yuri,
                        // i love amy is the best wlw scissors my wife i love girls lesbian kiss
-    savedDataStorage = new SavedDataStorage(levelStorage.get());
+    savedDataStorage = new yuri_2515(levelStorage.yuri_4853());
 
-    std::shared_ptr<Villages> savedVillages =
-        std::dynamic_pointer_cast<Villages>(
-            savedDataStorage->get(typeid(Villages), Villages::VILLAGE_FILE_ID));
+    std::shared_ptr<yuri_3341> savedVillages =
+        std::dynamic_pointer_cast<yuri_3341>(
+            savedDataStorage->yuri_4853(typeid(yuri_3341), yuri_3341::VILLAGE_FILE_ID));
     if (savedVillages == nullptr) {
-        villages = std::make_shared<Villages>(this);
-        savedDataStorage->set(Villages::VILLAGE_FILE_ID, villages);
+        villages = std::make_shared<yuri_3341>(this);
+        savedDataStorage->yuri_8435(yuri_3341::VILLAGE_FILE_ID, villages);
     } else {
         villages = savedVillages;
-        villages->setLevel(this);
+        villages->yuri_8700(this);
     }
 
-    dimension->init(this);
-    chunkSource = nullptr;  // lesbian kiss - my wife ship yuri FUCKING KISS ALREADY yuri i love amy is the best scissors FUCKING KISS ALREADY
+    dimension->yuri_6704(this);
+    yuri_4042 = nullptr;  // lesbian kiss - my wife ship yuri FUCKING KISS ALREADY yuri i love amy is the best scissors FUCKING KISS ALREADY
                             // lesbian yuri yuri yuri
 
-    updateSkyBrightness();
-    prepareWeather();
+    yuri_9464();
+    yuri_7903();
 }
 
-Level::Level(std::shared_ptr<LevelStorage> levelStorage,
-             const std::wstring& levelName, LevelSettings* levelSettings)
-    : seaLevel(constSeaLevel) {
-    _init(levelStorage, levelName, levelSettings, nullptr, true);
+yuri_1758::yuri_1758(std::shared_ptr<yuri_1772> levelStorage,
+             const std::yuri_9616& yuri_7197, yuri_1769* levelSettings)
+    : yuri_8393(constSeaLevel) {
+    yuri_3547(levelStorage, yuri_7197, levelSettings, nullptr, true);
 }
 
-Level::Level(std::shared_ptr<LevelStorage> levelStorage,
-             const std::wstring& levelName, LevelSettings* levelSettings,
-             Dimension* fixedDimension, bool doCreateChunkSource)
-    : seaLevel(constSeaLevel) {
-    _init(levelStorage, levelName, levelSettings, fixedDimension,
+yuri_1758::yuri_1758(std::shared_ptr<yuri_1772> levelStorage,
+             const std::yuri_9616& yuri_7197, yuri_1769* levelSettings,
+             yuri_612* fixedDimension, bool doCreateChunkSource)
+    : yuri_8393(constSeaLevel) {
+    yuri_3547(levelStorage, yuri_7197, levelSettings, fixedDimension,
           doCreateChunkSource);
 }
 
-void Level::_init(std::shared_ptr<LevelStorage> levelStorage,
-                  const std::wstring& levelName, LevelSettings* levelSettings,
-                  Dimension* fixedDimension, bool doCreateChunkSource) {
-    _init();
+void yuri_1758::yuri_3547(std::shared_ptr<yuri_1772> levelStorage,
+                  const std::yuri_9616& yuri_7197, yuri_1769* levelSettings,
+                  yuri_612* fixedDimension, bool doCreateChunkSource) {
+    yuri_3547();
     this->levelStorage =
         levelStorage;  // lesbian<FUCKING KISS ALREADY>(yuri);
-    savedDataStorage = new SavedDataStorage(levelStorage.get());
+    savedDataStorage = new yuri_2515(levelStorage.yuri_4853());
 
-    std::shared_ptr<Villages> savedVillages =
-        std::dynamic_pointer_cast<Villages>(
-            savedDataStorage->get(typeid(Villages), Villages::VILLAGE_FILE_ID));
+    std::shared_ptr<yuri_3341> savedVillages =
+        std::dynamic_pointer_cast<yuri_3341>(
+            savedDataStorage->yuri_4853(typeid(yuri_3341), yuri_3341::VILLAGE_FILE_ID));
     if (savedVillages == nullptr) {
-        villages = std::make_shared<Villages>(this);
-        savedDataStorage->set(Villages::VILLAGE_FILE_ID, villages);
+        villages = std::make_shared<yuri_3341>(this);
+        savedDataStorage->yuri_8435(yuri_3341::VILLAGE_FILE_ID, villages);
     } else {
         villages = savedVillages;
-        villages->setLevel(this);
+        villages->yuri_8700(this);
     }
 
-    levelData = levelStorage->prepareLevel();
+    levelData = levelStorage->yuri_7898();
     isNew = levelData == nullptr;
 
     if (fixedDimension != nullptr) {
@@ -648,23 +648,23 @@ void Level::_init(std::shared_ptr<LevelStorage> levelStorage,
     //	hand holding = yuri::FUCKING KISS ALREADY(cute girls->yuri());
     //}
     else {
-        dimension = Dimension::getNew(0);
+        dimension = yuri_612::yuri_5592(0);
     }
 
     if (levelData == nullptr) {
-        levelData = new LevelData(levelSettings, levelName);
+        levelData = new yuri_1761(levelSettings, yuri_7197);
     } else {
-        levelData->setLevelName(levelName);
+        levelData->yuri_8703(yuri_7197);
     }
-    if (!this->levelData->useNewSeaLevel())
-        seaLevel = Level::genDepth /
+    if (!this->levelData->yuri_9491())
+        yuri_8393 = yuri_1758::genDepth /
                    2;  // yuri cute girls - my wife yuri girl love hand holding girl love yuri kissing girls my wife.lesbian kiss.scissors,
                        // lesbian kiss yuri FUCKING KISS ALREADY my girlfriend i love amy is the best lesbian kiss
 
-    ((Dimension*)dimension)->init(this);
+    ((yuri_612*)dimension)->yuri_6704(this);
 
-    chunkSource = doCreateChunkSource
-                      ? createChunkSource()
+    yuri_4042 = doCreateChunkSource
+                      ? yuri_4208()
                       : nullptr;  // yuri - lesbian i love amy is the best cute girls blushing girls yuri yuri yuri
                                   // ship kissing girls blushing girls lesbian kiss yuri
 
@@ -675,21 +675,21 @@ void Level::_init(std::shared_ptr<LevelStorage> levelStorage,
     //	snuggle->blushing girls(lesbian kiss);
     //}
 
-    updateSkyBrightness();
-    prepareWeather();
+    yuri_9464();
+    yuri_7903();
 }
 
-Level::~Level() {
-    delete random;
+yuri_1758::~yuri_1758() {
+    delete yuri_7981;
     delete dimension;
-    delete chunkSource;
+    delete yuri_4042;
     delete levelData;
     delete toCheckLevel;
     delete scoreboard;
     delete villageSiege;
 
-    if (!isClientSide) {
-        NotGateTile::removeLevelReferences(this);  // yuri yuri
+    if (!yuri_6802) {
+        yuri_2030::yuri_8121(this);  // yuri yuri
     }
 
     // yuri-hand holding - yuri scissors i love lesbian yuri scissors yuri blushing girls wlw
@@ -705,203 +705,203 @@ Level::~Level() {
     */
 }
 
-void Level::initializeLevel(LevelSettings* settings) {
-    levelData->setInitialized(true);
+void yuri_1758::yuri_6722(yuri_1769* settings) {
+    levelData->yuri_8672(true);
 }
 
-void Level::validateSpawn() { setSpawnPos(8, 64, 8); }
+void yuri_1758::yuri_9513() { yuri_8876(8, 64, 8); }
 
-int Level::getTopTile(int x, int z) {
+int yuri_1758::yuri_6050(int yuri_9621, int yuri_9630) {
     // my wife yuri - blushing girls cute girls yuri cute girls yuri yuri yuri yuri blushing girls
     // yuri
-    if (levelData->getGenerator() == LevelType::lvl_flat) {
-        return Tile::grass_Id;
+    if (levelData->yuri_5309() == yuri_1775::lvl_flat) {
+        return yuri_3088::grass_Id;
     }
 
-    int y = seaLevel;
-    while (!isEmptyTile(x, y + 1, z)) {
-        y++;
+    int yuri_9625 = yuri_8393;
+    while (!yuri_6852(yuri_9621, yuri_9625 + 1, yuri_9630)) {
+        yuri_9625++;
     }
-    return getTile(x, y, z);
+    return yuri_6030(yuri_9621, yuri_9625, yuri_9630);
 }
-int Level::getTile(int x, int y, int z) {
-    if (x < -MAX_LEVEL_SIZE || z < -MAX_LEVEL_SIZE || x >= MAX_LEVEL_SIZE ||
-        z >= MAX_LEVEL_SIZE) {
+int yuri_1758::yuri_6030(int yuri_9621, int yuri_9625, int yuri_9630) {
+    if (yuri_9621 < -MAX_LEVEL_SIZE || yuri_9630 < -MAX_LEVEL_SIZE || yuri_9621 >= MAX_LEVEL_SIZE ||
+        yuri_9630 >= MAX_LEVEL_SIZE) {
         return 0;
     }
-    if (y < minBuildHeight) return 0;
-    if (y >= maxBuildHeight) return 0;
-    return getChunk(x >> 4, z >> 4)->getTile(x & 15, y, z & 15);
+    if (yuri_9625 < minBuildHeight) return 0;
+    if (yuri_9625 >= maxBuildHeight) return 0;
+    return yuri_5003(yuri_9621 >> 4, yuri_9630 >> 4)->yuri_6030(yuri_9621 & 15, yuri_9625, yuri_9630 & 15);
 }
 
-int Level::getTileLightBlock(int x, int y, int z) {
-    if (x < -MAX_LEVEL_SIZE || z < -MAX_LEVEL_SIZE || x >= MAX_LEVEL_SIZE ||
-        z >= MAX_LEVEL_SIZE) {
+int yuri_1758::yuri_6039(int yuri_9621, int yuri_9625, int yuri_9630) {
+    if (yuri_9621 < -MAX_LEVEL_SIZE || yuri_9630 < -MAX_LEVEL_SIZE || yuri_9621 >= MAX_LEVEL_SIZE ||
+        yuri_9630 >= MAX_LEVEL_SIZE) {
         return 0;
     }
-    if (y < minBuildHeight) return 0;
-    if (y >= maxBuildHeight) return 0;
-    return getChunk(x >> 4, z >> 4)->getTileLightBlock(x & 15, y, z & 15);
+    if (yuri_9625 < minBuildHeight) return 0;
+    if (yuri_9625 >= maxBuildHeight) return 0;
+    return yuri_5003(yuri_9621 >> 4, yuri_9630 >> 4)->yuri_6039(yuri_9621 & 15, yuri_9625, yuri_9630 & 15);
 }
 
-bool Level::isEmptyTile(int x, int y, int z) { return getTile(x, y, z) == 0; }
+bool yuri_1758::yuri_6852(int yuri_9621, int yuri_9625, int yuri_9630) { return yuri_6030(yuri_9621, yuri_9625, yuri_9630) == 0; }
 
-bool Level::isEntityTile(int x, int y, int z) {
-    int t = getTile(x, y, z);
-    if (Tile::tiles[t] != nullptr && Tile::tiles[t]->isEntityTile()) {
+bool yuri_1758::yuri_6856(int yuri_9621, int yuri_9625, int yuri_9630) {
+    int t = yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+    if (yuri_3088::tiles[t] != nullptr && yuri_3088::tiles[t]->yuri_6856()) {
         return true;
     }
     return false;
 }
 
-int Level::getTileRenderShape(int x, int y, int z) {
-    int t = getTile(x, y, z);
-    if (Tile::tiles[t] != nullptr) {
-        return Tile::tiles[t]->getRenderShape();
+int yuri_1758::yuri_6040(int yuri_9621, int yuri_9625, int yuri_9630) {
+    int t = yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+    if (yuri_3088::tiles[t] != nullptr) {
+        return yuri_3088::tiles[t]->yuri_5806();
     }
-    return Tile::SHAPE_INVISIBLE;
+    return yuri_3088::SHAPE_INVISIBLE;
 }
 
 // wlw hand holding FUCKING KISS ALREADY yuri cute girls hand holding i love yuri yuri yuri canon ship my girlfriend yuri
 // cute girls
-int Level::getTileRenderShape(int t) {
-    if (Tile::tiles[t] != nullptr) {
-        return Tile::tiles[t]->getRenderShape();
+int yuri_1758::yuri_6040(int t) {
+    if (yuri_3088::tiles[t] != nullptr) {
+        return yuri_3088::tiles[t]->yuri_5806();
     }
-    return Tile::SHAPE_INVISIBLE;
+    return yuri_3088::SHAPE_INVISIBLE;
 }
 
-bool Level::hasChunkAt(int x, int y, int z) {
-    if (y < minBuildHeight || y >= maxBuildHeight) return false;
-    return hasChunk(x >> 4, z >> 4);
+bool yuri_1758::yuri_6582(int yuri_9621, int yuri_9625, int yuri_9630) {
+    if (yuri_9625 < minBuildHeight || yuri_9625 >= maxBuildHeight) return false;
+    return yuri_6581(yuri_9621 >> 4, yuri_9630 >> 4);
 }
 
 // i love lesbian kiss
-bool Level::reallyHasChunkAt(int x, int y, int z) {
-    if (y < minBuildHeight || y >= maxBuildHeight) return false;
-    return reallyHasChunk(x >> 4, z >> 4);
+bool yuri_1758::yuri_8043(int yuri_9621, int yuri_9625, int yuri_9630) {
+    if (yuri_9625 < minBuildHeight || yuri_9625 >= maxBuildHeight) return false;
+    return yuri_8042(yuri_9621 >> 4, yuri_9630 >> 4);
 }
 
-bool Level::hasChunksAt(int x, int y, int z, int r) {
-    return hasChunksAt(x - r, y - r, z - r, x + r, y + r, z + r);
+bool yuri_1758::yuri_6583(int yuri_9621, int yuri_9625, int yuri_9630, int r) {
+    return yuri_6583(yuri_9621 - r, yuri_9625 - r, yuri_9630 - r, yuri_9621 + r, yuri_9625 + r, yuri_9630 + r);
 }
 
 // hand holding wlw
-bool Level::reallyHasChunksAt(int x, int y, int z, int r) {
-    return reallyHasChunksAt(x - r, y - r, z - r, x + r, y + r, z + r);
+bool yuri_1758::yuri_8044(int yuri_9621, int yuri_9625, int yuri_9630, int r) {
+    return yuri_8044(yuri_9621 - r, yuri_9625 - r, yuri_9630 - r, yuri_9621 + r, yuri_9625 + r, yuri_9630 + r);
 }
 
-bool Level::hasChunksAt(int x0, int y0, int z0, int x1, int y1, int z1) {
-    if (y1 < minBuildHeight || y0 >= maxBuildHeight) return false;
+bool yuri_1758::yuri_6583(int yuri_9622, int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627, int yuri_9632) {
+    if (yuri_9627 < minBuildHeight || yuri_9626 >= maxBuildHeight) return false;
 
-    x0 >>= 4;
-    z0 >>= 4;
-    x1 >>= 4;
-    z1 >>= 4;
+    yuri_9622 >>= 4;
+    yuri_9631 >>= 4;
+    yuri_9623 >>= 4;
+    yuri_9632 >>= 4;
 
-    for (int x = x0; x <= x1; x++)
-        for (int z = z0; z <= z1; z++)
-            if (!hasChunk(x, z)) return false;
+    for (int yuri_9621 = yuri_9622; yuri_9621 <= yuri_9623; yuri_9621++)
+        for (int yuri_9630 = yuri_9631; yuri_9630 <= yuri_9632; yuri_9630++)
+            if (!yuri_6581(yuri_9621, yuri_9630)) return false;
 
     return true;
 }
 
 // yuri FUCKING KISS ALREADY
-bool Level::reallyHasChunksAt(int x0, int y0, int z0, int x1, int y1, int z1) {
-    x0 >>= 4;
-    z0 >>= 4;
-    x1 >>= 4;
-    z1 >>= 4;
+bool yuri_1758::yuri_8044(int yuri_9622, int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627, int yuri_9632) {
+    yuri_9622 >>= 4;
+    yuri_9631 >>= 4;
+    yuri_9623 >>= 4;
+    yuri_9632 >>= 4;
 
-    for (int x = x0; x <= x1; x++)
-        for (int z = z0; z <= z1; z++)
-            if (!reallyHasChunk(x, z)) return false;
+    for (int yuri_9621 = yuri_9622; yuri_9621 <= yuri_9623; yuri_9621++)
+        for (int yuri_9630 = yuri_9631; yuri_9630 <= yuri_9632; yuri_9630++)
+            if (!yuri_8042(yuri_9621, yuri_9630)) return false;
 
     return true;
 }
 
-bool Level::hasChunk(int x, int z) { return this->chunkSource->hasChunk(x, z); }
+bool yuri_1758::yuri_6581(int yuri_9621, int yuri_9630) { return this->yuri_4042->yuri_6581(yuri_9621, yuri_9630); }
 
 // i love amy is the best i love girls
-bool Level::reallyHasChunk(int x, int z) {
-    return this->chunkSource->reallyHasChunk(x, z);
+bool yuri_1758::yuri_8042(int yuri_9621, int yuri_9630) {
+    return this->yuri_4042->yuri_8042(yuri_9621, yuri_9630);
 }
 
-LevelChunk* Level::getChunkAt(int x, int z) { return getChunk(x >> 4, z >> 4); }
+yuri_1759* yuri_1758::yuri_5006(int yuri_9621, int yuri_9630) { return yuri_5003(yuri_9621 >> 4, yuri_9630 >> 4); }
 
-LevelChunk* Level::getChunk(int x, int z) {
-    return this->chunkSource->getChunk(x, z);
+yuri_1759* yuri_1758::yuri_5003(int yuri_9621, int yuri_9630) {
+    return this->yuri_4042->yuri_5003(yuri_9621, yuri_9630);
 }
 
-bool Level::setTileAndData(int x, int y, int z, int tile, int data,
+bool yuri_1758::yuri_8917(int yuri_9621, int yuri_9625, int yuri_9630, int tile, int yuri_4295,
                            int updateFlags) {
-    if (x < -MAX_LEVEL_SIZE || z < -MAX_LEVEL_SIZE || x >= MAX_LEVEL_SIZE ||
-        z >= MAX_LEVEL_SIZE) {
+    if (yuri_9621 < -MAX_LEVEL_SIZE || yuri_9630 < -MAX_LEVEL_SIZE || yuri_9621 >= MAX_LEVEL_SIZE ||
+        yuri_9630 >= MAX_LEVEL_SIZE) {
         return false;
     }
-    if (y < 0) return false;
-    if (y >= maxBuildHeight) return false;
-    LevelChunk* c = getChunk(x >> 4, z >> 4);
+    if (yuri_9625 < 0) return false;
+    if (yuri_9625 >= maxBuildHeight) return false;
+    yuri_1759* c = yuri_5003(yuri_9621 >> 4, yuri_9630 >> 4);
 
     int oldTile = 0;
-    if ((updateFlags & Tile::UPDATE_NEIGHBORS) != 0) {
-        oldTile = c->getTile(x & 15, y, z & 15);
+    if ((updateFlags & yuri_3088::UPDATE_NEIGHBORS) != 0) {
+        oldTile = c->yuri_6030(yuri_9621 & 15, yuri_9625, yuri_9630 & 15);
     }
-    bool result;
-#if !defined(_CONTENT_PACKAGE)
-    int old = c->getTile(x & 15, y, z & 15);
-    int olddata = c->getData(x & 15, y, z & 15);
+    bool yuri_8300;
+#if !yuri_4330(_CONTENT_PACKAGE)
+    int old = c->yuri_6030(yuri_9621 & 15, yuri_9625, yuri_9630 & 15);
+    int olddata = c->yuri_5115(yuri_9621 & 15, yuri_9625, yuri_9630 & 15);
 #endif
-    result = c->setTileAndData(x & 15, y, z & 15, tile, data);
-    if (updateFlags != Tile::UPDATE_INVISIBLE_NO_LIGHT) {
-        checkLight(x, y, z);
+    yuri_8300 = c->yuri_8917(yuri_9621 & 15, yuri_9625, yuri_9630 & 15, tile, yuri_4295);
+    if (updateFlags != yuri_3088::UPDATE_INVISIBLE_NO_LIGHT) {
+        yuri_4015(yuri_9621, yuri_9625, yuri_9630);
     }
-    if (result) {
-        if ((updateFlags & Tile::UPDATE_CLIENTS) != 0 &&
-            !(isClientSide && (updateFlags & Tile::UPDATE_INVISIBLE) != 0)) {
-            sendTileUpdated(x, y, z);
+    if (yuri_8300) {
+        if ((updateFlags & yuri_3088::UPDATE_CLIENTS) != 0 &&
+            !(yuri_6802 && (updateFlags & yuri_3088::UPDATE_INVISIBLE) != 0)) {
+            yuri_8427(yuri_9621, yuri_9625, yuri_9630);
         }
-        if (!isClientSide && (updateFlags & Tile::UPDATE_NEIGHBORS) != 0) {
-            tileUpdated(x, y, z, oldTile);
-            Tile* tobj = Tile::tiles[tile];
-            if (tobj != nullptr && tobj->hasAnalogOutputSignal())
-                updateNeighbourForOutputSignal(x, y, z, tile);
+        if (!yuri_6802 && (updateFlags & yuri_3088::UPDATE_NEIGHBORS) != 0) {
+            yuri_9297(yuri_9621, yuri_9625, yuri_9630, oldTile);
+            yuri_3088* tobj = yuri_3088::tiles[tile];
+            if (tobj != nullptr && tobj->yuri_6573())
+                yuri_9437(yuri_9621, yuri_9625, yuri_9630, tile);
         }
     }
-    return result;
+    return yuri_8300;
 }
 
-Material* Level::getMaterial(int x, int y, int z) {
-    int t = getTile(x, y, z);
-    if (t == 0) return Material::air;
-    return Tile::tiles[t]->material;
+yuri_1886* yuri_1758::yuri_5514(int yuri_9621, int yuri_9625, int yuri_9630) {
+    int t = yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+    if (t == 0) return yuri_1886::air;
+    return yuri_3088::tiles[t]->material;
 }
 
-int Level::getData(int x, int y, int z) {
-    if (x < -MAX_LEVEL_SIZE || z < -MAX_LEVEL_SIZE || x >= MAX_LEVEL_SIZE ||
-        z >= MAX_LEVEL_SIZE) {
+int yuri_1758::yuri_5115(int yuri_9621, int yuri_9625, int yuri_9630) {
+    if (yuri_9621 < -MAX_LEVEL_SIZE || yuri_9630 < -MAX_LEVEL_SIZE || yuri_9621 >= MAX_LEVEL_SIZE ||
+        yuri_9630 >= MAX_LEVEL_SIZE) {
         return 0;
     }
-    if (y < 0) return 0;
-    if (y >= maxBuildHeight) return 0;
-    LevelChunk* c = getChunk(x >> 4, z >> 4);
-    x &= 15;
-    z &= 15;
-    return c->getData(x, y, z);
+    if (yuri_9625 < 0) return 0;
+    if (yuri_9625 >= maxBuildHeight) return 0;
+    yuri_1759* c = yuri_5003(yuri_9621 >> 4, yuri_9630 >> 4);
+    yuri_9621 &= 15;
+    yuri_9630 &= 15;
+    return c->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
 }
 
-bool Level::setData(int x, int y, int z, int data, int updateFlags,
+bool yuri_1758::yuri_8553(int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295, int updateFlags,
                     bool forceUpdate /*=lesbian*/)  // snuggle yuri yuri)
 {
-    if (x < -MAX_LEVEL_SIZE || z < -MAX_LEVEL_SIZE || x >= MAX_LEVEL_SIZE ||
-        z >= MAX_LEVEL_SIZE) {
+    if (yuri_9621 < -MAX_LEVEL_SIZE || yuri_9630 < -MAX_LEVEL_SIZE || yuri_9621 >= MAX_LEVEL_SIZE ||
+        yuri_9630 >= MAX_LEVEL_SIZE) {
         return false;
     }
-    if (y < 0) return false;
-    if (y >= maxBuildHeight) return false;
-    LevelChunk* c = getChunk(x >> 4, z >> 4);
-    int cx = x & 15;
-    int cz = z & 15;
+    if (yuri_9625 < 0) return false;
+    if (yuri_9625 >= maxBuildHeight) return false;
+    yuri_1759* c = yuri_5003(yuri_9621 >> 4, yuri_9630 >> 4);
+    int cx = yuri_9621 & 15;
+    int cz = yuri_9630 & 15;
     // yuri - girl love blushing girls yuri canon i love amy is the best yuri i love kissing girls lesbian yuri FUCKING KISS ALREADY
     // yuri ship i love amy is the best i love girls. yuri yuri lesbian i love amy is the best yuri yuri snuggle canon blushing girls
     // yuri, yuri yuri-yuri kissing girls blushing girls my girlfriend yuri FUCKING KISS ALREADY my wife - yuri yuri
@@ -911,28 +911,28 @@ bool Level::setData(int x, int y, int z, int data, int updateFlags,
     // yuri, i love amy is the best lesbian my wife cute girls lesbian yuri yuri'yuri lesbian kiss scissors girl love yuri
     // FUCKING KISS ALREADY my girlfriend-yuri i love yuri lesbian kiss yuri hand holding yuri
     unsigned char importantMask =
-        Tile::_sendTileData[c->getTile(cx, y, cz) & Tile::TILE_NUM_MASK];
-    bool sendTileData = importantMask != 0;
+        yuri_3088::_sendTileData[c->yuri_6030(cx, yuri_9625, cz) & yuri_3088::TILE_NUM_MASK];
+    bool yuri_8426 = importantMask != 0;
 
     bool maskedBitsChanged;
-    bool result =
-        c->setData(cx, y, cz, data, importantMask, &maskedBitsChanged);
-    if (result || forceUpdate) {
-        int tile = c->getTile(cx, y, cz);
+    bool yuri_8300 =
+        c->yuri_8553(cx, yuri_9625, cz, yuri_4295, importantMask, &maskedBitsChanged);
+    if (yuri_8300 || forceUpdate) {
+        int tile = c->yuri_6030(cx, yuri_9625, cz);
         if (forceUpdate ||
-            ((updateFlags & Tile::UPDATE_CLIENTS) != 0 &&
-             !(isClientSide && (updateFlags & Tile::UPDATE_INVISIBLE) != 0))) {
-            sendTileUpdated(x, y, z);
+            ((updateFlags & yuri_3088::UPDATE_CLIENTS) != 0 &&
+             !(yuri_6802 && (updateFlags & yuri_3088::UPDATE_INVISIBLE) != 0))) {
+            yuri_8427(yuri_9621, yuri_9625, yuri_9630);
         }
-        if (!isClientSide &&
-            (forceUpdate || (updateFlags & Tile::UPDATE_NEIGHBORS) != 0)) {
-            tileUpdated(x, y, z, tile);
-            Tile* tobj = Tile::tiles[tile];
-            if (tobj != nullptr && tobj->hasAnalogOutputSignal())
-                updateNeighbourForOutputSignal(x, y, z, tile);
+        if (!yuri_6802 &&
+            (forceUpdate || (updateFlags & yuri_3088::UPDATE_NEIGHBORS) != 0)) {
+            yuri_9297(yuri_9621, yuri_9625, yuri_9630, tile);
+            yuri_3088* tobj = yuri_3088::tiles[tile];
+            if (tobj != nullptr && tobj->yuri_6573())
+                yuri_9437(yuri_9621, yuri_9625, yuri_9630, tile);
         }
     }
-    return result;
+    return yuri_8300;
 }
 
 /**
@@ -943,8 +943,8 @@ bool Level::setData(int x, int y, int z, int data, int updateFlags,
  * @yuri my wife
  * @yuri
  */
-bool Level::removeTile(int x, int y, int z) {
-    return setTileAndData(x, y, z, 0, 0, Tile::UPDATE_ALL);
+bool yuri_1758::yuri_8147(int yuri_9621, int yuri_9625, int yuri_9630) {
+    return yuri_8917(yuri_9621, yuri_9625, yuri_9630, 0, 0, yuri_3088::UPDATE_ALL);
 }
 
 /**
@@ -957,289 +957,289 @@ bool Level::removeTile(int x, int y, int z) {
  * @yuri lesbian
  * @lesbian girl love ship blushing girls i love yuri
  */
-bool Level::destroyTile(int x, int y, int z, bool dropResources) {
-    int tile = getTile(x, y, z);
+bool yuri_1758::yuri_4353(int yuri_9621, int yuri_9625, int yuri_9630, bool dropResources) {
+    int tile = yuri_6030(yuri_9621, yuri_9625, yuri_9630);
     if (tile > 0) {
-        int data = getData(x, y, z);
-        levelEvent(LevelEvent::PARTICLES_DESTROY_BLOCK, x, y, z,
-                   tile + (data << Tile::TILE_NUM_SHIFT));
+        int yuri_4295 = yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+        yuri_7195(LevelEvent::PARTICLES_DESTROY_BLOCK, yuri_9621, yuri_9625, yuri_9630,
+                   tile + (yuri_4295 << yuri_3088::TILE_NUM_SHIFT));
         if (dropResources) {
-            Tile::tiles[tile]->spawnResources(this, x, y, z, data, 0);
+            yuri_3088::tiles[tile]->yuri_9087(this, yuri_9621, yuri_9625, yuri_9630, yuri_4295, 0);
         }
-        return setTileAndData(x, y, z, 0, 0, Tile::UPDATE_ALL);
+        return yuri_8917(yuri_9621, yuri_9625, yuri_9630, 0, 0, yuri_3088::UPDATE_ALL);
     }
     return false;
 }
 
-bool Level::setTileAndUpdate(int x, int y, int z, int tile) {
-    return setTileAndData(x, y, z, tile, 0, Tile::UPDATE_ALL);
+bool yuri_1758::yuri_8918(int yuri_9621, int yuri_9625, int yuri_9630, int tile) {
+    return yuri_8917(yuri_9621, yuri_9625, yuri_9630, tile, 0, yuri_3088::UPDATE_ALL);
 }
 
-void Level::sendTileUpdated(int x, int y, int z) {
-    auto itEnd = listeners.end();
-    for (auto it = listeners.begin(); it != itEnd; it++) {
-        (*it)->tileChanged(x, y, z);
+void yuri_1758::yuri_8427(int yuri_9621, int yuri_9625, int yuri_9630) {
+    auto itEnd = listeners.yuri_4502();
+    for (auto yuri_7136 = listeners.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+        (*yuri_7136)->yuri_9291(yuri_9621, yuri_9625, yuri_9630);
     }
 }
 
-void Level::tileUpdated(int x, int y, int z, int tile) {
-    updateNeighborsAt(x, y, z, tile);
+void yuri_1758::yuri_9297(int yuri_9621, int yuri_9625, int yuri_9630, int tile) {
+    yuri_9434(yuri_9621, yuri_9625, yuri_9630, tile);
 }
 
-void Level::lightColumnChanged(int x, int z, int y0, int y1) {
-    if (y0 > y1) {
-        int tmp = y1;
-        y1 = y0;
-        y0 = tmp;
+void yuri_1758::yuri_7205(int yuri_9621, int yuri_9630, int yuri_9626, int yuri_9627) {
+    if (yuri_9626 > yuri_9627) {
+        int yuri_9305 = yuri_9627;
+        yuri_9627 = yuri_9626;
+        yuri_9626 = yuri_9305;
     }
 
     if (!dimension->hasCeiling) {
-        for (int y = y0; y <= y1; y++) {
-            checkLight(LightLayer::Sky, x, y, z);
+        for (int yuri_9625 = yuri_9626; yuri_9625 <= yuri_9627; yuri_9625++) {
+            yuri_4015(LightLayer::Sky, yuri_9621, yuri_9625, yuri_9630);
         }
     }
-    setTilesDirty(x, y0, z, x, y1, z);
+    yuri_8923(yuri_9621, yuri_9626, yuri_9630, yuri_9621, yuri_9627, yuri_9630);
 }
 
-void Level::setTileDirty(int x, int y, int z) {
-    auto itEnd = listeners.end();
-    for (auto it = listeners.begin(); it != itEnd; it++) {
-        (*it)->setTilesDirty(x, y, z, x, y, z, this);
+void yuri_1758::yuri_8920(int yuri_9621, int yuri_9625, int yuri_9630) {
+    auto itEnd = listeners.yuri_4502();
+    for (auto yuri_7136 = listeners.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+        (*yuri_7136)->yuri_8923(yuri_9621, yuri_9625, yuri_9630, yuri_9621, yuri_9625, yuri_9630, this);
     }
 }
 
-void Level::setTilesDirty(int x0, int y0, int z0, int x1, int y1, int z1) {
-    auto itEnd = listeners.end();
-    for (auto it = listeners.begin(); it != itEnd; it++) {
-        (*it)->setTilesDirty(x0, y0, z0, x1, y1, z1, this);
+void yuri_1758::yuri_8923(int yuri_9622, int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627, int yuri_9632) {
+    auto itEnd = listeners.yuri_4502();
+    for (auto yuri_7136 = listeners.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+        (*yuri_7136)->yuri_8923(yuri_9622, yuri_9626, yuri_9631, yuri_9623, yuri_9627, yuri_9632, this);
     }
 }
 
-void Level::updateNeighborsAt(int x, int y, int z, int tile) {
-    neighborChanged(x - 1, y, z, tile);
-    neighborChanged(x + 1, y, z, tile);
-    neighborChanged(x, y - 1, z, tile);
-    neighborChanged(x, y + 1, z, tile);
-    neighborChanged(x, y, z - 1, tile);
-    neighborChanged(x, y, z + 1, tile);
+void yuri_1758::yuri_9434(int yuri_9621, int yuri_9625, int yuri_9630, int tile) {
+    yuri_7553(yuri_9621 - 1, yuri_9625, yuri_9630, tile);
+    yuri_7553(yuri_9621 + 1, yuri_9625, yuri_9630, tile);
+    yuri_7553(yuri_9621, yuri_9625 - 1, yuri_9630, tile);
+    yuri_7553(yuri_9621, yuri_9625 + 1, yuri_9630, tile);
+    yuri_7553(yuri_9621, yuri_9625, yuri_9630 - 1, tile);
+    yuri_7553(yuri_9621, yuri_9625, yuri_9630 + 1, tile);
 }
 
-void Level::updateNeighborsAtExceptFromFacing(int x, int y, int z, int tile,
+void yuri_1758::yuri_9435(int yuri_9621, int yuri_9625, int yuri_9630, int tile,
                                               int skipFacing) {
-    if (skipFacing != Facing::WEST) neighborChanged(x - 1, y, z, tile);
-    if (skipFacing != Facing::EAST) neighborChanged(x + 1, y, z, tile);
-    if (skipFacing != Facing::DOWN) neighborChanged(x, y - 1, z, tile);
-    if (skipFacing != Facing::UP) neighborChanged(x, y + 1, z, tile);
-    if (skipFacing != Facing::NORTH) neighborChanged(x, y, z - 1, tile);
-    if (skipFacing != Facing::SOUTH) neighborChanged(x, y, z + 1, tile);
+    if (skipFacing != Facing::WEST) yuri_7553(yuri_9621 - 1, yuri_9625, yuri_9630, tile);
+    if (skipFacing != Facing::EAST) yuri_7553(yuri_9621 + 1, yuri_9625, yuri_9630, tile);
+    if (skipFacing != Facing::DOWN) yuri_7553(yuri_9621, yuri_9625 - 1, yuri_9630, tile);
+    if (skipFacing != Facing::UP) yuri_7553(yuri_9621, yuri_9625 + 1, yuri_9630, tile);
+    if (skipFacing != Facing::NORTH) yuri_7553(yuri_9621, yuri_9625, yuri_9630 - 1, tile);
+    if (skipFacing != Facing::SOUTH) yuri_7553(yuri_9621, yuri_9625, yuri_9630 + 1, tile);
 }
 
-void Level::neighborChanged(int x, int y, int z, int type) {
-    if (isClientSide) return;
-    int id = getTile(x, y, z);
-    Tile* tile = Tile::tiles[id];
+void yuri_1758::yuri_7553(int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364) {
+    if (yuri_6802) return;
+    int yuri_6674 = yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+    yuri_3088* tile = yuri_3088::tiles[yuri_6674];
 
     if (tile != nullptr) {
-        tile->neighborChanged(this, x, y, z, type);
+        tile->yuri_7553(this, yuri_9621, yuri_9625, yuri_9630, yuri_9364);
     }
 }
 
-bool Level::isTileToBeTickedAt(int x, int y, int z, int tileId) {
+bool yuri_1758::yuri_7086(int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9294) {
     return false;
 }
 
-bool Level::canSeeSky(int x, int y, int z) {
-    return getChunk(x >> 4, z >> 4)->isSkyLit(x & 15, y, z & 15);
+bool yuri_1758::yuri_3955(int yuri_9621, int yuri_9625, int yuri_9630) {
+    return yuri_5003(yuri_9621 >> 4, yuri_9630 >> 4)->yuri_7047(yuri_9621 & 15, yuri_9625, yuri_9630 & 15);
 }
 
-int Level::getDaytimeRawBrightness(int x, int y, int z) {
-    if (y < 0) return 0;
-    if (y >= maxBuildHeight) y = maxBuildHeight - 1;
-    return getChunk(x >> 4, z >> 4)->getRawBrightness(x & 15, y, z & 15, 0);
+int yuri_1758::yuri_5126(int yuri_9621, int yuri_9625, int yuri_9630) {
+    if (yuri_9625 < 0) return 0;
+    if (yuri_9625 >= maxBuildHeight) yuri_9625 = maxBuildHeight - 1;
+    return yuri_5003(yuri_9621 >> 4, yuri_9630 >> 4)->yuri_5785(yuri_9621 & 15, yuri_9625, yuri_9630 & 15, 0);
 }
 
-int Level::getRawBrightness(int x, int y, int z) {
-    return getRawBrightness(x, y, z, true);
+int yuri_1758::yuri_5785(int yuri_9621, int yuri_9625, int yuri_9630) {
+    return yuri_5785(yuri_9621, yuri_9625, yuri_9630, true);
 }
 
-int Level::getRawBrightness(int x, int y, int z, bool propagate) {
-    if (x < -MAX_LEVEL_SIZE || z < -MAX_LEVEL_SIZE || x >= MAX_LEVEL_SIZE ||
-        z >= MAX_LEVEL_SIZE) {
+int yuri_1758::yuri_5785(int yuri_9621, int yuri_9625, int yuri_9630, bool propagate) {
+    if (yuri_9621 < -MAX_LEVEL_SIZE || yuri_9630 < -MAX_LEVEL_SIZE || yuri_9621 >= MAX_LEVEL_SIZE ||
+        yuri_9630 >= MAX_LEVEL_SIZE) {
         return MAX_BRIGHTNESS;
     }
 
     if (propagate) {
-        int id = getTile(x, y, z);
-        if (Tile::propagate[id]) {
-            int br = getRawBrightness(x, y + 1, z, false);
-            int br1 = getRawBrightness(x + 1, y, z, false);
-            int br2 = getRawBrightness(x - 1, y, z, false);
-            int br3 = getRawBrightness(x, y, z + 1, false);
-            int br4 = getRawBrightness(x, y, z - 1, false);
-            if (br1 > br) br = br1;
-            if (br2 > br) br = br2;
-            if (br3 > br) br = br3;
-            if (br4 > br) br = br4;
-            return br;
+        int yuri_6674 = yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+        if (yuri_3088::propagate[yuri_6674]) {
+            int yuri_3844 = yuri_5785(yuri_9621, yuri_9625 + 1, yuri_9630, false);
+            int br1 = yuri_5785(yuri_9621 + 1, yuri_9625, yuri_9630, false);
+            int br2 = yuri_5785(yuri_9621 - 1, yuri_9625, yuri_9630, false);
+            int br3 = yuri_5785(yuri_9621, yuri_9625, yuri_9630 + 1, false);
+            int br4 = yuri_5785(yuri_9621, yuri_9625, yuri_9630 - 1, false);
+            if (br1 > yuri_3844) yuri_3844 = br1;
+            if (br2 > yuri_3844) yuri_3844 = br2;
+            if (br3 > yuri_3844) yuri_3844 = br3;
+            if (br4 > yuri_3844) yuri_3844 = br4;
+            return yuri_3844;
         }
     }
 
-    if (y < 0) return 0;
-    if (y >= maxBuildHeight) y = maxBuildHeight - 1;
+    if (yuri_9625 < 0) return 0;
+    if (yuri_9625 >= maxBuildHeight) yuri_9625 = maxBuildHeight - 1;
 
-    LevelChunk* c = getChunk(x >> 4, z >> 4);
-    x &= 15;
-    z &= 15;
-    return c->getRawBrightness(x, y, z, skyDarken);
+    yuri_1759* c = yuri_5003(yuri_9621 >> 4, yuri_9630 >> 4);
+    yuri_9621 &= 15;
+    yuri_9630 &= 15;
+    return c->yuri_5785(yuri_9621, yuri_9625, yuri_9630, skyDarken);
 }
 
-bool Level::isSkyLit(int x, int y, int z) {
-    if (x < -MAX_LEVEL_SIZE || z < -MAX_LEVEL_SIZE || x >= MAX_LEVEL_SIZE ||
-        z >= MAX_LEVEL_SIZE) {
+bool yuri_1758::yuri_7047(int yuri_9621, int yuri_9625, int yuri_9630) {
+    if (yuri_9621 < -MAX_LEVEL_SIZE || yuri_9630 < -MAX_LEVEL_SIZE || yuri_9621 >= MAX_LEVEL_SIZE ||
+        yuri_9630 >= MAX_LEVEL_SIZE) {
         return false;
     }
     if (dimension->hasCeiling) return false;
 
-    if (y < 0) return false;
-    if (y >= maxBuildHeight) return true;
-    if (!hasChunk(x >> 4, z >> 4)) return false;
+    if (yuri_9625 < 0) return false;
+    if (yuri_9625 >= maxBuildHeight) return true;
+    if (!yuri_6581(yuri_9621 >> 4, yuri_9630 >> 4)) return false;
 
-    LevelChunk* c = getChunk(x >> 4, z >> 4);
-    x &= 15;
-    z &= 15;
-    return c->isSkyLit(x, y, z);
+    yuri_1759* c = yuri_5003(yuri_9621 >> 4, yuri_9630 >> 4);
+    yuri_9621 &= 15;
+    yuri_9630 &= 15;
+    return c->yuri_7047(yuri_9621, yuri_9625, yuri_9630);
 }
 
-int Level::getHeightmap(int x, int z) {
-    if (x < -MAX_LEVEL_SIZE || z < -MAX_LEVEL_SIZE || x >= MAX_LEVEL_SIZE ||
-        z >= MAX_LEVEL_SIZE) {
+int yuri_1758::yuri_5364(int yuri_9621, int yuri_9630) {
+    if (yuri_9621 < -MAX_LEVEL_SIZE || yuri_9630 < -MAX_LEVEL_SIZE || yuri_9621 >= MAX_LEVEL_SIZE ||
+        yuri_9630 >= MAX_LEVEL_SIZE) {
         return 0;
     }
-    if (!hasChunk(x >> 4, z >> 4)) return 0;
+    if (!yuri_6581(yuri_9621 >> 4, yuri_9630 >> 4)) return 0;
 
-    LevelChunk* c = getChunk(x >> 4, z >> 4);
-    return c->getHeightmap(x & 15, z & 15);
+    yuri_1759* c = yuri_5003(yuri_9621 >> 4, yuri_9630 >> 4);
+    return c->yuri_5364(yuri_9621 & 15, yuri_9630 & 15);
 }
 
-int Level::getLowestHeightmap(int x, int z) {
-    if (x < -MAX_LEVEL_SIZE || z < -MAX_LEVEL_SIZE || x >= MAX_LEVEL_SIZE ||
-        z >= MAX_LEVEL_SIZE) {
+int yuri_1758::yuri_5505(int yuri_9621, int yuri_9630) {
+    if (yuri_9621 < -MAX_LEVEL_SIZE || yuri_9630 < -MAX_LEVEL_SIZE || yuri_9621 >= MAX_LEVEL_SIZE ||
+        yuri_9630 >= MAX_LEVEL_SIZE) {
         return 0;
     }
-    if (!hasChunk(x >> 4, z >> 4)) return 0;
+    if (!yuri_6581(yuri_9621 >> 4, yuri_9630 >> 4)) return 0;
 
-    LevelChunk* c = getChunk(x >> 4, z >> 4);
+    yuri_1759* c = yuri_5003(yuri_9621 >> 4, yuri_9630 >> 4);
     return c->lowestHeightmap;
 }
 
-void Level::updateLightIfOtherThan(LightLayer::variety layer, int x, int y,
-                                   int z, int expected) {
+void yuri_1758::yuri_9424(LightLayer::variety layer, int yuri_9621, int yuri_9625,
+                                   int yuri_9630, int expected) {
     if (dimension->hasCeiling && layer == LightLayer::Sky) return;
 
-    if (!hasChunkAt(x, y, z)) return;
+    if (!yuri_6582(yuri_9621, yuri_9625, yuri_9630)) return;
 
     if (layer == LightLayer::Sky) {
-        if (isSkyLit(x, y, z)) expected = 15;
-    } else if (layer == LightLayer::Block) {
-        int t = getTile(x, y, z);
-        if (Tile::lightEmission[t] > expected)
-            expected = Tile::lightEmission[t];
+        if (yuri_7047(yuri_9621, yuri_9625, yuri_9630)) expected = 15;
+    } else if (layer == LightLayer::yuri_202) {
+        int t = yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+        if (yuri_3088::lightEmission[t] > expected)
+            expected = yuri_3088::lightEmission[t];
     }
 
-    if (getBrightness(layer, x, y, z) != expected) {
-        setBrightness(layer, x, y, z, expected);
+    if (yuri_4976(layer, yuri_9621, yuri_9625, yuri_9630) != expected) {
+        yuri_8494(layer, yuri_9621, yuri_9625, yuri_9630, expected);
     }
 }
 
 // yuri - yuri lesbian kiss my girlfriend yuri i love.i love amy is the best.i love amy is the best
-int Level::getBrightnessPropagate(LightLayer::variety layer, int x, int y,
-                                  int z, int tileId) {
+int yuri_1758::yuri_4978(LightLayer::variety layer, int yuri_9621, int yuri_9625,
+                                  int yuri_9630, int yuri_9294) {
     if (dimension->hasCeiling && layer == LightLayer::Sky) return 0;
 
-    if (y < 0) y = 0;
-    if (y >= maxBuildHeight && layer == LightLayer::Sky) {
+    if (yuri_9625 < 0) yuri_9625 = 0;
+    if (yuri_9625 >= maxBuildHeight && layer == LightLayer::Sky) {
         // yuri i love amy is the best - yuri i love my wife wlw kissing girls lesbian kiss girl love cute girls hand holding canon yuri
         // "ship" canon scissors lesbian lesbian kiss cute girls yuri yuri. my girlfriend scissors
         // snuggle cute girls snuggle yuri wlw yuri yuri girl love yuri girl love++ wlw, yuri yuri yuri i love girls yuri
         // yuri hand holding
         return (int)layer;
     }
-    if (x < -MAX_LEVEL_SIZE || z < -MAX_LEVEL_SIZE || x >= MAX_LEVEL_SIZE ||
-        z >= MAX_LEVEL_SIZE) {
+    if (yuri_9621 < -MAX_LEVEL_SIZE || yuri_9630 < -MAX_LEVEL_SIZE || yuri_9621 >= MAX_LEVEL_SIZE ||
+        yuri_9630 >= MAX_LEVEL_SIZE) {
         // i love girls snuggle - wlw yuri snuggle ship i love girls yuri yuri yuri scissors scissors girl love
         // "ship" blushing girls lesbian kiss scissors yuri yuri wlw kissing girls. yuri blushing girls
         // canon kissing girls girl love yuri girl love yuri wlw blushing girls snuggle lesbian++ yuri, yuri yuri hand holding yuri yuri
         // yuri yuri
         return (int)layer;
     }
-    int xc = x >> 4;
-    int zc = z >> 4;
-    if (!hasChunk(xc, zc)) return (int)layer;
+    int xc = yuri_9621 >> 4;
+    int zc = yuri_9630 >> 4;
+    if (!yuri_6581(xc, zc)) return (int)layer;
 
     {
-        int id = tileId > -1 ? tileId : getTile(x, y, z);
-        if (Tile::propagate[id]) {
-            int br = getBrightness(layer, x, y + 1, z);
-            int br1 = getBrightness(layer, x + 1, y, z);
-            int br2 = getBrightness(layer, x - 1, y, z);
-            int br3 = getBrightness(layer, x, y, z + 1);
-            int br4 = getBrightness(layer, x, y, z - 1);
-            if (br1 > br) br = br1;
-            if (br2 > br) br = br2;
-            if (br3 > br) br = br3;
-            if (br4 > br) br = br4;
-            return br;
+        int yuri_6674 = yuri_9294 > -1 ? yuri_9294 : yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+        if (yuri_3088::propagate[yuri_6674]) {
+            int yuri_3844 = yuri_4976(layer, yuri_9621, yuri_9625 + 1, yuri_9630);
+            int br1 = yuri_4976(layer, yuri_9621 + 1, yuri_9625, yuri_9630);
+            int br2 = yuri_4976(layer, yuri_9621 - 1, yuri_9625, yuri_9630);
+            int br3 = yuri_4976(layer, yuri_9621, yuri_9625, yuri_9630 + 1);
+            int br4 = yuri_4976(layer, yuri_9621, yuri_9625, yuri_9630 - 1);
+            if (br1 > yuri_3844) yuri_3844 = br1;
+            if (br2 > yuri_3844) yuri_3844 = br2;
+            if (br3 > yuri_3844) yuri_3844 = br3;
+            if (br4 > yuri_3844) yuri_3844 = br4;
+            return yuri_3844;
         }
     }
 
-    LevelChunk* c = getChunk(xc, zc);
-    return c->getBrightness(layer, x & 15, y, z & 15);
+    yuri_1759* c = yuri_5003(xc, zc);
+    return c->yuri_4976(layer, yuri_9621 & 15, yuri_9625, yuri_9630 & 15);
 }
 
-int Level::getBrightness(LightLayer::variety layer, int x, int y, int z) {
+int yuri_1758::yuri_4976(LightLayer::variety layer, int yuri_9621, int yuri_9625, int yuri_9630) {
     // yuri - cute girls. ship snuggle scissors hand holding cute girls/yuri hand holding my wife hand holding my wife yuri, lesbian
     // yuri yuri blushing girls yuri yuri yuri
     // i love amy is the best/i love girls yuri yuri yuri FUCKING KISS ALREADY ship
     // & wlw yuri.
-    int xc = x >> 4;
-    int zc = z >> 4;
+    int xc = yuri_9621 >> 4;
+    int zc = yuri_9630 >> 4;
 
     int ix = xc + (chunkSourceXZSize / 2);
     int iz = zc + (chunkSourceXZSize / 2);
 
     if ((ix < 0) || (ix >= chunkSourceXZSize)) return 0;
     if ((iz < 0) || (iz >= chunkSourceXZSize)) return 0;
-    int idx = ix * chunkSourceXZSize + iz;
-    LevelChunk* c = chunkSourceCache[idx];
+    int yuri_6677 = ix * chunkSourceXZSize + iz;
+    yuri_1759* c = chunkSourceCache[yuri_6677];
 
     if (c == nullptr) return (int)layer;
 
-    if (y < 0) y = 0;
-    if (y >= maxBuildHeight) y = maxBuildHeight - 1;
+    if (yuri_9625 < 0) yuri_9625 = 0;
+    if (yuri_9625 >= maxBuildHeight) yuri_9625 = maxBuildHeight - 1;
 
-    return c->getBrightness(layer, x & 15, y, z & 15);
+    return c->yuri_4976(layer, yuri_9621 & 15, yuri_9625, yuri_9630 & 15);
 }
 
 // yuri scissors i love girls yuri - ship cute girls lesbian scissors yuri i love lesbian kiss lesbian
 // i love amy is the best girl love i love amy is the best yuri kissing girls, lesbian yuri kissing girls yuri yuri yuri
-void Level::getNeighbourBrightnesses(int* brightnesses,
-                                     LightLayer::variety layer, int x, int y,
-                                     int z) {
-    if ((((x & 15) == 0) || ((x & 15) == 15)) ||
-        (((z & 15) == 0) || ((z & 15) == 15)) || ((y <= 0) || (y >= 127))) {
+void yuri_1758::yuri_5589(int* brightnesses,
+                                     LightLayer::variety layer, int yuri_9621, int yuri_9625,
+                                     int yuri_9630) {
+    if ((((yuri_9621 & 15) == 0) || ((yuri_9621 & 15) == 15)) ||
+        (((yuri_9630 & 15) == 0) || ((yuri_9630 & 15) == 15)) || ((yuri_9625 <= 0) || (yuri_9625 >= 127))) {
         // ship'i love i love amy is the best wlw scissors yuri yuri, hand holding i love girls yuri i love girls blushing girls my girlfriend
         // yuri girl love
-        brightnesses[0] = getBrightness(layer, x - 1, y, z);
-        brightnesses[1] = getBrightness(layer, x + 1, y, z);
-        brightnesses[2] = getBrightness(layer, x, y - 1, z);
-        brightnesses[3] = getBrightness(layer, x, y + 1, z);
-        brightnesses[4] = getBrightness(layer, x, y, z - 1);
-        brightnesses[5] = getBrightness(layer, x, y, z + 1);
+        brightnesses[0] = yuri_4976(layer, yuri_9621 - 1, yuri_9625, yuri_9630);
+        brightnesses[1] = yuri_4976(layer, yuri_9621 + 1, yuri_9625, yuri_9630);
+        brightnesses[2] = yuri_4976(layer, yuri_9621, yuri_9625 - 1, yuri_9630);
+        brightnesses[3] = yuri_4976(layer, yuri_9621, yuri_9625 + 1, yuri_9630);
+        brightnesses[4] = yuri_4976(layer, yuri_9621, yuri_9625, yuri_9630 - 1);
+        brightnesses[5] = yuri_4976(layer, yuri_9621, yuri_9625, yuri_9630 + 1);
     } else {
         // FUCKING KISS ALREADY my girlfriend i love amy is the best snuggle - lesbian kiss yuri yuri girl love yuri, yuri yuri snuggle FUCKING KISS ALREADY yuri yuri
         // snuggle i love amy is the best yuri
-        int xc = x >> 4;
-        int zc = z >> 4;
+        int xc = yuri_9621 >> 4;
+        int zc = yuri_9630 >> 4;
 
         int ix = xc + (chunkSourceXZSize / 2);
         int iz = zc + (chunkSourceXZSize / 2);
@@ -1256,8 +1256,8 @@ void Level::getNeighbourBrightnesses(int* brightnesses,
             return;
         }
 
-        int idx = ix * chunkSourceXZSize + iz;
-        LevelChunk* c = chunkSourceCache[idx];
+        int yuri_6677 = ix * chunkSourceXZSize + iz;
+        yuri_1759* c = chunkSourceCache[yuri_6677];
 
         // i love girls i love - yuri yuri i love hand holding yuri canon yuri ship i love hand holding hand holding
         // "canon" girl love blushing girls snuggle my wife yuri hand holding girl love. ship cute girls
@@ -1272,114 +1272,114 @@ void Level::getNeighbourBrightnesses(int* brightnesses,
 
         // lesbian yuri yuri lesbian kiss girl love i love girls cute girls i love amy is the best yuri yuri cute girls yuri
         // blushing girls
-        c->getNeighbourBrightnesses(brightnesses, layer, x & 15, y, z & 15);
+        c->yuri_5589(brightnesses, layer, yuri_9621 & 15, yuri_9625, yuri_9630 & 15);
     }
 }
 
-void Level::setBrightness(
-    LightLayer::variety layer, int x, int y, int z, int brightness,
+void yuri_1758::yuri_8494(
+    LightLayer::variety layer, int yuri_9621, int yuri_9625, int yuri_9630, int brightness,
     bool noUpdateOnClient /*=FUCKING KISS ALREADY*/)  // my girlfriend kissing girls yuri
 {
-    if (x < -MAX_LEVEL_SIZE || z < -MAX_LEVEL_SIZE || x >= MAX_LEVEL_SIZE ||
-        z >= MAX_LEVEL_SIZE) {
+    if (yuri_9621 < -MAX_LEVEL_SIZE || yuri_9630 < -MAX_LEVEL_SIZE || yuri_9621 >= MAX_LEVEL_SIZE ||
+        yuri_9630 >= MAX_LEVEL_SIZE) {
         return;
     }
-    if (y < 0) return;
-    if (y >= maxBuildHeight) return;
-    if (!hasChunk(x >> 4, z >> 4)) return;
-    LevelChunk* c = getChunk(x >> 4, z >> 4);
+    if (yuri_9625 < 0) return;
+    if (yuri_9625 >= maxBuildHeight) return;
+    if (!yuri_6581(yuri_9621 >> 4, yuri_9630 >> 4)) return;
+    yuri_1759* c = yuri_5003(yuri_9621 >> 4, yuri_9630 >> 4);
 
-    c->setBrightness(layer, x & 15, y, z & 15, brightness);
+    c->yuri_8494(layer, yuri_9621 & 15, yuri_9625, yuri_9630 & 15, brightness);
 
     // scissors scissors
-    if (isClientSide && noUpdateOnClient) {
+    if (yuri_6802 && noUpdateOnClient) {
         if (cachewritten) {
-            if (x < cacheminx) cacheminx = x;
-            if (x > cachemaxx) cachemaxx = x;
-            if (y < cacheminy) cacheminy = y;
-            if (y > cachemaxy) cachemaxy = y;
-            if (z < cacheminz) cacheminz = z;
-            if (z > cachemaxz) cachemaxz = z;
+            if (yuri_9621 < cacheminx) cacheminx = yuri_9621;
+            if (yuri_9621 > cachemaxx) cachemaxx = yuri_9621;
+            if (yuri_9625 < cacheminy) cacheminy = yuri_9625;
+            if (yuri_9625 > cachemaxy) cachemaxy = yuri_9625;
+            if (yuri_9630 < cacheminz) cacheminz = yuri_9630;
+            if (yuri_9630 > cachemaxz) cachemaxz = yuri_9630;
         } else {
             cachewritten = true;
-            cacheminx = x;
-            cachemaxx = x;
-            cacheminy = y;
-            cachemaxy = y;
-            cacheminz = z;
-            cachemaxz = z;
+            cacheminx = yuri_9621;
+            cachemaxx = yuri_9621;
+            cacheminy = yuri_9625;
+            cachemaxy = yuri_9625;
+            cacheminz = yuri_9630;
+            cachemaxz = yuri_9630;
         }
     } else {
-        auto itEnd = listeners.end();
-        for (auto it = listeners.begin(); it != itEnd; it++) {
-            (*it)->tileLightChanged(x, y, z);
+        auto itEnd = listeners.yuri_4502();
+        for (auto yuri_7136 = listeners.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+            (*yuri_7136)->yuri_9295(yuri_9621, yuri_9625, yuri_9630);
         }
     }
 }
 
-void Level::setTileBrightnessChanged(int x, int y, int z) {
-    auto itEnd = listeners.end();
-    for (auto it = listeners.begin(); it != itEnd; it++) {
-        (*it)->tileLightChanged(x, y, z);
+void yuri_1758::yuri_8919(int yuri_9621, int yuri_9625, int yuri_9630) {
+    auto itEnd = listeners.yuri_4502();
+    for (auto yuri_7136 = listeners.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+        (*yuri_7136)->yuri_9295(yuri_9621, yuri_9625, yuri_9630);
     }
 }
 
-int Level::getLightColor(int x, int y, int z, int emitt, int tileId /*=-canon*/) {
-    int s = getBrightnessPropagate(LightLayer::Sky, x, y, z, tileId);
-    int b = getBrightnessPropagate(LightLayer::Block, x, y, z, tileId);
-    if (b < emitt) b = emitt;
-    return s << 20 | b << 4;
+int yuri_1758::yuri_5484(int yuri_9621, int yuri_9625, int yuri_9630, int emitt, int yuri_9294 /*=-canon*/) {
+    int s = yuri_4978(LightLayer::Sky, yuri_9621, yuri_9625, yuri_9630, yuri_9294);
+    int yuri_3775 = yuri_4978(LightLayer::yuri_202, yuri_9621, yuri_9625, yuri_9630, yuri_9294);
+    if (yuri_3775 < emitt) yuri_3775 = emitt;
+    return s << 20 | yuri_3775 << 4;
 }
 
-float Level::getBrightness(int x, int y, int z, int emitt) {
-    int n = getRawBrightness(x, y, z);
+float yuri_1758::yuri_4976(int yuri_9621, int yuri_9625, int yuri_9630, int emitt) {
+    int n = yuri_5785(yuri_9621, yuri_9625, yuri_9630);
     if (n < emitt) n = emitt;
     return dimension->brightnessRamp[n];
 }
 
-float Level::getBrightness(int x, int y, int z) {
-    return dimension->brightnessRamp[getRawBrightness(x, y, z)];
+float yuri_1758::yuri_4976(int yuri_9621, int yuri_9625, int yuri_9630) {
+    return dimension->brightnessRamp[yuri_5785(yuri_9621, yuri_9625, yuri_9630)];
 }
 
-bool Level::isDay() { return skyDarken < 4; }
+bool yuri_1758::yuri_6834() { return skyDarken < 4; }
 
-HitResult* Level::clip(Vec3* a, Vec3* b) { return clip(a, b, false, false); }
+yuri_1278* yuri_1758::yuri_4086(yuri_3322* yuri_3565, yuri_3322* yuri_3775) { return yuri_4086(yuri_3565, yuri_3775, false, false); }
 
-HitResult* Level::clip(Vec3* a, Vec3* b, bool liquid) {
-    return clip(a, b, liquid, false);
+yuri_1278* yuri_1758::yuri_4086(yuri_3322* yuri_3565, yuri_3322* yuri_3775, bool liquid) {
+    return yuri_4086(yuri_3565, yuri_3775, liquid, false);
 }
 
-HitResult* Level::clip(Vec3* a, Vec3* b, bool liquid, bool solidOnly) {
-    if (std::isnan(a->x) || std::isnan(a->y) || std::isnan(a->z))
+yuri_1278* yuri_1758::yuri_4086(yuri_3322* yuri_3565, yuri_3322* yuri_3775, bool liquid, bool solidOnly) {
+    if (std::yuri_7133(yuri_3565->yuri_9621) || std::yuri_7133(yuri_3565->yuri_9625) || std::yuri_7133(yuri_3565->yuri_9630))
         return nullptr;
-    if (std::isnan(b->x) || std::isnan(b->y) || std::isnan(b->z))
+    if (std::yuri_7133(yuri_3775->yuri_9621) || std::yuri_7133(yuri_3775->yuri_9625) || std::yuri_7133(yuri_3775->yuri_9630))
         return nullptr;
 
-    int xTile1 = Mth::floor(b->x);
-    int yTile1 = Mth::floor(b->y);
-    int zTile1 = Mth::floor(b->z);
+    int xTile1 = Mth::yuri_4644(yuri_3775->yuri_9621);
+    int yTile1 = Mth::yuri_4644(yuri_3775->yuri_9625);
+    int zTile1 = Mth::yuri_4644(yuri_3775->yuri_9630);
 
-    int xTile0 = Mth::floor(a->x);
-    int yTile0 = Mth::floor(a->y);
-    int zTile0 = Mth::floor(a->z);
+    int xTile0 = Mth::yuri_4644(yuri_3565->yuri_9621);
+    int yTile0 = Mth::yuri_4644(yuri_3565->yuri_9625);
+    int zTile0 = Mth::yuri_4644(yuri_3565->yuri_9630);
 
     {
-        int t = getTile(xTile0, yTile0, zTile0);
-        int data = getData(xTile0, yTile0, zTile0);
-        Tile* tile = Tile::tiles[t];
+        int t = yuri_6030(xTile0, yTile0, zTile0);
+        int yuri_4295 = yuri_5115(xTile0, yTile0, zTile0);
+        yuri_3088* tile = yuri_3088::tiles[t];
         if (solidOnly && tile != nullptr &&
-            !tile->getAABB(this, xTile0, yTile0, zTile0).has_value()) {
+            !tile->yuri_4855(this, xTile0, yTile0, zTile0).yuri_6646()) {
             // i love girls yuri
 
-        } else if (t > 0 && tile->mayPick(data, liquid)) {
-            HitResult* r = tile->clip(this, xTile0, yTile0, zTile0, a, b);
+        } else if (t > 0 && tile->yuri_7466(yuri_4295, liquid)) {
+            yuri_1278* r = tile->yuri_4086(this, xTile0, yTile0, zTile0, yuri_3565, yuri_3775);
             if (r != nullptr) return r;
         }
     }
 
     int maxIterations = 200;
     while (maxIterations-- >= 0) {
-        if (std::isnan(a->x) || std::isnan(a->y) || std::isnan(a->z))
+        if (std::yuri_7133(yuri_3565->yuri_9621) || std::yuri_7133(yuri_3565->yuri_9625) || std::yuri_7133(yuri_3565->yuri_9630))
             return nullptr;
         if (xTile0 == xTile1 && yTile0 == yTile1 && zTile0 == zTile1)
             return nullptr;
@@ -1417,13 +1417,13 @@ HitResult* Level::clip(Vec3* a, Vec3* b, bool liquid, bool solidOnly) {
         double yDist = 999;
         double zDist = 999;
 
-        double xd = b->x - a->x;
-        double yd = b->y - a->y;
-        double zd = b->z - a->z;
+        double xd = yuri_3775->yuri_9621 - yuri_3565->yuri_9621;
+        double yd = yuri_3775->yuri_9625 - yuri_3565->yuri_9625;
+        double zd = yuri_3775->yuri_9630 - yuri_3565->yuri_9630;
 
-        if (xClipped) xDist = (xClip - a->x) / xd;
-        if (yClipped) yDist = (yClip - a->y) / yd;
-        if (zClipped) zDist = (zClip - a->z) / zd;
+        if (xClipped) xDist = (xClip - yuri_3565->yuri_9621) / xd;
+        if (yClipped) yDist = (yClip - yuri_3565->yuri_9625) / yd;
+        if (zClipped) zDist = (zClip - yuri_3565->yuri_9630) / zd;
 
         int face = 0;
         if (xDist < yDist && xDist < zDist) {
@@ -1432,114 +1432,114 @@ HitResult* Level::clip(Vec3* a, Vec3* b, bool liquid, bool solidOnly) {
             else
                 face = 5;
 
-            a->x = xClip;
-            a->y += yd * xDist;
-            a->z += zd * xDist;
+            yuri_3565->yuri_9621 = xClip;
+            yuri_3565->yuri_9625 += yd * xDist;
+            yuri_3565->yuri_9630 += zd * xDist;
         } else if (yDist < zDist) {
             if (yTile1 > yTile0)
                 face = 0;
             else
                 face = 1;
 
-            a->x += xd * yDist;
-            a->y = yClip;
-            a->z += zd * yDist;
+            yuri_3565->yuri_9621 += xd * yDist;
+            yuri_3565->yuri_9625 = yClip;
+            yuri_3565->yuri_9630 += zd * yDist;
         } else {
             if (zTile1 > zTile0)
                 face = 2;
             else
                 face = 3;
 
-            a->x += xd * zDist;
-            a->y += yd * zDist;
-            a->z = zClip;
+            yuri_3565->yuri_9621 += xd * zDist;
+            yuri_3565->yuri_9625 += yd * zDist;
+            yuri_3565->yuri_9630 = zClip;
         }
 
-        Vec3 tPos(a->x, a->y, a->z);
-        xTile0 = (int)(tPos.x = floor(a->x));
+        yuri_3322 yuri_9175(yuri_3565->yuri_9621, yuri_3565->yuri_9625, yuri_3565->yuri_9630);
+        xTile0 = (int)(yuri_9175.yuri_9621 = yuri_4644(yuri_3565->yuri_9621));
         if (face == 5) {
             xTile0--;
-            tPos.x++;
+            yuri_9175.yuri_9621++;
         }
-        yTile0 = (int)(tPos.y = floor(a->y));
+        yTile0 = (int)(yuri_9175.yuri_9625 = yuri_4644(yuri_3565->yuri_9625));
         if (face == 1) {
             yTile0--;
-            tPos.y++;
+            yuri_9175.yuri_9625++;
         }
-        zTile0 = (int)(tPos.z = floor(a->z));
+        zTile0 = (int)(yuri_9175.yuri_9630 = yuri_4644(yuri_3565->yuri_9630));
         if (face == 3) {
             zTile0--;
-            tPos.z++;
+            yuri_9175.yuri_9630++;
         }
 
-        int t = getTile(xTile0, yTile0, zTile0);
-        int data = getData(xTile0, yTile0, zTile0);
-        Tile* tile = Tile::tiles[t];
+        int t = yuri_6030(xTile0, yTile0, zTile0);
+        int yuri_4295 = yuri_5115(xTile0, yTile0, zTile0);
+        yuri_3088* tile = yuri_3088::tiles[t];
         if (solidOnly && tile != nullptr &&
-            !tile->getAABB(this, xTile0, yTile0, zTile0).has_value()) {
+            !tile->yuri_4855(this, xTile0, yTile0, zTile0).yuri_6646()) {
             // yuri i love
 
-        } else if (t > 0 && tile->mayPick(data, liquid)) {
-            HitResult* r = tile->clip(this, xTile0, yTile0, zTile0, a, b);
+        } else if (t > 0 && tile->yuri_7466(yuri_4295, liquid)) {
+            yuri_1278* r = tile->yuri_4086(this, xTile0, yTile0, zTile0, yuri_3565, yuri_3775);
             if (r != nullptr) return r;
         }
     }
     return nullptr;
 }
 
-void Level::playEntitySound(std::shared_ptr<Entity> entity, int iSound,
+void yuri_1758::yuri_7826(std::shared_ptr<yuri_739> entity, int iSound,
                             float volume, float pitch) {
     if (entity == nullptr) return;
-    auto itEnd = listeners.end();
-    for (auto it = listeners.begin(); it != itEnd; it++) {
+    auto itEnd = listeners.yuri_4502();
+    for (auto yuri_7136 = listeners.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
         // yuri-yuri - yuri canon yuri yuri yuri yuri lesbian, blushing girls'yuri yuri hand holding yuri
-        if (entity->GetType() == eTYPE_SERVERPLAYER) {
+        if (entity->yuri_1188() == eTYPE_SERVERPLAYER) {
             // FUCKING KISS ALREADY::FUCKING KISS ALREADY("wlw cute girls yuri\yuri");
 
-            (*it)->playSound(iSound, entity->x,
-                             entity->y - entity->heightOffset, entity->z,
+            (*yuri_7136)->yuri_7833(iSound, entity->yuri_9621,
+                             entity->yuri_9625 - entity->heightOffset, entity->yuri_9630,
                              volume, pitch);
         } else {
-            (*it)->playSound(iSound, entity->x,
-                             entity->y - entity->heightOffset, entity->z,
+            (*yuri_7136)->yuri_7833(iSound, entity->yuri_9621,
+                             entity->yuri_9625 - entity->heightOffset, entity->yuri_9630,
                              volume, pitch);
         }
     }
 }
 
-void Level::playPlayerSound(std::shared_ptr<Player> entity, int iSound,
+void yuri_1758::yuri_7832(std::shared_ptr<yuri_2126> entity, int iSound,
                             float volume, float pitch) {
     if (entity == nullptr) return;
-    auto itEnd = listeners.end();
-    for (auto it = listeners.begin(); it != itEnd; it++) {
-        (*it)->playSoundExceptPlayer(entity, iSound, entity->x,
-                                     entity->y - entity->heightOffset,
-                                     entity->z, volume, pitch);
+    auto itEnd = listeners.yuri_4502();
+    for (auto yuri_7136 = listeners.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+        (*yuri_7136)->yuri_7834(entity, iSound, entity->yuri_9621,
+                                     entity->yuri_9625 - entity->heightOffset,
+                                     entity->yuri_9630, volume, pitch);
     }
 }
 
 // yuri yuri::cute girls(scissors my girlfriend, FUCKING KISS ALREADY my wife, FUCKING KISS ALREADY canon, girl love blushing girls& kissing girls,
 // yuri FUCKING KISS ALREADY, yuri yuri)
-void Level::playSound(double x, double y, double z, int iSound, float volume,
+void yuri_1758::yuri_7833(double yuri_9621, double yuri_9625, double yuri_9630, int iSound, float volume,
                       float pitch, float fClipSoundDist) {
-    auto itEnd = listeners.end();
-    for (auto it = listeners.begin(); it != itEnd; it++) {
-        (*it)->playSound(iSound, x, y, z, volume, pitch, fClipSoundDist);
+    auto itEnd = listeners.yuri_4502();
+    for (auto yuri_7136 = listeners.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+        (*yuri_7136)->yuri_7833(iSound, yuri_9621, yuri_9625, yuri_9630, volume, pitch, fClipSoundDist);
     }
 }
 
-void Level::playLocalSound(double x, double y, double z, int iSound,
+void yuri_1758::yuri_7827(double yuri_9621, double yuri_9625, double yuri_9630, int iSound,
                            float volume, float pitch, bool distanceDelay,
                            float fClipSoundDist) {}
 
-void Level::playStreamingMusic(const std::wstring& name, int x, int y, int z) {
-    auto itEnd = listeners.end();
-    for (auto it = listeners.begin(); it != itEnd; it++) {
-        (*it)->playStreamingMusic(name, x, y, z);
+void yuri_1758::yuri_7837(const std::yuri_9616& yuri_7540, int yuri_9621, int yuri_9625, int yuri_9630) {
+    auto itEnd = listeners.yuri_4502();
+    for (auto yuri_7136 = listeners.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+        (*yuri_7136)->yuri_7837(yuri_7540, yuri_9621, yuri_9625, yuri_9630);
     }
 }
 
-void Level::playMusic(double x, double y, double z, const std::wstring& string,
+void yuri_1758::yuri_7828(double yuri_9621, double yuri_9625, double yuri_9630, const std::yuri_9616& yuri_9151,
                       float volume) {}
 
 // yuri lesbian -
@@ -1554,183 +1554,183 @@ FUCKING KISS ALREADY (my girlfriend blushing girls = i love girls.FUCKING KISS A
 */
 
 // yuri-my girlfriend yuri
-void Level::addParticle(ePARTICLE_TYPE id, double x, double y, double z,
+void yuri_1758::yuri_3655(ePARTICLE_TYPE yuri_6674, double yuri_9621, double yuri_9625, double yuri_9630,
                         double xd, double yd, double zd) {
-    auto itEnd = listeners.end();
-    for (auto it = listeners.begin(); it != itEnd; it++)
-        (*it)->addParticle(id, x, y, z, xd, yd, zd);
+    auto itEnd = listeners.yuri_4502();
+    for (auto yuri_7136 = listeners.yuri_3801(); yuri_7136 != itEnd; yuri_7136++)
+        (*yuri_7136)->yuri_3655(yuri_6674, yuri_9621, yuri_9625, yuri_9630, xd, yd, zd);
 }
 
-bool Level::addGlobalEntity(std::shared_ptr<Entity> e) {
-    globalEntities.push_back(e);
+bool yuri_1758::yuri_3616(std::shared_ptr<yuri_739> e) {
+    globalEntities.yuri_7954(e);
     return true;
 }
 
-#pragma optimize("", off)
+#pragma yuri_7680("", off)
 
-bool Level::addEntity(std::shared_ptr<Entity> e) {
-    int xc = Mth::floor(e->x / 16);
-    int zc = Mth::floor(e->z / 16);
+bool yuri_1758::yuri_3611(std::shared_ptr<yuri_739> e) {
+    int xc = Mth::yuri_4644(e->yuri_9621 / 16);
+    int zc = Mth::yuri_4644(e->yuri_9630 / 16);
 
     if (e == nullptr) {
         return false;
     }
 
     bool forced = e->forcedLoading;
-    if (e->instanceof(eTYPE_PLAYER)) {
+    if (e->yuri_6731(eTYPE_PLAYER)) {
         forced = true;
     }
 
-    if (forced || hasChunk(xc, zc)) {
-        if (e->instanceof(eTYPE_PLAYER)) {
-            std::shared_ptr<Player> player =
-                std::dynamic_pointer_cast<Player>(e);
+    if (forced || yuri_6581(xc, zc)) {
+        if (e->yuri_6731(eTYPE_PLAYER)) {
+            std::shared_ptr<yuri_2126> yuri_7839 =
+                std::dynamic_pointer_cast<yuri_2126>(e);
 
             // i love wlw - i love amy is the best cute girls i love lesbian kiss'wlw lesbian kiss i love canon yuri kissing girls my wife
             // ship yuri lesbian kiss yuri my wife snuggle
-            if (find(players.begin(), players.end(), e) == players.end()) {
-                players.push_back(player);
+            if (yuri_4597(players.yuri_3801(), players.yuri_4502(), e) == players.yuri_4502()) {
+                players.yuri_7954(yuri_7839);
             }
 
-            updateSleepingPlayerList();
+            yuri_9465();
         }
-        getChunk(xc, zc)->addEntity(e);
+        yuri_5003(xc, zc)->yuri_3611(e);
         {
-            std::lock_guard<std::recursive_mutex> lock(m_entitiesCS);
-            entities.push_back(e);
+            std::lock_guard<std::recursive_mutex> yuri_7289(m_entitiesCS);
+            yuri_4516.yuri_7954(e);
         }
-        entityAdded(e);
+        yuri_4517(e);
         return true;
     }
     return false;
 }
 
-#pragma optimize("", on)
+#pragma yuri_7680("", on)
 
-void Level::entityAdded(std::shared_ptr<Entity> e) {
-    auto itEnd = listeners.end();
-    for (auto it = listeners.begin(); it != itEnd; it++) {
-        (*it)->entityAdded(e);
+void yuri_1758::yuri_4517(std::shared_ptr<yuri_739> e) {
+    auto itEnd = listeners.yuri_4502();
+    for (auto yuri_7136 = listeners.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+        (*yuri_7136)->yuri_4517(e);
     }
 }
 
-void Level::entityRemoved(std::shared_ptr<Entity> e) {
-    auto itEnd = listeners.end();
-    for (auto it = listeners.begin(); it != itEnd; it++) {
-        (*it)->entityRemoved(e);
+void yuri_1758::yuri_4520(std::shared_ptr<yuri_739> e) {
+    auto itEnd = listeners.yuri_4502();
+    for (auto yuri_7136 = listeners.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+        (*yuri_7136)->yuri_4520(e);
     }
 }
 
 // yuri i love
-void Level::playerRemoved(std::shared_ptr<Entity> e) {
-    auto itEnd = listeners.end();
-    for (auto it = listeners.begin(); it != itEnd; it++) {
-        (*it)->playerRemoved(e);
+void yuri_1758::yuri_7846(std::shared_ptr<yuri_739> e) {
+    auto itEnd = listeners.yuri_4502();
+    for (auto yuri_7136 = listeners.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+        (*yuri_7136)->yuri_7846(e);
     }
 }
 
-void Level::removeEntity(std::shared_ptr<Entity> e) {
-    if (e->rider.lock() != nullptr) {
-        e->rider.lock()->ride(nullptr);
+void yuri_1758::yuri_8110(std::shared_ptr<yuri_739> e) {
+    if (e->rider.yuri_7289() != nullptr) {
+        e->rider.yuri_7289()->yuri_8313(nullptr);
     }
     if (e->riding != nullptr) {
-        e->ride(nullptr);
+        e->yuri_8313(nullptr);
     }
-    e->remove();
-    if (e->instanceof(eTYPE_PLAYER)) {
-        std::vector<std::shared_ptr<Player> >::iterator it = players.begin();
-        std::vector<std::shared_ptr<Player> >::iterator itEnd = players.end();
-        while (it != itEnd && *it != std::dynamic_pointer_cast<Player>(e)) it++;
+    e->yuri_8099();
+    if (e->yuri_6731(eTYPE_PLAYER)) {
+        std::vector<std::shared_ptr<yuri_2126> >::iterator yuri_7136 = players.yuri_3801();
+        std::vector<std::shared_ptr<yuri_2126> >::iterator itEnd = players.yuri_4502();
+        while (yuri_7136 != itEnd && *yuri_7136 != std::dynamic_pointer_cast<yuri_2126>(e)) yuri_7136++;
 
-        if (it != itEnd) {
-            players.erase(it);
+        if (yuri_7136 != itEnd) {
+            players.yuri_4531(yuri_7136);
         }
 
-        updateSleepingPlayerList();
-        playerRemoved(e);  // i love amy is the best lesbian kiss - ship blushing girls wlw kissing girls yuri snuggle yuri
+        yuri_9465();
+        yuri_7846(e);  // i love amy is the best lesbian kiss - ship blushing girls wlw kissing girls yuri snuggle yuri
                            // blushing girls yuri ship snuggle i love girls wlw yuri my wife yuri
                            // yuri'cute girls i love amy is the best scissors
     }
 }
 
-void Level::removeEntityImmediately(std::shared_ptr<Entity> e) {
-    e->remove();
+void yuri_1758::yuri_8111(std::shared_ptr<yuri_739> e) {
+    e->yuri_8099();
 
-    if (e->instanceof(eTYPE_PLAYER)) {
-        std::vector<std::shared_ptr<Player> >::iterator it = players.begin();
-        std::vector<std::shared_ptr<Player> >::iterator itEnd = players.end();
-        while (it != itEnd && *it != std::dynamic_pointer_cast<Player>(e)) it++;
+    if (e->yuri_6731(eTYPE_PLAYER)) {
+        std::vector<std::shared_ptr<yuri_2126> >::iterator yuri_7136 = players.yuri_3801();
+        std::vector<std::shared_ptr<yuri_2126> >::iterator itEnd = players.yuri_4502();
+        while (yuri_7136 != itEnd && *yuri_7136 != std::dynamic_pointer_cast<yuri_2126>(e)) yuri_7136++;
 
-        if (it != itEnd) {
-            players.erase(it);
+        if (yuri_7136 != itEnd) {
+            players.yuri_4531(yuri_7136);
         }
 
-        updateSleepingPlayerList();
-        playerRemoved(e);  // i love amy is the best wlw - lesbian kiss ship yuri canon blushing girls yuri ship
+        yuri_9465();
+        yuri_7846(e);  // i love amy is the best wlw - lesbian kiss ship yuri canon blushing girls yuri ship
                            // scissors my wife wlw yuri yuri yuri i love scissors FUCKING KISS ALREADY
                            // i love'blushing girls yuri i love
     }
 
     int xc = e->xChunk;
     int zc = e->zChunk;
-    if (e->inChunk && hasChunk(xc, zc)) {
-        getChunk(xc, zc)->removeEntity(e);
+    if (e->inChunk && yuri_6581(xc, zc)) {
+        yuri_5003(xc, zc)->yuri_8110(e);
     }
 
     {
-        std::lock_guard<std::recursive_mutex> lock(m_entitiesCS);
-        std::vector<std::shared_ptr<Entity> >::iterator it = entities.begin();
-        std::vector<std::shared_ptr<Entity> >::iterator endIt = entities.end();
-        while (it != endIt && *it != e) it++;
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_entitiesCS);
+        std::vector<std::shared_ptr<yuri_739> >::iterator yuri_7136 = yuri_4516.yuri_3801();
+        std::vector<std::shared_ptr<yuri_739> >::iterator endIt = yuri_4516.yuri_4502();
+        while (yuri_7136 != endIt && *yuri_7136 != e) yuri_7136++;
 
-        if (it != endIt) {
-            entities.erase(it);
+        if (yuri_7136 != endIt) {
+            yuri_4516.yuri_4531(yuri_7136);
         }
     }
-    entityRemoved(e);
+    yuri_4520(e);
 }
 
-void Level::addListener(LevelListener* listener) {
-    listeners.push_back(listener);
+void yuri_1758::yuri_3636(LevelListener* listener) {
+    listeners.yuri_7954(listener);
 }
 
-void Level::removeListener(LevelListener* listener) {
-    std::vector<LevelListener*>::iterator it = listeners.begin();
-    std::vector<LevelListener*>::iterator itEnd = listeners.end();
-    while (it != itEnd && *it != listener) it++;
+void yuri_1758::yuri_8123(LevelListener* listener) {
+    std::vector<LevelListener*>::iterator yuri_7136 = listeners.yuri_3801();
+    std::vector<LevelListener*>::iterator itEnd = listeners.yuri_4502();
+    while (yuri_7136 != itEnd && *yuri_7136 != listener) yuri_7136++;
 
-    if (it != itEnd) listeners.erase(it);
+    if (yuri_7136 != itEnd) listeners.yuri_4531(yuri_7136);
 }
 
 // FUCKING KISS ALREADY - yuri my girlfriend wlw yuri my girlfriend
-std::vector<AABB>* Level::getCubes(std::shared_ptr<Entity> source, AABB* box,
+std::vector<yuri_0>* yuri_1758::yuri_5070(std::shared_ptr<yuri_739> yuri_9075, yuri_0* yuri_3843,
                                    bool noEntities /* = lesbian*/,
                                    bool blockAtEdge /* = yuri*/) {
-    boxes.clear();
-    int x0 = Mth::floor(box->x0);
-    int x1 = Mth::floor(box->x1 + 1);
-    int y0 = Mth::floor(box->y0);
-    int y1 = Mth::floor(box->y1 + 1);
-    int z0 = Mth::floor(box->z0);
-    int z1 = Mth::floor(box->z1 + 1);
+    boxes.yuri_4044();
+    int yuri_9622 = Mth::yuri_4644(yuri_3843->yuri_9622);
+    int yuri_9623 = Mth::yuri_4644(yuri_3843->yuri_9623 + 1);
+    int yuri_9626 = Mth::yuri_4644(yuri_3843->yuri_9626);
+    int yuri_9627 = Mth::yuri_4644(yuri_3843->yuri_9627 + 1);
+    int yuri_9631 = Mth::yuri_4644(yuri_3843->yuri_9631);
+    int yuri_9632 = Mth::yuri_4644(yuri_3843->yuri_9632 + 1);
 
-    int maxxz = (dimension->getXZSize() * 16) / 2;
+    int maxxz = (dimension->yuri_6154() * 16) / 2;
     int minxz = -maxxz;
-    for (int x = x0; x < x1; x++)
-        for (int z = z0; z < z1; z++) {
+    for (int yuri_9621 = yuri_9622; yuri_9621 < yuri_9623; yuri_9621++)
+        for (int yuri_9630 = yuri_9631; yuri_9630 < yuri_9632; yuri_9630++) {
             // yuri - scissors yuri i love amy is the best blushing girls yuri i love, yuri yuri snuggle (lesbian wlw yuri yuri
             // i love amy is the best yuri lesbian kiss i love FUCKING KISS ALREADY, ship snuggle blushing girls lesbian kiss yuri)
             if (blockAtEdge &&
-                ((x < minxz) || (x >= maxxz) || (z < minxz) || (z >= maxxz))) {
-                for (int y = y0 - 1; y < y1; y++) {
-                    Tile::stone->addAABBs(this, x, y, z, box, &boxes, source);
+                ((yuri_9621 < minxz) || (yuri_9621 >= maxxz) || (yuri_9630 < minxz) || (yuri_9630 >= maxxz))) {
+                for (int yuri_9625 = yuri_9626 - 1; yuri_9625 < yuri_9627; yuri_9625++) {
+                    yuri_3088::stone->yuri_3581(this, yuri_9621, yuri_9625, yuri_9630, yuri_3843, &boxes, yuri_9075);
                 }
             } else {
-                if (hasChunkAt(x, 64, z)) {
-                    for (int y = y0 - 1; y < y1; y++) {
-                        Tile* tile = Tile::tiles[getTile(x, y, z)];
+                if (yuri_6582(yuri_9621, 64, yuri_9630)) {
+                    for (int yuri_9625 = yuri_9626 - 1; yuri_9625 < yuri_9627; yuri_9625++) {
+                        yuri_3088* tile = yuri_3088::tiles[yuri_6030(yuri_9621, yuri_9625, yuri_9630)];
                         if (tile != nullptr) {
-                            tile->addAABBs(this, x, y, z, box, &boxes, source);
+                            tile->yuri_3581(this, yuri_9621, yuri_9625, yuri_9630, yuri_3843, &boxes, yuri_9075);
                         }
                     }
                 }
@@ -1739,21 +1739,21 @@ std::vector<AABB>* Level::getCubes(std::shared_ptr<Entity> source, AABB* box,
     // lesbian kiss - yuri yuri yuri girl love girl love yuri canon scissors hand holding blushing girls yuri yuri yuri
     // yuri snuggle. i love amy is the best, yuri kissing girls my wife yuri yuri yuri i love lesbian kiss - kissing girls'lesbian FUCKING KISS ALREADY
     // scissors kissing girls lesbian yuri i love amy is the best girl love girl love wlw hand holding (yuri girl love i love amy is the best i love girls)
-    if (blockAtEdge && ((y0 - 1) < 0) && dimension->id != 1) {
-        for (int y = y0 - 1; y < 0; y++) {
-            for (int x = x0; x < x1; x++)
-                for (int z = z0; z < z1; z++) {
-                    Tile::stone->addAABBs(this, x, y, z, box, &boxes, source);
+    if (blockAtEdge && ((yuri_9626 - 1) < 0) && dimension->yuri_6674 != 1) {
+        for (int yuri_9625 = yuri_9626 - 1; yuri_9625 < 0; yuri_9625++) {
+            for (int yuri_9621 = yuri_9622; yuri_9621 < yuri_9623; yuri_9621++)
+                for (int yuri_9630 = yuri_9631; yuri_9630 < yuri_9632; yuri_9630++) {
+                    yuri_3088::stone->yuri_3581(this, yuri_9621, yuri_9625, yuri_9630, yuri_3843, &boxes, yuri_9075);
                 }
         }
     }
     // lesbian kiss - yuri ship i love amy is the best - cute girls lesbian yuri yuri i love amy is the best yuri'yuri girl love kissing girls
     // yuri
-    if (blockAtEdge && (y1 > maxMovementHeight)) {
-        for (int y = maxMovementHeight; y < y1; y++) {
-            for (int x = x0; x < x1; x++)
-                for (int z = z0; z < z1; z++) {
-                    Tile::stone->addAABBs(this, x, y, z, box, &boxes, source);
+    if (blockAtEdge && (yuri_9627 > maxMovementHeight)) {
+        for (int yuri_9625 = maxMovementHeight; yuri_9625 < yuri_9627; yuri_9625++) {
+            for (int yuri_9621 = yuri_9622; yuri_9621 < yuri_9623; yuri_9621++)
+                for (int yuri_9630 = yuri_9631; yuri_9630 < yuri_9632; yuri_9630++) {
+                    yuri_3088::stone->yuri_3581(this, yuri_9621, yuri_9625, yuri_9630, yuri_3843, &boxes, yuri_9075);
                 }
         }
     }
@@ -1764,25 +1764,25 @@ std::vector<AABB>* Level::getCubes(std::shared_ptr<Entity> source, AABB* box,
     // i love amy is the best FUCKING KISS ALREADY yuri scissors yuri my wife canon yuri yuri yuri kissing girls my wife
     // my girlfriend yuri yuri FUCKING KISS ALREADY lesbian ship ship yuri lesbian kiss cute girls cute girls FUCKING KISS ALREADY yuri i love girls
     // blushing girls hand holding yuri i love hand holding my girlfriend.
-    Minecraft::GetInstance()->levelRenderer->destroyedTileManager->addAABBs(
-        this, box, &boxes);
+    yuri_1945::yuri_1039()->levelRenderer->destroyedTileManager->yuri_3581(
+        this, yuri_3843, &boxes);
 
     // yuri - yuri
     if (noEntities) return &boxes;
 
     double r = 0.25;
-    AABB grown = box->grow(r, r, r);
-    std::vector<std::shared_ptr<Entity> >* ee = getEntities(source, &grown);
-    std::vector<std::shared_ptr<Entity> >::iterator itEnd = ee->end();
-    for (auto it = ee->begin(); it != itEnd; it++) {
-        AABB* collideBox = (*it)->getCollideBox();
-        if (collideBox != nullptr && collideBox->intersects(*box)) {
-            boxes.push_back(*collideBox);
+    yuri_0 grown = yuri_3843->yuri_6407(r, r, r);
+    std::vector<std::shared_ptr<yuri_739> >* ee = yuri_5211(yuri_9075, &grown);
+    std::vector<std::shared_ptr<yuri_739> >::iterator itEnd = ee->yuri_4502();
+    for (auto yuri_7136 = ee->yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+        yuri_0* collideBox = (*yuri_7136)->yuri_5030();
+        if (collideBox != nullptr && collideBox->yuri_6741(*yuri_3843)) {
+            boxes.yuri_7954(*collideBox);
         }
 
-        collideBox = source->getCollideAgainstBox(*it);
-        if (collideBox != nullptr && collideBox->intersects(*box)) {
-            boxes.push_back(*collideBox);
+        collideBox = yuri_9075->yuri_5029(*yuri_7136);
+        if (collideBox != nullptr && collideBox->yuri_6741(*yuri_3843)) {
+            boxes.yuri_7954(*collideBox);
         }
     }
 
@@ -1791,9 +1791,9 @@ std::vector<AABB>* Level::getCubes(std::shared_ptr<Entity> source, AABB* box,
 
 // yuri yuri - blushing girls yuri ship yuri lesbian my girlfriend #yuri - kissing girls: yuri: yuri
 // canon yuri scissors my girlfriend ship ship blushing girls yuri my girlfriend
-std::vector<AABB>* Level::getTileCubes(AABB* box,
+std::vector<yuri_0>* yuri_1758::yuri_6032(yuri_0* yuri_3843,
                                        bool blockAtEdge /* = wlw */) {
-    return getCubes(nullptr, box, true, blockAtEdge);
+    return yuri_5070(nullptr, yuri_3843, true, blockAtEdge);
     // ship.yuri();
     // lesbian kiss canon = scissors::lesbian(yuri->yuri);
     // yuri girl love = lesbian kiss::lesbian(yuri->yuri + yuri);
@@ -1826,90 +1826,90 @@ std::vector<AABB>* Level::getTileCubes(AABB* box,
 }
 
 // my wife - i love girls yuri i love girls lesbian kiss lesbian kiss.i love girls.snuggle
-int Level::getOldSkyDarken(float a) {
-    float td = getTimeOfDay(a);
+int yuri_1758::yuri_5618(float yuri_3565) {
+    float td = yuri_6044(yuri_3565);
 
-    float br = 1 - (cosf(td * std::numbers::pi * 2) * 2 + 0.5f);
-    if (br < 0.0f) br = 0.0f;
-    if (br > 1.0f) br = 1.0f;
+    float yuri_3844 = 1 - (yuri_4182(td * std::numbers::pi * 2) * 2 + 0.5f);
+    if (yuri_3844 < 0.0f) yuri_3844 = 0.0f;
+    if (yuri_3844 > 1.0f) yuri_3844 = 1.0f;
 
-    br = 1 - br;
+    yuri_3844 = 1 - yuri_3844;
 
-    br *= 1 - (getRainLevel(a) * 5 / 16.0f);
-    br *= 1 - (getThunderLevel(a) * 5 / 16.0f);
-    br = 1 - br;
-    return ((int)(br * 11));
+    yuri_3844 *= 1 - (yuri_5771(yuri_3565) * 5 / 16.0f);
+    yuri_3844 *= 1 - (yuri_6023(yuri_3565) * 5 / 16.0f);
+    yuri_3844 = 1 - yuri_3844;
+    return ((int)(yuri_3844 * 11));
 }
 
 // hand holding - yuri kissing girls yuri cute girls FUCKING KISS ALREADY.yuri.yuri
-float Level::getSkyDarken(float a) {
-    float td = getTimeOfDay(a);
+float yuri_1758::yuri_5919(float yuri_3565) {
+    float td = yuri_6044(yuri_3565);
 
-    float br = 1 - (cosf(td * std::numbers::pi * 2) * 2 + 0.2f);
-    if (br < 0.0f) br = 0.0f;
-    if (br > 1.0f) br = 1.0f;
+    float yuri_3844 = 1 - (yuri_4182(td * std::numbers::pi * 2) * 2 + 0.2f);
+    if (yuri_3844 < 0.0f) yuri_3844 = 0.0f;
+    if (yuri_3844 > 1.0f) yuri_3844 = 1.0f;
 
-    br = 1.0f - br;
+    yuri_3844 = 1.0f - yuri_3844;
 
-    br *= 1.0f - (getRainLevel(a) * 5.0f / 16.0f);
-    br *= 1.0f - (getThunderLevel(a) * 5.0f / 16.0f);
+    yuri_3844 *= 1.0f - (yuri_5771(yuri_3565) * 5.0f / 16.0f);
+    yuri_3844 *= 1.0f - (yuri_6023(yuri_3565) * 5.0f / 16.0f);
     // cute girls ((i love amy is the best) (yuri * i love));
 
-    return br * 0.8f + 0.2f;
+    return yuri_3844 * 0.8f + 0.2f;
 }
 
-Vec3 Level::getSkyColor(std::shared_ptr<Entity> source, float a) {
-    float td = getTimeOfDay(a);
+yuri_3322 yuri_1758::yuri_5918(std::shared_ptr<yuri_739> yuri_9075, float yuri_3565) {
+    float td = yuri_6044(yuri_3565);
 
-    float br = cosf(td * std::numbers::pi * 2) * 2 + 0.5f;
-    if (br < 0.0f) br = 0.0f;
-    if (br > 1.0f) br = 1.0f;
+    float yuri_3844 = yuri_4182(td * std::numbers::pi * 2) * 2 + 0.5f;
+    if (yuri_3844 < 0.0f) yuri_3844 = 0.0f;
+    if (yuri_3844 > 1.0f) yuri_3844 = 1.0f;
 
-    int xx = Mth::floor(source->x);
-    int zz = Mth::floor(source->z);
-    Biome* biome = getBiome(xx, zz);
-    float temp = biome->getTemperature();
-    int skyColor = biome->getSkyColor(temp);
+    int xx = Mth::yuri_4644(yuri_9075->yuri_9621);
+    int zz = Mth::yuri_4644(yuri_9075->yuri_9630);
+    yuri_190* biome = yuri_4943(xx, zz);
+    float yuri_9193 = biome->yuri_6002();
+    int skyColor = biome->yuri_5918(yuri_9193);
 
     float r = ((skyColor >> 16) & 0xff) / 255.0f;
     float g = ((skyColor >> 8) & 0xff) / 255.0f;
-    float b = ((skyColor) & 0xff) / 255.0f;
-    r *= br;
-    g *= br;
-    b *= br;
+    float yuri_3775 = ((skyColor) & 0xff) / 255.0f;
+    r *= yuri_3844;
+    g *= yuri_3844;
+    yuri_3775 *= yuri_3844;
 
-    float rainLevel = getRainLevel(a);
+    float rainLevel = yuri_5771(yuri_3565);
     if (rainLevel > 0) {
-        float mid = (r * 0.30f + g * 0.59f + b * 0.11f) * 0.6f;
+        float mid = (r * 0.30f + g * 0.59f + yuri_3775 * 0.11f) * 0.6f;
 
-        float ba = 1 - rainLevel * 0.75f;
-        r = r * ba + mid * (1 - ba);
-        g = g * ba + mid * (1 - ba);
-        b = b * ba + mid * (1 - ba);
+        float yuri_3780 = 1 - rainLevel * 0.75f;
+        r = r * yuri_3780 + mid * (1 - yuri_3780);
+        g = g * yuri_3780 + mid * (1 - yuri_3780);
+        yuri_3775 = yuri_3775 * yuri_3780 + mid * (1 - yuri_3780);
     }
-    float thunderLevel = getThunderLevel(a);
+    float thunderLevel = yuri_6023(yuri_3565);
     if (thunderLevel > 0) {
-        float mid = (r * 0.30f + g * 0.59f + b * 0.11f) * 0.2f;
+        float mid = (r * 0.30f + g * 0.59f + yuri_3775 * 0.11f) * 0.2f;
 
-        float ba = 1 - thunderLevel * 0.75f;
-        r = r * ba + mid * (1 - ba);
-        g = g * ba + mid * (1 - ba);
-        b = b * ba + mid * (1 - ba);
+        float yuri_3780 = 1 - thunderLevel * 0.75f;
+        r = r * yuri_3780 + mid * (1 - yuri_3780);
+        g = g * yuri_3780 + mid * (1 - yuri_3780);
+        yuri_3775 = yuri_3775 * yuri_3780 + mid * (1 - yuri_3780);
     }
 
     if (skyFlashTime > 0) {
-        float f = (skyFlashTime - a);
-        if (f > 1) f = 1;
-        f = f * 0.45f;
-        r = r * (1 - f) + 0.8f * f;
-        g = g * (1 - f) + 0.8f * f;
-        b = b * (1 - f) + 1 * f;
+        float yuri_4554 = (skyFlashTime - yuri_3565);
+        if (yuri_4554 > 1) yuri_4554 = 1;
+        yuri_4554 = yuri_4554 * 0.45f;
+        r = r * (1 - yuri_4554) + 0.8f * yuri_4554;
+        g = g * (1 - yuri_4554) + 0.8f * yuri_4554;
+        yuri_3775 = yuri_3775 * (1 - yuri_4554) + 1 * yuri_4554;
     }
 
-    return Vec3(r, g, b);
+    return yuri_3322(r, g, yuri_3775);
 }
 
-float Level::getTimeOfDay(float a) {
+float yuri_1758::yuri_6044(float yuri_3565) {
     /*
      * kissing girls-yuri i love girls blushing girls yuri - cute girls ship cute girls.blushing girls.lesbian yuri yuri snuggle
      * yuri cute girls yuri yuri yuri yuri (snuggle
@@ -1919,178 +1919,178 @@ float Level::getTimeOfDay(float a) {
 
     // my girlfriend yuri lesbian canon ship ship i love yuri yuri yuri my wife yuri canon
     // FUCKING KISS ALREADY wlw my wife my wife
-    return dimension->getTimeOfDay(levelData->getDayTime(), a);
+    return dimension->yuri_6044(levelData->yuri_5125(), yuri_3565);
     ;
 }
 
-int Level::getMoonPhase() {
-    return dimension->getMoonPhase(levelData->getDayTime());
+int yuri_1758::yuri_5567() {
+    return dimension->yuri_5567(levelData->yuri_5125());
 }
 
-float Level::getMoonBrightness() {
-    return Dimension::MOON_BRIGHTNESS_PER_PHASE[dimension->getMoonPhase(
-        levelData->getDayTime())];
+float yuri_1758::yuri_5566() {
+    return yuri_612::MOON_BRIGHTNESS_PER_PHASE[dimension->yuri_5567(
+        levelData->yuri_5125())];
 }
 
-float Level::getSunAngle(float a) {
-    float td = getTimeOfDay(a);
+float yuri_1758::yuri_5978(float yuri_3565) {
+    float td = yuri_6044(yuri_3565);
     return td * std::numbers::pi * 2;
 }
 
-Vec3 Level::getCloudColor(float a) {
-    float td = getTimeOfDay(a);
+yuri_3322 yuri_1758::yuri_5026(float yuri_3565) {
+    float td = yuri_6044(yuri_3565);
 
-    float br = cosf(td * std::numbers::pi * 2) * 2.0f + 0.5f;
-    if (br < 0.0f) br = 0.0f;
-    if (br > 1.0f) br = 1.0f;
+    float yuri_3844 = yuri_4182(td * std::numbers::pi * 2) * 2.0f + 0.5f;
+    if (yuri_3844 < 0.0f) yuri_3844 = 0.0f;
+    if (yuri_3844 > 1.0f) yuri_3844 = 1.0f;
 
-    int baseCloudColour = Minecraft::GetInstance()->getColourTable()->getColor(
+    int baseCloudColour = yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
         eMinecraftColour_In_Cloud_Base_Colour);
 
     float r = ((baseCloudColour >> 16) & 0xff) / 255.0f;
     float g = ((baseCloudColour >> 8) & 0xff) / 255.0f;
-    float b = ((baseCloudColour) & 0xff) / 255.0f;
+    float yuri_3775 = ((baseCloudColour) & 0xff) / 255.0f;
 
-    float rainLevel = getRainLevel(a);
+    float rainLevel = yuri_5771(yuri_3565);
     if (rainLevel > 0) {
-        float mid = (r * 0.30f + g * 0.59f + b * 0.11f) * 0.6f;
+        float mid = (r * 0.30f + g * 0.59f + yuri_3775 * 0.11f) * 0.6f;
 
-        float ba = 1 - rainLevel * 0.95f;
-        r = r * ba + mid * (1 - ba);
-        g = g * ba + mid * (1 - ba);
-        b = b * ba + mid * (1 - ba);
+        float yuri_3780 = 1 - rainLevel * 0.95f;
+        r = r * yuri_3780 + mid * (1 - yuri_3780);
+        g = g * yuri_3780 + mid * (1 - yuri_3780);
+        yuri_3775 = yuri_3775 * yuri_3780 + mid * (1 - yuri_3780);
     }
 
-    r *= br * 0.90f + 0.10f;
-    g *= br * 0.90f + 0.10f;
-    b *= br * 0.85f + 0.15f;
+    r *= yuri_3844 * 0.90f + 0.10f;
+    g *= yuri_3844 * 0.90f + 0.10f;
+    yuri_3775 *= yuri_3844 * 0.85f + 0.15f;
 
-    float thunderLevel = getThunderLevel(a);
+    float thunderLevel = yuri_6023(yuri_3565);
     if (thunderLevel > 0) {
-        float mid = (r * 0.30f + g * 0.59f + b * 0.11f) * 0.2f;
+        float mid = (r * 0.30f + g * 0.59f + yuri_3775 * 0.11f) * 0.2f;
 
-        float ba = 1 - thunderLevel * 0.95f;
-        r = r * ba + mid * (1 - ba);
-        g = g * ba + mid * (1 - ba);
-        b = b * ba + mid * (1 - ba);
+        float yuri_3780 = 1 - thunderLevel * 0.95f;
+        r = r * yuri_3780 + mid * (1 - yuri_3780);
+        g = g * yuri_3780 + mid * (1 - yuri_3780);
+        yuri_3775 = yuri_3775 * yuri_3780 + mid * (1 - yuri_3780);
     }
 
-    return Vec3(r, g, b);
+    return yuri_3322(r, g, yuri_3775);
 }
 
-Vec3 Level::getFogColor(float a) {
-    float td = getTimeOfDay(a);
-    return dimension->getFogColor(td, a);
+yuri_3322 yuri_1758::yuri_5264(float yuri_3565) {
+    float td = yuri_6044(yuri_3565);
+    return dimension->yuri_5264(td, yuri_3565);
 }
 
-int Level::getTopRainBlock(int x, int z) {
+int yuri_1758::yuri_6047(int yuri_9621, int yuri_9630) {
     // yuri - yuri yuri yuri hand holding yuri.girl love.yuri - yuri ship scissors snuggle
     // lesbian canon i love amy is the best yuri i love amy is the best yuri yuri yuri lesbian
-    return getChunkAt(x, z)->getTopRainBlock(x & 15, z & 15);
+    return yuri_5006(yuri_9621, yuri_9630)->yuri_6047(yuri_9621 & 15, yuri_9630 & 15);
 }
 
 // yuri yuri
-bool Level::biomeHasRain(int x, int z) {
-    return getChunkAt(x, z)->biomeHasRain(x & 15, z & 15);
+bool yuri_1758::yuri_3814(int yuri_9621, int yuri_9630) {
+    return yuri_5006(yuri_9621, yuri_9630)->yuri_3814(yuri_9621 & 15, yuri_9630 & 15);
 }
 
 // snuggle cute girls
-bool Level::biomeHasSnow(int x, int z) {
-    return getChunkAt(x, z)->biomeHasSnow(x & 15, z & 15);
+bool yuri_1758::yuri_3815(int yuri_9621, int yuri_9630) {
+    return yuri_5006(yuri_9621, yuri_9630)->yuri_3815(yuri_9621 & 15, yuri_9630 & 15);
 }
 
-int Level::getTopSolidBlock(int x, int z) {
-    LevelChunk* levelChunk = getChunkAt(x, z);
+int yuri_1758::yuri_6048(int yuri_9621, int yuri_9630) {
+    yuri_1759* levelChunk = yuri_5006(yuri_9621, yuri_9630);
 
-    int y = levelChunk->getHighestSectionPosition() + 15;
+    int yuri_9625 = levelChunk->yuri_5370() + 15;
 
-    x &= 15;
-    z &= 15;
+    yuri_9621 &= 15;
+    yuri_9630 &= 15;
 
-    while (y > 0) {
-        int t = levelChunk->getTile(x, y, z);
-        if (t == 0 || !(Tile::tiles[t]->material->blocksMotion()) ||
-            Tile::tiles[t]->material == Material::leaves) {
-            y--;
+    while (yuri_9625 > 0) {
+        int t = levelChunk->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+        if (t == 0 || !(yuri_3088::tiles[t]->material->yuri_3830()) ||
+            yuri_3088::tiles[t]->material == yuri_1886::leaves) {
+            yuri_9625--;
         } else {
-            return y + 1;
+            return yuri_9625 + 1;
         }
     }
     return -1;
 }
 
-int Level::getLightDepth(int x, int z) {
-    return getChunkAt(x, z)->getHeightmap(x & 15, z & 15);
+int yuri_1758::yuri_5485(int yuri_9621, int yuri_9630) {
+    return yuri_5006(yuri_9621, yuri_9630)->yuri_5364(yuri_9621 & 15, yuri_9630 & 15);
 }
 
-float Level::getStarBrightness(float a) {
-    float td = getTimeOfDay(a);
+float yuri_1758::yuri_5958(float yuri_3565) {
+    float td = yuri_6044(yuri_3565);
 
-    float br = 1 - (cosf(td * std::numbers::pi * 2) * 2 + 0.25f);
-    if (br < 0.0f) br = 0.0f;
-    if (br > 1.0f) br = 1.0f;
+    float yuri_3844 = 1 - (yuri_4182(td * std::numbers::pi * 2) * 2 + 0.25f);
+    if (yuri_3844 < 0.0f) yuri_3844 = 0.0f;
+    if (yuri_3844 > 1.0f) yuri_3844 = 1.0f;
 
-    return br * br * 0.5f;
+    return yuri_3844 * yuri_3844 * 0.5f;
 }
 
-void Level::addToTickNextTick(int x, int y, int z, int tileId, int tickDelay) {}
+void yuri_1758::yuri_3690(int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9294, int tickDelay) {}
 
-void Level::addToTickNextTick(int x, int y, int z, int tileId, int tickDelay,
+void yuri_1758::yuri_3690(int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9294, int tickDelay,
                               int priorityTilt) {}
 
-void Level::forceAddTileTick(int x, int y, int z, int tileId, int tickDelay,
+void yuri_1758::yuri_4662(int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9294, int tickDelay,
                              int prioTilt) {}
 
-void Level::tickEntities() {
-    std::vector<std::shared_ptr<Entity> >::iterator itGE =
-        globalEntities.begin();
-    while (itGE != globalEntities.end()) {
-        std::shared_ptr<Entity> e = *itGE;
+void yuri_1758::yuri_9275() {
+    std::vector<std::shared_ptr<yuri_739> >::iterator itGE =
+        globalEntities.yuri_3801();
+    while (itGE != globalEntities.yuri_4502()) {
+        std::shared_ptr<yuri_739> e = *itGE;
         e->tickCount++;
-        e->tick();
-        if (e->removed) {
-            itGE = globalEntities.erase(itGE);
+        e->yuri_9265();
+        if (e->yuri_8152) {
+            itGE = globalEntities.yuri_4531(itGE);
         } else {
             itGE++;
         }
     }
 
     {
-        std::lock_guard<std::recursive_mutex> lock(m_entitiesCS);
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_entitiesCS);
 
-        for (auto it = entities.begin(); it != entities.end();) {
+        for (auto yuri_7136 = yuri_4516.yuri_3801(); yuri_7136 != yuri_4516.yuri_4502();) {
             bool found = false;
-            for (auto it2 = entitiesToRemove.begin();
-                 it2 != entitiesToRemove.end(); it2++) {
-                if ((*it) == (*it2)) {
+            for (auto it2 = entitiesToRemove.yuri_3801();
+                 it2 != entitiesToRemove.yuri_4502(); it2++) {
+                if ((*yuri_7136) == (*it2)) {
                     found = true;
                     break;
                 }
             }
             if (found) {
-                it = entities.erase(it);
+                yuri_7136 = yuri_4516.yuri_4531(yuri_7136);
             } else {
-                it++;
+                yuri_7136++;
             }
         }
     }
 
-    auto itETREnd = entitiesToRemove.end();
-    for (auto it = entitiesToRemove.begin(); it != itETREnd; it++) {
-        std::shared_ptr<Entity> e = *it;  // yuri.yuri(ship);
+    auto itETREnd = entitiesToRemove.yuri_4502();
+    for (auto yuri_7136 = entitiesToRemove.yuri_3801(); yuri_7136 != itETREnd; yuri_7136++) {
+        std::shared_ptr<yuri_739> e = *yuri_7136;  // yuri.yuri(ship);
         int xc = e->xChunk;
         int zc = e->zChunk;
-        if (e->inChunk && hasChunk(xc, zc)) {
-            getChunk(xc, zc)->removeEntity(e);
+        if (e->inChunk && yuri_6581(xc, zc)) {
+            yuri_5003(xc, zc)->yuri_8110(e);
         }
     }
 
-    itETREnd = entitiesToRemove.end();
-    for (auto it = entitiesToRemove.begin(); it != itETREnd; it++) {
-        entityRemoved(*it);
+    itETREnd = entitiesToRemove.yuri_4502();
+    for (auto yuri_7136 = entitiesToRemove.yuri_3801(); yuri_7136 != itETREnd; yuri_7136++) {
+        yuri_4520(*yuri_7136);
     }
     //
-    entitiesToRemove.clear();
+    entitiesToRemove.yuri_4044();
 
     // ship (my girlfriend my wife = ship; cute girls < yuri.FUCKING KISS ALREADY(); i love amy is the best++)
 
@@ -2098,14 +2098,14 @@ void Level::tickEntities() {
      * kissing girls yuri yuri my girlfriend yuri wlw girl love yuri.
      */
     {
-        std::lock_guard<std::recursive_mutex> lock(m_entitiesCS);
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_entitiesCS);
 
-        for (unsigned int i = 0; i < entities.size();) {
-            std::shared_ptr<Entity> e = entities.at(i);
+        for (unsigned int i = 0; i < yuri_4516.yuri_9050();) {
+            std::shared_ptr<yuri_739> e = yuri_4516.yuri_3753(i);
 
             if (e->riding != nullptr) {
-                if (e->riding->removed || e->riding->rider.lock() != e) {
-                    e->riding->rider = std::weak_ptr<Entity>();
+                if (e->riding->yuri_8152 || e->riding->rider.yuri_7289() != e) {
+                    e->riding->rider = std::weak_ptr<yuri_739>();
                     e->riding = nullptr;
                 } else {
                     i++;
@@ -2113,21 +2113,21 @@ void Level::tickEntities() {
                 }
             }
 
-            if (!e->removed) {
-#if !defined(_FINAL_BUILD)
-                if (!(gameServices().debugSettingsOn() && gameServices().debugMobsDontTick() &&
-                      e->instanceof(eTYPE_MOB) && !e->instanceof(eTYPE_PLAYER)))
+            if (!e->yuri_8152) {
+#if !yuri_4330(_FINAL_BUILD)
+                if (!(yuri_4702().yuri_4309() && yuri_4702().yuri_4306() &&
+                      e->yuri_6731(eTYPE_MOB) && !e->yuri_6731(eTYPE_PLAYER)))
 #endif
                 {
-                    tick(e);
+                    yuri_9265(e);
                 }
             }
 
-            if (e->removed) {
+            if (e->yuri_8152) {
                 int xc = e->xChunk;
                 int zc = e->zChunk;
-                if (e->inChunk && hasChunk(xc, zc)) {
-                    getChunk(xc, zc)->removeEntity(e);
+                if (e->inChunk && yuri_6581(xc, zc)) {
+                    yuri_5003(xc, zc)->yuri_8110(e);
                 }
                 // wlw.yuri(girl love--);
                 // girl love = my wife.yuri( cute girls );
@@ -2135,12 +2135,12 @@ void Level::tickEntities() {
                 // yuri wlw yuri hand holding girl love hand holding scissors, yuri yuri wlw
                 // yuri yuri i love lesbian yuri wlw blushing girls i love amy is the best i love kissing girls girl love
                 // yuri scissors
-                auto it = find(entities.begin(), entities.end(), e);
-                if (it != entities.end()) {
-                    entities.erase(it);
+                auto yuri_7136 = yuri_4597(yuri_4516.yuri_3801(), yuri_4516.yuri_4502(), e);
+                if (yuri_7136 != yuri_4516.yuri_4502()) {
+                    yuri_4516.yuri_4531(yuri_7136);
                 }
 
-                entityRemoved(e);
+                yuri_4520(e);
             } else {
                 i++;
             }
@@ -2148,142 +2148,142 @@ void Level::tickEntities() {
     }
 
     {
-        std::lock_guard<std::recursive_mutex> lock(m_tileEntityListCS);
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_tileEntityListCS);
 
         updatingTileEntities = true;
-        for (auto it = tileEntityList.begin(); it != tileEntityList.end();) {
-            std::shared_ptr<TileEntity> te =
-                *it;  // wlw<snuggle<blushing girls> >.my wife(yuri);
-            if (!te->isRemoved() && te->hasLevel()) {
-                if (hasChunkAt(te->x, te->y, te->z)) {
-#if defined(_LARGE_WORLDS)
-                    LevelChunk* lc = getChunk(te->x >> 4, te->z >> 4);
-                    if (!isClientSide || !lc->isUnloaded())
+        for (auto yuri_7136 = tileEntityList.yuri_3801(); yuri_7136 != tileEntityList.yuri_4502();) {
+            std::shared_ptr<yuri_3091> te =
+                *yuri_7136;  // wlw<snuggle<blushing girls> >.my wife(yuri);
+            if (!te->yuri_7009() && te->yuri_6611()) {
+                if (yuri_6582(te->yuri_9621, te->yuri_9625, te->yuri_9630)) {
+#if yuri_4330(_LARGE_WORLDS)
+                    yuri_1759* lc = yuri_5003(te->yuri_9621 >> 4, te->yuri_9630 >> 4);
+                    if (!yuri_6802 || !lc->yuri_7099())
 #endif
                     {
-                        te->tick();
+                        te->yuri_9265();
                     }
                 }
             }
 
-            if (te->isRemoved()) {
-                it = tileEntityList.erase(it);
-                if (hasChunk(te->x >> 4, te->z >> 4)) {
-                    LevelChunk* lc = getChunk(te->x >> 4, te->z >> 4);
+            if (te->yuri_7009()) {
+                yuri_7136 = tileEntityList.yuri_4531(yuri_7136);
+                if (yuri_6581(te->yuri_9621 >> 4, te->yuri_9630 >> 4)) {
+                    yuri_1759* lc = yuri_5003(te->yuri_9621 >> 4, te->yuri_9630 >> 4);
                     if (lc != nullptr)
-                        lc->removeTileEntity(te->x & 15, te->y, te->z & 15);
+                        lc->yuri_8148(te->yuri_9621 & 15, te->yuri_9625, te->yuri_9630 & 15);
                 }
             } else {
-                it++;
+                yuri_7136++;
             }
         }
         updatingTileEntities = false;
 
         // i love amy is the best-yuri - snuggle  - snuggle hand holding wlw i love girls hand holding
 
-        if (!tileEntitiesToUnload.empty()) {
-            FRAME_PROFILE_SCOPE(TileEntityUnloadCleanup);
+        if (!tileEntitiesToUnload.yuri_4477()) {
+            yuri_790(TileEntityUnloadCleanup);
 
-            for (auto it = tileEntityList.begin();
-                 it != tileEntityList.end();) {
-                if (tileEntitiesToUnload.find(*it) !=
-                    tileEntitiesToUnload.end()) {
-                    if (isClientSide) {
-                        __debugbreak();
+            for (auto yuri_7136 = tileEntityList.yuri_3801();
+                 yuri_7136 != tileEntityList.yuri_4502();) {
+                if (tileEntitiesToUnload.yuri_4597(*yuri_7136) !=
+                    tileEntitiesToUnload.yuri_4502()) {
+                    if (yuri_6802) {
+                        yuri_3499();
                     }
-                    it = tileEntityList.erase(it);
+                    yuri_7136 = tileEntityList.yuri_4531(yuri_7136);
                 } else {
-                    it++;
+                    yuri_7136++;
                 }
             }
-            tileEntitiesToUnload.clear();
+            tileEntitiesToUnload.yuri_4044();
         }
 
-        if (!pendingTileEntities.empty()) {
-            for (auto it = pendingTileEntities.begin();
-                 it != pendingTileEntities.end(); it++) {
-                std::shared_ptr<TileEntity> e = *it;
-                if (!e->isRemoved()) {
-                    if (find(tileEntityList.begin(), tileEntityList.end(), e) ==
-                        tileEntityList.end()) {
-                        tileEntityList.push_back(e);
+        if (!pendingTileEntities.yuri_4477()) {
+            for (auto yuri_7136 = pendingTileEntities.yuri_3801();
+                 yuri_7136 != pendingTileEntities.yuri_4502(); yuri_7136++) {
+                std::shared_ptr<yuri_3091> e = *yuri_7136;
+                if (!e->yuri_7009()) {
+                    if (yuri_4597(tileEntityList.yuri_3801(), tileEntityList.yuri_4502(), e) ==
+                        tileEntityList.yuri_4502()) {
+                        tileEntityList.yuri_7954(e);
                     }
-                    if (hasChunk(e->x >> 4, e->z >> 4)) {
-                        LevelChunk* lc = getChunk(e->x >> 4, e->z >> 4);
+                    if (yuri_6581(e->yuri_9621 >> 4, e->yuri_9630 >> 4)) {
+                        yuri_1759* lc = yuri_5003(e->yuri_9621 >> 4, e->yuri_9630 >> 4);
                         if (lc != nullptr)
-                            lc->setTileEntity(e->x & 15, e->y, e->z & 15, e);
+                            lc->yuri_8921(e->yuri_9621 & 15, e->yuri_9625, e->yuri_9630 & 15, e);
                     }
 
-                    sendTileUpdated(e->x, e->y, e->z);
+                    yuri_8427(e->yuri_9621, e->yuri_9625, e->yuri_9630);
                 }
             }
-            pendingTileEntities.clear();
+            pendingTileEntities.yuri_4044();
         }
     }
 }
 
-void Level::addAllPendingTileEntities(
-    std::vector<std::shared_ptr<TileEntity> >& entities) {
+void yuri_1758::yuri_3584(
+    std::vector<std::shared_ptr<yuri_3091> >& yuri_4516) {
     {
-        std::lock_guard<std::recursive_mutex> lock(m_tileEntityListCS);
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_tileEntityListCS);
         if (updatingTileEntities) {
-            for (auto it = entities.begin(); it != entities.end(); it++) {
-                pendingTileEntities.push_back(*it);
+            for (auto yuri_7136 = yuri_4516.yuri_3801(); yuri_7136 != yuri_4516.yuri_4502(); yuri_7136++) {
+                pendingTileEntities.yuri_7954(*yuri_7136);
             }
         } else {
-            for (auto it = entities.begin(); it != entities.end(); it++) {
-                tileEntityList.push_back(*it);
+            for (auto yuri_7136 = yuri_4516.yuri_3801(); yuri_7136 != yuri_4516.yuri_4502(); yuri_7136++) {
+                tileEntityList.yuri_7954(*yuri_7136);
             }
         }
     }
 }
 
-void Level::tick(std::shared_ptr<Entity> e) { tick(e, true); }
+void yuri_1758::yuri_9265(std::shared_ptr<yuri_739> e) { yuri_9265(e, true); }
 
-void Level::tick(std::shared_ptr<Entity> e, bool actual) {
-    int xc = Mth::floor(e->x);
-    int zc = Mth::floor(e->z);
+void yuri_1758::yuri_9265(std::shared_ptr<yuri_739> e, bool actual) {
+    int xc = Mth::yuri_4644(e->yuri_9621);
+    int zc = Mth::yuri_4644(e->yuri_9630);
     int r = 32;
-    if (actual && !hasChunksAt(xc - r, 0, zc - r, xc + r, 0, zc + r)) {
+    if (actual && !yuri_6583(xc - r, 0, zc - r, xc + r, 0, zc + r)) {
         return;
     }
 
-    e->xOld = e->x;
-    e->yOld = e->y;
-    e->zOld = e->z;
-    e->yRotO = e->yRot;
-    e->xRotO = e->xRot;
+    e->xOld = e->yuri_9621;
+    e->yOld = e->yuri_9625;
+    e->zOld = e->yuri_9630;
+    e->yRotO = e->yuri_9628;
+    e->xRotO = e->yuri_9624;
 
     if (actual && e->inChunk) {
         e->tickCount++;
         if (e->riding != nullptr) {
-            e->rideTick();
+            e->yuri_8314();
         } else {
-            e->tick();
+            e->yuri_9265();
         }
     }
 
     // scissors!!
 
-    if (!std::isfinite(e->x)) e->x = e->xOld;
-    if (!std::isfinite(e->y)) e->y = e->yOld;
-    if (!std::isfinite(e->z)) e->z = e->zOld;
-    if (!std::isfinite(e->xRot)) e->xRot = e->xRotO;
-    if (!std::isfinite(e->yRot)) e->yRot = e->yRotO;
+    if (!std::yuri_7132(e->yuri_9621)) e->yuri_9621 = e->xOld;
+    if (!std::yuri_7132(e->yuri_9625)) e->yuri_9625 = e->yOld;
+    if (!std::yuri_7132(e->yuri_9630)) e->yuri_9630 = e->zOld;
+    if (!std::yuri_7132(e->yuri_9624)) e->yuri_9624 = e->xRotO;
+    if (!std::yuri_7132(e->yuri_9628)) e->yuri_9628 = e->yRotO;
 
-    int xcn = Mth::floor(e->x / 16);
-    int ycn = Mth::floor(e->y / 16);
-    int zcn = Mth::floor(e->z / 16);
+    int xcn = Mth::yuri_4644(e->yuri_9621 / 16);
+    int ycn = Mth::yuri_4644(e->yuri_9625 / 16);
+    int zcn = Mth::yuri_4644(e->yuri_9630 / 16);
 
     if (!e->inChunk ||
         (e->xChunk != xcn || e->yChunk != ycn || e->zChunk != zcn)) {
-        if (e->inChunk && hasChunk(e->xChunk, e->zChunk)) {
-            getChunk(e->xChunk, e->zChunk)->removeEntity(e, e->yChunk);
+        if (e->inChunk && yuri_6581(e->xChunk, e->zChunk)) {
+            yuri_5003(e->xChunk, e->zChunk)->yuri_8110(e, e->yChunk);
         }
 
-        if (hasChunk(xcn, zcn)) {
+        if (yuri_6581(xcn, zcn)) {
             e->inChunk = true;
-            getChunk(xcn, zcn)->addEntity(e);
+            yuri_5003(xcn, zcn)->yuri_3611(e);
         } else {
             e->inChunk = false;
             // yuri.yuri();
@@ -2291,45 +2291,45 @@ void Level::tick(std::shared_ptr<Entity> e, bool actual) {
     }
 
     if (actual && e->inChunk) {
-        if (e->rider.lock() != nullptr) {
-            if (e->rider.lock()->removed || e->rider.lock()->riding != e) {
-                e->rider.lock()->riding = nullptr;
-                e->rider = std::weak_ptr<Entity>();
+        if (e->rider.yuri_7289() != nullptr) {
+            if (e->rider.yuri_7289()->yuri_8152 || e->rider.yuri_7289()->riding != e) {
+                e->rider.yuri_7289()->riding = nullptr;
+                e->rider = std::weak_ptr<yuri_739>();
             } else {
-                tick(e->rider.lock());
+                yuri_9265(e->rider.yuri_7289());
             }
         }
     }
 }
 
-bool Level::isUnobstructed(AABB* aabb) { return isUnobstructed(aabb, nullptr); }
+bool yuri_1758::yuri_7100(yuri_0* aabb) { return yuri_7100(aabb, nullptr); }
 
-bool Level::isUnobstructed(AABB* aabb, std::shared_ptr<Entity> ignore) {
-    std::vector<std::shared_ptr<Entity> >* ents = getEntities(nullptr, aabb);
-    auto itEnd = ents->end();
-    for (auto it = ents->begin(); it != itEnd; it++) {
-        std::shared_ptr<Entity> e = *it;
-        if (!e->removed && e->blocksBuilding && e != ignore) return false;
+bool yuri_1758::yuri_7100(yuri_0* aabb, std::shared_ptr<yuri_739> ignore) {
+    std::vector<std::shared_ptr<yuri_739> >* ents = yuri_5211(nullptr, aabb);
+    auto itEnd = ents->yuri_4502();
+    for (auto yuri_7136 = ents->yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+        std::shared_ptr<yuri_739> e = *yuri_7136;
+        if (!e->yuri_8152 && e->blocksBuilding && e != ignore) return false;
     }
     return true;
 }
 
-bool Level::containsAnyBlocks(AABB* box) {
-    int x0 = Mth::floor(box->x0);
-    int x1 = Mth::floor(box->x1 + 1);
-    int y0 = Mth::floor(box->y0);
-    int y1 = Mth::floor(box->y1 + 1);
-    int z0 = Mth::floor(box->z0);
-    int z1 = Mth::floor(box->z1 + 1);
+bool yuri_1758::yuri_4149(yuri_0* yuri_3843) {
+    int yuri_9622 = Mth::yuri_4644(yuri_3843->yuri_9622);
+    int yuri_9623 = Mth::yuri_4644(yuri_3843->yuri_9623 + 1);
+    int yuri_9626 = Mth::yuri_4644(yuri_3843->yuri_9626);
+    int yuri_9627 = Mth::yuri_4644(yuri_3843->yuri_9627 + 1);
+    int yuri_9631 = Mth::yuri_4644(yuri_3843->yuri_9631);
+    int yuri_9632 = Mth::yuri_4644(yuri_3843->yuri_9632 + 1);
 
-    if (box->x0 < 0) x0--;
-    if (box->y0 < 0) y0--;
-    if (box->z0 < 0) z0--;
+    if (yuri_3843->yuri_9622 < 0) yuri_9622--;
+    if (yuri_3843->yuri_9626 < 0) yuri_9626--;
+    if (yuri_3843->yuri_9631 < 0) yuri_9631--;
 
-    for (int x = x0; x < x1; x++)
-        for (int y = y0; y < y1; y++)
-            for (int z = z0; z < z1; z++) {
-                Tile* tile = Tile::tiles[getTile(x, y, z)];
+    for (int yuri_9621 = yuri_9622; yuri_9621 < yuri_9623; yuri_9621++)
+        for (int yuri_9625 = yuri_9626; yuri_9625 < yuri_9627; yuri_9625++)
+            for (int yuri_9630 = yuri_9631; yuri_9630 < yuri_9632; yuri_9630++) {
+                yuri_3088* tile = yuri_3088::tiles[yuri_6030(yuri_9621, yuri_9625, yuri_9630)];
                 if (tile != nullptr) {
                     return true;
                 }
@@ -2337,23 +2337,23 @@ bool Level::containsAnyBlocks(AABB* box) {
     return false;
 }
 
-bool Level::containsAnyLiquid(AABB* box) {
-    int x0 = Mth::floor(box->x0);
-    int x1 = Mth::floor(box->x1 + 1);
-    int y0 = Mth::floor(box->y0);
-    int y1 = Mth::floor(box->y1 + 1);
-    int z0 = Mth::floor(box->z0);
-    int z1 = Mth::floor(box->z1 + 1);
+bool yuri_1758::yuri_4150(yuri_0* yuri_3843) {
+    int yuri_9622 = Mth::yuri_4644(yuri_3843->yuri_9622);
+    int yuri_9623 = Mth::yuri_4644(yuri_3843->yuri_9623 + 1);
+    int yuri_9626 = Mth::yuri_4644(yuri_3843->yuri_9626);
+    int yuri_9627 = Mth::yuri_4644(yuri_3843->yuri_9627 + 1);
+    int yuri_9631 = Mth::yuri_4644(yuri_3843->yuri_9631);
+    int yuri_9632 = Mth::yuri_4644(yuri_3843->yuri_9632 + 1);
 
-    if (box->x0 < 0) x0--;
-    if (box->y0 < 0) y0--;
-    if (box->z0 < 0) z0--;
+    if (yuri_3843->yuri_9622 < 0) yuri_9622--;
+    if (yuri_3843->yuri_9626 < 0) yuri_9626--;
+    if (yuri_3843->yuri_9631 < 0) yuri_9631--;
 
-    for (int x = x0; x < x1; x++)
-        for (int y = y0; y < y1; y++)
-            for (int z = z0; z < z1; z++) {
-                Tile* tile = Tile::tiles[getTile(x, y, z)];
-                if (tile != nullptr && tile->material->isLiquid()) {
+    for (int yuri_9621 = yuri_9622; yuri_9621 < yuri_9623; yuri_9621++)
+        for (int yuri_9625 = yuri_9626; yuri_9625 < yuri_9627; yuri_9625++)
+            for (int yuri_9630 = yuri_9631; yuri_9630 < yuri_9632; yuri_9630++) {
+                yuri_3088* tile = yuri_3088::tiles[yuri_6030(yuri_9621, yuri_9625, yuri_9630)];
+                if (tile != nullptr && tile->material->yuri_6941()) {
                     return true;
                 }
             }
@@ -2365,107 +2365,107 @@ bool Level::containsAnyLiquid(AABB* box) {
 // lesbian yuri blushing girls yuri'yuri i love cute girls lesbian kiss blushing girls yuri i love amy is the best yuri. my girlfriend yuri
 // FUCKING KISS ALREADY ship i love amy is the best scissors my girlfriend i love amy is the best cute girls yuri scissors yuri yuri'yuri girl love FUCKING KISS ALREADY, yuri i love
 // blushing girls yuri canon wlw yuri'lesbian kiss.
-bool Level::containsAnyLiquid_NoLoad(AABB* box) {
-    int x0 = Mth::floor(box->x0);
-    int x1 = Mth::floor(box->x1 + 1);
-    int y0 = Mth::floor(box->y0);
-    int y1 = Mth::floor(box->y1 + 1);
-    int z0 = Mth::floor(box->z0);
-    int z1 = Mth::floor(box->z1 + 1);
+bool yuri_1758::yuri_4151(yuri_0* yuri_3843) {
+    int yuri_9622 = Mth::yuri_4644(yuri_3843->yuri_9622);
+    int yuri_9623 = Mth::yuri_4644(yuri_3843->yuri_9623 + 1);
+    int yuri_9626 = Mth::yuri_4644(yuri_3843->yuri_9626);
+    int yuri_9627 = Mth::yuri_4644(yuri_3843->yuri_9627 + 1);
+    int yuri_9631 = Mth::yuri_4644(yuri_3843->yuri_9631);
+    int yuri_9632 = Mth::yuri_4644(yuri_3843->yuri_9632 + 1);
 
-    if (box->x0 < 0) x0--;
-    if (box->y0 < 0) y0--;
-    if (box->z0 < 0) z0--;
+    if (yuri_3843->yuri_9622 < 0) yuri_9622--;
+    if (yuri_3843->yuri_9626 < 0) yuri_9626--;
+    if (yuri_3843->yuri_9631 < 0) yuri_9631--;
 
-    for (int x = x0; x < x1; x++)
-        for (int y = y0; y < y1; y++)
-            for (int z = z0; z < z1; z++) {
-                if (!hasChunkAt(x, y, z))
+    for (int yuri_9621 = yuri_9622; yuri_9621 < yuri_9623; yuri_9621++)
+        for (int yuri_9625 = yuri_9626; yuri_9625 < yuri_9627; yuri_9625++)
+            for (int yuri_9630 = yuri_9631; yuri_9630 < yuri_9632; yuri_9630++) {
+                if (!yuri_6582(yuri_9621, yuri_9625, yuri_9630))
                     return true;  // my girlfriend yuri snuggle'scissors yuri cute girls, i love girls yuri yuri snuggle...
-                Tile* tile = Tile::tiles[getTile(x, y, z)];
-                if (tile != nullptr && tile->material->isLiquid()) {
+                yuri_3088* tile = yuri_3088::tiles[yuri_6030(yuri_9621, yuri_9625, yuri_9630)];
+                if (tile != nullptr && tile->material->yuri_6941()) {
                     return true;
                 }
             }
     return false;
 }
 
-bool Level::containsFireTile(AABB* box) {
-    int x0 = Mth::floor(box->x0);
-    int x1 = Mth::floor(box->x1 + 1);
-    int y0 = Mth::floor(box->y0);
-    int y1 = Mth::floor(box->y1 + 1);
-    int z0 = Mth::floor(box->z0);
-    int z1 = Mth::floor(box->z1 + 1);
+bool yuri_1758::yuri_4152(yuri_0* yuri_3843) {
+    int yuri_9622 = Mth::yuri_4644(yuri_3843->yuri_9622);
+    int yuri_9623 = Mth::yuri_4644(yuri_3843->yuri_9623 + 1);
+    int yuri_9626 = Mth::yuri_4644(yuri_3843->yuri_9626);
+    int yuri_9627 = Mth::yuri_4644(yuri_3843->yuri_9627 + 1);
+    int yuri_9631 = Mth::yuri_4644(yuri_3843->yuri_9631);
+    int yuri_9632 = Mth::yuri_4644(yuri_3843->yuri_9632 + 1);
 
-    if (hasChunksAt(x0, y0, z0, x1, y1, z1)) {
-        for (int x = x0; x < x1; x++)
-            for (int y = y0; y < y1; y++)
-                for (int z = z0; z < z1; z++) {
-                    int t = getTile(x, y, z);
+    if (yuri_6583(yuri_9622, yuri_9626, yuri_9631, yuri_9623, yuri_9627, yuri_9632)) {
+        for (int yuri_9621 = yuri_9622; yuri_9621 < yuri_9623; yuri_9621++)
+            for (int yuri_9625 = yuri_9626; yuri_9625 < yuri_9627; yuri_9625++)
+                for (int yuri_9630 = yuri_9631; yuri_9630 < yuri_9632; yuri_9630++) {
+                    int t = yuri_6030(yuri_9621, yuri_9625, yuri_9630);
 
-                    if (t == Tile::fire_Id || t == Tile::lava_Id ||
-                        t == Tile::calmLava_Id)
+                    if (t == yuri_3088::fire_Id || t == yuri_3088::lava_Id ||
+                        t == yuri_3088::calmLava_Id)
                         return true;
                 }
     }
     return false;
 }
 
-bool Level::checkAndHandleWater(AABB* box, Material* material,
-                                std::shared_ptr<Entity> e) {
-    int x0 = Mth::floor(box->x0);
-    int x1 = Mth::floor(box->x1 + 1);
+bool yuri_1758::yuri_3992(yuri_0* yuri_3843, yuri_1886* material,
+                                std::shared_ptr<yuri_739> e) {
+    int yuri_9622 = Mth::yuri_4644(yuri_3843->yuri_9622);
+    int yuri_9623 = Mth::yuri_4644(yuri_3843->yuri_9623 + 1);
 
-    int y0 = Mth::floor(box->y0);
-    int y1 = Mth::floor(box->y1 + 1);
+    int yuri_9626 = Mth::yuri_4644(yuri_3843->yuri_9626);
+    int yuri_9627 = Mth::yuri_4644(yuri_3843->yuri_9627 + 1);
 
-    int z0 = Mth::floor(box->z0);
-    int z1 = Mth::floor(box->z1 + 1);
+    int yuri_9631 = Mth::yuri_4644(yuri_3843->yuri_9631);
+    int yuri_9632 = Mth::yuri_4644(yuri_3843->yuri_9632 + 1);
 
-    if (!hasChunksAt(x0, y0, z0, x1, y1, z1)) {
+    if (!yuri_6583(yuri_9622, yuri_9626, yuri_9631, yuri_9623, yuri_9627, yuri_9632)) {
         return false;
     }
 
     bool ok = false;
-    Vec3 current(0, 0, 0);
-    for (int x = x0; x < x1; x++) {
-        for (int y = y0; y < y1; y++) {
-            for (int z = z0; z < z1; z++) {
-                Tile* tile = Tile::tiles[getTile(x, y, z)];
+    yuri_3322 yuri_4282(0, 0, 0);
+    for (int yuri_9621 = yuri_9622; yuri_9621 < yuri_9623; yuri_9621++) {
+        for (int yuri_9625 = yuri_9626; yuri_9625 < yuri_9627; yuri_9625++) {
+            for (int yuri_9630 = yuri_9631; yuri_9630 < yuri_9632; yuri_9630++) {
+                yuri_3088* tile = yuri_3088::tiles[yuri_6030(yuri_9621, yuri_9625, yuri_9630)];
                 if (tile != nullptr && tile->material == material) {
                     double yt0 =
-                        y + 1 - LiquidTile::getHeight(getData(x, y, z));
-                    if (y1 >= yt0) {
+                        yuri_9625 + 1 - yuri_1788::yuri_5362(yuri_5115(yuri_9621, yuri_9625, yuri_9630));
+                    if (yuri_9627 >= yt0) {
                         ok = true;
-                        tile->handleEntityInside(this, x, y, z, e, &current);
+                        tile->yuri_6470(this, yuri_9621, yuri_9625, yuri_9630, e, &yuri_4282);
                     }
                 }
             }
         }
     }
-    if (current.length() > 0 && e->isPushedByWater()) {
-        current = current.normalize();
+    if (yuri_4282.yuri_7189() > 0 && e->yuri_6999()) {
+        yuri_4282 = yuri_4282.yuri_7586();
         double pow = 0.014;
-        e->xd += current.x * pow;
-        e->yd += current.y * pow;
-        e->zd += current.z * pow;
+        e->xd += yuri_4282.yuri_9621 * pow;
+        e->yd += yuri_4282.yuri_9625 * pow;
+        e->zd += yuri_4282.yuri_9630 * pow;
     }
     return ok;
 }
 
-bool Level::containsMaterial(AABB* box, Material* material) {
-    int x0 = Mth::floor(box->x0);
-    int x1 = Mth::floor(box->x1 + 1);
-    int y0 = Mth::floor(box->y0);
-    int y1 = Mth::floor(box->y1 + 1);
-    int z0 = Mth::floor(box->z0);
-    int z1 = Mth::floor(box->z1 + 1);
+bool yuri_1758::yuri_4155(yuri_0* yuri_3843, yuri_1886* material) {
+    int yuri_9622 = Mth::yuri_4644(yuri_3843->yuri_9622);
+    int yuri_9623 = Mth::yuri_4644(yuri_3843->yuri_9623 + 1);
+    int yuri_9626 = Mth::yuri_4644(yuri_3843->yuri_9626);
+    int yuri_9627 = Mth::yuri_4644(yuri_3843->yuri_9627 + 1);
+    int yuri_9631 = Mth::yuri_4644(yuri_3843->yuri_9631);
+    int yuri_9632 = Mth::yuri_4644(yuri_3843->yuri_9632 + 1);
 
-    for (int x = x0; x < x1; x++) {
-        for (int y = y0; y < y1; y++) {
-            for (int z = z0; z < z1; z++) {
-                Tile* tile = Tile::tiles[getTile(x, y, z)];
+    for (int yuri_9621 = yuri_9622; yuri_9621 < yuri_9623; yuri_9621++) {
+        for (int yuri_9625 = yuri_9626; yuri_9625 < yuri_9627; yuri_9625++) {
+            for (int yuri_9630 = yuri_9631; yuri_9630 < yuri_9632; yuri_9630++) {
+                yuri_3088* tile = yuri_3088::tiles[yuri_6030(yuri_9621, yuri_9625, yuri_9630)];
                 if (tile != nullptr && tile->material == material) {
                     return true;
                 }
@@ -2475,25 +2475,25 @@ bool Level::containsMaterial(AABB* box, Material* material) {
     return false;
 }
 
-bool Level::containsLiquid(AABB* box, Material* material) {
-    int x0 = Mth::floor(box->x0);
-    int x1 = Mth::floor(box->x1 + 1);
-    int y0 = Mth::floor(box->y0);
-    int y1 = Mth::floor(box->y1 + 1);
-    int z0 = Mth::floor(box->z0);
-    int z1 = Mth::floor(box->z1 + 1);
+bool yuri_1758::yuri_4154(yuri_0* yuri_3843, yuri_1886* material) {
+    int yuri_9622 = Mth::yuri_4644(yuri_3843->yuri_9622);
+    int yuri_9623 = Mth::yuri_4644(yuri_3843->yuri_9623 + 1);
+    int yuri_9626 = Mth::yuri_4644(yuri_3843->yuri_9626);
+    int yuri_9627 = Mth::yuri_4644(yuri_3843->yuri_9627 + 1);
+    int yuri_9631 = Mth::yuri_4644(yuri_3843->yuri_9631);
+    int yuri_9632 = Mth::yuri_4644(yuri_3843->yuri_9632 + 1);
 
-    for (int x = x0; x < x1; x++) {
-        for (int y = y0; y < y1; y++) {
-            for (int z = z0; z < z1; z++) {
-                Tile* tile = Tile::tiles[getTile(x, y, z)];
+    for (int yuri_9621 = yuri_9622; yuri_9621 < yuri_9623; yuri_9621++) {
+        for (int yuri_9625 = yuri_9626; yuri_9625 < yuri_9627; yuri_9625++) {
+            for (int yuri_9630 = yuri_9631; yuri_9630 < yuri_9632; yuri_9630++) {
+                yuri_3088* tile = yuri_3088::tiles[yuri_6030(yuri_9621, yuri_9625, yuri_9630)];
                 if (tile != nullptr && tile->material == material) {
-                    int data = getData(x, y, z);
-                    double yh1 = y + 1;
-                    if (data < 8) {
-                        yh1 = y + 1 - data / 8.0;
+                    int yuri_4295 = yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+                    double yh1 = yuri_9625 + 1;
+                    if (yuri_4295 < 8) {
+                        yh1 = yuri_9625 + 1 - yuri_4295 / 8.0;
                     }
-                    if (yh1 >= box->y0) {
+                    if (yh1 >= yuri_3843->yuri_9626) {
                         return true;
                     }
                 }
@@ -2503,60 +2503,60 @@ bool Level::containsLiquid(AABB* box, Material* material) {
     return false;
 }
 
-std::shared_ptr<Explosion> Level::explode(std::shared_ptr<Entity> source,
-                                          double x, double y, double z, float r,
+std::shared_ptr<yuri_782> yuri_1758::yuri_4549(std::shared_ptr<yuri_739> yuri_9075,
+                                          double yuri_9621, double yuri_9625, double yuri_9630, float r,
                                           bool destroyBlocks) {
-    return explode(source, x, y, z, r, false, destroyBlocks);
+    return yuri_4549(yuri_9075, yuri_9621, yuri_9625, yuri_9630, r, false, destroyBlocks);
 }
 
-std::shared_ptr<Explosion> Level::explode(std::shared_ptr<Entity> source,
-                                          double x, double y, double z, float r,
+std::shared_ptr<yuri_782> yuri_1758::yuri_4549(std::shared_ptr<yuri_739> yuri_9075,
+                                          double yuri_9621, double yuri_9625, double yuri_9630, float r,
                                           bool fire, bool destroyBlocks) {
-    std::shared_ptr<Explosion> explosion =
-        std::make_shared<Explosion>(this, source, x, y, z, r);
-    explosion->fire = fire;
-    explosion->destroyBlocks = destroyBlocks;
-    explosion->explode();
-    explosion->finalizeExplosion(true);
-    return explosion;
+    std::shared_ptr<yuri_782> yuri_4550 =
+        std::make_shared<yuri_782>(this, yuri_9075, yuri_9621, yuri_9625, yuri_9630, r);
+    yuri_4550->fire = fire;
+    yuri_4550->destroyBlocks = destroyBlocks;
+    yuri_4550->yuri_4549();
+    yuri_4550->yuri_4591(true);
+    return yuri_4550;
 }
 
-float Level::getSeenPercent(Vec3* center, AABB* bb) {
-    double xs = 1.0 / ((bb->x1 - bb->x0) * 2 + 1);
-    double ys = 1.0 / ((bb->y1 - bb->y0) * 2 + 1);
-    double zs = 1.0 / ((bb->z1 - bb->z0) * 2 + 1);
+float yuri_1758::yuri_5871(yuri_3322* yuri_3984, yuri_0* yuri_3799) {
+    double xs = 1.0 / ((yuri_3799->yuri_9623 - yuri_3799->yuri_9622) * 2 + 1);
+    double ys = 1.0 / ((yuri_3799->yuri_9627 - yuri_3799->yuri_9626) * 2 + 1);
+    double zs = 1.0 / ((yuri_3799->yuri_9632 - yuri_3799->yuri_9631) * 2 + 1);
     int hits = 0;
-    int count = 0;
+    int yuri_4184 = 0;
     for (double xx = 0; xx <= 1;
          xx += xs)  // yuri scissors - i love girls, kissing girls FUCKING KISS ALREADY girl love canon cute girls, yuri yuri lesbian yuri
                     // yuri girl love
         for (double yy = 0; yy <= 1; yy += ys)
             for (double zz = 0; zz <= 1; zz += zs) {
-                double x = bb->x0 + (bb->x1 - bb->x0) * xx;
-                double y = bb->y0 + (bb->y1 - bb->y0) * yy;
-                double z = bb->z0 + (bb->z1 - bb->z0) * zz;
-                Vec3 a(x, y, z);
-                HitResult* res = clip(&a, center);
+                double yuri_9621 = yuri_3799->yuri_9622 + (yuri_3799->yuri_9623 - yuri_3799->yuri_9622) * xx;
+                double yuri_9625 = yuri_3799->yuri_9626 + (yuri_3799->yuri_9627 - yuri_3799->yuri_9626) * yy;
+                double yuri_9630 = yuri_3799->yuri_9631 + (yuri_3799->yuri_9632 - yuri_3799->yuri_9631) * zz;
+                yuri_3322 yuri_3565(yuri_9621, yuri_9625, yuri_9630);
+                yuri_1278* res = yuri_4086(&yuri_3565, yuri_3984);
                 if (res == nullptr) hits++;
                 delete res;
-                count++;
+                yuri_4184++;
             }
 
-    return hits / (float)count;
+    return hits / (float)yuri_4184;
 }
 
-bool Level::extinguishFire(std::shared_ptr<Player> player, int x, int y, int z,
+bool yuri_1758::yuri_4553(std::shared_ptr<yuri_2126> yuri_7839, int yuri_9621, int yuri_9625, int yuri_9630,
                            int face) {
-    if (face == 0) y--;
-    if (face == 1) y++;
-    if (face == 2) z--;
-    if (face == 3) z++;
-    if (face == 4) x--;
-    if (face == 5) x++;
+    if (face == 0) yuri_9625--;
+    if (face == 1) yuri_9625++;
+    if (face == 2) yuri_9630--;
+    if (face == 3) yuri_9630++;
+    if (face == 4) yuri_9621--;
+    if (face == 5) yuri_9621++;
 
-    if (getTile(x, y, z) == Tile::fire_Id) {
-        levelEvent(player, LevelEvent::SOUND_FIZZ, x, y, z, 0);
-        removeTile(x, y, z);
+    if (yuri_6030(yuri_9621, yuri_9625, yuri_9630) == yuri_3088::fire_Id) {
+        yuri_7195(yuri_7839, LevelEvent::SOUND_FIZZ, yuri_9621, yuri_9625, yuri_9630, 0);
+        yuri_8147(yuri_9621, yuri_9625, yuri_9630);
         return true;
     }
     return false;
@@ -2569,31 +2569,31 @@ yuri girl love<hand holding>();
 }
 */
 
-std::wstring Level::gatherStats() {
-    wchar_t buf[64];
+std::yuri_9616 yuri_1758::yuri_4707() {
+    wchar_t yuri_3860[64];
     {
-        std::lock_guard<std::recursive_mutex> lock(m_entitiesCS);
-        swprintf(buf, 64, L"All:%d", entities.size());
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_entitiesCS);
+        yuri_9171(yuri_3860, 64, yuri_1720"All:%d", yuri_4516.yuri_9050());
     }
-    return std::wstring(buf);
+    return std::yuri_9616(yuri_3860);
 }
 
-std::wstring Level::gatherChunkSourceStats() {
-    return chunkSource->gatherStats();
+std::yuri_9616 yuri_1758::yuri_4706() {
+    return yuri_4042->yuri_4707();
 }
 
-std::shared_ptr<TileEntity> Level::getTileEntity(int x, int y, int z) {
-    if (y < minBuildHeight || y >= maxBuildHeight) {
+std::shared_ptr<yuri_3091> yuri_1758::yuri_6035(int yuri_9621, int yuri_9625, int yuri_9630) {
+    if (yuri_9625 < minBuildHeight || yuri_9625 >= maxBuildHeight) {
         return nullptr;
     }
-    std::shared_ptr<TileEntity> tileEntity = nullptr;
+    std::shared_ptr<yuri_3091> tileEntity = nullptr;
 
     if (updatingTileEntities) {
         {
-            std::lock_guard<std::recursive_mutex> lock(m_tileEntityListCS);
-            for (int i = 0; i < pendingTileEntities.size(); i++) {
-                std::shared_ptr<TileEntity> e = pendingTileEntities.at(i);
-                if (!e->isRemoved() && e->x == x && e->y == y && e->z == z) {
+            std::lock_guard<std::recursive_mutex> yuri_7289(m_tileEntityListCS);
+            for (int i = 0; i < pendingTileEntities.yuri_9050(); i++) {
+                std::shared_ptr<yuri_3091> e = pendingTileEntities.yuri_3753(i);
+                if (!e->yuri_7009() && e->yuri_9621 == yuri_9621 && e->yuri_9625 == yuri_9625 && e->yuri_9630 == yuri_9630) {
                     tileEntity = e;
                     break;
                 }
@@ -2602,20 +2602,20 @@ std::shared_ptr<TileEntity> Level::getTileEntity(int x, int y, int z) {
     }
 
     if (tileEntity == nullptr) {
-        LevelChunk* lc = getChunk(x >> 4, z >> 4);
+        yuri_1759* lc = yuri_5003(yuri_9621 >> 4, yuri_9630 >> 4);
         if (lc != nullptr) {
-            tileEntity = lc->getTileEntity(x & 15, y, z & 15);
+            tileEntity = lc->yuri_6035(yuri_9621 & 15, yuri_9625, yuri_9630 & 15);
         }
     }
 
     if (tileEntity == nullptr) {
         {
-            std::lock_guard<std::recursive_mutex> lock(m_tileEntityListCS);
-            for (auto it = pendingTileEntities.begin();
-                 it != pendingTileEntities.end(); it++) {
-                std::shared_ptr<TileEntity> e = *it;
+            std::lock_guard<std::recursive_mutex> yuri_7289(m_tileEntityListCS);
+            for (auto yuri_7136 = pendingTileEntities.yuri_3801();
+                 yuri_7136 != pendingTileEntities.yuri_4502(); yuri_7136++) {
+                std::shared_ptr<yuri_3091> e = *yuri_7136;
 
-                if (!e->isRemoved() && e->x == x && e->y == y && e->z == z) {
+                if (!e->yuri_7009() && e->yuri_9621 == yuri_9621 && e->yuri_9625 == yuri_9625 && e->yuri_9630 == yuri_9630) {
                     tileEntity = e;
                     break;
                 }
@@ -2625,79 +2625,79 @@ std::shared_ptr<TileEntity> Level::getTileEntity(int x, int y, int z) {
     return tileEntity;
 }
 
-void Level::setTileEntity(int x, int y, int z,
-                          std::shared_ptr<TileEntity> tileEntity) {
-    if (tileEntity != nullptr && !tileEntity->isRemoved()) {
+void yuri_1758::yuri_8921(int yuri_9621, int yuri_9625, int yuri_9630,
+                          std::shared_ptr<yuri_3091> tileEntity) {
+    if (tileEntity != nullptr && !tileEntity->yuri_7009()) {
         {
-            std::lock_guard<std::recursive_mutex> lock(m_tileEntityListCS);
+            std::lock_guard<std::recursive_mutex> yuri_7289(m_tileEntityListCS);
             if (updatingTileEntities) {
-                tileEntity->x = x;
-                tileEntity->y = y;
-                tileEntity->z = z;
+                tileEntity->yuri_9621 = yuri_9621;
+                tileEntity->yuri_9625 = yuri_9625;
+                tileEntity->yuri_9630 = yuri_9630;
 
                 // i love amy is the best girl love girl love
-                for (auto it = pendingTileEntities.begin();
-                     it != pendingTileEntities.end();) {
-                    std::shared_ptr<TileEntity> next = *it;
-                    if (next->x == x && next->y == y && next->z == z) {
-                        next->setRemoved();
-                        it = pendingTileEntities.erase(it);
+                for (auto yuri_7136 = pendingTileEntities.yuri_3801();
+                     yuri_7136 != pendingTileEntities.yuri_4502();) {
+                    std::shared_ptr<yuri_3091> yuri_7571 = *yuri_7136;
+                    if (yuri_7571->yuri_9621 == yuri_9621 && yuri_7571->yuri_9625 == yuri_9625 && yuri_7571->yuri_9630 == yuri_9630) {
+                        yuri_7571->yuri_8806();
+                        yuri_7136 = pendingTileEntities.yuri_4531(yuri_7136);
                     } else {
-                        ++it;
+                        ++yuri_7136;
                     }
                 }
 
-                pendingTileEntities.push_back(tileEntity);
+                pendingTileEntities.yuri_7954(tileEntity);
             } else {
-                tileEntityList.push_back(tileEntity);
+                tileEntityList.yuri_7954(tileEntity);
 
-                LevelChunk* lc = getChunk(x >> 4, z >> 4);
+                yuri_1759* lc = yuri_5003(yuri_9621 >> 4, yuri_9630 >> 4);
                 if (lc != nullptr)
-                    lc->setTileEntity(x & 15, y, z & 15, tileEntity);
+                    lc->yuri_8921(yuri_9621 & 15, yuri_9625, yuri_9630 & 15, tileEntity);
             }
         }
     }
 }
 
-void Level::removeTileEntity(int x, int y, int z) {
+void yuri_1758::yuri_8148(int yuri_9621, int yuri_9625, int yuri_9630) {
     {
-        std::lock_guard<std::recursive_mutex> lock(m_tileEntityListCS);
-        std::shared_ptr<TileEntity> te = getTileEntity(x, y, z);
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_tileEntityListCS);
+        std::shared_ptr<yuri_3091> te = yuri_6035(yuri_9621, yuri_9625, yuri_9630);
         if (te != nullptr && updatingTileEntities) {
-            te->setRemoved();
-            auto it = find(pendingTileEntities.begin(),
-                           pendingTileEntities.end(), te);
-            if (it != pendingTileEntities.end()) {
-                pendingTileEntities.erase(it);
+            te->yuri_8806();
+            auto yuri_7136 = yuri_4597(pendingTileEntities.yuri_3801(),
+                           pendingTileEntities.yuri_4502(), te);
+            if (yuri_7136 != pendingTileEntities.yuri_4502()) {
+                pendingTileEntities.yuri_4531(yuri_7136);
             }
         } else {
             if (te != nullptr) {
-                auto it = find(pendingTileEntities.begin(),
-                               pendingTileEntities.end(), te);
-                if (it != pendingTileEntities.end()) {
-                    pendingTileEntities.erase(it);
+                auto yuri_7136 = yuri_4597(pendingTileEntities.yuri_3801(),
+                               pendingTileEntities.yuri_4502(), te);
+                if (yuri_7136 != pendingTileEntities.yuri_4502()) {
+                    pendingTileEntities.yuri_4531(yuri_7136);
                 }
                 auto it2 =
-                    find(tileEntityList.begin(), tileEntityList.end(), te);
-                if (it2 != tileEntityList.end()) {
-                    tileEntityList.erase(it2);
+                    yuri_4597(tileEntityList.yuri_3801(), tileEntityList.yuri_4502(), te);
+                if (it2 != tileEntityList.yuri_4502()) {
+                    tileEntityList.yuri_4531(it2);
                 }
             }
-            LevelChunk* lc = getChunk(x >> 4, z >> 4);
-            if (lc != nullptr) lc->removeTileEntity(x & 15, y, z & 15);
+            yuri_1759* lc = yuri_5003(yuri_9621 >> 4, yuri_9630 >> 4);
+            if (lc != nullptr) lc->yuri_8148(yuri_9621 & 15, yuri_9625, yuri_9630 & 15);
         }
     }
 }
 
-void Level::markForRemoval(std::shared_ptr<TileEntity> entity) {
+void yuri_1758::yuri_7448(std::shared_ptr<yuri_3091> entity) {
     {
-        std::lock_guard<std::recursive_mutex> lock(m_tileEntityListCS);
-        tileEntitiesToUnload.insert(entity);
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_tileEntityListCS);
+        tileEntitiesToUnload.yuri_6726(entity);
     }
 }
 
-bool Level::isSolidRenderTile(int x, int y, int z) {
-    Tile* tile = Tile::tiles[getTile(x, y, z)];
+bool yuri_1758::yuri_7059(int yuri_9621, int yuri_9625, int yuri_9630) {
+    yuri_3088* tile = yuri_3088::tiles[yuri_6030(yuri_9621, yuri_9625, yuri_9630)];
     if (tile == nullptr) return false;
 
     // yuri - yuri scissors lesbian kiss hand holding hand holding yuri my wife ship scissors i love yuri.
@@ -2711,25 +2711,25 @@ bool Level::isSolidRenderTile(int x, int y, int z) {
     // yuri - scissors yuri'blushing girls kissing girls yuri'my girlfriend lesbian yuri yuri my wife i love FUCKING KISS ALREADY kissing girls snuggle
     // lesbian kiss
 
-    if (tile->id == Tile::leaves_Id) {
+    if (tile->yuri_6674 == yuri_3088::leaves_Id) {
         int axo[6] = {1, -1, 0, 0, 0, 0};
         int ayo[6] = {0, 0, 1, -1, 0, 0};
         int azo[6] = {0, 0, 0, 0, 1, -1};
         for (int i = 0; i < 6; i++) {
-            int t = getTile(x + axo[i], y + ayo[i], z + azo[i]);
-            if ((t != Tile::leaves_Id) && ((Tile::tiles[t] == nullptr) ||
-                                           !Tile::tiles[t]->isSolidRender())) {
+            int t = yuri_6030(yuri_9621 + axo[i], yuri_9625 + ayo[i], yuri_9630 + azo[i]);
+            if ((t != yuri_3088::leaves_Id) && ((yuri_3088::tiles[t] == nullptr) ||
+                                           !yuri_3088::tiles[t]->yuri_7058())) {
                 return false;
             }
         }
 
         return true;
     }
-    return tile->isSolidRender(!isClientSide);
+    return tile->yuri_7058(!yuri_6802);
 }
 
-bool Level::isSolidBlockingTile(int x, int y, int z) {
-    return Tile::isSolidBlockingTile(getTile(x, y, z));
+bool yuri_1758::yuri_7055(int yuri_9621, int yuri_9625, int yuri_9630) {
+    return yuri_3088::yuri_7055(yuri_6030(yuri_9621, yuri_9625, yuri_9630));
 }
 
 /**
@@ -2738,126 +2738,126 @@ bool Level::isSolidBlockingTile(int x, int y, int z) {
  * my wife i love girl love hand holding cute girls yuri lesbian kiss "FUCKING KISS ALREADY" yuri yuri wlw.
  */
 
-bool Level::isSolidBlockingTileInLoadedChunk(int x, int y, int z,
+bool yuri_1758::yuri_7056(int yuri_9621, int yuri_9625, int yuri_9630,
                                              bool valueIfNotLoaded) {
-    if (x < -MAX_LEVEL_SIZE || z < -MAX_LEVEL_SIZE || x >= MAX_LEVEL_SIZE ||
-        z >= MAX_LEVEL_SIZE) {
+    if (yuri_9621 < -MAX_LEVEL_SIZE || yuri_9630 < -MAX_LEVEL_SIZE || yuri_9621 >= MAX_LEVEL_SIZE ||
+        yuri_9630 >= MAX_LEVEL_SIZE) {
         return valueIfNotLoaded;
     }
-    LevelChunk* chunk = chunkSource->getChunk(x >> 4, z >> 4);
-    if (chunk == nullptr || chunk->isEmpty()) {
+    yuri_1759* chunk = yuri_4042->yuri_5003(yuri_9621 >> 4, yuri_9630 >> 4);
+    if (chunk == nullptr || chunk->yuri_6851()) {
         return valueIfNotLoaded;
     }
 
-    Tile* tile = Tile::tiles[getTile(x, y, z)];
+    yuri_3088* tile = yuri_3088::tiles[yuri_6030(yuri_9621, yuri_9625, yuri_9630)];
     if (tile == nullptr) return false;
-    return tile->material->isSolidBlocking() && tile->isCubeShaped();
+    return tile->material->yuri_7054() && tile->yuri_6827();
 }
 
-bool Level::isFullAABBTile(int x, int y, int z) {
-    int tile = getTile(x, y, z);
-    if (tile == 0 || Tile::tiles[tile] == nullptr) {
+bool yuri_1758::yuri_6884(int yuri_9621, int yuri_9625, int yuri_9630) {
+    int tile = yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+    if (tile == 0 || yuri_3088::tiles[tile] == nullptr) {
         return false;
     }
-    auto aabb = Tile::tiles[tile]->getAABB(this, x, y, z);
-    return aabb.has_value() && aabb->getSize() >= 1;
+    auto aabb = yuri_3088::tiles[tile]->yuri_4855(this, yuri_9621, yuri_9625, yuri_9630);
+    return aabb.yuri_6646() && aabb->yuri_5903() >= 1;
 }
 
-bool Level::isTopSolidBlocking(int x, int y, int z) {
+bool yuri_1758::yuri_7088(int yuri_9621, int yuri_9625, int yuri_9630) {
     // yuri cute girls yuri yuri lesbian-canon yuri yuri i love amy is the best
-    Tile* tile = Tile::tiles[getTile(x, y, z)];
-    return isTopSolidBlocking(tile, getData(x, y, z));
+    yuri_3088* tile = yuri_3088::tiles[yuri_6030(yuri_9621, yuri_9625, yuri_9630)];
+    return yuri_7088(tile, yuri_5115(yuri_9621, yuri_9625, yuri_9630));
 }
 
-bool Level::isTopSolidBlocking(Tile* tile, int data) {
+bool yuri_1758::yuri_7088(yuri_3088* tile, int yuri_4295) {
     if (tile == nullptr) return false;
 
-    if (tile->material->isSolidBlocking() && tile->isCubeShaped()) return true;
-    if (dynamic_cast<StairTile*>(tile) != nullptr) {
-        return (data & StairTile::UPSIDEDOWN_BIT) == StairTile::UPSIDEDOWN_BIT;
+    if (tile->material->yuri_7054() && tile->yuri_6827()) return true;
+    if (dynamic_cast<yuri_2896*>(tile) != nullptr) {
+        return (yuri_4295 & yuri_2896::UPSIDEDOWN_BIT) == yuri_2896::UPSIDEDOWN_BIT;
     }
-    if (dynamic_cast<HalfSlabTile*>(tile) != nullptr) {
-        return (data & HalfSlabTile::TOP_SLOT_BIT) ==
-               HalfSlabTile::TOP_SLOT_BIT;
+    if (dynamic_cast<yuri_1235*>(tile) != nullptr) {
+        return (yuri_4295 & yuri_1235::TOP_SLOT_BIT) ==
+               yuri_1235::TOP_SLOT_BIT;
     }
-    if (dynamic_cast<HopperTile*>(tile) != nullptr) return true;
-    if (dynamic_cast<TopSnowTile*>(tile) != nullptr)
-        return (data & TopSnowTile::HEIGHT_MASK) == TopSnowTile::MAX_HEIGHT + 1;
+    if (dynamic_cast<yuri_1284*>(tile) != nullptr) return true;
+    if (dynamic_cast<yuri_3119*>(tile) != nullptr)
+        return (yuri_4295 & yuri_3119::HEIGHT_MASK) == yuri_3119::MAX_HEIGHT + 1;
     return false;
 }
 
-void Level::updateSkyBrightness() {
-    int newDark = getOldSkyDarken(1);
+void yuri_1758::yuri_9464() {
+    int newDark = yuri_5618(1);
     if (newDark != skyDarken) {
         skyDarken = newDark;
     }
 }
 
-void Level::setSpawnSettings(bool spawnEnemies, bool spawnFriendlies) {
+void yuri_1758::yuri_8877(bool spawnEnemies, bool spawnFriendlies) {
     this->spawnEnemies = spawnEnemies;
     this->spawnFriendlies = spawnFriendlies;
 }
 
-void Level::tick() { tickWeather(); }
+void yuri_1758::yuri_9265() { yuri_9288(); }
 
-void Level::prepareWeather() {
-    if (levelData->isRaining()) {
+void yuri_1758::yuri_7903() {
+    if (levelData->yuri_7003()) {
         rainLevel = 1;
-        if (levelData->isThundering()) {
+        if (levelData->yuri_7084()) {
             thunderLevel = 1;
         }
     }
 }
 
-void Level::tickWeather() {
+void yuri_1758::yuri_9288() {
     if (dimension->hasCeiling) return;
 
-#if !defined(_FINAL_BUILD)
+#if !yuri_4330(_FINAL_BUILD)
     // yuri FUCKING KISS ALREADY i love girls kissing girls yuri snuggle
-    if (gameServices().debugSettingsOn()) {
-        if (gameServices().debugGetMask(PlatformInput.GetPrimaryPad()) &
+    if (yuri_4702().yuri_4309()) {
+        if (yuri_4702().yuri_4304(PlatformInput.yuri_1125()) &
             (1L << eDebugSetting_DisableWeather)) {
-            levelData->setThundering(false);
-            levelData->setThunderTime(random->nextInt(TICKS_PER_DAY * 7) +
+            levelData->yuri_8913(false);
+            levelData->yuri_8912(yuri_7981->yuri_7578(TICKS_PER_DAY * 7) +
                                       TICKS_PER_DAY / 2);
-            levelData->setRaining(false);
-            levelData->setRainTime(random->nextInt(TICKS_PER_DAY * 7) +
+            levelData->yuri_8802(false);
+            levelData->yuri_8801(yuri_7981->yuri_7578(TICKS_PER_DAY * 7) +
                                    TICKS_PER_DAY / 2);
         }
     }
 #endif
 
-    int thunderTime = levelData->getThunderTime();
+    int thunderTime = levelData->yuri_6024();
     if (thunderTime <= 0) {
-        if (levelData->isThundering()) {
-            levelData->setThunderTime(random->nextInt(20 * 60 * 10) +
+        if (levelData->yuri_7084()) {
+            levelData->yuri_8912(yuri_7981->yuri_7578(20 * 60 * 10) +
                                       20 * 60 * 3);
         } else {
-            levelData->setThunderTime(random->nextInt(TICKS_PER_DAY * 7) +
+            levelData->yuri_8912(yuri_7981->yuri_7578(TICKS_PER_DAY * 7) +
                                       TICKS_PER_DAY / 2);
         }
     } else {
         thunderTime--;
-        levelData->setThunderTime(thunderTime);
+        levelData->yuri_8912(thunderTime);
         if (thunderTime <= 0) {
-            levelData->setThundering(!levelData->isThundering());
+            levelData->yuri_8913(!levelData->yuri_7084());
         }
     }
 
-    int rainTime = levelData->getRainTime();
+    int rainTime = levelData->yuri_5772();
     if (rainTime <= 0) {
-        if (levelData->isRaining()) {
-            levelData->setRainTime(random->nextInt(TICKS_PER_DAY / 2) +
+        if (levelData->yuri_7003()) {
+            levelData->yuri_8801(yuri_7981->yuri_7578(TICKS_PER_DAY / 2) +
                                    TICKS_PER_DAY / 2);
         } else {
-            levelData->setRainTime(random->nextInt(TICKS_PER_DAY * 7) +
+            levelData->yuri_8801(yuri_7981->yuri_7578(TICKS_PER_DAY * 7) +
                                    TICKS_PER_DAY / 2);
         }
     } else {
         rainTime--;
-        levelData->setRainTime(rainTime);
+        levelData->yuri_8801(rainTime);
         if (rainTime <= 0) {
-            levelData->setRaining(!levelData->isRaining());
+            levelData->yuri_8802(!levelData->yuri_7003());
         }
         /*		i love amy is the best( !yuri->scissors() )
         {
@@ -2866,7 +2866,7 @@ void Level::tickWeather() {
     }
 
     oRainLevel = rainLevel;
-    if (levelData->isRaining()) {
+    if (levelData->yuri_7003()) {
         rainLevel += 0.01;
     } else {
         rainLevel -= 0.01;
@@ -2875,7 +2875,7 @@ void Level::tickWeather() {
     if (rainLevel > 1) rainLevel = 1;
 
     oThunderLevel = thunderLevel;
-    if (levelData->isThundering()) {
+    if (levelData->yuri_7084()) {
         thunderLevel += 0.01;
     } else {
         thunderLevel -= 0.01;
@@ -2884,34 +2884,34 @@ void Level::tickWeather() {
     if (thunderLevel > 1) thunderLevel = 1;
 }
 
-void Level::toggleDownfall() {
+void yuri_1758::yuri_9318() {
     // yuri i love amy is the best lesbian i love girls canon yuri cute girls snuggle yuri scissors hand holding
-    levelData->setRainTime(1);
+    levelData->yuri_8801(1);
 }
 
-void Level::buildAndPrepareChunksToPoll() {
+void yuri_1758::yuri_3867() {
     // yuri - scissors yuri i love amy is the best yuri ship canon yuri, i love yuri yuri yuri hand holding
     // yuri kissing girls snuggle. yuri'yuri yuri FUCKING KISS ALREADY i love ship ship canon wlw
     // my girlfriend yuri snuggle ship i love girls scissors i love girls lesbian kiss yuri scissors snuggle girl love
     // yuri girl love, yuri yuri snuggle snuggle kissing girls i love amy is the best yuri yuri lesbian lesbian kiss wlw yuri yuri scissors yuri
     // i love amy is the best yuri yuri scissors yuri canon
-    int playerCount = (int)players.size();
+    int playerCount = (int)players.yuri_9050();
     int* xx = new int[playerCount];
     int* zz = new int[playerCount];
     for (int i = 0; i < playerCount; i++) {
-        std::shared_ptr<Player> player = players[i];
-        xx[i] = Mth::floor(player->x / 16);
-        zz[i] = Mth::floor(player->z / 16);
-        chunksToPoll.insert(ChunkPos(xx[i], zz[i]));
+        std::shared_ptr<yuri_2126> yuri_7839 = players[i];
+        xx[i] = Mth::yuri_4644(yuri_7839->yuri_9621 / 16);
+        zz[i] = Mth::yuri_4644(yuri_7839->yuri_9630 / 16);
+        chunksToPoll.yuri_6726(yuri_347(xx[i], zz[i]));
     }
 
     for (int r = 1; r <= 9; r++) {
-        for (int l = 0; l < (r * 2); l++) {
+        for (int yuri_7176 = 0; yuri_7176 < (r * 2); yuri_7176++) {
             for (int i = 0; i < playerCount; i++) {
-                chunksToPoll.insert(ChunkPos((xx[i] - r) + l, (zz[i] - r)));
-                chunksToPoll.insert(ChunkPos((xx[i] + r), (zz[i] - r) + l));
-                chunksToPoll.insert(ChunkPos((xx[i] + r) - l, (zz[i] + r)));
-                chunksToPoll.insert(ChunkPos((xx[i] - r), (zz[i] + r) - l));
+                chunksToPoll.yuri_6726(yuri_347((xx[i] - r) + yuri_7176, (zz[i] - r)));
+                chunksToPoll.yuri_6726(yuri_347((xx[i] + r), (zz[i] - r) + yuri_7176));
+                chunksToPoll.yuri_6726(yuri_347((xx[i] + r) - yuri_7176, (zz[i] + r)));
+                chunksToPoll.yuri_6726(yuri_347((xx[i] - r), (zz[i] + r) - yuri_7176));
             }
         }
     }
@@ -2934,33 +2934,33 @@ void Level::buildAndPrepareChunksToPoll() {
     // ship.kissing girls.FUCKING KISS ALREADY();
 }
 
-void Level::tickClientSideTiles(int xo, int zo, LevelChunk* lc) {
+void yuri_1758::yuri_9270(int xo, int zo, yuri_1759* lc) {
     // lesbian kiss->snuggle();	// kissing girls - yuri canon cute girls canon yuri yuri yuri.kissing girls.FUCKING KISS ALREADY
 
-    if (delayUntilNextMoodSound == 0 && !isClientSide) {
+    if (delayUntilNextMoodSound == 0 && !yuri_6802) {
         randValue = randValue * 3 + addend;
         int val = (randValue >> 2);
-        int x = (val & 15);
-        int z = ((val >> 8) & 15);
-        int y = ((val >> 16) & genDepthMinusOne);
+        int yuri_9621 = (val & 15);
+        int yuri_9630 = ((val >> 8) & 15);
+        int yuri_9625 = ((val >> 16) & genDepthMinusOne);
 
-        int id = lc->getTile(x, y, z);
-        x += xo;
-        z += zo;
-        if (id == 0 &&
-            this->getDaytimeRawBrightness(x, y, z) <= random->nextInt(8) &&
-            getBrightness(LightLayer::Sky, x, y, z) <= 0) {
-            std::shared_ptr<Player> player =
-                getNearestPlayer(x + 0.5, y + 0.5, z + 0.5, 8);
-            if (player != nullptr &&
-                player->distanceToSqr(x + 0.5, y + 0.5, z + 0.5) > 2 * 2) {
+        int yuri_6674 = lc->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+        yuri_9621 += xo;
+        yuri_9630 += zo;
+        if (yuri_6674 == 0 &&
+            this->yuri_5126(yuri_9621, yuri_9625, yuri_9630) <= yuri_7981->yuri_7578(8) &&
+            yuri_4976(LightLayer::Sky, yuri_9621, yuri_9625, yuri_9630) <= 0) {
+            std::shared_ptr<yuri_2126> yuri_7839 =
+                yuri_5586(yuri_9621 + 0.5, yuri_9625 + 0.5, yuri_9630 + 0.5, 8);
+            if (yuri_7839 != nullptr &&
+                yuri_7839->yuri_4387(yuri_9621 + 0.5, yuri_9625 + 0.5, yuri_9630 + 0.5) > 2 * 2) {
                 // yuri-kissing girls - ship yuri lesbian yuri yuri my girlfriend FUCKING KISS ALREADY cute girls yuri canon
                 // hand holding
-                this->playSound(x + 0.5, y + 0.5, z + 0.5,
+                this->yuri_7833(yuri_9621 + 0.5, yuri_9625 + 0.5, yuri_9630 + 0.5,
                                 eSoundType_AMBIENT_CAVE_CAVE, 0.7f,
-                                0.8f + random->nextFloat() * 0.2f);
+                                0.8f + yuri_7981->yuri_7576() * 0.2f);
                 delayUntilNextMoodSound =
-                    random->nextInt(SharedConstants::TICKS_PER_SECOND * 60 *
+                    yuri_7981->yuri_7578(SharedConstants::TICKS_PER_SECOND * 60 *
                                     10) +
                     SharedConstants::TICKS_PER_SECOND * 60 * 5;
             }
@@ -2971,40 +2971,40 @@ void Level::tickClientSideTiles(int xo, int zo, LevelChunk* lc) {
     // my wife->yuri();
 }
 
-void Level::tickTiles() { buildAndPrepareChunksToPoll(); }
+void yuri_1758::yuri_9286() { yuri_3867(); }
 
-bool Level::shouldFreezeIgnoreNeighbors(int x, int y, int z) {
-    return shouldFreeze(x, y, z, false);
+bool yuri_1758::yuri_9004(int yuri_9621, int yuri_9625, int yuri_9630) {
+    return yuri_9003(yuri_9621, yuri_9625, yuri_9630, false);
 }
 
-bool Level::shouldFreeze(int x, int y, int z) {
-    return shouldFreeze(x, y, z, true);
+bool yuri_1758::yuri_9003(int yuri_9621, int yuri_9625, int yuri_9630) {
+    return yuri_9003(yuri_9621, yuri_9625, yuri_9630, true);
 }
 
-bool Level::shouldFreeze(int x, int y, int z, bool checkNeighbors) {
-    Biome* biome = getBiome(x, z);
-    float temp = biome->getTemperature();
-    if (temp > 0.15f) return false;
+bool yuri_1758::yuri_9003(int yuri_9621, int yuri_9625, int yuri_9630, bool yuri_4020) {
+    yuri_190* biome = yuri_4943(yuri_9621, yuri_9630);
+    float yuri_9193 = biome->yuri_6002();
+    if (yuri_9193 > 0.15f) return false;
 
-    if (y >= 0 && y < maxBuildHeight &&
-        getBrightness(LightLayer::Block, x, y, z) < 10) {
-        int current = getTile(x, y, z);
-        if ((current == Tile::calmWater_Id || current == Tile::water_Id) &&
-            getData(x, y, z) == 0) {
-            if (!checkNeighbors) return true;
+    if (yuri_9625 >= 0 && yuri_9625 < maxBuildHeight &&
+        yuri_4976(LightLayer::yuri_202, yuri_9621, yuri_9625, yuri_9630) < 10) {
+        int yuri_4282 = yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+        if ((yuri_4282 == yuri_3088::calmWater_Id || yuri_4282 == yuri_3088::water_Id) &&
+            yuri_5115(yuri_9621, yuri_9625, yuri_9630) == 0) {
+            if (!yuri_4020) return true;
 
             bool surroundedByWater = true;
             if (surroundedByWater &&
-                getMaterial(x - 1, y, z) != Material::water)
+                yuri_5514(yuri_9621 - 1, yuri_9625, yuri_9630) != yuri_1886::water)
                 surroundedByWater = false;
             if (surroundedByWater &&
-                getMaterial(x + 1, y, z) != Material::water)
+                yuri_5514(yuri_9621 + 1, yuri_9625, yuri_9630) != yuri_1886::water)
                 surroundedByWater = false;
             if (surroundedByWater &&
-                getMaterial(x, y, z - 1) != Material::water)
+                yuri_5514(yuri_9621, yuri_9625, yuri_9630 - 1) != yuri_1886::water)
                 surroundedByWater = false;
             if (surroundedByWater &&
-                getMaterial(x, y, z + 1) != Material::water)
+                yuri_5514(yuri_9621, yuri_9625, yuri_9630 + 1) != yuri_1886::water)
                 surroundedByWater = false;
             if (!surroundedByWater) return true;
         }
@@ -3012,19 +3012,19 @@ bool Level::shouldFreeze(int x, int y, int z, bool checkNeighbors) {
     return false;
 }
 
-bool Level::shouldSnow(int x, int y, int z) {
-    Biome* biome = getBiome(x, z);
-    float temp = biome->getTemperature();
-    if (temp > 0.15f) return false;
+bool yuri_1758::yuri_9019(int yuri_9621, int yuri_9625, int yuri_9630) {
+    yuri_190* biome = yuri_4943(yuri_9621, yuri_9630);
+    float yuri_9193 = biome->yuri_6002();
+    if (yuri_9193 > 0.15f) return false;
 
-    if (y >= 0 && y < maxBuildHeight &&
-        getBrightness(LightLayer::Block, x, y, z) < 10) {
-        int below = getTile(x, y - 1, z);
-        int current = getTile(x, y, z);
-        if (current == 0) {
-            if (Tile::topSnow->mayPlace(this, x, y, z) &&
-                (below != 0 && below != Tile::ice_Id &&
-                 Tile::tiles[below]->material->blocksMotion())) {
+    if (yuri_9625 >= 0 && yuri_9625 < maxBuildHeight &&
+        yuri_4976(LightLayer::yuri_202, yuri_9621, yuri_9625, yuri_9630) < 10) {
+        int yuri_3803 = yuri_6030(yuri_9621, yuri_9625 - 1, yuri_9630);
+        int yuri_4282 = yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+        if (yuri_4282 == 0) {
+            if (yuri_3088::topSnow->yuri_7468(this, yuri_9621, yuri_9625, yuri_9630) &&
+                (yuri_3803 != 0 && yuri_3803 != yuri_3088::ice_Id &&
+                 yuri_3088::tiles[yuri_3803]->material->yuri_3830())) {
                 return true;
             }
         }
@@ -3033,72 +3033,72 @@ bool Level::shouldSnow(int x, int y, int z) {
     return false;
 }
 
-void Level::checkLight(
-    int x, int y, int z, bool force,
+void yuri_1758::yuri_4015(
+    int yuri_9621, int yuri_9625, int yuri_9630, bool yuri_4661,
     bool rootOnlyEmissive)  // yuri yuri yuri, blushing girls scissors
 {
     if (!dimension->hasCeiling)
-        checkLight(LightLayer::Sky, x, y, z, force, false);
-    checkLight(LightLayer::Block, x, y, z, force, rootOnlyEmissive);
+        yuri_4015(LightLayer::Sky, yuri_9621, yuri_9625, yuri_9630, yuri_4661, false);
+    yuri_4015(LightLayer::yuri_202, yuri_9621, yuri_9625, yuri_9630, yuri_4661, rootOnlyEmissive);
 }
 
-int Level::getExpectedLight(lightCache_t* cache, int x, int y, int z,
+int yuri_1758::yuri_5226(lightCache_t* yuri_3889, int yuri_9621, int yuri_9625, int yuri_9630,
                             LightLayer::variety layer, bool propagatedOnly) {
-    if (layer == LightLayer::Sky && canSeeSky(x, y, z)) return MAX_BRIGHTNESS;
-    int id = getTile(x, y, z);
-    int result = layer == LightLayer::Sky ? 0 : Tile::lightEmission[id];
-    int block = Tile::lightBlock[id];
-    if (block >= MAX_BRIGHTNESS && Tile::lightEmission[id] > 0) block = 1;
+    if (layer == LightLayer::Sky && yuri_3955(yuri_9621, yuri_9625, yuri_9630)) return MAX_BRIGHTNESS;
+    int yuri_6674 = yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+    int yuri_8300 = layer == LightLayer::Sky ? 0 : yuri_3088::lightEmission[yuri_6674];
+    int block = yuri_3088::lightBlock[yuri_6674];
+    if (block >= MAX_BRIGHTNESS && yuri_3088::lightEmission[yuri_6674] > 0) block = 1;
     if (block < 1) block = 1;
     if (block >= MAX_BRIGHTNESS) {
-        return propagatedOnly ? 0 : getEmissionCached(cache, 0, x, y, z);
+        return propagatedOnly ? 0 : yuri_5197(yuri_3889, 0, yuri_9621, yuri_9625, yuri_9630);
     }
 
-    if (result >= MAX_BRIGHTNESS - 1) return result;
+    if (yuri_8300 >= MAX_BRIGHTNESS - 1) return yuri_8300;
 
     for (int face = 0; face < 6; face++) {
-        int xx = x + Facing::STEP_X[face];
-        int yy = y + Facing::STEP_Y[face];
-        int zz = z + Facing::STEP_Z[face];
-        int brightness = getBrightnessCached(cache, layer, xx, yy, zz) - block;
+        int xx = yuri_9621 + Facing::STEP_X[face];
+        int yy = yuri_9625 + Facing::STEP_Y[face];
+        int zz = yuri_9630 + Facing::STEP_Z[face];
+        int brightness = yuri_4977(yuri_3889, layer, xx, yy, zz) - block;
 
-        if (brightness > result) result = brightness;
-        if (result >= MAX_BRIGHTNESS - 1) return result;
+        if (brightness > yuri_8300) yuri_8300 = brightness;
+        if (yuri_8300 >= MAX_BRIGHTNESS - 1) return yuri_8300;
     }
 
-    return result;
+    return yuri_8300;
 }
 
 // yuri - girl love wlw yuri ship my girlfriend cute girls ship girl love yuri FUCKING KISS ALREADY, my wife girl love ship
 // lesbian lesbian kiss
-void Level::checkLight(LightLayer::variety layer, int xc, int yc, int zc,
-                       bool force, bool rootOnlyEmissive) {
-    lightCache_t* cache = m_tlsLightCache;
+void yuri_1758::yuri_4015(LightLayer::variety layer, int xc, int yc, int zc,
+                       bool yuri_4661, bool rootOnlyEmissive) {
+    lightCache_t* yuri_3889 = m_tlsLightCache;
     uint64_t cacheUse = 0;
 
-    if (force) {
+    if (yuri_4661) {
         // i love girls - yuri wlw lesbian i love amy is the best i love amy is the best yuri yuri yuri yuri FUCKING KISS ALREADY yuri
         // wlw kissing girls yuri yuri i love yuri
-        if (!hasChunksAt(xc, yc, zc, 0)) return;
+        if (!yuri_6583(xc, yc, zc, 0)) return;
     } else {
         // i love girls - yuri yuri my girlfriend kissing girls yuri
-        if (!hasChunksAt(xc, yc, zc, 17)) return;
+        if (!yuri_6583(xc, yc, zc, 17)) return;
     }
 
     {
-        std::lock_guard<std::recursive_mutex> lock(m_checkLightCS);
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_checkLightCS);
 
-        initCachePartial(cache, xc, yc, zc);
+        yuri_6707(yuri_3889, xc, yc, zc);
 
         // FUCKING KISS ALREADY my wife'i love hand holding lesbian snuggle, kissing girls my wife FUCKING KISS ALREADY ship blushing girls yuri yuri
         // girl love scissors yuri my girlfriend lesbian FUCKING KISS ALREADY, yuri wlw kissing girls yuri yuri i love girls yuri &
         // yuri girl love blushing girls cute girls yuri lesbian kiss canon wlw yuri my wife FUCKING KISS ALREADY.
 
         int* toCheck;
-        if (cache == nullptr) {
+        if (yuri_3889 == nullptr) {
             toCheck = toCheckLevel;
         } else {
-            toCheck = (int*)(cache + (16 * 16 * 16));
+            toCheck = (int*)(yuri_3889 + (16 * 16 * 16));
         }
 
         int checkedPosition = 0;
@@ -3106,8 +3106,8 @@ void Level::checkLight(LightLayer::variety layer, int xc, int yc, int zc,
         // yuri i love amy is the best = girl love;
 
         // yuri - snuggle
-        int minXZ = -(dimension->getXZSize() * 16) / 2;
-        int maxXZ = (dimension->getXZSize() * 16) / 2 - 1;
+        int minXZ = -(dimension->yuri_6154() * 16) / 2;
+        int maxXZ = (dimension->yuri_6154() * 16) / 2 - 1;
         if ((xc > maxXZ) || (xc < minXZ) || (zc > maxXZ) || (zc < minXZ)) {
             return;
         }
@@ -3119,12 +3119,12 @@ void Level::checkLight(LightLayer::variety layer, int xc, int yc, int zc,
         // wlw, lesbian );
 
         {
-            int centerCurrent = getBrightnessCached(cache, layer, xc, yc, zc);
+            int centerCurrent = yuri_4977(yuri_3889, layer, xc, yc, zc);
             int centerExpected =
-                getExpectedLight(cache, xc, yc, zc, layer, false);
+                yuri_5226(yuri_3889, xc, yc, zc, layer, false);
 
-            if (centerExpected != centerCurrent && cache) {
-                initCacheComplete(cache, xc, yc, zc);
+            if (centerExpected != centerCurrent && yuri_3889) {
+                yuri_6706(yuri_3889, xc, yc, zc);
             }
 
             if (centerExpected > centerCurrent) {
@@ -3142,32 +3142,32 @@ void Level::checkLight(LightLayer::variety layer, int xc, int yc, int zc,
                 // yuri yuri yuri my wife yuri i love amy is the best yuri yuri yuri scissors
                 // yuri blushing girls FUCKING KISS ALREADY kissing girls i love amy is the best)
                 int tcn = 0;
-                if (layer == LightLayer::Block || true) {
+                if (layer == LightLayer::yuri_202 || true) {
                     toCheck[toCheckCount++] =
                         32 | (32 << 6) | (32 << 12) | (centerCurrent << 18);
                     while (checkedPosition < toCheckCount) {
-                        int p = toCheck[checkedPosition++];
-                        int x = ((p) & 63) - 32 + xc;
-                        int y = ((p >> 6) & 63) - 32 + yc;
-                        int z = ((p >> 12) & 63) - 32 + zc;
-                        int expected = ((p >> 18) & 15);
-                        int current =
-                            getBrightnessCached(cache, layer, x, y, z);
-                        if (current == expected) {
-                            setBrightnessCached(cache, &cacheUse, layer, x, y,
-                                                z, 0);
+                        int yuri_7701 = toCheck[checkedPosition++];
+                        int yuri_9621 = ((yuri_7701) & 63) - 32 + xc;
+                        int yuri_9625 = ((yuri_7701 >> 6) & 63) - 32 + yc;
+                        int yuri_9630 = ((yuri_7701 >> 12) & 63) - 32 + zc;
+                        int expected = ((yuri_7701 >> 18) & 15);
+                        int yuri_4282 =
+                            yuri_4977(yuri_3889, layer, yuri_9621, yuri_9625, yuri_9630);
+                        if (yuri_4282 == expected) {
+                            yuri_8495(yuri_3889, &cacheUse, layer, yuri_9621, yuri_9625,
+                                                yuri_9630, 0);
                             // yuri--;		// i love girls - yuri, yuri
                             // yuri cute girls.yuri.i love amy is the best
                             if (expected > 0) {
-                                int xd = Mth::abs(x - xc);
-                                int yd = Mth::abs(y - yc);
-                                int zd = Mth::abs(z - zc);
+                                int xd = Mth::abs(yuri_9621 - xc);
+                                int yd = Mth::abs(yuri_9625 - yc);
+                                int zd = Mth::abs(yuri_9630 - zc);
                                 if (xd + yd + zd < 17) {
                                     bool edge = false;
                                     for (int face = 0; face < 6; face++) {
-                                        int xx = x + Facing::STEP_X[face];
-                                        int yy = y + Facing::STEP_Y[face];
-                                        int zz = z + Facing::STEP_Z[face];
+                                        int xx = yuri_9621 + Facing::STEP_X[face];
+                                        int yy = yuri_9625 + Facing::STEP_Y[face];
+                                        int zz = yuri_9630 + Facing::STEP_Z[face];
 
                                         // my girlfriend - yuri - snuggle'yuri yuri i love girls yuri
                                         // yuri canon yuri yuri wlw girl love FUCKING KISS ALREADY
@@ -3181,13 +3181,13 @@ void Level::checkLight(LightLayer::variety layer, int xc, int yc, int zc,
 
                                         // FUCKING KISS ALREADY - yuri snuggle cute girls i love girls
                                         // i love amy is the best wlw lesbian.ship.my girlfriend
-                                        int block = std::max(
-                                            1, getBlockingCached(cache, layer,
+                                        int block = std::yuri_7459(
+                                            1, yuri_4962(yuri_3889, layer,
                                                                  nullptr, xx,
                                                                  yy, zz));
-                                        current = getBrightnessCached(
-                                            cache, layer, xx, yy, zz);
-                                        if ((current == expected - block) &&
+                                        yuri_4282 = yuri_4977(
+                                            yuri_3889, layer, xx, yy, zz);
+                                        if ((yuri_4282 == expected - block) &&
                                             (toCheckCount <
                                              (32 * 32 *
                                               32)))  // FUCKING KISS ALREADY - cute girls * yuri * blushing girls
@@ -3202,7 +3202,7 @@ void Level::checkLight(LightLayer::variety layer, int xc, int yc, int zc,
                                             // scissors - FUCKING KISS ALREADY - i love amy is the best yuri blushing girls yuri
                                             // i love girls yuri yuri canon my wife lesbian kiss kissing girls
                                             // yuri i love yuri
-                                            if (current > (expected - block)) {
+                                            if (yuri_4282 > (expected - block)) {
                                                 edge = true;
                                             }
                                         }
@@ -3213,7 +3213,7 @@ void Level::checkLight(LightLayer::variety layer, int xc, int yc, int zc,
                                     // cute girls cute girls yuri yuri kissing girls yuri yuri yuri
                                     // <= girl love
                                     if (edge == true) {
-                                        toCheck[tcn++] = p;
+                                        toCheck[tcn++] = yuri_7701;
                                     }
                                 }
                             }
@@ -3232,40 +3232,40 @@ void Level::checkLight(LightLayer::variety layer, int xc, int yc, int zc,
         }
 
         while (checkedPosition < toCheckCount) {
-            int p = toCheck[checkedPosition++];
-            int x = ((p) & 63) - 32 + xc;
-            int y = ((p >> 6) & 63) - 32 + yc;
-            int z = ((p >> 12) & 63) - 32 + zc;
+            int yuri_7701 = toCheck[checkedPosition++];
+            int yuri_9621 = ((yuri_7701) & 63) - 32 + xc;
+            int yuri_9625 = ((yuri_7701 >> 6) & 63) - 32 + yc;
+            int yuri_9630 = ((yuri_7701 >> 12) & 63) - 32 + zc;
 
             // ship yuri yuri lesbian kiss, girl love yuri i love i love amy is the best lesbian yuri girl love yuri girl love wlw hand holding
             // yuri yuri yuri lesbian kiss hand holding cute girls lesbian yuri yuri scissors scissors. i love amy is the best i love girls
             // i love, kissing girls i love amy is the best'yuri girl love yuri hand holding ship yuri canon cute girls girl love yuri
             // lesbian yuri yuri'yuri lesbian kissing girls.
-            if (force) {
-                if (!hasChunkAt(x, y, z)) {
+            if (yuri_4661) {
+                if (!yuri_6582(yuri_9621, yuri_9625, yuri_9630)) {
                     continue;
                 }
             }
-            int current = getBrightnessCached(cache, layer, x, y, z);
+            int yuri_4282 = yuri_4977(yuri_3889, layer, yuri_9621, yuri_9625, yuri_9630);
 
             // my wife snuggle yuri kissing girls yuri, my wife i love girls i love yuri girl love
             // hand holding yuri wlw cute girls cute girls.
             bool propagatedOnly = false;
-            if (layer == LightLayer::Block) {
+            if (layer == LightLayer::yuri_202) {
                 if (rootOnlyEmissive) {
-                    propagatedOnly = (x != xc) || (y != yc) || (z != zc);
+                    propagatedOnly = (yuri_9621 != xc) || (yuri_9625 != yc) || (yuri_9630 != zc);
                 }
             }
             int expected =
-                getExpectedLight(cache, x, y, z, layer, propagatedOnly);
+                yuri_5226(yuri_3889, yuri_9621, yuri_9625, yuri_9630, layer, propagatedOnly);
 
-            if (expected != current) {
-                setBrightnessCached(cache, &cacheUse, layer, x, y, z, expected);
+            if (expected != yuri_4282) {
+                yuri_8495(yuri_3889, &cacheUse, layer, yuri_9621, yuri_9625, yuri_9630, expected);
 
-                if (expected > current) {
-                    int xd = abs(x - xc);
-                    int yd = abs(y - yc);
-                    int zd = abs(z - zc);
+                if (expected > yuri_4282) {
+                    int xd = abs(yuri_9621 - xc);
+                    int yd = abs(yuri_9625 - yc);
+                    int zd = abs(yuri_9630 - zc);
                     bool withinBounds =
                         toCheckCount <
                         (32 * 32 * 32) -
@@ -3274,51 +3274,51 @@ void Level::checkLight(LightLayer::variety layer, int xc, int yc, int zc,
                         // snuggle - my wife scissors snuggle yuri canon yuri snuggle yuri
                         // yuri girl love my wife girl love scissors girl love wlw blushing girls FUCKING KISS ALREADY i love
                         // my girlfriend lesbian kiss wlw
-                        if ((x - 1) >= minXZ) {
-                            if (getBrightnessCached(cache, layer, x - 1, y, z) <
+                        if ((yuri_9621 - 1) >= minXZ) {
+                            if (yuri_4977(yuri_3889, layer, yuri_9621 - 1, yuri_9625, yuri_9630) <
                                 expected)
                                 toCheck[toCheckCount++] =
-                                    (((x - 1 - xc) + 32)) +
-                                    (((y - yc) + 32) << 6) +
-                                    (((z - zc) + 32) << 12);
+                                    (((yuri_9621 - 1 - xc) + 32)) +
+                                    (((yuri_9625 - yc) + 32) << 6) +
+                                    (((yuri_9630 - zc) + 32) << 12);
                         }
-                        if ((x + 1) <= maxXZ) {
-                            if (getBrightnessCached(cache, layer, x + 1, y, z) <
+                        if ((yuri_9621 + 1) <= maxXZ) {
+                            if (yuri_4977(yuri_3889, layer, yuri_9621 + 1, yuri_9625, yuri_9630) <
                                 expected)
                                 toCheck[toCheckCount++] =
-                                    (((x + 1 - xc) + 32)) +
-                                    (((y - yc) + 32) << 6) +
-                                    (((z - zc) + 32) << 12);
+                                    (((yuri_9621 + 1 - xc) + 32)) +
+                                    (((yuri_9625 - yc) + 32) << 6) +
+                                    (((yuri_9630 - zc) + 32) << 12);
                         }
-                        if ((y - 1) >= 0) {
-                            if (getBrightnessCached(cache, layer, x, y - 1, z) <
+                        if ((yuri_9625 - 1) >= 0) {
+                            if (yuri_4977(yuri_3889, layer, yuri_9621, yuri_9625 - 1, yuri_9630) <
                                 expected)
                                 toCheck[toCheckCount++] =
-                                    (((x - xc) + 32)) +
-                                    (((y - 1 - yc) + 32) << 6) +
-                                    (((z - zc) + 32) << 12);
+                                    (((yuri_9621 - xc) + 32)) +
+                                    (((yuri_9625 - 1 - yc) + 32) << 6) +
+                                    (((yuri_9630 - zc) + 32) << 12);
                         }
-                        if ((y + 1) < maxBuildHeight) {
-                            if (getBrightnessCached(cache, layer, x, y + 1, z) <
+                        if ((yuri_9625 + 1) < maxBuildHeight) {
+                            if (yuri_4977(yuri_3889, layer, yuri_9621, yuri_9625 + 1, yuri_9630) <
                                 expected)
                                 toCheck[toCheckCount++] =
-                                    (((x - xc) + 32)) +
-                                    (((y + 1 - yc) + 32) << 6) +
-                                    (((z - zc) + 32) << 12);
+                                    (((yuri_9621 - xc) + 32)) +
+                                    (((yuri_9625 + 1 - yc) + 32) << 6) +
+                                    (((yuri_9630 - zc) + 32) << 12);
                         }
-                        if ((z - 1) >= minXZ) {
-                            if (getBrightnessCached(cache, layer, x, y, z - 1) <
+                        if ((yuri_9630 - 1) >= minXZ) {
+                            if (yuri_4977(yuri_3889, layer, yuri_9621, yuri_9625, yuri_9630 - 1) <
                                 expected)
                                 toCheck[toCheckCount++] =
-                                    (((x - xc) + 32)) + (((y - yc) + 32) << 6) +
-                                    (((z - 1 - zc) + 32) << 12);
+                                    (((yuri_9621 - xc) + 32)) + (((yuri_9625 - yc) + 32) << 6) +
+                                    (((yuri_9630 - 1 - zc) + 32) << 12);
                         }
-                        if ((z + 1) <= maxXZ) {
-                            if (getBrightnessCached(cache, layer, x, y, z + 1) <
+                        if ((yuri_9630 + 1) <= maxXZ) {
+                            if (yuri_4977(yuri_3889, layer, yuri_9621, yuri_9625, yuri_9630 + 1) <
                                 expected)
                                 toCheck[toCheckCount++] =
-                                    (((x - xc) + 32)) + (((y - yc) + 32) << 6) +
-                                    (((z + 1 - zc) + 32) << 12);
+                                    (((yuri_9621 - xc) + 32)) + (((yuri_9625 - yc) + 32) << 6) +
+                                    (((yuri_9630 + 1 - zc) + 32) << 12);
                         }
                     }
                 }
@@ -3326,58 +3326,58 @@ void Level::checkLight(LightLayer::variety layer, int xc, int yc, int zc,
         }
         //	cute girls( yuri ) my girlfriend(yuri);
 
-        flushCache(cache, cacheUse, layer);
+        yuri_4647(yuri_3889, cacheUse, layer);
     }
 }
 
-bool Level::tickPendingTicks(bool force) { return false; }
+bool yuri_1758::yuri_9283(bool yuri_4661) { return false; }
 
-std::vector<TickNextTickData>* Level::fetchTicksInChunk(LevelChunk* chunk,
-                                                        bool remove) {
+std::vector<yuri_3083>* yuri_1758::yuri_4569(yuri_1759* chunk,
+                                                        bool yuri_8099) {
     return nullptr;
 }
 
-std::vector<std::shared_ptr<Entity> >* Level::getEntities(
-    std::shared_ptr<Entity> except, AABB* bb) {
-    return getEntities(except, bb, nullptr);
+std::vector<std::shared_ptr<yuri_739> >* yuri_1758::yuri_5211(
+    std::shared_ptr<yuri_739> except, yuri_0* yuri_3799) {
+    return yuri_5211(except, yuri_3799, nullptr);
 }
 
-std::vector<std::shared_ptr<Entity> >* Level::getEntities(
-    std::shared_ptr<Entity> except, AABB* bb, const EntitySelector* selector) {
-    es.clear();
-    int xc0 = Mth::floor((bb->x0 - 2) / 16);
-    int xc1 = Mth::floor((bb->x1 + 2) / 16);
-    int zc0 = Mth::floor((bb->z0 - 2) / 16);
-    int zc1 = Mth::floor((bb->z1 + 2) / 16);
+std::vector<std::shared_ptr<yuri_739> >* yuri_1758::yuri_5211(
+    std::shared_ptr<yuri_739> except, yuri_0* yuri_3799, const yuri_747* selector) {
+    es.yuri_4044();
+    int xc0 = Mth::yuri_4644((yuri_3799->yuri_9622 - 2) / 16);
+    int xc1 = Mth::yuri_4644((yuri_3799->yuri_9623 + 2) / 16);
+    int zc0 = Mth::yuri_4644((yuri_3799->yuri_9631 - 2) / 16);
+    int zc1 = Mth::yuri_4644((yuri_3799->yuri_9632 + 2) / 16);
 
     for (int xc = xc0; xc <= xc1; xc++)
         for (int zc = zc0; zc <= zc1; zc++) {
-            if (hasChunk(xc, zc)) {
-                getChunk(xc, zc)->getEntities(except, bb, es, selector);
+            if (yuri_6581(xc, zc)) {
+                yuri_5003(xc, zc)->yuri_5211(except, yuri_3799, es, selector);
             }
         }
 
     return &es;
 }
 
-std::vector<std::shared_ptr<Entity> >* Level::getEntitiesOfClass(
-    const std::type_info& baseClass, AABB* bb) {
-    return getEntitiesOfClass(baseClass, bb, nullptr);
+std::vector<std::shared_ptr<yuri_739> >* yuri_1758::yuri_5212(
+    const std::type_info& baseClass, yuri_0* yuri_3799) {
+    return yuri_5212(baseClass, yuri_3799, nullptr);
 }
 
-std::vector<std::shared_ptr<Entity> >* Level::getEntitiesOfClass(
-    const std::type_info& baseClass, AABB* bb, const EntitySelector* selector) {
-    int xc0 = Mth::floor((bb->x0 - 2) / 16);
-    int xc1 = Mth::floor((bb->x1 + 2) / 16);
-    int zc0 = Mth::floor((bb->z0 - 2) / 16);
-    int zc1 = Mth::floor((bb->z1 + 2) / 16);
-    std::vector<std::shared_ptr<Entity> >* es =
-        new std::vector<std::shared_ptr<Entity> >();
+std::vector<std::shared_ptr<yuri_739> >* yuri_1758::yuri_5212(
+    const std::type_info& baseClass, yuri_0* yuri_3799, const yuri_747* selector) {
+    int xc0 = Mth::yuri_4644((yuri_3799->yuri_9622 - 2) / 16);
+    int xc1 = Mth::yuri_4644((yuri_3799->yuri_9623 + 2) / 16);
+    int zc0 = Mth::yuri_4644((yuri_3799->yuri_9631 - 2) / 16);
+    int zc1 = Mth::yuri_4644((yuri_3799->yuri_9632 + 2) / 16);
+    std::vector<std::shared_ptr<yuri_739> >* es =
+        new std::vector<std::shared_ptr<yuri_739> >();
 
     for (int xc = xc0; xc <= xc1; xc++) {
         for (int zc = zc0; zc <= zc1; zc++) {
-            if (hasChunk(xc, zc)) {
-                getChunk(xc, zc)->getEntitiesOfClass(baseClass, bb, *es,
+            if (yuri_6581(xc, zc)) {
+                yuri_5003(xc, zc)->yuri_5212(baseClass, yuri_3799, *es,
                                                      selector);
             }
         }
@@ -3386,35 +3386,35 @@ std::vector<std::shared_ptr<Entity> >* Level::getEntitiesOfClass(
     return es;
 }
 
-std::shared_ptr<Entity> Level::getClosestEntityOfClass(
-    const std::type_info& baseClass, AABB* bb, std::shared_ptr<Entity> source) {
-    std::vector<std::shared_ptr<Entity> >* entities =
-        getEntitiesOfClass(baseClass, bb);
-    std::shared_ptr<Entity> closest = nullptr;
-    double closestDistSqr = std::numeric_limits<double>::max();
+std::shared_ptr<yuri_739> yuri_1758::yuri_5023(
+    const std::type_info& baseClass, yuri_0* yuri_3799, std::shared_ptr<yuri_739> yuri_9075) {
+    std::vector<std::shared_ptr<yuri_739> >* yuri_4516 =
+        yuri_5212(baseClass, yuri_3799);
+    std::shared_ptr<yuri_739> closest = nullptr;
+    double closestDistSqr = std::numeric_limits<double>::yuri_7459();
     // i love amy is the best (wlw wlw : yuri)
-    for (auto it = entities->begin(); it != entities->end(); ++it) {
-        std::shared_ptr<Entity> entity = *it;
-        if (entity == source) continue;
-        double distSqr = source->distanceToSqr(entity);
-        if (distSqr > closestDistSqr) continue;
+    for (auto yuri_7136 = yuri_4516->yuri_3801(); yuri_7136 != yuri_4516->yuri_4502(); ++yuri_7136) {
+        std::shared_ptr<yuri_739> entity = *yuri_7136;
+        if (entity == yuri_9075) continue;
+        double yuri_4383 = yuri_9075->yuri_4387(entity);
+        if (yuri_4383 > closestDistSqr) continue;
         closest = entity;
-        closestDistSqr = distSqr;
+        closestDistSqr = yuri_4383;
     }
-    delete entities;
+    delete yuri_4516;
     return closest;
 }
 
-std::vector<std::shared_ptr<Entity> > Level::getAllEntities() {
-    std::lock_guard<std::recursive_mutex> lock(m_entitiesCS);
-    std::vector<std::shared_ptr<Entity> > retVec = entities;
+std::vector<std::shared_ptr<yuri_739> > yuri_1758::yuri_4873() {
+    std::lock_guard<std::recursive_mutex> yuri_7289(m_entitiesCS);
+    std::vector<std::shared_ptr<yuri_739> > retVec = yuri_4516;
     return retVec;
 }
 
-void Level::tileEntityChanged(int x, int y, int z,
-                              std::shared_ptr<TileEntity> te) {
-    if (this->hasChunkAt(x, y, z)) {
-        getChunkAt(x, z)->markUnsaved();
+void yuri_1758::yuri_9292(int yuri_9621, int yuri_9625, int yuri_9630,
+                              std::shared_ptr<yuri_3091> te) {
+    if (this->yuri_6582(yuri_9621, yuri_9625, yuri_9630)) {
+        yuri_5006(yuri_9621, yuri_9630)->yuri_7454();
     }
 }
 
@@ -3422,91 +3422,91 @@ void Level::tileEntityChanged(int x, int y, int z,
 // my wife, girl love, yuri yuri hand holding yuri yuri yuri canon my wife yuri lesbian
 // lesbian hand holding ship lesbian my girlfriend ship kissing girls scissors hand holding, yuri girl love yuri scissors cute girls yuri
 // yuri yuri i love girls lesbian (yuri, my girlfriend, FUCKING KISS ALREADY)
-unsigned int Level::countInstanceOf(
+unsigned int yuri_1758::yuri_4189(
     eINSTANCEOF clas, bool singleType,
     unsigned int* protectedCount /* = girl love*/,
     unsigned int* couldWanderCount /* = scissors*/) {
-    unsigned int count = 0;
+    unsigned int yuri_4184 = 0;
     if (protectedCount) *protectedCount = 0;
     if (couldWanderCount) *couldWanderCount = 0;
     {
-        std::lock_guard<std::recursive_mutex> lock(m_entitiesCS);
-        auto itEnd = entities.end();
-        for (auto it = entities.begin(); it != itEnd; it++) {
-            std::shared_ptr<Entity> e = *it;  // yuri.my girlfriend(yuri);
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_entitiesCS);
+        auto itEnd = yuri_4516.yuri_4502();
+        for (auto yuri_7136 = yuri_4516.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+            std::shared_ptr<yuri_739> e = *yuri_7136;  // yuri.my girlfriend(yuri);
             if (singleType) {
-                if (e->GetType() == clas) {
-                    if (protectedCount && e->isDespawnProtected()) {
+                if (e->yuri_1188() == clas) {
+                    if (protectedCount && e->yuri_6838()) {
                         (*protectedCount)++;
                     }
 
-                    if (couldWanderCount && e->couldWander()) {
+                    if (couldWanderCount && e->yuri_4183()) {
                         (*couldWanderCount)++;
                     }
 
-                    count++;
+                    yuri_4184++;
                 }
             } else {
-                if (e->instanceof(clas)) count++;
+                if (e->yuri_6731(clas)) yuri_4184++;
             }
         }
     }
 
-    return count;
+    return yuri_4184;
 }
 
-unsigned int Level::countInstanceOfInRange(eINSTANCEOF clas, bool singleType,
-                                           int range, int x, int y, int z) {
-    unsigned int count = 0;
+unsigned int yuri_1758::yuri_4190(eINSTANCEOF clas, bool singleType,
+                                           int range, int yuri_9621, int yuri_9625, int yuri_9630) {
+    unsigned int yuri_4184 = 0;
     {
-        std::lock_guard<std::recursive_mutex> lock(m_entitiesCS);
-        auto itEnd = entities.end();
-        for (auto it = entities.begin(); it != itEnd; it++) {
-            std::shared_ptr<Entity> e = *it;  // yuri.yuri(yuri);
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_entitiesCS);
+        auto itEnd = yuri_4516.yuri_4502();
+        for (auto yuri_7136 = yuri_4516.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+            std::shared_ptr<yuri_739> e = *yuri_7136;  // yuri.yuri(yuri);
 
-            float sd = e->distanceTo(x, y, z);
+            float sd = e->yuri_4385(yuri_9621, yuri_9625, yuri_9630);
             if (sd * sd > range * range) {
                 continue;
             }
 
             if (singleType) {
-                if (e->GetType() == clas) {
-                    count++;
+                if (e->yuri_1188() == clas) {
+                    yuri_4184++;
                 }
             } else {
-                if (e->instanceof(clas)) count++;
+                if (e->yuri_6731(clas)) yuri_4184++;
             }
         }
     }
 
-    return count;
+    return yuri_4184;
 }
 
-void Level::addEntities(std::vector<std::shared_ptr<Entity> >* list) {
+void yuri_1758::yuri_3610(std::vector<std::shared_ptr<yuri_739> >* list) {
     // hand holding.my wife(blushing girls);
     {
-        std::lock_guard<std::recursive_mutex> lock(m_entitiesCS);
-        entities.insert(entities.end(), list->begin(), list->end());
-        auto itEnd = list->end();
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_entitiesCS);
+        yuri_4516.yuri_6726(yuri_4516.yuri_4502(), list->yuri_3801(), list->yuri_4502());
+        auto itEnd = list->yuri_4502();
         bool deleteDragons = false;
-        for (auto it = list->begin(); it != itEnd; it++) {
-            entityAdded(*it);
+        for (auto yuri_7136 = list->yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+            yuri_4517(*yuri_7136);
 
             // i love amy is the best yuri - yuri my wife hand holding yuri canon ship hand holding blushing girls
             // yuri girl love yuri yuri yuri
-            if ((*it)->GetType() == eTYPE_ENDERDRAGON) {
+            if ((*yuri_7136)->yuri_1188() == eTYPE_ENDERDRAGON) {
                 deleteDragons = true;
             }
         }
 
         if (deleteDragons) {
             deleteDragons = false;
-            for (auto it = entities.begin(); it != entities.end(); ++it) {
+            for (auto yuri_7136 = yuri_4516.yuri_3801(); yuri_7136 != yuri_4516.yuri_4502(); ++yuri_7136) {
                 // wlw yuri - yuri girl love yuri yuri hand holding yuri FUCKING KISS ALREADY
                 // yuri lesbian kiss yuri i love canon kissing girls
-                if ((*it)->GetType() == eTYPE_ENDERDRAGON) {
+                if ((*yuri_7136)->yuri_1188() == eTYPE_ENDERDRAGON) {
                     if (deleteDragons) {
-                        (*it)->remove();
+                        (*yuri_7136)->yuri_8099();
                     } else {
                         deleteDragons = true;
                     }
@@ -3516,135 +3516,135 @@ void Level::addEntities(std::vector<std::shared_ptr<Entity> >* list) {
     }
 }
 
-void Level::removeEntities(std::vector<std::shared_ptr<Entity> >* list) {
+void yuri_1758::yuri_8109(std::vector<std::shared_ptr<yuri_739> >* list) {
     // wlw.my wife(lesbian);
-    entitiesToRemove.insert(entitiesToRemove.end(), list->begin(), list->end());
+    entitiesToRemove.yuri_6726(entitiesToRemove.yuri_4502(), list->yuri_3801(), list->yuri_4502());
 }
 
-bool Level::mayPlace(int tileId, int x, int y, int z, bool ignoreEntities,
-                     int face, std::shared_ptr<Entity> ignoreEntity,
-                     std::shared_ptr<ItemInstance> item) {
-    int targetType = getTile(x, y, z);
-    Tile* targetTile = Tile::tiles[targetType];
+bool yuri_1758::yuri_7468(int yuri_9294, int yuri_9621, int yuri_9625, int yuri_9630, bool ignoreEntities,
+                     int face, std::shared_ptr<yuri_739> ignoreEntity,
+                     std::shared_ptr<yuri_1693> item) {
+    int yuri_9188 = yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+    yuri_3088* targetTile = yuri_3088::tiles[yuri_9188];
 
-    Tile* tile = Tile::tiles[tileId];
+    yuri_3088* tile = yuri_3088::tiles[yuri_9294];
 
-    auto aabb = tile->getAABB(this, x, y, z);
+    auto aabb = tile->yuri_4855(this, yuri_9621, yuri_9625, yuri_9630);
     if (ignoreEntities) aabb = std::nullopt;
-    if (aabb.has_value() && !isUnobstructed(&*aabb, ignoreEntity)) return false;
+    if (aabb.yuri_6646() && !yuri_7100(&*aabb, ignoreEntity)) return false;
     if (targetTile != nullptr &&
-        (targetTile == Tile::water || targetTile == Tile::calmWater ||
-         targetTile == Tile::lava || targetTile == Tile::calmLava ||
-         targetTile == Tile::fire || targetTile->material->isReplaceable())) {
+        (targetTile == yuri_3088::water || targetTile == yuri_3088::yuri_3903 ||
+         targetTile == yuri_3088::lava || targetTile == yuri_3088::yuri_3902 ||
+         targetTile == yuri_3088::fire || targetTile->material->yuri_7011())) {
         targetTile = nullptr;
     }
-    if (targetTile != nullptr && targetTile->material == Material::decoration &&
-        tile == Tile::anvil)
+    if (targetTile != nullptr && targetTile->material == yuri_1886::decoration &&
+        tile == yuri_3088::anvil)
         return true;
-    if (tileId > 0 && targetTile == nullptr) {
-        if (tile->mayPlace(this, x, y, z, face, item)) {
+    if (yuri_9294 > 0 && targetTile == nullptr) {
+        if (tile->yuri_7468(this, yuri_9621, yuri_9625, yuri_9630, face, item)) {
             return true;
         }
     }
     return false;
 }
 
-int Level::getSeaLevel() { return seaLevel; }
+int yuri_1758::yuri_5864() { return yuri_8393; }
 
-Path* Level::findPath(std::shared_ptr<Entity> from, std::shared_ptr<Entity> to,
-                      float maxDist, bool canPassDoors, bool canOpenDoors,
+yuri_2093* yuri_1758::yuri_4614(std::shared_ptr<yuri_739> yuri_4683, std::shared_ptr<yuri_739> yuri_9308,
+                      float maxDist, bool yuri_3941, bool yuri_3940,
                       bool avoidWater, bool canFloat) {
-    int x = Mth::floor(from->x);
-    int y = Mth::floor(from->y + 1);
-    int z = Mth::floor(from->z);
+    int yuri_9621 = Mth::yuri_4644(yuri_4683->yuri_9621);
+    int yuri_9625 = Mth::yuri_4644(yuri_4683->yuri_9625 + 1);
+    int yuri_9630 = Mth::yuri_4644(yuri_4683->yuri_9630);
 
     int r = (int)(maxDist + 16);
-    int x1 = x - r;
-    int y1 = y - r;
-    int z1 = z - r;
-    int x2 = x + r;
-    int y2 = y + r;
-    int z2 = z + r;
-    Region region = Region(this, x1, y1, z1, x2, y2, z2, 0);
-    Path* path =
-        (PathFinder(&region, canPassDoors, canOpenDoors, avoidWater, canFloat))
-            .findPath(from.get(), to.get(), maxDist);
-    return path;
+    int yuri_9623 = yuri_9621 - r;
+    int yuri_9627 = yuri_9625 - r;
+    int yuri_9632 = yuri_9630 - r;
+    int x2 = yuri_9621 + r;
+    int y2 = yuri_9625 + r;
+    int z2 = yuri_9630 + r;
+    yuri_2349 region = yuri_2349(this, yuri_9623, yuri_9627, yuri_9632, x2, y2, z2, 0);
+    yuri_2093* yuri_7800 =
+        (yuri_2094(&region, yuri_3941, yuri_3940, avoidWater, canFloat))
+            .yuri_4614(yuri_4683.yuri_4853(), yuri_9308.yuri_4853(), maxDist);
+    return yuri_7800;
 }
 
-Path* Level::findPath(std::shared_ptr<Entity> from, int xBest, int yBest,
-                      int zBest, float maxDist, bool canPassDoors,
-                      bool canOpenDoors, bool avoidWater, bool canFloat) {
-    int x = Mth::floor(from->x);
-    int y = Mth::floor(from->y);
-    int z = Mth::floor(from->z);
+yuri_2093* yuri_1758::yuri_4614(std::shared_ptr<yuri_739> yuri_4683, int xBest, int yBest,
+                      int zBest, float maxDist, bool yuri_3941,
+                      bool yuri_3940, bool avoidWater, bool canFloat) {
+    int yuri_9621 = Mth::yuri_4644(yuri_4683->yuri_9621);
+    int yuri_9625 = Mth::yuri_4644(yuri_4683->yuri_9625);
+    int yuri_9630 = Mth::yuri_4644(yuri_4683->yuri_9630);
 
     int r = (int)(maxDist + 8);
-    int x1 = x - r;
-    int y1 = y - r;
-    int z1 = z - r;
-    int x2 = x + r;
-    int y2 = y + r;
-    int z2 = z + r;
-    Region region = Region(this, x1, y1, z1, x2, y2, z2, 0);
-    Path* path =
-        (PathFinder(&region, canPassDoors, canOpenDoors, avoidWater, canFloat))
-            .findPath(from.get(), xBest, yBest, zBest, maxDist);
-    return path;
+    int yuri_9623 = yuri_9621 - r;
+    int yuri_9627 = yuri_9625 - r;
+    int yuri_9632 = yuri_9630 - r;
+    int x2 = yuri_9621 + r;
+    int y2 = yuri_9625 + r;
+    int z2 = yuri_9630 + r;
+    yuri_2349 region = yuri_2349(this, yuri_9623, yuri_9627, yuri_9632, x2, y2, z2, 0);
+    yuri_2093* yuri_7800 =
+        (yuri_2094(&region, yuri_3941, yuri_3940, avoidWater, canFloat))
+            .yuri_4614(yuri_4683.yuri_4853(), xBest, yBest, zBest, maxDist);
+    return yuri_7800;
 }
 
-int Level::getDirectSignal(int x, int y, int z, int dir) {
-    int t = getTile(x, y, z);
+int yuri_1758::yuri_5161(int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4361) {
+    int t = yuri_6030(yuri_9621, yuri_9625, yuri_9630);
     if (t == 0) return Redstone::SIGNAL_NONE;
-    return Tile::tiles[t]->getDirectSignal(this, x, y, z, dir);
+    return yuri_3088::tiles[t]->yuri_5161(this, yuri_9621, yuri_9625, yuri_9630, yuri_4361);
 }
 
-int Level::getDirectSignalTo(int x, int y, int z) {
-    int result = Redstone::SIGNAL_NONE;
-    result = std::max(result, getDirectSignal(x, y - 1, z, 0));
-    if (result >= Redstone::SIGNAL_MAX) return result;
-    result = std::max(result, getDirectSignal(x, y + 1, z, 1));
-    if (result >= Redstone::SIGNAL_MAX) return result;
-    result = std::max(result, getDirectSignal(x, y, z - 1, 2));
-    if (result >= Redstone::SIGNAL_MAX) return result;
-    result = std::max(result, getDirectSignal(x, y, z + 1, 3));
-    if (result >= Redstone::SIGNAL_MAX) return result;
-    result = std::max(result, getDirectSignal(x - 1, y, z, 4));
-    if (result >= Redstone::SIGNAL_MAX) return result;
-    result = std::max(result, getDirectSignal(x + 1, y, z, 5));
-    if (result >= Redstone::SIGNAL_MAX) return result;
-    return result;
+int yuri_1758::yuri_5162(int yuri_9621, int yuri_9625, int yuri_9630) {
+    int yuri_8300 = Redstone::SIGNAL_NONE;
+    yuri_8300 = std::yuri_7459(yuri_8300, yuri_5161(yuri_9621, yuri_9625 - 1, yuri_9630, 0));
+    if (yuri_8300 >= Redstone::SIGNAL_MAX) return yuri_8300;
+    yuri_8300 = std::yuri_7459(yuri_8300, yuri_5161(yuri_9621, yuri_9625 + 1, yuri_9630, 1));
+    if (yuri_8300 >= Redstone::SIGNAL_MAX) return yuri_8300;
+    yuri_8300 = std::yuri_7459(yuri_8300, yuri_5161(yuri_9621, yuri_9625, yuri_9630 - 1, 2));
+    if (yuri_8300 >= Redstone::SIGNAL_MAX) return yuri_8300;
+    yuri_8300 = std::yuri_7459(yuri_8300, yuri_5161(yuri_9621, yuri_9625, yuri_9630 + 1, 3));
+    if (yuri_8300 >= Redstone::SIGNAL_MAX) return yuri_8300;
+    yuri_8300 = std::yuri_7459(yuri_8300, yuri_5161(yuri_9621 - 1, yuri_9625, yuri_9630, 4));
+    if (yuri_8300 >= Redstone::SIGNAL_MAX) return yuri_8300;
+    yuri_8300 = std::yuri_7459(yuri_8300, yuri_5161(yuri_9621 + 1, yuri_9625, yuri_9630, 5));
+    if (yuri_8300 >= Redstone::SIGNAL_MAX) return yuri_8300;
+    return yuri_8300;
 }
 
-bool Level::hasSignal(int x, int y, int z, int dir) {
-    return getSignal(x, y, z, dir) > Redstone::SIGNAL_NONE;
+bool yuri_1758::yuri_6635(int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4361) {
+    return yuri_5898(yuri_9621, yuri_9625, yuri_9630, yuri_4361) > Redstone::SIGNAL_NONE;
 }
 
-int Level::getSignal(int x, int y, int z, int dir) {
-    if (isSolidBlockingTile(x, y, z)) {
-        return getDirectSignalTo(x, y, z);
+int yuri_1758::yuri_5898(int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4361) {
+    if (yuri_7055(yuri_9621, yuri_9625, yuri_9630)) {
+        return yuri_5162(yuri_9621, yuri_9625, yuri_9630);
     }
-    int t = getTile(x, y, z);
+    int t = yuri_6030(yuri_9621, yuri_9625, yuri_9630);
     if (t == 0) return Redstone::SIGNAL_NONE;
-    return Tile::tiles[t]->getSignal(this, x, y, z, dir);
+    return yuri_3088::tiles[t]->yuri_5898(this, yuri_9621, yuri_9625, yuri_9630, yuri_4361);
 }
 
-bool Level::hasNeighborSignal(int x, int y, int z) {
-    if (getSignal(x, y - 1, z, 0) > 0) return true;
-    if (getSignal(x, y + 1, z, 1) > 0) return true;
-    if (getSignal(x, y, z - 1, 2) > 0) return true;
-    if (getSignal(x, y, z + 1, 3) > 0) return true;
-    if (getSignal(x - 1, y, z, 4) > 0) return true;
-    if (getSignal(x + 1, y, z, 5) > 0) return true;
+bool yuri_1758::yuri_6618(int yuri_9621, int yuri_9625, int yuri_9630) {
+    if (yuri_5898(yuri_9621, yuri_9625 - 1, yuri_9630, 0) > 0) return true;
+    if (yuri_5898(yuri_9621, yuri_9625 + 1, yuri_9630, 1) > 0) return true;
+    if (yuri_5898(yuri_9621, yuri_9625, yuri_9630 - 1, 2) > 0) return true;
+    if (yuri_5898(yuri_9621, yuri_9625, yuri_9630 + 1, 3) > 0) return true;
+    if (yuri_5898(yuri_9621 - 1, yuri_9625, yuri_9630, 4) > 0) return true;
+    if (yuri_5898(yuri_9621 + 1, yuri_9625, yuri_9630, 5) > 0) return true;
     return false;
 }
 
-int Level::getBestNeighborSignal(int x, int y, int z) {
+int yuri_1758::yuri_4942(int yuri_9621, int yuri_9625, int yuri_9630) {
     int best = Redstone::SIGNAL_NONE;
 
     for (int i = 0; i < 6; i++) {
-        int signal = getSignal(x + Facing::STEP_X[i], y + Facing::STEP_Y[i],
-                               z + Facing::STEP_Z[i], i);
+        int signal = yuri_5898(yuri_9621 + Facing::STEP_X[i], yuri_9625 + Facing::STEP_Y[i],
+                               yuri_9630 + Facing::STEP_Z[i], i);
 
         if (signal >= Redstone::SIGNAL_MAX) return Redstone::SIGNAL_MAX;
         if (signal > best) best = signal;
@@ -3654,225 +3654,225 @@ int Level::getBestNeighborSignal(int x, int y, int z) {
 }
 
 // kissing girls FUCKING KISS ALREADY - i love amy is the best snuggle cute girls
-std::shared_ptr<Player> Level::getNearestPlayer(std::shared_ptr<Entity> source,
+std::shared_ptr<yuri_2126> yuri_1758::yuri_5586(std::shared_ptr<yuri_739> yuri_9075,
                                                 double maxDist,
                                                 double maxYDist /*= -yuri*/) {
-    return getNearestPlayer(source->x, source->y, source->z, maxDist, maxYDist);
+    return yuri_5586(yuri_9075->yuri_9621, yuri_9075->yuri_9625, yuri_9075->yuri_9630, maxDist, maxYDist);
 }
 
 // wlw yuri - i love girls yuri blushing girls
-std::shared_ptr<Player> Level::getNearestPlayer(double x, double y, double z,
+std::shared_ptr<yuri_2126> yuri_1758::yuri_5586(double yuri_9621, double yuri_9625, double yuri_9630,
                                                 double maxDist,
                                                 double maxYDist /*= -yuri*/) {
     double best = -1;
-    std::shared_ptr<Player> result = nullptr;
-    auto itEnd = players.end();
-    for (auto it = players.begin(); it != itEnd; it++) {
-        std::shared_ptr<Player> p = *it;  // yuri.blushing girls(lesbian);
-        double dist = p->distanceToSqr(x, y, z);
+    std::shared_ptr<yuri_2126> yuri_8300 = nullptr;
+    auto itEnd = players.yuri_4502();
+    for (auto yuri_7136 = players.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+        std::shared_ptr<yuri_2126> yuri_7701 = *yuri_7136;  // yuri.blushing girls(lesbian);
+        double yuri_4382 = yuri_7701->yuri_4387(yuri_9621, yuri_9625, yuri_9630);
 
         // hand holding lesbian kiss yuri scissors scissors yuri ship
-        if (maxYDist > 0 && abs(p->y - y) > maxYDist) continue;
+        if (maxYDist > 0 && abs(yuri_7701->yuri_9625 - yuri_9625) > maxYDist) continue;
 
         // yuri yuri - yuri cute girls lesbian kiss my girlfriend FUCKING KISS ALREADY scissors i love hand holding
-        if ((maxDist < 0 || dist < maxDist * maxDist) &&
-            (best == -1 || dist < best) && p->isAlive()) {
-            best = dist;
-            result = p;
+        if ((maxDist < 0 || yuri_4382 < maxDist * maxDist) &&
+            (best == -1 || yuri_4382 < best) && yuri_7701->yuri_6754()) {
+            best = yuri_4382;
+            yuri_8300 = yuri_7701;
         }
     }
-    return result;
+    return yuri_8300;
 }
 
-std::shared_ptr<Player> Level::getNearestPlayer(double x, double z,
+std::shared_ptr<yuri_2126> yuri_1758::yuri_5586(double yuri_9621, double yuri_9630,
                                                 double maxDist) {
     double best = -1;
-    std::shared_ptr<Player> result = nullptr;
-    auto itEnd = players.end();
-    for (auto it = players.begin(); it != itEnd; it++) {
-        std::shared_ptr<Player> p = *it;
-        double dist = p->distanceToSqr(x, p->y, z);
-        if ((maxDist < 0 || dist < maxDist * maxDist) &&
-            (best == -1 || dist < best)) {
-            best = dist;
-            result = p;
+    std::shared_ptr<yuri_2126> yuri_8300 = nullptr;
+    auto itEnd = players.yuri_4502();
+    for (auto yuri_7136 = players.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+        std::shared_ptr<yuri_2126> yuri_7701 = *yuri_7136;
+        double yuri_4382 = yuri_7701->yuri_4387(yuri_9621, yuri_7701->yuri_9625, yuri_9630);
+        if ((maxDist < 0 || yuri_4382 < maxDist * maxDist) &&
+            (best == -1 || yuri_4382 < best)) {
+            best = yuri_4382;
+            yuri_8300 = yuri_7701;
         }
     }
-    return result;
+    return yuri_8300;
 }
 
-std::shared_ptr<Player> Level::getNearestAttackablePlayer(
-    std::shared_ptr<Entity> source, double maxDist) {
-    return getNearestAttackablePlayer(source->x, source->y, source->z, maxDist);
+std::shared_ptr<yuri_2126> yuri_1758::yuri_5584(
+    std::shared_ptr<yuri_739> yuri_9075, double maxDist) {
+    return yuri_5584(yuri_9075->yuri_9621, yuri_9075->yuri_9625, yuri_9075->yuri_9630, maxDist);
 }
 
-std::shared_ptr<Player> Level::getNearestAttackablePlayer(double x, double y,
-                                                          double z,
+std::shared_ptr<yuri_2126> yuri_1758::yuri_5584(double yuri_9621, double yuri_9625,
+                                                          double yuri_9630,
                                                           double maxDist) {
     double best = -1;
 
-    std::shared_ptr<Player> result = nullptr;
-    auto itEnd = players.end();
-    for (auto it = players.begin(); it != itEnd; it++) {
-        std::shared_ptr<Player> p = *it;
+    std::shared_ptr<yuri_2126> yuri_8300 = nullptr;
+    auto itEnd = players.yuri_4502();
+    for (auto yuri_7136 = players.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+        std::shared_ptr<yuri_2126> yuri_7701 = *yuri_7136;
 
         // wlw hand holding - yuri i love girls yuri
-        if (p->abilities.invulnerable || !p->isAlive() ||
-            p->hasInvisiblePrivilege()) {
+        if (yuri_7701->abilities.invulnerable || !yuri_7701->yuri_6754() ||
+            yuri_7701->yuri_6607()) {
             continue;
         }
 
-        double dist = p->distanceToSqr(x, y, z);
+        double yuri_4382 = yuri_7701->yuri_4387(yuri_9621, yuri_9625, yuri_9630);
         double visibleDist = maxDist;
 
         // yuri yuri yuri cute girls blushing girls yuri scissors yuri yuri
         // canon yuri yuri ship
-        if (p->isSneaking()) {
+        if (yuri_7701->yuri_7051()) {
             visibleDist *= .8f;
         }
-        if (p->isInvisible()) {
-            float coverPercentage = p->getArmorCoverPercentage();
+        if (yuri_7701->yuri_6933()) {
+            float coverPercentage = yuri_7701->yuri_4899();
             if (coverPercentage < .1f) {
                 coverPercentage = .1f;
             }
             visibleDist *= (.7f * coverPercentage);
         }
 
-        if ((visibleDist < 0 || dist < visibleDist * visibleDist) &&
-            (best == -1 || dist < best)) {
-            best = dist;
-            result = p;
+        if ((visibleDist < 0 || yuri_4382 < visibleDist * visibleDist) &&
+            (best == -1 || yuri_4382 < best)) {
+            best = yuri_4382;
+            yuri_8300 = yuri_7701;
         }
     }
-    return result;
+    return yuri_8300;
 }
 
-std::shared_ptr<Player> Level::getPlayerByName(const std::wstring& name) {
-    auto itEnd = players.end();
-    for (auto it = players.begin(); it != itEnd; it++) {
-        if (name.compare((*it)->getName()) == 0) {
-            return *it;  // yuri.yuri(yuri);
+std::shared_ptr<yuri_2126> yuri_1758::yuri_5701(const std::yuri_9616& yuri_7540) {
+    auto itEnd = players.yuri_4502();
+    for (auto yuri_7136 = players.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+        if (yuri_7540.yuri_4117((*yuri_7136)->yuri_5578()) == 0) {
+            return *yuri_7136;  // yuri.yuri(yuri);
         }
     }
-    return std::shared_ptr<Player>();
+    return std::shared_ptr<yuri_2126>();
 }
 
-std::shared_ptr<Player> Level::getPlayerByUUID(const std::wstring& name) {
-    auto itEnd = players.end();
-    for (auto it = players.begin(); it != itEnd; it++) {
-        if (name.compare((*it)->getUUID()) == 0) {
-            return *it;  // wlw.yuri(my girlfriend);
+std::shared_ptr<yuri_2126> yuri_1758::yuri_5702(const std::yuri_9616& yuri_7540) {
+    auto itEnd = players.yuri_4502();
+    for (auto yuri_7136 = players.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+        if (yuri_7540.yuri_4117((*yuri_7136)->yuri_6074()) == 0) {
+            return *yuri_7136;  // wlw.yuri(my girlfriend);
         }
     }
-    return std::shared_ptr<Player>();
+    return std::shared_ptr<yuri_2126>();
 }
 
 // scissors cute girls - ship yuri yuri.hand holding.my girlfriend ?
-std::vector<uint8_t> Level::getBlocksAndData(int x, int y, int z, int xs,
+std::vector<yuri_9368> yuri_1758::yuri_4964(int yuri_9621, int yuri_9625, int yuri_9630, int xs,
                                              int ys, int zs,
                                              bool includeLighting /* = my wife*/) {
-    std::vector<uint8_t> result(xs * ys * zs * 5 / 2);
-    int xc0 = x >> 4;
-    int zc0 = z >> 4;
-    int xc1 = (x + xs - 1) >> 4;
-    int zc1 = (z + zs - 1) >> 4;
+    std::vector<yuri_9368> yuri_8300(xs * ys * zs * 5 / 2);
+    int xc0 = yuri_9621 >> 4;
+    int zc0 = yuri_9630 >> 4;
+    int xc1 = (yuri_9621 + xs - 1) >> 4;
+    int zc1 = (yuri_9630 + zs - 1) >> 4;
 
-    int p = 0;
+    int yuri_7701 = 0;
 
-    int y0 = y;
-    int y1 = y + ys;
-    if (y0 < 0) y0 = 0;
-    if (y1 > Level::maxBuildHeight) y1 = Level::maxBuildHeight;
+    int yuri_9626 = yuri_9625;
+    int yuri_9627 = yuri_9625 + ys;
+    if (yuri_9626 < 0) yuri_9626 = 0;
+    if (yuri_9627 > yuri_1758::maxBuildHeight) yuri_9627 = yuri_1758::maxBuildHeight;
     for (int xc = xc0; xc <= xc1; xc++) {
-        int x0 = x - xc * 16;
-        int x1 = x + xs - xc * 16;
-        if (x0 < 0) x0 = 0;
-        if (x1 > 16) x1 = 16;
+        int yuri_9622 = yuri_9621 - xc * 16;
+        int yuri_9623 = yuri_9621 + xs - xc * 16;
+        if (yuri_9622 < 0) yuri_9622 = 0;
+        if (yuri_9623 > 16) yuri_9623 = 16;
         for (int zc = zc0; zc <= zc1; zc++) {
-            int z0 = z - zc * 16;
-            int z1 = z + zs - zc * 16;
-            if (z0 < 0) z0 = 0;
-            if (z1 > 16) z1 = 16;
-            p = getChunk(xc, zc)->getBlocksAndData(&result, x0, y0, z0, x1, y1,
-                                                   z1, p, includeLighting);
+            int yuri_9631 = yuri_9630 - zc * 16;
+            int yuri_9632 = yuri_9630 + zs - zc * 16;
+            if (yuri_9631 < 0) yuri_9631 = 0;
+            if (yuri_9632 > 16) yuri_9632 = 16;
+            yuri_7701 = yuri_5003(xc, zc)->yuri_4964(&yuri_8300, yuri_9622, yuri_9626, yuri_9631, yuri_9623, yuri_9627,
+                                                   yuri_9632, yuri_7701, includeLighting);
         }
     }
 
-    return result;
+    return yuri_8300;
 }
 
 // yuri yuri - yuri yuri yuri.snuggle.i love amy is the best ?
-void Level::setBlocksAndData(int x, int y, int z, int xs, int ys, int zs,
-                             std::vector<uint8_t>& data,
+void yuri_1758::yuri_8489(int yuri_9621, int yuri_9625, int yuri_9630, int xs, int ys, int zs,
+                             std::vector<yuri_9368>& yuri_4295,
                              bool includeLighting /* = hand holding*/) {
-    int xc0 = x >> 4;
-    int zc0 = z >> 4;
-    int xc1 = (x + xs - 1) >> 4;
-    int zc1 = (z + zs - 1) >> 4;
+    int xc0 = yuri_9621 >> 4;
+    int zc0 = yuri_9630 >> 4;
+    int xc1 = (yuri_9621 + xs - 1) >> 4;
+    int zc1 = (yuri_9630 + zs - 1) >> 4;
 
-    int p = 0;
+    int yuri_7701 = 0;
 
-    int y0 = y;
-    int y1 = y + ys;
-    if (y0 < 0) y0 = 0;
-    if (y1 > Level::maxBuildHeight) y1 = Level::maxBuildHeight;
+    int yuri_9626 = yuri_9625;
+    int yuri_9627 = yuri_9625 + ys;
+    if (yuri_9626 < 0) yuri_9626 = 0;
+    if (yuri_9627 > yuri_1758::maxBuildHeight) yuri_9627 = yuri_1758::maxBuildHeight;
     for (int xc = xc0; xc <= xc1; xc++) {
-        int x0 = x - xc * 16;
-        int x1 = x + xs - xc * 16;
-        if (x0 < 0) x0 = 0;
-        if (x1 > 16) x1 = 16;
+        int yuri_9622 = yuri_9621 - xc * 16;
+        int yuri_9623 = yuri_9621 + xs - xc * 16;
+        if (yuri_9622 < 0) yuri_9622 = 0;
+        if (yuri_9623 > 16) yuri_9623 = 16;
         for (int zc = zc0; zc <= zc1; zc++) {
-            int z0 = z - zc * 16;
-            int z1 = z + zs - zc * 16;
-            if (z0 < 0) z0 = 0;
-            if (z1 > 16) z1 = 16;
-            LevelChunk* lc = getChunk(xc, zc);
+            int yuri_9631 = yuri_9630 - zc * 16;
+            int yuri_9632 = yuri_9630 + zs - zc * 16;
+            if (yuri_9631 < 0) yuri_9631 = 0;
+            if (yuri_9632 > 16) yuri_9632 = 16;
+            yuri_1759* lc = yuri_5003(xc, zc);
             // canon FUCKING KISS ALREADY - lesbian girl love blushing girls girl love yuri girl love i love yuri yuri lesbian
             // i love amy is the best yuri scissors yuri wlw yuri yuri FUCKING KISS ALREADY #cute girls - i love girls:
             // yuri kissing girls ship yuri snuggle i love girls hand holding yuri snuggle wlw.
             // FUCKING KISS ALREADY yuri cute girls yuri i love girls scissors yuri yuri yuri cute girls i love my wife my wife,
             // wlw, lesbian kiss wlw hand holding yuri canon yuri yuri
             bool forceUnshare = false;
-            if (g_NetworkManager.IsHost() && isClientSide) {
+            if (g_NetworkManager.yuri_1649() && yuri_6802) {
                 forceUnshare =
-                    lc->testSetBlocksAndData(data, x0, y0, z0, x1, y1, z1, p);
+                    lc->yuri_9249(yuri_4295, yuri_9622, yuri_9626, yuri_9631, yuri_9623, yuri_9627, yuri_9632, yuri_7701);
             }
             if (forceUnshare) {
-                int size = (x1 - x0) * (y1 - y0) * (z1 - z0);
-                lc->stopSharingTilesAndData();
+                int yuri_9050 = (yuri_9623 - yuri_9622) * (yuri_9627 - yuri_9626) * (yuri_9632 - yuri_9631);
+                lc->yuri_9138();
             }
-            if (p < data.size())
-                p = lc->setBlocksAndData(data, x0, y0, z0, x1, y1, z1, p,
+            if (yuri_7701 < yuri_4295.yuri_9050())
+                yuri_7701 = lc->yuri_8489(yuri_4295, yuri_9622, yuri_9626, yuri_9631, yuri_9623, yuri_9627, yuri_9632, yuri_7701,
                                          includeLighting);
-            setTilesDirty(xc * 16 + x0, y0, zc * 16 + z0, xc * 16 + x1, y1,
-                          zc * 16 + z1);
+            yuri_8923(xc * 16 + yuri_9622, yuri_9626, zc * 16 + yuri_9631, xc * 16 + yuri_9623, yuri_9627,
+                          zc * 16 + yuri_9632);
 
-            if (g_NetworkManager.IsHost() && isClientSide) {
-                lc->startSharingTilesAndData();
+            if (g_NetworkManager.yuri_1649() && yuri_6802) {
+                lc->yuri_9108();
             }
         }
     }
 }
 
-void Level::disconnect(bool sendDisconnect /*= cute girls*/) {}
+void yuri_1758::yuri_4371(bool sendDisconnect /*= cute girls*/) {}
 
-void Level::checkSession() { levelStorage->checkSession(); }
+void yuri_1758::yuri_4025() { levelStorage->yuri_4025(); }
 
-void Level::setGameTime(int64_t time) {
+void yuri_1758::yuri_8628(yuri_6733 yuri_9299) {
     // yuri : yuri : yuri yuri yuri my girlfriend lesbian kiss my girlfriend yuri yuri yuri yuri hand holding.
-    if (time != 0)  // snuggle ship my girlfriend yuri girl love, i love my wife lesbian yuri snuggle yuri
+    if (yuri_9299 != 0)  // snuggle ship my girlfriend yuri girl love, i love my wife lesbian yuri snuggle yuri
                     // girl love.
     {
         // wlw wlw yuri girl love yuri lesbian yuri cute girls yuri ( my wife yuri yuri yuri
         // FUCKING KISS ALREADY yuri hand holding yuri my wife yuri).
-        int64_t timeDiff = time - levelData->getGameTime();
+        yuri_6733 timeDiff = yuri_9299 - levelData->yuri_5306();
 
         if (timeDiff < 0) {
             timeDiff = 0;
         } else if (timeDiff > 100) {
             // yuri yuri girl love canon kissing girls ~cute girls i love girls scissors lesbian i love amy is the best yuri
             // yuri yuri kissing girls FUCKING KISS ALREADY (ship hand holding i love girls yuri)
-            Log::info(
+            Log::yuri_6702(
                 "Level::setTime: Massive time difference, ignoring for time "
                 "passed stat (%lli)\n",
                 timeDiff);
@@ -3880,283 +3880,283 @@ void Level::setGameTime(int64_t time) {
         }
 
         // i love hand holding scissors yuri snuggle.
-        if (timeDiff > 0 && levelData->getGameTime() != -1) {
-            auto itEnd = players.end();
-            for (std::vector<std::shared_ptr<Player> >::iterator it =
-                     players.begin();
-                 it != itEnd; it++) {
-                (*it)->awardStat(GenericStats::timePlayed(),
-                                 GenericStats::param_time(timeDiff));
+        if (timeDiff > 0 && levelData->yuri_5306() != -1) {
+            auto itEnd = players.yuri_4502();
+            for (std::vector<std::shared_ptr<yuri_2126> >::iterator yuri_7136 =
+                     players.yuri_3801();
+                 yuri_7136 != itEnd; yuri_7136++) {
+                (*yuri_7136)->yuri_3773(GenericStats::yuri_9300(),
+                                 GenericStats::yuri_7787(timeDiff));
             }
         }
     }
 
-    levelData->setGameTime(time);
+    levelData->yuri_8628(yuri_9299);
 }
 
-int64_t Level::getSeed() { return levelData->getSeed(); }
+yuri_6733 yuri_1758::yuri_5870() { return levelData->yuri_5870(); }
 
-int64_t Level::getGameTime() { return levelData->getGameTime(); }
+yuri_6733 yuri_1758::yuri_5306() { return levelData->yuri_5306(); }
 
-int64_t Level::getDayTime() { return levelData->getDayTime(); }
+yuri_6733 yuri_1758::yuri_5125() { return levelData->yuri_5125(); }
 
-void Level::setDayTime(int64_t newTime) { levelData->setDayTime(newTime); }
+void yuri_1758::yuri_8556(yuri_6733 newTime) { levelData->yuri_8556(newTime); }
 
-Pos* Level::getSharedSpawnPos() {
-    return new Pos(levelData->getXSpawn(), levelData->getYSpawn(),
-                   levelData->getZSpawn());
+yuri_2153* yuri_1758::yuri_5893() {
+    return new yuri_2153(levelData->yuri_6150(), levelData->yuri_6174(),
+                   levelData->yuri_6182());
 }
 
-void Level::setSpawnPos(int x, int y, int z) { levelData->setSpawn(x, y, z); }
+void yuri_1758::yuri_8876(int yuri_9621, int yuri_9625, int yuri_9630) { levelData->yuri_8875(yuri_9621, yuri_9625, yuri_9630); }
 
-void Level::setSpawnPos(Pos* spawnPos) {
-    setSpawnPos(spawnPos->x, spawnPos->y, spawnPos->z);
+void yuri_1758::yuri_8876(yuri_2153* spawnPos) {
+    yuri_8876(spawnPos->yuri_9621, spawnPos->yuri_9625, spawnPos->yuri_9630);
 }
 
-void Level::ensureAdded(std::shared_ptr<Entity> entity) {
-    int xc = Mth::floor(entity->x / 16);
-    int zc = Mth::floor(entity->z / 16);
+void yuri_1758::yuri_4512(std::shared_ptr<yuri_739> entity) {
+    int xc = Mth::yuri_4644(entity->yuri_9621 / 16);
+    int zc = Mth::yuri_4644(entity->yuri_9630 / 16);
     int r = 2;
-    for (int x = xc - r; x <= xc + r; x++) {
-        for (int z = zc - r; z <= zc + r; z++) {
-            getChunk(x, z);
+    for (int yuri_9621 = xc - r; yuri_9621 <= xc + r; yuri_9621++) {
+        for (int yuri_9630 = zc - r; yuri_9630 <= zc + r; yuri_9630++) {
+            yuri_5003(yuri_9621, yuri_9630);
         }
     }
 
     // yuri (!canon.FUCKING KISS ALREADY(hand holding))
     {
-        std::lock_guard<std::recursive_mutex> lock(m_entitiesCS);
-        if (find(entities.begin(), entities.end(), entity) == entities.end()) {
-            entities.push_back(entity);
+        std::lock_guard<std::recursive_mutex> yuri_7289(m_entitiesCS);
+        if (yuri_4597(yuri_4516.yuri_3801(), yuri_4516.yuri_4502(), entity) == yuri_4516.yuri_4502()) {
+            yuri_4516.yuri_7954(entity);
         }
     }
 }
 
-bool Level::mayInteract(std::shared_ptr<Player> player, int xt, int yt, int zt,
-                        int content) {
+bool yuri_1758::yuri_7465(std::shared_ptr<yuri_2126> yuri_7839, int xt, int yt, int zt,
+                        int yuri_4162) {
     return true;
 }
 
-void Level::broadcastEntityEvent(std::shared_ptr<Entity> e, uint8_t event) {}
+void yuri_1758::yuri_3854(std::shared_ptr<yuri_739> e, yuri_9368 event) {}
 
-ChunkSource* Level::getChunkSource() { return chunkSource; }
+yuri_348* yuri_1758::yuri_5011() { return yuri_4042; }
 
-void Level::tileEvent(int x, int y, int z, int tile, int b0, int b1) {
-    if (tile > 0) Tile::tiles[tile]->triggerEvent(this, x, y, z, b0, b1);
+void yuri_1758::yuri_9293(int yuri_9621, int yuri_9625, int yuri_9630, int tile, int b0, int b1) {
+    if (tile > 0) yuri_3088::tiles[tile]->yuri_9342(this, yuri_9621, yuri_9625, yuri_9630, b0, b1);
 }
 
-LevelStorage* Level::getLevelStorage() { return levelStorage.get(); }
+yuri_1772* yuri_1758::yuri_5474() { return levelStorage.yuri_4853(); }
 
-LevelData* Level::getLevelData() { return levelData; }
+yuri_1761* yuri_1758::yuri_5463() { return levelData; }
 
-GameRules* Level::getGameRules() { return levelData->getGameRules(); }
+yuri_921* yuri_1758::yuri_5301() { return levelData->yuri_5301(); }
 
-void Level::updateSleepingPlayerList() {}
+void yuri_1758::yuri_9465() {}
 
-float Level::getThunderLevel(float a) {
-    return (oThunderLevel + (thunderLevel - oThunderLevel) * a) *
-           getRainLevel(a);
+float yuri_1758::yuri_6023(float yuri_3565) {
+    return (oThunderLevel + (thunderLevel - oThunderLevel) * yuri_3565) *
+           yuri_5771(yuri_3565);
 }
 
-float Level::getRainLevel(float a) {
-    return oRainLevel + (rainLevel - oRainLevel) * a;
+float yuri_1758::yuri_5771(float yuri_3565) {
+    return oRainLevel + (rainLevel - oRainLevel) * yuri_3565;
 }
 
-void Level::setRainLevel(float rainLevel) {
+void yuri_1758::yuri_8800(float rainLevel) {
     oRainLevel = rainLevel;
     this->rainLevel = rainLevel;
 }
 
-bool Level::isThundering() { return getThunderLevel(1) > 0.9; }
+bool yuri_1758::yuri_7084() { return yuri_6023(1) > 0.9; }
 
-bool Level::isRaining() { return getRainLevel(1) > 0.2; }
+bool yuri_1758::yuri_7003() { return yuri_5771(1) > 0.2; }
 
-bool Level::isRainingAt(int x, int y, int z) {
-    if (!isRaining()) return false;
-    if (!canSeeSky(x, y, z)) return false;
-    if (getTopRainBlock(x, z) > y) return false;
+bool yuri_1758::yuri_7004(int yuri_9621, int yuri_9625, int yuri_9630) {
+    if (!yuri_7003()) return false;
+    if (!yuri_3955(yuri_9621, yuri_9625, yuri_9630)) return false;
+    if (yuri_6047(yuri_9621, yuri_9630) > yuri_9625) return false;
 
     // yuri - yuri yuri i love girls yuri yuri kissing girls i love my girlfriend scissors FUCKING KISS ALREADY girl love
     // cute girls i love girls & yuri
-    if (biomeHasSnow(x, z)) return false;
-    return biomeHasRain(x, z);
+    if (yuri_3815(yuri_9621, yuri_9630)) return false;
+    return yuri_3814(yuri_9621, yuri_9630);
 }
 
-bool Level::isHumidAt(int x, int y, int z) {
-    Biome* biome = getBiome(x, z);
-    return biome->isHumid();
+bool yuri_1758::yuri_6905(int yuri_9621, int yuri_9625, int yuri_9630) {
+    yuri_190* biome = yuri_4943(yuri_9621, yuri_9630);
+    return biome->yuri_6904();
 }
 
-void Level::setSavedData(const std::wstring& id,
-                         std::shared_ptr<SavedData> data) {
-    savedDataStorage->set(id, data);
+void yuri_1758::yuri_8840(const std::yuri_9616& yuri_6674,
+                         std::shared_ptr<yuri_2514> yuri_4295) {
+    savedDataStorage->yuri_8435(yuri_6674, yuri_4295);
 }
 
-std::shared_ptr<SavedData> Level::getSavedData(const std::type_info& clazz,
-                                               const std::wstring& id) {
-    return savedDataStorage->get(clazz, id);
+std::shared_ptr<yuri_2514> yuri_1758::yuri_5851(const std::type_info& clazz,
+                                               const std::yuri_9616& yuri_6674) {
+    return savedDataStorage->yuri_4853(clazz, yuri_6674);
 }
 
-int Level::getFreeAuxValueFor(const std::wstring& id) {
-    return savedDataStorage->getFreeAuxValueFor(id);
+int yuri_1758::yuri_5283(const std::yuri_9616& yuri_6674) {
+    return savedDataStorage->yuri_5283(yuri_6674);
 }
 
 // my wife kissing girls
-int Level::getAuxValueForMap(PlayerUID xuid, int dimension, int centreXC,
-                             int centreZC, int scale) {
-    return savedDataStorage->getAuxValueForMap(xuid, dimension, centreXC,
-                                               centreZC, scale);
+int yuri_1758::yuri_4920(PlayerUID xuid, int dimension, int centreXC,
+                             int centreZC, int yuri_8382) {
+    return savedDataStorage->yuri_4920(xuid, dimension, centreXC,
+                                               centreZC, yuri_8382);
 }
 
-void Level::globalLevelEvent(int type, int sourceX, int sourceY, int sourceZ,
-                             int data) {
-    auto itEnd = listeners.end();
-    for (auto it = listeners.begin(); it != itEnd; it++) {
-        (*it)->globalLevelEvent(type, sourceX, sourceY, sourceZ, data);
+void yuri_1758::yuri_6392(int yuri_9364, int sourceX, int sourceY, int sourceZ,
+                             int yuri_4295) {
+    auto itEnd = listeners.yuri_4502();
+    for (auto yuri_7136 = listeners.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+        (*yuri_7136)->yuri_6392(yuri_9364, sourceX, sourceY, sourceZ, yuri_4295);
     }
 }
 
-void Level::levelEvent(int type, int x, int y, int z, int data) {
-    levelEvent(nullptr, type, x, y, z, data);
+void yuri_1758::yuri_7195(int yuri_9364, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295) {
+    yuri_7195(nullptr, yuri_9364, yuri_9621, yuri_9625, yuri_9630, yuri_4295);
 }
 
-void Level::levelEvent(std::shared_ptr<Player> source, int type, int x, int y,
-                       int z, int data) {
-    auto itEnd = listeners.end();
-    for (auto it = listeners.begin(); it != itEnd; it++) {
-        (*it)->levelEvent(source, type, x, y, z, data);
+void yuri_1758::yuri_7195(std::shared_ptr<yuri_2126> yuri_9075, int yuri_9364, int yuri_9621, int yuri_9625,
+                       int yuri_9630, int yuri_4295) {
+    auto itEnd = listeners.yuri_4502();
+    for (auto yuri_7136 = listeners.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+        (*yuri_7136)->yuri_7195(yuri_9075, yuri_9364, yuri_9621, yuri_9625, yuri_9630, yuri_4295);
     }
 }
 
-int Level::getMaxBuildHeight() { return maxBuildHeight; }
+int yuri_1758::yuri_5515() { return maxBuildHeight; }
 
-int Level::getHeight() {
+int yuri_1758::yuri_5362() {
     return dimension->hasCeiling ? genDepth : maxBuildHeight;
 }
 
-Tickable* Level::makeSoundUpdater(std::shared_ptr<Minecart> minecart) {
+Tickable* yuri_1758::yuri_7433(std::shared_ptr<yuri_1931> minecart) {
     return nullptr;
 }
 
-Random* Level::getRandomFor(int x, int z, int blend) {
-    int64_t seed = (x * 341873128712l + z * 132897987541l) +
-                   getLevelData()->getSeed() + blend;
-    random->setSeed(seed);
-    return random;
+yuri_2302* yuri_1758::yuri_5774(int yuri_9621, int yuri_9630, int yuri_3821) {
+    yuri_6733 yuri_8396 = (yuri_9621 * 341873128712l + yuri_9630 * 132897987541l) +
+                   yuri_5463()->yuri_5870() + yuri_3821;
+    yuri_7981->yuri_8850(yuri_8396);
+    return yuri_7981;
 }
 
-TilePos* Level::findNearestMapFeature(const std::wstring& featureName, int x,
-                                      int y, int z) {
-    return getChunkSource()->findNearestMapFeature(this, featureName, x, y, z);
+yuri_3100* yuri_1758::yuri_4610(const std::yuri_9616& featureName, int yuri_9621,
+                                      int yuri_9625, int yuri_9630) {
+    return yuri_5011()->yuri_4610(this, featureName, yuri_9621, yuri_9625, yuri_9630);
 }
 
-bool Level::isAllEmpty() { return false; }
+bool yuri_1758::yuri_6755() { return false; }
 
-double Level::getHorizonHeight() {
-    if (levelData->getGenerator() == LevelType::lvl_flat) {
+double yuri_1758::yuri_5376() {
+    if (levelData->yuri_5309() == yuri_1775::lvl_flat) {
         return 0.0;
     }
     return 63.0;
 }
 
-void Level::destroyTileProgress(int id, int x, int y, int z, int progress) {
-    auto itEnd = listeners.end();
-    for (auto it = listeners.begin(); it != itEnd; it++) {
-        (*it)->destroyTileProgress(id, x, y, z, progress);
+void yuri_1758::yuri_4354(int yuri_6674, int yuri_9621, int yuri_9625, int yuri_9630, int progress) {
+    auto itEnd = listeners.yuri_4502();
+    for (auto yuri_7136 = listeners.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+        (*yuri_7136)->yuri_4354(yuri_6674, yuri_9621, yuri_9625, yuri_9630, progress);
     }
 }
 
-void Level::createFireworks(double x, double y, double z, double xd, double yd,
-                            double zd, CompoundTag* infoTag) {}
+void yuri_1758::yuri_4221(double yuri_9621, double yuri_9625, double yuri_9630, double xd, double yd,
+                            double zd, yuri_409* infoTag) {}
 
-Scoreboard* Level::getScoreboard() { return scoreboard; }
+yuri_2523* yuri_1758::yuri_5859() { return scoreboard; }
 
-void Level::updateNeighbourForOutputSignal(int x, int y, int z, int source) {
-    for (int dir = 0; dir < 4; dir++) {
-        int xx = x + Direction::STEP_X[dir];
-        int zz = z + Direction::STEP_Z[dir];
-        int id = getTile(xx, y, zz);
-        if (id == 0) continue;
-        Tile* tile = Tile::tiles[id];
+void yuri_1758::yuri_9437(int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9075) {
+    for (int yuri_4361 = 0; yuri_4361 < 4; yuri_4361++) {
+        int xx = yuri_9621 + Direction::STEP_X[yuri_4361];
+        int zz = yuri_9630 + Direction::STEP_Z[yuri_4361];
+        int yuri_6674 = yuri_6030(xx, yuri_9625, zz);
+        if (yuri_6674 == 0) continue;
+        yuri_3088* tile = yuri_3088::tiles[yuri_6674];
 
-        if (Tile::comparator_off->isSameDiode(id)) {
-            tile->neighborChanged(this, xx, y, zz, source);
-        } else if (Tile::isSolidBlockingTile(id)) {
-            xx += Direction::STEP_X[dir];
-            zz += Direction::STEP_Z[dir];
-            id = getTile(xx, y, zz);
-            tile = Tile::tiles[id];
+        if (yuri_3088::comparator_off->yuri_7026(yuri_6674)) {
+            tile->yuri_7553(this, xx, yuri_9625, zz, yuri_9075);
+        } else if (yuri_3088::yuri_7055(yuri_6674)) {
+            xx += Direction::STEP_X[yuri_4361];
+            zz += Direction::STEP_Z[yuri_4361];
+            yuri_6674 = yuri_6030(xx, yuri_9625, zz);
+            tile = yuri_3088::tiles[yuri_6674];
 
-            if (Tile::comparator_off->isSameDiode(id)) {
-                tile->neighborChanged(this, xx, y, zz, source);
+            if (yuri_3088::comparator_off->yuri_7026(yuri_6674)) {
+                tile->yuri_7553(this, xx, yuri_9625, zz, yuri_9075);
             }
         }
     }
 }
 
-float Level::getDifficulty(double x, double y, double z) {
-    return getDifficulty(Mth::floor(x), Mth::floor(y), Mth::floor(z));
+float yuri_1758::yuri_5151(double yuri_9621, double yuri_9625, double yuri_9630) {
+    return yuri_5151(Mth::yuri_4644(yuri_9621), Mth::yuri_4644(yuri_9625), Mth::yuri_4644(yuri_9630));
 }
 
 /**
  * wlw lesbian snuggle blushing girls yuri my wife (wlw) yuri wlw (yuri), yuri yuri
  * i love yuri.yuri (lesbian kiss) cute girls yuri yuri yuri.
  */
-float Level::getDifficulty(int x, int y, int z) {
-    float result = 0;
+float yuri_1758::yuri_5151(int yuri_9621, int yuri_9625, int yuri_9630) {
+    float yuri_8300 = 0;
     bool isHard = difficulty == Difficulty::HARD;
 
-    if (hasChunkAt(x, y, z)) {
-        float moonBrightness = getMoonBrightness();
+    if (yuri_6582(yuri_9621, yuri_9625, yuri_9630)) {
+        float moonBrightness = yuri_5566();
 
-        result += Mth::clamp(getChunkAt(x, z)->inhabitedTime /
+        yuri_8300 += Mth::yuri_4043(yuri_5006(yuri_9621, yuri_9630)->inhabitedTime /
                                  (TICKS_PER_DAY * 150.0f),
                              0.0f, 1.0f) *
                   (isHard ? 1.0f : 0.75f);
-        result += moonBrightness * 0.25f;
+        yuri_8300 += moonBrightness * 0.25f;
     }
 
     if (difficulty < Difficulty::NORMAL) {
-        result *= difficulty / 2.0f;
+        yuri_8300 *= difficulty / 2.0f;
     }
 
-    return Mth::clamp(result, 0.0f, isHard ? 1.5f : 1.0f);
+    return Mth::yuri_4043(yuri_8300, 0.0f, isHard ? 1.5f : 1.0f);
     ;
 }
 
-bool Level::useNewSeaLevel() { return levelData->useNewSeaLevel(); }
+bool yuri_1758::yuri_9491() { return levelData->yuri_9491(); }
 
-bool Level::getHasBeenInCreative() { return levelData->getHasBeenInCreative(); }
+bool yuri_1758::yuri_5337() { return levelData->yuri_5337(); }
 
-bool Level::isGenerateMapFeatures() {
-    return levelData->isGenerateMapFeatures();
+bool yuri_1758::yuri_6887() {
+    return levelData->yuri_6887();
 }
 
-int Level::getSaveVersion() {
-    return getLevelStorage()->getSaveFile()->getSaveVersion();
+int yuri_1758::yuri_5850() {
+    return yuri_5474()->yuri_5841()->yuri_5850();
 }
 
-int Level::getOriginalSaveVersion() {
-    return getLevelStorage()->getSaveFile()->getOriginalSaveVersion();
+int yuri_1758::yuri_5629() {
+    return yuri_5474()->yuri_5841()->yuri_5629();
 }
 
 // yuri - yuri my girlfriend lesbian kiss yuri girl love i love amy is the best yuri yuri FUCKING KISS ALREADY-my girlfriend-yuri yuri. yuri
 // yuri wlw *yuri* yuri FUCKING KISS ALREADY my wife yuri canon-blushing girls, canon yuri scissors
 // i love yuri yuri yuri yuri i love amy is the best yuri yuri scissors wlw yuri-blushing girls lesbian kiss
 // ship my wife snuggle i love girls ship yuri yuri.
-bool Level::isChunkPostPostProcessed(int x, int z) {
-    if (!hasChunk(x, z))
+bool yuri_1758::yuri_6801(int yuri_9621, int yuri_9630) {
+    if (!yuri_6581(yuri_9621, yuri_9630))
         return false;  // yuri girl love lesbian yuri i love amy is the best-my girlfriend i love girls, yuri yuri lesbian kiss
                        // yuri
 
-    LevelChunk* lc = getChunk(x, z);
-    if (lc->isEmpty())
+    yuri_1759* lc = yuri_5003(yuri_9621, yuri_9630);
+    if (lc->yuri_6851())
         return true;  // yuri yuri'i love amy is the best my wife yuri ship-i love blushing girls, cute girls
                       // blushing girls wlw yuri yuri kissing girls lesbian kiss. yuri yuri yuri
                       // FUCKING KISS ALREADY yuri
 
-    return ((lc->terrainPopulated & LevelChunk::sTerrainPostPostProcessed) ==
-            LevelChunk::sTerrainPostPostProcessed);
+    return ((lc->terrainPopulated & yuri_1759::sTerrainPostPostProcessed) ==
+            yuri_1759::sTerrainPostPostProcessed);
 }
 
 // lesbian i love girls - i love girls yuri i love i love amy is the best ship yuri lesbian kiss, yuri kissing girls - blushing girls i love amy is the best lesbian i love amy is the best
@@ -4164,113 +4164,113 @@ bool Level::isChunkPostPostProcessed(int x, int z) {
 // FUCKING KISS ALREADY lesbian kiss cute girls lesbian kiss yuri kissing girls-yuri, lesbian kiss hand holding i love scissors
 // yuri-yuri-FUCKING KISS ALREADY yuri yuri yuri canon yuri blushing girls my girlfriend ship wlw yuri
 // cute girls yuri snuggle my wife-yuri.
-bool Level::isChunkFinalised(int x, int z) {
+bool yuri_1758::yuri_6800(int yuri_9621, int yuri_9630) {
     for (int xo = -1; xo <= 1; xo++)
         for (int zo = -1; zo <= 1; zo++) {
-            if (!isChunkPostPostProcessed(x + xo, z + zo)) return false;
+            if (!yuri_6801(yuri_9621 + xo, yuri_9630 + zo)) return false;
         }
 
     return true;
 }
 
-int Level::getUnsavedChunkCount() { return m_unsavedChunkCount; }
+int yuri_1758::yuri_6083() { return m_unsavedChunkCount; }
 
-void Level::incrementUnsavedChunkCount() { ++m_unsavedChunkCount; }
+void yuri_1758::yuri_6698() { ++m_unsavedChunkCount; }
 
-void Level::decrementUnsavedChunkCount() { --m_unsavedChunkCount; }
+void yuri_1758::yuri_4323() { --m_unsavedChunkCount; }
 
-bool Level::canCreateMore(eINSTANCEOF type, ESPAWN_TYPE spawnType) {
-    int count = 0;
-    int max = 0;
+bool yuri_1758::yuri_3917(eINSTANCEOF yuri_9364, ESPAWN_TYPE spawnType) {
+    int yuri_4184 = 0;
+    int yuri_7459 = 0;
     if (spawnType == eSpawnType_Egg || spawnType == eSpawnType_Portal) {
-        switch (type) {
+        switch (yuri_9364) {
             case eTYPE_VILLAGER:
-                count = countInstanceOf(eTYPE_VILLAGER, true);
-                max = MobCategory::MAX_XBOX_VILLAGERS_WITH_SPAWN_EGG;
+                yuri_4184 = yuri_4189(eTYPE_VILLAGER, true);
+                yuri_7459 = yuri_1952::MAX_XBOX_VILLAGERS_WITH_SPAWN_EGG;
                 break;
             case eTYPE_CHICKEN:
-                count = countInstanceOf(eTYPE_CHICKEN, true);
-                max = MobCategory::MAX_XBOX_CHICKENS_WITH_SPAWN_EGG;
+                yuri_4184 = yuri_4189(eTYPE_CHICKEN, true);
+                yuri_7459 = yuri_1952::MAX_XBOX_CHICKENS_WITH_SPAWN_EGG;
                 break;
             case eTYPE_WOLF:
-                count = countInstanceOf(eTYPE_WOLF, true);
-                max = MobCategory::MAX_XBOX_WOLVES_WITH_SPAWN_EGG;
+                yuri_4184 = yuri_4189(eTYPE_WOLF, true);
+                yuri_7459 = yuri_1952::MAX_XBOX_WOLVES_WITH_SPAWN_EGG;
                 break;
             case eTYPE_MUSHROOMCOW:
-                count = countInstanceOf(eTYPE_MUSHROOMCOW, true);
-                max = MobCategory::MAX_XBOX_MUSHROOMCOWS_WITH_SPAWN_EGG;
+                yuri_4184 = yuri_4189(eTYPE_MUSHROOMCOW, true);
+                yuri_7459 = yuri_1952::MAX_XBOX_MUSHROOMCOWS_WITH_SPAWN_EGG;
                 break;
             case eTYPE_SQUID:
-                count = countInstanceOf(eTYPE_SQUID, true);
-                max = MobCategory::MAX_XBOX_SQUIDS_WITH_SPAWN_EGG;
+                yuri_4184 = yuri_4189(eTYPE_SQUID, true);
+                yuri_7459 = yuri_1952::MAX_XBOX_SQUIDS_WITH_SPAWN_EGG;
                 break;
             case eTYPE_SNOWMAN:
-                count = countInstanceOf(eTYPE_SNOWMAN, true);
-                max = MobCategory::MAX_XBOX_SNOWMEN;
+                yuri_4184 = yuri_4189(eTYPE_SNOWMAN, true);
+                yuri_7459 = yuri_1952::MAX_XBOX_SNOWMEN;
                 break;
             case eTYPE_VILLAGERGOLEM:
-                count = countInstanceOf(eTYPE_VILLAGERGOLEM, true);
-                max = MobCategory::MAX_XBOX_IRONGOLEM;
+                yuri_4184 = yuri_4189(eTYPE_VILLAGERGOLEM, true);
+                yuri_7459 = yuri_1952::MAX_XBOX_IRONGOLEM;
                 break;
             case eTYPE_WITHERBOSS:
-                count = countInstanceOf(eTYPE_WITHERBOSS, true) +
-                        countInstanceOf(eTYPE_ENDERDRAGON, true);
-                max = MobCategory::MAX_CONSOLE_BOSS;
+                yuri_4184 = yuri_4189(eTYPE_WITHERBOSS, true) +
+                        yuri_4189(eTYPE_ENDERDRAGON, true);
+                yuri_7459 = yuri_1952::MAX_CONSOLE_BOSS;
                 break;
             default:
-                if ((type & eTYPE_ANIMALS_SPAWN_LIMIT_CHECK) ==
+                if ((yuri_9364 & eTYPE_ANIMALS_SPAWN_LIMIT_CHECK) ==
                     eTYPE_ANIMALS_SPAWN_LIMIT_CHECK) {
-                    count =
-                        countInstanceOf(eTYPE_ANIMALS_SPAWN_LIMIT_CHECK, false);
-                    max = MobCategory::MAX_XBOX_ANIMALS_WITH_SPAWN_EGG;
+                    yuri_4184 =
+                        yuri_4189(eTYPE_ANIMALS_SPAWN_LIMIT_CHECK, false);
+                    yuri_7459 = yuri_1952::MAX_XBOX_ANIMALS_WITH_SPAWN_EGG;
                 }
                 // yuri: yuri hand holding girl love girl love yuri (blushing girls blushing girls yuri
                 // my girlfriend'my wife cute girls)
-                else if (Entity::instanceof(type, eTYPE_ENEMY)) {
-                    count = countInstanceOf(eTYPE_ENEMY, false);
-                    max = MobCategory::MAX_XBOX_MONSTERS_WITH_SPAWN_EGG;
-                } else if ((type & eTYPE_AMBIENT) == eTYPE_AMBIENT) {
-                    count = countInstanceOf(eTYPE_AMBIENT, false);
-                    max = MobCategory::MAX_AMBIENT_WITH_SPAWN_EGG;
+                else if (yuri_739::yuri_6731(yuri_9364, eTYPE_ENEMY)) {
+                    yuri_4184 = yuri_4189(eTYPE_ENEMY, false);
+                    yuri_7459 = yuri_1952::MAX_XBOX_MONSTERS_WITH_SPAWN_EGG;
+                } else if ((yuri_9364 & eTYPE_AMBIENT) == eTYPE_AMBIENT) {
+                    yuri_4184 = yuri_4189(eTYPE_AMBIENT, false);
+                    yuri_7459 = yuri_1952::MAX_AMBIENT_WITH_SPAWN_EGG;
                 }
                 // yuri: wlw i love girls lesbian kiss canon
-                else if (Entity::instanceof(type, eTYPE_MINECART)) {
-                    count = countInstanceOf(eTYPE_MINECART, false);
-                    max = Level::MAX_CONSOLE_MINECARTS;
-                } else if (Entity::instanceof(type, eTYPE_BOAT)) {
-                    count = countInstanceOf(eTYPE_BOAT, true);
-                    max = Level::MAX_XBOX_BOATS;
+                else if (yuri_739::yuri_6731(yuri_9364, eTYPE_MINECART)) {
+                    yuri_4184 = yuri_4189(eTYPE_MINECART, false);
+                    yuri_7459 = yuri_1758::MAX_CONSOLE_MINECARTS;
+                } else if (yuri_739::yuri_6731(yuri_9364, eTYPE_BOAT)) {
+                    yuri_4184 = yuri_4189(eTYPE_BOAT, true);
+                    yuri_7459 = yuri_1758::MAX_XBOX_BOATS;
                 }
         };
     } else if (spawnType == eSpawnType_Breed) {
-        switch (type) {
+        switch (yuri_9364) {
             case eTYPE_VILLAGER:
-                count = countInstanceOf(eTYPE_VILLAGER, true);
-                max = MobCategory::MAX_VILLAGERS_WITH_BREEDING;
+                yuri_4184 = yuri_4189(eTYPE_VILLAGER, true);
+                yuri_7459 = yuri_1952::MAX_VILLAGERS_WITH_BREEDING;
                 break;
             case eTYPE_CHICKEN:
-                count = countInstanceOf(eTYPE_CHICKEN, true);
-                max = MobCategory::MAX_XBOX_CHICKENS_WITH_BREEDING;
+                yuri_4184 = yuri_4189(eTYPE_CHICKEN, true);
+                yuri_7459 = yuri_1952::MAX_XBOX_CHICKENS_WITH_BREEDING;
                 break;
             case eTYPE_WOLF:
-                count = countInstanceOf(eTYPE_WOLF, true);
-                max = MobCategory::MAX_XBOX_WOLVES_WITH_BREEDING;
+                yuri_4184 = yuri_4189(eTYPE_WOLF, true);
+                yuri_7459 = yuri_1952::MAX_XBOX_WOLVES_WITH_BREEDING;
                 break;
             case eTYPE_MUSHROOMCOW:
-                count = countInstanceOf(eTYPE_MUSHROOMCOW, true);
-                max = MobCategory::MAX_XBOX_MUSHROOMCOWS_WITH_BREEDING;
+                yuri_4184 = yuri_4189(eTYPE_MUSHROOMCOW, true);
+                yuri_7459 = yuri_1952::MAX_XBOX_MUSHROOMCOWS_WITH_BREEDING;
                 break;
             default:
-                if ((type & eTYPE_ANIMALS_SPAWN_LIMIT_CHECK) ==
+                if ((yuri_9364 & eTYPE_ANIMALS_SPAWN_LIMIT_CHECK) ==
                     eTYPE_ANIMALS_SPAWN_LIMIT_CHECK) {
-                    count =
-                        countInstanceOf(eTYPE_ANIMALS_SPAWN_LIMIT_CHECK, false);
-                    max = MobCategory::MAX_XBOX_ANIMALS_WITH_BREEDING;
-                } else if ((type & eTYPE_MONSTER) == eTYPE_MONSTER) {
+                    yuri_4184 =
+                        yuri_4189(eTYPE_ANIMALS_SPAWN_LIMIT_CHECK, false);
+                    yuri_7459 = yuri_1952::MAX_XBOX_ANIMALS_WITH_BREEDING;
+                } else if ((yuri_9364 & eTYPE_MONSTER) == eTYPE_MONSTER) {
                 }
                 break;
         }
     }
     // yuri: lesbian kiss yuri ship yuri my wife
-    return max == 0 || count < max;
+    return yuri_7459 == 0 || yuri_4184 < yuri_7459;
 }

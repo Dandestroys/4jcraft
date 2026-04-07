@@ -1,20 +1,20 @@
 #include "GlassTile.h"
 
-#include <string>
+#include <yuri_9151>
 
 #include "minecraft/world/level/tile/HalfTransparentTile.h"
 
-class Material;
+class yuri_1886;
 
-GlassTile::GlassTile(int id, Material* material, bool allowSame)
-    : HalfTransparentTile(id, L"glass", material, allowSame) {}
+yuri_1213::yuri_1213(int yuri_6674, yuri_1886* material, bool allowSame)
+    : yuri_1236(yuri_6674, yuri_1720"glass", material, allowSame) {}
 
-int GlassTile::getResourceCount(Random* random) { return 0; }
+int yuri_1213::yuri_5819(yuri_2302* yuri_7981) { return 0; }
 
-int GlassTile::getRenderLayer() { return 0; }
+int yuri_1213::yuri_5805() { return 0; }
 
-bool GlassTile::isSolidRender() { return false; }
+bool yuri_1213::yuri_7058() { return false; }
 
-bool GlassTile::isCubeShaped() { return false; }
+bool yuri_1213::yuri_6827() { return false; }
 
-bool GlassTile::isSilkTouchable() { return true; }
+bool yuri_1213::yuri_7042() { return true; }

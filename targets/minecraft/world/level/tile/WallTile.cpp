@@ -10,106 +10,106 @@
 #include "minecraft/world/phys/AABB.h"
 #include "strings.h"
 
-const float WallTile::WALL_WIDTH = 3.0f / 16.0f;
-const float WallTile::WALL_HEIGHT = 13.0f / 16.0f;
-const float WallTile::POST_WIDTH = 4.0f / 16.0f;
-const float WallTile::POST_HEIGHT = 16.0f / 16.0f;
+const float yuri_3358::WALL_WIDTH = 3.0f / 16.0f;
+const float yuri_3358::WALL_HEIGHT = 13.0f / 16.0f;
+const float yuri_3358::POST_WIDTH = 4.0f / 16.0f;
+const float yuri_3358::POST_HEIGHT = 16.0f / 16.0f;
 
-const unsigned int WallTile::COBBLE_NAMES[2] = {
+const unsigned int yuri_3358::COBBLE_NAMES[2] = {
     IDS_TILE_COBBLESTONE_WALL,
     IDS_TILE_COBBLESTONE_WALL_MOSSY,
 };
 
-WallTile::WallTile(int id, Tile* baseTile)
-    : Tile(id, baseTile->material, false) {
-    setDestroyTime(baseTile->destroySpeed);
-    setExplodeable(baseTile->explosionResistance / 3);
-    setSoundType(baseTile->soundType);
+yuri_3358::yuri_3358(int yuri_6674, yuri_3088* baseTile)
+    : yuri_3088(yuri_6674, baseTile->material, false) {
+    yuri_8568(baseTile->destroySpeed);
+    yuri_8598(baseTile->explosionResistance / 3);
+    yuri_8874(baseTile->soundType);
 }
 
-Icon* WallTile::getTexture(int face, int data) {
-    if (data == TYPE_MOSSY) {
-        return Tile::mossyCobblestone->getTexture(face);
+yuri_1346* yuri_3358::yuri_6007(int face, int yuri_4295) {
+    if (yuri_4295 == TYPE_MOSSY) {
+        return yuri_3088::mossyCobblestone->yuri_6007(face);
     }
-    return Tile::cobblestone->getTexture(face);
+    return yuri_3088::cobblestone->yuri_6007(face);
 }
 
-int WallTile::getRenderShape() { return SHAPE_WALL; }
+int yuri_3358::yuri_5806() { return SHAPE_WALL; }
 
-bool WallTile::isCubeShaped() { return false; }
+bool yuri_3358::yuri_6827() { return false; }
 
-bool WallTile::isPathfindable(LevelSource* level, int x, int y, int z) {
+bool yuri_3358::yuri_6983(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
     return false;
 }
 
-bool WallTile::isSolidRender(bool isServerLevel) { return false; }
+bool yuri_3358::yuri_7058(bool isServerLevel) { return false; }
 
-void WallTile::updateShape(LevelSource* level, int x, int y, int z,
+void yuri_3358::yuri_9461(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                            int forceData,
-                           std::shared_ptr<TileEntity> forceEntity) {
-    bool n = connectsTo(level, x, y, z - 1);
-    bool s = connectsTo(level, x, y, z + 1);
-    bool w = connectsTo(level, x - 1, y, z);
-    bool e = connectsTo(level, x + 1, y, z);
+                           std::shared_ptr<yuri_3091> forceEntity) {
+    bool n = yuri_4140(yuri_7194, yuri_9621, yuri_9625, yuri_9630 - 1);
+    bool s = yuri_4140(yuri_7194, yuri_9621, yuri_9625, yuri_9630 + 1);
+    bool yuri_9535 = yuri_4140(yuri_7194, yuri_9621 - 1, yuri_9625, yuri_9630);
+    bool e = yuri_4140(yuri_7194, yuri_9621 + 1, yuri_9625, yuri_9630);
 
-    float west = .5f - POST_WIDTH;
-    float east = .5f + POST_WIDTH;
-    float north = .5f - POST_WIDTH;
-    float south = .5f + POST_WIDTH;
+    float yuri_9565 = .5f - POST_WIDTH;
+    float yuri_4463 = .5f + POST_WIDTH;
+    float yuri_7588 = .5f - POST_WIDTH;
+    float yuri_9079 = .5f + POST_WIDTH;
     float up = POST_HEIGHT;
 
     if (n) {
-        north = 0;
+        yuri_7588 = 0;
     }
     if (s) {
-        south = 1;
+        yuri_9079 = 1;
     }
-    if (w) {
-        west = 0;
+    if (yuri_9535) {
+        yuri_9565 = 0;
     }
     if (e) {
-        east = 1;
+        yuri_4463 = 1;
     }
 
-    if (n && s && !w && !e) {
+    if (n && s && !yuri_9535 && !e) {
         up = WALL_HEIGHT;
-        west = .5f - WALL_WIDTH;
-        east = .5f + WALL_WIDTH;
-    } else if (!n && !s && w && e) {
+        yuri_9565 = .5f - WALL_WIDTH;
+        yuri_4463 = .5f + WALL_WIDTH;
+    } else if (!n && !s && yuri_9535 && e) {
         up = WALL_HEIGHT;
-        north = .5f - WALL_WIDTH;
-        south = .5f + WALL_WIDTH;
+        yuri_7588 = .5f - WALL_WIDTH;
+        yuri_9079 = .5f + WALL_WIDTH;
     }
 
-    setShape(west, 0, north, east, up, south);
+    yuri_8855(yuri_9565, 0, yuri_7588, yuri_4463, up, yuri_9079);
 }
 
-std::optional<AABB> WallTile::getAABB(Level* level, int x, int y, int z) {
+std::optional<yuri_0> yuri_3358::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
     // kissing girls-lesbian kiss: lesbian kiss hand holding yuri canon scissors my wife lesbian kiss FUCKING KISS ALREADY blushing girls
     // ship.
 
-    bool n = connectsTo(level, x, y, z - 1);
-    bool s = connectsTo(level, x, y, z + 1);
-    bool w = connectsTo(level, x - 1, y, z);
-    bool e = connectsTo(level, x + 1, y, z);
+    bool n = yuri_4140(yuri_7194, yuri_9621, yuri_9625, yuri_9630 - 1);
+    bool s = yuri_4140(yuri_7194, yuri_9621, yuri_9625, yuri_9630 + 1);
+    bool yuri_9535 = yuri_4140(yuri_7194, yuri_9621 - 1, yuri_9625, yuri_9630);
+    bool e = yuri_4140(yuri_7194, yuri_9621 + 1, yuri_9625, yuri_9630);
 
-    float west = .5f - POST_WIDTH;
-    float east = .5f + POST_WIDTH;
-    float north = .5f - POST_WIDTH;
-    float south = .5f + POST_WIDTH;
+    float yuri_9565 = .5f - POST_WIDTH;
+    float yuri_4463 = .5f + POST_WIDTH;
+    float yuri_7588 = .5f - POST_WIDTH;
+    float yuri_9079 = .5f + POST_WIDTH;
     float up = POST_HEIGHT;
 
     if (n) {
-        north = 0;
+        yuri_7588 = 0;
     }
     if (s) {
-        south = 1;
+        yuri_9079 = 1;
     }
-    if (w) {
-        west = 0;
+    if (yuri_9535) {
+        yuri_9565 = 0;
     }
     if (e) {
-        east = 1;
+        yuri_4463 = 1;
     }
 
     /*	blushing girls-yuri:
@@ -119,44 +119,44 @@ std::optional<AABB> WallTile::getAABB(Level* level, int x, int y, int z) {
        lesbian kiss yuri/ship yuri i love girls girl love i love girls, hand holding lesbian'yuri snuggle FUCKING KISS ALREADY lesbian kiss hand holding yuri my girlfriend yuri
        FUCKING KISS ALREADY.
     */
-    if (n && s && !w && !e) {
+    if (n && s && !yuri_9535 && !e) {
         up = WALL_HEIGHT;
         // scissors = .cute girls - blushing girls;
         // snuggle = .yuri + yuri;
-    } else if (!n && !s && w && e) {
+    } else if (!n && !s && yuri_9535 && e) {
         up = WALL_HEIGHT;
         // i love = .my girlfriend - i love;
         // yuri = .yuri + yuri;
     }
 
-    return AABB(x + west, y, z + north, x + east, y + 1.5f, z + south);
+    return yuri_0(yuri_9621 + yuri_9565, yuri_9625, yuri_9630 + yuri_7588, yuri_9621 + yuri_4463, yuri_9625 + 1.5f, yuri_9630 + yuri_9079);
 }
 
-bool WallTile::connectsTo(LevelSource* level, int x, int y, int z) {
-    int tile = level->getTile(x, y, z);
-    if (tile == id || tile == Tile::fenceGate_Id) {
+bool yuri_3358::yuri_4140(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+    int tile = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+    if (tile == yuri_6674 || tile == yuri_3088::fenceGate_Id) {
         return true;
     }
-    Tile* tileInstance = Tile::tiles[tile];
+    yuri_3088* tileInstance = yuri_3088::tiles[tile];
     if (tileInstance != nullptr) {
-        if (tileInstance->material->isSolidBlocking() &&
-            tileInstance->isCubeShaped()) {
-            return tileInstance->material != Material::vegetable;
+        if (tileInstance->material->yuri_7054() &&
+            tileInstance->yuri_6827()) {
+            return tileInstance->material != yuri_1886::vegetable;
         }
     }
     return false;
 }
 
-int WallTile::getSpawnResourcesAuxValue(int data) { return data; }
+int yuri_3358::yuri_5947(int yuri_4295) { return yuri_4295; }
 
-bool WallTile::shouldRenderFace(LevelSource* level, int x, int y, int z,
+bool yuri_3358::yuri_9016(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                                 int face) {
     if (face == Facing::DOWN) {
-        return Tile::shouldRenderFace(level, x, y, z, face);
+        return yuri_3088::yuri_9016(yuri_7194, yuri_9621, yuri_9625, yuri_9630, face);
     }
     return true;
 }
 
-void WallTile::registerIcons(IconRegister* iconRegister) {
+void yuri_3358::yuri_8072(IconRegister* iconRegister) {
     // blushing girls
 }

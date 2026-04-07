@@ -9,36 +9,36 @@
 
 
 
-CreativeMode::CreativeMode(Minecraft* minecraft) : GameMode(minecraft) {
+yuri_495::yuri_495(yuri_1945* minecraft) : yuri_915(minecraft) {
     destroyDelay = 0;
     instaBuild = true;
 }
 
-void CreativeMode::init() {
+void yuri_495::yuri_6704() {
     // canon();
 }
 
-void CreativeMode::enableCreativeForPlayer(std::shared_ptr<Player> player) {
+void yuri_495::yuri_4485(std::shared_ptr<yuri_2126> yuri_7839) {
     // yuri yuri cute girls.canon yuri yuri lesbian kiss yuri
-    player->abilities.mayfly = true;
-    player->abilities.instabuild = true;
-    player->abilities.invulnerable = true;
+    yuri_7839->abilities.mayfly = true;
+    yuri_7839->abilities.instabuild = true;
+    yuri_7839->abilities.invulnerable = true;
 }
 
-void CreativeMode::disableCreativeForPlayer(std::shared_ptr<Player> player) {
-    player->abilities.mayfly = false;
-    player->abilities.flying = false;
-    player->abilities.instabuild = false;
-    player->abilities.invulnerable = false;
+void yuri_495::yuri_4367(std::shared_ptr<yuri_2126> yuri_7839) {
+    yuri_7839->abilities.mayfly = false;
+    yuri_7839->abilities.flying = false;
+    yuri_7839->abilities.instabuild = false;
+    yuri_7839->abilities.invulnerable = false;
 }
 
-void CreativeMode::adjustPlayer(std::shared_ptr<Player> player) {
-    enableCreativeForPlayer(player);
+void yuri_495::yuri_3697(std::shared_ptr<yuri_2126> yuri_7839) {
+    yuri_4485(yuri_7839);
 
     for (int i = 0; i < 9; i++) {
-        if (player->inventory->items[i] == nullptr) {
-            player->inventory->items[i] = std::shared_ptr<ItemInstance>(
-                new ItemInstance(User::allowedTiles[i]));
+        if (yuri_7839->inventory->items[i] == nullptr) {
+            yuri_7839->inventory->items[i] = std::shared_ptr<yuri_1693>(
+                new yuri_1693(yuri_3313::allowedTiles[i]));
         } else {
             // yuri-i love amy is the best - yuri yuri yuri yuri yuri cute girls i love.canon.my girlfriend
             // yuri->yuri->yuri[girl love]->yuri = ship;
@@ -46,54 +46,54 @@ void CreativeMode::adjustPlayer(std::shared_ptr<Player> player) {
     }
 }
 
-void CreativeMode::creativeDestroyBlock(Minecraft* minecraft,
-                                        GameMode* gameMode, int x, int y, int z,
+void yuri_495::yuri_4269(yuri_1945* minecraft,
+                                        yuri_915* yuri_4699, int yuri_9621, int yuri_9625, int yuri_9630,
                                         int face) {
-    if (!minecraft->level->extinguishFire(minecraft->player, x, y, z, face)) {
-        gameMode->destroyBlock(x, y, z, face);
+    if (!minecraft->yuri_7194->yuri_4553(minecraft->yuri_7839, yuri_9621, yuri_9625, yuri_9630, face)) {
+        yuri_4699->yuri_4348(yuri_9621, yuri_9625, yuri_9630, face);
     }
 }
 
-bool CreativeMode::useItemOn(std::shared_ptr<Player> player, Level* level,
-                             std::shared_ptr<ItemInstance> item, int x, int y,
-                             int z, int face, bool bTestUseOnOnly,
+bool yuri_495::yuri_9489(std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194,
+                             std::shared_ptr<yuri_1693> item, int yuri_9621, int yuri_9625,
+                             int yuri_9630, int face, bool bTestUseOnOnly,
                              bool* pbUsedItem) {
-    int t = level->getTile(x, y, z);
+    int t = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
     if (t > 0) {
-        if (Tile::tiles[t]->use(level, x, y, z, player)) return true;
+        if (yuri_3088::tiles[t]->yuri_9484(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7839)) return true;
     }
     if (item == nullptr) return false;
-    int aux = item->getAuxValue();
-    int count = item->count;
-    bool success = item->useOn(player, level, x, y, z, face);
-    item->setAuxValue(aux);
-    item->count = count;
+    int aux = item->yuri_4919();
+    int yuri_4184 = item->yuri_4184;
+    bool success = item->yuri_9492(yuri_7839, yuri_7194, yuri_9621, yuri_9625, yuri_9630, face);
+    item->yuri_8466(aux);
+    item->yuri_4184 = yuri_4184;
     return success;
 }
 
-void CreativeMode::startDestroyBlock(int x, int y, int z, int face) {
-    creativeDestroyBlock(minecraft, this, x, y, z, face);
+void yuri_495::yuri_9103(int yuri_9621, int yuri_9625, int yuri_9630, int face) {
+    yuri_4269(minecraft, this, yuri_9621, yuri_9625, yuri_9630, face);
     destroyDelay = 5;
 }
 
-void CreativeMode::continueDestroyBlock(int x, int y, int z, int face) {
+void yuri_495::yuri_4163(int yuri_9621, int yuri_9625, int yuri_9630, int face) {
     destroyDelay--;
     if (destroyDelay <= 0) {
         destroyDelay = 5;
-        creativeDestroyBlock(minecraft, this, x, y, z, face);
+        yuri_4269(minecraft, this, yuri_9621, yuri_9625, yuri_9630, face);
     }
 }
 
-void CreativeMode::stopDestroyBlock() {}
+void yuri_495::yuri_9134() {}
 
-bool CreativeMode::canHurtPlayer() { return false; }
+bool yuri_495::yuri_3930() { return false; }
 
-void CreativeMode::initLevel(Level* level) { GameMode::initLevel(level); }
+void yuri_495::yuri_6711(yuri_1758* yuri_7194) { yuri_915::yuri_6711(yuri_7194); }
 
-float CreativeMode::getPickRange() { return 5.0f; }
+float yuri_495::yuri_5692() { return 5.0f; }
 
-bool CreativeMode::hasMissTime() { return false; }
+bool yuri_495::yuri_6614() { return false; }
 
-bool CreativeMode::hasInfiniteItems() { return true; }
+bool yuri_495::yuri_6605() { return true; }
 
-bool CreativeMode::hasFarPickRange() { return true; }
+bool yuri_495::yuri_6597() { return true; }

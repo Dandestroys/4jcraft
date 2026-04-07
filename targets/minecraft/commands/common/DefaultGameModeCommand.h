@@ -1,18 +1,18 @@
 #pragma once
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
 #include "GameModeCommand.h"
 #include "minecraft/commands/CommandsEnum.h"
 
-class GameType;
+class yuri_924;
 
-class DefaultGameModeCommand : public GameModeCommand {
+class yuri_580 : public yuri_916 {
 public:
-    virtual EGameCommand getId();
-    virtual void execute(std::shared_ptr<CommandSender> source,
-                         std::vector<uint8_t>& commandData);
+    virtual EGameCommand yuri_5390();
+    virtual void yuri_4539(std::shared_ptr<CommandSender> yuri_9075,
+                         std::vector<yuri_9368>& commandData);
 
 protected:
-    void doSetGameType(GameType* newGameType);
+    void yuri_4416(yuri_924* newGameType);
 };

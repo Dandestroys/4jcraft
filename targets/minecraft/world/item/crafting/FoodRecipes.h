@@ -1,8 +1,8 @@
 #pragma once
 
-class Recipes;
+class yuri_2334;
 
 class FoodRecipies {
 public:
-    void addRecipes(Recipes* r);
+    void yuri_3667(yuri_2334* r);
 };

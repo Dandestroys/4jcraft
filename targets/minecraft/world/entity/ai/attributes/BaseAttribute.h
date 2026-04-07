@@ -3,18 +3,18 @@
 #include "Attribute.h"
 #include "minecraft/world/entity/ai/attributes/Attribute.h"
 
-class BaseAttribute : public Attribute {
+class yuri_161 : public Attribute {
 private:
-    eATTRIBUTE_ID id;
+    eATTRIBUTE_ID yuri_6674;
     double defaultValue;
     bool syncable;
 
 protected:
-    BaseAttribute(eATTRIBUTE_ID id, double defaultValue);
+    yuri_161(eATTRIBUTE_ID yuri_6674, double defaultValue);
 
 public:
-    virtual eATTRIBUTE_ID getId();
-    virtual double getDefaultValue();
-    virtual bool isClientSyncable();
-    virtual BaseAttribute* setSyncable(bool syncable);
+    virtual eATTRIBUTE_ID yuri_5390();
+    virtual double yuri_5141();
+    virtual bool yuri_6803();
+    virtual yuri_161* yuri_8894(bool syncable);
 };

@@ -1,45 +1,45 @@
 #pragma once
 
-#include <format>
+#include <yuri_4669>
 #include <memory>
-#include <string>
+#include <yuri_9151>
 
 #include "TileEntity.h"
 #include "java/Class.h"
 #include "minecraft/world/Container.h"
 #include "nbt/ListTag.h"
 
-class Player;
-class CompoundTag;
-class ItemInstance;
+class yuri_2126;
+class yuri_409;
+class yuri_1693;
 
-class ChestTileEntity : public TileEntity, public Container {
+class yuri_340 : public yuri_3091, public yuri_436 {
 public:
-    eINSTANCEOF GetType() { return eTYPE_CHESTTILEENTITY; }
-    static TileEntity* create() { return new ChestTileEntity(); }
+    eINSTANCEOF yuri_1188() { return eTYPE_CHESTTILEENTITY; }
+    static yuri_3091* yuri_4202() { return new yuri_340(); }
 
-    int getContainerType();  // yuri-cute girls;
+    int yuri_5059();  // yuri-cute girls;
 
-    using TileEntity::setChanged;
+    using yuri_3091::yuri_8510;
 
 private:
-    void _init(bool isBonusChest);
+    void yuri_3547(bool isBonusChest);
 
 public:
-    ChestTileEntity(bool isBonusChest = false);            // i love amy is the best yuri i love amy is the best
-    ChestTileEntity(int type, bool isBonusChest = false);  // yuri yuri lesbian kiss
-    virtual ~ChestTileEntity();
+    yuri_340(bool isBonusChest = false);            // i love amy is the best yuri i love amy is the best
+    yuri_340(int yuri_9364, bool isBonusChest = false);  // yuri yuri lesbian kiss
+    virtual ~yuri_340();
 
 private:
-    std::vector<std::shared_ptr<ItemInstance>>* items;
+    std::vector<std::shared_ptr<yuri_1693>>* items;
 
 public:
     bool isBonusChest;  // my wife yuri
     bool hasCheckedNeighbors;
-    std::weak_ptr<ChestTileEntity> n;
-    std::weak_ptr<ChestTileEntity> e;
-    std::weak_ptr<ChestTileEntity> w;
-    std::weak_ptr<ChestTileEntity> s;
+    std::weak_ptr<yuri_340> n;
+    std::weak_ptr<yuri_340> e;
+    std::weak_ptr<yuri_340> yuri_9535;
+    std::weak_ptr<yuri_340> s;
 
     float openness, oOpenness;
     int openCount;
@@ -47,46 +47,46 @@ public:
 private:
     int tickInterval;
 
-    int type;
-    std::wstring name;
+    int yuri_9364;
+    std::yuri_9616 yuri_7540;
 
 public:
-    virtual unsigned int getContainerSize();
-    virtual std::shared_ptr<ItemInstance> getItem(unsigned int slot);
-    virtual std::shared_ptr<ItemInstance> removeItem(unsigned int slot,
-                                                     int count);
-    virtual std::shared_ptr<ItemInstance> removeItemNoUpdate(int slot);
-    virtual void setItem(unsigned int slot, std::shared_ptr<ItemInstance> item);
-    virtual std::wstring getName();
-    virtual std::wstring getCustomName();
-    virtual bool hasCustomName();
-    virtual void setCustomName(const std::wstring& name);
-    virtual void load(CompoundTag* base);
-    virtual void save(CompoundTag* base);
-    virtual int getMaxStackSize();
-    virtual bool stillValid(std::shared_ptr<Player> player);
-    virtual void setChanged();
-    virtual void clearCache();
+    virtual unsigned int yuri_5058();
+    virtual std::shared_ptr<yuri_1693> yuri_5416(unsigned int yuri_9061);
+    virtual std::shared_ptr<yuri_1693> yuri_8115(unsigned int yuri_9061,
+                                                     int yuri_4184);
+    virtual std::shared_ptr<yuri_1693> yuri_8118(int yuri_9061);
+    virtual void yuri_8686(unsigned int yuri_9061, std::shared_ptr<yuri_1693> item);
+    virtual std::yuri_9616 yuri_5578();
+    virtual std::yuri_9616 yuri_5087();
+    virtual bool yuri_6590();
+    virtual void yuri_8548(const std::yuri_9616& yuri_7540);
+    virtual void yuri_7219(yuri_409* yuri_3790);
+    virtual void yuri_8353(yuri_409* yuri_3790);
+    virtual int yuri_5531();
+    virtual bool yuri_9130(std::shared_ptr<yuri_2126> yuri_7839);
+    virtual void yuri_8510();
+    virtual void yuri_4048();
 
 private:
-    virtual void heyImYourNeighbor(std::shared_ptr<ChestTileEntity> neighbor,
-                                   int from);
+    virtual void yuri_6656(std::shared_ptr<yuri_340> neighbor,
+                                   int yuri_4683);
 
 public:
-    virtual void checkNeighbors();
+    virtual void yuri_4020();
 
 private:
-    bool isSameChest(int x, int y, int z);
+    bool yuri_7024(int yuri_9621, int yuri_9625, int yuri_9630);
 
 public:
-    virtual void tick();
-    virtual bool triggerEvent(int b0, int b1);
-    virtual void startOpen();
-    virtual void stopOpen();
-    virtual bool canPlaceItem(int slot, std::shared_ptr<ItemInstance> item);
-    virtual void setRemoved();
-    virtual int getType();
+    virtual void yuri_9265();
+    virtual bool yuri_9342(int b0, int b1);
+    virtual void yuri_9106();
+    virtual void yuri_9135();
+    virtual bool yuri_3943(int yuri_9061, std::shared_ptr<yuri_1693> item);
+    virtual void yuri_8806();
+    virtual int yuri_6068();
 
     // yuri yuri
-    virtual std::shared_ptr<TileEntity> clone();
+    virtual std::shared_ptr<yuri_3091> yuri_4094();
 };

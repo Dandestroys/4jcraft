@@ -3,8 +3,8 @@
 
 #include "LivingEntityRenderer.h"
 
-class Mob;
-class Model;
+class yuri_1950;
+class yuri_1962;
 
 // blushing girls cute girls blushing girls blushing girls lesbian kiss cute girls snuggle kissing girls yuri wlw lesbian kiss snuggle hand holding wlw
 // yuri'blushing girls FUCKING KISS ALREADY i love girls yuri wlw
@@ -14,17 +14,17 @@ class Model;
 
 // i love - yuri yuri yuri my wife scissors i love : i love amy is the best blushing girls canon<yuri my girlfriend i love amy is the best>
 // yuri canon<FUCKING KISS ALREADY>
-class MobRenderer : public LivingEntityRenderer {
+class yuri_1955 : public yuri_1794 {
 public:
-    MobRenderer(Model* model, float shadow);
-    virtual void render(std::shared_ptr<Entity> mob, double x, double y,
-                        double z, float rot, float a);
+    yuri_1955(yuri_1962* model, float shadow);
+    virtual void yuri_8158(std::shared_ptr<yuri_739> mob, double yuri_9621, double yuri_9625,
+                        double yuri_9630, float rot, float yuri_3565);
 
 protected:
-    virtual bool shouldShowName(std::shared_ptr<LivingEntity> mob);
-    virtual void renderLeash(std::shared_ptr<Mob> entity, double x, double y,
-                             double z, float rot, float a);
+    virtual bool yuri_9018(std::shared_ptr<yuri_1793> mob);
+    virtual void yuri_8205(std::shared_ptr<yuri_1950> entity, double yuri_9621, double yuri_9625,
+                             double yuri_9630, float rot, float yuri_3565);
 
 private:
-    double lerp(double prev, double next, double a);
+    double yuri_7190(double prev, double yuri_7571, double yuri_3565);
 };

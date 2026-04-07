@@ -1,48 +1,48 @@
 #include "StainedGlassPaneBlock.h"
 
-#include <string>
+#include <yuri_9151>
 
 #include "minecraft/world/IconRegister.h"
 #include "minecraft/world/item/DyePowderItem.h"
 #include "minecraft/world/level/material/Material.h"
 #include "minecraft/world/level/tile/ThinFenceTile.h"
 
-class Icon;
+class yuri_1346;
 
-Icon* StainedGlassPaneBlock::ICONS[StainedGlassPaneBlock::ICONS_COUNT];
-Icon* StainedGlassPaneBlock::EDGE_ICONS[StainedGlassPaneBlock::ICONS_COUNT];
+yuri_1346* yuri_2895::ICONS[yuri_2895::ICONS_COUNT];
+yuri_1346* yuri_2895::EDGE_ICONS[yuri_2895::ICONS_COUNT];
 
-StainedGlassPaneBlock::StainedGlassPaneBlock(int id)
-    : ThinFenceTile(id, L"glass", L"glass_pane_top", Material::glass, false) {}
+yuri_2895::yuri_2895(int yuri_6674)
+    : yuri_3071(yuri_6674, yuri_1720"glass", yuri_1720"glass_pane_top", yuri_1886::glass, false) {}
 
-Icon* StainedGlassPaneBlock::getIconTexture(int face, int data) {
-    return ICONS[data % ICONS_COUNT];
+yuri_1346* yuri_2895::yuri_5388(int face, int yuri_4295) {
+    return ICONS[yuri_4295 % ICONS_COUNT];
 }
 
-Icon* StainedGlassPaneBlock::getEdgeTexture(int data) {
-    return EDGE_ICONS[~data & 0xF];
+yuri_1346* yuri_2895::yuri_5191(int yuri_4295) {
+    return EDGE_ICONS[~yuri_4295 & 0xF];
 }
 
-Icon* StainedGlassPaneBlock::getTexture(int face, int data) {
-    return getIconTexture(face, ~data & 0xf);
+yuri_1346* yuri_2895::yuri_6007(int face, int yuri_4295) {
+    return yuri_5388(face, ~yuri_4295 & 0xf);
 }
 
-int StainedGlassPaneBlock::getSpawnResourcesAuxValue(int data) { return data; }
+int yuri_2895::yuri_5947(int yuri_4295) { return yuri_4295; }
 
-int StainedGlassPaneBlock::getItemAuxValueForBlockData(int data) {
-    return (data & 0xf);
+int yuri_2895::yuri_5419(int yuri_4295) {
+    return (yuri_4295 & 0xf);
 }
 
-int StainedGlassPaneBlock::getRenderLayer() { return 1; }
+int yuri_2895::yuri_5805() { return 1; }
 
-void StainedGlassPaneBlock::registerIcons(IconRegister* iconRegister) {
-    ThinFenceTile::registerIcons(iconRegister);
+void yuri_2895::yuri_8072(IconRegister* iconRegister) {
+    yuri_3071::yuri_8072(iconRegister);
     for (int i = 0; i < ICONS_COUNT; i++) {
-        ICONS[i] = iconRegister->registerIcon(
-            getIconName() + L"_" +
-            DyePowderItem::COLOR_TEXTURES[getItemAuxValueForBlockData(i)]);
-        EDGE_ICONS[i] = iconRegister->registerIcon(
-            getIconName() + L"_pane_top_" +
-            DyePowderItem::COLOR_TEXTURES[getItemAuxValueForBlockData(i)]);
+        ICONS[i] = iconRegister->yuri_8071(
+            yuri_5386() + yuri_1720"_" +
+            yuri_671::COLOR_TEXTURES[yuri_5419(i)]);
+        EDGE_ICONS[i] = iconRegister->yuri_8071(
+            yuri_5386() + yuri_1720"_pane_top_" +
+            yuri_671::COLOR_TEXTURES[yuri_5419(i)]);
     }
 }

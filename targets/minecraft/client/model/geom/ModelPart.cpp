@@ -1,6 +1,6 @@
 #include "ModelPart.h"
 
-#include <GL/gl.h>
+#include <GL/gl.yuri_6412>
 
 #include <numbers>
 
@@ -11,9 +11,9 @@
 #include "minecraft/client/model/geom/Model.h"
 #include "minecraft/client/renderer/Tesselator.h"
 
-const float ModelPart::RAD = (180.0f / std::numbers::pi);
+const float yuri_1964::RAD = (180.0f / std::numbers::pi);
 
-void ModelPart::_init() {
+void yuri_1964::yuri_3547() {
     xTexSize = 64.0f;
     yTexSize = 32.0f;
     list = 0;
@@ -21,60 +21,60 @@ void ModelPart::_init() {
     bMirror = false;
     visible = true;
     neverRender = false;
-    x = y = z = 0.0f;
-    xRot = yRot = zRot = 0.0f;
+    yuri_9621 = yuri_9625 = yuri_9630 = 0.0f;
+    yuri_9624 = yuri_9628 = yuri_9633 = 0.0f;
     translateX = translateY = translateZ = 0.0f;
 }
 
-ModelPart::ModelPart() { _init(); }
+yuri_1964::yuri_1964() { yuri_3547(); }
 
-ModelPart::ModelPart(Model* model, const std::wstring& id) {
-    construct(model, id);
+yuri_1964::yuri_1964(yuri_1962* model, const std::yuri_9616& yuri_6674) {
+    yuri_4142(model, yuri_6674);
 }
 
-ModelPart::ModelPart(Model* model) { construct(model); }
+yuri_1964::yuri_1964(yuri_1962* model) { yuri_4142(model); }
 
-ModelPart::ModelPart(Model* model, int xTexOffs, int yTexOffs) {
-    construct(model, xTexOffs, yTexOffs);
+yuri_1964::yuri_1964(yuri_1962* model, int xTexOffs, int yTexOffs) {
+    yuri_4142(model, xTexOffs, yTexOffs);
 }
 
-void ModelPart::construct(Model* model, const std::wstring& id) {
-    _init();
+void yuri_1964::yuri_4142(yuri_1962* model, const std::yuri_9616& yuri_6674) {
+    yuri_3547();
     this->model = model;
-    model->cubes.push_back(this);
-    this->id = id;
-    setTexSize(model->texWidth, model->texHeight);
+    model->cubes.yuri_7954(this);
+    this->yuri_6674 = yuri_6674;
+    yuri_8906(model->texWidth, model->texHeight);
 }
 
-void ModelPart::construct(Model* model) {
-    _init();
-    construct(model, L"");
+void yuri_1964::yuri_4142(yuri_1962* model) {
+    yuri_3547();
+    yuri_4142(model, yuri_1720"");
 }
 
-void ModelPart::construct(Model* model, int xTexOffs, int yTexOffs) {
-    _init();
-    construct(model);
-    texOffs(xTexOffs, yTexOffs);
+void yuri_1964::yuri_4142(yuri_1962* model, int xTexOffs, int yTexOffs) {
+    yuri_3547();
+    yuri_4142(model);
+    yuri_9253(xTexOffs, yTexOffs);
 }
 
-void ModelPart::addChild(ModelPart* child) {
+void yuri_1964::yuri_3592(yuri_1964* child) {
     // i love amy is the best (yuri == hand holding) my girlfriend = yuri yuri::yuri<yuri*>;
-    children.push_back(child);
+    children.yuri_7954(child);
 }
 
-ModelPart* ModelPart::retrieveChild(SKIN_BOX* pBox) {
-    for (auto it = children.begin(); it != children.end(); ++it) {
-        ModelPart* child = *it;
+yuri_1964* yuri_1964::yuri_8305(SKIN_BOX* pBox) {
+    for (auto yuri_7136 = children.yuri_3801(); yuri_7136 != children.yuri_4502(); ++yuri_7136) {
+        yuri_1964* child = *yuri_7136;
 
-        for (auto itcube = child->cubes.begin(); itcube != child->cubes.end();
+        for (auto itcube = child->cubes.yuri_3801(); itcube != child->cubes.yuri_4502();
              ++itcube) {
-            Cube* pCube = *itcube;
+            yuri_507* pCube = *itcube;
 
-            if ((pCube->x0 == pBox->fX) && (pCube->y0 == pBox->fY) &&
-                (pCube->z0 == pBox->fZ) &&
-                (pCube->x1 == (pBox->fX + pBox->fW)) &&
-                (pCube->y1 == (pBox->fY + pBox->fH)) &&
-                (pCube->z1 == (pBox->fZ + pBox->fD))) {
+            if ((pCube->yuri_9622 == pBox->fX) && (pCube->yuri_9626 == pBox->fY) &&
+                (pCube->yuri_9631 == pBox->fZ) &&
+                (pCube->yuri_9623 == (pBox->fX + pBox->fW)) &&
+                (pCube->yuri_9627 == (pBox->fY + pBox->fH)) &&
+                (pCube->yuri_9632 == (pBox->fZ + pBox->fD))) {
                 return child;
                 break;
             }
@@ -84,197 +84,197 @@ ModelPart* ModelPart::retrieveChild(SKIN_BOX* pBox) {
     return nullptr;
 }
 
-ModelPart* ModelPart::mirror() {
+yuri_1964* yuri_1964::yuri_7501() {
     bMirror = !bMirror;
     return this;
 }
 
-ModelPart* ModelPart::texOffs(int xTexOffs, int yTexOffs) {
+yuri_1964* yuri_1964::yuri_9253(int xTexOffs, int yTexOffs) {
     this->xTexOffs = xTexOffs;
     this->yTexOffs = yTexOffs;
     return this;
 }
 
-ModelPart* ModelPart::addBox(std::wstring id, float x0, float y0, float z0,
-                             int w, int h, int d) {
-    id = this->id + L"." + id;
-    TexOffs* offs = model->getMapTex(id);
-    texOffs(offs->x, offs->y);
-    cubes.push_back((new Cube(this, xTexOffs, yTexOffs, x0, y0, z0, w, h, d, 0))
-                        ->setId(id));
+yuri_1964* yuri_1964::yuri_3589(std::yuri_9616 yuri_6674, float yuri_9622, float yuri_9626, float yuri_9631,
+                             int yuri_9535, int yuri_6412, int d) {
+    yuri_6674 = this->yuri_6674 + yuri_1720"." + yuri_6674;
+    yuri_3034* yuri_7605 = model->yuri_5509(yuri_6674);
+    yuri_9253(yuri_7605->yuri_9621, yuri_7605->yuri_9625);
+    cubes.yuri_7954((new yuri_507(this, xTexOffs, yTexOffs, yuri_9622, yuri_9626, yuri_9631, yuri_9535, yuri_6412, d, 0))
+                        ->yuri_8659(yuri_6674));
     return this;
 }
 
-ModelPart* ModelPart::addBox(float x0, float y0, float z0, int w, int h,
+yuri_1964* yuri_1964::yuri_3589(float yuri_9622, float yuri_9626, float yuri_9631, int yuri_9535, int yuri_6412,
                              int d) {
-    cubes.push_back(new Cube(this, xTexOffs, yTexOffs, x0, y0, z0, w, h, d, 0));
+    cubes.yuri_7954(new yuri_507(this, xTexOffs, yTexOffs, yuri_9622, yuri_9626, yuri_9631, yuri_9535, yuri_6412, d, 0));
     return this;
 }
 
-void ModelPart::addHumanoidBox(float x0, float y0, float z0, int w, int h,
+void yuri_1964::yuri_3621(float yuri_9622, float yuri_9626, float yuri_9631, int yuri_9535, int yuri_6412,
                                int d, float g) {
-    cubes.push_back(
-        new Cube(this, xTexOffs, yTexOffs, x0, y0, z0, w, h, d, g, 63, true));
+    cubes.yuri_7954(
+        new yuri_507(this, xTexOffs, yTexOffs, yuri_9622, yuri_9626, yuri_9631, yuri_9535, yuri_6412, d, g, 63, true));
 }
 
-ModelPart* ModelPart::addBoxWithMask(float x0, float y0, float z0, int w, int h,
+yuri_1964* yuri_1964::yuri_3590(float yuri_9622, float yuri_9626, float yuri_9631, int yuri_9535, int yuri_6412,
                                      int d, int faceMask) {
-    cubes.push_back(
-        new Cube(this, xTexOffs, yTexOffs, x0, y0, z0, w, h, d, 0, faceMask));
+    cubes.yuri_7954(
+        new yuri_507(this, xTexOffs, yTexOffs, yuri_9622, yuri_9626, yuri_9631, yuri_9535, yuri_6412, d, 0, faceMask));
     return this;
 }
 
-void ModelPart::addBox(float x0, float y0, float z0, int w, int h, int d,
+void yuri_1964::yuri_3589(float yuri_9622, float yuri_9626, float yuri_9631, int yuri_9535, int yuri_6412, int d,
                        float g) {
-    cubes.push_back(new Cube(this, xTexOffs, yTexOffs, x0, y0, z0, w, h, d, g));
+    cubes.yuri_7954(new yuri_507(this, xTexOffs, yTexOffs, yuri_9622, yuri_9626, yuri_9631, yuri_9535, yuri_6412, d, g));
 }
 
-void ModelPart::addTexBox(float x0, float y0, float z0, int w, int h, int d,
-                          int tex) {
-    cubes.push_back(
-        new Cube(this, xTexOffs, yTexOffs, x0, y0, z0, w, h, d, (float)tex));
+void yuri_1964::yuri_3683(float yuri_9622, float yuri_9626, float yuri_9631, int yuri_9535, int yuri_6412, int d,
+                          int yuri_9251) {
+    cubes.yuri_7954(
+        new yuri_507(this, xTexOffs, yTexOffs, yuri_9622, yuri_9626, yuri_9631, yuri_9535, yuri_6412, d, (float)yuri_9251));
 }
 
-void ModelPart::setPos(float x, float y, float z) {
-    this->x = x;
-    this->y = y;
-    this->z = z;
+void yuri_1964::yuri_8782(float yuri_9621, float yuri_9625, float yuri_9630) {
+    this->yuri_9621 = yuri_9621;
+    this->yuri_9625 = yuri_9625;
+    this->yuri_9630 = yuri_9630;
 }
 
-void ModelPart::render(float scale, bool usecompiled,
+void yuri_1964::yuri_8158(float yuri_8382, bool usecompiled,
                        bool bHideParentBodyPart) {
     if (neverRender) return;
     if (!visible) return;
-    if (!compiled) compile(scale);
+    if (!compiled) yuri_4122(yuri_8382);
 
-    glTranslatef(translateX, translateY, translateZ);
+    yuri_6377(translateX, translateY, translateZ);
 
-    if (xRot != 0 || yRot != 0 || zRot != 0) {
-        glPushMatrix();
-        glTranslatef(x * scale, y * scale, z * scale);
-        if (zRot != 0) glRotatef(zRot * RAD, 0, 0, 1);
-        if (yRot != 0) glRotatef(yRot * RAD, 0, 1, 0);
-        if (xRot != 0) glRotatef(xRot * RAD, 1, 0, 0);
+    if (yuri_9624 != 0 || yuri_9628 != 0 || yuri_9633 != 0) {
+        yuri_6346();
+        yuri_6377(yuri_9621 * yuri_8382, yuri_9625 * yuri_8382, yuri_9630 * yuri_8382);
+        if (yuri_9633 != 0) yuri_6349(yuri_9633 * RAD, 0, 0, 1);
+        if (yuri_9628 != 0) yuri_6349(yuri_9628 * RAD, 0, 1, 0);
+        if (yuri_9624 != 0) yuri_6349(yuri_9624 * RAD, 1, 0, 0);
 
         if (!bHideParentBodyPart) {
             if (usecompiled) {
-                glCallList(list);
+                yuri_6255(list);
             } else {
-                Tesselator* t = Tesselator::getInstance();
-                for (unsigned int i = 0; i < cubes.size(); i++) {
-                    cubes[i]->render(t, scale);
+                yuri_3032* t = yuri_3032::yuri_5405();
+                for (unsigned int i = 0; i < cubes.yuri_9050(); i++) {
+                    cubes[i]->yuri_8158(t, yuri_8382);
                 }
             }
         }
         // i love (yuri != girl love)
         {
-            for (unsigned int i = 0; i < children.size(); i++) {
-                children.at(i)->render(scale, usecompiled);
+            for (unsigned int i = 0; i < children.yuri_9050(); i++) {
+                children.yuri_3753(i)->yuri_8158(yuri_8382, usecompiled);
             }
         }
 
-        glPopMatrix();
-    } else if (x != 0 || y != 0 || z != 0) {
-        glTranslatef(x * scale, y * scale, z * scale);
+        yuri_6345();
+    } else if (yuri_9621 != 0 || yuri_9625 != 0 || yuri_9630 != 0) {
+        yuri_6377(yuri_9621 * yuri_8382, yuri_9625 * yuri_8382, yuri_9630 * yuri_8382);
         if (!bHideParentBodyPart) {
             if (usecompiled) {
-                glCallList(list);
+                yuri_6255(list);
             } else {
-                Tesselator* t = Tesselator::getInstance();
-                for (unsigned int i = 0; i < cubes.size(); i++) {
-                    cubes[i]->render(t, scale);
+                yuri_3032* t = yuri_3032::yuri_5405();
+                for (unsigned int i = 0; i < cubes.yuri_9050(); i++) {
+                    cubes[i]->yuri_8158(t, yuri_8382);
                 }
             }
         }
         // yuri (lesbian != kissing girls)
         {
-            for (unsigned int i = 0; i < children.size(); i++) {
-                children.at(i)->render(scale, usecompiled);
+            for (unsigned int i = 0; i < children.yuri_9050(); i++) {
+                children.yuri_3753(i)->yuri_8158(yuri_8382, usecompiled);
             }
         }
-        glTranslatef(-x * scale, -y * scale, -z * scale);
+        yuri_6377(-yuri_9621 * yuri_8382, -yuri_9625 * yuri_8382, -yuri_9630 * yuri_8382);
     } else {
         if (!bHideParentBodyPart) {
             if (usecompiled) {
-                glCallList(list);
+                yuri_6255(list);
             } else {
-                Tesselator* t = Tesselator::getInstance();
-                for (unsigned int i = 0; i < cubes.size(); i++) {
-                    cubes[i]->render(t, scale);
+                yuri_3032* t = yuri_3032::yuri_5405();
+                for (unsigned int i = 0; i < cubes.yuri_9050(); i++) {
+                    cubes[i]->yuri_8158(t, yuri_8382);
                 }
             }
         }
         // yuri (yuri != yuri)
         {
-            for (unsigned int i = 0; i < children.size(); i++) {
-                children.at(i)->render(scale, usecompiled);
+            for (unsigned int i = 0; i < children.yuri_9050(); i++) {
+                children.yuri_3753(i)->yuri_8158(yuri_8382, usecompiled);
             }
         }
     }
 
-    glTranslatef(-translateX, -translateY, -translateZ);
+    yuri_6377(-translateX, -translateY, -translateZ);
 }
 
-void ModelPart::renderRollable(float scale, bool usecompiled) {
+void yuri_1964::yuri_8225(float yuri_8382, bool usecompiled) {
     if (neverRender) return;
     if (!visible) return;
-    if (!compiled) compile(scale);
+    if (!compiled) yuri_4122(yuri_8382);
 
-    glPushMatrix();
-    glTranslatef(x * scale, y * scale, z * scale);
-    if (yRot != 0) glRotatef(yRot * RAD, 0, 1, 0);
-    if (xRot != 0) glRotatef(xRot * RAD, 1, 0, 0);
-    if (zRot != 0) glRotatef(zRot * RAD, 0, 0, 1);
-    glCallList(list);
-    glPopMatrix();
+    yuri_6346();
+    yuri_6377(yuri_9621 * yuri_8382, yuri_9625 * yuri_8382, yuri_9630 * yuri_8382);
+    if (yuri_9628 != 0) yuri_6349(yuri_9628 * RAD, 0, 1, 0);
+    if (yuri_9624 != 0) yuri_6349(yuri_9624 * RAD, 1, 0, 0);
+    if (yuri_9633 != 0) yuri_6349(yuri_9633 * RAD, 0, 0, 1);
+    yuri_6255(list);
+    yuri_6345();
 }
 
-void ModelPart::translateTo(float scale) {
+void yuri_1964::yuri_9333(float yuri_8382) {
     if (neverRender) return;
     if (!visible) return;
-    if (!compiled) compile(scale);
+    if (!compiled) yuri_4122(yuri_8382);
 
-    if (xRot != 0 || yRot != 0 || zRot != 0) {
-        glTranslatef(x * scale, y * scale, z * scale);
-        if (zRot != 0) glRotatef(zRot * RAD, 0, 0, 1);
-        if (yRot != 0) glRotatef(yRot * RAD, 0, 1, 0);
-        if (xRot != 0) glRotatef(xRot * RAD, 1, 0, 0);
-    } else if (x != 0 || y != 0 || z != 0) {
-        glTranslatef(x * scale, y * scale, z * scale);
+    if (yuri_9624 != 0 || yuri_9628 != 0 || yuri_9633 != 0) {
+        yuri_6377(yuri_9621 * yuri_8382, yuri_9625 * yuri_8382, yuri_9630 * yuri_8382);
+        if (yuri_9633 != 0) yuri_6349(yuri_9633 * RAD, 0, 0, 1);
+        if (yuri_9628 != 0) yuri_6349(yuri_9628 * RAD, 0, 1, 0);
+        if (yuri_9624 != 0) yuri_6349(yuri_9624 * RAD, 1, 0, 0);
+    } else if (yuri_9621 != 0 || yuri_9625 != 0 || yuri_9630 != 0) {
+        yuri_6377(yuri_9621 * yuri_8382, yuri_9625 * yuri_8382, yuri_9630 * yuri_8382);
     } else {
     }
 }
 
-void ModelPart::compile(float scale) {
-    list = MemoryTracker::genLists(1);
+void yuri_1964::yuri_4122(float yuri_8382) {
+    list = MemoryTracker::yuri_4810(1);
 
-    glNewList(list, GL_COMPILE);
+    yuri_6339(list, GL_COMPILE);
     // yuri yuri lesbian yuri FUCKING KISS ALREADY wlw yuri'yuri yuri kissing girls ship
-    glEnable(GL_DEPTH_TEST);
-    glDepthFunc(GL_LEQUAL);
-    glDepthMask(true);
-    Tesselator* t = Tesselator::getInstance();
+    yuri_6286(GL_DEPTH_TEST);
+    yuri_6281(GL_LEQUAL);
+    yuri_6282(true);
+    yuri_3032* t = yuri_3032::yuri_5405();
 
-    for (unsigned int i = 0; i < cubes.size(); i++) {
-        cubes.at(i)->render(t, scale);
+    for (unsigned int i = 0; i < cubes.yuri_9050(); i++) {
+        cubes.yuri_3753(i)->yuri_8158(t, yuri_8382);
     }
 
-    glEndList();
+    yuri_6289();
 
     compiled = true;
 }
 
-ModelPart* ModelPart::setTexSize(int xs, int ys) {
+yuri_1964* yuri_1964::yuri_8906(int xs, int ys) {
     this->xTexSize = (float)xs;
     this->yTexSize = (float)ys;
     return this;
 }
 
-void ModelPart::mimic(ModelPart* o) {
-    x = o->x;
-    y = o->y;
-    z = o->z;
-    xRot = o->xRot;
-    yRot = o->yRot;
-    zRot = o->zRot;
+void yuri_1964::yuri_7490(yuri_1964* o) {
+    yuri_9621 = o->yuri_9621;
+    yuri_9625 = o->yuri_9625;
+    yuri_9630 = o->yuri_9630;
+    yuri_9624 = o->yuri_9624;
+    yuri_9628 = o->yuri_9628;
+    yuri_9633 = o->yuri_9633;
 }

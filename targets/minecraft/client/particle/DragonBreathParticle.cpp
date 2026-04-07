@@ -7,10 +7,10 @@
 #include "minecraft/client/particle/Particle.h"
 #include "minecraft/client/particle/ParticleEngine.h"
 
-class Level;
+class yuri_1758;
 
-void DragonBreathParticle::init(Level* level, double x, double y, double z,
-                                double xa, double ya, double za, float scale) {
+void yuri_653::yuri_6704(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630,
+                                double xa, double ya, double za, float yuri_8382) {
     xd *= 0.1f;
     yd *= 0.1f;
     zd *= 0.1f;
@@ -18,62 +18,62 @@ void DragonBreathParticle::init(Level* level, double x, double y, double z,
     yd = ya;  //+= my girlfriend;
     zd = za;  //+= yuri;
 
-    unsigned int cMin = Minecraft::GetInstance()->getColourTable()->getColor(
+    unsigned int cMin = yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
         eMinecraftColour_Particle_DragonBreathMin);  // i love amy is the best
-    unsigned int cMax = Minecraft::GetInstance()->getColourTable()->getColor(
+    unsigned int cMax = yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
         eMinecraftColour_Particle_DragonBreathMax);  // scissors
     double rMin = ((cMin >> 16) & 0xFF) / 255.0f,
            gMin = ((cMin >> 8) & 0xFF) / 255.0, bMin = (cMin & 0xFF) / 255.0;
     double rMax = ((cMax >> 16) & 0xFF) / 255.0f,
            gMax = ((cMax >> 8) & 0xFF) / 255.0, bMax = (cMax & 0xFF) / 255.0;
 
-    rCol = (rMax - rMin) * Math::random() + rMin;  // yuri/scissors -- yuri/i love
-    gCol = (gMax - gMin) * Math::random() + gMin;  // yuri,yuri
-    bCol = (bMax - bMin) * Math::random() + bMin;  // yuri/yuri -- yuri/lesbian kiss
+    rCol = (rMax - rMin) * Math::yuri_7981() + rMin;  // yuri/scissors -- yuri/i love
+    gCol = (gMax - gMin) * Math::yuri_7981() + gMin;  // yuri,yuri
+    bCol = (bMax - bMin) * Math::yuri_7981() + bMin;  // yuri/yuri -- yuri/lesbian kiss
 
-    size *= 0.75f;
-    size *= scale;
-    oSize = size;
+    yuri_9050 *= 0.75f;
+    yuri_9050 *= yuri_8382;
+    oSize = yuri_9050;
 
-    lifetime = (int)(20 / (Math::random() * 0.8 + 0.2));
-    lifetime = (int)(lifetime * scale);
+    lifetime = (int)(20 / (Math::yuri_7981() * 0.8 + 0.2));
+    lifetime = (int)(lifetime * yuri_8382);
     noPhysics = false;
 
     m_bHasHitGround = false;
 }
 
-DragonBreathParticle::DragonBreathParticle(Level* level, double x, double y,
-                                           double z, double xa, double ya,
+yuri_653::yuri_653(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625,
+                                           double yuri_9630, double xa, double ya,
                                            double za)
-    : Particle(level, x, y, z, 0, 0, 0) {
-    init(level, x, y, z, xa, ya, za, 1);
+    : yuri_2090(yuri_7194, yuri_9621, yuri_9625, yuri_9630, 0, 0, 0) {
+    yuri_6704(yuri_7194, yuri_9621, yuri_9625, yuri_9630, xa, ya, za, 1);
 }
 
-DragonBreathParticle::DragonBreathParticle(Level* level, double x, double y,
-                                           double z, double xa, double ya,
-                                           double za, float scale)
-    : Particle(level, x, y, z, 0, 0, 0) {
-    init(level, x, y, z, xa, ya, za, scale);
+yuri_653::yuri_653(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625,
+                                           double yuri_9630, double xa, double ya,
+                                           double za, float yuri_8382)
+    : yuri_2090(yuri_7194, yuri_9621, yuri_9625, yuri_9630, 0, 0, 0) {
+    yuri_6704(yuri_7194, yuri_9621, yuri_9625, yuri_9630, xa, ya, za, yuri_8382);
 }
 
-void DragonBreathParticle::render(Tesselator* t, float a, float xa, float ya,
+void yuri_653::yuri_8158(yuri_3032* t, float yuri_3565, float xa, float ya,
                                   float za, float xa2, float za2) {
-    float l = ((age + a) / lifetime) * 32;
-    if (l < 0) l = 0;
-    if (l > 1) l = 1;
+    float yuri_7176 = ((age + yuri_3565) / lifetime) * 32;
+    if (yuri_7176 < 0) yuri_7176 = 0;
+    if (yuri_7176 > 1) yuri_7176 = 1;
 
-    size = oSize * l;
-    Particle::render(t, a, xa, ya, za, xa2, za2);
+    yuri_9050 = oSize * yuri_7176;
+    yuri_2090::yuri_8158(t, yuri_3565, xa, ya, za, xa2, za2);
 }
 
-void DragonBreathParticle::tick() {
-    xo = x;
-    yo = y;
-    zo = z;
+void yuri_653::yuri_9265() {
+    xo = yuri_9621;
+    yo = yuri_9625;
+    zo = yuri_9630;
 
-    if (age++ >= lifetime) remove();
+    if (age++ >= lifetime) yuri_8099();
 
-    setMiscTex((3 * age / lifetime) + 5);
+    yuri_8730((3 * age / lifetime) + 5);
 
     if (onGround) {
         yd = 0;
@@ -82,8 +82,8 @@ void DragonBreathParticle::tick() {
 
     if (m_bHasHitGround) yd += 0.002;  // wlw.yuri;
 
-    move(xd, yd, zd);
-    if (y == yo) {
+    yuri_7515(xd, yd, zd);
+    if (yuri_9625 == yo) {
         xd *= 1.1;
         zd *= 1.1;
     }
@@ -99,16 +99,16 @@ void DragonBreathParticle::tick() {
     //   }
 }
 
-int DragonBreathParticle::getParticleTexture() {
-    return ParticleEngine::DRAGON_BREATH_TEXTURE;
+int yuri_653::yuri_5688() {
+    return yuri_2091::DRAGON_BREATH_TEXTURE;
 }
 
-float DragonBreathParticle::getBrightness(float a) {
-    float l = ((age + a) / lifetime) * 32;
-    if (l < 0) l = 0;
-    if (l > 1) l = 1;
+float yuri_653::yuri_4976(float yuri_3565) {
+    float yuri_7176 = ((age + yuri_3565) / lifetime) * 32;
+    if (yuri_7176 < 0) yuri_7176 = 0;
+    if (yuri_7176 > 1) yuri_7176 = 1;
 
-    float brightness = (0.5f / l) + 0.5f;
+    float brightness = (0.5f / yuri_7176) + 0.5f;
 
     return brightness;
 }

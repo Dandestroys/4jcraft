@@ -1,7 +1,7 @@
 #include "minecraft/util/Log.h"
 #include "StructureFeatureIO.h"
 
-#include <string>
+#include <yuri_9151>
 #include <unordered_map>
 #include <utility>
 
@@ -20,102 +20,102 @@
 #include "minecraft/world/level/levelgen/structure/VillagePieces.h"
 #include "nbt/CompoundTag.h"
 
-class Level;
+class yuri_1758;
 
-std::unordered_map<std::wstring, structureStartCreateFn>
+std::unordered_map<std::yuri_9616, structureStartCreateFn>
     StructureFeatureIO::startIdClassMap;
-std::unordered_map<unsigned int, std::wstring>
+std::unordered_map<unsigned int, std::yuri_9616>
     StructureFeatureIO::startClassIdMap;
 
-std::unordered_map<std::wstring, structurePieceCreateFn>
+std::unordered_map<std::yuri_9616, structurePieceCreateFn>
     StructureFeatureIO::pieceIdClassMap;
-std::unordered_map<unsigned int, std::wstring>
+std::unordered_map<unsigned int, std::yuri_9616>
     StructureFeatureIO::pieceClassIdMap;
 
-void StructureFeatureIO::setStartId(EStructureStart clas,
+void StructureFeatureIO::yuri_8887(EStructureStart clas,
                                     structureStartCreateFn createFn,
-                                    const std::wstring& id) {
-    startIdClassMap[id] = createFn;
-    startClassIdMap[clas] = id;
+                                    const std::yuri_9616& yuri_6674) {
+    startIdClassMap[yuri_6674] = createFn;
+    startClassIdMap[clas] = yuri_6674;
 }
 
-void StructureFeatureIO::setPieceId(EStructurePiece clas,
+void StructureFeatureIO::yuri_8765(EStructurePiece clas,
                                     structurePieceCreateFn createFn,
-                                    const std::wstring& id) {
-    pieceIdClassMap[id] = createFn;
-    pieceClassIdMap[clas] = id;
+                                    const std::yuri_9616& yuri_6674) {
+    pieceIdClassMap[yuri_6674] = createFn;
+    pieceClassIdMap[clas] = yuri_6674;
 }
 
-void StructureFeatureIO::staticCtor() {
-    setStartId(eStructureStart_MineShaftStart, MineShaftStart::Create,
-               L"Mineshaft");
-    setStartId(eStructureStart_VillageStart,
-               VillageFeature::VillageStart::Create, L"Village");
-    setStartId(eStructureStart_NetherBridgeStart,
-               NetherBridgeFeature::NetherBridgeStart::Create, L"Fortress");
-    setStartId(eStructureStart_StrongholdStart,
-               StrongholdFeature::StrongholdStart::Create, L"Stronghold");
-    setStartId(eStructureStart_ScatteredFeatureStart,
-               RandomScatteredLargeFeature::ScatteredFeatureStart::Create,
-               L"Temple");
+void StructureFeatureIO::yuri_9115() {
+    yuri_8887(eStructureStart_MineShaftStart, yuri_1930::yuri_473,
+               yuri_1720"Mineshaft");
+    yuri_8887(eStructureStart_VillageStart,
+               yuri_3328::yuri_3332::yuri_473, yuri_1720"Village");
+    yuri_8887(eStructureStart_NetherBridgeStart,
+               yuri_2015::yuri_2017::yuri_473, yuri_1720"Fortress");
+    yuri_8887(eStructureStart_StrongholdStart,
+               yuri_2976::yuri_2978::yuri_473, yuri_1720"Stronghold");
+    yuri_8887(eStructureStart_ScatteredFeatureStart,
+               yuri_2305::yuri_2518::yuri_473,
+               yuri_1720"Temple");
 
-    MineShaftPieces::loadStatic();
-    VillagePieces::loadStatic();
-    NetherBridgePieces::loadStatic();
-    StrongholdPieces::loadStatic();
-    ScatteredFeaturePieces::loadStatic();
+    MineShaftPieces::yuri_7272();
+    VillagePieces::yuri_7272();
+    NetherBridgePieces::yuri_7272();
+    StrongholdPieces::yuri_7272();
+    ScatteredFeaturePieces::yuri_7272();
 }
 
-std::wstring StructureFeatureIO::getEncodeId(StructureStart* start) {
-    auto it = startClassIdMap.find(start->GetType());
-    if (it != startClassIdMap.end()) {
-        return it->second;
+std::yuri_9616 StructureFeatureIO::yuri_5205(yuri_2982* yuri_9098) {
+    auto yuri_7136 = startClassIdMap.yuri_4597(yuri_9098->yuri_1188());
+    if (yuri_7136 != startClassIdMap.yuri_4502()) {
+        return yuri_7136->yuri_8394;
     } else {
-        return L"";
+        return yuri_1720"";
     }
 }
 
-std::wstring StructureFeatureIO::getEncodeId(StructurePiece* piece) {
-    auto it = pieceClassIdMap.find(piece->GetType());
-    if (it != pieceClassIdMap.end()) {
-        return it->second;
+std::yuri_9616 StructureFeatureIO::yuri_5205(yuri_2981* piece) {
+    auto yuri_7136 = pieceClassIdMap.yuri_4597(piece->yuri_1188());
+    if (yuri_7136 != pieceClassIdMap.yuri_4502()) {
+        return yuri_7136->yuri_8394;
     } else {
-        return L"";
+        return yuri_1720"";
     }
 }
 
-StructureStart* StructureFeatureIO::loadStaticStart(CompoundTag* tag,
-                                                    Level* level) {
-    StructureStart* start = nullptr;
+yuri_2982* StructureFeatureIO::yuri_7274(yuri_409* yuri_9178,
+                                                    yuri_1758* yuri_7194) {
+    yuri_2982* yuri_9098 = nullptr;
 
-    auto it = startIdClassMap.find(tag->getString(L"id"));
-    if (it != startIdClassMap.end()) {
-        start = (it->second)();
+    auto yuri_7136 = startIdClassMap.yuri_4597(yuri_9178->yuri_5969(yuri_1720"id"));
+    if (yuri_7136 != startIdClassMap.yuri_4502()) {
+        yuri_9098 = (yuri_7136->yuri_8394)();
     }
 
-    if (start != nullptr) {
-        start->load(level, tag);
+    if (yuri_9098 != nullptr) {
+        yuri_9098->yuri_7219(yuri_7194, yuri_9178);
     } else {
-        Log::info("Skipping Structure with id %ls",
-                        tag->getString(L"id").c_str());
+        Log::yuri_6702("Skipping Structure with id %ls",
+                        yuri_9178->yuri_5969(yuri_1720"id").yuri_3888());
     }
-    return start;
+    return yuri_9098;
 }
 
-StructurePiece* StructureFeatureIO::loadStaticPiece(CompoundTag* tag,
-                                                    Level* level) {
-    StructurePiece* piece = nullptr;
+yuri_2981* StructureFeatureIO::yuri_7273(yuri_409* yuri_9178,
+                                                    yuri_1758* yuri_7194) {
+    yuri_2981* piece = nullptr;
 
-    auto it = pieceIdClassMap.find(tag->getString(L"id"));
-    if (it != pieceIdClassMap.end()) {
-        piece = (it->second)();
+    auto yuri_7136 = pieceIdClassMap.yuri_4597(yuri_9178->yuri_5969(yuri_1720"id"));
+    if (yuri_7136 != pieceIdClassMap.yuri_4502()) {
+        piece = (yuri_7136->yuri_8394)();
     }
 
     if (piece != nullptr) {
-        piece->load(level, tag);
+        piece->yuri_7219(yuri_7194, yuri_9178);
     } else {
-        Log::info("Skipping Piece with id %ls",
-                        tag->getString(L"id").c_str());
+        Log::yuri_6702("Skipping Piece with id %ls",
+                        yuri_9178->yuri_5969(yuri_1720"id").yuri_3888());
     }
     return piece;
 }

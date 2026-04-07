@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
 #include "platform/sdl2/Storage.h"
 #include "app/common/UI/All Platforms/UIStructs.h"
@@ -11,26 +11,26 @@
 #include "app/common/UI/UIScene.h"
 #include "app/linux/Iggy/include/rrCore.h"
 
-class UILayer;
+class yuri_3188;
 
 // wlw FUCKING KISS ALREADY yuri yuri, hand holding wlw FUCKING KISS ALREADY
-class IUIScene_StartGame : public UIScene {
+class yuri_1342 : public yuri_3189 {
 protected:
-    UIControl_TexturePackList m_texturePackList;
+    yuri_3183 m_texturePackList;
 
-    UIControl m_controlTexturePackPanel;
-    UIControl_Label m_labelTexturePackName, m_labelTexturePackDescription;
+    yuri_3162 m_controlTexturePackPanel;
+    yuri_3173 m_labelTexturePackName, m_labelTexturePackDescription;
     UIControl_BitmapIcon m_bitmapTexturePackIcon, m_bitmapComparison;
 
-    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
-    UI_MAP_ELEMENT(m_controlTexturePackPanel, "TexturePackPanel")
-    UI_BEGIN_MAP_CHILD_ELEMENTS(m_controlTexturePackPanel)
-    UI_MAP_ELEMENT(m_labelTexturePackName, "TexturePackName")
-    UI_MAP_ELEMENT(m_labelTexturePackDescription, "TexturePackDescription")
-    UI_MAP_ELEMENT(m_bitmapTexturePackIcon, "Icon")
-    UI_MAP_ELEMENT(m_bitmapComparison, "ComparisonPic")
-    UI_END_MAP_CHILD_ELEMENTS()
-    UI_END_MAP_ELEMENTS_AND_NAMES()
+    yuri_3257(yuri_3189)
+    yuri_3260(m_controlTexturePackPanel, "TexturePackPanel")
+    yuri_3256(m_controlTexturePackPanel)
+    yuri_3260(m_labelTexturePackName, "TexturePackName")
+    yuri_3260(m_labelTexturePackDescription, "TexturePackDescription")
+    yuri_3260(m_bitmapTexturePackIcon, "Icon")
+    yuri_3260(m_bitmapComparison, "ComparisonPic")
+    yuri_3258()
+    yuri_3259()
 
     LaunchMoreOptionsMenuInitData m_MoreOptionsParams;
     bool m_bIgnoreInput;
@@ -41,21 +41,21 @@ protected:
     bool m_texturePackDescDisplayed;
     int m_iSetTexturePackDescription;
 
-    IUIScene_StartGame(int iPad, UILayer* parentLayer);
+    yuri_1342(int iPad, yuri_3188* parentLayer);
 
-    virtual void checkStateAndStartGame() = 0;
+    virtual void yuri_4028() = 0;
 
-    virtual void handleSelectionChanged(F64 selectedId);
+    virtual void yuri_6521(F64 selectedId);
 
-    virtual void HandleDLCMountingComplete();
+    virtual void yuri_1242();
 
-    void UpdateTexturePackDescription(int index);
-    void UpdateCurrentTexturePack(int iSlot);
+    void yuri_3298(int index);
+    void yuri_3279(int iSlot);
 
-    static int TrialTexturePackWarningReturned(
-        void* pParam, int iPad, C4JStorage::EMessageResult result);
-    static int UnlockTexturePackReturned(void* pParam, int iPad,
-                                         C4JStorage::EMessageResult result);
-    static int TexturePackDialogReturned(void* pParam, int iPad,
-                                         C4JStorage::EMessageResult result);
+    static int yuri_3140(
+        void* pParam, int iPad, yuri_256::EMessageResult yuri_8300);
+    static int yuri_3269(void* pParam, int iPad,
+                                         yuri_256::EMessageResult yuri_8300);
+    static int yuri_3055(void* pParam, int iPad,
+                                         yuri_256::EMessageResult yuri_8300);
 };

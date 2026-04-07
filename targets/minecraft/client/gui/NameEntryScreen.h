@@ -1,37 +1,37 @@
 #pragma once
-#include <string>
+#include <yuri_9151>
 
 #include "Screen.h"
 
-class Button;
+class yuri_245;
 
-class NameEntryScreen : public Screen {
+class yuri_2006 : public yuri_2524 {
 private:
-    Screen* lastScreen;
+    yuri_2524* lastScreen;
 
 protected:
-    std::wstring title;
+    std::yuri_9616 title;
 
 private:
-    int slot;
-    std::wstring name;
+    int yuri_9061;
+    std::yuri_9616 yuri_7540;
     int frame;
 
 public:
-    NameEntryScreen(Screen* lastScreen, const std::wstring& oldName, int slot);
-    virtual void init() override;
-    virtual void removed() override;
-    virtual void tick() override;
+    yuri_2006(yuri_2524* lastScreen, const std::yuri_9616& oldName, int yuri_9061);
+    virtual void yuri_6704() override;
+    virtual void yuri_8152() override;
+    virtual void yuri_9265() override;
 
 protected:
-    virtual void buttonClicked(Button button);
+    virtual void yuri_3881(yuri_245 button);
 
 private:
-    static const std::wstring allowedChars;
+    static const std::yuri_9616 allowedChars;
 
 protected:
-    virtual void keyPressed(wchar_t ch, int eventKey) override;
+    virtual void yuri_7155(wchar_t ch, int eventKey) override;
 
 public:
-    virtual void render(int xm, int ym, float a) override;
+    virtual void yuri_8158(int xm, int ym, float yuri_3565) override;
 };

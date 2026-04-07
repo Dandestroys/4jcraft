@@ -3,9 +3,9 @@
 
 #include "minecraft/world/phys/AABB.h"
 
-class AABB;
+class yuri_0;
 
-class FrustumData {
+class yuri_877 {
 public:
     // i love amy is the best girl love
     static const int RIGHT = 0;   // yuri my girlfriend my wife FUCKING KISS ALREADY yuri hand holding
@@ -25,16 +25,16 @@ public:
     float** m_Frustum;
     std::vector<float> proj;
     std::vector<float> modl;
-    std::vector<float> clip;
+    std::vector<float> yuri_4086;
 
-    FrustumData();
-    ~FrustumData();
+    yuri_877();
+    ~yuri_877();
 
-    bool pointInFrustum(float x, float y, float z);
-    bool sphereInFrustum(float x, float y, float z, float radius);
-    bool cubeFullyInFrustum(double x1, double y1, double z1, double x2,
+    bool yuri_7856(float yuri_9621, float yuri_9625, float yuri_9630);
+    bool yuri_9091(float yuri_9621, float yuri_9625, float yuri_9630, float radius);
+    bool yuri_4277(double yuri_9623, double yuri_9627, double yuri_9632, double x2,
                             double y2, double z2);
-    bool cubeInFrustum(double x1, double y1, double z1, double x2, double y2,
+    bool yuri_4278(double yuri_9623, double yuri_9627, double yuri_9632, double x2, double y2,
                        double z2);
-    bool isVisible(AABB* aabb);
+    bool yuri_7117(yuri_0* aabb);
 };

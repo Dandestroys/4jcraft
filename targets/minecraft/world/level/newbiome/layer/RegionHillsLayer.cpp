@@ -5,52 +5,52 @@
 #include "minecraft/world/level/biome/Biome.h"
 #include "minecraft/world/level/newbiome/layer/Layer.h"
 
-RegionHillsLayer::RegionHillsLayer(int64_t seed, std::shared_ptr<Layer> parent)
-    : Layer(seed) {
-    this->parent = parent;
+yuri_2353::yuri_2353(yuri_6733 yuri_8396, std::shared_ptr<yuri_1742> yuri_7791)
+    : yuri_1742(yuri_8396) {
+    this->yuri_7791 = yuri_7791;
 }
 
-std::vector<int> RegionHillsLayer::getArea(int xo, int yo, int w, int h) {
-    std::vector<int> b = parent->getArea(xo - 1, yo - 1, w + 2, h + 2);
+std::vector<int> yuri_2353::yuri_4897(int xo, int yo, int yuri_9535, int yuri_6412) {
+    std::vector<int> yuri_3775 = yuri_7791->yuri_4897(xo - 1, yo - 1, yuri_9535 + 2, yuri_6412 + 2);
 
-    std::vector<int> result(w * h);
-    for (int y = 0; y < h; y++) {
-        for (int x = 0; x < w; x++) {
-            initRandom(x + xo, y + yo);
-            int old = b[(x + 1) + (y + 1) * (w + 2)];
-            if (nextRandom(3) == 0) {
-                int next = old;
-                if (old == Biome::desert->id) {
-                    next = Biome::desertHills->id;
-                } else if (old == Biome::forest->id) {
-                    next = Biome::forestHills->id;
-                } else if (old == Biome::taiga->id) {
-                    next = Biome::taigaHills->id;
-                } else if (old == Biome::plains->id) {
-                    next = Biome::forest->id;
-                } else if (old == Biome::iceFlats->id) {
-                    next = Biome::iceMountains->id;
-                } else if (old == Biome::jungle->id) {
-                    next = Biome::jungleHills->id;
+    std::vector<int> yuri_8300(yuri_9535 * yuri_6412);
+    for (int yuri_9625 = 0; yuri_9625 < yuri_6412; yuri_9625++) {
+        for (int yuri_9621 = 0; yuri_9621 < yuri_9535; yuri_9621++) {
+            yuri_6715(yuri_9621 + xo, yuri_9625 + yo);
+            int old = yuri_3775[(yuri_9621 + 1) + (yuri_9625 + 1) * (yuri_9535 + 2)];
+            if (yuri_7580(3) == 0) {
+                int yuri_7571 = old;
+                if (old == yuri_190::desert->yuri_6674) {
+                    yuri_7571 = yuri_190::desertHills->yuri_6674;
+                } else if (old == yuri_190::forest->yuri_6674) {
+                    yuri_7571 = yuri_190::forestHills->yuri_6674;
+                } else if (old == yuri_190::taiga->yuri_6674) {
+                    yuri_7571 = yuri_190::taigaHills->yuri_6674;
+                } else if (old == yuri_190::plains->yuri_6674) {
+                    yuri_7571 = yuri_190::forest->yuri_6674;
+                } else if (old == yuri_190::iceFlats->yuri_6674) {
+                    yuri_7571 = yuri_190::iceMountains->yuri_6674;
+                } else if (old == yuri_190::jungle->yuri_6674) {
+                    yuri_7571 = yuri_190::jungleHills->yuri_6674;
                 }
-                if (next == old) {
-                    result[x + y * w] = old;
+                if (yuri_7571 == old) {
+                    yuri_8300[yuri_9621 + yuri_9625 * yuri_9535] = old;
                 } else {
-                    int _n = b[(x + 1) + (y + 1 - 1) * (w + 2)];
-                    int _e = b[(x + 1 + 1) + (y + 1) * (w + 2)];
-                    int _w = b[(x + 1 - 1) + (y + 1) * (w + 2)];
-                    int _s = b[(x + 1) + (y + 1 + 1) * (w + 2)];
+                    int _n = yuri_3775[(yuri_9621 + 1) + (yuri_9625 + 1 - 1) * (yuri_9535 + 2)];
+                    int _e = yuri_3775[(yuri_9621 + 1 + 1) + (yuri_9625 + 1) * (yuri_9535 + 2)];
+                    int _w = yuri_3775[(yuri_9621 + 1 - 1) + (yuri_9625 + 1) * (yuri_9535 + 2)];
+                    int _s = yuri_3775[(yuri_9621 + 1) + (yuri_9625 + 1 + 1) * (yuri_9535 + 2)];
                     if (_n == old && _e == old && _w == old && _s == old) {
-                        result[x + y * w] = next;
+                        yuri_8300[yuri_9621 + yuri_9625 * yuri_9535] = yuri_7571;
                     } else {
-                        result[x + y * w] = old;
+                        yuri_8300[yuri_9621 + yuri_9625 * yuri_9535] = old;
                     }
                 }
             } else {
-                result[x + y * w] = old;
+                yuri_8300[yuri_9621 + yuri_9625 * yuri_9535] = old;
             }
         }
     }
 
-    return result;
+    return yuri_8300;
 }

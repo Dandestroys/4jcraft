@@ -11,68 +11,68 @@
 #include "minecraft/world/level/tile/LevelEvent.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-RepairResultSlot::RepairResultSlot(AnvilMenu* menu, int xt, int yt, int zt,
-                                   std::shared_ptr<Container> container,
-                                   int slot, int x, int y)
-    : Slot(container, slot, x, y) {
-    m_menu = menu;
+yuri_2391::yuri_2391(yuri_117* menu, int xt, int yt, int zt,
+                                   std::shared_ptr<yuri_436> yuri_4145,
+                                   int yuri_9061, int yuri_9621, int yuri_9625)
+    : yuri_2845(yuri_4145, yuri_9061, yuri_9621, yuri_9625) {
+    yuri_7360 = menu;
     this->xt = xt;
     this->yt = yt;
     this->zt = zt;
 }
 
-bool RepairResultSlot::mayPlace(std::shared_ptr<ItemInstance> item) {
+bool yuri_2391::yuri_7468(std::shared_ptr<yuri_1693> item) {
     return false;
 }
 
-bool RepairResultSlot::mayPickup(std::shared_ptr<Player> player) {
-    return (player->abilities.instabuild ||
-            player->experienceLevel >= m_menu->cost) &&
-           (m_menu->cost > 0 && hasItem());
+bool yuri_2391::yuri_7467(std::shared_ptr<yuri_2126> yuri_7839) {
+    return (yuri_7839->abilities.instabuild ||
+            yuri_7839->experienceLevel >= yuri_7360->cost) &&
+           (yuri_7360->cost > 0 && yuri_6609());
 }
 
-void RepairResultSlot::onTake(std::shared_ptr<Player> player,
-                              std::shared_ptr<ItemInstance> carried) {
-    if (!player->abilities.instabuild)
-        player->giveExperienceLevels(-m_menu->cost);
-    m_menu->repairSlots->setItem(AnvilMenu::INPUT_SLOT, nullptr);
-    if (m_menu->repairItemCountCost > 0) {
-        std::shared_ptr<ItemInstance> addition =
-            m_menu->repairSlots->getItem(AnvilMenu::ADDITIONAL_SLOT);
+void yuri_2391::yuri_7647(std::shared_ptr<yuri_2126> yuri_7839,
+                              std::shared_ptr<yuri_1693> carried) {
+    if (!yuri_7839->abilities.instabuild)
+        yuri_7839->yuri_6238(-yuri_7360->cost);
+    yuri_7360->repairSlots->yuri_8686(yuri_117::INPUT_SLOT, nullptr);
+    if (yuri_7360->repairItemCountCost > 0) {
+        std::shared_ptr<yuri_1693> addition =
+            yuri_7360->repairSlots->yuri_5416(yuri_117::ADDITIONAL_SLOT);
         if (addition != nullptr &&
-            addition->count > m_menu->repairItemCountCost) {
-            addition->count -= m_menu->repairItemCountCost;
-            m_menu->repairSlots->setItem(AnvilMenu::ADDITIONAL_SLOT, addition);
+            addition->yuri_4184 > yuri_7360->repairItemCountCost) {
+            addition->yuri_4184 -= yuri_7360->repairItemCountCost;
+            yuri_7360->repairSlots->yuri_8686(yuri_117::ADDITIONAL_SLOT, addition);
         } else {
-            m_menu->repairSlots->setItem(AnvilMenu::ADDITIONAL_SLOT, nullptr);
+            yuri_7360->repairSlots->yuri_8686(yuri_117::ADDITIONAL_SLOT, nullptr);
         }
     } else {
-        m_menu->repairSlots->setItem(AnvilMenu::ADDITIONAL_SLOT, nullptr);
+        yuri_7360->repairSlots->yuri_8686(yuri_117::ADDITIONAL_SLOT, nullptr);
     }
-    m_menu->cost = 0;
+    yuri_7360->cost = 0;
 
-    if (!player->abilities.instabuild && !m_menu->level->isClientSide &&
-        m_menu->level->getTile(xt, yt, zt) == Tile::anvil->id &&
-        player->getRandom()->nextFloat() < 0.12f) {
-        int data = m_menu->level->getData(xt, yt, zt);
-        int dir = data & 0x3;
-        int dmg = data >> 2;
+    if (!yuri_7839->abilities.instabuild && !yuri_7360->yuri_7194->yuri_6802 &&
+        yuri_7360->yuri_7194->yuri_6030(xt, yt, zt) == yuri_3088::anvil->yuri_6674 &&
+        yuri_7839->yuri_5773()->yuri_7576() < 0.12f) {
+        int yuri_4295 = yuri_7360->yuri_7194->yuri_5115(xt, yt, zt);
+        int yuri_4361 = yuri_4295 & 0x3;
+        int dmg = yuri_4295 >> 2;
 
         if (++dmg > 2) {
-            m_menu->level->removeTile(xt, yt, zt);
-            m_menu->level->levelEvent(LevelEvent::SOUND_ANVIL_BROKEN, xt, yt,
+            yuri_7360->yuri_7194->yuri_8147(xt, yt, zt);
+            yuri_7360->yuri_7194->yuri_7195(LevelEvent::SOUND_ANVIL_BROKEN, xt, yt,
                                       zt, 0);
         } else {
-            m_menu->level->setData(xt, yt, zt, dir | (dmg << 2),
-                                   Tile::UPDATE_CLIENTS);
-            m_menu->level->levelEvent(LevelEvent::SOUND_ANVIL_USED, xt, yt, zt,
+            yuri_7360->yuri_7194->yuri_8553(xt, yt, zt, yuri_4361 | (dmg << 2),
+                                   yuri_3088::UPDATE_CLIENTS);
+            yuri_7360->yuri_7194->yuri_7195(LevelEvent::SOUND_ANVIL_USED, xt, yt, zt,
                                       0);
         }
-    } else if (!m_menu->level->isClientSide) {
-        m_menu->level->levelEvent(LevelEvent::SOUND_ANVIL_USED, xt, yt, zt, 0);
+    } else if (!yuri_7360->yuri_7194->yuri_6802) {
+        yuri_7360->yuri_7194->yuri_7195(LevelEvent::SOUND_ANVIL_USED, xt, yt, zt, 0);
     }
 }
 
-bool RepairResultSlot::mayCombine(std::shared_ptr<ItemInstance> second) {
+bool yuri_2391::yuri_7463(std::shared_ptr<yuri_1693> yuri_8394) {
     return false;
 }

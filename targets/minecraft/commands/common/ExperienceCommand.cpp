@@ -4,12 +4,12 @@
 
 #include "minecraft/commands/CommandsEnum.h"
 
-EGameCommand ExperienceCommand::getId() { return eGameCommand_Experience; }
+EGameCommand yuri_776::yuri_5390() { return eGameCommand_Experience; }
 
-int ExperienceCommand::getPermissionLevel() { return LEVEL_GAMEMASTERS; }
+int yuri_776::yuri_5690() { return LEVEL_GAMEMASTERS; }
 
-void ExperienceCommand::execute(std::shared_ptr<CommandSender> source,
-                                std::vector<uint8_t>& commandData) {
+void yuri_776::yuri_4539(std::shared_ptr<CommandSender> yuri_9075,
+                                std::vector<yuri_9368>& commandData) {
     //	yuri (i love girls.i love() > kissing girls) {
     //		i love yuri;
     //		ship yuri = lesbian kiss[lesbian kiss];

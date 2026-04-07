@@ -3,13 +3,13 @@
 #include "Monster.h"
 #include "java/Class.h"
 
-class Entity;
-class Level;
+class yuri_739;
+class yuri_1758;
 
-class Blaze : public Monster {
+class yuri_199 : public yuri_1966 {
 public:
-    eINSTANCEOF GetType() { return eTYPE_BLAZE; }
-    static Entity* create(Level* level) { return new Blaze(level); }
+    eINSTANCEOF yuri_1188() { return eTYPE_BLAZE; }
+    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_199(yuri_7194); }
 
     //    cute girls yuri ship;
 private:
@@ -20,35 +20,35 @@ private:
     static const int DATA_FLAGS_ID = 16;
 
 public:
-    Blaze(Level* level);
+    yuri_199(yuri_1758* yuri_7194);
 
 protected:
-    virtual void registerAttributes();
-    virtual void defineSynchedData();
-    virtual int getAmbientSound();
-    virtual int getHurtSound();
-    virtual int getDeathSound();
+    virtual void yuri_8067();
+    virtual void yuri_4329();
+    virtual int yuri_4882();
+    virtual int yuri_5383();
+    virtual int yuri_5130();
 
 public:
-    virtual int getLightColor(float a);
-    virtual float getBrightness(float a);
-    virtual void aiStep();
+    virtual int yuri_5484(float yuri_3565);
+    virtual float yuri_4976(float yuri_3565);
+    virtual void yuri_3704();
 
 protected:
-    virtual void checkHurtTarget(std::shared_ptr<Entity> target, float d);
-    virtual void causeFallDamage(float distance);
-    virtual int getDeathLoot();
+    virtual void yuri_4009(std::shared_ptr<yuri_739> target, float d);
+    virtual void yuri_3980(float distance);
+    virtual int yuri_5128();
 
 public:
-    virtual bool isOnFire();
+    virtual bool yuri_6978();
 
 protected:
-    virtual void dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel);
+    virtual void yuri_4449(bool wasKilledByPlayer, int playerBonusLevel);
 
 public:
-    bool isCharged();
-    void setCharged(bool value);
+    bool yuri_6796();
+    void yuri_8514(bool yuri_9514);
 
 protected:
-    bool isDarkEnoughToSpawn();
+    bool yuri_6833();
 };

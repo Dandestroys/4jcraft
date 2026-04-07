@@ -4,20 +4,20 @@
 
 #include "Goal.h"
 
-class PathfinderMob;
-class DoorInfo;
+class yuri_2096;
+class yuri_644;
 
-class MoveIndoorsGoal : public Goal {
+class yuri_1984 : public yuri_1217 {
 private:
-    PathfinderMob* mob;
-    std::weak_ptr<DoorInfo> doorInfo;
+    yuri_2096* mob;
+    std::weak_ptr<yuri_644> doorInfo;
     int insideX, insideZ;
 
 public:
-    MoveIndoorsGoal(PathfinderMob* mob);
+    yuri_1984(yuri_2096* mob);
 
-    bool canUse();
-    bool canContinueToUse();
-    void start();
-    void stop();
+    bool yuri_3967();
+    bool yuri_3916();
+    void yuri_9098();
+    void yuri_9133();
 };

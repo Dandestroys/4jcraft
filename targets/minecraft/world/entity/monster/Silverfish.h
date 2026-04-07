@@ -4,50 +4,50 @@
 #include "java/Class.h"
 #include "minecraft/world/entity/MobType.h"
 
-class Entity;
-class Level;
+class yuri_739;
+class yuri_1758;
 
-class Silverfish : public Monster {
+class yuri_2820 : public yuri_1966 {
 public:
-    eINSTANCEOF GetType() { return eTYPE_SILVERFISH; }
-    static Entity* create(Level* level) { return new Silverfish(level); }
+    eINSTANCEOF yuri_1188() { return eTYPE_SILVERFISH; }
+    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_2820(yuri_7194); }
 
 private:
     int lookForFriends;
 
 public:
-    Silverfish(Level* level);
+    yuri_2820(yuri_1758* yuri_7194);
 
 protected:
-    virtual void registerAttributes();
-    virtual bool makeStepSound();
-    virtual std::shared_ptr<Entity> findAttackTarget();
+    virtual void yuri_8067();
+    virtual bool yuri_7434();
+    virtual std::shared_ptr<yuri_739> yuri_4601();
 
-    virtual int getAmbientSound();
-    virtual int getHurtSound();
-    virtual int getDeathSound();
+    virtual int yuri_4882();
+    virtual int yuri_5383();
+    virtual int yuri_5130();
 
 public:
-    virtual bool hurt(DamageSource* source, float dmg);
+    virtual bool yuri_6667(yuri_548* yuri_9075, float dmg);
 
 protected:
-    virtual void checkHurtTarget(std::shared_ptr<Entity> target, float d);
-    virtual void playStepSound(int xt, int yt, int zt, int t);
-    virtual int getDeathLoot();
+    virtual void yuri_4009(std::shared_ptr<yuri_739> target, float d);
+    virtual void yuri_7835(int xt, int yt, int zt, int t);
+    virtual int yuri_5128();
 
 public:
-    virtual void tick();
+    virtual void yuri_9265();
 
 protected:
-    virtual void serverAiStep();
+    virtual void yuri_8431();
 
 public:
-    virtual float getWalkTargetValue(int x, int y, int z);
+    virtual float yuri_6120(int yuri_9621, int yuri_9625, int yuri_9630);
 
 protected:
-    virtual bool isDarkEnoughToSpawn();
+    virtual bool yuri_6833();
 
 public:
-    virtual bool canSpawn();
-    virtual MobType getMobType();
+    virtual bool yuri_3958();
+    virtual MobType yuri_5555();
 };

@@ -9,51 +9,51 @@
 #include "minecraft/world/level/material/Material.h"
 #include "minecraft/world/level/tile/LiquidTile.h"
 
-WaterDropParticle::WaterDropParticle(Level* level, double x, double y, double z)
-    : Particle(level, x, y, z, 0, 0, 0) {
+yuri_3362::yuri_3362(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630)
+    : yuri_2090(yuri_7194, yuri_9621, yuri_9625, yuri_9630, 0, 0, 0) {
     xd *= 0.3f;
-    yd = (float)Math::random() * 0.2f + 0.1f;
+    yd = (float)Math::yuri_7981() * 0.2f + 0.1f;
     zd *= 0.3f;
 
     rCol = 1.0f;
     gCol = 1.0f;
     bCol = 1.0f;
-    setMiscTex(16 + 3 + random->nextInt(4));
-    this->setSize(0.01f, 0.01f);
+    yuri_8730(16 + 3 + yuri_7981->yuri_7578(4));
+    this->yuri_8864(0.01f, 0.01f);
     gravity = 0.06f;
 
     noPhysics = true;  // yuri - yuri - yuri yuri lesbian yuri yuri scissors
                        // lesbian kiss? snuggle yuri hand holding...
-    lifetime = (int)(8 / (Math::random() * 0.8 + 0.2));
+    lifetime = (int)(8 / (Math::yuri_7981() * 0.8 + 0.2));
 }
 
-void WaterDropParticle::tick() {
-    xo = x;
-    yo = y;
-    zo = z;
+void yuri_3362::yuri_9265() {
+    xo = yuri_9621;
+    yo = yuri_9625;
+    zo = yuri_9630;
 
     yd -= gravity;
-    move(xd, yd, zd);
+    yuri_7515(xd, yd, zd);
     xd *= 0.98f;
     yd *= 0.98f;
     zd *= 0.98f;
 
-    if (lifetime-- <= 0) remove();
+    if (lifetime-- <= 0) yuri_8099();
 
     if (onGround) {
-        if (Math::random() < 0.5) remove();
+        if (Math::yuri_7981() < 0.5) yuri_8099();
         xd *= 0.7f;
         zd *= 0.7f;
     }
 
-    Material* m =
-        level->getMaterial(std::floor(x), std::floor(y), std::floor(z));
-    if (m->isLiquid() || m->isSolid()) {
-        double y0 = std::floor(y) + 1 -
-                    LiquidTile::getHeight(level->getData(
-                        std::floor(x), std::floor(y), std::floor(z)));
-        if (y < y0) {
-            remove();
+    yuri_1886* m =
+        yuri_7194->yuri_5514(std::yuri_4644(yuri_9621), std::yuri_4644(yuri_9625), std::yuri_4644(yuri_9630));
+    if (m->yuri_6941() || m->yuri_7052()) {
+        double yuri_9626 = std::yuri_4644(yuri_9625) + 1 -
+                    yuri_1788::yuri_5362(yuri_7194->yuri_5115(
+                        std::yuri_4644(yuri_9621), std::yuri_4644(yuri_9625), std::yuri_4644(yuri_9630)));
+        if (yuri_9625 < yuri_9626) {
+            yuri_8099();
         }
     }
 }

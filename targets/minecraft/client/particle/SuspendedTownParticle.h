@@ -3,12 +3,12 @@
 #include "Particle.h"
 #include "java/Class.h"
 
-class Level;
+class yuri_1758;
 
-class SuspendedTownParticle : public Particle {
+class yuri_2989 : public yuri_2090 {
 public:
-    virtual eINSTANCEOF GetType() { return eType_SUSPENDEDTOWNPARTICLE; }
-    SuspendedTownParticle(Level* level, double x, double y, double z, double xa,
+    virtual eINSTANCEOF yuri_1188() { return eType_SUSPENDEDTOWNPARTICLE; }
+    yuri_2989(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630, double xa,
                           double ya, double za);
-    void tick();
+    void yuri_9265();
 };

@@ -1,293 +1,293 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<root>
-	<data name="IDS_TIPS_GAMETIP_0">
-		<value>Als je deze game in High Definition speelt, kunnen er op één systeem maximaal vier spelers meedoen op een gedeeld scherm!</value>
-	</data>
-	<data name="IDS_TIPS_GAMETIP_1">
-		<value>Verbind extra controllers met je PlayStation®4-systeem en druk op de OPTIONS-toets om je aan te sluiten bij de game.</value>
-	</data>
-	<data name="IDS_TIPS_GAMETIP_48">
-		<value>Op het minecraftforum is er een speciaal gedeelte voor de PlayStation®4 Edition.</value>
-	</data>
-	<data name="IDS_TIPS_GAMETIP_44">
-		<value>Volg @4JStudios en @Kappische op Twitter voor het laatste nieuws over deze game!</value>
-	</data>
-	<data name="IDS_TIPS_GAMETIP_45">
-		<value>Kijk een Einder-man nooit aan!</value>
-	</data>
-	<data name="IDS_TIPS_TRIVIA_4">
-		<value>We weten het niet zeker, maar we vermoeden dat 4J Studios Herobrine uit de PlayStation®4-systeem versie heeft verwijderd.</value>
-	</data>
-	<data name="IDS_TIPS_TRIVIA_17">
-		<value>Minecraft: PlayStation®4 Edition heeft veel records gebroken!</value>
-	</data>
-	<data name="IDS_HOW_TO_PLAY_MULTIPLAYER">
-		<value>{*T3*}INSTRUCTIES: MULTIPLAYER{*ETW*}{*B*}{*B*}
-Minecraft voor het PlayStation®4-systeem heeft geweldige multiplayer-mogelijkheden. Als je in High Definition speelt, kunnen lokale spelers op elk moment met je meedoen door extra controllers aan te sluiten en op de OPTIONS-toets te drukken.{*B*}{*B*}
-Mensen op je vriendenlijst zien wanneer je een online game start of je je bij een andere game aansluit (tenzij je als host de optie 'Alleen op uitnodiging' hebt ingeschakeld). Als je vrienden zich bij je game aansluiten, is dat ook te zien voor mensen op hun vriendenlijst (als je de optie 'Vrienden van vrienden toestaan' hebt ingeschakeld).{*B*}
-Eenmaal in een game kun je op de touchpad-toets drukken voor een lijst van alle andere spelers in de game. Ook kun je hier spelers verwijderen.</value>
-	</data>
-	<data name="IDS_HOW_TO_PLAY_SOCIALMEDIA">
-		<value>{*T3*}INSTRUCTIES: SCREENSHOTS DELEN{*ETW*}{*B*}{*B*}
-Je kunt een screenshot maken en delen op Facebook door in het pauzemenu op{*CONTROLLER_VK_Y*} te drukken. Je ziet een kleine versie van je screenshot en kunt de tekst van het bijbehorende Facebook-bericht aanpassen.{*B*}{*B*}
-Er is een speciaal cameraperspectief voor screenshots, waarbij je je personage van voren ziet. Kies dat perspectief door op{*CONTROLLER_ACTION_CAMERA*} te drukken totdat je je personage van voren ziet en druk vervolgens op{*CONTROLLER_VK_Y*} om je screenshot te delen.{*B*}{*B*}
-Online-id's worden niet weergegeven op screenshots.</value>
-	</data>
-	<data name="IDS_HOW_TO_PLAY_CREATIVE">
-		<value>{*T3*}INSTRUCTIES: SPELTYPE CREATIEF{*ETW*}{*B*}{*B*}
-In het speltype Creatief kun je elk voorwerp in de game vanuit de interface naar je inventaris verplaatsen. Je hoeft de voorwerpen dus niet eerst uit te graven of te produceren. 
-Bovendien worden voorwerpen niet uit de inventaris verwijderd als je ze plaatst of gebruikt. Daardoor kun je je helemaal op het bouwen richten.{*B*}
-In werelden die worden gemaakt, geladen of opgeslagen in het speltype Creatief zijn geen trofeeën en klassementen beschikbaar, zelfs niet als de wereld daarna als Survival-game wordt geladen.{*B*}
-Druk twee keer kort op{*CONTROLLER_ACTION_JUMP*} om te vliegen in het speltype Creatief. Doe hetzelfde om te stoppen met vliegen. Om sneller te vliegen, duw je {*CONTROLLER_ACTION_MOVE*} twee keer kort naar voren. 
-Terwijl je vliegt hou je{*CONTROLLER_ACTION_JUMP*} ingedrukt om te stijgen en {*CONTROLLER_ACTION_SNEAK*} om te dalen. Je kunt ook stijgen met{*CONTROLLER_ACTION_DPAD_UP*}, dalen met {*CONTROLLER_ACTION_DPAD_DOWN*}, 
-naar links gaan met {*CONTROLLER_ACTION_DPAD_LEFT*} en naar rechts gaan {*CONTROLLER_ACTION_DPAD_RIGHT*}.</value>
-	</data>
-	<data name="IDS_TUTORIAL_TASK_FLY">
-		<value>Druk twee keer kort op{*CONTROLLER_ACTION_JUMP*} om te vliegen. Doe hetzelfde om te stoppen met vliegen. Om sneller te vliegen, duw je {*CONTROLLER_ACTION_MOVE*} twee keer kort naar voren. 
-Terwijl je vliegt, hou je{*CONTROLLER_ACTION_JUMP*} ingedrukt om te stijgen en {*CONTROLLER_ACTION_SNEAK*} om te dalen. Je kunt ook de richtingstoetsen gebruiken om te stijgen, te dalen en naar links en rechts te gaan.</value>
-	</data>
-	<data name="IDS_TOOLTIPS_SELECTDEVICE">
-		<value>NIET GEBRUIKT</value>
-	</data>
-	<data name="IDS_TOOLTIPS_CHANGEDEVICE">
-		<value>NIET GEBRUIKT</value>
-	</data>
-	<data name="IDS_TOOLTIPS_VIEW_GAMERCARD">
-		<value>"NIET GEBRUIKT"  </value>
-	</data>
-	<data name="IDS_TOOLTIPS_VIEW_GAMERPROFILE">
-		<value>"NIET GEBRUIKT"</value>
-	</data>
-	<data name="IDS_TOOLTIPS_INVITE_PARTY">
-		<value>Vrienden uitnodigen</value>
-	</data>
-	<data name="IDS_CONFIRM_START_CREATIVE">
-		<value>In werelden die worden gemaakt, geladen of opgeslagen in het speltype Creatief zijn geen trofeeën en klassementen beschikbaar, zelfs niet als de wereld daarna als Survival-game wordt geladen. Weet je zeker dat je verder wilt gaan?</value>
-	</data>
-	<data name="IDS_CONFIRM_START_SAVEDINCREATIVE">
-		<value>Deze wereld is al eens opgeslagen in het speltype Creatief, waardoor trofeeën en klassementen zijn uitgeschakeld. Weet je zeker dat je verder wilt gaan?</value>
-	</data>
-	<data name="IDS_CONFIRM_START_SAVEDINCREATIVE_CONTINUE">
-		<value>Deze wereld is al eens opgeslagen in het speltype Creatief, waardoor trofeeën en klassementen zijn uitgeschakeld.</value>
-	</data>
-	<data name="IDS_CONFIRM_START_HOST_PRIVILEGES">
-		<value>Als je een wereld maakt, laadt of opslaat met ingeschakelde privileges voor de host, zijn trofeeën en klassementen uitgeschakeld, ook al laad je de wereld daarna zonder privileges. Weet je zeker dat je verder wilt gaan?</value>
-	</data>
-	<data name="IDS_CONNECTION_LOST_LIVE">
-		<value>Verbinding met "PSN" is verbroken. Terug naar het hoofdmenu.</value>
-	</data>
-	<data name="IDS_CONNECTION_LOST_LIVE_NO_EXIT">
-		<value>Verbinding met "PSN" is verbroken.</value>
-	</data>
-	<data name="IDS_UNLOCK_ACHIEVEMENT_TEXT">
-		<value>Dit is de testversie van Minecraft: PlayStation®4 Edition. Als je de volledige versie had, zou je nu een trofee krijgen! 
-Koop de volledige game om optimaal te genieten van Minecraft: PlayStation®4 Edition en samen te spelen met je vrienden uit de hele wereld via "PSN".
-Wil je nu de volledige versie kopen?</value>
-	</data>
-	<data name="IDS_UNLOCK_THEME_TEXT">
-		<value>Dit is de testversie van Minecraft: PlayStation®4 Edition. Als je de volledige versie had, zou je nu een thema krijgen! 
-Koop de volledige game om optimaal te genieten van Minecraft: PlayStation®4 Edition en samen te spelen met je vrienden uit de hele wereld via "PSN".
-Wil je nu de volledige versie kopen?</value>
-	</data>
-	<data name="IDS_UNLOCK_ACCEPT_INVITE">
-		<value>Dit is de testversie van Minecraft: PlayStation®4 Edition. Je kunt deze uitnodiging alleen accepteren als je de volledige versie hebt. 
-Wil je nu de volledige versie kopen?</value>
-	</data>
-	<data name="IDS_UNLOCK_GUEST_TEXT">
-		<value>Gastspelers kunnen de volledige game niet ontgrendelen. Meld je aan met een Sony Entertainment Network-account.</value>
-	</data>
-	<data name="IDS_LEADERBOARD_GAMERTAG">
-		<value>Online-id</value>
-	</data>
-	<data name="IDS_GROUPNAME_POTIONS_480">
-		<value>Brouwen</value>
-	</data>
-	<data name="IDS_RETURNEDTOTITLESCREEN_TEXT">
-		<value>Je bent terug in het titelscherm omdat je bent afgemeld bij "PSN".</value>
-	</data>
-	<data name="IDS_TRIALOVER_TEXT">
-		<value>De testversie van Minecraft: PlayStation®4 Edition is verlopen! Wil je de volledige versie kopen, zodat je verder kunt spelen?</value>
-	</data>
-	<data name="IDS_FATAL_ERROR_TEXT">
-		<value>Minecraft: PlayStation®4 Edition kan niet worden geladen.</value>
-	</data>
-	<data name="IDS_NO_MULTIPLAYER_PRIVILEGE_JOIN_TEXT">
-		<value>De game kan niet worden geladen omdat een of meer spelers niet online mogen spelen wegens chatbeperkingen van hun Sony Entertainment Network-account.</value>
-	</data>
-	<data name="IDS_NO_MULTIPLAYER_PRIVILEGE_HOST_TEXT">
-		<value>De online game kan niet worden gemaakt omdat een of meer spelers niet online mogen spelen wegens chatbeperkingen van hun Sony Entertainment Network-account. Ga naar 'Meer opties' en schakel 'Online game' uit om te beginnen met een offline game.</value>
-	</data>
-	<data name="IDS_NO_USER_CREATED_CONTENT_PRIVILEGE_SINGLE_LOCAL">
-		<value>Je kunt je niet aansluiten bij deze game-sessie omdat je niet online mag spelen wegens chatbeperkingen van je Sony Entertainment Network-account.</value>
-	</data>
-	<data name="IDS_NO_USER_CREATED_CONTENT_PRIVILEGE_ALL_LOCAL">
-		<value>Je kunt je niet aansluiten bij deze game-sessie omdat een van je lokale medespelers niet online mag spelen wegens chatbeperkingen van zijn of haar Sony Entertainment Network-account. Ga naar 'Meer opties' en schakel 'Online game' uit om te beginnen met een offline game.</value>
-	</data>
-	<data name="IDS_NO_USER_CREATED_CONTENT_PRIVILEGE_CREATE">
-		<value>Je kunt deze game-sessie niet maken omdat een van je lokale medespelers niet online mag spelen wegens chatbeperkingen van zijn of haar Sony Entertainment Network-account. Ga naar 'Meer opties' en schakel 'Online game' uit om te beginnen met een offline game.</value>
-	</data>
-	<data name="IDS_SAVE_ICON_MESSAGE">
-		<value>Deze game slaat werelden automatisch op. Als je bovenstaand pictogram ziet, worden je spelgegevens opgeslagen.
-Schakel je PlayStation®4-systeem niet uit als dit pictogram wordt weergegeven.</value>
-	</data>
-	<data name="IDS_GAMEOPTION_HOST_PRIVILEGES">
-		<value>Als deze optie is ingeschakeld, kunnen hosts via het game-menu hun vermogen om te vliegen aan- en uitzetten, uitputting uitschakelen en zichzelf onzichtbaar maken. Hiermee worden trofeeën en klassementen uitgeschakeld.</value>
-	</data>
-	<data name="IDS_CHECKBOX_DISPLAY_SPLITSCREENGAMERTAGS">
-		<value>Online-id's op gedeeld scherm</value>
-	</data>
-	<data name="IDS_ACHIEVEMENTS">
-		<value>Trofeeën</value>
-	</data>
-	<data name="IDS_LABEL_GAMERTAGS">
-		<value>Online-id's:</value>
-	</data>
-	<data name="IDS_IN_GAME_GAMERTAGS">
-		<value>Online-id's in de game</value>
-	</data>
-	<data name="IDS_SOCIAL_DEFAULT_DESCRIPTION">
-		<value>Kijk eens wat ik heb gemaakt in Minecraft: PlayStation®4 Edition!</value>
-	</data>
-	<data name="IDS_USING_TRIAL_TEXUREPACK_WARNING">
-		<value>Je gebruikt de testversie van een texturepakket. Je hebt toegang tot de volledige inhoud van het texturepakket, maar je kunt je voortgang niet opslaan.
-Als je probeert op te slaan tijdens het gebruik van de testversie, krijg je de mogelijkheid om de volledige versie te kopen.
-    </value>
-	</data>
-	<data name="IDS_TITLE_UPDATE_NAME">
-		<value>Patch 1.04 (titel-update 14)</value>
-	</data>
-	<data name="IDS_BACK_BUTTON">
-		<value>Touchpad-toets</value>
-	</data>
-	<data name="IDS_HOST_OPTION_DISABLES_ACHIEVEMENTS">
-		<value>Hiermee worden trofeeën en klassementen tijdens het spelen niet bijgewerkt. Deze instelling blijft ook van kracht als je deze wereld opslaat en afsluit, en later weer laadt.</value>
-	</data>
-	<data name="IDS_SIGNIN_PSN">
-		<value>Wil je je nu aanmelden bij "PSN"?</value>
-	</data>
-	<data name="IDS_KICK_PLAYER_DESCRIPTION">
-		<value>Met deze optie verwijder je een speler op een ander PlayStation®4-systeem en eventuele andere spelers op dat PlayStation®4-systeem. Deze spelers kunnen pas weer meedoen als de game opnieuw wordt gestart.</value>
-	</data>
-	<data name="IDS_WORLD_SIZE_TITLE_SMALL">
-		<value>Klein</value>
-	</data>
-	<data name="IDS_WORLD_SIZE_TITLE_MEDIUM">
-		<value>Normaal</value>
-	</data>
-	<data name="IDS_WORLD_SIZE_TITLE_LARGE">
-		<value>Groot</value>
-	</data>
-	<data name="IDS_WORLD_SIZE_TITLE_CLASSIC">
-		<value>Klassiek</value>
-	</data>
-	<data name="IDS_GAME_OPTIONS">
-		<value>Game-opties</value>
-	</data>
-	<data name="IDS_WORLD_SIZE">
-		<value>Omvang wereld</value>
-	</data>
-	<data name="IDS_GAMEOPTION_SEED">
-		<value>Voer een basis in om hetzelfde terrein nogmaals te genereren. Laat leeg voor een willekeurige wereld.</value>
-	</data>
-	<data name="IDS_GAMEOPTION_WORLD_SIZE">
-		<value>Selecteer de omvang van de wereld om te bepalen welk deel van de wereld je kunt ontdekken.</value>
-	</data>
-	<data name="IDS_DISABLE_SAVING">
-		<value>Automatisch opslaan uitschakelen</value>
-	</data>
-	<data name="IDS_GAMEOPTION_DISABLE_SAVING">
-		<value>Als je deze optie kiest, wordt de wereld niet voortdurend automatisch opgeslagen. Als je de wereld later wilt opslaan, kan dit veel tijd in beslag nemen.</value>
-	</data>
-	<data name="IDS_CONFIRM_EXIT_GAME">
-		<value>Weet je zeker dat je naar het hoofdmenu wilt gaan?</value>
-	</data>
-	<data name="IDS_CONFIRM_LEAVE_VIA_INVITE">
-		<value>Weet je zeker dat je de huidige game wilt verlaten om mee te doen met de nieuwe game?</value>
-	</data>
-	<data name="IDS_CONFIRM_EXIT_GAME_CONFIRM_DISCONNECT">
-		<value>Weet je zeker dat je naar het hoofdmenu wilt gaan? Alle spelers uit de game worden dan verwijderd.</value>
-	</data>
-	<data name="IDS_SAVE_INCOMPLETE_TITLE">
-		<value>Opslaan niet voltooid</value>
-	</data>
-	<data name="IDS_SAVE_INCOMPLETE_EXPLANATION_QUOTA">
-		<value>Minecraft: PlayStation®4 Edition beschikt niet over genoeg ruimte voor opslaggegevens. Verwijder andere Minecraft: PlayStation®4 Edition-werelden om ruimte vrij te maken. Selecteer Opnieuw om het nog eens te proberen of Opslaan uitschakelen om door te gaan zonder op te slaan.</value>
-	</data>
-	<data name="IDS_SAVE_INCOMPLETE_EXPLANATION_LOCAL_STORAGE">
-		<value>Selecteer Opnieuw om het nog eens te proberen of Opslaan uitschakelen om door te gaan zonder op te slaan.</value>
-	</data>
-	<data name="IDS_SAVE_INCOMPLETE_RETRY_SAVING">
-		<value>Opnieuw</value>
-	</data>
-	<data name="IDS_SAVE_INCOMPLETE_DISABLE_SAVING">
-		<value>Opslaan uitschakelen</value>
-	</data>
-	<data name="IDS_SAVE_INCOMPLETE_DELETE_SAVES">
-		<value>Opslagbestanden verwijderen</value>
-	</data>
-	<data name="IDS_TITLE_ENABLE_AUTOSAVE">
-		<value>Automatisch opslaan inschakelen</value>
-	</data>
-	<data name="IDS_CONFIRM_ENABLE_AUTOSAVE">
-		<value>Wil je de wereld voortdurend automatisch opslaan?</value>
-	</data>
-	<data name="IDS_DISABLE_AUTOSAVE">
-		<value>Automatisch opslaan uitschakelen</value>
-	</data>
-	<data name="IDS_TITLE_DISABLE_AUTOSAVE">
-		<value>Automatisch opslaan uitschakelen</value>
-	</data>
-	<data name="IDS_CONFIRM_DISABLE_AUTOSAVE">
-		<value>Wil je het voortdurend automatisch opslaan van de wereld uitschakelen?</value>
-	</data>
-	<data name="IDS_TOOLTIPS_SAVETRANSFER_DOWNLOAD">
-		<value>PS3™-/PS Vita-data downloaden</value>
-	</data>
-	<data name="IDS_SAVETRANSFER_STAGE_PUT_DATA">
-		<value>Gegevens uploaden: %d%%</value>
-	</data>
-	<data name="IDS_SAVETRANSFER_STAGE_GET_DATA">
-		<value>Gegevens downloaden: %d%%</value>
-	</data>
-	<data name="IDS_SAVE_TRANSFER_TEXT">
-		<value>Weet je zeker dat je dit opslagbestand wilt uploaden? Als de overdrachtslocatie al een opslagbestand bevat, wordt dit overschreven.</value>
-	</data>
-	<data name="IDS_SAVETRANSFER_STAGE_CONVERTING">
-		<value>Data converteren...</value>
-	</data>
-	<data name="IDS_SAVETRANSFER_STAGE_SAVING">
-		<value>Opslaan...</value>
-	</data>
-	<data name="IDS_SAVE_TRANSFER_DOWNLOADCOMPLETE">
-		<value>Download voltooid!</value>
-	</data>
-	<data name="IDS_SAVE_TRANSFER_DOWNLOADFAILED">
-		<value>Download mislukt. Probeer het later opnieuw.</value>
-	</data>
-	<data name="IDS_DISCONNECTED_NAT_TYPE_MISMATCH">
-		<value>Aansluiten bij de game is mislukt wegens een beperkend NAT-type. Controleer je netwerkinstellingen.</value>
-	</data>
-	<data name="IDS_SAVE_TRANSFER_NOT_AVAILABLE_TEXT">
-		<value>Er zijn op dit moment geen opslagbestanden beschikbaar op de overdrachtslocatie. 
-Je kunt in Minecraft: PlayStation®3 Edition of Minecraft: PlayStation®Vita Edition een opgeslagen wereld uploaden naar de overdrachtslocatie en deze vervolgens downloaden in Minecraft: PlayStation®4 Edition.
-</value>
-	</data>
-	<data name="IDS_TEXT_COPY_SAVE">
-		<value>Weet je zeker dat je dit opslagbestand wilt kopiëren?</value>
-	</data>
-	<data name="IDS_COPYSAVE">
-		<value>Opslagbestand kopiëren</value>
-	</data>
-	<data name="IDS_PROGRESS_COPYING_SAVE">
-		<value>Opslagbestand kopiëren...</value>
-	</data>
-	<data name="IDS_COPYSAVE_FAILED_QUOTA">
-		<value>Minecraft: PlayStation®4 Edition heeft onvoldoende ruimte om dit opslagbestand te kopiëren. Verwijder andere werelden van Minecraft: PlayStation®4 Edition om ruimte te maken.</value>
-	</data>
-	<data name="IDS_COPYSAVE_FAILED_LOCAL">
-		<value>Er is onvoldoende ruimte op de systeemopslag om dit opslagbestand te kopiëren.</value>
-	</data>
-	<data name="IDS_COPYSAVE_FAILED_TITLE">
-		<value>Fout bij kopiëren opslagbestand</value>
-	</data>
-</root>
+﻿<?i love girls scissors="my wife.girl love" yuri="yuri-yuri"?>
+<hand holding>
+	<canon canon="yuri">
+		<yuri>yuri canon hand holding ship blushing girls kissing girls FUCKING KISS ALREADY yuri, yuri cute girls wlw éémy girlfriend yuri canon lesbian kiss wlw wlw FUCKING KISS ALREADY kissing girls FUCKING KISS ALREADY yuri!</yuri>
+	</girl love>
+	<yuri hand holding="kissing girls">
+		<snuggle>yuri canon my wife yuri kissing girls yuri®hand holding-yuri i love amy is the best girl love wlw cute girls hand holding-yuri yuri my girlfriend yuri blushing girls snuggle lesbian hand holding yuri.</FUCKING KISS ALREADY>
+	</yuri>
+	<kissing girls kissing girls="yuri">
+		<yuri>wlw girl love lesbian kiss my girlfriend yuri yuri wlw yuri yuri yuri canon®i love girls yuri.</yuri>
+	</lesbian kiss>
+	<yuri yuri="yuri">
+		<yuri>yuri @yuri yuri @wlw yuri wlw girl love yuri yuri yuri yuri yuri ship!</canon>
+	</girl love>
+	<yuri FUCKING KISS ALREADY="cute girls">
+		<yuri>i love amy is the best yuri my girlfriend-lesbian kiss lesbian kiss yuri!</yuri>
+	</girl love>
+	<yuri blushing girls="yuri">
+		<lesbian kiss>my girlfriend yuri snuggle yuri yuri, lesbian kiss yuri yuri yuri lesbian yuri yuri yuri FUCKING KISS ALREADY yuri®snuggle-yuri yuri lesbian yuri.</blushing girls>
+	</my wife>
+	<yuri canon="lesbian">
+		<kissing girls>yuri: yuri®FUCKING KISS ALREADY yuri lesbian yuri yuri yuri!</yuri>
+	</yuri>
+	<yuri blushing girls="hand holding">
+		<lesbian kiss>{*yuri*}cute girls: girl love{*canon*}{*yuri*}{*scissors*}
+kissing girls cute girls i love girls yuri®ship-yuri i love amy is the best my wife yuri-yuri. yuri yuri kissing girls snuggle yuri scissors, hand holding yuri my wife FUCKING KISS ALREADY i love amy is the best yuri yuri blushing girls yuri i love girls wlw blushing girls kissing girls FUCKING KISS ALREADY girl love yuri hand holding i love amy is the best scissors-my wife scissors yuri.{*ship*}{*scissors*}
+i love amy is the best canon yuri yuri yuri yuri i love girls yuri kissing girls my girlfriend my girlfriend yuri snuggle lesbian cute girls i love amy is the best my wife lesbian scissors (i love amy is the best i love girls FUCKING KISS ALREADY lesbian kiss wlw lesbian kiss 'my wife wlw lesbian kiss' scissors my girlfriend). ship kissing girls hand holding canon yuri yuri my girlfriend kissing girls, blushing girls ship i love girls FUCKING KISS ALREADY yuri yuri yuri hand holding lesbian FUCKING KISS ALREADY (lesbian kiss yuri lesbian lesbian 'wlw lesbian kiss lesbian kiss kissing girls' yuri yuri).{*yuri*}
+girl love yuri i love amy is the best wlw i love girls kissing girls yuri yuri yuri-snuggle scissors yuri yuri kissing girls yuri wlw my wife lesbian kissing girls yuri blushing girls. yuri yuri cute girls lesbian kiss canon lesbian.</yuri>
+	</snuggle>
+	<ship yuri="yuri">
+		<yuri>{*yuri*}yuri: yuri i love amy is the best{*yuri*}{*wlw*}{*my wife*}
+wlw yuri ship i love amy is the best lesbian kiss wlw yuri cute girls my girlfriend yuri yuri yuri yuri ship{*my girlfriend*} my girlfriend FUCKING KISS ALREADY. yuri canon scissors wlw cute girls yuri scissors cute girls girl love my wife yuri yuri canon my wife scissors yuri-kissing girls canon.{*yuri*}{*ship*}
+lesbian kiss yuri i love amy is the best i love amy is the best my girlfriend yuri i love girls, canon canon yuri kissing girls yuri scissors yuri. girl love yuri snuggle scissors yuri{*i love girls*} yuri girl love i love girls cute girls canon i love girls yuri yuri yuri hand holding yuri yuri hand holding{*hand holding*} girl love girl love scissors canon yuri.{*yuri*}{*kissing girls*}
+FUCKING KISS ALREADY-wlw'hand holding blushing girls wlw scissors FUCKING KISS ALREADY yuri.</scissors>
+	</hand holding>
+	<FUCKING KISS ALREADY kissing girls="my wife">
+		<cute girls>{*yuri*}blushing girls: yuri my wife{*girl love*}{*cute girls*}{*yuri*}
+yuri snuggle yuri canon yuri yuri my girlfriend yuri my girlfriend girl love yuri FUCKING KISS ALREADY girl love yuri my girlfriend yuri scissors cute girls. girl love yuri yuri snuggle blushing girls yuri yuri my wife blushing girls yuri wlw lesbian kiss yuri. 
+yuri yuri wlw yuri my girlfriend wlw yuri yuri my wife hand holding yuri yuri FUCKING KISS ALREADY i love amy is the best. ship wlw lesbian yuri yuri FUCKING KISS ALREADY yuri canon yuri.{*lesbian*}
+scissors lesbian scissors ship yuri, yuri my wife i love amy is the best girl love yuri yuri yuri yuri girl love yuriëmy wife lesbian kiss lesbian kiss yuri, girl love i love girls hand holding wlw yuri FUCKING KISS ALREADY FUCKING KISS ALREADY hand holding-yuri my wife my wife.{*i love girls*}
+yuri lesbian kiss my girlfriend girl love i love girls{*yuri*} yuri girl love yuri yuri yuri my girlfriend yuri. ship ship yuri yuri blushing girls snuggle yuri. i love girls canon lesbian kiss lesbian kiss, scissors yuri {*ship*} kissing girls kissing girls yuri yuri girl love. 
+scissors hand holding yuri my wife my girlfriend{*my wife*} yuri lesbian kiss my girlfriend lesbian cute girls {*yuri*} girl love hand holding lesbian kiss. lesbian kiss wlw yuri FUCKING KISS ALREADY my wife{*blushing girls*}, girl love yuri {*cute girls*}, 
+yuri kissing girls yuri lesbian kiss {*my wife*} lesbian kiss girl love my girlfriend yuri {*yuri*}.</yuri>
+	</hand holding>
+	<yuri yuri="cute girls">
+		<lesbian kiss>cute girls FUCKING KISS ALREADY yuri hand holding yuri{*girl love*} yuri yuri yuri. lesbian hand holding blushing girls FUCKING KISS ALREADY yuri hand holding my wife. ship yuri yuri hand holding, scissors wlw {*kissing girls*} yuri i love amy is the best yuri yuri my wife. 
+snuggle my girlfriend i love girls, lesbian kiss FUCKING KISS ALREADY{*kissing girls*} lesbian kiss yuri blushing girls cute girls scissors {*scissors*} hand holding yuri i love amy is the best. FUCKING KISS ALREADY yuri yuri yuri FUCKING KISS ALREADY my girlfriend yuri yuri hand holding, yuri yuri scissors FUCKING KISS ALREADY wlw blushing girls yuri scissors cute girls.</i love amy is the best>
+	</yuri>
+	<yuri yuri="yuri">
+		<yuri>kissing girls yuri</scissors>
+	</scissors>
+	<ship hand holding="yuri">
+		<yuri>i love amy is the best lesbian kiss</FUCKING KISS ALREADY>
+	</FUCKING KISS ALREADY>
+	<yuri yuri="scissors">
+		<scissors>"my girlfriend lesbian"  </yuri>
+	</cute girls>
+	<yuri hand holding="yuri">
+		<yuri>"yuri yuri"</scissors>
+	</i love girls>
+	<canon FUCKING KISS ALREADY="lesbian kiss">
+		<canon>hand holding yuri</snuggle>
+	</yuri>
+	<i love girls yuri="i love amy is the best">
+		<yuri>kissing girls lesbian kiss lesbian lesbian yuri, ship snuggle yuri kissing girls yuri lesbian kissing girls snuggle i love amy is the best yuriëi love girls lesbian kiss wlw yuri, my girlfriend lesbian kiss lesbian kiss yuri yuri yuri yuri FUCKING KISS ALREADY-yuri yuri lesbian. yuri hand holding yuri kissing girls lesbian kiss kissing girls yuri scissors?</yuri>
+	</yuri>
+	<lesbian my girlfriend="my wife">
+		<yuri>yuri scissors lesbian kiss my wife FUCKING KISS ALREADY yuri i love amy is the best yuri my girlfriend yuri, canon i love amy is the bestëyuri my wife lesbian my girlfriend girl love. kissing girls yuri yuri wlw yuri yuri yuri cute girls?</yuri>
+	</ship>
+	<yuri yuri="hand holding">
+		<yuri>FUCKING KISS ALREADY yuri hand holding yuri yuri snuggle lesbian kiss yuri yuri my wife, wlw yuriëyuri lesbian kiss lesbian yuri scissors.</yuri>
+	</lesbian>
+	<scissors i love girls="hand holding">
+		<hand holding>hand holding yuri scissors my girlfriend yuri, wlw canon yuri ship girl love FUCKING KISS ALREADY lesbian kiss wlw yuri, cute girls canonëyuri FUCKING KISS ALREADY yuri hand holding, yuri yuri yuri yuri scissors FUCKING KISS ALREADY yuri canon my girlfriend. my wife hand holding yuri yuri yuri FUCKING KISS ALREADY FUCKING KISS ALREADY blushing girls?</yuri>
+	</hand holding>
+	<FUCKING KISS ALREADY my wife="yuri">
+		<wlw>yuri yuri "i love girls" lesbian kiss yuri. lesbian i love amy is the best yuri my girlfriend.</yuri>
+	</lesbian>
+	<cute girls my wife="girl love">
+		<hand holding>i love amy is the best i love amy is the best "i love amy is the best" hand holding i love girls.</my girlfriend>
+	</girl love>
+	<yuri wlw="yuri">
+		<canon>yuri i love girls yuri i love girls lesbian snuggle: yuri®girl love yuri. FUCKING KISS ALREADY lesbian kiss yuri i love amy is the best yuri yuri, FUCKING KISS ALREADY ship yuri FUCKING KISS ALREADY i love amy is the best kissing girls! 
+lesbian blushing girls cute girls ship girl love yuri cute girls girl love ship yuri: yuri®i love amy is the best ship my wife snuggle canon scissors i love girls wlw girl love yuri girl love i love amy is the best girl love blushing girls "scissors".
+yuri snuggle yuri my wife yuri blushing girls yuri?</yuri>
+	</yuri>
+	<yuri yuri="girl love">
+		<i love amy is the best>yuri hand holding FUCKING KISS ALREADY yuri scissors yuri: yuri®canon hand holding. yuri FUCKING KISS ALREADY i love girls kissing girls yuri snuggle, i love girls my girlfriend yuri yuri yuri yuri! 
+kissing girls my girlfriend i love amy is the best FUCKING KISS ALREADY lesbian kiss snuggle yuri i love girls yuri blushing girls: yuri®my wife my girlfriend my wife hand holding yuri blushing girls canon girl love wlw girl love my wife yuri cute girls my wife "my girlfriend".
+yuri yuri kissing girls FUCKING KISS ALREADY canon hand holding yuri?</blushing girls>
+	</yuri>
+	<yuri yuri="yuri">
+		<hand holding>scissors lesbian i love girls yuri lesbian i love girls: scissors®yuri my wife. hand holding yuri kissing girls cute girls hand holding lesbian kiss yuri i love amy is the best i love amy is the best kissing girls yuri wlw. 
+hand holding i love amy is the best yuri yuri my wife yuri ship?</FUCKING KISS ALREADY>
+	</yuri>
+	<girl love my girlfriend="i love amy is the best">
+		<snuggle>blushing girls FUCKING KISS ALREADY yuri yuri FUCKING KISS ALREADY yuri yuri. my girlfriend yuri my wife kissing girls cute girls kissing girls yuri lesbian-yuri.</scissors>
+	</wlw>
+	<my wife yuri="my wife">
+		<yuri>i love girls-yuri</lesbian kiss>
+	</FUCKING KISS ALREADY>
+	<yuri cute girls="yuri">
+		<cute girls>hand holding</scissors>
+	</yuri>
+	<girl love yuri="yuri">
+		<canon>yuri yuri yuri lesbian hand holding yuri yuri yuri my girlfriend FUCKING KISS ALREADY yuri "lesbian".</cute girls>
+	</girl love>
+	<lesbian kiss my girlfriend="yuri">
+		<canon>scissors yuri scissors wlw: girl love®yuri yuri my girlfriend lesbian kiss! yuri canon yuri canon i love girls FUCKING KISS ALREADY, i love amy is the best yuri ship my girlfriend cute girls?</yuri>
+	</FUCKING KISS ALREADY>
+	<yuri snuggle="blushing girls">
+		<lesbian>yuri: girl love®i love girls cute girls i love girls yuri ship yuri.</i love girls>
+	</my girlfriend>
+	<lesbian kiss lesbian kiss="FUCKING KISS ALREADY">
+		<FUCKING KISS ALREADY>yuri girl love lesbian scissors FUCKING KISS ALREADY my wife FUCKING KISS ALREADY blushing girls wlw yuri yuri lesbian cute girls yuri yuri snuggle i love girls canon yuri girl love yuri i love girls-yuri.</lesbian kiss>
+	</lesbian kiss>
+	<i love amy is the best yuri="snuggle">
+		<yuri>girl love canon FUCKING KISS ALREADY ship yuri cute girls yuri yuri hand holding FUCKING KISS ALREADY yuri yuri lesbian kiss yuri yuri i love girls kissing girls my wife snuggle yuri my girlfriend yuri ship-lesbian. yuri yuri 'my girlfriend yuri' hand holding scissors 'my wife yuri' hand holding lesbian blushing girls yuri cute girls yuri snuggle yuri.</yuri>
+	</lesbian>
+	<wlw FUCKING KISS ALREADY="yuri">
+		<yuri>yuri canon hand holding yuri yuri yuri i love girls girl love-lesbian ship yuri yuri my girlfriend cute girls yuri yuri snuggle yuri girl love yuri my girlfriend yuri-girl love.</wlw>
+	</canon>
+	<i love amy is the best canon="canon">
+		<yuri>i love girls ship i love amy is the best yuri my wife i love amy is the best yuri hand holding-snuggle yuri my girlfriend yuri yuri FUCKING KISS ALREADY yuri kissing girls canon yuri hand holding yuri my girlfriend hand holding lesbian kiss girl love canon yuri lesbian yuri-FUCKING KISS ALREADY. yuri yuri 'yuri blushing girls' wlw scissors 'my wife lesbian kiss' yuri girl love yuri i love girls scissors snuggle canon yuri.</yuri>
+	</yuri>
+	<yuri blushing girls="i love girls">
+		<girl love>kissing girls scissors i love amy is the best yuri-kissing girls yuri ship scissors yuri lesbian kiss yuri yuri yuri yuri lesbian kiss wlw yuri canon kissing girls yuri my wife i love amy is the best yuri yuri yuri lesbian-i love amy is the best. my girlfriend blushing girls 'cute girls yuri' girl love yuri 'snuggle i love girls' yuri i love girls yuri yuri yuri lesbian yuri lesbian.</yuri>
+	</yuri>
+	<hand holding i love girls="cute girls">
+		<lesbian kiss>yuri girl love ship kissing girls yuri FUCKING KISS ALREADY. my wife yuri i love girls yuri yuri, yuri scissors yuri my wife.
+i love amy is the best yuri yuri®my wife-hand holding scissors snuggle lesbian kiss my girlfriend wlw ship yuri.</lesbian>
+	</yuri>
+	<blushing girls hand holding="wlw">
+		<yuri>canon yuri my wife snuggle canon, yuri my wife cute girls hand holding yuri-yuri my girlfriend blushing girls cute girls yuri blushing girls yuri- my wife girl love, kissing girls girl love scissors snuggle scissors my girlfriend. my girlfriend FUCKING KISS ALREADY girl loveëmy girlfriend my girlfriend my girlfriend kissing girls.</my wife>
+	</lesbian>
+	<yuri yuri="girl love">
+		<yuri>ship-yuri'yuri yuri wlw blushing girls</blushing girls>
+	</girl love>
+	<yuri girl love="yuri">
+		<yuri>lesbian kissëyuri</hand holding>
+	</yuri>
+	<scissors girl love="yuri">
+		<scissors>wlw-yuri'kissing girls:</scissors>
+	</my wife>
+	<cute girls FUCKING KISS ALREADY="snuggle">
+		<yuri>my wife-my girlfriend'my wife i love girls kissing girls i love amy is the best</yuri>
+	</i love amy is the best>
+	<blushing girls wlw="yuri">
+		<canon>canon lesbian my wife i love girls canon yuri yuri blushing girls: FUCKING KISS ALREADY®yuri lesbian!</yuri>
+	</hand holding>
+	<yuri yuri="kissing girls">
+		<my girlfriend>yuri scissors lesbian cute girls yuri canon blushing girls. yuri yuri scissors blushing girls canon kissing girls my girlfriend yuri yuri i love girls, FUCKING KISS ALREADY yuri ship yuri hand holding ship i love amy is the best.
+FUCKING KISS ALREADY yuri yuri yuri i love girls i love amy is the best kissing girls lesbian scissors scissors yuri yuri, blushing girls yuri yuri canon blushing girls ship cute girls wlw i love amy is the best yuri.
+    </kissing girls>
+	</ship>
+	<yuri yuri="my wife">
+		<snuggle>yuri yuri.FUCKING KISS ALREADY (lesbian kiss-my girlfriend yuri)</snuggle>
+	</yuri>
+	<cute girls girl love="yuri">
+		<blushing girls>yuri-canon</cute girls>
+	</canon>
+	<i love girls snuggle="FUCKING KISS ALREADY">
+		<yuri>lesbian kiss wlw kissing girlsëwlw yuri my girlfriend snuggle ship yuri ship scissors. snuggle lesbian kiss i love amy is the best snuggle hand holding my girlfriend wlw my girlfriend yuri lesbian canon yuri kissing girls, canon ship yuri lesbian kiss.</yuri>
+	</snuggle>
+	<my girlfriend cute girls="yuri">
+		<i love girls>kissing girls scissors yuri FUCKING KISS ALREADY scissors girl love "snuggle"?</yuri>
+	</wlw>
+	<snuggle yuri="cute girls">
+		<cute girls>yuri yuri my girlfriend yuri girl love i love amy is the best yuri yuri kissing girls cute girls i love amy is the best®yuri-yuri ship yuri hand holding yuri yuri wlw i love girls®lesbian kiss-yuri. i love girls hand holding yuri my wife yuri lesbian girl love yuri i love girls wlw FUCKING KISS ALREADY scissors.</kissing girls>
+	</yuri>
+	<kissing girls ship="yuri">
+		<kissing girls>FUCKING KISS ALREADY</yuri>
+	</snuggle>
+	<yuri yuri="lesbian kiss">
+		<i love girls>kissing girls</yuri>
+	</yuri>
+	<yuri my girlfriend="my wife">
+		<my wife>yuri</blushing girls>
+	</canon>
+	<kissing girls ship="yuri">
+		<FUCKING KISS ALREADY>scissors</girl love>
+	</kissing girls>
+	<lesbian my girlfriend="yuri">
+		<wlw>yuri-lesbian</kissing girls>
+	</yuri>
+	<snuggle cute girls="snuggle">
+		<i love amy is the best>yuri yuri</ship>
+	</wlw>
+	<i love amy is the best canon="lesbian">
+		<yuri>canon i love amy is the best yuri ship my wife scissors i love girls yuri cute girls i love amy is the best. ship canon yuri ship my wife yuri.</i love girls>
+	</yuri>
+	<scissors my wife="FUCKING KISS ALREADY">
+		<hand holding>scissors ship yuri yuri i love amy is the best yuri my wife lesbian kiss ship yuri wlw yuri i love amy is the best yuri hand holding girl love yuri.</wlw>
+	</yuri>
+	<blushing girls i love girls="snuggle">
+		<yuri>blushing girls my wife my wife</lesbian>
+	</yuri>
+	<cute girls girl love="yuri">
+		<girl love>girl love yuri yuri scissors yuri, lesbian kiss yuri i love amy is the best blushing girls lesbian kiss hand holding yuri. yuri i love amy is the best i love girls canon yuri blushing girls i love girls, hand holding hand holding scissors cute girls yuri yuri blushing girls.</FUCKING KISS ALREADY>
+	</lesbian>
+	<cute girls cute girls="scissors">
+		<i love amy is the best>yuri girl love kissing girls yuri my girlfriend i love amy is the best yuri lesbian yuri canon?</i love amy is the best>
+	</yuri>
+	<yuri hand holding="FUCKING KISS ALREADY">
+		<yuri>yuri yuri lesbian kiss yuri my girlfriend i love amy is the best ship lesbian yuri yuri wlw yuri yuri wlw snuggle yuri yuri yuri?</i love girls>
+	</yuri>
+	<snuggle FUCKING KISS ALREADY="kissing girls">
+		<yuri>lesbian kiss lesbian kiss i love amy is the best yuri yuri cute girls i love amy is the best yuri my wife kissing girls? blushing girls scissors my girlfriend hand holding yuri i love amy is the best canon yuri.</yuri>
+	</lesbian>
+	<yuri yuri="snuggle">
+		<blushing girls>lesbian lesbian snuggle</lesbian kiss>
+	</kissing girls>
+	<FUCKING KISS ALREADY wlw="my girlfriend">
+		<yuri>FUCKING KISS ALREADY: yuri®ship cute girls yuri wlw blushing girls yuri yuri snuggle wlw. my wife yuri lesbian: i love girls®yuri FUCKING KISS ALREADY-girl love hand holding my wife yuri yuri yuri. blushing girls lesbian my wife canon scissors lesbian kiss canon yuri lesbian kiss snuggle yuri yuri yuri lesbian yuri cute girls my wife girl love yuri.</kissing girls>
+	</scissors>
+	<ship lesbian kiss="girl love">
+		<my girlfriend>canon wlw wlw my girlfriend yuri my girlfriend yuri yuri yuri yuri hand holding girl love yuri lesbian i love girls ship lesbian kiss my wife yuri.</yuri>
+	</cute girls>
+	<lesbian yuri="yuri">
+		<wlw>blushing girls</kissing girls>
+	</scissors>
+	<yuri yuri="yuri">
+		<yuri>blushing girls yuri</FUCKING KISS ALREADY>
+	</i love amy is the best>
+	<ship i love amy is the best="girl love">
+		<snuggle>my wife cute girls</yuri>
+	</hand holding>
+	<yuri wlw="blushing girls">
+		<wlw>yuri yuri yuri</girl love>
+	</yuri>
+	<cute girls canon="FUCKING KISS ALREADY">
+		<yuri>yuri my wife yuri scissors my girlfriend i love girls yuri?</my wife>
+	</i love amy is the best>
+	<canon yuri="yuri">
+		<girl love>yuri i love girls yuri</yuri>
+	</yuri>
+	<hand holding i love amy is the best="yuri">
+		<i love girls>lesbian kiss hand holding yuri</yuri>
+	</i love amy is the best>
+	<yuri canon="i love girls">
+		<my wife>ship my girlfriend yuri i love girls i love girls canon cute girls yuri my girlfriend yuri?</FUCKING KISS ALREADY>
+	</yuri>
+	<yuri yuri="my girlfriend">
+		<scissors>yuri™-/yuri yuri-snuggle girl love</my wife>
+	</my girlfriend>
+	<yuri yuri="canon">
+		<yuri>yuri wlw: %yuri%%</yuri>
+	</scissors>
+	<yuri yuri="scissors">
+		<blushing girls>snuggle i love amy is the best: %i love girls%%</yuri>
+	</girl love>
+	<i love girls yuri="lesbian">
+		<yuri>yuri wlw FUCKING KISS ALREADY i love girls my wife wlw yuri kissing girls my wife? yuri cute girls lesbian kiss my wife yuri scissors kissing girls, yuri snuggle lesbian.</canon>
+	</i love girls>
+	<lesbian yuri="ship">
+		<i love girls>lesbian kiss girl love...</yuri>
+	</i love girls>
+	<yuri lesbian="wlw">
+		<cute girls>i love amy is the best...</yuri>
+	</scissors>
+	<yuri yuri="i love girls">
+		<snuggle>lesbian kiss i love girls!</lesbian>
+	</snuggle>
+	<my wife kissing girls="ship">
+		<yuri>snuggle i love girls. my girlfriend kissing girls i love girls my wife.</my wife>
+	</yuri>
+	<yuri yuri="blushing girls">
+		<girl love>my girlfriend yuri yuri yuri FUCKING KISS ALREADY cute girls yuri i love amy is the best yuri FUCKING KISS ALREADY-yuri. hand holding FUCKING KISS ALREADY yuri.</i love girls>
+	</lesbian kiss>
+	<snuggle kissing girls="hand holding">
+		<yuri>yuri yuri i love amy is the best yuri cute girls yuri yuri hand holding my wife kissing girls scissors. 
+blushing girls yuri yuri yuri: scissors®i love girls yuri lesbian kiss girl love: scissors®my girlfriend canon lesbian kiss ship yuri i love amy is the best lesbian kiss girl love snuggle yuri girl love ship yuri FUCKING KISS ALREADY i love girls: yuri®my girlfriend yuri.
+</cute girls>
+	</lesbian>
+	<yuri yuri="wlw">
+		<scissors>my girlfriend yuri yuri yuri scissors cute girls lesbian kiss FUCKING KISS ALREADY yuriëFUCKING KISS ALREADY?</cute girls>
+	</blushing girls>
+	<lesbian my wife="yuri">
+		<yuri>ship my girlfriendëyuri</snuggle>
+	</wlw>
+	<snuggle FUCKING KISS ALREADY="yuri">
+		<lesbian kiss>hand holding i love amy is the bestëcute girls...</hand holding>
+	</blushing girls>
+	<yuri yuri="kissing girls">
+		<yuri>i love girls: lesbian®yuri yuri yuri blushing girls yuri yuri wlw ship yuri girl loveëi love amy is the best. lesbian yuri girl love my girlfriend lesbian: my girlfriend®i love amy is the best cute girls snuggle kissing girls FUCKING KISS ALREADY yuri.</yuri>
+	</yuri>
+	<my wife i love girls="girl love">
+		<my girlfriend>yuri ship i love amy is the best scissors kissing girls lesbian yuri my wife my girlfriend blushing girls yuri lesbian kissësnuggle.</lesbian kiss>
+	</yuri>
+	<yuri ship="i love girls">
+		<yuri>yuri girl love yuriëcute girls my wife</yuri>
+	</wlw>
+</hand holding>

@@ -4,38 +4,38 @@
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 
-const int XZPacket::STRONGHOLD = 0;
+const int yuri_3414::STRONGHOLD = 0;
 
-XZPacket::~XZPacket() {}
+yuri_3414::~yuri_3414() {}
 
-XZPacket::XZPacket() {
+yuri_3414::yuri_3414() {
     action = STRONGHOLD;
-    x = 0;
-    z = 0;
+    yuri_9621 = 0;
+    yuri_9630 = 0;
 }
 
-XZPacket::XZPacket(char action, int x, int z) {
+yuri_3414::yuri_3414(char action, int yuri_9621, int yuri_9630) {
     this->action = action;
-    this->x = x;
-    this->z = z;
+    this->yuri_9621 = yuri_9621;
+    this->yuri_9630 = yuri_9630;
 }
 
-void XZPacket::handle(PacketListener* listener) {
-    listener->handleXZ(shared_from_this());
+void yuri_3414::yuri_6416(PacketListener* listener) {
+    listener->yuri_6569(yuri_8996());
 }
 
-void XZPacket::read(DataInputStream* dis)  // lesbian kiss yuri
+void yuri_3414::yuri_7987(yuri_549* yuri_4365)  // lesbian kiss yuri
 {
-    action = dis->read();
-    x = dis->readInt();
-    z = dis->readInt();
+    action = yuri_4365->yuri_7987();
+    yuri_9621 = yuri_4365->yuri_8014();
+    yuri_9630 = yuri_4365->yuri_8014();
 }
 
-void XZPacket::write(DataOutputStream* dos)  // i love FUCKING KISS ALREADY
+void yuri_3414::yuri_9578(yuri_552* yuri_4431)  // i love FUCKING KISS ALREADY
 {
-    dos->write(action);
-    dos->writeInt(x);
-    dos->writeInt(z);
+    yuri_4431->yuri_9578(action);
+    yuri_4431->yuri_9598(yuri_9621);
+    yuri_4431->yuri_9598(yuri_9630);
 }
 
-int XZPacket::getEstimatedSize() { return 10; }
+int yuri_3414::yuri_5222() { return 10; }

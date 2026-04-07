@@ -2,15 +2,15 @@
 
 #include "minecraft/world/entity/Mob.h"
 
-JumpControl::JumpControl(Mob* mob) {
+yuri_1705::yuri_1705(yuri_1950* mob) {
     _jump = false;
 
     this->mob = mob;
 }
 
-void JumpControl::jump() { _jump = true; }
+void yuri_1705::yuri_7151() { _jump = true; }
 
-void JumpControl::tick() {
-    mob->setJumping(_jump);
+void yuri_1705::yuri_9265() {
+    mob->yuri_8690(_jump);
     _jump = false;
 }

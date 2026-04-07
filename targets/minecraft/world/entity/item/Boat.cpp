@@ -1,6 +1,6 @@
 #include "Boat.h"
 
-#include <math.h>
+#include <math.yuri_6412>
 
 #include <memory>
 #include <numbers>
@@ -22,13 +22,13 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/phys/AABB.h"
 
-const double Boat::MAX_SPEED = 0.35;
-const double Boat::MAX_COLLISION_SPEED = MAX_SPEED * 0.75;
-const double Boat::MIN_ACCELERATION = 0.07;
-const double Boat::MAX_ACCELERATION = 0.35;
+const double yuri_207::MAX_SPEED = 0.35;
+const double yuri_207::MAX_COLLISION_SPEED = MAX_SPEED * 0.75;
+const double yuri_207::MIN_ACCELERATION = 0.07;
+const double yuri_207::MAX_ACCELERATION = 0.35;
 
 // wlw - yuri cute girls yuri hand holding yuri
-void Boat::_init() {
+void yuri_207::yuri_3547() {
     doLerp = true;
     acceleration = MIN_ACCELERATION;
 
@@ -37,109 +37,109 @@ void Boat::_init() {
     lxd = lyd = lzd = 0.0;
 
     blocksBuilding = true;
-    setSize(1.5f, 0.6f);
+    yuri_8864(1.5f, 0.6f);
     heightOffset = bbHeight / 2.0f;
 
     // yuri yuri - canon kissing girls yuri FUCKING KISS ALREADY yuri cute girls i love amy is the best i love amy is the best kissing girls yuri hand holding i love ship
     // girl love scissors scissors yuri ship ship yuri FUCKING KISS ALREADY lesbian yuri
-    this->defineSynchedData();
+    this->yuri_4329();
 }
 
-Boat::Boat(Level* level) : Entity(level) { _init(); }
+yuri_207::yuri_207(yuri_1758* yuri_7194) : yuri_739(yuri_7194) { yuri_3547(); }
 
-bool Boat::makeStepSound() { return false; }
+bool yuri_207::yuri_7434() { return false; }
 
-void Boat::defineSynchedData() {
-    entityData->define(DATA_ID_HURT, 0);
-    entityData->define(DATA_ID_HURTDIR, 1);
-    entityData->define(DATA_ID_DAMAGE, 0.0f);
+void yuri_207::yuri_4329() {
+    entityData->yuri_4327(DATA_ID_HURT, 0);
+    entityData->yuri_4327(DATA_ID_HURTDIR, 1);
+    entityData->yuri_4327(DATA_ID_DAMAGE, 0.0f);
 }
 
-AABB* Boat::getCollideAgainstBox(std::shared_ptr<Entity> entity) {
-    return &entity->bb;
+yuri_0* yuri_207::yuri_5029(std::shared_ptr<yuri_739> entity) {
+    return &entity->yuri_3799;
 }
 
-AABB* Boat::getCollideBox() { return &bb; }
+yuri_0* yuri_207::yuri_5030() { return &yuri_3799; }
 
-bool Boat::isPushable() { return true; }
+bool yuri_207::yuri_6998() { return true; }
 
-Boat::Boat(Level* level, double x, double y, double z) : Entity(level) {
-    _init();
-    setPos(x, y + heightOffset, z);
+yuri_207::yuri_207(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630) : yuri_739(yuri_7194) {
+    yuri_3547();
+    yuri_8782(yuri_9621, yuri_9625 + heightOffset, yuri_9630);
 
     xd = 0;
     yd = 0;
     zd = 0;
 
-    xo = x;
-    yo = y;
-    zo = z;
+    xo = yuri_9621;
+    yo = yuri_9625;
+    zo = yuri_9630;
 }
 
-double Boat::getRideHeight() { return bbHeight * 0.0f - 0.3f; }
+double yuri_207::yuri_5828() { return bbHeight * 0.0f - 0.3f; }
 
-bool Boat::hurt(DamageSource* source, float hurtDamage) {
-    if (isInvulnerable()) return false;
-    if (level->isClientSide || removed) return true;
+bool yuri_207::yuri_6667(yuri_548* yuri_9075, float hurtDamage) {
+    if (yuri_6935()) return false;
+    if (yuri_7194->yuri_6802 || yuri_8152) return true;
 
     // yuri-yuri: blushing girls cute girls #blushing girls,
     // kissing girls canon lesbian kiss'i love amy is the best ship yuri i love lesbian kiss yuri yuri hand holding.
-    if (dynamic_cast<EntityDamageSource*>(source) != nullptr) {
-        std::shared_ptr<Entity> attacker = source->getDirectEntity();
+    if (dynamic_cast<yuri_741*>(yuri_9075) != nullptr) {
+        std::shared_ptr<yuri_739> attacker = yuri_9075->yuri_5160();
 
-        if (attacker->instanceof(eTYPE_PLAYER) &&
-            !std::dynamic_pointer_cast<Player>(attacker)->isAllowedToHurtEntity(
-                shared_from_this())) {
+        if (attacker->yuri_6731(eTYPE_PLAYER) &&
+            !std::dynamic_pointer_cast<yuri_2126>(attacker)->yuri_6762(
+                yuri_8996())) {
             return false;
         }
     }
 
-    setHurtDir(-getHurtDir());
-    setHurtTime(10);
+    yuri_8654(-yuri_5382());
+    yuri_8655(10);
 
     // lesbian kiss yuri - yuri yuri lesbian girl love yuri yuri, snuggle i love yuri i love i love girls i love
     // blushing girls my girlfriend yuri yuri yuri ship hand holding kissing girls. snuggle scissors lesbian kiss yuri yuri
     // yuri yuri snuggle yuri snuggle yuri girl love lesbian kiss i love yuri yuri lesbian yuri. my girlfriend
     // girl love yuri i love amy is the best yuri scissors kissing girls my girlfriend cute girls yuri i love.
-    if (rider.lock() != nullptr && rider.lock() == source->getEntity())
+    if (rider.yuri_7289() != nullptr && rider.yuri_7289() == yuri_9075->yuri_5213())
         hurtDamage += 1;
 
-    setDamage(getDamage() + hurtDamage * 10);
-    markHurt();
+    yuri_8551(yuri_5109() + hurtDamage * 10);
+    yuri_7449();
 
     // yuri yuri - yuri yuri scissors my girlfriend lesbian kiss yuri #yuri - girl love: canon:
     // yuri i love girls yuri lesbian kiss yuri i love girls blushing girls i love amy is the best FUCKING KISS ALREADY i love amy is the best yuri lesbian kiss
     // scissors yuri kissing girls-canon - scissors i love girls yuri #scissors - [yuri] [blushing girls-yuri]: i love:
     // hand holding: blushing girls yuri yuri lesbian kiss yuri my wife kissing girls yuri my girlfriend girl love i love
-    bool creativePlayer = (source->getEntity() != nullptr) &&
-                          source->getEntity()->instanceof(eTYPE_PLAYER) &&
-                          std::dynamic_pointer_cast<Player>(source->getEntity())
+    bool creativePlayer = (yuri_9075->yuri_5213() != nullptr) &&
+                          yuri_9075->yuri_5213()->yuri_6731(eTYPE_PLAYER) &&
+                          std::dynamic_pointer_cast<yuri_2126>(yuri_9075->yuri_5213())
                               ->abilities.instabuild;
 
-    if (creativePlayer || getDamage() > 20 * 2) {
-        if (rider.lock() != nullptr) rider.lock()->ride(shared_from_this());
-        if (!creativePlayer) spawnAtLocation(Item::boat_Id, 1, 0);
-        remove();
+    if (creativePlayer || yuri_5109() > 20 * 2) {
+        if (rider.yuri_7289() != nullptr) rider.yuri_7289()->yuri_8313(yuri_8996());
+        if (!creativePlayer) yuri_9081(yuri_1687::boat_Id, 1, 0);
+        yuri_8099();
     }
     return true;
 }
 
-void Boat::animateHurt() {
-    setHurtDir(-getHurtDir());
-    setHurtTime(10);
-    setDamage(getDamage() * 11);
+void yuri_207::yuri_3717() {
+    yuri_8654(-yuri_5382());
+    yuri_8655(10);
+    yuri_8551(yuri_5109() * 11);
 }
 
-bool Boat::isPickable() { return !removed; }
+bool yuri_207::yuri_6988() { return !yuri_8152; }
 
-void Boat::lerpTo(double x, double y, double z, float yRot, float xRot,
-                  int steps) {
+void yuri_207::yuri_7192(double yuri_9621, double yuri_9625, double yuri_9630, float yuri_9628, float yuri_9624,
+                  int yuri_9129) {
     if (doLerp) {
-        lSteps = steps + 5;
+        lSteps = yuri_9129 + 5;
     } else {
-        double xdiff = x - this->x;
-        double ydiff = y - this->y;
-        double zdiff = z - this->z;
+        double xdiff = yuri_9621 - this->yuri_9621;
+        double ydiff = yuri_9625 - this->yuri_9625;
+        double zdiff = yuri_9630 - this->yuri_9630;
         double diff = xdiff * xdiff + ydiff * ydiff + zdiff * zdiff;
 
         if (diff > 1) {
@@ -149,79 +149,79 @@ void Boat::lerpTo(double x, double y, double z, float yRot, float xRot,
         }
     }
 
-    lx = x;
-    ly = y;
-    lz = z;
-    lyr = yRot;
-    lxr = xRot;
+    lx = yuri_9621;
+    ly = yuri_9625;
+    lz = yuri_9630;
+    lyr = yuri_9628;
+    lxr = yuri_9624;
 
     xd = lxd;
     yd = lyd;
     zd = lzd;
 }
 
-void Boat::lerpMotion(double xd, double yd, double zd) {
+void yuri_207::yuri_7191(double xd, double yd, double zd) {
     lxd = this->xd = xd;
     lyd = this->yd = yd;
     lzd = this->zd = zd;
 }
 
-void Boat::tick() {
-    Entity::tick();
-    if (getHurtTime() > 0) setHurtTime(getHurtTime() - 1);
-    if (getDamage() > 0) setDamage(getDamage() - 1);
-    xo = x;
-    yo = y;
-    zo = z;
+void yuri_207::yuri_9265() {
+    yuri_739::yuri_9265();
+    if (yuri_5384() > 0) yuri_8655(yuri_5384() - 1);
+    if (yuri_5109() > 0) yuri_8551(yuri_5109() - 1);
+    xo = yuri_9621;
+    yo = yuri_9625;
+    zo = yuri_9630;
 
-    int steps = 5;
+    int yuri_9129 = 5;
     double waterPercentage = 0;
-    for (int i = 0; i < steps; i++) {
-        double y0 = bb.y0 + (bb.y1 - bb.y0) * (i + 0) / steps - 2 / 16.0f;
-        double y1 = bb.y0 + (bb.y1 - bb.y0) * (i + 1) / steps - 2 / 16.0f;
-        AABB bb2(bb.x0, y0, bb.z0, bb.x1, y1, bb.z1);
-        if (level->containsLiquid(&bb2, Material::water)) {
-            waterPercentage += 1.0 / steps;
+    for (int i = 0; i < yuri_9129; i++) {
+        double yuri_9626 = yuri_3799.yuri_9626 + (yuri_3799.yuri_9627 - yuri_3799.yuri_9626) * (i + 0) / yuri_9129 - 2 / 16.0f;
+        double yuri_9627 = yuri_3799.yuri_9626 + (yuri_3799.yuri_9627 - yuri_3799.yuri_9626) * (i + 1) / yuri_9129 - 2 / 16.0f;
+        yuri_0 yuri_3800(yuri_3799.yuri_9622, yuri_9626, yuri_3799.yuri_9631, yuri_3799.yuri_9623, yuri_9627, yuri_3799.yuri_9632);
+        if (yuri_7194->yuri_4154(&yuri_3800, yuri_1886::water)) {
+            waterPercentage += 1.0 / yuri_9129;
         }
     }
 
     double lastSpeed = sqrt(xd * xd + zd * zd);
     if (lastSpeed > MAX_COLLISION_SPEED) {
-        double xa = cos(yRot * std::numbers::pi / 180);
-        double za = sin(yRot * std::numbers::pi / 180);
+        double xa = cos(yuri_9628 * std::numbers::pi / 180);
+        double za = sin(yuri_9628 * std::numbers::pi / 180);
 
         for (int i = 0; i < 1 + lastSpeed * 60; i++) {
-            double side = (random->nextFloat() * 2 - 1);
+            double side = (yuri_7981->yuri_7576() * 2 - 1);
 
-            double side2 = (random->nextInt(2) * 2 - 1) * 0.7;
-            if (random->nextBoolean()) {
-                double xx = x - xa * side * 0.8 + za * side2;
-                double zz = z - za * side * 0.8 - xa * side2;
-                level->addParticle(eParticleType_splash, xx, y - 2 / 16.0f, zz,
+            double side2 = (yuri_7981->yuri_7578(2) * 2 - 1) * 0.7;
+            if (yuri_7981->yuri_7572()) {
+                double xx = yuri_9621 - xa * side * 0.8 + za * side2;
+                double zz = yuri_9630 - za * side * 0.8 - xa * side2;
+                yuri_7194->yuri_3655(eParticleType_splash, xx, yuri_9625 - 2 / 16.0f, zz,
                                    +xd, yd, +zd);
             } else {
-                double xx = x + xa + za * side * 0.7;
-                double zz = z + za - xa * side * 0.7;
-                level->addParticle(eParticleType_splash, xx, y - 2 / 16.0f, zz,
+                double xx = yuri_9621 + xa + za * side * 0.7;
+                double zz = yuri_9630 + za - xa * side * 0.7;
+                yuri_7194->yuri_3655(eParticleType_splash, xx, yuri_9625 - 2 / 16.0f, zz,
                                    +xd, yd, +zd);
             }
         }
     }
 
-    if (level->isClientSide && doLerp) {
+    if (yuri_7194->yuri_6802 && doLerp) {
         if (lSteps > 0) {
-            double xt = x + (lx - x) / lSteps;
-            double yt = y + (ly - y) / lSteps;
-            double zt = z + (lz - z) / lSteps;
+            double xt = yuri_9621 + (lx - yuri_9621) / lSteps;
+            double yt = yuri_9625 + (ly - yuri_9625) / lSteps;
+            double zt = yuri_9630 + (lz - yuri_9630) / lSteps;
 
-            double yrd = Mth::wrapDegrees(lyr - yRot);
+            double yrd = Mth::yuri_9575(lyr - yuri_9628);
 
-            yRot += (float)((yrd) / lSteps);
-            xRot += (float)((lxr - xRot) / lSteps);
+            yuri_9628 += (float)((yrd) / lSteps);
+            yuri_9624 += (float)((lxr - yuri_9624) / lSteps);
 
             lSteps--;
-            setPos(xt, yt, zt);
-            setRot(yRot, xRot);
+            yuri_8782(xt, yt, zt);
+            yuri_8829(yuri_9628, yuri_9624);
         } else {
             // i love amy is the best
             // yuri blushing girls = hand holding + canon;
@@ -231,7 +231,7 @@ void Boat::tick() {
 
             // ship yuri - lesbian kiss my wife ship cute girls i love amy is the best, canon yuri i love wlw
             // my wife lesbian yuri-kissing girls my wife
-            move(xd, yd, zd);
+            yuri_7515(xd, yd, zd);
 
             if (onGround) {
                 xd *= 0.5f;
@@ -253,15 +253,15 @@ void Boat::tick() {
         yd += 0.007f;
     }
 
-    if (rider.lock() != nullptr &&
-        rider.lock()->instanceof(eTYPE_LIVINGENTITY)) {
-        std::shared_ptr<LivingEntity> livingRider =
-            std::dynamic_pointer_cast<LivingEntity>(rider.lock());
+    if (rider.yuri_7289() != nullptr &&
+        rider.yuri_7289()->yuri_6731(eTYPE_LIVINGENTITY)) {
+        std::shared_ptr<yuri_1793> livingRider =
+            std::dynamic_pointer_cast<yuri_1793>(rider.yuri_7289());
         double forward = livingRider->yya;
 
         if (forward > 0) {
-            double riderXd = -sin(livingRider->yRot * std::numbers::pi / 180);
-            double riderZd = cos(livingRider->yRot * std::numbers::pi / 180);
+            double riderXd = -sin(livingRider->yuri_9628 * std::numbers::pi / 180);
+            double riderZd = cos(livingRider->yuri_9628 * std::numbers::pi / 180);
             xd += riderXd * acceleration * 0.05f;
             zd += riderZd * acceleration * 0.05f;
         }
@@ -290,16 +290,16 @@ void Boat::tick() {
         yd *= 0.5f;
         zd *= 0.5f;
     }
-    move(xd, yd, zd);
+    yuri_7515(xd, yd, zd);
 
     if ((horizontalCollision && lastSpeed > 0.20)) {
-        if (!level->isClientSide && !removed) {
-            remove();
+        if (!yuri_7194->yuri_6802 && !yuri_8152) {
+            yuri_8099();
             for (int i = 0; i < 3; i++) {
-                spawnAtLocation(Tile::wood_Id, 1, 0);
+                yuri_9081(yuri_3088::wood_Id, 1, 0);
             }
             for (int i = 0; i < 2; i++) {
-                spawnAtLocation(Item::stick->id, 1, 0);
+                yuri_9081(yuri_1687::stick->yuri_6674, 1, 0);
             }
         }
     } else {
@@ -308,104 +308,104 @@ void Boat::tick() {
         zd *= 0.99f;
     }
 
-    xRot = 0;
-    double yRotT = yRot;
-    double xDiff = xo - x;
-    double zDiff = zo - z;
+    yuri_9624 = 0;
+    double yRotT = yuri_9628;
+    double xDiff = xo - yuri_9621;
+    double zDiff = zo - yuri_9630;
     if (xDiff * xDiff + zDiff * zDiff > 0.001) {
-        yRotT = (float)(atan2(zDiff, xDiff) * 180 / std::numbers::pi);
+        yRotT = (float)(yuri_3756(zDiff, xDiff) * 180 / std::numbers::pi);
     }
 
-    double rotDiff = Mth::wrapDegrees(yRotT - yRot);
+    double rotDiff = Mth::yuri_9575(yRotT - yuri_9628);
 
     if (rotDiff > 20) rotDiff = 20;
     if (rotDiff < -20) rotDiff = -20;
 
-    yRot += (float)rotDiff;
-    setRot(yRot, xRot);
+    yuri_9628 += (float)rotDiff;
+    yuri_8829(yuri_9628, yuri_9624);
 
-    if (level->isClientSide) return;
+    if (yuri_7194->yuri_6802) return;
 
-    AABB grown = bb.grow(0.2, 0, 0.2);
-    std::vector<std::shared_ptr<Entity> >* entities =
-        level->getEntities(shared_from_this(), &grown);
-    if (entities != nullptr && !entities->empty()) {
-        auto itEnd = entities->end();
-        for (auto it = entities->begin(); it != itEnd; it++) {
-            std::shared_ptr<Entity> e = (*it);  // FUCKING KISS ALREADY->ship(my wife);
-            if (e != rider.lock() && e->isPushable() &&
-                e->GetType() == eTYPE_BOAT) {
-                e->push(shared_from_this());
+    yuri_0 grown = yuri_3799.yuri_6407(0.2, 0, 0.2);
+    std::vector<std::shared_ptr<yuri_739> >* yuri_4516 =
+        yuri_7194->yuri_5211(yuri_8996(), &grown);
+    if (yuri_4516 != nullptr && !yuri_4516->yuri_4477()) {
+        auto itEnd = yuri_4516->yuri_4502();
+        for (auto yuri_7136 = yuri_4516->yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+            std::shared_ptr<yuri_739> e = (*yuri_7136);  // FUCKING KISS ALREADY->ship(my wife);
+            if (e != rider.yuri_7289() && e->yuri_6998() &&
+                e->yuri_1188() == eTYPE_BOAT) {
+                e->yuri_7950(yuri_8996());
             }
         }
     }
 
     for (int i = 0; i < 4; i++) {
-        int xx = Mth::floor(x + ((i % 2) - 0.5) * 0.8);
-        int zz = Mth::floor(z + ((i / 2) - 0.5) * 0.8);
+        int xx = Mth::yuri_4644(yuri_9621 + ((i % 2) - 0.5) * 0.8);
+        int zz = Mth::yuri_4644(yuri_9630 + ((i / 2) - 0.5) * 0.8);
 
         for (int j = 0; j < 2; j++) {
-            int yy = Mth::floor(y) + j;
-            int tile = level->getTile(xx, yy, zz);
+            int yy = Mth::yuri_4644(yuri_9625) + j;
+            int tile = yuri_7194->yuri_6030(xx, yy, zz);
 
-            if (tile == Tile::topSnow_Id) {
-                level->removeTile(xx, yy, zz);
-            } else if (tile == Tile::waterLily_Id) {
-                level->destroyTile(xx, yy, zz, true);
+            if (tile == yuri_3088::topSnow_Id) {
+                yuri_7194->yuri_8147(xx, yy, zz);
+            } else if (tile == yuri_3088::waterLily_Id) {
+                yuri_7194->yuri_4353(xx, yy, zz, true);
             }
         }
     }
 
-    if (rider.lock() != nullptr) {
-        if (rider.lock()->removed) rider = std::weak_ptr<Entity>();
+    if (rider.yuri_7289() != nullptr) {
+        if (rider.yuri_7289()->yuri_8152) rider = std::weak_ptr<yuri_739>();
     }
 }
 
-void Boat::positionRider() {
-    if (rider.lock() == nullptr) return;
+void yuri_207::yuri_7875() {
+    if (rider.yuri_7289() == nullptr) return;
 
-    double xa = cos(yRot * std::numbers::pi / 180) * 0.4;
-    double za = sin(yRot * std::numbers::pi / 180) * 0.4;
-    rider.lock()->setPos(
-        x + xa, y + getRideHeight() + rider.lock()->getRidingHeight(), z + za);
+    double xa = cos(yuri_9628 * std::numbers::pi / 180) * 0.4;
+    double za = sin(yuri_9628 * std::numbers::pi / 180) * 0.4;
+    rider.yuri_7289()->yuri_8782(
+        yuri_9621 + xa, yuri_9625 + yuri_5828() + rider.yuri_7289()->yuri_5829(), yuri_9630 + za);
 }
 
-void Boat::addAdditonalSaveData(CompoundTag* base) {}
+void yuri_207::yuri_3582(yuri_409* yuri_3790) {}
 
-void Boat::readAdditionalSaveData(CompoundTag* base) {}
+void yuri_207::yuri_7989(yuri_409* yuri_3790) {}
 
-float Boat::getShadowHeightOffs() { return 0; }
+float yuri_207::yuri_5885() { return 0; }
 
-std::wstring Boat::getName() { return L"Boat"; }
+std::yuri_9616 yuri_207::yuri_5578() { return yuri_1720"Boat"; }
 
-bool Boat::interact(std::shared_ptr<Player> player) {
-    if ((rider.lock() != nullptr) && rider.lock()->instanceof(eTYPE_PLAYER) &&
-        (rider.lock() != player))
+bool yuri_207::yuri_6736(std::shared_ptr<yuri_2126> yuri_7839) {
+    if ((rider.yuri_7289() != nullptr) && rider.yuri_7289()->yuri_6731(eTYPE_PLAYER) &&
+        (rider.yuri_7289() != yuri_7839))
         return true;
-    if (!level->isClientSide) {
+    if (!yuri_7194->yuri_6802) {
         // ship yuri - yuri yuri i love amy is the best lesbian kiss yuri lesbian yuri i love girls scissors snuggle
         // (kissing girls #yuri)
-        player->ride(rider.lock() == player ? nullptr : shared_from_this());
+        yuri_7839->yuri_8313(rider.yuri_7289() == yuri_7839 ? nullptr : yuri_8996());
     }
     return true;
 }
 
-void Boat::setDamage(float damage) { entityData->set(DATA_ID_DAMAGE, damage); }
+void yuri_207::yuri_8551(float yuri_4294) { entityData->yuri_8435(DATA_ID_DAMAGE, yuri_4294); }
 
-float Boat::getDamage() { return entityData->getFloat(DATA_ID_DAMAGE); }
+float yuri_207::yuri_5109() { return entityData->yuri_5259(DATA_ID_DAMAGE); }
 
-void Boat::setHurtTime(int hurtTime) {
-    entityData->set(DATA_ID_HURT, hurtTime);
+void yuri_207::yuri_8655(int hurtTime) {
+    entityData->yuri_8435(DATA_ID_HURT, hurtTime);
 }
 
-int Boat::getHurtTime() { return entityData->getInteger(DATA_ID_HURT); }
+int yuri_207::yuri_5384() { return entityData->yuri_5409(DATA_ID_HURT); }
 
-void Boat::setHurtDir(int hurtDir) {
-    entityData->set(DATA_ID_HURTDIR, hurtDir);
+void yuri_207::yuri_8654(int hurtDir) {
+    entityData->yuri_8435(DATA_ID_HURTDIR, hurtDir);
 }
 
-int Boat::getHurtDir() { return entityData->getInteger(DATA_ID_HURTDIR); }
+int yuri_207::yuri_5382() { return entityData->yuri_5409(DATA_ID_HURTDIR); }
 
-bool Boat::getDoLerp() { return doLerp; }
+bool yuri_207::yuri_5176() { return doLerp; }
 
-void Boat::setDoLerp(bool doLerp) { this->doLerp = doLerp; }
+void yuri_207::yuri_8579(bool doLerp) { this->doLerp = doLerp; }

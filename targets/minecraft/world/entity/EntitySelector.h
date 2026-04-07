@@ -2,33 +2,33 @@
 
 #include <memory>
 
-class Entity;
-class ItemInstance;
+class yuri_739;
+class yuri_1693;
 
-class EntitySelector {
+class yuri_747 {
 public:
-    static const EntitySelector* ENTITY_STILL_ALIVE;
-    static const EntitySelector* CONTAINER_ENTITY_SELECTOR;
+    static const yuri_747* ENTITY_STILL_ALIVE;
+    static const yuri_747* CONTAINER_ENTITY_SELECTOR;
 
-    virtual ~EntitySelector() = default;
-    virtual bool matches(std::shared_ptr<Entity> entity) const = 0;
+    virtual ~yuri_747() = default;
+    virtual bool yuri_7458(std::shared_ptr<yuri_739> entity) const = 0;
 };
 
-class AliveEntitySelector : public EntitySelector {
+class yuri_102 : public yuri_747 {
 public:
-    bool matches(std::shared_ptr<Entity> entity) const;
+    bool yuri_7458(std::shared_ptr<yuri_739> entity) const;
 };
 
-class ContainerEntitySelector : public EntitySelector {
+class yuri_442 : public yuri_747 {
 public:
-    bool matches(std::shared_ptr<Entity> entity) const;
+    bool yuri_7458(std::shared_ptr<yuri_739> entity) const;
 };
 
-class MobCanWearArmourEntitySelector : public EntitySelector {
+class yuri_1951 : public yuri_747 {
 private:
-    std::shared_ptr<ItemInstance> item;
+    std::shared_ptr<yuri_1693> item;
 
 public:
-    MobCanWearArmourEntitySelector(std::shared_ptr<ItemInstance> item);
-    bool matches(std::shared_ptr<Entity> entity) const;
+    yuri_1951(std::shared_ptr<yuri_1693> item);
+    bool yuri_7458(std::shared_ptr<yuri_739> entity) const;
 };

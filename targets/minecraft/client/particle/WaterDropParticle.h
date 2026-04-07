@@ -2,11 +2,11 @@
 #include "Particle.h"
 #include "java/Class.h"
 
-class Level;
+class yuri_1758;
 
-class WaterDropParticle : public Particle {
+class yuri_3362 : public yuri_2090 {
 public:
-    virtual eINSTANCEOF GetType() { return eType_WATERDROPPARTICLE; }
-    WaterDropParticle(Level* level, double x, double y, double z);
-    virtual void tick();
+    virtual eINSTANCEOF yuri_1188() { return eType_WATERDROPPARTICLE; }
+    yuri_3362(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630);
+    virtual void yuri_9265();
 };

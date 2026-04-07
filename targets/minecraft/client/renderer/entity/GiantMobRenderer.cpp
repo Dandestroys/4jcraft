@@ -7,21 +7,21 @@
 #include "minecraft/client/renderer/entity/MobRenderer.h"
 #include "minecraft/client/resources/ResourceLocation.h"
 
-class Model;
+class yuri_1962;
 
-ResourceLocation GiantMobRenderer::ZOMBIE_LOCATION =
-    ResourceLocation(TN_ITEM_ARROWS);
+yuri_2412 yuri_1211::yuri_3431 =
+    yuri_2412(TN_ITEM_ARROWS);
 
-GiantMobRenderer::GiantMobRenderer(Model* model, float shadow, float _scale)
-    : MobRenderer(model, shadow * _scale) {
+yuri_1211::yuri_1211(yuri_1962* model, float shadow, float _scale)
+    : yuri_1955(model, shadow * _scale) {
     this->_scale = _scale;
 }
 
-void GiantMobRenderer::scale(std::shared_ptr<LivingEntity> mob, float a) {
-    glScalef(_scale, _scale, _scale);
+void yuri_1211::yuri_8382(std::shared_ptr<yuri_1793> mob, float yuri_3565) {
+    yuri_6351(_scale, _scale, _scale);
 }
 
-ResourceLocation* GiantMobRenderer::getTextureLocation(
-    std::shared_ptr<Entity> mob) {
-    return &ZOMBIE_LOCATION;
+yuri_2412* yuri_1211::yuri_6012(
+    std::shared_ptr<yuri_739> mob) {
+    return &yuri_3431;
 }

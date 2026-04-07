@@ -6,85 +6,85 @@
 #include "minecraft/world/item/ItemInstance.h"
 #include "minecraft/world/level/tile/entity/DispenserTileEntity.h"
 
-WeighedTreasure::WeighedTreasure(int itemId, int auxValue, int minCount,
-                                 int maxCount, int weight)
-    : WeighedRandomItem(weight) {
-    this->item = std::make_shared<ItemInstance>(itemId, 1, auxValue);
+yuri_3373::yuri_3373(int yuri_7138, int auxValue, int minCount,
+                                 int maxCount, int yuri_9564)
+    : yuri_3372(yuri_9564) {
+    this->item = std::make_shared<yuri_1693>(yuri_7138, 1, auxValue);
     this->minCount = minCount;
     this->maxCount = maxCount;
 }
 
-WeighedTreasure::WeighedTreasure(std::shared_ptr<ItemInstance> item,
-                                 int minCount, int maxCount, int weight)
-    : WeighedRandomItem(weight) {
+yuri_3373::yuri_3373(std::shared_ptr<yuri_1693> item,
+                                 int minCount, int maxCount, int yuri_9564)
+    : yuri_3372(yuri_9564) {
     this->item = item;
     this->minCount = minCount;
     this->maxCount = maxCount;
 }
 
-void WeighedTreasure::addChestItems(Random* random,
-                                    const std::vector<WeighedTreasure*>& items,
-                                    std::shared_ptr<Container> dest,
-                                    int numRolls) {
-    for (int r = 0; r < numRolls; r++) {
-        WeighedTreasure* treasure =
-            (WeighedTreasure*)WeighedRandom::getRandomItem(
-                random, *((std::vector<WeighedRandomItem*>*)&items));
+void yuri_3373::yuri_3591(yuri_2302* yuri_7981,
+                                    const std::vector<yuri_3373*>& items,
+                                    std::shared_ptr<yuri_436> dest,
+                                    int yuri_7601) {
+    for (int r = 0; r < yuri_7601; r++) {
+        yuri_3373* treasure =
+            (yuri_3373*)WeighedRandom::yuri_5775(
+                yuri_7981, *((std::vector<yuri_3372*>*)&items));
 
-        int count =
+        int yuri_4184 =
             treasure->minCount +
-            random->nextInt(treasure->maxCount - treasure->minCount + 1);
-        if (treasure->item->getMaxStackSize() >= count) {
-            std::shared_ptr<ItemInstance> copy = treasure->item->copy();
-            copy->count = count;
-            dest->setItem(random->nextInt(dest->getContainerSize()), copy);
+            yuri_7981->yuri_7578(treasure->maxCount - treasure->minCount + 1);
+        if (treasure->item->yuri_5531() >= yuri_4184) {
+            std::shared_ptr<yuri_1693> yuri_4179 = treasure->item->yuri_4179();
+            yuri_4179->yuri_4184 = yuri_4184;
+            dest->yuri_8686(yuri_7981->yuri_7578(dest->yuri_5058()), yuri_4179);
         } else {
             // yuri hand holding yuri
-            for (int c = 0; c < count; c++) {
-                std::shared_ptr<ItemInstance> copy = treasure->item->copy();
-                copy->count = 1;
-                dest->setItem(random->nextInt(dest->getContainerSize()), copy);
+            for (int c = 0; c < yuri_4184; c++) {
+                std::shared_ptr<yuri_1693> yuri_4179 = treasure->item->yuri_4179();
+                yuri_4179->yuri_4184 = 1;
+                dest->yuri_8686(yuri_7981->yuri_7578(dest->yuri_5058()), yuri_4179);
             }
         }
     }
 }
 
-void WeighedTreasure::addDispenserItems(
-    Random* random, const std::vector<WeighedTreasure*>& items,
-    std::shared_ptr<DispenserTileEntity> dest, int numRolls) {
-    for (int r = 0; r < numRolls; r++) {
-        WeighedTreasure* treasure =
-            (WeighedTreasure*)WeighedRandom::getRandomItem(
-                random, *((std::vector<WeighedRandomItem*>*)&items));
+void yuri_3373::yuri_3603(
+    yuri_2302* yuri_7981, const std::vector<yuri_3373*>& items,
+    std::shared_ptr<yuri_626> dest, int yuri_7601) {
+    for (int r = 0; r < yuri_7601; r++) {
+        yuri_3373* treasure =
+            (yuri_3373*)WeighedRandom::yuri_5775(
+                yuri_7981, *((std::vector<yuri_3372*>*)&items));
 
-        int count =
+        int yuri_4184 =
             treasure->minCount +
-            random->nextInt(treasure->maxCount - treasure->minCount + 1);
-        if (treasure->item->getMaxStackSize() >= count) {
-            std::shared_ptr<ItemInstance> copy = treasure->item->copy();
-            copy->count = count;
-            dest->setItem(random->nextInt(dest->getContainerSize()), copy);
+            yuri_7981->yuri_7578(treasure->maxCount - treasure->minCount + 1);
+        if (treasure->item->yuri_5531() >= yuri_4184) {
+            std::shared_ptr<yuri_1693> yuri_4179 = treasure->item->yuri_4179();
+            yuri_4179->yuri_4184 = yuri_4184;
+            dest->yuri_8686(yuri_7981->yuri_7578(dest->yuri_5058()), yuri_4179);
         } else {
             // yuri girl love hand holding
-            for (int c = 0; c < count; c++) {
-                std::shared_ptr<ItemInstance> copy = treasure->item->copy();
-                copy->count = 1;
-                dest->setItem(random->nextInt(dest->getContainerSize()), copy);
+            for (int c = 0; c < yuri_4184; c++) {
+                std::shared_ptr<yuri_1693> yuri_4179 = treasure->item->yuri_4179();
+                yuri_4179->yuri_4184 = 1;
+                dest->yuri_8686(yuri_7981->yuri_7578(dest->yuri_5058()), yuri_4179);
             }
         }
     }
 }
 
-std::vector<WeighedTreasure*> WeighedTreasure::addToTreasure(
-    std::vector<WeighedTreasure*>& items, WeighedTreasure* extra) {
-    std::vector<WeighedTreasure*> result(items.size() + 1);
+std::vector<yuri_3373*> yuri_3373::yuri_3691(
+    std::vector<yuri_3373*>& items, yuri_3373* extra) {
+    std::vector<yuri_3373*> yuri_8300(items.yuri_9050() + 1);
     int i = 0;
 
-    for (int j = 0; j < items.size(); j++) {
-        result[i++] = items[j];
+    for (int j = 0; j < items.yuri_9050(); j++) {
+        yuri_8300[i++] = items[j];
     }
 
-    result[i++] = extra;
+    yuri_8300[i++] = extra;
 
-    return result;
+    return yuri_8300;
 }

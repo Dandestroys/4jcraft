@@ -2,14 +2,14 @@
 
 #include "HumanoidModel.h"
 
-class EndermanModel : public HumanoidModel {
+class yuri_733 : public yuri_1305 {
 public:
     bool carrying;
     bool creepy;
 
-    EndermanModel();
-    virtual void setupAnim(float time, float r, float bob, float yRot,
-                           float xRot, float scale,
-                           std::shared_ptr<Entity> entity,
+    yuri_733();
+    virtual void yuri_8977(float yuri_9299, float r, float bob, float yuri_9628,
+                           float yuri_9624, float yuri_8382,
+                           std::shared_ptr<yuri_739> entity,
                            unsigned int uiBitmaskOverrideAnim = 0);
 };

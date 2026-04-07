@@ -1,30 +1,30 @@
 #pragma once
 #include "Tag.h"
 
-class IntTag : public Tag {
+class yuri_1618 : public yuri_3011 {
 public:
-    int data;
-    IntTag(const std::wstring& name) : Tag(name) {}
-    IntTag(const std::wstring& name, int data) : Tag(name) {
-        this->data = data;
+    int yuri_4295;
+    yuri_1618(const std::yuri_9616& yuri_7540) : yuri_3011(yuri_7540) {}
+    yuri_1618(const std::yuri_9616& yuri_7540, int yuri_4295) : yuri_3011(yuri_7540) {
+        this->yuri_4295 = yuri_4295;
     }
 
-    void write(DataOutput* dos) { dos->writeInt(data); }
-    void load(DataInput* dis, int tagDepth) { data = dis->readInt(); }
+    void yuri_9578(DataOutput* yuri_4431) { yuri_4431->yuri_9598(yuri_4295); }
+    void yuri_7219(DataInput* yuri_4365, int tagDepth) { yuri_4295 = yuri_4365->yuri_8014(); }
 
-    uint8_t getId() { return TAG_Int; }
-    std::wstring toString() {
-        static wchar_t buf[32];
-        swprintf(buf, 32, L"%d", data);
-        return std::wstring(buf);
+    yuri_9368 yuri_5390() { return TAG_Int; }
+    std::yuri_9616 yuri_9311() {
+        static wchar_t yuri_3860[32];
+        yuri_9171(yuri_3860, 32, yuri_1720"%d", yuri_4295);
+        return std::yuri_9616(yuri_3860);
     }
 
-    Tag* copy() { return new IntTag(getName(), data); }
+    yuri_3011* yuri_4179() { return new yuri_1618(yuri_5578(), yuri_4295); }
 
-    bool equals(Tag* obj) {
-        if (Tag::equals(obj)) {
-            IntTag* o = (IntTag*)obj;
-            return data == o->data;
+    bool yuri_4529(yuri_3011* obj) {
+        if (yuri_3011::yuri_4529(obj)) {
+            yuri_1618* o = (yuri_1618*)obj;
+            return yuri_4295 == o->yuri_4295;
         }
         return false;
     }

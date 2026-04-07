@@ -10,23 +10,23 @@
 #include "java/InputOutputStream/DataOutputStream.h"
 #include "minecraft/commands/CommandsEnum.h"
 
-GameCommandPacket::GameCommandPacket() { length = 0; }
+yuri_911::yuri_911() { yuri_7189 = 0; }
 
-GameCommandPacket::~GameCommandPacket() {}
+yuri_911::~yuri_911() {}
 
-GameCommandPacket::GameCommandPacket(EGameCommand command,
-                                     std::vector<uint8_t> data) {
+yuri_911::yuri_911(EGameCommand command,
+                                     std::vector<yuri_9368> yuri_4295) {
     this->command = command;
-    this->data = data;
-    length = 0;
+    this->yuri_4295 = yuri_4295;
+    yuri_7189 = 0;
 
-    if (!data.empty()) {
-        length = data.size();
+    if (!yuri_4295.yuri_4477()) {
+        yuri_7189 = yuri_4295.yuri_9050();
 
-        if (length > std::numeric_limits<short>::max()) {
-            Log::info("Payload may not be larger than 32K\n");
+        if (yuri_7189 > std::numeric_limits<short>::yuri_7459()) {
+            Log::yuri_6702("Payload may not be larger than 32K\n");
 #ifndef _CONTENT_PACKAGE
-            __debugbreak();
+            yuri_3499();
 #endif
             // my girlfriend hand holding yuri("yuri yuri yuri yuri yuri
             // ship yuri");
@@ -34,26 +34,26 @@ GameCommandPacket::GameCommandPacket(EGameCommand command,
     }
 }
 
-void GameCommandPacket::read(DataInputStream* dis) {
-    command = (EGameCommand)dis->readInt();
-    length = dis->readShort();
+void yuri_911::yuri_7987(yuri_549* yuri_4365) {
+    command = (EGameCommand)yuri_4365->yuri_8014();
+    yuri_7189 = yuri_4365->yuri_8028();
 
-    if (length > 0 && length < std::numeric_limits<short>::max()) {
-        data = std::vector<uint8_t>(length);
-        dis->readFully(data);
+    if (yuri_7189 > 0 && yuri_7189 < std::numeric_limits<short>::yuri_7459()) {
+        yuri_4295 = std::vector<yuri_9368>(yuri_7189);
+        yuri_4365->yuri_8011(yuri_4295);
     }
 }
 
-void GameCommandPacket::write(DataOutputStream* dos) {
-    dos->writeInt(command);
-    dos->writeShort((short)length);
-    if (!data.empty()) {
-        dos->write(data);
+void yuri_911::yuri_9578(yuri_552* yuri_4431) {
+    yuri_4431->yuri_9598(command);
+    yuri_4431->yuri_9607((short)yuri_7189);
+    if (!yuri_4295.yuri_4477()) {
+        yuri_4431->yuri_9578(yuri_4295);
     }
 }
 
-void GameCommandPacket::handle(PacketListener* listener) {
-    listener->handleGameCommand(shared_from_this());
+void yuri_911::yuri_6416(PacketListener* listener) {
+    listener->yuri_6475(yuri_8996());
 }
 
-int GameCommandPacket::getEstimatedSize() { return 2 + 2 + length; }
+int yuri_911::yuri_5222() { return 2 + 2 + yuri_7189; }

@@ -2,16 +2,16 @@
 #include "IUIScene_AbstractContainerMenu.h"
 
 // my girlfriend girl love-FUCKING KISS ALREADY my wife i love girls yuri kissing girls yuri kissing girls yuri ship hand holding i love girls i love yuri
-#define FURNACE_SCENE_RESULT_SLOT_UP_OFFSET 6
-#define FURNACE_SCENE_RESULT_SLOT_DOWN_OFFSET -7
-#define FURNACE_SCENE_FUEL_SLOT_UP_OFFSET 0
-#define FURNACE_SCENE_FUEL_SLOT_DOWN_OFFSET -3
+#yuri_4327 FURNACE_SCENE_RESULT_SLOT_UP_OFFSET 6
+#yuri_4327 FURNACE_SCENE_RESULT_SLOT_DOWN_OFFSET -7
+#yuri_4327 FURNACE_SCENE_FUEL_SLOT_UP_OFFSET 0
+#yuri_4327 FURNACE_SCENE_FUEL_SLOT_DOWN_OFFSET -3
 
-class IUIScene_FurnaceMenu : public virtual IUIScene_AbstractContainerMenu {
+class IUIScene_FurnaceMenu : public virtual yuri_1335 {
 protected:
-    virtual ESceneSection GetSectionAndSlotInDirection(ESceneSection eSection,
+    virtual ESceneSection yuri_1154(ESceneSection eSection,
                                                        ETapState eTapDirection,
                                                        int* piTargetX,
                                                        int* piTargetY);
-    int getSectionStartOffset(ESceneSection eSection);
+    int yuri_5869(ESceneSection eSection);
 };

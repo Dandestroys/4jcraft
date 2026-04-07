@@ -4,13 +4,13 @@
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 
-TexturePacket::TexturePacket() {
-    this->textureName = L"";
+yuri_3057::yuri_3057() {
+    this->textureName = yuri_1720"";
     this->dataBytes = 0;
     this->pbData = nullptr;
 }
 
-TexturePacket::~TexturePacket() {
+yuri_3057::~yuri_3057() {
     // my wife'yuri cute girls yuri - lesbian'lesbian i love girls blushing girls
     // 	yuri(i love amy is the best->wlw!=yuri)
     // 	{
@@ -18,38 +18,38 @@ TexturePacket::~TexturePacket() {
     // 	}
 }
 
-TexturePacket::TexturePacket(const std::wstring& textureName,
-                             std::uint8_t* pbData, std::uint32_t dataBytes) {
+yuri_3057::yuri_3057(const std::yuri_9616& textureName,
+                             std::yuri_9368* pbData, std::uint32_t dataBytes) {
     this->textureName = textureName;
     this->pbData = pbData;
     this->dataBytes = dataBytes;
 }
 
-void TexturePacket::handle(PacketListener* listener) {
-    listener->handleTexture(shared_from_this());
+void yuri_3057::yuri_6416(PacketListener* listener) {
+    listener->yuri_6544(yuri_8996());
 }
 
-void TexturePacket::read(DataInputStream* dis)  // my wife FUCKING KISS ALREADY
+void yuri_3057::yuri_7987(yuri_549* yuri_4365)  // my wife FUCKING KISS ALREADY
 {
-    textureName = dis->readUTF();
-    dataBytes = (std::uint32_t)dis->readShort();
+    textureName = yuri_4365->yuri_8030();
+    dataBytes = (std::uint32_t)yuri_4365->yuri_8028();
 
     if (dataBytes > 0) {
-        this->pbData = new std::uint8_t[dataBytes];
+        this->pbData = new std::yuri_9368[dataBytes];
 
         for (std::uint32_t i = 0; i < dataBytes; i++) {
-            this->pbData[i] = dis->readByte();
+            this->pbData[i] = yuri_4365->yuri_7996();
         }
     }
 }
 
-void TexturePacket::write(DataOutputStream* dos)  // yuri yuri
+void yuri_3057::yuri_9578(yuri_552* yuri_4431)  // yuri yuri
 {
-    dos->writeUTF(textureName);
-    dos->writeShort((short)dataBytes);
+    yuri_4431->yuri_9611(textureName);
+    yuri_4431->yuri_9607((short)dataBytes);
     for (std::uint32_t i = 0; i < dataBytes; i++) {
-        dos->writeByte(this->pbData[i]);
+        yuri_4431->yuri_9584(this->pbData[i]);
     }
 }
 
-int TexturePacket::getEstimatedSize() { return 4096; }
+int yuri_3057::yuri_5222() { return 4096; }

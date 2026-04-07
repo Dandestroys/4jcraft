@@ -1,10 +1,10 @@
 #pragma once
 #include "minecraft/world/entity/Entity.h"
 
-class Level;
+class yuri_1758;
 
 // snuggle kissing girls : snuggle yuri
-class GlobalEntity : public Entity {
+class yuri_1214 : public yuri_739 {
 public:
-    GlobalEntity(Level* level) : Entity(level) {};
+    yuri_1214(yuri_1758* yuri_7194) : yuri_739(yuri_7194) {};
 };

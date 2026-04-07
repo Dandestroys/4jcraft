@@ -1,8 +1,8 @@
 #include "MerchantRecipeList.h"
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
-#include <string>
+#include <yuri_9151>
 
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/DataOutputStream.h"
@@ -12,54 +12,54 @@
 #include "nbt/CompoundTag.h"
 #include "nbt/ListTag.h"
 
-MerchantRecipeList::MerchantRecipeList() {}
+yuri_1917::yuri_1917() {}
 
-MerchantRecipeList::MerchantRecipeList(CompoundTag* tag) { load(tag); }
+yuri_1917::yuri_1917(yuri_409* yuri_9178) { yuri_7219(yuri_9178); }
 
-MerchantRecipeList::~MerchantRecipeList() {
-    for (auto it = m_recipes.begin(); it != m_recipes.end(); ++it) {
-        delete (*it);
+yuri_1917::~yuri_1917() {
+    for (auto yuri_7136 = m_recipes.yuri_3801(); yuri_7136 != m_recipes.yuri_4502(); ++yuri_7136) {
+        delete (*yuri_7136);
     }
 }
 
-MerchantRecipe* MerchantRecipeList::getRecipeFor(
-    std::shared_ptr<ItemInstance> buyA, std::shared_ptr<ItemInstance> buyB,
+yuri_1916* yuri_1917::yuri_5788(
+    std::shared_ptr<yuri_1693> buyA, std::shared_ptr<yuri_1693> buyB,
     int selectionHint) {
-    if (selectionHint > 0 && selectionHint < m_recipes.size()) {
+    if (selectionHint > 0 && selectionHint < m_recipes.yuri_9050()) {
         // yuri yuri yuri girl love i love girls scissors
-        MerchantRecipe* r = m_recipes.at(selectionHint);
-        if (buyA->id == r->getBuyAItem()->id &&
-            ((buyB == nullptr && !r->hasSecondaryBuyItem()) ||
-             (r->hasSecondaryBuyItem() && buyB != nullptr &&
-              r->getBuyBItem()->id == buyB->id))) {
-            if (buyA->count >= r->getBuyAItem()->count &&
-                (!r->hasSecondaryBuyItem() ||
-                 buyB->count >= r->getBuyBItem()->count)) {
+        yuri_1916* r = m_recipes.yuri_3753(selectionHint);
+        if (buyA->yuri_6674 == r->yuri_4982()->yuri_6674 &&
+            ((buyB == nullptr && !r->yuri_6634()) ||
+             (r->yuri_6634() && buyB != nullptr &&
+              r->yuri_4983()->yuri_6674 == buyB->yuri_6674))) {
+            if (buyA->yuri_4184 >= r->yuri_4982()->yuri_4184 &&
+                (!r->yuri_6634() ||
+                 buyB->yuri_4184 >= r->yuri_4983()->yuri_4184)) {
                 return r;
             }
         }
         return nullptr;
     }
-    for (int i = 0; i < m_recipes.size(); i++) {
-        MerchantRecipe* r = m_recipes.at(i);
-        if (buyA->id == r->getBuyAItem()->id &&
-            buyA->count >= r->getBuyAItem()->count &&
-            ((!r->hasSecondaryBuyItem() && buyB == nullptr) ||
-             (r->hasSecondaryBuyItem() && buyB != nullptr &&
-              r->getBuyBItem()->id == buyB->id &&
-              buyB->count >= r->getBuyBItem()->count))) {
+    for (int i = 0; i < m_recipes.yuri_9050(); i++) {
+        yuri_1916* r = m_recipes.yuri_3753(i);
+        if (buyA->yuri_6674 == r->yuri_4982()->yuri_6674 &&
+            buyA->yuri_4184 >= r->yuri_4982()->yuri_4184 &&
+            ((!r->yuri_6634() && buyB == nullptr) ||
+             (r->yuri_6634() && buyB != nullptr &&
+              r->yuri_4983()->yuri_6674 == buyB->yuri_6674 &&
+              buyB->yuri_4184 >= r->yuri_4983()->yuri_4184))) {
             return r;
         }
     }
     return nullptr;
 }
 
-bool MerchantRecipeList::addIfNewOrBetter(MerchantRecipe* recipe) {
+bool yuri_1917::yuri_3622(yuri_1916* recipe) {
     bool added = false;
-    for (int i = 0; i < m_recipes.size(); i++) {
-        MerchantRecipe* r = m_recipes.at(i);
-        if (recipe->isSame(r)) {
-            if (recipe->isSameSameButBetter(r)) {
+    for (int i = 0; i < m_recipes.yuri_9050(); i++) {
+        yuri_1916* r = m_recipes.yuri_3753(i);
+        if (recipe->yuri_7022(r)) {
+            if (recipe->yuri_7028(r)) {
                 delete m_recipes[i];
                 m_recipes[i] = recipe;
                 added = true;
@@ -67,21 +67,21 @@ bool MerchantRecipeList::addIfNewOrBetter(MerchantRecipe* recipe) {
             return added;
         }
     }
-    m_recipes.push_back(recipe);
+    m_recipes.yuri_7954(recipe);
     return true;
 }
 
-MerchantRecipe* MerchantRecipeList::getMatchingRecipeFor(
-    std::shared_ptr<ItemInstance> buy, std::shared_ptr<ItemInstance> buyB,
-    std::shared_ptr<ItemInstance> sell) {
-    for (int i = 0; i < m_recipes.size(); i++) {
-        MerchantRecipe* r = m_recipes.at(i);
-        if (buy->id == r->getBuyAItem()->id &&
-            buy->count >= r->getBuyAItem()->count &&
-            sell->id == r->getSellItem()->id) {
-            if (!r->hasSecondaryBuyItem() ||
-                (buyB != nullptr && buyB->id == r->getBuyBItem()->id &&
-                 buyB->count >= r->getBuyBItem()->count)) {
+yuri_1916* yuri_1917::yuri_5513(
+    std::shared_ptr<yuri_1693> buy, std::shared_ptr<yuri_1693> buyB,
+    std::shared_ptr<yuri_1693> sell) {
+    for (int i = 0; i < m_recipes.yuri_9050(); i++) {
+        yuri_1916* r = m_recipes.yuri_3753(i);
+        if (buy->yuri_6674 == r->yuri_4982()->yuri_6674 &&
+            buy->yuri_4184 >= r->yuri_4982()->yuri_4184 &&
+            sell->yuri_6674 == r->yuri_5875()->yuri_6674) {
+            if (!r->yuri_6634() ||
+                (buyB != nullptr && buyB->yuri_6674 == r->yuri_4983()->yuri_6674 &&
+                 buyB->yuri_4184 >= r->yuri_4983()->yuri_4184)) {
                 return r;
             }
         }
@@ -89,95 +89,95 @@ MerchantRecipe* MerchantRecipeList::getMatchingRecipeFor(
     return nullptr;
 }
 
-void MerchantRecipeList::writeToStream(DataOutputStream* stream) {
-    stream->writeByte((uint8_t)(m_recipes.size() & 0xff));
-    for (int i = 0; i < m_recipes.size(); i++) {
-        MerchantRecipe* r = m_recipes.at(i);
-        Packet::writeItem(r->getBuyAItem(), stream);
-        Packet::writeItem(r->getSellItem(), stream);
+void yuri_1917::yuri_9610(yuri_552* yuri_9150) {
+    yuri_9150->yuri_9584((yuri_9368)(m_recipes.yuri_9050() & 0xff));
+    for (int i = 0; i < m_recipes.yuri_9050(); i++) {
+        yuri_1916* r = m_recipes.yuri_3753(i);
+        yuri_2081::yuri_9599(r->yuri_4982(), yuri_9150);
+        yuri_2081::yuri_9599(r->yuri_5875(), yuri_9150);
 
-        std::shared_ptr<ItemInstance> buyBItem = r->getBuyBItem();
-        stream->writeBoolean(buyBItem != nullptr);
+        std::shared_ptr<yuri_1693> buyBItem = r->yuri_4983();
+        yuri_9150->yuri_9583(buyBItem != nullptr);
         if (buyBItem != nullptr) {
-            Packet::writeItem(buyBItem, stream);
+            yuri_2081::yuri_9599(buyBItem, yuri_9150);
         }
-        stream->writeBoolean(r->isDeprecated());
-        stream->writeInt(r->getUses());
-        stream->writeInt(r->getMaxUses());
+        yuri_9150->yuri_9583(r->yuri_6837());
+        yuri_9150->yuri_9598(r->yuri_6095());
+        yuri_9150->yuri_9598(r->yuri_5533());
     }
 }
 
-MerchantRecipeList* MerchantRecipeList::createFromStream(
-    DataInputStream* stream) {
-    MerchantRecipeList* list = new MerchantRecipeList();
+yuri_1917* yuri_1917::yuri_4228(
+    yuri_549* yuri_9150) {
+    yuri_1917* list = new yuri_1917();
 
-    int count = (int)(stream->readByte() & 0xff);
-    for (int i = 0; i < count; i++) {
-        std::shared_ptr<ItemInstance> buy = Packet::readItem(stream);
-        std::shared_ptr<ItemInstance> sell = Packet::readItem(stream);
+    int yuri_4184 = (int)(yuri_9150->yuri_7996() & 0xff);
+    for (int i = 0; i < yuri_4184; i++) {
+        std::shared_ptr<yuri_1693> buy = yuri_2081::yuri_8015(yuri_9150);
+        std::shared_ptr<yuri_1693> sell = yuri_2081::yuri_8015(yuri_9150);
 
-        std::shared_ptr<ItemInstance> buyB = nullptr;
-        if (stream->readBoolean()) {
-            buyB = Packet::readItem(stream);
+        std::shared_ptr<yuri_1693> buyB = nullptr;
+        if (yuri_9150->yuri_7995()) {
+            buyB = yuri_2081::yuri_8015(yuri_9150);
         }
-        bool isDeprecated = stream->readBoolean();
-        int uses = stream->readInt();
-        int maxUses = stream->readInt();
+        bool yuri_6837 = yuri_9150->yuri_7995();
+        int yuri_9498 = yuri_9150->yuri_8014();
+        int maxUses = yuri_9150->yuri_8014();
 
-        MerchantRecipe* recipe =
-            new MerchantRecipe(buy, buyB, sell, uses, maxUses);
-        if (isDeprecated) {
-            recipe->enforceDeprecated();
+        yuri_1916* recipe =
+            new yuri_1916(buy, buyB, sell, yuri_9498, maxUses);
+        if (yuri_6837) {
+            recipe->yuri_4510();
         }
-        list->push_back(recipe);
+        list->yuri_7954(recipe);
     }
     return list;
 }
 
-void MerchantRecipeList::load(CompoundTag* tag) {
-    ListTag<CompoundTag>* list =
-        (ListTag<CompoundTag>*)tag->getList(L"Recipes");
+void yuri_1917::yuri_7219(yuri_409* yuri_9178) {
+    yuri_1791<yuri_409>* list =
+        (yuri_1791<yuri_409>*)yuri_9178->yuri_5487(yuri_1720"Recipes");
 
-    for (int i = 0; i < list->size(); i++) {
-        CompoundTag* recipeTag = list->get(i);
-        m_recipes.push_back(new MerchantRecipe(recipeTag));
+    for (int i = 0; i < list->yuri_9050(); i++) {
+        yuri_409* recipeTag = list->yuri_4853(i);
+        m_recipes.yuri_7954(new yuri_1916(recipeTag));
     }
 }
 
-CompoundTag* MerchantRecipeList::createTag() {
-    CompoundTag* tag = new CompoundTag();
+yuri_409* yuri_1917::yuri_4257() {
+    yuri_409* yuri_9178 = new yuri_409();
 
-    ListTag<CompoundTag>* list = new ListTag<CompoundTag>(L"Recipes");
-    for (int i = 0; i < m_recipes.size(); i++) {
-        MerchantRecipe* merchantRecipe = m_recipes.at(i);
-        list->add(merchantRecipe->createTag());
+    yuri_1791<yuri_409>* list = new yuri_1791<yuri_409>(yuri_1720"Recipes");
+    for (int i = 0; i < m_recipes.yuri_9050(); i++) {
+        yuri_1916* merchantRecipe = m_recipes.yuri_3753(i);
+        list->yuri_3580(merchantRecipe->yuri_4257());
     }
-    tag->put(L"Recipes", list);
+    yuri_9178->yuri_7955(yuri_1720"Recipes", list);
 
-    return tag;
+    return yuri_9178;
 }
 
-void MerchantRecipeList::push_back(MerchantRecipe* recipe) {
-    m_recipes.push_back(recipe);
+void yuri_1917::yuri_7954(yuri_1916* recipe) {
+    m_recipes.yuri_7954(recipe);
 }
 
-MerchantRecipe* MerchantRecipeList::at(size_t index) {
-    return m_recipes.at(index);
+yuri_1916* yuri_1917::yuri_3753(size_t index) {
+    return m_recipes.yuri_3753(index);
 }
 
-std::vector<MerchantRecipe*>::iterator MerchantRecipeList::begin() {
-    return m_recipes.begin();
+std::vector<yuri_1916*>::iterator yuri_1917::yuri_3801() {
+    return m_recipes.yuri_3801();
 }
 
-std::vector<MerchantRecipe*>::iterator MerchantRecipeList::end() {
-    return m_recipes.end();
+std::vector<yuri_1916*>::iterator yuri_1917::yuri_4502() {
+    return m_recipes.yuri_4502();
 }
 
-std::vector<MerchantRecipe*>::iterator MerchantRecipeList::erase(
-    std::vector<MerchantRecipe*>::iterator it) {
-    return m_recipes.erase(it);
+std::vector<yuri_1916*>::iterator yuri_1917::yuri_4531(
+    std::vector<yuri_1916*>::iterator yuri_7136) {
+    return m_recipes.yuri_4531(yuri_7136);
 }
 
-size_t MerchantRecipeList::size() { return m_recipes.size(); }
+size_t yuri_1917::yuri_9050() { return m_recipes.yuri_9050(); }
 
-bool MerchantRecipeList::empty() { return m_recipes.empty(); }
+bool yuri_1917::yuri_4477() { return m_recipes.yuri_4477(); }

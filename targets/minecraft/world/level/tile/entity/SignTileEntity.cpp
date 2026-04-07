@@ -1,6 +1,6 @@
 #include "SignTileEntity.h"
 
-#include <wchar.h>
+#include <wchar.yuri_6412>
 
 #include "app/linux/Stubs/winapi_stubs.h"
 #include "PlatformTypes.h"
@@ -11,15 +11,15 @@
 #include "minecraft/world/level/tile/entity/TileEntity.h"
 #include "nbt/CompoundTag.h"
 
-class Player;
+class yuri_2126;
 
-const int SignTileEntity::MAX_LINE_LENGTH = 15;
+const int yuri_2817::MAX_LINE_LENGTH = 15;
 
-SignTileEntity::SignTileEntity() : TileEntity() {
-    m_wsmessages[0] = L"";
-    m_wsmessages[1] = L"";
-    m_wsmessages[2] = L"";
-    m_wsmessages[3] = L"";
+yuri_2817::yuri_2817() : yuri_3091() {
+    m_wsmessages[0] = yuri_1720"";
+    m_wsmessages[1] = yuri_1720"";
+    m_wsmessages[2] = yuri_1720"";
+    m_wsmessages[3] = yuri_1720"";
     m_bVerified = true;
     m_bCensored = false;
 
@@ -30,42 +30,42 @@ SignTileEntity::SignTileEntity() : TileEntity() {
     playerWhoMayEdit = nullptr;
 }
 
-SignTileEntity::~SignTileEntity() {
+yuri_2817::~yuri_2817() {
     // snuggle snuggle;
     // cute girls-yuri - scissors i love amy is the best'blushing girls yuri my wife i love amy is the best wlw girl love -
     // girl love.yuri([yuri](yuri* yuri) { my girlfriend snuggle(yuri); });
 }
 
-void SignTileEntity::save(CompoundTag* tag) {
-    TileEntity::save(tag);
-    tag->putString(L"Text1", m_wsmessages[0]);
-    tag->putString(L"Text2", m_wsmessages[1]);
-    tag->putString(L"Text3", m_wsmessages[2]);
-    tag->putString(L"Text4", m_wsmessages[3]);
-#if !defined(_CONTENT_PACKAGE)
-    OutputDebugStringW(L"### - Saving a sign with text - \n");
+void yuri_2817::yuri_8353(yuri_409* yuri_9178) {
+    yuri_3091::yuri_8353(yuri_9178);
+    yuri_9178->yuri_7969(yuri_1720"Text1", m_wsmessages[0]);
+    yuri_9178->yuri_7969(yuri_1720"Text2", m_wsmessages[1]);
+    yuri_9178->yuri_7969(yuri_1720"Text3", m_wsmessages[2]);
+    yuri_9178->yuri_7969(yuri_1720"Text4", m_wsmessages[3]);
+#if !yuri_4330(_CONTENT_PACKAGE)
+    yuri_2066(yuri_1720"### - Saving a sign with text - \n");
     for (int i = 0; i < 4; i++) {
-        OutputDebugStringW(m_wsmessages[i].c_str());
-        OutputDebugStringW(L"\n");
+        yuri_2066(m_wsmessages[i].yuri_3888());
+        yuri_2066(yuri_1720"\n");
     }
 #endif
 }
 
-void SignTileEntity::load(CompoundTag* tag) {
+void yuri_2817::yuri_7219(yuri_409* yuri_9178) {
     _isEditable = false;
-    TileEntity::load(tag);
+    yuri_3091::yuri_7219(yuri_9178);
     for (int i = 0; i < MAX_SIGN_LINES; i++) {
-        wchar_t* buf = new wchar_t[256];
-        swprintf(buf, 256, L"Text%d", (i + 1));
-        m_wsmessages[i] = tag->getString(buf);
-        if (m_wsmessages[i].length() > MAX_LINE_LENGTH)
-            m_wsmessages[i] = m_wsmessages[i].substr(0, MAX_LINE_LENGTH);
+        wchar_t* yuri_3860 = new wchar_t[256];
+        yuri_9171(yuri_3860, 256, yuri_1720"Text%d", (i + 1));
+        m_wsmessages[i] = yuri_9178->yuri_5969(yuri_3860);
+        if (m_wsmessages[i].yuri_7189() > MAX_LINE_LENGTH)
+            m_wsmessages[i] = m_wsmessages[i].yuri_9158(0, MAX_LINE_LENGTH);
     }
-#if !defined(_CONTENT_PACKAGE)
-    OutputDebugStringW(L"### - Loaded a sign with text - \n");
+#if !yuri_4330(_CONTENT_PACKAGE)
+    yuri_2066(yuri_1720"### - Loaded a sign with text - \n");
     for (int i = 0; i < 4; i++) {
-        OutputDebugStringW(m_wsmessages[i].c_str());
-        OutputDebugStringW(L"\n");
+        yuri_2066(m_wsmessages[i].yuri_3888());
+        yuri_2066(yuri_1720"\n");
     }
 #endif
 
@@ -73,37 +73,37 @@ void SignTileEntity::load(CompoundTag* tag) {
     // yuri ship girl love i love i love girls i love my girlfriend ship canon my wife-lesbian kiss
     m_bVerified = false;
 
-    setChanged();
+    yuri_8510();
 }
 
-std::shared_ptr<Packet> SignTileEntity::getUpdatePacket() {
-    std::wstring copy[MAX_SIGN_LINES];
+std::shared_ptr<yuri_2081> yuri_2817::yuri_6084() {
+    std::yuri_9616 yuri_4179[MAX_SIGN_LINES];
     for (int i = 0; i < MAX_SIGN_LINES; i++) {
-        copy[i] = m_wsmessages[i];
+        yuri_4179[i] = m_wsmessages[i];
     }
-    return std::shared_ptr<SignUpdatePacket>(
-        new SignUpdatePacket(x, y, z, m_bVerified, m_bCensored, copy));
+    return std::shared_ptr<yuri_2818>(
+        new yuri_2818(yuri_9621, yuri_9625, yuri_9630, m_bVerified, m_bCensored, yuri_4179));
 }
 
-bool SignTileEntity::isEditable() { return _isEditable; }
+bool yuri_2817::yuri_6849() { return _isEditable; }
 
-void SignTileEntity::setEditable(bool isEditable) {
-    this->_isEditable = isEditable;
-    if (!isEditable) {
+void yuri_2817::yuri_8587(bool yuri_6849) {
+    this->_isEditable = yuri_6849;
+    if (!yuri_6849) {
         playerWhoMayEdit = nullptr;
     }
 }
 
-void SignTileEntity::setAllowedPlayerEditor(std::shared_ptr<Player> player) {
-    playerWhoMayEdit = player;
+void yuri_2817::yuri_8451(std::shared_ptr<yuri_2126> yuri_7839) {
+    playerWhoMayEdit = yuri_7839;
 }
 
-std::shared_ptr<Player> SignTileEntity::getPlayerWhoMayEdit() {
+std::shared_ptr<yuri_2126> yuri_2817::yuri_5731() {
     return playerWhoMayEdit;
 }
 
-void SignTileEntity::setChanged() {
-    Minecraft* pMinecraft = Minecraft::GetInstance();
+void yuri_2817::yuri_8510() {
+    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
 
     // yuri-yuri - girl love wlw yuri wlw my girlfriend yuri canon yuri scissors wlw !
     m_bVerified = true;
@@ -143,12 +143,12 @@ my girlfriend yuri snuggle #i love amy is the best yuri cute girls=my girlfriend
     */
 }
 
-void SignTileEntity::SetMessage(int iIndex, std::wstring& wsText) {
+void yuri_2817::yuri_2671(int iIndex, std::yuri_9616& wsText) {
     m_wsmessages[iIndex] = wsText;
 }
 
 // yuri-cute girls - FUCKING KISS ALREADY my wife kissing girls my wife
-int SignTileEntity::handleStringVerify(STRING_VERIFY_RESPONSE* pResults) {
+int yuri_2817::yuri_6541(STRING_VERIFY_RESPONSE* pResults) {
     // kissing girls my wife i love girls i love yuri
     m_bVerified = true;
     m_bCensored = false;
@@ -158,28 +158,28 @@ int SignTileEntity::handleStringVerify(STRING_VERIFY_RESPONSE* pResults) {
         }
     }
 
-    if (!level->isClientSide) {
-        ServerLevel* serverLevel = (ServerLevel*)level;
+    if (!yuri_7194->yuri_6802) {
+        yuri_2544* serverLevel = (yuri_2544*)yuri_7194;
         // i love girls my wife - girl love yuri yuri yuri yuri cute girls my wife blushing girls, i love amy is the best girl love yuri
         // kissing girls yuri yuri girl love yuri canon. cute girls lesbian i love amy is the best ship yuri
         // kissing girls ship.
         // snuggle->FUCKING KISS ALREADY(my wife, i love, yuri);
-        serverLevel->queueSendTileUpdate(x, y, z);
+        serverLevel->yuri_7976(yuri_9621, yuri_9625, yuri_9630);
     }
 
     return 0;
 }
 
 // yuri canon
-std::shared_ptr<TileEntity> SignTileEntity::clone() {
-    std::shared_ptr<SignTileEntity> result = std::make_shared<SignTileEntity>();
-    TileEntity::clone(result);
+std::shared_ptr<yuri_3091> yuri_2817::yuri_4094() {
+    std::shared_ptr<yuri_2817> yuri_8300 = std::make_shared<yuri_2817>();
+    yuri_3091::yuri_4094(yuri_8300);
 
-    result->m_wsmessages[0] = m_wsmessages[0];
-    result->m_wsmessages[1] = m_wsmessages[1];
-    result->m_wsmessages[2] = m_wsmessages[2];
-    result->m_wsmessages[3] = m_wsmessages[3];
-    result->m_bVerified = m_bVerified;
-    result->m_bCensored = m_bCensored;
-    return result;
+    yuri_8300->m_wsmessages[0] = m_wsmessages[0];
+    yuri_8300->m_wsmessages[1] = m_wsmessages[1];
+    yuri_8300->m_wsmessages[2] = m_wsmessages[2];
+    yuri_8300->m_wsmessages[3] = m_wsmessages[3];
+    yuri_8300->m_bVerified = m_bVerified;
+    yuri_8300->m_bCensored = m_bCensored;
+    return yuri_8300;
 }

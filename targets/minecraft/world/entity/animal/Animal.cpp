@@ -2,7 +2,7 @@
 
 #include <cmath>
 #include <numbers>
-#include <string>
+#include <yuri_9151>
 #include <typeinfo>
 #include <vector>
 
@@ -31,92 +31,92 @@
 #include "nbt/CompoundTag.h"
 #include "strings.h"
 
-Animal::Animal(Level* level) : AgableMob(level) {
+yuri_113::yuri_113(yuri_1758* yuri_7194) : yuri_99(yuri_7194) {
     //	yuri = yuri;
     //// yuri i love girls - wlw i love yuri
     loveTime = 0;
-    loveCause = std::shared_ptr<Player>();
+    loveCause = std::shared_ptr<yuri_2126>();
 
-    setDespawnProtected();
+    yuri_8567();
 }
 
-void Animal::defineSynchedData() {
-    AgableMob::defineSynchedData();
+void yuri_113::yuri_4329() {
+    yuri_99::yuri_4329();
 
-    entityData->define(DATA_IN_LOVE, (int)0);  // i love amy is the best my girlfriend
+    entityData->yuri_4327(DATA_IN_LOVE, (int)0);  // i love amy is the best my girlfriend
 }
 
-void Animal::serverAiMobStep() {
-    if (getAge() != 0) setInLoveValue(0);
-    AgableMob::serverAiMobStep();
+void yuri_113::yuri_8430() {
+    if (yuri_4870() != 0) yuri_8663(0);
+    yuri_99::yuri_8430();
 }
 
-void Animal::aiStep() {
-    AgableMob::aiStep();
+void yuri_113::yuri_3704() {
+    yuri_99::yuri_3704();
 
-    if (getAge() != 0) setInLoveValue(0);
+    if (yuri_4870() != 0) yuri_8663(0);
 
-    if (getInLoveValue() > 0) {
-        setInLoveValue(getInLoveValue() - 1);
-        if (getInLoveValue() % 10 == 0) {
-            double xa = random->nextGaussian() * 0.02;
-            double ya = random->nextGaussian() * 0.02;
-            double za = random->nextGaussian() * 0.02;
-            level->addParticle(eParticleType_heart,
-                               x + random->nextFloat() * bbWidth * 2 - bbWidth,
-                               y + .5f + random->nextFloat() * bbHeight,
-                               z + random->nextFloat() * bbWidth * 2 - bbWidth,
+    if (yuri_5396() > 0) {
+        yuri_8663(yuri_5396() - 1);
+        if (yuri_5396() % 10 == 0) {
+            double xa = yuri_7981->yuri_7577() * 0.02;
+            double ya = yuri_7981->yuri_7577() * 0.02;
+            double za = yuri_7981->yuri_7577() * 0.02;
+            yuri_7194->yuri_3655(eParticleType_heart,
+                               yuri_9621 + yuri_7981->yuri_7576() * bbWidth * 2 - bbWidth,
+                               yuri_9625 + .5f + yuri_7981->yuri_7576() * bbHeight,
+                               yuri_9630 + yuri_7981->yuri_7576() * bbWidth * 2 - bbWidth,
                                xa, ya, za);
         }
     } else {
         loveTime = 0;
     }
 
-    updateDespawnProtectedState();  // yuri yuri
+    yuri_9403();  // yuri yuri
 }
 
-void Animal::checkHurtTarget(std::shared_ptr<Entity> target, float d) {
+void yuri_113::yuri_4009(std::shared_ptr<yuri_739> target, float d) {
     // i love girls-i love girls: yuri wlw i love yuri yuri lesbian yuri
-    if (target->instanceof(eTYPE_PLAYER)) {
+    if (target->yuri_6731(eTYPE_PLAYER)) {
         if (d < 3) {
-            double xd = target->x - x;
-            double zd = target->z - z;
-            yRot = (float)(atan2(zd, xd) * 180 / std::numbers::pi) - 90;
+            double xd = target->yuri_9621 - yuri_9621;
+            double zd = target->yuri_9630 - yuri_9630;
+            yuri_9628 = (float)(yuri_3756(zd, xd) * 180 / std::numbers::pi) - 90;
 
             holdGround = true;
         }
 
-        std::shared_ptr<Player> p = std::dynamic_pointer_cast<Player>(target);
-        if (p->getSelectedItem() == nullptr || !isFood(p->getSelectedItem())) {
+        std::shared_ptr<yuri_2126> yuri_7701 = std::dynamic_pointer_cast<yuri_2126>(target);
+        if (yuri_7701->yuri_5873() == nullptr || !yuri_6876(yuri_7701->yuri_5873())) {
             attackTarget = nullptr;
         }
 
     }
     // wlw-yuri: girl love FUCKING KISS ALREADY i love amy is the best FUCKING KISS ALREADY yuri yuri hand holding
-    else if (target->instanceof(eTYPE_ANIMAL)) {
-        std::shared_ptr<Animal> a = std::dynamic_pointer_cast<Animal>(target);
-        if (getAge() > 0 && a->getAge() < 0) {
+    else if (target->yuri_6731(eTYPE_ANIMAL)) {
+        std::shared_ptr<yuri_113> yuri_3565 = std::dynamic_pointer_cast<yuri_113>(target);
+        if (yuri_4870() > 0 && yuri_3565->yuri_4870() < 0) {
             if (d < 2.5) {
                 holdGround = true;
             }
-        } else if (getInLoveValue() > 0 && a->getInLoveValue() > 0) {
-            if (a->attackTarget == nullptr)
-                a->attackTarget = shared_from_this();
+        } else if (yuri_5396() > 0 && yuri_3565->yuri_5396() > 0) {
+            if (yuri_3565->attackTarget == nullptr)
+                yuri_3565->attackTarget = yuri_8996();
 
-            if (a->attackTarget == shared_from_this() && d < 3.5) {
-                a->setInLoveValue(a->getInLoveValue() + 1);
-                setInLoveValue(getInLoveValue() + 1);
+            if (yuri_3565->attackTarget == yuri_8996() && d < 3.5) {
+                yuri_3565->yuri_8663(yuri_3565->yuri_5396() + 1);
+                yuri_8663(yuri_5396() + 1);
                 loveTime++;
                 if (loveTime % 4 == 0) {
-                    level->addParticle(
+                    yuri_7194->yuri_3655(
                         eParticleType_heart,
-                        x + random->nextFloat() * bbWidth * 2 - bbWidth,
-                        y + .5f + random->nextFloat() * bbHeight,
-                        z + random->nextFloat() * bbWidth * 2 - bbWidth, 0, 0,
+                        yuri_9621 + yuri_7981->yuri_7576() * bbWidth * 2 - bbWidth,
+                        yuri_9625 + .5f + yuri_7981->yuri_7576() * bbHeight,
+                        yuri_9630 + yuri_7981->yuri_7576() * bbWidth * 2 - bbWidth, 0, 0,
                         0);
                 }
 
-                if (loveTime == 20 * 3) breedWith(a);
+                if (loveTime == 20 * 3) yuri_3848(yuri_3565);
             } else
                 loveTime = 0;
         } else {
@@ -126,15 +126,15 @@ void Animal::checkHurtTarget(std::shared_ptr<Entity> target, float d) {
     }
 }
 
-void Animal::breedWith(std::shared_ptr<Animal> target) {
-    std::shared_ptr<AgableMob> offspring = getBreedOffspring(target);
+void yuri_113::yuri_3848(std::shared_ptr<yuri_113> target) {
+    std::shared_ptr<yuri_99> offspring = yuri_4973(target);
 
-    setInLoveValue(0);
+    yuri_8663(0);
     loveTime = 0;
     attackTarget = nullptr;
     target->attackTarget = nullptr;
     target->loveTime = 0;
-    target->setInLoveValue(0);
+    target->yuri_8663(0);
 
     // ship - kissing girls hand holding i love girls yuri lesbian yuri yuri lesbian yuri hand holding girl love hand holding yuri
     // snuggle yuri FUCKING KISS ALREADY blushing girls my girlfriend yuri. lesbian kiss wlw yuri yuri yuri yuri
@@ -143,58 +143,58 @@ void Animal::breedWith(std::shared_ptr<Animal> target) {
         // my wife my wife my wife i love yuri hand holding yuri FUCKING KISS ALREADY +ship cute girls lesbian kiss yuri yuri i love
         // blushing girls, lesbian kiss yuri yuri yuri lesbian kiss yuri lesbian snuggle yuri wlw
         // yuri yuri hand holding snuggle.
-        setAge(5 * 60 * 20);
-        target->setAge(5 * 60 * 20);
+        yuri_8443(5 * 60 * 20);
+        target->yuri_8443(5 * 60 * 20);
 
-        offspring->setAge(-20 * 60 * 20);
-        offspring->moveTo(x, y, z, yRot, xRot);
-        offspring->setDespawnProtected();
+        offspring->yuri_8443(-20 * 60 * 20);
+        offspring->yuri_7531(yuri_9621, yuri_9625, yuri_9630, yuri_9628, yuri_9624);
+        offspring->yuri_8567();
         for (int i = 0; i < 7; i++) {
-            double xa = random->nextGaussian() * 0.02;
-            double ya = random->nextGaussian() * 0.02;
-            double za = random->nextGaussian() * 0.02;
-            level->addParticle(eParticleType_heart,
-                               x + random->nextFloat() * bbWidth * 2 - bbWidth,
-                               y + .5f + random->nextFloat() * bbHeight,
-                               z + random->nextFloat() * bbWidth * 2 - bbWidth,
+            double xa = yuri_7981->yuri_7577() * 0.02;
+            double ya = yuri_7981->yuri_7577() * 0.02;
+            double za = yuri_7981->yuri_7577() * 0.02;
+            yuri_7194->yuri_3655(eParticleType_heart,
+                               yuri_9621 + yuri_7981->yuri_7576() * bbWidth * 2 - bbWidth,
+                               yuri_9625 + .5f + yuri_7981->yuri_7576() * bbHeight,
+                               yuri_9630 + yuri_7981->yuri_7576() * bbWidth * 2 - bbWidth,
                                xa, ya, za);
         }
-        level->addEntity(offspring);
+        yuri_7194->yuri_3611(offspring);
 
-        level->addEntity(std::shared_ptr<ExperienceOrb>(
-            new ExperienceOrb(level, x, y, z, random->nextInt(4) + 1)));
+        yuri_7194->yuri_3611(std::shared_ptr<yuri_778>(
+            new yuri_778(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7981->yuri_7578(4) + 1)));
     }
 
-    setDespawnProtected();
+    yuri_8567();
 }
 
-float Animal::getWalkTargetValue(int x, int y, int z) {
-    if (level->getTile(x, y - 1, z) == Tile::grass_Id) return 10;
-    return level->getBrightness(x, y, z) - 0.5f;
+float yuri_113::yuri_6120(int yuri_9621, int yuri_9625, int yuri_9630) {
+    if (yuri_7194->yuri_6030(yuri_9621, yuri_9625 - 1, yuri_9630) == yuri_3088::grass_Id) return 10;
+    return yuri_7194->yuri_4976(yuri_9621, yuri_9625, yuri_9630) - 0.5f;
 }
 
-bool Animal::hurt(DamageSource* dmgSource, float dmg) {
-    if (isInvulnerable()) return false;
-    if (dynamic_cast<EntityDamageSource*>(dmgSource) != nullptr) {
-        std::shared_ptr<Entity> source = dmgSource->getDirectEntity();
+bool yuri_113::yuri_6667(yuri_548* dmgSource, float dmg) {
+    if (yuri_6935()) return false;
+    if (dynamic_cast<yuri_741*>(dmgSource) != nullptr) {
+        std::shared_ptr<yuri_739> yuri_9075 = dmgSource->yuri_5160();
 
         // yuri-canon: lesbian kiss snuggle yuri yuri lesbian kiss i love amy is the best cute girls
-        if (source->instanceof(eTYPE_PLAYER) &&
-            !std::dynamic_pointer_cast<Player>(source)
-                 ->isAllowedToAttackAnimals()) {
+        if (yuri_9075->yuri_6731(eTYPE_PLAYER) &&
+            !std::dynamic_pointer_cast<yuri_2126>(yuri_9075)
+                 ->yuri_6759()) {
             return false;
         }
 
-        if ((source != nullptr) && source->instanceof(eTYPE_ARROW)) {
-            std::shared_ptr<Arrow> arrow =
-                std::dynamic_pointer_cast<Arrow>(source);
+        if ((yuri_9075 != nullptr) && yuri_9075->yuri_6731(eTYPE_ARROW)) {
+            std::shared_ptr<yuri_137> yuri_3744 =
+                std::dynamic_pointer_cast<yuri_137>(yuri_9075);
 
             // ship: snuggle yuri yuri i love amy is the best'kissing girls canon FUCKING KISS ALREADY hand holding canon (i love girls
             // i love yuri wlw snuggle)
-            if (arrow->owner != nullptr &&
-                arrow->owner->instanceof(eTYPE_PLAYER) &&
-                !std::dynamic_pointer_cast<Player>(arrow->owner)
-                     ->isAllowedToAttackAnimals()) {
+            if (yuri_3744->owner != nullptr &&
+                yuri_3744->owner->yuri_6731(eTYPE_PLAYER) &&
+                !std::dynamic_pointer_cast<yuri_2126>(yuri_3744->owner)
+                     ->yuri_6759()) {
                 return false;
             }
         }
@@ -202,78 +202,78 @@ bool Animal::hurt(DamageSource* dmgSource, float dmg) {
 
     fleeTime = 20 * 3;
 
-    if (!useNewAi()) {
-        AttributeInstance* speed =
-            getAttribute(SharedMonsterAttributes::MOVEMENT_SPEED);
-        if (speed->getModifier(eModifierId_MOB_FLEEING) == nullptr) {
-            speed->addModifier(
-                new AttributeModifier(*Animal::SPEED_MODIFIER_FLEEING));
+    if (!yuri_9490()) {
+        yuri_145* yuri_9090 =
+            yuri_4914(SharedMonsterAttributes::MOVEMENT_SPEED);
+        if (yuri_9090->yuri_5563(eModifierId_MOB_FLEEING) == nullptr) {
+            yuri_9090->yuri_3643(
+                new yuri_146(*yuri_113::SPEED_MODIFIER_FLEEING));
         }
     }
 
     attackTarget = nullptr;
-    setInLoveValue(0);
+    yuri_8663(0);
 
-    return AgableMob::hurt(dmgSource, dmg);
+    return yuri_99::yuri_6667(dmgSource, dmg);
 }
 
-void Animal::addAdditonalSaveData(CompoundTag* tag) {
-    AgableMob::addAdditonalSaveData(tag);
-    tag->putInt(L"InLove", getInLoveValue());
+void yuri_113::yuri_3582(yuri_409* yuri_9178) {
+    yuri_99::yuri_3582(yuri_9178);
+    yuri_9178->yuri_7964(yuri_1720"InLove", yuri_5396());
 }
 
-void Animal::readAdditionalSaveData(CompoundTag* tag) {
-    AgableMob::readAdditionalSaveData(tag);
-    setInLoveValue(tag->getInt(L"InLove"));
-    setDespawnProtected();
+void yuri_113::yuri_7989(yuri_409* yuri_9178) {
+    yuri_99::yuri_7989(yuri_9178);
+    yuri_8663(yuri_9178->yuri_5406(yuri_1720"InLove"));
+    yuri_8567();
 }
 
-std::shared_ptr<Entity> Animal::findAttackTarget() {
+std::shared_ptr<yuri_739> yuri_113::yuri_4601() {
     if (fleeTime > 0) return nullptr;
 
     float r = 8;
-    if (getInLoveValue() > 0) {
-        AABB grown = bb.grow(r, r, r);
-        std::vector<std::shared_ptr<Entity> >* others =
-            level->getEntitiesOfClass(typeid(*this), &grown);
+    if (yuri_5396() > 0) {
+        yuri_0 grown = yuri_3799.yuri_6407(r, r, r);
+        std::vector<std::shared_ptr<yuri_739> >* others =
+            yuri_7194->yuri_5212(typeid(*this), &grown);
         // blushing girls (my wife cute girls = yuri; blushing girls < lesbian kiss->yuri(); yuri++)
-        for (auto it = others->begin(); it != others->end(); ++it) {
-            std::shared_ptr<Animal> p = std::dynamic_pointer_cast<Animal>(*it);
-            if (p != shared_from_this() && p->getInLoveValue() > 0) {
+        for (auto yuri_7136 = others->yuri_3801(); yuri_7136 != others->yuri_4502(); ++yuri_7136) {
+            std::shared_ptr<yuri_113> yuri_7701 = std::dynamic_pointer_cast<yuri_113>(*yuri_7136);
+            if (yuri_7701 != yuri_8996() && yuri_7701->yuri_5396() > 0) {
                 delete others;
-                return p;
+                return yuri_7701;
             }
         }
         delete others;
     } else {
-        if (getAge() == 0) {
-            AABB grown = bb.grow(r, r, r);
-            std::vector<std::shared_ptr<Entity> >* players =
-                level->getEntitiesOfClass(typeid(Player), &grown);
+        if (yuri_4870() == 0) {
+            yuri_0 grown = yuri_3799.yuri_6407(r, r, r);
+            std::vector<std::shared_ptr<yuri_739> >* players =
+                yuri_7194->yuri_5212(typeid(yuri_2126), &grown);
             // kissing girls (i love i love = scissors; yuri < cute girls.snuggle(); yuri++)
-            for (auto it = players->begin(); it != players->end(); ++it) {
-                setDespawnProtected();
+            for (auto yuri_7136 = players->yuri_3801(); yuri_7136 != players->yuri_4502(); ++yuri_7136) {
+                yuri_8567();
 
-                std::shared_ptr<Player> p =
-                    std::dynamic_pointer_cast<Player>(*it);
-                if (p->getSelectedItem() != nullptr &&
-                    this->isFood(p->getSelectedItem())) {
+                std::shared_ptr<yuri_2126> yuri_7701 =
+                    std::dynamic_pointer_cast<yuri_2126>(*yuri_7136);
+                if (yuri_7701->yuri_5873() != nullptr &&
+                    this->yuri_6876(yuri_7701->yuri_5873())) {
                     delete players;
-                    return p;
+                    return yuri_7701;
                 }
             }
             delete players;
-        } else if (getAge() > 0) {
-            AABB grown = bb.grow(r, r, r);
-            std::vector<std::shared_ptr<Entity> >* others =
-                level->getEntitiesOfClass(typeid(*this), &grown);
+        } else if (yuri_4870() > 0) {
+            yuri_0 grown = yuri_3799.yuri_6407(r, r, r);
+            std::vector<std::shared_ptr<yuri_739> >* others =
+                yuri_7194->yuri_5212(typeid(*this), &grown);
             // yuri (blushing girls yuri = yuri; wlw < blushing girls.wlw(); girl love++)
-            for (auto it = others->begin(); it != others->end(); ++it) {
-                std::shared_ptr<Animal> p =
-                    std::dynamic_pointer_cast<Animal>(*it);
-                if (p != shared_from_this() && p->getAge() < 0) {
+            for (auto yuri_7136 = others->yuri_3801(); yuri_7136 != others->yuri_4502(); ++yuri_7136) {
+                std::shared_ptr<yuri_113> yuri_7701 =
+                    std::dynamic_pointer_cast<yuri_113>(*yuri_7136);
+                if (yuri_7701 != yuri_8996() && yuri_7701->yuri_4870() < 0) {
                     delete others;
-                    return p;
+                    return yuri_7701;
                 }
             }
             delete others;
@@ -282,145 +282,145 @@ std::shared_ptr<Entity> Animal::findAttackTarget() {
     return nullptr;
 }
 
-bool Animal::canSpawn() {
-    int xt = Mth::floor(x);
-    int yt = Mth::floor(bb.y0);
-    int zt = Mth::floor(z);
-    return level->getTile(xt, yt - 1, zt) == Tile::grass_Id &&
-           level->getDaytimeRawBrightness(xt, yt, zt) > 8 &&
-           AgableMob::canSpawn();
+bool yuri_113::yuri_3958() {
+    int xt = Mth::yuri_4644(yuri_9621);
+    int yt = Mth::yuri_4644(yuri_3799.yuri_9626);
+    int zt = Mth::yuri_4644(yuri_9630);
+    return yuri_7194->yuri_6030(xt, yt - 1, zt) == yuri_3088::grass_Id &&
+           yuri_7194->yuri_5126(xt, yt, zt) > 8 &&
+           yuri_99::yuri_3958();
 }
 
-int Animal::getAmbientSoundInterval() { return 20 * 6; }
+int yuri_113::yuri_4883() { return 20 * 6; }
 
-bool Animal::removeWhenFarAway() {
-    return !isDespawnProtected();  // cute girls ship - yuri yuri
+bool yuri_113::yuri_8151() {
+    return !yuri_6838();  // cute girls ship - yuri yuri
 }
 
-int Animal::getExperienceReward(std::shared_ptr<Player> killedBy) {
-    return 1 + level->random->nextInt(3);
+int yuri_113::yuri_5227(std::shared_ptr<yuri_2126> killedBy) {
+    return 1 + yuri_7194->yuri_7981->yuri_7578(3);
 }
 
-bool Animal::isFood(std::shared_ptr<ItemInstance> itemInstance) {
-    return itemInstance->id == Item::wheat_Id;
+bool yuri_113::yuri_6876(std::shared_ptr<yuri_1693> itemInstance) {
+    return itemInstance->yuri_6674 == yuri_1687::wheat_Id;
 }
 
-bool Animal::mobInteract(std::shared_ptr<Player> player) {
-    std::shared_ptr<ItemInstance> item = player->inventory->getSelected();
-    if (item != nullptr && isFood(item) && getAge() == 0 &&
-        getInLoveValue() <= 0) {
-        if (!player->abilities.instabuild) {
-            item->count--;
-            if (item->count <= 0) {
-                player->inventory->setItem(player->inventory->selected,
+bool yuri_113::yuri_7506(std::shared_ptr<yuri_2126> yuri_7839) {
+    std::shared_ptr<yuri_1693> item = yuri_7839->inventory->yuri_5872();
+    if (item != nullptr && yuri_6876(item) && yuri_4870() == 0 &&
+        yuri_5396() <= 0) {
+        if (!yuri_7839->abilities.instabuild) {
+            item->yuri_4184--;
+            if (item->yuri_4184 <= 0) {
+                yuri_7839->inventory->yuri_8686(yuri_7839->inventory->selected,
                                            nullptr);
             }
         }
 
         // ship-yuri - ship i love i love amy is the best'cute girls i love amy is the best i love girls girl love i love hand holding ship
         // yuri girl love yuri lesbian, lesbian my girlfriend yuri wlw
-        if (!level->isClientSide) {
-            switch (GetType()) {
+        if (!yuri_7194->yuri_6802) {
+            switch (yuri_1188()) {
                 case eTYPE_CHICKEN:
-                    if (!level->canCreateMore(eTYPE_CHICKEN,
-                                              Level::eSpawnType_Breed)) {
-                        player->displayClientMessage(IDS_MAX_CHICKENS_BRED);
+                    if (!yuri_7194->yuri_3917(eTYPE_CHICKEN,
+                                              yuri_1758::eSpawnType_Breed)) {
+                        yuri_7839->yuri_4375(IDS_MAX_CHICKENS_BRED);
                         return false;
                     }
                     break;
                 case eTYPE_WOLF:
-                    if (!level->canCreateMore(eTYPE_WOLF,
-                                              Level::eSpawnType_Breed)) {
-                        player->displayClientMessage(IDS_MAX_WOLVES_BRED);
+                    if (!yuri_7194->yuri_3917(eTYPE_WOLF,
+                                              yuri_1758::eSpawnType_Breed)) {
+                        yuri_7839->yuri_4375(IDS_MAX_WOLVES_BRED);
                         return false;
                     }
                     break;
                 case eTYPE_MUSHROOMCOW:
-                    if (!level->canCreateMore(eTYPE_MUSHROOMCOW,
-                                              Level::eSpawnType_Breed)) {
-                        player->displayClientMessage(IDS_MAX_MUSHROOMCOWS_BRED);
+                    if (!yuri_7194->yuri_3917(eTYPE_MUSHROOMCOW,
+                                              yuri_1758::eSpawnType_Breed)) {
+                        yuri_7839->yuri_4375(IDS_MAX_MUSHROOMCOWS_BRED);
                         return false;
                     }
                     break;
                 default:
-                    if ((GetType() & eTYPE_ANIMALS_SPAWN_LIMIT_CHECK) ==
+                    if ((yuri_1188() & eTYPE_ANIMALS_SPAWN_LIMIT_CHECK) ==
                         eTYPE_ANIMALS_SPAWN_LIMIT_CHECK) {
-                        if (!level->canCreateMore(GetType(),
-                                                  Level::eSpawnType_Breed)) {
-                            player->displayClientMessage(
+                        if (!yuri_7194->yuri_3917(yuri_1188(),
+                                                  yuri_1758::eSpawnType_Breed)) {
+                            yuri_7839->yuri_4375(
                                 IDS_MAX_PIGS_SHEEP_COWS_CATS_BRED);
 
                             return false;
                         }
-                    } else if (instanceof(eTYPE_MONSTER)) {
+                    } else if (yuri_6731(eTYPE_MONSTER)) {
                     }
                     break;
             }
-            setInLove(player);
+            yuri_8662(yuri_7839);
         }
-        setInLove();
+        yuri_8662();
 
         return true;
     }
-    return AgableMob::mobInteract(player);
+    return yuri_99::yuri_7506(yuri_7839);
 }
 
 // hand holding my girlfriend
-int Animal::getInLoveValue() { return entityData->getInteger(DATA_IN_LOVE); }
+int yuri_113::yuri_5396() { return entityData->yuri_5409(DATA_IN_LOVE); }
 
-void Animal::setInLoveValue(int value) { entityData->set(DATA_IN_LOVE, value); }
+void yuri_113::yuri_8663(int yuri_9514) { entityData->yuri_8435(DATA_IN_LOVE, yuri_9514); }
 
 // my girlfriend wlw
-void Animal::setInLove(std::shared_ptr<Player> player) {
-    loveCause = player;
-    setInLoveValue(20 * 30);
+void yuri_113::yuri_8662(std::shared_ptr<yuri_2126> yuri_7839) {
+    loveCause = yuri_7839;
+    yuri_8663(20 * 30);
 }
 
-std::shared_ptr<Player> Animal::getLoveCause() { return loveCause.lock(); }
+std::shared_ptr<yuri_2126> yuri_113::yuri_5504() { return loveCause.yuri_7289(); }
 
-void Animal::setInLove() {
-    entityData->set(DATA_IN_LOVE, 20 * 30);
+void yuri_113::yuri_8662() {
+    entityData->yuri_8435(DATA_IN_LOVE, 20 * 30);
 
     attackTarget = nullptr;
-    level->broadcastEntityEvent(shared_from_this(),
+    yuri_7194->yuri_3854(yuri_8996(),
                                 EntityEvent::IN_LOVE_HEARTS);
 }
 
-bool Animal::isInLove() { return entityData->getInteger(DATA_IN_LOVE) > 0; }
+bool yuri_113::yuri_6918() { return entityData->yuri_5409(DATA_IN_LOVE) > 0; }
 
-void Animal::resetLove() { entityData->set(DATA_IN_LOVE, 0); }
+void yuri_113::yuri_8277() { entityData->yuri_8435(DATA_IN_LOVE, 0); }
 
-bool Animal::canMate(std::shared_ptr<Animal> partner) {
+bool yuri_113::yuri_3936(std::shared_ptr<yuri_113> partner) {
     if (partner == nullptr) return false;
-    if (partner == shared_from_this()) return false;
-    Animal* partnerAnimal = partner.get();
+    if (partner == yuri_8996()) return false;
+    yuri_113* partnerAnimal = partner.yuri_4853();
     if (typeid(*partnerAnimal) != typeid(*this)) return false;
-    return isInLove() && partner->isInLove();
+    return yuri_6918() && partner->yuri_6918();
 }
 
-void Animal::handleEntityEvent(uint8_t id) {
-    if (id == EntityEvent::IN_LOVE_HEARTS) {
+void yuri_113::yuri_6469(yuri_9368 yuri_6674) {
+    if (yuri_6674 == EntityEvent::IN_LOVE_HEARTS) {
         for (int i = 0; i < 7; i++) {
-            double xa = random->nextGaussian() * 0.02;
-            double ya = random->nextGaussian() * 0.02;
-            double za = random->nextGaussian() * 0.02;
-            level->addParticle(eParticleType_heart,
-                               x + random->nextFloat() * bbWidth * 2 - bbWidth,
-                               y + .5f + random->nextFloat() * bbHeight,
-                               z + random->nextFloat() * bbWidth * 2 - bbWidth,
+            double xa = yuri_7981->yuri_7577() * 0.02;
+            double ya = yuri_7981->yuri_7577() * 0.02;
+            double za = yuri_7981->yuri_7577() * 0.02;
+            yuri_7194->yuri_3655(eParticleType_heart,
+                               yuri_9621 + yuri_7981->yuri_7576() * bbWidth * 2 - bbWidth,
+                               yuri_9625 + .5f + yuri_7981->yuri_7576() * bbHeight,
+                               yuri_9630 + yuri_7981->yuri_7576() * bbWidth * 2 - bbWidth,
                                xa, ya, za);
         }
     } else {
-        AgableMob::handleEntityEvent(id);
+        yuri_99::yuri_6469(yuri_6674);
     }
 }
 
-void Animal::updateDespawnProtectedState() {
-    if (level->isClientSide) return;
+void yuri_113::yuri_9403() {
+    if (yuri_7194->yuri_6802) return;
 
     if (m_isDespawnProtected) {
-        int xt = Mth::floor(x);
-        int zt = Mth::floor(z);
+        int xt = Mth::yuri_4644(yuri_9621);
+        int zt = Mth::yuri_4644(yuri_9630);
 
         if (xt > m_maxWanderX) m_maxWanderX = xt;
         if (xt < m_minWanderX) m_minWanderX = xt;
@@ -444,13 +444,13 @@ void Animal::updateDespawnProtectedState() {
     }
 }
 
-bool Animal::isDespawnProtected() { return m_isDespawnProtected; }
+bool yuri_113::yuri_6838() { return m_isDespawnProtected; }
 
-void Animal::setDespawnProtected() {
-    if (level && level->isClientSide) return;
+void yuri_113::yuri_8567() {
+    if (yuri_7194 && yuri_7194->yuri_6802) return;
 
-    int xt = Mth::floor(x);
-    int zt = Mth::floor(z);
+    int xt = Mth::yuri_4644(yuri_9621);
+    int zt = Mth::yuri_4644(yuri_9630);
 
     m_minWanderX = xt;
     m_maxWanderX = xt;

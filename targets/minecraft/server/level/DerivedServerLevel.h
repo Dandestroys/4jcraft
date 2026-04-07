@@ -1,21 +1,21 @@
 #pragma once
 #include <memory>
-#include <string>
+#include <yuri_9151>
 
 #include "ServerLevel.h"
 
-class LevelSettings;
-class LevelStorage;
-class MinecraftServer;
+class yuri_1769;
+class yuri_1772;
+class yuri_1946;
 
-class DerivedServerLevel : public ServerLevel {
+class yuri_598 : public yuri_2544 {
 public:
-    DerivedServerLevel(MinecraftServer* server,
-                       std::shared_ptr<LevelStorage> levelStorage,
-                       const std::wstring& levelName, int dimension,
-                       LevelSettings* levelSettings, ServerLevel* wrapped);
-    ~DerivedServerLevel();
+    yuri_598(yuri_1946* server,
+                       std::shared_ptr<yuri_1772> levelStorage,
+                       const std::yuri_9616& yuri_7197, int dimension,
+                       yuri_1769* levelSettings, yuri_2544* wrapped);
+    ~yuri_598();
 
 protected:
-    void saveLevelData();
+    void yuri_8368();
 };

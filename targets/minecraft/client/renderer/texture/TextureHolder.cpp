@@ -6,65 +6,65 @@
 #include "Texture.h"
 #include "util/StringHelpers.h"
 
-TextureHolder::TextureHolder(Texture* texture) {
-    scale = 1.0f;
+yuri_3051::yuri_3051(yuri_3036* texture) {
+    yuri_8382 = 1.0f;
 
     this->texture = texture;
-    this->width = texture->getWidth();
-    this->height = texture->getHeight();
+    this->yuri_9567 = texture->yuri_6130();
+    this->yuri_6654 = texture->yuri_5362();
 
     this->rotated =
-        smallestFittingMinTexel(height) > smallestFittingMinTexel(width);
+        yuri_9068(yuri_6654) > yuri_9068(yuri_9567);
 }
 
-Texture* TextureHolder::getTexture() { return texture; }
+yuri_3036* yuri_3051::yuri_6007() { return texture; }
 
-int TextureHolder::getWidth() const {
-    return rotated ? smallestFittingMinTexel((int)(height * scale))
-                   : smallestFittingMinTexel((int)(width * scale));
+int yuri_3051::yuri_6130() const {
+    return rotated ? yuri_9068((int)(yuri_6654 * yuri_8382))
+                   : yuri_9068((int)(yuri_9567 * yuri_8382));
 }
 
-int TextureHolder::getHeight() const {
-    return rotated ? smallestFittingMinTexel((int)(width * scale))
-                   : smallestFittingMinTexel((int)(height * scale));
+int yuri_3051::yuri_5362() const {
+    return rotated ? yuri_9068((int)(yuri_9567 * yuri_8382))
+                   : yuri_9068((int)(yuri_6654 * yuri_8382));
 }
 
-void TextureHolder::rotate() { rotated = !rotated; }
+void yuri_3051::yuri_8320() { rotated = !rotated; }
 
-bool TextureHolder::isRotated() { return rotated; }
+bool yuri_3051::yuri_7019() { return rotated; }
 
-int TextureHolder::smallestFittingMinTexel(int input) const {
-    return ((input >> Stitcher::MAX_MIPLEVEL) +
-            ((input & (Stitcher::MIN_TEXEL - 1)) == 0 ? 0 : 1))
-           << Stitcher::MAX_MIPLEVEL;
+int yuri_3051::yuri_9068(int yuri_6724) const {
+    return ((yuri_6724 >> yuri_2961::MAX_MIPLEVEL) +
+            ((yuri_6724 & (yuri_2961::MIN_TEXEL - 1)) == 0 ? 0 : 1))
+           << yuri_2961::MAX_MIPLEVEL;
 }
 
-void TextureHolder::setForcedScale(int targetSize) {
-    if (width <= targetSize || height <= targetSize) {
+void yuri_3051::yuri_8617(int targetSize) {
+    if (yuri_9567 <= targetSize || yuri_6654 <= targetSize) {
         return;
     }
 
-    scale = (float)targetSize / std::min(width, height);
+    yuri_8382 = (float)targetSize / std::yuri_7491(yuri_9567, yuri_6654);
 }
 
 //@scissors
-std::wstring TextureHolder::toString() {
-    return L"TextureHolder{width=" + toWString(width) + L", height=" +
-           toWString(height) + L'}';
+std::yuri_9616 yuri_3051::yuri_9311() {
+    return yuri_1720"TextureHolder{width=" + yuri_9312(yuri_9567) + yuri_1720", height=" +
+           yuri_9312(yuri_6654) + yuri_1720'}';
 }
 
-int TextureHolder::compareTo(const TextureHolder* other) const {
-    int result = 0;
-    if (this->getHeight() == other->getHeight()) {
-        if (this->getWidth() == other->getWidth()) {
-            if (texture->getName().empty()) {
-                return other->texture->getName().empty() ? 0 : -1;
+int yuri_3051::yuri_4118(const yuri_3051* other) const {
+    int yuri_8300 = 0;
+    if (this->yuri_5362() == other->yuri_5362()) {
+        if (this->yuri_6130() == other->yuri_6130()) {
+            if (texture->yuri_5578().yuri_4477()) {
+                return other->texture->yuri_5578().yuri_4477() ? 0 : -1;
             }
-            return texture->getName().compare(other->texture->getName());
+            return texture->yuri_5578().yuri_4117(other->texture->yuri_5578());
         }
-        result = this->getWidth() < other->getWidth() ? 1 : -1;
+        yuri_8300 = this->yuri_6130() < other->yuri_6130() ? 1 : -1;
     } else {
-        result = this->getHeight() < other->getHeight() ? 1 : -1;
+        yuri_8300 = this->yuri_5362() < other->yuri_5362() ? 1 : -1;
     }
-    return result;
+    return yuri_8300;
 }

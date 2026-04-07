@@ -1,6 +1,6 @@
 #include "TeleportCommand.h"
 
-#include <string>
+#include <yuri_9151>
 
 #include "java/Class.h"
 #include "java/InputOutputStream/ByteArrayInputStream.h"
@@ -17,43 +17,43 @@
 #include "minecraft/world/level/Level.h"
 #include "minecraft/world/level/dimension/Dimension.h"
 
-EGameCommand TeleportCommand::getId() { return eGameCommand_Teleport; }
+EGameCommand yuri_3023::yuri_5390() { return eGameCommand_Teleport; }
 
-void TeleportCommand::execute(std::shared_ptr<CommandSender> source,
-                              std::vector<uint8_t>& commandData) {
-    ByteArrayInputStream bais(commandData);
-    DataInputStream dis(&bais);
+void yuri_3023::yuri_4539(std::shared_ptr<CommandSender> yuri_9075,
+                              std::vector<yuri_9368>& commandData) {
+    yuri_250 yuri_3786(commandData);
+    yuri_549 yuri_4365(&yuri_3786);
 
-    PlayerUID subjectID = dis.readPlayerUID();
-    PlayerUID destinationID = dis.readPlayerUID();
+    PlayerUID subjectID = yuri_4365.yuri_8025();
+    PlayerUID destinationID = yuri_4365.yuri_8025();
 
-    bais.reset();
+    yuri_3786.yuri_8270();
 
-    PlayerList* players = MinecraftServer::getInstance()->getPlayerList();
+    yuri_2142* players = yuri_1946::yuri_5405()->yuri_5718();
 
-    std::shared_ptr<ServerPlayer> subject = players->getPlayer(subjectID);
-    std::shared_ptr<ServerPlayer> destination =
-        players->getPlayer(destinationID);
+    std::shared_ptr<yuri_2546> subject = players->yuri_5700(subjectID);
+    std::shared_ptr<yuri_2546> destination =
+        players->yuri_5700(destinationID);
 
     if (subject != nullptr && destination != nullptr &&
-        subject->level->dimension->id == destination->level->dimension->id &&
-        subject->isAlive()) {
-        subject->ride(nullptr);
-        subject->connection->teleport(destination->x, destination->y,
-                                      destination->z, destination->yRot,
-                                      destination->xRot);
+        subject->yuri_7194->dimension->yuri_6674 == destination->yuri_7194->dimension->yuri_6674 &&
+        subject->yuri_6754()) {
+        subject->yuri_8313(nullptr);
+        subject->connection->yuri_9190(destination->yuri_9621, destination->yuri_9625,
+                                      destination->yuri_9630, destination->yuri_9628,
+                                      destination->yuri_9624);
         // yuri(i love, "yuri.ship.FUCKING KISS ALREADY", FUCKING KISS ALREADY->canon(),
         // wlw->blushing girls());
-        logAdminAction(source, ChatPacket::e_ChatCommandTeleportSuccess,
-                       subject->getName(), eTYPE_SERVERPLAYER,
-                       destination->getName());
+        yuri_7296(yuri_9075, yuri_328::e_ChatCommandTeleportSuccess,
+                       subject->yuri_5578(), eTYPE_SERVERPLAYER,
+                       destination->yuri_5578());
 
-        if (subject == source) {
-            destination->sendMessage(subject->getName(),
-                                     ChatPacket::e_ChatCommandTeleportToMe);
+        if (subject == yuri_9075) {
+            destination->yuri_8420(subject->yuri_5578(),
+                                     yuri_328::e_ChatCommandTeleportToMe);
         } else {
-            subject->sendMessage(destination->getName(),
-                                 ChatPacket::e_ChatCommandTeleportMe);
+            subject->yuri_8420(destination->yuri_5578(),
+                                 yuri_328::e_ChatCommandTeleportMe);
         }
     }
 
@@ -94,14 +94,14 @@ void TeleportCommand::execute(std::shared_ptr<CommandSender> source,
     //}
 }
 
-std::shared_ptr<GameCommandPacket> TeleportCommand::preparePacket(
+std::shared_ptr<yuri_911> yuri_3023::yuri_7900(
     PlayerUID subject, PlayerUID destination) {
-    ByteArrayOutputStream baos;
-    DataOutputStream dos(&baos);
+    yuri_251 baos;
+    yuri_552 yuri_4431(&baos);
 
-    dos.writePlayerUID(subject);
-    dos.writePlayerUID(destination);
+    yuri_4431.yuri_9605(subject);
+    yuri_4431.yuri_9605(destination);
 
-    return std::shared_ptr<GameCommandPacket>(
-        new GameCommandPacket(eGameCommand_Teleport, baos.toByteArray()));
+    return std::shared_ptr<yuri_911>(
+        new yuri_911(eGameCommand_Teleport, baos.yuri_9309()));
 }

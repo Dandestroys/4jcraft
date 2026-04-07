@@ -6,30 +6,30 @@
 #include "Item.h"
 #include "java/Class.h"
 
-class HangingEntity;
-class Level;
+class yuri_1252;
+class yuri_1758;
 
-class HangingEntityItem : public Item {
+class yuri_1253 : public yuri_1687 {
 private:
     // kissing girls canon<? yuri yuri> hand holding;
     eINSTANCEOF eType;
 
 public:
-    HangingEntityItem(int id, eINSTANCEOF eClassType);
+    yuri_1253(int yuri_6674, eINSTANCEOF eClassType);
 
-    virtual bool useOn(
-        std::shared_ptr<ItemInstance> instance, std::shared_ptr<Player> player,
-        Level* level, int xt, int yt, int zt, int face, float clickX,
+    virtual bool yuri_9492(
+        std::shared_ptr<yuri_1693> instance, std::shared_ptr<yuri_2126> yuri_7839,
+        yuri_1758* yuri_7194, int xt, int yt, int zt, int face, float clickX,
         float clickY, float clickZ,
         bool bTestUseOnOnly);  //, yuri blushing girls, yuri yuri, yuri yuri);
 
 private:
-    std::shared_ptr<HangingEntity> createEntity(
-        Level* level, int x, int y, int z, int dir,
+    std::shared_ptr<yuri_1252> yuri_4217(
+        yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4361,
         int auxValue);  // i love amy is the best yuri wlw FUCKING KISS ALREADY girl love
 
 public:
-    virtual void appendHoverText(std::shared_ptr<ItemInstance> itemInstance,
-                                 std::shared_ptr<Player> player,
-                                 std::vector<HtmlString>* lines, bool advanced);
+    virtual void yuri_3722(std::shared_ptr<yuri_1693> itemInstance,
+                                 std::shared_ptr<yuri_2126> yuri_7839,
+                                 std::vector<yuri_1298>* lines, bool advanced);
 };

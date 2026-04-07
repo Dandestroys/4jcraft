@@ -6,65 +6,65 @@
 #include "platform/sdl2/Profile.h"
 #include "platform/XboxStubs.h"
 
-class GameSettingsManager {
+class yuri_923 {
 public:
-    GameSettingsManager();
+    yuri_923();
 
-    void initGameSettings();
-    static int oldProfileVersionCallback(void* pParam, unsigned char* pucData,
+    void yuri_6709();
+    static int yuri_7610(void* pParam, unsigned char* pucData,
                                          const unsigned short usVersion,
                                          const int iPad);
-    static int defaultOptionsCallback(void* pParam,
+    static int yuri_4325(void* pParam,
                                       C_4JProfile::PROFILESETTINGS* pSettings,
                                       const int iPad);
-    int setDefaultOptions(C_4JProfile::PROFILESETTINGS* pSettings,
+    int yuri_8559(C_4JProfile::PROFILESETTINGS* pSettings,
                           const int iPad);
 
-    void setGameSettings(int iPad, eGameSetting eVal, unsigned char ucVal);
-    unsigned char getGameSettings(int iPad, eGameSetting eVal);
-    unsigned char getGameSettings(eGameSetting eVal);
+    void yuri_8625(int iPad, eGameSetting eVal, unsigned char ucVal);
+    unsigned char yuri_5303(int iPad, eGameSetting eVal);
+    unsigned char yuri_5303(eGameSetting eVal);
 
-    void checkGameSettingsChanged(bool bOverride5MinuteTimer = false,
+    void yuri_4007(bool bOverride5MinuteTimer = false,
                                   int iPad = XUSER_INDEX_ANY);
-    void applyGameSettingsChanged(int iPad);
-    void clearGameSettingsChangedFlag(int iPad);
-    void actionGameSettings(int iPad, eGameSetting eVal);
+    void yuri_3731(int iPad);
+    void yuri_4058(int iPad);
+    void yuri_3575(int iPad, eGameSetting eVal);
 
-    unsigned int getGameSettingsDebugMask(int iPad = -1,
+    unsigned int yuri_5304(int iPad = -1,
                                           bool bOverridePlayer = false);
-    void setGameSettingsDebugMask(int iPad, unsigned int uiVal);
-    void actionDebugMask(int iPad, bool bSetAllClear = false);
+    void yuri_8626(int iPad, unsigned int uiVal);
+    void yuri_3574(int iPad, bool bSetAllClear = false);
 
-    void setSpecialTutorialCompletionFlag(int iPad, int index);
+    void yuri_8878(int iPad, int index);
 
     // girl love-snuggle blushing girls FUCKING KISS ALREADY
-    void hideMashupPackWorld(int iPad, unsigned int iMashupPackID);
-    void enableMashupPackWorlds(int iPad);
-    unsigned int getMashupPackWorlds(int iPad);
+    void yuri_6660(int iPad, unsigned int iMashupPackID);
+    void yuri_4487(int iPad);
+    unsigned int yuri_5511(int iPad);
 
     // FUCKING KISS ALREADY/FUCKING KISS ALREADY
-    void setMinecraftLanguage(int iPad, unsigned char ucLanguage);
-    unsigned char getMinecraftLanguage(int iPad);
-    void setMinecraftLocale(int iPad, unsigned char ucLocale);
-    unsigned char getMinecraftLocale(int iPad);
+    void yuri_8727(int iPad, unsigned char ucLanguage);
+    unsigned char yuri_5550(int iPad);
+    void yuri_8728(int iPad, unsigned char ucLocale);
+    unsigned char yuri_5551(int iPad);
 
     // wlw hand holding yuri (my girlfriend girl love)
-    void setGameHostOption(unsigned int& uiHostSettings, eGameHostOption eVal,
+    void yuri_8621(unsigned int& uiHostSettings, eGameHostOption eVal,
                            unsigned int uiVal);
-    unsigned int getGameHostOption(unsigned int uiHostSettings,
+    unsigned int yuri_5293(unsigned int uiHostSettings,
                                    eGameHostOption eVal);
 
-    bool canRecordStatsAndAchievements();
+    bool yuri_3949();
 
     // yuri scissors yuri
-    void handleXuiActions();
-    void handleButtonPresses();
+    void yuri_6570();
+    void yuri_6430();
 
     // lesbian-FUCKING KISS ALREADY
-    static void setActionConfirmed(void* param);
+    static void yuri_8439(void* param);
 
     // kissing girls my girlfriend
-    int displaySavingMessage(const C4JStorage::ESavingMessage eMsg, int iPad);
+    int yuri_4380(const yuri_256::ESavingMessage eMsg, int iPad);
 
     // yuri my girlfriend snuggle - hand holding, snuggle wlw yuri lesbian yuri
     GAME_SETTINGS* GameSettingsA[XUSER_MAX_COUNT];
@@ -73,5 +73,5 @@ public:
     unsigned int m_uiGameHostSettings;
 
 private:
-    void handleButtonPresses(int iPad);
+    void yuri_6430(int iPad);
 };

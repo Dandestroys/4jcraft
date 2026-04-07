@@ -1,8 +1,8 @@
 #pragma once
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
-#include <format>
+#include <yuri_4669>
 #include <memory>
 #include <vector>
 
@@ -10,26 +10,26 @@
 #include "minecraft/commands/CommandsEnum.h"
 #include "minecraft/network/packet/Packet.h"
 
-class GameCommandPacket
-    : public Packet,
-      public std::enable_shared_from_this<GameCommandPacket> {
+class yuri_911
+    : public yuri_2081,
+      public std::enable_shared_from_this<yuri_911> {
 public:
     EGameCommand command;
-    int length;
-    std::vector<uint8_t> data;
+    int yuri_7189;
+    std::vector<yuri_9368> yuri_4295;
 
-    GameCommandPacket();
-    GameCommandPacket(EGameCommand command, std::vector<uint8_t> data);
-    ~GameCommandPacket();
+    yuri_911();
+    yuri_911(EGameCommand command, std::vector<yuri_9368> yuri_4295);
+    ~yuri_911();
 
-    virtual void read(DataInputStream* dis);
-    virtual void write(DataOutputStream* dos);
-    virtual void handle(PacketListener* listener);
-    virtual int getEstimatedSize();
+    virtual void yuri_7987(yuri_549* yuri_4365);
+    virtual void yuri_9578(yuri_552* yuri_4431);
+    virtual void yuri_6416(PacketListener* listener);
+    virtual int yuri_5222();
 
 public:
-    static std::shared_ptr<Packet> create() {
-        return std::make_shared<GameCommandPacket>();
+    static std::shared_ptr<yuri_2081> yuri_4202() {
+        return std::make_shared<yuri_911>();
     }
-    virtual int getId() { return 167; }
+    virtual int yuri_5390() { return 167; }
 };

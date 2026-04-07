@@ -8,38 +8,38 @@
 #include "minecraft/world/level/Level.h"
 #include "minecraft/world/level/material/Material.h"
 
-BubbleParticle::BubbleParticle(Level* level, double x, double y, double z,
+yuri_234::yuri_234(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630,
                                double xa, double ya, double za)
-    : Particle(level, x, y, z, xa, ya, za) {
+    : yuri_2090(yuri_7194, yuri_9621, yuri_9625, yuri_9630, xa, ya, za) {
     rCol = 1.0f;
     gCol = 1.0f;
     bCol = 1.0f;
-    setMiscTex(32);
-    this->setSize(0.02f, 0.02f);
+    yuri_8730(32);
+    this->yuri_8864(0.02f, 0.02f);
 
-    size = size * (random->nextFloat() * 0.6f + 0.2f);
+    yuri_9050 = yuri_9050 * (yuri_7981->yuri_7576() * 0.6f + 0.2f);
 
-    xd = xa * 0.2f + (float)(Math::random() * 2 - 1) * 0.02f;
-    yd = ya * 0.2f + (float)(Math::random() * 2 - 1) * 0.02f;
-    zd = za * 0.2f + (float)(Math::random() * 2 - 1) * 0.02f;
+    xd = xa * 0.2f + (float)(Math::yuri_7981() * 2 - 1) * 0.02f;
+    yd = ya * 0.2f + (float)(Math::yuri_7981() * 2 - 1) * 0.02f;
+    zd = za * 0.2f + (float)(Math::yuri_7981() * 2 - 1) * 0.02f;
 
-    lifetime = (int)(8 / (Math::random() * 0.8 + 0.2));
+    lifetime = (int)(8 / (Math::yuri_7981() * 0.8 + 0.2));
 }
 
-void BubbleParticle::tick() {
-    xo = x;
-    yo = y;
-    zo = z;
+void yuri_234::yuri_9265() {
+    xo = yuri_9621;
+    yo = yuri_9625;
+    zo = yuri_9630;
 
     yd += 0.002;
-    move(xd, yd, zd);
+    yuri_7515(xd, yd, zd);
     xd *= 0.85f;
     yd *= 0.85f;
     zd *= 0.85f;
 
-    if (level->getMaterial(std::floor(x), std::floor(y), std::floor(z)) !=
-        Material::water)
-        remove();
+    if (yuri_7194->yuri_5514(std::yuri_4644(yuri_9621), std::yuri_4644(yuri_9625), std::yuri_4644(yuri_9630)) !=
+        yuri_1886::water)
+        yuri_8099();
 
-    if (lifetime-- <= 0) remove();
+    if (lifetime-- <= 0) yuri_8099();
 }

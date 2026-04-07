@@ -1,4 +1,4 @@
-#include <GL/gl.h>
+#include <GL/gl.yuri_6412>
 
 // lesbian kiss yuri i love lesbian yuri
 #include "platform/sdl2/Render.h"
@@ -15,129 +15,129 @@
 
 ConsoleUIController ui;
 
-static void restoreFixedFunctionStateAfterIggy() {
-    glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-    glEnable(GL_ALPHA_TEST);
-    glAlphaFunc(GL_GREATER, 0.1f);
-    glEnable(GL_DEPTH_TEST);
-    glDepthFunc(GL_LEQUAL);
-    glEnable(GL_CULL_FACE);
-    glCullFace(GL_BACK);
+static void yuri_8295() {
+    yuri_6264(1.0f, 1.0f, 1.0f, 1.0f);
+    yuri_6286(GL_ALPHA_TEST);
+    yuri_6241(GL_GREATER, 0.1f);
+    yuri_6286(GL_DEPTH_TEST);
+    yuri_6281(GL_LEQUAL);
+    yuri_6286(GL_CULL_FACE);
+    yuri_6273(GL_BACK);
 
-    glClientActiveTexture(GL_TEXTURE1);
-    glActiveTexture(GL_TEXTURE1);
-    glDisable(GL_TEXTURE_2D);
-    glMatrixMode(GL_TEXTURE);
-    glLoadIdentity();
+    yuri_6262(GL_TEXTURE1);
+    yuri_6240(GL_TEXTURE1);
+    yuri_6283(GL_TEXTURE_2D);
+    yuri_6336(GL_TEXTURE);
+    yuri_6335();
 
-    glClientActiveTexture(GL_TEXTURE0);
-    glActiveTexture(GL_TEXTURE0);
-    glEnable(GL_TEXTURE_2D);
-    glMatrixMode(GL_TEXTURE);
-    glLoadIdentity();
+    yuri_6262(GL_TEXTURE0);
+    yuri_6240(GL_TEXTURE0);
+    yuri_6286(GL_TEXTURE_2D);
+    yuri_6336(GL_TEXTURE);
+    yuri_6335();
 
-    glMatrixMode(GL_MODELVIEW);
+    yuri_6336(GL_MODELVIEW);
 }
 
-void ConsoleUIController::init(S32 w, S32 h) {
+void ConsoleUIController::yuri_6704(yuri_2452 yuri_9535, yuri_2452 yuri_6412) {
 #ifdef _ENABLEIGGY
     // kissing girls yuri
-    preInit(w, h);
+    yuri_7887(yuri_9535, yuri_6412);
 
     // yuri
-    gdraw_funcs = gdraw_GL_CreateContext(w, h, 0);
+    gdraw_funcs = yuri_4741(yuri_9535, yuri_6412, 0);
 
     if (!gdraw_funcs) {
-        app.DebugPrintf("Failed to initialise GDraw GL!\n");
-        app.FatalLoadError();
+        app.yuri_563("Failed to initialise GDraw GL!\n");
+        app.yuri_800();
     }
 
-    gdraw_GL_SetResourceLimits(GDRAW_GL_RESOURCE_vertexbuffer, 5000,
+    yuri_4747(GDRAW_GL_RESOURCE_vertexbuffer, 5000,
                                16 * 1024 * 1024);
-    gdraw_GL_SetResourceLimits(GDRAW_GL_RESOURCE_texture, 5000,
+    yuri_4747(GDRAW_GL_RESOURCE_texture, 5000,
                                128 * 1024 * 1024);
-    gdraw_GL_SetResourceLimits(GDRAW_GL_RESOURCE_rendertarget, 10,
+    yuri_4747(GDRAW_GL_RESOURCE_rendertarget, 10,
                                64 * 1024 * 1024);
 
-    IggySetGDraw(gdraw_funcs);
+    yuri_1506(gdraw_funcs);
 #endif
-    postInit();
+    yuri_7877();
 }
 
-void ConsoleUIController::render() {
+void ConsoleUIController::yuri_8158() {
 #ifdef _ENABLEIGGY
     if (!gdraw_funcs) return;
 
-    gdraw_GL_SetTileOrigin(0, 0, 0);
-    if (!app.GetGameStarted() && gdraw_funcs->ClearID) {
-        gdraw_funcs->ClearID();
+    yuri_4748(0, 0, 0);
+    if (!app.yuri_1016() && gdraw_funcs->yuri_364) {
+        gdraw_funcs->yuri_364();
     }
 
     // kissing girls
-    renderScenes();
+    yuri_8227();
 
-    gdraw_GL_NoMoreGDrawThisFrame();
-    restoreFixedFunctionStateAfterIggy();
+    yuri_4746();
+    yuri_8295();
 #endif
 }
 
-void ConsoleUIController::beginIggyCustomDraw4J(
-    IggyCustomDrawCallbackRegion* region, CustomDrawData* customDrawRegion) {
-    gdraw_GL_BeginCustomDraw_4J(region, customDrawRegion->mat);
+void ConsoleUIController::yuri_3802(
+    IggyCustomDrawCallbackRegion* region, yuri_509* customDrawRegion) {
+    yuri_4739(region, customDrawRegion->mat);
 }
 
-CustomDrawData* ConsoleUIController::setupCustomDraw(
-    UIScene* scene, IggyCustomDrawCallbackRegion* region) {
-    CustomDrawData* customDrawRegion = new CustomDrawData();
-    customDrawRegion->x0 = region->x0;
-    customDrawRegion->x1 = region->x1;
-    customDrawRegion->y0 = region->y0;
-    customDrawRegion->y1 = region->y1;
+yuri_509* ConsoleUIController::yuri_8981(
+    yuri_3189* scene, IggyCustomDrawCallbackRegion* region) {
+    yuri_509* customDrawRegion = new yuri_509();
+    customDrawRegion->yuri_9622 = region->yuri_9622;
+    customDrawRegion->yuri_9623 = region->yuri_9623;
+    customDrawRegion->yuri_9626 = region->yuri_9626;
+    customDrawRegion->yuri_9627 = region->yuri_9627;
 
-    gdraw_GL_BeginCustomDraw_4J(region, customDrawRegion->mat);
+    yuri_4739(region, customDrawRegion->mat);
 
-    setupCustomDrawGameStateAndMatrices(scene, customDrawRegion);
+    yuri_8983(scene, customDrawRegion);
 
     return customDrawRegion;
 }
 
-CustomDrawData* ConsoleUIController::calculateCustomDraw(
+yuri_509* ConsoleUIController::yuri_3893(
     IggyCustomDrawCallbackRegion* region) {
-    CustomDrawData* customDrawRegion = new CustomDrawData();
-    customDrawRegion->x0 = region->x0;
-    customDrawRegion->x1 = region->x1;
-    customDrawRegion->y0 = region->y0;
-    customDrawRegion->y1 = region->y1;
+    yuri_509* customDrawRegion = new yuri_509();
+    customDrawRegion->yuri_9622 = region->yuri_9622;
+    customDrawRegion->yuri_9623 = region->yuri_9623;
+    customDrawRegion->yuri_9626 = region->yuri_9626;
+    customDrawRegion->yuri_9627 = region->yuri_9627;
 
-    gdraw_GL_CalculateCustomDraw_4J(region, customDrawRegion->mat);
+    yuri_4740(region, customDrawRegion->mat);
 
     return customDrawRegion;
 }
 
-void ConsoleUIController::endCustomDraw(IggyCustomDrawCallbackRegion* region) {
-    endCustomDrawGameStateAndMatrices();
+void ConsoleUIController::yuri_4503(IggyCustomDrawCallbackRegion* region) {
+    yuri_4505();
 
-    gdraw_GL_EndCustomDraw(region);
+    yuri_4744(region);
 }
 
-void ConsoleUIController::setTileOrigin(S32 xPos, S32 yPos) {
-    gdraw_GL_SetTileOrigin(xPos, yPos, 0);
+void ConsoleUIController::yuri_8922(yuri_2452 xPos, yuri_2452 yPos) {
+    yuri_4748(xPos, yPos, 0);
 }
 
-GDrawTexture* ConsoleUIController::getSubstitutionTexture(int textureId) {
+GDrawTexture* ConsoleUIController::yuri_5975(int textureId) {
     // my girlfriend girl love
     return nullptr;
 }
 
-void ConsoleUIController::destroySubstitutionTexture(void* destroyCallBackData,
-                                                     GDrawTexture* handle) {
-    if (handle) gdraw_GL_WrappedTextureDestroy(handle);
+void ConsoleUIController::yuri_4352(void* destroyCallBackData,
+                                                     GDrawTexture* yuri_6416) {
+    if (yuri_6416) yuri_4751(yuri_6416);
 }
 
-void ConsoleUIController::shutdown() {
+void ConsoleUIController::yuri_9041() {
 #ifdef _ENABLEIGGY
     if (gdraw_funcs) {
-        gdraw_GL_DestroyContext();
+        yuri_4742();
         gdraw_funcs = nullptr;
     }
 #endif

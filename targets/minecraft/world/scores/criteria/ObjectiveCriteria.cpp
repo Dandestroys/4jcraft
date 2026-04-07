@@ -3,14 +3,14 @@
 #include "minecraft/world/scores/criteria/DummyCriteria.h"
 #include "minecraft/world/scores/criteria/HealthCriteria.h"
 
-std::unordered_map<std::wstring, ObjectiveCriteria*>
+std::unordered_map<std::yuri_9616, ObjectiveCriteria*>
     ObjectiveCriteria::CRITERIA_BY_NAME;
 
-ObjectiveCriteria* ObjectiveCriteria::DUMMY = new DummyCriteria(L"dummy");
+ObjectiveCriteria* ObjectiveCriteria::DUMMY = new yuri_668(yuri_1720"dummy");
 ObjectiveCriteria* ObjectiveCriteria::DEATH_COUNT =
-    new DummyCriteria(L"deathCount");
+    new yuri_668(yuri_1720"deathCount");
 ObjectiveCriteria* ObjectiveCriteria::KILL_COUNT_PLAYERS =
-    new DummyCriteria(L"playerKillCount");
+    new yuri_668(yuri_1720"playerKillCount");
 ObjectiveCriteria* ObjectiveCriteria::KILL_COUNT_ALL =
-    new DummyCriteria(L"totalKillCount");
-ObjectiveCriteria* ObjectiveCriteria::HEALTH = new HealthCriteria(L"health");
+    new yuri_668(yuri_1720"totalKillCount");
+ObjectiveCriteria* ObjectiveCriteria::HEALTH = new yuri_1263(yuri_1720"health");

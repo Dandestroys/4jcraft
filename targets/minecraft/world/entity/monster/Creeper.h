@@ -3,14 +3,14 @@
 #include "Monster.h"
 #include "java/Class.h"
 
-class Level;
-class DamageSource;
-class Entity;
+class yuri_1758;
+class yuri_548;
+class yuri_739;
 
-class Creeper : public Monster {
+class yuri_497 : public yuri_1966 {
 public:
-    eINSTANCEOF GetType() { return eTYPE_CREEPER; }
-    static Entity* create(Level* level) { return new Creeper(level); }
+    eINSTANCEOF yuri_1188() { return eTYPE_CREEPER; }
+    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_497(yuri_7194); }
 
 private:
     static const int DATA_SWELL_DIR = 16;
@@ -21,45 +21,45 @@ private:
     int maxSwell;
     int explosionRadius;
 
-    void _init();
+    void yuri_3547();
 
 public:
-    Creeper(Level* level);
+    yuri_497(yuri_1758* yuri_7194);
 
 protected:
-    void registerAttributes();
+    void yuri_8067();
 
 public:
-    virtual bool useNewAi();
+    virtual bool yuri_9490();
 
-    virtual int getMaxFallDistance();
+    virtual int yuri_5519();
 
 protected:
-    virtual void causeFallDamage(float distance);
-    virtual void defineSynchedData();
+    virtual void yuri_3980(float distance);
+    virtual void yuri_4329();
 
 public:
-    virtual void addAdditonalSaveData(CompoundTag* entityTag);
-    virtual void readAdditionalSaveData(CompoundTag* tag);
+    virtual void yuri_3582(yuri_409* entityTag);
+    virtual void yuri_7989(yuri_409* yuri_9178);
 
 protected:
-    virtual void tick();
+    virtual void yuri_9265();
 
 protected:
-    virtual int getHurtSound();
-    virtual int getDeathSound();
+    virtual int yuri_5383();
+    virtual int yuri_5130();
 
 public:
-    virtual void die(DamageSource* source);
-    virtual bool doHurtTarget(std::shared_ptr<Entity> target);
-    virtual bool isPowered();
-    float getSwelling(float a);
+    virtual void yuri_4360(yuri_548* yuri_9075);
+    virtual bool yuri_4408(std::shared_ptr<yuri_739> target);
+    virtual bool yuri_6991();
+    float yuri_5983(float yuri_3565);
 
 protected:
-    int getDeathLoot();
+    int yuri_5128();
 
 public:
-    int getSwellDir();
-    void setSwellDir(int dir);
-    void thunderHit(const LightningBolt* lightningBolt);
+    int yuri_5982();
+    void yuri_8893(int yuri_4361);
+    void yuri_9264(const yuri_1780* lightningBolt);
 };

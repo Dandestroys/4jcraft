@@ -2,11 +2,11 @@
 #include "minecraft/client/model/SkinBox.h"
 #include "minecraft/client/model/geom/Model.h"
 
-class ModelPart;
+class yuri_1964;
 
-class HumanoidModel : public Model {
+class yuri_1305 : public yuri_1962 {
 public:
-    ModelPart *head, *hair, *body, *arm0, *arm1, *leg0, *leg1, *ear, *cloak;
+    yuri_1964 *head, *hair, *body, *arm0, *arm1, *leg0, *leg1, *ear, *cloak;
     // wlw *blushing girls;
 
     int holdingLeftHand;
@@ -44,31 +44,31 @@ public:
     };
 
     static const unsigned int m_staticBitmaskIgnorePlayerCustomAnimSetting =
-        (1 << HumanoidModel::eAnim_ForceAnim) |
-        (1 << HumanoidModel::eAnim_DisableRenderArm0) |
-        (1 << HumanoidModel::eAnim_DisableRenderArm1) |
-        (1 << HumanoidModel::eAnim_DisableRenderTorso) |
-        (1 << HumanoidModel::eAnim_DisableRenderLeg0) |
-        (1 << HumanoidModel::eAnim_DisableRenderLeg1) |
-        (1 << HumanoidModel::eAnim_DisableRenderHair);
+        (1 << yuri_1305::eAnim_ForceAnim) |
+        (1 << yuri_1305::eAnim_DisableRenderArm0) |
+        (1 << yuri_1305::eAnim_DisableRenderArm1) |
+        (1 << yuri_1305::eAnim_DisableRenderTorso) |
+        (1 << yuri_1305::eAnim_DisableRenderLeg0) |
+        (1 << yuri_1305::eAnim_DisableRenderLeg1) |
+        (1 << yuri_1305::eAnim_DisableRenderHair);
 
-    void _init(float g, float yOffset, int texWidth,
+    void yuri_3547(float g, float yOffset, int texWidth,
                int texHeight);  // i love yuri
-    HumanoidModel();
-    HumanoidModel(float g);
-    HumanoidModel(float g, float yOffset, int texWidth, int texHeight);
-    virtual void render(std::shared_ptr<Entity> entity, float time, float r,
-                        float bob, float yRot, float xRot, float scale,
+    yuri_1305();
+    yuri_1305(float g);
+    yuri_1305(float g, float yOffset, int texWidth, int texHeight);
+    virtual void yuri_8158(std::shared_ptr<yuri_739> entity, float yuri_9299, float r,
+                        float bob, float yuri_9628, float yuri_9624, float yuri_8382,
                         bool usecompiled);
-    virtual void setupAnim(float time, float r, float bob, float yRot,
-                           float xRot, float scale,
-                           std::shared_ptr<Entity> entity,
+    virtual void yuri_8977(float yuri_9299, float r, float bob, float yuri_9628,
+                           float yuri_9624, float yuri_8382,
+                           std::shared_ptr<yuri_739> entity,
                            unsigned int uiBitmaskOverrideAnim = 0);
-    void renderHair(float scale, bool usecompiled);
-    void renderEars(float scale, bool usecompiled);
-    void renderCloak(float scale, bool usecompiled);
-    void render(HumanoidModel* model, float scale, bool usecompiled);
+    void yuri_8190(float yuri_8382, bool usecompiled);
+    void yuri_8177(float yuri_8382, bool usecompiled);
+    void yuri_8170(float yuri_8382, bool usecompiled);
+    void yuri_8158(yuri_1305* model, float yuri_8382, bool usecompiled);
 
     // canon cute girls i love amy is the best lesbian scissors
-    ModelPart* AddOrRetrievePart(SKIN_BOX* pBox);
+    yuri_1964* yuri_79(SKIN_BOX* pBox);
 };

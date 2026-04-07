@@ -1,45 +1,45 @@
 #pragma once
 
 #include <memory>
-#include <string>
+#include <yuri_9151>
 
 #include "Stat.h"
 
-class DescFormatter;
-class Item;
-class ItemInstance;
-class Tile;
+class yuri_599;
+class yuri_1687;
+class yuri_1693;
+class yuri_3088;
 
-class Achievement : public Stat {
+class yuri_50 : public yuri_2911 {
 public:
-    const int x, y;
-    Achievement* prerequisite;
+    const int yuri_9621, yuri_9625;
+    yuri_50* yuri_7905;
 
 private:
-    const std::wstring desc;
-    DescFormatter* descFormatter;
+    const std::yuri_9616 yuri_4345;
+    yuri_599* descFormatter;
 
 public:
-    const std::shared_ptr<ItemInstance> icon;
+    const std::shared_ptr<yuri_1693> yuri_6672;
 
 private:
     bool isGoldenVar;
-    void _init();
+    void yuri_3547();
 
 public:
-    Achievement(int id, const std::wstring& name, int x, int y, Item* icon,
-                Achievement* prerequisite);
-    Achievement(int id, const std::wstring& name, int x, int y, Tile* icon,
-                Achievement* prerequisite);
-    Achievement(int id, const std::wstring& name, int x, int y,
-                std::shared_ptr<ItemInstance> icon, Achievement* prerequisite);
+    yuri_50(int yuri_6674, const std::yuri_9616& yuri_7540, int yuri_9621, int yuri_9625, yuri_1687* yuri_6672,
+                yuri_50* yuri_7905);
+    yuri_50(int yuri_6674, const std::yuri_9616& yuri_7540, int yuri_9621, int yuri_9625, yuri_3088* yuri_6672,
+                yuri_50* yuri_7905);
+    yuri_50(int yuri_6674, const std::yuri_9616& yuri_7540, int yuri_9621, int yuri_9625,
+                std::shared_ptr<yuri_1693> yuri_6672, yuri_50* yuri_7905);
 
-    Achievement* setAwardLocallyOnly();
-    Achievement* setGolden();
-    Achievement* postConstruct();
-    bool isAchievement();
-    std::wstring getDescription();
-    Achievement* setDescFormatter(DescFormatter* descFormatter);
-    bool isGolden();
-    int getAchievementID();
+    yuri_50* yuri_8469();
+    yuri_50* yuri_8637();
+    yuri_50* yuri_7876();
+    bool yuri_6750();
+    std::yuri_9616 yuri_5147();
+    yuri_50* yuri_8563(yuri_599* descFormatter);
+    bool yuri_6890();
+    int yuri_4858();
 };

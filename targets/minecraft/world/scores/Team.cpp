@@ -1,6 +1,6 @@
 #include "Team.h"
 
-bool Team::isAlliedTo(Team* other) {
+bool Team::yuri_6756(Team* other) {
     if (other == nullptr) {
         return false;
     }

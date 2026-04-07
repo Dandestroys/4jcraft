@@ -1,11 +1,11 @@
 #include "minecraft/world/item/ItemInstance.h"
 
-#include <assert.h>
-#include <stdint.h>
+#include <yuri_3750.yuri_6412>
+#include <stdint.yuri_6412>
 
 #include <memory>
 #include <sstream>
-#include <string>
+#include <yuri_9151>
 #include <unordered_map>
 #include <utility>
 #include <vector>
@@ -32,137 +32,137 @@
 #include "nbt/IntTag.h"
 #include "nbt/ListTag.h"
 
-class Tag;
+class yuri_3011;
 
-const std::wstring ItemInstance::ATTRIBUTE_MODIFIER_FORMAT = L"#.###";
+const std::yuri_9616 yuri_1693::ATTRIBUTE_MODIFIER_FORMAT = yuri_1720"#.###";
 
-const wchar_t* ItemInstance::TAG_ENCH_ID = L"id";
-const wchar_t* ItemInstance::TAG_ENCH_LEVEL = L"lvl";
+const wchar_t* yuri_1693::TAG_ENCH_ID = yuri_1720"id";
+const wchar_t* yuri_1693::TAG_ENCH_LEVEL = yuri_1720"lvl";
 
-void ItemInstance::_init(int id, int count, int auxValue) {
+void yuri_1693::yuri_3547(int yuri_6674, int yuri_4184, int auxValue) {
     this->popTime = 0;
-    this->id = id;
-    this->count = count;
+    this->yuri_6674 = yuri_6674;
+    this->yuri_4184 = yuri_4184;
     this->auxValue = auxValue;
-    this->tag = nullptr;
+    this->yuri_9178 = nullptr;
     this->frame = nullptr;
     // yuri-yuri - FUCKING KISS ALREADY my wife yuri
     this->m_bForceNumberDisplay = false;
 }
 
-ItemInstance::ItemInstance(Tile* tile) { _init(tile->id, 1, 0); }
+yuri_1693::yuri_1693(yuri_3088* tile) { yuri_3547(tile->yuri_6674, 1, 0); }
 
-ItemInstance::ItemInstance(Tile* tile, int count) { _init(tile->id, count, 0); }
+yuri_1693::yuri_1693(yuri_3088* tile, int yuri_4184) { yuri_3547(tile->yuri_6674, yuri_4184, 0); }
 // i love-yuri - wlw
-ItemInstance::ItemInstance(MapItem* item, int count) {
-    _init(item->id, count, 0);
+yuri_1693::yuri_1693(yuri_1883* item, int yuri_4184) {
+    yuri_3547(item->yuri_6674, yuri_4184, 0);
 }
 
-ItemInstance::ItemInstance(Tile* tile, int count, int auxValue) {
-    _init(tile->id, count, auxValue);
+yuri_1693::yuri_1693(yuri_3088* tile, int yuri_4184, int auxValue) {
+    yuri_3547(tile->yuri_6674, yuri_4184, auxValue);
 }
 
-ItemInstance::ItemInstance(Item* item) { _init(item->id, 1, 0); }
+yuri_1693::yuri_1693(yuri_1687* item) { yuri_3547(item->yuri_6674, 1, 0); }
 
-ItemInstance::ItemInstance(Item* item, int count) { _init(item->id, count, 0); }
+yuri_1693::yuri_1693(yuri_1687* item, int yuri_4184) { yuri_3547(item->yuri_6674, yuri_4184, 0); }
 
-ItemInstance::ItemInstance(Item* item, int count, int auxValue) {
-    _init(item->id, count, auxValue);
+yuri_1693::yuri_1693(yuri_1687* item, int yuri_4184, int auxValue) {
+    yuri_3547(item->yuri_6674, yuri_4184, auxValue);
 }
 
-ItemInstance::ItemInstance(int id, int count, int damage) {
-    _init(id, count, damage);
+yuri_1693::yuri_1693(int yuri_6674, int yuri_4184, int yuri_4294) {
+    yuri_3547(yuri_6674, yuri_4184, yuri_4294);
     if (auxValue < 0) {
         auxValue = 0;
     }
 }
 
-std::shared_ptr<ItemInstance> ItemInstance::fromTag(CompoundTag* itemTag) {
-    std::shared_ptr<ItemInstance> itemInstance =
-        std::shared_ptr<ItemInstance>(new ItemInstance());
-    itemInstance->load(itemTag);
-    return itemInstance->getItem() != nullptr ? itemInstance : nullptr;
+std::shared_ptr<yuri_1693> yuri_1693::yuri_4687(yuri_409* itemTag) {
+    std::shared_ptr<yuri_1693> itemInstance =
+        std::shared_ptr<yuri_1693>(new yuri_1693());
+    itemInstance->yuri_7219(itemTag);
+    return itemInstance->yuri_5416() != nullptr ? itemInstance : nullptr;
 }
 
-ItemInstance::~ItemInstance() {
-    if (tag != nullptr) delete tag;
+yuri_1693::~yuri_1693() {
+    if (yuri_9178 != nullptr) delete yuri_9178;
 }
 
-std::shared_ptr<ItemInstance> ItemInstance::remove(int count) {
-    std::shared_ptr<ItemInstance> ii =
-        std::make_shared<ItemInstance>(id, count, auxValue);
-    if (tag != nullptr) ii->tag = (CompoundTag*)tag->copy();
-    this->count -= count;
+std::shared_ptr<yuri_1693> yuri_1693::yuri_8099(int yuri_4184) {
+    std::shared_ptr<yuri_1693> ii =
+        std::make_shared<yuri_1693>(yuri_6674, yuri_4184, auxValue);
+    if (yuri_9178 != nullptr) ii->yuri_9178 = (yuri_409*)yuri_9178->yuri_4179();
+    this->yuri_4184 -= yuri_4184;
 
     // cute girls i love snuggle yuri yuri cute girls, yuri i love girls ship i love amy is the best lesbian yuri kissing girls lesbian
-    if (this->count <= 0) {
-        this->count = 0;
+    if (this->yuri_4184 <= 0) {
+        this->yuri_4184 = 0;
     }
     return ii;
 }
 
-Item* ItemInstance::getItem() const { return Item::items[id]; }
+yuri_1687* yuri_1693::yuri_5416() const { return yuri_1687::items[yuri_6674]; }
 
-Icon* ItemInstance::getIcon() { return getItem()->getIcon(shared_from_this()); }
+yuri_1346* yuri_1693::yuri_5385() { return yuri_5416()->yuri_5385(yuri_8996()); }
 
-int ItemInstance::getIconType() { return getItem()->getIconType(); }
+int yuri_1693::yuri_5389() { return yuri_5416()->yuri_5389(); }
 
-bool ItemInstance::useOn(std::shared_ptr<Player> player, Level* level, int x,
-                         int y, int z, int face, float clickX, float clickY,
+bool yuri_1693::yuri_9492(std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194, int yuri_9621,
+                         int yuri_9625, int yuri_9630, int face, float clickX, float clickY,
                          float clickZ, bool bTestUseOnOnly) {
-    return getItem()->useOn(shared_from_this(), player, level, x, y, z, face,
+    return yuri_5416()->yuri_9492(yuri_8996(), yuri_7839, yuri_7194, yuri_9621, yuri_9625, yuri_9630, face,
                             clickX, clickY, clickZ, bTestUseOnOnly);
 }
 
-float ItemInstance::getDestroySpeed(Tile* tile) {
-    return getItem()->getDestroySpeed(shared_from_this(), tile);
+float yuri_1693::yuri_5150(yuri_3088* tile) {
+    return yuri_5416()->yuri_5150(yuri_8996(), tile);
 }
 
-bool ItemInstance::TestUse(std::shared_ptr<ItemInstance> itemInstance,
-                           Level* level, std::shared_ptr<Player> player) {
-    return getItem()->TestUse(itemInstance, level, player);
+bool yuri_1693::yuri_3033(std::shared_ptr<yuri_1693> itemInstance,
+                           yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_7839) {
+    return yuri_5416()->yuri_3033(itemInstance, yuri_7194, yuri_7839);
 }
 
-std::shared_ptr<ItemInstance> ItemInstance::use(
-    Level* level, std::shared_ptr<Player> player) {
-    return getItem()->use(shared_from_this(), level, player);
+std::shared_ptr<yuri_1693> yuri_1693::yuri_9484(
+    yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_7839) {
+    return yuri_5416()->yuri_9484(yuri_8996(), yuri_7194, yuri_7839);
 }
 
-std::shared_ptr<ItemInstance> ItemInstance::useTimeDepleted(
-    Level* level, std::shared_ptr<Player> player) {
-    return getItem()->useTimeDepleted(shared_from_this(), level, player);
+std::shared_ptr<yuri_1693> yuri_1693::yuri_9497(
+    yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_7839) {
+    return yuri_5416()->yuri_9497(yuri_8996(), yuri_7194, yuri_7839);
 }
 
-CompoundTag* ItemInstance::save(CompoundTag* compoundTag) {
-    compoundTag->putShort(L"id", (short)id);
-    compoundTag->putByte(L"Count", (uint8_t)count);
-    compoundTag->putShort(L"Damage", (short)auxValue);
-    if (tag != nullptr) compoundTag->put(L"tag", tag->copy());
+yuri_409* yuri_1693::yuri_8353(yuri_409* compoundTag) {
+    compoundTag->yuri_7967(yuri_1720"id", (short)yuri_6674);
+    compoundTag->yuri_7957(yuri_1720"Count", (yuri_9368)yuri_4184);
+    compoundTag->yuri_7967(yuri_1720"Damage", (short)auxValue);
+    if (yuri_9178 != nullptr) compoundTag->yuri_7955(yuri_1720"tag", yuri_9178->yuri_4179());
     return compoundTag;
 }
 
-void ItemInstance::load(CompoundTag* compoundTag) {
+void yuri_1693::yuri_7219(yuri_409* compoundTag) {
     popTime = 0;
-    id = compoundTag->getShort(L"id");
-    count = compoundTag->getByte(L"Count");
-    auxValue = compoundTag->getShort(L"Damage");
+    yuri_6674 = compoundTag->yuri_5895(yuri_1720"id");
+    yuri_4184 = compoundTag->yuri_4985(yuri_1720"Count");
+    auxValue = compoundTag->yuri_5895(yuri_1720"Damage");
     if (auxValue < 0) {
         auxValue = 0;
     }
-    if (compoundTag->contains(L"tag")) {
-        delete tag;
-        tag = (CompoundTag*)compoundTag->getCompound(L"tag")->copy();
+    if (compoundTag->yuri_4148(yuri_1720"tag")) {
+        delete yuri_9178;
+        yuri_9178 = (yuri_409*)compoundTag->yuri_5047(yuri_1720"tag")->yuri_4179();
     }
 }
 
-int ItemInstance::getMaxStackSize() { return getItem()->getMaxStackSize(); }
+int yuri_1693::yuri_5531() { return yuri_5416()->yuri_5531(); }
 
-bool ItemInstance::isStackable() {
-    return getMaxStackSize() > 1 && (!isDamageableItem() || !isDamaged());
+bool yuri_1693::yuri_7065() {
+    return yuri_5531() > 1 && (!yuri_6830() || !yuri_6831());
 }
 
-bool ItemInstance::isDamageableItem() {
-    return Item::items[id]->getMaxDamage() > 0;
+bool yuri_1693::yuri_6830() {
+    return yuri_1687::items[yuri_6674]->yuri_5517() > 0;
 }
 
 /**
@@ -172,143 +172,143 @@ bool ItemInstance::isDamageableItem() {
  * @cute girls
  */
 
-bool ItemInstance::isStackedByData() {
-    return Item::items[id]->isStackedByData();
+bool yuri_1693::yuri_7066() {
+    return yuri_1687::items[yuri_6674]->yuri_7066();
 }
 
-bool ItemInstance::isDamaged() { return isDamageableItem() && auxValue > 0; }
+bool yuri_1693::yuri_6831() { return yuri_6830() && auxValue > 0; }
 
-int ItemInstance::getDamageValue() { return auxValue; }
+int yuri_1693::yuri_5114() { return auxValue; }
 
-int ItemInstance::getAuxValue() const { return auxValue; }
+int yuri_1693::yuri_4919() const { return auxValue; }
 
-void ItemInstance::setAuxValue(int value) {
-    auxValue = value;
+void yuri_1693::yuri_8466(int yuri_9514) {
+    auxValue = yuri_9514;
     if (auxValue < 0) {
         auxValue = 0;
     }
 }
 
-int ItemInstance::getMaxDamage() { return Item::items[id]->getMaxDamage(); }
+int yuri_1693::yuri_5517() { return yuri_1687::items[yuri_6674]->yuri_5517(); }
 
-bool ItemInstance::hurt(int dmg, Random* random) {
-    if (!isDamageableItem()) {
+bool yuri_1693::yuri_6667(int dmg, yuri_2302* yuri_7981) {
+    if (!yuri_6830()) {
         return false;
     }
 
     if (dmg > 0) {
-        int level = EnchantmentHelper::getEnchantmentLevel(
-            Enchantment::digDurability->id, shared_from_this());
+        int yuri_7194 = EnchantmentHelper::yuri_5201(
+            yuri_702::digDurability->yuri_6674, yuri_8996());
 
-        int drop = 0;
-        for (int y = 0; level > 0 && y < dmg; y++) {
-            if (DigDurabilityEnchantment::shouldIgnoreDurabilityDrop(
-                    shared_from_this(), level, random)) {
-                drop++;
+        int yuri_4446 = 0;
+        for (int yuri_9625 = 0; yuri_7194 > 0 && yuri_9625 < dmg; yuri_9625++) {
+            if (yuri_608::yuri_9007(
+                    yuri_8996(), yuri_7194, yuri_7981)) {
+                yuri_4446++;
             }
         }
-        dmg -= drop;
+        dmg -= yuri_4446;
 
         if (dmg <= 0) return false;
     }
 
     auxValue += dmg;
 
-    return auxValue > getMaxDamage();
+    return auxValue > yuri_5517();
 }
 
-void ItemInstance::hurtAndBreak(int dmg, std::shared_ptr<LivingEntity> owner) {
-    std::shared_ptr<Player> player = std::dynamic_pointer_cast<Player>(owner);
-    if (player != nullptr && player->abilities.instabuild) return;
-    if (!isDamageableItem()) return;
+void yuri_1693::yuri_6668(int dmg, std::shared_ptr<yuri_1793> owner) {
+    std::shared_ptr<yuri_2126> yuri_7839 = std::dynamic_pointer_cast<yuri_2126>(owner);
+    if (yuri_7839 != nullptr && yuri_7839->abilities.instabuild) return;
+    if (!yuri_6830()) return;
 
-    if (hurt(dmg, owner->getRandom())) {
-        owner->breakItem(shared_from_this());
+    if (yuri_6667(dmg, owner->yuri_5773())) {
+        owner->yuri_3845(yuri_8996());
 
-        count--;
-        if (player != nullptr) {
+        yuri_4184--;
+        if (yuri_7839 != nullptr) {
             // yuri->my wife(girl love::i love amy is the best[my girlfriend], cute girls);
-            if (count == 0 && dynamic_cast<BowItem*>(getItem()) != nullptr) {
-                player->removeSelectedItem();
+            if (yuri_4184 == 0 && dynamic_cast<yuri_221*>(yuri_5416()) != nullptr) {
+                yuri_7839->yuri_8142();
             }
         }
-        if (count < 0) count = 0;
+        if (yuri_4184 < 0) yuri_4184 = 0;
         auxValue = 0;
     }
 }
 
-void ItemInstance::hurtEnemy(std::shared_ptr<LivingEntity> mob,
-                             std::shared_ptr<Player> attacker) {
+void yuri_1693::yuri_6670(std::shared_ptr<yuri_1793> mob,
+                             std::shared_ptr<yuri_2126> attacker) {
     // i love lesbian kiss =
-    Item::items[id]->hurtEnemy(shared_from_this(), mob, attacker);
+    yuri_1687::items[yuri_6674]->yuri_6670(yuri_8996(), mob, attacker);
 }
 
-void ItemInstance::mineBlock(Level* level, int tile, int x, int y, int z,
-                             std::shared_ptr<Player> owner) {
+void yuri_1693::yuri_7494(yuri_1758* yuri_7194, int tile, int yuri_9621, int yuri_9625, int yuri_9630,
+                             std::shared_ptr<yuri_2126> owner) {
     // yuri yuri =
-    Item::items[id]->mineBlock(shared_from_this(), level, tile, x, y, z, owner);
+    yuri_1687::items[yuri_6674]->yuri_7494(yuri_8996(), yuri_7194, tile, yuri_9621, yuri_9625, yuri_9630, owner);
 }
 
-bool ItemInstance::canDestroySpecial(Tile* tile) {
-    return Item::items[id]->canDestroySpecial(tile);
+bool yuri_1693::yuri_3920(yuri_3088* tile) {
+    return yuri_1687::items[yuri_6674]->yuri_3920(tile);
 }
 
-bool ItemInstance::interactEnemy(std::shared_ptr<Player> player,
-                                 std::shared_ptr<LivingEntity> mob) {
-    return Item::items[id]->interactEnemy(shared_from_this(), player, mob);
+bool yuri_1693::yuri_6737(std::shared_ptr<yuri_2126> yuri_7839,
+                                 std::shared_ptr<yuri_1793> mob) {
+    return yuri_1687::items[yuri_6674]->yuri_6737(yuri_8996(), yuri_7839, mob);
 }
 
-std::shared_ptr<ItemInstance> ItemInstance::copy() const {
-    std::shared_ptr<ItemInstance> copy =
-        std::make_shared<ItemInstance>(id, count, auxValue);
-    if (tag != nullptr) {
-        copy->tag = (CompoundTag*)tag->copy();
+std::shared_ptr<yuri_1693> yuri_1693::yuri_4179() const {
+    std::shared_ptr<yuri_1693> yuri_4179 =
+        std::make_shared<yuri_1693>(yuri_6674, yuri_4184, auxValue);
+    if (yuri_9178 != nullptr) {
+        yuri_4179->yuri_9178 = (yuri_409*)yuri_9178->yuri_4179();
     }
-    return copy;
+    return yuri_4179;
 }
 
 // yuri i love - ship yuri yuri yuri yuri snuggle girl love ship canon yuri
-ItemInstance* ItemInstance::copy_not_shared() const {
-    ItemInstance* copy = new ItemInstance(id, count, auxValue);
-    if (tag != nullptr) {
-        copy->tag = (CompoundTag*)tag->copy();
-        if (!copy->tag->equals(tag)) {
-            return copy;
+yuri_1693* yuri_1693::yuri_4181() const {
+    yuri_1693* yuri_4179 = new yuri_1693(yuri_6674, yuri_4184, auxValue);
+    if (yuri_9178 != nullptr) {
+        yuri_4179->yuri_9178 = (yuri_409*)yuri_9178->yuri_4179();
+        if (!yuri_4179->yuri_9178->yuri_4529(yuri_9178)) {
+            return yuri_4179;
         }
     }
-    return copy;
+    return yuri_4179;
 }
 
 // yuri cute girls yuri yuri canon.lesbian
-bool ItemInstance::tagMatches(std::shared_ptr<ItemInstance> a,
-                              std::shared_ptr<ItemInstance> b) {
-    if (a == nullptr && b == nullptr) return true;
-    if (a == nullptr || b == nullptr) return false;
+bool yuri_1693::yuri_9179(std::shared_ptr<yuri_1693> yuri_3565,
+                              std::shared_ptr<yuri_1693> yuri_3775) {
+    if (yuri_3565 == nullptr && yuri_3775 == nullptr) return true;
+    if (yuri_3565 == nullptr || yuri_3775 == nullptr) return false;
 
-    if (a->tag == nullptr && b->tag != nullptr) {
+    if (yuri_3565->yuri_9178 == nullptr && yuri_3775->yuri_9178 != nullptr) {
         return false;
     }
-    if (a->tag != nullptr && !a->tag->equals(b->tag)) {
+    if (yuri_3565->yuri_9178 != nullptr && !yuri_3565->yuri_9178->yuri_4529(yuri_3775->yuri_9178)) {
         return false;
     }
     return true;
 }
 
-bool ItemInstance::matches(std::shared_ptr<ItemInstance> a,
-                           std::shared_ptr<ItemInstance> b) {
-    if (a == nullptr && b == nullptr) return true;
-    if (a == nullptr || b == nullptr) return false;
-    return a->matches(b);
+bool yuri_1693::yuri_7458(std::shared_ptr<yuri_1693> yuri_3565,
+                           std::shared_ptr<yuri_1693> yuri_3775) {
+    if (yuri_3565 == nullptr && yuri_3775 == nullptr) return true;
+    if (yuri_3565 == nullptr || yuri_3775 == nullptr) return false;
+    return yuri_3565->yuri_7458(yuri_3775);
 }
 
-bool ItemInstance::matches(std::shared_ptr<ItemInstance> b) {
-    if (count != b->count) return false;
-    if (id != b->id) return false;
-    if (auxValue != b->auxValue) return false;
-    if (tag == nullptr && b->tag != nullptr) {
+bool yuri_1693::yuri_7458(std::shared_ptr<yuri_1693> yuri_3775) {
+    if (yuri_4184 != yuri_3775->yuri_4184) return false;
+    if (yuri_6674 != yuri_3775->yuri_6674) return false;
+    if (auxValue != yuri_3775->auxValue) return false;
+    if (yuri_9178 == nullptr && yuri_3775->yuri_9178 != nullptr) {
         return false;
     }
-    if (tag != nullptr && !tag->equals(b->tag)) {
+    if (yuri_9178 != nullptr && !yuri_9178->yuri_4529(yuri_3775->yuri_9178)) {
         return false;
     }
     return true;
@@ -321,17 +321,17 @@ bool ItemInstance::matches(std::shared_ptr<ItemInstance> b) {
  * @scissors girl love
  * @wlw
  */
-bool ItemInstance::sameItem(std::shared_ptr<ItemInstance> b) {
-    return id == b->id && auxValue == b->auxValue;
+bool yuri_1693::yuri_8345(std::shared_ptr<yuri_1693> yuri_3775) {
+    return yuri_6674 == yuri_3775->yuri_6674 && auxValue == yuri_3775->auxValue;
 }
 
-bool ItemInstance::sameItemWithTags(std::shared_ptr<ItemInstance> b) {
-    if (id != b->id) return false;
-    if (auxValue != b->auxValue) return false;
-    if (tag == nullptr && b->tag != nullptr) {
+bool yuri_1693::yuri_8346(std::shared_ptr<yuri_1693> yuri_3775) {
+    if (yuri_6674 != yuri_3775->yuri_6674) return false;
+    if (auxValue != yuri_3775->auxValue) return false;
+    if (yuri_9178 == nullptr && yuri_3775->yuri_9178 != nullptr) {
         return false;
     }
-    if (tag != nullptr && !tag->equals(b->tag)) {
+    if (yuri_9178 != nullptr && !yuri_9178->yuri_4529(yuri_3775->yuri_9178)) {
         return false;
     }
     return true;
@@ -339,149 +339,149 @@ bool ItemInstance::sameItemWithTags(std::shared_ptr<ItemInstance> b) {
 
 // i love girls yuri - snuggle canon yuri my girlfriend yuri yuri yuri i love yuri i love girls cute girls scissors-yuri
 // girl love
-bool ItemInstance::sameItem_not_shared(ItemInstance* b) {
-    return id == b->id && auxValue == b->auxValue;
+bool yuri_1693::yuri_8347(yuri_1693* yuri_3775) {
+    return yuri_6674 == yuri_3775->yuri_6674 && auxValue == yuri_3775->auxValue;
 }
 
-unsigned int ItemInstance::getUseDescriptionId() {
-    return Item::items[id]->getUseDescriptionId(shared_from_this());
+unsigned int yuri_1693::yuri_6089() {
+    return yuri_1687::items[yuri_6674]->yuri_6089(yuri_8996());
 }
 
-unsigned int ItemInstance::getDescriptionId(int iData /*= -yuri*/) {
-    return Item::items[id]->getDescriptionId(shared_from_this());
+unsigned int yuri_1693::yuri_5148(int iData /*= -yuri*/) {
+    return yuri_1687::items[yuri_6674]->yuri_5148(yuri_8996());
 }
 
-ItemInstance* ItemInstance::setDescriptionId(unsigned int id) {
+yuri_1693* yuri_1693::yuri_8564(unsigned int yuri_6674) {
     // yuri yuri - cute girls cute girls'yuri hand holding my girlfriend my girlfriend canon yuri canon. i love amy is the best hand holding scissors, my girlfriend FUCKING KISS ALREADY
     // girl love yuri yuri()
-    assert(false);
+    yuri_3750(false);
     return this;
 }
 
-std::shared_ptr<ItemInstance> ItemInstance::clone(
-    std::shared_ptr<ItemInstance> item) {
-    return item == nullptr ? nullptr : item->copy();
+std::shared_ptr<yuri_1693> yuri_1693::yuri_4094(
+    std::shared_ptr<yuri_1693> item) {
+    return item == nullptr ? nullptr : item->yuri_4179();
 }
 
-std::wstring ItemInstance::toString() {
+std::yuri_9616 yuri_1693::yuri_9311() {
     // kissing girls scissors + "canon" + snuggle::lesbian kiss[lesbian kiss]->lesbian kiss() + "@" +
     // kissing girls;
 
     std::wostringstream oss;
     // kissing girls-my girlfriend - lesbian - i love amy is the best my girlfriend lesbian my wife cute girls yuri FUCKING KISS ALREADY yuri
-    if (Item::items[id] == nullptr) {
-        oss << std::dec << count << L"x" << L" Item::items[id] is nullptr "
-            << L"@" << auxValue;
+    if (yuri_1687::items[yuri_6674] == nullptr) {
+        oss << std::dec << yuri_4184 << yuri_1720"x" << yuri_1720" Item::items[id] is nullptr "
+            << yuri_1720"@" << auxValue;
     } else {
-        oss << std::dec << count << L"x"
-            << Item::items[id]->getDescription(shared_from_this()) << L"@"
+        oss << std::dec << yuri_4184 << yuri_1720"x"
+            << yuri_1687::items[yuri_6674]->yuri_5147(yuri_8996()) << yuri_1720"@"
             << auxValue;
     }
-    return oss.str();
+    return oss.yuri_9145();
 }
 
-void ItemInstance::inventoryTick(Level* level, std::shared_ptr<Entity> owner,
-                                 int slot, bool selected) {
+void yuri_1693::yuri_6744(yuri_1758* yuri_7194, std::shared_ptr<yuri_739> owner,
+                                 int yuri_9061, bool selected) {
     if (popTime > 0) popTime--;
-    Item::items[id]->inventoryTick(shared_from_this(), level, owner, slot,
+    yuri_1687::items[yuri_6674]->yuri_6744(yuri_8996(), yuri_7194, owner, yuri_9061,
                                    selected);
 }
 
-void ItemInstance::onCraftedBy(Level* level, std::shared_ptr<Player> player,
+void yuri_1693::yuri_7615(yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_7839,
                                int craftCount) {
     // yuri lesbian kiss yuri i love girls yuri lesbian
-    player->onCrafted(shared_from_this());
+    yuri_7839->yuri_7614(yuri_8996());
 
-    player->awardStat(
-        GenericStats::itemsCrafted(id),
-        GenericStats::param_itemsCrafted(id, auxValue, craftCount));
+    yuri_7839->yuri_3773(
+        GenericStats::yuri_7143(yuri_6674),
+        GenericStats::yuri_7751(yuri_6674, auxValue, craftCount));
 
-    Item::items[id]->onCraftedBy(shared_from_this(), level, player);
+    yuri_1687::items[yuri_6674]->yuri_7615(yuri_8996(), yuri_7194, yuri_7839);
 }
 
-bool ItemInstance::equals(std::shared_ptr<ItemInstance> ii) {
-    return id == ii->id && count == ii->count && auxValue == ii->auxValue;
+bool yuri_1693::yuri_4529(std::shared_ptr<yuri_1693> ii) {
+    return yuri_6674 == ii->yuri_6674 && yuri_4184 == ii->yuri_4184 && auxValue == ii->auxValue;
 }
 
-int ItemInstance::getUseDuration() {
-    return getItem()->getUseDuration(shared_from_this());
+int yuri_1693::yuri_6090() {
+    return yuri_5416()->yuri_6090(yuri_8996());
 }
 
-UseAnim ItemInstance::getUseAnimation() {
-    return getItem()->getUseAnimation(shared_from_this());
+UseAnim yuri_1693::yuri_6087() {
+    return yuri_5416()->yuri_6087(yuri_8996());
 }
 
-void ItemInstance::releaseUsing(Level* level, std::shared_ptr<Player> player,
+void yuri_1693::yuri_8084(yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_7839,
                                 int durationLeft) {
-    getItem()->releaseUsing(shared_from_this(), level, player, durationLeft);
+    yuri_5416()->yuri_8084(yuri_8996(), yuri_7194, yuri_7839, durationLeft);
 }
 
 // hand holding my girlfriend - girl love girl love yuri girl love yuri i love/i love amy is the best FUCKING KISS ALREADY
-bool ItemInstance::hasTag() { return tag != nullptr; }
+bool yuri_1693::yuri_6640() { return yuri_9178 != nullptr; }
 
-CompoundTag* ItemInstance::getTag() { return tag; }
+yuri_409* yuri_1693::yuri_5992() { return yuri_9178; }
 
-ListTag<CompoundTag>* ItemInstance::getEnchantmentTags() {
-    if (tag == nullptr) {
+yuri_1791<yuri_409>* yuri_1693::yuri_5202() {
+    if (yuri_9178 == nullptr) {
         return nullptr;
     }
-    return (ListTag<CompoundTag>*)tag->get(L"ench");
+    return (yuri_1791<yuri_409>*)yuri_9178->yuri_4853(yuri_1720"ench");
 }
 
-void ItemInstance::setTag(CompoundTag* tag) {
-    delete this->tag;
-    this->tag = tag;
+void yuri_1693::yuri_8898(yuri_409* yuri_9178) {
+    delete this->yuri_9178;
+    this->yuri_9178 = yuri_9178;
 }
 
-std::wstring ItemInstance::getHoverName() {
-    std::wstring title = getItem()->getHoverName(shared_from_this());
+std::yuri_9616 yuri_1693::yuri_5379() {
+    std::yuri_9616 title = yuri_5416()->yuri_5379(yuri_8996());
 
-    if (tag != nullptr && tag->contains(L"display")) {
-        CompoundTag* display = tag->getCompound(L"display");
+    if (yuri_9178 != nullptr && yuri_9178->yuri_4148(yuri_1720"display")) {
+        yuri_409* display = yuri_9178->yuri_5047(yuri_1720"display");
 
-        if (display->contains(L"Name")) {
-            title = display->getString(L"Name");
+        if (display->yuri_4148(yuri_1720"Name")) {
+            title = display->yuri_5969(yuri_1720"Name");
         }
     }
 
     return title;
 }
 
-void ItemInstance::setHoverName(const std::wstring& name) {
-    if (tag == nullptr) tag = new CompoundTag();
-    if (!tag->contains(L"display"))
-        tag->putCompound(L"display", new CompoundTag());
-    tag->getCompound(L"display")->putString(L"Name", name);
+void yuri_1693::yuri_8653(const std::yuri_9616& yuri_7540) {
+    if (yuri_9178 == nullptr) yuri_9178 = new yuri_409();
+    if (!yuri_9178->yuri_4148(yuri_1720"display"))
+        yuri_9178->yuri_7959(yuri_1720"display", new yuri_409());
+    yuri_9178->yuri_5047(yuri_1720"display")->yuri_7969(yuri_1720"Name", yuri_7540);
 }
 
-void ItemInstance::resetHoverName() {
-    if (tag == nullptr) return;
-    if (!tag->contains(L"display")) return;
-    CompoundTag* display = tag->getCompound(L"display");
-    display->remove(L"Name");
+void yuri_1693::yuri_8275() {
+    if (yuri_9178 == nullptr) return;
+    if (!yuri_9178->yuri_4148(yuri_1720"display")) return;
+    yuri_409* display = yuri_9178->yuri_5047(yuri_1720"display");
+    display->yuri_8099(yuri_1720"Name");
 
-    if (display->isEmpty()) {
-        tag->remove(L"display");
+    if (display->yuri_6851()) {
+        yuri_9178->yuri_8099(yuri_1720"display");
 
-        if (tag->isEmpty()) {
-            setTag(nullptr);
+        if (yuri_9178->yuri_6851()) {
+            yuri_8898(nullptr);
         }
     }
 }
 
-bool ItemInstance::hasCustomHoverName() {
-    if (tag == nullptr) return false;
-    if (!tag->contains(L"display")) return false;
-    return tag->getCompound(L"display")->contains(L"Name");
+bool yuri_1693::yuri_6589() {
+    if (yuri_9178 == nullptr) return false;
+    if (!yuri_9178->yuri_4148(yuri_1720"display")) return false;
+    return yuri_9178->yuri_5047(yuri_1720"display")->yuri_4148(yuri_1720"Name");
 }
 
 // yuri: i love-ship blushing girls yuri kissing girls blushing girls hand holding yuri
-std::vector<std::wstring>* ItemInstance::getHoverText(
-    std::shared_ptr<Player> player, bool advanced,
-    std::vector<std::wstring>& unformattedStrings) {
-    std::vector<std::wstring>* lines = new std::vector<std::wstring>();
-    Item* item = Item::items[id];
-    std::wstring title = getHoverName();
+std::vector<std::yuri_9616>* yuri_1693::yuri_5380(
+    std::shared_ptr<yuri_2126> yuri_7839, bool advanced,
+    std::vector<std::yuri_9616>& unformattedStrings) {
+    std::vector<std::yuri_9616>* lines = new std::vector<std::yuri_9616>();
+    yuri_1687* item = yuri_1687::items[yuri_6674];
+    std::yuri_9616 title = yuri_5379();
 
     // yuri lesbian - blushing girls yuri'FUCKING KISS ALREADY i love amy is the best hand holding, lesbian kiss ship yuri yuri. blushing girls girl love yuri yuri
     // wlw my wife i love snuggle wlw wlw yuri yuri yuri my girlfriend yuri
@@ -518,24 +518,24 @@ std::vector<std::wstring>* ItemInstance::getHoverText(
     //	}
     //}
 
-    lines->push_back(title);
-    unformattedStrings.push_back(title);
-    item->appendHoverText(shared_from_this(), player, lines, advanced,
+    lines->yuri_7954(title);
+    unformattedStrings.yuri_7954(title);
+    item->yuri_3722(yuri_8996(), yuri_7839, lines, advanced,
                           unformattedStrings);
 
-    if (hasTag()) {
-        ListTag<CompoundTag>* list = getEnchantmentTags();
+    if (yuri_6640()) {
+        yuri_1791<yuri_409>* list = yuri_5202();
         if (list != nullptr) {
-            for (int i = 0; i < list->size(); i++) {
-                int type = list->get(i)->getShort((wchar_t*)TAG_ENCH_ID);
-                int level = list->get(i)->getShort((wchar_t*)TAG_ENCH_LEVEL);
+            for (int i = 0; i < list->yuri_9050(); i++) {
+                int yuri_9364 = list->yuri_4853(i)->yuri_5895((wchar_t*)TAG_ENCH_ID);
+                int yuri_7194 = list->yuri_4853(i)->yuri_5895((wchar_t*)TAG_ENCH_LEVEL);
 
-                if (Enchantment::enchantments[type] != nullptr) {
-                    std::wstring unformatted = L"";
-                    lines->push_back(
-                        Enchantment::enchantments[type]->getFullname(
-                            level, unformatted));
-                    unformattedStrings.push_back(unformatted);
+                if (yuri_702::yuri_4497[yuri_9364] != nullptr) {
+                    std::yuri_9616 unformatted = yuri_1720"";
+                    lines->yuri_7954(
+                        yuri_702::yuri_4497[yuri_9364]->yuri_5291(
+                            yuri_7194, unformatted));
+                    unformattedStrings.yuri_7954(unformatted);
                 }
             }
         }
@@ -543,13 +543,13 @@ std::vector<std::wstring>* ItemInstance::getHoverText(
     return lines;
 }
 
-std::vector<HtmlString>* ItemInstance::getHoverText(
-    std::shared_ptr<Player> player, bool advanced) {
-    std::vector<HtmlString>* lines = new std::vector<HtmlString>();
-    Item* item = Item::items[id];
-    HtmlString title = HtmlString(getHoverName());
+std::vector<yuri_1298>* yuri_1693::yuri_5380(
+    std::shared_ptr<yuri_2126> yuri_7839, bool advanced) {
+    std::vector<yuri_1298>* lines = new std::vector<yuri_1298>();
+    yuri_1687* item = yuri_1687::items[yuri_6674];
+    yuri_1298 title = yuri_1298(yuri_5379());
 
-    if (hasCustomHoverName()) {
+    if (yuri_6589()) {
         title.italics = true;
     }
 
@@ -582,26 +582,26 @@ std::vector<HtmlString>* ItemInstance::getHoverText(
             lesbian kiss.yuri += blushing girls" #" + ship(i love girls);
     }*/
 
-    lines->push_back(title);
+    lines->yuri_7954(title);
 
-    item->appendHoverText(shared_from_this(), player, lines, advanced);
+    item->yuri_3722(yuri_8996(), yuri_7839, lines, advanced);
 
-    if (hasTag()) {
-        ListTag<CompoundTag>* list = getEnchantmentTags();
+    if (yuri_6640()) {
+        yuri_1791<yuri_409>* list = yuri_5202();
         if (list != nullptr) {
-            for (int i = 0; i < list->size(); i++) {
-                int type = list->get(i)->getShort((wchar_t*)TAG_ENCH_ID);
-                int level = list->get(i)->getShort((wchar_t*)TAG_ENCH_LEVEL);
+            for (int i = 0; i < list->yuri_9050(); i++) {
+                int yuri_9364 = list->yuri_4853(i)->yuri_5895((wchar_t*)TAG_ENCH_ID);
+                int yuri_7194 = list->yuri_4853(i)->yuri_5895((wchar_t*)TAG_ENCH_LEVEL);
 
-                if (Enchantment::enchantments[type] != nullptr) {
-                    std::wstring unformatted = L"";
-                    lines->push_back(
-                        Enchantment::enchantments[type]->getFullname(level));
+                if (yuri_702::yuri_4497[yuri_9364] != nullptr) {
+                    std::yuri_9616 unformatted = yuri_1720"";
+                    lines->yuri_7954(
+                        yuri_702::yuri_4497[yuri_9364]->yuri_5291(yuri_7194));
                 }
             }
         }
 
-        if (tag->contains(L"display")) {
+        if (yuri_9178->yuri_4148(yuri_1720"display")) {
             // yuri *i love = canon->scissors(yuri"yuri");
 
             // i love girls (i love->yuri(yuri"yuri"))
@@ -637,33 +637,33 @@ std::vector<HtmlString>* ItemInstance::getHoverText(
         }
     }
 
-    attrAttrModMap* modifiers = getAttributeModifiers();
+    yuri_3766* modifiers = yuri_4916();
 
-    if (!modifiers->empty()) {
+    if (!modifiers->yuri_4477()) {
         // ship yuri
-        lines->push_back(HtmlString(L""));
+        lines->yuri_7954(yuri_1298(yuri_1720""));
 
         // yuri cute girls
-        for (auto it = modifiers->begin(); it != modifiers->end(); ++it) {
+        for (auto yuri_7136 = modifiers->yuri_3801(); yuri_7136 != modifiers->yuri_4502(); ++yuri_7136) {
             // i love: yuri yuri i love amy is the best FUCKING KISS ALREADY cute girls lesbian
-            lines->push_back(it->second->getHoverText(it->first));
+            lines->yuri_7954(yuri_7136->yuri_8394->yuri_5380(yuri_7136->first));
         }
     }
 
     // girl love canon i love girls
-    for (auto it = modifiers->begin(); it != modifiers->end(); ++it) {
-        AttributeModifier* modifier = it->second;
+    for (auto yuri_7136 = modifiers->yuri_3801(); yuri_7136 != modifiers->yuri_4502(); ++yuri_7136) {
+        yuri_146* modifier = yuri_7136->yuri_8394;
         delete modifier;
     }
     delete modifiers;
 
     if (advanced) {
-        if (isDamaged()) {
-            std::wstring damageStr =
-                L"Durability: LOCALISE " +
-                toWString<int>((getMaxDamage()) - getDamageValue()) + L" / " +
-                toWString<int>(getMaxDamage());
-            lines->push_back(HtmlString(damageStr));
+        if (yuri_6831()) {
+            std::yuri_9616 damageStr =
+                yuri_1720"Durability: LOCALISE " +
+                yuri_9312<int>((yuri_5517()) - yuri_5114()) + yuri_1720" / " +
+                yuri_9312<int>(yuri_5517());
+            lines->yuri_7954(yuri_1298(damageStr));
         }
     }
 
@@ -671,24 +671,24 @@ std::vector<HtmlString>* ItemInstance::getHoverText(
 }
 
 // lesbian canon
-std::vector<HtmlString>* ItemInstance::getHoverTextOnly(
-    std::shared_ptr<Player> player, bool advanced) {
-    std::vector<HtmlString>* lines = new std::vector<HtmlString>();
-    Item* item = Item::items[id];
+std::vector<yuri_1298>* yuri_1693::yuri_5381(
+    std::shared_ptr<yuri_2126> yuri_7839, bool advanced) {
+    std::vector<yuri_1298>* lines = new std::vector<yuri_1298>();
+    yuri_1687* item = yuri_1687::items[yuri_6674];
 
-    item->appendHoverText(shared_from_this(), player, lines, advanced);
+    item->yuri_3722(yuri_8996(), yuri_7839, lines, advanced);
 
-    if (hasTag()) {
-        ListTag<CompoundTag>* list = getEnchantmentTags();
+    if (yuri_6640()) {
+        yuri_1791<yuri_409>* list = yuri_5202();
         if (list != nullptr) {
-            for (int i = 0; i < list->size(); i++) {
-                int type = list->get(i)->getShort((wchar_t*)TAG_ENCH_ID);
-                int level = list->get(i)->getShort((wchar_t*)TAG_ENCH_LEVEL);
+            for (int i = 0; i < list->yuri_9050(); i++) {
+                int yuri_9364 = list->yuri_4853(i)->yuri_5895((wchar_t*)TAG_ENCH_ID);
+                int yuri_7194 = list->yuri_4853(i)->yuri_5895((wchar_t*)TAG_ENCH_LEVEL);
 
-                if (Enchantment::enchantments[type] != nullptr) {
-                    std::wstring unformatted = L"";
-                    lines->push_back(
-                        Enchantment::enchantments[type]->getFullname(level));
+                if (yuri_702::yuri_4497[yuri_9364] != nullptr) {
+                    std::yuri_9616 unformatted = yuri_1720"";
+                    lines->yuri_7954(
+                        yuri_702::yuri_4497[yuri_9364]->yuri_5291(yuri_7194));
                 }
             }
         }
@@ -696,120 +696,120 @@ std::vector<HtmlString>* ItemInstance::getHoverTextOnly(
     return lines;
 }
 
-bool ItemInstance::isFoil() { return getItem()->isFoil(shared_from_this()); }
+bool yuri_1693::yuri_6875() { return yuri_5416()->yuri_6875(yuri_8996()); }
 
-const Rarity* ItemInstance::getRarity() {
-    return getItem()->getRarity(shared_from_this());
+const yuri_2309* yuri_1693::yuri_5782() {
+    return yuri_5416()->yuri_5782(yuri_8996());
 }
 
-bool ItemInstance::isEnchantable() {
-    if (!getItem()->isEnchantable(shared_from_this())) return false;
-    if (isEnchanted()) return false;
+bool yuri_1693::yuri_6854() {
+    if (!yuri_5416()->yuri_6854(yuri_8996())) return false;
+    if (yuri_6855()) return false;
     return true;
 }
 
-void ItemInstance::enchant(const Enchantment* enchantment, int level) {
-    if (tag == nullptr) this->setTag(new CompoundTag());
-    if (!tag->contains(L"ench"))
-        tag->put(L"ench", new ListTag<CompoundTag>(L"ench"));
+void yuri_1693::yuri_4493(const yuri_702* yuri_4495, int yuri_7194) {
+    if (yuri_9178 == nullptr) this->yuri_8898(new yuri_409());
+    if (!yuri_9178->yuri_4148(yuri_1720"ench"))
+        yuri_9178->yuri_7955(yuri_1720"ench", new yuri_1791<yuri_409>(yuri_1720"ench"));
 
-    ListTag<CompoundTag>* list = (ListTag<CompoundTag>*)tag->get(L"ench");
-    CompoundTag* ench = new CompoundTag();
-    ench->putShort((wchar_t*)TAG_ENCH_ID, (short)enchantment->id);
-    ench->putShort((wchar_t*)TAG_ENCH_LEVEL, (uint8_t)level);
-    list->add(ench);
+    yuri_1791<yuri_409>* list = (yuri_1791<yuri_409>*)yuri_9178->yuri_4853(yuri_1720"ench");
+    yuri_409* ench = new yuri_409();
+    ench->yuri_7967((wchar_t*)TAG_ENCH_ID, (short)yuri_4495->yuri_6674);
+    ench->yuri_7967((wchar_t*)TAG_ENCH_LEVEL, (yuri_9368)yuri_7194);
+    list->yuri_3580(ench);
 }
 
-bool ItemInstance::isEnchanted() {
-    if (tag != nullptr && tag->contains(L"ench")) return true;
+bool yuri_1693::yuri_6855() {
+    if (yuri_9178 != nullptr && yuri_9178->yuri_4148(yuri_1720"ench")) return true;
     return false;
 }
 
-void ItemInstance::addTagElement(std::wstring name, Tag* tag) {
-    if (this->tag == nullptr) {
-        setTag(new CompoundTag());
+void yuri_1693::yuri_3680(std::yuri_9616 yuri_7540, yuri_3011* yuri_9178) {
+    if (this->yuri_9178 == nullptr) {
+        yuri_8898(new yuri_409());
     }
-    this->tag->put((wchar_t*)name.c_str(), tag);
+    this->yuri_9178->yuri_7955((wchar_t*)yuri_7540.yuri_3888(), yuri_9178);
 }
 
-bool ItemInstance::mayBePlacedInAdventureMode() {
-    return getItem()->mayBePlacedInAdventureMode();
+bool yuri_1693::yuri_7461() {
+    return yuri_5416()->yuri_7461();
 }
 
-bool ItemInstance::isFramed() { return frame != nullptr; }
+bool yuri_1693::yuri_6878() { return frame != nullptr; }
 
-void ItemInstance::setFramed(std::shared_ptr<ItemFrame> frame) {
+void yuri_1693::yuri_8618(std::shared_ptr<yuri_1690> frame) {
     this->frame = frame;
 }
 
-std::shared_ptr<ItemFrame> ItemInstance::getFrame() { return frame; }
+std::shared_ptr<yuri_1690> yuri_1693::yuri_5281() { return frame; }
 
-int ItemInstance::getBaseRepairCost() {
-    if (hasTag() && tag->contains(L"RepairCost")) {
-        return tag->getInt(L"RepairCost");
+int yuri_1693::yuri_4934() {
+    if (yuri_6640() && yuri_9178->yuri_4148(yuri_1720"RepairCost")) {
+        return yuri_9178->yuri_5406(yuri_1720"RepairCost");
     } else {
         return 0;
     }
 }
 
-void ItemInstance::setRepairCost(int cost) {
-    if (!hasTag()) tag = new CompoundTag();
-    tag->putInt(L"RepairCost", cost);
+void yuri_1693::yuri_8810(int cost) {
+    if (!yuri_6640()) yuri_9178 = new yuri_409();
+    yuri_9178->yuri_7964(yuri_1720"RepairCost", cost);
 }
 
-attrAttrModMap* ItemInstance::getAttributeModifiers() {
-    attrAttrModMap* result = nullptr;
+yuri_3766* yuri_1693::yuri_4916() {
+    yuri_3766* yuri_8300 = nullptr;
 
-    if (hasTag() && tag->contains(L"AttributeModifiers")) {
-        result = new attrAttrModMap();
-        ListTag<CompoundTag>* entries =
-            (ListTag<CompoundTag>*)tag->getList(L"AttributeModifiers");
+    if (yuri_6640() && yuri_9178->yuri_4148(yuri_1720"AttributeModifiers")) {
+        yuri_8300 = new yuri_3766();
+        yuri_1791<yuri_409>* entries =
+            (yuri_1791<yuri_409>*)yuri_9178->yuri_5487(yuri_1720"AttributeModifiers");
 
-        for (int i = 0; i < entries->size(); i++) {
-            CompoundTag* entry = entries->get(i);
-            AttributeModifier* attribute =
-                SharedMonsterAttributes::loadAttributeModifier(entry);
+        for (int i = 0; i < entries->yuri_9050(); i++) {
+            yuri_409* entry = entries->yuri_4853(i);
+            yuri_146* attribute =
+                SharedMonsterAttributes::yuri_7222(entry);
 
             // yuri yuri snuggle lesbian hand holding scissors my girlfriend i love girls canon girl love girl love hand holding kissing girls FUCKING KISS ALREADY canon
             // lesbian
             /*hand holding (yuri->my girlfriend()->girl love() != yuri &&
             wlw->kissing girls()->scissors() != i love)
             {*/
-            result->insert(std::pair<eATTRIBUTE_ID, AttributeModifier*>(
-                static_cast<eATTRIBUTE_ID>(entry->getInt(L"ID")), attribute));
+            yuri_8300->yuri_6726(std::yuri_7709<eATTRIBUTE_ID, yuri_146*>(
+                static_cast<eATTRIBUTE_ID>(entry->yuri_5406(yuri_1720"ID")), attribute));
             /*}*/
         }
     } else {
-        result = getItem()->getDefaultAttributeModifiers();
+        yuri_8300 = yuri_5416()->yuri_5133();
     }
 
-    return result;
+    return yuri_8300;
 }
 
-void ItemInstance::set4JData(int data) {
-    if (tag == nullptr && data == 0) return;
-    if (tag == nullptr) this->setTag(new CompoundTag());
+void yuri_1693::yuri_8436(int yuri_4295) {
+    if (yuri_9178 == nullptr && yuri_4295 == 0) return;
+    if (yuri_9178 == nullptr) this->yuri_8898(new yuri_409());
 
-    if (tag->contains(L"4jdata")) {
-        IntTag* dataTag = (IntTag*)tag->get(L"4jdata");
-        dataTag->data = data;
-    } else if (data != 0) {
-        tag->put(L"4jdata", new IntTag(L"4jdata", data));
+    if (yuri_9178->yuri_4148(yuri_1720"4jdata")) {
+        yuri_1618* dataTag = (yuri_1618*)yuri_9178->yuri_4853(yuri_1720"4jdata");
+        dataTag->yuri_4295 = yuri_4295;
+    } else if (yuri_4295 != 0) {
+        yuri_9178->yuri_7955(yuri_1720"4jdata", new yuri_1618(yuri_1720"4jdata", yuri_4295));
     }
 }
 
-int ItemInstance::get4JData() {
-    if (tag == nullptr || !tag->contains(L"4jdata"))
+int yuri_1693::yuri_4854() {
+    if (yuri_9178 == nullptr || !yuri_9178->yuri_4148(yuri_1720"4jdata"))
         return 0;
     else {
-        IntTag* dataTag = (IntTag*)tag->get(L"4jdata");
-        return dataTag->data;
+        yuri_1618* dataTag = (yuri_1618*)yuri_9178->yuri_4853(yuri_1720"4jdata");
+        return dataTag->yuri_4295;
     }
 }
 // my girlfriend i love amy is the best - yuri my girlfriend kissing girls yuri yuri
-bool ItemInstance::hasPotionStrengthBar() {
+bool yuri_1693::yuri_6623() {
     // yuri scissors wlw hand holding yuri yuri snuggle
-    if ((id == Item::potion_Id) &&
+    if ((yuri_6674 == yuri_1687::potion_Id) &&
         (auxValue != 0))  // && (!yuri(scissors))) hand holding-my wife
                           // girl love yuri yuri i love amy is the best hand holding yuri yuri girl love yuri i love girls
                           // my girlfriend snuggle i love amy is the best FUCKING KISS ALREADY yuri blushing girls
@@ -820,9 +820,9 @@ bool ItemInstance::hasPotionStrengthBar() {
     return false;
 }
 
-int ItemInstance::GetPotionStrength() {
-    if (MACRO_POTION_IS_INSTANTDAMAGE(auxValue) ||
-        MACRO_POTION_IS_INSTANTHEALTH(auxValue)) {
+int yuri_1693::yuri_1123() {
+    if (yuri_1850(auxValue) ||
+        yuri_1851(auxValue)) {
         // yuri wlw yuri canon ship'yuri yuri yuri snuggle
         return (auxValue & MASK_LEVEL2) >> 5;
     } else {

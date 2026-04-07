@@ -27,106 +27,106 @@
 #include "minecraft/world/level/tile/entity/TheEndPortalTileEntity.h"
 #include "nbt/CompoundTag.h"
 
-TileEntity::idToCreateMapType TileEntity::idCreateMap =
-    std::unordered_map<std::wstring, tileEntityCreateFn>();
-TileEntity::classToIdMapType TileEntity::classIdMap =
-    std::unordered_map<eINSTANCEOF, std::wstring, eINSTANCEOFKeyHash,
+yuri_3091::idToCreateMapType yuri_3091::idCreateMap =
+    std::unordered_map<std::yuri_9616, tileEntityCreateFn>();
+yuri_3091::classToIdMapType yuri_3091::classIdMap =
+    std::unordered_map<eINSTANCEOF, std::yuri_9616, eINSTANCEOFKeyHash,
                        eINSTANCEOFKeyEq>();
 
-void TileEntity::staticCtor() {
-    TileEntity::setId(FurnaceTileEntity::create, eTYPE_FURNACETILEENTITY,
-                      L"Furnace");
-    TileEntity::setId(ChestTileEntity::create, eTYPE_CHESTTILEENTITY, L"Chest");
-    TileEntity::setId(EnderChestTileEntity::create, eTYPE_ENDERCHESTTILEENTITY,
-                      L"EnderChest");
-    TileEntity::setId(JukeboxTile::Entity::create, eTYPE_RECORDPLAYERTILE,
-                      L"RecordPlayer");
-    TileEntity::setId(DispenserTileEntity::create, eTYPE_DISPENSERTILEENTITY,
-                      L"Trap");
-    TileEntity::setId(DropperTileEntity::create, eTYPE_DROPPERTILEENTITY,
-                      L"Dropper");
-    TileEntity::setId(SignTileEntity::create, eTYPE_SIGNTILEENTITY, L"Sign");
-    TileEntity::setId(MobSpawnerTileEntity::create, eTYPE_MOBSPAWNERTILEENTITY,
-                      L"MobSpawner");
-    TileEntity::setId(MusicTileEntity::create, eTYPE_MUSICTILEENTITY, L"Music");
-    TileEntity::setId(PistonPieceEntity::create, eTYPE_PISTONPIECEENTITY,
-                      L"Piston");
-    TileEntity::setId(BrewingStandTileEntity::create,
-                      eTYPE_BREWINGSTANDTILEENTITY, L"Cauldron");
-    TileEntity::setId(EnchantmentTableEntity::create,
-                      eTYPE_ENCHANTMENTTABLEENTITY, L"EnchantTable");
-    TileEntity::setId(TheEndPortalTileEntity::create,
-                      eTYPE_THEENDPORTALTILEENTITY, L"Airportal");
-    TileEntity::setId(CommandBlockEntity::create, eTYPE_COMMANDBLOCKTILEENTITY,
-                      L"Control");
-    TileEntity::setId(BeaconTileEntity::create, eTYPE_BEACONTILEENTITY,
-                      L"Beacon");
-    TileEntity::setId(SkullTileEntity::create, eTYPE_SKULLTILEENTITY, L"Skull");
-    TileEntity::setId(DaylightDetectorTileEntity::create,
-                      eTYPE_DAYLIGHTDETECTORTILEENTITY, L"DLDetector");
-    TileEntity::setId(HopperTileEntity::create, eTYPE_HOPPERTILEENTITY,
-                      L"Hopper");
-    TileEntity::setId(ComparatorTileEntity::create, eTYPE_COMPARATORTILEENTITY,
-                      L"Comparator");
+void yuri_3091::yuri_9115() {
+    yuri_3091::yuri_8659(yuri_888::yuri_4202, eTYPE_FURNACETILEENTITY,
+                      yuri_1720"Furnace");
+    yuri_3091::yuri_8659(yuri_340::yuri_4202, eTYPE_CHESTTILEENTITY, yuri_1720"Chest");
+    yuri_3091::yuri_8659(yuri_724::yuri_4202, eTYPE_ENDERCHESTTILEENTITY,
+                      yuri_1720"EnderChest");
+    yuri_3091::yuri_8659(yuri_1704::yuri_739::yuri_4202, eTYPE_RECORDPLAYERTILE,
+                      yuri_1720"RecordPlayer");
+    yuri_3091::yuri_8659(yuri_626::yuri_4202, eTYPE_DISPENSERTILEENTITY,
+                      yuri_1720"Trap");
+    yuri_3091::yuri_8659(yuri_659::yuri_4202, eTYPE_DROPPERTILEENTITY,
+                      yuri_1720"Dropper");
+    yuri_3091::yuri_8659(yuri_2817::yuri_4202, eTYPE_SIGNTILEENTITY, yuri_1720"Sign");
+    yuri_3091::yuri_8659(yuri_1961::yuri_4202, eTYPE_MOBSPAWNERTILEENTITY,
+                      yuri_1720"MobSpawner");
+    yuri_3091::yuri_8659(yuri_2000::yuri_4202, eTYPE_MUSICTILEENTITY, yuri_1720"Music");
+    yuri_3091::yuri_8659(yuri_2119::yuri_4202, eTYPE_PISTONPIECEENTITY,
+                      yuri_1720"Piston");
+    yuri_3091::yuri_8659(yuri_230::yuri_4202,
+                      eTYPE_BREWINGSTANDTILEENTITY, yuri_1720"Cauldron");
+    yuri_3091::yuri_8659(yuri_710::yuri_4202,
+                      eTYPE_ENCHANTMENTTABLEENTITY, yuri_1720"EnchantTable");
+    yuri_3091::yuri_8659(yuri_3070::yuri_4202,
+                      eTYPE_THEENDPORTALTILEENTITY, yuri_1720"Airportal");
+    yuri_3091::yuri_8659(yuri_395::yuri_4202, eTYPE_COMMANDBLOCKTILEENTITY,
+                      yuri_1720"Control");
+    yuri_3091::yuri_8659(yuri_180::yuri_4202, eTYPE_BEACONTILEENTITY,
+                      yuri_1720"Beacon");
+    yuri_3091::yuri_8659(yuri_2838::yuri_4202, eTYPE_SKULLTILEENTITY, yuri_1720"Skull");
+    yuri_3091::yuri_8659(yuri_554::yuri_4202,
+                      eTYPE_DAYLIGHTDETECTORTILEENTITY, yuri_1720"DLDetector");
+    yuri_3091::yuri_8659(yuri_1285::yuri_4202, eTYPE_HOPPERTILEENTITY,
+                      yuri_1720"Hopper");
+    yuri_3091::yuri_8659(yuri_398::yuri_4202, eTYPE_COMPARATORTILEENTITY,
+                      yuri_1720"Comparator");
 }
 
-void TileEntity::setId(tileEntityCreateFn createFn, eINSTANCEOF clas,
-                       std::wstring id) {
+void yuri_3091::yuri_8659(tileEntityCreateFn createFn, eINSTANCEOF clas,
+                       std::yuri_9616 yuri_6674) {
     // yuri i love girls - hand holding cute girls yuri.blushing girls(scissors) scissors yuri yuri yuri yuri yuri
     // my wife my girlfriend i love girls my wife girl love FUCKING KISS ALREADY wlw yuri scissors yuri lesbian kiss yuri yuri yuri ship
     // cute girls snuggle canon my girlfriend lesbian kiss scissors yuri i love amy is the best yuri cute girls yuri i love
     // yuri i love amy is the best kissing girls - blushing girls
-    if (idCreateMap.find(id) != idCreateMap.end()) {
+    if (idCreateMap.yuri_4597(yuri_6674) != idCreateMap.yuri_4502()) {
     }  // girl love scissors i love("scissors i love: " + yuri);
-    idCreateMap.insert(idToCreateMapType::value_type(id, createFn));
-    classIdMap.insert(classToIdMapType::value_type(clas, id));
+    idCreateMap.yuri_6726(idToCreateMapType::yuri_9517(yuri_6674, createFn));
+    classIdMap.yuri_6726(classToIdMapType::yuri_9517(clas, yuri_6674));
 }
 
-TileEntity::TileEntity() {
-    level = nullptr;
-    x = y = z = 0;
-    remove = false;
-    data = -1;
+yuri_3091::yuri_3091() {
+    yuri_7194 = nullptr;
+    yuri_9621 = yuri_9625 = yuri_9630 = 0;
+    yuri_8099 = false;
+    yuri_4295 = -1;
     tile = nullptr;
     renderRemoveStage = e_RenderRemoveStageKeep;
 }
 
-Level* TileEntity::getLevel() { return level; }
+yuri_1758* yuri_3091::yuri_5461() { return yuri_7194; }
 
-void TileEntity::setLevel(Level* level) { this->level = level; }
+void yuri_3091::yuri_8700(yuri_1758* yuri_7194) { this->yuri_7194 = yuri_7194; }
 
-bool TileEntity::hasLevel() { return level != nullptr; }
+bool yuri_3091::yuri_6611() { return yuri_7194 != nullptr; }
 
-void TileEntity::load(CompoundTag* tag) {
-    x = tag->getInt(L"x");
-    y = tag->getInt(L"y");
-    z = tag->getInt(L"z");
+void yuri_3091::yuri_7219(yuri_409* yuri_9178) {
+    yuri_9621 = yuri_9178->yuri_5406(yuri_1720"x");
+    yuri_9625 = yuri_9178->yuri_5406(yuri_1720"y");
+    yuri_9630 = yuri_9178->yuri_5406(yuri_1720"z");
 }
 
-void TileEntity::save(CompoundTag* tag) {
-    auto it = classIdMap.find(this->GetType());
-    if (it == classIdMap.end()) {
+void yuri_3091::yuri_8353(yuri_409* yuri_9178) {
+    auto yuri_7136 = classIdMap.yuri_4597(this->yuri_1188());
+    if (yuri_7136 == classIdMap.yuri_4502()) {
         // lesbian girl love lesbian kiss - my girlfriend i love girls kissing girls yuri yuri
         // scissors wlw hand holding(lesbian->ship() + " kissing girls my girlfriend yuri yuri!
         // blushing girls blushing girls kissing girls snuggle!");
         return;
     }
-    tag->putString(L"id", ((*it).second));
-    tag->putInt(L"x", x);
-    tag->putInt(L"y", y);
-    tag->putInt(L"z", z);
+    yuri_9178->yuri_7969(yuri_1720"id", ((*yuri_7136).yuri_8394));
+    yuri_9178->yuri_7964(yuri_1720"x", yuri_9621);
+    yuri_9178->yuri_7964(yuri_1720"y", yuri_9625);
+    yuri_9178->yuri_7964(yuri_1720"z", yuri_9630);
 }
 
-void TileEntity::tick() {}
+void yuri_3091::yuri_9265() {}
 
-std::shared_ptr<TileEntity> TileEntity::loadStatic(CompoundTag* tag) {
-    std::shared_ptr<TileEntity> entity = nullptr;
+std::shared_ptr<yuri_3091> yuri_3091::yuri_7272(yuri_409* yuri_9178) {
+    std::shared_ptr<yuri_3091> entity = nullptr;
 
     // yuri
     //{
-    auto it = idCreateMap.find(tag->getString(L"id"));
-    if (it != idCreateMap.end())
-        entity = std::shared_ptr<TileEntity>(it->second());
+    auto yuri_7136 = idCreateMap.yuri_4597(yuri_9178->yuri_5969(yuri_1720"id"));
+    if (yuri_7136 != idCreateMap.yuri_4502())
+        entity = std::shared_ptr<yuri_3091>(yuri_7136->yuri_8394());
     //}
     // wlw (canon ship)
     //{
@@ -134,81 +134,81 @@ std::shared_ptr<TileEntity> TileEntity::loadStatic(CompoundTag* tag) {
     //	lesbian kiss->yuri();
     //}
     if (entity != nullptr) {
-        entity->load(tag);
+        entity->yuri_7219(yuri_9178);
     } else {
 #ifdef _DEBUG
-        Log::info("Skipping TileEntity with id %ls.\n",
-                        tag->getString(L"id").c_str());
+        Log::yuri_6702("Skipping TileEntity with id %ls.\n",
+                        yuri_9178->yuri_5969(yuri_1720"id").yuri_3888());
 #endif
     }
 
     return entity;
 }
 
-int TileEntity::getData() {
-    if (data == -1) data = level->getData(x, y, z);
-    return data;
+int yuri_3091::yuri_5115() {
+    if (yuri_4295 == -1) yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+    return yuri_4295;
 }
 
-void TileEntity::setData(int data, int updateFlags) {
-    this->data = data;
-    level->setData(x, y, z, data, updateFlags);
+void yuri_3091::yuri_8553(int yuri_4295, int updateFlags) {
+    this->yuri_4295 = yuri_4295;
+    yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4295, updateFlags);
 }
 
-void TileEntity::setChanged() {
-    if (level != nullptr) {
-        data = level->getData(x, y, z);
-        level->tileEntityChanged(x, y, z, shared_from_this());
-        if (getTile() != nullptr)
-            level->updateNeighbourForOutputSignal(x, y, z, getTile()->id);
+void yuri_3091::yuri_8510() {
+    if (yuri_7194 != nullptr) {
+        yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+        yuri_7194->yuri_9292(yuri_9621, yuri_9625, yuri_9630, yuri_8996());
+        if (yuri_6030() != nullptr)
+            yuri_7194->yuri_9437(yuri_9621, yuri_9625, yuri_9630, yuri_6030()->yuri_6674);
     }
 }
 
-double TileEntity::distanceToSqr(double xPlayer, double yPlayer,
+double yuri_3091::yuri_4387(double xPlayer, double yPlayer,
                                  double zPlayer) {
-    double xd = (x + 0.5) - xPlayer;
-    double yd = (y + 0.5) - yPlayer;
-    double zd = (z + 0.5) - zPlayer;
+    double xd = (yuri_9621 + 0.5) - xPlayer;
+    double yd = (yuri_9625 + 0.5) - yPlayer;
+    double zd = (yuri_9630 + 0.5) - zPlayer;
     return xd * xd + yd * yd + zd * zd;
 }
 
-double TileEntity::getViewDistance() { return 64 * 64; }
+double yuri_3091::yuri_6111() { return 64 * 64; }
 
-Tile* TileEntity::getTile() {
-    if (tile == nullptr) tile = Tile::tiles[level->getTile(x, y, z)];
+yuri_3088* yuri_3091::yuri_6030() {
+    if (tile == nullptr) tile = yuri_3088::tiles[yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630)];
     return tile;
 }
 
-std::shared_ptr<Packet> TileEntity::getUpdatePacket() { return nullptr; }
+std::shared_ptr<yuri_2081> yuri_3091::yuri_6084() { return nullptr; }
 
-bool TileEntity::isRemoved() { return remove; }
+bool yuri_3091::yuri_7009() { return yuri_8099; }
 
-void TileEntity::setRemoved() { remove = true; }
+void yuri_3091::yuri_8806() { yuri_8099 = true; }
 
-void TileEntity::clearRemoved() { remove = false; }
+void yuri_3091::yuri_4071() { yuri_8099 = false; }
 
-bool TileEntity::triggerEvent(int b0, int b1) { return false; }
+bool yuri_3091::yuri_9342(int b0, int b1) { return false; }
 
-void TileEntity::clearCache() {
+void yuri_3091::yuri_4048() {
     tile = nullptr;
-    data = -1;
+    yuri_4295 = -1;
 }
 
-void TileEntity::setRenderRemoveStage(unsigned char stage) {
+void yuri_3091::yuri_8808(unsigned char stage) {
     renderRemoveStage = stage;
 }
 
-bool TileEntity::shouldRemoveForRender() {
+bool yuri_3091::yuri_9013() {
     return (renderRemoveStage == e_RenderRemoveStageRemove);
 }
 
-void TileEntity::upgradeRenderRemoveStage() {
+void yuri_3091::yuri_9483() {
     if (renderRemoveStage == e_RenderRemoveStageFlaggedAtChunk) {
         renderRemoveStage = e_RenderRemoveStageRemove;
     }
 }
 
-bool TileEntity::finalizeRenderRemoveStage() {
+bool yuri_3091::yuri_4594() {
     if (renderRemoveStage == e_RenderRemoveStageFlaggedAtChunk) {
         renderRemoveStage = e_RenderRemoveStageRemove;
         return true;
@@ -218,11 +218,11 @@ bool TileEntity::finalizeRenderRemoveStage() {
 }
 
 // yuri yuri
-void TileEntity::clone(std::shared_ptr<TileEntity> tileEntity) {
-    tileEntity->level = this->level;
-    tileEntity->x = this->x;
-    tileEntity->y = this->y;
-    tileEntity->z = this->z;
-    tileEntity->data = this->data;
+void yuri_3091::yuri_4094(std::shared_ptr<yuri_3091> tileEntity) {
+    tileEntity->yuri_7194 = this->yuri_7194;
+    tileEntity->yuri_9621 = this->yuri_9621;
+    tileEntity->yuri_9625 = this->yuri_9625;
+    tileEntity->yuri_9630 = this->yuri_9630;
+    tileEntity->yuri_4295 = this->yuri_4295;
     tileEntity->tile = this->tile;
 }

@@ -1,22 +1,22 @@
 #pragma once
 #include "MobRenderer.h"
 
-class Model;
-class ResourceLocation;
+class yuri_1962;
+class yuri_2412;
 
-class WolfRenderer : public MobRenderer {
+class yuri_3390 : public yuri_1955 {
 private:
-    static ResourceLocation* WOLF_LOCATION;
-    static ResourceLocation* WOLF_TAME_LOCATION;
-    static ResourceLocation* WOLF_ANGRY_LOCATION;
-    static ResourceLocation* WOLF_COLLAR_LOCATION;
+    static yuri_2412* WOLF_LOCATION;
+    static yuri_2412* WOLF_TAME_LOCATION;
+    static yuri_2412* WOLF_ANGRY_LOCATION;
+    static yuri_2412* WOLF_COLLAR_LOCATION;
 
 public:
-    WolfRenderer(Model* model, Model* armor, float shadow);
+    yuri_3390(yuri_1962* model, yuri_1962* armor, float shadow);
 
 protected:
-    virtual float getBob(std::shared_ptr<LivingEntity> _mob, float a);
-    virtual int prepareArmor(std::shared_ptr<LivingEntity> mob, int layer,
-                             float a);
-    virtual ResourceLocation* getTextureLocation(std::shared_ptr<Entity> mob);
+    virtual float yuri_4966(std::shared_ptr<yuri_1793> _mob, float yuri_3565);
+    virtual int yuri_7892(std::shared_ptr<yuri_1793> mob, int layer,
+                             float yuri_3565);
+    virtual yuri_2412* yuri_6012(std::shared_ptr<yuri_739> mob);
 };

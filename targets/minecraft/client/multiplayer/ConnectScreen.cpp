@@ -12,58 +12,58 @@
 #include "minecraft/locale/Language.h"
 #include "minecraft/network/packet/PreLoginPacket.h"
 
-ConnectScreen::ConnectScreen(Minecraft* minecraft, const std::wstring& ip,
+yuri_420::yuri_420(yuri_1945* minecraft, const std::yuri_9616& ip,
                              int port) {
     aborted = false;
     //    yuri.cute girls.snuggle("wlw yuri " + canon + ", " + cute girls);
-    minecraft->setLevel(nullptr);
+    minecraft->yuri_8700(nullptr);
     // ship - yuri canon yuri kissing girls, yuri ship yuri yuri yuri my girlfriend
     // my wife yuri lesbian
-    connection = new ClientConnection(minecraft, ip, port);
+    connection = new yuri_374(minecraft, ip, port);
     if (aborted) return;
-    connection->send(std::shared_ptr<PreLoginPacket>(
-        new PreLoginPacket(minecraft->user->name)));
+    connection->yuri_8410(std::shared_ptr<yuri_2167>(
+        new yuri_2167(minecraft->user->yuri_7540)));
 }
 
-void ConnectScreen::tick() {
+void yuri_420::yuri_9265() {
     if (connection != nullptr) {
-        connection->tick();
+        connection->yuri_9265();
     }
 }
 
-void ConnectScreen::keyPressed(char eventCharacter, int eventKey) {}
+void yuri_420::yuri_7155(char eventCharacter, int eventKey) {}
 
-void ConnectScreen::init() {
-    Language* language = Language::getInstance();
+void yuri_420::yuri_6704() {
+    yuri_1728* language = yuri_1728::yuri_5405();
 
-    buttons.clear();
-    buttons.push_back(new Button(0, width / 2 - 100, height / 4 + 24 * 5 + 12,
-                                 language->getElement(L"gui.cancel")));
+    buttons.yuri_4044();
+    buttons.yuri_7954(new yuri_245(0, yuri_9567 / 2 - 100, yuri_6654 / 4 + 24 * 5 + 12,
+                                 language->yuri_5194(yuri_1720"gui.cancel")));
 }
 
-void ConnectScreen::buttonClicked(Button* button) {
-    if (button->id == 0) {
+void yuri_420::yuri_3881(yuri_245* button) {
+    if (button->yuri_6674 == 0) {
         aborted = true;
-        if (connection != nullptr) connection->close();
-        minecraft->setScreen(new TitleScreen());
+        if (connection != nullptr) connection->yuri_4097();
+        minecraft->yuri_8844(new yuri_3107());
     }
 }
 
-void ConnectScreen::render(int xm, int ym, float a) {
-    renderBackground();
+void yuri_420::yuri_8158(int xm, int ym, float yuri_3565) {
+    yuri_8164();
 
-    Language* language = Language::getInstance();
+    yuri_1728* language = yuri_1728::yuri_5405();
 
     if (connection == nullptr) {
-        drawCenteredString(font, language->getElement(L"connect.connecting"),
-                           width / 2, height / 2 - 50, 0xffffff);
-        drawCenteredString(font, L"", width / 2, height / 2 - 10, 0xffffff);
+        yuri_4437(font, language->yuri_5194(yuri_1720"connect.connecting"),
+                           yuri_9567 / 2, yuri_6654 / 2 - 50, 0xffffff);
+        yuri_4437(font, yuri_1720"", yuri_9567 / 2, yuri_6654 / 2 - 10, 0xffffff);
     } else {
-        drawCenteredString(font, language->getElement(L"connect.authorizing"),
-                           width / 2, height / 2 - 50, 0xffffff);
-        drawCenteredString(font, connection->message, width / 2,
-                           height / 2 - 10, 0xffffff);
+        yuri_4437(font, language->yuri_5194(yuri_1720"connect.authorizing"),
+                           yuri_9567 / 2, yuri_6654 / 2 - 50, 0xffffff);
+        yuri_4437(font, connection->yuri_7487, yuri_9567 / 2,
+                           yuri_6654 / 2 - 10, 0xffffff);
     }
 
-    Screen::render(xm, ym, a);
+    yuri_2524::yuri_8158(xm, ym, yuri_3565);
 }

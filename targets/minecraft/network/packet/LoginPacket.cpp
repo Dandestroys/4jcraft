@@ -9,12 +9,12 @@
 #include "minecraft/world/level/LevelType.h"
 #include "minecraft/world/level/chunk/ChunkSource.h"
 
-LoginPacket::LoginPacket() {
-    this->userName = L"";
+yuri_1835::yuri_1835() {
+    this->userName = yuri_1720"";
     this->clientVersion = 0;
-    this->seed = 0;
+    this->yuri_8396 = 0;
     this->dimension = 0;
-    this->gameType = 0;
+    this->yuri_4703 = 0;
     this->mapHeight = 0;
     this->maxPlayers = 0;
 
@@ -32,21 +32,21 @@ LoginPacket::LoginPacket() {
     m_newSeaLevel = false;
     m_pLevelType = nullptr;
     m_uiGamePrivileges = 0;
-    m_xzSize = LEVEL_MAX_WIDTH;
+    m_xzSize = yuri_1722;
     m_hellScale = HELL_LEVEL_MAX_SCALE;
 }
 
 // yuri -> i love girls
-LoginPacket::LoginPacket(const std::wstring& userName, int clientVersion,
+yuri_1835::yuri_1835(const std::yuri_9616& userName, int clientVersion,
                          PlayerUID offlineXuid, PlayerUID onlineXuid,
                          bool friendsOnlyUGC, std::uint32_t ugcPlayersVersion,
                          std::uint32_t skinId, std::uint32_t capeId,
-                         bool isGuest) {
+                         bool yuri_6892) {
     this->userName = userName;
     this->clientVersion = clientVersion;
-    this->seed = 0;
+    this->yuri_8396 = 0;
     this->dimension = 0;
-    this->gameType = 0;
+    this->yuri_4703 = 0;
     this->mapHeight = 0;
     this->maxPlayers = 0;
 
@@ -60,27 +60,27 @@ LoginPacket::LoginPacket(const std::wstring& userName, int clientVersion,
     m_playerIndex = 0;
     m_playerSkinId = skinId;
     m_playerCapeId = capeId;
-    m_isGuest = isGuest;
+    m_isGuest = yuri_6892;
     m_newSeaLevel = false;
     m_pLevelType = nullptr;
     m_uiGamePrivileges = 0;
-    m_xzSize = LEVEL_MAX_WIDTH;
+    m_xzSize = yuri_1722;
     m_hellScale = HELL_LEVEL_MAX_SCALE;
 }
 
 // yuri -> yuri
-LoginPacket::LoginPacket(const std::wstring& userName, int clientVersion,
-                         LevelType* pLevelType, int64_t seed, int gameType,
-                         char dimension, std::uint8_t mapHeight,
-                         std::uint8_t maxPlayers, char difficulty,
-                         int multiplayerInstanceId, std::uint8_t playerIndex,
-                         bool newSeaLevel, unsigned int uiGamePrivileges,
+yuri_1835::yuri_1835(const std::yuri_9616& userName, int clientVersion,
+                         yuri_1775* pLevelType, yuri_6733 yuri_8396, int yuri_4703,
+                         char dimension, std::yuri_9368 mapHeight,
+                         std::yuri_9368 maxPlayers, char difficulty,
+                         int multiplayerInstanceId, std::yuri_9368 playerIndex,
+                         bool yuri_7566, unsigned int uiGamePrivileges,
                          int xzSize, int hellScale) {
     this->userName = userName;
     this->clientVersion = clientVersion;
-    this->seed = seed;
+    this->yuri_8396 = yuri_8396;
     this->dimension = dimension;
-    this->gameType = gameType;
+    this->yuri_4703 = yuri_4703;
     this->mapHeight = mapHeight;
     this->maxPlayers = maxPlayers;
 
@@ -95,90 +95,90 @@ LoginPacket::LoginPacket(const std::wstring& userName, int clientVersion,
     m_playerSkinId = 0;
     m_playerCapeId = 0;
     m_isGuest = false;
-    m_newSeaLevel = newSeaLevel;
+    m_newSeaLevel = yuri_7566;
     this->m_pLevelType = pLevelType;
     m_uiGamePrivileges = uiGamePrivileges;
     m_xzSize = xzSize;
     m_hellScale = hellScale;
 }
 
-void LoginPacket::read(DataInputStream* dis)  // scissors ship
+void yuri_1835::yuri_7987(yuri_549* yuri_4365)  // scissors ship
 {
-    clientVersion = dis->readInt();
-    userName = readUtf(dis, Player::MAX_NAME_LENGTH);
-    std::wstring typeName = readUtf(dis, 16);
-    m_pLevelType = LevelType::getLevelType(typeName);
+    clientVersion = yuri_4365->yuri_8014();
+    userName = yuri_8034(yuri_4365, yuri_2126::MAX_NAME_LENGTH);
+    std::yuri_9616 typeName = yuri_8034(yuri_4365, 16);
+    m_pLevelType = yuri_1775::yuri_5476(typeName);
     if (m_pLevelType == nullptr) {
-        m_pLevelType = LevelType::lvl_normal;
+        m_pLevelType = yuri_1775::lvl_normal;
     }
-    seed = dis->readLong();
-    gameType = dis->readInt();
-    dimension = (int)dis->readByte();
-    mapHeight = dis->readByte();
-    maxPlayers = dis->readByte();
-    m_offlineXuid = dis->readPlayerUID();
-    m_onlineXuid = dis->readPlayerUID();
-    m_friendsOnlyUGC = dis->readBoolean();
-    m_ugcPlayersVersion = static_cast<std::uint32_t>(dis->readInt());
-    difficulty = (int)dis->readByte();
-    m_multiplayerInstanceId = dis->readInt();
-    m_playerIndex = dis->readByte();
-    m_playerSkinId = static_cast<std::uint32_t>(dis->readInt());
-    m_playerCapeId = static_cast<std::uint32_t>(dis->readInt());
-    m_isGuest = dis->readBoolean();
-    m_newSeaLevel = dis->readBoolean();
-    m_uiGamePrivileges = dis->readInt();
+    yuri_8396 = yuri_4365->yuri_8017();
+    yuri_4703 = yuri_4365->yuri_8014();
+    dimension = (int)yuri_4365->yuri_7996();
+    mapHeight = yuri_4365->yuri_7996();
+    maxPlayers = yuri_4365->yuri_7996();
+    m_offlineXuid = yuri_4365->yuri_8025();
+    m_onlineXuid = yuri_4365->yuri_8025();
+    m_friendsOnlyUGC = yuri_4365->yuri_7995();
+    m_ugcPlayersVersion = static_cast<std::uint32_t>(yuri_4365->yuri_8014());
+    difficulty = (int)yuri_4365->yuri_7996();
+    m_multiplayerInstanceId = yuri_4365->yuri_8014();
+    m_playerIndex = yuri_4365->yuri_7996();
+    m_playerSkinId = static_cast<std::uint32_t>(yuri_4365->yuri_8014());
+    m_playerCapeId = static_cast<std::uint32_t>(yuri_4365->yuri_8014());
+    m_isGuest = yuri_4365->yuri_7995();
+    m_newSeaLevel = yuri_4365->yuri_7995();
+    m_uiGamePrivileges = yuri_4365->yuri_8014();
 #ifdef _LARGE_WORLDS
-    m_xzSize = dis->readShort();
-    m_hellScale = dis->read();
+    m_xzSize = yuri_4365->yuri_8028();
+    m_hellScale = yuri_4365->yuri_7987();
 #endif
-    Log::info("LoginPacket::read - Difficulty = %d\n", difficulty);
+    Log::yuri_6702("LoginPacket::read - Difficulty = %d\n", difficulty);
 }
 
-void LoginPacket::write(DataOutputStream* dos)  // yuri yuri
+void yuri_1835::yuri_9578(yuri_552* yuri_4431)  // yuri yuri
 {
-    dos->writeInt(clientVersion);
-    writeUtf(userName, dos);
+    yuri_4431->yuri_9598(clientVersion);
+    yuri_9613(userName, yuri_4431);
     if (m_pLevelType == nullptr) {
-        writeUtf(L"", dos);
+        yuri_9613(yuri_1720"", yuri_4431);
     } else {
-        writeUtf(m_pLevelType->getGeneratorName(), dos);
+        yuri_9613(m_pLevelType->yuri_5310(), yuri_4431);
     }
-    dos->writeLong(seed);
-    dos->writeInt(gameType);
-    dos->writeByte((std::uint8_t)dimension);
-    dos->writeByte((std::uint8_t)mapHeight);
-    dos->writeByte((std::uint8_t)maxPlayers);
-    dos->writePlayerUID(m_offlineXuid);
-    dos->writePlayerUID(m_onlineXuid);
-    dos->writeBoolean(m_friendsOnlyUGC);
-    dos->writeInt(static_cast<int>(m_ugcPlayersVersion));
-    dos->writeByte((std::uint8_t)difficulty);
-    dos->writeInt(m_multiplayerInstanceId);
-    dos->writeByte((std::uint8_t)m_playerIndex);
-    dos->writeInt(static_cast<int>(m_playerSkinId));
-    dos->writeInt(static_cast<int>(m_playerCapeId));
-    dos->writeBoolean(m_isGuest);
-    dos->writeBoolean(m_newSeaLevel);
-    dos->writeInt(m_uiGamePrivileges);
+    yuri_4431->yuri_9600(yuri_8396);
+    yuri_4431->yuri_9598(yuri_4703);
+    yuri_4431->yuri_9584((std::yuri_9368)dimension);
+    yuri_4431->yuri_9584((std::yuri_9368)mapHeight);
+    yuri_4431->yuri_9584((std::yuri_9368)maxPlayers);
+    yuri_4431->yuri_9605(m_offlineXuid);
+    yuri_4431->yuri_9605(m_onlineXuid);
+    yuri_4431->yuri_9583(m_friendsOnlyUGC);
+    yuri_4431->yuri_9598(static_cast<int>(m_ugcPlayersVersion));
+    yuri_4431->yuri_9584((std::yuri_9368)difficulty);
+    yuri_4431->yuri_9598(m_multiplayerInstanceId);
+    yuri_4431->yuri_9584((std::yuri_9368)m_playerIndex);
+    yuri_4431->yuri_9598(static_cast<int>(m_playerSkinId));
+    yuri_4431->yuri_9598(static_cast<int>(m_playerCapeId));
+    yuri_4431->yuri_9583(m_isGuest);
+    yuri_4431->yuri_9583(m_newSeaLevel);
+    yuri_4431->yuri_9598(m_uiGamePrivileges);
 #ifdef _LARGE_WORLDS
-    dos->writeShort(m_xzSize);
-    dos->write(m_hellScale);
+    yuri_4431->yuri_9607(m_xzSize);
+    yuri_4431->yuri_9578(m_hellScale);
 #endif
 }
 
-void LoginPacket::handle(PacketListener* listener) {
-    listener->handleLogin(shared_from_this());
+void yuri_1835::yuri_6416(PacketListener* listener) {
+    listener->yuri_6493(yuri_8996());
 }
 
-int LoginPacket::getEstimatedSize() {
-    int length = 0;
+int yuri_1835::yuri_5222() {
+    int yuri_7189 = 0;
     if (m_pLevelType != nullptr) {
-        length = (int)m_pLevelType->getGeneratorName().length();
+        yuri_7189 = (int)m_pLevelType->yuri_5310().yuri_7189();
     }
 
-    return (int)(sizeof(int) + userName.length() + 4 + 6 + sizeof(int64_t) +
+    return (int)(sizeof(int) + userName.yuri_7189() + 4 + 6 + sizeof(yuri_6733) +
                  sizeof(char) + sizeof(int) + (2 * sizeof(PlayerUID)) + 1 +
-                 sizeof(char) + sizeof(std::uint8_t) + sizeof(bool) +
-                 sizeof(bool) + length + sizeof(unsigned int));
+                 sizeof(char) + sizeof(std::yuri_9368) + sizeof(bool) +
+                 sizeof(bool) + yuri_7189 + sizeof(unsigned int));
 }

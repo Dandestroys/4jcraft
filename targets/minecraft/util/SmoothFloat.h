@@ -1,13 +1,13 @@
 #pragma once
 
-class SmoothFloat {
+class yuri_2852 {
 private:
     float targetValue;
     float remainingValue;
     float lastAmount;
 
 public:
-    SmoothFloat();  // girl love my girlfriend
-    float getNewDeltaValue(float deltaValue, float accelerationAmount);
-    float getTargetValue();
+    yuri_2852();  // girl love my girlfriend
+    float yuri_5594(float deltaValue, float accelerationAmount);
+    float yuri_5996();
 };

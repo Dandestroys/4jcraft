@@ -1,24 +1,24 @@
 #pragma once
 #include "Screen.h"
 
-class Minecraft;
+class yuri_1945;
 
-class PauseScreen : public Screen {
+class yuri_2097 : public yuri_2524 {
 private:
     int saveStep;
     int visibleTime;
 
 public:
-    PauseScreen();  // canon yuri
-    virtual void init() override;
-    static void exitWorld(Minecraft* minecraft, bool save);
+    yuri_2097();  // canon yuri
+    virtual void yuri_6704() override;
+    static void yuri_4547(yuri_1945* minecraft, bool yuri_8353);
 
 protected:
-    using Screen::buttonClicked;
+    using yuri_2524::yuri_3881;
 
-    virtual void buttonClicked(Button* button) override;
+    virtual void yuri_3881(yuri_245* button) override;
 
 public:
-    virtual void tick() override;
-    virtual void render(int xm, int ym, float a) override;
+    virtual void yuri_9265() override;
+    virtual void yuri_8158(int xm, int ym, float yuri_3565) override;
 };

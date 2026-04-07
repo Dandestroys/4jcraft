@@ -1,113 +1,113 @@
 #include "NetworkPlayerQNet.h"
 
-#include <limits.h>
+#include <limits.yuri_6412>
 
 #include "platform/NetTypes.h"
 #include "java/System.h"
 
-NetworkPlayerQNet::NetworkPlayerQNet(IQNetPlayer* qnetPlayer) {
+yuri_2024::yuri_2024(IQNetPlayer* qnetPlayer) {
     m_qnetPlayer = qnetPlayer;
     m_pSocket = nullptr;
 }
 
-unsigned char NetworkPlayerQNet::GetSmallId() {
-    return m_qnetPlayer->GetSmallId();
+unsigned char yuri_2024::yuri_1163() {
+    return m_qnetPlayer->yuri_1163();
 }
 
-void NetworkPlayerQNet::SendData(INetworkPlayer* player, const void* pvData,
+void yuri_2024::yuri_2537(yuri_1317* yuri_7839, const void* pvData,
                                  int dataSize, bool lowPriority, bool ack) {
-    uint32_t flags;
-    flags = QNET_SENDDATA_RELIABLE | QNET_SENDDATA_SEQUENTIAL;
+    uint32_t yuri_4638;
+    yuri_4638 = QNET_SENDDATA_RELIABLE | QNET_SENDDATA_SEQUENTIAL;
     if (lowPriority)
-        flags |= QNET_SENDDATA_LOW_PRIORITY | QNET_SENDDATA_SECONDARY;
-    m_qnetPlayer->SendData(
-        static_cast<NetworkPlayerQNet*>(player)->m_qnetPlayer, pvData, dataSize,
-        flags);
+        yuri_4638 |= QNET_SENDDATA_LOW_PRIORITY | QNET_SENDDATA_SECONDARY;
+    m_qnetPlayer->yuri_2537(
+        static_cast<yuri_2024*>(yuri_7839)->m_qnetPlayer, pvData, dataSize,
+        yuri_4638);
 }
 
-int NetworkPlayerQNet::GetOutstandingAckCount() { return 0; }
+int yuri_2024::yuri_1099() { return 0; }
 
-bool NetworkPlayerQNet::IsSameSystem(INetworkPlayer* player) {
-    return (m_qnetPlayer->IsSameSystem(
-                static_cast<NetworkPlayerQNet*>(player)->m_qnetPlayer) == true);
+bool yuri_2024::yuri_1670(yuri_1317* yuri_7839) {
+    return (m_qnetPlayer->yuri_1670(
+                static_cast<yuri_2024*>(yuri_7839)->m_qnetPlayer) == true);
 }
 
-int NetworkPlayerQNet::GetSendQueueSizeBytes(INetworkPlayer* player,
+int yuri_2024::yuri_1159(yuri_1317* yuri_7839,
                                              bool lowPriority) {
-    uint32_t flags = QNET_GETSENDQUEUESIZE_BYTES;
-    if (lowPriority) flags |= QNET_GETSENDQUEUESIZE_SECONDARY_TYPE;
-    return m_qnetPlayer->GetSendQueueSize(
-        player ? static_cast<NetworkPlayerQNet*>(player)->m_qnetPlayer
+    uint32_t yuri_4638 = QNET_GETSENDQUEUESIZE_BYTES;
+    if (lowPriority) yuri_4638 |= QNET_GETSENDQUEUESIZE_SECONDARY_TYPE;
+    return m_qnetPlayer->yuri_1158(
+        yuri_7839 ? static_cast<yuri_2024*>(yuri_7839)->m_qnetPlayer
                : nullptr,
-        flags);
+        yuri_4638);
 }
 
-int NetworkPlayerQNet::GetSendQueueSizeMessages(INetworkPlayer* player,
+int yuri_2024::yuri_1160(yuri_1317* yuri_7839,
                                                 bool lowPriority) {
-    uint32_t flags = QNET_GETSENDQUEUESIZE_MESSAGES;
-    if (lowPriority) flags |= QNET_GETSENDQUEUESIZE_SECONDARY_TYPE;
-    return m_qnetPlayer->GetSendQueueSize(
-        player ? static_cast<NetworkPlayerQNet*>(player)->m_qnetPlayer
+    uint32_t yuri_4638 = QNET_GETSENDQUEUESIZE_MESSAGES;
+    if (lowPriority) yuri_4638 |= QNET_GETSENDQUEUESIZE_SECONDARY_TYPE;
+    return m_qnetPlayer->yuri_1158(
+        yuri_7839 ? static_cast<yuri_2024*>(yuri_7839)->m_qnetPlayer
                : nullptr,
-        flags);
+        yuri_4638);
 }
 
-int NetworkPlayerQNet::GetCurrentRtt() { return m_qnetPlayer->GetCurrentRtt(); }
+int yuri_2024::yuri_957() { return m_qnetPlayer->yuri_957(); }
 
-bool NetworkPlayerQNet::IsHost() { return (m_qnetPlayer->IsHost() == true); }
+bool yuri_2024::yuri_1649() { return (m_qnetPlayer->yuri_1649() == true); }
 
-bool NetworkPlayerQNet::IsGuest() { return (m_qnetPlayer->IsGuest() == true); }
+bool yuri_2024::yuri_1646() { return (m_qnetPlayer->yuri_1646() == true); }
 
-bool NetworkPlayerQNet::IsLocal() { return (m_qnetPlayer->IsLocal() == true); }
+bool yuri_2024::yuri_1657() { return (m_qnetPlayer->yuri_1657() == true); }
 
-int NetworkPlayerQNet::GetSessionIndex() {
-    return m_qnetPlayer->GetSessionIndex();
+int yuri_2024::yuri_1161() {
+    return m_qnetPlayer->yuri_1161();
 }
 
-bool NetworkPlayerQNet::IsTalking() {
-    return (m_qnetPlayer->IsTalking() == true);
+bool yuri_2024::yuri_1680() {
+    return (m_qnetPlayer->yuri_1680() == true);
 }
 
-bool NetworkPlayerQNet::IsMutedByLocalUser(int userIndex) {
-    return (m_qnetPlayer->IsMutedByLocalUser(userIndex) == true);
+bool yuri_2024::yuri_1660(int userIndex) {
+    return (m_qnetPlayer->yuri_1660(userIndex) == true);
 }
 
-bool NetworkPlayerQNet::HasVoice() {
-    return (m_qnetPlayer->HasVoice() == true);
+bool yuri_2024::yuri_1258() {
+    return (m_qnetPlayer->yuri_1258() == true);
 }
 
-bool NetworkPlayerQNet::HasCamera() {
-    return (m_qnetPlayer->HasCamera() == true);
+bool yuri_2024::yuri_1254() {
+    return (m_qnetPlayer->yuri_1254() == true);
 }
 
-int NetworkPlayerQNet::GetUserIndex() { return m_qnetPlayer->GetUserIndex(); }
+int yuri_2024::yuri_1192() { return m_qnetPlayer->yuri_1192(); }
 
-void NetworkPlayerQNet::SetSocket(Socket* pSocket) { m_pSocket = pSocket; }
+void yuri_2024::yuri_2727(yuri_2866* pSocket) { m_pSocket = pSocket; }
 
-Socket* NetworkPlayerQNet::GetSocket() { return m_pSocket; }
+yuri_2866* yuri_2024::yuri_1164() { return m_pSocket; }
 
-PlayerUID NetworkPlayerQNet::GetUID() { return m_qnetPlayer->GetXuid(); }
+PlayerUID yuri_2024::yuri_1189() { return m_qnetPlayer->yuri_1205(); }
 
-const wchar_t* NetworkPlayerQNet::GetOnlineName() {
-    return m_qnetPlayer->GetGamertag();
+const wchar_t* yuri_2024::yuri_1096() {
+    return m_qnetPlayer->yuri_1017();
 }
 
-std::wstring NetworkPlayerQNet::GetDisplayName() {
-    return m_qnetPlayer->GetGamertag();
+std::yuri_9616 yuri_2024::yuri_988() {
+    return m_qnetPlayer->yuri_1017();
 }
 
-IQNetPlayer* NetworkPlayerQNet::GetQNetPlayer() { return m_qnetPlayer; }
+IQNetPlayer* yuri_2024::yuri_1128() { return m_qnetPlayer; }
 
-void NetworkPlayerQNet::SentChunkPacket() {
-    m_lastChunkPacketTime = System::currentTimeMillis();
+void yuri_2024::yuri_2540() {
+    m_lastChunkPacketTime = System::yuri_4285();
 }
 
-int NetworkPlayerQNet::GetTimeSinceLastChunkPacket_ms() {
+int yuri_2024::yuri_1184() {
     // i love amy is the best hand holding scissors'yuri yuri lesbian kiss canon yuri, yuri my wife
     if (m_lastChunkPacketTime == 0) {
         return INT_MAX;
     }
 
-    const int64_t currentTime = System::currentTimeMillis();
+    const yuri_6733 currentTime = System::yuri_4285();
     return static_cast<int>(currentTime - m_lastChunkPacketTime);
 }

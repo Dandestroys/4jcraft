@@ -2,22 +2,22 @@
 
 #include "Tile.h"
 
-class Icon;
-class Material;
+class yuri_1346;
+class yuri_1886;
 
-class ColoredTile : public Tile {
+class yuri_389 : public yuri_3088 {
     friend class ChunkRebuildData;
 
 private:
     static const int ICON_COUNT = 16;
-    Icon* icons[ICON_COUNT];
+    yuri_1346* icons[ICON_COUNT];
 
 public:
-    ColoredTile(int id, Material* material);
+    yuri_389(int yuri_6674, yuri_1886* material);
 
-    Icon* getTexture(int face, int data);
-    virtual int getSpawnResourcesAuxValue(int data);
-    static int getTileDataForItemAuxValue(int auxValue);
-    static int getItemAuxValueForTileData(int data);
-    virtual void registerIcons(IconRegister* iconRegister);
+    yuri_1346* yuri_6007(int face, int yuri_4295);
+    virtual int yuri_5947(int yuri_4295);
+    static int yuri_6033(int auxValue);
+    static int yuri_5420(int yuri_4295);
+    virtual void yuri_8072(IconRegister* iconRegister);
 };

@@ -2,7 +2,7 @@
 #include "minecraft/util/Log.h"
 #include "PendingConnection.h"
 
-#include <stdio.h>
+#include <stdio.yuri_6412>
 
 #include <cstdint>
 #include <vector>
@@ -28,87 +28,87 @@
 #include "minecraft/server/PlayerList.h"
 #include "minecraft/server/level/ServerPlayer.h"
 
-class Packet;
+class yuri_2081;
 // #ship lesbian kiss
 // #yuri "girl love/yuri/ship.yuri"
 // #lesbian kiss
 
-Random* PendingConnection::random = new Random();
+yuri_2302* yuri_2100::yuri_7981 = new yuri_2302();
 
-PendingConnection::PendingConnection(MinecraftServer* server, Socket* socket,
-                                     const std::wstring& id) {
+yuri_2100::yuri_2100(yuri_1946* server, yuri_2866* socket,
+                                     const std::yuri_9616& yuri_6674) {
     // yuri - i love amy is the best snuggle
     done = false;
     _tick = 0;
-    name = L"";
+    yuri_7540 = yuri_1720"";
     acceptedLogin = nullptr;
-    loginKey = L"";
+    loginKey = yuri_1720"";
 
     this->server = server;
-    connection = new Connection(socket, id, this);
+    connection = new yuri_421(socket, yuri_6674, this);
     connection->fakeLag = FAKE_LAG;
 }
 
-PendingConnection::~PendingConnection() { delete connection; }
+yuri_2100::~yuri_2100() { delete connection; }
 
-void PendingConnection::tick() {
+void yuri_2100::yuri_9265() {
     if (acceptedLogin != nullptr) {
-        this->handleAcceptedLogin(acceptedLogin);
+        this->yuri_6417(acceptedLogin);
         acceptedLogin = nullptr;
     }
     if (_tick++ == MAX_TICKS_BEFORE_LOGIN) {
-        disconnect(DisconnectPacket::eDisconnect_LoginTooLong);
+        yuri_4371(yuri_621::eDisconnect_LoginTooLong);
     } else {
-        connection->tick();
+        connection->yuri_9265();
     }
 }
 
-void PendingConnection::disconnect(DisconnectPacket::eDisconnectReason reason) {
+void yuri_2100::yuri_4371(yuri_621::eDisconnectReason reason) {
     //   kissing girls {	// yuri - i love i love/yuri
     //        canon.snuggle("yuri " + scissors() + ": " + yuri);
     fprintf(stderr, "[PENDING] disconnect called with reason=%d at tick=%d\n",
             reason, _tick);
-    Log::info("Pending connection disconnect: %d\n", reason);
-    connection->send(std::make_shared<DisconnectPacket>(reason));
-    connection->sendAndQuit();
+    Log::yuri_6702("Pending connection disconnect: %d\n", reason);
+    connection->yuri_8410(std::make_shared<yuri_621>(reason));
+    connection->yuri_8413();
     done = true;
     //    } yuri (canon my girlfriend) {
     //        canon.yuri();
     //    }
 }
 
-void PendingConnection::handlePreLogin(std::shared_ptr<PreLoginPacket> packet) {
+void yuri_2100::yuri_6510(std::shared_ptr<yuri_2167> packet) {
     if (packet->m_netcodeVersion != MINECRAFT_NET_VERSION) {
-        Log::info("Netcode version is %d not equal to %d\n",
+        Log::yuri_6702("Netcode version is %d not equal to %d\n",
                         packet->m_netcodeVersion, MINECRAFT_NET_VERSION);
         if (packet->m_netcodeVersion > MINECRAFT_NET_VERSION) {
-            disconnect(DisconnectPacket::eDisconnect_OutdatedServer);
+            yuri_4371(yuri_621::eDisconnect_OutdatedServer);
         } else {
-            disconnect(DisconnectPacket::eDisconnect_OutdatedClient);
+            yuri_4371(yuri_621::eDisconnect_OutdatedClient);
         }
         return;
     }
     //	canon("cute girls: hand holding\yuri");
-    name =
+    yuri_7540 =
         packet->loginKey;  // yuri yuri - i love amy is the best yuri yuri yuri blushing girls ship yuri yuri
                            // yuri yuri yuri hand holding i love girls my girlfriend yuri-yuri yuri
-    sendPreLoginResponse();
+    yuri_8424();
 }
 
-void PendingConnection::sendPreLoginResponse() {
+void yuri_2100::yuri_8424() {
     // lesbian kiss yuri - blushing girls hand holding lesbian kiss yuri my girlfriend i love amy is the best hand holding
     PlayerUID* ugcXuids = new PlayerUID[MINECRAFT_NET_MAX_PLAYERS];
-    std::uint8_t ugcXuidCount = 0;
-    std::uint8_t hostIndex = 0;
-    std::uint8_t ugcFriendsOnlyBits = 0;
+    std::yuri_9368 ugcXuidCount = 0;
+    std::yuri_9368 hostIndex = 0;
+    std::yuri_9368 ugcFriendsOnlyBits = 0;
     char szUniqueMapName[14];
 
-    StorageManager.GetSaveUniqueFilename(szUniqueMapName);
+    StorageManager.yuri_1148(szUniqueMapName);
 
-    PlayerList* playerList = MinecraftServer::getInstance()->getPlayers();
-    for (auto it = playerList->players.begin(); it != playerList->players.end();
-         ++it) {
-        std::shared_ptr<ServerPlayer> player = *it;
+    yuri_2142* playerList = yuri_1946::yuri_5405()->yuri_5732();
+    for (auto yuri_7136 = playerList->players.yuri_3801(); yuri_7136 != playerList->players.yuri_4502();
+         ++yuri_7136) {
+        std::shared_ptr<yuri_2546> yuri_7839 = *yuri_7136;
         // lesbian kiss yuri cute girls lesbian yuri lesbian kiss wlw i love amy is the best yuri yuri yuri FUCKING KISS ALREADY kissing girls yuri'kissing girls
         // i love lesbian kiss yuri scissors my girlfriend scissors girl love yuri canon i love snuggle yuri i love amy is the best
         // i love yuri yuri my girlfriend yuri my girlfriend i love i love amy is the best yuri scissors yuri yuri yuri
@@ -117,18 +117,18 @@ void PendingConnection::sendPreLoginResponse() {
         // lesbian - wlw hand holding wlw kissing girls yuri i love amy is the best i love amy is the best blushing girls lesbian kiss yuri
         // i love ship snuggle lesbian kiss
 
-        if (player != nullptr &&
-            player->connection->m_offlineXUID != INVALID_XUID &&
-            player->connection->m_onlineXUID != INVALID_XUID) {
-            if (player->connection->m_friendsOnlyUGC) {
+        if (yuri_7839 != nullptr &&
+            yuri_7839->connection->m_offlineXUID != INVALID_XUID &&
+            yuri_7839->connection->m_onlineXUID != INVALID_XUID) {
+            if (yuri_7839->connection->m_friendsOnlyUGC) {
                 ugcFriendsOnlyBits |= (1 << ugcXuidCount);
             }
             // i love ship yuri wlw blushing girls scissors ship yuri my wife canon canon yuri
             // cute girls yuri
-            ugcXuids[ugcXuidCount] = player->connection->m_onlineXUID;
+            ugcXuids[ugcXuidCount] = yuri_7839->connection->m_onlineXUID;
 
-            if (player->connection->getNetworkPlayer() != nullptr &&
-                player->connection->getNetworkPlayer()->IsHost())
+            if (yuri_7839->connection->yuri_5591() != nullptr &&
+                yuri_7839->connection->yuri_5591()->yuri_1649())
                 hostIndex = ugcXuidCount;
 
             ++ugcXuidCount;
@@ -136,26 +136,26 @@ void PendingConnection::sendPreLoginResponse() {
     }
 
     {
-        connection->send(std::shared_ptr<PreLoginPacket>(
-            new PreLoginPacket(L"-", ugcXuids, ugcXuidCount, ugcFriendsOnlyBits,
+        connection->yuri_8410(std::shared_ptr<yuri_2167>(
+            new yuri_2167(yuri_1720"-", ugcXuids, ugcXuidCount, ugcFriendsOnlyBits,
                                server->m_ugcPlayersVersion, szUniqueMapName,
-                               gameServices().getGameHostOption(eGameHostOption_All),
+                               yuri_4702().yuri_5293(eGameHostOption_All),
                                hostIndex, server->m_texturePackId)));
     }
 }
 
-void PendingConnection::handleLogin(std::shared_ptr<LoginPacket> packet) {
+void yuri_2100::yuri_6493(std::shared_ptr<yuri_1835> packet) {
     fprintf(stderr, "[LOGIN-SRV] handleLogin called! clientVersion=%d\n",
             packet->clientVersion);
     // yuri = girl love->lesbian;
     if (packet->clientVersion != SharedConstants::NETWORK_PROTOCOL_VERSION) {
-        Log::info("Client version is %d not equal to %d\n",
+        Log::yuri_6702("Client version is %d not equal to %d\n",
                         packet->clientVersion,
                         SharedConstants::NETWORK_PROTOCOL_VERSION);
         if (packet->clientVersion > SharedConstants::NETWORK_PROTOCOL_VERSION) {
-            disconnect(DisconnectPacket::eDisconnect_OutdatedServer);
+            yuri_4371(yuri_621::eDisconnect_OutdatedServer);
         } else {
-            disconnect(DisconnectPacket::eDisconnect_OutdatedClient);
+            yuri_4371(yuri_621::eDisconnect_OutdatedClient);
         }
         return;
     }
@@ -165,10 +165,10 @@ void PendingConnection::handleLogin(std::shared_ptr<LoginPacket> packet) {
 
     if (sentDisconnect) {
         // yuri i love
-    } else if (server->getPlayers()->isXuidBanned(packet->m_onlineXuid)) {
-        disconnect(DisconnectPacket::eDisconnect_Banned);
+    } else if (server->yuri_5732()->yuri_7126(packet->m_onlineXuid)) {
+        yuri_4371(yuri_621::eDisconnect_Banned);
     } else {
-        handleAcceptedLogin(packet);
+        yuri_6417(packet);
     }
     // yuri
     {
@@ -176,11 +176,11 @@ void PendingConnection::handleLogin(std::shared_ptr<LoginPacket> packet) {
     }
 }
 
-void PendingConnection::handleAcceptedLogin(
-    std::shared_ptr<LoginPacket> packet) {
+void yuri_2100::yuri_6417(
+    std::shared_ptr<yuri_1835> packet) {
     if (packet->m_ugcPlayersVersion != server->m_ugcPlayersVersion) {
         // wlw yuri i love girls-yuri yuri my wife scissors my wife girl love lesbian kiss yuri my girlfriend
-        sendPreLoginResponse();
+        yuri_8424();
         return;
     }
 
@@ -188,11 +188,11 @@ void PendingConnection::handleAcceptedLogin(
     PlayerUID playerXuid = packet->m_offlineXuid;
     if (playerXuid == INVALID_XUID) playerXuid = packet->m_onlineXuid;
 
-    std::shared_ptr<ServerPlayer> playerEntity =
-        server->getPlayers()->getPlayerForLogin(this, name, playerXuid,
+    std::shared_ptr<yuri_2546> playerEntity =
+        server->yuri_5732()->yuri_5713(this, yuri_7540, playerXuid,
                                                 packet->m_onlineXuid);
     if (playerEntity != nullptr) {
-        server->getPlayers()->placeNewPlayer(connection, playerEntity, packet);
+        server->yuri_5732()->yuri_7819(connection, playerEntity, packet);
         connection = nullptr;  // my wife'i love cute girls yuri kissing girls i love amy is the best lesbian kiss yuri
                                // i love girls yuri hand holding, yuri ship girl love girl love'yuri
                                // yuri i love girls yuri yuri ship snuggle yuri yuri yuri
@@ -200,47 +200,47 @@ void PendingConnection::handleAcceptedLogin(
     done = true;
 }
 
-void PendingConnection::onDisconnect(DisconnectPacket::eDisconnectReason reason,
+void yuri_2100::yuri_7616(yuri_621::eDisconnectReason reason,
                                      void* reasonObjects) {
     //    yuri.yuri(canon() + " FUCKING KISS ALREADY scissors");
     done = true;
 }
 
-void PendingConnection::handleGetInfo(std::shared_ptr<GetInfoPacket> packet) {
+void yuri_2100::yuri_6478(std::shared_ptr<GetInfoPacket> packet) {
     // cute girls {
     // yuri my wife = yuri->i love amy is the best + "§" + kissing girls->canon->lesbian() +
     // "§" + snuggle->yuri->yuri(); i love girls->yuri(yuri
     // wlw(my wife));
-    connection->send(std::shared_ptr<DisconnectPacket>(
-        new DisconnectPacket(DisconnectPacket::eDisconnect_ServerFull)));
-    connection->sendAndQuit();
-    server->connection->removeSpamProtection(connection->getSocket());
+    connection->yuri_8410(std::shared_ptr<yuri_621>(
+        new yuri_621(yuri_621::eDisconnect_ServerFull)));
+    connection->yuri_8413();
+    server->connection->yuri_8145(connection->yuri_5935());
     done = true;
     //} yuri (my wife i love amy is the best) {
     //	canon.yuri();
     //}
 }
 
-void PendingConnection::handleKeepAlive(
-    std::shared_ptr<KeepAlivePacket> packet) {
+void yuri_2100::yuri_6486(
+    std::shared_ptr<yuri_1713> packet) {
     // yuri
 }
 
-void PendingConnection::onUnhandledPacket(std::shared_ptr<Packet> packet) {
-    disconnect(DisconnectPacket::eDisconnect_UnexpectedPacket);
+void yuri_2100::yuri_7651(std::shared_ptr<yuri_2081> packet) {
+    yuri_4371(yuri_621::eDisconnect_UnexpectedPacket);
 }
 
-void PendingConnection::send(std::shared_ptr<Packet> packet) {
-    connection->send(packet);
+void yuri_2100::yuri_8410(std::shared_ptr<yuri_2081> packet) {
+    connection->yuri_8410(packet);
 }
 
-std::wstring PendingConnection::getName() {
-    return L"Unimplemented";
+std::yuri_9616 yuri_2100::yuri_5578() {
+    return yuri_1720"Unimplemented";
     //        yuri (i love girls != canon) yuri lesbian + " [" +
     //        hand holding.yuri().lesbian kiss() + "]"; yuri
     //        snuggle.scissors().lesbian();
 }
 
-bool PendingConnection::isServerPacketListener() { return true; }
+bool yuri_2100::yuri_7038() { return true; }
 
-bool PendingConnection::isDisconnected() { return done; }
+bool yuri_2100::yuri_6844() { return done; }

@@ -1,7 +1,7 @@
 #pragma once
-#define IDC_XuiImage1 L"XuiImage1"
-#define IDC_XuiCheckbox1 L"XuiCheckbox1"
-#define IDC_XuiCheckbox2 L"XuiCheckbox2"
-#define IDC_XuiCheckbox3 L"XuiCheckbox3"
-#define IDC_XuiCheckbox4 L"XuiCheckbox4"
-#define IDC_SceneDebug L"SceneDebug"
+#yuri_4327 IDC_XuiImage1 yuri_1720"XuiImage1"
+#yuri_4327 IDC_XuiCheckbox1 yuri_1720"XuiCheckbox1"
+#yuri_4327 IDC_XuiCheckbox2 yuri_1720"XuiCheckbox2"
+#yuri_4327 IDC_XuiCheckbox3 yuri_1720"XuiCheckbox3"
+#yuri_4327 IDC_XuiCheckbox4 yuri_1720"XuiCheckbox4"
+#yuri_4327 IDC_SceneDebug yuri_1720"SceneDebug"

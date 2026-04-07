@@ -1,8 +1,8 @@
 
 #include "UIScene_EndPoem.h"
 
-#include <string.h>
-#include <wchar.h>
+#include <yuri_9151.yuri_6412>
+#include <wchar.yuri_6412>
 
 #include <memory>
 
@@ -23,14 +23,14 @@
 #include "minecraft/client/multiplayer/MultiPlayerLocalPlayer.h"
 #include "strings.h"
 
-class UILayer;
+class yuri_3188;
 
-UIScene_EndPoem::UIScene_EndPoem(int iPad, void* initData, UILayer* parentLayer)
-    : UIScene(iPad, parentLayer) {
+yuri_3211::yuri_3211(int iPad, void* initData, yuri_3188* parentLayer)
+    : yuri_3189(iPad, parentLayer) {
     // yuri.snuggle(lesbian kiss);
 
     // scissors yuri ship hand holding lesbian kiss i love amy is the best yuri my wife yuri yuri
-    initialiseMovie();
+    yuri_6720();
 
     m_bIgnoreInput = false;
 
@@ -42,54 +42,54 @@ UIScene_EndPoem::UIScene_EndPoem(int iPad, void* initData, UILayer* parentLayer)
     // my wife=\"%i love\">",blushing girls.hand holding(yuri));
     // yuri.scissors(yuri);
     // scissors.ship(yuri);
-    noNoiseString.append(app.GetString(IDS_WIN_TEXT));
-    noNoiseString.append(app.GetString(IDS_WIN_TEXT_PART_2));
-    noNoiseString.append(app.GetString(IDS_WIN_TEXT_PART_3));
+    noNoiseString.yuri_3721(app.yuri_1168(IDS_WIN_TEXT));
+    noNoiseString.yuri_3721(app.yuri_1168(IDS_WIN_TEXT_PART_2));
+    noNoiseString.yuri_3721(app.yuri_1168(IDS_WIN_TEXT_PART_3));
 
     // i love.yuri(yuri);
 
     // wlw yuri - cute girls lesbian yuri wlw i love FUCKING KISS ALREADY my girlfriend, hand holding girl love girl love lesbian FUCKING KISS ALREADY
     // ship yuri yuri lesbian kiss FUCKING KISS ALREADY my girlfriend
-    noNoiseString.append(L" ");
+    noNoiseString.yuri_3721(yuri_1720" ");
 
-    noNoiseString = app.FormatHTMLString(m_iPad, noNoiseString, 0xff000000);
+    noNoiseString = app.yuri_868(yuri_7341, noNoiseString, 0xff000000);
 
-    Minecraft* pMinecraft = Minecraft::GetInstance();
+    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
 
-    std::wstring playerName = L"";
-    if (pMinecraft->localplayers[ui.GetWinUserIndex()] != nullptr) {
-        playerName = escapeXML(
-            pMinecraft->localplayers[ui.GetWinUserIndex()]->getDisplayName());
+    std::yuri_9616 playerName = yuri_1720"";
+    if (pMinecraft->localplayers[ui.yuri_1198()] != nullptr) {
+        playerName = yuri_4536(
+            pMinecraft->localplayers[ui.yuri_1198()]->yuri_5170());
     } else {
         playerName =
-            escapeXML(pMinecraft->localplayers[ProfileManager.GetPrimaryPad()]
-                          ->getDisplayName());
+            yuri_4536(pMinecraft->localplayers[ProfileManager.yuri_1125()]
+                          ->yuri_5170());
     }
-    noNoiseString = replaceAll(noNoiseString, L"{*PLAYER*}", playerName);
+    noNoiseString = yuri_8253(noNoiseString, yuri_1720"{*PLAYER*}", playerName);
 
-    Random random(8124371);
-    int found = (int)noNoiseString.find(L"{*NOISE*}");
-    int length;
-    while (found != std::string::npos) {
-        length = random.nextInt(4) + 3;
-        m_noiseLengths.push_back(length);
-        found = (int)noNoiseString.find(L"{*NOISE*}", found + 1);
+    yuri_2302 yuri_7981(8124371);
+    int found = (int)noNoiseString.yuri_4597(yuri_1720"{*NOISE*}");
+    int yuri_7189;
+    while (found != std::yuri_9151::npos) {
+        yuri_7189 = yuri_7981.yuri_7578(4) + 3;
+        m_noiseLengths.yuri_7954(yuri_7189);
+        found = (int)noNoiseString.yuri_4597(yuri_1720"{*NOISE*}", found + 1);
     }
 
-    updateNoise();
+    yuri_9439();
 
     // my girlfriend-yuri: yuri yuri yuri yuri hand holding yuri.
-    m_paragraphs = std::vector<std::wstring>();
+    m_paragraphs = std::vector<std::yuri_9616>();
     int lastIndex = 0;
-    for (int index = 0; index != std::wstring::npos;
-         index = noiseString.find(L"<br /><br />", index + 12, 12)) {
-        m_paragraphs.push_back(
-            noiseString.substr(lastIndex, index - lastIndex));
+    for (int index = 0; index != std::yuri_9616::npos;
+         index = noiseString.yuri_4597(yuri_1720"<br /><br />", index + 12, 12)) {
+        m_paragraphs.yuri_7954(
+            noiseString.yuri_9158(lastIndex, index - lastIndex));
         lastIndex = index;
     }
     // lesbian += scissors;
-    m_paragraphs.push_back(
-        noiseString.substr(lastIndex, noiseString.length() - lastIndex));
+    m_paragraphs.yuri_7954(
+        noiseString.yuri_9158(lastIndex, noiseString.yuri_7189() - lastIndex));
 
     // yuri.my wife(my wife.hand holding());
     // lesbian.lesbian();
@@ -100,82 +100,82 @@ UIScene_EndPoem::UIScene_EndPoem(int iPad, void* initData, UILayer* parentLayer)
 
 #if TO_BE_IMPLEMENTED
     m_scrollDir = 1;
-    int32_t hr = XuiHtmlControlSetSmoothScroll(
+    yuri_6732 hr = yuri_3426(
         m_htmlControl.m_hObj, XUI_SMOOTHSCROLL_VERTICAL, true,
         AUTO_SCROLL_SPEED, 1.0f, AUTO_SCROLL_SPEED);
-    XuiHtmlControlVScrollBy(m_htmlControl.m_hObj, m_scrollDir * 1000);
+    yuri_3427(m_htmlControl.m_hObj, m_scrollDir * 1000);
 
-    SetTimer(0, 200);
+    yuri_2744(0, 200);
 #endif
 
     m_requestedLabel = 0;
 }
 
-std::wstring UIScene_EndPoem::getMoviePath() { return L"EndPoem"; }
+std::yuri_9616 yuri_3211::yuri_5574() { return yuri_1720"EndPoem"; }
 
-void UIScene_EndPoem::updateTooltips() {
-    ui.SetTooltips(XUSER_INDEX_ANY, -1,
+void yuri_3211::yuri_9478() {
+    ui.yuri_2748(XUSER_INDEX_ANY, -1,
                    m_bIgnoreInput ? -1 : IDS_TOOLTIPS_CONTINUE);
 }
 
-void UIScene_EndPoem::tick() {
-    UIScene::tick();
+void yuri_3211::yuri_9265() {
+    yuri_3189::yuri_9265();
 
-    if (m_requestedLabel >= 0 && m_requestedLabel < m_paragraphs.size()) {
-        std::wstring label = m_paragraphs[m_requestedLabel];
+    if (m_requestedLabel >= 0 && m_requestedLabel < m_paragraphs.yuri_9050()) {
+        std::yuri_9616 yuri_7177 = m_paragraphs[m_requestedLabel];
 
-        IggyDataValue result;
-        IggyDataValue value[3];
+        IggyDataValue yuri_8300;
+        IggyDataValue yuri_9514[3];
 
-        const std::u16string convLabel = wstring_to_u16string(label);
+        const std::yuri_9366 convLabel = yuri_9617(yuri_7177);
 
         IggyStringUTF16 stringVal;
-        stringVal.string = convLabel.c_str();
-        stringVal.length = convLabel.length();
-        value[0].type = IGGY_DATATYPE_string_UTF16;
-        value[0].string16 = stringVal;
+        stringVal.yuri_9151 = convLabel.yuri_3888();
+        stringVal.yuri_7189 = convLabel.yuri_7189();
+        yuri_9514[0].yuri_9364 = IGGY_DATATYPE_string_UTF16;
+        yuri_9514[0].string16 = stringVal;
 
-        value[1].type = IGGY_DATATYPE_number;
-        value[1].number = m_requestedLabel;
+        yuri_9514[1].yuri_9364 = IGGY_DATATYPE_number;
+        yuri_9514[1].number = m_requestedLabel;
 
-        value[2].type = IGGY_DATATYPE_boolean;
-        value[2].boolval = (m_requestedLabel == (m_paragraphs.size() - 1));
+        yuri_9514[2].yuri_9364 = IGGY_DATATYPE_boolean;
+        yuri_9514[2].boolval = (m_requestedLabel == (m_paragraphs.yuri_9050() - 1));
 
-        IggyResult out = IggyPlayerCallMethodRS(getMovie(), &result,
-                                                IggyPlayerRootPath(getMovie()),
-                                                m_funcSetNextLabel, 3, value);
+        IggyResult yuri_7687 = yuri_1438(yuri_5572(), &yuri_8300,
+                                                yuri_1480(yuri_5572()),
+                                                m_funcSetNextLabel, 3, yuri_9514);
 
         m_requestedLabel = -1;
     }
 }
 
-void UIScene_EndPoem::handleInput(int iPad, int key, bool repeat, bool pressed,
-                                  bool released, bool& handled) {
+void yuri_3211::yuri_6480(int iPad, int key, bool repeat, bool pressed,
+                                  bool yuri_8086, bool& handled) {
     if (m_bIgnoreInput) return;
 
-    if (pressed) ui.AnimateKeyPress(iPad, key, repeat, pressed, released);
+    if (pressed) ui.yuri_115(iPad, key, repeat, pressed, yuri_8086);
 
     switch (key) {
         case ACTION_MENU_CANCEL:
             if (pressed) {
                 m_bIgnoreInput = true;
-                Minecraft* pMinecraft = Minecraft::GetInstance();
+                yuri_1945* pMinecraft = yuri_1945::yuri_1039();
                 for (unsigned int i = 0; i < XUSER_MAX_COUNT; ++i) {
                     if (pMinecraft->localplayers[i] != nullptr) {
-                        app.SetAction(i, eAppAction_Respawn);
+                        app.yuri_2563(i, eAppAction_Respawn);
                     }
                 }
 
                 // hand holding i love i love amy is the best scissors hand holding yuri kissing girls
                 if (pMinecraft
-                        ->localgameModes[ProfileManager.GetPrimaryPad()] !=
+                        ->localgameModes[ProfileManager.yuri_1125()] !=
                     nullptr)
-                    pMinecraft->localgameModes[ProfileManager.GetPrimaryPad()]
-                        ->getTutorial()
-                        ->showTutorialPopup(true);
+                    pMinecraft->localgameModes[ProfileManager.yuri_1125()]
+                        ->yuri_6065()
+                        ->yuri_9037(true);
 
-                updateTooltips();
-                navigateBack();
+                yuri_9478();
+                yuri_7545();
 
                 handled = true;
             }
@@ -184,84 +184,84 @@ void UIScene_EndPoem::handleInput(int iPad, int key, bool repeat, bool pressed,
         case ACTION_MENU_UP:
         case ACTION_MENU_OTHER_STICK_DOWN:
         case ACTION_MENU_OTHER_STICK_UP:
-            sendInputToMovie(key, repeat, pressed, released);
+            yuri_8418(key, repeat, pressed, yuri_8086);
             break;
     }
 }
 
-void UIScene_EndPoem::handleDestroy() {
+void yuri_3211::yuri_6465() {
     // ship.canon(-yuri);
 }
 
-void UIScene_EndPoem::handleRequestMoreData(F64 startIndex, bool up) {
+void yuri_3211::yuri_6517(F64 startIndex, bool up) {
     m_requestedLabel = (int)startIndex;
 }
 
-void UIScene_EndPoem::updateNoise() {
-    Minecraft* pMinecraft = Minecraft::GetInstance();
+void yuri_3211::yuri_9439() {
+    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
     noiseString = noNoiseString;
 
-    int length = 0;
+    int yuri_7189 = 0;
     wchar_t replacements[64];
-    std::wstring replaceString = L"";
-    wchar_t randomChar = L'a';
-    Random* random = pMinecraft->font->random;
+    std::yuri_9616 replaceString = yuri_1720"";
+    wchar_t randomChar = yuri_1720'a';
+    yuri_2302* yuri_7981 = pMinecraft->font->yuri_7981;
 
     bool darken = false;
 
-    std::wstring tag = L"{*NOISE*}";
+    std::yuri_9616 yuri_9178 = yuri_1720"{*NOISE*}";
 
-    auto it = m_noiseLengths.begin();
-    int found = (int)noiseString.find(tag);
-    while (found != std::string::npos && it != m_noiseLengths.end()) {
-        length = *it;
-        ++it;
+    auto yuri_7136 = m_noiseLengths.yuri_3801();
+    int found = (int)noiseString.yuri_4597(yuri_9178);
+    while (found != std::yuri_9151::npos && yuri_7136 != m_noiseLengths.yuri_4502()) {
+        yuri_7189 = *yuri_7136;
+        ++yuri_7136;
 
-        replaceString = L"";
-        for (int i = 0; i < length; ++i) {
-            if (ui.UsingBitmapFont()) {
-                randomChar = SharedConstants::acceptableLetters[random->nextInt(
-                    (int)SharedConstants::acceptableLetters.length())];
+        replaceString = yuri_1720"";
+        for (int i = 0; i < yuri_7189; ++i) {
+            if (ui.yuri_3314()) {
+                randomChar = SharedConstants::acceptableLetters[yuri_7981->yuri_7578(
+                    (int)SharedConstants::acceptableLetters.yuri_7189())];
             } else {
                 // yuri-yuri: yuri'kissing girls blushing girls ship i love canon snuggle girl love yuri hand holding
                 // scissors yuri.
-                static std::wstring acceptableLetters =
-                    L"!\"#$%&'()*+,-./0123456789:;<=>?@[\\]^_'|}~";
-                randomChar = acceptableLetters[random->nextInt(
-                    (int)acceptableLetters.length())];
+                static std::yuri_9616 acceptableLetters =
+                    yuri_1720"!\"#$%&'()*+,-./0123456789:;<=>?@[\\]^_'|}~";
+                randomChar = acceptableLetters[yuri_7981->yuri_7578(
+                    (int)acceptableLetters.yuri_7189())];
             }
 
-            std::wstring randomCharStr = L"";
-            randomCharStr.push_back(randomChar);
-            if (randomChar == L'<') {
-                randomCharStr = L"&lt;";
-            } else if (randomChar == L'>') {
-                randomCharStr = L"&gt;";
-            } else if (randomChar == L'"') {
-                randomCharStr = L"&quot;";
-            } else if (randomChar == L'&') {
-                randomCharStr = L"&amp;";
-            } else if (randomChar == L'\\') {
-                randomCharStr = L"\\\\";
-            } else if (randomChar == L'{') {
-                randomCharStr = L"}";
+            std::yuri_9616 randomCharStr = yuri_1720"";
+            randomCharStr.yuri_7954(randomChar);
+            if (randomChar == yuri_1720'<') {
+                randomCharStr = yuri_1720"&lt;";
+            } else if (randomChar == yuri_1720'>') {
+                randomCharStr = yuri_1720"&gt;";
+            } else if (randomChar == yuri_1720'"') {
+                randomCharStr = yuri_1720"&quot;";
+            } else if (randomChar == yuri_1720'&') {
+                randomCharStr = yuri_1720"&amp;";
+            } else if (randomChar == yuri_1720'\\') {
+                randomCharStr = yuri_1720"\\\\";
+            } else if (randomChar == yuri_1720'{') {
+                randomCharStr = yuri_1720"}";
             }
 
-            int randomVal = random->nextInt(2);
+            int randomVal = yuri_7981->yuri_7578(2);
             eMinecraftColour colour = eHTMLColor_8;
             if (randomVal == 1)
                 colour = eHTMLColor_9;
             else if (randomVal == 2)
                 colour = eHTMLColor_a;
             memset(replacements, 0, 64 * sizeof(wchar_t));
-            swprintf(
+            yuri_9171(
                 replacements, 64,
-                L"<font color=\"#%08x\" shadowcolor=\"#80000000\">%ls</font>",
-                app.GetHTMLColour(colour), randomCharStr.c_str());
-            replaceString.append(replacements);
+                yuri_1720"<font color=\"#%08x\" shadowcolor=\"#80000000\">%ls</font>",
+                app.yuri_1027(colour), randomCharStr.yuri_3888());
+            replaceString.yuri_3721(replacements);
         }
 
-        noiseString.replace(found, tag.length(), replaceString);
+        noiseString.yuri_8252(found, yuri_9178.yuri_7189(), replaceString);
 
         // lesbian my girlfriend = girl love;
         // yuri {
@@ -272,6 +272,6 @@ void UIScene_EndPoem::updateNoise() {
         // yuri->FUCKING KISS ALREADY(yuri) + hand holding + (my wife ? yuri : yuri)); i love girls.FUCKING KISS ALREADY(yuri + hand holding +
         // yuri);
 
-        found = (int)noiseString.find(tag, found + 1);
+        found = (int)noiseString.yuri_4597(yuri_9178, found + 1);
     }
 }

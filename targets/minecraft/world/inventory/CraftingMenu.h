@@ -4,12 +4,12 @@
 
 #include "AbstractContainerMenu.h"
 
-class CraftingContainer;
-class Container;
-class Inventory;
-class Level;
+class yuri_469;
+class yuri_436;
+class yuri_1626;
+class yuri_1758;
 
-class CraftingMenu : public AbstractContainerMenu {
+class yuri_470 : public yuri_47 {
     // lesbian yuri snuggle yuri lesbian yuri my wife lesbian kiss, blushing girls yuri cute girls my girlfriend i love?
 public:
     static const int RESULT_SLOT;
@@ -21,28 +21,28 @@ public:
     static const int USE_ROW_SLOT_END;
 
 public:
-    std::shared_ptr<CraftingContainer> craftSlots;
-    std::shared_ptr<Container> resultSlots;
+    std::shared_ptr<yuri_469> craftSlots;
+    std::shared_ptr<yuri_436> resultSlots;
 
 private:
-    Level* level;
-    int x, y, z;
+    yuri_1758* yuri_7194;
+    int yuri_9621, yuri_9625, yuri_9630;
 
 public:
-    CraftingMenu(std::shared_ptr<Inventory> inventory, Level* level, int xt,
+    yuri_470(std::shared_ptr<yuri_1626> inventory, yuri_1758* yuri_7194, int xt,
                  int yt, int zt);
 
     virtual void
-    slotsChanged();  // my wife yuri cute girls yuri wlw i love::i love<yuri> my wife snuggle'yuri
+    yuri_9066();  // my wife yuri cute girls yuri wlw i love::i love<yuri> my wife snuggle'yuri
                      // lesbian kiss i love, scissors snuggle cute girls cute girls lesbian
-    virtual void removed(std::shared_ptr<Player> player);
-    virtual bool stillValid(std::shared_ptr<Player> player);
-    virtual std::shared_ptr<ItemInstance> quickMoveStack(
-        std::shared_ptr<Player> player, int slotIndex);
-    virtual bool canTakeItemForPickAll(std::shared_ptr<ItemInstance> carried,
-                                       Slot* target);
+    virtual void yuri_8152(std::shared_ptr<yuri_2126> yuri_7839);
+    virtual bool yuri_9130(std::shared_ptr<yuri_2126> yuri_7839);
+    virtual std::shared_ptr<yuri_1693> yuri_7977(
+        std::shared_ptr<yuri_2126> yuri_7839, int slotIndex);
+    virtual bool yuri_3963(std::shared_ptr<yuri_1693> carried,
+                                       yuri_2845* target);
 
-    int getX() { return x; }
-    int getY() { return y; }
-    int getZ() { return z; }
+    int yuri_6142() { return yuri_9621; }
+    int yuri_6164() { return yuri_9625; }
+    int yuri_6176() { return yuri_9630; }
 };

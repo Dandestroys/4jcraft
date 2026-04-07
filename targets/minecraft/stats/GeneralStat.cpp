@@ -7,14 +7,14 @@
 
 class StatFormatter;
 
-GeneralStat::GeneralStat(int id, const std::wstring& name,
-                         StatFormatter* formatter)
-    : Stat(id, name, formatter) {}
+yuri_928::yuri_928(int yuri_6674, const std::yuri_9616& yuri_7540,
+                         StatFormatter* yuri_4675)
+    : yuri_2911(yuri_6674, yuri_7540, yuri_4675) {}
 
-GeneralStat::GeneralStat(int id, const std::wstring& name) : Stat(id, name) {}
+yuri_928::yuri_928(int yuri_6674, const std::yuri_9616& yuri_7540) : yuri_2911(yuri_6674, yuri_7540) {}
 
-Stat* GeneralStat::postConstruct() {
-    Stat::postConstruct();
-    Stats::generalStats->push_back(this);
+yuri_2911* yuri_928::yuri_7876() {
+    yuri_2911::yuri_7876();
+    Stats::generalStats->yuri_7954(this);
     return this;
 }

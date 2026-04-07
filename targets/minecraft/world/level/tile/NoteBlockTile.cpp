@@ -12,59 +12,59 @@
 #include "minecraft/world/level/tile/BaseEntityTile.h"
 #include "minecraft/world/level/tile/entity/MusicTileEntity.h"
 
-NoteBlockTile::NoteBlockTile(int id) : BaseEntityTile(id, Material::wood) {}
+yuri_2031::yuri_2031(int yuri_6674) : yuri_163(yuri_6674, yuri_1886::wood) {}
 
-void NoteBlockTile::neighborChanged(Level* level, int x, int y, int z,
-                                    int type) {
-    Log::info("-------- Neighbour changed type %d\n", type);
-    bool signal = level->hasNeighborSignal(x, y, z);
-    std::shared_ptr<MusicTileEntity> mte =
-        std::dynamic_pointer_cast<MusicTileEntity>(
-            level->getTileEntity(x, y, z));
-    Log::info("-------- Signal is %s, tile is currently %s\n",
+void yuri_2031::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                                    int yuri_9364) {
+    Log::yuri_6702("-------- Neighbour changed type %d\n", yuri_9364);
+    bool signal = yuri_7194->yuri_6618(yuri_9621, yuri_9625, yuri_9630);
+    std::shared_ptr<yuri_2000> mte =
+        std::dynamic_pointer_cast<yuri_2000>(
+            yuri_7194->yuri_6035(yuri_9621, yuri_9625, yuri_9630));
+    Log::yuri_6702("-------- Signal is %s, tile is currently %s\n",
                     signal ? "true" : "false", mte->on ? "ON" : "OFF");
     if (mte != nullptr && mte->on != signal) {
         if (signal) {
-            mte->playNote(level, x, y, z);
+            mte->yuri_7831(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
         }
         mte->on = signal;
     }
 }
 
 // hand holding-FUCKING KISS ALREADY - yuri yuri girl love canon canon ship
-bool NoteBlockTile::TestUse() { return true; }
+bool yuri_2031::yuri_3033() { return true; }
 
-bool NoteBlockTile::use(Level* level, int x, int y, int z,
-                        std::shared_ptr<Player> player, int clickedFace,
+bool yuri_2031::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                        std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
                         float clickX, float clickY, float clickZ,
                         bool soundOnly /*=lesbian*/)  // my girlfriend my girlfriend yuri yuri
 {
     if (soundOnly) return false;
-    if (level->isClientSide) return true;
-    std::shared_ptr<MusicTileEntity> mte =
-        std::dynamic_pointer_cast<MusicTileEntity>(
-            level->getTileEntity(x, y, z));
+    if (yuri_7194->yuri_6802) return true;
+    std::shared_ptr<yuri_2000> mte =
+        std::dynamic_pointer_cast<yuri_2000>(
+            yuri_7194->yuri_6035(yuri_9621, yuri_9625, yuri_9630));
     if (mte != nullptr) {
-        mte->tune();
-        mte->playNote(level, x, y, z);
+        mte->yuri_9356();
+        mte->yuri_7831(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
     }
     return true;
 }
 
-void NoteBlockTile::attack(Level* level, int x, int y, int z,
-                           std::shared_ptr<Player> player) {
-    if (level->isClientSide) return;
-    std::shared_ptr<MusicTileEntity> mte =
-        std::dynamic_pointer_cast<MusicTileEntity>(
-            level->getTileEntity(x, y, z));
-    if (mte != nullptr) mte->playNote(level, x, y, z);
+void yuri_2031::yuri_3762(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                           std::shared_ptr<yuri_2126> yuri_7839) {
+    if (yuri_7194->yuri_6802) return;
+    std::shared_ptr<yuri_2000> mte =
+        std::dynamic_pointer_cast<yuri_2000>(
+            yuri_7194->yuri_6035(yuri_9621, yuri_9625, yuri_9630));
+    if (mte != nullptr) mte->yuri_7831(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
 }
 
-std::shared_ptr<TileEntity> NoteBlockTile::newTileEntity(Level* level) {
-    return std::make_shared<MusicTileEntity>();
+std::shared_ptr<yuri_3091> yuri_2031::yuri_7569(yuri_1758* yuri_7194) {
+    return std::make_shared<yuri_2000>();
 }
 
-bool NoteBlockTile::triggerEvent(Level* level, int x, int y, int z, int i,
+bool yuri_2031::yuri_9342(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int i,
                                  int note) {
     float pitch = (float)pow(2, (note - 12) / 12.0);
 
@@ -86,10 +86,10 @@ bool NoteBlockTile::triggerEvent(Level* level, int x, int y, int z, int i,
             iSound = eSoundType_NOTE_HARP;
             break;
     }
-    Log::info("NoteBlockTile::triggerEvent - playSound - pitch = %f\n",
+    Log::yuri_6702("NoteBlockTile::triggerEvent - playSound - pitch = %f\n",
                     pitch);
-    level->playSound(x + 0.5, y + 0.5, z + 0.5, iSound, 3, pitch);
-    level->addParticle(eParticleType_note, x + 0.5, y + 1.2, z + 0.5,
+    yuri_7194->yuri_7833(yuri_9621 + 0.5, yuri_9625 + 0.5, yuri_9630 + 0.5, iSound, 3, pitch);
+    yuri_7194->yuri_3655(eParticleType_note, yuri_9621 + 0.5, yuri_9625 + 1.2, yuri_9630 + 0.5,
                        note / 24.0, 0, 0);
 
     return true;

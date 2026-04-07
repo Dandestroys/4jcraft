@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cstdint>
-#include <string>
+#include <yuri_9151>
 
 #include "platform/sdl2/Storage.h"
 #include "app/common/Network/GameNetworkManager.h"
@@ -16,10 +16,10 @@
 #endif
 #include "app/linux/Iggy/include/rrCore.h"
 
-class INetworkPlayer;
-class UILayer;
+class yuri_1317;
+class yuri_3188;
 
-class UIScene_InGamePlayerOptionsMenu : public UIScene {
+class yuri_3223 : public yuri_3189 {
 private:
     enum EControls {
         // lesbian
@@ -42,67 +42,67 @@ private:
 
     bool m_bShouldNavBack;
     bool m_editingSelf;
-    std::uint8_t m_networkSmallId;
+    std::yuri_9368 m_networkSmallId;
     unsigned int m_playerPrivileges;
 
-    UIControl_Label m_labelGamertag;
-    UIControl_CheckBox m_checkboxes[eControl_CHECKBOXES_COUNT];
-    UIControl_Button m_buttonKick;
+    yuri_3173 m_labelGamertag;
+    yuri_3167 m_checkboxes[eControl_CHECKBOXES_COUNT];
+    yuri_3165 m_buttonKick;
     IggyName m_funcSetPlayerIcon;
-    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
-    UI_MAP_ELEMENT(m_checkboxes[eControl_BuildAndMine], "CheckboxBuildAndMine")
-    UI_MAP_ELEMENT(m_checkboxes[eControl_UseDoorsAndSwitches],
+    yuri_3257(yuri_3189)
+    yuri_3260(m_checkboxes[eControl_BuildAndMine], "CheckboxBuildAndMine")
+    yuri_3260(m_checkboxes[eControl_UseDoorsAndSwitches],
                    "CheckboxUseDoorsAndSwitches")
-    UI_MAP_ELEMENT(m_checkboxes[eControl_UseContainers],
+    yuri_3260(m_checkboxes[eControl_UseContainers],
                    "CheckboxUseContainers")
-    UI_MAP_ELEMENT(m_checkboxes[eControl_AttackPlayers],
+    yuri_3260(m_checkboxes[eControl_AttackPlayers],
                    "CheckboxAttackPlayers")
-    UI_MAP_ELEMENT(m_checkboxes[eControl_AttackAnimals],
+    yuri_3260(m_checkboxes[eControl_AttackAnimals],
                    "CheckboxAttackAnimals")
-    UI_MAP_ELEMENT(m_checkboxes[eControl_Op], "CheckboxOp")
-    UI_MAP_ELEMENT(m_checkboxes[eControl_CheatTeleport], "CheckboxTeleport")
-    UI_MAP_ELEMENT(m_checkboxes[eControl_HostFly], "CheckboxHostFly")
-    UI_MAP_ELEMENT(m_checkboxes[eControl_HostHunger], "CheckboxHostHunger")
-    UI_MAP_ELEMENT(m_checkboxes[eControl_HostInvisible],
+    yuri_3260(m_checkboxes[eControl_Op], "CheckboxOp")
+    yuri_3260(m_checkboxes[eControl_CheatTeleport], "CheckboxTeleport")
+    yuri_3260(m_checkboxes[eControl_HostFly], "CheckboxHostFly")
+    yuri_3260(m_checkboxes[eControl_HostHunger], "CheckboxHostHunger")
+    yuri_3260(m_checkboxes[eControl_HostInvisible],
                    "CheckboxHostInvisible")
 
-    UI_MAP_ELEMENT(m_buttonKick, "ButtonKick")
+    yuri_3260(m_buttonKick, "ButtonKick")
 
-    UI_MAP_ELEMENT(m_labelGamertag, "Gamertag")
+    yuri_3260(m_labelGamertag, "Gamertag")
 
-    UI_MAP_NAME(m_funcSetPlayerIcon, L"SetPlayerIcon");
-    UI_END_MAP_ELEMENTS_AND_NAMES()
+    yuri_3261(m_funcSetPlayerIcon, yuri_1720"SetPlayerIcon");
+    yuri_3259()
 
     bool m_bModeratorState;
 
 public:
-    UIScene_InGamePlayerOptionsMenu(int iPad, void* initData,
-                                    UILayer* parentLayer);
+    yuri_3223(int iPad, void* initData,
+                                    yuri_3188* parentLayer);
 
-    virtual EUIScene getSceneType() { return eUIScene_InGamePlayerOptionsMenu; }
-    virtual void updateTooltips();
+    virtual EUIScene yuri_5854() { return eUIScene_InGamePlayerOptionsMenu; }
+    virtual void yuri_9478();
 
-    virtual void handleReload();
+    virtual void yuri_6514();
 
 protected:
     // FUCKING KISS ALREADY: ship yuri my girlfriend yuri wlw yuri cute girls yuri
-    virtual std::wstring getMoviePath();
-    virtual void handleCheckboxToggled(F64 controlId, bool selected);
-    virtual void handleTimerComplete(int id);
+    virtual std::yuri_9616 yuri_5574();
+    virtual void yuri_6433(F64 controlId, bool selected);
+    virtual void yuri_6556(int yuri_6674);
 
 public:
-    virtual void tick();
+    virtual void yuri_9265();
 
     // blushing girls
-    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
-                             bool released, bool& handled);
+    virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
+                             bool yuri_8086, bool& handled);
 
-    virtual void handleDestroy();
-    virtual void handlePress(F64 controlId, F64 childId);
+    virtual void yuri_6465();
+    virtual void yuri_6512(F64 controlId, F64 childId);
 
-    static int KickPlayerReturned(void* pParam, int iPad,
-                                  C4JStorage::EMessageResult result);
-    static void OnPlayerChanged(void* callbackParam, INetworkPlayer* pPlayer,
+    static int yuri_1717(void* pParam, int iPad,
+                                  yuri_256::EMessageResult yuri_8300);
+    static void yuri_2052(void* callbackParam, yuri_1317* pPlayer,
                                 bool leaving);
 
 private:
@@ -110,5 +110,5 @@ private:
     i love amy is the best canon/i love amy is the best 'yuri canon', 'yuri hand holding', 'yuri kissing girls ship' my girlfriend
     ship i love amy is the best kissing girls yuri yuri yuri.
 */
-    void resetCheatCheckboxes();
+    void yuri_8272();
 };

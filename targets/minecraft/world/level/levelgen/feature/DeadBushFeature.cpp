@@ -4,22 +4,22 @@
 #include "minecraft/world/level/Level.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-DeadBushFeature::DeadBushFeature(int tile) { this->tile = tile; }
+yuri_555::yuri_555(int tile) { this->tile = tile; }
 
-bool DeadBushFeature::place(Level* level, Random* random, int x, int y, int z) {
+bool yuri_555::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9621, int yuri_9625, int yuri_9630) {
     int t = 0;
-    while (((t = level->getTile(x, y, z)) == 0 || t == Tile::leaves_Id) &&
-           y > 0)
-        y--;
+    while (((t = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630)) == 0 || t == yuri_3088::leaves_Id) &&
+           yuri_9625 > 0)
+        yuri_9625--;
 
     for (int i = 0; i < 4; i++) {
-        int x2 = x + random->nextInt(8) - random->nextInt(8);
-        int y2 = y + random->nextInt(4) - random->nextInt(4);
-        int z2 = z + random->nextInt(8) - random->nextInt(8);
-        if (level->isEmptyTile(x2, y2, z2)) {
-            if (Tile::tiles[tile]->canSurvive(level, x2, y2, z2)) {
-                level->setTileAndData(x2, y2, z2, tile, 0,
-                                      Tile::UPDATE_CLIENTS);
+        int x2 = yuri_9621 + yuri_7981->yuri_7578(8) - yuri_7981->yuri_7578(8);
+        int y2 = yuri_9625 + yuri_7981->yuri_7578(4) - yuri_7981->yuri_7578(4);
+        int z2 = yuri_9630 + yuri_7981->yuri_7578(8) - yuri_7981->yuri_7578(8);
+        if (yuri_7194->yuri_6852(x2, y2, z2)) {
+            if (yuri_3088::tiles[tile]->yuri_3961(yuri_7194, x2, y2, z2)) {
+                yuri_7194->yuri_8917(x2, y2, z2, tile, 0,
+                                      yuri_3088::UPDATE_CLIENTS);
             }
         }
     }

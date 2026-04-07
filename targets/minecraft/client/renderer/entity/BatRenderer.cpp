@@ -12,42 +12,42 @@
 #include "minecraft/world/entity/LivingEntity.h"
 #include "minecraft/world/entity/ambient/Bat.h"
 
-ResourceLocation BatRenderer::BAT_LOCATION = ResourceLocation(TN_MOB_BAT);
+yuri_2412 yuri_170::BAT_LOCATION = yuri_2412(TN_MOB_BAT);
 
-BatRenderer::BatRenderer() : MobRenderer(new BatModel(), 0.25f) {
-    modelVersion = ((BatModel*)model)->modelVersion();
+yuri_170::yuri_170() : yuri_1955(new yuri_169(), 0.25f) {
+    yuri_7508 = ((yuri_169*)model)->yuri_7508();
 }
 
-void BatRenderer::render(std::shared_ptr<Entity> _mob, double x, double y,
-                         double z, float rot, float a) {
-    int modelVersion = (dynamic_cast<BatModel*>(model))->modelVersion();
-    if (modelVersion != this->modelVersion) {
-        this->modelVersion = modelVersion;
-        model = new BatModel();
+void yuri_170::yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621, double yuri_9625,
+                         double yuri_9630, float rot, float yuri_3565) {
+    int yuri_7508 = (dynamic_cast<yuri_169*>(model))->yuri_7508();
+    if (yuri_7508 != this->yuri_7508) {
+        this->yuri_7508 = yuri_7508;
+        model = new yuri_169();
     }
-    MobRenderer::render(_mob, x, y, z, rot, a);
+    yuri_1955::yuri_8158(_mob, yuri_9621, yuri_9625, yuri_9630, rot, yuri_3565);
 }
 
-ResourceLocation* BatRenderer::getTextureLocation(std::shared_ptr<Entity> mob) {
+yuri_2412* yuri_170::yuri_6012(std::shared_ptr<yuri_739> mob) {
     return &BAT_LOCATION;
 }
 
-void BatRenderer::scale(std::shared_ptr<LivingEntity> mob, float a) {
-    glScalef(.35f, .35f, .35f);
+void yuri_170::yuri_8382(std::shared_ptr<yuri_1793> mob, float yuri_3565) {
+    yuri_6351(.35f, .35f, .35f);
 }
 
-void BatRenderer::setupPosition(std::shared_ptr<LivingEntity> mob, double x,
-                                double y, double z) {
-    MobRenderer::setupPosition(mob, x, y, z);
+void yuri_170::yuri_8988(std::shared_ptr<yuri_1793> mob, double yuri_9621,
+                                double yuri_9625, double yuri_9630) {
+    yuri_1955::yuri_8988(mob, yuri_9621, yuri_9625, yuri_9630);
 }
 
-void BatRenderer::setupRotations(std::shared_ptr<LivingEntity> _mob, float bob,
-                                 float bodyRot, float a) {
-    std::shared_ptr<Bat> mob = std::dynamic_pointer_cast<Bat>(_mob);
-    if (!mob->isResting()) {
-        glTranslatef(0, cos(bob * .3f) * .1f, 0);
+void yuri_170::yuri_8990(std::shared_ptr<yuri_1793> _mob, float bob,
+                                 float bodyRot, float yuri_3565) {
+    std::shared_ptr<yuri_168> mob = std::dynamic_pointer_cast<yuri_168>(_mob);
+    if (!mob->yuri_7014()) {
+        yuri_6377(0, cos(bob * .3f) * .1f, 0);
     } else {
-        glTranslatef(0, -.1f, 0);
+        yuri_6377(0, -.1f, 0);
     }
-    MobRenderer::setupRotations(mob, bob, bodyRot, a);
+    yuri_1955::yuri_8990(mob, bob, bodyRot, yuri_3565);
 }

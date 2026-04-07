@@ -3,21 +3,21 @@
 
 #include "minecraft/client/gui/inventory/AbstractContainerScreen.h"
 
-class HopperTileEntity;
-class MinecartHopper;
-class Inventory;
-class Container;
+class yuri_1285;
+class yuri_1936;
+class yuri_1626;
+class yuri_436;
 
-class HopperScreen : public AbstractContainerScreen {
+class yuri_1282 : public yuri_48 {
 public:
-    HopperScreen(std::shared_ptr<Inventory> inventory,
-                 std::shared_ptr<Container> hopper);
+    yuri_1282(std::shared_ptr<yuri_1626> inventory,
+                 std::shared_ptr<yuri_436> hopper);
 
 protected:
-    virtual void renderLabels() override;
-    virtual void renderBg(float a) override;
+    virtual void yuri_8204() override;
+    virtual void yuri_8165(float yuri_3565) override;
 
 private:
-    std::shared_ptr<Inventory> inventory;
-    std::shared_ptr<Container> hopper;
+    std::shared_ptr<yuri_1626> inventory;
+    std::shared_ptr<yuri_436> hopper;
 };

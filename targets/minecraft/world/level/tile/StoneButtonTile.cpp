@@ -4,8 +4,8 @@
 #include "minecraft/world/level/tile/ButtonTile.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-StoneButtonTile::StoneButtonTile(int id) : ButtonTile(id, false) {}
+yuri_2962::yuri_2962(int yuri_6674) : yuri_249(yuri_6674, false) {}
 
-Icon* StoneButtonTile::getTexture(int face, int data) {
-    return Tile::stone->getTexture(Facing::UP);
+yuri_1346* yuri_2962::yuri_6007(int face, int yuri_4295) {
+    return yuri_3088::stone->yuri_6007(Facing::UP);
 }

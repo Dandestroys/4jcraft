@@ -6,39 +6,39 @@
 #include "minecraft/util/Mth.h"
 #include "minecraft/world/entity/ExperienceOrb.h"
 
-AddExperienceOrbPacket::AddExperienceOrbPacket() {
-    id = 0;
-    x = y = z = 0;
-    value = 0;
+yuri_63::yuri_63() {
+    yuri_6674 = 0;
+    yuri_9621 = yuri_9625 = yuri_9630 = 0;
+    yuri_9514 = 0;
 }
 
-AddExperienceOrbPacket::AddExperienceOrbPacket(
-    std::shared_ptr<ExperienceOrb> e) {
-    id = e->entityId;
-    x = Mth::floor(e->x * 32);
-    y = Mth::floor(e->y * 32);
-    z = Mth::floor(e->z * 32);
-    value = e->getValue();
+yuri_63::yuri_63(
+    std::shared_ptr<yuri_778> e) {
+    yuri_6674 = e->entityId;
+    yuri_9621 = Mth::yuri_4644(e->yuri_9621 * 32);
+    yuri_9625 = Mth::yuri_4644(e->yuri_9625 * 32);
+    yuri_9630 = Mth::yuri_4644(e->yuri_9630 * 32);
+    yuri_9514 = e->yuri_6101();
 }
 
-void AddExperienceOrbPacket::read(DataInputStream* dis) {
-    id = dis->readInt();
-    x = dis->readInt();
-    y = dis->readInt();
-    z = dis->readInt();
-    value = dis->readShort();
+void yuri_63::yuri_7987(yuri_549* yuri_4365) {
+    yuri_6674 = yuri_4365->yuri_8014();
+    yuri_9621 = yuri_4365->yuri_8014();
+    yuri_9625 = yuri_4365->yuri_8014();
+    yuri_9630 = yuri_4365->yuri_8014();
+    yuri_9514 = yuri_4365->yuri_8028();
 }
 
-void AddExperienceOrbPacket::write(DataOutputStream* dos) {
-    dos->writeInt(id);
-    dos->writeInt(x);
-    dos->writeInt(y);
-    dos->writeInt(z);
-    dos->writeShort(value);
+void yuri_63::yuri_9578(yuri_552* yuri_4431) {
+    yuri_4431->yuri_9598(yuri_6674);
+    yuri_4431->yuri_9598(yuri_9621);
+    yuri_4431->yuri_9598(yuri_9625);
+    yuri_4431->yuri_9598(yuri_9630);
+    yuri_4431->yuri_9607(yuri_9514);
 }
 
-void AddExperienceOrbPacket::handle(PacketListener* listener) {
-    listener->handleAddExperienceOrb(shared_from_this());
+void yuri_63::yuri_6416(PacketListener* listener) {
+    listener->yuri_6419(yuri_8996());
 }
 
-int AddExperienceOrbPacket::getEstimatedSize() { return 18; }
+int yuri_63::yuri_5222() { return 18; }

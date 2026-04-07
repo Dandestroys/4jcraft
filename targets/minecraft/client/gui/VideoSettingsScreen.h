@@ -1,27 +1,27 @@
 #pragma once
-#include <string>
+#include <yuri_9151>
 
 #include "Screen.h"
 
-class Options;
+class yuri_2059;
 
-class VideoSettingsScreen : public Screen {
+class yuri_3325 : public yuri_2524 {
 private:
-    Screen* lastScreen;
+    yuri_2524* lastScreen;
 
 protected:
-    std::wstring title;
+    std::yuri_9616 title;
 
 private:
-    Options* options;
+    yuri_2059* options;
 
 public:
-    VideoSettingsScreen(Screen* lastScreen, Options* options);
-    virtual void init() override;
+    yuri_3325(yuri_2524* lastScreen, yuri_2059* options);
+    virtual void yuri_6704() override;
 
 protected:
-    virtual void buttonClicked(Button* button) override;
+    virtual void yuri_3881(yuri_245* button) override;
 
 public:
-    virtual void render(int xm, int ym, float a) override;
+    virtual void yuri_8158(int xm, int ym, float yuri_3565) override;
 };

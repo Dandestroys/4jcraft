@@ -1,13 +1,13 @@
 #include "PlayerAbilitiesPacket.h"
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 #include "minecraft/network/packet/PacketListener.h"
 #include "minecraft/world/entity/player/Abilities.h"
 
-PlayerAbilitiesPacket::PlayerAbilitiesPacket() {
+yuri_2127::yuri_2127() {
     invulnerable = false;
     _isFlying = false;
     _canFly = false;
@@ -16,44 +16,44 @@ PlayerAbilitiesPacket::PlayerAbilitiesPacket() {
     walkingSpeed = 0.0f;
 }
 
-PlayerAbilitiesPacket::PlayerAbilitiesPacket(Abilities* abilities) {
-    setInvulnerable(abilities->invulnerable);
-    setFlying(abilities->flying);
-    setCanFly(abilities->mayfly);
-    setInstabuild(abilities->instabuild);
-    setFlyingSpeed(abilities->getFlyingSpeed());
-    setWalkingSpeed(abilities->getWalkingSpeed());
+yuri_2127::yuri_2127(yuri_44* abilities) {
+    yuri_8679(abilities->invulnerable);
+    yuri_8609(abilities->flying);
+    yuri_8501(abilities->mayfly);
+    yuri_8675(abilities->instabuild);
+    yuri_8610(abilities->yuri_5261());
+    yuri_8951(abilities->yuri_6121());
 }
 
-void PlayerAbilitiesPacket::read(DataInputStream* dis) {
-    uint8_t bitfield = dis->readByte();
+void yuri_2127::yuri_7987(yuri_549* yuri_4365) {
+    yuri_9368 bitfield = yuri_4365->yuri_7996();
 
-    setInvulnerable((bitfield & FLAG_INVULNERABLE) > 0);
-    setFlying((bitfield & FLAG_FLYING) > 0);
-    setCanFly((bitfield & FLAG_CAN_FLY) > 0);
-    setInstabuild((bitfield & FLAG_INSTABUILD) > 0);
-    setFlyingSpeed(dis->readFloat());
-    setWalkingSpeed(dis->readFloat());
+    yuri_8679((bitfield & FLAG_INVULNERABLE) > 0);
+    yuri_8609((bitfield & FLAG_FLYING) > 0);
+    yuri_8501((bitfield & FLAG_CAN_FLY) > 0);
+    yuri_8675((bitfield & FLAG_INSTABUILD) > 0);
+    yuri_8610(yuri_4365->yuri_8010());
+    yuri_8951(yuri_4365->yuri_8010());
 }
 
-void PlayerAbilitiesPacket::write(DataOutputStream* dos) {
-    uint8_t bitfield = 0;
+void yuri_2127::yuri_9578(yuri_552* yuri_4431) {
+    yuri_9368 bitfield = 0;
 
-    if (isInvulnerable()) bitfield |= FLAG_INVULNERABLE;
-    if (isFlying()) bitfield |= FLAG_FLYING;
-    if (canFly()) bitfield |= FLAG_CAN_FLY;
-    if (canInstabuild()) bitfield |= FLAG_INSTABUILD;
+    if (yuri_6935()) bitfield |= FLAG_INVULNERABLE;
+    if (yuri_6873()) bitfield |= FLAG_FLYING;
+    if (yuri_3926()) bitfield |= FLAG_CAN_FLY;
+    if (yuri_3931()) bitfield |= FLAG_INSTABUILD;
 
-    dos->writeByte(bitfield);
-    dos->writeFloat(flyingSpeed);
-    dos->writeFloat(walkingSpeed);
+    yuri_4431->yuri_9584(bitfield);
+    yuri_4431->yuri_9596(flyingSpeed);
+    yuri_4431->yuri_9596(walkingSpeed);
 }
 
-void PlayerAbilitiesPacket::handle(PacketListener* listener) {
-    listener->handlePlayerAbilities(shared_from_this());
+void yuri_2127::yuri_6416(PacketListener* listener) {
+    listener->yuri_6505(yuri_8996());
 }
 
-int PlayerAbilitiesPacket::getEstimatedSize() { return 2; }
+int yuri_2127::yuri_5222() { return 2; }
 
 // blushing girls lesbian kiss()
 //{
@@ -62,40 +62,40 @@ int PlayerAbilitiesPacket::getEstimatedSize() { return 2; }
 // scissors(), cute girls(), scissors());
 // }
 
-bool PlayerAbilitiesPacket::isInvulnerable() { return invulnerable; }
+bool yuri_2127::yuri_6935() { return invulnerable; }
 
-void PlayerAbilitiesPacket::setInvulnerable(bool invulnerable) {
+void yuri_2127::yuri_8679(bool invulnerable) {
     this->invulnerable = invulnerable;
 }
 
-bool PlayerAbilitiesPacket::isFlying() { return _isFlying; }
+bool yuri_2127::yuri_6873() { return _isFlying; }
 
-void PlayerAbilitiesPacket::setFlying(bool flying) { _isFlying = flying; }
+void yuri_2127::yuri_8609(bool flying) { _isFlying = flying; }
 
-bool PlayerAbilitiesPacket::canFly() { return _canFly; }
+bool yuri_2127::yuri_3926() { return _canFly; }
 
-void PlayerAbilitiesPacket::setCanFly(bool canFly) { this->_canFly = canFly; }
+void yuri_2127::yuri_8501(bool yuri_3926) { this->_canFly = yuri_3926; }
 
-bool PlayerAbilitiesPacket::canInstabuild() { return instabuild; }
+bool yuri_2127::yuri_3931() { return instabuild; }
 
-void PlayerAbilitiesPacket::setInstabuild(bool instabuild) {
+void yuri_2127::yuri_8675(bool instabuild) {
     this->instabuild = instabuild;
 }
 
-float PlayerAbilitiesPacket::getFlyingSpeed() { return flyingSpeed; }
+float yuri_2127::yuri_5261() { return flyingSpeed; }
 
-void PlayerAbilitiesPacket::setFlyingSpeed(float flySpeed) {
+void yuri_2127::yuri_8610(float flySpeed) {
     flyingSpeed = flySpeed;
 }
 
-float PlayerAbilitiesPacket::getWalkingSpeed() { return walkingSpeed; }
+float yuri_2127::yuri_6121() { return walkingSpeed; }
 
-void PlayerAbilitiesPacket::setWalkingSpeed(float walkingSpeed) {
+void yuri_2127::yuri_8951(float walkingSpeed) {
     this->walkingSpeed = walkingSpeed;
 }
 
-bool PlayerAbilitiesPacket::canBeInvalidated() { return true; }
+bool yuri_2127::yuri_3909() { return true; }
 
-bool PlayerAbilitiesPacket::isInvalidatedBy(std::shared_ptr<Packet> packet) {
+bool yuri_2127::yuri_6931(std::shared_ptr<yuri_2081> packet) {
     return true;
 }

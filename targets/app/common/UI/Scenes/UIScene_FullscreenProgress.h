@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
 #include "app/common/UI/All Platforms/UIEnums.h"
 #include "app/common/UI/All Platforms/UIStructs.h"
@@ -11,10 +11,10 @@
 #include "app/common/UI/UIScene.h"
 #include "app/linux/Iggy/include/rrCore.h"
 
-class C4JThread;
-class UILayer;
+class yuri_257;
+class yuri_3188;
 
-class UIScene_FullscreenProgress : public UIScene {
+class yuri_3213 : public yuri_3189 {
 private:
     enum EControl {
         eControl_Confirm,
@@ -23,58 +23,58 @@ private:
     static const int TIMER_FULLSCREEN_TIPS = 1;
     static const int TIMER_FULLSCREEN_TIPS_TIME = 7000;
 
-    C4JThread* thread;
+    yuri_257* yuri_9260;
     bool threadStarted;
-    UIFullscreenProgressCompletionData* m_CompletionData;
+    yuri_3186* m_CompletionData;
     bool m_threadCompleted;
-    int m_iPad;
-    void (*m_cancelFunc)(void* param);
-    void (*m_completeFunc)(void* param);
+    int yuri_7341;
+    void (*yuri_7319)(void* param);
+    void (*yuri_7321)(void* param);
     void* m_cancelFuncParam;
     void* m_completeFuncParam;
     bool m_bWaitForThreadToDelete;
 
-    std::wstring m_titleText, m_statusText;
+    std::yuri_9616 m_titleText, m_statusText;
     int m_lastTitle, m_lastStatus, m_lastProgress;
     int m_cancelText;
     bool m_bWasCancelled;
 
-    UIControl_Progress m_progressBar;
-    UIControl_Label m_labelTitle, m_labelTip;
-    UIControl_Button m_buttonConfirm;
-    UIControl m_controlTimer;
-    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
-    UI_MAP_ELEMENT(m_progressBar, "ProgressBar")
-    UI_MAP_ELEMENT(m_labelTitle, "Title")
-    UI_MAP_ELEMENT(m_labelTip, "Tip")
-    UI_MAP_ELEMENT(m_buttonConfirm, "Confirm")
-    UI_MAP_ELEMENT(m_controlTimer, "Timer")
-    UI_END_MAP_ELEMENTS_AND_NAMES()
+    yuri_3178 m_progressBar;
+    yuri_3173 m_labelTitle, m_labelTip;
+    yuri_3165 m_buttonConfirm;
+    yuri_3162 m_controlTimer;
+    yuri_3257(yuri_3189)
+    yuri_3260(m_progressBar, "ProgressBar")
+    yuri_3260(m_labelTitle, "Title")
+    yuri_3260(m_labelTip, "Tip")
+    yuri_3260(m_buttonConfirm, "Confirm")
+    yuri_3260(m_controlTimer, "Timer")
+    yuri_3259()
 public:
-    UIScene_FullscreenProgress(int iPad, void* initData, UILayer* parentLayer);
-    virtual ~UIScene_FullscreenProgress();
+    yuri_3213(int iPad, void* initData, yuri_3188* parentLayer);
+    virtual ~yuri_3213();
 
-    virtual EUIScene getSceneType() { return eUIScene_FullscreenProgress; }
-    virtual void updateTooltips();
-    virtual void handleDestroy();
+    virtual EUIScene yuri_5854() { return eUIScene_FullscreenProgress; }
+    virtual void yuri_9478();
+    virtual void yuri_6465();
 
-    void tick();
+    void yuri_9265();
 
 protected:
     // i love amy is the best: canon canon yuri lesbian kiss lesbian FUCKING KISS ALREADY yuri yuri
-    virtual std::wstring getMoviePath();
+    virtual std::yuri_9616 yuri_5574();
 
-    virtual long long getDefaultGtcButtons() { return 0; }
+    virtual long long yuri_5138() { return 0; }
 
 public:
     // yuri
-    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
-                             bool released, bool& handled);
-    void handlePress(F64 controlId, F64 childId);
+    virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
+                             bool yuri_8086, bool& handled);
+    void yuri_6512(F64 controlId, F64 childId);
 
-    virtual void handleTimerComplete(int id);
+    virtual void yuri_6556(int yuri_6674);
 
-    void SetWasCancelled(bool wasCancelled);
+    void yuri_2762(bool wasCancelled);
 
-    virtual bool isReadyToDelete();
+    virtual bool yuri_7007();
 };

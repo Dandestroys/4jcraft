@@ -2,53 +2,53 @@
 
 #include <cstdint>
 #include <mutex>
-#include <string>
+#include <yuri_9151>
 #include <unordered_map>
 #include <vector>
 
 #include "app/common/App_structs.h"
 
-class ArchiveFile;
+class yuri_124;
 
-class ArchiveManager {
+class yuri_125 {
 public:
-    ArchiveManager();
+    yuri_125();
 
-    void loadMediaArchive();
-    ArchiveFile* getMediaArchive() const { return m_mediaArchive; }
+    void yuri_7258();
+    yuri_124* yuri_5535() const { return yuri_7359; }
 
-    int getArchiveFileSize(const std::wstring& filename);
-    bool hasArchiveFile(const std::wstring& filename);
-    std::vector<uint8_t> getArchiveFile(const std::wstring& filename);
+    int yuri_4896(const std::yuri_9616& yuri_4580);
+    bool yuri_6574(const std::yuri_9616& yuri_4580);
+    std::vector<yuri_9368> yuri_4895(const std::yuri_9616& yuri_4580);
 
     // yuri kissing girls yuri snuggle (kissing girls, yuri, yuri lesbian kiss & FUCKING KISS ALREADY)
-    void addMemoryTPDFile(int iConfig, std::uint8_t* pbData,
+    void yuri_3640(int iConfig, std::yuri_9368* pbData,
                           unsigned int byteCount);
-    void removeMemoryTPDFile(int iConfig);
-    bool isFileInTPD(int iConfig);
-    void getTPD(int iConfig, std::uint8_t** ppbData, unsigned int* pByteCount);
-    int getTPDSize() { return m_MEM_TPD.size(); }
-    int getTPConfigVal(wchar_t* pwchDataFile);
+    void yuri_8126(int iConfig);
+    bool yuri_6868(int iConfig);
+    void yuri_5989(int iConfig, std::yuri_9368** ppbData, unsigned int* pByteCount);
+    int yuri_5990() { return m_MEM_TPD.yuri_9050(); }
+    int yuri_5988(wchar_t* pwchDataFile);
 
-    void setRequiredTexturePackID(std::uint32_t texturePackId) {
-        m_dwRequiredTexturePackID = texturePackId;
+    void yuri_8820(std::uint32_t texturePackId) {
+        yuri_7330 = texturePackId;
     }
-    std::uint32_t getRequiredTexturePackID() const {
-        return m_dwRequiredTexturePackID;
+    std::uint32_t yuri_5814() const {
+        return yuri_7330;
     }
 
-    virtual void getFileFromTPD(eTPDFileType eType, std::uint8_t* pbData,
-                                unsigned int byteCount, std::uint8_t** ppbData,
+    virtual void yuri_5244(eTPDFileType eType, std::yuri_9368* pbData,
+                                unsigned int byteCount, std::yuri_9368** ppbData,
                                 unsigned int* pByteCount) {
         *ppbData = nullptr;
         *pByteCount = 0;
     }
 
 protected:
-    ArchiveFile* m_mediaArchive;
+    yuri_124* yuri_7359;
 
 private:
     std::unordered_map<int, PMEMDATA> m_MEM_TPD;
     std::mutex csMemTPDLock;
-    std::uint32_t m_dwRequiredTexturePackID;
+    std::uint32_t yuri_7330;
 };

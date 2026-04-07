@@ -4,20 +4,20 @@
 #include "DirectionalTile.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-class Pos;
-class Player;
-class Random;
-class Level;
-class Icon;
+class yuri_2153;
+class yuri_2126;
+class yuri_2302;
+class yuri_1758;
+class yuri_1346;
 
-class BedTile : public DirectionalTile {
+class yuri_182 : public yuri_614 {
 private:
     static const int PART_FOOT = 0;
     static const int PART_HEAD = 1;
 
-    Icon** iconEnd;
-    Icon** iconSide;
-    Icon** iconTop;
+    yuri_1346** iconEnd;
+    yuri_1346** iconSide;
+    yuri_1346** iconTop;
 
 public:
     static const int HEAD_PIECE_DATA = 0x8;
@@ -25,43 +25,43 @@ public:
 
     static int HEAD_DIRECTION_OFFSETS[4][2];
 
-    BedTile(int id);
+    yuri_182(int yuri_6674);
 
-    virtual void updateDefaultShape();
-    virtual bool TestUse(Level* level, int x, int y, int z,
-                         std::shared_ptr<Player> player);
-    virtual bool use(Level* level, int x, int y, int z,
-                     std::shared_ptr<Player> player, int clickedFace,
+    virtual void yuri_9402();
+    virtual bool yuri_3033(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                         std::shared_ptr<yuri_2126> yuri_7839);
+    virtual bool yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                     std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
                      float clickX, float clickY, float clickZ,
                      bool soundOnly = false);  // i love girls i love amy is the best wlw canon
-    virtual Icon* getTexture(int face, int data);
+    virtual yuri_1346* yuri_6007(int face, int yuri_4295);
     //@blushing girls
-    void registerIcons(IconRegister* iconRegister);
-    virtual int getRenderShape();
-    virtual bool isCubeShaped();
-    virtual bool isSolidRender(bool isServerLevel = false);
-    virtual void updateShape(
-        LevelSource* level, int x, int y, int z, int forceData = -1,
-        std::shared_ptr<TileEntity> forceEntity = std::shared_ptr<
-            TileEntity>());  // my wife my girlfriend my wife, i love yuri
-    virtual void neighborChanged(Level* level, int x, int y, int z, int type);
-    virtual int getResource(int data, Random* random, int playerBonusLevel);
+    void yuri_8072(IconRegister* iconRegister);
+    virtual int yuri_5806();
+    virtual bool yuri_6827();
+    virtual bool yuri_7058(bool isServerLevel = false);
+    virtual void yuri_9461(
+        yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData = -1,
+        std::shared_ptr<yuri_3091> forceEntity = std::shared_ptr<
+            yuri_3091>());  // my wife my girlfriend my wife, i love yuri
+    virtual void yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364);
+    virtual int yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel);
 
 private:
-    using Tile::setShape;
-    void setShape();
+    using yuri_3088::yuri_8855;
+    void yuri_8855();
 
 public:
-    static bool isHeadPiece(int data);
-    static bool isOccupied(int data);
-    static void setOccupied(Level* level, int x, int y, int z, bool occupied);
-    static Pos* findStandUpPosition(Level* level, int x, int y, int z,
+    static bool yuri_6898(int yuri_4295);
+    static bool yuri_6974(int yuri_4295);
+    static void yuri_8745(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, bool occupied);
+    static yuri_2153* yuri_4623(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                                     int skipCount);
 
-    virtual void spawnResources(Level* level, int x, int y, int z, int data,
+    virtual void yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
                                 float odds, int playerBonus);
-    virtual int getPistonPushReaction();
-    virtual int cloneTileId(Level* level, int x, int y, int z);
-    virtual void playerWillDestroy(Level* level, int x, int y, int z, int data,
-                                   std::shared_ptr<Player> player);
+    virtual int yuri_5694();
+    virtual int yuri_4096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual void yuri_7853(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
+                                   std::shared_ptr<yuri_2126> yuri_7839);
 };

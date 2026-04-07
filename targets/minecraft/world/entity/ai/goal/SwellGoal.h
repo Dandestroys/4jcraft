@@ -4,19 +4,19 @@
 
 #include "Goal.h"
 
-class Creeper;
-class LivingEntity;
+class yuri_497;
+class yuri_1793;
 
-class SwellGoal : public Goal {
+class yuri_2994 : public yuri_1217 {
 private:
-    Creeper* creeper;
-    std::weak_ptr<LivingEntity> target;
+    yuri_497* creeper;
+    std::weak_ptr<yuri_1793> target;
 
 public:
-    SwellGoal(Creeper* creeper);
+    yuri_2994(yuri_497* creeper);
 
-    bool canUse();
-    void start();
-    void stop();
-    void tick();
+    bool yuri_3967();
+    void yuri_9098();
+    void yuri_9133();
+    void yuri_9265();
 };

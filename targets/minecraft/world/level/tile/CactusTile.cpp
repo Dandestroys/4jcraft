@@ -2,7 +2,7 @@
 
 #include <memory>
 #include <optional>
-#include <string>
+#include <yuri_9151>
 
 #include "minecraft/Facing.h"
 #include "minecraft/world/IconRegister.h"
@@ -13,88 +13,88 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/phys/AABB.h"
 
-CactusTile::CactusTile(int id) : Tile(id, Material::cactus, false) {
-    setTicking(true);
+yuri_288::yuri_288(int yuri_6674) : yuri_3088(yuri_6674, yuri_1886::cactus, false) {
+    yuri_8915(true);
     iconTop = nullptr;
     iconBottom = nullptr;
 }
 
-void CactusTile::tick(Level* level, int x, int y, int z, Random* random) {
-    if (level->isEmptyTile(x, y + 1, z)) {
-        int height = 1;
-        while (level->getTile(x, y - height, z) == id) {
-            height++;
+void yuri_288::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981) {
+    if (yuri_7194->yuri_6852(yuri_9621, yuri_9625 + 1, yuri_9630)) {
+        int yuri_6654 = 1;
+        while (yuri_7194->yuri_6030(yuri_9621, yuri_9625 - yuri_6654, yuri_9630) == yuri_6674) {
+            yuri_6654++;
         }
-        if (height < 3) {
-            int age = level->getData(x, y, z);
+        if (yuri_6654 < 3) {
+            int age = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
             if (age == 15) {
-                level->setTileAndUpdate(x, y + 1, z, id);
-                level->setData(x, y, z, 0, Tile::UPDATE_NONE);
-                neighborChanged(level, x, y + 1, z, id);
+                yuri_7194->yuri_8918(yuri_9621, yuri_9625 + 1, yuri_9630, yuri_6674);
+                yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, 0, yuri_3088::UPDATE_NONE);
+                yuri_7553(yuri_7194, yuri_9621, yuri_9625 + 1, yuri_9630, yuri_6674);
             } else {
-                level->setData(x, y, z, age + 1, Tile::UPDATE_NONE);
+                yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, age + 1, yuri_3088::UPDATE_NONE);
             }
         }
     }
 }
 
-std::optional<AABB> CactusTile::getAABB(Level* level, int x, int y, int z) {
+std::optional<yuri_0> yuri_288::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
     float r = 1 / 16.0f;
-    return AABB{x + r,    static_cast<double>(y), z + r, x + 1 - r, y + 1 - r,
-                z + 1 - r};
+    return yuri_0{yuri_9621 + r,    static_cast<double>(yuri_9625), yuri_9630 + r, yuri_9621 + 1 - r, yuri_9625 + 1 - r,
+                yuri_9630 + 1 - r};
 }
 
-AABB CactusTile::getTileAABB(Level* level, int x, int y, int z) {
+yuri_0 yuri_288::yuri_6031(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
     float r = 1 / 16.0f;
-    return AABB(x + r, y, z + r, x + 1 - r, y + 1, z + 1 - r);
+    return yuri_0(yuri_9621 + r, yuri_9625, yuri_9630 + r, yuri_9621 + 1 - r, yuri_9625 + 1, yuri_9630 + 1 - r);
 }
 
-Icon* CactusTile::getTexture(int face, int data) {
+yuri_1346* yuri_288::yuri_6007(int face, int yuri_4295) {
     if (face == Facing::UP) return iconTop;
     if (face == Facing::DOWN)
         return iconBottom;
     else
-        return icon;
+        return yuri_6672;
 }
 
-bool CactusTile::isCubeShaped() { return false; }
+bool yuri_288::yuri_6827() { return false; }
 
-bool CactusTile::isSolidRender(bool isServerLevel) { return false; }
+bool yuri_288::yuri_7058(bool isServerLevel) { return false; }
 
-int CactusTile::getRenderShape() { return Tile::SHAPE_CACTUS; }
+int yuri_288::yuri_5806() { return yuri_3088::SHAPE_CACTUS; }
 
-bool CactusTile::mayPlace(Level* level, int x, int y, int z) {
-    if (!Tile::mayPlace(level, x, y, z)) return false;
+bool yuri_288::yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+    if (!yuri_3088::yuri_7468(yuri_7194, yuri_9621, yuri_9625, yuri_9630)) return false;
 
-    return canSurvive(level, x, y, z);
+    return yuri_3961(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
 }
 
-void CactusTile::neighborChanged(Level* level, int x, int y, int z, int type) {
-    if (!canSurvive(level, x, y, z)) {
-        level->destroyTile(x, y, z, true);
+void yuri_288::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364) {
+    if (!yuri_3961(yuri_7194, yuri_9621, yuri_9625, yuri_9630)) {
+        yuri_7194->yuri_4353(yuri_9621, yuri_9625, yuri_9630, true);
     }
 }
 
-bool CactusTile::canSurvive(Level* level, int x, int y, int z) {
-    if (level->getMaterial(x - 1, y, z)->isSolid()) return false;
-    if (level->getMaterial(x + 1, y, z)->isSolid()) return false;
-    if (level->getMaterial(x, y, z - 1)->isSolid()) return false;
-    if (level->getMaterial(x, y, z + 1)->isSolid()) return false;
-    int below = level->getTile(x, y - 1, z);
-    return below == Tile::cactus_Id || below == Tile::sand_Id;
+bool yuri_288::yuri_3961(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+    if (yuri_7194->yuri_5514(yuri_9621 - 1, yuri_9625, yuri_9630)->yuri_7052()) return false;
+    if (yuri_7194->yuri_5514(yuri_9621 + 1, yuri_9625, yuri_9630)->yuri_7052()) return false;
+    if (yuri_7194->yuri_5514(yuri_9621, yuri_9625, yuri_9630 - 1)->yuri_7052()) return false;
+    if (yuri_7194->yuri_5514(yuri_9621, yuri_9625, yuri_9630 + 1)->yuri_7052()) return false;
+    int yuri_3803 = yuri_7194->yuri_6030(yuri_9621, yuri_9625 - 1, yuri_9630);
+    return yuri_3803 == yuri_3088::cactus_Id || yuri_3803 == yuri_3088::sand_Id;
 }
 
-void CactusTile::entityInside(Level* level, int x, int y, int z,
-                              std::shared_ptr<Entity> entity) {
-    entity->hurt(DamageSource::cactus, 1);
+void yuri_288::yuri_4519(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                              std::shared_ptr<yuri_739> entity) {
+    entity->yuri_6667(yuri_548::cactus, 1);
 }
 
-void CactusTile::registerIcons(IconRegister* iconRegister) {
-    icon = iconRegister->registerIcon(L"cactus_side");
-    iconTop = iconRegister->registerIcon(L"cactus_top");
-    iconBottom = iconRegister->registerIcon(L"cactus_bottom");
+void yuri_288::yuri_8072(IconRegister* iconRegister) {
+    yuri_6672 = iconRegister->yuri_8071(yuri_1720"cactus_side");
+    iconTop = iconRegister->yuri_8071(yuri_1720"cactus_top");
+    iconBottom = iconRegister->yuri_8071(yuri_1720"cactus_bottom");
 }
 
-bool CactusTile::shouldTileTick(Level* level, int x, int y, int z) {
-    return level->isEmptyTile(x, y + 1, z);
+bool yuri_288::yuri_9021(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+    return yuri_7194->yuri_6852(yuri_9621, yuri_9625 + 1, yuri_9630);
 }

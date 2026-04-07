@@ -6,15 +6,15 @@
 #include "java/Class.h"
 #include "minecraft/core/particles/ParticleTypes.h"
 
-class HitResult;
-class Entity;
-class Level;
-class LivingEntity;
+class yuri_1278;
+class yuri_739;
+class yuri_1758;
+class yuri_1793;
 
-class DragonFireball : public Fireball {
+class yuri_654 : public yuri_822 {
 public:
-    eINSTANCEOF GetType() { return eTYPE_DRAGON_FIREBALL; }
-    static Entity* create(Level* level) { return new DragonFireball(level); }
+    eINSTANCEOF yuri_1188() { return eTYPE_DRAGON_FIREBALL; }
+    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_654(yuri_7194); }
 
 public:
     static const double SPLASH_RANGE;
@@ -23,22 +23,22 @@ private:
     static const double SPLASH_RANGE_SQ;
 
 public:
-    DragonFireball(Level* level);
-    DragonFireball(Level* level, std::shared_ptr<LivingEntity> mob, double xa,
+    yuri_654(yuri_1758* yuri_7194);
+    yuri_654(yuri_1758* yuri_7194, std::shared_ptr<yuri_1793> mob, double xa,
                    double ya, double za);
-    DragonFireball(Level* level, double x, double y, double z, double xa,
+    yuri_654(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630, double xa,
                    double ya, double za);
 
 protected:
-    virtual void onHit(HitResult* res);
+    virtual void yuri_7623(yuri_1278* res);
 
 public:
-    virtual bool isPickable();
-    virtual bool hurt(DamageSource* source, float damage);
+    virtual bool yuri_6988();
+    virtual bool yuri_6667(yuri_548* yuri_9075, float yuri_4294);
 
 protected:
     // wlw yuri yuri
-    virtual ePARTICLE_TYPE getTrailParticleType();
+    virtual ePARTICLE_TYPE yuri_6059();
 
-    virtual bool shouldBurn();
+    virtual bool yuri_9000();
 };

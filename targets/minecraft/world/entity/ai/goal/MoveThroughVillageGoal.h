@@ -5,32 +5,32 @@
 
 #include "Goal.h"
 
-class PathfinderMob;
-class Path;
-class DoorInfo;
-class Village;
+class yuri_2096;
+class yuri_2093;
+class yuri_644;
+class yuri_3327;
 
-class MoveThroughVillageGoal : public Goal {
+class yuri_1986 : public yuri_1217 {
 private:
-    PathfinderMob* mob;
+    yuri_2096* mob;
     double speedModifier;
-    Path* path;
-    std::weak_ptr<DoorInfo> doorInfo;
+    yuri_2093* yuri_7800;
+    std::weak_ptr<yuri_644> doorInfo;
     bool onlyAtNight;
-    std::vector<std::weak_ptr<DoorInfo> > visited;
+    std::vector<std::weak_ptr<yuri_644> > visited;
 
 public:
-    MoveThroughVillageGoal(PathfinderMob* mob, double speedModifier,
+    yuri_1986(yuri_2096* mob, double speedModifier,
                            bool onlyAtNight);
-    ~MoveThroughVillageGoal();
+    ~yuri_1986();
 
-    virtual bool canUse();
-    virtual bool canContinueToUse();
-    virtual void start();
-    virtual void stop();
+    virtual bool yuri_3967();
+    virtual bool yuri_3916();
+    virtual void yuri_9098();
+    virtual void yuri_9133();
 
 private:
-    std::shared_ptr<DoorInfo> getNextDoorInfo(std::shared_ptr<Village> village);
-    bool hasVisited(std::shared_ptr<DoorInfo> di);
-    void updateVisited();
+    std::shared_ptr<yuri_644> yuri_5597(std::shared_ptr<yuri_3327> village);
+    bool yuri_6643(std::shared_ptr<yuri_644> di);
+    void yuri_9481();
 };

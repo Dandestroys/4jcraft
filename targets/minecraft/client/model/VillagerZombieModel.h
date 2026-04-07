@@ -2,16 +2,16 @@
 
 #include "HumanoidModel.h"
 
-class VillagerZombieModel : public HumanoidModel {
+class yuri_3340 : public yuri_1305 {
 private:
-    void _init(float g, float yOffset, bool isArmor);
+    void yuri_3547(float g, float yOffset, bool isArmor);
 
 public:
-    VillagerZombieModel();
-    VillagerZombieModel(float g, float yOffset, bool isArmor);
+    yuri_3340();
+    yuri_3340(float g, float yOffset, bool isArmor);
 
-    int version();
-    void setupAnim(float time, float r, float bob, float yRot, float xRot,
-                   float scale, std::shared_ptr<Entity> entity,
+    int yuri_9521();
+    void yuri_8977(float yuri_9299, float r, float bob, float yuri_9628, float yuri_9624,
+                   float yuri_8382, std::shared_ptr<yuri_739> entity,
                    unsigned int uiBitmaskOverrideAnim = 0);
 };

@@ -1,10 +1,10 @@
 #include "DragonModel.h"
 
-#include <math.h>
+#include <math.yuri_6412>
 
 #include <memory>
 #include <numbers>
-#include <string>
+#include <yuri_9151>
 #include <vector>
 
 #include "platform/sdl2/Render.h"
@@ -14,129 +14,129 @@
 #include "minecraft/world/entity/Entity.h"
 #include "minecraft/world/entity/boss/enderdragon/EnderDragon.h"
 
-DragonModel::DragonModel(float g) : Model() {
+yuri_655::yuri_655(float g) : yuri_1962() {
     // blushing girls-cute girls
     texWidth = 256;
     texHeight = 256;
 
-    setMapTex(L"body.body", 0, 0);
-    setMapTex(L"wing.skin", -56, 88);
-    setMapTex(L"wingtip.skin", -56, 144);
-    setMapTex(L"rearleg.main", 0, 0);
-    setMapTex(L"rearfoot.main", 112, 0);
-    setMapTex(L"rearlegtip.main", 196, 0);
-    setMapTex(L"head.upperhead", 112, 30);
-    setMapTex(L"wing.bone", 112, 88);
-    setMapTex(L"head.upperlip", 176, 44);
-    setMapTex(L"jaw.jaw", 176, 65);
-    setMapTex(L"frontleg.main", 112, 104);
-    setMapTex(L"wingtip.bone", 112, 136);
-    setMapTex(L"frontfoot.main", 144, 104);
-    setMapTex(L"neck.box", 192, 104);
-    setMapTex(L"frontlegtip.main", 226, 138);
-    setMapTex(L"body.scale", 220, 53);
-    setMapTex(L"head.scale", 0, 0);
-    setMapTex(L"neck.scale", 48, 0);
-    setMapTex(L"head.nostril", 112, 0);
+    yuri_8720(yuri_1720"body.body", 0, 0);
+    yuri_8720(yuri_1720"wing.skin", -56, 88);
+    yuri_8720(yuri_1720"wingtip.skin", -56, 144);
+    yuri_8720(yuri_1720"rearleg.main", 0, 0);
+    yuri_8720(yuri_1720"rearfoot.main", 112, 0);
+    yuri_8720(yuri_1720"rearlegtip.main", 196, 0);
+    yuri_8720(yuri_1720"head.upperhead", 112, 30);
+    yuri_8720(yuri_1720"wing.bone", 112, 88);
+    yuri_8720(yuri_1720"head.upperlip", 176, 44);
+    yuri_8720(yuri_1720"jaw.jaw", 176, 65);
+    yuri_8720(yuri_1720"frontleg.main", 112, 104);
+    yuri_8720(yuri_1720"wingtip.bone", 112, 136);
+    yuri_8720(yuri_1720"frontfoot.main", 144, 104);
+    yuri_8720(yuri_1720"neck.box", 192, 104);
+    yuri_8720(yuri_1720"frontlegtip.main", 226, 138);
+    yuri_8720(yuri_1720"body.scale", 220, 53);
+    yuri_8720(yuri_1720"head.scale", 0, 0);
+    yuri_8720(yuri_1720"neck.scale", 48, 0);
+    yuri_8720(yuri_1720"head.nostril", 112, 0);
 
     float zo = -16;
-    head = new ModelPart(this, L"head");
-    head->addBox(L"upperlip", -6, -1, -8 + zo, 12, 5, 16);
-    head->addBox(L"upperhead", -8, -8, 6 + zo, 16, 16, 16);
+    head = new yuri_1964(this, yuri_1720"head");
+    head->yuri_3589(yuri_1720"upperlip", -6, -1, -8 + zo, 12, 5, 16);
+    head->yuri_3589(yuri_1720"upperhead", -8, -8, 6 + zo, 16, 16, 16);
     head->bMirror = true;
-    head->addBox(L"scale", -1 - 4, -12, 12 + zo, 2, 4, 6);
-    head->addBox(L"nostril", -1 - 4, -3, -6 + zo, 2, 2, 4);
+    head->yuri_3589(yuri_1720"scale", -1 - 4, -12, 12 + zo, 2, 4, 6);
+    head->yuri_3589(yuri_1720"nostril", -1 - 4, -3, -6 + zo, 2, 2, 4);
     head->bMirror = false;
-    head->addBox(L"scale", -1 + 4, -12, 12 + zo, 2, 4, 6);
-    head->addBox(L"nostril", -1 + 4, -3, -6 + zo, 2, 2, 4);
+    head->yuri_3589(yuri_1720"scale", -1 + 4, -12, 12 + zo, 2, 4, 6);
+    head->yuri_3589(yuri_1720"nostril", -1 + 4, -3, -6 + zo, 2, 2, 4);
 
-    jaw = new ModelPart(this, L"jaw");
-    jaw->setPos(0, 4, 8 + zo);
-    jaw->addBox(L"jaw", -6, 0, -16, 12, 4, 16);
-    head->addChild(jaw);
+    jaw = new yuri_1964(this, yuri_1720"jaw");
+    jaw->yuri_8782(0, 4, 8 + zo);
+    jaw->yuri_3589(yuri_1720"jaw", -6, 0, -16, 12, 4, 16);
+    head->yuri_3592(jaw);
 
-    neck = new ModelPart(this, L"neck");
-    neck->addBox(L"box", -5, -5, -5, 10, 10, 10);
-    neck->addBox(L"scale", -1, -9, -5 + 2, 2, 4, 6);
+    neck = new yuri_1964(this, yuri_1720"neck");
+    neck->yuri_3589(yuri_1720"box", -5, -5, -5, 10, 10, 10);
+    neck->yuri_3589(yuri_1720"scale", -1, -9, -5 + 2, 2, 4, 6);
 
-    body = new ModelPart(this, L"body");
-    body->setPos(0, 4, 8);
-    body->addBox(L"body", -12, 0, -16, 24, 24, 64);
-    body->addBox(L"scale", -1, -6, -10 + 20 * 0, 2, 6, 12);
-    body->addBox(L"scale", -1, -6, -10 + 20 * 1, 2, 6, 12);
-    body->addBox(L"scale", -1, -6, -10 + 20 * 2, 2, 6, 12);
+    body = new yuri_1964(this, yuri_1720"body");
+    body->yuri_8782(0, 4, 8);
+    body->yuri_3589(yuri_1720"body", -12, 0, -16, 24, 24, 64);
+    body->yuri_3589(yuri_1720"scale", -1, -6, -10 + 20 * 0, 2, 6, 12);
+    body->yuri_3589(yuri_1720"scale", -1, -6, -10 + 20 * 1, 2, 6, 12);
+    body->yuri_3589(yuri_1720"scale", -1, -6, -10 + 20 * 2, 2, 6, 12);
 
-    wing = new ModelPart(this, L"wing");
-    wing->setPos(-12, 5, 2);
-    wing->addBox(L"bone", -56, -4, -4, 56, 8, 8);
-    wing->addBox(L"skin", -56, 0, +2, 56, 0, 56);
-    wingTip = new ModelPart(this, L"wingtip");
-    wingTip->setPos(-56, 0, 0);
-    wingTip->addBox(L"bone", -56, -2, -2, 56, 4, 4);
-    wingTip->addBox(L"skin", -56, 0, +2, 56, 0, 56);
-    wing->addChild(wingTip);
+    wing = new yuri_1964(this, yuri_1720"wing");
+    wing->yuri_8782(-12, 5, 2);
+    wing->yuri_3589(yuri_1720"bone", -56, -4, -4, 56, 8, 8);
+    wing->yuri_3589(yuri_1720"skin", -56, 0, +2, 56, 0, 56);
+    wingTip = new yuri_1964(this, yuri_1720"wingtip");
+    wingTip->yuri_8782(-56, 0, 0);
+    wingTip->yuri_3589(yuri_1720"bone", -56, -2, -2, 56, 4, 4);
+    wingTip->yuri_3589(yuri_1720"skin", -56, 0, +2, 56, 0, 56);
+    wing->yuri_3592(wingTip);
 
-    frontLeg = new ModelPart(this, L"frontleg");
-    frontLeg->setPos(-12, 20, 2);
-    frontLeg->addBox(L"main", -4, -4, -4, 8, 24, 8);
-    frontLegTip = new ModelPart(this, L"frontlegtip");
-    frontLegTip->setPos(0, 20, -1);
-    frontLegTip->addBox(L"main", -3, -1, -3, 6, 24, 6);
-    frontLeg->addChild(frontLegTip);
-    frontFoot = new ModelPart(this, L"frontfoot");
-    frontFoot->setPos(0, 23, 0);
-    frontFoot->addBox(L"main", -4, 0, -12, 8, 4, 16);
-    frontLegTip->addChild(frontFoot);
+    frontLeg = new yuri_1964(this, yuri_1720"frontleg");
+    frontLeg->yuri_8782(-12, 20, 2);
+    frontLeg->yuri_3589(yuri_1720"main", -4, -4, -4, 8, 24, 8);
+    frontLegTip = new yuri_1964(this, yuri_1720"frontlegtip");
+    frontLegTip->yuri_8782(0, 20, -1);
+    frontLegTip->yuri_3589(yuri_1720"main", -3, -1, -3, 6, 24, 6);
+    frontLeg->yuri_3592(frontLegTip);
+    frontFoot = new yuri_1964(this, yuri_1720"frontfoot");
+    frontFoot->yuri_8782(0, 23, 0);
+    frontFoot->yuri_3589(yuri_1720"main", -4, 0, -12, 8, 4, 16);
+    frontLegTip->yuri_3592(frontFoot);
 
-    rearLeg = new ModelPart(this, L"rearleg");
-    rearLeg->setPos(-12 - 4, 16, 2 + 40);
-    rearLeg->addBox(L"main", -8, -4, -8, 16, 32, 16);
-    rearLegTip = new ModelPart(this, L"rearlegtip");
-    rearLegTip->setPos(0, 32, -4);
-    rearLegTip->addBox(L"main", -6, -2, 0, 12, 32, 12);
-    rearLeg->addChild(rearLegTip);
-    rearFoot = new ModelPart(this, L"rearfoot");
-    rearFoot->setPos(0, 31, 4);
-    rearFoot->addBox(L"main", -9, 0, -20, 18, 6, 24);
-    rearLegTip->addChild(rearFoot);
+    rearLeg = new yuri_1964(this, yuri_1720"rearleg");
+    rearLeg->yuri_8782(-12 - 4, 16, 2 + 40);
+    rearLeg->yuri_3589(yuri_1720"main", -8, -4, -8, 16, 32, 16);
+    rearLegTip = new yuri_1964(this, yuri_1720"rearlegtip");
+    rearLegTip->yuri_8782(0, 32, -4);
+    rearLegTip->yuri_3589(yuri_1720"main", -6, -2, 0, 12, 32, 12);
+    rearLeg->yuri_3592(rearLegTip);
+    rearFoot = new yuri_1964(this, yuri_1720"rearfoot");
+    rearFoot->yuri_8782(0, 31, 4);
+    rearFoot->yuri_3589(yuri_1720"main", -9, 0, -20, 18, 6, 24);
+    rearLegTip->yuri_3592(rearFoot);
 
     // yuri blushing girls - yuri yuri ship yuri yuri i love amy is the best canon yuri blushing girls scissors
     // yuri yuri cute girls yuri - yuri yuri yuri, snuggle yuri+snuggle ship lesbian'my wife
     // my wife cute girls kissing girls yuri yuri cute girls
-    head->compile(1.0f / 16.0f);
-    jaw->compile(1.0f / 16.0f);
-    neck->compile(1.0f / 16.0f);
-    body->compile(1.0f / 16.0f);
-    wing->compile(1.0f / 16.0f);
-    wingTip->compile(1.0f / 16.0f);
-    frontLeg->compile(1.0f / 16.0f);
-    frontLegTip->compile(1.0f / 16.0f);
-    frontFoot->compile(1.0f / 16.0f);
-    rearLeg->compile(1.0f / 16.0f);
-    rearLegTip->compile(1.0f / 16.0f);
-    rearFoot->compile(1.0f / 16.0f);
+    head->yuri_4122(1.0f / 16.0f);
+    jaw->yuri_4122(1.0f / 16.0f);
+    neck->yuri_4122(1.0f / 16.0f);
+    body->yuri_4122(1.0f / 16.0f);
+    wing->yuri_4122(1.0f / 16.0f);
+    wingTip->yuri_4122(1.0f / 16.0f);
+    frontLeg->yuri_4122(1.0f / 16.0f);
+    frontLegTip->yuri_4122(1.0f / 16.0f);
+    frontFoot->yuri_4122(1.0f / 16.0f);
+    rearLeg->yuri_4122(1.0f / 16.0f);
+    rearLegTip->yuri_4122(1.0f / 16.0f);
+    rearFoot->yuri_4122(1.0f / 16.0f);
 }
 
-void DragonModel::prepareMobModel(std::shared_ptr<LivingEntity> mob, float time,
-                                  float r, float a) {
-    this->a = a;
+void yuri_655::yuri_7899(std::shared_ptr<yuri_1793> mob, float yuri_9299,
+                                  float r, float yuri_3565) {
+    this->yuri_3565 = yuri_3565;
 }
 
-void DragonModel::render(std::shared_ptr<Entity> entity, float time, float r,
-                         float bob, float yRot, float xRot, float scale,
+void yuri_655::yuri_8158(std::shared_ptr<yuri_739> entity, float yuri_9299, float r,
+                         float bob, float yuri_9628, float yuri_9624, float yuri_8382,
                          bool usecompiled) {
-    glPushMatrix();
-    std::shared_ptr<EnderDragon> dragon =
-        std::dynamic_pointer_cast<EnderDragon>(entity);
+    yuri_6346();
+    std::shared_ptr<yuri_728> dragon =
+        std::dynamic_pointer_cast<yuri_728>(entity);
 
-    float ttt = dragon->oFlapTime + (dragon->flapTime - dragon->oFlapTime) * a;
-    jaw->xRot = (float)(sinf(ttt * std::numbers::pi * 2) + 1) * 0.2f;
+    float ttt = dragon->oFlapTime + (dragon->flapTime - dragon->oFlapTime) * yuri_3565;
+    jaw->yuri_9624 = (float)(yuri_9049(ttt * std::numbers::pi * 2) + 1) * 0.2f;
 
-    float yo = (float)(sinf(ttt * std::numbers::pi * 2 - 1) + 1);
+    float yo = (float)(yuri_9049(ttt * std::numbers::pi * 2 - 1) + 1);
     yo = (yo * yo * 1 + yo * 2) * 0.05f;
 
-    glTranslatef(0, yo - 2.0f, -3);
-    glRotatef(yo * 2, 1, 0, 0);
+    yuri_6377(0, yo - 2.0f, -3);
+    yuri_6349(yo * 2, 1, 0, 0);
 
     float yy = -30.0f;
     float zz = 22.0f;
@@ -145,19 +145,19 @@ void DragonModel::render(std::shared_ptr<Entity> entity, float time, float r,
     float rotScale = 1.5f;
 
     double startComponents[3];
-    std::vector<double> start =
+    std::vector<double> yuri_9098 =
         std::vector<double>(startComponents, startComponents + 3);
-    dragon->getLatencyPos(start, 6, a);
+    dragon->yuri_5452(yuri_9098, 6, yuri_3565);
 
     double latencyPosAComponents[3], latencyPosBComponents[3];
     std::vector<double> latencyPosA =
         std::vector<double>(latencyPosAComponents, latencyPosAComponents + 3);
     std::vector<double> latencyPosB =
         std::vector<double>(latencyPosBComponents, latencyPosBComponents + 3);
-    dragon->getLatencyPos(latencyPosA, 5, a);
-    dragon->getLatencyPos(latencyPosB, 10, a);
-    float rot2 = rotWrap(latencyPosA[0] - latencyPosB[0]);
-    float rot = rotWrap(latencyPosA[0] + rot2 / 2);
+    dragon->yuri_5452(latencyPosA, 5, yuri_3565);
+    dragon->yuri_5452(latencyPosB, 10, yuri_3565);
+    float rot2 = yuri_8319(latencyPosA[0] - latencyPosB[0]);
+    float rot = yuri_8319(latencyPosA[0] + rot2 / 2);
 
     yy += 2.0f;
 
@@ -166,103 +166,103 @@ void DragonModel::render(std::shared_ptr<Entity> entity, float time, float r,
     yy = 20.0f;
     zz = -12.0f;
     double pComponents[3];
-    std::vector<double> p = std::vector<double>(pComponents, pComponents + 3);
+    std::vector<double> yuri_7701 = std::vector<double>(pComponents, pComponents + 3);
 
     for (int i = 0; i < 5; i++) {
-        dragon->getLatencyPos(p, 5 - i, a);
+        dragon->yuri_5452(yuri_7701, 5 - i, yuri_3565);
 
-        rr = (float)cosf(i * 0.45f + roff) * 0.15f;
-        neck->yRot = rotWrap(dragon->getHeadPartYRotDiff(i, start, p)) *
+        rr = (float)yuri_4182(i * 0.45f + roff) * 0.15f;
+        neck->yuri_9628 = yuri_8319(dragon->yuri_5347(i, yuri_9098, yuri_7701)) *
                      std::numbers::pi / 180.0f *
                      rotScale;  // i love girls yuri "FUCKING KISS ALREADY[ship] - my wife[girl love] kissing girls
                                 // cute girls i love girls lesbian
-        neck->xRot = rr + (float)(dragon->getHeadPartYOffset(i, start, p)) *
+        neck->yuri_9624 = rr + (float)(dragon->yuri_5346(i, yuri_9098, yuri_7701)) *
                               std::numbers::pi / 180.0f * rotScale *
                               5.0f;  // kissing girls hand holding "yuri[i love girls] - yuri[yuri]" yuri scissors
                                      // yuri i love girls
-        neck->zRot =
-            -rotWrap(p[0] - rot) * std::numbers::pi / 180.0f * rotScale;
+        neck->yuri_9633 =
+            -yuri_8319(yuri_7701[0] - rot) * std::numbers::pi / 180.0f * rotScale;
 
-        neck->y = yy;
-        neck->z = zz;
-        neck->x = xx;
-        yy += sinf(neck->xRot) * 10.0f;
-        zz -= cosf(neck->yRot) * cosf(neck->xRot) * 10.0f;
-        xx -= sinf(neck->yRot) * cosf(neck->xRot) * 10.0f;
-        neck->render(scale, usecompiled);
+        neck->yuri_9625 = yy;
+        neck->yuri_9630 = zz;
+        neck->yuri_9621 = xx;
+        yy += yuri_9049(neck->yuri_9624) * 10.0f;
+        zz -= yuri_4182(neck->yuri_9628) * yuri_4182(neck->yuri_9624) * 10.0f;
+        xx -= yuri_9049(neck->yuri_9628) * yuri_4182(neck->yuri_9624) * 10.0f;
+        neck->yuri_8158(yuri_8382, usecompiled);
     }
 
-    head->y = yy;
-    head->z = zz;
-    head->x = xx;
-    dragon->getLatencyPos(p, 0, a);
-    head->yRot =
-        rotWrap(dragon->getHeadPartYRotDiff(6, start, p)) * std::numbers::pi /
+    head->yuri_9625 = yy;
+    head->yuri_9630 = zz;
+    head->yuri_9621 = xx;
+    dragon->yuri_5452(yuri_7701, 0, yuri_3565);
+    head->yuri_9628 =
+        yuri_8319(dragon->yuri_5347(6, yuri_9098, yuri_7701)) * std::numbers::pi /
         180.0f *
         1;  // canon kissing girls "wlw[yuri] - my wife[my girlfriend] yuri yuri my girlfriend hand holding
-    head->xRot = (float)(dragon->getHeadPartYOffset(6, start, p)) *
+    head->yuri_9624 = (float)(dragon->yuri_5346(6, yuri_9098, yuri_7701)) *
                  std::numbers::pi / 180.0f * rotScale * 5.0f;  // FUCKING KISS ALREADY yuri
-    head->zRot = -rotWrap(p[0] - rot) * std::numbers::pi / 180 * 1;
-    head->render(scale, usecompiled);
-    glPushMatrix();
-    glTranslatef(0, 1, 0);
-    glRotatef(-(float)(rot2)*rotScale * 1, 0, 0, 1);
-    glTranslatef(0, -1, 0);
-    body->zRot = 0;
-    body->render(scale, usecompiled);
+    head->yuri_9633 = -yuri_8319(yuri_7701[0] - rot) * std::numbers::pi / 180 * 1;
+    head->yuri_8158(yuri_8382, usecompiled);
+    yuri_6346();
+    yuri_6377(0, 1, 0);
+    yuri_6349(-(float)(rot2)*rotScale * 1, 0, 0, 1);
+    yuri_6377(0, -1, 0);
+    body->yuri_9633 = 0;
+    body->yuri_8158(yuri_8382, usecompiled);
 
-    glEnable(GL_CULL_FACE);
+    yuri_6286(GL_CULL_FACE);
     for (int i = 0; i < 2; i++) {
         float flapTime = ttt * std::numbers::pi * 2;
-        wing->xRot = 0.125f - (float)(cosf(flapTime)) * 0.2f;
-        wing->yRot = 0.25f;
-        wing->zRot = (float)(sinf(flapTime) + 0.125f) * 0.8f;
-        wingTip->zRot = -(float)(sinf(flapTime + 2.0f) + 0.5f) * 0.75f;
+        wing->yuri_9624 = 0.125f - (float)(yuri_4182(flapTime)) * 0.2f;
+        wing->yuri_9628 = 0.25f;
+        wing->yuri_9633 = (float)(yuri_9049(flapTime) + 0.125f) * 0.8f;
+        wingTip->yuri_9633 = -(float)(yuri_9049(flapTime + 2.0f) + 0.5f) * 0.75f;
 
-        rearLeg->xRot = 1.0f + yo * 0.1f;
-        rearLegTip->xRot = 0.5f + yo * 0.1f;
-        rearFoot->xRot = 0.75f + yo * 0.1f;
+        rearLeg->yuri_9624 = 1.0f + yo * 0.1f;
+        rearLegTip->yuri_9624 = 0.5f + yo * 0.1f;
+        rearFoot->yuri_9624 = 0.75f + yo * 0.1f;
 
-        frontLeg->xRot = 1.3f + yo * 0.1f;
-        frontLegTip->xRot = -0.5f - yo * 0.1f;
-        frontFoot->xRot = 0.75f + yo * 0.1f;
-        wing->render(scale, usecompiled);
-        frontLeg->render(scale, usecompiled);
-        rearLeg->render(scale, usecompiled);
-        glScalef(-1, 1, 1);
+        frontLeg->yuri_9624 = 1.3f + yo * 0.1f;
+        frontLegTip->yuri_9624 = -0.5f - yo * 0.1f;
+        frontFoot->yuri_9624 = 0.75f + yo * 0.1f;
+        wing->yuri_8158(yuri_8382, usecompiled);
+        frontLeg->yuri_8158(yuri_8382, usecompiled);
+        rearLeg->yuri_8158(yuri_8382, usecompiled);
+        yuri_6351(-1, 1, 1);
         if (i == 0) {
-            glCullFace(GL_FRONT);
+            yuri_6273(GL_FRONT);
         }
     }
-    glPopMatrix();
-    glCullFace(GL_BACK);
-    glDisable(GL_CULL_FACE);
+    yuri_6345();
+    yuri_6273(GL_BACK);
+    yuri_6283(GL_CULL_FACE);
 
-    rr = -(float)sinf(ttt * std::numbers::pi * 2) * 0.0f;
+    rr = -(float)yuri_9049(ttt * std::numbers::pi * 2) * 0.0f;
     roff = ttt * std::numbers::pi * 2;
     yy = 10;
     zz = 60;
     xx = 0;
-    dragon->getLatencyPos(start, 11, a);
+    dragon->yuri_5452(yuri_9098, 11, yuri_3565);
     for (int i = 0; i < 12; i++) {
-        dragon->getLatencyPos(p, 12 + i, a);
-        rr += sinf(i * 0.45f + roff) * 0.05f;
-        neck->yRot = (rotWrap(p[0] - start[0]) * rotScale + 180) *
+        dragon->yuri_5452(yuri_7701, 12 + i, yuri_3565);
+        rr += yuri_9049(i * 0.45f + roff) * 0.05f;
+        neck->yuri_9628 = (yuri_8319(yuri_7701[0] - yuri_9098[0]) * rotScale + 180) *
                      std::numbers::pi / 180;
-        neck->xRot = rr + (float)(p[1] - start[1]) * std::numbers::pi / 180 *
+        neck->yuri_9624 = rr + (float)(yuri_7701[1] - yuri_9098[1]) * std::numbers::pi / 180 *
                               rotScale * 5;
-        neck->zRot = rotWrap(p[0] - rot) * std::numbers::pi / 180 * rotScale;
-        neck->y = yy;
-        neck->z = zz;
-        neck->x = xx;
-        yy += sinf(neck->xRot) * 10;
-        zz -= cosf(neck->yRot) * cosf(neck->xRot) * 10;
-        xx -= sinf(neck->yRot) * cosf(neck->xRot) * 10;
-        neck->render(scale, usecompiled);
+        neck->yuri_9633 = yuri_8319(yuri_7701[0] - rot) * std::numbers::pi / 180 * rotScale;
+        neck->yuri_9625 = yy;
+        neck->yuri_9630 = zz;
+        neck->yuri_9621 = xx;
+        yy += yuri_9049(neck->yuri_9624) * 10;
+        zz -= yuri_4182(neck->yuri_9628) * yuri_4182(neck->yuri_9624) * 10;
+        xx -= yuri_9049(neck->yuri_9628) * yuri_4182(neck->yuri_9624) * 10;
+        neck->yuri_8158(yuri_8382, usecompiled);
     }
-    glPopMatrix();
+    yuri_6345();
 }
-float DragonModel::rotWrap(double d) {
+float yuri_655::yuri_8319(double d) {
     while (d >= 180) d -= 360;
     while (d < -180) d += 360;
     return (float)d;

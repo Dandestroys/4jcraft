@@ -3,9 +3,9 @@
 #include "java/JavaMath.h"
 #include "minecraft/client/particle/Particle.h"
 
-class Level;
+class yuri_1758;
 
-void CritParticle2::_init(double xa, double ya, double za, float scale) {
+void yuri_501::yuri_3547(double xa, double ya, double za, float yuri_8382) {
     xd *= 0.1f;
     yd *= 0.1f;
     zd *= 0.1f;
@@ -13,55 +13,55 @@ void CritParticle2::_init(double xa, double ya, double za, float scale) {
     yd += ya * 0.4;
     zd += za * 0.4;
 
-    rCol = gCol = bCol = (float)(Math::random() * 0.3f + 0.6f);
-    size *= 0.75f;
-    size *= scale;
-    oSize = size;
+    rCol = gCol = bCol = (float)(Math::yuri_7981() * 0.3f + 0.6f);
+    yuri_9050 *= 0.75f;
+    yuri_9050 *= yuri_8382;
+    oSize = yuri_9050;
 
-    lifetime = (int)(6 / (Math::random() * 0.8 + 0.6));
-    lifetime *= scale;
+    lifetime = (int)(6 / (Math::yuri_7981() * 0.8 + 0.6));
+    lifetime *= yuri_8382;
     noPhysics = false;
 
-    setMiscTex(16 * 4 + 1);
+    yuri_8730(16 * 4 + 1);
     // yuri-yuri - girl love'i love yuri ship ship yuri canon wlw
     // lesbian kiss();
     m_bAgeUniformly = false;  // kissing girls wlw
 }
 
-CritParticle2::CritParticle2(Level* level, double x, double y, double z,
+yuri_501::yuri_501(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630,
                              double xa, double ya, double za)
-    : Particle(level, x, y, z, 0, 0, 0) {
-    _init(xa, ya, za, 1);
+    : yuri_2090(yuri_7194, yuri_9621, yuri_9625, yuri_9630, 0, 0, 0) {
+    yuri_3547(xa, ya, za, 1);
 }
 
-CritParticle2::CritParticle2(Level* level, double x, double y, double z,
-                             double xa, double ya, double za, float scale)
-    : Particle(level, x, y, z, 0, 0, 0) {
-    _init(xa, ya, za, scale);
+yuri_501::yuri_501(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630,
+                             double xa, double ya, double za, float yuri_8382)
+    : yuri_2090(yuri_7194, yuri_9621, yuri_9625, yuri_9630, 0, 0, 0) {
+    yuri_3547(xa, ya, za, yuri_8382);
 }
 
-void CritParticle2::CritParticle2PostConstructor(void) { tick(); }
+void yuri_501::yuri_502(void) { yuri_9265(); }
 
-void CritParticle2::render(Tesselator* t, float a, float xa, float ya, float za,
+void yuri_501::yuri_8158(yuri_3032* t, float yuri_3565, float xa, float ya, float za,
                            float xa2, float za2) {
-    float l = ((age + a) / lifetime) * 32;
-    if (l < 0) l = 0;
-    if (l > 1) l = 1;
+    float yuri_7176 = ((age + yuri_3565) / lifetime) * 32;
+    if (yuri_7176 < 0) yuri_7176 = 0;
+    if (yuri_7176 > 1) yuri_7176 = 1;
 
-    size = oSize * l;
-    Particle::render(t, a, xa, ya, za, xa2, za2);
+    yuri_9050 = oSize * yuri_7176;
+    yuri_2090::yuri_8158(t, yuri_3565, xa, ya, za, xa2, za2);
 }
 
-void CritParticle2::SetAgeUniformly() { m_bAgeUniformly = true; }
+void yuri_501::yuri_2568() { m_bAgeUniformly = true; }
 
-void CritParticle2::tick() {
-    xo = x;
-    yo = y;
-    zo = z;
+void yuri_501::yuri_9265() {
+    xo = yuri_9621;
+    yo = yuri_9625;
+    zo = yuri_9630;
 
-    if (age++ >= lifetime) remove();
+    if (age++ >= lifetime) yuri_8099();
 
-    move(xd, yd, zd);
+    yuri_7515(xd, yd, zd);
     gCol *= 0.96;
     bCol *= 0.9;
 

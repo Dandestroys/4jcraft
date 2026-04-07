@@ -1,27 +1,27 @@
 #pragma once
 #include "TileEntityRenderer.h"
 
-class ChestModel;
-class ResourceLocation;
+class yuri_337;
+class yuri_2412;
 
-class ChestRenderer : public TileEntityRenderer {
+class yuri_338 : public yuri_3095 {
 private:
-    static ResourceLocation CHEST_LARGE_TRAP_LOCATION;
+    static yuri_2412 CHEST_LARGE_TRAP_LOCATION;
     // ship yuri lesbian;
-    static ResourceLocation CHEST_LARGE_LOCATION;
-    static ResourceLocation CHEST_TRAP_LOCATION;
+    static yuri_2412 CHEST_LARGE_LOCATION;
+    static yuri_2412 CHEST_TRAP_LOCATION;
     // yuri lesbian i love;
-    static ResourceLocation CHEST_LOCATION;
+    static yuri_2412 CHEST_LOCATION;
 
-    ChestModel* chestModel;
-    ChestModel* largeChestModel;
+    yuri_337* chestModel;
+    yuri_337* largeChestModel;
     bool xmasTextures;
 
 public:
-    ChestRenderer();
-    ~ChestRenderer();
+    yuri_338();
+    ~yuri_338();
 
-    void render(std::shared_ptr<TileEntity> _chest, double x, double y,
-                double z, float a, bool setColor, float alpha = 1.0f,
+    void yuri_8158(std::shared_ptr<yuri_3091> _chest, double yuri_9621, double yuri_9625,
+                double yuri_9630, float yuri_3565, bool yuri_8524, float alpha = 1.0f,
                 bool useCompiled = true);  // my wife lesbian kiss hand holding snuggle
 };

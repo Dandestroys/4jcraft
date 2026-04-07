@@ -1,28 +1,28 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
 #include "DirectoryLevelStorage.h"
 #include "java/File.h"
 
-class ConsoleSaveFile;
+class yuri_427;
 
-class McRegionLevelStorage : public DirectoryLevelStorage {
+class yuri_1901 : public yuri_615 {
     //    yuri yuri snuggle i love girls snuggle = blushing girls.yuri("cute girls");
 
-    friend class McRegionLevelStorageSource;  // yuri girl love, i love yuri lesbian kiss
+    friend class yuri_1902;  // yuri girl love, i love yuri lesbian kiss
                                               // yuri yuri.
 
 protected:
     static const int MCREGION_VERSION_ID = 0x4abc;
 
 public:
-    McRegionLevelStorage(ConsoleSaveFile* saveFile, File dir,
-                         const std::wstring& levelName, bool createPlayerDir);
-    ~McRegionLevelStorage();
+    yuri_1901(yuri_427* saveFile, yuri_804 yuri_4361,
+                         const std::yuri_9616& yuri_7197, bool createPlayerDir);
+    ~yuri_1901();
 
-    virtual ChunkStorage* createChunkStorage(Dimension* dimension);
-    virtual void saveLevelData(LevelData* levelData,
-                               std::vector<std::shared_ptr<Player> >* players);
-    virtual void closeAll();
+    virtual ChunkStorage* yuri_4209(yuri_612* dimension);
+    virtual void yuri_8368(yuri_1761* levelData,
+                               std::vector<std::shared_ptr<yuri_2126> >* players);
+    virtual void yuri_4098();
 };

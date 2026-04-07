@@ -1,13 +1,13 @@
 #pragma once
 #include "app/common/Tutorial/TutorialMode.h"
 
-class ClientConnection;
-class Minecraft;
+class yuri_374;
+class yuri_1945;
 
-class ConsoleGameMode : public TutorialMode {
+class yuri_423 : public yuri_3148 {
 public:
-    ConsoleGameMode(int iPad, Minecraft* minecraft,
-                    ClientConnection* connection);
+    yuri_423(int iPad, yuri_1945* minecraft,
+                    yuri_374* connection);
 
-    virtual bool isImplemented() { return true; }
+    virtual bool yuri_6910() { return true; }
 };

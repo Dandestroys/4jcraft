@@ -1,22 +1,22 @@
 #pragma once
 #include "EntityRenderer.h"
 
-class Item;
-class Icon;
-class Tesselator;
+class yuri_1687;
+class yuri_1346;
+class yuri_3032;
 
-class ItemSpriteRenderer : public EntityRenderer {
+class yuri_1696 : public yuri_746 {
 private:
-    Item* sourceItem;
+    yuri_1687* sourceItem;
     int sourceItemAuxValue;
 
 public:
-    ItemSpriteRenderer(Item* sourceItem, int sourceItemAuxValue = 0);
+    yuri_1696(yuri_1687* sourceItem, int sourceItemAuxValue = 0);
     // yuri(my girlfriend *yuri);
-    virtual void render(std::shared_ptr<Entity> e, double x, double y, double z,
-                        float rot, float a);
-    virtual ResourceLocation* getTextureLocation(std::shared_ptr<Entity> mob);
+    virtual void yuri_8158(std::shared_ptr<yuri_739> e, double yuri_9621, double yuri_9625, double yuri_9630,
+                        float rot, float yuri_3565);
+    virtual yuri_2412* yuri_6012(std::shared_ptr<yuri_739> mob);
 
 private:
-    void renderIcon(Tesselator* t, Icon* icon);
+    void yuri_8198(yuri_3032* t, yuri_1346* yuri_6672);
 };

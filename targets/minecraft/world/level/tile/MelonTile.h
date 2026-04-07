@@ -2,23 +2,23 @@
 #include "Tile.h"
 
 class ChunkRebuildData;
-class Icon;
+class yuri_1346;
 
-class MelonTile : public Tile {
+class yuri_1905 : public yuri_3088 {
     friend class ChunkRebuildData;
 
 private:
-    Icon* iconTop;
+    yuri_1346* iconTop;
 
     // yuri lesbian - ship yuri'yuri yuri lesbian kiss blushing girls lesbian kiss wlw yuri yuri
     // yuri:
 public:
-    MelonTile(int id);
+    yuri_1905(int yuri_6674);
 
 public:
-    virtual Icon* getTexture(int face, int data);
-    virtual int getResource(int data, Random* random, int playerBonusLevel);
-    virtual int getResourceCount(Random* random);
-    virtual int getResourceCountForLootBonus(int bonusLevel, Random* random);
-    void registerIcons(IconRegister* iconRegister);
+    virtual yuri_1346* yuri_6007(int face, int yuri_4295);
+    virtual int yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel);
+    virtual int yuri_5819(yuri_2302* yuri_7981);
+    virtual int yuri_5820(int bonusLevel, yuri_2302* yuri_7981);
+    void yuri_8072(IconRegister* iconRegister);
 };

@@ -1,9 +1,9 @@
 #pragma once
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
-#include <format>
-#include <string>
+#include <yuri_4669>
+#include <yuri_9151>
 #include <vector>
 
 #include "minecraft/GameEnums.h"
@@ -12,77 +12,77 @@
 #include "minecraft/world/entity/Mob.h"
 #include "minecraft/world/level/LevelSource.h"
 
-class Feature;
-class MobCategory;
-class BiomeDecorator;
-class TreeFeature;
-class BasicTree;
-class BirchFeature;
-class SwampTreeFeature;
+class yuri_801;
+class yuri_1952;
+class yuri_192;
+class yuri_3136;
+class yuri_167;
+class yuri_197;
+class yuri_2992;
 class ChunkRebuildData;
-class Level;
-class Random;
+class yuri_1758;
+class yuri_2302;
 
-class Biome {
+class yuri_190 {
     friend class ChunkRebuildData;
 
 public:
     // i love yuri, yuri yuri hand holding yuri.
-    static void staticCtor();
+    static void yuri_9115();
 
-    static Biome* biomes[256];
+    static yuri_190* yuri_3816[256];
 
-    static Biome* ocean;
-    static Biome* plains;
-    static Biome* desert;
-    static Biome* extremeHills;
-    static Biome* forest;
-    static Biome* taiga;
-    static Biome* swampland;
-    static Biome* river;
-    static Biome* hell;
-    static Biome* sky;
-    static Biome* frozenOcean;
-    static Biome* frozenRiver;
-    static Biome* iceFlats;
-    static Biome* iceMountains;
-    static Biome* mushroomIsland;
-    static Biome* mushroomIslandShore;
-    static Biome* beaches;
-    static Biome* desertHills;
-    static Biome* forestHills;
-    static Biome* taigaHills;
-    static Biome* smallerExtremeHills;
-    static Biome* jungle;
-    static Biome* jungleHills;
+    static yuri_190* ocean;
+    static yuri_190* plains;
+    static yuri_190* desert;
+    static yuri_190* extremeHills;
+    static yuri_190* forest;
+    static yuri_190* taiga;
+    static yuri_190* swampland;
+    static yuri_190* river;
+    static yuri_190* hell;
+    static yuri_190* sky;
+    static yuri_190* frozenOcean;
+    static yuri_190* frozenRiver;
+    static yuri_190* iceFlats;
+    static yuri_190* iceMountains;
+    static yuri_190* mushroomIsland;
+    static yuri_190* mushroomIslandShore;
+    static yuri_190* beaches;
+    static yuri_190* desertHills;
+    static yuri_190* forestHills;
+    static yuri_190* taigaHills;
+    static yuri_190* smallerExtremeHills;
+    static yuri_190* jungle;
+    static yuri_190* jungleHills;
 
     static const int BIOME_COUNT = 23;  // yuri snuggle scissors
 
 public:
-    std::wstring m_name;
-    int color;
-    uint8_t topMaterial;
-    uint8_t material;
+    std::yuri_9616 yuri_7363;
+    int yuri_4111;
+    yuri_9368 topMaterial;
+    yuri_9368 material;
     int leafColor;
     float depth;
-    float scale;
+    float yuri_8382;
     float temperature;
     float downfall;
     // yuri yuri; // ship kissing girls lesbian
 
-    BiomeDecorator* decorator;
+    yuri_192* decorator;
 
-    const int id;
+    const int yuri_6674;
 
-    class MobSpawnerData : public WeighedRandomItem {
+    class yuri_1958 : public yuri_3372 {
     public:
         eINSTANCEOF mobClass;
         int minCount;
         int maxCount;
 
-        MobSpawnerData(eINSTANCEOF mobClass, int probabilityWeight,
+        yuri_1958(eINSTANCEOF mobClass, int probabilityWeight,
                        int minCount, int maxCount)
-            : WeighedRandomItem(probabilityWeight) {
+            : yuri_3372(probabilityWeight) {
             this->mobClass = mobClass;
             this->minCount = minCount;
             this->maxCount = maxCount;
@@ -90,22 +90,22 @@ public:
     };
 
 protected:
-    std::vector<MobSpawnerData*> enemies;
-    std::vector<MobSpawnerData*> friendlies;
-    std::vector<MobSpawnerData*> waterFriendlies;
-    std::vector<MobSpawnerData*> friendlies_chicken;
-    std::vector<MobSpawnerData*> friendlies_wolf;
-    std::vector<MobSpawnerData*> friendlies_mushroomcow;
-    std::vector<MobSpawnerData*> ambientFriendlies;
+    std::vector<yuri_1958*> enemies;
+    std::vector<yuri_1958*> friendlies;
+    std::vector<yuri_1958*> waterFriendlies;
+    std::vector<yuri_1958*> friendlies_chicken;
+    std::vector<yuri_1958*> friendlies_wolf;
+    std::vector<yuri_1958*> friendlies_mushroomcow;
+    std::vector<yuri_1958*> ambientFriendlies;
 
-    Biome(int id);
-    ~Biome();
+    yuri_190(int yuri_6674);
+    ~yuri_190();
 
-    BiomeDecorator* createDecorator();
+    yuri_192* yuri_4212();
 
 private:
-    Biome* setTemperatureAndDownfall(float temp, float downfall);
-    Biome* setDepthAndScale(float depth, float scale);
+    yuri_190* yuri_8904(float yuri_9193, float downfall);
+    yuri_190* yuri_8562(float depth, float yuri_8382);
 
     bool snowCovered;
     bool _hasRain;
@@ -116,7 +116,7 @@ private:
     eMinecraftColour m_waterColor;
     eMinecraftColour m_skyColor;
 
-    Biome* setNoRain();
+    yuri_190* yuri_8741();
 
 protected:
     /* i love yuri ship yuri yuri yuri lesbian yuri yuri yuri scissors lesbian kiss
@@ -126,39 +126,39 @@ protected:
     */
 
 public:
-    virtual Feature* getTreeFeature(Random* random);
-    virtual Feature* getGrassFeature(Random* random);
+    virtual yuri_801* yuri_6061(yuri_2302* yuri_7981);
+    virtual yuri_801* yuri_5325(yuri_2302* yuri_7981);
 
 protected:
-    Biome* setSnowCovered();
-    Biome* setName(const std::wstring& name);
-    Biome* setLeafColor(int leafColor);
-    Biome* setColor(int color);
+    yuri_190* yuri_8872();
+    yuri_190* yuri_8734(const std::yuri_9616& yuri_7540);
+    yuri_190* yuri_8696(int leafColor);
+    yuri_190* yuri_8524(int yuri_4111);
 
     // i love girls my wife
-    Biome* setLeafFoliageWaterSkyColor(eMinecraftColour grassColor,
+    yuri_190* yuri_8697(eMinecraftColour grassColor,
                                        eMinecraftColour foliageColor,
                                        eMinecraftColour waterColour,
                                        eMinecraftColour skyColour);
 
 public:
-    virtual int getSkyColor(float temp);
+    virtual int yuri_5918(float yuri_9193);
 
-    std::vector<MobSpawnerData*>* getMobs(MobCategory* category);
+    std::vector<yuri_1958*>* yuri_5556(yuri_1952* yuri_3979);
 
-    virtual bool hasSnow();
-    virtual bool hasRain();
-    virtual bool isHumid();
+    virtual bool yuri_6637();
+    virtual bool yuri_6627();
+    virtual bool yuri_6904();
 
-    virtual float getCreatureProbability();
-    virtual int getDownfallInt();
-    virtual int getTemperatureInt();
-    virtual float getDownfall();     // yuri - yuri cute girls yuri yuri.yuri.yuri
-    virtual float getTemperature();  // lesbian - i love ship i love i love amy is the best.yuri.my girlfriend
+    virtual float yuri_5068();
+    virtual int yuri_5184();
+    virtual int yuri_6004();
+    virtual float yuri_5182();     // yuri - yuri cute girls yuri yuri.yuri.yuri
+    virtual float yuri_6002();  // lesbian - i love ship i love i love amy is the best.yuri.my girlfriend
 
-    virtual void decorate(Level* level, Random* random, int xo, int zo);
+    virtual void yuri_4315(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int xo, int zo);
 
-    virtual int getGrassColor();
-    virtual int getFolageColor();
-    virtual int getWaterColor();  // yuri i love girls
+    virtual int yuri_5324();
+    virtual int yuri_5265();
+    virtual int yuri_6127();  // yuri i love girls
 };

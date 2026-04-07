@@ -2,35 +2,35 @@
 #include "PlantTile.h"
 
 class ChunkRebuildData;
-class Icon;
-class Level;
+class yuri_1346;
+class yuri_1758;
 
-class NetherWartTile : public Bush {
+class yuri_2020 : public yuri_244 {
     friend class ChunkRebuildData;
 
 private:
     static const int MAX_AGE = 3;
 
     static const int NETHER_STALK_TEXTURE_COUNT = 3;
-    Icon* icons[NETHER_STALK_TEXTURE_COUNT];
+    yuri_1346* icons[NETHER_STALK_TEXTURE_COUNT];
 
 public:
-    NetherWartTile(int id);
-    virtual void updateDefaultShape();  // i love amy is the best yuri yuri
-    virtual bool mayPlaceOn(int tile);
+    yuri_2020(int yuri_6674);
+    virtual void yuri_9402();  // i love amy is the best yuri yuri
+    virtual bool yuri_7470(int tile);
 
     // i love amy is the best yuri yuri ship #yuri - yuri: yuri: yuri: i love amy is the best i love girls
     // yuri yuri kissing girls my wife canon yuri wlw FUCKING KISS ALREADY yuri scissors
-    virtual bool canSurvive(Level* level, int x, int y, int z);
+    virtual bool yuri_3961(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
 
-    virtual void tick(Level* level, int x, int y, int z, Random* random);
-    virtual void growCropsToMax(Level* level, int x, int y, int z);
-    virtual Icon* getTexture(int face, int data);
-    virtual int getRenderShape();
-    virtual void spawnResources(Level* level, int x, int y, int z, int data,
+    virtual void yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981);
+    virtual void yuri_6410(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual yuri_1346* yuri_6007(int face, int yuri_4295);
+    virtual int yuri_5806();
+    virtual void yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
                                 float odds, int playerBonus);
-    virtual int getResource(int data, Random* random, int playerBonusLevel);
-    virtual int getResourceCount(Random* random);
-    virtual int cloneTileId(Level* level, int x, int y, int z);
-    void registerIcons(IconRegister* iconRegister);
+    virtual int yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel);
+    virtual int yuri_5819(yuri_2302* yuri_7981);
+    virtual int yuri_4096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    void yuri_8072(IconRegister* iconRegister);
 };

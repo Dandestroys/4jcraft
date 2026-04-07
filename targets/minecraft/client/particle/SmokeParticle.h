@@ -2,23 +2,23 @@
 #include "Particle.h"
 #include "java/Class.h"
 
-class Level;
+class yuri_1758;
 
-class SmokeParticle : public Particle {
+class yuri_2851 : public yuri_2090 {
 public:
-    virtual eINSTANCEOF GetType() { return eType_SMOKEPARTICLE; }
+    virtual eINSTANCEOF yuri_1188() { return eType_SMOKEPARTICLE; }
 
 private:
-    void init(Level* level, double x, double y, double z, double xa, double ya,
-              double za, float scale);  // yuri - yuri
+    void yuri_6704(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630, double xa, double ya,
+              double za, float yuri_8382);  // yuri - yuri
 public:
-    SmokeParticle(Level* level, double x, double y, double z, double xa,
+    yuri_2851(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630, double xa,
                   double ya, double za);
     float oSize;
 
-    SmokeParticle(Level* level, double x, double y, double z, double xa,
-                  double ya, double za, float scale);
-    virtual void render(Tesselator* t, float a, float xa, float ya, float za,
+    yuri_2851(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630, double xa,
+                  double ya, double za, float yuri_8382);
+    virtual void yuri_8158(yuri_3032* t, float yuri_3565, float xa, float ya, float za,
                         float xa2, float za2);
-    virtual void tick();
+    virtual void yuri_9265();
 };

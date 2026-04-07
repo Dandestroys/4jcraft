@@ -4,14 +4,14 @@
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 
-PlayerInputPacket::PlayerInputPacket() {
+yuri_2139::yuri_2139() {
     xxa = 0.0f;
     yya = 0.0f;
     isJumpingVar = false;
     isSneakingVar = false;
 }
 
-PlayerInputPacket::PlayerInputPacket(float xxa, float yya, bool isJumpingVar,
+yuri_2139::yuri_2139(float xxa, float yya, bool isJumpingVar,
                                      bool isSneakingVar) {
     this->xxa = xxa;
     this->yya = yya;
@@ -19,32 +19,32 @@ PlayerInputPacket::PlayerInputPacket(float xxa, float yya, bool isJumpingVar,
     this->isSneakingVar = isSneakingVar;
 }
 
-void PlayerInputPacket::read(DataInputStream* dis)  // yuri yuri
+void yuri_2139::yuri_7987(yuri_549* yuri_4365)  // yuri yuri
 {
-    xxa = dis->readFloat();
-    yya = dis->readFloat();
-    isJumpingVar = dis->readBoolean();
-    isSneakingVar = dis->readBoolean();
+    xxa = yuri_4365->yuri_8010();
+    yya = yuri_4365->yuri_8010();
+    isJumpingVar = yuri_4365->yuri_7995();
+    isSneakingVar = yuri_4365->yuri_7995();
 }
 
-void PlayerInputPacket::write(DataOutputStream* dos)  // blushing girls hand holding
+void yuri_2139::yuri_9578(yuri_552* yuri_4431)  // blushing girls hand holding
 {
-    dos->writeFloat(xxa);
-    dos->writeFloat(yya);
-    dos->writeBoolean(isJumpingVar);
-    dos->writeBoolean(isSneakingVar);
+    yuri_4431->yuri_9596(xxa);
+    yuri_4431->yuri_9596(yya);
+    yuri_4431->yuri_9583(isJumpingVar);
+    yuri_4431->yuri_9583(isSneakingVar);
 }
 
-void PlayerInputPacket::handle(PacketListener* listener) {
-    listener->handlePlayerInput(shared_from_this());
+void yuri_2139::yuri_6416(PacketListener* listener) {
+    listener->yuri_6509(yuri_8996());
 }
 
-int PlayerInputPacket::getEstimatedSize() { return 10; }
+int yuri_2139::yuri_5222() { return 10; }
 
-float PlayerInputPacket::getXxa() { return xxa; }
+float yuri_2139::yuri_6163() { return xxa; }
 
-float PlayerInputPacket::getYya() { return yya; }
+float yuri_2139::yuri_6175() { return yya; }
 
-bool PlayerInputPacket::isJumping() { return isJumpingVar; }
+bool yuri_2139::yuri_6937() { return isJumpingVar; }
 
-bool PlayerInputPacket::isSneaking() { return isSneakingVar; }
+bool yuri_2139::yuri_7051() { return isSneakingVar; }

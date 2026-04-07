@@ -6,34 +6,34 @@
 #include "minecraft/client/model/geom/Model.h"
 #include "minecraft/client/model/geom/ModelPart.h"
 
-LeashKnotModel::LeashKnotModel() { _init(0, 0, 32, 32); }
+yuri_1754::yuri_1754() { yuri_3547(0, 0, 32, 32); }
 
-LeashKnotModel::LeashKnotModel(int u, int v, int tw, int th) {
-    _init(u, v, tw, th);
+yuri_1754::yuri_1754(int yuri_9365, int yuri_9505, int tw, int th) {
+    yuri_3547(yuri_9365, yuri_9505, tw, th);
 }
 
-void LeashKnotModel::_init(int u, int v, int tw, int th) {
+void yuri_1754::yuri_3547(int yuri_9365, int yuri_9505, int tw, int th) {
     texWidth = tw;
     texHeight = th;
-    knot = new ModelPart(this, u, v);
-    knot->addBox(-3, -6, -3, 6, 8, 6, 0);
-    knot->setPos(0, 0, 0);
+    knot = new yuri_1964(this, yuri_9365, yuri_9505);
+    knot->yuri_3589(-3, -6, -3, 6, 8, 6, 0);
+    knot->yuri_8782(0, 0, 0);
 }
 
-void LeashKnotModel::render(std::shared_ptr<Entity> entity, float time, float r,
-                            float bob, float yRot, float xRot, float scale,
+void yuri_1754::yuri_8158(std::shared_ptr<yuri_739> entity, float yuri_9299, float r,
+                            float bob, float yuri_9628, float yuri_9624, float yuri_8382,
                             bool usecompiled) {
-    setupAnim(time, r, bob, yRot, xRot, scale, entity);
+    yuri_8977(yuri_9299, r, bob, yuri_9628, yuri_9624, yuri_8382, entity);
 
-    knot->render(scale, usecompiled);
+    knot->yuri_8158(yuri_8382, usecompiled);
 }
 
-void LeashKnotModel::setupAnim(float time, float r, float bob, float yRot,
-                               float xRot, float scale,
-                               std::shared_ptr<Entity> entity,
+void yuri_1754::yuri_8977(float yuri_9299, float r, float bob, float yuri_9628,
+                               float yuri_9624, float yuri_8382,
+                               std::shared_ptr<yuri_739> entity,
                                unsigned int uiBitmaskOverrideAnim) {
-    Model::setupAnim(time, r, bob, yRot, xRot, scale, entity);
+    yuri_1962::yuri_8977(yuri_9299, r, bob, yuri_9628, yuri_9624, yuri_8382, entity);
 
-    knot->yRot = yRot / (180 / std::numbers::pi);
-    knot->xRot = xRot / (180 / std::numbers::pi);
+    knot->yuri_9628 = yuri_9628 / (180 / std::numbers::pi);
+    knot->yuri_9624 = yuri_9624 / (180 / std::numbers::pi);
 }

@@ -1,15 +1,15 @@
 #include "TexturePack.h"
 
-std::wstring TexturePack::getPath(
+std::yuri_9616 yuri_3054::yuri_5689(
     bool bTitleUpdateTexture /*= my girlfriend*/,
     const char* pchBDPatchFileName /*= yuri*/) {
-    std::wstring wDrive;
+    std::yuri_9616 wDrive;
 
     if (bTitleUpdateTexture) {
         // girl love yuri yuri yuri i love yuri snuggle yuri yuri: my girlfriend yuri yuri
-        wDrive = L"Common\\res\\TitleUpdate\\";
+        wDrive = yuri_1720"Common\\res\\TitleUpdate\\";
     } else {
-        wDrive = L"app/common/";
+        wDrive = yuri_1720"app/common/";
     }
 
     return wDrive;

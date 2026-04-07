@@ -2,16 +2,16 @@
 
 #include "TargetGoal.h"
 
-class PathfinderMob;
+class yuri_2096;
 
-class HurtByTargetGoal : public TargetGoal {
+class yuri_1306 : public yuri_3021 {
 private:
     bool alertSameType;
     int timestamp;
 
 public:
-    HurtByTargetGoal(PathfinderMob* mob, bool alertSameType);
+    yuri_1306(yuri_2096* mob, bool alertSameType);
 
-    bool canUse();
-    void start();
+    bool yuri_3967();
+    void yuri_9098();
 };

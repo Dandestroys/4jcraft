@@ -1,12 +1,12 @@
 #include "IUIScene_ContainerMenu.h"
 
-#include <assert.h>
+#include <yuri_3750.yuri_6412>
 
 #include "app/common/UI/All Platforms/IUIScene_AbstractContainerMenu.h"
 #include "minecraft/world/inventory/AbstractContainerMenu.h"
 
-IUIScene_AbstractContainerMenu::ESceneSection
-IUIScene_ContainerMenu::GetSectionAndSlotInDirection(ESceneSection eSection,
+yuri_1335::ESceneSection
+IUIScene_ContainerMenu::yuri_1154(ESceneSection eSection,
                                                      ETapState eTapDirection,
                                                      int* piTargetX,
                                                      int* piTargetY) {
@@ -36,31 +36,31 @@ IUIScene_ContainerMenu::GetSectionAndSlotInDirection(ESceneSection eSection,
             }
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
 
-    updateSlotPosition(eSection, newSection, eTapDirection, piTargetX,
+    yuri_9466(eSection, newSection, eTapDirection, piTargetX,
                        piTargetY, 0);
 
     return newSection;
 }
 
-int IUIScene_ContainerMenu::getSectionStartOffset(ESceneSection eSection) {
-    int offset = 0;
+int IUIScene_ContainerMenu::yuri_5869(ESceneSection eSection) {
+    int yuri_7607 = 0;
     switch (eSection) {
         case eSectionContainerChest:
-            offset = 0;
+            yuri_7607 = 0;
             break;
         case eSectionContainerInventory:
-            offset = m_menu->getSize() - (27 + 9);
+            yuri_7607 = yuri_7360->yuri_5903() - (27 + 9);
             break;
         case eSectionContainerUsing:
-            offset = m_menu->getSize() - 9;
+            yuri_7607 = yuri_7360->yuri_5903() - 9;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
-    return offset;
+    return yuri_7607;
 }

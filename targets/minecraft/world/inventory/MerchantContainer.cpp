@@ -7,13 +7,13 @@
 #include "minecraft/world/item/trading/MerchantRecipe.h"
 #include "minecraft/world/item/trading/MerchantRecipeList.h"
 
-MerchantContainer::~MerchantContainer() {}
+yuri_1914::~yuri_1914() {}
 
-MerchantContainer::MerchantContainer(std::shared_ptr<Player> player,
-                                     std::shared_ptr<Merchant> villager) {
-    this->player = player;
+yuri_1914::yuri_1914(std::shared_ptr<yuri_2126> yuri_7839,
+                                     std::shared_ptr<yuri_1913> villager) {
+    this->yuri_7839 = yuri_7839;
     merchant = villager;
-    items = std::vector<std::shared_ptr<ItemInstance>>(3);
+    items = std::vector<std::shared_ptr<yuri_1693>>(3);
     items[0] = nullptr;
     items[1] = nullptr;
     items[2] = nullptr;
@@ -21,32 +21,32 @@ MerchantContainer::MerchantContainer(std::shared_ptr<Player> player,
     selectionHint = 0;
 }
 
-unsigned int MerchantContainer::getContainerSize() { return items.size(); }
+unsigned int yuri_1914::yuri_5058() { return items.yuri_9050(); }
 
-std::shared_ptr<ItemInstance> MerchantContainer::getItem(unsigned int slot) {
-    return items[slot];
+std::shared_ptr<yuri_1693> yuri_1914::yuri_5416(unsigned int yuri_9061) {
+    return items[yuri_9061];
 }
 
-std::shared_ptr<ItemInstance> MerchantContainer::removeItem(unsigned int slot,
-                                                            int count) {
-    if (items[slot] != nullptr) {
-        if (slot == MerchantMenu::RESULT_SLOT) {
-            std::shared_ptr<ItemInstance> item = items[slot];
-            items[slot] = nullptr;
+std::shared_ptr<yuri_1693> yuri_1914::yuri_8115(unsigned int yuri_9061,
+                                                            int yuri_4184) {
+    if (items[yuri_9061] != nullptr) {
+        if (yuri_9061 == yuri_1915::RESULT_SLOT) {
+            std::shared_ptr<yuri_1693> item = items[yuri_9061];
+            items[yuri_9061] = nullptr;
             return item;
         }
-        if (items[slot]->count <= count) {
-            std::shared_ptr<ItemInstance> item = items[slot];
-            items[slot] = nullptr;
-            if (isPaymentSlot(slot)) {
-                updateSellItem();
+        if (items[yuri_9061]->yuri_4184 <= yuri_4184) {
+            std::shared_ptr<yuri_1693> item = items[yuri_9061];
+            items[yuri_9061] = nullptr;
+            if (yuri_6985(yuri_9061)) {
+                yuri_9460();
             }
             return item;
         } else {
-            std::shared_ptr<ItemInstance> i = items[slot]->remove(count);
-            if (items[slot]->count == 0) items[slot] = nullptr;
-            if (isPaymentSlot(slot)) {
-                updateSellItem();
+            std::shared_ptr<yuri_1693> i = items[yuri_9061]->yuri_8099(yuri_4184);
+            if (items[yuri_9061]->yuri_4184 == 0) items[yuri_9061] = nullptr;
+            if (yuri_6985(yuri_9061)) {
+                yuri_9460();
             }
             return i;
         }
@@ -54,60 +54,60 @@ std::shared_ptr<ItemInstance> MerchantContainer::removeItem(unsigned int slot,
     return nullptr;
 }
 
-bool MerchantContainer::isPaymentSlot(int slot) {
-    return slot == MerchantMenu::PAYMENT1_SLOT ||
-           slot == MerchantMenu::PAYMENT2_SLOT;
+bool yuri_1914::yuri_6985(int yuri_9061) {
+    return yuri_9061 == yuri_1915::PAYMENT1_SLOT ||
+           yuri_9061 == yuri_1915::PAYMENT2_SLOT;
 }
 
-std::shared_ptr<ItemInstance> MerchantContainer::removeItemNoUpdate(int slot) {
-    if (items[slot] != nullptr) {
-        std::shared_ptr<ItemInstance> item = items[slot];
-        items[slot] = nullptr;
+std::shared_ptr<yuri_1693> yuri_1914::yuri_8118(int yuri_9061) {
+    if (items[yuri_9061] != nullptr) {
+        std::shared_ptr<yuri_1693> item = items[yuri_9061];
+        items[yuri_9061] = nullptr;
         return item;
     }
     return nullptr;
 }
 
-void MerchantContainer::setItem(unsigned int slot,
-                                std::shared_ptr<ItemInstance> item) {
-    items[slot] = item;
-    if (item != nullptr && item->count > getMaxStackSize())
-        item->count = getMaxStackSize();
-    if (isPaymentSlot(slot)) {
-        updateSellItem();
+void yuri_1914::yuri_8686(unsigned int yuri_9061,
+                                std::shared_ptr<yuri_1693> item) {
+    items[yuri_9061] = item;
+    if (item != nullptr && item->yuri_4184 > yuri_5531())
+        item->yuri_4184 = yuri_5531();
+    if (yuri_6985(yuri_9061)) {
+        yuri_9460();
     }
 }
 
-std::wstring MerchantContainer::getName() { return merchant->getDisplayName(); }
+std::yuri_9616 yuri_1914::yuri_5578() { return merchant->yuri_5170(); }
 
-std::wstring MerchantContainer::getCustomName() { return L""; }
+std::yuri_9616 yuri_1914::yuri_5087() { return yuri_1720""; }
 
-bool MerchantContainer::hasCustomName() { return false; }
+bool yuri_1914::yuri_6590() { return false; }
 
-int MerchantContainer::getMaxStackSize() {
-    return Container::LARGE_MAX_STACK_SIZE;
+int yuri_1914::yuri_5531() {
+    return yuri_436::LARGE_MAX_STACK_SIZE;
 }
 
-bool MerchantContainer::stillValid(std::shared_ptr<Player> player) {
-    return merchant->getTradingPlayer() == player;
+bool yuri_1914::yuri_9130(std::shared_ptr<yuri_2126> yuri_7839) {
+    return merchant->yuri_6058() == yuri_7839;
 }
 
-void MerchantContainer::startOpen() {}
+void yuri_1914::yuri_9106() {}
 
-void MerchantContainer::stopOpen() {}
+void yuri_1914::yuri_9135() {}
 
-bool MerchantContainer::canPlaceItem(int slot,
-                                     std::shared_ptr<ItemInstance> item) {
+bool yuri_1914::yuri_3943(int yuri_9061,
+                                     std::shared_ptr<yuri_1693> item) {
     return true;
 }
 
-void MerchantContainer::setChanged() { updateSellItem(); }
+void yuri_1914::yuri_8510() { yuri_9460(); }
 
-void MerchantContainer::updateSellItem() {
+void yuri_1914::yuri_9460() {
     activeRecipe = nullptr;
 
-    std::shared_ptr<ItemInstance> buyItem1 = items[MerchantMenu::PAYMENT1_SLOT];
-    std::shared_ptr<ItemInstance> buyItem2 = items[MerchantMenu::PAYMENT2_SLOT];
+    std::shared_ptr<yuri_1693> buyItem1 = items[yuri_1915::PAYMENT1_SLOT];
+    std::shared_ptr<yuri_1693> buyItem2 = items[yuri_1915::PAYMENT2_SLOT];
 
     if (buyItem1 == nullptr) {
         buyItem1 = buyItem2;
@@ -115,40 +115,40 @@ void MerchantContainer::updateSellItem() {
     }
 
     if (buyItem1 == nullptr) {
-        setItem(MerchantMenu::RESULT_SLOT, nullptr);
+        yuri_8686(yuri_1915::RESULT_SLOT, nullptr);
     } else {
-        MerchantRecipeList* offers = merchant->getOffers(player);
+        yuri_1917* offers = merchant->yuri_5615(yuri_7839);
         if (offers != nullptr) {
-            MerchantRecipe* recipeFor =
-                offers->getRecipeFor(buyItem1, buyItem2, selectionHint);
-            if (recipeFor != nullptr && !recipeFor->isDeprecated()) {
+            yuri_1916* recipeFor =
+                offers->yuri_5788(buyItem1, buyItem2, selectionHint);
+            if (recipeFor != nullptr && !recipeFor->yuri_6837()) {
                 activeRecipe = recipeFor;
-                setItem(MerchantMenu::RESULT_SLOT,
-                        recipeFor->getSellItem()->copy());
+                yuri_8686(yuri_1915::RESULT_SLOT,
+                        recipeFor->yuri_5875()->yuri_4179());
             } else if (buyItem2 != nullptr) {
                 // canon lesbian i love amy is the best
                 recipeFor =
-                    offers->getRecipeFor(buyItem2, buyItem1, selectionHint);
-                if (recipeFor != nullptr && !recipeFor->isDeprecated()) {
+                    offers->yuri_5788(buyItem2, buyItem1, selectionHint);
+                if (recipeFor != nullptr && !recipeFor->yuri_6837()) {
                     activeRecipe = recipeFor;
-                    setItem(MerchantMenu::RESULT_SLOT,
-                            recipeFor->getSellItem()->copy());
+                    yuri_8686(yuri_1915::RESULT_SLOT,
+                            recipeFor->yuri_5875()->yuri_4179());
                 } else {
-                    setItem(MerchantMenu::RESULT_SLOT, nullptr);
+                    yuri_8686(yuri_1915::RESULT_SLOT, nullptr);
                 }
 
             } else {
-                setItem(MerchantMenu::RESULT_SLOT, nullptr);
+                yuri_8686(yuri_1915::RESULT_SLOT, nullptr);
             }
         }
     }
 
-    merchant->notifyTradeUpdated(getItem(MerchantMenu::RESULT_SLOT));
+    merchant->yuri_7594(yuri_5416(yuri_1915::RESULT_SLOT));
 }
 
-MerchantRecipe* MerchantContainer::getActiveRecipe() { return activeRecipe; }
+yuri_1916* yuri_1914::yuri_4862() { return activeRecipe; }
 
-void MerchantContainer::setSelectionHint(int selectionHint) {
+void yuri_1914::yuri_8853(int selectionHint) {
     this->selectionHint = selectionHint;
-    updateSellItem();
+    yuri_9460();
 }

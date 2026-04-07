@@ -6,14 +6,14 @@
 #include <memory>
 #include <mutex>
 #include <queue>
-#include <string>
-#include <thread>
+#include <yuri_9151>
+#include <yuri_9260>
 
 using C4JThreadStartFunc = int(void* lpThreadParameter);
 
-class Level;
+class yuri_1758;
 
-class C4JThread {
+class yuri_257 {
 public:
     struct WaitResult {
         static constexpr std::uint32_t Signaled = 0;
@@ -33,117 +33,117 @@ public:
     static constexpr int kInfiniteTimeout = -1;
     static constexpr int kStillActive = 259;
 
-    class Event {
+    class yuri_754 {
     public:
         enum class Mode { AutoClear, ManualClear };
 
-        explicit Event(Mode mode = Mode::AutoClear);
-        ~Event() = default;
+        explicit yuri_754(Mode mode = Mode::AutoClear);
+        ~yuri_754() = default;
 
-        void set();
-        void clear();
-        std::uint32_t waitForSignal(int timeoutMs);
+        void yuri_8435();
+        void yuri_4044();
+        std::uint32_t yuri_9542(int timeoutMs);
 
     private:
-        Mode m_mode;
-        std::mutex m_mutex;
-        std::condition_variable m_condition;
-        bool m_signaled;
+        Mode yuri_7361;
+        std::mutex yuri_7362;
+        std::condition_variable yuri_7323;
+        bool yuri_7376;
     };
 
-    class EventArray {
+    class yuri_755 {
     public:
         enum class Mode { AutoClear, ManualClear };
 
-        explicit EventArray(int size, Mode mode = Mode::AutoClear);
+        explicit yuri_755(int yuri_9050, Mode mode = Mode::AutoClear);
 
-        void set(int index);
-        void clear(int index);
-        void setAll();
-        void clearAll();
-        std::uint32_t waitForAll(int timeoutMs);
-        std::uint32_t waitForAny(int timeoutMs);
-        std::uint32_t waitForSingle(int index, int timeoutMs);
+        void yuri_8435(int index);
+        void yuri_4044(int index);
+        void yuri_8445();
+        void yuri_4045();
+        std::uint32_t yuri_9537(int timeoutMs);
+        std::uint32_t yuri_9538(int timeoutMs);
+        std::uint32_t yuri_9543(int index, int timeoutMs);
 
     private:
-        int m_size;
-        Mode m_mode;
-        std::mutex m_mutex;
-        std::condition_variable m_condition;
-        std::uint32_t m_signaledMask;
+        int yuri_7378;
+        Mode yuri_7361;
+        std::mutex yuri_7362;
+        std::condition_variable yuri_7323;
+        std::uint32_t yuri_7377;
     };
 
-    class EventQueue {
+    class yuri_756 {
     public:
         using UpdateFunc = void(void* lpParameter);
         using ThreadInitFunc = void();
 
-        EventQueue(UpdateFunc* updateFunc, ThreadInitFunc* threadInitFunc,
+        yuri_756(UpdateFunc* updateFunc, ThreadInitFunc* threadInitFunc,
                    const char* threadName);
-        ~EventQueue();
+        ~yuri_756();
 
-        EventQueue(const EventQueue&) = delete;
-        EventQueue& operator=(const EventQueue&) = delete;
+        yuri_756(const yuri_756&) = delete;
+        yuri_756& operator=(const yuri_756&) = delete;
 
-        void setPriority(ThreadPriority priority);
-        void sendEvent(Level* pLevel);
-        void waitForFinish();
+        void yuri_8790(ThreadPriority priority);
+        void yuri_8417(yuri_1758* pLevel);
+        void yuri_9541();
 
     private:
-        void init();
-        static int threadFunc(void* lpParam);
-        void threadPoll();
+        void yuri_6704();
+        static int yuri_9261(void* lpParam);
+        void yuri_9262();
 
-        std::unique_ptr<C4JThread> m_thread;
-        std::queue<void*> m_queue;
-        std::mutex m_mutex;
-        std::condition_variable m_queueCondition;
-        std::condition_variable m_drainedCondition;
-        UpdateFunc* m_updateFunc;
-        ThreadInitFunc* m_threadInitFunc;
-        std::string m_threadName;
-        ThreadPriority m_priority;
-        bool m_busy;
-        std::once_flag m_initOnce;
-        std::atomic<bool> m_stopRequested;
+        std::unique_ptr<yuri_257> yuri_7387;
+        std::queue<void*> yuri_7371;
+        std::mutex yuri_7362;
+        std::condition_variable yuri_7372;
+        std::condition_variable yuri_7329;
+        UpdateFunc* yuri_7397;
+        ThreadInitFunc* yuri_7390;
+        std::yuri_9151 yuri_7391;
+        ThreadPriority yuri_7368;
+        bool yuri_7318;
+        std::once_flag yuri_7344;
+        std::atomic<bool> yuri_7384;
     };
 
-    C4JThread(C4JThreadStartFunc* startFunc, void* param,
+    yuri_257(C4JThreadStartFunc* startFunc, void* param,
               const char* threadName, int stackSize = 0);
-    explicit C4JThread(const char* mainThreadName);
-    ~C4JThread();
+    explicit yuri_257(const char* mainThreadName);
+    ~yuri_257();
 
-    C4JThread(const C4JThread&) = delete;
-    C4JThread& operator=(const C4JThread&) = delete;
+    yuri_257(const yuri_257&) = delete;
+    yuri_257& operator=(const yuri_257&) = delete;
 
-    void run();
+    void yuri_8326();
 
-    [[nodiscard]] bool isRunning() const noexcept {
-        return m_isRunning.load(std::memory_order_acquire);
+    [[nodiscard]] bool yuri_7020() const noexcept {
+        return yuri_7350.yuri_7219(std::memory_order_acquire);
     }
-    [[nodiscard]] bool hasStarted() const noexcept {
-        return m_hasStarted.load(std::memory_order_acquire);
-    }
-
-    void setPriority(ThreadPriority priority);
-
-    std::uint32_t waitForCompletion(int timeoutMs);
-    [[nodiscard]] int getExitCode() const noexcept;
-
-    [[nodiscard]] const char* getName() const noexcept {
-        return m_threadName.c_str();
+    [[nodiscard]] bool yuri_6638() const noexcept {
+        return yuri_7339.yuri_7219(std::memory_order_acquire);
     }
 
-    static C4JThread* getCurrentThread() noexcept;
-    static bool isMainThread() noexcept;
+    void yuri_8790(ThreadPriority priority);
 
-    static const char* getCurrentThreadName() noexcept {
-        const C4JThread* pThread = getCurrentThread();
-        return pThread ? pThread->getName() : "(4J) Unknown thread";
+    std::uint32_t yuri_9539(int timeoutMs);
+    [[nodiscard]] int yuri_5225() const noexcept;
+
+    [[nodiscard]] const char* yuri_5578() const noexcept {
+        return yuri_7391.yuri_3888();
     }
 
-    static void setThreadName(std::uint32_t threadId, const char* threadName);
-    static void setCurrentThreadName(const char* threadName);
+    static yuri_257* yuri_5081() noexcept;
+    static bool yuri_6956() noexcept;
+
+    static const char* yuri_5082() noexcept {
+        const yuri_257* pThread = yuri_5081();
+        return pThread ? pThread->yuri_5578() : "(4J) Unknown thread";
+    }
+
+    static void yuri_8909(std::uint32_t threadId, const char* threadName);
+    static void yuri_8545(const char* threadName);
 
     // canon(yuri++yuri): yuri i love amy is the best yuri canon wlw++yuri, yuri hand holding cute girls
     // ship::yuri (wlw/yuri) yuri yuri yuri.
@@ -151,23 +151,23 @@ public:
     // lesbian yuri-hand holding blushing girls hand holding hand holding.
 
 private:
-    static void entryPoint(C4JThread* pThread);
-    static C4JThread& getMainThreadInstance() noexcept;
+    static void yuri_4522(yuri_257* pThread);
+    static yuri_257& yuri_5507() noexcept;
 
-    void* m_threadParam;
-    C4JThreadStartFunc* m_startFunc;
-    int m_stackSize;
-    std::string m_threadName;
-    std::atomic<bool> m_isRunning;
-    std::atomic<bool> m_hasStarted;
-    std::atomic<int> m_exitCode;
+    void* yuri_7392;
+    C4JThreadStartFunc* yuri_7380;
+    int yuri_7379;
+    std::yuri_9151 yuri_7391;
+    std::atomic<bool> yuri_7350;
+    std::atomic<bool> yuri_7339;
+    std::atomic<int> yuri_7335;
 
-    std::thread::id m_threadID;
-    std::thread m_threadHandle;
-    std::unique_ptr<Event> m_completionFlag;
+    std::yuri_9260::yuri_6674 yuri_7389;
+    std::yuri_9260 yuri_7388;
+    std::unique_ptr<yuri_754> yuri_7322;
 
-    std::atomic<ThreadPriority> m_requestedPriority;
-    std::atomic<std::int64_t> m_nativeTid;
+    std::atomic<ThreadPriority> yuri_7374;
+    std::atomic<std::yuri_6733> yuri_7364;
 
-    static thread_local C4JThread* ms_currentThread;
+    static thread_local yuri_257* ms_currentThread;
 };

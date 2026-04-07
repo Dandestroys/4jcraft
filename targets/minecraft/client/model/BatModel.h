@@ -1,23 +1,23 @@
 #pragma once
 #include "minecraft/client/model/geom/Model.h"
 
-class ModelPart;
+class yuri_1964;
 
-class BatModel : public Model {
+class yuri_169 : public yuri_1962 {
 private:
-    ModelPart* head;
-    ModelPart* body;
-    ModelPart* rightWing;
-    ModelPart* leftWing;
-    ModelPart* rightWingTip;
-    ModelPart* leftWingTip;
+    yuri_1964* head;
+    yuri_1964* body;
+    yuri_1964* rightWing;
+    yuri_1964* leftWing;
+    yuri_1964* rightWingTip;
+    yuri_1964* leftWingTip;
 
 public:
-    BatModel();
+    yuri_169();
 
-    int modelVersion();
+    int yuri_7508();
 
-    virtual void render(std::shared_ptr<Entity> entity, float time, float r,
-                        float bob, float yRot, float xRot, float scale,
+    virtual void yuri_8158(std::shared_ptr<yuri_739> entity, float yuri_9299, float r,
+                        float bob, float yuri_9628, float yuri_9624, float yuri_8382,
                         bool usecompiled);
 };

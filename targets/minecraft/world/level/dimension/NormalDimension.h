@@ -1,4 +1,4 @@
 #pragma once
 #include "Dimension.h"
 
-class NormalDimension : public Dimension {};
+class yuri_2029 : public yuri_612 {};

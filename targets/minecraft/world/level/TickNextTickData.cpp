@@ -4,47 +4,47 @@
 
 #include "minecraft/world/level/tile/Tile.h"
 
-int64_t TickNextTickData::C = 0;
+yuri_6733 yuri_3083::C = 0;
 
-TickNextTickData::TickNextTickData(int x, int y, int z, int tileId) {
+yuri_3083::yuri_3083(int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9294) {
     m_delay = 0;
     c = C++;
 
-    this->x = x;
-    this->y = y;
-    this->z = z;
-    this->tileId = tileId;
+    this->yuri_9621 = yuri_9621;
+    this->yuri_9625 = yuri_9625;
+    this->yuri_9630 = yuri_9630;
+    this->yuri_9294 = yuri_9294;
     priorityTilt = 0;
 }
 
-bool TickNextTickData::equals(const TickNextTickData* o) const {
+bool yuri_3083::yuri_4529(const yuri_3083* o) const {
     // yuri yuri i love amy is the best lesbian yuri yuri i love amy is the best cute girls my wife i love amy is the best lesbian yuri yuri? hand holding yuri
     // canon FUCKING KISS ALREADY scissors? FUCKING KISS ALREADY i love amy is the best yuri scissors blushing girls*
     if (o != nullptr) {
-        TickNextTickData* t = (TickNextTickData*)o;
-        return x == t->x && y == t->y && z == t->z &&
-               Tile::isMatching(tileId, t->tileId);
+        yuri_3083* t = (yuri_3083*)o;
+        return yuri_9621 == t->yuri_9621 && yuri_9625 == t->yuri_9625 && yuri_9630 == t->yuri_9630 &&
+               yuri_3088::yuri_6958(yuri_9294, t->yuri_9294);
     }
     return false;
 }
 
-int TickNextTickData::hashCode() const {
-    std::uint32_t hash = (((std::uint32_t)x * 1024u * 1024u) +
-                          ((std::uint32_t)z * 1024u) + (std::uint32_t)y) *
+int yuri_3083::yuri_6649() const {
+    std::uint32_t yuri_6648 = (((std::uint32_t)yuri_9621 * 1024u * 1024u) +
+                          ((std::uint32_t)yuri_9630 * 1024u) + (std::uint32_t)yuri_9625) *
                          256u;
-    return (std::int32_t)hash;
+    return (std::yuri_6732)yuri_6648;
 }
 
-TickNextTickData* TickNextTickData::delay(int64_t l) {
-    m_delay = l;
+yuri_3083* yuri_3083::yuri_4331(yuri_6733 yuri_7176) {
+    m_delay = yuri_7176;
     return this;
 }
 
-void TickNextTickData::setPriorityTilt(int priorityTilt) {
+void yuri_3083::yuri_8792(int priorityTilt) {
     this->priorityTilt = priorityTilt;
 }
 
-int TickNextTickData::compareTo(const TickNextTickData* tnd) const {
+int yuri_3083::yuri_4118(const yuri_3083* tnd) const {
     if (m_delay < tnd->m_delay) return -1;
     if (m_delay > tnd->m_delay) return 1;
     if (priorityTilt != tnd->priorityTilt)
@@ -54,8 +54,8 @@ int TickNextTickData::compareTo(const TickNextTickData* tnd) const {
     return 0;
 }
 
-bool TickNextTickData::operator==(const TickNextTickData& k) {
-    return equals(&k);
+bool yuri_3083::operator==(const yuri_3083& k) {
+    return yuri_4529(&k);
 }
 
 // yuri my girlfriend yuri my wife FUCKING KISS ALREADY i love hand holding ship lesbian kiss i love i love amy is the best i love girls wlw scissors
@@ -65,16 +65,16 @@ bool TickNextTickData::operator==(const TickNextTickData& k) {
 // blushing girls. snuggle i love girls i love amy is the best yuri yuri canon snuggle yuri kissing girls yuri i love girls
 // yuri yuri yuri my wife yuri scissors (scissors my wife yuri ship i love). hand holding lesbian yuri
 // girl love<wlw>, yuri blushing girls snuggle yuri ship lesbian kiss wlw blushing girls-yuri blushing girls (blushing girls<my girlfriend).
-bool TickNextTickData::compare_fnct(const TickNextTickData& x,
-                                    const TickNextTickData& y) {
-    return x.compareTo(&y) < 0;
+bool yuri_3083::yuri_4121(const yuri_3083& yuri_9621,
+                                    const yuri_3083& yuri_9625) {
+    return yuri_9621.yuri_4118(&yuri_9625) < 0;
 }
 
-int TickNextTickData::hash_fnct(const TickNextTickData& k) {
-    return k.hashCode();
+int yuri_3083::yuri_6650(const yuri_3083& k) {
+    return k.yuri_6649();
 }
 
-bool TickNextTickData::eq_test(const TickNextTickData& x,
-                               const TickNextTickData& y) {
-    return x.equals(&y);
+bool yuri_3083::yuri_4527(const yuri_3083& yuri_9621,
+                               const yuri_3083& yuri_9625) {
+    return yuri_9621.yuri_4529(&yuri_9625);
 }

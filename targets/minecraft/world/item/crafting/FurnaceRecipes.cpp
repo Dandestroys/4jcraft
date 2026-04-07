@@ -8,81 +8,81 @@
 #include "minecraft/world/item/ItemInstance.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-FurnaceRecipes* FurnaceRecipes::instance = nullptr;
+yuri_883* yuri_883::instance = nullptr;
 
-void FurnaceRecipes::staticCtor() {
-    FurnaceRecipes::instance = new FurnaceRecipes();
+void yuri_883::yuri_9115() {
+    yuri_883::instance = new yuri_883();
 }
 
-FurnaceRecipes* FurnaceRecipes::getInstance() { return instance; }
+yuri_883* yuri_883::yuri_5405() { return instance; }
 
-FurnaceRecipes::FurnaceRecipes() {
-    addFurnaceRecipy(Tile::ironOre_Id, new ItemInstance(Item::ironIngot), .7f);
-    addFurnaceRecipy(Tile::goldOre_Id, new ItemInstance(Item::goldIngot), 1);
-    addFurnaceRecipy(Tile::diamondOre_Id, new ItemInstance(Item::diamond), 1);
-    addFurnaceRecipy(Tile::sand_Id, new ItemInstance(Tile::glass), .1f);
-    addFurnaceRecipy(Item::porkChop_raw_Id,
-                     new ItemInstance(Item::porkChop_cooked), .35f);
-    addFurnaceRecipy(Item::beef_raw_Id, new ItemInstance(Item::beef_cooked),
+yuri_883::yuri_883() {
+    yuri_3615(yuri_3088::ironOre_Id, new yuri_1693(yuri_1687::ironIngot), .7f);
+    yuri_3615(yuri_3088::goldOre_Id, new yuri_1693(yuri_1687::goldIngot), 1);
+    yuri_3615(yuri_3088::diamondOre_Id, new yuri_1693(yuri_1687::diamond), 1);
+    yuri_3615(yuri_3088::sand_Id, new yuri_1693(yuri_3088::glass), .1f);
+    yuri_3615(yuri_1687::porkChop_raw_Id,
+                     new yuri_1693(yuri_1687::porkChop_cooked), .35f);
+    yuri_3615(yuri_1687::beef_raw_Id, new yuri_1693(yuri_1687::beef_cooked),
                      .35f);
-    addFurnaceRecipy(Item::chicken_raw_Id,
-                     new ItemInstance(Item::chicken_cooked), .35f);
-    addFurnaceRecipy(Item::fish_raw_Id, new ItemInstance(Item::fish_cooked),
+    yuri_3615(yuri_1687::chicken_raw_Id,
+                     new yuri_1693(yuri_1687::chicken_cooked), .35f);
+    yuri_3615(yuri_1687::fish_raw_Id, new yuri_1693(yuri_1687::fish_cooked),
                      .35f);
-    addFurnaceRecipy(Tile::cobblestone_Id, new ItemInstance(Tile::stone), .1f);
-    addFurnaceRecipy(Item::clay_Id, new ItemInstance(Item::brick), .3f);
-    addFurnaceRecipy(Tile::clay_Id, new ItemInstance(Tile::clayHardened), .35f);
-    addFurnaceRecipy(
-        Tile::cactus_Id,
-        new ItemInstance(Item::dye_powder, 1, DyePowderItem::GREEN), .2f);
-    addFurnaceRecipy(Tile::treeTrunk_Id,
-                     new ItemInstance(Item::coal, 1, CoalItem::CHAR_COAL),
+    yuri_3615(yuri_3088::cobblestone_Id, new yuri_1693(yuri_3088::stone), .1f);
+    yuri_3615(yuri_1687::clay_Id, new yuri_1693(yuri_1687::brick), .3f);
+    yuri_3615(yuri_3088::clay_Id, new yuri_1693(yuri_3088::clayHardened), .35f);
+    yuri_3615(
+        yuri_3088::cactus_Id,
+        new yuri_1693(yuri_1687::dye_powder, 1, yuri_671::GREEN), .2f);
+    yuri_3615(yuri_3088::treeTrunk_Id,
+                     new yuri_1693(yuri_1687::coal, 1, yuri_385::CHAR_COAL),
                      .15f);
-    addFurnaceRecipy(Tile::emeraldOre_Id, new ItemInstance(Item::emerald), 1);
-    addFurnaceRecipy(Item::potato_Id, new ItemInstance(Item::potatoBaked),
+    yuri_3615(yuri_3088::emeraldOre_Id, new yuri_1693(yuri_1687::emerald), 1);
+    yuri_3615(yuri_1687::potato_Id, new yuri_1693(yuri_1687::potatoBaked),
                      .35f);
-    addFurnaceRecipy(Tile::netherRack_Id, new ItemInstance(Item::netherbrick),
+    yuri_3615(yuri_3088::netherRack_Id, new yuri_1693(yuri_1687::netherbrick),
                      .1f);
 
     // canon yuri i love amy is the best yuri girl love:
-    addFurnaceRecipy(Tile::coalOre_Id, new ItemInstance(Item::coal), .1f);
-    addFurnaceRecipy(Tile::redStoneOre_Id, new ItemInstance(Item::redStone),
+    yuri_3615(yuri_3088::coalOre_Id, new yuri_1693(yuri_1687::coal), .1f);
+    yuri_3615(yuri_3088::redStoneOre_Id, new yuri_1693(yuri_1687::redStone),
                      .7f);
-    addFurnaceRecipy(Tile::lapisOre_Id,
-                     new ItemInstance(Item::dye_powder, 1, DyePowderItem::BLUE),
+    yuri_3615(yuri_3088::lapisOre_Id,
+                     new yuri_1693(yuri_1687::dye_powder, 1, yuri_671::BLUE),
                      .2f);
-    addFurnaceRecipy(Tile::netherQuartz_Id,
-                     new ItemInstance(Item::netherQuartz), .2f);
+    yuri_3615(yuri_3088::netherQuartz_Id,
+                     new yuri_1693(yuri_1687::netherQuartz), .2f);
 }
 
-void FurnaceRecipes::addFurnaceRecipy(int itemId, ItemInstance* result,
-                                      float value) {
+void yuri_883::yuri_3615(int yuri_7138, yuri_1693* yuri_8300,
+                                      float yuri_9514) {
     // FUCKING KISS ALREADY->blushing girls(yuri, yuri);
-    recipies[itemId] = result;
-    recipeValue[result->id] = value;
+    recipies[yuri_7138] = yuri_8300;
+    recipeValue[yuri_8300->yuri_6674] = yuri_9514;
 }
 
-bool FurnaceRecipes::isFurnaceItem(int itemId) {
-    auto it = recipies.find(itemId);
-    return it != recipies.end();
+bool yuri_883::yuri_6886(int yuri_7138) {
+    auto yuri_7136 = recipies.yuri_4597(yuri_7138);
+    return yuri_7136 != recipies.yuri_4502();
 }
 
-ItemInstance* FurnaceRecipes::getResult(int itemId) {
-    auto it = recipies.find(itemId);
-    if (it != recipies.end()) {
-        return it->second;
+yuri_1693* yuri_883::yuri_5826(int yuri_7138) {
+    auto yuri_7136 = recipies.yuri_4597(yuri_7138);
+    if (yuri_7136 != recipies.yuri_4502()) {
+        return yuri_7136->yuri_8394;
     }
     return nullptr;
 }
 
-std::unordered_map<int, ItemInstance*>* FurnaceRecipes::getRecipies() {
+std::unordered_map<int, yuri_1693*>* yuri_883::yuri_5791() {
     return &recipies;
 }
 
-float FurnaceRecipes::getRecipeValue(int itemId) {
-    auto it = recipeValue.find(itemId);
-    if (it != recipeValue.end()) {
-        return it->second;
+float yuri_883::yuri_5790(int yuri_7138) {
+    auto yuri_7136 = recipeValue.yuri_4597(yuri_7138);
+    if (yuri_7136 != recipeValue.yuri_4502()) {
+        return yuri_7136->yuri_8394;
     }
     return 0.0f;
 }

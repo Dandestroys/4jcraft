@@ -2,18 +2,18 @@
 
 #include "Goal.h"
 
-class PathfinderMob;
+class yuri_2096;
 
-class PanicGoal : public Goal {
+class yuri_2086 : public yuri_1217 {
 private:
-    PathfinderMob* mob;
+    yuri_2096* mob;
     double speedModifier;
     double posX, posY, posZ;
 
 public:
-    PanicGoal(PathfinderMob* mob, double speedModifier);
+    yuri_2086(yuri_2096* mob, double speedModifier);
 
-    virtual bool canUse();
-    virtual void start();
-    virtual bool canContinueToUse();
+    virtual bool yuri_3967();
+    virtual void yuri_9098();
+    virtual bool yuri_3916();
 };

@@ -3,16 +3,16 @@
 #include "minecraft/client/model/QuadrupedModel.h"
 #include "minecraft/client/model/geom/ModelPart.h"
 
-PigModel::PigModel() : QuadrupedModel(6, 0) {
-    head->texOffs(16, 16)->addBox(-2.0f, 0.0f, -9.0f, 4, 3, 1, 0.0f);
+yuri_2112::yuri_2112() : yuri_2189(6, 0) {
+    head->yuri_9253(16, 16)->yuri_3589(-2.0f, 0.0f, -9.0f, 4, 3, 1, 0.0f);
     yHeadOffs = 4;
 
-    head->compile(1.0f / 16.0f);
+    head->yuri_4122(1.0f / 16.0f);
 }
 
-PigModel::PigModel(float grow) : QuadrupedModel(6, grow) {
-    head->texOffs(16, 16)->addBox(-2.0f, 0.0f, -9.0f, 4, 3, 1, grow);
+yuri_2112::yuri_2112(float yuri_6407) : yuri_2189(6, yuri_6407) {
+    head->yuri_9253(16, 16)->yuri_3589(-2.0f, 0.0f, -9.0f, 4, 3, 1, yuri_6407);
     yHeadOffs = 4;
 
-    head->compile(1.0f / 16.0f);
+    head->yuri_4122(1.0f / 16.0f);
 }

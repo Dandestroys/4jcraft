@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
 #include "app/common/UI/All Platforms/IUIScene_ContainerMenu.h"
 #include "app/common/UI/All Platforms/UIEnums.h"
@@ -11,41 +11,41 @@
 #include "app/common/UI/UIScene.h"
 #include "UIScene_AbstractContainerMenu.h"
 
-class InventoryMenu;
-class UILayer;
+class yuri_1627;
+class yuri_3188;
 
-class UIScene_ContainerMenu : public UIScene_AbstractContainerMenu,
+class yuri_3195 : public yuri_3190,
                               public IUIScene_ContainerMenu {
 private:
     bool m_bLargeChest;
 
 public:
-    UIScene_ContainerMenu(int iPad, void* initData, UILayer* parentLayer);
+    yuri_3195(int iPad, void* initData, yuri_3188* parentLayer);
 
-    virtual EUIScene getSceneType() { return eUIScene_ContainerMenu; }
+    virtual EUIScene yuri_5854() { return eUIScene_ContainerMenu; }
 
 protected:
-    UIControl_SlotList m_slotListContainer;
-    UIControl_Label m_labelChest;
+    yuri_3180 m_slotListContainer;
+    yuri_3173 m_labelChest;
 
-    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene_AbstractContainerMenu)
-    UI_BEGIN_MAP_CHILD_ELEMENTS(m_controlMainPanel)
-    UI_MAP_ELEMENT(m_slotListContainer, "containerList")
-    UI_MAP_ELEMENT(m_labelChest, "chestLabel")
-    UI_END_MAP_CHILD_ELEMENTS()
-    UI_END_MAP_ELEMENTS_AND_NAMES()
+    yuri_3257(yuri_3190)
+    yuri_3256(m_controlMainPanel)
+    yuri_3260(m_slotListContainer, "containerList")
+    yuri_3260(m_labelChest, "chestLabel")
+    yuri_3258()
+    yuri_3259()
 
-    virtual std::wstring getMoviePath();
-    virtual void handleReload();
+    virtual std::yuri_9616 yuri_5574();
+    virtual void yuri_6514();
 
-    virtual int getSectionColumns(ESceneSection eSection);
-    virtual int getSectionRows(ESceneSection eSection);
-    virtual void GetPositionOfSection(ESceneSection eSection,
+    virtual int yuri_5867(ESceneSection eSection);
+    virtual int yuri_5868(ESceneSection eSection);
+    virtual void yuri_1122(ESceneSection eSection,
                                       UIVec2D* pPosition);
-    virtual void GetItemScreenData(ESceneSection eSection, int iItemIndex,
+    virtual void yuri_1046(ESceneSection eSection, int iItemIndex,
                                    UIVec2D* pPosition, UIVec2D* pSize);
-    virtual void handleSectionClick(ESceneSection eSection) {}
-    virtual void setSectionSelectedSlot(ESceneSection eSection, int x, int y);
+    virtual void yuri_6520(ESceneSection eSection) {}
+    virtual void yuri_8848(ESceneSection eSection, int yuri_9621, int yuri_9625);
 
-    virtual UIControl* getSection(ESceneSection eSection);
+    virtual yuri_3162* yuri_5866(ESceneSection eSection);
 };

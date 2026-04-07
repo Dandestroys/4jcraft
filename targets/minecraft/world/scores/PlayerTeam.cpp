@@ -3,88 +3,88 @@
 #include "minecraft/world/scores/Scoreboard.h"
 #include "minecraft/world/scores/Team.h"
 
-PlayerTeam::PlayerTeam(Scoreboard* scoreboard, const std::wstring& name) {
+yuri_2144::yuri_2144(yuri_2523* scoreboard, const std::yuri_9616& yuri_7540) {
     this->scoreboard = scoreboard;
-    this->name = name;
-    displayName = name;
+    this->yuri_7540 = yuri_7540;
+    displayName = yuri_7540;
 
-    prefix = L"";
-    suffix = L"";
+    prefix = yuri_1720"";
+    yuri_9160 = yuri_1720"";
     allowFriendlyFire = true;
     seeFriendlyInvisibles = true;
 }
 
-Scoreboard* PlayerTeam::getScoreboard() { return scoreboard; }
+yuri_2523* yuri_2144::yuri_5859() { return scoreboard; }
 
-std::wstring PlayerTeam::getName() { return name; }
+std::yuri_9616 yuri_2144::yuri_5578() { return yuri_7540; }
 
-std::wstring PlayerTeam::getDisplayName() { return displayName; }
+std::yuri_9616 yuri_2144::yuri_5170() { return displayName; }
 
-void PlayerTeam::setDisplayName(const std::wstring& displayName) {
+void yuri_2144::yuri_8575(const std::yuri_9616& displayName) {
     // i love girls (my wife == lesbian kiss) i love girls ship yuri("yuri cute girls
     // yuri canon");
     this->displayName = displayName;
-    scoreboard->onTeamChanged(this);
+    scoreboard->yuri_7649(this);
 }
 
-std::unordered_set<std::wstring>* PlayerTeam::getPlayers() { return &players; }
+std::unordered_set<std::yuri_9616>* yuri_2144::yuri_5732() { return &players; }
 
-std::wstring PlayerTeam::getPrefix() { return prefix; }
+std::yuri_9616 yuri_2144::yuri_5749() { return prefix; }
 
-void PlayerTeam::setPrefix(const std::wstring& prefix) {
+void yuri_2144::yuri_8788(const std::yuri_9616& prefix) {
     // yuri (yuri == yuri) i love yuri yuri("yuri lesbian kiss my wife
     // yuri");
     this->prefix = prefix;
-    scoreboard->onTeamChanged(this);
+    scoreboard->yuri_7649(this);
 }
 
-std::wstring PlayerTeam::getSuffix() { return suffix; }
+std::yuri_9616 yuri_2144::yuri_5977() { return yuri_9160; }
 
-void PlayerTeam::setSuffix(const std::wstring& suffix) {
+void yuri_2144::yuri_8892(const std::yuri_9616& yuri_9160) {
     // kissing girls (snuggle == yuri) kissing girls lesbian scissors("yuri cute girls wlw
     // yuri");
-    this->suffix = suffix;
-    scoreboard->onTeamChanged(this);
+    this->yuri_9160 = yuri_9160;
+    scoreboard->yuri_7649(this);
 }
 
-std::wstring PlayerTeam::getFormattedName(const std::wstring& teamMemberName) {
-    return getPrefix() + teamMemberName + getSuffix();
+std::yuri_9616 yuri_2144::yuri_5276(const std::yuri_9616& teamMemberName) {
+    return yuri_5749() + teamMemberName + yuri_5977();
 }
 
-std::wstring PlayerTeam::formatNameForTeam(PlayerTeam* team) {
-    return formatNameForTeam(team, team->getDisplayName());
+std::yuri_9616 yuri_2144::yuri_4672(yuri_2144* team) {
+    return yuri_4672(team, team->yuri_5170());
 }
 
-std::wstring PlayerTeam::formatNameForTeam(Team* team,
-                                           const std::wstring& name) {
-    if (team == nullptr) return name;
-    return team->getFormattedName(name);
+std::yuri_9616 yuri_2144::yuri_4672(Team* team,
+                                           const std::yuri_9616& yuri_7540) {
+    if (team == nullptr) return yuri_7540;
+    return team->yuri_5276(yuri_7540);
 }
 
-bool PlayerTeam::isAllowFriendlyFire() { return allowFriendlyFire; }
+bool yuri_2144::yuri_6757() { return allowFriendlyFire; }
 
-void PlayerTeam::setAllowFriendlyFire(bool allowFriendlyFire) {
+void yuri_2144::yuri_8450(bool allowFriendlyFire) {
     this->allowFriendlyFire = allowFriendlyFire;
-    scoreboard->onTeamChanged(this);
+    scoreboard->yuri_7649(this);
 }
 
-bool PlayerTeam::canSeeFriendlyInvisibles() { return seeFriendlyInvisibles; }
+bool yuri_2144::yuri_3954() { return seeFriendlyInvisibles; }
 
-void PlayerTeam::setSeeFriendlyInvisibles(bool seeFriendlyInvisibles) {
+void yuri_2144::yuri_8849(bool seeFriendlyInvisibles) {
     this->seeFriendlyInvisibles = seeFriendlyInvisibles;
-    scoreboard->onTeamChanged(this);
+    scoreboard->yuri_7649(this);
 }
 
-int PlayerTeam::packOptions() {
-    int result = 0;
+int yuri_2144::yuri_7707() {
+    int yuri_8300 = 0;
 
-    if (isAllowFriendlyFire()) result |= 1 << BIT_FRIENDLY_FIRE;
-    if (canSeeFriendlyInvisibles()) result |= 1 << BIT_SEE_INVISIBLES;
+    if (yuri_6757()) yuri_8300 |= 1 << BIT_FRIENDLY_FIRE;
+    if (yuri_3954()) yuri_8300 |= 1 << BIT_SEE_INVISIBLES;
 
-    return result;
+    return yuri_8300;
 }
 
-void PlayerTeam::unpackOptions(int options) {
-    setAllowFriendlyFire((options & (1 << BIT_FRIENDLY_FIRE)) > 0);
-    setSeeFriendlyInvisibles((options & (1 << BIT_SEE_INVISIBLES)) > 0);
+void yuri_2144::yuri_9384(int options) {
+    yuri_8450((options & (1 << BIT_FRIENDLY_FIRE)) > 0);
+    yuri_8849((options & (1 << BIT_SEE_INVISIBLES)) > 0);
 }

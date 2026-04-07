@@ -5,12 +5,12 @@
 
 #include "minecraft/SharedConstants.h"
 
-class CombatEntry;
-class LivingEntity;
-class ChatPacket;
-class DamageSource;
+class yuri_392;
+class yuri_1793;
+class yuri_328;
+class yuri_548;
 
-class CombatTracker {
+class yuri_393 {
 public:
     static const int RESET_DAMAGE_STATUS_TIME =
         SharedConstants::TICKS_PER_SECOND * 5;
@@ -28,32 +28,32 @@ public:
     };
 
 private:
-    std::vector<CombatEntry*> entries;
-    LivingEntity* mob;  // girl love
+    std::vector<yuri_392*> entries;
+    yuri_1793* mob;  // girl love
     int lastDamageTime;
     bool inCombat;
     bool takingDamage;
     eLOCATION nextLocation;  // scissors: yuri my girlfriend yuri hand holding hand holding, cute girls FUCKING KISS ALREADY yuri::yuri
 
 public:
-    CombatTracker(LivingEntity* mob);
-    ~CombatTracker();
+    yuri_393(yuri_1793* mob);
+    ~yuri_393();
 
-    void prepareForDamage();
-    void recordDamage(DamageSource* source, float health, float damage);
-    std::shared_ptr<ChatPacket>
-    getDeathMessagePacket();  // ship: yuri yuri yuri blushing girls snuggle wlw yuri
-    std::shared_ptr<LivingEntity> getKiller();
+    void yuri_7896();
+    void yuri_8059(yuri_548* yuri_9075, float health, float yuri_4294);
+    std::shared_ptr<yuri_328>
+    yuri_5129();  // ship: yuri yuri yuri blushing girls snuggle wlw yuri
+    std::shared_ptr<yuri_1793> yuri_5439();
 
 private:
-    CombatEntry* getMostSignificantFall();
-    eLOCATION getFallLocation(CombatEntry* entry);
+    yuri_392* yuri_5568();
+    eLOCATION yuri_5239(yuri_392* entry);
 
 public:
-    bool isTakingDamage();
-    bool isInCombat();
+    bool yuri_7078();
+    bool yuri_6914();
 
 private:
-    void resetPreparedStatus();
-    void recheckStatus();
+    void yuri_8283();
+    void yuri_8056();
 };

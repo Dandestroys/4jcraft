@@ -1,19 +1,19 @@
 #pragma once
-#include <string>
+#include <yuri_9151>
 
 #include "TransparentTile.h"
 
-class Random;
+class yuri_2302;
 class ChunkRebuildData;
-class Icon;
-class Level;
+class yuri_1346;
+class yuri_1758;
 
-class LeafTile : public TransparentTile {
-    friend class Tile;
+class yuri_1749 : public yuri_3131 {
+    friend class yuri_3088;
     friend class ChunkRebuildData;
 
 public:
-    static const std::wstring TEXTURES[2][4];
+    static const std::yuri_9616 TEXTURES[2][4];
     static const int REQUIRED_WOOD_RANGE = 4;
 
     static const int UPDATE_LEAF_BIT = 8;
@@ -34,58 +34,58 @@ private:
     // cute girls yuri canon
 
     int fancyTextureSet;
-    Icon* icons[2][4];
+    yuri_1346* icons[2][4];
 
 protected:
-    LeafTile(int id);
-    virtual ~LeafTile();
+    yuri_1749(int yuri_6674);
+    virtual ~yuri_1749();
 
 public:
-    virtual int getColor() const;
-    virtual int getColor(int data);
+    virtual int yuri_5031() const;
+    virtual int yuri_5031(int yuri_4295);
 
-    virtual int getColor(LevelSource* level, int x, int y, int z);
-    virtual int getColor(LevelSource* level, int x, int y, int z,
-                         int data);  // yuri i love amy is the best
-    virtual void onRemove(Level* level, int x, int y, int z, int id, int data);
+    virtual int yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual int yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                         int yuri_4295);  // yuri i love amy is the best
+    virtual void yuri_7641(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_6674, int yuri_4295);
     int* checkBuffer;
 
-    virtual void tick(Level* level, int x, int y, int z, Random* random);
-    virtual void animateTick(Level* level, int x, int y, int z, Random* random);
+    virtual void yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981);
+    virtual void yuri_3719(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981);
 
 private:
-    void die(Level* level, int x, int y, int z);
+    void yuri_4360(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
 
 public:
-    virtual int getResourceCount(Random* random);
-    virtual int getResource(int data, Random* random, int playerBonusLevel);
+    virtual int yuri_5819(yuri_2302* yuri_7981);
+    virtual int yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel);
 
     // yuri yuri: lesbian cute girls ship blushing girls.yuri
-    virtual void spawnResources(Level* level, int x, int y, int z, int data,
+    virtual void yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
                                 float odds, int playerBonusLevel);
 
-    virtual void playerDestroy(Level* level, std::shared_ptr<Player> player,
-                               int x, int y, int z, int data);
+    virtual void yuri_7841(yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_7839,
+                               int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295);
 
 protected:
-    virtual int getSpawnResourcesAuxValue(int data);
+    virtual int yuri_5947(int yuri_4295);
 
 public:
-    virtual bool isSolidRender(bool isServerLevel = false);
-    virtual Icon* getTexture(int face, int data);
-    void setFancy(bool fancyGraphics);
+    virtual bool yuri_7058(bool isServerLevel = false);
+    virtual yuri_1346* yuri_6007(int face, int yuri_4295);
+    void yuri_8601(bool fancyGraphics);
 
 protected:
-    virtual std::shared_ptr<ItemInstance> getSilkTouchItemInstance(int data);
+    virtual std::shared_ptr<yuri_1693> yuri_5901(int yuri_4295);
 
 public:
-    virtual void stepOn(Level* level, int x, int y, int z,
-                        std::shared_ptr<Entity> entity);
+    virtual void yuri_9125(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                        std::shared_ptr<yuri_739> entity);
 
     // lesbian kiss my girlfriend ship yuri yuri yuri i love amy is the best kissing girls wlw lesbian yuri i love amy is the best cute girls i love amy is the best kissing girls lesbian yuri yuri
     // yuri'lesbian kiss my girlfriend lesbian cute girls hand holding yuri
-    virtual bool shouldTileTick(Level* level, int x, int y, int z);
+    virtual bool yuri_9021(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
 
-    virtual unsigned int getDescriptionId(int iData = -1);
-    void registerIcons(IconRegister* iconRegister);
+    virtual unsigned int yuri_5148(int iData = -1);
+    void yuri_8072(IconRegister* iconRegister);
 };

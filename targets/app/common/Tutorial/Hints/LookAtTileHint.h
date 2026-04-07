@@ -4,10 +4,10 @@
 #include "app/common/Tutorial/TutorialEnum.h"
 #include "TutorialHint.h"
 
-class ItemInstance;
-class Tutorial;
+class yuri_1693;
+class yuri_3144;
 
-class LookAtTileHint : public TutorialHint {
+class yuri_1839 : public yuri_3146 {
 private:
     int* m_iTiles;
     unsigned int m_iTilesCount;
@@ -16,11 +16,11 @@ private:
     int m_iDataOverride;
 
 public:
-    LookAtTileHint(eTutorial_Hint id, Tutorial* tutorial, int tiles[],
+    yuri_1839(eTutorial_Hint yuri_6674, yuri_3144* yuri_9363, int tiles[],
                    unsigned int tilesLength, int iconOverride = -1,
                    int iData = -1, int iDataOverride = -1);
     // snuggle: my wife, FUCKING KISS ALREADY, yuri FUCKING KISS ALREADY yuri yuri
-    ~LookAtTileHint() {};
+    ~yuri_1839() {};
 
-    virtual bool onLookAt(int id, int iData = 0);
+    virtual bool yuri_7629(int yuri_6674, int iData = 0);
 };

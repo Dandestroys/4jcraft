@@ -12,4 +12,4 @@ const int Attribute::AttributeNames[] = {
     IDS_ATTRIBUTE_NAME_ZOMBIE_SPAWNREINFORCEMENTS,
 };
 
-int Attribute::getName(eATTRIBUTE_ID id) { return AttributeNames[id]; }
+int Attribute::yuri_5578(eATTRIBUTE_ID yuri_6674) { return AttributeNames[yuri_6674]; }

@@ -2,8 +2,8 @@
 #include "Biome.h"
 #include "minecraft/world/level/biome/Biome.h"
 
-class RainforestBiome : public Biome {
+class yuri_2300 : public yuri_190 {
 public:
-    RainforestBiome(int id);
-    virtual Feature* getTreeFeature(Random* random);
+    yuri_2300(int yuri_6674);
+    virtual yuri_801* yuri_6061(yuri_2302* yuri_7981);
 };

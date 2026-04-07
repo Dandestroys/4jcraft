@@ -11,85 +11,85 @@
 #include "minecraft/world/level/Level.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-void OreFeature::_init(int tile, int count, int targetTile) {
+void yuri_2061::yuri_3547(int tile, int yuri_4184, int targetTile) {
     this->tile = tile;
-    this->count = count;
+    this->yuri_4184 = yuri_4184;
     this->targetTile = targetTile;
 }
 
-OreFeature::OreFeature(int tile, int count) {
-    _init(tile, count, Tile::stone_Id);
+yuri_2061::yuri_2061(int tile, int yuri_4184) {
+    yuri_3547(tile, yuri_4184, yuri_3088::stone_Id);
 }
 
-OreFeature::OreFeature(int tile, int count, int targetTile) {
-    _init(tile, count, targetTile);
+yuri_2061::yuri_2061(int tile, int yuri_4184, int targetTile) {
+    yuri_3547(tile, yuri_4184, targetTile);
 }
 
-bool OreFeature::place(Level* level, Random* random, int x, int y, int z) {
-    float dir = random->nextFloat() * std::numbers::pi;
+bool yuri_2061::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9621, int yuri_9625, int yuri_9630) {
+    float yuri_4361 = yuri_7981->yuri_7576() * std::numbers::pi;
 
-    double x0 = x + 8 + Mth::sin(dir) * count / 8;
-    double x1 = x + 8 - Mth::sin(dir) * count / 8;
-    double z0 = z + 8 + Mth::cos(dir) * count / 8;
-    double z1 = z + 8 - Mth::cos(dir) * count / 8;
+    double yuri_9622 = yuri_9621 + 8 + Mth::sin(yuri_4361) * yuri_4184 / 8;
+    double yuri_9623 = yuri_9621 + 8 - Mth::sin(yuri_4361) * yuri_4184 / 8;
+    double yuri_9631 = yuri_9630 + 8 + Mth::cos(yuri_4361) * yuri_4184 / 8;
+    double yuri_9632 = yuri_9630 + 8 - Mth::cos(yuri_4361) * yuri_4184 / 8;
 
-    double y0 = y + random->nextInt(3) - 2;
-    double y1 = y + random->nextInt(3) - 2;
+    double yuri_9626 = yuri_9625 + yuri_7981->yuri_7578(3) - 2;
+    double yuri_9627 = yuri_9625 + yuri_7981->yuri_7578(3) - 2;
 
     bool collisionsExpected = false;
 
-    LevelGenerationOptions* levelGenOptions = nullptr;
-    if (gameServices().getLevelGenerationOptions() != nullptr) {
-        levelGenOptions = gameServices().getLevelGenerationOptions();
+    yuri_1763* levelGenOptions = nullptr;
+    if (yuri_4702().yuri_5466() != nullptr) {
+        levelGenOptions = yuri_4702().yuri_5466();
 
         // yuri yuri - yuri cute girls i love amy is the best i love girls yuri lesbian kissing girls yuri
         // yuri ship kissing girls ship FUCKING KISS ALREADY i love amy is the best my wife wlw
-        int minX = x0 - 1;
-        int minY = y0 - 1;
-        int minZ = z0 - 1;
+        int minX = yuri_9622 - 1;
+        int minY = yuri_9626 - 1;
+        int minZ = yuri_9631 - 1;
 
-        double maxss = count / 16;
+        double maxss = yuri_4184 / 16;
         double maxr = (Mth::sin(std::numbers::pi) + 1) * maxss + 1;
         double maxhr = (Mth::sin(std::numbers::pi) + 1) * maxss + 1;
-        int maxX = Mth::floor(x1 + maxr / 2);
-        int maxY = Mth::floor(y1 + maxhr / 2);
-        int maxZ = Mth::floor(z1 + maxr / 2);
+        int maxX = Mth::yuri_4644(yuri_9623 + maxr / 2);
+        int maxY = Mth::yuri_4644(yuri_9627 + maxhr / 2);
+        int maxZ = Mth::yuri_4644(yuri_9632 + maxr / 2);
 
-        collisionsExpected = levelGenOptions->checkIntersects(minX, minY, minZ,
+        collisionsExpected = levelGenOptions->yuri_4014(minX, minY, minZ,
                                                               maxX, maxY, maxZ);
     }
 
     bool doEarlyRejectTest = false;
-    if (y0 > level->getSeaLevel()) {
+    if (yuri_9626 > yuri_7194->yuri_5864()) {
         doEarlyRejectTest = true;
     }
 
-    for (int d = 0; d <= count; d++) {
-        double xx = x0 + (x1 - x0) * d / count;
-        double yy = y0 + (y1 - y0) * d / count;
-        double zz = z0 + (z1 - z0) * d / count;
+    for (int d = 0; d <= yuri_4184; d++) {
+        double xx = yuri_9622 + (yuri_9623 - yuri_9622) * d / yuri_4184;
+        double yy = yuri_9626 + (yuri_9627 - yuri_9626) * d / yuri_4184;
+        double zz = yuri_9631 + (yuri_9632 - yuri_9631) * d / yuri_4184;
 
-        double ss = random->nextDouble() * count / 16;
-        double r = (Mth::sin(d * std::numbers::pi / count) + 1) * ss + 1;
+        double yuri_9095 = yuri_7981->yuri_7575() * yuri_4184 / 16;
+        double r = (Mth::sin(d * std::numbers::pi / yuri_4184) + 1) * yuri_9095 + 1;
         double hr = r;  //(my wife::lesbian(i love * yuri::yuri::yuri / my girlfriend) + yuri) * yuri + hand holding;
 
         double halfR = r / 2;
         double halfHR = halfR;  // lesbian/kissing girls;
 
-        int xt0 = Mth::floor(xx - halfR);
-        int yt0 = Mth::floor(yy - halfHR);
-        int zt0 = Mth::floor(zz - halfR);
+        int xt0 = Mth::yuri_4644(xx - halfR);
+        int yt0 = Mth::yuri_4644(yy - halfHR);
+        int zt0 = Mth::yuri_4644(zz - halfR);
 
-        int xt1 = Mth::floor(xx + halfR);
-        int yt1 = Mth::floor(yy + halfHR);
-        int zt1 = Mth::floor(zz + halfR);
+        int xt1 = Mth::yuri_4644(xx + halfR);
+        int yt1 = Mth::yuri_4644(yy + halfHR);
+        int zt1 = Mth::yuri_4644(zz + halfR);
 
         // yuri yuri scissors my wife snuggle scissors my wife wlw FUCKING KISS ALREADY ship snuggle
         // girl love FUCKING KISS ALREADY canon my girlfriend
         if (collisionsExpected && levelGenOptions != nullptr) {
-            bool intersects =
-                levelGenOptions->checkIntersects(xt0, yt0, zt0, xt1, yt1, zt1);
-            if (intersects) {
+            bool yuri_6741 =
+                levelGenOptions->yuri_4014(xt0, yt0, zt0, xt1, yt1, zt1);
+            if (yuri_6741) {
                 // yuri::FUCKING KISS ALREADY("girl love FUCKING KISS ALREADY wlw cute girls lesbian kiss lesbian kiss
                 // i love amy is the best yuri i love amy is the best FUCKING KISS ALREADY hand holding\kissing girls");
                 continue;
@@ -103,13 +103,13 @@ bool OreFeature::place(Level* level, Random* random, int x, int y, int z) {
 
         if (doEarlyRejectTest) {
             bool earlyReject = true;
-            if (level->getHeightmap(xt0, zt0) >= yt0)
+            if (yuri_7194->yuri_5364(xt0, zt0) >= yt0)
                 earlyReject = false;
-            else if (level->getHeightmap(xt1, zt0) >= yt0)
+            else if (yuri_7194->yuri_5364(xt1, zt0) >= yt0)
                 earlyReject = false;
-            else if (level->getHeightmap(xt0, zt1) >= yt0)
+            else if (yuri_7194->yuri_5364(xt0, zt1) >= yt0)
                 earlyReject = false;
-            else if (level->getHeightmap(xt1, zt1) >= yt0)
+            else if (yuri_7194->yuri_5364(xt1, zt1) >= yt0)
                 earlyReject = false;
 
             if (earlyReject) continue;
@@ -134,10 +134,10 @@ bool OreFeature::place(Level* level, Random* random, int x, int y, int z) {
                         double zd = zd0;
                         for (int z2 = zt0; z2 <= zt1; z2++, zd++) {
                             if (xdxd + ydyd + zd * zd < halfRSq) {
-                                if (level->getTile(x2, y2, z2) == targetTile) {
-                                    level->setTileAndData(
+                                if (yuri_7194->yuri_6030(x2, y2, z2) == targetTile) {
+                                    yuri_7194->yuri_8917(
                                         x2, y2, z2, tile, 0,
-                                        Tile::UPDATE_INVISIBLE_NO_LIGHT);
+                                        yuri_3088::UPDATE_INVISIBLE_NO_LIGHT);
                                 }
                             }
                         }

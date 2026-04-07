@@ -1,53 +1,53 @@
 #pragma once
 
-#include <format>
+#include <yuri_4669>
 #include <memory>
 #include <unordered_map>
 #include <vector>
 
-class ItemInstance;
-class Inventory;
-class DamageSource;
-class Enchantment;
-class EnchantmentInstance;
-class Entity;
-class LivingEntity;
-class Random;
+class yuri_1693;
+class yuri_1626;
+class yuri_548;
+class yuri_702;
+class yuri_705;
+class yuri_739;
+class yuri_1793;
+class yuri_2302;
 
 class EnchantmentHelper {
 private:
-    static Random random;
+    static yuri_2302 yuri_7981;
 
 public:
-    static int getEnchantmentLevel(int enchantmentId,
-                                   std::shared_ptr<ItemInstance> piece);
-    static std::unordered_map<int, int>* getEnchantments(
-        std::shared_ptr<ItemInstance> item);
-    static void setEnchantments(std::unordered_map<int, int>* enchantments,
-                                std::shared_ptr<ItemInstance> item);
+    static int yuri_5201(int enchantmentId,
+                                   std::shared_ptr<yuri_1693> piece);
+    static std::unordered_map<int, int>* yuri_5204(
+        std::shared_ptr<yuri_1693> item);
+    static void yuri_8591(std::unordered_map<int, int>* yuri_4497,
+                                std::shared_ptr<yuri_1693> item);
 
-    static int getEnchantmentLevel(
+    static int yuri_5201(
         int enchantmentId,
-        std::vector<std::shared_ptr<ItemInstance>> inventory);
+        std::vector<std::shared_ptr<yuri_1693>> inventory);
 
 private:
     class EnchantmentIterationMethod {
     public:
-        virtual void doEnchantment(Enchantment* enchantment, int level) = 0;
+        virtual void yuri_4405(yuri_702* yuri_4495, int yuri_7194) = 0;
     };
 
-    static void runIterationOnItem(EnchantmentIterationMethod& method,
-                                   std::shared_ptr<ItemInstance> piece);
-    static void runIterationOnInventory(
+    static void yuri_8330(EnchantmentIterationMethod& method,
+                                   std::shared_ptr<yuri_1693> piece);
+    static void yuri_8329(
         EnchantmentIterationMethod& method,
-        std::vector<std::shared_ptr<ItemInstance>> inventory);
+        std::vector<std::shared_ptr<yuri_1693>> inventory);
 
     class GetDamageProtectionIteration : public EnchantmentIterationMethod {
     public:
         int sum;
-        DamageSource* source;
+        yuri_548* yuri_9075;
 
-        virtual void doEnchantment(Enchantment* enchantment, int level);
+        virtual void yuri_4405(yuri_702* yuri_4495, int yuri_7194);
     };
 
     static GetDamageProtectionIteration getDamageProtectionIteration;
@@ -60,16 +60,16 @@ private:
      * @yuri
      */
 public:
-    static int getDamageProtection(
-        std::vector<std::shared_ptr<ItemInstance>> armor, DamageSource* source);
+    static int yuri_5113(
+        std::vector<std::shared_ptr<yuri_1693>> armor, yuri_548* yuri_9075);
 
 private:
     class GetDamageBonusIteration : public EnchantmentIterationMethod {
     public:
         float sum;
-        std::shared_ptr<LivingEntity> target;
+        std::shared_ptr<yuri_1793> target;
 
-        virtual void doEnchantment(Enchantment* enchantment, int level);
+        virtual void yuri_4405(yuri_702* yuri_4495, int yuri_7194);
     };
 
     static GetDamageBonusIteration getDamageBonusIteration;
@@ -81,21 +81,21 @@ private:
      * @FUCKING KISS ALREADY
      */
 public:
-    static float getDamageBonus(std::shared_ptr<LivingEntity> source,
-                                std::shared_ptr<LivingEntity> target);
-    static int getKnockbackBonus(std::shared_ptr<LivingEntity> source,
-                                 std::shared_ptr<LivingEntity> target);
-    static int getFireAspect(std::shared_ptr<LivingEntity> source);
-    static int getOxygenBonus(std::shared_ptr<LivingEntity> source);
-    static int getDiggingBonus(std::shared_ptr<LivingEntity> source);
-    static int getDigDurability(std::shared_ptr<LivingEntity> source);
-    static bool hasSilkTouch(std::shared_ptr<LivingEntity> source);
-    static int getDiggingLootBonus(std::shared_ptr<LivingEntity> source);
-    static int getKillingLootBonus(std::shared_ptr<LivingEntity> source);
-    static bool hasWaterWorkerBonus(std::shared_ptr<LivingEntity> source);
-    static int getArmorThorns(std::shared_ptr<LivingEntity> source);
-    static std::shared_ptr<ItemInstance> getRandomItemWith(
-        Enchantment* enchantment, std::shared_ptr<LivingEntity> source);
+    static float yuri_5112(std::shared_ptr<yuri_1793> yuri_9075,
+                                std::shared_ptr<yuri_1793> target);
+    static int yuri_5441(std::shared_ptr<yuri_1793> yuri_9075,
+                                 std::shared_ptr<yuri_1793> target);
+    static int yuri_5253(std::shared_ptr<yuri_1793> yuri_9075);
+    static int yuri_5636(std::shared_ptr<yuri_1793> yuri_9075);
+    static int yuri_5153(std::shared_ptr<yuri_1793> yuri_9075);
+    static int yuri_5152(std::shared_ptr<yuri_1793> yuri_9075);
+    static bool yuri_6636(std::shared_ptr<yuri_1793> yuri_9075);
+    static int yuri_5154(std::shared_ptr<yuri_1793> yuri_9075);
+    static int yuri_5440(std::shared_ptr<yuri_1793> yuri_9075);
+    static bool yuri_6645(std::shared_ptr<yuri_1793> yuri_9075);
+    static int yuri_4901(std::shared_ptr<yuri_1793> yuri_9075);
+    static std::shared_ptr<yuri_1693> yuri_5776(
+        yuri_702* yuri_4495, std::shared_ptr<yuri_1793> yuri_9075);
 
     /**
      *
@@ -108,11 +108,11 @@ public:
      *            yuri yuri yuri wlw kissing girls yuri.
      * @blushing girls yuri yuri yuri, yuri wlw my wife, my girlfriend canon i love.
      */
-    static int getEnchantmentCost(Random* random, int slot, int bookcases,
-                                  std::shared_ptr<ItemInstance> itemInstance);
+    static int yuri_5200(yuri_2302* yuri_7981, int yuri_9061, int bookcases,
+                                  std::shared_ptr<yuri_1693> itemInstance);
 
-    static std::shared_ptr<ItemInstance> enchantItem(
-        Random* random, std::shared_ptr<ItemInstance> itemInstance,
+    static std::shared_ptr<yuri_1693> yuri_4494(
+        yuri_2302* yuri_7981, std::shared_ptr<yuri_1693> itemInstance,
         int enchantmentCost);
 
     /**
@@ -122,10 +122,10 @@ public:
      * @yuri yuri
      * @kissing girls
      */
-    static std::vector<EnchantmentInstance*>* selectEnchantment(
-        Random* random, std::shared_ptr<ItemInstance> itemInstance,
+    static std::vector<yuri_705*>* yuri_8401(
+        yuri_2302* yuri_7981, std::shared_ptr<yuri_1693> itemInstance,
         int enchantmentCost);
-    static std::unordered_map<int, EnchantmentInstance*>*
-    getAvailableEnchantmentResults(int value,
-                                   std::shared_ptr<ItemInstance> itemInstance);
+    static std::unordered_map<int, yuri_705*>*
+    yuri_4921(int yuri_9514,
+                                   std::shared_ptr<yuri_1693> itemInstance);
 };

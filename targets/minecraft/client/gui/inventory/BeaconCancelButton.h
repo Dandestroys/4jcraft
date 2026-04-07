@@ -1,13 +1,13 @@
 #pragma once
 #include "AbstractBeaconButton.h"
 
-class BeaconScreen;
+class yuri_177;
 
-class BeaconCancelButton : public AbstractBeaconButton {
+class yuri_172 : public yuri_46 {
 public:
-    BeaconCancelButton(BeaconScreen* screen, int id, int x, int y);
-    void renderTooltip(int xm, int ym) override;
+    yuri_172(yuri_177* screen, int yuri_6674, int yuri_9621, int yuri_9625);
+    void yuri_8243(int xm, int ym) override;
 
 private:
-    BeaconScreen* screen;
+    yuri_177* screen;
 };

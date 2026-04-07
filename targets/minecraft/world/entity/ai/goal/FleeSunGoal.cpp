@@ -11,43 +11,43 @@
 #include "minecraft/world/phys/AABB.h"
 #include "minecraft/world/phys/Vec3.h"
 
-FleeSunGoal::FleeSunGoal(PathfinderMob* mob, double speedModifier) {
+yuri_845::yuri_845(yuri_2096* mob, double speedModifier) {
     this->mob = mob;
     this->speedModifier = speedModifier;
-    this->level = mob->level;
-    setRequiredControlFlags(Control::MoveControlFlag);
+    this->yuri_7194 = mob->yuri_7194;
+    yuri_8818(Control::MoveControlFlag);
 }
 
-bool FleeSunGoal::canUse() {
-    if (!level->isDay()) return false;
-    if (!mob->isOnFire()) return false;
-    if (!level->canSeeSky(Mth::floor(mob->x), (int)mob->bb.y0,
-                          Mth::floor(mob->z)))
+bool yuri_845::yuri_3967() {
+    if (!yuri_7194->yuri_6834()) return false;
+    if (!mob->yuri_6978()) return false;
+    if (!yuri_7194->yuri_3955(Mth::yuri_4644(mob->yuri_9621), (int)mob->yuri_3799.yuri_9626,
+                          Mth::yuri_4644(mob->yuri_9630)))
         return false;
 
-    auto pos = getHidePos();
-    if (!pos.has_value()) return false;
-    wantedX = pos->x;
-    wantedY = pos->y;
-    wantedZ = pos->z;
+    auto yuri_7872 = yuri_5367();
+    if (!yuri_7872.yuri_6646()) return false;
+    wantedX = yuri_7872->yuri_9621;
+    wantedY = yuri_7872->yuri_9625;
+    wantedZ = yuri_7872->yuri_9630;
     return true;
 }
 
-bool FleeSunGoal::canContinueToUse() { return !mob->getNavigation()->isDone(); }
+bool yuri_845::yuri_3916() { return !mob->yuri_5583()->yuri_6845(); }
 
-void FleeSunGoal::start() {
-    mob->getNavigation()->moveTo(wantedX, wantedY, wantedZ, speedModifier);
+void yuri_845::yuri_9098() {
+    mob->yuri_5583()->yuri_7531(wantedX, wantedY, wantedZ, speedModifier);
 }
 
-std::optional<Vec3> FleeSunGoal::getHidePos() {
-    Random* random = mob->getRandom();
+std::optional<yuri_3322> yuri_845::yuri_5367() {
+    yuri_2302* yuri_7981 = mob->yuri_5773();
     for (int i = 0; i < 10; i++) {
-        int xt = Mth::floor(mob->x + random->nextInt(20) - 10);
-        int yt = Mth::floor(mob->bb.y0 + random->nextInt(6) - 3);
-        int zt = Mth::floor(mob->z + random->nextInt(20) - 10);
-        if (!level->canSeeSky(xt, yt, zt) &&
-            mob->getWalkTargetValue(xt, yt, zt) < 0)
-            return Vec3(xt, yt, zt);
+        int xt = Mth::yuri_4644(mob->yuri_9621 + yuri_7981->yuri_7578(20) - 10);
+        int yt = Mth::yuri_4644(mob->yuri_3799.yuri_9626 + yuri_7981->yuri_7578(6) - 3);
+        int zt = Mth::yuri_4644(mob->yuri_9630 + yuri_7981->yuri_7578(20) - 10);
+        if (!yuri_7194->yuri_3955(xt, yt, zt) &&
+            mob->yuri_6120(xt, yt, zt) < 0)
+            return yuri_3322(xt, yt, zt);
     }
     return std::nullopt;
 }

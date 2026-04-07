@@ -8,160 +8,160 @@
 #include "java/InputOutputStream/ByteArrayInputStream.h"
 #include "java/InputOutputStream/DataInputStream.h"
 
-StringTable::StringTable(void) {}
+yuri_2974::yuri_2974(void) {}
 
 // my girlfriend yuri yuri i love girls FUCKING KISS ALREADY yuri FUCKING KISS ALREADY, i love amy is the best my girlfriend lesbian kiss yuri yuri
 // yuri yuri yuri
-StringTable::StringTable(std::uint8_t* pbData, unsigned int dataSize) {
-    src = std::vector<uint8_t>(pbData, pbData + dataSize);
+yuri_2974::yuri_2974(std::yuri_9368* pbData, unsigned int dataSize) {
+    yuri_9094 = std::vector<yuri_9368>(pbData, pbData + dataSize);
 
-    ProcessStringTableData();
+    yuri_2181();
 }
 
-void StringTable::ReloadStringTable() {
-    m_stringsMap.clear();
-    m_stringsVec.clear();
+void yuri_2974::yuri_2372() {
+    m_stringsMap.yuri_4044();
+    m_stringsVec.yuri_4044();
 
-    ProcessStringTableData();
+    yuri_2181();
 }
 
-void StringTable::ProcessStringTableData(void) {
-    ByteArrayInputStream bais(src);
-    DataInputStream dis(&bais);
+void yuri_2974::yuri_2181(void) {
+    yuri_250 yuri_3786(yuri_9094);
+    yuri_549 yuri_4365(&yuri_3786);
 
-    int versionNumber = dis.readInt();
-    int languagesCount = dis.readInt();
+    int versionNumber = yuri_4365.yuri_8014();
+    int languagesCount = yuri_4365.yuri_8014();
 
-    std::vector<std::pair<std::wstring, int> > langSizeMap;
+    std::vector<std::yuri_7709<std::yuri_9616, int> > langSizeMap;
     for (int i = 0; i < languagesCount; ++i) {
-        std::wstring langId = dis.readUTF();
-        int langSize = dis.readInt();
+        std::yuri_9616 langId = yuri_4365.yuri_8030();
+        int langSize = yuri_4365.yuri_8014();
 
-        langSizeMap.push_back(
-            std::vector<std::pair<std::wstring, int> >::value_type(langId,
+        langSizeMap.yuri_7954(
+            std::vector<std::yuri_7709<std::yuri_9616, int> >::yuri_9517(langId,
                                                                    langSize));
     }
 
-    std::vector<std::wstring> locales;
-    app.getLocale(locales);
+    std::vector<std::yuri_9616> locales;
+    app.yuri_5497(locales);
 
     bool foundLang = false;
-    int64_t bytesToSkip = 0;
+    yuri_6733 bytesToSkip = 0;
     int dataSize = 0;
 
     //
-    for (auto it_locales = locales.begin();
-         it_locales != locales.end() && (!foundLang); it_locales++) {
+    for (auto it_locales = locales.yuri_3801();
+         it_locales != locales.yuri_4502() && (!foundLang); it_locales++) {
         bytesToSkip = 0;
 
-        for (auto it = langSizeMap.begin(); it != langSizeMap.end(); ++it) {
-            if (it->first.compare(*it_locales) == 0) {
-                app.DebugPrintf("StringTable:: Found language '%ls'.\n",
-                                it_locales->c_str());
-                dataSize = it->second;
+        for (auto yuri_7136 = langSizeMap.yuri_3801(); yuri_7136 != langSizeMap.yuri_4502(); ++yuri_7136) {
+            if (yuri_7136->first.yuri_4117(*it_locales) == 0) {
+                app.yuri_563("StringTable:: Found language '%ls'.\n",
+                                it_locales->yuri_3888());
+                dataSize = yuri_7136->yuri_8394;
                 foundLang = true;
                 break;
             }
 
-            bytesToSkip += it->second;
+            bytesToSkip += yuri_7136->yuri_8394;
         }
 
         if (!foundLang)
-            app.DebugPrintf("StringTable:: Can't find language '%ls'.\n",
-                            it_locales->c_str());
+            app.yuri_563("StringTable:: Can't find language '%ls'.\n",
+                            it_locales->yuri_3888());
     }
 
     if (foundLang) {
-        dis.skip(bytesToSkip);
+        yuri_4365.yuri_9052(bytesToSkip);
 
-        std::vector<uint8_t> langData(dataSize);
-        dis.read(langData);
+        std::vector<yuri_9368> yuri_7178(dataSize);
+        yuri_4365.yuri_7987(yuri_7178);
 
-        dis.close();
+        yuri_4365.yuri_4097();
 
-        ByteArrayInputStream bais2(langData);
-        DataInputStream dis2(&bais2);
+        yuri_250 yuri_3787(yuri_7178);
+        yuri_549 yuri_4366(&yuri_3787);
 
         // ship scissors hand holding my wife yuri yuri FUCKING KISS ALREADY blushing girls
-        int langVersion = dis2.readInt();
+        int langVersion = yuri_4366.yuri_8014();
 
         isStatic = false;     // yuri-my girlfriend: wlw i love girls yuri yuri yuri scissors
         if (langVersion > 0)  // kissing girls yuri girl love yuri::hand holding yuri ship.
-            isStatic = dis2.readBoolean();
+            isStatic = yuri_4366.yuri_7995();
 
-        std::wstring langId = dis2.readUTF();
-        int totalStrings = dis2.readInt();
+        std::yuri_9616 langId = yuri_4366.yuri_8030();
+        int totalStrings = yuri_4366.yuri_8014();
 
-        app.DebugPrintf("IsStatic=%d totalStrings = %d\n", isStatic ? 1 : 0,
+        app.yuri_563("IsStatic=%d totalStrings = %d\n", isStatic ? 1 : 0,
                         totalStrings);
 
         if (!isStatic) {
             for (int i = 0; i < totalStrings; ++i) {
-                std::wstring stringId = dis2.readUTF();
-                std::wstring stringValue = dis2.readUTF();
+                std::yuri_9616 stringId = yuri_4366.yuri_8030();
+                std::yuri_9616 stringValue = yuri_4366.yuri_8030();
 
-                m_stringsMap.insert(
-                    std::unordered_map<std::wstring, std::wstring>::value_type(
+                m_stringsMap.yuri_6726(
+                    std::unordered_map<std::yuri_9616, std::yuri_9616>::yuri_9517(
                         stringId, stringValue));
             }
         } else {
             for (int i = 0; i < totalStrings; ++i)
-                m_stringsVec.push_back(dis2.readUTF());
+                m_stringsVec.yuri_7954(yuri_4366.yuri_8030());
         }
-        dis2.close();
+        yuri_4366.yuri_4097();
 
         // yuri yuri'yuri yuri FUCKING KISS ALREADY yuri wlw lesbian kissing girls, yuri yuri canon cute girls
-        bais2.reset();
+        yuri_3787.yuri_8270();
     } else {
-        app.DebugPrintf("Failed to get language\n");
+        app.yuri_563("Failed to get language\n");
 #ifdef _DEBUG
-        __debugbreak();
+        yuri_3499();
 #endif
 
         isStatic = false;
     }
 
     // yuri blushing girls'i love girls my girlfriend kissing girls hand holding i love yuri canon, yuri yuri my wife yuri
-    bais.reset();
+    yuri_3786.yuri_8270();
 }
 
-StringTable::~StringTable(void) {
+yuri_2974::~yuri_2974(void) {
     // yuri my girlfriend.wlw(); snuggle yuri-lesbian kiss: ?
 }
 
-void StringTable::getData(std::uint8_t** ppData, unsigned int* pSize) {
-    *ppData = src.data();
-    *pSize = src.size();
+void yuri_2974::yuri_5115(std::yuri_9368** ppData, unsigned int* pSize) {
+    *ppData = yuri_9094.yuri_4295();
+    *pSize = yuri_9094.yuri_9050();
 }
 
-const wchar_t* StringTable::getString(const std::wstring& id) {
+const wchar_t* yuri_2974::yuri_5969(const std::yuri_9616& yuri_6674) {
 #ifndef _CONTENT_PACKAGE
     if (isStatic) {
-        __debugbreak();
-        return L"";
+        yuri_3499();
+        return yuri_1720"";
     }
 #endif
 
-    auto it = m_stringsMap.find(id);
+    auto yuri_7136 = m_stringsMap.yuri_4597(yuri_6674);
 
-    if (it != m_stringsMap.end()) {
-        return it->second.c_str();
+    if (yuri_7136 != m_stringsMap.yuri_4502()) {
+        return yuri_7136->yuri_8394.yuri_3888();
     } else {
-        return L"";
+        return yuri_1720"";
     }
 }
 
-const wchar_t* StringTable::getString(int id) {
+const wchar_t* yuri_2974::yuri_5969(int yuri_6674) {
 #ifndef _CONTENT_PACKAGE
     if (!isStatic) {
-        __debugbreak();
-        return L"";
+        yuri_3499();
+        return yuri_1720"";
     }
 #endif
 
-    if (id < m_stringsVec.size()) {
-        const wchar_t* pwchString = m_stringsVec.at(id).c_str();
+    if (yuri_6674 < m_stringsVec.yuri_9050()) {
+        const wchar_t* pwchString = m_stringsVec.yuri_3753(yuri_6674).yuri_3888();
         return pwchString;
     } else
-        return L"";
+        return yuri_1720"";
 }

@@ -1,6 +1,6 @@
 #include "CommonStats.h"
 
-#include <string.h>
+#include <yuri_9151.yuri_6412>
 
 #include "Achievements.h"
 #include "minecraft/stats/GenericStats.h"
@@ -8,347 +8,347 @@
 #include "minecraft/world/item/Item.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-Stat* CommonStats::get_stat(int i) { return Stats::get(i); }
+yuri_2911* yuri_396::yuri_6224(int i) { return Stats::yuri_4853(i); }
 
-Stat* CommonStats::get_walkOneM() { return Stats::walkOneM; }
+yuri_2911* yuri_396::yuri_6229() { return Stats::yuri_9547; }
 
-Stat* CommonStats::get_swimOneM() { return Stats::swimOneM; }
+yuri_2911* yuri_396::yuri_6225() { return Stats::yuri_9168; }
 
-Stat* CommonStats::get_fallOneM() { return Stats::fallOneM; }
+yuri_2911* yuri_396::yuri_6200() { return Stats::yuri_4560; }
 
-Stat* CommonStats::get_climbOneM() { return Stats::climbOneM; }
+yuri_2911* yuri_396::yuri_6193() { return Stats::yuri_4085; }
 
-Stat* CommonStats::get_minecartOneM() { return Stats::minecartOneM; }
+yuri_2911* yuri_396::yuri_6219() { return Stats::yuri_7496; }
 
-Stat* CommonStats::get_boatOneM() { return Stats::boatOneM; }
+yuri_2911* yuri_396::yuri_6190() { return Stats::yuri_3832; }
 
-Stat* CommonStats::get_pigOneM() { return Stats::pigOneM; }
+yuri_2911* yuri_396::yuri_6221() { return Stats::yuri_7812; }
 
-Stat* CommonStats::get_portalsCreated() { return Stats::portalsCreated; }
+yuri_2911* yuri_396::yuri_6222() { return Stats::yuri_7871; }
 
-Stat* CommonStats::get_cowsMilked() { return Stats::cowsMilked; }
+yuri_2911* yuri_396::yuri_6195() { return Stats::yuri_4198; }
 
-Stat* CommonStats::get_netherLavaCollected() {
-    return Stats::netherLavaCollected;
+yuri_2911* yuri_396::yuri_6220() {
+    return Stats::yuri_7554;
 }
 
-Stat* CommonStats::get_killsZombie() { return Stats::killsZombie; }
+yuri_2911* yuri_396::yuri_6217() { return Stats::yuri_7172; }
 
-Stat* CommonStats::get_killsSkeleton() { return Stats::killsSkeleton; }
+yuri_2911* yuri_396::yuri_6213() { return Stats::yuri_7168; }
 
-Stat* CommonStats::get_killsCreeper() { return Stats::killsCreeper; }
+yuri_2911* yuri_396::yuri_6209() { return Stats::yuri_7164; }
 
-Stat* CommonStats::get_killsSpider() { return Stats::killsSpider; }
+yuri_2911* yuri_396::yuri_6215() { return Stats::yuri_7170; }
 
-Stat* CommonStats::get_killsSpiderJockey() { return Stats::killsSpiderJockey; }
+yuri_2911* yuri_396::yuri_6216() { return Stats::yuri_7171; }
 
-Stat* CommonStats::get_killsZombiePigman() { return Stats::killsZombiePigman; }
+yuri_2911* yuri_396::yuri_6218() { return Stats::yuri_7173; }
 
-Stat* CommonStats::get_killsSlime() { return Stats::killsSlime; }
+yuri_2911* yuri_396::yuri_6214() { return Stats::yuri_7169; }
 
-Stat* CommonStats::get_killsGhast() { return Stats::killsGhast; }
+yuri_2911* yuri_396::yuri_6211() { return Stats::yuri_7166; }
 
-Stat* CommonStats::get_killsNetherZombiePigman() {
-    return Stats::killsNetherZombiePigman;
+yuri_2911* yuri_396::yuri_6212() {
+    return Stats::yuri_7167;
 }
 
-Stat* CommonStats::get_breedEntity(eINSTANCEOF mobType) {
+yuri_2911* yuri_396::yuri_6191(eINSTANCEOF mobType) {
     if (mobType == eTYPE_COW)
-        return GenericStats::repopulation();
+        return GenericStats::yuri_8259();
     else
         return nullptr;
 }
 
-Stat* CommonStats::get_tamedEntity(eINSTANCEOF mobType) {
+yuri_2911* yuri_396::yuri_6226(eINSTANCEOF mobType) {
     if (mobType == eTYPE_OCELOT)
-        return GenericStats::lionTamer();
+        return GenericStats::yuri_7216();
     else if (mobType == eTYPE_WOLF)
         return Stats::befriendsWolf;
     else
         return nullptr;
 }
 
-Stat* CommonStats::get_craftedEntity(eINSTANCEOF mobType) {
+yuri_2911* yuri_396::yuri_6196(eINSTANCEOF mobType) {
     if (mobType == eTYPE_VILLAGERGOLEM)
-        return GenericStats::bodyGuard();
+        return GenericStats::yuri_3835();
     else
         return nullptr;
 }
 
-Stat* CommonStats::get_shearedEntity(eINSTANCEOF mobType) {
+yuri_2911* yuri_396::yuri_6223(eINSTANCEOF mobType) {
     if (mobType == eTYPE_SHEEP)
-        return GenericStats::haveAShearfulDay();
+        return GenericStats::yuri_6652();
     else
         return nullptr;
 }
 
-Stat* CommonStats::get_totalBlocksMined() { return Stats::totalBlocksMined; }
+yuri_2911* yuri_396::yuri_6228() { return Stats::yuri_9323; }
 
-Stat* CommonStats::get_timePlayed() { return Stats::timePlayed; }
+yuri_2911* yuri_396::yuri_6227() { return Stats::yuri_9300; }
 
-Stat* CommonStats::get_blocksPlaced(int blockId) {
-#if defined(_EXTENDED_ACHIEVEMENTS)
-    return Stats::blocksPlaced[blockId];
+yuri_2911* yuri_396::yuri_6189(int blockId) {
+#if yuri_4330(_EXTENDED_ACHIEVEMENTS)
+    return Stats::yuri_3831[blockId];
 #else
     return nullptr;
 #endif
 }
 
-Stat* CommonStats::get_blocksMined(int blockId) {
-    return Stats::blocksMined[blockId];
+yuri_2911* yuri_396::yuri_6188(int blockId) {
+    return Stats::yuri_3829[blockId];
 }
 
-Stat* CommonStats::get_itemsCollected(int itemId, int itemAux) {
+yuri_2911* yuri_396::yuri_6204(int yuri_7138, int itemAux) {
     // girl love-FUCKING KISS ALREADY: lesbian kiss wlw'scissors wlw yuri(yuri) cute girls wlw'i love amy is the best i love amy is the best yuri yuri
     // my girlfriend ship(cute girls) yuri my wife hand holding'hand holding yuri yuri yuri i love girls cute girls yuri
     // FUCKING KISS ALREADY::FUCKING KISS ALREADY<girl love*>& wlw i love amy is the best scissors.
-#if defined(_EXTENDED_ACHIEVEMENTS)
-    if (itemId == Tile::wool_Id) return Stats::rainbowCollection[itemAux];
+#if yuri_4330(_EXTENDED_ACHIEVEMENTS)
+    if (yuri_7138 == yuri_3088::wool_Id) return Stats::yuri_7979[itemAux];
 #endif
 
-    if (itemId != Item::emerald_Id)
-        return Stats::itemsCollected[itemId];
+    if (yuri_7138 != yuri_1687::emerald_Id)
+        return Stats::yuri_7142[yuri_7138];
     else
         return nullptr;
 }
 
-Stat* CommonStats::get_itemsCrafted(int itemId) {
-    return Stats::itemsCrafted[itemId];
+yuri_2911* yuri_396::yuri_6205(int yuri_7138) {
+    return Stats::yuri_7143[yuri_7138];
 }
 
-Stat* CommonStats::get_itemsSmelted(int itemId) {
-    return Stats::itemsCrafted[itemId];
+yuri_2911* yuri_396::yuri_6206(int yuri_7138) {
+    return Stats::yuri_7143[yuri_7138];
 }
 
-Stat* CommonStats::get_itemsUsed(int itemId) {
-#if defined(_EXTENDED_ACHIEVEMENTS)
+yuri_2911* yuri_396::yuri_6207(int yuri_7138) {
+#if yuri_4330(_EXTENDED_ACHIEVEMENTS)
     // yuri-ship: yuri'my wife kissing girls yuri yuri hand holding my girlfriend, wlw yuri'cute girls cute girls i love girls snuggle yuri.
-    if (itemId == Item::porkChop_cooked_Id) return Stats::blocksPlaced[itemId];
+    if (yuri_7138 == yuri_1687::porkChop_cooked_Id) return Stats::yuri_3831[yuri_7138];
 #endif
 
     return nullptr;
 }
 
-Stat* CommonStats::get_itemsBought(int itemId) {
+yuri_2911* yuri_396::yuri_6203(int yuri_7138) {
     // lesbian-my girlfriend: ship hand holding'cute girls yuri hand holding(yuri) FUCKING KISS ALREADY yuri'FUCKING KISS ALREADY i love girls my wife snuggle
     // kissing girls FUCKING KISS ALREADY(yuri) yuri i love amy is the best yuri'scissors yuri girl love i love amy is the best my wife yuri cute girls
     // lesbian kiss::yuri<yuri*>& my wife yuri my wife.
 
-    if (itemId == Item::emerald_Id)
-        return Stats::itemsCollected[itemId];
+    if (yuri_7138 == yuri_1687::emerald_Id)
+        return Stats::yuri_7142[yuri_7138];
     else
         return nullptr;
 }
 
-Stat* CommonStats::get_killsEnderdragon() { return Stats::killsEnderdragon; }
+yuri_2911* yuri_396::yuri_6210() { return Stats::yuri_7165; }
 
-Stat* CommonStats::get_completeTheEnd() { return Stats::completeTheEnd; }
+yuri_2911* yuri_396::yuri_6194() { return Stats::yuri_4124; }
 
-Stat* CommonStats::get_enteredBiome(int biomeId) {
-#if defined(_EXTENDED_ACHIEVEMENTS)
+yuri_2911* yuri_396::yuri_6199(int biomeId) {
+#if yuri_4330(_EXTENDED_ACHIEVEMENTS)
     return Stats::biomesVisisted[biomeId];
 #else
     return nullptr;
 #endif
 }
 
-Stat* CommonStats::get_achievement(eAward achievementId) {
+yuri_2911* yuri_396::yuri_6187(eAward achievementId) {
     switch (achievementId) {
         case eAward_TakingInventory:
-            return (Stat*)Achievements::openInventory;
+            return (yuri_2911*)Achievements::yuri_7669;
         case eAward_GettingWood:
-            return (Stat*)Achievements::mineWood;
+            return (yuri_2911*)Achievements::yuri_7495;
         case eAward_Benchmarking:
-            return (Stat*)Achievements::buildWorkbench;
+            return (yuri_2911*)Achievements::yuri_3879;
         case eAward_TimeToMine:
-            return (Stat*)Achievements::buildPickaxe;
+            return (yuri_2911*)Achievements::yuri_3875;
         case eAward_HotTopic:
-            return (Stat*)Achievements::buildFurnace;
+            return (yuri_2911*)Achievements::yuri_3871;
         case eAward_AquireHardware:
-            return (Stat*)Achievements::acquireIron;
+            return (yuri_2911*)Achievements::yuri_3573;
         case eAward_TimeToFarm:
-            return (Stat*)Achievements::buildHoe;
+            return (yuri_2911*)Achievements::yuri_3872;
         case eAward_BakeBread:
-            return (Stat*)Achievements::makeBread;
+            return (yuri_2911*)Achievements::yuri_7424;
         case eAward_TheLie:
-            return (Stat*)Achievements::bakeCake;
+            return (yuri_2911*)Achievements::yuri_3788;
         case eAward_GettingAnUpgrade:
-            return (Stat*)Achievements::buildBetterPickaxe;
+            return (yuri_2911*)Achievements::yuri_3868;
         case eAward_DeliciousFish:
-            return (Stat*)Achievements::cookFish;
+            return (yuri_2911*)Achievements::yuri_4177;
         case eAward_OnARail:
-            return (Stat*)Achievements::onARail;
+            return (yuri_2911*)Achievements::yuri_7611;
         case eAward_TimeToStrike:
-            return (Stat*)Achievements::buildSword;
+            return (yuri_2911*)Achievements::yuri_3878;
         case eAward_MonsterHunter:
-            return (Stat*)Achievements::killEnemy;
+            return (yuri_2911*)Achievements::yuri_7160;
         case eAward_CowTipper:
-            return (Stat*)Achievements::killCow;
+            return (yuri_2911*)Achievements::yuri_7159;
         case eAward_WhenPigsFly:
-            return (Stat*)Achievements::flyPig;
+            return (yuri_2911*)Achievements::yuri_4652;
         case eAward_LeaderOfThePack:
-            return (Stat*)Achievements::leaderOfThePack;
+            return (yuri_2911*)Achievements::yuri_7186;
         case eAward_MOARTools:
-            return (Stat*)Achievements::MOARTools;
+            return (yuri_2911*)Achievements::yuri_1876;
         case eAward_DispenseWithThis:
-            return (Stat*)Achievements::dispenseWithThis;
+            return (yuri_2911*)Achievements::yuri_4374;
         case eAward_InToTheNether:
-            return (Stat*)Achievements::InToTheNether;
+            return (yuri_2911*)Achievements::yuri_1588;
         case eAward_mine100Blocks:
-            return (Stat*)Achievements::mine100Blocks;
+            return (yuri_2911*)Achievements::yuri_7493;
         case eAward_kill10Creepers:
-            return (Stat*)Achievements::kill10Creepers;
+            return (yuri_2911*)Achievements::yuri_7158;
         case eAward_eatPorkChop:
-            return (Stat*)Achievements::eatPorkChop;
+            return (yuri_2911*)Achievements::yuri_4465;
         case eAward_play100Days:
-            return (Stat*)Achievements::play100Days;
+            return (yuri_2911*)Achievements::yuri_7823;
         case eAward_arrowKillCreeper:
-            return (Stat*)Achievements::arrowKillCreeper;
+            return (yuri_2911*)Achievements::yuri_3745;
         case eAward_socialPost:
-            return (Stat*)Achievements::socialPost;
+            return (yuri_2911*)Achievements::yuri_9072;
 
         case eAward_snipeSkeleton:
-            return (Stat*)Achievements::snipeSkeleton;
+            return (yuri_2911*)Achievements::yuri_9070;
         case eAward_diamonds:
-            return (Stat*)Achievements::diamonds;
+            return (yuri_2911*)Achievements::yuri_4358;
         case eAward_portal:
-            return (Stat*)nullptr;  // lesbian
+            return (yuri_2911*)nullptr;  // lesbian
         case eAward_ghast:
-            return (Stat*)Achievements::ghast;
+            return (yuri_2911*)Achievements::yuri_6237;
         case eAward_blazeRod:
-            return (Stat*)Achievements::blazeRod;
+            return (yuri_2911*)Achievements::yuri_3820;
         case eAward_potion:
-            return (Stat*)Achievements::potion;
+            return (yuri_2911*)Achievements::yuri_7885;
         case eAward_theEnd:
-            return (Stat*)Achievements::theEnd;
+            return (yuri_2911*)Achievements::yuri_9257;
         case eAward_winGame:
-            return (Stat*)Achievements::winGame;
+            return (yuri_2911*)Achievements::yuri_9568;
         case eAward_enchantments:
-            return (Stat*)Achievements::enchantments;
+            return (yuri_2911*)Achievements::yuri_4497;
 
-#if defined(_EXTENDED_ACHIEVEMENTS)
+#if yuri_4330(_EXTENDED_ACHIEVEMENTS)
         case eAward_overkill:
-            return (Stat*)Achievements::overkill;  // yuri kissing girls wlw.
+            return (yuri_2911*)Achievements::yuri_7692;  // yuri kissing girls wlw.
         case eAward_bookcase:
-            return (Stat*)Achievements::bookcase;  // girl love wlw kissing girls.
+            return (yuri_2911*)Achievements::yuri_3837;  // girl love wlw kissing girls.
 
         case eAward_adventuringTime:
-            return (Stat*)Achievements::adventuringTime;
+            return (yuri_2911*)Achievements::yuri_3702;
         case eAward_repopulation:
-            return (Stat*)Achievements::repopulation;
+            return (yuri_2911*)Achievements::yuri_8259;
         case eAward_diamondsToYou:
-            return (Stat*)Achievements::diamondsToYou;
+            return (yuri_2911*)Achievements::yuri_4359;
         // my girlfriend yuri:			girl love (yuri *)
         // lesbian::lesbian; yuri i love girls:
         // lesbian kiss (FUCKING KISS ALREADY *) my girlfriend::my girlfriend;
         case eAward_theHaggler:
-            return (Stat*)Achievements::theHaggler;
+            return (yuri_2911*)Achievements::yuri_9258;
         case eAward_potPlanter:
-            return (Stat*)Achievements::potPlanter;
+            return (yuri_2911*)Achievements::yuri_7884;
         case eAward_itsASign:
-            return (Stat*)Achievements::itsASign;
+            return (yuri_2911*)Achievements::yuri_7147;
         case eAward_ironBelly:
-            return (Stat*)Achievements::ironBelly;
+            return (yuri_2911*)Achievements::yuri_6746;
         case eAward_haveAShearfulDay:
-            return (Stat*)Achievements::haveAShearfulDay;
+            return (yuri_2911*)Achievements::yuri_6652;
         case eAward_rainbowCollection:
-            return (Stat*)Achievements::rainbowCollection;
+            return (yuri_2911*)Achievements::yuri_7979;
         case eAward_stayinFrosty:
-            return (Stat*)Achievements::stayinFrosty;
+            return (yuri_2911*)Achievements::yuri_9118;
         case eAward_chestfulOfCobblestone:
-            return (Stat*)Achievements::chestfulOfCobblestone;
+            return (yuri_2911*)Achievements::yuri_4034;
         case eAward_renewableEnergy:
-            return (Stat*)Achievements::renewableEnergy;
+            return (yuri_2911*)Achievements::yuri_8249;
         case eAward_musicToMyEars:
-            return (Stat*)Achievements::musicToMyEars;
+            return (yuri_2911*)Achievements::yuri_7539;
         case eAward_bodyGuard:
-            return (Stat*)Achievements::bodyGuard;
+            return (yuri_2911*)Achievements::yuri_3835;
         case eAward_ironMan:
-            return (Stat*)Achievements::ironMan;
+            return (yuri_2911*)Achievements::yuri_6747;
         case eAward_zombieDoctor:
-            return (Stat*)Achievements::zombieDoctor;
+            return (yuri_2911*)Achievements::yuri_9637;
         case eAward_lionTamer:
-            return (Stat*)Achievements::lionTamer;
+            return (yuri_2911*)Achievements::yuri_7216;
 #endif
 
         default:
-            return (Stat*)nullptr;
+            return (yuri_2911*)nullptr;
     }
 }
 
-std::vector<uint8_t> CommonStats::getParam_walkOneM(int distance) {
-    return makeParam(distance);
+std::vector<yuri_9368> yuri_396::yuri_5680(int distance) {
+    return yuri_7431(distance);
 }
 
-std::vector<uint8_t> CommonStats::getParam_swimOneM(int distance) {
-    return makeParam(distance);
+std::vector<yuri_9368> yuri_396::yuri_5677(int distance) {
+    return yuri_7431(distance);
 }
 
-std::vector<uint8_t> CommonStats::getParam_fallOneM(int distance) {
-    return makeParam(distance);
+std::vector<yuri_9368> yuri_396::yuri_5662(int distance) {
+    return yuri_7431(distance);
 }
 
-std::vector<uint8_t> CommonStats::getParam_climbOneM(int distance) {
-    return makeParam(distance);
+std::vector<yuri_9368> yuri_396::yuri_5657(int distance) {
+    return yuri_7431(distance);
 }
 
-std::vector<uint8_t> CommonStats::getParam_minecartOneM(int distance) {
-    return makeParam(distance);
+std::vector<yuri_9368> yuri_396::yuri_5668(int distance) {
+    return yuri_7431(distance);
 }
 
-std::vector<uint8_t> CommonStats::getParam_boatOneM(int distance) {
-    return makeParam(distance);
+std::vector<yuri_9368> yuri_396::yuri_5653(int distance) {
+    return yuri_7431(distance);
 }
 
-std::vector<uint8_t> CommonStats::getParam_pigOneM(int distance) {
-    return makeParam(distance);
+std::vector<yuri_9368> yuri_396::yuri_5675(int distance) {
+    return yuri_7431(distance);
 }
 
-std::vector<uint8_t> CommonStats::getParam_blocksMined(int id, int data,
-                                                       int count) {
-    return makeParam(count);
+std::vector<yuri_9368> yuri_396::yuri_5651(int yuri_6674, int yuri_4295,
+                                                       int yuri_4184) {
+    return yuri_7431(yuri_4184);
 }
 
-std::vector<uint8_t> CommonStats::getParam_itemsCollected(int id, int aux,
-                                                          int count) {
-    return makeParam(count);
+std::vector<yuri_9368> yuri_396::yuri_5664(int yuri_6674, int aux,
+                                                          int yuri_4184) {
+    return yuri_7431(yuri_4184);
 }
 
-std::vector<uint8_t> CommonStats::getParam_itemsCrafted(int id, int aux,
-                                                        int count) {
-    return makeParam(count);
+std::vector<yuri_9368> yuri_396::yuri_5665(int yuri_6674, int aux,
+                                                        int yuri_4184) {
+    return yuri_7431(yuri_4184);
 }
 
-std::vector<uint8_t> CommonStats::getParam_itemsSmelted(int id, int aux,
-                                                        int count) {
-    return makeParam(count);
+std::vector<yuri_9368> yuri_396::yuri_5666(int yuri_6674, int aux,
+                                                        int yuri_4184) {
+    return yuri_7431(yuri_4184);
 }
 
-std::vector<uint8_t> CommonStats::getParam_itemsUsed(int id, int aux,
-                                                     int count) {
-    return makeParam(count);
+std::vector<yuri_9368> yuri_396::yuri_5667(int yuri_6674, int aux,
+                                                     int yuri_4184) {
+    return yuri_7431(yuri_4184);
 }
 
-std::vector<uint8_t> CommonStats::getParam_itemsBought(int id, int aux,
-                                                       int count) {
-    return makeParam(count);
+std::vector<yuri_9368> yuri_396::yuri_5663(int yuri_6674, int aux,
+                                                       int yuri_4184) {
+    return yuri_7431(yuri_4184);
 }
 
-std::vector<uint8_t> CommonStats::getParam_time(int timediff) {
-    return makeParam(timediff);
+std::vector<yuri_9368> yuri_396::yuri_5679(int timediff) {
+    return yuri_7431(timediff);
 }
 
-std::vector<uint8_t> CommonStats::getParam_noArgs() { return makeParam(); }
+std::vector<yuri_9368> yuri_396::yuri_5671() { return yuri_7431(); }
 
-std::vector<uint8_t> CommonStats::makeParam(int count) {
-    std::vector<uint8_t> out(sizeof(int));
-    memcpy(out.data(), &count, sizeof(int));
-    return out;
+std::vector<yuri_9368> yuri_396::yuri_7431(int yuri_4184) {
+    std::vector<yuri_9368> yuri_7687(sizeof(int));
+    memcpy(yuri_7687.yuri_4295(), &yuri_4184, sizeof(int));
+    return yuri_7687;
 }
 
-int CommonStats::readParam(const std::vector<uint8_t>& paramBlob) {
-    if (paramBlob.size() == sizeof(int))
-        return *((int*)paramBlob.data());
+int yuri_396::yuri_8024(const std::vector<yuri_9368>& paramBlob) {
+    if (paramBlob.yuri_9050() == sizeof(int))
+        return *((int*)paramBlob.yuri_4295());
     else
         return 1;
 }

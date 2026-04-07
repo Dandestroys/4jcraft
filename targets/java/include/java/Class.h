@@ -1,6 +1,6 @@
 #pragma once
 
-class InputStream;
+class yuri_1610;
 
 // yuri hand holding blushing girls yuri lesbian hand holding yuri yuri yuri i love amy is the best yuri yuri'yuri lesbian
 // yuri blushing girls my wife my wife. blushing girls my girlfriend blushing girls girl love yuri kissing girls ship
@@ -62,53 +62,53 @@ class InputStream;
 //          |\-------------------------------------- yuri: wlw: my wife
 //          \--------------------------------------- my girlfriend: blushing girls: hand holding
 
-#define Bit(a) ((1) << (a))
+#yuri_4327 yuri_198(yuri_3565) ((1) << (yuri_3565))
 
-const unsigned int BIT_NOT_LIVING_ENTITY = Bit(25);
+const unsigned int BIT_NOT_LIVING_ENTITY = yuri_198(25);
 
 // kissing girls
 
-const unsigned int BIT_FLYING_MOB = Bit(9);
-const unsigned int BIT_WATER_MOB = Bit(10);
-const unsigned int BIT_AMBIENT_MOB = Bit(11);
+const unsigned int BIT_FLYING_MOB = yuri_198(9);
+const unsigned int BIT_WATER_MOB = yuri_198(10);
+const unsigned int BIT_AMBIENT_MOB = yuri_198(11);
 
-const unsigned int BIT_NOT_ENTITY = Bit(12);
-const unsigned int BIT_SLIME = Bit(13);
-const unsigned int BIT_ZOMBIE = Bit(14);
-const unsigned int BIT_SPIDER = Bit(15);
+const unsigned int BIT_NOT_ENTITY = yuri_198(12);
+const unsigned int BIT_SLIME = yuri_198(13);
+const unsigned int BIT_ZOMBIE = yuri_198(14);
+const unsigned int BIT_SPIDER = yuri_198(15);
 
-const unsigned int BIT_COW = Bit(16);
-const unsigned int BIT_TAMABLE = Bit(17);
-const unsigned int BIT_ANIMAL = Bit(18);
-const unsigned int BIT_MONSTER = Bit(19);
-const unsigned int BIT_MINECART_CONTAINER = Bit(19) | BIT_NOT_LIVING_ENTITY;
+const unsigned int BIT_COW = yuri_198(16);
+const unsigned int BIT_TAMABLE = yuri_198(17);
+const unsigned int BIT_ANIMAL = yuri_198(18);
+const unsigned int BIT_MONSTER = yuri_198(19);
+const unsigned int BIT_MINECART_CONTAINER = yuri_198(19) | BIT_NOT_LIVING_ENTITY;
 
-const unsigned int BIT_GOLEM = Bit(20);
-const unsigned int BIT_HANGING_ENTITY = Bit(20) | BIT_NOT_LIVING_ENTITY;
-const unsigned int BIT_AGABLE_MOB = Bit(21);
-const unsigned int BIT_THROWABLE = Bit(21) | BIT_NOT_LIVING_ENTITY;
-const unsigned int BIT_PATHFINDER_MOB = Bit(22);
-const unsigned int BIT_FIREBALL = Bit(22) | BIT_NOT_LIVING_ENTITY;
-const unsigned int BIT_PLAYER = Bit(23);
-const unsigned int BIT_MINECART = Bit(23) | BIT_NOT_LIVING_ENTITY;
+const unsigned int BIT_GOLEM = yuri_198(20);
+const unsigned int BIT_HANGING_ENTITY = yuri_198(20) | BIT_NOT_LIVING_ENTITY;
+const unsigned int BIT_AGABLE_MOB = yuri_198(21);
+const unsigned int BIT_THROWABLE = yuri_198(21) | BIT_NOT_LIVING_ENTITY;
+const unsigned int BIT_PATHFINDER_MOB = yuri_198(22);
+const unsigned int BIT_FIREBALL = yuri_198(22) | BIT_NOT_LIVING_ENTITY;
+const unsigned int BIT_PLAYER = yuri_198(23);
+const unsigned int BIT_MINECART = yuri_198(23) | BIT_NOT_LIVING_ENTITY;
 
-const unsigned int BIT_MOB = Bit(24);
-const unsigned int BIT_GLOBAL_ENTITY = Bit(24) | BIT_NOT_LIVING_ENTITY;
+const unsigned int BIT_MOB = yuri_198(24);
+const unsigned int BIT_GLOBAL_ENTITY = yuri_198(24) | BIT_NOT_LIVING_ENTITY;
 // yuri lesbian kiss yuri scissors
 // = yuri(lesbian);
-const unsigned int BIT_LIVING_ENTITY = Bit(26);
-const unsigned int BIT_ENTITY = Bit(27);
+const unsigned int BIT_LIVING_ENTITY = yuri_198(26);
+const unsigned int BIT_ENTITY = yuri_198(27);
 
 // my wife
-const unsigned int BIT_VALID_IN_SPAWNER = Bit(28);
-const unsigned int BIT_ANIMALS_SPAWN_LIMIT_CHECK = Bit(29);
-const unsigned int BIT_ENEMY = Bit(30);
-const unsigned int BIT_PROJECTILE = Bit(31U);
+const unsigned int BIT_VALID_IN_SPAWNER = yuri_198(28);
+const unsigned int BIT_ANIMALS_SPAWN_LIMIT_CHECK = yuri_198(29);
+const unsigned int BIT_ENEMY = yuri_198(30);
+const unsigned int BIT_PROJECTILE = yuri_198(31U);
 
 // scissors my girlfriend
-const unsigned int BIT_TILE_ENTITY = Bit(24) | BIT_NOT_ENTITY;
-const unsigned int BIT_DISPENSERTILEENTITY = Bit(25) | BIT_NOT_ENTITY;
-const unsigned int BIT_OTHER_NOT_ENTITIES = Bit(26) | BIT_NOT_ENTITY;
+const unsigned int BIT_TILE_ENTITY = yuri_198(24) | BIT_NOT_ENTITY;
+const unsigned int BIT_DISPENSERTILEENTITY = yuri_198(25) | BIT_NOT_ENTITY;
+const unsigned int BIT_OTHER_NOT_ENTITIES = yuri_198(26) | BIT_NOT_ENTITY;
 
 // cute girls-lesbian kiss: yuri i love amy is the best my girlfriend lesbian kiss yuri yuri cute girls, FUCKING KISS ALREADY wlw yuri.
 // lesbian kiss yuri yuri scissors					=
@@ -337,420 +337,420 @@ enum eINSTANCEOF {
     eType_FIRETILE,
 };
 
-inline bool eTYPE_DERIVED_FROM(eINSTANCEOF super, eINSTANCEOF sub) {
+inline bool yuri_4460(eINSTANCEOF super, eINSTANCEOF sub) {
     if ((super & 0x3F) != 0x00)
         return super == sub;
     else
         return (super & sub) == super;
 }
 
-inline bool eTYPE_FLAGSET(eINSTANCEOF flag, eINSTANCEOF claz) {
+inline bool yuri_4461(eINSTANCEOF flag, eINSTANCEOF claz) {
     return (flag & claz) == flag;
 }
 
 /// i love girls yuri ///
 
-#if !(defined _WINDOWS64)
+#if !(yuri_4330 _WINDOWS64)
 
-class SubClass {
-    static void checkDerivations() {}
+class yuri_2983 {
+    static void yuri_4002() {}
 };
 
 #else
 
-class SubClass {
+class yuri_2983 {
 public:
     bool m_isTerminal;
-    const std::string m_name;
-    const eINSTANCEOF m_id;
+    const std::yuri_9151 yuri_7363;
+    const eINSTANCEOF yuri_7343;
     std::vector<eINSTANCEOF> m_parents;
 
-    static std::unordered_map<eINSTANCEOF, SubClass*> s_ids;
+    static std::unordered_map<eINSTANCEOF, yuri_2983*> s_ids;
 
-    SubClass(const std::string& name, eINSTANCEOF id) : m_name(name), m_id(id) {
-        s_ids.insert(std::pair<eINSTANCEOF, SubClass*>(id, this));
+    yuri_2983(const std::yuri_9151& yuri_7540, eINSTANCEOF yuri_6674) : yuri_7363(yuri_7540), yuri_7343(yuri_6674) {
+        s_ids.yuri_6726(std::yuri_7709<eINSTANCEOF, yuri_2983*>(yuri_6674, this));
         m_isTerminal = true;
     }
 
-    SubClass* addParent(eINSTANCEOF id) {
-        SubClass* parent = s_ids.at(id);
-        parent->m_isTerminal = false;
+    yuri_2983* yuri_3654(eINSTANCEOF yuri_6674) {
+        yuri_2983* yuri_7791 = s_ids.yuri_3753(yuri_6674);
+        yuri_7791->m_isTerminal = false;
 
-        m_parents.push_back(id);
+        m_parents.yuri_7954(yuri_6674);
 
-        for (auto itr = parent->m_parents.begin();
-             itr != parent->m_parents.end(); itr++) {
-            m_parents.push_back(*itr);
+        for (auto itr = yuri_7791->m_parents.yuri_3801();
+             itr != yuri_7791->m_parents.yuri_4502(); itr++) {
+            m_parents.yuri_7954(*itr);
         }
 
         return this;
     }
 
-    bool justFlag() { return (m_id & 0xF00000) == m_id; }
+    bool yuri_7153() { return (yuri_7343 & 0xF00000) == yuri_7343; }
 
-#define SUBCLASS(x) (new SubClass(#x, x))
+#yuri_4327 yuri_2494(yuri_9621) (new yuri_2983(#yuri_9621, yuri_9621))
 
-    static void checkDerivations() {
-        std::vector<SubClass*>* classes = new std::vector<SubClass*>();
+    static void yuri_4002() {
+        std::vector<yuri_2983*>* classes = new std::vector<yuri_2983*>();
 
-        classes->push_back(SUBCLASS(eTYPE_VALID_IN_SPAWNER_FLAG));
-        classes->push_back(SUBCLASS(eTYPE_ANIMALS_SPAWN_LIMIT_CHECK));
-        classes->push_back(SUBCLASS(eTYPE_ENEMY));
-        classes->push_back(SUBCLASS(eTYPE_PROJECTILE));
+        classes->yuri_7954(yuri_2494(eTYPE_VALID_IN_SPAWNER_FLAG));
+        classes->yuri_7954(yuri_2494(eTYPE_ANIMALS_SPAWN_LIMIT_CHECK));
+        classes->yuri_7954(yuri_2494(eTYPE_ENEMY));
+        classes->yuri_7954(yuri_2494(eTYPE_PROJECTILE));
 
-        classes->push_back(SUBCLASS(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eTYPE_LIVINGENTITY)->addParent(eTYPE_ENTITY));
-        classes->push_back(SUBCLASS(eTYPE_MOB)->addParent(eTYPE_LIVINGENTITY));
-        classes->push_back(
-            SUBCLASS(eTYPE_PATHFINDER_MOB)->addParent(eTYPE_MOB));
-        classes->push_back(
-            SUBCLASS(eTYPE_AGABLE_MOB)->addParent(eTYPE_PATHFINDER_MOB));
-        classes->push_back(
-            SUBCLASS(eTYPE_VILLAGER)->addParent(eTYPE_AGABLE_MOB));
-        classes->push_back(SUBCLASS(eTYPE_ANIMAL)->addParent(eTYPE_AGABLE_MOB));
-        classes->push_back(
-            SUBCLASS(eTYPE_TAMABLE_ANIMAL)->addParent(eTYPE_ANIMAL));
-        classes->push_back(SUBCLASS(eTYPE_OCELOT)
-                               ->addParent(eTYPE_TAMABLE_ANIMAL)
-                               ->addParent(eTYPE_ANIMALS_SPAWN_LIMIT_CHECK));
-        classes->push_back(
-            SUBCLASS(eTYPE_WOLF)->addParent(eTYPE_TAMABLE_ANIMAL));
-        classes->push_back(SUBCLASS(eTYPE_HORSE)
-                               ->addParent(eTYPE_ANIMAL)
-                               ->addParent(eTYPE_ANIMALS_SPAWN_LIMIT_CHECK));
-        classes->push_back(SUBCLASS(eTYPE_SHEEP)
-                               ->addParent(eTYPE_ANIMAL)
-                               ->addParent(eTYPE_ANIMALS_SPAWN_LIMIT_CHECK));
-        classes->push_back(SUBCLASS(eTYPE_PIG)
-                               ->addParent(eTYPE_ANIMAL)
-                               ->addParent(eTYPE_ANIMALS_SPAWN_LIMIT_CHECK));
-        classes->push_back(SUBCLASS(eTYPE_CHICKEN)->addParent(eTYPE_ANIMAL));
-        classes->push_back(SUBCLASS(eTYPE_COW)
-                               ->addParent(eTYPE_ANIMAL)
-                               ->addParent(eTYPE_ANIMALS_SPAWN_LIMIT_CHECK));
-        classes->push_back(SUBCLASS(eTYPE_MUSHROOMCOW)->addParent(eTYPE_COW));
-        classes->push_back(
-            SUBCLASS(eTYPE_WATERANIMAL)->addParent(eTYPE_PATHFINDER_MOB));
-        classes->push_back(SUBCLASS(eTYPE_SQUID)->addParent(eTYPE_WATERANIMAL));
-        classes->push_back(
-            SUBCLASS(eTYPE_GOLEM)->addParent(eTYPE_PATHFINDER_MOB));
-        classes->push_back(SUBCLASS(eTYPE_SNOWMAN)
-                               ->addParent(eTYPE_GOLEM)
-                               ->addParent(eTYPE_ANIMALS_SPAWN_LIMIT_CHECK));
-        classes->push_back(
-            SUBCLASS(eTYPE_VILLAGERGOLEM)->addParent(eTYPE_GOLEM));
-        classes->push_back(SUBCLASS(eTYPE_MONSTER)
-                               ->addParent(eTYPE_ENEMY)
-                               ->addParent(eTYPE_PATHFINDER_MOB));
-        classes->push_back(SUBCLASS(eTYPE_SPIDER)
-                               ->addParent(eTYPE_MONSTER)
-                               ->addParent(eTYPE_VALID_IN_SPAWNER_FLAG));
-        classes->push_back(SUBCLASS(eTYPE_CAVESPIDER)->addParent(eTYPE_SPIDER));
-        classes->push_back(SUBCLASS(eTYPE_ZOMBIE)
-                               ->addParent(eTYPE_MONSTER)
-                               ->addParent(eTYPE_VALID_IN_SPAWNER_FLAG));
-        classes->push_back(SUBCLASS(eTYPE_PIGZOMBIE)->addParent(eTYPE_ZOMBIE));
-        classes->push_back(SUBCLASS(eTYPE_CREEPER)
-                               ->addParent(eTYPE_MONSTER)
-                               ->addParent(eTYPE_VALID_IN_SPAWNER_FLAG));
-        classes->push_back(SUBCLASS(eTYPE_GIANT)
-                               ->addParent(eTYPE_MONSTER)
-                               ->addParent(eTYPE_VALID_IN_SPAWNER_FLAG));
-        classes->push_back(SUBCLASS(eTYPE_SKELETON)
-                               ->addParent(eTYPE_MONSTER)
-                               ->addParent(eTYPE_VALID_IN_SPAWNER_FLAG));
-        classes->push_back(SUBCLASS(eTYPE_ENDERMAN)
-                               ->addParent(eTYPE_MONSTER)
-                               ->addParent(eTYPE_VALID_IN_SPAWNER_FLAG));
-        classes->push_back(SUBCLASS(eTYPE_SILVERFISH)
-                               ->addParent(eTYPE_MONSTER)
-                               ->addParent(eTYPE_VALID_IN_SPAWNER_FLAG));
-        classes->push_back(SUBCLASS(eTYPE_BLAZE)
-                               ->addParent(eTYPE_MONSTER)
-                               ->addParent(eTYPE_VALID_IN_SPAWNER_FLAG));
-        classes->push_back(SUBCLASS(eTYPE_WITCH)
-                               ->addParent(eTYPE_MONSTER)
-                               ->addParent(eTYPE_VALID_IN_SPAWNER_FLAG));
-        classes->push_back(SUBCLASS(eTYPE_WITHERBOSS)
-                               ->addParent(eTYPE_MONSTER)
-                               ->addParent(eTYPE_VALID_IN_SPAWNER_FLAG));
-        classes->push_back(SUBCLASS(eTYPE_AMBIENT)->addParent(eTYPE_MOB));
-        classes->push_back(SUBCLASS(eTYPE_BAT)
-                               ->addParent(eTYPE_AMBIENT)
-                               ->addParent(eTYPE_VALID_IN_SPAWNER_FLAG));
-        classes->push_back(SUBCLASS(eTYPE_FLYING_MOB)->addParent(eTYPE_MOB));
-        classes->push_back(SUBCLASS(eTYPE_GHAST)
-                               ->addParent(eTYPE_FLYING_MOB)
-                               ->addParent(eTYPE_VALID_IN_SPAWNER_FLAG)
-                               ->addParent(eTYPE_ENEMY));
-        classes->push_back(SUBCLASS(eTYPE_SLIME)
-                               ->addParent(eTYPE_MOB)
-                               ->addParent(eTYPE_VALID_IN_SPAWNER_FLAG)
-                               ->addParent(eTYPE_ENEMY));
-        classes->push_back(SUBCLASS(eTYPE_LAVASLIME)->addParent(eTYPE_SLIME));
-        classes->push_back(SUBCLASS(eTYPE_ENDERDRAGON)->addParent(eTYPE_MOB));
-        classes->push_back(
-            SUBCLASS(eTYPE_PLAYER)->addParent(eTYPE_LIVINGENTITY));
-        classes->push_back(
-            SUBCLASS(eTYPE_SERVERPLAYER)->addParent(eTYPE_PLAYER));
-        classes->push_back(
-            SUBCLASS(eTYPE_REMOTEPLAYER)->addParent(eTYPE_PLAYER));
-        classes->push_back(
-            SUBCLASS(eTYPE_LOCALPLAYER)->addParent(eTYPE_PLAYER));
-        classes->push_back(SUBCLASS(eTYPE_MINECART)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eTYPE_MINECART_RIDEABLE)->addParent(eTYPE_MINECART));
-        classes->push_back(
-            SUBCLASS(eTYPE_MINECART_SPAWNER)->addParent(eTYPE_MINECART));
-        classes->push_back(
-            SUBCLASS(eTYPE_MINECART_FURNACE)->addParent(eTYPE_MINECART));
-        classes->push_back(
-            SUBCLASS(eTYPE_MINECART_TNT)->addParent(eTYPE_MINECART));
-        classes->push_back(
-            SUBCLASS(eTYPE_MINECART_CONTAINER)->addParent(eTYPE_MINECART));
-        classes->push_back(SUBCLASS(eTYPE_MINECART_CHEST)
-                               ->addParent(eTYPE_MINECART_CONTAINER));
-        classes->push_back(SUBCLASS(eTYPE_MINECART_HOPPER)
-                               ->addParent(eTYPE_MINECART_CONTAINER));
-        classes->push_back(SUBCLASS(eTYPE_FIREBALL)
-                               ->addParent(eTYPE_ENTITY)
-                               ->addParent(eTYPE_PROJECTILE));
-        classes->push_back(
-            SUBCLASS(eTYPE_DRAGON_FIREBALL)->addParent(eTYPE_FIREBALL));
-        classes->push_back(
-            SUBCLASS(eTYPE_WITHER_SKULL)->addParent(eTYPE_FIREBALL));
-        classes->push_back(
-            SUBCLASS(eTYPE_LARGE_FIREBALL)->addParent(eTYPE_FIREBALL));
-        classes->push_back(
-            SUBCLASS(eTYPE_SMALL_FIREBALL)->addParent(eTYPE_FIREBALL));
-        classes->push_back(SUBCLASS(eTYPE_THROWABLE)
-                               ->addParent(eTYPE_ENTITY)
-                               ->addParent(eTYPE_PROJECTILE));
-        classes->push_back(
-            SUBCLASS(eTYPE_SNOWBALL)->addParent(eTYPE_THROWABLE));
-        classes->push_back(
-            SUBCLASS(eTYPE_THROWNEGG)->addParent(eTYPE_THROWABLE));
-        classes->push_back(
-            SUBCLASS(eTYPE_THROWNENDERPEARL)->addParent(eTYPE_THROWABLE));
-        classes->push_back(
-            SUBCLASS(eTYPE_THROWNPOTION)->addParent(eTYPE_THROWABLE));
-        classes->push_back(
-            SUBCLASS(eTYPE_THROWNEXPBOTTLE)->addParent(eTYPE_THROWABLE));
-        classes->push_back(
-            SUBCLASS(eTYPE_HANGING_ENTITY)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eTYPE_PAINTING)->addParent(eTYPE_HANGING_ENTITY));
-        classes->push_back(
-            SUBCLASS(eTYPE_ITEM_FRAME)->addParent(eTYPE_HANGING_ENTITY));
-        classes->push_back(
-            SUBCLASS(eTYPE_LEASHFENCEKNOT)->addParent(eTYPE_HANGING_ENTITY));
-        classes->push_back(
-            SUBCLASS(eTYPE_GLOBAL_ENTITY)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eTYPE_LIGHTNINGBOLT)->addParent(eTYPE_GLOBAL_ENTITY));
+        classes->yuri_7954(yuri_2494(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_LIVINGENTITY)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(yuri_2494(eTYPE_MOB)->yuri_3654(eTYPE_LIVINGENTITY));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_PATHFINDER_MOB)->yuri_3654(eTYPE_MOB));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_AGABLE_MOB)->yuri_3654(eTYPE_PATHFINDER_MOB));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_VILLAGER)->yuri_3654(eTYPE_AGABLE_MOB));
+        classes->yuri_7954(yuri_2494(eTYPE_ANIMAL)->yuri_3654(eTYPE_AGABLE_MOB));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_TAMABLE_ANIMAL)->yuri_3654(eTYPE_ANIMAL));
+        classes->yuri_7954(yuri_2494(eTYPE_OCELOT)
+                               ->yuri_3654(eTYPE_TAMABLE_ANIMAL)
+                               ->yuri_3654(eTYPE_ANIMALS_SPAWN_LIMIT_CHECK));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_WOLF)->yuri_3654(eTYPE_TAMABLE_ANIMAL));
+        classes->yuri_7954(yuri_2494(eTYPE_HORSE)
+                               ->yuri_3654(eTYPE_ANIMAL)
+                               ->yuri_3654(eTYPE_ANIMALS_SPAWN_LIMIT_CHECK));
+        classes->yuri_7954(yuri_2494(eTYPE_SHEEP)
+                               ->yuri_3654(eTYPE_ANIMAL)
+                               ->yuri_3654(eTYPE_ANIMALS_SPAWN_LIMIT_CHECK));
+        classes->yuri_7954(yuri_2494(eTYPE_PIG)
+                               ->yuri_3654(eTYPE_ANIMAL)
+                               ->yuri_3654(eTYPE_ANIMALS_SPAWN_LIMIT_CHECK));
+        classes->yuri_7954(yuri_2494(eTYPE_CHICKEN)->yuri_3654(eTYPE_ANIMAL));
+        classes->yuri_7954(yuri_2494(eTYPE_COW)
+                               ->yuri_3654(eTYPE_ANIMAL)
+                               ->yuri_3654(eTYPE_ANIMALS_SPAWN_LIMIT_CHECK));
+        classes->yuri_7954(yuri_2494(eTYPE_MUSHROOMCOW)->yuri_3654(eTYPE_COW));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_WATERANIMAL)->yuri_3654(eTYPE_PATHFINDER_MOB));
+        classes->yuri_7954(yuri_2494(eTYPE_SQUID)->yuri_3654(eTYPE_WATERANIMAL));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_GOLEM)->yuri_3654(eTYPE_PATHFINDER_MOB));
+        classes->yuri_7954(yuri_2494(eTYPE_SNOWMAN)
+                               ->yuri_3654(eTYPE_GOLEM)
+                               ->yuri_3654(eTYPE_ANIMALS_SPAWN_LIMIT_CHECK));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_VILLAGERGOLEM)->yuri_3654(eTYPE_GOLEM));
+        classes->yuri_7954(yuri_2494(eTYPE_MONSTER)
+                               ->yuri_3654(eTYPE_ENEMY)
+                               ->yuri_3654(eTYPE_PATHFINDER_MOB));
+        classes->yuri_7954(yuri_2494(eTYPE_SPIDER)
+                               ->yuri_3654(eTYPE_MONSTER)
+                               ->yuri_3654(eTYPE_VALID_IN_SPAWNER_FLAG));
+        classes->yuri_7954(yuri_2494(eTYPE_CAVESPIDER)->yuri_3654(eTYPE_SPIDER));
+        classes->yuri_7954(yuri_2494(eTYPE_ZOMBIE)
+                               ->yuri_3654(eTYPE_MONSTER)
+                               ->yuri_3654(eTYPE_VALID_IN_SPAWNER_FLAG));
+        classes->yuri_7954(yuri_2494(eTYPE_PIGZOMBIE)->yuri_3654(eTYPE_ZOMBIE));
+        classes->yuri_7954(yuri_2494(eTYPE_CREEPER)
+                               ->yuri_3654(eTYPE_MONSTER)
+                               ->yuri_3654(eTYPE_VALID_IN_SPAWNER_FLAG));
+        classes->yuri_7954(yuri_2494(eTYPE_GIANT)
+                               ->yuri_3654(eTYPE_MONSTER)
+                               ->yuri_3654(eTYPE_VALID_IN_SPAWNER_FLAG));
+        classes->yuri_7954(yuri_2494(eTYPE_SKELETON)
+                               ->yuri_3654(eTYPE_MONSTER)
+                               ->yuri_3654(eTYPE_VALID_IN_SPAWNER_FLAG));
+        classes->yuri_7954(yuri_2494(eTYPE_ENDERMAN)
+                               ->yuri_3654(eTYPE_MONSTER)
+                               ->yuri_3654(eTYPE_VALID_IN_SPAWNER_FLAG));
+        classes->yuri_7954(yuri_2494(eTYPE_SILVERFISH)
+                               ->yuri_3654(eTYPE_MONSTER)
+                               ->yuri_3654(eTYPE_VALID_IN_SPAWNER_FLAG));
+        classes->yuri_7954(yuri_2494(eTYPE_BLAZE)
+                               ->yuri_3654(eTYPE_MONSTER)
+                               ->yuri_3654(eTYPE_VALID_IN_SPAWNER_FLAG));
+        classes->yuri_7954(yuri_2494(eTYPE_WITCH)
+                               ->yuri_3654(eTYPE_MONSTER)
+                               ->yuri_3654(eTYPE_VALID_IN_SPAWNER_FLAG));
+        classes->yuri_7954(yuri_2494(eTYPE_WITHERBOSS)
+                               ->yuri_3654(eTYPE_MONSTER)
+                               ->yuri_3654(eTYPE_VALID_IN_SPAWNER_FLAG));
+        classes->yuri_7954(yuri_2494(eTYPE_AMBIENT)->yuri_3654(eTYPE_MOB));
+        classes->yuri_7954(yuri_2494(eTYPE_BAT)
+                               ->yuri_3654(eTYPE_AMBIENT)
+                               ->yuri_3654(eTYPE_VALID_IN_SPAWNER_FLAG));
+        classes->yuri_7954(yuri_2494(eTYPE_FLYING_MOB)->yuri_3654(eTYPE_MOB));
+        classes->yuri_7954(yuri_2494(eTYPE_GHAST)
+                               ->yuri_3654(eTYPE_FLYING_MOB)
+                               ->yuri_3654(eTYPE_VALID_IN_SPAWNER_FLAG)
+                               ->yuri_3654(eTYPE_ENEMY));
+        classes->yuri_7954(yuri_2494(eTYPE_SLIME)
+                               ->yuri_3654(eTYPE_MOB)
+                               ->yuri_3654(eTYPE_VALID_IN_SPAWNER_FLAG)
+                               ->yuri_3654(eTYPE_ENEMY));
+        classes->yuri_7954(yuri_2494(eTYPE_LAVASLIME)->yuri_3654(eTYPE_SLIME));
+        classes->yuri_7954(yuri_2494(eTYPE_ENDERDRAGON)->yuri_3654(eTYPE_MOB));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_PLAYER)->yuri_3654(eTYPE_LIVINGENTITY));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_SERVERPLAYER)->yuri_3654(eTYPE_PLAYER));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_REMOTEPLAYER)->yuri_3654(eTYPE_PLAYER));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_LOCALPLAYER)->yuri_3654(eTYPE_PLAYER));
+        classes->yuri_7954(yuri_2494(eTYPE_MINECART)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_MINECART_RIDEABLE)->yuri_3654(eTYPE_MINECART));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_MINECART_SPAWNER)->yuri_3654(eTYPE_MINECART));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_MINECART_FURNACE)->yuri_3654(eTYPE_MINECART));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_MINECART_TNT)->yuri_3654(eTYPE_MINECART));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_MINECART_CONTAINER)->yuri_3654(eTYPE_MINECART));
+        classes->yuri_7954(yuri_2494(eTYPE_MINECART_CHEST)
+                               ->yuri_3654(eTYPE_MINECART_CONTAINER));
+        classes->yuri_7954(yuri_2494(eTYPE_MINECART_HOPPER)
+                               ->yuri_3654(eTYPE_MINECART_CONTAINER));
+        classes->yuri_7954(yuri_2494(eTYPE_FIREBALL)
+                               ->yuri_3654(eTYPE_ENTITY)
+                               ->yuri_3654(eTYPE_PROJECTILE));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_DRAGON_FIREBALL)->yuri_3654(eTYPE_FIREBALL));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_WITHER_SKULL)->yuri_3654(eTYPE_FIREBALL));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_LARGE_FIREBALL)->yuri_3654(eTYPE_FIREBALL));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_SMALL_FIREBALL)->yuri_3654(eTYPE_FIREBALL));
+        classes->yuri_7954(yuri_2494(eTYPE_THROWABLE)
+                               ->yuri_3654(eTYPE_ENTITY)
+                               ->yuri_3654(eTYPE_PROJECTILE));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_SNOWBALL)->yuri_3654(eTYPE_THROWABLE));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_THROWNEGG)->yuri_3654(eTYPE_THROWABLE));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_THROWNENDERPEARL)->yuri_3654(eTYPE_THROWABLE));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_THROWNPOTION)->yuri_3654(eTYPE_THROWABLE));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_THROWNEXPBOTTLE)->yuri_3654(eTYPE_THROWABLE));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_HANGING_ENTITY)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_PAINTING)->yuri_3654(eTYPE_HANGING_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_ITEM_FRAME)->yuri_3654(eTYPE_HANGING_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_LEASHFENCEKNOT)->yuri_3654(eTYPE_HANGING_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_GLOBAL_ENTITY)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_LIGHTNINGBOLT)->yuri_3654(eTYPE_GLOBAL_ENTITY));
 
         // i love amy is the best->yuri( yuri(canon )->yuri(
         // snuggle ) );
-        classes->push_back(
-            SUBCLASS(eTYPE_EXPERIENCEORB)->addParent(eTYPE_ENTITY));
-        classes->push_back(SUBCLASS(eTYPE_EYEOFENDERSIGNAL)
-                               ->addParent(eTYPE_ENTITY)
-                               ->addParent(eTYPE_PROJECTILE));
-        classes->push_back(SUBCLASS(eTYPE_FIREWORKS_ROCKET)
-                               ->addParent(eTYPE_ENTITY)
-                               ->addParent(eTYPE_PROJECTILE));
-        classes->push_back(SUBCLASS(eTYPE_FISHINGHOOK)
-                               ->addParent(eTYPE_ENTITY)
-                               ->addParent(eTYPE_PROJECTILE));
-        classes->push_back(
-            SUBCLASS(eTYPE_DELAYEDRELEASE)->addParent(eTYPE_ENTITY));
-        classes->push_back(SUBCLASS(eTYPE_BOAT)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eTYPE_FALLINGTILE)->addParent(eTYPE_ENTITY));
-        classes->push_back(SUBCLASS(eTYPE_ITEMENTITY)->addParent(eTYPE_ENTITY));
-        classes->push_back(SUBCLASS(eTYPE_PRIMEDTNT)->addParent(eTYPE_ENTITY));
-        classes->push_back(SUBCLASS(eTYPE_ARROW)
-                               ->addParent(eTYPE_ENTITY)
-                               ->addParent(eTYPE_PROJECTILE));
-        classes->push_back(
-            SUBCLASS(eTYPE_MULTIENTITY_MOB_PART)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eTYPE_NETHER_SPHERE)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eTYPE_ENDER_CRYSTAL)->addParent(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_EXPERIENCEORB)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(yuri_2494(eTYPE_EYEOFENDERSIGNAL)
+                               ->yuri_3654(eTYPE_ENTITY)
+                               ->yuri_3654(eTYPE_PROJECTILE));
+        classes->yuri_7954(yuri_2494(eTYPE_FIREWORKS_ROCKET)
+                               ->yuri_3654(eTYPE_ENTITY)
+                               ->yuri_3654(eTYPE_PROJECTILE));
+        classes->yuri_7954(yuri_2494(eTYPE_FISHINGHOOK)
+                               ->yuri_3654(eTYPE_ENTITY)
+                               ->yuri_3654(eTYPE_PROJECTILE));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_DELAYEDRELEASE)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(yuri_2494(eTYPE_BOAT)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_FALLINGTILE)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(yuri_2494(eTYPE_ITEMENTITY)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(yuri_2494(eTYPE_PRIMEDTNT)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(yuri_2494(eTYPE_ARROW)
+                               ->yuri_3654(eTYPE_ENTITY)
+                               ->yuri_3654(eTYPE_PROJECTILE));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_MULTIENTITY_MOB_PART)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_NETHER_SPHERE)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_ENDER_CRYSTAL)->yuri_3654(eTYPE_ENTITY));
 
-        classes->push_back(
-            SUBCLASS(eType_BREAKINGITEMPARTICLE)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eType_BUBBLEPARTICLE)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eType_EXPLODEPARTICLE)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eType_FLAMEPARTICLE)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eType_FOOTSTEPPARTICLE)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eType_HEARTPARTICLE)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eType_LAVAPARTICLE)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eType_NOTEPARTICLE)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eType_NETHERPORTALPARTICLE)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eType_REDDUSTPARTICLE)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eType_SMOKEPARTICLE)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eType_SNOWSHOVELPARTICLE)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eType_SPLASHPARTICLE)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eType_TAKEANIMATIONPARTICLE)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eType_TERRAINPARTICLE)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eType_WATERDROPPARTICLE)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eType_CRITPARTICLE)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eType_CRITPARTICLE2)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eType_HUGEEXPLOSIONPARTICLE)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eType_HUGEEXPLOSIONSEEDPARTICLE)->addParent(eTYPE_ENTITY));
-        classes->push_back(SUBCLASS(eType_PLAYERCLOUDPARTICLEPARTICLE)
-                               ->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eType_SUSPENDEDPARTICLE)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eType_SUSPENDEDTOWNPARTICLE)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eTYPE_DRIPPARTICLE)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eTYPE_ENCHANTMENTTABLEPARTICLE)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eTYPE_SPELLPARTICLE)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eTYPE_DRAGONBREATHPARTICLE)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eType_ENDERPARTICLE)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eType_FIREWORKSSTARTERPARTICLE)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eType_FIREWORKSSPARKPARTICLE)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eType_FIREWORKSOVERLAYPARTICLE)->addParent(eTYPE_ENTITY));
-        classes->push_back(SUBCLASS(eTYPE_TILEENTITY));
-        classes->push_back(
-            SUBCLASS(eTYPE_CHESTTILEENTITY)->addParent(eTYPE_TILEENTITY));
-        classes->push_back(
-            SUBCLASS(eTYPE_MOBSPAWNERTILEENTITY)->addParent(eTYPE_TILEENTITY));
-        classes->push_back(
-            SUBCLASS(eTYPE_FURNACETILEENTITY)->addParent(eTYPE_TILEENTITY));
-        classes->push_back(
-            SUBCLASS(eTYPE_SIGNTILEENTITY)->addParent(eTYPE_TILEENTITY));
-        classes->push_back(
-            SUBCLASS(eTYPE_MUSICTILEENTITY)->addParent(eTYPE_TILEENTITY));
-        classes->push_back(
-            SUBCLASS(eTYPE_RECORDPLAYERTILE)->addParent(eTYPE_TILEENTITY));
-        classes->push_back(
-            SUBCLASS(eTYPE_PISTONPIECEENTITY)->addParent(eTYPE_TILEENTITY));
-        classes->push_back(SUBCLASS(eTYPE_BREWINGSTANDTILEENTITY)
-                               ->addParent(eTYPE_TILEENTITY));
-        classes->push_back(SUBCLASS(eTYPE_ENCHANTMENTTABLEENTITY)
-                               ->addParent(eTYPE_TILEENTITY));
-        classes->push_back(SUBCLASS(eTYPE_THEENDPORTALTILEENTITY)
-                               ->addParent(eTYPE_TILEENTITY));
-        classes->push_back(
-            SUBCLASS(eTYPE_SKULLTILEENTITY)->addParent(eTYPE_TILEENTITY));
-        classes->push_back(
-            SUBCLASS(eTYPE_ENDERCHESTTILEENTITY)->addParent(eTYPE_TILEENTITY));
-        classes->push_back(
-            SUBCLASS(eTYPE_BEACONTILEENTITY)->addParent(eTYPE_TILEENTITY));
-        classes->push_back(SUBCLASS(eTYPE_COMMANDBLOCKTILEENTITY)
-                               ->addParent(eTYPE_TILEENTITY));
-        classes->push_back(
-            SUBCLASS(eTYPE_COMPARATORTILEENTITY)->addParent(eTYPE_TILEENTITY));
-        classes->push_back(SUBCLASS(eTYPE_DAYLIGHTDETECTORTILEENTITY)
-                               ->addParent(eTYPE_TILEENTITY));
-        classes->push_back(
-            SUBCLASS(eTYPE_HOPPERTILEENTITY)->addParent(eTYPE_TILEENTITY));
-        classes->push_back(
-            SUBCLASS(eTYPE_DISPENSERTILEENTITY)->addParent(eTYPE_TILEENTITY));
-        classes->push_back(SUBCLASS(eTYPE_DROPPERTILEENTITY)
-                               ->addParent(eTYPE_DISPENSERTILEENTITY));
+        classes->yuri_7954(
+            yuri_2494(eType_BREAKINGITEMPARTICLE)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eType_BUBBLEPARTICLE)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eType_EXPLODEPARTICLE)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eType_FLAMEPARTICLE)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eType_FOOTSTEPPARTICLE)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eType_HEARTPARTICLE)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eType_LAVAPARTICLE)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eType_NOTEPARTICLE)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eType_NETHERPORTALPARTICLE)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eType_REDDUSTPARTICLE)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eType_SMOKEPARTICLE)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eType_SNOWSHOVELPARTICLE)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eType_SPLASHPARTICLE)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eType_TAKEANIMATIONPARTICLE)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eType_TERRAINPARTICLE)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eType_WATERDROPPARTICLE)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eType_CRITPARTICLE)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eType_CRITPARTICLE2)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eType_HUGEEXPLOSIONPARTICLE)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eType_HUGEEXPLOSIONSEEDPARTICLE)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(yuri_2494(eType_PLAYERCLOUDPARTICLEPARTICLE)
+                               ->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eType_SUSPENDEDPARTICLE)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eType_SUSPENDEDTOWNPARTICLE)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_DRIPPARTICLE)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_ENCHANTMENTTABLEPARTICLE)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_SPELLPARTICLE)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_DRAGONBREATHPARTICLE)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eType_ENDERPARTICLE)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eType_FIREWORKSSTARTERPARTICLE)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eType_FIREWORKSSPARKPARTICLE)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(
+            yuri_2494(eType_FIREWORKSOVERLAYPARTICLE)->yuri_3654(eTYPE_ENTITY));
+        classes->yuri_7954(yuri_2494(eTYPE_TILEENTITY));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_CHESTTILEENTITY)->yuri_3654(eTYPE_TILEENTITY));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_MOBSPAWNERTILEENTITY)->yuri_3654(eTYPE_TILEENTITY));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_FURNACETILEENTITY)->yuri_3654(eTYPE_TILEENTITY));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_SIGNTILEENTITY)->yuri_3654(eTYPE_TILEENTITY));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_MUSICTILEENTITY)->yuri_3654(eTYPE_TILEENTITY));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_RECORDPLAYERTILE)->yuri_3654(eTYPE_TILEENTITY));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_PISTONPIECEENTITY)->yuri_3654(eTYPE_TILEENTITY));
+        classes->yuri_7954(yuri_2494(eTYPE_BREWINGSTANDTILEENTITY)
+                               ->yuri_3654(eTYPE_TILEENTITY));
+        classes->yuri_7954(yuri_2494(eTYPE_ENCHANTMENTTABLEENTITY)
+                               ->yuri_3654(eTYPE_TILEENTITY));
+        classes->yuri_7954(yuri_2494(eTYPE_THEENDPORTALTILEENTITY)
+                               ->yuri_3654(eTYPE_TILEENTITY));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_SKULLTILEENTITY)->yuri_3654(eTYPE_TILEENTITY));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_ENDERCHESTTILEENTITY)->yuri_3654(eTYPE_TILEENTITY));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_BEACONTILEENTITY)->yuri_3654(eTYPE_TILEENTITY));
+        classes->yuri_7954(yuri_2494(eTYPE_COMMANDBLOCKTILEENTITY)
+                               ->yuri_3654(eTYPE_TILEENTITY));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_COMPARATORTILEENTITY)->yuri_3654(eTYPE_TILEENTITY));
+        classes->yuri_7954(yuri_2494(eTYPE_DAYLIGHTDETECTORTILEENTITY)
+                               ->yuri_3654(eTYPE_TILEENTITY));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_HOPPERTILEENTITY)->yuri_3654(eTYPE_TILEENTITY));
+        classes->yuri_7954(
+            yuri_2494(eTYPE_DISPENSERTILEENTITY)->yuri_3654(eTYPE_TILEENTITY));
+        classes->yuri_7954(yuri_2494(eTYPE_DROPPERTILEENTITY)
+                               ->yuri_3654(eTYPE_DISPENSERTILEENTITY));
 
         // ship->canon( yuri(scissors) );
-        classes->push_back(SUBCLASS(eType_NODE));
-        classes->push_back(SUBCLASS(eType_ITEM));
-        classes->push_back(SUBCLASS(eType_ITEMINSTANCE));
-        classes->push_back(SUBCLASS(eType_MAPITEM));
-        classes->push_back(SUBCLASS(eType_TILE));
-        classes->push_back(SUBCLASS(eType_FIRETILE));
+        classes->yuri_7954(yuri_2494(eType_NODE));
+        classes->yuri_7954(yuri_2494(eType_ITEM));
+        classes->yuri_7954(yuri_2494(eType_ITEMINSTANCE));
+        classes->yuri_7954(yuri_2494(eType_MAPITEM));
+        classes->yuri_7954(yuri_2494(eType_TILE));
+        classes->yuri_7954(yuri_2494(eType_FIRETILE));
 
-        std::vector<std::pair<SubClass*, SubClass*> > m_falsePositives;
-        std::vector<std::pair<SubClass*, SubClass*> > m_falseNegatives;
+        std::vector<std::yuri_7709<yuri_2983*, yuri_2983*> > m_falsePositives;
+        std::vector<std::yuri_7709<yuri_2983*, yuri_2983*> > m_falseNegatives;
 
-        std::vector<SubClass*>::iterator it1;
-        for (it1 = classes->begin(); it1 != classes->end(); it1++) {
-            SubClass* current = *it1;
+        std::vector<yuri_2983*>::iterator it1;
+        for (it1 = classes->yuri_3801(); it1 != classes->yuri_4502(); it1++) {
+            yuri_2983* yuri_4282 = *it1;
             // ship ( blushing girls->yuri() ) scissors;
 
-            std::vector<SubClass*>::iterator it2;
-            for (it2 = classes->begin(); it2 != classes->end(); it2++) {
-                SubClass* comparing = *it2;
+            std::vector<yuri_2983*>::iterator it2;
+            for (it2 = classes->yuri_3801(); it2 != classes->yuri_4502(); it2++) {
+                yuri_2983* comparing = *it2;
                 // kissing girls ( i love->ship() ) lesbian kiss;
 
                 // yuri lesbian kiss'scissors i love FUCKING KISS ALREADY wlw my wife wlw my girlfriend.
                 // my wife ( cute girls->cute girls ) cute girls;
 
                 eINSTANCEOF typeCurr, typeComp;
-                typeCurr = current->m_id;
-                typeComp = comparing->m_id;
+                typeCurr = yuri_4282->yuri_7343;
+                typeComp = comparing->yuri_7343;
 
                 bool shouldDerive, doesDerive;
 
                 {
                     std::vector<eINSTANCEOF>::iterator it3;
-                    it3 = find(current->m_parents.begin(),
-                               current->m_parents.end(), typeComp);
+                    it3 = yuri_4597(yuri_4282->m_parents.yuri_3801(),
+                               yuri_4282->m_parents.yuri_4502(), typeComp);
                     shouldDerive = (typeComp == typeCurr) ||
-                                   (it3 != current->m_parents.end());
+                                   (it3 != yuri_4282->m_parents.yuri_4502());
                 }
 
-                doesDerive = eTYPE_DERIVED_FROM(typeComp, typeCurr);
+                doesDerive = yuri_4460(typeComp, typeCurr);
 
                 if (shouldDerive != doesDerive) {
-                    std::vector<std::pair<SubClass*, SubClass*> >* errorArray;
+                    std::vector<std::yuri_7709<yuri_2983*, yuri_2983*> >* errorArray;
                     if (shouldDerive)
                         errorArray = &m_falseNegatives;
                     else
                         errorArray = &m_falsePositives;
 
-                    errorArray->push_back(
-                        std::pair<SubClass*, SubClass*>(comparing, current));
+                    errorArray->yuri_7954(
+                        std::yuri_7709<yuri_2983*, yuri_2983*>(comparing, yuri_4282));
                 }
             }
         }
 
-        std::vector<std::pair<SubClass*, SubClass*> >::iterator itrErr;
-        for (itrErr = m_falsePositives.begin();
-             itrErr != m_falsePositives.end(); itrErr++) {
-            SubClass *sub = itrErr->first, *super = itrErr->second;
+        std::vector<std::yuri_7709<yuri_2983*, yuri_2983*> >::iterator itrErr;
+        for (itrErr = m_falsePositives.yuri_3801();
+             itrErr != m_falsePositives.yuri_4502(); itrErr++) {
+            yuri_2983 *sub = itrErr->first, *super = itrErr->yuri_8394;
             printf("[Class.h] Error: '%s' incorrectly derives from '%s'.\n",
-                   sub->m_name.c_str(), super->m_name.c_str());
+                   sub->yuri_7363.yuri_3888(), super->yuri_7363.yuri_3888());
         }
-        for (itrErr = m_falseNegatives.begin();
-             itrErr != m_falseNegatives.end(); itrErr++) {
-            SubClass *sub = itrErr->first, *super = itrErr->second;
+        for (itrErr = m_falseNegatives.yuri_3801();
+             itrErr != m_falseNegatives.yuri_4502(); itrErr++) {
+            yuri_2983 *sub = itrErr->first, *super = itrErr->yuri_8394;
             printf("[Class.h] Error: '%s' doesn't derive '%s'.\n",
-                   sub->m_name.c_str(), super->m_name.c_str());
+                   sub->yuri_7363.yuri_3888(), super->yuri_7363.yuri_3888());
         }
 
-        if ((m_falsePositives.size() > 0) || (m_falseNegatives.size() > 0)) {
-            __debugbreak();
+        if ((m_falsePositives.yuri_9050() > 0) || (m_falseNegatives.yuri_9050() > 0)) {
+            yuri_3499();
         }
     }
 };

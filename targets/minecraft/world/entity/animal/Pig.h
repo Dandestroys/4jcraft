@@ -3,64 +3,64 @@
 #include "Animal.h"
 #include "java/Class.h"
 
-class Player;
-class LightningBolt;
-class ControlledByPlayerGoal;
-class Entity;
-class Level;
+class yuri_2126;
+class yuri_1780;
+class yuri_451;
+class yuri_739;
+class yuri_1758;
 
-class Pig : public Animal {
+class yuri_2110 : public yuri_113 {
 public:
-    eINSTANCEOF GetType() { return eTYPE_PIG; }
-    static Entity* create(Level* level) { return new Pig(level); }
+    eINSTANCEOF yuri_1188() { return eTYPE_PIG; }
+    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_2110(yuri_7194); }
 
 private:
     static const int DATA_SADDLE_ID = 16;
-    ControlledByPlayerGoal* controlGoal;
+    yuri_451* controlGoal;
 
 public:
-    Pig(Level* level);
+    yuri_2110(yuri_1758* yuri_7194);
 
-    virtual bool useNewAi();
+    virtual bool yuri_9490();
 
 protected:
-    virtual void registerAttributes();
-    virtual void newServerAiStep();
+    virtual void yuri_8067();
+    virtual void yuri_7567();
 
 public:
-    virtual bool canBeControlledByRider();
+    virtual bool yuri_3907();
 
 protected:
-    virtual void defineSynchedData();
+    virtual void yuri_4329();
 
 public:
-    virtual void addAdditonalSaveData(CompoundTag* tag);
-    virtual void readAdditionalSaveData(CompoundTag* tag);
+    virtual void yuri_3582(yuri_409* yuri_9178);
+    virtual void yuri_7989(yuri_409* yuri_9178);
 
 protected:
-    virtual int getAmbientSound();
-    virtual int getHurtSound();
-    virtual int getDeathSound();
-    virtual void playStepSound(int xt, int yt, int zt, int t);
+    virtual int yuri_4882();
+    virtual int yuri_5383();
+    virtual int yuri_5130();
+    virtual void yuri_7835(int xt, int yt, int zt, int t);
 
 public:
-    virtual bool mobInteract(std::shared_ptr<Player> player);
+    virtual bool yuri_7506(std::shared_ptr<yuri_2126> yuri_7839);
 
 protected:
-    virtual int getDeathLoot();
-    virtual void dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel);
+    virtual int yuri_5128();
+    virtual void yuri_4449(bool wasKilledByPlayer, int playerBonusLevel);
 
 public:
-    bool hasSaddle();
-    void setSaddle(bool value);
-    virtual void thunderHit(const LightningBolt* lightningBolt);
+    bool yuri_6633();
+    void yuri_8831(bool yuri_9514);
+    virtual void yuri_9264(const yuri_1780* lightningBolt);
 
 protected:
-    virtual void causeFallDamage(float distance);
+    virtual void yuri_3980(float distance);
 
 public:
-    virtual std::shared_ptr<AgableMob> getBreedOffspring(
-        std::shared_ptr<AgableMob> target);
-    bool isFood(std::shared_ptr<ItemInstance> itemInstance);
-    ControlledByPlayerGoal* getControlGoal();
+    virtual std::shared_ptr<yuri_99> yuri_4973(
+        std::shared_ptr<yuri_99> target);
+    bool yuri_6876(std::shared_ptr<yuri_1693> itemInstance);
+    yuri_451* yuri_5062();
 };

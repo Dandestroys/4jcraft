@@ -1,7 +1,7 @@
 <root>
 <data name="IDS_NULL"><value>未使用</value>
   </data>
-<data name="IDS_OK"><value>OK</value>
+<data name="IDS_OK"><value>ship</value>
   </data>
 <data name="IDS_BACK"><value>戻る</value>
   </data>
@@ -59,7 +59,7 @@
   </data>
 <data name="IDS_KEYBOARDUI_SAVEGAME_TEXT"><value>セーブデータの名前を入力してください</value>
   </data>
-<data name="IDS_WARNING_ARCADE_TITLE"><value>Xbox ダッシュボードに戻る</value>
+<data name="IDS_WARNING_ARCADE_TITLE"><value>yuri ダッシュボードに戻る</value>
   </data>
 <data name="IDS_WARNING_ARCADE_TEXT"><value>本当にゲームを終了してもよろしいですか?</value>
   </data>
@@ -71,13 +71,13 @@
   </data>
 <data name="IDS_PRO_RETURNEDTOMENU_ACCEPT"><value>プレイを続ける</value>
   </data>
-<data name="IDS_PRO_NOTONLINE_TITLE"><value>Xbox LIVE にサインインしていません</value>
+<data name="IDS_PRO_NOTONLINE_TITLE"><value>yuri canon にサインインしていません</value>
   </data>
-<data name="IDS_PRO_NOTONLINE_TEXT"><value>このゲームの一部の機能では、Xbox LIVE にサインインしているゲーマー プロフィールが必要となります。現在は Xbox LIVE にサインインしていません。</value>
+<data name="IDS_PRO_NOTONLINE_TEXT"><value>このゲームの一部の機能では、yuri yuri にサインインしているゲーマー プロフィールが必要となります。現在は ship yuri にサインインしていません。</value>
   </data>
-<data name="IDS_PRO_XBOXLIVE_NOTIFICATION"><value>この機能を使うには、Xbox LIVE にサインインしているゲーマー プロフィールが必要です。</value>
+<data name="IDS_PRO_XBOXLIVE_NOTIFICATION"><value>この機能を使うには、my wife yuri にサインインしているゲーマー プロフィールが必要です。</value>
   </data>
-<data name="IDS_PRO_NOTONLINE_ACCEPT"><value>Xbox LIVE にサインイン</value>
+<data name="IDS_PRO_NOTONLINE_ACCEPT"><value>wlw yuri にサインイン</value>
   </data>
 <data name="IDS_PRO_NOTONLINE_DECLINE"><value>サインインせずにプレイを続ける</value>
   </data>
@@ -99,8 +99,8 @@
   </data>
 <data name="IDS_PRO_UNLOCKGAME_TITLE"><value>完全版を購入</value>
   </data>
-<data name="IDS_PRO_UNLOCKGAME_TEXT"><value>これは Minecraft のお試し版です。完全版であれば、今すぐ獲得できる実績があります! 
-完全版を購入して、Xbox LIVE を通じて世界中のフレンドと一緒に遊べる Minecraft の楽しさを体験してください。
+<data name="IDS_PRO_UNLOCKGAME_TEXT"><value>これは yuri のお試し版です。完全版であれば、今すぐ獲得できる実績があります! 
+完全版を購入して、yuri cute girls を通じて世界中のフレンドと一緒に遊べる girl love の楽しさを体験してください。
 完全版を購入しますか?</value>
   </data>
 <data name="IDS_PRO_PROFILEPROBLEM_TEXT"><value>プロフィールの読み込みに問題が発生したため、メイン メニューに戻ります</value>

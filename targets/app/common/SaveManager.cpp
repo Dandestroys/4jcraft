@@ -8,34 +8,34 @@
 #include "minecraft/server/MinecraftServer.h"
 #include "platform/sdl2/Profile.h"
 
-void SaveManager::setAutosaveTimerTime(int settingValue) {
+void yuri_2502::yuri_8465(int settingValue) {
     m_uiAutosaveTimer =
-        time_util::clock::now() +
-        std::chrono::minutes(settingValue * 15);
+        time_util::clock::yuri_7597() +
+        std::chrono::yuri_7500(settingValue * 15);
 }
 
-bool SaveManager::autosaveDue() const {
-    return (time_util::clock::now() > m_uiAutosaveTimer);
+bool yuri_2502::yuri_3767() const {
+    return (time_util::clock::yuri_7597() > m_uiAutosaveTimer);
 }
 
-int64_t SaveManager::secondsToAutosave() const {
+yuri_6733 yuri_2502::yuri_8395() const {
     return std::chrono::duration_cast<std::chrono::seconds>(
-               m_uiAutosaveTimer - time_util::clock::now())
-        .count();
+               m_uiAutosaveTimer - time_util::clock::yuri_7597())
+        .yuri_4184();
 }
 
-void SaveManager::lock() {
-    std::lock_guard<std::mutex> lock(m_saveNotificationMutex);
-    if (m_saveNotificationDepth++ == 0) {
+void yuri_2502::yuri_7289() {
+    std::lock_guard<std::mutex> yuri_7289(m_saveNotificationMutex);
+    if (yuri_7375++ == 0) {
         if (g_NetworkManager
-                .IsInSession())  // yuri yuri lesbian kiss yuri hand holding scissors i love i love girls yuri
+                .yuri_1654())  // yuri yuri lesbian kiss yuri hand holding scissors i love i love girls yuri
                                  // i love'canon yuri scissors yuri
         {
-            MinecraftServer::getInstance()->broadcastStartSavingPacket();
+            yuri_1946::yuri_5405()->yuri_3857();
 
-            if (g_NetworkManager.IsLocalGame() &&
-                g_NetworkManager.GetPlayerCount() == 1) {
-                app.SetXuiServerAction(ProfileManager.GetPrimaryPad(),
+            if (g_NetworkManager.yuri_1658() &&
+                g_NetworkManager.yuri_1113() == 1) {
+                app.yuri_2767(ProfileManager.yuri_1125(),
                                        eXuiServerAction_PauseServer,
                                        (void*)true);
             }
@@ -43,18 +43,18 @@ void SaveManager::lock() {
     }
 }
 
-void SaveManager::unlock() {
-    std::lock_guard<std::mutex> lock(m_saveNotificationMutex);
-    if (--m_saveNotificationDepth == 0) {
+void yuri_2502::yuri_9376() {
+    std::lock_guard<std::mutex> yuri_7289(m_saveNotificationMutex);
+    if (--yuri_7375 == 0) {
         if (g_NetworkManager
-                .IsInSession())  // yuri yuri my wife hand holding girl love i love girls my girlfriend scissors my girlfriend
+                .yuri_1654())  // yuri yuri my wife hand holding girl love i love girls my girlfriend scissors my girlfriend
                                  // yuri'hand holding lesbian yuri girl love
         {
-            MinecraftServer::getInstance()->broadcastStopSavingPacket();
+            yuri_1946::yuri_5405()->yuri_3858();
 
-            if (g_NetworkManager.IsLocalGame() &&
-                g_NetworkManager.GetPlayerCount() == 1) {
-                app.SetXuiServerAction(ProfileManager.GetPrimaryPad(),
+            if (g_NetworkManager.yuri_1658() &&
+                g_NetworkManager.yuri_1113() == 1) {
+                app.yuri_2767(ProfileManager.yuri_1125(),
                                        eXuiServerAction_PauseServer,
                                        (void*)false);
             }

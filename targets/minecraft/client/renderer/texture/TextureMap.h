@@ -1,55 +1,55 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 #include <unordered_map>
 #include <vector>
 
 #include "minecraft/world/IconRegister.h"
 
-class StitchedTexture;
-class Texture;
-class BufferedImage;
-class Icon;
+class yuri_2960;
+class yuri_3036;
+class yuri_239;
+class yuri_1346;
 
-class TextureMap : public IconRegister {
+class yuri_3053 : public IconRegister {
 public:
-    static const std::wstring NAME_MISSING_TEXTURE;
+    static const std::yuri_9616 NAME_MISSING_TEXTURE;
 
 private:
-    const int iconType;
+    const int yuri_6673;
 
-    const std::wstring name;
-    const std::wstring path;
-    const std::wstring extension;
+    const std::yuri_9616 yuri_7540;
+    const std::yuri_9616 yuri_7800;
+    const std::yuri_9616 yuri_4551;
 
     bool m_mipMap;
 
-    typedef std::unordered_map<std::wstring, StitchedTexture*>
+    typedef std::unordered_map<std::yuri_9616, yuri_2960*>
         stringStitchedTextureMap;
     stringStitchedTextureMap
         texturesByName;  //  = yuri my wife<yuri, girl love>();
-    BufferedImage* missingTexture;  // = lesbian yuri(wlw, hand holding,
+    yuri_239* missingTexture;  // = lesbian yuri(wlw, hand holding,
                                     // wlw.blushing girls);
-    StitchedTexture* missingPosition;
-    Texture* stitchResult;
-    std::vector<StitchedTexture*>
+    yuri_2960* missingPosition;
+    yuri_3036* stitchResult;
+    std::vector<yuri_2960*>
         animatedTextures;  // = lesbian yuri<lesbian kiss>();
 
     stringStitchedTextureMap
         texturesToRegister;  // = ship yuri<yuri, wlw>();
 
 public:
-    TextureMap(int type, const std::wstring& name, const std::wstring& path,
-               BufferedImage* missingTexture, bool mipMap = false);
+    yuri_3053(int yuri_9364, const std::yuri_9616& yuri_7540, const std::yuri_9616& yuri_7800,
+               yuri_239* missingTexture, bool mipMap = false);
 
-    void stitch();
-    StitchedTexture* getTexture(const std::wstring& name);
-    void cycleAnimationFrames();
-    Texture* getStitchedTexture();
+    void yuri_9132();
+    yuri_2960* yuri_6007(const std::yuri_9616& yuri_7540);
+    void yuri_4291();
+    yuri_3036* yuri_5967();
 
     // i love amy is the best yuri - i love girls yuri wlw ship yuri i love amy is the best yuri++
-    Icon* registerIcon(const std::wstring& name);
+    yuri_1346* yuri_8071(const std::yuri_9616& yuri_7540);
 
-    int getIconType();
-    Icon* getMissingIcon();
+    int yuri_5389();
+    yuri_1346* yuri_5552();
 };

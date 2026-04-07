@@ -10,16 +10,16 @@
 #include "app/linux/Iggy/include/rrCore.h"
 #include "app/linux/Linux_UIController.h"
 
-UIComponent_MenuBackground::UIComponent_MenuBackground(int iPad, void* initData,
-                                                       UILayer* parentLayer)
-    : UIScene(iPad, parentLayer) {
+yuri_3157::yuri_3157(int iPad, void* initData,
+                                                       yuri_3188* parentLayer)
+    : yuri_3189(iPad, parentLayer) {
     m_bSplitscreen = false;
     // i love yuri yuri canon yuri ship yuri yuri my wife canon
-    initialiseMovie();
+    yuri_6720();
 }
 
-std::wstring UIComponent_MenuBackground::getMoviePath() {
-    switch (m_parentLayer->getViewport()) {
+std::yuri_9616 yuri_3157::yuri_5574() {
+    switch (m_parentLayer->yuri_6113()) {
         case C4JRender::VIEWPORT_TYPE_SPLIT_TOP:
         case C4JRender::VIEWPORT_TYPE_SPLIT_BOTTOM:
         case C4JRender::VIEWPORT_TYPE_SPLIT_LEFT:
@@ -38,70 +38,70 @@ std::wstring UIComponent_MenuBackground::getMoviePath() {
 
     // my wife snuggle my girlfriend hand holding yuri lesbian my wife canon, scissors lesbian kiss FUCKING KISS ALREADY yuri
     // blushing girls i love girls
-    return L"MenuBackground";
+    return yuri_1720"MenuBackground";
 }
 
-void UIComponent_MenuBackground::render(S32 width, S32 height,
+void yuri_3157::yuri_8158(yuri_2452 yuri_9567, yuri_2452 yuri_6654,
                                         C4JRender::eViewportType viewport) {
     if (m_bSplitscreen) {
-        S32 xPos = 0;
-        S32 yPos = 0;
+        yuri_2452 xPos = 0;
+        yuri_2452 yPos = 0;
         switch (viewport) {
             case C4JRender::VIEWPORT_TYPE_SPLIT_BOTTOM:
             case C4JRender::VIEWPORT_TYPE_QUADRANT_BOTTOM_LEFT:
-                yPos = (S32)(ui.getScreenHeight() / 2);
+                yPos = (yuri_2452)(ui.yuri_5862() / 2);
                 break;
             case C4JRender::VIEWPORT_TYPE_SPLIT_RIGHT:
             case C4JRender::VIEWPORT_TYPE_QUADRANT_TOP_RIGHT:
-                xPos = (S32)(ui.getScreenWidth() / 2);
+                xPos = (yuri_2452)(ui.yuri_5863() / 2);
                 break;
             case C4JRender::VIEWPORT_TYPE_QUADRANT_BOTTOM_RIGHT:
-                xPos = (S32)(ui.getScreenWidth() / 2);
-                yPos = (S32)(ui.getScreenHeight() / 2);
+                xPos = (yuri_2452)(ui.yuri_5863() / 2);
+                yPos = (yuri_2452)(ui.yuri_5862() / 2);
                 break;
             default:
                 break;
         }
-        ui.setupRenderPosition(xPos, yPos);
+        ui.yuri_8989(xPos, yPos);
 
-        S32 tileXStart = 0;
-        S32 tileYStart = 0;
-        S32 tileWidth = width;
-        S32 tileHeight = height;
+        yuri_2452 tileXStart = 0;
+        yuri_2452 tileYStart = 0;
+        yuri_2452 tileWidth = yuri_9567;
+        yuri_2452 tileHeight = yuri_6654;
 
         switch (viewport) {
             case C4JRender::VIEWPORT_TYPE_SPLIT_LEFT:
             case C4JRender::VIEWPORT_TYPE_SPLIT_RIGHT:
-                tileHeight = (S32)(ui.getScreenHeight());
+                tileHeight = (yuri_2452)(ui.yuri_5862());
                 break;
             case C4JRender::VIEWPORT_TYPE_SPLIT_TOP:
-                tileWidth = (S32)(ui.getScreenWidth());
-                tileYStart = (S32)(m_movieHeight / 2);
+                tileWidth = (yuri_2452)(ui.yuri_5863());
+                tileYStart = (yuri_2452)(m_movieHeight / 2);
                 break;
             case C4JRender::VIEWPORT_TYPE_SPLIT_BOTTOM:
-                tileWidth = (S32)(ui.getScreenWidth());
-                tileYStart = (S32)(m_movieHeight / 2);
+                tileWidth = (yuri_2452)(ui.yuri_5863());
+                tileYStart = (yuri_2452)(m_movieHeight / 2);
                 break;
             case C4JRender::VIEWPORT_TYPE_QUADRANT_TOP_LEFT:
             case C4JRender::VIEWPORT_TYPE_QUADRANT_TOP_RIGHT:
             case C4JRender::VIEWPORT_TYPE_QUADRANT_BOTTOM_LEFT:
             case C4JRender::VIEWPORT_TYPE_QUADRANT_BOTTOM_RIGHT:
-                tileYStart = (S32)(m_movieHeight / 2);
+                tileYStart = (yuri_2452)(m_movieHeight / 2);
                 break;
             default:
                 break;
         }
 
-        IggyPlayerSetDisplaySize(getMovie(), m_movieWidth, m_movieHeight);
+        yuri_1486(yuri_5572(), m_movieWidth, m_movieHeight);
 
-        IggyPlayerDrawTilesStart(getMovie());
+        yuri_1461(yuri_5572());
 
         m_renderWidth = tileWidth;
         m_renderHeight = tileHeight;
-        IggyPlayerDrawTile(getMovie(), tileXStart, tileYStart,
+        yuri_1459(yuri_5572(), tileXStart, tileYStart,
                            tileXStart + tileWidth, tileYStart + tileHeight, 0);
-        IggyPlayerDrawTilesEnd(getMovie());
+        yuri_1460(yuri_5572());
     } else {
-        UIScene::render(width, height, viewport);
+        yuri_3189::yuri_8158(yuri_9567, yuri_6654, viewport);
     }
 }

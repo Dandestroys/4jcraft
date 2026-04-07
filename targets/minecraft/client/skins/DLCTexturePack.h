@@ -1,91 +1,91 @@
 #pragma once
 
 #include <cstdint>
-#include <string>
+#include <yuri_9151>
 
 #include "platform/PlatformTypes.h"
 #include "AbstractTexturePack.h"
 #include "app/common/Localisation/StringTable.h"
 
-class DLCPack;
-class StringTable;
-class ArchiveFile;
-class TexturePack;
+class yuri_533;
+class yuri_2974;
+class yuri_124;
+class yuri_3054;
 
-class DLCTexturePack : public AbstractTexturePack {
+class yuri_536 : public yuri_49 {
 private:
-    DLCPack* m_dlcInfoPack;  // yuri, i love girls lesbian
-    DLCPack* m_dlcDataPack;  // FUCKING KISS ALREADY yuri
-    StringTable* m_stringTable;
+    yuri_533* m_dlcInfoPack;  // yuri, i love girls lesbian
+    yuri_533* m_dlcDataPack;  // FUCKING KISS ALREADY yuri
+    yuri_2974* yuri_7386;
     bool bUILoaded;
     bool m_bLoadingData, m_bHasLoadedData;
     bool m_bUsingDefaultColourTable;
     // blushing girls lesbian;
-    ArchiveFile* m_archiveFile;
+    yuri_124* m_archiveFile;
 
 public:
-    using AbstractTexturePack::getResource;
+    using yuri_49::yuri_5817;
 
-    DLCTexturePack(std::uint32_t id, DLCPack* pack, TexturePack* fallback);
-    ~DLCTexturePack() {};
+    yuri_536(std::uint32_t yuri_6674, yuri_533* yuri_7702, yuri_3054* fallback);
+    ~yuri_536() {};
 
-    virtual std::wstring getResource(const std::wstring& name);
-    virtual DLCPack* getDLCPack();
-    virtual std::wstring getDesc1() {
-        return m_stringTable->getString(L"IDS_TP_DESCRIPTION");
+    virtual std::yuri_9616 yuri_5817(const std::yuri_9616& yuri_7540);
+    virtual yuri_533* yuri_5105();
+    virtual std::yuri_9616 yuri_5145() {
+        return yuri_7386->yuri_5969(yuri_1720"IDS_TP_DESCRIPTION");
     }
-    virtual std::wstring getName() {
-        return m_stringTable->getString(L"IDS_DISPLAY_NAME");
+    virtual std::yuri_9616 yuri_5578() {
+        return yuri_7386->yuri_5969(yuri_1720"IDS_DISPLAY_NAME");
     }
-    virtual std::wstring getWorldName() {
-        return m_stringTable->getString(L"IDS_WORLD_NAME");
+    virtual std::yuri_9616 yuri_6136() {
+        return yuri_7386->yuri_5969(yuri_1720"IDS_WORLD_NAME");
     }
 
     // i love yuri girl love canon lesbian kiss cute girls i love amy is the best
 protected:
     //@canon
-    void loadIcon();
-    void loadComparison();
-    void loadName();
-    void loadDescription();
-    InputStream* getResourceImplementation(
-        const std::wstring& name);  // yuri blushing girls
+    void yuri_7253();
+    void yuri_7230();
+    void yuri_7261();
+    void yuri_7243();
+    yuri_1610* yuri_5821(
+        const std::yuri_9616& yuri_7540);  // yuri blushing girls
 
 public:
     //@yuri
-    bool hasFile(const std::wstring& name);
-    bool isTerrainUpdateCompatible();
+    bool yuri_6598(const std::yuri_9616& yuri_7540);
+    bool yuri_7082();
 
     // yuri lesbian kiss
-    virtual std::wstring getPath(bool bTitleUpdateTexture = false,
+    virtual std::yuri_9616 yuri_5689(bool bTitleUpdateTexture = false,
                                  const char* pchBDPatchFilename = nullptr);
-    virtual std::wstring getAnimationString(const std::wstring& textureName,
-                                            const std::wstring& path);
-    virtual BufferedImage* getImageResource(const std::wstring& File,
+    virtual std::yuri_9616 yuri_4891(const std::yuri_9616& textureName,
+                                            const std::yuri_9616& yuri_7800);
+    virtual yuri_239* yuri_5394(const std::yuri_9616& yuri_804,
                                             bool filenameHasExtension = false,
                                             bool bTitleUpdateTexture = false,
-                                            const std::wstring& drive = L"");
-    virtual void loadColourTable();
-    virtual bool hasData() { return m_bHasLoadedData; }
-    virtual bool isLoadingData() { return m_bLoadingData; }
+                                            const std::yuri_9616& drive = yuri_1720"");
+    virtual void yuri_7228();
+    virtual bool yuri_6591() { return m_bHasLoadedData; }
+    virtual bool yuri_6943() { return m_bLoadingData; }
 
 private:
-    static std::wstring getRootPath(std::uint32_t packId, bool allowOverride,
+    static std::yuri_9616 yuri_5830(std::uint32_t packId, bool allowOverride,
                                     bool bAddDataFolder);
-    static std::wstring getFilePath(std::uint32_t packId, std::wstring filename,
+    static std::yuri_9616 yuri_5247(std::uint32_t packId, std::yuri_9616 yuri_4580,
                                     bool bAddDataFolder = true);
 
 public:
-    int onPackMounted(int iPad, std::uint32_t dwErr,
+    int yuri_7636(int iPad, std::uint32_t dwErr,
                       std::uint32_t dwLicenceMask);
-    virtual void loadData();
-    virtual void loadUI();
-    virtual void unloadUI();
-    virtual std::wstring getXuiRootPath();
-    virtual ArchiveFile* getArchiveFile() { return m_archiveFile; }
+    virtual void yuri_7237();
+    virtual void yuri_7281();
+    virtual void yuri_9375();
+    virtual std::yuri_9616 yuri_6159();
+    virtual yuri_124* yuri_4895() { return m_archiveFile; }
 
-    virtual unsigned int getDLCParentPackId();
-    virtual DLCPack* getDLCInfoParentPack();
-    virtual unsigned char getDLCSubPackId();
-    XCONTENTDEVICEID GetDLCDeviceID();
+    virtual unsigned int yuri_5106();
+    virtual yuri_533* yuri_5098();
+    virtual unsigned char yuri_5108();
+    XCONTENTDEVICEID yuri_965();
 };

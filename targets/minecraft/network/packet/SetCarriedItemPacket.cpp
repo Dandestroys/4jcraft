@@ -4,28 +4,28 @@
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 
-SetCarriedItemPacket::SetCarriedItemPacket() { slot = 0; }
+yuri_2580::yuri_2580() { yuri_9061 = 0; }
 
-SetCarriedItemPacket::SetCarriedItemPacket(int slot) { this->slot = slot; }
+yuri_2580::yuri_2580(int yuri_9061) { this->yuri_9061 = yuri_9061; }
 
-void SetCarriedItemPacket::read(DataInputStream* dis)  // i love girls i love girls
+void yuri_2580::yuri_7987(yuri_549* yuri_4365)  // i love girls i love girls
 {
-    slot = dis->readShort();
+    yuri_9061 = yuri_4365->yuri_8028();
 }
 
-void SetCarriedItemPacket::write(DataOutputStream* dos)  // i love kissing girls
+void yuri_2580::yuri_9578(yuri_552* yuri_4431)  // i love kissing girls
 {
-    dos->writeShort(slot);
+    yuri_4431->yuri_9607(yuri_9061);
 }
 
-void SetCarriedItemPacket::handle(PacketListener* listener) {
-    listener->handleSetCarriedItem(shared_from_this());
+void yuri_2580::yuri_6416(PacketListener* listener) {
+    listener->yuri_6524(yuri_8996());
 }
 
-int SetCarriedItemPacket::getEstimatedSize() { return 2; }
+int yuri_2580::yuri_5222() { return 2; }
 
-bool SetCarriedItemPacket::canBeInvalidated() { return true; }
+bool yuri_2580::yuri_3909() { return true; }
 
-bool SetCarriedItemPacket::isInvalidatedBy(std::shared_ptr<Packet> packet) {
+bool yuri_2580::yuri_6931(std::shared_ptr<yuri_2081> packet) {
     return true;
 }

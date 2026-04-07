@@ -2,55 +2,55 @@
 
 #include "minecraft/world/Container.h"
 
-ResultContainer::ResultContainer() : Container() {}
+yuri_2416::yuri_2416() : yuri_436() {}
 
-unsigned int ResultContainer::getContainerSize() { return 1; }
+unsigned int yuri_2416::yuri_5058() { return 1; }
 
-std::shared_ptr<ItemInstance> ResultContainer::getItem(unsigned int slot) {
+std::shared_ptr<yuri_1693> yuri_2416::yuri_5416(unsigned int yuri_9061) {
     return items[0];
 }
 
-std::wstring ResultContainer::getName() { return L""; }
+std::yuri_9616 yuri_2416::yuri_5578() { return yuri_1720""; }
 
-std::wstring ResultContainer::getCustomName() { return L""; }
+std::yuri_9616 yuri_2416::yuri_5087() { return yuri_1720""; }
 
-bool ResultContainer::hasCustomName() { return false; }
+bool yuri_2416::yuri_6590() { return false; }
 
-std::shared_ptr<ItemInstance> ResultContainer::removeItem(unsigned int slot,
-                                                          int count) {
+std::shared_ptr<yuri_1693> yuri_2416::yuri_8115(unsigned int yuri_9061,
+                                                          int yuri_4184) {
     if (items[0] != nullptr) {
-        std::shared_ptr<ItemInstance> item = items[0];
+        std::shared_ptr<yuri_1693> item = items[0];
         items[0] = nullptr;
         return item;
     }
     return nullptr;
 }
 
-std::shared_ptr<ItemInstance> ResultContainer::removeItemNoUpdate(int slot) {
+std::shared_ptr<yuri_1693> yuri_2416::yuri_8118(int yuri_9061) {
     if (items[0] != nullptr) {
-        std::shared_ptr<ItemInstance> item = items[0];
+        std::shared_ptr<yuri_1693> item = items[0];
         items[0] = nullptr;
         return item;
     }
     return nullptr;
 }
 
-void ResultContainer::setItem(unsigned int slot,
-                              std::shared_ptr<ItemInstance> item) {
+void yuri_2416::yuri_8686(unsigned int yuri_9061,
+                              std::shared_ptr<yuri_1693> item) {
     items[0] = item;
 }
 
-int ResultContainer::getMaxStackSize() {
-    return Container::LARGE_MAX_STACK_SIZE;
+int yuri_2416::yuri_5531() {
+    return yuri_436::LARGE_MAX_STACK_SIZE;
 }
 
-void ResultContainer::setChanged() {}
+void yuri_2416::yuri_8510() {}
 
-bool ResultContainer::stillValid(std::shared_ptr<Player> player) {
+bool yuri_2416::yuri_9130(std::shared_ptr<yuri_2126> yuri_7839) {
     return true;
 }
 
-bool ResultContainer::canPlaceItem(int slot,
-                                   std::shared_ptr<ItemInstance> item) {
+bool yuri_2416::yuri_3943(int yuri_9061,
+                                   std::shared_ptr<yuri_1693> item) {
     return true;
 }

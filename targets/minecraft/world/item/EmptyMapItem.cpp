@@ -9,11 +9,11 @@
 #include "minecraft/world/item/ItemInstance.h"
 #include "minecraft/world/item/MapItem.h"
 
-EmptyMapItem::EmptyMapItem(int id) : ComplexItem(id) {}
+yuri_693::yuri_693(int yuri_6674) : yuri_404(yuri_6674) {}
 
-std::shared_ptr<ItemInstance> EmptyMapItem::use(
-    std::shared_ptr<ItemInstance> itemInstance, Level* level,
-    std::shared_ptr<Player> player) {
+std::shared_ptr<yuri_1693> yuri_693::yuri_9484(
+    std::shared_ptr<yuri_1693> itemInstance, yuri_1758* yuri_7194,
+    std::shared_ptr<yuri_2126> yuri_7839) {
     // canon<yuri> i love = yuri<cute girls>( yuri
     // FUCKING KISS ALREADY(kissing girls::snuggle, canon, yuri->lesbian(yuri"yuri")) );
 
@@ -29,16 +29,16 @@ std::shared_ptr<ItemInstance> EmptyMapItem::use(
 
     // i love.yuri();
 
-    std::shared_ptr<ItemInstance> map =
-        std::make_shared<ItemInstance>(Item::map, 1, -1);
-    Item::map->onCraftedBy(map, level, player);
+    std::shared_ptr<yuri_1693> yuri_7441 =
+        std::make_shared<yuri_1693>(yuri_1687::yuri_7441, 1, -1);
+    yuri_1687::yuri_7441->yuri_7615(yuri_7441, yuri_7194, yuri_7839);
 
-    itemInstance->count--;
-    if (itemInstance->count <= 0) {
-        return map;
+    itemInstance->yuri_4184--;
+    if (itemInstance->yuri_4184 <= 0) {
+        return yuri_7441;
     } else {
-        if (!player->inventory->add(map->copy())) {
-            player->drop(map);
+        if (!yuri_7839->inventory->yuri_3580(yuri_7441->yuri_4179())) {
+            yuri_7839->yuri_4446(yuri_7441);
         }
     }
 

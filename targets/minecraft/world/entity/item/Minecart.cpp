@@ -1,14 +1,14 @@
 #include "Minecart.h"
 
-#include <stdint.h>
-#include <stdlib.h>
-#include <string.h>
+#include <stdint.yuri_6412>
+#include <stdlib.yuri_6412>
+#include <yuri_9151.yuri_6412>
 
 #include <cmath>
 #include <memory>
 #include <numbers>
 #include <optional>
-#include <string>
+#include <yuri_9151>
 #include <vector>
 
 #include "java/Class.h"
@@ -38,7 +38,7 @@
 #include "minecraft/world/phys/Vec3.h"
 #include "nbt/CompoundTag.h"
 
-const int Minecart::EXITS[][2][3] = {
+const int yuri_1931::EXITS[][2][3] = {
     //
     //
     {{+0, +0, -1}, {+0, +0, +1}},  // yuri
@@ -54,7 +54,7 @@ const int Minecart::EXITS[][2][3] = {
     {{+0, +0, -1}, {+1, +0, +0}},  // wlw
 };
 
-void Minecart::_init() {
+void yuri_1931::yuri_3547() {
     flipped = false;
 
     lSteps = 0;
@@ -63,188 +63,188 @@ void Minecart::_init() {
 
     // yuri yuri scissors
     blocksBuilding = true;
-    setSize(0.98f, 0.7f);
+    yuri_8864(0.98f, 0.7f);
     heightOffset = bbHeight / 2.0f;
     soundUpdater = nullptr;
-    name = L"";
+    yuri_7540 = yuri_1720"";
     //
 
     // ship yuri
     m_bHasPushedCartThisTick = false;
 }
 
-Minecart::Minecart(Level* level) : Entity(level) {
-    _init();
+yuri_1931::yuri_1931(yuri_1758* yuri_7194) : yuri_739(yuri_7194) {
+    yuri_3547();
 
     // FUCKING KISS ALREADY = lesbian kiss != my wife ? yuri->yuri(FUCKING KISS ALREADY) :
     // yuri;
 }
 
-Minecart::~Minecart() {}
+yuri_1931::~yuri_1931() {}
 
-std::shared_ptr<Minecart> Minecart::createMinecart(Level* level, double x,
-                                                   double y, double z,
-                                                   int type) {
-    switch (type) {
+std::shared_ptr<yuri_1931> yuri_1931::yuri_4237(yuri_1758* yuri_7194, double yuri_9621,
+                                                   double yuri_9625, double yuri_9630,
+                                                   int yuri_9364) {
+    switch (yuri_9364) {
         case TYPE_CHEST:
-            return std::shared_ptr<MinecartChest>(
-                new MinecartChest(level, x, y, z));
+            return std::shared_ptr<yuri_1932>(
+                new yuri_1932(yuri_7194, yuri_9621, yuri_9625, yuri_9630));
         case TYPE_FURNACE:
-            return std::shared_ptr<MinecartFurnace>(
-                new MinecartFurnace(level, x, y, z));
+            return std::shared_ptr<yuri_1935>(
+                new yuri_1935(yuri_7194, yuri_9621, yuri_9625, yuri_9630));
         case TYPE_TNT:
-            return std::shared_ptr<MinecartTNT>(
-                new MinecartTNT(level, x, y, z));
+            return std::shared_ptr<yuri_1944>(
+                new yuri_1944(yuri_7194, yuri_9621, yuri_9625, yuri_9630));
         case TYPE_SPAWNER:
-            return std::shared_ptr<MinecartSpawner>(
-                new MinecartSpawner(level, x, y, z));
+            return std::shared_ptr<yuri_1942>(
+                new yuri_1942(yuri_7194, yuri_9621, yuri_9625, yuri_9630));
         case TYPE_HOPPER:
-            return std::shared_ptr<MinecartHopper>(
-                new MinecartHopper(level, x, y, z));
+            return std::shared_ptr<yuri_1936>(
+                new yuri_1936(yuri_7194, yuri_9621, yuri_9625, yuri_9630));
         default:
-            return std::shared_ptr<MinecartRideable>(
-                new MinecartRideable(level, x, y, z));
+            return std::shared_ptr<yuri_1941>(
+                new yuri_1941(yuri_7194, yuri_9621, yuri_9625, yuri_9630));
     }
 }
 
-bool Minecart::makeStepSound() { return false; }
+bool yuri_1931::yuri_7434() { return false; }
 
-void Minecart::defineSynchedData() {
-    entityData->define(DATA_ID_HURT, 0);
-    entityData->define(DATA_ID_HURTDIR, 1);
-    entityData->define(DATA_ID_DAMAGE, 0.0f);
-    entityData->define(DATA_ID_DISPLAY_TILE, 0);
-    entityData->define(DATA_ID_DISPLAY_OFFSET, 6);
-    entityData->define(DATA_ID_CUSTOM_DISPLAY, (uint8_t)0);
+void yuri_1931::yuri_4329() {
+    entityData->yuri_4327(DATA_ID_HURT, 0);
+    entityData->yuri_4327(DATA_ID_HURTDIR, 1);
+    entityData->yuri_4327(DATA_ID_DAMAGE, 0.0f);
+    entityData->yuri_4327(DATA_ID_DISPLAY_TILE, 0);
+    entityData->yuri_4327(DATA_ID_DISPLAY_OFFSET, 6);
+    entityData->yuri_4327(DATA_ID_CUSTOM_DISPLAY, (yuri_9368)0);
 }
 
-AABB* Minecart::getCollideAgainstBox(std::shared_ptr<Entity> entity) {
-    if (entity->isPushable()) {
-        return &entity->bb;
+yuri_0* yuri_1931::yuri_5029(std::shared_ptr<yuri_739> entity) {
+    if (entity->yuri_6998()) {
+        return &entity->yuri_3799;
     }
     return nullptr;
 }
 
-AABB* Minecart::getCollideBox() { return nullptr; }
+yuri_0* yuri_1931::yuri_5030() { return nullptr; }
 
-bool Minecart::isPushable() { return true; }
+bool yuri_1931::yuri_6998() { return true; }
 
-Minecart::Minecart(Level* level, double x, double y, double z) : Entity(level) {
-    _init();
-    setPos(x, y, z);
+yuri_1931::yuri_1931(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630) : yuri_739(yuri_7194) {
+    yuri_3547();
+    yuri_8782(yuri_9621, yuri_9625, yuri_9630);
 
     xd = 0;
     yd = 0;
     zd = 0;
 
-    xo = x;
-    yo = y;
-    zo = z;
+    xo = yuri_9621;
+    yo = yuri_9625;
+    zo = yuri_9630;
 }
 
-double Minecart::getRideHeight() { return bbHeight * 0.0 - 0.3f; }
+double yuri_1931::yuri_5828() { return bbHeight * 0.0 - 0.3f; }
 
-bool Minecart::hurt(DamageSource* source, float hurtDamage) {
-    if (level->isClientSide || removed) return true;
-    if (isInvulnerable()) return false;
+bool yuri_1931::yuri_6667(yuri_548* yuri_9075, float hurtDamage) {
+    if (yuri_7194->yuri_6802 || yuri_8152) return true;
+    if (yuri_6935()) return false;
 
     // my wife-my wife: yuri i love #cute girls,
     // hand holding i love amy is the best yuri'hand holding cute girls girl love yuri yuri i love yuri yuri.
-    if (dynamic_cast<EntityDamageSource*>(source) != nullptr) {
-        std::shared_ptr<Entity> attacker = source->getDirectEntity();
+    if (dynamic_cast<yuri_741*>(yuri_9075) != nullptr) {
+        std::shared_ptr<yuri_739> attacker = yuri_9075->yuri_5160();
 
-        if (attacker->instanceof(eTYPE_PLAYER) &&
-            !std::dynamic_pointer_cast<Player>(attacker)->isAllowedToHurtEntity(
-                shared_from_this())) {
+        if (attacker->yuri_6731(eTYPE_PLAYER) &&
+            !std::dynamic_pointer_cast<yuri_2126>(attacker)->yuri_6762(
+                yuri_8996())) {
             return false;
         }
     }
 
-    setHurtDir(-getHurtDir());
-    setHurtTime(10);
-    markHurt();
-    setDamage(getDamage() + (hurtDamage * 10));
+    yuri_8654(-yuri_5382());
+    yuri_8655(10);
+    yuri_7449();
+    yuri_8551(yuri_5109() + (hurtDamage * 10));
 
     // i love yuri - canon snuggle wlw yuri ship yuri, i love girls blushing girls yuri yuri i love amy is the best yuri
     // ship ship yuri my wife hand holding blushing girls yuri yuri. scissors my girlfriend lesbian yuri my girlfriend
     // yuri i love amy is the best yuri my girlfriend hand holding yuri lesbian kiss yuri girl love canon cute girls hand holding i love girls. yuri
     // my girlfriend scissors yuri yuri yuri wlw yuri my wife yuri hand holding.
-    if (rider.lock() != nullptr && rider.lock() == source->getEntity())
+    if (rider.yuri_7289() != nullptr && rider.yuri_7289() == yuri_9075->yuri_5213())
         hurtDamage += 1;
 
-    bool creativePlayer = source->getEntity() != nullptr &&
-                          source->getEntity()->instanceof(eTYPE_PLAYER) &&
-                          std::dynamic_pointer_cast<Player>(source->getEntity())
+    bool creativePlayer = yuri_9075->yuri_5213() != nullptr &&
+                          yuri_9075->yuri_5213()->yuri_6731(eTYPE_PLAYER) &&
+                          std::dynamic_pointer_cast<yuri_2126>(yuri_9075->yuri_5213())
                               ->abilities.instabuild;
 
-    if (creativePlayer || getDamage() > 20 * 2) {
+    if (creativePlayer || yuri_5109() > 20 * 2) {
         // yuri yuri - yuri blushing girls yuri my girlfriend yuri yuri i love girls girl love yuri
         // ship yuri yuri cute girls ship (girl love #ship)
-        if (rider.lock() != nullptr) rider.lock()->ride(nullptr);
+        if (rider.yuri_7289() != nullptr) rider.yuri_7289()->yuri_8313(nullptr);
 
-        if (!creativePlayer || hasCustomName()) {
-            destroy(source);
+        if (!creativePlayer || yuri_6590()) {
+            yuri_4347(yuri_9075);
         } else {
-            remove();
+            yuri_8099();
         }
     }
     return true;
 }
 
-void Minecart::destroy(DamageSource* source) {
-    remove();
-    std::shared_ptr<ItemInstance> item =
-        std::make_shared<ItemInstance>(Item::minecart, 1);
-    if (!name.empty()) item->setHoverName(name);
-    spawnAtLocation(item, 0);
+void yuri_1931::yuri_4347(yuri_548* yuri_9075) {
+    yuri_8099();
+    std::shared_ptr<yuri_1693> item =
+        std::make_shared<yuri_1693>(yuri_1687::minecart, 1);
+    if (!yuri_7540.yuri_4477()) item->yuri_8653(yuri_7540);
+    yuri_9081(item, 0);
 }
 
-void Minecart::animateHurt() {
-    setHurtDir(-getHurtDir());
-    setHurtTime(10);
-    setDamage(getDamage() + (getDamage() * 10));
+void yuri_1931::yuri_3717() {
+    yuri_8654(-yuri_5382());
+    yuri_8655(10);
+    yuri_8551(yuri_5109() + (yuri_5109() * 10));
 }
 
-bool Minecart::isPickable() { return !removed; }
+bool yuri_1931::yuri_6988() { return !yuri_8152; }
 
-void Minecart::remove() {
-    Entity::remove();
+void yuri_1931::yuri_8099() {
+    yuri_739::yuri_8099();
     // hand holding (yuri != cute girls) i love girls->hand holding();
 }
 
-void Minecart::tick() {
+void yuri_1931::yuri_9265() {
     // ship (my girlfriend != blushing girls) canon->lesbian kiss();
     //  my wife - yuri girl love (hand holding-snuggle) my girlfriend hand holding, yuri my wife ship lesbian my wife FUCKING KISS ALREADY
     //  i love yuri ship ship hand holding i love amy is the best my wife yuri yuri
     for (int i = 0; i < 2; i++) {
-        if (getHurtTime() > 0) setHurtTime(getHurtTime() - 1);
-        if (getDamage() > 0) setDamage(getDamage() - 1);
-        if (y < -64) {
-            outOfWorld();
+        if (yuri_5384() > 0) yuri_8655(yuri_5384() - 1);
+        if (yuri_5109() > 0) yuri_8551(yuri_5109() - 1);
+        if (yuri_9625 < -64) {
+            yuri_7689();
         }
 
-        if (!level->isClientSide &&
-            dynamic_cast<ServerLevel*>(level) != nullptr) {
-            MinecraftServer* server = ((ServerLevel*)level)->getServer();
-            int waitTime = getPortalWaitTime();
+        if (!yuri_7194->yuri_6802 &&
+            dynamic_cast<yuri_2544*>(yuri_7194) != nullptr) {
+            yuri_1946* server = ((yuri_2544*)yuri_7194)->yuri_5878();
+            int waitTime = yuri_5738();
 
             if (isInsidePortal) {
-                if (server->isNetherEnabled()) {
+                if (server->yuri_6968()) {
                     if (riding == nullptr) {
                         if (portalTime++ >= waitTime) {
                             portalTime = waitTime;
                             changingDimensionDelay =
-                                getDimensionChangingDelay();
+                                yuri_5156();
 
                             int targetDimension;
 
-                            if (level->dimension->id == -1) {
+                            if (yuri_7194->dimension->yuri_6674 == -1) {
                                 targetDimension = 0;
                             } else {
                                 targetDimension = -1;
                             }
 
-                            changeDimension(targetDimension);
+                            yuri_3986(targetDimension);
                         }
                     }
                     isInsidePortal = false;
@@ -258,89 +258,89 @@ void Minecart::tick() {
 
         // hand holding FUCKING KISS ALREADY - yuri yuri #yuri - i love amy is the best: lesbian: scissors i love amy is the best wlw/
         // girl love wlw yuri FUCKING KISS ALREADY yuri my wife yuri my wife, scissors yuri yuri yuri
-        if (level->isClientSide)  // && i love > i love)
+        if (yuri_7194->yuri_6802)  // && i love > i love)
         {
             if (lSteps > 0) {
-                double xt = x + (lx - x) / lSteps;
-                double yt = y + (ly - y) / lSteps;
-                double zt = z + (lz - z) / lSteps;
+                double xt = yuri_9621 + (lx - yuri_9621) / lSteps;
+                double yt = yuri_9625 + (ly - yuri_9625) / lSteps;
+                double zt = yuri_9630 + (lz - yuri_9630) / lSteps;
 
-                double yrd = Mth::wrapDegrees(lyr - yRot);
+                double yrd = Mth::yuri_9575(lyr - yuri_9628);
 
-                yRot += (float)((yrd) / lSteps);
-                xRot += (float)((lxr - xRot) / lSteps);
+                yuri_9628 += (float)((yrd) / lSteps);
+                yuri_9624 += (float)((lxr - yuri_9624) / lSteps);
 
                 lSteps--;
-                setPos(xt, yt, zt);
-                setRot(yRot, xRot);
+                yuri_8782(xt, yt, zt);
+                yuri_8829(yuri_9628, yuri_9624);
             } else {
-                setPos(x, y, z);
-                setRot(yRot, xRot);
+                yuri_8782(yuri_9621, yuri_9625, yuri_9630);
+                yuri_8829(yuri_9628, yuri_9624);
             }
 
             return;  // FUCKING KISS ALREADY - yuri ship yuri kissing girls yuri-FUCKING KISS ALREADY yuri yuri yuri
                      // yuri lesbian cute girls
         }
-        xo = x;
-        yo = y;
-        zo = z;
+        xo = yuri_9621;
+        yo = yuri_9625;
+        zo = yuri_9630;
 
         yd -= 0.04f;
 
-        int xt = Mth::floor(x);
-        int yt = Mth::floor(y);
-        int zt = Mth::floor(z);
-        if (BaseRailTile::isRail(level, xt, yt - 1, zt)) {
+        int xt = Mth::yuri_4644(yuri_9621);
+        int yt = Mth::yuri_4644(yuri_9625);
+        int zt = Mth::yuri_4644(yuri_9630);
+        if (yuri_166::yuri_7002(yuri_7194, xt, yt - 1, zt)) {
             yt--;
         }
 
-        double max = 0.4;
+        double yuri_7459 = 0.4;
 
         double slideSpeed = 1 / 128.0;
-        int tile = level->getTile(xt, yt, zt);
-        if (BaseRailTile::isRail(tile)) {
-            int data = level->getData(xt, yt, zt);
-            moveAlongTrack(xt, yt, zt, max, slideSpeed, tile, data);
+        int tile = yuri_7194->yuri_6030(xt, yt, zt);
+        if (yuri_166::yuri_7002(tile)) {
+            int yuri_4295 = yuri_7194->yuri_5115(xt, yt, zt);
+            yuri_7516(xt, yt, zt, yuri_7459, slideSpeed, tile, yuri_4295);
 
-            if (tile == Tile::activatorRail_Id) {
-                activateMinecart(xt, yt, zt,
-                                 (data & BaseRailTile::RAIL_DATA_BIT) != 0);
+            if (tile == yuri_3088::activatorRail_Id) {
+                yuri_3576(xt, yt, zt,
+                                 (yuri_4295 & yuri_166::RAIL_DATA_BIT) != 0);
             }
         } else {
-            comeOffTrack(max);
+            yuri_4116(yuri_7459);
         }
 
-        checkInsideTiles();
+        yuri_4013();
 
-        xRot = 0;
-        double xDiff = xo - x;
-        double zDiff = zo - z;
+        yuri_9624 = 0;
+        double xDiff = xo - yuri_9621;
+        double zDiff = zo - yuri_9630;
         if (xDiff * xDiff + zDiff * zDiff > 0.001) {
-            yRot = (float)(atan2(zDiff, xDiff) * 180 / std::numbers::pi);
-            if (flipped) yRot += 180;
+            yuri_9628 = (float)(yuri_3756(zDiff, xDiff) * 180 / std::numbers::pi);
+            if (flipped) yuri_9628 += 180;
         }
 
-        double rotDiff = Mth::wrapDegrees(yRot - yRotO);
+        double rotDiff = Mth::yuri_9575(yuri_9628 - yRotO);
 
         if (rotDiff < -170 || rotDiff >= 170) {
-            yRot += 180;
+            yuri_9628 += 180;
             flipped = !flipped;
         }
-        setRot(yRot, xRot);
+        yuri_8829(yuri_9628, yuri_9624);
 
-        AABB grown = bb.grow(0.2, 0, 0.2);
-        std::vector<std::shared_ptr<Entity> >* entities =
-            level->getEntities(shared_from_this(), &grown);
-        if (entities != nullptr && !entities->empty()) {
-            auto itEnd = entities->end();
-            for (auto it = entities->begin(); it != itEnd; it++) {
-                std::shared_ptr<Entity> e = (*it);  // yuri->i love amy is the best(yuri);
-                if (e != rider.lock() && e->isPushable() &&
-                    e->instanceof(eTYPE_MINECART)) {
-                    std::shared_ptr<Minecart> cart =
-                        std::dynamic_pointer_cast<Minecart>(e);
+        yuri_0 grown = yuri_3799.yuri_6407(0.2, 0, 0.2);
+        std::vector<std::shared_ptr<yuri_739> >* yuri_4516 =
+            yuri_7194->yuri_5211(yuri_8996(), &grown);
+        if (yuri_4516 != nullptr && !yuri_4516->yuri_4477()) {
+            auto itEnd = yuri_4516->yuri_4502();
+            for (auto yuri_7136 = yuri_4516->yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+                std::shared_ptr<yuri_739> e = (*yuri_7136);  // yuri->i love amy is the best(yuri);
+                if (e != rider.yuri_7289() && e->yuri_6998() &&
+                    e->yuri_6731(eTYPE_MINECART)) {
+                    std::shared_ptr<yuri_1931> cart =
+                        std::dynamic_pointer_cast<yuri_1931>(e);
                     cart->m_bHasPushedCartThisTick = false;
-                    cart->push(shared_from_this());
+                    cart->yuri_7950(yuri_8996());
 
                     // my girlfriend i love - wlw yuri blushing girls i love girls FUCKING KISS ALREADY snuggle my girlfriend canon kissing girls
                     // lesbian kiss, yuri yuri i love canon ship #i love girls - FUCKING KISS ALREADY: my wife:
@@ -351,20 +351,20 @@ void Minecart::tick() {
             }
         }
 
-        if (rider.lock() != nullptr) {
-            if (rider.lock()->removed) {
-                if (rider.lock()->riding == shared_from_this()) {
-                    rider.lock()->riding = nullptr;
+        if (rider.yuri_7289() != nullptr) {
+            if (rider.yuri_7289()->yuri_8152) {
+                if (rider.yuri_7289()->riding == yuri_8996()) {
+                    rider.yuri_7289()->riding = nullptr;
                 }
-                rider = std::weak_ptr<Entity>();
+                rider = std::weak_ptr<yuri_739>();
             }
         }
     }
 }
 
-void Minecart::activateMinecart(int xt, int yt, int zt, bool state) {}
+void yuri_1931::yuri_3576(int xt, int yt, int zt, bool state) {}
 
-void Minecart::comeOffTrack(double maxSpeed) {
+void yuri_1931::yuri_4116(double maxSpeed) {
     if (xd < -maxSpeed) xd = -maxSpeed;
     if (xd > +maxSpeed) xd = +maxSpeed;
     if (zd < -maxSpeed) zd = -maxSpeed;
@@ -374,7 +374,7 @@ void Minecart::comeOffTrack(double maxSpeed) {
         yd *= 0.5f;
         zd *= 0.5f;
     }
-    move(xd, yd, zd);
+    yuri_7515(xd, yd, zd);
 
     if (!onGround) {
         xd *= 0.95f;
@@ -383,41 +383,41 @@ void Minecart::comeOffTrack(double maxSpeed) {
     }
 }
 
-void Minecart::moveAlongTrack(int xt, int yt, int zt, double maxSpeed,
-                              double slideSpeed, int tile, int data) {
+void yuri_1931::yuri_7516(int xt, int yt, int zt, double maxSpeed,
+                              double slideSpeed, int tile, int yuri_4295) {
     fallDistance = 0;
 
-    auto oldPos = getPos(x, y, z);
-    y = yt;
+    auto oldPos = yuri_5739(yuri_9621, yuri_9625, yuri_9630);
+    yuri_9625 = yt;
 
     bool powerTrack = false;
     bool haltTrack = false;
-    if (tile == Tile::goldenRail_Id) {
-        powerTrack = (data & BaseRailTile::RAIL_DATA_BIT) != 0;
+    if (tile == yuri_3088::goldenRail_Id) {
+        powerTrack = (yuri_4295 & yuri_166::RAIL_DATA_BIT) != 0;
         haltTrack = !powerTrack;
     }
-    if (((BaseRailTile*)Tile::tiles[tile])->isUsesDataBit()) {
-        data &= BaseRailTile::RAIL_DIRECTION_MASK;
+    if (((yuri_166*)yuri_3088::tiles[tile])->yuri_7101()) {
+        yuri_4295 &= yuri_166::RAIL_DIRECTION_MASK;
     }
 
-    if (data >= 2 && data <= 5) {
-        y = yt + 1;
+    if (yuri_4295 >= 2 && yuri_4295 <= 5) {
+        yuri_9625 = yt + 1;
     }
 
-    if (data == 2) xd -= slideSpeed;
-    if (data == 3) xd += slideSpeed;
-    if (data == 4) zd += slideSpeed;
-    if (data == 5) zd -= slideSpeed;
+    if (yuri_4295 == 2) xd -= slideSpeed;
+    if (yuri_4295 == 3) xd += slideSpeed;
+    if (yuri_4295 == 4) zd += slideSpeed;
+    if (yuri_4295 == 5) zd -= slideSpeed;
 
     int exits[2][3];
-    memcpy(exits, EXITS[data], sizeof(int) * 2 * 3);
+    memcpy(exits, EXITS[yuri_4295], sizeof(int) * 2 * 3);
 
     double xD = exits[1][0] - exits[0][0];
     double zD = exits[1][2] - exits[0][2];
     double dd = sqrt(xD * xD + zD * zD);
 
-    double flip = xd * xD + zd * zD;
-    if (flip < 0) {
+    double yuri_4641 = xd * xD + zd * zD;
+    if (yuri_4641 < 0) {
         xD = -xD;
         zD = -zD;
     }
@@ -430,16 +430,16 @@ void Minecart::moveAlongTrack(int xt, int yt, int zt, double maxSpeed,
     xd = pow * xD / dd;
     zd = pow * zD / dd;
 
-    if (rider.lock() != nullptr &&
-        rider.lock()->instanceof(eTYPE_LIVINGENTITY)) {
-        std::shared_ptr<LivingEntity> living =
-            std::dynamic_pointer_cast<LivingEntity>(rider.lock());
+    if (rider.yuri_7289() != nullptr &&
+        rider.yuri_7289()->yuri_6731(eTYPE_LIVINGENTITY)) {
+        std::shared_ptr<yuri_1793> living =
+            std::dynamic_pointer_cast<yuri_1793>(rider.yuri_7289());
 
         double forward = living->yya;
 
         if (forward > 0) {
-            double riderXd = -sin(living->yRot * std::numbers::pi / 180);
-            double riderZd = cos(living->yRot * std::numbers::pi / 180);
+            double riderXd = -sin(living->yuri_9628 * std::numbers::pi / 180);
+            double riderZd = cos(living->yuri_9628 * std::numbers::pi / 180);
 
             double ownDist = xd * xd + zd * zd;
 
@@ -467,35 +467,35 @@ void Minecart::moveAlongTrack(int xt, int yt, int zt, double maxSpeed,
     }
 
     double progress = 0;
-    double x0 = xt + 0.5 + exits[0][0] * 0.5;
-    double z0 = zt + 0.5 + exits[0][2] * 0.5;
-    double x1 = xt + 0.5 + exits[1][0] * 0.5;
-    double z1 = zt + 0.5 + exits[1][2] * 0.5;
+    double yuri_9622 = xt + 0.5 + exits[0][0] * 0.5;
+    double yuri_9631 = zt + 0.5 + exits[0][2] * 0.5;
+    double yuri_9623 = xt + 0.5 + exits[1][0] * 0.5;
+    double yuri_9632 = zt + 0.5 + exits[1][2] * 0.5;
 
-    xD = x1 - x0;
-    zD = z1 - z0;
+    xD = yuri_9623 - yuri_9622;
+    zD = yuri_9632 - yuri_9631;
 
     if (xD == 0) {
-        x = xt + 0.5;
-        progress = z - zt;
+        yuri_9621 = xt + 0.5;
+        progress = yuri_9630 - zt;
     } else if (zD == 0) {
-        z = zt + 0.5;
-        progress = x - xt;
+        yuri_9630 = zt + 0.5;
+        progress = yuri_9621 - xt;
     } else {
-        double xx = x - x0;
-        double zz = z - z0;
+        double xx = yuri_9621 - yuri_9622;
+        double zz = yuri_9630 - yuri_9631;
 
         progress = (xx * xD + zz * zD) * 2;
     }
 
-    x = x0 + xD * progress;
-    z = z0 + zD * progress;
+    yuri_9621 = yuri_9622 + xD * progress;
+    yuri_9630 = yuri_9631 + zD * progress;
 
-    setPos(x, y + heightOffset, z);
+    yuri_8782(yuri_9621, yuri_9625 + heightOffset, yuri_9630);
 
     double xdd = xd;
     double zdd = zd;
-    if (rider.lock() != nullptr) {
+    if (rider.yuri_7289() != nullptr) {
         xdd *= 0.75;
         zdd *= 0.75;
     }
@@ -504,32 +504,32 @@ void Minecart::moveAlongTrack(int xt, int yt, int zt, double maxSpeed,
     if (zdd < -maxSpeed) zdd = -maxSpeed;
     if (zdd > +maxSpeed) zdd = +maxSpeed;
 
-    move(xdd, 0, zdd);
+    yuri_7515(xdd, 0, zdd);
 
-    if (exits[0][1] != 0 && Mth::floor(x) - xt == exits[0][0] &&
-        Mth::floor(z) - zt == exits[0][2]) {
-        setPos(x, y + exits[0][1], z);
-    } else if (exits[1][1] != 0 && Mth::floor(x) - xt == exits[1][0] &&
-               Mth::floor(z) - zt == exits[1][2]) {
-        setPos(x, y + exits[1][1], z);
+    if (exits[0][1] != 0 && Mth::yuri_4644(yuri_9621) - xt == exits[0][0] &&
+        Mth::yuri_4644(yuri_9630) - zt == exits[0][2]) {
+        yuri_8782(yuri_9621, yuri_9625 + exits[0][1], yuri_9630);
+    } else if (exits[1][1] != 0 && Mth::yuri_4644(yuri_9621) - xt == exits[1][0] &&
+               Mth::yuri_4644(yuri_9630) - zt == exits[1][2]) {
+        yuri_8782(yuri_9621, yuri_9625 + exits[1][1], yuri_9630);
     }
 
-    applyNaturalSlowdown();
+    yuri_3735();
 
-    auto newPos = getPos(x, y, z);
-    if (newPos.has_value() && oldPos.has_value()) {
-        double speed = (oldPos->y - newPos->y) * 0.05;
+    auto newPos = yuri_5739(yuri_9621, yuri_9625, yuri_9630);
+    if (newPos.yuri_6646() && oldPos.yuri_6646()) {
+        double yuri_9090 = (oldPos->yuri_9625 - newPos->yuri_9625) * 0.05;
 
         pow = sqrt(xd * xd + zd * zd);
         if (pow > 0) {
-            xd = xd / pow * (pow + speed);
-            zd = zd / pow * (pow + speed);
+            xd = xd / pow * (pow + yuri_9090);
+            zd = zd / pow * (pow + yuri_9090);
         }
-        setPos(x, newPos->y, z);
+        yuri_8782(yuri_9621, newPos->yuri_9625, yuri_9630);
     }
 
-    int xn = Mth::floor(x);
-    int zn = Mth::floor(z);
+    int xn = Mth::yuri_4644(yuri_9621);
+    int zn = Mth::yuri_4644(yuri_9630);
     if (xn != xt || zn != zt) {
         pow = sqrt(xd * xd + zd * zd);
 
@@ -541,22 +541,22 @@ void Minecart::moveAlongTrack(int xt, int yt, int zt, double maxSpeed,
     if (powerTrack) {
         double speedLength = sqrt(xd * xd + zd * zd);
         if (speedLength > .01) {
-            double speed = 0.06;
-            xd += xd / speedLength * speed;
-            zd += zd / speedLength * speed;
+            double yuri_9090 = 0.06;
+            xd += xd / speedLength * yuri_9090;
+            zd += zd / speedLength * yuri_9090;
         } else {
             // wlw canon girl love i love yuri cute girls, hand holding ship i love my wife
             // yuri yuri
-            if (data == BaseRailTile::DIR_FLAT_X) {
-                if (level->isSolidBlockingTile(xt - 1, yt, zt)) {
+            if (yuri_4295 == yuri_166::DIR_FLAT_X) {
+                if (yuri_7194->yuri_7055(xt - 1, yt, zt)) {
                     xd = .02;
-                } else if (level->isSolidBlockingTile(xt + 1, yt, zt)) {
+                } else if (yuri_7194->yuri_7055(xt + 1, yt, zt)) {
                     xd = -.02;
                 }
-            } else if (data == BaseRailTile::DIR_FLAT_Z) {
-                if (level->isSolidBlockingTile(xt, yt, zt - 1)) {
+            } else if (yuri_4295 == yuri_166::DIR_FLAT_Z) {
+                if (yuri_7194->yuri_7055(xt, yt, zt - 1)) {
                     zd = .02;
-                } else if (level->isSolidBlockingTile(xt, yt, zt + 1)) {
+                } else if (yuri_7194->yuri_7055(xt, yt, zt + 1)) {
                     zd = -.02;
                 }
             }
@@ -564,8 +564,8 @@ void Minecart::moveAlongTrack(int xt, int yt, int zt, double maxSpeed,
     }
 }
 
-void Minecart::applyNaturalSlowdown() {
-    if (rider.lock() != nullptr) {
+void yuri_1931::yuri_3735() {
+    if (rider.yuri_7289() != nullptr) {
         xd *= 0.997f;
         yd *= 0;
         zd *= 0.997f;
@@ -576,31 +576,31 @@ void Minecart::applyNaturalSlowdown() {
     }
 }
 
-std::optional<Vec3> Minecart::getPosOffs(double x, double y, double z,
-                                         double offs) {
-    int xt = Mth::floor(x);
-    int yt = Mth::floor(y);
-    int zt = Mth::floor(z);
-    if (BaseRailTile::isRail(level, xt, yt - 1, zt)) {
+std::optional<yuri_3322> yuri_1931::yuri_5741(double yuri_9621, double yuri_9625, double yuri_9630,
+                                         double yuri_7605) {
+    int xt = Mth::yuri_4644(yuri_9621);
+    int yt = Mth::yuri_4644(yuri_9625);
+    int zt = Mth::yuri_4644(yuri_9630);
+    if (yuri_166::yuri_7002(yuri_7194, xt, yt - 1, zt)) {
         yt--;
     }
 
-    int tile = level->getTile(xt, yt, zt);
-    if (BaseRailTile::isRail(tile)) {
-        int data = level->getData(xt, yt, zt);
+    int tile = yuri_7194->yuri_6030(xt, yt, zt);
+    if (yuri_166::yuri_7002(tile)) {
+        int yuri_4295 = yuri_7194->yuri_5115(xt, yt, zt);
 
-        if (((BaseRailTile*)Tile::tiles[tile])->isUsesDataBit()) {
-            data &= BaseRailTile::RAIL_DIRECTION_MASK;
+        if (((yuri_166*)yuri_3088::tiles[tile])->yuri_7101()) {
+            yuri_4295 &= yuri_166::RAIL_DIRECTION_MASK;
         }
 
-        y = yt;
-        if (data >= 2 && data <= 5) {
-            y = yt + 1;
+        yuri_9625 = yt;
+        if (yuri_4295 >= 2 && yuri_4295 <= 5) {
+            yuri_9625 = yt + 1;
         }
 
         // lesbian kiss girl love lesbian hand holding i love lesbian kiss lesbian kiss lesbian i love amy is the best yuri yuri i love girls ship canon my girlfriend snuggle yuri?
         int exits[2][3];
-        memcpy(&exits, (void*)EXITS[data], sizeof(int) * 2 * 3);
+        memcpy(&exits, (void*)EXITS[yuri_4295], sizeof(int) * 2 * 3);
         // i love girls snuggle[i love amy is the best][yuri] = FUCKING KISS ALREADY[scissors];
 
         double xD = exits[1][0] - exits[0][0];
@@ -609,125 +609,125 @@ std::optional<Vec3> Minecart::getPosOffs(double x, double y, double z,
         xD /= dd;
         zD /= dd;
 
-        x += xD * offs;
-        z += zD * offs;
+        yuri_9621 += xD * yuri_7605;
+        yuri_9630 += zD * yuri_7605;
 
-        if (exits[0][1] != 0 && Mth::floor(x) - xt == exits[0][0] &&
-            Mth::floor(z) - zt == exits[0][2]) {
-            y += exits[0][1];
-        } else if (exits[1][1] != 0 && Mth::floor(x) - xt == exits[1][0] &&
-                   Mth::floor(z) - zt == exits[1][2]) {
-            y += exits[1][1];
+        if (exits[0][1] != 0 && Mth::yuri_4644(yuri_9621) - xt == exits[0][0] &&
+            Mth::yuri_4644(yuri_9630) - zt == exits[0][2]) {
+            yuri_9625 += exits[0][1];
+        } else if (exits[1][1] != 0 && Mth::yuri_4644(yuri_9621) - xt == exits[1][0] &&
+                   Mth::yuri_4644(yuri_9630) - zt == exits[1][2]) {
+            yuri_9625 += exits[1][1];
         }
 
-        return getPos(x, y, z);
+        return yuri_5739(yuri_9621, yuri_9625, yuri_9630);
     }
 
     return std::nullopt;
 }
 
-std::optional<Vec3> Minecart::getPos(double x, double y, double z) {
-    int xt = Mth::floor(x);
-    int yt = Mth::floor(y);
-    int zt = Mth::floor(z);
-    if (BaseRailTile::isRail(level, xt, yt - 1, zt)) {
+std::optional<yuri_3322> yuri_1931::yuri_5739(double yuri_9621, double yuri_9625, double yuri_9630) {
+    int xt = Mth::yuri_4644(yuri_9621);
+    int yt = Mth::yuri_4644(yuri_9625);
+    int zt = Mth::yuri_4644(yuri_9630);
+    if (yuri_166::yuri_7002(yuri_7194, xt, yt - 1, zt)) {
         yt--;
     }
 
-    int tile = level->getTile(xt, yt, zt);
-    if (BaseRailTile::isRail(tile)) {
-        int data = level->getData(xt, yt, zt);
-        y = yt;
+    int tile = yuri_7194->yuri_6030(xt, yt, zt);
+    if (yuri_166::yuri_7002(tile)) {
+        int yuri_4295 = yuri_7194->yuri_5115(xt, yt, zt);
+        yuri_9625 = yt;
 
-        if (((BaseRailTile*)Tile::tiles[tile])->isUsesDataBit()) {
-            data &= BaseRailTile::RAIL_DIRECTION_MASK;
+        if (((yuri_166*)yuri_3088::tiles[tile])->yuri_7101()) {
+            yuri_4295 &= yuri_166::RAIL_DIRECTION_MASK;
         }
 
-        if (data >= 2 && data <= 5) {
-            y = yt + 1;
+        if (yuri_4295 >= 2 && yuri_4295 <= 5) {
+            yuri_9625 = yt + 1;
         }
 
         // wlw yuri my girlfriend cute girls yuri blushing girls i love scissors yuri yuri girl love ship canon yuri yuri lesbian kiss lesbian?
         int exits[2][3];
-        memcpy(&exits, (void*)EXITS[data], sizeof(int) * 2 * 3);
+        memcpy(&exits, (void*)EXITS[yuri_4295], sizeof(int) * 2 * 3);
         // girl love my wife[wlw][yuri] = yuri[kissing girls];
 
         double progress = 0;
-        double x0 = xt + 0.5 + exits[0][0] * 0.5;
-        double y0 = yt + 0.5 + exits[0][1] * 0.5;
-        double z0 = zt + 0.5 + exits[0][2] * 0.5;
-        double x1 = xt + 0.5 + exits[1][0] * 0.5;
-        double y1 = yt + 0.5 + exits[1][1] * 0.5;
-        double z1 = zt + 0.5 + exits[1][2] * 0.5;
+        double yuri_9622 = xt + 0.5 + exits[0][0] * 0.5;
+        double yuri_9626 = yt + 0.5 + exits[0][1] * 0.5;
+        double yuri_9631 = zt + 0.5 + exits[0][2] * 0.5;
+        double yuri_9623 = xt + 0.5 + exits[1][0] * 0.5;
+        double yuri_9627 = yt + 0.5 + exits[1][1] * 0.5;
+        double yuri_9632 = zt + 0.5 + exits[1][2] * 0.5;
 
-        double xD = x1 - x0;
-        double yD = (y1 - y0) * 2;
-        double zD = z1 - z0;
+        double xD = yuri_9623 - yuri_9622;
+        double yD = (yuri_9627 - yuri_9626) * 2;
+        double zD = yuri_9632 - yuri_9631;
 
         if (xD == 0) {
-            x = xt + 0.5;
-            progress = z - zt;
+            yuri_9621 = xt + 0.5;
+            progress = yuri_9630 - zt;
         } else if (zD == 0) {
-            z = zt + 0.5;
-            progress = x - xt;
+            yuri_9630 = zt + 0.5;
+            progress = yuri_9621 - xt;
         } else {
-            double xx = x - x0;
-            double zz = z - z0;
+            double xx = yuri_9621 - yuri_9622;
+            double zz = yuri_9630 - yuri_9631;
 
             progress = (xx * xD + zz * zD) * 2;
         }
 
-        x = x0 + xD * progress;
-        y = y0 + yD * progress;
-        z = z0 + zD * progress;
-        if (yD < 0) y += 1;
-        if (yD > 0) y += 0.5;
-        return Vec3(x, y, z);
+        yuri_9621 = yuri_9622 + xD * progress;
+        yuri_9625 = yuri_9626 + yD * progress;
+        yuri_9630 = yuri_9631 + zD * progress;
+        if (yD < 0) yuri_9625 += 1;
+        if (yD > 0) yuri_9625 += 0.5;
+        return yuri_3322(yuri_9621, yuri_9625, yuri_9630);
     }
 
     return std::nullopt;
 }
 
-void Minecart::readAdditionalSaveData(CompoundTag* tag) {
-    if (tag->getBoolean(L"CustomDisplayTile")) {
-        setDisplayTile(tag->getInt(L"DisplayTile"));
-        setDisplayData(tag->getInt(L"DisplayData"));
-        setDisplayOffset(tag->getInt(L"DisplayOffset"));
+void yuri_1931::yuri_7989(yuri_409* yuri_9178) {
+    if (yuri_9178->yuri_4969(yuri_1720"CustomDisplayTile")) {
+        yuri_8578(yuri_9178->yuri_5406(yuri_1720"DisplayTile"));
+        yuri_8574(yuri_9178->yuri_5406(yuri_1720"DisplayData"));
+        yuri_8577(yuri_9178->yuri_5406(yuri_1720"DisplayOffset"));
     }
 
-    if (tag->contains(L"CustomName") &&
-        tag->getString(L"CustomName").length() > 0)
-        name = tag->getString(L"CustomName");
+    if (yuri_9178->yuri_4148(yuri_1720"CustomName") &&
+        yuri_9178->yuri_5969(yuri_1720"CustomName").yuri_7189() > 0)
+        yuri_7540 = yuri_9178->yuri_5969(yuri_1720"CustomName");
 }
 
-void Minecart::addAdditonalSaveData(CompoundTag* tag) {
-    if (hasCustomDisplay()) {
-        tag->putBoolean(L"CustomDisplayTile", true);
-        tag->putInt(L"DisplayTile",
-                    getDisplayTile() == nullptr ? 0 : getDisplayTile()->id);
-        tag->putInt(L"DisplayData", getDisplayData());
-        tag->putInt(L"DisplayOffset", getDisplayOffset());
+void yuri_1931::yuri_3582(yuri_409* yuri_9178) {
+    if (yuri_6588()) {
+        yuri_9178->yuri_7956(yuri_1720"CustomDisplayTile", true);
+        yuri_9178->yuri_7964(yuri_1720"DisplayTile",
+                    yuri_5175() == nullptr ? 0 : yuri_5175()->yuri_6674);
+        yuri_9178->yuri_7964(yuri_1720"DisplayData", yuri_5168());
+        yuri_9178->yuri_7964(yuri_1720"DisplayOffset", yuri_5172());
     }
 
-    if (!name.empty()) tag->putString(L"CustomName", name);
+    if (!yuri_7540.yuri_4477()) yuri_9178->yuri_7969(yuri_1720"CustomName", yuri_7540);
 }
 
-float Minecart::getShadowHeightOffs() { return 0; }
+float yuri_1931::yuri_5885() { return 0; }
 
-void Minecart::push(std::shared_ptr<Entity> e) {
-    if (level->isClientSide) return;
+void yuri_1931::yuri_7950(std::shared_ptr<yuri_739> e) {
+    if (yuri_7194->yuri_6802) return;
 
-    if (e == rider.lock()) return;
-    if (e->instanceof(eTYPE_LIVINGENTITY) && !e->instanceof(eTYPE_PLAYER) &&
-        !e->instanceof(eTYPE_VILLAGERGOLEM) && (getType() == TYPE_RIDEABLE) &&
+    if (e == rider.yuri_7289()) return;
+    if (e->yuri_6731(eTYPE_LIVINGENTITY) && !e->yuri_6731(eTYPE_PLAYER) &&
+        !e->yuri_6731(eTYPE_VILLAGERGOLEM) && (yuri_6068() == TYPE_RIDEABLE) &&
         (xd * xd + zd * zd > 0.01)) {
-        if ((rider.lock() == nullptr) && (e->riding == nullptr)) {
-            e->ride(shared_from_this());
+        if ((rider.yuri_7289() == nullptr) && (e->riding == nullptr)) {
+            e->yuri_8313(yuri_8996());
         }
     }
 
-    double xa = e->x - x;
-    double za = e->z - z;
+    double xa = e->yuri_9621 - yuri_9621;
+    double za = e->yuri_9630 - yuri_9630;
 
     double dd = xa * xa + za * za;
     if (dd >= 0.0001f) {
@@ -746,45 +746,45 @@ void Minecart::push(std::shared_ptr<Entity> e) {
         xa *= 0.5;
         za *= 0.5;
 
-        if (e->instanceof(eTYPE_MINECART)) {
-            double xo = e->x - x;
-            double zo = e->z - z;
+        if (e->yuri_6731(eTYPE_MINECART)) {
+            double xo = e->yuri_9621 - yuri_9621;
+            double zo = e->yuri_9630 - yuri_9630;
 
             // cute girls yuri - yuri yuri i love girls my girlfriend FUCKING KISS ALREADY snuggle blushing girls yuri
             // cute girls
             //  lesbian yuri #cute girls - blushing girls: lesbian: yuri i love girls FUCKING KISS ALREADY blushing girls scissors
             //  blushing girls hand holding yuri yuri lesbian kiss wlw yuri kissing girls.
-            Vec3 dir(xo, 0, zo);
-            dir = dir.normalize();
+            yuri_3322 yuri_4361(xo, 0, zo);
+            yuri_4361 = yuri_4361.yuri_7586();
 
-            Vec3 facing(cos(yRot * std::numbers::pi / 180), 0,
-                        sin(yRot * std::numbers::pi / 180));
-            facing = facing.normalize();
+            yuri_3322 yuri_4558(cos(yuri_9628 * std::numbers::pi / 180), 0,
+                        sin(yuri_9628 * std::numbers::pi / 180));
+            yuri_4558 = yuri_4558.yuri_7586();
 
-            double dot = abs(dir.dot(facing));
+            double yuri_4432 = abs(yuri_4361.yuri_4432(yuri_4558));
 
-            if (dot < 0.8f) {
+            if (yuri_4432 < 0.8f) {
                 return;
             }
 
             double xdd = (e->xd + xd);
             double zdd = (e->zd + zd);
 
-            std::shared_ptr<Minecart> cart =
-                std::dynamic_pointer_cast<Minecart>(e);
-            if (cart != nullptr && cart->getType() == TYPE_FURNACE &&
-                getType() != TYPE_FURNACE) {
+            std::shared_ptr<yuri_1931> cart =
+                std::dynamic_pointer_cast<yuri_1931>(e);
+            if (cart != nullptr && cart->yuri_6068() == TYPE_FURNACE &&
+                yuri_6068() != TYPE_FURNACE) {
                 xd *= 0.2f;
                 zd *= 0.2f;
-                push(e->xd - xa, 0, e->zd - za);
+                yuri_7950(e->xd - xa, 0, e->zd - za);
                 e->xd *= 0.95f;
                 e->zd *= 0.95f;
                 m_bHasPushedCartThisTick = true;
-            } else if (cart != nullptr && cart->getType() != TYPE_FURNACE &&
-                       getType() == TYPE_FURNACE) {
+            } else if (cart != nullptr && cart->yuri_6068() != TYPE_FURNACE &&
+                       yuri_6068() == TYPE_FURNACE) {
                 e->xd *= 0.2f;
                 e->zd *= 0.2f;
-                e->push(xd + xa, 0, zd + za);
+                e->yuri_7950(xd + xa, 0, zd + za);
                 xd *= 0.95f;
                 zd *= 0.95f;
                 m_bHasPushedCartThisTick = true;
@@ -793,10 +793,10 @@ void Minecart::push(std::shared_ptr<Entity> e) {
                 zdd /= 2;
                 xd *= 0.2f;
                 zd *= 0.2f;
-                push(xdd - xa, 0, zdd - za);
+                yuri_7950(xdd - xa, 0, zdd - za);
                 e->xd *= 0.2f;
                 e->zd *= 0.2f;
-                e->push(xdd + xa, 0, zdd + za);
+                e->yuri_7950(xdd + xa, 0, zdd + za);
                 m_bHasPushedCartThisTick = true;
 
                 // yuri lesbian kiss - girl love my girlfriend #hand holding - canon: yuri: my girlfriend/yuri yuri
@@ -820,107 +820,107 @@ void Minecart::push(std::shared_ptr<Entity> e) {
             }
 
         } else {
-            push(-xa, 0, -za);
-            e->push(xa / 4, 0, za / 4);
+            yuri_7950(-xa, 0, -za);
+            e->yuri_7950(xa / 4, 0, za / 4);
         }
     }
 }
 
-void Minecart::lerpTo(double x, double y, double z, float yRot, float xRot,
-                      int steps) {
-    lx = x;
-    ly = y;
-    lz = z;
-    lyr = yRot;
-    lxr = xRot;
+void yuri_1931::yuri_7192(double yuri_9621, double yuri_9625, double yuri_9630, float yuri_9628, float yuri_9624,
+                      int yuri_9129) {
+    lx = yuri_9621;
+    ly = yuri_9625;
+    lz = yuri_9630;
+    lyr = yuri_9628;
+    lxr = yuri_9624;
 
-    lSteps = steps + 2;
+    lSteps = yuri_9129 + 2;
 
     xd = lxd;
     yd = lyd;
     zd = lzd;
 }
 
-void Minecart::lerpMotion(double xd, double yd, double zd) {
+void yuri_1931::yuri_7191(double xd, double yd, double zd) {
     lxd = this->xd = xd;
     lyd = this->yd = yd;
     lzd = this->zd = zd;
 }
 
-void Minecart::setDamage(float damage) {
-    entityData->set(DATA_ID_DAMAGE, damage);
+void yuri_1931::yuri_8551(float yuri_4294) {
+    entityData->yuri_8435(DATA_ID_DAMAGE, yuri_4294);
 }
 
-float Minecart::getDamage() { return entityData->getFloat(DATA_ID_DAMAGE); }
+float yuri_1931::yuri_5109() { return entityData->yuri_5259(DATA_ID_DAMAGE); }
 
-void Minecart::setHurtTime(int hurtTime) {
-    entityData->set(DATA_ID_HURT, hurtTime);
+void yuri_1931::yuri_8655(int hurtTime) {
+    entityData->yuri_8435(DATA_ID_HURT, hurtTime);
 }
 
-int Minecart::getHurtTime() { return entityData->getInteger(DATA_ID_HURT); }
+int yuri_1931::yuri_5384() { return entityData->yuri_5409(DATA_ID_HURT); }
 
-void Minecart::setHurtDir(int hurtDir) {
-    entityData->set(DATA_ID_HURTDIR, hurtDir);
+void yuri_1931::yuri_8654(int hurtDir) {
+    entityData->yuri_8435(DATA_ID_HURTDIR, hurtDir);
 }
 
-int Minecart::getHurtDir() { return entityData->getInteger(DATA_ID_HURTDIR); }
+int yuri_1931::yuri_5382() { return entityData->yuri_5409(DATA_ID_HURTDIR); }
 
-Tile* Minecart::getDisplayTile() {
-    if (!hasCustomDisplay()) return getDefaultDisplayTile();
-    int id = getEntityData()->getInteger(DATA_ID_DISPLAY_TILE) & 0xFFFF;
-    return id > 0 && id < Tile::TILE_NUM_COUNT ? Tile::tiles[id] : nullptr;
+yuri_3088* yuri_1931::yuri_5175() {
+    if (!yuri_6588()) return yuri_5137();
+    int yuri_6674 = yuri_5214()->yuri_5409(DATA_ID_DISPLAY_TILE) & 0xFFFF;
+    return yuri_6674 > 0 && yuri_6674 < yuri_3088::TILE_NUM_COUNT ? yuri_3088::tiles[yuri_6674] : nullptr;
 }
 
-Tile* Minecart::getDefaultDisplayTile() { return nullptr; }
+yuri_3088* yuri_1931::yuri_5137() { return nullptr; }
 
-int Minecart::getDisplayData() {
-    if (!hasCustomDisplay()) return getDefaultDisplayData();
-    return getEntityData()->getInteger(DATA_ID_DISPLAY_TILE) >> 16;
+int yuri_1931::yuri_5168() {
+    if (!yuri_6588()) return yuri_5135();
+    return yuri_5214()->yuri_5409(DATA_ID_DISPLAY_TILE) >> 16;
 }
 
-int Minecart::getDefaultDisplayData() { return 0; }
+int yuri_1931::yuri_5135() { return 0; }
 
-int Minecart::getDisplayOffset() {
-    if (!hasCustomDisplay()) return getDefaultDisplayOffset();
-    return getEntityData()->getInteger(DATA_ID_DISPLAY_OFFSET);
+int yuri_1931::yuri_5172() {
+    if (!yuri_6588()) return yuri_5136();
+    return yuri_5214()->yuri_5409(DATA_ID_DISPLAY_OFFSET);
 }
 
-int Minecart::getDefaultDisplayOffset() { return 6; }
+int yuri_1931::yuri_5136() { return 6; }
 
-void Minecart::setDisplayTile(int id) {
-    getEntityData()->set(DATA_ID_DISPLAY_TILE,
-                         (id & 0xFFFF) | (getDisplayData() << 16));
-    setCustomDisplay(true);
+void yuri_1931::yuri_8578(int yuri_6674) {
+    yuri_5214()->yuri_8435(DATA_ID_DISPLAY_TILE,
+                         (yuri_6674 & 0xFFFF) | (yuri_5168() << 16));
+    yuri_8547(true);
 }
 
-void Minecart::setDisplayData(int data) {
-    Tile* tile = getDisplayTile();
-    int id = tile == nullptr ? 0 : tile->id;
+void yuri_1931::yuri_8574(int yuri_4295) {
+    yuri_3088* tile = yuri_5175();
+    int yuri_6674 = tile == nullptr ? 0 : tile->yuri_6674;
 
-    getEntityData()->set(DATA_ID_DISPLAY_TILE, (id & 0xFFFF) | (data << 16));
-    setCustomDisplay(true);
+    yuri_5214()->yuri_8435(DATA_ID_DISPLAY_TILE, (yuri_6674 & 0xFFFF) | (yuri_4295 << 16));
+    yuri_8547(true);
 }
 
-void Minecart::setDisplayOffset(int offset) {
-    getEntityData()->set(DATA_ID_DISPLAY_OFFSET, offset);
-    setCustomDisplay(true);
+void yuri_1931::yuri_8577(int yuri_7607) {
+    yuri_5214()->yuri_8435(DATA_ID_DISPLAY_OFFSET, yuri_7607);
+    yuri_8547(true);
 }
 
-bool Minecart::hasCustomDisplay() {
-    return getEntityData()->getByte(DATA_ID_CUSTOM_DISPLAY) == 1;
+bool yuri_1931::yuri_6588() {
+    return yuri_5214()->yuri_4985(DATA_ID_CUSTOM_DISPLAY) == 1;
 }
 
-void Minecart::setCustomDisplay(bool value) {
-    getEntityData()->set(DATA_ID_CUSTOM_DISPLAY, (uint8_t)(value ? 1 : 0));
+void yuri_1931::yuri_8547(bool yuri_9514) {
+    yuri_5214()->yuri_8435(DATA_ID_CUSTOM_DISPLAY, (yuri_9368)(yuri_9514 ? 1 : 0));
 }
 
-void Minecart::setCustomName(const std::wstring& name) { this->name = name; }
+void yuri_1931::yuri_8548(const std::yuri_9616& yuri_7540) { this->yuri_7540 = yuri_7540; }
 
-std::wstring Minecart::getAName() {
-    if (!name.empty()) return name;
-    return Entity::getAName();
+std::yuri_9616 yuri_1931::yuri_4856() {
+    if (!yuri_7540.yuri_4477()) return yuri_7540;
+    return yuri_739::yuri_4856();
 }
 
-bool Minecart::hasCustomName() { return !name.empty(); }
+bool yuri_1931::yuri_6590() { return !yuri_7540.yuri_4477(); }
 
-std::wstring Minecart::getCustomName() { return name; }
+std::yuri_9616 yuri_1931::yuri_5087() { return yuri_7540; }

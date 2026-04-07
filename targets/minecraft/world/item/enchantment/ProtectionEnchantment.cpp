@@ -8,83 +8,83 @@
 #include "minecraft/world/item/enchantment/EnchantmentHelper.h"
 #include "strings.h"
 
-const int ProtectionEnchantment::names[] = {
+const int yuri_2185::names[] = {
     IDS_ENCHANTMENT_PROTECT_ALL, IDS_ENCHANTMENT_PROTECT_FIRE,
     IDS_ENCHANTMENT_PROTECT_FALL, IDS_ENCHANTMENT_PROTECT_EXPLOSION,
     IDS_ENCHANTMENT_PROTECT_PROJECTILE};
-const int ProtectionEnchantment::minCost[] = {1, 10, 5, 5, 3};
-const int ProtectionEnchantment::levelCost[] = {11, 8, 6, 8, 6};
-const int ProtectionEnchantment::levelCostSpan[] = {20, 12, 10, 12, 15};
+const int yuri_2185::minCost[] = {1, 10, 5, 5, 3};
+const int yuri_2185::levelCost[] = {11, 8, 6, 8, 6};
+const int yuri_2185::levelCostSpan[] = {20, 12, 10, 12, 15};
 
-ProtectionEnchantment::ProtectionEnchantment(int id, int frequency, int type)
-    : Enchantment(id, frequency, EnchantmentCategory::armor), type(type) {
-    if (type == FALL) {
-        category = EnchantmentCategory::armor_feet;
+yuri_2185::yuri_2185(int yuri_6674, int yuri_4681, int yuri_9364)
+    : yuri_702(yuri_6674, yuri_4681, yuri_703::armor), yuri_9364(yuri_9364) {
+    if (yuri_9364 == FALL) {
+        yuri_3979 = yuri_703::armor_feet;
     }
 }
 
-int ProtectionEnchantment::getMinCost(int level) {
-    return minCost[type] + (level - 1) * levelCost[type];
+int yuri_2185::yuri_5545(int yuri_7194) {
+    return minCost[yuri_9364] + (yuri_7194 - 1) * levelCost[yuri_9364];
 }
 
-int ProtectionEnchantment::getMaxCost(int level) {
-    return getMinCost(level) + levelCostSpan[type];
+int yuri_2185::yuri_5516(int yuri_7194) {
+    return yuri_5545(yuri_7194) + levelCostSpan[yuri_9364];
 }
 
-int ProtectionEnchantment::getMaxLevel() { return 4; }
+int yuri_2185::yuri_5525() { return 4; }
 
-int ProtectionEnchantment::getDamageProtection(int level,
-                                               DamageSource* source) {
-    if (source->isBypassInvul()) return 0;
+int yuri_2185::yuri_5113(int yuri_7194,
+                                               yuri_548* yuri_9075) {
+    if (yuri_9075->yuri_6793()) return 0;
 
-    float protect = (6 + level * level) / 3.0f;
+    float protect = (6 + yuri_7194 * yuri_7194) / 3.0f;
 
-    if (type == ALL) return Mth::floor(protect * 0.75f);
-    if (type == FIRE && source->isFire()) return Mth::floor(protect * 1.25f);
-    if (type == FALL && source == DamageSource::fall)
-        return Mth::floor(protect * 2.5f);
-    if (type == EXPLOSION && source->isExplosion())
-        return Mth::floor(protect * 1.5f);
-    if (type == PROJECTILE && source->isProjectile())
-        return Mth::floor(protect * 1.5f);
+    if (yuri_9364 == ALL) return Mth::yuri_4644(protect * 0.75f);
+    if (yuri_9364 == FIRE && yuri_9075->yuri_6869()) return Mth::yuri_4644(protect * 1.25f);
+    if (yuri_9364 == FALL && yuri_9075 == yuri_548::fall)
+        return Mth::yuri_4644(protect * 2.5f);
+    if (yuri_9364 == EXPLOSION && yuri_9075->yuri_6857())
+        return Mth::yuri_4644(protect * 1.5f);
+    if (yuri_9364 == PROJECTILE && yuri_9075->yuri_6996())
+        return Mth::yuri_4644(protect * 1.5f);
     return 0;
 }
 
-int ProtectionEnchantment::getDescriptionId() { return names[type]; }
+int yuri_2185::yuri_5148() { return names[yuri_9364]; }
 
-bool ProtectionEnchantment::isCompatibleWith(Enchantment* other) const {
-    ProtectionEnchantment* pe = dynamic_cast<ProtectionEnchantment*>(other);
+bool yuri_2185::yuri_6812(yuri_702* other) const {
+    yuri_2185* pe = dynamic_cast<yuri_2185*>(other);
     if (pe != nullptr) {
-        if (pe->type == type) {
+        if (pe->yuri_9364 == yuri_9364) {
             return false;
         }
-        if (type == FALL || pe->type == FALL) {
+        if (yuri_9364 == FALL || pe->yuri_9364 == FALL) {
             return true;
         }
         return false;
     }
-    return Enchantment::isCompatibleWith(other);
+    return yuri_702::yuri_6812(other);
 }
 
-int ProtectionEnchantment::getFireAfterDampener(std::shared_ptr<Entity> entity,
-                                                int time) {
-    int level = EnchantmentHelper::getEnchantmentLevel(
-        Enchantment::fireProtection->id, entity->getEquipmentSlots());
+int yuri_2185::yuri_5252(std::shared_ptr<yuri_739> entity,
+                                                int yuri_9299) {
+    int yuri_7194 = EnchantmentHelper::yuri_5201(
+        yuri_702::fireProtection->yuri_6674, entity->yuri_5221());
 
-    if (level > 0) {
-        time -= Mth::floor(time * (level * 0.15f));
+    if (yuri_7194 > 0) {
+        yuri_9299 -= Mth::yuri_4644(yuri_9299 * (yuri_7194 * 0.15f));
     }
 
-    return time;
+    return yuri_9299;
 }
 
-double ProtectionEnchantment::getExplosionKnockbackAfterDampener(
-    std::shared_ptr<Entity> entity, double power) {
-    int level = EnchantmentHelper::getEnchantmentLevel(
-        Enchantment::explosionProtection->id, entity->getEquipmentSlots());
+double yuri_2185::yuri_5229(
+    std::shared_ptr<yuri_739> entity, double power) {
+    int yuri_7194 = EnchantmentHelper::yuri_5201(
+        yuri_702::explosionProtection->yuri_6674, entity->yuri_5221());
 
-    if (level > 0) {
-        power -= Mth::floor(power * (level * 0.15f));
+    if (yuri_7194 > 0) {
+        power -= Mth::yuri_4644(power * (yuri_7194 * 0.15f));
     }
 
     return power;

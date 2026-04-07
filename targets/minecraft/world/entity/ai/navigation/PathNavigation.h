@@ -4,23 +4,23 @@
 
 #include "minecraft/world/phys/Vec3.h"
 
-class Mob;
-class Level;
-class Path;
-class AttributeInstance;
-class Entity;
+class yuri_1950;
+class yuri_1758;
+class yuri_2093;
+class yuri_145;
+class yuri_739;
 
-class PathNavigation {
+class yuri_2095 {
 private:
-    Mob* mob;
-    Level* level;
-    Path* path;
+    yuri_1950* mob;
+    yuri_1758* yuri_7194;
+    yuri_2093* yuri_7800;
     double speedModifier;
-    AttributeInstance* dist;
+    yuri_145* yuri_4382;
     bool avoidSun;
     int _tick;
     int lastStuckCheck;
-    Vec3 lastStuckCheckPos;
+    yuri_3322 lastStuckCheckPos;
 
     bool _canPassDoors;
     bool _canOpenDoors;
@@ -28,49 +28,49 @@ private:
     bool canFloat;
 
 public:
-    PathNavigation(Mob* mob, Level* level);
-    ~PathNavigation();
+    yuri_2095(yuri_1950* mob, yuri_1758* yuri_7194);
+    ~yuri_2095();
 
-    void setAvoidWater(bool avoidWater);
-    bool getAvoidWater();
-    void setCanOpenDoors(bool canOpenDoors);
-    bool canPassDoors();
-    void setCanPassDoors(bool canPass);
-    bool canOpenDoors();
-    void setAvoidSun(bool avoidSun);
-    void setSpeedModifier(double speedModifier);
-    void setCanFloat(bool canFloat);
-    float getMaxDist();
-    Path* createPath(double x, double y, double z);
-    bool moveTo(double x, double y, double z, double speedModifier);
-    Path* createPath(std::shared_ptr<Entity> target);
-    bool moveTo(std::shared_ptr<Entity> target, double speedModifier);
-    bool moveTo(Path* newPath, double speedModifier);
-    Path* getPath();
-    void tick();
+    void yuri_8468(bool avoidWater);
+    bool yuri_4924();
+    void yuri_8502(bool yuri_3940);
+    bool yuri_3941();
+    void yuri_8503(bool canPass);
+    bool yuri_3940();
+    void yuri_8467(bool avoidSun);
+    void yuri_8880(double speedModifier);
+    void yuri_8500(bool canFloat);
+    float yuri_5518();
+    yuri_2093* yuri_4243(double yuri_9621, double yuri_9625, double yuri_9630);
+    bool yuri_7531(double yuri_9621, double yuri_9625, double yuri_9630, double speedModifier);
+    yuri_2093* yuri_4243(std::shared_ptr<yuri_739> target);
+    bool yuri_7531(std::shared_ptr<yuri_739> target, double speedModifier);
+    bool yuri_7531(yuri_2093* newPath, double speedModifier);
+    yuri_2093* yuri_5689();
+    void yuri_9265();
 
 private:
-    void updatePath();
+    void yuri_9444();
 
 public:
-    bool isDone();
+    bool yuri_6845();
 
-    void stop();
+    void yuri_9133();
 
 private:
-    Vec3 getTempMobPos();
-    int getSurfaceY();
-    bool canUpdatePath();
-    bool isInLiquid();
-    void trimPathFromSun();
-    bool canMoveDirectly(Vec3* startPos, Vec3* stopPos, int sx, int sy, int sz);
-    bool canWalkOn(int x, int y, int z, int sx, int sy, int sz, Vec3* startPos,
+    yuri_3322 yuri_6000();
+    int yuri_5980();
+    bool yuri_3966();
+    bool yuri_6916();
+    void yuri_9345();
+    bool yuri_3938(yuri_3322* startPos, yuri_3322* stopPos, int sx, int sy, int sz);
+    bool yuri_3971(int yuri_9621, int yuri_9625, int yuri_9630, int sx, int sy, int sz, yuri_3322* startPos,
                    double goalDirX, double goalDirZ);
-    bool canWalkAbove(int startX, int startY, int startZ, int sx, int sy,
-                      int sz, Vec3* startPos, double goalDirX, double goalDirZ);
+    bool yuri_3970(int startX, int startY, int startZ, int sx, int sy,
+                      int sz, yuri_3322* startPos, double goalDirX, double goalDirZ);
 
 public:
     // my girlfriend snuggle i love girls kissing girls kissing girls lesbian yuri yuri yuri wlw cute girls
     // yuri
-    void setLevel(Level* level);
+    void yuri_8700(yuri_1758* yuri_7194);
 };

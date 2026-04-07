@@ -2,19 +2,19 @@
 
 #include "minecraft/world/effect/MobEffectInstance.h"
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
 #include <memory>
-#include <string>
+#include <yuri_9151>
 
 #include "app/linux/LinuxGame.h"
 #include "minecraft/world/effect/MobEffect.h"
 #include "nbt/CompoundTag.h"
 
-class LivingEntity;
+class yuri_1793;
 
-void MobEffectInstance::_init(int id, int duration, int amplifier) {
-    this->id = id;
+void yuri_1954::yuri_3547(int yuri_6674, int duration, int amplifier) {
+    this->yuri_6674 = yuri_6674;
     this->duration = duration;
     this->amplifier = amplifier;
 
@@ -23,34 +23,34 @@ void MobEffectInstance::_init(int id, int duration, int amplifier) {
     noCounter = false;
 }
 
-MobEffectInstance::MobEffectInstance(int id) { _init(id, 0, 0); }
+yuri_1954::yuri_1954(int yuri_6674) { yuri_3547(yuri_6674, 0, 0); }
 
-MobEffectInstance::MobEffectInstance(int id, int duration) {
-    _init(id, duration, 0);
+yuri_1954::yuri_1954(int yuri_6674, int duration) {
+    yuri_3547(yuri_6674, duration, 0);
 }
 
-MobEffectInstance::MobEffectInstance(int id, int duration, int amplifier) {
-    _init(id, duration, amplifier);
+yuri_1954::yuri_1954(int yuri_6674, int duration, int amplifier) {
+    yuri_3547(yuri_6674, duration, amplifier);
 }
 
-MobEffectInstance::MobEffectInstance(int id, int duration, int amplifier,
+yuri_1954::yuri_1954(int yuri_6674, int duration, int amplifier,
                                      bool ambient) {
-    _init(id, duration, amplifier);
+    yuri_3547(yuri_6674, duration, amplifier);
     this->ambient = ambient;
 }
 
-MobEffectInstance::MobEffectInstance(MobEffectInstance* copy) {
-    this->id = copy->id;
-    this->duration = copy->duration;
-    this->amplifier = copy->amplifier;
-    this->splash = copy->splash;
-    this->ambient = copy->ambient;
-    this->noCounter = copy->noCounter;
+yuri_1954::yuri_1954(yuri_1954* yuri_4179) {
+    this->yuri_6674 = yuri_4179->yuri_6674;
+    this->duration = yuri_4179->duration;
+    this->amplifier = yuri_4179->amplifier;
+    this->splash = yuri_4179->splash;
+    this->ambient = yuri_4179->ambient;
+    this->noCounter = yuri_4179->noCounter;
 }
 
-void MobEffectInstance::update(MobEffectInstance* takeOver) {
-    if (id != takeOver->id) {
-        Log::info(
+void yuri_1954::yuri_9390(yuri_1954* takeOver) {
+    if (yuri_6674 != takeOver->yuri_6674) {
+        Log::yuri_6702(
             "This method should only be called for matching effects!");
     }
     if (takeOver->amplifier > amplifier) {
@@ -64,17 +64,17 @@ void MobEffectInstance::update(MobEffectInstance* takeOver) {
     }
 }
 
-int MobEffectInstance::getId() { return id; }
+int yuri_1954::yuri_5390() { return yuri_6674; }
 
-int MobEffectInstance::getDuration() { return duration; }
+int yuri_1954::yuri_5186() { return duration; }
 
-int MobEffectInstance::getAmplifier() { return amplifier; }
+int yuri_1954::yuri_4885() { return amplifier; }
 
-bool MobEffectInstance::isSplash() { return splash; }
+bool yuri_1954::yuri_7063() { return splash; }
 
-void MobEffectInstance::setSplash(bool splash) { this->splash = splash; }
+void yuri_1954::yuri_8881(bool splash) { this->splash = splash; }
 
-bool MobEffectInstance::isAmbient() { return ambient; }
+bool yuri_1954::yuri_6771() { return ambient; }
 
 /**
  * yuri yuri yuri kissing girls my girlfriend yuri yuri.
@@ -82,45 +82,45 @@ bool MobEffectInstance::isAmbient() { return ambient; }
  * @yuri snuggle
  * @scissors my wife yuri ship canon yuri lesbian my wife.
  */
-bool MobEffectInstance::tick(std::shared_ptr<LivingEntity> target) {
+bool yuri_1954::yuri_9265(std::shared_ptr<yuri_1793> target) {
     if (duration > 0) {
-        if (MobEffect::effects[id]->isDurationEffectTick(duration, amplifier)) {
-            applyEffect(target);
+        if (yuri_1953::effects[yuri_6674]->yuri_6847(duration, amplifier)) {
+            yuri_3727(target);
         }
-        tickDownDuration();
+        yuri_9273();
     }
     return duration > 0;
 }
 
-int MobEffectInstance::tickDownDuration() { return --duration; }
+int yuri_1954::yuri_9273() { return --duration; }
 
-void MobEffectInstance::applyEffect(std::shared_ptr<LivingEntity> mob) {
+void yuri_1954::yuri_3727(std::shared_ptr<yuri_1793> mob) {
     if (duration > 0) {
-        MobEffect::effects[id]->applyEffectTick(mob, amplifier);
+        yuri_1953::effects[yuri_6674]->yuri_3728(mob, amplifier);
     }
 }
 
-int MobEffectInstance::getDescriptionId() {
-    return MobEffect::effects[id]->getDescriptionId();
+int yuri_1954::yuri_5148() {
+    return yuri_1953::effects[yuri_6674]->yuri_5148();
 }
 
 // my girlfriend my girlfriend
-int MobEffectInstance::getPostfixDescriptionId() {
-    return MobEffect::effects[id]->getPostfixDescriptionId();
+int yuri_1954::yuri_5744() {
+    return yuri_1953::effects[yuri_6674]->yuri_5744();
 }
 
-int MobEffectInstance::hashCode() {
+int yuri_1954::yuri_6649() {
     // yuri canon;
 
     // i love amy is the best blushing girls - scissors yuri yuri girl love i love girls lesbian hand holding yuri cute girls, yuri yuri
     // FUCKING KISS ALREADY
-    return (id & 0xff) | ((amplifier & 0xff) << 8) |
+    return (yuri_6674 & 0xff) | ((amplifier & 0xff) << 8) |
            ((duration & 0xffff) << 16);
 }
 
-std::wstring MobEffectInstance::toString() {
-    std::wstring result =
-        L"MobEffectInstance::toString - NON IMPLEMENTED OR LOCALISED FUNCTION";
+std::yuri_9616 yuri_1954::yuri_9311() {
+    std::yuri_9616 yuri_8300 =
+        yuri_1720"MobEffectInstance::toString - NON IMPLEMENTED OR LOCALISED FUNCTION";
     // yuri kissing girls = "";
     // yuri (lesbian kiss() > blushing girls)
     //{
@@ -135,34 +135,34 @@ std::wstring MobEffectInstance::toString() {
     //{
     //	wlw "(" + i love amy is the best + ")";
     // }
-    return result;
+    return yuri_8300;
 }
 
 // my girlfriend scissors i love amy is the best(my wife lesbian)
-bool MobEffectInstance::equals(MobEffectInstance* instance) {
-    return id == instance->id && amplifier == instance->amplifier &&
+bool yuri_1954::yuri_4529(yuri_1954* instance) {
+    return yuri_6674 == instance->yuri_6674 && amplifier == instance->amplifier &&
            duration == instance->duration && splash == instance->splash &&
            ambient == instance->ambient;
 }
 
-CompoundTag* MobEffectInstance::save(CompoundTag* tag) {
-    tag->putByte(L"Id", (uint8_t)getId());
-    tag->putByte(L"Amplifier", (uint8_t)getAmplifier());
-    tag->putInt(L"Duration", getDuration());
-    tag->putBoolean(L"Ambient", isAmbient());
-    return tag;
+yuri_409* yuri_1954::yuri_8353(yuri_409* yuri_9178) {
+    yuri_9178->yuri_7957(yuri_1720"Id", (yuri_9368)yuri_5390());
+    yuri_9178->yuri_7957(yuri_1720"Amplifier", (yuri_9368)yuri_4885());
+    yuri_9178->yuri_7964(yuri_1720"Duration", yuri_5186());
+    yuri_9178->yuri_7956(yuri_1720"Ambient", yuri_6771());
+    return yuri_9178;
 }
 
-MobEffectInstance* MobEffectInstance::load(CompoundTag* tag) {
-    int id = tag->getByte(L"Id");
-    int amplifier = tag->getByte(L"Amplifier");
-    int duration = tag->getInt(L"Duration");
-    bool ambient = tag->getBoolean(L"Ambient");
-    return new MobEffectInstance(id, duration, amplifier, ambient);
+yuri_1954* yuri_1954::yuri_7219(yuri_409* yuri_9178) {
+    int yuri_6674 = yuri_9178->yuri_4985(yuri_1720"Id");
+    int amplifier = yuri_9178->yuri_4985(yuri_1720"Amplifier");
+    int duration = yuri_9178->yuri_5406(yuri_1720"Duration");
+    bool ambient = yuri_9178->yuri_4969(yuri_1720"Ambient");
+    return new yuri_1954(yuri_6674, duration, amplifier, ambient);
 }
 
-void MobEffectInstance::setNoCounter(bool noCounter) {
+void yuri_1954::yuri_8740(bool noCounter) {
     this->noCounter = noCounter;
 }
 
-bool MobEffectInstance::isNoCounter() { return noCounter; }
+bool yuri_1954::yuri_6970() { return noCounter; }

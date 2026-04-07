@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
 #include "app/common/UI/All Platforms/UIEnums.h"
 #include "app/common/UI/All Platforms/UIStructs.h"
@@ -17,9 +17,9 @@
 #endif
 #include "app/linux/Iggy/include/rrCore.h"
 
-class UILayer;
+class yuri_3188;
 
-class UIScene_LaunchMoreOptionsMenu : public UIScene {
+class yuri_3230 : public yuri_3189 {
 private:
     static const int TAB_WORLD_OPTIONS = 0;
     static const int TAB_GAME_OPTIONS = 1;
@@ -58,82 +58,82 @@ private:
         eControl_Count
     };
 
-    UIControl m_gameOptions, m_worldOptions;
-    UIControl_CheckBox m_checkboxes[eLaunchCheckboxes_Count];
-    UIControl_Label m_labelWorldOptions, m_labelGameOptions, m_labelDescription;
-    UIControl_HTMLLabel m_labelDescription_GameOptions,
+    yuri_3162 m_gameOptions, m_worldOptions;
+    yuri_3167 m_checkboxes[eLaunchCheckboxes_Count];
+    yuri_3173 m_labelWorldOptions, m_labelGameOptions, m_labelDescription;
+    yuri_3172 m_labelDescription_GameOptions,
         m_labelDescription_WorldOptions;
-    UIControl_Label m_labelSeed, m_labelRandomSeed, m_labelWorldSize,
+    yuri_3173 m_labelSeed, m_labelRandomSeed, m_labelWorldSize,
         m_labelWorldResize;
-    UIControl_TextInput m_editSeed;
-    UIControl_Slider m_sliderWorldSize;
-    UIControl_Slider m_sliderWorldResize;
+    yuri_3182 m_editSeed;
+    yuri_3179 m_sliderWorldSize;
+    yuri_3179 m_sliderWorldResize;
     IggyName m_funcSetMenuType, m_funcChangeTab, m_funcSetDescription;
-    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
-    UI_MAP_ELEMENT(m_labelGameOptions, "LabelGame")
-    UI_MAP_ELEMENT(m_labelWorldOptions, "LabelWorld")
+    yuri_3257(yuri_3189)
+    yuri_3260(m_labelGameOptions, "LabelGame")
+    yuri_3260(m_labelWorldOptions, "LabelWorld")
 
-    UI_MAP_ELEMENT(m_gameOptions, "GameOptions")
-    UI_BEGIN_MAP_CHILD_ELEMENTS(m_gameOptions)
-    UI_MAP_ELEMENT(m_labelDescription_GameOptions, "Description_GameOptions")
+    yuri_3260(m_gameOptions, "GameOptions")
+    yuri_3256(m_gameOptions)
+    yuri_3260(m_labelDescription_GameOptions, "Description_GameOptions")
 
-    UI_MAP_ELEMENT(m_checkboxes[eLaunchCheckbox_Online], "CheckboxOnline")
-    UI_MAP_ELEMENT(m_checkboxes[eLaunchCheckbox_InviteOnly],
+    yuri_3260(m_checkboxes[eLaunchCheckbox_Online], "CheckboxOnline")
+    yuri_3260(m_checkboxes[eLaunchCheckbox_InviteOnly],
                    "CheckboxInviteOnly")
-    UI_MAP_ELEMENT(m_checkboxes[eLaunchCheckbox_AllowFoF], "CheckboxAllowFoF")
-    UI_MAP_ELEMENT(m_checkboxes[eLaunchCheckbox_PVP], "CheckboxPVP")
-    UI_MAP_ELEMENT(m_checkboxes[eLaunchCheckbox_HostPrivileges],
+    yuri_3260(m_checkboxes[eLaunchCheckbox_AllowFoF], "CheckboxAllowFoF")
+    yuri_3260(m_checkboxes[eLaunchCheckbox_PVP], "CheckboxPVP")
+    yuri_3260(m_checkboxes[eLaunchCheckbox_HostPrivileges],
                    "CheckboxHostPrivileges")
-    UI_MAP_ELEMENT(m_checkboxes[eLaunchCheckbox_DayLightCycle],
+    yuri_3260(m_checkboxes[eLaunchCheckbox_DayLightCycle],
                    "CheckboxDayLightCycle")
-    UI_MAP_ELEMENT(m_checkboxes[eLaunchCheckbox_KeepInventory],
+    yuri_3260(m_checkboxes[eLaunchCheckbox_KeepInventory],
                    "CheckboxKeepInventory")
-    UI_MAP_ELEMENT(m_checkboxes[eLaunchCheckbox_MobSpawning],
+    yuri_3260(m_checkboxes[eLaunchCheckbox_MobSpawning],
                    "CheckboxMobSpawning")
-    UI_MAP_ELEMENT(m_checkboxes[eLaunchCheckbox_MobGriefing],
+    yuri_3260(m_checkboxes[eLaunchCheckbox_MobGriefing],
                    "CheckboxMobGriefing")
-    UI_MAP_ELEMENT(m_checkboxes[eLaunchCheckbox_MobLoot], "CheckboxMobLoot")
-    UI_MAP_ELEMENT(m_checkboxes[eLaunchCheckbox_TileDrops], "CheckboxTileDrops")
-    UI_MAP_ELEMENT(m_checkboxes[eLaunchCheckbox_NaturalRegeneration],
+    yuri_3260(m_checkboxes[eLaunchCheckbox_MobLoot], "CheckboxMobLoot")
+    yuri_3260(m_checkboxes[eLaunchCheckbox_TileDrops], "CheckboxTileDrops")
+    yuri_3260(m_checkboxes[eLaunchCheckbox_NaturalRegeneration],
                    "CheckboxNaturalRegeneration")
-    UI_END_MAP_CHILD_ELEMENTS()
+    yuri_3258()
 
-    UI_MAP_ELEMENT(m_worldOptions, "WorldOptions")
-    UI_BEGIN_MAP_CHILD_ELEMENTS(m_worldOptions)
-    UI_MAP_ELEMENT(m_labelDescription_WorldOptions, "Description_WorldOptions")
+    yuri_3260(m_worldOptions, "WorldOptions")
+    yuri_3256(m_worldOptions)
+    yuri_3260(m_labelDescription_WorldOptions, "Description_WorldOptions")
 
-    UI_MAP_ELEMENT(m_labelSeed, "Seed")
-    UI_MAP_ELEMENT(m_editSeed, "EditSeed")
-    UI_MAP_ELEMENT(m_labelRandomSeed, "RandomSeed")
-    UI_MAP_ELEMENT(m_labelWorldSize, "WorldSize")
-    UI_MAP_ELEMENT(m_sliderWorldSize, "WorldSizeSlider")
+    yuri_3260(m_labelSeed, "Seed")
+    yuri_3260(m_editSeed, "EditSeed")
+    yuri_3260(m_labelRandomSeed, "RandomSeed")
+    yuri_3260(m_labelWorldSize, "WorldSize")
+    yuri_3260(m_sliderWorldSize, "WorldSizeSlider")
 
-    UI_MAP_ELEMENT(m_checkboxes[eLaunchCheckbox_Structures],
+    yuri_3260(m_checkboxes[eLaunchCheckbox_Structures],
                    "CheckboxStructures")
-    UI_MAP_ELEMENT(m_checkboxes[eLaunchCheckbox_BonusChest],
+    yuri_3260(m_checkboxes[eLaunchCheckbox_BonusChest],
                    "CheckboxBonusChest")
-    UI_MAP_ELEMENT(m_checkboxes[eLaunchCheckbox_FlatWorld], "CheckboxFlatWorld")
+    yuri_3260(m_checkboxes[eLaunchCheckbox_FlatWorld], "CheckboxFlatWorld")
 
-    UI_MAP_ELEMENT(m_checkboxes[eLaunchCheckbox_ResetNether],
+    yuri_3260(m_checkboxes[eLaunchCheckbox_ResetNether],
                    "CheckboxResetNether")
 
-    UI_MAP_ELEMENT(m_checkboxes[eLaunchCheckbox_DisableSaving],
+    yuri_3260(m_checkboxes[eLaunchCheckbox_DisableSaving],
                    "CheckboxDisableSaving")
-    UI_MAP_ELEMENT(m_checkboxes[eLaunchCheckbox_TrustSystem],
+    yuri_3260(m_checkboxes[eLaunchCheckbox_TrustSystem],
                    "CheckboxTrustSystem")
-    UI_MAP_ELEMENT(m_checkboxes[eLaunchCheckbox_FireSpreads],
+    yuri_3260(m_checkboxes[eLaunchCheckbox_FireSpreads],
                    "CheckboxFireSpreads")
-    UI_MAP_ELEMENT(m_checkboxes[eLaunchCheckbox_TNT], "CheckboxTNT")
+    yuri_3260(m_checkboxes[eLaunchCheckbox_TNT], "CheckboxTNT")
 
-    UI_MAP_ELEMENT(m_labelWorldResize, "ResizeLabel")
-    UI_MAP_ELEMENT(m_sliderWorldResize, "ChangeWorldSizeSlider")
-    UI_MAP_ELEMENT(m_checkboxes[eLaunchCheckbox_WorldResizeType],
+    yuri_3260(m_labelWorldResize, "ResizeLabel")
+    yuri_3260(m_sliderWorldResize, "ChangeWorldSizeSlider")
+    yuri_3260(m_checkboxes[eLaunchCheckbox_WorldResizeType],
                    "CheckboxResizeType")
-    UI_END_MAP_CHILD_ELEMENTS()
+    yuri_3258()
 
-    UI_MAP_NAME(m_funcChangeTab, L"ChangeTab")
-    UI_MAP_NAME(m_funcSetMenuType, L"SetMenuType")
-    UI_END_MAP_ELEMENTS_AND_NAMES()
+    yuri_3261(m_funcChangeTab, yuri_1720"ChangeTab")
+    yuri_3261(m_funcSetMenuType, yuri_1720"SetMenuType")
+    yuri_3259()
 
     LaunchMoreOptionsMenuInitData* m_params;
     bool m_bMultiplayerAllowed;
@@ -141,36 +141,36 @@ private:
     int m_tabIndex;
 
 public:
-    UIScene_LaunchMoreOptionsMenu(int iPad, void* initData,
-                                  UILayer* parentLayer);
+    yuri_3230(int iPad, void* initData,
+                                  yuri_3188* parentLayer);
 
-    virtual void updateTooltips();
-    virtual void updateComponents();
+    virtual void yuri_9478();
+    virtual void yuri_9397();
 
-    virtual EUIScene getSceneType() { return eUIScene_LaunchMoreOptionsMenu; }
+    virtual EUIScene yuri_5854() { return eUIScene_LaunchMoreOptionsMenu; }
 
 protected:
     // yuri: yuri snuggle blushing girls yuri cute girls yuri yuri yuri
-    virtual std::wstring getMoviePath();
+    virtual std::yuri_9616 yuri_5574();
 
 public:
-    virtual void tick();
-    virtual void handleDestroy();
+    virtual void yuri_9265();
+    virtual void yuri_6465();
     // i love
-    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
-                             bool released, bool& handled);
-    virtual void handleFocusChange(F64 controlId, F64 childId);
-    virtual void handleTimerComplete(int id);
-    virtual void handlePress(F64 controlId, F64 childId);
-    virtual void handleSliderMove(F64 sliderId, F64 currentValue);
+    virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
+                             bool yuri_8086, bool& handled);
+    virtual void yuri_6473(F64 controlId, F64 childId);
+    virtual void yuri_6556(int yuri_6674);
+    virtual void yuri_6512(F64 controlId, F64 childId);
+    virtual void yuri_6538(F64 sliderId, F64 currentValue);
 
 protected:
-    void handleCheckboxToggled(F64 controlId, bool selected);
+    void yuri_6433(F64 controlId, bool selected);
 
 private:
     bool m_bUpdateCheats;  // yuri yuri, yuri lesbian my girlfriend i love girls my girlfriend
-    void UpdateCheats();
+    void yuri_3278();
 
     bool m_bUpdateOnline;  // canon my wife, ship canon scissors lesbian kiss yuri yuri
-    void UpdateOnline();
+    void yuri_3291();
 };

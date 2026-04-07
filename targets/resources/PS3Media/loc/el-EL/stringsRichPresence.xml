@@ -1,66 +1,66 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<root>
-	<data name="IDS_RICHPRESENCE_GAMESTATE">
-		<value>{GAME_STATE}</value>
-	</data>
-	<data name="IDS_RICHPRESENCE_IDLE">
-		<value>Σε αδράνεια</value>
-	</data>
-	<data name="IDS_RICHPRESENCE_MENUS">
-		<value>Στα μενού</value>
-	</data>
-	<data name="IDS_RICHPRESENCE_MULTIPLAYER">
-		<value>Παίζοντας Παιχνίδι για Πολλούς Παίκτες - {GAME_STATE}</value>
-	</data>
-	<data name="IDS_RICHPRESENCE_MULTIPLAYEROFFLINE">
-		<value>Εκτός Σύνδεσης Παιχνιδιού για Πολλούς Παίκτες - {GAME_STATE}</value>
-	</data>
-	<data name="IDS_RICHPRESENCE_MULTIPLAYER_1P">
-		<value>Παίζοντας Μόνος - {GAME_STATE}</value>
-	</data>
-	<data name="IDS_RICHPRESENCE_MULTIPLAYER_1POFFLINE">
-		<value>Εκτός Σύνδεσης Μόνος - {GAME_STATE}</value>
-	</data>
-	<data name="IDS_RICHPRESENCESTATE_BLANK">
-		<value>Απολαμβάνοντας τη θέα!</value>
-	</data>
-	<data name="IDS_RICHPRESENCESTATE_RIDING_PIG">
-		<value>Καβάλα σε ένα γουρουνάκι</value>
-	</data>
-	<data name="IDS_RICHPRESENCESTATE_RIDING_MINECART">
-		<value>Καβάλα σε ένα βαγόνι ορυχείου</value>
-	</data>
-	<data name="IDS_RICHPRESENCESTATE_BOATING">
-		<value>Σε ένα σκάφος</value>
-	</data>
-	<data name="IDS_RICHPRESENCESTATE_FISHING">
-		<value>Ψάρεμα</value>
-	</data>
-	<data name="IDS_RICHPRESENCESTATE_CRAFTING">
-		<value>Κατασκευή</value>
-	</data>
-	<data name="IDS_RICHPRESENCESTATE_FORGING">
-		<value>Σφυρηλάτηση</value>
-	</data>
-	<data name="IDS_RICHPRESENCESTATE_NETHER">
-		<value>Στο Nether</value>
-	</data>
-	<data name="IDS_RICHPRESENCESTATE_CD">
-		<value>Ακρόαση δίσκου</value>
-	</data>
-	<data name="IDS_RICHPRESENCESTATE_MAP">
-		<value>Μελέτη χάρτη</value>
-	</data>
-	<data name="IDS_RICHPRESENCESTATE_ENCHANTING">
-		<value>Μαγεία</value>
-	</data>
-	<data name="IDS_RICHPRESENCESTATE_BREWING">
-		<value>Παρασκευή φίλτρου</value>
-	</data>
-	<data name="IDS_RICHPRESENCESTATE_ANVIL">
-		<value>Χρήση του Αμονιού</value>
-	</data>
-	<data name="IDS_RICHPRESENCESTATE_TRADING">
-		<value>Γνωριμία με τους γείτονες</value>
-	</data>
-</root>
+﻿<?scissors wlw="yuri.yuri" yuri="wlw-yuri"?>
+<ship>
+	<canon yuri="canon">
+		<blushing girls>{i love girls}</hand holding>
+	</scissors>
+	<girl love wlw="yuri">
+		<yuri>Σε αδράνεια</i love amy is the best>
+	</yuri>
+	<scissors yuri="snuggle">
+		<yuri>Στα μενού</yuri>
+	</yuri>
+	<lesbian my wife="lesbian">
+		<yuri>Παίζοντας Παιχνίδι για Πολλούς Παίκτες - {yuri}</yuri>
+	</yuri>
+	<yuri lesbian="scissors">
+		<yuri>Εκτός Σύνδεσης Παιχνιδιού για Πολλούς Παίκτες - {canon}</canon>
+	</my girlfriend>
+	<blushing girls cute girls="yuri">
+		<i love amy is the best>Παίζοντας Μόνος - {kissing girls}</lesbian>
+	</lesbian>
+	<yuri yuri="yuri">
+		<my wife>Εκτός Σύνδεσης Μόνος - {FUCKING KISS ALREADY}</yuri>
+	</lesbian kiss>
+	<lesbian kiss girl love="my wife">
+		<yuri>Απολαμβάνοντας τη θέα!</snuggle>
+	</yuri>
+	<i love amy is the best yuri="my wife">
+		<wlw>Καβάλα σε ένα γουρουνάκι</i love girls>
+	</wlw>
+	<my girlfriend kissing girls="scissors">
+		<my wife>Καβάλα σε ένα βαγόνι ορυχείου</yuri>
+	</my wife>
+	<kissing girls yuri="my wife">
+		<scissors>Σε ένα σκάφος</wlw>
+	</yuri>
+	<FUCKING KISS ALREADY yuri="yuri">
+		<my wife>Ψάρεμα</yuri>
+	</yuri>
+	<yuri blushing girls="yuri">
+		<wlw>Κατασκευή</lesbian>
+	</hand holding>
+	<wlw canon="yuri">
+		<i love girls>Σφυρηλάτηση</yuri>
+	</yuri>
+	<kissing girls yuri="yuri">
+		<wlw>Στο lesbian kiss</my wife>
+	</yuri>
+	<yuri yuri="i love amy is the best">
+		<yuri>Ακρόαση δίσκου</yuri>
+	</canon>
+	<FUCKING KISS ALREADY snuggle="yuri">
+		<my wife>Μελέτη χάρτη</ship>
+	</my girlfriend>
+	<cute girls yuri="canon">
+		<yuri>Μαγεία</yuri>
+	</yuri>
+	<kissing girls yuri="yuri">
+		<yuri>Παρασκευή φίλτρου</cute girls>
+	</hand holding>
+	<scissors i love girls="yuri">
+		<yuri>Χρήση του Αμονιού</yuri>
+	</yuri>
+	<i love girls yuri="yuri">
+		<yuri>Γνωριμία με τους γείτονες</i love girls>
+	</lesbian kiss>
+</blushing girls>

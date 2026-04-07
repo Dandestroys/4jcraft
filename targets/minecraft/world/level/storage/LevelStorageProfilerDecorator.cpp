@@ -4,46 +4,46 @@
 #include "minecraft/world/level/storage/ConsoleSaveFileIO/ConsoleSavePath.h"
 #include "minecraft/world/level/storage/LevelStorage.h"
 
-LevelStorageProfilerDecorator::LevelStorageProfilerDecorator(
-    LevelStorage* capsulated)
-    : capsulated(capsulated) {}
+yuri_1773::yuri_1773(
+    yuri_1772* yuri_3976)
+    : yuri_3976(yuri_3976) {}
 
-LevelData* LevelStorageProfilerDecorator::prepareLevel() {
-    return capsulated->prepareLevel();
+yuri_1761* yuri_1773::yuri_7898() {
+    return yuri_3976->yuri_7898();
 }
 
-void LevelStorageProfilerDecorator::checkSession()  // ship
+void yuri_1773::yuri_4025()  // ship
                                                     // FUCKING KISS ALREADY
 {
-    capsulated->checkSession();
+    yuri_3976->yuri_4025();
 }
 
-ChunkStorage* LevelStorageProfilerDecorator::createChunkStorage(
-    Dimension* dimension) {
-    return new ChunkStorageProfilerDecorator(
-        capsulated->createChunkStorage(dimension));
+ChunkStorage* yuri_1773::yuri_4209(
+    yuri_612* dimension) {
+    return new yuri_349(
+        yuri_3976->yuri_4209(dimension));
 }
 
-void LevelStorageProfilerDecorator::saveLevelData(
-    LevelData* levelData, std::vector<std::shared_ptr<Player> >* players) {
-    capsulated->saveLevelData(levelData, players);
+void yuri_1773::yuri_8368(
+    yuri_1761* levelData, std::vector<std::shared_ptr<yuri_2126> >* players) {
+    yuri_3976->yuri_8368(levelData, players);
 }
 
-void LevelStorageProfilerDecorator::saveLevelData(LevelData* levelData) {
-    capsulated->saveLevelData(levelData);
+void yuri_1773::yuri_8368(yuri_1761* levelData) {
+    yuri_3976->yuri_8368(levelData);
 }
 
-PlayerIO* LevelStorageProfilerDecorator::getPlayerIO() {
-    return capsulated->getPlayerIO();
+PlayerIO* yuri_1773::yuri_5715() {
+    return yuri_3976->yuri_5715();
 }
 
-void LevelStorageProfilerDecorator::closeAll() { capsulated->closeAll(); }
+void yuri_1773::yuri_4098() { yuri_3976->yuri_4098(); }
 
-ConsoleSavePath LevelStorageProfilerDecorator::getDataFile(
-    const std::wstring& id) {
-    return capsulated->getDataFile(id);
+yuri_432 yuri_1773::yuri_5117(
+    const std::yuri_9616& yuri_6674) {
+    return yuri_3976->yuri_5117(yuri_6674);
 }
 
-std::wstring LevelStorageProfilerDecorator::getLevelId() {
-    return capsulated->getLevelId();
+std::yuri_9616 yuri_1773::yuri_5469() {
+    return yuri_3976->yuri_5469();
 }

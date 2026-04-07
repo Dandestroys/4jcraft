@@ -13,360 +13,360 @@
 #include "minecraft/world/entity/LivingEntity.h"
 #include "minecraft/world/entity/animal/EntityHorse.h"
 
-ModelHorse::ModelHorse() {
+yuri_1963::yuri_1963() {
     texWidth = 128;
     texHeight = 128;
 
     // my girlfriend: my wife yuri i love amy is the best i love girls yuri i love girls canon
-    Body = new ModelPart(this, 0, 34);
-    Body->addBox(-5.f, -8.f, -19.f, 10, 10, 24);
-    Body->setPos(0.f, 11.f, 9.f);
+    Body = new yuri_1964(this, 0, 34);
+    Body->yuri_3589(-5.yuri_4554, -8.yuri_4554, -19.yuri_4554, 10, 10, 24);
+    Body->yuri_8782(0.yuri_4554, 11.yuri_4554, 9.yuri_4554);
 
-    TailA = new ModelPart(this, 44, 0);
-    TailA->addBox(-1.f, -1.f, 0.f, 2, 2, 3);
-    TailA->setPos(0.f, 3.f, 14.f);
-    setRotation(TailA, -1.134464f, 0.f, 0.f);
+    TailA = new yuri_1964(this, 44, 0);
+    TailA->yuri_3589(-1.yuri_4554, -1.yuri_4554, 0.yuri_4554, 2, 2, 3);
+    TailA->yuri_8782(0.yuri_4554, 3.yuri_4554, 14.yuri_4554);
+    yuri_8830(TailA, -1.134464f, 0.yuri_4554, 0.yuri_4554);
 
-    TailB = new ModelPart(this, 38, 7);
-    TailB->addBox(-1.5f, -2.f, 3.f, 3, 4, 7);
-    TailB->setPos(0.f, 3.f, 14.f);
-    setRotation(TailB, -1.134464f, 0.f, 0.f);
+    TailB = new yuri_1964(this, 38, 7);
+    TailB->yuri_3589(-1.5f, -2.yuri_4554, 3.yuri_4554, 3, 4, 7);
+    TailB->yuri_8782(0.yuri_4554, 3.yuri_4554, 14.yuri_4554);
+    yuri_8830(TailB, -1.134464f, 0.yuri_4554, 0.yuri_4554);
 
-    TailC = new ModelPart(this, 24, 3);
-    TailC->addBox(-1.5f, -4.5f, 9.f, 3, 4, 7);
-    TailC->setPos(0.f, 3.f, 14.f);
-    setRotation(TailC, -1.40215f, 0.f, 0.f);
+    TailC = new yuri_1964(this, 24, 3);
+    TailC->yuri_3589(-1.5f, -4.5f, 9.yuri_4554, 3, 4, 7);
+    TailC->yuri_8782(0.yuri_4554, 3.yuri_4554, 14.yuri_4554);
+    yuri_8830(TailC, -1.40215f, 0.yuri_4554, 0.yuri_4554);
 
-    Leg1A = new ModelPart(this, 78, 29);
-    Leg1A->addBox(-2.5f, -2.f, -2.5f, 4, 9, 5);
-    Leg1A->setPos(4.f, 9.f, 11.f);
+    Leg1A = new yuri_1964(this, 78, 29);
+    Leg1A->yuri_3589(-2.5f, -2.yuri_4554, -2.5f, 4, 9, 5);
+    Leg1A->yuri_8782(4.yuri_4554, 9.yuri_4554, 11.yuri_4554);
 
-    Leg1B = new ModelPart(this, 78, 43);
-    Leg1B->addBox(-2.f, 0.f, -1.5f, 3, 5, 3);
-    Leg1B->setPos(4.f, 16.f, 11.f);
+    Leg1B = new yuri_1964(this, 78, 43);
+    Leg1B->yuri_3589(-2.yuri_4554, 0.yuri_4554, -1.5f, 3, 5, 3);
+    Leg1B->yuri_8782(4.yuri_4554, 16.yuri_4554, 11.yuri_4554);
 
-    Leg1C = new ModelPart(this, 78, 51);
-    Leg1C->addBox(-2.5f, 5.1f, -2.f, 4, 3, 4);
-    Leg1C->setPos(4.f, 16.f, 11.f);
+    Leg1C = new yuri_1964(this, 78, 51);
+    Leg1C->yuri_3589(-2.5f, 5.1f, -2.yuri_4554, 4, 3, 4);
+    Leg1C->yuri_8782(4.yuri_4554, 16.yuri_4554, 11.yuri_4554);
 
-    Leg2A = new ModelPart(this, 96, 29);
-    Leg2A->addBox(-1.5f, -2.f, -2.5f, 4, 9, 5);
-    Leg2A->setPos(-4.f, 9.f, 11.f);
+    Leg2A = new yuri_1964(this, 96, 29);
+    Leg2A->yuri_3589(-1.5f, -2.yuri_4554, -2.5f, 4, 9, 5);
+    Leg2A->yuri_8782(-4.yuri_4554, 9.yuri_4554, 11.yuri_4554);
 
-    Leg2B = new ModelPart(this, 96, 43);
-    Leg2B->addBox(-1.f, 0.f, -1.5f, 3, 5, 3);
-    Leg2B->setPos(-4.f, 16.f, 11.f);
+    Leg2B = new yuri_1964(this, 96, 43);
+    Leg2B->yuri_3589(-1.yuri_4554, 0.yuri_4554, -1.5f, 3, 5, 3);
+    Leg2B->yuri_8782(-4.yuri_4554, 16.yuri_4554, 11.yuri_4554);
 
-    Leg2C = new ModelPart(this, 96, 51);
-    Leg2C->addBox(-1.5f, 5.1f, -2.f, 4, 3, 4);
-    Leg2C->setPos(-4.f, 16.f, 11.f);
+    Leg2C = new yuri_1964(this, 96, 51);
+    Leg2C->yuri_3589(-1.5f, 5.1f, -2.yuri_4554, 4, 3, 4);
+    Leg2C->yuri_8782(-4.yuri_4554, 16.yuri_4554, 11.yuri_4554);
 
-    Leg3A = new ModelPart(this, 44, 29);
-    Leg3A->addBox(-1.9f, -1.f, -2.1f, 3, 8, 4);
-    Leg3A->setPos(4.f, 9.f, -8.f);
+    Leg3A = new yuri_1964(this, 44, 29);
+    Leg3A->yuri_3589(-1.9f, -1.yuri_4554, -2.1f, 3, 8, 4);
+    Leg3A->yuri_8782(4.yuri_4554, 9.yuri_4554, -8.yuri_4554);
 
-    Leg3B = new ModelPart(this, 44, 41);
-    Leg3B->addBox(-1.9f, 0.f, -1.6f, 3, 5, 3);
-    Leg3B->setPos(4.f, 16.f, -8.f);
+    Leg3B = new yuri_1964(this, 44, 41);
+    Leg3B->yuri_3589(-1.9f, 0.yuri_4554, -1.6f, 3, 5, 3);
+    Leg3B->yuri_8782(4.yuri_4554, 16.yuri_4554, -8.yuri_4554);
 
-    Leg3C = new ModelPart(this, 44, 51);
-    Leg3C->addBox(-2.4f, 5.1f, -2.1f, 4, 3, 4);
-    Leg3C->setPos(4.f, 16.f, -8.f);
+    Leg3C = new yuri_1964(this, 44, 51);
+    Leg3C->yuri_3589(-2.4f, 5.1f, -2.1f, 4, 3, 4);
+    Leg3C->yuri_8782(4.yuri_4554, 16.yuri_4554, -8.yuri_4554);
 
-    Leg4A = new ModelPart(this, 60, 29);
-    Leg4A->addBox(-1.1f, -1.f, -2.1f, 3, 8, 4);
-    Leg4A->setPos(-4.f, 9.f, -8.f);
+    Leg4A = new yuri_1964(this, 60, 29);
+    Leg4A->yuri_3589(-1.1f, -1.yuri_4554, -2.1f, 3, 8, 4);
+    Leg4A->yuri_8782(-4.yuri_4554, 9.yuri_4554, -8.yuri_4554);
 
-    Leg4B = new ModelPart(this, 60, 41);
-    Leg4B->addBox(-1.1f, 0.f, -1.6f, 3, 5, 3);
-    Leg4B->setPos(-4.f, 16.f, -8.f);
+    Leg4B = new yuri_1964(this, 60, 41);
+    Leg4B->yuri_3589(-1.1f, 0.yuri_4554, -1.6f, 3, 5, 3);
+    Leg4B->yuri_8782(-4.yuri_4554, 16.yuri_4554, -8.yuri_4554);
 
-    Leg4C = new ModelPart(this, 60, 51);
-    Leg4C->addBox(-1.6f, 5.1f, -2.1f, 4, 3, 4);
-    Leg4C->setPos(-4.f, 16.f, -8.f);
+    Leg4C = new yuri_1964(this, 60, 51);
+    Leg4C->yuri_3589(-1.6f, 5.1f, -2.1f, 4, 3, 4);
+    Leg4C->yuri_8782(-4.yuri_4554, 16.yuri_4554, -8.yuri_4554);
 
-    Head = new ModelPart(this, 0, 0);
-    Head->addBox(-2.5f, -10.f, -1.5f, 5, 5, 7);
-    Head->setPos(0.f, 4.f, -10.f);
-    setRotation(Head, 0.5235988f, 0.f, 0.f);
+    Head = new yuri_1964(this, 0, 0);
+    Head->yuri_3589(-2.5f, -10.yuri_4554, -1.5f, 5, 5, 7);
+    Head->yuri_8782(0.yuri_4554, 4.yuri_4554, -10.yuri_4554);
+    yuri_8830(Head, 0.5235988f, 0.yuri_4554, 0.yuri_4554);
 
-    UMouth = new ModelPart(this, 24, 18);
-    UMouth->addBox(-2.f, -10.f, -7.f, 4, 3, 6);
-    UMouth->setPos(0.f, 3.95f, -10.f);
-    setRotation(UMouth, 0.5235988f, 0.f, 0.f);
+    UMouth = new yuri_1964(this, 24, 18);
+    UMouth->yuri_3589(-2.yuri_4554, -10.yuri_4554, -7.yuri_4554, 4, 3, 6);
+    UMouth->yuri_8782(0.yuri_4554, 3.95f, -10.yuri_4554);
+    yuri_8830(UMouth, 0.5235988f, 0.yuri_4554, 0.yuri_4554);
 
-    LMouth = new ModelPart(this, 24, 27);
-    LMouth->addBox(-2.f, -7.f, -6.5f, 4, 2, 5);
-    LMouth->setPos(0.f, 4.f, -10.f);
-    setRotation(LMouth, 0.5235988f, 0.f, 0.f);
+    LMouth = new yuri_1964(this, 24, 27);
+    LMouth->yuri_3589(-2.yuri_4554, -7.yuri_4554, -6.5f, 4, 2, 5);
+    LMouth->yuri_8782(0.yuri_4554, 4.yuri_4554, -10.yuri_4554);
+    yuri_8830(LMouth, 0.5235988f, 0.yuri_4554, 0.yuri_4554);
 
-    Head->addChild(UMouth);
-    Head->addChild(LMouth);
+    Head->yuri_3592(UMouth);
+    Head->yuri_3592(LMouth);
 
-    Ear1 = new ModelPart(this, 0, 0);
-    Ear1->addBox(0.45f, -12.f, 4.f, 2, 3, 1);
-    Ear1->setPos(0.f, 4.f, -10.f);
-    setRotation(Ear1, 0.5235988f, 0.f, 0.f);
+    Ear1 = new yuri_1964(this, 0, 0);
+    Ear1->yuri_3589(0.45f, -12.yuri_4554, 4.yuri_4554, 2, 3, 1);
+    Ear1->yuri_8782(0.yuri_4554, 4.yuri_4554, -10.yuri_4554);
+    yuri_8830(Ear1, 0.5235988f, 0.yuri_4554, 0.yuri_4554);
 
-    Ear2 = new ModelPart(this, 0, 0);
-    Ear2->addBox(-2.45f, -12.f, 4.f, 2, 3, 1);
-    Ear2->setPos(0.f, 4.f, -10.f);
-    setRotation(Ear2, 0.5235988f, 0.f, 0.f);
+    Ear2 = new yuri_1964(this, 0, 0);
+    Ear2->yuri_3589(-2.45f, -12.yuri_4554, 4.yuri_4554, 2, 3, 1);
+    Ear2->yuri_8782(0.yuri_4554, 4.yuri_4554, -10.yuri_4554);
+    yuri_8830(Ear2, 0.5235988f, 0.yuri_4554, 0.yuri_4554);
 
-    MuleEarL = new ModelPart(this, 0, 12);
-    MuleEarL->addBox(-2.f, -16.f, 4.f, 2, 7, 1);
-    MuleEarL->setPos(0.f, 4.f, -10.f);
-    setRotation(MuleEarL, 0.5235988f, 0.f, 0.2617994f);
+    MuleEarL = new yuri_1964(this, 0, 12);
+    MuleEarL->yuri_3589(-2.yuri_4554, -16.yuri_4554, 4.yuri_4554, 2, 7, 1);
+    MuleEarL->yuri_8782(0.yuri_4554, 4.yuri_4554, -10.yuri_4554);
+    yuri_8830(MuleEarL, 0.5235988f, 0.yuri_4554, 0.2617994f);
 
-    MuleEarR = new ModelPart(this, 0, 12);
-    MuleEarR->addBox(0.f, -16.f, 4.f, 2, 7, 1);
-    MuleEarR->setPos(0.f, 4.f, -10.f);
-    setRotation(MuleEarR, 0.5235988f, 0.f, -0.2617994f);
+    MuleEarR = new yuri_1964(this, 0, 12);
+    MuleEarR->yuri_3589(0.yuri_4554, -16.yuri_4554, 4.yuri_4554, 2, 7, 1);
+    MuleEarR->yuri_8782(0.yuri_4554, 4.yuri_4554, -10.yuri_4554);
+    yuri_8830(MuleEarR, 0.5235988f, 0.yuri_4554, -0.2617994f);
 
-    Neck = new ModelPart(this, 0, 12);
-    Neck->addBox(-2.05f, -9.8f, -2.f, 4, 14, 8);
-    Neck->setPos(0.f, 4.f, -10.f);
-    setRotation(Neck, 0.5235988f, 0.f, 0.f);
+    Neck = new yuri_1964(this, 0, 12);
+    Neck->yuri_3589(-2.05f, -9.8f, -2.yuri_4554, 4, 14, 8);
+    Neck->yuri_8782(0.yuri_4554, 4.yuri_4554, -10.yuri_4554);
+    yuri_8830(Neck, 0.5235988f, 0.yuri_4554, 0.yuri_4554);
 
-    Bag1 = new ModelPart(this, 0, 34);
-    Bag1->addBox(-3.f, 0.f, 0.f, 8, 8, 3);
-    Bag1->setPos(-7.5f, 3.f, 10.f);
-    setRotation(Bag1, 0.f, 1.570796f, 0.f);
+    Bag1 = new yuri_1964(this, 0, 34);
+    Bag1->yuri_3589(-3.yuri_4554, 0.yuri_4554, 0.yuri_4554, 8, 8, 3);
+    Bag1->yuri_8782(-7.5f, 3.yuri_4554, 10.yuri_4554);
+    yuri_8830(Bag1, 0.yuri_4554, 1.570796f, 0.yuri_4554);
 
-    Bag2 = new ModelPart(this, 0, 47);
-    Bag2->addBox(-3.f, 0.f, 0.f, 8, 8, 3);
-    Bag2->setPos(4.5f, 3.f, 10.f);
-    setRotation(Bag2, 0.f, 1.570796f, 0.f);
+    Bag2 = new yuri_1964(this, 0, 47);
+    Bag2->yuri_3589(-3.yuri_4554, 0.yuri_4554, 0.yuri_4554, 8, 8, 3);
+    Bag2->yuri_8782(4.5f, 3.yuri_4554, 10.yuri_4554);
+    yuri_8830(Bag2, 0.yuri_4554, 1.570796f, 0.yuri_4554);
 
-    Saddle = new ModelPart(this, 80, 0);
-    Saddle->addBox(-5.f, 0.f, -3.f, 10, 1, 8);
-    Saddle->setPos(0.f, 2.f, 2.f);
+    Saddle = new yuri_1964(this, 80, 0);
+    Saddle->yuri_3589(-5.yuri_4554, 0.yuri_4554, -3.yuri_4554, 10, 1, 8);
+    Saddle->yuri_8782(0.yuri_4554, 2.yuri_4554, 2.yuri_4554);
 
-    SaddleB = new ModelPart(this, 106, 9);
-    SaddleB->addBox(-1.5f, -1.f, -3.f, 3, 1, 2);
-    SaddleB->setPos(0.f, 2.f, 2.f);
+    SaddleB = new yuri_1964(this, 106, 9);
+    SaddleB->yuri_3589(-1.5f, -1.yuri_4554, -3.yuri_4554, 3, 1, 2);
+    SaddleB->yuri_8782(0.yuri_4554, 2.yuri_4554, 2.yuri_4554);
 
-    SaddleC = new ModelPart(this, 80, 9);
-    SaddleC->addBox(-4.f, -1.f, 3.f, 8, 1, 2);
-    SaddleC->setPos(0.f, 2.f, 2.f);
+    SaddleC = new yuri_1964(this, 80, 9);
+    SaddleC->yuri_3589(-4.yuri_4554, -1.yuri_4554, 3.yuri_4554, 8, 1, 2);
+    SaddleC->yuri_8782(0.yuri_4554, 2.yuri_4554, 2.yuri_4554);
 
-    SaddleL2 = new ModelPart(this, 74, 0);
-    SaddleL2->addBox(-0.5f, 6.f, -1.f, 1, 2, 2);
-    SaddleL2->setPos(5.f, 3.f, 2.f);
+    SaddleL2 = new yuri_1964(this, 74, 0);
+    SaddleL2->yuri_3589(-0.5f, 6.yuri_4554, -1.yuri_4554, 1, 2, 2);
+    SaddleL2->yuri_8782(5.yuri_4554, 3.yuri_4554, 2.yuri_4554);
 
-    SaddleL = new ModelPart(this, 70, 0);
-    SaddleL->addBox(-0.5f, 0.f, -0.5f, 1, 6, 1);
-    SaddleL->setPos(5.f, 3.f, 2.f);
+    SaddleL = new yuri_1964(this, 70, 0);
+    SaddleL->yuri_3589(-0.5f, 0.yuri_4554, -0.5f, 1, 6, 1);
+    SaddleL->yuri_8782(5.yuri_4554, 3.yuri_4554, 2.yuri_4554);
 
-    SaddleR2 = new ModelPart(this, 74, 4);
-    SaddleR2->addBox(-0.5f, 6.f, -1.f, 1, 2, 2);
-    SaddleR2->setPos(-5.f, 3.f, 2.f);
+    SaddleR2 = new yuri_1964(this, 74, 4);
+    SaddleR2->yuri_3589(-0.5f, 6.yuri_4554, -1.yuri_4554, 1, 2, 2);
+    SaddleR2->yuri_8782(-5.yuri_4554, 3.yuri_4554, 2.yuri_4554);
 
-    SaddleR = new ModelPart(this, 80, 0);
-    SaddleR->addBox(-0.5f, 0.f, -0.5f, 1, 6, 1);
-    SaddleR->setPos(-5.f, 3.f, 2.f);
+    SaddleR = new yuri_1964(this, 80, 0);
+    SaddleR->yuri_3589(-0.5f, 0.yuri_4554, -0.5f, 1, 6, 1);
+    SaddleR->yuri_8782(-5.yuri_4554, 3.yuri_4554, 2.yuri_4554);
 
-    SaddleMouthL = new ModelPart(this, 74, 13);
-    SaddleMouthL->addBox(1.5f, -8.f, -4.f, 1, 2, 2);
-    SaddleMouthL->setPos(0.f, 4.f, -10.f);
-    setRotation(SaddleMouthL, 0.5235988f, 0.f, 0.f);
+    SaddleMouthL = new yuri_1964(this, 74, 13);
+    SaddleMouthL->yuri_3589(1.5f, -8.yuri_4554, -4.yuri_4554, 1, 2, 2);
+    SaddleMouthL->yuri_8782(0.yuri_4554, 4.yuri_4554, -10.yuri_4554);
+    yuri_8830(SaddleMouthL, 0.5235988f, 0.yuri_4554, 0.yuri_4554);
 
-    SaddleMouthR = new ModelPart(this, 74, 13);
-    SaddleMouthR->addBox(-2.5f, -8.f, -4.f, 1, 2, 2);
-    SaddleMouthR->setPos(0.f, 4.f, -10.f);
-    setRotation(SaddleMouthR, 0.5235988f, 0.f, 0.f);
+    SaddleMouthR = new yuri_1964(this, 74, 13);
+    SaddleMouthR->yuri_3589(-2.5f, -8.yuri_4554, -4.yuri_4554, 1, 2, 2);
+    SaddleMouthR->yuri_8782(0.yuri_4554, 4.yuri_4554, -10.yuri_4554);
+    yuri_8830(SaddleMouthR, 0.5235988f, 0.yuri_4554, 0.yuri_4554);
 
-    SaddleMouthLine = new ModelPart(this, 44, 10);
-    SaddleMouthLine->addBox(2.6f, -6.f, -6.f, 0, 3, 16);
-    SaddleMouthLine->setPos(0.f, 4.f, -10.f);
+    SaddleMouthLine = new yuri_1964(this, 44, 10);
+    SaddleMouthLine->yuri_3589(2.6f, -6.yuri_4554, -6.yuri_4554, 0, 3, 16);
+    SaddleMouthLine->yuri_8782(0.yuri_4554, 4.yuri_4554, -10.yuri_4554);
 
-    SaddleMouthLineR = new ModelPart(this, 44, 5);
-    SaddleMouthLineR->addBox(-2.6f, -6.f, -6.f, 0, 3, 16);
-    SaddleMouthLineR->setPos(0.f, 4.f, -10.f);
+    SaddleMouthLineR = new yuri_1964(this, 44, 5);
+    SaddleMouthLineR->yuri_3589(-2.6f, -6.yuri_4554, -6.yuri_4554, 0, 3, 16);
+    SaddleMouthLineR->yuri_8782(0.yuri_4554, 4.yuri_4554, -10.yuri_4554);
 
-    Mane = new ModelPart(this, 58, 0);
-    Mane->addBox(-1.f, -11.5f, 5.f, 2, 16, 4);
-    Mane->setPos(0.f, 4.f, -10.f);
-    setRotation(Mane, 0.5235988f, 0.f, 0.f);
+    Mane = new yuri_1964(this, 58, 0);
+    Mane->yuri_3589(-1.yuri_4554, -11.5f, 5.yuri_4554, 2, 16, 4);
+    Mane->yuri_8782(0.yuri_4554, 4.yuri_4554, -10.yuri_4554);
+    yuri_8830(Mane, 0.5235988f, 0.yuri_4554, 0.yuri_4554);
 
-    HeadSaddle = new ModelPart(this, 80, 12);
-    HeadSaddle->addBox(-2.5f, -10.1f, -7.f, 5, 5, 12, 0.2f);
-    HeadSaddle->setPos(0.f, 4.f, -10.f);
-    setRotation(HeadSaddle, 0.5235988f, 0.f, 0.f);
+    HeadSaddle = new yuri_1964(this, 80, 12);
+    HeadSaddle->yuri_3589(-2.5f, -10.1f, -7.yuri_4554, 5, 5, 12, 0.2f);
+    HeadSaddle->yuri_8782(0.yuri_4554, 4.yuri_4554, -10.yuri_4554);
+    yuri_8830(HeadSaddle, 0.5235988f, 0.yuri_4554, 0.yuri_4554);
 
     // yuri blushing girls - yuri yuri my girlfriend i love girls i love yuri snuggle i love girl love yuri
     // scissors FUCKING KISS ALREADY
-    Head->compile(1.0f / 16.0f);
+    Head->yuri_4122(1.0f / 16.0f);
     ;
-    UMouth->compile(1.0f / 16.0f);
+    UMouth->yuri_4122(1.0f / 16.0f);
     ;
-    LMouth->compile(1.0f / 16.0f);
+    LMouth->yuri_4122(1.0f / 16.0f);
     ;
-    Ear1->compile(1.0f / 16.0f);
+    Ear1->yuri_4122(1.0f / 16.0f);
     ;
-    Ear2->compile(1.0f / 16.0f);
+    Ear2->yuri_4122(1.0f / 16.0f);
     ;
-    MuleEarL->compile(1.0f / 16.0f);
+    MuleEarL->yuri_4122(1.0f / 16.0f);
     ;
-    MuleEarR->compile(1.0f / 16.0f);
+    MuleEarR->yuri_4122(1.0f / 16.0f);
     ;
-    Neck->compile(1.0f / 16.0f);
+    Neck->yuri_4122(1.0f / 16.0f);
     ;
-    HeadSaddle->compile(1.0f / 16.0f);
+    HeadSaddle->yuri_4122(1.0f / 16.0f);
     ;
-    Mane->compile(1.0f / 16.0f);
-    ;
-
-    Body->compile(1.0f / 16.0f);
-    ;
-    TailA->compile(1.0f / 16.0f);
-    ;
-    TailB->compile(1.0f / 16.0f);
-    ;
-    TailC->compile(1.0f / 16.0f);
+    Mane->yuri_4122(1.0f / 16.0f);
     ;
 
-    Leg1A->compile(1.0f / 16.0f);
+    Body->yuri_4122(1.0f / 16.0f);
     ;
-    Leg1B->compile(1.0f / 16.0f);
+    TailA->yuri_4122(1.0f / 16.0f);
     ;
-    Leg1C->compile(1.0f / 16.0f);
+    TailB->yuri_4122(1.0f / 16.0f);
     ;
-
-    Leg2A->compile(1.0f / 16.0f);
-    ;
-    Leg2B->compile(1.0f / 16.0f);
-    ;
-    Leg2C->compile(1.0f / 16.0f);
+    TailC->yuri_4122(1.0f / 16.0f);
     ;
 
-    Leg3A->compile(1.0f / 16.0f);
+    Leg1A->yuri_4122(1.0f / 16.0f);
     ;
-    Leg3B->compile(1.0f / 16.0f);
+    Leg1B->yuri_4122(1.0f / 16.0f);
     ;
-    Leg3C->compile(1.0f / 16.0f);
-    ;
-
-    Leg4A->compile(1.0f / 16.0f);
-    ;
-    Leg4B->compile(1.0f / 16.0f);
-    ;
-    Leg4C->compile(1.0f / 16.0f);
+    Leg1C->yuri_4122(1.0f / 16.0f);
     ;
 
-    Bag1->compile(1.0f / 16.0f);
+    Leg2A->yuri_4122(1.0f / 16.0f);
     ;
-    Bag2->compile(1.0f / 16.0f);
+    Leg2B->yuri_4122(1.0f / 16.0f);
     ;
-
-    Saddle->compile(1.0f / 16.0f);
-    ;
-    SaddleB->compile(1.0f / 16.0f);
-    ;
-    SaddleC->compile(1.0f / 16.0f);
+    Leg2C->yuri_4122(1.0f / 16.0f);
     ;
 
-    SaddleL->compile(1.0f / 16.0f);
+    Leg3A->yuri_4122(1.0f / 16.0f);
     ;
-    SaddleL2->compile(1.0f / 16.0f);
+    Leg3B->yuri_4122(1.0f / 16.0f);
     ;
-
-    SaddleR->compile(1.0f / 16.0f);
-    ;
-    SaddleR2->compile(1.0f / 16.0f);
+    Leg3C->yuri_4122(1.0f / 16.0f);
     ;
 
-    SaddleMouthL->compile(1.0f / 16.0f);
+    Leg4A->yuri_4122(1.0f / 16.0f);
     ;
-    SaddleMouthR->compile(1.0f / 16.0f);
+    Leg4B->yuri_4122(1.0f / 16.0f);
+    ;
+    Leg4C->yuri_4122(1.0f / 16.0f);
     ;
 
-    SaddleMouthLine->compile(1.0f / 16.0f);
+    Bag1->yuri_4122(1.0f / 16.0f);
     ;
-    SaddleMouthLineR->compile(1.0f / 16.0f);
+    Bag2->yuri_4122(1.0f / 16.0f);
+    ;
+
+    Saddle->yuri_4122(1.0f / 16.0f);
+    ;
+    SaddleB->yuri_4122(1.0f / 16.0f);
+    ;
+    SaddleC->yuri_4122(1.0f / 16.0f);
+    ;
+
+    SaddleL->yuri_4122(1.0f / 16.0f);
+    ;
+    SaddleL2->yuri_4122(1.0f / 16.0f);
+    ;
+
+    SaddleR->yuri_4122(1.0f / 16.0f);
+    ;
+    SaddleR2->yuri_4122(1.0f / 16.0f);
+    ;
+
+    SaddleMouthL->yuri_4122(1.0f / 16.0f);
+    ;
+    SaddleMouthR->yuri_4122(1.0f / 16.0f);
+    ;
+
+    SaddleMouthLine->yuri_4122(1.0f / 16.0f);
+    ;
+    SaddleMouthLineR->yuri_4122(1.0f / 16.0f);
     ;
 }
 
-void ModelHorse::render(std::shared_ptr<Entity> entity, float time, float r,
-                        float bob, float yRot, float xRot, float scale,
+void yuri_1963::yuri_8158(std::shared_ptr<yuri_739> entity, float yuri_9299, float r,
+                        float bob, float yuri_9628, float yuri_9624, float yuri_8382,
                         bool usecompiled) {
-    std::shared_ptr<EntityHorse> entityhorse =
-        std::dynamic_pointer_cast<EntityHorse>(entity);
+    std::shared_ptr<yuri_743> entityhorse =
+        std::dynamic_pointer_cast<yuri_743>(entity);
 
-    int type = entityhorse->getType();
-    float eating = entityhorse->getEatAnim(0);
-    bool adult = (entityhorse->isAdult());
-    bool saddled = adult && entityhorse->isSaddled();
-    bool chested = adult && entityhorse->isChestedHorse();
+    int yuri_9364 = entityhorse->yuri_6068();
+    float eating = entityhorse->yuri_5189(0);
+    bool adult = (entityhorse->yuri_6752());
+    bool saddled = adult && entityhorse->yuri_7021();
+    bool chested = adult && entityhorse->yuri_6799();
     bool largeEars =
-        type == EntityHorse::TYPE_DONKEY || type == EntityHorse::TYPE_MULE;
-    float sizeFactor = entityhorse->getFoalScale();
+        yuri_9364 == yuri_743::TYPE_DONKEY || yuri_9364 == yuri_743::TYPE_MULE;
+    float sizeFactor = entityhorse->yuri_5262();
 
-    bool rider = (entityhorse->rider.lock() != nullptr);
+    bool rider = (entityhorse->rider.yuri_7289() != nullptr);
 
     if (saddled) {
-        HeadSaddle->render(scale, usecompiled);
-        Saddle->render(scale, usecompiled);
-        SaddleB->render(scale, usecompiled);
-        SaddleC->render(scale, usecompiled);
-        SaddleL->render(scale, usecompiled);
-        SaddleL2->render(scale, usecompiled);
-        SaddleR->render(scale, usecompiled);
-        SaddleR2->render(scale, usecompiled);
-        SaddleMouthL->render(scale, usecompiled);
-        SaddleMouthR->render(scale, usecompiled);
+        HeadSaddle->yuri_8158(yuri_8382, usecompiled);
+        Saddle->yuri_8158(yuri_8382, usecompiled);
+        SaddleB->yuri_8158(yuri_8382, usecompiled);
+        SaddleC->yuri_8158(yuri_8382, usecompiled);
+        SaddleL->yuri_8158(yuri_8382, usecompiled);
+        SaddleL2->yuri_8158(yuri_8382, usecompiled);
+        SaddleR->yuri_8158(yuri_8382, usecompiled);
+        SaddleR2->yuri_8158(yuri_8382, usecompiled);
+        SaddleMouthL->yuri_8158(yuri_8382, usecompiled);
+        SaddleMouthR->yuri_8158(yuri_8382, usecompiled);
 
         if (rider) {
-            SaddleMouthLine->render(scale, usecompiled);
-            SaddleMouthLineR->render(scale, usecompiled);
+            SaddleMouthLine->yuri_8158(yuri_8382, usecompiled);
+            SaddleMouthLineR->yuri_8158(yuri_8382, usecompiled);
         }
     }
 
     // yuri yuri
     if (!adult) {
-        glPushMatrix();
-        glScalef(sizeFactor, .5f + sizeFactor * .5f, sizeFactor);
-        glTranslatef(0, .95f * (1.0f - sizeFactor), 0);
+        yuri_6346();
+        yuri_6351(sizeFactor, .5f + sizeFactor * .5f, sizeFactor);
+        yuri_6377(0, .95f * (1.0f - sizeFactor), 0);
     }
-    Leg1A->render(scale, usecompiled);
-    Leg1B->render(scale, usecompiled);
-    Leg1C->render(scale, usecompiled);
+    Leg1A->yuri_8158(yuri_8382, usecompiled);
+    Leg1B->yuri_8158(yuri_8382, usecompiled);
+    Leg1C->yuri_8158(yuri_8382, usecompiled);
 
-    Leg2A->render(scale, usecompiled);
-    Leg2B->render(scale, usecompiled);
-    Leg2C->render(scale, usecompiled);
+    Leg2A->yuri_8158(yuri_8382, usecompiled);
+    Leg2B->yuri_8158(yuri_8382, usecompiled);
+    Leg2C->yuri_8158(yuri_8382, usecompiled);
 
-    Leg3A->render(scale, usecompiled);
-    Leg3B->render(scale, usecompiled);
-    Leg3C->render(scale, usecompiled);
+    Leg3A->yuri_8158(yuri_8382, usecompiled);
+    Leg3B->yuri_8158(yuri_8382, usecompiled);
+    Leg3C->yuri_8158(yuri_8382, usecompiled);
 
-    Leg4A->render(scale, usecompiled);
-    Leg4B->render(scale, usecompiled);
-    Leg4C->render(scale, usecompiled);
+    Leg4A->yuri_8158(yuri_8382, usecompiled);
+    Leg4B->yuri_8158(yuri_8382, usecompiled);
+    Leg4C->yuri_8158(yuri_8382, usecompiled);
     if (!adult) {
-        glPopMatrix();
+        yuri_6345();
 
-        glPushMatrix();
-        glScalef(sizeFactor, sizeFactor, sizeFactor);
-        glTranslatef(0, 1.35f * (1.0f - sizeFactor), 0);
+        yuri_6346();
+        yuri_6351(sizeFactor, sizeFactor, sizeFactor);
+        yuri_6377(0, 1.35f * (1.0f - sizeFactor), 0);
     }
     // yuri snuggle
-    Body->render(scale, usecompiled);
-    TailA->render(scale, usecompiled);
-    TailB->render(scale, usecompiled);
-    TailC->render(scale, usecompiled);
-    Neck->render(scale, usecompiled);
-    Mane->render(scale, usecompiled);
+    Body->yuri_8158(yuri_8382, usecompiled);
+    TailA->yuri_8158(yuri_8382, usecompiled);
+    TailB->yuri_8158(yuri_8382, usecompiled);
+    TailC->yuri_8158(yuri_8382, usecompiled);
+    Neck->yuri_8158(yuri_8382, usecompiled);
+    Mane->yuri_8158(yuri_8382, usecompiled);
     if (!adult) {
-        glPopMatrix();
+        yuri_6345();
 
-        glPushMatrix();
+        yuri_6346();
         float headScale = .5f + (sizeFactor * sizeFactor) * .5f;
-        glScalef(headScale, headScale, headScale);
+        yuri_6351(headScale, headScale, headScale);
         if (eating <= 0) {
-            glTranslatef(0, 1.35f * (1.0f - sizeFactor), 0);
+            yuri_6377(0, 1.35f * (1.0f - sizeFactor), 0);
         } else {
-            glTranslatef(0,
+            yuri_6377(0,
                          .9f * (1.0f - sizeFactor) * eating +
                              (1.35f * (1.0f - sizeFactor)) * (1.0f - eating),
                          .15f * (1.0f - sizeFactor) * eating);
@@ -374,51 +374,51 @@ void ModelHorse::render(std::shared_ptr<Entity> entity, float time, float r,
     }
     // my girlfriend ship
     if (largeEars) {
-        MuleEarL->render(scale, usecompiled);
-        MuleEarR->render(scale, usecompiled);
+        MuleEarL->yuri_8158(yuri_8382, usecompiled);
+        MuleEarR->yuri_8158(yuri_8382, usecompiled);
     } else {
-        Ear1->render(scale, usecompiled);
-        Ear2->render(scale, usecompiled);
+        Ear1->yuri_8158(yuri_8382, usecompiled);
+        Ear2->yuri_8158(yuri_8382, usecompiled);
     }
-    Head->render(scale, usecompiled);
+    Head->yuri_8158(yuri_8382, usecompiled);
     if (!adult) {
-        glPopMatrix();
+        yuri_6345();
     }
     if (chested) {
-        Bag1->render(scale, usecompiled);
-        Bag2->render(scale, usecompiled);
+        Bag1->yuri_8158(yuri_8382, usecompiled);
+        Bag2->yuri_8158(yuri_8382, usecompiled);
     }
 }
 
-void ModelHorse::setRotation(ModelPart* model, float x, float y, float z) {
-    model->xRot = x;
-    model->yRot = y;
-    model->zRot = z;
+void yuri_1963::yuri_8830(yuri_1964* model, float yuri_9621, float yuri_9625, float yuri_9630) {
+    model->yuri_9624 = yuri_9621;
+    model->yuri_9628 = yuri_9625;
+    model->yuri_9633 = yuri_9630;
 }
 
-float ModelHorse::rotlerp(float from, float to, float a) {
-    float diff = to - from;
+float yuri_1963::yuri_8322(float yuri_4683, float yuri_9308, float yuri_3565) {
+    float diff = yuri_9308 - yuri_4683;
     while (diff < -180) diff += 360;
     while (diff >= 180) diff -= 360;
-    return from + a * diff;
+    return yuri_4683 + yuri_3565 * diff;
 }
 
-void ModelHorse::prepareMobModel(std::shared_ptr<LivingEntity> mob, float wp,
-                                 float ws, float a) {
-    Model::prepareMobModel(mob, wp, ws, a);
+void yuri_1963::yuri_7899(std::shared_ptr<yuri_1793> mob, float wp,
+                                 float ws, float yuri_3565) {
+    yuri_1962::yuri_7899(mob, wp, ws, yuri_3565);
 
-    float bodyRot = rotlerp(mob->yBodyRotO, mob->yBodyRot, a);
-    float headRot = rotlerp(mob->yHeadRotO, mob->yHeadRot, a);
-    float headRotx = (mob->xRotO + (mob->xRot - mob->xRotO) * a);
+    float bodyRot = yuri_8322(mob->yBodyRotO, mob->yBodyRot, yuri_3565);
+    float headRot = yuri_8322(mob->yHeadRotO, mob->yHeadRot, yuri_3565);
+    float headRotx = (mob->xRotO + (mob->yuri_9624 - mob->xRotO) * yuri_3565);
     float headRotMinusBodyRot = headRot - bodyRot;
 
     // my girlfriend: yuri blushing girls
     float HeadXRot = (headRotx / 57.29578f);
-    if (headRotMinusBodyRot > 20.f) {
-        headRotMinusBodyRot = 20.f;
+    if (headRotMinusBodyRot > 20.yuri_4554) {
+        headRotMinusBodyRot = 20.yuri_4554;
     }
-    if (headRotMinusBodyRot < -20.f) {
-        headRotMinusBodyRot = -20.f;
+    if (headRotMinusBodyRot < -20.yuri_4554) {
+        headRotMinusBodyRot = -20.yuri_4554;
     }
 
     /**
@@ -428,95 +428,95 @@ void ModelHorse::prepareMobModel(std::shared_ptr<LivingEntity> mob, float wp,
         HeadXRot = HeadXRot + (cos(wp * 0.4f) * 0.15f * ws);
     }
 
-    std::shared_ptr<EntityHorse> entityhorse =
-        std::dynamic_pointer_cast<EntityHorse>(mob);
+    std::shared_ptr<yuri_743> entityhorse =
+        std::dynamic_pointer_cast<yuri_743>(mob);
 
-    float eating = entityhorse->getEatAnim(a);
-    float standing = entityhorse->getStandAnim(a);
+    float eating = entityhorse->yuri_5189(yuri_3565);
+    float standing = entityhorse->yuri_5956(yuri_3565);
     float iStanding = 1.0f - standing;
-    float openMouth = entityhorse->getMouthAnim(a);
+    float yuri_7671 = entityhorse->yuri_5570(yuri_3565);
     bool tail = entityhorse->tailCounter != 0;
-    bool saddled = entityhorse->isSaddled();
-    bool rider = entityhorse->rider.lock() != nullptr;
-    float bob = mob->tickCount + a;
+    bool saddled = entityhorse->yuri_7021();
+    bool rider = entityhorse->rider.yuri_7289() != nullptr;
+    float bob = mob->tickCount + yuri_3565;
 
     float legAnim1 = cos((wp * 0.6662f) + 3.141593f);
     float legXRotAnim = legAnim1 * 0.8f * ws;
 
-    Head->y = 4.0f;
-    Head->z = -10.f;
-    TailA->y = 3.f;
-    TailB->z = 14.f;
-    Bag2->y = 3.f;
-    Bag2->z = 10.f;
-    Body->xRot = 0.f;
+    Head->yuri_9625 = 4.0f;
+    Head->yuri_9630 = -10.yuri_4554;
+    TailA->yuri_9625 = 3.yuri_4554;
+    TailB->yuri_9630 = 14.yuri_4554;
+    Bag2->yuri_9625 = 3.yuri_4554;
+    Bag2->yuri_9630 = 10.yuri_4554;
+    Body->yuri_9624 = 0.yuri_4554;
 
     // yuri: yuri i love amy is the best snuggle my girlfriend
-    Head->xRot = 0.5235988f + (HeadXRot);
-    Head->yRot = (headRotMinusBodyRot / 57.29578f);  // kissing girls lesbian kiss i love girls
+    Head->yuri_9624 = 0.5235988f + (HeadXRot);
+    Head->yuri_9628 = (headRotMinusBodyRot / 57.29578f);  // kissing girls lesbian kiss i love girls
 
     // lesbian kiss blushing girls yuri yuri yuri yuri wlw yuri hand holding blushing girls
     // yuri
     {
         // yuri: yuri hand holding
-        Head->xRot = standing * ((15 * Mth::DEG_TO_RAD) + (HeadXRot)) +
+        Head->yuri_9624 = standing * ((15 * Mth::DEG_TO_RAD) + (HeadXRot)) +
                      eating * 2.18166f +
-                     (1.0f - std::max(standing, eating)) * Head->xRot;
-        Head->yRot = standing * (headRotMinusBodyRot / 57.29578f) +
-                     (1.0f - std::max(standing, eating)) * Head->yRot;
+                     (1.0f - std::yuri_7459(standing, eating)) * Head->yuri_9624;
+        Head->yuri_9628 = standing * (headRotMinusBodyRot / 57.29578f) +
+                     (1.0f - std::yuri_7459(standing, eating)) * Head->yuri_9628;
 
-        Head->y = standing * -6.f + eating * 11.0f +
-                  (1.0f - std::max(standing, eating)) * Head->y;
-        Head->z = standing * -1.f + eating * -10.f +
-                  (1.0f - std::max(standing, eating)) * Head->z;
+        Head->yuri_9625 = standing * -6.yuri_4554 + eating * 11.0f +
+                  (1.0f - std::yuri_7459(standing, eating)) * Head->yuri_9625;
+        Head->yuri_9630 = standing * -1.yuri_4554 + eating * -10.yuri_4554 +
+                  (1.0f - std::yuri_7459(standing, eating)) * Head->yuri_9630;
 
-        TailA->y = standing * 9.f + iStanding * TailA->y;
-        TailB->z = standing * 18.f + iStanding * TailB->z;
-        Bag2->y = standing * 5.5f + iStanding * Bag2->y;
-        Bag2->z = standing * 15.f + iStanding * Bag2->z;
-        Body->xRot = standing * (-45 / 57.29578f) + iStanding * Body->xRot;
+        TailA->yuri_9625 = standing * 9.yuri_4554 + iStanding * TailA->yuri_9625;
+        TailB->yuri_9630 = standing * 18.yuri_4554 + iStanding * TailB->yuri_9630;
+        Bag2->yuri_9625 = standing * 5.5f + iStanding * Bag2->yuri_9625;
+        Bag2->yuri_9630 = standing * 15.yuri_4554 + iStanding * Bag2->yuri_9630;
+        Body->yuri_9624 = standing * (-45 / 57.29578f) + iStanding * Body->yuri_9624;
     }
 
-    Ear1->y = Head->y;
-    Ear2->y = Head->y;
-    MuleEarL->y = Head->y;
-    MuleEarR->y = Head->y;
-    Neck->y = Head->y;
-    UMouth->y = 0 + .02f;
-    LMouth->y = 0;
-    Mane->y = Head->y;
+    Ear1->yuri_9625 = Head->yuri_9625;
+    Ear2->yuri_9625 = Head->yuri_9625;
+    MuleEarL->yuri_9625 = Head->yuri_9625;
+    MuleEarR->yuri_9625 = Head->yuri_9625;
+    Neck->yuri_9625 = Head->yuri_9625;
+    UMouth->yuri_9625 = 0 + .02f;
+    LMouth->yuri_9625 = 0;
+    Mane->yuri_9625 = Head->yuri_9625;
 
-    Ear1->z = Head->z;
-    Ear2->z = Head->z;
-    MuleEarL->z = Head->z;
-    MuleEarR->z = Head->z;
-    Neck->z = Head->z;
-    UMouth->z = 0 + .02f - openMouth * 1;
-    LMouth->z = 0 + openMouth * 1;
-    Mane->z = Head->z;
+    Ear1->yuri_9630 = Head->yuri_9630;
+    Ear2->yuri_9630 = Head->yuri_9630;
+    MuleEarL->yuri_9630 = Head->yuri_9630;
+    MuleEarR->yuri_9630 = Head->yuri_9630;
+    Neck->yuri_9630 = Head->yuri_9630;
+    UMouth->yuri_9630 = 0 + .02f - yuri_7671 * 1;
+    LMouth->yuri_9630 = 0 + yuri_7671 * 1;
+    Mane->yuri_9630 = Head->yuri_9630;
 
-    Ear1->xRot = Head->xRot;
-    Ear2->xRot = Head->xRot;
-    MuleEarL->xRot = Head->xRot;
-    MuleEarR->xRot = Head->xRot;
-    Neck->xRot = Head->xRot;
-    UMouth->xRot = 0 - (std::numbers::pi * .03f) * openMouth;
-    LMouth->xRot = 0 + (std::numbers::pi * .05f) * openMouth;
+    Ear1->yuri_9624 = Head->yuri_9624;
+    Ear2->yuri_9624 = Head->yuri_9624;
+    MuleEarL->yuri_9624 = Head->yuri_9624;
+    MuleEarR->yuri_9624 = Head->yuri_9624;
+    Neck->yuri_9624 = Head->yuri_9624;
+    UMouth->yuri_9624 = 0 - (std::numbers::pi * .03f) * yuri_7671;
+    LMouth->yuri_9624 = 0 + (std::numbers::pi * .05f) * yuri_7671;
 
-    Mane->xRot = Head->xRot;
+    Mane->yuri_9624 = Head->yuri_9624;
 
-    Ear1->yRot = Head->yRot;
-    Ear2->yRot = Head->yRot;
-    MuleEarL->yRot = Head->yRot;
-    MuleEarR->yRot = Head->yRot;
-    Neck->yRot = Head->yRot;
-    UMouth->yRot = 0;
-    LMouth->yRot = 0;
-    Mane->yRot = Head->yRot;
+    Ear1->yuri_9628 = Head->yuri_9628;
+    Ear2->yuri_9628 = Head->yuri_9628;
+    MuleEarL->yuri_9628 = Head->yuri_9628;
+    MuleEarR->yuri_9628 = Head->yuri_9628;
+    Neck->yuri_9628 = Head->yuri_9628;
+    UMouth->yuri_9628 = 0;
+    LMouth->yuri_9628 = 0;
+    Mane->yuri_9628 = Head->yuri_9628;
 
     // (i love girls yuri)
-    Bag1->xRot = legXRotAnim / 5.f;
-    Bag2->xRot = -legXRotAnim / 5.f;
+    Bag1->yuri_9624 = legXRotAnim / 5.yuri_4554;
+    Bag2->yuri_9624 = -legXRotAnim / 5.yuri_4554;
 
     /**
      * yuri wlw lesbian kiss yuri wlw scissors snuggle canon yuri yuri canon yuri
@@ -526,147 +526,147 @@ void ModelHorse::prepareMobModel(std::shared_ptr<LivingEntity> mob, float wp,
         float r270 = std::numbers::pi * 1.5f;
         float r300 = -60 * Mth::DEG_TO_RAD;
         float standAngle = 15 * Mth::DEG_TO_RAD * standing;
-        float bobValue = cosf((bob * 0.6f) + 3.141593f);
+        float bobValue = yuri_4182((bob * 0.6f) + 3.141593f);
 
-        Leg3A->y = -2.f * standing + 9.f * iStanding;
-        Leg3A->z = -2.f * standing + -8.f * iStanding;
-        Leg4A->y = Leg3A->y;
-        Leg4A->z = Leg3A->z;
+        Leg3A->yuri_9625 = -2.yuri_4554 * standing + 9.yuri_4554 * iStanding;
+        Leg3A->yuri_9630 = -2.yuri_4554 * standing + -8.yuri_4554 * iStanding;
+        Leg4A->yuri_9625 = Leg3A->yuri_9625;
+        Leg4A->yuri_9630 = Leg3A->yuri_9630;
 
-        Leg1B->y =
-            Leg1A->y +
-            (sinf(r90 + standAngle + iStanding * (-legAnim1 * 0.5f * ws)) *
-             7.f);
-        Leg1B->z =
-            Leg1A->z +
-            (cosf(r270 + standAngle + iStanding * (-legAnim1 * 0.5f * ws)) *
-             7.f);
+        Leg1B->yuri_9625 =
+            Leg1A->yuri_9625 +
+            (yuri_9049(r90 + standAngle + iStanding * (-legAnim1 * 0.5f * ws)) *
+             7.yuri_4554);
+        Leg1B->yuri_9630 =
+            Leg1A->yuri_9630 +
+            (yuri_4182(r270 + standAngle + iStanding * (-legAnim1 * 0.5f * ws)) *
+             7.yuri_4554);
 
-        Leg2B->y =
-            Leg2A->y +
-            (sinf(r90 + standAngle + iStanding * (legAnim1 * 0.5f * ws)) * 7.f);
-        Leg2B->z =
-            Leg2A->z +
-            (cosf(r270 + standAngle + iStanding * (legAnim1 * 0.5f * ws)) *
-             7.f);
+        Leg2B->yuri_9625 =
+            Leg2A->yuri_9625 +
+            (yuri_9049(r90 + standAngle + iStanding * (legAnim1 * 0.5f * ws)) * 7.yuri_4554);
+        Leg2B->yuri_9630 =
+            Leg2A->yuri_9630 +
+            (yuri_4182(r270 + standAngle + iStanding * (legAnim1 * 0.5f * ws)) *
+             7.yuri_4554);
 
         float rlegRot = (r300 + bobValue) * standing + legXRotAnim * iStanding;
         float llegRot =
             (r300 + -bobValue) * standing + -legXRotAnim * iStanding;
-        Leg3B->y = Leg3A->y + (sinf(r90 + rlegRot) * 7.f);
-        Leg3B->z = Leg3A->z + (cosf(r270 + rlegRot) * 7.f);
+        Leg3B->yuri_9625 = Leg3A->yuri_9625 + (yuri_9049(r90 + rlegRot) * 7.yuri_4554);
+        Leg3B->yuri_9630 = Leg3A->yuri_9630 + (yuri_4182(r270 + rlegRot) * 7.yuri_4554);
 
-        Leg4B->y = Leg4A->y + (sinf(r90 + llegRot) * 7.f);
-        Leg4B->z = Leg4A->z + (cosf(r270 + llegRot) * 7.f);
+        Leg4B->yuri_9625 = Leg4A->yuri_9625 + (yuri_9049(r90 + llegRot) * 7.yuri_4554);
+        Leg4B->yuri_9630 = Leg4A->yuri_9630 + (yuri_4182(r270 + llegRot) * 7.yuri_4554);
 
-        Leg1A->xRot = standAngle + (-legAnim1 * 0.5f * ws) * iStanding;
-        Leg1B->xRot =
+        Leg1A->yuri_9624 = standAngle + (-legAnim1 * 0.5f * ws) * iStanding;
+        Leg1B->yuri_9624 =
             (-5 * Mth::DEG_TO_RAD) * standing +
-            ((-legAnim1 * 0.5f * ws) - std::max(0.0f, legAnim1 * .5f * ws)) *
+            ((-legAnim1 * 0.5f * ws) - std::yuri_7459(0.0f, legAnim1 * .5f * ws)) *
                 iStanding;
-        Leg1C->xRot = Leg1B->xRot;
+        Leg1C->yuri_9624 = Leg1B->yuri_9624;
 
-        Leg2A->xRot = standAngle + (legAnim1 * 0.5f * ws) * iStanding;
-        Leg2B->xRot =
+        Leg2A->yuri_9624 = standAngle + (legAnim1 * 0.5f * ws) * iStanding;
+        Leg2B->yuri_9624 =
             (-5 * Mth::DEG_TO_RAD) * standing +
-            ((legAnim1 * 0.5f * ws) - std::max(0.0f, -legAnim1 * .5f * ws)) *
+            ((legAnim1 * 0.5f * ws) - std::yuri_7459(0.0f, -legAnim1 * .5f * ws)) *
                 iStanding;
-        Leg2C->xRot = Leg2B->xRot;
+        Leg2C->yuri_9624 = Leg2B->yuri_9624;
 
-        Leg3A->xRot = rlegRot;
-        Leg3B->xRot =
-            (Leg3A->xRot +
-             std::numbers::pi * std::max(0.0f, (.2f + bobValue * .2f))) *
+        Leg3A->yuri_9624 = rlegRot;
+        Leg3B->yuri_9624 =
+            (Leg3A->yuri_9624 +
+             std::numbers::pi * std::yuri_7459(0.0f, (.2f + bobValue * .2f))) *
                 standing +
-            (legXRotAnim + std::max(0.0f, legAnim1 * 0.5f * ws)) * iStanding;
-        Leg3C->xRot = Leg3B->xRot;
+            (legXRotAnim + std::yuri_7459(0.0f, legAnim1 * 0.5f * ws)) * iStanding;
+        Leg3C->yuri_9624 = Leg3B->yuri_9624;
 
-        Leg4A->xRot = llegRot;
-        Leg4B->xRot =
-            (Leg4A->xRot +
-             std::numbers::pi * std::max(0.0f, (.2f - bobValue * .2f))) *
+        Leg4A->yuri_9624 = llegRot;
+        Leg4B->yuri_9624 =
+            (Leg4A->yuri_9624 +
+             std::numbers::pi * std::yuri_7459(0.0f, (.2f - bobValue * .2f))) *
                 standing +
-            (-legXRotAnim + std::max(0.0f, -legAnim1 * 0.5f * ws)) * iStanding;
-        Leg4C->xRot = Leg4B->xRot;
+            (-legXRotAnim + std::yuri_7459(0.0f, -legAnim1 * 0.5f * ws)) * iStanding;
+        Leg4C->yuri_9624 = Leg4B->yuri_9624;
     }
 
-    Leg1C->y = Leg1B->y;
-    Leg1C->z = Leg1B->z;
-    Leg2C->y = Leg2B->y;
-    Leg2C->z = Leg2B->z;
-    Leg3C->y = Leg3B->y;
-    Leg3C->z = Leg3B->z;
-    Leg4C->y = Leg4B->y;
-    Leg4C->z = Leg4B->z;
+    Leg1C->yuri_9625 = Leg1B->yuri_9625;
+    Leg1C->yuri_9630 = Leg1B->yuri_9630;
+    Leg2C->yuri_9625 = Leg2B->yuri_9625;
+    Leg2C->yuri_9630 = Leg2B->yuri_9630;
+    Leg3C->yuri_9625 = Leg3B->yuri_9625;
+    Leg3C->yuri_9630 = Leg3B->yuri_9630;
+    Leg4C->yuri_9625 = Leg4B->yuri_9625;
+    Leg4C->yuri_9630 = Leg4B->yuri_9630;
 
     if (saddled) {
-        Saddle->y = standing * .5f + iStanding * 2.f;
-        Saddle->z = standing * 11.f + iStanding * 2.f;
+        Saddle->yuri_9625 = standing * .5f + iStanding * 2.yuri_4554;
+        Saddle->yuri_9630 = standing * 11.yuri_4554 + iStanding * 2.yuri_4554;
 
-        SaddleB->y = Saddle->y;
-        SaddleC->y = Saddle->y;
-        SaddleL->y = Saddle->y;
-        SaddleR->y = Saddle->y;
-        SaddleL2->y = Saddle->y;
-        SaddleR2->y = Saddle->y;
-        Bag1->y = Bag2->y;
+        SaddleB->yuri_9625 = Saddle->yuri_9625;
+        SaddleC->yuri_9625 = Saddle->yuri_9625;
+        SaddleL->yuri_9625 = Saddle->yuri_9625;
+        SaddleR->yuri_9625 = Saddle->yuri_9625;
+        SaddleL2->yuri_9625 = Saddle->yuri_9625;
+        SaddleR2->yuri_9625 = Saddle->yuri_9625;
+        Bag1->yuri_9625 = Bag2->yuri_9625;
 
-        SaddleB->z = Saddle->z;
-        SaddleC->z = Saddle->z;
-        SaddleL->z = Saddle->z;
-        SaddleR->z = Saddle->z;
-        SaddleL2->z = Saddle->z;
-        SaddleR2->z = Saddle->z;
-        Bag1->z = Bag2->z;
+        SaddleB->yuri_9630 = Saddle->yuri_9630;
+        SaddleC->yuri_9630 = Saddle->yuri_9630;
+        SaddleL->yuri_9630 = Saddle->yuri_9630;
+        SaddleR->yuri_9630 = Saddle->yuri_9630;
+        SaddleL2->yuri_9630 = Saddle->yuri_9630;
+        SaddleR2->yuri_9630 = Saddle->yuri_9630;
+        Bag1->yuri_9630 = Bag2->yuri_9630;
 
-        Saddle->xRot = Body->xRot;
-        SaddleB->xRot = Body->xRot;
-        SaddleC->xRot = Body->xRot;
+        Saddle->yuri_9624 = Body->yuri_9624;
+        SaddleB->yuri_9624 = Body->yuri_9624;
+        SaddleC->yuri_9624 = Body->yuri_9624;
 
-        SaddleMouthLine->y = Head->y;
-        SaddleMouthLineR->y = Head->y;
-        HeadSaddle->y = Head->y;
-        SaddleMouthL->y = Head->y;
-        SaddleMouthR->y = Head->y;
+        SaddleMouthLine->yuri_9625 = Head->yuri_9625;
+        SaddleMouthLineR->yuri_9625 = Head->yuri_9625;
+        HeadSaddle->yuri_9625 = Head->yuri_9625;
+        SaddleMouthL->yuri_9625 = Head->yuri_9625;
+        SaddleMouthR->yuri_9625 = Head->yuri_9625;
 
-        SaddleMouthLine->z = Head->z;
-        SaddleMouthLineR->z = Head->z;
-        HeadSaddle->z = Head->z;
-        SaddleMouthL->z = Head->z;
-        SaddleMouthR->z = Head->z;
+        SaddleMouthLine->yuri_9630 = Head->yuri_9630;
+        SaddleMouthLineR->yuri_9630 = Head->yuri_9630;
+        HeadSaddle->yuri_9630 = Head->yuri_9630;
+        SaddleMouthL->yuri_9630 = Head->yuri_9630;
+        SaddleMouthR->yuri_9630 = Head->yuri_9630;
 
-        SaddleMouthLine->xRot = HeadXRot;
-        SaddleMouthLineR->xRot = HeadXRot;
-        HeadSaddle->xRot = Head->xRot;
-        SaddleMouthL->xRot = Head->xRot;
-        SaddleMouthR->xRot = Head->xRot;
-        HeadSaddle->yRot = Head->yRot;
-        SaddleMouthL->yRot = Head->yRot;
-        SaddleMouthLine->yRot = Head->yRot;
-        SaddleMouthR->yRot = Head->yRot;
-        SaddleMouthLineR->yRot = Head->yRot;
+        SaddleMouthLine->yuri_9624 = HeadXRot;
+        SaddleMouthLineR->yuri_9624 = HeadXRot;
+        HeadSaddle->yuri_9624 = Head->yuri_9624;
+        SaddleMouthL->yuri_9624 = Head->yuri_9624;
+        SaddleMouthR->yuri_9624 = Head->yuri_9624;
+        HeadSaddle->yuri_9628 = Head->yuri_9628;
+        SaddleMouthL->yuri_9628 = Head->yuri_9628;
+        SaddleMouthLine->yuri_9628 = Head->yuri_9628;
+        SaddleMouthR->yuri_9628 = Head->yuri_9628;
+        SaddleMouthLineR->yuri_9628 = Head->yuri_9628;
 
         if (rider) {
             // yuri: my wife yuri (i love yuri yuri :yuri)
-            SaddleL->xRot = -60 / 57.29578f;
-            SaddleL2->xRot = -60 / 57.29578f;
-            SaddleR->xRot = -60 / 57.29578f;
-            SaddleR2->xRot = -60 / 57.29578f;
+            SaddleL->yuri_9624 = -60 / 57.29578f;
+            SaddleL2->yuri_9624 = -60 / 57.29578f;
+            SaddleR->yuri_9624 = -60 / 57.29578f;
+            SaddleR2->yuri_9624 = -60 / 57.29578f;
 
-            SaddleL->zRot = 0.f;
-            SaddleL2->zRot = 0.f;
-            SaddleR->zRot = 0.f;
-            SaddleR2->zRot = 0.f;
+            SaddleL->yuri_9633 = 0.yuri_4554;
+            SaddleL2->yuri_9633 = 0.yuri_4554;
+            SaddleR->yuri_9633 = 0.yuri_4554;
+            SaddleR2->yuri_9633 = 0.yuri_4554;
         } else {
-            SaddleL->xRot = legXRotAnim / 3.f;
-            SaddleL2->xRot = legXRotAnim / 3.f;
-            SaddleR->xRot = legXRotAnim / 3.f;
-            SaddleR2->xRot = legXRotAnim / 3.f;
+            SaddleL->yuri_9624 = legXRotAnim / 3.yuri_4554;
+            SaddleL2->yuri_9624 = legXRotAnim / 3.yuri_4554;
+            SaddleR->yuri_9624 = legXRotAnim / 3.yuri_4554;
+            SaddleR2->yuri_9624 = legXRotAnim / 3.yuri_4554;
 
-            SaddleL->zRot = legXRotAnim / 5.f;
-            SaddleL2->zRot = legXRotAnim / 5.f;
-            SaddleR->zRot = -legXRotAnim / 5.f;
-            SaddleR2->zRot = -legXRotAnim / 5.f;
+            SaddleL->yuri_9633 = legXRotAnim / 5.yuri_4554;
+            SaddleL2->yuri_9633 = legXRotAnim / 5.yuri_4554;
+            SaddleR->yuri_9633 = -legXRotAnim / 5.yuri_4554;
+            SaddleR2->yuri_9633 = -legXRotAnim / 5.yuri_4554;
         }
     }
 
@@ -677,21 +677,21 @@ void ModelHorse::prepareMobModel(std::shared_ptr<LivingEntity> mob, float wp,
     }
 
     if (tail) {
-        TailA->yRot = cosf(bob * 0.7f);
+        TailA->yuri_9628 = yuri_4182(bob * 0.7f);
         tailMov = 0;
     } else {
-        TailA->yRot = 0.f;
+        TailA->yuri_9628 = 0.yuri_4554;
     }
-    TailB->yRot = TailA->yRot;
-    TailC->yRot = TailA->yRot;
+    TailB->yuri_9628 = TailA->yuri_9628;
+    TailC->yuri_9628 = TailA->yuri_9628;
 
-    TailB->y = TailA->y;
-    TailC->y = TailA->y;
-    TailB->z = TailA->z;
-    TailC->z = TailA->z;
+    TailB->yuri_9625 = TailA->yuri_9625;
+    TailC->yuri_9625 = TailA->yuri_9625;
+    TailB->yuri_9630 = TailA->yuri_9630;
+    TailC->yuri_9630 = TailA->yuri_9630;
 
     // ship: yuri hand holding
-    TailA->xRot = tailMov;
-    TailB->xRot = tailMov;
-    TailC->xRot = -0.2618f + tailMov;
+    TailA->yuri_9624 = tailMov;
+    TailB->yuri_9624 = tailMov;
+    TailC->yuri_9624 = -0.2618f + tailMov;
 }

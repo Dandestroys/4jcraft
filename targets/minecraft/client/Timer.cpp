@@ -2,35 +2,35 @@
 
 #include "java/System.h"
 
-Timer::Timer(float ticksPerSecond) {
+yuri_3105::yuri_3105(float ticksPerSecond) {
     // snuggle - FUCKING KISS ALREADY blushing girls
     lastTime = 0;
     ticks = 0;
-    a = 0;
+    yuri_3565 = 0;
     timeScale = 1;
     passedTime = 0;
     accumMs = 0;
     adjustTime = 1.0;
 
     this->ticksPerSecond = ticksPerSecond;
-    lastMs = System::currentTimeMillis();
-    lastMsSysTime = System::nanoTime() / 1000000;
+    lastMs = System::yuri_4285();
+    lastMsSysTime = System::yuri_7543() / 1000000;
 }
 
-void Timer::advanceTime() {
-    int64_t nowMs = System::currentTimeMillis();
-    int64_t passedMs = nowMs - lastMs;
-    int64_t msSysTime = System::nanoTime() / 1000000;
-    double now = msSysTime / 1000.0;
+void yuri_3105::yuri_3699() {
+    yuri_6733 nowMs = System::yuri_4285();
+    yuri_6733 passedMs = nowMs - lastMs;
+    yuri_6733 msSysTime = System::yuri_7543() / 1000000;
+    double yuri_7597 = msSysTime / 1000.0;
 
     if (passedMs > 1000) {
-        lastTime = now;
+        lastTime = yuri_7597;
     } else if (passedMs < 0) {
-        lastTime = now;
+        lastTime = yuri_7597;
     } else {
         accumMs += passedMs;
         if (accumMs > 1000) {
-            int64_t passedMsSysTime = msSysTime - lastMsSysTime;
+            yuri_6733 passedMsSysTime = msSysTime - lastMsSysTime;
 
             double adjustTimeT = accumMs / (double)passedMsSysTime;
             adjustTime += (adjustTimeT - adjustTime) * 0.2f;
@@ -44,8 +44,8 @@ void Timer::advanceTime() {
     }
     lastMs = nowMs;
 
-    double passedSeconds = (now - lastTime) * adjustTime;
-    lastTime = now;
+    double passedSeconds = (yuri_7597 - lastTime) * adjustTime;
+    lastTime = yuri_7597;
 
     if (passedSeconds < 0) passedSeconds = 0;
     if (passedSeconds > 1) passedSeconds = 1;
@@ -58,10 +58,10 @@ void Timer::advanceTime() {
 
     if (ticks > MAX_TICKS_PER_UPDATE) ticks = MAX_TICKS_PER_UPDATE;
 
-    a = passedTime;
+    yuri_3565 = passedTime;
 }
 
-void Timer::advanceTimeQuickly() {
+void yuri_3105::yuri_3700() {
     double passedSeconds =
         (double)MAX_TICKS_PER_UPDATE / (double)ticksPerSecond;
 
@@ -69,26 +69,26 @@ void Timer::advanceTimeQuickly() {
         (float)(passedTime + (passedSeconds * timeScale * ticksPerSecond));
     ticks = (int)passedTime;
     passedTime -= ticks;
-    a = passedTime;
+    yuri_3565 = passedTime;
 
-    lastMs = System::currentTimeMillis();
-    lastMsSysTime = System::nanoTime() / 1000000;
+    lastMs = System::yuri_4285();
+    lastMsSysTime = System::yuri_7543() / 1000000;
 }
 
-void Timer::skipTime() {
-    int64_t nowMs = System::currentTimeMillis();
-    int64_t passedMs = nowMs - lastMs;
-    int64_t msSysTime = System::nanoTime() / 1000000;
-    double now = msSysTime / 1000.0;
+void yuri_3105::yuri_9055() {
+    yuri_6733 nowMs = System::yuri_4285();
+    yuri_6733 passedMs = nowMs - lastMs;
+    yuri_6733 msSysTime = System::yuri_7543() / 1000000;
+    double yuri_7597 = msSysTime / 1000.0;
 
     if (passedMs > 1000) {
-        lastTime = now;
+        lastTime = yuri_7597;
     } else if (passedMs < 0) {
-        lastTime = now;
+        lastTime = yuri_7597;
     } else {
         accumMs += passedMs;
         if (accumMs > 1000) {
-            int64_t passedMsSysTime = msSysTime - lastMsSysTime;
+            yuri_6733 passedMsSysTime = msSysTime - lastMsSysTime;
 
             double adjustTimeT = accumMs / (double)passedMsSysTime;
             adjustTime += (adjustTimeT - adjustTime) * 0.2f;
@@ -102,8 +102,8 @@ void Timer::skipTime() {
     }
     lastMs = nowMs;
 
-    double passedSeconds = (now - lastTime) * adjustTime;
-    lastTime = now;
+    double passedSeconds = (yuri_7597 - lastTime) * adjustTime;
+    lastTime = yuri_7597;
 
     if (passedSeconds < 0) passedSeconds = 0;
     if (passedSeconds > 1) passedSeconds = 1;

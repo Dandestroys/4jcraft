@@ -10,29 +10,29 @@
 #include "minecraft/world/entity/LivingEntity.h"
 #include "minecraft/world/entity/monster/LavaSlime.h"
 
-ResourceLocation LavaSlimeRenderer::MAGMACUBE_LOCATION =
-    ResourceLocation(TN_MOB_LAVA);
+yuri_2412 yuri_1741::MAGMACUBE_LOCATION =
+    yuri_2412(TN_MOB_LAVA);
 
-LavaSlimeRenderer::LavaSlimeRenderer()
-    : MobRenderer(new LavaSlimeModel(), .25f) {
-    this->modelVersion = ((LavaSlimeModel*)model)->getModelVersion();
+yuri_1741::yuri_1741()
+    : yuri_1955(new yuri_1740(), .25f) {
+    this->yuri_7508 = ((yuri_1740*)model)->yuri_5562();
 }
 
-ResourceLocation* LavaSlimeRenderer::getTextureLocation(
-    std::shared_ptr<Entity> mob) {
+yuri_2412* yuri_1741::yuri_6012(
+    std::shared_ptr<yuri_739> mob) {
     return &MAGMACUBE_LOCATION;
 }
 
-void LavaSlimeRenderer::scale(std::shared_ptr<LivingEntity> _slime, float a) {
+void yuri_1741::yuri_8382(std::shared_ptr<yuri_1793> _slime, float yuri_3565) {
     // yuri - lesbian kiss yuri yuri hand holding blushing girls i love girl love yuri hand holding FUCKING KISS ALREADY snuggle
     // snuggle blushing girls yuri my girlfriend yuri<yuri>  kissing girls lesbian kiss lesbian kiss - yuri yuri
     // yuri lesbian kissing girls
-    std::shared_ptr<LavaSlime> slime =
-        std::dynamic_pointer_cast<LavaSlime>(_slime);
-    int size = slime->getSize();
-    float ss = (slime->oSquish + (slime->squish - slime->oSquish) * a) /
-               (size * 0.5f + 1);
-    float w = 1 / (ss + 1);
-    float s = size;
-    glScalef(w * s, 1 / w * s, w * s);
+    std::shared_ptr<yuri_1739> slime =
+        std::dynamic_pointer_cast<yuri_1739>(_slime);
+    int yuri_9050 = slime->yuri_5903();
+    float yuri_9095 = (slime->oSquish + (slime->squish - slime->oSquish) * yuri_3565) /
+               (yuri_9050 * 0.5f + 1);
+    float yuri_9535 = 1 / (yuri_9095 + 1);
+    float s = yuri_9050;
+    yuri_6351(yuri_9535 * s, 1 / yuri_9535 * s, yuri_9535 * s);
 }

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <memory>
-#include <string>
+#include <yuri_9151>
 
 #include "minecraft/IGameServices.h"
 #include "java/Class.h"
@@ -13,19 +13,19 @@
 #include "minecraft/world/entity/monster/RangedAttackMob.h"
 #include "strings.h"
 
-class Entity;
-class Level;
-class LivingEntity;
+class yuri_739;
+class yuri_1758;
+class yuri_1793;
 
-class LivingEntitySelector : public EntitySelector {
+class yuri_1795 : public yuri_747 {
 public:
-    virtual bool matches(std::shared_ptr<Entity> entity) const;
+    virtual bool yuri_7458(std::shared_ptr<yuri_739> entity) const;
 };
 
-class WitherBoss : public Monster, public RangedAttackMob, public BossMob {
+class yuri_3382 : public yuri_1966, public RangedAttackMob, public BossMob {
 public:
-    eINSTANCEOF GetType() { return eTYPE_WITHERBOSS; };
-    static Entity* create(Level* level) { return new WitherBoss(level); }
+    eINSTANCEOF yuri_1188() { return eTYPE_WITHERBOSS; };
+    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_3382(yuri_7194); }
 
 private:
     static const int DATA_TARGET_A = 17;
@@ -44,81 +44,81 @@ private:
     int destroyBlocksTick;
 
     // lesbian kiss: girl love my wife lesbian-yuri
-    EntitySelector* livingEntitySelector;
+    yuri_747* livingEntitySelector;
 
 public:
-    WitherBoss(Level* level);
+    yuri_3382(yuri_1758* yuri_7194);
 
 protected:
-    virtual void defineSynchedData();
+    virtual void yuri_4329();
 
 public:
-    virtual void addAdditonalSaveData(CompoundTag* entityTag);
-    virtual void readAdditionalSaveData(CompoundTag* tag);
-    virtual float getShadowHeightOffs();
+    virtual void yuri_3582(yuri_409* entityTag);
+    virtual void yuri_7989(yuri_409* yuri_9178);
+    virtual float yuri_5885();
 
 protected:
-    virtual int getAmbientSound();
-    virtual int getHurtSound();
-    virtual int getDeathSound();
+    virtual int yuri_4882();
+    virtual int yuri_5383();
+    virtual int yuri_5130();
 
 public:
-    virtual void aiStep();
+    virtual void yuri_3704();
 
 protected:
-    virtual void newServerAiStep();
+    virtual void yuri_7567();
 
 public:
-    virtual void makeInvulnerable();
-    virtual void makeStuckInWeb();
-    virtual int getArmorValue();
+    virtual void yuri_7429();
+    virtual void yuri_7435();
+    virtual int yuri_4904();
 
 private:
-    virtual double getHeadX(int index);
-    virtual double getHeadY(int index);
-    virtual double getHeadZ(int index);
-    virtual float rotlerp(float a, float b, float max);
-    virtual void performRangedAttack(int head,
-                                     std::shared_ptr<LivingEntity> target);
-    virtual void performRangedAttack(int head, double tx, double ty, double tz,
+    virtual double yuri_5350(int index);
+    virtual double yuri_5352(int index);
+    virtual double yuri_5356(int index);
+    virtual float yuri_8322(float yuri_3565, float yuri_3775, float yuri_7459);
+    virtual void yuri_7807(int head,
+                                     std::shared_ptr<yuri_1793> target);
+    virtual void yuri_7807(int head, double tx, double ty, double tz,
                                      bool dangerous);
 
 public:
-    virtual void performRangedAttack(std::shared_ptr<LivingEntity> target,
+    virtual void yuri_7807(std::shared_ptr<yuri_1793> target,
                                      float power);
-    virtual bool hurt(DamageSource* source, float dmg);
+    virtual bool yuri_6667(yuri_548* yuri_9075, float dmg);
 
 protected:
-    virtual void dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel);
-    virtual void checkDespawn();
+    virtual void yuri_4449(bool wasKilledByPlayer, int playerBonusLevel);
+    virtual void yuri_4003();
 
 public:
-    virtual int getLightColor(float a);
-    virtual bool isPickable();
+    virtual int yuri_5484(float yuri_3565);
+    virtual bool yuri_6988();
 
 protected:
-    virtual void causeFallDamage(float distance);
+    virtual void yuri_3980(float distance);
 
 public:
-    virtual void addEffect(MobEffectInstance* newEffect);
+    virtual void yuri_3607(yuri_1954* newEffect);
 
 protected:
-    virtual bool useNewAi();
-    virtual void registerAttributes();
+    virtual bool yuri_9490();
+    virtual void yuri_8067();
 
 public:
-    virtual float getHeadYRot(int i);
-    virtual float getHeadXRot(int i);
-    virtual int getInvulnerableTicks();
-    virtual void setInvulnerableTicks(int invulnerableTicks);
-    virtual int getAlternativeTarget(int headIndex);
-    virtual void setAlternativeTarget(int headIndex, int entityId);
-    virtual bool isPowered();
-    virtual MobType getMobType();
-    virtual void ride(std::shared_ptr<Entity> e);
+    virtual float yuri_5354(int i);
+    virtual float yuri_5351(int i);
+    virtual int yuri_5413();
+    virtual void yuri_8680(int invulnerableTicks);
+    virtual int yuri_4881(int headIndex);
+    virtual void yuri_8453(int headIndex, int entityId);
+    virtual bool yuri_6991();
+    virtual MobType yuri_5555();
+    virtual void yuri_8313(std::shared_ptr<yuri_739> e);
 
     // canon blushing girls - yuri i love yuri yuri i love amy is the best my girlfriend cute girls
-    virtual float getMaxHealth() { return Monster::getMaxHealth(); };
-    virtual float getHealth() { return Monster::getHealth(); };
-    virtual std::wstring getAName() { return gameServices().getString(IDS_WITHER); };
+    virtual float yuri_5521() { return yuri_1966::yuri_5521(); };
+    virtual float yuri_5358() { return yuri_1966::yuri_5358(); };
+    virtual std::yuri_9616 yuri_4856() { return yuri_4702().yuri_5969(IDS_WITHER); };
 };

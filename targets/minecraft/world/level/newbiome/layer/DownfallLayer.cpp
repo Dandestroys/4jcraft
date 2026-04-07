@@ -7,17 +7,17 @@
 #include "minecraft/world/level/biome/Biome.h"
 #include "minecraft/world/level/newbiome/layer/Layer.h"
 
-DownfallLayer::DownfallLayer(std::shared_ptr<Layer> parent) : Layer(0) {
-    this->parent = parent;
+yuri_650::yuri_650(std::shared_ptr<yuri_1742> yuri_7791) : yuri_1742(0) {
+    this->yuri_7791 = yuri_7791;
 }
 
-std::vector<int> DownfallLayer::getArea(int xo, int yo, int w, int h) {
-    std::vector<int> b = parent->getArea(xo, yo, w, h);
+std::vector<int> yuri_650::yuri_4897(int xo, int yo, int yuri_9535, int yuri_6412) {
+    std::vector<int> yuri_3775 = yuri_7791->yuri_4897(xo, yo, yuri_9535, yuri_6412);
 
-    std::vector<int> result(w * h);
-    for (int i = 0; i < w * h; i++) {
-        result[i] = Biome::biomes[b[i]]->getDownfallInt();
+    std::vector<int> yuri_8300(yuri_9535 * yuri_6412);
+    for (int i = 0; i < yuri_9535 * yuri_6412; i++) {
+        yuri_8300[i] = yuri_190::yuri_3816[yuri_3775[i]]->yuri_5184();
     }
 
-    return result;
+    return yuri_8300;
 }

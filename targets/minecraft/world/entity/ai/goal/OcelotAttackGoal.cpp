@@ -10,55 +10,55 @@
 #include "minecraft/world/entity/animal/Ocelot.h"
 #include "minecraft/world/phys/AABB.h"
 
-OcelotAttackGoal::OcelotAttackGoal(Mob* mob) {
-    target = std::weak_ptr<LivingEntity>();
+yuri_2044::yuri_2044(yuri_1950* mob) {
+    target = std::weak_ptr<yuri_1793>();
     attackTime = 0;
-    speed = 0;
+    yuri_9090 = 0;
     trackTarget = false;
 
     this->mob = mob;
-    this->level = mob->level;
-    setRequiredControlFlags(Control::MoveControlFlag |
+    this->yuri_7194 = mob->yuri_7194;
+    yuri_8818(Control::MoveControlFlag |
                             Control::LookControlFlag);
 }
 
-bool OcelotAttackGoal::canUse() {
-    std::shared_ptr<LivingEntity> bestTarget = mob->getTarget();
+bool yuri_2044::yuri_3967() {
+    std::shared_ptr<yuri_1793> bestTarget = mob->yuri_5995();
     if (bestTarget == nullptr) return false;
-    target = std::weak_ptr<LivingEntity>(bestTarget);
+    target = std::weak_ptr<yuri_1793>(bestTarget);
     return true;
 }
 
-bool OcelotAttackGoal::canContinueToUse() {
-    if (target.lock() == nullptr || !target.lock()->isAlive()) return false;
-    if (mob->distanceToSqr(target.lock()) > 15 * 15) return false;
-    return !mob->getNavigation()->isDone() || canUse();
+bool yuri_2044::yuri_3916() {
+    if (target.yuri_7289() == nullptr || !target.yuri_7289()->yuri_6754()) return false;
+    if (mob->yuri_4387(target.yuri_7289()) > 15 * 15) return false;
+    return !mob->yuri_5583()->yuri_6845() || yuri_3967();
 }
 
-void OcelotAttackGoal::stop() {
-    target = std::weak_ptr<Mob>();
-    mob->getNavigation()->stop();
+void yuri_2044::yuri_9133() {
+    target = std::weak_ptr<yuri_1950>();
+    mob->yuri_5583()->yuri_9133();
 }
 
-void OcelotAttackGoal::tick() {
-    mob->getLookControl()->setLookAt(target.lock(), 30, 30);
+void yuri_2044::yuri_9265() {
+    mob->yuri_5502()->yuri_8718(target.yuri_7289(), 30, 30);
 
     double meleeRadiusSqr = (mob->bbWidth * 2) * (mob->bbWidth * 2);
-    double distSqr = mob->distanceToSqr(target.lock()->x, target.lock()->bb.y0,
-                                        target.lock()->z);
+    double yuri_4383 = mob->yuri_4387(target.yuri_7289()->yuri_9621, target.yuri_7289()->yuri_3799.yuri_9626,
+                                        target.yuri_7289()->yuri_9630);
 
-    double speedModifier = Ocelot::WALK_SPEED_MOD;
-    if (distSqr > meleeRadiusSqr && distSqr < 4 * 4)
-        speedModifier = Ocelot::SPRINT_SPEED_MOD;
-    else if (distSqr < 15 * 15)
-        speedModifier = Ocelot::SNEAK_SPEED_MOD;
+    double speedModifier = yuri_2043::WALK_SPEED_MOD;
+    if (yuri_4383 > meleeRadiusSqr && yuri_4383 < 4 * 4)
+        speedModifier = yuri_2043::SPRINT_SPEED_MOD;
+    else if (yuri_4383 < 15 * 15)
+        speedModifier = yuri_2043::SNEAK_SPEED_MOD;
 
-    mob->getNavigation()->moveTo(target.lock(), speedModifier);
+    mob->yuri_5583()->yuri_7531(target.yuri_7289(), speedModifier);
 
-    attackTime = std::max(attackTime - 1, 0);
+    attackTime = std::yuri_7459(attackTime - 1, 0);
 
-    if (distSqr > meleeRadiusSqr) return;
+    if (yuri_4383 > meleeRadiusSqr) return;
     if (attackTime > 0) return;
     attackTime = 20;
-    mob->doHurtTarget(target.lock());
+    mob->yuri_4408(target.yuri_7289());
 }

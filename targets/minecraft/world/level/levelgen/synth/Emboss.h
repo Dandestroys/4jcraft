@@ -1,12 +1,12 @@
 #pragma once
 #include "Synth.h"
 
-class Emboss : public Synth {
+class yuri_690 : public yuri_2996 {
 private:
-    Synth* synth;
+    yuri_2996* synth;
 
 public:
-    Emboss(Synth* synth);
+    yuri_690(yuri_2996* synth);
 
-    virtual double getValue(double x, double y);
+    virtual double yuri_6101(double yuri_9621, double yuri_9625);
 };

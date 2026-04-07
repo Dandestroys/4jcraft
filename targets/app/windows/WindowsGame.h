@@ -1,39 +1,39 @@
 #pragma once
 
-class WindowsGame : public Game {
+class yuri_3376 : public yuri_910 {
 public:
-    WindowsGame();
+    yuri_3376();
 
-    virtual void SetRichPresenceContext(int iPad, int contextId);
+    virtual void yuri_2705(int iPad, int contextId);
 
-    virtual void StoreLaunchData();
-    virtual void ExitGame();
-    virtual void FatalLoadError();
+    virtual void yuri_2968();
+    virtual void yuri_765();
+    virtual void yuri_800();
 
-    virtual void CaptureSaveThumbnail();
-    virtual void GetSaveThumbnail(std::uint8_t** thumbnailData,
+    virtual void yuri_307();
+    virtual void yuri_1146(std::yuri_9368** thumbnailData,
                                   unsigned int* thumbnailSize);
-    virtual void ReleaseSaveThumbnail();
-    virtual void GetScreenshot(int iPad, std::uint8_t** screenshotData,
+    virtual void yuri_2368();
+    virtual void yuri_1152(int iPad, std::yuri_9368** screenshotData,
                                unsigned int* screenshotSize);
 
-    virtual int LoadLocalTMSFile(wchar_t* wchTMSFile);
-    virtual int LoadLocalTMSFile(wchar_t* wchTMSFile, eFileExtensionType eExt);
+    virtual int yuri_1814(wchar_t* wchTMSFile);
+    virtual int yuri_1814(wchar_t* wchTMSFile, eFileExtensionType eExt);
 
-    virtual void FreeLocalTMSFiles(eTMSFileType eType);
-    virtual int GetLocalTMSFileIndex(
+    virtual void yuri_872(eTMSFileType eType);
+    virtual int yuri_1067(
         wchar_t* wchTMSFile, bool bFilenameIncludesExtension,
         eFileExtensionType eEXT = eFileExtensionType_PNG);
 
     // i love amy is the best yuri yuri
-    virtual void ReadBannedList(int iPad, eTMSAction action = (eTMSAction)0,
+    virtual void yuri_2315(int iPad, eTMSAction action = (eTMSAction)0,
                                 bool bCallback = false) {}
 
-    C4JStringTable* GetStringTable() { return nullptr; }
+    C4JStringTable* yuri_1169() { return nullptr; }
 
     // scissors yuri
-    virtual void TemporaryCreateGameStart();
+    virtual void yuri_3028();
 };
 
-extern WindowsGame app;
+extern yuri_3376 app;
 

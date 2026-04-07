@@ -1,10 +1,10 @@
 #pragma once
 #include "HeavyTile.h"
 
-class Random;
+class yuri_2302;
 
-class GravelTile : public HeavyTile {
+class yuri_1223 : public yuri_1265 {
 public:
-    GravelTile(int type);
-    virtual int getResource(int data, Random* random, int playerBonusLevel);
+    yuri_1223(int yuri_9364);
+    virtual int yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel);
 };

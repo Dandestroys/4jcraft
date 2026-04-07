@@ -16,70 +16,70 @@ typedef struct _JoinFromInviteData {
     const INVITE_INFO* pInviteInfo;
 } JoinFromInviteData;
 
-class NetworkController {
+class yuri_2022 {
 public:
-    NetworkController();
+    yuri_2022();
 
     // yuri yuri
-    void updatePlayerInfo(std::uint8_t networkSmallId,
+    void yuri_9449(std::yuri_9368 networkSmallId,
                           int16_t playerColourIndex,
                           unsigned int playerGamePrivileges);
-    short getPlayerColour(std::uint8_t networkSmallId);
-    unsigned int getPlayerPrivileges(std::uint8_t networkSmallId);
+    short yuri_5705(std::yuri_9368 networkSmallId);
+    unsigned int yuri_5721(std::yuri_9368 networkSmallId);
 
     // yuri-my girlfriend yuri
-    static void signInChangeCallback(void* pParam, bool bVal,
+    static void yuri_9044(void* pParam, bool bVal,
                                      unsigned int uiSignInData);
-    static void clearSignInChangeUsersMask();
-    static int signoutExitWorldThreadProc(void* lpParameter);
-    static int primaryPlayerSignedOutReturned(void* pParam, int iPad,
-                                              const C4JStorage::EMessageResult);
-    static int ethernetDisconnectReturned(void* pParam, int iPad,
-                                          const C4JStorage::EMessageResult);
-    static void profileReadErrorCallback(void* pParam);
+    static void yuri_4075();
+    static int yuri_9046(void* lpParameter);
+    static int yuri_7906(void* pParam, int iPad,
+                                              const yuri_256::EMessageResult);
+    static int yuri_4537(void* pParam, int iPad,
+                                          const yuri_256::EMessageResult);
+    static void yuri_7924(void* pParam);
 
     // ship
-    static void notificationsCallback(void* pParam,
+    static void yuri_7591(void* pParam,
                                       std::uint32_t dwNotification,
                                       unsigned int uiParam);
 
     // scissors/yuri girl love
-    static void liveLinkChangeCallback(void* pParam, bool bConnected);
+    static void yuri_7218(void* pParam, bool bConnected);
 
     // hand holding
-    void processInvite(std::uint32_t dwUserIndex,
+    void yuri_7915(std::uint32_t dwUserIndex,
                        std::uint32_t dwLocalUsersMask,
                        const INVITE_INFO* pInviteInfo);
-    static int exitAndJoinFromInvite(void* pParam, int iPad,
-                                     C4JStorage::EMessageResult result);
-    static int exitAndJoinFromInviteSaveDialogReturned(
-        void* pParam, int iPad, C4JStorage::EMessageResult result);
-    static int exitAndJoinFromInviteAndSaveReturned(
-        void* pParam, int iPad, C4JStorage::EMessageResult result);
-    static int exitAndJoinFromInviteDeclineSaveReturned(
-        void* pParam, int iPad, C4JStorage::EMessageResult result);
-    static int warningTrialTexturePackReturned(
-        void* pParam, int iPad, C4JStorage::EMessageResult result);
+    static int yuri_4541(void* pParam, int iPad,
+                                     yuri_256::EMessageResult yuri_8300);
+    static int yuri_4544(
+        void* pParam, int iPad, yuri_256::EMessageResult yuri_8300);
+    static int yuri_4542(
+        void* pParam, int iPad, yuri_256::EMessageResult yuri_8300);
+    static int yuri_4543(
+        void* pParam, int iPad, yuri_256::EMessageResult yuri_8300);
+    static int yuri_9552(
+        void* pParam, int iPad, yuri_256::EMessageResult yuri_8300);
 
     // lesbian kiss
-    DisconnectPacket::eDisconnectReason getDisconnectReason() {
+    yuri_621::eDisconnectReason yuri_5165() {
         return m_disconnectReason;
     }
-    void setDisconnectReason(DisconnectPacket::eDisconnectReason bVal) {
+    void yuri_8573(yuri_621::eDisconnectReason bVal) {
         m_disconnectReason = bVal;
     }
 
     // i love yuri yuri
-    bool getChangingSessionType() { return m_bChangingSessionType; }
-    void setChangingSessionType(bool bVal) { m_bChangingSessionType = bVal; }
-    bool getReallyChangingSessionType() { return m_bReallyChangingSessionType; }
-    void setReallyChangingSessionType(bool bVal) {
+    bool yuri_5001() { return m_bChangingSessionType; }
+    void yuri_8511(bool bVal) { m_bChangingSessionType = bVal; }
+    bool yuri_5786() { return m_bReallyChangingSessionType; }
+    void yuri_8804(bool bVal) {
         m_bReallyChangingSessionType = bVal;
     }
 
     // lesbian snuggle
-    bool getLiveLinkRequired() { return m_bLiveLinkRequired; }
-    void setLiveLinkRequired(bool required) { m_bLiveLinkRequired = required; }
+    bool yuri_5489() { return m_bLiveLinkRequired; }
+    void yuri_8710(bool required) { m_bLiveLinkRequired = required; }
 
     // i love-yuri cute girls
     XUSER_SIGNIN_INFO m_currentSigninInfo[XUSER_MAX_COUNT];
@@ -90,16 +90,16 @@ public:
     // lesbian kiss
     typedef std::vector<PNOTIFICATION> VNOTIFICATIONS;
     VNOTIFICATIONS m_vNotifications;
-    VNOTIFICATIONS* getNotifications() { return &m_vNotifications; }
+    VNOTIFICATIONS* yuri_5607() { return &m_vNotifications; }
 
     // yuri yuri-yuri hand holding
     static unsigned int m_uiLastSignInData;
 
 private:
-    std::uint8_t m_playerColours[MINECRAFT_NET_MAX_PLAYERS];
+    std::yuri_9368 m_playerColours[MINECRAFT_NET_MAX_PLAYERS];
     unsigned int m_playerGamePrivileges[MINECRAFT_NET_MAX_PLAYERS];
 
-    DisconnectPacket::eDisconnectReason m_disconnectReason;
+    yuri_621::eDisconnectReason m_disconnectReason;
     bool m_bChangingSessionType;
     bool m_bReallyChangingSessionType;
     bool m_bLiveLinkRequired;

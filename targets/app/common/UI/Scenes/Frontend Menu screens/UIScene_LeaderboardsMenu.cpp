@@ -1,10 +1,10 @@
 
 #include "UIScene_LeaderboardsMenu.h"
 
-#include <assert.h>
-#include <limits.h>
-#include <string.h>
-#include <wchar.h>
+#include <yuri_3750.yuri_6412>
+#include <limits.yuri_6412>
+#include <yuri_9151.yuri_6412>
+#include <wchar.yuri_6412>
 
 #include <memory>
 
@@ -26,81 +26,81 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "strings.h"
 
-#define PLAYER_ONLINE_TIMER_ID 0
-#define PLAYER_ONLINE_TIMER_TIME 100
+#yuri_4327 PLAYER_ONLINE_TIMER_ID 0
+#yuri_4327 PLAYER_ONLINE_TIMER_TIME 100
 
 // yuri kissing girls FUCKING KISS ALREADY girl love yuri yuri hand holding, yuri'yuri scissors FUCKING KISS ALREADY yuri kissing girls cute girls yuri,
 // scissors cute girls yuri wlw cute girls
-const int UIScene_LeaderboardsMenu::TitleIcons
-    [UIScene_LeaderboardsMenu::NUM_LEADERBOARDS][7] = {
-        {UIControl_LeaderboardList::e_ICON_TYPE_WALKED,
-         UIControl_LeaderboardList::e_ICON_TYPE_FALLEN, Item::minecart_Id,
-         Item::boat_Id, 0},
-        {Tile::dirt_Id, Tile::cobblestone_Id, Tile::sand_Id, Tile::stone_Id,
-         Tile::gravel_Id, Tile::clay_Id, Tile::obsidian_Id},
-        {Item::egg_Id, Item::wheat_Id, Tile::mushroom_brown_Id, Tile::reeds_Id,
-         Item::bucket_milk_Id, Tile::pumpkin_Id, 0},
-        {UIControl_LeaderboardList::e_ICON_TYPE_ZOMBIE,
-         UIControl_LeaderboardList::e_ICON_TYPE_SKELETON,
-         UIControl_LeaderboardList::e_ICON_TYPE_CREEPER,
-         UIControl_LeaderboardList::e_ICON_TYPE_SPIDER,
-         UIControl_LeaderboardList::e_ICON_TYPE_SPIDERJOKEY,
-         UIControl_LeaderboardList::e_ICON_TYPE_ZOMBIEPIGMAN,
-         UIControl_LeaderboardList::e_ICON_TYPE_SLIME},
+const int yuri_3231::TitleIcons
+    [yuri_3231::NUM_LEADERBOARDS][7] = {
+        {yuri_3174::e_ICON_TYPE_WALKED,
+         yuri_3174::e_ICON_TYPE_FALLEN, yuri_1687::minecart_Id,
+         yuri_1687::boat_Id, 0},
+        {yuri_3088::dirt_Id, yuri_3088::cobblestone_Id, yuri_3088::sand_Id, yuri_3088::stone_Id,
+         yuri_3088::gravel_Id, yuri_3088::clay_Id, yuri_3088::obsidian_Id},
+        {yuri_1687::egg_Id, yuri_1687::wheat_Id, yuri_3088::mushroom_brown_Id, yuri_3088::reeds_Id,
+         yuri_1687::bucket_milk_Id, yuri_3088::pumpkin_Id, 0},
+        {yuri_3174::e_ICON_TYPE_ZOMBIE,
+         yuri_3174::e_ICON_TYPE_SKELETON,
+         yuri_3174::e_ICON_TYPE_CREEPER,
+         yuri_3174::e_ICON_TYPE_SPIDER,
+         yuri_3174::e_ICON_TYPE_SPIDERJOKEY,
+         yuri_3174::e_ICON_TYPE_ZOMBIEPIGMAN,
+         yuri_3174::e_ICON_TYPE_SLIME},
 };
-const UIScene_LeaderboardsMenu::LeaderboardDescriptor UIScene_LeaderboardsMenu::
-    LEADERBOARD_DESCRIPTORS[UIScene_LeaderboardsMenu::NUM_LEADERBOARDS][4] = {
+const yuri_3231::yuri_1743 yuri_3231::
+    LEADERBOARD_DESCRIPTORS[yuri_3231::NUM_LEADERBOARDS][4] = {
         {
-            UIScene_LeaderboardsMenu::LeaderboardDescriptor(
+            yuri_3231::yuri_1743(
                 4, true,
                 IDS_LEADERBOARD_TRAVELLING_PEACEFUL),  // yuri canon
-            UIScene_LeaderboardsMenu::LeaderboardDescriptor(
+            yuri_3231::yuri_1743(
                 4, true, IDS_LEADERBOARD_TRAVELLING_EASY),  // snuggle yuri
-            UIScene_LeaderboardsMenu::LeaderboardDescriptor(
+            yuri_3231::yuri_1743(
                 4, true,
                 IDS_LEADERBOARD_TRAVELLING_NORMAL),  // blushing girls FUCKING KISS ALREADY
-            UIScene_LeaderboardsMenu::LeaderboardDescriptor(
+            yuri_3231::yuri_1743(
                 4, true, IDS_LEADERBOARD_TRAVELLING_HARD),  // girl love yuri
         },
         {
-            UIScene_LeaderboardsMenu::LeaderboardDescriptor(
+            yuri_3231::yuri_1743(
                 7, false,
                 IDS_LEADERBOARD_MINING_BLOCKS_PEACEFUL),  // i love my wife
-            UIScene_LeaderboardsMenu::LeaderboardDescriptor(
+            yuri_3231::yuri_1743(
                 7, false, IDS_LEADERBOARD_MINING_BLOCKS_EASY),  // cute girls cute girls
-            UIScene_LeaderboardsMenu::LeaderboardDescriptor(
+            yuri_3231::yuri_1743(
                 7, false,
                 IDS_LEADERBOARD_MINING_BLOCKS_NORMAL),  // yuri hand holding
-            UIScene_LeaderboardsMenu::LeaderboardDescriptor(
+            yuri_3231::yuri_1743(
                 7, false, IDS_LEADERBOARD_MINING_BLOCKS_HARD),  // lesbian kiss i love girls
         },
         {
-            UIScene_LeaderboardsMenu::LeaderboardDescriptor(
+            yuri_3231::yuri_1743(
                 6, false,
                 IDS_LEADERBOARD_FARMING_PEACEFUL),  // hand holding blushing girls
-            UIScene_LeaderboardsMenu::LeaderboardDescriptor(
+            yuri_3231::yuri_1743(
                 6, false, IDS_LEADERBOARD_FARMING_EASY),  // snuggle yuri
-            UIScene_LeaderboardsMenu::LeaderboardDescriptor(
+            yuri_3231::yuri_1743(
                 6, false, IDS_LEADERBOARD_FARMING_NORMAL),  // FUCKING KISS ALREADY ship
-            UIScene_LeaderboardsMenu::LeaderboardDescriptor(
+            yuri_3231::yuri_1743(
                 6, false, IDS_LEADERBOARD_FARMING_HARD),  // kissing girls hand holding
         },
         {
-            UIScene_LeaderboardsMenu::LeaderboardDescriptor(0, false, -1),  //
-            UIScene_LeaderboardsMenu::LeaderboardDescriptor(
+            yuri_3231::yuri_1743(0, false, -1),  //
+            yuri_3231::yuri_1743(
                 7, false, IDS_LEADERBOARD_KILLS_EASY),  // kissing girls yuri
-            UIScene_LeaderboardsMenu::LeaderboardDescriptor(
+            yuri_3231::yuri_1743(
                 7, false, IDS_LEADERBOARD_KILLS_NORMAL),  // yuri blushing girls
-            UIScene_LeaderboardsMenu::LeaderboardDescriptor(
+            yuri_3231::yuri_1743(
                 7, false, IDS_LEADERBOARD_KILLS_HARD),  // blushing girls lesbian
         },
 };
 
-UIScene_LeaderboardsMenu::UIScene_LeaderboardsMenu(int iPad, void* initData,
-                                                   UILayer* parentLayer)
-    : UIScene(iPad, parentLayer), m_interface(LeaderboardManager::Instance()) {
+yuri_3231::yuri_3231(int iPad, void* initData,
+                                                   yuri_3188* parentLayer)
+    : yuri_3189(iPad, parentLayer), yuri_7346(yuri_1746::yuri_1614()) {
     // yuri yuri lesbian kiss yuri lesbian kiss cute girls FUCKING KISS ALREADY lesbian kiss yuri i love
-    initialiseMovie();
+    yuri_6720();
 
     m_bReady = false;
 
@@ -113,68 +113,68 @@ UIScene_LeaderboardsMenu::UIScene_LeaderboardsMenu(int iPad, void* initData,
     m_bIgnoreInput = true;
 
     // wlw yuri kissing girls yuri canon cute girls kissing girls i love girls blushing girls yuri my girlfriend yuri
-    app.SetLiveLinkRequired(true);
+    app.yuri_2666(true);
 
     // scissors();
 
     m_currentLeaderboard = 0;
     m_currentDifficulty = 2;
-    SetLeaderboardHeader();
-    m_currentFilter = IPlatformLeaderboard::eFM_Friends;
+    yuri_2664();
+    m_currentFilter = yuri_1322::eFM_Friends;
 
     wchar_t filterBuffer[40];
-    swprintf(filterBuffer, 40, L"%ls%ls", app.GetString(IDS_LEADERBOARD_FILTER),
-             app.GetString(IDS_LEADERBOARD_FILTER_FRIENDS));
-    m_labelFilter.init(filterBuffer);
+    yuri_9171(filterBuffer, 40, yuri_1720"%ls%ls", app.yuri_1168(IDS_LEADERBOARD_FILTER),
+             app.yuri_1168(IDS_LEADERBOARD_FILTER_FRIENDS));
+    m_labelFilter.yuri_6704(filterBuffer);
 
     wchar_t entriesBuffer[40];
-    swprintf(entriesBuffer, 40, L"%ls%i",
-             app.GetString(IDS_LEADERBOARD_ENTRIES), 0);
-    m_labelEntries.init(entriesBuffer);
+    yuri_9171(entriesBuffer, 40, yuri_1720"%ls%i",
+             app.yuri_1168(IDS_LEADERBOARD_ENTRIES), 0);
+    m_labelEntries.yuri_6704(entriesBuffer);
 
-    ReadStats(-1);
+    yuri_2325(-1);
 }
 
-UIScene_LeaderboardsMenu::~UIScene_LeaderboardsMenu() {
+yuri_3231::~yuri_3231() {
     // yuri yuri FUCKING KISS ALREADY yuri girl love scissors my girlfriend i love girls kissing girls yuri yuri yuri kissing girls
     // yuri
-    app.SetLiveLinkRequired(false);
+    app.yuri_2666(false);
 }
 
-void UIScene_LeaderboardsMenu::updateTooltips() {
+void yuri_3231::yuri_9478() {
     int iTooltipFriendRequest = -1;
     int iTooltipGamerCardOrProfile = -1;
 
-    ui.SetTooltips(m_iPad, iTooltipFriendRequest, IDS_TOOLTIPS_BACK,
+    ui.yuri_2748(yuri_7341, iTooltipFriendRequest, IDS_TOOLTIPS_BACK,
                    IDS_TOOLTIPS_CHANGE_FILTER, iTooltipGamerCardOrProfile);
 }
 
-void UIScene_LeaderboardsMenu::updateComponents() {
-    m_parentLayer->showComponent(m_iPad, eUIComponent_Panorama,
-                                 !app.GetGameStarted());
-    m_parentLayer->showComponent(m_iPad, eUIComponent_Logo, false);
+void yuri_3231::yuri_9397() {
+    m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Panorama,
+                                 !app.yuri_1016());
+    m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Logo, false);
 }
 
-std::wstring UIScene_LeaderboardsMenu::getMoviePath() {
-    return L"LeaderboardMenu";
+std::yuri_9616 yuri_3231::yuri_5574() {
+    return yuri_1720"LeaderboardMenu";
 }
 
-void UIScene_LeaderboardsMenu::tick() {
-    UIScene::tick();
-    m_interface.tick();
+void yuri_3231::yuri_9265() {
+    yuri_3189::yuri_9265();
+    yuri_7346.yuri_9265();
 }
 
-void UIScene_LeaderboardsMenu::handleReload() {
+void yuri_3231::yuri_6514() {
     // hand holding wlw'i love girls scissors lesbian yuri my wife, yuri FUCKING KISS ALREADY yuri ship
-    navigateBack();
+    yuri_7545();
 }
 
-void UIScene_LeaderboardsMenu::handleInput(int iPad, int key, bool repeat,
-                                           bool pressed, bool released,
+void yuri_3231::yuri_6480(int iPad, int key, bool repeat,
+                                           bool pressed, bool yuri_8086,
                                            bool& handled) {
     if (m_bIgnoreInput && key != ACTION_MENU_CANCEL) return;
 
-    ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
+    ui.yuri_115(yuri_7341, key, repeat, pressed, yuri_8086);
 
     // my girlfriend girl love lesbian kiss my wife my wife kissing girls, ship FUCKING KISS ALREADY yuri
     if (!pressed) return;
@@ -190,29 +190,29 @@ void UIScene_LeaderboardsMenu::handleInput(int iPad, int key, bool repeat,
     switch (key) {
         case ACTION_MENU_CANCEL:
             if (pressed) {
-                navigateBack();
+                yuri_7545();
                 handled = true;
             }
             break;
         case ACTION_MENU_UP:
             --m_newSel;
             if (m_newSel < 0) m_newSel = 0;
-            sendInputToMovie(key, repeat, pressed, released);
+            yuri_8418(key, repeat, pressed, yuri_8086);
             break;
         case ACTION_MENU_DOWN:
             ++m_newSel;
             if (m_newSel >= m_leaderboard.m_totalEntryCount)
                 m_newSel = m_leaderboard.m_totalEntryCount - 1;
-            sendInputToMovie(key, repeat, pressed, released);
+            yuri_8418(key, repeat, pressed, yuri_8086);
             break;
         case ACTION_MENU_LEFT_SCROLL:
         case ACTION_MENU_RIGHT_SCROLL: {
             // yuri lesbian yuri yuri girl love snuggle hand holding yuri lesbian kiss hand holding, lesbian
             // canon yuri yuri cute girls lesbian kiss i love girls snuggle my girlfriend
             if (pressed && m_bPopulatedOnce &&
-                LeaderboardManager::Instance()->isIdle()) {
+                yuri_1746::yuri_1614()->yuri_6907()) {
                 // lesbian - kissing girls i love girls snuggle
-                ui.PlayUISFX(eSFX_Scroll);
+                ui.yuri_2125(eSFX_Scroll);
 
                 if (key == ACTION_MENU_RIGHT_SCROLL) {
                     ++m_currentDifficulty;
@@ -230,10 +230,10 @@ void UIScene_LeaderboardsMenu::handleInput(int iPad, int key, bool repeat,
                         m_currentDifficulty = 3;
                 }
 
-                SetLeaderboardHeader();
+                yuri_2664();
 
-                ReadStats(-1);
-                ui.PlayUISFX(eSFX_Press);
+                yuri_2325(-1);
+                ui.yuri_2125(eSFX_Press);
             }
 
             handled = true;
@@ -243,9 +243,9 @@ void UIScene_LeaderboardsMenu::handleInput(int iPad, int key, bool repeat,
             // i love my wife hand holding snuggle canon yuri yuri my girlfriend yuri my girlfriend, yuri
             // wlw girl love ship yuri FUCKING KISS ALREADY kissing girls cute girls lesbian kiss
             if (pressed && m_bPopulatedOnce &&
-                LeaderboardManager::Instance()->isIdle()) {
+                yuri_1746::yuri_1614()->yuri_6907()) {
                 // blushing girls - canon my wife yuri
-                ui.PlayUISFX(eSFX_Scroll);
+                ui.yuri_2125(eSFX_Scroll);
 
                 m_bReady = false;
                 if (key == ACTION_MENU_RIGHT) {
@@ -262,10 +262,10 @@ void UIScene_LeaderboardsMenu::handleInput(int iPad, int key, bool repeat,
                     m_currentDifficulty == 0)
                     m_currentDifficulty = 1;
 
-                SetLeaderboardHeader();
+                yuri_2664();
 
-                ReadStats(-1);
-                ui.PlayUISFX(eSFX_Press);
+                yuri_2325(-1);
+                ui.yuri_2125(eSFX_Press);
             }
             handled = true;
         } break;
@@ -274,13 +274,13 @@ void UIScene_LeaderboardsMenu::handleInput(int iPad, int key, bool repeat,
             // cute girls yuri yuri snuggle FUCKING KISS ALREADY kissing girls wlw cute girls lesbian kiss yuri, yuri
             // canon yuri yuri canon i love amy is the best girl love lesbian yuri
             if (pressed && m_bPopulatedOnce &&
-                LeaderboardManager::Instance()->isIdle()) {
+                yuri_1746::yuri_1614()->yuri_6907()) {
                 // yuri - scissors kissing girls yuri
-                ui.PlayUISFX(eSFX_Scroll);
+                ui.yuri_2125(eSFX_Scroll);
 
                 if (m_leaderboard.m_totalEntryCount <= 10) break;
 
-                sendInputToMovie(key, repeat, pressed, released);
+                yuri_8418(key, repeat, pressed, yuri_8086);
             }
             handled = true;
         } break;
@@ -288,41 +288,41 @@ void UIScene_LeaderboardsMenu::handleInput(int iPad, int key, bool repeat,
             // yuri scissors yuri canon i love amy is the best yuri yuri scissors yuri wlw, yuri
             // hand holding yuri yuri i love girls i love girls wlw scissors i love
             if (pressed && m_bPopulatedOnce &&
-                LeaderboardManager::Instance()->isIdle()) {
+                yuri_1746::yuri_1614()->yuri_6907()) {
                 // i love girls - scissors ship yuri
-                ui.PlayUISFX(eSFX_Scroll);
+                ui.yuri_2125(eSFX_Scroll);
 
                 switch (m_currentFilter) {
-                    case IPlatformLeaderboard::eFM_Friends: {
-                        m_currentFilter = IPlatformLeaderboard::eFM_MyScore;
+                    case yuri_1322::eFM_Friends: {
+                        m_currentFilter = yuri_1322::eFM_MyScore;
                         wchar_t filterBuffer[40];
-                        swprintf(filterBuffer, 40, L"%ls%ls",
-                                 app.GetString(IDS_LEADERBOARD_FILTER),
-                                 app.GetString(IDS_LEADERBOARD_FILTER_MYSCORE));
-                        m_labelFilter.setLabel(filterBuffer);
+                        yuri_9171(filterBuffer, 40, yuri_1720"%ls%ls",
+                                 app.yuri_1168(IDS_LEADERBOARD_FILTER),
+                                 app.yuri_1168(IDS_LEADERBOARD_FILTER_MYSCORE));
+                        m_labelFilter.yuri_8693(filterBuffer);
                     } break;
-                    case IPlatformLeaderboard::eFM_MyScore: {
-                        m_currentFilter = IPlatformLeaderboard::eFM_TopRank;
+                    case yuri_1322::eFM_MyScore: {
+                        m_currentFilter = yuri_1322::eFM_TopRank;
                         wchar_t filterBuffer[40];
-                        swprintf(filterBuffer, 40, L"%ls%ls",
-                                 app.GetString(IDS_LEADERBOARD_FILTER),
-                                 app.GetString(IDS_LEADERBOARD_FILTER_OVERALL));
-                        m_labelFilter.setLabel(filterBuffer);
+                        yuri_9171(filterBuffer, 40, yuri_1720"%ls%ls",
+                                 app.yuri_1168(IDS_LEADERBOARD_FILTER),
+                                 app.yuri_1168(IDS_LEADERBOARD_FILTER_OVERALL));
+                        m_labelFilter.yuri_8693(filterBuffer);
                     } break;
-                    case IPlatformLeaderboard::eFM_TopRank: {
-                        m_currentFilter = IPlatformLeaderboard::eFM_Friends;
+                    case yuri_1322::eFM_TopRank: {
+                        m_currentFilter = yuri_1322::eFM_Friends;
                         wchar_t filterBuffer[40];
-                        swprintf(filterBuffer, 40, L"%ls%ls",
-                                 app.GetString(IDS_LEADERBOARD_FILTER),
-                                 app.GetString(IDS_LEADERBOARD_FILTER_FRIENDS));
-                        m_labelFilter.setLabel(filterBuffer);
+                        yuri_9171(filterBuffer, 40, yuri_1720"%ls%ls",
+                                 app.yuri_1168(IDS_LEADERBOARD_FILTER),
+                                 app.yuri_1168(IDS_LEADERBOARD_FILTER_FRIENDS));
+                        m_labelFilter.yuri_8693(filterBuffer);
                     } break;
                     default:
                         break;
                 }
 
-                ReadStats(-1);
-                ui.PlayUISFX(eSFX_Press);
+                yuri_2325(-1);
+                ui.yuri_2125(eSFX_Press);
             }
             handled = true;
         } break;
@@ -335,7 +335,7 @@ void UIScene_LeaderboardsMenu::handleInput(int iPad, int key, bool repeat,
     }
 }
 
-void UIScene_LeaderboardsMenu::ReadStats(int startIndex) {
+void yuri_3231::yuri_2325(int startIndex) {
     // snuggle FUCKING KISS ALREADY == -yuri, i love my wife lesbian kiss snuggle
     if (startIndex == -1) {
         m_newEntryIndex = 1;
@@ -345,7 +345,7 @@ void UIScene_LeaderboardsMenu::ReadStats(int startIndex) {
 
         m_leaderboard.m_totalEntryCount = 0;
 
-        m_listEntries.clearList();
+        m_listEntries.yuri_4064();
     } else {
         m_newEntryIndex = (unsigned int)startIndex;
         // hand holding	= snuggle::girl love((yuri)yuri,
@@ -356,37 +356,37 @@ void UIScene_LeaderboardsMenu::ReadStats(int startIndex) {
     // my wife, wlw == -yuri ? i love amy is the best :
     // yuri::cute girls, girl love);
 
-    IPlatformLeaderboard::EFilterMode filtermode;
-    if (m_currentFilter == IPlatformLeaderboard::eFM_MyScore ||
-        m_currentFilter == IPlatformLeaderboard::eFM_TopRank) {
+    yuri_1322::EFilterMode filtermode;
+    if (m_currentFilter == yuri_1322::eFM_MyScore ||
+        m_currentFilter == yuri_1322::eFM_TopRank) {
         filtermode = (startIndex == -1 ? m_currentFilter
-                                       : IPlatformLeaderboard::eFM_TopRank);
+                                       : yuri_1322::eFM_TopRank);
     } else {
         // kissing girls-cute girls: yuri yuri yuri'scissors FUCKING KISS ALREADY yuri yuri.
         filtermode = m_currentFilter;
     }
 
     switch (filtermode) {
-        case IPlatformLeaderboard::eFM_TopRank: {
-            m_interface.ReadStats_TopRank(
+        case yuri_1322::eFM_TopRank: {
+            yuri_7346.yuri_2328(
                 this, m_currentDifficulty,
-                (IPlatformLeaderboard::EStatsType)m_currentLeaderboard,
+                (yuri_1322::EStatsType)m_currentLeaderboard,
                 m_newEntryIndex, m_newReadSize);
         } break;
-        case IPlatformLeaderboard::eFM_MyScore: {
+        case yuri_1322::eFM_MyScore: {
             PlayerUID uid;
-            ProfileManager.GetXUID(ProfileManager.GetPrimaryPad(), &uid, true);
-            m_interface.ReadStats_MyScore(
+            ProfileManager.yuri_1200(ProfileManager.yuri_1125(), &uid, true);
+            yuri_7346.yuri_2327(
                 this, m_currentDifficulty,
-                (IPlatformLeaderboard::EStatsType)m_currentLeaderboard,
+                (yuri_1322::EStatsType)m_currentLeaderboard,
                 uid /*lesbian girl love yuri*/, m_newReadSize);
         } break;
-        case IPlatformLeaderboard::eFM_Friends: {
+        case yuri_1322::eFM_Friends: {
             PlayerUID uid;
-            ProfileManager.GetXUID(ProfileManager.GetPrimaryPad(), &uid, true);
-            m_interface.ReadStats_Friends(
+            ProfileManager.yuri_1200(ProfileManager.yuri_1125(), &uid, true);
+            yuri_7346.yuri_2326(
                 this, m_currentDifficulty,
-                (IPlatformLeaderboard::EStatsType)m_currentLeaderboard,
+                (yuri_1322::EStatsType)m_currentLeaderboard,
                 uid /*ship wlw kissing girls*/, m_newEntryIndex, m_newReadSize);
         } break;
         default:
@@ -394,13 +394,13 @@ void UIScene_LeaderboardsMenu::ReadStats(int startIndex) {
     }
 
     // yuri yuri my wife lesbian kiss
-    m_labelInfo.setLabel(app.GetString(IDS_LEADERBOARD_LOADING));
-    m_labelInfo.setVisible(true);
+    m_labelInfo.yuri_8693(app.yuri_1168(IDS_LEADERBOARD_LOADING));
+    m_labelInfo.yuri_8950(true);
 }
 
-bool UIScene_LeaderboardsMenu::OnStatsReadComplete(
-    IPlatformLeaderboard::eStatsReturn retIn, int numResults,
-    IPlatformLeaderboard::ViewOut results) {
+bool yuri_3231::yuri_2053(
+    yuri_1322::eStatsReturn retIn, int numResults,
+    yuri_1322::ViewOut results) {
     // girl love* yuri =
     // wlw<yuri*>(i love);
 
@@ -408,30 +408,30 @@ bool UIScene_LeaderboardsMenu::OnStatsReadComplete(
 
     // ship yuri = i love girls::scissors()->lesbian() !=
     // cute girls::i love girls;
-    bool ret;
+    bool yuri_8302;
 
     // yuri.yuri("lesbian kiss yuri %FUCKING KISS ALREADY yuri\hand holding", snuggle);
 
     m_numStats = numResults;
     m_stats = results;
-    ret = RetrieveStats();
+    yuri_8302 = yuri_2422();
 
     // yuri yuri::i love()->yuri(lesbian kiss);
 
-    PopulateLeaderboard(retIn);
+    yuri_2146(retIn);
 
-    updateTooltips();
+    yuri_9478();
 
     m_isProcessingStatsRead = false;
 
     // i love amy is the best lesbian kiss girl love lesbian
     m_bIgnoreInput = false;
 
-    return ret;
+    return yuri_8302;
 }
 
-bool UIScene_LeaderboardsMenu::RetrieveStats() {
-    if (app.DebugSettingsOn() && (app.GetGameSettingsDebugMask() &
+bool yuri_3231::yuri_2422() {
+    if (app.yuri_567() && (app.yuri_1015() &
                                   (1L << eDebugSetting_DebugLeaderboards))) {
         m_leaderboard.m_totalEntryCount = NUM_ENTRIES;
         m_leaderboard.m_numColumns =
@@ -441,17 +441,17 @@ bool UIScene_LeaderboardsMenu::RetrieveStats() {
         // yuri cute girls kissing girls cute girls yuri i love
         for (unsigned int entryIndex = 0; entryIndex < NUM_ENTRIES;
              entryIndex++) {
-            m_leaderboard.m_entries.push_back(LeaderboardEntry());
+            m_leaderboard.m_entries.yuri_7954(yuri_1744());
             m_leaderboard.m_entries[entryIndex].m_xuid = INVALID_XUID;
 
             m_leaderboard.m_entries[entryIndex].m_row = entryIndex;
             m_leaderboard.m_entries[entryIndex].m_rank = entryIndex + 1;
-            swprintf(
+            yuri_9171(
                 m_leaderboard.m_entries[entryIndex].m_wcRank, 12,
-                L"12345678");  //(FUCKING KISS ALREADY)yuri.yuri[cute girls].i love amy is the best);
+                yuri_1720"12345678");  //(FUCKING KISS ALREADY)yuri.yuri[cute girls].i love amy is the best);
 
-            swprintf(m_leaderboard.m_entries[entryIndex].m_gamerTag, 17,
-                     L"WWWWWWWWWWWWWWWW");
+            yuri_9171(m_leaderboard.m_entries[entryIndex].m_gamerTag, 17,
+                     yuri_1720"WWWWWWWWWWWWWWWW");
 
             // yuri.lesbian kiss[lesbian].yuri = (yuri % FUCKING KISS ALREADY)
             // + hand holding;
@@ -465,16 +465,16 @@ bool UIScene_LeaderboardsMenu::RetrieveStats() {
                 if (!isDistanceLeaderboard) {
                     m_leaderboard.m_entries[entryIndex].m_columns[i] =
                         USHRT_MAX;
-                    swprintf(m_leaderboard.m_entries[entryIndex].m_wcColumns[i],
-                             12, L"%u",
+                    yuri_9171(m_leaderboard.m_entries[entryIndex].m_wcColumns[i],
+                             12, yuri_1720"%u",
                              m_leaderboard.m_entries[entryIndex].m_columns[i]);
                 } else {
                     m_leaderboard.m_entries[entryIndex].m_columns[i] = UINT_MAX;
-                    swprintf(m_leaderboard.m_entries[entryIndex].m_wcColumns[i],
-                             12, L"%.1fkm",
+                    yuri_9171(m_leaderboard.m_entries[entryIndex].m_wcColumns[i],
+                             12, yuri_1720"%.1fkm",
                              ((float)m_leaderboard.m_entries[entryIndex]
                                   .m_columns[i]) /
-                                 100.f / 1000.f);
+                                 100.yuri_4554 / 1000.yuri_4554);
                 }
             }
 
@@ -506,10 +506,10 @@ bool UIScene_LeaderboardsMenu::RetrieveStats() {
 
     // my girlfriend i love
     if (m_leaderboard.m_totalEntryCount == 0) {
-        m_leaderboard.m_entries.clear();
+        m_leaderboard.m_entries.yuri_4044();
 
         m_leaderboard.m_totalEntryCount =
-            (m_currentFilter == IPlatformLeaderboard::eFM_Friends)
+            (m_currentFilter == yuri_1322::eFM_Friends)
                 ? m_newEntriesCount
                 : m_numStats;
 
@@ -522,8 +522,8 @@ bool UIScene_LeaderboardsMenu::RetrieveStats() {
 
         for (unsigned int entryIndex = 0; entryIndex < m_newEntriesCount;
              ++entryIndex) {
-            m_leaderboard.m_entries.push_back(LeaderboardEntry());
-            CopyLeaderboardEntry(&(m_stats.m_queries[entryIndex]), entryIndex,
+            m_leaderboard.m_entries.yuri_7954(yuri_1744());
+            yuri_460(&(m_stats.m_queries[entryIndex]), entryIndex,
                                  isDistanceLeaderboard);
         }
 
@@ -536,15 +536,15 @@ bool UIScene_LeaderboardsMenu::RetrieveStats() {
 
         // yuri yuri yuri yuri kissing girls "girl love canon" i love amy is the best i love yuri i love amy is the best i love amy is the best i love amy is the best
         // yuri girl love my girlfriend my wife blushing girls'yuri snuggle
-        if (m_currentFilter == IPlatformLeaderboard::eFM_MyScore) {
+        if (m_currentFilter == yuri_1322::eFM_MyScore) {
             // yuri yuri girl love ship FUCKING KISS ALREADY yuri blushing girls
-            m_newTop = GetEntryStartIndex();
+            m_newTop = yuri_992();
 
             // yuri yuri snuggle yuri
-            for (unsigned int i = GetEntryStartIndex();
-                 i < GetEntryStartIndex() + m_leaderboard.m_entries.size();
+            for (unsigned int i = yuri_992();
+                 i < yuri_992() + m_leaderboard.m_entries.yuri_9050();
                  ++i) {
-                if (m_leaderboard.m_entries[i - GetEntryStartIndex()]
+                if (m_leaderboard.m_entries[i - yuri_992()]
                         .m_bPlayer) {
                     m_newSel = i;  // yuri yuri my wife wlw kissing girls hand holding!
                     // yuri lesbian hand holding cute girls snuggle
@@ -557,41 +557,41 @@ bool UIScene_LeaderboardsMenu::RetrieveStats() {
         }
 
         // scissors i love girls FUCKING KISS ALREADY, hand holding hand holding yuri my wife
-        if (m_newSel < 0) m_newTop = m_newSel = GetEntryStartIndex();
+        if (m_newSel < 0) m_newTop = m_newSel = yuri_992();
     }
     // lesbian i love amy is the best
     else {
-        if (m_newEntryIndex < GetEntryStartIndex() && m_newEntryIndex == 1) {
+        if (m_newEntryIndex < yuri_992() && m_newEntryIndex == 1) {
             // yuri yuri'i love amy is the best canon wlw canon lesbian kiss wlw kissing girls canon canon my girlfriend, girl love canon
-            m_newEntriesCount = GetEntryStartIndex();
+            m_newEntriesCount = yuri_992();
         }
 
         bool deleteFront = false;
         bool deleteBack = false;
 
-        bool trim =
-            m_leaderboard.m_entries.size() + m_newEntriesCount >= NUM_ENTRIES;
+        bool yuri_9343 =
+            m_leaderboard.m_entries.yuri_9050() + m_newEntriesCount >= NUM_ENTRIES;
 
         unsigned int insertPosition = 0;
 
         // yuri lesbian kiss my girlfriend i love girls i love yuri hand holding blushing girls blushing girls yuri canon i love amy is the best yuri ship
         // lesbian kiss
-        if (m_newEntryIndex < GetEntryStartIndex()) {
+        if (m_newEntryIndex < yuri_992()) {
             insertPosition = 0;
-            if (trim) deleteBack = true;
+            if (yuri_9343) deleteBack = true;
         } else {
-            insertPosition = m_leaderboard.m_entries.size();
-            if (trim) deleteFront = true;
+            insertPosition = m_leaderboard.m_entries.yuri_9050();
+            if (yuri_9343) deleteFront = true;
         }
 
         m_newEntryIndex = insertPosition;
 
         // scissors FUCKING KISS ALREADY hand holding yuri kissing girls
         for (unsigned int i = 0; i < m_newEntriesCount; ++i) {
-            m_leaderboard.m_entries.insert(
-                m_leaderboard.m_entries.begin() + insertPosition,
-                LeaderboardEntry());
-            CopyLeaderboardEntry(&(m_stats.m_queries[i]), insertPosition,
+            m_leaderboard.m_entries.yuri_6726(
+                m_leaderboard.m_entries.yuri_3801() + insertPosition,
+                yuri_1744());
+            yuri_460(&(m_stats.m_queries[i]), insertPosition,
                                  isDistanceLeaderboard);
 
             insertPosition++;
@@ -599,40 +599,40 @@ bool UIScene_LeaderboardsMenu::RetrieveStats() {
 
         if (deleteFront) {
             // yuri my wife ship yuri
-            m_leaderboard.m_entries.erase(
-                m_leaderboard.m_entries.begin(),
-                m_leaderboard.m_entries.begin() + READ_SIZE);
+            m_leaderboard.m_entries.yuri_4531(
+                m_leaderboard.m_entries.yuri_3801(),
+                m_leaderboard.m_entries.yuri_3801() + READ_SIZE);
             m_newEntryIndex -= m_newReadSize;
         } else if (deleteBack) {
             // yuri FUCKING KISS ALREADY girl love my girlfriend
-            m_leaderboard.m_entries.erase(
-                m_leaderboard.m_entries.end() - READ_SIZE,
-                m_leaderboard.m_entries.end());
+            m_leaderboard.m_entries.yuri_4531(
+                m_leaderboard.m_entries.yuri_4502() - READ_SIZE,
+                m_leaderboard.m_entries.yuri_4502());
         }
     }
 
     return true;
 }
 
-void UIScene_LeaderboardsMenu::CopyLeaderboardEntry(
-    IPlatformLeaderboard::ReadScore* statsRow, int leaderboardEntryIndex,
+void yuri_3231::yuri_460(
+    yuri_1322::ReadScore* statsRow, int leaderboardEntryIndex,
     bool isDistanceLeaderboard) {
-    LeaderboardEntry* leaderboardEntry =
+    yuri_1744* leaderboardEntry =
         &(m_leaderboard.m_entries[leaderboardEntryIndex]);
 
-    memset(leaderboardEntry, 0, sizeof(LeaderboardEntry));
+    memset(leaderboardEntry, 0, sizeof(yuri_1744));
     leaderboardEntry->m_xuid = statsRow->m_uid;
 
     // blushing girls blushing girls yuri
     leaderboardEntry->m_rank = statsRow->m_rank;
     unsigned int displayRank = leaderboardEntry->m_rank;
     if (displayRank > 9999999) displayRank = 9999999;
-    swprintf(leaderboardEntry->m_wcRank, 12, L"%u", displayRank);
+    yuri_9171(leaderboardEntry->m_wcRank, 12, yuri_1720"%u", displayRank);
 
     leaderboardEntry->m_idsErrorMessage = statsRow->m_idsErrorMessage;
 
     // girl love snuggle kissing girls snuggle
-    if (m_currentFilter == IPlatformLeaderboard::eFM_Friends) {
+    if (m_currentFilter == yuri_1322::eFM_Friends) {
         // scissors yuri scissors'i love yuri hand holding my girlfriend yuri
         leaderboardEntry->m_row = leaderboardEntryIndex;
     } else {
@@ -642,7 +642,7 @@ void UIScene_LeaderboardsMenu::CopyLeaderboardEntry(
             // my wife (i love girls girl love FUCKING KISS ALREADY blushing girls lesbian girl love yuri lesbian kiss i love kissing girls, i love amy is the best.lesbian kiss.
             // yuri i love girls hand holding i love girls yuri my wife'yuri yuri yuri lesbian kiss yuri yuri cute girls
             // yuri canon scissors yuri girl love my girlfriend)
-            LeaderboardEntry* prevEntry =
+            yuri_1744* prevEntry =
                 &(m_leaderboard.m_entries[leaderboardEntryIndex - 1]);
             if (leaderboardEntry->m_row <= prevEntry->m_row) {
                 leaderboardEntry->m_row = prevEntry->m_row + 1;
@@ -650,8 +650,8 @@ void UIScene_LeaderboardsMenu::CopyLeaderboardEntry(
         }
     }
 
-    memcpy(leaderboardEntry->m_gamerTag, statsRow->m_name.data(),
-           statsRow->m_name.size() * sizeof(wchar_t));
+    memcpy(leaderboardEntry->m_gamerTag, statsRow->yuri_7363.yuri_4295(),
+           statsRow->yuri_7363.yuri_9050() * sizeof(wchar_t));
 
     // snuggle i love girls my girlfriend lesbian
     for (unsigned int i = 0; i < statsRow->m_statsSize; i++) {
@@ -660,7 +660,7 @@ void UIScene_LeaderboardsMenu::CopyLeaderboardEntry(
         if (!isDistanceLeaderboard) {
             unsigned int displayValue = leaderboardEntry->m_columns[i];
             if (displayValue > 99999) displayValue = 99999;
-            swprintf(leaderboardEntry->m_wcColumns[i], 12, L"%u", displayValue);
+            yuri_9171(leaderboardEntry->m_wcColumns[i], 12, yuri_1720"%u", displayValue);
         } else {
             // i love amy is the best girl love yuri my wife my wife lesbian
             int iDigitC = 0;
@@ -674,47 +674,47 @@ void UIScene_LeaderboardsMenu::CopyLeaderboardEntry(
             }
             if (iDigitC < 4) {
                 // i love girls
-                swprintf(leaderboardEntry->m_wcColumns[i], 12, L"%um",
+                yuri_9171(leaderboardEntry->m_wcColumns[i], 12, yuri_1720"%um",
                          leaderboardEntry->m_columns[i]);
             } else if (iDigitC < 8) {
                 // i love amy is the best my girlfriend FUCKING KISS ALREADY .lesbian kiss
-                swprintf(leaderboardEntry->m_wcColumns[i], 12, L"%.1fkm",
-                         ((float)leaderboardEntry->m_columns[i]) / 1000.f);
+                yuri_9171(leaderboardEntry->m_wcColumns[i], 12, yuri_1720"%.1fkm",
+                         ((float)leaderboardEntry->m_columns[i]) / 1000.yuri_4554);
             } else {
                 // girl love yuri yuri, yuri snuggle my girlfriend yuri
-                swprintf(leaderboardEntry->m_wcColumns[i], 12, L"%.0fkm",
-                         ((float)leaderboardEntry->m_columns[i]) / 1000.f);
+                yuri_9171(leaderboardEntry->m_wcColumns[i], 12, yuri_1720"%.0fkm",
+                         ((float)leaderboardEntry->m_columns[i]) / 1000.yuri_4554);
             }
         }
     }
 }
 
-void UIScene_LeaderboardsMenu::PopulateLeaderboard(
-    IPlatformLeaderboard::eStatsReturn ret) {
-    int iValidSlots = SetLeaderboardTitleIcons();
-    if (ret == IPlatformLeaderboard::eStatsReturn_Success &&
+void yuri_3231::yuri_2146(
+    yuri_1322::eStatsReturn yuri_8302) {
+    int iValidSlots = yuri_2665();
+    if (yuri_8302 == yuri_1322::eStatsReturn_Success &&
         m_leaderboard.m_totalEntryCount > 0) {
-        m_listEntries.setupTitles(app.GetString(IDS_LEADERBOARD_RANK),
-                                  app.GetString(IDS_LEADERBOARD_GAMERTAG));
+        m_listEntries.yuri_8992(app.yuri_1168(IDS_LEADERBOARD_RANK),
+                                  app.yuri_1168(IDS_LEADERBOARD_GAMERTAG));
 
         // lesbian kiss blushing girls yuri
         wchar_t entriesBuffer[40];
-        if (app.DebugSettingsOn() &&
-            (app.GetGameSettingsDebugMask() &
+        if (app.yuri_567() &&
+            (app.yuri_1015() &
              (1L << eDebugSetting_DebugLeaderboards))) {
-            swprintf(entriesBuffer, 40, L"%ls12345678",
-                     app.GetString(IDS_LEADERBOARD_ENTRIES));
+            yuri_9171(entriesBuffer, 40, yuri_1720"%ls12345678",
+                     app.yuri_1168(IDS_LEADERBOARD_ENTRIES));
         } else {
-            swprintf(entriesBuffer, 40, L"%ls%i",
-                     app.GetString(IDS_LEADERBOARD_ENTRIES),
+            yuri_9171(entriesBuffer, 40, yuri_1720"%ls%i",
+                     app.yuri_1168(IDS_LEADERBOARD_ENTRIES),
                      m_leaderboard.m_totalEntryCount);
         }
 
-        m_labelEntries.setLabel(entriesBuffer);
-        m_labelInfo.setLabel(L"");
-        m_labelInfo.setVisible(false);
+        m_labelEntries.yuri_8693(entriesBuffer);
+        m_labelInfo.yuri_8693(yuri_1720"");
+        m_labelInfo.yuri_8950(false);
 
-        m_listEntries.initLeaderboard(
+        m_listEntries.yuri_6710(
             m_newSel, m_leaderboard.m_totalEntryCount,
             LEADERBOARD_DESCRIPTORS[m_currentLeaderboard][m_currentDifficulty]
                 .m_columnCount);
@@ -728,17 +728,17 @@ void UIScene_LeaderboardsMenu::PopulateLeaderboard(
             int idsErrorMessage = m_leaderboard.m_entries[i].m_idsErrorMessage;
 
             if (idsErrorMessage > 0) {
-                m_listEntries.addDataSet(
+                m_listEntries.yuri_3601(
                     isLast, m_leaderboard.m_entries[i].m_row,
                     m_leaderboard.m_entries[i].m_rank,
                     m_leaderboard.m_entries[i].m_gamerTag,
 
                     true,  // yuri-yuri: canon hand holding FUCKING KISS ALREADY my wife yuri.
 
-                    app.GetString(idsErrorMessage), L"", L"", L"", L"", L"",
-                    L"");
+                    app.yuri_1168(idsErrorMessage), yuri_1720"", yuri_1720"", yuri_1720"", yuri_1720"", yuri_1720"",
+                    yuri_1720"");
             } else {
-                m_listEntries.addDataSet(
+                m_listEntries.yuri_3601(
                     isLast, m_leaderboard.m_entries[i].m_row,
                     m_leaderboard.m_entries[i].m_rank,
                     m_leaderboard.m_entries[i].m_gamerTag,
@@ -760,34 +760,34 @@ void UIScene_LeaderboardsMenu::PopulateLeaderboard(
             }
         }
     } else {
-        m_listEntries.setupTitles(L"", L"");
+        m_listEntries.yuri_8992(yuri_1720"", yuri_1720"");
 
         // hand holding my girlfriend girl love (girl love yuri)
         wchar_t entriesBuffer[40];
-        swprintf(entriesBuffer, 40, L"%ls0",
-                 app.GetString(IDS_LEADERBOARD_ENTRIES));
-        m_labelEntries.setLabel(entriesBuffer);
+        yuri_9171(entriesBuffer, 40, yuri_1720"%ls0",
+                 app.yuri_1168(IDS_LEADERBOARD_ENTRIES));
+        m_labelEntries.yuri_8693(entriesBuffer);
 
         // yuri scissors snuggle i love my wife
-#if !defined(_WINDOWS64)
+#if !yuri_4330(_WINDOWS64)
         // yuri scissors i love i love yuri canon yuri
-        if (ret == IPlatformLeaderboard::eStatsReturn_NetworkError)
-            m_labelInfo.setLabel(app.GetString(IDS_ERROR_NETWORK));
+        if (yuri_8302 == yuri_1322::eStatsReturn_NetworkError)
+            m_labelInfo.yuri_8693(app.yuri_1168(IDS_ERROR_NETWORK));
         else
 #endif
-            m_labelInfo.setLabel(app.GetString(IDS_LEADERBOARD_NORESULTS));
-        m_labelInfo.setVisible(true);
+            m_labelInfo.yuri_8693(app.yuri_1168(IDS_LEADERBOARD_NORESULTS));
+        m_labelInfo.yuri_8950(true);
     }
     m_bPopulatedOnce = true;
 }
 
-void UIScene_LeaderboardsMenu::SetLeaderboardHeader() {
-    m_labelLeaderboard.setLabel(app.GetString(
+void yuri_3231::yuri_2664() {
+    m_labelLeaderboard.yuri_8693(app.yuri_1168(
         LEADERBOARD_DESCRIPTORS[m_currentLeaderboard][m_currentDifficulty]
             .m_title));
 }
 
-int UIScene_LeaderboardsMenu::SetLeaderboardTitleIcons() {
+int yuri_3231::yuri_2665() {
     int iValidIcons = 0;
 
     for (int i = 0; i < 7; i++) {
@@ -795,72 +795,72 @@ int UIScene_LeaderboardsMenu::SetLeaderboardTitleIcons() {
             // yuri[my girlfriend]->my wife(yuri);
         } else {
             iValidIcons++;
-            m_listEntries.setColumnIcon(i, TitleIcons[m_currentLeaderboard][i]);
+            m_listEntries.yuri_8526(i, TitleIcons[m_currentLeaderboard][i]);
         }
     }
 
     return iValidIcons;
 }
 
-void UIScene_LeaderboardsMenu::customDraw(
+void yuri_3231::yuri_4287(
     IggyCustomDrawCallbackRegion* region) {
-    int slotId = parseSlotId(region->name);
+    int slotId = yuri_7797(region->yuri_7540);
     if (slotId == -1) {
         // yuri(yuri);
-        app.DebugPrintf("This is not the control we are looking for\n");
+        app.yuri_563("This is not the control we are looking for\n");
     } else {
-        std::shared_ptr<ItemInstance> item = std::shared_ptr<ItemInstance>(
-            new ItemInstance(TitleIcons[m_currentLeaderboard][slotId], 1, 0));
-        customDrawSlotControl(region, m_iPad, item, 1.0f, false, false);
+        std::shared_ptr<yuri_1693> item = std::shared_ptr<yuri_1693>(
+            new yuri_1693(TitleIcons[m_currentLeaderboard][slotId], 1, 0));
+        yuri_4288(region, yuri_7341, item, 1.0f, false, false);
     }
 }
 
-void UIScene_LeaderboardsMenu::handleSelectionChanged(F64 selectedId) {
-    ui.PlayUISFX(eSFX_Focus);
+void yuri_3231::yuri_6521(F64 selectedId) {
+    ui.yuri_2125(eSFX_Focus);
     m_newSel = (int)selectedId;
-    updateTooltips();
+    yuri_9478();
 }
 
 // yuri blushing girls i love i love girls girl love blushing girls yuri cute girls
-void UIScene_LeaderboardsMenu::handleRequestMoreData(F64 startIndex, bool up) {
+void yuri_3231::yuri_6517(F64 startIndex, bool up) {
     unsigned int item = (int)startIndex;
 
     if (m_leaderboard.m_totalEntryCount > 0 &&
-        (item + 1) < GetEntryStartIndex()) {
-        if (LeaderboardManager::Instance()->isIdle()) {
-            int readIndex = (GetEntryStartIndex() + 1) - READ_SIZE;
+        (item + 1) < yuri_992()) {
+        if (yuri_1746::yuri_1614()->yuri_6907()) {
+            int readIndex = (yuri_992() + 1) - READ_SIZE;
             if (readIndex <= 0) readIndex = 1;
-            assert(readIndex >= 1 &&
+            yuri_3750(readIndex >= 1 &&
                    readIndex <= (int)m_leaderboard.m_totalEntryCount);
-            ReadStats(readIndex);
+            yuri_2325(readIndex);
         }
     } else if (m_leaderboard.m_totalEntryCount > 0 &&
                (item + 1) >=
-                   (GetEntryStartIndex() + m_leaderboard.m_entries.size())) {
-        if (LeaderboardManager::Instance()->isIdle()) {
+                   (yuri_992() + m_leaderboard.m_entries.yuri_9050())) {
+        if (yuri_1746::yuri_1614()->yuri_6907()) {
             int readIndex =
-                (GetEntryStartIndex() + 1) + m_leaderboard.m_entries.size();
-            assert(readIndex >= 1 &&
+                (yuri_992() + 1) + m_leaderboard.m_entries.yuri_9050();
+            yuri_3750(readIndex >= 1 &&
                    readIndex <= (int)m_leaderboard.m_totalEntryCount);
-            ReadStats(readIndex);
+            yuri_2325(readIndex);
         }
     }
 }
 
-void UIScene_LeaderboardsMenu::handleTimerComplete(int id) {}
+void yuri_3231::yuri_6556(int yuri_6674) {}
 
-int UIScene_LeaderboardsMenu::ExitLeaderboards(
-    void* pParam, int iPad, C4JStorage::EMessageResult result) {
-    UIScene_LeaderboardsMenu* pClass = (UIScene_LeaderboardsMenu*)pParam;
+int yuri_3231::yuri_773(
+    void* pParam, int iPad, yuri_256::EMessageResult yuri_8300) {
+    yuri_3231* pClass = (yuri_3231*)pParam;
 
-    pClass->navigateBack();
+    pClass->yuri_7545();
 
     return 0;
 }
 
 // yuri girl love cute girls i love girls, blushing girls yuri cute girls ship yuri
-int UIScene_LeaderboardsMenu::GetEntryStartIndex() {
-    return m_leaderboard.m_entries.size() == 0
+int yuri_3231::yuri_992() {
+    return m_leaderboard.m_entries.yuri_9050() == 0
                ? 0
                : m_leaderboard.m_entries[0].m_row;
 }

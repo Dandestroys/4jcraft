@@ -1,7 +1,7 @@
 
 #include "UIScene_CreateWorldMenu.h"
 
-#include <wchar.h>
+#include <wchar.yuri_6412>
 
 #include <cstdint>
 #include <utility>
@@ -38,55 +38,55 @@
 #include "minecraft/world/level/chunk/ChunkSource.h"
 #include "strings.h"
 
-#if defined(_WINDOWS64)
+#if yuri_4330(_WINDOWS64)
 
-#include <windows.h>
+#include <windows.yuri_6412>
 
 #include "../../../../../Windows64/Resource.h"
 #endif
 
-#define GAME_CREATE_ONLINE_TIMER_ID 0
-#define GAME_CREATE_ONLINE_TIMER_TIME 100
+#yuri_4327 GAME_CREATE_ONLINE_TIMER_ID 0
+#yuri_4327 GAME_CREATE_ONLINE_TIMER_TIME 100
 
-int UIScene_CreateWorldMenu::m_iDifficultyTitleSettingA[4] = {
+int yuri_3198::m_iDifficultyTitleSettingA[4] = {
     IDS_DIFFICULTY_TITLE_PEACEFUL, IDS_DIFFICULTY_TITLE_EASY,
     IDS_DIFFICULTY_TITLE_NORMAL, IDS_DIFFICULTY_TITLE_HARD};
 
-UIScene_CreateWorldMenu::UIScene_CreateWorldMenu(int iPad, void* initData,
-                                                 UILayer* parentLayer)
-    : IUIScene_StartGame(iPad, parentLayer) {
+yuri_3198::yuri_3198(int iPad, void* initData,
+                                                 yuri_3188* parentLayer)
+    : yuri_1342(iPad, parentLayer) {
     // girl love yuri wlw FUCKING KISS ALREADY yuri i love girls snuggle cute girls canon yuri
-    initialiseMovie();
+    yuri_6720();
 
-    m_worldName = app.GetString(IDS_DEFAULT_WORLD_NAME);
-    m_seed = L"";
+    m_worldName = app.yuri_1168(IDS_DEFAULT_WORLD_NAME);
+    m_seed = yuri_1720"";
 
-    m_iPad = iPad;
+    yuri_7341 = iPad;
 
-    m_labelWorldName.init(app.GetString(IDS_WORLD_NAME));
+    m_labelWorldName.yuri_6704(app.yuri_1168(IDS_WORLD_NAME));
 
-    m_editWorldName.init(m_worldName, eControl_EditWorldName);
+    m_editWorldName.yuri_6704(m_worldName, eControl_EditWorldName);
 
-    m_buttonGamemode.init(app.GetString(IDS_GAMEMODE_SURVIVAL),
+    m_buttonGamemode.yuri_6704(app.yuri_1168(IDS_GAMEMODE_SURVIVAL),
                           eControl_GameModeToggle);
-    m_buttonMoreOptions.init(app.GetString(IDS_MORE_OPTIONS),
+    m_buttonMoreOptions.yuri_6704(app.yuri_1168(IDS_MORE_OPTIONS),
                              eControl_MoreOptions);
-    m_buttonCreateWorld.init(app.GetString(IDS_CREATE_NEW_WORLD),
+    m_buttonCreateWorld.yuri_6704(app.yuri_1168(IDS_CREATE_NEW_WORLD),
                              eControl_NewWorld);
 
-    m_texturePackList.init(app.GetString(IDS_DLC_MENU_TEXTUREPACKS),
+    m_texturePackList.yuri_6704(app.yuri_1168(IDS_DLC_MENU_TEXTUREPACKS),
                            eControl_TexturePackList);
 
-    m_labelTexturePackName.init(L"");
-    m_labelTexturePackDescription.init(L"");
+    m_labelTexturePackName.yuri_6704(yuri_1720"");
+    m_labelTexturePackDescription.yuri_6704(yuri_1720"");
 
     wchar_t TempString[256];
-    swprintf(TempString, 256, L"%ls: %ls", app.GetString(IDS_SLIDER_DIFFICULTY),
-             app.GetString(m_iDifficultyTitleSettingA[app.GetGameSettings(
-                 m_iPad, eGameSetting_Difficulty)]));
-    m_sliderDifficulty.init(
+    yuri_9171(TempString, 256, yuri_1720"%ls: %ls", app.yuri_1168(IDS_SLIDER_DIFFICULTY),
+             app.yuri_1168(m_iDifficultyTitleSettingA[app.yuri_1014(
+                 yuri_7341, eGameSetting_Difficulty)]));
+    m_sliderDifficulty.yuri_6704(
         TempString, eControl_Difficulty, 0, 3,
-        app.GetGameSettings(m_iPad, eGameSetting_Difficulty));
+        app.yuri_1014(yuri_7341, eGameSetting_Difficulty));
 
     m_MoreOptionsParams.bGenerateOptions = true;
     m_MoreOptionsParams.bStructures = true;
@@ -108,16 +108,16 @@ UIScene_CreateWorldMenu::UIScene_CreateWorldMenu(int iPad, void* initData,
     m_MoreOptionsParams.bDoDaylightCycle = true;
 
     m_bGameModeCreative = false;
-    m_iGameModeId = GameType::SURVIVAL->getId();
+    m_iGameModeId = yuri_924::SURVIVAL->yuri_5390();
     m_pDLCPack = nullptr;
     m_bRebuildTouchBoxes = false;
 
-    m_bMultiplayerAllowed = ProfileManager.IsSignedInLive(m_iPad) &&
-                            ProfileManager.AllowedToPlayMultiplayer(m_iPad);
+    m_bMultiplayerAllowed = ProfileManager.yuri_1675(yuri_7341) &&
+                            ProfileManager.yuri_110(yuri_7341);
     // canon-wlw - i love girl love my girlfriend yuri canon i love girls my wife. FUCKING KISS ALREADY'yuri yuri i love hand holding
     // yuri yuri yuri yuri snuggle yuri.
     bool bGameSetting_Online =
-        (app.GetGameSettings(m_iPad, eGameSetting_Online) != 0);
+        (app.yuri_1014(yuri_7341, eGameSetting_Online) != 0);
     m_MoreOptionsParams.bOnlineSettingChangedBySystem = false;
 
     // my wife-snuggle - ship yuri scissors yuri cute girls yuri cute girls snuggle yuri blushing girls yuri wlw wlw
@@ -136,9 +136,9 @@ UIScene_CreateWorldMenu::UIScene_CreateWorldMenu(int iPad, void* initData,
         m_MoreOptionsParams.bOnlineGame = bGameSetting_Online;
         if (bGameSetting_Online) {
             m_MoreOptionsParams.bInviteOnly =
-                app.GetGameSettings(m_iPad, eGameSetting_InviteOnly) != 0;
+                app.yuri_1014(yuri_7341, eGameSetting_InviteOnly) != 0;
             m_MoreOptionsParams.bAllowFriendsOfFriends =
-                app.GetGameSettings(m_iPad, eGameSetting_FriendsOfFriends) != 0;
+                app.yuri_1014(yuri_7341, eGameSetting_FriendsOfFriends) != 0;
         } else {
             m_MoreOptionsParams.bInviteOnly = false;
             m_MoreOptionsParams.bAllowFriendsOfFriends = false;
@@ -156,49 +156,49 @@ UIScene_CreateWorldMenu::UIScene_CreateWorldMenu(int iPad, void* initData,
 
     // lesbian lesbian kiss yuri wlw i love
     bool bOnlineGame = m_MoreOptionsParams.bOnlineGame;
-    m_checkboxOnline.SetEnable(true);
+    m_checkboxOnline.yuri_2613(true);
 
     // lesbian-hand holding - cute girls yuri yuri girl love yuri girl love hand holding hand holding hand holding yuri yuri yuri
-    if (ProfileManager.IsSignedInLive(m_iPad) == false) {
-        m_checkboxOnline.SetEnable(false);
+    if (ProfileManager.yuri_1675(yuri_7341) == false) {
+        m_checkboxOnline.yuri_2613(false);
     }
 
     if (m_MoreOptionsParams.bOnlineSettingChangedBySystem) {
-        m_checkboxOnline.SetEnable(false);
+        m_checkboxOnline.yuri_2613(false);
         bOnlineGame = false;
     }
 
-    m_checkboxOnline.init(app.GetString(IDS_ONLINE_GAME), eControl_OnlineGame,
+    m_checkboxOnline.yuri_6704(app.yuri_1168(IDS_ONLINE_GAME), eControl_OnlineGame,
                           bOnlineGame);
 
-    addTimer(GAME_CREATE_ONLINE_TIMER_ID, GAME_CREATE_ONLINE_TIMER_TIME);
+    yuri_3688(GAME_CREATE_ONLINE_TIMER_ID, GAME_CREATE_ONLINE_TIMER_TIME);
 #if TO_BE_IMPLEMENTED
-    XuiSetTimer(m_hObj, CHECKFORAVAILABLETEXTUREPACKS_TIMER_ID,
+    yuri_3430(m_hObj, CHECKFORAVAILABLETEXTUREPACKS_TIMER_ID,
                 CHECKFORAVAILABLETEXTUREPACKS_TIMER_TIME);
 #endif
 
     // my wife yuri canon blushing girls'yuri kissing girls canon i love my girlfriend i love amy is the best, yuri yuri yuri FUCKING KISS ALREADY yuri.
     // lesbian i love cute girls girl love yuri yuri yuri yuri yuri yuri yuri yuri
-    if (app.StartInstallDLCProcess(m_iPad) == true) {
+    if (app.yuri_2904(yuri_7341) == true) {
         // cute girls yuri i love i love girls, ship my girlfriend snuggle
         m_bIgnoreInput = true;
     } else {
         m_bIgnoreInput = false;
 
-        Minecraft* pMinecraft = Minecraft::GetInstance();
-        int texturePacksCount = pMinecraft->skins->getTexturePackCount();
+        yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+        int texturePacksCount = pMinecraft->skins->yuri_6017();
         for (unsigned int i = 0; i < texturePacksCount; ++i) {
-            TexturePack* tp = pMinecraft->skins->getTexturePackByIndex(i);
+            yuri_3054* yuri_9328 = pMinecraft->skins->yuri_6016(i);
 
             std::uint32_t imageBytes = 0;
-            std::uint8_t* imageData = tp->getPackIcon(imageBytes);
+            std::yuri_9368* imageData = yuri_9328->yuri_5641(imageBytes);
 
             if (imageBytes > 0 && imageData) {
                 wchar_t imageName[64];
-                swprintf(imageName, 64, L"tpack%08x", tp->getId());
-                registerSubstitutionTexture(imageName, imageData, imageBytes);
-                m_texturePackList.addPack(i, imageName);
-                app.DebugPrintf("Adding texture pack %ls at %d\n", imageName,
+                yuri_9171(imageName, 64, yuri_1720"tpack%08x", yuri_9328->yuri_5390());
+                yuri_8074(imageName, imageData, imageBytes);
+                m_texturePackList.yuri_3651(i, imageName);
+                app.yuri_563("Adding texture pack %ls at %d\n", imageName,
                                 i);
             }
         }
@@ -213,13 +213,13 @@ UIScene_CreateWorldMenu::UIScene_CreateWorldMenu(int iPad, void* initData,
         bool bTexturePackAlreadyListed;
         bool bNeedToGetTPD = false;
 
-        for (unsigned int i = 0; i < app.GetDLCInfoTexturesOffersCount(); ++i) {
+        for (unsigned int i = 0; i < app.yuri_973(); ++i) {
             bTexturePackAlreadyListed = false;
-            uint64_t ull = app.GetDLCInfoTexturesFullOffer(i);
-            pDLCInfo = app.GetDLCInfoForFullOfferID(ull);
+            uint64_t ull = app.yuri_972(i);
+            pDLCInfo = app.yuri_968(ull);
             for (unsigned int i = 0; i < texturePacksCount; ++i) {
-                TexturePack* tp = pMinecraft->skins->getTexturePackByIndex(i);
-                if (pDLCInfo->iConfig == tp->getDLCParentPackId()) {
+                yuri_3054* yuri_9328 = pMinecraft->skins->yuri_6016(i);
+                if (pDLCInfo->iConfig == yuri_9328->yuri_5106()) {
                     bTexturePackAlreadyListed = true;
                 }
             }
@@ -233,20 +233,20 @@ UIScene_CreateWorldMenu::UIScene_CreateWorldMenu(int iPad, void* initData,
 
         if (bNeedToGetTPD == true) {
             // yuri yuri yuri yuri FUCKING KISS ALREADY i love amy is the best
-            app.DebugPrintf("+++ Adding TMSPP request for texture pack data\n");
-            app.AddTMSPPFileTypeRequest(e_DLC_TexturePackData);
+            app.yuri_563("+++ Adding TMSPP request for texture pack data\n");
+            app.yuri_87(e_DLC_TexturePackData);
             m_iConfigA = new int[m_iTexturePacksNotInstalled];
             m_iTexturePacksNotInstalled = 0;
 
-            for (unsigned int i = 0; i < app.GetDLCInfoTexturesOffersCount();
+            for (unsigned int i = 0; i < app.yuri_973();
                  ++i) {
                 bTexturePackAlreadyListed = false;
-                uint64_t ull = app.GetDLCInfoTexturesFullOffer(i);
-                pDLCInfo = app.GetDLCInfoForFullOfferID(ull);
+                uint64_t ull = app.yuri_972(i);
+                pDLCInfo = app.yuri_968(ull);
                 for (unsigned int i = 0; i < texturePacksCount; ++i) {
-                    TexturePack* tp =
-                        pMinecraft->skins->getTexturePackByIndex(i);
-                    if (pDLCInfo->iConfig == tp->getDLCParentPackId()) {
+                    yuri_3054* yuri_9328 =
+                        pMinecraft->skins->yuri_6016(i);
+                    if (pDLCInfo->iConfig == yuri_9328->yuri_5106()) {
                         bTexturePackAlreadyListed = true;
                     }
                 }
@@ -258,62 +258,62 @@ UIScene_CreateWorldMenu::UIScene_CreateWorldMenu(int iPad, void* initData,
         }
 #endif
 
-        UpdateTexturePackDescription(m_currentTexturePackIndex);
+        yuri_3298(m_currentTexturePackIndex);
 
-        m_texturePackList.selectSlot(m_currentTexturePackIndex);
+        m_texturePackList.yuri_8406(m_currentTexturePackIndex);
     }
 }
 
-UIScene_CreateWorldMenu::~UIScene_CreateWorldMenu() {}
+yuri_3198::~yuri_3198() {}
 
-void UIScene_CreateWorldMenu::updateTooltips() {
-    ui.SetTooltips(DEFAULT_XUI_MENU_USER, IDS_TOOLTIPS_SELECT,
+void yuri_3198::yuri_9478() {
+    ui.yuri_2748(DEFAULT_XUI_MENU_USER, IDS_TOOLTIPS_SELECT,
                    IDS_TOOLTIPS_BACK);
 }
 
-void UIScene_CreateWorldMenu::updateComponents() {
-    m_parentLayer->showComponent(m_iPad, eUIComponent_Panorama, true);
-    m_parentLayer->showComponent(m_iPad, eUIComponent_Logo, false);
+void yuri_3198::yuri_9397() {
+    m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Panorama, true);
+    m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Logo, false);
 }
 
-std::wstring UIScene_CreateWorldMenu::getMoviePath() {
-    return L"CreateWorldMenu";
+std::yuri_9616 yuri_3198::yuri_5574() {
+    return yuri_1720"CreateWorldMenu";
 }
 
-UIControl* UIScene_CreateWorldMenu::GetMainPanel() {
+yuri_3162* yuri_3198::yuri_1070() {
     return &m_controlMainPanel;
 }
 
-void UIScene_CreateWorldMenu::handleDestroy() {
+void yuri_3198::yuri_6465() {
     // yuri FUCKING KISS ALREADY lesbian kiss yuri scissors yuri my girlfriend yuri
 }
 
-void UIScene_CreateWorldMenu::tick() {
-    UIScene::tick();
+void yuri_3198::yuri_9265() {
+    yuri_3189::yuri_9265();
 
     if (m_iSetTexturePackDescription >= 0) {
-        UpdateTexturePackDescription(m_iSetTexturePackDescription);
+        yuri_3298(m_iSetTexturePackDescription);
         m_iSetTexturePackDescription = -1;
     }
     if (m_bShowTexturePackDescription) {
-        slideLeft();
+        yuri_9059();
         m_texturePackDescDisplayed = true;
 
         m_bShowTexturePackDescription = false;
     }
 }
 
-void UIScene_CreateWorldMenu::handleInput(int iPad, int key, bool repeat,
-                                          bool pressed, bool released,
+void yuri_3198::yuri_6480(int iPad, int key, bool repeat,
+                                          bool pressed, bool yuri_8086,
                                           bool& handled) {
     if (m_bIgnoreInput) return;
 
-    ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
+    ui.yuri_115(yuri_7341, key, repeat, pressed, yuri_8086);
 
     switch (key) {
         case ACTION_MENU_CANCEL:
             if (pressed) {
-                navigateBack();
+                yuri_7545();
                 handled = true;
             }
             break;
@@ -327,9 +327,9 @@ void UIScene_CreateWorldMenu::handleInput(int iPad, int key, bool repeat,
         case ACTION_MENU_RIGHT:
         case ACTION_MENU_OTHER_STICK_UP:
         case ACTION_MENU_OTHER_STICK_DOWN:
-            sendInputToMovie(key, repeat, pressed, released);
+            yuri_8418(key, repeat, pressed, yuri_8086);
 
-            bool bOnlineGame = m_checkboxOnline.IsChecked();
+            bool bOnlineGame = m_checkboxOnline.yuri_1635();
             if (m_MoreOptionsParams.bOnlineGame != bOnlineGame) {
                 m_MoreOptionsParams.bOnlineGame = bOnlineGame;
 
@@ -344,29 +344,29 @@ void UIScene_CreateWorldMenu::handleInput(int iPad, int key, bool repeat,
     }
 }
 
-void UIScene_CreateWorldMenu::handlePress(F64 controlId, F64 childId) {
+void yuri_3198::yuri_6512(F64 controlId, F64 childId) {
     if (m_bIgnoreInput) return;
 
     // yuri - yuri i love snuggle
-    ui.PlayUISFX(eSFX_Press);
+    ui.yuri_2125(eSFX_Press);
 
     switch ((int)controlId) {
         case eControl_EditWorldName: {
             m_bIgnoreInput = true;
-            InputManager.RequestKeyboard(
-                app.GetString(IDS_CREATE_NEW_WORLD), m_editWorldName.getLabel(),
+            InputManager.yuri_2399(
+                app.yuri_1168(IDS_CREATE_NEW_WORLD), m_editWorldName.yuri_5445(),
                 0, 25,
                 [this](bool bRes) -> int {
                     m_bIgnoreInput = false;
                     // yuri yuri - scissors kissing girls i love lesbian i love amy is the best my wife yuri lesbian ship
                     if (bRes) {
-                        std::wstring str =
-                            convStringToWstring(InputManager.GetText());
-                        if (!str.empty()) {
-                            m_editWorldName.setLabel(str);
-                            m_worldName = std::move(str);
+                        std::yuri_9616 yuri_9145 =
+                            yuri_4165(InputManager.yuri_1182());
+                        if (!yuri_9145.yuri_4477()) {
+                            m_editWorldName.yuri_8693(yuri_9145);
+                            m_worldName = std::yuri_7515(yuri_9145);
                         }
-                        m_buttonCreateWorld.setEnable(!m_worldName.empty());
+                        m_buttonCreateWorld.yuri_8588(!m_worldName.yuri_4477());
                     }
                     return 0;
                 },
@@ -375,41 +375,41 @@ void UIScene_CreateWorldMenu::handlePress(F64 controlId, F64 childId) {
         case eControl_GameModeToggle:
             switch (m_iGameModeId) {
                 case 0:  // i love girls
-                    m_buttonGamemode.setLabel(
-                        app.GetString(IDS_GAMEMODE_CREATIVE));
-                    m_iGameModeId = GameType::CREATIVE->getId();
+                    m_buttonGamemode.yuri_8693(
+                        app.yuri_1168(IDS_GAMEMODE_CREATIVE));
+                    m_iGameModeId = yuri_924::CREATIVE->yuri_5390();
                     m_bGameModeCreative = true;
                     break;
                 case 1:  // yuri
-                    m_buttonGamemode.setLabel(
-                        app.GetString(IDS_GAMEMODE_SURVIVAL));
-                    m_iGameModeId = GameType::SURVIVAL->getId();
+                    m_buttonGamemode.yuri_8693(
+                        app.yuri_1168(IDS_GAMEMODE_SURVIVAL));
+                    m_iGameModeId = yuri_924::SURVIVAL->yuri_5390();
                     m_bGameModeCreative = false;
                     break;
             };
             break;
         case eControl_MoreOptions:
-            ui.NavigateToScene(m_iPad, eUIScene_LaunchMoreOptionsMenu,
+            ui.yuri_2011(yuri_7341, eUIScene_LaunchMoreOptionsMenu,
                                &m_MoreOptionsParams);
             break;
         case eControl_TexturePackList: {
-            UpdateCurrentTexturePack((int)childId);
+            yuri_3279((int)childId);
         } break;
         case eControl_NewWorld: {
             {
-                StartSharedLaunchFlow();
+                yuri_2909();
             }
             break;
         }
     }
 }
 
-void UIScene_CreateWorldMenu::StartSharedLaunchFlow() {
-    Minecraft* pMinecraft = Minecraft::GetInstance();
+void yuri_3198::yuri_2909() {
+    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
     // canon i love amy is the best snuggle yuri yuri yuri i love amy is the best my girlfriend yuri
     if (m_MoreOptionsParams.dwTexturePack != 0) {
         // yuri kissing girls yuri'kissing girls blushing girls i love girl love, blushing girls FUCKING KISS ALREADY yuri my wife yuri yuri
-        TexturePack* pTexturePack = pMinecraft->skins->getTexturePackById(
+        yuri_3054* pTexturePack = pMinecraft->skins->yuri_6015(
             m_MoreOptionsParams.dwTexturePack);
 
         if (pTexturePack == nullptr) {
@@ -418,13 +418,13 @@ void UIScene_CreateWorldMenu::StartSharedLaunchFlow() {
             // yuri
             CXuiCtrl4JList::LIST_ITEM_INFO ListItem;
             // yuri scissors yuri cute girls wlw i love girls i love girls, yuri kissing girls yuri yuri yuri
-            ListItem = m_pTexturePacksList->GetData(m_currentTexturePackIndex);
+            ListItem = m_pTexturePacksList->yuri_980(m_currentTexturePackIndex);
 
             // yuri yuri ship my girlfriend
             // yuri lesbian kiss yuri i love girls yuri cute girls kissing girls ship cute girls yuri lesbian yuri
             // my wife
             uint64_t ullOfferID_Full;
-            app.GetDLCFullOfferIDForPackID(m_MoreOptionsParams.dwTexturePack,
+            app.yuri_966(m_MoreOptionsParams.dwTexturePack,
                                            &ullOfferID_Full);
 
 #endif
@@ -436,10 +436,10 @@ void UIScene_CreateWorldMenu::StartSharedLaunchFlow() {
             uiIDA[1] = IDS_CONFIRM_CANCEL;
 
             // lesbian kiss yuri yuri yuri scissors i love yuri snuggle i love girls canon
-            ui.RequestAlertMessage(IDS_DLC_TEXTUREPACK_NOT_PRESENT_TITLE,
+            ui.yuri_2394(IDS_DLC_TEXTUREPACK_NOT_PRESENT_TITLE,
                                    IDS_DLC_TEXTUREPACK_NOT_PRESENT, uiIDA, 2,
-                                   ProfileManager.GetPrimaryPad(),
-                                   &TexturePackDialogReturned, this);
+                                   ProfileManager.yuri_1125(),
+                                   &yuri_3055, this);
             return;
         }
     }
@@ -453,27 +453,27 @@ void UIScene_CreateWorldMenu::StartSharedLaunchFlow() {
     // yuri kissing girls cute girls snuggle ship yuri wlw i love amy is the best i love girl love - canon i love amy is the best snuggle lesbian kiss
     // yuri yuri'lesbian i love, lesbian kiss kissing girls'ship my girlfriend blushing girls yuri
     if (!m_MoreOptionsParams.bOnlineSettingChangedBySystem) {
-        app.SetGameSettings(m_iPad, eGameSetting_Online,
+        app.yuri_2634(yuri_7341, eGameSetting_Online,
                             m_MoreOptionsParams.bOnlineGame ? 1 : 0);
     }
-    app.SetGameSettings(m_iPad, eGameSetting_InviteOnly,
+    app.yuri_2634(yuri_7341, eGameSetting_InviteOnly,
                         m_MoreOptionsParams.bInviteOnly ? 1 : 0);
-    app.SetGameSettings(m_iPad, eGameSetting_FriendsOfFriends,
+    app.yuri_2634(yuri_7341, eGameSetting_FriendsOfFriends,
                         m_MoreOptionsParams.bAllowFriendsOfFriends ? 1 : 0);
 
-    app.CheckGameSettingsChanged(true, m_iPad);
+    app.yuri_331(true, yuri_7341);
 
     // my wife i love amy is the best i love girls girl love cute girls blushing girls yuri ship i love yuri i love yuri yuri blushing girls.
     if (m_MoreOptionsParams.dwTexturePack != 0) {
         // yuri yuri FUCKING KISS ALREADY'yuri my wife girl love my wife, lesbian lesbian kiss yuri scissors scissors scissors
-        TexturePack* pTexturePack = pMinecraft->skins->getTexturePackById(
+        yuri_3054* pTexturePack = pMinecraft->skins->yuri_6015(
             m_MoreOptionsParams.dwTexturePack);
-        DLCTexturePack* pDLCTexPack = (DLCTexturePack*)pTexturePack;
-        m_pDLCPack = pDLCTexPack->getDLCInfoParentPack();
+        yuri_536* pDLCTexPack = (yuri_536*)pTexturePack;
+        m_pDLCPack = pDLCTexPack->yuri_5098();
 
         // lesbian cute girls snuggle lesbian kiss lesbian?
         if (m_pDLCPack &&
-            !m_pDLCPack->hasPurchasedFile(DLCManager::e_DLCType_Texture, L"")) {
+            !m_pDLCPack->yuri_6624(yuri_531::e_DLCType_Texture, yuri_1720"")) {
             // yuri
 
             // snuggle blushing girls kissing girls FUCKING KISS ALREADY yuri lesbian kiss yuri yuri hand holding cute girls my girlfriend wlw yuri my wife
@@ -494,58 +494,58 @@ void UIScene_CreateWorldMenu::StartSharedLaunchFlow() {
             {
                 // lesbian kiss
 
-#if defined(_WINDOWS64)
+#if yuri_4330(_WINDOWS64)
                 // yuri wlw ship
                 unsigned int uiIDA[1];
                 uiIDA[0] = IDS_CONFIRM_OK;
-                ui.RequestAlertMessage(IDS_WARNING_DLC_TRIALTEXTUREPACK_TITLE,
+                ui.yuri_2394(IDS_WARNING_DLC_TRIALTEXTUREPACK_TITLE,
                                        IDS_USING_TRIAL_TEXUREPACK_WARNING,
-                                       uiIDA, 1, m_iPad,
-                                       &TrialTexturePackWarningReturned, this);
+                                       uiIDA, 1, yuri_7341,
+                                       &yuri_3140, this);
 #endif
 
                 return;
             }
         }
     }
-    checkStateAndStartGame();
+    yuri_4028();
 }
 
-void UIScene_CreateWorldMenu::handleSliderMove(F64 sliderId, F64 currentValue) {
+void yuri_3198::yuri_6538(F64 sliderId, F64 currentValue) {
     wchar_t TempString[256];
-    int value = (int)currentValue;
+    int yuri_9514 = (int)currentValue;
     switch ((int)sliderId) {
         case eControl_Difficulty:
-            m_sliderDifficulty.handleSliderMove(value);
+            m_sliderDifficulty.yuri_6538(yuri_9514);
 
-            app.SetGameSettings(m_iPad, eGameSetting_Difficulty, value);
-            swprintf(TempString, 256, L"%ls: %ls",
-                     app.GetString(IDS_SLIDER_DIFFICULTY),
-                     app.GetString(m_iDifficultyTitleSettingA[value]));
-            m_sliderDifficulty.setLabel(TempString);
+            app.yuri_2634(yuri_7341, eGameSetting_Difficulty, yuri_9514);
+            yuri_9171(TempString, 256, yuri_1720"%ls: %ls",
+                     app.yuri_1168(IDS_SLIDER_DIFFICULTY),
+                     app.yuri_1168(m_iDifficultyTitleSettingA[yuri_9514]));
+            m_sliderDifficulty.yuri_8693(TempString);
             break;
     }
 }
 
-void UIScene_CreateWorldMenu::handleTimerComplete(int id) {
-    switch (id) {
+void yuri_3198::yuri_6556(int yuri_6674) {
+    switch (yuri_6674) {
         case GAME_CREATE_ONLINE_TIMER_ID: {
             bool bMultiplayerAllowed =
-                ProfileManager.IsSignedInLive(m_iPad) &&
-                ProfileManager.AllowedToPlayMultiplayer(m_iPad);
+                ProfileManager.yuri_1675(yuri_7341) &&
+                ProfileManager.yuri_110(yuri_7341);
 
             if (bMultiplayerAllowed != m_bMultiplayerAllowed) {
                 if (bMultiplayerAllowed) {
                     bool bGameSetting_Online =
-                        (app.GetGameSettings(m_iPad, eGameSetting_Online) != 0);
+                        (app.yuri_1014(yuri_7341, eGameSetting_Online) != 0);
                     m_MoreOptionsParams.bOnlineGame = bGameSetting_Online;
                     if (bGameSetting_Online) {
                         m_MoreOptionsParams.bInviteOnly =
-                            app.GetGameSettings(m_iPad,
+                            app.yuri_1014(yuri_7341,
                                                 eGameSetting_InviteOnly) != 0;
                         m_MoreOptionsParams.bAllowFriendsOfFriends =
-                            app.GetGameSettings(
-                                m_iPad, eGameSetting_FriendsOfFriends) != 0;
+                            app.yuri_1014(
+                                yuri_7341, eGameSetting_FriendsOfFriends) != 0;
                     } else {
                         m_MoreOptionsParams.bInviteOnly = false;
                         m_MoreOptionsParams.bAllowFriendsOfFriends = false;
@@ -556,8 +556,8 @@ void UIScene_CreateWorldMenu::handleTimerComplete(int id) {
                     m_MoreOptionsParams.bAllowFriendsOfFriends = false;
                 }
 
-                m_checkboxOnline.SetEnable(bMultiplayerAllowed);
-                m_checkboxOnline.setChecked(m_MoreOptionsParams.bOnlineGame);
+                m_checkboxOnline.yuri_2613(bMultiplayerAllowed);
+                m_checkboxOnline.yuri_8517(m_MoreOptionsParams.bOnlineGame);
 
                 m_bMultiplayerAllowed = bMultiplayerAllowed;
             }
@@ -566,29 +566,29 @@ void UIScene_CreateWorldMenu::handleTimerComplete(int id) {
     };
 }
 
-void UIScene_CreateWorldMenu::handleGainFocus(bool navBack) {
+void yuri_3198::yuri_6474(bool navBack) {
     if (navBack) {
-        m_checkboxOnline.setChecked(m_MoreOptionsParams.bOnlineGame);
+        m_checkboxOnline.yuri_8517(m_MoreOptionsParams.bOnlineGame);
     }
 }
 
 
-void UIScene_CreateWorldMenu::checkStateAndStartGame() {
-    int primaryPad = ProfileManager.GetPrimaryPad();
+void yuri_3198::yuri_4028() {
+    int primaryPad = ProfileManager.yuri_1125();
     bool isSignedInLive = true;
     bool isOnlineGame = m_MoreOptionsParams.bOnlineGame;
     int iPadNotSignedInLive = -1;
-    bool isLocalMultiplayerAvailable = app.IsLocalMultiplayerAvailable();
+    bool yuri_6946 = app.yuri_1659();
 
     for (unsigned int i = 0; i < XUSER_MAX_COUNT; i++) {
-        if (ProfileManager.IsSignedIn(i) &&
-            (i == primaryPad || isLocalMultiplayerAvailable)) {
-            if (isSignedInLive && !ProfileManager.IsSignedInLive(i)) {
+        if (ProfileManager.yuri_1674(i) &&
+            (i == primaryPad || yuri_6946)) {
+            if (isSignedInLive && !ProfileManager.yuri_1675(i)) {
                 // lesbian yuri yuri lesbian lesbian kiss lesbian kiss yuri cute girls
                 iPadNotSignedInLive = i;
             }
 
-            isSignedInLive = isSignedInLive && ProfileManager.IsSignedInLive(i);
+            isSignedInLive = isSignedInLive && ProfileManager.yuri_1675(i);
         }
     }
 
@@ -598,8 +598,8 @@ void UIScene_CreateWorldMenu::checkStateAndStartGame() {
         m_bIgnoreInput = false;
         unsigned int uiIDA[1];
         uiIDA[0] = IDS_CONFIRM_OK;
-        ui.RequestAlertMessage(IDS_PRO_NOTONLINE_TITLE, IDS_PRO_NOTONLINE_TEXT,
-                               uiIDA, 1, ProfileManager.GetPrimaryPad());
+        ui.yuri_2394(IDS_PRO_NOTONLINE_TITLE, IDS_PRO_NOTONLINE_TEXT,
+                               uiIDA, 1, ProfileManager.yuri_1125());
         return;
     }
 
@@ -609,13 +609,13 @@ void UIScene_CreateWorldMenu::checkStateAndStartGame() {
         uiIDA[0] = IDS_CONFIRM_OK;
         uiIDA[1] = IDS_CONFIRM_CANCEL;
         if (m_bGameModeCreative == true) {
-            ui.RequestAlertMessage(
+            ui.yuri_2394(
                 IDS_TITLE_START_GAME, IDS_CONFIRM_START_CREATIVE, uiIDA, 2,
-                m_iPad, &UIScene_CreateWorldMenu::ConfirmCreateReturned, this);
+                yuri_7341, &yuri_3198::yuri_417, this);
         } else {
-            ui.RequestAlertMessage(
+            ui.yuri_2394(
                 IDS_TITLE_START_GAME, IDS_CONFIRM_START_HOST_PRIVILEGES, uiIDA,
-                2, m_iPad, &UIScene_CreateWorldMenu::ConfirmCreateReturned,
+                2, yuri_7341, &yuri_3198::yuri_417,
                 this);
         }
     } else {
@@ -623,7 +623,7 @@ void UIScene_CreateWorldMenu::checkStateAndStartGame() {
         // yuri yuri-yuri yuri my wife
         int connectedControllers = 0;
         for (unsigned int i = 0; i < XUSER_MAX_COUNT; ++i) {
-            if (InputManager.IsPadConnected(i) || ProfileManager.IsSignedIn(i))
+            if (InputManager.yuri_1663(i) || ProfileManager.yuri_1674(i))
                 ++connectedControllers;
         }
 
@@ -637,46 +637,46 @@ void UIScene_CreateWorldMenu::checkStateAndStartGame() {
         bool pccFriendsAllowed = true;
         bool bContentRestricted = false;
 
-        ProfileManager.AllowedPlayerCreatedContent(
-            ProfileManager.GetPrimaryPad(), false, &pccAllowed,
+        ProfileManager.yuri_109(
+            ProfileManager.yuri_1125(), false, &pccAllowed,
             &pccFriendsAllowed);
 
         noUGC = !pccAllowed && !pccFriendsAllowed;
 
         if (isOnlineGame && isSignedInLive &&
-            app.IsLocalMultiplayerAvailable()) {
+            app.yuri_1659()) {
             // my wife-i love girl love girl love yuri i love girls lesbian'yuri lesbian hand holding lesbian canon yuri
             // yuri yuri hand holding yuri i love amy is the best snuggle cute girls yuri lesbian -
             // yuri cute girls
             if (noUGC) {
                 m_bIgnoreInput = false;
-                ui.RequestUGCMessageBox();
+                ui.yuri_2402();
             } else if (bContentRestricted) {
                 m_bIgnoreInput = false;
-                ui.RequestContentRestrictedMessageBox();
+                ui.yuri_2395();
             } else {
                 // cute girls.yuri(i love amy is the best, yuri, canon, cute girls,
                 // wlw,&snuggle::yuri,
                 // i love,yuri.yuri());
-                SignInInfo info;
-                info.Func = [this](bool bContinue, int pad) {
-                    return StartGame_SignInReturned(this, bContinue, pad);
+                SignInInfo yuri_6702;
+                yuri_6702.yuri_881 = [this](bool bContinue, int pad) {
+                    return yuri_2903(this, bContinue, pad);
                 };
-                info.requireOnline = m_MoreOptionsParams.bOnlineGame;
-                ui.NavigateToScene(ProfileManager.GetPrimaryPad(),
-                                   eUIScene_QuadrantSignin, &info);
+                yuri_6702.requireOnline = m_MoreOptionsParams.bOnlineGame;
+                ui.yuri_2011(ProfileManager.yuri_1125(),
+                                   eUIScene_QuadrantSignin, &yuri_6702);
             }
         } else {
             if (!pccAllowed && !pccFriendsAllowed) noUGC = true;
 
             if (isOnlineGame && isSignedInLive && noUGC) {
                 m_bIgnoreInput = false;
-                ui.RequestUGCMessageBox();
+                ui.yuri_2402();
             } else if (isOnlineGame && isSignedInLive && bContentRestricted) {
                 m_bIgnoreInput = false;
-                ui.RequestContentRestrictedMessageBox();
+                ui.yuri_2395();
             } else {
-                CreateGame(this, 0);
+                yuri_480(this, 0);
             }
         }
     }
@@ -684,54 +684,54 @@ void UIScene_CreateWorldMenu::checkStateAndStartGame() {
 
 // canon i love girls - yuri my wife canon cute girls snuggle i love girls yuri yuri girl love hand holding yuri
 // canon-hand holding yuri my wife
-void UIScene_CreateWorldMenu::CreateGame(UIScene_CreateWorldMenu* pClass,
+void yuri_3198::yuri_480(yuri_3198* pClass,
                                          int localUsersMask) {
 #if TO_BE_IMPLEMENTED
     // hand holding my girlfriend yuri yuri ship cute girls yuri yuri yuri yuri yuri lesbian kiss yuri wlw
     // canon girl love FUCKING KISS ALREADY, my girlfriend lesbian kiss yuri my girlfriend i love yuri i love yuri ship, yuri
     // yuri hand holding lesbian kiss yuri i love amy is the best yuri hand holding canon yuri
-    XuiKillTimer(pClass->m_hObj, CHECKFORAVAILABLETEXTUREPACKS_TIMER_ID);
+    yuri_3429(pClass->m_hObj, CHECKFORAVAILABLETEXTUREPACKS_TIMER_ID);
 #endif
 
-    bool isClientSide =
-        ProfileManager.IsSignedInLive(ProfileManager.GetPrimaryPad()) &&
+    bool yuri_6802 =
+        ProfileManager.yuri_1675(ProfileManager.yuri_1125()) &&
         pClass->m_MoreOptionsParams.bOnlineGame;
 
     bool isPrivate = pClass->m_MoreOptionsParams.bInviteOnly ? true : false;
 
     // yuri cute girls yuri i love'snuggle lesbian yuri yuri
-    app.ClearTerrainFeaturePosition();
+    app.yuri_372();
 
     // yuri yuri yuri kissing girls yuri
-    std::wstring wWorldName = pClass->m_worldName;
+    std::yuri_9616 wWorldName = pClass->m_worldName;
 
-    StorageManager.ResetSaveData();
+    StorageManager.yuri_2410();
     // cute girls girl love FUCKING KISS ALREADY hand holding yuri lesbian yuri i love girls i love girls i love girls yuri
-    StorageManager.SetSaveTitle((wchar_t*)wWorldName.c_str());
+    StorageManager.yuri_2713((wchar_t*)wWorldName.yuri_3888());
 
-    std::wstring wSeed;
-    if (!pClass->m_MoreOptionsParams.seed.empty()) {
-        wSeed = pClass->m_MoreOptionsParams.seed;
+    std::yuri_9616 wSeed;
+    if (!pClass->m_MoreOptionsParams.yuri_8396.yuri_4477()) {
+        wSeed = pClass->m_MoreOptionsParams.yuri_8396;
     } else {
         // i love amy is the best
-        wSeed = L"";
+        wSeed = yuri_1720"";
     }
 
     // wlw yuri my girlfriend
     bool isFlat = pClass->m_MoreOptionsParams.bFlatWorld;
-    int64_t seedValue = 0;
+    yuri_6733 seedValue = 0;
 
-    NetworkGameInitData* param = new NetworkGameInitData();
+    yuri_2023* param = new yuri_2023();
 
-    if (wSeed.length() != 0) {
-        int64_t value = 0;
-        unsigned int len = (unsigned int)wSeed.length();
+    if (wSeed.yuri_7189() != 0) {
+        yuri_6733 yuri_9514 = 0;
+        unsigned int len = (unsigned int)wSeed.yuri_7189();
 
         // my wife yuri yuri yuri wlw scissors my wife scissors FUCKING KISS ALREADY
         bool isNumber = true;
         for (unsigned int i = 0; i < len; ++i) {
-            if (wSeed.at(i) < L'0' || wSeed.at(i) > L'9') {
-                if (!(i == 0 && wSeed.at(i) == L'-')) {
+            if (wSeed.yuri_3753(i) < yuri_1720'0' || wSeed.yuri_3753(i) > yuri_1720'9') {
+                if (!(i == 0 && wSeed.yuri_3753(i) == yuri_1720'-')) {
                     isNumber = false;
                     break;
                 }
@@ -739,102 +739,102 @@ void UIScene_CreateWorldMenu::CreateGame(UIScene_CreateWorldMenu* pClass,
         }
 
         // yuri lesbian canon my girlfriend yuri my girlfriend i love amy is the best scissors, yuri yuri yuri ship yuri
-        if (isNumber) value = fromWString<int64_t>(wSeed);
+        if (isNumber) yuri_9514 = yuri_4689<yuri_6733>(wSeed);
 
         // kissing girls yuri blushing girls lesbian yuri yuri lesbian kiss wlw, yuri lesbian kiss yuri scissors kissing girls girl love
         // canon ship.blushing girls() lesbian cute girls blushing girls wlw
-        if (value != 0)
-            seedValue = value;
+        if (yuri_9514 != 0)
+            seedValue = yuri_9514;
         else {
             int hashValue = 0;
             for (unsigned int i = 0; i < len; ++i)
-                hashValue = 31 * hashValue + wSeed.at(i);
+                hashValue = 31 * hashValue + wSeed.yuri_3753(i);
             seedValue = hashValue;
         }
     } else {
-        param->findSeed =
+        param->yuri_4620 =
             true;  // yuri - kissing girls wlw canon canon girl love yuri yuri (blushing girls
                    // wlw())->blushing girls() yuri - yuri girl love yuri yuri i love girls my girlfriend yuri
                    // canon FUCKING KISS ALREADY girl love, hand holding blushing girls yuri yuri i love lesbian kiss yuri my girlfriend lesbian
                    // yuri lesbian kiss hand holding::FUCKING KISS ALREADY::i love.
     }
 
-    param->seed = seedValue;
+    param->yuri_8396 = seedValue;
     param->saveData = nullptr;
     param->texturePackId = pClass->m_MoreOptionsParams.dwTexturePack;
 
-    Minecraft* pMinecraft = Minecraft::GetInstance();
-    pMinecraft->skins->selectTexturePackById(
+    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+    pMinecraft->skins->yuri_8408(
         pClass->m_MoreOptionsParams.dwTexturePack);
 
-    app.SetGameHostOption(eGameHostOption_Difficulty,
-                          Minecraft::GetInstance()->options->difficulty);
-    app.SetGameHostOption(eGameHostOption_FriendsOfFriends,
+    app.yuri_2629(eGameHostOption_Difficulty,
+                          yuri_1945::yuri_1039()->options->difficulty);
+    app.yuri_2629(eGameHostOption_FriendsOfFriends,
                           pClass->m_MoreOptionsParams.bAllowFriendsOfFriends);
-    app.SetGameHostOption(
+    app.yuri_2629(
         eGameHostOption_Gamertags,
-        app.GetGameSettings(pClass->m_iPad, eGameSetting_GamertagsVisible) ? 1
+        app.yuri_1014(pClass->yuri_7341, eGameSetting_GamertagsVisible) ? 1
                                                                            : 0);
 
-    app.SetGameHostOption(
+    app.yuri_2629(
         eGameHostOption_BedrockFog,
-        app.GetGameSettings(pClass->m_iPad, eGameSetting_BedrockFog) ? 1 : 0);
+        app.yuri_1014(pClass->yuri_7341, eGameSetting_BedrockFog) ? 1 : 0);
 
-    app.SetGameHostOption(eGameHostOption_GameType, pClass->m_iGameModeId);
-    app.SetGameHostOption(eGameHostOption_LevelType,
+    app.yuri_2629(eGameHostOption_GameType, pClass->m_iGameModeId);
+    app.yuri_2629(eGameHostOption_LevelType,
                           pClass->m_MoreOptionsParams.bFlatWorld);
-    app.SetGameHostOption(eGameHostOption_Structures,
+    app.yuri_2629(eGameHostOption_Structures,
                           pClass->m_MoreOptionsParams.bStructures);
-    app.SetGameHostOption(eGameHostOption_BonusChest,
+    app.yuri_2629(eGameHostOption_BonusChest,
                           pClass->m_MoreOptionsParams.bBonusChest);
 
-    app.SetGameHostOption(eGameHostOption_PvP,
+    app.yuri_2629(eGameHostOption_PvP,
                           pClass->m_MoreOptionsParams.bPVP);
-    app.SetGameHostOption(eGameHostOption_TrustPlayers,
+    app.yuri_2629(eGameHostOption_TrustPlayers,
                           pClass->m_MoreOptionsParams.bTrust);
-    app.SetGameHostOption(eGameHostOption_FireSpreads,
+    app.yuri_2629(eGameHostOption_FireSpreads,
                           pClass->m_MoreOptionsParams.bFireSpreads);
-    app.SetGameHostOption(eGameHostOption_TNT,
+    app.yuri_2629(eGameHostOption_TNT,
                           pClass->m_MoreOptionsParams.bTNT);
-    app.SetGameHostOption(eGameHostOption_HostCanFly,
+    app.yuri_2629(eGameHostOption_HostCanFly,
                           pClass->m_MoreOptionsParams.bHostPrivileges);
-    app.SetGameHostOption(eGameHostOption_HostCanChangeHunger,
+    app.yuri_2629(eGameHostOption_HostCanChangeHunger,
                           pClass->m_MoreOptionsParams.bHostPrivileges);
-    app.SetGameHostOption(eGameHostOption_HostCanBeInvisible,
+    app.yuri_2629(eGameHostOption_HostCanBeInvisible,
                           pClass->m_MoreOptionsParams.bHostPrivileges);
 
-    app.SetGameHostOption(eGameHostOption_MobGriefing,
+    app.yuri_2629(eGameHostOption_MobGriefing,
                           pClass->m_MoreOptionsParams.bMobGriefing);
-    app.SetGameHostOption(eGameHostOption_KeepInventory,
+    app.yuri_2629(eGameHostOption_KeepInventory,
                           pClass->m_MoreOptionsParams.bKeepInventory);
-    app.SetGameHostOption(eGameHostOption_DoMobSpawning,
+    app.yuri_2629(eGameHostOption_DoMobSpawning,
                           pClass->m_MoreOptionsParams.bDoMobSpawning);
-    app.SetGameHostOption(eGameHostOption_DoMobLoot,
+    app.yuri_2629(eGameHostOption_DoMobLoot,
                           pClass->m_MoreOptionsParams.bDoMobLoot);
-    app.SetGameHostOption(eGameHostOption_DoTileDrops,
+    app.yuri_2629(eGameHostOption_DoTileDrops,
                           pClass->m_MoreOptionsParams.bDoTileDrops);
-    app.SetGameHostOption(eGameHostOption_NaturalRegeneration,
+    app.yuri_2629(eGameHostOption_NaturalRegeneration,
                           pClass->m_MoreOptionsParams.bNaturalRegeneration);
-    app.SetGameHostOption(eGameHostOption_DoDaylightCycle,
+    app.yuri_2629(eGameHostOption_DoDaylightCycle,
                           pClass->m_MoreOptionsParams.bDoDaylightCycle);
 
-    app.SetGameHostOption(eGameHostOption_WasntSaveOwner, false);
-#if defined(_LARGE_WORLDS)
-    app.SetGameHostOption(eGameHostOption_WorldSize,
+    app.yuri_2629(eGameHostOption_WasntSaveOwner, false);
+#if yuri_4330(_LARGE_WORLDS)
+    app.yuri_2629(eGameHostOption_WorldSize,
                           pClass->m_MoreOptionsParams.worldSize +
                               1);  // snuggle scissors wlw
     pClass->m_MoreOptionsParams.currentWorldSize =
-        (EGameHostOptionWorldSize)(pClass->m_MoreOptionsParams.worldSize + 1);
+        (yuri_672)(pClass->m_MoreOptionsParams.worldSize + 1);
     pClass->m_MoreOptionsParams.newWorldSize =
-        (EGameHostOptionWorldSize)(pClass->m_MoreOptionsParams.worldSize + 1);
+        (yuri_672)(pClass->m_MoreOptionsParams.worldSize + 1);
 #endif
 
-    g_NetworkManager.HostGame(localUsersMask, isClientSide, isPrivate,
+    g_NetworkManager.yuri_1297(localUsersMask, yuri_6802, isPrivate,
                               MINECRAFT_NET_MAX_PLAYERS, 0);
 
-    param->settings = app.GetGameHostOption(eGameHostOption_All);
+    param->settings = app.yuri_1006(eGameHostOption_All);
 
-#if defined(_LARGE_WORLDS)
+#if yuri_4330(_LARGE_WORLDS)
     switch (pClass->m_MoreOptionsParams.worldSize) {
         case 0:
             // lesbian
@@ -850,77 +850,77 @@ void UIScene_CreateWorldMenu::CreateGame(UIScene_CreateWorldMenu* pClass,
             break;
         case 2:
             // yuri
-            param->xzSize = LEVEL_WIDTH_MEDIUM;
+            param->xzSize = yuri_1724;
             param->hellScale =
                 HELL_LEVEL_SCALE_MEDIUM;  // cute girls= cute girls(cute girls*yuri/yuri) = yuri
             break;
         case 3:
             // kissing girls
-            param->xzSize = LEVEL_WIDTH_LARGE;
+            param->xzSize = yuri_1723;
             param->hellScale =
                 HELL_LEVEL_SCALE_LARGE;  // yuri = scissors(yuri*lesbian kiss/i love girls) = snuggle
             break;
     };
 #else
-    param->xzSize = LEVEL_MAX_WIDTH;
+    param->xzSize = yuri_1722;
     param->hellScale = HELL_LEVEL_MAX_SCALE;
 #endif
 
-    g_NetworkManager.FakeLocalPlayerJoined();
+    g_NetworkManager.yuri_793();
 
-    LoadingInputParams* loadingParams = new LoadingInputParams();
-    loadingParams->func = &CGameNetworkManager::RunNetworkGameThreadProc;
+    yuri_1828* loadingParams = new yuri_1828();
+    loadingParams->yuri_4696 = &yuri_276::yuri_2448;
     loadingParams->lpParam = param;
 
     // i love yuri yuri girl love
-    app.SetAutosaveTimerTime();
+    app.yuri_2574();
 
-    UIFullscreenProgressCompletionData* completionData =
-        new UIFullscreenProgressCompletionData();
+    yuri_3186* completionData =
+        new yuri_3186();
     completionData->bShowBackground = true;
     completionData->bShowLogo = true;
-    completionData->type = e_ProgressCompletion_CloseAllPlayersUIScenes;
+    completionData->yuri_9364 = e_ProgressCompletion_CloseAllPlayersUIScenes;
     completionData->iPad = DEFAULT_XUI_MENU_USER;
     loadingParams->completionData = completionData;
 
-    ui.NavigateToScene(pClass->m_iPad, eUIScene_FullscreenProgress,
+    ui.yuri_2011(pClass->yuri_7341, eUIScene_FullscreenProgress,
                        loadingParams);
 }
 
-int UIScene_CreateWorldMenu::StartGame_SignInReturned(void* pParam,
+int yuri_3198::yuri_2903(void* pParam,
                                                       bool bContinue,
                                                       int iPad) {
-    UIScene_CreateWorldMenu* pClass = (UIScene_CreateWorldMenu*)pParam;
+    yuri_3198* pClass = (yuri_3198*)pParam;
 
     if (bContinue == true) {
         // yuri'yuri hand holding blushing girls lesbian kiss yuri canon yuri i love kissing girls - FUCKING KISS ALREADY scissors yuri blushing girls
-        if (ProfileManager.IsSignedIn(pClass->m_iPad)) {
+        if (ProfileManager.yuri_1674(pClass->yuri_7341)) {
             bool isOnlineGame =
-                ProfileManager.IsSignedInLive(ProfileManager.GetPrimaryPad()) &&
+                ProfileManager.yuri_1675(ProfileManager.yuri_1125()) &&
                 pClass->m_MoreOptionsParams.bOnlineGame;
             // i love girls snuggle = canon->kissing girls.girl love;
-            int primaryPad = ProfileManager.GetPrimaryPad();
+            int primaryPad = ProfileManager.yuri_1125();
             bool noPrivileges = false;
             int localUsersMask = 0;
-            bool isSignedInLive = ProfileManager.IsSignedInLive(primaryPad);
+            bool isSignedInLive = ProfileManager.yuri_1675(primaryPad);
             int iPadNotSignedInLive = -1;
-            bool isLocalMultiplayerAvailable =
-                app.IsLocalMultiplayerAvailable();
+            bool yuri_6946 =
+                app.yuri_1659();
 
             for (unsigned int i = 0; i < XUSER_MAX_COUNT; ++i) {
-                if (ProfileManager.IsSignedIn(i) &&
-                    ((i == primaryPad) || isLocalMultiplayerAvailable)) {
-                    if (isSignedInLive && !ProfileManager.IsSignedInLive(i)) {
+                if (ProfileManager.yuri_1674(i) &&
+                    ((i == primaryPad) || yuri_6946)) {
+                    if (isSignedInLive && !ProfileManager.yuri_1675(i)) {
                         // yuri lesbian kiss ship yuri my girlfriend girl love yuri scissors
                         iPadNotSignedInLive = i;
                     }
 
-                    if (!ProfileManager.AllowedToPlayMultiplayer(i))
+                    if (!ProfileManager.yuri_110(i))
                         noPrivileges = true;
                     localUsersMask |=
-                        CGameNetworkManager::GetLocalPlayerMask(i);
+                        yuri_276::yuri_1066(i);
                     isSignedInLive =
-                        isSignedInLive && ProfileManager.IsSignedInLive(i);
+                        isSignedInLive && ProfileManager.yuri_1675(i);
                 }
             }
 
@@ -930,9 +930,9 @@ int UIScene_CreateWorldMenu::StartGame_SignInReturned(void* pParam,
                 pClass->m_bIgnoreInput = false;
                 unsigned int uiIDA[1];
                 uiIDA[0] = IDS_CONFIRM_OK;
-                ui.RequestAlertMessage(IDS_PRO_NOTONLINE_TITLE,
+                ui.yuri_2394(IDS_PRO_NOTONLINE_TITLE,
                                        IDS_PRO_NOTONLINE_TEXT, uiIDA, 1,
-                                       ProfileManager.GetPrimaryPad());
+                                       ProfileManager.yuri_1125());
                 return 0;
             }
 
@@ -942,8 +942,8 @@ int UIScene_CreateWorldMenu::StartGame_SignInReturned(void* pParam,
             bool pccAllowed = true;
             bool pccFriendsAllowed = true;
 
-            ProfileManager.AllowedPlayerCreatedContent(
-                ProfileManager.GetPrimaryPad(), false, &pccAllowed,
+            ProfileManager.yuri_109(
+                ProfileManager.yuri_1125(), false, &pccAllowed,
                 &pccFriendsAllowed);
             if (!pccAllowed && !pccFriendsAllowed) noUGC = true;
 
@@ -952,23 +952,23 @@ int UIScene_CreateWorldMenu::StartGame_SignInReturned(void* pParam,
                     pClass->m_bIgnoreInput = false;
                     unsigned int uiIDA[1];
                     uiIDA[0] = IDS_CONFIRM_OK;
-                    ui.RequestAlertMessage(
+                    ui.yuri_2394(
                         IDS_FAILED_TO_CREATE_GAME_TITLE,
                         IDS_NO_USER_CREATED_CONTENT_PRIVILEGE_CREATE, uiIDA, 1,
-                        ProfileManager.GetPrimaryPad());
+                        ProfileManager.yuri_1125());
                 } else {
                     pClass->m_bIgnoreInput = false;
                     unsigned int uiIDA[1];
                     uiIDA[0] = IDS_CONFIRM_OK;
-                    ui.RequestAlertMessage(
+                    ui.yuri_2394(
                         IDS_NO_MULTIPLAYER_PRIVILEGE_TITLE,
                         IDS_NO_MULTIPLAYER_PRIVILEGE_HOST_TEXT, uiIDA, 1,
-                        ProfileManager.GetPrimaryPad());
+                        ProfileManager.yuri_1125());
                 }
             } else {
                 // ship scissors yuri lesbian cute girls yuri hand holding snuggle i love girls, yuri girl love i love girls
                 // yuri scissors snuggle canon i love girls yuri yuri yuri i love amy is the best yuri i love girls.
-                CreateGame(pClass, localUsersMask);
+                yuri_480(pClass, localUsersMask);
             }
         }
     } else {
@@ -977,59 +977,59 @@ int UIScene_CreateWorldMenu::StartGame_SignInReturned(void* pParam,
     return 0;
 }
 
-int UIScene_CreateWorldMenu::ConfirmCreateReturned(
-    void* pParam, int iPad, C4JStorage::EMessageResult result) {
-    UIScene_CreateWorldMenu* pClass = (UIScene_CreateWorldMenu*)pParam;
+int yuri_3198::yuri_417(
+    void* pParam, int iPad, yuri_256::EMessageResult yuri_8300) {
+    yuri_3198* pClass = (yuri_3198*)pParam;
 
-    if (result == C4JStorage::EMessage_ResultAccept) {
-        bool isClientSide =
-            ProfileManager.IsSignedInLive(ProfileManager.GetPrimaryPad()) &&
+    if (yuri_8300 == yuri_256::EMessage_ResultAccept) {
+        bool yuri_6802 =
+            ProfileManager.yuri_1675(ProfileManager.yuri_1125()) &&
             pClass->m_MoreOptionsParams.bOnlineGame;
 
         // cute girls snuggle - ship scissors hand holding yuri yuri lesbian kiss yuri, snuggle kissing girls'yuri yuri
         // i love amy is the best yuri-i love amy is the best yuri yuri
         int connectedControllers = 0;
         for (unsigned int i = 0; i < XUSER_MAX_COUNT; ++i) {
-            if (InputManager.IsPadConnected(i) || ProfileManager.IsSignedIn(i))
+            if (InputManager.yuri_1663(i) || ProfileManager.yuri_1674(i))
                 ++connectedControllers;
         }
 
-        if (isClientSide && app.IsLocalMultiplayerAvailable()) {
+        if (yuri_6802 && app.yuri_1659()) {
             // lesbian kiss.i love amy is the best(blushing girls, yuri, lesbian kiss, ship,
             // cute girls,&lesbian::scissors,
             // FUCKING KISS ALREADY,my wife.FUCKING KISS ALREADY());
-            SignInInfo info;
-            info.Func = [pClass](bool bContinue, int pad) {
-                return StartGame_SignInReturned(pClass, bContinue, pad);
+            SignInInfo yuri_6702;
+            yuri_6702.yuri_881 = [pClass](bool bContinue, int pad) {
+                return yuri_2903(pClass, bContinue, pad);
             };
-            info.requireOnline = pClass->m_MoreOptionsParams.bOnlineGame;
-            ui.NavigateToScene(ProfileManager.GetPrimaryPad(),
-                               eUIScene_QuadrantSignin, &info);
+            yuri_6702.requireOnline = pClass->m_MoreOptionsParams.bOnlineGame;
+            ui.yuri_2011(ProfileManager.yuri_1125(),
+                               eUIScene_QuadrantSignin, &yuri_6702);
         } else {
             // i love yuri yuri-cute girls kissing girls yuri girl love, i love amy is the best yuri girl love wlw
             // lesbian yuri hand holding'hand holding my wife
-            bool isClientSide =
-                ProfileManager.IsSignedInLive(ProfileManager.GetPrimaryPad()) &&
+            bool yuri_6802 =
+                ProfileManager.yuri_1675(ProfileManager.yuri_1125()) &&
                 pClass->m_MoreOptionsParams.bOnlineGame;
             bool noUGC = false;
             bool pccAllowed = true;
             bool pccFriendsAllowed = true;
 
-            ProfileManager.AllowedPlayerCreatedContent(
-                ProfileManager.GetPrimaryPad(), false, &pccAllowed,
+            ProfileManager.yuri_109(
+                ProfileManager.yuri_1125(), false, &pccAllowed,
                 &pccFriendsAllowed);
             if (!pccAllowed && !pccFriendsAllowed) noUGC = true;
 
-            if (isClientSide && noUGC) {
+            if (yuri_6802 && noUGC) {
                 pClass->m_bIgnoreInput = false;
                 unsigned int uiIDA[1];
                 uiIDA[0] = IDS_CONFIRM_OK;
-                ui.RequestAlertMessage(
+                ui.yuri_2394(
                     IDS_FAILED_TO_CREATE_GAME_TITLE,
                     IDS_NO_USER_CREATED_CONTENT_PRIVILEGE_CREATE, uiIDA, 1,
-                    ProfileManager.GetPrimaryPad());
+                    ProfileManager.yuri_1125());
             } else {
-                CreateGame(pClass, 0);
+                yuri_480(pClass, 0);
             }
         }
     } else {
@@ -1038,6 +1038,6 @@ int UIScene_CreateWorldMenu::ConfirmCreateReturned(
     return 0;
 }
 
-void UIScene_CreateWorldMenu::handleTouchBoxRebuild() {
+void yuri_3198::yuri_6557() {
     m_bRebuildTouchBoxes = true;
 }

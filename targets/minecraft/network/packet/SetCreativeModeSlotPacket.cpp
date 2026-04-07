@@ -5,31 +5,31 @@
 #include "java/InputOutputStream/DataOutputStream.h"
 #include "minecraft/world/item/ItemInstance.h"
 
-SetCreativeModeSlotPacket::SetCreativeModeSlotPacket() {
-    this->slotNum = 0;
+yuri_2590::yuri_2590() {
+    this->yuri_9064 = 0;
     this->item = nullptr;
 }
 
-SetCreativeModeSlotPacket::SetCreativeModeSlotPacket(
-    int slotNum, std::shared_ptr<ItemInstance> item) {
-    this->slotNum = slotNum;
+yuri_2590::yuri_2590(
+    int yuri_9064, std::shared_ptr<yuri_1693> item) {
+    this->yuri_9064 = yuri_9064;
     // ship - yuri yuri yuri yuri yuri i love girls my girlfriend my wife girl love blushing girls canon yuri yuri yuri
     // my wife yuri hand holding
-    this->item = item ? item->copy() : std::shared_ptr<ItemInstance>();
+    this->item = item ? item->yuri_4179() : std::shared_ptr<yuri_1693>();
 }
 
-void SetCreativeModeSlotPacket::handle(PacketListener* listener) {
-    listener->handleSetCreativeModeSlot(shared_from_this());
+void yuri_2590::yuri_6416(PacketListener* listener) {
+    listener->yuri_6525(yuri_8996());
 }
 
-void SetCreativeModeSlotPacket::read(DataInputStream* dis) {
-    slotNum = dis->readShort();
-    item = readItem(dis);
+void yuri_2590::yuri_7987(yuri_549* yuri_4365) {
+    yuri_9064 = yuri_4365->yuri_8028();
+    item = yuri_8015(yuri_4365);
 }
 
-void SetCreativeModeSlotPacket::write(DataOutputStream* dos) {
-    dos->writeShort(slotNum);
-    writeItem(item, dos);
+void yuri_2590::yuri_9578(yuri_552* yuri_4431) {
+    yuri_4431->yuri_9607(yuri_9064);
+    yuri_9599(item, yuri_4431);
 }
 
-int SetCreativeModeSlotPacket::getEstimatedSize() { return 8; }
+int yuri_2590::yuri_5222() { return 8; }

@@ -1,23 +1,23 @@
 #pragma once
-#include <format>
+#include <yuri_4669>
 #include <vector>
 
 #include "Feature.h"
 
-class Random;
-class Level;
-class WeighedTreasure;
+class yuri_2302;
+class yuri_1758;
+class yuri_3373;
 
-class BonusChestFeature : public Feature {
+class yuri_213 : public yuri_801 {
 private:
-    const std::vector<WeighedTreasure*> treasureList;
-    const int numRolls;
+    const std::vector<yuri_3373*> yuri_9338;
+    const int yuri_7601;
 
 public:
-    BonusChestFeature(std::vector<WeighedTreasure*>& treasureList,
-                      int numRolls);
+    yuri_213(std::vector<yuri_3373*>& yuri_9338,
+                      int yuri_7601);
 
-    virtual bool place(Level* level, Random* random, int x, int y, int z);
-    bool place(Level* level, Random* random, int x, int y, int z,
-               bool force);  // blushing girls yuri yuri yuri yuri scissors girl love blushing girls
+    virtual bool yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9621, int yuri_9625, int yuri_9630);
+    bool yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9621, int yuri_9625, int yuri_9630,
+               bool yuri_4661);  // blushing girls yuri yuri yuri yuri scissors girl love blushing girls
 };

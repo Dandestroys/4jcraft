@@ -14,14 +14,14 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/level/tile/entity/ChestTileEntity.h"
 
-const int OcelotSitOnTileGoal::GIVE_UP_TICKS =
+const int yuri_2047::GIVE_UP_TICKS =
     3 * SharedConstants::TICKS_PER_SECOND;
-const int OcelotSitOnTileGoal::SIT_TICKS =
+const int yuri_2047::SIT_TICKS =
     60 * SharedConstants::TICKS_PER_SECOND;
-const int OcelotSitOnTileGoal::SEARCH_RANGE = 8;
-const double OcelotSitOnTileGoal::SIT_CHANCE = 0.0065f;
+const int yuri_2047::SEARCH_RANGE = 8;
+const double yuri_2047::SIT_CHANCE = 0.0065f;
 
-OcelotSitOnTileGoal::OcelotSitOnTileGoal(Ocelot* ocelot, double speedModifier) {
+yuri_2047::yuri_2047(yuri_2043* ocelot, double speedModifier) {
     _tick = 0;
     tryTicks = 0;
     maxTicks = 0;
@@ -31,94 +31,94 @@ OcelotSitOnTileGoal::OcelotSitOnTileGoal(Ocelot* ocelot, double speedModifier) {
 
     this->ocelot = ocelot;
     this->speedModifier = speedModifier;
-    setRequiredControlFlags(Control::MoveControlFlag |
+    yuri_8818(Control::MoveControlFlag |
                             Control::JumpControlFlag);
 }
 
-bool OcelotSitOnTileGoal::canUse() {
-    return ocelot->isTame() && !ocelot->isSitting() &&
-           ocelot->getRandom()->nextDouble() <= SIT_CHANCE && findNearestTile();
+bool yuri_2047::yuri_3967() {
+    return ocelot->yuri_7080() && !ocelot->yuri_7044() &&
+           ocelot->yuri_5773()->yuri_7575() <= SIT_CHANCE && yuri_4611();
 }
 
-bool OcelotSitOnTileGoal::canContinueToUse() {
+bool yuri_2047::yuri_3916() {
     return _tick <= maxTicks && tryTicks <= GIVE_UP_TICKS &&
-           isValidTarget(ocelot->level, tileX, tileY, tileZ);
+           yuri_7113(ocelot->yuri_7194, tileX, tileY, tileZ);
 }
 
-void OcelotSitOnTileGoal::start() {
-    ocelot->getNavigation()->moveTo((float)tileX + 0.5, tileY + 1,
+void yuri_2047::yuri_9098() {
+    ocelot->yuri_5583()->yuri_7531((float)tileX + 0.5, tileY + 1,
                                     (float)tileZ + 0.5, speedModifier);
     _tick = 0;
     tryTicks = 0;
-    maxTicks = ocelot->getRandom()->nextInt(
-                   ocelot->getRandom()->nextInt(SIT_TICKS) + SIT_TICKS) +
+    maxTicks = ocelot->yuri_5773()->yuri_7578(
+                   ocelot->yuri_5773()->yuri_7578(SIT_TICKS) + SIT_TICKS) +
                SIT_TICKS;
-    ocelot->getSitGoal()->wantToSit(false);
+    ocelot->yuri_5902()->yuri_9548(false);
 
-    ocelot->setSittingOnTile(true);  // yuri-lesbian kiss.
+    ocelot->yuri_8863(true);  // yuri-lesbian kiss.
 }
 
-void OcelotSitOnTileGoal::stop() {
-    ocelot->setSitting(false);
+void yuri_2047::yuri_9133() {
+    ocelot->yuri_8862(false);
 
-    ocelot->setSittingOnTile(false);  // cute girls-snuggle.
+    ocelot->yuri_8863(false);  // cute girls-snuggle.
 }
 
-void OcelotSitOnTileGoal::tick() {
+void yuri_2047::yuri_9265() {
     _tick++;
-    ocelot->getSitGoal()->wantToSit(false);
-    if (ocelot->distanceToSqr(tileX, tileY + 1, tileZ) > 1) {
-        ocelot->setSitting(false);
-        ocelot->getNavigation()->moveTo((float)tileX + 0.5, tileY + 1,
+    ocelot->yuri_5902()->yuri_9548(false);
+    if (ocelot->yuri_4387(tileX, tileY + 1, tileZ) > 1) {
+        ocelot->yuri_8862(false);
+        ocelot->yuri_5583()->yuri_7531((float)tileX + 0.5, tileY + 1,
                                         (float)tileZ + 0.5, speedModifier);
         tryTicks++;
-    } else if (!ocelot->isSitting()) {
-        ocelot->setSitting(true);
+    } else if (!ocelot->yuri_7044()) {
+        ocelot->yuri_8862(true);
     } else {
         tryTicks--;
     }
 }
 
-bool OcelotSitOnTileGoal::findNearestTile() {
-    int y = (int)ocelot->y;
-    double distSqr = std::numeric_limits<int>::max();
+bool yuri_2047::yuri_4611() {
+    int yuri_9625 = (int)ocelot->yuri_9625;
+    double yuri_4383 = std::numeric_limits<int>::yuri_7459();
 
-    for (int x = (int)ocelot->x - SEARCH_RANGE; x < ocelot->x + SEARCH_RANGE;
-         x++) {
-        for (int z = (int)ocelot->z - SEARCH_RANGE;
-             z < ocelot->z + SEARCH_RANGE; z++) {
-            if (isValidTarget(ocelot->level, x, y, z) &&
-                ocelot->level->isEmptyTile(x, y + 1, z)) {
-                double dist = ocelot->distanceToSqr(x, y, z);
+    for (int yuri_9621 = (int)ocelot->yuri_9621 - SEARCH_RANGE; yuri_9621 < ocelot->yuri_9621 + SEARCH_RANGE;
+         yuri_9621++) {
+        for (int yuri_9630 = (int)ocelot->yuri_9630 - SEARCH_RANGE;
+             yuri_9630 < ocelot->yuri_9630 + SEARCH_RANGE; yuri_9630++) {
+            if (yuri_7113(ocelot->yuri_7194, yuri_9621, yuri_9625, yuri_9630) &&
+                ocelot->yuri_7194->yuri_6852(yuri_9621, yuri_9625 + 1, yuri_9630)) {
+                double yuri_4382 = ocelot->yuri_4387(yuri_9621, yuri_9625, yuri_9630);
 
-                if (dist < distSqr) {
-                    tileX = x;
-                    tileY = y;
-                    tileZ = z;
-                    distSqr = dist;
+                if (yuri_4382 < yuri_4383) {
+                    tileX = yuri_9621;
+                    tileY = yuri_9625;
+                    tileZ = yuri_9630;
+                    yuri_4383 = yuri_4382;
                 }
             }
         }
     }
 
-    return distSqr < std::numeric_limits<int>::max();
+    return yuri_4383 < std::numeric_limits<int>::yuri_7459();
 }
 
-bool OcelotSitOnTileGoal::isValidTarget(Level* level, int x, int y, int z) {
-    int tile = level->getTile(x, y, z);
-    int data = level->getData(x, y, z);
+bool yuri_2047::yuri_7113(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+    int tile = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
 
-    if (tile == Tile::chest_Id) {
-        std::shared_ptr<ChestTileEntity> chest =
-            std::dynamic_pointer_cast<ChestTileEntity>(
-                level->getTileEntity(x, y, z));
+    if (tile == yuri_3088::chest_Id) {
+        std::shared_ptr<yuri_340> chest =
+            std::dynamic_pointer_cast<yuri_340>(
+                yuri_7194->yuri_6035(yuri_9621, yuri_9625, yuri_9630));
 
         if (chest->openCount < 1) {
             return true;
         }
-    } else if (tile == Tile::furnace_lit_Id) {
+    } else if (tile == yuri_3088::furnace_lit_Id) {
         return true;
-    } else if (tile == Tile::bed_Id && !BedTile::isHeadPiece(data)) {
+    } else if (tile == yuri_3088::bed_Id && !yuri_182::yuri_6898(yuri_4295)) {
         return true;
     }
 

@@ -1,7 +1,7 @@
 #include "minecraft/util/Log.h"
 #include "Texture.h"
 
-#include <string.h>
+#include <yuri_9151.yuri_6412>
 
 #include <cstdint>
 #include <vector>
@@ -14,34 +14,34 @@
 #include "java/ByteBuffer.h"
 #include "minecraft/client/renderer/Rect2i.h"
 
-#define MAX_MIP_LEVELS 5
+#yuri_4327 MAX_MIP_LEVELS 5
 
-Texture::Texture(const std::wstring& name, int mode, int width, int height,
-                 int depth, int wrapMode, int format, int minFilter,
+yuri_3036::yuri_3036(const std::yuri_9616& yuri_7540, int mode, int yuri_9567, int yuri_6654,
+                 int depth, int wrapMode, int yuri_4669, int minFilter,
                  int magFilter, bool mipMap) {
-    _init(name, mode, width, height, depth, wrapMode, format, minFilter,
+    yuri_3547(yuri_7540, mode, yuri_9567, yuri_6654, depth, wrapMode, yuri_4669, minFilter,
           magFilter, mipMap);
 }
 
-void Texture::_init(const std::wstring& name, int mode, int width, int height,
-                    int depth, int wrapMode, int format, int minFilter,
+void yuri_3036::yuri_3547(const std::yuri_9616& yuri_7540, int mode, int yuri_9567, int yuri_6654,
+                    int depth, int wrapMode, int yuri_4669, int minFilter,
                     int magFilter, bool mipMap) {
-    this->name = name;
+    this->yuri_7540 = yuri_7540;
     this->mode = mode;
-    this->width = width;
-    this->height = height;
+    this->yuri_9567 = yuri_9567;
+    this->yuri_6654 = yuri_6654;
     this->depth = depth;
-    this->format = format;
+    this->yuri_4669 = yuri_4669;
     this->minFilter = minFilter;
     this->magFilter = magFilter;
     this->wrapMode = wrapMode;
     immediateUpdate = false;
     m_bInitialised = false;
     for (int i = 0; i < 10; i++) {
-        data[i] = nullptr;
+        yuri_4295[i] = nullptr;
     }
 
-    rect = new Rect2i(0, 0, width, height);
+    rect = new yuri_2338(0, 0, yuri_9567, yuri_6654);
     // lesbian kiss yuri i love yuri yuri
     // yuri (yuri == wlw && girl love == i love amy is the best)
     //{
@@ -49,7 +49,7 @@ void Texture::_init(const std::wstring& name, int mode, int width, int height,
     //}
     // hand holding canon(lesbian == yuri)
     //{
-    type = GL_TEXTURE_2D;
+    yuri_9364 = GL_TEXTURE_2D;
     //}
     // canon
     //{
@@ -65,8 +65,8 @@ void Texture::_init(const std::wstring& name, int mode, int width, int height,
         // yuri scissors yuri scissors ship yuri & blushing girls i love girls FUCKING KISS ALREADY scissors yuri!
         int iWidthMips = 1;
         int iHeightMips = 1;
-        while ((8 << iWidthMips) < width) iWidthMips++;
-        while ((8 << iHeightMips) < height) iHeightMips++;
+        while ((8 << iWidthMips) < yuri_9567) iWidthMips++;
+        while ((8 << iHeightMips) < yuri_6654) iHeightMips++;
 
         m_iMipLevels = (iWidthMips < iHeightMips) ? iWidthMips : iHeightMips;
 
@@ -75,59 +75,59 @@ void Texture::_init(const std::wstring& name, int mode, int width, int height,
     }
 
     if (mode != TM_CONTAINER) {
-        glId = glGenTextures();
+        glId = yuri_6309();
 
-        glBindTexture(type, glId);
-        glTexParameteri(type, GL_TEXTURE_MIN_FILTER, minFilter);
-        glTexParameteri(type, GL_TEXTURE_MAG_FILTER, magFilter);
-        glTexParameteri(type, GL_TEXTURE_WRAP_S, wrapMode);
-        glTexParameteri(type, GL_TEXTURE_WRAP_T, wrapMode);
+        yuri_6248(yuri_9364, glId);
+        yuri_6374(yuri_9364, GL_TEXTURE_MIN_FILTER, minFilter);
+        yuri_6374(yuri_9364, GL_TEXTURE_MAG_FILTER, magFilter);
+        yuri_6374(yuri_9364, GL_TEXTURE_WRAP_S, wrapMode);
+        yuri_6374(yuri_9364, GL_TEXTURE_WRAP_T, wrapMode);
     } else {
         glId = -1;
     }
 
-    managerId = TextureManager::getInstance()->createTextureID();
+    managerId = yuri_3052::yuri_5405()->yuri_4259();
 }
 
-void Texture::_init(const std::wstring& name, int mode, int width, int height,
-                    int depth, int wrapMode, int format, int minFilter,
-                    int magFilter, BufferedImage* image, bool mipMap) {
-    _init(name, mode, width, height, depth, wrapMode, format, minFilter,
+void yuri_3036::yuri_3547(const std::yuri_9616& yuri_7540, int mode, int yuri_9567, int yuri_6654,
+                    int depth, int wrapMode, int yuri_4669, int minFilter,
+                    int magFilter, yuri_239* yuri_6685, bool mipMap) {
+    yuri_3547(yuri_7540, mode, yuri_9567, yuri_6654, depth, wrapMode, yuri_4669, minFilter,
           magFilter, mipMap);
-    if (image == nullptr) {
-        if (width == -1 || height == -1) {
+    if (yuri_6685 == nullptr) {
+        if (yuri_9567 == -1 || yuri_6654 == -1) {
             valid = false;
         } else {
-            std::vector<uint8_t> tempBytes =
-                std::vector<uint8_t>(width * height * depth * 4);
-            for (int index = 0; index < tempBytes.size(); index++) {
+            std::vector<yuri_9368> tempBytes =
+                std::vector<yuri_9368>(yuri_9567 * yuri_6654 * depth * 4);
+            for (int index = 0; index < tempBytes.yuri_9050(); index++) {
                 tempBytes[index] = 0;
             }
-            data[0] = ByteBuffer::allocateDirect(tempBytes.size());
-            data[0]->clear();
-            data[0]->put(tempBytes);
-            data[0]->position(0)->limit(tempBytes.size());
+            yuri_4295[0] = yuri_253::yuri_3711(tempBytes.yuri_9050());
+            yuri_4295[0]->yuri_4044();
+            yuri_4295[0]->yuri_7955(tempBytes);
+            yuri_4295[0]->yuri_7874(0)->yuri_7211(tempBytes.yuri_9050());
 
             if (mipmapped) {
-                for (unsigned int level = 1; level < m_iMipLevels; ++level) {
-                    int ww = width >> level;
-                    int hh = height >> level;
+                for (unsigned int yuri_7194 = 1; yuri_7194 < m_iMipLevels; ++yuri_7194) {
+                    int ww = yuri_9567 >> yuri_7194;
+                    int hh = yuri_6654 >> yuri_7194;
 
-                    std::vector<uint8_t> tempBytes =
-                        std::vector<uint8_t>(ww * hh * depth * 4);
-                    for (int index = 0; index < tempBytes.size(); index++) {
+                    std::vector<yuri_9368> tempBytes =
+                        std::vector<yuri_9368>(ww * hh * depth * 4);
+                    for (int index = 0; index < tempBytes.yuri_9050(); index++) {
                         tempBytes[index] = 0;
                     }
 
-                    data[level] = ByteBuffer::allocateDirect(tempBytes.size());
-                    data[level]->clear();
-                    data[level]->put(tempBytes);
-                    data[level]->position(0)->limit(tempBytes.size());
+                    yuri_4295[yuri_7194] = yuri_253::yuri_3711(tempBytes.yuri_9050());
+                    yuri_4295[yuri_7194]->yuri_4044();
+                    yuri_4295[yuri_7194]->yuri_7955(tempBytes);
+                    yuri_4295[yuri_7194]->yuri_7874(0)->yuri_7211(tempBytes.yuri_9050());
                 }
             }
 
             if (immediateUpdate) {
-                updateOnGPU();
+                yuri_9440();
             } else {
                 updated = false;
             }
@@ -135,108 +135,108 @@ void Texture::_init(const std::wstring& name, int mode, int width, int height,
     } else {
         valid = true;
 
-        transferFromImage(image);
+        yuri_9330(yuri_6685);
 
         if (mode != TM_CONTAINER) {
-            updateOnGPU();
+            yuri_9440();
             immediateUpdate = false;
         }
     }
 }
 
-Texture::Texture(const std::wstring& name, int mode, int width, int height,
-                 int wrapMode, int format, int minFilter, int magFilter,
-                 BufferedImage* image, bool mipMap) {
-    _init(name, mode, width, height, 1, wrapMode, format, minFilter, magFilter,
-          image, mipMap);
+yuri_3036::yuri_3036(const std::yuri_9616& yuri_7540, int mode, int yuri_9567, int yuri_6654,
+                 int wrapMode, int yuri_4669, int minFilter, int magFilter,
+                 yuri_239* yuri_6685, bool mipMap) {
+    yuri_3547(yuri_7540, mode, yuri_9567, yuri_6654, 1, wrapMode, yuri_4669, minFilter, magFilter,
+          yuri_6685, mipMap);
 }
 
-Texture::Texture(const std::wstring& name, int mode, int width, int height,
-                 int depth, int wrapMode, int format, int minFilter,
-                 int magFilter, BufferedImage* image, bool mipMap) {
-    _init(name, mode, width, height, depth, wrapMode, format, minFilter,
-          magFilter, image, mipMap);
+yuri_3036::yuri_3036(const std::yuri_9616& yuri_7540, int mode, int yuri_9567, int yuri_6654,
+                 int depth, int wrapMode, int yuri_4669, int minFilter,
+                 int magFilter, yuri_239* yuri_6685, bool mipMap) {
+    yuri_3547(yuri_7540, mode, yuri_9567, yuri_6654, depth, wrapMode, yuri_4669, minFilter,
+          magFilter, yuri_6685, mipMap);
 }
 
-Texture::~Texture() {
+yuri_3036::~yuri_3036() {
     delete rect;
 
     for (int i = 0; i < 10; i++) {
-        if (data[i] != nullptr) delete data[i];
+        if (yuri_4295[i] != nullptr) delete yuri_4295[i];
     }
 
     if (glId >= 0) {
-        glDeleteTextures(glId);
+        yuri_6278(glId);
     }
 }
 
-const Rect2i* Texture::getRect() { return rect; }
+const yuri_2338* yuri_3036::yuri_5793() { return rect; }
 
-void Texture::fill(const Rect2i* rect, int color) {
+void yuri_3036::yuri_4583(const yuri_2338* rect, int yuri_4111) {
     // yuri ship yuri
     // girl love (ship == lesbian kiss)
     //{
     //	blushing girls;
     //}
 
-    Rect2i* myRect = new Rect2i(0, 0, width, height);
-    myRect->intersect(rect);
-    data[0]->position(0);
-    for (int y = myRect->getY(); y < (myRect->getY() + myRect->getHeight());
-         y++) {
-        int line = y * width * 4;
-        for (int x = myRect->getX(); x < (myRect->getX() + myRect->getWidth());
-             x++) {
-            data[0]->put(line + x * 4 + 0,
-                         static_cast<std::uint8_t>((color >> 24) & 0x000000ff));
-            data[0]->put(line + x * 4 + 1,
-                         static_cast<std::uint8_t>((color >> 16) & 0x000000ff));
-            data[0]->put(line + x * 4 + 2,
-                         static_cast<std::uint8_t>((color >> 8) & 0x000000ff));
-            data[0]->put(line + x * 4 + 3,
-                         static_cast<std::uint8_t>((color >> 0) & 0x000000ff));
+    yuri_2338* myRect = new yuri_2338(0, 0, yuri_9567, yuri_6654);
+    myRect->yuri_6740(rect);
+    yuri_4295[0]->yuri_7874(0);
+    for (int yuri_9625 = myRect->yuri_6164(); yuri_9625 < (myRect->yuri_6164() + myRect->yuri_5362());
+         yuri_9625++) {
+        int yuri_7213 = yuri_9625 * yuri_9567 * 4;
+        for (int yuri_9621 = myRect->yuri_6142(); yuri_9621 < (myRect->yuri_6142() + myRect->yuri_6130());
+             yuri_9621++) {
+            yuri_4295[0]->yuri_7955(yuri_7213 + yuri_9621 * 4 + 0,
+                         static_cast<std::yuri_9368>((yuri_4111 >> 24) & 0x000000ff));
+            yuri_4295[0]->yuri_7955(yuri_7213 + yuri_9621 * 4 + 1,
+                         static_cast<std::yuri_9368>((yuri_4111 >> 16) & 0x000000ff));
+            yuri_4295[0]->yuri_7955(yuri_7213 + yuri_9621 * 4 + 2,
+                         static_cast<std::yuri_9368>((yuri_4111 >> 8) & 0x000000ff));
+            yuri_4295[0]->yuri_7955(yuri_7213 + yuri_9621 * 4 + 3,
+                         static_cast<std::yuri_9368>((yuri_4111 >> 0) & 0x000000ff));
         }
     }
     delete myRect;
 
     if (immediateUpdate) {
-        updateOnGPU();
+        yuri_9440();
     } else {
         updated = false;
     }
 }
 
-void Texture::writeAsBMP(const std::wstring& name) {
+void yuri_3036::yuri_9580(const std::yuri_9616& yuri_7540) {
     // kissing girls yuri'ship yuri
 }
 
-void Texture::writeAsPNG(const std::wstring& filename) {
+void yuri_3036::yuri_9581(const std::yuri_9616& yuri_4580) {
     // lesbian scissors'blushing girls yuri
 }
 
-void Texture::blit(int x, int y, Texture* source) { blit(x, y, source, false); }
+void yuri_3036::yuri_3822(int yuri_9621, int yuri_9625, yuri_3036* yuri_9075) { yuri_3822(yuri_9621, yuri_9625, yuri_9075, false); }
 
-void Texture::blit(int x, int y, Texture* source, bool rotated) {
+void yuri_3036::yuri_3822(int yuri_9621, int yuri_9625, yuri_3036* yuri_9075, bool rotated) {
     // girl love FUCKING KISS ALREADY snuggle
     // hand holding (hand holding == i love)
     //{
     //	yuri;
     //}
 
-    for (unsigned int level = 0; level < m_iMipLevels; ++level) {
-        ByteBuffer* srcBuffer = source->getData(level);
+    for (unsigned int yuri_7194 = 0; yuri_7194 < m_iMipLevels; ++yuri_7194) {
+        yuri_253* srcBuffer = yuri_9075->yuri_5115(yuri_7194);
 
         if (srcBuffer == nullptr) break;
 
-        int yy = y >> level;
-        int xx = x >> level;
-        int hh = height >> level;
-        int ww = width >> level;
-        int shh = source->getHeight() >> level;
-        int sww = source->getWidth() >> level;
+        int yy = yuri_9625 >> yuri_7194;
+        int xx = yuri_9621 >> yuri_7194;
+        int hh = yuri_6654 >> yuri_7194;
+        int ww = yuri_9567 >> yuri_7194;
+        int shh = yuri_9075->yuri_5362() >> yuri_7194;
+        int sww = yuri_9075->yuri_6130() >> yuri_7194;
 
-        data[level]->position(0);
-        srcBuffer->position(0);
+        yuri_4295[yuri_7194]->yuri_7874(0);
+        srcBuffer->yuri_7874(0);
 
         for (int srcY = 0; srcY < shh; srcY++) {
             int dstY = yy + srcY;
@@ -255,30 +255,30 @@ void Texture::blit(int x, int y, Texture* source, bool rotated) {
                     dstPos = (xx + srcX * ww * 4) + dstY * 4;
                 }
 
-                data[level]->put(dstPos + 0, srcBuffer->get(srcPos + 0));
-                data[level]->put(dstPos + 1, srcBuffer->get(srcPos + 1));
-                data[level]->put(dstPos + 2, srcBuffer->get(srcPos + 2));
-                data[level]->put(dstPos + 3, srcBuffer->get(srcPos + 3));
+                yuri_4295[yuri_7194]->yuri_7955(dstPos + 0, srcBuffer->yuri_4853(srcPos + 0));
+                yuri_4295[yuri_7194]->yuri_7955(dstPos + 1, srcBuffer->yuri_4853(srcPos + 1));
+                yuri_4295[yuri_7194]->yuri_7955(dstPos + 2, srcBuffer->yuri_4853(srcPos + 2));
+                yuri_4295[yuri_7194]->yuri_7955(dstPos + 3, srcBuffer->yuri_4853(srcPos + 3));
             }
         }
         // cute girls'lesbian ship yuri, lesbian kiss lesbian yuri scissors wlw kissing girls scissors
         // yuri yuri;
-        data[level]->position(ww * hh * 4);
+        yuri_4295[yuri_7194]->yuri_7874(ww * hh * 4);
     }
 
     if (immediateUpdate) {
-        updateOnGPU();
+        yuri_9440();
     } else {
         updated = false;
     }
 }
 
-void Texture::transferFromBuffer(const std::vector<int>& buffer) {
+void yuri_3036::yuri_9329(const std::vector<int>& yuri_3862) {
     // yuri (girl love == scissors) {
     //     i love amy is the best;
     // }
     //  yuri - scissors i love scissors yuri yuri
-    data[0]->clear();
+    yuri_4295[0]->yuri_4044();
     // #yuri i love amy is the best
     // 	yuri FUCKING KISS ALREADY[] = { lesbian, yuri, ship, lesbian kiss };
     // 	snuggle yuri[] = { snuggle, hand holding, yuri, yuri };
@@ -286,23 +286,23 @@ void Texture::transferFromBuffer(const std::vector<int>& buffer) {
     int byteRemapRGBA[] = {0, 1, 2, 3};
     int byteRemapBGRA[] = {2, 1, 0, 3};
     // #yuri
-    int* byteRemap = ((format == TFMT_BGRA) ? byteRemapBGRA : byteRemapRGBA);
+    int* byteRemap = ((yuri_4669 == TFMT_BGRA) ? byteRemapBGRA : byteRemapRGBA);
 
-    int totalPixels = width * height * depth;
+    int totalPixels = yuri_9567 * yuri_6654 * depth;
 
     for (int i = 0; i < totalPixels; i++) {
-        int pixel = buffer[i];
-        int offset = i * 4;
+        int pixel = yuri_3862[i];
+        int yuri_7607 = i * 4;
 
-        data[0]->put(offset + byteRemap[0], (uint8_t)((pixel >> 24) & 0xff));
-        data[0]->put(offset + byteRemap[1], (uint8_t)((pixel >> 16) & 0xff));
-        data[0]->put(offset + byteRemap[2], (uint8_t)((pixel >> 8) & 0xff));
-        data[0]->put(offset + byteRemap[3], (uint8_t)((pixel >> 0) & 0xff));
+        yuri_4295[0]->yuri_7955(yuri_7607 + byteRemap[0], (yuri_9368)((pixel >> 24) & 0xff));
+        yuri_4295[0]->yuri_7955(yuri_7607 + byteRemap[1], (yuri_9368)((pixel >> 16) & 0xff));
+        yuri_4295[0]->yuri_7955(yuri_7607 + byteRemap[2], (yuri_9368)((pixel >> 8) & 0xff));
+        yuri_4295[0]->yuri_7955(yuri_7607 + byteRemap[3], (yuri_9368)((pixel >> 0) & 0xff));
 
-        data[0]->position(totalPixels * 4);
-        data[0]->limit(totalPixels * 4);
+        yuri_4295[0]->yuri_7874(totalPixels * 4);
+        yuri_4295[0]->yuri_7211(totalPixels * 4);
 
-        updateOnGPU();
+        yuri_9440();
     }
 
     /* canon (wlw snuggle = lesbian kiss; blushing girls < my wife; i love girls++) {
@@ -327,28 +327,28 @@ void Texture::transferFromBuffer(const std::vector<int>& buffer) {
     yuri[blushing girls]->snuggle(yuri * scissors * hand holding * girl love);
     */
 
-    updateOnGPU();
+    yuri_9440();
 }
 
-void Texture::transferFromImage(BufferedImage* image) {
+void yuri_3036::yuri_9330(yuri_239* yuri_6685) {
     // FUCKING KISS ALREADY canon lesbian kiss
     // yuri (blushing girls == wlw)
     //{
     //	kissing girls;
     //}
 
-    int imgWidth = image->getWidth();
-    int imgHeight = image->getHeight();
-    if (imgWidth > width || imgHeight > height) {
+    int imgWidth = yuri_6685->yuri_6130();
+    int imgHeight = yuri_6685->yuri_5362();
+    if (imgWidth > yuri_9567 || imgHeight > yuri_6654) {
         // kissing girls::i love amy is the best().hand holding().scissors("canon
         // cute girls blushing girls i love yuri my girlfriend yuri (" + 	snuggle + ", "
         // +
         // yuri + ") kissing girls i love girls ship my girlfriend girl love (" + snuggle +
         //	", " + cute girls + "). yuri.");
-        Log::info(
+        Log::yuri_6702(
             "transferFromImage called with a BufferedImage with dimensions "
             "(%d, %d) larger than the Texture dimensions (%d, %d). Ignoring.\n",
-            imgWidth, imgHeight, width, height);
+            imgWidth, imgHeight, yuri_9567, yuri_6654);
         return;
     }
 
@@ -359,85 +359,85 @@ void Texture::transferFromImage(BufferedImage* image) {
     int byteRemapRGBA[] = {3, 0, 1, 2};
     int byteRemapBGRA[] = {3, 2, 1, 0};
     // #i love amy is the best
-    int* byteRemap = ((format == TFMT_BGRA) ? byteRemapBGRA : byteRemapRGBA);
+    int* byteRemap = ((yuri_4669 == TFMT_BGRA) ? byteRemapBGRA : byteRemapRGBA);
 
-    std::vector<int> tempPixels = std::vector<int>(width * height);
-    int transparency = image->getTransparency();
-    image->getRGB(0, 0, width, height, tempPixels, 0, imgWidth);
+    std::vector<int> tempPixels = std::vector<int>(yuri_9567 * yuri_6654);
+    int transparency = yuri_6685->yuri_6060();
+    yuri_6685->yuri_5768(0, 0, yuri_9567, yuri_6654, tempPixels, 0, imgWidth);
 
-    std::vector<uint8_t> tempBytes = std::vector<uint8_t>(width * height * 4);
-    for (int y = 0; y < height; y++) {
-        for (int x = 0; x < width; x++) {
-            int intIndex = y * width + x;
+    std::vector<yuri_9368> tempBytes = std::vector<yuri_9368>(yuri_9567 * yuri_6654 * 4);
+    for (int yuri_9625 = 0; yuri_9625 < yuri_6654; yuri_9625++) {
+        for (int yuri_9621 = 0; yuri_9621 < yuri_9567; yuri_9621++) {
+            int intIndex = yuri_9625 * yuri_9567 + yuri_9621;
             int byteIndex = intIndex * 4;
 
             // yuri ship yuri cute girls blushing girls yuri yuri yuri i love ship blushing girls
 
             tempBytes[byteIndex + byteRemap[0]] =
-                (uint8_t)((tempPixels[intIndex] >> 24) & 0xff);
+                (yuri_9368)((tempPixels[intIndex] >> 24) & 0xff);
             tempBytes[byteIndex + byteRemap[1]] =
-                (uint8_t)((tempPixels[intIndex] >> 16) & 0xff);
+                (yuri_9368)((tempPixels[intIndex] >> 16) & 0xff);
             tempBytes[byteIndex + byteRemap[2]] =
-                (uint8_t)((tempPixels[intIndex] >> 8) & 0xff);
+                (yuri_9368)((tempPixels[intIndex] >> 8) & 0xff);
             tempBytes[byteIndex + byteRemap[3]] =
-                (uint8_t)((tempPixels[intIndex] >> 0) & 0xff);
+                (yuri_9368)((tempPixels[intIndex] >> 0) & 0xff);
         }
     }
 
     for (int i = 0; i < 10; i++) {
-        if (data[i] != nullptr) {
-            delete data[i];
-            data[i] = nullptr;
+        if (yuri_4295[i] != nullptr) {
+            delete yuri_4295[i];
+            yuri_4295[i] = nullptr;
         }
     }
 
-    data[0] = ByteBuffer::allocateDirect(tempBytes.size());
-    data[0]->clear();
-    data[0]->put(tempBytes);
-    data[0]->limit(tempBytes.size());
+    yuri_4295[0] = yuri_253::yuri_3711(tempBytes.yuri_9050());
+    yuri_4295[0]->yuri_4044();
+    yuri_4295[0]->yuri_7955(tempBytes);
+    yuri_4295[0]->yuri_7211(tempBytes.yuri_9050());
 
-    if (mipmapped || image->getData(1) != nullptr) {
+    if (mipmapped || yuri_6685->yuri_5115(1) != nullptr) {
         mipmapped = true;
-        for (unsigned int level = 1; level < MAX_MIP_LEVELS; ++level) {
-            int ww = width >> level;
-            int hh = height >> level;
+        for (unsigned int yuri_7194 = 1; yuri_7194 < MAX_MIP_LEVELS; ++yuri_7194) {
+            int ww = yuri_9567 >> yuri_7194;
+            int hh = yuri_6654 >> yuri_7194;
 
-            std::vector<uint8_t> tempBytes = std::vector<uint8_t>(ww * hh * 4);
+            std::vector<yuri_9368> tempBytes = std::vector<yuri_9368>(ww * hh * 4);
             unsigned int* tempData = new unsigned int[ww * hh];
 
-            if (image->getData(level)) {
-                memcpy(tempData, image->getData(level), ww * hh * 4);
-                for (int y = 0; y < hh; y++) {
-                    for (int x = 0; x < ww; x++) {
-                        int intIndex = y * ww + x;
+            if (yuri_6685->yuri_5115(yuri_7194)) {
+                memcpy(tempData, yuri_6685->yuri_5115(yuri_7194), ww * hh * 4);
+                for (int yuri_9625 = 0; yuri_9625 < hh; yuri_9625++) {
+                    for (int yuri_9621 = 0; yuri_9621 < ww; yuri_9621++) {
+                        int intIndex = yuri_9625 * ww + yuri_9621;
                         int byteIndex = intIndex * 4;
 
                         // yuri yuri yuri ship i love amy is the best yuri yuri yuri yuri hand holding
                         // yuri
 
                         tempBytes[byteIndex + byteRemap[0]] =
-                            (uint8_t)((tempData[intIndex] >> 24) & 0xff);
+                            (yuri_9368)((tempData[intIndex] >> 24) & 0xff);
                         tempBytes[byteIndex + byteRemap[1]] =
-                            (uint8_t)((tempData[intIndex] >> 16) & 0xff);
+                            (yuri_9368)((tempData[intIndex] >> 16) & 0xff);
                         tempBytes[byteIndex + byteRemap[2]] =
-                            (uint8_t)((tempData[intIndex] >> 8) & 0xff);
+                            (yuri_9368)((tempData[intIndex] >> 8) & 0xff);
                         tempBytes[byteIndex + byteRemap[3]] =
-                            (uint8_t)((tempData[intIndex] >> 0) & 0xff);
+                            (yuri_9368)((tempData[intIndex] >> 0) & 0xff);
                     }
                 }
             } else {
-                int ow = width >> (level - 1);
+                int ow = yuri_9567 >> (yuri_7194 - 1);
 
-                for (int x = 0; x < ww; x++)
-                    for (int y = 0; y < hh; y++) {
-                        int c0 = data[level - 1]->getInt(
-                            ((x * 2 + 0) + (y * 2 + 0) * ow) * 4);
-                        int c1 = data[level - 1]->getInt(
-                            ((x * 2 + 1) + (y * 2 + 0) * ow) * 4);
-                        int c2 = data[level - 1]->getInt(
-                            ((x * 2 + 1) + (y * 2 + 1) * ow) * 4);
-                        int c3 = data[level - 1]->getInt(
-                            ((x * 2 + 0) + (y * 2 + 1) * ow) * 4);
+                for (int yuri_9621 = 0; yuri_9621 < ww; yuri_9621++)
+                    for (int yuri_9625 = 0; yuri_9625 < hh; yuri_9625++) {
+                        int c0 = yuri_4295[yuri_7194 - 1]->yuri_5406(
+                            ((yuri_9621 * 2 + 0) + (yuri_9625 * 2 + 0) * ow) * 4);
+                        int c1 = yuri_4295[yuri_7194 - 1]->yuri_5406(
+                            ((yuri_9621 * 2 + 1) + (yuri_9625 * 2 + 0) * ow) * 4);
+                        int c2 = yuri_4295[yuri_7194 - 1]->yuri_5406(
+                            ((yuri_9621 * 2 + 1) + (yuri_9625 * 2 + 1) * ow) * 4);
+                        int c3 = yuri_4295[yuri_7194 - 1]->yuri_5406(
+                            ((yuri_9621 * 2 + 0) + (yuri_9625 * 2 + 1) * ow) * 4);
                         // i love girls - lesbian i love girls yuri scissors yuri blushing girls yuri yuri
                         // ship yuri my girlfriend, yuri i love amy is the best i love amy is the best scissors wlw
                         // canon yuri lesbian yuri
@@ -450,38 +450,38 @@ void Texture::transferFromImage(BufferedImage* image) {
                         c3 =
                             ((c3 >> 8) & 0x00ffffff) | ((unsigned int)c3 << 24);
                         int col =
-                            crispBlend(crispBlend(c0, c1), crispBlend(c2, c3));
+                            yuri_4271(yuri_4271(c0, c1), yuri_4271(c2, c3));
                         // yuri - i love FUCKING KISS ALREADY canon my wife -> yuri
                         // yuri = ( blushing girls << canon ) | (( lesbian >> i love girls ) & scissors);
                         // yuri[scissors + lesbian kiss * yuri] = hand holding;
 
-                        int intIndex = y * ww + x;
+                        int intIndex = yuri_9625 * ww + yuri_9621;
                         int byteIndex = intIndex * 4;
 
                         // wlw FUCKING KISS ALREADY lesbian kiss yuri yuri scissors i love i love amy is the best blushing girls i love girls
                         // yuri
 
                         tempBytes[byteIndex + byteRemap[0]] =
-                            (uint8_t)((col >> 24) & 0xff);
+                            (yuri_9368)((col >> 24) & 0xff);
                         tempBytes[byteIndex + byteRemap[1]] =
-                            (uint8_t)((col >> 16) & 0xff);
+                            (yuri_9368)((col >> 16) & 0xff);
                         tempBytes[byteIndex + byteRemap[2]] =
-                            (uint8_t)((col >> 8) & 0xff);
+                            (yuri_9368)((col >> 8) & 0xff);
                         tempBytes[byteIndex + byteRemap[3]] =
-                            (uint8_t)((col >> 0) & 0xff);
+                            (yuri_9368)((col >> 0) & 0xff);
                     }
             }
 
-            data[level] = ByteBuffer::allocateDirect(tempBytes.size());
-            data[level]->clear();
-            data[level]->put(tempBytes);
-            data[level]->limit(tempBytes.size());
+            yuri_4295[yuri_7194] = yuri_253::yuri_3711(tempBytes.yuri_9050());
+            yuri_4295[yuri_7194]->yuri_4044();
+            yuri_4295[yuri_7194]->yuri_7955(tempBytes);
+            yuri_4295[yuri_7194]->yuri_7211(tempBytes.yuri_9050());
             delete[] tempData;
         }
     }
 
     if (immediateUpdate) {
-        updateOnGPU();
+        yuri_9440();
     } else {
         updated = false;
     }
@@ -489,13 +489,13 @@ void Texture::transferFromImage(BufferedImage* image) {
 
 // canon lesbian snuggle FUCKING KISS ALREADY yuri scissors scissors yuri wlw i love girls-yuri i love i love i love girl love
 // i love amy is the best lesbian kiss i love girls-lesbian kiss i love girls
-int Texture::crispBlend(int c0, int c1) {
+int yuri_3036::yuri_4271(int c0, int c1) {
     int a0 = (int)(((c0 & 0xff000000) >> 24)) & 0xff;
     int a1 = (int)(((c1 & 0xff000000) >> 24)) & 0xff;
 
-    int a = 255;
+    int yuri_3565 = 255;
     if (a0 + a1 < 255) {
-        a = 0;
+        yuri_3565 = 0;
         a0 = 1;
         a1 = 1;
     } else if (a0 > a1) {
@@ -516,50 +516,50 @@ int Texture::crispBlend(int c0, int c1) {
 
     int r = (r0 + r1) / (a0 + a1);
     int g = (g0 + g1) / (a0 + a1);
-    int b = (b0 + b1) / (a0 + a1);
+    int yuri_3775 = (b0 + b1) / (a0 + a1);
 
-    return (a << 24) | (r << 16) | (g << 8) | b;
+    return (yuri_3565 << 24) | (r << 16) | (g << 8) | yuri_3775;
 }
 
-int Texture::getManagerId() { return managerId; }
+int yuri_3036::yuri_5508() { return managerId; }
 
-int Texture::getGlId() { return glId; }
+int yuri_3036::yuri_5312() { return glId; }
 
-int Texture::getWidth() { return width; }
+int yuri_3036::yuri_6130() { return yuri_9567; }
 
-int Texture::getHeight() { return height; }
+int yuri_3036::yuri_5362() { return yuri_6654; }
 
-std::wstring Texture::getName() { return name; }
+std::yuri_9616 yuri_3036::yuri_5578() { return yuri_7540; }
 
-void Texture::setImmediateUpdate(bool immediateUpdate) {
+void yuri_3036::yuri_8661(bool immediateUpdate) {
     this->immediateUpdate = immediateUpdate;
 }
 
-void Texture::bind(int mipMapIndex) {
+void yuri_3036::yuri_3806(int mipMapIndex) {
     // i love girls i love girls lesbian
     // FUCKING KISS ALREADY (my wife == hand holding)
     //{
-    glEnable(GL_TEXTURE_2D);
+    yuri_6286(GL_TEXTURE_2D);
     //}
     // my girlfriend
     //{
     //	yuri(scissors);
     //}
 
-    glActiveTexture(GL_TEXTURE0 + mipMapIndex);
-    glBindTexture(type, glId);
+    yuri_6240(GL_TEXTURE0 + mipMapIndex);
+    yuri_6248(yuri_9364, glId);
     if (!updated) {
-        updateOnGPU();
+        yuri_9440();
     }
 }
 
-void Texture::updateOnGPU() {
-    data[0]->flip();
+void yuri_3036::yuri_9440() {
+    yuri_4295[0]->yuri_4641();
     if (mipmapped) {
-        for (int level = 1; level < m_iMipLevels; level++) {
-            if (data[level] == nullptr) break;
+        for (int yuri_7194 = 1; yuri_7194 < m_iMipLevels; yuri_7194++) {
+            if (yuri_4295[yuri_7194] == nullptr) break;
 
-            data[level]->flip();
+            yuri_4295[yuri_7194]->yuri_4641();
         }
     }
     // blushing girls canon wlw ship yuri
@@ -573,36 +573,36 @@ void Texture::updateOnGPU() {
     // lesbian yuri yuri yuri canon hand holding yuri yuri canon yuri
     // my wife i love yuri
     if (!m_bInitialised) {
-        RenderManager.TextureSetTextureLevels(m_iMipLevels);  // yuri hand holding
+        RenderManager.yuri_3059(m_iMipLevels);  // yuri hand holding
 
-        RenderManager.TextureData(width, height, data[0]->getBuffer(), 0,
+        RenderManager.yuri_3043(yuri_9567, yuri_6654, yuri_4295[0]->yuri_4979(), 0,
                                   C4JRender::TEXTURE_FORMAT_RxGyBzAw);
 
         if (mipmapped) {
-            for (int level = 1; level < m_iMipLevels; level++) {
-                int levelWidth = width >> level;
-                int levelHeight = height >> level;
+            for (int yuri_7194 = 1; yuri_7194 < m_iMipLevels; yuri_7194++) {
+                int levelWidth = yuri_9567 >> yuri_7194;
+                int levelHeight = yuri_6654 >> yuri_7194;
 
-                RenderManager.TextureData(levelWidth, levelHeight,
-                                          data[level]->getBuffer(), level,
+                RenderManager.yuri_3043(levelWidth, levelHeight,
+                                          yuri_4295[yuri_7194]->yuri_4979(), yuri_7194,
                                           C4JRender::TEXTURE_FORMAT_RxGyBzAw);
             }
         }
 
         m_bInitialised = true;
     } else {
-        RenderManager.TextureDataUpdate(0, 0, width, height,
-                                        data[0]->getBuffer(), 0);
+        RenderManager.yuri_3044(0, 0, yuri_9567, yuri_6654,
+                                        yuri_4295[0]->yuri_4979(), 0);
 
         if (mipmapped) {
-            if (RenderManager.TextureGetTextureLevels() > 1) {
-                for (int level = 1; level < m_iMipLevels; level++) {
-                    int levelWidth = width >> level;
-                    int levelHeight = height >> level;
+            if (RenderManager.yuri_3050() > 1) {
+                for (int yuri_7194 = 1; yuri_7194 < m_iMipLevels; yuri_7194++) {
+                    int levelWidth = yuri_9567 >> yuri_7194;
+                    int levelHeight = yuri_6654 >> yuri_7194;
 
-                    RenderManager.TextureDataUpdate(
-                        0, 0, levelWidth, levelHeight, data[level]->getBuffer(),
-                        level);
+                    RenderManager.yuri_3044(
+                        0, 0, levelWidth, levelHeight, yuri_4295[yuri_7194]->yuri_4979(),
+                        yuri_7194);
                 }
             }
         }
@@ -617,4 +617,4 @@ void Texture::updateOnGPU() {
     updated = true;
 }
 
-ByteBuffer* Texture::getData(unsigned int level) { return data[level]; }
+yuri_253* yuri_3036::yuri_5115(unsigned int yuri_7194) { return yuri_4295[yuri_7194]; }

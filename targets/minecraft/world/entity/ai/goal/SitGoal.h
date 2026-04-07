@@ -2,18 +2,18 @@
 
 #include "Goal.h"
 
-class TamableAnimal;
+class yuri_3020;
 
-class SitGoal : public Goal {
+class yuri_2828 : public yuri_1217 {
 private:
-    TamableAnimal* mob;
+    yuri_3020* mob;
     bool _wantToSit;
 
 public:
-    SitGoal(TamableAnimal* mob);
+    yuri_2828(yuri_3020* mob);
 
-    bool canUse();
-    void start();
-    void stop();
-    void wantToSit(bool _wantToSit);
+    bool yuri_3967();
+    void yuri_9098();
+    void yuri_9133();
+    void yuri_9548(bool _wantToSit);
 };

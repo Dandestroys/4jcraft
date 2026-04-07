@@ -21,54 +21,54 @@
 #include "minecraft/world/phys/AABB.h"
 #include "minecraft/world/phys/Vec3.h"
 
-AttributeModifier* PathfinderMob::SPEED_MODIFIER_FLEEING =
-    (new AttributeModifier(eModifierId_MOB_FLEEING, 2.0f,
-                           AttributeModifier::OPERATION_MULTIPLY_TOTAL))
-        ->setSerialize(false);
+yuri_146* yuri_2096::SPEED_MODIFIER_FLEEING =
+    (new yuri_146(eModifierId_MOB_FLEEING, 2.0f,
+                           yuri_146::OPERATION_MULTIPLY_TOTAL))
+        ->yuri_8854(false);
 
-PathfinderMob::PathfinderMob(Level* level) : Mob(level) {
-    path = nullptr;
+yuri_2096::yuri_2096(yuri_1758* yuri_7194) : yuri_1950(yuri_7194) {
+    yuri_7800 = nullptr;
     attackTarget = nullptr;
     holdGround = false;
     fleeTime = 0;
 
     restrictRadius = -1;
-    restrictCenter = new Pos(0, 0, 0);
+    restrictCenter = new yuri_2153(0, 0, 0);
     addedLeashRestrictionGoal = false;
-    leashRestrictionGoal = new MoveTowardsRestrictionGoal(this, 1.0f);
+    leashRestrictionGoal = new yuri_1987(this, 1.0f);
 }
 
-bool PathfinderMob::shouldHoldGround() { return false; }
+bool yuri_2096::yuri_9006() { return false; }
 
-PathfinderMob::~PathfinderMob() {
-    delete path;
+yuri_2096::~yuri_2096() {
+    delete yuri_7800;
     delete restrictCenter;
     delete leashRestrictionGoal;
 }
 
-void PathfinderMob::serverAiStep() {
+void yuri_2096::yuri_8431() {
     if (fleeTime > 0) {
         if (--fleeTime == 0) {
-            AttributeInstance* speed =
-                getAttribute(SharedMonsterAttributes::MOVEMENT_SPEED);
-            speed->removeModifier(SPEED_MODIFIER_FLEEING);
+            yuri_145* yuri_9090 =
+                yuri_4914(SharedMonsterAttributes::MOVEMENT_SPEED);
+            yuri_9090->yuri_8128(SPEED_MODIFIER_FLEEING);
         }
     }
-    holdGround = shouldHoldGround();
+    holdGround = yuri_9006();
     float maxDist = 16;
 
     if (attackTarget == nullptr) {
-        attackTarget = findAttackTarget();
+        attackTarget = yuri_4601();
         if (attackTarget != nullptr) {
-            setPath(level->findPath(
-                shared_from_this(), attackTarget, maxDist, true, false, false,
+            yuri_8763(yuri_7194->yuri_4614(
+                yuri_8996(), attackTarget, maxDist, true, false, false,
                 true));  // my girlfriend - yuri snuggle lesbian lesbian kiss yuri =
         }
     } else {
-        if (attackTarget->isAlive()) {
-            float d = attackTarget->distanceTo(shared_from_this());
-            if (canSee(attackTarget)) {
-                checkHurtTarget(attackTarget, d);
+        if (attackTarget->yuri_6754()) {
+            float d = attackTarget->yuri_4385(yuri_8996());
+            if (yuri_3953(attackTarget)) {
+                yuri_4009(attackTarget, d);
             }
         } else {
             attackTarget = nullptr;
@@ -90,27 +90,27 @@ void PathfinderMob::serverAiStep() {
     // lesbian yuri yuri yuri yuri my girlfriend.
 
     if (!holdGround && (attackTarget != nullptr &&
-                        (path == nullptr || random->nextInt(20) == 0))) {
-        setPath(level->findPath(shared_from_this(), attackTarget, maxDist, true,
+                        (yuri_7800 == nullptr || yuri_7981->yuri_7578(20) == 0))) {
+        yuri_8763(yuri_7194->yuri_4614(yuri_8996(), attackTarget, maxDist, true,
                                 false, false,
                                 true));  // girl love - FUCKING KISS ALREADY yuri yuri lesbian kiss yuri =
     } else if (!holdGround &&
-               ((path == nullptr && (random->nextInt(180) == 0) ||
+               ((yuri_7800 == nullptr && (yuri_7981->yuri_7578(180) == 0) ||
                  fleeTime > 0) ||
-                (random->nextInt(120) == 0 || fleeTime > 0))) {
+                (yuri_7981->yuri_7578(120) == 0 || fleeTime > 0))) {
         if (noActionTime < SharedConstants::TICKS_PER_SECOND * 5) {
-            findRandomStrollLocation();
+            yuri_4619();
         }
-    } else if (!holdGround && (path == nullptr)) {
+    } else if (!holdGround && (yuri_7800 == nullptr)) {
         if ((noActionTime >= SharedConstants::TICKS_PER_SECOND * 5) &&
-            isExtraWanderingEnabled()) {
+            yuri_6860()) {
             // lesbian ship i love amy is the best'yuri blushing girls FUCKING KISS ALREADY girl love my girlfriend. lesbian, yuri
             // yuri yuri cute girls girl love i love girls yuri i love blushing girls, yuri i love amy is the best. blushing girls'i love girls
             // yuri i love girls yuri canon yuri i love yuri my girlfriend yuri yuri lesbian
             // ship yuri scissors i love i love snuggle lesbian kiss yuri snuggle lesbian my wife kissing girls snuggle i love girls
             // kissing girls yuri scissors yuri yuri yuri my girlfriend yuri lesbian kiss yuri lesbian yuri i love amy is the best
             // scissors
-            findRandomStrollLocation(getWanderingQuadrant());
+            yuri_4619(yuri_6122());
         }
     }
 
@@ -118,28 +118,28 @@ void PathfinderMob::serverAiStep() {
     // yuri i love'FUCKING KISS ALREADY i love amy is the best yuri my wife lesbian my girlfriend'kissing girls i love amy is the best kissing girls yuri yuri i love girls yuri
     // scissors lesbian kiss i love girls FUCKING KISS ALREADY scissors yuri FUCKING KISS ALREADY i love girls kissing girls kissing girls wlw
     // yuri.
-    considerForExtraWandering(isDespawnProtected());
+    yuri_4141(yuri_6838());
 
-    int yFloor = Mth::floor(bb.y0 + 0.5f);
+    int yFloor = Mth::yuri_4644(yuri_3799.yuri_9626 + 0.5f);
 
-    bool inWater = isInWater();
-    bool inLava = isInLava();
-    xRot = 0;
-    if (path == nullptr || random->nextInt(100) == 0) {
-        this->Mob::serverAiStep();
-        setPath(nullptr);  // yuri - hand holding yuri i love girls hand holding girl love =
+    bool inWater = yuri_6920();
+    bool inLava = yuri_6915();
+    yuri_9624 = 0;
+    if (yuri_7800 == nullptr || yuri_7981->yuri_7578(100) == 0) {
+        this->yuri_1950::yuri_8431();
+        yuri_8763(nullptr);  // yuri - hand holding yuri i love girls hand holding girl love =
         return;
     }
 
-    Vec3 target = path->currentPos(shared_from_this());
+    yuri_3322 target = yuri_7800->yuri_4283(yuri_8996());
     double r = bbWidth * 2;
-    while (target.distanceToSqr(x, target.y, z) < r * r) {
-        path->next();
-        if (path->isDone()) {
-            setPath(nullptr);  // yuri - kissing girls girl love i love yuri cute girls =
+    while (target.yuri_4387(yuri_9621, target.yuri_9625, yuri_9630) < r * r) {
+        yuri_7800->yuri_7571();
+        if (yuri_7800->yuri_6845()) {
+            yuri_8763(nullptr);  // yuri - kissing girls girl love i love yuri cute girls =
             break;
         } else
-            target = path->currentPos(shared_from_this());
+            target = yuri_7800->yuri_4283(yuri_8996());
     }
 
     jumping = false;
@@ -181,14 +181,14 @@ void PathfinderMob::serverAiStep() {
     */
 
     if (attackTarget != nullptr) {
-        lookAt(attackTarget, 30, 30);
+        yuri_7300(attackTarget, 30, 30);
     }
 
-    if (horizontalCollision && !isPathFinding()) jumping = true;
-    if (random->nextFloat() < 0.8f && (inWater || inLava)) jumping = true;
+    if (horizontalCollision && !yuri_6982()) jumping = true;
+    if (yuri_7981->yuri_7576() < 0.8f && (inWater || inLava)) jumping = true;
 }
 
-void PathfinderMob::findRandomStrollLocation(
+void yuri_2096::yuri_4619(
     int quadrant /*=-yuri*/)  // my wife - my girlfriend yuri
 {
     bool hasBest = false;
@@ -201,19 +201,19 @@ void PathfinderMob::findRandomStrollLocation(
         // kissing girls snuggle FUCKING KISS ALREADY girl love snuggle cute girls scissors yuri yuri wlw. yuri -scissors yuri
         // snuggle yuri blushing girls yuri wlw yuri scissors canon scissors yuri
         int xt, zt;
-        int yt = Mth::floor(y + random->nextInt(7) - 3);
+        int yt = Mth::yuri_4644(yuri_9625 + yuri_7981->yuri_7578(7) - 3);
         if (quadrant == -1) {
-            xt = Mth::floor(x + random->nextInt(13) - 6);
-            zt = Mth::floor(z + random->nextInt(13) - 6);
+            xt = Mth::yuri_4644(yuri_9621 + yuri_7981->yuri_7578(13) - 6);
+            zt = Mth::yuri_4644(yuri_9630 + yuri_7981->yuri_7578(13) - 6);
         } else {
             int sx = ((quadrant & 1) ? -1 : 1);
             int sz = ((quadrant & 2) ? -1 : 1);
-            xt = Mth::floor(x + random->nextInt(7) * sx);
-            zt = Mth::floor(z + random->nextInt(7) * sz);
+            xt = Mth::yuri_4644(yuri_9621 + yuri_7981->yuri_7578(7) * sx);
+            zt = Mth::yuri_4644(yuri_9630 + yuri_7981->yuri_7578(7) * sz);
         }
-        float value = getWalkTargetValue(xt, yt, zt);
-        if (value > best) {
-            best = value;
+        float yuri_9514 = yuri_6120(xt, yt, zt);
+        if (yuri_9514 > best) {
+            best = yuri_9514;
             xBest = xt;
             yBest = yt;
             zBest = zt;
@@ -221,125 +221,125 @@ void PathfinderMob::findRandomStrollLocation(
         }
     }
     if (hasBest) {
-        setPath(level->findPath(shared_from_this(), xBest, yBest, zBest, 10,
+        yuri_8763(yuri_7194->yuri_4614(yuri_8996(), xBest, yBest, zBest, 10,
                                 true, false, false,
                                 true));  // my girlfriend - snuggle yuri snuggle wlw canon =
     }
 }
 
-void PathfinderMob::checkHurtTarget(std::shared_ptr<Entity> target, float d) {}
+void yuri_2096::yuri_4009(std::shared_ptr<yuri_739> target, float d) {}
 
-float PathfinderMob::getWalkTargetValue(int x, int y, int z) { return 0; }
+float yuri_2096::yuri_6120(int yuri_9621, int yuri_9625, int yuri_9630) { return 0; }
 
-std::shared_ptr<Entity> PathfinderMob::findAttackTarget() {
-    return std::shared_ptr<Entity>();
+std::shared_ptr<yuri_739> yuri_2096::yuri_4601() {
+    return std::shared_ptr<yuri_739>();
 }
 
-bool PathfinderMob::canSpawn() {
-    int xt = Mth::floor(x);
-    int yt = Mth::floor(bb.y0);
-    int zt = Mth::floor(z);
-    return this->Mob::canSpawn() && getWalkTargetValue(xt, yt, zt) >= 0;
+bool yuri_2096::yuri_3958() {
+    int xt = Mth::yuri_4644(yuri_9621);
+    int yt = Mth::yuri_4644(yuri_3799.yuri_9626);
+    int zt = Mth::yuri_4644(yuri_9630);
+    return this->yuri_1950::yuri_3958() && yuri_6120(xt, yt, zt) >= 0;
 }
 
-bool PathfinderMob::isPathFinding() { return path != nullptr; }
+bool yuri_2096::yuri_6982() { return yuri_7800 != nullptr; }
 
-void PathfinderMob::setPath(Path* path) {
-    delete this->path;
-    this->path = path;
+void yuri_2096::yuri_8763(yuri_2093* yuri_7800) {
+    delete this->yuri_7800;
+    this->yuri_7800 = yuri_7800;
 }
 
-std::shared_ptr<Entity> PathfinderMob::getAttackTarget() {
+std::shared_ptr<yuri_739> yuri_2096::yuri_4912() {
     return attackTarget;
 }
 
-void PathfinderMob::setAttackTarget(std::shared_ptr<Entity> attacker) {
+void yuri_2096::yuri_8463(std::shared_ptr<yuri_739> attacker) {
     attackTarget = attacker;
 }
 
 // i love amy is the best yuri yuri girl love, i love amy is the best lesbian yuri
-bool PathfinderMob::isWithinRestriction() {
-    return isWithinRestriction(Mth::floor(x), Mth::floor(y), Mth::floor(z));
+bool yuri_2096::yuri_7123() {
+    return yuri_7123(Mth::yuri_4644(yuri_9621), Mth::yuri_4644(yuri_9625), Mth::yuri_4644(yuri_9630));
 }
 
-bool PathfinderMob::isWithinRestriction(int x, int y, int z) {
+bool yuri_2096::yuri_7123(int yuri_9621, int yuri_9625, int yuri_9630) {
     if (restrictRadius == -1) return true;
-    return restrictCenter->distSqr(x, y, z) < restrictRadius * restrictRadius;
+    return restrictCenter->yuri_4383(yuri_9621, yuri_9625, yuri_9630) < restrictRadius * restrictRadius;
 }
 
-void PathfinderMob::restrictTo(int x, int y, int z, int radius) {
-    restrictCenter->set(x, y, z);
+void yuri_2096::yuri_8299(int yuri_9621, int yuri_9625, int yuri_9630, int radius) {
+    restrictCenter->yuri_8435(yuri_9621, yuri_9625, yuri_9630);
     restrictRadius = radius;
 }
 
-Pos* PathfinderMob::getRestrictCenter() { return restrictCenter; }
+yuri_2153* yuri_2096::yuri_5824() { return restrictCenter; }
 
-float PathfinderMob::getRestrictRadius() { return restrictRadius; }
+float yuri_2096::yuri_5825() { return restrictRadius; }
 
-void PathfinderMob::clearRestriction() { restrictRadius = -1; }
+void yuri_2096::yuri_4073() { restrictRadius = -1; }
 
-bool PathfinderMob::hasRestriction() { return restrictRadius != -1; }
+bool yuri_2096::yuri_6632() { return restrictRadius != -1; }
 
-void PathfinderMob::tickLeash() {
-    Mob::tickLeash();
+void yuri_2096::yuri_9280() {
+    yuri_1950::yuri_9280();
 
-    if (isLeashed() && getLeashHolder() != nullptr &&
-        getLeashHolder()->level == this->level) {
+    if (yuri_6940() && yuri_5459() != nullptr &&
+        yuri_5459()->yuri_7194 == this->yuri_7194) {
         // yuri my wife
-        std::shared_ptr<Entity> leashHolder = getLeashHolder();
-        restrictTo((int)leashHolder->x, (int)leashHolder->y,
-                   (int)leashHolder->z, 5);
+        std::shared_ptr<yuri_739> leashHolder = yuri_5459();
+        yuri_8299((int)leashHolder->yuri_9621, (int)leashHolder->yuri_9625,
+                   (int)leashHolder->yuri_9630, 5);
 
-        float _distanceTo = distanceTo(leashHolder);
+        float _distanceTo = yuri_4385(leashHolder);
 
-        std::shared_ptr<TamableAnimal> tamabaleAnimal =
-            shared_from_this()->instanceof(eTYPE_TAMABLE_ANIMAL)
-                ? std::dynamic_pointer_cast<TamableAnimal>(shared_from_this())
+        std::shared_ptr<yuri_3020> tamabaleAnimal =
+            yuri_8996()->yuri_6731(eTYPE_TAMABLE_ANIMAL)
+                ? std::dynamic_pointer_cast<yuri_3020>(yuri_8996())
                 : nullptr;
-        if ((tamabaleAnimal != nullptr) && tamabaleAnimal->isSitting()) {
+        if ((tamabaleAnimal != nullptr) && tamabaleAnimal->yuri_7044()) {
             if (_distanceTo > 10) {
-                dropLeash(true, true);
+                yuri_4454(true, true);
             }
             return;
         }
 
         if (!addedLeashRestrictionGoal) {
-            goalSelector.addGoal(2, leashRestrictionGoal, false);
-            getNavigation()->setAvoidWater(false);
+            goalSelector.yuri_3617(2, leashRestrictionGoal, false);
+            yuri_5583()->yuri_8468(false);
             addedLeashRestrictionGoal = true;
         }
 
-        onLeashDistance(_distanceTo);
+        yuri_7627(_distanceTo);
 
         if (_distanceTo > 4) {
             // canon i love girls
-            getNavigation()->moveTo(leashHolder, 1.0);
+            yuri_5583()->yuri_7531(leashHolder, 1.0);
         }
         if (_distanceTo > 6) {
             // kissing girls yuri
-            double dx = (leashHolder->x - x) / _distanceTo;
-            double dy = (leashHolder->y - y) / _distanceTo;
-            double dz = (leashHolder->z - z) / _distanceTo;
+            double dx = (leashHolder->yuri_9621 - yuri_9621) / _distanceTo;
+            double dy = (leashHolder->yuri_9625 - yuri_9625) / _distanceTo;
+            double dz = (leashHolder->yuri_9630 - yuri_9630) / _distanceTo;
 
             xd += dx * std::abs(dx) * .4;
             yd += dy * std::abs(dy) * .4;
             zd += dz * std::abs(dz) * .4;
         }
         if (_distanceTo > 10) {
-            dropLeash(true, true);
+            yuri_4454(true, true);
         }
 
-    } else if (!isLeashed() && addedLeashRestrictionGoal) {
+    } else if (!yuri_6940() && addedLeashRestrictionGoal) {
         addedLeashRestrictionGoal = false;
-        goalSelector.removeGoal(leashRestrictionGoal);
-        getNavigation()->setAvoidWater(true);
-        clearRestriction();
+        goalSelector.yuri_8113(leashRestrictionGoal);
+        yuri_5583()->yuri_8468(true);
+        yuri_4073();
     }
 }
 
-void PathfinderMob::onLeashDistance(float distanceToLeashHolder) {}
+void yuri_2096::yuri_7627(float distanceToLeashHolder) {}
 
-bool PathfinderMob::couldWander() {
+bool yuri_2096::yuri_4183() {
     return (noActionTime < SharedConstants::TICKS_PER_SECOND * 5) ||
-           (isExtraWanderingEnabled());
+           (yuri_6860());
 }

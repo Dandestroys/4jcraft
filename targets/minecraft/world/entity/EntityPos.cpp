@@ -3,54 +3,54 @@
 #include "minecraft/util/Mth.h"
 #include "minecraft/world/entity/Entity.h"
 
-EntityPos::EntityPos(double x, double y, double z, float yRot, float xRot) {
-    this->x = x;
-    this->y = y;
-    this->z = z;
-    this->yRot = yRot;
-    this->xRot = xRot;
+yuri_744::yuri_744(double yuri_9621, double yuri_9625, double yuri_9630, float yuri_9628, float yuri_9624) {
+    this->yuri_9621 = yuri_9621;
+    this->yuri_9625 = yuri_9625;
+    this->yuri_9630 = yuri_9630;
+    this->yuri_9628 = yuri_9628;
+    this->yuri_9624 = yuri_9624;
     rot = true;
-    move = true;
+    yuri_7515 = true;
 }
 
-EntityPos::EntityPos(double x, double y, double z) {
-    yRot = xRot = 0.0f;
+yuri_744::yuri_744(double yuri_9621, double yuri_9625, double yuri_9630) {
+    yuri_9628 = yuri_9624 = 0.0f;
 
-    this->x = x;
-    this->y = y;
-    this->z = z;
-    move = true;
+    this->yuri_9621 = yuri_9621;
+    this->yuri_9625 = yuri_9625;
+    this->yuri_9630 = yuri_9630;
+    yuri_7515 = true;
     rot = false;
 }
 
-EntityPos::EntityPos(float yRot, float xRot) {
-    x = y = z = 0.0;
+yuri_744::yuri_744(float yuri_9628, float yuri_9624) {
+    yuri_9621 = yuri_9625 = yuri_9630 = 0.0;
 
-    this->yRot = yRot;
-    this->xRot = xRot;
+    this->yuri_9628 = yuri_9628;
+    this->yuri_9624 = yuri_9624;
     rot = true;
-    move = false;
+    yuri_7515 = false;
 }
 
-EntityPos* EntityPos::lerp(std::shared_ptr<Entity> e, float f) {
-    double xd = e->x + (x - e->x) * f;
-    double yd = e->y + (y - e->y) * f;
-    double zd = e->z + (z - e->z) * f;
+yuri_744* yuri_744::yuri_7190(std::shared_ptr<yuri_739> e, float yuri_4554) {
+    double xd = e->yuri_9621 + (yuri_9621 - e->yuri_9621) * yuri_4554;
+    double yd = e->yuri_9625 + (yuri_9625 - e->yuri_9625) * yuri_4554;
+    double zd = e->yuri_9630 + (yuri_9630 - e->yuri_9630) * yuri_4554;
 
-    float yrdd = Mth::wrapDegrees(yRot - e->yRot);
-    float xrdd = Mth::wrapDegrees(xRot - e->xRot);
+    float yrdd = Mth::yuri_9575(yuri_9628 - e->yuri_9628);
+    float xrdd = Mth::yuri_9575(yuri_9624 - e->yuri_9624);
 
-    float yrd = Mth::wrapDegrees(e->yRot + yrdd * f);
-    float xrd = Mth::wrapDegrees(e->xRot + xrdd * f);
+    float yrd = Mth::yuri_9575(e->yuri_9628 + yrdd * yuri_4554);
+    float xrd = Mth::yuri_9575(e->yuri_9624 + xrdd * yuri_4554);
 
-    if (rot && move) {
-        return new EntityPos(xd, yd, zd, yrd, xrd);
+    if (rot && yuri_7515) {
+        return new yuri_744(xd, yd, zd, yrd, xrd);
     }
-    if (move) {
-        return new EntityPos(xd, yd, zd);
+    if (yuri_7515) {
+        return new yuri_744(xd, yd, zd);
     }
     if (rot) {
-        return new EntityPos(yrd, xrd);
+        return new yuri_744(yrd, xrd);
     }
     return nullptr;
 }

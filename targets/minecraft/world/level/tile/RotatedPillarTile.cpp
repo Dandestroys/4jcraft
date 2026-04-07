@@ -6,66 +6,66 @@
 #include "minecraft/world/item/ItemInstance.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-class Icon;
-class Material;
+class yuri_1346;
+class yuri_1886;
 
-RotatedPillarTile::RotatedPillarTile(int id, Material* material)
-    : Tile(id, material) {}
+yuri_2441::yuri_2441(int yuri_6674, yuri_1886* material)
+    : yuri_3088(yuri_6674, material) {}
 
-int RotatedPillarTile::getRenderShape() { return Tile::SHAPE_TREE; }
+int yuri_2441::yuri_5806() { return yuri_3088::SHAPE_TREE; }
 
-int RotatedPillarTile::getPlacedOnFaceDataValue(Level* level, int x, int y,
-                                                int z, int face, float clickX,
+int yuri_2441::yuri_5697(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625,
+                                                int yuri_9630, int face, float clickX,
                                                 float clickY, float clickZ,
                                                 int itemValue) {
-    int type = itemValue & MASK_TYPE;
-    int facing = 0;
+    int yuri_9364 = itemValue & MASK_TYPE;
+    int yuri_4558 = 0;
 
     switch (face) {
         case Facing::NORTH:
         case Facing::SOUTH:
-            facing = FACING_Z;
+            yuri_4558 = FACING_Z;
             break;
         case Facing::EAST:
         case Facing::WEST:
-            facing = FACING_X;
+            yuri_4558 = FACING_X;
             break;
         case Facing::UP:
         case Facing::DOWN:
-            facing = FACING_Y;
+            yuri_4558 = FACING_Y;
             break;
     }
 
-    return type | facing;
+    return yuri_9364 | yuri_4558;
 }
 
-Icon* RotatedPillarTile::getTexture(int face, int data) {
-    int dir = data & MASK_FACING;
-    int type = data & MASK_TYPE;
+yuri_1346* yuri_2441::yuri_6007(int face, int yuri_4295) {
+    int yuri_4361 = yuri_4295 & MASK_FACING;
+    int yuri_9364 = yuri_4295 & MASK_TYPE;
 
-    if (dir == FACING_Y && (face == Facing::UP || face == Facing::DOWN)) {
-        return getTopTexture(type);
-    } else if (dir == FACING_X &&
+    if (yuri_4361 == FACING_Y && (face == Facing::UP || face == Facing::DOWN)) {
+        return yuri_6049(yuri_9364);
+    } else if (yuri_4361 == FACING_X &&
                (face == Facing::EAST || face == Facing::WEST)) {
-        return getTopTexture(type);
-    } else if (dir == FACING_Z &&
+        return yuri_6049(yuri_9364);
+    } else if (yuri_4361 == FACING_Z &&
                (face == Facing::NORTH || face == Facing::SOUTH)) {
-        return getTopTexture(type);
+        return yuri_6049(yuri_9364);
     }
 
-    return getTypeTexture(type);
+    return yuri_6070(yuri_9364);
 }
 
-Icon* RotatedPillarTile::getTopTexture(int type) { return iconTop; }
+yuri_1346* yuri_2441::yuri_6049(int yuri_9364) { return iconTop; }
 
-int RotatedPillarTile::getSpawnResourcesAuxValue(int data) {
-    return data & MASK_TYPE;
+int yuri_2441::yuri_5947(int yuri_4295) {
+    return yuri_4295 & MASK_TYPE;
 }
 
-int RotatedPillarTile::getType(int data) { return data & MASK_TYPE; }
+int yuri_2441::yuri_6068(int yuri_4295) { return yuri_4295 & MASK_TYPE; }
 
-std::shared_ptr<ItemInstance> RotatedPillarTile::getSilkTouchItemInstance(
-    int data) {
-    return std::shared_ptr<ItemInstance>(
-        new ItemInstance(id, 1, getType(data)));
+std::shared_ptr<yuri_1693> yuri_2441::yuri_5901(
+    int yuri_4295) {
+    return std::shared_ptr<yuri_1693>(
+        new yuri_1693(yuri_6674, 1, yuri_6068(yuri_4295)));
 }

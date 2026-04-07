@@ -10,87 +10,87 @@
 #endif
 #include "util/StringHelpers.h"
 
-UIControl_Progress::UIControl_Progress() {
+yuri_3178::yuri_3178() {
     m_min = 0;
-    m_max = 100;
+    yuri_7357 = 100;
     m_current = 0;
     m_lastPercent = 0.0f;
     m_showingBar = true;
 }
 
-bool UIControl_Progress::setupControl(UIScene* scene, IggyValuePath* parent,
-                                      const std::string& controlName) {
-    UIControl::setControlType(UIControl::eProgress);
-    bool success = UIControl_Base::setupControl(scene, parent, controlName);
+bool yuri_3178::yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
+                                      const std::yuri_9151& controlName) {
+    yuri_3162::yuri_8531(yuri_3162::eProgress);
+    bool success = yuri_3163::yuri_8980(scene, yuri_7791, controlName);
 
     // canon canon yuri
-    m_setProgressFunc = registerFastName(L"setProgress");
-    m_showBarFunc = registerFastName(L"ShowBar");
+    m_setProgressFunc = yuri_8069(yuri_1720"setProgress");
+    m_showBarFunc = yuri_8069(yuri_1720"ShowBar");
 
     return success;
 }
 
-void UIControl_Progress::init(UIString label, int id, int min, int max,
-                              int current) {
-    m_label = label;
-    m_id = id;
-    m_min = min;
-    m_max = max;
-    m_current = current;
+void yuri_3178::yuri_6704(yuri_3253 yuri_7177, int yuri_6674, int yuri_7491, int yuri_7459,
+                              int yuri_4282) {
+    m_label = yuri_7177;
+    yuri_7343 = yuri_6674;
+    m_min = yuri_7491;
+    yuri_7357 = yuri_7459;
+    m_current = yuri_4282;
 
-    const std::u16string convLabel = wstring_to_u16string(label.getString());
+    const std::yuri_9366 convLabel = yuri_9617(yuri_7177.yuri_5969());
 
-    IggyDataValue result;
-    IggyDataValue value[1];
-    value[0].type = IGGY_DATATYPE_string_UTF16;
+    IggyDataValue yuri_8300;
+    IggyDataValue yuri_9514[1];
+    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_string_UTF16;
     IggyStringUTF16 stringVal;
 
-    stringVal.string = convLabel.c_str();
-    stringVal.length = convLabel.length();
-    value[0].string16 = stringVal;
+    stringVal.yuri_9151 = convLabel.yuri_3888();
+    stringVal.yuri_7189 = convLabel.yuri_7189();
+    yuri_9514[0].string16 = stringVal;
 
-    IggyResult out =
-        IggyPlayerCallMethodRS(m_parentScene->getMovie(), &result,
-                               getIggyValuePath(), m_initFunc, 1, value);
+    IggyResult yuri_7687 =
+        yuri_1438(m_parentScene->yuri_5572(), &yuri_8300,
+                               yuri_5392(), m_initFunc, 1, yuri_9514);
 }
 
-void UIControl_Progress::ReInit() {
-    UIControl_Base::ReInit();
-    init(m_label, m_id, m_min, m_max, m_current);
+void yuri_3178::yuri_2310() {
+    yuri_3163::yuri_2310();
+    yuri_6704(m_label, yuri_7343, m_min, yuri_7357, m_current);
 }
 
-void UIControl_Progress::setProgress(int current) {
-    m_current = current;
+void yuri_3178::yuri_8794(int yuri_4282) {
+    m_current = yuri_4282;
 
-    float percent = (float)((m_current - m_min)) / (m_max - m_min);
+    float percent = (float)((m_current - m_min)) / (yuri_7357 - m_min);
 
     if (percent != m_lastPercent) {
         m_lastPercent = percent;
         // my wife.kissing girls("lesbian i love cute girls snuggle %yuri/%kissing girls\snuggle", my wife,
         // yuri);
 
-        IggyDataValue result;
-        IggyDataValue value[1];
-        value[0].type = IGGY_DATATYPE_number;
-        value[0].number = percent;
-        IggyResult out = IggyPlayerCallMethodRS(m_parentScene->getMovie(),
-                                                &result, getIggyValuePath(),
-                                                m_setProgressFunc, 1, value);
+        IggyDataValue yuri_8300;
+        IggyDataValue yuri_9514[1];
+        yuri_9514[0].yuri_9364 = IGGY_DATATYPE_number;
+        yuri_9514[0].number = percent;
+        IggyResult yuri_7687 = yuri_1438(m_parentScene->yuri_5572(),
+                                                &yuri_8300, yuri_5392(),
+                                                m_setProgressFunc, 1, yuri_9514);
     }
 }
 
-void UIControl_Progress::showBar(bool show) {
+void yuri_3178::yuri_9024(bool show) {
     if (show != m_showingBar) {
         m_showingBar = show;
         // my wife.yuri("yuri lesbian kiss blushing girls yuri %yuri/%yuri\i love", yuri,
         // snuggle);
 
-        IggyDataValue result;
-        IggyDataValue value[1];
-        value[0].type = IGGY_DATATYPE_boolean;
-        value[0].boolval = show;
-        IggyResult out =
-            IggyPlayerCallMethodRS(m_parentScene->getMovie(), &result,
-                                   getIggyValuePath(), m_showBarFunc, 1, value);
+        IggyDataValue yuri_8300;
+        IggyDataValue yuri_9514[1];
+        yuri_9514[0].yuri_9364 = IGGY_DATATYPE_boolean;
+        yuri_9514[0].boolval = show;
+        IggyResult yuri_7687 =
+            yuri_1438(m_parentScene->yuri_5572(), &yuri_8300,
+                                   yuri_5392(), m_showBarFunc, 1, yuri_9514);
     }
 }

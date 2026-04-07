@@ -2,13 +2,13 @@
 
 #include "minecraft/client/model/geom/Model.h"
 
-class ModelPart;
+class yuri_1964;
 
-class OcelotModel : public Model {
+class yuri_2045 : public yuri_1962 {
 private:
-    ModelPart *backLegL, *backLegR;
-    ModelPart *frontLegL, *frontLegR;
-    ModelPart *tail1, *tail2, *head, *body;
+    yuri_1964 *backLegL, *backLegR;
+    yuri_1964 *frontLegL, *frontLegR;
+    yuri_1964 *tail1, *tail2, *head, *body;
 
     static const int SNEAK_STATE = 0;
     static const int WALK_STATE = 1;
@@ -35,14 +35,14 @@ private:
     static const float frontLegZ;
 
 public:
-    OcelotModel();
+    yuri_2045();
 
-    void render(std::shared_ptr<Entity> entity, float time, float r, float bob,
-                float yRot, float xRot, float scale, bool usecompiled);
-    void render(OcelotModel* model, float scale, bool usecompiled);
-    void setupAnim(float time, float r, float bob, float yRot, float xRot,
-                   float scale, std::shared_ptr<Entity> entity,
+    void yuri_8158(std::shared_ptr<yuri_739> entity, float yuri_9299, float r, float bob,
+                float yuri_9628, float yuri_9624, float yuri_8382, bool usecompiled);
+    void yuri_8158(yuri_2045* model, float yuri_8382, bool usecompiled);
+    void yuri_8977(float yuri_9299, float r, float bob, float yuri_9628, float yuri_9624,
+                   float yuri_8382, std::shared_ptr<yuri_739> entity,
                    unsigned int uiBitmaskOverrideAnim = 0);
-    void prepareMobModel(std::shared_ptr<LivingEntity> mob, float time, float r,
-                         float a);
+    void yuri_7899(std::shared_ptr<yuri_1793> mob, float yuri_9299, float r,
+                         float yuri_3565);
 };

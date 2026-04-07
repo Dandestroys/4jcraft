@@ -6,24 +6,24 @@
 #include "Vertex.h"
 #include "minecraft/client/renderer/Tesselator.h"
 
-class Tesselator;
+class yuri_3032;
 
-class _Polygon {
+class yuri_3461 {
 public:
-    std::vector<Vertex> vertices;
-    int vertexCount;
+    std::vector<yuri_3324> yuri_9526;
+    int yuri_9523;
 
 private:
     bool _flipNormal;
 
 public:
-    _Polygon() = default;
-    _Polygon(std::span<const Vertex> vertices);
-    _Polygon(std::span<const Vertex, 4> vertices, int u0, int v0, int u1,
+    yuri_3461() = default;
+    yuri_3461(std::span<const yuri_3324> yuri_9526);
+    yuri_3461(std::span<const yuri_3324, 4> yuri_9526, int u0, int v0, int u1,
              int v1, float xTexSize, float yTexSize);
-    _Polygon(std::span<const Vertex, 4> vertices, float u0, float v0, float u1,
+    yuri_3461(std::span<const yuri_3324, 4> yuri_9526, float u0, float v0, float u1,
              float v1);
-    void mirror();
-    void render(Tesselator* t, float scale);
-    _Polygon* flipNormal();
+    void yuri_7501();
+    void yuri_8158(yuri_3032* t, float yuri_8382);
+    yuri_3461* yuri_4642();
 };

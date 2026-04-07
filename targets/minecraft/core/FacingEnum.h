@@ -1,31 +1,31 @@
 #pragma once
 
-class FacingEnum {
+class yuri_792 {
 public:
-    static FacingEnum* DOWN;
-    static FacingEnum* UP;
-    static FacingEnum* NORTH;
-    static FacingEnum* SOUTH;
-    static FacingEnum* EAST;
-    static FacingEnum* WEST;
+    static yuri_792* DOWN;
+    static yuri_792* UP;
+    static yuri_792* NORTH;
+    static yuri_792* SOUTH;
+    static yuri_792* EAST;
+    static yuri_792* WEST;
 
 private:
-    const int dataValue;
-    const int oppositeIndex;
-    const int stepX;
-    const int stepY;
-    const int stepZ;
+    const int yuri_4299;
+    const int yuri_7679;
+    const int yuri_9126;
+    const int yuri_9127;
+    const int yuri_9128;
 
-    static FacingEnum* BY_DATA[6];
+    static yuri_792* BY_DATA[6];
 
-    FacingEnum(int dataValue, int oppositeIndex, int stepX, int stepY,
-               int stepZ);
+    yuri_792(int yuri_4299, int yuri_7679, int yuri_9126, int yuri_9127,
+               int yuri_9128);
 
 public:
-    int getDataValue();
-    FacingEnum* getOpposite();
-    int getStepX();
-    int getStepY();
-    int getStepZ();
-    static FacingEnum* fromData(int data);
+    int yuri_5124();
+    yuri_792* yuri_5625();
+    int yuri_5964();
+    int yuri_5965();
+    int yuri_5966();
+    static yuri_792* yuri_4685(int yuri_4295);
 };

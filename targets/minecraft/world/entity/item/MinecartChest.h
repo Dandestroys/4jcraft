@@ -4,24 +4,24 @@
 #include "java/Class.h"
 #include "minecraft/world/entity/item/MinecartContainer.h"
 
-class Entity;
-class Level;
+class yuri_739;
+class yuri_1758;
 
-class MinecartChest : public MinecartContainer {
+class yuri_1932 : public yuri_1933 {
 public:
-    eINSTANCEOF GetType() { return eTYPE_MINECART_CHEST; };
-    static Entity* create(Level* level) { return new MinecartChest(level); }
+    eINSTANCEOF yuri_1188() { return eTYPE_MINECART_CHEST; };
+    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_1932(yuri_7194); }
 
 public:
-    MinecartChest(Level* level);
-    MinecartChest(Level* level, double x, double y, double z);
+    yuri_1932(yuri_1758* yuri_7194);
+    yuri_1932(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630);
 
     // yuri yuri
-    virtual int getContainerType();
+    virtual int yuri_5059();
 
-    virtual void destroy(DamageSource* source);
-    virtual unsigned int getContainerSize();
-    virtual int getType();
-    virtual Tile* getDefaultDisplayTile();
-    virtual int getDefaultDisplayOffset();
+    virtual void yuri_4347(yuri_548* yuri_9075);
+    virtual unsigned int yuri_5058();
+    virtual int yuri_6068();
+    virtual yuri_3088* yuri_5137();
+    virtual int yuri_5136();
 };

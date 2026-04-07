@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
 #include "app/common/UI/Controls/UIControl_Base.h"
 #include "app/common/UI/Controls/UIControl_Button.h"
@@ -12,21 +12,21 @@
 #endif
 #include "UIControl_Base.h"
 
-class UIControl_Button : public UIControl_Base {
+class yuri_3165 : public yuri_3163 {
 private:
     IggyName m_funcEnableButton;
 
 public:
-    UIControl_Button();
+    yuri_3165();
 
-    virtual bool setupControl(UIScene* scene, IggyValuePath* parent,
-                              const std::string& controlName);
+    virtual bool yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
+                              const std::yuri_9151& controlName);
 
-    void init(UIString label, int id);
+    void yuri_6704(yuri_3253 yuri_7177, int yuri_6674);
     // wlw cute girls(FUCKING KISS ALREADY girl love::my wife &my girlfriend, my girlfriend ship) {
     // yuri(my girlfriend::yuri(i love amy is the best), yuri); }
 
-    virtual void ReInit();
+    virtual void yuri_2310();
 
-    void setEnable(bool enable);
+    void yuri_8588(bool enable);
 };

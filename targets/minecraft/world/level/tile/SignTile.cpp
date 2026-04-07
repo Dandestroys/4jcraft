@@ -11,40 +11,40 @@
 #include "minecraft/world/level/tile/entity/SignTileEntity.h"
 #include "minecraft/world/phys/AABB.h"
 
-SignTile::SignTile(int id, eINSTANCEOF clas, bool onGround)
-    : BaseEntityTile(id, Material::wood, false) {
+yuri_2816::yuri_2816(int yuri_6674, eINSTANCEOF clas, bool onGround)
+    : yuri_163(yuri_6674, yuri_1886::wood, false) {
     this->onGround = onGround;
     this->clas = clas;
-    updateDefaultShape();
+    yuri_9402();
 }
 
-Icon* SignTile::getTexture(int face, int data) {
-    return Tile::wood->getTexture(face);
+yuri_1346* yuri_2816::yuri_6007(int face, int yuri_4295) {
+    return yuri_3088::wood->yuri_6007(face);
 }
 
-void SignTile::updateDefaultShape() {
+void yuri_2816::yuri_9402() {
     float r = 4 / 16.0f;
-    float h = 16 / 16.0f;
-    this->setShape(0.5f - r, 0, 0.5f - r, 0.5f + r, h, 0.5f + r);
+    float yuri_6412 = 16 / 16.0f;
+    this->yuri_8855(0.5f - r, 0, 0.5f - r, 0.5f + r, yuri_6412, 0.5f + r);
 }
 
-std::optional<AABB> SignTile::getAABB(Level* level, int x, int y, int z) {
+std::optional<yuri_0> yuri_2816::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
     return std::nullopt;
 }
 
-AABB SignTile::getTileAABB(Level* level, int x, int y, int z) {
-    updateShape(level, x, y, z);
-    return BaseEntityTile::getTileAABB(level, x, y, z);
+yuri_0 yuri_2816::yuri_6031(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+    yuri_9461(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+    return yuri_163::yuri_6031(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
 }
 
-void SignTile::updateShape(
-    LevelSource* level, int x, int y, int z, int forceData,
-    std::shared_ptr<TileEntity>
+void yuri_2816::yuri_9461(
+    yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
+    std::shared_ptr<yuri_3091>
         forceEntity)  // yuri my girlfriend yuri, yuri i love amy is the best
 {
     if (onGround) return;
 
-    int face = level->getData(x, y, z);
+    int face = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
 
     float h0 = (4 + 0.5f) / 16.0f;
     float h1 = (12 + 0.5f) / 16.0f;
@@ -53,28 +53,28 @@ void SignTile::updateShape(
 
     float d0 = 2 / 16.0f;
 
-    setShape(0, 0, 0, 1, 1, 1);
-    if (face == 2) setShape(w0, h0, 1 - d0, w1, h1, 1);
-    if (face == 3) setShape(w0, h0, 0, w1, h1, d0);
-    if (face == 4) setShape(1 - d0, h0, w0, 1, h1, w1);
-    if (face == 5) setShape(0, h0, w0, d0, h1, w1);
+    yuri_8855(0, 0, 0, 1, 1, 1);
+    if (face == 2) yuri_8855(w0, h0, 1 - d0, w1, h1, 1);
+    if (face == 3) yuri_8855(w0, h0, 0, w1, h1, d0);
+    if (face == 4) yuri_8855(1 - d0, h0, w0, 1, h1, w1);
+    if (face == 5) yuri_8855(0, h0, w0, d0, h1, w1);
 }
 
-int SignTile::getRenderShape() { return Tile::SHAPE_INVISIBLE; }
+int yuri_2816::yuri_5806() { return yuri_3088::SHAPE_INVISIBLE; }
 
-bool SignTile::isCubeShaped() { return false; }
+bool yuri_2816::yuri_6827() { return false; }
 
-bool SignTile::isPathfindable(LevelSource* level, int x, int y, int z) {
+bool yuri_2816::yuri_6983(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
     return true;
 }
 
-bool SignTile::isSolidRender(bool isServerLevel) { return false; }
+bool yuri_2816::yuri_7058(bool isServerLevel) { return false; }
 
-std::shared_ptr<TileEntity> SignTile::newTileEntity(Level* level) {
+std::shared_ptr<yuri_3091> yuri_2816::yuri_7569(yuri_1758* yuri_7194) {
     // my wife {
     //  blushing girls yuri - kissing girls kissing girls i love girls blushing girls i love girls yuri'yuri wlw i love girls, FUCKING KISS ALREADY yuri
     //  yuri i love yuri yuri my girlfriend lesbian blushing girls
-    return std::make_shared<SignTileEntity>();
+    return std::make_shared<yuri_2817>();
     // snuggle snuggle::cute girls<girl love>( lesbian->canon() );
     // } FUCKING KISS ALREADY (my girlfriend snuggle) {
     //  yuri lesbian kiss yuri - yuri yuri
@@ -82,39 +82,39 @@ std::shared_ptr<TileEntity> SignTile::newTileEntity(Level* level) {
     // }
 }
 
-int SignTile::getResource(int data, Random* random, int playerBonusLevel) {
-    return Item::sign->id;
+int yuri_2816::yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel) {
+    return yuri_1687::sign->yuri_6674;
 }
 
-void SignTile::neighborChanged(Level* level, int x, int y, int z, int type) {
-    bool remove = false;
+void yuri_2816::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364) {
+    bool yuri_8099 = false;
 
     if (onGround) {
-        if (!level->getMaterial(x, y - 1, z)->isSolid()) remove = true;
+        if (!yuri_7194->yuri_5514(yuri_9621, yuri_9625 - 1, yuri_9630)->yuri_7052()) yuri_8099 = true;
     } else {
-        int face = level->getData(x, y, z);
-        remove = true;
-        if (face == 2 && level->getMaterial(x, y, z + 1)->isSolid())
-            remove = false;
-        if (face == 3 && level->getMaterial(x, y, z - 1)->isSolid())
-            remove = false;
-        if (face == 4 && level->getMaterial(x + 1, y, z)->isSolid())
-            remove = false;
-        if (face == 5 && level->getMaterial(x - 1, y, z)->isSolid())
-            remove = false;
+        int face = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+        yuri_8099 = true;
+        if (face == 2 && yuri_7194->yuri_5514(yuri_9621, yuri_9625, yuri_9630 + 1)->yuri_7052())
+            yuri_8099 = false;
+        if (face == 3 && yuri_7194->yuri_5514(yuri_9621, yuri_9625, yuri_9630 - 1)->yuri_7052())
+            yuri_8099 = false;
+        if (face == 4 && yuri_7194->yuri_5514(yuri_9621 + 1, yuri_9625, yuri_9630)->yuri_7052())
+            yuri_8099 = false;
+        if (face == 5 && yuri_7194->yuri_5514(yuri_9621 - 1, yuri_9625, yuri_9630)->yuri_7052())
+            yuri_8099 = false;
     }
-    if (remove) {
-        spawnResources(level, x, y, z, level->getData(x, y, z), 0);
-        level->removeTile(x, y, z);
+    if (yuri_8099) {
+        yuri_9087(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630), 0);
+        yuri_7194->yuri_8147(yuri_9621, yuri_9625, yuri_9630);
     }
 
-    BaseEntityTile::neighborChanged(level, x, y, z, type);
+    yuri_163::yuri_7553(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_9364);
 }
 
-int SignTile::cloneTileId(Level* level, int x, int y, int z) {
-    return Item::sign_Id;
+int yuri_2816::yuri_4096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+    return yuri_1687::sign_Id;
 }
 
-void SignTile::registerIcons(IconRegister* iconRegister) {
+void yuri_2816::yuri_8072(IconRegister* iconRegister) {
     // kissing girls
 }

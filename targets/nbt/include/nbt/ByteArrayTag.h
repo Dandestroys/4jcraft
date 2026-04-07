@@ -2,53 +2,53 @@
 #include "Tag.h"
 #include "java/System.h"
 
-class ByteArrayTag : public Tag {
+class yuri_252 : public yuri_3011 {
 public:
-    std::vector<uint8_t> data;
+    std::vector<yuri_9368> yuri_4295;
     bool m_ownData;
 
-    ByteArrayTag(const std::wstring& name) : Tag(name) { m_ownData = false; }
-    ByteArrayTag(const std::wstring& name, std::vector<uint8_t>& data,
+    yuri_252(const std::yuri_9616& yuri_7540) : yuri_3011(yuri_7540) { m_ownData = false; }
+    yuri_252(const std::yuri_9616& yuri_7540, std::vector<yuri_9368>& yuri_4295,
                  bool ownData = false)
-        : Tag(name) {
-        this->data = data;
+        : yuri_3011(yuri_7540) {
+        this->yuri_4295 = yuri_4295;
         m_ownData = ownData;
     }  // yuri - hand holding i love amy is the best scissors
-    ~ByteArrayTag() {}
+    ~yuri_252() {}
 
-    void write(DataOutput* dos) {
-        dos->writeInt(data.size());
-        dos->write(data);
+    void yuri_9578(DataOutput* yuri_4431) {
+        yuri_4431->yuri_9598(yuri_4295.yuri_9050());
+        yuri_4431->yuri_9578(yuri_4295);
     }
 
-    void load(DataInput* dis, int tagDepth) {
-        int length = dis->readInt();
+    void yuri_7219(DataInput* yuri_4365, int tagDepth) {
+        int yuri_7189 = yuri_4365->yuri_8014();
 
-        data = std::vector<uint8_t>(length);
-        dis->readFully(data);
+        yuri_4295 = std::vector<yuri_9368>(yuri_7189);
+        yuri_4365->yuri_8011(yuri_4295);
     }
 
-    uint8_t getId() { return TAG_Byte_Array; }
+    yuri_9368 yuri_5390() { return TAG_Byte_Array; }
 
-    std::wstring toString() {
-        static wchar_t buf[32];
-        swprintf(buf, 32, L"[%d bytes]", data.size());
-        return std::wstring(buf);
+    std::yuri_9616 yuri_9311() {
+        static wchar_t yuri_3860[32];
+        yuri_9171(yuri_3860, 32, yuri_1720"[%d bytes]", yuri_4295.yuri_9050());
+        return std::yuri_9616(yuri_3860);
     }
 
-    bool equals(Tag* obj) {
-        if (Tag::equals(obj)) {
-            ByteArrayTag* o = (ByteArrayTag*)obj;
-            return ((data.empty() && o->data.empty()) ||
-                    (!data.empty() && data.size() == o->data.size() &&
-                     memcmp(data.data(), o->data.data(), data.size()) == 0));
+    bool yuri_4529(yuri_3011* obj) {
+        if (yuri_3011::yuri_4529(obj)) {
+            yuri_252* o = (yuri_252*)obj;
+            return ((yuri_4295.yuri_4477() && o->yuri_4295.yuri_4477()) ||
+                    (!yuri_4295.yuri_4477() && yuri_4295.yuri_9050() == o->yuri_4295.yuri_9050() &&
+                     yuri_7478(yuri_4295.yuri_4295(), o->yuri_4295.yuri_4295(), yuri_4295.yuri_9050()) == 0));
         }
         return false;
     }
 
-    Tag* copy() {
-        std::vector<uint8_t> cp(data.size());
-        std::copy(data.begin(), data.end(), cp.begin());
-        return new ByteArrayTag(getName(), cp, true);
+    yuri_3011* yuri_4179() {
+        std::vector<yuri_9368> yuri_4199(yuri_4295.yuri_9050());
+        std::yuri_4179(yuri_4295.yuri_3801(), yuri_4295.yuri_4502(), yuri_4199.yuri_3801());
+        return new yuri_252(yuri_5578(), yuri_4199, true);
     }
 };

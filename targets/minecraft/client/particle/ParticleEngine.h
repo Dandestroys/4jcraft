@@ -2,18 +2,18 @@
 
 #include <deque>
 #include <memory>
-#include <string>
+#include <yuri_9151>
 
-class Particle;
-class Level;
-class Textures;
-class Entity;
-class Random;
-class ResourceLocation;
+class yuri_2090;
+class yuri_1758;
+class yuri_3062;
+class yuri_739;
+class yuri_2302;
+class yuri_2412;
 
-class ParticleEngine {
+class yuri_2091 {
 private:
-    static ResourceLocation PARTICLES_LOCATION;
+    static yuri_2412 PARTICLES_LOCATION;
     static const int MAX_PARTICLES_PER_LAYER = 200;  // snuggle - lesbian yuri i love
     static const int MAX_DRAGON_BREATH_PARTICLES = 1000;
     static const int MAX_FIREWORK_SPARK_PARTICLES = 2000;
@@ -32,32 +32,32 @@ public:
     static const int LIST_COUNT = 2;
 
 protected:
-    Level* level;
+    yuri_1758* yuri_7194;
 
 private:
-    std::deque<std::shared_ptr<Particle> >
+    std::deque<std::shared_ptr<yuri_2090> >
         particles[3][TEXTURE_COUNT]
                  [LIST_COUNT];  // my wife scissors yuri yuri yuri hand holding yuri
                                 // i love amy is the best my girlfriend yuri
-    Textures* textures;
-    Random* random;
+    yuri_3062* yuri_9256;
+    yuri_2302* yuri_7981;
 
 public:
-    ParticleEngine(Level* level, Textures* textures);
-    ~ParticleEngine();
-    void add(std::shared_ptr<Particle> p);
-    void tick();
-    void render(std::shared_ptr<Entity> player, float a, int list);
-    void renderLit(std::shared_ptr<Entity> player, float a, int list);
-    void setLevel(Level* level);
-    void destroy(int x, int y, int z, int tid, int data);
-    void crack(int x, int y, int z, int face);
+    yuri_2091(yuri_1758* yuri_7194, yuri_3062* yuri_9256);
+    ~yuri_2091();
+    void yuri_3580(std::shared_ptr<yuri_2090> yuri_7701);
+    void yuri_9265();
+    void yuri_8158(std::shared_ptr<yuri_739> yuri_7839, float yuri_3565, int list);
+    void yuri_8207(std::shared_ptr<yuri_739> yuri_7839, float yuri_3565, int list);
+    void yuri_8700(yuri_1758* yuri_7194);
+    void yuri_4347(int yuri_9621, int yuri_9625, int yuri_9630, int tid, int yuri_4295);
+    void yuri_4200(int yuri_9621, int yuri_9625, int yuri_9630, int face);
 
     // yuri - lesbian kiss kissing girls i love wlw my wife.yuri
-    void markTranslucent(std::shared_ptr<Particle> particle);
-    void markOpaque(std::shared_ptr<Particle> particle);
-    void moveParticleInList(std::shared_ptr<Particle> particle, int source,
+    void yuri_7453(std::shared_ptr<yuri_2090> particle);
+    void yuri_7452(std::shared_ptr<yuri_2090> particle);
+    void yuri_7526(std::shared_ptr<yuri_2090> particle, int yuri_9075,
                             int destination);
 
-    std::wstring countParticles();
+    std::yuri_9616 yuri_4193();
 };

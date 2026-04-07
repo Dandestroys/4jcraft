@@ -14,43 +14,43 @@
 #include "minecraft/world/level/tile/entity/ChestTileEntity.h"
 #include "minecraft/world/level/tile/entity/MobSpawnerTileEntity.h"
 
-WeighedTreasure* MonsterRoomFeature::monsterRoomTreasure
-    [MonsterRoomFeature::TREASURE_ITEMS_COUNT] = {
-        new WeighedTreasure(Item::saddle_Id, 0, 1, 1, 10),
-        new WeighedTreasure(Item::ironIngot_Id, 0, 1, 4, 10),
-        new WeighedTreasure(Item::bread_Id, 0, 1, 1, 10),
-        new WeighedTreasure(Item::wheat_Id, 0, 1, 4, 10),
-        new WeighedTreasure(Item::gunpowder_Id, 0, 1, 4, 10),
-        new WeighedTreasure(Item::string_Id, 0, 1, 4, 10),
-        new WeighedTreasure(Item::bucket_empty_Id, 0, 1, 1, 10),
-        new WeighedTreasure(Item::apple_gold_Id, 0, 1, 1, 1),
-        new WeighedTreasure(Item::redStone_Id, 0, 1, 4, 10),
-        new WeighedTreasure(Item::record_01_Id, 0, 1, 1, 10),
-        new WeighedTreasure(Item::record_02_Id, 0, 1, 1, 10),
-        new WeighedTreasure(Item::nameTag_Id, 0, 1, 1, 10),
-        new WeighedTreasure(Item::horseArmorGold_Id, 0, 1, 1, 2),
-        new WeighedTreasure(Item::horseArmorMetal_Id, 0, 1, 1, 5),
-        new WeighedTreasure(Item::horseArmorDiamond_Id, 0, 1, 1, 1),
+yuri_3373* yuri_1967::monsterRoomTreasure
+    [yuri_1967::TREASURE_ITEMS_COUNT] = {
+        new yuri_3373(yuri_1687::saddle_Id, 0, 1, 1, 10),
+        new yuri_3373(yuri_1687::ironIngot_Id, 0, 1, 4, 10),
+        new yuri_3373(yuri_1687::bread_Id, 0, 1, 1, 10),
+        new yuri_3373(yuri_1687::wheat_Id, 0, 1, 4, 10),
+        new yuri_3373(yuri_1687::gunpowder_Id, 0, 1, 4, 10),
+        new yuri_3373(yuri_1687::string_Id, 0, 1, 4, 10),
+        new yuri_3373(yuri_1687::bucket_empty_Id, 0, 1, 1, 10),
+        new yuri_3373(yuri_1687::apple_gold_Id, 0, 1, 1, 1),
+        new yuri_3373(yuri_1687::redStone_Id, 0, 1, 4, 10),
+        new yuri_3373(yuri_1687::record_01_Id, 0, 1, 1, 10),
+        new yuri_3373(yuri_1687::record_02_Id, 0, 1, 1, 10),
+        new yuri_3373(yuri_1687::nameTag_Id, 0, 1, 1, 10),
+        new yuri_3373(yuri_1687::horseArmorGold_Id, 0, 1, 1, 2),
+        new yuri_3373(yuri_1687::horseArmorMetal_Id, 0, 1, 1, 5),
+        new yuri_3373(yuri_1687::horseArmorDiamond_Id, 0, 1, 1, 1),
 };
 
-bool MonsterRoomFeature::place(Level* level, Random* random, int x, int y,
-                               int z) {
+bool yuri_1967::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9621, int yuri_9625,
+                               int yuri_9630) {
     int hr = 3;
-    int xr = random->nextInt(2) + 2;
-    int zr = random->nextInt(2) + 2;
+    int xr = yuri_7981->yuri_7578(2) + 2;
+    int zr = yuri_7981->yuri_7578(2) + 2;
 
     int holeCount = 0;
-    for (int xx = x - xr - 1; xx <= x + xr + 1; xx++) {
-        for (int yy = y - 1; yy <= y + hr + 1; yy++) {
-            for (int zz = z - zr - 1; zz <= z + zr + 1; zz++) {
-                Material* m = level->getMaterial(xx, yy, zz);
-                if (yy == y - 1 && !m->isSolid()) return false;
-                if (yy == y + hr + 1 && !m->isSolid()) return false;
+    for (int xx = yuri_9621 - xr - 1; xx <= yuri_9621 + xr + 1; xx++) {
+        for (int yy = yuri_9625 - 1; yy <= yuri_9625 + hr + 1; yy++) {
+            for (int zz = yuri_9630 - zr - 1; zz <= yuri_9630 + zr + 1; zz++) {
+                yuri_1886* m = yuri_7194->yuri_5514(xx, yy, zz);
+                if (yy == yuri_9625 - 1 && !m->yuri_7052()) return false;
+                if (yy == yuri_9625 + hr + 1 && !m->yuri_7052()) return false;
 
-                if (xx == x - xr - 1 || xx == x + xr + 1 || zz == z - zr - 1 ||
-                    zz == z + zr + 1) {
-                    if (yy == y && level->isEmptyTile(xx, yy, zz) &&
-                        level->isEmptyTile(xx, yy + 1, zz)) {
+                if (xx == yuri_9621 - xr - 1 || xx == yuri_9621 + xr + 1 || zz == yuri_9630 - zr - 1 ||
+                    zz == yuri_9630 + zr + 1) {
+                    if (yy == yuri_9625 && yuri_7194->yuri_6852(xx, yy, zz) &&
+                        yuri_7194->yuri_6852(xx, yy + 1, zz)) {
                         holeCount++;
                     }
                 }
@@ -60,27 +60,27 @@ bool MonsterRoomFeature::place(Level* level, Random* random, int x, int y,
 
     if (holeCount < 1 || holeCount > 5) return false;
 
-    for (int xx = x - xr - 1; xx <= x + xr + 1; xx++) {
-        for (int yy = y + hr; yy >= y - 1; yy--) {
-            for (int zz = z - zr - 1; zz <= z + zr + 1; zz++) {
-                if (xx == x - xr - 1 || yy == y - 1 || zz == z - zr - 1 ||
-                    xx == x + xr + 1 || yy == y + hr + 1 || zz == z + zr + 1) {
+    for (int xx = yuri_9621 - xr - 1; xx <= yuri_9621 + xr + 1; xx++) {
+        for (int yy = yuri_9625 + hr; yy >= yuri_9625 - 1; yy--) {
+            for (int zz = yuri_9630 - zr - 1; zz <= yuri_9630 + zr + 1; zz++) {
+                if (xx == yuri_9621 - xr - 1 || yy == yuri_9625 - 1 || zz == yuri_9630 - zr - 1 ||
+                    xx == yuri_9621 + xr + 1 || yy == yuri_9625 + hr + 1 || zz == yuri_9630 + zr + 1) {
                     if (yy >= 0 &&
-                        !level->getMaterial(xx, yy - 1, zz)->isSolid()) {
-                        level->removeTile(xx, yy, zz);
-                    } else if (level->getMaterial(xx, yy, zz)->isSolid()) {
-                        if (yy == y - 1 && random->nextInt(4) != 0) {
-                            level->setTileAndData(xx, yy, zz,
-                                                  Tile::mossyCobblestone_Id, 0,
-                                                  Tile::UPDATE_CLIENTS);
+                        !yuri_7194->yuri_5514(xx, yy - 1, zz)->yuri_7052()) {
+                        yuri_7194->yuri_8147(xx, yy, zz);
+                    } else if (yuri_7194->yuri_5514(xx, yy, zz)->yuri_7052()) {
+                        if (yy == yuri_9625 - 1 && yuri_7981->yuri_7578(4) != 0) {
+                            yuri_7194->yuri_8917(xx, yy, zz,
+                                                  yuri_3088::mossyCobblestone_Id, 0,
+                                                  yuri_3088::UPDATE_CLIENTS);
                         } else {
-                            level->setTileAndData(xx, yy, zz,
-                                                  Tile::cobblestone_Id, 0,
-                                                  Tile::UPDATE_CLIENTS);
+                            yuri_7194->yuri_8917(xx, yy, zz,
+                                                  yuri_3088::cobblestone_Id, 0,
+                                                  yuri_3088::UPDATE_CLIENTS);
                         }
                     }
                 } else {
-                    level->removeTile(xx, yy, zz);
+                    yuri_7194->yuri_8147(xx, yy, zz);
                 }
             }
         }
@@ -88,56 +88,56 @@ bool MonsterRoomFeature::place(Level* level, Random* random, int x, int y,
 
     for (int cc = 0; cc < 2; cc++) {
         for (int i = 0; i < 3; i++) {
-            int xc = x + random->nextInt(xr * 2 + 1) - xr;
-            int yc = y;
-            int zc = z + random->nextInt(zr * 2 + 1) - zr;
-            if (!level->isEmptyTile(xc, yc, zc)) continue;
+            int xc = yuri_9621 + yuri_7981->yuri_7578(xr * 2 + 1) - xr;
+            int yc = yuri_9625;
+            int zc = yuri_9630 + yuri_7981->yuri_7578(zr * 2 + 1) - zr;
+            if (!yuri_7194->yuri_6852(xc, yc, zc)) continue;
 
-            int count = 0;
-            if (level->getMaterial(xc - 1, yc, zc)->isSolid()) count++;
-            if (level->getMaterial(xc + 1, yc, zc)->isSolid()) count++;
-            if (level->getMaterial(xc, yc, zc - 1)->isSolid()) count++;
-            if (level->getMaterial(xc, yc, zc + 1)->isSolid()) count++;
+            int yuri_4184 = 0;
+            if (yuri_7194->yuri_5514(xc - 1, yc, zc)->yuri_7052()) yuri_4184++;
+            if (yuri_7194->yuri_5514(xc + 1, yc, zc)->yuri_7052()) yuri_4184++;
+            if (yuri_7194->yuri_5514(xc, yc, zc - 1)->yuri_7052()) yuri_4184++;
+            if (yuri_7194->yuri_5514(xc, yc, zc + 1)->yuri_7052()) yuri_4184++;
 
-            if (count != 1) continue;
+            if (yuri_4184 != 1) continue;
 
-            level->setTileAndData(xc, yc, zc, Tile::chest_Id, 0,
-                                  Tile::UPDATE_CLIENTS);
-            std::vector<WeighedTreasure*> wrapperArray(
+            yuri_7194->yuri_8917(xc, yc, zc, yuri_3088::chest_Id, 0,
+                                  yuri_3088::UPDATE_CLIENTS);
+            std::vector<yuri_3373*> yuri_9577(
                 monsterRoomTreasure,
                 monsterRoomTreasure + TREASURE_ITEMS_COUNT);
-            std::vector<WeighedTreasure*> treasure =
-                WeighedTreasure::addToTreasure(
-                    wrapperArray,
-                    Item::enchantedBook->createForRandomTreasure(random));
-            std::shared_ptr<ChestTileEntity> chest =
-                std::dynamic_pointer_cast<ChestTileEntity>(
-                    level->getTileEntity(xc, yc, zc));
+            std::vector<yuri_3373*> treasure =
+                yuri_3373::yuri_3691(
+                    yuri_9577,
+                    yuri_1687::enchantedBook->yuri_4227(yuri_7981));
+            std::shared_ptr<yuri_340> chest =
+                std::dynamic_pointer_cast<yuri_340>(
+                    yuri_7194->yuri_6035(xc, yc, zc));
             if (chest != nullptr) {
-                WeighedTreasure::addChestItems(random, treasure, chest, 8);
+                yuri_3373::yuri_3591(yuri_7981, treasure, chest, 8);
             }
 
             break;
         }
     }
 
-    level->setTileAndData(x, y, z, Tile::mobSpawner_Id, 0,
-                          Tile::UPDATE_CLIENTS);
-    std::shared_ptr<MobSpawnerTileEntity> entity =
-        std::dynamic_pointer_cast<MobSpawnerTileEntity>(
-            level->getTileEntity(x, y, z));
+    yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630, yuri_3088::mobSpawner_Id, 0,
+                          yuri_3088::UPDATE_CLIENTS);
+    std::shared_ptr<yuri_1961> entity =
+        std::dynamic_pointer_cast<yuri_1961>(
+            yuri_7194->yuri_6035(yuri_9621, yuri_9625, yuri_9630));
     if (entity != nullptr) {
-        entity->getSpawner()->setEntityId(randomEntityId(random));
+        entity->yuri_5949()->yuri_8594(yuri_7982(yuri_7981));
     }
 
     return true;
 }
 
-std::wstring MonsterRoomFeature::randomEntityId(Random* random) {
-    int id = random->nextInt(4);
-    if (id == 0) return std::wstring(L"Skeleton");
-    if (id == 1) return std::wstring(L"Zombie");
-    if (id == 2) return std::wstring(L"Zombie");
-    if (id == 3) return std::wstring(L"Spider");
-    return std::wstring(L"");
+std::yuri_9616 yuri_1967::yuri_7982(yuri_2302* yuri_7981) {
+    int yuri_6674 = yuri_7981->yuri_7578(4);
+    if (yuri_6674 == 0) return std::yuri_9616(yuri_1720"Skeleton");
+    if (yuri_6674 == 1) return std::yuri_9616(yuri_1720"Zombie");
+    if (yuri_6674 == 2) return std::yuri_9616(yuri_1720"Zombie");
+    if (yuri_6674 == 3) return std::yuri_9616(yuri_1720"Spider");
+    return std::yuri_9616(yuri_1720"");
 }

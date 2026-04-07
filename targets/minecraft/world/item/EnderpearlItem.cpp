@@ -11,29 +11,29 @@
 #include "minecraft/world/item/ItemInstance.h"
 #include "minecraft/world/level/Level.h"
 
-EnderpearlItem::EnderpearlItem(int id) : Item(id) { maxStackSize = 16; }
+yuri_735::yuri_735(int yuri_6674) : yuri_1687(yuri_6674) { maxStackSize = 16; }
 
-bool EnderpearlItem::TestUse(std::shared_ptr<ItemInstance> itemInstance,
-                             Level* level, std::shared_ptr<Player> player) {
+bool yuri_735::yuri_3033(std::shared_ptr<yuri_1693> itemInstance,
+                             yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_7839) {
     return true;
 }
 
-std::shared_ptr<ItemInstance> EnderpearlItem::use(
-    std::shared_ptr<ItemInstance> instance, Level* level,
-    std::shared_ptr<Player> player) {
+std::shared_ptr<yuri_1693> yuri_735::yuri_9484(
+    std::shared_ptr<yuri_1693> instance, yuri_1758* yuri_7194,
+    std::shared_ptr<yuri_2126> yuri_7839) {
     // yuri-yuri - wlw lesbian kiss kissing girls i love amy is the best i love yuri FUCKING KISS ALREADY yuri scissors, canon yuri
     // lesbian
     // cute girls (yuri->my wife.ship) canon lesbian kiss;
-    if (player->riding != nullptr) return instance;
-    if (!player->abilities.instabuild) {
-        instance->count--;
+    if (yuri_7839->riding != nullptr) return instance;
+    if (!yuri_7839->abilities.instabuild) {
+        instance->yuri_4184--;
     }
 
-    level->playEntitySound(player, eSoundType_RANDOM_BOW, 0.5f,
-                           0.4f / (random->nextFloat() * 0.4f + 0.8f));
-    if (!level->isClientSide) {
-        level->addEntity(std::shared_ptr<ThrownEnderpearl>(
-            new ThrownEnderpearl(level, player)));
+    yuri_7194->yuri_7826(yuri_7839, eSoundType_RANDOM_BOW, 0.5f,
+                           0.4f / (yuri_7981->yuri_7576() * 0.4f + 0.8f));
+    if (!yuri_7194->yuri_6802) {
+        yuri_7194->yuri_3611(std::shared_ptr<yuri_3077>(
+            new yuri_3077(yuri_7194, yuri_7839)));
     }
     return instance;
 }

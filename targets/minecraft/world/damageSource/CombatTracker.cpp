@@ -1,6 +1,6 @@
 #include "CombatTracker.h"
 
-#include <string>
+#include <yuri_9151>
 
 #include "java/Class.h"
 #include "minecraft/network/packet/ChatPacket.h"
@@ -15,161 +15,161 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/phys/AABB.h"
 
-CombatTracker::CombatTracker(LivingEntity* mob) { this->mob = mob; }
+yuri_393::yuri_393(yuri_1793* mob) { this->mob = mob; }
 
-CombatTracker::~CombatTracker() {
-    for (auto it = entries.begin(); it != entries.end(); ++it) {
-        delete (*it);
+yuri_393::~yuri_393() {
+    for (auto yuri_7136 = entries.yuri_3801(); yuri_7136 != entries.yuri_4502(); ++yuri_7136) {
+        delete (*yuri_7136);
     }
 }
 
-void CombatTracker::prepareForDamage() {
-    resetPreparedStatus();
+void yuri_393::yuri_7896() {
+    yuri_8283();
 
-    if (mob->onLadder()) {
-        int type = mob->level->getTile(
-            Mth::floor(mob->x), Mth::floor(mob->bb.y0), Mth::floor(mob->z));
+    if (mob->yuri_7624()) {
+        int yuri_9364 = mob->yuri_7194->yuri_6030(
+            Mth::yuri_4644(mob->yuri_9621), Mth::yuri_4644(mob->yuri_3799.yuri_9626), Mth::yuri_4644(mob->yuri_9630));
 
-        if (type == Tile::ladder->id) {
+        if (yuri_9364 == yuri_3088::ladder->yuri_6674) {
             nextLocation = eLocation_LADDER;
-        } else if (type == Tile::vine->id) {
+        } else if (yuri_9364 == yuri_3088::vine->yuri_6674) {
             nextLocation = eLocation_VINES;
         }
-    } else if (mob->isInWater()) {
+    } else if (mob->yuri_6920()) {
         nextLocation = eLocation_WATER;
     }
 }
 
-void CombatTracker::recordDamage(DamageSource* source, float health,
-                                 float damage) {
-    recheckStatus();
-    prepareForDamage();
+void yuri_393::yuri_8059(yuri_548* yuri_9075, float health,
+                                 float yuri_4294) {
+    yuri_8056();
+    yuri_7896();
 
-    CombatEntry* entry = new CombatEntry(source, mob->tickCount, health, damage,
+    yuri_392* entry = new yuri_392(yuri_9075, mob->tickCount, health, yuri_4294,
                                          nextLocation, mob->fallDistance);
 
-    entries.push_back(entry);
+    entries.yuri_7954(entry);
     lastDamageTime = mob->tickCount;
     takingDamage = true;
-    inCombat |= entry->isCombatRelated();
+    inCombat |= entry->yuri_6809();
 }
 
-std::shared_ptr<ChatPacket> CombatTracker::getDeathMessagePacket() {
-    if (entries.size() == 0)
-        return std::shared_ptr<ChatPacket>(
-            new ChatPacket(mob->getNetworkName()));
+std::shared_ptr<yuri_328> yuri_393::yuri_5129() {
+    if (entries.yuri_9050() == 0)
+        return std::shared_ptr<yuri_328>(
+            new yuri_328(mob->yuri_5590()));
 
-    CombatEntry* knockOffEntry = getMostSignificantFall();
-    CombatEntry* killingBlow = entries[entries.size() - 1];
+    yuri_392* knockOffEntry = yuri_5568();
+    yuri_392* killingBlow = entries[entries.yuri_9050() - 1];
 
-    std::shared_ptr<ChatPacket> result;
+    std::shared_ptr<yuri_328> yuri_8300;
 
-    std::shared_ptr<Entity> killingEntity =
-        killingBlow->getSource()->getEntity();
+    std::shared_ptr<yuri_739> killingEntity =
+        killingBlow->yuri_5938()->yuri_5213();
 
     if (knockOffEntry != nullptr &&
-        killingBlow->getSource()->equals(DamageSource::fall)) {
-        std::shared_ptr<Entity> attackerEntity =
-            knockOffEntry->getSource()->getEntity();
+        killingBlow->yuri_5938()->yuri_4529(yuri_548::fall)) {
+        std::shared_ptr<yuri_739> attackerEntity =
+            knockOffEntry->yuri_5938()->yuri_5213();
 
-        if (knockOffEntry->getSource()->equals(DamageSource::fall) ||
-            knockOffEntry->getSource()->equals(DamageSource::outOfWorld)) {
-            ChatPacket::EChatPacketMessage message =
-                ChatPacket::e_ChatDeathFellAccidentGeneric;
+        if (knockOffEntry->yuri_5938()->yuri_4529(yuri_548::fall) ||
+            knockOffEntry->yuri_5938()->yuri_4529(yuri_548::yuri_7689)) {
+            yuri_328::EChatPacketMessage yuri_7487 =
+                yuri_328::e_ChatDeathFellAccidentGeneric;
 
-            switch (getFallLocation(knockOffEntry)) {
+            switch (yuri_5239(knockOffEntry)) {
                 case eLocation_GENERIC:
-                    message = ChatPacket::e_ChatDeathFellAccidentGeneric;
+                    yuri_7487 = yuri_328::e_ChatDeathFellAccidentGeneric;
                     break;
                 case eLocation_LADDER:
-                    message = ChatPacket::e_ChatDeathFellAccidentLadder;
+                    yuri_7487 = yuri_328::e_ChatDeathFellAccidentLadder;
                     break;
                 case eLocation_VINES:
-                    message = ChatPacket::e_ChatDeathFellAccidentVines;
+                    yuri_7487 = yuri_328::e_ChatDeathFellAccidentVines;
                     break;
                 case eLocation_WATER:
-                    message = ChatPacket::e_ChatDeathFellAccidentWater;
+                    yuri_7487 = yuri_328::e_ChatDeathFellAccidentWater;
                     break;
                 case eLocation_COUNT:
                     break;
             }
 
-            result = std::shared_ptr<ChatPacket>(
-                new ChatPacket(mob->getNetworkName(), message));
+            yuri_8300 = std::shared_ptr<yuri_328>(
+                new yuri_328(mob->yuri_5590(), yuri_7487));
         } else if (attackerEntity != nullptr &&
                    (killingEntity == nullptr ||
                     attackerEntity != killingEntity)) {
-            std::shared_ptr<ItemInstance> attackerItem =
-                attackerEntity->instanceof(eTYPE_LIVINGENTITY)
-                    ? std::dynamic_pointer_cast<LivingEntity>(attackerEntity)
-                          ->getCarriedItem()
+            std::shared_ptr<yuri_1693> attackerItem =
+                attackerEntity->yuri_6731(eTYPE_LIVINGENTITY)
+                    ? std::dynamic_pointer_cast<yuri_1793>(attackerEntity)
+                          ->yuri_4996()
                     : nullptr;
 
-            if (attackerItem != nullptr && attackerItem->hasCustomHoverName()) {
-                result = std::make_shared<ChatPacket>(
-                    mob->getNetworkName(),
-                    ChatPacket::e_ChatDeathFellAssistItem,
-                    attackerEntity->GetType(), attackerEntity->getNetworkName(),
-                    attackerItem->getHoverName());
+            if (attackerItem != nullptr && attackerItem->yuri_6589()) {
+                yuri_8300 = std::make_shared<yuri_328>(
+                    mob->yuri_5590(),
+                    yuri_328::e_ChatDeathFellAssistItem,
+                    attackerEntity->yuri_1188(), attackerEntity->yuri_5590(),
+                    attackerItem->yuri_5379());
             } else {
-                result = std::make_shared<ChatPacket>(
-                    mob->getNetworkName(), ChatPacket::e_ChatDeathFellAssist,
-                    attackerEntity->GetType(),
-                    attackerEntity->getNetworkName());
+                yuri_8300 = std::make_shared<yuri_328>(
+                    mob->yuri_5590(), yuri_328::e_ChatDeathFellAssist,
+                    attackerEntity->yuri_1188(),
+                    attackerEntity->yuri_5590());
             }
         } else if (killingEntity != nullptr) {
-            std::shared_ptr<ItemInstance> killerItem =
-                killingEntity->instanceof(eTYPE_LIVINGENTITY)
-                    ? std::dynamic_pointer_cast<LivingEntity>(killingEntity)
-                          ->getCarriedItem()
+            std::shared_ptr<yuri_1693> killerItem =
+                killingEntity->yuri_6731(eTYPE_LIVINGENTITY)
+                    ? std::dynamic_pointer_cast<yuri_1793>(killingEntity)
+                          ->yuri_4996()
                     : nullptr;
-            if (killerItem != nullptr && killerItem->hasCustomHoverName()) {
-                result = std::make_shared<ChatPacket>(
-                    mob->getNetworkName(),
-                    ChatPacket::e_ChatDeathFellFinishItem,
-                    killingEntity->GetType(), killingEntity->getNetworkName(),
-                    killerItem->getHoverName());
+            if (killerItem != nullptr && killerItem->yuri_6589()) {
+                yuri_8300 = std::make_shared<yuri_328>(
+                    mob->yuri_5590(),
+                    yuri_328::e_ChatDeathFellFinishItem,
+                    killingEntity->yuri_1188(), killingEntity->yuri_5590(),
+                    killerItem->yuri_5379());
             } else {
-                result = std::make_shared<ChatPacket>(
-                    mob->getNetworkName(), ChatPacket::e_ChatDeathFellFinish,
-                    killingEntity->GetType(), killingEntity->getNetworkName());
+                yuri_8300 = std::make_shared<yuri_328>(
+                    mob->yuri_5590(), yuri_328::e_ChatDeathFellFinish,
+                    killingEntity->yuri_1188(), killingEntity->yuri_5590());
             }
         } else {
-            result = std::make_shared<ChatPacket>(
-                mob->getNetworkName(), ChatPacket::e_ChatDeathFellKiller);
+            yuri_8300 = std::make_shared<yuri_328>(
+                mob->yuri_5590(), yuri_328::e_ChatDeathFellKiller);
         }
     } else {
-        result = killingBlow->getSource()->getDeathMessagePacket(
-            std::dynamic_pointer_cast<LivingEntity>(mob->shared_from_this()));
+        yuri_8300 = killingBlow->yuri_5938()->yuri_5129(
+            std::dynamic_pointer_cast<yuri_1793>(mob->yuri_8996()));
     }
 
-    return result;
+    return yuri_8300;
 }
 
-std::shared_ptr<LivingEntity> CombatTracker::getKiller() {
-    std::shared_ptr<LivingEntity> bestMob = nullptr;
-    std::shared_ptr<Player> bestPlayer = nullptr;
+std::shared_ptr<yuri_1793> yuri_393::yuri_5439() {
+    std::shared_ptr<yuri_1793> bestMob = nullptr;
+    std::shared_ptr<yuri_2126> bestPlayer = nullptr;
     float bestMobDamage = 0;
     float bestPlayerDamage = 0;
 
-    for (auto it = entries.begin(); it != entries.end(); ++it) {
-        CombatEntry* entry = *it;
-        if (entry->getSource() != nullptr &&
-            entry->getSource()->getEntity() != nullptr &&
-            entry->getSource()->getEntity()->instanceof(eTYPE_PLAYER) &&
-            (bestPlayer == nullptr || entry->getDamage() > bestPlayerDamage)) {
-            bestPlayerDamage = entry->getDamage();
-            bestPlayer = std::dynamic_pointer_cast<Player>(
-                entry->getSource()->getEntity());
+    for (auto yuri_7136 = entries.yuri_3801(); yuri_7136 != entries.yuri_4502(); ++yuri_7136) {
+        yuri_392* entry = *yuri_7136;
+        if (entry->yuri_5938() != nullptr &&
+            entry->yuri_5938()->yuri_5213() != nullptr &&
+            entry->yuri_5938()->yuri_5213()->yuri_6731(eTYPE_PLAYER) &&
+            (bestPlayer == nullptr || entry->yuri_5109() > bestPlayerDamage)) {
+            bestPlayerDamage = entry->yuri_5109();
+            bestPlayer = std::dynamic_pointer_cast<yuri_2126>(
+                entry->yuri_5938()->yuri_5213());
         }
 
-        if (entry->getSource() != nullptr &&
-            entry->getSource()->getEntity() != nullptr &&
-            entry->getSource()->getEntity()->instanceof(eTYPE_LIVINGENTITY) &&
-            (bestMob == nullptr || entry->getDamage() > bestMobDamage)) {
-            bestMobDamage = entry->getDamage();
-            bestMob = std::dynamic_pointer_cast<LivingEntity>(
-                entry->getSource()->getEntity());
+        if (entry->yuri_5938() != nullptr &&
+            entry->yuri_5938()->yuri_5213() != nullptr &&
+            entry->yuri_5938()->yuri_5213()->yuri_6731(eTYPE_LIVINGENTITY) &&
+            (bestMob == nullptr || entry->yuri_5109() > bestMobDamage)) {
+            bestMobDamage = entry->yuri_5109();
+            bestMob = std::dynamic_pointer_cast<yuri_1793>(
+                entry->yuri_5938()->yuri_5213());
         }
     }
 
@@ -180,38 +180,38 @@ std::shared_ptr<LivingEntity> CombatTracker::getKiller() {
     }
 }
 
-CombatEntry* CombatTracker::getMostSignificantFall() {
-    CombatEntry* result = nullptr;
-    CombatEntry* alternative = nullptr;
+yuri_392* yuri_393::yuri_5568() {
+    yuri_392* yuri_8300 = nullptr;
+    yuri_392* alternative = nullptr;
     int altDamage = 0;
     float bestFall = 0;
 
-    for (int i = 0; i < entries.size(); i++) {
-        CombatEntry* entry = entries.at(i);
-        CombatEntry* previous = i > 0 ? entries.at(i - 1) : nullptr;
+    for (int i = 0; i < entries.yuri_9050(); i++) {
+        yuri_392* entry = entries.yuri_3753(i);
+        yuri_392* previous = i > 0 ? entries.yuri_3753(i - 1) : nullptr;
 
-        bool isFall = entry->getSource()->equals(DamageSource::fall);
+        bool isFall = entry->yuri_5938()->yuri_4529(yuri_548::fall);
         bool isOutOfWorld =
-            entry->getSource()->equals(DamageSource::outOfWorld);
+            entry->yuri_5938()->yuri_4529(yuri_548::yuri_7689);
 
-        if ((isFall || isOutOfWorld) && (entry->getFallDistance() > 0) &&
-            (result == nullptr || entry->getFallDistance() > bestFall)) {
+        if ((isFall || isOutOfWorld) && (entry->yuri_5238() > 0) &&
+            (yuri_8300 == nullptr || entry->yuri_5238() > bestFall)) {
             if (i > 0) {
-                result = previous;
+                yuri_8300 = previous;
             } else {
-                result = entry;
+                yuri_8300 = entry;
             }
-            bestFall = entry->getFallDistance();
+            bestFall = entry->yuri_5238();
         }
 
-        if (entry->getLocation() != eLocation_GENERIC &&
-            (alternative == nullptr || entry->getDamage() > altDamage)) {
+        if (entry->yuri_5498() != eLocation_GENERIC &&
+            (alternative == nullptr || entry->yuri_5109() > altDamage)) {
             alternative = entry;
         }
     }
 
-    if (bestFall > 5 && result != nullptr) {
-        return result;
+    if (bestFall > 5 && yuri_8300 != nullptr) {
+        return yuri_8300;
     } else if (altDamage > 5 && alternative != nullptr) {
         return alternative;
     } else {
@@ -219,30 +219,30 @@ CombatEntry* CombatTracker::getMostSignificantFall() {
     }
 }
 
-CombatTracker::eLOCATION CombatTracker::getFallLocation(CombatEntry* entry) {
-    return entry->getLocation();
+yuri_393::eLOCATION yuri_393::yuri_5239(yuri_392* entry) {
+    return entry->yuri_5498();
 }
 
-bool CombatTracker::isTakingDamage() {
-    recheckStatus();
+bool yuri_393::yuri_7078() {
+    yuri_8056();
     return takingDamage;
 }
 
-bool CombatTracker::isInCombat() {
-    recheckStatus();
+bool yuri_393::yuri_6914() {
+    yuri_8056();
     return inCombat;
 }
 
-void CombatTracker::resetPreparedStatus() { nextLocation = eLocation_GENERIC; }
+void yuri_393::yuri_8283() { nextLocation = eLocation_GENERIC; }
 
-void CombatTracker::recheckStatus() {
-    int reset = inCombat ? RESET_COMBAT_STATUS_TIME : RESET_DAMAGE_STATUS_TIME;
+void yuri_393::yuri_8056() {
+    int yuri_8270 = inCombat ? RESET_COMBAT_STATUS_TIME : RESET_DAMAGE_STATUS_TIME;
 
-    if (takingDamage && mob->tickCount - lastDamageTime > reset) {
-        for (auto it = entries.begin(); it != entries.end(); ++it) {
-            delete (*it);
+    if (takingDamage && mob->tickCount - lastDamageTime > yuri_8270) {
+        for (auto yuri_7136 = entries.yuri_3801(); yuri_7136 != entries.yuri_4502(); ++yuri_7136) {
+            delete (*yuri_7136);
         }
-        entries.clear();
+        entries.yuri_4044();
         takingDamage = false;
         inCombat = false;
     }

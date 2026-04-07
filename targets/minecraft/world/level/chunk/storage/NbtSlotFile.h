@@ -5,9 +5,9 @@
 #include "nbt/CompoundTag.h"
 #include "nbt/NbtIo.h"
 
-class NbtSlotFile {
+class yuri_2012 {
 private:
-    static std::vector<uint8_t> READ_BUFFER;
+    static std::vector<yuri_9368> yuri_2205;
 
     static const int FILE_HEADER_SIZE = 1024;
     static const int MAGIC_NUMBER = 0x13737001;
@@ -20,26 +20,26 @@ private:
     int fileSlotMapLength;
     std::vector<int> freeFileSlots;
     int totalFileSlots;
-    static int64_t largest;
+    static yuri_6733 largest;
 
 public:
-    NbtSlotFile(File file);
+    yuri_2012(yuri_804 yuri_4572);
 
 private:
-    void readHeader();
-    void writeHeader();
-    void seekSlotHeader(int fileSlot);
-    void seekSlot(int fileSlot);
+    void yuri_8012();
+    void yuri_9597();
+    void yuri_8398(int fileSlot);
+    void yuri_8397(int fileSlot);
 
 public:
-    std::vector<CompoundTag*>* readAll(int slot);
+    std::vector<yuri_409*>* yuri_7991(int yuri_9061);
 
 private:
     std::vector<int>* toReplace;
 
-    int getFreeSlot();
+    int yuri_5285();
 
 public:
-    void replaceSlot(int slot, std::vector<CompoundTag*>* tags);
-    void close();
+    void yuri_8254(int yuri_9061, std::vector<yuri_409*>* tags);
+    void yuri_4097();
 };

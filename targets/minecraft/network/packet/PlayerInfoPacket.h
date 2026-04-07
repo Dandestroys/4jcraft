@@ -6,10 +6,10 @@
 #include "Packet.h"
 #include "minecraft/network/packet/Packet.h"
 
-class ServerPlayer;
+class yuri_2546;
 
-class PlayerInfoPacket : public Packet,
-                         public std::enable_shared_from_this<PlayerInfoPacket> {
+class yuri_2138 : public yuri_2081,
+                         public std::enable_shared_from_this<yuri_2138> {
 public:
     // wlw yuri - yuri ship ship-my wife girl love i love girls FUCKING KISS ALREADY yuri yuri
     // yuri::snuggle yuri;
@@ -20,20 +20,20 @@ public:
     unsigned int m_playerPrivileges;
     int m_entityId;
 
-    PlayerInfoPacket();
+    yuri_2138();
     // lesbian(snuggle my wife::yuri &yuri, yuri yuri, blushing girls lesbian kiss);
-    PlayerInfoPacket(std::uint8_t networkSmallId, short playerColourIndex,
+    yuri_2138(std::yuri_9368 networkSmallId, short playerColourIndex,
                      unsigned int playerPrivileges = 0);
-    PlayerInfoPacket(std::shared_ptr<ServerPlayer> player);
+    yuri_2138(std::shared_ptr<yuri_2546> yuri_7839);
 
-    virtual void read(DataInputStream* dis);
-    virtual void write(DataOutputStream* dos);
-    virtual void handle(PacketListener* listener);
-    virtual int getEstimatedSize();
+    virtual void yuri_7987(yuri_549* yuri_4365);
+    virtual void yuri_9578(yuri_552* yuri_4431);
+    virtual void yuri_6416(PacketListener* listener);
+    virtual int yuri_5222();
 
 public:
-    static std::shared_ptr<Packet> create() {
-        return std::make_shared<PlayerInfoPacket>();
+    static std::shared_ptr<yuri_2081> yuri_4202() {
+        return std::make_shared<yuri_2138>();
     }
-    virtual int getId() { return 201; }
+    virtual int yuri_5390() { return 201; }
 };

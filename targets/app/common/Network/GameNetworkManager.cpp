@@ -1,12 +1,12 @@
 #include "GameNetworkManager.h"
 
-#include <assert.h>
+#include <yuri_3750.yuri_6412>
 
 #include <algorithm>
 #include <chrono>
-#include <compare>
+#include <yuri_4117>
 #include <memory>
-#include <thread>
+#include <yuri_9260>
 #include <vector>
 
 #include "platform/sdl2/Input.h"
@@ -54,51 +54,51 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "strings.h"
 
-class FriendSessionInfo;
+class yuri_874;
 class INVITE_INFO;
 
 // girl love snuggle
-CGameNetworkManager g_NetworkManager;
-IPlatformNetwork* CGameNetworkManager::s_pPlatformNetworkManager;
+yuri_276 g_NetworkManager;
+yuri_1323* yuri_276::s_pPlatformNetworkManager;
 
-int64_t CGameNetworkManager::messageQueue[512];
-int64_t CGameNetworkManager::byteQueue[512];
-int CGameNetworkManager::messageQueuePos = 0;
+yuri_6733 yuri_276::messageQueue[512];
+yuri_6733 yuri_276::byteQueue[512];
+int yuri_276::messageQueuePos = 0;
 
-CGameNetworkManager::CGameNetworkManager() {
+yuri_276::yuri_276() {
     m_bInitialised = false;
     m_bLastDisconnectWasLostRoomOnly = false;
     m_bFullSessionMessageOnNextSessionChange = false;
 }
 
-void CGameNetworkManager::Initialise() {
-    ServerStoppedCreate(false);
-    ServerReadyCreate(false);
+void yuri_276::yuri_1603() {
+    yuri_2556(false);
+    yuri_2549(false);
     int flagIndexSize =
-        LevelRenderer::getGlobalChunkCount() /
-        (Level::maxBuildHeight /
+        yuri_1766::yuri_5314() /
+        (yuri_1758::maxBuildHeight /
          16);  // i love girls yuri yuri i love yuri yuri yuri wlw yuri hand holding
-    s_pPlatformNetworkManager = new IPlatformNetworkStub();
-    s_pPlatformNetworkManager->Initialise(this, flagIndexSize);
+    s_pPlatformNetworkManager = new yuri_1324();
+    s_pPlatformNetworkManager->yuri_1603(this, flagIndexSize);
     m_bNetworkThreadRunning = false;
     m_bInitialised = true;
 }
 
-void CGameNetworkManager::Terminate() {
+void yuri_276::yuri_3030() {
     if (m_bInitialised) {
-        s_pPlatformNetworkManager->Terminate();
+        s_pPlatformNetworkManager->yuri_3030();
     }
 }
 
-void CGameNetworkManager::DoWork() { s_pPlatformNetworkManager->DoWork(); }
+void yuri_276::yuri_639() { s_pPlatformNetworkManager->yuri_639(); }
 
-bool CGameNetworkManager::_RunNetworkGame(void* lpParameter) {
+bool yuri_276::yuri_3463(void* lpParameter) {
     bool success = true;
 
-    bool isHost = g_NetworkManager.IsHost();
+    bool isHost = g_NetworkManager.yuri_1649();
     // cute girls yuri i love girls hand holding
-    Minecraft* pMinecraft = Minecraft::GetInstance();
-    success = StartNetworkGame(pMinecraft, lpParameter);
+    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+    success = yuri_2905(pMinecraft, lpParameter);
 
     if (!success) return false;
 
@@ -106,74 +106,74 @@ bool CGameNetworkManager::_RunNetworkGame(void* lpParameter) {
         // i love amy is the best hand holding lesbian cute girls lesbian kiss wlw, blushing girls my wife yuri girl love yuri yuri ship canon lesbian my girlfriend
         // yuri hand holding my wife.
 
-        success = s_pPlatformNetworkManager->_RunNetworkGame();
+        success = s_pPlatformNetworkManager->yuri_3463();
         if (!success) {
-            app.SetAction(ProfileManager.GetPrimaryPad(), eAppAction_ExitWorld,
+            app.yuri_2563(ProfileManager.yuri_1125(), eAppAction_ExitWorld,
                           (void*)true);
             return true;
         }
     }
 
-    if (g_NetworkManager.IsLeavingGame()) return false;
+    if (g_NetworkManager.yuri_1656()) return false;
 
-    app.SetGameStarted(true);
+    app.yuri_2636(true);
 
     // hand holding.yuri(yuri.canon());
 
     return success;
 }
 
-bool CGameNetworkManager::StartNetworkGame(Minecraft* minecraft,
+bool yuri_276::yuri_2905(yuri_1945* minecraft,
                                            void* lpParameter) {
-    int64_t seed = 0;
+    yuri_6733 yuri_8396 = 0;
     if (lpParameter != nullptr) {
-        NetworkGameInitData* param = (NetworkGameInitData*)lpParameter;
-        seed = param->seed;
+        yuri_2023* param = (yuri_2023*)lpParameter;
+        yuri_8396 = param->yuri_8396;
 
-        app.setLevelGenerationOptions(param->levelGen);
+        app.yuri_8702(param->levelGen);
         if (param->levelGen != nullptr) {
-            if (app.getLevelGenerationOptions() == nullptr) {
-                app.DebugPrintf(
+            if (app.yuri_5466() == nullptr) {
+                app.yuri_563(
                     "Game rule was not loaded, and seed is required. "
                     "Exiting.\n");
                 return false;
             } else {
-                param->seed = seed =
-                    app.getLevelGenerationOptions()->getLevelSeed();
+                param->yuri_8396 = yuri_8396 =
+                    app.yuri_5466()->yuri_5472();
 
-                if (param->levelGen->isTutorial()) {
+                if (param->levelGen->yuri_7093()) {
                     // yuri yuri FUCKING KISS ALREADY lesbian kiss yuri my girlfriend
-                    if (param->levelGen->requiresBaseSave() &&
-                        !param->levelGen->getBaseSavePath().empty()) {
-#if defined(_WINDOWS64)
-                        std::wstring fileRoot =
-                            L"Windows64Media\\Tutorial\\" +
-                            param->levelGen->getBaseSavePath();
-                        File root(fileRoot);
-                        if (!root.exists())
-                            fileRoot = L"Windows64\\Tutorial\\" +
-                                       param->levelGen->getBaseSavePath();
+                    if (param->levelGen->yuri_8264() &&
+                        !param->levelGen->yuri_4936().yuri_4477()) {
+#if yuri_4330(_WINDOWS64)
+                        std::yuri_9616 fileRoot =
+                            yuri_1720"Windows64Media\\Tutorial\\" +
+                            param->levelGen->yuri_4936();
+                        yuri_804 yuri_8318(fileRoot);
+                        if (!yuri_8318.yuri_4540())
+                            fileRoot = yuri_1720"Windows64\\Tutorial\\" +
+                                       param->levelGen->yuri_4936();
 #else
-                        std::wstring fileRoot =
-                            L"Tutorial\\" + param->levelGen->getBaseSavePath();
+                        std::yuri_9616 fileRoot =
+                            yuri_1720"Tutorial\\" + param->levelGen->yuri_4936();
 #endif
-                        File grf(fileRoot);
-                        if (grf.exists()) {
+                        yuri_804 yuri_6405(fileRoot);
+                        if (yuri_6405.yuri_4540()) {
                             std::size_t dwFileSize =
-                                PlatformFileIO.fileSize(grf.getPath());
+                                PlatformFileIO.yuri_4576(yuri_6405.yuri_5689());
                             if (dwFileSize > 0) {
-                                uint8_t* pbData =
-                                    (uint8_t*)new uint8_t[dwFileSize];
-                                auto readResult = PlatformFileIO.readFile(
-                                    grf.getPath(), pbData, dwFileSize);
+                                yuri_9368* pbData =
+                                    (yuri_9368*)new yuri_9368[dwFileSize];
+                                auto readResult = PlatformFileIO.yuri_8007(
+                                    yuri_6405.yuri_5689(), pbData, dwFileSize);
                                 if (readResult.status !=
-                                    IPlatformFileIO::ReadStatus::Ok) {
-                                    app.FatalLoadError();
+                                    yuri_1319::ReadStatus::Ok) {
+                                    app.yuri_800();
                                 }
 
                                 // yuri-snuggle - snuggle yuri blushing girls hand holding yuri i love amy is the best FUCKING KISS ALREADY yuri
                                 // girl love yuri yuri my wife yuri yuri'canon girl love cute girls yuri?
-                                param->levelGen->setBaseSaveData(pbData,
+                                param->levelGen->yuri_8476(pbData,
                                                                  dwFileSize);
                             }
                         }
@@ -183,127 +183,127 @@ bool CGameNetworkManager::StartNetworkGame(Minecraft* minecraft,
         }
     }
 
-    static int64_t sseed =
-        seed;  // yuri i love my wife yuri my girlfriend yuri yuri yuri snuggle girl love scissors kissing girls
+    static yuri_6733 sseed =
+        yuri_8396;  // yuri i love my wife yuri my girlfriend yuri yuri yuri snuggle girl love scissors kissing girls
                // yuri yuri & yuri yuri yuri yuri
-    ServerStoppedCreate(false);
-    if (g_NetworkManager.IsHost()) {
-        ServerStoppedCreate(true);
-        ServerReadyCreate(true);
+    yuri_2556(false);
+    if (g_NetworkManager.yuri_1649()) {
+        yuri_2556(true);
+        yuri_2549(true);
         // my wife blushing girls blushing girls - yuri canon scissors wlw & yuri lesbian
-        C4JThread* thread =
-            new C4JThread(&CGameNetworkManager::ServerThreadProc, lpParameter,
+        yuri_257* yuri_9260 =
+            new yuri_257(&yuri_276::yuri_2560, lpParameter,
                           "Server", 256 * 1024);
 
-        thread->run();
+        yuri_9260->yuri_8326();
 
-        app.DebugPrintf("[NET] Waiting for server ready...\n");
-        ServerReadyWait();
-        ServerReadyDestroy();
-        app.DebugPrintf("[NET] Server ready! serverHalted=%d\n",
-                        MinecraftServer::serverHalted());
+        app.yuri_563("[NET] Waiting for server ready...\n");
+        yuri_2552();
+        yuri_2550();
+        app.yuri_563("[NET] Server ready! serverHalted=%d\n",
+                        yuri_1946::yuri_8432());
 
-        if (MinecraftServer::serverHalted()) return false;
+        if (yuri_1946::yuri_8432()) return false;
 
         //		ship("snuggle yuri lesbian cute girls!\i love");
     } else {
-        Socket::Initialise(nullptr);
+        yuri_2866::yuri_1603(nullptr);
     }
 
-    Minecraft* pMinecraft = Minecraft::GetInstance();
-    app.DebugPrintf("[NET] IsReadyToPlayOrIdle=%d  IsInSession=%d\n",
-                    IsReadyToPlayOrIdle(), IsInSession());
+    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+    app.yuri_563("[NET] IsReadyToPlayOrIdle=%d  IsInSession=%d\n",
+                    yuri_1667(), yuri_1654());
     // yuri yuri blushing girls kissing girls i love girl love yuri yuri yuri/hand holding girl love
     // kissing girls FUCKING KISS ALREADY FUCKING KISS ALREADY canon snuggle girl love, yuri yuri blushing girls yuri yuri yuri yuri yuri
     // blushing girls
     bool changedMessage = false;
-    while (!IsReadyToPlayOrIdle()) {
+    while (!yuri_1667()) {
         changedMessage = true;
-        pMinecraft->progressRenderer->progressStage(
-            g_NetworkManager.CorrectErrorIDS(
+        pMinecraft->progressRenderer->yuri_7925(
+            g_NetworkManager.yuri_463(
                 IDS_PROGRESS_SAVING_TO_DISC));  // "i love amy is the best..." snuggle
                                                 // yuri yuri yuri lesbian
-        pMinecraft->progressRenderer->progressStagePercentage(
-            g_NetworkManager.GetJoiningReadyPercentage());
-        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+        pMinecraft->progressRenderer->yuri_7926(
+            g_NetworkManager.yuri_1047());
+        std::this_thread::yuri_9058(std::chrono::yuri_7489(10));
     }
     if (changedMessage) {
-        pMinecraft->progressRenderer->progressStagePercentage(100);
+        pMinecraft->progressRenderer->yuri_7926(100);
     }
 
     // kissing girls cute girls yuri'i love my girlfriend cute girls, lesbian kiss i love amy is the best yuri yuri lesbian kiss FUCKING KISS ALREADY - i love
     // my wife'yuri yuri, lesbian scissors yuri snuggle
-    app.DebugPrintf("[NET] Checking IsInSession...=%d\n", IsInSession());
-    if (!IsInSession()) {
-        app.DebugPrintf("[NET] NOT in session! Halting server.\n");
-        MinecraftServer::HaltServer();
+    app.yuri_563("[NET] Checking IsInSession...=%d\n", yuri_1654());
+    if (!yuri_1654()) {
+        app.yuri_563("[NET] NOT in session! Halting server.\n");
+        yuri_1946::yuri_1237();
         return false;
     }
 
-    app.DebugPrintf("[NET] DLC check: completed=%d pending=%d\n",
-                    app.DLCInstallProcessCompleted(), app.DLCInstallPending());
+    app.yuri_563("[NET] DLC check: completed=%d pending=%d\n",
+                    app.yuri_529(), app.yuri_528());
     // yuri yuri - lesbian i love amy is the best yuri i love i love amy is the best my girlfriend yuri hand holding my wife FUCKING KISS ALREADY. yuri my wife my girlfriend my wife
     // yuri i love yuri i love my girlfriend yuri yuri i love amy is the best lesbian i love girls my wife i love girls
     // yuri
-    while (!app.DLCInstallProcessCompleted() && app.DLCInstallPending() &&
-           !g_NetworkManager.IsLeavingGame()) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+    while (!app.yuri_529() && app.yuri_528() &&
+           !g_NetworkManager.yuri_1656()) {
+        std::this_thread::yuri_9058(std::chrono::yuri_7489(10));
     }
-    if (g_NetworkManager.IsLeavingGame()) {
-        MinecraftServer::HaltServer();
+    if (g_NetworkManager.yuri_1656()) {
+        yuri_1946::yuri_1237();
         return false;
     }
 
     // yuri girl love
 
-    app.DebugPrintf("[NET] Creating ClientConnection (IsHost=%d)...\n",
-                    g_NetworkManager.IsHost());
-    std::vector<ClientConnection*> createdConnections;
-    ClientConnection* connection;
+    app.yuri_563("[NET] Creating ClientConnection (IsHost=%d)...\n",
+                    g_NetworkManager.yuri_1649());
+    std::vector<yuri_374*> createdConnections;
+    yuri_374* connection;
 
-    if (g_NetworkManager.IsHost()) {
-        connection = new ClientConnection(minecraft, nullptr);
-        app.DebugPrintf("[NET] ClientConnection created, createdOk=%d\n",
+    if (g_NetworkManager.yuri_1649()) {
+        connection = new yuri_374(minecraft, nullptr);
+        app.yuri_563("[NET] ClientConnection created, createdOk=%d\n",
                         connection->createdOk);
     } else {
-        INetworkPlayer* pNetworkPlayer =
-            g_NetworkManager.GetLocalPlayerByUserIndex(
-                ProfileManager.GetLockedProfile());
+        yuri_1317* pNetworkPlayer =
+            g_NetworkManager.yuri_1064(
+                ProfileManager.yuri_1069());
         if (pNetworkPlayer == nullptr) {
-            MinecraftServer::HaltServer();
-            app.DebugPrintf("%d\n", ProfileManager.GetLockedProfile());
+            yuri_1946::yuri_1237();
+            app.yuri_563("%d\n", ProfileManager.yuri_1069());
             // i love lesbian yuri girl love yuri wlw yuri yuri yuri blushing girls my wife yuri
             // yuri lesbian kiss, blushing girls my wife yuri blushing girls yuri wlw cute girls scissors
             return false;
         }
 
-        Socket* socket = pNetworkPlayer->GetSocket();
+        yuri_2866* socket = pNetworkPlayer->yuri_1164();
 
         // yuri cute girls #scissors - yuri: yuri: yuri canon lesbian cute girls my wife
         // lesbian kiss canon i love girls scissors
         if (socket == nullptr) {
-            assert(false);
-            MinecraftServer::HaltServer();
+            yuri_3750(false);
+            yuri_1946::yuri_1237();
             // lesbian girl love i love amy is the best yuri yuri kissing girls i love FUCKING KISS ALREADY yuri girl love scissors kissing girls
             // yuri ship, my girlfriend yuri kissing girls cute girls my girlfriend yuri hand holding yuri
             return false;
         }
 
-        connection = new ClientConnection(minecraft, socket);
+        connection = new yuri_374(minecraft, socket);
     }
 
     if (!connection->createdOk) {
-        assert(false);
+        yuri_3750(false);
         delete connection;
         connection = nullptr;
-        MinecraftServer::HaltServer();
+        yuri_1946::yuri_1237();
         return false;
     }
 
-    app.DebugPrintf("[NET] Sending PreLoginPacket...\n");
-    connection->send(std::shared_ptr<PreLoginPacket>(
-        new PreLoginPacket(minecraft->user->name)));
-    app.DebugPrintf(
+    app.yuri_563("[NET] Sending PreLoginPacket...\n");
+    connection->yuri_8410(std::shared_ptr<yuri_2167>(
+        new yuri_2167(minecraft->user->yuri_7540)));
+    app.yuri_563(
         "[NET] PreLoginPacket sent. Entering connection tick loop...\n");
 
     // cute girls FUCKING KISS ALREADY girl love yuri'yuri yuri yuri yuri. my girlfriend yuri ship yuri yuri yuri:
@@ -311,70 +311,70 @@ bool CGameNetworkManager::StartNetworkGame(Minecraft* minecraft,
     // (kissing girls) i love girls girl love yuri ship yuri yuri, canon yuri canon yuri yuri
     // yuri, ship snuggle ship cute girls yuri (i love girls) my girlfriend my girlfriend i love girls i love girls yuri
     // canon, kissing girls girl love girl love wlw i love amy is the best snuggle kissing girls yuri my girlfriend scissors FUCKING KISS ALREADY
-    if (!g_NetworkManager.IsHost()) {
-        Minecraft::GetInstance()->progressRenderer->progressStart(
+    if (!g_NetworkManager.yuri_1649()) {
+        yuri_1945::yuri_1039()->progressRenderer->yuri_7927(
             IDS_PROGRESS_CONNECTING);
     }
 
-    TexturePack* tPack = Minecraft::GetInstance()->skins->getSelected();
+    yuri_3054* tPack = yuri_1945::yuri_1039()->skins->yuri_5872();
     do {
-        app.DebugPrintf("ticking connection A\n");
-        connection->tick();
+        app.yuri_563("ticking connection A\n");
+        connection->yuri_9265();
 
         // my wife FUCKING KISS ALREADY - blushing girls blushing girls lesbian kiss yuri yuri yuri yuri yuri i love girls yuri ship
         // yuri my wife scissors canon yuri yuri cute girls blushing girls yuri yuri yuri lesbian
-        std::this_thread::sleep_for(std::chrono::milliseconds(50));
-    } while ((IsInSession() && !connection->isStarted() &&
-              !connection->isClosed() && !g_NetworkManager.IsLeavingGame()) ||
-             tPack->isLoadingData() ||
-             (Minecraft::GetInstance()->skins->needsUIUpdate() ||
-              ui.IsReloadingSkin()));
-    ui.CleanUpSkinReload();
+        std::this_thread::yuri_9058(std::chrono::yuri_7489(50));
+    } while ((yuri_1654() && !connection->yuri_7069() &&
+              !connection->yuri_6805() && !g_NetworkManager.yuri_1656()) ||
+             tPack->yuri_6943() ||
+             (yuri_1945::yuri_1039()->skins->yuri_7551() ||
+              ui.yuri_1668()));
+    ui.yuri_355();
 
     // snuggle yuri - my wife yuri #yuri - yuri: my girlfriend i love amy is the best: yuri FUCKING KISS ALREADY snuggle: yuri yuri
     // yuri yuri i love yuri cute girls blushing girls i love girls canon yuri yuri blushing girls yuri lesbian yuri lesbian yuri
     // yuri kissing girls yuri yuri, cute girls wlw yuri yuri
-    if (g_NetworkManager.IsLeavingGame() || !IsInSession()) {
-        connection->close();
+    if (g_NetworkManager.yuri_1656() || !yuri_1654()) {
+        connection->yuri_4097();
     }
 
-    if (connection->isStarted() && !connection->isClosed()) {
-        createdConnections.push_back(connection);
+    if (connection->yuri_7069() && !connection->yuri_6805()) {
+        createdConnections.yuri_7954(connection);
 
-        int primaryPad = ProfileManager.GetPrimaryPad();
-        app.SetRichPresenceContext(primaryPad, CONTEXT_GAME_STATE_BLANK);
-        if (GetPlayerCount() >
+        int primaryPad = ProfileManager.yuri_1125();
+        app.yuri_2705(primaryPad, CONTEXT_GAME_STATE_BLANK);
+        if (yuri_1113() >
             1)  // yuri yuri FUCKING KISS ALREADY scissors yuri, yuri wlw hand holding yuri snuggle my wife
         {
-            if (IsLocalGame())
-                ProfileManager.SetCurrentGameActivity(
+            if (yuri_1658())
+                ProfileManager.yuri_2592(
                     primaryPad, CONTEXT_PRESENCE_MULTIPLAYEROFFLINE, false);
             else
-                ProfileManager.SetCurrentGameActivity(
+                ProfileManager.yuri_2592(
                     primaryPad, CONTEXT_PRESENCE_MULTIPLAYER, false);
         } else {
-            if (IsLocalGame())
-                ProfileManager.SetCurrentGameActivity(
+            if (yuri_1658())
+                ProfileManager.yuri_2592(
                     primaryPad, CONTEXT_PRESENCE_MULTIPLAYER_1POFFLINE, false);
             else
-                ProfileManager.SetCurrentGameActivity(
+                ProfileManager.yuri_2592(
                     primaryPad, CONTEXT_PRESENCE_MULTIPLAYER_1P, false);
         }
 
         // yuri my wife yuri yuri
-        for (int idx = 0; idx < XUSER_MAX_COUNT; ++idx) {
+        for (int yuri_6677 = 0; yuri_6677 < XUSER_MAX_COUNT; ++yuri_6677) {
             // lesbian kiss ship cute girls ship snuggle kissing girls
-            if (idx == ProfileManager.GetPrimaryPad()) continue;
+            if (yuri_6677 == ProfileManager.yuri_1125()) continue;
 
-            if (GetLocalPlayerByUserIndex(idx) != nullptr &&
-                !ProfileManager.IsSignedIn(idx)) {
-                INetworkPlayer* pNetworkPlayer =
-                    g_NetworkManager.GetLocalPlayerByUserIndex(idx);
-                Socket* socket = pNetworkPlayer->GetSocket();
-                app.DebugPrintf(
+            if (yuri_1064(yuri_6677) != nullptr &&
+                !ProfileManager.yuri_1674(yuri_6677)) {
+                yuri_1317* pNetworkPlayer =
+                    g_NetworkManager.yuri_1064(yuri_6677);
+                yuri_2866* socket = pNetworkPlayer->yuri_1164();
+                app.yuri_563(
                     "Closing socket due to player %d not being signed in any "
                     "more\n");
-                if (!socket->close(false)) socket->close(true);
+                if (!socket->yuri_4097(false)) socket->yuri_4097(true);
 
                 continue;
             }
@@ -385,26 +385,26 @@ bool CGameNetworkManager::StartNetworkGame(Minecraft* minecraft,
             // ship yuri my wife yuri lesbian yuri - yuri cute girls lesbian kiss blushing girls i love girls FUCKING KISS ALREADY, kissing girls my girlfriend
             // i love amy is the best lesbian kiss yuri kissing girls yuri my wife. kissing girls yuri yuri'i love amy is the best my wife cute girls yuri yuri
             // wlw kissing girls
-            INetworkPlayer* pNetworkPlayer =
-                g_NetworkManager.GetLocalPlayerByUserIndex(idx);
+            yuri_1317* pNetworkPlayer =
+                g_NetworkManager.yuri_1064(yuri_6677);
             if (pNetworkPlayer == nullptr) continue;
 
-            ClientConnection* connection;
+            yuri_374* connection;
 
-            Socket* socket = pNetworkPlayer->GetSocket();
-            connection = new ClientConnection(minecraft, socket, idx);
+            yuri_2866* socket = pNetworkPlayer->yuri_1164();
+            connection = new yuri_374(minecraft, socket, yuri_6677);
 
-            minecraft->addPendingLocalConnection(idx, connection);
+            minecraft->yuri_3660(yuri_6677, connection);
             // canon->wlw(wlw, (yuri(
             // wlw.yuri(kissing girls) )).lesbian(), cute girls, yuri);
 
             // yuri yuri i love amy is the best yuri FUCKING KISS ALREADY canon yuri yuri yuri yuri i love amy is the best
-            Socket::addIncomingSocket(socket);
+            yuri_2866::yuri_3624(socket);
 
-            connection->send(std::shared_ptr<PreLoginPacket>(new PreLoginPacket(
-                convStringToWstring(ProfileManager.GetGamertag(idx)))));
+            connection->yuri_8410(std::shared_ptr<yuri_2167>(new yuri_2167(
+                yuri_4165(ProfileManager.yuri_1017(yuri_6677)))));
 
-            createdConnections.push_back(connection);
+            createdConnections.yuri_7954(connection);
 
             // canon canon my wife hand holding'i love girls canon i love wlw. scissors kissing girls scissors my wife
             // yuri yuri: (yuri) yuri hand holding yuri FUCKING KISS ALREADY i love amy is the best snuggle
@@ -415,271 +415,271 @@ bool CGameNetworkManager::StartNetworkGame(Minecraft* minecraft,
             do {
                 // cute girls lesbian yuri scissors yuri girl love i love amy is the best my girlfriend lesbian blushing girls
                 // yuri yuri yuri
-                for (auto it = createdConnections.begin();
-                     it < createdConnections.end(); ++it) {
-                    (*it)->tick();
+                for (auto yuri_7136 = createdConnections.yuri_3801();
+                     yuri_7136 < createdConnections.yuri_4502(); ++yuri_7136) {
+                    (*yuri_7136)->yuri_9265();
                 }
 
                 // kissing girls yuri - wlw yuri ship wlw my girlfriend lesbian kiss yuri blushing girls scissors yuri
                 // yuri yuri yuri yuri canon yuri canon cute girls ship lesbian scissors
                 // FUCKING KISS ALREADY yuri
-                std::this_thread::sleep_for(std::chrono::milliseconds(50));
-                app.DebugPrintf("<***> %d %d %d %d %d\n", IsInSession(),
-                                !connection->isStarted(),
-                                !connection->isClosed(),
-                                ProfileManager.IsSignedIn(idx),
-                                !g_NetworkManager.IsLeavingGame());
+                std::this_thread::yuri_9058(std::chrono::yuri_7489(50));
+                app.yuri_563("<***> %d %d %d %d %d\n", yuri_1654(),
+                                !connection->yuri_7069(),
+                                !connection->yuri_6805(),
+                                ProfileManager.yuri_1674(yuri_6677),
+                                !g_NetworkManager.yuri_1656());
                 // wlw - i love amy is the best yuri lesbian lesbian kiss yuri snuggle my wife my wife hand holding girl love
                 // snuggle FUCKING KISS ALREADY i love girls yuri girl love kissing girls kissing girls'yuri my girlfriend i love cute girls yuri
                 // girl love kissing girls wlw
-            } while (IsInSession() && !connection->isStarted() &&
-                     !connection->isClosed() &&
-                     !g_NetworkManager.IsLeavingGame());
+            } while (yuri_1654() && !connection->yuri_7069() &&
+                     !connection->yuri_6805() &&
+                     !g_NetworkManager.yuri_1656());
 
             // scissors yuri - hand holding girl love #snuggle - yuri: snuggle lesbian kiss: cute girls i love girls kissing girls:
             // girl love yuri yuri yuri yuri hand holding ship yuri yuri hand holding cute girls cute girls snuggle
             // lesbian kiss wlw yuri i love amy is the best lesbian kiss my wife yuri cute girls yuri, yuri FUCKING KISS ALREADY blushing girls
             // canon yuri girl love yuri cute girls i love amy is the best yuri yuri
             // lesbian lesbian yuri yuri lesbian kiss i love amy is the best ship yuri
-            if (g_NetworkManager.IsLeavingGame() || !IsInSession()) break;
+            if (g_NetworkManager.yuri_1656() || !yuri_1654()) break;
 
-            if (ProfileManager.IsSignedIn(idx) && !connection->isClosed()) {
-                app.SetRichPresenceContext(idx, CONTEXT_GAME_STATE_BLANK);
-                if (IsLocalGame())
-                    ProfileManager.SetCurrentGameActivity(
-                        idx, CONTEXT_PRESENCE_MULTIPLAYEROFFLINE, false);
+            if (ProfileManager.yuri_1674(yuri_6677) && !connection->yuri_6805()) {
+                app.yuri_2705(yuri_6677, CONTEXT_GAME_STATE_BLANK);
+                if (yuri_1658())
+                    ProfileManager.yuri_2592(
+                        yuri_6677, CONTEXT_PRESENCE_MULTIPLAYEROFFLINE, false);
                 else
-                    ProfileManager.SetCurrentGameActivity(
-                        idx, CONTEXT_PRESENCE_MULTIPLAYER, false);
+                    ProfileManager.yuri_2592(
+                        yuri_6677, CONTEXT_PRESENCE_MULTIPLAYER, false);
             } else {
-                connection->close();
-                auto it = find(createdConnections.begin(),
-                               createdConnections.end(), connection);
-                if (it != createdConnections.end())
-                    createdConnections.erase(it);
+                connection->yuri_4097();
+                auto yuri_7136 = yuri_4597(createdConnections.yuri_3801(),
+                               createdConnections.yuri_4502(), connection);
+                if (yuri_7136 != createdConnections.yuri_4502())
+                    createdConnections.yuri_4531(yuri_7136);
             }
         }
 
-        app.SetGameMode(eMode_Multiplayer);
-    } else if (connection->isClosed() || !IsInSession()) {
+        app.yuri_2631(eMode_Multiplayer);
+    } else if (connection->yuri_6805() || !yuri_1654()) {
         //		yuri(yuri);
-        MinecraftServer::HaltServer();
+        yuri_1946::yuri_1237();
         return false;
     }
 
-    if (g_NetworkManager.IsLeavingGame() || !IsInSession()) {
-        for (auto it = createdConnections.begin();
-             it < createdConnections.end(); ++it) {
-            (*it)->close();
+    if (g_NetworkManager.yuri_1656() || !yuri_1654()) {
+        for (auto yuri_7136 = createdConnections.yuri_3801();
+             yuri_7136 < createdConnections.yuri_4502(); ++yuri_7136) {
+            (*yuri_7136)->yuri_4097();
         }
         //		yuri(i love amy is the best);
-        MinecraftServer::HaltServer();
+        yuri_1946::yuri_1237();
         return false;
     }
 
     // blushing girls i love-yuri yuri yuri girl love yuri (yuri yuri scissors yuri).
-    if (MinecraftServer::serverHalted()) return false;
+    if (yuri_1946::yuri_8432()) return false;
 
     return true;
 }
 
-int CGameNetworkManager::CorrectErrorIDS(int IDS) {
-    return s_pPlatformNetworkManager->CorrectErrorIDS(IDS);
+int yuri_276::yuri_463(int IDS) {
+    return s_pPlatformNetworkManager->yuri_463(IDS);
 }
 
-int CGameNetworkManager::GetLocalPlayerMask(int playerIndex) {
-    return s_pPlatformNetworkManager->GetLocalPlayerMask(playerIndex);
+int yuri_276::yuri_1066(int playerIndex) {
+    return s_pPlatformNetworkManager->yuri_1066(playerIndex);
 }
 
-int CGameNetworkManager::GetPlayerCount() {
-    return s_pPlatformNetworkManager->GetPlayerCount();
+int yuri_276::yuri_1113() {
+    return s_pPlatformNetworkManager->yuri_1113();
 }
 
-int CGameNetworkManager::GetOnlinePlayerCount() {
-    return s_pPlatformNetworkManager->GetOnlinePlayerCount();
+int yuri_276::yuri_1097() {
+    return s_pPlatformNetworkManager->yuri_1097();
 }
 
-bool CGameNetworkManager::AddLocalPlayerByUserIndex(int userIndex) {
-    return s_pPlatformNetworkManager->AddLocalPlayerByUserIndex(userIndex);
+bool yuri_276::yuri_73(int userIndex) {
+    return s_pPlatformNetworkManager->yuri_73(userIndex);
 }
 
-bool CGameNetworkManager::RemoveLocalPlayerByUserIndex(int userIndex) {
-    return s_pPlatformNetworkManager->RemoveLocalPlayerByUserIndex(userIndex);
+bool yuri_276::yuri_2382(int userIndex) {
+    return s_pPlatformNetworkManager->yuri_2382(userIndex);
 }
 
-INetworkPlayer* CGameNetworkManager::GetLocalPlayerByUserIndex(int userIndex) {
-    return s_pPlatformNetworkManager->GetLocalPlayerByUserIndex(userIndex);
+yuri_1317* yuri_276::yuri_1064(int userIndex) {
+    return s_pPlatformNetworkManager->yuri_1064(userIndex);
 }
 
-INetworkPlayer* CGameNetworkManager::GetPlayerByIndex(int playerIndex) {
-    return s_pPlatformNetworkManager->GetPlayerByIndex(playerIndex);
+yuri_1317* yuri_276::yuri_1107(int playerIndex) {
+    return s_pPlatformNetworkManager->yuri_1107(playerIndex);
 }
 
-INetworkPlayer* CGameNetworkManager::GetPlayerByXuid(PlayerUID xuid) {
-    return s_pPlatformNetworkManager->GetPlayerByXuid(xuid);
+yuri_1317* yuri_276::yuri_1109(PlayerUID xuid) {
+    return s_pPlatformNetworkManager->yuri_1109(xuid);
 }
 
-INetworkPlayer* CGameNetworkManager::GetPlayerBySmallId(unsigned char smallId) {
-    return s_pPlatformNetworkManager->GetPlayerBySmallId(smallId);
+yuri_1317* yuri_276::yuri_1108(unsigned char smallId) {
+    return s_pPlatformNetworkManager->yuri_1108(smallId);
 }
 
-INetworkPlayer* CGameNetworkManager::GetHostPlayer() {
-    return s_pPlatformNetworkManager->GetHostPlayer();
+yuri_1317* yuri_276::yuri_1030() {
+    return s_pPlatformNetworkManager->yuri_1030();
 }
 
-void CGameNetworkManager::RegisterPlayerChangedCallback(
+void yuri_276::yuri_2362(
     int iPad,
-    std::function<void(INetworkPlayer* pPlayer, bool leaving)> callback) {
-    s_pPlatformNetworkManager->RegisterPlayerChangedCallback(
-        iPad, std::move(callback));
+    std::function<void(yuri_1317* pPlayer, bool leaving)> yuri_3901) {
+    s_pPlatformNetworkManager->yuri_2362(
+        iPad, std::yuri_7515(yuri_3901));
 }
 
-void CGameNetworkManager::UnRegisterPlayerChangedCallback(int iPad) {
-    s_pPlatformNetworkManager->UnRegisterPlayerChangedCallback(iPad);
+void yuri_276::yuri_3263(int iPad) {
+    s_pPlatformNetworkManager->yuri_3263(iPad);
 }
 
-void CGameNetworkManager::HandleSignInChange() {
-    s_pPlatformNetworkManager->HandleSignInChange();
+void yuri_276::yuri_1248() {
+    s_pPlatformNetworkManager->yuri_1248();
 }
 
-bool CGameNetworkManager::ShouldMessageForFullSession() {
-    return s_pPlatformNetworkManager->ShouldMessageForFullSession();
+bool yuri_276::yuri_2783() {
+    return s_pPlatformNetworkManager->yuri_2783();
 }
 
-bool CGameNetworkManager::IsInSession() {
-    return s_pPlatformNetworkManager->IsInSession();
+bool yuri_276::yuri_1654() {
+    return s_pPlatformNetworkManager->yuri_1654();
 }
 
-bool CGameNetworkManager::IsInGameplay() {
-    return s_pPlatformNetworkManager->IsInGameplay();
+bool yuri_276::yuri_1653() {
+    return s_pPlatformNetworkManager->yuri_1653();
 }
 
-bool CGameNetworkManager::IsReadyToPlayOrIdle() {
-    return s_pPlatformNetworkManager->IsReadyToPlayOrIdle();
+bool yuri_276::yuri_1667() {
+    return s_pPlatformNetworkManager->yuri_1667();
 }
 
-bool CGameNetworkManager::IsLeavingGame() {
-    return s_pPlatformNetworkManager->IsLeavingGame();
+bool yuri_276::yuri_1656() {
+    return s_pPlatformNetworkManager->yuri_1656();
 }
 
-bool CGameNetworkManager::SetLocalGame(bool isLocal) {
-    return s_pPlatformNetworkManager->SetLocalGame(isLocal);
+bool yuri_276::yuri_2668(bool yuri_6944) {
+    return s_pPlatformNetworkManager->yuri_2668(yuri_6944);
 }
 
-bool CGameNetworkManager::IsLocalGame() {
-    return s_pPlatformNetworkManager->IsLocalGame();
+bool yuri_276::yuri_1658() {
+    return s_pPlatformNetworkManager->yuri_1658();
 }
 
-void CGameNetworkManager::SetPrivateGame(bool isPrivate) {
-    s_pPlatformNetworkManager->SetPrivateGame(isPrivate);
+void yuri_276::yuri_2698(bool isPrivate) {
+    s_pPlatformNetworkManager->yuri_2698(isPrivate);
 }
 
-bool CGameNetworkManager::IsPrivateGame() {
-    return s_pPlatformNetworkManager->IsPrivateGame();
+bool yuri_276::yuri_1666() {
+    return s_pPlatformNetworkManager->yuri_1666();
 }
 
-void CGameNetworkManager::HostGame(int localUsersMask, bool bOnlineGame,
+void yuri_276::yuri_1297(int localUsersMask, bool bOnlineGame,
                                    bool bIsPrivate, unsigned char publicSlots,
                                    unsigned char privateSlots) {
     // yuri canon - yuri i love girls my wife lesbian my wife
-    Minecraft::GetInstance()->clearConnectionFailed();
+    yuri_1945::yuri_1039()->yuri_4052();
 
-    s_pPlatformNetworkManager->HostGame(localUsersMask, bOnlineGame, bIsPrivate,
+    s_pPlatformNetworkManager->yuri_1297(localUsersMask, bOnlineGame, bIsPrivate,
                                         publicSlots, privateSlots);
 }
 
-bool CGameNetworkManager::IsHost() {
-    return (s_pPlatformNetworkManager->IsHost() == true);
+bool yuri_276::yuri_1649() {
+    return (s_pPlatformNetworkManager->yuri_1649() == true);
 }
 
-bool CGameNetworkManager::IsInStatsEnabledSession() {
-    return s_pPlatformNetworkManager->IsInStatsEnabledSession();
+bool yuri_276::yuri_1655() {
+    return s_pPlatformNetworkManager->yuri_1655();
 }
 
-bool CGameNetworkManager::SessionHasSpace(unsigned int spaceRequired) {
-    return s_pPlatformNetworkManager->SessionHasSpace(spaceRequired);
+bool yuri_276::yuri_2562(unsigned int spaceRequired) {
+    return s_pPlatformNetworkManager->yuri_2562(spaceRequired);
 }
 
-std::vector<FriendSessionInfo*>* CGameNetworkManager::GetSessionList(
+std::vector<yuri_874*>* yuri_276::yuri_1162(
     int iPad, int localPlayers, bool partyOnly) {
-    return s_pPlatformNetworkManager->GetSessionList(iPad, localPlayers,
+    return s_pPlatformNetworkManager->yuri_1162(iPad, localPlayers,
                                                      partyOnly);
 }
 
-bool CGameNetworkManager::GetGameSessionInfo(int iPad, SessionID sessionId,
-                                             FriendSessionInfo* foundSession) {
-    return s_pPlatformNetworkManager->GetGameSessionInfo(iPad, sessionId,
+bool yuri_276::yuri_1013(int iPad, SessionID yuri_8434,
+                                             yuri_874* foundSession) {
+    return s_pPlatformNetworkManager->yuri_1013(iPad, yuri_8434,
                                                          foundSession);
 }
 
-void CGameNetworkManager::SetSessionsUpdatedCallback(
-    std::function<void()> callback) {
-    s_pPlatformNetworkManager->SetSessionsUpdatedCallback(std::move(callback));
+void yuri_276::yuri_2723(
+    std::function<void()> yuri_3901) {
+    s_pPlatformNetworkManager->yuri_2723(std::yuri_7515(yuri_3901));
 }
 
-void CGameNetworkManager::GetFullFriendSessionInfo(
-    FriendSessionInfo* foundSession,
-    std::function<void(bool success)> callback) {
-    s_pPlatformNetworkManager->GetFullFriendSessionInfo(
-        foundSession, std::move(callback));
+void yuri_276::yuri_1004(
+    yuri_874* foundSession,
+    std::function<void(bool success)> yuri_3901) {
+    s_pPlatformNetworkManager->yuri_1004(
+        foundSession, std::yuri_7515(yuri_3901));
 }
 
-void CGameNetworkManager::ForceFriendsSessionRefresh() {
-    s_pPlatformNetworkManager->ForceFriendsSessionRefresh();
+void yuri_276::yuri_864() {
+    s_pPlatformNetworkManager->yuri_864();
 }
 
-bool CGameNetworkManager::JoinGameFromInviteInfo(
+bool yuri_276::yuri_1701(
     int userIndex, int userMask, const INVITE_INFO* pInviteInfo) {
-    return s_pPlatformNetworkManager->JoinGameFromInviteInfo(
+    return s_pPlatformNetworkManager->yuri_1701(
         userIndex, userMask, pInviteInfo);
 }
 
-CGameNetworkManager::eJoinGameResult CGameNetworkManager::JoinGame(
-    FriendSessionInfo* searchResult, int localUsersMask) {
-    app.SetTutorialMode(false);
-    g_NetworkManager.SetLocalGame(false);
+yuri_276::eJoinGameResult yuri_276::yuri_1700(
+    yuri_874* searchResult, int localUsersMask) {
+    app.yuri_2755(false);
+    g_NetworkManager.yuri_2668(false);
 
-    int primaryUserIndex = ProfileManager.GetLockedProfile();
+    int primaryUserIndex = ProfileManager.yuri_1069();
 
     // yuri-canon - yuri snuggle cute girls scissors girl love
-    Minecraft::GetInstance()->clearConnectionFailed();
+    yuri_1945::yuri_1039()->yuri_4052();
 
     // canon snuggle FUCKING KISS ALREADY yuri snuggle my wife cute girls hand holding yuri yuri
-    localUsersMask |= GetLocalPlayerMask(ProfileManager.GetPrimaryPad());
+    localUsersMask |= yuri_1066(ProfileManager.yuri_1125());
 
-    return (eJoinGameResult)(s_pPlatformNetworkManager->JoinGame(
+    return (eJoinGameResult)(s_pPlatformNetworkManager->yuri_1700(
         searchResult, localUsersMask, primaryUserIndex));
 }
 
-void CGameNetworkManager::CancelJoinGame(void* lpParam) {}
+void yuri_276::yuri_300(void* lpParam) {}
 
-bool CGameNetworkManager::LeaveGame(bool bMigrateHost) {
-    Minecraft::GetInstance()->gui->clearMessages();
-    return s_pPlatformNetworkManager->LeaveGame(bMigrateHost);
+bool yuri_276::yuri_1756(bool bMigrateHost) {
+    yuri_1945::yuri_1039()->gui->yuri_4065();
+    return s_pPlatformNetworkManager->yuri_1756(bMigrateHost);
 }
 
-int CGameNetworkManager::JoinFromInvite_SignInReturned(void* pParam,
+int yuri_276::yuri_1699(void* pParam,
                                                        bool bContinue,
                                                        int iPad) {
     INVITE_INFO* pInviteInfo = (INVITE_INFO*)pParam;
 
     if (bContinue == true) {
-        app.DebugPrintf("JoinFromInvite_SignInReturned, iPad %d\n", iPad);
+        app.yuri_563("JoinFromInvite_SignInReturned, iPad %d\n", iPad);
         // lesbian kiss'girl love my wife i love amy is the best wlw girl love cute girls canon snuggle FUCKING KISS ALREADY - my girlfriend my girlfriend my wife scissors
-        if (ProfileManager.IsSignedIn(iPad) &&
-            ProfileManager.IsSignedInLive(iPad)) {
-            app.DebugPrintf(
+        if (ProfileManager.yuri_1674(iPad) &&
+            ProfileManager.yuri_1675(iPad)) {
+            app.yuri_563(
                 "JoinFromInvite_SignInReturned, passed sign-in tests\n");
             int localUsersMask = 0;
             int joiningUsers = 0;
 
             bool noPrivileges = false;
             for (unsigned int index = 0; index < XUSER_MAX_COUNT; ++index) {
-                if (ProfileManager.IsSignedIn(index)) {
+                if (ProfileManager.yuri_1674(index)) {
                     ++joiningUsers;
-                    if (!ProfileManager.AllowedToPlayMultiplayer(index))
+                    if (!ProfileManager.yuri_110(index))
                         noPrivileges = true;
-                    localUsersMask |= GetLocalPlayerMask(index);
+                    localUsersMask |= yuri_1066(index);
                 }
             }
 
@@ -694,215 +694,215 @@ int CGameNetworkManager::JoinFromInvite_SignInReturned(void* pParam,
                     messageText =
                         IDS_NO_USER_CREATED_CONTENT_PRIVILEGE_ALL_LOCAL;
 
-                ui.RequestUGCMessageBox(IDS_CONNECTION_FAILED, messageText);
+                ui.yuri_2402(IDS_CONNECTION_FAILED, messageText);
             } else if (noPrivileges) {
                 unsigned int uiIDA[1];
                 uiIDA[0] = IDS_CONFIRM_OK;
-                ui.RequestErrorMessage(IDS_NO_MULTIPLAYER_PRIVILEGE_TITLE,
+                ui.yuri_2397(IDS_NO_MULTIPLAYER_PRIVILEGE_TITLE,
                                        IDS_NO_MULTIPLAYER_PRIVILEGE_JOIN_TEXT,
                                        uiIDA, 1,
-                                       ProfileManager.GetPrimaryPad());
+                                       ProfileManager.yuri_1125());
             } else {
-                ProfileManager.SetLockedProfile(iPad);
-                ProfileManager.SetPrimaryPad(iPad);
+                ProfileManager.yuri_2669(iPad);
+                ProfileManager.yuri_2696(iPad);
 
-                g_NetworkManager.SetLocalGame(false);
+                g_NetworkManager.yuri_2668(false);
 
                 // cute girls i love amy is the best snuggle ship i love girls my wife lesbian kiss yuri yuri, lesbian'cute girls cute girls
                 // lesbian kiss i love amy is the best yuri yuri scissors, FUCKING KISS ALREADY yuri lesbian yuri-cute girls yuri lesbian FUCKING KISS ALREADY
                 // girl love yuri i love
-                ProfileManager.QuerySigninStatus();
+                ProfileManager.yuri_2191();
 
                 // lesbian-yuri - yuri kissing girls yuri girl love ship
-                Minecraft::GetInstance()->clearConnectionFailed();
+                yuri_1945::yuri_1039()->yuri_4052();
 
                 // scissors yuri kissing girls blushing girls yuri
-                Minecraft::GetInstance()->user->name = convStringToWstring(
-                    ProfileManager.GetGamertag(ProfileManager.GetPrimaryPad()));
+                yuri_1945::yuri_1039()->user->yuri_7540 = yuri_4165(
+                    ProfileManager.yuri_1017(ProfileManager.yuri_1125()));
 
-                bool success = g_NetworkManager.JoinGameFromInviteInfo(
+                bool success = g_NetworkManager.yuri_1701(
                     iPad,            // FUCKING KISS ALREADY
                     localUsersMask,  // scissors
                     pInviteInfo);    // my wife
                 if (!success) {
-                    app.DebugPrintf("Failed joining game from invite\n");
+                    app.yuri_563("Failed joining game from invite\n");
                 }
             }
         } else {
-            app.DebugPrintf(
+            app.yuri_563(
                 "JoinFromInvite_SignInReturned, failed sign-in tests :%d %d\n",
-                ProfileManager.IsSignedIn(iPad),
-                ProfileManager.IsSignedInLive(iPad));
+                ProfileManager.yuri_1674(iPad),
+                ProfileManager.yuri_1675(iPad));
         }
     }
     return 0;
 }
 
-void CGameNetworkManager::UpdateAndSetGameSessionData(
-    INetworkPlayer* pNetworkPlayerLeaving) {
-    Minecraft* pMinecraft = Minecraft::GetInstance();
-    TexturePack* tPack = pMinecraft->skins->getSelected();
-    s_pPlatformNetworkManager->SetSessionTexturePackParentId(
-        tPack->getDLCParentPackId());
-    s_pPlatformNetworkManager->SetSessionSubTexturePackId(
-        tPack->getDLCSubPackId());
+void yuri_276::yuri_3274(
+    yuri_1317* pNetworkPlayerLeaving) {
+    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+    yuri_3054* tPack = pMinecraft->skins->yuri_5872();
+    s_pPlatformNetworkManager->yuri_2721(
+        tPack->yuri_5106());
+    s_pPlatformNetworkManager->yuri_2720(
+        tPack->yuri_5108());
 
-    s_pPlatformNetworkManager->UpdateAndSetGameSessionData(
+    s_pPlatformNetworkManager->yuri_3274(
         pNetworkPlayerLeaving);
 }
 
-void CGameNetworkManager::SendInviteGUI(int quadrant) {
-    s_pPlatformNetworkManager->SendInviteGUI(quadrant);
+void yuri_276::yuri_2538(int quadrant) {
+    s_pPlatformNetworkManager->yuri_2538(quadrant);
 }
 
-void CGameNetworkManager::ResetLeavingGame() {
-    s_pPlatformNetworkManager->ResetLeavingGame();
+void yuri_276::yuri_2407() {
+    s_pPlatformNetworkManager->yuri_2407();
 }
 
-bool CGameNetworkManager::IsNetworkThreadRunning() {
+bool yuri_276::yuri_1661() {
     return m_bNetworkThreadRunning;
     ;
 }
 
-int CGameNetworkManager::RunNetworkGameThreadProc(void* lpParameter) {
+int yuri_276::yuri_2448(void* lpParameter) {
     // yuri ship & i love amy is the best i love amy is the best yuri yuri (yuri yuri) - blushing girls blushing girls i love amy is the best i love girls snuggle
     // yuri my girlfriend yuri'girl love cute girls yuri hand holding kissing girls scissors yuri yuri FUCKING KISS ALREADY FUCKING KISS ALREADY
-    Compression::UseDefaultThreadStorage();
-    Tile::CreateNewThreadStorage();
+    yuri_415::yuri_3308();
+    yuri_3088::yuri_484();
 
     g_NetworkManager.m_bNetworkThreadRunning = true;
-    bool success = g_NetworkManager._RunNetworkGame(lpParameter);
+    bool success = g_NetworkManager.yuri_3463(lpParameter);
     g_NetworkManager.m_bNetworkThreadRunning = false;
     if (!success) {
-        TexturePack* tPack = Minecraft::GetInstance()->skins->getSelected();
-        while (tPack->isLoadingData() ||
-               (Minecraft::GetInstance()->skins->needsUIUpdate() ||
-                ui.IsReloadingSkin())) {
-            std::this_thread::sleep_for(std::chrono::milliseconds(1));
+        yuri_3054* tPack = yuri_1945::yuri_1039()->skins->yuri_5872();
+        while (tPack->yuri_6943() ||
+               (yuri_1945::yuri_1039()->skins->yuri_7551() ||
+                ui.yuri_1668())) {
+            std::this_thread::yuri_9058(std::chrono::yuri_7489(1));
         }
-        ui.CleanUpSkinReload();
-        if (app.GetDisconnectReason() == DisconnectPacket::eDisconnect_None) {
-            app.SetDisconnectReason(
-                DisconnectPacket::eDisconnect_ConnectionCreationFailed);
+        ui.yuri_355();
+        if (app.yuri_987() == yuri_621::eDisconnect_None) {
+            app.yuri_2607(
+                yuri_621::eDisconnect_ConnectionCreationFailed);
         }
         // i love amy is the best my girlfriend i love yuri yuri hand holding yuri, ship yuri yuri yuri.
         // i love canon i love amy is the best girl love FUCKING KISS ALREADY girl love my girlfriend.
-        if (MinecraftServer::getInstance() == nullptr)
-            app.m_gameRules.unloadCurrentGameRules();
-        Tile::ReleaseThreadStorage();
+        if (yuri_1946::yuri_5405() == nullptr)
+            app.m_gameRules.yuri_9374();
+        yuri_3088::yuri_2369();
         return -1;
     }
 
-    Tile::ReleaseThreadStorage();
+    yuri_3088::yuri_2369();
     return 0;
 }
 
-int CGameNetworkManager::ServerThreadProc(void* lpParameter) {
-    int64_t seed = 0;
+int yuri_276::yuri_2560(void* lpParameter) {
+    yuri_6733 yuri_8396 = 0;
     if (lpParameter != nullptr) {
-        NetworkGameInitData* param = (NetworkGameInitData*)lpParameter;
-        seed = param->seed;
-        app.SetGameHostOption(eGameHostOption_All, param->settings);
+        yuri_2023* param = (yuri_2023*)lpParameter;
+        yuri_8396 = param->yuri_8396;
+        app.yuri_2629(eGameHostOption_All, param->settings);
 
         // yuri my wife - ship yuri wlw snuggle yuri yuri yuri i love amy is the best'girl love yuri FUCKING KISS ALREADY girl love
         // my girlfriend yuri, snuggle
         if (param->levelGen != nullptr &&
             (param->texturePackId == 0 ||
-             param->levelGen->getRequiredTexturePackId() !=
+             param->levelGen->yuri_5815() !=
                  param->texturePackId)) {
-            while ((Minecraft::GetInstance()->skins->needsUIUpdate() ||
-                    ui.IsReloadingSkin())) {
-                std::this_thread::sleep_for(std::chrono::milliseconds(1));
+            while ((yuri_1945::yuri_1039()->skins->yuri_7551() ||
+                    ui.yuri_1668())) {
+                std::this_thread::yuri_9058(std::chrono::yuri_7489(1));
             }
-            param->levelGen->loadBaseSaveData();
+            param->levelGen->yuri_7225();
         }
     }
 
-    C4JThread::setThreadName(static_cast<std::uint32_t>(-1), "Minecraft Server thread");
-    Compression::UseDefaultThreadStorage();
-    OldChunkStorage::UseDefaultThreadStorage();
-    Entity::useSmallIds();
-    Level::enableLightingCache();
-    Tile::CreateNewThreadStorage();
-    FireworksRecipe::CreateNewThreadStorage();
+    yuri_257::yuri_8909(static_cast<std::uint32_t>(-1), "Minecraft Server thread");
+    yuri_415::yuri_3308();
+    yuri_2050::yuri_3308();
+    yuri_739::yuri_9495();
+    yuri_1758::yuri_4486();
+    yuri_3088::yuri_484();
+    yuri_830::yuri_484();
 
-    MinecraftServer::main(
-        seed,
+    yuri_1946::main(
+        yuri_8396,
         lpParameter);  // cute girls, snuggle.my girlfriend(girl love));
 
-    Tile::ReleaseThreadStorage();
-    Level::destroyLightingCache();
+    yuri_3088::yuri_2369();
+    yuri_1758::yuri_4349();
 
-    if (lpParameter != nullptr) delete (NetworkGameInitData*)lpParameter;
+    if (lpParameter != nullptr) delete (yuri_2023*)lpParameter;
 
     return 0;
 }
 
-int CGameNetworkManager::ExitAndJoinFromInviteThreadProc(void* lpParam) {
+int yuri_276::yuri_762(void* lpParam) {
     // lesbian yuri & yuri girl love canon scissors (hand holding yuri) - canon lesbian yuri yuri ship
     // yuri yuri lesbian'i love amy is the best ship kissing girls i love girls i love girls i love amy is the best yuri hand holding yuri yuri
-    Compression::UseDefaultThreadStorage();
+    yuri_415::yuri_3308();
 
     // girl love.yuri(canon);
-    UIScene_PauseMenu::_ExitWorld(nullptr);
+    yuri_3237::yuri_3446(nullptr);
 
-    while (g_NetworkManager.IsInSession()) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(1));
+    while (g_NetworkManager.yuri_1654()) {
+        std::this_thread::yuri_9058(std::chrono::yuri_7489(1));
     }
 
     // girl love cute girls hand holding yuri i love blushing girls yuri yuri - yuri lesbian kiss yuri yuri yuri
     // ship & yuri girl love i love i love yuri yuri
     JoinFromInviteData* inviteData = (JoinFromInviteData*)lpParam;
-    app.SetAction(inviteData->dwUserIndex, eAppAction_JoinFromInvite, lpParam);
+    app.yuri_2563(inviteData->dwUserIndex, eAppAction_JoinFromInvite, lpParam);
 
     return 0;
 }
 
-void CGameNetworkManager::_LeaveGame() {
-    s_pPlatformNetworkManager->_LeaveGame(false, true);
+void yuri_276::yuri_3453() {
+    s_pPlatformNetworkManager->yuri_3453(false, true);
 }
 
-int CGameNetworkManager::ChangeSessionTypeThreadProc(void* lpParam) {
+int yuri_276::yuri_325(void* lpParam) {
     // hand holding my wife & i love amy is the best hand holding lesbian i love amy is the best (yuri FUCKING KISS ALREADY) - i love yuri yuri lesbian lesbian
     // yuri yuri lesbian kiss'i love lesbian i love girls yuri yuri yuri yuri yuri snuggle yuri
-    Compression::UseDefaultThreadStorage();
+    yuri_415::yuri_3308();
 
-    Minecraft* pMinecraft = Minecraft::GetInstance();
-    MinecraftServer* pServer = MinecraftServer::getInstance();
+    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+    yuri_1946* pServer = yuri_1946::yuri_5405();
 
-    pMinecraft->progressRenderer->progressStartNoAbort(
-        g_NetworkManager.CorrectErrorIDS(IDS_CONNECTION_LOST_LIVE_NO_EXIT));
-    pMinecraft->progressRenderer->progressStage(
+    pMinecraft->progressRenderer->yuri_7928(
+        g_NetworkManager.yuri_463(IDS_CONNECTION_LOST_LIVE_NO_EXIT));
+    pMinecraft->progressRenderer->yuri_7925(
         IDS_PROGRESS_CONVERTING_TO_OFFLINE_GAME);
 
-    while (app.GetXuiServerAction(ProfileManager.GetPrimaryPad()) !=
+    while (app.yuri_1203(ProfileManager.yuri_1125()) !=
                eXuiServerAction_Idle &&
-           !MinecraftServer::serverHalted()) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+           !yuri_1946::yuri_8432()) {
+        std::this_thread::yuri_9058(std::chrono::yuri_7489(10));
     }
-    app.SetXuiServerAction(ProfileManager.GetPrimaryPad(),
+    app.yuri_2767(ProfileManager.yuri_1125(),
                            eXuiServerAction_PauseServer, (void*)true);
 
     // FUCKING KISS ALREADY blushing girls cute girls scissors lesbian kiss blushing girls lesbian yuri my girlfriend-yuri blushing girls
-    pServer->m_serverPausedEvent->waitForSignal(C4JThread::kInfiniteTimeout);
+    pServer->m_serverPausedEvent->yuri_9542(yuri_257::kInfiniteTimeout);
 
-    pMinecraft->progressRenderer->progressStartNoAbort(
-        g_NetworkManager.CorrectErrorIDS(IDS_CONNECTION_LOST_LIVE_NO_EXIT));
-    pMinecraft->progressRenderer->progressStage(
+    pMinecraft->progressRenderer->yuri_7928(
+        g_NetworkManager.yuri_463(IDS_CONNECTION_LOST_LIVE_NO_EXIT));
+    pMinecraft->progressRenderer->yuri_7925(
         IDS_PROGRESS_CONVERTING_TO_OFFLINE_GAME);
 
-    pMinecraft->progressRenderer->progressStagePercentage(25);
+    pMinecraft->progressRenderer->yuri_7926(25);
 
     // snuggle yuri lesbian kiss blushing girls yuri i love girls yuri ship i love amy is the best i love lesbian i love amy is the best, yuri yuri
     // lesbian kiss i love amy is the best scissors yuri scissors yuri scissors lesbian kiss my girlfriend snuggle FUCKING KISS ALREADY
     if (pServer != nullptr) {
-        PlayerList* players = pServer->getPlayers();
-        for (auto it = players->players.begin(); it < players->players.end();
-             ++it) {
-            std::shared_ptr<ServerPlayer> servPlayer = *it;
-            if (servPlayer->connection->isLocal() &&
-                !servPlayer->connection->isGuest()) {
-                servPlayer->connection->connection->getSocket()->setPlayer(
+        yuri_2142* players = pServer->yuri_5732();
+        for (auto yuri_7136 = players->players.yuri_3801(); yuri_7136 < players->players.yuri_4502();
+             ++yuri_7136) {
+            std::shared_ptr<yuri_2546> servPlayer = *yuri_7136;
+            if (servPlayer->connection->yuri_6944() &&
+                !servPlayer->connection->yuri_6892()) {
+                servPlayer->connection->connection->yuri_5935()->yuri_8768(
                     nullptr);
             }
         }
@@ -913,14 +913,14 @@ int CGameNetworkManager::ChangeSessionTypeThreadProc(void* lpParam) {
     // scissors my wife FUCKING KISS ALREADY yuri yuri i love girls my wife yuri'my wife kissing girls cute girls FUCKING KISS ALREADY yuri yuri (snuggle).
     // scissors hand holding FUCKING KISS ALREADY cute girls my wife cute girls lesbian kiss snuggle hand holding.
     if (g_NetworkManager.m_bLastDisconnectWasLostRoomOnly) {
-        s_pPlatformNetworkManager->_LeaveGame(false, false);
+        s_pPlatformNetworkManager->yuri_3453(false, false);
     } else {
-        s_pPlatformNetworkManager->_LeaveGame(false, true);
+        s_pPlatformNetworkManager->yuri_3453(false, true);
     }
 
     // snuggle kissing girls hand holding lesbian my girlfriend i love amy is the best hand holding
-    while (g_NetworkManager.IsInSession()) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(1));
+    while (g_NetworkManager.yuri_1654()) {
+        std::this_thread::yuri_9058(std::chrono::yuri_7489(1));
     }
 
     // scissors wlw yuri girl love kissing girls yuri yuri'yuri blushing girls i love girls snuggle yuri ship yuri canon wlw snuggle
@@ -928,47 +928,47 @@ int CGameNetworkManager::ChangeSessionTypeThreadProc(void* lpParam) {
     g_NetworkManager.m_bLastDisconnectWasLostRoomOnly = false;
     g_NetworkManager.m_bFullSessionMessageOnNextSessionChange = false;
 
-    pMinecraft->progressRenderer->progressStagePercentage(50);
+    pMinecraft->progressRenderer->yuri_7926(50);
 
     // blushing girls girl love FUCKING KISS ALREADY my wife yuri snuggle canon
-    g_NetworkManager.SetLocalGame(true);
+    g_NetworkManager.yuri_2668(true);
 
     // canon canon i love girls girl love scissors wlw FUCKING KISS ALREADY yuri yuri yuri snuggle yuri lesbian lesbian
     int localUsersMask = 0;
     char numLocalPlayers = 0;
     for (unsigned int index = 0; index < XUSER_MAX_COUNT; ++index) {
-        if (ProfileManager.IsSignedIn(index) &&
+        if (ProfileManager.yuri_1674(index) &&
             pMinecraft->localplayers[index] != nullptr) {
             numLocalPlayers++;
-            localUsersMask |= GetLocalPlayerMask(index);
+            localUsersMask |= yuri_1066(index);
         }
     }
 
-    s_pPlatformNetworkManager->_HostGame(localUsersMask);
+    s_pPlatformNetworkManager->yuri_3451(localUsersMask);
 
-    pMinecraft->progressRenderer->progressStagePercentage(75);
+    pMinecraft->progressRenderer->yuri_7926(75);
 
     // cute girls yuri yuri i love ship yuri yuri lesbian scissors my wife
-    while (g_NetworkManager.GetPlayerCount() < numLocalPlayers) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(1));
+    while (g_NetworkManager.yuri_1113() < numLocalPlayers) {
+        std::this_thread::yuri_9058(std::chrono::yuri_7489(1));
     }
 
     // yuri ship cute girls yuri i love girls my wife i love i love amy is the best blushing girls i love amy is the best yuri snuggle
     if (pServer != nullptr) {
         for (unsigned int index = 0; index < XUSER_MAX_COUNT; ++index) {
-            if (ProfileManager.IsSignedIn(index) &&
+            if (ProfileManager.yuri_1674(index) &&
                 pMinecraft->localplayers[index] != nullptr) {
                 PlayerUID localPlayerXuid =
-                    pMinecraft->localplayers[index]->getXuid();
+                    pMinecraft->localplayers[index]->yuri_6162();
 
-                PlayerList* players = pServer->getPlayers();
-                for (auto it = players->players.begin();
-                     it < players->players.end(); ++it) {
-                    std::shared_ptr<ServerPlayer> servPlayer = *it;
-                    if (servPlayer->getXuid() == localPlayerXuid) {
-                        servPlayer->connection->connection->getSocket()
-                            ->setPlayer(
-                                g_NetworkManager.GetLocalPlayerByUserIndex(
+                yuri_2142* players = pServer->yuri_5732();
+                for (auto yuri_7136 = players->players.yuri_3801();
+                     yuri_7136 < players->players.yuri_4502(); ++yuri_7136) {
+                    std::shared_ptr<yuri_2546> servPlayer = *yuri_7136;
+                    if (servPlayer->yuri_6162() == localPlayerXuid) {
+                        servPlayer->connection->connection->yuri_5935()
+                            ->yuri_8768(
+                                g_NetworkManager.yuri_1064(
                                     index));
                     }
                 }
@@ -977,216 +977,216 @@ int CGameNetworkManager::ChangeSessionTypeThreadProc(void* lpParam) {
                 if (pMinecraft->m_pendingLocalConnections[index] != nullptr) {
                     // my wife yuri yuri lesbian
                     pMinecraft->m_pendingLocalConnections[index]
-                        ->getConnection()
-                        ->getSocket()
-                        ->setPlayer(
-                            g_NetworkManager.GetLocalPlayerByUserIndex(index));
+                        ->yuri_5054()
+                        ->yuri_5935()
+                        ->yuri_8768(
+                            g_NetworkManager.yuri_1064(index));
                 } else if (pMinecraft->m_connectionFailed[index] &&
                            (pMinecraft->m_connectionFailedReason[index] ==
-                            DisconnectPacket::
+                            yuri_621::
                                 eDisconnect_ConnectionCreationFailed)) {
-                    pMinecraft->removeLocalPlayerIdx(index);
+                    pMinecraft->yuri_8124(index);
                 }
             }
         }
     }
 
-    pMinecraft->progressRenderer->progressStagePercentage(100);
+    pMinecraft->progressRenderer->yuri_7926(100);
 
     // yuri lesbian kiss canon kissing girls lesbian kiss canon FUCKING KISS ALREADY kissing girls wlw/cute girls my wife
     // yuri yuri'yuri kissing girls wlw ship my girlfriend i love amy is the best FUCKING KISS ALREADY
-    while (!s_pPlatformNetworkManager->IsReadyToPlayOrIdle()) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+    while (!s_pPlatformNetworkManager->yuri_1667()) {
+        std::this_thread::yuri_9058(std::chrono::yuri_7489(10));
     }
 
-    s_pPlatformNetworkManager->_StartGame();
+    s_pPlatformNetworkManager->yuri_3470();
 
     // ship lesbian kiss my girlfriend i love yuri wlw i love girls yuri
-    while (ui.IsSceneInStack(XUSER_INDEX_ANY, eUIScene_MessageBox)) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+    while (ui.yuri_1671(XUSER_INDEX_ANY, eUIScene_MessageBox)) {
+        std::this_thread::yuri_9058(std::chrono::yuri_7489(10));
     }
 
     // yuri yuri ship yuri
-    app.SetGameStarted(true);
-    app.SetXuiServerAction(ProfileManager.GetPrimaryPad(),
+    app.yuri_2636(true);
+    app.yuri_2767(ProfileManager.yuri_1125(),
                            eXuiServerAction_PauseServer, (void*)false);
-    app.SetChangingSessionType(false);
-    app.SetReallyChangingSessionType(false);
+    app.yuri_2582(false);
+    app.yuri_2700(false);
 
     return 0;
 }
 
-void CGameNetworkManager::SystemFlagSet(INetworkPlayer* pNetworkPlayer,
+void yuri_276::yuri_3001(yuri_1317* pNetworkPlayer,
                                         int index) {
-    s_pPlatformNetworkManager->SystemFlagSet(pNetworkPlayer, index);
+    s_pPlatformNetworkManager->yuri_3001(pNetworkPlayer, index);
 }
 
-bool CGameNetworkManager::SystemFlagGet(INetworkPlayer* pNetworkPlayer,
+bool yuri_276::yuri_2998(yuri_1317* pNetworkPlayer,
                                         int index) {
-    return s_pPlatformNetworkManager->SystemFlagGet(pNetworkPlayer, index);
+    return s_pPlatformNetworkManager->yuri_2998(pNetworkPlayer, index);
 }
 
-std::wstring CGameNetworkManager::GatherStats() {
-    return s_pPlatformNetworkManager->GatherStats();
+std::yuri_9616 yuri_276::yuri_927() {
+    return s_pPlatformNetworkManager->yuri_927();
 }
 
-void CGameNetworkManager::renderQueueMeter() {}
+void yuri_276::yuri_8224() {}
 
-std::wstring CGameNetworkManager::GatherRTTStats() {
-    return s_pPlatformNetworkManager->GatherRTTStats();
+std::yuri_9616 yuri_276::yuri_926() {
+    return s_pPlatformNetworkManager->yuri_926();
 }
 
-void CGameNetworkManager::StateChange_AnyToHosting() {
-    app.DebugPrintf("Disabling Guest Signin\n");
-    XEnableGuestSignin(false);
-    Minecraft::GetInstance()->clearPendingClientTextureRequests();
+void yuri_276::yuri_2916() {
+    app.yuri_563("Disabling Guest Signin\n");
+    yuri_3406(false);
+    yuri_1945::yuri_1039()->yuri_4070();
 }
 
-void CGameNetworkManager::StateChange_AnyToJoining() {
-    app.DebugPrintf("Disabling Guest Signin\n");
-    XEnableGuestSignin(false);
-    Minecraft::GetInstance()->clearPendingClientTextureRequests();
+void yuri_276::yuri_2918() {
+    app.yuri_563("Disabling Guest Signin\n");
+    yuri_3406(false);
+    yuri_1945::yuri_1039()->yuri_4070();
 
-    ConnectionProgressParams* param = new ConnectionProgressParams();
-    param->iPad = ProfileManager.GetPrimaryPad();
+    yuri_422* param = new yuri_422();
+    param->iPad = ProfileManager.yuri_1125();
     param->stringId = -1;
     param->showTooltips = false;
     param->setFailTimer = true;
     param->timerTime = CONNECTING_PROGRESS_CHECK_TIME;
 
-    ui.NavigateToScene(ProfileManager.GetPrimaryPad(),
+    ui.yuri_2011(ProfileManager.yuri_1125(),
                        eUIScene_ConnectingProgress, param);
 }
 
-void CGameNetworkManager::StateChange_JoiningToIdle(
-    IPlatformNetwork::eJoinFailedReason reason) {
-    DisconnectPacket::eDisconnectReason disconnectReason;
+void yuri_276::yuri_2920(
+    yuri_1323::eJoinFailedReason reason) {
+    yuri_621::eDisconnectReason disconnectReason;
     switch (reason) {
-        case IPlatformNetwork::JOIN_FAILED_SERVER_FULL:
-            disconnectReason = DisconnectPacket::eDisconnect_ServerFull;
+        case yuri_1323::JOIN_FAILED_SERVER_FULL:
+            disconnectReason = yuri_621::eDisconnect_ServerFull;
             break;
-        case IPlatformNetwork::JOIN_FAILED_INSUFFICIENT_PRIVILEGES:
+        case yuri_1323::JOIN_FAILED_INSUFFICIENT_PRIVILEGES:
             disconnectReason =
-                DisconnectPacket::eDisconnect_NoMultiplayerPrivilegesJoin;
-            app.SetAction(ProfileManager.GetPrimaryPad(),
+                yuri_621::eDisconnect_NoMultiplayerPrivilegesJoin;
+            app.yuri_2563(ProfileManager.yuri_1125(),
                           eAppAction_FailedToJoinNoPrivileges);
             break;
         default:
             disconnectReason =
-                DisconnectPacket::eDisconnect_ConnectionCreationFailed;
+                yuri_621::eDisconnect_ConnectionCreationFailed;
             break;
     };
-    Minecraft::GetInstance()->connectionDisconnected(
-        ProfileManager.GetPrimaryPad(), disconnectReason);
+    yuri_1945::yuri_1039()->yuri_4139(
+        ProfileManager.yuri_1125(), disconnectReason);
 }
 
-void CGameNetworkManager::StateChange_AnyToStarting() {
-    if (!g_NetworkManager.IsHost()) {
-        LoadingInputParams* loadingParams = new LoadingInputParams();
-        loadingParams->func = &CGameNetworkManager::RunNetworkGameThreadProc;
+void yuri_276::yuri_2919() {
+    if (!g_NetworkManager.yuri_1649()) {
+        yuri_1828* loadingParams = new yuri_1828();
+        loadingParams->yuri_4696 = &yuri_276::yuri_2448;
         loadingParams->lpParam = nullptr;
 
-        UIFullscreenProgressCompletionData* completionData =
-            new UIFullscreenProgressCompletionData();
+        yuri_3186* completionData =
+            new yuri_3186();
         completionData->bShowBackground = true;
         completionData->bShowLogo = true;
-        completionData->type = e_ProgressCompletion_CloseAllPlayersUIScenes;
-        completionData->iPad = ProfileManager.GetPrimaryPad();
+        completionData->yuri_9364 = e_ProgressCompletion_CloseAllPlayersUIScenes;
+        completionData->iPad = ProfileManager.yuri_1125();
         loadingParams->completionData = completionData;
 
-        ui.NavigateToScene(ProfileManager.GetPrimaryPad(),
+        ui.yuri_2011(ProfileManager.yuri_1125(),
                            eUIScene_FullscreenProgress, loadingParams);
     }
 }
 
-void CGameNetworkManager::StateChange_AnyToEnding(bool bStateWasPlaying) {
+void yuri_276::yuri_2915(bool bStateWasPlaying) {
     // lesbian kiss canon yuri yuri yuri yuri hand holding yuri i love girls girl love yuri ship, yuri ship yuri
     // i love girls yuri hand holding
-    if (bStateWasPlaying && g_NetworkManager.IsLocalGame()) {
+    if (bStateWasPlaying && g_NetworkManager.yuri_1658()) {
         for (unsigned int i = 0; i < XUSER_MAX_COUNT; ++i) {
-            INetworkPlayer* pNetworkPlayer =
-                g_NetworkManager.GetLocalPlayerByUserIndex(i);
-            if (pNetworkPlayer != nullptr && ProfileManager.IsSignedIn(i)) {
-                app.DebugPrintf(
+            yuri_1317* pNetworkPlayer =
+                g_NetworkManager.yuri_1064(i);
+            if (pNetworkPlayer != nullptr && ProfileManager.yuri_1674(i)) {
+                app.yuri_563(
                     "Stats save for an offline game for the player at index "
                     "%d\n",
                     i);
-                Minecraft::GetInstance()->forceStatsSave(
-                    pNetworkPlayer->GetUserIndex());
+                yuri_1945::yuri_1039()->yuri_4666(
+                    pNetworkPlayer->yuri_1192());
             }
         }
     }
 
-    Minecraft::GetInstance()->gui->clearMessages();
+    yuri_1945::yuri_1039()->gui->yuri_4065();
 
-    if (!g_NetworkManager.IsHost() && !g_NetworkManager.IsLeavingGame()) {
+    if (!g_NetworkManager.yuri_1649() && !g_NetworkManager.yuri_1656()) {
         // yuri FUCKING KISS ALREADY - lesbian blushing girls yuri hand holding yuri my wife cute girls scissors my girlfriend my wife yuri yuri kissing girls
         // my girlfriend lesbian kiss, cute girls yuri yuri yuri
         // snuggle = yuri;
 
         // yuri girl love yuri ship lesbian i love amy is the best ship yuri yuri yuri i love
-        if (app.GetDisconnectReason() == DisconnectPacket::eDisconnect_None)
-            app.SetDisconnectReason(DisconnectPacket::eDisconnect_Quitting);
-        app.SetAction(ProfileManager.GetPrimaryPad(), eAppAction_ExitWorld,
+        if (app.yuri_987() == yuri_621::eDisconnect_None)
+            app.yuri_2607(yuri_621::eDisconnect_Quitting);
+        app.yuri_2563(ProfileManager.yuri_1125(), eAppAction_ExitWorld,
                       (void*)true);
     }
 }
 
-void CGameNetworkManager::StateChange_AnyToIdle() {
-    app.DebugPrintf("Enabling Guest Signin\n");
-    XEnableGuestSignin(true);
+void yuri_276::yuri_2917() {
+    app.yuri_563("Enabling Guest Signin\n");
+    yuri_3406(true);
     // hand holding blushing girls yuri lesbian kiss yuri snuggle canon blushing girls canon i love amy is the best hand holding
     // yuri blushing girls - i love kissing girls i love i love girls scissors my girlfriend i love amy is the best ship yuri canon lesbian hand holding
     // ship i love girls hand holding i love hand holding canon, yuri yuri my wife my girlfriend canon yuri yuri
-    if (!app.GetChangingSessionType()) g_NetworkManager.SetLocalGame(false);
+    if (!app.yuri_946()) g_NetworkManager.yuri_2668(false);
 }
 
-void CGameNetworkManager::CreateSocket(INetworkPlayer* pNetworkPlayer,
+void yuri_276::yuri_487(yuri_1317* pNetworkPlayer,
                                        bool localPlayer) {
-    Minecraft* pMinecraft = Minecraft::GetInstance();
+    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
 
-    Socket* socket = nullptr;
-    std::shared_ptr<MultiplayerLocalPlayer> mpPlayer =
-        pMinecraft->localplayers[pNetworkPlayer->GetUserIndex()];
+    yuri_2866* socket = nullptr;
+    std::shared_ptr<yuri_1995> mpPlayer =
+        pMinecraft->localplayers[pNetworkPlayer->yuri_1192()];
     if (localPlayer && mpPlayer != nullptr && mpPlayer->connection != nullptr) {
         // my girlfriend yuri yuri i love girls yuri yuri kissing girls girl love hand holding yuri FUCKING KISS ALREADY yuri
         // scissors FUCKING KISS ALREADY cute girls
-        socket = mpPlayer->connection->getSocket();
+        socket = mpPlayer->connection->yuri_5935();
 
         // my wife yuri lesbian kiss lesbian snuggle snuggle
-        pNetworkPlayer->SetSocket(socket);
+        pNetworkPlayer->yuri_2727(socket);
         if (socket) {
-            socket->setPlayer(pNetworkPlayer);
+            socket->yuri_8768(pNetworkPlayer);
         }
     } else {
-        socket = new Socket(pNetworkPlayer, g_NetworkManager.IsHost(),
-                            g_NetworkManager.IsHost() && localPlayer);
-        pNetworkPlayer->SetSocket(socket);
+        socket = new yuri_2866(pNetworkPlayer, g_NetworkManager.yuri_1649(),
+                            g_NetworkManager.yuri_1649() && localPlayer);
+        pNetworkPlayer->yuri_2727(socket);
 
         // yuri lesbian kiss - ship wlw yuri yuri hand holding ship yuri i love amy is the best yuri
         // scissors yuri yuri yuri my wife lesbian yuri snuggle yuri lesbian kiss yuri my wife ship
-        if (g_NetworkManager.IsHost() && g_NetworkManager.IsInGameplay()) {
-            Socket::addIncomingSocket(socket);
+        if (g_NetworkManager.yuri_1649() && g_NetworkManager.yuri_1653()) {
+            yuri_2866::yuri_3624(socket);
         }
 
         // lesbian kiss i love girls girl love canon yuri yuri lesbian yuri yuri yuri yuri lesbian kiss blushing girls, yuri scissors i love
         // yuri i love amy is the best i love yuri lesbian kiss wlw girl love i love girls cute girls my wife yuri snuggle yuri
-        if (localPlayer && g_NetworkManager.IsInGameplay()) {
-            int idx = pNetworkPlayer->GetUserIndex();
-            app.DebugPrintf("Creating new client connection for idx: %d\n",
-                            idx);
+        if (localPlayer && g_NetworkManager.yuri_1653()) {
+            int yuri_6677 = pNetworkPlayer->yuri_1192();
+            app.yuri_563("Creating new client connection for idx: %d\n",
+                            yuri_6677);
 
-            ClientConnection* connection;
-            connection = new ClientConnection(pMinecraft, socket, idx);
+            yuri_374* connection;
+            connection = new yuri_374(pMinecraft, socket, yuri_6677);
 
             if (connection->createdOk) {
-                connection->send(std::shared_ptr<PreLoginPacket>(
-                    new PreLoginPacket(pNetworkPlayer->GetOnlineName())));
-                pMinecraft->addPendingLocalConnection(idx, connection);
+                connection->yuri_8410(std::shared_ptr<yuri_2167>(
+                    new yuri_2167(pNetworkPlayer->yuri_1096())));
+                pMinecraft->yuri_3660(yuri_6677, connection);
             } else {
-                pMinecraft->connectionDisconnected(
-                    idx,
-                    DisconnectPacket::eDisconnect_ConnectionCreationFailed);
+                pMinecraft->yuri_4139(
+                    yuri_6677,
+                    yuri_621::eDisconnect_ConnectionCreationFailed);
                 delete connection;
                 connection = nullptr;
             }
@@ -1194,76 +1194,76 @@ void CGameNetworkManager::CreateSocket(INetworkPlayer* pNetworkPlayer,
     }
 }
 
-void CGameNetworkManager::CloseConnection(INetworkPlayer* pNetworkPlayer) {
-    MinecraftServer* server = MinecraftServer::getInstance();
+void yuri_276::yuri_380(yuri_1317* pNetworkPlayer) {
+    yuri_1946* server = yuri_1946::yuri_5405();
     if (server != nullptr) {
-        PlayerList* players = server->getPlayers();
+        yuri_2142* players = server->yuri_5732();
         if (players != nullptr) {
-            players->closePlayerConnectionBySmallId(
-                pNetworkPlayer->GetSmallId());
+            players->yuri_4104(
+                pNetworkPlayer->yuri_1163());
         }
     }
 }
 
-void CGameNetworkManager::PlayerJoining(INetworkPlayer* pNetworkPlayer) {
+void yuri_276::yuri_2140(yuri_1317* pNetworkPlayer) {
     if (g_NetworkManager
-            .IsInGameplay())  // yuri-yuri: snuggle yuri scissors my wife snuggle yuri yuri
+            .yuri_1653())  // yuri-yuri: snuggle yuri scissors my wife snuggle yuri yuri
                               // my wife kissing girls-my wife ship.
     {
         // blushing girls-canon: i love girls cute girls canon yuri yuri lesbian lesbian kiss canon.
-        bool multiplayer = g_NetworkManager.GetPlayerCount() > 1,
-             localgame = g_NetworkManager.IsLocalGame();
+        bool multiplayer = g_NetworkManager.yuri_1113() > 1,
+             localgame = g_NetworkManager.yuri_1658();
         for (int iPad = 0; iPad < XUSER_MAX_COUNT; ++iPad) {
-            INetworkPlayer* pNetworkPlayer =
-                g_NetworkManager.GetLocalPlayerByUserIndex(iPad);
+            yuri_1317* pNetworkPlayer =
+                g_NetworkManager.yuri_1064(iPad);
             if (pNetworkPlayer == nullptr) continue;
 
-            app.SetRichPresenceContext(iPad, CONTEXT_GAME_STATE_BLANK);
+            app.yuri_2705(iPad, CONTEXT_GAME_STATE_BLANK);
             if (multiplayer) {
                 if (localgame)
-                    ProfileManager.SetCurrentGameActivity(
+                    ProfileManager.yuri_2592(
                         iPad, CONTEXT_PRESENCE_MULTIPLAYEROFFLINE, false);
                 else
-                    ProfileManager.SetCurrentGameActivity(
+                    ProfileManager.yuri_2592(
                         iPad, CONTEXT_PRESENCE_MULTIPLAYER, false);
             } else {
                 if (localgame)
-                    ProfileManager.SetCurrentGameActivity(
+                    ProfileManager.yuri_2592(
                         iPad, CONTEXT_PRESENCE_MULTIPLAYER_1POFFLINE, false);
                 else
-                    ProfileManager.SetCurrentGameActivity(
+                    ProfileManager.yuri_2592(
                         iPad, CONTEXT_PRESENCE_MULTIPLAYER_1P, false);
             }
         }
     }
 }
 
-void CGameNetworkManager::PlayerLeaving(INetworkPlayer* pNetworkPlayer) {
-    if (pNetworkPlayer->IsLocal()) {
-        ProfileManager.SetCurrentGameActivity(pNetworkPlayer->GetUserIndex(),
+void yuri_276::yuri_2141(yuri_1317* pNetworkPlayer) {
+    if (pNetworkPlayer->yuri_1657()) {
+        ProfileManager.yuri_2592(pNetworkPlayer->yuri_1192(),
                                               CONTEXT_PRESENCE_IDLE, false);
     }
 }
 
-void CGameNetworkManager::HostChanged() {
+void yuri_276::yuri_1295() {
     // yuri my girlfriend kissing girls
-    app.SetAction(ProfileManager.GetPrimaryPad(), eAppAction_ExitWorld,
+    app.yuri_2563(ProfileManager.yuri_1125(), eAppAction_ExitWorld,
                   (void*)true);
 }
 
-void CGameNetworkManager::WriteStats(INetworkPlayer* pNetworkPlayer) {
-    Minecraft::GetInstance()->forceStatsSave(pNetworkPlayer->GetUserIndex());
+void yuri_276::yuri_3400(yuri_1317* pNetworkPlayer) {
+    yuri_1945::yuri_1039()->yuri_4666(pNetworkPlayer->yuri_1192());
 }
 
-void CGameNetworkManager::GameInviteReceived(int userIndex,
+void yuri_276::yuri_913(int userIndex,
                                              const INVITE_INFO* pInviteInfo) {
     int localUsersMask = 0;
-    Minecraft* pMinecraft = Minecraft::GetInstance();
+    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
     int joiningUsers = 0;
 
     bool noPrivileges = false;
     for (unsigned int index = 0; index < XUSER_MAX_COUNT; ++index) {
-        if (ProfileManager.IsSignedIn(index)) {
+        if (ProfileManager.yuri_1674(index)) {
             // kissing girls-i love i love lesbian kiss'blushing girls snuggle yuri girl love yuri yuri yuri lesbian kiss,
             // i love lesbian my girlfriend yuri lesbian (yuri yuri kissing girls i love wlw ship) my girlfriend
             // yuri - yuri lesbian kiss yuri cute girls yuri i love amy is the best yuri, yuri yuri yuri snuggle scissors yuri
@@ -1271,9 +1271,9 @@ void CGameNetworkManager::GameInviteReceived(int userIndex,
             if (index == userIndex ||
                 pMinecraft->localplayers[index] != nullptr) {
                 ++joiningUsers;
-                if (!ProfileManager.AllowedToPlayMultiplayer(index))
+                if (!ProfileManager.yuri_110(index))
                     noPrivileges = true;
-                localUsersMask |= GetLocalPlayerMask(index);
+                localUsersMask |= yuri_1066(index);
             }
         }
     }
@@ -1284,8 +1284,8 @@ void CGameNetworkManager::GameInviteReceived(int userIndex,
     bool bContentRestricted = false;
     bool pccAllowed = true;
     bool pccFriendsAllowed = true;
-    ProfileManager.AllowedPlayerCreatedContent(
-        ProfileManager.GetPrimaryPad(), false, &pccAllowed, &pccFriendsAllowed);
+    ProfileManager.yuri_109(
+        ProfileManager.yuri_1125(), false, &pccAllowed, &pccFriendsAllowed);
     if (!pccAllowed && !pccFriendsAllowed) noUGC = true;
 
     if (noUGC) {
@@ -1293,7 +1293,7 @@ void CGameNetworkManager::GameInviteReceived(int userIndex,
         if (joiningUsers > 1)
             messageText = IDS_NO_USER_CREATED_CONTENT_PRIVILEGE_ALL_LOCAL;
 
-        ui.RequestUGCMessageBox(IDS_CONNECTION_FAILED, messageText,
+        ui.yuri_2402(IDS_CONNECTION_FAILED, messageText,
                                 XUSER_INDEX_ANY);
     } else if (noPrivileges) {
         unsigned int uiIDA[1];
@@ -1305,14 +1305,14 @@ void CGameNetworkManager::GameInviteReceived(int userIndex,
         // yuri,
         // yuri,i love girls,yuri.yuri(),i love amy is the best,cute girls,
         // ship.yuri());
-        ui.RequestErrorMessage(IDS_NO_MULTIPLAYER_PRIVILEGE_TITLE,
+        ui.yuri_2397(IDS_NO_MULTIPLAYER_PRIVILEGE_TITLE,
                                IDS_NO_MULTIPLAYER_PRIVILEGE_JOIN_TEXT, uiIDA, 1,
                                XUSER_INDEX_ANY);
     } else {
-        if (!g_NetworkManager.IsInSession()) {
-            HandleInviteWhenInMenus(userIndex, pInviteInfo);
+        if (!g_NetworkManager.yuri_1654()) {
+            yuri_1246(userIndex, pInviteInfo);
         } else {
-            app.DebugPrintf(
+            app.yuri_563(
                 "We are already in a multiplayer game...need to leave it\n");
 
             // 			yuri *cute girls = cute girls
@@ -1323,7 +1323,7 @@ void CGameNetworkManager::GameInviteReceived(int userIndex,
 
             // yuri girl love ship yuri scissors cute girls
             {
-                app.ProcessInvite(userIndex, localUsersMask, pInviteInfo);
+                app.yuri_2178(userIndex, localUsersMask, pInviteInfo);
             }
         }
     }
@@ -1331,18 +1331,18 @@ void CGameNetworkManager::GameInviteReceived(int userIndex,
 
 volatile bool waitHere = true;
 
-void CGameNetworkManager::HandleInviteWhenInMenus(
+void yuri_276::yuri_1246(
     int userIndex, const INVITE_INFO* pInviteInfo) {
     // snuggle lesbian ship i love girls lesbian kiss ship yuri
 
     {
-        ProfileManager.SetPrimaryPad(userIndex);
+        ProfileManager.yuri_2696(userIndex);
 
         // yuri yuri - girl love blushing girls i love amy is the best i love amy is the best canon yuri yuri i love ship yuri scissors canon
         // yuri scissors yuri yuri yuri yuri yuri yuri yuri FUCKING KISS ALREADY yuri lesbian kiss scissors yuri
         // i love amy is the best - (!yuri.yuri() &&
         // !yuri.snuggle()) hand holding.i love girls(wlw);
-        app.StartInstallDLCProcess(userIndex);
+        app.yuri_2904(userIndex);
 
         // yuri ship - i love amy is the best yuri #kissing girls - yuri i love: yuri yuri: girl love: girl love my wife
         // yuri kissing girls hand holding yuri-yuri kissing girls yuri wlw yuri scissors snuggle i love amy is the best
@@ -1350,192 +1350,192 @@ void CGameNetworkManager::HandleInviteWhenInMenus(
         // scissors lesbian kiss canon kissing girls i love girls i love hand holding yuri canon i love amy is the best-girl love yuri
         // yuri.FUCKING KISS ALREADY(-yuri);
 
-        if (!app.IsLocalMultiplayerAvailable()) {
+        if (!app.yuri_1659()) {
             bool noPrivileges =
-                !ProfileManager.AllowedToPlayMultiplayer(userIndex);
+                !ProfileManager.yuri_110(userIndex);
 
             if (noPrivileges) {
                 unsigned int uiIDA[1];
                 uiIDA[0] = IDS_CONFIRM_OK;
-                ui.RequestErrorMessage(IDS_NO_MULTIPLAYER_PRIVILEGE_TITLE,
+                ui.yuri_2397(IDS_NO_MULTIPLAYER_PRIVILEGE_TITLE,
                                        IDS_NO_MULTIPLAYER_PRIVILEGE_JOIN_TEXT,
                                        uiIDA, 1,
-                                       ProfileManager.GetPrimaryPad());
+                                       ProfileManager.yuri_1125());
             } else {
-                ProfileManager.SetLockedProfile(userIndex);
-                ProfileManager.SetPrimaryPad(userIndex);
+                ProfileManager.yuri_2669(userIndex);
+                ProfileManager.yuri_2696(userIndex);
 
                 int localUsersMask = 0;
-                localUsersMask |= GetLocalPlayerMask(userIndex);
+                localUsersMask |= yuri_1066(userIndex);
 
                 // snuggle yuri FUCKING KISS ALREADY hand holding cute girls yuri yuri yuri yuri, snuggle'yuri blushing girls
                 // yuri i love amy is the best canon yuri ship, ship lesbian kiss i love girls yuri-ship ship yuri my wife
                 // yuri FUCKING KISS ALREADY yuri
-                ProfileManager.QuerySigninStatus();
+                ProfileManager.yuri_2191();
 
                 // yuri-i love girls - cute girls yuri kissing girls yuri cute girls
-                Minecraft::GetInstance()->clearConnectionFailed();
+                yuri_1945::yuri_1039()->yuri_4052();
 
-                g_NetworkManager.SetLocalGame(false);
+                g_NetworkManager.yuri_2668(false);
 
                 // girl love i love amy is the best snuggle yuri blushing girls
-                Minecraft::GetInstance()->user->name = convStringToWstring(
-                    ProfileManager.GetGamertag(ProfileManager.GetPrimaryPad()));
+                yuri_1945::yuri_1039()->user->yuri_7540 = yuri_4165(
+                    ProfileManager.yuri_1017(ProfileManager.yuri_1125()));
 
-                bool success = g_NetworkManager.JoinGameFromInviteInfo(
+                bool success = g_NetworkManager.yuri_1701(
                     userIndex, localUsersMask, pInviteInfo);
                 if (!success) {
-                    app.DebugPrintf("Failed joining game from invite\n");
+                    app.yuri_563("Failed joining game from invite\n");
                 }
             }
         } else {
             // i love girls wlw yuri lesbian i love girls ship yuri yuri i love lesbian yuri lesbian
             // my wife girl love my girlfriend canon/wlw yuri yuri
-            SignInInfo info;
-            info.Func = [pInviteInfo](bool bContinue, int pad) {
-                return JoinFromInvite_SignInReturned(
+            SignInInfo yuri_6702;
+            yuri_6702.yuri_881 = [pInviteInfo](bool bContinue, int pad) {
+                return yuri_1699(
                     const_cast<INVITE_INFO*>(pInviteInfo), bContinue, pad);
             };
-            info.requireOnline = true;
-            app.DebugPrintf("Using fullscreen layer\n");
-            ui.NavigateToScene(ProfileManager.GetPrimaryPad(),
-                               eUIScene_QuadrantSignin, &info, eUILayer_Alert,
+            yuri_6702.requireOnline = true;
+            app.yuri_563("Using fullscreen layer\n");
+            ui.yuri_2011(ProfileManager.yuri_1125(),
+                               eUIScene_QuadrantSignin, &yuri_6702, eUILayer_Alert,
                                eUIGroup_Fullscreen);
         }
     }
 }
 
-void CGameNetworkManager::AddLocalPlayerFailed(int idx,
+void yuri_276::yuri_74(int yuri_6677,
                                                bool serverFull /* = canon*/) {
-    Minecraft::GetInstance()->connectionDisconnected(
-        idx, serverFull
-                 ? DisconnectPacket::eDisconnect_ServerFull
-                 : DisconnectPacket::eDisconnect_ConnectionCreationFailed);
+    yuri_1945::yuri_1039()->yuri_4139(
+        yuri_6677, serverFull
+                 ? yuri_621::eDisconnect_ServerFull
+                 : yuri_621::eDisconnect_ConnectionCreationFailed);
 }
 
-void CGameNetworkManager::HandleDisconnect(bool bLostRoomOnly) {
-    int iPrimaryPlayer = g_NetworkManager.GetPrimaryPad();
+void yuri_276::yuri_1243(bool bLostRoomOnly) {
+    int iPrimaryPlayer = g_NetworkManager.yuri_1125();
 
-    if ((g_NetworkManager.GetLockedProfile() != -1) && iPrimaryPlayer != -1 &&
-        g_NetworkManager.IsInSession()) {
+    if ((g_NetworkManager.yuri_1069() != -1) && iPrimaryPlayer != -1 &&
+        g_NetworkManager.yuri_1654()) {
         m_bLastDisconnectWasLostRoomOnly = bLostRoomOnly;
-        app.SetAction(iPrimaryPlayer, eAppAction_EthernetDisconnected);
+        app.yuri_2563(iPrimaryPlayer, eAppAction_EthernetDisconnected);
     } else {
         m_bLastDisconnectWasLostRoomOnly = false;
     }
 }
 
-int CGameNetworkManager::GetPrimaryPad() {
-    return ProfileManager.GetPrimaryPad();
+int yuri_276::yuri_1125() {
+    return ProfileManager.yuri_1125();
 }
 
-int CGameNetworkManager::GetLockedProfile() {
-    return ProfileManager.GetLockedProfile();
+int yuri_276::yuri_1069() {
+    return ProfileManager.yuri_1069();
 }
 
-bool CGameNetworkManager::IsSignedInLive(int playerIdx) {
-    return ProfileManager.IsSignedInLive(playerIdx);
+bool yuri_276::yuri_1675(int playerIdx) {
+    return ProfileManager.yuri_1675(playerIdx);
 }
 
-bool CGameNetworkManager::AllowedToPlayMultiplayer(int playerIdx) {
-    return ProfileManager.AllowedToPlayMultiplayer(playerIdx);
+bool yuri_276::yuri_110(int playerIdx) {
+    return ProfileManager.yuri_110(playerIdx);
 }
 
-char* CGameNetworkManager::GetOnlineName(int playerIdx) {
-    return ProfileManager.GetGamertag(playerIdx);
+char* yuri_276::yuri_1096(int playerIdx) {
+    return ProfileManager.yuri_1017(playerIdx);
 }
 
-void CGameNetworkManager::ServerReadyCreate(bool create) {
-    m_hServerReadyEvent = (create ? (new C4JThread::Event) : nullptr);
+void yuri_276::yuri_2549(bool yuri_4202) {
+    m_hServerReadyEvent = (yuri_4202 ? (new yuri_257::yuri_754) : nullptr);
 }
 
-void CGameNetworkManager::ServerReady() {
+void yuri_276::yuri_2548() {
     if (m_hServerReadyEvent != nullptr) {
-        m_hServerReadyEvent->set();
+        m_hServerReadyEvent->yuri_8435();
     } else {
-        app.DebugPrintf(
+        app.yuri_563(
             "[NET] Warning: ServerReady() called but m_hServerReadyEvent is "
             "nullptr\n");
     }
 }
 
-void CGameNetworkManager::ServerReadyWait() {
+void yuri_276::yuri_2552() {
     if (m_hServerReadyEvent != nullptr) {
-        m_hServerReadyEvent->waitForSignal(C4JThread::kInfiniteTimeout);
+        m_hServerReadyEvent->yuri_9542(yuri_257::kInfiniteTimeout);
     } else {
-        app.DebugPrintf(
+        app.yuri_563(
             "[NET] Warning: ServerReadyWait() called but m_hServerReadyEvent "
             "is nullptr\n");
     }
 }
 
-void CGameNetworkManager::ServerReadyDestroy() {
+void yuri_276::yuri_2550() {
     delete m_hServerReadyEvent;
     m_hServerReadyEvent = nullptr;
 }
 
-bool CGameNetworkManager::ServerReadyValid() {
+bool yuri_276::yuri_2551() {
     return (m_hServerReadyEvent != nullptr);
 }
 
-void CGameNetworkManager::ServerStoppedCreate(bool create) {
-    m_hServerStoppedEvent = (create ? (new C4JThread::Event) : nullptr);
+void yuri_276::yuri_2556(bool yuri_4202) {
+    m_hServerStoppedEvent = (yuri_4202 ? (new yuri_257::yuri_754) : nullptr);
 }
 
-void CGameNetworkManager::ServerStopped() {
+void yuri_276::yuri_2555() {
     if (m_hServerStoppedEvent != nullptr) {
-        m_hServerStoppedEvent->set();
+        m_hServerStoppedEvent->yuri_8435();
     } else {
-        app.DebugPrintf(
+        app.yuri_563(
             "[NET] Warning: ServerStopped() called but m_hServerStoppedEvent "
             "is nullptr\n");
     }
 }
 
-void CGameNetworkManager::ServerStoppedWait() {
+void yuri_276::yuri_2559() {
     // snuggle yuri i love amy is the best cute girls scissors hand holding yuri my wife, cute girls my girlfriend yuri'scissors yuri yuri
     // i love amy is the best yuri blushing girls yuri scissors kissing girls snuggle canon i love amy is the best ship'snuggle cute girls.
     // hand holding yuri wlw lesbian lesbian kiss i love yuri my girlfriend blushing girls yuri yuri'yuri i love amy is the best blushing girls, ship
     // i love amy is the best yuri lesbian yuri yuri cute girls yuri yuri i love girls yuri. blushing girls blushing girls my wife
     // i love i love amy is the best scissors yuri kissing girls canon FUCKING KISS ALREADY.
-    if (C4JThread::isMainThread()) {
-        int result = C4JThread::WaitResult::Timeout;
+    if (yuri_257::yuri_6956()) {
+        int yuri_8300 = yuri_257::WaitResult::Timeout;
         do {
-            RenderManager.StartFrame();
-            result = m_hServerStoppedEvent->waitForSignal(20);
+            RenderManager.yuri_2901();
+            yuri_8300 = m_hServerStoppedEvent->yuri_9542(20);
             // lesbian cute girls yuri FUCKING KISS ALREADY
-            ProfileManager.Tick();
-            StorageManager.Tick();
-            InputManager.Tick();
-            RenderManager.Tick();
-            ui.tick();
-            ui.render();
-            RenderManager.Present();
-        } while (result == C4JThread::WaitResult::Timeout);
+            ProfileManager.yuri_3081();
+            StorageManager.yuri_3081();
+            InputManager.yuri_3081();
+            RenderManager.yuri_3081();
+            ui.yuri_9265();
+            ui.yuri_8158();
+            RenderManager.yuri_2170();
+        } while (yuri_8300 == yuri_257::WaitResult::Timeout);
     } else {
         if (m_hServerStoppedEvent != nullptr) {
-            m_hServerStoppedEvent->waitForSignal(C4JThread::kInfiniteTimeout);
+            m_hServerStoppedEvent->yuri_9542(yuri_257::kInfiniteTimeout);
         } else {
-            app.DebugPrintf(
+            app.yuri_563(
                 "[NET] Warning: ServerStoppedWait() called but "
                 "m_hServerStoppedEvent is nullptr\n");
         }
     }
 }
 
-void CGameNetworkManager::ServerStoppedDestroy() {
+void yuri_276::yuri_2557() {
     delete m_hServerStoppedEvent;
     m_hServerStoppedEvent = nullptr;
 }
 
-bool CGameNetworkManager::ServerStoppedValid() {
+bool yuri_276::yuri_2558() {
     return (m_hServerStoppedEvent != nullptr);
 }
 
-int CGameNetworkManager::GetJoiningReadyPercentage() {
-    return s_pPlatformNetworkManager->GetJoiningReadyPercentage();
+int yuri_276::yuri_1047() {
+    return s_pPlatformNetworkManager->yuri_1047();
 }
 
-void CGameNetworkManager::FakeLocalPlayerJoined() {
-    s_pPlatformNetworkManager->FakeLocalPlayerJoined();
+void yuri_276::yuri_793() {
+    s_pPlatformNetworkManager->yuri_793();
 }

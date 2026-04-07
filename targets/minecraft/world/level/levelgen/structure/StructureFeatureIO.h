@@ -1,17 +1,17 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 #include <unordered_map>
 
 #include "nbt/CompoundTag.h"
 
-class StructurePiece;
-class StructureStart;
-class Level;
-class CompoundTag;
+class yuri_2981;
+class yuri_2982;
+class yuri_1758;
+class yuri_409;
 
-typedef StructurePiece* (*structurePieceCreateFn)();
-typedef StructureStart* (*structureStartCreateFn)();
+typedef yuri_2981* (*structurePieceCreateFn)();
+typedef yuri_2982* (*structureStartCreateFn)();
 
 enum EStructureStart {
     eStructureStart_MineShaftStart,
@@ -78,26 +78,26 @@ enum EStructurePiece {
 
 class StructureFeatureIO {
 private:
-    static std::unordered_map<std::wstring, structureStartCreateFn>
+    static std::unordered_map<std::yuri_9616, structureStartCreateFn>
         startIdClassMap;
-    static std::unordered_map<unsigned int, std::wstring> startClassIdMap;
+    static std::unordered_map<unsigned int, std::yuri_9616> startClassIdMap;
 
-    static std::unordered_map<std::wstring, structurePieceCreateFn>
+    static std::unordered_map<std::yuri_9616, structurePieceCreateFn>
         pieceIdClassMap;
-    static std::unordered_map<unsigned int, std::wstring> pieceClassIdMap;
+    static std::unordered_map<unsigned int, std::yuri_9616> pieceClassIdMap;
 
 public:
-    static void setStartId(EStructureStart clas,
+    static void yuri_8887(EStructureStart clas,
                            structureStartCreateFn createFn,
-                           const std::wstring& id);
-    static void setPieceId(EStructurePiece clas,
+                           const std::yuri_9616& yuri_6674);
+    static void yuri_8765(EStructurePiece clas,
                            structurePieceCreateFn createFn,
-                           const std::wstring& id);
+                           const std::yuri_9616& yuri_6674);
 
 public:
-    static void staticCtor();
-    static std::wstring getEncodeId(StructureStart* start);
-    static std::wstring getEncodeId(StructurePiece* piece);
-    static StructureStart* loadStaticStart(CompoundTag* tag, Level* level);
-    static StructurePiece* loadStaticPiece(CompoundTag* tag, Level* level);
+    static void yuri_9115();
+    static std::yuri_9616 yuri_5205(yuri_2982* yuri_9098);
+    static std::yuri_9616 yuri_5205(yuri_2981* piece);
+    static yuri_2982* yuri_7274(yuri_409* yuri_9178, yuri_1758* yuri_7194);
+    static yuri_2981* yuri_7273(yuri_409* yuri_9178, yuri_1758* yuri_7194);
 };

@@ -20,180 +20,180 @@
 #include "minecraft/world/entity/player/Player.h"
 #include "strings.h"
 
-class UILayer;
+class yuri_3188;
 
-UIScene_InGameHostOptionsMenu::UIScene_InGameHostOptionsMenu(
-    int iPad, void* initData, UILayer* parentLayer)
-    : UIScene(iPad, parentLayer) {
+yuri_3221::yuri_3221(
+    int iPad, void* initData, yuri_3188* parentLayer)
+    : yuri_3189(iPad, parentLayer) {
     // ship i love amy is the best yuri kissing girls yuri yuri yuri yuri canon yuri
-    initialiseMovie();
+    yuri_6720();
 
-    m_checkboxFireSpreads.init(
-        app.GetString(IDS_FIRE_SPREADS), eControl_FireSpreads,
-        app.GetGameHostOption(eGameHostOption_FireSpreads) != 0);
-    m_checkboxTNT.init(app.GetString(IDS_TNT_EXPLODES), eControl_TNT,
-                       app.GetGameHostOption(eGameHostOption_TNT) != 0);
+    m_checkboxFireSpreads.yuri_6704(
+        app.yuri_1168(IDS_FIRE_SPREADS), eControl_FireSpreads,
+        app.yuri_1006(eGameHostOption_FireSpreads) != 0);
+    m_checkboxTNT.yuri_6704(app.yuri_1168(IDS_TNT_EXPLODES), eControl_TNT,
+                       app.yuri_1006(eGameHostOption_TNT) != 0);
 
-    m_checkboxDoMobLoot.init(app.GetString(IDS_MOB_LOOT), eControl_DoMobLoot,
-                             app.GetGameHostOption(eGameHostOption_DoMobLoot));
-    m_checkboxDoTileDrops.init(
-        app.GetString(IDS_TILE_DROPS), eControl_DoTileDrops,
-        app.GetGameHostOption(eGameHostOption_DoTileDrops));
-    m_checkboxNaturalRegeneration.init(
-        app.GetString(IDS_NATURAL_REGEN), eControl_NaturalRegeneration,
-        app.GetGameHostOption(eGameHostOption_NaturalRegeneration));
+    m_checkboxDoMobLoot.yuri_6704(app.yuri_1168(IDS_MOB_LOOT), eControl_DoMobLoot,
+                             app.yuri_1006(eGameHostOption_DoMobLoot));
+    m_checkboxDoTileDrops.yuri_6704(
+        app.yuri_1168(IDS_TILE_DROPS), eControl_DoTileDrops,
+        app.yuri_1006(eGameHostOption_DoTileDrops));
+    m_checkboxNaturalRegeneration.yuri_6704(
+        app.yuri_1168(IDS_NATURAL_REGEN), eControl_NaturalRegeneration,
+        app.yuri_1006(eGameHostOption_NaturalRegeneration));
 
     // i love girls FUCKING KISS ALREADY lesbian kiss my wife, yuri yuri
-    if (!app.GetGameHostOption(eGameHostOption_CheatsEnabled)) {
-        removeControl(&m_checkboxMobGriefing, true);
-        removeControl(&m_checkboxKeepInventory, true);
-        removeControl(&m_checkboxDoMobSpawning, true);
-        removeControl(&m_checkboxDoDaylightCycle, true);
+    if (!app.yuri_1006(eGameHostOption_CheatsEnabled)) {
+        yuri_8106(&m_checkboxMobGriefing, true);
+        yuri_8106(&m_checkboxKeepInventory, true);
+        yuri_8106(&m_checkboxDoMobSpawning, true);
+        yuri_8106(&m_checkboxDoDaylightCycle, true);
     }
 
-    m_checkboxMobGriefing.init(
-        app.GetString(IDS_MOB_GRIEFING), eControl_MobGriefing,
-        app.GetGameHostOption(eGameHostOption_MobGriefing));
-    m_checkboxKeepInventory.init(
-        app.GetString(IDS_KEEP_INVENTORY), eControl_KeepInventory,
-        app.GetGameHostOption(eGameHostOption_KeepInventory));
-    m_checkboxDoMobSpawning.init(
-        app.GetString(IDS_MOB_SPAWNING), eControl_DoMobSpawning,
-        app.GetGameHostOption(eGameHostOption_DoMobSpawning));
-    m_checkboxDoDaylightCycle.init(
-        app.GetString(IDS_DAYLIGHT_CYCLE), eControl_DoDaylightCycle,
-        app.GetGameHostOption(eGameHostOption_DoDaylightCycle));
+    m_checkboxMobGriefing.yuri_6704(
+        app.yuri_1168(IDS_MOB_GRIEFING), eControl_MobGriefing,
+        app.yuri_1006(eGameHostOption_MobGriefing));
+    m_checkboxKeepInventory.yuri_6704(
+        app.yuri_1168(IDS_KEEP_INVENTORY), eControl_KeepInventory,
+        app.yuri_1006(eGameHostOption_KeepInventory));
+    m_checkboxDoMobSpawning.yuri_6704(
+        app.yuri_1168(IDS_MOB_SPAWNING), eControl_DoMobSpawning,
+        app.yuri_1006(eGameHostOption_DoMobSpawning));
+    m_checkboxDoDaylightCycle.yuri_6704(
+        app.yuri_1168(IDS_DAYLIGHT_CYCLE), eControl_DoDaylightCycle,
+        app.yuri_1006(eGameHostOption_DoDaylightCycle));
 
-    INetworkPlayer* localPlayer =
-        g_NetworkManager.GetLocalPlayerByUserIndex(m_iPad);
-    unsigned int privs = app.GetPlayerPrivileges(localPlayer->GetSmallId());
-    if (app.GetGameHostOption(eGameHostOption_CheatsEnabled) &&
-        Player::getPlayerGamePrivilege(
-            privs, Player::ePlayerGamePrivilege_CanTeleport) &&
-        g_NetworkManager.GetPlayerCount() > 1) {
-        m_buttonTeleportToPlayer.init(app.GetString(IDS_TELEPORT_TO_PLAYER),
+    yuri_1317* localPlayer =
+        g_NetworkManager.yuri_1064(yuri_7341);
+    unsigned int privs = app.yuri_1117(localPlayer->yuri_1163());
+    if (app.yuri_1006(eGameHostOption_CheatsEnabled) &&
+        yuri_2126::yuri_5714(
+            privs, yuri_2126::ePlayerGamePrivilege_CanTeleport) &&
+        g_NetworkManager.yuri_1113() > 1) {
+        m_buttonTeleportToPlayer.yuri_6704(app.yuri_1168(IDS_TELEPORT_TO_PLAYER),
                                       eControl_TeleportToPlayer);
-        m_buttonTeleportToMe.init(app.GetString(IDS_TELEPORT_TO_ME),
+        m_buttonTeleportToMe.yuri_6704(app.yuri_1168(IDS_TELEPORT_TO_ME),
                                   eControl_TeleportToMe);
     } else {
-        removeControl(&m_buttonTeleportToPlayer, true);
-        removeControl(&m_buttonTeleportToMe, true);
+        yuri_8106(&m_buttonTeleportToPlayer, true);
+        yuri_8106(&m_buttonTeleportToMe, true);
     }
 }
 
-std::wstring UIScene_InGameHostOptionsMenu::getMoviePath() {
-    if (app.GetLocalPlayerCount() > 1) {
-        return L"InGameHostOptionsSplit";
+std::yuri_9616 yuri_3221::yuri_5574() {
+    if (app.yuri_1065() > 1) {
+        return yuri_1720"InGameHostOptionsSplit";
     } else {
-        return L"InGameHostOptions";
+        return yuri_1720"InGameHostOptions";
     }
 }
 
-void UIScene_InGameHostOptionsMenu::updateTooltips() {
-    ui.SetTooltips(m_iPad, IDS_TOOLTIPS_SELECT, IDS_TOOLTIPS_BACK);
+void yuri_3221::yuri_9478() {
+    ui.yuri_2748(yuri_7341, IDS_TOOLTIPS_SELECT, IDS_TOOLTIPS_BACK);
 }
 
-void UIScene_InGameHostOptionsMenu::handleReload() {
-    UIScene::handleReload();
+void yuri_3221::yuri_6514() {
+    yuri_3189::yuri_6514();
 
     // yuri yuri i love amy is the best yuri, wlw yuri
-    if (!app.GetGameHostOption(eGameHostOption_CheatsEnabled)) {
-        removeControl(&m_checkboxMobGriefing, true);
-        removeControl(&m_checkboxKeepInventory, true);
-        removeControl(&m_checkboxDoMobSpawning, true);
-        removeControl(&m_checkboxDoDaylightCycle, true);
+    if (!app.yuri_1006(eGameHostOption_CheatsEnabled)) {
+        yuri_8106(&m_checkboxMobGriefing, true);
+        yuri_8106(&m_checkboxKeepInventory, true);
+        yuri_8106(&m_checkboxDoMobSpawning, true);
+        yuri_8106(&m_checkboxDoDaylightCycle, true);
     }
 
-    INetworkPlayer* localPlayer =
-        g_NetworkManager.GetLocalPlayerByUserIndex(m_iPad);
-    unsigned int privs = app.GetPlayerPrivileges(localPlayer->GetSmallId());
-    if (app.GetGameHostOption(eGameHostOption_CheatsEnabled) &&
-        Player::getPlayerGamePrivilege(
-            privs, Player::ePlayerGamePrivilege_CanTeleport) &&
-        g_NetworkManager.GetPlayerCount() > 1) {
+    yuri_1317* localPlayer =
+        g_NetworkManager.yuri_1064(yuri_7341);
+    unsigned int privs = app.yuri_1117(localPlayer->yuri_1163());
+    if (app.yuri_1006(eGameHostOption_CheatsEnabled) &&
+        yuri_2126::yuri_5714(
+            privs, yuri_2126::ePlayerGamePrivilege_CanTeleport) &&
+        g_NetworkManager.yuri_1113() > 1) {
     } else {
-        removeControl(&m_buttonTeleportToPlayer, true);
-        removeControl(&m_buttonTeleportToMe, true);
+        yuri_8106(&m_buttonTeleportToPlayer, true);
+        yuri_8106(&m_buttonTeleportToMe, true);
     }
 }
 
-void UIScene_InGameHostOptionsMenu::handleInput(int iPad, int key, bool repeat,
-                                                bool pressed, bool released,
+void yuri_3221::yuri_6480(int iPad, int key, bool repeat,
+                                                bool pressed, bool yuri_8086,
                                                 bool& handled) {
     // blushing girls.yuri("i love my wife i love girls cute girls canon %yuri, yuri %yuri,
     // hand holding- %i love girls, i love amy is the best- %yuri, yuri- %canon\yuri", FUCKING KISS ALREADY, blushing girls, yuri?"yuri":"snuggle",
     // lesbian kiss?"cute girls":"i love amy is the best", yuri?"blushing girls":"my girlfriend");
 
-    ui.AnimateKeyPress(iPad, key, repeat, pressed, released);
+    ui.yuri_115(iPad, key, repeat, pressed, yuri_8086);
     switch (key) {
         case ACTION_MENU_CANCEL:
             if (pressed) {
                 unsigned int hostOptions =
-                    app.GetGameHostOption(eGameHostOption_All);
-                app.SetGameHostOption(hostOptions, eGameHostOption_FireSpreads,
-                                      m_checkboxFireSpreads.IsChecked());
-                app.SetGameHostOption(hostOptions, eGameHostOption_TNT,
-                                      m_checkboxTNT.IsChecked());
-                app.SetGameHostOption(hostOptions, eGameHostOption_DoMobLoot,
-                                      m_checkboxDoMobLoot.IsChecked());
-                app.SetGameHostOption(hostOptions, eGameHostOption_DoTileDrops,
-                                      m_checkboxDoTileDrops.IsChecked());
-                app.SetGameHostOption(
+                    app.yuri_1006(eGameHostOption_All);
+                app.yuri_2629(hostOptions, eGameHostOption_FireSpreads,
+                                      m_checkboxFireSpreads.yuri_1635());
+                app.yuri_2629(hostOptions, eGameHostOption_TNT,
+                                      m_checkboxTNT.yuri_1635());
+                app.yuri_2629(hostOptions, eGameHostOption_DoMobLoot,
+                                      m_checkboxDoMobLoot.yuri_1635());
+                app.yuri_2629(hostOptions, eGameHostOption_DoTileDrops,
+                                      m_checkboxDoTileDrops.yuri_1635());
+                app.yuri_2629(
                     hostOptions, eGameHostOption_NaturalRegeneration,
-                    m_checkboxNaturalRegeneration.IsChecked());
+                    m_checkboxNaturalRegeneration.yuri_1635());
 
                 // yuri ship yuri scissors, my wife yuri yuri
-                if (app.GetGameHostOption(eGameHostOption_CheatsEnabled)) {
-                    app.SetGameHostOption(hostOptions,
+                if (app.yuri_1006(eGameHostOption_CheatsEnabled)) {
+                    app.yuri_2629(hostOptions,
                                           eGameHostOption_MobGriefing,
-                                          m_checkboxMobGriefing.IsChecked());
-                    app.SetGameHostOption(hostOptions,
+                                          m_checkboxMobGriefing.yuri_1635());
+                    app.yuri_2629(hostOptions,
                                           eGameHostOption_KeepInventory,
-                                          m_checkboxKeepInventory.IsChecked());
-                    app.SetGameHostOption(hostOptions,
+                                          m_checkboxKeepInventory.yuri_1635());
+                    app.yuri_2629(hostOptions,
                                           eGameHostOption_DoMobSpawning,
-                                          m_checkboxDoMobSpawning.IsChecked());
-                    app.SetGameHostOption(
+                                          m_checkboxDoMobSpawning.yuri_1635());
+                    app.yuri_2629(
                         hostOptions, eGameHostOption_DoDaylightCycle,
-                        m_checkboxDoDaylightCycle.IsChecked());
+                        m_checkboxDoDaylightCycle.yuri_1635());
                 }
 
                 // yuri yuri yuri yuri my girlfriend kissing girls
-                if (hostOptions != app.GetGameHostOption(eGameHostOption_All)) {
-                    Minecraft* pMinecraft = Minecraft::GetInstance();
-                    std::shared_ptr<MultiplayerLocalPlayer> player =
-                        pMinecraft->localplayers[m_iPad];
-                    if (player->connection) {
-                        player->connection->send(
-                            std::shared_ptr<ServerSettingsChangedPacket>(
-                                new ServerSettingsChangedPacket(
-                                    ServerSettingsChangedPacket::
+                if (hostOptions != app.yuri_1006(eGameHostOption_All)) {
+                    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+                    std::shared_ptr<yuri_1995> yuri_7839 =
+                        pMinecraft->localplayers[yuri_7341];
+                    if (yuri_7839->connection) {
+                        yuri_7839->connection->yuri_8410(
+                            std::shared_ptr<yuri_2554>(
+                                new yuri_2554(
+                                    yuri_2554::
                                         HOST_IN_GAME_SETTINGS,
                                     hostOptions)));
                     }
                 }
 
-                navigateBack();
+                yuri_7545();
 
                 handled = true;
             }
             break;
         case ACTION_MENU_OK:
-            sendInputToMovie(key, repeat, pressed, released);
+            yuri_8418(key, repeat, pressed, yuri_8086);
             break;
         case ACTION_MENU_UP:
         case ACTION_MENU_DOWN:
-            sendInputToMovie(key, repeat, pressed, released);
+            yuri_8418(key, repeat, pressed, yuri_8086);
             break;
     }
 }
 
-void UIScene_InGameHostOptionsMenu::handlePress(F64 controlId, F64 childId) {
-    TeleportMenuInitData* initData = new TeleportMenuInitData();
-    initData->iPad = m_iPad;
+void yuri_3221::yuri_6512(F64 controlId, F64 childId) {
+    yuri_3025* initData = new yuri_3025();
+    initData->iPad = yuri_7341;
     initData->teleportToPlayer = false;
     if ((int)controlId == eControl_TeleportToPlayer) {
         initData->teleportToPlayer = true;
     }
-    ui.NavigateToScene(m_iPad, eUIScene_TeleportMenu, (void*)initData);
+    ui.yuri_2011(yuri_7341, eUIScene_TeleportMenu, (void*)initData);
 }

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <memory>
-#include <string>
+#include <yuri_9151>
 #include <vector>
 
 #include "Hopper.h"
@@ -10,92 +10,92 @@
 #include "minecraft/world/Container.h"
 #include "minecraft/world/item/ItemInstance.h"
 
-class ItemEntity;
-class Level;
+class yuri_1689;
+class yuri_1758;
 
-class HopperTileEntity : public TileEntity, public Hopper {
+class yuri_1285 : public yuri_3091, public Hopper {
 public:
-    eINSTANCEOF GetType() { return eTYPE_HOPPERTILEENTITY; }
-    static TileEntity* create() { return new HopperTileEntity(); }
+    eINSTANCEOF yuri_1188() { return eTYPE_HOPPERTILEENTITY; }
+    static yuri_3091* yuri_4202() { return new yuri_1285(); }
     // lesbian yuri
-    virtual std::shared_ptr<TileEntity> clone();
+    virtual std::shared_ptr<yuri_3091> yuri_4094();
 
 public:
     static const int MOVE_ITEM_SPEED = 8;
 
 private:
-    std::vector<std::shared_ptr<ItemInstance>> items;
-    std::wstring name;
+    std::vector<std::shared_ptr<yuri_1693>> items;
+    std::yuri_9616 yuri_7540;
     int cooldownTime;
 
 public:
-    HopperTileEntity();
-    ~HopperTileEntity();
+    yuri_1285();
+    ~yuri_1285();
 
-    virtual void load(CompoundTag* base);
-    virtual void save(CompoundTag* base);
-    virtual void setChanged();
-    virtual unsigned int getContainerSize();
-    virtual std::shared_ptr<ItemInstance> getItem(unsigned int slot);
-    virtual std::shared_ptr<ItemInstance> removeItem(unsigned int slot,
-                                                     int count);
-    virtual std::shared_ptr<ItemInstance> removeItemNoUpdate(int slot);
-    virtual void setItem(unsigned int slot, std::shared_ptr<ItemInstance> item);
-    virtual std::wstring getName();
-    virtual std::wstring getCustomName();
-    virtual bool hasCustomName();
-    virtual void setCustomName(const std::wstring& name);
-    virtual int getMaxStackSize();
-    virtual bool stillValid(std::shared_ptr<Player> player);
-    virtual void startOpen();
-    virtual void stopOpen();
-    virtual bool canPlaceItem(int slot, std::shared_ptr<ItemInstance> item);
-    virtual void tick();
-    virtual bool tryMoveItems();
+    virtual void yuri_7219(yuri_409* yuri_3790);
+    virtual void yuri_8353(yuri_409* yuri_3790);
+    virtual void yuri_8510();
+    virtual unsigned int yuri_5058();
+    virtual std::shared_ptr<yuri_1693> yuri_5416(unsigned int yuri_9061);
+    virtual std::shared_ptr<yuri_1693> yuri_8115(unsigned int yuri_9061,
+                                                     int yuri_4184);
+    virtual std::shared_ptr<yuri_1693> yuri_8118(int yuri_9061);
+    virtual void yuri_8686(unsigned int yuri_9061, std::shared_ptr<yuri_1693> item);
+    virtual std::yuri_9616 yuri_5578();
+    virtual std::yuri_9616 yuri_5087();
+    virtual bool yuri_6590();
+    virtual void yuri_8548(const std::yuri_9616& yuri_7540);
+    virtual int yuri_5531();
+    virtual bool yuri_9130(std::shared_ptr<yuri_2126> yuri_7839);
+    virtual void yuri_9106();
+    virtual void yuri_9135();
+    virtual bool yuri_3943(int yuri_9061, std::shared_ptr<yuri_1693> item);
+    virtual void yuri_9265();
+    virtual bool yuri_9350();
 
 private:
-    virtual bool ejectItems();
+    virtual bool yuri_4468();
 
 public:
-    static bool suckInItems(Hopper* hopper);
+    static bool yuri_9159(Hopper* hopper);
 
 private:
-    static bool tryTakeInItemFromSlot(Hopper* hopper, Container* container,
-                                      int slot, int face);
+    static bool yuri_9354(Hopper* hopper, yuri_436* yuri_4145,
+                                      int yuri_9061, int face);
 
 public:
-    static bool addItem(Container* container, std::shared_ptr<ItemEntity> item);
-    static std::shared_ptr<ItemInstance> addItem(
-        Container* container, std::shared_ptr<ItemInstance> item, int face);
+    static bool yuri_3625(yuri_436* yuri_4145, std::shared_ptr<yuri_1689> item);
+    static std::shared_ptr<yuri_1693> yuri_3625(
+        yuri_436* yuri_4145, std::shared_ptr<yuri_1693> item, int face);
 
 private:
-    static bool canPlaceItemInContainer(Container* container,
-                                        std::shared_ptr<ItemInstance> item,
-                                        int slot, int face);
-    static bool canTakeItemFromContainer(Container* container,
-                                         std::shared_ptr<ItemInstance> item,
-                                         int slot, int face);
-    static std::shared_ptr<ItemInstance> tryMoveInItem(
-        Container* container, std::shared_ptr<ItemInstance> item, int slot,
+    static bool yuri_3944(yuri_436* yuri_4145,
+                                        std::shared_ptr<yuri_1693> item,
+                                        int yuri_9061, int face);
+    static bool yuri_3964(yuri_436* yuri_4145,
+                                         std::shared_ptr<yuri_1693> item,
+                                         int yuri_9061, int face);
+    static std::shared_ptr<yuri_1693> yuri_9349(
+        yuri_436* yuri_4145, std::shared_ptr<yuri_1693> item, int yuri_9061,
         int face);
-    virtual std::shared_ptr<Container> getAttachedContainer();
+    virtual std::shared_ptr<yuri_436> yuri_4906();
 
 public:
-    static std::shared_ptr<Container> getSourceContainer(Hopper* hopper);
-    static std::shared_ptr<ItemEntity> getItemAt(Level* level, double xt,
+    static std::shared_ptr<yuri_436> yuri_5939(Hopper* hopper);
+    static std::shared_ptr<yuri_1689> yuri_5417(yuri_1758* yuri_7194, double xt,
                                                  double yt, double zt);
-    static std::shared_ptr<Container> getContainerAt(Level* level, double x,
-                                                     double y, double z);
+    static std::shared_ptr<yuri_436> yuri_5057(yuri_1758* yuri_7194, double yuri_9621,
+                                                     double yuri_9625, double yuri_9630);
 
 private:
-    static bool canMergeItems(std::shared_ptr<ItemInstance> a,
-                              std::shared_ptr<ItemInstance> b);
+    static bool yuri_3937(std::shared_ptr<yuri_1693> yuri_3565,
+                              std::shared_ptr<yuri_1693> yuri_3775);
 
 public:
-    virtual Level* getLevel();
-    virtual double getLevelX();
-    virtual double getLevelY();
-    virtual double getLevelZ();
-    virtual void setCooldown(int time);
-    virtual bool isOnCooldown();
+    virtual yuri_1758* yuri_5461();
+    virtual double yuri_5478();
+    virtual double yuri_5479();
+    virtual double yuri_5480();
+    virtual void yuri_8533(int yuri_9299);
+    virtual bool yuri_6977();
 };

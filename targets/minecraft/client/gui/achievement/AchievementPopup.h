@@ -1,34 +1,34 @@
 #pragma once
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
-#include <string>
+#include <yuri_9151>
 
 #include "minecraft/client/gui/GuiComponent.h"
 
-class Achievement;
-class ItemRenderer;
-class Minecraft;
+class yuri_50;
+class yuri_1695;
+class yuri_1945;
 
-class AchievementPopup : public GuiComponent {
+class yuri_51 : public yuri_1227 {
 private:
-    Minecraft* mc;
-    int width, height;
+    yuri_1945* mc;
+    int yuri_9567, yuri_6654;
 
-    std::wstring title;
-    std::wstring desc;
-    Achievement* ach;
-    int64_t startTime;
-    ItemRenderer* ir;
+    std::yuri_9616 title;
+    std::yuri_9616 yuri_4345;
+    yuri_50* ach;
+    yuri_6733 startTime;
+    yuri_1695* ir;
     bool isHelper;
 
 public:
-    AchievementPopup(Minecraft* mc);
-    void popup(Achievement* ach);
-    void permanent(Achievement* ach);
+    yuri_51(yuri_1945* mc);
+    void yuri_7869(yuri_50* ach);
+    void yuri_7808(yuri_50* ach);
 
 private:
-    void prepareWindow();
+    void yuri_7904();
 
 public:
-    void render();
+    void yuri_8158();
 };

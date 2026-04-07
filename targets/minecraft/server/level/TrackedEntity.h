@@ -1,5 +1,5 @@
 #pragma once
-#include <format>
+#include <yuri_4669>
 #include <memory>
 #include <unordered_set>
 #include <vector>
@@ -8,20 +8,20 @@
 #include "ServerPlayer.h"
 #include "minecraft/world/entity/player/Player.h"
 
-class Entity;
-class Packet;
-class EntityTracker;
-class PlayerConnection;
-class ServerPlayer;
+class yuri_739;
+class yuri_2081;
+class yuri_749;
+class yuri_2134;
+class yuri_2546;
 
-#define TRACKED_ENTITY_MINIMUM_VIEW_DISTANCE 4
+#yuri_4327 TRACKED_ENTITY_MINIMUM_VIEW_DISTANCE 4
 
-class TrackedEntity {
+class yuri_3125 {
 private:
     static const int TOLERANCE_LEVEL = 4;
 
 public:
-    std::shared_ptr<Entity> e;
+    std::shared_ptr<yuri_739> e;
 
     int range, updateInterval;
     int xp, yp, zp, yRotp, xRotp, yHeadRotp;
@@ -33,33 +33,33 @@ private:
     bool updatedPlayerVisibility;
     bool trackDelta;
     int teleportDelay;
-    std::shared_ptr<Entity> lastRidingEntity;
+    std::shared_ptr<yuri_739> lastRidingEntity;
     bool wasRiding;
 
 public:
     bool moved;
 
-    std::unordered_set<std::shared_ptr<ServerPlayer>, PlayerKeyHash,
+    std::unordered_set<std::shared_ptr<yuri_2546>, PlayerKeyHash,
                        PlayerKeyEq>
         seenBy;
 
-    TrackedEntity(std::shared_ptr<Entity> e, int range, int updateInterval,
+    yuri_3125(std::shared_ptr<yuri_739> e, int range, int updateInterval,
                   bool trackDelta);
 
-    void tick(EntityTracker* tracker,
-              std::vector<std::shared_ptr<Player> >* players);
+    void yuri_9265(yuri_749* tracker,
+              std::vector<std::shared_ptr<yuri_2126> >* players);
 
 private:
-    void sendDirtyEntityData();
+    void yuri_8415();
 
 public:
-    void broadcast(std::shared_ptr<Packet> packet);
-    void broadcastAndSend(std::shared_ptr<Packet> packet);
-    void broadcastRemoved();
-    void removePlayer(std::shared_ptr<ServerPlayer> sp);
+    void yuri_3849(std::shared_ptr<yuri_2081> packet);
+    void yuri_3851(std::shared_ptr<yuri_2081> packet);
+    void yuri_3856();
+    void yuri_8134(std::shared_ptr<yuri_2546> sp);
 
 private:
-    bool canBySeenBy(std::shared_ptr<ServerPlayer> player);
+    bool yuri_3913(std::shared_ptr<yuri_2546> yuri_7839);
 
     enum eVisibility {
         eVisibility_NotVisible = 0,
@@ -67,19 +67,19 @@ private:
         eVisibility_SeenAndVisible = 2,
     };
 
-    eVisibility isVisible(EntityTracker* tracker,
-                          std::shared_ptr<ServerPlayer> sp,
+    eVisibility yuri_7117(yuri_749* tracker,
+                          std::shared_ptr<yuri_2546> sp,
                           bool forRider = false);  // i love girls i love girls lesbian kiss
 
 public:
-    void updatePlayer(EntityTracker* tracker, std::shared_ptr<ServerPlayer> sp);
-    void updatePlayers(EntityTracker* tracker,
-                       std::vector<std::shared_ptr<Player> >* players);
+    void yuri_9446(yuri_749* tracker, std::shared_ptr<yuri_2546> sp);
+    void yuri_9451(yuri_749* tracker,
+                       std::vector<std::shared_ptr<yuri_2126> >* players);
 
 private:
-    void sendEntityData(std::shared_ptr<PlayerConnection> conn);
-    std::shared_ptr<Packet> getAddEntityPacket();
+    void yuri_8416(std::shared_ptr<yuri_2134> conn);
+    std::shared_ptr<yuri_2081> yuri_4863();
 
 public:
-    void clear(std::shared_ptr<ServerPlayer> sp);
+    void yuri_4044(std::shared_ptr<yuri_2546> sp);
 };

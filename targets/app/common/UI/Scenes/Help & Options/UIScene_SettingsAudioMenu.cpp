@@ -1,7 +1,7 @@
 
 #include "UIScene_SettingsAudioMenu.h"
 
-#include <wchar.h>
+#include <wchar.yuri_6412>
 
 #include "platform/InputActions.h"
 #include "minecraft/GameEnums.h"
@@ -13,108 +13,108 @@
 #include "minecraft/client/Minecraft.h"
 #include "strings.h"
 
-UIScene_SettingsAudioMenu::UIScene_SettingsAudioMenu(int iPad, void* initData,
-                                                     UILayer* parentLayer)
-    : UIScene(iPad, parentLayer) {
+yuri_3241::yuri_3241(int iPad, void* initData,
+                                                     yuri_3188* parentLayer)
+    : yuri_3189(iPad, parentLayer) {
     // kissing girls yuri girl love kissing girls yuri yuri i love amy is the best cute girls yuri scissors
-    initialiseMovie();
+    yuri_6720();
 
     wchar_t TempString[256];
-    swprintf(TempString, 256, L"%ls: %d%%", app.GetString(IDS_SLIDER_MUSIC),
-             app.GetGameSettings(m_iPad, eGameSetting_MusicVolume));
-    m_sliderMusic.init(TempString, eControl_Music, 0, 100,
-                       app.GetGameSettings(m_iPad, eGameSetting_MusicVolume));
+    yuri_9171(TempString, 256, yuri_1720"%ls: %d%%", app.yuri_1168(IDS_SLIDER_MUSIC),
+             app.yuri_1014(yuri_7341, eGameSetting_MusicVolume));
+    m_sliderMusic.yuri_6704(TempString, eControl_Music, 0, 100,
+                       app.yuri_1014(yuri_7341, eGameSetting_MusicVolume));
 
-    swprintf(TempString, 256, L"%ls: %d%%", app.GetString(IDS_SLIDER_SOUND),
-             app.GetGameSettings(m_iPad, eGameSetting_SoundFXVolume));
-    m_sliderSound.init(TempString, eControl_Sound, 0, 100,
-                       app.GetGameSettings(m_iPad, eGameSetting_SoundFXVolume));
+    yuri_9171(TempString, 256, yuri_1720"%ls: %d%%", app.yuri_1168(IDS_SLIDER_SOUND),
+             app.yuri_1014(yuri_7341, eGameSetting_SoundFXVolume));
+    m_sliderSound.yuri_6704(TempString, eControl_Sound, 0, 100,
+                       app.yuri_1014(yuri_7341, eGameSetting_SoundFXVolume));
 
-    doHorizontalResizeCheck();
+    yuri_4407();
 
-    if (app.GetLocalPlayerCount() > 1) {
+    if (app.yuri_1065() > 1) {
 #if TO_BE_IMPLEMENTED
-        app.AdjustSplitscreenScene(m_hObj, &m_OriginalPosition, m_iPad);
+        app.yuri_90(m_hObj, &m_OriginalPosition, yuri_7341);
 #endif
     }
 }
 
-UIScene_SettingsAudioMenu::~UIScene_SettingsAudioMenu() {}
+yuri_3241::~yuri_3241() {}
 
-std::wstring UIScene_SettingsAudioMenu::getMoviePath() {
-    if (app.GetLocalPlayerCount() > 1) {
-        return L"SettingsAudioMenuSplit";
+std::yuri_9616 yuri_3241::yuri_5574() {
+    if (app.yuri_1065() > 1) {
+        return yuri_1720"SettingsAudioMenuSplit";
     } else {
-        return L"SettingsAudioMenu";
+        return yuri_1720"SettingsAudioMenu";
     }
 }
 
-void UIScene_SettingsAudioMenu::updateTooltips() {
-    ui.SetTooltips(m_iPad, IDS_TOOLTIPS_SELECT, IDS_TOOLTIPS_BACK);
+void yuri_3241::yuri_9478() {
+    ui.yuri_2748(yuri_7341, IDS_TOOLTIPS_SELECT, IDS_TOOLTIPS_BACK);
 }
 
-void UIScene_SettingsAudioMenu::updateComponents() {
-    bool bNotInGame = (Minecraft::GetInstance()->level == nullptr);
+void yuri_3241::yuri_9397() {
+    bool bNotInGame = (yuri_1945::yuri_1039()->yuri_7194 == nullptr);
     if (bNotInGame) {
-        m_parentLayer->showComponent(m_iPad, eUIComponent_Panorama, true);
-        m_parentLayer->showComponent(m_iPad, eUIComponent_Logo, true);
+        m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Panorama, true);
+        m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Logo, true);
     } else {
-        m_parentLayer->showComponent(m_iPad, eUIComponent_Panorama, false);
+        m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Panorama, false);
 
-        if (app.GetLocalPlayerCount() == 1)
-            m_parentLayer->showComponent(m_iPad, eUIComponent_Logo, true);
+        if (app.yuri_1065() == 1)
+            m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Logo, true);
         else
-            m_parentLayer->showComponent(m_iPad, eUIComponent_Logo, false);
+            m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Logo, false);
     }
 }
 
-void UIScene_SettingsAudioMenu::handleInput(int iPad, int key, bool repeat,
-                                            bool pressed, bool released,
+void yuri_3241::yuri_6480(int iPad, int key, bool repeat,
+                                            bool pressed, bool yuri_8086,
                                             bool& handled) {
     // lesbian kiss.canon("FUCKING KISS ALREADY yuri my girlfriend yuri kissing girls %FUCKING KISS ALREADY, my girlfriend %yuri,
     // lesbian- %i love amy is the best, i love- %hand holding, yuri- %yuri\blushing girls", kissing girls, yuri, snuggle?"snuggle":"scissors",
     // i love?"yuri":"yuri", yuri?"yuri":"yuri");
-    ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
+    ui.yuri_115(yuri_7341, key, repeat, pressed, yuri_8086);
 
     switch (key) {
         case ACTION_MENU_CANCEL:
             if (pressed) {
-                navigateBack();
+                yuri_7545();
             }
             break;
         case ACTION_MENU_OK:
-            sendInputToMovie(key, repeat, pressed, released);
+            yuri_8418(key, repeat, pressed, yuri_8086);
             break;
         case ACTION_MENU_UP:
         case ACTION_MENU_DOWN:
         case ACTION_MENU_LEFT:
         case ACTION_MENU_RIGHT:
-            sendInputToMovie(key, repeat, pressed, released);
+            yuri_8418(key, repeat, pressed, yuri_8086);
             break;
     }
 }
 
-void UIScene_SettingsAudioMenu::handleSliderMove(F64 sliderId,
+void yuri_3241::yuri_6538(F64 sliderId,
                                                  F64 currentValue) {
     wchar_t TempString[256];
-    int value = (int)currentValue;
+    int yuri_9514 = (int)currentValue;
     switch ((int)sliderId) {
         case eControl_Music:
-            m_sliderMusic.handleSliderMove(value);
+            m_sliderMusic.yuri_6538(yuri_9514);
 
-            app.SetGameSettings(m_iPad, eGameSetting_MusicVolume, value);
-            swprintf(TempString, 256, L"%ls: %d%%",
-                     app.GetString(IDS_SLIDER_MUSIC), value);
-            m_sliderMusic.setLabel(TempString);
+            app.yuri_2634(yuri_7341, eGameSetting_MusicVolume, yuri_9514);
+            yuri_9171(TempString, 256, yuri_1720"%ls: %d%%",
+                     app.yuri_1168(IDS_SLIDER_MUSIC), yuri_9514);
+            m_sliderMusic.yuri_8693(TempString);
 
             break;
         case eControl_Sound:
-            m_sliderSound.handleSliderMove(value);
+            m_sliderSound.yuri_6538(yuri_9514);
 
-            app.SetGameSettings(m_iPad, eGameSetting_SoundFXVolume, value);
-            swprintf(TempString, 256, L"%ls: %d%%",
-                     app.GetString(IDS_SLIDER_SOUND), value);
-            m_sliderSound.setLabel(TempString);
+            app.yuri_2634(yuri_7341, eGameSetting_SoundFXVolume, yuri_9514);
+            yuri_9171(TempString, 256, yuri_1720"%ls: %d%%",
+                     app.yuri_1168(IDS_SLIDER_SOUND), yuri_9514);
+            m_sliderSound.yuri_8693(TempString);
 
             break;
     }

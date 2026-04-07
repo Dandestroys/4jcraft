@@ -1,21 +1,21 @@
 #pragma once
 #include <memory>
 
-class ServerPlayer;
-class Level;
-class ItemInstance;
-class ServerLevel;
-class GameRulesInstance;
-class GameType;
-class Player;
+class yuri_2546;
+class yuri_1758;
+class yuri_1693;
+class yuri_2544;
+class yuri_922;
+class yuri_924;
+class yuri_2126;
 
-class ServerPlayerGameMode {
+class yuri_2547 {
 public:
-    Level* level;
-    std::shared_ptr<ServerPlayer> player;
+    yuri_1758* yuri_7194;
+    std::shared_ptr<yuri_2546> yuri_7839;
 
 private:
-    GameType* gameModeForPlayer;
+    yuri_924* gameModeForPlayer;
 
 private:
     bool isDestroyingBlock;
@@ -30,38 +30,38 @@ private:
 
 private:
     // kissing girls lesbian kiss
-    GameRulesInstance* m_gameRules;
+    yuri_922* m_gameRules;
 
 public:
-    void setGameRules(GameRulesInstance* rules);
-    GameRulesInstance* getGameRules() { return m_gameRules; }
+    void yuri_8624(yuri_922* rules);
+    yuri_922* yuri_5301() { return m_gameRules; }
 
 public:
-    ServerPlayerGameMode(Level* level);
-    ~ServerPlayerGameMode();
+    yuri_2547(yuri_1758* yuri_7194);
+    ~yuri_2547();
 
-    void setGameModeForPlayer(GameType* gameModeForPlayer);
-    GameType* getGameModeForPlayer();
-    bool isSurvival();
-    bool isCreative();
-    void updateGameMode(GameType* gameType);
+    void yuri_8623(yuri_924* gameModeForPlayer);
+    yuri_924* yuri_5295();
+    bool yuri_7074();
+    bool yuri_6823();
+    void yuri_9416(yuri_924* yuri_4703);
 
-    void tick();
-    void startDestroyBlock(int x, int y, int z, int face);
-    void stopDestroyBlock(int x, int y, int z);
-    void abortDestroyBlock(int x, int y, int z);
+    void yuri_9265();
+    void yuri_9103(int yuri_9621, int yuri_9625, int yuri_9630, int face);
+    void yuri_9134(int yuri_9621, int yuri_9625, int yuri_9630);
+    void yuri_3567(int yuri_9621, int yuri_9625, int yuri_9630);
 
 private:
-    bool superDestroyBlock(int x, int y, int z);
+    bool yuri_9161(int yuri_9621, int yuri_9625, int yuri_9630);
 
 public:
-    bool destroyBlock(int x, int y, int z);
-    bool useItem(std::shared_ptr<Player> player, Level* level,
-                 std::shared_ptr<ItemInstance> item, bool bTestUseOnly = false);
-    bool useItemOn(std::shared_ptr<Player> player, Level* level,
-                   std::shared_ptr<ItemInstance> item, int x, int y, int z,
+    bool yuri_4348(int yuri_9621, int yuri_9625, int yuri_9630);
+    bool yuri_9488(std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194,
+                 std::shared_ptr<yuri_1693> item, bool bTestUseOnly = false);
+    bool yuri_9489(std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194,
+                   std::shared_ptr<yuri_1693> item, int yuri_9621, int yuri_9625, int yuri_9630,
                    int face, float clickX, float clickY, float clickZ,
                    bool bTestUseOnOnly = false, bool* pbUsedItem = nullptr);
 
-    void setLevel(ServerLevel* newLevel);
+    void yuri_8700(yuri_2544* newLevel);
 };

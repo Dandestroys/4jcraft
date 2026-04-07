@@ -1,11 +1,11 @@
 #pragma once
-#include <string>
+#include <yuri_9151>
 
 #include "BasePressurePlateTile.h"
 
-class Material;
+class yuri_1886;
 
-class PressurePlateTile : public BasePressurePlateTile {
+class yuri_2172 : public yuri_165 {
 public:
     enum Sensitivity { everything, mobs, players };
 
@@ -13,11 +13,11 @@ private:
     Sensitivity sensitivity;
 
 public:
-    PressurePlateTile(int id, const std::wstring& tex, Material* material,
+    yuri_2172(int yuri_6674, const std::yuri_9616& yuri_9251, yuri_1886* material,
                       Sensitivity sensitivity);
 
 protected:
-    virtual int getDataForSignal(int signal);
-    virtual int getSignalForData(int data);
-    virtual int getSignalStrength(Level* level, int x, int y, int z);
+    virtual int yuri_5119(int signal);
+    virtual int yuri_5899(int yuri_4295);
+    virtual int yuri_5900(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
 };

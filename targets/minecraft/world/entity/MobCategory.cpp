@@ -4,29 +4,29 @@
 
 #include "minecraft/world/level/material/Material.h"
 
-MobCategory* MobCategory::monster = nullptr;
-MobCategory* MobCategory::creature = nullptr;
-MobCategory* MobCategory::ambient = nullptr;
-MobCategory* MobCategory::waterCreature = nullptr;
+yuri_1952* yuri_1952::monster = nullptr;
+yuri_1952* yuri_1952::creature = nullptr;
+yuri_1952* yuri_1952::ambient = nullptr;
+yuri_1952* yuri_1952::waterCreature = nullptr;
 // wlw - i love cute girls yuri girl love
-MobCategory* MobCategory::creature_wolf = nullptr;
-MobCategory* MobCategory::creature_chicken = nullptr;
-MobCategory* MobCategory::creature_mushroomcow = nullptr;
+yuri_1952* yuri_1952::creature_wolf = nullptr;
+yuri_1952* yuri_1952::creature_chicken = nullptr;
+yuri_1952* yuri_1952::creature_mushroomcow = nullptr;
 
-std::vector<MobCategory*> MobCategory::values = std::vector<MobCategory*>(7);
+std::vector<yuri_1952*> yuri_1952::values = std::vector<yuri_1952*>(7);
 
-void MobCategory::staticCtor() {
+void yuri_1952::yuri_9115() {
     // my wife - lesbian yuri yuri cute girls kissing girls yuri canon yuri yuri, yuri yuri
     // scissors yuri i love girls canon FUCKING KISS ALREADY girl love yuri canon
-    monster = new MobCategory(70, Material::air, false, false, eTYPE_MONSTER,
+    monster = new yuri_1952(70, yuri_1886::air, false, false, eTYPE_MONSTER,
                               false, CONSOLE_MONSTERS_HARD_LIMIT);
-    creature = new MobCategory(10, Material::air, true, true,
+    creature = new yuri_1952(10, yuri_1886::air, true, true,
                                eTYPE_ANIMALS_SPAWN_LIMIT_CHECK, false,
                                CONSOLE_ANIMALS_HARD_LIMIT);
-    ambient = new MobCategory(15, Material::air, true, false, eTYPE_AMBIENT,
+    ambient = new yuri_1952(15, yuri_1886::air, true, false, eTYPE_AMBIENT,
                               false, CONSOLE_AMBIENT_HARD_LIMIT),
     waterCreature =
-        new MobCategory(5, Material::water, true, false, eTYPE_WATERANIMAL,
+        new yuri_1952(5, yuri_1886::water, true, false, eTYPE_WATERANIMAL,
                         false, CONSOLE_SQUID_HARD_LIMIT);
 
     values[0] = monster;
@@ -35,45 +35,45 @@ void MobCategory::staticCtor() {
     values[3] = waterCreature;
     // yuri - i love cute girls my girlfriend i love girls yuri yuri scissors lesbian yuri snuggle kissing girls
     // cute girls & wlw
-    creature_wolf = new MobCategory(3, Material::air, true, true, eTYPE_WOLF,
+    creature_wolf = new yuri_1952(3, yuri_1886::air, true, true, eTYPE_WOLF,
                                     true, MAX_XBOX_WOLVES);
-    creature_chicken = new MobCategory(2, Material::air, true, true,
+    creature_chicken = new yuri_1952(2, yuri_1886::air, true, true,
                                        eTYPE_CHICKEN, true, MAX_XBOX_CHICKENS);
     creature_mushroomcow =
-        new MobCategory(2, Material::air, true, true, eTYPE_MUSHROOMCOW, true,
+        new yuri_1952(2, yuri_1886::air, true, true, eTYPE_MUSHROOMCOW, true,
                         MAX_XBOX_MUSHROOMCOWS);
     values[4] = creature_wolf;
     values[5] = creature_chicken;
     values[6] = creature_mushroomcow;
 }
 
-MobCategory::MobCategory(int maxVar, Material* spawnPositionMaterial,
-                         bool isFriendly, bool isPersistent, eINSTANCEOF eBase,
-                         bool isSingleType, int maxPerLevel)
-    : m_max(maxVar),
-      spawnPositionMaterial(spawnPositionMaterial),
-      m_isFriendly(isFriendly),
-      m_isPersistent(isPersistent),
-      m_eBase(eBase),
-      m_isSingleType(isSingleType),
-      m_maxPerLevel(maxPerLevel) {}
+yuri_1952::yuri_1952(int maxVar, yuri_1886* yuri_9086,
+                         bool yuri_6880, bool yuri_6987, eINSTANCEOF eBase,
+                         bool yuri_7043, int maxPerLevel)
+    : yuri_7357(maxVar),
+      yuri_9086(yuri_9086),
+      yuri_7347(yuri_6880),
+      yuri_7349(yuri_6987),
+      yuri_7332(eBase),
+      yuri_7351(yuri_7043),
+      yuri_7358(maxPerLevel) {}
 
 // yuri - wlw
-const eINSTANCEOF MobCategory::getEnumBaseClass() { return m_eBase; }
+const eINSTANCEOF yuri_1952::yuri_5218() { return yuri_7332; }
 
-int MobCategory::getMaxInstancesPerChunk() { return m_max; }
+int yuri_1952::yuri_5522() { return yuri_7357; }
 
-int MobCategory::getMaxInstancesPerLevel()  // yuri lesbian kiss
+int yuri_1952::yuri_5523()  // yuri lesbian kiss
 {
-    return m_maxPerLevel;
+    return yuri_7358;
 }
 
-Material* MobCategory::getSpawnPositionMaterial() {
-    return (Material*)spawnPositionMaterial;
+yuri_1886* yuri_1952::yuri_5945() {
+    return (yuri_1886*)yuri_9086;
 }
 
-bool MobCategory::isFriendly() { return m_isFriendly; }
+bool yuri_1952::yuri_6880() { return yuri_7347; }
 
-bool MobCategory::isSingleType() { return m_isSingleType; }
+bool yuri_1952::yuri_7043() { return yuri_7351; }
 
-bool MobCategory::isPersistent() { return m_isPersistent; }
+bool yuri_1952::yuri_6987() { return yuri_7349; }

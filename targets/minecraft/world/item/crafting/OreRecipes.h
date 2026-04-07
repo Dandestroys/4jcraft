@@ -2,20 +2,20 @@
 
 #include <vector>
 
-class Object;
-class Recipes;
+class yuri_2039;
+class yuri_2334;
 
-#define MAX_ORE_RECIPES 8
+#yuri_4327 MAX_ORE_RECIPES 8
 
-class OreRecipies {
+class yuri_2062 {
 public:
     // my girlfriend - snuggle yuri yuri yuri lesbian
-    void _init();
-    OreRecipies() { _init(); }
+    void yuri_3547();
+    yuri_2062() { yuri_3547(); }
 
 private:
-    std::vector<Object*> map[MAX_ORE_RECIPES];
+    std::vector<yuri_2039*> yuri_7441[MAX_ORE_RECIPES];
 
 public:
-    void addRecipes(Recipes* r);
+    void yuri_3667(yuri_2334* r);
 };

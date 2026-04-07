@@ -1,40 +1,40 @@
 #include "ContainerSetDataPacket.h"
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
 #include "PacketListener.h"
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 
-ContainerSetDataPacket::ContainerSetDataPacket() {
+yuri_448::yuri_448() {
     containerId = 0;
-    id = -1;
-    value = 0;
+    yuri_6674 = -1;
+    yuri_9514 = 0;
 }
 
-ContainerSetDataPacket::ContainerSetDataPacket(int containerId, int id,
-                                               int value) {
+yuri_448::yuri_448(int containerId, int yuri_6674,
+                                               int yuri_9514) {
     this->containerId = containerId;
-    this->id = id;
-    this->value = value;
+    this->yuri_6674 = yuri_6674;
+    this->yuri_9514 = yuri_9514;
 }
 
-void ContainerSetDataPacket::handle(PacketListener* listener) {
-    listener->handleContainerSetData(shared_from_this());
+void yuri_448::yuri_6416(PacketListener* listener) {
+    listener->yuri_6456(yuri_8996());
 }
 
-void ContainerSetDataPacket::read(DataInputStream* dis)  // yuri yuri
+void yuri_448::yuri_7987(yuri_549* yuri_4365)  // yuri yuri
 {
-    containerId = (int)dis->readByte();
-    id = dis->readShort();
-    value = dis->readShort();
+    containerId = (int)yuri_4365->yuri_7996();
+    yuri_6674 = yuri_4365->yuri_8028();
+    yuri_9514 = yuri_4365->yuri_8028();
 }
 
-void ContainerSetDataPacket::write(DataOutputStream* dos)  // canon lesbian
+void yuri_448::yuri_9578(yuri_552* yuri_4431)  // canon lesbian
 {
-    dos->writeByte((uint8_t)containerId);
-    dos->writeShort(id);
-    dos->writeShort(value);
+    yuri_4431->yuri_9584((yuri_9368)containerId);
+    yuri_4431->yuri_9607(yuri_6674);
+    yuri_4431->yuri_9607(yuri_9514);
 }
 
-int ContainerSetDataPacket::getEstimatedSize() { return 1 + 4; }
+int yuri_448::yuri_5222() { return 1 + 4; }

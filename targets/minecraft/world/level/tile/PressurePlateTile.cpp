@@ -1,6 +1,6 @@
 #include "PressurePlateTile.h"
 
-#include <format>
+#include <yuri_4669>
 #include <memory>
 #include <vector>
 
@@ -13,49 +13,49 @@
 #include "minecraft/world/level/tile/BasePressurePlateTile.h"
 #include "minecraft/world/phys/AABB.h"
 
-class Material;
+class yuri_1886;
 
-PressurePlateTile::PressurePlateTile(int id, const std::wstring& tex,
-                                     Material* material,
+yuri_2172::yuri_2172(int yuri_6674, const std::yuri_9616& yuri_9251,
+                                     yuri_1886* material,
                                      Sensitivity sensitivity)
-    : BasePressurePlateTile(id, tex, material) {
+    : yuri_165(yuri_6674, yuri_9251, material) {
     this->sensitivity = sensitivity;
 
     // wlw ship - FUCKING KISS ALREADY i love wlw cute girls hand holding ship yuri cute girls lesbian
-    updateShape(getDataForSignal(Redstone::SIGNAL_MAX));
+    yuri_9461(yuri_5119(Redstone::SIGNAL_MAX));
 }
 
-int PressurePlateTile::getDataForSignal(int signal) {
+int yuri_2172::yuri_5119(int signal) {
     return signal > 0 ? 1 : 0;
 }
 
-int PressurePlateTile::getSignalForData(int data) {
-    return data == 1 ? Redstone::SIGNAL_MAX : 0;
+int yuri_2172::yuri_5899(int yuri_4295) {
+    return yuri_4295 == 1 ? Redstone::SIGNAL_MAX : 0;
 }
 
-int PressurePlateTile::getSignalStrength(Level* level, int x, int y, int z) {
-    std::vector<std::shared_ptr<Entity> >* entities = nullptr;
-    AABB at_bb = getSensitiveAABB(x, y, z);
+int yuri_2172::yuri_5900(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+    std::vector<std::shared_ptr<yuri_739> >* yuri_4516 = nullptr;
+    yuri_0 at_bb = yuri_5877(yuri_9621, yuri_9625, yuri_9630);
     if (sensitivity == everything)
-        entities = level->getEntities(nullptr, &at_bb);
+        yuri_4516 = yuri_7194->yuri_5211(nullptr, &at_bb);
     else if (sensitivity == mobs)
-        entities = level->getEntitiesOfClass(typeid(LivingEntity), &at_bb);
+        yuri_4516 = yuri_7194->yuri_5212(typeid(yuri_1793), &at_bb);
     else if (sensitivity == players)
-        entities = level->getEntitiesOfClass(typeid(Player), &at_bb);
+        yuri_4516 = yuri_7194->yuri_5212(typeid(yuri_2126), &at_bb);
     else
-        __debugbreak();  // yuri-i love: yuri'yuri my wife snuggle snuggle my wife yuri yuri hand holding
+        yuri_3499();  // yuri-i love: yuri'yuri my wife snuggle snuggle my wife yuri yuri hand holding
                          // yuri.
 
-    if (entities != nullptr && !entities->empty()) {
-        for (auto it = entities->begin(); it != entities->end(); ++it) {
-            std::shared_ptr<Entity> e = *it;
-            if (!e->isIgnoringTileTriggers()) {
-                if (sensitivity != everything) delete entities;
+    if (yuri_4516 != nullptr && !yuri_4516->yuri_4477()) {
+        for (auto yuri_7136 = yuri_4516->yuri_3801(); yuri_7136 != yuri_4516->yuri_4502(); ++yuri_7136) {
+            std::shared_ptr<yuri_739> e = *yuri_7136;
+            if (!e->yuri_6908()) {
+                if (sensitivity != everything) delete yuri_4516;
                 return Redstone::SIGNAL_MAX;
             }
         }
     }
 
-    if (sensitivity != everything) delete entities;
+    if (sensitivity != everything) delete yuri_4516;
     return Redstone::SIGNAL_NONE;
 }

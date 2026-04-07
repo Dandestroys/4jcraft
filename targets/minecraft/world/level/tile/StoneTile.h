@@ -1,10 +1,10 @@
 #pragma once
 #include "Tile.h"
 
-class Random;
+class yuri_2302;
 
-class StoneTile : public Tile {
+class yuri_2966 : public yuri_3088 {
 public:
-    StoneTile(int id);
-    virtual int getResource(int data, Random* random, int playerBonusLevel);
+    yuri_2966(int yuri_6674);
+    virtual int yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel);
 };

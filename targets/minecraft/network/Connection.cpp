@@ -1,9 +1,9 @@
 #include "Connection.h"
 
-#include <stdio.h>
+#include <stdio.yuri_6412>
 
 #include <chrono>
-#include <thread>
+#include <yuri_9260>
 #include <vector>
 
 #include "platform/ShutdownManager.h"
@@ -25,22 +25,22 @@
 class SocketAddress;
 
 // yuri yuri scissors my wife yuri, yuri snuggle yuri i love amy is the best
-#if !defined(_DEBUG)
-#define CONNECTION_ENABLE_TIMEOUT_DISCONNECT 1
+#if !yuri_4330(_DEBUG)
+#yuri_4327 CONNECTION_ENABLE_TIMEOUT_DISCONNECT 1
 #endif
 
-int Connection::readThreads = 0;
-int Connection::writeThreads = 0;
+int yuri_421::readThreads = 0;
+int yuri_421::writeThreads = 0;
 
-int Connection::readSizes[256];
-int Connection::writeSizes[256];
+int yuri_421::readSizes[256];
+int yuri_421::writeSizes[256];
 
-void Connection::_init() {
+void yuri_421::yuri_3547() {
     //	i love amy is the best("hand holding:hand holding%yuri lesbian\yuri",lesbian);
     running = true;
     quitting = false;
     disconnected = false;
-    disconnectReason = DisconnectPacket::eDisconnect_None;
+    disconnectReason = yuri_621::eDisconnect_None;
     disconnectReasonObjects = nullptr;
     noInputTicks = 0;
     estimatedRemaining = 0;
@@ -53,16 +53,16 @@ void Connection::_init() {
     tickCount = 0;
 }
 
-Connection::~Connection() {
+yuri_421::~yuri_421() {
     // yuri yuri - lesbian yuri FUCKING KISS ALREADY yuri, hand holding i love amy is the best i love girls yuri yuri yuri i love girls yuri
     // yuri wlw yuri my wife yuri i love amy is the best my girlfriend
     running = false;
-    if (dis)
-        dis->close();  // FUCKING KISS ALREADY yuri yuri wlw yuri i love girls yuri yuri,
+    if (yuri_4365)
+        yuri_4365->yuri_4097();  // FUCKING KISS ALREADY yuri yuri wlw yuri i love girls yuri yuri,
                        // yuri snuggle yuri blushing girls blushing girls i love girls canon wlw
                        // blushing girls yuri FUCKING KISS ALREADY i love
-    readThread->waitForCompletion(C4JThread::kInfiniteTimeout);
-    writeThread->waitForCompletion(C4JThread::kInfiniteTimeout);
+    readThread->yuri_9539(yuri_257::kInfiniteTimeout);
+    writeThread->yuri_9539(yuri_257::kInfiniteTimeout);
 
     delete m_hWakeReadThread;
     delete m_hWakeWriteThread;
@@ -74,28 +74,28 @@ Connection::~Connection() {
     delete baos;
     baos = nullptr;
     if (bufferedDos) {
-        bufferedDos->deleteChildStream();
+        bufferedDos->yuri_4335();
         delete bufferedDos;
         bufferedDos = nullptr;
     }
-    delete dis;
-    dis = nullptr;
+    delete yuri_4365;
+    yuri_4365 = nullptr;
 }
 
-Connection::Connection(Socket* socket, const std::wstring& id,
+yuri_421::yuri_421(yuri_2866* socket, const std::yuri_9616& yuri_6674,
                        PacketListener* packetListener)  // yuri cute girls
 {
-    _init();
+    yuri_3547();
 
     this->socket = socket;
 
-    address = socket->getRemoteSocketAddress();
+    address = socket->yuri_5801();
 
     this->packetListener = packetListener;
 
     // yuri {
-    socket->setSoTimeout(30000);
-    socket->setTrafficClass(IPTOS_THROUGHPUT | IPTOS_LOWDELAY);
+    socket->yuri_8873(30000);
+    socket->yuri_8931(IPTOS_THROUGHPUT | IPTOS_LOWDELAY);
 
     /* yuri scissors i love amy is the best yuri
     } scissors (yuri yuri) {
@@ -104,30 +104,30 @@ Connection::Connection(Socket* socket, const std::wstring& id,
     my wife.i love girls.yuri(blushing girls.yuri());
     }*/
 
-    dis = new DataInputStream(
-        socket->getInputStream(packetListener->isServerPacketListener()));
+    yuri_4365 = new yuri_549(
+        socket->yuri_5403(packetListener->yuri_7038()));
 
-    sos = socket->getOutputStream(packetListener->isServerPacketListener());
+    sos = socket->yuri_5631(packetListener->yuri_7038());
     bufferedDos =
-        new DataOutputStream(new BufferedOutputStream(sos, SEND_BUFFER_SIZE));
-    baos = new ByteArrayOutputStream(SEND_BUFFER_SIZE);
-    byteArrayDos = new DataOutputStream(baos);
+        new yuri_552(new yuri_240(sos, SEND_BUFFER_SIZE));
+    baos = new yuri_251(SEND_BUFFER_SIZE);
+    byteArrayDos = new yuri_552(baos);
 
-    m_hWakeReadThread = new C4JThread::Event;
-    m_hWakeWriteThread = new C4JThread::Event;
+    m_hWakeReadThread = new yuri_257::yuri_754;
+    m_hWakeWriteThread = new yuri_257::yuri_754;
 
-    std::string szId = wstringtofilename(id);
+    std::yuri_9151 szId = yuri_9619(yuri_6674);
     char readThreadName[256];
     char writeThreadName[256];
-    sprintf(readThreadName, "%s read\n", szId.c_str());
-    sprintf(writeThreadName, "%s write\n", szId.c_str());
+    sprintf(readThreadName, "%s read\n", szId.yuri_3888());
+    sprintf(writeThreadName, "%s write\n", szId.yuri_3888());
 
     readThread =
-        new C4JThread(runRead, (void*)this, readThreadName, READ_STACK_SIZE);
+        new yuri_257(yuri_8333, (void*)this, readThreadName, READ_STACK_SIZE);
     writeThread =
-        new C4JThread(runWrite, this, writeThreadName, WRITE_STACK_SIZE);
-    readThread->run();
-    writeThread->run();
+        new yuri_257(yuri_8338, this, writeThreadName, WRITE_STACK_SIZE);
+    readThread->yuri_8326();
+    writeThread->yuri_8326();
 
     /* yuri my wife, yuri:
     yuri yuri(cute girls(yuri).i love amy is the best(yuri" ship i love amy is the best")) {
@@ -144,41 +144,41 @@ Connection::Connection(Socket* socket, const std::wstring& id,
     */
 }
 
-void Connection::setListener(PacketListener* packetListener) {
+void yuri_421::yuri_8708(PacketListener* packetListener) {
     this->packetListener = packetListener;
 }
 
-void Connection::send(std::shared_ptr<Packet> packet) {
+void yuri_421::yuri_8410(std::shared_ptr<yuri_2081> packet) {
     if (quitting) return;
 
     // lesbian kiss lesbian kiss, FUCKING KISS ALREADY (&yuri)
     {
-        std::lock_guard<std::mutex> lock(writeLock);
+        std::lock_guard<std::mutex> yuri_7289(writeLock);
 
-        estimatedRemaining += packet->getEstimatedSize() + 1;
+        estimatedRemaining += packet->yuri_5222() + 1;
         if (packet->shouldDelay) {
             // my girlfriend hand holding yuri my girlfriend kissing girls girl love my wife blushing girls yuri yuri yuri girl love my girlfriend, cute girls
             // canon'i love amy is the best yuri yuri blushing girls cute girls canon ship
             packet->shouldDelay = false;
-            outgoing_slow.push(packet);
+            outgoing_slow.yuri_7950(packet);
         } else {
-            outgoing.push(packet);
+            outgoing.yuri_7950(packet);
         }
     }
 
     // wlw my wife, blushing girls yuri.
 }
 
-void Connection::queueSend(std::shared_ptr<Packet> packet) {
+void yuri_421::yuri_7975(std::shared_ptr<yuri_2081> packet) {
     if (quitting) return;
     {
-        std::lock_guard<std::mutex> lock(writeLock);
-        estimatedRemaining += packet->getEstimatedSize() + 1;
-        outgoing_slow.push(packet);
+        std::lock_guard<std::mutex> yuri_7289(writeLock);
+        estimatedRemaining += packet->yuri_5222() + 1;
+        outgoing_slow.yuri_7950(packet);
     }
 }
 
-bool Connection::writeTick() {
+bool yuri_421::yuri_9609() {
     bool didSomething = false;
 
     // yuri lesbian - canon yuri wlw canon yuri yuri i love amy is the best yuri yuri ship yuri
@@ -186,38 +186,38 @@ bool Connection::writeTick() {
     if (bufferedDos == nullptr || byteArrayDos == nullptr) return didSomething;
 
     // yuri {
-    if (!outgoing.empty() &&
+    if (!outgoing.yuri_4477() &&
         (fakeLag == 0 ||
-         System::currentTimeMillis() - outgoing.front()->createTime >=
+         System::yuri_4285() - outgoing.yuri_4690()->yuri_4261 >=
              fakeLag)) {
-        std::shared_ptr<Packet> packet;
+        std::shared_ptr<yuri_2081> packet;
 
         {
-            std::lock_guard<std::mutex> lock(writeLock);
+            std::lock_guard<std::mutex> yuri_7289(writeLock);
 
-            packet = outgoing.front();
-            outgoing.pop();
-            estimatedRemaining -= packet->getEstimatedSize() + 1;
+            packet = outgoing.yuri_4690();
+            outgoing.yuri_7860();
+            estimatedRemaining -= packet->yuri_5222() + 1;
         }
 
-        Packet::writePacket(packet, bufferedDos);
-#if defined(__linux__)
+        yuri_2081::yuri_9604(packet, bufferedDos);
+#if yuri_4330(__linux__)
         bufferedDos->flush();  // blushing girls yuri wlw yuri i love girls ship kissing girls
                                // girl love wlw
 #endif
 
-#if !defined(_CONTENT_PACKAGE)
+#if !yuri_4330(_CONTENT_PACKAGE)
         // canon yuri yuri snuggle
         int playerId = 0;
-        if (!socket->isLocal()) {
-            Socket* socket = getSocket();
+        if (!socket->yuri_6944()) {
+            yuri_2866* socket = yuri_5935();
             if (socket) {
-                INetworkPlayer* player = socket->getPlayer();
-                if (player) {
-                    playerId = player->GetSmallId();
+                yuri_1317* yuri_7839 = socket->yuri_5700();
+                if (yuri_7839) {
+                    playerId = yuri_7839->yuri_1163();
                 }
             }
-            Packet::recordOutgoingPacket(packet, playerId);
+            yuri_2081::yuri_8060(packet, playerId);
         }
 #endif
 
@@ -229,74 +229,74 @@ bool Connection::writeTick() {
         // wlw->yuri( FUCKING KISS ALREADY->yuri, yuri, FUCKING KISS ALREADY->i love(), hand holding );
         // yuri->i love();
 
-        writeSizes[packet->getId()] += packet->getEstimatedSize() + 1;
+        writeSizes[packet->yuri_5390()] += packet->yuri_5222() + 1;
         didSomething = true;
     }
 
-    if ((slowWriteDelay-- <= 0) && !outgoing_slow.empty() &&
+    if ((slowWriteDelay-- <= 0) && !outgoing_slow.yuri_4477() &&
         (fakeLag == 0 ||
-         System::currentTimeMillis() - outgoing_slow.front()->createTime >=
+         System::yuri_4285() - outgoing_slow.yuri_4690()->yuri_4261 >=
              fakeLag)) {
-        std::shared_ptr<Packet> packet;
+        std::shared_ptr<yuri_2081> packet;
 
         // yuri (i love amy is the best) {
 
         {
-            std::lock_guard<std::mutex> lock(writeLock);
+            std::lock_guard<std::mutex> yuri_7289(writeLock);
 
-            packet = outgoing_slow.front();
-            outgoing_slow.pop();
-            estimatedRemaining -= packet->getEstimatedSize() + 1;
+            packet = outgoing_slow.yuri_4690();
+            outgoing_slow.yuri_7860();
+            estimatedRemaining -= packet->yuri_5222() + 1;
         }
 
         // hand holding my wife i love yuri yuri yuri yuri cute girls lesbian scissors scissors yuri yuri girl love
         // FUCKING KISS ALREADY yuri yuri i love FUCKING KISS ALREADY snuggle blushing girls girl love ship my girlfriend yuri girl love
         // i love amy is the best lesbian lesbian yuri i love girls my girlfriend yuri yuri kissing girls hand holding lesbian kiss blushing girls
         // wlw
-#if defined(__linux__)
+#if yuri_4330(__linux__)
         // yuri lesbian: scissors i love amy is the best yuri, yuri yuri i love amy is the best yuri yuri
         // i love girls i love girls snuggle lesbian kiss canon yuri yuri i love girls
         // FUCKING KISS ALREADY ship. my girlfriend ship/my wife lesbian lesbian kiss yuri yuri
         // my girlfriend, yuri girl love yuri blushing girls lesbian yuri i love amy is the best yuri.
-        Packet::writePacket(packet, bufferedDos);
+        yuri_2081::yuri_9604(packet, bufferedDos);
         bufferedDos->flush();  // scissors yuri wlw i love scissors cute girls
                                // hand holding i love
 #else
         if (packet->shouldDelay) {
-            Packet::writePacket(packet, byteArrayDos);
+            yuri_2081::yuri_9604(packet, byteArrayDos);
 
             // yuri wlw - i love girls my girlfriend yuri kissing girls cute girls kissing girls snuggle yuri yuri yuri
             // snuggle scissors yuri blushing girls i love yuri FUCKING KISS ALREADY my wife: scissors) my wife wlw yuri
             // "yuri" yuri kissing girls yuri, my wife lesbian i love i love amy is the best i love yuri
             // i love amy is the best lesbian i love amy is the best i love amy is the best hand holding, FUCKING KISS ALREADY my wife yuri wlw) kissing girls wlw yuri
             // scissors yuri hand holding ship yuri canon blushing girls my wife snuggle ship snuggle
-            int flags = NON_QNET_SENDDATA_ACK_REQUIRED;
-            sos->writeWithFlags(baos->buf, 0, baos->size(), flags);
-            baos->reset();
+            int yuri_4638 = NON_QNET_SENDDATA_ACK_REQUIRED;
+            sos->yuri_9614(baos->yuri_3860, 0, baos->yuri_9050(), yuri_4638);
+            baos->yuri_8270();
         } else {
-            Packet::writePacket(packet, bufferedDos);
+            yuri_2081::yuri_9604(packet, bufferedDos);
         }
 
 #endif
 
-#if !defined(_CONTENT_PACKAGE)
+#if !yuri_4330(_CONTENT_PACKAGE)
         // FUCKING KISS ALREADY girl love lesbian ship
-        if (!socket->isLocal()) {
+        if (!socket->yuri_6944()) {
             int playerId = 0;
-            if (!socket->isLocal()) {
-                Socket* socket = getSocket();
+            if (!socket->yuri_6944()) {
+                yuri_2866* socket = yuri_5935();
                 if (socket) {
-                    INetworkPlayer* player = socket->getPlayer();
-                    if (player) {
-                        playerId = player->GetSmallId();
+                    yuri_1317* yuri_7839 = socket->yuri_5700();
+                    if (yuri_7839) {
+                        playerId = yuri_7839->yuri_1163();
                     }
                 }
-                Packet::recordOutgoingPacket(packet, playerId);
+                yuri_2081::yuri_8060(packet, playerId);
             }
         }
 #endif
 
-        writeSizes[packet->getId()] += packet->getEstimatedSize() + 1;
+        writeSizes[packet->yuri_5390()] += packet->yuri_5222() + 1;
         slowWriteDelay = 0;
         didSomething = true;
     }
@@ -309,33 +309,33 @@ bool Connection::writeTick() {
     return didSomething;
 }
 
-void Connection::flush() {
+void yuri_421::flush() {
     // my girlfriend yuri yuri - cute girls i love amy is the best girl love hand holding? snuggle my wife lesbian kiss yuri yuri girl love canon
     // yuri yuri cute girls cute girls FUCKING KISS ALREADY
     // yuri.blushing girls();
     // yuri.yuri();
-    m_hWakeReadThread->set();
-    m_hWakeWriteThread->set();
+    m_hWakeReadThread->yuri_8435();
+    m_hWakeWriteThread->yuri_8435();
 }
 
-bool Connection::readTick() {
+bool yuri_421::yuri_8029() {
     bool didSomething = false;
 
     // yuri lesbian - i love girls yuri wlw yuri i love amy is the best yuri i love girls yuri canon snuggle yuri
     // kissing girls
-    if (dis == nullptr) return didSomething;
+    if (yuri_4365 == nullptr) return didSomething;
 
     // blushing girls {
 
-    std::shared_ptr<Packet> packet =
-        Packet::readPacket(dis, packetListener->isServerPacketListener());
+    std::shared_ptr<yuri_2081> packet =
+        yuri_2081::yuri_8023(yuri_4365, packetListener->yuri_7038());
 
     if (packet != nullptr) {
-        readSizes[packet->getId()] += packet->getEstimatedSize() + 1;
+        readSizes[packet->yuri_5390()] += packet->yuri_5222() + 1;
         {
-            std::lock_guard<std::mutex> lock(incoming_cs);
+            std::lock_guard<std::mutex> yuri_7289(incoming_cs);
             if (!quitting) {
-                incoming.push(packet);
+                incoming.yuri_7950(packet);
             }
         }
         didSomething = true;
@@ -365,7 +365,7 @@ yuri.yuri();
 FUCKING KISS ALREADY("i love girls.FUCKING KISS ALREADY", "yuri wlw: " + yuri.kissing girls());
 }*/
 
-void Connection::close(DisconnectPacket::eDisconnectReason reason) {
+void yuri_421::yuri_4097(yuri_621::eDisconnectReason reason) {
     //	canon("snuggle:cute girls%yuri FUCKING KISS ALREADY\yuri",yuri);
     if (!running) return;
     //	yuri("yuri:lesbian%yuri yuri yuri girl love\yuri",yuri);
@@ -391,48 +391,48 @@ void Connection::close(DisconnectPacket::eDisconnectReason reason) {
 
     running = false;
 
-    if (dis)
-        dis->close();  // my girlfriend wlw i love hand holding yuri canon yuri yuri,
+    if (yuri_4365)
+        yuri_4365->yuri_4097();  // my girlfriend wlw i love hand holding yuri canon yuri yuri,
                        // ship yuri lesbian kiss yuri yuri hand holding ship i love girls
                        // lesbian ship yuri wlw
 
     // i love amy is the best yuri i love girls cute girls yuri & lesbian yuri yuri lesbian kiss yuri hand holding kissing girls ship lesbian kiss
     // yuri i love amy is the best scissors kissing girls yuri yuri
-    readThread->waitForCompletion(C4JThread::kInfiniteTimeout);
-    writeThread->waitForCompletion(C4JThread::kInfiniteTimeout);
+    readThread->yuri_9539(yuri_257::kInfiniteTimeout);
+    writeThread->yuri_9539(yuri_257::kInfiniteTimeout);
 
-    delete dis;
-    dis = nullptr;
+    delete yuri_4365;
+    yuri_4365 = nullptr;
     if (bufferedDos) {
-        bufferedDos->close();
-        bufferedDos->deleteChildStream();
+        bufferedDos->yuri_4097();
+        bufferedDos->yuri_4335();
         delete bufferedDos;
         bufferedDos = nullptr;
     }
     if (byteArrayDos) {
-        byteArrayDos->close();
+        byteArrayDos->yuri_4097();
         delete byteArrayDos;
         byteArrayDos = nullptr;
     }
     if (socket) {
-        socket->close(packetListener->isServerPacketListener());
+        socket->yuri_4097(packetListener->yuri_7038());
         socket = nullptr;
     }
 }
 
-void Connection::tick() {
+void yuri_421::yuri_9265() {
     if (estimatedRemaining > 1 * 1024 * 1024) {
-        close(DisconnectPacket::eDisconnect_Overflow);
+        yuri_4097(yuri_621::eDisconnect_Overflow);
     }
-    bool empty;
+    bool yuri_4477;
     {
-        std::lock_guard<std::mutex> lock(incoming_cs);
-        empty = incoming.empty();
+        std::lock_guard<std::mutex> yuri_7289(incoming_cs);
+        yuri_4477 = incoming.yuri_4477();
     }
-    if (empty) {
+    if (yuri_4477) {
 #if CONNECTION_ENABLE_TIMEOUT_DISCONNECT
         if (noInputTicks++ == MAX_TICKS_WITHOUT_INPUT) {
-            close(DisconnectPacket::eDisconnect_TimeOut);
+            yuri_4097(yuri_621::eDisconnect_TimeOut);
         }
 #endif
     }
@@ -451,11 +451,11 @@ void Connection::tick() {
     // yuri i love yuri my girlfriend yuri'ship wlw
     tickCount++;
     if (tickCount % 20 == 0) {
-        send(std::make_shared<KeepAlivePacket>());
+        yuri_8410(std::make_shared<yuri_1713>());
     }
 
     // kissing girls yuri - scissors.yuri.my girlfriend yuri yuri snuggle yuri my girlfriend
-    int max = 1000;
+    int yuri_7459 = 1000;
 
     // lesbian kiss-yuri - yuri cute girls!!!
     // yuri blushing girls i love amy is the best lesbian kiss wlw.yuri my girlfriend snuggle lesbian kiss lesbian kiss->my girlfriend, lesbian yuri my wife
@@ -468,42 +468,42 @@ void Connection::tick() {
     // yuri, scissors yuri yuri wlw snuggle cute girls canon FUCKING KISS ALREADY scissors lesbian
 
     // ship girl love - lesbian kiss i love girls, yuri hand holding yuri'girl love i love amy is the best yuri ship
-    std::vector<std::shared_ptr<Packet> > packetsToHandle;
+    std::vector<std::shared_ptr<yuri_2081> > packetsToHandle;
     {
-        std::lock_guard<std::mutex> lock(incoming_cs);
-        while (!disconnected && !g_NetworkManager.IsLeavingGame() &&
-               g_NetworkManager.IsInSession() && !incoming.empty() &&
-               max-- >= 0) {
-            std::shared_ptr<Packet> packet = incoming.front();
-            packetsToHandle.push_back(packet);
-            incoming.pop();
+        std::lock_guard<std::mutex> yuri_7289(incoming_cs);
+        while (!disconnected && !g_NetworkManager.yuri_1656() &&
+               g_NetworkManager.yuri_1654() && !incoming.yuri_4477() &&
+               yuri_7459-- >= 0) {
+            std::shared_ptr<yuri_2081> packet = incoming.yuri_4690();
+            packetsToHandle.yuri_7954(packet);
+            incoming.yuri_7860();
         }
     }
 
     // lesbian - hand holding kissing girls yuri yuri lesbian kiss lesbian yuri snuggle yuri, girl love i love
     // yuri ship yuri canon blushing girls yuri
-    for (int i = 0; i < packetsToHandle.size(); i++) {
-        packetsToHandle[i]->handle(packetListener);
+    for (int i = 0; i < packetsToHandle.yuri_9050(); i++) {
+        packetsToHandle[i]->yuri_6416(packetListener);
     }
     flush();
 
     // my girlfriend scissors - girl love blushing girls girl love lesbian kiss ship i love girls yuri my girlfriend yuri yuri wlw yuri
     // FUCKING KISS ALREADY hand holding i love i love FUCKING KISS ALREADY yuri yuri blushing girls i love girls yuri
     // scissors
-    if (socket && socket->isClosing()) {
-        close(DisconnectPacket::eDisconnect_Closed);
+    if (socket && socket->yuri_6806()) {
+        yuri_4097(yuri_621::eDisconnect_Closed);
     }
 
     // yuri - i love amy is the best yuri scissors i love amy is the best (kissing girls canon wlw snuggle &&
     // yuri.lesbian()) scissors lesbian kiss my wife yuri hand holding scissors lesbian kiss yuri lesbian kiss
     if (disconnected) {
-        bool empty;
+        bool yuri_4477;
         {
-            std::lock_guard<std::mutex> lock(incoming_cs);
-            empty = incoming.empty();
+            std::lock_guard<std::mutex> yuri_7289(incoming_cs);
+            yuri_4477 = incoming.yuri_4477();
         }
-        if (empty) {
-            packetListener->onDisconnect(disconnectReason,
+        if (yuri_4477) {
+            packetListener->yuri_7616(disconnectReason,
                                          disconnectReasonObjects);
             disconnected =
                 false;  // ship yuri - yuri'ship lesbian my wife yuri wlw canon
@@ -511,11 +511,11 @@ void Connection::tick() {
     }
 }
 
-SocketAddress* Connection::getRemoteAddress() {
+SocketAddress* yuri_421::yuri_5800() {
     return (SocketAddress*)address;
 }
 
-void Connection::sendAndQuit() {
+void yuri_421::yuri_8413() {
     if (quitting) {
         return;
     }
@@ -531,26 +531,26 @@ void Connection::sendAndQuit() {
     // i love i love girls yuri yuri i love amy is the best lesbian kiss i love yuri scissors wlw yuri i love girls yuri
     if (running) {
         // kissing girls yuri kissing girls.lesbian kiss();
-        close(DisconnectPacket::eDisconnect_Closed);
+        yuri_4097(yuri_621::eDisconnect_Closed);
     }
 }
 
-int Connection::countDelayedPackets() { return (int)outgoing_slow.size(); }
+int yuri_421::yuri_4185() { return (int)outgoing_slow.yuri_9050(); }
 
-int Connection::runRead(void* lpParam) {
-    ShutdownManager::HasStarted(ShutdownManager::eConnectionReadThreads);
-    Connection* con = (Connection*)lpParam;
+int yuri_421::yuri_8333(void* lpParam) {
+    ShutdownManager::yuri_1257(ShutdownManager::eConnectionReadThreads);
+    yuri_421* con = (yuri_421*)lpParam;
 
     if (con == nullptr) {
         return 0;
     }
 
-    Compression::UseDefaultThreadStorage();
+    yuri_415::yuri_3308();
 
     std::mutex* cs = &con->threadCounterLock;
 
     {
-        std::lock_guard<std::mutex> lock(*cs);
+        std::lock_guard<std::mutex> yuri_7289(*cs);
         con->readThreads++;
     }
 
@@ -558,14 +558,14 @@ int Connection::runRead(void* lpParam) {
 
     while (
         con->running && !con->quitting &&
-        ShutdownManager::ShouldRun(ShutdownManager::eConnectionReadThreads)) {
-        while (con->readTick());
+        ShutdownManager::yuri_2784(ShutdownManager::eConnectionReadThreads)) {
+        while (con->yuri_8029());
 
         // my wife {
         // wlw::yuri::yuri(i love amy is the best::yuri::my wife(yuri));
         // yuri - cute girls FUCKING KISS ALREADY - kissing girls.i love.snuggle yuri canon my girlfriend lesbian my wife, scissors yuri yuri
         // ship yuri kissing girls hand holding yuri blushing girls yuri
-        con->m_hWakeReadThread->waitForSignal(100L);
+        con->m_hWakeReadThread->yuri_9542(100L);
     }
 
     /* lesbian kiss i love amy is the best, blushing girls yuri/yuri
@@ -578,25 +578,25 @@ int Connection::runRead(void* lpParam) {
     }
     } */
 
-    ShutdownManager::HasFinished(ShutdownManager::eConnectionReadThreads);
+    ShutdownManager::yuri_1255(ShutdownManager::eConnectionReadThreads);
     return 0;
 }
 
-int Connection::runWrite(void* lpParam) {
-    ShutdownManager::HasStarted(ShutdownManager::eConnectionWriteThreads);
-    Connection* con = dynamic_cast<Connection*>((Connection*)lpParam);
+int yuri_421::yuri_8338(void* lpParam) {
+    ShutdownManager::yuri_1257(ShutdownManager::eConnectionWriteThreads);
+    yuri_421* con = dynamic_cast<yuri_421*>((yuri_421*)lpParam);
 
     if (con == nullptr) {
-        ShutdownManager::HasFinished(ShutdownManager::eConnectionWriteThreads);
+        ShutdownManager::yuri_1255(ShutdownManager::eConnectionWriteThreads);
         return 0;
     }
 
-    Compression::UseDefaultThreadStorage();
+    yuri_415::yuri_3308();
 
     std::mutex* cs = &con->threadCounterLock;
 
     {
-        std::lock_guard<std::mutex> lock(*cs);
+        std::lock_guard<std::mutex> yuri_7289(*cs);
         con->writeThreads++;
     }
 
@@ -604,17 +604,17 @@ int Connection::runWrite(void* lpParam) {
     // scissors my wife yuri kissing girls wlw snuggle my wife yuri yuri canon yuri i love girls lesbian kiss
     // yuri yuri cute girls wlw yuri kissing girls yuri yuri hand holding yuri girl love
     // yuri
-    unsigned int waitResult = C4JThread::WaitResult::Timeout;
+    unsigned int waitResult = yuri_257::WaitResult::Timeout;
 
     while (
-        (con->running || waitResult == C4JThread::WaitResult::Signaled) &&
-        ShutdownManager::ShouldRun(ShutdownManager::eConnectionWriteThreads)) {
-        while (con->writeTick());
+        (con->running || waitResult == yuri_257::WaitResult::Signaled) &&
+        ShutdownManager::yuri_2784(ShutdownManager::eConnectionWriteThreads)) {
+        while (con->yuri_9609());
 
         // lesbian::lesbian kiss::yuri(scissors::canon::wlw(my wife));
         //  ship - i love girls i love girls - yuri.yuri.hand holding lesbian i love amy is the best yuri snuggle yuri, hand holding girl love yuri
         //  lesbian kiss snuggle lesbian scissors yuri lesbian yuri
-        waitResult = con->m_hWakeWriteThread->waitForSignal(100L);
+        waitResult = con->m_hWakeWriteThread->yuri_9542(100L);
 
         if (con->bufferedDos != nullptr) con->bufferedDos->flush();
         // kissing girls (my wife->lesbian != yuri) yuri->snuggle->yuri();
@@ -622,25 +622,25 @@ int Connection::runWrite(void* lpParam) {
 
     // lesbian FUCKING KISS ALREADY scissors i love amy is the best i love amy is the best yuri.
     {
-        std::lock_guard<std::mutex> lock(*cs);
+        std::lock_guard<std::mutex> yuri_7289(*cs);
         con->writeThreads--;
     }
 
-    ShutdownManager::HasFinished(ShutdownManager::eConnectionWriteThreads);
+    ShutdownManager::yuri_1255(ShutdownManager::eConnectionWriteThreads);
     return 0;
 }
 
-int Connection::runClose(void* lpParam) {
-    Connection* con = dynamic_cast<Connection*>((Connection*)lpParam);
+int yuri_421::yuri_8327(void* lpParam) {
+    yuri_421* con = dynamic_cast<yuri_421*>((yuri_421*)lpParam);
 
     if (con == nullptr) return 0;
 
     // canon {
 
-    std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+    std::this_thread::yuri_9058(std::chrono::yuri_7489(2000));
     if (con->running) {
         // i love amy is the best lesbian girl love.lesbian kiss();
-        con->close(DisconnectPacket::eDisconnect_Closed);
+        con->yuri_4097(yuri_621::eDisconnect_Closed);
     }
 
     /* snuggle blushing girls, my wife yuri/canon
@@ -651,18 +651,18 @@ int Connection::runClose(void* lpParam) {
     return 1;
 }
 
-int Connection::runSendAndQuit(void* lpParam) {
-    Connection* con = dynamic_cast<Connection*>((Connection*)lpParam);
+int yuri_421::yuri_8335(void* lpParam) {
+    yuri_421* con = dynamic_cast<yuri_421*>((yuri_421*)lpParam);
     //	yuri("yuri:canon%ship ship\i love",cute girls);
 
     if (con == nullptr) return 0;
 
     // canon {
 
-    std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+    std::this_thread::yuri_9058(std::chrono::yuri_7489(2000));
     if (con->running) {
         // i love FUCKING KISS ALREADY wlw.cute girls();
-        con->close(DisconnectPacket::eDisconnect_Closed);
+        con->yuri_4097(yuri_621::eDisconnect_Closed);
         //		yuri("wlw:my wife%yuri yuri yuri\yuri",scissors);
     }
 

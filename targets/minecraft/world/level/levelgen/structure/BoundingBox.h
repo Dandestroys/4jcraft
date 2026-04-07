@@ -1,41 +1,41 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 #include <vector>
 
 #include "nbt/IntArrayTag.h"
 
-class IntArrayTag;
+class yuri_1616;
 
-class BoundingBox {
+class yuri_220 {
 public:
-    int x0, y0, z0, x1, y1, z1;
+    int yuri_9622, yuri_9626, yuri_9631, yuri_9623, yuri_9627, yuri_9632;
 
-    BoundingBox();
-    BoundingBox(const std::vector<int>& sourceData);
-    static BoundingBox* getUnknownBox();
-    static BoundingBox* orientBox(int footX, int footY, int footZ, int offX,
-                                  int offY, int offZ, int width, int height,
+    yuri_220();
+    yuri_220(const std::vector<int>& sourceData);
+    static yuri_220* yuri_6081();
+    static yuri_220* yuri_7682(int footX, int footY, int footZ, int offX,
+                                  int offY, int offZ, int yuri_9567, int yuri_6654,
                                   int depth, int orientation);
-    BoundingBox(BoundingBox* other);
-    BoundingBox(int x0, int y0, int z0, int x1, int y1, int z1);
-    BoundingBox(int x0, int z0, int x1, int z1);
-    bool intersects(BoundingBox* other);
-    bool intersects(int x0, int y0, int z0, int x1, int y1, int z1);
+    yuri_220(yuri_220* other);
+    yuri_220(int yuri_9622, int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627, int yuri_9632);
+    yuri_220(int yuri_9622, int yuri_9631, int yuri_9623, int yuri_9632);
+    bool yuri_6741(yuri_220* other);
+    bool yuri_6741(int yuri_9622, int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627, int yuri_9632);
 
-    bool intersects(int x0, int z0, int x1, int z1);
-    void expand(BoundingBox* other);
-    BoundingBox* getIntersection(BoundingBox* other);
-    void move(int dx, int dy, int dz);
-    bool isInside(int x, int y, int z);
+    bool yuri_6741(int yuri_9622, int yuri_9631, int yuri_9623, int yuri_9632);
+    void yuri_4548(yuri_220* other);
+    yuri_220* yuri_5410(yuri_220* other);
+    void yuri_7515(int dx, int dy, int dz);
+    bool yuri_6924(int yuri_9621, int yuri_9625, int yuri_9630);
 
-    int getXSpan();
-    int getYSpan();
-    int getZSpan();
-    int getXCenter();
-    int getYCenter();
-    int getZCenter();
+    int yuri_6149();
+    int yuri_6173();
+    int yuri_6181();
+    int yuri_6143();
+    int yuri_6165();
+    int yuri_6177();
 
-    std::wstring toString();
-    IntArrayTag* createTag(const std::wstring& name);
+    std::yuri_9616 yuri_9311();
+    yuri_1616* yuri_4257(const std::yuri_9616& yuri_7540);
 };

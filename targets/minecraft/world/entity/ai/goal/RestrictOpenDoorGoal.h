@@ -4,20 +4,20 @@
 
 #include "Goal.h"
 
-class PathfinderMob;
-class DoorInfo;
+class yuri_2096;
+class yuri_644;
 
-class RestrictOpenDoorGoal : public Goal {
+class yuri_2414 : public yuri_1217 {
 private:
-    PathfinderMob* mob;
-    std::weak_ptr<DoorInfo> doorInfo;
+    yuri_2096* mob;
+    std::weak_ptr<yuri_644> doorInfo;
 
 public:
-    RestrictOpenDoorGoal(PathfinderMob* mob);
+    yuri_2414(yuri_2096* mob);
 
-    virtual bool canUse();
-    virtual bool canContinueToUse();
-    virtual void start();
-    virtual void stop();
-    virtual void tick();
+    virtual bool yuri_3967();
+    virtual bool yuri_3916();
+    virtual void yuri_9098();
+    virtual void yuri_9133();
+    virtual void yuri_9265();
 };

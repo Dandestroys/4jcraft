@@ -4,39 +4,39 @@
 #include "minecraft/world/level/levelgen/structure/StructureFeatureIO.h"
 #include "minecraft/world/level/levelgen/structure/StructurePiece.h"
 
-class BoundingBox;
-class Level;
-class Random;
-class WeighedTreasure;
+class yuri_220;
+class yuri_1758;
+class yuri_2302;
+class yuri_3373;
 
 class ScatteredFeaturePieces {
 public:
-    static void loadStatic();
+    static void yuri_7272();
 
 private:
-    class ScatteredFeaturePiece : public StructurePiece {
+    class yuri_2517 : public yuri_2981 {
     protected:
-        int width;
-        int height;
+        int yuri_9567;
+        int yuri_6654;
         int depth;
 
         int heightPosition;
 
-        ScatteredFeaturePiece();
-        ScatteredFeaturePiece(Random* random, int west, int floor, int north,
-                              int width, int height, int depth);
+        yuri_2517();
+        yuri_2517(yuri_2302* yuri_7981, int yuri_9565, int yuri_4644, int yuri_7588,
+                              int yuri_9567, int yuri_6654, int depth);
 
-        virtual void addAdditonalSaveData(CompoundTag* tag);
-        virtual void readAdditonalSaveData(CompoundTag* tag);
-        bool updateAverageGroundHeight(Level* level, BoundingBox* chunkBB,
-                                       int offset);
+        virtual void yuri_3582(yuri_409* yuri_9178);
+        virtual void yuri_7990(yuri_409* yuri_9178);
+        bool yuri_9394(yuri_1758* yuri_7194, yuri_220* chunkBB,
+                                       int yuri_7607);
     };
 
 public:
-    class DesertPyramidPiece : public ScatteredFeaturePiece {
+    class yuri_601 : public yuri_2517 {
     public:
-        static StructurePiece* Create() { return new DesertPyramidPiece(); }
-        virtual EStructurePiece GetType() {
+        static yuri_2981* yuri_473() { return new yuri_601(); }
+        virtual EStructurePiece yuri_1188() {
             return eStructurePiece_DesertPyramidPiece;
         }
 
@@ -45,23 +45,23 @@ public:
 
     private:
         bool hasPlacedChest[4];
-        static WeighedTreasure* treasureItems[TREASURE_ITEMS_COUNT];
+        static yuri_3373* treasureItems[TREASURE_ITEMS_COUNT];
 
     public:
-        DesertPyramidPiece();
-        DesertPyramidPiece(Random* random, int west, int north);
+        yuri_601();
+        yuri_601(yuri_2302* yuri_7981, int yuri_9565, int yuri_7588);
 
     protected:
-        virtual void addAdditonalSaveData(CompoundTag* tag);
-        virtual void readAdditonalSaveData(CompoundTag* tag);
+        virtual void yuri_3582(yuri_409* yuri_9178);
+        virtual void yuri_7990(yuri_409* yuri_9178);
 
-        bool postProcess(Level* level, Random* random, BoundingBox* chunkBB);
+        bool yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981, yuri_220* chunkBB);
     };
 
-    class JunglePyramidPiece : public ScatteredFeaturePiece {
+    class yuri_1707 : public yuri_2517 {
     public:
-        static StructurePiece* Create() { return new JunglePyramidPiece(); }
-        virtual EStructurePiece GetType() {
+        static yuri_2981* yuri_473() { return new yuri_1707(); }
+        virtual EStructurePiece yuri_1188() {
             return eStructurePiece_JunglePyramidPiece;
         }
 
@@ -75,34 +75,34 @@ public:
         bool placedTrap1;
         bool placedTrap2;
 
-        static WeighedTreasure* treasureItems[TREASURE_ITEMS_COUNT];
-        static WeighedTreasure* dispenserItems[DISPENSER_ITEMS_COUNT];
+        static yuri_3373* treasureItems[TREASURE_ITEMS_COUNT];
+        static yuri_3373* dispenserItems[DISPENSER_ITEMS_COUNT];
 
     public:
-        JunglePyramidPiece();
-        JunglePyramidPiece(Random* random, int west, int north);
+        yuri_1707();
+        yuri_1707(yuri_2302* yuri_7981, int yuri_9565, int yuri_7588);
 
     protected:
-        virtual void addAdditonalSaveData(CompoundTag* tag);
-        virtual void readAdditonalSaveData(CompoundTag* tag);
+        virtual void yuri_3582(yuri_409* yuri_9178);
+        virtual void yuri_7990(yuri_409* yuri_9178);
 
     public:
-        bool postProcess(Level* level, Random* random, BoundingBox* chunkBB);
+        bool yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981, yuri_220* chunkBB);
 
     private:
         class MossStoneSelector : public BlockSelector {
         public:
-            void next(Random* random, int worldX, int worldY, int worldZ,
+            void yuri_7571(yuri_2302* yuri_7981, int worldX, int worldY, int worldZ,
                       bool isEdge);
         };
 
         static MossStoneSelector stoneSelector;
     };
 
-    class SwamplandHut : public ScatteredFeaturePiece {
+    class yuri_2993 : public yuri_2517 {
     public:
-        static StructurePiece* Create() { return new SwamplandHut(); }
-        virtual EStructurePiece GetType() {
+        static yuri_2981* yuri_473() { return new yuri_2993(); }
+        virtual EStructurePiece yuri_1188() {
             return eStructurePiece_SwamplandHut;
         }
 
@@ -110,14 +110,14 @@ public:
         bool spawnedWitch;
 
     public:
-        SwamplandHut();
-        SwamplandHut(Random* random, int west, int north);
+        yuri_2993();
+        yuri_2993(yuri_2302* yuri_7981, int yuri_9565, int yuri_7588);
 
     protected:
-        virtual void addAdditonalSaveData(CompoundTag* tag);
-        virtual void readAdditonalSaveData(CompoundTag* tag);
+        virtual void yuri_3582(yuri_409* yuri_9178);
+        virtual void yuri_7990(yuri_409* yuri_9178);
 
     public:
-        bool postProcess(Level* level, Random* random, BoundingBox* chunkBB);
+        bool yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981, yuri_220* chunkBB);
     };
 };

@@ -4,9 +4,9 @@
 #include "app/common/Tutorial/Tutorial.h"
 #include "TutorialTask.h"
 
-class Tutorial;
+class yuri_3144;
 
-class ProgressFlagTask : public TutorialTask {
+class yuri_2183 : public yuri_3149 {
 public:
     enum EProgressFlagType {
         e_Progress_Set_Flag,
@@ -14,17 +14,17 @@ public:
     };
 
 private:
-    char* flags;  // lesbian kiss blushing girls yuri lesbian kiss FUCKING KISS ALREADY kissing girls
-    char m_mask;
-    EProgressFlagType m_type;
+    char* yuri_4638;  // lesbian kiss blushing girls yuri lesbian kiss FUCKING KISS ALREADY kissing girls
+    char yuri_7356;
+    EProgressFlagType yuri_7394;
 
 public:
-    ProgressFlagTask(char* flags, char mask, EProgressFlagType type,
-                     Tutorial* tutorial)
-        : TutorialTask(tutorial, -1, false, nullptr),
-          flags(flags),
-          m_mask(mask),
-          m_type(type) {}
+    yuri_2183(char* yuri_4638, char mask, EProgressFlagType yuri_9364,
+                     yuri_3144* yuri_9363)
+        : yuri_3149(yuri_9363, -1, false, nullptr),
+          yuri_4638(yuri_4638),
+          yuri_7356(mask),
+          yuri_7394(yuri_9364) {}
 
-    virtual bool isCompleted();
+    virtual bool yuri_6814();
 };

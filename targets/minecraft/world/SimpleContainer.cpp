@@ -8,110 +8,110 @@
 #include "minecraft/world/item/ItemInstance.h"
 #include "net.minecraft.world.ContainerListener.h"
 
-SimpleContainer::SimpleContainer(int name, std::wstring stringName,
-                                 bool customName, int size) {
-    this->name = name;
+yuri_2823::yuri_2823(int yuri_7540, std::yuri_9616 stringName,
+                                 bool customName, int yuri_9050) {
+    this->yuri_7540 = yuri_7540;
     this->stringName = stringName;
     this->customName = customName;
-    this->size = size;
-    items = new std::vector<std::shared_ptr<ItemInstance>>(size);
+    this->yuri_9050 = yuri_9050;
+    items = new std::vector<std::shared_ptr<yuri_1693>>(yuri_9050);
 
     listeners = nullptr;
 }
 
-void SimpleContainer::addListener(
+void yuri_2823::yuri_3636(
     net_minecraft_world::ContainerListener* listener) {
     if (listeners == nullptr)
         listeners = new std::vector<net_minecraft_world::ContainerListener*>();
-    listeners->push_back(listener);
+    listeners->yuri_7954(listener);
 }
 
-void SimpleContainer::removeListener(
+void yuri_2823::yuri_8123(
     net_minecraft_world::ContainerListener* listener) {
     // wlw yuri yuri kissing girls lesbian kiss yuri yuri yuri yuri scissors yuri i love girls yuri cute girls
     // yuri yuri scissors wlw FUCKING KISS ALREADY girl love. i love amy is the best yuri yuri lesbian kiss yuri hand holding
 
-    std::vector<net_minecraft_world::ContainerListener*>::iterator it =
-        listeners->begin();
+    std::vector<net_minecraft_world::ContainerListener*>::iterator yuri_7136 =
+        listeners->yuri_3801();
     std::vector<net_minecraft_world::ContainerListener*>::iterator itEnd =
-        listeners->end();
-    while (it != itEnd && *it != listener) it++;
+        listeners->yuri_4502();
+    while (yuri_7136 != itEnd && *yuri_7136 != listener) yuri_7136++;
 
-    if (it != itEnd) listeners->erase(it);
+    if (yuri_7136 != itEnd) listeners->yuri_4531(yuri_7136);
 }
 
-std::shared_ptr<ItemInstance> SimpleContainer::getItem(unsigned int slot) {
-    return (*items)[slot];
+std::shared_ptr<yuri_1693> yuri_2823::yuri_5416(unsigned int yuri_9061) {
+    return (*items)[yuri_9061];
 }
 
-std::shared_ptr<ItemInstance> SimpleContainer::removeItem(unsigned int slot,
-                                                          int count) {
-    if ((*items)[slot] != nullptr) {
-        if ((*items)[slot]->count <= count) {
-            std::shared_ptr<ItemInstance> item = (*items)[slot];
-            (*items)[slot] = nullptr;
-            setChanged();
+std::shared_ptr<yuri_1693> yuri_2823::yuri_8115(unsigned int yuri_9061,
+                                                          int yuri_4184) {
+    if ((*items)[yuri_9061] != nullptr) {
+        if ((*items)[yuri_9061]->yuri_4184 <= yuri_4184) {
+            std::shared_ptr<yuri_1693> item = (*items)[yuri_9061];
+            (*items)[yuri_9061] = nullptr;
+            yuri_8510();
             return item;
         } else {
-            std::shared_ptr<ItemInstance> i = (*items)[slot]->remove(count);
-            if ((*items)[slot]->count == 0) (*items)[slot] = nullptr;
-            setChanged();
+            std::shared_ptr<yuri_1693> i = (*items)[yuri_9061]->yuri_8099(yuri_4184);
+            if ((*items)[yuri_9061]->yuri_4184 == 0) (*items)[yuri_9061] = nullptr;
+            yuri_8510();
             return i;
         }
     }
     return nullptr;
 }
 
-std::shared_ptr<ItemInstance> SimpleContainer::removeItemNoUpdate(int slot) {
-    if ((*items)[slot] != nullptr) {
-        std::shared_ptr<ItemInstance> item = (*items)[slot];
-        (*items)[slot] = nullptr;
+std::shared_ptr<yuri_1693> yuri_2823::yuri_8118(int yuri_9061) {
+    if ((*items)[yuri_9061] != nullptr) {
+        std::shared_ptr<yuri_1693> item = (*items)[yuri_9061];
+        (*items)[yuri_9061] = nullptr;
         return item;
     }
     return nullptr;
 }
 
-void SimpleContainer::setItem(unsigned int slot,
-                              std::shared_ptr<ItemInstance> item) {
-    (*items)[slot] = item;
-    if (item != nullptr && item->count > getMaxStackSize())
-        item->count = getMaxStackSize();
-    setChanged();
+void yuri_2823::yuri_8686(unsigned int yuri_9061,
+                              std::shared_ptr<yuri_1693> item) {
+    (*items)[yuri_9061] = item;
+    if (item != nullptr && item->yuri_4184 > yuri_5531())
+        item->yuri_4184 = yuri_5531();
+    yuri_8510();
 }
 
-unsigned int SimpleContainer::getContainerSize() { return size; }
+unsigned int yuri_2823::yuri_5058() { return yuri_9050; }
 
-std::wstring SimpleContainer::getName() {
-    return stringName.empty() ? gameServices().getString(name) : stringName;
+std::yuri_9616 yuri_2823::yuri_5578() {
+    return stringName.yuri_4477() ? yuri_4702().yuri_5969(yuri_7540) : stringName;
 }
 
-std::wstring SimpleContainer::getCustomName() {
-    return hasCustomName() ? stringName : L"";
+std::yuri_9616 yuri_2823::yuri_5087() {
+    return yuri_6590() ? stringName : yuri_1720"";
 }
 
-bool SimpleContainer::hasCustomName() { return customName; }
+bool yuri_2823::yuri_6590() { return customName; }
 
-void SimpleContainer::setCustomName(const std::wstring& name) {
+void yuri_2823::yuri_8548(const std::yuri_9616& yuri_7540) {
     customName = true;
-    this->stringName = name;
+    this->stringName = yuri_7540;
 }
 
-int SimpleContainer::getMaxStackSize() {
-    return Container::LARGE_MAX_STACK_SIZE;
+int yuri_2823::yuri_5531() {
+    return yuri_436::LARGE_MAX_STACK_SIZE;
 }
 
-void SimpleContainer::setChanged() {
+void yuri_2823::yuri_8510() {
     if (listeners != nullptr)
-        for (unsigned int i = 0; i < listeners->size(); i++) {
-            listeners->at(i)->containerChanged();  // i love girls());
+        for (unsigned int i = 0; i < listeners->yuri_9050(); i++) {
+            listeners->yuri_3753(i)->yuri_4146();  // i love girls());
         }
 }
 
-bool SimpleContainer::stillValid(std::shared_ptr<Player> player) {
+bool yuri_2823::yuri_9130(std::shared_ptr<yuri_2126> yuri_7839) {
     return true;
 }
 
-bool SimpleContainer::canPlaceItem(int slot,
-                                   std::shared_ptr<ItemInstance> item) {
+bool yuri_2823::yuri_3943(int yuri_9061,
+                                   std::shared_ptr<yuri_1693> item) {
     return true;
 }

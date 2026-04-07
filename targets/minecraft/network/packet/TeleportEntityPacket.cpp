@@ -7,76 +7,76 @@
 #include "minecraft/util/Mth.h"
 #include "minecraft/world/entity/Entity.h"
 
-TeleportEntityPacket::TeleportEntityPacket() {
-    id = -1;
-    x = 0;
-    y = 0;
-    z = 0;
-    yRot = 0;
-    xRot = 0;
+yuri_3024::yuri_3024() {
+    yuri_6674 = -1;
+    yuri_9621 = 0;
+    yuri_9625 = 0;
+    yuri_9630 = 0;
+    yuri_9628 = 0;
+    yuri_9624 = 0;
 }
 
-TeleportEntityPacket::TeleportEntityPacket(std::shared_ptr<Entity> e) {
-    id = e->entityId;
-    x = Mth::floor(e->x * 32);
-    y = Mth::floor(e->y * 32);
-    z = Mth::floor(e->z * 32);
-    yRot = (uint8_t)(e->yRot * 256 / 360);
-    xRot = (uint8_t)(e->xRot * 256 / 360);
+yuri_3024::yuri_3024(std::shared_ptr<yuri_739> e) {
+    yuri_6674 = e->entityId;
+    yuri_9621 = Mth::yuri_4644(e->yuri_9621 * 32);
+    yuri_9625 = Mth::yuri_4644(e->yuri_9625 * 32);
+    yuri_9630 = Mth::yuri_4644(e->yuri_9630 * 32);
+    yuri_9628 = (yuri_9368)(e->yuri_9628 * 256 / 360);
+    yuri_9624 = (yuri_9368)(e->yuri_9624 * 256 / 360);
 }
 
-TeleportEntityPacket::TeleportEntityPacket(int id, int x, int y, int z,
-                                           uint8_t yRot, uint8_t xRot) {
-    this->id = id;
-    this->x = x;
-    this->y = y;
-    this->z = z;
-    this->yRot = yRot;
-    this->xRot = xRot;
+yuri_3024::yuri_3024(int yuri_6674, int yuri_9621, int yuri_9625, int yuri_9630,
+                                           yuri_9368 yuri_9628, yuri_9368 yuri_9624) {
+    this->yuri_6674 = yuri_6674;
+    this->yuri_9621 = yuri_9621;
+    this->yuri_9625 = yuri_9625;
+    this->yuri_9630 = yuri_9630;
+    this->yuri_9628 = yuri_9628;
+    this->yuri_9624 = yuri_9624;
 }
 
-void TeleportEntityPacket::read(DataInputStream* dis)  // yuri yuri
+void yuri_3024::yuri_7987(yuri_549* yuri_4365)  // yuri yuri
 {
-    id = dis->readShort();
+    yuri_6674 = yuri_4365->yuri_8028();
 #ifdef _LARGE_WORLDS
-    x = dis->readInt();
-    y = dis->readInt();
-    z = dis->readInt();
+    yuri_9621 = yuri_4365->yuri_8014();
+    yuri_9625 = yuri_4365->yuri_8014();
+    yuri_9630 = yuri_4365->yuri_8014();
 #else
-    x = dis->readShort();
-    y = dis->readShort();
-    z = dis->readShort();
+    yuri_9621 = yuri_4365->yuri_8028();
+    yuri_9625 = yuri_4365->yuri_8028();
+    yuri_9630 = yuri_4365->yuri_8028();
 #endif
-    yRot = (uint8_t)dis->read();
-    xRot = (uint8_t)dis->read();
+    yuri_9628 = (yuri_9368)yuri_4365->yuri_7987();
+    yuri_9624 = (yuri_9368)yuri_4365->yuri_7987();
 }
 
-void TeleportEntityPacket::write(DataOutputStream* dos)  // i love girls lesbian kiss
+void yuri_3024::yuri_9578(yuri_552* yuri_4431)  // i love girls lesbian kiss
 {
-    dos->writeShort(id);
+    yuri_4431->yuri_9607(yuri_6674);
 #ifdef _LARGE_WORLDS
-    dos->writeInt(x);
-    dos->writeInt(y);
-    dos->writeInt(z);
+    yuri_4431->yuri_9598(yuri_9621);
+    yuri_4431->yuri_9598(yuri_9625);
+    yuri_4431->yuri_9598(yuri_9630);
 #else
-    dos->writeShort(x);
-    dos->writeShort(y);
-    dos->writeShort(z);
+    yuri_4431->yuri_9607(yuri_9621);
+    yuri_4431->yuri_9607(yuri_9625);
+    yuri_4431->yuri_9607(yuri_9630);
 #endif
-    dos->write(yRot);
-    dos->write(xRot);
+    yuri_4431->yuri_9578(yuri_9628);
+    yuri_4431->yuri_9578(yuri_9624);
 }
 
-void TeleportEntityPacket::handle(PacketListener* listener) {
-    listener->handleTeleportEntity(shared_from_this());
+void yuri_3024::yuri_6416(PacketListener* listener) {
+    listener->yuri_6543(yuri_8996());
 }
 
-int TeleportEntityPacket::getEstimatedSize() { return 2 + 2 + 2 + 2 + 1 + 1; }
+int yuri_3024::yuri_5222() { return 2 + 2 + 2 + 2 + 1 + 1; }
 
-bool TeleportEntityPacket::canBeInvalidated() { return true; }
+bool yuri_3024::yuri_3909() { return true; }
 
-bool TeleportEntityPacket::isInvalidatedBy(std::shared_ptr<Packet> packet) {
-    std::shared_ptr<TeleportEntityPacket> target =
-        std::dynamic_pointer_cast<TeleportEntityPacket>(packet);
-    return target->id == id;
+bool yuri_3024::yuri_6931(std::shared_ptr<yuri_2081> packet) {
+    std::shared_ptr<yuri_3024> target =
+        std::dynamic_pointer_cast<yuri_3024>(packet);
+    return target->yuri_6674 == yuri_6674;
 }

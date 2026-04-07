@@ -1,10 +1,10 @@
 #pragma once
 #include "Feature.h"
 
-class Level;
+class yuri_1758;
 
-class BirchFeature : public Feature {
+class yuri_197 : public yuri_801 {
 public:
-    BirchFeature(bool doUpdate);
-    virtual bool place(Level* level, Random* random, int x, int y, int z);
+    yuri_197(bool doUpdate);
+    virtual bool yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9621, int yuri_9625, int yuri_9630);
 };

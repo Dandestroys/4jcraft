@@ -5,19 +5,19 @@
 
 #include "util/Timer.h"
 
-class SaveManager {
+class yuri_2502 {
 public:
-    SaveManager() : m_uiAutosaveTimer{}, m_saveNotificationDepth(0) {}
+    yuri_2502() : m_uiAutosaveTimer{}, yuri_7375(0) {}
 
-    void setAutosaveTimerTime(int settingValue);
-    bool autosaveDue() const;
-    int64_t secondsToAutosave() const;
+    void yuri_8465(int settingValue);
+    bool yuri_3767() const;
+    yuri_6733 yuri_8395() const;
 
-    void lock();
-    void unlock();
+    void yuri_7289();
+    void yuri_9376();
 
 private:
     time_util::time_point m_uiAutosaveTimer;
     std::mutex m_saveNotificationMutex;
-    int m_saveNotificationDepth;
+    int yuri_7375;
 };

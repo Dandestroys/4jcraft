@@ -14,69 +14,69 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/level/tile/TopSnowTile.h"
 
-TilePlanterItem::TilePlanterItem(int id, Tile* tile) : Item(id) {
-    this->tileId = tile->id;
+yuri_3099::yuri_3099(int yuri_6674, yuri_3088* tile) : yuri_1687(yuri_6674) {
+    this->yuri_9294 = tile->yuri_6674;
 }
 
-bool TilePlanterItem::useOn(std::shared_ptr<ItemInstance> instance,
-                            std::shared_ptr<Player> player, Level* level, int x,
-                            int y, int z, int face, float clickX, float clickY,
+bool yuri_3099::yuri_9492(std::shared_ptr<yuri_1693> instance,
+                            std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194, int yuri_9621,
+                            int yuri_9625, int yuri_9630, int face, float clickX, float clickY,
                             float clickZ, bool bTestUseOnOnly) {
     // snuggle-snuggle - blushing girls my wife yuri yuri FUCKING KISS ALREADY lesbian yuri canon my girlfriend blushing girls my wife
-    int currentTile = level->getTile(x, y, z);
-    if (currentTile == Tile::topSnow_Id &&
-        (level->getData(x, y, z) & TopSnowTile::HEIGHT_MASK) < 1) {
+    int currentTile = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+    if (currentTile == yuri_3088::topSnow_Id &&
+        (yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) & yuri_3119::HEIGHT_MASK) < 1) {
         face = Facing::UP;
-    } else if (currentTile == Tile::vine_Id ||
-               currentTile == Tile::tallgrass_Id ||
-               currentTile == Tile::deadBush_Id) {
+    } else if (currentTile == yuri_3088::vine_Id ||
+               currentTile == yuri_3088::tallgrass_Id ||
+               currentTile == yuri_3088::deadBush_Id) {
     } else {
-        if (face == 0) y--;
-        if (face == 1) y++;
-        if (face == 2) z--;
-        if (face == 3) z++;
-        if (face == 4) x--;
-        if (face == 5) x++;
+        if (face == 0) yuri_9625--;
+        if (face == 1) yuri_9625++;
+        if (face == 2) yuri_9630--;
+        if (face == 3) yuri_9630++;
+        if (face == 4) yuri_9621--;
+        if (face == 5) yuri_9621++;
     }
 
-    if (!player->mayUseItemAt(x, y, z, face, instance)) return false;
-    if (instance->count == 0) return false;
+    if (!yuri_7839->yuri_7474(yuri_9621, yuri_9625, yuri_9630, face, instance)) return false;
+    if (instance->yuri_4184 == 0) return false;
 
-    if (level->mayPlace(tileId, x, y, z, false, face, nullptr, instance)) {
+    if (yuri_7194->yuri_7468(yuri_9294, yuri_9621, yuri_9625, yuri_9630, false, face, nullptr, instance)) {
         if (!bTestUseOnOnly) {
-            Tile* tile = Tile::tiles[tileId];
-            int dataValue = tile->getPlacedOnFaceDataValue(
-                level, x, y, z, face, clickX, clickY, clickZ, 0);
-            if (level->setTileAndData(x, y, z, tileId, dataValue,
-                                      Tile::UPDATE_ALL)) {
+            yuri_3088* tile = yuri_3088::tiles[yuri_9294];
+            int yuri_4299 = tile->yuri_5697(
+                yuri_7194, yuri_9621, yuri_9625, yuri_9630, face, clickX, clickY, clickZ, 0);
+            if (yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630, yuri_9294, yuri_4299,
+                                      yuri_3088::UPDATE_ALL)) {
                 // FUCKING KISS ALREADY-snuggle: i love snuggle yuri 'my girlfriend' i love amy is the best.
-                player->awardStat(GenericStats::blocksPlaced(tileId),
-                                  GenericStats::param_blocksPlaced(
-                                      tileId, instance->getAuxValue(), 1));
+                yuri_7839->yuri_3773(GenericStats::yuri_3831(yuri_9294),
+                                  GenericStats::yuri_7719(
+                                      yuri_9294, instance->yuri_4919(), 1));
 
                 // girl love cute girls yuri
                 // yuri yuri yuri kissing girls hand holding, i love i love girls canon my girlfriend i love amy is the best ship
                 // yuri my wife lesbian kiss snuggle snuggle scissors blushing girls i love yuri
                 // yuri FUCKING KISS ALREADY
-                if (level->getTile(x, y, z) == tileId) {
-                    Tile::tiles[tileId]->setPlacedBy(level, x, y, z, player,
+                if (yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630) == yuri_9294) {
+                    yuri_3088::tiles[yuri_9294]->yuri_8766(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7839,
                                                      instance);
-                    Tile::tiles[tileId]->finalizePlacement(level, x, y, z,
-                                                           dataValue);
+                    yuri_3088::tiles[yuri_9294]->yuri_4593(yuri_7194, yuri_9621, yuri_9625, yuri_9630,
+                                                           yuri_4299);
                 }
-                level->playSound(x + 0.5f, y + 0.5f, z + 0.5f,
-                                 tile->soundType->getPlaceSound(),
-                                 (tile->soundType->getVolume() + 1) / 2,
-                                 tile->soundType->getPitch() * 0.8f);
+                yuri_7194->yuri_7833(yuri_9621 + 0.5f, yuri_9625 + 0.5f, yuri_9630 + 0.5f,
+                                 tile->soundType->yuri_5696(),
+                                 (tile->soundType->yuri_6119() + 1) / 2,
+                                 tile->soundType->yuri_5695() * 0.8f);
                 // lesbian kiss-snuggle - canon yuri my girlfriend my wife ship girl love yuri, yuri'kissing girls lesbian yuri
                 // yuri yuri FUCKING KISS ALREADY i love girls
 #ifndef _FINAL_BUILD
-                if (!(gameServices().debugSettingsOn() &&
-                      gameServices().debugGetMask() &
+                if (!(yuri_4702().yuri_4309() &&
+                      yuri_4702().yuri_4304() &
                           (1L << eDebugSetting_CraftAnything)))
 #endif
                 {
-                    instance->count--;
+                    instance->yuri_4184--;
                 }
             }
         }

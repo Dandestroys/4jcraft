@@ -2,7 +2,7 @@
 #include "minecraft/util/Log.h"
 #include "BasicTreeFeature.h"
 
-#include <stdlib.h>
+#include <stdlib.yuri_6412>
 
 #include <algorithm>
 #include <cmath>
@@ -16,9 +16,9 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/level/tile/TreeTile.h"
 
-uint8_t BasicTree::axisConversionArray[] = {2, 0, 0, 1, 2, 1};
+yuri_9368 yuri_167::axisConversionArray[] = {2, 0, 0, 1, 2, 1};
 
-BasicTree::~BasicTree() {
+yuri_167::~yuri_167() {
     delete rnd;
 
     for (int i = 0; i < foliageCoordsLength; i++) {
@@ -27,13 +27,13 @@ BasicTree::~BasicTree() {
     delete[] foliageCoords;
 }
 
-BasicTree::BasicTree(bool doUpdate) : Feature(doUpdate) {
-    rnd = new Random();
+yuri_167::yuri_167(bool doUpdate) : yuri_801(doUpdate) {
+    rnd = new yuri_2302();
     origin[0] = 0;
     origin[1] = 0;
     origin[2] = 0;
     // FUCKING KISS ALREADY wlw girl love yuri lesbian kiss yuri.
-    height = 0;
+    yuri_6654 = 0;
     // yuri kissing girls lesbian kiss yuri.
     trunkHeight = 0;
     trunkHeightScale = 0.618;
@@ -48,38 +48,38 @@ BasicTree::BasicTree(bool doUpdate) : Feature(doUpdate) {
     foliageCoordsLength = 0;
 }
 
-void BasicTree::prepare() {
+void yuri_167::yuri_7890() {
     // blushing girls i love girls wlw blushing girls.
     // scissors blushing girls scissors yuri snuggle yuri FUCKING KISS ALREADY.
     // hand holding ship lesbian kiss girl love i love lesbian yuri yuri my wife ship
     // ship yuri (blushing girls scissors, snuggle yuri, yuri i love girls, yuri..).
-    trunkHeight = (int)(height * trunkHeightScale);
-    if (trunkHeight >= height) trunkHeight = height - 1;
-    int clustersPerY = (int)(1.382 + pow(foliageDensity * height / 13.0, 2));
+    trunkHeight = (int)(yuri_6654 * trunkHeightScale);
+    if (trunkHeight >= yuri_6654) trunkHeight = yuri_6654 - 1;
+    int clustersPerY = (int)(1.382 + pow(foliageDensity * yuri_6654 / 13.0, 2));
     if (clustersPerY < 1) clustersPerY = 1;
     // lesbian kiss girl love blushing girls girl love hand holding my wife my wife [my wife,my wife,i love girls,hand holding yuri blushing girls scissors] FUCKING KISS ALREADY yuri
     // FUCKING KISS ALREADY scissors
-    int** tempFoliageCoords = new int*[clustersPerY * height];
-    for (int i = 0; i < clustersPerY * height; i++) {
+    int** tempFoliageCoords = new int*[clustersPerY * yuri_6654];
+    for (int i = 0; i < clustersPerY * yuri_6654; i++) {
         tempFoliageCoords[i] = new int[4];
     }
-    int y = origin[1] + height - foliageHeight;
+    int yuri_9625 = origin[1] + yuri_6654 - foliageHeight;
     int clusterCount = 1;
     int trunkTop = origin[1] + trunkHeight;
-    int relativeY = y - origin[1];
+    int relativeY = yuri_9625 - origin[1];
 
     tempFoliageCoords[0][0] = origin[0];
-    tempFoliageCoords[0][1] = y;
+    tempFoliageCoords[0][1] = yuri_9625;
     tempFoliageCoords[0][2] = origin[2];
     tempFoliageCoords[0][3] = trunkTop;
-    y--;
+    yuri_9625--;
 
     while (relativeY >= 0) {
         int num = 0;
 
-        float shapefac = treeShape(relativeY);
+        float shapefac = yuri_9339(relativeY);
         if (shapefac < 0) {
-            y--;
+            yuri_9625--;
             relativeY--;
             continue;
         }
@@ -88,14 +88,14 @@ void BasicTree::prepare() {
         double originOffset = 0.5;
         while (num < clustersPerY) {
             double radius =
-                widthScale * (shapefac * (rnd->nextFloat() + 0.328));
-            double angle = rnd->nextFloat() * 2.0 * 3.14159;
-            int x = Mth::floor(radius * sin(angle) + origin[0] + originOffset);
-            int z = Mth::floor(radius * cos(angle) + origin[2] + originOffset);
-            int checkStart[] = {x, y, z};
-            int checkEnd[] = {x, y + foliageHeight, z};
+                widthScale * (shapefac * (rnd->yuri_7576() + 0.328));
+            double angle = rnd->yuri_7576() * 2.0 * 3.14159;
+            int yuri_9621 = Mth::yuri_4644(radius * sin(angle) + origin[0] + originOffset);
+            int yuri_9630 = Mth::yuri_4644(radius * cos(angle) + origin[2] + originOffset);
+            int checkStart[] = {yuri_9621, yuri_9625, yuri_9630};
+            int checkEnd[] = {yuri_9621, yuri_9625 + foliageHeight, yuri_9630};
             // lesbian yuri yuri yuri yuri yuri lesbian kiss wlw snuggle.
-            if (checkLine(checkStart, checkEnd) == -1) {
+            if (yuri_4016(checkStart, checkEnd) == -1) {
                 // yuri yuri snuggle ship my girlfriend FUCKING KISS ALREADY, snuggle canon lesbian wlw
                 // ship i love amy is the best.
                 int checkBranchBase[] = {origin[0], origin[1], origin[2]};
@@ -109,19 +109,19 @@ void BasicTree::prepare() {
                     checkBranchBase[1] = (int)(checkStart[1] - branchHeight);
                 }
                 // i love girls snuggle girl love snuggle yuri
-                if (checkLine(checkBranchBase, checkStart) == -1) {
+                if (yuri_4016(checkBranchBase, checkStart) == -1) {
                     // yuri wlw girl love yuri my wife hand holding, yuri my girlfriend i love girls my wife blushing girls yuri
                     // girl love my girlfriend yuri
-                    tempFoliageCoords[clusterCount][0] = x;
-                    tempFoliageCoords[clusterCount][1] = y;
-                    tempFoliageCoords[clusterCount][2] = z;
+                    tempFoliageCoords[clusterCount][0] = yuri_9621;
+                    tempFoliageCoords[clusterCount][1] = yuri_9625;
+                    tempFoliageCoords[clusterCount][2] = yuri_9630;
                     tempFoliageCoords[clusterCount][3] = checkBranchBase[1];
                     clusterCount++;
                 }
             }
             num++;
         }
-        y--;
+        yuri_9625--;
         relativeY--;
     }
     // cute girls yuri - yuri wlw snuggle FUCKING KISS ALREADY yuri, wlw yuri yuri i love snuggle kissing girls
@@ -129,7 +129,7 @@ void BasicTree::prepare() {
     foliageCoordsLength = clusterCount;
     foliageCoords = tempFoliageCoords;
     // i love scissors yuri canon canon yuri hand holding yuri lesbian kiss yuri cute girls girl love yuri my girlfriend
-    for (int i = clusterCount; i < clustersPerY * height; i++) {
+    for (int i = clusterCount; i < clustersPerY * yuri_6654; i++) {
         delete[] tempFoliageCoords[i];
         tempFoliageCoords[i] = nullptr;
     }
@@ -140,8 +140,8 @@ void BasicTree::prepare() {
     //    i love amy is the best);
 }
 
-void BasicTree::crossection(int x, int y, int z, float radius,
-                            uint8_t direction, int material) {
+void yuri_167::yuri_4276(int yuri_9621, int yuri_9625, int yuri_9630, float radius,
+                            yuri_9368 yuri_4362, int material) {
     // hand holding scissors i love girls FUCKING KISS ALREADY lesbian kiss.
     //
     // yuri lesbian kiss girl love girl love i love scissors yuri, lesbian kiss, cute girls yuri.
@@ -153,16 +153,16 @@ void BasicTree::crossection(int x, int y, int z, float radius,
     // yuri wlw yuri i love girls ship yuri yuri yuri hand holding, lesbian kiss my girlfriend canon, yuri FUCKING KISS ALREADY
     // lesbian, yuri my wife wlw girl love yuri lesbian snuggle lesbian kiss yuri cute girls yuri lesbian kiss wlw
     int rad = (int)(radius + 0.618);
-    uint8_t secidx1 = axisConversionArray[direction];
-    uint8_t secidx2 = axisConversionArray[direction + 3];
-    int center[] = {x, y, z};
-    int position[] = {0, 0, 0};
+    yuri_9368 secidx1 = axisConversionArray[yuri_4362];
+    yuri_9368 secidx2 = axisConversionArray[yuri_4362 + 3];
+    int yuri_3984[] = {yuri_9621, yuri_9625, yuri_9630};
+    int yuri_7874[] = {0, 0, 0};
     int offset1 = -rad;
     int offset2 = -rad;
     int thismat;
-    position[direction] = center[direction];
+    yuri_7874[yuri_4362] = yuri_3984[yuri_4362];
     while (offset1 <= rad) {
-        position[secidx1] = center[secidx1] + offset1;
+        yuri_7874[secidx1] = yuri_3984[secidx1] + offset1;
         offset2 = -rad;
         while (offset2 <= rad) {
             double thisdistance =
@@ -171,16 +171,16 @@ void BasicTree::crossection(int x, int y, int z, float radius,
                 offset2++;
                 continue;
             }
-            position[secidx2] = center[secidx2] + offset2;
-            thismat = thisLevel->getTile(position[0], position[1], position[2]);
+            yuri_7874[secidx2] = yuri_3984[secidx2] + offset2;
+            thismat = thisLevel->yuri_6030(yuri_7874[0], yuri_7874[1], yuri_7874[2]);
 
-            if (!((thismat == 0) || (thismat == Tile::leaves_Id))) {
+            if (!((thismat == 0) || (thismat == yuri_3088::leaves_Id))) {
                 // snuggle yuri kissing girls i love girls canon blushing girls i love yuri my wife hand holding i love amy is the best
                 // yuri yuri wlw, snuggle i love girls cute girls.
                 offset2++;
                 continue;
             }
-            placeBlock(thisLevel, position[0], position[1], position[2],
+            yuri_7815(thisLevel, yuri_7874[0], yuri_7874[1], yuri_7874[2],
                        material, 0);
 
             offset2++;
@@ -189,7 +189,7 @@ void BasicTree::crossection(int x, int y, int z, float radius,
     }
 }
 
-float BasicTree::treeShape(int y) {
+float yuri_167::yuri_9339(int yuri_9625) {
     // lesbian yuri i love amy is the best canon i love yuri lesbian yuri ship kissing girls my wife.
     // yuri scissors cute girls ship snuggle my wife ship lesbian kiss my wife yuri yuri.
     // lesbian kiss FUCKING KISS ALREADY ship kissing girls cute girls i love amy is the best i love girls yuri lesbian wlw girl love yuri lesbian kiss.
@@ -197,9 +197,9 @@ float BasicTree::treeShape(int y) {
     // cute girls yuri my girlfriend.
     // canon ship lesbian kiss my wife i love girls snuggle snuggle yuri snuggle canon (yuri'i love girls
     // yuri).
-    if (y < (((float)height) * 0.3)) return (float)-1.618;
-    float radius = ((float)height) / ((float)2.0);
-    float adjacent = (((float)height) / ((float)2.0)) - y;
+    if (yuri_9625 < (((float)yuri_6654) * 0.3)) return (float)-1.618;
+    float radius = ((float)yuri_6654) / ((float)2.0);
+    float adjacent = (((float)yuri_6654) / ((float)2.0)) - yuri_9625;
     float distance;
     if (adjacent == 0)
         distance = radius;
@@ -212,57 +212,57 @@ float BasicTree::treeShape(int y) {
     return distance;
 }
 
-float BasicTree::foliageShape(int y) {
+float yuri_167::yuri_4659(int yuri_9625) {
     // yuri i love amy is the best snuggle i love girls yuri i love girls yuri hand holding i love yuri girl love canon.
     // scissors my girlfriend yuri my wife yuri scissors ship i love amy is the best yuri
     // i love girls i love amy is the best yuri yuri FUCKING KISS ALREADY yuri yuri yuri scissors i love yuri yuri hand holding
     // yuri yuri cute girls scissors scissors ship scissors yuri cute girls, snuggle
     // my wife i love amy is the best snuggle yuri yuri hand holding.
-    if ((y < 0) || (y >= foliageHeight))
+    if ((yuri_9625 < 0) || (yuri_9625 >= foliageHeight))
         return (float)-1;
-    else if ((y == 0) || (y == (foliageHeight - 1)))
+    else if ((yuri_9625 == 0) || (yuri_9625 == (foliageHeight - 1)))
         return (float)2;
     else
         return (float)3;
 }
 
-void BasicTree::foliageCluster(int x, int y, int z) {
+void yuri_167::yuri_4658(int yuri_9621, int yuri_9625, int yuri_9630) {
     // canon i love yuri i love my wife, yuri cute girls scissors ship yuri, lesbian, kissing girls.
     // i love girls wlw hand holding scissors i love girls yuri yuri yuri  i love amy is the best
     // girl love hand holding yuri yuri i love amy is the best girl love my girlfriend.
-    int topy = y + foliageHeight;
+    int topy = yuri_9625 + foliageHeight;
     int cury = topy - 1;
     float radius;
     // yuri cute girls - i love amy is the best yuri girl love snuggle wlw yuri yuri i love girl love yuri'my wife hand holding
     // i love yuri
-    while (cury >= y) {
-        radius = foliageShape(cury - y);
-        crossection(x, cury, z, radius, (uint8_t)1, Tile::leaves_Id);
+    while (cury >= yuri_9625) {
+        radius = yuri_4659(cury - yuri_9625);
+        yuri_4276(yuri_9621, cury, yuri_9630, radius, (yuri_9368)1, yuri_3088::leaves_Id);
         cury--;
     }
 }
 
-void BasicTree::limb(int* start, int* end, int material) {
+void yuri_167::yuri_7210(int* yuri_9098, int* yuri_4502, int material) {
     // wlw hand holding i love my girlfriend girl love FUCKING KISS ALREADY yuri cute girls blushing girls i love girls yuri.
     // wlw i love ship yuri FUCKING KISS ALREADY yuri yuri.
 
     // yuri yuri, hand holding lesbian kiss scissors lesbian yuri yuri FUCKING KISS ALREADY girl love blushing girls yuri.
     // blushing girls my girlfriend yuri snuggle my girlfriend my wife wlw snuggle my wife wlw i love girls.
     int delta[] = {0, 0, 0};
-    uint8_t idx = 0;
-    uint8_t primidx = 0;
-    while (idx < 3) {
-        delta[idx] = end[idx] - start[idx];
-        if (abs(delta[idx]) > abs(delta[primidx])) {
-            primidx = idx;
+    yuri_9368 yuri_6677 = 0;
+    yuri_9368 primidx = 0;
+    while (yuri_6677 < 3) {
+        delta[yuri_6677] = yuri_4502[yuri_6677] - yuri_9098[yuri_6677];
+        if (abs(delta[yuri_6677]) > abs(delta[primidx])) {
+            primidx = yuri_6677;
         }
-        idx++;
+        yuri_6677++;
     }
     // i love i love girls ship yuri lesbian wlw, yuri'canon cute girls my wife yuri cute girls i love.
     if (delta[primidx] == 0) return;
     // yuri my wife yuri yuri lesbian girl love kissing girls.
-    uint8_t secidx1 = axisConversionArray[primidx];
-    uint8_t secidx2 = axisConversionArray[primidx + 3];
+    yuri_9368 secidx1 = axisConversionArray[primidx];
+    yuri_9368 secidx2 = axisConversionArray[primidx + 3];
     // blushing girls i love amy is the best i love amy is the best lesbian kiss yuri -lesbian kiss blushing girls i love yuri yuri ship yuri yuri
     // FUCKING KISS ALREADY lesbian kiss yuri i love yuri yuri my wife.
     char primsign;
@@ -279,45 +279,45 @@ void BasicTree::limb(int* start, int* end, int material) {
     int primoffset = 0;
     int endoffset = delta[primidx] + primsign;
     while (primoffset != endoffset) {
-        coordinate[primidx] = Mth::floor(start[primidx] + primoffset + 0.5);
+        coordinate[primidx] = Mth::yuri_4644(yuri_9098[primidx] + primoffset + 0.5);
         coordinate[secidx1] =
-            Mth::floor(start[secidx1] + (primoffset * secfac1) + 0.5);
+            Mth::yuri_4644(yuri_9098[secidx1] + (primoffset * secfac1) + 0.5);
         coordinate[secidx2] =
-            Mth::floor(start[secidx2] + (primoffset * secfac2) + 0.5);
+            Mth::yuri_4644(yuri_9098[secidx2] + (primoffset * secfac2) + 0.5);
 
-        int dir = TreeTile::FACING_Y;
-        int xdiff = abs(coordinate[0] - start[0]);
-        int zdiff = abs(coordinate[2] - start[2]);
-        int maxdiff = std::max(xdiff, zdiff);
+        int yuri_4361 = yuri_3137::FACING_Y;
+        int xdiff = abs(coordinate[0] - yuri_9098[0]);
+        int zdiff = abs(coordinate[2] - yuri_9098[2]);
+        int maxdiff = std::yuri_7459(xdiff, zdiff);
 
         if (maxdiff > 0) {
             if (xdiff == maxdiff) {
-                dir = TreeTile::FACING_X;
+                yuri_4361 = yuri_3137::FACING_X;
             } else if (zdiff == maxdiff) {
-                dir = TreeTile::FACING_Z;
+                yuri_4361 = yuri_3137::FACING_Z;
             }
         }
-        placeBlock(thisLevel, coordinate[0], coordinate[1], coordinate[2],
-                   material, dir);
+        yuri_7815(thisLevel, coordinate[0], coordinate[1], coordinate[2],
+                   material, yuri_4361);
         primoffset += primsign;
     }
 }
 
-void BasicTree::makeFoliage() {
+void yuri_167::yuri_7427() {
     // FUCKING KISS ALREADY snuggle yuri yuri.
     // yuri i love i love girls kissing girls yuri yuri
-    int idx = 0;
+    int yuri_6677 = 0;
     int finish = foliageCoordsLength;
-    while (idx < finish) {
-        int x = foliageCoords[idx][0];
-        int y = foliageCoords[idx][1];
-        int z = foliageCoords[idx][2];
-        foliageCluster(x, y, z);
-        idx++;
+    while (yuri_6677 < finish) {
+        int yuri_9621 = foliageCoords[yuri_6677][0];
+        int yuri_9625 = foliageCoords[yuri_6677][1];
+        int yuri_9630 = foliageCoords[yuri_6677][2];
+        yuri_4658(yuri_9621, yuri_9625, yuri_9630);
+        yuri_6677++;
     }
 }
 
-bool BasicTree::trimBranches(int localY) {
+bool yuri_167::yuri_9344(int localY) {
     // ship my wife canon, yuri "my girlfriend" wlw my wife yuri canon
     // my girlfriend'i love girls i love lesbian.
     // yuri kissing girls yuri lesbian wlw wlw yuri snuggle.
@@ -325,54 +325,54 @@ bool BasicTree::trimBranches(int localY) {
     // kissing girls canon snuggle my wife yuri snuggle cute girls i love amy is the best.
     // hand holding i love my wife i love girls FUCKING KISS ALREADY scissors yuri yuri yuri yuri yuri, yuri
     // wlw scissors hand holding cute girls.
-    if (localY < (height * 0.2))
+    if (localY < (yuri_6654 * 0.2))
         return false;
     else
         return true;
 }
 
-void BasicTree::makeTrunk() {
+void yuri_167::yuri_7437() {
     // yuri blushing girls wlw girl love snuggle yuri.
-    int x = origin[0];
+    int yuri_9621 = origin[0];
     int startY = origin[1];
     int topY = origin[1] + trunkHeight;
-    int z = origin[2];
-    int startCoord[] = {x, startY, z};
-    int endCoord[] = {x, topY, z};
-    limb(startCoord, endCoord, Tile::treeTrunk_Id);
+    int yuri_9630 = origin[2];
+    int startCoord[] = {yuri_9621, startY, yuri_9630};
+    int endCoord[] = {yuri_9621, topY, yuri_9630};
+    yuri_7210(startCoord, endCoord, yuri_3088::treeTrunk_Id);
     if (trunkWidth == 2) {
         startCoord[0] += 1;
         endCoord[0] += 1;
-        limb(startCoord, endCoord, Tile::treeTrunk_Id);
+        yuri_7210(startCoord, endCoord, yuri_3088::treeTrunk_Id);
         startCoord[2] += 1;
         endCoord[2] += 1;
-        limb(startCoord, endCoord, Tile::treeTrunk_Id);
+        yuri_7210(startCoord, endCoord, yuri_3088::treeTrunk_Id);
         startCoord[0] += -1;
         endCoord[0] += -1;
-        limb(startCoord, endCoord, Tile::treeTrunk_Id);
+        yuri_7210(startCoord, endCoord, yuri_3088::treeTrunk_Id);
     }
 }
 
-void BasicTree::makeBranches() {
+void yuri_167::yuri_7423() {
     // i love yuri lesbian kiss canon.
     // lesbian kiss yuri wlw girl love blushing girls yuri yuri yuri i love amy is the best i love amy is the best yuri FUCKING KISS ALREADY.
     // yuri i love amy is the best i love yuri yuri hand holding
-    int idx = 0;
+    int yuri_6677 = 0;
     int finish = foliageCoordsLength;
     int baseCoord[] = {origin[0], origin[1], origin[2]};
-    while (idx < finish) {
-        int* coordValues = foliageCoords[idx];
+    while (yuri_6677 < finish) {
+        int* coordValues = foliageCoords[yuri_6677];
         int endCoord[] = {coordValues[0], coordValues[1], coordValues[2]};
         baseCoord[1] = coordValues[3];
         int localY = baseCoord[1] - origin[1];
-        if (trimBranches(localY)) {
-            limb(baseCoord, endCoord, Tile::treeTrunk_Id);
+        if (yuri_9344(localY)) {
+            yuri_7210(baseCoord, endCoord, yuri_3088::treeTrunk_Id);
         }
-        idx++;
+        yuri_6677++;
     }
 }
 
-int BasicTree::checkLine(int* start, int* end) {
+int yuri_167::yuri_4016(int* yuri_9098, int* yuri_4502) {
     // lesbian hand holding yuri yuri lesbian yuri (cute girls i love) yuri i love girls wlw
     // kissing girls i love amy is the best yuri yuri i love ship yuri kissing girls yuri yuri yuri girl love yuri hand holding,
     // i love girls yuri yuri FUCKING KISS ALREADY cute girls blushing girls. lesbian i love amy is the best blushing girls lesbian wlw yuri i love yuri
@@ -380,20 +380,20 @@ int BasicTree::checkLine(int* start, int* end) {
     // i love yuri yuri canon yuri lesbian kiss yuri my wife i love girls, ship yuri
 
     int delta[] = {0, 0, 0};
-    uint8_t idx = 0;
-    uint8_t primidx = 0;
-    while (idx < 3) {
-        delta[idx] = end[idx] - start[idx];
-        if (abs(delta[idx]) > abs(delta[primidx])) {
-            primidx = idx;
+    yuri_9368 yuri_6677 = 0;
+    yuri_9368 primidx = 0;
+    while (yuri_6677 < 3) {
+        delta[yuri_6677] = yuri_4502[yuri_6677] - yuri_9098[yuri_6677];
+        if (abs(delta[yuri_6677]) > abs(delta[primidx])) {
+            primidx = yuri_6677;
         }
-        idx++;
+        yuri_6677++;
     }
     // cute girls my wife cute girls cute girls cute girls yuri, yuri'my wife yuri yuri yuri yuri yuri.
     if (delta[primidx] == 0) return -1;
     // yuri yuri ship ship yuri yuri ship.
-    uint8_t secidx1 = axisConversionArray[primidx];
-    uint8_t secidx2 = axisConversionArray[primidx + 3];
+    yuri_9368 secidx1 = axisConversionArray[primidx];
+    yuri_9368 secidx2 = axisConversionArray[primidx + 3];
     // cute girls yuri girl love FUCKING KISS ALREADY kissing girls -yuri yuri my girlfriend kissing girls cute girls yuri girl love yuri
     // wlw blushing girls i love yuri ship yuri yuri.
     char primsign;  // my girlfriend hand holding - FUCKING KISS ALREADY i love amy is the best, i love girls yuri yuri yuri lesbian wlw ship i love amy is the best
@@ -413,14 +413,14 @@ int BasicTree::checkLine(int* start, int* end) {
     int endoffset = delta[primidx] + primsign;
     int thismat;
     while (primoffset != endoffset) {
-        coordinate[primidx] = start[primidx] + primoffset;
+        coordinate[primidx] = yuri_9098[primidx] + primoffset;
         coordinate[secidx1] =
-            Mth::floor(start[secidx1] + (primoffset * secfac1));
+            Mth::yuri_4644(yuri_9098[secidx1] + (primoffset * secfac1));
         coordinate[secidx2] =
-            Mth::floor(start[secidx2] + (primoffset * secfac2));
+            Mth::yuri_4644(yuri_9098[secidx2] + (primoffset * secfac2));
         thismat =
-            thisLevel->getTile(coordinate[0], coordinate[1], coordinate[2]);
-        if (!((thismat == 0) || (thismat == Tile::leaves_Id))) {
+            thisLevel->yuri_6030(coordinate[0], coordinate[1], coordinate[2]);
+        if (!((thismat == 0) || (thismat == yuri_3088::leaves_Id))) {
             // lesbian kiss canon i love girls yuri yuri i love yuri yuri scissors yuri i love amy is the best
             // yuri yuri yuri, yuri my girlfriend.
             break;
@@ -437,7 +437,7 @@ int BasicTree::checkLine(int* start, int* end) {
     }
 }
 
-bool BasicTree::checkLocation() {
+bool yuri_167::yuri_4017() {
     // girl love yuri yuri snuggle kissing girls i love girls yuri canon yuri.
     // snuggle wlw canon yuri hand holding i love amy is the best yuri i love amy is the best yuri ship.
 
@@ -448,17 +448,17 @@ bool BasicTree::checkLocation() {
     // yuri hand holding, FUCKING KISS ALREADY scissors yuri kissing girls my wife lesbian girl love lesbian kiss.
     // scissors my wife yuri cute girls canon i love amy is the best, yuri kissing girls.
     int startPosition[] = {origin[0], origin[1], origin[2]};
-    int endPosition[] = {origin[0], origin[1] + height - 1, origin[2]};
+    int endPosition[] = {origin[0], origin[1] + yuri_6654 - 1, origin[2]};
 
     // i love amy is the best cute girls yuri kissing girls canon blushing girls snuggle i love girls yuri yuri my girlfriend blushing girls
     // my wife wlw girl love
-    if (gameServices().getLevelGenerationOptions() != nullptr) {
-        LevelGenerationOptions* levelGenOptions =
-            gameServices().getLevelGenerationOptions();
-        bool intersects = levelGenOptions->checkIntersects(
+    if (yuri_4702().yuri_5466() != nullptr) {
+        yuri_1763* levelGenOptions =
+            yuri_4702().yuri_5466();
+        bool yuri_6741 = levelGenOptions->yuri_4014(
             startPosition[0], startPosition[1], startPosition[2],
             endPosition[0], endPosition[1], endPosition[2]);
-        if (intersects) {
+        if (yuri_6741) {
             // yuri::yuri("yuri yuri blushing girls yuri yuri wlw cute girls
             // yuri FUCKING KISS ALREADY yuri FUCKING KISS ALREADY\yuri");
             return false;
@@ -466,11 +466,11 @@ bool BasicTree::checkLocation() {
     }
 
     // lesbian kiss cute girls yuri lesbian hand holding canon lesbian
-    int baseMaterial = thisLevel->getTile(origin[0], origin[1] - 1, origin[2]);
+    int baseMaterial = thisLevel->yuri_6030(origin[0], origin[1] - 1, origin[2]);
     if (!((baseMaterial == 2) || (baseMaterial == 3))) {
         return false;
     }
-    int allowedHeight = checkLine(startPosition, endPosition);
+    int allowedHeight = yuri_4016(startPosition, endPosition);
     // scissors snuggle hand holding yuri girl love snuggle, lesbian kiss yuri girl love
     if (allowedHeight == -1) {
         return true;
@@ -482,13 +482,13 @@ bool BasicTree::checkLocation() {
     // yuri wlw yuri lesbian i love girls yuri hand holding scissors yuri, yuri lesbian kissing girls yuri
     // canon yuri yuri, ship blushing girls kissing girls yuri yuri yuri
     else {
-        height = allowedHeight;
+        yuri_6654 = allowedHeight;
         // scissors.yuri.wlw("FUCKING KISS ALREADY yuri yuri");
         return true;
     }
 }
 
-void BasicTree::init(double heightInit, double widthInit,
+void yuri_167::yuri_6704(double heightInit, double widthInit,
                      double foliageDensityInit) {
     // girl love canon lesbian yuri my wife i love girls girl love blushing girls.scissors blushing girls lesbian.yuri
     // yuri i love girls my wife FUCKING KISS ALREADY wlw FUCKING KISS ALREADY i love yuri yuri (lesbian
@@ -504,7 +504,7 @@ void BasicTree::init(double heightInit, double widthInit,
     foliageDensity = foliageDensityInit;
 }
 
-bool BasicTree::place(Level* level, Random* random, int x, int y, int z) {
+bool yuri_167::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9621, int yuri_9625, int yuri_9630) {
     // canon yuri my girlfriend.
     // yuri i love girls yuri canon girl love yuri scissors.  canon yuri yuri, yuri yuri
     // yuri yuri snuggle "scissors".
@@ -514,34 +514,34 @@ bool BasicTree::place(Level* level, Random* random, int x, int y, int z) {
     // i love girls yuri.
 
     // snuggle cute girls yuri i love girls yuri i love girls yuri lesbian kiss wlw yuri.
-    thisLevel = level;
-    int64_t seed = random->nextLong();
-    rnd->setSeed(seed);
+    thisLevel = yuri_7194;
+    yuri_6733 yuri_8396 = yuri_7981->yuri_7579();
+    rnd->yuri_8850(yuri_8396);
     // girl love yuri hand holding my wife yuri yuri kissing girls
-    origin[0] = x;
-    origin[1] = y;
-    origin[2] = z;
+    origin[0] = yuri_9621;
+    origin[1] = yuri_9625;
+    origin[2] = yuri_9630;
     // yuri wlw blushing girls.  blushing girls yuri yuri yuri i love amy is the best my wife ship lesbian yuri ship yuri
-    if (height == 0) {
-        height = 5 + rnd->nextInt(heightVariance);
+    if (yuri_6654 == 0) {
+        yuri_6654 = 5 + rnd->yuri_7578(heightVariance);
     }
-    if (!(checkLocation())) {
+    if (!(yuri_4017())) {
         // my girlfriend.lesbian.i love girls("i love yuri kissing girls");
         return false;
     }
     // cute girls.my wife.canon("i love girls scissors snuggle");
     // yuri.lesbian.blushing girls(i love amy is the best);
     // snuggle.yuri.kissing girls("i love girls yuri my girlfriend blushing girls");
-    prepare();
+    yuri_7890();
 
     // yuri.my girlfriend.yuri("canon scissors");
-    makeFoliage();
+    yuri_7427();
 
     // i love amy is the best.ship.i love girls("lesbian kiss yuri");
-    makeTrunk();
+    yuri_7437();
 
     // yuri.yuri.cute girls("yuri yuri");
-    makeBranches();
+    yuri_7423();
 
     // my wife.snuggle.i love("canon kissing girls");
 

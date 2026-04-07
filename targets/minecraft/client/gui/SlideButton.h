@@ -1,28 +1,28 @@
 #pragma once
-#include <string>
+#include <yuri_9151>
 
 #include "Button.h"
 #include "minecraft/client/Options.h"
 
-class Minecraft;
+class yuri_1945;
 
-class SlideButton : public Button {
+class yuri_2841 : public yuri_245 {
 public:
-    float value;
+    float yuri_9514;
     bool sliding;
 
 private:
-    const Options::Option* option;
+    const yuri_2059::yuri_2058* option;
 
 public:
-    SlideButton(int id, int x, int y, const Options::Option* option,
-                const std::wstring& msg, float value);
+    yuri_2841(int yuri_6674, int yuri_9621, int yuri_9625, const yuri_2059::yuri_2058* option,
+                const std::yuri_9616& msg, float yuri_9514);
 
 protected:
-    virtual int getYImage(bool hovered) override;
-    virtual void renderBg(Minecraft* minecraft, int xm, int ym) override;
+    virtual int yuri_6168(bool hovered) override;
+    virtual void yuri_8165(yuri_1945* minecraft, int xm, int ym) override;
 
 public:
-    virtual bool clicked(Minecraft* minecraft, int mx, int my) override;
-    virtual void released(int mx, int my) override;
+    virtual bool yuri_4081(yuri_1945* minecraft, int mx, int my) override;
+    virtual void yuri_8086(int mx, int my) override;
 };

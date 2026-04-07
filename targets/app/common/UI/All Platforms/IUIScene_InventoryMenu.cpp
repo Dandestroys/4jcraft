@@ -1,12 +1,12 @@
 #include "IUIScene_InventoryMenu.h"
 
-#include <assert.h>
+#include <yuri_3750.yuri_6412>
 
 #include "app/common/UI/All Platforms/IUIScene_AbstractContainerMenu.h"
 #include "minecraft/world/inventory/InventoryMenu.h"
 
-IUIScene_AbstractContainerMenu::ESceneSection
-IUIScene_InventoryMenu::GetSectionAndSlotInDirection(ESceneSection eSection,
+yuri_1335::ESceneSection
+IUIScene_InventoryMenu::yuri_1154(ESceneSection eSection,
                                                      ETapState eTapDirection,
                                                      int* piTargetX,
                                                      int* piTargetY) {
@@ -36,31 +36,31 @@ IUIScene_InventoryMenu::GetSectionAndSlotInDirection(ESceneSection eSection,
             }
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
 
-    updateSlotPosition(eSection, newSection, eTapDirection, piTargetX,
+    yuri_9466(eSection, newSection, eTapDirection, piTargetX,
                        piTargetY, 0);
 
     return newSection;
 }
 
-int IUIScene_InventoryMenu::getSectionStartOffset(ESceneSection eSection) {
-    int offset = 0;
+int IUIScene_InventoryMenu::yuri_5869(ESceneSection eSection) {
+    int yuri_7607 = 0;
     switch (eSection) {
         case eSectionInventoryArmor:
-            offset = InventoryMenu::ARMOR_SLOT_START;
+            yuri_7607 = yuri_1627::ARMOR_SLOT_START;
             break;
         case eSectionInventoryInventory:
-            offset = InventoryMenu::INV_SLOT_START;
+            yuri_7607 = yuri_1627::INV_SLOT_START;
             break;
         case eSectionInventoryUsing:
-            offset = InventoryMenu::INV_SLOT_START + 27;
+            yuri_7607 = yuri_1627::INV_SLOT_START + 27;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
-    return offset;
+    return yuri_7607;
 }

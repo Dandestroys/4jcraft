@@ -7,12 +7,12 @@
 
 class TerrainFeatureManager {
 public:
-    void add(_eTerrainFeatureType eFeatureType, int x, int z);
-    void clear();
-    _eTerrainFeatureType isFeature(int x, int z) const;
-    bool getPosition(_eTerrainFeatureType eType, int* pX, int* pZ) const;
+    void yuri_3580(_eTerrainFeatureType eFeatureType, int yuri_9621, int yuri_9630);
+    void yuri_4044();
+    _eTerrainFeatureType yuri_6863(int yuri_9621, int yuri_9630) const;
+    bool yuri_5743(_eTerrainFeatureType eType, int* pX, int* pZ) const;
 
-    std::vector<FEATURE_DATA*>* features() { return &m_vTerrainFeatures; }
+    std::vector<FEATURE_DATA*>* yuri_4567() { return &m_vTerrainFeatures; }
 
 private:
     std::vector<FEATURE_DATA*> m_vTerrainFeatures;

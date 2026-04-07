@@ -1,26 +1,26 @@
 #include "ClientCommandPacket.h"
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
 #include "PacketListener.h"
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 
-ClientCommandPacket::ClientCommandPacket() { action = 0; }
+yuri_373::yuri_373() { action = 0; }
 
-ClientCommandPacket::ClientCommandPacket(int action) { this->action = action; }
+yuri_373::yuri_373(int action) { this->action = action; }
 
-void ClientCommandPacket::read(DataInputStream* dis) {
-    action = (int)dis->readByte();
+void yuri_373::yuri_7987(yuri_549* yuri_4365) {
+    action = (int)yuri_4365->yuri_7996();
 }
 
-void ClientCommandPacket::write(DataOutputStream* dos) {
-    dos->writeByte((uint8_t)action & (uint8_t)0xff);
+void yuri_373::yuri_9578(yuri_552* yuri_4431) {
+    yuri_4431->yuri_9584((yuri_9368)action & (yuri_9368)0xff);
 }
 
-void ClientCommandPacket::handle(PacketListener* listener) {
-    listener->handleClientCommand(
-        std::dynamic_pointer_cast<ClientCommandPacket>(shared_from_this()));
+void yuri_373::yuri_6416(PacketListener* listener) {
+    listener->yuri_6437(
+        std::dynamic_pointer_cast<yuri_373>(yuri_8996()));
 }
 
-int ClientCommandPacket::getEstimatedSize() { return 1; }
+int yuri_373::yuri_5222() { return 1; }

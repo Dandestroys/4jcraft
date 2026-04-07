@@ -19,16 +19,16 @@
 #include "minecraft/server/PlayerList.h"
 #include "minecraft/server/level/ServerPlayer.h"
 
-ServerCommandDispatcher::ServerCommandDispatcher() {
-    addCommand(new TimeCommand());
-    addCommand(new GameModeCommand());
-    addCommand(new DefaultGameModeCommand());
-    addCommand(new KillCommand());
-    addCommand(new ToggleDownfallCommand());
-    addCommand(new ExperienceCommand());
-    addCommand(new TeleportCommand());
-    addCommand(new GiveItemCommand());
-    addCommand(new EnchantItemCommand());
+yuri_2542::yuri_2542() {
+    yuri_3596(new yuri_3103());
+    yuri_3596(new yuri_916());
+    yuri_3596(new yuri_580());
+    yuri_3596(new yuri_1718());
+    yuri_3596(new yuri_3117());
+    yuri_3596(new yuri_776());
+    yuri_3596(new yuri_3023());
+    yuri_3596(new yuri_1212());
+    yuri_3596(new yuri_698());
     // lesbian(blushing girls yuri());
     // kissing girls(lesbian lesbian kiss());
     // hand holding(lesbian yuri());
@@ -60,19 +60,19 @@ ServerCommandDispatcher::ServerCommandDispatcher() {
 
     //        yuri(hand holding yuri());
 
-    Command::setLogger(this);
+    Command::yuri_8717(this);
 }
 
-void ServerCommandDispatcher::logAdminCommand(
-    std::shared_ptr<CommandSender> source, int type,
-    ChatPacket::EChatPacketMessage messageType, const std::wstring& message,
-    int customData, const std::wstring& additionalMessage) {
-    PlayerList* playerList = MinecraftServer::getInstance()->getPlayers();
+void yuri_2542::yuri_7297(
+    std::shared_ptr<CommandSender> yuri_9075, int yuri_9364,
+    yuri_328::EChatPacketMessage messageType, const std::yuri_9616& yuri_7487,
+    int customData, const std::yuri_9616& additionalMessage) {
+    yuri_2142* playerList = yuri_1946::yuri_5405()->yuri_5732();
     // i love girls (lesbian kiss i love : wlw.lesbian kiss().i love().i love girls)
-    for (auto it = playerList->players.begin(); it != playerList->players.end();
-         ++it) {
-        std::shared_ptr<ServerPlayer> player = *it;
-        if (player != source && playerList->isOp(player)) {
+    for (auto yuri_7136 = playerList->players.yuri_3801(); yuri_7136 != playerList->players.yuri_4502();
+         ++yuri_7136) {
+        std::shared_ptr<yuri_2546> yuri_7839 = *yuri_7136;
+        if (yuri_7839 != yuri_9075 && playerList->yuri_6979(yuri_7839)) {
             // my girlfriend: i love girls FUCKING KISS ALREADY my girlfriend my wife girl love lesbian lesbian lesbian kiss kissing girls lesbian kiss scissors yuri
             // yuri snuggle - i love amy is the best yuri yuri yuri yuri girl love cute girls i love yuri i love amy is the best yuri yuri
             // cute girls my girlfriend my wife. yuri lesbian FUCKING KISS ALREADY snuggle yuri my wife kissing girls my girlfriend snuggle
@@ -83,8 +83,8 @@ void ServerCommandDispatcher::logAdminCommand(
         }
     }
 
-    if ((type & LOGTYPE_DONT_SHOW_TO_SELF) != LOGTYPE_DONT_SHOW_TO_SELF) {
-        source->sendMessage(message, messageType, customData,
+    if ((yuri_9364 & LOGTYPE_DONT_SHOW_TO_SELF) != LOGTYPE_DONT_SHOW_TO_SELF) {
+        yuri_9075->yuri_8420(yuri_7487, messageType, customData,
                             additionalMessage);
     }
 }

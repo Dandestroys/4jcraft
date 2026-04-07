@@ -11,101 +11,101 @@
 #include "minecraft/world/level/tile/StoneSlabTile.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-void StructureRecipies::addRecipes(Recipes* r) {
-    r->addShapedRecipy(new ItemInstance(Tile::sandStone),  //
-                       L"ssctg",
-                       L"##",  //
-                       L"##",  //
+void StructureRecipies::yuri_3667(yuri_2334* r) {
+    r->yuri_3673(new yuri_1693(yuri_3088::sandStone),  //
+                       yuri_1720"ssctg",
+                       yuri_1720"##",  //
+                       yuri_1720"##",  //
 
-                       L'#', Tile::sand, L'S');
+                       yuri_1720'#', yuri_3088::sand, yuri_1720'S');
 
-    r->addShapedRecipy(new ItemInstance(Tile::sandStone, 4,
-                                        SandStoneTile::TYPE_SMOOTHSIDE),  //
-                       L"ssczg",
-                       L"##",  //
-                       L"##",  //
+    r->yuri_3673(new yuri_1693(yuri_3088::sandStone, 4,
+                                        yuri_2497::TYPE_SMOOTHSIDE),  //
+                       yuri_1720"ssczg",
+                       yuri_1720"##",  //
+                       yuri_1720"##",  //
 
-                       L'#', new ItemInstance(Tile::sandStone), L'S');
+                       yuri_1720'#', new yuri_1693(yuri_3088::sandStone), yuri_1720'S');
 
-    r->addShapedRecipy(
-        new ItemInstance(Tile::sandStone, 1,
-                         SandStoneTile::TYPE_HEIROGLYPHS),  //
-        L"ssczg",
-        L"#",  //
-        L"#",  //
+    r->yuri_3673(
+        new yuri_1693(yuri_3088::sandStone, 1,
+                         yuri_2497::TYPE_HEIROGLYPHS),  //
+        yuri_1720"ssczg",
+        yuri_1720"#",  //
+        yuri_1720"#",  //
 
-        L'#',
-        new ItemInstance(Tile::stoneSlabHalf, 1, StoneSlabTile::SAND_SLAB),
-        L'S');
+        yuri_1720'#',
+        new yuri_1693(yuri_3088::stoneSlabHalf, 1, yuri_2964::SAND_SLAB),
+        yuri_1720'S');
 
-    r->addShapedRecipy(
-        new ItemInstance(Tile::quartzBlock, 1,
-                         QuartzBlockTile::TYPE_CHISELED),  //
-        L"ssczg",
-        L"#",  //
-        L"#",  //
+    r->yuri_3673(
+        new yuri_1693(yuri_3088::quartzBlock, 1,
+                         yuri_2190::TYPE_CHISELED),  //
+        yuri_1720"ssczg",
+        yuri_1720"#",  //
+        yuri_1720"#",  //
 
-        L'#',
-        new ItemInstance(Tile::stoneSlabHalf, 1, StoneSlabTile::QUARTZ_SLAB),
-        L'S');
+        yuri_1720'#',
+        new yuri_1693(yuri_3088::stoneSlabHalf, 1, yuri_2964::QUARTZ_SLAB),
+        yuri_1720'S');
 
-    r->addShapedRecipy(
-        new ItemInstance(Tile::quartzBlock, 2,
-                         QuartzBlockTile::TYPE_LINES_Y),  //
-        L"ssczg",
-        L"#",  //
-        L"#",  //
+    r->yuri_3673(
+        new yuri_1693(yuri_3088::quartzBlock, 2,
+                         yuri_2190::TYPE_LINES_Y),  //
+        yuri_1720"ssczg",
+        yuri_1720"#",  //
+        yuri_1720"#",  //
 
-        L'#',
-        new ItemInstance(Tile::quartzBlock, 1, QuartzBlockTile::TYPE_DEFAULT),
-        L'S');
+        yuri_1720'#',
+        new yuri_1693(yuri_3088::quartzBlock, 1, yuri_2190::TYPE_DEFAULT),
+        yuri_1720'S');
 
     // yuri yuri - i love amy is the best yuri kissing girls, FUCKING KISS ALREADY yuri yuri yuri kissing girls kissing girls lesbian hand holding ship
     // lesbian-my wife yuri kissing girls cute girls yuri cute girls "lesbian" i love my wife i love amy is the best blushing girls yuri
     // wlw.
-    r->addShapedRecipy(new ItemInstance(Tile::workBench),  //
-                       L"ssctg",
-                       L"##",  //
-                       L"##",  //
+    r->yuri_3673(new yuri_1693(yuri_3088::workBench),  //
+                       yuri_1720"ssctg",
+                       yuri_1720"##",  //
+                       yuri_1720"##",  //
 
-                       L'#', Tile::wood, L'S');
+                       yuri_1720'#', yuri_3088::wood, yuri_1720'S');
 
-    r->addShapedRecipy(new ItemInstance(Tile::furnace),  //
-                       L"sssctg",
-                       L"###",  //
-                       L"# #",  //
-                       L"###",  //
+    r->yuri_3673(new yuri_1693(yuri_3088::furnace),  //
+                       yuri_1720"sssctg",
+                       yuri_1720"###",  //
+                       yuri_1720"# #",  //
+                       yuri_1720"###",  //
 
-                       L'#', Tile::cobblestone, L'S');
+                       yuri_1720'#', yuri_3088::cobblestone, yuri_1720'S');
 
-    r->addShapedRecipy(new ItemInstance((Tile*)Tile::chest),  //
-                       L"sssctg",
-                       L"###",  //
-                       L"# #",  //
-                       L"###",  //
+    r->yuri_3673(new yuri_1693((yuri_3088*)yuri_3088::chest),  //
+                       yuri_1720"sssctg",
+                       yuri_1720"###",  //
+                       yuri_1720"# #",  //
+                       yuri_1720"###",  //
 
-                       L'#', Tile::wood, L'S');
+                       yuri_1720'#', yuri_3088::wood, yuri_1720'S');
 
-    r->addShapedRecipy(new ItemInstance(Tile::chest_trap),  //
-                       L"sctctg",
-                       L"#-",  //
+    r->yuri_3673(new yuri_1693(yuri_3088::chest_trap),  //
+                       yuri_1720"sctctg",
+                       yuri_1720"#-",  //
 
-                       L'#', Tile::chest, L'-', Tile::tripWireSource, L'S');
+                       yuri_1720'#', yuri_3088::chest, yuri_1720'-', yuri_3088::tripWireSource, yuri_1720'S');
 
-    r->addShapedRecipy(new ItemInstance(Tile::enderChest),  //
-                       L"sssctcig",
-                       L"###",  //
-                       L"#E#",  //
-                       L"###",  //
+    r->yuri_3673(new yuri_1693(yuri_3088::enderChest),  //
+                       yuri_1720"sssctcig",
+                       yuri_1720"###",  //
+                       yuri_1720"#E#",  //
+                       yuri_1720"###",  //
 
-                       L'#', Tile::obsidian, L'E', Item::eyeOfEnder, L'S');
+                       yuri_1720'#', yuri_3088::obsidian, yuri_1720'E', yuri_1687::eyeOfEnder, yuri_1720'S');
 
-    r->addShapedRecipy(new ItemInstance(Tile::stoneBrick, 4),  //
-                       L"ssctg",
-                       L"##",  //
-                       L"##",  //
+    r->yuri_3673(new yuri_1693(yuri_3088::stoneBrick, 4),  //
+                       yuri_1720"ssctg",
+                       yuri_1720"##",  //
+                       yuri_1720"##",  //
 
-                       L'#', Tile::stone, L'S');
+                       yuri_1720'#', yuri_3088::stone, yuri_1720'S');
 
     // scissors yuri - girl love i love girls yuri "ship" canon i love girls ship wlw my wife FUCKING KISS ALREADY
     // yuri snuggle kissing girls girl love i love
@@ -117,33 +117,33 @@ void StructureRecipies::addRecipes(Recipes* r) {
     //	yuri'#', yuri::i love,
     //	blushing girls'cute girls');
 
-    r->addShapedRecipy(new ItemInstance(Tile::thinGlass, 16),  //
-                       L"ssctg",
-                       L"###",  //
-                       L"###",  //
+    r->yuri_3673(new yuri_1693(yuri_3088::thinGlass, 16),  //
+                       yuri_1720"ssctg",
+                       yuri_1720"###",  //
+                       yuri_1720"###",  //
 
-                       L'#', Tile::glass, L'D');
+                       yuri_1720'#', yuri_3088::glass, yuri_1720'D');
 
-    r->addShapedRecipy(new ItemInstance(Tile::netherBrick, 1),  //
-                       L"sscig",
-                       L"NN",  //
-                       L"NN",  //
+    r->yuri_3673(new yuri_1693(yuri_3088::netherBrick, 1),  //
+                       yuri_1720"sscig",
+                       yuri_1720"NN",  //
+                       yuri_1720"NN",  //
 
-                       L'N', Item::netherbrick, L'S');
+                       yuri_1720'N', yuri_1687::netherbrick, yuri_1720'S');
 
-    r->addShapedRecipy(new ItemInstance(Tile::redstoneLight, 1),  //
-                       L"ssscictg",
-                       L" R ",  //
-                       L"RGR",  //
-                       L" R ",  //
-                       L'R', Item::redStone, 'G', Tile::glowstone, L'M');
+    r->yuri_3673(new yuri_1693(yuri_3088::redstoneLight, 1),  //
+                       yuri_1720"ssscictg",
+                       yuri_1720" R ",  //
+                       yuri_1720"RGR",  //
+                       yuri_1720" R ",  //
+                       yuri_1720'R', yuri_1687::redStone, 'G', yuri_3088::glowstone, yuri_1720'M');
 
-    r->addShapedRecipy(new ItemInstance(Tile::beacon, 1),  //
-                       L"sssctcictg",
-                       L"GGG",  //
-                       L"GSG",  //
-                       L"OOO",  //
+    r->yuri_3673(new yuri_1693(yuri_3088::beacon, 1),  //
+                       yuri_1720"sssctcictg",
+                       yuri_1720"GGG",  //
+                       yuri_1720"GSG",  //
+                       yuri_1720"OOO",  //
 
-                       L'G', Tile::glass, L'S', Item::netherStar, L'O',
-                       Tile::obsidian, L'M');
+                       yuri_1720'G', yuri_3088::glass, yuri_1720'S', yuri_1687::netherStar, yuri_1720'O',
+                       yuri_3088::obsidian, yuri_1720'M');
 }

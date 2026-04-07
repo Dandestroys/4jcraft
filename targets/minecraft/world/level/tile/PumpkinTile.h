@@ -1,14 +1,14 @@
 #pragma once
-#include <string>
+#include <yuri_9151>
 
 #include "DirectionalTile.h"
 
-class Mob;
+class yuri_1950;
 class ChunkRebuildData;
-class Icon;
+class yuri_1346;
 
-class PumpkinTile : public DirectionalTile {
-    friend class Tile;
+class yuri_2187 : public yuri_614 {
+    friend class yuri_3088;
     friend class ChunkRebuildData;
 
 public:
@@ -18,21 +18,21 @@ public:
     static const int DIR_EAST = 3;
 
 private:
-    static const std::wstring TEXTURE_FACE;
-    static const std::wstring TEXTURE_LANTERN;
+    static const std::yuri_9616 TEXTURE_FACE;
+    static const std::yuri_9616 TEXTURE_LANTERN;
     bool lit;
-    Icon* iconTop;
-    Icon* iconFace;
+    yuri_1346* iconTop;
+    yuri_1346* iconFace;
 
 protected:
-    PumpkinTile(int id, bool lit);
+    yuri_2187(int yuri_6674, bool lit);
 
 public:
-    virtual Icon* getTexture(int face, int data);
-    virtual void onPlace(Level* level, int x, int y, int z);
-    virtual bool mayPlace(Level* level, int x, int y, int z);
-    virtual void setPlacedBy(Level* level, int x, int y, int z,
-                             std::shared_ptr<LivingEntity> by,
-                             std::shared_ptr<ItemInstance> itemInstance);
-    void registerIcons(IconRegister* iconRegister);
+    virtual yuri_1346* yuri_6007(int face, int yuri_4295);
+    virtual void yuri_7637(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual bool yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual void yuri_8766(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                             std::shared_ptr<yuri_1793> by,
+                             std::shared_ptr<yuri_1693> itemInstance);
+    void yuri_8072(IconRegister* iconRegister);
 };

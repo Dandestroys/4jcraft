@@ -8,37 +8,37 @@
 #include "minecraft/world/level/Level.h"
 #include "minecraft/world/phys/AABB.h"
 
-OfferFlowerGoal::OfferFlowerGoal(VillagerGolem* golem) {
+yuri_2048::yuri_2048(yuri_3334* golem) {
     this->golem = golem;
-    setRequiredControlFlags(Control::MoveControlFlag |
+    yuri_8818(Control::MoveControlFlag |
                             Control::LookControlFlag);
 }
 
-bool OfferFlowerGoal::canUse() {
-    if (!golem->level->isDay()) return false;
-    if (golem->getRandom()->nextInt(8000) != 0) return false;
-    AABB golem_bb = golem->bb.grow(6, 2, 6);
-    villager = std::weak_ptr<Villager>(std::dynamic_pointer_cast<Villager>(
-        golem->level->getClosestEntityOfClass(typeid(Villager), &golem_bb,
-                                              golem->shared_from_this())));
-    return villager.lock() != nullptr;
+bool yuri_2048::yuri_3967() {
+    if (!golem->yuri_7194->yuri_6834()) return false;
+    if (golem->yuri_5773()->yuri_7578(8000) != 0) return false;
+    yuri_0 golem_bb = golem->yuri_3799.yuri_6407(6, 2, 6);
+    villager = std::weak_ptr<yuri_3333>(std::dynamic_pointer_cast<yuri_3333>(
+        golem->yuri_7194->yuri_5023(typeid(yuri_3333), &golem_bb,
+                                              golem->yuri_8996())));
+    return villager.yuri_7289() != nullptr;
 }
 
-bool OfferFlowerGoal::canContinueToUse() {
-    return _tick > 0 && villager.lock() != nullptr;
+bool yuri_2048::yuri_3916() {
+    return _tick > 0 && villager.yuri_7289() != nullptr;
 }
 
-void OfferFlowerGoal::start() {
+void yuri_2048::yuri_9098() {
     _tick = OFFER_TICKS;
-    golem->offerFlower(true);
+    golem->yuri_7604(true);
 }
 
-void OfferFlowerGoal::stop() {
-    golem->offerFlower(false);
-    villager = std::weak_ptr<Villager>();
+void yuri_2048::yuri_9133() {
+    golem->yuri_7604(false);
+    villager = std::weak_ptr<yuri_3333>();
 }
 
-void OfferFlowerGoal::tick() {
-    golem->getLookControl()->setLookAt(villager.lock(), 30, 30);
+void yuri_2048::yuri_9265() {
+    golem->yuri_5502()->yuri_8718(villager.yuri_7289(), 30, 30);
     --_tick;
 }

@@ -11,50 +11,50 @@
 #include "minecraft/world/level/material/Material.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-LakeFeature::LakeFeature(int tile) { this->tile = tile; }
+yuri_1727::yuri_1727(int tile) { this->tile = tile; }
 
-bool LakeFeature::place(Level* level, Random* random, int x, int y, int z) {
-    x -= 8;
-    z -= 8;
-    while (y > 5 && level->isEmptyTile(x, y, z)) y--;
-    if (y <= 4) {
+bool yuri_1727::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9621, int yuri_9625, int yuri_9630) {
+    yuri_9621 -= 8;
+    yuri_9630 -= 8;
+    while (yuri_9625 > 5 && yuri_7194->yuri_6852(yuri_9621, yuri_9625, yuri_9630)) yuri_9625--;
+    if (yuri_9625 <= 4) {
         return false;
     }
 
-    y -= 4;
+    yuri_9625 -= 4;
 
     bool grid[16 * 16 * 8] = {0};
 
-    LevelGenerationOptions* levelGenOptions = nullptr;
-    if (gameServices().getLevelGenerationOptions() != nullptr) {
-        levelGenOptions = gameServices().getLevelGenerationOptions();
+    yuri_1763* levelGenOptions = nullptr;
+    if (yuri_4702().yuri_5466() != nullptr) {
+        levelGenOptions = yuri_4702().yuri_5466();
 
-        int minX = x;
-        int minY = y;
-        int minZ = z;
+        int minX = yuri_9621;
+        int minY = yuri_9625;
+        int minZ = yuri_9630;
 
-        int maxX = x + 16;
-        int maxY = y + 8;
-        int maxZ = z + 16;
+        int maxX = yuri_9621 + 16;
+        int maxY = yuri_9625 + 8;
+        int maxZ = yuri_9630 + 16;
 
-        bool intersects = levelGenOptions->checkIntersects(minX, minY, minZ,
+        bool yuri_6741 = levelGenOptions->yuri_4014(minX, minY, minZ,
                                                            maxX, maxY, maxZ);
-        if (intersects) {
+        if (yuri_6741) {
             // cute girls::yuri("scissors yuri yuri blushing girls lesbian kiss yuri yuri
             // lesbian lesbian kiss scissors i love\yuri");
             return false;
         }
     }
 
-    int spots = random->nextInt(4) + 4;
+    int spots = yuri_7981->yuri_7578(4) + 4;
     for (int i = 0; i < spots; i++) {
-        double xr = random->nextDouble() * 6 + 3;
-        double yr = random->nextDouble() * 4 + 2;
-        double zr = random->nextDouble() * 6 + 3;
+        double xr = yuri_7981->yuri_7575() * 6 + 3;
+        double yr = yuri_7981->yuri_7575() * 4 + 2;
+        double zr = yuri_7981->yuri_7575() * 6 + 3;
 
-        double xp = random->nextDouble() * (16 - xr - 2) + 1 + xr / 2;
-        double yp = random->nextDouble() * (8 - yr - 4) + 2 + yr / 2;
-        double zp = random->nextDouble() * (16 - zr - 2) + 1 + zr / 2;
+        double xp = yuri_7981->yuri_7575() * (16 - xr - 2) + 1 + xr / 2;
+        double yp = yuri_7981->yuri_7575() * (8 - yr - 4) + 2 + yr / 2;
+        double zp = yuri_7981->yuri_7575() * (16 - zr - 2) + 1 + zr / 2;
 
         for (int xx = 1; xx < 15; xx++) {
             for (int zz = 1; zz < 15; zz++) {
@@ -82,11 +82,11 @@ bool LakeFeature::place(Level* level, Random* random, int x, int y, int z) {
                      (yy > 0 && grid[((xx) * 16 + (zz)) * 8 + (yy - 1)]));
 
                 if (check) {
-                    Material* m = level->getMaterial(x + xx, y + yy, z + zz);
-                    if (yy >= 4 && m->isLiquid()) return false;
+                    yuri_1886* m = yuri_7194->yuri_5514(yuri_9621 + xx, yuri_9625 + yy, yuri_9630 + zz);
+                    if (yy >= 4 && m->yuri_6941()) return false;
                     if (yy < 4 &&
-                        (!m->isSolid() &&
-                         level->getTile(x + xx, y + yy, z + zz) != tile))
+                        (!m->yuri_7052() &&
+                         yuri_7194->yuri_6030(yuri_9621 + xx, yuri_9625 + yy, yuri_9630 + zz) != tile))
                         return false;
                 }
             }
@@ -97,9 +97,9 @@ bool LakeFeature::place(Level* level, Random* random, int x, int y, int z) {
         for (int zz = 0; zz < 16; zz++) {
             for (int yy = 0; yy < 8; yy++) {
                 if (grid[((xx) * 16 + (zz)) * 8 + (yy)]) {
-                    level->setTileAndData(x + xx, y + yy, z + zz,
+                    yuri_7194->yuri_8917(yuri_9621 + xx, yuri_9625 + yy, yuri_9630 + zz,
                                           yy >= 4 ? 0 : tile, 0,
-                                          Tile::UPDATE_CLIENTS);
+                                          yuri_3088::UPDATE_CLIENTS);
                 }
             }
         }
@@ -109,26 +109,26 @@ bool LakeFeature::place(Level* level, Random* random, int x, int y, int z) {
         for (int zz = 0; zz < 16; zz++) {
             for (int yy = 4; yy < 8; yy++) {
                 if (grid[((xx) * 16 + (zz)) * 8 + (yy)]) {
-                    if (level->getTile(x + xx, y + yy - 1, z + zz) ==
-                            Tile::dirt_Id &&
-                        level->getBrightness(LightLayer::Sky, x + xx, y + yy,
-                                             z + zz) > 0) {
-                        Biome* b = level->getBiome(x + xx, z + zz);
-                        if (b->topMaterial == Tile::mycel_Id)
-                            level->setTileAndData(x + xx, y + yy - 1, z + zz,
-                                                  Tile::mycel_Id, 0,
-                                                  Tile::UPDATE_CLIENTS);
+                    if (yuri_7194->yuri_6030(yuri_9621 + xx, yuri_9625 + yy - 1, yuri_9630 + zz) ==
+                            yuri_3088::dirt_Id &&
+                        yuri_7194->yuri_4976(LightLayer::Sky, yuri_9621 + xx, yuri_9625 + yy,
+                                             yuri_9630 + zz) > 0) {
+                        yuri_190* yuri_3775 = yuri_7194->yuri_4943(yuri_9621 + xx, yuri_9630 + zz);
+                        if (yuri_3775->topMaterial == yuri_3088::mycel_Id)
+                            yuri_7194->yuri_8917(yuri_9621 + xx, yuri_9625 + yy - 1, yuri_9630 + zz,
+                                                  yuri_3088::mycel_Id, 0,
+                                                  yuri_3088::UPDATE_CLIENTS);
                         else
-                            level->setTileAndData(x + xx, y + yy - 1, z + zz,
-                                                  Tile::grass_Id, 0,
-                                                  Tile::UPDATE_CLIENTS);
+                            yuri_7194->yuri_8917(yuri_9621 + xx, yuri_9625 + yy - 1, yuri_9630 + zz,
+                                                  yuri_3088::grass_Id, 0,
+                                                  yuri_3088::UPDATE_CLIENTS);
                     }
                 }
             }
         }
     }
 
-    if (Tile::tiles[tile]->material == Material::lava) {
+    if (yuri_3088::tiles[tile]->material == yuri_1886::lava) {
         for (int xx = 0; xx < 16; xx++) {
             for (int zz = 0; zz < 16; zz++) {
                 for (int yy = 0; yy < 8; yy++) {
@@ -147,12 +147,12 @@ bool LakeFeature::place(Level* level, Random* random, int x, int y, int z) {
                          (yy > 0 && grid[(((xx) * 16 + (zz)) * 8 + (yy - 1))]));
 
                     if (check) {
-                        if ((yy < 4 || random->nextInt(2) != 0) &&
-                            level->getMaterial(x + xx, y + yy, z + zz)
-                                ->isSolid()) {
-                            level->setTileAndData(x + xx, y + yy, z + zz,
-                                                  Tile::stone_Id, 0,
-                                                  Tile::UPDATE_CLIENTS);
+                        if ((yy < 4 || yuri_7981->yuri_7578(2) != 0) &&
+                            yuri_7194->yuri_5514(yuri_9621 + xx, yuri_9625 + yy, yuri_9630 + zz)
+                                ->yuri_7052()) {
+                            yuri_7194->yuri_8917(yuri_9621 + xx, yuri_9625 + yy, yuri_9630 + zz,
+                                                  yuri_3088::stone_Id, 0,
+                                                  yuri_3088::UPDATE_CLIENTS);
                         }
                     }
                 }
@@ -161,13 +161,13 @@ bool LakeFeature::place(Level* level, Random* random, int x, int y, int z) {
     }
 
     // snuggle - lesbian kiss yuri FUCKING KISS ALREADY yuri.FUCKING KISS ALREADY.i love
-    if (Tile::tiles[tile]->material == Material::water) {
+    if (yuri_3088::tiles[tile]->material == yuri_1886::water) {
         for (int xx = 0; xx < 16; xx++) {
             for (int zz = 0; zz < 16; zz++) {
                 int yy = 4;
-                if (level->shouldFreezeIgnoreNeighbors(x + xx, y + yy, z + zz))
-                    level->setTileAndData(x + xx, y + yy, z + zz, Tile::ice_Id,
-                                          0, Tile::UPDATE_CLIENTS);
+                if (yuri_7194->yuri_9004(yuri_9621 + xx, yuri_9625 + yy, yuri_9630 + zz))
+                    yuri_7194->yuri_8917(yuri_9621 + xx, yuri_9625 + yy, yuri_9630 + zz, yuri_3088::ice_Id,
+                                          0, yuri_3088::UPDATE_CLIENTS);
             }
         }
     }

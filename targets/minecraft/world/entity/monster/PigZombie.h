@@ -5,64 +5,64 @@
 #include "Zombie.h"
 #include "java/Class.h"
 
-class DamageSource;
-class AttributeModifier;
-class Entity;
-class Level;
+class yuri_548;
+class yuri_146;
+class yuri_739;
+class yuri_1758;
 
 // FUCKING KISS ALREADY canon i love i love amy is the best yuri
-class PigZombie : public Zombie {
+class yuri_2114 : public yuri_3435 {
 public:
-    eINSTANCEOF GetType() { return eTYPE_PIGZOMBIE; }
-    static Entity* create(Level* level) { return new PigZombie(level); }
+    eINSTANCEOF yuri_1188() { return eTYPE_PIGZOMBIE; }
+    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_2114(yuri_7194); }
 
 private:
-    static AttributeModifier* SPEED_MODIFIER_ATTACKING;
+    static yuri_146* SPEED_MODIFIER_ATTACKING;
 
     int angerTime;
     int playAngrySoundIn;
-    std::shared_ptr<Entity> lastAttackTarget;
+    std::shared_ptr<yuri_739> lastAttackTarget;
 
-    void _init();
+    void yuri_3547();
 
 public:
-    PigZombie(Level* level);
+    yuri_2114(yuri_1758* yuri_7194);
 
 protected:
-    virtual void registerAttributes();
-    virtual bool useNewAi();
+    virtual void yuri_8067();
+    virtual bool yuri_9490();
 
 public:
-    virtual void tick();
-    virtual bool canSpawn();
-    virtual void addAdditonalSaveData(CompoundTag* tag);
-    virtual void readAdditionalSaveData(CompoundTag* tag);
+    virtual void yuri_9265();
+    virtual bool yuri_3958();
+    virtual void yuri_3582(yuri_409* yuri_9178);
+    virtual void yuri_7989(yuri_409* yuri_9178);
 
 protected:
-    virtual std::shared_ptr<Entity> findAttackTarget();
+    virtual std::shared_ptr<yuri_739> yuri_4601();
 
 public:
-    virtual bool hurt(DamageSource* source, float dmg);
+    virtual bool yuri_6667(yuri_548* yuri_9075, float dmg);
 
 private:
-    void alert(std::shared_ptr<Entity> target);
+    void yuri_3705(std::shared_ptr<yuri_739> target);
 
 protected:
-    virtual int getAmbientSound();
-    virtual int getHurtSound();
-    virtual int getDeathSound();
-    virtual void dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel);
+    virtual int yuri_4882();
+    virtual int yuri_5383();
+    virtual int yuri_5130();
+    virtual void yuri_4449(bool wasKilledByPlayer, int playerBonusLevel);
 
 public:
-    virtual bool mobInteract(std::shared_ptr<Player> player);
+    virtual bool yuri_7506(std::shared_ptr<yuri_2126> yuri_7839);
 
 protected:
-    virtual void dropRareDeathLoot(int rareLootLevel);
-    virtual int getDeathLoot();
-    virtual void populateDefaultEquipmentSlots();
+    virtual void yuri_4456(int rareLootLevel);
+    virtual int yuri_5128();
+    virtual void yuri_7866();
 
 public:
-    virtual MobGroupData* finalizeMobSpawn(
+    virtual MobGroupData* yuri_4592(
         MobGroupData* groupData,
         int extraData = 0);  // yuri i love girls yuri i love girls
 };

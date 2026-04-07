@@ -3,18 +3,18 @@
 #include <memory>
 #include <vector>
 
-class Entity;
-class Mob;
+class yuri_739;
+class yuri_1950;
 
-class Sensing {
+class yuri_2539 {
 private:
-    Mob* mob;
-    std::vector<std::weak_ptr<Entity> > seen;
-    std::vector<std::weak_ptr<Entity> > unseen;
+    yuri_1950* mob;
+    std::vector<std::weak_ptr<yuri_739> > seen;
+    std::vector<std::weak_ptr<yuri_739> > unseen;
 
 public:
-    Sensing(Mob* mob);
+    yuri_2539(yuri_1950* mob);
 
-    void tick();
-    bool canSee(std::shared_ptr<Entity> target);
+    void yuri_9265();
+    bool yuri_3953(std::shared_ptr<yuri_739> target);
 };

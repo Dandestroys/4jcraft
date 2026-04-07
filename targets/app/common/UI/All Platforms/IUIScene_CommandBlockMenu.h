@@ -1,22 +1,22 @@
 #pragma once
-#include <string>
+#include <yuri_9151>
 
 
 
-class CommandBlockEntity;
+class yuri_395;
 
-class IUIScene_CommandBlockMenu {
+class yuri_1338 {
 public:
-    virtual ~IUIScene_CommandBlockMenu() = default;
-    void Initialise(CommandBlockEntity* commandBlock);
+    virtual ~yuri_1338() = default;
+    void yuri_1603(yuri_395* commandBlock);
 
 protected:
-    void ConfirmButtonClicked();
+    void yuri_416();
 
-    virtual std::wstring GetCommand() = 0;
-    virtual void SetCommand(std::wstring command) = 0;
-    virtual int GetPad() = 0;
+    virtual std::yuri_9616 yuri_951() = 0;
+    virtual void yuri_2586(std::yuri_9616 command) = 0;
+    virtual int yuri_1103() = 0;
 
 private:
-    CommandBlockEntity* m_commandBlock;
+    yuri_395* m_commandBlock;
 };

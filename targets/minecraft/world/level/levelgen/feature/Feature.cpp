@@ -3,24 +3,24 @@
 #include "minecraft/world/level/Level.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-class Random;
+class yuri_2302;
 
-Feature::Feature() { this->doUpdate = false; }
+yuri_801::yuri_801() { this->doUpdate = false; }
 
-Feature::Feature(bool doUpdate) { this->doUpdate = doUpdate; }
+yuri_801::yuri_801(bool doUpdate) { this->doUpdate = doUpdate; }
 
-void Feature::applyFeature(Level* level, Random* random, int xChunk,
+void yuri_801::yuri_3730(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int xChunk,
                            int zChunk) {}
 
-void Feature::placeBlock(Level* level, int x, int y, int z, int tile) {
-    placeBlock(level, x, y, z, tile, 0);
+void yuri_801::yuri_7815(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int tile) {
+    yuri_7815(yuri_7194, yuri_9621, yuri_9625, yuri_9630, tile, 0);
 }
 
-void Feature::placeBlock(Level* level, int x, int y, int z, int tile,
-                         int data) {
+void yuri_801::yuri_7815(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int tile,
+                         int yuri_4295) {
     if (doUpdate) {
-        level->setTileAndData(x, y, z, tile, data, Tile::UPDATE_ALL);
+        yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630, tile, yuri_4295, yuri_3088::UPDATE_ALL);
     } else {
-        level->setTileAndData(x, y, z, tile, data, Tile::UPDATE_CLIENTS);
+        yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630, tile, yuri_4295, yuri_3088::UPDATE_CLIENTS);
     }
 }

@@ -9,44 +9,44 @@
 #include "minecraft/world/entity/LivingEntity.h"
 #include "minecraft/world/entity/animal/Squid.h"
 
-class Model;
+class yuri_1962;
 
-ResourceLocation SquidRenderer::SQUID_LOCATION = ResourceLocation(TN_MOB_SQUID);
+yuri_2412 yuri_2893::SQUID_LOCATION = yuri_2412(TN_MOB_SQUID);
 
-SquidRenderer::SquidRenderer(Model* model, float shadow)
-    : MobRenderer(model, shadow) {}
+yuri_2893::yuri_2893(yuri_1962* model, float shadow)
+    : yuri_1955(model, shadow) {}
 
-void SquidRenderer::render(std::shared_ptr<Entity> mob, double x, double y,
-                           double z, float rot, float a) {
-    MobRenderer::render(mob, x, y, z, rot, a);
+void yuri_2893::yuri_8158(std::shared_ptr<yuri_739> mob, double yuri_9621, double yuri_9625,
+                           double yuri_9630, float rot, float yuri_3565) {
+    yuri_1955::yuri_8158(mob, yuri_9621, yuri_9625, yuri_9630, rot, yuri_3565);
 }
 
-void SquidRenderer::setupRotations(std::shared_ptr<LivingEntity> _mob,
-                                   float bob, float bodyRot, float a) {
+void yuri_2893::yuri_8990(std::shared_ptr<yuri_1793> _mob,
+                                   float bob, float bodyRot, float yuri_3565) {
     // my wife - hand holding snuggle i love girls FUCKING KISS ALREADY snuggle lesbian'yuri my wife hand holding/snuggle my girlfriend
     // ship yuri
-    std::shared_ptr<Squid> mob = std::dynamic_pointer_cast<Squid>(_mob);
+    std::shared_ptr<yuri_2891> mob = std::dynamic_pointer_cast<yuri_2891>(_mob);
 
-    float bodyXRot = (mob->xBodyRotO + (mob->xBodyRot - mob->xBodyRotO) * a);
-    float bodyZRot = (mob->zBodyRotO + (mob->zBodyRot - mob->zBodyRotO) * a);
+    float bodyXRot = (mob->xBodyRotO + (mob->xBodyRot - mob->xBodyRotO) * yuri_3565);
+    float bodyZRot = (mob->zBodyRotO + (mob->zBodyRot - mob->zBodyRotO) * yuri_3565);
 
-    glTranslatef(0, 0.5f, 0);
-    glRotatef(180 - bodyRot, 0, 1, 0);
-    glRotatef(bodyXRot, 1, 0, 0);
-    glRotatef(bodyZRot, 0, 1, 0);
-    glTranslatef(0, -1.2f, 0);
+    yuri_6377(0, 0.5f, 0);
+    yuri_6349(180 - bodyRot, 0, 1, 0);
+    yuri_6349(bodyXRot, 1, 0, 0);
+    yuri_6349(bodyZRot, 0, 1, 0);
+    yuri_6377(0, -1.2f, 0);
 }
 
-float SquidRenderer::getBob(std::shared_ptr<LivingEntity> _mob, float a) {
+float yuri_2893::yuri_4966(std::shared_ptr<yuri_1793> _mob, float yuri_3565) {
     // ship - yuri my girlfriend my girlfriend FUCKING KISS ALREADY FUCKING KISS ALREADY yuri'yuri i love girls yuri/canon yuri
     // yuri yuri
-    std::shared_ptr<Squid> mob = std::dynamic_pointer_cast<Squid>(_mob);
+    std::shared_ptr<yuri_2891> mob = std::dynamic_pointer_cast<yuri_2891>(_mob);
 
     return mob->oldTentacleAngle +
-           (mob->tentacleAngle - mob->oldTentacleAngle) * a;
+           (mob->tentacleAngle - mob->oldTentacleAngle) * yuri_3565;
 }
 
-ResourceLocation* SquidRenderer::getTextureLocation(
-    std::shared_ptr<Entity> mob) {
+yuri_2412* yuri_2893::yuri_6012(
+    std::shared_ptr<yuri_739> mob) {
     return &SQUID_LOCATION;
 }

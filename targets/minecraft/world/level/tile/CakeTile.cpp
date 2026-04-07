@@ -1,7 +1,7 @@
 #include "CakeTile.h"
 
 #include <optional>
-#include <string>
+#include <yuri_9151>
 
 #include "minecraft/Facing.h"
 #include "minecraft/world/IconRegister.h"
@@ -15,121 +15,121 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/phys/AABB.h"
 
-CakeTile::CakeTile(int id) : Tile(id, Material::cake, false) {
-    setTicking(true);
+yuri_289::yuri_289(int yuri_6674) : yuri_3088(yuri_6674, yuri_1886::cake, false) {
+    yuri_8915(true);
 
     iconTop = nullptr;
     iconBottom = nullptr;
     iconInner = nullptr;
 }
 
-void CakeTile::updateShape(
-    LevelSource* level, int x, int y, int z, int forceData,
-    std::shared_ptr<TileEntity>
+void yuri_289::yuri_9461(
+    yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
+    std::shared_ptr<yuri_3091>
         forceEntity)  // canon yuri yuri, FUCKING KISS ALREADY yuri
 {
-    int d = level->getData(x, y, z);
+    int d = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
     float r = 1 / 16.0f;
     float r2 = (1 + d * 2) / 16.0f;
-    float h = 8 / 16.0f;
-    this->setShape(r2, 0, r, 1 - r, h, 1 - r);
+    float yuri_6412 = 8 / 16.0f;
+    this->yuri_8855(r2, 0, r, 1 - r, yuri_6412, 1 - r);
 }
 
-void CakeTile::updateDefaultShape() {
+void yuri_289::yuri_9402() {
     float r = 1 / 16.0f;
-    float h = 8 / 16.0f;
-    this->setShape(r, 0, r, 1 - r, h, 1 - r);
+    float yuri_6412 = 8 / 16.0f;
+    this->yuri_8855(r, 0, r, 1 - r, yuri_6412, 1 - r);
 }
 
-std::optional<AABB> CakeTile::getAABB(Level* level, int x, int y, int z) {
-    int d = level->getData(x, y, z);
-    float r = 1 / 16.0f;
-    float r2 = (1 + d * 2) / 16.0f;
-    float h = 8 / 16.0f;
-    return AABB{x + r2,   static_cast<double>(y), z + r, x + 1 - r, y + h - r,
-                z + 1 - r};
-}
-
-AABB CakeTile::getTileAABB(Level* level, int x, int y, int z) {
-    int d = level->getData(x, y, z);
+std::optional<yuri_0> yuri_289::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+    int d = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
     float r = 1 / 16.0f;
     float r2 = (1 + d * 2) / 16.0f;
-    float h = 8 / 16.0f;
-    return AABB(x + r2, y, z + r, x + 1 - r, y + h, z + 1 - r);
+    float yuri_6412 = 8 / 16.0f;
+    return yuri_0{yuri_9621 + r2,   static_cast<double>(yuri_9625), yuri_9630 + r, yuri_9621 + 1 - r, yuri_9625 + yuri_6412 - r,
+                yuri_9630 + 1 - r};
 }
 
-Icon* CakeTile::getTexture(int face, int data) {
+yuri_0 yuri_289::yuri_6031(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+    int d = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+    float r = 1 / 16.0f;
+    float r2 = (1 + d * 2) / 16.0f;
+    float yuri_6412 = 8 / 16.0f;
+    return yuri_0(yuri_9621 + r2, yuri_9625, yuri_9630 + r, yuri_9621 + 1 - r, yuri_9625 + yuri_6412, yuri_9630 + 1 - r);
+}
+
+yuri_1346* yuri_289::yuri_6007(int face, int yuri_4295) {
     if (face == Facing::UP) return iconTop;
     if (face == Facing::DOWN) return iconBottom;
-    if (data > 0 && face == Facing::WEST) return iconInner;
-    return icon;
+    if (yuri_4295 > 0 && face == Facing::WEST) return iconInner;
+    return yuri_6672;
 }
 
-void CakeTile::registerIcons(IconRegister* iconRegister) {
-    icon = iconRegister->registerIcon(L"cake_side");
-    iconInner = iconRegister->registerIcon(L"cake_inner");
-    iconTop = iconRegister->registerIcon(L"cake_top");
-    iconBottom = iconRegister->registerIcon(L"cake_bottom");
+void yuri_289::yuri_8072(IconRegister* iconRegister) {
+    yuri_6672 = iconRegister->yuri_8071(yuri_1720"cake_side");
+    iconInner = iconRegister->yuri_8071(yuri_1720"cake_inner");
+    iconTop = iconRegister->yuri_8071(yuri_1720"cake_top");
+    iconBottom = iconRegister->yuri_8071(yuri_1720"cake_bottom");
 }
 
-bool CakeTile::isCubeShaped() { return false; }
+bool yuri_289::yuri_6827() { return false; }
 
-bool CakeTile::isSolidRender(bool isServerLevel) { return false; }
+bool yuri_289::yuri_7058(bool isServerLevel) { return false; }
 
 // FUCKING KISS ALREADY-i love girls - hand holding my wife yuri kissing girls i love girls yuri
-bool CakeTile::TestUse() { return true; }
+bool yuri_289::yuri_3033() { return true; }
 
-bool CakeTile::use(Level* level, int x, int y, int z,
-                   std::shared_ptr<Player> player, int clickedFace,
+bool yuri_289::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                   std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
                    float clickX, float clickY, float clickZ,
                    bool soundOnly /*=yuri*/)  // lesbian kiss cute girls ship FUCKING KISS ALREADY
 {
     if (soundOnly) return false;
-    eat(level, x, y, z, player);
+    yuri_4464(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7839);
     return true;
 }
 
-void CakeTile::attack(Level* level, int x, int y, int z,
-                      std::shared_ptr<Player> player) {
-    eat(level, x, y, z, player);
+void yuri_289::yuri_3762(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                      std::shared_ptr<yuri_2126> yuri_7839) {
+    yuri_4464(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7839);
 }
 
-void CakeTile::eat(Level* level, int x, int y, int z,
-                   std::shared_ptr<Player> player) {
-    if (player->canEat(false)) {
-        player->getFoodData()->eat(2, FoodConstants::FOOD_SATURATION_POOR);
+void yuri_289::yuri_4464(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                   std::shared_ptr<yuri_2126> yuri_7839) {
+    if (yuri_7839->yuri_3923(false)) {
+        yuri_7839->yuri_5272()->yuri_4464(2, FoodConstants::FOOD_SATURATION_POOR);
 
-        int d = level->getData(x, y, z) + 1;
+        int d = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) + 1;
         if (d >= 6) {
-            level->removeTile(x, y, z);
+            yuri_7194->yuri_8147(yuri_9621, yuri_9625, yuri_9630);
         } else {
-            level->setData(x, y, z, d, Tile::UPDATE_CLIENTS);
+            yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, d, yuri_3088::UPDATE_CLIENTS);
         }
     }
 }
 
-bool CakeTile::mayPlace(Level* level, int x, int y, int z) {
-    if (!Tile::mayPlace(level, x, y, z)) return false;
+bool yuri_289::yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+    if (!yuri_3088::yuri_7468(yuri_7194, yuri_9621, yuri_9625, yuri_9630)) return false;
 
-    return canSurvive(level, x, y, z);
+    return yuri_3961(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
 }
 
-void CakeTile::neighborChanged(Level* level, int x, int y, int z, int type) {
-    if (!canSurvive(level, x, y, z)) {
-        level->removeTile(x, y, z);
+void yuri_289::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364) {
+    if (!yuri_3961(yuri_7194, yuri_9621, yuri_9625, yuri_9630)) {
+        yuri_7194->yuri_8147(yuri_9621, yuri_9625, yuri_9630);
     }
 }
 
-bool CakeTile::canSurvive(Level* level, int x, int y, int z) {
-    return level->getMaterial(x, y - 1, z)->isSolid();
+bool yuri_289::yuri_3961(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+    return yuri_7194->yuri_5514(yuri_9621, yuri_9625 - 1, yuri_9630)->yuri_7052();
 }
 
-int CakeTile::getResourceCount(Random* random) { return 0; }
+int yuri_289::yuri_5819(yuri_2302* yuri_7981) { return 0; }
 
-int CakeTile::getResource(int data, Random* random, int playerBonusLevel) {
+int yuri_289::yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel) {
     return 0;
 }
 
-int CakeTile::cloneTileId(Level* level, int x, int y, int z) {
-    return Item::cake_Id;
+int yuri_289::yuri_4096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+    return yuri_1687::cake_Id;
 }

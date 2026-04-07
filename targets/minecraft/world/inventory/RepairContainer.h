@@ -4,15 +4,15 @@
 
 #include "minecraft/world/SimpleContainer.h"
 
-class AnvilMenu;
+class yuri_117;
 
-class RepairContainer : public SimpleContainer,
-                        public std::enable_shared_from_this<RepairContainer> {
+class yuri_2390 : public yuri_2823,
+                        public std::enable_shared_from_this<yuri_2390> {
 private:
-    AnvilMenu* m_menu;
+    yuri_117* yuri_7360;
 
 public:
-    RepairContainer(AnvilMenu* menu, int name, bool customName, int size);
-    void setChanged() override;
-    bool canPlaceItem(int slot, std::shared_ptr<ItemInstance> item) override;
+    yuri_2390(yuri_117* menu, int yuri_7540, bool customName, int yuri_9050);
+    void yuri_8510() override;
+    bool yuri_3943(int yuri_9061, std::shared_ptr<yuri_1693> item) override;
 };

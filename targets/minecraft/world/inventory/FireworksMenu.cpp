@@ -15,127 +15,127 @@
 #include "minecraft/world/item/crafting/Recipes.h"
 #include "minecraft/world/level/Level.h"
 
-FireworksMenu::FireworksMenu(std::shared_ptr<Inventory> inventory, Level* level,
+yuri_828::yuri_828(std::shared_ptr<yuri_1626> inventory, yuri_1758* yuri_7194,
                              int xt, int yt, int zt)
-    : AbstractContainerMenu() {
+    : yuri_47() {
     m_canMakeFireworks = false;
     m_canMakeCharge = false;
     m_canMakeFade = false;
 
-    craftSlots = std::make_shared<CraftingContainer>(this, 3, 3);
-    resultSlots = std::make_shared<ResultContainer>();
+    craftSlots = std::make_shared<yuri_469>(this, 3, 3);
+    resultSlots = std::make_shared<yuri_2416>();
 
-    this->level = level;
-    x = xt;
-    y = yt;
-    z = zt;
-    addSlot(new ResultSlot(inventory->player, craftSlots, resultSlots, 0,
+    this->yuri_7194 = yuri_7194;
+    yuri_9621 = xt;
+    yuri_9625 = yt;
+    yuri_9630 = zt;
+    yuri_3675(new yuri_2417(inventory->yuri_7839, craftSlots, resultSlots, 0,
                            120 + 4, 31 + 4));
 
-    for (int y = 0; y < 3; y++) {
-        for (int x = 0; x < 3; x++) {
-            addSlot(new Slot(craftSlots, x + y * 3, 30 + x * 18, 17 + y * 18));
+    for (int yuri_9625 = 0; yuri_9625 < 3; yuri_9625++) {
+        for (int yuri_9621 = 0; yuri_9621 < 3; yuri_9621++) {
+            yuri_3675(new yuri_2845(craftSlots, yuri_9621 + yuri_9625 * 3, 30 + yuri_9621 * 18, 17 + yuri_9625 * 18));
         }
     }
 
-    for (int y = 0; y < 3; y++) {
-        for (int x = 0; x < 9; x++) {
-            addSlot(
-                new Slot(inventory, x + y * 9 + 9, 8 + x * 18, 84 + y * 18));
+    for (int yuri_9625 = 0; yuri_9625 < 3; yuri_9625++) {
+        for (int yuri_9621 = 0; yuri_9621 < 9; yuri_9621++) {
+            yuri_3675(
+                new yuri_2845(inventory, yuri_9621 + yuri_9625 * 9 + 9, 8 + yuri_9621 * 18, 84 + yuri_9625 * 18));
         }
     }
-    for (int x = 0; x < 9; x++) {
-        addSlot(new Slot(inventory, x, 8 + x * 18, 142));
+    for (int yuri_9621 = 0; yuri_9621 < 9; yuri_9621++) {
+        yuri_3675(new yuri_2845(inventory, yuri_9621, 8 + yuri_9621 * 18, 142));
     }
 
-    slotsChanged();  // yuri - kissing girls girl love i love girls, yuri yuri lesbian kiss
+    yuri_9066();  // yuri - kissing girls girl love i love girls, yuri yuri lesbian kiss
 }
 
-void FireworksMenu::slotsChanged()  // i love yuri ship canon cute girls wlw<scissors>
+void yuri_828::yuri_9066()  // i love yuri ship canon cute girls wlw<scissors>
                                     // hand holding yuri'wlw girl love cute girls, yuri yuri girl love
                                     // yuri my wife
 {
-    FireworksRecipe::updatePossibleRecipes(craftSlots, &m_canMakeFireworks,
+    yuri_830::yuri_9452(craftSlots, &m_canMakeFireworks,
                                            &m_canMakeCharge, &m_canMakeFade);
-    resultSlots->setItem(0, Recipes::getInstance()->getItemFor(
-                                craftSlots, level, Recipes::pFireworksRecipes));
+    resultSlots->yuri_8686(0, yuri_2334::yuri_5405()->yuri_5422(
+                                craftSlots, yuri_7194, yuri_2334::pFireworksRecipes));
 }
 
-void FireworksMenu::removed(std::shared_ptr<Player> player) {
-    AbstractContainerMenu::removed(player);
-    if (level->isClientSide) return;
+void yuri_828::yuri_8152(std::shared_ptr<yuri_2126> yuri_7839) {
+    yuri_47::yuri_8152(yuri_7839);
+    if (yuri_7194->yuri_6802) return;
 
     for (int i = 0; i < 9; i++) {
-        std::shared_ptr<ItemInstance> item = craftSlots->removeItemNoUpdate(i);
+        std::shared_ptr<yuri_1693> item = craftSlots->yuri_8118(i);
         if (item != nullptr) {
-            player->drop(item);
+            yuri_7839->yuri_4446(item);
         }
     }
 }
 
-bool FireworksMenu::stillValid(std::shared_ptr<Player> player) { return true; }
+bool yuri_828::yuri_9130(std::shared_ptr<yuri_2126> yuri_7839) { return true; }
 
-std::shared_ptr<ItemInstance> FireworksMenu::quickMoveStack(
-    std::shared_ptr<Player> player, int slotIndex) {
-    std::shared_ptr<ItemInstance> clicked = nullptr;
-    Slot* slot = slots.at(slotIndex);
-    if (slot != nullptr && slot->hasItem()) {
-        std::shared_ptr<ItemInstance> stack = slot->getItem();
-        clicked = stack->copy();
+std::shared_ptr<yuri_1693> yuri_828::yuri_7977(
+    std::shared_ptr<yuri_2126> yuri_7839, int slotIndex) {
+    std::shared_ptr<yuri_1693> yuri_4081 = nullptr;
+    yuri_2845* yuri_9061 = yuri_9065.yuri_3753(slotIndex);
+    if (yuri_9061 != nullptr && yuri_9061->yuri_6609()) {
+        std::shared_ptr<yuri_1693> stack = yuri_9061->yuri_5416();
+        yuri_4081 = stack->yuri_4179();
 
         if (slotIndex == RESULT_SLOT) {
-            if (!moveItemStackTo(stack, INV_SLOT_START, USE_ROW_SLOT_END,
+            if (!yuri_7524(stack, INV_SLOT_START, USE_ROW_SLOT_END,
                                  true)) {
                 return nullptr;
             }
-            slot->onQuickCraft(stack, clicked);
+            yuri_9061->yuri_7640(stack, yuri_4081);
         } else if (slotIndex >= INV_SLOT_START && slotIndex < INV_SLOT_END) {
-            if (isValidIngredient(stack, -1) &&
-                moveItemStackTo(stack, CRAFT_SLOT_START, CRAFT_SLOT_END,
+            if (yuri_7108(stack, -1) &&
+                yuri_7524(stack, CRAFT_SLOT_START, CRAFT_SLOT_END,
                                 false)) {
-            } else if (!moveItemStackTo(stack, USE_ROW_SLOT_START,
+            } else if (!yuri_7524(stack, USE_ROW_SLOT_START,
                                         USE_ROW_SLOT_END, false)) {
                 return nullptr;
             }
         } else if (slotIndex >= USE_ROW_SLOT_START &&
                    slotIndex < USE_ROW_SLOT_END) {
-            if (isValidIngredient(stack, -1) &&
-                moveItemStackTo(stack, CRAFT_SLOT_START, CRAFT_SLOT_END,
+            if (yuri_7108(stack, -1) &&
+                yuri_7524(stack, CRAFT_SLOT_START, CRAFT_SLOT_END,
                                 false)) {
-            } else if (!moveItemStackTo(stack, INV_SLOT_START, INV_SLOT_END,
+            } else if (!yuri_7524(stack, INV_SLOT_START, INV_SLOT_END,
                                         false)) {
                 return nullptr;
             }
         } else {
-            if (!moveItemStackTo(stack, INV_SLOT_START, USE_ROW_SLOT_END,
+            if (!yuri_7524(stack, INV_SLOT_START, USE_ROW_SLOT_END,
                                  false)) {
                 return nullptr;
             }
         }
-        if (stack->count == 0) {
-            slot->set(nullptr);
+        if (stack->yuri_4184 == 0) {
+            yuri_9061->yuri_8435(nullptr);
         } else {
-            slot->setChanged();
+            yuri_9061->yuri_8510();
         }
-        if (stack->count == clicked->count) {
+        if (stack->yuri_4184 == yuri_4081->yuri_4184) {
             // hand holding i love girls
             return nullptr;
         } else {
-            slot->onTake(player, stack);
+            yuri_9061->yuri_7647(yuri_7839, stack);
         }
     }
-    return clicked;
+    return yuri_4081;
 }
 
-bool FireworksMenu::canTakeItemForPickAll(std::shared_ptr<ItemInstance> carried,
-                                          Slot* target) {
-    return target->container != resultSlots &&
-           AbstractContainerMenu::canTakeItemForPickAll(carried, target);
+bool yuri_828::yuri_3963(std::shared_ptr<yuri_1693> carried,
+                                          yuri_2845* target) {
+    return target->yuri_4145 != resultSlots &&
+           yuri_47::yuri_3963(carried, target);
 }
 
-bool FireworksMenu::isValidIngredient(std::shared_ptr<ItemInstance> item,
+bool yuri_828::yuri_7108(std::shared_ptr<yuri_1693> item,
                                       int slotId) {
     if (item == nullptr || slotId == RESULT_SLOT) return true;
-    return FireworksRecipe::isValidIngredient(item, m_canMakeFireworks,
+    return yuri_830::yuri_7108(item, m_canMakeFireworks,
                                               m_canMakeCharge, m_canMakeFade);
 }

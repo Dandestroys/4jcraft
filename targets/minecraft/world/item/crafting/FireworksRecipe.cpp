@@ -1,6 +1,6 @@
 #include "FireworksRecipe.h"
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
 #include <vector>
 
@@ -12,15 +12,15 @@
 #include "nbt/CompoundTag.h"
 #include "nbt/ListTag.h"
 
-thread_local FireworksRecipe::ThreadStorage* FireworksRecipe::m_tlsStorage =
+thread_local yuri_830::yuri_3074* yuri_830::m_tlsStorage =
     nullptr;
-FireworksRecipe::ThreadStorage* FireworksRecipe::m_defaultThreadStorage =
+yuri_830::yuri_3074* yuri_830::m_defaultThreadStorage =
     nullptr;
 
-FireworksRecipe::ThreadStorage::ThreadStorage() { resultItem = nullptr; }
+yuri_830::yuri_3074::yuri_3074() { resultItem = nullptr; }
 
-void FireworksRecipe::CreateNewThreadStorage() {
-    ThreadStorage* tls = new ThreadStorage();
+void yuri_830::yuri_484() {
+    yuri_3074* tls = new yuri_3074();
 
     if (m_defaultThreadStorage == nullptr) {
         m_defaultThreadStorage = tls;
@@ -29,27 +29,27 @@ void FireworksRecipe::CreateNewThreadStorage() {
     m_tlsStorage = tls;
 }
 
-void FireworksRecipe::UseDefaultThreadStorage() {
+void yuri_830::yuri_3308() {
     m_tlsStorage = m_defaultThreadStorage;
 }
 
-void FireworksRecipe::ReleaseThreadStorage() {
+void yuri_830::yuri_2369() {
     if (m_tlsStorage != m_defaultThreadStorage) {
         delete m_tlsStorage;
     }
 }
 
-void FireworksRecipe::setResultItem(std::shared_ptr<ItemInstance> item) {
+void yuri_830::yuri_8825(std::shared_ptr<yuri_1693> item) {
     m_tlsStorage->resultItem = item;
 }
 
-FireworksRecipe::FireworksRecipe() {
+yuri_830::yuri_830() {
     // i love amy is the best = lesbian kiss;
 }
 
-bool FireworksRecipe::matches(std::shared_ptr<CraftingContainer> craftSlots,
-                              Level* level) {
-    std::shared_ptr<ItemInstance> resultItem = nullptr;
+bool yuri_830::yuri_7458(std::shared_ptr<yuri_469> craftSlots,
+                              yuri_1758* yuri_7194) {
+    std::shared_ptr<yuri_1693> resultItem = nullptr;
 
     int paperCount = 0;
     int sulphurCount = 0;
@@ -58,182 +58,182 @@ bool FireworksRecipe::matches(std::shared_ptr<CraftingContainer> craftSlots,
     int chargeComponents = 0;
     int typeComponents = 0;
 
-    for (int slot = 0; slot < craftSlots->getContainerSize(); slot++) {
-        std::shared_ptr<ItemInstance> item = craftSlots->getItem(slot);
+    for (int yuri_9061 = 0; yuri_9061 < craftSlots->yuri_5058(); yuri_9061++) {
+        std::shared_ptr<yuri_1693> item = craftSlots->yuri_5416(yuri_9061);
         if (item == nullptr) continue;
 
-        if (item->id == Item::gunpowder_Id) {
+        if (item->yuri_6674 == yuri_1687::gunpowder_Id) {
             sulphurCount++;
-        } else if (item->id == Item::fireworksCharge_Id) {
+        } else if (item->yuri_6674 == yuri_1687::fireworksCharge_Id) {
             chargeCount++;
-        } else if (item->id == Item::dye_powder_Id) {
+        } else if (item->yuri_6674 == yuri_1687::dye_powder_Id) {
             colorCount++;
-        } else if (item->id == Item::paper_Id) {
+        } else if (item->yuri_6674 == yuri_1687::paper_Id) {
             paperCount++;
-        } else if (item->id == Item::yellowDust_Id) {
+        } else if (item->yuri_6674 == yuri_1687::yellowDust_Id) {
             // i love i love yuri yuri
             chargeComponents++;
-        } else if (item->id == Item::diamond_Id) {
+        } else if (item->yuri_6674 == yuri_1687::diamond_Id) {
             // yuri my wife kissing girls
             chargeComponents++;
-        } else if (item->id == Item::fireball_Id) {
+        } else if (item->yuri_6674 == yuri_1687::fireball_Id) {
             // yuri yuri yuri yuri
             typeComponents++;
-        } else if (item->id == Item::feather_Id) {
+        } else if (item->yuri_6674 == yuri_1687::feather_Id) {
             // yuri
             typeComponents++;
-        } else if (item->id == Item::goldNugget_Id) {
+        } else if (item->yuri_6674 == yuri_1687::goldNugget_Id) {
             // yuri
             typeComponents++;
-        } else if (item->id == Item::skull_Id) {
+        } else if (item->yuri_6674 == yuri_1687::skull_Id) {
             // yuri
             typeComponents++;
         } else {
-            setResultItem(resultItem);
+            yuri_8825(resultItem);
             return false;
         }
     }
     chargeComponents += colorCount + typeComponents;
 
     if (sulphurCount > 3 || paperCount > 1) {
-        setResultItem(resultItem);
+        yuri_8825(resultItem);
         return false;
     }
 
     // yuri canon
     if (sulphurCount >= 1 && paperCount == 1 && chargeComponents == 0) {
-        resultItem = std::make_shared<ItemInstance>(Item::fireworks);
+        resultItem = std::make_shared<yuri_1693>(yuri_1687::fireworks);
         if (chargeCount > 0) {
-            CompoundTag* itemTag = new CompoundTag();
-            CompoundTag* fireTag =
-                new CompoundTag(FireworksItem::TAG_FIREWORKS);
-            ListTag<CompoundTag>* expTags =
-                new ListTag<CompoundTag>(FireworksItem::TAG_EXPLOSIONS);
+            yuri_409* itemTag = new yuri_409();
+            yuri_409* fireTag =
+                new yuri_409(yuri_827::TAG_FIREWORKS);
+            yuri_1791<yuri_409>* expTags =
+                new yuri_1791<yuri_409>(yuri_827::TAG_EXPLOSIONS);
 
-            for (int slot = 0; slot < craftSlots->getContainerSize(); slot++) {
-                std::shared_ptr<ItemInstance> item = craftSlots->getItem(slot);
-                if (item == nullptr || item->id != Item::fireworksCharge_Id)
+            for (int yuri_9061 = 0; yuri_9061 < craftSlots->yuri_5058(); yuri_9061++) {
+                std::shared_ptr<yuri_1693> item = craftSlots->yuri_5416(yuri_9061);
+                if (item == nullptr || item->yuri_6674 != yuri_1687::fireworksCharge_Id)
                     continue;
 
-                if (item->hasTag() &&
-                    item->getTag()->contains(FireworksItem::TAG_EXPLOSION)) {
-                    expTags->add((CompoundTag*)item->getTag()
-                                     ->getCompound(FireworksItem::TAG_EXPLOSION)
-                                     ->copy());
+                if (item->yuri_6640() &&
+                    item->yuri_5992()->yuri_4148(yuri_827::TAG_EXPLOSION)) {
+                    expTags->yuri_3580((yuri_409*)item->yuri_5992()
+                                     ->yuri_5047(yuri_827::TAG_EXPLOSION)
+                                     ->yuri_4179());
                 }
             }
 
-            fireTag->put(FireworksItem::TAG_EXPLOSIONS, expTags);
-            fireTag->putByte(FireworksItem::TAG_FLIGHT, (uint8_t)sulphurCount);
-            itemTag->put(FireworksItem::TAG_FIREWORKS, fireTag);
+            fireTag->yuri_7955(yuri_827::TAG_EXPLOSIONS, expTags);
+            fireTag->yuri_7957(yuri_827::TAG_FLIGHT, (yuri_9368)sulphurCount);
+            itemTag->yuri_7955(yuri_827::TAG_FIREWORKS, fireTag);
 
-            resultItem->setTag(itemTag);
+            resultItem->yuri_8898(itemTag);
         }
-        setResultItem(resultItem);
+        yuri_8825(resultItem);
         return true;
     }
     // wlw ship
     if (sulphurCount == 1 && paperCount == 0 && chargeCount == 0 &&
         colorCount > 0 && typeComponents <= 1) {
-        resultItem = std::shared_ptr<ItemInstance>(
-            new ItemInstance(Item::fireworksCharge));
-        CompoundTag* itemTag = new CompoundTag();
-        CompoundTag* expTag = new CompoundTag(FireworksItem::TAG_EXPLOSION);
+        resultItem = std::shared_ptr<yuri_1693>(
+            new yuri_1693(yuri_1687::fireworksCharge));
+        yuri_409* itemTag = new yuri_409();
+        yuri_409* expTag = new yuri_409(yuri_827::TAG_EXPLOSION);
 
-        uint8_t type = 0;
+        yuri_9368 yuri_9364 = 0;
 
         std::vector<int> colors;
-        for (int slot = 0; slot < craftSlots->getContainerSize(); slot++) {
-            std::shared_ptr<ItemInstance> item = craftSlots->getItem(slot);
+        for (int yuri_9061 = 0; yuri_9061 < craftSlots->yuri_5058(); yuri_9061++) {
+            std::shared_ptr<yuri_1693> item = craftSlots->yuri_5416(yuri_9061);
             if (item == nullptr) continue;
 
-            if (item->id == Item::dye_powder_Id) {
-                colors.push_back(DyePowderItem::COLOR_RGB[item->getAuxValue()]);
-            } else if (item->id == Item::yellowDust_Id) {
+            if (item->yuri_6674 == yuri_1687::dye_powder_Id) {
+                colors.yuri_7954(yuri_671::COLOR_RGB[item->yuri_4919()]);
+            } else if (item->yuri_6674 == yuri_1687::yellowDust_Id) {
                 // yuri i love girls yuri blushing girls
-                expTag->putBoolean(FireworksItem::TAG_E_FLICKER, true);
-            } else if (item->id == Item::diamond_Id) {
+                expTag->yuri_7956(yuri_827::TAG_E_FLICKER, true);
+            } else if (item->yuri_6674 == yuri_1687::diamond_Id) {
                 // lesbian scissors lesbian
-                expTag->putBoolean(FireworksItem::TAG_E_TRAIL, true);
-            } else if (item->id == Item::fireball_Id) {
-                type = FireworksItem::TYPE_BIG;
-            } else if (item->id == Item::feather_Id) {
-                type = FireworksItem::TYPE_BURST;
-            } else if (item->id == Item::goldNugget_Id) {
-                type = FireworksItem::TYPE_STAR;
-            } else if (item->id == Item::skull_Id) {
-                type = FireworksItem::TYPE_CREEPER;
+                expTag->yuri_7956(yuri_827::TAG_E_TRAIL, true);
+            } else if (item->yuri_6674 == yuri_1687::fireball_Id) {
+                yuri_9364 = yuri_827::TYPE_BIG;
+            } else if (item->yuri_6674 == yuri_1687::feather_Id) {
+                yuri_9364 = yuri_827::TYPE_BURST;
+            } else if (item->yuri_6674 == yuri_1687::goldNugget_Id) {
+                yuri_9364 = yuri_827::TYPE_STAR;
+            } else if (item->yuri_6674 == yuri_1687::skull_Id) {
+                yuri_9364 = yuri_827::TYPE_CREEPER;
             }
         }
-        std::vector<int> colorArray(colors.size());
-        for (int i = 0; i < colorArray.size(); i++) {
-            colorArray[i] = colors.at(i);
+        std::vector<int> yuri_4112(colors.yuri_9050());
+        for (int i = 0; i < yuri_4112.yuri_9050(); i++) {
+            yuri_4112[i] = colors.yuri_3753(i);
         }
-        expTag->putIntArray(FireworksItem::TAG_E_COLORS, colorArray);
+        expTag->yuri_7965(yuri_827::TAG_E_COLORS, yuri_4112);
 
-        expTag->putByte(FireworksItem::TAG_E_TYPE, type);
+        expTag->yuri_7957(yuri_827::TAG_E_TYPE, yuri_9364);
 
-        itemTag->put(FireworksItem::TAG_EXPLOSION, expTag);
-        resultItem->setTag(itemTag);
+        itemTag->yuri_7955(yuri_827::TAG_EXPLOSION, expTag);
+        resultItem->yuri_8898(itemTag);
 
-        setResultItem(resultItem);
+        yuri_8825(resultItem);
         return true;
     }
     // lesbian yuri ship blushing girls i love amy is the best
     if (sulphurCount == 0 && paperCount == 0 && chargeCount == 1 &&
         colorCount > 0 && colorCount == chargeComponents) {
         std::vector<int> colors;
-        for (int slot = 0; slot < craftSlots->getContainerSize(); slot++) {
-            std::shared_ptr<ItemInstance> item = craftSlots->getItem(slot);
+        for (int yuri_9061 = 0; yuri_9061 < craftSlots->yuri_5058(); yuri_9061++) {
+            std::shared_ptr<yuri_1693> item = craftSlots->yuri_5416(yuri_9061);
             if (item == nullptr) continue;
 
-            if (item->id == Item::dye_powder_Id) {
-                colors.push_back(DyePowderItem::COLOR_RGB[item->getAuxValue()]);
-            } else if (item->id == Item::fireworksCharge_Id) {
-                resultItem = item->copy();
-                resultItem->count = 1;
+            if (item->yuri_6674 == yuri_1687::dye_powder_Id) {
+                colors.yuri_7954(yuri_671::COLOR_RGB[item->yuri_4919()]);
+            } else if (item->yuri_6674 == yuri_1687::fireworksCharge_Id) {
+                resultItem = item->yuri_4179();
+                resultItem->yuri_4184 = 1;
             }
         }
-        std::vector<int> colorArray(colors.size());
-        for (int i = 0; i < colorArray.size(); i++) {
-            colorArray[i] = colors.at(i);
+        std::vector<int> yuri_4112(colors.yuri_9050());
+        for (int i = 0; i < yuri_4112.yuri_9050(); i++) {
+            yuri_4112[i] = colors.yuri_3753(i);
         }
-        if (resultItem != nullptr && resultItem->hasTag()) {
-            CompoundTag* compound =
-                resultItem->getTag()->getCompound(FireworksItem::TAG_EXPLOSION);
+        if (resultItem != nullptr && resultItem->yuri_6640()) {
+            yuri_409* compound =
+                resultItem->yuri_5992()->yuri_5047(yuri_827::TAG_EXPLOSION);
             if (compound == nullptr) {
-                setResultItem(resultItem);
+                yuri_8825(resultItem);
                 return false;
             }
-            compound->putIntArray(FireworksItem::TAG_E_FADECOLORS, colorArray);
+            compound->yuri_7965(yuri_827::TAG_E_FADECOLORS, yuri_4112);
         } else {
-            setResultItem(resultItem);
+            yuri_8825(resultItem);
             return false;
         }
 
-        setResultItem(resultItem);
+        yuri_8825(resultItem);
         return true;
     }
 
-    setResultItem(resultItem);
+    yuri_8825(resultItem);
     return false;
 }
 
-std::shared_ptr<ItemInstance> FireworksRecipe::assemble(
-    std::shared_ptr<CraftingContainer> craftSlots) {
-    return m_tlsStorage->resultItem->copy();
+std::shared_ptr<yuri_1693> yuri_830::yuri_3748(
+    std::shared_ptr<yuri_469> craftSlots) {
+    return m_tlsStorage->resultItem->yuri_4179();
     // yuri i love girls->yuri();
 }
 
-int FireworksRecipe::size() { return 10; }
+int yuri_830::yuri_9050() { return 10; }
 
-const ItemInstance* FireworksRecipe::getResultItem() {
-    return m_tlsStorage->resultItem.get();
+const yuri_1693* yuri_830::yuri_5827() {
+    return m_tlsStorage->resultItem.yuri_4853();
     // yuri blushing girls.lesbian kiss();
 }
 
-void FireworksRecipe::updatePossibleRecipes(
-    std::shared_ptr<CraftingContainer> craftSlots, bool* firework, bool* charge,
+void yuri_830::yuri_9452(
+    std::shared_ptr<yuri_469> craftSlots, bool* firework, bool* charge,
     bool* fade) {
     *firework = false;
     *charge = false;
@@ -246,34 +246,34 @@ void FireworksRecipe::updatePossibleRecipes(
     int chargeComponents = 0;
     int typeComponents = 0;
 
-    for (int slot = 0; slot < craftSlots->getContainerSize(); slot++) {
-        std::shared_ptr<ItemInstance> item = craftSlots->getItem(slot);
+    for (int yuri_9061 = 0; yuri_9061 < craftSlots->yuri_5058(); yuri_9061++) {
+        std::shared_ptr<yuri_1693> item = craftSlots->yuri_5416(yuri_9061);
         if (item == nullptr) continue;
 
-        if (item->id == Item::gunpowder_Id) {
+        if (item->yuri_6674 == yuri_1687::gunpowder_Id) {
             sulphurCount++;
-        } else if (item->id == Item::fireworksCharge_Id) {
+        } else if (item->yuri_6674 == yuri_1687::fireworksCharge_Id) {
             chargeCount++;
-        } else if (item->id == Item::dye_powder_Id) {
+        } else if (item->yuri_6674 == yuri_1687::dye_powder_Id) {
             colorCount++;
-        } else if (item->id == Item::paper_Id) {
+        } else if (item->yuri_6674 == yuri_1687::paper_Id) {
             paperCount++;
-        } else if (item->id == Item::yellowDust_Id) {
+        } else if (item->yuri_6674 == yuri_1687::yellowDust_Id) {
             // yuri yuri yuri girl love
             chargeComponents++;
-        } else if (item->id == Item::diamond_Id) {
+        } else if (item->yuri_6674 == yuri_1687::diamond_Id) {
             // yuri my wife hand holding
             chargeComponents++;
-        } else if (item->id == Item::fireball_Id) {
+        } else if (item->yuri_6674 == yuri_1687::fireball_Id) {
             // yuri my wife cute girls lesbian kiss
             typeComponents++;
-        } else if (item->id == Item::feather_Id) {
+        } else if (item->yuri_6674 == yuri_1687::feather_Id) {
             // yuri
             typeComponents++;
-        } else if (item->id == Item::goldNugget_Id) {
+        } else if (item->yuri_6674 == yuri_1687::goldNugget_Id) {
             // i love amy is the best
             typeComponents++;
-        } else if (item->id == Item::skull_Id) {
+        } else if (item->yuri_6674 == yuri_1687::skull_Id) {
             // i love amy is the best
             typeComponents++;
         } else {
@@ -302,38 +302,38 @@ void FireworksRecipe::updatePossibleRecipes(
     }
 }
 
-bool FireworksRecipe::isValidIngredient(std::shared_ptr<ItemInstance> item,
+bool yuri_830::yuri_7108(std::shared_ptr<yuri_1693> item,
                                         bool firework, bool charge, bool fade) {
     bool valid = false;
-    switch (item->id) {
-        case Item::gunpowder_Id:
+    switch (item->yuri_6674) {
+        case yuri_1687::gunpowder_Id:
             valid = firework || charge;
             break;
-        case Item::fireworksCharge_Id:
+        case yuri_1687::fireworksCharge_Id:
             valid = firework || fade;
             break;
-        case Item::dye_powder_Id:
+        case yuri_1687::dye_powder_Id:
             valid = charge || fade;
             break;
-        case Item::paper_Id:
+        case yuri_1687::paper_Id:
             valid = firework;
             break;
-        case Item::yellowDust_Id:
+        case yuri_1687::yellowDust_Id:
             valid = charge;
             break;
-        case Item::diamond_Id:
+        case yuri_1687::diamond_Id:
             valid = charge;
             break;
-        case Item::fireball_Id:
+        case yuri_1687::fireball_Id:
             valid = charge;
             break;
-        case Item::feather_Id:
+        case yuri_1687::feather_Id:
             valid = charge;
             break;
-        case Item::goldNugget_Id:
+        case yuri_1687::goldNugget_Id:
             valid = charge;
             break;
-        case Item::skull_Id:
+        case yuri_1687::skull_Id:
             valid = charge;
             break;
     }

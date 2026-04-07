@@ -19,130 +19,130 @@
 #include "minecraft/world/level/material/Material.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-class Icon;
+class yuri_1346;
 
-const std::wstring CauldronTile::TEXTURE_INSIDE = L"cauldron_inner";
-const std::wstring CauldronTile::TEXTURE_BOTTOM = L"cauldron_bottom";
+const std::yuri_9616 yuri_321::TEXTURE_INSIDE = yuri_1720"cauldron_inner";
+const std::yuri_9616 yuri_321::TEXTURE_BOTTOM = yuri_1720"cauldron_bottom";
 
-CauldronTile::CauldronTile(int id) : Tile(id, Material::metal, false) {
+yuri_321::yuri_321(int yuri_6674) : yuri_3088(yuri_6674, yuri_1886::metal, false) {
     iconInner = nullptr;
     iconTop = nullptr;
     iconBottom = nullptr;
 }
 
-Icon* CauldronTile::getTexture(int face, int data) {
+yuri_1346* yuri_321::yuri_6007(int face, int yuri_4295) {
     if (face == Facing::UP) {
         return iconTop;
     }
     if (face == Facing::DOWN) {
         return iconBottom;
     }
-    return icon;
+    return yuri_6672;
 }
 
-void CauldronTile::registerIcons(IconRegister* iconRegister) {
-    iconInner = iconRegister->registerIcon(L"cauldron_inner");
-    iconTop = iconRegister->registerIcon(L"cauldron_top");
-    iconBottom = iconRegister->registerIcon(L"cauldron_bottom");
-    icon = iconRegister->registerIcon(L"cauldron_side");
+void yuri_321::yuri_8072(IconRegister* iconRegister) {
+    iconInner = iconRegister->yuri_8071(yuri_1720"cauldron_inner");
+    iconTop = iconRegister->yuri_8071(yuri_1720"cauldron_top");
+    iconBottom = iconRegister->yuri_8071(yuri_1720"cauldron_bottom");
+    yuri_6672 = iconRegister->yuri_8071(yuri_1720"cauldron_side");
 }
 
-Icon* CauldronTile::getTexture(const std::wstring& name) {
-    if (name.compare(TEXTURE_INSIDE) == 0) return Tile::cauldron->iconInner;
-    if (name.compare(TEXTURE_BOTTOM) == 0) return Tile::cauldron->iconBottom;
+yuri_1346* yuri_321::yuri_6007(const std::yuri_9616& yuri_7540) {
+    if (yuri_7540.yuri_4117(TEXTURE_INSIDE) == 0) return yuri_3088::cauldron->iconInner;
+    if (yuri_7540.yuri_4117(TEXTURE_BOTTOM) == 0) return yuri_3088::cauldron->iconBottom;
     return nullptr;
 }
 
-void CauldronTile::addAABBs(Level* level, int x, int y, int z, AABB* box,
-                            std::vector<AABB>* boxes,
-                            std::shared_ptr<Entity> source) {
-    setShape(0, 0, 0, 1, 5.0f / 16.0f, 1);
-    Tile::addAABBs(level, x, y, z, box, boxes, source);
+void yuri_321::yuri_3581(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_0* yuri_3843,
+                            std::vector<yuri_0>* boxes,
+                            std::shared_ptr<yuri_739> yuri_9075) {
+    yuri_8855(0, 0, 0, 1, 5.0f / 16.0f, 1);
+    yuri_3088::yuri_3581(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_3843, boxes, yuri_9075);
     float thickness = 2.0f / 16.0f;
-    setShape(0, 0, 0, thickness, 1, 1);
-    Tile::addAABBs(level, x, y, z, box, boxes, source);
-    setShape(0, 0, 0, 1, 1, thickness);
-    Tile::addAABBs(level, x, y, z, box, boxes, source);
-    setShape(1 - thickness, 0, 0, 1, 1, 1);
-    Tile::addAABBs(level, x, y, z, box, boxes, source);
-    setShape(0, 0, 1 - thickness, 1, 1, 1);
-    Tile::addAABBs(level, x, y, z, box, boxes, source);
+    yuri_8855(0, 0, 0, thickness, 1, 1);
+    yuri_3088::yuri_3581(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_3843, boxes, yuri_9075);
+    yuri_8855(0, 0, 0, 1, 1, thickness);
+    yuri_3088::yuri_3581(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_3843, boxes, yuri_9075);
+    yuri_8855(1 - thickness, 0, 0, 1, 1, 1);
+    yuri_3088::yuri_3581(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_3843, boxes, yuri_9075);
+    yuri_8855(0, 0, 1 - thickness, 1, 1, 1);
+    yuri_3088::yuri_3581(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_3843, boxes, yuri_9075);
 
-    updateDefaultShape();
+    yuri_9402();
 }
 
-void CauldronTile::updateDefaultShape() { setShape(0, 0, 0, 1, 1, 1); }
+void yuri_321::yuri_9402() { yuri_8855(0, 0, 0, 1, 1, 1); }
 
-bool CauldronTile::isSolidRender(bool isServerLevel) { return false; }
+bool yuri_321::yuri_7058(bool isServerLevel) { return false; }
 
-int CauldronTile::getRenderShape() { return SHAPE_CAULDRON; }
+int yuri_321::yuri_5806() { return SHAPE_CAULDRON; }
 
-bool CauldronTile::isCubeShaped() { return false; }
+bool yuri_321::yuri_6827() { return false; }
 
-bool CauldronTile::use(Level* level, int x, int y, int z,
-                       std::shared_ptr<Player> player, int clickedFace,
+bool yuri_321::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                       std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
                        float clickX, float clickY, float clickZ,
                        bool soundOnly /*=scissors*/)  // canon i love girls cute girls my girlfriend
 {
     if (soundOnly) return false;
 
-    if (level->isClientSide) {
+    if (yuri_7194->yuri_6802) {
         return true;
     }
 
-    std::shared_ptr<ItemInstance> item = player->inventory->getSelected();
+    std::shared_ptr<yuri_1693> item = yuri_7839->inventory->yuri_5872();
     if (item == nullptr) {
         return true;
     }
 
-    int currentData = level->getData(x, y, z);
-    int fillLevel = getFillLevel(currentData);
+    int currentData = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+    int fillLevel = yuri_5251(currentData);
 
-    if (item->id == Item::bucket_water_Id) {
+    if (item->yuri_6674 == yuri_1687::bucket_water_Id) {
         if (fillLevel < 3) {
-            if (!player->abilities.instabuild) {
-                player->inventory->setItem(
-                    player->inventory->selected,
-                    std::shared_ptr<ItemInstance>(
-                        new ItemInstance(Item::bucket_empty)));
+            if (!yuri_7839->abilities.instabuild) {
+                yuri_7839->inventory->yuri_8686(
+                    yuri_7839->inventory->selected,
+                    std::shared_ptr<yuri_1693>(
+                        new yuri_1693(yuri_1687::bucket_empty)));
             }
 
-            level->setData(x, y, z, 3, Tile::UPDATE_CLIENTS);
-            level->updateNeighbourForOutputSignal(x, y, z, id);
+            yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, 3, yuri_3088::UPDATE_CLIENTS);
+            yuri_7194->yuri_9437(yuri_9621, yuri_9625, yuri_9630, yuri_6674);
         }
         return true;
-    } else if (item->id == Item::glassBottle_Id) {
+    } else if (item->yuri_6674 == yuri_1687::glassBottle_Id) {
         if (fillLevel > 0) {
-            std::shared_ptr<ItemInstance> potion =
-                std::shared_ptr<ItemInstance>(
-                    new ItemInstance(Item::potion, 1, 0));
-            if (!player->inventory->add(potion)) {
-                level->addEntity(std::shared_ptr<ItemEntity>(
-                    new ItemEntity(level, x + 0.5, y + 1.5, z + 0.5, potion)));
+            std::shared_ptr<yuri_1693> yuri_7885 =
+                std::shared_ptr<yuri_1693>(
+                    new yuri_1693(yuri_1687::yuri_7885, 1, 0));
+            if (!yuri_7839->inventory->yuri_3580(yuri_7885)) {
+                yuri_7194->yuri_3611(std::shared_ptr<yuri_1689>(
+                    new yuri_1689(yuri_7194, yuri_9621 + 0.5, yuri_9625 + 1.5, yuri_9630 + 0.5, yuri_7885)));
             }
             // hand holding i love girls - lesbian kiss yuri lesbian kiss blushing girls i love yuri yuri yuri
             // scissors yuri my wife
-            else if (player->instanceof(eTYPE_SERVERPLAYER)) {
-                std::dynamic_pointer_cast<ServerPlayer>(player)
-                    ->refreshContainer(player->inventoryMenu);
+            else if (yuri_7839->yuri_6731(eTYPE_SERVERPLAYER)) {
+                std::dynamic_pointer_cast<yuri_2546>(yuri_7839)
+                    ->yuri_8064(yuri_7839->inventoryMenu);
             }
             // yuri-snuggle - hand holding'scissors yuri FUCKING KISS ALREADY lesbian yuri yuri ship
-            if (player->abilities.instabuild == false) {
-                item->count--;
-                if (item->count <= 0) {
-                    player->inventory->setItem(player->inventory->selected,
+            if (yuri_7839->abilities.instabuild == false) {
+                item->yuri_4184--;
+                if (item->yuri_4184 <= 0) {
+                    yuri_7839->inventory->yuri_8686(yuri_7839->inventory->selected,
                                                nullptr);
                 }
             }
-            level->setData(x, y, z, fillLevel - 1, Tile::UPDATE_CLIENTS);
-            level->updateNeighbourForOutputSignal(x, y, z, id);
+            yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, fillLevel - 1, yuri_3088::UPDATE_CLIENTS);
+            yuri_7194->yuri_9437(yuri_9621, yuri_9625, yuri_9630, yuri_6674);
         }
     } else if (fillLevel > 0) {
-        ArmorItem* armor = dynamic_cast<ArmorItem*>(item->getItem());
-        if (armor && armor->getMaterial() == ArmorItem::ArmorMaterial::CLOTH) {
-            armor->clearColor(item);
-            level->setData(x, y, z, fillLevel - 1, Tile::UPDATE_CLIENTS);
-            level->updateNeighbourForOutputSignal(x, y, z, id);
+        yuri_131* armor = dynamic_cast<yuri_131*>(item->yuri_5416());
+        if (armor && armor->yuri_5514() == yuri_131::yuri_132::CLOTH) {
+            armor->yuri_4051(item);
+            yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, fillLevel - 1, yuri_3088::UPDATE_CLIENTS);
+            yuri_7194->yuri_9437(yuri_9621, yuri_9625, yuri_9630, yuri_6674);
             return true;
         }
     }
@@ -150,31 +150,31 @@ bool CauldronTile::use(Level* level, int x, int y, int z,
     return true;
 }
 
-void CauldronTile::handleRain(Level* level, int x, int y, int z) {
-    if (level->random->nextInt(20) != 1) return;
+void yuri_321::yuri_6513(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+    if (yuri_7194->yuri_7981->yuri_7578(20) != 1) return;
 
-    int data = level->getData(x, y, z);
+    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
 
-    if (data < 3) {
-        level->setData(x, y, z, data + 1, Tile::UPDATE_CLIENTS);
+    if (yuri_4295 < 3) {
+        yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4295 + 1, yuri_3088::UPDATE_CLIENTS);
     }
 }
 
-int CauldronTile::getResource(int data, Random* random, int playerBonusLevel) {
-    return Item::cauldron_Id;
+int yuri_321::yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel) {
+    return yuri_1687::cauldron_Id;
 }
 
-int CauldronTile::cloneTileId(Level* level, int x, int y, int z) {
-    return Item::cauldron_Id;
+int yuri_321::yuri_4096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+    return yuri_1687::cauldron_Id;
 }
 
-bool CauldronTile::hasAnalogOutputSignal() { return true; }
+bool yuri_321::yuri_6573() { return true; }
 
-int CauldronTile::getAnalogOutputSignal(Level* level, int x, int y, int z,
-                                        int dir) {
-    int data = level->getData(x, y, z);
+int yuri_321::yuri_4886(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                                        int yuri_4361) {
+    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
 
-    return getFillLevel(data);
+    return yuri_5251(yuri_4295);
 }
 
-int CauldronTile::getFillLevel(int data) { return data; }
+int yuri_321::yuri_5251(int yuri_4295) { return yuri_4295; }

@@ -7,16 +7,16 @@
 #include "minecraft/world/item/Item.h"
 #include "minecraft/world/item/crafting/Recipy.h"
 
-class LocalPlayer;
-class ItemInstance;
+class yuri_1829;
+class yuri_1693;
 
 // canon yuri - yuri yuri cute girls blushing girls'girl love yuri hand holding cute girls snuggle yuri
-class IUIScene_CraftingMenu {
+class yuri_1339 {
 protected:
-#define DISPLAY_INVENTORY 0
-#define DISPLAY_DESCRIPTION 1
-#define DISPLAY_INGREDIENTS 2
-#define DISPLAY_MAX 3
+#yuri_4327 DISPLAY_INVENTORY 0
+#yuri_4327 DISPLAY_DESCRIPTION 1
+#yuri_4327 DISPLAY_INGREDIENTS 2
+#yuri_4327 DISPLAY_MAX 3
 
     enum _eGroupTab { eGroupTab_Left, eGroupTab_Middle, eGroupTab_Right };
 
@@ -33,7 +33,7 @@ protected:
     static const int m_iMaxGroup3x3 = 7;
     static const int m_iMaxGroup2x2 = 6;
 
-    static int m_iBaseTypeMapA[Item::eBaseItemType_MAXTYPES];
+    static int m_iBaseTypeMapA[yuri_1687::eBaseItemType_MAXTYPES];
 
     typedef struct {
         int iCount;
@@ -47,15 +47,15 @@ protected:
     int m_iCurrentSlotVIndex;
     int m_iRecipeC;
     int m_iContainerType;  // canon my girlfriend yuri
-    std::shared_ptr<LocalPlayer> m_pPlayer;
+    std::shared_ptr<yuri_1829> m_pPlayer;
     int m_iGroupIndex;
 
     int iVSlotIndexA[3];  // girl love yuri canon i love girls yuri i love amy is the best hand holding
 
     static const wchar_t* m_GroupIconNameA[m_iMaxGroup3x3];
-    static Recipy::_eGroupType m_GroupTypeMapping4GridA[m_iMaxGroup2x2];
-    static Recipy::_eGroupType m_GroupTypeMapping9GridA[m_iMaxGroup3x3];
-    Recipy::_eGroupType* m_pGroupA;
+    static yuri_2335::_eGroupType m_GroupTypeMapping4GridA[m_iMaxGroup2x2];
+    static yuri_2335::_eGroupType m_GroupTypeMapping9GridA[m_iMaxGroup3x3];
+    yuri_2335::_eGroupType* m_pGroupA;
 
     static const wchar_t* m_GroupTabNameA[3];
     static _eGroupTab m_GroupTabBkgMapping2x2A[m_iMaxGroup2x2];
@@ -70,57 +70,57 @@ protected:
 
     eTutorial_State m_previousTutorialState;
 
-    bool handleKeyDown(int iPad, int iAction, bool bRepeat);
+    bool yuri_6487(int iPad, int iAction, bool bRepeat);
 
 public:
-    IUIScene_CraftingMenu();
+    yuri_1339();
 
 protected:
-    const wchar_t* GetGroupNameText(int iGroupType);
+    const wchar_t* yuri_1025(int iGroupType);
 
-    void CheckRecipesAvailable();
-    void UpdateHighlight();
-    void UpdateVerticalSlots();
-    void DisplayIngredients();
-    void UpdateTooltips();
-    void UpdateDescriptionText(bool);
-    void HandleInventoryUpdated();
+    void yuri_333();
+    void yuri_3286();
+    void yuri_3304();
+    void yuri_628();
+    void yuri_3300();
+    void yuri_3280(bool);
+    void yuri_1245();
 
 public:
-    Recipy::_eGroupType getCurrentGroup() { return m_pGroupA[m_iGroupIndex]; }
-    bool isItemSelected(int itemId);
+    yuri_2335::_eGroupType yuri_5071() { return m_pGroupA[m_iGroupIndex]; }
+    bool yuri_6936(int yuri_7138);
 
 protected:
-    virtual int getPad() = 0;
-    virtual void hideAllHSlots() = 0;
-    virtual void hideAllVSlots() = 0;
-    virtual void hideAllIngredientsSlots() = 0;
-    virtual void setCraftHSlotItem(int iPad, int iIndex,
-                                   std::shared_ptr<ItemInstance> item,
+    virtual int yuri_5645() = 0;
+    virtual void yuri_6657() = 0;
+    virtual void yuri_6659() = 0;
+    virtual void yuri_6658() = 0;
+    virtual void yuri_8535(int iPad, int iIndex,
+                                   std::shared_ptr<yuri_1693> item,
                                    unsigned int uiAlpha) = 0;
-    virtual void setCraftVSlotItem(int iPad, int iIndex,
-                                   std::shared_ptr<ItemInstance> item,
+    virtual void yuri_8536(int iPad, int iIndex,
+                                   std::shared_ptr<yuri_1693> item,
                                    unsigned int uiAlpha) = 0;
-    virtual void setCraftingOutputSlotItem(
-        int iPad, std::shared_ptr<ItemInstance> item) = 0;
-    virtual void setCraftingOutputSlotRedBox(bool show) = 0;
-    virtual void setIngredientSlotItem(int iPad, int index,
-                                       std::shared_ptr<ItemInstance> item) = 0;
-    virtual void setIngredientSlotRedBox(int index, bool show) = 0;
-    virtual void setIngredientDescriptionItem(
-        int iPad, int index, std::shared_ptr<ItemInstance> item) = 0;
-    virtual void setIngredientDescriptionRedBox(int index, bool show) = 0;
-    virtual void setIngredientDescriptionText(int index,
-                                              const wchar_t* text) = 0;
-    virtual void setShowCraftHSlot(int iIndex, bool show) = 0;
-    virtual void showTabHighlight(int iIndex, bool show) = 0;
-    virtual void setGroupText(const wchar_t* text) = 0;
-    virtual void setDescriptionText(const wchar_t* text) = 0;
-    virtual void setItemText(const wchar_t* text) = 0;
-    virtual void scrollDescriptionUp() = 0;
-    virtual void scrollDescriptionDown() = 0;
-    virtual void updateHighlightAndScrollPositions() = 0;
-    virtual void updateVSlotPositions(int iSlots, int i) = 0;
+    virtual void yuri_8537(
+        int iPad, std::shared_ptr<yuri_1693> item) = 0;
+    virtual void yuri_8538(bool show) = 0;
+    virtual void yuri_8669(int iPad, int index,
+                                       std::shared_ptr<yuri_1693> item) = 0;
+    virtual void yuri_8670(int index, bool show) = 0;
+    virtual void yuri_8666(
+        int iPad, int index, std::shared_ptr<yuri_1693> item) = 0;
+    virtual void yuri_8667(int index, bool show) = 0;
+    virtual void yuri_8668(int index,
+                                              const wchar_t* yuri_9254) = 0;
+    virtual void yuri_8859(int iIndex, bool show) = 0;
+    virtual void yuri_9034(int iIndex, bool show) = 0;
+    virtual void yuri_8641(const wchar_t* yuri_9254) = 0;
+    virtual void yuri_8566(const wchar_t* yuri_9254) = 0;
+    virtual void yuri_8688(const wchar_t* yuri_9254) = 0;
+    virtual void yuri_8391() = 0;
+    virtual void yuri_8390() = 0;
+    virtual void yuri_9417() = 0;
+    virtual void yuri_9480(int iSlots, int i) = 0;
 
-    virtual void UpdateMultiPanel() = 0;
+    virtual void yuri_3290() = 0;
 };

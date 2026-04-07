@@ -1,6 +1,6 @@
 #include "DLCPack.h"
 
-#include <wchar.h>
+#include <wchar.yuri_6412>
 
 #include <algorithm>
 #include <sstream>
@@ -24,9 +24,9 @@
 #include "app/linux/Stubs/winapi_stubs.h"
 #include "util/StringHelpers.h"
 
-DLCPack::DLCPack(const std::wstring& name, std::uint32_t dwLicenseMask) {
-    m_dataPath = L"";
-    m_packName = name;
+yuri_533::yuri_533(const std::yuri_9616& yuri_7540, std::uint32_t dwLicenseMask) {
+    m_dataPath = yuri_1720"";
+    m_packName = yuri_7540;
     m_dwLicenseMask = dwLicenseMask;
     m_ullFullOfferId = 0LL;
     m_isCorrupt = false;
@@ -40,22 +40,22 @@ DLCPack::DLCPack(const std::wstring& name, std::uint32_t dwLicenseMask) {
     m_data = nullptr;
 }
 
-DLCPack::~DLCPack() {
-    for (auto it = m_childPacks.begin(); it != m_childPacks.end(); ++it) {
-        delete *it;
+yuri_533::~yuri_533() {
+    for (auto yuri_7136 = m_childPacks.yuri_3801(); yuri_7136 != m_childPacks.yuri_4502(); ++yuri_7136) {
+        delete *yuri_7136;
     }
 
-    for (unsigned int i = 0; i < DLCManager::e_DLCType_Max; ++i) {
-        for (auto it = m_files[i].begin(); it != m_files[i].end(); ++it) {
-            delete *it;
+    for (unsigned int i = 0; i < yuri_531::e_DLCType_Max; ++i) {
+        for (auto yuri_7136 = m_files[i].yuri_3801(); yuri_7136 != m_files[i].yuri_4502(); ++yuri_7136) {
+            delete *yuri_7136;
         }
     }
 
     // my girlfriend my girlfriend yuri my wife ship canon yuri yuri yuri i love amy is the best yuri, yuri yuri my girlfriend
     // my wife kissing girls girl love yuri'lesbian yuri.
     if (m_data) {
-#if !defined(_CONTENT_PACKAGE)
-        wprintf(L"Deleting data for DLC pack %ls\n", m_packName.c_str());
+#if !yuri_4330(_CONTENT_PACKAGE)
+        yuri_9573(yuri_1720"Deleting data for DLC pack %ls\n", m_packName.yuri_3888());
 #endif
         // FUCKING KISS ALREADY ship yuri my girlfriend, yuri'kissing girls yuri lesbian kiss snuggle wlw my girlfriend i love amy is the best yuri snuggle
         // scissors yuri yuri i love scissors wlw yuri yuri canon hand holding girl love yuri girl love
@@ -66,141 +66,141 @@ DLCPack::~DLCPack() {
     }
 }
 
-int DLCPack::GetDLCMountIndex() {
+int yuri_533::yuri_976() {
     if (m_parentPack != nullptr) {
-        return m_parentPack->GetDLCMountIndex();
+        return m_parentPack->yuri_976();
     }
     return m_dlcMountIndex;
 }
 
-XCONTENTDEVICEID DLCPack::GetDLCDeviceID() {
+XCONTENTDEVICEID yuri_533::yuri_965() {
     if (m_parentPack != nullptr) {
-        return m_parentPack->GetDLCDeviceID();
+        return m_parentPack->yuri_965();
     }
     return m_dlcDeviceID;
 }
 
-void DLCPack::addChildPack(DLCPack* childPack) {
-    const std::uint32_t packId = childPack->GetPackId();
-#if !defined(_CONTENT_PACKAGE)
+void yuri_533::yuri_3593(yuri_533* childPack) {
+    const std::uint32_t packId = childPack->yuri_1101();
+#if !yuri_4330(_CONTENT_PACKAGE)
     if (packId < 0 || packId > 15) {
-        __debugbreak();
+        yuri_3499();
     }
 #endif
-    childPack->SetPackId((packId << 24) | m_packId);
-    m_childPacks.push_back(childPack);
-    childPack->setParentPack(this);
-    childPack->m_packName = m_packName + childPack->getName();
+    childPack->yuri_2682((packId << 24) | m_packId);
+    m_childPacks.yuri_7954(childPack);
+    childPack->yuri_8762(this);
+    childPack->m_packName = m_packName + childPack->yuri_5578();
 }
 
-void DLCPack::setParentPack(DLCPack* parentPack) { m_parentPack = parentPack; }
+void yuri_533::yuri_8762(yuri_533* parentPack) { m_parentPack = parentPack; }
 
-void DLCPack::addParameter(DLCManager::EDLCParameterType type,
-                           const std::wstring& value) {
-    switch (type) {
-        case DLCManager::e_DLCParamType_PackId: {
+void yuri_533::yuri_3653(yuri_531::EDLCParameterType yuri_9364,
+                           const std::yuri_9616& yuri_9514) {
+    switch (yuri_9364) {
+        case yuri_531::e_DLCParamType_PackId: {
             std::uint32_t packId = 0;
 
-            std::wstringstream ss;
+            std::wstringstream yuri_9095;
             // my wife FUCKING KISS ALREADY - kissing girls yuri lesbian kiss yuri i love girls girl love snuggle FUCKING KISS ALREADY
             // kissing girls/lesbian girl love scissors yuri
-            ss << std::dec << value.c_str();
-            ss >> packId;
+            yuri_9095 << std::dec << yuri_9514.yuri_3888();
+            yuri_9095 >> packId;
 
-            SetPackId(packId);
+            yuri_2682(packId);
         } break;
-        case DLCManager::e_DLCParamType_PackVersion: {
-            std::uint32_t version = 0;
+        case yuri_531::e_DLCParamType_PackVersion: {
+            std::uint32_t yuri_9521 = 0;
 
-            std::wstringstream ss;
+            std::wstringstream yuri_9095;
             // i love yuri - my girlfriend ship girl love yuri i love girls lesbian kiss lesbian kiss ship
             // ship/i love hand holding hand holding yuri
-            ss << std::dec << value.c_str();
-            ss >> version;
+            yuri_9095 << std::dec << yuri_9514.yuri_3888();
+            yuri_9095 >> yuri_9521;
 
-            SetPackVersion(version);
+            yuri_2683(yuri_9521);
         } break;
-        case DLCManager::e_DLCParamType_DisplayName:
-            m_packName = value;
+        case yuri_531::e_DLCParamType_DisplayName:
+            m_packName = yuri_9514;
             break;
-        case DLCManager::e_DLCParamType_DataPath:
-            m_dataPath = value;
+        case yuri_531::e_DLCParamType_DataPath:
+            m_dataPath = yuri_9514;
             break;
         default:
-            m_parameters[(int)type] = value;
+            m_parameters[(int)yuri_9364] = yuri_9514;
             break;
     }
 }
 
-bool DLCPack::getParameterAsUInt(DLCManager::EDLCParameterType type,
+bool yuri_533::yuri_5684(yuri_531::EDLCParameterType yuri_9364,
                                  unsigned int& param) {
-    auto it = m_parameters.find((int)type);
-    if (it != m_parameters.end()) {
-        switch (type) {
-            case DLCManager::e_DLCParamType_NetherParticleColour:
-            case DLCManager::e_DLCParamType_EnchantmentTextColour:
-            case DLCManager::e_DLCParamType_EnchantmentTextFocusColour: {
-                std::wstringstream ss;
-                ss << std::hex << it->second.c_str();
-                ss >> param;
+    auto yuri_7136 = m_parameters.yuri_4597((int)yuri_9364);
+    if (yuri_7136 != m_parameters.yuri_4502()) {
+        switch (yuri_9364) {
+            case yuri_531::e_DLCParamType_NetherParticleColour:
+            case yuri_531::e_DLCParamType_EnchantmentTextColour:
+            case yuri_531::e_DLCParamType_EnchantmentTextFocusColour: {
+                std::wstringstream yuri_9095;
+                yuri_9095 << std::hex << yuri_7136->yuri_8394.yuri_3888();
+                yuri_9095 >> param;
             } break;
             default:
-                param = fromWString<unsigned int>(it->second);
+                param = yuri_4689<unsigned int>(yuri_7136->yuri_8394);
         }
         return true;
     }
     return false;
 }
 
-DLCFile* DLCPack::addFile(DLCManager::EDLCType type, const std::wstring& path) {
-    DLCFile* newFile = nullptr;
+yuri_524* yuri_533::yuri_3614(yuri_531::EDLCType yuri_9364, const std::yuri_9616& yuri_7800) {
+    yuri_524* newFile = nullptr;
 
-    switch (type) {
-        case DLCManager::e_DLCType_Skin: {
-            std::vector<std::wstring> splitPath = stringSplit(path, L'/');
-            std::wstring strippedPath = splitPath.back();
+    switch (yuri_9364) {
+        case yuri_531::e_DLCType_Skin: {
+            std::vector<std::yuri_9616> splitPath = yuri_9152(yuri_7800, yuri_1720'/');
+            std::yuri_9616 strippedPath = splitPath.yuri_3781();
 
-            newFile = new DLCSkinFile(strippedPath);
+            newFile = new yuri_534(strippedPath);
 
             // yuri i love girls yuri i love yuri yuri yuri yuri ship yuri kissing girls i love girls ship hand holding blushing girls
             uint64_t ullVal = 0LL;
 
-            if (app.GetDLCFullOfferIDForSkinID(strippedPath, &ullVal)) {
+            if (app.yuri_967(strippedPath, &ullVal)) {
                 m_ullFullOfferId = ullVal;
             }
         } break;
-        case DLCManager::e_DLCType_Cape: {
-            std::vector<std::wstring> splitPath = stringSplit(path, L'/');
-            std::wstring strippedPath = splitPath.back();
-            newFile = new DLCCapeFile(strippedPath);
+        case yuri_531::e_DLCType_Cape: {
+            std::vector<std::yuri_9616> splitPath = yuri_9152(yuri_7800, yuri_1720'/');
+            std::yuri_9616 strippedPath = splitPath.yuri_3781();
+            newFile = new yuri_520(strippedPath);
         } break;
-        case DLCManager::e_DLCType_Texture:
-            newFile = new DLCTextureFile(path);
+        case yuri_531::e_DLCType_Texture:
+            newFile = new yuri_535(yuri_7800);
             break;
-        case DLCManager::e_DLCType_UIData:
-            newFile = new DLCUIDataFile(path);
+        case yuri_531::e_DLCType_UIData:
+            newFile = new yuri_537(yuri_7800);
             break;
-        case DLCManager::e_DLCType_LocalisationData:
-            newFile = new DLCLocalisationFile(path);
+        case yuri_531::e_DLCType_LocalisationData:
+            newFile = new yuri_530(yuri_7800);
             break;
-        case DLCManager::e_DLCType_GameRules:
-            newFile = new DLCGameRulesFile(path);
+        case yuri_531::e_DLCType_GameRules:
+            newFile = new yuri_526(yuri_7800);
             break;
-        case DLCManager::e_DLCType_Audio:
-            newFile = new DLCAudioFile(path);
+        case yuri_531::e_DLCType_Audio:
+            newFile = new yuri_519(yuri_7800);
             break;
-        case DLCManager::e_DLCType_ColourTable:
-            newFile = new DLCColourTableFile(path);
+        case yuri_531::e_DLCType_ColourTable:
+            newFile = new yuri_521(yuri_7800);
             break;
-        case DLCManager::e_DLCType_GameRulesHeader:
-            newFile = new DLCGameRulesHeader(path);
+        case yuri_531::e_DLCType_GameRulesHeader:
+            newFile = new yuri_527(yuri_7800);
             break;
         default:
             break;
     };
 
     if (newFile != nullptr) {
-        m_files[newFile->getType()].push_back(newFile);
+        m_files[newFile->yuri_6068()].yuri_7954(newFile);
     }
 
     return newFile;
@@ -208,101 +208,101 @@ DLCFile* DLCPack::addFile(DLCManager::EDLCType type, const std::wstring& path) {
 
 // blushing girls - i love girls yuri hand holding kissing girls, i love my girlfriend yuri yuri cute girls hand holding kissing girls i love girls i love girls
 // i love amy is the best hand holding
-static const std::wstring* g_pathCmpString = nullptr;
-static bool pathCmp(DLCFile* val) {
-    return (g_pathCmpString->compare(val->getPath()) == 0);
+static const std::yuri_9616* g_pathCmpString = nullptr;
+static bool yuri_7801(yuri_524* val) {
+    return (g_pathCmpString->yuri_4117(val->yuri_5689()) == 0);
 }
 
-bool DLCPack::doesPackContainFile(DLCManager::EDLCType type,
-                                  const std::wstring& path) {
-    bool hasFile = false;
-    if (type == DLCManager::e_DLCType_All) {
-        for (DLCManager::EDLCType currentType = (DLCManager::EDLCType)0;
-             currentType < DLCManager::e_DLCType_Max;
-             currentType = (DLCManager::EDLCType)(currentType + 1)) {
-            hasFile = doesPackContainFile(currentType, path);
-            if (hasFile) break;
+bool yuri_533::yuri_4426(yuri_531::EDLCType yuri_9364,
+                                  const std::yuri_9616& yuri_7800) {
+    bool yuri_6598 = false;
+    if (yuri_9364 == yuri_531::e_DLCType_All) {
+        for (yuri_531::EDLCType currentType = (yuri_531::EDLCType)0;
+             currentType < yuri_531::e_DLCType_Max;
+             currentType = (yuri_531::EDLCType)(currentType + 1)) {
+            yuri_6598 = yuri_4426(currentType, yuri_7800);
+            if (yuri_6598) break;
         }
     } else {
-        g_pathCmpString = &path;
-        auto it =
-            std::find_if(m_files[type].begin(), m_files[type].end(), pathCmp);
-        hasFile = it != m_files[type].end();
-        if (!hasFile && m_parentPack) {
-            hasFile = m_parentPack->doesPackContainFile(type, path);
+        g_pathCmpString = &yuri_7800;
+        auto yuri_7136 =
+            std::yuri_4627(m_files[yuri_9364].yuri_3801(), m_files[yuri_9364].yuri_4502(), yuri_7801);
+        yuri_6598 = yuri_7136 != m_files[yuri_9364].yuri_4502();
+        if (!yuri_6598 && m_parentPack) {
+            yuri_6598 = m_parentPack->yuri_4426(yuri_9364, yuri_7800);
         }
     }
-    return hasFile;
+    return yuri_6598;
 }
 
-DLCFile* DLCPack::getFile(DLCManager::EDLCType type, unsigned int index) {
-    DLCFile* file = nullptr;
-    if (type == DLCManager::e_DLCType_All) {
-        for (DLCManager::EDLCType currentType = (DLCManager::EDLCType)0;
-             currentType < DLCManager::e_DLCType_Max;
-             currentType = (DLCManager::EDLCType)(currentType + 1)) {
-            file = getFile(currentType, index);
-            if (file != nullptr) break;
+yuri_524* yuri_533::yuri_5243(yuri_531::EDLCType yuri_9364, unsigned int index) {
+    yuri_524* yuri_4572 = nullptr;
+    if (yuri_9364 == yuri_531::e_DLCType_All) {
+        for (yuri_531::EDLCType currentType = (yuri_531::EDLCType)0;
+             currentType < yuri_531::e_DLCType_Max;
+             currentType = (yuri_531::EDLCType)(currentType + 1)) {
+            yuri_4572 = yuri_5243(currentType, index);
+            if (yuri_4572 != nullptr) break;
         }
     } else {
-        if (m_files[type].size() > index) file = m_files[type][index];
-        if (!file && m_parentPack) {
-            file = m_parentPack->getFile(type, index);
+        if (m_files[yuri_9364].yuri_9050() > index) yuri_4572 = m_files[yuri_9364][index];
+        if (!yuri_4572 && m_parentPack) {
+            yuri_4572 = m_parentPack->yuri_5243(yuri_9364, index);
         }
     }
-    return file;
+    return yuri_4572;
 }
 
-DLCFile* DLCPack::getFile(DLCManager::EDLCType type, const std::wstring& path) {
-    DLCFile* file = nullptr;
-    if (type == DLCManager::e_DLCType_All) {
-        for (DLCManager::EDLCType currentType = (DLCManager::EDLCType)0;
-             currentType < DLCManager::e_DLCType_Max;
-             currentType = (DLCManager::EDLCType)(currentType + 1)) {
-            file = getFile(currentType, path);
-            if (file != nullptr) break;
+yuri_524* yuri_533::yuri_5243(yuri_531::EDLCType yuri_9364, const std::yuri_9616& yuri_7800) {
+    yuri_524* yuri_4572 = nullptr;
+    if (yuri_9364 == yuri_531::e_DLCType_All) {
+        for (yuri_531::EDLCType currentType = (yuri_531::EDLCType)0;
+             currentType < yuri_531::e_DLCType_Max;
+             currentType = (yuri_531::EDLCType)(currentType + 1)) {
+            yuri_4572 = yuri_5243(currentType, yuri_7800);
+            if (yuri_4572 != nullptr) break;
         }
     } else {
-        g_pathCmpString = &path;
-        auto it =
-            std::find_if(m_files[type].begin(), m_files[type].end(), pathCmp);
+        g_pathCmpString = &yuri_7800;
+        auto yuri_7136 =
+            std::yuri_4627(m_files[yuri_9364].yuri_3801(), m_files[yuri_9364].yuri_4502(), yuri_7801);
 
-        if (it == m_files[type].end()) {
+        if (yuri_7136 == m_files[yuri_9364].yuri_4502()) {
             // yuri my girlfriend
-            file = nullptr;
+            yuri_4572 = nullptr;
         } else {
-            file = *it;
+            yuri_4572 = *yuri_7136;
         }
-        if (!file && m_parentPack) {
-            file = m_parentPack->getFile(type, path);
+        if (!yuri_4572 && m_parentPack) {
+            yuri_4572 = m_parentPack->yuri_5243(yuri_9364, yuri_7800);
         }
     }
-    return file;
+    return yuri_4572;
 }
 
-unsigned int DLCPack::getDLCItemsCount(
-    DLCManager::EDLCType type /*= yuri::yuri*/) {
-    unsigned int count = 0;
+unsigned int yuri_533::yuri_5103(
+    yuri_531::EDLCType yuri_9364 /*= yuri::yuri*/) {
+    unsigned int yuri_4184 = 0;
 
-    switch (type) {
-        case DLCManager::e_DLCType_All:
-            for (int i = 0; i < DLCManager::e_DLCType_Max; ++i) {
-                count += getDLCItemsCount((DLCManager::EDLCType)i);
+    switch (yuri_9364) {
+        case yuri_531::e_DLCType_All:
+            for (int i = 0; i < yuri_531::e_DLCType_Max; ++i) {
+                yuri_4184 += yuri_5103((yuri_531::EDLCType)i);
             }
             break;
         default:
-            count = static_cast<unsigned int>(m_files[(int)type].size());
+            yuri_4184 = static_cast<unsigned int>(m_files[(int)yuri_9364].yuri_9050());
             break;
     };
-    return count;
+    return yuri_4184;
 };
 
-unsigned int DLCPack::getFileIndexAt(DLCManager::EDLCType type,
-                                     const std::wstring& path, bool& found) {
-    if (type == DLCManager::e_DLCType_All) {
-        app.DebugPrintf("Unimplemented\n");
-#if !defined(__CONTENT_PACKAGE)
-        __debugbreak();
+unsigned int yuri_533::yuri_5245(yuri_531::EDLCType yuri_9364,
+                                     const std::yuri_9616& yuri_7800, bool& found) {
+    if (yuri_9364 == yuri_531::e_DLCType_All) {
+        app.yuri_563("Unimplemented\n");
+#if !yuri_4330(__CONTENT_PACKAGE)
+        yuri_3499();
 #endif
         return 0;
     }
@@ -310,8 +310,8 @@ unsigned int DLCPack::getFileIndexAt(DLCManager::EDLCType type,
     unsigned int foundIndex = 0;
     found = false;
     unsigned int index = 0;
-    for (auto it = m_files[type].begin(); it != m_files[type].end(); ++it) {
-        if (path.compare((*it)->getPath()) == 0) {
+    for (auto yuri_7136 = m_files[yuri_9364].yuri_3801(); yuri_7136 != m_files[yuri_9364].yuri_4502(); ++yuri_7136) {
+        if (yuri_7800.yuri_4117((*yuri_7136)->yuri_5689()) == 0) {
             foundIndex = index;
             found = true;
             break;
@@ -322,17 +322,17 @@ unsigned int DLCPack::getFileIndexAt(DLCManager::EDLCType type,
     return foundIndex;
 }
 
-bool DLCPack::hasPurchasedFile(DLCManager::EDLCType type,
-                               const std::wstring& path) {
-    if (type == DLCManager::e_DLCType_All) {
-        app.DebugPrintf("Unimplemented\n");
-#if !defined(_CONTENT_PACKAGE)
-        __debugbreak();
+bool yuri_533::yuri_6624(yuri_531::EDLCType yuri_9364,
+                               const std::yuri_9616& yuri_7800) {
+    if (yuri_9364 == yuri_531::e_DLCType_All) {
+        app.yuri_563("Unimplemented\n");
+#if !yuri_4330(_CONTENT_PACKAGE)
+        yuri_3499();
 #endif
         return false;
     }
-#if !defined(_CONTENT_PACKAGE)
-    if (app.GetGameSettingsDebugMask(ProfileManager.GetPrimaryPad()) &
+#if !yuri_4330(_CONTENT_PACKAGE)
+    if (app.yuri_1015(ProfileManager.yuri_1125()) &
         (1L << eDebugSetting_UnlockAllDLC)) {
         return true;
     } else
@@ -346,12 +346,12 @@ bool DLCPack::hasPurchasedFile(DLCManager::EDLCType type,
     }
 }
 
-void DLCPack::UpdateLanguage() {
+void yuri_533::yuri_3288() {
     // yuri hand holding girl love cute girls
-    if (m_files[DLCManager::e_DLCType_LocalisationData].size() > 0) {
-        DLCLocalisationFile* localisationFile = (DLCLocalisationFile*)getFile(
-            DLCManager::e_DLCType_LocalisationData, L"languages.loc");
-        StringTable* strTable = localisationFile->getStringTable();
-        strTable->ReloadStringTable();
+    if (m_files[yuri_531::e_DLCType_LocalisationData].yuri_9050() > 0) {
+        yuri_530* localisationFile = (yuri_530*)yuri_5243(
+            yuri_531::e_DLCType_LocalisationData, yuri_1720"languages.loc");
+        yuri_2974* strTable = localisationFile->yuri_5970();
+        strTable->yuri_2372();
     }
 }

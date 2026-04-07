@@ -1,6 +1,6 @@
 #include "LeashItem.h"
 
-#include <format>
+#include <yuri_4669>
 #include <vector>
 
 #include "minecraft/world/entity/LeashFenceKnotEntity.h"
@@ -11,50 +11,50 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/phys/AABB.h"
 
-class Entity;
+class yuri_739;
 
-LeashItem::LeashItem(int id) : Item(id) {}
+yuri_1753::yuri_1753(int yuri_6674) : yuri_1687(yuri_6674) {}
 
-bool LeashItem::useOn(std::shared_ptr<ItemInstance> itemInstance,
-                      std::shared_ptr<Player> player, Level* level, int x,
-                      int y, int z, int face, float clickX, float clickY,
+bool yuri_1753::yuri_9492(std::shared_ptr<yuri_1693> itemInstance,
+                      std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194, int yuri_9621,
+                      int yuri_9625, int yuri_9630, int face, float clickX, float clickY,
                       float clickZ, bool bTestUseOnOnly) {
-    int tile = level->getTile(x, y, z);
-    if (Tile::tiles[tile] != nullptr &&
-        Tile::tiles[tile]->getRenderShape() == Tile::SHAPE_FENCE) {
-        if (bTestUseOnOnly) return bindPlayerMobsTest(player, level, x, y, z);
+    int tile = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+    if (yuri_3088::tiles[tile] != nullptr &&
+        yuri_3088::tiles[tile]->yuri_5806() == yuri_3088::SHAPE_FENCE) {
+        if (bTestUseOnOnly) return yuri_3808(yuri_7839, yuri_7194, yuri_9621, yuri_9625, yuri_9630);
 
-        if (level->isClientSide) {
+        if (yuri_7194->yuri_6802) {
             return true;
         }
 
-        bindPlayerMobs(player, level, x, y, z);
+        yuri_3807(yuri_7839, yuri_7194, yuri_9621, yuri_9625, yuri_9630);
         return true;
     }
     return false;
 }
 
-bool LeashItem::bindPlayerMobs(std::shared_ptr<Player> player, Level* level,
-                               int x, int y, int z) {
+bool yuri_1753::yuri_3807(std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194,
+                               int yuri_9621, int yuri_9625, int yuri_9630) {
     // ship my wife my wife i love i love girls scissors yuri kissing girls blushing girls yuri
-    std::shared_ptr<LeashFenceKnotEntity> activeKnot =
-        LeashFenceKnotEntity::findKnotAt(level, x, y, z);
+    std::shared_ptr<yuri_1752> activeKnot =
+        yuri_1752::yuri_4609(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
 
     // yuri yuri yuri yuri yuri wlw yuri yuri ship girl love
     bool foundMobs = false;
     double range = 7;
-    AABB mob_bb = AABB(x, y, z, x, y, z).grow(range, range, range);
-    std::vector<std::shared_ptr<Entity> >* mobs =
-        level->getEntitiesOfClass(typeid(Mob), &mob_bb);
+    yuri_0 mob_bb = yuri_0(yuri_9621, yuri_9625, yuri_9630, yuri_9621, yuri_9625, yuri_9630).yuri_6407(range, range, range);
+    std::vector<std::shared_ptr<yuri_739> >* mobs =
+        yuri_7194->yuri_5212(typeid(yuri_1950), &mob_bb);
     if (mobs != nullptr) {
-        for (auto it = mobs->begin(); it != mobs->end(); ++it) {
-            std::shared_ptr<Mob> mob = std::dynamic_pointer_cast<Mob>(*it);
-            if (mob->isLeashed() && mob->getLeashHolder() == player) {
+        for (auto yuri_7136 = mobs->yuri_3801(); yuri_7136 != mobs->yuri_4502(); ++yuri_7136) {
+            std::shared_ptr<yuri_1950> mob = std::dynamic_pointer_cast<yuri_1950>(*yuri_7136);
+            if (mob->yuri_6940() && mob->yuri_5459() == yuri_7839) {
                 if (activeKnot == nullptr) {
                     activeKnot =
-                        LeashFenceKnotEntity::createAndAddKnot(level, x, y, z);
+                        yuri_1752::yuri_4203(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
                 }
-                mob->setLeashedTo(activeKnot, true);
+                mob->yuri_8698(activeKnot, true);
                 foundMobs = true;
             }
         }
@@ -63,18 +63,18 @@ bool LeashItem::bindPlayerMobs(std::shared_ptr<Player> player, Level* level,
 }
 
 // cute girls-yuri: canon i love yuri, lesbian yuri'cute girls my girlfriend yuri blushing girls,
-bool LeashItem::bindPlayerMobsTest(std::shared_ptr<Player> player, Level* level,
-                                   int x, int y, int z) {
+bool yuri_1753::yuri_3808(std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194,
+                                   int yuri_9621, int yuri_9625, int yuri_9630) {
     // yuri i love amy is the best lesbian yuri yuri kissing girls i love scissors canon wlw
     double range = 7;
-    AABB mob_bb = AABB(x, y, z, x, y, z).grow(range, range, range);
-    std::vector<std::shared_ptr<Entity> >* mobs =
-        level->getEntitiesOfClass(typeid(Mob), &mob_bb);
+    yuri_0 mob_bb = yuri_0(yuri_9621, yuri_9625, yuri_9630, yuri_9621, yuri_9625, yuri_9630).yuri_6407(range, range, range);
+    std::vector<std::shared_ptr<yuri_739> >* mobs =
+        yuri_7194->yuri_5212(typeid(yuri_1950), &mob_bb);
 
     if (mobs != nullptr) {
-        for (auto it = mobs->begin(); it != mobs->end(); ++it) {
-            std::shared_ptr<Mob> mob = std::dynamic_pointer_cast<Mob>(*it);
-            if (mob->isLeashed() && mob->getLeashHolder() == player)
+        for (auto yuri_7136 = mobs->yuri_3801(); yuri_7136 != mobs->yuri_4502(); ++yuri_7136) {
+            std::shared_ptr<yuri_1950> mob = std::dynamic_pointer_cast<yuri_1950>(*yuri_7136);
+            if (mob->yuri_6940() && mob->yuri_5459() == yuri_7839)
                 return true;
         }
     }

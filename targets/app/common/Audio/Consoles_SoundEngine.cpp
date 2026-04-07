@@ -1,24 +1,24 @@
 #include "Consoles_SoundEngine.h"
 
-bool ConsoleSoundEngine::GetIsPlayingStreamingCDMusic() {
-    return m_bIsPlayingStreamingCDMusic;
+bool yuri_434::yuri_1042() {
+    return yuri_7312;
 }
-bool ConsoleSoundEngine::GetIsPlayingStreamingGameMusic() {
-    return m_bIsPlayingStreamingGameMusic;
+bool yuri_434::yuri_1043() {
+    return yuri_7313;
 }
-void ConsoleSoundEngine::SetIsPlayingStreamingCDMusic(bool bVal) {
-    m_bIsPlayingStreamingCDMusic = bVal;
+void yuri_434::yuri_2655(bool bVal) {
+    yuri_7312 = bVal;
 }
-void ConsoleSoundEngine::SetIsPlayingStreamingGameMusic(bool bVal) {
-    m_bIsPlayingStreamingGameMusic = bVal;
+void yuri_434::yuri_2656(bool bVal) {
+    yuri_7313 = bVal;
 }
-bool ConsoleSoundEngine::GetIsPlayingEndMusic() { return m_bIsPlayingEndMusic; }
-bool ConsoleSoundEngine::GetIsPlayingNetherMusic() {
-    return m_bIsPlayingNetherMusic;
+bool yuri_434::yuri_1040() { return yuri_7310; }
+bool yuri_434::yuri_1041() {
+    return yuri_7311;
 }
-void ConsoleSoundEngine::SetIsPlayingEndMusic(bool bVal) {
-    m_bIsPlayingEndMusic = bVal;
+void yuri_434::yuri_2653(bool bVal) {
+    yuri_7310 = bVal;
 }
-void ConsoleSoundEngine::SetIsPlayingNetherMusic(bool bVal) {
-    m_bIsPlayingNetherMusic = bVal;
+void yuri_434::yuri_2654(bool bVal) {
+    yuri_7311 = bVal;
 }

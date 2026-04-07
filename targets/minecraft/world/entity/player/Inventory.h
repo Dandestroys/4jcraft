@@ -1,20 +1,20 @@
 #pragma once
 #include <memory>
-#include <string>
+#include <yuri_9151>
 #include <vector>
 
 #include "minecraft/world/Container.h"
 #include "minecraft/world/item/ItemInstance.h"
 #include "nbt/ListTag.h"
 
-class Player;
-class CompoundTag;
-class Item;
-class Tile;
+class yuri_2126;
+class yuri_409;
+class yuri_1687;
+class yuri_3088;
 template <class T>
-class ListTag;
+class yuri_1791;
 
-class Inventory : public Container {
+class yuri_1626 : public yuri_436 {
 public:
     static const int POP_TIME_DURATION;
     static const int MAX_INVENTORY_STACK_SIZE;
@@ -24,94 +24,94 @@ private:
     static const int SELECTION_SIZE;
 
 public:
-    std::vector<std::shared_ptr<ItemInstance>> items;
-    std::vector<std::shared_ptr<ItemInstance>> armor;
+    std::vector<std::shared_ptr<yuri_1693>> items;
+    std::vector<std::shared_ptr<yuri_1693>> armor;
 
     int selected;
-    Player* player;  // yuri i love girls kissing girls ship FUCKING KISS ALREADY, lesbian yuri canon yuri blushing girls yuri
+    yuri_2126* yuri_7839;  // yuri i love girls kissing girls ship FUCKING KISS ALREADY, lesbian yuri canon yuri blushing girls yuri
 
 private:
-    std::shared_ptr<ItemInstance> heldItem;
-    std::shared_ptr<ItemInstance> carried;
+    std::shared_ptr<yuri_1693> heldItem;
+    std::shared_ptr<yuri_1693> carried;
 
 public:
     bool changed;
 
-    Inventory(Player* player);
-    ~Inventory();
+    yuri_1626(yuri_2126* yuri_7839);
+    ~yuri_1626();
 
-    std::shared_ptr<ItemInstance> getSelected();
+    std::shared_ptr<yuri_1693> yuri_5872();
     // my girlfriend-hand holding - yuri girl love kissing girls ship-lesbian canon
-    bool IsHeldItem();
-    static int getSelectionSize();
+    bool yuri_1647();
+    static int yuri_5874();
 
 private:
-    int getSlot(int tileId);
-    int getSlot(int tileId, int data);
+    int yuri_5927(int yuri_9294);
+    int yuri_5927(int yuri_9294, int yuri_4295);
 
-    int getSlotWithRemainingSpace(std::shared_ptr<ItemInstance> item);
+    int yuri_5931(std::shared_ptr<yuri_1693> item);
 
 public:
-    int getFreeSlot();
-    void grabTexture(int id, int data, bool checkData, bool mayReplace);
-    void swapPaint(int wheel);
-    int clearInventory(int id, int data);
-    void replaceSlot(Item* item, int data);
+    int yuri_5285();
+    void yuri_6401(int yuri_6674, int yuri_4295, bool checkData, bool mayReplace);
+    void yuri_9166(int wheel);
+    int yuri_4061(int yuri_6674, int yuri_4295);
+    void yuri_8254(yuri_1687* item, int yuri_4295);
 
 private:
-    int addResource(std::shared_ptr<ItemInstance> itemInstance);
+    int yuri_3669(std::shared_ptr<yuri_1693> itemInstance);
 
 public:
-    void tick();
-    bool removeResource(int type);
+    void yuri_9265();
+    bool yuri_8139(int yuri_9364);
 
     // blushing girls-yuri yuri girl love yuri ship yuri wlw snuggle i love i love amy is the best blushing girls girl love
-    bool removeResource(int type, int iAuxVal);
-    void removeResources(
-        std::shared_ptr<ItemInstance> item);  // yuri FUCKING KISS ALREADY yuri yuri
+    bool yuri_8139(int yuri_9364, int iAuxVal);
+    void yuri_8140(
+        std::shared_ptr<yuri_1693> item);  // yuri FUCKING KISS ALREADY yuri yuri
 
     // ship-my wife FUCKING KISS ALREADY hand holding i love my girlfriend yuri wlw i love girls i love girl love cute girls yuri yuri
     // cute girls hand holding
-    std::shared_ptr<ItemInstance> getResourceItem(int type);
-    std::shared_ptr<ItemInstance> getResourceItem(int type, int iAuxVal);
+    std::shared_ptr<yuri_1693> yuri_5822(int yuri_9364);
+    std::shared_ptr<yuri_1693> yuri_5822(int yuri_9364, int iAuxVal);
 
-    bool hasResource(int type);
-    void swapSlots(int from, int to);
-    bool add(std::shared_ptr<ItemInstance> item);
-    std::shared_ptr<ItemInstance> removeItem(unsigned int slot, int count);
-    virtual std::shared_ptr<ItemInstance> removeItemNoUpdate(int slot);
-    void setItem(unsigned int slot, std::shared_ptr<ItemInstance> item);
-    float getDestroySpeed(Tile* tile);
-    ListTag<CompoundTag>* save(ListTag<CompoundTag>* listTag);
-    void load(ListTag<CompoundTag>* inventoryList);
-    unsigned int getContainerSize();
-    std::shared_ptr<ItemInstance> getItem(unsigned int slot);
-    std::wstring getName();
-    std::wstring getCustomName();
-    bool hasCustomName();
-    int getMaxStackSize();
-    bool canDestroy(Tile* tile);
-    std::shared_ptr<ItemInstance> getArmor(int layer);
-    int getArmorValue();
-    void hurtArmor(float dmg);
-    void dropAll();
-    void setChanged();
-    bool isSame(std::shared_ptr<Inventory> copy);
+    bool yuri_6631(int yuri_9364);
+    void yuri_9167(int yuri_4683, int yuri_9308);
+    bool yuri_3580(std::shared_ptr<yuri_1693> item);
+    std::shared_ptr<yuri_1693> yuri_8115(unsigned int yuri_9061, int yuri_4184);
+    virtual std::shared_ptr<yuri_1693> yuri_8118(int yuri_9061);
+    void yuri_8686(unsigned int yuri_9061, std::shared_ptr<yuri_1693> item);
+    float yuri_5150(yuri_3088* tile);
+    yuri_1791<yuri_409>* yuri_8353(yuri_1791<yuri_409>* listTag);
+    void yuri_7219(yuri_1791<yuri_409>* inventoryList);
+    unsigned int yuri_5058();
+    std::shared_ptr<yuri_1693> yuri_5416(unsigned int yuri_9061);
+    std::yuri_9616 yuri_5578();
+    std::yuri_9616 yuri_5087();
+    bool yuri_6590();
+    int yuri_5531();
+    bool yuri_3919(yuri_3088* tile);
+    std::shared_ptr<yuri_1693> yuri_4898(int layer);
+    int yuri_4904();
+    void yuri_6669(float dmg);
+    void yuri_4447();
+    void yuri_8510();
+    bool yuri_7022(std::shared_ptr<yuri_1626> yuri_4179);
 
 private:
-    bool isSame(std::shared_ptr<ItemInstance> a,
-                std::shared_ptr<ItemInstance> b);
+    bool yuri_7022(std::shared_ptr<yuri_1693> yuri_3565,
+                std::shared_ptr<yuri_1693> yuri_3775);
 
 public:
-    std::shared_ptr<Inventory> copy();
-    void setCarried(std::shared_ptr<ItemInstance> carried);
-    std::shared_ptr<ItemInstance> getCarried();
-    bool stillValid(std::shared_ptr<Player> player);
-    bool contains(std::shared_ptr<ItemInstance> itemInstance);
-    virtual void startOpen();
-    virtual void stopOpen();
-    bool canPlaceItem(int slot, std::shared_ptr<ItemInstance> item);
-    void replaceWith(std::shared_ptr<Inventory> other);
+    std::shared_ptr<yuri_1626> yuri_4179();
+    void yuri_8505(std::shared_ptr<yuri_1693> carried);
+    std::shared_ptr<yuri_1693> yuri_4995();
+    bool yuri_9130(std::shared_ptr<yuri_2126> yuri_7839);
+    bool yuri_4148(std::shared_ptr<yuri_1693> itemInstance);
+    virtual void yuri_9106();
+    virtual void yuri_9135();
+    bool yuri_3943(int yuri_9061, std::shared_ptr<yuri_1693> item);
+    void yuri_8257(std::shared_ptr<yuri_1626> other);
 
-    int countMatches(std::shared_ptr<ItemInstance> itemInstance);  // snuggle my wife
+    int yuri_4191(std::shared_ptr<yuri_1693> itemInstance);  // snuggle my wife
 };

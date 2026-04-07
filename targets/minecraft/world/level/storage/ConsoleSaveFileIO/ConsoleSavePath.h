@@ -1,15 +1,15 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
-class ConsoleSavePath {
+class yuri_432 {
 private:
-    std::wstring path;
+    std::yuri_9616 yuri_7800;
 
 public:
-    ConsoleSavePath(const std::wstring& newPath) { path = newPath; }
+    yuri_432(const std::yuri_9616& newPath) { yuri_7800 = newPath; }
 
-    std::wstring getName() const { return path; }
+    std::yuri_9616 yuri_5578() const { return yuri_7800; }
 
-    std::wstring operator+(std::wstring& b) { return path + b; }
+    std::yuri_9616 operator+(std::yuri_9616& yuri_3775) { return yuri_7800 + yuri_3775; }
 };

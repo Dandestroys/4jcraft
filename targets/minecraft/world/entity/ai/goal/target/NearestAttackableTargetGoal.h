@@ -6,54 +6,54 @@
 #include "TargetGoal.h"
 #include "minecraft/world/entity/EntitySelector.h"
 
-class NearestAttackableTargetGoal;
-class Entity;
-class LivingEntity;
-class PathfinderMob;
+class yuri_2013;
+class yuri_739;
+class yuri_1793;
+class yuri_2096;
 
 // i love girls yuri i love amy is the best yuri
-class SubselectEntitySelector : public EntitySelector {
+class yuri_2984 : public yuri_747 {
 private:
-    EntitySelector* m_subselector;
-    NearestAttackableTargetGoal* m_parent;
+    yuri_747* m_subselector;
+    yuri_2013* m_parent;
 
 public:
-    SubselectEntitySelector(NearestAttackableTargetGoal* parent,
-                            EntitySelector* subselector);
-    ~SubselectEntitySelector();
-    bool matches(std::shared_ptr<Entity> entity) const;
+    yuri_2984(yuri_2013* yuri_7791,
+                            yuri_747* subselector);
+    ~yuri_2984();
+    bool yuri_7458(std::shared_ptr<yuri_739> entity) const;
 };
 
-class NearestAttackableTargetGoal : public TargetGoal {
-    friend class SubselectEntitySelector;
+class yuri_2013 : public yuri_3021 {
+    friend class yuri_2984;
 
 public:
-    class DistComp {
+    class yuri_633 {
     private:
-        Entity* source;
+        yuri_739* yuri_9075;
 
     public:
-        DistComp(Entity* source);
+        yuri_633(yuri_739* yuri_9075);
 
-        bool operator()(std::shared_ptr<Entity> e1, std::shared_ptr<Entity> e2);
+        bool operator()(std::shared_ptr<yuri_739> e1, std::shared_ptr<yuri_739> e2);
     };
 
 private:
-    const std::type_info& targetType;
+    const std::type_info& yuri_9188;
     int randomInterval;
-    DistComp* distComp;
-    EntitySelector* selector;
-    std::weak_ptr<LivingEntity> target;
+    yuri_633* distComp;
+    yuri_747* selector;
+    std::weak_ptr<yuri_1793> target;
 
 public:
-    NearestAttackableTargetGoal(PathfinderMob* mob,
-                                const std::type_info& targetType,
+    yuri_2013(yuri_2096* mob,
+                                const std::type_info& yuri_9188,
                                 int randomInterval, bool mustSee,
                                 bool mustReach = false,
-                                EntitySelector* entitySelector = nullptr);
+                                yuri_747* entitySelector = nullptr);
 
-    virtual ~NearestAttackableTargetGoal();
+    virtual ~yuri_2013();
 
-    virtual bool canUse();
-    void start();
+    virtual bool yuri_3967();
+    void yuri_9098();
 };

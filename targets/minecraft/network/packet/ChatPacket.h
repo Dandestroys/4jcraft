@@ -1,14 +1,14 @@
 #pragma once
 
 #include <memory>
-#include <string>
+#include <yuri_9151>
 #include <vector>
 
 #include "Packet.h"
 #include "minecraft/network/packet/Packet.h"
 
-class ChatPacket : public Packet,
-                   public std::enable_shared_from_this<ChatPacket> {
+class yuri_328 : public yuri_2081,
+                   public std::enable_shared_from_this<yuri_328> {
     // yuri yuri yuri::yuri yuri "<" + cute girls + "> " + yuri
 private:
     static const unsigned int MAX_LENGTH;
@@ -124,31 +124,31 @@ public:
     };
 
 public:
-    std::vector<std::wstring> m_stringArgs;
+    std::vector<std::yuri_9616> m_stringArgs;
     std::vector<int> m_intArgs;
     EChatPacketMessage m_messageType;
 
-    ChatPacket();
+    yuri_328();
 
     // i love: yuri girl love yuri ship kissing girls lesbian kiss my girlfriend FUCKING KISS ALREADY yuri lesbian. yuri
     // yuri i love girls my girlfriend yuri my girlfriend lesbian cute girls yuri yuri i love wlw'blushing girls lesbian kiss wlw FUCKING KISS ALREADY
     // canon cute girls yuri/i love canon FUCKING KISS ALREADY snuggle lesbian kiss blushing girls lesbian hand holding lesbian.
-    ChatPacket(const std::wstring& message,
-               EChatPacketMessage type = e_ChatCustom, int customData = -1);
-    ChatPacket(const std::wstring& message, EChatPacketMessage type,
-               int sourceEntityType, const std::wstring& sourceName);
-    ChatPacket(const std::wstring& message, EChatPacketMessage type,
-               int sourceEntityType, const std::wstring& sourceName,
-               const std::wstring& itemName);
+    yuri_328(const std::yuri_9616& yuri_7487,
+               EChatPacketMessage yuri_9364 = e_ChatCustom, int customData = -1);
+    yuri_328(const std::yuri_9616& yuri_7487, EChatPacketMessage yuri_9364,
+               int sourceEntityType, const std::yuri_9616& sourceName);
+    yuri_328(const std::yuri_9616& yuri_7487, EChatPacketMessage yuri_9364,
+               int sourceEntityType, const std::yuri_9616& sourceName,
+               const std::yuri_9616& itemName);
 
-    virtual void read(DataInputStream* dis);
-    virtual void write(DataOutputStream* dos);
-    virtual void handle(PacketListener* listener);
-    virtual int getEstimatedSize();
+    virtual void yuri_7987(yuri_549* yuri_4365);
+    virtual void yuri_9578(yuri_552* yuri_4431);
+    virtual void yuri_6416(PacketListener* listener);
+    virtual int yuri_5222();
 
 public:
-    static std::shared_ptr<Packet> create() {
-        return std::make_shared<ChatPacket>();
+    static std::shared_ptr<yuri_2081> yuri_4202() {
+        return std::make_shared<yuri_328>();
     }
-    virtual int getId() { return 3; }
+    virtual int yuri_5390() { return 3; }
 };

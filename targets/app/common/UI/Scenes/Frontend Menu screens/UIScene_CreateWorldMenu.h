@@ -1,8 +1,8 @@
 #pragma once
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
-#include <string>
+#include <yuri_9151>
 
 #include "platform/sdl2/Storage.h"
 #include "IUIScene_StartGame.h"
@@ -19,10 +19,10 @@
 #include "app/common/UI/UIScene.h"
 #include "app/linux/Iggy/include/rrCore.h"
 
-class DLCPack;
-class UILayer;
+class yuri_533;
+class yuri_3188;
 
-class UIScene_CreateWorldMenu : public IUIScene_StartGame {
+class yuri_3198 : public yuri_1342 {
 private:
     enum EControls {
         eControl_EditWorldName,
@@ -36,81 +36,81 @@ private:
 
     static int m_iDifficultyTitleSettingA[4];
 
-    std::wstring m_worldName;
-    std::wstring m_seed;
+    std::yuri_9616 m_worldName;
+    std::yuri_9616 m_seed;
 
-    UIControl m_controlMainPanel;
-    UIControl_Label m_labelWorldName;
-    UIControl_Button m_buttonGamemode, m_buttonMoreOptions, m_buttonCreateWorld;
-    UIControl_TextInput m_editWorldName;
-    UIControl_Slider m_sliderDifficulty;
-    UIControl_CheckBox m_checkboxOnline;
+    yuri_3162 m_controlMainPanel;
+    yuri_3173 m_labelWorldName;
+    yuri_3165 m_buttonGamemode, m_buttonMoreOptions, m_buttonCreateWorld;
+    yuri_3182 m_editWorldName;
+    yuri_3179 m_sliderDifficulty;
+    yuri_3167 m_checkboxOnline;
 
     UIControl_BitmapIcon m_bitmapIcon, m_bitmapComparison;
 
-    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(IUIScene_StartGame)
-    UI_MAP_ELEMENT(m_controlMainPanel, "MainPanel")
-    UI_BEGIN_MAP_CHILD_ELEMENTS(m_controlMainPanel)
-    UI_MAP_ELEMENT(m_labelWorldName, "WorldName")
-    UI_MAP_ELEMENT(m_editWorldName, "EditWorldName")
-    UI_MAP_ELEMENT(m_texturePackList, "TexturePackSelector")
-    UI_MAP_ELEMENT(m_buttonGamemode, "GameModeToggle")
-    UI_MAP_ELEMENT(m_checkboxOnline, "CheckboxOnline")
-    UI_MAP_ELEMENT(m_buttonMoreOptions, "MoreOptions")
-    UI_MAP_ELEMENT(m_buttonCreateWorld, "NewWorld")
-    UI_MAP_ELEMENT(m_sliderDifficulty, "Difficulty")
-    UI_END_MAP_CHILD_ELEMENTS()
-    UI_END_MAP_ELEMENTS_AND_NAMES()
+    yuri_3257(yuri_1342)
+    yuri_3260(m_controlMainPanel, "MainPanel")
+    yuri_3256(m_controlMainPanel)
+    yuri_3260(m_labelWorldName, "WorldName")
+    yuri_3260(m_editWorldName, "EditWorldName")
+    yuri_3260(m_texturePackList, "TexturePackSelector")
+    yuri_3260(m_buttonGamemode, "GameModeToggle")
+    yuri_3260(m_checkboxOnline, "CheckboxOnline")
+    yuri_3260(m_buttonMoreOptions, "MoreOptions")
+    yuri_3260(m_buttonCreateWorld, "NewWorld")
+    yuri_3260(m_sliderDifficulty, "Difficulty")
+    yuri_3258()
+    yuri_3259()
 
     bool m_bGameModeCreative;
     int m_iGameModeId;
     bool m_bMultiplayerAllowed;
-    DLCPack* m_pDLCPack;
+    yuri_533* m_pDLCPack;
     bool m_bRebuildTouchBoxes;
 
 public:
-    UIScene_CreateWorldMenu(int iPad, void* initData, UILayer* parentLayer);
-    virtual ~UIScene_CreateWorldMenu();
+    yuri_3198(int iPad, void* initData, yuri_3188* parentLayer);
+    virtual ~yuri_3198();
 
-    virtual void updateTooltips();
-    virtual void updateComponents();
+    virtual void yuri_9478();
+    virtual void yuri_9397();
 
-    virtual EUIScene getSceneType() { return eUIScene_CreateWorldMenu; }
+    virtual EUIScene yuri_5854() { return eUIScene_CreateWorldMenu; }
 
-    virtual void handleDestroy();
-    virtual void tick();
+    virtual void yuri_6465();
+    virtual void yuri_9265();
 
-    virtual UIControl* GetMainPanel();
+    virtual yuri_3162* yuri_1070();
 
-    virtual void handleTouchBoxRebuild();
+    virtual void yuri_6557();
 
 protected:
     // yuri: yuri yuri my wife yuri yuri ship yuri lesbian kiss
-    virtual std::wstring getMoviePath();
+    virtual std::yuri_9616 yuri_5574();
 
-    virtual void handleTimerComplete(int id);
-    virtual void handleGainFocus(bool navBack);
+    virtual void yuri_6556(int yuri_6674);
+    virtual void yuri_6474(bool navBack);
 
 public:
     // FUCKING KISS ALREADY
-    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
-                             bool released, bool& handled);
+    virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
+                             bool yuri_8086, bool& handled);
 
 private:
-    void StartSharedLaunchFlow();
-    bool IsLocalMultiplayerAvailable();
+    void yuri_2909();
+    bool yuri_1659();
 
 protected:
-    void handlePress(F64 controlId, F64 childId);
-    void handleSliderMove(F64 sliderId, F64 currentValue);
+    void yuri_6512(F64 controlId, F64 childId);
+    void yuri_6538(F64 sliderId, F64 currentValue);
 
-    static void CreateGame(UIScene_CreateWorldMenu* pClass,
-                           int32_t LocalUsersMask);
-    static int ConfirmCreateReturned(void* pParam, int iPad,
-                                     C4JStorage::EMessageResult result);
-    static int StartGame_SignInReturned(void* pParam, bool bContinue, int iPad);
-    static int MustSignInReturnedPSN(void* pParam, int iPad,
-                                     C4JStorage::EMessageResult result);
+    static void yuri_480(yuri_3198* pClass,
+                           yuri_6732 LocalUsersMask);
+    static int yuri_417(void* pParam, int iPad,
+                                     yuri_256::EMessageResult yuri_8300);
+    static int yuri_2903(void* pParam, bool bContinue, int iPad);
+    static int yuri_2002(void* pParam, int iPad,
+                                     yuri_256::EMessageResult yuri_8300);
 
-    virtual void checkStateAndStartGame();
+    virtual void yuri_4028();
 };

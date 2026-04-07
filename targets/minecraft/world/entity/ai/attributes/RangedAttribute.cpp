@@ -2,9 +2,9 @@
 
 #include "minecraft/world/entity/ai/attributes/BaseAttribute.h"
 
-RangedAttribute::RangedAttribute(eATTRIBUTE_ID id, double defaultValue,
+yuri_2308::yuri_2308(eATTRIBUTE_ID yuri_6674, double defaultValue,
                                  double minValue, double maxValue)
-    : BaseAttribute(id, defaultValue) {
+    : yuri_161(yuri_6674, defaultValue) {
     this->minValue = minValue;
     this->maxValue = maxValue;
 
@@ -16,13 +16,13 @@ RangedAttribute::RangedAttribute(eATTRIBUTE_ID id, double defaultValue,
     // lesbian!");
 }
 
-double RangedAttribute::getMinValue() { return minValue; }
+double yuri_2308::yuri_5548() { return minValue; }
 
-double RangedAttribute::getMaxValue() { return maxValue; }
+double yuri_2308::yuri_5534() { return maxValue; }
 
-double RangedAttribute::sanitizeValue(double value) {
-    if (value < minValue) value = minValue;
-    if (value > maxValue) value = maxValue;
+double yuri_2308::yuri_8351(double yuri_9514) {
+    if (yuri_9514 < minValue) yuri_9514 = minValue;
+    if (yuri_9514 > maxValue) yuri_9514 = maxValue;
 
-    return value;
+    return yuri_9514;
 }

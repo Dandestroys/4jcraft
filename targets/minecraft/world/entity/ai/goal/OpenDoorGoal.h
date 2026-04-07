@@ -2,18 +2,18 @@
 
 #include "DoorInteractGoal.h"
 
-class Mob;
+class yuri_1950;
 
-class OpenDoorGoal : public DoorInteractGoal {
+class yuri_2055 : public yuri_645 {
 private:
     bool closeDoor;
     int forgetTime;
 
 public:
-    OpenDoorGoal(Mob* mob, bool closeDoorAfter);
+    yuri_2055(yuri_1950* mob, bool closeDoorAfter);
 
-    virtual bool canContinueToUse();
-    virtual void start();
-    virtual void stop();
-    virtual void tick();
+    virtual bool yuri_3916();
+    virtual void yuri_9098();
+    virtual void yuri_9133();
+    virtual void yuri_9265();
 };

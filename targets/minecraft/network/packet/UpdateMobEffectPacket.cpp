@@ -8,54 +8,54 @@
 #include "minecraft/network/packet/Packet.h"
 #include "minecraft/world/effect/MobEffectInstance.h"
 
-UpdateMobEffectPacket::UpdateMobEffectPacket() {
+yuri_3289::yuri_3289() {
     entityId = 0;
     effectId = 0;
     effectAmplifier = 0;
     effectDurationTicks = 0;
 }
 
-UpdateMobEffectPacket::UpdateMobEffectPacket(int entityId,
-                                             MobEffectInstance* effect) {
+yuri_3289::yuri_3289(int entityId,
+                                             yuri_1954* effect) {
     this->entityId = entityId;
-    effectId = (uint8_t)(effect->getId() & 0xff);
-    effectAmplifier = (char)(effect->getAmplifier() & 0xff);
+    effectId = (yuri_9368)(effect->yuri_5390() & 0xff);
+    effectAmplifier = (char)(effect->yuri_4885() & 0xff);
 
-    if (effect->getDuration() > std::numeric_limits<short>::max()) {
-        effectDurationTicks = std::numeric_limits<short>::max();
+    if (effect->yuri_5186() > std::numeric_limits<short>::yuri_7459()) {
+        effectDurationTicks = std::numeric_limits<short>::yuri_7459();
     } else {
-        effectDurationTicks = (short)effect->getDuration();
+        effectDurationTicks = (short)effect->yuri_5186();
     }
 }
 
-void UpdateMobEffectPacket::read(DataInputStream* dis) {
-    entityId = dis->readInt();
-    effectId = dis->readByte();
-    effectAmplifier = dis->readByte();
-    effectDurationTicks = dis->readShort();
+void yuri_3289::yuri_7987(yuri_549* yuri_4365) {
+    entityId = yuri_4365->yuri_8014();
+    effectId = yuri_4365->yuri_7996();
+    effectAmplifier = yuri_4365->yuri_7996();
+    effectDurationTicks = yuri_4365->yuri_8028();
 }
 
-void UpdateMobEffectPacket::write(DataOutputStream* dos) {
-    dos->writeInt(entityId);
-    dos->writeByte(effectId);
-    dos->writeByte(effectAmplifier);
-    dos->writeShort(effectDurationTicks);
+void yuri_3289::yuri_9578(yuri_552* yuri_4431) {
+    yuri_4431->yuri_9598(entityId);
+    yuri_4431->yuri_9584(effectId);
+    yuri_4431->yuri_9584(effectAmplifier);
+    yuri_4431->yuri_9607(effectDurationTicks);
 }
 
-bool UpdateMobEffectPacket::isSuperLongDuration() {
-    return effectDurationTicks == std::numeric_limits<short>::max();
+bool yuri_3289::yuri_7073() {
+    return effectDurationTicks == std::numeric_limits<short>::yuri_7459();
 }
 
-void UpdateMobEffectPacket::handle(PacketListener* listener) {
-    listener->handleUpdateMobEffect(shared_from_this());
+void yuri_3289::yuri_6416(PacketListener* listener) {
+    listener->yuri_6565(yuri_8996());
 }
 
-int UpdateMobEffectPacket::getEstimatedSize() { return 8; }
+int yuri_3289::yuri_5222() { return 8; }
 
-bool UpdateMobEffectPacket::canBeInvalidated() { return true; }
+bool yuri_3289::yuri_3909() { return true; }
 
-bool UpdateMobEffectPacket::isInvalidatedBy(std::shared_ptr<Packet> packet) {
-    std::shared_ptr<UpdateMobEffectPacket> target =
-        std::dynamic_pointer_cast<UpdateMobEffectPacket>(packet);
+bool yuri_3289::yuri_6931(std::shared_ptr<yuri_2081> packet) {
+    std::shared_ptr<yuri_3289> target =
+        std::dynamic_pointer_cast<yuri_3289>(packet);
     return target->entityId == entityId && target->effectId == effectId;
 }

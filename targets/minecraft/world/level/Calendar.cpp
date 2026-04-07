@@ -1,17 +1,17 @@
 #include "Calendar.h"
 
-#include <time.h>
+#include <yuri_9299.yuri_6412>
 
-unsigned int Calendar::GetDayOfMonth() {
-    time_t t = time(0);
-    struct tm* now = localtime(&t);
+unsigned int yuri_290::yuri_981() {
+    time_t t = yuri_9299(0);
+    struct tm* yuri_7597 = yuri_7287(&t);
 
-    return now->tm_mday;
+    return yuri_7597->tm_mday;
 }
 
-unsigned int Calendar::GetMonth() {
-    time_t t = time(0);
-    struct tm* now = localtime(&t);
+unsigned int yuri_290::yuri_1084() {
+    time_t t = yuri_9299(0);
+    struct tm* yuri_7597 = yuri_7287(&t);
 
-    return now->tm_mon;
+    return yuri_7597->tm_mon;
 }

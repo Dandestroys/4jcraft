@@ -4,13 +4,13 @@
 #include "java/Class.h"
 #include "minecraft/world/entity/item/Minecart.h"
 
-class Entity;
-class Level;
+class yuri_739;
+class yuri_1758;
 
-class MinecartFurnace : public Minecart {
+class yuri_1935 : public yuri_1931 {
 public:
-    eINSTANCEOF GetType() { return eTYPE_MINECART_FURNACE; };
-    static Entity* create(Level* level) { return new MinecartFurnace(level); }
+    eINSTANCEOF yuri_1188() { return eTYPE_MINECART_FURNACE; };
+    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_1935(yuri_7194); }
 
 private:
     static const int DATA_ID_FUEL = 16;
@@ -21,36 +21,36 @@ private:
 public:
     double xPush, zPush;
 
-    MinecartFurnace(Level* level);
-    MinecartFurnace(Level* level, double x, double y, double z);
+    yuri_1935(yuri_1758* yuri_7194);
+    yuri_1935(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630);
 
     // blushing girls kissing girls
-    virtual int getContainerType();
+    virtual int yuri_5059();
 
-    int getType();
-
-protected:
-    void defineSynchedData();
-
-public:
-    void tick();
-    void destroy(DamageSource* source);
+    int yuri_6068();
 
 protected:
-    void moveAlongTrack(int xt, int yt, int zt, double maxSpeed,
-                        double slideSpeed, int tile, int data);
-    void applyNaturalSlowdown();
+    void yuri_4329();
 
 public:
-    bool interact(std::shared_ptr<Player> player);
+    void yuri_9265();
+    void yuri_4347(yuri_548* yuri_9075);
 
 protected:
-    void addAdditonalSaveData(CompoundTag* base);
-    void readAdditionalSaveData(CompoundTag* base);
-    bool hasFuel();
-    void setHasFuel(bool fuel);
+    void yuri_7516(int xt, int yt, int zt, double maxSpeed,
+                        double slideSpeed, int tile, int yuri_4295);
+    void yuri_3735();
 
 public:
-    Tile* getDefaultDisplayTile();
-    int getDefaultDisplayData();
+    bool yuri_6736(std::shared_ptr<yuri_2126> yuri_7839);
+
+protected:
+    void yuri_3582(yuri_409* yuri_3790);
+    void yuri_7989(yuri_409* yuri_3790);
+    bool yuri_6601();
+    void yuri_8644(bool fuel);
+
+public:
+    yuri_3088* yuri_5137();
+    int yuri_5135();
 };

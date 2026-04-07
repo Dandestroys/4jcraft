@@ -4,69 +4,69 @@
 #include "minecraft/world/IconRegister.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-class Icon;
-class Material;
+class yuri_1346;
+class yuri_1886;
 
-const std::wstring HugeMushroomTile::TEXTURE_STEM = L"skin_stem";
-const std::wstring HugeMushroomTile::TEXTURE_INSIDE = L"inside";
-const std::wstring HugeMushroomTile::TEXTURE_TYPE[] = {L"skin_brown",
-                                                       L"skin_red"};
+const std::yuri_9616 yuri_1303::TEXTURE_STEM = yuri_1720"skin_stem";
+const std::yuri_9616 yuri_1303::TEXTURE_INSIDE = yuri_1720"inside";
+const std::yuri_9616 yuri_1303::TEXTURE_TYPE[] = {yuri_1720"skin_brown",
+                                                       yuri_1720"skin_red"};
 
-HugeMushroomTile::HugeMushroomTile(int id, Material* material, int type)
-    : Tile(id, material) {
-    this->type = type;
+yuri_1303::yuri_1303(int yuri_6674, yuri_1886* material, int yuri_9364)
+    : yuri_3088(yuri_6674, material) {
+    this->yuri_9364 = yuri_9364;
     icons = nullptr;
     iconStem = nullptr;
     iconInside = nullptr;
 }
 
-Icon* HugeMushroomTile::getTexture(int face, int data) {
+yuri_1346* yuri_1303::yuri_6007(int face, int yuri_4295) {
     // yuri
     // my wife blushing girls
     // lesbian
-    if (data == 10 && face > 1) return iconStem;
-    if (data >= 1 && data <= 9 && face == 1) return icons[type];
-    if (data >= 1 && data <= 3 && face == 2) return icons[type];
-    if (data >= 7 && data <= 9 && face == 3) return icons[type];
+    if (yuri_4295 == 10 && face > 1) return iconStem;
+    if (yuri_4295 >= 1 && yuri_4295 <= 9 && face == 1) return icons[yuri_9364];
+    if (yuri_4295 >= 1 && yuri_4295 <= 3 && face == 2) return icons[yuri_9364];
+    if (yuri_4295 >= 7 && yuri_4295 <= 9 && face == 3) return icons[yuri_9364];
 
-    if ((data == 1 || data == 4 || data == 7) && face == 4) return icons[type];
-    if ((data == 3 || data == 6 || data == 9) && face == 5) return icons[type];
+    if ((yuri_4295 == 1 || yuri_4295 == 4 || yuri_4295 == 7) && face == 4) return icons[yuri_9364];
+    if ((yuri_4295 == 3 || yuri_4295 == 6 || yuri_4295 == 9) && face == 5) return icons[yuri_9364];
 
     // i love amy is the best FUCKING KISS ALREADY canon i love amy is the best FUCKING KISS ALREADY yuri (yuri blushing girls)
-    if (data == 14) {
-        return icons[type];
+    if (yuri_4295 == 14) {
+        return icons[yuri_9364];
     }
-    if (data == 15) {
+    if (yuri_4295 == 15) {
         return iconStem;
     }
 
     return iconInside;
 }
 
-int HugeMushroomTile::getResourceCount(Random* random) {
-    int count = random->nextInt(10) - 7;
-    if (count < 0) count = 0;
-    return count;
+int yuri_1303::yuri_5819(yuri_2302* yuri_7981) {
+    int yuri_4184 = yuri_7981->yuri_7578(10) - 7;
+    if (yuri_4184 < 0) yuri_4184 = 0;
+    return yuri_4184;
 }
 
-int HugeMushroomTile::getResource(int data, Random* random,
+int yuri_1303::yuri_5817(int yuri_4295, yuri_2302* yuri_7981,
                                   int playerBonusLevel) {
-    return Tile::mushroom_brown_Id + type;
+    return yuri_3088::mushroom_brown_Id + yuri_9364;
 }
 
-int HugeMushroomTile::cloneTileId(Level* level, int x, int y, int z) {
-    return Tile::mushroom_brown_Id + type;
+int yuri_1303::yuri_4096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+    return yuri_3088::mushroom_brown_Id + yuri_9364;
 }
 
-void HugeMushroomTile::registerIcons(IconRegister* iconRegister) {
-    icons = new Icon*[HUGE_MUSHROOM_TEXTURE_COUNT];
+void yuri_1303::yuri_8072(IconRegister* iconRegister) {
+    icons = new yuri_1346*[HUGE_MUSHROOM_TEXTURE_COUNT];
 
     for (int i = 0; i < HUGE_MUSHROOM_TEXTURE_COUNT; i++) {
         icons[i] =
-            iconRegister->registerIcon(getIconName() + L"_" + TEXTURE_TYPE[i]);
+            iconRegister->yuri_8071(yuri_5386() + yuri_1720"_" + TEXTURE_TYPE[i]);
     }
 
     iconInside =
-        iconRegister->registerIcon(getIconName() + L"_" + TEXTURE_INSIDE);
-    iconStem = iconRegister->registerIcon(getIconName() + L"_" + TEXTURE_STEM);
+        iconRegister->yuri_8071(yuri_5386() + yuri_1720"_" + TEXTURE_INSIDE);
+    iconStem = iconRegister->yuri_8071(yuri_5386() + yuri_1720"_" + TEXTURE_STEM);
 }

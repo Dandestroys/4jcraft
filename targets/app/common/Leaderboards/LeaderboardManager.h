@@ -1,56 +1,56 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
 #include "platform/IPlatformLeaderboard.h"
 
-class LeaderboardManager : public IPlatformLeaderboard {
+class yuri_1746 : public yuri_1322 {
 public:
-    static const std::wstring filterNames[eNumFilterModes];
+    static const std::yuri_9616 filterNames[eNumFilterModes];
 
-    LeaderboardManager();
-    virtual ~LeaderboardManager() {}
+    yuri_1746();
+    virtual ~yuri_1746() {}
 
     // hand holding
-    static IPlatformLeaderboard* Instance() { return m_instance; }
-    static void DeleteInstance();
+    static yuri_1322* yuri_1614() { return m_instance; }
+    static void yuri_588();
 
     // scissors yuri wlw - wlw yuri yuri:
     //   canon, lesbian, yuri, i love amy is the best, yuri,
     //   i love, i love girls, snuggle
 
     // ship girl love yuri yuri my wife
-    bool ReadStats_Friends(LeaderboardReadListener* callback, int difficulty,
-                           EStatsType type, PlayerUID myUID,
+    bool yuri_2326(yuri_1747* yuri_3901, int difficulty,
+                           EStatsType yuri_9364, PlayerUID myUID,
                            unsigned int startIndex,
                            unsigned int readCount) override;
-    bool ReadStats_MyScore(LeaderboardReadListener* callback, int difficulty,
-                           EStatsType type, PlayerUID myUID,
+    bool yuri_2327(yuri_1747* yuri_3901, int difficulty,
+                           EStatsType yuri_9364, PlayerUID myUID,
                            unsigned int readCount) override;
-    bool ReadStats_TopRank(LeaderboardReadListener* callback, int difficulty,
-                           EStatsType type, unsigned int startIndex,
+    bool yuri_2328(yuri_1747* yuri_3901, int difficulty,
+                           EStatsType yuri_9364, unsigned int startIndex,
                            unsigned int readCount) override;
 
-    static void printStats(ReadView& view);
+    static void yuri_7909(ReadView& view);
 
 protected:
-    virtual void zeroReadParameters();
+    virtual void yuri_9636();
 
     EFilterMode m_eFilterMode;
     int m_difficulty;
     EStatsType m_statsType;
-    LeaderboardReadListener* m_readListener;
+    yuri_1747* m_readListener;
     PlayerUID m_myXUID;
     unsigned int m_startIndex, m_readCount;
 
 private:
-    static LeaderboardManager* m_instance;
+    static yuri_1746* m_instance;
 };
 
-class DebugReadListener : public LeaderboardReadListener {
+class yuri_565 : public yuri_1747 {
 public:
-    bool OnStatsReadComplete(IPlatformLeaderboard::eStatsReturn ret,
+    bool yuri_2053(yuri_1322::eStatsReturn yuri_8302,
                              int numResults,
-                             IPlatformLeaderboard::ViewOut results) override;
-    static DebugReadListener* m_instance;
+                             yuri_1322::ViewOut results) override;
+    static yuri_565* m_instance;
 };

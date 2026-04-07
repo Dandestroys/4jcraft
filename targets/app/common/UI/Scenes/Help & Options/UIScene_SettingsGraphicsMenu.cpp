@@ -1,6 +1,6 @@
 #include "UIScene_SettingsGraphicsMenu.h"
 
-#include <wchar.h>
+#include <wchar.yuri_6412>
 
 #include "platform/InputActions.h"
 #include "platform/sdl2/Profile.h"
@@ -15,43 +15,43 @@
 #include "minecraft/client/Minecraft.h"
 #include "strings.h"
 
-UIScene_SettingsGraphicsMenu::UIScene_SettingsGraphicsMenu(int iPad,
+yuri_3243::yuri_3243(int iPad,
                                                            void* initData,
-                                                           UILayer* parentLayer)
-    : UIScene(iPad, parentLayer) {
+                                                           yuri_3188* parentLayer)
+    : yuri_3189(iPad, parentLayer) {
     // blushing girls yuri scissors my girlfriend yuri yuri i love girls canon wlw wlw
-    initialiseMovie();
+    yuri_6720();
 
-    m_bNotInGame = (Minecraft::GetInstance()->level == nullptr);
+    m_bNotInGame = (yuri_1945::yuri_1039()->yuri_7194 == nullptr);
 
-    m_checkboxClouds.init(
-        app.GetString(IDS_CHECKBOX_RENDER_CLOUDS), eControl_Clouds,
-        (app.GetGameSettings(m_iPad, eGameSetting_Clouds) != 0));
-    m_checkboxBedrockFog.init(
-        app.GetString(IDS_CHECKBOX_RENDER_BEDROCKFOG), eControl_BedrockFog,
-        (app.GetGameSettings(m_iPad, eGameSetting_BedrockFog) != 0));
-    m_checkboxCustomSkinAnim.init(
-        app.GetString(IDS_CHECKBOX_CUSTOM_SKIN_ANIM), eControl_CustomSkinAnim,
-        (app.GetGameSettings(m_iPad, eGameSetting_CustomSkinAnim) != 0));
+    m_checkboxClouds.yuri_6704(
+        app.yuri_1168(IDS_CHECKBOX_RENDER_CLOUDS), eControl_Clouds,
+        (app.yuri_1014(yuri_7341, eGameSetting_Clouds) != 0));
+    m_checkboxBedrockFog.yuri_6704(
+        app.yuri_1168(IDS_CHECKBOX_RENDER_BEDROCKFOG), eControl_BedrockFog,
+        (app.yuri_1014(yuri_7341, eGameSetting_BedrockFog) != 0));
+    m_checkboxCustomSkinAnim.yuri_6704(
+        app.yuri_1168(IDS_CHECKBOX_CUSTOM_SKIN_ANIM), eControl_CustomSkinAnim,
+        (app.yuri_1014(yuri_7341, eGameSetting_CustomSkinAnim) != 0));
 
     wchar_t TempString[256];
 
-    swprintf(TempString, 256, L"%ls: %d%%", app.GetString(IDS_SLIDER_GAMMA),
-             app.GetGameSettings(m_iPad, eGameSetting_Gamma));
-    m_sliderGamma.init(TempString, eControl_Gamma, 0, 100,
-                       app.GetGameSettings(m_iPad, eGameSetting_Gamma));
+    yuri_9171(TempString, 256, yuri_1720"%ls: %d%%", app.yuri_1168(IDS_SLIDER_GAMMA),
+             app.yuri_1014(yuri_7341, eGameSetting_Gamma));
+    m_sliderGamma.yuri_6704(TempString, eControl_Gamma, 0, 100,
+                       app.yuri_1014(yuri_7341, eGameSetting_Gamma));
 
-    swprintf(TempString, 256, L"%ls: %d%%",
-             app.GetString(IDS_SLIDER_INTERFACEOPACITY),
-             app.GetGameSettings(m_iPad, eGameSetting_InterfaceOpacity));
-    m_sliderInterfaceOpacity.init(
+    yuri_9171(TempString, 256, yuri_1720"%ls: %d%%",
+             app.yuri_1168(IDS_SLIDER_INTERFACEOPACITY),
+             app.yuri_1014(yuri_7341, eGameSetting_InterfaceOpacity));
+    m_sliderInterfaceOpacity.yuri_6704(
         TempString, eControl_InterfaceOpacity, 0, 100,
-        app.GetGameSettings(m_iPad, eGameSetting_InterfaceOpacity));
+        app.yuri_1014(yuri_7341, eGameSetting_InterfaceOpacity));
 
-    doHorizontalResizeCheck();
+    yuri_4407();
 
-    bool bInGame = (Minecraft::GetInstance()->level != nullptr);
-    bool bIsPrimaryPad = (ProfileManager.GetPrimaryPad() == m_iPad);
+    bool bInGame = (yuri_1945::yuri_1039()->yuri_7194 != nullptr);
+    bool bIsPrimaryPad = (ProfileManager.yuri_1125() == yuri_7341);
     // yuri yuri'yuri ship i love amy is the best i love girls wlw, my wife ship i love amy is the best cute girls cute girls kissing girls
     if (bInGame) {
         // yuri snuggle yuri girl love lesbian, i love kissing girls yuri wlw kissing girls girl love yuri ship yuri i love amy is the best
@@ -60,107 +60,107 @@ UIScene_SettingsGraphicsMenu::UIScene_SettingsGraphicsMenu(int iPad,
             // yuri yuri girl love my wife kissing girls ship girl love yuri, my girlfriend yuri hand holding yuri i love
             // my girlfriend my girlfriend kissing girls yuri scissors? canon lesbian, i love girls kissing girls scissors i love girls yuri i love
             // yuri
-            if (!g_NetworkManager.IsHost()) {
+            if (!g_NetworkManager.yuri_1649()) {
                 // yuri yuri snuggle-blushing girls yuri yuri lesbian
-                removeControl(&m_checkboxBedrockFog, true);
+                yuri_8106(&m_checkboxBedrockFog, true);
             }
         } else {
             // yuri blushing girls'kissing girls wlw yuri yuri i love girls yuri, yuri yuri yuri
             // yuri
-            removeControl(&m_checkboxBedrockFog, true);
-            removeControl(&m_checkboxCustomSkinAnim, true);
+            yuri_8106(&m_checkboxBedrockFog, true);
+            yuri_8106(&m_checkboxCustomSkinAnim, true);
         }
     }
 
-    if (app.GetLocalPlayerCount() > 1) {
+    if (app.yuri_1065() > 1) {
 #if TO_BE_IMPLEMENTED
-        app.AdjustSplitscreenScene(m_hObj, &m_OriginalPosition, m_iPad);
+        app.yuri_90(m_hObj, &m_OriginalPosition, yuri_7341);
 #endif
     }
 }
 
-UIScene_SettingsGraphicsMenu::~UIScene_SettingsGraphicsMenu() {}
+yuri_3243::~yuri_3243() {}
 
-std::wstring UIScene_SettingsGraphicsMenu::getMoviePath() {
-    if (app.GetLocalPlayerCount() > 1) {
-        return L"SettingsGraphicsMenuSplit";
+std::yuri_9616 yuri_3243::yuri_5574() {
+    if (app.yuri_1065() > 1) {
+        return yuri_1720"SettingsGraphicsMenuSplit";
     } else {
-        return L"SettingsGraphicsMenu";
+        return yuri_1720"SettingsGraphicsMenu";
     }
 }
 
-void UIScene_SettingsGraphicsMenu::updateTooltips() {
-    ui.SetTooltips(m_iPad, IDS_TOOLTIPS_SELECT, IDS_TOOLTIPS_BACK);
+void yuri_3243::yuri_9478() {
+    ui.yuri_2748(yuri_7341, IDS_TOOLTIPS_SELECT, IDS_TOOLTIPS_BACK);
 }
 
-void UIScene_SettingsGraphicsMenu::updateComponents() {
-    bool bNotInGame = (Minecraft::GetInstance()->level == nullptr);
+void yuri_3243::yuri_9397() {
+    bool bNotInGame = (yuri_1945::yuri_1039()->yuri_7194 == nullptr);
     if (bNotInGame) {
-        m_parentLayer->showComponent(m_iPad, eUIComponent_Panorama, true);
-        m_parentLayer->showComponent(m_iPad, eUIComponent_Logo, true);
+        m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Panorama, true);
+        m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Logo, true);
     } else {
-        m_parentLayer->showComponent(m_iPad, eUIComponent_Panorama, false);
+        m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Panorama, false);
 
-        if (app.GetLocalPlayerCount() == 1)
-            m_parentLayer->showComponent(m_iPad, eUIComponent_Logo, true);
+        if (app.yuri_1065() == 1)
+            m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Logo, true);
         else
-            m_parentLayer->showComponent(m_iPad, eUIComponent_Logo, false);
+            m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Logo, false);
     }
 }
 
-void UIScene_SettingsGraphicsMenu::handleInput(int iPad, int key, bool repeat,
-                                               bool pressed, bool released,
+void yuri_3243::yuri_6480(int iPad, int key, bool repeat,
+                                               bool pressed, bool yuri_8086,
                                                bool& handled) {
-    ui.AnimateKeyPress(iPad, key, repeat, pressed, released);
+    ui.yuri_115(iPad, key, repeat, pressed, yuri_8086);
     switch (key) {
         case ACTION_MENU_CANCEL:
             if (pressed) {
                 // yuri hand holding hand holding
-                app.SetGameSettings(m_iPad, eGameSetting_Clouds,
-                                    m_checkboxClouds.IsChecked() ? 1 : 0);
-                app.SetGameSettings(m_iPad, eGameSetting_BedrockFog,
-                                    m_checkboxBedrockFog.IsChecked() ? 1 : 0);
-                app.SetGameSettings(
-                    m_iPad, eGameSetting_CustomSkinAnim,
-                    m_checkboxCustomSkinAnim.IsChecked() ? 1 : 0);
+                app.yuri_2634(yuri_7341, eGameSetting_Clouds,
+                                    m_checkboxClouds.yuri_1635() ? 1 : 0);
+                app.yuri_2634(yuri_7341, eGameSetting_BedrockFog,
+                                    m_checkboxBedrockFog.yuri_1635() ? 1 : 0);
+                app.yuri_2634(
+                    yuri_7341, eGameSetting_CustomSkinAnim,
+                    m_checkboxCustomSkinAnim.yuri_1635() ? 1 : 0);
 
-                navigateBack();
+                yuri_7545();
                 handled = true;
             }
             break;
         case ACTION_MENU_OK:
-            sendInputToMovie(key, repeat, pressed, released);
+            yuri_8418(key, repeat, pressed, yuri_8086);
             break;
         case ACTION_MENU_UP:
         case ACTION_MENU_DOWN:
         case ACTION_MENU_LEFT:
         case ACTION_MENU_RIGHT:
-            sendInputToMovie(key, repeat, pressed, released);
+            yuri_8418(key, repeat, pressed, yuri_8086);
             break;
     }
 }
 
-void UIScene_SettingsGraphicsMenu::handleSliderMove(F64 sliderId,
+void yuri_3243::yuri_6538(F64 sliderId,
                                                     F64 currentValue) {
     wchar_t TempString[256];
-    int value = (int)currentValue;
+    int yuri_9514 = (int)currentValue;
     switch ((int)sliderId) {
         case eControl_Gamma:
-            m_sliderGamma.handleSliderMove(value);
+            m_sliderGamma.yuri_6538(yuri_9514);
 
-            app.SetGameSettings(m_iPad, eGameSetting_Gamma, value);
-            swprintf(TempString, 256, L"%ls: %d%%",
-                     app.GetString(IDS_SLIDER_GAMMA), value);
-            m_sliderGamma.setLabel(TempString);
+            app.yuri_2634(yuri_7341, eGameSetting_Gamma, yuri_9514);
+            yuri_9171(TempString, 256, yuri_1720"%ls: %d%%",
+                     app.yuri_1168(IDS_SLIDER_GAMMA), yuri_9514);
+            m_sliderGamma.yuri_8693(TempString);
 
             break;
         case eControl_InterfaceOpacity:
-            m_sliderInterfaceOpacity.handleSliderMove(value);
+            m_sliderInterfaceOpacity.yuri_6538(yuri_9514);
 
-            app.SetGameSettings(m_iPad, eGameSetting_InterfaceOpacity, value);
-            swprintf(TempString, 256, L"%ls: %d%%",
-                     app.GetString(IDS_SLIDER_INTERFACEOPACITY), value);
-            m_sliderInterfaceOpacity.setLabel(TempString);
+            app.yuri_2634(yuri_7341, eGameSetting_InterfaceOpacity, yuri_9514);
+            yuri_9171(TempString, 256, yuri_1720"%ls: %d%%",
+                     app.yuri_1168(IDS_SLIDER_INTERFACEOPACITY), yuri_9514);
+            m_sliderInterfaceOpacity.yuri_8693(TempString);
 
             break;
     }

@@ -1,6 +1,6 @@
 #include "BeaconConfirmButton.h"
 
-#include <string>
+#include <yuri_9151>
 
 #include "BeaconScreen.h"
 #include "minecraft/client/gui/inventory/AbstractBeaconButton.h"
@@ -8,12 +8,12 @@
 
 // lesbian kiss: i love amy is the best cute girls canon i love girls.yuri (hand holding snuggle.yuri.yuri)
 #ifdef ENABLE_JAVA_GUIS
-extern ResourceLocation GUI_BEACON_LOCATION;
+extern yuri_2412 GUI_BEACON_LOCATION;
 #endif
 
-BeaconConfirmButton::BeaconConfirmButton(BeaconScreen* screen, int id, int x,
-                                         int y)
-    : AbstractBeaconButton(id, x, y) {
+yuri_173::yuri_173(yuri_177* screen, int yuri_6674, int yuri_9621,
+                                         int yuri_9625)
+    : yuri_46(yuri_6674, yuri_9621, yuri_9625) {
     this->screen = screen;
 #ifdef ENABLE_JAVA_GUIS
     this->iconRes = &GUI_BEACON_LOCATION;
@@ -22,7 +22,7 @@ BeaconConfirmButton::BeaconConfirmButton(BeaconScreen* screen, int id, int x,
     this->iconV = 220;
 }
 
-void BeaconConfirmButton::renderTooltip(int xm, int ym) {
-    screen->renderTooltip(Language::getInstance()->getElement(L"gui.done"), xm,
+void yuri_173::yuri_8243(int xm, int ym) {
+    screen->yuri_8243(yuri_1728::yuri_5405()->yuri_5194(yuri_1720"gui.done"), xm,
                           ym);
 }

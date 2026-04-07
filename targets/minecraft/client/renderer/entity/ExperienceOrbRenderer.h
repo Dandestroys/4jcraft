@@ -1,18 +1,18 @@
 #pragma once
 #include "EntityRenderer.h"
 
-class ResourceLocation;
+class yuri_2412;
 
-class ExperienceOrbRenderer : public EntityRenderer {
+class yuri_779 : public yuri_746 {
 private:
-    static ResourceLocation XP_ORB_LOCATION;
+    static yuri_2412 XP_ORB_LOCATION;
 
 public:
-    ExperienceOrbRenderer();
+    yuri_779();
 
-    virtual void render(std::shared_ptr<Entity> _orb, double x, double y,
-                        double z, float rot, float a);
-    void blit(int x, int y, int sx, int sy, int w, int h);
+    virtual void yuri_8158(std::shared_ptr<yuri_739> _orb, double yuri_9621, double yuri_9625,
+                        double yuri_9630, float rot, float yuri_3565);
+    void yuri_3822(int yuri_9621, int yuri_9625, int sx, int sy, int yuri_9535, int yuri_6412);
 
-    virtual ResourceLocation* getTextureLocation(std::shared_ptr<Entity> mob);
+    virtual yuri_2412* yuri_6012(std::shared_ptr<yuri_739> mob);
 };

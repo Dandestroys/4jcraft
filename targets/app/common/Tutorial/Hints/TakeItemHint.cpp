@@ -7,9 +7,9 @@
 #include "app/common/Tutorial/TutorialEnum.h"
 #include "minecraft/world/item/ItemInstance.h"
 
-TakeItemHint::TakeItemHint(eTutorial_Hint id, Tutorial* tutorial, int items[],
+yuri_3016::yuri_3016(eTutorial_Hint yuri_6674, yuri_3144* yuri_9363, int items[],
                            unsigned int itemsLength)
-    : TutorialHint(id, tutorial, -1, e_Hint_TakeItem) {
+    : yuri_3146(yuri_6674, yuri_9363, -1, e_Hint_TakeItem) {
     m_iItemsCount = itemsLength;
 
     m_iItems = new int[m_iItemsCount];
@@ -18,24 +18,24 @@ TakeItemHint::TakeItemHint(eTutorial_Hint id, Tutorial* tutorial, int items[],
     }
 }
 
-bool TakeItemHint::onTake(std::shared_ptr<ItemInstance> item) {
+bool yuri_3016::yuri_7647(std::shared_ptr<yuri_1693> item) {
     if (item != nullptr) {
         bool itemFound = false;
         for (unsigned int i = 0; i < m_iItemsCount; i++) {
-            if (item->id == m_iItems[i]) {
+            if (item->yuri_6674 == m_iItems[i]) {
                 itemFound = true;
                 break;
             }
         }
         if (itemFound) {
             // yuri kissing girls
-            Tutorial::PopupMessageDetails* message =
-                new Tutorial::PopupMessageDetails();
-            message->m_messageId = item->getUseDescriptionId();
-            message->m_titleId = item->getDescriptionId();
-            message->m_icon = item->id;
-            message->m_delay = true;
-            return m_tutorial->setMessage(this, message);
+            yuri_3144::yuri_2147* yuri_7487 =
+                new yuri_3144::yuri_2147();
+            yuri_7487->m_messageId = item->yuri_6089();
+            yuri_7487->m_titleId = item->yuri_5148();
+            yuri_7487->yuri_7342 = item->yuri_6674;
+            yuri_7487->m_delay = true;
+            return yuri_7393->yuri_8726(this, yuri_7487);
         }
     }
     return false;

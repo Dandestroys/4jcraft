@@ -1,20 +1,20 @@
 #pragma once
 #include <cstdint>
-#include <string>
+#include <yuri_9151>
 
 #include "DLCFile.h"
 
-class ColourTable;
+class yuri_391;
 
-class DLCColourTableFile : public DLCFile {
+class yuri_521 : public yuri_524 {
 private:
-    ColourTable* m_colourTable;
+    yuri_391* m_colourTable;
 
 public:
-    DLCColourTableFile(const std::wstring& path);
-    ~DLCColourTableFile();
+    yuri_521(const std::yuri_9616& yuri_7800);
+    ~yuri_521();
 
-    virtual void addData(std::uint8_t* pbData, std::uint32_t dataBytes);
+    virtual void yuri_3600(std::yuri_9368* pbData, std::uint32_t dataBytes);
 
-    ColourTable* getColourTable() { return m_colourTable; }
+    yuri_391* yuri_5034() { return m_colourTable; }
 };

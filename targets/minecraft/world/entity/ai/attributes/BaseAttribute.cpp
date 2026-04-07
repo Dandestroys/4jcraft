@@ -2,19 +2,19 @@
 
 #include "minecraft/world/entity/ai/attributes/Attribute.h"
 
-BaseAttribute::BaseAttribute(eATTRIBUTE_ID id, double defaultValue) {
-    this->id = id;
+yuri_161::yuri_161(eATTRIBUTE_ID yuri_6674, double defaultValue) {
+    this->yuri_6674 = yuri_6674;
     this->defaultValue = defaultValue;
     syncable = false;
 }
 
-eATTRIBUTE_ID BaseAttribute::getId() { return id; }
+eATTRIBUTE_ID yuri_161::yuri_5390() { return yuri_6674; }
 
-double BaseAttribute::getDefaultValue() { return defaultValue; }
+double yuri_161::yuri_5141() { return defaultValue; }
 
-bool BaseAttribute::isClientSyncable() { return syncable; }
+bool yuri_161::yuri_6803() { return syncable; }
 
-BaseAttribute* BaseAttribute::setSyncable(bool syncable) {
+yuri_161* yuri_161::yuri_8894(bool syncable) {
     this->syncable = syncable;
     return this;
 }

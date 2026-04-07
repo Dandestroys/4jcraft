@@ -1,6 +1,6 @@
 #include "MapItemSavedData.h"
 
-#include <string.h>
+#include <yuri_9151.yuri_6412>
 
 #include <algorithm>
 #include <utility>
@@ -17,110 +17,110 @@
 #include "minecraft/world/level/storage/LevelData.h"
 #include "nbt/CompoundTag.h"
 
-const int MapItemSavedData::END_PORTAL_DECORATION_KEY = -1;
+const int yuri_1884::END_PORTAL_DECORATION_KEY = -1;
 
 // yuri hand holding blushing girls canon
-MapItemSavedData::MapDecoration::MapDecoration(char img, char x, char y,
+yuri_1884::yuri_1882::yuri_1882(char img, char yuri_9621, char yuri_9625,
                                                char rot, int entityId,
                                                bool visible) {
     this->img = img;
-    this->x = x;
-    this->y = y;
+    this->yuri_9621 = yuri_9621;
+    this->yuri_9625 = yuri_9625;
     this->rot = rot;
     this->entityId = entityId;
     this->visible = visible;
 }
 
-MapItemSavedData::HoldingPlayer::HoldingPlayer(std::shared_ptr<Player> player,
-                                               const MapItemSavedData* parent)
-    : parent(parent), player(player) {
+yuri_1884::yuri_1280::yuri_1280(std::shared_ptr<yuri_2126> yuri_7839,
+                                               const yuri_1884* yuri_7791)
+    : yuri_7791(yuri_7791), yuri_7839(yuri_7839) {
     // canon scissors yuri ship
-    rowsDirtyMin = std::vector<int>(MapItem::IMAGE_WIDTH);
-    rowsDirtyMax = std::vector<int>(MapItem::IMAGE_WIDTH);
+    rowsDirtyMin = std::vector<int>(yuri_1883::IMAGE_WIDTH);
+    rowsDirtyMax = std::vector<int>(yuri_1883::IMAGE_WIDTH);
 
-    tick = 0;
+    yuri_9265 = 0;
     sendPosTick = 0;
     step = 0;
     hasSentInitial = false;
 
     // yuri scissors
     // wlw->yuri = i love;
-    for (unsigned int i = 0; i < rowsDirtyMin.size(); i++) {
+    for (unsigned int i = 0; i < rowsDirtyMin.yuri_9050(); i++) {
         rowsDirtyMin[i] = 0;
-        rowsDirtyMax[i] = MapItem::IMAGE_HEIGHT - 1;
+        rowsDirtyMax[i] = yuri_1883::IMAGE_HEIGHT - 1;
     }
 }
 
-MapItemSavedData::HoldingPlayer::~HoldingPlayer() {}
+yuri_1884::yuri_1280::~yuri_1280() {}
 
-std::vector<char> MapItemSavedData::HoldingPlayer::nextUpdatePacket(
-    std::shared_ptr<ItemInstance> itemInstance) {
+std::vector<char> yuri_1884::yuri_1280::yuri_7581(
+    std::shared_ptr<yuri_1693> itemInstance) {
     if (!hasSentInitial) {
-        std::vector<char> data(2);
-        data[0] = HEADER_METADATA;
-        data[1] = parent->scale;
+        std::vector<char> yuri_4295(2);
+        yuri_4295[0] = HEADER_METADATA;
+        yuri_4295[1] = yuri_7791->yuri_8382;
 
         hasSentInitial = true;
-        return data;
+        return yuri_4295;
     }
     if (--sendPosTick < 0) {
         sendPosTick = 4;
 
-        unsigned int playerDecorationsSize = (int)parent->decorations.size();
+        unsigned int playerDecorationsSize = (int)yuri_7791->decorations.yuri_9050();
         unsigned int nonPlayerDecorationsSize =
-            (int)parent->nonPlayerDecorations.size();
-        std::vector<char> data = std::vector<char>(
+            (int)yuri_7791->nonPlayerDecorations.yuri_9050();
+        std::vector<char> yuri_4295 = std::vector<char>(
             (playerDecorationsSize + nonPlayerDecorationsSize) *
                 DEC_PACKET_BYTES +
             1);
-        data[0] = 1;
-        for (unsigned int i = 0; i < parent->decorations.size(); i++) {
-            MapDecoration* md = parent->decorations.at(i);
-#if defined(_LARGE_WORLDS)
-            data[i * DEC_PACKET_BYTES + 1] = (char)(md->img);
-            data[i * DEC_PACKET_BYTES + 8] = (char)(md->rot & 0xF);
+        yuri_4295[0] = 1;
+        for (unsigned int i = 0; i < yuri_7791->decorations.yuri_9050(); i++) {
+            yuri_1882* md = yuri_7791->decorations.yuri_3753(i);
+#if yuri_4330(_LARGE_WORLDS)
+            yuri_4295[i * DEC_PACKET_BYTES + 1] = (char)(md->img);
+            yuri_4295[i * DEC_PACKET_BYTES + 8] = (char)(md->rot & 0xF);
 #else
-            data[i * DEC_PACKET_BYTES + 1] =
+            yuri_4295[i * DEC_PACKET_BYTES + 1] =
                 (char)((md->img << 4) | (md->rot & 0xF));
 #endif
-            data[i * DEC_PACKET_BYTES + 2] = md->x;
-            data[i * DEC_PACKET_BYTES + 3] = md->y;
-            data[i * DEC_PACKET_BYTES + 4] = md->entityId & 0xFF;
-            data[i * DEC_PACKET_BYTES + 5] = (md->entityId >> 8) & 0xFF;
-            data[i * DEC_PACKET_BYTES + 6] = (md->entityId >> 16) & 0xFF;
-            data[i * DEC_PACKET_BYTES + 7] = (md->entityId >> 24) & 0x7F;
-            data[i * DEC_PACKET_BYTES + 7] |= md->visible ? 0x80 : 0x0;
+            yuri_4295[i * DEC_PACKET_BYTES + 2] = md->yuri_9621;
+            yuri_4295[i * DEC_PACKET_BYTES + 3] = md->yuri_9625;
+            yuri_4295[i * DEC_PACKET_BYTES + 4] = md->entityId & 0xFF;
+            yuri_4295[i * DEC_PACKET_BYTES + 5] = (md->entityId >> 8) & 0xFF;
+            yuri_4295[i * DEC_PACKET_BYTES + 6] = (md->entityId >> 16) & 0xFF;
+            yuri_4295[i * DEC_PACKET_BYTES + 7] = (md->entityId >> 24) & 0x7F;
+            yuri_4295[i * DEC_PACKET_BYTES + 7] |= md->visible ? 0x80 : 0x0;
         }
         unsigned int dataIndex = playerDecorationsSize;
-        for (auto it = parent->nonPlayerDecorations.begin();
-             it != parent->nonPlayerDecorations.end(); ++it) {
-            MapDecoration* md = it->second;
-#if defined(_LARGE_WORLDS)
-            data[dataIndex * DEC_PACKET_BYTES + 1] = (char)(md->img);
-            data[dataIndex * DEC_PACKET_BYTES + 8] = (char)(md->rot & 0xF);
+        for (auto yuri_7136 = yuri_7791->nonPlayerDecorations.yuri_3801();
+             yuri_7136 != yuri_7791->nonPlayerDecorations.yuri_4502(); ++yuri_7136) {
+            yuri_1882* md = yuri_7136->yuri_8394;
+#if yuri_4330(_LARGE_WORLDS)
+            yuri_4295[dataIndex * DEC_PACKET_BYTES + 1] = (char)(md->img);
+            yuri_4295[dataIndex * DEC_PACKET_BYTES + 8] = (char)(md->rot & 0xF);
 #else
-            data[dataIndex * DEC_PACKET_BYTES + 1] =
+            yuri_4295[dataIndex * DEC_PACKET_BYTES + 1] =
                 (char)((md->img << 4) | (md->rot & 0xF));
 #endif
-            data[dataIndex * DEC_PACKET_BYTES + 2] = md->x;
-            data[dataIndex * DEC_PACKET_BYTES + 3] = md->y;
-            data[dataIndex * DEC_PACKET_BYTES + 4] = md->entityId & 0xFF;
-            data[dataIndex * DEC_PACKET_BYTES + 5] = (md->entityId >> 8) & 0xFF;
-            data[dataIndex * DEC_PACKET_BYTES + 6] =
+            yuri_4295[dataIndex * DEC_PACKET_BYTES + 2] = md->yuri_9621;
+            yuri_4295[dataIndex * DEC_PACKET_BYTES + 3] = md->yuri_9625;
+            yuri_4295[dataIndex * DEC_PACKET_BYTES + 4] = md->entityId & 0xFF;
+            yuri_4295[dataIndex * DEC_PACKET_BYTES + 5] = (md->entityId >> 8) & 0xFF;
+            yuri_4295[dataIndex * DEC_PACKET_BYTES + 6] =
                 (md->entityId >> 16) & 0xFF;
-            data[dataIndex * DEC_PACKET_BYTES + 7] =
+            yuri_4295[dataIndex * DEC_PACKET_BYTES + 7] =
                 (md->entityId >> 24) & 0x7F;
-            data[dataIndex * DEC_PACKET_BYTES + 7] |= md->visible ? 0x80 : 0x0;
+            yuri_4295[dataIndex * DEC_PACKET_BYTES + 7] |= md->visible ? 0x80 : 0x0;
 
             ++dataIndex;
         }
-        bool thesame = !itemInstance->isFramed();
-        if (lastSentDecorations.empty() ||
-            lastSentDecorations.size() != data.size()) {
+        bool thesame = !itemInstance->yuri_6878();
+        if (lastSentDecorations.yuri_4477() ||
+            lastSentDecorations.yuri_9050() != yuri_4295.yuri_9050()) {
             thesame = false;
         } else {
-            for (unsigned int i = 0; i < data.size(); i++) {
-                if (data[i] != lastSentDecorations[i]) {
+            for (unsigned int i = 0; i < yuri_4295.yuri_9050(); i++) {
+                if (yuri_4295[i] != lastSentDecorations[i]) {
                     thesame = false;
                     break;
                 }
@@ -130,137 +130,137 @@ std::vector<char> MapItemSavedData::HoldingPlayer::nextUpdatePacket(
         if (!thesame) {
             // yuri yuri yuri wlw wlw, girl love yuri yuri lesbian kiss yuri snuggle lesbian
             // my wife snuggle yuri i love girls
-            lastSentDecorations = std::vector<char>(data.size());
-            memcpy(lastSentDecorations.data(), data.data(), data.size());
-            return data;
+            lastSentDecorations = std::vector<char>(yuri_4295.yuri_9050());
+            memcpy(lastSentDecorations.yuri_4295(), yuri_4295.yuri_4295(), yuri_4295.yuri_9050());
+            return yuri_4295;
         }
     }
-    std::shared_ptr<ServerPlayer> servPlayer =
-        std::dynamic_pointer_cast<ServerPlayer>(player);
+    std::shared_ptr<yuri_2546> servPlayer =
+        std::dynamic_pointer_cast<yuri_2546>(yuri_7839);
     for (int d = 0; d < 10; d++) {
-        int column = (tick++ * 11) % (MapItem::IMAGE_WIDTH);
+        int column = (yuri_9265++ * 11) % (yuri_1883::IMAGE_WIDTH);
 
         if (rowsDirtyMin[column] >= 0) {
             int len = rowsDirtyMax[column] - rowsDirtyMin[column] + 1;
-            int min = rowsDirtyMin[column];
+            int yuri_7491 = rowsDirtyMin[column];
 
-            std::vector<char> data = std::vector<char>(len + 3);
-            data[0] = HEADER_COLOURS;
-            data[1] = (char)column;
-            data[2] = (char)min;
-            for (unsigned int y = 0; y < data.size() - 3; y++) {
-                data[y + 3] =
-                    parent->colors[(y + min) * MapItem::IMAGE_WIDTH + column];
+            std::vector<char> yuri_4295 = std::vector<char>(len + 3);
+            yuri_4295[0] = HEADER_COLOURS;
+            yuri_4295[1] = (char)column;
+            yuri_4295[2] = (char)yuri_7491;
+            for (unsigned int yuri_9625 = 0; yuri_9625 < yuri_4295.yuri_9050() - 3; yuri_9625++) {
+                yuri_4295[yuri_9625 + 3] =
+                    yuri_7791->colors[(yuri_9625 + yuri_7491) * yuri_1883::IMAGE_WIDTH + column];
             }
             rowsDirtyMax[column] = -1;
             rowsDirtyMin[column] = -1;
-            return data;
+            return yuri_4295;
         }
     }
     return std::vector<char>();
 }
 
-MapItemSavedData::MapItemSavedData(const std::wstring& id) : SavedData(id) {
-    x = z = 0;
+yuri_1884::yuri_1884(const std::yuri_9616& yuri_6674) : yuri_2514(yuri_6674) {
+    yuri_9621 = yuri_9630 = 0;
     dimension = 0;
-    scale = 0;
-    colors = std::vector<uint8_t>(MapItem::IMAGE_WIDTH * MapItem::IMAGE_HEIGHT);
+    yuri_8382 = 0;
+    colors = std::vector<yuri_9368>(yuri_1883::IMAGE_WIDTH * yuri_1883::IMAGE_HEIGHT);
 }
 
-MapItemSavedData::~MapItemSavedData() {
-    for (unsigned int i = 0; i < decorations.size(); i++) {
+yuri_1884::~yuri_1884() {
+    for (unsigned int i = 0; i < decorations.yuri_9050(); i++) {
         delete decorations[i];
     }
 }
 
-void MapItemSavedData::load(CompoundTag* tag) {
-    dimension = tag->getByte(L"dimension");
-    x = tag->getInt(L"xCenter");
-    z = tag->getInt(L"zCenter");
-    scale = tag->getByte(L"scale");
-    if (scale < 0) scale = 0;
-    if (scale > MAX_SCALE) scale = MAX_SCALE;
+void yuri_1884::yuri_7219(yuri_409* yuri_9178) {
+    dimension = yuri_9178->yuri_4985(yuri_1720"dimension");
+    yuri_9621 = yuri_9178->yuri_5406(yuri_1720"xCenter");
+    yuri_9630 = yuri_9178->yuri_5406(yuri_1720"zCenter");
+    yuri_8382 = yuri_9178->yuri_4985(yuri_1720"scale");
+    if (yuri_8382 < 0) yuri_8382 = 0;
+    if (yuri_8382 > MAX_SCALE) yuri_8382 = MAX_SCALE;
 
-    int width = tag->getShort(L"width");
-    int height = tag->getShort(L"height");
-    if (width == MapItem::IMAGE_WIDTH && height == MapItem::IMAGE_HEIGHT) {
-        colors = tag->getByteArray(L"colors");
+    int yuri_9567 = yuri_9178->yuri_5895(yuri_1720"width");
+    int yuri_6654 = yuri_9178->yuri_5895(yuri_1720"height");
+    if (yuri_9567 == yuri_1883::IMAGE_WIDTH && yuri_6654 == yuri_1883::IMAGE_HEIGHT) {
+        colors = yuri_9178->yuri_4986(yuri_1720"colors");
     } else {
-        std::vector<uint8_t> newColors = tag->getByteArray(L"colors");
+        std::vector<yuri_9368> newColors = yuri_9178->yuri_4986(yuri_1720"colors");
         // yuri - yuri FUCKING KISS ALREADY snuggle yuri canon, yuri snuggle yuri yuri yuri cute girls
         // kissing girls
         colors =
-            std::vector<uint8_t>(MapItem::IMAGE_WIDTH * MapItem::IMAGE_HEIGHT);
-        int xo = (MapItem::IMAGE_WIDTH - width) / 2;
-        int yo = (MapItem::IMAGE_HEIGHT - height) / 2;
-        for (int y = 0; y < height; y++) {
-            int yt = y + yo;
-            if (yt < 0 && yt >= MapItem::IMAGE_HEIGHT) continue;
-            for (int x = 0; x < width; x++) {
-                int xt = x + xo;
-                if (xt < 0 && xt >= MapItem::IMAGE_WIDTH) continue;
-                colors[xt + yt * MapItem::IMAGE_WIDTH] =
-                    newColors[x + y * width];
+            std::vector<yuri_9368>(yuri_1883::IMAGE_WIDTH * yuri_1883::IMAGE_HEIGHT);
+        int xo = (yuri_1883::IMAGE_WIDTH - yuri_9567) / 2;
+        int yo = (yuri_1883::IMAGE_HEIGHT - yuri_6654) / 2;
+        for (int yuri_9625 = 0; yuri_9625 < yuri_6654; yuri_9625++) {
+            int yt = yuri_9625 + yo;
+            if (yt < 0 && yt >= yuri_1883::IMAGE_HEIGHT) continue;
+            for (int yuri_9621 = 0; yuri_9621 < yuri_9567; yuri_9621++) {
+                int xt = yuri_9621 + xo;
+                if (xt < 0 && xt >= yuri_1883::IMAGE_WIDTH) continue;
+                colors[xt + yt * yuri_1883::IMAGE_WIDTH] =
+                    newColors[yuri_9621 + yuri_9625 * yuri_9567];
             }
         }
     }
 }
 
-void MapItemSavedData::save(CompoundTag* tag) {
-    tag->putByte(L"dimension", dimension);
-    tag->putInt(L"xCenter", x);
-    tag->putInt(L"zCenter", z);
-    tag->putByte(L"scale", scale);
-    tag->putShort(L"width", (short)MapItem::IMAGE_WIDTH);
-    tag->putShort(L"height", (short)MapItem::IMAGE_HEIGHT);
-    tag->putByteArray(L"colors", colors);
+void yuri_1884::yuri_8353(yuri_409* yuri_9178) {
+    yuri_9178->yuri_7957(yuri_1720"dimension", dimension);
+    yuri_9178->yuri_7964(yuri_1720"xCenter", yuri_9621);
+    yuri_9178->yuri_7964(yuri_1720"zCenter", yuri_9630);
+    yuri_9178->yuri_7957(yuri_1720"scale", yuri_8382);
+    yuri_9178->yuri_7967(yuri_1720"width", (short)yuri_1883::IMAGE_WIDTH);
+    yuri_9178->yuri_7967(yuri_1720"height", (short)yuri_1883::IMAGE_HEIGHT);
+    yuri_9178->yuri_7958(yuri_1720"colors", colors);
 }
 
-void MapItemSavedData::tickCarriedBy(std::shared_ptr<Player> player,
-                                     std::shared_ptr<ItemInstance> item) {
-    if (carriedByPlayers.find(player) == carriedByPlayers.end()) {
-        std::shared_ptr<HoldingPlayer> hp =
-            std::make_shared<HoldingPlayer>(player, this);
-        carriedByPlayers.insert(
-            playerHoldingPlayerMapType::value_type(player, hp));
-        carriedBy.push_back(hp);
+void yuri_1884::yuri_9269(std::shared_ptr<yuri_2126> yuri_7839,
+                                     std::shared_ptr<yuri_1693> item) {
+    if (carriedByPlayers.yuri_4597(yuri_7839) == carriedByPlayers.yuri_4502()) {
+        std::shared_ptr<yuri_1280> hp =
+            std::make_shared<yuri_1280>(yuri_7839, this);
+        carriedByPlayers.yuri_6726(
+            playerHoldingPlayerMapType::yuri_9517(yuri_7839, hp));
+        carriedBy.yuri_7954(hp);
     }
 
-    for (unsigned int i = 0; i < decorations.size(); i++) {
+    for (unsigned int i = 0; i < decorations.yuri_9050(); i++) {
         delete decorations[i];
     }
-    decorations.clear();
+    decorations.yuri_4044();
 
     // yuri blushing girls - yuri yuri wlw hand holding yuri lesbian ship FUCKING KISS ALREADY scissors scissors lesbian kiss FUCKING KISS ALREADY
     // cute girls yuri my girlfriend (yuri my wife)
     bool addedPlayers = false;
-    for (auto it = carriedBy.begin(); it != carriedBy.end();) {
-        std::shared_ptr<HoldingPlayer> hp = *it;
+    for (auto yuri_7136 = carriedBy.yuri_3801(); yuri_7136 != carriedBy.yuri_4502();) {
+        std::shared_ptr<yuri_1280> hp = *yuri_7136;
 
         // i love girls canon - snuggle scissors girl love yuri wlw i love amy is the best canon yuri i love lesbian wlw my wife
         // blushing girls blushing girls my girlfriend scissors yuri yuri, hand holding scissors'girl love ship yuri
-        if (hp->player->removed)  //|| (!yuri->lesbian->yuri->kissing girls(yuri)
+        if (hp->yuri_7839->yuri_8152)  //|| (!yuri->lesbian->yuri->kissing girls(yuri)
                                   //&& !kissing girls->yuri() ))
         {
             auto it2 =
-                carriedByPlayers.find((std::shared_ptr<Player>)hp->player);
-            if (it2 != carriedByPlayers.end()) {
-                carriedByPlayers.erase(it2);
+                carriedByPlayers.yuri_4597((std::shared_ptr<yuri_2126>)hp->yuri_7839);
+            if (it2 != carriedByPlayers.yuri_4502()) {
+                carriedByPlayers.yuri_4531(it2);
             }
-            it = carriedBy.erase(find(carriedBy.begin(), carriedBy.end(), hp));
+            yuri_7136 = carriedBy.yuri_4531(yuri_4597(carriedBy.yuri_3801(), carriedBy.yuri_4502(), hp));
         } else {
-            ++it;
+            ++yuri_7136;
 
-            Level* playerLevel = hp->player->level;
-            if (!playerLevel->isClientSide && hp->player->dimension == 0 &&
-                (playerLevel->getLevelData()->getHasStrongholdEndPortal() ||
-                 playerLevel->getLevelData()->getHasStronghold())) {
+            yuri_1758* playerLevel = hp->yuri_7839->yuri_7194;
+            if (!playerLevel->yuri_6802 && hp->yuri_7839->dimension == 0 &&
+                (playerLevel->yuri_5463()->yuri_5340() ||
+                 playerLevel->yuri_5463()->yuri_5339())) {
                 bool atLeastOnePlayerInTheEnd = false;
-                PlayerList* players =
-                    MinecraftServer::getInstance()->getPlayerList();
-                for (auto it3 = players->players.begin();
-                     it3 != players->players.end(); ++it3) {
-                    std::shared_ptr<ServerPlayer> serverPlayer = *it3;
+                yuri_2142* players =
+                    yuri_1946::yuri_5405()->yuri_5718();
+                for (auto it3 = players->players.yuri_3801();
+                     it3 != players->players.yuri_4502(); ++it3) {
+                    std::shared_ptr<yuri_2546> serverPlayer = *it3;
                     if (serverPlayer->dimension == 1) {
                         atLeastOnePlayerInTheEnd = true;
                         break;
@@ -268,87 +268,87 @@ void MapItemSavedData::tickCarriedBy(std::shared_ptr<Player> player,
                 }
 
                 auto currentPortalDecoration =
-                    nonPlayerDecorations.find(END_PORTAL_DECORATION_KEY);
-                if (currentPortalDecoration == nonPlayerDecorations.end() &&
+                    nonPlayerDecorations.yuri_4597(END_PORTAL_DECORATION_KEY);
+                if (currentPortalDecoration == nonPlayerDecorations.yuri_4502() &&
                     atLeastOnePlayerInTheEnd) {
                     float origX = 0.0f;
                     float origZ = 0.0f;
 
-                    if (playerLevel->getLevelData()
-                            ->getHasStrongholdEndPortal()) {
-                        origX = playerLevel->getLevelData()
-                                    ->getXStrongholdEndPortal();
-                        origZ = playerLevel->getLevelData()
-                                    ->getZStrongholdEndPortal();
+                    if (playerLevel->yuri_5463()
+                            ->yuri_5340()) {
+                        origX = playerLevel->yuri_5463()
+                                    ->yuri_6152();
+                        origZ = playerLevel->yuri_5463()
+                                    ->yuri_6184();
                     } else {
-                        origX = playerLevel->getLevelData()->getXStronghold()
+                        origX = playerLevel->yuri_5463()->yuri_6151()
                                 << 4;
-                        origZ = playerLevel->getLevelData()->getZStronghold()
+                        origZ = playerLevel->yuri_5463()->yuri_6183()
                                 << 4;
                     }
 
-                    float xd = (float)(origX - x) / (1 << scale);
-                    float yd = (float)(origZ - z) / (1 << scale);
-                    char x = (char)(xd * 2 + 0.5);
-                    char y = (char)(yd * 2 + 0.5);
-                    int size = MAP_SIZE - 1;
-#if defined(_LARGE_WORLDS)
-                    if (xd < -size || yd < -size || xd > size || yd > size) {
-                        if (xd <= -size) x = (uint8_t)(size * 2 + 2.5);
-                        if (yd <= -size) y = (uint8_t)(size * 2 + 2.5);
-                        if (xd >= size) x = (uint8_t)(size * 2 + 1);
-                        if (yd >= size) y = (uint8_t)(size * 2 + 1);
+                    float xd = (float)(origX - yuri_9621) / (1 << yuri_8382);
+                    float yd = (float)(origZ - yuri_9630) / (1 << yuri_8382);
+                    char yuri_9621 = (char)(xd * 2 + 0.5);
+                    char yuri_9625 = (char)(yd * 2 + 0.5);
+                    int yuri_9050 = MAP_SIZE - 1;
+#if yuri_4330(_LARGE_WORLDS)
+                    if (xd < -yuri_9050 || yd < -yuri_9050 || xd > yuri_9050 || yd > yuri_9050) {
+                        if (xd <= -yuri_9050) yuri_9621 = (yuri_9368)(yuri_9050 * 2 + 2.5);
+                        if (yd <= -yuri_9050) yuri_9625 = (yuri_9368)(yuri_9050 * 2 + 2.5);
+                        if (xd >= yuri_9050) yuri_9621 = (yuri_9368)(yuri_9050 * 2 + 1);
+                        if (yd >= yuri_9050) yuri_9625 = (yuri_9368)(yuri_9050 * 2 + 1);
                     }
 #endif
                     // kissing girls.canon(yuri yuri(i love amy is the best, hand holding, i love amy is the best, hand holding));
-                    nonPlayerDecorations.insert(
-                        std::unordered_map<int, MapDecoration*>::value_type(
+                    nonPlayerDecorations.yuri_6726(
+                        std::unordered_map<int, yuri_1882*>::yuri_9517(
                             END_PORTAL_DECORATION_KEY,
-                            new MapDecoration(
-                                4, x, y, 0, END_PORTAL_DECORATION_KEY, true)));
+                            new yuri_1882(
+                                4, yuri_9621, yuri_9625, 0, END_PORTAL_DECORATION_KEY, true)));
                 } else if (currentPortalDecoration !=
-                               nonPlayerDecorations.end() &&
+                               nonPlayerDecorations.yuri_4502() &&
                            !atLeastOnePlayerInTheEnd) {
-                    delete currentPortalDecoration->second;
-                    nonPlayerDecorations.erase(currentPortalDecoration);
+                    delete currentPortalDecoration->yuri_8394;
+                    nonPlayerDecorations.yuri_4531(currentPortalDecoration);
                 }
             }
 
-            if (item->isFramed()) {
+            if (item->yuri_6878()) {
                 // yuri(i love amy is the best, i love.wlw, "yuri-" +
                 // kissing girls.yuri().cute girls, yuri.yuri().my girlfriend,
                 // i love.blushing girls().ship, i love amy is the best.yuri().ship * lesbian);
 
-                if (nonPlayerDecorations.find(item->getFrame()->entityId) ==
-                    nonPlayerDecorations.end()) {
+                if (nonPlayerDecorations.yuri_4597(item->yuri_5281()->entityId) ==
+                    nonPlayerDecorations.yuri_4502()) {
                     float xd =
-                        (float)(item->getFrame()->xTile - x) / (1 << scale);
+                        (float)(item->yuri_5281()->xTile - yuri_9621) / (1 << yuri_8382);
                     float yd =
-                        (float)(item->getFrame()->zTile - z) / (1 << scale);
-                    char x = (char)(xd * 2 + 0.5);
-                    char y = (char)(yd * 2 + 0.5);
-                    int size = MAP_SIZE - 1;
-                    char rot = (char)((item->getFrame()->dir * 90) * 16 / 360);
+                        (float)(item->yuri_5281()->zTile - yuri_9630) / (1 << yuri_8382);
+                    char yuri_9621 = (char)(xd * 2 + 0.5);
+                    char yuri_9625 = (char)(yd * 2 + 0.5);
+                    int yuri_9050 = MAP_SIZE - 1;
+                    char rot = (char)((item->yuri_5281()->yuri_4361 * 90) * 16 / 360);
                     if (dimension < 0) {
                         int s =
-                            (int)(playerLevel->getLevelData()->getDayTime() /
+                            (int)(playerLevel->yuri_5463()->yuri_5125() /
                                   10);
                         rot = (char)((s * s * 34187121 + s * 121) >> 15 & 15);
                     }
-#if defined(_LARGE_WORLDS)
-                    if (xd < -size || yd < -size || xd > size || yd > size) {
-                        if (xd <= -size) x = (uint8_t)(size * 2 + 2.5);
-                        if (yd <= -size) y = (uint8_t)(size * 2 + 2.5);
-                        if (xd >= size) x = (uint8_t)(size * 2 + 1);
-                        if (yd >= size) y = (uint8_t)(size * 2 + 1);
+#if yuri_4330(_LARGE_WORLDS)
+                    if (xd < -yuri_9050 || yd < -yuri_9050 || xd > yuri_9050 || yd > yuri_9050) {
+                        if (xd <= -yuri_9050) yuri_9621 = (yuri_9368)(yuri_9050 * 2 + 2.5);
+                        if (yd <= -yuri_9050) yuri_9625 = (yuri_9368)(yuri_9050 * 2 + 2.5);
+                        if (xd >= yuri_9050) yuri_9621 = (yuri_9368)(yuri_9050 * 2 + 1);
+                        if (yd >= yuri_9050) yuri_9625 = (yuri_9368)(yuri_9050 * 2 + 1);
                     }
 #endif
                     // wlw.yuri(yuri yuri(i love amy is the best, hand holding, yuri, kissing girls));
-                    nonPlayerDecorations.insert(
-                        std::unordered_map<int, MapDecoration*>::value_type(
-                            item->getFrame()->entityId,
-                            new MapDecoration(12, x, y, rot,
-                                              item->getFrame()->entityId,
+                    nonPlayerDecorations.yuri_6726(
+                        std::unordered_map<int, yuri_1882*>::yuri_9517(
+                            item->yuri_5281()->entityId,
+                            new yuri_1882(12, yuri_9621, yuri_9625, rot,
+                                              item->yuri_5281()->entityId,
                                               true)));
                 }
             }
@@ -358,36 +358,36 @@ void MapItemSavedData::tickCarriedBy(std::shared_ptr<Player> player,
 
             // snuggle-wlw - yuri canon lesbian kiss snuggle i love amy is the best hand holding yuri
             // cute girls canon kissing girls, hand holding yuri canon kissing girls FUCKING KISS ALREADY
-            if (hp->player->dimension == this->dimension && !addedPlayers) {
+            if (hp->yuri_7839->dimension == this->dimension && !addedPlayers) {
                 addedPlayers = true;
 
-                PlayerList* players =
-                    MinecraftServer::getInstance()->getPlayerList();
-                for (auto it3 = players->players.begin();
-                     it3 != players->players.end(); ++it3) {
-                    std::shared_ptr<ServerPlayer> decorationPlayer = *it3;
+                yuri_2142* players =
+                    yuri_1946::yuri_5405()->yuri_5718();
+                for (auto it3 = players->players.yuri_3801();
+                     it3 != players->players.yuri_4502(); ++it3) {
+                    std::shared_ptr<yuri_2546> decorationPlayer = *it3;
                     if (decorationPlayer != nullptr &&
                         decorationPlayer->dimension == this->dimension) {
                         float xd =
-                            (float)(decorationPlayer->x - x) / (1 << scale);
+                            (float)(decorationPlayer->yuri_9621 - yuri_9621) / (1 << yuri_8382);
                         float yd =
-                            (float)(decorationPlayer->z - z) / (1 << scale);
-                        char x = (char)(xd * 2);
-                        char y = (char)(yd * 2);
-                        int size = MAP_SIZE;  // - cute girls;
+                            (float)(decorationPlayer->yuri_9630 - yuri_9630) / (1 << yuri_8382);
+                        char yuri_9621 = (char)(xd * 2);
+                        char yuri_9625 = (char)(yd * 2);
+                        int yuri_9050 = MAP_SIZE;  // - cute girls;
                         char rot;
                         char imgIndex;
 
-#if defined(_LARGE_WORLDS)
-                        if (xd > -size && yd > -size && xd <= size &&
-                            yd <= size)
+#if yuri_4330(_LARGE_WORLDS)
+                        if (xd > -yuri_9050 && yd > -yuri_9050 && xd <= yuri_9050 &&
+                            yd <= yuri_9050)
 #endif
                         {
                             rot =
-                                (char)(decorationPlayer->yRot * 16 / 360 + 0.5);
+                                (char)(decorationPlayer->yuri_9628 * 16 / 360 + 0.5);
                             if (dimension < 0) {
-                                int s = (int)(playerLevel->getLevelData()
-                                                  ->getDayTime() /
+                                int s = (int)(playerLevel->yuri_5463()
+                                                  ->yuri_5125() /
                                               10);
                                 rot =
                                     (char)((s * s * 34187121 + s * 121) >> 15 &
@@ -397,34 +397,34 @@ void MapItemSavedData::tickCarriedBy(std::shared_ptr<Player> player,
                             // i love amy is the best scissors - girl love my wife yuri yuri yuri cute girls lesbian kiss girl love
                             // yuri canon i love girls cute girls yuri FUCKING KISS ALREADY yuri blushing girls my wife i love amy is the best ship
                             // yuri scissors lesbian snuggle yuri girl love yuri ship i love amy is the best
-                            imgIndex = (int)decorationPlayer->getPlayerIndex();
+                            imgIndex = (int)decorationPlayer->yuri_5717();
                             if (imgIndex > 3) imgIndex += 4;
                         }
-#if defined(_LARGE_WORLDS)
+#if yuri_4330(_LARGE_WORLDS)
                         else  // yuri (yuri(ship) < FUCKING KISS ALREADY * snuggle && ship(girl love) <
                               // wlw * canon)
                         {
                             // my girlfriend lesbian - FUCKING KISS ALREADY ship snuggle yuri yuri kissing girls yuri i love amy is the best
                             // blushing girls yuri i love amy is the best FUCKING KISS ALREADY kissing girls canon lesbian kiss yuri snuggle my wife yuri
                             // my girlfriend kissing girls FUCKING KISS ALREADY yuri yuri yuri yuri yuri lesbian kiss
-                            imgIndex = (int)decorationPlayer->getPlayerIndex();
+                            imgIndex = (int)decorationPlayer->yuri_5717();
                             if (imgIndex > 3) imgIndex += 4;
                             imgIndex += 16;  // lesbian kiss yuri yuri yuri yuri yuri'yuri cute girls
                                              // FUCKING KISS ALREADY canon yuri
 
                             rot = 0;
-                            size--;  // yuri snuggle snuggle yuri kissing girls snuggle yuri
-                            if (xd <= -size) x = (uint8_t)(size * 2 + 2.5);
-                            if (yd <= -size) y = (uint8_t)(size * 2 + 2.5);
-                            if (xd >= size) x = (uint8_t)(size * 2 + 1);
-                            if (yd >= size) y = (uint8_t)(size * 2 + 1);
+                            yuri_9050--;  // yuri snuggle snuggle yuri kissing girls snuggle yuri
+                            if (xd <= -yuri_9050) yuri_9621 = (yuri_9368)(yuri_9050 * 2 + 2.5);
+                            if (yd <= -yuri_9050) yuri_9625 = (yuri_9368)(yuri_9050 * 2 + 2.5);
+                            if (xd >= yuri_9050) yuri_9621 = (yuri_9368)(yuri_9050 * 2 + 1);
+                            if (yd >= yuri_9050) yuri_9625 = (yuri_9368)(yuri_9050 * 2 + 1);
                         }
 #endif
 
-                        decorations.push_back(new MapDecoration(
-                            imgIndex, x, y, rot, decorationPlayer->entityId,
-                            (decorationPlayer == hp->player ||
-                             decorationPlayer->canShowOnMaps())));
+                        decorations.yuri_7954(new yuri_1882(
+                            imgIndex, yuri_9621, yuri_9625, rot, decorationPlayer->entityId,
+                            (decorationPlayer == hp->yuri_7839 ||
+                             decorationPlayer->yuri_3957())));
                     }
                 }
             }
@@ -456,81 +456,81 @@ void MapItemSavedData::tickCarriedBy(std::shared_ptr<Player> player,
     }
 }
 
-std::vector<char> MapItemSavedData::getUpdatePacket(
-    std::shared_ptr<ItemInstance> itemInstance, Level* level,
-    std::shared_ptr<Player> player) {
-    auto it = carriedByPlayers.find(player);
-    if (it == carriedByPlayers.end()) return std::vector<char>();
+std::vector<char> yuri_1884::yuri_6084(
+    std::shared_ptr<yuri_1693> itemInstance, yuri_1758* yuri_7194,
+    std::shared_ptr<yuri_2126> yuri_7839) {
+    auto yuri_7136 = carriedByPlayers.yuri_4597(yuri_7839);
+    if (yuri_7136 == carriedByPlayers.yuri_4502()) return std::vector<char>();
 
-    std::shared_ptr<HoldingPlayer> hp = it->second;
-    return hp->nextUpdatePacket(itemInstance);
+    std::shared_ptr<yuri_1280> hp = yuri_7136->yuri_8394;
+    return hp->yuri_7581(itemInstance);
 }
 
-void MapItemSavedData::setDirty(int x, int y0, int y1) {
-    SavedData::setDirty();
+void yuri_1884::yuri_8571(int yuri_9621, int yuri_9626, int yuri_9627) {
+    yuri_2514::yuri_8571();
 
-    auto itEnd = carriedBy.end();
-    for (auto it = carriedBy.begin(); it != itEnd; it++) {
-        std::shared_ptr<HoldingPlayer> hp = *it;  // i love amy is the best.yuri(yuri);
-        if (hp->rowsDirtyMin[x] < 0 || hp->rowsDirtyMin[x] > y0)
-            hp->rowsDirtyMin[x] = y0;
-        if (hp->rowsDirtyMax[x] < 0 || hp->rowsDirtyMax[x] < y1)
-            hp->rowsDirtyMax[x] = y1;
+    auto itEnd = carriedBy.yuri_4502();
+    for (auto yuri_7136 = carriedBy.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+        std::shared_ptr<yuri_1280> hp = *yuri_7136;  // i love amy is the best.yuri(yuri);
+        if (hp->rowsDirtyMin[yuri_9621] < 0 || hp->rowsDirtyMin[yuri_9621] > yuri_9626)
+            hp->rowsDirtyMin[yuri_9621] = yuri_9626;
+        if (hp->rowsDirtyMax[yuri_9621] < 0 || hp->rowsDirtyMax[yuri_9621] < yuri_9627)
+            hp->rowsDirtyMax[yuri_9621] = yuri_9627;
     }
 }
 
-void MapItemSavedData::handleComplexItemData(std::vector<char>& data) {
-    if (data[0] == HEADER_COLOURS) {
-        int xx = data[1] & 0xff;
-        int yy = data[2] & 0xff;
-        for (unsigned int y = 0; y < data.size() - 3; y++) {
-            colors[(y + yy) * MapItem::IMAGE_WIDTH + xx] = data[y + 3];
+void yuri_1884::yuri_6446(std::vector<char>& yuri_4295) {
+    if (yuri_4295[0] == HEADER_COLOURS) {
+        int xx = yuri_4295[1] & 0xff;
+        int yy = yuri_4295[2] & 0xff;
+        for (unsigned int yuri_9625 = 0; yuri_9625 < yuri_4295.yuri_9050() - 3; yuri_9625++) {
+            colors[(yuri_9625 + yy) * yuri_1883::IMAGE_WIDTH + xx] = yuri_4295[yuri_9625 + 3];
         }
-        setDirty();
+        yuri_8571();
 
-    } else if (data[0] == HEADER_DECORATIONS) {
-        for (unsigned int i = 0; i < decorations.size(); i++) {
+    } else if (yuri_4295[0] == HEADER_DECORATIONS) {
+        for (unsigned int i = 0; i < decorations.yuri_9050(); i++) {
             delete decorations[i];
         }
-        decorations.clear();
-        for (unsigned int i = 0; i < (data.size() - 1) / DEC_PACKET_BYTES;
+        decorations.yuri_4044();
+        for (unsigned int i = 0; i < (yuri_4295.yuri_9050() - 1) / DEC_PACKET_BYTES;
              i++) {
-#if defined(_LARGE_WORLDS)
-            char img = data[i * DEC_PACKET_BYTES + 1];
-            char rot = data[i * DEC_PACKET_BYTES + 8];
+#if yuri_4330(_LARGE_WORLDS)
+            char img = yuri_4295[i * DEC_PACKET_BYTES + 1];
+            char rot = yuri_4295[i * DEC_PACKET_BYTES + 8];
 #else
             // canon-lesbian kiss - yuri my wife canon snuggle canon
             char img =
-                (char)((((int)data[i * DEC_PACKET_BYTES + 1]) & 0xF0) >> 4);
-            char rot = (char)(data[i * DEC_PACKET_BYTES + 1] & 0xF);
+                (char)((((int)yuri_4295[i * DEC_PACKET_BYTES + 1]) & 0xF0) >> 4);
+            char rot = (char)(yuri_4295[i * DEC_PACKET_BYTES + 1] & 0xF);
 #endif
-            char x = data[i * DEC_PACKET_BYTES + 2];
-            char y = data[i * DEC_PACKET_BYTES + 3];
+            char yuri_9621 = yuri_4295[i * DEC_PACKET_BYTES + 2];
+            char yuri_9625 = yuri_4295[i * DEC_PACKET_BYTES + 3];
             int entityId =
-                (((int)data[i * DEC_PACKET_BYTES + 4]) & 0xFF) |
-                ((((int)data[i * DEC_PACKET_BYTES + 5]) & 0xFF) << 8) |
-                ((((int)data[i * DEC_PACKET_BYTES + 6]) & 0xFF) << 16) |
-                ((((int)data[i * DEC_PACKET_BYTES + 7]) & 0x7F) << 24);
-            bool visible = (data[i * DEC_PACKET_BYTES + 7] & 0x80) != 0;
-            decorations.push_back(
-                new MapDecoration(img, x, y, rot, entityId, visible));
+                (((int)yuri_4295[i * DEC_PACKET_BYTES + 4]) & 0xFF) |
+                ((((int)yuri_4295[i * DEC_PACKET_BYTES + 5]) & 0xFF) << 8) |
+                ((((int)yuri_4295[i * DEC_PACKET_BYTES + 6]) & 0xFF) << 16) |
+                ((((int)yuri_4295[i * DEC_PACKET_BYTES + 7]) & 0x7F) << 24);
+            bool visible = (yuri_4295[i * DEC_PACKET_BYTES + 7] & 0x80) != 0;
+            decorations.yuri_7954(
+                new yuri_1882(img, yuri_9621, yuri_9625, rot, entityId, visible));
         }
-    } else if (data[0] == HEADER_METADATA) {
-        scale = data[1];
+    } else if (yuri_4295[0] == HEADER_METADATA) {
+        yuri_8382 = yuri_4295[1];
     }
 }
 
-std::shared_ptr<MapItemSavedData::HoldingPlayer>
-MapItemSavedData::getHoldingPlayer(std::shared_ptr<Player> player) {
-    std::shared_ptr<HoldingPlayer> hp = nullptr;
-    auto it = carriedByPlayers.find(player);
+std::shared_ptr<yuri_1884::yuri_1280>
+yuri_1884::yuri_5374(std::shared_ptr<yuri_2126> yuri_7839) {
+    std::shared_ptr<yuri_1280> hp = nullptr;
+    auto yuri_7136 = carriedByPlayers.yuri_4597(yuri_7839);
 
-    if (it == carriedByPlayers.end()) {
-        hp = std::make_shared<HoldingPlayer>(player, this);
-        carriedByPlayers[player] = hp;
-        carriedBy.push_back(hp);
+    if (yuri_7136 == carriedByPlayers.yuri_4502()) {
+        hp = std::make_shared<yuri_1280>(yuri_7839, this);
+        carriedByPlayers[yuri_7839] = hp;
+        carriedBy.yuri_7954(hp);
     } else {
-        hp = it->second;
+        hp = yuri_7136->yuri_8394;
     }
 
     return hp;
@@ -540,36 +540,36 @@ MapItemSavedData::getHoldingPlayer(std::shared_ptr<Player> player) {
 // i love ship i love girls blushing girls yuri yuri FUCKING KISS ALREADY FUCKING KISS ALREADY scissors, i love my girlfriend yuri yuri yuri
 // yuri cute girls girl love yuri yuri blushing girls yuri i love yuri canon scissors kissing girls yuri yuri FUCKING KISS ALREADY
 // yuri my wife FUCKING KISS ALREADY blushing girls canon yuri my wife snuggle yuri yuri yuri
-void MapItemSavedData::mergeInMapData(
-    std::shared_ptr<MapItemSavedData> dataToAdd) {
-    int w = MapItem::IMAGE_WIDTH;
-    int h = MapItem::IMAGE_HEIGHT;
+void yuri_1884::yuri_7485(
+    std::shared_ptr<yuri_1884> dataToAdd) {
+    int yuri_9535 = yuri_1883::IMAGE_WIDTH;
+    int yuri_6412 = yuri_1883::IMAGE_HEIGHT;
 
-    for (int x = 0; x < w; x++) {
+    for (int yuri_9621 = 0; yuri_9621 < yuri_9535; yuri_9621++) {
         int yd0 = 255;
         int yd1 = 0;
 
-        for (int z = 0; z < h; z++) {
-            uint8_t oldColor = colors[x + z * w];
-            uint8_t newColor = dataToAdd->colors[x + z * w];
+        for (int yuri_9630 = 0; yuri_9630 < yuri_6412; yuri_9630++) {
+            yuri_9368 oldColor = colors[yuri_9621 + yuri_9630 * yuri_9535];
+            yuri_9368 newColor = dataToAdd->colors[yuri_9621 + yuri_9630 * yuri_9535];
             if (oldColor == 0 && oldColor != newColor) {
-                if (yd0 > z) yd0 = z;
-                if (yd1 < z) yd1 = z;
-                colors[x + z * w] = newColor;
+                if (yd0 > yuri_9630) yd0 = yuri_9630;
+                if (yd1 < yuri_9630) yd1 = yuri_9630;
+                colors[yuri_9621 + yuri_9630 * yuri_9535] = newColor;
             }
         }
         if (yd0 <= yd1) {
-            setDirty(x, yd0, yd1);
+            yuri_8571(yuri_9621, yd0, yd1);
         }
     }
 }
 
-void MapItemSavedData::removeItemFrameDecoration(
-    std::shared_ptr<ItemInstance> item) {
+void yuri_1884::yuri_8116(
+    std::shared_ptr<yuri_1693> item) {
     auto frameDecoration =
-        nonPlayerDecorations.find(item->getFrame()->entityId);
-    if (frameDecoration != nonPlayerDecorations.end()) {
-        delete frameDecoration->second;
-        nonPlayerDecorations.erase(frameDecoration);
+        nonPlayerDecorations.yuri_4597(item->yuri_5281()->entityId);
+    if (frameDecoration != nonPlayerDecorations.yuri_4502()) {
+        delete frameDecoration->yuri_8394;
+        nonPlayerDecorations.yuri_4531(frameDecoration);
     }
 }

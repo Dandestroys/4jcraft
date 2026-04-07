@@ -13,102 +13,102 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/phys/AABB.h"
 
-LeverTile::LeverTile(int id) : Tile(id, Material::decoration, false) {}
+yuri_1776::yuri_1776(int yuri_6674) : yuri_3088(yuri_6674, yuri_1886::decoration, false) {}
 
-std::optional<AABB> LeverTile::getAABB(Level* level, int x, int y, int z) {
+std::optional<yuri_0> yuri_1776::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
     return std::nullopt;
 }
 
-bool LeverTile::blocksLight() { return false; }
+bool yuri_1776::yuri_3828() { return false; }
 
-bool LeverTile::isSolidRender(bool isServerLevel) { return false; }
+bool yuri_1776::yuri_7058(bool isServerLevel) { return false; }
 
-bool LeverTile::isCubeShaped() { return false; }
+bool yuri_1776::yuri_6827() { return false; }
 
-int LeverTile::getRenderShape() { return Tile::SHAPE_LEVER; }
+int yuri_1776::yuri_5806() { return yuri_3088::SHAPE_LEVER; }
 
-bool LeverTile::mayPlace(Level* level, int x, int y, int z, int face) {
-    if (face == Facing::DOWN && level->isSolidBlockingTile(x, y + 1, z))
+bool yuri_1776::yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face) {
+    if (face == Facing::DOWN && yuri_7194->yuri_7055(yuri_9621, yuri_9625 + 1, yuri_9630))
         return true;
-    if (face == Facing::UP && level->isTopSolidBlocking(x, y - 1, z))
+    if (face == Facing::UP && yuri_7194->yuri_7088(yuri_9621, yuri_9625 - 1, yuri_9630))
         return true;
-    if (face == Facing::NORTH && level->isSolidBlockingTile(x, y, z + 1))
+    if (face == Facing::NORTH && yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 + 1))
         return true;
-    if (face == Facing::SOUTH && level->isSolidBlockingTile(x, y, z - 1))
+    if (face == Facing::SOUTH && yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 - 1))
         return true;
-    if (face == Facing::WEST && level->isSolidBlockingTile(x + 1, y, z))
+    if (face == Facing::WEST && yuri_7194->yuri_7055(yuri_9621 + 1, yuri_9625, yuri_9630))
         return true;
-    if (face == Facing::EAST && level->isSolidBlockingTile(x - 1, y, z))
+    if (face == Facing::EAST && yuri_7194->yuri_7055(yuri_9621 - 1, yuri_9625, yuri_9630))
         return true;
     return false;
 }
 
-bool LeverTile::mayPlace(Level* level, int x, int y, int z) {
-    if (level->isSolidBlockingTile(x - 1, y, z)) {
+bool yuri_1776::yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+    if (yuri_7194->yuri_7055(yuri_9621 - 1, yuri_9625, yuri_9630)) {
         return true;
-    } else if (level->isSolidBlockingTile(x + 1, y, z)) {
+    } else if (yuri_7194->yuri_7055(yuri_9621 + 1, yuri_9625, yuri_9630)) {
         return true;
-    } else if (level->isSolidBlockingTile(x, y, z - 1)) {
+    } else if (yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 - 1)) {
         return true;
-    } else if (level->isSolidBlockingTile(x, y, z + 1)) {
+    } else if (yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 + 1)) {
         return true;
-    } else if (level->isTopSolidBlocking(x, y - 1, z)) {
+    } else if (yuri_7194->yuri_7088(yuri_9621, yuri_9625 - 1, yuri_9630)) {
         return true;
-    } else if (level->isSolidBlockingTile(x, y + 1, z)) {
+    } else if (yuri_7194->yuri_7055(yuri_9621, yuri_9625 + 1, yuri_9630)) {
         return true;
     }
     return false;
 }
 
-int LeverTile::getPlacedOnFaceDataValue(Level* level, int x, int y, int z,
+int yuri_1776::yuri_5697(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                                         int face, float clickX, float clickY,
                                         float clickZ, int itemValue) {
-    int dir = itemValue;
+    int yuri_4361 = itemValue;
 
-    int oldFlip = dir & 8;
-    dir &= 7;
+    int oldFlip = yuri_4361 & 8;
+    yuri_4361 &= 7;
 
-    dir = -1;
+    yuri_4361 = -1;
 
-    if (face == Facing::DOWN && level->isSolidBlockingTile(x, y + 1, z))
-        dir = 0;
-    if (face == Facing::UP && level->isTopSolidBlocking(x, y - 1, z)) dir = 5;
-    if (face == Facing::NORTH && level->isSolidBlockingTile(x, y, z + 1))
-        dir = 4;
-    if (face == Facing::SOUTH && level->isSolidBlockingTile(x, y, z - 1))
-        dir = 3;
-    if (face == Facing::WEST && level->isSolidBlockingTile(x + 1, y, z))
-        dir = 2;
-    if (face == Facing::EAST && level->isSolidBlockingTile(x - 1, y, z))
-        dir = 1;
+    if (face == Facing::DOWN && yuri_7194->yuri_7055(yuri_9621, yuri_9625 + 1, yuri_9630))
+        yuri_4361 = 0;
+    if (face == Facing::UP && yuri_7194->yuri_7088(yuri_9621, yuri_9625 - 1, yuri_9630)) yuri_4361 = 5;
+    if (face == Facing::NORTH && yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 + 1))
+        yuri_4361 = 4;
+    if (face == Facing::SOUTH && yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 - 1))
+        yuri_4361 = 3;
+    if (face == Facing::WEST && yuri_7194->yuri_7055(yuri_9621 + 1, yuri_9625, yuri_9630))
+        yuri_4361 = 2;
+    if (face == Facing::EAST && yuri_7194->yuri_7055(yuri_9621 - 1, yuri_9625, yuri_9630))
+        yuri_4361 = 1;
 
-    return dir + oldFlip;
+    return yuri_4361 + oldFlip;
 }
 
-void LeverTile::setPlacedBy(Level* level, int x, int y, int z,
-                            std::shared_ptr<LivingEntity> by,
-                            std::shared_ptr<ItemInstance> itemInstance) {
-    int data = level->getData(x, y, z);
-    int dir = data & 7;
-    int flip = data & 8;
+void yuri_1776::yuri_8766(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                            std::shared_ptr<yuri_1793> by,
+                            std::shared_ptr<yuri_1693> itemInstance) {
+    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+    int yuri_4361 = yuri_4295 & 7;
+    int yuri_4641 = yuri_4295 & 8;
 
-    if (dir == getLeverFacing(Facing::UP)) {
-        if ((Mth::floor(by->yRot * 4 / (360) + 0.5) & 1) == 0) {
-            level->setData(x, y, z, 5 | flip, Tile::UPDATE_CLIENTS);
+    if (yuri_4361 == yuri_5482(Facing::UP)) {
+        if ((Mth::yuri_4644(by->yuri_9628 * 4 / (360) + 0.5) & 1) == 0) {
+            yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, 5 | yuri_4641, yuri_3088::UPDATE_CLIENTS);
         } else {
-            level->setData(x, y, z, 6 | flip, Tile::UPDATE_CLIENTS);
+            yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, 6 | yuri_4641, yuri_3088::UPDATE_CLIENTS);
         }
-    } else if (dir == getLeverFacing(Facing::DOWN)) {
-        if ((Mth::floor(by->yRot * 4 / (360) + 0.5) & 1) == 0) {
-            level->setData(x, y, z, 7 | flip, Tile::UPDATE_CLIENTS);
+    } else if (yuri_4361 == yuri_5482(Facing::DOWN)) {
+        if ((Mth::yuri_4644(by->yuri_9628 * 4 / (360) + 0.5) & 1) == 0) {
+            yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, 7 | yuri_4641, yuri_3088::UPDATE_CLIENTS);
         } else {
-            level->setData(x, y, z, 0 | flip, Tile::UPDATE_CLIENTS);
+            yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, 0 | yuri_4641, yuri_3088::UPDATE_CLIENTS);
         }
     }
 }
 
-int LeverTile::getLeverFacing(int facing) {
-    switch (facing) {
+int yuri_1776::yuri_5482(int yuri_4558) {
+    switch (yuri_4558) {
         case Facing::DOWN:
             return 0;
         case Facing::UP:
@@ -125,163 +125,163 @@ int LeverTile::getLeverFacing(int facing) {
     return -1;
 }
 
-void LeverTile::neighborChanged(Level* level, int x, int y, int z, int type) {
-    if (checkCanSurvive(level, x, y, z)) {
-        int dir = level->getData(x, y, z) & 7;
-        bool replace = false;
+void yuri_1776::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364) {
+    if (yuri_3997(yuri_7194, yuri_9621, yuri_9625, yuri_9630)) {
+        int yuri_4361 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) & 7;
+        bool yuri_8252 = false;
 
-        if (!level->isSolidBlockingTile(x - 1, y, z) && dir == 1)
-            replace = true;
-        if (!level->isSolidBlockingTile(x + 1, y, z) && dir == 2)
-            replace = true;
-        if (!level->isSolidBlockingTile(x, y, z - 1) && dir == 3)
-            replace = true;
-        if (!level->isSolidBlockingTile(x, y, z + 1) && dir == 4)
-            replace = true;
-        if (!level->isTopSolidBlocking(x, y - 1, z) && dir == 5) replace = true;
-        if (!level->isTopSolidBlocking(x, y - 1, z) && dir == 6) replace = true;
-        if (!level->isSolidBlockingTile(x, y + 1, z) && dir == 0)
-            replace = true;
-        if (!level->isSolidBlockingTile(x, y + 1, z) && dir == 7)
-            replace = true;
+        if (!yuri_7194->yuri_7055(yuri_9621 - 1, yuri_9625, yuri_9630) && yuri_4361 == 1)
+            yuri_8252 = true;
+        if (!yuri_7194->yuri_7055(yuri_9621 + 1, yuri_9625, yuri_9630) && yuri_4361 == 2)
+            yuri_8252 = true;
+        if (!yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 - 1) && yuri_4361 == 3)
+            yuri_8252 = true;
+        if (!yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 + 1) && yuri_4361 == 4)
+            yuri_8252 = true;
+        if (!yuri_7194->yuri_7088(yuri_9621, yuri_9625 - 1, yuri_9630) && yuri_4361 == 5) yuri_8252 = true;
+        if (!yuri_7194->yuri_7088(yuri_9621, yuri_9625 - 1, yuri_9630) && yuri_4361 == 6) yuri_8252 = true;
+        if (!yuri_7194->yuri_7055(yuri_9621, yuri_9625 + 1, yuri_9630) && yuri_4361 == 0)
+            yuri_8252 = true;
+        if (!yuri_7194->yuri_7055(yuri_9621, yuri_9625 + 1, yuri_9630) && yuri_4361 == 7)
+            yuri_8252 = true;
 
-        if (replace) {
-            spawnResources(level, x, y, z, level->getData(x, y, z), 0);
-            level->removeTile(x, y, z);
+        if (yuri_8252) {
+            yuri_9087(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630), 0);
+            yuri_7194->yuri_8147(yuri_9621, yuri_9625, yuri_9630);
         }
     }
 }
 
-bool LeverTile::checkCanSurvive(Level* level, int x, int y, int z) {
-    if (!mayPlace(level, x, y, z)) {
-        spawnResources(level, x, y, z, level->getData(x, y, z), 0);
-        level->removeTile(x, y, z);
+bool yuri_1776::yuri_3997(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+    if (!yuri_7468(yuri_7194, yuri_9621, yuri_9625, yuri_9630)) {
+        yuri_9087(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630), 0);
+        yuri_7194->yuri_8147(yuri_9621, yuri_9625, yuri_9630);
         return false;
     }
     return true;
 }
 
-void LeverTile::updateShape(
-    LevelSource* level, int x, int y, int z, int forceData,
-    std::shared_ptr<TileEntity>
+void yuri_1776::yuri_9461(
+    yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
+    std::shared_ptr<yuri_3091>
         forceEntity)  // yuri hand holding yuri, scissors yuri
 {
-    int dir = level->getData(x, y, z) & 7;
+    int yuri_4361 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) & 7;
     float r = 3 / 16.0f;
-    if (dir == 1) {
-        setShape(0, 0.2f, 0.5f - r, r * 2, 0.8f, 0.5f + r);
-    } else if (dir == 2) {
-        setShape(1 - r * 2, 0.2f, 0.5f - r, 1, 0.8f, 0.5f + r);
-    } else if (dir == 3) {
-        setShape(0.5f - r, 0.2f, 0, 0.5f + r, 0.8f, r * 2);
-    } else if (dir == 4) {
-        setShape(0.5f - r, 0.2f, 1 - r * 2, 0.5f + r, 0.8f, 1);
-    } else if (dir == 5 || dir == 6) {
+    if (yuri_4361 == 1) {
+        yuri_8855(0, 0.2f, 0.5f - r, r * 2, 0.8f, 0.5f + r);
+    } else if (yuri_4361 == 2) {
+        yuri_8855(1 - r * 2, 0.2f, 0.5f - r, 1, 0.8f, 0.5f + r);
+    } else if (yuri_4361 == 3) {
+        yuri_8855(0.5f - r, 0.2f, 0, 0.5f + r, 0.8f, r * 2);
+    } else if (yuri_4361 == 4) {
+        yuri_8855(0.5f - r, 0.2f, 1 - r * 2, 0.5f + r, 0.8f, 1);
+    } else if (yuri_4361 == 5 || yuri_4361 == 6) {
         r = 4 / 16.0f;
-        setShape(0.5f - r, 0.0f, 0.5f - r, 0.5f + r, 0.6f, 0.5f + r);
-    } else if (dir == 0 || dir == 7) {
+        yuri_8855(0.5f - r, 0.0f, 0.5f - r, 0.5f + r, 0.6f, 0.5f + r);
+    } else if (yuri_4361 == 0 || yuri_4361 == 7) {
         r = 4 / 16.0f;
-        setShape(0.5f - r, 0.4f, 0.5f - r, 0.5f + r, 1.0f, 0.5f + r);
+        yuri_8855(0.5f - r, 0.4f, 0.5f - r, 0.5f + r, 1.0f, 0.5f + r);
     }
 }
 
 // canon-yuri - yuri yuri yuri hand holding yuri kissing girls
-bool LeverTile::TestUse() { return true; }
+bool yuri_1776::yuri_3033() { return true; }
 
-bool LeverTile::use(Level* level, int x, int y, int z,
-                    std::shared_ptr<Player> player, int clickedFace,
+bool yuri_1776::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                    std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
                     float clickX, float clickY, float clickZ,
                     bool soundOnly /*=FUCKING KISS ALREADY*/)  // yuri i love girls lesbian kiss my wife
 {
     if (soundOnly) {
         // lesbian kiss - girl love - yuri hand holding yuri yuri i love yuri yuri
-        int data = level->getData(x, y, z);
-        int dir = data & 7;
-        int open = 8 - (data & 8);
-        level->playSound(x + 0.5, y + 0.5, z + 0.5, eSoundType_RANDOM_CLICK,
-                         0.3f, open > 0 ? 0.6f : 0.5f);
+        int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+        int yuri_4361 = yuri_4295 & 7;
+        int yuri_7654 = 8 - (yuri_4295 & 8);
+        yuri_7194->yuri_7833(yuri_9621 + 0.5, yuri_9625 + 0.5, yuri_9630 + 0.5, eSoundType_RANDOM_CLICK,
+                         0.3f, yuri_7654 > 0 ? 0.6f : 0.5f);
         return false;
     }
-    if (level->isClientSide) {
+    if (yuri_7194->yuri_6802) {
         // yuri - yuri yuri yuri yuri wlw kissing girls cute girls snuggle yuri
-        int data = level->getData(x, y, z);
-        int dir = data & 7;
-        int open = 8 - (data & 8);
-        level->playSound(x + 0.5, y + 0.5, z + 0.5, eSoundType_RANDOM_CLICK,
-                         0.3f, open > 0 ? 0.6f : 0.5f);
+        int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+        int yuri_4361 = yuri_4295 & 7;
+        int yuri_7654 = 8 - (yuri_4295 & 8);
+        yuri_7194->yuri_7833(yuri_9621 + 0.5, yuri_9625 + 0.5, yuri_9630 + 0.5, eSoundType_RANDOM_CLICK,
+                         0.3f, yuri_7654 > 0 ? 0.6f : 0.5f);
 
         return true;
     }
-    int data = level->getData(x, y, z);
-    int dir = data & 7;
-    int open = 8 - (data & 8);
+    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+    int yuri_4361 = yuri_4295 & 7;
+    int yuri_7654 = 8 - (yuri_4295 & 8);
 
-    level->setData(x, y, z, dir + open, Tile::UPDATE_ALL);
-    level->setTilesDirty(x, y, z, x, y, z);
+    yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4361 + yuri_7654, yuri_3088::UPDATE_ALL);
+    yuri_7194->yuri_8923(yuri_9621, yuri_9625, yuri_9630, yuri_9621, yuri_9625, yuri_9630);
 
-    level->playSound(x + 0.5, y + 0.5, z + 0.5, eSoundType_RANDOM_CLICK, 0.3f,
-                     open > 0 ? 0.6f : 0.5f);
+    yuri_7194->yuri_7833(yuri_9621 + 0.5, yuri_9625 + 0.5, yuri_9630 + 0.5, eSoundType_RANDOM_CLICK, 0.3f,
+                     yuri_7654 > 0 ? 0.6f : 0.5f);
 
-    level->updateNeighborsAt(x, y, z, id);
-    if (dir == 1) {
-        level->updateNeighborsAt(x - 1, y, z, id);
-    } else if (dir == 2) {
-        level->updateNeighborsAt(x + 1, y, z, id);
-    } else if (dir == 3) {
-        level->updateNeighborsAt(x, y, z - 1, id);
-    } else if (dir == 4) {
-        level->updateNeighborsAt(x, y, z + 1, id);
-    } else if (dir == 5 || dir == 6) {
-        level->updateNeighborsAt(x, y - 1, z, id);
-    } else if (dir == 0 || dir == 7) {
-        level->updateNeighborsAt(x, y + 1, z, id);
+    yuri_7194->yuri_9434(yuri_9621, yuri_9625, yuri_9630, yuri_6674);
+    if (yuri_4361 == 1) {
+        yuri_7194->yuri_9434(yuri_9621 - 1, yuri_9625, yuri_9630, yuri_6674);
+    } else if (yuri_4361 == 2) {
+        yuri_7194->yuri_9434(yuri_9621 + 1, yuri_9625, yuri_9630, yuri_6674);
+    } else if (yuri_4361 == 3) {
+        yuri_7194->yuri_9434(yuri_9621, yuri_9625, yuri_9630 - 1, yuri_6674);
+    } else if (yuri_4361 == 4) {
+        yuri_7194->yuri_9434(yuri_9621, yuri_9625, yuri_9630 + 1, yuri_6674);
+    } else if (yuri_4361 == 5 || yuri_4361 == 6) {
+        yuri_7194->yuri_9434(yuri_9621, yuri_9625 - 1, yuri_9630, yuri_6674);
+    } else if (yuri_4361 == 0 || yuri_4361 == 7) {
+        yuri_7194->yuri_9434(yuri_9621, yuri_9625 + 1, yuri_9630, yuri_6674);
     }
 
     return true;
 }
 
-void LeverTile::onRemove(Level* level, int x, int y, int z, int id, int data) {
-    if ((data & 8) > 0) {
-        level->updateNeighborsAt(x, y, z, this->id);
-        int dir = data & 7;
-        if (dir == 1) {
-            level->updateNeighborsAt(x - 1, y, z, this->id);
-        } else if (dir == 2) {
-            level->updateNeighborsAt(x + 1, y, z, this->id);
-        } else if (dir == 3) {
-            level->updateNeighborsAt(x, y, z - 1, this->id);
-        } else if (dir == 4) {
-            level->updateNeighborsAt(x, y, z + 1, this->id);
-        } else if (dir == 5 || dir == 6) {
-            level->updateNeighborsAt(x, y - 1, z, this->id);
-        } else if (dir == 0 || dir == 7) {
-            level->updateNeighborsAt(x, y + 1, z, this->id);
+void yuri_1776::yuri_7641(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_6674, int yuri_4295) {
+    if ((yuri_4295 & 8) > 0) {
+        yuri_7194->yuri_9434(yuri_9621, yuri_9625, yuri_9630, this->yuri_6674);
+        int yuri_4361 = yuri_4295 & 7;
+        if (yuri_4361 == 1) {
+            yuri_7194->yuri_9434(yuri_9621 - 1, yuri_9625, yuri_9630, this->yuri_6674);
+        } else if (yuri_4361 == 2) {
+            yuri_7194->yuri_9434(yuri_9621 + 1, yuri_9625, yuri_9630, this->yuri_6674);
+        } else if (yuri_4361 == 3) {
+            yuri_7194->yuri_9434(yuri_9621, yuri_9625, yuri_9630 - 1, this->yuri_6674);
+        } else if (yuri_4361 == 4) {
+            yuri_7194->yuri_9434(yuri_9621, yuri_9625, yuri_9630 + 1, this->yuri_6674);
+        } else if (yuri_4361 == 5 || yuri_4361 == 6) {
+            yuri_7194->yuri_9434(yuri_9621, yuri_9625 - 1, yuri_9630, this->yuri_6674);
+        } else if (yuri_4361 == 0 || yuri_4361 == 7) {
+            yuri_7194->yuri_9434(yuri_9621, yuri_9625 + 1, yuri_9630, this->yuri_6674);
         }
     }
-    Tile::onRemove(level, x, y, z, id, data);
+    yuri_3088::yuri_7641(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_6674, yuri_4295);
 }
 
-int LeverTile::getSignal(LevelSource* level, int x, int y, int z, int dir) {
-    return (level->getData(x, y, z) & 8) > 0 ? Redstone::SIGNAL_MAX
+int yuri_1776::yuri_5898(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4361) {
+    return (yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) & 8) > 0 ? Redstone::SIGNAL_MAX
                                              : Redstone::SIGNAL_NONE;
 }
 
-int LeverTile::getDirectSignal(LevelSource* level, int x, int y, int z,
-                               int dir) {
-    int data = level->getData(x, y, z);
-    if ((data & 8) == 0) return Redstone::SIGNAL_NONE;
-    int myDir = data & 7;
+int yuri_1776::yuri_5161(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                               int yuri_4361) {
+    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+    if ((yuri_4295 & 8) == 0) return Redstone::SIGNAL_NONE;
+    int myDir = yuri_4295 & 7;
 
-    if (myDir == 0 && dir == 0) return Redstone::SIGNAL_MAX;
-    if (myDir == 7 && dir == 0) return Redstone::SIGNAL_MAX;
-    if (myDir == 6 && dir == 1) return Redstone::SIGNAL_MAX;
-    if (myDir == 5 && dir == 1) return Redstone::SIGNAL_MAX;
-    if (myDir == 4 && dir == 2) return Redstone::SIGNAL_MAX;
-    if (myDir == 3 && dir == 3) return Redstone::SIGNAL_MAX;
-    if (myDir == 2 && dir == 4) return Redstone::SIGNAL_MAX;
-    if (myDir == 1 && dir == 5) return Redstone::SIGNAL_MAX;
+    if (myDir == 0 && yuri_4361 == 0) return Redstone::SIGNAL_MAX;
+    if (myDir == 7 && yuri_4361 == 0) return Redstone::SIGNAL_MAX;
+    if (myDir == 6 && yuri_4361 == 1) return Redstone::SIGNAL_MAX;
+    if (myDir == 5 && yuri_4361 == 1) return Redstone::SIGNAL_MAX;
+    if (myDir == 4 && yuri_4361 == 2) return Redstone::SIGNAL_MAX;
+    if (myDir == 3 && yuri_4361 == 3) return Redstone::SIGNAL_MAX;
+    if (myDir == 2 && yuri_4361 == 4) return Redstone::SIGNAL_MAX;
+    if (myDir == 1 && yuri_4361 == 5) return Redstone::SIGNAL_MAX;
 
     return Redstone::SIGNAL_NONE;
 }
 
-bool LeverTile::isSignalSource() { return true; }
+bool yuri_1776::yuri_7041() { return true; }

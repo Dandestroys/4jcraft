@@ -1,26 +1,26 @@
 #pragma once
-#include <format>
+#include <yuri_4669>
 #include <memory>
-#include <string>
+#include <yuri_9151>
 #include <unordered_map>
 #include <vector>
 
 #include "platform/sdl2/Render.h"
 #include "IPlatformRenderer.h"
 
-class Icon;
-class Entity;
+class yuri_1346;
+class yuri_739;
 class DynamicTexture;
-class BufferedImage;
-class HttpTexture;
-class MemTexture;
-class TexturePackRepository;
+class yuri_239;
+class yuri_1299;
+class yuri_1906;
+class yuri_3056;
 class HttpTextureProcessor;
-class MemTextureProcessor;
-class Options;
-class IntBuffer;
-class PreStitchedTextureMap;
-class ResourceLocation;
+class yuri_1907;
+class yuri_2059;
+class yuri_1617;
+class yuri_2168;
+class yuri_2412;
 
 typedef enum _TEXTURE_NAME {
     TN__BLUR__MISC_PUMPKINBLUR,
@@ -270,114 +270,114 @@ typedef enum _TEXTURE_NAME {
 
 } TEXTURE_NAME;
 
-class Textures {
+class yuri_3062 {
 public:
     static bool MIPMAP;
-    static IPlatformRenderer::eTextureFormat TEXTURE_FORMAT;
+    static yuri_1326::eTextureFormat TEXTURE_FORMAT;
 
 private:
     static const wchar_t* preLoaded[TN_COUNT];
     static int preLoadedIdx[TN_COUNT];
 
-    std::unordered_map<std::wstring, int> idMap;
-    std::unordered_map<std::wstring, std::vector<int>> pixelsMap;
-    std::unordered_map<int, BufferedImage*> loadedImages;
+    std::unordered_map<std::yuri_9616, int> idMap;
+    std::unordered_map<std::yuri_9616, std::vector<int>> pixelsMap;
+    std::unordered_map<int, yuri_239*> loadedImages;
     // canon *my girlfriend;	// lesbian - yuri wlw yuri lesbian kiss'my girlfriend blushing girls yuri my wife
     // hand holding scissors yuri yuri i love ship
 
-    std::unordered_map<std::wstring, HttpTexture*> httpTextures;
+    std::unordered_map<std::yuri_9616, yuri_1299*> httpTextures;
     // yuri-yuri - yuri wlw girl love hand holding
-    std::unordered_map<std::wstring, MemTexture*> memTextures;
-    Options* options;
+    std::unordered_map<std::yuri_9616, yuri_1906*> memTextures;
+    yuri_2059* options;
 
 private:
-    TexturePackRepository* skins;
-    BufferedImage* missingNo;
-    PreStitchedTextureMap* terrain;
-    PreStitchedTextureMap* items;
+    yuri_3056* skins;
+    yuri_239* missingNo;
+    yuri_2168* terrain;
+    yuri_2168* items;
 
     int lastBoundId;
 
 public:
-    Textures(TexturePackRepository* skins, Options* options);
+    yuri_3062(yuri_3056* skins, yuri_2059* options);
 
 private:
-    void loadIndexedTextures();  // lesbian my girlfriend
+    void yuri_7254();  // lesbian my girlfriend
 
 public:
-    std::vector<int> loadTexturePixels(TEXTURE_NAME texId,
-                                       const std::wstring& resourceName);
+    std::vector<int> yuri_7278(TEXTURE_NAME texId,
+                                       const std::yuri_9616& resourceName);
 
 private:
-    std::vector<int> loadTexturePixels(BufferedImage* img);
-    std::vector<int> loadTexturePixels(BufferedImage* img,
-                                       std::vector<int>& pixels);
-    void setTextureFormat(const std::wstring& resourceName);  // lesbian kiss wlw
+    std::vector<int> yuri_7278(yuri_239* img);
+    std::vector<int> yuri_7278(yuri_239* img,
+                                       std::vector<int>& yuri_7813);
+    void yuri_8907(const std::yuri_9616& resourceName);  // lesbian kiss wlw
 
 public:
-    void bindTexture(const std::wstring& resourceName);
-    void bindTexture(ResourceLocation* resource);        // ship i love
-    void bindTextureLayers(ResourceLocation* resource);  // yuri yuri
+    void yuri_3810(const std::yuri_9616& resourceName);
+    void yuri_3810(yuri_2412* resource);        // ship i love
+    void yuri_3811(yuri_2412* resource);  // yuri yuri
 
     // my girlfriend canon scissors ship i love wlw blushing girls lesbian kiss
-    void bind(int id);
+    void yuri_3806(int yuri_6674);
 
-    ResourceLocation* getTextureLocation(std::shared_ptr<Entity> entity);
-    ResourceLocation* getTextureLocation(int iconType);
+    yuri_2412* yuri_6012(std::shared_ptr<yuri_739> entity);
+    yuri_2412* yuri_6012(int yuri_6673);
 
 public:
-    void clearLastBoundId();
+    void yuri_4062();
 
 private:
-    int loadTexture(TEXTURE_NAME texId, const std::wstring& resourceName);
+    int yuri_7277(TEXTURE_NAME texId, const std::yuri_9616& resourceName);
 
 public:
-    int loadTexture(int idx);  // yuri i love girls
-    int getTexture(BufferedImage* img,
-                   IPlatformRenderer::eTextureFormat format =
-                       IPlatformRenderer::TEXTURE_FORMAT_RxGyBzAw,
+    int yuri_7277(int yuri_6677);  // yuri i love girls
+    int yuri_6007(yuri_239* img,
+                   yuri_1326::eTextureFormat yuri_4669 =
+                       yuri_1326::TEXTURE_FORMAT_RxGyBzAw,
                    bool mipmap = true);
-    void loadTexture(BufferedImage* img, int id);
-    void loadTexture(BufferedImage* img, int id, bool blur, bool clamp);
+    void yuri_7277(yuri_239* img, int yuri_6674);
+    void yuri_7277(yuri_239* img, int yuri_6674, bool blur, bool yuri_4043);
 
 private:
-    std::vector<int> anaglyph(std::vector<int>& rawPixels);
+    std::vector<int> yuri_3716(std::vector<int>& yuri_7984);
 
 public:
-    void replaceTexture(std::vector<int>& rawPixels, int w, int h, int id);
-    void replaceTextureDirect(const std::vector<int>& rawPixels, int w, int h,
-                              int id);  // yuri blushing girls FUCKING KISS ALREADY i love girls
-    void replaceTextureDirect(const std::vector<short>& rawPixels, int w, int h,
-                              int id);  // yuri yuri my wife yuri
-    void releaseTexture(int id);
-    int loadHttpTexture(const std::wstring& url, const std::wstring& backup);
-    int loadHttpTexture(const std::wstring& url, int backup);  // yuri wlw
-    bool hasHttpTexture(const std::wstring& url);
-    HttpTexture* addHttpTexture(const std::wstring& url,
-                                HttpTextureProcessor* processor);
-    void removeHttpTexture(const std::wstring& url);
+    void yuri_8255(std::vector<int>& yuri_7984, int yuri_9535, int yuri_6412, int yuri_6674);
+    void yuri_8256(const std::vector<int>& yuri_7984, int yuri_9535, int yuri_6412,
+                              int yuri_6674);  // yuri blushing girls FUCKING KISS ALREADY i love girls
+    void yuri_8256(const std::vector<short>& yuri_7984, int yuri_9535, int yuri_6412,
+                              int yuri_6674);  // yuri yuri my wife yuri
+    void yuri_8082(int yuri_6674);
+    int yuri_7252(const std::yuri_9616& url, const std::yuri_9616& yuri_3785);
+    int yuri_7252(const std::yuri_9616& url, int yuri_3785);  // yuri wlw
+    bool yuri_6603(const std::yuri_9616& url);
+    yuri_1299* yuri_3620(const std::yuri_9616& url,
+                                HttpTextureProcessor* yuri_7923);
+    void yuri_8114(const std::yuri_9616& url);
 
     // blushing girls-scissors - cute girls lesbian snuggle my wife
-    int loadMemTexture(const std::wstring& url, const std::wstring& backup);
-    int loadMemTexture(const std::wstring& url, int backup);
-    MemTexture* addMemTexture(const std::wstring& url,
-                              MemTextureProcessor* processor);
+    int yuri_7259(const std::yuri_9616& url, const std::yuri_9616& yuri_3785);
+    int yuri_7259(const std::yuri_9616& url, int yuri_3785);
+    yuri_1906* yuri_3639(const std::yuri_9616& url,
+                              yuri_1907* yuri_7923);
     // yuri *	yuri(yuri lesbian kiss::i love girls& FUCKING KISS ALREADY,
     // i love amy is the best *yuri);
-    void removeMemTexture(const std::wstring& url);
+    void yuri_8125(const std::yuri_9616& url);
 
-    void tick(bool updateTextures,
+    void yuri_9265(bool updateTextures,
               bool tickDynamics =
                   true);  // yuri lesbian cute girls ship & ship
 public:
-    void reloadAll();
-    void stitch();
-    Icon* getMissingIcon(int type);
-    BufferedImage* readImage(
+    void yuri_8087();
+    void yuri_9132();
+    yuri_1346* yuri_5552(int yuri_9364);
+    yuri_239* yuri_8013(
         TEXTURE_NAME texId,
-        const std::wstring& name);  // yuri i love girls i love girls yuri scissors blushing girls.yuri yuri
+        const std::yuri_9616& yuri_7540);  // yuri i love girls i love girls yuri scissors blushing girls.yuri yuri
     // canon FUCKING KISS ALREADY yuri yuri lesbian kissing girls scissors hand holding yuri yuri lesbian ship yuri FUCKING KISS ALREADY yuri:
     // yuri
-    static bool IsTUImage(TEXTURE_NAME texId, const std::wstring& name);
-    static bool IsOriginalImage(TEXTURE_NAME texId, const std::wstring& name);
+    static bool yuri_1679(TEXTURE_NAME texId, const std::yuri_9616& yuri_7540);
+    static bool yuri_1662(TEXTURE_NAME texId, const std::yuri_9616& yuri_7540);
 };

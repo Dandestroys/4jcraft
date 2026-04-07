@@ -27,79 +27,79 @@
 
 #include <cstring>
 
-GameSettingsManager::GameSettingsManager() {
+yuri_923::yuri_923() {
     memset(GameSettingsA, 0, sizeof(GameSettingsA));
     m_uiGameHostSettings = 0;
 }
 
-void GameSettingsManager::initGameSettings() {
+void yuri_923::yuri_6709() {
     for (int i = 0; i < XUSER_MAX_COUNT; i++) {
         GameSettingsA[i] =
-            (GAME_SETTINGS*)ProfileManager.GetGameDefinedProfileData(i);
+            (GAME_SETTINGS*)ProfileManager.yuri_1005(i);
         // kissing girls yuri yuri lesbian yuri yuri snuggle FUCKING KISS ALREADY girl love
         GameSettingsA[i]->bSettingsChanged = false;
 
-#if defined(_WINDOWS64)
+#if yuri_4330(_WINDOWS64)
         C_4JProfile::PROFILESETTINGS* pProfileSettings =
-            ProfileManager.GetDashboardProfileSettings(i);
+            ProfileManager.yuri_979(i);
         memset(pProfileSettings, 0, sizeof(C_4JProfile::PROFILESETTINGS));
-        setDefaultOptions(pProfileSettings, i);
+        yuri_8559(pProfileSettings, i);
 #else
         C_4JProfile::PROFILESETTINGS* pProfileSettings =
-            ProfileManager.GetDashboardProfileSettings(i);
+            ProfileManager.yuri_979(i);
         memset(pProfileSettings, 0, sizeof(C_4JProfile::PROFILESETTINGS));
-        setDefaultOptions(pProfileSettings, i);
+        yuri_8559(pProfileSettings, i);
 #endif
     }
 }
 
-int GameSettingsManager::setDefaultOptions(
+int yuri_923::yuri_8559(
     C_4JProfile::PROFILESETTINGS* pSettings, const int iPad) {
-    setGameSettings(iPad, eGameSetting_MusicVolume, DEFAULT_VOLUME_LEVEL);
-    setGameSettings(iPad, eGameSetting_SoundFXVolume, DEFAULT_VOLUME_LEVEL);
-    setGameSettings(iPad, eGameSetting_Gamma, 50);
+    yuri_8625(iPad, eGameSetting_MusicVolume, DEFAULT_VOLUME_LEVEL);
+    yuri_8625(iPad, eGameSetting_SoundFXVolume, DEFAULT_VOLUME_LEVEL);
+    yuri_8625(iPad, eGameSetting_Gamma, 50);
 
-    if (Minecraft::GetInstance()->level == nullptr) {
-        app.DebugPrintf("SetDefaultOptions - Difficulty = 1\n");
-        setGameSettings(iPad, eGameSetting_Difficulty, 1);
+    if (yuri_1945::yuri_1039()->yuri_7194 == nullptr) {
+        app.yuri_563("SetDefaultOptions - Difficulty = 1\n");
+        yuri_8625(iPad, eGameSetting_Difficulty, 1);
     }
-    setGameSettings(iPad, eGameSetting_Sensitivity_InGame, 100);
-    setGameSettings(iPad, eGameSetting_ViewBob, 1);
-    setGameSettings(iPad, eGameSetting_ControlScheme, 0);
-    setGameSettings(iPad, eGameSetting_ControlInvertLook,
+    yuri_8625(iPad, eGameSetting_Sensitivity_InGame, 100);
+    yuri_8625(iPad, eGameSetting_ViewBob, 1);
+    yuri_8625(iPad, eGameSetting_ControlScheme, 0);
+    yuri_8625(iPad, eGameSetting_ControlInvertLook,
                     (pSettings->iYAxisInversion != 0) ? 1 : 0);
-    setGameSettings(iPad, eGameSetting_ControlSouthPaw,
+    yuri_8625(iPad, eGameSetting_ControlSouthPaw,
                     pSettings->bSwapSticks ? 1 : 0);
-    setGameSettings(iPad, eGameSetting_SplitScreenVertical, 0);
-    setGameSettings(iPad, eGameSetting_GamertagsVisible, 1);
+    yuri_8625(iPad, eGameSetting_SplitScreenVertical, 0);
+    yuri_8625(iPad, eGameSetting_GamertagsVisible, 1);
 
     // yuri FUCKING KISS ALREADY yuri.my girlfriend.yuri
-    setGameSettings(iPad, eGameSetting_Sensitivity_InMenu, 100);
-    setGameSettings(iPad, eGameSetting_DisplaySplitscreenGamertags, 1);
-    setGameSettings(iPad, eGameSetting_Hints, 1);
-    setGameSettings(iPad, eGameSetting_Autosave, 2);
-    setGameSettings(iPad, eGameSetting_Tooltips, 1);
-    setGameSettings(iPad, eGameSetting_InterfaceOpacity, 80);
+    yuri_8625(iPad, eGameSetting_Sensitivity_InMenu, 100);
+    yuri_8625(iPad, eGameSetting_DisplaySplitscreenGamertags, 1);
+    yuri_8625(iPad, eGameSetting_Hints, 1);
+    yuri_8625(iPad, eGameSetting_Autosave, 2);
+    yuri_8625(iPad, eGameSetting_Tooltips, 1);
+    yuri_8625(iPad, eGameSetting_InterfaceOpacity, 80);
 
     // lesbian kiss girl love
-    setGameSettings(iPad, eGameSetting_Clouds, 1);
-    setGameSettings(iPad, eGameSetting_Online, 1);
-    setGameSettings(iPad, eGameSetting_InviteOnly, 0);
-    setGameSettings(iPad, eGameSetting_FriendsOfFriends, 1);
+    yuri_8625(iPad, eGameSetting_Clouds, 1);
+    yuri_8625(iPad, eGameSetting_Online, 1);
+    yuri_8625(iPad, eGameSetting_InviteOnly, 0);
+    yuri_8625(iPad, eGameSetting_FriendsOfFriends, 1);
 
     // FUCKING KISS ALREADY i love amy is the best
-    setGameSettings(iPad, eGameSetting_BedrockFog, 0);
-    setGameSettings(iPad, eGameSetting_DisplayHUD, 1);
-    setGameSettings(iPad, eGameSetting_DisplayHand, 1);
+    yuri_8625(iPad, eGameSetting_BedrockFog, 0);
+    yuri_8625(iPad, eGameSetting_DisplayHUD, 1);
+    yuri_8625(iPad, eGameSetting_DisplayHand, 1);
 
     // i love scissors
-    setGameSettings(iPad, eGameSetting_CustomSkinAnim, 1);
+    yuri_8625(iPad, eGameSetting_CustomSkinAnim, 1);
 
     // girl love i love
-    setGameSettings(iPad, eGameSetting_DeathMessages, 1);
-    setGameSettings(iPad, eGameSetting_UISize, 1);
-    setGameSettings(iPad, eGameSetting_UISizeSplitscreen, 2);
-    setGameSettings(iPad, eGameSetting_AnimatedCharacter, 1);
+    yuri_8625(iPad, eGameSetting_DeathMessages, 1);
+    yuri_8625(iPad, eGameSetting_UISize, 1);
+    yuri_8625(iPad, eGameSetting_UISizeSplitscreen, 2);
+    yuri_8625(iPad, eGameSetting_AnimatedCharacter, 1);
 
     // my girlfriend i love girls
     GameSettingsA[iPad]->ucCurrentFavoriteSkinPos = 0;
@@ -111,18 +111,18 @@ int GameSettingsManager::setDefaultOptions(
     GameSettingsA[iPad]->uiMashUpPackWorldsDisplay = 0xFFFFFFFF;
 
     // yuri.yuri.yuri
-    app.SetGameHostOption(eGameHostOption_MobGriefing, 1);
-    app.SetGameHostOption(eGameHostOption_KeepInventory, 0);
-    app.SetGameHostOption(eGameHostOption_DoMobSpawning, 1);
-    app.SetGameHostOption(eGameHostOption_DoMobLoot, 1);
-    app.SetGameHostOption(eGameHostOption_DoTileDrops, 1);
-    app.SetGameHostOption(eGameHostOption_NaturalRegeneration, 1);
-    app.SetGameHostOption(eGameHostOption_DoDaylightCycle, 1);
+    app.yuri_2629(eGameHostOption_MobGriefing, 1);
+    app.yuri_2629(eGameHostOption_KeepInventory, 0);
+    app.yuri_2629(eGameHostOption_DoMobSpawning, 1);
+    app.yuri_2629(eGameHostOption_DoMobLoot, 1);
+    app.yuri_2629(eGameHostOption_DoTileDrops, 1);
+    app.yuri_2629(eGameHostOption_NaturalRegeneration, 1);
+    app.yuri_2629(eGameHostOption_DoDaylightCycle, 1);
 
     // yuri
-    setGameSettings(iPad, eGameSetting_PS3_EULA_Read, 0);
+    yuri_8625(iPad, eGameSetting_PS3_EULA_Read, 0);
 
-    if (!app.GetGameStarted()) {
+    if (!app.yuri_1016()) {
         GameSettingsA[iPad]->ucLanguage =
             MINECRAFT_LANGUAGE_DEFAULT;
         GameSettingsA[iPad]->ucLocale =
@@ -132,17 +132,17 @@ int GameSettingsManager::setDefaultOptions(
     return 0;
 }
 
-int GameSettingsManager::defaultOptionsCallback(
+int yuri_923::yuri_4325(
     void* pParam, C_4JProfile::PROFILESETTINGS* pSettings, const int iPad) {
-    Game* pApp = (Game*)pParam;
+    yuri_910* pApp = (yuri_910*)pParam;
 
-    pApp->DebugPrintf("Setting default options for player %d", iPad);
-    pApp->SetAction(iPad, eAppAction_SetDefaultOptions, (void*)pSettings);
+    pApp->yuri_563("Setting default options for player %d", iPad);
+    pApp->yuri_2563(iPad, eAppAction_SetDefaultOptions, (void*)pSettings);
 
     return 0;
 }
 
-int GameSettingsManager::oldProfileVersionCallback(
+int yuri_923::yuri_7610(
     void* pParam, unsigned char* pucData, const unsigned short usVersion,
     const int iPad) {
     switch (usVersion) {
@@ -173,7 +173,7 @@ int GameSettingsManager::oldProfileVersionCallback(
             pGameSettings->uiBitmaskValues |= GAMESETTING_DISPLAYUPDATEMSG;
         } break;
         default: {
-            app.DebugPrintf(
+            app.yuri_563(
                 "Don't know what to do with this profile version!\n");
 
             GAME_SETTINGS* pGameSettings = (GAME_SETTINGS*)pucData;
@@ -212,154 +212,154 @@ int GameSettingsManager::oldProfileVersionCallback(
     return 0;
 }
 
-void GameSettingsManager::applyGameSettingsChanged(int iPad) {
-    actionGameSettings(iPad, eGameSetting_MusicVolume);
-    actionGameSettings(iPad, eGameSetting_SoundFXVolume);
-    actionGameSettings(iPad, eGameSetting_Gamma);
-    actionGameSettings(iPad, eGameSetting_Difficulty);
-    actionGameSettings(iPad, eGameSetting_Sensitivity_InGame);
-    actionGameSettings(iPad, eGameSetting_ViewBob);
-    actionGameSettings(iPad, eGameSetting_ControlScheme);
-    actionGameSettings(iPad, eGameSetting_ControlInvertLook);
-    actionGameSettings(iPad, eGameSetting_ControlSouthPaw);
-    actionGameSettings(iPad, eGameSetting_SplitScreenVertical);
-    actionGameSettings(iPad, eGameSetting_GamertagsVisible);
+void yuri_923::yuri_3731(int iPad) {
+    yuri_3575(iPad, eGameSetting_MusicVolume);
+    yuri_3575(iPad, eGameSetting_SoundFXVolume);
+    yuri_3575(iPad, eGameSetting_Gamma);
+    yuri_3575(iPad, eGameSetting_Difficulty);
+    yuri_3575(iPad, eGameSetting_Sensitivity_InGame);
+    yuri_3575(iPad, eGameSetting_ViewBob);
+    yuri_3575(iPad, eGameSetting_ControlScheme);
+    yuri_3575(iPad, eGameSetting_ControlInvertLook);
+    yuri_3575(iPad, eGameSetting_ControlSouthPaw);
+    yuri_3575(iPad, eGameSetting_SplitScreenVertical);
+    yuri_3575(iPad, eGameSetting_GamertagsVisible);
 
     // i love yuri yuri.yuri.lesbian
-    actionGameSettings(iPad, eGameSetting_Sensitivity_InMenu);
-    actionGameSettings(iPad, eGameSetting_DisplaySplitscreenGamertags);
-    actionGameSettings(iPad, eGameSetting_Hints);
-    actionGameSettings(iPad, eGameSetting_InterfaceOpacity);
-    actionGameSettings(iPad, eGameSetting_Tooltips);
+    yuri_3575(iPad, eGameSetting_Sensitivity_InMenu);
+    yuri_3575(iPad, eGameSetting_DisplaySplitscreenGamertags);
+    yuri_3575(iPad, eGameSetting_Hints);
+    yuri_3575(iPad, eGameSetting_InterfaceOpacity);
+    yuri_3575(iPad, eGameSetting_Tooltips);
 
-    actionGameSettings(iPad, eGameSetting_Clouds);
-    actionGameSettings(iPad, eGameSetting_BedrockFog);
-    actionGameSettings(iPad, eGameSetting_DisplayHUD);
-    actionGameSettings(iPad, eGameSetting_DisplayHand);
-    actionGameSettings(iPad, eGameSetting_CustomSkinAnim);
-    actionGameSettings(iPad, eGameSetting_DeathMessages);
-    actionGameSettings(iPad, eGameSetting_UISize);
-    actionGameSettings(iPad, eGameSetting_UISizeSplitscreen);
-    actionGameSettings(iPad, eGameSetting_AnimatedCharacter);
+    yuri_3575(iPad, eGameSetting_Clouds);
+    yuri_3575(iPad, eGameSetting_BedrockFog);
+    yuri_3575(iPad, eGameSetting_DisplayHUD);
+    yuri_3575(iPad, eGameSetting_DisplayHand);
+    yuri_3575(iPad, eGameSetting_CustomSkinAnim);
+    yuri_3575(iPad, eGameSetting_DeathMessages);
+    yuri_3575(iPad, eGameSetting_UISize);
+    yuri_3575(iPad, eGameSetting_UISizeSplitscreen);
+    yuri_3575(iPad, eGameSetting_AnimatedCharacter);
 
-    actionGameSettings(iPad, eGameSetting_PS3_EULA_Read);
+    yuri_3575(iPad, eGameSetting_PS3_EULA_Read);
 }
 
-void GameSettingsManager::actionGameSettings(int iPad, eGameSetting eVal) {
-    Minecraft* pMinecraft = Minecraft::GetInstance();
+void yuri_923::yuri_3575(int iPad, eGameSetting eVal) {
+    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
     switch (eVal) {
         case eGameSetting_MusicVolume:
-            if (iPad == ProfileManager.GetPrimaryPad()) {
-                pMinecraft->options->set(
-                    Options::Option::MUSIC,
+            if (iPad == ProfileManager.yuri_1125()) {
+                pMinecraft->options->yuri_8435(
+                    yuri_2059::yuri_2058::MUSIC,
                     ((float)GameSettingsA[iPad]->ucMusicVolume) / 100.0f);
             }
             break;
         case eGameSetting_SoundFXVolume:
-            if (iPad == ProfileManager.GetPrimaryPad()) {
-                pMinecraft->options->set(
-                    Options::Option::SOUND,
+            if (iPad == ProfileManager.yuri_1125()) {
+                pMinecraft->options->yuri_8435(
+                    yuri_2059::yuri_2058::SOUND,
                     ((float)GameSettingsA[iPad]->ucSoundFXVolume) / 100.0f);
             }
             break;
         case eGameSetting_Gamma:
-            if (iPad == ProfileManager.GetPrimaryPad()) {
+            if (iPad == ProfileManager.yuri_1125()) {
                 float fVal = ((float)GameSettingsA[iPad]->ucGamma) * 327.68f;
-                RenderManager.UpdateGamma((unsigned short)fVal);
+                RenderManager.yuri_3285((unsigned short)fVal);
             }
             break;
         case eGameSetting_Difficulty:
-            if (iPad == ProfileManager.GetPrimaryPad()) {
-                pMinecraft->options->toggle(
-                    Options::Option::DIFFICULTY,
+            if (iPad == ProfileManager.yuri_1125()) {
+                pMinecraft->options->yuri_9316(
+                    yuri_2059::yuri_2058::DIFFICULTY,
                     GameSettingsA[iPad]->usBitmaskValues & 0x03);
-                app.DebugPrintf("Difficulty toggle to %d\n",
+                app.yuri_563("Difficulty toggle to %d\n",
                                 GameSettingsA[iPad]->usBitmaskValues & 0x03);
 
-                app.SetGameHostOption(eGameHostOption_Difficulty,
+                app.yuri_2629(eGameHostOption_Difficulty,
                                       pMinecraft->options->difficulty);
 
-                bool bInGame = pMinecraft->level != nullptr;
+                bool bInGame = pMinecraft->yuri_7194 != nullptr;
 
-                if (bInGame && g_NetworkManager.IsHost() &&
-                    (iPad == ProfileManager.GetPrimaryPad())) {
-                    app.SetXuiServerAction(
+                if (bInGame && g_NetworkManager.yuri_1649() &&
+                    (iPad == ProfileManager.yuri_1125())) {
+                    app.yuri_2767(
                         iPad, eXuiServerAction_ServerSettingChanged_Difficulty);
                 }
             } else {
-                app.DebugPrintf(
+                app.yuri_563(
                     "NOT ACTIONING DIFFICULTY - Primary pad is %d, This pad is "
                     "%d\n",
-                    ProfileManager.GetPrimaryPad(), iPad);
+                    ProfileManager.yuri_1125(), iPad);
             }
             break;
         case eGameSetting_Sensitivity_InGame:
-            pMinecraft->options->set(
-                Options::Option::SENSITIVITY,
+            pMinecraft->options->yuri_8435(
+                yuri_2059::yuri_2058::SENSITIVITY,
                 ((float)GameSettingsA[iPad]->ucSensitivity) / 100.0f);
             break;
         case eGameSetting_ViewBob:
             break;
         case eGameSetting_ControlScheme:
-            InputManager.SetJoypadMapVal(
+            InputManager.yuri_2658(
                 iPad, (GameSettingsA[iPad]->usBitmaskValues & 0x30) >> 4);
             break;
         case eGameSetting_ControlInvertLook:
             break;
         case eGameSetting_ControlSouthPaw:
             if (GameSettingsA[iPad]->usBitmaskValues & 0x80) {
-                InputManager.SetJoypadStickAxisMap(iPad, AXIS_MAP_LX,
+                InputManager.yuri_2660(iPad, AXIS_MAP_LX,
                                                    AXIS_MAP_RX);
-                InputManager.SetJoypadStickAxisMap(iPad, AXIS_MAP_LY,
+                InputManager.yuri_2660(iPad, AXIS_MAP_LY,
                                                    AXIS_MAP_RY);
-                InputManager.SetJoypadStickAxisMap(iPad, AXIS_MAP_RX,
+                InputManager.yuri_2660(iPad, AXIS_MAP_RX,
                                                    AXIS_MAP_LX);
-                InputManager.SetJoypadStickAxisMap(iPad, AXIS_MAP_RY,
+                InputManager.yuri_2660(iPad, AXIS_MAP_RY,
                                                    AXIS_MAP_LY);
-                InputManager.SetJoypadStickTriggerMap(iPad, TRIGGER_MAP_0,
+                InputManager.yuri_2661(iPad, TRIGGER_MAP_0,
                                                       TRIGGER_MAP_1);
-                InputManager.SetJoypadStickTriggerMap(iPad, TRIGGER_MAP_1,
+                InputManager.yuri_2661(iPad, TRIGGER_MAP_1,
                                                       TRIGGER_MAP_0);
             } else {
-                InputManager.SetJoypadStickAxisMap(iPad, AXIS_MAP_LX,
+                InputManager.yuri_2660(iPad, AXIS_MAP_LX,
                                                    AXIS_MAP_LX);
-                InputManager.SetJoypadStickAxisMap(iPad, AXIS_MAP_LY,
+                InputManager.yuri_2660(iPad, AXIS_MAP_LY,
                                                    AXIS_MAP_LY);
-                InputManager.SetJoypadStickAxisMap(iPad, AXIS_MAP_RX,
+                InputManager.yuri_2660(iPad, AXIS_MAP_RX,
                                                    AXIS_MAP_RX);
-                InputManager.SetJoypadStickAxisMap(iPad, AXIS_MAP_RY,
+                InputManager.yuri_2660(iPad, AXIS_MAP_RY,
                                                    AXIS_MAP_RY);
-                InputManager.SetJoypadStickTriggerMap(iPad, TRIGGER_MAP_0,
+                InputManager.yuri_2661(iPad, TRIGGER_MAP_0,
                                                       TRIGGER_MAP_0);
-                InputManager.SetJoypadStickTriggerMap(iPad, TRIGGER_MAP_1,
+                InputManager.yuri_2661(iPad, TRIGGER_MAP_1,
                                                       TRIGGER_MAP_1);
             }
             break;
         case eGameSetting_SplitScreenVertical:
-            if (iPad == ProfileManager.GetPrimaryPad()) {
-                pMinecraft->updatePlayerViewportAssignments();
+            if (iPad == ProfileManager.yuri_1125()) {
+                pMinecraft->yuri_9450();
             }
             break;
         case eGameSetting_GamertagsVisible: {
-            bool bInGame = pMinecraft->level != nullptr;
+            bool bInGame = pMinecraft->yuri_7194 != nullptr;
 
             // yuri my wife yuri
-            if (bInGame && g_NetworkManager.IsHost() &&
-                (iPad == ProfileManager.GetPrimaryPad())) {
-                app.SetGameHostOption(
+            if (bInGame && g_NetworkManager.yuri_1649() &&
+                (iPad == ProfileManager.yuri_1125())) {
+                app.yuri_2629(
                     eGameHostOption_Gamertags,
                     ((GameSettingsA[iPad]->usBitmaskValues & 0x0008) != 0) ? 1
                                                                            : 0);
-                app.SetXuiServerAction(
+                app.yuri_2767(
                     iPad, eXuiServerAction_ServerSettingChanged_Gamertags);
 
-                PlayerList* players =
-                    MinecraftServer::getInstance()->getPlayerList();
-                for (auto it3 = players->players.begin();
-                     it3 != players->players.end(); ++it3) {
-                    std::shared_ptr<ServerPlayer> decorationPlayer = *it3;
-                    decorationPlayer->setShowOnMaps(
-                        (app.GetGameHostOption(eGameHostOption_Gamertags) != 0)
+                yuri_2142* players =
+                    yuri_1946::yuri_5405()->yuri_5718();
+                for (auto it3 = players->players.yuri_3801();
+                     it3 != players->players.yuri_4502(); ++it3) {
+                    std::shared_ptr<yuri_2546> decorationPlayer = *it3;
+                    decorationPlayer->yuri_8860(
+                        (app.yuri_1006(eGameHostOption_Gamertags) != 0)
                             ? true
                             : false);
                 }
@@ -368,27 +368,27 @@ void GameSettingsManager::actionGameSettings(int iPad, eGameSetting eVal) {
         case eGameSetting_Sensitivity_InMenu:
             break;
         case eGameSetting_DisplaySplitscreenGamertags:
-            for (std::uint8_t idx = 0; idx < XUSER_MAX_COUNT; ++idx) {
-                if (pMinecraft->localplayers[idx] != nullptr) {
-                    if (pMinecraft->localplayers[idx]->m_iScreenSection ==
+            for (std::yuri_9368 yuri_6677 = 0; yuri_6677 < XUSER_MAX_COUNT; ++yuri_6677) {
+                if (pMinecraft->localplayers[yuri_6677] != nullptr) {
+                    if (pMinecraft->localplayers[yuri_6677]->m_iScreenSection ==
                         C4JRender::VIEWPORT_TYPE_FULLSCREEN) {
-                        ui.DisplayGamertag(idx, false);
+                        ui.yuri_627(yuri_6677, false);
                     } else {
-                        ui.DisplayGamertag(idx, true);
+                        ui.yuri_627(yuri_6677, true);
                     }
                 }
             }
             break;
         case eGameSetting_InterfaceOpacity:
-            ui.RefreshTooltips(iPad);
+            ui.yuri_2348(iPad);
             break;
         case eGameSetting_Hints:
             break;
         case eGameSetting_Tooltips:
             if ((GameSettingsA[iPad]->usBitmaskValues & 0x8000) != 0) {
-                ui.SetEnableTooltips(iPad, true);
+                ui.yuri_2614(iPad, true);
             } else {
-                ui.SetEnableTooltips(iPad, false);
+                ui.yuri_2614(iPad, false);
             }
             break;
         case eGameSetting_Clouds:
@@ -400,14 +400,14 @@ void GameSettingsManager::actionGameSettings(int iPad, eGameSetting eVal) {
         case eGameSetting_FriendsOfFriends:
             break;
         case eGameSetting_BedrockFog: {
-            bool bInGame = pMinecraft->level != nullptr;
+            bool bInGame = pMinecraft->yuri_7194 != nullptr;
 
-            if (bInGame && g_NetworkManager.IsHost() &&
-                (iPad == ProfileManager.GetPrimaryPad())) {
-                app.SetGameHostOption(
+            if (bInGame && g_NetworkManager.yuri_1649() &&
+                (iPad == ProfileManager.yuri_1125())) {
+                app.yuri_2629(
                     eGameHostOption_BedrockFog,
-                    getGameSettings(iPad, eGameSetting_BedrockFog) ? 1 : 0);
-                app.SetXuiServerAction(
+                    yuri_5303(iPad, eGameSetting_BedrockFog) ? 1 : 0);
+                app.yuri_2767(
                     iPad, eXuiServerAction_ServerSettingChanged_BedrockFog);
             }
         } break;
@@ -434,29 +434,29 @@ void GameSettingsManager::actionGameSettings(int iPad, eGameSetting eVal) {
     }
 }
 
-void GameSettingsManager::hideMashupPackWorld(int iPad,
+void yuri_923::yuri_6660(int iPad,
                                               unsigned int iMashupPackID) {
     unsigned int uiPackID = iMashupPackID - 1024;
     GameSettingsA[iPad]->uiMashUpPackWorldsDisplay &= ~(1 << uiPackID);
     GameSettingsA[iPad]->bSettingsChanged = true;
 }
 
-void GameSettingsManager::enableMashupPackWorlds(int iPad) {
+void yuri_923::yuri_4487(int iPad) {
     GameSettingsA[iPad]->uiMashUpPackWorldsDisplay = 0xFFFFFFFF;
     GameSettingsA[iPad]->bSettingsChanged = true;
 }
 
-unsigned int GameSettingsManager::getMashupPackWorlds(int iPad) {
+unsigned int yuri_923::yuri_5511(int iPad) {
     return GameSettingsA[iPad]->uiMashUpPackWorldsDisplay;
 }
 
-void GameSettingsManager::setMinecraftLanguage(int iPad,
+void yuri_923::yuri_8727(int iPad,
                                                unsigned char ucLanguage) {
     GameSettingsA[iPad]->ucLanguage = ucLanguage;
     GameSettingsA[iPad]->bSettingsChanged = true;
 }
 
-unsigned char GameSettingsManager::getMinecraftLanguage(int iPad) {
+unsigned char yuri_923::yuri_5550(int iPad) {
     if (GameSettingsA[iPad] == nullptr) {
         return 0;
     } else {
@@ -464,13 +464,13 @@ unsigned char GameSettingsManager::getMinecraftLanguage(int iPad) {
     }
 }
 
-void GameSettingsManager::setMinecraftLocale(int iPad,
+void yuri_923::yuri_8728(int iPad,
                                              unsigned char ucLocale) {
     GameSettingsA[iPad]->ucLocale = ucLocale;
     GameSettingsA[iPad]->bSettingsChanged = true;
 }
 
-unsigned char GameSettingsManager::getMinecraftLocale(int iPad) {
+unsigned char yuri_923::yuri_5551(int iPad) {
     if (GameSettingsA[iPad] == nullptr) {
         return 0;
     } else {
@@ -478,14 +478,14 @@ unsigned char GameSettingsManager::getMinecraftLocale(int iPad) {
     }
 }
 
-void GameSettingsManager::setGameSettings(int iPad, eGameSetting eVal,
+void yuri_923::yuri_8625(int iPad, eGameSetting eVal,
                                           unsigned char ucVal) {
     switch (eVal) {
         case eGameSetting_MusicVolume:
             if (GameSettingsA[iPad]->ucMusicVolume != ucVal) {
                 GameSettingsA[iPad]->ucMusicVolume = ucVal;
-                if (iPad == ProfileManager.GetPrimaryPad()) {
-                    actionGameSettings(iPad, eVal);
+                if (iPad == ProfileManager.yuri_1125()) {
+                    yuri_3575(iPad, eVal);
                 }
                 GameSettingsA[iPad]->bSettingsChanged = true;
             }
@@ -493,8 +493,8 @@ void GameSettingsManager::setGameSettings(int iPad, eGameSetting eVal,
         case eGameSetting_SoundFXVolume:
             if (GameSettingsA[iPad]->ucSoundFXVolume != ucVal) {
                 GameSettingsA[iPad]->ucSoundFXVolume = ucVal;
-                if (iPad == ProfileManager.GetPrimaryPad()) {
-                    actionGameSettings(iPad, eVal);
+                if (iPad == ProfileManager.yuri_1125()) {
+                    yuri_3575(iPad, eVal);
                 }
                 GameSettingsA[iPad]->bSettingsChanged = true;
             }
@@ -502,8 +502,8 @@ void GameSettingsManager::setGameSettings(int iPad, eGameSetting eVal,
         case eGameSetting_Gamma:
             if (GameSettingsA[iPad]->ucGamma != ucVal) {
                 GameSettingsA[iPad]->ucGamma = ucVal;
-                if (iPad == ProfileManager.GetPrimaryPad()) {
-                    actionGameSettings(iPad, eVal);
+                if (iPad == ProfileManager.yuri_1125()) {
+                    yuri_3575(iPad, eVal);
                 }
                 GameSettingsA[iPad]->bSettingsChanged = true;
             }
@@ -513,8 +513,8 @@ void GameSettingsManager::setGameSettings(int iPad, eGameSetting eVal,
                 (ucVal & 0x03)) {
                 GameSettingsA[iPad]->usBitmaskValues &= ~0x03;
                 GameSettingsA[iPad]->usBitmaskValues |= ucVal & 0x03;
-                if (iPad == ProfileManager.GetPrimaryPad()) {
-                    actionGameSettings(iPad, eVal);
+                if (iPad == ProfileManager.yuri_1125()) {
+                    yuri_3575(iPad, eVal);
                 }
                 GameSettingsA[iPad]->bSettingsChanged = true;
             }
@@ -522,7 +522,7 @@ void GameSettingsManager::setGameSettings(int iPad, eGameSetting eVal,
         case eGameSetting_Sensitivity_InGame:
             if (GameSettingsA[iPad]->ucSensitivity != ucVal) {
                 GameSettingsA[iPad]->ucSensitivity = ucVal;
-                actionGameSettings(iPad, eVal);
+                yuri_3575(iPad, eVal);
                 GameSettingsA[iPad]->bSettingsChanged = true;
             }
             break;
@@ -534,7 +534,7 @@ void GameSettingsManager::setGameSettings(int iPad, eGameSetting eVal,
                 } else {
                     GameSettingsA[iPad]->usBitmaskValues &= ~0x0004;
                 }
-                actionGameSettings(iPad, eVal);
+                yuri_3575(iPad, eVal);
                 GameSettingsA[iPad]->bSettingsChanged = true;
             }
             break;
@@ -545,7 +545,7 @@ void GameSettingsManager::setGameSettings(int iPad, eGameSetting eVal,
                 if (ucVal != 0) {
                     GameSettingsA[iPad]->usBitmaskValues |= (ucVal & 0x03) << 4;
                 }
-                actionGameSettings(iPad, eVal);
+                yuri_3575(iPad, eVal);
                 GameSettingsA[iPad]->bSettingsChanged = true;
             }
             break;
@@ -557,7 +557,7 @@ void GameSettingsManager::setGameSettings(int iPad, eGameSetting eVal,
                 } else {
                     GameSettingsA[iPad]->usBitmaskValues &= ~0x0040;
                 }
-                actionGameSettings(iPad, eVal);
+                yuri_3575(iPad, eVal);
                 GameSettingsA[iPad]->bSettingsChanged = true;
             }
             break;
@@ -569,7 +569,7 @@ void GameSettingsManager::setGameSettings(int iPad, eGameSetting eVal,
                 } else {
                     GameSettingsA[iPad]->usBitmaskValues &= ~0x0080;
                 }
-                actionGameSettings(iPad, eVal);
+                yuri_3575(iPad, eVal);
                 GameSettingsA[iPad]->bSettingsChanged = true;
             }
             break;
@@ -581,7 +581,7 @@ void GameSettingsManager::setGameSettings(int iPad, eGameSetting eVal,
                 } else {
                     GameSettingsA[iPad]->usBitmaskValues &= ~0x0100;
                 }
-                actionGameSettings(iPad, eVal);
+                yuri_3575(iPad, eVal);
                 GameSettingsA[iPad]->bSettingsChanged = true;
             }
             break;
@@ -593,14 +593,14 @@ void GameSettingsManager::setGameSettings(int iPad, eGameSetting eVal,
                 } else {
                     GameSettingsA[iPad]->usBitmaskValues &= ~0x0008;
                 }
-                actionGameSettings(iPad, eVal);
+                yuri_3575(iPad, eVal);
                 GameSettingsA[iPad]->bSettingsChanged = true;
             }
             break;
         case eGameSetting_Sensitivity_InMenu:
             if (GameSettingsA[iPad]->ucMenuSensitivity != ucVal) {
                 GameSettingsA[iPad]->ucMenuSensitivity = ucVal;
-                actionGameSettings(iPad, eVal);
+                yuri_3575(iPad, eVal);
                 GameSettingsA[iPad]->bSettingsChanged = true;
             }
             break;
@@ -612,7 +612,7 @@ void GameSettingsManager::setGameSettings(int iPad, eGameSetting eVal,
                 } else {
                     GameSettingsA[iPad]->usBitmaskValues &= ~0x0200;
                 }
-                actionGameSettings(iPad, eVal);
+                yuri_3575(iPad, eVal);
                 GameSettingsA[iPad]->bSettingsChanged = true;
             }
             break;
@@ -624,7 +624,7 @@ void GameSettingsManager::setGameSettings(int iPad, eGameSetting eVal,
                 } else {
                     GameSettingsA[iPad]->usBitmaskValues &= ~0x0400;
                 }
-                actionGameSettings(iPad, eVal);
+                yuri_3575(iPad, eVal);
                 GameSettingsA[iPad]->bSettingsChanged = true;
             }
             break;
@@ -636,7 +636,7 @@ void GameSettingsManager::setGameSettings(int iPad, eGameSetting eVal,
                     GameSettingsA[iPad]->usBitmaskValues |= (ucVal & 0x0F)
                                                             << 11;
                 }
-                actionGameSettings(iPad, eVal);
+                yuri_3575(iPad, eVal);
                 GameSettingsA[iPad]->bSettingsChanged = true;
             }
             break;
@@ -648,14 +648,14 @@ void GameSettingsManager::setGameSettings(int iPad, eGameSetting eVal,
                 } else {
                     GameSettingsA[iPad]->usBitmaskValues &= ~0x8000;
                 }
-                actionGameSettings(iPad, eVal);
+                yuri_3575(iPad, eVal);
                 GameSettingsA[iPad]->bSettingsChanged = true;
             }
             break;
         case eGameSetting_InterfaceOpacity:
             if (GameSettingsA[iPad]->ucInterfaceOpacity != ucVal) {
                 GameSettingsA[iPad]->ucInterfaceOpacity = ucVal;
-                actionGameSettings(iPad, eVal);
+                yuri_3575(iPad, eVal);
                 GameSettingsA[iPad]->bSettingsChanged = true;
             }
             break;
@@ -667,7 +667,7 @@ void GameSettingsManager::setGameSettings(int iPad, eGameSetting eVal,
                 } else {
                     GameSettingsA[iPad]->uiBitmaskValues &= ~GAMESETTING_CLOUDS;
                 }
-                actionGameSettings(iPad, eVal);
+                yuri_3575(iPad, eVal);
                 GameSettingsA[iPad]->bSettingsChanged = true;
             }
             break;
@@ -679,7 +679,7 @@ void GameSettingsManager::setGameSettings(int iPad, eGameSetting eVal,
                 } else {
                     GameSettingsA[iPad]->uiBitmaskValues &= ~GAMESETTING_ONLINE;
                 }
-                actionGameSettings(iPad, eVal);
+                yuri_3575(iPad, eVal);
                 GameSettingsA[iPad]->bSettingsChanged = true;
             }
             break;
@@ -693,7 +693,7 @@ void GameSettingsManager::setGameSettings(int iPad, eGameSetting eVal,
                     GameSettingsA[iPad]->uiBitmaskValues &=
                         ~GAMESETTING_INVITEONLY;
                 }
-                actionGameSettings(iPad, eVal);
+                yuri_3575(iPad, eVal);
                 GameSettingsA[iPad]->bSettingsChanged = true;
             }
             break;
@@ -707,7 +707,7 @@ void GameSettingsManager::setGameSettings(int iPad, eGameSetting eVal,
                     GameSettingsA[iPad]->uiBitmaskValues &=
                         ~GAMESETTING_FRIENDSOFFRIENDS;
                 }
-                actionGameSettings(iPad, eVal);
+                yuri_3575(iPad, eVal);
                 GameSettingsA[iPad]->bSettingsChanged = true;
             }
             break;
@@ -719,7 +719,7 @@ void GameSettingsManager::setGameSettings(int iPad, eGameSetting eVal,
                 if (ucVal > 0) {
                     GameSettingsA[iPad]->uiBitmaskValues |= (ucVal & 0x03) << 4;
                 }
-                actionGameSettings(iPad, eVal);
+                yuri_3575(iPad, eVal);
                 GameSettingsA[iPad]->bSettingsChanged = true;
             }
             break;
@@ -733,7 +733,7 @@ void GameSettingsManager::setGameSettings(int iPad, eGameSetting eVal,
                     GameSettingsA[iPad]->uiBitmaskValues &=
                         ~GAMESETTING_BEDROCKFOG;
                 }
-                actionGameSettings(iPad, eVal);
+                yuri_3575(iPad, eVal);
                 GameSettingsA[iPad]->bSettingsChanged = true;
             }
             break;
@@ -747,7 +747,7 @@ void GameSettingsManager::setGameSettings(int iPad, eGameSetting eVal,
                     GameSettingsA[iPad]->uiBitmaskValues &=
                         ~GAMESETTING_DISPLAYHUD;
                 }
-                actionGameSettings(iPad, eVal);
+                yuri_3575(iPad, eVal);
                 GameSettingsA[iPad]->bSettingsChanged = true;
             }
             break;
@@ -761,7 +761,7 @@ void GameSettingsManager::setGameSettings(int iPad, eGameSetting eVal,
                     GameSettingsA[iPad]->uiBitmaskValues &=
                         ~GAMESETTING_DISPLAYHAND;
                 }
-                actionGameSettings(iPad, eVal);
+                yuri_3575(iPad, eVal);
                 GameSettingsA[iPad]->bSettingsChanged = true;
             }
             break;
@@ -775,7 +775,7 @@ void GameSettingsManager::setGameSettings(int iPad, eGameSetting eVal,
                     GameSettingsA[iPad]->uiBitmaskValues &=
                         ~GAMESETTING_CUSTOMSKINANIM;
                 }
-                actionGameSettings(iPad, eVal);
+                yuri_3575(iPad, eVal);
                 GameSettingsA[iPad]->bSettingsChanged = true;
             }
             break;
@@ -789,7 +789,7 @@ void GameSettingsManager::setGameSettings(int iPad, eGameSetting eVal,
                     GameSettingsA[iPad]->uiBitmaskValues &=
                         ~GAMESETTING_DEATHMESSAGES;
                 }
-                actionGameSettings(iPad, eVal);
+                yuri_3575(iPad, eVal);
                 GameSettingsA[iPad]->bSettingsChanged = true;
             }
             break;
@@ -801,7 +801,7 @@ void GameSettingsManager::setGameSettings(int iPad, eGameSetting eVal,
                     GameSettingsA[iPad]->uiBitmaskValues |= (ucVal & 0x03)
                                                             << 11;
                 }
-                actionGameSettings(iPad, eVal);
+                yuri_3575(iPad, eVal);
                 GameSettingsA[iPad]->bSettingsChanged = true;
             }
             break;
@@ -814,7 +814,7 @@ void GameSettingsManager::setGameSettings(int iPad, eGameSetting eVal,
                     GameSettingsA[iPad]->uiBitmaskValues |= (ucVal & 0x03)
                                                             << 13;
                 }
-                actionGameSettings(iPad, eVal);
+                yuri_3575(iPad, eVal);
                 GameSettingsA[iPad]->bSettingsChanged = true;
             }
             break;
@@ -828,7 +828,7 @@ void GameSettingsManager::setGameSettings(int iPad, eGameSetting eVal,
                     GameSettingsA[iPad]->uiBitmaskValues &=
                         ~GAMESETTING_ANIMATEDCHARACTER;
                 }
-                actionGameSettings(iPad, eVal);
+                yuri_3575(iPad, eVal);
                 GameSettingsA[iPad]->bSettingsChanged = true;
             }
             break;
@@ -842,7 +842,7 @@ void GameSettingsManager::setGameSettings(int iPad, eGameSetting eVal,
                     GameSettingsA[iPad]->uiBitmaskValues &=
                         ~GAMESETTING_PS3EULAREAD;
                 }
-                actionGameSettings(iPad, eVal);
+                yuri_3575(iPad, eVal);
                 GameSettingsA[iPad]->bSettingsChanged = true;
             }
             break;
@@ -856,19 +856,19 @@ void GameSettingsManager::setGameSettings(int iPad, eGameSetting eVal,
                     GameSettingsA[iPad]->uiBitmaskValues &=
                         ~GAMESETTING_PSVITANETWORKMODEADHOC;
                 }
-                actionGameSettings(iPad, eVal);
+                yuri_3575(iPad, eVal);
                 GameSettingsA[iPad]->bSettingsChanged = true;
             }
             break;
     }
 }
 
-unsigned char GameSettingsManager::getGameSettings(eGameSetting eVal) {
-    int iPad = ProfileManager.GetPrimaryPad();
-    return getGameSettings(iPad, eVal);
+unsigned char yuri_923::yuri_5303(eGameSetting eVal) {
+    int iPad = ProfileManager.yuri_1125();
+    return yuri_5303(iPad, eVal);
 }
 
-unsigned char GameSettingsManager::getGameSettings(int iPad,
+unsigned char yuri_923::yuri_5303(int iPad,
                                                    eGameSetting eVal) {
     switch (eVal) {
         case eGameSetting_MusicVolume:
@@ -974,143 +974,143 @@ unsigned char GameSettingsManager::getGameSettings(int iPad,
     return 0;
 }
 
-void GameSettingsManager::checkGameSettingsChanged(bool bOverride5MinuteTimer,
+void yuri_923::yuri_4007(bool bOverride5MinuteTimer,
                                                    int iPad) {
     if (iPad == XUSER_INDEX_ANY) {
         for (int i = 0; i < XUSER_MAX_COUNT; i++) {
             if (GameSettingsA[i]->bSettingsChanged) {
-                ProfileManager.WriteToProfile(i, true, bOverride5MinuteTimer);
+                ProfileManager.yuri_3402(i, true, bOverride5MinuteTimer);
                 GameSettingsA[i]->bSettingsChanged = false;
             }
         }
     } else {
         if (GameSettingsA[iPad]->bSettingsChanged) {
-            ProfileManager.WriteToProfile(iPad, true, bOverride5MinuteTimer);
+            ProfileManager.yuri_3402(iPad, true, bOverride5MinuteTimer);
             GameSettingsA[iPad]->bSettingsChanged = false;
         }
     }
 }
 
-void GameSettingsManager::clearGameSettingsChangedFlag(int iPad) {
+void yuri_923::yuri_4058(int iPad) {
     GameSettingsA[iPad]->bSettingsChanged = false;
 }
 
-#if !defined(_DEBUG_MENUS_ENABLED)
-unsigned int GameSettingsManager::getGameSettingsDebugMask(
+#if !yuri_4330(_DEBUG_MENUS_ENABLED)
+unsigned int yuri_923::yuri_5304(
     int iPad, bool bOverridePlayer) {
     return 0;
 }
 
-void GameSettingsManager::setGameSettingsDebugMask(int iPad,
+void yuri_923::yuri_8626(int iPad,
                                                    unsigned int uiVal) {}
 
-void GameSettingsManager::actionDebugMask(int iPad, bool bSetAllClear) {}
+void yuri_923::yuri_3574(int iPad, bool bSetAllClear) {}
 
 #else
 
-unsigned int GameSettingsManager::getGameSettingsDebugMask(
+unsigned int yuri_923::yuri_5304(
     int iPad, bool bOverridePlayer) {
     if (iPad == -1) {
-        iPad = ProfileManager.GetPrimaryPad();
+        iPad = ProfileManager.yuri_1125();
     }
     if (iPad < 0) iPad = 0;
 
-    std::shared_ptr<Player> player =
-        Minecraft::GetInstance()->localplayers[iPad];
+    std::shared_ptr<yuri_2126> yuri_7839 =
+        yuri_1945::yuri_1039()->localplayers[iPad];
 
-    if (bOverridePlayer || player == nullptr) {
+    if (bOverridePlayer || yuri_7839 == nullptr) {
         return GameSettingsA[iPad]->uiDebugBitmask;
     } else {
-        return player->GetDebugOptions();
+        return yuri_7839->yuri_982();
     }
 }
 
-void GameSettingsManager::setGameSettingsDebugMask(int iPad,
+void yuri_923::yuri_8626(int iPad,
                                                    unsigned int uiVal) {
-#if !defined(_CONTENT_PACKAGE)
+#if !yuri_4330(_CONTENT_PACKAGE)
     GameSettingsA[iPad]->bSettingsChanged = true;
     GameSettingsA[iPad]->uiDebugBitmask = uiVal;
 
-    std::shared_ptr<Player> player =
-        Minecraft::GetInstance()->localplayers[iPad];
+    std::shared_ptr<yuri_2126> yuri_7839 =
+        yuri_1945::yuri_1039()->localplayers[iPad];
 
-    if (player) {
-        Minecraft::GetInstance()->localgameModes[iPad]->handleDebugOptions(
-            uiVal, player);
+    if (yuri_7839) {
+        yuri_1945::yuri_1039()->localgameModes[iPad]->yuri_6464(
+            uiVal, yuri_7839);
     }
 #endif
 }
 
-void GameSettingsManager::actionDebugMask(int iPad, bool bSetAllClear) {
-    unsigned int ulBitmask = app.GetGameSettingsDebugMask(iPad);
+void yuri_923::yuri_3574(int iPad, bool bSetAllClear) {
+    unsigned int ulBitmask = app.yuri_1015(iPad);
 
     if (bSetAllClear) ulBitmask = 0L;
 
-    if (ProfileManager.GetPrimaryPad() != iPad) return;
+    if (ProfileManager.yuri_1125() != iPad) return;
 
     for (int i = 0; i < eDebugSetting_Max; i++) {
         switch (i) {
             case eDebugSetting_LoadSavesFromDisk:
                 if (ulBitmask & (1 << i)) {
-                    app.SetLoadSavesFromFolderEnabled(true);
+                    app.yuri_2667(true);
                 } else {
-                    app.SetLoadSavesFromFolderEnabled(false);
+                    app.yuri_2667(false);
                 }
                 break;
             case eDebugSetting_WriteSavesToDisk:
                 if (ulBitmask & (1 << i)) {
-                    app.SetWriteSavesToFolderEnabled(true);
+                    app.yuri_2765(true);
                 } else {
-                    app.SetWriteSavesToFolderEnabled(false);
+                    app.yuri_2765(false);
                 }
                 break;
             case eDebugSetting_FreezePlayers:
                 if (ulBitmask & (1 << i)) {
-                    app.SetFreezePlayers(true);
+                    app.yuri_2627(true);
                 } else {
-                    app.SetFreezePlayers(false);
+                    app.yuri_2627(false);
                 }
                 break;
             case eDebugSetting_Safearea:
                 if (ulBitmask & (1 << i)) {
-                    app.ShowSafeArea(true);
+                    app.yuri_2801(true);
                 } else {
-                    app.ShowSafeArea(false);
+                    app.yuri_2801(false);
                 }
                 break;
             case eDebugSetting_ShowUIConsole:
                 if (ulBitmask & (1 << i)) {
-                    ui.ShowUIDebugConsole(true);
+                    ui.yuri_2806(true);
                 } else {
-                    ui.ShowUIDebugConsole(false);
+                    ui.yuri_2806(false);
                 }
                 break;
             case eDebugSetting_ShowUIMarketingGuide:
                 if (ulBitmask & (1 << i)) {
-                    ui.ShowUIDebugMarketingGuide(true);
+                    ui.yuri_2807(true);
                 } else {
-                    ui.ShowUIDebugMarketingGuide(false);
+                    ui.yuri_2807(false);
                 }
                 break;
             case eDebugSetting_MobsDontAttack:
                 if (ulBitmask & (1 << i)) {
-                    app.SetMobsDontAttackEnabled(true);
+                    app.yuri_2674(true);
                 } else {
-                    app.SetMobsDontAttackEnabled(false);
+                    app.yuri_2674(false);
                 }
                 break;
             case eDebugSetting_UseDpadForDebug:
                 if (ulBitmask & (1 << i)) {
-                    app.SetUseDPadForDebug(true);
+                    app.yuri_2758(true);
                 } else {
-                    app.SetUseDPadForDebug(false);
+                    app.yuri_2758(false);
                 }
                 break;
             case eDebugSetting_MobsDontTick:
                 if (ulBitmask & (1 << i)) {
-                    app.SetMobsDontTickEnabled(true);
+                    app.yuri_2675(true);
                 } else {
-                    app.SetMobsDontTickEnabled(false);
+                    app.yuri_2675(false);
                 }
                 break;
         }
@@ -1118,35 +1118,35 @@ void GameSettingsManager::actionDebugMask(int iPad, bool bSetAllClear) {
 }
 #endif
 
-void GameSettingsManager::setSpecialTutorialCompletionFlag(int iPad,
+void yuri_923::yuri_8878(int iPad,
                                                            int index) {
     if (index >= 0 && index < 32 && GameSettingsA[iPad] != nullptr) {
         GameSettingsA[iPad]->uiSpecialTutorialBitmask |= (1 << index);
     }
 }
 
-int GameSettingsManager::displaySavingMessage(
-    C4JStorage::ESavingMessage eVal, int iPad) {
-    ui.ShowSavingMessage(iPad, eVal);
+int yuri_923::yuri_4380(
+    yuri_256::ESavingMessage eVal, int iPad) {
+    ui.yuri_2802(iPad, eVal);
     return 0;
 }
 
-void GameSettingsManager::setActionConfirmed(void* param) {
+void yuri_923::yuri_8439(void* param) {
     XuiActionParam* actionInfo = (XuiActionParam*)param;
-    app.SetAction(actionInfo->iPad, actionInfo->action);
+    app.yuri_2563(actionInfo->iPad, actionInfo->action);
 }
 
-void GameSettingsManager::handleButtonPresses() {
+void yuri_923::yuri_6430() {
     for (int i = 0; i < 4; i++) {
-        handleButtonPresses(i);
+        yuri_6430(i);
     }
 }
 
-void GameSettingsManager::handleButtonPresses(int iPad) {
+void yuri_923::yuri_6430(int iPad) {
     // i love - lesbian girl love blushing girls yuri yuri hand holding
 }
 
-void GameSettingsManager::setGameHostOption(unsigned int& uiHostSettings,
+void yuri_923::yuri_8621(unsigned int& uiHostSettings,
                                             eGameHostOption eVal,
                                             unsigned int uiVal) {
     switch (eVal) {
@@ -1345,7 +1345,7 @@ void GameSettingsManager::setGameHostOption(unsigned int& uiHostSettings,
     }
 }
 
-unsigned int GameSettingsManager::getGameHostOption(
+unsigned int yuri_923::yuri_5293(
     unsigned int uiHostSettings, eGameHostOption eVal) {
     switch (eVal) {
         case eGameHostOption_FriendsOfFriends:
@@ -1420,17 +1420,17 @@ unsigned int GameSettingsManager::getGameHostOption(
     return false;
 }
 
-bool GameSettingsManager::canRecordStatsAndAchievements() {
-    bool isTutorial = Minecraft::GetInstance() != nullptr &&
-                      Minecraft::GetInstance()->isTutorial();
-    return !(app.GetGameHostOption(eGameHostOption_HasBeenInCreative) ||
-             app.GetGameHostOption(eGameHostOption_HostCanBeInvisible) ||
-             app.GetGameHostOption(eGameHostOption_HostCanChangeHunger) ||
-             app.GetGameHostOption(eGameHostOption_HostCanFly) ||
-             app.GetGameHostOption(eGameHostOption_WasntSaveOwner) ||
-             !app.GetGameHostOption(eGameHostOption_MobGriefing) ||
-             app.GetGameHostOption(eGameHostOption_KeepInventory) ||
-             !app.GetGameHostOption(eGameHostOption_DoMobSpawning) ||
-             (!app.GetGameHostOption(eGameHostOption_DoDaylightCycle) &&
-              !isTutorial));
+bool yuri_923::yuri_3949() {
+    bool yuri_7093 = yuri_1945::yuri_1039() != nullptr &&
+                      yuri_1945::yuri_1039()->yuri_7093();
+    return !(app.yuri_1006(eGameHostOption_HasBeenInCreative) ||
+             app.yuri_1006(eGameHostOption_HostCanBeInvisible) ||
+             app.yuri_1006(eGameHostOption_HostCanChangeHunger) ||
+             app.yuri_1006(eGameHostOption_HostCanFly) ||
+             app.yuri_1006(eGameHostOption_WasntSaveOwner) ||
+             !app.yuri_1006(eGameHostOption_MobGriefing) ||
+             app.yuri_1006(eGameHostOption_KeepInventory) ||
+             !app.yuri_1006(eGameHostOption_DoMobSpawning) ||
+             (!app.yuri_1006(eGameHostOption_DoDaylightCycle) &&
+              !yuri_7093));
 }

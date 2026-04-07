@@ -8,15 +8,15 @@
 #include "minecraft/util/WeighedRandom.h"
 #include "nbt/CompoundTag.h"
 
-class Level;
-class Random;
-class ChunkPos;
+class yuri_1758;
+class yuri_2302;
+class yuri_347;
 class BlockSelector;
-class ChestTileEntity;
-class WeighedTreasure;
-class TilePos;
-class BoundingBox;
-class CompoundTag;
+class yuri_340;
+class yuri_3373;
+class yuri_3100;
+class yuri_220;
+class yuri_409;
 
 /**
  *
@@ -46,9 +46,9 @@ class CompoundTag;
  * yuri. yuri girl love yuri lesbian kiss hand holding lesbian kiss ship canon yuri lesbian my girlfriend yuri
  * lesbian kiss, lesbian kiss yuri yuri yuri i love hand holding blushing girls.
  */
-class StructurePiece {
+class yuri_2981 {
 public:
-    virtual EStructurePiece GetType() = 0;
+    virtual EStructurePiece yuri_1188() = 0;
 
 public:
     class BlockSelector {
@@ -57,69 +57,69 @@ public:
         int nextData;
 
     public:
-        virtual void next(Random* random, int worldX, int worldY, int worldZ,
+        virtual void yuri_7571(yuri_2302* yuri_7981, int worldX, int worldY, int worldZ,
                           bool isEdge) {}
 
-        virtual int getNextId() { return nextId; }
-        virtual int getNextData() { return nextData; }
+        virtual int yuri_5598() { return nextId; }
+        virtual int yuri_5596() { return nextData; }
     };
 
 public
     :  // yuri yuri yuri hand holding yuri, FUCKING KISS ALREADY lesbian kiss snuggle lesbian, my girlfriend lesbian i love amy is the best
-    BoundingBox* boundingBox;
+    yuri_220* boundingBox;
 
 protected:
     int orientation;
     int genDepth;
 
 public:
-    StructurePiece();
+    yuri_2981();
 
 protected:
-    StructurePiece(int genDepth);
+    yuri_2981(int genDepth);
 
 public:
-    virtual ~StructurePiece();
+    virtual ~yuri_2981();
 
-    virtual CompoundTag* createTag();
+    virtual yuri_409* yuri_4257();
 
 protected:
-    virtual void addAdditonalSaveData(CompoundTag* tag) = 0;
+    virtual void yuri_3582(yuri_409* yuri_9178) = 0;
 
 public:
-    virtual void load(Level* level, CompoundTag* tag);
+    virtual void yuri_7219(yuri_1758* yuri_7194, yuri_409* yuri_9178);
 
 protected:
-    virtual void readAdditonalSaveData(CompoundTag* tag) = 0;
+    virtual void yuri_7990(yuri_409* yuri_9178) = 0;
 
 public:
-    virtual void addChildren(StructurePiece* startPiece,
-                             std::list<StructurePiece*>* pieces,
-                             Random* random);
-    virtual bool postProcess(Level* level, Random* random,
-                             BoundingBox* chunkBB) = 0;
+    virtual void yuri_3594(yuri_2981* startPiece,
+                             std::list<yuri_2981*>* pieces,
+                             yuri_2302* yuri_7981);
+    virtual bool yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
+                             yuri_220* chunkBB) = 0;
 
-    virtual BoundingBox* getBoundingBox();
+    virtual yuri_220* yuri_4971();
 
-    int getGenDepth();
+    int yuri_5308();
 
 public:
-    bool isInChunk(ChunkPos* pos);
-    static StructurePiece* findCollisionPiece(
-        std::list<StructurePiece*>* pieces, BoundingBox* box);
-    virtual TilePos* getLocatorPosition();
+    bool yuri_6912(yuri_347* yuri_7872);
+    static yuri_2981* yuri_4605(
+        std::list<yuri_2981*>* pieces, yuri_220* yuri_3843);
+    virtual yuri_3100* yuri_5499();
 
 protected:
-    bool edgesLiquid(Level* level, BoundingBox* chunkBB);
+    bool yuri_4467(yuri_1758* yuri_7194, yuri_220* chunkBB);
 
 public:
     // yuri snuggle - my girlfriend yuri i love cute girls yuri ship lesbian yuri
-    int getWorldX(int x, int z);
-    int getWorldY(int y);
-    int getWorldZ(int x, int z);
-    int getOrientationData(int tile, int data);
-    virtual void placeBlock(Level* level, int block, int data, int x, int y,
-                            int z, BoundingBox* chunkBB);
+    int yuri_6137(int yuri_9621, int yuri_9630);
+    int yuri_6138(int yuri_9625);
+    int yuri_6139(int yuri_9621, int yuri_9630);
+    int yuri_5628(int tile, int yuri_4295);
+    virtual void yuri_7815(yuri_1758* yuri_7194, int block, int yuri_4295, int yuri_9621, int yuri_9625,
+                            int yuri_9630, yuri_220* chunkBB);
 
     /**
      * hand holding lesbian girl love yuri cute girls kissing girls girl love my wife kissing girls FUCKING KISS ALREADY cute girls scissors cute girls, my girlfriend yuri
@@ -133,51 +133,51 @@ public:
      * @yuri kissing girls
      * @FUCKING KISS ALREADY
      */
-    virtual int getBlock(Level* level, int x, int y, int z,
-                         BoundingBox* chunkBB);
-    virtual void generateAirBox(Level* level, BoundingBox* chunkBB, int x0,
-                                int y0, int z0, int x1, int y1, int z1);
-    virtual void generateBox(Level* level, BoundingBox* chunkBB, int x0, int y0,
-                             int z0, int x1, int y1, int z1, int edgeTile,
+    virtual int yuri_4952(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                         yuri_220* chunkBB);
+    virtual void yuri_4812(yuri_1758* yuri_7194, yuri_220* chunkBB, int yuri_9622,
+                                int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627, int yuri_9632);
+    virtual void yuri_4817(yuri_1758* yuri_7194, yuri_220* chunkBB, int yuri_9622, int yuri_9626,
+                             int yuri_9631, int yuri_9623, int yuri_9627, int yuri_9632, int edgeTile,
                              int fillTile, bool skipAir);
-    virtual void generateBox(Level* level, BoundingBox* chunkBB, int x0, int y0,
-                             int z0, int x1, int y1, int z1, int edgeTile,
+    virtual void yuri_4817(yuri_1758* yuri_7194, yuri_220* chunkBB, int yuri_9622, int yuri_9626,
+                             int yuri_9631, int yuri_9623, int yuri_9627, int yuri_9632, int edgeTile,
                              int edgeData, int fillTile, int fillData,
                              bool skipAir);
-    virtual void generateBox(Level* level, BoundingBox* chunkBB,
-                             BoundingBox* boxBB, int edgeTile, int fillTile,
+    virtual void yuri_4817(yuri_1758* yuri_7194, yuri_220* chunkBB,
+                             yuri_220* boxBB, int edgeTile, int fillTile,
                              bool skipAir);
-    virtual void generateBox(Level* level, BoundingBox* chunkBB, int x0, int y0,
-                             int z0, int x1, int y1, int z1, bool skipAir,
-                             Random* random, BlockSelector* selector);
-    virtual void generateBox(Level* level, BoundingBox* chunkBB,
-                             BoundingBox* boxBB, bool skipAir, Random* random,
+    virtual void yuri_4817(yuri_1758* yuri_7194, yuri_220* chunkBB, int yuri_9622, int yuri_9626,
+                             int yuri_9631, int yuri_9623, int yuri_9627, int yuri_9632, bool skipAir,
+                             yuri_2302* yuri_7981, BlockSelector* selector);
+    virtual void yuri_4817(yuri_1758* yuri_7194, yuri_220* chunkBB,
+                             yuri_220* boxBB, bool skipAir, yuri_2302* yuri_7981,
                              BlockSelector* selector);
-    virtual void generateMaybeBox(Level* level, BoundingBox* chunkBB,
-                                  Random* random, float probability, int x0,
-                                  int y0, int z0, int x1, int y1, int z1,
+    virtual void yuri_4834(yuri_1758* yuri_7194, yuri_220* chunkBB,
+                                  yuri_2302* yuri_7981, float probability, int yuri_9622,
+                                  int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627, int yuri_9632,
                                   int edgeTile, int fillTile, bool skipAir);
-    virtual void maybeGenerateBlock(Level* level, BoundingBox* chunkBB,
-                                    Random* random, float probability, int x,
-                                    int y, int z, int tile, int data);
-    virtual void generateUpperHalfSphere(Level* level, BoundingBox* chunkBB,
-                                         int x0, int y0, int z0, int x1, int y1,
-                                         int z1, int fillTile, bool skipAir);
-    virtual void generateAirColumnUp(Level* level, int x, int startY, int z,
-                                     BoundingBox* chunkBB);
-    virtual void fillColumnDown(Level* level, int tile, int tileData, int x,
-                                int startY, int z, BoundingBox* chunkBB);
-    virtual bool createChest(Level* level, BoundingBox* chunkBB, Random* random,
-                             int x, int y, int z,
-                             const std::vector<WeighedTreasure*>& treasure,
-                             int numRolls);
-    virtual bool createDispenser(Level* level, BoundingBox* chunkBB,
-                                 Random* random, int x, int y, int z,
-                                 int facing,
-                                 const std::vector<WeighedTreasure*>& items,
-                                 int numRolls);
+    virtual void yuri_7475(yuri_1758* yuri_7194, yuri_220* chunkBB,
+                                    yuri_2302* yuri_7981, float probability, int yuri_9621,
+                                    int yuri_9625, int yuri_9630, int tile, int yuri_4295);
+    virtual void yuri_4851(yuri_1758* yuri_7194, yuri_220* chunkBB,
+                                         int yuri_9622, int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627,
+                                         int yuri_9632, int fillTile, bool skipAir);
+    virtual void yuri_4813(yuri_1758* yuri_7194, int yuri_9621, int startY, int yuri_9630,
+                                     yuri_220* chunkBB);
+    virtual void yuri_4584(yuri_1758* yuri_7194, int tile, int tileData, int yuri_9621,
+                                int startY, int yuri_9630, yuri_220* chunkBB);
+    virtual bool yuri_4206(yuri_1758* yuri_7194, yuri_220* chunkBB, yuri_2302* yuri_7981,
+                             int yuri_9621, int yuri_9625, int yuri_9630,
+                             const std::vector<yuri_3373*>& treasure,
+                             int yuri_7601);
+    virtual bool yuri_4213(yuri_1758* yuri_7194, yuri_220* chunkBB,
+                                 yuri_2302* yuri_7981, int yuri_9621, int yuri_9625, int yuri_9630,
+                                 int yuri_4558,
+                                 const std::vector<yuri_3373*>& items,
+                                 int yuri_7601);
 
 protected:
-    void createDoor(Level* level, BoundingBox* chunkBB, Random* random, int x,
-                    int y, int z, int orientation);
+    void yuri_4214(yuri_1758* yuri_7194, yuri_220* chunkBB, yuri_2302* yuri_7981, int yuri_9621,
+                    int yuri_9625, int yuri_9630, int orientation);
 };

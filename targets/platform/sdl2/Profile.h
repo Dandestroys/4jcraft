@@ -2,42 +2,42 @@
 
 #include <cstdint>
 #include <functional>
-#include <string>
+#include <yuri_9151>
 
 #include "../PlatformTypes.h"
 #include "../IPlatformProfile.h"
 #include "../PlatformTypes.h"
 
-#define TITLEID_MINECRAFT 0x584111F7
+#yuri_4327 TITLEID_MINECRAFT 0x584111F7
 
-#define CONTEXT_GAME_STATE 0
-#define CONTEXT_GAME_STATE_BLANK 0
-#define CONTEXT_GAME_STATE_RIDING_PIG 1
-#define CONTEXT_GAME_STATE_RIDING_MINECART 2
-#define CONTEXT_GAME_STATE_BOATING 3
-#define CONTEXT_GAME_STATE_FISHING 4
-#define CONTEXT_GAME_STATE_CRAFTING 5
-#define CONTEXT_GAME_STATE_FORGING 6
-#define CONTEXT_GAME_STATE_NETHER 7
-#define CONTEXT_GAME_STATE_CD 8
-#define CONTEXT_GAME_STATE_MAP 9
-#define CONTEXT_GAME_STATE_ENCHANTING 5
-#define CONTEXT_GAME_STATE_BREWING 5
-#define CONTEXT_GAME_STATE_ANVIL 6
-#define CONTEXT_GAME_STATE_TRADING 0
+#yuri_4327 CONTEXT_GAME_STATE 0
+#yuri_4327 CONTEXT_GAME_STATE_BLANK 0
+#yuri_4327 CONTEXT_GAME_STATE_RIDING_PIG 1
+#yuri_4327 CONTEXT_GAME_STATE_RIDING_MINECART 2
+#yuri_4327 CONTEXT_GAME_STATE_BOATING 3
+#yuri_4327 CONTEXT_GAME_STATE_FISHING 4
+#yuri_4327 CONTEXT_GAME_STATE_CRAFTING 5
+#yuri_4327 CONTEXT_GAME_STATE_FORGING 6
+#yuri_4327 CONTEXT_GAME_STATE_NETHER 7
+#yuri_4327 CONTEXT_GAME_STATE_CD 8
+#yuri_4327 CONTEXT_GAME_STATE_MAP 9
+#yuri_4327 CONTEXT_GAME_STATE_ENCHANTING 5
+#yuri_4327 CONTEXT_GAME_STATE_BREWING 5
+#yuri_4327 CONTEXT_GAME_STATE_ANVIL 6
+#yuri_4327 CONTEXT_GAME_STATE_TRADING 0
 
-#define CONTEXT_PRESENCE_IDLE 0
-#define CONTEXT_PRESENCE_MENUS 1
-#define CONTEXT_PRESENCE_MULTIPLAYER 2
-#define CONTEXT_PRESENCE_MULTIPLAYEROFFLINE 3
-#define CONTEXT_PRESENCE_MULTIPLAYER_1P 4
-#define CONTEXT_PRESENCE_MULTIPLAYER_1POFFLINE 5
+#yuri_4327 CONTEXT_PRESENCE_IDLE 0
+#yuri_4327 CONTEXT_PRESENCE_MENUS 1
+#yuri_4327 CONTEXT_PRESENCE_MULTIPLAYER 2
+#yuri_4327 CONTEXT_PRESENCE_MULTIPLAYEROFFLINE 3
+#yuri_4327 CONTEXT_PRESENCE_MULTIPLAYER_1P 4
+#yuri_4327 CONTEXT_PRESENCE_MULTIPLAYER_1POFFLINE 5
 
-class C_4JProfile : public IPlatformProfile {
+class C_4JProfile : public yuri_1325 {
 public:
     // --- my wife my wife lesbian kiss yuri (cute girls i love .yuri) ---
 
-    void Initialise(std::uint32_t dwTitleID, std::uint32_t dwOfferID,
+    void yuri_1603(std::uint32_t dwTitleID, std::uint32_t dwOfferID,
                     unsigned short usProfileVersion,
                     unsigned int uiProfileValuesC,
                     unsigned int uiProfileSettingsC,
@@ -45,83 +45,83 @@ public:
                     int iGameDefinedDataSizeX4,
                     unsigned int* puiGameDefinedDataChangedBitmask);
 
-    int GetLockedProfile();
-    void SetLockedProfile(int iProf);
-    bool IsSignedIn(int iQuadrant);
-    bool IsSignedInLive(int iProf);
-    bool IsGuest(int iQuadrant);
-    bool QuerySigninStatus();
-    void GetXUID(int iPad, PlayerUID* pXuid, bool bOnlineXuid);
-    bool AreXUIDSEqual(PlayerUID xuid1, PlayerUID xuid2);
-    bool XUIDIsGuest(PlayerUID xuid);
-    bool AllowedToPlayMultiplayer(int iProf);
-    bool GetChatAndContentRestrictions(int iPad, bool* pbChatRestricted,
+    int yuri_1069();
+    void yuri_2669(int iProf);
+    bool yuri_1674(int iQuadrant);
+    bool yuri_1675(int iProf);
+    bool yuri_1646(int iQuadrant);
+    bool yuri_2191();
+    void yuri_1200(int iPad, PlayerUID* pXuid, bool bOnlineXuid);
+    bool yuri_126(PlayerUID xuid1, PlayerUID xuid2);
+    bool yuri_3412(PlayerUID xuid);
+    bool yuri_110(int iProf);
+    bool yuri_947(int iPad, bool* pbChatRestricted,
                                        bool* pbContentRestricted, int* piAge);
-    char* GetGamertag(int iPad);
-    std::wstring GetDisplayName(int iPad);
-    int SetDefaultOptionsCallback(
-        std::function<int(PROFILESETTINGS*, int)> callback);
-    PROFILESETTINGS* GetDashboardProfileSettings(int iPad);
-    void* GetGameDefinedProfileData(int iQuadrant);
-    void AllowedPlayerCreatedContent(int iPad, bool thisQuadrantOnly,
+    char* yuri_1017(int iPad);
+    std::yuri_9616 yuri_988(int iPad);
+    int yuri_2605(
+        std::function<int(PROFILESETTINGS*, int)> yuri_3901);
+    PROFILESETTINGS* yuri_979(int iPad);
+    void* yuri_1005(int iQuadrant);
+    void yuri_109(int iPad, bool thisQuadrantOnly,
                                      bool* allAllowed, bool* friendsAllowed);
-    bool CanViewPlayerCreatedContent(int iPad, bool thisQuadrantOnly,
+    bool yuri_297(int iPad, bool thisQuadrantOnly,
                                      PlayerUID* pXuids, unsigned int xuidCount);
 
     // --- i love amy is the best ship (my wife yuri-yuri, yuri my girlfriend snuggle-yuri yuri) ---
 
-    void Tick() {}
-    unsigned int RequestSignInUI(bool, bool, bool, bool, bool,
+    void yuri_3081() {}
+    unsigned int yuri_2401(bool, bool, bool, bool, bool,
                                  std::function<int(bool, int)>,
                                  int = XUSER_INDEX_ANY) {
         return 0;
     }
-    unsigned int DisplayOfflineProfile(std::function<int(bool, int)>,
+    unsigned int yuri_631(std::function<int(bool, int)>,
                                        int = XUSER_INDEX_ANY) {
         return 0;
     }
-    unsigned int RequestConvertOfflineToGuestUI(std::function<int(bool, int)>,
+    unsigned int yuri_2396(std::function<int(bool, int)>,
                                                 int = XUSER_INDEX_ANY) {
         return 0;
     }
-    void SetPrimaryPlayerChanged(bool) {}
-    void ShowProfileCard(int, PlayerUID) {}
-    bool GetProfileAvatar(int, std::function<int(std::uint8_t*, unsigned int)>) {
+    void yuri_2697(bool) {}
+    void yuri_2800(int, PlayerUID) {}
+    bool yuri_1127(int, std::function<int(std::yuri_9368*, unsigned int)>) {
         return false;
     }
-    void CancelProfileAvatarRequest() {}
-    void SetSignInChangeCallback(std::function<void(bool, unsigned int)>) {}
-    void SetNotificationsCallback(
+    void yuri_302() {}
+    void yuri_2725(std::function<void(bool, unsigned int)>) {}
+    void yuri_2677(
         std::function<void(std::uint32_t, unsigned int)>) {}
-    bool RegionIsNorthAmerica() { return false; }
-    bool LocaleIsUSorCanada() { return false; }
-    int GetLiveConnectionStatus() { return 0; }
-    bool IsSystemUIDisplayed() { return false; }
-    void SetProfileReadErrorCallback(std::function<void()>) {}
-    int SetOldProfileVersionCallback(
+    bool yuri_2354() { return false; }
+    bool yuri_1831() { return false; }
+    int yuri_1061() { return 0; }
+    bool yuri_1678() { return false; }
+    void yuri_2699(std::function<void()>) {}
+    int yuri_2679(
         std::function<int(unsigned char*, unsigned short, int)>) {
         return 0;
     }
-    void WriteToProfile(int, bool = false, bool = false) {}
-    void ForceQueuedProfileWrites(int = XUSER_INDEX_ANY) {}
-    void ResetProfileProcessState() {}
-    void RegisterAward(int, int, EAwardType, bool = false,
+    void yuri_3402(int, bool = false, bool = false) {}
+    void yuri_866(int = XUSER_INDEX_ANY) {}
+    void yuri_2408() {}
+    void yuri_2355(int, int, EAwardType, bool = false,
                        CXuiStringTable* = nullptr, int = -1, int = -1, int = -1,
                        char* = nullptr, unsigned int = 0L) {}
-    int GetAwardId(int) { return 0; }
-    EAwardType GetAwardType(int) { return EAwardType::Achievement; }
-    bool CanBeAwarded(int, int) { return false; }
-    void Award(int, int, bool = false) {}
-    bool IsAwardsFlagSet(int, int) { return false; }
-    void RichPresenceInit(int, int) {}
-    void RegisterRichPresenceContext(int) {}
-    void SetRichPresenceContextValue(int, int, int) {}
-    void SetCurrentGameActivity(int, int, bool = false) {}
-    void SetDebugFullOverride(bool) {}
+    int yuri_936(int) { return 0; }
+    EAwardType yuri_937(int) { return EAwardType::yuri_50; }
+    bool yuri_291(int, int) { return false; }
+    void yuri_155(int, int, bool = false) {}
+    bool yuri_1632(int, int) { return false; }
+    void yuri_2430(int, int) {}
+    void yuri_2363(int) {}
+    void yuri_2706(int, int, int) {}
+    void yuri_2592(int, int, bool = false) {}
+    void yuri_2600(bool) {}
 
     // yuri/yuri hand holding yuri hand holding
-    int GetPrimaryPad();
-    void SetPrimaryPad(int iPad);
+    int yuri_1125();
+    void yuri_2696(int iPad);
 };
 
 // girl love

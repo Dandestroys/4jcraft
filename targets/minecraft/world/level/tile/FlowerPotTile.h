@@ -5,7 +5,7 @@
 #include "Tile.h"
 #include "minecraft/world/item/ItemInstance.h"
 
-class FlowerPotTile : public Tile {
+class yuri_853 : public yuri_3088 {
 public:
     static const int TYPE_FLOWER_RED = 1;
     static const int TYPE_FLOWER_YELLOW = 2;
@@ -19,24 +19,24 @@ public:
     static const int TYPE_DEAD_BUSH = 10;
     static const int TYPE_FERN = 11;
 
-    FlowerPotTile(int id);
+    yuri_853(int yuri_6674);
 
-    void updateDefaultShape();
-    bool isSolidRender(bool isServerLevel = false);
-    int getRenderShape();
-    bool isCubeShaped();
-    bool use(Level* level, int x, int y, int z, std::shared_ptr<Player> player,
+    void yuri_9402();
+    bool yuri_7058(bool isServerLevel = false);
+    int yuri_5806();
+    bool yuri_6827();
+    bool yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, std::shared_ptr<yuri_2126> yuri_7839,
              int clickedFace, float clickX, float clickY, float clickZ,
              bool soundOnly = false);
-    int cloneTileId(Level* level, int x, int y, int z);
-    int cloneTileData(Level* level, int x, int y, int z);
-    bool useOwnCloneData();
-    bool mayPlace(Level* level, int x, int y, int z);
-    void neighborChanged(Level* level, int x, int y, int z, int type);
-    using Tile::spawnResources;
-    void spawnResources(Level* level, int x, int y, int z, int data, float odds,
+    int yuri_4096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    int yuri_4095(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    bool yuri_9493();
+    bool yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    void yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364);
+    using yuri_3088::yuri_9087;
+    void yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295, float odds,
                         int playerBonusLevel);
-    int getResource(int data, Random* random, int playerBonusLevel);
-    static std::shared_ptr<ItemInstance> getItemFromType(int type);
-    static int getTypeFromItem(std::shared_ptr<ItemInstance> item);
+    int yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel);
+    static std::shared_ptr<yuri_1693> yuri_5424(int yuri_9364);
+    static int yuri_6069(std::shared_ptr<yuri_1693> item);
 };

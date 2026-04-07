@@ -3,9 +3,9 @@
 #include "minecraft/stats/Achievements.h"
 
 
-class StatsCounter;
+class yuri_2955;
 
-class AchievementScreen : public Screen {
+class yuri_52 : public yuri_2524 {
 private:
     static const int BIGMAP_X = 16;
     static const int BIGMAP_Y = 17;
@@ -39,26 +39,26 @@ protected:
 
 private:
     int scrolling;
-    StatsCounter* statsCounter;
+    yuri_2955* statsCounter;
 
 public:
-    using Screen::keyPressed;
+    using yuri_2524::yuri_7155;
 
-    AchievementScreen(StatsCounter* statsCounter);
-    virtual void init() override;
+    yuri_52(yuri_2955* statsCounter);
+    virtual void yuri_6704() override;
 
 protected:
-    virtual void buttonClicked(Button* button) override;
-    virtual void keyPressed(char eventCharacter, int eventKey);
+    virtual void yuri_3881(yuri_245* button) override;
+    virtual void yuri_7155(char eventCharacter, int eventKey);
 
 public:
-    virtual void render(int mouseX, int mouseY, float a) override;
-    virtual void tick() override;
+    virtual void yuri_8158(int mouseX, int mouseY, float yuri_3565) override;
+    virtual void yuri_9265() override;
 
 protected:
-    virtual void renderLabels();
-    virtual void renderBg(int xm, int ym, float a);
+    virtual void yuri_8204();
+    virtual void yuri_8165(int xm, int ym, float yuri_3565);
 
 public:
-    virtual bool isPauseScreen() override;
+    virtual bool yuri_6984() override;
 };

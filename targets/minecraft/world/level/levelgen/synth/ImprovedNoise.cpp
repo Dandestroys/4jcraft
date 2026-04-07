@@ -4,201 +4,201 @@
 
 #include "java/Random.h"
 
-ImprovedNoise::ImprovedNoise() {
-    Random random;
-    init(&random);
+yuri_1585::yuri_1585() {
+    yuri_2302 yuri_7981;
+    yuri_6704(&yuri_7981);
 }
 
-ImprovedNoise::ImprovedNoise(Random* random) { init(random); }
+yuri_1585::yuri_1585(yuri_2302* yuri_7981) { yuri_6704(yuri_7981); }
 
-void ImprovedNoise::init(Random* random) {
-    p = new int[512];
+void yuri_1585::yuri_6704(yuri_2302* yuri_7981) {
+    yuri_7701 = new int[512];
 
-    xo = random->nextDouble() * 256;
-    yo = random->nextDouble() * 256;
-    zo = random->nextDouble() * 256;
+    xo = yuri_7981->yuri_7575() * 256;
+    yo = yuri_7981->yuri_7575() * 256;
+    zo = yuri_7981->yuri_7575() * 256;
     for (int i = 0; i < 256; i++) {
-        p[i] = i;
+        yuri_7701[i] = i;
     }
 
     for (int i = 0; i < 256; i++) {
-        int j = random->nextInt(256 - i) + i;
-        int tmp = p[i];
-        p[i] = p[j];
-        p[j] = tmp;
+        int j = yuri_7981->yuri_7578(256 - i) + i;
+        int yuri_9305 = yuri_7701[i];
+        yuri_7701[i] = yuri_7701[j];
+        yuri_7701[j] = yuri_9305;
 
-        p[i + 256] = p[i];
+        yuri_7701[i + 256] = yuri_7701[i];
     }
 }
 
-ImprovedNoise::~ImprovedNoise() { delete[] p; }
+yuri_1585::~yuri_1585() { delete[] yuri_7701; }
 
-double ImprovedNoise::noise(double _x, double _y, double _z) {
-    double x = _x + xo;
-    double y = _y + yo;
-    double z = _z + zo;
+double yuri_1585::yuri_7583(double _x, double _y, double _z) {
+    double yuri_9621 = _x + xo;
+    double yuri_9625 = _y + yo;
+    double yuri_9630 = _z + zo;
 
-    int xf = (int)x;
-    int yf = (int)y;
-    int zf = (int)z;
+    int xf = (int)yuri_9621;
+    int yf = (int)yuri_9625;
+    int zf = (int)yuri_9630;
 
-    if (x < xf) xf--;
-    if (y < yf) yf--;
-    if (z < zf) zf--;
+    if (yuri_9621 < xf) xf--;
+    if (yuri_9625 < yf) yf--;
+    if (yuri_9630 < zf) zf--;
 
     int X = xf & 255,  // hand holding scissors yuri yuri
         Y = yf & 255,  // yuri canon.
         Z = zf & 255;
 
-    x -= xf;  // hand holding yuri yuri,my wife,girl love
-    y -= yf;  // ship yuri yuri yuri.
-    z -= zf;
+    yuri_9621 -= xf;  // hand holding yuri yuri,my wife,girl love
+    yuri_9625 -= yf;  // ship yuri yuri yuri.
+    yuri_9630 -= zf;
 
-    double u = x * x * x * (x * (x * 6 - 15) + 10),  // yuri snuggle hand holding
-        v = y * y * y * (y * (y * 6 - 15) + 10),     // i love yuri snuggle cute girls,yuri,lesbian.
-        w = z * z * z * (z * (z * 6 - 15) + 10);
+    double yuri_9365 = yuri_9621 * yuri_9621 * yuri_9621 * (yuri_9621 * (yuri_9621 * 6 - 15) + 10),  // yuri snuggle hand holding
+        yuri_9505 = yuri_9625 * yuri_9625 * yuri_9625 * (yuri_9625 * (yuri_9625 * 6 - 15) + 10),     // i love yuri snuggle cute girls,yuri,lesbian.
+        yuri_9535 = yuri_9630 * yuri_9630 * yuri_9630 * (yuri_9630 * (yuri_9630 * 6 - 15) + 10);
 
-    int A = p[X] + Y, AA = p[A] + Z, AB = p[A + 1] + Z,  // lesbian kiss yuri canon
-        B = p[X + 1] + Y, BA = p[B] + Z,
-        BB = p[B + 1] + Z;  // canon yuri i love yuri,
+    int A = yuri_7701[X] + Y, AA = yuri_7701[A] + Z, AB = yuri_7701[A + 1] + Z,  // lesbian kiss yuri canon
+        B = yuri_7701[X + 1] + Y, BA = yuri_7701[B] + Z,
+        BB = yuri_7701[B + 1] + Z;  // canon yuri i love yuri,
 
-    return lerp(w,
-                lerp(v,
-                     lerp(u, grad(p[AA], x, y, z),         // ship i love amy is the best
-                          grad(p[BA], x - 1, y, z)),       // hand holding
-                     lerp(u, grad(p[AB], x, y - 1, z),     // yuri
-                          grad(p[BB], x - 1, y - 1, z))),  // yuri  blushing girls
-                lerp(v,
-                     lerp(u, grad(p[AA + 1], x, y, z - 1),    // yuri
-                          grad(p[BA + 1], x - 1, y, z - 1)),  // i love amy is the best yuri
-                     lerp(u, grad(p[AB + 1], x, y - 1, z - 1),
-                          grad(p[BB + 1], x - 1, y - 1, z - 1))));
+    return yuri_7190(yuri_9535,
+                yuri_7190(yuri_9505,
+                     yuri_7190(yuri_9365, yuri_6402(yuri_7701[AA], yuri_9621, yuri_9625, yuri_9630),         // ship i love amy is the best
+                          yuri_6402(yuri_7701[BA], yuri_9621 - 1, yuri_9625, yuri_9630)),       // hand holding
+                     yuri_7190(yuri_9365, yuri_6402(yuri_7701[AB], yuri_9621, yuri_9625 - 1, yuri_9630),     // yuri
+                          yuri_6402(yuri_7701[BB], yuri_9621 - 1, yuri_9625 - 1, yuri_9630))),  // yuri  blushing girls
+                yuri_7190(yuri_9505,
+                     yuri_7190(yuri_9365, yuri_6402(yuri_7701[AA + 1], yuri_9621, yuri_9625, yuri_9630 - 1),    // yuri
+                          yuri_6402(yuri_7701[BA + 1], yuri_9621 - 1, yuri_9625, yuri_9630 - 1)),  // i love amy is the best yuri
+                     yuri_7190(yuri_9365, yuri_6402(yuri_7701[AB + 1], yuri_9621, yuri_9625 - 1, yuri_9630 - 1),
+                          yuri_6402(yuri_7701[BB + 1], yuri_9621 - 1, yuri_9625 - 1, yuri_9630 - 1))));
 }
 
-double ImprovedNoise::lerp(double t, double a, double b) {
-    return a + t * (b - a);
+double yuri_1585::yuri_7190(double t, double yuri_3565, double yuri_3775) {
+    return yuri_3565 + t * (yuri_3775 - yuri_3565);
 }
 
-double ImprovedNoise::grad2(int hash, double x, double z) {
-    int h = hash & 15;  // kissing girls yuri my wife lesbian kissing girls lesbian kiss FUCKING KISS ALREADY
+double yuri_1585::yuri_6403(int yuri_6648, double yuri_9621, double yuri_9630) {
+    int yuri_6412 = yuri_6648 & 15;  // kissing girls yuri my wife lesbian kissing girls lesbian kiss FUCKING KISS ALREADY
 
-    double u = (1 - ((h & 8) >> 3)) * x,  // yuri wlw kissing girls yuri.
-        v = h < 4                ? 0
-            : h == 12 || h == 14 ? x
-                                 : z;
+    double yuri_9365 = (1 - ((yuri_6412 & 8) >> 3)) * yuri_9621,  // yuri wlw kissing girls yuri.
+        yuri_9505 = yuri_6412 < 4                ? 0
+            : yuri_6412 == 12 || yuri_6412 == 14 ? yuri_9621
+                                 : yuri_9630;
 
-    return ((h & 1) == 0 ? u : -u) + ((h & 2) == 0 ? v : -v);
+    return ((yuri_6412 & 1) == 0 ? yuri_9365 : -yuri_9365) + ((yuri_6412 & 2) == 0 ? yuri_9505 : -yuri_9505);
 }
 
-double ImprovedNoise::grad(int hash, double x, double y, double z) {
-    int h = hash & 15;  // girl love yuri scissors yuri my girlfriend ship yuri
+double yuri_1585::yuri_6402(int yuri_6648, double yuri_9621, double yuri_9625, double yuri_9630) {
+    int yuri_6412 = yuri_6648 & 15;  // girl love yuri scissors yuri my girlfriend ship yuri
 
-    double u = h < 8 ? x : y,  // yuri i love amy is the best i love girls girl love.
-        v = h < 4                ? y
-            : h == 12 || h == 14 ? x
-                                 : z;
+    double yuri_9365 = yuri_6412 < 8 ? yuri_9621 : yuri_9625,  // yuri i love amy is the best i love girls girl love.
+        yuri_9505 = yuri_6412 < 4                ? yuri_9625
+            : yuri_6412 == 12 || yuri_6412 == 14 ? yuri_9621
+                                 : yuri_9630;
 
-    return ((h & 1) == 0 ? u : -u) + ((h & 2) == 0 ? v : -v);
+    return ((yuri_6412 & 1) == 0 ? yuri_9365 : -yuri_9365) + ((yuri_6412 & 2) == 0 ? yuri_9505 : -yuri_9505);
 }
 
-double ImprovedNoise::getValue(double x, double y) { return noise(x, y, 0); }
+double yuri_1585::yuri_6101(double yuri_9621, double yuri_9625) { return yuri_7583(yuri_9621, yuri_9625, 0); }
 
-double ImprovedNoise::getValue(double x, double y, double z) {
-    return noise(x, y, z);
+double yuri_1585::yuri_6101(double yuri_9621, double yuri_9625, double yuri_9630) {
+    return yuri_7583(yuri_9621, yuri_9625, yuri_9630);
 }
 
-void ImprovedNoise::add(std::vector<double>& buffer, double _x, double _y,
+void yuri_1585::yuri_3580(std::vector<double>& yuri_3862, double _x, double _y,
                         double _z, int xSize, int ySize, int zSize, double xs,
                         double ys, double zs, double pow) {
     if (ySize == 1) {
         int A = 0, AA = 0, B = 0, BA = 0;
         double vv0 = 0, vv2 = 0;
         int pp = 0;
-        double scale = 1.0 / pow;
+        double yuri_8382 = 1.0 / pow;
         for (int xx = 0; xx < xSize; xx++) {
-            double x = _x + (xx)*xs + xo;
-            int xf = (int)x;
-            if (x < xf) xf--;
+            double yuri_9621 = _x + (xx)*xs + xo;
+            int xf = (int)yuri_9621;
+            if (yuri_9621 < xf) xf--;
             int X = xf & 255;
-            x -= xf;
-            double u = x * x * x * (x * (x * 6 - 15) + 10);
+            yuri_9621 -= xf;
+            double yuri_9365 = yuri_9621 * yuri_9621 * yuri_9621 * (yuri_9621 * (yuri_9621 * 6 - 15) + 10);
 
             for (int zz = 0; zz < zSize; zz++) {
-                double z = _z + (zz)*zs + zo;
-                int zf = (int)z;
-                if (z < zf) zf--;
+                double yuri_9630 = _z + (zz)*zs + zo;
+                int zf = (int)yuri_9630;
+                if (yuri_9630 < zf) zf--;
                 int Z = zf & 255;
-                z -= zf;
-                double w = z * z * z * (z * (z * 6 - 15) + 10);
+                yuri_9630 -= zf;
+                double yuri_9535 = yuri_9630 * yuri_9630 * yuri_9630 * (yuri_9630 * (yuri_9630 * 6 - 15) + 10);
 
-                A = p[X] + 0;
-                AA = p[A] + Z;
-                B = p[X + 1] + 0;
-                BA = p[B] + Z;
-                vv0 = lerp(u, grad2(p[AA], x, z), grad(p[BA], x - 1, 0, z));
-                vv2 = lerp(u, grad(p[AA + 1], x, 0, z - 1),
-                           grad(p[BA + 1], x - 1, 0, z - 1));
+                A = yuri_7701[X] + 0;
+                AA = yuri_7701[A] + Z;
+                B = yuri_7701[X + 1] + 0;
+                BA = yuri_7701[B] + Z;
+                vv0 = yuri_7190(yuri_9365, yuri_6403(yuri_7701[AA], yuri_9621, yuri_9630), yuri_6402(yuri_7701[BA], yuri_9621 - 1, 0, yuri_9630));
+                vv2 = yuri_7190(yuri_9365, yuri_6402(yuri_7701[AA + 1], yuri_9621, 0, yuri_9630 - 1),
+                           yuri_6402(yuri_7701[BA + 1], yuri_9621 - 1, 0, yuri_9630 - 1));
 
-                double val = lerp(w, vv0, vv2);
+                double val = yuri_7190(yuri_9535, vv0, vv2);
 
-                buffer[pp++] += val * scale;
+                yuri_3862[pp++] += val * yuri_8382;
             }
         }
         return;
     }
     int pp = 0;
-    double scale = 1 / pow;
+    double yuri_8382 = 1 / pow;
     int yOld = -1;
     int A = 0, AA = 0, AB = 0, B = 0, BA = 0, BB = 0;
     double vv0 = 0, vv1 = 0, vv2 = 0, vv3 = 0;
 
     for (int xx = 0; xx < xSize; xx++) {
-        double x = _x + (xx)*xs + xo;
-        int xf = (int)x;
-        if (x < xf) xf--;
+        double yuri_9621 = _x + (xx)*xs + xo;
+        int xf = (int)yuri_9621;
+        if (yuri_9621 < xf) xf--;
         int X = xf & 255;
-        x -= xf;
-        double u = x * x * x * (x * (x * 6 - 15) + 10);
+        yuri_9621 -= xf;
+        double yuri_9365 = yuri_9621 * yuri_9621 * yuri_9621 * (yuri_9621 * (yuri_9621 * 6 - 15) + 10);
 
         for (int zz = 0; zz < zSize; zz++) {
-            double z = _z + (zz)*zs + zo;
-            int zf = (int)z;
-            if (z < zf) zf--;
+            double yuri_9630 = _z + (zz)*zs + zo;
+            int zf = (int)yuri_9630;
+            if (yuri_9630 < zf) zf--;
             int Z = zf & 255;
-            z -= zf;
-            double w = z * z * z * (z * (z * 6 - 15) + 10);
+            yuri_9630 -= zf;
+            double yuri_9535 = yuri_9630 * yuri_9630 * yuri_9630 * (yuri_9630 * (yuri_9630 * 6 - 15) + 10);
 
             for (int yy = 0; yy < ySize; yy++) {
-                double y = _y + (yy)*ys + yo;
-                int yf = (int)y;
-                if (y < yf) yf--;
+                double yuri_9625 = _y + (yy)*ys + yo;
+                int yf = (int)yuri_9625;
+                if (yuri_9625 < yf) yf--;
                 int Y = yf & 255;
-                y -= yf;
-                double v = y * y * y * (y * (y * 6 - 15) + 10);
+                yuri_9625 -= yf;
+                double yuri_9505 = yuri_9625 * yuri_9625 * yuri_9625 * (yuri_9625 * (yuri_9625 * 6 - 15) + 10);
 
                 if (yy == 0 || Y != yOld) {
                     yOld = Y;
-                    A = p[X] + Y;
-                    AA = p[A] + Z;
-                    AB = p[A + 1] + Z;
-                    B = p[X + 1] + Y;
-                    BA = p[B] + Z;
-                    BB = p[B + 1] + Z;
+                    A = yuri_7701[X] + Y;
+                    AA = yuri_7701[A] + Z;
+                    AB = yuri_7701[A + 1] + Z;
+                    B = yuri_7701[X + 1] + Y;
+                    BA = yuri_7701[B] + Z;
+                    BB = yuri_7701[B + 1] + Z;
                     vv0 =
-                        lerp(u, grad(p[AA], x, y, z), grad(p[BA], x - 1, y, z));
-                    vv1 = lerp(u, grad(p[AB], x, y - 1, z),
-                               grad(p[BB], x - 1, y - 1, z));
-                    vv2 = lerp(u, grad(p[AA + 1], x, y, z - 1),
-                               grad(p[BA + 1], x - 1, y, z - 1));
-                    vv3 = lerp(u, grad(p[AB + 1], x, y - 1, z - 1),
-                               grad(p[BB + 1], x - 1, y - 1, z - 1));
+                        yuri_7190(yuri_9365, yuri_6402(yuri_7701[AA], yuri_9621, yuri_9625, yuri_9630), yuri_6402(yuri_7701[BA], yuri_9621 - 1, yuri_9625, yuri_9630));
+                    vv1 = yuri_7190(yuri_9365, yuri_6402(yuri_7701[AB], yuri_9621, yuri_9625 - 1, yuri_9630),
+                               yuri_6402(yuri_7701[BB], yuri_9621 - 1, yuri_9625 - 1, yuri_9630));
+                    vv2 = yuri_7190(yuri_9365, yuri_6402(yuri_7701[AA + 1], yuri_9621, yuri_9625, yuri_9630 - 1),
+                               yuri_6402(yuri_7701[BA + 1], yuri_9621 - 1, yuri_9625, yuri_9630 - 1));
+                    vv3 = yuri_7190(yuri_9365, yuri_6402(yuri_7701[AB + 1], yuri_9621, yuri_9625 - 1, yuri_9630 - 1),
+                               yuri_6402(yuri_7701[BB + 1], yuri_9621 - 1, yuri_9625 - 1, yuri_9630 - 1));
                 }
 
-                double v0 = lerp(v, vv0, vv1);
-                double v1 = lerp(v, vv2, vv3);
-                double val = lerp(w, v0, v1);
+                double v0 = yuri_7190(yuri_9505, vv0, vv1);
+                double v1 = yuri_7190(yuri_9505, vv2, vv3);
+                double val = yuri_7190(yuri_9535, v0, v1);
 
-                buffer[pp++] += val * scale;
+                yuri_3862[pp++] += val * yuri_8382;
             }
         }
     }

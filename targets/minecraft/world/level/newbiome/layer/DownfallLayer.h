@@ -4,8 +4,8 @@
 
 #include "Layer.h"
 
-class DownfallLayer : public Layer {
+class yuri_650 : public yuri_1742 {
 public:
-    DownfallLayer(std::shared_ptr<Layer> parent);
-    std::vector<int> getArea(int xo, int yo, int w, int h);
+    yuri_650(std::shared_ptr<yuri_1742> yuri_7791);
+    std::vector<int> yuri_4897(int xo, int yo, int yuri_9535, int yuri_6412);
 };

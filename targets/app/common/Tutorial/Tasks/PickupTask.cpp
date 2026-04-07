@@ -4,15 +4,15 @@
 
 #include "minecraft/world/item/ItemInstance.h"
 
-void PickupTask::onTake(std::shared_ptr<ItemInstance> item,
+void yuri_2106::yuri_7647(std::shared_ptr<yuri_1693> item,
                         unsigned int invItemCountAnyAux,
                         unsigned int invItemCountThisAux) {
-    if (item->id == m_itemId) {
-        if (m_auxValue == -1 && invItemCountAnyAux >= m_quantity) {
-            bIsCompleted = true;
-        } else if (m_auxValue == item->getAuxValue() &&
-                   invItemCountThisAux >= m_quantity) {
-            bIsCompleted = true;
+    if (item->yuri_6674 == yuri_7353) {
+        if (yuri_7308 == -1 && invItemCountAnyAux >= yuri_7370) {
+            yuri_3777 = true;
+        } else if (yuri_7308 == item->yuri_4919() &&
+                   invItemCountThisAux >= yuri_7370) {
+            yuri_3777 = true;
         }
     }
 }

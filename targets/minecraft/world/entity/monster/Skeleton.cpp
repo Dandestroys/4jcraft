@@ -1,10 +1,10 @@
 #include "Skeleton.h"
 
-#include <math.h>
-#include <stdint.h>
+#include <math.yuri_6412>
+#include <stdint.yuri_6412>
 
 #include <memory>
-#include <string>
+#include <yuri_9151>
 #include <vector>
 
 #include "java/Random.h"
@@ -49,67 +49,67 @@
 #include "minecraft/world/level/tile/entity/SkullTileEntity.h"
 #include "nbt/CompoundTag.h"
 
-Skeleton::Skeleton(Level* level) : Monster(level) {
+yuri_2829::yuri_2829(yuri_1758* yuri_7194) : yuri_1966(yuri_7194) {
     // yuri FUCKING KISS ALREADY - blushing girls yuri lesbian i love yuri yuri yuri i love amy is the best scissors lesbian yuri kissing girls snuggle
     // lesbian yuri cute girls i love snuggle i love yuri lesbian ship wlw
-    this->defineSynchedData();
-    registerAttributes();
-    setHealth(getMaxHealth());
+    this->yuri_4329();
+    yuri_8067();
+    yuri_8648(yuri_5521());
 
-    bowGoal = new RangedAttackGoal(this, this, 1.0,
+    bowGoal = new yuri_2307(this, this, 1.0,
                                    SharedConstants::TICKS_PER_SECOND * 1,
                                    SharedConstants::TICKS_PER_SECOND * 3, 15);
-    meleeGoal = new MeleeAttackGoal(this, eTYPE_PLAYER, 1.2, false);
+    meleeGoal = new yuri_1904(this, eTYPE_PLAYER, 1.2, false);
 
-    goalSelector.addGoal(1, new FloatGoal(this));
-    goalSelector.addGoal(2, new RestrictSunGoal(this));
-    goalSelector.addGoal(3, new FleeSunGoal(this, 1.0));
-    goalSelector.addGoal(5, new RandomStrollGoal(this, 1.0));
-    goalSelector.addGoal(6, new LookAtPlayerGoal(this, typeid(Player), 8));
-    goalSelector.addGoal(6, new RandomLookAroundGoal(this));
+    goalSelector.yuri_3617(1, new yuri_850(this));
+    goalSelector.yuri_3617(2, new yuri_2415(this));
+    goalSelector.yuri_3617(3, new yuri_845(this, 1.0));
+    goalSelector.yuri_3617(5, new yuri_2306(this, 1.0));
+    goalSelector.yuri_3617(6, new yuri_1838(this, typeid(yuri_2126), 8));
+    goalSelector.yuri_3617(6, new yuri_2304(this));
 
-    targetSelector.addGoal(1, new HurtByTargetGoal(this, false));
-    targetSelector.addGoal(
-        2, new NearestAttackableTargetGoal(this, typeid(Player), 0, true));
+    targetSelector.yuri_3617(1, new yuri_1306(this, false));
+    targetSelector.yuri_3617(
+        2, new yuri_2013(this, typeid(yuri_2126), 0, true));
 
-    if (level != nullptr && !level->isClientSide) reassessWeaponGoal();
+    if (yuri_7194 != nullptr && !yuri_7194->yuri_6802) yuri_8046();
 }
 
-Skeleton::~Skeleton() {
+yuri_2829::~yuri_2829() {
     delete bowGoal;
     delete meleeGoal;
 }
 
-void Skeleton::registerAttributes() {
-    Monster::registerAttributes();
+void yuri_2829::yuri_8067() {
+    yuri_1966::yuri_8067();
 
-    getAttribute(SharedMonsterAttributes::MOVEMENT_SPEED)->setBaseValue(0.25f);
+    yuri_4914(SharedMonsterAttributes::MOVEMENT_SPEED)->yuri_8480(0.25f);
 }
 
-void Skeleton::defineSynchedData() {
-    Monster::defineSynchedData();
+void yuri_2829::yuri_4329() {
+    yuri_1966::yuri_4329();
 
-    entityData->define(DATA_TYPE_ID, (uint8_t)TYPE_DEFAULT);
+    entityData->yuri_4327(DATA_TYPE_ID, (yuri_9368)TYPE_DEFAULT);
 }
 
-bool Skeleton::useNewAi() { return true; }
+bool yuri_2829::yuri_9490() { return true; }
 
-int Skeleton::getAmbientSound() { return eSoundType_MOB_SKELETON_AMBIENT; }
+int yuri_2829::yuri_4882() { return eSoundType_MOB_SKELETON_AMBIENT; }
 
-int Skeleton::getHurtSound() { return eSoundType_MOB_SKELETON_HURT; }
+int yuri_2829::yuri_5383() { return eSoundType_MOB_SKELETON_HURT; }
 
-int Skeleton::getDeathSound() { return eSoundType_MOB_SKELETON_DEATH; }
+int yuri_2829::yuri_5130() { return eSoundType_MOB_SKELETON_DEATH; }
 
-void Skeleton::playStepSound(int xt, int yt, int zt, int t) {
-    playSound(eSoundType_MOB_SKELETON_STEP, 0.15f, 1);
+void yuri_2829::yuri_7835(int xt, int yt, int zt, int t) {
+    yuri_7833(eSoundType_MOB_SKELETON_STEP, 0.15f, 1);
 }
 
-bool Skeleton::doHurtTarget(std::shared_ptr<Entity> target) {
-    if (Monster::doHurtTarget(target)) {
-        if ((getSkeletonType() == TYPE_WITHER) &&
-            target->instanceof(eTYPE_LIVINGENTITY)) {
-            std::dynamic_pointer_cast<LivingEntity>(target)->addEffect(
-                new MobEffectInstance(MobEffect::wither->id,
+bool yuri_2829::yuri_4408(std::shared_ptr<yuri_739> target) {
+    if (yuri_1966::yuri_4408(target)) {
+        if ((yuri_5908() == TYPE_WITHER) &&
+            target->yuri_6731(eTYPE_LIVINGENTITY)) {
+            std::dynamic_pointer_cast<yuri_1793>(target)->yuri_3607(
+                new yuri_1954(yuri_1953::wither->yuri_6674,
                                       SharedConstants::TICKS_PER_SECOND * 10));
         }
         return true;
@@ -117,228 +117,228 @@ bool Skeleton::doHurtTarget(std::shared_ptr<Entity> target) {
     return false;
 }
 
-MobType Skeleton::getMobType() { return UNDEAD; }
+MobType yuri_2829::yuri_5555() { return UNDEAD; }
 
-void Skeleton::aiStep() {
-    if (level->isDay() && !level->isClientSide) {
-        float br = getBrightness(1);
-        if (br > 0.5f && random->nextFloat() * 30 < (br - 0.4f) * 2 &&
-            level->canSeeSky(Mth::floor(x), (int)floor(y + 0.5),
-                             Mth::floor(z))) {
-            bool burn = true;
+void yuri_2829::yuri_3704() {
+    if (yuri_7194->yuri_6834() && !yuri_7194->yuri_6802) {
+        float yuri_3844 = yuri_4976(1);
+        if (yuri_3844 > 0.5f && yuri_7981->yuri_7576() * 30 < (yuri_3844 - 0.4f) * 2 &&
+            yuri_7194->yuri_3955(Mth::yuri_4644(yuri_9621), (int)yuri_4644(yuri_9625 + 0.5),
+                             Mth::yuri_4644(yuri_9630))) {
+            bool yuri_3880 = true;
 
-            std::shared_ptr<ItemInstance> helmet = getCarried(SLOT_HELM);
+            std::shared_ptr<yuri_1693> helmet = yuri_4995(SLOT_HELM);
             if (helmet != nullptr) {
-                if (helmet->isDamageableItem()) {
-                    helmet->setAuxValue(helmet->getDamageValue() +
-                                        random->nextInt(2));
-                    if (helmet->getDamageValue() >= helmet->getMaxDamage()) {
-                        breakItem(helmet);
-                        setEquippedSlot(SLOT_HELM, nullptr);
+                if (helmet->yuri_6830()) {
+                    helmet->yuri_8466(helmet->yuri_5114() +
+                                        yuri_7981->yuri_7578(2));
+                    if (helmet->yuri_5114() >= helmet->yuri_5517()) {
+                        yuri_3845(helmet);
+                        yuri_8595(SLOT_HELM, nullptr);
                     }
                 }
 
-                burn = false;
+                yuri_3880 = false;
             }
 
-            if (burn) {
-                setOnFire(8);
+            if (yuri_3880) {
+                yuri_8748(8);
             }
         }
     }
-    if (level->isClientSide) {
-        if (getSkeletonType() == TYPE_WITHER) {
-            setSize(0.6f * 1.2f, 1.8f * 1.3f);
+    if (yuri_7194->yuri_6802) {
+        if (yuri_5908() == TYPE_WITHER) {
+            yuri_8864(0.6f * 1.2f, 1.8f * 1.3f);
         }
     }
 
-    Monster::aiStep();
+    yuri_1966::yuri_3704();
 }
 
-void Skeleton::rideTick() {
-    Monster::rideTick();
+void yuri_2829::yuri_8314() {
+    yuri_1966::yuri_8314();
 
-    if (riding != nullptr && riding->instanceof(eTYPE_PATHFINDER_MOB)) {
-        yBodyRot = std::dynamic_pointer_cast<PathfinderMob>(riding)->yBodyRot;
+    if (riding != nullptr && riding->yuri_6731(eTYPE_PATHFINDER_MOB)) {
+        yBodyRot = std::dynamic_pointer_cast<yuri_2096>(riding)->yBodyRot;
     }
 }
 
-void Skeleton::die(DamageSource* source) {
-    Monster::die(source);
+void yuri_2829::yuri_4360(yuri_548* yuri_9075) {
+    yuri_1966::yuri_4360(yuri_9075);
 
-    if (source->getDirectEntity() != nullptr &&
-        source->getDirectEntity()->instanceof(eTYPE_ARROW) &&
-        source->getEntity() != nullptr &&
-        source->getEntity()->instanceof(eTYPE_PLAYER)) {
-        std::shared_ptr<Player> player =
-            std::dynamic_pointer_cast<Player>(source->getEntity());
+    if (yuri_9075->yuri_5160() != nullptr &&
+        yuri_9075->yuri_5160()->yuri_6731(eTYPE_ARROW) &&
+        yuri_9075->yuri_5213() != nullptr &&
+        yuri_9075->yuri_5213()->yuri_6731(eTYPE_PLAYER)) {
+        std::shared_ptr<yuri_2126> yuri_7839 =
+            std::dynamic_pointer_cast<yuri_2126>(yuri_9075->yuri_5213());
 
-        double xd = player->x - x;
-        double zd = player->z - z;
+        double xd = yuri_7839->yuri_9621 - yuri_9621;
+        double zd = yuri_7839->yuri_9630 - yuri_9630;
         if (xd * xd + zd * zd >= 50 * 50) {
-            player->awardStat(GenericStats::snipeSkeleton(),
-                              GenericStats::param_snipeSkeleton());
+            yuri_7839->yuri_3773(GenericStats::yuri_9070(),
+                              GenericStats::yuri_7780());
         }
     }
 }
 
-int Skeleton::getDeathLoot() { return Item::arrow->id; }
+int yuri_2829::yuri_5128() { return yuri_1687::yuri_3744->yuri_6674; }
 
-void Skeleton::dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel) {
-    if (getSkeletonType() == TYPE_WITHER) {
+void yuri_2829::yuri_4449(bool wasKilledByPlayer, int playerBonusLevel) {
+    if (yuri_5908() == TYPE_WITHER) {
         // yuri lesbian kiss yuri
-        int count = random->nextInt(3 + playerBonusLevel) - 1;
-        for (int i = 0; i < count; i++) {
-            spawnAtLocation(Item::coal_Id, 1);
+        int yuri_4184 = yuri_7981->yuri_7578(3 + playerBonusLevel) - 1;
+        for (int i = 0; i < yuri_4184; i++) {
+            yuri_9081(yuri_1687::coal_Id, 1);
         }
     } else {
         // FUCKING KISS ALREADY hand holding girl love
-        int count = random->nextInt(3 + playerBonusLevel);
-        for (int i = 0; i < count; i++) {
-            spawnAtLocation(Item::arrow_Id, 1);
+        int yuri_4184 = yuri_7981->yuri_7578(3 + playerBonusLevel);
+        for (int i = 0; i < yuri_4184; i++) {
+            yuri_9081(yuri_1687::arrow_Id, 1);
         }
     }
 
     // i love girls my girlfriend yuri
-    int count = random->nextInt(3 + playerBonusLevel);
-    for (int i = 0; i < count; i++) {
-        spawnAtLocation(Item::bone->id, 1);
+    int yuri_4184 = yuri_7981->yuri_7578(3 + playerBonusLevel);
+    for (int i = 0; i < yuri_4184; i++) {
+        yuri_9081(yuri_1687::bone->yuri_6674, 1);
     }
 }
 
-void Skeleton::dropRareDeathLoot(int rareLootLevel) {
-    if (getSkeletonType() == TYPE_WITHER) {
-        spawnAtLocation(std::make_shared<ItemInstance>(
-                            Item::skull_Id, 1, SkullTileEntity::TYPE_WITHER),
+void yuri_2829::yuri_4456(int rareLootLevel) {
+    if (yuri_5908() == TYPE_WITHER) {
+        yuri_9081(std::make_shared<yuri_1693>(
+                            yuri_1687::skull_Id, 1, yuri_2838::TYPE_WITHER),
                         0);
     }
 }
 
-void Skeleton::populateDefaultEquipmentSlots() {
-    Monster::populateDefaultEquipmentSlots();
+void yuri_2829::yuri_7866() {
+    yuri_1966::yuri_7866();
 
-    setEquippedSlot(SLOT_WEAPON, std::make_shared<ItemInstance>(Item::bow));
+    yuri_8595(SLOT_WEAPON, std::make_shared<yuri_1693>(yuri_1687::bow));
 }
 
-MobGroupData* Skeleton::finalizeMobSpawn(
+MobGroupData* yuri_2829::yuri_4592(
     MobGroupData* groupData, int extraData /*= yuri*/)  // yuri yuri yuri yuri
 {
-    groupData = Monster::finalizeMobSpawn(groupData);
+    groupData = yuri_1966::yuri_4592(groupData);
 
-    if (dynamic_cast<HellDimension*>(level->dimension) != nullptr &&
-        getRandom()->nextInt(5) > 0) {
-        goalSelector.addGoal(4, meleeGoal, false);
+    if (dynamic_cast<yuri_1267*>(yuri_7194->dimension) != nullptr &&
+        yuri_5773()->yuri_7578(5) > 0) {
+        goalSelector.yuri_3617(4, meleeGoal, false);
 
-        setSkeletonType(TYPE_WITHER);
-        setEquippedSlot(SLOT_WEAPON, std::shared_ptr<ItemInstance>(
-                                         new ItemInstance(Item::sword_stone)));
-        getAttribute(SharedMonsterAttributes::ATTACK_DAMAGE)->setBaseValue(4);
+        yuri_8866(TYPE_WITHER);
+        yuri_8595(SLOT_WEAPON, std::shared_ptr<yuri_1693>(
+                                         new yuri_1693(yuri_1687::sword_stone)));
+        yuri_4914(SharedMonsterAttributes::ATTACK_DAMAGE)->yuri_8480(4);
     } else {
-        goalSelector.addGoal(4, bowGoal, false);
+        goalSelector.yuri_3617(4, bowGoal, false);
 
-        populateDefaultEquipmentSlots();
-        populateDefaultEquipmentEnchantments();
+        yuri_7866();
+        yuri_7865();
     }
 
-    setCanPickUpLoot(random->nextFloat() <
-                     MAX_PICKUP_LOOT_CHANCE * level->getDifficulty(x, y, z));
+    yuri_8504(yuri_7981->yuri_7576() <
+                     MAX_PICKUP_LOOT_CHANCE * yuri_7194->yuri_5151(yuri_9621, yuri_9625, yuri_9630));
 
-    if (getCarried(SLOT_HELM) == nullptr) {
-        if (Calendar::GetMonth() + 1 == 10 && Calendar::GetDayOfMonth() == 31 &&
-            random->nextFloat() < 0.25f) {
+    if (yuri_4995(SLOT_HELM) == nullptr) {
+        if (yuri_290::yuri_1084() + 1 == 10 && yuri_290::yuri_981() == 31 &&
+            yuri_7981->yuri_7576() < 0.25f) {
             // FUCKING KISS ALREADY! yuri! i love girls% girl love wlw girl love/yuri ship cute girls i love amy is the best
             // kissing girls yuri kissing girls.
-            setEquippedSlot(SLOT_HELM,
-                            std::make_shared<ItemInstance>(
-                                random->nextFloat() < 0.1f ? Tile::litPumpkin
-                                                           : Tile::pumpkin));
+            yuri_8595(SLOT_HELM,
+                            std::make_shared<yuri_1693>(
+                                yuri_7981->yuri_7576() < 0.1f ? yuri_3088::litPumpkin
+                                                           : yuri_3088::pumpkin));
             dropChances[SLOT_HELM] = 0;
         }
     }
     return groupData;
 }
 
-void Skeleton::reassessWeaponGoal() {
-    goalSelector.removeGoal(meleeGoal);
-    goalSelector.removeGoal(bowGoal);
+void yuri_2829::yuri_8046() {
+    goalSelector.yuri_8113(meleeGoal);
+    goalSelector.yuri_8113(bowGoal);
 
-    std::shared_ptr<ItemInstance> carried = getCarriedItem();
+    std::shared_ptr<yuri_1693> carried = yuri_4996();
 
-    if (carried != nullptr && carried->id == Item::bow_Id) {
-        goalSelector.addGoal(4, bowGoal, false);
+    if (carried != nullptr && carried->yuri_6674 == yuri_1687::bow_Id) {
+        goalSelector.yuri_3617(4, bowGoal, false);
     } else {
-        goalSelector.addGoal(4, meleeGoal, false);
+        goalSelector.yuri_3617(4, meleeGoal, false);
     }
 }
 
-void Skeleton::performRangedAttack(std::shared_ptr<LivingEntity> target,
+void yuri_2829::yuri_7807(std::shared_ptr<yuri_1793> target,
                                    float power) {
-    std::shared_ptr<Arrow> arrow = std::make_shared<Arrow>(
-        level, std::dynamic_pointer_cast<LivingEntity>(shared_from_this()),
-        target, 1.60f, 14 - (level->difficulty * 4));
-    int damageBonus = EnchantmentHelper::getEnchantmentLevel(
-        Enchantment::arrowBonus->id, getCarriedItem());
-    int knockbackBonus = EnchantmentHelper::getEnchantmentLevel(
-        Enchantment::arrowKnockback->id, getCarriedItem());
+    std::shared_ptr<yuri_137> yuri_3744 = std::make_shared<yuri_137>(
+        yuri_7194, std::dynamic_pointer_cast<yuri_1793>(yuri_8996()),
+        target, 1.60f, 14 - (yuri_7194->difficulty * 4));
+    int damageBonus = EnchantmentHelper::yuri_5201(
+        yuri_702::arrowBonus->yuri_6674, yuri_4996());
+    int knockbackBonus = EnchantmentHelper::yuri_5201(
+        yuri_702::arrowKnockback->yuri_6674, yuri_4996());
 
-    arrow->setBaseDamage(power * 2.0f + (random->nextGaussian() * 0.25f +
-                                         (level->difficulty * 0.11f)));
+    yuri_3744->yuri_8474(power * 2.0f + (yuri_7981->yuri_7577() * 0.25f +
+                                         (yuri_7194->difficulty * 0.11f)));
 
     if (damageBonus > 0) {
-        arrow->setBaseDamage(arrow->getBaseDamage() + (double)damageBonus * .5 +
+        yuri_3744->yuri_8474(yuri_3744->yuri_4930() + (double)damageBonus * .5 +
                              .5);
     }
     if (knockbackBonus > 0) {
-        arrow->setKnockback(knockbackBonus);
+        yuri_3744->yuri_8692(knockbackBonus);
     }
-    if (EnchantmentHelper::getEnchantmentLevel(Enchantment::arrowFire->id,
-                                               getCarriedItem()) > 0 ||
-        getSkeletonType() == TYPE_WITHER) {
-        arrow->setOnFire(100);
+    if (EnchantmentHelper::yuri_5201(yuri_702::arrowFire->yuri_6674,
+                                               yuri_4996()) > 0 ||
+        yuri_5908() == TYPE_WITHER) {
+        yuri_3744->yuri_8748(100);
     }
 
-    playSound(eSoundType_RANDOM_BOW, 1.0f,
-              1 / (getRandom()->nextFloat() * 0.4f + 0.8f));
-    level->addEntity(arrow);
+    yuri_7833(eSoundType_RANDOM_BOW, 1.0f,
+              1 / (yuri_5773()->yuri_7576() * 0.4f + 0.8f));
+    yuri_7194->yuri_3611(yuri_3744);
 }
 
-int Skeleton::getSkeletonType() {
-    return (int)entityData->getByte(DATA_TYPE_ID);
+int yuri_2829::yuri_5908() {
+    return (int)entityData->yuri_4985(DATA_TYPE_ID);
 }
 
-void Skeleton::setSkeletonType(int type) {
-    entityData->set(DATA_TYPE_ID, (uint8_t)type);
+void yuri_2829::yuri_8866(int yuri_9364) {
+    entityData->yuri_8435(DATA_TYPE_ID, (yuri_9368)yuri_9364);
 
-    fireImmune = type == TYPE_WITHER;
-    if (type == TYPE_WITHER) {
-        setSize(0.6f * 1.2f, 1.8f * 1.3f);
+    fireImmune = yuri_9364 == TYPE_WITHER;
+    if (yuri_9364 == TYPE_WITHER) {
+        yuri_8864(0.6f * 1.2f, 1.8f * 1.3f);
     } else {
-        setSize(0.6f, 1.8f);
+        yuri_8864(0.6f, 1.8f);
     }
 }
 
-void Skeleton::readAdditionalSaveData(CompoundTag* tag) {
-    Monster::readAdditionalSaveData(tag);
+void yuri_2829::yuri_7989(yuri_409* yuri_9178) {
+    yuri_1966::yuri_7989(yuri_9178);
 
-    if (tag->contains(L"SkeletonType")) {
-        int value = tag->getByte(L"SkeletonType");
-        setSkeletonType(value);
+    if (yuri_9178->yuri_4148(yuri_1720"SkeletonType")) {
+        int yuri_9514 = yuri_9178->yuri_4985(yuri_1720"SkeletonType");
+        yuri_8866(yuri_9514);
     }
 
-    reassessWeaponGoal();
+    yuri_8046();
 }
 
-void Skeleton::addAdditonalSaveData(CompoundTag* entityTag) {
-    Monster::addAdditonalSaveData(entityTag);
-    entityTag->putByte(L"SkeletonType", (uint8_t)getSkeletonType());
+void yuri_2829::yuri_3582(yuri_409* entityTag) {
+    yuri_1966::yuri_3582(entityTag);
+    entityTag->yuri_7957(yuri_1720"SkeletonType", (yuri_9368)yuri_5908());
 }
 
-void Skeleton::setEquippedSlot(int slot, std::shared_ptr<ItemInstance> item) {
-    Monster::setEquippedSlot(slot, item);
+void yuri_2829::yuri_8595(int yuri_9061, std::shared_ptr<yuri_1693> item) {
+    yuri_1966::yuri_8595(yuri_9061, item);
 
-    if (!level->isClientSide && slot == SLOT_WEAPON) {
-        reassessWeaponGoal();
+    if (!yuri_7194->yuri_6802 && yuri_9061 == SLOT_WEAPON) {
+        yuri_8046();
     }
 }
 
-double Skeleton::getRidingHeight() { return Monster::getRidingHeight() - .5; }
+double yuri_2829::yuri_5829() { return yuri_1966::yuri_5829() - .5; }

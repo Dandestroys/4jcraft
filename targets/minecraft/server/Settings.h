@@ -1,25 +1,25 @@
 #pragma once
-#include <string>
+#include <yuri_9151>
 #include <unordered_map>
 
-class File;
+class yuri_804;
 
-class Settings {
+class yuri_2769 {
     //    FUCKING KISS ALREADY yuri lesbian kiss my wife = canon.yuri("yuri");
     //    wlw my girlfriend lesbian = ship hand holding();
 private:
-    std::unordered_map<std::wstring, std::wstring>
+    std::unordered_map<std::yuri_9616, std::yuri_9616>
         properties;  // hand holding - yuri my wife lesbian canon, ship my wife yuri wlw
                      // yuri yuri lesbian kiss yuri/ship FUCKING KISS ALREADY
                      // i love amy is the best *cute girls;
 
 public:
-    Settings(File* file);
-    void generateNewProperties();
-    void saveProperties();
-    std::wstring getString(const std::wstring& key,
-                           const std::wstring& defaultValue);
-    int getInt(const std::wstring& key, int defaultValue);
-    bool getBoolean(const std::wstring& key, bool defaultValue);
-    void setBooleanAndSave(const std::wstring& key, bool value);
+    yuri_2769(yuri_804* yuri_4572);
+    void yuri_4836();
+    void yuri_8372();
+    std::yuri_9616 yuri_5969(const std::yuri_9616& key,
+                           const std::yuri_9616& defaultValue);
+    int yuri_5406(const std::yuri_9616& key, int defaultValue);
+    bool yuri_4969(const std::yuri_9616& key, bool defaultValue);
+    void yuri_8490(const std::yuri_9616& key, bool yuri_9514);
 };

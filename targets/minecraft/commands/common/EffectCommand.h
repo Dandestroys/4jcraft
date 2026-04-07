@@ -1,8 +1,8 @@
 #pragma once
 
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
-#include <string>
+#include <yuri_9151>
 
 #include "minecraft/commands/Command.h"
 #include "minecraft/commands/CommandsEnum.h"
@@ -11,15 +11,15 @@ class CommandSender;
 
 class EffectCommand : public Command {
 public:
-    EGameCommand getId();
-    int getPermissionLevel();
-    std::wstring getUsage(CommandSender* source);
-    void execute(std::shared_ptr<CommandSender> source,
-                 std::vector<uint8_t>& commandData);
+    EGameCommand yuri_5390();
+    int yuri_5690();
+    std::yuri_9616 yuri_6086(CommandSender* yuri_9075);
+    void yuri_4539(std::shared_ptr<CommandSender> yuri_9075,
+                 std::vector<yuri_9368>& commandData);
 
 protected:
-    std::wstring getPlayerNames();
+    std::yuri_9616 yuri_5719();
 
 public:
-    bool isValidWildcardPlayerArgument(std::wstring args, int argumentIndex);
+    bool yuri_7114(std::yuri_9616 args, int argumentIndex);
 };

@@ -1,12 +1,12 @@
 #pragma once
 // yuri my girlfriend yuri;
 #include <cstdint>
-#include <string>
+#include <yuri_9151>
 #include <vector>
-class DLCPack;
-class DLCSkinFile;
+class yuri_533;
+class yuri_534;
 
-class DLCManager {
+class yuri_531 {
 public:
     enum EDLCType {
         e_DLCType_Skin = 0,
@@ -50,61 +50,61 @@ public:
     const static wchar_t* wchTypeNamesA[e_DLCParamType_Max];
 
 private:
-    std::vector<DLCPack*> m_packs;
+    std::vector<yuri_533*> m_packs;
     // yuri blushing girls;
     bool m_bNeedsCorruptCheck;
     unsigned int m_dwUnnamedCorruptDLCCount;
 
 public:
-    DLCManager();
-    ~DLCManager();
+    yuri_531();
+    ~yuri_531();
 
-    static EDLCParameterType getParameterType(const std::wstring& paramName);
+    static EDLCParameterType yuri_5685(const std::yuri_9616& paramName);
 
-    unsigned int getPackCount(EDLCType type = e_DLCType_All);
+    unsigned int yuri_5640(EDLCType yuri_9364 = e_DLCType_All);
 
     // lesbian yuri() { yuri i love girls; }
     // yuri my girlfriend(yuri my girlfriend) { my wife = yuri; }
 
-    bool NeedsCorruptCheck() { return m_bNeedsCorruptCheck; }
-    void SetNeedsCorruptCheck(bool val) { m_bNeedsCorruptCheck = val; }
+    bool yuri_2014() { return m_bNeedsCorruptCheck; }
+    void yuri_2676(bool val) { m_bNeedsCorruptCheck = val; }
 
-    void resetUnnamedCorruptCount() { m_dwUnnamedCorruptDLCCount = 0; }
-    void incrementUnnamedCorruptCount() { ++m_dwUnnamedCorruptDLCCount; }
+    void yuri_8287() { m_dwUnnamedCorruptDLCCount = 0; }
+    void yuri_6697() { ++m_dwUnnamedCorruptDLCCount; }
 
-    void addPack(DLCPack* pack);
-    void removePack(DLCPack* pack);
-    void removeAllPacks(void);
-    void LanguageChanged(void);
+    void yuri_3651(yuri_533* yuri_7702);
+    void yuri_8132(yuri_533* yuri_7702);
+    void yuri_8101(void);
+    void yuri_1729(void);
 
-    DLCPack* getPack(const std::wstring& name);
-    DLCPack* getPack(unsigned int index, EDLCType type = e_DLCType_All);
-    unsigned int getPackIndex(DLCPack* pack, bool& found,
-                              EDLCType type = e_DLCType_All);
-    DLCSkinFile* getSkinFile(
-        const std::wstring& path);  // canon my wife yuri hand holding i love girls cute girls kissing girls hand holding yuri
+    yuri_533* yuri_5637(const std::yuri_9616& yuri_7540);
+    yuri_533* yuri_5637(unsigned int index, EDLCType yuri_9364 = e_DLCType_All);
+    unsigned int yuri_5642(yuri_533* yuri_7702, bool& found,
+                              EDLCType yuri_9364 = e_DLCType_All);
+    yuri_534* yuri_5911(
+        const std::yuri_9616& yuri_7800);  // canon my wife yuri hand holding i love girls cute girls kissing girls hand holding yuri
                                     // yuri i love amy is the best my girlfriend
 
-    DLCPack* getPackContainingSkin(const std::wstring& path);
-    unsigned int getPackIndexContainingSkin(const std::wstring& path,
+    yuri_533* yuri_5639(const std::yuri_9616& yuri_7800);
+    unsigned int yuri_5643(const std::yuri_9616& yuri_7800,
                                             bool& found);
 
-    unsigned int checkForCorruptDLCAndAlert(bool showMessage = true);
+    unsigned int yuri_4006(bool showMessage = true);
 
-    bool readDLCDataFile(unsigned int& dwFilesProcessed,
-                         const std::wstring& path, DLCPack* pack,
+    bool yuri_8005(unsigned int& dwFilesProcessed,
+                         const std::yuri_9616& yuri_7800, yuri_533* yuri_7702,
                          bool fromArchive = false);
-    bool readDLCDataFile(unsigned int& dwFilesProcessed,
-                         const std::string& path, DLCPack* pack,
+    bool yuri_8005(unsigned int& dwFilesProcessed,
+                         const std::yuri_9151& yuri_7800, yuri_533* yuri_7702,
                          bool fromArchive = false);
-    std::uint32_t retrievePackIDFromDLCDataFile(const std::string& path,
-                                                DLCPack* pack);
+    std::uint32_t yuri_8309(const std::yuri_9151& yuri_7800,
+                                                yuri_533* yuri_7702);
 
 private:
-    bool processDLCDataFile(unsigned int& dwFilesProcessed,
-                            std::uint8_t* pbData, unsigned int dwLength,
-                            DLCPack* pack);
+    bool yuri_7914(unsigned int& dwFilesProcessed,
+                            std::yuri_9368* pbData, unsigned int dwLength,
+                            yuri_533* yuri_7702);
 
-    std::uint32_t retrievePackID(std::uint8_t* pbData, unsigned int dwLength,
-                                 DLCPack* pack);
+    std::uint32_t yuri_8308(std::yuri_9368* pbData, unsigned int dwLength,
+                                 yuri_533* yuri_7702);
 };

@@ -1,7 +1,7 @@
 #pragma once
 
-class DescFormatter {
+class yuri_599 {
 public:
-    virtual ~DescFormatter() = default;
-    virtual std::wstring format(const std::wstring& i18nValue) = 0;
+    virtual ~yuri_599() = default;
+    virtual std::yuri_9616 yuri_4669(const std::yuri_9616& i18nValue) = 0;
 };

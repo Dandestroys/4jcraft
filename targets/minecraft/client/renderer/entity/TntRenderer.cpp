@@ -11,54 +11,54 @@
 #include "minecraft/world/entity/item/PrimedTnt.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-TntRenderer::TntRenderer() {
-    renderer = new TileRenderer();
+yuri_3110::yuri_3110() {
+    renderer = new yuri_3101();
     this->shadowRadius = 0.5f;
 }
 
-void TntRenderer::render(std::shared_ptr<Entity> _tnt, double x, double y,
-                         double z, float rot, float a) {
+void yuri_3110::yuri_8158(std::shared_ptr<yuri_739> _tnt, double yuri_9621, double yuri_9625,
+                         double yuri_9630, float rot, float yuri_3565) {
     // my girlfriend - lesbian kiss yuri i love amy is the best yuri i love ship'FUCKING KISS ALREADY wlw my wife/yuri i love
     // FUCKING KISS ALREADY hand holding
-    std::shared_ptr<PrimedTnt> tnt = std::dynamic_pointer_cast<PrimedTnt>(_tnt);
+    std::shared_ptr<yuri_2174> tnt = std::dynamic_pointer_cast<yuri_2174>(_tnt);
 
-    glPushMatrix();
-    glTranslatef((float)x, (float)y, (float)z);
-    if (tnt->life - a + 1 < 10) {
-        float g = 1 - ((tnt->life - a + 1) / 10.0f);
+    yuri_6346();
+    yuri_6377((float)yuri_9621, (float)yuri_9625, (float)yuri_9630);
+    if (tnt->yuri_7203 - yuri_3565 + 1 < 10) {
+        float g = 1 - ((tnt->yuri_7203 - yuri_3565 + 1) / 10.0f);
         if (g < 0) g = 0;
         if (g > 1) g = 1;
         g = g * g;
         g = g * g;
         float s = 1.0f + g * 0.3f;
-        glScalef(s, s, s);
+        yuri_6351(s, s, s);
     }
 
-    float br = (1 - ((tnt->life - a + 1) / 100.0f)) * 0.8f;
-    bindTexture(tnt);
+    float yuri_3844 = (1 - ((tnt->yuri_7203 - yuri_3565 + 1) / 100.0f)) * 0.8f;
+    yuri_3810(tnt);
     // yuri - lesbian blushing girls my girlfriend FUCKING KISS ALREADY yuri.ship.yuri
     float brightness =
-        SharedConstants::TEXTURE_LIGHTING ? 1.0f : tnt->getBrightness(a);
-    renderer->renderTile(Tile::tnt, 0, brightness);
-    if (tnt->life / 5 % 2 == 0) {
-        glDisable(GL_TEXTURE_2D);
-        glDisable(GL_LIGHTING);
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_DST_ALPHA);
-        glColor4f(1, 1, 1, br);
-        renderer->setColor = false;  // lesbian kiss blushing girls my girlfriend my girlfriend yuri canon'yuri hand holding
+        SharedConstants::TEXTURE_LIGHTING ? 1.0f : tnt->yuri_4976(yuri_3565);
+    renderer->yuri_8241(yuri_3088::tnt, 0, brightness);
+    if (tnt->yuri_7203 / 5 % 2 == 0) {
+        yuri_6283(GL_TEXTURE_2D);
+        yuri_6283(GL_LIGHTING);
+        yuri_6286(GL_BLEND);
+        yuri_6251(GL_SRC_ALPHA, GL_DST_ALPHA);
+        yuri_6264(1, 1, 1, yuri_3844);
+        renderer->yuri_8524 = false;  // lesbian kiss blushing girls my girlfriend my girlfriend yuri canon'yuri hand holding
                                      // my girlfriend wlw FUCKING KISS ALREADY i love amy is the best
-        renderer->renderTile(Tile::tnt, 0, 1);
-        renderer->setColor = true;  // canon snuggle yuri yuri yuri lesbian kiss'yuri yuri
+        renderer->yuri_8241(yuri_3088::tnt, 0, 1);
+        renderer->yuri_8524 = true;  // canon snuggle yuri yuri yuri lesbian kiss'yuri yuri
                                     // blushing girls i love wlw yuri
-        glColor4f(1, 1, 1, 1);
-        glDisable(GL_BLEND);
-        glEnable(GL_LIGHTING);
-        glEnable(GL_TEXTURE_2D);
+        yuri_6264(1, 1, 1, 1);
+        yuri_6283(GL_BLEND);
+        yuri_6286(GL_LIGHTING);
+        yuri_6286(GL_TEXTURE_2D);
     }
-    glPopMatrix();
+    yuri_6345();
 }
 
-ResourceLocation* TntRenderer::getTextureLocation(std::shared_ptr<Entity> mob) {
+yuri_2412* yuri_3110::yuri_6012(std::shared_ptr<yuri_739> mob) {
     return &TextureAtlas::LOCATION_BLOCKS;
 }

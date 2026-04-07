@@ -1,19 +1,19 @@
 #include "Goal.h"
 
-Goal::Goal() { _requiredControlFlags = 0; }
+yuri_1217::yuri_1217() { _requiredControlFlags = 0; }
 
-bool Goal::canContinueToUse() { return canUse(); }
+bool yuri_1217::yuri_3916() { return yuri_3967(); }
 
-bool Goal::canInterrupt() { return true; }
+bool yuri_1217::yuri_3933() { return true; }
 
-void Goal::start() {}
+void yuri_1217::yuri_9098() {}
 
-void Goal::stop() {}
+void yuri_1217::yuri_9133() {}
 
-void Goal::tick() {}
+void yuri_1217::yuri_9265() {}
 
-void Goal::setRequiredControlFlags(int requiredControlFlags) {
+void yuri_1217::yuri_8818(int requiredControlFlags) {
     _requiredControlFlags = requiredControlFlags;
 }
 
-int Goal::getRequiredControlFlags() { return _requiredControlFlags; }
+int yuri_1217::yuri_5812() { return _requiredControlFlags; }

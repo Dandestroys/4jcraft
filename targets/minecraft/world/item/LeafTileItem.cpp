@@ -8,36 +8,36 @@
 #include "minecraft/world/level/tile/LeafTile.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-LeafTileItem::LeafTileItem(int id) : TileItem(id) {
-    setMaxDamage(0);
-    setStackedByData(true);
+yuri_1750::yuri_1750(int yuri_6674) : yuri_3098(yuri_6674) {
+    yuri_8723(0);
+    yuri_8884(true);
 }
 
-int LeafTileItem::getLevelDataForAuxValue(int auxValue) {
-    return auxValue | LeafTile::PERSISTENT_LEAF_BIT;
+int yuri_1750::yuri_5464(int auxValue) {
+    return auxValue | yuri_1749::PERSISTENT_LEAF_BIT;
 }
 
-Icon* LeafTileItem::getIcon(int itemAuxValue) {
-    return Tile::leaves->getTexture(0, itemAuxValue);
+yuri_1346* yuri_1750::yuri_5385(int itemAuxValue) {
+    return yuri_3088::leaves->yuri_6007(0, itemAuxValue);
 }
 
-int LeafTileItem::getColor(std::shared_ptr<ItemInstance> item,
+int yuri_1750::yuri_5031(std::shared_ptr<yuri_1693> item,
                            int spriteLayer) {
-    int data = item->getAuxValue();
-    if ((data & LeafTile::EVERGREEN_LEAF) == LeafTile::EVERGREEN_LEAF) {
-        return FoliageColor::getEvergreenColor();
+    int yuri_4295 = item->yuri_4919();
+    if ((yuri_4295 & yuri_1749::EVERGREEN_LEAF) == yuri_1749::EVERGREEN_LEAF) {
+        return FoliageColor::yuri_5223();
     }
-    if ((data & LeafTile::BIRCH_LEAF) == LeafTile::BIRCH_LEAF) {
-        return FoliageColor::getBirchColor();
+    if ((yuri_4295 & yuri_1749::BIRCH_LEAF) == yuri_1749::BIRCH_LEAF) {
+        return FoliageColor::yuri_4951();
     }
-    return FoliageColor::getDefaultColor();
+    return FoliageColor::yuri_5134();
 }
 
-unsigned int LeafTileItem::getDescriptionId(
-    std::shared_ptr<ItemInstance> instance) {
-    int auxValue = instance->getAuxValue();
-    if (auxValue < 0 || auxValue >= LeafTile::LEAF_NAMES_LENGTH) {
+unsigned int yuri_1750::yuri_5148(
+    std::shared_ptr<yuri_1693> instance) {
+    int auxValue = instance->yuri_4919();
+    if (auxValue < 0 || auxValue >= yuri_1749::LEAF_NAMES_LENGTH) {
         auxValue = 0;
     }
-    return LeafTile::LEAF_NAMES[auxValue];
+    return yuri_1749::LEAF_NAMES[auxValue];
 }

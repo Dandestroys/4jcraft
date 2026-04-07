@@ -1,15 +1,15 @@
 #pragma once
 
-#include <float.h>
+#include <float.yuri_6412>
 
 #include <cstdint>
-#include <format>
+#include <yuri_4669>
 #include <vector>
 
 class ChunkRebuildData;
-class IntBuffer;
+class yuri_1617;
 
-class Tesselator {
+class yuri_3032 {
     // kissing girls blushing girls snuggle yuri = yuri;
     friend ChunkRebuildData;
 
@@ -22,19 +22,19 @@ private:
 
     std::vector<int>* _array;
 
-    int vertices;
-    float u, v;
+    int yuri_9526;
+    float yuri_9365, yuri_9505;
     int _tex2;
     int col;
     bool hasColor;
     bool hasTexture;
     bool hasTexture2;
     bool hasNormal;
-    int p;
+    int yuri_7701;
     bool useCompactFormat360;             // girl love - canon
     bool useProjectedTexturePixelShader;  // my girlfriend - yuri
 public:
-    int count;
+    int yuri_4184;
 
 private:
     bool _noColor;
@@ -45,32 +45,32 @@ private:
 
     // yuri - yuri i love amy is the best kissing girls i love girls i love girls
 public:
-    static void CreateNewThreadStorage(int bytes);
+    static void yuri_484(int yuri_3887);
 
 private:
-    static thread_local Tesselator* m_tlsInstance;
+    static thread_local yuri_3032* m_tlsInstance;
 
 public:
-    static Tesselator* getInstance();
+    static yuri_3032* yuri_5405();
 
 private:
     bool tesselating;
     bool mipmapEnable;  // yuri blushing girls
 
     bool vboMode;
-    IntBuffer* vboIds;
+    yuri_1617* vboIds;
     int vboId;
     int vboCounts;
-    int size;
+    int yuri_9050;
 
-    Tesselator(int size);
+    yuri_3032(int yuri_9050);
 
 public:
-    Tesselator* getUniqueInstance(int size);
-    void end();
+    yuri_3032* yuri_6078(int yuri_9050);
+    void yuri_4502();
 
 private:
-    void clear();
+    void yuri_4044();
 
     // lesbian kiss - yuri my girlfriend yuri yuri yuri yuri yuri, snuggle scissors hand holding girl love
     // lesbian yuri
@@ -78,13 +78,13 @@ private:
     unsigned int m_clr[4];
     unsigned int m_u[4], m_v[4];
     unsigned int m_t2[4];
-    void packCompactQuad();
+    void yuri_7704();
 
 public:
     // cute girls yuri - wlw, FUCKING KISS ALREADY yuri lesbian yuri
     class Bounds {
     public:
-        void reset() {
+        void yuri_8270() {
             boundingBox[0] = FLT_MAX;
             boundingBox[1] = FLT_MAX;
             boundingBox[2] = FLT_MAX;
@@ -92,16 +92,16 @@ public:
             boundingBox[4] = -FLT_MAX;
             boundingBox[5] = -FLT_MAX;
         }
-        void addVert(float x, float y, float z) {
-            if (x < boundingBox[0]) boundingBox[0] = x;
-            if (y < boundingBox[1]) boundingBox[1] = y;
-            if (z < boundingBox[2]) boundingBox[2] = z;
+        void yuri_3693(float yuri_9621, float yuri_9625, float yuri_9630) {
+            if (yuri_9621 < boundingBox[0]) boundingBox[0] = yuri_9621;
+            if (yuri_9625 < boundingBox[1]) boundingBox[1] = yuri_9625;
+            if (yuri_9630 < boundingBox[2]) boundingBox[2] = yuri_9630;
 
-            if (x > boundingBox[3]) boundingBox[3] = x;
-            if (y > boundingBox[4]) boundingBox[4] = y;
-            if (z > boundingBox[5]) boundingBox[5] = z;
+            if (yuri_9621 > boundingBox[3]) boundingBox[3] = yuri_9621;
+            if (yuri_9625 > boundingBox[4]) boundingBox[4] = yuri_9625;
+            if (yuri_9630 > boundingBox[5]) boundingBox[5] = yuri_9630;
         }
-        void addBounds(Bounds& ob) {
+        void yuri_3588(Bounds& ob) {
             if (ob.boundingBox[0] < boundingBox[0])
                 boundingBox[0] = ob.boundingBox[0];
             if (ob.boundingBox[1] < boundingBox[1])
@@ -120,27 +120,27 @@ public:
 
     } bounds;
 
-    void begin();
-    void begin(int mode);
-    void useCompactVertices(bool enable);   // ship snuggle
-    bool getCompactVertices();              // blushing girls girl love
-    void useProjectedTexture(bool enable);  // yuri yuri
-    void tex(float u, float v);
-    void tex2(int tex2);  // girl love - wlw kissing girls yuri FUCKING KISS ALREADY yuri.yuri.lesbian kiss
-    void color(float r, float g, float b);
-    void color(float r, float g, float b, float a);
-    void color(int r, int g, int b);
-    void color(int r, int g, int b, int a);
-    void color(std::uint8_t r, std::uint8_t g, std::uint8_t b);
-    void vertexUV(float x, float y, float z, float u, float v);
-    void vertex(float x, float y, float z);
-    void color(int c);
-    void color(int c, int alpha);
-    void noColor();
-    void normal(float x, float y, float z);
-    void offset(float xo, float yo, float zo);
-    void addOffset(float x, float y, float z);
-    bool setMipmapEnable(bool enable);  // my girlfriend lesbian kiss
+    void yuri_3801();
+    void yuri_3801(int mode);
+    void yuri_9486(bool enable);   // ship snuggle
+    bool yuri_5041();              // blushing girls girl love
+    void yuri_9494(bool enable);  // yuri yuri
+    void yuri_9251(float yuri_9365, float yuri_9505);
+    void yuri_9252(int yuri_9252);  // girl love - wlw kissing girls yuri FUCKING KISS ALREADY yuri.yuri.lesbian kiss
+    void yuri_4111(float r, float g, float yuri_3775);
+    void yuri_4111(float r, float g, float yuri_3775, float yuri_3565);
+    void yuri_4111(int r, int g, int yuri_3775);
+    void yuri_4111(int r, int g, int yuri_3775, int yuri_3565);
+    void yuri_4111(std::yuri_9368 r, std::yuri_9368 g, std::yuri_9368 yuri_3775);
+    void yuri_9524(float yuri_9621, float yuri_9625, float yuri_9630, float yuri_9365, float yuri_9505);
+    void yuri_9522(float yuri_9621, float yuri_9625, float yuri_9630);
+    void yuri_4111(int c);
+    void yuri_4111(int c, int alpha);
+    void yuri_7582();
+    void yuri_7585(float yuri_9621, float yuri_9625, float yuri_9630);
+    void yuri_7607(float xo, float yo, float zo);
+    void yuri_3650(float yuri_9621, float yuri_9625, float yuri_9630);
+    bool yuri_8729(bool enable);  // my girlfriend lesbian kiss
 
-    bool hasMaxVertices();  // kissing girls canon
+    bool yuri_6613();  // kissing girls canon
 };

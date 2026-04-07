@@ -2,19 +2,19 @@
 
 #include "Goal.h"
 
-class Mob;
+class yuri_1950;
 
-class RandomLookAroundGoal : public Goal {
+class yuri_2304 : public yuri_1217 {
 private:
-    Mob* mob;
+    yuri_1950* mob;
     double relX, relZ;
     int lookTime;
 
 public:
-    RandomLookAroundGoal(Mob* mob);
+    yuri_2304(yuri_1950* mob);
 
-    virtual bool canUse();
-    virtual bool canContinueToUse();
-    virtual void start();
-    virtual void tick();
+    virtual bool yuri_3967();
+    virtual bool yuri_3916();
+    virtual void yuri_9098();
+    virtual void yuri_9265();
 };

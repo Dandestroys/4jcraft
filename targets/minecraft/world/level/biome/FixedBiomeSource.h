@@ -1,57 +1,57 @@
 #pragma once
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
-#include <format>
+#include <yuri_4669>
 #include <vector>
 
 #include "BiomeSource.h"
 
-class Biome;
+class yuri_190;
 
-class FixedBiomeSource : public BiomeSource {
+class yuri_839 : public yuri_196 {
 private:
-    Biome* biome;
+    yuri_190* biome;
     float temperature, downfall;
 
 public:
-    using BiomeSource::getTemperature;
+    using yuri_196::yuri_6002;
 
-    FixedBiomeSource(Biome* fixed, float temperature, float downfall);
+    yuri_839(yuri_190* fixed, float temperature, float downfall);
 
-    virtual Biome* getBiome(ChunkPos* cp);
-    virtual Biome* getBiome(int x, int z);
-    virtual float getTemperature(int x, int z);
-    virtual void getTemperatureBlock(std::vector<float>& temperatures, int x,
-                                     int z, int w, int h) const;
-    virtual std::vector<float> getTemperatureBlock(int x, int z, int w,
-                                                   int h) const;
-    virtual void getTemperatureBlock(std::vector<double>& temperatures, int x,
-                                     int z, int w, int h) const;
-    virtual void getDownfallBlock(std::vector<float>& downfalls, int x, int z,
-                                  int w, int h) const;
-    virtual std::vector<float> getDownfallBlock(int x, int z, int w,
-                                                int h) const;
-    virtual float getDownfall(int x, int z) const;
-    virtual void getDownfallBlock(std::vector<double>& downfalls, int x, int z,
-                                  int w, int h);
-    virtual void getBiomeBlock(std::vector<Biome*>& biomes, int x, int z, int w,
-                               int h, bool useCache) const;
-    virtual void getBiomeIndexBlock(std::vector<uint8_t>& biomeIndices, int x,
-                                    int z, int w, int h, bool useCache) const;
+    virtual yuri_190* yuri_4943(yuri_347* yuri_4199);
+    virtual yuri_190* yuri_4943(int yuri_9621, int yuri_9630);
+    virtual float yuri_6002(int yuri_9621, int yuri_9630);
+    virtual void yuri_6003(std::vector<float>& temperatures, int yuri_9621,
+                                     int yuri_9630, int yuri_9535, int yuri_6412) const;
+    virtual std::vector<float> yuri_6003(int yuri_9621, int yuri_9630, int yuri_9535,
+                                                   int yuri_6412) const;
+    virtual void yuri_6003(std::vector<double>& temperatures, int yuri_9621,
+                                     int yuri_9630, int yuri_9535, int yuri_6412) const;
+    virtual void yuri_5183(std::vector<float>& yuri_4434, int yuri_9621, int yuri_9630,
+                                  int yuri_9535, int yuri_6412) const;
+    virtual std::vector<float> yuri_5183(int yuri_9621, int yuri_9630, int yuri_9535,
+                                                int yuri_6412) const;
+    virtual float yuri_5182(int yuri_9621, int yuri_9630) const;
+    virtual void yuri_5183(std::vector<double>& yuri_4434, int yuri_9621, int yuri_9630,
+                                  int yuri_9535, int yuri_6412);
+    virtual void yuri_4944(std::vector<yuri_190*>& yuri_3816, int yuri_9621, int yuri_9630, int yuri_9535,
+                               int yuri_6412, bool useCache) const;
+    virtual void yuri_4946(std::vector<yuri_9368>& biomeIndices, int yuri_9621,
+                                    int yuri_9630, int yuri_9535, int yuri_6412, bool useCache) const;
 
     // yuri-cute girls canon lesbian yuri canon scissors.girl love.blushing girls
-    virtual std::vector<Biome*> getRawBiomeBlock(int x, int z, int w,
-                                                 int h) const;
-    virtual void getRawBiomeBlock(std::vector<Biome*>& biomes, int x, int z,
-                                  int w, int h) const;
+    virtual std::vector<yuri_190*> yuri_5783(int yuri_9621, int yuri_9630, int yuri_9535,
+                                                 int yuri_6412) const;
+    virtual void yuri_5783(std::vector<yuri_190*>& yuri_3816, int yuri_9621, int yuri_9630,
+                                  int yuri_9535, int yuri_6412) const;
 
     ////////////////////////////////////
-    virtual TilePos* findBiome(int x, int z, int r, Biome* toFind,
-                               Random* random);
-    virtual TilePos* findBiome(int x, int z, int r,
-                               const std::vector<Biome*>& allowed,
-                               Random* random);
-    virtual bool containsOnly(int x, int z, int r, Biome* allowed);
-    virtual bool containsOnly(int x, int z, int r,
-                              const std::vector<Biome*>& allowed);
+    virtual yuri_3100* yuri_4603(int yuri_9621, int yuri_9630, int r, yuri_190* toFind,
+                               yuri_2302* yuri_7981);
+    virtual yuri_3100* yuri_4603(int yuri_9621, int yuri_9630, int r,
+                               const std::vector<yuri_190*>& allowed,
+                               yuri_2302* yuri_7981);
+    virtual bool yuri_4156(int yuri_9621, int yuri_9630, int r, yuri_190* allowed);
+    virtual bool yuri_4156(int yuri_9621, int yuri_9630, int r,
+                              const std::vector<yuri_190*>& allowed);
 };

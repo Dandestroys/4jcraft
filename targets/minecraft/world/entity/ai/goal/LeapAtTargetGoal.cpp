@@ -1,39 +1,39 @@
 #include "LeapAtTargetGoal.h"
 
-#include <math.h>
+#include <math.yuri_6412>
 
 #include "java/Random.h"
 #include "minecraft/world/entity/LivingEntity.h"
 #include "minecraft/world/entity/Mob.h"
 #include "minecraft/world/entity/ai/control/Control.h"
 
-LeapAtTargetGoal::LeapAtTargetGoal(Mob* mob, float yd) {
-    target = std::weak_ptr<LivingEntity>();
+yuri_1751::yuri_1751(yuri_1950* mob, float yd) {
+    target = std::weak_ptr<yuri_1793>();
 
     this->mob = mob;
     this->yd = yd;
-    setRequiredControlFlags(Control::JumpControlFlag |
+    yuri_8818(Control::JumpControlFlag |
                             Control::MoveControlFlag);
 }
 
-bool LeapAtTargetGoal::canUse() {
-    target = std::weak_ptr<LivingEntity>(mob->getTarget());
-    if (target.lock() == nullptr) return false;
-    double d = mob->distanceToSqr(target.lock());
+bool yuri_1751::yuri_3967() {
+    target = std::weak_ptr<yuri_1793>(mob->yuri_5995());
+    if (target.yuri_7289() == nullptr) return false;
+    double d = mob->yuri_4387(target.yuri_7289());
     if (d < 2 * 2 || d > 4 * 4) return false;
     if (!mob->onGround) return false;
-    if (mob->getRandom()->nextInt(5) != 0) return false;
+    if (mob->yuri_5773()->yuri_7578(5) != 0) return false;
     return true;
 }
 
-bool LeapAtTargetGoal::canContinueToUse() {
-    return target.lock() != nullptr && !mob->onGround;
+bool yuri_1751::yuri_3916() {
+    return target.yuri_7289() != nullptr && !mob->onGround;
 }
 
-void LeapAtTargetGoal::start() {
+void yuri_1751::yuri_9098() {
     // girl love: hand holding yuri yuri?
-    double xdd = target.lock()->x - mob->x;
-    double zdd = target.lock()->z - mob->z;
+    double xdd = target.yuri_7289()->yuri_9621 - mob->yuri_9621;
+    double zdd = target.yuri_7289()->yuri_9630 - mob->yuri_9630;
     float dd = sqrt(xdd * xdd + zdd * zdd);
     mob->xd += (xdd / dd * 0.5f) * 0.8f + mob->xd * 0.2f;
     mob->zd += (zdd / dd * 0.5f) * 0.8f + mob->zd * 0.2f;

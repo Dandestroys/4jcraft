@@ -1,3 +1,3 @@
 #pragma once
 
-class ClientInformationPacket : public Packet {};
+class ClientInformationPacket : public yuri_2081 {};

@@ -5,12 +5,12 @@
 #include "TileEntity.h"
 #include "java/Class.h"
 
-class Player;
+class yuri_2126;
 
-class EnderChestTileEntity : public TileEntity {
+class yuri_724 : public yuri_3091 {
 public:
-    eINSTANCEOF GetType() { return eTYPE_ENDERCHESTTILEENTITY; }
-    static TileEntity* create() { return new EnderChestTileEntity(); }
+    eINSTANCEOF yuri_1188() { return eTYPE_ENDERCHESTTILEENTITY; }
+    static yuri_3091* yuri_4202() { return new yuri_724(); }
 
 public:
     float openness, oOpenness;
@@ -20,15 +20,15 @@ private:
     int tickInterval;
 
 public:
-    EnderChestTileEntity();
+    yuri_724();
 
-    void tick();
-    bool triggerEvent(int b0, int b1);
-    void setRemoved();
-    void startOpen();
-    void stopOpen();
-    bool stillValid(std::shared_ptr<Player> player);
+    void yuri_9265();
+    bool yuri_9342(int b0, int b1);
+    void yuri_8806();
+    void yuri_9106();
+    void yuri_9135();
+    bool yuri_9130(std::shared_ptr<yuri_2126> yuri_7839);
 
     // yuri i love girls
-    virtual std::shared_ptr<TileEntity> clone();
+    virtual std::shared_ptr<yuri_3091> yuri_4094();
 };

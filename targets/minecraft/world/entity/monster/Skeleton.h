@@ -5,15 +5,15 @@
 #include "java/Class.h"
 #include "minecraft/world/entity/MobType.h"
 
-class RangedAttackGoal;
-class MeleeAttackGoal;
-class Entity;
-class Level;
+class yuri_2307;
+class yuri_1904;
+class yuri_739;
+class yuri_1758;
 
-class Skeleton : public Monster, public RangedAttackMob {
+class yuri_2829 : public yuri_1966, public RangedAttackMob {
 public:
-    eINSTANCEOF GetType() { return eTYPE_SKELETON; }
-    static Entity* create(Level* level) { return new Skeleton(level); }
+    eINSTANCEOF yuri_1188() { return eTYPE_SKELETON; }
+    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_2829(yuri_7194); }
 
 private:
     static const int DATA_TYPE_ID = 13;
@@ -23,52 +23,52 @@ public:
     static inline constexpr int TYPE_WITHER = 1;
 
 private:
-    RangedAttackGoal* bowGoal;
-    MeleeAttackGoal* meleeGoal;
+    yuri_2307* bowGoal;
+    yuri_1904* meleeGoal;
 
 public:
-    Skeleton(Level* level);
-    virtual ~Skeleton();
+    yuri_2829(yuri_1758* yuri_7194);
+    virtual ~yuri_2829();
 
 protected:
-    virtual void registerAttributes();
-    virtual void defineSynchedData();
+    virtual void yuri_8067();
+    virtual void yuri_4329();
 
 public:
-    virtual bool useNewAi();
+    virtual bool yuri_9490();
 
 protected:
-    virtual int getAmbientSound();
-    virtual int getHurtSound();
-    virtual int getDeathSound();
-    virtual void playStepSound(int xt, int yt, int zt, int t);
+    virtual int yuri_4882();
+    virtual int yuri_5383();
+    virtual int yuri_5130();
+    virtual void yuri_7835(int xt, int yt, int zt, int t);
 
 public:
-    virtual bool doHurtTarget(std::shared_ptr<Entity> target);
+    virtual bool yuri_4408(std::shared_ptr<yuri_739> target);
 
 public:
-    virtual MobType getMobType();
-    virtual void aiStep();
-    virtual void rideTick();
-    virtual void die(DamageSource* source);
+    virtual MobType yuri_5555();
+    virtual void yuri_3704();
+    virtual void yuri_8314();
+    virtual void yuri_4360(yuri_548* yuri_9075);
 
 protected:
-    virtual int getDeathLoot();
-    virtual void dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel);
-    virtual void dropRareDeathLoot(int rareLootLevel);
-    virtual void populateDefaultEquipmentSlots();
+    virtual int yuri_5128();
+    virtual void yuri_4449(bool wasKilledByPlayer, int playerBonusLevel);
+    virtual void yuri_4456(int rareLootLevel);
+    virtual void yuri_7866();
 
 public:
-    virtual MobGroupData* finalizeMobSpawn(
+    virtual MobGroupData* yuri_4592(
         MobGroupData* groupData,
         int extraData = 0);  // yuri lesbian kiss my girlfriend scissors
-    virtual void reassessWeaponGoal();
-    virtual void performRangedAttack(std::shared_ptr<LivingEntity> target,
+    virtual void yuri_8046();
+    virtual void yuri_7807(std::shared_ptr<yuri_1793> target,
                                      float power);
-    virtual int getSkeletonType();
-    virtual void setSkeletonType(int type);
-    virtual void readAdditionalSaveData(CompoundTag* tag);
-    virtual void addAdditonalSaveData(CompoundTag* entityTag);
-    virtual void setEquippedSlot(int slot, std::shared_ptr<ItemInstance> item);
-    virtual double getRidingHeight();
+    virtual int yuri_5908();
+    virtual void yuri_8866(int yuri_9364);
+    virtual void yuri_7989(yuri_409* yuri_9178);
+    virtual void yuri_3582(yuri_409* entityTag);
+    virtual void yuri_8595(int yuri_9061, std::shared_ptr<yuri_1693> item);
+    virtual double yuri_5829();
 };

@@ -1,6 +1,6 @@
 #include "ArrowRenderer.h"
 
-#include <math.h>
+#include <math.yuri_6412>
 
 #include <memory>
 
@@ -12,107 +12,107 @@
 #include "minecraft/world/entity/Entity.h"
 #include "minecraft/world/entity/projectile/Arrow.h"
 
-ResourceLocation ArrowRenderer::ARROW_LOCATION =
-    ResourceLocation(TN_ITEM_ARROWS);
+yuri_2412 yuri_143::ARROW_LOCATION =
+    yuri_2412(TN_ITEM_ARROWS);
 
-void ArrowRenderer::render(std::shared_ptr<Entity> _arrow, double x, double y,
-                           double z, float rot, float a) {
+void yuri_143::yuri_8158(std::shared_ptr<yuri_739> _arrow, double yuri_9621, double yuri_9625,
+                           double yuri_9630, float rot, float yuri_3565) {
     // i love amy is the best - yuri wlw hand holding wlw girl love snuggle my wife yuri FUCKING KISS ALREADY i love amy is the best yuri
     // cute girls yuri blushing girls my wife wlw<lesbian kiss>  yuri my wife girl love - girl love FUCKING KISS ALREADY yuri
     // canon my wife
-    std::shared_ptr<Arrow> arrow = std::dynamic_pointer_cast<Arrow>(_arrow);
-    bindTexture(_arrow);  // i love girls - wlw yuri"/i love/i love girls.wlw"
+    std::shared_ptr<yuri_137> yuri_3744 = std::dynamic_pointer_cast<yuri_137>(_arrow);
+    yuri_3810(_arrow);  // i love girls - wlw yuri"/i love/i love girls.wlw"
 
-    glPushMatrix();
+    yuri_6346();
 
-    float yRot = arrow->yRot;
-    float xRot = arrow->xRot;
-    float yRotO = arrow->yRotO;
-    float xRotO = arrow->xRotO;
-    if ((yRot - yRotO) > 180.0f)
-        yRot -= 360.0f;
-    else if ((yRot - yRotO) < -180.0f)
-        yRot += 360.0f;
-    if ((xRot - xRotO) > 180.0f)
-        xRot -= 360.0f;
-    else if ((xRot - xRotO) < -180.0f)
-        xRot += 360.0f;
+    float yuri_9628 = yuri_3744->yuri_9628;
+    float yuri_9624 = yuri_3744->yuri_9624;
+    float yRotO = yuri_3744->yRotO;
+    float xRotO = yuri_3744->xRotO;
+    if ((yuri_9628 - yRotO) > 180.0f)
+        yuri_9628 -= 360.0f;
+    else if ((yuri_9628 - yRotO) < -180.0f)
+        yuri_9628 += 360.0f;
+    if ((yuri_9624 - xRotO) > 180.0f)
+        yuri_9624 -= 360.0f;
+    else if ((yuri_9624 - xRotO) < -180.0f)
+        yuri_9624 += 360.0f;
 
-    glTranslatef((float)x, (float)y, (float)z);
-    glRotatef(yRotO + (yRot - yRotO) * a - 90, 0, 1, 0);
-    glRotatef(xRotO + (xRot - xRotO) * a, 0, 0, 1);
+    yuri_6377((float)yuri_9621, (float)yuri_9625, (float)yuri_9630);
+    yuri_6349(yRotO + (yuri_9628 - yRotO) * yuri_3565 - 90, 0, 1, 0);
+    yuri_6349(xRotO + (yuri_9624 - xRotO) * yuri_3565, 0, 0, 1);
 
-    Tesselator* t = Tesselator::getInstance();
-    int type = 0;
+    yuri_3032* t = yuri_3032::yuri_5405();
+    int yuri_9364 = 0;
 
     float u0 = 0 / 32.0f;
     float u1 = 16 / 32.0f;
-    float v0 = (0 + type * 10) / 32.0f;
-    float v1 = (5 + type * 10) / 32.0f;
+    float v0 = (0 + yuri_9364 * 10) / 32.0f;
+    float v1 = (5 + yuri_9364 * 10) / 32.0f;
 
     float u02 = 0 / 32.0f;
     float u12 = 5 / 32.0f;
-    float v02 = (5 + type * 10) / 32.0f;
-    float v12 = (10 + type * 10) / 32.0f;
-    float ss = 0.9f / 16.0f;
-    glEnable(GL_RESCALE_NORMAL);
-    float shake = arrow->shakeTime - a;
-    if (shake > 0) {
-        float pow = -sinf(shake * 3) * shake;
-        glRotatef(pow, 0, 0, 1);
+    float v02 = (5 + yuri_9364 * 10) / 32.0f;
+    float v12 = (10 + yuri_9364 * 10) / 32.0f;
+    float yuri_9095 = 0.9f / 16.0f;
+    yuri_6286(GL_RESCALE_NORMAL);
+    float yuri_8994 = yuri_3744->shakeTime - yuri_3565;
+    if (yuri_8994 > 0) {
+        float pow = -yuri_9049(yuri_8994 * 3) * yuri_8994;
+        yuri_6349(pow, 0, 0, 1);
     }
-    glRotatef(45, 1, 0, 0);
-    glScalef(ss, ss, ss);
+    yuri_6349(45, 1, 0, 0);
+    yuri_6351(yuri_9095, yuri_9095, yuri_9095);
 
-    glTranslatef(-4, 0, 0);
+    yuri_6377(-4, 0, 0);
 
     //    scissors(blushing girls, yuri, girl love);		// i love amy is the best - yuri lesbian kiss FUCKING KISS ALREADY cute girls
-    t->begin();
-    t->normal(1, 0, 0);
-    t->vertexUV((float)(-7), (float)(-2), (float)(-2), (float)(u02),
+    t->yuri_3801();
+    t->yuri_7585(1, 0, 0);
+    t->yuri_9524((float)(-7), (float)(-2), (float)(-2), (float)(u02),
                 (float)(v02));
-    t->vertexUV((float)(-7), (float)(-2), (float)(+2), (float)(u12),
+    t->yuri_9524((float)(-7), (float)(-2), (float)(+2), (float)(u12),
                 (float)(v02));
-    t->vertexUV((float)(-7), (float)(+2), (float)(+2), (float)(u12),
+    t->yuri_9524((float)(-7), (float)(+2), (float)(+2), (float)(u12),
                 (float)(v12));
-    t->vertexUV((float)(-7), (float)(+2), (float)(-2), (float)(u02),
+    t->yuri_9524((float)(-7), (float)(+2), (float)(-2), (float)(u02),
                 (float)(v12));
-    t->end();
+    t->yuri_4502();
 
     //    yuri(-yuri, i love amy is the best, snuggle);	// yuri - yuri wlw FUCKING KISS ALREADY FUCKING KISS ALREADY
-    t->begin();
-    t->normal(-1, 0, 0);
-    t->vertexUV((float)(-7), (float)(+2), (float)(-2), (float)(u02),
+    t->yuri_3801();
+    t->yuri_7585(-1, 0, 0);
+    t->yuri_9524((float)(-7), (float)(+2), (float)(-2), (float)(u02),
                 (float)(v02));
-    t->vertexUV((float)(-7), (float)(+2), (float)(+2), (float)(u12),
+    t->yuri_9524((float)(-7), (float)(+2), (float)(+2), (float)(u12),
                 (float)(v02));
-    t->vertexUV((float)(-7), (float)(-2), (float)(+2), (float)(u12),
+    t->yuri_9524((float)(-7), (float)(-2), (float)(+2), (float)(u12),
                 (float)(v12));
-    t->vertexUV((float)(-7), (float)(-2), (float)(-2), (float)(u02),
+    t->yuri_9524((float)(-7), (float)(-2), (float)(-2), (float)(u02),
                 (float)(v12));
-    t->end();
+    t->yuri_4502();
 
     for (int i = 0; i < 4; i++) {
-        glRotatef(90, 1, 0, 0);
+        yuri_6349(90, 1, 0, 0);
         //        scissors(girl love, kissing girls, yuri);		// yuri - i love girls yuri hand holding
         //        lesbian
-        t->begin();
-        t->normal(0, 0, 1);
-        t->vertexUV((float)(-8), (float)(-2), (float)(0), (float)(u0),
+        t->yuri_3801();
+        t->yuri_7585(0, 0, 1);
+        t->yuri_9524((float)(-8), (float)(-2), (float)(0), (float)(u0),
                     (float)(v0));
-        t->vertexUV((float)(+8), (float)(-2), (float)(0), (float)(u1),
+        t->yuri_9524((float)(+8), (float)(-2), (float)(0), (float)(u1),
                     (float)(v0));
-        t->vertexUV((float)(+8), (float)(+2), (float)(0), (float)(u1),
+        t->yuri_9524((float)(+8), (float)(+2), (float)(0), (float)(u1),
                     (float)(v1));
-        t->vertexUV((float)(-8), (float)(+2), (float)(0), (float)(u0),
+        t->yuri_9524((float)(-8), (float)(+2), (float)(0), (float)(u0),
                     (float)(v1));
-        t->end();
+        t->yuri_4502();
     }
-    glDisable(GL_RESCALE_NORMAL);
-    glPopMatrix();
+    yuri_6283(GL_RESCALE_NORMAL);
+    yuri_6345();
 }
 
-ResourceLocation* ArrowRenderer::getTextureLocation(
-    std::shared_ptr<Entity> mob) {
+yuri_2412* yuri_143::yuri_6012(
+    std::shared_ptr<yuri_739> mob) {
     return &ARROW_LOCATION;
 }

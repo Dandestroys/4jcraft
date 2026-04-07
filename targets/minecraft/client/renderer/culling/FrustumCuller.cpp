@@ -4,26 +4,26 @@
 #include "minecraft/client/renderer/culling/FrustumData.h"
 #include "minecraft/world/phys/AABB.h"
 
-FrustumCuller::FrustumCuller() { frustum = Frustum::getFrustum(); }
+yuri_876::yuri_876() { frustum = yuri_875::yuri_5288(); }
 
-void FrustumCuller::prepare(double xOff, double yOff, double zOff) {
+void yuri_876::yuri_7890(double xOff, double yOff, double zOff) {
     this->xOff = xOff;
     this->yOff = yOff;
     this->zOff = zOff;
 }
 
-bool FrustumCuller::cubeFullyInFrustum(double x0, double y0, double z0,
-                                       double x1, double y1, double z1) {
-    return frustum->cubeFullyInFrustum(x0 - xOff, y0 - yOff, z0 - zOff,
-                                       x1 - xOff, y1 - yOff, z1 - zOff);
+bool yuri_876::yuri_4277(double yuri_9622, double yuri_9626, double yuri_9631,
+                                       double yuri_9623, double yuri_9627, double yuri_9632) {
+    return frustum->yuri_4277(yuri_9622 - xOff, yuri_9626 - yOff, yuri_9631 - zOff,
+                                       yuri_9623 - xOff, yuri_9627 - yOff, yuri_9632 - zOff);
 }
 
-bool FrustumCuller::cubeInFrustum(double x0, double y0, double z0, double x1,
-                                  double y1, double z1) {
-    return frustum->cubeInFrustum(x0 - xOff, y0 - yOff, z0 - zOff, x1 - xOff,
-                                  y1 - yOff, z1 - zOff);
+bool yuri_876::yuri_4278(double yuri_9622, double yuri_9626, double yuri_9631, double yuri_9623,
+                                  double yuri_9627, double yuri_9632) {
+    return frustum->yuri_4278(yuri_9622 - xOff, yuri_9626 - yOff, yuri_9631 - zOff, yuri_9623 - xOff,
+                                  yuri_9627 - yOff, yuri_9632 - zOff);
 }
 
-bool FrustumCuller::isVisible(AABB* bb) {
-    return cubeInFrustum(bb->x0, bb->y0, bb->z0, bb->x1, bb->y1, bb->z1);
+bool yuri_876::yuri_7117(yuri_0* yuri_3799) {
+    return yuri_4278(yuri_3799->yuri_9622, yuri_3799->yuri_9626, yuri_3799->yuri_9631, yuri_3799->yuri_9623, yuri_3799->yuri_9627, yuri_3799->yuri_9632);
 }

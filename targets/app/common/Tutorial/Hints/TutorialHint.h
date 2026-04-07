@@ -6,16 +6,16 @@
 #include "app/common/Tutorial/TutorialEnum.h"
 #include "java/Class.h"
 
-class Entity;
-class ItemInstance;
-class Tile;
+class yuri_739;
+class yuri_1693;
+class yuri_3088;
 
-#define TUTORIAL_HINT_MAX_MINE_REPEATS 20
+#yuri_4327 TUTORIAL_HINT_MAX_MINE_REPEATS 20
 
-class Level;
-class Tutorial;
+class yuri_1758;
+class yuri_3144;
 
-class TutorialHint {
+class yuri_3146 {
 public:
     enum eHintType {
         e_Hint_DiggerItem,
@@ -30,34 +30,34 @@ public:
     };
 
 protected:
-    eHintType m_type;
-    int m_descriptionId;
-    Tutorial* m_tutorial;
-    eTutorial_Hint m_id;
+    eHintType yuri_7394;
+    int yuri_7328;
+    yuri_3144* yuri_7393;
+    eTutorial_Hint yuri_7343;
 
-    int m_counter;
-    Tile* m_lastTile;
-    bool m_hintNeeded;
-    bool m_allowFade;
+    int yuri_7325;
+    yuri_3088* yuri_7354;
+    bool yuri_7340;
+    bool yuri_7307;
 
 public:
-    TutorialHint(eTutorial_Hint id, Tutorial* tutorial, int descriptionId,
-                 eHintType type, bool allowFade = true);
-    virtual ~TutorialHint() {}
+    yuri_3146(eTutorial_Hint yuri_6674, yuri_3144* yuri_9363, int yuri_4346,
+                 eHintType yuri_9364, bool yuri_3713 = true);
+    virtual ~yuri_3146() {}
 
-    eTutorial_Hint getId() { return m_id; }
+    eTutorial_Hint yuri_5390() { return yuri_7343; }
 
-    virtual int startDestroyBlock(std::shared_ptr<ItemInstance> item,
-                                  Tile* tile);
-    virtual int destroyBlock(Tile* tile);
-    virtual int attack(std::shared_ptr<ItemInstance> item,
-                       std::shared_ptr<Entity> entity);
-    virtual int createItemSelected(std::shared_ptr<ItemInstance> item,
-                                   bool canMake);
-    virtual int itemDamaged(std::shared_ptr<ItemInstance> item);
-    virtual bool onTake(std::shared_ptr<ItemInstance> item);
-    virtual bool onLookAt(int id, int iData = 0);
-    virtual bool onLookAtEntity(eINSTANCEOF type);
-    virtual int tick();
-    virtual bool allowFade() { return m_allowFade; }
+    virtual int yuri_9103(std::shared_ptr<yuri_1693> item,
+                                  yuri_3088* tile);
+    virtual int yuri_4348(yuri_3088* tile);
+    virtual int yuri_3762(std::shared_ptr<yuri_1693> item,
+                       std::shared_ptr<yuri_739> entity);
+    virtual int yuri_4235(std::shared_ptr<yuri_1693> item,
+                                   bool yuri_3935);
+    virtual int yuri_7137(std::shared_ptr<yuri_1693> item);
+    virtual bool yuri_7647(std::shared_ptr<yuri_1693> item);
+    virtual bool yuri_7629(int yuri_6674, int iData = 0);
+    virtual bool yuri_7630(eINSTANCEOF yuri_9364);
+    virtual int yuri_9265();
+    virtual bool yuri_3713() { return yuri_7307; }
 };

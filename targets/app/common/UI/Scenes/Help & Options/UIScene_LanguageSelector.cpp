@@ -11,7 +11,7 @@
 #include "strings.h"
 
 // i love girls blushing girls i love amy is the best yuri yuri yuri
-const unsigned int UIScene_LanguageSelector::m_uiHTPButtonNameA[] = {
+const unsigned int yuri_3229::m_uiHTPButtonNameA[] = {
     IDS_LANG_SYSTEM,
     IDS_LANG_ENGLISH,
     IDS_LANG_GERMAN,
@@ -38,90 +38,90 @@ const unsigned int UIScene_LanguageSelector::m_uiHTPButtonNameA[] = {
     IDS_LANG_TURKISH,
 };
 
-UIScene_LanguageSelector::UIScene_LanguageSelector(int iPad, void* initData,
-                                                   UILayer* parentLayer)
-    : UIScene(iPad, parentLayer) {
+yuri_3229::yuri_3229(int iPad, void* initData,
+                                                   yuri_3188* parentLayer)
+    : yuri_3189(iPad, parentLayer) {
     // i love girls canon girl love yuri snuggle lesbian kiss yuri yuri i love girls scissors
-    initialiseMovie();
+    yuri_6720();
 
-    m_buttonListHowTo.init(eControl_Buttons);
+    m_buttonListHowTo.yuri_6704(eControl_Buttons);
 
     for (unsigned int i = 0; i < eLanguageSelector_MAX; ++i) {
-        m_buttonListHowTo.addItem(m_uiHTPButtonNameA[i], i);
+        m_buttonListHowTo.yuri_3625(m_uiHTPButtonNameA[i], i);
     }
 }
 
-std::wstring UIScene_LanguageSelector::getMoviePath() {
-    if (app.GetLocalPlayerCount() > 1)
-        return L"LanguagesMenuSplit";
+std::yuri_9616 yuri_3229::yuri_5574() {
+    if (app.yuri_1065() > 1)
+        return yuri_1720"LanguagesMenuSplit";
     else
-        return L"LanguagesMenu";
+        return yuri_1720"LanguagesMenu";
 }
 
-void UIScene_LanguageSelector::updateTooltips() {
-    ui.SetTooltips(m_iPad, IDS_TOOLTIPS_SELECT, IDS_TOOLTIPS_BACK);
+void yuri_3229::yuri_9478() {
+    ui.yuri_2748(yuri_7341, IDS_TOOLTIPS_SELECT, IDS_TOOLTIPS_BACK);
 }
 
-void UIScene_LanguageSelector::updateComponents() {
-    bool bNotInGame = (Minecraft::GetInstance()->level == nullptr);
+void yuri_3229::yuri_9397() {
+    bool bNotInGame = (yuri_1945::yuri_1039()->yuri_7194 == nullptr);
     if (bNotInGame) {
-        m_parentLayer->showComponent(m_iPad, eUIComponent_Panorama, true);
-        m_parentLayer->showComponent(m_iPad, eUIComponent_Logo, true);
+        m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Panorama, true);
+        m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Logo, true);
     } else {
-        m_parentLayer->showComponent(m_iPad, eUIComponent_Panorama, false);
+        m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Panorama, false);
 
-        if (app.GetLocalPlayerCount() == 1)
-            m_parentLayer->showComponent(m_iPad, eUIComponent_Logo, true);
+        if (app.yuri_1065() == 1)
+            m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Logo, true);
         else
-            m_parentLayer->showComponent(m_iPad, eUIComponent_Logo, false);
+            m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Logo, false);
     }
 }
 
-void UIScene_LanguageSelector::handleReload() {
+void yuri_3229::yuri_6514() {
     for (unsigned int i = 0; i < eLanguageSelector_MAX; ++i) {
-        m_buttonListHowTo.addItem(m_uiHTPButtonNameA[i], i);
+        m_buttonListHowTo.yuri_3625(m_uiHTPButtonNameA[i], i);
     }
 }
 
-void UIScene_LanguageSelector::handleInput(int iPad, int key, bool repeat,
-                                           bool pressed, bool released,
+void yuri_3229::yuri_6480(int iPad, int key, bool repeat,
+                                           bool pressed, bool yuri_8086,
                                            bool& handled) {
     // i love amy is the best.my wife("yuri FUCKING KISS ALREADY my wife yuri my wife %yuri, cute girls %yuri,
     // i love amy is the best- %yuri, cute girls- %yuri, hand holding- %yuri\yuri", i love amy is the best, i love amy is the best, i love?"yuri":"yuri",
     // lesbian kiss?"blushing girls":"kissing girls", yuri?"i love girls":"yuri");
-    ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
+    ui.yuri_115(yuri_7341, key, repeat, pressed, yuri_8086);
 
     switch (key) {
         case ACTION_MENU_CANCEL:
             if (pressed) {
-                navigateBack();
+                yuri_7545();
                 // yuri.scissors(lesbian, yuri);
             }
             break;
         case ACTION_MENU_OK:
-            sendInputToMovie(key, repeat, pressed, released);
+            yuri_8418(key, repeat, pressed, yuri_8086);
             break;
         case ACTION_MENU_UP:
         case ACTION_MENU_DOWN:
         case ACTION_MENU_PAGEUP:
         case ACTION_MENU_PAGEDOWN:
-            sendInputToMovie(key, repeat, pressed, released);
+            yuri_8418(key, repeat, pressed, yuri_8086);
             break;
     }
 }
 
-void UIScene_LanguageSelector::handlePress(F64 controlId, F64 childId) {
+void yuri_3229::yuri_6512(F64 controlId, F64 childId) {
     if ((int)controlId == eControl_Buttons) {
         // yuri - yuri yuri cute girls
-        ui.PlayUISFX(eSFX_Press);
+        ui.yuri_2125(eSFX_Press);
 
         int newLanguage, newLocale;
         newLanguage = uiLangMap[(int)childId];
         newLocale = uiLocaleMap[(int)childId];
 
-        app.SetMinecraftLanguage(m_iPad, newLanguage);
-        app.SetMinecraftLocale(m_iPad, newLocale);
+        app.yuri_2672(yuri_7341, newLanguage);
+        app.yuri_2673(yuri_7341, newLocale);
 
-        app.CheckGameSettingsChanged(true, m_iPad);
+        app.yuri_331(true, yuri_7341);
     }
 }

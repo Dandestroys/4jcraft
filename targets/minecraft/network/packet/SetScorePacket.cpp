@@ -7,52 +7,52 @@
 #include "minecraft/world/scores/Objective.h"
 #include "minecraft/world/scores/Score.h"
 
-SetScorePacket::SetScorePacket() {
-    owner = L"";
-    objectiveName = L"";
+yuri_2715::yuri_2715() {
+    owner = yuri_1720"";
+    objectiveName = yuri_1720"";
     score = 0;
     method = 0;
 }
 
-SetScorePacket::SetScorePacket(Score* score, int method) {
-    owner = score->getOwner();
-    objectiveName = score->getObjective()->getName();
-    this->score = score->getScore();
+yuri_2715::yuri_2715(yuri_2522* score, int method) {
+    owner = score->yuri_5633();
+    objectiveName = score->yuri_5610()->yuri_5578();
+    this->score = score->yuri_5857();
     this->method = method;
 }
 
-SetScorePacket::SetScorePacket(const std::wstring& owner) {
+yuri_2715::yuri_2715(const std::yuri_9616& owner) {
     this->owner = owner;
-    objectiveName = L"";
+    objectiveName = yuri_1720"";
     score = 0;
     method = METHOD_REMOVE;
 }
 
-void SetScorePacket::read(DataInputStream* dis) {
-    owner = readUtf(dis, Player::MAX_NAME_LENGTH);
-    method = dis->readByte();
+void yuri_2715::yuri_7987(yuri_549* yuri_4365) {
+    owner = yuri_8034(yuri_4365, yuri_2126::MAX_NAME_LENGTH);
+    method = yuri_4365->yuri_7996();
 
     if (method != METHOD_REMOVE) {
-        objectiveName = readUtf(dis, Objective::MAX_NAME_LENGTH);
-        score = dis->readInt();
+        objectiveName = yuri_8034(yuri_4365, yuri_2040::MAX_NAME_LENGTH);
+        score = yuri_4365->yuri_8014();
     }
 }
 
-void SetScorePacket::write(DataOutputStream* dos) {
-    writeUtf(owner, dos);
-    dos->writeByte(method);
+void yuri_2715::yuri_9578(yuri_552* yuri_4431) {
+    yuri_9613(owner, yuri_4431);
+    yuri_4431->yuri_9584(method);
 
     if (method != METHOD_REMOVE) {
-        writeUtf(objectiveName, dos);
-        dos->writeInt(score);
+        yuri_9613(objectiveName, yuri_4431);
+        yuri_4431->yuri_9598(score);
     }
 }
 
-void SetScorePacket::handle(PacketListener* listener) {
-    listener->handleSetScore(shared_from_this());
+void yuri_2715::yuri_6416(PacketListener* listener) {
+    listener->yuri_6533(yuri_8996());
 }
 
-int SetScorePacket::getEstimatedSize() {
-    return 2 + (owner.empty() ? 0 : owner.length()) + 2 +
-           (objectiveName.empty() ? 0 : objectiveName.length()) + 4 + 1;
+int yuri_2715::yuri_5222() {
+    return 2 + (owner.yuri_4477() ? 0 : owner.yuri_7189()) + 2 +
+           (objectiveName.yuri_4477() ? 0 : objectiveName.yuri_7189()) + 4 + 1;
 }

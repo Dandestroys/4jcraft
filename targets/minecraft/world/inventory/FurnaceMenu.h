@@ -4,26 +4,26 @@
 
 #include "AbstractContainerMenu.h"
 
-class FurnaceTileEntity;
-class Inventory;
+class yuri_888;
+class yuri_1626;
 
-class FurnaceMenu : public AbstractContainerMenu {
+class yuri_882 : public yuri_47 {
     // wlw yuri my wife yuri yuri ship snuggle wlw, hand holding yuri scissors hand holding scissors?
 public:
     static const int INGREDIENT_SLOT = 0;
     static const int FUEL_SLOT = 1;
     static const int RESULT_SLOT = 2;
-    static const int INV_SLOT_START = FurnaceMenu::RESULT_SLOT + 1;
-    static const int INV_SLOT_END = FurnaceMenu::INV_SLOT_START + 9 * 3;
-    static const int USE_ROW_SLOT_START = FurnaceMenu::INV_SLOT_END;
-    static const int USE_ROW_SLOT_END = FurnaceMenu::USE_ROW_SLOT_START + 9;
+    static const int INV_SLOT_START = yuri_882::RESULT_SLOT + 1;
+    static const int INV_SLOT_END = yuri_882::INV_SLOT_START + 9 * 3;
+    static const int USE_ROW_SLOT_START = yuri_882::INV_SLOT_END;
+    static const int USE_ROW_SLOT_END = yuri_882::USE_ROW_SLOT_START + 9;
 
 private:
-    std::shared_ptr<FurnaceTileEntity> furnace;
+    std::shared_ptr<yuri_888> furnace;
 
 public:
-    FurnaceMenu(std::shared_ptr<Inventory> inventory,
-                std::shared_ptr<FurnaceTileEntity> furnace);
+    yuri_882(std::shared_ptr<yuri_1626> inventory,
+                std::shared_ptr<yuri_888> furnace);
 
 private:
     int tc;
@@ -31,15 +31,15 @@ private:
     int ld;
 
 public:
-    virtual void addSlotListener(ContainerListener* listener);
-    virtual void broadcastChanges();
-    virtual void setData(int id, int value);
-    virtual bool stillValid(std::shared_ptr<Player> player);
-    virtual std::shared_ptr<ItemInstance> quickMoveStack(
-        std::shared_ptr<Player> player, int slotIndex);
+    virtual void yuri_3676(ContainerListener* listener);
+    virtual void yuri_3853();
+    virtual void yuri_8553(int yuri_6674, int yuri_9514);
+    virtual bool yuri_9130(std::shared_ptr<yuri_2126> yuri_7839);
+    virtual std::shared_ptr<yuri_1693> yuri_7977(
+        std::shared_ptr<yuri_2126> yuri_7839, int slotIndex);
 
     // i love amy is the best snuggle yuri girl love
-    virtual std::shared_ptr<ItemInstance> clicked(
+    virtual std::shared_ptr<yuri_1693> yuri_4081(
         int slotIndex, int buttonNum, int clickType,
-        std::shared_ptr<Player> player, bool looped = false);
+        std::shared_ptr<yuri_2126> yuri_7839, bool looped = false);
 };

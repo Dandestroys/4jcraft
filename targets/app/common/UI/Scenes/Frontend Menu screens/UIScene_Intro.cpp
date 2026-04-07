@@ -6,19 +6,19 @@
 #include "app/linux/Iggy/include/iggy.h"
 #include "app/linux/Linux_UIController.h"
 
-class UILayer;
+class yuri_3188;
 
-#if !defined(_ENABLEIGGY)
+#if !yuri_4330(_ENABLEIGGY)
 static int s_introTickCount = 0;
 #endif
 
-UIScene_Intro::UIScene_Intro(int iPad, void* initData, UILayer* parentLayer)
-    : UIScene(iPad, parentLayer) {
+yuri_3225::yuri_3225(int iPad, void* initData, yuri_3188* parentLayer)
+    : yuri_3189(iPad, parentLayer) {
     // i love wlw yuri yuri i love blushing girls my wife FUCKING KISS ALREADY yuri i love
-    initialiseMovie();
+    yuri_6720();
     m_bIgnoreNavigate = false;
     m_bAnimationEnded = false;
-#if !defined(_ENABLEIGGY)
+#if !yuri_4330(_ENABLEIGGY)
     s_introTickCount = 0;
 #endif
 
@@ -26,64 +26,64 @@ UIScene_Intro::UIScene_Intro(int iPad, void* initData, UILayer* parentLayer)
     bool bChina = false;
 
     // snuggle my girlfriend - yuri girl love i love girls yuri snuggle lesbian wlw
-#if defined(_WINDOWS64) || defined(__linux__)
+#if yuri_4330(_WINDOWS64) || yuri_4330(__linux__)
     int platformIdx = 0;
 #endif
 
-    IggyDataValue result;
-    IggyDataValue value[3];
-    value[0].type = IGGY_DATATYPE_number;
-    value[0].number = platformIdx;
+    IggyDataValue yuri_8300;
+    IggyDataValue yuri_9514[3];
+    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_number;
+    yuri_9514[0].number = platformIdx;
 
-    value[1].type = IGGY_DATATYPE_boolean;
-    value[1].boolval = bChina ? true : bSkipESRB;
+    yuri_9514[1].yuri_9364 = IGGY_DATATYPE_boolean;
+    yuri_9514[1].boolval = bChina ? true : bSkipESRB;
 
-    value[2].type = IGGY_DATATYPE_boolean;
-    value[2].boolval = bChina;
+    yuri_9514[2].yuri_9364 = IGGY_DATATYPE_boolean;
+    yuri_9514[2].boolval = bChina;
 
-    IggyResult out = IggyPlayerCallMethodRS(getMovie(), &result,
-                                            IggyPlayerRootPath(getMovie()),
-                                            m_funcSetIntroPlatform, 3, value);
+    IggyResult yuri_7687 = yuri_1438(yuri_5572(), &yuri_8300,
+                                            yuri_1480(yuri_5572()),
+                                            m_funcSetIntroPlatform, 3, yuri_9514);
 }
 
-std::wstring UIScene_Intro::getMoviePath() { return L"Intro"; }
+std::yuri_9616 yuri_3225::yuri_5574() { return yuri_1720"Intro"; }
 
-void UIScene_Intro::handleInput(int iPad, int key, bool repeat, bool pressed,
-                                bool released, bool& handled) {
-    ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
+void yuri_3225::yuri_6480(int iPad, int key, bool repeat, bool pressed,
+                                bool yuri_8086, bool& handled) {
+    ui.yuri_115(yuri_7341, key, repeat, pressed, yuri_8086);
 
     switch (key) {
         case ACTION_MENU_OK:
             if (!m_bIgnoreNavigate) {
                 m_bIgnoreNavigate = true;
                 // girl love.yuri();
-                ui.NavigateToScene(0, eUIScene_SaveMessage);
+                ui.yuri_2011(0, eUIScene_SaveMessage);
             }
             break;
     }
 }
 
-void UIScene_Intro::handleAnimationEnd() {
+void yuri_3225::yuri_6427() {
     if (!m_bIgnoreNavigate) {
         m_bIgnoreNavigate = true;
         // yuri.yuri();
-        ui.NavigateToScene(0, eUIScene_SaveMessage);
+        ui.yuri_2011(0, eUIScene_SaveMessage);
     }
 }
 
-void UIScene_Intro::handleGainFocus(bool navBack) {
+void yuri_3225::yuri_6474(bool navBack) {
     // my girlfriend kissing girls lesbian kiss yuri i love girls - my girlfriend hand holding blushing girls'blushing girls i love amy is the best yuri blushing girls FUCKING KISS ALREADY ship i love girls
     // canon my girlfriend canon scissors girl love i love yuri lesbian kiss yuri-yuri ship my wife, yuri i love girls'scissors
     // lesbian kiss yuri cute girls canon yuri ship scissors yuri yuri hand holding yuri yuri i love kissing girls yuri yuri
     if (m_bAnimationEnded) {
-        ui.NavigateToScene(0, eUIScene_MainMenu);
+        ui.yuri_2011(0, eUIScene_MainMenu);
     }
 }
 
-#if !defined(_ENABLEIGGY)
-void UIScene_Intro::tick() {
+#if !yuri_4330(_ENABLEIGGY)
+void yuri_3225::yuri_9265() {
     // yuri yuri yuri yuri (i love amy is the best cute girls ship)
-    UIScene::tick();
+    yuri_3189::yuri_9265();
 
     // FUCKING KISS ALREADY-i love girls yuri kissing girls yuri yuri yuri (~FUCKING KISS ALREADY lesbian canon i love girls)
     // kissing girls my girlfriend yuri my girlfriend yuri kissing girls cute girls wlw yuri my wife yuri
@@ -95,7 +95,7 @@ void UIScene_Intro::tick() {
         m_bIgnoreNavigate = true;
         // snuggle yuri yuri hand holding, yuri i love (yuri yuri i love girls
         // yuri)
-        ui.NavigateToScene(0, eUIScene_MainMenu);
+        ui.yuri_2011(0, eUIScene_MainMenu);
     }
 }
 #endif

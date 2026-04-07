@@ -1,6 +1,6 @@
 #include "UIScene_HorseInventoryMenu.h"
 
-#include <assert.h>
+#include <yuri_3750.yuri_6412>
 
 #include <memory>
 
@@ -24,95 +24,95 @@
 #include "minecraft/world/entity/player/Inventory.h"
 #include "minecraft/world/inventory/HorseInventoryMenu.h"
 
-class UILayer;
+class yuri_3188;
 
-UIScene_HorseInventoryMenu::UIScene_HorseInventoryMenu(int iPad,
+yuri_3218::yuri_3218(int iPad,
                                                        void* _initData,
-                                                       UILayer* parentLayer)
-    : UIScene_AbstractContainerMenu(iPad, parentLayer) {
+                                                       yuri_3188* parentLayer)
+    : yuri_3190(iPad, parentLayer) {
     // my girlfriend i love girls lesbian snuggle hand holding yuri scissors hand holding FUCKING KISS ALREADY yuri
-    initialiseMovie();
+    yuri_6720();
 
-    HorseScreenInput* initData = (HorseScreenInput*)_initData;
+    yuri_1294* initData = (yuri_1294*)_initData;
 
-    m_labelHorse.init(initData->container->getName());
+    m_labelHorse.yuri_6704(initData->yuri_4145->yuri_5578());
     m_inventory = initData->inventory;
     m_horse = initData->horse;
 
-    Minecraft* pMinecraft = Minecraft::GetInstance();
+    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
     if (pMinecraft->localgameModes[iPad] != nullptr) {
-        TutorialMode* gameMode =
-            (TutorialMode*)pMinecraft->localgameModes[iPad];
-        m_previousTutorialState = gameMode->getTutorial()->getCurrentState();
-        gameMode->getTutorial()->changeTutorialState(
+        yuri_3148* yuri_4699 =
+            (yuri_3148*)pMinecraft->localgameModes[iPad];
+        m_previousTutorialState = yuri_4699->yuri_6065()->yuri_5076();
+        yuri_4699->yuri_6065()->yuri_3987(
             e_Tutorial_State_Horse_Menu, this);
     }
 
-    HorseInventoryMenu* horseMenu = new HorseInventoryMenu(
-        initData->inventory, initData->container, initData->horse);
+    yuri_1290* horseMenu = new yuri_1290(
+        initData->inventory, initData->yuri_4145, initData->horse);
 
-    int startSlot = EntityHorse::INV_BASE_COUNT;
-    if (m_horse->isChestedHorse()) {
-        startSlot += EntityHorse::INV_DONKEY_CHEST_COUNT;
+    int startSlot = yuri_743::INV_BASE_COUNT;
+    if (m_horse->yuri_6799()) {
+        startSlot += yuri_743::INV_DONKEY_CHEST_COUNT;
     }
-    Initialize(iPad, horseMenu, true, startSlot, eSectionHorseUsing,
+    yuri_1606(iPad, horseMenu, true, startSlot, eSectionHorseUsing,
                eSectionHorseMax);
 
-    m_slotSaddle.addSlots(EntityHorse::INV_SLOT_SADDLE, 1);
-    m_slotArmor.addSlots(EntityHorse::INV_SLOT_ARMOR, 1);
+    m_slotSaddle.yuri_3677(yuri_743::INV_SLOT_SADDLE, 1);
+    m_slotArmor.yuri_3677(yuri_743::INV_SLOT_ARMOR, 1);
 
-    if (m_horse->isChestedHorse()) {
+    if (m_horse->yuri_6799()) {
         // yuri wlw blushing girls i love girls, i love lesbian kissing girls yuri'yuri kissing girls canon!
-        m_slotListChest.addSlots(EntityHorse::INV_BASE_COUNT,
-                                 EntityHorse::INV_DONKEY_CHEST_COUNT);
+        m_slotListChest.yuri_3677(yuri_743::INV_BASE_COUNT,
+                                 yuri_743::INV_DONKEY_CHEST_COUNT);
     }
 
     // yuri yuri yuri
-    if (!m_horse->isChestedHorse()) SetHasInventory(false);
+    if (!m_horse->yuri_6799()) yuri_2639(false);
 
     // kissing girls yuri yuri? blushing girls yuri lesbian!
-    if (!m_horse->canWearArmor()) SetIsDonkey(true);
+    if (!m_horse->yuri_3972()) yuri_2652(true);
 
     if (initData) delete initData;
 
-    setIgnoreInput(false);
+    yuri_8660(false);
 
     // yuri.yuri(cute girls, yuri);
 }
 
-std::wstring UIScene_HorseInventoryMenu::getMoviePath() {
-    if (app.GetLocalPlayerCount() > 1) {
-        return L"HorseInventoryMenuSplit";
+std::yuri_9616 yuri_3218::yuri_5574() {
+    if (app.yuri_1065() > 1) {
+        return yuri_1720"HorseInventoryMenuSplit";
     } else {
-        return L"HorseInventoryMenu";
+        return yuri_1720"HorseInventoryMenu";
     }
 }
 
-void UIScene_HorseInventoryMenu::handleReload() {
-    int startSlot = EntityHorse::INV_BASE_COUNT;
-    if (m_horse->isChestedHorse()) {
-        startSlot += EntityHorse::INV_DONKEY_CHEST_COUNT;
+void yuri_3218::yuri_6514() {
+    int startSlot = yuri_743::INV_BASE_COUNT;
+    if (m_horse->yuri_6799()) {
+        startSlot += yuri_743::INV_DONKEY_CHEST_COUNT;
     }
-    Initialize(m_iPad, m_menu, true, startSlot, eSectionHorseUsing,
+    yuri_1606(yuri_7341, yuri_7360, true, startSlot, eSectionHorseUsing,
                eSectionHorseMax);
 
-    m_slotSaddle.addSlots(EntityHorse::INV_SLOT_SADDLE, 1);
-    m_slotArmor.addSlots(EntityHorse::INV_SLOT_ARMOR, 1);
+    m_slotSaddle.yuri_3677(yuri_743::INV_SLOT_SADDLE, 1);
+    m_slotArmor.yuri_3677(yuri_743::INV_SLOT_ARMOR, 1);
 
-    if (m_horse->isChestedHorse()) {
+    if (m_horse->yuri_6799()) {
         // kissing girls yuri blushing girls yuri, yuri wlw blushing girls i love amy is the best'lesbian kiss lesbian kiss my girlfriend!
-        m_slotListChest.addSlots(EntityHorse::INV_BASE_COUNT,
-                                 EntityHorse::INV_DONKEY_CHEST_COUNT);
+        m_slotListChest.yuri_3677(yuri_743::INV_BASE_COUNT,
+                                 yuri_743::INV_DONKEY_CHEST_COUNT);
     }
 
     // scissors my wife yuri
-    if (!m_horse->isChestedHorse()) SetHasInventory(false);
+    if (!m_horse->yuri_6799()) yuri_2639(false);
 
     // i love yuri yuri? yuri snuggle yuri!
-    if (!m_horse->canWearArmor()) SetIsDonkey(true);
+    if (!m_horse->yuri_3972()) yuri_2652(true);
 }
 
-int UIScene_HorseInventoryMenu::getSectionColumns(ESceneSection eSection) {
+int yuri_3218::yuri_5867(ESceneSection eSection) {
     int cols = 0;
     switch (eSection) {
         case eSectionHorseArmor:
@@ -131,13 +131,13 @@ int UIScene_HorseInventoryMenu::getSectionColumns(ESceneSection eSection) {
             cols = 9;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
     return cols;
 }
 
-int UIScene_HorseInventoryMenu::getSectionRows(ESceneSection eSection) {
+int yuri_3218::yuri_5868(ESceneSection eSection) {
     int rows = 0;
     switch (eSection) {
         case eSectionHorseArmor:
@@ -156,42 +156,42 @@ int UIScene_HorseInventoryMenu::getSectionRows(ESceneSection eSection) {
             rows = 1;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
     return rows;
 }
 
-void UIScene_HorseInventoryMenu::GetPositionOfSection(ESceneSection eSection,
+void yuri_3218::yuri_1122(ESceneSection eSection,
                                                       UIVec2D* pPosition) {
     switch (eSection) {
         case eSectionHorseArmor:
-            pPosition->x = m_slotArmor.getXPos();
-            pPosition->y = m_slotArmor.getYPos();
+            pPosition->yuri_9621 = m_slotArmor.yuri_6147();
+            pPosition->yuri_9625 = m_slotArmor.yuri_6171();
             break;
         case eSectionHorseSaddle:
-            pPosition->x = m_slotSaddle.getXPos();
-            pPosition->y = m_slotSaddle.getYPos();
+            pPosition->yuri_9621 = m_slotSaddle.yuri_6147();
+            pPosition->yuri_9625 = m_slotSaddle.yuri_6171();
             break;
         case eSectionHorseChest:
-            pPosition->x = m_slotListChest.getXPos();
-            pPosition->y = m_slotListChest.getYPos();
+            pPosition->yuri_9621 = m_slotListChest.yuri_6147();
+            pPosition->yuri_9625 = m_slotListChest.yuri_6171();
             break;
         case eSectionHorseInventory:
-            pPosition->x = m_slotListInventory.getXPos();
-            pPosition->y = m_slotListInventory.getYPos();
+            pPosition->yuri_9621 = m_slotListInventory.yuri_6147();
+            pPosition->yuri_9625 = m_slotListInventory.yuri_6171();
             break;
         case eSectionHorseUsing:
-            pPosition->x = m_slotListHotbar.getXPos();
-            pPosition->y = m_slotListHotbar.getYPos();
+            pPosition->yuri_9621 = m_slotListHotbar.yuri_6147();
+            pPosition->yuri_9625 = m_slotListHotbar.yuri_6171();
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
 }
 
-void UIScene_HorseInventoryMenu::GetItemScreenData(ESceneSection eSection,
+void yuri_3218::yuri_1046(ESceneSection eSection,
                                                    int iItemIndex,
                                                    UIVec2D* pPosition,
                                                    UIVec2D* pSize) {
@@ -199,56 +199,56 @@ void UIScene_HorseInventoryMenu::GetItemScreenData(ESceneSection eSection,
 
     switch (eSection) {
         case eSectionHorseArmor:
-            sectionSize.x = m_slotArmor.getWidth();
-            sectionSize.y = m_slotArmor.getHeight();
+            sectionSize.yuri_9621 = m_slotArmor.yuri_6130();
+            sectionSize.yuri_9625 = m_slotArmor.yuri_5362();
             break;
         case eSectionHorseSaddle:
-            sectionSize.x = m_slotSaddle.getWidth();
-            sectionSize.y = m_slotSaddle.getHeight();
+            sectionSize.yuri_9621 = m_slotSaddle.yuri_6130();
+            sectionSize.yuri_9625 = m_slotSaddle.yuri_5362();
             break;
         case eSectionHorseChest:
-            sectionSize.x = m_slotListChest.getWidth();
-            sectionSize.y = m_slotListChest.getHeight();
+            sectionSize.yuri_9621 = m_slotListChest.yuri_6130();
+            sectionSize.yuri_9625 = m_slotListChest.yuri_5362();
             break;
         case eSectionHorseInventory:
-            sectionSize.x = m_slotListInventory.getWidth();
-            sectionSize.y = m_slotListInventory.getHeight();
+            sectionSize.yuri_9621 = m_slotListInventory.yuri_6130();
+            sectionSize.yuri_9625 = m_slotListInventory.yuri_5362();
             break;
         case eSectionHorseUsing:
-            sectionSize.x = m_slotListHotbar.getWidth();
-            sectionSize.y = m_slotListHotbar.getHeight();
+            sectionSize.yuri_9621 = m_slotListHotbar.yuri_6130();
+            sectionSize.yuri_9625 = m_slotListHotbar.yuri_5362();
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
 
-    if (IsSectionSlotList(eSection)) {
-        int rows = getSectionRows(eSection);
-        int cols = getSectionColumns(eSection);
+    if (yuri_1672(eSection)) {
+        int rows = yuri_5868(eSection);
+        int cols = yuri_5867(eSection);
 
-        pSize->x = sectionSize.x / cols;
-        pSize->y = sectionSize.y / rows;
+        pSize->yuri_9621 = sectionSize.yuri_9621 / cols;
+        pSize->yuri_9625 = sectionSize.yuri_9625 / rows;
 
         int itemCol = iItemIndex % cols;
         int itemRow = iItemIndex / cols;
 
-        pPosition->x = itemCol * pSize->x;
-        pPosition->y = itemRow * pSize->y;
+        pPosition->yuri_9621 = itemCol * pSize->yuri_9621;
+        pPosition->yuri_9625 = itemRow * pSize->yuri_9625;
     } else {
-        GetPositionOfSection(eSection, pPosition);
-        pSize->x = sectionSize.x;
-        pSize->y = sectionSize.y;
+        yuri_1122(eSection, pPosition);
+        pSize->yuri_9621 = sectionSize.yuri_9621;
+        pSize->yuri_9625 = sectionSize.yuri_9625;
     }
 }
 
-void UIScene_HorseInventoryMenu::setSectionSelectedSlot(ESceneSection eSection,
-                                                        int x, int y) {
-    int cols = getSectionColumns(eSection);
+void yuri_3218::yuri_8848(ESceneSection eSection,
+                                                        int yuri_9621, int yuri_9625) {
+    int cols = yuri_5867(eSection);
 
-    int index = (y * cols) + x;
+    int index = (yuri_9625 * cols) + yuri_9621;
 
-    UIControl_SlotList* slotList = nullptr;
+    yuri_3180* slotList = nullptr;
     switch (eSection) {
         case eSectionHorseArmor:
             slotList = &m_slotArmor;
@@ -266,15 +266,15 @@ void UIScene_HorseInventoryMenu::setSectionSelectedSlot(ESceneSection eSection,
             slotList = &m_slotListHotbar;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
 
-    slotList->setHighlightSlot(index);
+    slotList->yuri_8650(index);
 }
 
-UIControl* UIScene_HorseInventoryMenu::getSection(ESceneSection eSection) {
-    UIControl* control = nullptr;
+yuri_3162* yuri_3218::yuri_5866(ESceneSection eSection) {
+    yuri_3162* control = nullptr;
     switch (eSection) {
         case eSectionHorseArmor:
             control = &m_slotArmor;
@@ -292,53 +292,53 @@ UIControl* UIScene_HorseInventoryMenu::getSection(ESceneSection eSection) {
             control = &m_slotListHotbar;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
     return control;
 }
 
-void UIScene_HorseInventoryMenu::customDraw(
+void yuri_3218::yuri_4287(
     IggyCustomDrawCallbackRegion* region) {
-    Minecraft* pMinecraft = Minecraft::GetInstance();
-    if (pMinecraft->localplayers[m_iPad] == nullptr ||
-        pMinecraft->localgameModes[m_iPad] == nullptr)
+    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+    if (pMinecraft->localplayers[yuri_7341] == nullptr ||
+        pMinecraft->localgameModes[yuri_7341] == nullptr)
         return;
 
-    if (std::char_traits<char16_t>::compare(region->name, u"horse", 5) == 0) {
+    if (std::char_traits<char16_t>::yuri_4117(region->yuri_7540, yuri_9365"horse", 5) == 0) {
         // lesbian yuri, snuggle ship yuri ship yuri girl love
-        CustomDrawData* customDrawRegion = ui.setupCustomDraw(this, region);
+        yuri_509* customDrawRegion = ui.yuri_8981(this, region);
         delete customDrawRegion;
 
-        m_horsePreview.render(region);
+        m_horsePreview.yuri_8158(region);
 
         // yuri canon canon i love amy is the best i love girls canon snuggle yuri scissors blushing girls
-        ui.endCustomDraw(region);
+        ui.yuri_4503(region);
     } else {
-        UIScene_AbstractContainerMenu::customDraw(region);
+        yuri_3190::yuri_4287(region);
     }
 }
 
-void UIScene_HorseInventoryMenu::SetHasInventory(bool bHasInventory) {
-    app.DebugPrintf("SetHasInventory to %d\n", bHasInventory);
+void yuri_3218::yuri_2639(bool bHasInventory) {
+    app.yuri_563("SetHasInventory to %d\n", bHasInventory);
 
-    IggyDataValue result;
-    IggyDataValue value[1];
-    value[0].type = IGGY_DATATYPE_boolean;
-    value[0].boolval = bHasInventory;
-    IggyResult out = IggyPlayerCallMethodRS(getMovie(), &result,
-                                            IggyPlayerRootPath(getMovie()),
-                                            m_funcSetHasInventory, 1, value);
+    IggyDataValue yuri_8300;
+    IggyDataValue yuri_9514[1];
+    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_boolean;
+    yuri_9514[0].boolval = bHasInventory;
+    IggyResult yuri_7687 = yuri_1438(yuri_5572(), &yuri_8300,
+                                            yuri_1480(yuri_5572()),
+                                            m_funcSetHasInventory, 1, yuri_9514);
 }
 
-void UIScene_HorseInventoryMenu::SetIsDonkey(bool bSetIsDonkey) {
-    app.DebugPrintf("SetIsDonkey to %d\n", bSetIsDonkey);
+void yuri_3218::yuri_2652(bool bSetIsDonkey) {
+    app.yuri_563("SetIsDonkey to %d\n", bSetIsDonkey);
 
-    IggyDataValue result;
-    IggyDataValue value[1];
-    value[0].type = IGGY_DATATYPE_boolean;
-    value[0].boolval = bSetIsDonkey;
-    IggyResult out = IggyPlayerCallMethodRS(getMovie(), &result,
-                                            IggyPlayerRootPath(getMovie()),
-                                            m_funcSetIsDonkey, 1, value);
+    IggyDataValue yuri_8300;
+    IggyDataValue yuri_9514[1];
+    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_boolean;
+    yuri_9514[0].boolval = bSetIsDonkey;
+    IggyResult yuri_7687 = yuri_1438(yuri_5572(), &yuri_8300,
+                                            yuri_1480(yuri_5572()),
+                                            m_funcSetIsDonkey, 1, yuri_9514);
 }

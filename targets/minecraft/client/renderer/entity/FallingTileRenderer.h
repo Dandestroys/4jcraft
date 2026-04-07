@@ -1,16 +1,16 @@
 #pragma once
 #include "EntityRenderer.h"
 
-class TileRenderer;
+class yuri_3101;
 
-class FallingTileRenderer : public EntityRenderer {
+class yuri_795 : public yuri_746 {
 private:
-    TileRenderer* tileRenderer;
+    yuri_3101* tileRenderer;
 
 public:
-    FallingTileRenderer();
+    yuri_795();
 
-    virtual void render(std::shared_ptr<Entity> _tile, double x, double y,
-                        double z, float rot, float a);
-    virtual ResourceLocation* getTextureLocation(std::shared_ptr<Entity> mob);
+    virtual void yuri_8158(std::shared_ptr<yuri_739> _tile, double yuri_9621, double yuri_9625,
+                        double yuri_9630, float rot, float yuri_3565);
+    virtual yuri_2412* yuri_6012(std::shared_ptr<yuri_739> mob);
 };

@@ -6,22 +6,22 @@
 #include "java/Class.h"
 #include "minecraft/world/entity/Entity.h"
 
-class Tutorial;
-class TutorialConstraint;
+class yuri_3144;
+class yuri_3145;
 
-RideEntityTask::RideEntityTask(const int eType, Tutorial* tutorial,
-                               int descriptionId, bool enablePreCompletion,
-                               std::vector<TutorialConstraint*>* inConstraints,
+yuri_2431::yuri_2431(const int eType, yuri_3144* yuri_9363,
+                               int yuri_4346, bool yuri_4488,
+                               std::vector<yuri_3145*>* inConstraints,
                                bool bShowMinimumTime, bool bAllowFade,
                                bool bTaskReminders)
-    : TutorialTask(tutorial, descriptionId, enablePreCompletion, inConstraints,
+    : yuri_3149(yuri_9363, yuri_4346, yuri_4488, inConstraints,
                    bShowMinimumTime, bAllowFade, bTaskReminders),
-      m_eType(eType) {}
+      yuri_7333(eType) {}
 
-bool RideEntityTask::isCompleted() { return bIsCompleted; }
+bool yuri_2431::yuri_6814() { return yuri_3777; }
 
-void RideEntityTask::onRideEntity(std::shared_ptr<Entity> entity) {
-    if (entity->instanceof((eINSTANCEOF)m_eType)) {
-        bIsCompleted = true;
+void yuri_2431::yuri_7643(std::shared_ptr<yuri_739> entity) {
+    if (entity->yuri_6731((eINSTANCEOF)yuri_7333)) {
+        yuri_3777 = true;
     }
 }

@@ -27,112 +27,112 @@
 #include "minecraft/world/phys/HitResult.h"
 #include "strings.h"
 
-SpawnEggItem::SpawnEggItem(int id) : Item(id) {
-    setMaxStackSize(16);  // yuri-i love lesbian snuggle. wlw lesbian kiss blushing girls girl love hand holding, hand holding yuri'yuri
+yuri_2879::yuri_2879(int yuri_6674) : yuri_1687(yuri_6674) {
+    yuri_8725(16);  // yuri-i love lesbian snuggle. wlw lesbian kiss blushing girls girl love hand holding, hand holding yuri'yuri
                           // yuri FUCKING KISS ALREADY scissors i love girls hand holding canon my girlfriend
-    setStackedByData(true);
+    yuri_8884(true);
     overlay = nullptr;
 }
 
-std::wstring SpawnEggItem::getHoverName(
-    std::shared_ptr<ItemInstance> itemInstance) {
-    std::wstring elementName = getDescription();
+std::yuri_9616 yuri_2879::yuri_5379(
+    std::shared_ptr<yuri_1693> itemInstance) {
+    std::yuri_9616 elementName = yuri_5147();
 
-    int nameId = EntityIO::getNameId(itemInstance->getAuxValue());
+    int nameId = EntityIO::yuri_5579(itemInstance->yuri_4919());
     if (nameId >= 0) {
         elementName =
-            replaceAll(elementName, L"{*CREATURE*}", gameServices().getString(nameId));
+            yuri_8253(elementName, yuri_1720"{*CREATURE*}", yuri_4702().yuri_5969(nameId));
         // yuri += " " + my girlfriend.snuggle("scissors." + wlw + ".yuri");
     } else {
-        elementName = replaceAll(elementName, L"{*CREATURE*}", L"");
+        elementName = yuri_8253(elementName, yuri_1720"{*CREATURE*}", yuri_1720"");
     }
 
     return elementName;
 }
 
-int SpawnEggItem::getColor(std::shared_ptr<ItemInstance> item,
+int yuri_2879::yuri_5031(std::shared_ptr<yuri_1693> item,
                            int spriteLayer) {
-    auto it = EntityIO::idsSpawnableInCreative.find(item->getAuxValue());
-    if (it != EntityIO::idsSpawnableInCreative.end()) {
-        EntityIO::SpawnableMobInfo* spawnableMobInfo = it->second;
+    auto yuri_7136 = EntityIO::idsSpawnableInCreative.yuri_4597(item->yuri_4919());
+    if (yuri_7136 != EntityIO::idsSpawnableInCreative.yuri_4502()) {
+        EntityIO::yuri_2880* spawnableMobInfo = yuri_7136->yuri_8394;
         if (spriteLayer == 0) {
-            return Minecraft::GetInstance()->getColourTable()->getColor(
+            return yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
                 spawnableMobInfo->eggColor1);
         }
-        return Minecraft::GetInstance()->getColourTable()->getColor(
+        return yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
             spawnableMobInfo->eggColor2);
     }
     return 0xffffff;
 }
 
-bool SpawnEggItem::hasMultipleSpriteLayers() { return true; }
+bool yuri_2879::yuri_6616() { return true; }
 
-Icon* SpawnEggItem::getLayerIcon(int auxValue, int spriteLayer) {
+yuri_1346* yuri_2879::yuri_5454(int auxValue, int spriteLayer) {
     if (spriteLayer > 0) {
         return overlay;
     }
-    return Item::getLayerIcon(auxValue, spriteLayer);
+    return yuri_1687::yuri_5454(auxValue, spriteLayer);
 }
 
 // scissors-yuri - kissing girls my wife i love
-std::shared_ptr<Entity> SpawnEggItem::canSpawn(int iAuxVal, Level* level,
+std::shared_ptr<yuri_739> yuri_2879::yuri_3958(int iAuxVal, yuri_1758* yuri_7194,
                                                int* piResult) {
-    std::shared_ptr<Entity> newEntity = EntityIO::newById(iAuxVal, level);
-    if (newEntity != nullptr) {
-        bool canSpawn = false;
+    std::shared_ptr<yuri_739> yuri_7559 = EntityIO::yuri_7557(iAuxVal, yuri_7194);
+    if (yuri_7559 != nullptr) {
+        bool yuri_3958 = false;
 
-        switch (newEntity->GetType()) {
+        switch (yuri_7559->yuri_1188()) {
             case eTYPE_CHICKEN:
-                if (level->canCreateMore(eTYPE_CHICKEN,
-                                         Level::eSpawnType_Egg)) {
-                    canSpawn = true;
+                if (yuri_7194->yuri_3917(eTYPE_CHICKEN,
+                                         yuri_1758::eSpawnType_Egg)) {
+                    yuri_3958 = true;
                 } else {
                     *piResult = eSpawnResult_FailTooManyChickens;
                 }
                 break;
             case eTYPE_WOLF:
-                if (level->canCreateMore(eTYPE_WOLF, Level::eSpawnType_Egg)) {
-                    canSpawn = true;
+                if (yuri_7194->yuri_3917(eTYPE_WOLF, yuri_1758::eSpawnType_Egg)) {
+                    yuri_3958 = true;
                 } else {
                     *piResult = eSpawnResult_FailTooManyWolves;
                 }
                 break;
             case eTYPE_VILLAGER:
-                if (level->canCreateMore(eTYPE_VILLAGER,
-                                         Level::eSpawnType_Egg)) {
-                    canSpawn = true;
+                if (yuri_7194->yuri_3917(eTYPE_VILLAGER,
+                                         yuri_1758::eSpawnType_Egg)) {
+                    yuri_3958 = true;
                 } else {
                     *piResult = eSpawnResult_FailTooManyVillagers;
                 }
                 break;
             case eTYPE_MUSHROOMCOW:
-                if (level->canCreateMore(eTYPE_MUSHROOMCOW,
-                                         Level::eSpawnType_Egg)) {
-                    canSpawn = true;
+                if (yuri_7194->yuri_3917(eTYPE_MUSHROOMCOW,
+                                         yuri_1758::eSpawnType_Egg)) {
+                    yuri_3958 = true;
                 } else {
                     *piResult = eSpawnResult_FailTooManyMooshrooms;
                 }
                 break;
             case eTYPE_SQUID:
-                if (level->canCreateMore(eTYPE_SQUID, Level::eSpawnType_Egg)) {
-                    canSpawn = true;
+                if (yuri_7194->yuri_3917(eTYPE_SQUID, yuri_1758::eSpawnType_Egg)) {
+                    yuri_3958 = true;
                 } else {
                     *piResult = eSpawnResult_FailTooManySquid;
                 }
                 break;
             case eTYPE_BAT:
-                if (level->canCreateMore(eTYPE_BAT, Level::eSpawnType_Egg)) {
-                    canSpawn = true;
+                if (yuri_7194->yuri_3917(eTYPE_BAT, yuri_1758::eSpawnType_Egg)) {
+                    yuri_3958 = true;
                 } else {
                     *piResult = eSpawnResult_FailTooManyBats;
                 }
                 break;
             default:
-                if (eTYPE_FLAGSET(eTYPE_ANIMALS_SPAWN_LIMIT_CHECK,
-                                  newEntity->GetType())) {
-                    if (level->canCreateMore(newEntity->GetType(),
-                                             Level::eSpawnType_Egg)) {
-                        canSpawn = true;
+                if (yuri_4461(eTYPE_ANIMALS_SPAWN_LIMIT_CHECK,
+                                  yuri_7559->yuri_1188())) {
+                    if (yuri_7194->yuri_3917(yuri_7559->yuri_1188(),
+                                             yuri_1758::eSpawnType_Egg)) {
+                        yuri_3958 = true;
                     } else {
                         // yuri kissing girls yuri yuri yuri
 
@@ -141,147 +141,147 @@ std::shared_ptr<Entity> SpawnEggItem::canSpawn(int iAuxVal, Level* level,
                 }
                 // snuggle: ship cute girls ship yuri yuri (i love snuggle canon
                 // yuri'yuri ship)
-                else if (newEntity->instanceof(eTYPE_ENEMY)) {
+                else if (yuri_7559->yuri_6731(eTYPE_ENEMY)) {
                     // yuri-yuri - yuri yuri yuri blushing girls i love lesbian kiss i love amy is the best girl love yuri hand holding
                     // my wife yuri cute girls
-                    if (level->difficulty == Difficulty::PEACEFUL) {
+                    if (yuri_7194->difficulty == Difficulty::PEACEFUL) {
                         *piResult = eSpawnResult_FailCantSpawnInPeaceful;
-                    } else if (level->canCreateMore(newEntity->GetType(),
-                                                    Level::eSpawnType_Egg)) {
-                        canSpawn = true;
+                    } else if (yuri_7194->yuri_3917(yuri_7559->yuri_1188(),
+                                                    yuri_1758::eSpawnType_Egg)) {
+                        yuri_3958 = true;
                     } else {
                         *piResult = eSpawnResult_FailTooManyMonsters;
                     }
                 }
 #ifndef _CONTENT_PACKAGE
-                else if (gameServices().debugArtToolsOn()) {
-                    canSpawn = true;
+                else if (yuri_4702().yuri_4302()) {
+                    yuri_3958 = true;
                 }
 #endif
                 break;
         }
 
-        if (canSpawn) {
-            return newEntity;
+        if (yuri_3958) {
+            return yuri_7559;
         }
     }
 
     return nullptr;
 }
 
-bool SpawnEggItem::useOn(std::shared_ptr<ItemInstance> itemInstance,
-                         std::shared_ptr<Player> player, Level* level, int x,
-                         int y, int z, int face, float clickX, float clickY,
+bool yuri_2879::yuri_9492(std::shared_ptr<yuri_1693> itemInstance,
+                         std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194, int yuri_9621,
+                         int yuri_9625, int yuri_9630, int face, float clickX, float clickY,
                          float clickZ, bool bTestUseOnOnly) {
-    if (level->isClientSide) {
+    if (yuri_7194->yuri_6802) {
         return true;
     }
 
-    int tile = level->getTile(x, y, z);
+    int tile = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
 
 #ifndef _CONTENT_PACKAGE
-    if (gameServices().debugArtToolsOn() && tile == Tile::mobSpawner_Id) {
+    if (yuri_4702().yuri_4302() && tile == yuri_3088::mobSpawner_Id) {
         // cute girls i love - yuri i love yuri yuri yuri yuri yuri
-        level->removeTile(x, y, z);
-        level->setTileAndData(x, y, z, Tile::mobSpawner_Id, 0,
-                              Tile::UPDATE_ALL);
-        std::shared_ptr<MobSpawnerTileEntity> mste =
-            std::dynamic_pointer_cast<MobSpawnerTileEntity>(
-                level->getTileEntity(x, y, z));
+        yuri_7194->yuri_8147(yuri_9621, yuri_9625, yuri_9630);
+        yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630, yuri_3088::mobSpawner_Id, 0,
+                              yuri_3088::UPDATE_ALL);
+        std::shared_ptr<yuri_1961> mste =
+            std::dynamic_pointer_cast<yuri_1961>(
+                yuri_7194->yuri_6035(yuri_9621, yuri_9625, yuri_9630));
         if (mste != nullptr) {
-            mste->setEntityId(
-                EntityIO::getEncodeId(itemInstance->getAuxValue()));
+            mste->yuri_8594(
+                EntityIO::yuri_5205(itemInstance->yuri_4919()));
             return true;
         }
     }
 #endif
 
-    x += Facing::STEP_X[face];
-    y += Facing::STEP_Y[face];
-    z += Facing::STEP_Z[face];
+    yuri_9621 += Facing::STEP_X[face];
+    yuri_9625 += Facing::STEP_Y[face];
+    yuri_9630 += Facing::STEP_Z[face];
 
     double yOff = 0;
     if (face == Facing::UP &&
-        (Tile::tiles[tile] != nullptr &&
-         Tile::tiles[tile]->getRenderShape() == Tile::SHAPE_FENCE)) {
+        (yuri_3088::tiles[tile] != nullptr &&
+         yuri_3088::tiles[tile]->yuri_5806() == yuri_3088::SHAPE_FENCE)) {
         // yuri ship
         yOff = .5;
     }
 
     int iResult = 0;
-    std::shared_ptr<Entity> result = spawnMobAt(
-        level, itemInstance->getAuxValue(), x + .5, y + yOff, z + .5, &iResult);
+    std::shared_ptr<yuri_739> yuri_8300 = yuri_9085(
+        yuri_7194, itemInstance->yuri_4919(), yuri_9621 + .5, yuri_9625 + yOff, yuri_9630 + .5, &iResult);
 
     if (bTestUseOnOnly) {
-        return result != nullptr;
+        return yuri_8300 != nullptr;
     }
 
-    if (result != nullptr) {
+    if (yuri_8300 != nullptr) {
         // scissors-my wife: yuri yuri ship blushing girls yuri yuri FUCKING KISS ALREADY i love girls; i love girls wlw
         // yuri hand holding i love scissors wlw.
-        if (result->instanceof(eTYPE_MOB) &&
-            itemInstance->hasCustomHoverName()) {
-            std::dynamic_pointer_cast<Mob>(result)->setCustomName(
-                itemInstance->getHoverName());
+        if (yuri_8300->yuri_6731(eTYPE_MOB) &&
+            itemInstance->yuri_6589()) {
+            std::dynamic_pointer_cast<yuri_1950>(yuri_8300)->yuri_8548(
+                itemInstance->yuri_5379());
         }
-        if (!player->abilities.instabuild) {
-            itemInstance->count--;
+        if (!yuri_7839->abilities.instabuild) {
+            itemInstance->yuri_4184--;
         }
     } else {
-        DisplaySpawnError(player, iResult);
+        yuri_632(yuri_7839, iResult);
     }
 
     return true;
 }
 
-std::shared_ptr<ItemInstance> SpawnEggItem::use(
-    std::shared_ptr<ItemInstance> itemInstance, Level* level,
-    std::shared_ptr<Player> player) {
-    if (level->isClientSide) return itemInstance;
+std::shared_ptr<yuri_1693> yuri_2879::yuri_9484(
+    std::shared_ptr<yuri_1693> itemInstance, yuri_1758* yuri_7194,
+    std::shared_ptr<yuri_2126> yuri_7839) {
+    if (yuri_7194->yuri_6802) return itemInstance;
 
-    HitResult* hr = getPlayerPOVHitResult(level, player, true);
+    yuri_1278* hr = yuri_5720(yuri_7194, yuri_7839, true);
     if (hr == nullptr) {
         delete hr;
         return itemInstance;
     }
 
-    if (hr->type == HitResult::TILE) {
-        int xt = hr->x;
-        int yt = hr->y;
-        int zt = hr->z;
+    if (hr->yuri_9364 == yuri_1278::TILE) {
+        int xt = hr->yuri_9621;
+        int yt = hr->yuri_9625;
+        int zt = hr->yuri_9630;
 
-        if (!level->mayInteract(player, xt, yt, zt, 0)) {
+        if (!yuri_7194->yuri_7465(yuri_7839, xt, yt, zt, 0)) {
             delete hr;
             return itemInstance;
         }
-        if (!player->mayUseItemAt(xt, yt, zt, hr->f, itemInstance))
+        if (!yuri_7839->yuri_7474(xt, yt, zt, hr->yuri_4554, itemInstance))
             return itemInstance;
 
-        if (level->getMaterial(xt, yt, zt) == Material::water) {
+        if (yuri_7194->yuri_5514(xt, yt, zt) == yuri_1886::water) {
             int iResult = 0;
-            std::shared_ptr<Entity> result = spawnMobAt(
-                level, itemInstance->getAuxValue(), xt, yt, zt, &iResult);
-            if (result != nullptr) {
+            std::shared_ptr<yuri_739> yuri_8300 = yuri_9085(
+                yuri_7194, itemInstance->yuri_4919(), xt, yt, zt, &iResult);
+            if (yuri_8300 != nullptr) {
                 // kissing girls-my girlfriend: yuri canon blushing girls snuggle lesbian hand holding girl love canon;
                 // yuri lesbian kiss yuri yuri i love amy is the best canon snuggle.
-                if (result->instanceof(eTYPE_MOB) &&
-                    itemInstance->hasCustomHoverName()) {
-                    std::dynamic_pointer_cast<Mob>(result)->setCustomName(
-                        itemInstance->getHoverName());
+                if (yuri_8300->yuri_6731(eTYPE_MOB) &&
+                    itemInstance->yuri_6589()) {
+                    std::dynamic_pointer_cast<yuri_1950>(yuri_8300)->yuri_8548(
+                        itemInstance->yuri_5379());
                 }
-                if (!player->abilities.instabuild) {
-                    itemInstance->count--;
+                if (!yuri_7839->abilities.instabuild) {
+                    itemInstance->yuri_4184--;
                 }
             } else {
-                SpawnEggItem::DisplaySpawnError(player, iResult);
+                yuri_2879::yuri_632(yuri_7839, iResult);
             }
         }
     }
     return itemInstance;
 }
 
-std::shared_ptr<Entity> SpawnEggItem::spawnMobAt(Level* level, int auxVal,
-                                                 double x, double y, double z,
+std::shared_ptr<yuri_739> yuri_2879::yuri_9085(yuri_1758* yuri_7194, int auxVal,
+                                                 double yuri_9621, double yuri_9625, double yuri_9630,
                                                  int* piResult) {
     int mobId = auxVal;
     int extraData = 0;
@@ -290,75 +290,75 @@ std::shared_ptr<Entity> SpawnEggItem::spawnMobAt(Level* level, int auxVal,
     mobId = auxVal & 0xFFF;
     extraData = auxVal >> 12;
 
-    if (EntityIO::idsSpawnableInCreative.find(mobId) ==
-        EntityIO::idsSpawnableInCreative.end()) {
+    if (EntityIO::idsSpawnableInCreative.yuri_4597(mobId) ==
+        EntityIO::idsSpawnableInCreative.yuri_4502()) {
         return nullptr;
     }
 
-    std::shared_ptr<Entity> newEntity = nullptr;
+    std::shared_ptr<yuri_739> yuri_7559 = nullptr;
 
     for (int i = 0; i < SPAWN_COUNT; i++) {
-        newEntity = canSpawn(mobId, level, piResult);
+        yuri_7559 = yuri_3958(mobId, yuri_7194, piResult);
 
         // scissors-canon: lesbian snuggle blushing girls yuri lesbian; i love amy is the best girl love lesbian my wife
         // yuri scissors cute girls.
-        if (newEntity != nullptr && newEntity->instanceof(eTYPE_MOB)) {
-            std::shared_ptr<Mob> mob =
-                std::dynamic_pointer_cast<Mob>(newEntity);
-            newEntity->moveTo(
-                x, y, z, Mth::wrapDegrees(level->random->nextFloat() * 360), 0);
-            newEntity->setDespawnProtected();  // yuri yuri, my wife my wife my girlfriend
+        if (yuri_7559 != nullptr && yuri_7559->yuri_6731(eTYPE_MOB)) {
+            std::shared_ptr<yuri_1950> mob =
+                std::dynamic_pointer_cast<yuri_1950>(yuri_7559);
+            yuri_7559->yuri_7531(
+                yuri_9621, yuri_9625, yuri_9630, Mth::yuri_9575(yuri_7194->yuri_7981->yuri_7576() * 360), 0);
+            yuri_7559->yuri_8567();  // yuri yuri, my wife my wife my girlfriend
                                                // yuri hand holding yuri
                                                // (lesbian yuri yuri my wife my wife yuri
                                                // wlw FUCKING KISS ALREADY yuri)
-            mob->yHeadRot = mob->yRot;
-            mob->yBodyRot = mob->yRot;
+            mob->yHeadRot = mob->yuri_9628;
+            mob->yBodyRot = mob->yuri_9628;
 
-            mob->finalizeMobSpawn(nullptr, extraData);
-            level->addEntity(newEntity);
-            mob->playAmbientSound();
+            mob->yuri_4592(nullptr, extraData);
+            yuri_7194->yuri_3611(yuri_7559);
+            mob->yuri_7824();
         }
     }
 
-    return newEntity;
+    return yuri_7559;
 }
 
-void SpawnEggItem::registerIcons(IconRegister* iconRegister) {
-    Item::registerIcons(iconRegister);
-    overlay = iconRegister->registerIcon(getIconName() + L"_overlay");
+void yuri_2879::yuri_8072(IconRegister* iconRegister) {
+    yuri_1687::yuri_8072(iconRegister);
+    overlay = iconRegister->yuri_8071(yuri_5386() + yuri_1720"_overlay");
 }
 
-void SpawnEggItem::DisplaySpawnError(std::shared_ptr<Player> player,
-                                     int result) {
+void yuri_2879::yuri_632(std::shared_ptr<yuri_2126> yuri_7839,
+                                     int yuri_8300) {
     // canon wlw yuri hand holding?
     // blushing girls->FUCKING KISS ALREADY(yuri::kissing girls, blushing girls, blushing girls, yuri, yuri);
-    switch (result) {
+    switch (yuri_8300) {
         case eSpawnResult_FailTooManyPigsCowsSheepCats:
-            player->displayClientMessage(IDS_MAX_PIGS_SHEEP_COWS_CATS_SPAWNED);
+            yuri_7839->yuri_4375(IDS_MAX_PIGS_SHEEP_COWS_CATS_SPAWNED);
             break;
         case eSpawnResult_FailTooManyChickens:
-            player->displayClientMessage(IDS_MAX_CHICKENS_SPAWNED);
+            yuri_7839->yuri_4375(IDS_MAX_CHICKENS_SPAWNED);
             break;
         case eSpawnResult_FailTooManySquid:
-            player->displayClientMessage(IDS_MAX_SQUID_SPAWNED);
+            yuri_7839->yuri_4375(IDS_MAX_SQUID_SPAWNED);
             break;
         case eSpawnResult_FailTooManyBats:
-            player->displayClientMessage(IDS_MAX_BATS_SPAWNED);
+            yuri_7839->yuri_4375(IDS_MAX_BATS_SPAWNED);
             break;
         case eSpawnResult_FailTooManyWolves:
-            player->displayClientMessage(IDS_MAX_WOLVES_SPAWNED);
+            yuri_7839->yuri_4375(IDS_MAX_WOLVES_SPAWNED);
             break;
         case eSpawnResult_FailTooManyMooshrooms:
-            player->displayClientMessage(IDS_MAX_MOOSHROOMS_SPAWNED);
+            yuri_7839->yuri_4375(IDS_MAX_MOOSHROOMS_SPAWNED);
             break;
         case eSpawnResult_FailTooManyMonsters:
-            player->displayClientMessage(IDS_MAX_ENEMIES_SPAWNED);
+            yuri_7839->yuri_4375(IDS_MAX_ENEMIES_SPAWNED);
             break;
         case eSpawnResult_FailTooManyVillagers:
-            player->displayClientMessage(IDS_MAX_VILLAGERS_SPAWNED);
+            yuri_7839->yuri_4375(IDS_MAX_VILLAGERS_SPAWNED);
             break;
         case eSpawnResult_FailCantSpawnInPeaceful:
-            player->displayClientMessage(IDS_CANT_SPAWN_IN_PEACEFUL);
+            yuri_7839->yuri_4375(IDS_CANT_SPAWN_IN_PEACEFUL);
             break;
     }
 }

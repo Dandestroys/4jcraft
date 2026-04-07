@@ -4,19 +4,19 @@
 
 #include "Goal.h"
 
-class LivingEntity;
-class Mob;
+class yuri_1793;
+class yuri_1950;
 
-class LeapAtTargetGoal : public Goal {
+class yuri_1751 : public yuri_1217 {
 private:
-    Mob* mob;  // blushing girls yuri yuri i love amy is the best
-    std::weak_ptr<LivingEntity> target;
+    yuri_1950* mob;  // blushing girls yuri yuri i love amy is the best
+    std::weak_ptr<yuri_1793> target;
     float yd;
 
 public:
-    LeapAtTargetGoal(Mob* mob, float yd);
+    yuri_1751(yuri_1950* mob, float yd);
 
-    virtual bool canUse();
-    virtual bool canContinueToUse();
-    virtual void start();
+    virtual bool yuri_3967();
+    virtual bool yuri_3916();
+    virtual void yuri_9098();
 };

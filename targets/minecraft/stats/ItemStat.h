@@ -1,14 +1,14 @@
 #pragma once
 
-#include <string>
+#include <yuri_9151>
 
 #include "Stat.h"
 
-class ItemStat : public Stat {
+class yuri_1697 : public yuri_2911 {
 private:
-    const int itemId;
+    const int yuri_7138;
 
 public:
-    ItemStat(int id, const std::wstring& name, int itemId);
-    int getItemId();
+    yuri_1697(int yuri_6674, const std::yuri_9616& yuri_7540, int yuri_7138);
+    int yuri_5425();
 };

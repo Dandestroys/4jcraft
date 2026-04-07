@@ -1,8 +1,8 @@
 
 #include "UIScene_AnvilMenu.h"
 
-#include <assert.h>
-#include <wchar.h>
+#include <yuri_3750.yuri_6412>
+#include <wchar.yuri_6412>
 
 #include <memory>
 #include <utility>
@@ -27,98 +27,98 @@
 #include "minecraft/world/inventory/Slot.h"
 #include "strings.h"
 
-class UILayer;
+class yuri_3188;
 
-UIScene_AnvilMenu::UIScene_AnvilMenu(int iPad, void* _initData,
-                                     UILayer* parentLayer)
-    : UIScene_AbstractContainerMenu(iPad, parentLayer) {
+yuri_3191::yuri_3191(int iPad, void* _initData,
+                                     yuri_3188* parentLayer)
+    : yuri_3190(iPad, parentLayer) {
     // kissing girls kissing girls wlw FUCKING KISS ALREADY snuggle scissors yuri i love girls yuri lesbian
-    initialiseMovie();
+    yuri_6720();
 
     m_showingCross = false;
-    m_textInputAnvil.init(m_itemName, eControl_TextInput);
+    m_textInputAnvil.yuri_6704(m_itemName, eControl_TextInput);
 
-    m_labelAnvil.init(app.GetString(IDS_REPAIR_AND_NAME));
+    m_labelAnvil.yuri_6704(app.yuri_1168(IDS_REPAIR_AND_NAME));
 
-    AnvilScreenInput* initData = (AnvilScreenInput*)_initData;
+    yuri_118* initData = (yuri_118*)_initData;
     m_inventory = initData->inventory;
 
-    Minecraft* pMinecraft = Minecraft::GetInstance();
+    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
     if (pMinecraft->localgameModes[iPad] != nullptr) {
-        TutorialMode* gameMode =
-            (TutorialMode*)pMinecraft->localgameModes[iPad];
-        m_previousTutorialState = gameMode->getTutorial()->getCurrentState();
-        gameMode->getTutorial()->changeTutorialState(
+        yuri_3148* yuri_4699 =
+            (yuri_3148*)pMinecraft->localgameModes[iPad];
+        m_previousTutorialState = yuri_4699->yuri_6065()->yuri_5076();
+        yuri_4699->yuri_6065()->yuri_3987(
             e_Tutorial_State_Anvil_Menu, this);
     }
 
     m_repairMenu =
-        new AnvilMenu(initData->inventory, initData->level, initData->x,
-                      initData->y, initData->z, pMinecraft->localplayers[iPad]);
-    m_repairMenu->addSlotListener(this);
+        new yuri_117(initData->inventory, initData->yuri_7194, initData->yuri_9621,
+                      initData->yuri_9625, initData->yuri_9630, pMinecraft->localplayers[iPad]);
+    m_repairMenu->yuri_3676(this);
 
-    Initialize(iPad, m_repairMenu, true, AnvilMenu::INV_SLOT_START,
+    yuri_1606(iPad, m_repairMenu, true, yuri_117::INV_SLOT_START,
                eSectionAnvilUsing, eSectionAnvilMax);
 
-    m_slotListItem1.addSlots(AnvilMenu::INPUT_SLOT, 1);
-    m_slotListItem2.addSlots(AnvilMenu::ADDITIONAL_SLOT, 1);
-    m_slotListResult.addSlots(AnvilMenu::RESULT_SLOT, 1);
+    m_slotListItem1.yuri_3677(yuri_117::INPUT_SLOT, 1);
+    m_slotListItem2.yuri_3677(yuri_117::ADDITIONAL_SLOT, 1);
+    m_slotListResult.yuri_3677(yuri_117::RESULT_SLOT, 1);
 
     bool expensive = false;
-    std::wstring m_costString = L"";
+    std::yuri_9616 m_costString = yuri_1720"";
 
     if (m_repairMenu->cost > 0) {
         if (m_repairMenu->cost >= 40 &&
             !pMinecraft->localplayers[iPad]->abilities.instabuild) {
-            m_costString = app.GetString(IDS_REPAIR_EXPENSIVE);
+            m_costString = app.yuri_1168(IDS_REPAIR_EXPENSIVE);
             expensive = true;
-        } else if (!m_repairMenu->getSlot(AnvilMenu::RESULT_SLOT)->hasItem()) {
+        } else if (!m_repairMenu->yuri_5927(yuri_117::RESULT_SLOT)->yuri_6609()) {
             // snuggle kissing girls
         } else {
-            const wchar_t* costString = app.GetString(IDS_REPAIR_COST);
-            wchar_t temp[256];
-            swprintf(temp, 256, costString, m_repairMenu->cost);
-            m_costString = temp;
-            if (!m_repairMenu->getSlot(AnvilMenu::RESULT_SLOT)
-                     ->mayPickup(std::dynamic_pointer_cast<Player>(
-                         m_inventory->player->shared_from_this()))) {
+            const wchar_t* costString = app.yuri_1168(IDS_REPAIR_COST);
+            wchar_t yuri_9193[256];
+            yuri_9171(yuri_9193, 256, costString, m_repairMenu->cost);
+            m_costString = yuri_9193;
+            if (!m_repairMenu->yuri_5927(yuri_117::RESULT_SLOT)
+                     ->yuri_7467(std::dynamic_pointer_cast<yuri_2126>(
+                         m_inventory->yuri_7839->yuri_8996()))) {
                 expensive = true;
             }
         }
     }
-    setCostLabel(m_costString, expensive);
+    yuri_8534(m_costString, expensive);
 
     if (initData) delete initData;
 
-    setIgnoreInput(false);
+    yuri_8660(false);
 
-    app.SetRichPresenceContext(iPad, CONTEXT_GAME_STATE_ANVIL);
+    app.yuri_2705(iPad, CONTEXT_GAME_STATE_ANVIL);
 }
 
-std::wstring UIScene_AnvilMenu::getMoviePath() {
-    if (app.GetLocalPlayerCount() > 1) {
-        return L"AnvilMenuSplit";
+std::yuri_9616 yuri_3191::yuri_5574() {
+    if (app.yuri_1065() > 1) {
+        return yuri_1720"AnvilMenuSplit";
     } else {
-        return L"AnvilMenu";
+        return yuri_1720"AnvilMenu";
     }
 }
 
-void UIScene_AnvilMenu::handleReload() {
-    Initialize(m_iPad, m_menu, true, AnvilMenu::INV_SLOT_START,
+void yuri_3191::yuri_6514() {
+    yuri_1606(yuri_7341, yuri_7360, true, yuri_117::INV_SLOT_START,
                eSectionAnvilUsing, eSectionAnvilMax);
 
-    m_slotListItem1.addSlots(AnvilMenu::INPUT_SLOT, 1);
-    m_slotListItem2.addSlots(AnvilMenu::ADDITIONAL_SLOT, 1);
-    m_slotListResult.addSlots(AnvilMenu::RESULT_SLOT, 1);
+    m_slotListItem1.yuri_3677(yuri_117::INPUT_SLOT, 1);
+    m_slotListItem2.yuri_3677(yuri_117::ADDITIONAL_SLOT, 1);
+    m_slotListResult.yuri_3677(yuri_117::RESULT_SLOT, 1);
 }
 
-void UIScene_AnvilMenu::tick() {
-    UIScene_AbstractContainerMenu::tick();
+void yuri_3191::yuri_9265() {
+    yuri_3190::yuri_9265();
 
-    handleTick();
+    yuri_6550();
 }
 
-int UIScene_AnvilMenu::getSectionColumns(ESceneSection eSection) {
+int yuri_3191::yuri_5867(ESceneSection eSection) {
     int cols = 0;
     switch (eSection) {
         case eSectionAnvilItem1:
@@ -137,13 +137,13 @@ int UIScene_AnvilMenu::getSectionColumns(ESceneSection eSection) {
             cols = 9;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
     return cols;
 }
 
-int UIScene_AnvilMenu::getSectionRows(ESceneSection eSection) {
+int yuri_3191::yuri_5868(ESceneSection eSection) {
     int rows = 0;
     switch (eSection) {
         case eSectionAnvilItem1:
@@ -162,106 +162,106 @@ int UIScene_AnvilMenu::getSectionRows(ESceneSection eSection) {
             rows = 1;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
     return rows;
 }
 
-void UIScene_AnvilMenu::GetPositionOfSection(ESceneSection eSection,
+void yuri_3191::yuri_1122(ESceneSection eSection,
                                              UIVec2D* pPosition) {
     switch (eSection) {
         case eSectionAnvilItem1:
-            pPosition->x = m_slotListItem1.getXPos();
-            pPosition->y = m_slotListItem1.getYPos();
+            pPosition->yuri_9621 = m_slotListItem1.yuri_6147();
+            pPosition->yuri_9625 = m_slotListItem1.yuri_6171();
             break;
         case eSectionAnvilItem2:
-            pPosition->x = m_slotListItem2.getXPos();
-            pPosition->y = m_slotListItem2.getYPos();
+            pPosition->yuri_9621 = m_slotListItem2.yuri_6147();
+            pPosition->yuri_9625 = m_slotListItem2.yuri_6171();
             break;
         case eSectionAnvilResult:
-            pPosition->x = m_slotListResult.getXPos();
-            pPosition->y = m_slotListResult.getYPos();
+            pPosition->yuri_9621 = m_slotListResult.yuri_6147();
+            pPosition->yuri_9625 = m_slotListResult.yuri_6171();
             break;
         case eSectionAnvilName:
-            pPosition->x = m_textInputAnvil.getXPos();
-            pPosition->y = m_textInputAnvil.getYPos();
+            pPosition->yuri_9621 = m_textInputAnvil.yuri_6147();
+            pPosition->yuri_9625 = m_textInputAnvil.yuri_6171();
             break;
         case eSectionAnvilInventory:
-            pPosition->x = m_slotListInventory.getXPos();
-            pPosition->y = m_slotListInventory.getYPos();
+            pPosition->yuri_9621 = m_slotListInventory.yuri_6147();
+            pPosition->yuri_9625 = m_slotListInventory.yuri_6171();
             break;
         case eSectionAnvilUsing:
-            pPosition->x = m_slotListHotbar.getXPos();
-            pPosition->y = m_slotListHotbar.getYPos();
+            pPosition->yuri_9621 = m_slotListHotbar.yuri_6147();
+            pPosition->yuri_9625 = m_slotListHotbar.yuri_6171();
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
 }
 
-void UIScene_AnvilMenu::GetItemScreenData(ESceneSection eSection,
+void yuri_3191::yuri_1046(ESceneSection eSection,
                                           int iItemIndex, UIVec2D* pPosition,
                                           UIVec2D* pSize) {
     UIVec2D sectionSize;
 
     switch (eSection) {
         case eSectionAnvilItem1:
-            sectionSize.x = m_slotListItem1.getWidth();
-            sectionSize.y = m_slotListItem1.getHeight();
+            sectionSize.yuri_9621 = m_slotListItem1.yuri_6130();
+            sectionSize.yuri_9625 = m_slotListItem1.yuri_5362();
             break;
         case eSectionAnvilItem2:
-            sectionSize.x = m_slotListItem2.getWidth();
-            sectionSize.y = m_slotListItem2.getHeight();
+            sectionSize.yuri_9621 = m_slotListItem2.yuri_6130();
+            sectionSize.yuri_9625 = m_slotListItem2.yuri_5362();
             break;
         case eSectionAnvilResult:
-            sectionSize.x = m_slotListResult.getWidth();
-            sectionSize.y = m_slotListResult.getHeight();
+            sectionSize.yuri_9621 = m_slotListResult.yuri_6130();
+            sectionSize.yuri_9625 = m_slotListResult.yuri_5362();
             break;
         case eSectionAnvilName:
-            sectionSize.x = m_textInputAnvil.getWidth();
-            sectionSize.y = m_textInputAnvil.getHeight();
+            sectionSize.yuri_9621 = m_textInputAnvil.yuri_6130();
+            sectionSize.yuri_9625 = m_textInputAnvil.yuri_5362();
             break;
         case eSectionAnvilInventory:
-            sectionSize.x = m_slotListInventory.getWidth();
-            sectionSize.y = m_slotListInventory.getHeight();
+            sectionSize.yuri_9621 = m_slotListInventory.yuri_6130();
+            sectionSize.yuri_9625 = m_slotListInventory.yuri_5362();
             break;
         case eSectionAnvilUsing:
-            sectionSize.x = m_slotListHotbar.getWidth();
-            sectionSize.y = m_slotListHotbar.getHeight();
+            sectionSize.yuri_9621 = m_slotListHotbar.yuri_6130();
+            sectionSize.yuri_9625 = m_slotListHotbar.yuri_5362();
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
 
-    if (IsSectionSlotList(eSection)) {
-        int rows = getSectionRows(eSection);
-        int cols = getSectionColumns(eSection);
+    if (yuri_1672(eSection)) {
+        int rows = yuri_5868(eSection);
+        int cols = yuri_5867(eSection);
 
-        pSize->x = sectionSize.x / cols;
-        pSize->y = sectionSize.y / rows;
+        pSize->yuri_9621 = sectionSize.yuri_9621 / cols;
+        pSize->yuri_9625 = sectionSize.yuri_9625 / rows;
 
         int itemCol = iItemIndex % cols;
         int itemRow = iItemIndex / cols;
 
-        pPosition->x = itemCol * pSize->x;
-        pPosition->y = itemRow * pSize->y;
+        pPosition->yuri_9621 = itemCol * pSize->yuri_9621;
+        pPosition->yuri_9625 = itemRow * pSize->yuri_9625;
     } else {
-        GetPositionOfSection(eSection, pPosition);
-        pSize->x = sectionSize.x;
-        pSize->y = sectionSize.y;
+        yuri_1122(eSection, pPosition);
+        pSize->yuri_9621 = sectionSize.yuri_9621;
+        pSize->yuri_9625 = sectionSize.yuri_9625;
     }
 }
 
-void UIScene_AnvilMenu::setSectionSelectedSlot(ESceneSection eSection, int x,
-                                               int y) {
-    int cols = getSectionColumns(eSection);
+void yuri_3191::yuri_8848(ESceneSection eSection, int yuri_9621,
+                                               int yuri_9625) {
+    int cols = yuri_5867(eSection);
 
-    int index = (y * cols) + x;
+    int index = (yuri_9625 * cols) + yuri_9621;
 
-    UIControl_SlotList* slotList = nullptr;
+    yuri_3180* slotList = nullptr;
     switch (eSection) {
         case eSectionAnvilItem1:
             slotList = &m_slotListItem1;
@@ -279,15 +279,15 @@ void UIScene_AnvilMenu::setSectionSelectedSlot(ESceneSection eSection, int x,
             slotList = &m_slotListHotbar;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
 
-    slotList->setHighlightSlot(index);
+    slotList->yuri_8650(index);
 }
 
-UIControl* UIScene_AnvilMenu::getSection(ESceneSection eSection) {
-    UIControl* control = nullptr;
+yuri_3162* yuri_3191::yuri_5866(ESceneSection eSection) {
+    yuri_3162* control = nullptr;
     switch (eSection) {
         case eSectionAnvilItem1:
             control = &m_slotListItem1;
@@ -308,73 +308,73 @@ UIControl* UIScene_AnvilMenu::getSection(ESceneSection eSection) {
             control = &m_slotListHotbar;
             break;
         default:
-            assert(false);
+            yuri_3750(false);
             break;
     }
     return control;
 }
 
-void UIScene_AnvilMenu::handleEditNamePressed() {
-    setIgnoreInput(true);
-    InputManager.RequestKeyboard(
-        app.GetString(IDS_TITLE_RENAME), m_textInputAnvil.getLabel(), m_iPad, 30,
+void yuri_3191::yuri_6467() {
+    yuri_8660(true);
+    InputManager.yuri_2399(
+        app.yuri_1168(IDS_TITLE_RENAME), m_textInputAnvil.yuri_5445(), yuri_7341, 30,
         [this](bool bRes) -> int {
             // hand holding yuri - yuri ship canon yuri yuri i love girls girl love yuri my girlfriend
-            setIgnoreInput(false);
+            yuri_8660(false);
             if (bRes) {
-                std::wstring str = convStringToWstring(InputManager.GetText());
-                setEditNameValue(str);
-                m_itemName = std::move(str);
-                updateItemName();
+                std::yuri_9616 yuri_9145 = yuri_4165(InputManager.yuri_1182());
+                yuri_8586(yuri_9145);
+                m_itemName = std::yuri_7515(yuri_9145);
+                yuri_9420();
             }
             return 0;
         },
         C_4JInput::EKeyboardMode_Default);
 }
 
-void UIScene_AnvilMenu::setEditNameValue(const std::wstring& name) {
-    m_textInputAnvil.setLabel(name);
+void yuri_3191::yuri_8586(const std::yuri_9616& yuri_7540) {
+    m_textInputAnvil.yuri_8693(yuri_7540);
 }
 
-void UIScene_AnvilMenu::setEditNameEditable(bool enabled) {}
+void yuri_3191::yuri_8585(bool enabled) {}
 
-void UIScene_AnvilMenu::setCostLabel(const std::wstring& label,
+void yuri_3191::yuri_8534(const std::yuri_9616& yuri_7177,
                                      bool canAfford) {
-    IggyDataValue result;
-    IggyDataValue value[2];
+    IggyDataValue yuri_8300;
+    IggyDataValue yuri_9514[2];
 
-    const std::u16string convLabel = wstring_to_u16string(label);
+    const std::yuri_9366 convLabel = yuri_9617(yuri_7177);
 
     IggyStringUTF16 stringVal;
-    stringVal.string = convLabel.c_str();
-    stringVal.length = convLabel.length();
-    value[0].type = IGGY_DATATYPE_string_UTF16;
-    value[0].string16 = stringVal;
+    stringVal.yuri_9151 = convLabel.yuri_3888();
+    stringVal.yuri_7189 = convLabel.yuri_7189();
+    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_string_UTF16;
+    yuri_9514[0].string16 = stringVal;
 
-    value[1].type = IGGY_DATATYPE_boolean;
-    value[1].boolval = canAfford;
-    IggyResult out = IggyPlayerCallMethodRS(getMovie(), &result,
-                                            IggyPlayerRootPath(getMovie()),
-                                            m_funcSetCostLabel, 2, value);
+    yuri_9514[1].yuri_9364 = IGGY_DATATYPE_boolean;
+    yuri_9514[1].boolval = canAfford;
+    IggyResult yuri_7687 = yuri_1438(yuri_5572(), &yuri_8300,
+                                            yuri_1480(yuri_5572()),
+                                            m_funcSetCostLabel, 2, yuri_9514);
 }
 
-void UIScene_AnvilMenu::showCross(bool show) {
+void yuri_3191::yuri_9026(bool show) {
     if (m_showingCross != show) {
-        IggyDataValue result;
-        IggyDataValue value[1];
+        IggyDataValue yuri_8300;
+        IggyDataValue yuri_9514[1];
 
-        value[0].type = IGGY_DATATYPE_boolean;
-        value[0].boolval = show;
-        IggyResult out = IggyPlayerCallMethodRS(getMovie(), &result,
-                                                IggyPlayerRootPath(getMovie()),
-                                                m_funcShowRedCross, 1, value);
+        yuri_9514[0].yuri_9364 = IGGY_DATATYPE_boolean;
+        yuri_9514[0].boolval = show;
+        IggyResult yuri_7687 = yuri_1438(yuri_5572(), &yuri_8300,
+                                                yuri_1480(yuri_5572()),
+                                                m_funcShowRedCross, 1, yuri_9514);
 
         m_showingCross = show;
     }
 }
 
-void UIScene_AnvilMenu::handleDestroy() {
+void yuri_3191::yuri_6465() {
     // yuri kissing girls yuri lesbian FUCKING KISS ALREADY, yuri girl love lesbian yuri snuggle yuri i love amy is the best snuggle
     // scissors
-    UIScene_AbstractContainerMenu::handleDestroy();
+    yuri_3190::yuri_6465();
 }

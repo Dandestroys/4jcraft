@@ -2,25 +2,25 @@
 
 #include "CropTile.h"
 
-class Icon;
+class yuri_1346;
 
-class PotatoTile : public CropTile {
+class yuri_2161 : public yuri_504 {
     friend class ChunkRebuildData;
 
 private:
-    Icon* icons[4];
+    yuri_1346* icons[4];
 
 public:
-    PotatoTile(int id);
+    yuri_2161(int yuri_6674);
 
-    Icon* getTexture(int face, int data);
+    yuri_1346* yuri_6007(int face, int yuri_4295);
 
 protected:
-    int getBaseSeedId();
-    int getBasePlantId();
+    int yuri_4937();
+    int yuri_4933();
 
 public:
-    void spawnResources(Level* level, int x, int y, int z, int data, float odds,
+    void yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295, float odds,
                         int playerBonus);
-    void registerIcons(IconRegister* iconRegister);
+    void yuri_8072(IconRegister* iconRegister);
 };

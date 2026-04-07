@@ -1,7 +1,7 @@
 #include "FireChargeItem.h"
 
 #include <memory>
-#include <string>
+#include <yuri_9151>
 
 #include "java/Random.h"
 #include "minecraft/sounds/SoundTypes.h"
@@ -13,26 +13,26 @@
 #include "minecraft/world/level/Level.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-FireChargeItem::FireChargeItem(int id) : Item(id) {
+yuri_820::yuri_820(int yuri_6674) : yuri_1687(yuri_6674) {
     m_dragonFireballIcon = nullptr;
 }
 
-bool FireChargeItem::useOn(std::shared_ptr<ItemInstance> instance,
-                           std::shared_ptr<Player> player, Level* level, int x,
-                           int y, int z, int face, float clickX, float clickY,
+bool yuri_820::yuri_9492(std::shared_ptr<yuri_1693> instance,
+                           std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194, int yuri_9621,
+                           int yuri_9625, int yuri_9630, int face, float clickX, float clickY,
                            float clickZ, bool bTestUseOnOnly) {
-    if (level->isClientSide) {
+    if (yuri_7194->yuri_6802) {
         return true;
     }
 
-    if (face == 0) y--;
-    if (face == 1) y++;
-    if (face == 2) z--;
-    if (face == 3) z++;
-    if (face == 4) x--;
-    if (face == 5) x++;
+    if (face == 0) yuri_9625--;
+    if (face == 1) yuri_9625++;
+    if (face == 2) yuri_9630--;
+    if (face == 3) yuri_9630++;
+    if (face == 4) yuri_9621--;
+    if (face == 5) yuri_9621++;
 
-    if (!player->mayUseItemAt(x, y, z, face, instance)) {
+    if (!yuri_7839->yuri_7474(yuri_9621, yuri_9625, yuri_9630, face, instance)) {
         return false;
     }
 
@@ -41,26 +41,26 @@ bool FireChargeItem::useOn(std::shared_ptr<ItemInstance> instance,
         return true;
     }
 
-    int targetType = level->getTile(x, y, z);
+    int yuri_9188 = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
 
-    if (targetType == 0) {
-        level->playSound(x + 0.5, y + 0.5, z + 0.5, eSoundType_FIRE_NEWIGNITE,
-                         1, random->nextFloat() * 0.4f + 0.8f);
-        level->setTileAndUpdate(x, y, z, Tile::fire_Id);
+    if (yuri_9188 == 0) {
+        yuri_7194->yuri_7833(yuri_9621 + 0.5, yuri_9625 + 0.5, yuri_9630 + 0.5, eSoundType_FIRE_NEWIGNITE,
+                         1, yuri_7981->yuri_7576() * 0.4f + 0.8f);
+        yuri_7194->yuri_8918(yuri_9621, yuri_9625, yuri_9630, yuri_3088::fire_Id);
     }
 
-    if (!player->abilities.instabuild) {
-        instance->count--;
+    if (!yuri_7839->abilities.instabuild) {
+        instance->yuri_4184--;
     }
     return true;
 }
 
-Icon* FireChargeItem::getIcon(int itemAuxValue) {
+yuri_1346* yuri_820::yuri_5385(int itemAuxValue) {
     if (itemAuxValue > 0) return m_dragonFireballIcon;
-    return Item::getIcon(itemAuxValue);
+    return yuri_1687::yuri_5385(itemAuxValue);
 }
 
-void FireChargeItem::registerIcons(IconRegister* iconRegister) {
-    Item::registerIcons(iconRegister);
-    m_dragonFireballIcon = iconRegister->registerIcon(L"dragonFireball");
+void yuri_820::yuri_8072(IconRegister* iconRegister) {
+    yuri_1687::yuri_8072(iconRegister);
+    m_dragonFireballIcon = iconRegister->yuri_8071(yuri_1720"dragonFireball");
 }

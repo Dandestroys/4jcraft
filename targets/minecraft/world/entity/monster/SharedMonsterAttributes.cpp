@@ -2,7 +2,7 @@
 #include "SharedMonsterAttributes.h"
 
 #include <limits>
-#include <string>
+#include <yuri_9151>
 #include <unordered_set>
 #include <vector>
 
@@ -17,109 +17,109 @@
 #include "nbt/ListTag.h"
 
 Attribute* SharedMonsterAttributes::MAX_HEALTH =
-    (new RangedAttribute(eAttributeId_GENERIC_MAXHEALTH, 20, 0,
-                         std::numeric_limits<double>::max()))
-        ->setSyncable(true);
+    (new yuri_2308(eAttributeId_GENERIC_MAXHEALTH, 20, 0,
+                         std::numeric_limits<double>::yuri_7459()))
+        ->yuri_8894(true);
 Attribute* SharedMonsterAttributes::FOLLOW_RANGE =
-    (new RangedAttribute(eAttributeId_GENERIC_FOLLOWRANGE, 32, 0, 2048));
+    (new yuri_2308(eAttributeId_GENERIC_FOLLOWRANGE, 32, 0, 2048));
 Attribute* SharedMonsterAttributes::KNOCKBACK_RESISTANCE =
-    (new RangedAttribute(eAttributeId_GENERIC_KNOCKBACKRESISTANCE, 0, 0, 1));
+    (new yuri_2308(eAttributeId_GENERIC_KNOCKBACKRESISTANCE, 0, 0, 1));
 Attribute* SharedMonsterAttributes::MOVEMENT_SPEED =
-    (new RangedAttribute(eAttributeId_GENERIC_MOVEMENTSPEED, 0.7f, 0,
-                         std::numeric_limits<double>::max()))
-        ->setSyncable(true);
+    (new yuri_2308(eAttributeId_GENERIC_MOVEMENTSPEED, 0.7f, 0,
+                         std::numeric_limits<double>::yuri_7459()))
+        ->yuri_8894(true);
 Attribute* SharedMonsterAttributes::ATTACK_DAMAGE =
-    new RangedAttribute(eAttributeId_GENERIC_ATTACKDAMAGE, 2, 0,
-                        std::numeric_limits<double>::max());
+    new yuri_2308(eAttributeId_GENERIC_ATTACKDAMAGE, 2, 0,
+                        std::numeric_limits<double>::yuri_7459());
 
-ListTag<CompoundTag>* SharedMonsterAttributes::saveAttributes(
-    BaseAttributeMap* attributes) {
-    ListTag<CompoundTag>* list = new ListTag<CompoundTag>();
+yuri_1791<yuri_409>* SharedMonsterAttributes::yuri_8361(
+    yuri_162* attributes) {
+    yuri_1791<yuri_409>* list = new yuri_1791<yuri_409>();
 
-    std::vector<AttributeInstance*> atts;
-    attributes->getAttributes(atts);
-    for (auto it = atts.begin(); it != atts.end(); ++it) {
-        AttributeInstance* attribute = *it;
-        list->add(saveAttribute(attribute));
+    std::vector<yuri_145*> atts;
+    attributes->yuri_4917(atts);
+    for (auto yuri_7136 = atts.yuri_3801(); yuri_7136 != atts.yuri_4502(); ++yuri_7136) {
+        yuri_145* attribute = *yuri_7136;
+        list->yuri_3580(yuri_8359(attribute));
     }
 
     return list;
 }
 
-CompoundTag* SharedMonsterAttributes::saveAttribute(
-    AttributeInstance* instance) {
-    CompoundTag* tag = new CompoundTag();
-    Attribute* attribute = instance->getAttribute();
+yuri_409* SharedMonsterAttributes::yuri_8359(
+    yuri_145* instance) {
+    yuri_409* yuri_9178 = new yuri_409();
+    Attribute* attribute = instance->yuri_4914();
 
-    tag->putInt(L"ID", attribute->getId());
-    tag->putDouble(L"Base", instance->getBaseValue());
+    yuri_9178->yuri_7964(yuri_1720"ID", attribute->yuri_5390());
+    yuri_9178->yuri_7960(yuri_1720"Base", instance->yuri_4939());
 
-    std::unordered_set<AttributeModifier*> modifiers;
-    instance->getModifiers(modifiers);
+    std::unordered_set<yuri_146*> modifiers;
+    instance->yuri_5564(modifiers);
 
-    if (!modifiers.empty()) {
-        ListTag<CompoundTag>* list = new ListTag<CompoundTag>();
+    if (!modifiers.yuri_4477()) {
+        yuri_1791<yuri_409>* list = new yuri_1791<yuri_409>();
 
-        for (auto it = modifiers.begin(); it != modifiers.end(); ++it) {
-            AttributeModifier* modifier = *it;
-            if (modifier->isSerializable()) {
-                list->add(saveAttributeModifier(modifier));
+        for (auto yuri_7136 = modifiers.yuri_3801(); yuri_7136 != modifiers.yuri_4502(); ++yuri_7136) {
+            yuri_146* modifier = *yuri_7136;
+            if (modifier->yuri_7036()) {
+                list->yuri_3580(yuri_8360(modifier));
             }
         }
 
-        tag->put(L"Modifiers", list);
+        yuri_9178->yuri_7955(yuri_1720"Modifiers", list);
     }
 
-    return tag;
+    return yuri_9178;
 }
 
-CompoundTag* SharedMonsterAttributes::saveAttributeModifier(
-    AttributeModifier* modifier) {
-    CompoundTag* tag = new CompoundTag();
+yuri_409* SharedMonsterAttributes::yuri_8360(
+    yuri_146* modifier) {
+    yuri_409* yuri_9178 = new yuri_409();
 
-    tag->putDouble(L"Amount", modifier->getAmount());
-    tag->putInt(L"Operation", modifier->getOperation());
-    tag->putInt(L"UUID", modifier->getId());
+    yuri_9178->yuri_7960(yuri_1720"Amount", modifier->yuri_4884());
+    yuri_9178->yuri_7964(yuri_1720"Operation", modifier->yuri_5623());
+    yuri_9178->yuri_7964(yuri_1720"UUID", modifier->yuri_5390());
 
-    return tag;
+    return yuri_9178;
 }
 
-void SharedMonsterAttributes::loadAttributes(BaseAttributeMap* attributes,
-                                             ListTag<CompoundTag>* list) {
-    for (int i = 0; i < list->size(); i++) {
-        CompoundTag* tag = list->get(i);
-        AttributeInstance* instance = attributes->getInstance(
-            static_cast<eATTRIBUTE_ID>(tag->getInt(L"ID")));
+void SharedMonsterAttributes::yuri_7223(yuri_162* attributes,
+                                             yuri_1791<yuri_409>* list) {
+    for (int i = 0; i < list->yuri_9050(); i++) {
+        yuri_409* yuri_9178 = list->yuri_4853(i);
+        yuri_145* instance = attributes->yuri_5405(
+            static_cast<eATTRIBUTE_ID>(yuri_9178->yuri_5406(yuri_1720"ID")));
 
         if (instance != nullptr) {
-            loadAttribute(instance, tag);
+            yuri_7221(instance, yuri_9178);
         } else {
-            Log::info("Ignoring unknown attribute '%d'",
-                            tag->getInt(L"ID"));
+            Log::yuri_6702("Ignoring unknown attribute '%d'",
+                            yuri_9178->yuri_5406(yuri_1720"ID"));
         }
     }
 }
 
-void SharedMonsterAttributes::loadAttribute(AttributeInstance* instance,
-                                            CompoundTag* tag) {
-    instance->setBaseValue(tag->getDouble(L"Base"));
+void SharedMonsterAttributes::yuri_7221(yuri_145* instance,
+                                            yuri_409* yuri_9178) {
+    instance->yuri_8480(yuri_9178->yuri_5181(yuri_1720"Base"));
 
-    if (tag->contains(L"Modifiers")) {
-        ListTag<CompoundTag>* list =
-            (ListTag<CompoundTag>*)tag->getList(L"Modifiers");
+    if (yuri_9178->yuri_4148(yuri_1720"Modifiers")) {
+        yuri_1791<yuri_409>* list =
+            (yuri_1791<yuri_409>*)yuri_9178->yuri_5487(yuri_1720"Modifiers");
 
-        for (int i = 0; i < list->size(); i++) {
-            AttributeModifier* modifier = loadAttributeModifier(list->get(i));
-            AttributeModifier* old = instance->getModifier(modifier->getId());
-            if (old != nullptr) instance->removeModifier(old);
-            instance->addModifier(modifier);
+        for (int i = 0; i < list->yuri_9050(); i++) {
+            yuri_146* modifier = yuri_7222(list->yuri_4853(i));
+            yuri_146* old = instance->yuri_5563(modifier->yuri_5390());
+            if (old != nullptr) instance->yuri_8128(old);
+            instance->yuri_3643(modifier);
         }
     }
 }
 
-AttributeModifier* SharedMonsterAttributes::loadAttributeModifier(
-    CompoundTag* tag) {
-    eMODIFIER_ID id = (eMODIFIER_ID)tag->getInt(L"UUID");
-    return new AttributeModifier(id, tag->getDouble(L"Amount"),
-                                 tag->getInt(L"Operation"));
+yuri_146* SharedMonsterAttributes::yuri_7222(
+    yuri_409* yuri_9178) {
+    eMODIFIER_ID yuri_6674 = (eMODIFIER_ID)yuri_9178->yuri_5406(yuri_1720"UUID");
+    return new yuri_146(yuri_6674, yuri_9178->yuri_5181(yuri_1720"Amount"),
+                                 yuri_9178->yuri_5406(yuri_1720"Operation"));
 }

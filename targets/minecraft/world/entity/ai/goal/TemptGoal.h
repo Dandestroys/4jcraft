@@ -4,29 +4,29 @@
 
 #include "Goal.h"
 
-class PathfinderMob;
-class Player;
+class yuri_2096;
+class yuri_2126;
 
-class TemptGoal : public Goal {
+class yuri_3029 : public yuri_1217 {
 private:
-    PathfinderMob* mob;
+    yuri_2096* mob;
     double speedModifier;
     double px, py, pz, pRotX, pRotY;
-    std::weak_ptr<Player> player;
+    std::weak_ptr<yuri_2126> yuri_7839;
     int calmDown;
     bool _isRunning;
-    int itemId;
+    int yuri_7138;
     bool canScare;
     bool oldAvoidWater;
 
 public:
-    TemptGoal(PathfinderMob* mob, double speedModifier, int itemId,
+    yuri_3029(yuri_2096* mob, double speedModifier, int yuri_7138,
               bool canScare);
 
-    bool canUse();
-    bool canContinueToUse();
-    void start();
-    void stop();
-    void tick();
-    bool isRunning();
+    bool yuri_3967();
+    bool yuri_3916();
+    void yuri_9098();
+    void yuri_9133();
+    void yuri_9265();
+    bool yuri_7020();
 };

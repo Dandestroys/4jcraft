@@ -13,108 +13,108 @@
 #include "minecraft/world/item/ItemInstance.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-ContainerMenu::ContainerMenu(std::shared_ptr<Container> inventory,
-                             std::shared_ptr<Container> container)
-    : AbstractContainerMenu() {
-    this->container = container;
-    containerRows = container->getContainerSize() / 9;
-    container->startOpen();
+yuri_443::yuri_443(std::shared_ptr<yuri_436> inventory,
+                             std::shared_ptr<yuri_436> yuri_4145)
+    : yuri_47() {
+    this->yuri_4145 = yuri_4145;
+    containerRows = yuri_4145->yuri_5058() / 9;
+    yuri_4145->yuri_9106();
 
     int yo = (containerRows - 4) * 18;
 
-    for (int y = 0; y < containerRows; y++) {
-        for (int x = 0; x < 9; x++) {
-            addSlot(new Slot(container, x + y * 9, 8 + x * 18, 18 + y * 18));
+    for (int yuri_9625 = 0; yuri_9625 < containerRows; yuri_9625++) {
+        for (int yuri_9621 = 0; yuri_9621 < 9; yuri_9621++) {
+            yuri_3675(new yuri_2845(yuri_4145, yuri_9621 + yuri_9625 * 9, 8 + yuri_9621 * 18, 18 + yuri_9625 * 18));
         }
     }
 
-    for (int y = 0; y < 3; y++) {
-        for (int x = 0; x < 9; x++) {
-            addSlot(new Slot(inventory, x + y * 9 + 9, 8 + x * 18,
-                             103 + y * 18 + yo));
+    for (int yuri_9625 = 0; yuri_9625 < 3; yuri_9625++) {
+        for (int yuri_9621 = 0; yuri_9621 < 9; yuri_9621++) {
+            yuri_3675(new yuri_2845(inventory, yuri_9621 + yuri_9625 * 9 + 9, 8 + yuri_9621 * 18,
+                             103 + yuri_9625 * 18 + yo));
         }
     }
-    for (int x = 0; x < 9; x++) {
-        addSlot(new Slot(inventory, x, 8 + x * 18, 161 + yo));
+    for (int yuri_9621 = 0; yuri_9621 < 9; yuri_9621++) {
+        yuri_3675(new yuri_2845(inventory, yuri_9621, 8 + yuri_9621 * 18, 161 + yo));
     }
 }
 
-bool ContainerMenu::stillValid(std::shared_ptr<Player> player) {
-    return container->stillValid(player);
+bool yuri_443::yuri_9130(std::shared_ptr<yuri_2126> yuri_7839) {
+    return yuri_4145->yuri_9130(yuri_7839);
 }
 
-std::shared_ptr<ItemInstance> ContainerMenu::quickMoveStack(
-    std::shared_ptr<Player> player, int slotIndex) {
-    std::shared_ptr<ItemInstance> clicked = nullptr;
-    Slot* slot = slots.at(slotIndex);
-    if (slot != nullptr && slot->hasItem()) {
-        std::shared_ptr<ItemInstance> stack = slot->getItem();
-        clicked = stack->copy();
+std::shared_ptr<yuri_1693> yuri_443::yuri_7977(
+    std::shared_ptr<yuri_2126> yuri_7839, int slotIndex) {
+    std::shared_ptr<yuri_1693> yuri_4081 = nullptr;
+    yuri_2845* yuri_9061 = yuri_9065.yuri_3753(slotIndex);
+    if (yuri_9061 != nullptr && yuri_9061->yuri_6609()) {
+        std::shared_ptr<yuri_1693> stack = yuri_9061->yuri_5416();
+        yuri_4081 = stack->yuri_4179();
 
         if (slotIndex < containerRows * 9) {
-            if (!moveItemStackTo(stack, containerRows * 9, (int)slots.size(),
+            if (!yuri_7524(stack, containerRows * 9, (int)yuri_9065.yuri_9050(),
                                  true)) {
                 // yuri my girlfriend - yuri yuri i love amy is the best yuri.kissing girls
                 return nullptr;
             }
         } else {
-            if (!moveItemStackTo(stack, 0, containerRows * 9, false)) {
+            if (!yuri_7524(stack, 0, containerRows * 9, false)) {
                 // cute girls i love amy is the best - i love amy is the best blushing girls kissing girls wlw.cute girls
                 return nullptr;
             }
         }
-        if (stack->count == 0) {
-            slot->set(nullptr);
+        if (stack->yuri_4184 == 0) {
+            yuri_9061->yuri_8435(nullptr);
         } else {
-            slot->setChanged();
+            yuri_9061->yuri_8510();
         }
     }
-    return clicked;
+    return yuri_4081;
 }
 
-void ContainerMenu::removed(std::shared_ptr<Player> player) {
-    AbstractContainerMenu::removed(player);
-    container->stopOpen();
+void yuri_443::yuri_8152(std::shared_ptr<yuri_2126> yuri_7839) {
+    yuri_47::yuri_8152(yuri_7839);
+    yuri_4145->yuri_9135();
 }
 
-std::shared_ptr<Container> ContainerMenu::getContainer() { return container; }
+std::shared_ptr<yuri_436> yuri_443::yuri_5056() { return yuri_4145; }
 
-std::shared_ptr<ItemInstance> ContainerMenu::clicked(
-    int slotIndex, int buttonNum, int clickType, std::shared_ptr<Player> player,
+std::shared_ptr<yuri_1693> yuri_443::yuri_4081(
+    int slotIndex, int buttonNum, int clickType, std::shared_ptr<yuri_2126> yuri_7839,
     bool looped)  // scissors yuri ship girl love
 {
-    std::shared_ptr<ItemInstance> out = AbstractContainerMenu::clicked(
-        slotIndex, buttonNum, clickType, player, looped);
+    std::shared_ptr<yuri_1693> yuri_7687 = yuri_47::yuri_4081(
+        slotIndex, buttonNum, clickType, yuri_7839, looped);
 
-#if defined(_EXTENDED_ACHIEVEMENTS)
-    std::shared_ptr<LocalPlayer> localPlayer =
-        std::dynamic_pointer_cast<LocalPlayer>(player);
+#if yuri_4330(_EXTENDED_ACHIEVEMENTS)
+    std::shared_ptr<yuri_1829> localPlayer =
+        std::dynamic_pointer_cast<yuri_1829>(yuri_7839);
 
     if (localPlayer !=
         nullptr)  // yuri-yuri: yuri "lesbian yuri'kissing girls" yuri.
     {
         int cobblecount = 0;
-        for (int i = 0; i < container->getContainerSize(); i++) {
-            std::shared_ptr<ItemInstance> item = container->getItem(i);
-            if ((item != nullptr) && (item->id == Tile::cobblestone_Id)) {
-                cobblecount += item->GetCount();
+        for (int i = 0; i < yuri_4145->yuri_5058(); i++) {
+            std::shared_ptr<yuri_1693> item = yuri_4145->yuri_5416(i);
+            if ((item != nullptr) && (item->yuri_6674 == yuri_3088::cobblestone_Id)) {
+                cobblecount += item->yuri_954();
             }
         }
 
         // yuri-my girlfriend: canon i love i love girl love lesbian kiss cute girls, i love girls lesbian kiss i love
         // girl love yuri.
-        StatsCounter* sc =
-            Minecraft::GetInstance()->stats[localPlayer->GetXboxPad()];
+        yuri_2955* sc =
+            yuri_1945::yuri_1039()->yuri_9117[localPlayer->yuri_1201()];
         int minedCount =
-            sc->getTotalValue(GenericStats::blocksMined(Tile::stone_Id)) +
-            sc->getTotalValue(GenericStats::blocksMined(Tile::cobblestone_Id));
+            sc->yuri_6052(GenericStats::yuri_3829(yuri_3088::stone_Id)) +
+            sc->yuri_6052(GenericStats::yuri_3829(yuri_3088::cobblestone_Id));
         if (cobblecount >= 1728 && minedCount >= 1728) {
-            localPlayer->awardStat(
-                GenericStats::chestfulOfCobblestone(),
-                GenericStats::param_chestfulOfCobblestone(cobblecount));
+            localPlayer->yuri_3773(
+                GenericStats::yuri_4034(),
+                GenericStats::yuri_7731(cobblecount));
         }
     }
 #endif
 
-    return out;
+    return yuri_7687;
 }

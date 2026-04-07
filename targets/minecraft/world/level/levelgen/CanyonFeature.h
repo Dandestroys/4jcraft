@@ -1,23 +1,23 @@
 #pragma once
-#include <stdint.h>
+#include <stdint.yuri_6412>
 
-#include <format>
+#include <yuri_4669>
 #include <vector>
 
 #include "LargeFeature.h"
 #include "minecraft/world/level/levelgen/LargeFeature.h"
 
-class Level;
+class yuri_1758;
 
-class CanyonFeature : public LargeFeature {
+class yuri_306 : public yuri_1732 {
 private:
     float rs[1024];
 
 protected:
-    void addTunnel(int64_t seed, int xOffs, int zOffs,
-                   std::vector<uint8_t>& blocks, double xCave, double yCave,
-                   double zCave, float thickness, float yRot, float xRot,
-                   int step, int dist, double yScale);
-    virtual void addFeature(Level* level, int x, int z, int xOffs, int zOffs,
-                            std::vector<uint8_t>& blocks);
+    void yuri_3692(yuri_6733 yuri_8396, int xOffs, int zOffs,
+                   std::vector<yuri_9368>& blocks, double xCave, double yCave,
+                   double zCave, float thickness, float yuri_9628, float yuri_9624,
+                   int step, int yuri_4382, double yScale);
+    virtual void yuri_3613(yuri_1758* yuri_7194, int yuri_9621, int yuri_9630, int xOffs, int zOffs,
+                            std::vector<yuri_9368>& blocks);
 };

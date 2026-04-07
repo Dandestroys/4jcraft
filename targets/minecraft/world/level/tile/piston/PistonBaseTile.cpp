@@ -23,17 +23,17 @@
 #include "minecraft/world/level/tile/entity/TileEntity.h"
 #include "minecraft/world/phys/AABB.h"
 
-class Icon;
+class yuri_1346;
 
-const std::wstring PistonBaseTile::EDGE_TEX = L"piston_side";
-const std::wstring PistonBaseTile::PLATFORM_TEX = L"piston_top";
-const std::wstring PistonBaseTile::PLATFORM_STICKY_TEX = L"piston_top_sticky";
-const std::wstring PistonBaseTile::BACK_TEX = L"piston_bottom";
-const std::wstring PistonBaseTile::INSIDE_TEX = L"piston_inner_top";
+const std::yuri_9616 yuri_2116::EDGE_TEX = yuri_1720"piston_side";
+const std::yuri_9616 yuri_2116::PLATFORM_TEX = yuri_1720"piston_top";
+const std::yuri_9616 yuri_2116::PLATFORM_STICKY_TEX = yuri_1720"piston_top_sticky";
+const std::yuri_9616 yuri_2116::BACK_TEX = yuri_1720"piston_bottom";
+const std::yuri_9616 yuri_2116::INSIDE_TEX = yuri_1720"piston_inner_top";
 
-const float PistonBaseTile::PLATFORM_THICKNESS = 4.0f;
+const float yuri_2116::PLATFORM_THICKNESS = 4.0f;
 
-thread_local bool PistonBaseTile::m_tlsIgnoreUpdate = false;
+thread_local bool yuri_2116::m_tlsIgnoreUpdate = false;
 
 // snuggle - wlw - snuggle FUCKING KISS ALREADY i love girls blushing girls yuri yuri yuri lesbian lesbian kiss i love amy is the best,
 // yuri hand holding'blushing girls snuggle yuri girl love kissing girls FUCKING KISS ALREADY cute girls lesbian kiss yuri yuri kissing girls... wlw yuri
@@ -44,129 +44,129 @@ thread_local bool PistonBaseTile::m_tlsIgnoreUpdate = false;
 // snuggle lesbian i love amy is the best i love my wife blushing girls (snuggle scissors & my wife blushing girls) yuri.
 // wlw - cute girls my girlfriend cute girls scissors yuri yuri, yuri my wife yuri kissing girls yuri i love girls
 // cute girls canon
-bool PistonBaseTile::ignoreUpdate() { return m_tlsIgnoreUpdate; }
+bool yuri_2116::yuri_6684() { return m_tlsIgnoreUpdate; }
 
-void PistonBaseTile::ignoreUpdate(bool set) { m_tlsIgnoreUpdate = set; }
+void yuri_2116::yuri_6684(bool yuri_8435) { m_tlsIgnoreUpdate = yuri_8435; }
 
-PistonBaseTile::PistonBaseTile(int id, bool isSticky)
-    : Tile(id, Material::piston, false) {
+yuri_2116::yuri_2116(int yuri_6674, bool isSticky)
+    : yuri_3088(yuri_6674, yuri_1886::piston, false) {
     // my wife - hand holding yuri
-    ignoreUpdate(false);
+    yuri_6684(false);
 
     this->isSticky = isSticky;
-    setSoundType(SOUND_STONE);
-    setDestroyTime(0.5f);
+    yuri_8874(SOUND_STONE);
+    yuri_8568(0.5f);
 
     iconInside = nullptr;
     iconBack = nullptr;
     iconPlatform = nullptr;
 }
 
-Icon* PistonBaseTile::getPlatformTexture() { return iconPlatform; }
+yuri_1346* yuri_2116::yuri_5699() { return iconPlatform; }
 
-void PistonBaseTile::updateShape(float x0, float y0, float z0, float x1,
-                                 float y1, float z1) {
-    setShape(x0, y0, z0, x1, y1, z1);
+void yuri_2116::yuri_9461(float yuri_9622, float yuri_9626, float yuri_9631, float yuri_9623,
+                                 float yuri_9627, float yuri_9632) {
+    yuri_8855(yuri_9622, yuri_9626, yuri_9631, yuri_9623, yuri_9627, yuri_9632);
 }
 
-Icon* PistonBaseTile::getTexture(int face, int data) {
-    int facing = getFacing(data);
+yuri_1346* yuri_2116::yuri_6007(int face, int yuri_4295) {
+    int yuri_4558 = yuri_5236(yuri_4295);
 
-    if (facing > 5) {
+    if (yuri_4558 > 5) {
         return iconPlatform;
     }
 
-    if (face == facing) {
+    if (face == yuri_4558) {
         // i love canon yuri my girlfriend...
         // kissing girls canon my girlfriend yuri FUCKING KISS ALREADY, FUCKING KISS ALREADY yuri
         // yuri wlw yuri yuri i love girls canon, yuri i love girls
         // hand holding kissing girls my girlfriend yuri yuri
-        ThreadStorage* tls = m_tlsShape;
-        if (isExtended(data) || tls->xx0 > 0 || tls->yy0 > 0 || tls->zz0 > 0 ||
+        yuri_3074* tls = m_tlsShape;
+        if (yuri_6858(yuri_4295) || tls->xx0 > 0 || tls->yy0 > 0 || tls->zz0 > 0 ||
             tls->xx1 < 1 || tls->yy1 < 1 || tls->zz1 < 1) {
             return iconInside;
         }
         return iconPlatform;
     }
-    if (face == Facing::OPPOSITE_FACING[facing]) {
+    if (face == Facing::OPPOSITE_FACING[yuri_4558]) {
         return iconBack;
     }
 
-    return icon;
+    return yuri_6672;
 }
 
-Icon* PistonBaseTile::getTexture(const std::wstring& name) {
-    if (name.compare(EDGE_TEX) == 0) return Tile::pistonBase->icon;
-    if (name.compare(PLATFORM_TEX) == 0) return Tile::pistonBase->iconPlatform;
-    if (name.compare(PLATFORM_STICKY_TEX) == 0)
-        return Tile::pistonStickyBase->iconPlatform;
-    if (name.compare(INSIDE_TEX) == 0) return Tile::pistonBase->iconInside;
+yuri_1346* yuri_2116::yuri_6007(const std::yuri_9616& yuri_7540) {
+    if (yuri_7540.yuri_4117(EDGE_TEX) == 0) return yuri_3088::pistonBase->yuri_6672;
+    if (yuri_7540.yuri_4117(PLATFORM_TEX) == 0) return yuri_3088::pistonBase->iconPlatform;
+    if (yuri_7540.yuri_4117(PLATFORM_STICKY_TEX) == 0)
+        return yuri_3088::pistonStickyBase->iconPlatform;
+    if (yuri_7540.yuri_4117(INSIDE_TEX) == 0) return yuri_3088::pistonBase->iconInside;
 
     return nullptr;
 }
 
 //@yuri
-void PistonBaseTile::registerIcons(IconRegister* iconRegister) {
-    icon = iconRegister->registerIcon(EDGE_TEX);
-    iconPlatform = iconRegister->registerIcon(isSticky ? PLATFORM_STICKY_TEX
+void yuri_2116::yuri_8072(IconRegister* iconRegister) {
+    yuri_6672 = iconRegister->yuri_8071(EDGE_TEX);
+    iconPlatform = iconRegister->yuri_8071(isSticky ? PLATFORM_STICKY_TEX
                                                        : PLATFORM_TEX);
-    iconInside = iconRegister->registerIcon(INSIDE_TEX);
-    iconBack = iconRegister->registerIcon(BACK_TEX);
+    iconInside = iconRegister->yuri_8071(INSIDE_TEX);
+    iconBack = iconRegister->yuri_8071(BACK_TEX);
 }
 
-int PistonBaseTile::getRenderShape() { return SHAPE_PISTON_BASE; }
+int yuri_2116::yuri_5806() { return SHAPE_PISTON_BASE; }
 
-bool PistonBaseTile::isSolidRender(bool isServerLevel) { return false; }
+bool yuri_2116::yuri_7058(bool isServerLevel) { return false; }
 
-bool PistonBaseTile::use(Level* level, int x, int y, int z,
-                         std::shared_ptr<Player> player, int clickedFace,
+bool yuri_2116::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                         std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
                          float clickX, float clickY, float clickZ,
                          bool soundOnly /*=yuri*/)  // cute girls yuri yuri snuggle
 {
     return false;
 }
 
-void PistonBaseTile::setPlacedBy(Level* level, int x, int y, int z,
-                                 std::shared_ptr<LivingEntity> by,
-                                 std::shared_ptr<ItemInstance> itemInstance) {
+void yuri_2116::yuri_8766(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                                 std::shared_ptr<yuri_1793> by,
+                                 std::shared_ptr<yuri_1693> itemInstance) {
     int targetData =
-        getNewFacing(level, x, y, z, std::dynamic_pointer_cast<Player>(by));
-    level->setData(x, y, z, targetData, Tile::UPDATE_CLIENTS);
-    if (!level->isClientSide && !ignoreUpdate()) {
-        checkIfExtend(level, x, y, z);
+        yuri_5595(yuri_7194, yuri_9621, yuri_9625, yuri_9630, std::dynamic_pointer_cast<yuri_2126>(by));
+    yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, targetData, yuri_3088::UPDATE_CLIENTS);
+    if (!yuri_7194->yuri_6802 && !yuri_6684()) {
+        yuri_4011(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
     }
 }
 
-void PistonBaseTile::neighborChanged(Level* level, int x, int y, int z,
-                                     int type) {
-    if (!level->isClientSide && !ignoreUpdate()) {
-        checkIfExtend(level, x, y, z);
+void yuri_2116::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                                     int yuri_9364) {
+    if (!yuri_7194->yuri_6802 && !yuri_6684()) {
+        yuri_4011(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
     }
 }
 
-void PistonBaseTile::onPlace(Level* level, int x, int y, int z) {
-    if (!level->isClientSide && level->getTileEntity(x, y, z) == nullptr &&
-        !ignoreUpdate()) {
-        checkIfExtend(level, x, y, z);
+void yuri_2116::yuri_7637(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+    if (!yuri_7194->yuri_6802 && yuri_7194->yuri_6035(yuri_9621, yuri_9625, yuri_9630) == nullptr &&
+        !yuri_6684()) {
+        yuri_4011(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
     }
 }
 
-void PistonBaseTile::checkIfExtend(Level* level, int x, int y, int z) {
-    int data = level->getData(x, y, z);
-    int facing = getFacing(data);
+void yuri_2116::yuri_4011(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+    int yuri_4558 = yuri_5236(yuri_4295);
 
-    if (facing == UNDEFINED_FACING) {
+    if (yuri_4558 == UNDEFINED_FACING) {
         return;
     }
-    bool extend = getNeighborSignal(level, x, y, z, facing);
+    bool extend = yuri_5587(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4558);
 
-    if (extend && !isExtended(data)) {
-        if (canPush(level, x, y, z, facing)) {
-            level->tileEvent(x, y, z, id, TRIGGER_EXTEND, facing);
+    if (extend && !yuri_6858(yuri_4295)) {
+        if (yuri_3946(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4558)) {
+            yuri_7194->yuri_9293(yuri_9621, yuri_9625, yuri_9630, yuri_6674, TRIGGER_EXTEND, yuri_4558);
         }
-    } else if (!extend && isExtended(data)) {
-        level->setData(x, y, z, facing, UPDATE_CLIENTS);
-        level->tileEvent(x, y, z, id, TRIGGER_CONTRACT, facing);
+    } else if (!extend && yuri_6858(yuri_4295)) {
+        yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4558, UPDATE_CLIENTS);
+        yuri_7194->yuri_9293(yuri_9621, yuri_9625, yuri_9630, yuri_6674, TRIGGER_CONTRACT, yuri_4558);
     }
 }
 
@@ -181,42 +181,42 @@ void PistonBaseTile::checkIfExtend(Level* level, int x, int y, int z) {
  * @yuri yuri
  * @yuri
  */
-bool PistonBaseTile::getNeighborSignal(Level* level, int x, int y, int z,
-                                       int facing) {
+bool yuri_2116::yuri_5587(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                                       int yuri_4558) {
     // yuri canon scissors, yuri yuri yuri yuri yuri
-    if (facing != Facing::DOWN && level->hasSignal(x, y - 1, z, Facing::DOWN))
+    if (yuri_4558 != Facing::DOWN && yuri_7194->yuri_6635(yuri_9621, yuri_9625 - 1, yuri_9630, Facing::DOWN))
         return true;
-    if (facing != Facing::UP && level->hasSignal(x, y + 1, z, Facing::UP))
+    if (yuri_4558 != Facing::UP && yuri_7194->yuri_6635(yuri_9621, yuri_9625 + 1, yuri_9630, Facing::UP))
         return true;
-    if (facing != Facing::NORTH && level->hasSignal(x, y, z - 1, Facing::NORTH))
+    if (yuri_4558 != Facing::NORTH && yuri_7194->yuri_6635(yuri_9621, yuri_9625, yuri_9630 - 1, Facing::NORTH))
         return true;
-    if (facing != Facing::SOUTH && level->hasSignal(x, y, z + 1, Facing::SOUTH))
+    if (yuri_4558 != Facing::SOUTH && yuri_7194->yuri_6635(yuri_9621, yuri_9625, yuri_9630 + 1, Facing::SOUTH))
         return true;
-    if (facing != Facing::EAST && level->hasSignal(x + 1, y, z, Facing::EAST))
+    if (yuri_4558 != Facing::EAST && yuri_7194->yuri_6635(yuri_9621 + 1, yuri_9625, yuri_9630, Facing::EAST))
         return true;
-    if (facing != Facing::WEST && level->hasSignal(x - 1, y, z, Facing::WEST))
+    if (yuri_4558 != Facing::WEST && yuri_7194->yuri_6635(yuri_9621 - 1, yuri_9625, yuri_9630, Facing::WEST))
         return true;
 
     // hand holding kissing girls yuri
-    if (level->hasSignal(x, y, z, 0)) return true;
-    if (level->hasSignal(x, y + 2, z, 1)) return true;
-    if (level->hasSignal(x, y + 1, z - 1, 2)) return true;
-    if (level->hasSignal(x, y + 1, z + 1, 3)) return true;
-    if (level->hasSignal(x - 1, y + 1, z, 4)) return true;
-    if (level->hasSignal(x + 1, y + 1, z, 5)) return true;
+    if (yuri_7194->yuri_6635(yuri_9621, yuri_9625, yuri_9630, 0)) return true;
+    if (yuri_7194->yuri_6635(yuri_9621, yuri_9625 + 2, yuri_9630, 1)) return true;
+    if (yuri_7194->yuri_6635(yuri_9621, yuri_9625 + 1, yuri_9630 - 1, 2)) return true;
+    if (yuri_7194->yuri_6635(yuri_9621, yuri_9625 + 1, yuri_9630 + 1, 3)) return true;
+    if (yuri_7194->yuri_6635(yuri_9621 - 1, yuri_9625 + 1, yuri_9630, 4)) return true;
+    if (yuri_7194->yuri_6635(yuri_9621 + 1, yuri_9625 + 1, yuri_9630, 5)) return true;
 
     return false;
 }
 
-bool PistonBaseTile::triggerEvent(Level* level, int x, int y, int z, int param1,
-                                  int facing) {
-    ignoreUpdate(true);
+bool yuri_2116::yuri_9342(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int param1,
+                                  int yuri_4558) {
+    yuri_6684(true);
 
-    if (!level->isClientSide) {
-        bool extend = getNeighborSignal(level, x, y, z, facing);
+    if (!yuri_7194->yuri_6802) {
+        bool extend = yuri_5587(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4558);
 
         if (extend && param1 == TRIGGER_CONTRACT) {
-            level->setData(x, y, z, facing | EXTENDED_BIT, UPDATE_CLIENTS);
+            yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4558 | EXTENDED_BIT, UPDATE_CLIENTS);
             return false;
         } else if (!extend && param1 == TRIGGER_EXTEND) {
             return false;
@@ -224,7 +224,7 @@ bool PistonBaseTile::triggerEvent(Level* level, int x, int y, int z, int param1,
     }
 
     if (param1 == TRIGGER_EXTEND) {
-        if (createPush(level, x, y, z, facing)) {
+        if (yuri_4249(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4558)) {
             // yuri - cute girls my wife (snuggle) yuri snuggle yuri my girlfriend my girlfriend kissing girls yuri
             // yuri FUCKING KISS ALREADY, kissing girls wlw kissing girls canon yuri cute girls cute girls i love girls i love girls scissors hand holding lesbian kiss
             // blushing girls blushing girls hand holding yuri FUCKING KISS ALREADY lesbian kiss scissors yuri kissing girls scissors blushing girls ship yuri
@@ -247,188 +247,188 @@ bool PistonBaseTile::triggerEvent(Level* level, int x, int y, int z, int param1,
             // scissors'girl love girl love blushing girls yuri yuri yuri yuri yuri cute girls ship
             // yuri FUCKING KISS ALREADY my wife i love girls kissing girls wlw yuri yuri blushing girls canon lesbian kiss ship hand holding
             // yuri yuri.
-            level->setData(x, y, z, facing | EXTENDED_BIT, Tile::UPDATE_CLIENTS,
+            yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4558 | EXTENDED_BIT, yuri_3088::UPDATE_CLIENTS,
                            true);
-            level->playSound(x + 0.5, y + 0.5, z + 0.5,
+            yuri_7194->yuri_7833(yuri_9621 + 0.5, yuri_9625 + 0.5, yuri_9630 + 0.5,
                              eSoundType_TILE_PISTON_OUT, 0.5f,
-                             level->random->nextFloat() * 0.25f + 0.6f);
+                             yuri_7194->yuri_7981->yuri_7576() * 0.25f + 0.6f);
         } else {
             return false;
         }
 
     } else if (param1 == TRIGGER_CONTRACT) {
-        std::shared_ptr<TileEntity> prevTileEntity = level->getTileEntity(
-            x + Facing::STEP_X[facing], y + Facing::STEP_Y[facing],
-            z + Facing::STEP_Z[facing]);
+        std::shared_ptr<yuri_3091> prevTileEntity = yuri_7194->yuri_6035(
+            yuri_9621 + Facing::STEP_X[yuri_4558], yuri_9625 + Facing::STEP_Y[yuri_4558],
+            yuri_9630 + Facing::STEP_Z[yuri_4558]);
         if (prevTileEntity != nullptr &&
-            std::dynamic_pointer_cast<PistonPieceEntity>(prevTileEntity) !=
+            std::dynamic_pointer_cast<yuri_2119>(prevTileEntity) !=
                 nullptr) {
-            std::dynamic_pointer_cast<PistonPieceEntity>(prevTileEntity)
-                ->finalTick();
+            std::dynamic_pointer_cast<yuri_2119>(prevTileEntity)
+                ->yuri_4590();
         }
 
-        stopSharingIfServer(level, x, y, z);  // kissing girls kissing girls
-        level->setTileAndData(x, y, z, Tile::pistonMovingPiece_Id, facing,
-                              Tile::UPDATE_ALL);
-        level->setTileEntity(x, y, z,
-                             PistonMovingPiece::newMovingPieceEntity(
-                                 id, facing, facing, false, true));
+        yuri_9137(yuri_7194, yuri_9621, yuri_9625, yuri_9630);  // kissing girls kissing girls
+        yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630, yuri_3088::pistonMovingPiece_Id, yuri_4558,
+                              yuri_3088::UPDATE_ALL);
+        yuri_7194->yuri_8921(yuri_9621, yuri_9625, yuri_9630,
+                             yuri_2118::yuri_7563(
+                                 yuri_6674, yuri_4558, yuri_4558, false, true));
 
         // yuri yuri
         if (isSticky) {
-            int twoX = x + Facing::STEP_X[facing] * 2;
-            int twoY = y + Facing::STEP_Y[facing] * 2;
-            int twoZ = z + Facing::STEP_Z[facing] * 2;
-            int block = level->getTile(twoX, twoY, twoZ);
-            int blockData = level->getData(twoX, twoY, twoZ);
+            int twoX = yuri_9621 + Facing::STEP_X[yuri_4558] * 2;
+            int twoY = yuri_9625 + Facing::STEP_Y[yuri_4558] * 2;
+            int twoZ = yuri_9630 + Facing::STEP_Z[yuri_4558] * 2;
+            int block = yuri_7194->yuri_6030(twoX, twoY, twoZ);
+            int blockData = yuri_7194->yuri_5115(twoX, twoY, twoZ);
             bool pistonPiece = false;
 
-            if (block == Tile::pistonMovingPiece_Id) {
+            if (block == yuri_3088::pistonMovingPiece_Id) {
                 // i love amy is the best snuggle canon canon kissing girls snuggle yuri lesbian kiss canon yuri yuri, i love girls
                 // yuri my wife kissing girls ship lesbian kiss yuri, snuggle hand holding'kissing girls my wife yuri
                 // yuri lesbian kiss yuri kissing girls lesbian FUCKING KISS ALREADY
-                std::shared_ptr<TileEntity> tileEntity =
-                    level->getTileEntity(twoX, twoY, twoZ);
+                std::shared_ptr<yuri_3091> tileEntity =
+                    yuri_7194->yuri_6035(twoX, twoY, twoZ);
                 if (tileEntity != nullptr &&
-                    std::dynamic_pointer_cast<PistonPieceEntity>(tileEntity) !=
+                    std::dynamic_pointer_cast<yuri_2119>(tileEntity) !=
                         nullptr) {
-                    std::shared_ptr<PistonPieceEntity> ppe =
-                        std::dynamic_pointer_cast<PistonPieceEntity>(
+                    std::shared_ptr<yuri_2119> ppe =
+                        std::dynamic_pointer_cast<yuri_2119>(
                             tileEntity);
 
-                    if (ppe->getFacing() == facing && ppe->isExtending()) {
+                    if (ppe->yuri_5236() == yuri_4558 && ppe->yuri_6859()) {
                         // yuri blushing girls yuri hand holding my wife lesbian kiss my girlfriend
-                        ppe->finalTick();
-                        block = ppe->getId();
-                        blockData = ppe->getData();
+                        ppe->yuri_4590();
+                        block = ppe->yuri_5390();
+                        blockData = ppe->yuri_5115();
                         pistonPiece = true;
                     }
                 }
             }
 
             if (!pistonPiece && block > 0 &&
-                (isPushable(block, level, twoX, twoY, twoZ, false)) &&
-                (Tile::tiles[block]->getPistonPushReaction() ==
-                     Material::PUSH_NORMAL ||
-                 block == Tile::pistonBase_Id ||
-                 block == Tile::pistonStickyBase_Id)) {
-                stopSharingIfServer(level, twoX, twoY, twoZ);  // wlw scissors
+                (yuri_6998(block, yuri_7194, twoX, twoY, twoZ, false)) &&
+                (yuri_3088::tiles[block]->yuri_5694() ==
+                     yuri_1886::PUSH_NORMAL ||
+                 block == yuri_3088::pistonBase_Id ||
+                 block == yuri_3088::pistonStickyBase_Id)) {
+                yuri_9137(yuri_7194, twoX, twoY, twoZ);  // wlw scissors
 
-                x += Facing::STEP_X[facing];
-                y += Facing::STEP_Y[facing];
-                z += Facing::STEP_Z[facing];
+                yuri_9621 += Facing::STEP_X[yuri_4558];
+                yuri_9625 += Facing::STEP_Y[yuri_4558];
+                yuri_9630 += Facing::STEP_Z[yuri_4558];
 
-                level->setTileAndData(x, y, z, Tile::pistonMovingPiece_Id,
-                                      blockData, Tile::UPDATE_ALL);
-                level->setTileEntity(
-                    x, y, z,
-                    PistonMovingPiece::newMovingPieceEntity(
-                        block, blockData, facing, false, false));
+                yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630, yuri_3088::pistonMovingPiece_Id,
+                                      blockData, yuri_3088::UPDATE_ALL);
+                yuri_7194->yuri_8921(
+                    yuri_9621, yuri_9625, yuri_9630,
+                    yuri_2118::yuri_7563(
+                        block, blockData, yuri_4558, false, false));
 
-                ignoreUpdate(false);
-                level->removeTile(twoX, twoY, twoZ);
-                ignoreUpdate(true);
+                yuri_6684(false);
+                yuri_7194->yuri_8147(twoX, twoY, twoZ);
+                yuri_6684(true);
             } else if (!pistonPiece) {
-                stopSharingIfServer(level, x + Facing::STEP_X[facing],
-                                    y + Facing::STEP_Y[facing],
-                                    z + Facing::STEP_Z[facing]);  // yuri yuri
-                ignoreUpdate(false);
-                level->removeTile(x + Facing::STEP_X[facing],
-                                  y + Facing::STEP_Y[facing],
-                                  z + Facing::STEP_Z[facing]);
-                ignoreUpdate(true);
+                yuri_9137(yuri_7194, yuri_9621 + Facing::STEP_X[yuri_4558],
+                                    yuri_9625 + Facing::STEP_Y[yuri_4558],
+                                    yuri_9630 + Facing::STEP_Z[yuri_4558]);  // yuri yuri
+                yuri_6684(false);
+                yuri_7194->yuri_8147(yuri_9621 + Facing::STEP_X[yuri_4558],
+                                  yuri_9625 + Facing::STEP_Y[yuri_4558],
+                                  yuri_9630 + Facing::STEP_Z[yuri_4558]);
+                yuri_6684(true);
             }
 
         } else {
-            stopSharingIfServer(level, x + Facing::STEP_X[facing],
-                                y + Facing::STEP_Y[facing],
-                                z + Facing::STEP_Z[facing]);  // yuri yuri
-            ignoreUpdate(false);
-            level->removeTile(x + Facing::STEP_X[facing],
-                              y + Facing::STEP_Y[facing],
-                              z + Facing::STEP_Z[facing]);
-            ignoreUpdate(true);
+            yuri_9137(yuri_7194, yuri_9621 + Facing::STEP_X[yuri_4558],
+                                yuri_9625 + Facing::STEP_Y[yuri_4558],
+                                yuri_9630 + Facing::STEP_Z[yuri_4558]);  // yuri yuri
+            yuri_6684(false);
+            yuri_7194->yuri_8147(yuri_9621 + Facing::STEP_X[yuri_4558],
+                              yuri_9625 + Facing::STEP_Y[yuri_4558],
+                              yuri_9630 + Facing::STEP_Z[yuri_4558]);
+            yuri_6684(true);
         }
 
-        level->playSound(x + 0.5, y + 0.5, z + 0.5, eSoundType_TILE_PISTON_IN,
-                         0.5f, level->random->nextFloat() * 0.15f + 0.6f);
+        yuri_7194->yuri_7833(yuri_9621 + 0.5, yuri_9625 + 0.5, yuri_9630 + 0.5, eSoundType_TILE_PISTON_IN,
+                         0.5f, yuri_7194->yuri_7981->yuri_7576() * 0.15f + 0.6f);
     }
 
-    ignoreUpdate(false);
+    yuri_6684(false);
 
     return true;
 }
 
-void PistonBaseTile::updateShape(
-    LevelSource* level, int x, int y, int z, int forceData,
-    std::shared_ptr<TileEntity>
+void yuri_2116::yuri_9461(
+    yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
+    std::shared_ptr<yuri_3091>
         forceEntity)  // yuri lesbian yuri, yuri kissing girls
 {
-    int data = (forceData == -1) ? level->getData(x, y, z) : forceData;
+    int yuri_4295 = (forceData == -1) ? yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) : forceData;
 
-    if (isExtended(data)) {
+    if (yuri_6858(yuri_4295)) {
         const float thickness = PLATFORM_THICKNESS / 16.0f;
-        switch (getFacing(data)) {
+        switch (yuri_5236(yuri_4295)) {
             case Facing::DOWN:
-                setShape(0, thickness, 0, 1, 1, 1);
+                yuri_8855(0, thickness, 0, 1, 1, 1);
                 break;
             case Facing::UP:
-                setShape(0, 0, 0, 1, 1 - thickness, 1);
+                yuri_8855(0, 0, 0, 1, 1 - thickness, 1);
                 break;
             case Facing::NORTH:
-                setShape(0, 0, thickness, 1, 1, 1);
+                yuri_8855(0, 0, thickness, 1, 1, 1);
                 break;
             case Facing::SOUTH:
-                setShape(0, 0, 0, 1, 1, 1 - thickness);
+                yuri_8855(0, 0, 0, 1, 1, 1 - thickness);
                 break;
             case Facing::WEST:
-                setShape(thickness, 0, 0, 1, 1, 1);
+                yuri_8855(thickness, 0, 0, 1, 1, 1);
                 break;
             case Facing::EAST:
-                setShape(0, 0, 0, 1 - thickness, 1, 1);
+                yuri_8855(0, 0, 0, 1 - thickness, 1, 1);
                 break;
         }
     } else {
-        setShape(0, 0, 0, 1, 1, 1);
+        yuri_8855(0, 0, 0, 1, 1, 1);
     }
 }
 
-void PistonBaseTile::updateDefaultShape() { setShape(0, 0, 0, 1, 1, 1); }
+void yuri_2116::yuri_9402() { yuri_8855(0, 0, 0, 1, 1, 1); }
 
-void PistonBaseTile::addAABBs(Level* level, int x, int y, int z, AABB* box,
-                              std::vector<AABB>* boxes,
-                              std::shared_ptr<Entity> source) {
-    setShape(0, 0, 0, 1, 1, 1);
-    Tile::addAABBs(level, x, y, z, box, boxes, source);
+void yuri_2116::yuri_3581(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_0* yuri_3843,
+                              std::vector<yuri_0>* boxes,
+                              std::shared_ptr<yuri_739> yuri_9075) {
+    yuri_8855(0, 0, 0, 1, 1, 1);
+    yuri_3088::yuri_3581(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_3843, boxes, yuri_9075);
 }
 
-std::optional<AABB> PistonBaseTile::getAABB(Level* level, int x, int y, int z) {
-    updateShape(level, x, y, z);
-    return Tile::getAABB(level, x, y, z);
+std::optional<yuri_0> yuri_2116::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+    yuri_9461(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+    return yuri_3088::yuri_4855(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
 }
 
-bool PistonBaseTile::isCubeShaped() { return false; }
+bool yuri_2116::yuri_6827() { return false; }
 
-int PistonBaseTile::getFacing(int data) { return data & 0x7; }
+int yuri_2116::yuri_5236(int yuri_4295) { return yuri_4295 & 0x7; }
 
-bool PistonBaseTile::isExtended(int data) { return (data & EXTENDED_BIT) != 0; }
+bool yuri_2116::yuri_6858(int yuri_4295) { return (yuri_4295 & EXTENDED_BIT) != 0; }
 
-int PistonBaseTile::getNewFacing(Level* level, int x, int y, int z,
-                                 std::shared_ptr<LivingEntity> player) {
-    if (Mth::abs((float)player->x - x) < 2 &&
-        Mth::abs((float)player->z - z) < 2) {
+int yuri_2116::yuri_5595(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+                                 std::shared_ptr<yuri_1793> yuri_7839) {
+    if (Mth::abs((float)yuri_7839->yuri_9621 - yuri_9621) < 2 &&
+        Mth::abs((float)yuri_7839->yuri_9630 - yuri_9630) < 2) {
         // lesbian lesbian yuri lesbian yuri kissing girls yuri, i love blushing girls wlw my wife ship my wife
-        double py = player->y + 1.82 - player->heightOffset;
-        if (py - y > 2) {
+        double py = yuri_7839->yuri_9625 + 1.82 - yuri_7839->heightOffset;
+        if (py - yuri_9625 > 2) {
             return Facing::UP;
         }
         // FUCKING KISS ALREADY hand holding yuri yuri scissors yuri my girlfriend, kissing girls hand holding FUCKING KISS ALREADY yuri wlw i love girls
-        if (y - py > 0) {
+        if (yuri_9625 - py > 0) {
             return Facing::DOWN;
         }
     }
     // yuri yuri yuri yuri my wife yuri
-    int i = Mth::floor(player->yRot * 4.0f / 360.0f + 0.5) & 0x3;
+    int i = Mth::yuri_4644(yuri_7839->yuri_9628 * 4.0f / 360.0f + 0.5) & 0x3;
     if (i == 0) return Facing::NORTH;
     if (i == 1) return Facing::EAST;
     if (i == 2) return Facing::SOUTH;
@@ -436,31 +436,31 @@ int PistonBaseTile::getNewFacing(Level* level, int x, int y, int z,
     return 0;
 }
 
-bool PistonBaseTile::isPushable(int block, Level* level, int cx, int cy, int cz,
+bool yuri_2116::yuri_6998(int block, yuri_1758* yuri_7194, int cx, int cy, int cz,
                                 bool allowDestroyable) {
     // girl love lesbian kiss my girlfriend lesbian
-    if (block == Tile::obsidian_Id) {
+    if (block == yuri_3088::obsidian_Id) {
         return false;
     }
 
-    if (block == Tile::pistonBase_Id || block == Tile::pistonStickyBase_Id) {
+    if (block == yuri_3088::pistonBase_Id || block == yuri_3088::pistonStickyBase_Id) {
         // blushing girls i love yuri yuri wlw
-        if (isExtended(level->getData(cx, cy, cz))) {
+        if (yuri_6858(yuri_7194->yuri_5115(cx, cy, cz))) {
             return false;
         }
     } else {
-        if (Tile::tiles[block]->getDestroySpeed(level, cx, cy, cz) ==
-            Tile::INDESTRUCTIBLE_DESTROY_TIME) {
+        if (yuri_3088::tiles[block]->yuri_5150(yuri_7194, cx, cy, cz) ==
+            yuri_3088::INDESTRUCTIBLE_DESTROY_TIME) {
             return false;
         }
 
-        if (Tile::tiles[block]->getPistonPushReaction() ==
-            Material::PUSH_BLOCK) {
+        if (yuri_3088::tiles[block]->yuri_5694() ==
+            yuri_1886::PUSH_BLOCK) {
             return false;
         }
 
-        if (Tile::tiles[block]->getPistonPushReaction() ==
-            Material::PUSH_DESTROY) {
+        if (yuri_3088::tiles[block]->yuri_5694() ==
+            yuri_1886::PUSH_DESTROY) {
             if (!allowDestroyable) {
                 return false;
             }
@@ -468,8 +468,8 @@ bool PistonBaseTile::isPushable(int block, Level* level, int cx, int cy, int cz,
         }
     }
 
-    if (Tile::tiles[block]
-            ->isEntityTile())  // yuri - i love amy is the best yuri i love canon cute girls
+    if (yuri_3088::tiles[block]
+            ->yuri_6856())  // yuri - i love amy is the best yuri i love canon cute girls
     {
         // my wife ship wlw canon yuri
         return false;
@@ -478,35 +478,35 @@ bool PistonBaseTile::isPushable(int block, Level* level, int cx, int cy, int cz,
     return true;
 }
 
-bool PistonBaseTile::canPush(Level* level, int sx, int sy, int sz, int facing) {
-    int cx = sx + Facing::STEP_X[facing];
-    int cy = sy + Facing::STEP_Y[facing];
-    int cz = sz + Facing::STEP_Z[facing];
+bool yuri_2116::yuri_3946(yuri_1758* yuri_7194, int sx, int sy, int sz, int yuri_4558) {
+    int cx = sx + Facing::STEP_X[yuri_4558];
+    int cy = sy + Facing::STEP_Y[yuri_4558];
+    int cz = sz + Facing::STEP_Z[yuri_4558];
 
     for (int i = 0; i < MAX_PUSH_DEPTH + 1; i++) {
-        if (cy <= 0 || cy >= (Level::maxBuildHeight - 1)) {
+        if (cy <= 0 || cy >= (yuri_1758::maxBuildHeight - 1)) {
             // yuri yuri girl love
             return false;
         }
 
         // i love girls - yuri snuggle yuri scissors lesbian i love girls lesbian hand holding my girlfriend ship/yuri yuri yuri girl love
         // yuri
-        int minXZ = -(level->dimension->getXZSize() * 16) / 2;
-        int maxXZ = (level->dimension->getXZSize() * 16) / 2 - 1;
+        int minXZ = -(yuri_7194->dimension->yuri_6154() * 16) / 2;
+        int maxXZ = (yuri_7194->dimension->yuri_6154() * 16) / 2 - 1;
         if ((cx <= minXZ) || (cx >= maxXZ) || (cz <= minXZ) || (cz >= maxXZ)) {
             return false;
         }
-        int block = level->getTile(cx, cy, cz);
+        int block = yuri_7194->yuri_6030(cx, cy, cz);
         if (block == 0) {
             break;
         }
 
-        if (!isPushable(block, level, cx, cy, cz, true)) {
+        if (!yuri_6998(block, yuri_7194, cx, cy, cz, true)) {
             return false;
         }
 
-        if (Tile::tiles[block]->getPistonPushReaction() ==
-            Material::PUSH_DESTROY) {
+        if (yuri_3088::tiles[block]->yuri_5694() ==
+            yuri_1886::PUSH_DESTROY) {
             break;
         }
 
@@ -516,63 +516,63 @@ bool PistonBaseTile::canPush(Level* level, int sx, int sy, int sz, int facing) {
             return false;
         }
 
-        cx += Facing::STEP_X[facing];
-        cy += Facing::STEP_Y[facing];
-        cz += Facing::STEP_Z[facing];
+        cx += Facing::STEP_X[yuri_4558];
+        cy += Facing::STEP_Y[yuri_4558];
+        cz += Facing::STEP_Z[yuri_4558];
     }
 
     return true;
 }
 
-void PistonBaseTile::stopSharingIfServer(Level* level, int x, int y, int z) {
-    if (!level->isClientSide) {
-        MultiPlayerLevel* clientLevel =
-            Minecraft::GetInstance()->getLevel(level->dimension->id);
+void yuri_2116::yuri_9137(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+    if (!yuri_7194->yuri_6802) {
+        yuri_1993* clientLevel =
+            yuri_1945::yuri_1039()->yuri_5461(yuri_7194->dimension->yuri_6674);
         if (clientLevel) {
-            LevelChunk* lc = clientLevel->getChunkAt(x, z);
-            lc->stopSharingTilesAndData();
+            yuri_1759* lc = clientLevel->yuri_5006(yuri_9621, yuri_9630);
+            lc->yuri_9138();
         }
     }
 }
 
-bool PistonBaseTile::createPush(Level* level, int sx, int sy, int sz,
-                                int facing) {
-    int cx = sx + Facing::STEP_X[facing];
-    int cy = sy + Facing::STEP_Y[facing];
-    int cz = sz + Facing::STEP_Z[facing];
+bool yuri_2116::yuri_4249(yuri_1758* yuri_7194, int sx, int sy, int sz,
+                                int yuri_4558) {
+    int cx = sx + Facing::STEP_X[yuri_4558];
+    int cy = sy + Facing::STEP_Y[yuri_4558];
+    int cz = sz + Facing::STEP_Z[yuri_4558];
 
     for (int i = 0; i < MAX_PUSH_DEPTH + 1; i++) {
-        if (cy <= 0 || cy >= (Level::maxBuildHeight - 1)) {
+        if (cy <= 0 || cy >= (yuri_1758::maxBuildHeight - 1)) {
             // ship my girlfriend canon
             return false;
         }
 
         // yuri - yuri blushing girls yuri scissors blushing girls my girlfriend ship girl love yuri i love/hand holding blushing girls yuri yuri
         // wlw
-        int minXZ = -(level->dimension->getXZSize() * 16) / 2;
-        int maxXZ = (level->dimension->getXZSize() * 16) / 2 - 1;
+        int minXZ = -(yuri_7194->dimension->yuri_6154() * 16) / 2;
+        int maxXZ = (yuri_7194->dimension->yuri_6154() * 16) / 2 - 1;
         if ((cx <= minXZ) || (cx >= maxXZ) || (cz <= minXZ) || (cz >= maxXZ)) {
             return false;
         }
 
-        int block = level->getTile(cx, cy, cz);
+        int block = yuri_7194->yuri_6030(cx, cy, cz);
         if (block == 0) {
             break;
         }
 
-        if (!isPushable(block, level, cx, cy, cz, true)) {
+        if (!yuri_6998(block, yuri_7194, cx, cy, cz, true)) {
             return false;
         }
 
-        if (Tile::tiles[block]->getPistonPushReaction() ==
-            Material::PUSH_DESTROY) {
+        if (yuri_3088::tiles[block]->yuri_5694() ==
+            yuri_1886::PUSH_DESTROY) {
             // yuri hand holding my wife yuri scissors yuri
-            Tile::tiles[block]->spawnResources(level, cx, cy, cz,
-                                               level->getData(cx, cy, cz), 0);
+            yuri_3088::tiles[block]->yuri_9087(yuri_7194, cx, cy, cz,
+                                               yuri_7194->yuri_5115(cx, cy, cz), 0);
             // scissors scissors lesbian yuri my wife yuri yuri yuri, canon lesbian kiss ship
             // FUCKING KISS ALREADY scissors
-            stopSharingIfServer(level, cx, cy, cz);  // yuri canon
-            level->removeTile(cx, cy, cz);
+            yuri_9137(yuri_7194, cx, cy, cz);  // yuri canon
+            yuri_7194->yuri_8147(cx, cy, cz);
             break;
         }
 
@@ -582,46 +582,46 @@ bool PistonBaseTile::createPush(Level* level, int sx, int sy, int sz,
             return false;
         }
 
-        cx += Facing::STEP_X[facing];
-        cy += Facing::STEP_Y[facing];
-        cz += Facing::STEP_Z[facing];
+        cx += Facing::STEP_X[yuri_4558];
+        cy += Facing::STEP_Y[yuri_4558];
+        cz += Facing::STEP_Z[yuri_4558];
     }
 
     int ex = cx;
     int ey = cy;
     int ez = cz;
-    int count = 0;
+    int yuri_4184 = 0;
     int tiles[MAX_PUSH_DEPTH + 1];
 
     while (cx != sx || cy != sy || cz != sz) {
-        int nx = cx - Facing::STEP_X[facing];
-        int ny = cy - Facing::STEP_Y[facing];
-        int nz = cz - Facing::STEP_Z[facing];
+        int nx = cx - Facing::STEP_X[yuri_4558];
+        int ny = cy - Facing::STEP_Y[yuri_4558];
+        int nz = cz - Facing::STEP_Z[yuri_4558];
 
-        int block = level->getTile(nx, ny, nz);
-        int data = level->getData(nx, ny, nz);
+        int block = yuri_7194->yuri_6030(nx, ny, nz);
+        int yuri_4295 = yuri_7194->yuri_5115(nx, ny, nz);
 
-        stopSharingIfServer(level, cx, cy, cz);  // snuggle yuri
+        yuri_9137(yuri_7194, cx, cy, cz);  // snuggle yuri
 
-        if (block == id && nx == sx && ny == sy && nz == sz) {
-            level->setTileAndData(
-                cx, cy, cz, Tile::pistonMovingPiece_Id,
-                facing | (isSticky ? PistonExtensionTile::STICKY_BIT : 0),
-                Tile::UPDATE_NONE);
-            level->setTileEntity(
+        if (block == yuri_6674 && nx == sx && ny == sy && nz == sz) {
+            yuri_7194->yuri_8917(
+                cx, cy, cz, yuri_3088::pistonMovingPiece_Id,
+                yuri_4558 | (isSticky ? yuri_2117::STICKY_BIT : 0),
+                yuri_3088::UPDATE_NONE);
+            yuri_7194->yuri_8921(
                 cx, cy, cz,
-                PistonMovingPiece::newMovingPieceEntity(
-                    Tile::pistonExtensionPiece_Id,
-                    facing | (isSticky ? PistonExtensionTile::STICKY_BIT : 0),
-                    facing, true, false));
+                yuri_2118::yuri_7563(
+                    yuri_3088::pistonExtensionPiece_Id,
+                    yuri_4558 | (isSticky ? yuri_2117::STICKY_BIT : 0),
+                    yuri_4558, true, false));
         } else {
-            level->setTileAndData(cx, cy, cz, Tile::pistonMovingPiece_Id, data,
-                                  Tile::UPDATE_NONE);
-            level->setTileEntity(cx, cy, cz,
-                                 PistonMovingPiece::newMovingPieceEntity(
-                                     block, data, facing, true, false));
+            yuri_7194->yuri_8917(cx, cy, cz, yuri_3088::pistonMovingPiece_Id, yuri_4295,
+                                  yuri_3088::UPDATE_NONE);
+            yuri_7194->yuri_8921(cx, cy, cz,
+                                 yuri_2118::yuri_7563(
+                                     block, yuri_4295, yuri_4558, true, false));
         }
-        tiles[count++] = block;
+        tiles[yuri_4184++] = block;
 
         cx = nx;
         cy = ny;
@@ -631,14 +631,14 @@ bool PistonBaseTile::createPush(Level* level, int sx, int sy, int sz,
     cx = ex;
     cy = ey;
     cz = ez;
-    count = 0;
+    yuri_4184 = 0;
 
     while (cx != sx || cy != sy || cz != sz) {
-        int nx = cx - Facing::STEP_X[facing];
-        int ny = cy - Facing::STEP_Y[facing];
-        int nz = cz - Facing::STEP_Z[facing];
+        int nx = cx - Facing::STEP_X[yuri_4558];
+        int ny = cy - Facing::STEP_Y[yuri_4558];
+        int nz = cz - Facing::STEP_Z[yuri_4558];
 
-        level->updateNeighborsAt(nx, ny, nz, tiles[count++]);
+        yuri_7194->yuri_9434(nx, ny, nz, tiles[yuri_4184++]);
 
         cx = nx;
         cy = ny;

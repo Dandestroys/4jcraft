@@ -1,5 +1,5 @@
 #ifndef D3D11STUBS_H
-#define D3D11STUBS_H
+#yuri_4327 D3D11STUBS_H
 
 #pragma once
 

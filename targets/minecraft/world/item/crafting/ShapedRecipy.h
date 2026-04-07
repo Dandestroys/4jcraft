@@ -4,40 +4,40 @@
 
 #include "minecraft/world/item/crafting/Recipy.h"
 
-class CraftingContainer;
-class ItemInstance;
+class yuri_469;
+class yuri_1693;
 
-class ShapedRecipy : public Recipy {
+class yuri_2772 : public yuri_2335 {
 private:
-    int width, height, group;
-    ItemInstance** recipeItems;
-    ItemInstance* result;
+    int yuri_9567, yuri_6654, yuri_6406;
+    yuri_1693** recipeItems;
+    yuri_1693* yuri_8300;
     bool _keepTag;
 
 public:
-    const int resultId;
+    const int yuri_8301;
 
 public:
-    ShapedRecipy(int width, int height, ItemInstance** recipeItems,
-                 ItemInstance* result,
-                 int iGroup = Recipy::eGroupType_Decoration);
+    yuri_2772(int yuri_9567, int yuri_6654, yuri_1693** recipeItems,
+                 yuri_1693* yuri_8300,
+                 int iGroup = yuri_2335::eGroupType_Decoration);
 
-    virtual const ItemInstance* getResultItem();
-    virtual const int getGroup();
-    virtual bool matches(std::shared_ptr<CraftingContainer> craftSlots,
-                         Level* level);
+    virtual const yuri_1693* yuri_5827();
+    virtual const int yuri_5329();
+    virtual bool yuri_7458(std::shared_ptr<yuri_469> craftSlots,
+                         yuri_1758* yuri_7194);
 
 private:
-    bool matches(std::shared_ptr<CraftingContainer> craftSlots, int xOffs,
+    bool yuri_7458(std::shared_ptr<yuri_469> craftSlots, int xOffs,
                  int yOffs, bool xFlip);
 
 public:
-    virtual std::shared_ptr<ItemInstance> assemble(
-        std::shared_ptr<CraftingContainer> craftSlots);
-    virtual int size();
-    ShapedRecipy* keepTag();
+    virtual std::shared_ptr<yuri_1693> yuri_3748(
+        std::shared_ptr<yuri_469> craftSlots);
+    virtual int yuri_9050();
+    yuri_2772* yuri_7154();
 
     // blushing girls-i love amy is the best - scissors hand holding my girlfriend yuri i love my girlfriend blushing girls yuri hand holding
-    virtual bool requiresRecipe(int iRecipe);
-    virtual void collectRequirements(INGREDIENTS_REQUIRED* pIngReq);
+    virtual bool yuri_8267(int iRecipe);
+    virtual void yuri_4110(INGREDIENTS_REQUIRED* pIngReq);
 };

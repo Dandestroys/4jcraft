@@ -1,8 +1,8 @@
 #pragma once
 
-class Scoreboard;
+class yuri_2523;
 
 class ScoreHolder {
 public:
-    virtual Scoreboard* getScoreboard() = 0;
+    virtual yuri_2523* yuri_5859() = 0;
 };

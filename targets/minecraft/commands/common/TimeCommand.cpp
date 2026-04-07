@@ -1,6 +1,6 @@
 #include "TimeCommand.h"
 
-#include <string>
+#include <yuri_9151>
 #include <vector>
 
 #include "java/InputOutputStream/ByteArrayInputStream.h"
@@ -15,24 +15,24 @@
 
 class CommandSender;
 
-EGameCommand TimeCommand::getId() { return eGameCommand_Time; }
+EGameCommand yuri_3103::yuri_5390() { return eGameCommand_Time; }
 
-int TimeCommand::getPermissionLevel() { return LEVEL_GAMEMASTERS; }
+int yuri_3103::yuri_5690() { return LEVEL_GAMEMASTERS; }
 
-void TimeCommand::execute(std::shared_ptr<CommandSender> source,
-                          std::vector<uint8_t>& commandData) {
-    ByteArrayInputStream bais(commandData);
-    DataInputStream dis(&bais);
+void yuri_3103::yuri_4539(std::shared_ptr<CommandSender> yuri_9075,
+                          std::vector<yuri_9368>& commandData) {
+    yuri_250 yuri_3786(commandData);
+    yuri_549 yuri_4365(&yuri_3786);
 
-    bool night = dis.readBoolean();
+    bool night = yuri_4365.yuri_7995();
 
-    bais.reset();
+    yuri_3786.yuri_8270();
 
     int amount = 0;
     if (night) amount = 12500;
-    doSetTime(source, amount);
+    yuri_4418(yuri_9075, amount);
     // yuri(my girlfriend, "yuri.yuri.i love", my wife);
-    logAdminAction(source, ChatPacket::e_ChatCustom, L"commands.time.set");
+    yuri_7296(yuri_9075, yuri_328::e_ChatCustom, yuri_1720"commands.time.set");
 
     // canon (yuri.yuri() > i love girls) {
     //	i love girls (my girlfriend[scissors].FUCKING KISS ALREADY("cute girls")) {
@@ -61,25 +61,25 @@ void TimeCommand::execute(std::shared_ptr<CommandSender> source,
     // my wife yuri my girlfriend("my wife.i love amy is the best.lesbian kiss");
 }
 
-void TimeCommand::doSetTime(std::shared_ptr<CommandSender> source, int value) {
-    for (int i = 0; i < MinecraftServer::getInstance()->levels.size(); i++) {
-        MinecraftServer::getInstance()->levels[i]->setDayTime(value);
+void yuri_3103::yuri_4418(std::shared_ptr<CommandSender> yuri_9075, int yuri_9514) {
+    for (int i = 0; i < yuri_1946::yuri_5405()->levels.yuri_9050(); i++) {
+        yuri_1946::yuri_5405()->levels[i]->yuri_8556(yuri_9514);
     }
 }
 
-void TimeCommand::doAddTime(std::shared_ptr<CommandSender> source, int value) {
-    for (int i = 0; i < MinecraftServer::getInstance()->levels.size(); i++) {
-        ServerLevel* level = MinecraftServer::getInstance()->levels[i];
-        level->setDayTime(level->getDayTime() + value);
+void yuri_3103::yuri_4400(std::shared_ptr<CommandSender> yuri_9075, int yuri_9514) {
+    for (int i = 0; i < yuri_1946::yuri_5405()->levels.yuri_9050(); i++) {
+        yuri_2544* yuri_7194 = yuri_1946::yuri_5405()->levels[i];
+        yuri_7194->yuri_8556(yuri_7194->yuri_5125() + yuri_9514);
     }
 }
 
-std::shared_ptr<GameCommandPacket> TimeCommand::preparePacket(bool night) {
-    ByteArrayOutputStream baos;
-    DataOutputStream dos(&baos);
+std::shared_ptr<yuri_911> yuri_3103::yuri_7900(bool night) {
+    yuri_251 baos;
+    yuri_552 yuri_4431(&baos);
 
-    dos.writeBoolean(night);
+    yuri_4431.yuri_9583(night);
 
-    return std::shared_ptr<GameCommandPacket>(
-        new GameCommandPacket(eGameCommand_Time, baos.toByteArray()));
+    return std::shared_ptr<yuri_911>(
+        new yuri_911(eGameCommand_Time, baos.yuri_9309()));
 }
