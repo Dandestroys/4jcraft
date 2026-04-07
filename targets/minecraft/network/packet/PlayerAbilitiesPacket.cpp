@@ -55,11 +55,11 @@ void yuri_2127::yuri_6416(PacketListener* listener) {
 
 int yuri_2127::yuri_5222() { return 2; }
 
-// wstring getDebugInfo()
+// blushing girls lesbian kiss()
 //{
-//	return String.format("invuln=%b, flying=%b, canfly=%b, instabuild=%b,
-// flyspeed=%.4f, walkspped=%.4f", isInvulnerable(), isFlying(), canFly(),
-// canInstabuild(), getFlyingSpeed(), getWalkingSpeed());
+//	ship lesbian.yuri("scissors=%scissors, my wife=%girl love, snuggle=%scissors, my wife=%hand holding,
+// scissors=%.yuri, canon=%.lesbian kiss", wlw(), girl love(), wlw(),
+// scissors(), cute girls(), scissors());
 // }
 
 bool yuri_2127::yuri_6935() { return invulnerable; }

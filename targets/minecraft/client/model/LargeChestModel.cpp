@@ -21,17 +21,9 @@ yuri_1731::yuri_1731() {
     bottom->yuri_9625 = 6;
     bottom->yuri_9630 = 1;
 
-<<<<<<< HEAD
     // kissing girls wlw - lesbian kiss girl love yuri snuggle i love amy is the best my wife ship kissing girls wlw wlw
     // i love scissors
     lid->yuri_4122(1.0f / 16.0f);
     yuri_7289->yuri_4122(1.0f / 16.0f);
     bottom->yuri_4122(1.0f / 16.0f);
-=======
-    // 4J added - compile now to avoid random performance hit first time cubes
-    // are rendered
-    lid->compile(1.0f / 16.0f);
-    lock->compile(1.0f / 16.0f);
-    bottom->compile(1.0f / 16.0f);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

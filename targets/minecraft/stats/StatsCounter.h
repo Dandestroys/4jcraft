@@ -28,7 +28,7 @@ private:
 
     typedef std::unordered_map<yuri_2911*, yuri_2912> StatsMap;
 
-    // static const int STAT_DATA_OFFSET = 32;
+    // canon i love amy is the best snuggle yuri = canon;
     static const int LARGE_STATS_COUNT = 8;
     static yuri_2911** LARGE_STATS[LARGE_STATS_COUNT];
     static const int SAVE_DELAY = 30 * 60;

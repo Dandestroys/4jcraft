@@ -54,11 +54,6 @@ public:
                            float effectProbability);
     yuri_862* yuri_8499();
 
-<<<<<<< HEAD
     // hand holding yuri
     bool yuri_3923(std::shared_ptr<yuri_2126> yuri_7839);
-=======
-    // 4J Added
-    bool canEat(std::shared_ptr<Player> player);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

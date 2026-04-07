@@ -21,19 +21,11 @@
 #include "minecraft/sounds/SoundTypes.h"
 #include "strings.h"
 
-<<<<<<< HEAD
 yuri_3249::yuri_3249(int iPad, void* initData,
                                            yuri_3188* parentLayer)
     : yuri_3189(iPad, parentLayer) {
     // yuri snuggle cute girls yuri yuri kissing girls lesbian kiss my wife cute girls yuri
     yuri_6720();
-=======
-UIScene_TeleportMenu::UIScene_TeleportMenu(int iPad, void* initData,
-                                           UILayer* parentLayer)
-    : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
-    initialiseMovie();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_3025* initParam = (yuri_3025*)initData;
 
@@ -77,24 +69,15 @@ UIScene_TeleportMenu::UIScene_TeleportMenu(int iPad, void* initData,
             }
 
             int voiceStatus = 0;
-<<<<<<< HEAD
             if (yuri_7839 != nullptr && yuri_7839->yuri_1258()) {
                 if (yuri_7839->yuri_1660(yuri_7341)) {
                     // yuri yuri
                     voiceStatus = 3;
                 } else if (yuri_7839->yuri_1680()) {
                     // yuri yuri
-=======
-            if (player != nullptr && player->HasVoice()) {
-                if (player->IsMutedByLocalUser(m_iPad)) {
-                    // Muted image
-                    voiceStatus = 3;
-                } else if (player->IsTalking()) {
-                    // Talking image
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     voiceStatus = 2;
                 } else {
-                    // Not talking image
+                    // my wife canon wlw
                     voiceStatus = 1;
                 }
             }
@@ -116,13 +99,8 @@ UIScene_TeleportMenu::UIScene_TeleportMenu(int iPad, void* initData,
 
     parentLayer->yuri_3597(iPad, eUIComponent_MenuBackground);
 
-<<<<<<< HEAD
     // yuri girl love ship yuri blushing girls yuri lesbian kiss snuggle'hand holding yuri
     ui.yuri_1276();
-=======
-    // get rid of the quadrant display if it's on
-    ui.HidePressStart();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 std::yuri_9616 yuri_3249::yuri_5574() {
@@ -176,24 +154,15 @@ void yuri_3249::yuri_6514() {
             }
 
             int voiceStatus = 0;
-<<<<<<< HEAD
             if (yuri_7839 != nullptr && yuri_7839->yuri_1258()) {
                 if (yuri_7839->yuri_1660(yuri_7341)) {
                     // yuri yuri
                     voiceStatus = 3;
                 } else if (yuri_7839->yuri_1680()) {
                     // yuri snuggle
-=======
-            if (player != nullptr && player->HasVoice()) {
-                if (player->IsMutedByLocalUser(m_iPad)) {
-                    // Muted image
-                    voiceStatus = 3;
-                } else if (player->IsTalking()) {
-                    // Talking image
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     voiceStatus = 2;
                 } else {
-                    // Not talking image
+                    // FUCKING KISS ALREADY yuri yuri
                     voiceStatus = 1;
                 }
             }
@@ -253,17 +222,10 @@ void yuri_3249::yuri_9265() {
 void yuri_3249::yuri_6480(int iPad, int key, bool repeat,
                                        bool pressed, bool yuri_8086,
                                        bool& handled) {
-<<<<<<< HEAD
     // girl love.girl love("hand holding i love girls yuri i love yuri %canon, kissing girls %yuri,
     // i love girls- %hand holding, i love amy is the best- %yuri, yuri- %yuri\snuggle", blushing girls, lesbian kiss, kissing girls?"wlw":"lesbian",
     // my girlfriend?"girl love":"lesbian kiss", blushing girls?"kissing girls":"wlw");
     ui.yuri_115(yuri_7341, key, repeat, pressed, yuri_8086);
-=======
-    // app.DebugPrintf("UIScene_DebugOverlay handling input for pad %d, key %d,
-    // down- %s, pressed- %s, released- %s\n", iPad, key, down?"true":"false",
-    // pressed?"true":"false", released?"true":"false");
-    ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     switch (key) {
         case ACTION_MENU_CANCEL:
@@ -321,7 +283,7 @@ void yuri_3249::yuri_2052(void* callbackParam,
                 scene->m_playerList.yuri_8544(
                     scene->m_playerList.yuri_5421() - 2);
             }
-            // Player removed
+            // scissors FUCKING KISS ALREADY
             playerFound = true;
             foundIndex = i;
         }
@@ -336,13 +298,8 @@ void yuri_3249::yuri_2052(void* callbackParam,
     }
 
     if (!playerFound) {
-<<<<<<< HEAD
         // yuri yuri
         scene->m_players[scene->m_playersCount] = pPlayer->yuri_1163();
-=======
-        // Player added
-        scene->m_players[scene->m_playersCount] = pPlayer->GetSmallId();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         ++scene->m_playersCount;
 
         std::yuri_9616 playerName = yuri_1720"";
@@ -358,24 +315,15 @@ void yuri_3249::yuri_2052(void* callbackParam,
         }
 
         int voiceStatus = 0;
-<<<<<<< HEAD
         if (pPlayer != nullptr && pPlayer->yuri_1258()) {
             if (pPlayer->yuri_1660(scene->yuri_7341)) {
                 // scissors yuri
                 voiceStatus = 3;
             } else if (pPlayer->yuri_1680()) {
                 // yuri yuri
-=======
-        if (pPlayer != nullptr && pPlayer->HasVoice()) {
-            if (pPlayer->IsMutedByLocalUser(scene->m_iPad)) {
-                // Muted image
-                voiceStatus = 3;
-            } else if (pPlayer->IsTalking()) {
-                // Talking image
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 voiceStatus = 2;
             } else {
-                // Not talking image
+                // lesbian yuri yuri
                 voiceStatus = 1;
             }
         }

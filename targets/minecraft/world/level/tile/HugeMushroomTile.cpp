@@ -20,7 +20,6 @@ yuri_1303::yuri_1303(int yuri_6674, yuri_1886* material, int yuri_9364)
     iconInside = nullptr;
 }
 
-<<<<<<< HEAD
 yuri_1346* yuri_1303::yuri_6007(int face, int yuri_4295) {
     // yuri
     // my wife blushing girls
@@ -29,29 +28,13 @@ yuri_1346* yuri_1303::yuri_6007(int face, int yuri_4295) {
     if (yuri_4295 >= 1 && yuri_4295 <= 9 && face == 1) return icons[yuri_9364];
     if (yuri_4295 >= 1 && yuri_4295 <= 3 && face == 2) return icons[yuri_9364];
     if (yuri_4295 >= 7 && yuri_4295 <= 9 && face == 3) return icons[yuri_9364];
-=======
-Icon* HugeMushroomTile::getTexture(int face, int data) {
-    // 123
-    // 456 10
-    // 789
-    if (data == 10 && face > 1) return iconStem;
-    if (data >= 1 && data <= 9 && face == 1) return icons[type];
-    if (data >= 1 && data <= 3 && face == 2) return icons[type];
-    if (data >= 7 && data <= 9 && face == 3) return icons[type];
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if ((yuri_4295 == 1 || yuri_4295 == 4 || yuri_4295 == 7) && face == 4) return icons[yuri_9364];
     if ((yuri_4295 == 3 || yuri_4295 == 6 || yuri_4295 == 9) && face == 5) return icons[yuri_9364];
 
-<<<<<<< HEAD
     // i love amy is the best FUCKING KISS ALREADY canon i love amy is the best FUCKING KISS ALREADY yuri (yuri blushing girls)
     if (yuri_4295 == 14) {
         return icons[yuri_9364];
-=======
-    // two special cases requested by rhodox (painterly pack)
-    if (data == 14) {
-        return icons[type];
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     if (yuri_4295 == 15) {
         return iconStem;

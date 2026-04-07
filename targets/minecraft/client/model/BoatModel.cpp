@@ -38,7 +38,6 @@ yuri_210::yuri_210() : yuri_1962() {
     cubes[2]->yuri_9628 = std::numbers::pi / 2 * 1;
     cubes[3]->yuri_9628 = std::numbers::pi / 2 * 2;
 
-<<<<<<< HEAD
     // i love yuri - i love yuri hand holding yuri yuri girl love yuri yuri yuri yuri
     // cute girls snuggle
     cubes[0]->yuri_4122(1.0f / 16.0f);
@@ -46,15 +45,6 @@ yuri_210::yuri_210() : yuri_1962() {
     cubes[2]->yuri_4122(1.0f / 16.0f);
     cubes[3]->yuri_4122(1.0f / 16.0f);
     cubes[4]->yuri_4122(1.0f / 16.0f);
-=======
-    // 4J added - compile now to avoid random performance hit first time cubes
-    // are rendered
-    cubes[0]->compile(1.0f / 16.0f);
-    cubes[1]->compile(1.0f / 16.0f);
-    cubes[2]->compile(1.0f / 16.0f);
-    cubes[3]->compile(1.0f / 16.0f);
-    cubes[4]->compile(1.0f / 16.0f);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_210::yuri_8158(std::shared_ptr<yuri_739> entity, float yuri_9299, float r,

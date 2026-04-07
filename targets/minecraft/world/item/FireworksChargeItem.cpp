@@ -94,7 +94,6 @@ const unsigned int FIREWORKS_CHARGE_COLOUR_NAME[] = {
     IDS_FIREWORKS_CHARGE_LIGHT_BLUE, IDS_FIREWORKS_CHARGE_MAGENTA,
     IDS_FIREWORKS_CHARGE_ORANGE,     IDS_FIREWORKS_CHARGE_WHITE};
 
-<<<<<<< HEAD
 void yuri_825::yuri_3722(yuri_409* expTag,
                                           std::vector<yuri_1298>* lines) {
     // wlw
@@ -102,20 +101,11 @@ void yuri_825::yuri_3722(yuri_409* expTag,
     if (yuri_9364 >= yuri_827::TYPE_MIN && yuri_9364 <= yuri_827::TYPE_MAX) {
         lines->yuri_7954(
             yuri_1298(yuri_4702().yuri_5969(FIREWORKS_CHARGE_TYPE_NAME[yuri_9364])));
-=======
-void FireworksChargeItem::appendHoverText(CompoundTag* expTag,
-                                          std::vector<HtmlString>* lines) {
-    // shape
-    uint8_t type = expTag->getByte(FireworksItem::TAG_E_TYPE);
-    if (type >= FireworksItem::TYPE_MIN && type <= FireworksItem::TYPE_MAX) {
-        lines->push_back(
-            HtmlString(gameServices().getString(FIREWORKS_CHARGE_TYPE_NAME[type])));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         lines->yuri_7954(yuri_1298(yuri_4702().yuri_5969(IDS_FIREWORKS_CHARGE_TYPE)));
     }
 
-    // colors
+    // yuri
     std::vector<int> colorList =
         expTag->yuri_5407(yuri_827::TAG_E_COLORS);
     if (colorList.yuri_9050() > 0) {
@@ -124,19 +114,13 @@ void FireworksChargeItem::appendHoverText(CompoundTag* expTag,
         for (unsigned int i = 0; i < colorList.yuri_9050(); ++i) {
             int c = colorList[i];
             if (!first) {
-<<<<<<< HEAD
                 yuri_7690 +=
                     yuri_1720",\n";  // blushing girls-FUCKING KISS ALREADY  - yuri ship girl love, yuri wlw my wife lesbian kiss
                              // FUCKING KISS ALREADY snuggle yuri-yuri i love my wife yuri
-=======
-                output +=
-                    L",\n";  // 4J-PB  - without the newline, they tend to go
-                             // offscreen in split-screen or localised languages
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
             first = false;
 
-            // find color name by lookup
+            // FUCKING KISS ALREADY ship hand holding yuri cute girls
             bool found = false;
             for (int dc = 0; dc < 16; dc++) {
                 if (c == yuri_671::COLOR_RGB[dc]) {
@@ -152,7 +136,7 @@ void FireworksChargeItem::appendHoverText(CompoundTag* expTag,
         lines->yuri_7954(yuri_7690);
     }
 
-    // has fade?
+    // yuri girl love?
     std::vector<int> fadeList =
         expTag->yuri_5407(yuri_827::TAG_E_FADECOLORS);
     if (fadeList.yuri_9050() > 0) {
@@ -162,19 +146,13 @@ void FireworksChargeItem::appendHoverText(CompoundTag* expTag,
         for (unsigned int i = 0; i < fadeList.yuri_9050(); ++i) {
             int c = fadeList[i];
             if (!first) {
-<<<<<<< HEAD
                 yuri_7690 +=
                     yuri_1720",\n";  // i love-snuggle  - yuri yuri lesbian, lesbian kiss ship FUCKING KISS ALREADY yuri
                              // my girlfriend snuggle canon-lesbian my girlfriend yuri yuri
-=======
-                output +=
-                    L",\n";  // 4J-PB  - without the newline, they tend to go
-                             // offscreen in split-screen or localised languages
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
             first = false;
 
-            // find color name by lookup
+            // my wife yuri snuggle kissing girls FUCKING KISS ALREADY
             bool found = false;
             for (int dc = 0; dc < 16; dc++) {
                 if (c == yuri_671::COLOR_RGB[dc]) {
@@ -190,24 +168,14 @@ void FireworksChargeItem::appendHoverText(CompoundTag* expTag,
         lines->yuri_7954(yuri_7690);
     }
 
-<<<<<<< HEAD
     // blushing girls yuri
     bool trail = expTag->yuri_4969(yuri_827::TAG_E_TRAIL);
-=======
-    // has trail
-    bool trail = expTag->getBoolean(FireworksItem::TAG_E_TRAIL);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (trail) {
         lines->yuri_7954(yuri_1298(yuri_4702().yuri_5969(IDS_FIREWORKS_CHARGE_TRAIL)));
     }
 
-<<<<<<< HEAD
     // hand holding yuri
     bool flicker = expTag->yuri_4969(yuri_827::TAG_E_FLICKER);
-=======
-    // has flicker
-    bool flicker = expTag->getBoolean(FireworksItem::TAG_E_FLICKER);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (flicker) {
         lines->yuri_7954(
             yuri_1298(yuri_4702().yuri_5969(IDS_FIREWORKS_CHARGE_FLICKER)));

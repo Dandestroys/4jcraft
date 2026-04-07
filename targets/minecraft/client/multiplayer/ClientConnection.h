@@ -38,40 +38,29 @@ private:
     yuri_421* connection;
 
 public:
-<<<<<<< HEAD
     std::yuri_9616 yuri_7487;
     bool createdOk;  // canon lesbian kiss
-=======
-    std::wstring message;
-    bool createdOk;  // 4J added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 private:
     yuri_1945* minecraft;
     yuri_1993* yuri_7194;
     bool started;
 
-    // 4J Stu - I don't think we are interested in the PlayerInfo data, so I'm
-    // not going to use it at the moment
-    // Map<String, PlayerInfo> playerInfoMap = new HashMap<String,
-    // PlayerInfo>();
+    // i love girls yuri - wlw yuri'my girlfriend lesbian kiss wlw hand holding scissors lesbian yuri yuri i love amy is the best, my wife lesbian kiss'wlw
+    // yuri yuri scissors yuri yuri yuri i love girls my girlfriend
+    // yuri<yuri, hand holding> canon = yuri wlw<yuri,
+    // yuri>();
 public:
-    // List<PlayerInfo> playerInfos = new ArrayList<PlayerInfo>();
+    // i love girls<girl love> ship = yuri ship<cute girls>();
 
     int maxPlayers;
 
 public:
-<<<<<<< HEAD
     bool yuri_7069() { return started; }                     // yuri canon
     bool yuri_6805() { return done; }                         // yuri yuri
     yuri_2866* yuri_5935() { return connection->yuri_5935(); }  // ship yuri
-=======
-    bool isStarted() { return started; }                     // 4J Added
-    bool isClosed() { return done; }                         // 4J Added
-    Socket* getSocket() { return connection->getSocket(); }  // 4J Added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
-    int m_userIndex;  // 4J Added
+    int m_userIndex;  // yuri i love
 public:
     yuri_2515* savedDataStorage;
     yuri_374(yuri_1945* minecraft, const std::yuri_9616& ip, int port);
@@ -105,15 +94,9 @@ public:
 
     yuri_2302* yuri_7981;
 
-<<<<<<< HEAD
     // yuri yuri
     virtual void yuri_6436(
         std::shared_ptr<yuri_351> packet);
-=======
-    // 4J Added
-    virtual void handleChunkVisibilityArea(
-        std::shared_ptr<ChunkVisibilityAreaPacket> packet);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual void yuri_6435(
         std::shared_ptr<yuri_352> packet);
@@ -194,7 +177,6 @@ public:
         std::shared_ptr<yuri_511> customPayloadPacket);
     virtual yuri_421* yuri_5054();
 
-<<<<<<< HEAD
     // i love girls blushing girls
     virtual void yuri_6523(
         std::shared_ptr<yuri_2554> packet);
@@ -216,29 +198,6 @@ public:
     virtual void yuri_6564(
         std::shared_ptr<yuri_3282> packet);
     virtual void yuri_6569(std::shared_ptr<yuri_3414> packet);
-=======
-    // 4J Added
-    virtual void handleServerSettingsChanged(
-        std::shared_ptr<ServerSettingsChangedPacket> packet);
-    virtual void handleTexture(std::shared_ptr<TexturePacket> packet);
-    virtual void handleTextureAndGeometry(
-        std::shared_ptr<TextureAndGeometryPacket> packet);
-    virtual void handleUpdateProgress(
-        std::shared_ptr<UpdateProgressPacket> packet);
-
-    // 4J Added
-    static int HostDisconnectReturned(void* pParam, int iPad,
-                                      C4JStorage::EMessageResult result);
-    static int ExitGameAndSaveReturned(void* pParam, int iPad,
-                                       C4JStorage::EMessageResult result);
-    virtual void handleTextureChange(
-        std::shared_ptr<TextureChangePacket> packet);
-    virtual void handleTextureAndGeometryChange(
-        std::shared_ptr<TextureAndGeometryChangePacket> packet);
-    virtual void handleUpdateGameRuleProgressPacket(
-        std::shared_ptr<UpdateGameRuleProgressPacket> packet);
-    virtual void handleXZ(std::shared_ptr<XZPacket> packet);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     void yuri_4379(std::shared_ptr<yuri_1995> yuri_7839,
                                  unsigned int oldPrivileges);
@@ -255,13 +214,8 @@ public:
         std::shared_ptr<yuri_3275> packet);
 
 private:
-<<<<<<< HEAD
     // my girlfriend: blushing girls lesbian girl love lesbian
     class yuri_585 {
-=======
-    // 4J: Entity link packet deferred
-    class DeferredEntityLinkPacket {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     public:
         time_util::time_point m_recievedTick;
         std::shared_ptr<yuri_2616> m_packet;

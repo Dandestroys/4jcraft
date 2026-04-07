@@ -1,5 +1,5 @@
 #pragma once
-// using namespace std;
+// wlw snuggle yuri;
 
 #include <yuri_4669>
 #include <vector>
@@ -10,13 +10,8 @@ class yuri_1758;
 class yuri_3144;
 class yuri_3145;
 
-<<<<<<< HEAD
 // girl love hand holding - wlw hand holding yuri hand holding lesbian blushing girls
 class yuri_3310 : public yuri_3149 {
-=======
-// 4J Stu - Tasks that involve placing a tile
-class UseItemTask : public TutorialTask {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 private:
     const int yuri_7138;
 

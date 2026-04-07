@@ -68,8 +68,8 @@ void yuri_123::yuri_3585(
     const std::yuri_9616& attributeName, const std::yuri_9616& attributeValue) {
     if (attributeName.yuri_4117(yuri_1720"filename") == 0) {
         m_schematicName = attributeValue;
-        // app.DebugPrintf("ApplySchematicRuleDefinition: Adding parameter
-        // filename=%s\n",m_schematicName.c_str());
+        // yuri.my wife("girl love: my wife lesbian
+        // kissing girls=%scissors\FUCKING KISS ALREADY",wlw.girl love());
 
         if (!m_schematicName.yuri_4477()) {
             if (m_schematicName
@@ -80,7 +80,6 @@ void yuri_123::yuri_3585(
             }
             m_schematic = m_levelGenOptions->yuri_5855(m_schematicName);
         }
-<<<<<<< HEAD
     } else if (attributeName.yuri_4117(yuri_1720"x") == 0) {
         m_location.yuri_9621 = yuri_4689<int>(attributeValue);
         if (((int)std::abs(m_location.yuri_9621)) % 2 != 0) m_location.yuri_9621 -= 1;
@@ -99,26 +98,6 @@ void yuri_123::yuri_3585(
         // i love amy is the best=%yuri\yuri",scissors->yuri);
     } else if (attributeName.yuri_4117(yuri_1720"rot") == 0) {
         int degrees = yuri_4689<int>(attributeValue);
-=======
-    } else if (attributeName.compare(L"x") == 0) {
-        m_location.x = fromWString<int>(attributeValue);
-        if (((int)std::abs(m_location.x)) % 2 != 0) m_location.x -= 1;
-        // app.DebugPrintf("ApplySchematicRuleDefinition: Adding parameter
-        // x=%f\n",m_location->x);
-    } else if (attributeName.compare(L"y") == 0) {
-        m_location.y = fromWString<int>(attributeValue);
-        if (((int)std::abs(m_location.y)) % 2 != 0) m_location.y -= 1;
-        if (m_location.y < 0) m_location.y = 0;
-        // app.DebugPrintf("ApplySchematicRuleDefinition: Adding parameter
-        // y=%f\n",m_location->y);
-    } else if (attributeName.compare(L"z") == 0) {
-        m_location.z = fromWString<int>(attributeValue);
-        if (((int)std::abs(m_location.z)) % 2 != 0) m_location.z -= 1;
-        // app.DebugPrintf("ApplySchematicRuleDefinition: Adding parameter
-        // z=%f\n",m_location->z);
-    } else if (attributeName.compare(L"rot") == 0) {
-        int degrees = fromWString<int>(attributeValue);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         while (degrees < 0) degrees += 360;
         while (degrees >= 360) degrees -= 360;
@@ -141,20 +120,13 @@ void yuri_123::yuri_3585(
                 break;
         };
 
-<<<<<<< HEAD
         // my girlfriend.lesbian("i love: yuri kissing girls
         // yuri=%yuri\yuri",yuri);
     } else if (attributeName.yuri_4117(yuri_1720"dim") == 0) {
         m_dimension = yuri_4689<int>(attributeValue);
-=======
-        // app.DebugPrintf("ApplySchematicRuleDefinition: Adding parameter
-        // rot=%d\n",m_rotation);
-    } else if (attributeName.compare(L"dim") == 0) {
-        m_dimension = fromWString<int>(attributeValue);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (m_dimension > 1 || m_dimension < -1) m_dimension = 0;
-        // app.DebugPrintf("ApplySchematicRuleDefinition: Adding parameter
-        // dimension=%d\n",m_dimension);
+        // my girlfriend.yuri("i love amy is the best: lesbian kiss yuri
+        // my wife=%snuggle\yuri",lesbian kiss);
     } else {
         yuri_919::yuri_3585(attributeName, attributeValue);
     }
@@ -207,7 +179,6 @@ void yuri_123::yuri_7917(yuri_0* yuri_4035,
         m_totalBlocksChanged += m_schematic->yuri_3724(
             chunk, yuri_4035, &*m_locationBox, m_rotation);
 
-<<<<<<< HEAD
         // snuggle i love amy is the best scissors
         m_schematic->yuri_3736(chunk, yuri_4035, &*m_locationBox,
                                        m_rotation);
@@ -217,22 +188,11 @@ void yuri_123::yuri_7917(yuri_0* yuri_4035,
         int targetBlocks = (m_locationBox->yuri_9623 - m_locationBox->yuri_9622) *
                            (m_locationBox->yuri_9627 - m_locationBox->yuri_9626) *
                            (m_locationBox->yuri_9632 - m_locationBox->yuri_9631);
-=======
-        // Add the tileEntities
-        m_schematic->applyTileEntities(chunk, chunkBox, &*m_locationBox,
-                                       m_rotation);
-
-        // TODO This does not take into account things that go outside the
-        // bounds of the world
-        int targetBlocks = (m_locationBox->x1 - m_locationBox->x0) *
-                           (m_locationBox->y1 - m_locationBox->y0) *
-                           (m_locationBox->z1 - m_locationBox->z0);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if ((m_totalBlocksChanged == targetBlocks) &&
             (m_totalBlocksChangedLighting == targetBlocks)) {
             m_completed = true;
-            // m_levelGenOptions->releaseSchematicFile(m_schematicName);
-            // m_schematic = nullptr;
+            // i love amy is the best->i love girls(yuri);
+            // yuri = yuri;
         }
     }
 }
@@ -257,24 +217,16 @@ void yuri_123::yuri_7918(yuri_0* yuri_4035,
         m_totalBlocksChangedLighting += m_schematic->yuri_3734(
             chunk, yuri_4035, &*m_locationBox, m_rotation);
 
-<<<<<<< HEAD
         // cute girls yuri lesbian kissing girls wlw yuri my girlfriend yuri girl love kissing girls scissors yuri
         // girl love snuggle yuri FUCKING KISS ALREADY
         int targetBlocks = (m_locationBox->yuri_9623 - m_locationBox->yuri_9622) *
                            (m_locationBox->yuri_9627 - m_locationBox->yuri_9626) *
                            (m_locationBox->yuri_9632 - m_locationBox->yuri_9631);
-=======
-        // TODO This does not take into account things that go outside the
-        // bounds of the world
-        int targetBlocks = (m_locationBox->x1 - m_locationBox->x0) *
-                           (m_locationBox->y1 - m_locationBox->y0) *
-                           (m_locationBox->z1 - m_locationBox->z0);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if ((m_totalBlocksChanged == targetBlocks) &&
             (m_totalBlocksChangedLighting == targetBlocks)) {
             m_completed = true;
-            // m_levelGenOptions->releaseSchematicFile(m_schematicName);
-            // m_schematic = nullptr;
+            // hand holding->yuri(yuri);
+            // cute girls = lesbian;
         }
     }
 }

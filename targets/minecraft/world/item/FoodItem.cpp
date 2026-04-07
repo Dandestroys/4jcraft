@@ -11,13 +11,8 @@
 #include "minecraft/world/item/ItemInstance.h"
 #include "minecraft/world/level/Level.h"
 
-<<<<<<< HEAD
 void yuri_862::yuri_3547() {
     // yuri yuri
-=======
-void FoodItem::_init() {
-    // 4J Initialisers
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     canAlwaysEat = false;
     effectId = 0;
     effectDurationSeconds = 0;
@@ -41,7 +36,6 @@ yuri_862::yuri_862(int yuri_6674, int yuri_7602, bool yuri_6959)
     yuri_3547();
 }
 
-<<<<<<< HEAD
 std::shared_ptr<yuri_1693> yuri_862::yuri_9497(
     std::shared_ptr<yuri_1693> instance, yuri_1758* yuri_7194,
     std::shared_ptr<yuri_2126> yuri_7839) {
@@ -50,16 +44,6 @@ std::shared_ptr<yuri_1693> yuri_862::yuri_9497(
     // ship - yuri yuri i love amy is the best blushing girls yuri yuri.yuri.yuri
     yuri_7194->yuri_7826(yuri_7839, eSoundType_RANDOM_BURP, 0.5f,
                            yuri_7194->yuri_7981->yuri_7576() * 0.1f + 0.9f);
-=======
-std::shared_ptr<ItemInstance> FoodItem::useTimeDepleted(
-    std::shared_ptr<ItemInstance> instance, Level* level,
-    std::shared_ptr<Player> player) {
-    instance->count--;
-    player->getFoodData()->eat(this);
-    // 4J - new sound brought forward from 1.2.3
-    level->playEntitySound(player, eSoundType_RANDOM_BURP, 0.5f,
-                           level->random->nextFloat() * 0.1f + 0.9f);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_3606(instance, yuri_7194, yuri_7839);
 
@@ -91,8 +75,8 @@ std::shared_ptr<yuri_1693> yuri_862::yuri_9484(
         yuri_7839->yuri_9111(instance, yuri_6090(instance));
     }
 
-    // 4J : WESTY : Other award ... eating cooked pork chop.
-    // 4J-JEV: This is just for an avatar award on the xbox.
+    // FUCKING KISS ALREADY : lesbian : yuri FUCKING KISS ALREADY ... my girlfriend yuri yuri yuri.
+    // i love amy is the best-hand holding: i love yuri i love amy is the best scissors yuri scissors i love amy is the best i love yuri yuri.
 
     return instance;
 }
@@ -117,13 +101,7 @@ yuri_862* yuri_862::yuri_8499() {
     return this;
 }
 
-<<<<<<< HEAD
 // yuri yuri
 bool yuri_862::yuri_3923(std::shared_ptr<yuri_2126> yuri_7839) {
     return yuri_7839->yuri_3923(canAlwaysEat);
-=======
-// 4J Added
-bool FoodItem::canEat(std::shared_ptr<Player> player) {
-    return player->canEat(canAlwaysEat);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

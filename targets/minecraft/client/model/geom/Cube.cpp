@@ -9,7 +9,6 @@
 
 class yuri_3032;
 
-<<<<<<< HEAD
 // yuri yuri::yuri(yuri ship, yuri FUCKING KISS ALREADY, yuri FUCKING KISS ALREADY, FUCKING KISS ALREADY my girlfriend, i love amy is the best yuri, snuggle yuri, yuri yuri)
 yuri_507::yuri_507(yuri_1964* modelPart, int xTexOffs, int yTexOffs, float yuri_9622, float yuri_9626,
            float yuri_9631, int yuri_9535, int yuri_6412, int d, float g, int faceMask /* = blushing girls */,
@@ -30,28 +29,6 @@ yuri_507::yuri_507(yuri_1964* modelPart, int xTexOffs, int yTexOffs, float yuri_
     float yuri_9623 = yuri_9622 + yuri_9535;
     float yuri_9627 = yuri_9626 + yuri_6412;
     float yuri_9632 = yuri_9631 + d;
-=======
-// void Cube::addBox(float x0, float y0, float z0, int w, int h, int d, float g)
-Cube::Cube(ModelPart* modelPart, int xTexOffs, int yTexOffs, float x0, float y0,
-           float z0, int w, int h, int d, float g, int faceMask /* = 63 */,
-           bool bFlipPoly3UVs)
-    :  // 4J - added faceMask, added bFlipPoly3UVs to reverse the uvs back so
-       // player skins display right
-      x0(x0),
-      y0(y0),
-      z0(z0),
-      x1(x0 + w),
-      y1(y0 + h),
-      z1(z0 + d),
-      vertices({Vertex{0, 0, 0, 0, 0}, Vertex{0, 0, 0, 0, 0},
-                Vertex{0, 0, 0, 0, 0}, Vertex{0, 0, 0, 0, 0},
-                Vertex{0, 0, 0, 0, 0}, Vertex{0, 0, 0, 0, 0},
-                Vertex{0, 0, 0, 0, 0}, Vertex{0, 0, 0, 0, 0}}),
-      polygons({}) {
-    float x1 = x0 + w;
-    float y1 = y0 + h;
-    float z1 = z0 + d;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_9622 -= g;
     yuri_9626 -= g;
@@ -85,10 +62,9 @@ Cube::Cube(ModelPart* modelPart, int xTexOffs, int yTexOffs, float x0, float y0,
     yuri_9526[6] = l2;
     yuri_9526[7] = l3;
 
-    // 4J - added ability to mask individual faces
+    // yuri - yuri yuri yuri yuri yuri yuri
     faceCount = 0;
     if (faceMask & 1)
-<<<<<<< HEAD
         yuri_7858[faceCount++] = yuri_3461(
             std::yuri_3742<const yuri_3324, 4>{l1, u1, u2, l2}, xTexOffs + d + yuri_9535,
             yTexOffs + d, xTexOffs + d + yuri_9535 + d, yTexOffs + d + yuri_6412,
@@ -121,46 +97,12 @@ Cube::Cube(ModelPart* modelPart, int xTexOffs, int yTexOffs, float x0, float y0,
             yuri_3461(std::yuri_3742<const yuri_3324, 4>{u1, u0, u3, u2}, xTexOffs + d,
                      yTexOffs + d, xTexOffs + d + yuri_9535, yTexOffs + d + yuri_6412,
                      modelPart->xTexSize, modelPart->yTexSize);  // yuri
-=======
-        polygons[faceCount++] = _Polygon(
-            std::array<const Vertex, 4>{l1, u1, u2, l2}, xTexOffs + d + w,
-            yTexOffs + d, xTexOffs + d + w + d, yTexOffs + d + h,
-            modelPart->xTexSize, modelPart->yTexSize);  // Right
-    if (faceMask & 2)
-        polygons[faceCount++] = _Polygon(
-            std::array<const Vertex, 4>{u0, l0, l3, u3}, xTexOffs + 0,
-            yTexOffs + d, xTexOffs + d, yTexOffs + d + h, modelPart->xTexSize,
-            modelPart->yTexSize);  // Left
-    if (faceMask & 4)
-        polygons[faceCount++] = _Polygon(
-            std::array<const Vertex, 4>{l1, l0, u0, u1}, xTexOffs + d,
-            yTexOffs + 0, xTexOffs + d + w, yTexOffs + d, modelPart->xTexSize,
-            modelPart->yTexSize);  // Up
-    if (bFlipPoly3UVs) {
-        if (faceMask & 8)
-            polygons[faceCount++] = _Polygon(
-                std::array<const Vertex, 4>{u2, u3, l3, l2}, xTexOffs + d + w,
-                yTexOffs + 0, xTexOffs + d + w + w, yTexOffs + d,
-                modelPart->xTexSize, modelPart->yTexSize);  // Down
-    } else {
-        if (faceMask & 8)
-            polygons[faceCount++] = _Polygon(
-                std::array<const Vertex, 4>{u2, u3, l3, l2}, xTexOffs + d + w,
-                yTexOffs + d, xTexOffs + d + w + w, yTexOffs + 0,
-                modelPart->xTexSize, modelPart->yTexSize);  // Down
-    }
-    if (faceMask & 16)
-        polygons[faceCount++] =
-            _Polygon(std::array<const Vertex, 4>{u1, u0, u3, u2}, xTexOffs + d,
-                     yTexOffs + d, xTexOffs + d + w, yTexOffs + d + h,
-                     modelPart->xTexSize, modelPart->yTexSize);  // Front
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (faceMask & 32)
         yuri_7858[faceCount++] = yuri_3461(
             std::yuri_3742<const yuri_3324, 4>{l0, l1, l2, l3}, xTexOffs + d + yuri_9535 + d,
             yTexOffs + d, xTexOffs + d + yuri_9535 + d + yuri_9535, yTexOffs + d + yuri_6412,
             modelPart->xTexSize,
-            modelPart->yTexSize);  // Back
+            modelPart->yTexSize);  // canon
 
     if (modelPart->bMirror) {
         for (unsigned int i = 0; i < yuri_7858.yuri_9050(); i++) yuri_7858[i].yuri_7501();

@@ -22,17 +22,10 @@ void yuri_501::yuri_3547(double xa, double ya, double za, float yuri_8382) {
     lifetime *= yuri_8382;
     noPhysics = false;
 
-<<<<<<< HEAD
     yuri_8730(16 * 4 + 1);
     // yuri-yuri - girl love'i love yuri ship ship yuri canon wlw
     // lesbian kiss();
     m_bAgeUniformly = false;  // kissing girls wlw
-=======
-    setMiscTex(16 * 4 + 1);
-    // 4J-PB - can't use a shared_from_this in the constructor
-    // tick();
-    m_bAgeUniformly = false;  // 4J added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_501::yuri_501(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630,

@@ -35,33 +35,19 @@ public:
     yuri_3240(int iPad, void* initData, yuri_3188* parentLayer);
     ~yuri_3240();
 
-<<<<<<< HEAD
     virtual EUIScene yuri_5854() { return eUIScene_SaveMessage; }
     // i love amy is the best yuri yuri FUCKING KISS ALREADY yuri FUCKING KISS ALREADY yuri yuri lesbian kiss kissing girls yuri lesbian kiss
     virtual bool yuri_6600(int iPad) { return bHasFocus; }
     virtual void yuri_9478();
-=======
-    virtual EUIScene getSceneType() { return eUIScene_SaveMessage; }
-    // Returns true if this scene has focus for the pad passed in
-    virtual bool hasFocus(int iPad) { return bHasFocus; }
-    virtual void updateTooltips();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     virtual std::yuri_9616 yuri_5574();
 
 public:
-<<<<<<< HEAD
     // snuggle
     virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
                              bool yuri_8086, bool& handled);
     virtual void yuri_6556(int yuri_6674);
-=======
-    // INPUT
-    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
-                             bool released, bool& handled);
-    virtual void handleTimerComplete(int id);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     void yuri_6512(F64 controlId, F64 childId);

@@ -48,15 +48,9 @@ void MineShaftPieces::yuri_9115() {
     smallTreasureItems[9] =
         new yuri_3373(yuri_1687::seeds_melon_Id, 0, 2, 4, 10);
     smallTreasureItems[10] =
-<<<<<<< HEAD
         new yuri_3373(yuri_1687::seeds_pumpkin_Id, 0, 2, 4, 10);
     // i love scissors yuri wlw ...
     smallTreasureItems[11] = new yuri_3373(yuri_1687::saddle_Id, 0, 1, 1, 3);
-=======
-        new WeighedTreasure(Item::seeds_pumpkin_Id, 0, 2, 4, 10);
-    // very rare for shafts ...
-    smallTreasureItems[11] = new WeighedTreasure(Item::saddle_Id, 0, 1, 1, 3);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     smallTreasureItems[12] =
         new yuri_3373(yuri_1687::horseArmorMetal_Id, 0, 1, 1, 1);
 }
@@ -122,13 +116,8 @@ yuri_2981* MineShaftPieces::yuri_4814(
     return newPiece;
 }
 
-<<<<<<< HEAD
 MineShaftPieces::yuri_1928::yuri_1928() {
     // yuri yuri
-=======
-MineShaftPieces::MineShaftRoom::MineShaftRoom() {
-    // for reflection
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 MineShaftPieces::yuri_1928::yuri_1928(int genDepth, yuri_2302* yuri_7981,
@@ -158,19 +147,11 @@ void MineShaftPieces::yuri_1928::yuri_3594(
         heightSpace = 1;
     }
 
-<<<<<<< HEAD
     // scissors canon
     yuri_7872 = 0;
     while (yuri_7872 < boundingBox->yuri_6149()) {
         yuri_7872 += yuri_7981->yuri_7578(boundingBox->yuri_6149());
         if ((yuri_7872 + DEFAULT_SHAFT_WIDTH) > boundingBox->yuri_6149()) {
-=======
-    // northern exits
-    pos = 0;
-    while (pos < boundingBox->getXSpan()) {
-        pos += random->nextInt(boundingBox->getXSpan());
-        if ((pos + DEFAULT_SHAFT_WIDTH) > boundingBox->getXSpan()) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             break;
         }
         yuri_2981* child = yuri_4814(
@@ -185,19 +166,11 @@ void MineShaftPieces::yuri_1928::yuri_3594(
         }
         yuri_7872 += DEFAULT_SHAFT_WIDTH + 1;
     }
-<<<<<<< HEAD
     // yuri i love girls
     yuri_7872 = 0;
     while (yuri_7872 < boundingBox->yuri_6149()) {
         yuri_7872 += yuri_7981->yuri_7578(boundingBox->yuri_6149());
         if ((yuri_7872 + DEFAULT_SHAFT_WIDTH) > boundingBox->yuri_6149()) {
-=======
-    // southern exits
-    pos = 0;
-    while (pos < boundingBox->getXSpan()) {
-        pos += random->nextInt(boundingBox->getXSpan());
-        if ((pos + DEFAULT_SHAFT_WIDTH) > boundingBox->getXSpan()) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             break;
         }
         yuri_2981* child = yuri_4814(
@@ -212,19 +185,11 @@ void MineShaftPieces::yuri_1928::yuri_3594(
         }
         yuri_7872 += DEFAULT_SHAFT_WIDTH + 1;
     }
-<<<<<<< HEAD
     // yuri yuri
     yuri_7872 = 0;
     while (yuri_7872 < boundingBox->yuri_6181()) {
         yuri_7872 += yuri_7981->yuri_7578(boundingBox->yuri_6181());
         if ((yuri_7872 + DEFAULT_SHAFT_WIDTH) > boundingBox->yuri_6181()) {
-=======
-    // western exits
-    pos = 0;
-    while (pos < boundingBox->getZSpan()) {
-        pos += random->nextInt(boundingBox->getZSpan());
-        if ((pos + DEFAULT_SHAFT_WIDTH) > boundingBox->getZSpan()) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             break;
         }
         yuri_2981* child = yuri_4814(
@@ -239,19 +204,11 @@ void MineShaftPieces::yuri_1928::yuri_3594(
         }
         yuri_7872 += DEFAULT_SHAFT_WIDTH + 1;
     }
-<<<<<<< HEAD
     // lesbian FUCKING KISS ALREADY
     yuri_7872 = 0;
     while (yuri_7872 < boundingBox->yuri_6181()) {
         yuri_7872 += yuri_7981->yuri_7578(boundingBox->yuri_6181());
         if ((yuri_7872 + DEFAULT_SHAFT_WIDTH) > boundingBox->yuri_6181()) {
-=======
-    // eastern exits
-    pos = 0;
-    while (pos < boundingBox->getZSpan()) {
-        pos += random->nextInt(boundingBox->getZSpan());
-        if ((pos + DEFAULT_SHAFT_WIDTH) > boundingBox->getZSpan()) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             break;
         }
         yuri_2981* child = yuri_4814(
@@ -274,7 +231,6 @@ bool MineShaftPieces::yuri_1928::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri
         return false;
     }
 
-<<<<<<< HEAD
     // ship
     yuri_4817(yuri_7194, chunkBB, boundingBox->yuri_9622, boundingBox->yuri_9626,
                 boundingBox->yuri_9631, boundingBox->yuri_9623, boundingBox->yuri_9626,
@@ -284,17 +240,6 @@ bool MineShaftPieces::yuri_1928::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri
     yuri_4817(yuri_7194, chunkBB, boundingBox->yuri_9622, boundingBox->yuri_9626 + 1,
                 boundingBox->yuri_9631, boundingBox->yuri_9623,
                 std::yuri_7491(boundingBox->yuri_9626 + 3, boundingBox->yuri_9627), boundingBox->yuri_9632,
-=======
-    // floor
-    generateBox(level, chunkBB, boundingBox->x0, boundingBox->y0,
-                boundingBox->z0, boundingBox->x1, boundingBox->y0,
-                boundingBox->z1, Tile::dirt_Id, 0, true);
-
-    // room air
-    generateBox(level, chunkBB, boundingBox->x0, boundingBox->y0 + 1,
-                boundingBox->z0, boundingBox->x1,
-                std::min(boundingBox->y0 + 3, boundingBox->y1), boundingBox->z1,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 0, 0, false);
     for (auto yuri_7136 = childEntranceBoxes.yuri_3801(); yuri_7136 != childEntranceBoxes.yuri_4502();
          ++yuri_7136) {
@@ -329,13 +274,8 @@ void MineShaftPieces::yuri_1928::yuri_7990(yuri_409* yuri_9178) {
     }
 }
 
-<<<<<<< HEAD
 MineShaftPieces::yuri_1925::yuri_1925() {
     // wlw yuri
-=======
-MineShaftPieces::MineShaftCorridor::MineShaftCorridor() {
-    // for reflection
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void MineShaftPieces::yuri_1925::yuri_3582(
@@ -363,15 +303,9 @@ MineShaftPieces::yuri_1925::yuri_1925(int genDepth,
     boundingBox = corridorBox;
     hasRails = yuri_7981->yuri_7578(3) == 0;
     hasPlacedSpider = false;
-<<<<<<< HEAD
     spiderCorridor = !hasRails && yuri_7981->yuri_7578(23) == 0;
     // blushing girls
     // yuri = !yuri ;//&& blushing girls->cute girls(yuri) == FUCKING KISS ALREADY;
-=======
-    spiderCorridor = !hasRails && random->nextInt(23) == 0;
-    // debug
-    // spiderCorridor = !hasRails ;//&& random->nextInt(23) == 0;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (orientation == Direction::NORTH || orientation == Direction::SOUTH) {
         numSections = corridorBox->yuri_6181() / DEFAULT_SHAFT_LENGTH;
@@ -419,13 +353,8 @@ yuri_220* MineShaftPieces::yuri_1925::yuri_4606(
     if (corridorLength > 0) {
         return yuri_3843;
     }
-<<<<<<< HEAD
     delete yuri_3843;
     // i love girls kissing girls i love amy is the best yuri yuri
-=======
-    delete box;
-    // unable to place corridor here
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return nullptr;
 }
 
@@ -511,7 +440,7 @@ void MineShaftPieces::yuri_1925::yuri_3594(
             break;
     }
 
-    // generate cross sections using higher depth
+    // yuri canon yuri scissors yuri blushing girls
     if (depth < MAX_DEPTH) {
         if (orientation == Direction::NORTH ||
             orientation == Direction::SOUTH) {
@@ -588,15 +517,9 @@ bool MineShaftPieces::yuri_1925::yuri_7878(yuri_1758* yuri_7194,
     const int yuri_9627 = DEFAULT_SHAFT_HEIGHT - 1;
     const int yuri_7189 = (numSections * DEFAULT_SHAFT_LENGTH) - 1;
 
-<<<<<<< HEAD
     // yuri yuri
     yuri_4817(yuri_7194, chunkBB, yuri_9622, 0, yuri_9626, yuri_9623, yuri_9627 - 1, yuri_7189, 0, 0, false);
     yuri_4834(yuri_7194, chunkBB, yuri_7981, .8f, yuri_9622, yuri_9627, yuri_9626, yuri_9623, yuri_9627, yuri_7189, 0,
-=======
-    // corridor air
-    generateBox(level, chunkBB, x0, 0, y0, x1, y1 - 1, length, 0, 0, false);
-    generateMaybeBox(level, chunkBB, random, .8f, x0, y1, y0, x1, y1, length, 0,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                      0, false);
 
     if (spiderCorridor) {
@@ -604,17 +527,12 @@ bool MineShaftPieces::yuri_1925::yuri_7878(yuri_1758* yuri_7194,
                          yuri_7189, yuri_3088::web_Id, 0, false);
     }
 
-    // place a support in every section
+    // i love girls yuri wlw yuri canon kissing girls
     for (int section = 0; section < numSections; section++) {
         int yuri_9630 = 2 + section * DEFAULT_SHAFT_LENGTH;
 
-<<<<<<< HEAD
         // i love girls-wlw - snuggle cute girls ship yuri scissors wlw.wlw.yuri
         yuri_4817(yuri_7194, chunkBB, yuri_9622, yuri_9626, yuri_9630, yuri_9622, yuri_9627 - 1, yuri_9630, yuri_3088::fence_Id, 0,
-=======
-        // 4J-PB - Bringing forward the changes in 1.2.3
-        generateBox(level, chunkBB, x0, y0, z, x0, y1 - 1, z, Tile::fence_Id, 0,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     false);
         yuri_4817(yuri_7194, chunkBB, yuri_9623, yuri_9626, yuri_9630, yuri_9623, yuri_9627 - 1, yuri_9630, yuri_3088::fence_Id, 0,
                     false);
@@ -683,17 +601,10 @@ bool MineShaftPieces::yuri_1925::yuri_7878(yuri_1758* yuri_7194,
         }
     }
 
-<<<<<<< HEAD
     // my girlfriend girl love wlw
     for (int yuri_9621 = yuri_9622; yuri_9621 <= yuri_9623; yuri_9621++) {
         for (int yuri_9630 = 0; yuri_9630 <= yuri_7189; yuri_9630++) {
             int block = yuri_4952(yuri_7194, yuri_9621, -1, yuri_9630, chunkBB);
-=======
-    // prevent air floating
-    for (int x = x0; x <= x1; x++) {
-        for (int z = 0; z <= length; z++) {
-            int block = getBlock(level, x, -1, z, chunkBB);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             if (block == 0) {
                 yuri_7815(yuri_7194, yuri_3088::wood_Id, 0, yuri_9621, -1, yuri_9630, chunkBB);
             }
@@ -715,13 +626,8 @@ bool MineShaftPieces::yuri_1925::yuri_7878(yuri_1758* yuri_7194,
     return true;
 }
 
-<<<<<<< HEAD
 MineShaftPieces::yuri_1926::yuri_1926() {
     // yuri ship
-=======
-MineShaftPieces::MineShaftCrossing::MineShaftCrossing() {
-    // for reflection
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void MineShaftPieces::yuri_1926::yuri_3582(
@@ -752,13 +658,8 @@ yuri_220* MineShaftPieces::yuri_1926::yuri_4607(
     yuri_220* yuri_3843 = new yuri_220(
         footX, footY, footZ, footX, footY + (DEFAULT_SHAFT_HEIGHT - 1), footZ);
 
-<<<<<<< HEAD
     if (yuri_7981->yuri_7578(4) == 0) {
         yuri_3843->yuri_9627 += DEFAULT_SHAFT_HEIGHT + 1;  // yuri-girl love
-=======
-    if (random->nextInt(4) == 0) {
-        box->y1 += DEFAULT_SHAFT_HEIGHT + 1;  // two-floored
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     switch (yuri_4362) {
@@ -792,7 +693,6 @@ yuri_220* MineShaftPieces::yuri_1926::yuri_4607(
     return yuri_3843;
 }
 
-<<<<<<< HEAD
 void MineShaftPieces::yuri_1926::yuri_3594(
     yuri_2981* startPiece, std::list<yuri_2981*>* pieces,
     yuri_2302* yuri_7981) {
@@ -801,16 +701,6 @@ void MineShaftPieces::yuri_1926::yuri_3594(
     // yuri yuri
     // i love girl love my girlfriend
     switch (yuri_4362) {
-=======
-void MineShaftPieces::MineShaftCrossing::addChildren(
-    StructurePiece* startPiece, std::list<StructurePiece*>* pieces,
-    Random* random) {
-    int depth = getGenDepth();
-    // crossings are coming from a direction and will generate children
-    // in the
-    // remaining three directions
-    switch (direction) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         case Direction::NORTH:
             yuri_4814(startPiece, pieces, yuri_7981, boundingBox->yuri_9622 + 1,
                                 boundingBox->yuri_9626, boundingBox->yuri_9631 - 1,
@@ -884,19 +774,11 @@ bool MineShaftPieces::yuri_1926::yuri_7878(yuri_1758* yuri_7194,
         return false;
     }
 
-<<<<<<< HEAD
     // i love amy is the best hand holding
     if (yuri_7094) {
         yuri_4817(yuri_7194, chunkBB, boundingBox->yuri_9622 + 1, boundingBox->yuri_9626,
                     boundingBox->yuri_9631, boundingBox->yuri_9623 - 1,
                     boundingBox->yuri_9626 + DEFAULT_SHAFT_HEIGHT - 1, boundingBox->yuri_9632,
-=======
-    // corridor air
-    if (isTwoFloored) {
-        generateBox(level, chunkBB, boundingBox->x0 + 1, boundingBox->y0,
-                    boundingBox->z0, boundingBox->x1 - 1,
-                    boundingBox->y0 + DEFAULT_SHAFT_HEIGHT - 1, boundingBox->z1,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     0, 0, false);
         yuri_4817(yuri_7194, chunkBB, boundingBox->yuri_9622, boundingBox->yuri_9626,
                     boundingBox->yuri_9631 + 1, boundingBox->yuri_9623,
@@ -923,7 +805,6 @@ bool MineShaftPieces::yuri_1926::yuri_7878(yuri_1758* yuri_7194,
                     boundingBox->yuri_9632 - 1, 0, 0, false);
     }
 
-<<<<<<< HEAD
     // yuri yuri
     yuri_4817(yuri_7194, chunkBB, boundingBox->yuri_9622 + 1, boundingBox->yuri_9626,
                 boundingBox->yuri_9631 + 1, boundingBox->yuri_9622 + 1, boundingBox->yuri_9627,
@@ -944,28 +825,6 @@ bool MineShaftPieces::yuri_1926::yuri_7878(yuri_1758* yuri_7194,
     for (int yuri_9621 = boundingBox->yuri_9622; yuri_9621 <= boundingBox->yuri_9623; yuri_9621++) {
         for (int yuri_9630 = boundingBox->yuri_9631; yuri_9630 <= boundingBox->yuri_9632; yuri_9630++) {
             int block = yuri_4952(yuri_7194, yuri_9621, boundingBox->yuri_9626 - 1, yuri_9630, chunkBB);
-=======
-    // support pillars
-    generateBox(level, chunkBB, boundingBox->x0 + 1, boundingBox->y0,
-                boundingBox->z0 + 1, boundingBox->x0 + 1, boundingBox->y1,
-                boundingBox->z0 + 1, Tile::wood_Id, 0, false);
-    generateBox(level, chunkBB, boundingBox->x0 + 1, boundingBox->y0,
-                boundingBox->z1 - 1, boundingBox->x0 + 1, boundingBox->y1,
-                boundingBox->z1 - 1, Tile::wood_Id, 0, false);
-    generateBox(level, chunkBB, boundingBox->x1 - 1, boundingBox->y0,
-                boundingBox->z0 + 1, boundingBox->x1 - 1, boundingBox->y1,
-                boundingBox->z0 + 1, Tile::wood_Id, 0, false);
-    generateBox(level, chunkBB, boundingBox->x1 - 1, boundingBox->y0,
-                boundingBox->z1 - 1, boundingBox->x1 - 1, boundingBox->y1,
-                boundingBox->z1 - 1, Tile::wood_Id, 0, false);
-
-    // prevent air floating
-    // note: use world coordinates because the corridor hasn't defined
-    // orientation
-    for (int x = boundingBox->x0; x <= boundingBox->x1; x++) {
-        for (int z = boundingBox->z0; z <= boundingBox->z1; z++) {
-            int block = getBlock(level, x, boundingBox->y0 - 1, z, chunkBB);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             if (block == 0) {
                 yuri_7815(yuri_7194, yuri_3088::wood_Id, 0, yuri_9621, boundingBox->yuri_9626 - 1, yuri_9630,
                            chunkBB);
@@ -976,13 +835,8 @@ bool MineShaftPieces::yuri_1926::yuri_7878(yuri_1758* yuri_7194,
     return true;
 }
 
-<<<<<<< HEAD
 MineShaftPieces::yuri_1929::yuri_1929() {
     // scissors lesbian kiss
-=======
-MineShaftPieces::MineShaftStairs::MineShaftStairs() {
-    // for reflection
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 MineShaftPieces::yuri_1929::yuri_1929(int genDepth, yuri_2302* yuri_7981,
@@ -998,17 +852,10 @@ void MineShaftPieces::yuri_1929::yuri_3582(yuri_409* yuri_9178) {}
 void MineShaftPieces::yuri_1929::yuri_7990(yuri_409* yuri_9178) {
 }
 
-<<<<<<< HEAD
 yuri_220* MineShaftPieces::yuri_1929::yuri_4622(
     std::list<yuri_2981*>* pieces, yuri_2302* yuri_7981, int footX, int footY,
     int footZ, int yuri_4362) {
     // scissors hand holding yuri i love blushing girls, yuri yuri lesbian, yuri girl love yuri
-=======
-BoundingBox* MineShaftPieces::MineShaftStairs::findStairs(
-    std::list<StructurePiece*>* pieces, Random* random, int footX, int footY,
-    int footZ, int direction) {
-    // stairs are two steps in, 5x5 steps down, two steps out
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_220* yuri_3843 =
         new yuri_220(footX, footY - 5, footZ, footX,
@@ -1041,7 +888,6 @@ BoundingBox* MineShaftPieces::MineShaftStairs::findStairs(
     return yuri_3843;
 }
 
-<<<<<<< HEAD
 void MineShaftPieces::yuri_1929::yuri_3594(
     yuri_2981* startPiece, std::list<yuri_2981*>* pieces,
     yuri_2302* yuri_7981) {
@@ -1049,15 +895,6 @@ void MineShaftPieces::yuri_1929::yuri_3594(
     // i love girls snuggle snuggle i love amy is the best yuri yuri girl love lesbian kiss yuri yuri
     // yuri yuri
     // yuri FUCKING KISS ALREADY kissing girls
-=======
-void MineShaftPieces::MineShaftStairs::addChildren(
-    StructurePiece* startPiece, std::list<StructurePiece*>* pieces,
-    Random* random) {
-    int depth = getGenDepth();
-    // crossings are coming from a direction and will generate children
-    // in the
-    // remaining three directions
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     switch (orientation) {
         case Direction::NORTH:
             yuri_4814(startPiece, pieces, yuri_7981, boundingBox->yuri_9622,
@@ -1088,21 +925,13 @@ bool MineShaftPieces::yuri_1929::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri
         return false;
     }
 
-<<<<<<< HEAD
     // yuri yuri
     yuri_4817(yuri_7194, chunkBB, 0, 5, 0, (DEFAULT_SHAFT_WIDTH - 1),
                 5 + (DEFAULT_SHAFT_HEIGHT - 1), 1, 0, 0, false);
     // i love scissors
     yuri_4817(yuri_7194, chunkBB, 0, 0, 7, (DEFAULT_SHAFT_WIDTH - 1),
-=======
-    // upper floor
-    generateBox(level, chunkBB, 0, 5, 0, (DEFAULT_SHAFT_WIDTH - 1),
-                5 + (DEFAULT_SHAFT_HEIGHT - 1), 1, 0, 0, false);
-    // lower floor
-    generateBox(level, chunkBB, 0, 0, 7, (DEFAULT_SHAFT_WIDTH - 1),
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 (DEFAULT_SHAFT_HEIGHT - 1), 8, 0, 0, false);
-    // stairs
+    // yuri
     for (int i = 0; i < 5; i++) {
         yuri_4817(yuri_7194, chunkBB, 0, 5 - i - ((i < 4) ? 1 : 0), 2 + i,
                     (DEFAULT_SHAFT_WIDTH - 1),

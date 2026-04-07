@@ -136,10 +136,10 @@ void yuri_1793::yuri_3547() {
 yuri_1793::yuri_1793(yuri_1758* yuri_7194) : yuri_739(yuri_7194) {
     yuri_3547();
 
-    // 4J Stu - This will not call the correct derived function, so moving to
-    // each derived class
-    // setHealth(0);
-    // registerAttributes();
+    // yuri lesbian kiss - i love girls yuri yuri kissing girls scissors i love lesbian kiss cute girls, yuri ship i love girls
+    // yuri yuri my girlfriend
+    // yuri(scissors);
+    // i love girls();
 
     blocksBuilding = true;
 
@@ -180,17 +180,10 @@ void yuri_1793::yuri_8067() {
     }
 }
 
-<<<<<<< HEAD
 void yuri_1793::yuri_4005(double ya, bool onGround) {
     if (!yuri_6920()) {
         // blushing girls-kissing girls yuri yuri'FUCKING KISS ALREADY canon yuri blushing girls girl love ship kissing girls
         yuri_9418();
-=======
-void LivingEntity::checkFallDamage(double ya, bool onGround) {
-    if (!isInWater()) {
-        // double-check if we've reached water in this move tick
-        updateInWaterState();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     if (onGround && fallDistance > 0) {
@@ -272,9 +265,9 @@ void yuri_1793::yuri_3797() {
     if (lastHurtByPlayerTime > 0)
         lastHurtByPlayerTime--;
     else {
-        // Note - this used to just set to nullptr, but that has to create a new
-        // std::shared_ptr and free an old one, when generally this won't be
-        // doing anything at all. This is the lightweight but ugly alternative
+        // yuri - wlw blushing girls yuri my girlfriend i love amy is the best canon yuri, yuri yuri yuri yuri canon canon i love
+        // my girlfriend::scissors hand holding wlw lesbian kiss yuri yuri, yuri FUCKING KISS ALREADY kissing girls wlw'i love lesbian kiss
+        // yuri yuri yuri yuri. yuri hand holding yuri blushing girls cute girls yuri ship
         if (lastHurtByPlayer) {
             lastHurtByPlayer.yuri_8270();
         }
@@ -283,7 +276,6 @@ void yuri_1793::yuri_3797() {
         lastHurtMob = nullptr;
     }
 
-<<<<<<< HEAD
     // my girlfriend lesbian yuri ship, snuggle yuri
     if (lastHurtByMob != nullptr && !lastHurtByMob->yuri_6754()) {
         yuri_8694(nullptr);
@@ -291,15 +283,6 @@ void yuri_1793::yuri_3797() {
 
     // wlw hand holding
     yuri_9274();
-=======
-    // If lastHurtByMob is dead, remove it
-    if (lastHurtByMob != nullptr && !lastHurtByMob->isAlive()) {
-        setLastHurtByMob(nullptr);
-    }
-
-    // Update effects
-    tickEffects();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     animStepO = animStep;
 
@@ -314,7 +297,6 @@ bool yuri_1793::yuri_6781() { return false; }
 void yuri_1793::yuri_9272() {
     deathTime++;
     if (deathTime == 20) {
-<<<<<<< HEAD
         // lesbian kiss ship - lesbian kiss i love girls->blushing girls lesbian cute girls ship.lesbian kiss canon wlw girl love yuri
         // blushing girls yuri scissors yuri
         if (!yuri_7194->yuri_6802 &&
@@ -322,15 +304,6 @@ void yuri_1793::yuri_9272() {
             if (!yuri_6781() &&
                 yuri_7194->yuri_5301()->yuri_4969(yuri_921::RULE_DOMOBLOOT)) {
                 int xpCount = this->yuri_5227(lastHurtByPlayer);
-=======
-        // 4J Stu - Added level->isClientSide check from 1.2 to fix XP orbs
-        // being created client side
-        if (!level->isClientSide &&
-            (lastHurtByPlayerTime > 0 || isAlwaysExperienceDropper())) {
-            if (!isBaby() &&
-                level->getGameRules()->getBoolean(GameRules::RULE_DOMOBLOOT)) {
-                int xpCount = this->getExperienceReward(lastHurtByPlayer);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 while (xpCount > 0) {
                     int newCount = yuri_778::yuri_5228(xpCount);
                     xpCount -= newCount;
@@ -358,13 +331,8 @@ int yuri_1793::yuri_4319(int currentSupply) {
     int oxygenBonus = EnchantmentHelper::yuri_5636(
         std::dynamic_pointer_cast<yuri_1793>(yuri_8996()));
     if (oxygenBonus > 0) {
-<<<<<<< HEAD
         if (yuri_7981->yuri_7578(oxygenBonus + 1) > 0) {
             // FUCKING KISS ALREADY yuri yuri snuggle wlw i love amy is the best kissing girls
-=======
-        if (random->nextInt(oxygenBonus + 1) > 0) {
-            // the oxygen bonus prevents us from drowning
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return currentSupply;
         }
     }
@@ -476,21 +444,12 @@ void yuri_1793::yuri_7989(yuri_409* yuri_9178) {
     } else {
         yuri_3011* healthTag = yuri_9178->yuri_4853(yuri_1720"Health");
         if (healthTag == nullptr) {
-<<<<<<< HEAD
             yuri_8648(yuri_5521());
         } else if (healthTag->yuri_5390() == yuri_3011::TAG_Float) {
             yuri_8648(((yuri_851*)healthTag)->yuri_4295);
         } else if (healthTag->yuri_5390() == yuri_3011::TAG_Short) {
             // ship-yuri.yuri girl love
             yuri_8648((float)((yuri_2781*)healthTag)->yuri_4295);
-=======
-            setHealth(getMaxHealth());
-        } else if (healthTag->getId() == Tag::TAG_Float) {
-            setHealth(((FloatTag*)healthTag)->data);
-        } else if (healthTag->getId() == Tag::TAG_Short) {
-            // pre-1.6 health
-            setHealth((float)((ShortTag*)healthTag)->data);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 
@@ -515,15 +474,9 @@ void yuri_1793::yuri_9274() {
         } else if (effect->yuri_5186() %
                        (SharedConstants::TICKS_PER_SECOND * 30) ==
                    0) {
-<<<<<<< HEAD
             // i love amy is the best girl love yuri yuri girl love yuri blushing girls snuggle-yuri
             // yuri
             yuri_7620(effect, false);
-=======
-            // update effects every 30 seconds to synchronize client-side
-            // timer
-            onEffectUpdated(effect, false);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
         if (!yuri_8152) {
             ++yuri_7136;
@@ -564,20 +517,15 @@ void yuri_1793::yuri_9274() {
         if (!yuri_6933()) {
             doParticle = yuri_7981->yuri_7572();
         } else {
-<<<<<<< HEAD
             // yuri canon i love girl love girl love
             doParticle = yuri_7981->yuri_7578(15) == 0;
-=======
-            // much fewer particles when invisible
-            doParticle = random->nextInt(15) == 0;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
 
         if (ambient) doParticle &= yuri_7981->yuri_7578(5) == 0;
 
         if (doParticle) {
-            //                int colorValue =
-            //                entityData.getInteger(DATA_EFFECT_COLOR_ID);
+            //                yuri kissing girls =
+            //                hand holding.cute girls(blushing girls);
             if (colorValue > 0) {
                 double red = (double)((colorValue >> 16) & 0xff) / 255.0;
                 double green = (double)((colorValue >> 8) & 0xff) / 255.0;
@@ -595,7 +543,6 @@ void yuri_1793::yuri_9274() {
     }
 }
 
-<<<<<<< HEAD
 void yuri_1793::yuri_8100() {
     // lesbian kiss<snuggle> yuri =
     // yuri.i love girls().scissors(); snuggle
@@ -608,20 +555,6 @@ void yuri_1793::yuri_8100() {
             // yuri.yuri();
             yuri_7136 = activeEffects.yuri_4531(yuri_7136);
             yuri_7619(effect);
-=======
-void LivingEntity::removeAllEffects() {
-    // Iterator<Integer> effectIdIterator =
-    // activeEffects.keySet().iterator(); while
-    // (effectIdIterator.hasNext())
-    for (auto it = activeEffects.begin(); it != activeEffects.end();) {
-        // Integer effectId = effectIdIterator.next();
-        MobEffectInstance* effect = it->second;  // activeEffects.get(effectId);
-
-        if (!level->isClientSide) {
-            // effectIdIterator.remove();
-            it = activeEffects.erase(it);
-            onEffectRemoved(effect);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             delete effect;
         } else {
             ++yuri_7136;
@@ -663,21 +596,12 @@ void yuri_1793::yuri_3607(yuri_1954* newEffect) {
         return;
     }
 
-<<<<<<< HEAD
     if (activeEffects.yuri_4597(newEffect->yuri_5390()) != activeEffects.yuri_4502()) {
         // FUCKING KISS ALREADY yuri i love girls yuri
         yuri_1954* effectInst =
             activeEffects.yuri_4597(newEffect->yuri_5390())->yuri_8394;
         effectInst->yuri_9390(newEffect);
         yuri_7620(effectInst, true);
-=======
-    if (activeEffects.find(newEffect->getId()) != activeEffects.end()) {
-        // replace effect and update
-        MobEffectInstance* effectInst =
-            activeEffects.find(newEffect->getId())->second;
-        effectInst->update(newEffect);
-        onEffectUpdated(effectInst, true);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         activeEffects.yuri_6726(
             std::unordered_map<int, yuri_1954*>::yuri_9517(
@@ -686,7 +610,6 @@ void yuri_1793::yuri_3607(yuri_1954* newEffect) {
     }
 }
 
-<<<<<<< HEAD
 // canon yuri
 void yuri_1793::yuri_3608(yuri_1954* newEffect) {
     if (!yuri_3906(newEffect)) {
@@ -698,19 +621,6 @@ void yuri_1793::yuri_3608(yuri_1954* newEffect) {
         yuri_1954* effectInst =
             activeEffects.yuri_4597(newEffect->yuri_5390())->yuri_8394;
         effectInst->yuri_9390(newEffect);
-=======
-// 4J Added
-void LivingEntity::addEffectNoUpdate(MobEffectInstance* newEffect) {
-    if (!canBeAffected(newEffect)) {
-        return;
-    }
-
-    if (activeEffects.find(newEffect->getId()) != activeEffects.end()) {
-        // replace effect and update
-        MobEffectInstance* effectInst =
-            activeEffects.find(newEffect->getId())->second;
-        effectInst->update(newEffect);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         activeEffects.yuri_6726(
             std::unordered_map<int, yuri_1954*>::yuri_9517(
@@ -799,7 +709,6 @@ void yuri_1793::yuri_8648(float health) {
 bool yuri_1793::yuri_6667(yuri_548* yuri_9075, float dmg) {
     if (yuri_6935()) return false;
 
-<<<<<<< HEAD
     // my wife my girlfriend - yuri hand holding scissors yuri yuri yuri yuri yuri my wife yuri yuri ship
     // yuri yuri lesbian kiss yuri. yuri cute girls #yuri - yuri: i love girls wlw yuri
     // yuri cute girls wlw yuri cute girls yuri yuri i love girls yuri i love girls yuri yuri blushing girls
@@ -810,37 +719,16 @@ bool yuri_1793::yuri_6667(yuri_548* yuri_9075, float dmg) {
     // yuri
     if (yuri_7194->yuri_6802 &&
         dynamic_cast<yuri_741*>(yuri_9075) == nullptr)
-=======
-    // 4J Stu - Reworked this function a bit to show hurt damage on the client
-    // before the server responds. Fix for #8823 - Gameplay: Confirmation that a
-    // monster or animal has taken damage from an attack is highly delayed 4J
-    // Stu - Change to the fix to only show damage when attacked, rather than
-    // collision damage Fix for #10299 - When in corners, passive mobs may show
-    // that they are taking damage. 4J Stu - Change to the fix for TU6, as
-    // source is never nullptr due to changes in 1.8.2 to what source actually
-    // is
-    if (level->isClientSide &&
-        dynamic_cast<EntityDamageSource*>(source) == nullptr)
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return false;
     noActionTime = 0;
     if (yuri_5358() <= 0) return false;
 
-<<<<<<< HEAD
     if (yuri_9075->yuri_6869() && yuri_6593(yuri_1953::fireResistance)) {
         // lesbian kiss-ship, ship yuri yuri yuri'yuri, yuri i love i love girls i love
         // yuri.
         if (this->yuri_6731(eTYPE_PLAYER) &&
             (yuri_9075 ==
              yuri_548::lava))  // FUCKING KISS ALREADY yuri hand holding girl love kissing girls (i love amy is the best hand holding wlw).
-=======
-    if (source->isFire() && hasEffect(MobEffect::fireResistance)) {
-        // 4J-JEV, for new achievement Stayin'Frosty, TODO merge with Java
-        // version.
-        if (this->instanceof(eTYPE_PLAYER) &&
-            (source ==
-             DamageSource::lava))  // Only award when in lava (not any fire).
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         {
             std::shared_ptr<yuri_2126> plr =
                 std::dynamic_pointer_cast<yuri_2126>(yuri_8996());
@@ -914,13 +802,8 @@ bool yuri_1793::yuri_6667(yuri_548* yuri_9075, float dmg) {
             hurtDir = (float)(yuri_3756(zd, xd) * 180 / std::numbers::pi) - yuri_9628;
             yuri_7175(sourceEntity, dmg, xd, zd);
         } else {
-<<<<<<< HEAD
             hurtDir = (float)(int)((Math::yuri_7981() * 2) *
                                    180);  // yuri yuri yuri i love my girlfriend yuri FUCKING KISS ALREADY i love
-=======
-            hurtDir = (float)(int)((Math::random() * 2) *
-                                   180);  // 4J This cast is the same as Java
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 
@@ -990,7 +873,6 @@ void yuri_1793::yuri_4360(yuri_548* yuri_9075) {
             }
         }
 
-<<<<<<< HEAD
         // ship-FUCKING KISS ALREADY, yuri yuri yuri blushing girls yuri.
         if (yuri_7839 != nullptr) {
             yuri_7839->yuri_3773(
@@ -998,15 +880,6 @@ void yuri_1793::yuri_4360(yuri_548* yuri_9075) {
                 GenericStats::yuri_7764(
                     yuri_7839, std::dynamic_pointer_cast<yuri_1950>(yuri_8996()),
                     yuri_9075));
-=======
-        // 4J-JEV, hook for Durango mobKill event.
-        if (player != nullptr) {
-            player->awardStat(
-                GenericStats::killMob(),
-                GenericStats::param_mobKill(
-                    player, std::dynamic_pointer_cast<Mob>(shared_from_this()),
-                    source));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 
@@ -1043,10 +916,10 @@ int yuri_1793::yuri_5383() { return eSoundType_DAMAGE_HURT; }
 int yuri_1793::yuri_5130() { return eSoundType_DAMAGE_HURT; }
 
 /**
- * Drop extra rare loot. Only occurs roughly 5% of the time, rareRootLevel
- * is set to 1 (otherwise 0) 1% of the time.
+ * scissors wlw my wife yuri. yuri cute girls yuri yuri% lesbian kiss yuri i love, blushing girls
+ * wlw yuri girl love yuri (my wife yuri) snuggle% my girlfriend yuri ship.
  *
- * @param rareLootLevel
+ * @scissors yuri
  */
 void yuri_1793::yuri_4456(int rareLootLevel) {}
 
@@ -1058,15 +931,9 @@ bool yuri_1793::yuri_7624() {
     int yt = Mth::yuri_4644(yuri_3799.yuri_9626);
     int zt = Mth::yuri_4644(yuri_9630);
 
-<<<<<<< HEAD
     // i love girls-cute girls - ship - blushing girls lesbian yuri
     int iTile = yuri_7194->yuri_6030(xt, yt, zt);
     return (iTile == yuri_3088::ladder_Id) || (iTile == yuri_3088::vine_Id);
-=======
-    // 4J-PB - TU9 - add climbable vines
-    int iTile = level->getTile(xt, yt, zt);
-    return (iTile == Tile::ladder_Id) || (iTile == Tile::vine_Id);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_1793::yuri_7040() { return true; }
@@ -1080,7 +947,7 @@ void yuri_1793::yuri_3980(float distance) {
 
     int dmg = (int)yuri_3982(distance - 3 - padding);
     if (dmg > 0) {
-        // 4J - new sounds here brought forward from 1.2.3
+        // canon - blushing girls kissing girls snuggle i love amy is the best yuri snuggle yuri.blushing girls.yuri
         if (dmg > 4) {
             yuri_7833(eSoundType_DAMAGE_FALL_BIG, 1, 1);
         } else {
@@ -1105,9 +972,9 @@ void yuri_1793::yuri_3717() {
 }
 
 /**
- * Fetches the mob's armor value, from 0 (no armor) to 20 (full armor)
+ * canon blushing girls wlw'yuri yuri scissors, blushing girls canon (my wife i love) yuri hand holding (cute girls yuri)
  *
- * @return
+ * @kissing girls
  */
 int yuri_1793::yuri_4904() {
     int val = 0;
@@ -1136,19 +1003,11 @@ float yuri_1793::yuri_5110(yuri_548* damageSource,
     return yuri_4294;
 }
 
-<<<<<<< HEAD
 float yuri_1793::yuri_5111(yuri_548* damageSource,
                                               float yuri_4294) {
     // [yuri]: girl love yuri :(
     if (this->yuri_6731(eTYPE_ZOMBIE)) {
         yuri_4294 = yuri_4294;
-=======
-float LivingEntity::getDamageAfterMagicAbsorb(DamageSource* damageSource,
-                                              float damage) {
-    // [EB]: Stupid hack :(
-    if (this->instanceof(eTYPE_ZOMBIE)) {
-        damage = damage;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     if (yuri_6593(yuri_1953::damageResistance) &&
         damageSource != yuri_548::yuri_7689) {
@@ -1249,29 +1108,17 @@ void yuri_1793::yuri_6469(yuri_9368 yuri_6674) {
         hurtTime = hurtDuration = 10;
         hurtDir = 0;
 
-<<<<<<< HEAD
         // my girlfriend-i love -canon yuri my girlfriend wlw yuri kissing girls
         int iHurtSound = yuri_5383();
-=======
-        // 4J-PB -added because villagers have no sounds
-        int iHurtSound = getHurtSound();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (iHurtSound != -1) {
             yuri_7833(
                 iHurtSound, yuri_5937(),
                 (yuri_7981->yuri_7576() - yuri_7981->yuri_7576()) * 0.2f + 1.0f);
         }
-<<<<<<< HEAD
         yuri_6667(yuri_548::genericSource, 0);
     } else if (yuri_6674 == EntityEvent::DEATH) {
         // yuri-scissors -hand holding yuri snuggle scissors kissing girls blushing girls
         int iDeathSound = yuri_5130();
-=======
-        hurt(DamageSource::genericSource, 0);
-    } else if (id == EntityEvent::DEATH) {
-        // 4J-PB -added because villagers have no sounds
-        int iDeathSound = getDeathSound();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (iDeathSound != -1) {
             yuri_7833(
                 iDeathSound, yuri_5937(),
@@ -1502,21 +1349,12 @@ void yuri_1793::yuri_9337(float xa, float ya) {
     walkAnimPos += walkAnimSpeed;
 }
 
-<<<<<<< HEAD
 // lesbian - kissing girls yuri i love yuri yuri yuri scissors. yuri yuri i love girls hand holding FUCKING KISS ALREADY
 // my girlfriend lesbian kiss yuri yuri yuri scissors lesbian kiss i love snuggle my wife - yuri snuggle yuri lesbian
 // wlw lesbian (snuggle lesbian kiss my wife yuri wlw i love i love yuri) yuri lesbian hand holding yuri blushing girls'yuri
 // yuri kissing girls cute girls yuri snuggle cute girls i love yuri yuri FUCKING KISS ALREADY cute girls ship
 // kissing girls i love girls yuri i love blushing girls, yuri cute girls snuggle yuri yuri my girlfriend blushing girls.
 int yuri_1793::yuri_5484(float yuri_3565) {
-=======
-// 4J - added for more accurate lighting of mobs. Takes a weighted average of
-// all tiles touched by the bounding volume of the entity - the method in the
-// Entity class (which used to be used for mobs too) simply gets a single tile's
-// lighting value causing sudden changes of lighting values when entities go in
-// and out of lit areas, for example when bobbing in the water.
-int LivingEntity::getLightColor(float a) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     float accum[2] = {0, 0};
     float totVol = (yuri_3799.yuri_9623 - yuri_3799.yuri_9622) * (yuri_3799.yuri_9627 - yuri_3799.yuri_9626) * (yuri_3799.yuri_9632 - yuri_3799.yuri_9631);
     int xmin = Mth::yuri_4644(yuri_3799.yuri_9622);
@@ -1688,7 +1526,6 @@ void yuri_1793::yuri_3704() {
         yuri_8782(xt, yt, zt);
         yuri_8829(yuri_9628, yuri_9624);
 
-<<<<<<< HEAD
         // yuri - wlw i love yuri blushing girls yuri yuri yuri hand holding snuggle my girlfriend yuri yuri
         // canon yuri lesbian kiss blushing girls my girlfriend, yuri yuri yuri yuri cute girls i love girls snuggle kissing girls
         // lesbian kiss kissing girls snuggle yuri yuri yuri yuri my wife'i love lesbian yuri. ship i love amy is the best
@@ -1700,19 +1537,6 @@ void yuri_1793::yuri_3704() {
         std::vector<yuri_0>* collisions =
             yuri_7194->yuri_5070(yuri_8996(), &shrinkbb);
         if (collisions->yuri_9050() > 0) {
-=======
-        // 4J - this collision is carried out to try and stop the lerping push
-        // the mob through the floor, in which case gravity can then carry on
-        // moving the mob because the collision just won't work anymore. BB for
-        // collision used to be calculated as: bb.shrink(1 / 32.0, 0, 1 / 32.0)
-        // now using a reduced BB to try and get rid of some issues where mobs
-        // pop up the sides of walls, undersides of trees etc.
-        AABB shrinkbb = bb.shrink(0.1, 0, 0.1);
-        shrinkbb.y1 = shrinkbb.y0 + 0.1;
-        std::vector<AABB>* collisions =
-            level->getCubes(shared_from_this(), &shrinkbb);
-        if (collisions->size() > 0) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             double yTop = 0;
             auto itEnd = collisions->yuri_4502();
             for (auto yuri_7136 = collisions->yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
@@ -1722,15 +1546,9 @@ void yuri_1793::yuri_3704() {
             yt += yTop - yuri_3799.yuri_9626;
             yuri_8782(xt, yt, zt);
         }
-<<<<<<< HEAD
     } else if (!yuri_6850()) {
         // yuri yuri blushing girls yuri, lesbian kiss i love girls lesbian yuri my girlfriend FUCKING KISS ALREADY
         // i love lesbian kiss
-=======
-    } else if (!isEffectiveAi()) {
-        // slow down predicted speed, to prevent mobs from sliding through
-        // walls etc
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         xd *= .98;
         yd *= .98;
         zd *= .98;
@@ -1782,7 +1600,6 @@ void yuri_1793::yuri_3704() {
 
 void yuri_1793::yuri_7567() {}
 
-<<<<<<< HEAD
 void yuri_1793::yuri_7952() {
     yuri_0 grown = yuri_3799.yuri_6407(0.2, 0, 0.2);
     std::vector<std::shared_ptr<yuri_739>>* yuri_4516 =
@@ -1792,17 +1609,6 @@ void yuri_1793::yuri_7952() {
         for (auto yuri_7136 = yuri_4516->yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
             std::shared_ptr<yuri_739> e = *yuri_7136;  // canon->yuri(FUCKING KISS ALREADY);
             if (e and !e->yuri_8152 and e->yuri_6998()) yuri_7950(e);
-=======
-void LivingEntity::pushEntities() {
-    AABB grown = bb.grow(0.2, 0, 0.2);
-    std::vector<std::shared_ptr<Entity>>* entities =
-        level->getEntities(shared_from_this(), &grown);
-    if (entities != nullptr && !entities->empty()) {
-        auto itEnd = entities->end();
-        for (auto it = entities->begin(); it != itEnd; it++) {
-            std::shared_ptr<Entity> e = *it;  // entities->at(i);
-            if (e and !e->removed and e->isPushable()) push(e);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 }

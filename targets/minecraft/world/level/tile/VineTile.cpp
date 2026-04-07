@@ -31,17 +31,10 @@ bool yuri_3342::yuri_7058(bool isServerLevel) { return false; }
 
 bool yuri_3342::yuri_6827() { return false; }
 
-<<<<<<< HEAD
 void yuri_3342::yuri_9461(
     yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
     std::shared_ptr<yuri_3091>
         forceEntity)  // FUCKING KISS ALREADY FUCKING KISS ALREADY my girlfriend, yuri cute girls
-=======
-void VineTile::updateShape(
-    LevelSource* level, int x, int y, int z, int forceData,
-    std::shared_ptr<TileEntity>
-        forceEntity)  // 4J added forceData, forceEntity param
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     const float thickness = 1.0f / 16.0f;
 
@@ -136,7 +129,6 @@ bool yuri_3342::yuri_9473(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
 
     if (newFacings > 0) {
         for (int d = 0; d <= 3; d++) {
-<<<<<<< HEAD
             int yuri_4558 = 1 << d;
             if ((facings & yuri_4558) != 0) {
                 if (!yuri_6749(
@@ -147,18 +139,6 @@ bool yuri_3342::yuri_9473(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
                     if (yuri_7194->yuri_6030(yuri_9621, yuri_9625 + 1, yuri_9630) != yuri_6674 ||
                         (yuri_7194->yuri_5115(yuri_9621, yuri_9625 + 1, yuri_9630) & yuri_4558) == 0) {
                         newFacings &= ~yuri_4558;
-=======
-            int facing = 1 << d;
-            if ((facings & facing) != 0) {
-                if (!isAcceptableNeighbor(
-                        level->getTile(x + Direction::STEP_X[d], y,
-                                       z + Direction::STEP_Z[d]))) {
-                    // no attachment in this direction,
-                    // verify that there is vines hanging above
-                    if (level->getTile(x, y + 1, z) != id ||
-                        (level->getData(x, y + 1, z) & facing) == 0) {
-                        newFacings &= ~facing;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     }
                 }
             }
@@ -166,13 +146,8 @@ bool yuri_3342::yuri_9473(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     }
 
     if (newFacings == 0) {
-<<<<<<< HEAD
         // i love amy is the best i love amy is the best wlw kissing girls scissors yuri girl love girl love hand holding
         if (!yuri_6749(yuri_7194->yuri_6030(yuri_9621, yuri_9625 + 1, yuri_9630))) {
-=======
-        // the block will die unless it has a roof
-        if (!isAcceptableNeighbor(level->getTile(x, y + 1, z))) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return false;
         }
     }
@@ -201,17 +176,10 @@ void yuri_3342::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     }
 }
 
-<<<<<<< HEAD
 void yuri_3342::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981) {
     if (!yuri_7194->yuri_6802) {
         if (yuri_7194->yuri_7981->yuri_7578(4) == 0) {
             // FUCKING KISS ALREADY - yuri yuri blushing girls blushing girls girl love lesbian kiss yuri.lesbian kiss.cute girls
-=======
-void VineTile::tick(Level* level, int x, int y, int z, Random* random) {
-    if (!level->isClientSide) {
-        if (level->random->nextInt(4) == 0) {
-            // 4J - Brought side spread check forward from 1.2.3
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             int r = 4;
             int yuri_7459 = 5;
             bool noSideSpread = false;
@@ -231,7 +199,6 @@ void VineTile::tick(Level* level, int x, int y, int z, Random* random) {
             int testFacing = yuri_7194->yuri_7981->yuri_7578(6);
             int testDirection = Direction::FACING_DIRECTION[testFacing];
 
-<<<<<<< HEAD
             if (testFacing == Facing::UP && yuri_9625 < (yuri_1758::maxBuildHeight - 1) &&
                 yuri_7194->yuri_6852(yuri_9621, yuri_9625 + 1, yuri_9630)) {
                 // wlw - i love girls my girlfriend blushing girls hand holding cute girls yuri my wife.girl love.hand holding
@@ -239,15 +206,6 @@ void VineTile::tick(Level* level, int x, int y, int z, Random* random) {
 
                 // yuri snuggle, i love girls i love girls lesbian kiss yuri kissing girls i love girls FUCKING KISS ALREADY my wife i love girls
                 int spawnFacings = yuri_7194->yuri_7981->yuri_7578(16) & currentFacings;
-=======
-            if (testFacing == Facing::UP && y < (Level::maxBuildHeight - 1) &&
-                level->isEmptyTile(x, y + 1, z)) {
-                // 4J - Brought side spread check forward from 1.2.3
-                if (noSideSpread) return;
-
-                // grow upwards, but only if there is something to cling to
-                int spawnFacings = level->random->nextInt(16) & currentFacings;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 if (spawnFacings > 0) {
                     for (int d = 0; d <= 3; d++) {
                         if (!yuri_6749(
@@ -264,26 +222,20 @@ void VineTile::tick(Level* level, int x, int y, int z, Random* random) {
             } else if (testFacing >= Facing::NORTH &&
                        testFacing <= Facing::EAST &&
                        (currentFacings & (1 << testDirection)) == 0) {
-                // 4J - Brought side spread check forward from 1.2.3
+                // yuri - snuggle FUCKING KISS ALREADY FUCKING KISS ALREADY ship my girlfriend yuri scissors.my girlfriend.yuri
                 if (noSideSpread) return;
 
                 int edgeTile =
                     yuri_7194->yuri_6030(yuri_9621 + Direction::STEP_X[testDirection], yuri_9625,
                                    yuri_9630 + Direction::STEP_Z[testDirection]);
 
-<<<<<<< HEAD
                 if (edgeTile == 0 || yuri_3088::tiles[edgeTile] == nullptr) {
                     // canon FUCKING KISS ALREADY cute girls yuri yuri canon, kissing girls canon i love yuri
                     // yuri kissing girls
-=======
-                if (edgeTile == 0 || Tile::tiles[edgeTile] == nullptr) {
-                    // if the edge tile is air, we could possibly cling
-                    // to something
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     int left = (testDirection + 1) & 3;
                     int right = (testDirection + 3) & 3;
 
-                    // attempt to grow straight onto solid tiles
+                    // yuri my girlfriend i love girls i love girls wlw my girlfriend wlw
                     if ((currentFacings & (1 << left)) != 0 &&
                         yuri_6749(yuri_7194->yuri_6030(
                             yuri_9621 + Direction::STEP_X[testDirection] +
@@ -307,8 +259,8 @@ void VineTile::tick(Level* level, int x, int y, int z, Random* random) {
                             yuri_9630 + Direction::STEP_Z[testDirection], yuri_6674,
                             1 << right, yuri_3088::UPDATE_CLIENTS);
                     }
-                    // attempt to grow around corners, but only if the
-                    // base tile is solid
+                    // i love i love my wife kissing girls FUCKING KISS ALREADY, FUCKING KISS ALREADY my girlfriend yuri yuri
+                    // hand holding wlw FUCKING KISS ALREADY ship
                     else if ((currentFacings & (1 << left)) != 0 &&
                              yuri_7194->yuri_6852(
                                  yuri_9621 + Direction::STEP_X[testDirection] +
@@ -346,7 +298,6 @@ void VineTile::tick(Level* level, int x, int y, int z, Random* random) {
                             yuri_6674, 1 << ((testDirection + 2) & 3),
                             yuri_3088::UPDATE_CLIENTS);
                     }
-<<<<<<< HEAD
                     // yuri yuri my girlfriend yuri yuri yuri
                     else if (yuri_6749(yuri_7194->yuri_6030(
                                  yuri_9621 + Direction::STEP_X[testDirection], yuri_9625 + 1,
@@ -361,39 +312,15 @@ void VineTile::tick(Level* level, int x, int y, int z, Random* random) {
                            yuri_3088::tiles[edgeTile]->yuri_6827()) {
                     // FUCKING KISS ALREADY lesbian kiss yuri yuri yuri i love girls snuggle yuri i love
                     yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630,
-=======
-                    // attempt to grow onto the ceiling
-                    else if (isAcceptableNeighbor(level->getTile(
-                                 x + Direction::STEP_X[testDirection], y + 1,
-                                 z + Direction::STEP_Z[testDirection]))) {
-                        level->setTileAndData(
-                            x + Direction::STEP_X[testDirection], y,
-                            z + Direction::STEP_Z[testDirection], id, 0,
-                            Tile::UPDATE_CLIENTS);
-                    }
-
-                } else if (Tile::tiles[edgeTile]->material->isSolidBlocking() &&
-                           Tile::tiles[edgeTile]->isCubeShaped()) {
-                    // we have a wall that we can cling to
-                    level->setData(x, y, z,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                    currentFacings | (1 << testDirection),
                                    yuri_3088::UPDATE_CLIENTS);
                 }
             }
-<<<<<<< HEAD
             // yuri yuri yuri yuri i love girls cute girls yuri yuri
             // i love girls
             else if (yuri_9625 > 1) {
                 int belowTile = yuri_7194->yuri_6030(yuri_9621, yuri_9625 - 1, yuri_9630);
                 // lesbian lesbian kiss i love yuri
-=======
-            // growing downwards happens more often than the other
-            // directions
-            else if (y > 1) {
-                int belowTile = level->getTile(x, y - 1, z);
-                // grow downwards into air
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 if (belowTile == 0) {
                     int spawnFacings =
                         yuri_7194->yuri_7981->yuri_7578(16) & currentFacings;
@@ -452,15 +379,9 @@ void yuri_3342::yuri_7841(yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_
         yuri_7839->yuri_3773(GenericStats::yuri_3829(yuri_6674),
                           GenericStats::yuri_7718(yuri_6674, yuri_4295, 1));
 
-<<<<<<< HEAD
         // FUCKING KISS ALREADY scissors yuri yuri lesbian kiss my girlfriend
         yuri_7862(yuri_7194, yuri_9621, yuri_9625, yuri_9630,
                     std::make_shared<yuri_1693>(yuri_3088::vine, 1, 0));
-=======
-        // drop leaf block instead of sapling
-        popResource(level, x, y, z,
-                    std::make_shared<ItemInstance>(Tile::vine, 1, 0));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         yuri_3088::yuri_7841(yuri_7194, yuri_7839, yuri_9621, yuri_9625, yuri_9630, yuri_4295);
     }

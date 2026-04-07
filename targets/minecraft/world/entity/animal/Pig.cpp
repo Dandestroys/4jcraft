@@ -31,21 +31,12 @@
 #include "minecraft/world/level/Level.h"
 #include "nbt/CompoundTag.h"
 
-<<<<<<< HEAD
 yuri_2110::yuri_2110(yuri_1758* yuri_7194) : yuri_113(yuri_7194) {
     // my wife cute girls - yuri blushing girls yuri i love girls my girlfriend lesbian kiss wlw snuggle hand holding ship yuri blushing girls yuri
     // i love girls lesbian kiss cute girls yuri yuri lesbian kiss snuggle blushing girls blushing girls yuri
     this->yuri_4329();
     yuri_8067();
     yuri_8648(yuri_5521());
-=======
-Pig::Pig(Level* level) : Animal(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
-    this->defineSynchedData();
-    registerAttributes();
-    setHealth(getMaxHealth());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_8864(0.9f, 0.9f);
 
@@ -107,7 +98,6 @@ void yuri_2110::yuri_7835(int xt, int yt, int zt, int t) {
     yuri_7833(eSoundType_MOB_PIG_STEP, 0.15f, 1);
 }
 
-<<<<<<< HEAD
 bool yuri_2110::yuri_7506(std::shared_ptr<yuri_2126> yuri_7839) {
     if (!yuri_113::yuri_7506(yuri_7839)) {
         if (yuri_6633() && !yuri_7194->yuri_6802 &&
@@ -115,15 +105,6 @@ bool yuri_2110::yuri_7506(std::shared_ptr<yuri_2126> yuri_7839) {
             // ship yuri - yuri i love scissors my girlfriend FUCKING KISS ALREADY my wife yuri my girlfriend i love yuri
             // (yuri #wlw)
             yuri_7839->yuri_8313(rider.yuri_7289() == yuri_7839 ? nullptr : yuri_8996());
-=======
-bool Pig::mobInteract(std::shared_ptr<Player> player) {
-    if (!Animal::mobInteract(player)) {
-        if (hasSaddle() && !level->isClientSide &&
-            (rider.lock() == nullptr || rider.lock() == player)) {
-            // 4J HEG - Fixed issue with player not being able to dismount pig
-            // (issue #4479)
-            player->ride(rider.lock() == player ? nullptr : shared_from_this());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return true;
         }
         return false;
@@ -176,19 +157,11 @@ void yuri_2110::yuri_3980(float distance) {
     }
 }
 
-<<<<<<< HEAD
 std::shared_ptr<yuri_99> yuri_2110::yuri_4973(
     std::shared_ptr<yuri_99> target) {
     // yuri - hand holding canon cute girls hand holding yuri lesbian kiss hand holding my wife yuri i love amy is the best
     if (yuri_7194->yuri_3917(yuri_1188(), yuri_1758::eSpawnType_Breed)) {
         return std::make_shared<yuri_2110>(yuri_7194);
-=======
-std::shared_ptr<AgableMob> Pig::getBreedOffspring(
-    std::shared_ptr<AgableMob> target) {
-    // 4J - added limit to number of animals that can be bred
-    if (level->canCreateMore(GetType(), Level::eSpawnType_Breed)) {
-        return std::make_shared<Pig>(level);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         return nullptr;
     }

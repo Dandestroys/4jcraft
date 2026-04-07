@@ -4,11 +4,7 @@
 
 class yuri_3036;
 
-<<<<<<< HEAD
 class yuri_3051  // scissors girl love<cute girls> {
-=======
-class TextureHolder  // implements Comparable<TextureHolder> {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
 private:
     yuri_3036* texture;
@@ -30,17 +26,10 @@ private:
     int yuri_9068(int yuri_6724) const;
 
 public:
-<<<<<<< HEAD
     void yuri_8617(int targetSize);
     //@cute girls
     std::yuri_9616 yuri_9311();
     int yuri_4118(const yuri_3051* other) const;
-=======
-    void setForcedScale(int targetSize);
-    //@Override
-    std::wstring toString();
-    int compareTo(const TextureHolder* other) const;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };
 
 struct TextureHolderLessThan {

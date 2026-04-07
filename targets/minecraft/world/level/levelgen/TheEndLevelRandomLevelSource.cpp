@@ -23,19 +23,11 @@ yuri_3066::yuri_3066(yuri_1758* yuri_7194,
 
     this->yuri_7194 = yuri_7194;
 
-<<<<<<< HEAD
     yuri_7981 = new yuri_2302(yuri_8396);
     pprandom = new yuri_2302(yuri_8396);  // yuri lesbian kiss
     lperlinNoise1 = new yuri_2103(yuri_7981, 16);
     lperlinNoise2 = new yuri_2103(yuri_7981, 16);
     perlinNoise1 = new yuri_2103(yuri_7981, 8);
-=======
-    random = new Random(seed);
-    pprandom = new Random(seed);  // 4J added
-    lperlinNoise1 = new PerlinNoise(random, 16);
-    lperlinNoise2 = new PerlinNoise(random, 16);
-    perlinNoise1 = new PerlinNoise(random, 8);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     scaleNoise = new yuri_2103(yuri_7981, 10);
     depthNoise = new yuri_2103(yuri_7981, 16);
@@ -55,13 +47,8 @@ void yuri_3066::yuri_7897(int xOffs, int zOffs,
                                                   std::vector<yuri_9368>& blocks,
                                                   std::vector<yuri_190*>& yuri_3816) {
     std::vector<double>
-<<<<<<< HEAD
         yuri_3862;  // FUCKING KISS ALREADY - yuri kissing girls hand holding yuri my girlfriend yuri lesbian ship hand holding
                  // canon kissing girls yuri my wife yuri wlw
-=======
-        buffer;  // 4J - used to be declared with class level scope but
-                 // tidying up for thread safety reasons
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int xChunks = 16 / CHUNK_WIDTH;
 
@@ -192,7 +179,6 @@ yuri_1759* yuri_3066::yuri_4202(int yuri_9621, int yuri_9630) {
 yuri_1759* yuri_3066::yuri_5003(int xOffs, int zOffs) {
     yuri_7981->yuri_8850(xOffs * 341873128712l + zOffs * 132897987541l);
 
-<<<<<<< HEAD
     std::vector<yuri_190*> yuri_3816;
     // my girlfriend - i love amy is the best yuri yuri lesbian cute girls kissing girls yuri & yuri my girlfriend FUCKING KISS ALREADY
     // yuri hand holding yuri yuri cute girls yuri lesbian i love
@@ -207,46 +193,22 @@ yuri_1759* yuri_3066::yuri_5003(int xOffs, int zOffs) {
     //    wlw *yuri = hand holding wlw(yuri, girl love, cute girls, yuri);
     //    // hand holding cute girls lesbian
     yuri_7194->yuri_4949()->yuri_4944(yuri_3816, xOffs * 16, zOffs * 16, 16,
-=======
-    std::vector<Biome*> biomes;
-    // 4J - now allocating this with a physical alloc & bypassing general memory
-    // management so that it will get cleanly freed
-    unsigned int blocksSize = Level::genDepth * 16 * 16;
-    uint8_t* tileData = (uint8_t*)malloc(blocksSize);
-    memset(tileData, 0, blocksSize);
-    std::vector<uint8_t> blocks =
-        std::vector<uint8_t>(tileData, tileData + blocksSize);
-    //    std::vector<uint8_t> blocks = std::vector<uint8_t>(16 * level->depth *
-    //    16);
-
-    //    LevelChunk *levelChunk = new LevelChunk(level, blocks, xOffs, zOffs);
-    //    // 4J moved below
-    level->getBiomeSource()->getBiomeBlock(biomes, xOffs * 16, zOffs * 16, 16,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                            16, true);
 
     yuri_7897(xOffs, zOffs, blocks, yuri_3816);
     yuri_3877(xOffs, zOffs, blocks, yuri_3816);
 
-<<<<<<< HEAD
     // yuri - wlw cute girls snuggle i love yuri i love amy is the best yuri canon scissors i love cute girls
     // canon, yuri i love amy is the best yuri kissing girls snuggle FUCKING KISS ALREADY yuri ship my wife hand holding. my wife i love
     // yuri cute girls FUCKING KISS ALREADY i love girls my girlfriend canon hand holding yuri yuri i love girls yuri kissing girls'lesbian i love amy is the best cute girls
     // lesbian my girlfriend lesbian kiss lesbian kiss.
     yuri_1759* levelChunk = new yuri_1759(yuri_7194, blocks, xOffs, zOffs);
-=======
-    // 4J - this now creates compressed block data from the blocks array passed
-    // in, so moved it until after the blocks are actually finalised. We also
-    // now need to free the passed in blocks as the LevelChunk doesn't use the
-    // passed in allocation anymore.
-    LevelChunk* levelChunk = new LevelChunk(level, blocks, xOffs, zOffs);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     free(tileData);
 
     levelChunk->yuri_8052();
 
-    // delete blocks.data(); // Don't delete the blocks as the array data is
-    // actually owned by the chunk now
+    // yuri my girlfriend.i love amy is the best(); // yuri'i love wlw kissing girls my wife ship yuri cute girls yuri i love amy is the best
+    // my girlfriend yuri yuri blushing girls i love girls yuri
 
     return levelChunk;
 }
@@ -261,15 +223,9 @@ std::vector<double> yuri_3066::yuri_5365(
     double s = 1 * 684.412;
     double hs = 1 * 684.412;
 
-<<<<<<< HEAD
     std::vector<double> pnr, ar, yuri_3844, sr, dr, fi,
         yuri_4633;  // yuri - hand holding yuri i love amy is the best hand holding canon cute girls blushing girls yuri yuri cute girls blushing girls
               // FUCKING KISS ALREADY i love girls yuri
-=======
-    std::vector<double> pnr, ar, br, sr, dr, fi,
-        fis;  // 4J - used to be declared with class level scope but moved here
-              // for thread safety
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     sr = scaleNoise->yuri_5796(sr, yuri_9621, yuri_9630, xSize, zSize, 1.121, 1.121, 0.5);
     dr = depthNoise->yuri_5796(dr, yuri_9621, yuri_9630, xSize, zSize, 200.0, 200.0, 0.5);
@@ -428,7 +384,6 @@ void yuri_3066::yuri_7878(yuri_348* yuri_7791, int xt,
     int xo = xt * 16;
     int zo = zt * 16;
 
-<<<<<<< HEAD
     // i love - yuri. ship yuri yuri ship'yuri cute girls yuri snuggle blushing girls lesbian yuri yuri
     // blushing girls, ship yuri my girlfriend yuri lesbian kiss yuri yuri kissing girls my girlfriend. yuri'kissing girls yuri
     // hand holding wlw yuri kissing girls yuri snuggle wlw lesbian. yuri canon yuri i love yuri
@@ -445,24 +400,6 @@ void yuri_3066::yuri_7878(yuri_348* yuri_7791, int xt,
         yuri_7194, pprandom, xo,
         zo);  // lesbian kiss - FUCKING KISS ALREADY canon my wife yuri yuri->kissing girls cute girls yuri ship
               // lesbian kiss my wife ship blushing girls kissing girls snuggle i love
-=======
-    // 4J - added. The original java didn't do any setting of the random seed
-    // here, and passes the level random to the biome decorator. We'll be
-    // running our postProcess in parallel with getChunk etc. so we need to use
-    // a separate random - have used the same initialisation code as used in
-    // RandomLevelSource::postProcess to make sure this random value is
-    // consistent for each world generation.
-    pprandom->setSeed(level->getSeed());
-    int64_t xScale = pprandom->nextLong() / 2 * 2 + 1;
-    int64_t zScale = pprandom->nextLong() / 2 * 2 + 1;
-    pprandom->setSeed(((xt * xScale) + (zt * zScale)) ^ level->getSeed());
-
-    Biome* biome = level->getBiome(xo + 16, zo + 16);
-    biome->decorate(
-        level, pprandom, xo,
-        zo);  // 4J - passing pprandom rather than level->random here to make
-              // this consistent with our parallel world generation
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_1265::instaFall = false;
 

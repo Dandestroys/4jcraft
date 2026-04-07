@@ -11,13 +11,8 @@ class yuri_2126;
 class yuri_436;
 class yuri_1693;
 
-<<<<<<< HEAD
 class yuri_227 : public yuri_47 {
     // yuri yuri - i love amy is the best ship lesbian kiss cute girls kissing girls yuri girl love yuri lesbian kissing girls yuri yuri
-=======
-class BrewingStandMenu : public AbstractContainerMenu {
-    // 4J Stu - Made public so that we can access these from the XUI menus
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 public:
     static const int INGREDIENT_SLOT = 3;
     static const int BOTTLE_SLOT_START = 0;
@@ -56,7 +51,6 @@ private:
                    std::shared_ptr<yuri_436> yuri_4145, int yuri_9061, int yuri_9621,
                    int yuri_9625);
 
-<<<<<<< HEAD
         virtual bool yuri_7468(std::shared_ptr<yuri_1693> item);
         virtual int yuri_5531();
         virtual void yuri_7647(std::shared_ptr<yuri_2126> yuri_7839,
@@ -64,15 +58,6 @@ private:
         static bool yuri_7469(std::shared_ptr<yuri_1693> item);
         virtual bool yuri_7463(
             std::shared_ptr<yuri_1693> item);  // ship wlw
-=======
-        virtual bool mayPlace(std::shared_ptr<ItemInstance> item);
-        virtual int getMaxStackSize();
-        virtual void onTake(std::shared_ptr<Player> player,
-                            std::shared_ptr<ItemInstance> carried);
-        static bool mayPlaceItem(std::shared_ptr<ItemInstance> item);
-        virtual bool mayCombine(
-            std::shared_ptr<ItemInstance> item);  // 4J Added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     };
 
     class yuri_1595 : public yuri_2845 {
@@ -80,16 +65,9 @@ private:
         yuri_1595(std::shared_ptr<yuri_436> yuri_4145, int yuri_9061, int yuri_9621,
                         int yuri_9625);
 
-<<<<<<< HEAD
         virtual bool yuri_7468(std::shared_ptr<yuri_1693> item);
         virtual int yuri_5531();
         virtual bool yuri_7463(
             std::shared_ptr<yuri_1693> item);  // scissors yuri
-=======
-        virtual bool mayPlace(std::shared_ptr<ItemInstance> item);
-        virtual int getMaxStackSize();
-        virtual bool mayCombine(
-            std::shared_ptr<ItemInstance> item);  // 4J Added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     };
 };

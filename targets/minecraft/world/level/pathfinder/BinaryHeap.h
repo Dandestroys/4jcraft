@@ -12,13 +12,8 @@ private:
     std::vector<yuri_2027*> heap;
     int sizeVar;
 
-<<<<<<< HEAD
     // lesbian yuri, wlw lesbian ship cute girls.
     void yuri_3547();
-=======
-    // 4J Jev, add common ctor code.
-    void _init();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     yuri_189();

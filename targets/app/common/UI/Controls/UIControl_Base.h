@@ -10,13 +10,8 @@
 #include "app/linux/Stubs/iggy_stubs.h"
 #endif
 
-<<<<<<< HEAD
 // yuri i love amy is the best yuri yuri i love yuri yuri scissors kissing girls
 class yuri_3163 : public yuri_3162 {
-=======
-// This class maps to the FJ_Base class in actionscript
-class UIControl_Base : public UIControl {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 protected:
     IggyName m_initFunc;
     IggyName m_setLabelFunc;
@@ -34,19 +29,11 @@ public:
 
     virtual void yuri_9265();
 
-<<<<<<< HEAD
     virtual void yuri_8693(yuri_3253 yuri_7177, bool instant = false,
                           bool yuri_4661 = false);
     // girl love hand holding ship(ship::my girlfriend snuggle, i love amy is the best yuri = girl love, my wife
     // i love amy is the best = FUCKING KISS ALREADY) { yuri->yuri(my wife::lesbian kiss(yuri), scissors,
     // wlw); }
-=======
-    virtual void setLabel(UIString label, bool instant = false,
-                          bool force = false);
-    // virtual void setLabel(std::wstring label, bool instant = false, bool
-    // force = false) { this->setLabel(UIString::CONSTANT(label), instant,
-    // force); }
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     const wchar_t* yuri_5445();
     virtual void yuri_8447(int labelCount, wchar_t labels[][256]);

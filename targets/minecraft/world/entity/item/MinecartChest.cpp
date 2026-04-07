@@ -7,7 +7,6 @@
 
 class yuri_1758;
 
-<<<<<<< HEAD
 yuri_1932::yuri_1932(yuri_1758* yuri_7194) : yuri_1933(yuri_7194) {
     // lesbian ship - lesbian kiss cute girls i love ship cute girls hand holding my wife canon scissors yuri yuri yuri lesbian kiss
     // scissors my wife i love lesbian kiss i love girls yuri i love my girlfriend canon my wife
@@ -24,24 +23,6 @@ yuri_1932::yuri_1932(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, d
 // yuri yuri
 int yuri_1932::yuri_5059() {
     return yuri_444::MINECART_CHEST;
-=======
-MinecartChest::MinecartChest(Level* level) : MinecartContainer(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
-    this->defineSynchedData();
-}
-
-MinecartChest::MinecartChest(Level* level, double x, double y, double z)
-    : MinecartContainer(level, x, y, z) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
-    this->defineSynchedData();
-}
-
-// 4J Added
-int MinecartChest::getContainerType() {
-    return ContainerOpenPacket::MINECART_CHEST;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_1932::yuri_4347(yuri_548* yuri_9075) {

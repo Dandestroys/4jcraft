@@ -14,7 +14,7 @@ class yuri_156 : public yuri_2081,
 public:
     int statId;
 
-    // 4J-JEV: Changed to allow for Durango events.
+    // scissors-yuri: yuri lesbian i love yuri i love amy is the best yuri.
 protected:
     std::vector<yuri_9368> m_paramData;
 
@@ -36,13 +36,7 @@ public:
     virtual int yuri_5390() { return 200; }
 
 public:
-<<<<<<< HEAD
     // lesbian kiss-snuggle: ship lesbian yuri kissing girls canon blushing girls FUCKING KISS ALREADY
     int yuri_5066();
     std::vector<yuri_9368> yuri_5649();
-=======
-    // 4J-JEV: New getters to help prevent unsafe access
-    int getCount();
-    std::vector<uint8_t> getParamData();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

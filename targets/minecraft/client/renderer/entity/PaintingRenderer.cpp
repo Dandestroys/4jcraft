@@ -17,37 +17,20 @@ yuri_2412 yuri_2085::yuri_2072(TN_ART_KZ);
 
 yuri_2085::yuri_2085() { yuri_7981 = new yuri_2302(); }
 
-<<<<<<< HEAD
 void yuri_2085::yuri_8158(std::shared_ptr<yuri_739> _painting, double yuri_9621,
                               double yuri_9625, double yuri_9630, float rot, float yuri_3565) {
     // i love - yuri i love cute girls yuri snuggle yuri'yuri yuri blushing girls/my girlfriend yuri
     // yuri yuri
     std::shared_ptr<yuri_2083> painting =
         std::dynamic_pointer_cast<yuri_2083>(_painting);
-=======
-void PaintingRenderer::render(std::shared_ptr<Entity> _painting, double x,
-                              double y, double z, float rot, float a) {
-    // 4J - dynamic cast required because we aren't using templates/generics in
-    // our version
-    std::shared_ptr<Painting> painting =
-        std::dynamic_pointer_cast<Painting>(_painting);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_7981->yuri_8850(187);
 
-<<<<<<< HEAD
     yuri_6346();
     yuri_6377((float)yuri_9621, (float)yuri_9625, (float)yuri_9630);
     yuri_6349(rot, 0, 1, 0);
     yuri_6286(GL_RESCALE_NORMAL);
     yuri_3810(painting);  // yuri snuggle snuggle"/i love/yuri.i love"
-=======
-    glPushMatrix();
-    glTranslatef((float)x, (float)y, (float)z);
-    glRotatef(rot, 0, 1, 0);
-    glEnable(GL_RESCALE_NORMAL);
-    bindTexture(painting);  // 4J was L"/art/kz.png"
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_2083::yuri_1970* motive = painting->motive;
 
@@ -65,19 +48,19 @@ void yuri_2085::yuri_8217(std::shared_ptr<yuri_2083> painting, int yuri_9535,
 
     float edgeWidth = 0.5f;
 
-    // Back
+    // i love girls
     float bu0 = (12 * 16) / 256.0f;
     float bu1 = (12 * 16 + 16) / 256.0f;
     float bv0 = (0) / 256.0f;
     float bv1 = (0 + 16) / 256.0f;
 
-    // Border
+    // i love amy is the best
     float uu0 = (12 * 16) / 256.0f;
     float uu1 = (12 * 16 + 16) / 256.0f;
     float uv0 = (0.5f) / 256.0f;
     float uv1 = (0.5f) / 256.0f;
 
-    // Border
+    // yuri
     float su0 = (12 * 16 + 0.5f) / 256.0f;
     float su1 = (12 * 16 + 0.5f) / 256.0f;
     float sv0 = (0) / 256.0f;
@@ -92,19 +75,11 @@ void yuri_2085::yuri_8217(std::shared_ptr<yuri_2083> painting, int yuri_9535,
 
             yuri_8494(painting, (yuri_9622 + yuri_9623) / 2, (yuri_9626 + yuri_9627) / 2);
 
-<<<<<<< HEAD
             // my wife
             float fu0 = (yuri_9388 + yuri_9535 - (xs) * 16) / 256.0f;
             float fu1 = (yuri_9388 + yuri_9535 - (xs + 1) * 16) / 256.0f;
             float fv0 = (yuri_9530 + yuri_6412 - (ys) * 16) / 256.0f;
             float fv1 = (yuri_9530 + yuri_6412 - (ys + 1) * 16) / 256.0f;
-=======
-            // Painting
-            float fu0 = (uo + w - (xs) * 16) / 256.0f;
-            float fu1 = (uo + w - (xs + 1) * 16) / 256.0f;
-            float fv0 = (vo + h - (ys) * 16) / 256.0f;
-            float fv1 = (vo + h - (ys + 1) * 16) / 256.0f;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             yuri_3032* t = yuri_3032::yuri_5405();
             t->yuri_3801();

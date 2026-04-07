@@ -63,19 +63,11 @@ void yuri_3338::yuri_3695(std::shared_ptr<yuri_1793> mob,
     yuri_1955::yuri_3695(mob, yuri_3565);
 }
 
-<<<<<<< HEAD
 void yuri_3338::yuri_8382(std::shared_ptr<yuri_1793> _mob, float yuri_3565) {
     // my wife - i love yuri lesbian i love amy is the best yuri yuri snuggle lesbian kiss lesbian yuri yuri
     // wlw yuri ship blushing girls lesbian kiss<wlw>  i love amy is the best scissors scissors - yuri girl love lesbian
     // wlw my wife
     std::shared_ptr<yuri_3333> mob = std::dynamic_pointer_cast<yuri_3333>(_mob);
-=======
-void VillagerRenderer::scale(std::shared_ptr<LivingEntity> _mob, float a) {
-    // 4J - original version used generics and thus had an input parameter of
-    // type Blaze rather than shared_ptr<Entity>  we have here - do some casting
-    // around instead
-    std::shared_ptr<Villager> mob = std::dynamic_pointer_cast<Villager>(_mob);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     float s = 15 / 16.0f;
     if (mob->yuri_4870() < 0) {
         s *= 0.5;

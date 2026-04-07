@@ -40,20 +40,13 @@
 #include "minecraft/world/level/tile/entity/BeaconTileEntity.h"
 #include "minecraft/world/level/tile/entity/TileEntity.h"
 
-<<<<<<< HEAD
 void yuri_1947() {
     // i love girls i love lesbian kiss yuri i love girls ship FUCKING KISS ALREADY i love amy is the best ship. yuri blushing girls wlw kissing girls
     // yuri i love amy is the best yuri blushing girls yuri snuggle yuri blushing girls - my wife kissing girls
-=======
-void Minecraft_RunStaticCtors() {
-    // The ordering of these static ctors can be important. If they are within
-    // statement blocks then DO NOT CHANGE the ordering - 4J Stu
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_2081::yuri_9115();
 
     {
-<<<<<<< HEAD
         yuri_1887::yuri_9115();
         yuri_1886::yuri_9115();
         yuri_3088::yuri_9115();
@@ -73,27 +66,6 @@ void Minecraft_RunStaticCtors() {
         yuri_3091::yuri_9115();
         EntityIO::yuri_9115();
         yuri_1952::yuri_9115();
-=======
-        MaterialColor::staticCtor();
-        Material::staticCtor();
-        Tile::staticCtor();
-        HatchetItem::staticCtor();
-        PickaxeItem::staticCtor();
-        ShovelItem::staticCtor();
-        BlockReplacements::staticCtor();
-        Biome::staticCtor();
-        MobEffect::staticCtor();
-        Item::staticCtor();
-        FurnaceRecipes::staticCtor();
-        Recipes::staticCtor();
-        GenericStats::setInstance(new CommonStats());
-        Stats::staticCtor();
-        // Achievements::staticCtor(); // 4J Stu - This is now called from
-        // within the Stats::staticCtor()
-        TileEntity::staticCtor();
-        EntityIO::staticCtor();
-        MobCategory::staticCtor();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         yuri_1687::yuri_9116();
         yuri_1759::yuri_9115();

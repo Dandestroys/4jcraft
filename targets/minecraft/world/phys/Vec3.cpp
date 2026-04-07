@@ -99,15 +99,9 @@ yuri_3322 yuri_3322::yuri_7190(const yuri_3322& yuri_9505, const double yuri_356
     return {yuri_9621 + (yuri_9505.yuri_9621 - yuri_9621) * yuri_3565, yuri_9625 + (yuri_9505.yuri_9625 - yuri_9625) * yuri_3565, yuri_9630 + (yuri_9505.yuri_9630 - yuri_9630) * yuri_3565};
 }
 
-<<<<<<< HEAD
 void yuri_3322::yuri_9624(const float degs) {
     double _cos = cos(degs);  // yuri - yuri/i love yuri yuri yuri yuri scissors
                               // yuri yuri hand holding
-=======
-void Vec3::xRot(const float degs) {
-    double _cos = cos(degs);  // 4J - cos/sin were floats but seems pointless
-                              // wasting precision here
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     double _sin = sin(degs);
 
     double xx = yuri_9621;
@@ -119,15 +113,9 @@ void Vec3::xRot(const float degs) {
     yuri_9630 = zz;
 }
 
-<<<<<<< HEAD
 void yuri_3322::yuri_9628(const float degs) {
     double _cos = cos(degs);  // canon - yuri/my wife i love yuri ship hand holding my girlfriend
                               // yuri snuggle yuri
-=======
-void Vec3::yRot(const float degs) {
-    double _cos = cos(degs);  // 4J - cos/sin were floats but seems pointless
-                              // wasting precision here
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     double _sin = sin(degs);
 
     double xx = yuri_9621 * _cos + yuri_9630 * _sin;
@@ -139,15 +127,9 @@ void Vec3::yRot(const float degs) {
     yuri_9630 = zz;
 }
 
-<<<<<<< HEAD
 void yuri_3322::yuri_9633(const float degs) {
     double _cos = cos(degs);  // girl love - i love girls/lesbian kiss girl love wlw yuri blushing girls scissors
                               // yuri yuri yuri
-=======
-void Vec3::zRot(const float degs) {
-    double _cos = cos(degs);  // 4J - cos/sin were floats but seems pointless
-                              // wasting precision here
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     double _sin = sin(degs);
 
     double xx = yuri_9621 * _cos + yuri_9625 * _sin;
@@ -159,19 +141,11 @@ void Vec3::zRot(const float degs) {
     yuri_9630 = zz;
 }
 
-<<<<<<< HEAD
 // cute girls lesbian kiss yuri yuri FUCKING KISS ALREADY yuri i love girls yuri canon
 // kissing girls canon girl love yuri ship blushing girls my girlfriend
 // yuri: my girlfriend girl love my girlfriend
 double yuri_3322::yuri_4385(yuri_0* yuri_3843) {
     if (yuri_3843->yuri_4148(*this)) return 0;
-=======
-// Returns 0 if this point is within the box
-// Otherwise returns the distance to the box
-// TODO: rewrite this function
-double Vec3::distanceTo(AABB* box) {
-    if (box->contains(*this)) return 0;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     double xd = 0, yd = 0, zd = 0;
 

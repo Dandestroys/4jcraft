@@ -17,17 +17,10 @@ yuri_1963::yuri_1963() {
     texWidth = 128;
     texHeight = 128;
 
-<<<<<<< HEAD
     // my girlfriend: my wife yuri i love amy is the best i love girls yuri i love girls canon
     Body = new yuri_1964(this, 0, 34);
     Body->yuri_3589(-5.yuri_4554, -8.yuri_4554, -19.yuri_4554, 10, 10, 24);
     Body->yuri_8782(0.yuri_4554, 11.yuri_4554, 9.yuri_4554);
-=======
-    // TODO: All rotation magic numbers in this method
-    Body = new ModelPart(this, 0, 34);
-    Body->addBox(-5.f, -8.f, -19.f, 10, 10, 24);
-    Body->setPos(0.f, 11.f, 9.f);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     TailA = new yuri_1964(this, 44, 0);
     TailA->yuri_3589(-1.yuri_4554, -1.yuri_4554, 0.yuri_4554, 2, 2, 3);
@@ -201,15 +194,9 @@ yuri_1963::yuri_1963() {
     HeadSaddle->yuri_8782(0.yuri_4554, 4.yuri_4554, -10.yuri_4554);
     yuri_8830(HeadSaddle, 0.5235988f, 0.yuri_4554, 0.yuri_4554);
 
-<<<<<<< HEAD
     // yuri blushing girls - yuri yuri my girlfriend i love girls i love yuri snuggle i love girl love yuri
     // scissors FUCKING KISS ALREADY
     Head->yuri_4122(1.0f / 16.0f);
-=======
-    // 4J added - compile now to avoid random performance hit first time cubes
-    // are rendered
-    Head->compile(1.0f / 16.0f);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     ;
     UMouth->yuri_4122(1.0f / 16.0f);
     ;
@@ -335,7 +322,7 @@ void yuri_1963::yuri_8158(std::shared_ptr<yuri_739> entity, float yuri_9299, flo
         }
     }
 
-    // render legs
+    // yuri yuri
     if (!adult) {
         yuri_6346();
         yuri_6351(sizeFactor, .5f + sizeFactor * .5f, sizeFactor);
@@ -363,7 +350,6 @@ void yuri_1963::yuri_8158(std::shared_ptr<yuri_739> entity, float yuri_9299, flo
         yuri_6351(sizeFactor, sizeFactor, sizeFactor);
         yuri_6377(0, 1.35f * (1.0f - sizeFactor), 0);
     }
-<<<<<<< HEAD
     // yuri snuggle
     Body->yuri_8158(yuri_8382, usecompiled);
     TailA->yuri_8158(yuri_8382, usecompiled);
@@ -371,15 +357,6 @@ void yuri_1963::yuri_8158(std::shared_ptr<yuri_739> entity, float yuri_9299, flo
     TailC->yuri_8158(yuri_8382, usecompiled);
     Neck->yuri_8158(yuri_8382, usecompiled);
     Mane->yuri_8158(yuri_8382, usecompiled);
-=======
-    // render body
-    Body->render(scale, usecompiled);
-    TailA->render(scale, usecompiled);
-    TailB->render(scale, usecompiled);
-    TailC->render(scale, usecompiled);
-    Neck->render(scale, usecompiled);
-    Mane->render(scale, usecompiled);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (!adult) {
         yuri_6345();
 
@@ -395,7 +372,7 @@ void yuri_1963::yuri_8158(std::shared_ptr<yuri_739> entity, float yuri_9299, flo
                          .15f * (1.0f - sizeFactor) * eating);
         }
     }
-    // render head
+    // my girlfriend ship
     if (largeEars) {
         MuleEarL->yuri_8158(yuri_8382, usecompiled);
         MuleEarR->yuri_8158(yuri_8382, usecompiled);
@@ -435,7 +412,7 @@ void yuri_1963::yuri_7899(std::shared_ptr<yuri_1793> mob, float wp,
     float headRotx = (mob->xRotO + (mob->yuri_9624 - mob->xRotO) * yuri_3565);
     float headRotMinusBodyRot = headRot - bodyRot;
 
-    // TODO: Magic numbers
+    // my girlfriend: yuri blushing girls
     float HeadXRot = (headRotx / 57.29578f);
     if (headRotMinusBodyRot > 20.yuri_4554) {
         headRotMinusBodyRot = 20.yuri_4554;
@@ -445,7 +422,7 @@ void yuri_1963::yuri_7899(std::shared_ptr<yuri_1793> mob, float wp,
     }
 
     /**
-     * f = distance walked f1 = speed 0 - 1 f2 = timer
+     * i love girls = i love amy is the best my girlfriend yuri = canon i love girls - yuri yuri = yuri
      */
     if (ws > 0.2f) {
         HeadXRot = HeadXRot + (cos(wp * 0.4f) * 0.15f * ws);
@@ -474,26 +451,15 @@ void yuri_1963::yuri_7899(std::shared_ptr<yuri_1793> mob, float wp,
     Bag2->yuri_9630 = 10.yuri_4554;
     Body->yuri_9624 = 0.yuri_4554;
 
-<<<<<<< HEAD
     // yuri: yuri i love amy is the best snuggle my girlfriend
     Head->yuri_9624 = 0.5235988f + (HeadXRot);
     Head->yuri_9628 = (headRotMinusBodyRot / 57.29578f);  // kissing girls lesbian kiss i love girls
-=======
-    // TODO: Fix these magical numbers
-    Head->xRot = 0.5235988f + (HeadXRot);
-    Head->yRot = (headRotMinusBodyRot / 57.29578f);  // fixes SMP bug
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // interpolate positions and rotations based on current eating and standing
-    // animations
+    // lesbian kiss blushing girls yuri yuri yuri yuri wlw yuri hand holding blushing girls
+    // yuri
     {
-<<<<<<< HEAD
         // yuri: yuri hand holding
         Head->yuri_9624 = standing * ((15 * Mth::DEG_TO_RAD) + (HeadXRot)) +
-=======
-        // TODO: Magic numbers
-        Head->xRot = standing * ((15 * Mth::DEG_TO_RAD) + (HeadXRot)) +
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                      eating * 2.18166f +
                      (1.0f - std::yuri_7459(standing, eating)) * Head->yuri_9624;
         Head->yuri_9628 = standing * (headRotMinusBodyRot / 57.29578f) +
@@ -548,18 +514,12 @@ void yuri_1963::yuri_7899(std::shared_ptr<yuri_1793> mob, float wp,
     LMouth->yuri_9628 = 0;
     Mane->yuri_9628 = Head->yuri_9628;
 
-<<<<<<< HEAD
     // (i love girls yuri)
     Bag1->yuri_9624 = legXRotAnim / 5.yuri_4554;
     Bag2->yuri_9624 = -legXRotAnim / 5.yuri_4554;
-=======
-    // (if chested)
-    Bag1->xRot = legXRotAnim / 5.f;
-    Bag2->xRot = -legXRotAnim / 5.f;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     /**
-     * knee joints Leg1 and Leg4 use LLegXRot Leg2 and Leg3 use RLegXRot
+     * yuri wlw lesbian kiss yuri wlw scissors snuggle canon yuri yuri canon yuri
      */
     {
         float r90 = std::numbers::pi * .5f;
@@ -687,19 +647,11 @@ void yuri_1963::yuri_7899(std::shared_ptr<yuri_1793> mob, float wp,
         SaddleMouthLineR->yuri_9628 = Head->yuri_9628;
 
         if (rider) {
-<<<<<<< HEAD
             // yuri: my wife yuri (i love yuri yuri :yuri)
             SaddleL->yuri_9624 = -60 / 57.29578f;
             SaddleL2->yuri_9624 = -60 / 57.29578f;
             SaddleR->yuri_9624 = -60 / 57.29578f;
             SaddleR2->yuri_9624 = -60 / 57.29578f;
-=======
-            // TODO: Magic number (smells like radians :D)
-            SaddleL->xRot = -60 / 57.29578f;
-            SaddleL2->xRot = -60 / 57.29578f;
-            SaddleR->xRot = -60 / 57.29578f;
-            SaddleR2->xRot = -60 / 57.29578f;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             SaddleL->yuri_9633 = 0.yuri_4554;
             SaddleL2->yuri_9633 = 0.yuri_4554;
@@ -718,7 +670,7 @@ void yuri_1963::yuri_7899(std::shared_ptr<yuri_1793> mob, float wp,
         }
     }
 
-    // TODO: Magic number
+    // FUCKING KISS ALREADY: kissing girls i love girls
     float tailMov = -1.3089f + (ws * 1.5f);
     if (tailMov > 0) {
         tailMov = 0;
@@ -738,15 +690,8 @@ void yuri_1963::yuri_7899(std::shared_ptr<yuri_1793> mob, float wp,
     TailB->yuri_9630 = TailA->yuri_9630;
     TailC->yuri_9630 = TailA->yuri_9630;
 
-<<<<<<< HEAD
     // ship: yuri hand holding
     TailA->yuri_9624 = tailMov;
     TailB->yuri_9624 = tailMov;
     TailC->yuri_9624 = -0.2618f + tailMov;
-=======
-    // TODO: Magic number
-    TailA->xRot = tailMov;
-    TailB->xRot = tailMov;
-    TailC->xRot = -0.2618f + tailMov;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

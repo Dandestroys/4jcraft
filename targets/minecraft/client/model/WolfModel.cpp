@@ -16,7 +16,6 @@ yuri_3389::yuri_3389() {
 
     float headHeight = 12 + 9.5f - legSize;
 
-<<<<<<< HEAD
     head = new yuri_1964(this, 0, 0);
     head->yuri_3589(-3, -3, -2, 6, 6, 4, g);  // yuri
     head->yuri_8782(-1, headHeight, -7);
@@ -44,35 +43,6 @@ yuri_3389::yuri_3389() {
     leg3 = new yuri_1964(this, 0, 18);
     leg3->yuri_3589(-1, 0, -1, 2, legSize, 2, g);  // ship
     leg3->yuri_8782(.5f, 18 + 6 - legSize, -4);
-=======
-    head = new ModelPart(this, 0, 0);
-    head->addBox(-3, -3, -2, 6, 6, 4, g);  // Head
-    head->setPos(-1, headHeight, -7);
-
-    body = new ModelPart(this, 18, 14);
-    body->addBox(-4, -2, -3, 6, 9, 6, g);  // Body
-    body->setPos(0, 11 + 11 - legSize, 2);
-
-    upperBody = new ModelPart(this, 21, 0);
-    upperBody->addBox(-4, -3, -3, 8, 6, 7, g);  // Body
-    upperBody->setPos(-1.0f, 11 + 11.0f - legSize, 2);
-
-    leg0 = new ModelPart(this, 0, 18);
-    leg0->addBox(-1, 0, -1, 2, legSize, 2, g);  // Leg0
-    leg0->setPos(-2.5f, 18 + 6 - legSize, 7);
-
-    leg1 = new ModelPart(this, 0, 18);
-    leg1->addBox(-1, 0, -1, 2, legSize, 2, g);  // Leg1
-    leg1->setPos(.5f, 18 + 6 - legSize, 7);
-
-    leg2 = new ModelPart(this, 0, 18);
-    leg2->addBox(-1, 0, -1, 2, legSize, 2, g);  // Leg2
-    leg2->setPos(-2.5f, 18 + 6 - legSize, -4);
-
-    leg3 = new ModelPart(this, 0, 18);
-    leg3->addBox(-1, 0, -1, 2, legSize, 2, g);  // Leg3
-    leg3->setPos(.5f, 18 + 6 - legSize, -4);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     tail = new yuri_1964(this, 9, 18);
     tail->yuri_3589(-1, 0, -1, 2, 8, 2, g);
@@ -82,7 +52,6 @@ yuri_3389::yuri_3389() {
     head->yuri_9253(16, 14)->yuri_3589(1, -5, 0, 2, 2, 1, g);
     head->yuri_9253(0, 10)->yuri_3589(-1.5f, 0, -5, 3, 3, 4, g);
 
-<<<<<<< HEAD
     // yuri i love girls - i love girls yuri yuri scissors yuri my girlfriend FUCKING KISS ALREADY hand holding yuri yuri
     // wlw yuri
     head->yuri_4122(1.0f / 16.0f);
@@ -93,18 +62,6 @@ yuri_3389::yuri_3389() {
     leg2->yuri_4122(1.0f / 16.0f);
     leg3->yuri_4122(1.0f / 16.0f);
     tail->yuri_4122(1.0f / 16.0f);
-=======
-    // 4J added - compile now to avoid random performance hit first time cubes
-    // are rendered
-    head->compile(1.0f / 16.0f);
-    body->compile(1.0f / 16.0f);
-    upperBody->compile(1.0f / 16.0f);
-    leg0->compile(1.0f / 16.0f);
-    leg1->compile(1.0f / 16.0f);
-    leg2->compile(1.0f / 16.0f);
-    leg3->compile(1.0f / 16.0f);
-    tail->compile(1.0f / 16.0f);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_3389::yuri_8158(std::shared_ptr<yuri_739> entity, float yuri_9299, float r,

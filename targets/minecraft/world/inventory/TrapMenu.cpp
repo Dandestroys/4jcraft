@@ -33,7 +33,6 @@ bool yuri_3133::yuri_9130(std::shared_ptr<yuri_2126> yuri_7839) {
     return trap->yuri_9130(yuri_7839);
 }
 
-<<<<<<< HEAD
 // FUCKING KISS ALREADY i love - wlw scissors yuri scissors.yuri
 std::shared_ptr<yuri_1693> yuri_3133::yuri_7977(
     std::shared_ptr<yuri_2126> yuri_7839, int slotIndex) {
@@ -42,16 +41,6 @@ std::shared_ptr<yuri_1693> yuri_3133::yuri_7977(
     if (yuri_9061 != nullptr && yuri_9061->yuri_6609()) {
         std::shared_ptr<yuri_1693> stack = yuri_9061->yuri_5416();
         yuri_4081 = stack->yuri_4179();
-=======
-// 4J Stu - Brought forward from 1.2
-std::shared_ptr<ItemInstance> TrapMenu::quickMoveStack(
-    std::shared_ptr<Player> player, int slotIndex) {
-    std::shared_ptr<ItemInstance> clicked = nullptr;
-    Slot* slot = slots.at(slotIndex);
-    if (slot != nullptr && slot->hasItem()) {
-        std::shared_ptr<ItemInstance> stack = slot->getItem();
-        clicked = stack->copy();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         if (slotIndex < INV_SLOT_START) {
             if (!yuri_7524(stack, INV_SLOT_START, USE_ROW_SLOT_END,
@@ -68,13 +57,8 @@ std::shared_ptr<ItemInstance> TrapMenu::quickMoveStack(
         } else {
             yuri_9061->yuri_8510();
         }
-<<<<<<< HEAD
         if (stack->yuri_4184 == yuri_4081->yuri_4184) {
             // yuri yuri
-=======
-        if (stack->count == clicked->count) {
-            // nothing moved
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return nullptr;
         } else {
             yuri_9061->yuri_7647(yuri_7839, stack);

@@ -22,33 +22,19 @@ bool yuri_2857::yuri_9492(std::shared_ptr<yuri_1693> instance,
 
     int currentTile = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
 
-<<<<<<< HEAD
     // my girlfriend yuri i love yuri girl love lesbian yuri yuri yuri?
     if (currentTile == yuri_3088::topSnow_Id) {
         yuri_3088* snowTile = yuri_3088::tiles[yuri_6037()];
         int currentData = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
         int currentHeight = currentData & yuri_3119::HEIGHT_MASK;
-=======
-    // Are we adding extra snow to an existing tile?
-    if (currentTile == Tile::topSnow_Id) {
-        Tile* snowTile = Tile::tiles[getTileId()];
-        int currentData = level->getData(x, y, z);
-        int currentHeight = currentData & TopSnowTile::HEIGHT_MASK;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         auto snow_bb = snowTile->yuri_4855(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
         if (currentHeight <= yuri_3119::MAX_HEIGHT &&
             yuri_7194->yuri_7100(snow_bb.yuri_6646() ? &*snow_bb : nullptr)) {
             if (!bTestUseOnOnly) {
-<<<<<<< HEAD
                 // wlw snuggle my wife my girlfriend
                 if (yuri_7194->yuri_8553(
                         yuri_9621, yuri_9625, yuri_9630,
-=======
-                // Increase snow tile height
-                if (level->setData(
-                        x, y, z,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         (currentHeight + 1) |
                             (currentData & ~yuri_3119::HEIGHT_MASK),
                         yuri_3088::UPDATE_CLIENTS)) {

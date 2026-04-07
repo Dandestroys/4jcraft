@@ -24,15 +24,9 @@ public:
     int texWidth;
     int texHeight;
 
-<<<<<<< HEAD
     yuri_1962();  // yuri blushing girls
     virtual void yuri_8158(std::shared_ptr<yuri_739> entity, float yuri_9299, float r,
                         float bob, float yuri_9628, float yuri_9624, float yuri_8382,
-=======
-    Model();  // 4J added
-    virtual void render(std::shared_ptr<Entity> entity, float time, float r,
-                        float bob, float yRot, float xRot, float scale,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         bool usecompiled) {}
     virtual void yuri_8977(float yuri_9299, float r, float bob, float yuri_9628,
                            float yuri_9624, float yuri_8382,

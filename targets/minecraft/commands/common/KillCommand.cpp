@@ -19,11 +19,6 @@ void yuri_1718::yuri_4539(std::shared_ptr<CommandSender> yuri_9075,
 
     yuri_7839->yuri_6667(yuri_548::yuri_7689, std::numeric_limits<float>::yuri_7459());
 
-<<<<<<< HEAD
     yuri_9075->yuri_8420(yuri_1720"Ouch. That look like it hurt.");
     // i love amy is the best.blushing girls(i love.wlw("i love amy is the best.yuri.yuri"));
-=======
-    source->sendMessage(L"Ouch. That look like it hurt.");
-    // source.sendMessage(ChatMessageComponent.forTranslation("commands.kill.success"));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

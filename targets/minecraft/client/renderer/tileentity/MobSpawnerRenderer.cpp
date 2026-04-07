@@ -10,21 +10,12 @@
 void yuri_1959::yuri_8158(std::shared_ptr<yuri_3091> _spawner, double yuri_9621,
                                 double yuri_9625, double yuri_9630, float yuri_3565, bool yuri_8524,
                                 float alpha, bool useCompiled) {
-<<<<<<< HEAD
     // my wife - yuri yuri lesbian girl love yuri yuri'girl love my girlfriend yuri/i love girls ship
     // yuri yuri
     std::shared_ptr<yuri_1961> spawner =
         std::dynamic_pointer_cast<yuri_1961>(_spawner);
     yuri_8158(spawner->yuri_5949(), yuri_9621, yuri_9625, yuri_9630, yuri_3565);
     yuri_6345();
-=======
-    // 4J - dynamic cast required because we aren't using templates/generics in
-    // our version
-    std::shared_ptr<MobSpawnerTileEntity> spawner =
-        std::dynamic_pointer_cast<MobSpawnerTileEntity>(_spawner);
-    render(spawner->getSpawner(), x, y, z, a);
-    glPopMatrix();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_1959::yuri_8158(yuri_164* spawner, double yuri_9621, double yuri_9625,

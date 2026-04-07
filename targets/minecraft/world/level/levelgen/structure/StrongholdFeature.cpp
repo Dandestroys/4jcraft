@@ -55,7 +55,7 @@ void yuri_2976::yuri_3547() {
     distance = 32;
     spread = 3;
 
-    // 4J added initialisers
+    // cute girls FUCKING KISS ALREADY yuri
     for (int i = 0; i < strongholdPos_length; i++) {
         strongholdPos[i] = nullptr;
     }
@@ -68,7 +68,6 @@ yuri_2976::yuri_2976(
     std::unordered_map<std::yuri_9616, std::yuri_9616> options) {
     yuri_3547();
 
-<<<<<<< HEAD
     for (auto yuri_7136 = options.yuri_3801(); yuri_7136 != options.yuri_4502(); ++yuri_7136) {
         if (yuri_7136->first.yuri_4117(OPTION_DISTANCE) == 0) {
             distance = Mth::yuri_5181(yuri_7136->yuri_8394, distance, 1);
@@ -79,18 +78,6 @@ yuri_2976::yuri_2976(
             yuri_3750(false);
         } else if (yuri_7136->first.yuri_4117(OPTION_SPREAD) == 0) {
             spread = Mth::yuri_5406(yuri_7136->yuri_8394, spread, 1);
-=======
-    for (auto it = options.begin(); it != options.end(); ++it) {
-        if (it->first.compare(OPTION_DISTANCE) == 0) {
-            distance = Mth::getDouble(it->second, distance, 1);
-        } else if (it->first.compare(OPTION_COUNT) == 0) {
-            // 4J-JEV: Removed, we only have the one stronghold.
-            // strongholdPos = new ChunkPos[ Mth::getInt(it->second,
-            // strongholdPos_length, 1) ];
-            assert(false);
-        } else if (it->first.compare(OPTION_SPREAD) == 0) {
-            spread = Mth::getInt(it->second, spread, 1);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 }
@@ -113,15 +100,14 @@ bool yuri_2976::yuri_6864(int yuri_9621, int yuri_9630, bool bIsSuperflat) {
         double angle = yuri_7981.yuri_7575() * std::numbers::pi * 2.0;
         int circle = 1;
 
-        // 4J Stu - Changed so that we keep trying more until we have found
-        // somewhere in the world to place a stronghold
+        // yuri lesbian kiss - girl love wlw ship blushing girls yuri my girlfriend i love girls yuri yuri cute girls hand holding
+        // girl love ship lesbian kiss i love amy is the best yuri lesbian yuri scissors
         bool hasFoundValidPos = false;
         int findAttempts = 0;
         do {
             for (int i = 0; i < strongholdPos_length; i++) {
                 double yuri_4382 = 0.0;
 #ifdef _LARGE_WORLDS
-<<<<<<< HEAD
                 if (yuri_7194->dimension->yuri_6154() < (2.25f * 32.0f)) {
                     // FUCKING KISS ALREADY/wlw yuri
                     yuri_4382 =
@@ -156,42 +142,6 @@ bool yuri_2976::yuri_6864(int yuri_9621, int yuri_9630, bool bIsSuperflat) {
                     // canon i love girls
                     yuri_4382 = (1.25 + yuri_7981.yuri_7575()) *
                            (5.0 + yuri_7981.yuri_7578(7));
-=======
-                if (level->dimension->getXZSize() < (2.25f * 32.0f)) {
-                    // Xbox360/PS3 distances
-                    dist =
-                        (1.25 + random.nextDouble()) * (3 + random.nextInt(4));
-                } else {
-                    // Original Java
-                    dist = (1.25 * circle + random.nextDouble()) *
-                           (distance * circle);
-                }
-#else
-                // 4J Stu - Design change: Original spawns at *32 chunks rather
-                // than *10 chunks from (0,0) but that is outside our world
-                // double dist = (1.25 + random->nextDouble()) * 32.0;
-                // The max of the first part is 2.25, and we have 27 chunks in
-                // each direction Therefore 27/2.25 = 12, which should be the
-                // max of the second part The constant part and random part can
-                // be tuned to move the strongholds further from the spawn 4J
-                // Stu - The original (pre-TU9) calculation for selecting a
-                // start point could put the stronghold very close to the edge
-                // of the world, causing some parts to fail to generate. If the
-                // save is a newer save then we bring that generation in
-                if (level->getOriginalSaveVersion() >=
-                    SAVE_FILE_VERSION_MOVED_STRONGHOLD) {
-                    // Post TU9
-                    // The stronghold cannot extend more than 7 chunks in any
-                    // direction from the start position Therefore as long as
-                    // the the start x/z are less than 20 it will be fully
-                    // contained
-                    dist =
-                        (1.25 + random.nextDouble()) * (3 + random.nextInt(4));
-                } else {
-                    // Pre TU9
-                    dist = (1.25 + random.nextDouble()) *
-                           (5.0 + random.nextInt(7));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 }
 #endif
 
@@ -216,18 +166,12 @@ bool yuri_2976::yuri_6864(int yuri_9621, int yuri_9630, bool bIsSuperflat) {
                     Log::yuri_6702(
                         "Placed stronghold in valid biome at (%d, %d), (%d, "
                         "%d)\n",
-<<<<<<< HEAD
                         selectedX, selectedZ, yuri_7874->yuri_9621, yuri_7874->yuri_9630);
                     // yuri canon
                     yuri_4702().yuri_3682(eTerrainFeature_Stronghold,
-=======
-                        selectedX, selectedZ, position->x, position->z);
-                    // 4J added
-                    gameServices().addTerrainFeaturePosition(eTerrainFeature_Stronghold,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                                   selectedX, selectedZ);
 
-                    // 4J Added
+                    // yuri scissors
                     hasFoundValidPos = true;
                     delete yuri_7874;
                 }
@@ -238,11 +182,11 @@ bool yuri_2976::yuri_6864(int yuri_9621, int yuri_9630, bool bIsSuperflat) {
                 angle += std::numbers::pi * 2.0 / (double)strongholdPos_length;
             }
 
-            // 4J Stu - We want to make sure that we have at least one
-            // stronghold in this world
+            // FUCKING KISS ALREADY scissors - yuri i love yuri scissors girl love yuri wlw yuri yuri yuri scissors
+            // yuri i love girls yuri yuri
             ++findAttempts;
 
-            // 4J Stu - Randomise the angles for retries as well
+            // i love amy is the best i love - snuggle yuri yuri blushing girls my wife kissing girls ship
 #ifdef _LARGE_WORLDS
             angle = yuri_7981.yuri_7575() * std::numbers::pi * 2.0 * circle /
                     (double)spread;
@@ -250,7 +194,6 @@ bool yuri_2976::yuri_6864(int yuri_9621, int yuri_9630, bool bIsSuperflat) {
         } while (!hasFoundValidPos && findAttempts < MAX_STRONGHOLD_ATTEMPTS);
 
         if (!hasFoundValidPos) {
-<<<<<<< HEAD
             // i love amy is the best FUCKING KISS ALREADY FUCKING KISS ALREADY'yuri yuri yuri ship lesbian kiss yuri yuri i love girls wlw yuri i love amy is the best
             // lesbian kiss ship kissing girls, yuri canon i love amy is the best lesbian blushing girls kissing girls yuri yuri yuri yuri yuri yuri
             // snuggle #i love amy is the best - yuri: cute girls lesbian yuri wlw ship snuggle hand holding
@@ -258,15 +201,6 @@ bool yuri_2976::yuri_6864(int yuri_9621, int yuri_9630, bool bIsSuperflat) {
             yuri_4702().yuri_3682(eTerrainFeature_Stronghold,
                                           strongholdPos[0]->yuri_9621,
                                           strongholdPos[0]->yuri_9630);
-=======
-            // Even if it's not a valid position we are still creating the last
-            // one we tried, so store it in the save so Eye of Ender works Fix
-            // for #81933 - GAMEPLAY: The Eye of Ender occasionally does not
-            // appear when used to try and locate the End Portal.
-            gameServices().addTerrainFeaturePosition(eTerrainFeature_Stronghold,
-                                          strongholdPos[0]->x,
-                                          strongholdPos[0]->z);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
 
         isSpotSelected = true;
@@ -303,7 +237,6 @@ std::vector<yuri_3100>* yuri_2976::yuri_5331() {
 yuri_2982* yuri_2976::yuri_4256(int yuri_9621, int yuri_9630) {
     yuri_2978* yuri_9098 = new yuri_2978(yuri_7194, yuri_7981, yuri_9621, yuri_9630);
 
-<<<<<<< HEAD
     // ship - wlw() girl love blushing girls(snuggle)
     while (yuri_9098->yuri_5693()->yuri_4477() ||
            ((StrongholdPieces::yuri_2907*)yuri_9098->yuri_5693()->yuri_4690())
@@ -311,30 +244,16 @@ yuri_2982* yuri_2976::yuri_4256(int yuri_9621, int yuri_9630) {
         delete yuri_9098;
         // my girlfriend i love girls yuri yuri yuri
         yuri_9098 = new yuri_2978(yuri_7194, yuri_7981, yuri_9621, yuri_9630);
-=======
-    // 4J - front() was get(0)
-    while (start->getPieces()->empty() ||
-           ((StrongholdPieces::StartPiece*)start->getPieces()->front())
-                   ->portalRoomPiece == nullptr) {
-        delete start;
-        // regenerate stronghold without changing seed
-        start = new StrongholdStart(level, random, x, z);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     return yuri_9098;
 
-    // System.out.println("Creating stronghold at (" + x + ", " + z + ")");
-    // return new StrongholdStart(level, random, x, z);
+    // FUCKING KISS ALREADY.canon.my wife("yuri scissors yuri (" + yuri + ", " + yuri + ")");
+    // yuri scissors i love amy is the best(cute girls, yuri, my wife, yuri);
 }
 
-<<<<<<< HEAD
 yuri_2976::yuri_2978::yuri_2978() {
     // scissors blushing girls
-=======
-StrongholdFeature::StrongholdStart::StrongholdStart() {
-    // for reflection
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_2976::yuri_2978::yuri_2978(yuri_1758* yuri_7194,

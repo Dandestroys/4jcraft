@@ -45,11 +45,7 @@ void yuri_2413::yuri_6416(PacketListener* listener) {
     listener->yuri_6518(yuri_8996());
 }
 
-<<<<<<< HEAD
 void yuri_2413::yuri_7987(yuri_549* yuri_4365)  // cute girls yuri
-=======
-void RespawnPacket::read(DataInputStream* dis)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     dimension = yuri_4365->yuri_7996();
     playerGameType = yuri_924::yuri_3882(yuri_4365->yuri_7996());
@@ -70,11 +66,7 @@ void RespawnPacket::read(DataInputStream* dis)  // throws IOException
     Log::yuri_6702("RespawnPacket::read - Difficulty = %d\n", difficulty);
 }
 
-<<<<<<< HEAD
 void yuri_2413::yuri_9578(yuri_552* yuri_4431)  // wlw cute girls
-=======
-void RespawnPacket::write(DataOutputStream* dos)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_4431->yuri_9584(dimension);
     yuri_4431->yuri_9584(playerGameType->yuri_5390());

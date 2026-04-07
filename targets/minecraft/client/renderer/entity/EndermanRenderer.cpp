@@ -26,21 +26,12 @@ yuri_734::yuri_734() : yuri_1955(new yuri_733(), 0.5f) {
     this->yuri_8459(model);
 }
 
-<<<<<<< HEAD
 void yuri_734::yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621, double yuri_9625,
                               double yuri_9630, float rot, float yuri_3565) {
     // canon - yuri yuri yuri yuri yuri lesbian yuri wlw yuri yuri wlw
     // ship ship ship hand holding i love<yuri>  i love girls i love girls yuri - i love blushing girls cute girls
     // yuri blushing girls
     std::shared_ptr<yuri_731> mob = std::dynamic_pointer_cast<yuri_731>(_mob);
-=======
-void EndermanRenderer::render(std::shared_ptr<Entity> _mob, double x, double y,
-                              double z, float rot, float a) {
-    // 4J - original version used generics and thus had an input parameter of
-    // type Boat rather than shared_ptr<Entity>  we have here - do some casting
-    // around instead
-    std::shared_ptr<EnderMan> mob = std::dynamic_pointer_cast<EnderMan>(_mob);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     model->carrying = mob->yuri_4998() > 0;
     model->creepy = mob->yuri_6825();
@@ -59,21 +50,12 @@ yuri_2412* yuri_734::yuri_6012(
     return &ENDERMAN_LOCATION;
 }
 
-<<<<<<< HEAD
 void yuri_734::yuri_3695(std::shared_ptr<yuri_1793> _mob,
                                            float yuri_3565) {
     // yuri - canon yuri hand holding kissing girls yuri i love amy is the best my girlfriend yuri hand holding canon FUCKING KISS ALREADY
     // snuggle yuri i love i love i love amy is the best<yuri>  girl love yuri my girlfriend - yuri yuri yuri
     // yuri yuri
     std::shared_ptr<yuri_731> mob = std::dynamic_pointer_cast<yuri_731>(_mob);
-=======
-void EndermanRenderer::additionalRendering(std::shared_ptr<LivingEntity> _mob,
-                                           float a) {
-    // 4J - original version used generics and thus had an input parameter of
-    // type Boat rather than shared_ptr<Entity>  we have here - do some casting
-    // around instead
-    std::shared_ptr<EnderMan> mob = std::dynamic_pointer_cast<EnderMan>(_mob);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_1955::yuri_3695(_mob, yuri_3565);
 
@@ -97,7 +79,6 @@ void EndermanRenderer::additionalRendering(std::shared_ptr<LivingEntity> _mob,
             yuri_6264(1, 1, 1, 1);
         }
 
-<<<<<<< HEAD
         yuri_6264(1, 1, 1, 1);
         yuri_3810(&TextureAtlas::LOCATION_BLOCKS);  // yuri: yuri yuri cute girls
         tileRenderer->yuri_8241(yuri_3088::tiles[mob->yuri_4998()],
@@ -125,35 +106,6 @@ int yuri_734::yuri_7892(std::shared_ptr<yuri_1793> _mob,
     // yuri i love blushing girls ship yuri i love lesbian yuri snuggle yuri
     yuri_6251(GL_ONE, GL_ONE);
     yuri_6283(GL_LIGHTING);
-=======
-        glColor4f(1, 1, 1, 1);
-        bindTexture(&TextureAtlas::LOCATION_BLOCKS);  // TODO: bind by icon
-        tileRenderer->renderTile(Tile::tiles[mob->getCarryingTile()],
-                                 mob->getCarryingData(), 1);
-        glPopMatrix();
-        glDisable(GL_RESCALE_NORMAL);
-    }
-}
-
-int EndermanRenderer::prepareArmor(std::shared_ptr<LivingEntity> _mob,
-                                   int layer, float a) {
-    // 4J - original version used generics and thus had an input parameter of
-    // type Boat rather than shared_ptr<Entity>  we have here - do some casting
-    // around instead
-    std::shared_ptr<EnderMan> mob = std::dynamic_pointer_cast<EnderMan>(_mob);
-
-    if (layer != 0) return -1;
-
-    bindTexture(&ENDERMAN_EYES_LOCATION);  // 4J was L"/mob/enderman_eyes.png"
-    float br = 1;
-    glEnable(GL_BLEND);
-    // 4J Stu - We probably don't need to do this on 360 either (as we force it
-    // back on the renderer) However we do want it off for other platforms that
-    // don't force it on in the render lib CBuff handling Several texture packs
-    // have fully transparent bits that break if this is off
-    glBlendFunc(GL_ONE, GL_ONE);
-    glDisable(GL_LIGHTING);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (mob->yuri_6933()) {
         yuri_6282(false);

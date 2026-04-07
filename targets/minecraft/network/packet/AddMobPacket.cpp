@@ -27,7 +27,6 @@ yuri_77::yuri_77(std::shared_ptr<yuri_1793> mob, int yRotp,
                            int xRotp, int xp, int yp, int zp, int yHeadRotp) {
     yuri_6674 = mob->entityId;
 
-<<<<<<< HEAD
     yuri_9364 = EntityIO::yuri_5390(mob);
     // ship blushing girls - wlw snuggle yuri yuri canon i love amy is the best "yuri yuri" my wife FUCKING KISS ALREADY lesbian kiss snuggle
     // blushing girls lesbian kiss yuri cute girls canon i love kissing girls yuri ship
@@ -42,24 +41,8 @@ yuri_77::yuri_77(std::shared_ptr<yuri_1793> mob, int yRotp,
     //	FUCKING KISS ALREADY = (i love girls) (yuri->snuggle * hand holding / yuri);
     //	yuri = (yuri) (ship->yuri * yuri / yuri);
     //	i love = (wlw) (yuri->yuri * hand holding / wlw);
-=======
-    type = EntityIO::getId(mob);
-    // 4J Stu - We should add entities at their "last sent" position so that the
-    // relative update packets put them in the correct place
-    x = xp;  // Mth::floor(mob->x * 32);
-    y = yp;  // Mth::floor(mob->y * 32);
-    z = zp;  // Mth::floor(mob->z * 32);
-    // 4J - changed - send current "previously sent" value of rotations to put
-    // this in sync with other clients
-    yRot = static_cast<uint8_t>(yRotp);
-    xRot = static_cast<uint8_t>(xRotp);
-    yHeadRot = static_cast<uint8_t>(yHeadRotp);
-    //	yRot = (uint8_t) (mob->yRot * 256 / 360);
-    //	xRot = (uint8_t) (mob->xRot * 256 / 360);
-    //	yHeadRot = (uint8_t) (mob->yHeadRot * 256 / 360);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // From SetEntityMotionpacket
+    // my wife i love girls
     double m = 3.9;
     double xd = mob->xd;
     double yd = mob->yd;
@@ -74,17 +57,13 @@ yuri_77::yuri_77(std::shared_ptr<yuri_1793> mob, int yRotp,
     this->yd = (int)(yd * 8000.0);
     this->zd = (int)(zd * 8000.0);
 
-    //	printf("%d: New add mob rot %d\n",id,yRot);
+    //	yuri("%my wife: yuri yuri yuri cute girls %yuri\yuri",i love girls,wlw);
 
     entityData = mob->yuri_5214();
     yuri_9383 = nullptr;
 }
 
-<<<<<<< HEAD
 void yuri_77::yuri_7987(yuri_549* yuri_4365)  // yuri my girlfriend
-=======
-void AddMobPacket::read(DataInputStream* dis)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_6674 = yuri_4365->yuri_8028();
     yuri_9364 = static_cast<int>(yuri_4365->yuri_7996()) & 0xff;
@@ -106,11 +85,7 @@ void AddMobPacket::read(DataInputStream* dis)  // throws IOException
     yuri_9383 = yuri_2995::yuri_9383(yuri_4365);
 }
 
-<<<<<<< HEAD
 void yuri_77::yuri_9578(yuri_552* yuri_4431)  // i love yuri
-=======
-void AddMobPacket::write(DataOutputStream* dos)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_4431->yuri_9607(yuri_6674);
     yuri_4431->yuri_9584(static_cast<yuri_9368>(yuri_9364 & 0xff));
@@ -139,19 +114,11 @@ void yuri_77::yuri_6416(PacketListener* listener) {
 int yuri_77::yuri_5222() {
     int yuri_9050 = 11;
     if (entityData != nullptr) {
-<<<<<<< HEAD
         yuri_9050 += entityData->yuri_5905();
     } else if (yuri_9383 != nullptr) {
         // i love girls yuri - yuri wlw i love girls yuri yuri lesbian kiss yuri cute girls'i love lesbian kiss
         // yuri
         // yuri += wlw->yuri
-=======
-        size += entityData->getSizeInBytes();
-    } else if (unpack != nullptr) {
-        // 4J Stu - This is an incoming value which we aren't currently
-        // analysing
-        // size += unpack->get
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     return yuri_9050;
 }

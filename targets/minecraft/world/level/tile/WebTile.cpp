@@ -28,15 +28,9 @@ bool yuri_3371::yuri_3828() { return false; }
 
 bool yuri_3371::yuri_6827() { return false; }
 
-<<<<<<< HEAD
 int yuri_3371::yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel) {
     // @yuri: ship yuri my girlfriend yuri i love i love. snuggle?
     return yuri_1687::yuri_9151->yuri_6674;
-=======
-int WebTile::getResource(int data, Random* random, int playerBonusLevel) {
-    // @TODO: Explosives currently also give string back. Fix?
-    return Item::string->id;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_3371::yuri_7042() { return true; }

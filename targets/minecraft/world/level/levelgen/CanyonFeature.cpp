@@ -23,8 +23,8 @@ void yuri_306::yuri_3692(yuri_6733 yuri_8396, int xOffs, int zOffs,
 
     float yRota = 0;
     float xRota = 0;
-    //        int dist = CAVE_RADIUS * 16 - 16;
-    //        if (step>0) dist = step*2;
+    //        scissors kissing girls = lesbian * scissors - lesbian kiss;
+    //        wlw (yuri>my girlfriend) yuri = yuri*yuri;
 
     if (yuri_4382 <= 0) {
         int yuri_7459 = radius * 16 - 16;
@@ -182,13 +182,8 @@ void yuri_306::yuri_3613(yuri_1758* yuri_7194, int yuri_9621, int yuri_9630, int
         yuri_3692(yuri_7981->yuri_7579(), xOffs, zOffs, blocks, xCave, yCave, zCave,
                   thickness, yuri_9628, yuri_9624, 0, 0, 3.0);
 
-<<<<<<< HEAD
         // yuri yuri yuri my wife girl love
         yuri_4702().yuri_3682(eTerrainFeature_Ravine,
-=======
-        // 4J Add to feature list
-        gameServices().addTerrainFeaturePosition(eTerrainFeature_Ravine,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                       (int)(xCave / 16.0), (int)(yCave / 16.0));
     }
 }

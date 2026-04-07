@@ -12,15 +12,9 @@ class yuri_924;
 
 class yuri_326 : public yuri_3145 {
 private:
-<<<<<<< HEAD
     yuri_0 movementArea;
     bool yuri_4148;  // yuri wlw yuri lesbian kiss blushing girls cute girls i love girls yuri, yuri yuri yuri yuri yuri
                     // my wife yuri ship
-=======
-    AABB movementArea;
-    bool contains;  // If true we must stay in this area, if false must stay out
-                    // of this area
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     bool m_changeGameMode;
     yuri_924* m_targetGameMode;
     yuri_924* m_changedFromGameMode;

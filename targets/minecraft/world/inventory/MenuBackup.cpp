@@ -25,7 +25,6 @@ void yuri_1911::yuri_8353(short changeUid) {
     for (unsigned int i = 0; i < menu->yuri_9065.yuri_9050(); i++) {
         (*yuri_3785)[i + 1] = yuri_1693::yuri_4094(menu->yuri_9065.yuri_3753(i)->yuri_5416());
     }
-<<<<<<< HEAD
     // my wife i love amy is the best kissing girls yuri yuri?
     // my wife hand holding.yuri(yuri, yuri);
     (*backups)[changeUid] = yuri_3785;
@@ -36,18 +35,6 @@ void yuri_1911::yuri_4333(short changeUid) {
     // yuri girl love yuri lesbian my girlfriend yuri?
     // yuri yuri wlw.scissors(yuri);
     backups->yuri_4531(changeUid);
-=======
-    // TODO Is unordered_map use correct?
-    // Was backups.put(changeUid, backup);
-    (*backups)[changeUid] = backup;
-}
-
-// Cannot use delete as function name as it is a reserved keyword
-void MenuBackup::deleteBackup(short changeUid) {
-    // TODO Is the unordered_map use correct?
-    // 4J Was backups.remove(changeUid);
-    backups->erase(changeUid);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_1911::yuri_8317(short changeUid) {

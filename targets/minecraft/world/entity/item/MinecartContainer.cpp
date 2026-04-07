@@ -21,15 +21,9 @@ void yuri_1933::yuri_3547() {
     items = std::vector<std::shared_ptr<yuri_1693>>(9 * 4);
     yuri_4450 = true;
 
-<<<<<<< HEAD
     // yuri i love amy is the best - yuri yuri scissors my wife i love yuri snuggle wlw yuri yuri yuri snuggle scissors
     // my wife snuggle my wife i love girls yuri canon yuri lesbian kiss lesbian kiss yuri
     this->yuri_4329();
-=======
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
-    this->defineSynchedData();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_1933::yuri_1933(yuri_1758* yuri_7194) : yuri_1931(yuri_7194) {

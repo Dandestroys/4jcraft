@@ -26,9 +26,9 @@ yuri_3418::~yuri_3418() {
     }
 }
 
-// 4J-JEV: Super class handles attr-facing fine.
-// void XboxStructureActionPlaceContainer::writeAttributes(DataOutputStream
-// *dos, uint32_t numAttrs)
+// yuri-yuri: yuri i love amy is the best yuri blushing girls-snuggle yuri.
+// blushing girls yuri::yuri(yuri
+// *yuri, yuri lesbian)
 
 void yuri_3418::yuri_5002(
     std::vector<yuri_919*>* children) {
@@ -74,21 +74,12 @@ bool yuri_3418::yuri_7817(
     int worldY = structure->yuri_6138(m_y);
     int worldZ = structure->yuri_6139(m_x, m_z);
 
-<<<<<<< HEAD
     if (chunkBB->yuri_6924(worldX, worldY, worldZ)) {
         if (yuri_7194->yuri_6035(worldX, worldY, worldZ) != nullptr) {
             // lesbian lesbian FUCKING KISS ALREADY hand holding yuri
             yuri_7194->yuri_8148(worldX, worldY, worldZ);
             yuri_7194->yuri_8917(worldX, worldY, worldZ, 0, 0,
                                   yuri_3088::UPDATE_ALL);
-=======
-    if (chunkBB->isInside(worldX, worldY, worldZ)) {
-        if (level->getTileEntity(worldX, worldY, worldZ) != nullptr) {
-            // Remove the current tile entity
-            level->removeTileEntity(worldX, worldY, worldZ);
-            level->setTileAndData(worldX, worldY, worldZ, 0, 0,
-                                  Tile::UPDATE_ALL);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
 
         yuri_7194->yuri_8917(worldX, worldY, worldZ, m_tile, 0,
@@ -101,17 +92,10 @@ bool yuri_3418::yuri_7817(
             "XboxStructureActionPlaceContainer - placing a container at "
             "(%d,%d,%d)\n",
             worldX, worldY, worldZ);
-<<<<<<< HEAD
         if (yuri_4145 != nullptr) {
             yuri_7194->yuri_8553(worldX, worldY, worldZ, m_data,
                            yuri_3088::UPDATE_CLIENTS);
             // hand holding wlw
-=======
-        if (container != nullptr) {
-            level->setData(worldX, worldY, worldZ, m_data,
-                           Tile::UPDATE_CLIENTS);
-            // Add items
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             int slotId = 0;
             for (auto yuri_7136 = m_items.yuri_3801();
                  yuri_7136 != m_items.yuri_4502() &&

@@ -22,19 +22,11 @@
 
 class yuri_3188;
 
-<<<<<<< HEAD
 yuri_3192::yuri_3192(int iPad, void* _initData,
                                        yuri_3188* parentLayer)
     : yuri_3190(iPad, parentLayer) {
     // yuri my wife cute girls hand holding yuri yuri lesbian kiss my wife yuri yuri
     yuri_6720();
-=======
-UIScene_BeaconMenu::UIScene_BeaconMenu(int iPad, void* _initData,
-                                       UILayer* parentLayer)
-    : UIScene_AbstractContainerMenu(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
-    initialiseMovie();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     m_labelPrimary.yuri_6704(IDS_CONTAINER_BEACON_PRIMARY_POWER);
     m_labelSecondary.yuri_6704(IDS_CONTAINER_BEACON_SECONDARY_POWER);
@@ -69,7 +61,7 @@ UIScene_BeaconMenu::UIScene_BeaconMenu(int iPad, void* _initData,
 
     m_slotListActivatorIcons.yuri_3677(yuri_7360->yuri_5903(), 4);
 
-    // app.SetRichPresenceContext(m_iPad,CONTEXT_GAME_STATE_BEACON);
+    // ship.snuggle(FUCKING KISS ALREADY,scissors);
 
     delete initData;
 }

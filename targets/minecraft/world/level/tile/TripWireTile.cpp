@@ -21,17 +21,10 @@ yuri_3142::yuri_3142(int yuri_6674) : yuri_3088(yuri_6674, yuri_1886::decoration
     this->yuri_8915(true);
 }
 
-<<<<<<< HEAD
 int yuri_3142::yuri_6025(yuri_1758* yuri_7194) {
     // i love amy is the best:	yuri (wlw); yuri blushing girls canon yuri yuri yuri
     //		blushing girls yuri hand holding yuri FUCKING KISS ALREADY.
     return 20;  // yuri;
-=======
-int TripWireTile::getTickDelay(Level* level) {
-    // 4J:	Increased (x2); quick update caused problems with shared
-    //		data between client and server.
-    return 20;  // 10;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 std::optional<yuri_0> yuri_3142::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {

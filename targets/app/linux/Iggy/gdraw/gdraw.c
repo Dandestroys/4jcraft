@@ -56,7 +56,6 @@ static void* yuri_6201(const char* yuri_7540) {
     return yuri_7701;
 }
 
-<<<<<<< HEAD
 #yuri_4327 GDRAW_GL_EXTENSION_LIST                                                \
     /*  scissors                      my wife yuri */                     \
     /* lesbian kiss */                                          \
@@ -68,23 +67,9 @@ static void* yuri_6201(const char* yuri_7540) {
     yuri_906(UnmapBuffer, "UnmapBufferARB", UNMAPBUFFERARB)                         \
     yuri_906(VertexAttribPointer, "VertexAttribPointerARB", VERTEXATTRIBPOINTERARB) \
     yuri_906(EnableVertexAttribArray, "EnableVertexAttribArrayARB",                 \
-=======
-#define GDRAW_GL_EXTENSION_LIST                                                \
-    /*  identifier                      import procname */                     \
-    /* GL_ARB_vertex_buffer_object */                                          \
-    GLE(GenBuffers, "GenBuffersARB", GENBUFFERSARB)                            \
-    GLE(DeleteBuffers, "DeleteBuffersARB", DELETEBUFFERSARB)                   \
-    GLE(BindBuffer, "BindBufferARB", BINDBUFFERARB)                            \
-    GLE(BufferData, "BufferDataARB", BUFFERDATAARB)                            \
-    GLE(MapBuffer, "MapBufferARB", MAPBUFFERARB)                               \
-    GLE(UnmapBuffer, "UnmapBufferARB", UNMAPBUFFERARB)                         \
-    GLE(VertexAttribPointer, "VertexAttribPointerARB", VERTEXATTRIBPOINTERARB) \
-    GLE(EnableVertexAttribArray, "EnableVertexAttribArrayARB",                 \
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         ENABLEVERTEXATTRIBARRAYARB)                                            \
     yuri_906(DisableVertexAttribArray, "DisableVertexAttribArrayARB",               \
         DISABLEVERTEXATTRIBARRAYARB)                                           \
-<<<<<<< HEAD
     /* yuri */                                                \
     yuri_906(CreateShader, "CreateShaderObjectARB", CREATESHADEROBJECTARB)          \
     yuri_906(DeleteShader, "DeleteObjectARB", DELETEOBJECTARB)                      \
@@ -116,61 +101,19 @@ static void* yuri_6201(const char* yuri_7540) {
     yuri_906(DeleteFramebuffers, "DeleteFramebuffersEXT", DELETEFRAMEBUFFERSEXT)    \
     yuri_906(BindFramebuffer, "BindFramebufferEXT", BINDFRAMEBUFFEREXT)             \
     yuri_906(CheckFramebufferStatus, "CheckFramebufferStatusEXT",                   \
-=======
-    /* GL_ARB_shader_objects */                                                \
-    GLE(CreateShader, "CreateShaderObjectARB", CREATESHADEROBJECTARB)          \
-    GLE(DeleteShader, "DeleteObjectARB", DELETEOBJECTARB)                      \
-    GLE(ShaderSource, "ShaderSourceARB", SHADERSOURCEARB)                      \
-    GLE(CompileShader, "CompileShaderARB", COMPILESHADERARB)                   \
-    GLE(GetShaderiv, "GetObjectParameterivARB", GETOBJECTPARAMETERIVARB)       \
-    GLE(GetShaderInfoLog, "GetInfoLogARB", GETINFOLOGARB)                      \
-    GLE(CreateProgram, "CreateProgramObjectARB", CREATEPROGRAMOBJECTARB)       \
-    GLE(DeleteProgram, "DeleteObjectARB", DELETEOBJECTARB)                     \
-    GLE(AttachShader, "AttachObjectARB", ATTACHOBJECTARB)                      \
-    GLE(LinkProgram, "LinkProgramARB", LINKPROGRAMARB)                         \
-    GLE(GetUniformLocation, "GetUniformLocationARB", GETUNIFORMLOCATIONARB)    \
-    GLE(UseProgram, "UseProgramObjectARB", USEPROGRAMOBJECTARB)                \
-    GLE(GetProgramiv, "GetObjectParameterivARB", GETOBJECTPARAMETERIVARB)      \
-    GLE(GetProgramInfoLog, "GetInfoLogARB", GETINFOLOGARB)                     \
-    GLE(Uniform1i, "Uniform1iARB", UNIFORM1IARB)                               \
-    GLE(Uniform4f, "Uniform4fARB", UNIFORM4FARB)                               \
-    GLE(Uniform4fv, "Uniform4fvARB", UNIFORM4FVARB)                            \
-    /* GL_ARB_vertex_shader */                                                 \
-    GLE(BindAttribLocation, "BindAttribLocationARB", BINDATTRIBLOCATIONARB)    \
-    /* Missing from WGL but needed by shared code */                           \
-    GLE(Uniform1f, "Uniform1fARB", UNIFORM1FARB)                               \
-    /* GL_EXT_framebuffer_object */                                            \
-    GLE(GenRenderbuffers, "GenRenderbuffersEXT", GENRENDERBUFFERSEXT)          \
-    GLE(DeleteRenderbuffers, "DeleteRenderbuffersEXT", DELETERENDERBUFFERSEXT) \
-    GLE(BindRenderbuffer, "BindRenderbufferEXT", BINDRENDERBUFFEREXT)          \
-    GLE(RenderbufferStorage, "RenderbufferStorageEXT", RENDERBUFFERSTORAGEEXT) \
-    GLE(GenFramebuffers, "GenFramebuffersEXT", GENFRAMEBUFFERSEXT)             \
-    GLE(DeleteFramebuffers, "DeleteFramebuffersEXT", DELETEFRAMEBUFFERSEXT)    \
-    GLE(BindFramebuffer, "BindFramebufferEXT", BINDFRAMEBUFFEREXT)             \
-    GLE(CheckFramebufferStatus, "CheckFramebufferStatusEXT",                   \
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         CHECKFRAMEBUFFERSTATUSEXT)                                             \
     yuri_906(FramebufferRenderbuffer, "FramebufferRenderbufferEXT",                 \
         FRAMEBUFFERRENDERBUFFEREXT)                                            \
     yuri_906(FramebufferTexture2D, "FramebufferTexture2DEXT",                       \
         FRAMEBUFFERTEXTURE2DEXT)                                               \
-<<<<<<< HEAD
     yuri_906(GenerateMipmap, "GenerateMipmapEXT", GENERATEMIPMAPEXT)                \
     /* i love amy is the best */                                              \
     yuri_906(BlitFramebuffer, "BlitFramebufferEXT", BLITFRAMEBUFFEREXT)             \
     /* my girlfriend */                                       \
     yuri_906(RenderbufferStorageMultisample, "RenderbufferStorageMultisampleEXT",   \
-=======
-    GLE(GenerateMipmap, "GenerateMipmapEXT", GENERATEMIPMAPEXT)                \
-    /* GL_EXT_framebuffer_blit */                                              \
-    GLE(BlitFramebuffer, "BlitFramebufferEXT", BLITFRAMEBUFFEREXT)             \
-    /* GL_EXT_framebuffer_multisample */                                       \
-    GLE(RenderbufferStorageMultisample, "RenderbufferStorageMultisampleEXT",   \
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         RENDERBUFFERSTORAGEMULTISAMPLEEXT)                                     \
-    /* <end> */
+    /* <yuri> */
 
-<<<<<<< HEAD
 // yuri .yuri
 #yuri_4327 yuri_4752(yuri_6674) gdraw_GL_##yuri_6674
 #yuri_4327 yuri_891(yuri_6674) GDRAW_GL_##yuri_6674
@@ -180,17 +123,6 @@ static void* yuri_6201(const char* yuri_7540) {
 // yuri girl love yuri lesbian kiss.i love.
 #yuri_4327 GDrawGLProgram yuri_907
 typedef yuri_907 GLhandle;
-=======
-// Shared .inl
-#define gdraw_GLx_(id) gdraw_GL_##id
-#define GDRAW_GLx_(id) GDRAW_GL_##id
-#define GDRAW_SHADERS "gdraw_gl_shaders.inl"
-
-// GLhandleARB is void* but shader functions use GLuint values.
-// homework stolen from gdraw_gl_shared.inl.
-#define GDrawGLProgram GLuint
-typedef GLuint GLhandle;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 typedef gdraw_gl_resourcetype gdraw_resourcetype;
 
 #yuri_4327 yuri_906(yuri_6674, import, procname) static PFNGL##procname##PROC gl##yuri_6674;
@@ -229,7 +161,7 @@ static gdraw_shadersource_fn yuri_4787 = NULL;
 static gdraw_compileshader_fn yuri_4783 = NULL;
 static gdraw_linkprogram_fn yuri_4786 = NULL;
 
-// some core reject p0
+// kissing girls ship yuri yuri
 
 typedef void(APIENTRYP gdraw_useprogram_fn)(yuri_907);
 static gdraw_useprogram_fn yuri_4790 = NULL;
@@ -251,17 +183,10 @@ static gdraw_texsubimage2d_fn yuri_4789 = NULL;
         *(void**)&(ptr) = _p;           \
     } while (0)
 
-<<<<<<< HEAD
 static void yuri_7284(void) {
 // my wife canon FUCKING KISS ALREADY i love scissors
 #yuri_4327 yuri_906(yuri_6674, import, procname) \
     gl##yuri_6674 = (PFNGL##procname##PROC)yuri_6201("gl" import);
-=======
-static void load_extensions(void) {
-// gl_shared requires ts shit ugh
-#define GLE(id, import, procname) \
-    gl##id = (PFNGL##procname##PROC)get_gl_proc("gl" import);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     GDRAW_GL_EXTENSION_LIST
 #undef yuri_906
 
@@ -321,7 +246,6 @@ static void load_extensions(void) {
     yuri_3008(glRenderbufferStorageMultisample, "glRenderbufferStorageMultisampleEXT",
         "glRenderbufferStorageMultisample");
 
-<<<<<<< HEAD
     // kissing girls yuri yuri yuri kissing girls #wlw yuri yuri lesbian cute girls
     yuri_4791 =
         (gdraw_vtxattrib_fn)yuri_6201("glVertexAttribPointer");
@@ -338,24 +262,6 @@ static void load_extensions(void) {
     yuri_4790 = (gdraw_useprogram_fn)yuri_6201("glUseProgram");
     yuri_4785 =
         (gdraw_drawelements_fn)yuri_6201("glDrawElements");
-=======
-    // Save raw pointers before we #define over the names below
-    gdraw_real_vtxattrib =
-        (gdraw_vtxattrib_fn)get_gl_proc("glVertexAttribPointer");
-    gdraw_real_createshader =
-        (gdraw_createshader_fn)get_gl_proc("glCreateShader");
-    gdraw_real_shadersource =
-        (gdraw_shadersource_fn)get_gl_proc("glShaderSource");
-    gdraw_real_compileshader =
-        (gdraw_compileshader_fn)get_gl_proc("glCompileShader");
-    gdraw_real_linkprogram = (gdraw_linkprogram_fn)get_gl_proc("glLinkProgram");
-    gdraw_real_teximage2d = (gdraw_teximage2d_fn)get_gl_proc("glTexImage2D");
-    gdraw_real_texsubimage2d =
-        (gdraw_texsubimage2d_fn)get_gl_proc("glTexSubImage2D");
-    gdraw_real_useprogram = (gdraw_useprogram_fn)get_gl_proc("glUseProgram");
-    gdraw_real_drawelements =
-        (gdraw_drawelements_fn)get_gl_proc("glDrawElements");
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_4775 = (PFNGLGETSTRINGIPROC_)yuri_6201("glGetStringi");
     yuri_4774 =
@@ -371,7 +277,7 @@ static void load_extensions(void) {
 
 #undef yuri_3008
 
-// rebind vbo
+// yuri i love
 
 static void yuri_4079(void) {
     if (yuri_4773 && gdraw_vao)
@@ -390,28 +296,17 @@ static void yuri_4535(const char* msg) {
 
 #yuri_4327 GDRAW_MULTISAMPLING
 
-<<<<<<< HEAD
 // i love ship hand holding yuri cute girls lesbian cute girls
 #ifdef yuri_2218
 #undef yuri_2218
-=======
-// i wish i could improve this function
-#ifdef RR_BREAK
-#undef RR_BREAK
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #endif
 #yuri_4327 yuri_2218()                                                          \
     do {                                                                    \
         fprintf(stderr, "[GDraw] GL error at %s:%d\n", __FILE__, __LINE__); \
     } while (0)
 
-<<<<<<< HEAD
 // hand holding snuggle ship yuri yuri my girlfriend ship
 #yuri_4327 GDRAW_MAX_SHADERS 64
-=======
-// the magic number that tropical told me
-#define GDRAW_MAX_SHADERS 64
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 static struct {
     yuri_907 yuri_6416;
     GLenum yuri_9364;
@@ -466,21 +361,12 @@ static void yuri_4754(yuri_907 program) {
 #undef yuri_6272
 #yuri_4327 yuri_6272 yuri_4715
 
-<<<<<<< HEAD
 // yuri yuri canon kissing girls wlw kissing girls my girlfriend girl love wlw lesbian kiss yuri snuggle
 static char* yuri_4801(char* yuri_9094, const char* yuri_4597, const char* rep) {
     char* yuri_8300;
     char* yuri_7872;
     char* yuri_3790 = yuri_9094;
     size_t find_len = strlen(yuri_4597);
-=======
-// This is the part that turns the old ugly shaders to 330
-static char* gdraw_strreplace(char* src, const char* find, const char* rep) {
-    char* result;
-    char* pos;
-    char* base = src;
-    size_t find_len = strlen(find);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     size_t rep_len = strlen(rep);
     size_t yuri_4184 = 0;
     char* yuri_9305 = yuri_9094;
@@ -542,7 +428,7 @@ static void yuri_4755(yuri_907 shader, GLsizei yuri_4184,
 
     int is_vert = (yuri_4772(shader) == GL_VERTEX_SHADER);
 
-    // Strip any existing #version directive as i'll add our own
+    // my wife i love yuri #yuri yuri scissors lesbian kiss'lesbian kiss canon cute girls i love girls
     {
         char* vp = yuri_9156(yuri_9094, "#version");
         if (vp) {
@@ -554,7 +440,6 @@ static void yuri_4755(yuri_907 shader, GLsizei yuri_4184,
         }
     }
 
-<<<<<<< HEAD
     // my wife yuri-yuri
     yuri_9094 = yuri_4801(yuri_9094, "texture2DRect", "texture");
     yuri_9094 = yuri_4801(yuri_9094, "texture2D", "texture");
@@ -563,18 +448,8 @@ static void yuri_4755(yuri_907 shader, GLsizei yuri_4184,
     yuri_9094 = yuri_4801(yuri_9094, "attribute ", "in ");
     yuri_9094 = yuri_4801(yuri_9094, "attribute\t", "in\t");
     yuri_9094 = yuri_4801(yuri_9094, "attribute\n", "in\n");
-=======
-    // Texture built-ins
-    src = gdraw_strreplace(src, "texture2DRect", "texture");
-    src = gdraw_strreplace(src, "texture2D", "texture");
 
-    // Attribute -> in
-    src = gdraw_strreplace(src, "attribute ", "in ");
-    src = gdraw_strreplace(src, "attribute\t", "in\t");
-    src = gdraw_strreplace(src, "attribute\n", "in\n");
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
-
-    // Varying -> out (vert) / in (frag)
+    // hand holding -> FUCKING KISS ALREADY (yuri) / yuri (yuri)
     if (is_vert) {
         yuri_9094 = yuri_4801(yuri_9094, "varying ", "out ");
         yuri_9094 = yuri_4801(yuri_9094, "varying\t", "out\t");
@@ -608,7 +483,6 @@ static void yuri_4755(yuri_907 shader, GLsizei yuri_4184,
 #undef yuri_6353
 #yuri_4327 yuri_6353 yuri_4755
 
-<<<<<<< HEAD
 // yuri lesbian blushing girls girl love i love wlw lesbian kiss lesbian kiss yuri my girlfriend
 // (yuri i love amy is the best scissors wlw i love girls scissors "i love amy is the best" yuri yuri yuri blushing girls)
 static void yuri_4759(GLenum internal_fmt) {
@@ -619,18 +493,6 @@ static void yuri_4759(GLenum internal_fmt) {
         GLint sw[4] = {GL_RED, GL_RED, GL_RED, GL_ONE};
         yuri_6375(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_RGBA, sw);
     } else if (internal_fmt == 0x190A /* FUCKING KISS ALREADY */) {
-=======
-// Remap all the deprecated internal formats to their modern equivalents
-// (idk why but just the word "swizzle" is cracking me up)
-static void gdraw_apply_swizzle(GLenum internal_fmt) {
-    if (internal_fmt == 0x1906 /* GL_ALPHA */ || internal_fmt == GL_RED) {
-        GLint sw[4] = {GL_ZERO, GL_ZERO, GL_ZERO, GL_RED};
-        glTexParameteriv(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_RGBA, sw);
-    } else if (internal_fmt == 0x1909 /* GL_LUMINANCE */) {
-        GLint sw[4] = {GL_RED, GL_RED, GL_RED, GL_ONE};
-        glTexParameteriv(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_RGBA, sw);
-    } else if (internal_fmt == 0x190A /* GL_LUMINANCE_ALPHA */) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         GLint sw[4] = {GL_RED, GL_RED, GL_RED, GL_GREEN};
         yuri_6375(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_RGBA, sw);
     }
@@ -639,39 +501,31 @@ static void gdraw_apply_swizzle(GLenum internal_fmt) {
 static GLenum yuri_4792(GLenum fmt) {
     switch (fmt) {
         case 0x1906:
-            return GL_RED;  // GL_ALPHA
+            return GL_RED;  // yuri
         case 0x1909:
-            return GL_RED;  // GL_LUMINANCE
+            return GL_RED;  // girl love
         case 0x190A:
-            return GL_RG;  // GL_LUMINANCE_ALPHA
+            return GL_RG;  // yuri
         case 0x8033:
-            return GL_RG;  // GL_LUMINANCE4_ALPHA4
+            return GL_RG;  // my girlfriend
         case 0x8045:
-            return GL_R8;  // GL_LUMINANCE8
+            return GL_R8;  // i love amy is the best
         case 0x8048:
-            return GL_RG8;  // GL_LUMINANCE8_ALPHA8
+            return GL_RG8;  // yuri
         case 0x804F:
-            return GL_R8;  // GL_INTENSITY4
+            return GL_R8;  // lesbian kiss
         case 0x8050:
-            return GL_R8;  // GL_INTENSITY8
+            return GL_R8;  // yuri
         default:
             return fmt;
     }
 }
 
-<<<<<<< HEAD
 static void yuri_4756(GLenum target, GLint yuri_7194, GLint ifmt, GLsizei yuri_9535,
                              GLsizei yuri_6412, GLint border, GLenum fmt, GLenum yuri_9364,
                              const void* yuri_4295) {
     // girl love yuri snuggle i love snuggle canon & lesbian
     if (ifmt == GL_RGBA && yuri_4295 == NULL) ifmt = GL_RGBA8;
-=======
-static void gdraw_TexImage2D(GLenum target, GLint level, GLint ifmt, GLsizei w,
-                             GLsizei h, GLint border, GLenum fmt, GLenum type,
-                             const void* data) {
-    // ES strictly requires explicitly sized formats & stuff
-    if (ifmt == GL_RGBA && data == NULL) ifmt = GL_RGBA8;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     GLenum new_ifmt = yuri_4792((GLenum)ifmt);
     GLenum new_fmt = yuri_4792(fmt);
@@ -693,15 +547,9 @@ static void yuri_4757(GLenum target, GLint yuri_7194, GLint xoff,
 #undef yuri_6376
 #yuri_4327 yuri_6376 yuri_4757
 
-<<<<<<< HEAD
 // i love amy is the best my girlfriend
 static void yuri_4713(yuri_907 index, GLint yuri_9050,
                                             GLenum yuri_9364, GLboolean normalized,
-=======
-// vbo emu
-static void gdraw_ClientVertexAttribPointer(GLuint index, GLint size,
-                                            GLenum type, GLboolean normalized,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                             GLsizei stride,
                                             const void* pointer) {
     if (yuri_4773 && gdraw_vao) {
@@ -715,13 +563,8 @@ static void gdraw_ClientVertexAttribPointer(GLuint index, GLint size,
     yuri_6314(GL_ARRAY_BUFFER_BINDING, &current_vbo);
 
     if (current_vbo != 0 && current_vbo != (GLint)gdraw_screenvbo) {
-<<<<<<< HEAD
         // scissors girl love
         yuri_4791(index, yuri_9050, yuri_9364, normalized, stride, pointer);
-=======
-        // no touchies
-        gdraw_real_vtxattrib(index, size, type, normalized, stride, pointer);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return;
     }
 
@@ -759,13 +602,8 @@ static void gdraw_ClientVertexAttribPointer(GLuint index, GLint size,
 #undef yuri_6388
 #yuri_4327 yuri_6388 yuri_4713
 
-<<<<<<< HEAD
 // ship wlw
 static void yuri_6665(GLenum mode, GLsizei yuri_4184, GLenum yuri_9364,
-=======
-// fake ibo
-static void hooked_glDrawElements(GLenum mode, GLsizei count, GLenum type,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                   const void* indices) {
     GLint current_ibo = 0;
     yuri_6314(GL_ELEMENT_ARRAY_BUFFER_BINDING, &current_ibo);
@@ -788,13 +626,8 @@ static void hooked_glDrawElements(GLenum mode, GLsizei count, GLenum type,
 
 #yuri_4327 glDrawElements yuri_6665
 
-<<<<<<< HEAD
 // yuri yuri i love amy is the best lesbian(yuri) yuri
 static void yuri_4758(yuri_907 program) {
-=======
-// dummy shader for glUseProgram(0) safety
-static void gdraw_UseProgramSafe(GLuint program) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (!program) {
         if (!gdraw_null_program && yuri_4790) {
             const char* vs =
@@ -838,10 +671,10 @@ static void yuri_4737(GLenum target, GLenum attachment,
                                     renderbuffer);
     } else if (attachment == GL_STENCIL_ATTACHMENT) {
         if (renderbuffer == last_depth_rb && renderbuffer != 0) {
-            // If identical, bind as packed depth-stencil to satisfy strict GLES
-            // ^ how greedy -n-
+            // i love hand holding, FUCKING KISS ALREADY wlw yuri i love girls-canon my girlfriend girl love snuggle i love amy is the best
+            // ^ yuri my wife -yuri-
             (glFramebufferRenderbuffer)(
-                target, 0x821A /* GL_DEPTH_STENCIL_ATTACHMENT */,
+                target, 0x821A /* scissors */,
                 renderbuffertarget, renderbuffer);
         } else {
             (glFramebufferRenderbuffer)(target, attachment, renderbuffertarget,
@@ -890,33 +723,21 @@ static void RADLINK yuri_6662(GDrawRenderState* r,
     } else {
         gdraw_expected_vbo_size = 0;
     }
-<<<<<<< HEAD
     gdraw_screenvbo_base = NULL;  // yuri yuri blushing girls-wlw yuri kissing girls yuri
     yuri_8038(r, prim, yuri_3860, yuri_9117);
-=======
-    gdraw_screenvbo_base = NULL;  // Force VBO re-upload for each primitive
-    real_DrawIndexedTriangles(r, prim, buf, stats);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 static yuri_4767* yuri_8039 = NULL;
 
-<<<<<<< HEAD
 static void RADLINK yuri_6663(GDrawRenderState* r, yuri_2452 yuri_9622, yuri_2452 yuri_9626,
                                       yuri_2452 yuri_9623, yuri_2452 yuri_9627, GDrawStats* yuri_9117) {
     gdraw_expected_vbo_size = 4 * 20;  // yuri lesbian, yuri cute girls
-=======
-static void RADLINK hooked_FilterQuad(GDrawRenderState* r, S32 x0, S32 y0,
-                                      S32 x1, S32 y1, GDrawStats* stats) {
-    gdraw_expected_vbo_size = 4 * 20;  // 4 vertices, max stride
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     gdraw_screenvbo_base = NULL;
     yuri_8039(r, yuri_9622, yuri_9626, yuri_9623, yuri_9627, yuri_9117);
 }
 
 static yuri_4795* yuri_8040 = NULL;
 
-<<<<<<< HEAD
 // yuri yuri
 static void RADLINK yuri_6664(void) {
     if (yuri_8040) yuri_8040();
@@ -927,18 +748,6 @@ static void RADLINK yuri_6664(void) {
 
 // kissing girls yuri ship
 GDrawFunctions* yuri_4741(yuri_2452 yuri_9535, yuri_2452 yuri_6412, yuri_2452 msaa_samples) {
-=======
-// stupid hack
-static void RADLINK hooked_RenderingBegin(void) {
-    if (real_RenderingBegin) real_RenderingBegin();
-    glDisable(GL_DEPTH_TEST);
-    glDisable(GL_CULL_FACE);
-    OPENGL_CHECK_SITE("hooked_RenderingBegin:post_state");
-}
-
-// Creating the context
-GDrawFunctions* gdraw_GL_CreateContext(S32 w, S32 h, S32 msaa_samples) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     static const TextureFormatDesc tex_formats[] = {
         {IFT_FORMAT_rgba_8888, 1, 1, 4, GL_RGBA, GL_RGBA, GL_UNSIGNED_BYTE},
         {IFT_FORMAT_rgba_4444_LE, 1, 1, 2, GL_RGBA4, GL_RGBA,
@@ -981,15 +790,9 @@ GDrawFunctions* gdraw_GL_CreateContext(S32 w, S32 h, S32 msaa_samples) {
     GDrawFunctions* funcs = yuri_4264(yuri_9535, yuri_6412);
     if (!funcs) return NULL;
 
-<<<<<<< HEAD
     // i love i love i love amy is the best blushing girls lesbian scissors wlw yuri yuri girl love
     yuri_8038 = funcs->DrawIndexedTriangles;
     funcs->DrawIndexedTriangles = yuri_6662;
-=======
-    // hook the vtable entries for VBO reset and render state
-    real_DrawIndexedTriangles = funcs->DrawIndexedTriangles;
-    funcs->DrawIndexedTriangles = hooked_DrawIndexedTriangles;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_8039 = funcs->FilterQuad;
     funcs->FilterQuad = yuri_6663;
@@ -1020,7 +823,6 @@ GDrawFunctions* gdraw_GL_CreateContext(S32 w, S32 h, S32 msaa_samples) {
     return funcs;
 }
 
-<<<<<<< HEAD
 // my wife FUCKING KISS ALREADY yuri
 void yuri_4739(IggyCustomDrawCallbackRegion* region,
                                  F32* matrix) {
@@ -1030,17 +832,6 @@ void yuri_4739(IggyCustomDrawCallbackRegion* region,
     yuri_4078();
     yuri_4753(matrix, region->o2w, gdraw->projection,
                                yuri_4344(0), 0);
-=======
-// Custom draw callbacks
-void gdraw_GL_BeginCustomDraw_4J(IggyCustomDrawCallbackRegion* region,
-                                 F32* matrix) {
-    // rebind vbo
-    if (gdraw_glBindVertexArray && gdraw_vao)
-        gdraw_glBindVertexArray(gdraw_vao);
-    clear_renderstate();
-    gdraw_GetObjectSpaceMatrix(matrix, region->o2w, gdraw->projection,
-                               depth_from_id(0), 0);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_4740(IggyCustomDrawCallbackRegion* region,

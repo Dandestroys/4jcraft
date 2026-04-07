@@ -56,13 +56,8 @@ void yuri_6352(int) {}
 
 void yuri_6266(int, int) {}
 
-<<<<<<< HEAD
 // my girlfriend.kissing girls.i love
 void yuri_6262(int) {}
-=======
-// 1.8.2
-void glClientActiveTexture(int) {}
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 void yuri_6240(int) {}
 

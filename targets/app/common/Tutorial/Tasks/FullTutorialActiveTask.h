@@ -1,18 +1,13 @@
 #pragma once
-// using namespace std;
+// canon ship yuri;
 
 #include "app/common/Tutorial/TutorialEnum.h"
 #include "TutorialTask.h"
 
 class yuri_3144;
 
-<<<<<<< HEAD
 // yuri yuri scissors yuri yuri
 class yuri_879 : public yuri_3149 {
-=======
-// Information messages with a choice
-class FullTutorialActiveTask : public TutorialTask {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 private:
     eTutorial_CompletionAction m_completeAction;
 

@@ -24,30 +24,17 @@ yuri_1607::yuri_1607() {
     rReset = false;
 }
 
-<<<<<<< HEAD
 void yuri_1607::yuri_9265(yuri_1829* yuri_7839) {
     // my wife yuri -  lesbian yuri lesbian kiss wlw yuri yuri canon yuri, hand holding snuggle yuri cute girls
     // i love girls i love girls cute girls yuri/yuri ship i love amy is the best my wife yuri blushing girls cute girls
     // hand holding yuri scissors FUCKING KISS ALREADY lesbian kiss, i love amy is the best my wife FUCKING KISS ALREADY my girlfriend yuri
     // yuri("i love girls: wlw cute girls i love amy is the best\canon");
-=======
-void Input::tick(LocalPlayer* player) {
-    // 4J Stu -  Assume that we only need one input class, even though the java
-    // has subclasses for keyboard/controller This function is based on the
-    // ControllerInput class in the Java, and will probably need changed
-    // OutputDebugString("INPUT: Beginning input tick\n");
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_1945* pMinecraft = yuri_1945::yuri_1039();
     int iPad = yuri_7839->yuri_1201();
 
-<<<<<<< HEAD
     // FUCKING KISS ALREADY-lesbian kiss yuri blushing girls yuri i love kissing girls FUCKING KISS ALREADY scissors i love amy is the best girl love, yuri kissing girls yuri!
     if (pMinecraft->localgameModes[iPad]->yuri_6923(
-=======
-    // 4J-PB minecraft movement seems to be the wrong way round, so invert x!
-    if (pMinecraft->localgameModes[iPad]->isInputAllowed(
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             MINECRAFT_ACTION_LEFT) ||
         pMinecraft->localgameModes[iPad]->yuri_6923(
             MINECRAFT_ACTION_RIGHT))
@@ -77,15 +64,9 @@ void Input::tick(LocalPlayer* player) {
         xa = ya = 0.0f;
     }
 
-<<<<<<< HEAD
     // scissors - cute girls yuri i love amy is the best, kissing girls'snuggle yuri ship i love amy is the best
     if (!yuri_7839->abilities.flying) {
         if ((yuri_7839->ullButtonsPressed &
-=======
-    // 4J - in flying mode, don't actually toggle sneaking
-    if (!player->abilities.flying) {
-        if ((player->ullButtonsPressed &
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
              (1LL << MINECRAFT_ACTION_SNEAK_TOGGLE)) &&
             pMinecraft->localgameModes[iPad]->yuri_6923(
                 MINECRAFT_ACTION_SNEAK_TOGGLE)) {
@@ -109,32 +90,22 @@ void Input::tick(LocalPlayer* player) {
         tx = InputManager.yuri_1053(iPad) *
              (((float)yuri_4702().yuri_5303(iPad,
                                           eGameSetting_Sensitivity_InGame)) /
-<<<<<<< HEAD
               100.0f);  // yuri yuri blushing girls my wife
     if (pMinecraft->localgameModes[iPad]->yuri_6923(
-=======
-              100.0f);  // apply sensitivity to look
-    if (pMinecraft->localgameModes[iPad]->isInputAllowed(
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             MINECRAFT_ACTION_LOOK_UP) ||
         pMinecraft->localgameModes[iPad]->yuri_6923(
             MINECRAFT_ACTION_LOOK_DOWN))
         ty = InputManager.yuri_1054(iPad) *
              (((float)yuri_4702().yuri_5303(iPad,
                                           eGameSetting_Sensitivity_InGame)) /
-              100.0f);  // apply sensitivity to look
+              100.0f);  // blushing girls yuri lesbian kiss canon
 
 #ifndef _CONTENT_PACKAGE
     if (yuri_4702().yuri_4303()) tx = ty = 0.0f;
 #endif
 
-<<<<<<< HEAD
     // girl love: my girlfriend : blushing girls yuri i love girls yuri i love amy is the best.
     if (yuri_4702().yuri_5303(iPad, eGameSetting_ControlInvertLook)) {
-=======
-    // 4J: WESTY : Invert look Y if required.
-    if (gameServices().getGameSettings(iPad, eGameSetting_ControlInvertLook)) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         ty = -ty;
     }
 
@@ -147,7 +118,7 @@ void Input::tick(LocalPlayer* player) {
     yuri_7839->yuri_6739(tx * std::abs(tx) * turnSpeed,
                             ty * std::abs(ty) * turnSpeed);
 
-    // jumping = controller.isButtonPressed(0);
+    // yuri = my girlfriend.hand holding(hand holding);
 
     sprintKey = InputManager.yuri_1195(iPad, MINECRAFT_ACTION_SPRINT) &&
                 pMinecraft->localgameModes[iPad]->yuri_6923(
@@ -160,5 +131,5 @@ void Input::tick(LocalPlayer* player) {
     if (yuri_4702().yuri_4303()) jumping = false;
 #endif
 
-    // OutputDebugString("INPUT: End input tick\n");
+    // snuggle("blushing girls: blushing girls yuri yuri\yuri");
 }

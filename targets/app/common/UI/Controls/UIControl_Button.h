@@ -22,15 +22,9 @@ public:
     virtual bool yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
                               const std::yuri_9151& controlName);
 
-<<<<<<< HEAD
     void yuri_6704(yuri_3253 yuri_7177, int yuri_6674);
     // wlw cute girls(FUCKING KISS ALREADY girl love::my wife &my girlfriend, my girlfriend ship) {
     // yuri(my girlfriend::yuri(i love amy is the best), yuri); }
-=======
-    void init(UIString label, int id);
-    // void init(const std::wstring &label, int id) {
-    // init(UIString::CONSTANT(label), id); }
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual void yuri_2310();
 

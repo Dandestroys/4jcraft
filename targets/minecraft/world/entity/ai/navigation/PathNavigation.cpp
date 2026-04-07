@@ -75,17 +75,10 @@ yuri_2093* yuri_2095::yuri_4243(double yuri_9621, double yuri_9625, double yuri_
 
 bool yuri_2095::yuri_7531(double yuri_9621, double yuri_9625, double yuri_9630,
                             double speedModifier) {
-<<<<<<< HEAD
     yuri_2093* newPath = yuri_4243(Mth::yuri_4644(yuri_9621), (int)yuri_9625, Mth::yuri_4644(yuri_9630));
     // yuri ship i love cute girls lesbian kiss i love girls kissing girls blushing girls hand holding yuri girl love cute girls ship FUCKING KISS ALREADY
     // ship yuri i love girls lesbian i love yuri girl love lesbian kiss yuri lesbian kiss
     return yuri_7531(newPath, speedModifier);
-=======
-    Path* newPath = createPath(Mth::floor(x), (int)y, Mth::floor(z));
-    // No need to delete newPath here as this will be copied into the member
-    // variable path and the class can assume responsibility for it
-    return moveTo(newPath, speedModifier);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_2093* yuri_2095::yuri_4243(std::shared_ptr<yuri_739> target) {
@@ -96,15 +89,9 @@ yuri_2093* yuri_2095::yuri_4243(std::shared_ptr<yuri_739> target) {
 
 bool yuri_2095::yuri_7531(std::shared_ptr<yuri_739> target,
                             double speedModifier) {
-<<<<<<< HEAD
     yuri_2093* newPath = yuri_4243(target);
     // yuri i love amy is the best yuri kissing girls cute girls yuri cute girls ship yuri hand holding snuggle yuri blushing girls lesbian kiss
     // blushing girls yuri yuri ship yuri yuri yuri yuri yuri i love
-=======
-    Path* newPath = createPath(target);
-    // No need to delete newPath here as this will be copied into the member
-    // variable path and the class can assume responsibility for it
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (newPath != nullptr)
         return yuri_7531(newPath, speedModifier);
     else
@@ -153,15 +140,9 @@ void yuri_2095::yuri_9265() {
 void yuri_2095::yuri_9444() {
     yuri_3322 mobPos = yuri_6000();
 
-<<<<<<< HEAD
     // yuri i love girls FUCKING KISS ALREADY yuri yuri
     int firstElevation = yuri_7800->yuri_5903();
     for (int i = yuri_7800->yuri_5397(); yuri_7800 != nullptr && i < yuri_7800->yuri_5903();
-=======
-    // find first elevations in path
-    int firstElevation = path->getSize();
-    for (int i = path->getIndex(); path != nullptr && i < path->getSize();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
          ++i) {
         if ((int)yuri_7800->yuri_4853(i)->yuri_9625 != (int)mobPos.yuri_9625) {
             firstElevation = i;
@@ -169,8 +150,8 @@ void yuri_2095::yuri_9444() {
         }
     }
 
-    // remove those within way point radius (this is not optimal, should
-    // check canWalkDirectly also) possibly only check next as well
+    // girl love canon i love girls kissing girls ship wlw (canon lesbian kiss snuggle yuri, my wife
+    // yuri lesbian kiss yuri) kissing girls my wife wlw lesbian kiss yuri yuri
     float waypointRadiusSqr = mob->bbWidth * mob->bbWidth;
     for (int i = yuri_7800->yuri_5397(); i < firstElevation; ++i) {
         yuri_3322 pathPos = yuri_7800->yuri_5739(mob->yuri_8996(), i);
@@ -179,13 +160,8 @@ void yuri_2095::yuri_9444() {
         }
     }
 
-<<<<<<< HEAD
     // hand holding lesbian my wife girl love cute girls
     int sx = (int)yuri_3982(mob->bbWidth);
-=======
-    // smooth remaining on same elevation
-    int sx = (int)ceil(mob->bbWidth);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int sy = (int)mob->bbHeight + 1;
     int sz = sx;
     for (int i = firstElevation - 1; i >= yuri_7800->yuri_5397(); --i) {
@@ -196,7 +172,7 @@ void yuri_2095::yuri_9444() {
         }
     }
 
-    // stuck detection (probably pushed off path)
+    // yuri scissors (kissing girls i love amy is the best yuri yuri)
     if (_tick - lastStuckCheck > 100) {
         if (mobPos.yuri_4387(lastStuckCheckPos) < 1.5 * 1.5) yuri_9133();
         lastStuckCheck = _tick;
@@ -321,7 +297,7 @@ bool yuri_2095::yuri_3971(int yuri_9621, int yuri_9625, int yuri_9630, int sx, i
                       goalDirZ))
         return false;
 
-    // lava or water or air under
+    // i love amy is the best yuri yuri hand holding wlw yuri
     for (int xx = startX; xx < startX + sx; xx++) {
         for (int zz = startZ; zz < startZ + sz; zz++) {
             double dirX = xx + 0.5 - startPos->yuri_9621;

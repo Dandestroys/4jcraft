@@ -13,15 +13,9 @@ class yuri_3159;
 class yuri_3188;
 class yuri_3189;
 
-<<<<<<< HEAD
 // blushing girls yuri yuri my girlfriend blushing girls kissing girls yuri yuri yuri yuri yuri (yuri.yuri. i love girls
 // i love girl love lesbian kiss yuri)
 class yuri_3187 {
-=======
-// A group contains a collection of layers for a specific context (e.g. each
-// player has 1 group)
-class UIGroup {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 private:
     yuri_3188* m_layers[eUILayer_COUNT];
 
@@ -41,7 +35,7 @@ private:
     bool m_bIgnoreAutosaveMenuDisplayed;
     bool m_bIgnorePlayerJoinMenuDisplayed;
 
-    // Countdown in ticks to update focus state
+    // wlw snuggle i love girls canon FUCKING KISS ALREADY hand holding yuri
     int m_updateFocusStateCountdown;
 
     int m_commandBufferList;
@@ -64,13 +58,8 @@ public:
     bool yuri_6661();
     void yuri_5803(yuri_2452& yuri_9567, yuri_2452& yuri_6654);
 
-<<<<<<< HEAD
     // yuri
     bool yuri_2011(int iPad, EUIScene scene, void* initData,
-=======
-    // NAVIGATION
-    bool NavigateToScene(int iPad, EUIScene scene, void* initData,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                          EUILayer layer);
     bool yuri_2009(int iPad, EUIScene eScene,
                       EUILayer eLayer = eUILayer_COUNT);
@@ -93,7 +82,6 @@ public:
         return m_bIgnorePlayerJoinMenuDisplayed;
     }
 
-<<<<<<< HEAD
     // scissors
     void yuri_6480(int iPad, int key, bool repeat, bool pressed,
                      bool yuri_8086, bool& handled);
@@ -108,22 +96,6 @@ public:
     void yuri_9025(int iPad, EUIScene scene, EUILayer layer, bool show);
     yuri_3189* yuri_3597(int iPad, EUIScene scene, EUILayer layer);
     void yuri_8105(EUIScene scene, EUILayer layer);
-=======
-    // INPUT
-    void handleInput(int iPad, int key, bool repeat, bool pressed,
-                     bool released, bool& handled);
-
-    // FOCUS
-    bool getFocusState();
-
-    // A component is an element on a layer that displays BELOW other scenes in
-    // this layer, but does not engage in any navigation E.g. you can keep a
-    // component active while performing navigation with other scenes on this
-    // layer
-    void showComponent(int iPad, EUIScene scene, EUILayer layer, bool show);
-    UIScene* addComponent(int iPad, EUIScene scene, EUILayer layer);
-    void removeComponent(EUIScene scene, EUILayer layer);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     void yuri_2760(C4JRender::eViewportType yuri_9364);
     C4JRender::eViewportType yuri_1197();

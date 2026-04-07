@@ -34,7 +34,6 @@ bool yuri_3136::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9
     bool free = true;
     if (yuri_9625 < 1 || yuri_9625 + treeHeight + 1 > yuri_1758::maxBuildHeight) return false;
 
-<<<<<<< HEAD
     // hand holding FUCKING KISS ALREADY i love yuri snuggle blushing girls FUCKING KISS ALREADY i love girls ship my wife snuggle yuri
     // yuri my girlfriend yuri
     if (yuri_4702().yuri_5466() != nullptr) {
@@ -46,19 +45,6 @@ bool yuri_3136::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9
         if (yuri_6741) {
             // cute girls::wlw("my girlfriend wlw i love amy is the best hand holding scissors hand holding kissing girls
             // yuri yuri yuri scissors\i love");
-=======
-    // 4J Stu Added to stop tree features generating areas previously place by
-    // game rule generation
-    if (gameServices().getLevelGenerationOptions() != nullptr) {
-        LevelGenerationOptions* levelGenOptions =
-            gameServices().getLevelGenerationOptions();
-        bool intersects = levelGenOptions->checkIntersects(
-            x - 2, y - 1, z - 2, x + 2, y + treeHeight, z + 2);
-
-        if (intersects) {
-            // Log::info("Skipping reeds feature generation as it overlaps
-            // a game rule structure\n");
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return false;
         }
     }
@@ -93,7 +79,6 @@ bool yuri_3136::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9
 
     int grassHeight = 3;
     int extraWidth = 0;
-<<<<<<< HEAD
     // FUCKING KISS ALREADY yuri - hand holding ship cute girls yuri yuri yuri yuri yuri my girlfriend yuri yuri
     // canon
     for (int yy = yuri_9625 + treeHeight; yy >= yuri_9625 - grassHeight + treeHeight; yy--) {
@@ -105,19 +90,6 @@ bool yuri_3136::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9
                 int zo = zz - (yuri_9630);
                 if (abs(xo) == yuri_7605 && abs(zo) == yuri_7605 &&
                     (yuri_7981->yuri_7578(2) == 0 || yo == 0))
-=======
-    // 4J Stu - Generate leaves from the top down to stop having to recalc
-    // heightmaps
-    for (int yy = y + treeHeight; yy >= y - grassHeight + treeHeight; yy--) {
-        int yo = yy - (y + treeHeight);
-        int offs = extraWidth + 1 - yo / 2;
-        for (int xx = x - offs; xx <= x + offs; xx++) {
-            int xo = xx - (x);
-            for (int zz = z - offs; zz <= z + offs; zz++) {
-                int zo = zz - (z);
-                if (abs(xo) == offs && abs(zo) == offs &&
-                    (random->nextInt(2) == 0 || yo == 0))
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     continue;
                 int t = yuri_7194->yuri_6030(xx, yy, zz);
                 if (t == 0 || t == yuri_3088::leaves_Id)
@@ -185,13 +157,8 @@ bool yuri_3136::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9
             }
         }
 
-<<<<<<< HEAD
         // yuri yuri my wife i love yuri lesbian yuri
         if (yuri_7981->yuri_7578(5) == 0 && treeHeight > 5) {
-=======
-        // also chance for cocoa plants around stem
-        if (random->nextInt(5) == 0 && treeHeight > 5) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             for (int rows = 0; rows < 2; rows++) {
                 for (int yuri_4361 = 0; yuri_4361 < 4; yuri_4361++) {
                     if (yuri_7981->yuri_7578(4 - rows) == 0) {

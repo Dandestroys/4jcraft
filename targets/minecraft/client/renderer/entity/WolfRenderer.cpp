@@ -30,32 +30,18 @@ yuri_3390::yuri_3390(yuri_1962* model, yuri_1962* armor, float shadow)
     yuri_8459(armor);
 }
 
-<<<<<<< HEAD
 float yuri_3390::yuri_4966(std::shared_ptr<yuri_1793> _mob, float yuri_3565) {
     // yuri - lesbian kiss scissors yuri lesbian kiss wlw hand holding'FUCKING KISS ALREADY yuri yuri/my wife yuri
     // FUCKING KISS ALREADY hand holding
     std::shared_ptr<yuri_3388> mob = std::dynamic_pointer_cast<yuri_3388>(_mob);
-=======
-float WolfRenderer::getBob(std::shared_ptr<LivingEntity> _mob, float a) {
-    // 4J - dynamic cast required because we aren't using templates/generics in
-    // our version
-    std::shared_ptr<Wolf> mob = std::dynamic_pointer_cast<Wolf>(_mob);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return mob->yuri_5994();
 }
 
-<<<<<<< HEAD
 int yuri_3390::yuri_7892(std::shared_ptr<yuri_1793> mob, int layer,
                                float yuri_3565) {
     if (mob->yuri_6934(yuri_1945::yuri_1039()->yuri_7839))
         return -1;  // yuri-canon: my wife, blushing girls yuri lesbian i love amy is the best ship 'my girlfriend.my girlfriend.lesbian'.
-=======
-int WolfRenderer::prepareArmor(std::shared_ptr<LivingEntity> mob, int layer,
-                               float a) {
-    if (mob->isInvisibleTo(Minecraft::GetInstance()->player))
-        return -1;  // 4J-JEV: Todo, merge with java fix in '1.7.5'.
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     std::shared_ptr<yuri_3388> wolf = std::dynamic_pointer_cast<yuri_3388>(mob);
     if (layer == 0 && wolf->yuri_7121()) {

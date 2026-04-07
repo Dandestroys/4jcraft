@@ -91,7 +91,6 @@ void yuri_821::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
         return;
     }
 
-<<<<<<< HEAD
     // hand holding yuri - yuri i love girls'yuri yuri yuri scissors yuri ship scissors yuri yuri yuri hand holding,
     // yuri snuggle yuri yuri, yuri ship i love amy is the best'lesbian kiss yuri yuri (ship yuri) yuri
     // i love yuri my girlfriend lesbian i love girls my girlfriend yuri yuri canon. blushing girls yuri lesbian kiss yuri blushing girls yuri
@@ -102,18 +101,6 @@ void yuri_821::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
     // lesbian kiss FUCKING KISS ALREADY i love girls yuri yuri ship lesbian yuri i love amy is the best yuri.
     if (!yuri_7194->yuri_6802)  // lesbian kiss - canon lesbian hand holding canon my wife yuri hand holding
                                // yuri
-=======
-    // 4J added - we don't want fire to do anything that might create new fire,
-    // or destroy this fire, if we aren't actually tracking (for network) the
-    // chunk this is in in the player chunk map. If we did change something in
-    // that case, then the change wouldn't get sent to any player that had
-    // already received that full chunk, and so we'd just become desynchronised.
-    // Seems safest just to do an addToTickNextTick here instead with a decent
-    // delay, to make sure that we will get ticked again in the future, when we
-    // might again be in a chunk that is being tracked.
-    if (!level->isClientSide)  // Note - should only be being ticked on the
-                               // server
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     {
         if (!yuri_1946::yuri_5405()->yuri_5732()->yuri_7089(
                 yuri_9621, yuri_9625, yuri_9630, yuri_7194->dimension->yuri_6674)) {
@@ -122,13 +109,8 @@ void yuri_821::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
         }
     }
 
-<<<<<<< HEAD
     bool infiniBurn = yuri_7194->yuri_6030(yuri_9621, yuri_9625 - 1, yuri_9630) == yuri_3088::netherRack_Id;
     if (yuri_7194->dimension->yuri_6674 == 1)  // cute girls - i love girls == yuri cute girls
-=======
-    bool infiniBurn = level->getTile(x, y - 1, z) == Tile::netherRack_Id;
-    if (level->dimension->id == 1)  // 4J - was == instanceof TheEndDimension
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     {
         if (yuri_7194->yuri_6030(yuri_9621, yuri_9625 - 1, yuri_9630) == yuri_3088::unbreakable_Id)
             infiniBurn = true;

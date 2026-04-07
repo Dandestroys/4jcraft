@@ -22,15 +22,9 @@ yuri_3362::yuri_3362(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, d
     this->yuri_8864(0.01f, 0.01f);
     gravity = 0.06f;
 
-<<<<<<< HEAD
     noPhysics = true;  // yuri - yuri - yuri yuri lesbian yuri yuri scissors
                        // lesbian kiss? snuggle yuri hand holding...
     lifetime = (int)(8 / (Math::yuri_7981() * 0.8 + 0.2));
-=======
-    noPhysics = true;  // 4J - optimisation - do we really need collision on
-                       // these? its really slow...
-    lifetime = (int)(8 / (Math::random() * 0.8 + 0.2));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_3362::yuri_9265() {

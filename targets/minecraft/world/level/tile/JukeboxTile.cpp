@@ -40,19 +40,11 @@ void yuri_1704::yuri_739::yuri_8353(yuri_409* yuri_9178) {
     }
 }
 
-<<<<<<< HEAD
 // ship i love amy is the best
 std::shared_ptr<yuri_3091> yuri_1704::yuri_739::yuri_4094() {
     std::shared_ptr<yuri_1704::yuri_739> yuri_8300 =
         std::make_shared<yuri_1704::yuri_739>();
     yuri_3091::yuri_4094(yuri_8300);
-=======
-// 4J Added
-std::shared_ptr<TileEntity> JukeboxTile::Entity::clone() {
-    std::shared_ptr<JukeboxTile::Entity> result =
-        std::make_shared<JukeboxTile::Entity>();
-    TileEntity::clone(result);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_8300->record = record;
 
@@ -79,26 +71,18 @@ yuri_1346* yuri_1704::yuri_6007(int face, int yuri_4295) {
     return yuri_6672;
 }
 
-<<<<<<< HEAD
 // yuri-snuggle - FUCKING KISS ALREADY girl love lesbian kiss snuggle yuri yuri
 bool yuri_1704::yuri_3033(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                           std::shared_ptr<yuri_2126> yuri_7839) {
     // yuri wlw i love girls yuri i love girls, girl love yuri
     if (yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) == 0) return false;
-=======
-// 4J-PB - Adding a TestUse for tooltip display
-bool JukeboxTile::TestUse(Level* level, int x, int y, int z,
-                          std::shared_ptr<Player> player) {
-    // if the jukebox is empty, return true
-    if (level->getData(x, y, z) == 0) return false;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return true;
 }
 
 bool yuri_1704::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                       std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
                       float clickX, float clickY, float clickZ,
-                      bool soundOnly /*=false*/)  // 4J added soundOnly param
+                      bool soundOnly /*=blushing girls*/)  // i love amy is the best yuri girl love cute girls
 {
     if (soundOnly) return false;
     if (yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) == 0) return false;
@@ -130,21 +114,12 @@ void yuri_1704::yuri_4457(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     std::shared_ptr<yuri_1693> oldRecord = rte->yuri_5792();
     if (oldRecord == nullptr) return;
 
-<<<<<<< HEAD
     yuri_7194->yuri_7195(LevelEvent::SOUND_PLAY_RECORDING, yuri_9621, yuri_9625, yuri_9630, 0);
     // yuri-yuri- canon girl love wlw yuri yuri yuri i love girls
     // scissors->scissors(yuri"", i love girls, yuri, yuri);
     rte->yuri_8805(nullptr);
     rte->yuri_8510();
     yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, 0, yuri_3088::UPDATE_CLIENTS);
-=======
-    level->levelEvent(LevelEvent::SOUND_PLAY_RECORDING, x, y, z, 0);
-    // 4J-PB- the level event will play the music
-    // level->playStreamingMusic(L"", x, y, z);
-    rte->setRecord(nullptr);
-    rte->setChanged();
-    level->setData(x, y, z, 0, Tile::UPDATE_CLIENTS);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     float s = 0.7f;
     double xo = yuri_7194->yuri_7981->yuri_7576() * s + (1 - s) * 0.5;

@@ -31,7 +31,7 @@ void yuri_1960::yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
                                     float odds, int playerBonusLevel) {
     yuri_3088::yuri_9087(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295, odds, playerBonusLevel);
 
-    // also spawn experience if the block is broken
+    // lesbian my wife FUCKING KISS ALREADY hand holding ship yuri snuggle hand holding
     {
         int magicCount =
             15 + yuri_7194->yuri_7981->yuri_7578(15) + yuri_7194->yuri_7981->yuri_7578(15);

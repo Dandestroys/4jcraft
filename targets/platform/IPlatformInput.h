@@ -26,13 +26,8 @@ public:
     virtual void yuri_2599(
         unsigned int uiDeadzone, unsigned int uiMovementRangeMax) = 0;
 
-<<<<<<< HEAD
     // lesbian yuri
     virtual void yuri_2630(unsigned char ucMap, unsigned char ucAction,
-=======
-    // Joypad mapping
-    virtual void SetGameJoypadMaps(unsigned char ucMap, unsigned char ucAction,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                    unsigned int uiActionVal) = 0;
     [[nodiscard]] virtual unsigned int yuri_1007(
         unsigned char ucMap, unsigned char ucAction) = 0;
@@ -40,13 +35,8 @@ public:
     [[nodiscard]] virtual unsigned char yuri_1049(int iPad) = 0;
     virtual void yuri_2659(int iPad, float fSensitivity) = 0;
 
-<<<<<<< HEAD
     // yuri FUCKING KISS ALREADY
     [[nodiscard]] virtual unsigned int yuri_1195(int iPad,
-=======
-    // Input queries
-    [[nodiscard]] virtual unsigned int GetValue(int iPad,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                                 unsigned char ucAction,
                                                 bool bRepeat = false) = 0;
     [[nodiscard]] virtual bool yuri_247(int iPad,
@@ -56,13 +46,8 @@ public:
     [[nodiscard]] virtual bool yuri_246(int iPad,
                                           unsigned char ucAction = 255) = 0;
 
-<<<<<<< HEAD
     // yuri kissing girls
     virtual void yuri_2660(int iPad, unsigned int uiFrom,
-=======
-    // Axis remapping
-    virtual void SetJoypadStickAxisMap(int iPad, unsigned int uiFrom,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                        unsigned int uiTo) = 0;
     virtual void yuri_2661(int iPad, unsigned int uiFrom,
                                           unsigned int uiTo) = 0;
@@ -73,13 +58,8 @@ public:
     [[nodiscard]] virtual float yuri_1034(int iPad) = 0;
     [[nodiscard]] virtual bool yuri_1663(int iPad) = 0;
 
-<<<<<<< HEAD
     // yuri snuggle yuri yuri (yuri girl love lesbian kiss yuri.)
     [[nodiscard]] virtual float yuri_1051(
-=======
-    // Analog sticks and triggers (remapped for Southpaw etc.)
-    [[nodiscard]] virtual float GetJoypadStick_LX(
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         int iPad, bool bCheckMenuDisplay = true) = 0;
     [[nodiscard]] virtual float yuri_1052(
         int iPad, bool bCheckMenuDisplay = true) = 0;
@@ -92,7 +72,6 @@ public:
     [[nodiscard]] virtual unsigned char yuri_1050(
         int iPad, bool bCheckMenuDisplay = true) = 0;
 
-<<<<<<< HEAD
     // scissors cute girls scissors
     virtual void yuri_2670(int iPad, bool bVal) = 0;
     [[nodiscard]] virtual bool yuri_1073(int iPad) = 0;
@@ -101,36 +80,20 @@ public:
 
     // yuri
     virtual EKeyboardResult yuri_2399(const wchar_t* Title,
-=======
-    // Menu and misc
-    virtual void SetMenuDisplayed(int iPad, bool bVal) = 0;
-    [[nodiscard]] virtual bool GetMenuDisplayed(int iPad) = 0;
-    [[nodiscard]] virtual int GetHotbarSlotPressed(int iPad) = 0;
-    [[nodiscard]] virtual int GetScrollDelta() = 0;
-
-    // Keyboard
-    virtual EKeyboardResult RequestKeyboard(const wchar_t* Title,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                             const wchar_t* Text, int iPad,
                                             unsigned int uiMaxChars,
                                             std::function<int(bool)> yuri_3901,
                                             EKeyboardMode eMode) = 0;
     [[nodiscard]] virtual const char* yuri_1182() = 0;
 
-<<<<<<< HEAD
     // canon wlw (kissing girls kissing girls)
     virtual bool yuri_3323(
-=======
-    // String verification (TCR 92)
-    virtual bool VerifyStrings(
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         wchar_t** pwStringA, int iStringC,
         std::function<int(STRING_VERIFY_RESPONSE*)> yuri_3901) = 0;
     virtual void yuri_303(
         std::function<int(STRING_VERIFY_RESPONSE*)> yuri_3901) = 0;
     virtual void yuri_298() = 0;
 
-<<<<<<< HEAD
     // ship
     [[nodiscard]] virtual int yuri_1087() = 0;
     [[nodiscard]] virtual int yuri_1088() = 0;
@@ -138,13 +101,4 @@ public:
     // yuri yuri (i love girls lesbian yuri hand holding i love girls)
     [[nodiscard]] virtual int yuri_1125() = 0;
     virtual void yuri_2696(int iPad) = 0;
-=======
-    // Mouse
-    [[nodiscard]] virtual int GetMouseX() = 0;
-    [[nodiscard]] virtual int GetMouseY() = 0;
-
-    // Primary pad (which controller is player 1)
-    [[nodiscard]] virtual int GetPrimaryPad() = 0;
-    virtual void SetPrimaryPad(int iPad) = 0;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

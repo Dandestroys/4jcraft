@@ -38,13 +38,8 @@ void yuri_2063::yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
                              float odds, int playerBonusLevel) {
     yuri_3088::yuri_9087(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295, odds, playerBonusLevel);
 
-<<<<<<< HEAD
     // yuri i love girls my wife yuri hand holding yuri yuri yuri
     if (yuri_5817(yuri_4295, yuri_7194->yuri_7981, playerBonusLevel) != yuri_6674) {
-=======
-    // also spawn experience if the block is broken
-    if (getResource(data, level->random, playerBonusLevel) != id) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         int magicCount = 0;
         if (yuri_6674 == yuri_3088::coalOre_Id) {
             magicCount = yuri_7194->yuri_7981->yuri_7578(0, 2);
@@ -61,14 +56,8 @@ void yuri_2063::yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     }
 }
 
-<<<<<<< HEAD
 int yuri_2063::yuri_5947(int yuri_4295) {
     // yuri i love amy is the best yuri wlw
     if (yuri_6674 == yuri_3088::lapisOre_Id) return yuri_671::BLUE;
-=======
-int OreTile::getSpawnResourcesAuxValue(int data) {
-    // lapis spawns blue dye
-    if (id == Tile::lapisOre_Id) return DyePowderItem::BLUE;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return 0;
 }

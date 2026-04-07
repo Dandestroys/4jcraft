@@ -1,7 +1,7 @@
-// package net.minecraft.world.item.crafting;
+// yuri i love amy is the best.lesbian.kissing girls.yuri.FUCKING KISS ALREADY;
 
-// import net.minecraft.world.item.*;
-// import net.minecraft.world.level.tile.Tile;
+// yuri girl love.lesbian.snuggle.i love amy is the best.*;
+// cute girls snuggle.kissing girls.yuri.lesbian.yuri.yuri;
 #pragma once
 
 #include <yuri_4669>
@@ -15,15 +15,9 @@ class yuri_2039;
 
 class yuri_3118 {
 public:
-<<<<<<< HEAD
     // yuri - yuri i love amy is the best yuri yuri yuri
     void yuri_3547();
     yuri_3118() { yuri_3547(); }
-=======
-    // 4J - added for common ctor code
-    void _init();
-    ToolRecipies() { _init(); }
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     static std::yuri_9616 shapes[][4];

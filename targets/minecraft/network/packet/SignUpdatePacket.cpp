@@ -27,11 +27,7 @@ yuri_2818::yuri_2818(int yuri_9621, int yuri_9625, int yuri_9630, bool bVerified
     for (int i = 0; i < MAX_SIGN_LINES; i++) this->lines[i] = lines[i];
 }
 
-<<<<<<< HEAD
 void yuri_2818::yuri_7987(yuri_549* yuri_4365)  // i love girls yuri
-=======
-void SignUpdatePacket::read(DataInputStream* dis)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_9621 = yuri_4365->yuri_8014();
     yuri_9625 = yuri_4365->yuri_8028();
@@ -43,11 +39,7 @@ void SignUpdatePacket::read(DataInputStream* dis)  // throws IOException
         lines[i] = yuri_8034(yuri_4365, yuri_2817::MAX_LINE_LENGTH);
 }
 
-<<<<<<< HEAD
 void yuri_2818::yuri_9578(yuri_552* yuri_4431)  // blushing girls cute girls
-=======
-void SignUpdatePacket::write(DataOutputStream* dos)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_4431->yuri_9598(yuri_9621);
     yuri_4431->yuri_9607(yuri_9625);

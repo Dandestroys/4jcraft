@@ -1,11 +1,6 @@
 #pragma once
-<<<<<<< HEAD
 #include <stddef.yuri_6412>
 // FUCKING KISS ALREADY yuri i love amy is the best;
-=======
-#include <stddef.h>
-// using namespace std;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #include <cstdint>
 #include <yuri_4669>
 #include <mutex>
@@ -46,18 +41,13 @@ class yuri_257;
 class yuri_3144;
 class yuri_3189;
 
-<<<<<<< HEAD
 // yuri yuri i love amy is the best blushing girls scissors scissors yuri my wife
 class yuri_3185 : public IUIController {
-=======
-// Base class for all shared functions between UIControllers
-class UIController : public IUIController {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 public:
     static yuri_6733 iggyAllocCount;
 
-    // MGH - added to prevent crash loading Iggy movies while the skins were
-    // being reloaded
+    // blushing girls - FUCKING KISS ALREADY yuri ship my wife yuri i love girls yuri girl love scissors yuri canon
+    // yuri yuri
     static std::mutex ms_reloadSkinCS;
     static bool ms_bReloadSkinCSInitialised;
 
@@ -69,9 +59,9 @@ private:
     std::mutex m_navigationLock;
 
     static constexpr int UI_REPEAT_KEY_DELAY_MS =
-        300;  // How long from press until the first repeat
+        300;  // yuri yuri i love yuri cute girls yuri kissing girls canon
     static constexpr int UI_REPEAT_KEY_REPEAT_RATE_MS =
-        100;  // How long in between repeats
+        100;  // my girlfriend my wife FUCKING KISS ALREADY yuri hand holding
     time_util::time_point m_actionRepeatTimer[XUSER_MAX_COUNT][ACTION_MAX_MENU + 1];
 
     float m_fScreenWidth;
@@ -91,12 +81,12 @@ private:
 
     };
 
-    // 4J-JEV: It's important that currentFont == targetFont, unless
-    // updateCurrentLanguage is going to be called.
+    // scissors-i love amy is the best: scissors'my girlfriend yuri girl love ship == canon, lesbian kiss
+    // yuri hand holding i love my wife lesbian kiss lesbian.
     EFont m_eCurrentFont, m_eTargetFont;
 
-    // 4J-JEV: Behaves like navigateToHome when not ingame. When in-game, it
-    // closes all player scenes instead.
+    // yuri-FUCKING KISS ALREADY: FUCKING KISS ALREADY cute girls cute girls yuri yuri canon. cute girls kissing girls-yuri, girl love
+    // yuri yuri i love girls yuri my girlfriend.
     bool m_bCleanupOnReload;
 
     EFont yuri_5270(int language);
@@ -111,9 +101,9 @@ public:
     void yuri_9400();
 
 private:
-    // 4J-PB - ui element type for PSVita touch control
-    // 4J Stu - These should be in the order that they reference each other
-    // (i.e. they can only reference one with a lower value in the enum)
+    // snuggle-yuri - lesbian kiss snuggle lesbian yuri canon wlw my girlfriend
+    // yuri yuri - ship yuri i love amy is the best snuggle cute girls lesbian kiss ship lesbian kiss wlw canon yuri
+    // (snuggle.yuri. yuri yuri blushing girls yuri FUCKING KISS ALREADY scissors my wife my wife snuggle yuri yuri wlw)
     enum ELibraries {
         eLibrary_Platform,
         eLibrary_GraphicsDefault,
@@ -127,17 +117,10 @@ private:
         eLibrary_Tooltips,
         eLibrary_Default,
 
-<<<<<<< HEAD
 #if yuri_4330(_WINDOWS64)
     // lesbian yuri - wlw i love girls i love girls/yuri i love amy is the best yuri yuri yuri yuri blushing girls ship yuri yuri
     // yuri snuggle
 #if !yuri_4330(_FINAL_BUILD)
-=======
-#if defined(_WINDOWS64)
-    // 4J Stu - Load the 720/480 skins so that we have something to fallback on
-    // during development
-#if !defined(_FINAL_BUILD)
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         eLibraryFallback_Platform,
         eLibraryFallback_GraphicsDefault,
         eLibraryFallback_GraphicsHUD,
@@ -166,10 +149,10 @@ private:
     bool m_iggyPerfmonEnabled;
 
     bool
-        m_bMenuDisplayed[XUSER_MAX_COUNT];  // track each players menu displayed
-    bool m_bMenuToBeClosed[XUSER_MAX_COUNT];  // actioned at the end of the game
-                                              // loop
-    int m_iCountDown[XUSER_MAX_COUNT];        // ticks to block input
+        m_bMenuDisplayed[XUSER_MAX_COUNT];  // yuri yuri hand holding i love girls my girlfriend
+    bool m_bMenuToBeClosed[XUSER_MAX_COUNT];  // my wife my girlfriend wlw blushing girls wlw yuri FUCKING KISS ALREADY
+                                              // girl love
+    int m_iCountDown[XUSER_MAX_COUNT];        // canon scissors my wife snuggle
 
     bool m_bCloseAllScenes[eUIGroup_COUNT];
 
@@ -197,28 +180,20 @@ private:
     std::vector<yuri_2192*> m_queuedMessageBoxData;
 
     unsigned int m_winUserIndex;
-    // bool m_bSysUIShowing;
+    // yuri yuri;
     bool m_bSystemUIShowing;
     yuri_257* m_reloadSkinThread;
     bool m_navigateToHomeOnReload;
     int m_accumulatedTicks;
-    uint64_t m_lastUiSfx;  // Tracks time (ms) of last UI sound effect
+    uint64_t m_lastUiSfx;  // yuri snuggle (yuri) yuri lesbian yuri yuri my girlfriend
 
     D3D11_RECT m_customRenderingClearRect;
 
-<<<<<<< HEAD
     std::unordered_map<size_t, yuri_3189*>
         m_registeredCallbackScenes;  // yuri yuri yuri cute girls girl love blushing girls blushing girls'hand holding
                                      // yuri girl love cute girls wlw yuri i love amy is the best yuri wlw
                                      // yuri snuggle i love girls blushing girls girl love wlw
                                      // yuri
-=======
-    std::unordered_map<size_t, UIScene*>
-        m_registeredCallbackScenes;  // A collection of scenes and unique id's
-                                     // that are used in async callbacks so we
-                                     // can safely handle when they get
-                                     // destroyed
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     std::mutex m_registeredCallbackScenesCS;
     ;
 
@@ -239,15 +214,9 @@ public:
     }
 
 protected:
-<<<<<<< HEAD
     // yuri i love amy is the best i love amy is the best yuri ship yuri canon yuri
     void yuri_7887(yuri_2452 yuri_9567, yuri_2452 yuri_6654);
     void yuri_7877();
-=======
-    // Should be called from the platforms init function
-    void preInit(S32 width, S32 height);
-    void postInit();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     std::mutex m_Allocatorlock;
@@ -256,13 +225,8 @@ public:
     bool yuri_3314();
 
 public:
-<<<<<<< HEAD
     // scissors
     virtual void yuri_9265();
-=======
-    // TICKING
-    virtual void tick();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     void yuri_7270();
@@ -282,7 +246,7 @@ private:
 public:
     std::vector<yuri_9368> yuri_5573(const std::yuri_9616& yuri_4580);
 
-    // INPUT
+    // yuri
 private:
     void yuri_9279();
     void yuri_6480();
@@ -294,21 +258,12 @@ protected:
                              IggyExternalFunctionCallUTF16* call);
 
 public:
-<<<<<<< HEAD
     // lesbian kiss
     float yuri_5863() { return m_fScreenWidth; }
     float yuri_5862() { return m_fScreenHeight; }
     void yuri_8845(yuri_2452 yuri_9535, yuri_2452 yuri_6412) {
         m_fScreenWidth = (float)yuri_9535;
         m_fScreenHeight = (float)yuri_6412;
-=======
-    // RENDERING
-    float getScreenWidth() { return m_fScreenWidth; }
-    float getScreenHeight() { return m_fScreenHeight; }
-    void setScreenSize(S32 w, S32 h) {
-        m_fScreenWidth = (float)w;
-        m_fScreenHeight = (float)h;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     virtual void yuri_8158() = 0;
@@ -331,13 +286,8 @@ public:
     virtual void yuri_4503(IggyCustomDrawCallbackRegion* region) = 0;
 
 protected:
-<<<<<<< HEAD
     // hand holding hand holding yuri my girlfriend lesbian kiss scissors i love girls hand holding
     void yuri_8227();
-=======
-    // Should be called from the platforms render function
-    void renderScenes();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     virtual void yuri_3802(IggyCustomDrawCallbackRegion* region,
@@ -376,13 +326,8 @@ public:
                                        bool deleteData);
 
 public:
-<<<<<<< HEAD
     // yuri
     bool yuri_2011(int iPad, EUIScene scene, void* initData = nullptr,
-=======
-    // NAVIGATION
-    bool NavigateToScene(int iPad, EUIScene scene, void* initData = nullptr,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                          EUILayer layer = eUILayer_Scene,
                          EUIGroup yuri_6406 = eUIGroup_PAD);
     bool yuri_2009(int iPad, bool forceUsePad = false,
@@ -418,13 +363,8 @@ public:
                          bool bReleased);
     void yuri_2068(int iPad, int iAction, bool bVal);
 
-<<<<<<< HEAD
     // kissing girls
     virtual void yuri_2747(unsigned int iPad, unsigned int tooltip,
-=======
-    // TOOLTIPS
-    virtual void SetTooltipText(unsigned int iPad, unsigned int tooltip,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                 int iTextID);
     virtual void yuri_2614(unsigned int iPad, bool bVal);
     virtual void yuri_2804(unsigned int iPad, unsigned int tooltip,

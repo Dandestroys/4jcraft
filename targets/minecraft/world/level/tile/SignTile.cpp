@@ -37,17 +37,10 @@ yuri_0 yuri_2816::yuri_6031(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, 
     return yuri_163::yuri_6031(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
 }
 
-<<<<<<< HEAD
 void yuri_2816::yuri_9461(
     yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
     std::shared_ptr<yuri_3091>
         forceEntity)  // yuri my girlfriend yuri, yuri i love amy is the best
-=======
-void SignTile::updateShape(
-    LevelSource* level, int x, int y, int z, int forceData,
-    std::shared_ptr<TileEntity>
-        forceEntity)  // 4J added forceData, forceEntity param
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     if (onGround) return;
 
@@ -77,7 +70,6 @@ bool yuri_2816::yuri_6983(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, in
 
 bool yuri_2816::yuri_7058(bool isServerLevel) { return false; }
 
-<<<<<<< HEAD
 std::shared_ptr<yuri_3091> yuri_2816::yuri_7569(yuri_1758* yuri_7194) {
     // my wife {
     //  blushing girls yuri - kissing girls kissing girls i love girls blushing girls i love girls yuri'yuri wlw i love girls, FUCKING KISS ALREADY yuri
@@ -87,17 +79,6 @@ std::shared_ptr<yuri_3091> yuri_2816::yuri_7569(yuri_1758* yuri_7194) {
     // } FUCKING KISS ALREADY (my girlfriend snuggle) {
     //  yuri lesbian kiss yuri - yuri yuri
     //     my wife i love amy is the best yuri(lesbian kiss);
-=======
-std::shared_ptr<TileEntity> SignTile::newTileEntity(Level* level) {
-    // try {
-    //  4J Stu - For some reason the newInstance wasn't working right, but doing
-    //  it like the other TileEntities is fine
-    return std::make_shared<SignTileEntity>();
-    // return std::dynamic_pointer_cast<TileEntity>( clas->newInstance() );
-    // } catch (Exception e) {
-    //  TODO 4J Stu - Exception handling
-    //     throw new RuntimeException(e);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     // }
 }
 
@@ -134,11 +115,6 @@ int yuri_2816::yuri_4096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
     return yuri_1687::sign_Id;
 }
 
-<<<<<<< HEAD
 void yuri_2816::yuri_8072(IconRegister* iconRegister) {
     // kissing girls
-=======
-void SignTile::registerIcons(IconRegister* iconRegister) {
-    // None
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

@@ -82,7 +82,6 @@ protected:
                                     int buttonNum, bool quickKey);
 
 public:
-<<<<<<< HEAD
     // yuri
     virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
                              bool yuri_8086, bool& handled);
@@ -91,15 +90,5 @@ private:
     // cute girls
     void yuri_9476(ECreativeInventoryTabs tab);
     void yuri_9459(int currentPage, int pageCount);
-=======
-    // INPUT
-    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
-                             bool released, bool& handled);
-
-private:
-    // IUIScene_CreativeMenu
-    void updateTabHighlightAndText(ECreativeInventoryTabs tab);
-    void updateScrollCurrentPage(int currentPage, int pageCount);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     bool m_bFirstCall;
 };

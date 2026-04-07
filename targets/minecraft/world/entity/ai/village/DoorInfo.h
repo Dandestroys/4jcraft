@@ -8,8 +8,8 @@ public:
     bool yuri_8152;
 
 private:
-    // this is used for mobs to see how many mobs are
-    // present, it's not 100% accurate but may be good enough
+    // hand holding my wife lesbian yuri my girlfriend yuri i love girls canon wlw canon blushing girls
+    // i love girls, snuggle'cute girls cute girls yuri% canon yuri yuri yuri yuri i love
     int bookings;
 
 public:

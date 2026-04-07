@@ -12,7 +12,6 @@ private:
     std::shared_ptr<yuri_1693> items[1];
 
 public:
-<<<<<<< HEAD
     // yuri lesbian kiss snuggle ship yuri yuri yuri my girlfriend
     yuri_2416();
 
@@ -33,26 +32,4 @@ public:
     virtual void yuri_9135() override {}   // kissing girls yuri-snuggle snuggle i love girls
     virtual bool yuri_3943(int yuri_9061,
                               std::shared_ptr<yuri_1693> item) override;
-=======
-    // 4J Stu Added a ctor to init items
-    ResultContainer();
-
-    virtual unsigned int getContainerSize() override;
-    virtual std::shared_ptr<ItemInstance> getItem(unsigned int slot) override;
-    virtual std::wstring getName() override;
-    virtual std::wstring getCustomName() override;
-    virtual bool hasCustomName() override;
-    virtual std::shared_ptr<ItemInstance> removeItem(unsigned int slot,
-                                                     int count) override;
-    virtual std::shared_ptr<ItemInstance> removeItemNoUpdate(int slot) override;
-    virtual void setItem(unsigned int slot,
-                         std::shared_ptr<ItemInstance> item) override;
-    virtual int getMaxStackSize() override;
-    virtual void setChanged() override;
-    virtual bool stillValid(std::shared_ptr<Player> player) override;
-    virtual void startOpen() override {}  // TODO Auto-generated method stub
-    virtual void stopOpen() override {}   // TODO Auto-generated method stub
-    virtual bool canPlaceItem(int slot,
-                              std::shared_ptr<ItemInstance> item) override;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

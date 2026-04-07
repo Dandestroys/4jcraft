@@ -5,7 +5,6 @@
 #include "DisconnectPacket.h"
 #include "minecraft/network/packet/DisconnectPacket.h"
 
-<<<<<<< HEAD
 class yuri_2081;
 class yuri_62;
 class yuri_68;
@@ -73,75 +72,6 @@ class yuri_511;
 // yuri.girl love.i love girls
 class yuri_2440;
 // scissors.canon.yuri
-=======
-class Packet;
-class AddEntityPacket;
-class AddGlobalEntityPacket;
-class AddMobPacket;
-class AddPaintingPacket;
-class AddPlayerPacket;
-class AnimatePacket;
-class AwardStatPacket;
-class BlockRegionUpdatePacket;
-class ChatPacket;
-class ChunkTilesUpdatePacket;
-class ChunkVisibilityPacket;
-class ComplexItemDataPacket;
-class ContainerAckPacket;
-class ContainerClickPacket;
-class ContainerClosePacket;
-class ContainerOpenPacket;
-class ContainerSetContentPacket;
-class ContainerSetDataPacket;
-class ContainerSetSlotPacket;
-class EntityActionAtPositionPacket;
-class EntityEventPacket;
-class ExplodePacket;
-class GameEventPacket;
-class InteractPacket;
-class KeepAlivePacket;
-class LevelEventPacket;
-class LoginPacket;
-class MoveEntityPacket;
-class MoveEntityPacketSmall;
-class MovePlayerPacket;
-class PlayerActionPacket;
-class PlayerCommandPacket;
-class PlayerInputPacket;
-class PreLoginPacket;
-class RemoveEntitiesPacket;
-class RespawnPacket;
-class SetCarriedItemPacket;
-class SetEntityDataPacket;
-class SetEntityMotionPacket;
-class SetEquippedItemPacket;
-class SetHealthPacket;
-class SetEntityLinkPacket;
-class SetSpawnPositionPacket;
-class SetTimePacket;
-class SignUpdatePacket;
-class TakeItemEntityPacket;
-class TeleportEntityPacket;
-class TileEventPacket;
-class TileUpdatePacket;
-class UseItemPacket;
-// 1.8.2
-class GetInfoPacket;
-class UpdateMobEffectPacket;
-class RemoveMobEffectPacket;
-class PlayerInfoPacket;
-class SetExperiencePacket;
-class SetCreativeModeSlotPacket;
-class AddExperienceOrbPacket;
-// 1.0.1
-class ContainerButtonClickPacket;
-class TileEntityDataPacket;
-// 1.1
-class CustomPayloadPacket;
-// 1.2.3
-class RotateHeadPacket;
-// 1.3.2
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 class ClientProtocolPacket;
 class ServerAuthDataPacket;
 class SharedKeyPacket;
@@ -152,7 +82,6 @@ class yuri_1770;
 class yuri_3089;
 class yuri_373;
 class LevelChunksPacket;
-<<<<<<< HEAD
 // yuri.cute girls.my girlfriend
 class yuri_2678;
 class yuri_2715;
@@ -174,29 +103,6 @@ class yuri_3041;
 class yuri_3037;
 class yuri_3282;
 class yuri_1716;
-=======
-// 1.6.4
-class SetObjectivePacket;
-class SetScorePacket;
-class SetDisplayObjectivePacket;
-class SetPlayerTeamPacket;
-class LevelParticlesPacket;
-class UpdateAttributesPacket;
-class TileEditorOpenPacket;
-// 4J Added
-class CraftItemPacket;
-class TradeItemPacket;
-class DebugOptionsPacket;
-class ServerSettingsChangedPacket;
-class TexturePacket;
-class TextureAndGeometryPacket;
-class ChunkVisibilityAreaPacket;
-class UpdateProgressPacket;
-class TextureChangePacket;
-class TextureAndGeometryChangePacket;
-class UpdateGameRuleProgressPacket;
-class KickPlayerPacket;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 class AdditionalModelPartsPacket;
 class yuri_3414;
 class yuri_911;
@@ -280,7 +186,6 @@ public:
         std::shared_ptr<yuri_405> packet);
     virtual void yuri_6492(std::shared_ptr<yuri_1762> packet);
 
-<<<<<<< HEAD
     //  FUCKING KISS ALREADY.yuri.snuggle
     virtual void yuri_6478(std::shared_ptr<GetInfoPacket> packet);
     virtual void yuri_6565(
@@ -312,57 +217,16 @@ public:
 
     // my wife.girl love.blushing girls
     virtual void yuri_6440(
-=======
-    //  1.8.2
-    virtual void handleGetInfo(std::shared_ptr<GetInfoPacket> packet);
-    virtual void handleUpdateMobEffect(
-        std::shared_ptr<UpdateMobEffectPacket> packet);
-    virtual void handleRemoveMobEffect(
-        std::shared_ptr<RemoveMobEffectPacket> packet);
-    virtual void handlePlayerInfo(std::shared_ptr<PlayerInfoPacket> packet);
-    virtual void handleKeepAlive(std::shared_ptr<KeepAlivePacket> packet);
-    virtual void handleSetExperience(
-        std::shared_ptr<SetExperiencePacket> packet);
-    virtual void handleSetCreativeModeSlot(
-        std::shared_ptr<SetCreativeModeSlotPacket> packet);
-    virtual void handleAddExperienceOrb(
-        std::shared_ptr<AddExperienceOrbPacket> packet);
-
-    // 1.0.1
-    virtual void handleContainerButtonClick(
-        std::shared_ptr<ContainerButtonClickPacket> packet);
-    virtual void handleTileEntityData(
-        std::shared_ptr<TileEntityDataPacket> tileEntityDataPacket);
-
-    // 1.1s
-    virtual void handleCustomPayload(
-        std::shared_ptr<CustomPayloadPacket> customPayloadPacket);
-
-    // 1.2.3
-    virtual void handleRotateMob(
-        std::shared_ptr<RotateHeadPacket> rotateMobPacket);
-
-    // 1.3.2
-    virtual void handleClientProtocolPacket(
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         std::shared_ptr<ClientProtocolPacket> packet);
     virtual void yuri_6522(
         std::shared_ptr<ServerAuthDataPacket> packet);
-<<<<<<< HEAD
     // scissors canon wlw(hand holding::wlw<wlw> yuri);
     virtual void yuri_6505(
         std::shared_ptr<yuri_2127> playerAbilitiesPacket);
     virtual void yuri_6432(
-=======
-    // virtual void handleSharedKey(std::shared_ptr<SharedKeyPacket> packet);
-    virtual void handlePlayerAbilities(
-        std::shared_ptr<PlayerAbilitiesPacket> playerAbilitiesPacket);
-    virtual void handleChatAutoComplete(
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         std::shared_ptr<ChatAutoCompletePacket> packet);
     virtual void yuri_6439(
         std::shared_ptr<ClientInformationPacket> packet);
-<<<<<<< HEAD
     virtual void yuri_6540(std::shared_ptr<yuri_1770> packet);
     virtual void yuri_6551(
         std::shared_ptr<yuri_3089> packet);
@@ -409,52 +273,4 @@ public:
     virtual void yuri_6491(std::shared_ptr<yuri_1716> packet);
     virtual void yuri_6569(std::shared_ptr<yuri_3414> packet);
     virtual void yuri_6475(std::shared_ptr<yuri_911> packet);
-=======
-    virtual void handleSoundEvent(std::shared_ptr<LevelSoundPacket> packet);
-    virtual void handleTileDestruction(
-        std::shared_ptr<TileDestructionPacket> packet);
-    virtual void handleClientCommand(
-        std::shared_ptr<ClientCommandPacket> packet);
-    // virtual void handleLevelChunks(std::shared_ptr<LevelChunksPacket>
-    // packet);
-    virtual bool canHandleAsyncPackets();
-
-    // 1.6.4
-    virtual void handleAddObjective(std::shared_ptr<SetObjectivePacket> packet);
-    virtual void handleSetScore(std::shared_ptr<SetScorePacket> packet);
-    virtual void handleSetDisplayObjective(
-        std::shared_ptr<SetDisplayObjectivePacket> packet);
-    virtual void handleSetPlayerTeamPacket(
-        std::shared_ptr<SetPlayerTeamPacket> packet);
-    virtual void handleParticleEvent(
-        std::shared_ptr<LevelParticlesPacket> packet);
-    virtual void handleUpdateAttributes(
-        std::shared_ptr<UpdateAttributesPacket> packet);
-    virtual void handleTileEditorOpen(
-        std::shared_ptr<TileEditorOpenPacket> tileEditorOpenPacket);
-    virtual bool isDisconnected();
-
-    // 4J Added
-    virtual void handleCraftItem(std::shared_ptr<CraftItemPacket> packet);
-    virtual void handleTradeItem(std::shared_ptr<TradeItemPacket> packet);
-    virtual void handleDebugOptions(std::shared_ptr<DebugOptionsPacket> packet);
-    virtual void handleServerSettingsChanged(
-        std::shared_ptr<ServerSettingsChangedPacket> packet);
-    virtual void handleTexture(std::shared_ptr<TexturePacket> packet);
-    virtual void handleTextureAndGeometry(
-        std::shared_ptr<TextureAndGeometryPacket> packet);
-    virtual void handleChunkVisibilityArea(
-        std::shared_ptr<ChunkVisibilityAreaPacket> packet);
-    virtual void handleUpdateProgress(
-        std::shared_ptr<UpdateProgressPacket> packet);
-    virtual void handleTextureChange(
-        std::shared_ptr<TextureChangePacket> packet);
-    virtual void handleTextureAndGeometryChange(
-        std::shared_ptr<TextureAndGeometryChangePacket> packet);
-    virtual void handleUpdateGameRuleProgressPacket(
-        std::shared_ptr<UpdateGameRuleProgressPacket> packet);
-    virtual void handleKickPlayer(std::shared_ptr<KickPlayerPacket> packet);
-    virtual void handleXZ(std::shared_ptr<XZPacket> packet);
-    virtual void handleGameCommand(std::shared_ptr<GameCommandPacket> packet);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

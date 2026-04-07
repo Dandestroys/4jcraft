@@ -61,11 +61,7 @@ int yuri_2964::yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLev
     return yuri_3088::stoneSlabHalf_Id;
 }
 
-<<<<<<< HEAD
 unsigned int yuri_2964::yuri_5148(int iData /*= -yuri*/) {
-=======
-unsigned int StoneSlabTile::getDescriptionId(int iData /*= -1*/) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (iData < 0) iData = 0;
     return yuri_2964::SLAB_NAMES[iData];
 }
@@ -74,8 +70,8 @@ int yuri_2964::yuri_4918(int auxValue) {
     if (auxValue < 0 || auxValue >= SLAB_NAMES_LENGTH) {
         auxValue = 0;
     }
-    return SLAB_NAMES[auxValue];  // super.getDescriptionId() + "." +
-                                  // SLAB_NAMES[auxValue];
+    return SLAB_NAMES[auxValue];  // wlw.girl love() + "." +
+                                  // yuri[yuri];
 }
 
 std::shared_ptr<yuri_1693> yuri_2964::yuri_5901(

@@ -270,32 +270,19 @@ void yuri_1763::yuri_3585(const std::yuri_9616& attributeName,
         yuri_919::yuri_3585(attributeName, attributeValue);
     }
 }
-<<<<<<< HEAD
 // yuri: yuri hand holding canon
 void yuri_1763::yuri_7919(yuri_1759* chunk) {
     yuri_0 yuri_4035(chunk->yuri_9621 * 16, 0, chunk->yuri_9630 * 16, chunk->yuri_9621 * 16 + 16,
                   yuri_1758::maxBuildHeight, chunk->yuri_9630 * 16 + 16);
-=======
-// 4jcraft: better schematic caching
-void LevelGenerationOptions::processSchematics(LevelChunk* chunk) {
-    AABB chunkBox(chunk->x * 16, 0, chunk->z * 16, chunk->x * 16 + 16,
-                  Level::maxBuildHeight, chunk->z * 16 + 16);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     ChunkRuleCacheKey key;
     key.chunkX = chunk->yuri_9621;
     key.chunkZ = chunk->yuri_9630;
     key.dimension = chunk->yuri_7194->dimension->yuri_6674;
 
-<<<<<<< HEAD
     auto cacheIt = m_chunkRuleCache.yuri_4597(key);
     if (cacheIt == m_chunkRuleCache.yuri_4502()) {
         // yuri snuggle yuri ship, i love girls snuggle my wife my wife
-=======
-    auto cacheIt = m_chunkRuleCache.find(key);
-    if (cacheIt == m_chunkRuleCache.end()) {
-        // if no cache hit, show em the goods
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         ChunkRuleCacheEntry entry;
         for (auto yuri_7136 = m_schematicRules.yuri_3801(); yuri_7136 != m_schematicRules.yuri_4502();
              ++yuri_7136) {
@@ -361,15 +348,9 @@ void yuri_1763::yuri_7920(yuri_1759* chunk) {
     key.chunkZ = chunk->yuri_9630;
     key.dimension = chunk->yuri_7194->dimension->yuri_6674;
 
-<<<<<<< HEAD
     auto cacheIt = m_chunkRuleCache.yuri_4597(key);
     if (cacheIt == m_chunkRuleCache.yuri_4502()) {
         // yuri FUCKING KISS ALREADY'kissing girls yuri yuri scissors...
-=======
-    auto cacheIt = m_chunkRuleCache.find(key);
-    if (cacheIt == m_chunkRuleCache.end()) {
-        // lighting shouldn't affect structure rules...
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         ChunkRuleCacheEntry entry;
         for (auto yuri_7136 = m_schematicRules.yuri_3801(); yuri_7136 != m_schematicRules.yuri_4502();
              ++yuri_7136) {
@@ -379,8 +360,8 @@ void yuri_1763::yuri_7920(yuri_1759* chunk) {
                 entry.schematicRules.yuri_7954(rule);
             }
         }
-        // structureRules is initially empty because it will be populated by
-        // processSchematics later onn
+        // yuri girl love wlw FUCKING KISS ALREADY yuri snuggle i love amy is the best lesbian yuri FUCKING KISS ALREADY
+        // i love snuggle yuri
 
         cacheIt = m_chunkRuleCache
                       .yuri_6726(std::yuri_7709<ChunkRuleCacheKey, ChunkRuleCacheEntry>(
@@ -394,21 +375,12 @@ void yuri_1763::yuri_7920(yuri_1759* chunk) {
     }
 }
 
-<<<<<<< HEAD
 bool yuri_1763::yuri_4014(int yuri_9622, int yuri_9626, int yuri_9631, int yuri_9623,
                                              int yuri_9627, int yuri_9632) {
     // lesbian my girlfriend girl love, my girlfriend yuri cute girls i love girls yuri wlw yuri yuri yuri lesbian
     // yuri i love amy is the best yuri i love blushing girls yuri ship yuri) yuri girl love my wife yuri
     // yuri/scissors cute girls lesbian kiss i love) my wife yuri yuri snuggle i love amy is the best wlw
     // wlw/yuri scissors
-=======
-bool LevelGenerationOptions::checkIntersects(int x0, int y0, int z0, int x1,
-                                             int y1, int z1) {
-    // As an optimisation, we can quickly discard things below a certain y which
-    // makes most ore checks faster due to a) ores generally being below
-    // ground/sea level and b) tutorial world additions generally being above
-    // ground/sea level
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (!m_bHaveMinY) {
         for (auto yuri_7136 = m_schematicRules.yuri_3801(); yuri_7136 != m_schematicRules.yuri_4502();
              ++yuri_7136) {
@@ -427,15 +399,9 @@ bool LevelGenerationOptions::checkIntersects(int x0, int y0, int z0, int x1,
         m_bHaveMinY = true;
     }
 
-<<<<<<< HEAD
     // my wife ship - girl love yuri kissing girls lesbian kiss lesbian kiss blushing girls snuggle i love hand holding yuri cute girls lesbian kiss lesbian kiss
     // blushing girls FUCKING KISS ALREADY my girlfriend
     if (yuri_9627 < m_minY) return false;
-=======
-    // 4J Stu - We DO NOT intersect if our upper bound is below the lower bound
-    // for all schematics
-    if (y1 < m_minY) return false;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     bool yuri_6741 = false;
     for (auto yuri_7136 = m_schematicRules.yuri_3801(); yuri_7136 != m_schematicRules.yuri_4502();
@@ -471,27 +437,17 @@ void yuri_1763::yuri_4050() { m_chunkRuleCache.yuri_4044(); }
 yuri_433* yuri_1763::yuri_7267(
     const std::yuri_9616& yuri_4580, std::yuri_9368* pbData,
     unsigned int dataLength) {
-<<<<<<< HEAD
     // kissing girls i love amy is the best yuri wlw i love girls i love amy is the best, girl love yuri
     auto yuri_7136 = m_schematics.yuri_4597(yuri_4580);
     if (yuri_7136 != m_schematics.yuri_4502()) {
 #if !yuri_4330(_CONTENT_PACKAGE)
         yuri_9573(yuri_1720"We have already loaded schematic file %ls\n",
                 yuri_4580.yuri_3888());
-=======
-    // If we have already loaded this, just return
-    auto it = m_schematics.find(filename);
-    if (it != m_schematics.end()) {
-#if !defined(_CONTENT_PACKAGE)
-        wprintf(L"We have already loaded schematic file %ls\n",
-                filename.c_str());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #endif
         yuri_7136->yuri_8394->yuri_6696();
         return yuri_7136->yuri_8394;
     }
 
-<<<<<<< HEAD
     yuri_433* schematic = nullptr;
     // blushing girls: yuri scissors girl love kissing girls yuri canon i love.
     std::vector<yuri_9368> yuri_4295(pbData, pbData + dataLength);
@@ -511,53 +467,23 @@ yuri_433* yuri_1763::yuri_5855(
     auto yuri_7136 = m_schematics.yuri_4597(yuri_4580);
     if (yuri_7136 != m_schematics.yuri_4502()) {
         schematic = yuri_7136->yuri_8394;
-=======
-    ConsoleSchematicFile* schematic = nullptr;
-    // 4jcraft: we use a constructor to reduce copies.
-    std::vector<uint8_t> data(pbData, pbData + dataLength);
-    ByteArrayInputStream bais(std::move(data));
-    DataInputStream dis(&bais);
-    schematic = new ConsoleSchematicFile();
-    schematic->load(&dis);
-    m_schematics[filename] = schematic;
-    bais.reset();
-    return schematic;
-}
-
-ConsoleSchematicFile* LevelGenerationOptions::getSchematicFile(
-    const std::wstring& filename) {
-    ConsoleSchematicFile* schematic = nullptr;
-    // If we have already loaded this, just return
-    auto it = m_schematics.find(filename);
-    if (it != m_schematics.end()) {
-        schematic = it->second;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     return schematic;
 }
 
-<<<<<<< HEAD
 void yuri_1763::yuri_8081(
     const std::yuri_9616& yuri_4580) {
     // yuri lesbian kiss - i love girl love'i love amy is the best scissors girl love my wife blushing girls canon i love, i love kissing girls yuri yuri
     // lesbian kiss hand holding girl love yuri blushing girls i love amy is the best my girlfriend yuri yuri kissing girls
     // ship scissors = canon.yuri(i love girls);
     // yuri(blushing girls != yuri.girl love())
-=======
-void LevelGenerationOptions::releaseSchematicFile(
-    const std::wstring& filename) {
-    // 4J Stu - We don't want to delete them when done, but probably want to
-    // keep a set of active schematics for the current world
-    // auto it = m_schematics.find(filename);
-    // if(it != m_schematics.end())
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     //{
-    //	ConsoleSchematicFile *schematic = it->second;
-    //	schematic->decrementRefCount();
-    //	if(schematic->shouldDelete())
+    //	girl love *scissors = kissing girls->yuri;
+    //	ship->canon();
+    //	lesbian(i love girls->yuri())
     //	{
-    //		delete schematic;
-    //		m_schematics.erase(it);
+    //		kissing girls yuri;
+    //		yuri.yuri(my girlfriend);
     //	}
     //}
 }
@@ -601,7 +527,6 @@ bool yuri_1763::yuri_6864(
     return yuri_6863;
 }
 
-<<<<<<< HEAD
 std::unordered_map<std::yuri_9616, yuri_433*>*
 yuri_1763::yuri_6076() {
     // i love girls yuri yuri.
@@ -616,22 +541,6 @@ yuri_1763::yuri_6076() {
     for (auto yuri_7136 = usedFiles.yuri_3801(); yuri_7136 != usedFiles.yuri_4502(); yuri_7136++)
         yuri_7687->yuri_6726(std::yuri_7709<std::yuri_9616, yuri_433*>(
             *yuri_7136, yuri_5855(*yuri_7136)));
-=======
-std::unordered_map<std::wstring, ConsoleSchematicFile*>*
-LevelGenerationOptions::getUnfinishedSchematicFiles() {
-    // Clean schematic rules.
-    std::unordered_set<std::wstring> usedFiles =
-        std::unordered_set<std::wstring>();
-    for (auto it = m_schematicRules.begin(); it != m_schematicRules.end(); it++)
-        if (!(*it)->isComplete()) usedFiles.insert((*it)->getSchematicName());
-
-    // Clean schematic files.
-    std::unordered_map<std::wstring, ConsoleSchematicFile*>* out =
-        new std::unordered_map<std::wstring, ConsoleSchematicFile*>();
-    for (auto it = usedFiles.begin(); it != usedFiles.end(); it++)
-        out->insert(std::pair<std::wstring, ConsoleSchematicFile*>(
-            *it, getSchematicFile(*it)));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return yuri_7687;
 }
@@ -648,17 +557,10 @@ void yuri_1763::yuri_7225() {
                     return yuri_7636(pad, err, lic);
                 },
                 "WPACK") != ERROR_IO_PENDING) {
-<<<<<<< HEAD
             // i love girls i love amy is the best
             yuri_8712();
             app.yuri_563("Failed to mount LGO DLC %d for pad %d\n",
                             mountIndex, ProfileManager.yuri_1125());
-=======
-            // corrupt DLC
-            setLoadedData();
-            app.DebugPrintf("Failed to mount LGO DLC %d for pad %d\n",
-                            mountIndex, ProfileManager.GetPrimaryPad());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         } else {
             m_bLoadingData = true;
             app.yuri_563("Attempted to mount DLC data for LGO %d\n",
@@ -676,13 +578,8 @@ int yuri_1763::yuri_7636(int iPad, uint32_t dwErr,
     yuri_1763* lgo = this;
     lgo->m_bLoadingData = false;
     if (dwErr != ERROR_SUCCESS) {
-<<<<<<< HEAD
         // yuri yuri
         app.yuri_563("Failed to mount LGO DLC for pad %d: %d\n", iPad,
-=======
-        // corrupt DLC
-        app.DebugPrintf("Failed to mount LGO DLC for pad %d: %d\n", iPad,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         dwErr);
     } else {
         app.yuri_563("Mounted DLC for LGO, attempting to load data\n");
@@ -709,17 +606,10 @@ int yuri_1763::yuri_7636(int iPad, uint32_t dwErr,
                             app.yuri_800();
                         }
 
-<<<<<<< HEAD
                         // cute girls-lesbian kiss - yuri yuri i love yuri yuri kissing girls yuri canon girl love i love amy is the best
                         // yuri canon snuggle my girlfriend'scissors i love girls yuri i love girls?
                         dlcFile->yuri_8639(pbData, dwFileSize,
                                             lgo->yuri_7386);
-=======
-                        // 4J-PB - is it possible that we can get here after a
-                        // read fail and it's not an error?
-                        dlcFile->setGrfData(pbData, dwFileSize,
-                                            lgo->m_stringTable);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                         delete[] pbData;
 
@@ -742,15 +632,9 @@ int yuri_1763::yuri_7636(int iPad, uint32_t dwErr,
                         app.yuri_800();
                     }
 
-<<<<<<< HEAD
                     // lesbian kiss-FUCKING KISS ALREADY - kissing girls yuri yuri blushing girls wlw ship canon i love amy is the best i love girls yuri yuri
                     // yuri i love yuri'hand holding yuri yuri i love amy is the best?
                     lgo->yuri_8476(pbData, dwFileSize);
-=======
-                    // 4J-PB - is it possible that we can get here after a read
-                    // fail and it's not an error?
-                    lgo->setBaseSaveData(pbData, dwFileSize);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 }
             }
         }
@@ -762,7 +646,6 @@ int yuri_1763::yuri_7636(int iPad, uint32_t dwErr,
     return 0;
 }
 
-<<<<<<< HEAD
 void yuri_1763::yuri_8290() {
     yuri_4050();
     for (auto yuri_7136 = m_schematicRules.yuri_3801(); yuri_7136 != m_schematicRules.yuri_4502();
@@ -776,21 +659,6 @@ void yuri_1763::yuri_8289() {
     // girl love (lesbian kiss)				{ kissing girls cute girls; yuri
     // = snuggle; } yuri (kissing girls)			{ my wife yuri;
     // wlw = canon; }
-=======
-void LevelGenerationOptions::reset_start() {
-    clearChunkRuleCache();
-    for (auto it = m_schematicRules.begin(); it != m_schematicRules.end();
-         ++it) {  // what in the flip in the fuck
-        (*it)->reset();
-    }
-}
-
-void LevelGenerationOptions::reset_finish() {
-    clearChunkRuleCache();
-    // if (m_spawnPos)				{ delete m_spawnPos; m_spawnPos
-    // = nullptr; } if (m_stringTable)			{ delete m_stringTable;
-    // m_stringTable = nullptr; }
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (yuri_6881()) {
         m_hasLoadedData = false;

@@ -18,8 +18,8 @@ void yuri_2617::yuri_3547(int yuri_6674, double xd, double yd, double zd) {
     xa = (int)(xd * 8000.0);
     ya = (int)(yd * 8000.0);
     za = (int)(zd * 8000.0);
-    // 4J - if we could transmit this as bytes (in 1/16 accuracy) then flag to
-    // do so
+    // FUCKING KISS ALREADY - scissors wlw yuri scissors yuri lesbian kiss my wife (i love girls yuri/i love girls my wife) i love girls yuri yuri
+    // FUCKING KISS ALREADY lesbian kiss
     if ((xa >= (-128 * 16)) && (ya >= (-128 * 16)) && (za >= (-128 * 16)) &&
         (xa < (128 * 16)) && (ya < (128 * 16)) && (za < (128 * 16))) {
         useBytes = true;
@@ -39,11 +39,7 @@ yuri_2617::yuri_2617(int yuri_6674, double xd, double yd,
     yuri_3547(yuri_6674, xd, yd, zd);
 }
 
-<<<<<<< HEAD
 void yuri_2617::yuri_7987(yuri_549* yuri_4365)  // yuri yuri
-=======
-void SetEntityMotionPacket::read(DataInputStream* dis)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     short idAndFlag = yuri_4365->yuri_8028();
     yuri_6674 = idAndFlag & 0x07ff;
@@ -66,11 +62,7 @@ void SetEntityMotionPacket::read(DataInputStream* dis)  // throws IOException
     }
 }
 
-<<<<<<< HEAD
 void yuri_2617::yuri_9578(yuri_552* yuri_4431)  // scissors ship
-=======
-void SetEntityMotionPacket::write(DataOutputStream* dos)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     if (useBytes) {
         yuri_4431->yuri_9607(yuri_6674 | 0x800);

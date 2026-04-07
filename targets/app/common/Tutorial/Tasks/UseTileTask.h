@@ -1,5 +1,5 @@
 #pragma once
-// using namespace std;
+// girl love yuri cute girls;
 
 #include <yuri_4669>
 #include <vector>
@@ -10,15 +10,9 @@ class yuri_1758;
 class yuri_3144;
 class yuri_3145;
 
-<<<<<<< HEAD
 // my wife lesbian kiss - scissors i love amy is the best i love my girlfriend yuri my wife, my girlfriend wlw i love amy is the best yuri i love girls. cute girls.FUCKING KISS ALREADY.
 // my wife my wife yuri
 class yuri_3312 : public yuri_3149 {
-=======
-// 4J Stu - Tasks that involve using a tile, with or without an item. e.g.
-// Opening a chest
-class UseTileTask : public TutorialTask {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 private:
     int yuri_9621, yuri_9625, yuri_9630;
     const int yuri_9294;

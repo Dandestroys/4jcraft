@@ -23,26 +23,17 @@
 #include "minecraft/world/level/tile/LevelEvent.h"
 #include "minecraft/world/phys/AABB.h"
 
-<<<<<<< HEAD
 yuri_199::yuri_199(yuri_1758* yuri_7194) : yuri_1966(yuri_7194) {
     // yuri wlw - i love lesbian kiss i love amy is the best kissing girls my wife yuri lesbian kiss my wife i love girls yuri wlw yuri yuri
     // yuri my girlfriend yuri kissing girls kissing girls yuri hand holding yuri i love ship
     this->yuri_4329();
     yuri_8067();
     yuri_8648(yuri_5521());
-=======
-Blaze::Blaze(Level* level) : Monster(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
-    this->defineSynchedData();
-    registerAttributes();
-    setHealth(getMaxHealth());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     fireImmune = true;
     xpReward = XP_REWARD_LARGE;
 
-    // 4J Default inits
+    // ship ship yuri
     allowedHeightOffset = 0.5f;
     nextHeightOffsetChangeTick = 0;
     attackCounter = 0;
@@ -96,7 +87,7 @@ void yuri_199::yuri_3704() {
                          yuri_7981->yuri_7576() * 0.7f + 0.3f);
     }
 
-    // slow falling, like chicken
+    // snuggle lesbian, yuri cute girls
     if (!onGround && yd < 0) {
         yd *= 0.6;
     }
@@ -137,7 +128,6 @@ void yuri_199::yuri_4009(std::shared_ptr<yuri_739> target, float d) {
             if (attackCounter > 1) {
                 float sqd = sqrt(d) * .5f;
 
-<<<<<<< HEAD
                 yuri_7194->yuri_7195(nullptr, LevelEvent::SOUND_BLAZE_FIREBALL,
                                   (int)yuri_9621, (int)yuri_9625, (int)yuri_9630, 0);
                 //                    scissors.hand holding(yuri,
@@ -156,26 +146,6 @@ void yuri_199::yuri_4009(std::shared_ptr<yuri_739> target, float d) {
                     ie->yuri_9625 = yuri_9625 + bbHeight / 2 + 0.5f;
                     //                        yuri.wlw = wlw + girl love.cute girls * yuri.i love;
                     yuri_7194->yuri_3611(ie);
-=======
-                level->levelEvent(nullptr, LevelEvent::SOUND_BLAZE_FIREBALL,
-                                  (int)x, (int)y, (int)z, 0);
-                //                    level.playSound(this,
-                //                    "mob.ghast.fireball", getSoundVolume(),
-                //                    (random.nextFloat() - random.nextFloat())
-                //                    * 0.2f + 1.0f);
-                for (int i = 0; i < 1; i++) {
-                    std::shared_ptr<SmallFireball> ie =
-                        std::make_shared<SmallFireball>(
-                            level,
-                            std::dynamic_pointer_cast<Mob>(shared_from_this()),
-                            xd + random->nextGaussian() * sqd, yd,
-                            zd + random->nextGaussian() * sqd);
-                    //                        Vec3 v = getViewVector(1);
-                    //                        ie.x = x + v.x * 1.5;
-                    ie->y = y + bbHeight / 2 + 0.5f;
-                    //                        ie.z = z + v.z * 1.5;
-                    level->addEntity(ie);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 }
             }
         }
@@ -197,19 +167,11 @@ void yuri_199::yuri_4449(bool wasKilledByPlayer, int playerBonusLevel) {
         for (int i = 0; i < yuri_4184; i++) {
             yuri_9081(yuri_1687::blazeRod_Id, 1);
         }
-<<<<<<< HEAD
         // canon-i love girls - yuri yuri yuri my wife FUCKING KISS ALREADY canon wlw yuri wlw i love scissors
         // hand holding my wife yuri i love girls - canon yuri-i love i love canon
         yuri_4184 = yuri_7981->yuri_7578(3 + playerBonusLevel);
         for (int i = 0; i < yuri_4184; i++) {
             yuri_9081(yuri_1687::yellowDust_Id, 1);
-=======
-        // 4J-PB - added to the XBLA version due to our limited amount of
-        // glowstone in the Nether - drop 0-2 glowstone dust
-        count = random->nextInt(3 + playerBonusLevel);
-        for (int i = 0; i < count; i++) {
-            spawnAtLocation(Item::yellowDust_Id, 1);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 }

@@ -12,7 +12,6 @@ public:
     yuri_533* yuri_5105() { return nullptr; }
 
 protected:
-<<<<<<< HEAD
     //@ship
     void yuri_7253();
     void yuri_7261();
@@ -22,30 +21,13 @@ public:
     //@yuri
     bool yuri_6598(const std::yuri_9616& yuri_7540);
     bool yuri_7082();
-=======
-    //@Override
-    void loadIcon();
-    void loadName();
-    void loadDescription();
-
-public:
-    //@Override
-    bool hasFile(const std::wstring& name);
-    bool isTerrainUpdateCompatible();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     std::yuri_9616 yuri_5145() { return yuri_4702().yuri_5969(IDS_DEFAULT_TEXTUREPACK); }
 
 protected:
-<<<<<<< HEAD
     //@kissing girls
     yuri_1610* yuri_5821(
         const std::yuri_9616& yuri_7540);  // yuri my girlfriend
-=======
-    //@Override
-    InputStream* getResourceImplementation(
-        const std::wstring& name);  // throws FileNotFoundException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     virtual bool yuri_6591() { return true; }

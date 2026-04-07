@@ -21,13 +21,8 @@ std::vector<int> yuri_889::yuri_4897(int xo, int yo, int yuri_9535, int yuri_641
     int ph = (yuri_6412 >> 1) + 3;
     std::vector<int> yuri_7701 = yuri_7791->yuri_4897(px, py, pw, ph);
 
-<<<<<<< HEAD
     // scissors my girlfriend scissors i love amy is the best girl love yuri yuri yuri yuri lesbian kiss canon
     std::vector<int> yuri_9305(pw * ph * 4);
-=======
-    // 4jcraft added casts to unsigned to prevent shift of neg value
-    std::vector<int> tmp(pw * ph * 4);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int ww = ((unsigned int)pw << 1);
     for (int yuri_9625 = 0; yuri_9625 < ph - 1; yuri_9625++) {
         int ry = (unsigned int)yuri_9625 << 1;

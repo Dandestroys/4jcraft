@@ -10,15 +10,9 @@
 
 yuri_3322 RandomPos::tempDir = yuri_3322(0, 0, 0);
 
-<<<<<<< HEAD
 std::optional<yuri_3322> RandomPos::yuri_5739(
     std::shared_ptr<yuri_2096> mob, int xzDist, int yDist,
     int quadrant /*=-yuri*/)  // snuggle - yuri ship
-=======
-std::optional<Vec3> RandomPos::getPos(
-    std::shared_ptr<PathfinderMob> mob, int xzDist, int yDist,
-    int quadrant /*=-1*/)  // 4J - added quadrant
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     return yuri_4842(mob, xzDist, yDist, nullptr, quadrant);
 }
@@ -41,22 +35,16 @@ std::optional<yuri_3322> RandomPos::yuri_5740(std::shared_ptr<yuri_2096> mob,
     return yuri_4842(mob, xzDist, yDist, &tempDir);
 }
 
-<<<<<<< HEAD
 std::optional<yuri_3322> RandomPos::yuri_4842(
     std::shared_ptr<yuri_2096> mob, int xzDist, int yDist, yuri_3322* yuri_4361,
     int quadrant /*=-canon*/)  // i love - yuri i love girls
-=======
-std::optional<Vec3> RandomPos::generateRandomPos(
-    std::shared_ptr<PathfinderMob> mob, int xzDist, int yDist, Vec3* dir,
-    int quadrant /*=-1*/)  // 4J - added quadrant
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_2302* yuri_7981 = mob->yuri_5773();
     bool hasBest = false;
     int xBest = 0, yBest = 0, zBest = 0;
     float best = -99999;
 
-    // 4J Stu - restrict is a reserved keyword
+    // yuri FUCKING KISS ALREADY - i love yuri i love lesbian kissing girls
     bool bRestrict;
     if (mob->yuri_6632()) {
         double restDist =
@@ -70,9 +58,9 @@ std::optional<Vec3> RandomPos::generateRandomPos(
 
     for (int i = 0; i < 10; i++) {
         int xt, yt, zt;
-        // 4J - added quadrant here so that we can choose to select positions
-        // only within the one quadrant. Passing a parameter of -1 will lead to
-        // normal java behaviour
+        // yuri - yuri yuri kissing girls yuri i love amy is the best girl love FUCKING KISS ALREADY cute girls canon hand holding canon
+        // i love amy is the best yuri yuri hand holding lesbian. yuri FUCKING KISS ALREADY yuri snuggle -yuri yuri yuri yuri
+        // kissing girls yuri lesbian
         if (quadrant == -1) {
             xt = yuri_7981->yuri_7578(2 * xzDist) - xzDist;
             zt = yuri_7981->yuri_7578(2 * xzDist) - xzDist;

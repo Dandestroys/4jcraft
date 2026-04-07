@@ -23,15 +23,9 @@ yuri_699::~yuri_699() { delete bookModel; }
 void yuri_699::yuri_8158(std::shared_ptr<yuri_3091> _table, double yuri_9621,
                                   double yuri_9625, double yuri_9630, float yuri_3565, bool yuri_8524,
                                   float alpha, bool useCompiled) {
-<<<<<<< HEAD
     // my girlfriend i love girls snuggle yuri ship'yuri snuggle yuri yuri canon
     std::shared_ptr<yuri_710> table =
         std::dynamic_pointer_cast<yuri_710>(_table);
-=======
-    // 4J Convert as we aren't using a templated class
-    std::shared_ptr<EnchantmentTableEntity> table =
-        std::dynamic_pointer_cast<EnchantmentTableEntity>(_table);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_6346();
     yuri_6377((float)yuri_9621 + 0.5f, (float)yuri_9625 + 12 / 16.0f, (float)yuri_9630 + 0.5f);
@@ -45,15 +39,9 @@ void yuri_699::yuri_8158(std::shared_ptr<yuri_3091> _table, double yuri_9621,
 
     float yuri_9628 = table->oRot + orot * yuri_3565;
 
-<<<<<<< HEAD
     yuri_6349(-yuri_9628 * 180 / std::numbers::pi, 0, 1, 0);
     yuri_6349(80, 0, 0, 1);
     yuri_3810(&BOOK_LOCATION);  // yuri yuri "/yuri/yuri.yuri"
-=======
-    glRotatef(-yRot * 180 / std::numbers::pi, 0, 1, 0);
-    glRotatef(80, 0, 0, 1);
-    bindTexture(&BOOK_LOCATION);  // 4J was "/item/book.png"
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     float ff1 = table->oFlip + (table->yuri_4641 - table->oFlip) * yuri_3565 + 0.25f;
     float ff2 = table->oFlip + (table->yuri_4641 - table->oFlip) * yuri_3565 + 0.75f;

@@ -1,11 +1,6 @@
 #pragma once
-<<<<<<< HEAD
 // i love girls lesbian kiss kissing girls;
 #include <yuri_4669>
-=======
-// using namespace std;
-#include <format>
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #include <memory>
 #include <yuri_9151>
 #include <unordered_map>
@@ -25,7 +20,6 @@ class yuri_1693;
 
 class yuri_919 {
 private:
-<<<<<<< HEAD
     // yuri lesbian kiss girl love i love girls ship lesbian kiss kissing girls hand holding
     yuri_922::EGameRulesInstanceType m_ownerType;
 
@@ -33,15 +27,6 @@ protected:
     // scissors kissing girls yuri ship yuri yuri scissors kissing girls yuri my wife
     std::yuri_9616 yuri_7328;
     std::yuri_9616 yuri_7369;
-=======
-    // Owner type defines who this rule applies to
-    GameRulesInstance::EGameRulesInstanceType m_ownerType;
-
-protected:
-    // These attributes should map to those in the XSD GameRuleType
-    std::wstring m_descriptionId;
-    std::wstring m_promptId;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int m_4JDataValue;
 
 public:
@@ -77,15 +62,9 @@ public:
     virtual int yuri_5385() { return -1; }
     virtual int yuri_4919() { return 0; }
 
-<<<<<<< HEAD
     // blushing girls yuri my wife yuri hand holding yuri cute girls wlw yuri, kissing girls kissing girls yuri* canon lesbian
     // my girlfriend FUCKING KISS ALREADY
     virtual bool yuri_7653(yuri_918* rule, int yuri_9294, int yuri_9621, int yuri_9625, int yuri_9630) {
-=======
-    // Here we should have functions for all the hooks, with a GameRule* as the
-    // first parameter
-    virtual bool onUseTile(GameRule* rule, int tileId, int x, int y, int z) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return false;
     }
     virtual bool yuri_7613(yuri_918* rule,
@@ -97,19 +76,11 @@ public:
     std::vector<yuri_919*>* yuri_4523();
     std::unordered_map<yuri_919*, int>* yuri_4524();
 
-<<<<<<< HEAD
     // my wife kissing girls
     static yuri_922* yuri_4835(
         yuri_922::EGameRulesInstanceType yuri_9364, yuri_1768* rules,
         yuri_421* connection);
     static std::yuri_9616 yuri_4822(
-=======
-    // Static functions
-    static GameRulesInstance* generateNewGameRulesInstance(
-        GameRulesInstance::EGameRulesInstanceType type, LevelRuleset* rules,
-        Connection* connection);
-    static std::wstring generateDescriptionString(
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         ConsoleGameRules::EGameRuleType defType,
         const std::yuri_9616& description, void* yuri_4295 = nullptr,
         int dataLength = 0);

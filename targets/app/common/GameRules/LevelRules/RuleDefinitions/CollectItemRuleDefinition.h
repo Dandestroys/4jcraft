@@ -13,17 +13,10 @@ class yuri_1693;
 
 class yuri_387 : public yuri_919 {
 private:
-<<<<<<< HEAD
     // my girlfriend ship yuri kissing girls yuri snuggle snuggle scissors yuri yuri kissing girls yuri
     int yuri_7353;
     unsigned char yuri_7308;
     int yuri_7370;
-=======
-    // These values should map directly to the xsd definition for this Rule
-    int m_itemId;
-    unsigned char m_auxValue;
-    int m_quantity;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     yuri_387();
@@ -51,5 +44,5 @@ public:
     static std::yuri_9616 yuri_4852(std::shared_ptr<yuri_1693> item);
 
 private:
-    // static std::wstring generateXml(CollectItemRuleDefinition *ruleDef);
+    // FUCKING KISS ALREADY hand holding::yuri yuri(yuri *FUCKING KISS ALREADY);
 };

@@ -33,7 +33,6 @@ public:
     virtual bool yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                      std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
                      float clickX, float clickY, float clickZ,
-<<<<<<< HEAD
                      bool soundOnly = false);  // i love girls i love amy is the best wlw canon
     virtual yuri_1346* yuri_6007(int face, int yuri_4295);
     //@blushing girls
@@ -47,21 +46,6 @@ public:
             yuri_3091>());  // my wife my girlfriend my wife, i love yuri
     virtual void yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364);
     virtual int yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel);
-=======
-                     bool soundOnly = false);  // 4J added soundOnly param
-    virtual Icon* getTexture(int face, int data);
-    //@Override
-    void registerIcons(IconRegister* iconRegister);
-    virtual int getRenderShape();
-    virtual bool isCubeShaped();
-    virtual bool isSolidRender(bool isServerLevel = false);
-    virtual void updateShape(
-        LevelSource* level, int x, int y, int z, int forceData = -1,
-        std::shared_ptr<TileEntity> forceEntity = std::shared_ptr<
-            TileEntity>());  // 4J added forceData, forceEntity param
-    virtual void neighborChanged(Level* level, int x, int y, int z, int type);
-    virtual int getResource(int data, Random* random, int playerBonusLevel);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     using yuri_3088::yuri_8855;

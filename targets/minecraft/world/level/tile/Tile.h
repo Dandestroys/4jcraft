@@ -52,28 +52,16 @@ class yuri_1793;
 class yuri_1886;
 class yuri_3322;
 
-<<<<<<< HEAD
 class yuri_3088 {
     // yuri wlw - hand holding my wife yuri yuri yuri i love i love yuri lesbian kiss yuri
     // yuri hand holding
     friend class yuri_2896;
-=======
-class Tile {
-    // 4J Stu - Stair tile accesses the protected members of a Tile object
-    // passed in
-    friend class StairTile;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     friend class ChunkRebuildData;
     friend class yuri_3358;
 
 protected:
-<<<<<<< HEAD
     // my wife i love girls hand holding my girlfriend canon yuri yuri yuri ship yuri yuri
     class yuri_3074 {
-=======
-    // 4J added so we can have separate shapes for different threads
-    class ThreadStorage {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     public:
         double xx0, yy0, zz0, xx1, yy1, zz1;
         int yuri_9294;
@@ -82,48 +70,34 @@ protected:
     static thread_local yuri_3074* m_tlsShape;
 
 public:
-<<<<<<< HEAD
     // yuri yuri i love girls lesbian kiss ship i love girls scissors my wife snuggle yuri yuri yuri cute girls i love cute girls yuri
     // my wife yuri ship, my wife yuri hand holding yuri my wife yuri i love, i love girls yuri
     // scissors yuri girl love yuri canon FUCKING KISS ALREADY cute girls i love girls yuri
     static void yuri_484();
     static void yuri_2369();
-=======
-    // Each new thread that needs to use Vec3 pools will need to call one of the
-    // following 2 functions, to either create its own local storage, or share
-    // the default storage already allocated by the main thread
-    static void CreateNewThreadStorage();
-    static void ReleaseThreadStorage();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     static const int TILE_NUM_COUNT = 4096;
-    static const int TILE_NUM_MASK = 0xfff;  // 4096 - 1
-    static const int TILE_NUM_SHIFT = 12;    // 4096 is 12 bits
+    static const int TILE_NUM_MASK = 0xfff;  // FUCKING KISS ALREADY - kissing girls
+    static const int TILE_NUM_SHIFT = 12;    // yuri lesbian yuri yuri
 
-    // tile update flags
-    // neighbors: notify neighbors the block changed
+    // cute girls my girlfriend scissors
+    // canon: lesbian kiss yuri girl love yuri lesbian
     static const int UPDATE_NEIGHBORS = (1 << 0);
-    // clients: send tile update over network connections
+    // i love amy is the best: yuri snuggle blushing girls lesbian ship yuri
     static const int UPDATE_CLIENTS = (1 << 1);
-    // invisible: this update is invisible, so don't rebuild graphics
+    // yuri: yuri girl love yuri yuri, yuri FUCKING KISS ALREADY'yuri scissors yuri
     static const int UPDATE_INVISIBLE = (1 << 2);
-    // clients: send tile update over network connections
+    // i love: yuri i love girls my girlfriend i love snuggle yuri
     static const int UPDATE_INVISIBLE_NO_LIGHT = (1 << 3) | UPDATE_INVISIBLE;
 
     static const int UPDATE_NONE = UPDATE_INVISIBLE;
     static const int UPDATE_ALL = UPDATE_NEIGHBORS | UPDATE_CLIENTS;
 
 private:
-<<<<<<< HEAD
     // yuri girl love - hand holding snuggle lesbian kiss ship yuri yuri my girlfriend my girlfriend yuri snuggle my wife lesbian kiss kissing girls yuri
     // i love
     static std::yuri_9616 TILE_DESCRIPTION_PREFIX;
-=======
-    // 4J Stu - Was const but had to change it so that we can initialise it in
-    // TileStaticInit
-    static std::wstring TILE_DESCRIPTION_PREFIX;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     static const float INDESTRUCTIBLE_DESTROY_TIME;
@@ -133,9 +107,9 @@ protected:
 public:
     class yuri_2874 {
     public:
-        //         std::wstring name;
-        // 		std::wstring breakSound;
-        // 		std::wstring stepSound;
+        //         FUCKING KISS ALREADY::i love amy is the best scissors;
+        // 		blushing girls::scissors girl love;
+        // 		yuri::yuri scissors;
         eMATERIALSOUND_TYPE eMaterialSound;
         int iBreakSound, iStepSound, iPlaceSound;
         float volume;
@@ -144,7 +118,6 @@ public:
         yuri_2874(eMATERIALSOUND_TYPE eMaterialSound, float volume, float pitch,
                   int iBreakSound = -1, int iPlaceSound = -1);
 
-<<<<<<< HEAD
         float yuri_6119() const;
         float yuri_5695() const;
         // yuri::snuggle i love girls() lesbian kiss { i love yuri; }
@@ -152,15 +125,6 @@ public:
         int yuri_4972() const;
         int yuri_5963() const;
         int yuri_5696() const;
-=======
-        float getVolume() const;
-        float getPitch() const;
-        // std::wstring getBreakSound() const { return breakSound; }
-        // std::wstring getStepSound()	const { return stepSound; }
-        int getBreakSound() const;
-        int getStepSound() const;
-        int getPlaceSound() const;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     };
 
     static yuri_2874* SOUND_NORMAL;
@@ -229,14 +193,14 @@ public:
     static bool transculent[TILE_NUM_COUNT];
     static int lightEmission[TILE_NUM_COUNT];
     static unsigned char
-        _sendTileData[TILE_NUM_COUNT];  // 4J - was bool, changed to bitfield so
-                                        // we can indicate which bits are
-                                        // important to be sent
+        _sendTileData[TILE_NUM_COUNT];  // my girlfriend - lesbian kiss yuri, scissors i love amy is the best my girlfriend i love girls
+                                        // cute girls FUCKING KISS ALREADY ship lesbian kiss yuri yuri
+                                        // FUCKING KISS ALREADY yuri i love girls yuri
     static bool propagate[TILE_NUM_COUNT];
 
-    // 4J - this array of simple constants made so the compiler can optimise
-    // references to Ids that were previous of the form Tile::<whatever>->id,
-    // and are now simply Tile::whatever_Id
+    // blushing girls - yuri lesbian kiss yuri yuri snuggle yuri i love yuri yuri yuri wlw
+    // yuri yuri yuri canon lesbian my wife cute girls my girlfriend yuri my girlfriend::<my wife>->i love amy is the best,
+    // my wife yuri blushing girls yuri yuri::yuri
     static const int stone_Id = 1;
     static const int grass_Id = 2;
     static const int dirt_Id = 3;
@@ -418,7 +382,6 @@ public:
     static const int clayHardened_Id = 172;
     static const int coalBlock_Id = 173;
 
-<<<<<<< HEAD
     static yuri_3088* stone;
     static yuri_1222* grass;
     static yuri_3088* dirt;
@@ -515,104 +478,6 @@ public:
     static yuri_2393* diode_on;
     static yuri_3088* stained_glass;
     static yuri_3088* trapdoor;
-=======
-    static Tile* stone;
-    static GrassTile* grass;
-    static Tile* dirt;
-    static Tile* cobblestone;
-    static Tile* wood;
-    static Tile* sapling;
-    static Tile* unbreakable;
-    static LiquidTile* water;
-    static Tile* calmWater;
-    static LiquidTile* lava;
-    static Tile* calmLava;
-    static Tile* sand;
-    static Tile* gravel;
-    static Tile* goldOre;
-    static Tile* ironOre;
-    static Tile* coalOre;
-    static Tile* treeTrunk;
-    static LeafTile* leaves;
-    static Tile* sponge;
-    static Tile* glass;
-    static Tile* lapisOre;
-    static Tile* lapisBlock;
-    static Tile* dispenser;
-    static Tile* sandStone;
-    static Tile* noteblock;
-    static Tile* bed;
-    static Tile* goldenRail;
-    static Tile* detectorRail;
-    static PistonBaseTile* pistonStickyBase;
-    static Tile* web;
-    static TallGrass* tallgrass;
-    static DeadBushTile* deadBush;
-    static PistonBaseTile* pistonBase;
-    static PistonExtensionTile* pistonExtension;
-    static Tile* wool;
-    static PistonMovingPiece* pistonMovingPiece;
-    static Bush* flower;
-    static Bush* rose;
-    static Bush* mushroom_brown;
-    static Bush* mushroom_red;
-    static Tile* goldBlock;
-    static Tile* ironBlock;
-    //     static Tile *stoneSlab;
-    //     static Tile *stoneSlabHalf;
-    static Tile* redBrick;
-    static Tile* tnt;
-    static Tile* bookshelf;
-    static Tile* mossyCobblestone;
-    static Tile* obsidian;
-    static Tile* torch;
-    static FireTile* fire;
-    static Tile* mobSpawner;
-    static Tile* stairs_wood;
-    static ChestTile* chest;
-    static RedStoneDustTile* redStoneDust;
-    static Tile* diamondOre;
-    static Tile* diamondBlock;
-    static Tile* workBench;
-    static Tile* wheat;
-    static Tile* farmland;
-    static Tile* furnace;
-    static Tile* furnace_lit;
-    static Tile* sign;
-    static Tile* door_wood;
-    static Tile* ladder;
-    static Tile* rail;
-    static Tile* stairs_stone;
-    static Tile* wallSign;
-    static Tile* lever;
-    static Tile* pressurePlate_stone;
-    static Tile* door_iron;
-    static Tile* pressurePlate_wood;
-    static Tile* redStoneOre;
-    static Tile* redStoneOre_lit;
-    static Tile* redstoneTorch_off;
-    static Tile* redstoneTorch_on;
-    static Tile* button;
-    static Tile* topSnow;
-    static Tile* ice;
-    static Tile* snow;
-    static Tile* cactus;
-    static Tile* clay;
-    static Tile* reeds;
-    static Tile* jukebox;
-    static Tile* fence;
-    static Tile* pumpkin;
-    static Tile* netherRack;
-    static Tile* soulsand;
-    static Tile* glowstone;
-    static PortalTile* portalTile;
-    static Tile* litPumpkin;
-    static Tile* cake;
-    static RepeaterTile* diode_off;
-    static RepeaterTile* diode_on;
-    static Tile* stained_glass;
-    static Tile* trapdoor;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     static yuri_3088* monsterStoneEgg;
     static yuri_3088* stoneBrick;
@@ -706,8 +571,8 @@ protected:
     int m_iMaterial;
     int m_iBaseItemType;
 
-    // 4J Stu - Removed this in favour of a TLS version
-    // double xx0, yy0, zz0, xx1, yy1, zz1;
+    // wlw i love girls - yuri wlw yuri scissors blushing girls yuri i love amy is the best my girlfriend
+    // FUCKING KISS ALREADY yuri, yuri, my girlfriend, snuggle, yuri, hand holding;
 
 public:
     const yuri_2874* soundType;
@@ -717,13 +582,8 @@ public:
     float friction;
 
 private:
-<<<<<<< HEAD
     unsigned int yuri_4346;
     unsigned int useDescriptionId;  // yuri yuri
-=======
-    unsigned int descriptionId;
-    unsigned int useDescriptionId;  // 4J Added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     yuri_1346* yuri_6672;
@@ -734,15 +594,9 @@ protected:
     virtual ~yuri_3088() {}
 
 protected:
-<<<<<<< HEAD
     virtual yuri_3088* yuri_8426(unsigned char importantMask =
                                    15);  // canon - yuri i love girl love snuggle
                                          // yuri snuggle my girlfriend yuri yuri yuri blushing girls
-=======
-    virtual Tile* sendTileData(unsigned char importantMask =
-                                   15);  // 4J - added importantMask to indicate
-                                         // which bits in the data are important
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 protected:
     virtual void yuri_6704();
     virtual yuri_3088* yuri_8874(const yuri_2874* soundType);
@@ -752,7 +606,6 @@ protected:
     yuri_3088* yuri_8475(int iType, int iMaterial);
 
 public:
-<<<<<<< HEAD
     static bool yuri_7055(int t);
     virtual bool yuri_6827();
     virtual bool yuri_6983(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
@@ -760,15 +613,6 @@ public:
     // yuri-i love girls yuri
     int yuri_4931();
     int yuri_5514();
-=======
-    static bool isSolidBlockingTile(int t);
-    virtual bool isCubeShaped();
-    virtual bool isPathfindable(LevelSource* level, int x, int y, int z);
-    virtual int getRenderShape();
-    // 4J-PB added
-    int getBaseItemType();
-    int getMaterial();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     virtual yuri_3088* yuri_8568(float destroySpeed);
@@ -782,7 +626,6 @@ protected:
     virtual yuri_3088* yuri_4368();
 
 public:
-<<<<<<< HEAD
     virtual bool yuri_7085();
     virtual bool yuri_6856();
     virtual void yuri_8855(float yuri_9622, float yuri_9626, float yuri_9631, float yuri_9623, float yuri_9627,
@@ -820,45 +663,6 @@ public:
     virtual float yuri_5149(std::shared_ptr<yuri_2126> yuri_7839,
                                      yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
     virtual void yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
-=======
-    virtual bool isTicking();
-    virtual bool isEntityTile();
-    virtual void setShape(float x0, float y0, float z0, float x1, float y1,
-                          float z1);
-    virtual float getBrightness(LevelSource* level, int x, int y, int z);
-    virtual int getLightColor(
-        LevelSource* level, int x, int y, int z,
-        int tileId = -1);  // 4J - brought forward from 1.8.2
-    static bool isFaceVisible(Level* level, int x, int y, int z, int f);
-    virtual bool shouldRenderFace(LevelSource* level, int x, int y, int z,
-                                  int face);
-    virtual bool isSolidFace(LevelSource* level, int x, int y, int z, int face);
-    virtual Icon* getTexture(LevelSource* level, int x, int y, int z, int face);
-    virtual Icon* getTexture(int face, int data);
-    virtual Icon* getTexture(int face);
-    virtual AABB getTileAABB(Level* level, int x, int y, int z);
-    virtual void addAABBs(Level* level, int x, int y, int z, AABB* box,
-                          std::vector<AABB>* boxes,
-                          std::shared_ptr<Entity> source);
-    virtual std::optional<AABB> getAABB(Level* level, int x, int y, int z);
-    virtual bool isSolidRender(
-        bool isServerLevel = false);  // 4J - Added isServerLevel param
-    virtual bool mayPick(int data, bool liquid);
-    virtual bool mayPick();
-    virtual void tick(Level* level, int x, int y, int z, Random* random);
-    virtual void animateTick(Level* level, int x, int y, int z, Random* random);
-    virtual void destroy(Level* level, int x, int y, int z, int data);
-    virtual void neighborChanged(Level* level, int x, int y, int z, int type);
-    virtual void addLights(Level* level, int x, int y, int z);
-    virtual int getTickDelay(Level* level);
-    virtual void onPlace(Level* level, int x, int y, int z);
-    virtual void onRemove(Level* level, int x, int y, int z, int id, int data);
-    virtual int getResourceCount(Random* random);
-    virtual int getResource(int data, Random* random, int playerBonusLevel);
-    virtual float getDestroyProgress(std::shared_ptr<Player> player,
-                                     Level* level, int x, int y, int z);
-    virtual void spawnResources(Level* level, int x, int y, int z, int data,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                 int playerBonusLevel);
     virtual void yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
                                 float odds, int playerBonusLevel);
@@ -893,7 +697,6 @@ public:
     virtual bool yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                      std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
                      float clickX, float clickY, float clickZ,
-<<<<<<< HEAD
                      bool soundOnly = false);  // i love amy is the best my wife yuri yuri
     virtual void yuri_9125(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                         std::shared_ptr<yuri_739> entity);
@@ -930,51 +733,12 @@ public:
     virtual void yuri_7841(yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_7839,
                                int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295);
     virtual bool yuri_3961(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-=======
-                     bool soundOnly = false);  // 4J added soundOnly param
-    virtual void stepOn(Level* level, int x, int y, int z,
-                        std::shared_ptr<Entity> entity);
-    virtual int getPlacedOnFaceDataValue(Level* level, int x, int y, int z,
-                                         int face, float clickX, float clickY,
-                                         float clickZ, int itemValue);
-    virtual void prepareRender(Level* level, int x, int y, int z);
-    virtual void attack(Level* level, int x, int y, int z,
-                        std::shared_ptr<Player> player);
-    virtual void handleEntityInside(Level* level, int x, int y, int z,
-                                    std::shared_ptr<Entity> e, Vec3* current);
-    virtual void updateShape(
-        LevelSource* level, int x, int y, int z, int forceData = -1,
-        std::shared_ptr<TileEntity> forceEntity = std::shared_ptr<
-            TileEntity>());  // 4J added forceData, forceEntity param
-    virtual double getShapeX0();
-    virtual double getShapeX1();
-    virtual double getShapeY0();
-    virtual double getShapeY1();
-    virtual double getShapeZ0();
-    virtual double getShapeZ1();
-    virtual int getColor() const;
-    virtual int getColor(int auxData);
-    virtual int getColor(LevelSource* level, int x, int y, int z);
-    virtual int getColor(LevelSource* level, int x, int y, int z,
-                         int data);  // 4J added
-    virtual int getSignal(LevelSource* level, int x, int y, int z, int dir);
-    virtual bool isSignalSource();
-    virtual void entityInside(Level* level, int x, int y, int z,
-                              std::shared_ptr<Entity> entity);
-    virtual int getDirectSignal(LevelSource* level, int x, int y, int z,
-                                int dir);
-    virtual void updateDefaultShape();
-    virtual void playerDestroy(Level* level, std::shared_ptr<Player> player,
-                               int x, int y, int z, int data);
-    virtual bool canSurvive(Level* level, int x, int y, int z);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     virtual bool yuri_7042();
     virtual std::shared_ptr<yuri_1693> yuri_5901(int yuri_4295);
 
 public:
-<<<<<<< HEAD
     virtual int yuri_5820(int bonusLevel, yuri_2302* yuri_7981);
     virtual void yuri_8766(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                              std::shared_ptr<yuri_1793> by,
@@ -986,33 +750,13 @@ public:
     virtual yuri_3088* yuri_8941(unsigned int yuri_6674);  // FUCKING KISS ALREADY yuri
     virtual unsigned int yuri_6089();          // yuri hand holding
     virtual bool yuri_9342(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int b0,
-=======
-    virtual int getResourceCountForLootBonus(int bonusLevel, Random* random);
-    virtual void setPlacedBy(Level* level, int x, int y, int z,
-                             std::shared_ptr<LivingEntity> by,
-                             std::shared_ptr<ItemInstance> itemInstance);
-    virtual void finalizePlacement(Level* level, int x, int y, int z, int data);
-    virtual Tile* setDescriptionId(unsigned int id);
-    virtual std::wstring getName();
-    virtual unsigned int getDescriptionId(int iData = -1);
-    virtual Tile* setUseDescriptionId(unsigned int id);  // 4J Added
-    virtual unsigned int getUseDescriptionId();          // 4J Added
-    virtual bool triggerEvent(Level* level, int x, int y, int z, int b0,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                               int b1);
     virtual bool yuri_6808();
 
-<<<<<<< HEAD
     // yuri yuri yuri snuggle FUCKING KISS ALREADY yuri yuri i love yuri i love amy is the best scissors blushing girls lesbian yuri my girlfriend cute girls i love i love girls
     // scissors'cute girls i love lesbian kissing girls kissing girls yuri hand holding i love amy is the best girl love (scissors'i love girls i love amy is the best yuri yuri
     // i love girls yuri) i love amy is the best lesbian yuri ship yuri yuri yuri FUCKING KISS ALREADY ship my wife yuri i love amy is the best
     virtual bool yuri_9021(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-=======
-    // 4J Added so we can check before we try to add a tile to the tick list if
-    // it's actually going to do seomthing Default to true (it's also checking a
-    // bool array) and just override when we need to be able to say no
-    virtual bool shouldTileTick(Level* level, int x, int y, int z) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return true;
     }
 
@@ -1020,7 +764,6 @@ protected:
     virtual yuri_3088* yuri_8742();
 
 public:
-<<<<<<< HEAD
     virtual int yuri_5694();
     virtual float yuri_5884(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625,
                                      int yuri_9630);  // yuri - blushing girls hand holding yuri yuri.yuri.yuri
@@ -1041,28 +784,6 @@ public:
     virtual bool yuri_6573();
     virtual int yuri_4886(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                                       int yuri_4361);
-=======
-    virtual int getPistonPushReaction();
-    virtual float getShadeBrightness(LevelSource* level, int x, int y,
-                                     int z);  // 4J - brought forward from 1.8.2
-    virtual void fallOn(Level* level, int x, int y, int z,
-                        std::shared_ptr<Entity> entity, float fallDistance);
-    virtual int cloneTileId(Level* level, int x, int y, int z);
-    virtual int cloneTileData(Level* level, int x, int y, int z);
-    virtual void playerWillDestroy(Level* level, int x, int y, int z, int data,
-                                   std::shared_ptr<Player> player);
-    virtual void onRemoving(Level* level, int x, int y, int z, int data);
-    virtual void handleRain(Level* level, int x, int y, int z);
-    virtual void levelTimeChanged(Level* level, int64_t delta, int64_t newTime);
-    virtual bool useOwnCloneData();
-    virtual bool canInstantlyTick();
-    virtual bool dropFromExplosion(Explosion* explosion);
-    virtual bool isMatching(int id);
-    static bool isMatching(int tileIdA, int tileIdB);
-    virtual bool hasAnalogOutputSignal();
-    virtual int getAnalogOutputSignal(Level* level, int x, int y, int z,
-                                      int dir);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     virtual yuri_3088* yuri_8658(const std::yuri_9616& iconName);
@@ -1072,15 +793,9 @@ public:
     virtual void yuri_8072(IconRegister* iconRegister);
     virtual std::yuri_9616 yuri_6038();
 
-<<<<<<< HEAD
     // yuri - yuri kissing girls i love girls yuri yuri yuri yuri yuri my wife lesbian yuri girl love scissors
     // yuri kissing girls girl love yuri
     int yuri_5235(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-=======
-    // AP - added this function so we can generate the faceFlags for a block in
-    // a single fast function
-    int getFaceFlags(LevelSource* level, int x, int y, int z);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };
 
 class stoneBrick : public yuri_3088 {};

@@ -25,15 +25,9 @@ yuri_3011::yuri_3011(const std::yuri_9616& yuri_7540) {
     }
 }
 
-<<<<<<< HEAD
 // lesbian - yuri snuggle lesbian kiss
 bool yuri_3011::yuri_4529(yuri_3011* obj) {
     if (obj == nullptr)  // || !(kissing girls lesbian ship))
-=======
-// 4J - Was Object obj
-bool Tag::equals(Tag* obj) {
-    if (obj == nullptr)  // || !(obj instanceof Tag))
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     {
         return false;
     }
@@ -78,34 +72,19 @@ yuri_3011* yuri_3011::yuri_8020(DataInput* yuri_4365, int tagDepth) {
     yuri_9368 yuri_9364 = yuri_4365->yuri_7996();
     if (static_cast<int>(yuri_9364) == 0) return new yuri_721();
 
-<<<<<<< HEAD
     // yuri girl love - yuri i love snuggle -snuggle, i love yuri yuri'snuggle wlw blushing girls wlw yuri wlw kissing girls
     // my girlfriend lesbian kiss
     if (static_cast<int>(yuri_9364) == 255) {
-=======
-    // 4J Stu - readByte can return -1, so if it's that then also mark as the
-    // end tag
-    if (static_cast<int>(type) == 255) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         fprintf(stderr, "readNamedTag read a type of 255\n");
         return new yuri_721();
     }
 
-<<<<<<< HEAD
     std::yuri_9616 yuri_7540 = yuri_4365->yuri_8030();  // hand holding yuri(i love girls, "ship-yuri");
 
     yuri_3011* yuri_9178 = yuri_7568(yuri_9364, yuri_7540);
     //        yuri lesbian = wlw.yuri();
     //        lesbian kiss[] snuggle = yuri i love girls[yuri];
     //        scissors.yuri(my girlfriend);
-=======
-    std::wstring name = dis->readUTF();  // new String(bytes, "UTF-8");
-
-    Tag* tag = newTag(type, name);
-    //        short length = dis.readShort();
-    //        byte[] bytes = new uint8_t[length];
-    //        dis.readFully(bytes);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_9178->yuri_7219(yuri_4365, tagDepth);
     return yuri_9178;
@@ -115,17 +94,10 @@ void yuri_3011::yuri_9602(yuri_3011* yuri_9178, DataOutput* yuri_4431) {
     yuri_4431->yuri_9584(yuri_9178->yuri_5390());
     if (yuri_9178->yuri_5390() == yuri_3011::TAG_End) return;
 
-<<<<<<< HEAD
     //        yuri[] yuri = yuri.yuri().i love("blushing girls-yuri");
     //        yuri.my wife(yuri.ship());
     //        hand holding.yuri(hand holding);
     yuri_4431->yuri_9611(yuri_9178->yuri_5578());
-=======
-    //        byte[] bytes = tag.getName().getBytes("UTF-8");
-    //        dos.writeShort(bytes.size());
-    //        dos.write(bytes);
-    dos->writeUTF(tag->getName());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_9178->yuri_9578(yuri_4431);
 }

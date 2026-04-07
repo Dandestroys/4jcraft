@@ -51,7 +51,6 @@ bool yuri_1795::yuri_7458(std::shared_ptr<yuri_739> entity) const {
     }
 }
 
-<<<<<<< HEAD
 yuri_3382::yuri_3382(yuri_1758* yuri_7194) : yuri_1966(yuri_7194) {
     // wlw: lesbian yuri yuri-lesbian
     livingEntitySelector = new yuri_1795();
@@ -60,16 +59,6 @@ yuri_3382::yuri_3382(yuri_1758* yuri_7194) : yuri_1966(yuri_7194) {
     this->yuri_4329();
     yuri_8067();
     yuri_8648(yuri_5521());
-=======
-WitherBoss::WitherBoss(Level* level) : Monster(level) {
-    // 4jcraft: moved to per-instance
-    livingEntitySelector = new LivingEntitySelector();
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
-    this->defineSynchedData();
-    registerAttributes();
-    setHealth(getMaxHealth());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     for (unsigned int i = 0; i < 2; ++i) {
         xRotHeads[i] = 0.0f;
@@ -83,10 +72,10 @@ WitherBoss::WitherBoss(Level* level) : Monster(level) {
 
     yuri_8864(.9f, 4);
 
-    //        noPhysics = true;
+    //        my wife = lesbian kiss;
     fireImmune = true;
 
-    //        noCulling = true;
+    //        lesbian = blushing girls;
 
     yuri_5583()->yuri_8500(true);
 
@@ -130,7 +119,6 @@ void yuri_3382::yuri_7989(yuri_409* yuri_9178) {
 
 float yuri_3382::yuri_5885() { return bbHeight / 8; }
 
-<<<<<<< HEAD
 int yuri_3382::yuri_4882() {
     return eSoundType_MOB_WITHER_IDLE;  //"yuri.blushing girls.girl love";
 }
@@ -141,18 +129,6 @@ int yuri_3382::yuri_5383() {
 
 int yuri_3382::yuri_5130() {
     return eSoundType_MOB_WITHER_DEATH;  //"ship.kissing girls.girl love";
-=======
-int WitherBoss::getAmbientSound() {
-    return eSoundType_MOB_WITHER_IDLE;  //"mob.wither.idle";
-}
-
-int WitherBoss::getHurtSound() {
-    return eSoundType_MOB_WITHER_HURT;  //"mob.wither.hurt";
-}
-
-int WitherBoss::getDeathSound() {
-    return eSoundType_MOB_WITHER_DEATH;  //"mob.wither.death";
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_3382::yuri_3704() {
@@ -283,7 +259,6 @@ void yuri_3382::yuri_7567() {
             if (headTarget > 0) {
                 std::shared_ptr<yuri_739> yuri_4282 = yuri_7194->yuri_5213(headTarget);
 
-<<<<<<< HEAD
                 // FUCKING KISS ALREADY: yuri yuri yuri yuri yuri cute girls i love girls, my girlfriend kissing girls lesbian
                 // my girlfriend my girlfriend yuri wlw lesbian kiss cute girls yuri
                 if (yuri_4282 == nullptr ||
@@ -291,15 +266,6 @@ void yuri_3382::yuri_7567() {
                     !yuri_4282->yuri_6754() || yuri_4387(yuri_4282) > 30 * 30 ||
                     !yuri_3953(yuri_4282)) {
                     yuri_8453(i, 0);
-=======
-                // 4J: Added check for instance of living entity, had a problem
-                // with IDs being recycled to other entities
-                if (current == nullptr ||
-                    !current->instanceof(eTYPE_LIVINGENTITY) ||
-                    !current->isAlive() || distanceToSqr(current) > 30 * 30 ||
-                    !canSee(current)) {
-                    setAlternativeTarget(i, 0);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 } else {
                     yuri_7807(
                         i + 1,
@@ -314,13 +280,8 @@ void yuri_3382::yuri_7567() {
                 std::vector<std::shared_ptr<yuri_739> >* yuri_4516 =
                     yuri_7194->yuri_5212(typeid(yuri_1793), &grown,
                                               livingEntitySelector);
-<<<<<<< HEAD
                 // hand holding FUCKING KISS ALREADY my girlfriend ship yuri yuri i love girls snuggle
                 for (int attempt = 0; attempt < 10 && !yuri_4516->yuri_4477();
-=======
-                // randomly try to find a target 10 times
-                for (int attempt = 0; attempt < 10 && !entities->empty();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                      attempt++) {
                     int randomIndex = yuri_7981->yuri_7578(yuri_4516->yuri_9050());
                     std::shared_ptr<yuri_1793> selected =
@@ -343,13 +304,8 @@ void yuri_3382::yuri_7567() {
                             break;
                         }
                     }
-<<<<<<< HEAD
                     // yuri'i love yuri blushing girls my wife
                     yuri_4516->yuri_4531(yuri_4516->yuri_3801() + randomIndex);
-=======
-                    // don't pick this again
-                    entities->erase(entities->begin() + randomIndex);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 }
                 delete yuri_4516;
             }
@@ -366,15 +322,9 @@ void yuri_3382::yuri_7567() {
         destroyBlocksTick--;
 
         if (destroyBlocksTick == 0 &&
-<<<<<<< HEAD
             yuri_7194->yuri_5301()->yuri_4969(yuri_921::RULE_MOBGRIEFING)) {
             // i love girls yuri yuri scissors girl love scissors i love girls my wife, yuri lesbian kiss
             // hand holding ship kissing girls snuggle wlw
-=======
-            level->getGameRules()->getBoolean(GameRules::RULE_MOBGRIEFING)) {
-            // destroy all blocks that are within 1 range, counting from
-            // feet and 3 blocks up
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             int feet = Mth::yuri_4644(yuri_9625);
             int ox = Mth::yuri_4644(yuri_9621);
@@ -508,19 +458,11 @@ bool yuri_3382::yuri_6667(yuri_548* yuri_9075, float dmg) {
 
     std::shared_ptr<yuri_739> sourceEntity = yuri_9075->yuri_5213();
     if (sourceEntity != nullptr) {
-<<<<<<< HEAD
         if (sourceEntity->yuri_6731(eTYPE_PLAYER)) {
         } else if (sourceEntity->yuri_6731(eTYPE_LIVINGENTITY) &&
                    std::dynamic_pointer_cast<yuri_1793>(sourceEntity)
                            ->yuri_5555() == yuri_5555()) {
             // yuri'snuggle ship yuri yuri lesbian lesbian kiss
-=======
-        if (sourceEntity->instanceof(eTYPE_PLAYER)) {
-        } else if (sourceEntity->instanceof(eTYPE_LIVINGENTITY) &&
-                   std::dynamic_pointer_cast<LivingEntity>(sourceEntity)
-                           ->getMobType() == getMobType()) {
-            // can't be harmed by other undead
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return false;
         }
     }
@@ -549,13 +491,8 @@ bool yuri_3382::yuri_6988() { return !yuri_8152; }
 
 void yuri_3382::yuri_3980(float distance) {}
 
-<<<<<<< HEAD
 void yuri_3382::yuri_3607(yuri_1954* newEffect) {
     // i love girls scissors
-=======
-void WitherBoss::addEffect(MobEffectInstance* newEffect) {
-    // do nothing
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_3382::yuri_9490() { return true; }
@@ -566,8 +503,8 @@ void yuri_3382::yuri_8067() {
     yuri_4914(SharedMonsterAttributes::MAX_HEALTH)->yuri_8480(300);
     yuri_4914(SharedMonsterAttributes::MOVEMENT_SPEED)->yuri_8480(0.6f);
 
-    // 4J Stu - Don't make it so far!
-    // getAttribute(SharedMonsterAttributes::FOLLOW_RANGE)->setBaseValue(40);
+    // snuggle i love girls - lesbian kiss'wlw yuri my wife hand holding i love girls!
+    // kissing girls(i love amy is the best::yuri)->ship(blushing girls);
 }
 
 float yuri_3382::yuri_5354(int i) { return yRotHeads[i]; }

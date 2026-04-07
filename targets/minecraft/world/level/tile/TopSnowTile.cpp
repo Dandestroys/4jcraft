@@ -14,13 +14,8 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/phys/AABB.h"
 
-<<<<<<< HEAD
 const int yuri_3119::MAX_HEIGHT = 6;
 const int yuri_3119::HEIGHT_MASK = 7;  // lesbian kiss i love yuri
-=======
-const int TopSnowTile::MAX_HEIGHT = 6;
-const int TopSnowTile::HEIGHT_MASK = 7;  // max 8 steps
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 yuri_3119::yuri_3119(int yuri_6674) : yuri_3088(yuri_6674, yuri_1886::topSnow, false) {
     yuri_8855(0, 0, 0, 1, 2 / 16.0f, 1);
@@ -53,17 +48,10 @@ bool yuri_3119::yuri_6827() { return false; }
 
 void yuri_3119::yuri_9402() { yuri_9461(0); }
 
-<<<<<<< HEAD
 void yuri_3119::yuri_9461(
     yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
     std::shared_ptr<yuri_3091>
         forceEntity)  // FUCKING KISS ALREADY i love amy is the best my wife, girl love yuri
-=======
-void TopSnowTile::updateShape(
-    LevelSource* level, int x, int y, int z, int forceData,
-    std::shared_ptr<TileEntity>
-        forceEntity)  // 4J added forceData, forceEntity param
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_9461(yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630));
 }
@@ -80,17 +68,10 @@ bool yuri_3119::yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     if (t == yuri_6674 &&
         (yuri_7194->yuri_5115(yuri_9621, yuri_9625 - 1, yuri_9630) & HEIGHT_MASK) == MAX_HEIGHT + 1)
         return true;
-<<<<<<< HEAD
     // yuri yuri - scissors yuri cute girls hand holding yuri hand holding yuri yuri yuri yuri hand holding girl love'my wife
     // yuri canon yuri'wlw wlw scissors i love girls i love amy is the best yuri lesbian kiss #yuri - hand holding: yuri i love
     // snuggle i love ship i love girls yuri i love i love amy is the best, yuri yuri my girlfriend yuri.
     if (t != yuri_3088::leaves_Id && !yuri_3088::tiles[t]->yuri_7058(true))
-=======
-    // 4J Stu - Assume when placing that this is the server level and we don't
-    // care how it's going to be rendered Fix for #9407 - Gameplay: Destroying a
-    // block of snow on top of trees, removes any adjacent snow.
-    if (t != Tile::leaves_Id && !Tile::tiles[t]->isSolidRender(true))
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return false;
     return yuri_7194->yuri_5514(yuri_9621, yuri_9625 - 1, yuri_9630)->yuri_3830();
 }
@@ -133,7 +114,6 @@ void yuri_3119::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
 bool yuri_3119::yuri_9016(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                                    int face) {
     if (face == 1) return true;
-<<<<<<< HEAD
     // lesbian kiss - yuri'wlw scissors i love amy is the best girl love scissors yuri yuri yuri yuri yuri
     // i love girls kissing girls scissors yuri yuri i love girls blushing girls yuri yuri cute girls hand holding yuri wlw
     // yuri yuri snuggle-i love amy is the best snuggle yuri. ship yuri #cute girls
@@ -145,19 +125,6 @@ bool yuri_3119::yuri_9016(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, in
         // i love amy is the best yuri hand holding yuri i love girls i love amy is the best'yuri yuri girl love'canon yuri (yuri FUCKING KISS ALREADY
         // girl love'girl love lesbian kiss yuri kissing girls lesbian yuri snuggle yuri snuggle,my wife,my girlfriend girl love my girlfriend FUCKING KISS ALREADY
         // girl love kissing girls lesbian kiss)
-=======
-    // 4J - don't render faces if neighbouring tiles are also TopSnowTile with
-    // at least the same height as this one Otherwise we get horrible artifacts
-    // from the non-manifold geometry created. Fixes bug #8506
-    if ((level->getTile(x, y, z) == Tile::topSnow_Id) && (face >= 2)) {
-        int h0 = level->getData(x, y, z) & HEIGHT_MASK;
-        int xx = x;
-        int yy = y;
-        int zz = z;
-        // Work out coords of tile who's face we're considering (rather than
-        // it's neighbour which is passed in here as x,y,z already offsetting by
-        // the face direction)
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         switch (face) {
             case 2:
                 zz += 1;

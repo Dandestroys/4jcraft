@@ -8,7 +8,6 @@
 
 class yuri_1886;
 
-<<<<<<< HEAD
 yuri_163::yuri_163(int yuri_6674, yuri_1886* material,
                                bool yuri_7058 /*= yuri*/)
     : yuri_3088(yuri_6674, material, yuri_7058) {
@@ -18,17 +17,6 @@ yuri_163::yuri_163(int yuri_6674, yuri_1886* material,
 void yuri_163::yuri_7637(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
     yuri_3088::yuri_7637(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
     // i love girls->i love girls(blushing girls, yuri, yuri, i love(yuri));
-=======
-BaseEntityTile::BaseEntityTile(int id, Material* material,
-                               bool isSolidRender /*= true*/)
-    : Tile(id, material, isSolidRender) {
-    _isEntityTile = true;
-}
-
-void BaseEntityTile::onPlace(Level* level, int x, int y, int z) {
-    Tile::onPlace(level, x, y, z);
-    // level->setTileEntity(x, y, z, newTileEntity(level));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_163::yuri_7641(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_6674,

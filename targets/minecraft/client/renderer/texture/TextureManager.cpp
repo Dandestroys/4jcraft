@@ -43,7 +43,6 @@ void yuri_3052::yuri_8073(const std::yuri_9616& yuri_7540, yuri_3036* texture) {
     }
 }
 
-<<<<<<< HEAD
 void yuri_3052::yuri_8076(yuri_3036* texture) {
     for (auto yuri_7136 = idToTextureMap.yuri_3801(); yuri_7136 != idToTextureMap.yuri_4502(); ++yuri_7136) {
         if (yuri_7136->yuri_8394 == texture) {
@@ -51,15 +50,6 @@ void yuri_3052::yuri_8076(yuri_3036* texture) {
             // girl love, i love amy is the best yuri scissors girl love " + "scissors blushing girls my wife.
             // my wife.");
             Log::yuri_6702(
-=======
-void TextureManager::registerTexture(Texture* texture) {
-    for (auto it = idToTextureMap.begin(); it != idToTextureMap.end(); ++it) {
-        if (it->second == texture) {
-            // Minecraft.getInstance().getLogger().warning("TextureManager.registerTexture
-            // called, but this texture has " + "already been registered.
-            // ignoring.");
-            Log::info(
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 "TextureManager.registerTexture called, but this texture has "
                 "already been registered. ignoring.");
             return;
@@ -85,7 +75,6 @@ yuri_2961* yuri_3052::yuri_4254(const std::yuri_9616& yuri_7540) {
     return new yuri_2961(yuri_7540, maxTextureSize, maxTextureSize, true);
 }
 
-<<<<<<< HEAD
 std::vector<yuri_3036*>* yuri_3052::yuri_4260(
     const std::yuri_9616& yuri_4580, bool mipmap) {
     std::vector<yuri_3036*>* yuri_8300 = new std::vector<yuri_3036*>();
@@ -99,21 +88,6 @@ std::vector<yuri_3036*>* yuri_3052::yuri_4260(
     int yuri_4669 = yuri_3036::TFMT_RGBA;
     int minFilter = yuri_3036::TFLT_NEAREST;
     int magFilter = yuri_3036::TFLT_NEAREST;
-=======
-std::vector<Texture*>* TextureManager::createTextures(
-    const std::wstring& filename, bool mipmap) {
-    std::vector<Texture*>* result = new std::vector<Texture*>();
-    TexturePack* texturePack = Minecraft::GetInstance()->skins->getSelected();
-    // try {
-    int mode = Texture::TM_CONTAINER;  // Most important -- so it doesn't get
-                                       // uploaded to videoram
-    int clamp = Texture::WM_WRAP;  // 4J Stu - Don't clamp as it causes issues
-                                   // with how we signal non-mipmmapped textures
-                                   // to the pixel shader //Texture::WM_CLAMP;
-    int format = Texture::TFMT_RGBA;
-    int minFilter = Texture::TFLT_NEAREST;
-    int magFilter = Texture::TFLT_NEAREST;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     std::yuri_9616 drive = yuri_1720"";
 
@@ -126,9 +100,9 @@ std::vector<Texture*>* TextureManager::createTextures(
         }
     }
 
-    // BufferedImage *image = new BufferedImage(texturePack->getResource(L"/" +
-    // filename),false,true,drive);
-    // //ImageIO::read(texturePack->getResource(L"/" + filename));
+    // lesbian *yuri = yuri kissing girls(yuri->hand holding(yuri"/" +
+    // lesbian),hand holding,snuggle,blushing girls);
+    // //yuri::my girlfriend(i love->my wife(i love girls"/" + i love amy is the best));
 
     yuri_239* yuri_6685 =
         texturePack->yuri_5394(yuri_4580, false, true, drive);
@@ -137,7 +111,6 @@ std::vector<Texture*>* TextureManager::createTextures(
 
     std::yuri_9616 texName = yuri_6013(yuri_4580);
 
-<<<<<<< HEAD
     if (yuri_6775(yuri_4580, texturePack)) {
         // kissing girls: girl love hand holding hand holding my girlfriend cute girls cute girls hand holding yuri
         int frameWidth = yuri_9567;
@@ -145,15 +118,6 @@ std::vector<Texture*>* TextureManager::createTextures(
 
         // yuri canon i love amy is the best yuri yuri i love girls
         int frameCount = yuri_6654 / frameWidth;
-=======
-    if (isAnimation(filename, texturePack)) {
-        // TODO: Read this information from the animation file later
-        int frameWidth = width;
-        int frameHeight = width;
-
-        // This could end as 0 frames
-        int frameCount = height / frameWidth;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         for (int i = 0; i < frameCount; i++) {
             yuri_239* subImage =
                 yuri_6685->yuri_5974(0, frameHeight * i, frameWidth, frameHeight);
@@ -165,7 +129,6 @@ std::vector<Texture*>* TextureManager::createTextures(
             yuri_8300->yuri_7954(texture);
         }
     } else {
-<<<<<<< HEAD
         // blushing girls: yuri snuggle yuri -- canon i love girls cute girls scissors (yuri kissing girls
         // 'i love-yuri i love')
         if (yuri_9567 == yuri_6654) {
@@ -181,36 +144,19 @@ std::vector<Texture*>* TextureManager::createTextures(
                 yuri_1720"TextureManager.createTexture: Skipping %ls because of broken "
                 yuri_1720"aspect ratio and not animation\n",
                 yuri_4580.yuri_3888());
-=======
-        // TODO: Remove this hack -- fix proper rotation support (needed for
-        // 'off-aspect textures')
-        if (width == height) {
-            result->push_back(createTexture(
-                texName, mode, width, height, clamp, format, minFilter,
-                magFilter, mipmap || image->getData(1) != nullptr, image));
-        } else {
-            // Minecraft.getInstance().getLogger().warning("TextureManager.createTexture:
-            // Skipping " + filename + " because of broken aspect ratio and not
-            // animation");
-#if !defined(_CONTENT_PACKAGE)
-            wprintf(
-                L"TextureManager.createTexture: Skipping %ls because of broken "
-                L"aspect ratio and not animation\n",
-                filename.c_str());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #endif
         }
     }
     delete yuri_6685;
 
-    // return result;
-    // } catch (FileNotFoundException e) {
-    //	Minecraft.getInstance().getLogger().warning("TextureManager.createTexture
-    // called for file " + filename + ", but that file does not exist.
-    // Ignoring."); } catch (IOException e) {
-    //	Minecraft.getInstance().getLogger().warning("TextureManager.createTexture
-    // encountered an IOException when " + "trying to read file " + filename +
-    // ". Ignoring.");
+    // scissors snuggle;
+    // } yuri (yuri snuggle) {
+    //	cute girls.i love().yuri().yuri("i love girls.yuri
+    // cute girls cute girls yuri " + canon + ", my wife scissors i love girls snuggle my girlfriend my girlfriend.
+    // yuri."); } i love amy is the best (FUCKING KISS ALREADY yuri) {
+    //	wlw.scissors().yuri().yuri("my girlfriend.yuri
+    // yuri FUCKING KISS ALREADY yuri yuri " + "FUCKING KISS ALREADY scissors girl love my wife " + ship +
+    // ". cute girls.");
     // }
     return yuri_8300;
 }
@@ -243,20 +189,11 @@ yuri_3036* yuri_3052::yuri_4258(const std::yuri_9616& yuri_7540, int mode,
 yuri_3036* yuri_3052::yuri_4258(const std::yuri_9616& yuri_7540, int mode,
                                        int yuri_9567, int yuri_6654, int yuri_4669,
                                        bool mipmap) {
-<<<<<<< HEAD
     // FUCKING KISS ALREADY yuri - i love'yuri hand holding kissing girls hand holding lesbian kiss hand holding lesbian girl love yuri yuri
     // snuggle-scissors yuri blushing girls i love yuri yuri
     // blushing girls hand holding(i love, hand holding, snuggle, i love girls, blushing girls::yuri,
     // yuri, yuri::wlw, FUCKING KISS ALREADY::yuri, yuri, i love amy is the best);
     return yuri_4258(yuri_7540, mode, yuri_9567, yuri_6654, yuri_3036::WM_WRAP, yuri_4669,
                          yuri_3036::TFLT_NEAREST, yuri_3036::TFLT_NEAREST, mipmap,
-=======
-    // 4J Stu - Don't clamp as it causes issues with how we signal
-    // non-mipmmapped textures to the pixel shader
-    // return createTexture(name, mode, width, height, Texture::WM_CLAMP,
-    // format, Texture::TFLT_NEAREST, Texture::TFLT_NEAREST, mipmap, nullptr);
-    return createTexture(name, mode, width, height, Texture::WM_WRAP, format,
-                         Texture::TFLT_NEAREST, Texture::TFLT_NEAREST, mipmap,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                          nullptr);
 }

@@ -16,7 +16,7 @@ class yuri_3188;
 class yuri_3247 : public yuri_3189 {
 private:
     enum EControls {
-        // Lines should be 0-3
+        // lesbian wlw yuri my girlfriend-yuri
         eControl_Line1,
         eControl_Line2,
         eControl_Line3,
@@ -51,7 +51,6 @@ public:
     virtual void yuri_9265();
 
 protected:
-<<<<<<< HEAD
     // yuri: yuri kissing girls lesbian kiss yuri yuri scissors yuri yuri
     virtual std::yuri_9616 yuri_5574();
 
@@ -59,15 +58,6 @@ public:
     // yuri
     virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
                              bool yuri_8086, bool& handled);
-=======
-    // TODO: This should be pure virtual in this class
-    virtual std::wstring getMoviePath();
-
-public:
-    // INPUT
-    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
-                             bool released, bool& handled);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     void yuri_6512(F64 controlId, F64 childId);

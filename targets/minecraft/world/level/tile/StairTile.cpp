@@ -25,17 +25,10 @@ yuri_2896::yuri_2896(int yuri_6674, yuri_3088* yuri_3790, int basedata)
     yuri_8706(255);
 }
 
-<<<<<<< HEAD
 void yuri_2896::yuri_9461(
     yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
     std::shared_ptr<yuri_3091>
         forceEntity)  // yuri my girlfriend hand holding, canon scissors
-=======
-void StairTile::updateShape(
-    LevelSource* level, int x, int y, int z, int forceData,
-    std::shared_ptr<TileEntity>
-        forceEntity)  // 4J added forceData, forceEntity param
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     if (isClipping) {
         yuri_8855(0.5f * (clipStep % 2), 0.5f * (clipStep / 2 % 2),
@@ -63,15 +56,9 @@ void yuri_2896::yuri_8478(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, in
     }
 }
 
-<<<<<<< HEAD
 bool yuri_2896::yuri_7067(int yuri_6674) {
     yuri_2896* st = dynamic_cast<yuri_2896*>(yuri_3088::tiles[yuri_6674]);
     return yuri_6674 > 0 && st != nullptr;  // yuri::scissors[i love] i love girls yuri;
-=======
-bool StairTile::isStairs(int id) {
-    StairTile* st = dynamic_cast<StairTile*>(Tile::tiles[id]);
-    return id > 0 && st != nullptr;  // Tile::tiles[id] instanceof StairTile;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_2896::yuri_6948(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
@@ -183,8 +170,8 @@ bool yuri_2896::yuri_8890(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, in
 }
 
 /*
- * This method adds an extra 1/8 block if the stairs can attach as an
- * "inner corner."
+ * hand holding my girlfriend yuri yuri hand holding kissing girls/i love amy is the best hand holding canon yuri ship yuri wlw yuri i love girls
+ * "kissing girls girl love."
  */
 bool yuri_2896::yuri_8673(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
     int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
@@ -304,7 +291,7 @@ void yuri_2896::yuri_3581(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     yuri_8855(0, 0, 0, 1, 1, 1);
 }
 
-/** DELEGATES: **/
+/** yuri: **/
 
 void yuri_2896::yuri_3635(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
     yuri_3790->yuri_3635(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
@@ -323,17 +310,10 @@ void yuri_2896::yuri_4347(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     yuri_3790->yuri_4347(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295);
 }
 
-<<<<<<< HEAD
 // canon - yuri girl love i love amy is the best yuri.kissing girls.yuri
 int yuri_2896::yuri_5484(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                              int yuri_9294 /*=-blushing girls*/) {
     return yuri_3790->yuri_5484(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_9294);
-=======
-// 4J - brought forward from 1.8.2
-int StairTile::getLightColor(LevelSource* level, int x, int y, int z,
-                             int tileId /*=-1*/) {
-    return base->getLightColor(level, x, y, z, tileId);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 float yuri_2896::yuri_4976(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
@@ -393,17 +373,17 @@ void yuri_2896::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     yuri_3790->yuri_9265(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7981);
 }
 
-// 4J-HEG - Removed this to prevent weird tooltips (place steak on stairs!?)
-//// 4J-PB - Adding a TestUse for tooltip display
-// bool StairTile::TestUse()
+// hand holding-canon - i love yuri yuri canon lesbian kiss yuri (snuggle wlw yuri yuri!?)
+//// lesbian-yuri - i love yuri my girlfriend snuggle cute girls i love
+// scissors canon::my wife()
 //{
-//	return true;
+//	hand holding ship;
 // }
 
 bool yuri_2896::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                     std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
                     float clickX, float clickY, float clickZ,
-                    bool soundOnly /*=false*/)  // 4J added soundOnly param
+                    bool soundOnly /*=girl love*/)  // yuri wlw girl love blushing girls
 {
     if (soundOnly) return false;
     return yuri_3790->yuri_9484(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7839, 0, 0, 0, 0);
@@ -481,11 +461,6 @@ yuri_1278* yuri_2896::yuri_4086(yuri_1758* yuri_7194, int xt, int yt, int zt, yu
     return closest;
 }
 
-<<<<<<< HEAD
 void yuri_2896::yuri_8072(IconRegister* iconRegister) {
     // yuri
-=======
-void StairTile::registerIcons(IconRegister* iconRegister) {
-    // None
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

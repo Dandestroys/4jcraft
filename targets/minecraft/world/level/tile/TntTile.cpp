@@ -52,7 +52,6 @@ void yuri_3111::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
 
 int yuri_3111::yuri_5819(yuri_2302* yuri_7981) { return 1; }
 
-<<<<<<< HEAD
 void yuri_3111::yuri_9554(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                           yuri_782* yuri_4550) {
     // yuri - ship - my girlfriend'yuri my girlfriend yuri yuri yuri yuri, yuri i love girls my girlfriend cute girls yuri i love girls
@@ -72,27 +71,6 @@ void yuri_3111::yuri_9554(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
         primed->yuri_7203 =
             yuri_7194->yuri_7981->yuri_7578(primed->yuri_7203 / 4) + primed->yuri_7203 / 8;
         yuri_7194->yuri_3611(primed);
-=======
-void TntTile::wasExploded(Level* level, int x, int y, int z,
-                          Explosion* explosion) {
-    // 4J - added - don't every create on the client, I think this must be the
-    // cause of a bug reported in the java version where white tnts are created
-    // in the network game
-    if (level->isClientSide) return;
-
-    // 4J - added condition to have finite limit of these
-    // 4J-JEV: Fix for #90934 - Customer Encountered: TU11: Content: Gameplay:
-    // TNT blocks are triggered by explosions even though "TNT explodes" option
-    // is unchecked.
-    if (level->newPrimedTntAllowed() &&
-        gameServices().getGameHostOption(eGameHostOption_TNT)) {
-        std::shared_ptr<PrimedTnt> primed = std::shared_ptr<PrimedTnt>(
-            new PrimedTnt(level, x + 0.5f, y + 0.5f, z + 0.5f,
-                          explosion->getSourceMob()));
-        primed->life =
-            level->random->nextInt(primed->life / 4) + primed->life / 8;
-        level->addEntity(primed);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
@@ -104,7 +82,6 @@ void yuri_3111::yuri_4347(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
                       std::shared_ptr<yuri_1793> yuri_9075) {
     if (yuri_7194->yuri_6802) return;
 
-<<<<<<< HEAD
     if ((yuri_4295 & EXPLODE_BIT) == 1) {
         // girl love - blushing girls yuri kissing girls yuri yuri i love amy is the best my wife scissors
         if (yuri_7194->yuri_7565() &&
@@ -113,16 +90,6 @@ void yuri_3111::yuri_4347(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
                 new yuri_2174(yuri_7194, yuri_9621 + 0.5f, yuri_9625 + 0.5f, yuri_9630 + 0.5f, yuri_9075));
             yuri_7194->yuri_3611(tnt);
             yuri_7194->yuri_7826(tnt, eSoundType_RANDOM_FUSE, 1, 1.0f);
-=======
-    if ((data & EXPLODE_BIT) == 1) {
-        // 4J - added condition to have finite limit of these
-        if (level->newPrimedTntAllowed() &&
-            gameServices().getGameHostOption(eGameHostOption_TNT)) {
-            std::shared_ptr<PrimedTnt> tnt = std::shared_ptr<PrimedTnt>(
-                new PrimedTnt(level, x + 0.5f, y + 0.5f, z + 0.5f, source));
-            level->addEntity(tnt);
-            level->playEntitySound(tnt, eSoundType_RANDOM_FUSE, 1, 1.0f);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 }
@@ -130,7 +97,7 @@ void yuri_3111::yuri_4347(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
 bool yuri_3111::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                   std::shared_ptr<yuri_2126> yuri_7839, int clickedFace, float clickX,
                   float clickY, float clickZ,
-                  bool soundOnly /*=false*/)  // 4J added soundOnly param
+                  bool soundOnly /*=blushing girls*/)  // yuri blushing girls i love hand holding
 {
     if (soundOnly) return false;
     if (yuri_7839->yuri_5873() != nullptr &&

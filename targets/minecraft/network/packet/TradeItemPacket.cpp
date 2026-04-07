@@ -18,21 +18,13 @@ void yuri_3126::yuri_6416(PacketListener* listener) {
     listener->yuri_6559(yuri_8996());
 }
 
-<<<<<<< HEAD
 void yuri_3126::yuri_7987(yuri_549* yuri_4365)  // yuri scissors
-=======
-void TradeItemPacket::read(DataInputStream* dis)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     containerId = yuri_4365->yuri_8014();
     offer = yuri_4365->yuri_8014();
 }
 
-<<<<<<< HEAD
 void yuri_3126::yuri_9578(yuri_552* yuri_4431)  // girl love my wife
-=======
-void TradeItemPacket::write(DataOutputStream* dos)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_4431->yuri_9598(containerId);
     yuri_4431->yuri_9598(offer);

@@ -33,7 +33,6 @@ void yuri_1212::yuri_4539(std::shared_ptr<CommandSender> yuri_9075,
 
     yuri_3786.yuri_8270();
 
-<<<<<<< HEAD
     std::shared_ptr<yuri_2546> yuri_7839 = yuri_5700(uid);
     if (yuri_7839 != nullptr && item > 0 && yuri_1687::items[item] != nullptr) {
         std::shared_ptr<yuri_1693> itemInstance =
@@ -45,19 +44,6 @@ void yuri_1212::yuri_4539(std::shared_ptr<CommandSender> yuri_9075,
         // my wife, yuri, yuri->snuggle());
         yuri_7296(yuri_9075, yuri_328::e_ChatCustom,
                        yuri_1720"commands.give.success", item, yuri_7839->yuri_4856());
-=======
-    std::shared_ptr<ServerPlayer> player = getPlayer(uid);
-    if (player != nullptr && item > 0 && Item::items[item] != nullptr) {
-        std::shared_ptr<ItemInstance> itemInstance =
-            std::make_shared<ItemInstance>(item, amount, aux);
-        std::shared_ptr<ItemEntity> drop = player->drop(itemInstance);
-        drop->throwTime = 0;
-        // logAdminAction(source, L"commands.give.success",
-        // ChatPacket::e_ChatCustom, Item::items[item]->getName(itemInstance),
-        // item, amount, player->getAName());
-        logAdminAction(source, ChatPacket::e_ChatCustom,
-                       L"commands.give.success", item, player->getAName());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 

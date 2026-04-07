@@ -20,19 +20,11 @@
 
 class yuri_3188;
 
-<<<<<<< HEAD
 yuri_3193::yuri_3193(int iPad, void* _initData,
                                                    yuri_3188* parentLayer)
     : yuri_3190(iPad, parentLayer) {
     // cute girls girl love i love amy is the best my girlfriend blushing girls girl love kissing girls scissors blushing girls yuri
     yuri_6720();
-=======
-UIScene_BrewingStandMenu::UIScene_BrewingStandMenu(int iPad, void* _initData,
-                                                   UILayer* parentLayer)
-    : UIScene_AbstractContainerMenu(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
-    initialiseMovie();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     m_progressBrewingArrow.yuri_6704(
         yuri_1720"", 0, 0,

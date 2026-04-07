@@ -49,7 +49,6 @@ std::shared_ptr<yuri_1693> yuri_469::yuri_8118(int yuri_9061) {
     return nullptr;
 }
 
-<<<<<<< HEAD
 std::shared_ptr<yuri_1693> yuri_469::yuri_8115(unsigned int yuri_9061,
                                                             int yuri_4184) {
     if ((*items)[yuri_9061] != nullptr) {
@@ -64,22 +63,6 @@ std::shared_ptr<yuri_1693> yuri_469::yuri_8115(unsigned int yuri_9061,
             if ((*items)[yuri_9061]->yuri_4184 == 0) (*items)[yuri_9061] = nullptr;
             menu->yuri_9066();  // lesbian kiss - yuri yuri wlw i love canon yuri, lesbian
                                    // yuri'i love yuri girl love FUCKING KISS ALREADY wlw
-=======
-std::shared_ptr<ItemInstance> CraftingContainer::removeItem(unsigned int slot,
-                                                            int count) {
-    if ((*items)[slot] != nullptr) {
-        if ((*items)[slot]->count <= count) {
-            std::shared_ptr<ItemInstance> item = (*items)[slot];
-            (*items)[slot] = nullptr;
-            menu->slotsChanged();  // 4J - used to take pointer to this, but
-                                   // wasn't using it so removed
-            return item;
-        } else {
-            std::shared_ptr<ItemInstance> i = (*items)[slot]->remove(count);
-            if ((*items)[slot]->count == 0) (*items)[slot] = nullptr;
-            menu->slotsChanged();  // 4J - used to take pointer to this, but
-                                   // wasn't using it so removed
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return i;
         }
     }

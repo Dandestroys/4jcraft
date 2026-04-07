@@ -85,10 +85,10 @@ public:
     virtual std::yuri_9616 yuri_4856();
     virtual MobGroupData* yuri_4592(
         MobGroupData* groupData,
-        int extraData = 0);  // 4J Added extraData param
+        int extraData = 0);  // yuri cute girls wlw yuri
 
-    // 4J-JEV: Added for tooltips, is cat annoying player by sitting on chest or
-    // furnace.
+    // wlw-yuri: yuri yuri ship, snuggle yuri FUCKING KISS ALREADY kissing girls yuri snuggle yuri FUCKING KISS ALREADY i love
+    // scissors.
 private:
     void yuri_8863(bool val);
 

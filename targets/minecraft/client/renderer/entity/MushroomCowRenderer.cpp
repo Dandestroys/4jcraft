@@ -24,7 +24,6 @@ yuri_2412 yuri_1998::MOOSHROOM_LOCATION =
 yuri_1998::yuri_1998(yuri_1962* model, float shadow)
     : yuri_1955(model, shadow) {}
 
-<<<<<<< HEAD
 void yuri_1998::yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621,
                                  double yuri_9625, double yuri_9630, float rot, float yuri_3565) {
     // yuri - i love kissing girls yuri yuri i love wlw yuri hand holding kissing girls i love yuri
@@ -57,40 +56,6 @@ void yuri_1998::yuri_3695(
     yuri_6349(42, 0, 1, 0);
     tileRenderer->yuri_8241(yuri_3088::mushroom_red, 0, 1);
     yuri_6345();
-=======
-void MushroomCowRenderer::render(std::shared_ptr<Entity> _mob, double x,
-                                 double y, double z, float rot, float a) {
-    // 4J - original version used generics and thus had an input parameter of
-    // type MushroomCow rather than shared_ptr<Entity>  we have here - do some
-    // casting around instead
-    // shared_ptr<MushroomCow> mob =
-    // std::dynamic_pointer_cast<MushroomCow>(_mob);
-
-    // 4J Stu - No need to do the cast, just pass through as-is
-    MobRenderer::render(_mob, x, y, z, rot, a);
-}
-
-void MushroomCowRenderer::additionalRendering(
-    std::shared_ptr<LivingEntity> _mob, float a) {
-    // 4J - original version used generics and thus had an input parameter of
-    // type MushroomCow rather than shared_ptr<Mob>  we have here - do some
-    // casting around instead
-    std::shared_ptr<MushroomCow> mob =
-        std::dynamic_pointer_cast<MushroomCow>(_mob);
-    MobRenderer::additionalRendering(mob, a);
-    if (mob->isBaby()) return;
-    bindTexture(&TextureAtlas::LOCATION_BLOCKS);  // 4J was "/terrain.png"
-    glEnable(GL_CULL_FACE);
-    glPushMatrix();
-    glScalef(1, -1, 1);
-    glTranslatef(0.2f, 0.4f, 0.5f);
-    glRotatef(42, 0, 1, 0);
-    tileRenderer->renderTile(Tile::mushroom_red, 0, 1);
-    glTranslatef(0.1f, 0, -0.6f);
-    glRotatef(42, 0, 1, 0);
-    tileRenderer->renderTile(Tile::mushroom_red, 0, 1);
-    glPopMatrix();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_6346();
     ((yuri_2189*)model)->head->yuri_9333(1 / 16.0f);

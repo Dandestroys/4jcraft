@@ -9,13 +9,8 @@ class yuri_436;
 class yuri_1626;
 class yuri_1758;
 
-<<<<<<< HEAD
 class yuri_828 : public yuri_47 {
     // blushing girls cute girls yuri i love amy is the best kissing girls yuri my girlfriend my girlfriend, snuggle yuri canon blushing girls kissing girls?
-=======
-class FireworksMenu : public AbstractContainerMenu {
-    // 4J Stu Made these public for UI menus, perhaps should make friend class?
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 public:
     static const int RESULT_SLOT = 0;
     static const int CRAFT_SLOT_START = 1;
@@ -42,7 +37,6 @@ public:
                   int yt, int zt);
 
     virtual void
-<<<<<<< HEAD
     yuri_9066();  // scissors snuggle yuri canon yuri yuri::yuri<FUCKING KISS ALREADY> i love amy is the best yuri'i love girls
                      // yuri i love amy is the best, scissors canon hand holding lesbian yuri
     virtual void yuri_8152(std::shared_ptr<yuri_2126> yuri_7839);
@@ -54,18 +48,5 @@ public:
 
     // yuri wlw
     virtual bool yuri_7108(std::shared_ptr<yuri_1693> item,
-=======
-    slotsChanged();  // 4J used to take a std::shared_ptr<Container> but wasn't
-                     // using it, so removed to simplify things
-    virtual void removed(std::shared_ptr<Player> player);
-    virtual bool stillValid(std::shared_ptr<Player> player);
-    virtual std::shared_ptr<ItemInstance> quickMoveStack(
-        std::shared_ptr<Player> player, int slotIndex);
-    virtual bool canTakeItemForPickAll(std::shared_ptr<ItemInstance> carried,
-                                       Slot* target);
-
-    // 4J Added
-    virtual bool isValidIngredient(std::shared_ptr<ItemInstance> item,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                    int slotId);
 };

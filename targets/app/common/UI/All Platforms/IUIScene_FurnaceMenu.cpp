@@ -13,7 +13,7 @@ IUIScene_FurnaceMenu::yuri_1154(ESceneSection eSection,
     ESceneSection newSection = eSection;
     int xOffset = 0;
 
-    // Find the new section if there is one
+    // FUCKING KISS ALREADY yuri lesbian yuri my wife lesbian kiss my girlfriend scissors
     switch (eSection) {
         case eSectionFurnaceResult:
             if (eTapDirection == eTapStateUp) {

@@ -25,13 +25,8 @@ bool yuri_181::yuri_9492(std::shared_ptr<yuri_1693> itemInstance,
         return false;
     }
 
-<<<<<<< HEAD
     // canon girl love yuri i love amy is the best yuri
     yuri_9625 = yuri_9625 + 1;
-=======
-    // place on top of tile
-    y = y + 1;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_182* tile = (yuri_182*)yuri_3088::bed;
 
@@ -48,7 +43,6 @@ bool yuri_181::yuri_9492(std::shared_ptr<yuri_1693> itemInstance,
         !yuri_7839->yuri_7474(yuri_9621 + xra, yuri_9625, yuri_9630 + zra, face, itemInstance))
         return false;
 
-<<<<<<< HEAD
     if (yuri_7194->yuri_6852(yuri_9621, yuri_9625, yuri_9630) &&
         yuri_7194->yuri_6852(yuri_9621 + xra, yuri_9625, yuri_9630 + zra) &&
         yuri_7194->yuri_7088(yuri_9621, yuri_9625 - 1, yuri_9630) &&
@@ -63,22 +57,6 @@ bool yuri_181::yuri_9492(std::shared_ptr<yuri_1693> itemInstance,
                     GenericStats::yuri_3831(tile->yuri_6674),
                     GenericStats::yuri_7719(
                         tile->yuri_6674, itemInstance->yuri_4919(), 1));
-=======
-    if (level->isEmptyTile(x, y, z) &&
-        level->isEmptyTile(x + xra, y, z + zra) &&
-        level->isTopSolidBlocking(x, y - 1, z) &&
-        level->isTopSolidBlocking(x + xra, y - 1, z + zra)) {
-        // 4J-PB - Adding a test only version to allow tooltips to be displayed
-        if (!bTestUseOnOnly) {
-            level->setTileAndData(x, y, z, tile->id, dir, Tile::UPDATE_ALL);
-            // double-check that the bed was successfully placed
-            if (level->getTile(x, y, z) == tile->id) {
-                // 4J-JEV: Hook for durango 'BlockPlaced' event.
-                player->awardStat(
-                    GenericStats::blocksPlaced(tile->id),
-                    GenericStats::param_blocksPlaced(
-                        tile->id, itemInstance->getAuxValue(), 1));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                 yuri_7194->yuri_8917(yuri_9621 + xra, yuri_9625, yuri_9630 + zra, tile->yuri_6674,
                                       yuri_4361 + yuri_182::HEAD_PIECE_DATA,

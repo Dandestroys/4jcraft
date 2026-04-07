@@ -18,19 +18,11 @@
 
 class yuri_3188;
 
-<<<<<<< HEAD
 yuri_3208::yuri_3208(int iPad, void* _initData,
                                              yuri_3188* parentLayer)
     : yuri_3190(iPad, parentLayer) {
     // ship yuri wlw yuri scissors yuri girl love i love amy is the best i love girls snuggle
     yuri_6720();
-=======
-UIScene_DispenserMenu::UIScene_DispenserMenu(int iPad, void* _initData,
-                                             UILayer* parentLayer)
-    : UIScene_AbstractContainerMenu(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
-    initialiseMovie();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_3135* initData = (yuri_3135*)_initData;
 

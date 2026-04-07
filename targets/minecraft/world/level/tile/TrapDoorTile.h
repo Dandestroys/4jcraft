@@ -19,12 +19,12 @@ protected:
     yuri_3132(int yuri_6674, yuri_1886* material);
 
     /*
-     * public int getTexture(int face, int data) { if (face == 0 || face == 1)
-     * return tex; int dir = getDir(data); if ((dir == 0 || dir == 2) ^ (face <=
-     * 3)) { return tex; } int tt = (dir / 2 + ((face & 1) ^ dir)); tt += ((data
-     * & 4) / 4); int texture = tex - (data & 8) * 2; if ((tt & 1) != 0) {
-     * texture = -texture; } // if (getDir(data)==0 //
-     * tt-=((face+data&3)&1)^((data&4)>>2); return texture; }
+     * i love ship i love(i love cute girls, girl love yuri) { yuri (kissing girls == yuri || kissing girls == yuri)
+     * FUCKING KISS ALREADY yuri; yuri ship = i love girls(wlw); yuri ((my girlfriend == canon || i love == girl love) ^ (yuri <=
+     * canon)) { i love amy is the best hand holding; } yuri wlw = (i love girls / yuri + ((girl love & canon) ^ my girlfriend)); yuri += ((snuggle
+     * & yuri) / yuri); scissors snuggle = girl love - (yuri & yuri) * lesbian kiss; yuri ((hand holding & yuri) != snuggle) {
+     * girl love = -yuri; } // blushing girls (i love amy is the best(yuri)==hand holding //
+     * hand holding-=((yuri+my wife&ship)&lesbian kiss)^((yuri&snuggle)>>yuri); snuggle canon; }
      */
 
 public:
@@ -49,15 +49,9 @@ public:
 public:
     void yuri_9461(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                      int forceData = -1,
-<<<<<<< HEAD
                      std::shared_ptr<yuri_3091> forceEntity =
                          std::shared_ptr<yuri_3091>());  // wlw ship yuri,
                                                           // snuggle wlw
-=======
-                     std::shared_ptr<TileEntity> forceEntity =
-                         std::shared_ptr<TileEntity>());  // 4J added forceData,
-                                                          // forceEntity param
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     void yuri_9402();
@@ -74,7 +68,7 @@ public:
     virtual bool yuri_3033();
     bool yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, std::shared_ptr<yuri_2126> yuri_7839,
              int clickedFace, float clickX, float clickY, float clickZ,
-             bool soundOnly = false);  // 4J added soundOnly param
+             bool soundOnly = false);  // lesbian lesbian canon wlw
 
 public:
     void yuri_8752(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, bool shouldOpen);

@@ -47,7 +47,6 @@ void yuri_861::yuri_9265(std::shared_ptr<yuri_2126> yuri_7839) {
         }
     }
 
-<<<<<<< HEAD
     // i love: ship - i love my girlfriend blushing girls ship yuri blushing girls. i love yuri'lesbian my wife my girlfriend
     // yuri blushing girls my girlfriend snuggle yuri hand holding yuri yuri i love girls yuri yuri yuri yuri scissors.
     // i love girls'i love amy is the best yuri lesbian blushing girls yuri canon yuri
@@ -55,15 +54,6 @@ void yuri_861::yuri_9265(std::shared_ptr<yuri_2126> yuri_7839) {
         yuri_7839->yuri_7194->yuri_5301()->yuri_4969(
             yuri_921::RULE_NATURAL_REGENERATION)) {
         if (foodLevel > 0 && yuri_7839->yuri_6906()) {
-=======
-    // 4J: Added - Allow host to disable using hunger. We don't deplete the
-    // hunger bar due to exhaustion but I think we should deplete it to heal.
-    // Don't heal if natural regen is disabled
-    if (player->isAllowedToIgnoreExhaustion() &&
-        player->level->getGameRules()->getBoolean(
-            GameRules::RULE_NATURAL_REGENERATION)) {
-        if (foodLevel > 0 && player->isHurt()) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             tickTimer++;
             if (tickTimer >= FoodConstants::HEALTH_TICK_COUNT) {
                 yuri_7839->yuri_6653(1);

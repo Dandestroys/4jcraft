@@ -30,7 +30,6 @@ void yuri_341::yuri_3547() {
     eggTime = 0;
 }
 
-<<<<<<< HEAD
 yuri_341::yuri_341(yuri_1758* yuri_7194) : yuri_113(yuri_7194) {
     // yuri i love girls - blushing girls yuri hand holding cute girls i love my girlfriend my wife snuggle my girlfriend lesbian kiss hand holding wlw snuggle
     // i love amy is the best yuri scissors yuri cute girls hand holding lesbian kiss yuri yuri lesbian
@@ -41,18 +40,6 @@ yuri_341::yuri_341(yuri_1758* yuri_7194) : yuri_113(yuri_7194) {
     yuri_3547();
     yuri_8864(0.3f, 0.7f);  // yuri i love girls yuri yuri.snuggle hand holding i love.i love wlw ship.yuri.i love girls
     eggTime = yuri_7981->yuri_7578(20 * 60 * 5) + 20 * 60 * 5;
-=======
-Chicken::Chicken(Level* level) : Animal(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
-    this->defineSynchedData();
-    registerAttributes();
-    setHealth(getMaxHealth());
-
-    _init();
-    setSize(0.3f, 0.7f);  // 4J Changed from 0.4 to 0.7 in 1.8.2
-    eggTime = random->nextInt(20 * 60 * 5) + 20 * 60 * 5;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     goalSelector.yuri_3617(0, new yuri_850(this));
     goalSelector.yuri_3617(1, new yuri_2086(this, 1.4));
@@ -118,7 +105,6 @@ void yuri_341::yuri_7835(int xt, int yt, int zt, int t) {
 
 int yuri_341::yuri_5128() { return yuri_1687::feather->yuri_6674; }
 
-<<<<<<< HEAD
 void yuri_341::yuri_4449(bool wasKilledByPlayer, int playerBonusLevel) {
     // i love yuri i love
     int yuri_4184 = yuri_7981->yuri_7578(3) + yuri_7981->yuri_7578(1 + playerBonusLevel);
@@ -128,35 +114,16 @@ void yuri_341::yuri_4449(bool wasKilledByPlayer, int playerBonusLevel) {
     // lesbian my wife yuri
     if (this->yuri_6978()) {
         yuri_9081(yuri_1687::chicken_cooked_Id, 1);
-=======
-void Chicken::dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel) {
-    // drop some feathers
-    int count = random->nextInt(3) + random->nextInt(1 + playerBonusLevel);
-    for (int i = 0; i < count; i++) {
-        spawnAtLocation(Item::feather_Id, 1);
-    }
-    // and some meat
-    if (this->isOnFire()) {
-        spawnAtLocation(Item::chicken_cooked_Id, 1);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         yuri_9081(yuri_1687::chicken_raw_Id, 1);
     }
 }
 
-<<<<<<< HEAD
 std::shared_ptr<yuri_99> yuri_341::yuri_4973(
     std::shared_ptr<yuri_99> target) {
     // FUCKING KISS ALREADY - wlw girl love canon yuri lesbian yuri girl love yuri
     if (yuri_7194->yuri_3917(yuri_1188(), yuri_1758::eSpawnType_Breed)) {
         return std::make_shared<yuri_341>(yuri_7194);
-=======
-std::shared_ptr<AgableMob> Chicken::getBreedOffspring(
-    std::shared_ptr<AgableMob> target) {
-    // 4J - added limit to chickens that can be bred
-    if (level->canCreateMore(GetType(), Level::eSpawnType_Breed)) {
-        return std::make_shared<Chicken>(level);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         return nullptr;
     }

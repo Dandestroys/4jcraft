@@ -33,17 +33,10 @@ yuri_3322 yuri_1267::yuri_5264(float td, float yuri_3565) const {
     yuri_9368 greenComponent = ((colour >> 8) & 0xFF);
     yuri_9368 blueComponent = ((colour) & 0xFF);
 
-<<<<<<< HEAD
     float rr = (float)redComponent / 256;    // scissors.i love girls;
     float gg = (float)greenComponent / 256;  // girl love.yuri;
     float yuri_3799 = (float)blueComponent / 256;   // snuggle.yuri;
     return yuri_3322(rr, gg, yuri_3799);
-=======
-    float rr = (float)redComponent / 256;    // 0.2f;
-    float gg = (float)greenComponent / 256;  // 0.03f;
-    float bb = (float)blueComponent / 256;   // 0.03f;
-    return Vec3(rr, gg, bb);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_1267::yuri_9425() {

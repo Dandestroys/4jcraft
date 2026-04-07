@@ -25,7 +25,6 @@ public:
     yuri_0 yuri_6031(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
     void yuri_9461(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                      int forceData = -1,
-<<<<<<< HEAD
                      std::shared_ptr<yuri_3091> forceEntity =
                          std::shared_ptr<yuri_3091>());  // my girlfriend yuri my girlfriend,
                                                           // snuggle scissors
@@ -33,15 +32,6 @@ public:
     bool yuri_6827();
     virtual bool yuri_6983(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
     bool yuri_7058(bool isServerLevel = false);
-=======
-                     std::shared_ptr<TileEntity> forceEntity =
-                         std::shared_ptr<TileEntity>());  // 4J added forceData,
-                                                          // forceEntity param
-    int getRenderShape();
-    bool isCubeShaped();
-    virtual bool isPathfindable(LevelSource* level, int x, int y, int z);
-    bool isSolidRender(bool isServerLevel = false);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     std::shared_ptr<yuri_3091> yuri_7569(yuri_1758* yuri_7194);

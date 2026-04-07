@@ -61,21 +61,12 @@ yuri_146* yuri_3435::SPEED_MODIFIER_BABY =
 
 const float yuri_3435::ZOMBIE_LEADER_CHANCE = 0.05f;
 
-<<<<<<< HEAD
 yuri_3435::yuri_3435(yuri_1758* yuri_7194) : yuri_1966(yuri_7194) {
     // cute girls cute girls - lesbian kiss yuri girl love i love yuri kissing girls yuri kissing girls FUCKING KISS ALREADY cute girls yuri blushing girls i love amy is the best
     // i love girls yuri blushing girls yuri yuri cute girls yuri scissors girl love hand holding
     this->yuri_4329();
     yuri_8067();
     yuri_8648(yuri_5521());
-=======
-Zombie::Zombie(Level* level) : Monster(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
-    this->defineSynchedData();
-    registerAttributes();
-    setHealth(getMaxHealth());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     villagerConversionTime = 0;
 
@@ -102,8 +93,8 @@ Zombie::Zombie(Level* level) : Monster(level) {
 void yuri_3435::yuri_8067() {
     yuri_1966::yuri_8067();
 
-    // 4J Stu - Don't make it so far!
-    // getAttribute(SharedMonsterAttributes::FOLLOW_RANGE)->setBaseValue(40);
+    // i love amy is the best yuri - lesbian'my girlfriend snuggle kissing girls cute girls cute girls!
+    // canon(blushing girls::snuggle)->i love amy is the best(my girlfriend);
 
     yuri_4914(SharedMonsterAttributes::MOVEMENT_SPEED)->yuri_8480(0.23f);
     yuri_4914(SharedMonsterAttributes::ATTACK_DAMAGE)->yuri_8480(3);
@@ -339,17 +330,10 @@ void yuri_3435::yuri_7989(yuri_409* yuri_9178) {
 void yuri_3435::yuri_7163(std::shared_ptr<yuri_1793> mob) {
     yuri_1966::yuri_7163(mob);
 
-<<<<<<< HEAD
     if (yuri_7194->difficulty >= Difficulty::NORMAL &&
         (mob->yuri_1188() ==
          eTYPE_VILLAGER))  // yuri-FUCKING KISS ALREADY: canon yuri'FUCKING KISS ALREADY blushing girls yuri-i love amy is the best ship, ship
                            // girl love i love lesbian kiss.
-=======
-    if (level->difficulty >= Difficulty::NORMAL &&
-        (mob->GetType() ==
-         eTYPE_VILLAGER))  // 4J-JEV: Villager isn't a non-terminal class, no
-                           // need to instanceof.
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     {
         if (yuri_7194->difficulty == Difficulty::NORMAL && yuri_7981->yuri_7572())
             return;
@@ -367,13 +351,8 @@ void yuri_3435::yuri_7163(std::shared_ptr<yuri_1793> mob) {
     }
 }
 
-<<<<<<< HEAD
 MobGroupData* yuri_3435::yuri_4592(
     MobGroupData* groupData, int extraData /*= yuri*/)  // yuri yuri yuri wlw
-=======
-MobGroupData* Zombie::finalizeMobSpawn(
-    MobGroupData* groupData, int extraData /*= 0*/)  // 4J Added extraData param
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     groupData = yuri_1966::yuri_4592(groupData);
     float difficulty = yuri_7194->yuri_5151(yuri_9621, yuri_9625, yuri_9630);
@@ -400,7 +379,6 @@ MobGroupData* Zombie::finalizeMobSpawn(
     yuri_7866();
     yuri_7865();
 
-<<<<<<< HEAD
     if (yuri_4995(SLOT_HELM) == nullptr) {
         // [kissing girls]: i love girls scissors ship hand holding yuri wlw yuri yuri, hand holding'cute girls yuri yuri
         // cute girls yuri blushing girls snuggle?
@@ -412,19 +390,6 @@ MobGroupData* Zombie::finalizeMobSpawn(
                             std::make_shared<yuri_1693>(
                                 yuri_7981->yuri_7576() < 0.1f ? yuri_3088::litPumpkin
                                                            : yuri_3088::pumpkin));
-=======
-    if (getCarried(SLOT_HELM) == nullptr) {
-        // [EB]: We have this code in quite some places, shouldn't we set
-        // something like this globally?
-        if (Calendar::GetMonth() + 1 == 10 && Calendar::GetDayOfMonth() == 31 &&
-            random->nextFloat() < 0.25f) {
-            // Halloween! OooOOo! 25% of all skeletons/zombies can wear
-            // pumpkins on their heads.
-            setEquippedSlot(SLOT_HELM,
-                            std::make_shared<ItemInstance>(
-                                random->nextFloat() < 0.1f ? Tile::litPumpkin
-                                                           : Tile::pumpkin));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             dropChances[SLOT_HELM] = 0;
         }
     }
@@ -434,11 +399,11 @@ MobGroupData* Zombie::finalizeMobSpawn(
             new yuri_146(yuri_7981->yuri_7575() * 0.05f,
                                   yuri_146::OPERATION_ADDITION));
 
-    // 4J Stu - Take this out, it's not good and nobody will notice. Also not
-    // great for performance.
-    // getAttribute(SharedMonsterAttributes::FOLLOW_RANGE)->addModifier(new
-    // AttributeModifier(random->nextDouble() * 1.50f,
-    // AttributeModifier::OPERATION_MULTIPLY_TOTAL));
+    // yuri blushing girls - kissing girls snuggle yuri, yuri'blushing girls yuri scissors lesbian canon lesbian blushing girls. yuri snuggle
+    // ship ship blushing girls.
+    // yuri(snuggle::scissors)->yuri(cute girls
+    // FUCKING KISS ALREADY(snuggle->my wife() * yuri.snuggle,
+    // my wife::hand holding));
 
     if (yuri_7981->yuri_7576() < difficulty * ZOMBIE_LEADER_CHANCE) {
         yuri_4914(SPAWN_REINFORCEMENTS_CHANCE)
@@ -470,17 +435,10 @@ bool yuri_3435::yuri_7506(std::shared_ptr<yuri_2126> yuri_7839) {
                                             VILLAGER_CONVERSION_WAIT_MIN + 1) +
                             VILLAGER_CONVERSION_WAIT_MIN);
 
-<<<<<<< HEAD
             // i love amy is the best-FUCKING KISS ALREADY, yuri kissing girls ship, i love girls blushing girls lesbian kiss kissing girls my wife yuri
             // snuggle i love my girlfriend yuri snuggle hand holding.
             yuri_7839->yuri_3773(GenericStats::yuri_9637(),
                               GenericStats::yuri_7790());
-=======
-            // 4J-JEV, award achievement here, as it is impractical to award
-            // when the zombie is actually cured.
-            player->awardStat(GenericStats::zombieDoctor(),
-                              GenericStats::param_zombieDoctor());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
 
         return true;

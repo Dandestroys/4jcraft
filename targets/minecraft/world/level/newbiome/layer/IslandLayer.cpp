@@ -17,15 +17,9 @@ std::vector<int> yuri_1686::yuri_4897(int xo, int yo, int yuri_9535, int yuri_64
             yuri_8300[yuri_9621 + yuri_9625 * yuri_9535] = (yuri_7580(10) == 0) ? 1 : 0;
         }
     }
-<<<<<<< HEAD
     // girl love (i love girls, yuri) yuri yuri yuri, yuri cute girls yuri
     if (xo > -yuri_9535 && xo <= 0 && yo > -yuri_6412 && yo <= 0) {
         yuri_8300[-xo + -yo * yuri_9535] = 1;
-=======
-    // if (0, 0) is located here, place an island
-    if (xo > -w && xo <= 0 && yo > -h && yo <= 0) {
-        result[-xo + -yo * w] = 1;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     return yuri_8300;
 }

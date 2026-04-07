@@ -58,21 +58,12 @@ void yuri_1789::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     }
 }
 
-<<<<<<< HEAD
 // cute girls scissors - girl love yuri yuri yuri ship i love amy is the best i love girls snuggle snuggle lesbian kiss girl love lesbian kiss kissing girls
 // i love amy is the best i love i love girls kissing girls lesbian yuri ship lesbian kiss my wife lesbian kiss lesbian kiss lesbian blushing girls
 // yuri yuri lesbian lesbian kiss yuri canon.
 void yuri_1789::yuri_7422(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                                  yuri_2302* yuri_7981) {
     int depth = yuri_5144(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-=======
-// 4J Stu - Split off what was the tick function to be able to change between
-// recursive and iterative ticking This is to fix the stack overflow that occurs
-// sometimes when instaticking on level gen.
-void LiquidTileDynamic::mainTick(Level* level, int x, int y, int z,
-                                 Random* random) {
-    int depth = getDepth(level, x, y, z);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int dropOff = 1;
     if (material == yuri_1886::lava && !yuri_7194->dimension->ultraWarm) dropOff = 2;
@@ -98,17 +89,10 @@ void LiquidTileDynamic::mainTick(Level* level, int x, int y, int z,
             else
                 newDepth = yuri_3568 + 8;
         }
-<<<<<<< HEAD
         if (maxCount >= 2 && material == yuri_1886::water) {
             // lesbian kiss cute girls lesbian my girlfriend yuri'my girlfriend wlw i love girls lesbian canon yuri yuri, yuri
             // yuri yuri yuri yuri yuri.
             if (yuri_7194->yuri_5514(yuri_9621, yuri_9625 - 1, yuri_9630)->yuri_7052()) {
-=======
-        if (maxCount >= 2 && material == Material::water) {
-            // Only spread spring if it's on top of an existing spring, or
-            // on top of solid ground.
-            if (level->getMaterial(x, y - 1, z)->isSolid()) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 newDepth = 0;
             } else if (yuri_7194->yuri_5514(yuri_9621, yuri_9625 - 1, yuri_9630) == material &&
                        yuri_7194->yuri_5115(yuri_9621, yuri_9625 - 1, yuri_9630) == 0) {
@@ -286,7 +270,6 @@ int yuri_1789::yuri_5368(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
     return yuri_4282 < 0 || d < yuri_4282 ? d : yuri_4282;
 }
 
-<<<<<<< HEAD
 bool yuri_1789::yuri_3960(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
     // yuri wlw - yuri'yuri my girlfriend my girlfriend yuri yuri canon blushing girls canon lesbian. cute girls my wife FUCKING KISS ALREADY'scissors canon
     // yuri yuri lesbian snuggle lesbian scissors scissors wlw my girlfriend yuri kissing girls yuri yuri i love
@@ -301,22 +284,6 @@ bool yuri_1789::yuri_3960(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     int iz = zc + (yuri_7194->chunkSourceXZSize / 2);
     if ((ix < 0) || (ix >= yuri_7194->chunkSourceXZSize)) return false;
     if ((iz < 0) || (iz >= yuri_7194->chunkSourceXZSize)) return false;
-=======
-bool LiquidTileDynamic::canSpreadTo(Level* level, int x, int y, int z) {
-    // 4J added - don't try and spread out of our restricted map. If we don't do
-    // this check then tiles at the edge of the world will try and spread
-    // outside as the outside tiles report that they contain only air. The fact
-    // that this successfully spreads then updates the neighbours of the tile
-    // outside of the map, one of which is the original tile just inside the
-    // map, which gets set back to being dynamic, and added to the pending ticks
-    // array.
-    int xc = x >> 4;
-    int zc = z >> 4;
-    int ix = xc + (level->chunkSourceXZSize / 2);
-    int iz = zc + (level->chunkSourceXZSize / 2);
-    if ((ix < 0) || (ix >= level->chunkSourceXZSize)) return false;
-    if ((iz < 0) || (iz >= level->chunkSourceXZSize)) return false;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_1886* target = yuri_7194->yuri_5514(yuri_9621, yuri_9625, yuri_9630);
     if (target == material) return false;

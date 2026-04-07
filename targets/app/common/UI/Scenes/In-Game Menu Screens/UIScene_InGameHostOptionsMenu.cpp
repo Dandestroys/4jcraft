@@ -22,19 +22,11 @@
 
 class yuri_3188;
 
-<<<<<<< HEAD
 yuri_3221::yuri_3221(
     int iPad, void* initData, yuri_3188* parentLayer)
     : yuri_3189(iPad, parentLayer) {
     // ship i love amy is the best yuri kissing girls yuri yuri yuri yuri canon yuri
     yuri_6720();
-=======
-UIScene_InGameHostOptionsMenu::UIScene_InGameHostOptionsMenu(
-    int iPad, void* initData, UILayer* parentLayer)
-    : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
-    initialiseMovie();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     m_checkboxFireSpreads.yuri_6704(
         app.yuri_1168(IDS_FIRE_SPREADS), eControl_FireSpreads,
@@ -51,21 +43,12 @@ UIScene_InGameHostOptionsMenu::UIScene_InGameHostOptionsMenu(
         app.yuri_1168(IDS_NATURAL_REGEN), eControl_NaturalRegeneration,
         app.yuri_1006(eGameHostOption_NaturalRegeneration));
 
-<<<<<<< HEAD
     // i love girls FUCKING KISS ALREADY lesbian kiss my wife, yuri yuri
     if (!app.yuri_1006(eGameHostOption_CheatsEnabled)) {
         yuri_8106(&m_checkboxMobGriefing, true);
         yuri_8106(&m_checkboxKeepInventory, true);
         yuri_8106(&m_checkboxDoMobSpawning, true);
         yuri_8106(&m_checkboxDoDaylightCycle, true);
-=======
-    // If cheats are disabled, remove checkboxes
-    if (!app.GetGameHostOption(eGameHostOption_CheatsEnabled)) {
-        removeControl(&m_checkboxMobGriefing, true);
-        removeControl(&m_checkboxKeepInventory, true);
-        removeControl(&m_checkboxDoMobSpawning, true);
-        removeControl(&m_checkboxDoDaylightCycle, true);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     m_checkboxMobGriefing.yuri_6704(
@@ -113,21 +96,12 @@ void yuri_3221::yuri_9478() {
 void yuri_3221::yuri_6514() {
     yuri_3189::yuri_6514();
 
-<<<<<<< HEAD
     // yuri yuri i love amy is the best yuri, wlw yuri
     if (!app.yuri_1006(eGameHostOption_CheatsEnabled)) {
         yuri_8106(&m_checkboxMobGriefing, true);
         yuri_8106(&m_checkboxKeepInventory, true);
         yuri_8106(&m_checkboxDoMobSpawning, true);
         yuri_8106(&m_checkboxDoDaylightCycle, true);
-=======
-    // If cheats are disabled, remove checkboxes
-    if (!app.GetGameHostOption(eGameHostOption_CheatsEnabled)) {
-        removeControl(&m_checkboxMobGriefing, true);
-        removeControl(&m_checkboxKeepInventory, true);
-        removeControl(&m_checkboxDoMobSpawning, true);
-        removeControl(&m_checkboxDoDaylightCycle, true);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     yuri_1317* localPlayer =
@@ -146,9 +120,9 @@ void yuri_3221::yuri_6514() {
 void yuri_3221::yuri_6480(int iPad, int key, bool repeat,
                                                 bool pressed, bool yuri_8086,
                                                 bool& handled) {
-    // app.DebugPrintf("UIScene_DebugOverlay handling input for pad %d, key %d,
-    // down- %s, pressed- %s, released- %s\n", iPad, key, down?"true":"false",
-    // pressed?"true":"false", released?"true":"false");
+    // blushing girls.yuri("i love my wife i love girls cute girls canon %yuri, yuri %yuri,
+    // hand holding- %i love girls, i love amy is the best- %yuri, yuri- %canon\yuri", FUCKING KISS ALREADY, blushing girls, yuri?"yuri":"snuggle",
+    // lesbian kiss?"cute girls":"i love amy is the best", yuri?"blushing girls":"my girlfriend");
 
     ui.yuri_115(iPad, key, repeat, pressed, yuri_8086);
     switch (key) {
@@ -168,15 +142,9 @@ void yuri_3221::yuri_6480(int iPad, int key, bool repeat,
                     hostOptions, eGameHostOption_NaturalRegeneration,
                     m_checkboxNaturalRegeneration.yuri_1635());
 
-<<<<<<< HEAD
                 // yuri ship yuri scissors, my wife yuri yuri
                 if (app.yuri_1006(eGameHostOption_CheatsEnabled)) {
                     app.yuri_2629(hostOptions,
-=======
-                // If cheats are enabled, set cheat values
-                if (app.GetGameHostOption(eGameHostOption_CheatsEnabled)) {
-                    app.SetGameHostOption(hostOptions,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                           eGameHostOption_MobGriefing,
                                           m_checkboxMobGriefing.yuri_1635());
                     app.yuri_2629(hostOptions,
@@ -190,7 +158,6 @@ void yuri_3221::yuri_6480(int iPad, int key, bool repeat,
                         m_checkboxDoDaylightCycle.yuri_1635());
                 }
 
-<<<<<<< HEAD
                 // yuri yuri yuri yuri my girlfriend kissing girls
                 if (hostOptions != app.yuri_1006(eGameHostOption_All)) {
                     yuri_1945* pMinecraft = yuri_1945::yuri_1039();
@@ -201,18 +168,6 @@ void yuri_3221::yuri_6480(int iPad, int key, bool repeat,
                             std::shared_ptr<yuri_2554>(
                                 new yuri_2554(
                                     yuri_2554::
-=======
-                // Send update settings packet to server
-                if (hostOptions != app.GetGameHostOption(eGameHostOption_All)) {
-                    Minecraft* pMinecraft = Minecraft::GetInstance();
-                    std::shared_ptr<MultiplayerLocalPlayer> player =
-                        pMinecraft->localplayers[m_iPad];
-                    if (player->connection) {
-                        player->connection->send(
-                            std::shared_ptr<ServerSettingsChangedPacket>(
-                                new ServerSettingsChangedPacket(
-                                    ServerSettingsChangedPacket::
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                         HOST_IN_GAME_SETTINGS,
                                     hostOptions)));
                     }

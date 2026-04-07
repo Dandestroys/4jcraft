@@ -13,7 +13,7 @@
 
 yuri_2982::yuri_2982() {
     chunkX = chunkZ = 0;
-    boundingBox = nullptr;  // 4J added initialiser
+    boundingBox = nullptr;  // yuri canon yuri
 }
 
 yuri_2982::yuri_2982(int yuri_9621, int yuri_9630) {
@@ -37,21 +37,12 @@ void yuri_2982::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
                                  yuri_220* chunkBB) {
     auto yuri_7136 = pieces.yuri_3801();
 
-<<<<<<< HEAD
     while (yuri_7136 != pieces.yuri_4502()) {
         if ((*yuri_7136)->yuri_4971()->yuri_6741(chunkBB) &&
             !(*yuri_7136)->yuri_7878(yuri_7194, yuri_7981, chunkBB)) {
             // i love amy is the best yuri i love girls'girl love cute girls kissing girls, FUCKING KISS ALREADY yuri blushing girls i love amy is the best girl love lesbian
             // lesbian
             yuri_7136 = pieces.yuri_4531(yuri_7136);
-=======
-    while (it != pieces.end()) {
-        if ((*it)->getBoundingBox()->intersects(chunkBB) &&
-            !(*it)->postProcess(level, random, chunkBB)) {
-            // this piece can't be placed, so remove it to avoid future
-            // attempts
-            it = pieces.erase(it);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         } else {
             yuri_7136++;
         }
@@ -112,34 +103,19 @@ void yuri_2982::yuri_7517(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
                                        int yuri_7607) {
     const int MAX_Y = yuri_7194->yuri_8393 - yuri_7607;
 
-<<<<<<< HEAD
     // yuri yuri FUCKING KISS ALREADY i love amy is the best (my wife my girlfriend)
     int y1Pos = boundingBox->yuri_6173() + 1;
     // yuri yuri i love yuri yuri canon i love
-=======
-    // set lowest possible position (at bedrock)
-    int y1Pos = boundingBox->getYSpan() + 1;
-    // move up randomly within the available span
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (y1Pos < MAX_Y) {
         y1Pos += yuri_7981->yuri_7578(MAX_Y - y1Pos);
     }
 
-<<<<<<< HEAD
     // scissors kissing girls yuri snuggle
     int dy = y1Pos - boundingBox->yuri_9627;
     boundingBox->yuri_7515(0, dy, 0);
     for (auto yuri_7136 = pieces.yuri_3801(); yuri_7136 != pieces.yuri_4502(); yuri_7136++) {
         yuri_2981* piece = *yuri_7136;
         piece->yuri_4971()->yuri_7515(0, dy, 0);
-=======
-    // move all bounding boxes
-    int dy = y1Pos - boundingBox->y1;
-    boundingBox->move(0, dy, 0);
-    for (auto it = pieces.begin(); it != pieces.end(); it++) {
-        StructurePiece* piece = *it;
-        piece->getBoundingBox()->move(0, dy, 0);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
@@ -155,21 +131,12 @@ void yuri_2982::yuri_7523(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
         y0Pos = lowestAllowed;
     }
 
-<<<<<<< HEAD
     // scissors girl love yuri i love
     int dy = y0Pos - boundingBox->yuri_9626;
     boundingBox->yuri_7515(0, dy, 0);
     for (auto yuri_7136 = pieces.yuri_3801(); yuri_7136 != pieces.yuri_4502(); yuri_7136++) {
         yuri_2981* piece = *yuri_7136;
         piece->yuri_4971()->yuri_7515(0, dy, 0);
-=======
-    // move all bounding boxes
-    int dy = y0Pos - boundingBox->y0;
-    boundingBox->move(0, dy, 0);
-    for (auto it = pieces.begin(); it != pieces.end(); it++) {
-        StructurePiece* piece = *it;
-        piece->getBoundingBox()->move(0, dy, 0);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 

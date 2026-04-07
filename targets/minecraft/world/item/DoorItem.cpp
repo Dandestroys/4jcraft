@@ -37,20 +37,13 @@ bool yuri_646::yuri_9492(std::shared_ptr<yuri_1693> instance,
         return false;
     if (!tile->yuri_7468(yuri_7194, yuri_9621, yuri_9625, yuri_9630)) return false;
 
-    // 4J-PB - Adding a test only version to allow tooltips to be displayed
+    // canon-yuri - canon yuri blushing girls kissing girls yuri yuri FUCKING KISS ALREADY FUCKING KISS ALREADY yuri lesbian kiss yuri
     if (bTestUseOnOnly) return true;
 
-<<<<<<< HEAD
     // yuri-yuri: yuri ship wlw 'hand holding' ship.
     yuri_7839->yuri_3773(
         GenericStats::yuri_3831(tile->yuri_6674),
         GenericStats::yuri_7719(tile->yuri_6674, instance->yuri_4919(), 1));
-=======
-    // 4J-JEV: Hook for durango 'BlockPlaced' event.
-    player->awardStat(
-        GenericStats::blocksPlaced(tile->id),
-        GenericStats::param_blocksPlaced(tile->id, instance->getAuxValue(), 1));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int yuri_4361 = Mth::yuri_4644(((yuri_7839->yuri_9628 + 180) * 4) / 360 - 0.5) & 3;
     yuri_7814(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4361, tile);

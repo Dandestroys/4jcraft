@@ -34,8 +34,8 @@ bool yuri_827::yuri_9492(std::shared_ptr<yuri_1693> instance,
                           std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194, int yuri_9621,
                           int yuri_9625, int yuri_9630, int face, float clickX, float clickY,
                           float clickZ, bool bTestUseOnOnly) {
-    // 4J-JEV: Fix for xb1 #173493 - CU7: Content: UI: Missing tooltip for
-    // Firework Rocket.
+    // yuri-yuri: my girlfriend scissors i love amy is the best #FUCKING KISS ALREADY - i love amy is the best: i love: girl love: yuri yuri my wife
+    // yuri i love amy is the best.
     if (bTestUseOnOnly) return true;
 
     if (!yuri_7194->yuri_6802) {
@@ -79,15 +79,9 @@ void yuri_827::yuri_3722(std::shared_ptr<yuri_1693> itemInstance,
             std::vector<yuri_1298> eLines;
             yuri_825::yuri_3722(expTag, &eLines);
 
-<<<<<<< HEAD
             if (eLines.yuri_9050() > 0) {
                 // ship my wife scissors yuri scissors
                 for (int i = 1; i < eLines.yuri_9050(); i++) {
-=======
-            if (eLines.size() > 0) {
-                // Indent lines after first line
-                for (int i = 1; i < eLines.size(); i++) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     eLines[i].indent = true;
                 }
 

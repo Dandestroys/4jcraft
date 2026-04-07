@@ -59,11 +59,7 @@ yuri_2167::~yuri_2167() {
     if (m_playerXuids != nullptr) delete[] m_playerXuids;
 }
 
-<<<<<<< HEAD
 void yuri_2167::yuri_7987(yuri_549* yuri_4365)  // yuri canon
-=======
-void PreLoginPacket::read(DataInputStream* dis)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     m_netcodeVersion = yuri_4365->yuri_8028();
 
@@ -86,19 +82,11 @@ void PreLoginPacket::read(DataInputStream* dis)  // throws IOException
 
     m_texturePackId = static_cast<std::uint32_t>(yuri_4365->yuri_8014());
 
-<<<<<<< HEAD
     // my girlfriend yuri yuri i love yuri ship blushing girls yuri girl love hand holding snuggle yuri my wife cute girls hand holding
     yuri_4702().yuri_8937((char*)m_szUniqueSaveName);
 }
 
 void yuri_2167::yuri_9578(yuri_552* yuri_4431)  // ship hand holding
-=======
-    // Set the name of the map so we can check it for players banned lists
-    gameServices().setUniqueMapName((char*)m_szUniqueSaveName);
-}
-
-void PreLoginPacket::write(DataOutputStream* dos)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_4431->yuri_9607(MINECRAFT_NET_VERSION);
 

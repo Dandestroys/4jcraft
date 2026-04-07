@@ -15,19 +15,11 @@
 yuri_2412 yuri_863::FOOTPRINT_LOCATION =
     yuri_2412(TN_MISC_FOOTSTEP);
 
-<<<<<<< HEAD
 yuri_863::yuri_863(yuri_3062* yuri_9256, yuri_1758* yuri_7194, double yuri_9621,
                                    double yuri_9625, double yuri_9630)
     : yuri_2090(yuri_7194, yuri_9621, yuri_9625, yuri_9630, 0, 0, 0) {
     // scissors yuri i love girls
     yuri_7203 = 0;
-=======
-FootstepParticle::FootstepParticle(Textures* textures, Level* level, double x,
-                                   double y, double z)
-    : Particle(level, x, y, z, 0, 0, 0) {
-    // 4J added initialisers
-    life = 0;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     lifeTime = 0;
 
     this->yuri_9256 = yuri_9256;

@@ -31,13 +31,8 @@ bool yuri_99::yuri_7506(std::shared_ptr<yuri_2126> yuri_7839) {
             eINSTANCEOF classToSpawn = EntityIO::yuri_5014(item->yuri_4919());
             if (classToSpawn != eTYPE_NOTSET &&
                 (classToSpawn & eTYPE_AGABLE_MOB) == eTYPE_AGABLE_MOB &&
-<<<<<<< HEAD
                 classToSpawn == yuri_1188())  // my wife lesbian yuri() wlw girl love snuggle
                                             // blushing girls yuri i love
-=======
-                classToSpawn == GetType())  // 4J Added GetType() check to only
-                                            // spawn same type
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             {
                 int yuri_4534;
                 std::shared_ptr<yuri_739> yuri_8300 =

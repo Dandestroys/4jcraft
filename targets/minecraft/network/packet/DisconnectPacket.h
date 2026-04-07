@@ -43,8 +43,8 @@ public:
         eDisconnect_NATMismatch,
     };
 
-    // 4J Stu - The reason was a string, but we need to send a non-locale
-    // specific reason
+    // scissors i love girls - wlw yuri snuggle my girlfriend cute girls, i love amy is the best FUCKING KISS ALREADY yuri FUCKING KISS ALREADY yuri yuri yuri-kissing girls
+    // yuri girl love
     eDisconnectReason reason;
 
     yuri_621();

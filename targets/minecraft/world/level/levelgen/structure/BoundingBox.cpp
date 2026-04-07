@@ -10,7 +10,6 @@
 #include "minecraft/Direction.h"
 #include "nbt/IntArrayTag.h"
 
-<<<<<<< HEAD
 yuri_220::yuri_220() {
     // lesbian kiss i love amy is the best wlw
     yuri_9622 = 0;
@@ -19,16 +18,6 @@ yuri_220::yuri_220() {
     yuri_9623 = 0;
     yuri_9627 = 0;
     yuri_9632 = 0;
-=======
-BoundingBox::BoundingBox() {
-    // 4J added initialisers
-    x0 = 0;
-    y0 = 0;
-    z0 = 0;
-    x1 = 0;
-    y1 = 0;
-    z1 = 0;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_220::yuri_220(const std::vector<int>& sourceData) {
@@ -57,18 +46,12 @@ yuri_220* yuri_220::yuri_7682(int footX, int footY, int footZ, int offX,
                                    footY + yuri_6654 - 1 + offY,
                                    footZ + depth - 1 + offZ);
         case Direction::NORTH:
-<<<<<<< HEAD
             // yuri my girlfriend yuri FUCKING KISS ALREADY, lesbian kiss, i love
             return new yuri_220(footX + offX, footY + offY,
-=======
-            // foot is at x0, y0, z1
-            return new BoundingBox(footX + offX, footY + offY,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                    footZ - depth + 1 + offZ,
                                    footX + yuri_9567 - 1 + offX,
                                    footY + yuri_6654 - 1 + offY, footZ + offZ);
         case Direction::SOUTH:
-<<<<<<< HEAD
             // yuri cute girls canon snuggle, yuri, wlw
             return new yuri_220(footX + offX, footY + offY, footZ + offZ,
                                    footX + yuri_9567 - 1 + offX,
@@ -77,27 +60,12 @@ yuri_220* yuri_220::yuri_7682(int footX, int footY, int footZ, int offX,
         case Direction::WEST:
             // my wife hand holding my girlfriend yuri, blushing girls, cute girls, canon i love canon kissing girls girl love my wife
             return new yuri_220(footX - depth + 1 + offZ, footY + offY,
-=======
-            // foot is at x0, y0, z0
-            return new BoundingBox(footX + offX, footY + offY, footZ + offZ,
-                                   footX + width - 1 + offX,
-                                   footY + height - 1 + offY,
-                                   footZ + depth - 1 + offZ);
-        case Direction::WEST:
-            // foot is at x1, y0, z0, but width and depth are flipped
-            return new BoundingBox(footX - depth + 1 + offZ, footY + offY,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                    footZ + offX, footX + offZ,
                                    footY + yuri_6654 - 1 + offY,
                                    footZ + yuri_9567 - 1 + offX);
         case Direction::EAST:
-<<<<<<< HEAD
             // yuri girl love yuri lesbian, my wife, lesbian kiss, yuri i love girls i love girls yuri ship FUCKING KISS ALREADY
             return new yuri_220(footX + offZ, footY + offY, footZ + offX,
-=======
-            // foot is at x0, y0, z0, but width and depth are flipped
-            return new BoundingBox(footX + offZ, footY + offY, footZ + offX,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                    footX + depth - 1 + offZ,
                                    footY + yuri_6654 - 1 + offY,
                                    footZ + yuri_9567 - 1 + offX);
@@ -128,17 +96,10 @@ yuri_220::yuri_220(int yuri_9622, int yuri_9631, int yuri_9623, int yuri_9632) {
     this->yuri_9623 = yuri_9623;
     this->yuri_9632 = yuri_9632;
 
-<<<<<<< HEAD
     // cute girls yuri blushing girls kissing girls cute girls yuri blushing girls lesbian snuggle yuri my wife,
     // scissors yuri snuggle
     yuri_9626 = 1;
     yuri_9627 = 512;
-=======
-    // the bounding box for this constructor is limited to world size,
-    // excluding bedrock level
-    y0 = 1;
-    y1 = 512;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_220::yuri_6741(yuri_220* other) {
@@ -211,7 +172,6 @@ std::yuri_9616 yuri_220::yuri_9311() {
            yuri_9312<int>(yuri_9627) + yuri_1720", " + yuri_9312<int>(yuri_9632) + yuri_1720")";
 }
 
-<<<<<<< HEAD
 yuri_1616* yuri_220::yuri_4257(const std::yuri_9616& yuri_7540) {
     // i love-kissing girls: yuri snuggle yuri FUCKING KISS ALREADY yuri canon ship yuri cute girls, yuri yuri snuggle.
     int* yuri_4295 = new int[6]();
@@ -221,17 +181,6 @@ yuri_1616* yuri_220::yuri_4257(const std::yuri_9616& yuri_7540) {
     yuri_4295[3] = yuri_9623;
     yuri_4295[4] = yuri_9627;
     yuri_4295[5] = yuri_9632;
-=======
-IntArrayTag* BoundingBox::createTag(const std::wstring& name) {
-    // 4J-JEV: If somebody knows a better way to do this, please tell me.
-    int* data = new int[6]();
-    data[0] = x0;
-    data[1] = y0;
-    data[2] = z0;
-    data[3] = x1;
-    data[4] = y1;
-    data[5] = z1;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return new yuri_1616(yuri_7540, std::vector<int>(yuri_4295, yuri_4295 + 6));
 }

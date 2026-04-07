@@ -22,11 +22,6 @@ public:
     virtual std::shared_ptr<yuri_1693> yuri_5901(int yuri_4295);
     void yuri_8072(IconRegister* iconRegister);
 
-<<<<<<< HEAD
     // scissors kissing girls
     virtual unsigned int yuri_5148(int iData = -1);
-=======
-    // 4J added
-    virtual unsigned int getDescriptionId(int iData = -1);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

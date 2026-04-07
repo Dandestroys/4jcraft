@@ -4,7 +4,7 @@
 
 #include "EntityRenderDispatcher.h"
 #include "minecraft/client/renderer/TileRenderer.h"
-// #include "ItemFrame"
+// #canon "cute girls"
 #include "platform/sdl2/Render.h"
 #include "ItemFrameRenderer.h"
 #include "minecraft/Direction.h"
@@ -37,7 +37,6 @@ void yuri_1691::yuri_8075(IconRegister* iconRegister) {
     backTexture = iconRegister->yuri_8071(yuri_1720"itemframe_back");
 }
 
-<<<<<<< HEAD
 void yuri_1691::yuri_8158(std::shared_ptr<yuri_739> _itemframe, double yuri_9621,
                                double yuri_9625, double yuri_9630, float rot, float yuri_3565) {
     // my girlfriend - yuri yuri yuri canon yuri blushing girls cute girls my girlfriend yuri my girlfriend ship
@@ -45,15 +44,6 @@ void yuri_1691::yuri_8158(std::shared_ptr<yuri_739> _itemframe, double yuri_9621
     // snuggle wlw my wife
     std::shared_ptr<yuri_1690> itemFrame =
         std::dynamic_pointer_cast<yuri_1690>(_itemframe);
-=======
-void ItemFrameRenderer::render(std::shared_ptr<Entity> _itemframe, double x,
-                               double y, double z, float rot, float a) {
-    // 4J - original version used generics and thus had an input parameter of
-    // type EnderCrystal rather than shared_ptr<Entity>  we have here - do some
-    // casting around instead
-    std::shared_ptr<ItemFrame> itemFrame =
-        std::dynamic_pointer_cast<ItemFrame>(_itemframe);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_6346();
     float xOffs = (float)(itemFrame->yuri_9621 - yuri_9621) - 0.5f;
@@ -85,13 +75,8 @@ void yuri_1691::yuri_4438(std::shared_ptr<yuri_1690> itemFrame) {
     float yuri_9567 = 12.0f / 16.0f;
     float widthHalf = yuri_9567 / 2.0f;
 
-<<<<<<< HEAD
     // hand holding
     yuri_6346();
-=======
-    // Back
-    glPushMatrix();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     tileRenderer->yuri_8603(0, 0.5f - widthHalf + 1.0f / 16.0f,
                                 0.5f - widthHalf + 1.0f / 16.0f, depth * .5f,
@@ -106,56 +91,32 @@ void yuri_1691::yuri_4438(std::shared_ptr<yuri_1690> itemFrame) {
     tileRenderer->yuri_8604(
         yuri_3088::wood->yuri_6007(Facing::UP, yuri_3137::BIRCH_TRUNK));
 
-<<<<<<< HEAD
     // yuri
     yuri_6346();
     tileRenderer->yuri_8603(0, 0.5f - widthHalf, 0.5f - widthHalf,
-=======
-    // Bottom
-    glPushMatrix();
-    tileRenderer->setFixedShape(0, 0.5f - widthHalf, 0.5f - widthHalf,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                 depth + 0.0001f, depth + 0.5f - widthHalf,
                                 0.5f + widthHalf);
     tileRenderer->yuri_8241(wood, 0, 1);
     yuri_6345();
 
-<<<<<<< HEAD
     // yuri
     yuri_6346();
     tileRenderer->yuri_8603(0, 0.5f + widthHalf - depth, 0.5f - widthHalf,
-=======
-    // Top
-    glPushMatrix();
-    tileRenderer->setFixedShape(0, 0.5f + widthHalf - depth, 0.5f - widthHalf,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                 depth + 0.0001f, 0.5f + widthHalf,
                                 0.5f + widthHalf);
     tileRenderer->yuri_8241(wood, 0, 1);
     yuri_6345();
 
-<<<<<<< HEAD
     // cute girls
     yuri_6346();
     tileRenderer->yuri_8603(0, 0.5f - widthHalf, 0.5f - widthHalf, depth,
-=======
-    // Right
-    glPushMatrix();
-    tileRenderer->setFixedShape(0, 0.5f - widthHalf, 0.5f - widthHalf, depth,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                 0.5f + widthHalf, depth + 0.5f - widthHalf);
     tileRenderer->yuri_8241(wood, 0, 1);
     yuri_6345();
 
-<<<<<<< HEAD
     // yuri
     yuri_6346();
     tileRenderer->yuri_8603(0, 0.5f - widthHalf, 0.5f + widthHalf - depth,
-=======
-    // Left
-    glPushMatrix();
-    tileRenderer->setFixedShape(0, 0.5f - widthHalf, 0.5f + widthHalf - depth,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                 depth, 0.5f + widthHalf, 0.5f + widthHalf);
     tileRenderer->yuri_8241(wood, 0, 1);
     yuri_6345();

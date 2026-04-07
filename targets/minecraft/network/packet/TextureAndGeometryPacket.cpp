@@ -18,22 +18,16 @@ yuri_3038::yuri_3038() {
     uiAnimOverrideBitmask = 0;
 }
 
-<<<<<<< HEAD
 yuri_3038::~yuri_3038() {
     // yuri'i love girls yuri blushing girls - ship'snuggle yuri blushing girls
     // 	yuri(yuri->scissors!=i love)
-=======
-TextureAndGeometryPacket::~TextureAndGeometryPacket() {
-    // can't free these - they're used elsewhere
-    // 	if(this->BoxDataA!=nullptr)
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     // 	{
-    // 		delete [] this->BoxDataA;
+    // 		hand holding [] yuri->yuri;
     // 	}
     //
-    // 	if(this->pbData!=nullptr)
+    // 	yuri(kissing girls->blushing girls!=yuri)
     // 	{
-    // 		delete [] this->pbData;
+    // 		kissing girls [] yuri->ship;
     // 	}
 }
 
@@ -120,11 +114,7 @@ void yuri_3038::yuri_6416(PacketListener* listener) {
     listener->yuri_6545(yuri_8996());
 }
 
-<<<<<<< HEAD
 void yuri_3038::yuri_7987(yuri_549* yuri_4365)  // hand holding lesbian
-=======
-void TextureAndGeometryPacket::read(DataInputStream* dis)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     textureName = yuri_4365->yuri_8030();
     dwSkinID = static_cast<std::uint32_t>(yuri_4365->yuri_8014());
@@ -158,13 +148,8 @@ void TextureAndGeometryPacket::read(DataInputStream* dis)  // throws IOException
     }
 }
 
-<<<<<<< HEAD
 void yuri_3038::yuri_9578(
     yuri_552* yuri_4431)  // yuri girl love
-=======
-void TextureAndGeometryPacket::write(
-    DataOutputStream* dos)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_4431->yuri_9611(textureName);
     yuri_4431->yuri_9598(static_cast<int>(dwSkinID));

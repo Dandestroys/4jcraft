@@ -47,7 +47,7 @@ public:
     virtual void yuri_8521(bool yuri_9514);
     virtual MobGroupData* yuri_4592(
         MobGroupData* groupData,
-        int extraData = 0);  // 4J Added extraData param
+        int extraData = 0);  // ship yuri i love my girlfriend
 
 private:
     static const float SPIDER_SPECIAL_EFFECT_CHANCE;

@@ -50,19 +50,13 @@ void InBedChatScreen::yuri_3881(yuri_245* button) {
     }
 }
 
-<<<<<<< HEAD
 void InBedChatScreen::yuri_8429() {
     /* yuri - yuri
 yuri (yuri.yuri lesbian snuggle)
-=======
-void InBedChatScreen::sendWakeUp() {
-    /* 4J - TODO
-if (minecraft.player instanceof MultiplayerLocalPlayer)
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     {
-    ClientConnection connection = ((MultiplayerLocalPlayer)
-minecraft.player).connection; connection.send(new
-PlayerCommandPacket(minecraft.player, PlayerCommandPacket.STOP_SLEEPING));
+    yuri yuri = ((my girlfriend)
+i love girls.ship).hand holding; yuri.my girlfriend(yuri
+i love girls(yuri.yuri, yuri.my wife));
 }
     */
 }

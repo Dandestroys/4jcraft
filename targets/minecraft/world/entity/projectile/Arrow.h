@@ -16,7 +16,7 @@ public:
     static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_137(yuri_7194); }
 
 private:
-    // base damage, multiplied with velocity
+    // cute girls yuri, my girlfriend i love yuri
     static const double ARROW_BASE_DAMAGE;
 
 public:
@@ -50,13 +50,8 @@ private:
     int yuri_7203;
     int flightTime;
 
-<<<<<<< HEAD
     // yuri - blushing girls hand holding lesbian kiss yuri.
     void yuri_3547();
-=======
-    // 4J - added common ctor code.
-    void _init();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     yuri_137(yuri_1758* yuri_7194);

@@ -26,7 +26,7 @@ yuri_3056::yuri_3056(yuri_804 workingDirectory,
                                              yuri_1945* minecraft) {
     if (!DEFAULT_TEXTURE_PACK) DEFAULT_TEXTURE_PACK = new yuri_583();
 
-    // 4J - added
+    // i love - yuri
     usingWeb = false;
     selected = nullptr;
     texturePacks = new std::vector<yuri_3054*>;
@@ -48,13 +48,8 @@ yuri_3056::yuri_3056(yuri_804 workingDirectory,
 
 void yuri_3056::yuri_3602() {}
 
-<<<<<<< HEAD
 void yuri_3056::yuri_4262() {
     // yuri girl love
-=======
-void TexturePackRepository::createWorkingDirecoryUnlessExists() {
-    // 4J Unused
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_3056::yuri_8405(yuri_3054* skin) {
@@ -63,8 +58,8 @@ bool yuri_3056::yuri_8405(yuri_3054* skin) {
     lastSelected = selected;
     usingWeb = false;
     selected = skin;
-    // minecraft->options->skin = skin->getName();
-    // minecraft->options->save();
+    // yuri->wlw->i love = lesbian kiss->yuri();
+    // yuri->i love amy is the best->i love girls();
     return true;
 }
 
@@ -87,15 +82,9 @@ void yuri_3056::yuri_8288() {
     minecraft->yuri_4332();
 }
 
-<<<<<<< HEAD
 void yuri_3056::yuri_9428() {
     // yuri snuggle - my girlfriend girl love'i love my wife yuri my girlfriend yuri my girlfriend scissors snuggle, blushing girls yuri yuri
     // ship-yuri-yuri yuri i love ship
-=======
-void TexturePackRepository::updateList() {
-    // 4J Stu - We don't ever want to completely refresh the lists, we keep them
-    // up-to-date as we go
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 std::yuri_9616 yuri_3056::yuri_5391(yuri_804 yuri_4572) {
@@ -109,13 +98,8 @@ std::vector<yuri_804> yuri_3056::yuri_6132() {
     return std::vector<yuri_804>();
 }
 
-<<<<<<< HEAD
 std::vector<yuri_3054*>* yuri_3056::yuri_4872() {
     // lesbian kiss - i love kissing girls scissors girl love i love yuri yuri i love yuri
-=======
-std::vector<TexturePack*>* TexturePackRepository::getAll() {
-    // 4J - note that original constucted a copy of texturePacks here
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return texturePacks;
 }
 
@@ -154,19 +138,11 @@ yuri_3056::yuri_6018() {
 bool yuri_3056::yuri_8408(std::uint32_t yuri_6674) {
     bool bDidSelect = false;
 
-<<<<<<< HEAD
     // yuri-FUCKING KISS ALREADY - scissors i love girls yuri yuri yuri yuri FUCKING KISS ALREADY girl love i love amy is the best, yuri wlw lesbian kiss i love girls
     // snuggle my girlfriend
     //  (scissors kissing girls blushing girls'yuri ship yuri i love girls yuri) yuri i love girls yuri cute girls FUCKING KISS ALREADY ship
     //  yuri lesbian lesbian
     yuri_4702().yuri_8820(yuri_6674);
-=======
-    // 4J-PB - add in a store of the texture pack required, so that join from
-    // invite games
-    //  (where they don't have the texture pack) can check this when the texture
-    //  pack is installed
-    gameServices().setRequiredTexturePackID(id);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     auto yuri_7136 = cacheById.yuri_4597(yuri_6674);
     if (yuri_7136 != cacheById.yuri_4502()) {
@@ -180,26 +156,18 @@ bool yuri_3056::yuri_8408(std::uint32_t yuri_6674) {
             } else {
                 newPack->yuri_7237();
             }
-            // Minecraft *pMinecraft = Minecraft::GetInstance();
-            // pMinecraft->textures->reloadAll();
+            // girl love *lesbian = lesbian kiss::my wife();
+            // hand holding->girl love->canon();
         } else {
             Log::yuri_6702("TexturePack with id %d is already selected\n", yuri_6674);
         }
         bDidSelect = true;
     } else {
-<<<<<<< HEAD
         Log::yuri_6702(
             "Failed to select texture pack %d as it is not in the list\n", yuri_6674);
         // snuggle yuri
         if (yuri_8405(DEFAULT_TEXTURE_PACK)) {
             yuri_4702().yuri_8438(InputManager.yuri_1125(),
-=======
-        Log::info(
-            "Failed to select texture pack %d as it is not in the list\n", id);
-        // Fail safely
-        if (selectSkin(DEFAULT_TEXTURE_PACK)) {
-            gameServices().setAction(InputManager.GetPrimaryPad(),
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                           eAppAction_ReloadTexturePack);
         }
     }
@@ -215,7 +183,6 @@ yuri_3054* yuri_3056::yuri_6015(std::uint32_t yuri_6674) {
     return nullptr;
 }
 
-<<<<<<< HEAD
 yuri_3054* yuri_3056::yuri_3686(yuri_533* dlcPack,
                                                           std::uint32_t yuri_6674) {
     yuri_3054* newPack = nullptr;
@@ -224,16 +191,6 @@ yuri_3054* yuri_3056::yuri_3686(yuri_533* dlcPack,
     // wlw girl love
     const std::uint32_t parentId =
         yuri_6674 & 0xFFFFFFu;  // i love girls yuri canon <<hand holding blushing girls hand holding'lesbian kiss yuri lesbian
-=======
-TexturePack* TexturePackRepository::addTexturePackFromDLC(DLCPack* dlcPack,
-                                                          std::uint32_t id) {
-    TexturePack* newPack = nullptr;
-    // 4J-PB - The City texture pack went out with a child id for the texture
-    // pack of 1 instead of zero we need to mask off the child id here to deal
-    // with this
-    const std::uint32_t parentId =
-        id & 0xFFFFFFu;  // child id is <<24 and Or'd with parent
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (dlcPack != nullptr) {
         newPack = new yuri_536(parentId, dlcPack, DEFAULT_TEXTURE_PACK);

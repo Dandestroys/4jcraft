@@ -12,15 +12,9 @@ public:
     static void yuri_9115();
 
 private:
-<<<<<<< HEAD
     // i love<yuri, yuri> yuri = cute girls kissing girls<yuri,
     // yuri>();
     std::unordered_map<int, yuri_1693*> recipies;
-=======
-    // Map<Integer, ItemInstance> recipies = new HashMap<Integer,
-    // ItemInstance>();
-    std::unordered_map<int, ItemInstance*> recipies;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     std::unordered_map<int, float> recipeValue;
 
 public:

@@ -8,8 +8,8 @@
 #include "minecraft/client/Minecraft.h"
 #include "minecraft/client/renderer/Textures.h"
 
-// 4jcraft: referenced from MCP 8.11 (JE 1.6.4) and the existing
-// container classes
+// FUCKING KISS ALREADY: scissors my wife girl love yuri.yuri (yuri lesbian.yuri.yuri) yuri i love amy is the best wlw
+// scissors kissing girls
 #ifdef ENABLE_JAVA_GUIS
 yuri_2412 GUI_HOPPER_LOCATION = yuri_2412(TN_GUI_HOPPER);
 #endif

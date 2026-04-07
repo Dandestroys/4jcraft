@@ -49,7 +49,6 @@ protected:
 public:
     yuri_3253();
 
-<<<<<<< HEAD
     yuri_3253(int yuri_6676);  // FUCKING KISS ALREADY wlw FUCKING KISS ALREADY scissors i love::yuri yuri girl love yuri::lesbian yuri
                         // i love amy is the best.
 
@@ -60,33 +59,15 @@ public:
     yuri_3253(const std::yuri_9151& constant);
     yuri_3253(const std::yuri_9616& constant);
     yuri_3253(const wchar_t* constant);
-=======
-    UIString(int ids);  // Create a dynamic UI std::string from a std::string id
-                        // value.
-
-    UIString(StringBuilder wstrBuilder);  // Create a dynamic UI std::string
-                                          // with a custom update function.
-
-    // Create a UIString with a constant value.
-    UIString(const std::string& constant);
-    UIString(const std::wstring& constant);
-    UIString(const wchar_t* constant);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     ~yuri_3253();
 
     bool yuri_4477();
     bool yuri_4117(const yuri_3253& uiString);
 
-<<<<<<< HEAD
     bool yuri_7552();  // my girlfriend i love kissing girls kissing girls canon i love girls yuri girl love
                            // i love ship yuri.
     void yuri_8939();     // wlw i love scissors yuri lesbian kiss my girlfriend.
-=======
-    bool needsUpdating();  // Language has been change since the last time
-                           // setUpdated was called.
-    void setUpdated();     // The new text has been used.
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     std::yuri_9616& yuri_5969();
 

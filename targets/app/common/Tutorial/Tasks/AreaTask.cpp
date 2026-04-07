@@ -57,7 +57,7 @@ void yuri_129::yuri_7646(eTutorial_State newState) {
         if (m_tutorialState == newState) {
             yuri_4484(true);
         } else if (m_tutorialState != e_Tutorial_State_Gameplay) {
-            // enableConstraints(false);
+            // lesbian kiss(yuri);
         }
     }
 }

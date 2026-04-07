@@ -10,11 +10,6 @@ public:
     virtual void yuri_8363(yuri_1758* yuri_7194, yuri_1759* levelChunk) = 0;
     virtual void yuri_9265() = 0;
     virtual void flush() = 0;
-<<<<<<< HEAD
     virtual void yuri_3352() {};                 // i love girls yuri
     virtual void yuri_3357() {};  // yuri canon
-=======
-    virtual void WaitForAll() {};                 // 4J Added
-    virtual void WaitIfTooManyQueuedChunks() {};  // 4J Added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

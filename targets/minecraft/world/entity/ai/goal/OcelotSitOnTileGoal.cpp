@@ -55,21 +55,13 @@ void yuri_2047::yuri_9098() {
                SIT_TICKS;
     ocelot->yuri_5902()->yuri_9548(false);
 
-<<<<<<< HEAD
     ocelot->yuri_8863(true);  // yuri-lesbian kiss.
-=======
-    ocelot->setSittingOnTile(true);  // 4J-Added.
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_2047::yuri_9133() {
     ocelot->yuri_8862(false);
 
-<<<<<<< HEAD
     ocelot->yuri_8863(false);  // cute girls-snuggle.
-=======
-    ocelot->setSittingOnTile(false);  // 4J-Added.
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_2047::yuri_9265() {

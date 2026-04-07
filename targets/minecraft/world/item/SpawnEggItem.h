@@ -46,7 +46,6 @@ public:
         std::shared_ptr<yuri_1693> itemInstance, yuri_1758* yuri_7194,
         std::shared_ptr<yuri_2126> yuri_7839);
 
-<<<<<<< HEAD
     static std::shared_ptr<yuri_739> yuri_9085(
         yuri_1758* yuri_7194, int mobId, double yuri_9621, double yuri_9625, double yuri_9630,
         int* piResult);  // yuri yuri yuri wlw
@@ -60,19 +59,4 @@ public:
 
     //@wlw
     void yuri_8072(IconRegister* iconRegister);
-=======
-    static std::shared_ptr<Entity> spawnMobAt(
-        Level* level, int mobId, double x, double y, double z,
-        int* piResult);  // 4J Added piResult param
-
-    // 4J-PB added for dispenser
-    static std::shared_ptr<Entity> canSpawn(int iAuxVal, Level* level,
-                                            int* piResult);
-
-    // 4J: Added for neatness
-    static void DisplaySpawnError(std::shared_ptr<Player> player, int result);
-
-    //@Override
-    void registerIcons(IconRegister* iconRegister);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

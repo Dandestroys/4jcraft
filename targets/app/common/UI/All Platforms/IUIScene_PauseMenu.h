@@ -28,15 +28,9 @@ public:
     static int yuri_619(void* pParam, int iPad,
                                              yuri_256::EMessageResult yuri_8300);
 
-<<<<<<< HEAD
     static int yuri_2513(void* lpParameter);
     static int yuri_774(void* lpParameter);
     static void yuri_3446(void* lpParameter);  // yuri yuri lesbian kiss hand holding FUCKING KISS ALREADY
-=======
-    static int SaveWorldThreadProc(void* lpParameter);
-    static int ExitWorldThreadProc(void* lpParameter);
-    static void _ExitWorld(void* lpParameter);  // Call only from a thread
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     virtual void yuri_2803(bool show) = 0;

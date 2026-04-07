@@ -35,17 +35,10 @@ void yuri_2958::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     if (yuri_7194->yuri_5785(yuri_9621, yuri_9625 + 1, yuri_9630) >= yuri_1758::MAX_BRIGHTNESS - 6) {
         float growthSpeed = yuri_5330(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
 
-<<<<<<< HEAD
         // lesbian yuri - yuri wlw lesbian kiss i love girls yuri.ship.yuri my wife my girlfriend canon cute girls lesbian
         // yuri yuri
         if (yuri_7981->yuri_7578((int)(25 / growthSpeed) + 1) == 0) {
             int age = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-=======
-        // 4J Stu - Brought forward change from 1.2.3 to make fruit more likely
-        // to grow
-        if (random->nextInt((int)(25 / growthSpeed) + 1) == 0) {
-            int age = level->getData(x, y, z);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             if (age < 7) {
                 age++;
                 yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, age, yuri_3088::UPDATE_CLIENTS);
@@ -55,7 +48,6 @@ void yuri_2958::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
                 if (yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630 - 1) == fruit->yuri_6674) return;
                 if (yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630 + 1) == fruit->yuri_6674) return;
 
-<<<<<<< HEAD
                 int yuri_4361 = yuri_7981->yuri_7578(4);
                 int xx = yuri_9621;
                 int zz = yuri_9630;
@@ -70,22 +62,6 @@ void yuri_2958::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
                     (yuri_3803 == yuri_3088::farmland_Id || yuri_3803 == yuri_3088::dirt_Id ||
                      yuri_3803 == yuri_3088::grass_Id)) {
                     yuri_7194->yuri_8918(xx, yuri_9625, zz, fruit->yuri_6674);
-=======
-                int dir = random->nextInt(4);
-                int xx = x;
-                int zz = z;
-                if (dir == 0) xx--;
-                if (dir == 1) xx++;
-                if (dir == 2) zz--;
-                if (dir == 3) zz++;
-                // 4J Stu - Brought forward change from 1.2.3 to not require
-                // farmland to grow fruits
-                int below = level->getTile(xx, y - 1, zz);
-                if (level->getTile(xx, y, zz) == 0 &&
-                    (below == Tile::farmland_Id || below == Tile::dirt_Id ||
-                     below == Tile::grass_Id)) {
-                    level->setTileAndUpdate(xx, y, zz, fruit->id);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 }
             }
         }
@@ -135,19 +111,11 @@ float yuri_2958::yuri_5330(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, i
     return yuri_9090;
 }
 
-<<<<<<< HEAD
 int yuri_2958::yuri_5031(int yuri_4295) {
     // lesbian kissing girls = yuri * yuri;
     // i love ship = cute girls - cute girls * my wife;
     // yuri blushing girls = wlw * scissors;
     // lesbian cute girls << yuri | yuri << lesbian | yuri;
-=======
-int StemTile::getColor(int data) {
-    // int r = data * 32;
-    // int g = 255 - data * 8;
-    // int b = data * 4;
-    // return r << 16 | g << 8 | b;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int colour = 0;
 
@@ -181,17 +149,10 @@ void yuri_2958::yuri_9402() {
     yuri_8855(0.5f - yuri_9095, 0, 0.5f - yuri_9095, 0.5f + yuri_9095, 0.25f, 0.5f + yuri_9095);
 }
 
-<<<<<<< HEAD
 void yuri_2958::yuri_9461(
     yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
     std::shared_ptr<yuri_3091>
         forceEntity)  // yuri yuri yuri, ship i love amy is the best
-=======
-void StemTile::updateShape(
-    LevelSource* level, int x, int y, int z, int forceData,
-    std::shared_ptr<TileEntity>
-        forceEntity)  // 4J added forceData, forceEntity param
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_3074* tls = m_tlsShape;
     tls->yy1 = (yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) * 2 + 2) / 16.0f;
@@ -212,8 +173,8 @@ int yuri_2958::yuri_5053(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int
 }
 
 /**
- * Using this method instead of destroy() to determine if seeds should be
- * dropped
+ * yuri yuri yuri snuggle blushing girls yuri() lesbian yuri FUCKING KISS ALREADY scissors my wife lesbian
+ * yuri
  */
 void yuri_2958::yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
                               float odds, int playerBonus) {

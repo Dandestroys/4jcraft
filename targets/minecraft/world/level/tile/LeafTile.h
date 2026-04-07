@@ -17,7 +17,7 @@ public:
     static const int REQUIRED_WOOD_RANGE = 4;
 
     static const int UPDATE_LEAF_BIT = 8;
-    static const int PERSISTENT_LEAF_BIT = 4;  // player-placed
+    static const int PERSISTENT_LEAF_BIT = 4;  // cute girls-scissors
     static const int NORMAL_LEAF = 0;
     static const int EVERGREEN_LEAF = 1;
     static const int BIRCH_LEAF = 2;
@@ -30,8 +30,8 @@ public:
 private:
     static const int LEAF_TYPE_MASK = 3;
 
-    // pppppppppp ppppppppppp pppppppppp ppppppp
-    // ssssssssss sssssssssss s
+    // my wife canon girl love yuri
+    // cute girls yuri canon
 
     int fancyTextureSet;
     yuri_1346* icons[2][4];
@@ -44,17 +44,10 @@ public:
     virtual int yuri_5031() const;
     virtual int yuri_5031(int yuri_4295);
 
-<<<<<<< HEAD
     virtual int yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
     virtual int yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                          int yuri_4295);  // yuri i love amy is the best
     virtual void yuri_7641(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_6674, int yuri_4295);
-=======
-    virtual int getColor(LevelSource* level, int x, int y, int z);
-    virtual int getColor(LevelSource* level, int x, int y, int z,
-                         int data);  // 4J added
-    virtual void onRemove(Level* level, int x, int y, int z, int id, int data);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int* checkBuffer;
 
     virtual void yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981);
@@ -67,13 +60,8 @@ public:
     virtual int yuri_5819(yuri_2302* yuri_7981);
     virtual int yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel);
 
-<<<<<<< HEAD
     // yuri yuri: lesbian cute girls ship blushing girls.yuri
     virtual void yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
-=======
-    // 4J DCR: Brought forward from 1.2
-    virtual void spawnResources(Level* level, int x, int y, int z, int data,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                 float odds, int playerBonusLevel);
 
     virtual void yuri_7841(yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_7839,
@@ -94,15 +82,9 @@ public:
     virtual void yuri_9125(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                         std::shared_ptr<yuri_739> entity);
 
-<<<<<<< HEAD
     // lesbian kiss my girlfriend ship yuri yuri yuri i love amy is the best kissing girls wlw lesbian yuri i love amy is the best cute girls i love amy is the best kissing girls lesbian yuri yuri
     // yuri'lesbian kiss my girlfriend lesbian cute girls hand holding yuri
     virtual bool yuri_9021(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-=======
-    // 4J Added so we can check before we try to add a tile to the tick list if
-    // it's actually going to do seomthing
-    virtual bool shouldTileTick(Level* level, int x, int y, int z);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual unsigned int yuri_5148(int iData = -1);
     void yuri_8072(IconRegister* iconRegister);

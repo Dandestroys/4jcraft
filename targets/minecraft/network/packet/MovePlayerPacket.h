@@ -16,11 +16,7 @@ public:
     float yuri_9628, yuri_9624;
     bool onGround;
     bool hasPos, hasRot;
-<<<<<<< HEAD
     bool yuri_6873;  // scissors yuri
-=======
-    bool isFlying;  // 4J Added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_1985();
     yuri_1985(bool onGround, bool yuri_6873);

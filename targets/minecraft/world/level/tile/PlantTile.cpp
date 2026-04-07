@@ -16,17 +16,10 @@ yuri_244::yuri_244(int yuri_6674, yuri_1886* material) : yuri_3088(yuri_6674, ma
 
 yuri_244::yuri_244(int yuri_6674) : yuri_3088(yuri_6674, yuri_1886::plant, false) { yuri_3547(); }
 
-<<<<<<< HEAD
 // snuggle yuri i love
 void yuri_244::yuri_9402() {
     float yuri_9095 = 0.2f;
     yuri_8855(0.5f - yuri_9095, 0, 0.5f - yuri_9095, 0.5f + yuri_9095, yuri_9095 * 3, 0.5f + yuri_9095);
-=======
-// 4J Added override
-void Bush::updateDefaultShape() {
-    float ss = 0.2f;
-    setShape(0.5f - ss, 0, 0.5f - ss, 0.5f + ss, ss * 3, 0.5f + ss);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_244::yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {

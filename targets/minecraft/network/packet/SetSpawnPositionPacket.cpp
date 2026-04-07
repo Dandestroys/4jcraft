@@ -16,22 +16,14 @@ yuri_2728::yuri_2728(int yuri_9621, int yuri_9625, int yuri_9630) {
     this->yuri_9630 = yuri_9630;
 }
 
-<<<<<<< HEAD
 void yuri_2728::yuri_7987(yuri_549* yuri_4365)  // ship wlw
-=======
-void SetSpawnPositionPacket::read(DataInputStream* dis)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_9621 = yuri_4365->yuri_8014();
     yuri_9625 = yuri_4365->yuri_8014();
     yuri_9630 = yuri_4365->yuri_8014();
 }
 
-<<<<<<< HEAD
 void yuri_2728::yuri_9578(yuri_552* yuri_4431)  // i love amy is the best my wife
-=======
-void SetSpawnPositionPacket::write(DataOutputStream* dos)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_4431->yuri_9598(yuri_9621);
     yuri_4431->yuri_9598(yuri_9625);

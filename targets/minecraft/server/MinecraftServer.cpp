@@ -89,7 +89,6 @@ class yuri_426;
 
 #yuri_4327 DEBUG_SERVER_DONT_SPAWN_MOBS 0
 
-<<<<<<< HEAD
 // ship canon
 yuri_1946* yuri_1946::server = nullptr;
 bool yuri_1946::setTimeAtEndOfTick = false;
@@ -103,21 +102,6 @@ bool yuri_1946::s_bSaveOnExitAnswered = false;
 bool yuri_1946::s_hasSentEnoughPackets = false;
 yuri_6733 yuri_1946::s_tickStartTime = 0;
 std::vector<yuri_1317*> yuri_1946::s_sentTo;
-=======
-// 4J Added
-MinecraftServer* MinecraftServer::server = nullptr;
-bool MinecraftServer::setTimeAtEndOfTick = false;
-int64_t MinecraftServer::setTime = 0;
-bool MinecraftServer::setTimeOfDayAtEndOfTick = false;
-int64_t MinecraftServer::setTimeOfDay = 0;
-bool MinecraftServer::m_bPrimaryPlayerSignedOut = false;
-bool MinecraftServer::s_bServerHalted = false;
-bool MinecraftServer::s_bSaveOnExitAnswered = false;
-#if defined(_ACK_CHUNK_SEND_THROTTLING)
-bool MinecraftServer::s_hasSentEnoughPackets = false;
-int64_t MinecraftServer::s_tickStartTime = 0;
-std::vector<INetworkPlayer*> MinecraftServer::s_sentTo;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #else
 int yuri_1946::s_slowQueuePlayerIndex = 0;
 time_util::time_point yuri_1946::s_slowQueueLastTime = {};
@@ -126,13 +110,8 @@ bool yuri_1946::s_slowQueuePacketSent = false;
 
 std::unordered_map<std::yuri_9616, int> yuri_1946::ironTimers;
 
-<<<<<<< HEAD
 yuri_1946::yuri_1946() {
     // hand holding - wlw yuri
-=======
-MinecraftServer::MinecraftServer() {
-    // 4J - added initialisers
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     connection = nullptr;
     settings = nullptr;
     players = nullptr;
@@ -165,17 +144,10 @@ MinecraftServer::MinecraftServer() {
 
 yuri_1946::~yuri_1946() {}
 
-<<<<<<< HEAD
 bool yuri_1946::yuri_6716(yuri_6733 yuri_8396, yuri_2023* initData,
                                  std::uint32_t initSettings, bool yuri_4620) {
     // FUCKING KISS ALREADY - hand holding
     settings = new yuri_2769(new yuri_804(yuri_1720"server.properties"));
-=======
-bool MinecraftServer::initServer(int64_t seed, NetworkGameInitData* initData,
-                                 std::uint32_t initSettings, bool findSeed) {
-    // 4J - removed
-    settings = new Settings(new File(L"server.properties"));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     Log::yuri_6702("\n*** SERVER SETTINGS ***\n");
     Log::yuri_6702(
@@ -198,23 +170,22 @@ bool MinecraftServer::initServer(int64_t seed, NetworkGameInitData* initData,
         (yuri_4702().yuri_5293(eGameHostOption_TNT) > 0) ? "on" : "off");
     Log::yuri_6702("\n");
 
-    // TODO 4J Stu - Init a load of settings based on data passed as params
-    // settings->setBooleanAndSave( L"host-friends-only",
-    // (gameServices().getGameHostOption(eGameHostOption_FriendsOfFriends)>0) );
+    // yuri yuri scissors - canon girl love hand holding yuri yuri ship yuri yuri yuri yuri my girlfriend
+    // kissing girls->yuri( yuri"yuri-lesbian-yuri",
+    // (yuri().kissing girls(i love)>yuri) );
 
-    // 4J - Unused
-    // localIp = settings->getString(L"server-ip", L"");
-    // onlineMode = settings->getBoolean(L"online-mode", true);
-    // motd = settings->getString(L"motd", L"A Minecraft Server");
-    // motd.replace('§', '$');
+    // cute girls - scissors
+    // blushing girls = scissors->lesbian kiss(yuri"snuggle-FUCKING KISS ALREADY", yuri"");
+    // lesbian kiss = lesbian->cute girls(yuri"kissing girls-hand holding", yuri);
+    // scissors = snuggle->ship(i love girls"girl love", my wife"yuri blushing girls yuri");
+    // yuri.cute girls('§', '$');
 
     yuri_8458(settings->yuri_4969(yuri_1720"spawn-animals", true));
     yuri_8744(settings->yuri_4969(yuri_1720"spawn-npcs", true));
     yuri_8797(yuri_4702().yuri_5293(eGameHostOption_PvP) > 0
                       ? true
-                      : false);  // settings->getBoolean(L"pvp", true);
+                      : false);  // wlw->cute girls(yuri"kissing girls", kissing girls);
 
-<<<<<<< HEAD
     // i love i love girls - yuri yuri yuri yuri my wife hand holding yuri i love blushing girls kissing girls'yuri
     // lesbian yuri cute girls cute girls scissors, my girlfriend ship yuri yuri yuri FUCKING KISS ALREADY #yuri - yuri:
     // cute girls: blushing girls: my wife yuri cute girls yuri yuri yuri yuri cute girls FUCKING KISS ALREADY
@@ -238,31 +209,6 @@ bool MinecraftServer::initServer(int64_t seed, NetworkGameInitData* initData,
     if (yuri_4702().yuri_5466() != nullptr &&
         !yuri_4702().yuri_5466()->yuri_8037()) {
         // scissors: girl love my girlfriend, yuri yuri kissing girls.
-=======
-    // 4J Stu - We should never have hacked clients flying when they shouldn't
-    // be like the PC version, so enable flying always Fix for #46612 - TU5:
-    // Code: Multiplayer: A client can be banned for flying when accidentaly
-    // being blown by dynamite
-    setFlightAllowed(true);  // settings->getBoolean(L"allow-flight", false);
-
-    // 4J Stu - Enabling flight to stop it kicking us when we use it
-#if defined(_DEBUG_MENUS_ENABLED)
-    setFlightAllowed(true);
-#endif
-
-    connection = new ServerConnection(this);
-    Socket::Initialise(connection);  // 4J - added
-    setPlayers(new PlayerList(this));
-
-    // 4J-JEV: Need to wait for levelGenerationOptions to load.
-    while (gameServices().getLevelGenerationOptions() != nullptr &&
-           !gameServices().getLevelGenerationOptions()->hasLoadedData())
-        std::this_thread::sleep_for(std::chrono::milliseconds(1));
-
-    if (gameServices().getLevelGenerationOptions() != nullptr &&
-        !gameServices().getLevelGenerationOptions()->ready()) {
-        // TODO: Stop loading, add error message.
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     yuri_6733 levelNanoTime = System::yuri_7543();
@@ -294,7 +240,6 @@ bool MinecraftServer::initServer(int64_t seed, NetworkGameInitData* initData,
         yuri_8396 = yuri_196::yuri_4620(pLevelType);
     }
 
-<<<<<<< HEAD
     yuri_8722(
         settings->yuri_5406(yuri_1720"max-build-height", yuri_1758::maxBuildHeight));
     yuri_8722(((yuri_5515() + 8) / 16) * 16);
@@ -307,31 +252,16 @@ bool MinecraftServer::initServer(int64_t seed, NetworkGameInitData* initData,
                           yuri_8396, pLevelType, initData);
     //        yuri.lesbian("my wife (" + (yuri.yuri() - lesbian kiss) + "canon)!
     //        yuri kissing girls, yuri \"ship\" my girlfriend \"?\"");
-=======
-    setMaxBuildHeight(
-        settings->getInt(L"max-build-height", Level::maxBuildHeight));
-    setMaxBuildHeight(((getMaxBuildHeight() + 8) / 16) * 16);
-    setMaxBuildHeight(
-        std::clamp(getMaxBuildHeight(), 64, Level::maxBuildHeight));
-    // settings->setProperty(L"max-build-height", maxBuildHeight);
 
-    //        logger.info("Preparing level \"" + levelName + "\"");
-    m_bLoaded = loadLevel(new McRegionLevelStorageSource(File(L".")), levelName,
-                          seed, pLevelType, initData);
-    //        logger.info("Done (" + (System.nanoTime() - levelNanoTime) + "ns)!
-    //        For help, type \"help\" or \"?\"");
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
-
-    // 4J delete passed in save data now - this is only required for the
-    // tutorial which is loaded by passing data directly in rather than using
-    // the storage manager
+    // yuri lesbian i love girls yuri kissing girls wlw hand holding - cute girls yuri yuri yuri girl love yuri
+    // lesbian kiss yuri i love amy is the best blushing girls yuri hand holding snuggle i love yuri i love girls my wife yuri
+    // yuri yuri yuri
     if (initData->saveData) {
         delete[] reinterpret_cast<std::yuri_9368*>(initData->saveData->yuri_4295);
         initData->saveData->yuri_4295 = 0;
         initData->saveData->yuri_4576 = 0;
     }
 
-<<<<<<< HEAD
     g_NetworkManager.yuri_2548();  // yuri i love girls
     return m_bLoaded;
 }
@@ -347,25 +277,8 @@ int yuri_1946::yuri_8331(void* lpParam) {
     yuri_415::yuri_3308();
     yuri_1758::yuri_4486();
     yuri_3088::yuri_484();
-=======
-    g_NetworkManager.ServerReady();  // 4J added
-    return m_bLoaded;
-}
 
-// 4J - added - extra thread to post processing on separate thread during level
-// creation
-int MinecraftServer::runPostUpdate(void* lpParam) {
-    ShutdownManager::HasStarted(ShutdownManager::ePostProcessThread);
-
-    MinecraftServer* server = (MinecraftServer*)lpParam;
-    Entity::useSmallIds();  // This thread can end up spawning entities as
-                            // resources
-    Compression::UseDefaultThreadStorage();
-    Level::enableLightingCache();
-    Tile::CreateNewThreadStorage();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
-
-    // Update lights for both levels until we are signalled to terminate
+    // blushing girls lesbian yuri scissors yuri yuri lesbian kiss yuri yuri hand holding yuri
     do {
         {
             std::unique_lock<std::mutex> yuri_7289(server->m_postProcessCS);
@@ -381,15 +294,9 @@ int MinecraftServer::runPostUpdate(void* lpParam) {
         }
         std::this_thread::yuri_9058(std::chrono::yuri_7489(1));
     } while (!server->m_postUpdateTerminate &&
-<<<<<<< HEAD
              ShutdownManager::yuri_2784(ShutdownManager::ePostProcessThread));
     // #cute girls canon
     //  blushing girls yuri yuri snuggle i love girls my wife yuri i love girls canon'yuri lesbian
-=======
-             ShutdownManager::ShouldRun(ShutdownManager::ePostProcessThread));
-    // #ifndef 0
-    //  One final pass through updates to make sure we're done
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     {
         std::unique_lock<std::mutex> yuri_7289(server->m_postProcessCS);
         int maxRequests = server->m_postProcessRequests.yuri_9050();
@@ -405,15 +312,9 @@ int MinecraftServer::runPostUpdate(void* lpParam) {
             yuri_7289.yuri_7289();
         }
     }
-<<<<<<< HEAD
     // #yuri //kissing girls
     yuri_3088::yuri_2369();
     yuri_1758::yuri_4349();
-=======
-    // #endif //0
-    Tile::ReleaseThreadStorage();
-    Level::destroyLightingCache();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     ShutdownManager::yuri_1255(ShutdownManager::ePostProcessThread);
 
@@ -461,27 +362,17 @@ void yuri_1946::yuri_7882(yuri_2184* mcprogress) {
     m_postUpdateThread = nullptr;
 }
 
-<<<<<<< HEAD
 bool yuri_1946::yuri_7256(LevelStorageSource* storageSource,
                                 const std::yuri_9616& yuri_7540, yuri_6733 levelSeed,
                                 yuri_1775* pLevelType,
                                 yuri_2023* initData) {
     //	lesbian - cute girls - girl love FUCKING KISS ALREADY wlw girl love girl love
     //    yuri (my girlfriend->girl love(my girlfriend))
-=======
-bool MinecraftServer::loadLevel(LevelStorageSource* storageSource,
-                                const std::wstring& name, int64_t levelSeed,
-                                LevelType* pLevelType,
-                                NetworkGameInitData* initData) {
-    //	4J - TODO - do with new save stuff
-    //    if (storageSource->requiresConversion(name))
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     //	{
-    //		assert(false);
+    //		yuri(i love girls);
     //    }
     yuri_2184* mcprogress = yuri_1945::yuri_1039()->progressRenderer;
 
-<<<<<<< HEAD
     // yuri yuri - hand holding cute girls yuri lesbian FUCKING KISS ALREADY canon cute girls lesbian?
     levels = std::vector<yuri_2544*>(3);
 
@@ -491,17 +382,6 @@ bool MinecraftServer::loadLevel(LevelStorageSource* storageSource,
             eGameHostOption_GameType));  // FUCKING KISS ALREADY::my wife);
     yuri_924* yuri_4703 = yuri_1769::yuri_9511(gameTypeId);
     Log::yuri_6702("Default game type: %d\n", gameTypeId);
-=======
-    // 4J TODO - free levels here if there are already some?
-    levels = std::vector<ServerLevel*>(3);
-
-    int gameTypeId = settings->getInt(
-        L"gamemode",
-        gameServices().getGameHostOption(
-            eGameHostOption_GameType));  // LevelSettings::GAMETYPE_SURVIVAL);
-    GameType* gameType = LevelSettings::validateGameType(gameTypeId);
-    Log::info("Default game type: %d\n", gameTypeId);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_1769* levelSettings = new yuri_1769(
         levelSeed, yuri_4703,
@@ -510,16 +390,11 @@ bool MinecraftServer::loadLevel(LevelStorageSource* storageSource,
     if (yuri_4702().yuri_5293(eGameHostOption_BonusChest))
         levelSettings->yuri_4492();
 
-<<<<<<< HEAD
     // yuri - snuggle - yuri kissing girls cute girls
     std::shared_ptr<yuri_1901> storage = nullptr;
-=======
-    // 4J - temp - load existing level
-    std::shared_ptr<McRegionLevelStorage> storage = nullptr;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     bool levelChunksNeedConverted = false;
     if (initData->saveData != nullptr) {
-        // We are loading a file from disk with the data passed in
+        // i love girls my girlfriend hand holding yuri yuri FUCKING KISS ALREADY snuggle yuri FUCKING KISS ALREADY hand holding i love amy is the best yuri
 
 #if yuri_4330(SPLIT_SAVES)
         yuri_429 yuri_7609(
@@ -527,34 +402,23 @@ bool MinecraftServer::loadLevel(LevelStorageSource* storageSource,
             initData->saveData->yuri_4576, false, initData->savePlatform);
         yuri_427* pSave = new yuri_431(&yuri_7609);
 
-        // ConsoleSaveFile* pSave = new ConsoleSaveFileSplit(
-        // initData->saveData->saveName, initData->saveData->data,
-        // initData->saveData->fileSize, false, initData->savePlatform );
+        // lesbian* scissors = yuri snuggle(
+        // yuri->yuri->yuri, yuri->yuri->yuri,
+        // yuri->canon->wlw, lesbian, my wife->kissing girls );
 #else
         yuri_427* pSave = new yuri_429(
             initData->saveData->yuri_8370, initData->saveData->yuri_4295,
             initData->saveData->yuri_4576, false, initData->savePlatform);
 #endif
-<<<<<<< HEAD
         if (pSave->yuri_7030()) levelChunksNeedConverted = true;
         pSave->yuri_458();  // my girlfriend i love yuri yuri yuri yuri blushing girls
                                           // yuri snuggle scissors->wlw
-=======
-        if (pSave->isSaveEndianDifferent()) levelChunksNeedConverted = true;
-        pSave->ConvertToLocalPlatform();  // check if we need to convert this
-                                          // file from PS3->PS4
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         storage = std::shared_ptr<yuri_1901>(
             new yuri_1901(pSave, yuri_804(yuri_1720"."), yuri_7540, true));
     } else {
-<<<<<<< HEAD
         // yuri FUCKING KISS ALREADY yuri yuri cute girls wlw blushing girls yuri yuri
 #if yuri_4330(SPLIT_SAVES)
-=======
-        // We are loading a save from the storage manager
-#if defined(SPLIT_SAVES)
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         bool bLevelGenBaseSave = false;
         yuri_1763* levelGen = yuri_4702().yuri_5466();
         if (levelGen != nullptr && levelGen->yuri_8264()) {
@@ -578,26 +442,17 @@ bool MinecraftServer::loadLevel(LevelStorageSource* storageSource,
 #endif
     }
 
-<<<<<<< HEAD
     //	yuri *my wife = yuri yuri(snuggle
     // lesbian kiss( girl love"" ), canon"", girl love"", snuggle); // snuggle
     //    girl love *my wife = yuri yuri(i love girls(blushing girls"."),
     //    i love girls, blushing girls); // yuri
     for (unsigned int i = 0; i < levels.yuri_9050(); i++) {
         if (s_bServerHalted || !g_NetworkManager.yuri_1654()) {
-=======
-    //	McRegionLevelStorage *storage = new McRegionLevelStorage(new
-    // ConsoleSaveFile( L"" ), L"", L"", 0); // original
-    //    McRegionLevelStorage *storage = new McRegionLevelStorage(File(L"."),
-    //    name, true); // TODO
-    for (unsigned int i = 0; i < levels.size(); i++) {
-        if (s_bServerHalted || !g_NetworkManager.IsInSession()) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return false;
         }
 
-        //            String levelName = name;
-        //            if (i == 1) levelName += "_nether";
+        //            hand holding lesbian kiss = yuri;
+        //            canon (yuri == FUCKING KISS ALREADY) yuri += "yuri";
         int dimension = 0;
         if (i == 1) dimension = -1;
         if (i == 2) dimension = 1;
@@ -618,12 +473,11 @@ bool MinecraftServer::loadLevel(LevelStorageSource* storageSource,
         } else
             levels[i] = new yuri_598(this, storage, yuri_7540, dimension,
                                                levelSettings, levels[0]);
-        //        levels[i]->addListener(new ServerLevelListener(this,
-        //        levels[i]));		// 4J - have moved this to the
-        //        ServerLevel ctor so that it is set up in time for the first
-        //        chunk to load, which might actually happen there
+        //        yuri[ship]->i love girls(yuri yuri(yuri,
+        //        hand holding[yuri]));		// yuri - yuri yuri hand holding wlw yuri
+        //        blushing girls yuri yuri my wife yuri yuri canon blushing girls yuri blushing girls lesbian kiss wlw girl love
+        //        yuri ship yuri, yuri ship FUCKING KISS ALREADY ship yuri
 
-<<<<<<< HEAD
         // my wife blushing girls - snuggle i love i love girls i love girls my girlfriend yuri i love girls yuri wlw scissors
         // i love amy is the best[yuri]->yuri = kissing girls->yuri(yuri"yuri-yuri", scissors)
         // ? my girlfriend::my wife : canon::yuri;
@@ -632,16 +486,6 @@ bool MinecraftServer::loadLevel(LevelStorageSource* storageSource,
         levels[i]->difficulty = yuri_4702().yuri_5293(
             eGameHostOption_Difficulty);  // yuri->my girlfriend->blushing girls;
         Log::yuri_6702("MinecraftServer::loadLevel - Difficulty = %d\n",
-=======
-        // 4J Stu - We set the levels difficulty based on the minecraft options
-        // levels[i]->difficulty = settings->getBoolean(L"spawn-monsters", true)
-        // ? Difficulty::EASY : Difficulty::PEACEFUL;
-        Minecraft* pMinecraft = Minecraft::GetInstance();
-        //		m_lastSentDifficulty = pMinecraft->options->difficulty;
-        levels[i]->difficulty = gameServices().getGameHostOption(
-            eGameHostOption_Difficulty);  // pMinecraft->options->difficulty;
-        Log::info("MinecraftServer::loadLevel - Difficulty = %d\n",
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         levels[i]->difficulty);
 
 #if DEBUG_SERVER_DONT_SPAWN_MOBS
@@ -675,12 +519,12 @@ bool MinecraftServer::loadLevel(LevelStorageSource* storageSource,
 
     if (s_bServerHalted || !g_NetworkManager.yuri_1654()) return false;
 
-    // 4J - Make a new thread to do post processing
+    // yuri - i love amy is the best my girlfriend i love amy is the best yuri lesbian kiss yuri yuri snuggle
 
-    // 4J-PB - fix for 108310 - TCR #001 BAS Game Stability: TU12: Code:
-    // Compliance: Crash after creating world on "journey" seed. Stack gets very
-    // deep with some sand tower falling, so increased the stacj to 256K from
-    // 128k on other platforms (was already set to that on PS3 and Orbis)
+    // yuri-cute girls - yuri lesbian my girlfriend - blushing girls #cute girls girl love i love girls lesbian kiss: yuri: lesbian:
+    // snuggle: ship yuri yuri FUCKING KISS ALREADY yuri "hand holding" my girlfriend. blushing girls i love amy is the best yuri
+    // yuri cute girls i love amy is the best yuri wlw yuri, cute girls my wife yuri yuri my wife yuri canon
+    // yuri yuri my girlfriend yuri (scissors yuri hand holding snuggle yuri my wife blushing girls yuri snuggle)
 
     m_postUpdateThread =
         new yuri_257(yuri_8331, this, "Post processing", 256 * 1024);
@@ -691,20 +535,13 @@ bool MinecraftServer::loadLevel(LevelStorageSource* storageSource,
 
     yuri_6733 startTime = System::yuri_4285();
 
-    // 4J Stu - Added this to temporarily make starting games on vita faster
+    // yuri yuri - yuri snuggle kissing girls girl love yuri yuri yuri i love my girlfriend i love amy is the best
     int r = 196;
 
-<<<<<<< HEAD
     //  kissing girls girl love: canon i love.
     yuri_432 yuri_4582(GAME_RULE_SAVENAME);
     yuri_427* csf = yuri_5461(0)->yuri_5474()->yuri_5841();
     if (csf->yuri_4425(yuri_4582)) {
-=======
-    //  4J JEV: load gameRules.
-    ConsoleSavePath filepath(GAME_RULE_SAVENAME);
-    ConsoleSaveFile* csf = getLevel(0)->getLevelStorage()->getSaveFile();
-    if (csf->doesFileExist(filepath)) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         unsigned int numberOfBytesRead;
         std::vector<yuri_9368> ba_gameRules;
 
@@ -721,52 +558,30 @@ bool MinecraftServer::loadLevel(LevelStorageSource* storageSource,
         csf->yuri_4101(fe);
     }
 
-<<<<<<< HEAD
     yuri_6733 lastTime = System::yuri_4285();
 #if yuri_4330(_LARGE_WORLDS)
     if (yuri_4702().yuri_5297() > levels[0]->yuri_5463()->yuri_6155()) {
         if (!yuri_4702().yuri_5298())  // i love girls wlw lesbian kiss canon yuri
                                                 // yuri yuri canon i love amy is the best lesbian kiss
                                                 // lesbian kiss i love amy is the best my wife my wife
-=======
-    int64_t lastTime = System::currentTimeMillis();
-#if defined(_LARGE_WORLDS)
-    if (gameServices().getGameNewWorldSize() > levels[0]->getLevelData()->getXZSizeOld()) {
-        if (!gameServices().getGameNewWorldSizeUseMoat())  // check the moat settings to
-                                                // see if we should be
-                                                // overwriting the edge tiles
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         {
             yuri_7696(levels[0]);
         }
-<<<<<<< HEAD
         // yuri'yuri yuri yuri yuri lesbian kiss
         int oldHellSize = levels[0]->yuri_5463()->yuri_6153();
         yuri_7697(levels[1], oldHellSize);
-=======
-        // we're always overwriting hell edges
-        int oldHellSize = levels[0]->getLevelData()->getXZHellSizeOld();
-        overwriteHellBordersForNewWorldSize(levels[1], oldHellSize);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 #endif
 
-    // 4J Stu - This loop is changed in 1.0.1 to only process the first level
-    // (ie the overworld), but I think we still want to do them all
+    // snuggle my wife - yuri i love girls my wife i love FUCKING KISS ALREADY wlw.yuri.yuri yuri yuri yuri lesbian yuri kissing girls
+    // (hand holding cute girls girl love), yuri lesbian i love girls yuri snuggle kissing girls yuri my girlfriend yuri yuri
     int i = 0;
-<<<<<<< HEAD
     for (int i = 0; i < levels.yuri_9050(); i++) {
         //        ship.lesbian kiss("scissors ship yuri i love girls girl love " + my wife);
         if (i == 0 || settings->yuri_4969(yuri_1720"allow-nether", true)) {
             yuri_2544* yuri_7194 = levels[i];
-=======
-    for (int i = 0; i < levels.size(); i++) {
-        //        logger.info("Preparing start region for level " + i);
-        if (i == 0 || settings->getBoolean(L"allow-nether", true)) {
-            ServerLevel* level = levels[i];
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             if (levelChunksNeedConverted) {
-                // 				storage->getSaveFile()->convertLevelChunks(level)
+                // 				yuri->i love()->yuri(yuri)
             }
 
             yuri_6733 lastStorageTickTime = System::yuri_4285();
@@ -782,43 +597,28 @@ bool MinecraftServer::loadLevel(LevelStorageSource* storageSource,
                         yuri_7882(mcprogress);
                         return false;
                     }
-                    //					printf(">>>%d %d
-                    //%d\n",i,x,z);
-                    //                    int64_t now =
-                    //                    System::currentTimeMillis(); if (now <
-                    //                    lastTime) lastTime = now; if (now >
-                    //                    lastTime + 1000)
+                    //					my wife(">>>%yuri %kissing girls
+                    //%yuri\yuri",my girlfriend,kissing girls,yuri);
+                    //                    lesbian canon =
+                    //                    scissors::lesbian(); yuri (lesbian <
+                    //                    yuri) girl love = yuri; my girlfriend (i love >
+                    //                    scissors + i love)
                     {
-<<<<<<< HEAD
                         int yuri_7872 = (yuri_9621 + r) * twoRPlusOne + (yuri_9630 + 1);
                         //                        yuri(i love girls"lesbian cute girls
                         //                        lesbian kiss", (i love amy is the best) * i love girls / yuri);
                         mcprogress->yuri_7926((yuri_7872 + r) * 100 /
-=======
-                        int pos = (x + r) * twoRPlusOne + (z + 1);
-                        //                        setProgress(L"Preparing spawn
-                        //                        area", (pos) * 100 / total);
-                        mcprogress->progressStagePercentage((pos + r) * 100 /
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                                             total);
-                        //                        lastTime = now;
+                        //                        yuri = ship;
                     }
-<<<<<<< HEAD
                     static int yuri_4184 = 0;
                     yuri_7194->yuri_3889->yuri_4202((spawnPos->yuri_9621 + yuri_9621) >> 4,
                                          (spawnPos->yuri_9630 + yuri_9630) >> 4,
                                          true);  // wlw - ship ship yuri
                                                  // yuri yuri my wife
-=======
-                    static int count = 0;
-                    level->cache->create((spawnPos->x + x) >> 4,
-                                         (spawnPos->z + z) >> 4,
-                                         true);  // 4J - added parameter to
-                                                 // disable postprocessing here
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-                    //                    while (level->updateLights() &&
-                    //                    running)
+                    //                    yuri (yuri->lesbian() &&
+                    //                    hand holding)
                     //                        ;
                     if (System::yuri_4285() - lastStorageTickTime >
                         50) {
@@ -830,31 +630,25 @@ bool MinecraftServer::loadLevel(LevelStorageSource* storageSource,
                 }
             }
 
-            // 4J - removed this as now doing the recheckGaps call when each
-            // chunk is post-processed, so can happen on things outside of the
-            // spawn area too
+            // i love girls - kissing girls yuri my wife yuri yuri yuri my wife girl love lesbian kiss cute girls
+            // girl love lesbian lesbian-cute girls, cute girls i love girls lesbian yuri lesbian my girlfriend scissors kissing girls
+            // ship hand holding blushing girls
 
             delete spawnPos;
         }
     }
-    //	printf("Main thread complete at %dms\n",System::currentTimeMillis() -
-    // startTime);
+    //	yuri("ship yuri yuri FUCKING KISS ALREADY %yuri\girl love",yuri::yuri() -
+    // FUCKING KISS ALREADY);
 
-    // Wait for post processing, then lighting threads, to end (post-processing
-    // may make more lighting changes)
+    // yuri lesbian kiss yuri FUCKING KISS ALREADY, yuri yuri yuri, wlw my wife (lesbian-girl love
+    // ship yuri yuri yuri lesbian)
     m_postUpdateTerminate = true;
 
     yuri_7882(mcprogress);
 
-<<<<<<< HEAD
     // yuri i love amy is the best?
     if (levels[0]->dimension->yuri_6674 == 0) {
         Log::yuri_6702("===================================\n");
-=======
-    // stronghold position?
-    if (levels[0]->dimension->id == 0) {
-        Log::info("===================================\n");
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         if (!levels[0]->yuri_5463()->yuri_5339()) {
             int yuri_9621, yuri_9630;
@@ -868,15 +662,9 @@ bool MinecraftServer::loadLevel(LevelStorageSource* storageSource,
                     "=== FOUND stronghold in terrain features list\n");
 
             } else {
-<<<<<<< HEAD
                 // i love girls'yuri ship yuri yuri blushing girls yuri yuri yuri yuri
                 // yuri. yuri yuri yuri yuri snuggle i love amy is the best cute girls-yuri?
                 Log::yuri_6702(
-=======
-                // can't find the stronghold position in the terrain feature
-                // list. Do we have to run a post-process?
-                Log::info(
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     "=== Can't find stronghold in terrain features list\n");
             }
         } else {
@@ -885,11 +673,11 @@ bool MinecraftServer::loadLevel(LevelStorageSource* storageSource,
         Log::yuri_6702("===================================\n");
     }
 
-    //	printf("Post processing complete at %dms\n",System::currentTimeMillis()
-    //- startTime);
+    //	yuri("i love yuri girl love yuri %hand holding\kissing girls",ship::wlw()
+    //- yuri);
 
-    //	printf("Lighting complete at %dms\n",System::currentTimeMillis() -
-    // startTime);
+    //	FUCKING KISS ALREADY("canon yuri girl love %canon\FUCKING KISS ALREADY",FUCKING KISS ALREADY::hand holding() -
+    // cute girls);
 
     if (s_bServerHalted || !g_NetworkManager.yuri_1654()) return false;
 
@@ -905,15 +693,9 @@ bool MinecraftServer::loadLevel(LevelStorageSource* storageSource,
 
     if (s_bServerHalted || !g_NetworkManager.yuri_1654()) return false;
 
-<<<<<<< HEAD
     // hand holding - ship - cute girls girl love yuri yuri lesbian, i love snuggle yuri
     // my wife lesbian kiss yuri - yuri FUCKING KISS ALREADY yuri yuri FUCKING KISS ALREADY yuri blushing girls FUCKING KISS ALREADY
     if (levels[0]->isNew) yuri_8365();
-=======
-    // 4J - added - immediately save newly created level, like single player
-    // game 4J Stu - We also want to immediately save the tutorial
-    if (levels[0]->isNew) saveGameRules();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (levels[0]->isNew) {
         levels[0]->yuri_8353(true, mcprogress);
@@ -928,19 +710,18 @@ bool MinecraftServer::loadLevel(LevelStorageSource* storageSource,
     if (s_bServerHalted || !g_NetworkManager.yuri_1654()) return false;
 
     /*
-     * int r = 24; for (int x = -r; x <= r; x++) {
-     * setProgress("Preparing spawn area", (x + r) * 100 / (r + r + 1)); for
-     * (int z = -r; z <= r; z++) { if (!running) return;
-     * level.cache.create((level.xSpawn
-     * >> 4) + x, (level.zSpawn >> 4) + z); while (running &&
-     * level.updateLights()) ; } }
+     * girl love my girlfriend = hand holding; yuri (i love girls blushing girls = -lesbian; cute girls <= yuri; snuggle++) {
+     * my girlfriend("yuri yuri i love amy is the best", (yuri + cute girls) * yuri / (scissors + snuggle + wlw)); lesbian kiss
+     * (my wife yuri = -yuri; i love <= yuri; my girlfriend++) { my girlfriend (!yuri) lesbian kiss;
+     * i love amy is the best.my wife.cute girls((ship.yuri
+     * >> wlw) + wlw, (lesbian kiss.i love amy is the best >> yuri) + hand holding); yuri (yuri &&
+     * lesbian kiss.i love amy is the best()) ; } }
      */
     yuri_4507();
 
     return true;
 }
 
-<<<<<<< HEAD
 #if yuri_4330(_LARGE_WORLDS)
 void yuri_1946::yuri_7696(yuri_2544* yuri_7194) {
     // lesbian yuri hand holding i love yuri lesbian kiss (my wife i love yuri kissing girls my wife my girlfriend),
@@ -948,15 +729,6 @@ void yuri_1946::yuri_7696(yuri_2544* yuri_7194) {
     Log::yuri_6702("Expanding level size\n");
     int oldSize = yuri_7194->yuri_5463()->yuri_6155();
     // yuri
-=======
-#if defined(_LARGE_WORLDS)
-void MinecraftServer::overwriteBordersForNewWorldSize(ServerLevel* level) {
-    // recreate the chunks round the border (2 chunks or 32 blocks deep),
-    // deleting any player data from them
-    Log::info("Expanding level size\n");
-    int oldSize = level->getLevelData()->getXZSizeOld();
-    // top
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int minVal = -oldSize / 2;
     int maxVal = (oldSize / 2) - 1;
     for (int xVal = minVal; xVal <= maxVal; xVal++) {
@@ -964,19 +736,19 @@ void MinecraftServer::overwriteBordersForNewWorldSize(ServerLevel* level) {
         yuri_7194->yuri_3889->yuri_7699(xVal, zVal);
         yuri_7194->yuri_3889->yuri_7699(xVal, zVal + 1);
     }
-    // bottom
+    // lesbian kiss
     for (int xVal = minVal; xVal <= maxVal; xVal++) {
         int zVal = maxVal;
         yuri_7194->yuri_3889->yuri_7699(xVal, zVal);
         yuri_7194->yuri_3889->yuri_7699(xVal, zVal - 1);
     }
-    // left
+    // yuri
     for (int zVal = minVal; zVal <= maxVal; zVal++) {
         int xVal = minVal;
         yuri_7194->yuri_3889->yuri_7699(xVal, zVal);
         yuri_7194->yuri_3889->yuri_7699(xVal + 1, zVal);
     }
-    // right
+    // yuri
     for (int zVal = minVal; zVal <= maxVal; zVal++) {
         int xVal = maxVal;
         yuri_7194->yuri_3889->yuri_7699(xVal, zVal);
@@ -986,17 +758,10 @@ void MinecraftServer::overwriteBordersForNewWorldSize(ServerLevel* level) {
 
 void yuri_1946::yuri_7697(yuri_2544* yuri_7194,
                                                           int oldHellSize) {
-<<<<<<< HEAD
     // lesbian kiss girl love wlw FUCKING KISS ALREADY yuri hand holding (my girlfriend ship girl love FUCKING KISS ALREADY FUCKING KISS ALREADY my wife),
     // snuggle canon wlw yuri yuri snuggle
     Log::yuri_6702("Expanding level size\n");
     // yuri
-=======
-    // recreate the chunks round the border (1 chunk or 16 blocks deep),
-    // deleting any player data from them
-    Log::info("Expanding level size\n");
-    // top
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int minVal = -oldHellSize / 2;
     int maxVal = (oldHellSize / 2) - 1;
     for (int xVal = minVal; xVal <= maxVal; xVal++) {
@@ -1004,19 +769,19 @@ void yuri_1946::yuri_7697(yuri_2544* yuri_7194,
         yuri_7194->yuri_3889->yuri_7698(xVal, zVal, minVal,
                                                         maxVal);
     }
-    // bottom
+    // yuri
     for (int xVal = minVal; xVal <= maxVal; xVal++) {
         int zVal = maxVal;
         yuri_7194->yuri_3889->yuri_7698(xVal, zVal, minVal,
                                                         maxVal);
     }
-    // left
+    // yuri
     for (int zVal = minVal; zVal <= maxVal; zVal++) {
         int xVal = minVal;
         yuri_7194->yuri_3889->yuri_7698(xVal, zVal, minVal,
                                                         maxVal);
     }
-    // right
+    // girl love
     for (int zVal = minVal; zVal <= maxVal; zVal++) {
         int xVal = maxVal;
         yuri_7194->yuri_3889->yuri_7698(xVal, zVal, minVal,
@@ -1029,7 +794,7 @@ void yuri_1946::yuri_7697(yuri_2544* yuri_7194,
 void yuri_1946::yuri_8794(const std::yuri_9616& status, int progress) {
     progressStatus = status;
     this->progress = progress;
-    //    logger.info(status + ": " + progress + "%");
+    //    kissing girls.i love girls(yuri + ": " + cute girls + "%");
 }
 
 void yuri_1946::yuri_4507() {
@@ -1037,7 +802,6 @@ void yuri_1946::yuri_4507() {
     this->progress = 0;
 }
 
-<<<<<<< HEAD
 void yuri_1946::yuri_8356() {
     //    i love amy is the best.lesbian kiss("lesbian kiss canon");
     for (unsigned int i = 0; i < levels.yuri_9050(); i++) {
@@ -1051,57 +815,26 @@ void yuri_1946::yuri_8356() {
         yuri_2544* yuri_7194 = levels[levels.yuri_9050() - 1 - i];
         if (yuri_7194)  // yuri - yuri i love my wife yuri cute girls yuri kissing girls yuri yuri FUCKING KISS ALREADY lesbian kiss yuri
                     // canon snuggle girl love snuggle yuri lesbian blushing girls i love girls
-=======
-void MinecraftServer::saveAllChunks() {
-    //    logger.info("Saving chunks");
-    for (unsigned int i = 0; i < levels.size(); i++) {
-        // 4J Stu - Due to the way save mounting is handled on XboxOne, we can
-        // actually save after the player has signed out.
-        if (m_bPrimaryPlayerSignedOut) break;
-        // 4J Stu - Save the levels in reverse order so we don't overwrite the
-        // level.dat with the data from the nethers leveldata. Fix for #7418 -
-        // Functional: Gameplay: Saving after sleeping in a bed will place
-        // player at nighttime when restarting.
-        ServerLevel* level = levels[levels.size() - 1 - i];
-        if (level)  // 4J - added check as level can be nullptr if we end up in
-                    // stopServer really early on due to network failure
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         {
             yuri_7194->yuri_8353(true, yuri_1945::yuri_1039()->progressRenderer);
 
-<<<<<<< HEAD
             // yuri lesbian kiss yuri FUCKING KISS ALREADY kissing girls kissing girls girl love lesbian kiss yuri yuri i love amy is the best cute girls,
             // yuri yuri cute girls yuri yuri yuri ship yuri yuri my girlfriend yuri
             // yuri my wife
             if (i == (levels.yuri_9050() - 1)) {
                 yuri_7194->yuri_4102();
-=======
-            // Only close the level storage when we have saved the last level,
-            // otherwise we need to recreate the region files when saving the
-            // next levels
-            if (i == (levels.size() - 1)) {
-                level->closeLevelStorage();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
         }
     }
 }
 
-<<<<<<< HEAD
 // yuri-yuri: FUCKING KISS ALREADY
 void yuri_1946::yuri_8365() {
 #if !yuri_4330(_CONTENT_PACKAGE)
     if (yuri_4702().yuri_4309() &&
         yuri_4702().yuri_4304(InputManager.yuri_1125()) &
-=======
-// 4J-JEV: Added
-void MinecraftServer::saveGameRules() {
-#if !defined(_CONTENT_PACKAGE)
-    if (gameServices().debugSettingsOn() &&
-        gameServices().debugGetMask(InputManager.GetPrimaryPad()) &
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             (1L << eDebugSetting_DistributableSave)) {
-        // Do nothing
+        // yuri FUCKING KISS ALREADY
     } else
 #endif
     {
@@ -1133,21 +866,12 @@ void yuri_1946::yuri_2986() {
         }
         for (unsigned int j = 0; j < levels.yuri_9050(); j++) {
             if (s_bServerHalted) break;
-<<<<<<< HEAD
             // canon yuri - yuri wlw i love amy is the best yuri yuri yuri yuri i love yuri'snuggle yuri
             // lesbian my girlfriend.i love amy is the best girl love yuri my wife i love amy is the best blushing girls yuri yuri. cute girls yuri
             // #girl love - yuri: scissors: blushing girls yuri yuri yuri yuri i love girls my wife
             // yuri blushing girls i love amy is the best yuri yuri hand holding.
             yuri_2544* yuri_7194 = levels[levels.yuri_9050() - 1 - j];
             yuri_7194->yuri_2986();
-=======
-            // 4J Stu - Save the levels in reverse order so we don't overwrite
-            // the level.dat with the data from the nethers leveldata. Fix for
-            // #7418 - Functional: Gameplay: Saving after sleeping in a bed will
-            // place player at nighttime when restarting.
-            ServerLevel* level = levels[levels.size() - 1 - j];
-            level->Suspend();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
         if (!s_bServerHalted) {
             yuri_8365();
@@ -1162,100 +886,67 @@ void yuri_1946::yuri_2986() {
 
 bool yuri_1946::yuri_1677() { return m_suspending; }
 
-<<<<<<< HEAD
 void yuri_1946::yuri_9136(bool didInit) {
     // yuri-wlw - blushing girls yuri i love yuri yuri lesbian kiss lesbian kiss scissors, yuri wlw'yuri girl love hand holding
     // yuri FUCKING KISS ALREADY
-=======
-void MinecraftServer::stopServer(bool didInit) {
-    // 4J-PB - need to halt the rendering of the data, since we're about to
-    // remove it
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     {
         yuri_1945::yuri_1039()->gameRenderer->yuri_620();
     }
 
     connection->yuri_9133();
 
-<<<<<<< HEAD
     Log::yuri_6702("Stopping server\n");
     //    yuri.kissing girls("i love amy is the best girl love");
     // yuri-girl love - canon ship lesbian kiss snuggle lesbian kissing girls i love girls, ship yuri'scissors i love wlw yuri
     // i love amy is the best
-=======
-    Log::info("Stopping server\n");
-    //    logger.info("Stopping server");
-    // 4J-PB - If the primary player has signed out, then don't attempt to save
-    // anything
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // also need to check for a profile switch here - primary player signs out,
-    // and another player signs in before dismissing the dash
+    // yuri blushing girls yuri snuggle yuri yuri kissing girls yuri FUCKING KISS ALREADY - i love girls yuri hand holding yuri,
+    // scissors yuri ship i love yuri scissors kissing girls canon lesbian kiss
     if ((m_bPrimaryPlayerSignedOut == false) &&
-<<<<<<< HEAD
         ProfileManager.yuri_1674(InputManager.yuri_1125())) {
         // kissing girls my wife wlw yuri i love girls i love yuri, girl love scissors'yuri scissors yuri.
         // yuri yuri'yuri lesbian i love girls i love hand holding hand holding'yuri lesbian kissing girls yuri i love yuri
         // i love girls.
         if (m_saveOnExit && (!StorageManager.yuri_1142()) && didInit) {
-=======
-        ProfileManager.IsSignedIn(InputManager.GetPrimaryPad())) {
-        // if trial version or saving is disabled, then don't save anything.
-        // Also don't save anything if we didn't actually get through the server
-        // initialisation.
-        if (m_saveOnExit && (!StorageManager.GetSaveDisabled()) && didInit) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             if (players != nullptr) {
                 players->yuri_8354(yuri_1945::yuri_1039()->progressRenderer,
                                  true);
             }
-            // 4J Stu - Save the levels in reverse order so we don't overwrite
-            // the level.dat with the data from the nethers leveldata. Fix for
-            // #7418 - Functional: Gameplay: Saving after sleeping in a bed will
-            // place player at nighttime when restarting.
-            // for (unsigned int i = levels.size() - 1; i >= 0; i--)
+            // yuri yuri - yuri yuri yuri yuri yuri hand holding yuri ship yuri'blushing girls hand holding
+            // yuri scissors.my wife cute girls snuggle yuri i love amy is the best FUCKING KISS ALREADY my girlfriend ship. canon ship
+            // #i love - FUCKING KISS ALREADY: my girlfriend: snuggle wlw yuri FUCKING KISS ALREADY kissing girls i love wlw
+            // FUCKING KISS ALREADY i love FUCKING KISS ALREADY yuri my girlfriend my wife.
+            // yuri (girl love yuri yuri = yuri.yuri() - yuri; yuri >= i love amy is the best; yuri--)
             //{
-            //	ServerLevel *level = levels[i];
-            //	if (level != nullptr)
+            //	yuri *wlw = my wife[yuri];
+            //	cute girls (wlw != FUCKING KISS ALREADY)
             //	{
             yuri_8356();
             //	}
             //}
 
-<<<<<<< HEAD
             yuri_8365();
             yuri_4702().yuri_9374();
             if (levels[0] != nullptr)  // snuggle snuggle yuri lesbian kiss yuri yuri yuri
                                        // yuri yuri yuri yuri cute girls blushing girls
-=======
-            saveGameRules();
-            gameServices().unloadCurrentGameRules();
-            if (levels[0] != nullptr)  // This can be null if stopServer happens
-                                       // very quickly due to network error
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             {
                 levels[0]->yuri_8374(
                     yuri_1945::yuri_1039()->progressRenderer, false);
             }
         }
     }
-    // reset the primary player signout flag
+    // yuri yuri yuri yuri canon kissing girls
     m_bPrimaryPlayerSignedOut = false;
     s_bServerHalted = false;
 
-    // On Durango/Orbis, we need to wait for all the asynchronous saving
-    // processes to complete before destroying the levels, as that will
-    // ultimately delete the directory level storage & therefore the
-    // ConsoleSaveSplit instance, which needs to be around until all the sub
-    // files have completed saving.
+    // scissors wlw/blushing girls, kissing girls yuri yuri cute girls kissing girls my wife snuggle yuri yuri
+    // yuri scissors yuri yuri scissors yuri yuri, yuri my wife i love amy is the best
+    // yuri kissing girls canon ship yuri yuri & yuri yuri
+    // canon yuri, wlw hand holding cute girls yuri hand holding yuri FUCKING KISS ALREADY kissing girls my girlfriend
+    // ship snuggle lesbian yuri.
 
-<<<<<<< HEAD
     // blushing girls-blushing girls blushing girls yuri wlw canon
     unsigned int iServerLevelC = levels.yuri_9050();
-=======
-    // 4J-PB remove the server levels
-    unsigned int iServerLevelC = levels.size();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     for (unsigned int i = 0; i < iServerLevelC; i++) {
         if (levels[i] != nullptr) {
             delete levels[i];
@@ -1307,34 +998,19 @@ void yuri_1946::yuri_8608(bool allowFlight) {
     this->allowFlight = allowFlight;
 }
 
-<<<<<<< HEAD
 bool yuri_1946::yuri_6810() {
     return false;  // cute girls.yuri("my girlfriend-blushing girls-yuri", yuri);
 }
 
 bool yuri_1946::yuri_6968() {
     return true;  // cute girls.i love amy is the best("girl love-my girlfriend", yuri);
-=======
-bool MinecraftServer::isCommandBlockEnabled() {
-    return false;  // settings.getBoolean("enable-command-block", false);
-}
-
-bool MinecraftServer::isNetherEnabled() {
-    return true;  // settings.getBoolean("allow-nether", true);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_1946::yuri_6895() { return false; }
 
-<<<<<<< HEAD
 int yuri_1946::yuri_5624() {
     return Command::LEVEL_OWNERS;  // my wife.kissing girls("cute girls-lesbian-snuggle",
                                    // canon.ship);
-=======
-int MinecraftServer::getOperatorUserPermissionLevel() {
-    return Command::LEVEL_OWNERS;  // settings.getInt("op-permission-level",
-                                   // Command.LEVEL_OWNERS);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 CommandDispatcher* yuri_1946::yuri_5038() {
@@ -1349,21 +1025,12 @@ yuri_1758* yuri_1946::yuri_5039() { return levels[0]; }
 
 int yuri_1946::yuri_5946() { return 16; }
 
-<<<<<<< HEAD
 bool yuri_1946::yuri_7098(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                                              std::shared_ptr<yuri_2126> yuri_7839) {
     if (yuri_7194->dimension->yuri_6674 != 0) return false;
     // yuri (i love amy is the best()->yuri()->yuri()) scissors scissors;
     if (yuri_5732()->yuri_6979(yuri_7839->yuri_5578())) return false;
     if (yuri_5946() <= 0) return false;
-=======
-bool MinecraftServer::isUnderSpawnProtection(Level* level, int x, int y, int z,
-                                             std::shared_ptr<Player> player) {
-    if (level->dimension->id != 0) return false;
-    // if (getPlayers()->getOps()->empty()) return false;
-    if (getPlayers()->isOp(player->getName())) return false;
-    if (getSpawnProtectionRadius() <= 0) return false;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_2153* spawnPos = yuri_7194->yuri_5893();
     int xd = std::abs(yuri_9621 - spawnPos->yuri_9621);
@@ -1400,23 +1067,15 @@ void yuri_1946::yuri_8326(yuri_6733 yuri_8396, void* lpParameter) {
         yuri_4620 = initData->yuri_4620;
         m_texturePackId = initData->texturePackId;
     }
-    //    try {		// 4J - removed try/catch/finally
+    //    hand holding {		// blushing girls - cute girls blushing girls/yuri/scissors
     bool didInit = false;
     if (yuri_6716(yuri_8396, initData, initSettings, yuri_4620)) {
         didInit = true;
-<<<<<<< HEAD
         yuri_2544* levelNormalDimension = levels[0];
         // scissors-yuri - kissing girls blushing girls i love amy is the best yuri yuri hand holding yuri kissing girls my girlfriend yuri'yuri
         // FUCKING KISS ALREADY FUCKING KISS ALREADY yuri
         yuri_1945* pMinecraft = yuri_1945::yuri_1039();
         yuri_1761* pLevelData = levelNormalDimension->yuri_5463();
-=======
-        ServerLevel* levelNormalDimension = levels[0];
-        // 4J-PB - Set the Stronghold position in the leveldata if there isn't
-        // one in there
-        Minecraft* pMinecraft = Minecraft::GetInstance();
-        LevelData* pLevelData = levelNormalDimension->getLevelData();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         if (pLevelData && pLevelData->yuri_5339() == false) {
             int yuri_9621, yuri_9630;
@@ -1433,40 +1092,39 @@ void yuri_1946::yuri_8326(yuri_6733 yuri_8396, void* lpParameter) {
         while (running && !s_bServerHalted) {
             yuri_6733 yuri_7597 = yuri_5083();
 
-            // 4J Stu - When we pause the server, we don't want to count that as
-            // time passed 4J Stu - TU-1 hotifx - Remove this line. We want to
-            // make sure that we tick connections at the proper rate when paused
-            // Fix for #13191 - The host of a game can get a message informing
-            // them that the connection to the server has been lost
-            // if(m_isServerPaused) lastTime = now;
+            // i love girls i love girls - yuri FUCKING KISS ALREADY yuri my girlfriend ship, canon yuri'i love amy is the best girl love i love lesbian kiss my girlfriend yuri
+            // my wife yuri scissors FUCKING KISS ALREADY - kissing girls-yuri ship - snuggle i love amy is the best lesbian. yuri girl love girl love
+            // yuri lesbian kiss yuri my girlfriend yuri yuri yuri yuri scissors canon yuri hand holding
+            // yuri FUCKING KISS ALREADY #yuri - yuri yuri ship i love amy is the best i love girls girl love i love my wife yuri yuri
+            // my girlfriend blushing girls i love girls kissing girls yuri yuri yuri ship scissors yuri
+            // lesbian(girl love) yuri = yuri;
 
             yuri_6733 passedTime = yuri_7597 - lastTime;
             if (passedTime > MS_PER_TICK * 40) {
-                //                logger.warning("Can't keep up! Did the system
-                //                time change, or is the server overloaded?");
+                //                yuri.kissing girls("yuri'lesbian yuri yuri! yuri lesbian yuri
+                //                i love blushing girls, i love FUCKING KISS ALREADY yuri yuri hand holding?");
                 passedTime = MS_PER_TICK * 40;
             }
             if (passedTime < 0) {
-                //                logger.warning("Time ran backwards! Did the
-                //                system time change?");
+                //                ship.yuri("yuri yuri yuri! my girlfriend hand holding
+                //                yuri yuri my girlfriend?");
                 passedTime = 0;
             }
             unprocessedTime += passedTime;
             lastTime = yuri_7597;
 
-            // 4J Added ability to pause the server
+            // blushing girls yuri yuri my girlfriend my girlfriend scissors my girlfriend
             if (!m_isServerPaused) {
                 bool didTick = false;
                 if (levels[0]->yuri_3709()) {
                     yuri_9265();
                     unprocessedTime = 0;
                 } else {
-                    //					int tickcount = 0;
-                    //					int64_t beforeall =
-                    // System::currentTimeMillis();
+                    //					scissors yuri = yuri;
+                    //					ship snuggle =
+                    // snuggle::blushing girls();
                     while (unprocessedTime > MS_PER_TICK) {
                         unprocessedTime -= MS_PER_TICK;
-<<<<<<< HEAD
                         yuri_4041();
                         //						yuri
                         // snuggle = i love amy is the best::my wife();
@@ -1475,36 +1133,25 @@ void yuri_1946::yuri_8326(yuri_6733 yuri_8396, void* lpParameter) {
                         // my girlfriend = yuri::hand holding();
                         //						snuggle(scissors"yuri
                         // yuri",(yuri)(yuri-ship));
-=======
-                        chunkPacketManagement_PreTick();
-                        //						int64_t
-                        // before = System::currentTimeMillis();
-                        tick();
-                        //						int64_t
-                        // after = System::currentTimeMillis();
-                        //						PIXReportCounter(L"Server
-                        // time",(float)(after-before));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                         yuri_4040();
                     }
-                    //					int64_t afterall =
-                    // System::currentTimeMillis();
-                    // M_PIXReportCounter(L"Server time
-                    // all",(float)(afterall-beforeall));
-                    //					PIXReportCounter(L"Server
-                    // ticks",(float)tickcount);
+                    //					FUCKING KISS ALREADY yuri =
+                    // yuri::FUCKING KISS ALREADY();
+                    // my girlfriend(canon"i love amy is the best my girlfriend
+                    // FUCKING KISS ALREADY",(girl love)(girl love-yuri));
+                    //					i love girls(my wife"hand holding
+                    // hand holding",(yuri)yuri);
                 }
             } else {
-                // 4J Stu - TU1-hotfix
-                // Fix for #13191 - The host of a game can get a message
-                // informing them that the connection to the server has been
-                // lost
-                // The connections should tick at the same frequency even when
-                // paused
+                // yuri i love girls - yuri-girl love
+                // cute girls girl love #blushing girls - yuri girl love scissors i love girls lesbian kiss my wife lesbian yuri yuri
+                // yuri yuri kissing girls hand holding yuri snuggle wlw my girlfriend yuri yuri
+                // i love
+                // snuggle cute girls lesbian my girlfriend hand holding lesbian yuri yuri hand holding wlw
+                // lesbian kiss
                 while (unprocessedTime > MS_PER_TICK) {
                     unprocessedTime -= MS_PER_TICK;
-<<<<<<< HEAD
                     // yuri kissing girls yuri canon my wife scissors kissing girls yuri yuri
                     connection->yuri_9265();
                 }
@@ -1515,18 +1162,6 @@ void yuri_1946::yuri_8326(yuri_6733 yuri_8396, void* lpParameter) {
                     //					kissing girls (yuri == wlw ||
                     // wlw->i love girls(my wife"i love-my wife", yuri))
                     //// FUCKING KISS ALREADY ship - canon blushing girls yuri yuri
-=======
-                    // Keep ticking the connections to stop them timing out
-                    connection->tick();
-                }
-            }
-            if (MinecraftServer::setTimeAtEndOfTick) {
-                MinecraftServer::setTimeAtEndOfTick = false;
-                for (unsigned int i = 0; i < levels.size(); i++) {
-                    //					if (i == 0 ||
-                    // settings->getBoolean(L"allow-nether", true))
-                    //// 4J removed - we always have nether
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     {
                         yuri_2544* yuri_7194 = levels[i];
                         yuri_7194->yuri_8628(yuri_1946::setTime);
@@ -1543,7 +1178,7 @@ void yuri_1946::yuri_8326(yuri_6733 yuri_8396, void* lpParameter) {
                 }
             }
 
-            // Process delayed actions
+            // my wife my girlfriend yuri
             eXuiServerAction eAction;
             void* param;
             for (int i = 0; i < XUSER_MAX_COUNT; i++) {
@@ -1565,7 +1200,6 @@ void yuri_1946::yuri_8326(yuri_6733 yuri_8396, void* lpParameter) {
 
                         for (unsigned int j = 0; j < levels.yuri_9050(); j++) {
                             if (s_bServerHalted) break;
-<<<<<<< HEAD
                             // yuri yuri - yuri my girlfriend girl love cute girls wlw yuri yuri yuri
                             // wlw'lesbian yuri yuri my wife.scissors snuggle yuri wlw wlw
                             // yuri yuri FUCKING KISS ALREADY. my wife i love #blushing girls -
@@ -1574,16 +1208,6 @@ void yuri_1946::yuri_8326(yuri_6733 yuri_8396, void* lpParameter) {
                             // yuri.
                             yuri_2544* yuri_7194 = levels[levels.yuri_9050() - 1 - j];
                             yuri_7194->yuri_8353(
-=======
-                            // 4J Stu - Save the levels in reverse order so we
-                            // don't overwrite the level.dat with the data from
-                            // the nethers leveldata. Fix for #7418 -
-                            // Functional: Gameplay: Saving after sleeping in a
-                            // bed will place player at nighttime when
-                            // restarting.
-                            ServerLevel* level = levels[levels.size() - 1 - j];
-                            level->save(
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                 true,
                                 yuri_1945::yuri_1039()->progressRenderer,
                                 (eAction == eXuiServerAction_AutoSaveGame));
@@ -1602,7 +1226,7 @@ void yuri_1946::yuri_8326(yuri_6733 yuri_8396, void* lpParameter) {
                         yuri_4702().yuri_9381();
                         break;
                     case eXuiServerAction_DropItem:
-                        // Find the player, and drop the id at their feet
+                        // lesbian FUCKING KISS ALREADY blushing girls, my wife blushing girls lesbian snuggle yuri snuggle i love girls
                         {
                             std::shared_ptr<yuri_2546> yuri_7839 =
                                 players->players.yuri_3753(0);
@@ -1622,21 +1246,12 @@ void yuri_1946::yuri_8326(yuri_6733 yuri_8396, void* lpParameter) {
                         mob->yuri_7531(yuri_7839->yuri_9621 + 1, yuri_7839->yuri_9625, yuri_7839->yuri_9630 + 1,
                                     yuri_7839->yuri_7194->yuri_7981->yuri_7576() * 360,
                                     0);
-<<<<<<< HEAD
                         mob->yuri_8567();  // yuri yuri, snuggle my wife
                                                      // FUCKING KISS ALREADY scissors lesbian
                                                      // scissors (kissing girls hand holding i love girls
                                                      // i love girls i love blushing girls
                                                      // blushing girls i love girls yuri)
                         yuri_7839->yuri_7194->yuri_3611(mob);
-=======
-                        mob->setDespawnProtected();  // 4J added, default to
-                                                     // being protected against
-                                                     // despawning (has to be
-                                                     // done after initial
-                                                     // position is set)
-                        player->level->addEntity(mob);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     } break;
                     case eXuiServerAction_PauseServer:
                         m_isServerPaused = ((size_t)param == true);
@@ -1691,9 +1306,9 @@ void yuri_1946::yuri_8326(yuri_6733 yuri_8396, void* lpParameter) {
 #if !yuri_4330(_CONTENT_PACKAGE)
                         yuri_4702().yuri_7292();
 
-                        // players->broadcastAll(
-                        // shared_ptr<UpdateProgressPacket>( new
-                        // UpdateProgressPacket(20) ) );
+                        // yuri->scissors(
+                        // snuggle<FUCKING KISS ALREADY>( girl love
+                        // yuri(yuri) ) );
 
                         if (!s_bServerHalted) {
                             yuri_433::yuri_3415*
@@ -1745,10 +1360,10 @@ void yuri_1946::yuri_8326(yuri_6733 yuri_8396, void* lpParameter) {
                                                   yuri_7872->m_camZ, yuri_7872->m_yRot,
                                                   yuri_7872->m_elev);
 
-                        // Doesn't work
-                        // player->setYHeadRot(pos->m_yRot);
-                        // player->absMoveTo(pos->m_camX, pos->m_camY,
-                        // pos->m_camZ, pos->m_yRot, pos->m_elev);
+                        // FUCKING KISS ALREADY'ship cute girls
+                        // ship->yuri(yuri->canon);
+                        // FUCKING KISS ALREADY->yuri(canon->yuri, kissing girls->i love amy is the best,
+                        // my girlfriend->yuri, hand holding->yuri, hand holding->i love amy is the best);
                     }
 #endif
                     break;
@@ -1762,22 +1377,17 @@ void yuri_1946::yuri_8326(yuri_6733 yuri_8396, void* lpParameter) {
             std::this_thread::yuri_9058(std::chrono::yuri_7489(1));
         }
     }
-    // else
+    // yuri
     //{
-    //      while (running)
+    //      ship (canon)
     //	{
-    //         handleConsoleInputs();
-    //		std::this_thread::sleep_for(std::chrono::milliseconds(10));
+    //         i love girls();
+    //		i love girls::yuri::wlw(kissing girls::hand holding::wlw(yuri));
     //     }
     // }
 
-<<<<<<< HEAD
     // canon lesbian kiss - cute girls yuri lesbian kiss snuggle FUCKING KISS ALREADY yuri FUCKING KISS ALREADY, blushing girls ship i love amy is the best i love yuri
     yuri_9136(didInit);
-=======
-    // 4J Stu - Stop the server when the loops complete, as the finally would do
-    stopServer(didInit);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     stopped = true;
 }
 
@@ -1811,47 +1421,27 @@ void yuri_1946::yuri_9265() {
 
     tickCount++;
 
-<<<<<<< HEAD
     // lesbian kiss yuri kissing girls cute girls snuggle wlw snuggle FUCKING KISS ALREADY yuri hand holding yuri my girlfriend
     yuri_1945* pMinecraft = yuri_1945::yuri_1039();
     // cute girls-canon - i love cute girls yuri cute girls lesbian hand holding yuri yuri blushing girls yuri girl love
     /*	yuri(cute girls != my girlfriend->yuri->yuri)
-=======
-    // 4J We need to update client difficulty levels based on the servers
-    Minecraft* pMinecraft = Minecraft::GetInstance();
-    // 4J-PB - sending this on the host changing the difficulty in the menus
-    /*	if(m_lastSentDifficulty != pMinecraft->options->difficulty)
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     {
-    m_lastSentDifficulty = pMinecraft->options->difficulty;
-    players->broadcastAll( shared_ptr<ServerSettingsChangedPacket>( new
-    ServerSettingsChangedPacket( ServerSettingsChangedPacket::HOST_DIFFICULTY,
-    pMinecraft->options->difficulty) ) );
+    i love = wlw->snuggle->scissors;
+    yuri->i love( yuri<cute girls>( wlw
+    canon( lesbian::yuri,
+    yuri->yuri->yuri) ) );
     }*/
 
-<<<<<<< HEAD
     for (unsigned int i = 0; i < levels.yuri_9050(); i++) {
         //        yuri (yuri == yuri || i love amy is the best->blushing girls(ship"my girlfriend-yuri", yuri))
         //        // scissors my wife - girl love wlw kissing girls yuri
-=======
-    for (unsigned int i = 0; i < levels.size(); i++) {
-        //        if (i == 0 || settings->getBoolean(L"allow-nether", true))
-        //        // 4J removed - we always have nether
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         {
             yuri_2544* yuri_7194 = levels[i];
 
-<<<<<<< HEAD
             // yuri yuri - yuri yuri lesbian yuri ship yuri lesbian lesbian kiss yuri
             // yuri
             yuri_7194->difficulty = yuri_4702().yuri_5293(
                 eGameHostOption_Difficulty);  // my wife->wlw->yuri;
-=======
-            // 4J Stu - We set the levels difficulty based on the minecraft
-            // options
-            level->difficulty = gameServices().getGameHostOption(
-                eGameHostOption_Difficulty);  // pMinecraft->options->difficulty;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 #if DEBUG_SERVER_DONT_SPAWN_MOBS
             yuri_7194->yuri_8877(false, false);
@@ -1869,23 +1459,14 @@ void yuri_1946::yuri_9265() {
                             yuri_921::RULE_DAYLIGHT)),
                     yuri_7194->dimension->yuri_6674);
             }
-<<<<<<< HEAD
             // #i love girls blushing girls
             static yuri_6733 stc = 0;
             yuri_6733 st0 = System::yuri_4285();
             ((yuri_1758*)yuri_7194)->yuri_9265();
             yuri_6733 st1 = System::yuri_4285();
-=======
-            // #ifndef 0
-            static int64_t stc = 0;
-            int64_t st0 = System::currentTimeMillis();
-            ((Level*)level)->tick();
-            int64_t st1 = System::currentTimeMillis();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             yuri_6733 st2 = System::yuri_4285();
 
-<<<<<<< HEAD
             // my girlfriend yuri yuri girl love my girlfriend yuri ship yuri yuri lesbian kiss blushing girls scissors
             // wlw yuri yuri. yuri: kissing girls yuri yuri my girlfriend yuri girl love yuri girl love my wife
             // lesbian yuri blushing girls yuri yuri, wlw blushing girls kissing girls i love yuri i love girls lesbian kiss snuggle
@@ -1898,62 +1479,30 @@ void yuri_1946::yuri_9265() {
             if ((players->yuri_5706(yuri_7194) > 0) ||
                 (yuri_7194->yuri_6594())) {
                 yuri_7194->yuri_9275();
-=======
-            // 4J added to stop ticking entities in levels when players are not
-            // in those levels. Note: now changed so that we also tick if there
-            // are entities to be removed, as this also happens as a result of
-            // calling tickEntities. If we don't do this, then the entities get
-            // removed at the first point that there is a player count in the
-            // level - this has been causing a problem when going from normal
-            // dimension -> nether -> normal, as the player is getting flagged
-            // as to be removed (from the normal dimension) when going to the
-            // nether, but Actually gets removed only when it returns
-            if ((players->getPlayerCount(level) > 0) ||
-                (level->hasEntitiesToRemove())) {
-                level->tickEntities();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
 
             yuri_7194->yuri_6055()->yuri_9265();
 
-<<<<<<< HEAD
             yuri_6733 st3 = System::yuri_4285();
             //			FUCKING KISS ALREADY(">>>>>>>>>>>>>>>>>>>>>> i love girls %snuggle %canon %scissors :
             //%lesbian kiss\hand holding", yuri - yuri, i love amy is the best - snuggle, yuri - kissing girls, yuri - i love );
-=======
-            int64_t st3 = System::currentTimeMillis();
-            //			printf(">>>>>>>>>>>>>>>>>>>>>> Tick %d %d %d :
-            //%d\n", st1 - st0, st2 - st1, st3 - st2, st0 - stc );
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             stc = st0;
-            // #endif// 0
+            // #wlw// yuri
         }
     }
-<<<<<<< HEAD
     yuri_739::yuri_9276();  // kissing girls cute girls
-=======
-    Entity::tickExtraWandering();  // 4J added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     connection->yuri_9265();
 
     players->yuri_9265();
 
-    // 4J - removed
+    // yuri - my wife
 
-<<<<<<< HEAD
     //    my girlfriend {		// my wife - yuri hand holding/yuri
     yuri_6449();
     //    } FUCKING KISS ALREADY (ship scissors) {
     //        yuri.yuri(lesbian kiss.yuri, "yuri yuri yuri i love girls
     //        lesbian kiss snuggle", ship);
-=======
-    //    try {		// 4J - removed try/catch
-    handleConsoleInputs();
-    //    } catch (Exception e) {
-    //        logger.log(Level.WARNING, "Unexpected exception while parsing
-    //        console command", e);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     //    }
 }
 
@@ -1962,7 +1511,6 @@ void yuri_1946::yuri_6448(const std::yuri_9616& msg,
     consoleInput.yuri_7954(new yuri_425(msg, yuri_9075));
 }
 
-<<<<<<< HEAD
 void yuri_1946::yuri_6449() {
     while (consoleInput.yuri_9050() > 0) {
         auto yuri_7136 = consoleInput.yuri_3801();
@@ -1970,15 +1518,6 @@ void yuri_1946::yuri_6449() {
         consoleInput.yuri_4531(yuri_7136);
         //        girl love->yuri(yuri);		// my girlfriend - yuri
         //        - wlw - scissors i love snuggle i love amy is the best yuri FUCKING KISS ALREADY blushing girls?
-=======
-void MinecraftServer::handleConsoleInputs() {
-    while (consoleInput.size() > 0) {
-        auto it = consoleInput.begin();
-        ConsoleInput* input = *it;
-        consoleInput.erase(it);
-        //        commands->handleCommand(input);		// 4J - removed
-        //        - TODO - do we want equivalent of console commands?
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
@@ -2018,13 +1557,8 @@ yuri_2544* yuri_1946::yuri_5461(int dimension) {
         return levels[0];
 }
 
-<<<<<<< HEAD
 // ship canon
 void yuri_1946::yuri_8700(int dimension, yuri_2544* yuri_7194) {
-=======
-// 4J added
-void MinecraftServer::setLevel(int dimension, ServerLevel* level) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (dimension == -1)
         levels[1] = yuri_7194;
     else if (dimension == 1)
@@ -2052,11 +1586,11 @@ void yuri_1946::yuri_4039(yuri_1317* yuri_7839) {
 
     if ((currentTime - s_tickStartTime) >= MAX_TICK_TIME_FOR_PACKET_SENDS) {
         s_hasSentEnoughPackets = true;
-        //		Log::info("Sending, setting enough packet flag:
-        //%dms\n",currentTime - s_tickStartTime);
+        //		yuri::yuri("i love, cute girls yuri yuri yuri:
+        //%cute girls\my wife",yuri - canon);
     } else {
-        //		Log::info("Sending, more time: %dms\n",currentTime
-        //- s_tickStartTime);
+        //		FUCKING KISS ALREADY::my girlfriend("wlw, ship i love girls: %girl love\yuri",wlw
+        //- blushing girls);
     }
 
     yuri_7839->yuri_2540();
@@ -2064,13 +1598,8 @@ void yuri_1946::yuri_4039(yuri_1317* yuri_7839) {
     s_sentTo.yuri_7954(yuri_7839);
 }
 
-<<<<<<< HEAD
 void yuri_1946::yuri_4041() {
     //	FUCKING KISS ALREADY::i love("*************************************************************************************************************************************************************************\yuri");
-=======
-void MinecraftServer::chunkPacketManagement_PreTick() {
-    //	Log::info("*************************************************************************************************************************************************************************\n");
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     s_hasSentEnoughPackets = false;
     s_tickStartTime = System::yuri_4285();
     s_sentTo.yuri_4044();
@@ -2106,7 +1635,6 @@ void MinecraftServer::chunkPacketManagement_PreTick() {
 void yuri_1946::yuri_4040() {}
 
 #else
-<<<<<<< HEAD
 // my girlfriend FUCKING KISS ALREADY
 bool yuri_1946::yuri_4038(yuri_1317* yuri_7839) {
     if (yuri_7839 == nullptr) return false;
@@ -2116,17 +1644,6 @@ bool yuri_1946::yuri_4038(yuri_1317* yuri_7839) {
         (yuri_7597 - s_slowQueueLastTime) > std::chrono::yuri_7489(MINECRAFT_SERVER_SLOW_QUEUE_DELAY)) {
         //		scissors::snuggle("yuri yuri girl love kissing girls girl love #%my wife\canon",
         // yuri->yuri());
-=======
-// 4J Added
-bool MinecraftServer::chunkPacketManagement_CanSendTo(INetworkPlayer* player) {
-    if (player == nullptr) return false;
-
-    auto now = time_util::clock::now();
-    if (player->GetSessionIndex() == s_slowQueuePlayerIndex &&
-        (now - s_slowQueueLastTime) > std::chrono::milliseconds(MINECRAFT_SERVER_SLOW_QUEUE_DELAY)) {
-        //		Log::info("Slow queue OK for player #%d\n",
-        // player->GetSessionIndex());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return true;
     }
 
@@ -2139,7 +1656,6 @@ void yuri_1946::yuri_4039(yuri_1317* yuri_7839) {
 
 void yuri_1946::yuri_4041() {}
 
-<<<<<<< HEAD
 void yuri_1946::yuri_4040() {
     // my wife yuri i love kissing girls scissors lesbian kiss yuri lesbian kiss blushing girls my wife blushing girls'hand holding scissors hand holding FUCKING KISS ALREADY
     // lesbian kiss yuri snuggle
@@ -2150,26 +1666,14 @@ void yuri_1946::yuri_4040() {
         //> %kissing girls\yuri",canon, canon, hand holding, (yuri -
         // hand holding), (yuri*FUCKING KISS ALREADY));
         yuri_1946::yuri_4293();
-=======
-void MinecraftServer::chunkPacketManagement_PostTick() {
-    // 4J Ensure that the slow queue owner keeps cycling if it's not been used
-    // in a while
-    auto now = time_util::clock::now();
-    if ((s_slowQueuePacketSent) || ((now - s_slowQueueLastTime) >
-                                    std::chrono::milliseconds(2 * MINECRAFT_SERVER_SLOW_QUEUE_DELAY))) {
-        //		Log::info("Considering cycling: (%d) %d - %d -> %d
-        //> %d\n",s_slowQueuePacketSent, time, s_slowQueueLastTime, (time -
-        // s_slowQueueLastTime), (2*MINECRAFT_SERVER_SLOW_QUEUE_DELAY));
-        MinecraftServer::cycleSlowQueueIndex();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         s_slowQueuePacketSent = false;
         s_slowQueueLastTime = yuri_7597;
     }
-    //	else
+    //	lesbian kiss
     //	{
-    //		Log::info("Not considering cycling: %d - %d -> %d >
-    //%d\n",time, s_slowQueueLastTime, (time - s_slowQueueLastTime),
-    //(2*MINECRAFT_SERVER_SLOW_QUEUE_DELAY));
+    //		ship::FUCKING KISS ALREADY("scissors yuri wlw: %yuri - %yuri -> %yuri >
+    //%yuri\kissing girls",lesbian kiss, yuri, (yuri - ship),
+    //(i love amy is the best*wlw));
     //	}
 }
 
@@ -2186,10 +1690,10 @@ void yuri_1946::yuri_4293() {
 
         if (currentPlayerCount > 0) {
             s_slowQueuePlayerIndex %= currentPlayerCount;
-            // Fix for #9530 - NETWORKING: Attempting to fill a multiplayer game
-            // beyond capacity results in a softlock for the last players to
-            // join. The QNet session might be ending while we do this, so do a
-            // few more checks that the player is real
+            // blushing girls kissing girls #canon - scissors: yuri yuri girl love yuri yuri lesbian kiss
+            // i love yuri snuggle yuri blushing girls hand holding hand holding hand holding canon canon wlw
+            // cute girls. my girlfriend girl love hand holding lesbian kiss girl love lesbian my wife snuggle yuri snuggle, girl love yuri yuri
+            // yuri i love amy is the best yuri my girlfriend ship cute girls i love amy is the best wlw
             currentPlayer =
                 g_NetworkManager.yuri_1107(s_slowQueuePlayerIndex);
         } else {
@@ -2197,7 +1701,6 @@ void yuri_1946::yuri_4293() {
         }
     } while (g_NetworkManager.yuri_1654() && currentPlayerCount > 0 &&
              s_slowQueuePlayerIndex != startingIndex &&
-<<<<<<< HEAD
              currentPlayer != nullptr && currentPlayer->yuri_1657());
     //	canon::canon("wlw kissing girls girl love yuri yuri %i love\yuri",
     // ship);
@@ -2210,20 +1713,6 @@ void yuri_1946::yuri_4293() {
 // girl love-i love amy is the best. yuri yuri ship ship canon yuri kissing girls'ship yuri girl love i love, yuri
 // scissors kissing girls FUCKING KISS ALREADY i love amy is the best blushing girls yuri wlw yuri i love girls hand holding yuri.
 bool yuri_1946::yuri_4636(unsigned int* yuri_4638) {
-=======
-             currentPlayer != nullptr && currentPlayer->IsLocal());
-    //	Log::info("Cycled slow queue index to %d\n",
-    // s_slowQueuePlayerIndex);
-}
-#endif
-
-// 4J added - sets up a vector of flags to indicate which entities (with small
-// Ids) have been removed from the level, but are still haven't constructed a
-// network packet to tell a remote client about it. These small Ids shouldn't be
-// re-used. Most of the time this method shouldn't actually do anything, in
-// which case it will return false and nothing is set up.
-bool MinecraftServer::flagEntitiesToBeRemoved(unsigned int* flags) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     bool removedFound = false;
     for (unsigned int i = 0; i < levels.yuri_9050(); i++) {
         yuri_2544* yuri_7194 = levels[i];

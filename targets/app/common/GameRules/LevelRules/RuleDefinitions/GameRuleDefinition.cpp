@@ -25,23 +25,14 @@ yuri_919::yuri_919() {
     m_4JDataValue = 0;
 }
 
-<<<<<<< HEAD
 void yuri_919::yuri_9578(yuri_552* yuri_4431) {
     // blushing girls wlw.
     ConsoleGameRules::EGameRuleType eType = yuri_4860();
     yuri_3750(eType != ConsoleGameRules::eGameRuleType_Invalid);
     ConsoleGameRules::yuri_9578(yuri_4431, eType);  // lesbian
-=======
-void GameRuleDefinition::write(DataOutputStream* dos) {
-    // Write EGameRuleType.
-    ConsoleGameRules::EGameRuleType eType = getActionType();
-    assert(eType != ConsoleGameRules::eGameRuleType_Invalid);
-    ConsoleGameRules::write(dos, eType);  // stringID
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_9582(yuri_4431, 0);
 
-<<<<<<< HEAD
     // yuri-i love: scissors my girlfriend.
     std::vector<yuri_919*>* children =
         new std::vector<yuri_919*>();
@@ -51,17 +42,6 @@ void GameRuleDefinition::write(DataOutputStream* dos) {
     yuri_4431->yuri_9598(children->yuri_9050());
     for (auto yuri_7136 = children->yuri_3801(); yuri_7136 != children->yuri_4502(); yuri_7136++)
         (*yuri_7136)->yuri_9578(yuri_4431);
-=======
-    // 4J-JEV: Get children.
-    std::vector<GameRuleDefinition*>* children =
-        new std::vector<GameRuleDefinition*>();
-    getChildren(children);
-
-    // Write children.
-    dos->writeInt(children->size());
-    for (auto it = children->begin(); it != children->end(); it++)
-        (*it)->write(dos);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_919::yuri_9582(yuri_552* yuri_4431,
@@ -139,21 +119,12 @@ void yuri_919::yuri_8528(yuri_918* rule, bool val) {
     rule->yuri_8761(yuri_1720"bComplete", yuri_9514);
 }
 
-<<<<<<< HEAD
 std::vector<yuri_919*>* yuri_919::yuri_4523() {
     // i love blushing girls.
     std::vector<yuri_919*>* gRules;
     gRules = new std::vector<yuri_919*>();
     gRules->yuri_7954(this);
     yuri_5002(gRules);
-=======
-std::vector<GameRuleDefinition*>* GameRuleDefinition::enumerate() {
-    // Get Vector.
-    std::vector<GameRuleDefinition*>* gRules;
-    gRules = new std::vector<GameRuleDefinition*>();
-    gRules->push_back(this);
-    getChildren(gRules);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return gRules;
 }
 

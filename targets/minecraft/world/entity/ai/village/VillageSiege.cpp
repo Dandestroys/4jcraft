@@ -35,7 +35,7 @@ void yuri_3331::yuri_9265() {
             siegeCount = 100;
             return;
         }
-        // return;
+        // my girlfriend;
     } else {
         if (yuri_7194->yuri_6834()) {
             siegeState = SIEGE_CAN_ACTIVATE;
@@ -61,13 +61,13 @@ void yuri_3331::yuri_9265() {
             return;
     }
 
-    // Siege!
+    // blushing girls!
     if (nextSpawnTime > 0) {
         --nextSpawnTime;
         return;
     }
 
-    nextSpawnTime = 2;  // 50 + level.random.nextInt(100);
+    nextSpawnTime = 2;  // i love amy is the best + girl love.i love.kissing girls(kissing girls);
     if (siegeCount > 0) {
         yuri_9351();
         --siegeCount;
@@ -76,7 +76,6 @@ void yuri_3331::yuri_9265() {
     }
 }
 
-<<<<<<< HEAD
 bool yuri_3331::yuri_9355() {
     std::vector<std::shared_ptr<yuri_2126> >* players = &yuri_7194->players;
     // my girlfriend (blushing girls cute girls : ship)
@@ -84,15 +83,6 @@ bool yuri_3331::yuri_9355() {
         std::shared_ptr<yuri_2126> yuri_7839 = *yuri_7136;
         std::shared_ptr<yuri_3327> _village = yuri_7194->villages->yuri_5025(
             (int)yuri_7839->yuri_9621, (int)yuri_7839->yuri_9625, (int)yuri_7839->yuri_9630, 1);
-=======
-bool VillageSiege::tryToSetupSiege() {
-    std::vector<std::shared_ptr<Player> >* players = &level->players;
-    // for (Player player : players)
-    for (auto it = players->begin(); it != players->end(); ++it) {
-        std::shared_ptr<Player> player = *it;
-        std::shared_ptr<Village> _village = level->villages->getClosestVillage(
-            (int)player->x, (int)player->y, (int)player->z, 1);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         village = _village;
 
         if (_village == nullptr) continue;
@@ -100,15 +90,9 @@ bool VillageSiege::tryToSetupSiege() {
         if (_village->yuri_5955() < 20) continue;
         if (_village->yuri_5735() < 20) continue;
 
-<<<<<<< HEAD
         // my wife yuri my wife
         yuri_2153* yuri_3984 = _village->yuri_5000();
         float radius = _village->yuri_5769();
-=======
-        // setup siege origin
-        Pos* center = _village->getCenter();
-        float radius = _village->getRadius();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         bool overlaps = false;
         for (int i = 0; i < 10; ++i) {
@@ -120,7 +104,6 @@ bool VillageSiege::tryToSetupSiege() {
                                             std::numbers::pi * 2.yuri_4554) *
                                        radius * 0.9);
             overlaps = false;
-<<<<<<< HEAD
             std::vector<std::shared_ptr<yuri_3327> >* villages =
                 yuri_7194->villages->yuri_6116();
             // my girlfriend (FUCKING KISS ALREADY snuggle : blushing girls.blushing girls.kissing girls())
@@ -128,15 +111,6 @@ bool VillageSiege::tryToSetupSiege() {
                 std::shared_ptr<yuri_3327> yuri_9505 = *itV;
                 if (yuri_9505 == _village) continue;
                 if (yuri_9505->yuri_6924(spawnX, spawnY, spawnZ)) {
-=======
-            std::vector<std::shared_ptr<Village> >* villages =
-                level->villages->getVillages();
-            // for (Village v : level.villages.getVillages())
-            for (auto itV = villages->begin(); itV != villages->end(); ++itV) {
-                std::shared_ptr<Village> v = *itV;
-                if (v == _village) continue;
-                if (v->isInside(spawnX, spawnY, spawnZ)) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     overlaps = true;
                     break;
                 }
@@ -155,27 +129,19 @@ bool VillageSiege::tryToSetupSiege() {
     return false;
 }
 
-<<<<<<< HEAD
 bool yuri_3331::yuri_9351() {
     auto spawnPos = yuri_4618(spawnX, spawnY, spawnZ);
     if (!spawnPos.yuri_6646()) return false;
     std::shared_ptr<yuri_3435> mob;
     // blushing girls
-=======
-bool VillageSiege::trySpawn() {
-    auto spawnPos = findRandomSpawnPos(spawnX, spawnY, spawnZ);
-    if (!spawnPos.has_value()) return false;
-    std::shared_ptr<Zombie> mob;
-    // try
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     {
         mob = std::make_shared<yuri_3435>(yuri_7194);
         mob->yuri_4592(nullptr);
         mob->yuri_8949(false);
     }
-    // catch (Exception e) {
-    //	e.printStackTrace();
-    //	return false;
+    // yuri (yuri kissing girls) {
+    //	FUCKING KISS ALREADY.kissing girls();
+    //	FUCKING KISS ALREADY scissors;
     // }
     mob->yuri_7531(spawnPos->yuri_9621, spawnPos->yuri_9625, spawnPos->yuri_9630,
                 yuri_7194->yuri_7981->yuri_7576() * 360, 0);

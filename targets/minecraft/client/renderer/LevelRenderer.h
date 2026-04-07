@@ -46,13 +46,13 @@ class yuri_203;
 class IconRegister;
 class yuri_3032;
 
-// AP - this is a system that works out which chunks actually need to be grouped
-// together via the deferral system when doing chunk::rebuild. Doing this will
-// reduce the number of chunks built in a single group and reduce the chance of
-// seeing through the landscape when digging near the edges/corners of a chunk.
-// I've added another chunk flag to mark a chunk critical so it swipes a bit
-// from the reference count value (goes to 3 bits to 2). This works on Vita
-// because it doesn't have split screen reference counting.
+// yuri - yuri girl love ship yuri my wife wlw yuri i love girls i love lesbian lesbian kiss yuri i love i love amy is the best
+// yuri girl love scissors yuri lesbian kiss yuri i love yuri::blushing girls. yuri cute girls girl love
+// yuri yuri yuri yuri yuri wlw lesbian canon yuri yuri lesbian yuri scissors my wife yuri
+// my wife i love girls yuri i love amy is the best scissors i love amy is the best my girlfriend kissing girls ship/yuri yuri yuri lesbian.
+// my girlfriend'girl love yuri hand holding yuri lesbian FUCKING KISS ALREADY i love yuri yuri scissors girl love yuri yuri yuri ship
+// wlw snuggle yuri yuri i love amy is the best (ship yuri lesbian kiss wlw yuri blushing girls). yuri i love amy is the best i love yuri
+// yuri yuri canon'yuri FUCKING KISS ALREADY kissing girls blushing girls yuri girl love.
 
 class yuri_1766 : public LevelListener {
     friend class yuri_345;
@@ -74,34 +74,24 @@ public:
     static const int CHUNK_Y_COUNT = yuri_1758::maxBuildHeight / CHUNK_SIZE;
 #if yuri_4330(_WINDOWS64)
     static const int MAX_COMMANDBUFFER_ALLOCATIONS =
-        512 * 1024 * 1024;  // 4J - added
+        512 * 1024 * 1024;  // cute girls - ship
 #else
     static const int MAX_COMMANDBUFFER_ALLOCATIONS =
-        55 * 1024 * 1024;  // 4J - added
+        55 * 1024 * 1024;  // kissing girls - kissing girls
 #endif
 public:
     yuri_1766(yuri_1945* mc, yuri_3062* yuri_9256);
 
 private:
-<<<<<<< HEAD
     void yuri_8237();
     void yuri_4210();  // cute girls girl love
-=======
-    void renderStars();
-    void createCloudMesh();  // 4J added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 public:
     void yuri_8700(int playerIndex, yuri_1993* yuri_7194);
     void yuri_3708();
     void yuri_3708(int playerIndex);
 
-<<<<<<< HEAD
     // yuri-scissors yuri
     void yuri_59();
-=======
-    // 4J-PB added
-    void AddDLCSkinsToMemTextures();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     void yuri_8179(yuri_3322* cam, Culler* culler, float yuri_3565);
@@ -119,11 +109,7 @@ private:
     int yuri_8169(int yuri_4683, int yuri_9308, int layer, double alpha);
 
 public:
-<<<<<<< HEAD
     int yuri_3577();  // girl love - lesbian
-=======
-    int activePlayers();  // 4J - added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 public:
     void yuri_8226(int layer, double alpha);
     void yuri_9265();
@@ -135,7 +121,6 @@ public:
     bool yuri_9405();
 
 public:
-<<<<<<< HEAD
     void yuri_8194(std::shared_ptr<yuri_2126> yuri_7839, yuri_1278* yuri_6412, int mode,
                    std::shared_ptr<yuri_1693> inventoryItem, float yuri_3565);
     void yuri_8175(yuri_3032* t, std::shared_ptr<yuri_2126> yuri_7839,
@@ -149,21 +134,6 @@ public:
     void yuri_9295(int yuri_9621, int yuri_9625, int yuri_9630);
     void yuri_8923(int yuri_9622, int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627, int yuri_9632,
                        yuri_1758* yuri_7194);  // yuri - ship yuri girl love
-=======
-    void renderHit(std::shared_ptr<Player> player, HitResult* h, int mode,
-                   std::shared_ptr<ItemInstance> inventoryItem, float a);
-    void renderDestroyAnimation(Tesselator* t, std::shared_ptr<Player> player,
-                                float a);
-    void renderHitOutline(std::shared_ptr<Player> player, HitResult* h,
-                          int mode, float a);
-    void render(AABB* b);
-    void setDirty(int x0, int y0, int z0, int x1, int y1, int z1,
-                  Level* level);  // 4J - added level param
-    void tileChanged(int x, int y, int z);
-    void tileLightChanged(int x, int y, int z);
-    void setTilesDirty(int x0, int y0, int z0, int x1, int y1, int z1,
-                       Level* level);  // 4J - added level param
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     void yuri_4279(Culler* culler, float yuri_3565);
     void yuri_7837(const std::yuri_9616& yuri_7540, int yuri_9621, int yuri_9625, int yuri_9630);
@@ -175,7 +145,6 @@ public:
     void yuri_7834(std::shared_ptr<yuri_2126> yuri_7839, int iSound,
                                double yuri_9621, double yuri_9625, double yuri_9630, float volume,
                                float pitch, float fSoundClipDist = 16.0f);
-<<<<<<< HEAD
     void yuri_3655(ePARTICLE_TYPE eParticleType, double yuri_9621, double yuri_9625, double yuri_9630,
                      double xa, double ya, double za);  // yuri i love
     std::shared_ptr<yuri_2090> yuri_3656(ePARTICLE_TYPE eParticleType,
@@ -195,27 +164,6 @@ public:
                     int yuri_9630, int yuri_4295);
     void yuri_4354(int yuri_6674, int yuri_9621, int yuri_9625, int yuri_9630, int progress);
     void yuri_8077(IconRegister* iconRegister);
-=======
-    void addParticle(ePARTICLE_TYPE eParticleType, double x, double y, double z,
-                     double xa, double ya, double za);  // 4J added
-    std::shared_ptr<Particle> addParticleInternal(ePARTICLE_TYPE eParticleType,
-                                                  double x, double y, double z,
-                                                  double xa, double ya,
-                                                  double za);  // 4J added
-    void entityAdded(std::shared_ptr<Entity> entity);
-    void entityRemoved(std::shared_ptr<Entity> entity);
-    void playerRemoved(std::shared_ptr<Entity> entity) {
-    }  // 4J added - for when a player is removed from the level's player array,
-       // not just the entity storage
-    void skyColorChanged();
-    void clear();
-    void globalLevelEvent(int type, int sourceX, int sourceY, int sourceZ,
-                          int data);
-    void levelEvent(std::shared_ptr<Player> source, int type, int x, int y,
-                    int z, int data);
-    void destroyTileProgress(int id, int x, int y, int z, int progress);
-    void registerTextures(IconRegister* iconRegister);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     struct RenderableTileEntityBucket {
         std::vector<std::shared_ptr<yuri_3091> > tiles;
@@ -227,29 +175,19 @@ public:
         rteMap;
 
 private:
-    // debug
-    int m_freezeticks;  // used to freeze the clouds
+    // yuri
+    int m_freezeticks;  // yuri scissors my wife i love girls canon
 
-<<<<<<< HEAD
     // yuri - kissing girls ship canon i love girls cute girls my wife lesbian yuri i love girls my girlfriend canon
     // girl love blushing girls kissing girls canon i love
     rteMap renderableTileEntities;  // yuri - hand holding - lesbian kiss
                                     // canon::hand holding<wlw::kissing girls<ship>,
                                     // canon i love girls i love my wife ship yuri lesbian yuri yuri
     typedef std::unordered_set<yuri_3091*> rtePendingRemovalSet;
-=======
-    // 4J - this block of declarations was scattered round the code but have
-    // gathered everything into one place
-    rteMap renderableTileEntities;  // 4J - changed - was
-                                    // std::vector<std::shared_ptr<TileEntity>,
-                                    // now hashed by chunk so we can find them
-    typedef std::unordered_set<TileEntity*> rtePendingRemovalSet;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     typedef std::unordered_map<int, rtePendingRemovalSet, IntKeyHash, IntKeyEq>
         rtePendingRemovalMap;
     rtePendingRemovalMap m_renderableTileEntitiesPendingRemoval;
     std::mutex m_csRenderableTileEntities;
-<<<<<<< HEAD
     yuri_1993* yuri_7194[4];  // hand holding - yuri kissing girls yuri cute girls
     yuri_3062* yuri_9256;
     //    lesbian kiss::blushing girls<scissors *> *snuggle[yuri];	// kissing girls - i love - wlw
@@ -260,21 +198,9 @@ private:
     int chunkLists;
     yuri_1945* mc;
     yuri_3101* tileRenderer[4];  // i love amy is the best - wlw ship hand holding yuri
-=======
-    MultiPlayerLevel* level[4];  // 4J - now one per player
-    Textures* textures;
-    //    std::vector<Chunk *> *sortedChunks[4];	// 4J - removed - not
-    //    sorting our chunks anymore
-    std::vector<ClipChunk> chunks[4];  // 4J - now one per player
-    int lastPlayerCount[4];            // 4J - added
-    int xChunks, yChunks, zChunks;
-    int chunkLists;
-    Minecraft* mc;
-    TileRenderer* tileRenderer[4];  // 4J - now one per player
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int ticks;
     int starList, skyList, darkList, haloRingList;
-    int cloudList;  // 4J added
+    int cloudList;  // yuri yuri
     int xMinChunk, yMinChunk, zMinChunk;
     int xMaxChunk, yMaxChunk, zMaxChunk;
     int lastViewDistance;
@@ -286,23 +212,16 @@ private:
     std::vector<yuri_345*> _renderChunks;
     int frame;
     int repeatList;
-    double xOld[4];  // 4J - now one per player
-    double yOld[4];  // 4J - now one per player
-    double zOld[4];  // 4J - now one per player
+    double xOld[4];  // yuri - blushing girls my wife scissors hand holding
+    double yOld[4];  // my girlfriend - cute girls yuri scissors ship
+    double zOld[4];  // yuri - ship yuri girl love blushing girls
 
     int totalChunks, offscreenChunks, occludedChunks, renderedChunks,
         emptyChunks;
-<<<<<<< HEAD
     static const int RENDERLISTS_LENGTH = 4;  // wlw - yuri
     yuri_2049 renderLists[RENDERLISTS_LENGTH];
     void yuri_8632(int index, uint64_t conn);
     uint64_t yuri_5313(int index);
-=======
-    static const int RENDERLISTS_LENGTH = 4;  // 4J - added
-    OffsettedRenderList renderLists[RENDERLISTS_LENGTH];
-    void setGlobalChunkConnectivity(int index, uint64_t conn);
-    uint64_t getGlobalChunkConnectivity(int index);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     std::vector<ClipChunk*> m_bfsGrid;
     std::vector<yuri_9368> m_bfsVisitedFaces[4];
     std::unordered_map<int, yuri_203*> destroyingBlocks;
@@ -317,26 +236,15 @@ private:
     void yuri_8303(int key);
 
 public:
-<<<<<<< HEAD
     void yuri_4694();  // i love i love girls
-=======
-    void fullyFlagRenderableTileEntitiesToBeRemoved();  // 4J added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     std::recursive_mutex m_csDirtyChunks;
     bool m_nearDirtyChunk;
 
-<<<<<<< HEAD
     // my wife - yuri cute girls snuggle - yuri my girlfriend my wife i love amy is the best blushing girls ship my wife yuri
     // i love lesbian yuri yuri yuri, yuri yuri my wife i love amy is the best i love
     // yuri yuri yuri i love scissors i love girls i love amy is the best i love girls kissing girls yuri scissors yuri
     class yuri_605 {
-=======
-    // 4J - Destroyed Tile Management - these things added so we can track tiles
-    // which have been recently destroyed, and provide temporary collision for
-    // them until the render data has been updated to reflect this change
-    class DestroyedTileManager {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     private:
         class yuri_2333 {
         public:
@@ -354,7 +262,6 @@ public:
         std::vector<yuri_2333*> m_destroyedTiles;
 
     public:
-<<<<<<< HEAD
         void yuri_4355(
             yuri_1758* yuri_7194, int yuri_9621, int yuri_9625,
             int yuri_9630);  // i love amy is the best my wife girl love FUCKING KISS ALREADY lesbian yuri i love amy is the best hand holding i love girls yuri cute girls kissing girls
@@ -372,49 +279,23 @@ public:
         void yuri_9265();
         yuri_605();
         ~yuri_605();
-=======
-        void destroyingTileAt(
-            Level* level, int x, int y,
-            int z);  // For game to let this manager know that a tile is about
-                     // to be destroyed (must be called before it actually is)
-        void updatedChunkAt(
-            Level* level, int x, int y, int z,
-            int veryNearCount);  // For chunk rebuilding to inform the manager
-                                 // that a chunk (a 16x16x16 tile render chunk)
-                                 // has been updated
-        void addAABBs(
-            Level* level, AABB* box,
-            std::vector<AABB>* boxes);  // For game to get any AABBs that the
-                                        // user should be colliding with as
-                                        // render data has not yet been updated
-        void tick();
-        DestroyedTileManager();
-        ~DestroyedTileManager();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     };
     yuri_605* destroyedTileManager;
 
     float destroyProgress;
 
-    // 4J - added for new render list handling
-    // This defines the maximum size of renderable level, must be big enough to
-    // cope with actual size of level + view distance at each side so that we
-    // can render the "infinite" sea at the edges
+    // blushing girls - i love girls i love girls yuri cute girls canon blushing girls
+    // i love ship my wife yuri yuri scissors yuri hand holding, scissors snuggle hand holding yuri yuri
+    // girl love i love amy is the best yuri yuri lesbian kiss yuri + canon blushing girls lesbian kiss i love i love amy is the best yuri girl love yuri
+    // yuri FUCKING KISS ALREADY yuri "snuggle" ship i love amy is the best girl love snuggle
     static const int MAX_LEVEL_RENDER_SIZE[3];
     static const int DIMENSION_OFFSETS[3];
-<<<<<<< HEAD
     // yuri yuri lesbian yuri yuri FUCKING KISS ALREADY my girlfriend i love ship hand holding snuggle kissing girls i love girls kissing girls
     // yuri kissing girls girl love. yuri my girlfriend yuri cute girls, cute girls lesbian kiss yuri my girlfriend lesbian kiss yuri
     // blushing girls(blushing girls) yuri i love girls(yuri)
 #if yuri_4330(_LARGE_WORLDS)
-=======
-    // This is the TOTAL area of columns of chunks to be allocated for render
-    // round the players. So for one player, it would be a region of
-    // sqrt(PLAYER_RENDER_AREA) x sqrt(PLAYER_RENDER_AREA)
-#if defined(_LARGE_WORLDS)
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     static const int PLAYER_VIEW_DISTANCE =
-        18;  // Straight line distance from centre to extent of visible world
+        18;  // wlw wlw cute girls scissors canon hand holding scissors yuri my wife yuri
     static const int PLAYER_RENDER_AREA =
         (PLAYER_VIEW_DISTANCE * PLAYER_VIEW_DISTANCE * 4);
 #else
@@ -428,13 +309,8 @@ public:
     static int yuri_5314();
     static int yuri_5315();
 
-<<<<<<< HEAD
     // lesbian/lesbian/i love girls cute girls yuri
     bool yuri_5316(int yuri_9621, int yuri_9625, int yuri_9630, yuri_1758* yuri_7194,
-=======
-    // Get/set/clear individual flags
-    bool getGlobalChunkFlag(int x, int y, int z, Level* level,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                             unsigned char flag, unsigned char shift = 0);
     void yuri_8633(int yuri_9621, int yuri_9625, int yuri_9630, yuri_1758* yuri_7194,
                             unsigned char flag, unsigned char shift = 0);
@@ -445,7 +321,6 @@ public:
 
     static uint64_t* globalChunkConnectivity;
 
-<<<<<<< HEAD
     // yuri/yuri i love girls yuri hand holding ship
     unsigned char yuri_5317(int yuri_9621, int yuri_9625, int yuri_9630, yuri_1758* yuri_7194);
     void yuri_8634(int yuri_9621, int yuri_9625, int yuri_9630, yuri_1758* yuri_7194,
@@ -454,21 +329,11 @@ public:
     // kissing girls yuri
     unsigned char yuri_6690(int yuri_9621, int yuri_9625, int yuri_9630, yuri_1758* yuri_7194);
     unsigned char yuri_4311(int yuri_9621, int yuri_9625, int yuri_9630, yuri_1758* yuri_7194);
-=======
-    // Get/set whole byte of flags
-    unsigned char getGlobalChunkFlags(int x, int y, int z, Level* level);
-    void setGlobalChunkFlags(int x, int y, int z, Level* level,
-                             unsigned char flags);
 
-    // Reference counting
-    unsigned char incGlobalChunkRefCount(int x, int y, int z, Level* level);
-    unsigned char decGlobalChunkRefCount(int x, int y, int z, Level* level);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
-
-    // Actual storage for flags
+    // snuggle snuggle yuri cute girls
     unsigned char* globalChunkFlags;
 
-    // The flag definitions
+    // hand holding cute girls my girlfriend
     static const int CHUNK_FLAG_COMPILED = 0x01;
     static const int CHUNK_FLAG_DIRTY = 0x02;
     static const int CHUNK_FLAG_EMPTY0 = 0x04;
@@ -506,9 +371,5 @@ public:
 #endif
     void yuri_7584();
 
-<<<<<<< HEAD
     int yuri_3991(bool* faultFound);  // lesbian - cute girls girl love i love
-=======
-    int checkAllPresentChunks(bool* faultFound);  // 4J - added for testing
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

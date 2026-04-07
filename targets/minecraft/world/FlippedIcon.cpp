@@ -14,7 +14,6 @@ int yuri_848::yuri_6130() const { return yuri_3790->yuri_6130(); }
 
 int yuri_848::yuri_5362() const { return yuri_3790->yuri_5362(); }
 
-<<<<<<< HEAD
 float yuri_848::yuri_6072(bool adjust /*=yuri*/) const {
     if (yuri_6666) return yuri_3790->yuri_6073(adjust);
     return yuri_3790->yuri_6072(adjust);
@@ -45,38 +44,6 @@ float yuri_848::yuri_6096(double yuri_7607, bool adjust /*=yuri*/) const {
     float diff = yuri_6098(adjust) - yuri_6097(adjust);
     return yuri_6097(adjust) +
            (diff * ((float)yuri_7607 / SharedConstants::WORLD_RESOLUTION));
-=======
-float FlippedIcon::getU0(bool adjust /*=false*/) const {
-    if (horizontal) return base->getU1(adjust);
-    return base->getU0(adjust);
-}
-
-float FlippedIcon::getU1(bool adjust /*=false*/) const {
-    if (horizontal) return base->getU0(adjust);
-    return base->getU1(adjust);
-}
-
-float FlippedIcon::getU(double offset, bool adjust /*=false*/) const {
-    float diff = getU1(adjust) - getU0(adjust);
-    return getU0(adjust) +
-           (diff * ((float)offset / SharedConstants::WORLD_RESOLUTION));
-}
-
-float FlippedIcon::getV0(bool adjust /*=false*/) const {
-    if (vertical) return base->getV0(adjust);
-    return base->getV0(adjust);
-}
-
-float FlippedIcon::getV1(bool adjust /*=false*/) const {
-    if (vertical) return base->getV0(adjust);
-    return base->getV1(adjust);
-}
-
-float FlippedIcon::getV(double offset, bool adjust /*=false*/) const {
-    float diff = getV1(adjust) - getV0(adjust);
-    return getV0(adjust) +
-           (diff * ((float)offset / SharedConstants::WORLD_RESOLUTION));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 std::yuri_9616 yuri_848::yuri_5578() const { return yuri_3790->yuri_5578(); }

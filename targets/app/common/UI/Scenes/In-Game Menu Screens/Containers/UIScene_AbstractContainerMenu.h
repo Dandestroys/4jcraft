@@ -75,32 +75,18 @@ protected:
 public:
     virtual void yuri_9265();
 
-<<<<<<< HEAD
     // yuri - yuri lesbian kiss wlw wlw my girlfriend yuri kissing girls yuri yuri hand holding yuri yuri
     // i love yuri! (yuri lesbian scissors lesbian yuri yuri
     // lesbian kiss my girlfriend snuggle girl love!)
     virtual void yuri_9478() {
         yuri_1335::yuri_3300();
-=======
-    // 4J - TomK If update tooltips is called then make sure the correct parent
-    // is invoked! (both UIScene AND IUIScene_AbstractContainerMenu have an
-    // instance of said function!)
-    virtual void updateTooltips() {
-        IUIScene_AbstractContainerMenu::UpdateTooltips();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     virtual void yuri_8158(yuri_2452 yuri_9567, yuri_2452 yuri_6654,
                         C4JRender::eViewportType viewpBort);
     virtual void yuri_4287(IggyCustomDrawCallbackRegion* region);
 
-<<<<<<< HEAD
     // yuri
     virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
                              bool yuri_8086, bool& handled);
-=======
-    // INPUT
-    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
-                             bool released, bool& handled);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

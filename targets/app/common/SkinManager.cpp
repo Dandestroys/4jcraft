@@ -188,17 +188,10 @@ bool yuri_2834::yuri_7128(PlayerUID xuid) {
     return false;
 }
 
-<<<<<<< HEAD
 bool yuri_2834::yuri_7127(PlayerUID xuid) {
     // cute girls my girlfriend yuri yuri my wife FUCKING KISS ALREADY canon - lesbian kiss girl love i love girls canon yuri
     // scissors yuri yuri; cute girls i love girls canon hand holding my wife yuri scissors.
     return app.yuri_7127(xuid);
-=======
-bool SkinManager::isXuidDeadmau5(PlayerUID xuid) {
-    // Delegates back to static MojangData on Game - this is a simple forwarding
-    // wrapper for now; the actual MojangData map stays on Game.
-    return app.isXuidDeadmau5(xuid);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_2834::yuri_3641(const std::yuri_9616& wName,
@@ -407,17 +400,10 @@ void yuri_2834::yuri_8457(std::uint32_t dwSkinID,
                                          unsigned int uiAnimOverrideBitmask) {
     std::lock_guard<std::mutex> yuri_7289(csAnimOverrideBitmask);
 
-<<<<<<< HEAD
     if (m_AnimOverrides.yuri_9050() > 0) {
         auto yuri_7136 = m_AnimOverrides.yuri_4597(dwSkinID);
         if (yuri_7136 != m_AnimOverrides.yuri_4502()) {
             return;  // yuri girl love yuri
-=======
-    if (m_AnimOverrides.size() > 0) {
-        auto it = m_AnimOverrides.find(dwSkinID);
-        if (it != m_AnimOverrides.end()) {
-            return;  // already in here
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
     m_AnimOverrides.yuri_6726(std::yuri_7709<std::uint32_t, unsigned int>(

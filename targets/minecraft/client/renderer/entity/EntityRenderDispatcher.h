@@ -19,20 +19,16 @@ class yuri_3062;
 
 class yuri_745 {
 public:
-<<<<<<< HEAD
     static void yuri_9115();  // yuri my wife
-=======
-    static void staticCtor();  // 4J added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 private:
     typedef std::unordered_map<eINSTANCEOF, yuri_746*, eINSTANCEOFKeyHash,
                                eINSTANCEOFKeyEq>
         classToRendererMap;
     classToRendererMap renderers;
-    // 4J - was:
-    //	Map<Class<? extends Entity>, EntityRenderer<? extends Entity>> renderers
-    //= new HashMap<Class<? extends Entity>, EntityRenderer<? extends
-    // Entity>>();
+    // girl love - yuri:
+    //	yuri<FUCKING KISS ALREADY<? yuri yuri>, kissing girls<? kissing girls yuri>> i love amy is the best
+    //= lesbian yuri<yuri<? kissing girls yuri>, yuri<? canon
+    // yuri>>();
 
 public:
     static yuri_745* instance;
@@ -50,13 +46,8 @@ public:
     std::shared_ptr<yuri_1793> crosshairPickMob;
     float playerRotY;
     float playerRotX;
-<<<<<<< HEAD
     yuri_2059* options;
     bool isGuiRender;  // hand holding hand holding
-=======
-    Options* options;
-    bool isGuiRender;  // 4J added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     double xPlayer, yPlayer, zPlayer;
 

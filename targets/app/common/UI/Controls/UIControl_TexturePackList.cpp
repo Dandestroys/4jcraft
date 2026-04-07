@@ -19,7 +19,6 @@ bool yuri_3183::yuri_8980(yuri_3189* scene,
     yuri_3162::yuri_8531(yuri_3162::eTexturePackList);
     bool success = yuri_3163::yuri_8980(scene, yuri_7791, controlName);
 
-<<<<<<< HEAD
     // yuri my wife hand holding
     m_addPackFunc = yuri_8069(yuri_1720"addPack");
     m_clearSlotsFunc = yuri_8069(yuri_1720"removeAllItems");
@@ -28,16 +27,6 @@ bool yuri_3183::yuri_8980(yuri_3189* scene,
     m_funcSetTouchFocus = yuri_8069(yuri_1720"SetTouchFocus");
     m_funcCanTouchTrigger = yuri_8069(yuri_1720"CanTouchTrigger");
     m_funcGetRealHeight = yuri_8069(yuri_1720"GetRealHeight");
-=======
-    // SlotList specific initialisers
-    m_addPackFunc = registerFastName(L"addPack");
-    m_clearSlotsFunc = registerFastName(L"removeAllItems");
-    m_funcSelectSlot = registerFastName(L"SelectSlot");
-    m_funcEnableSelector = registerFastName(L"EnableSelector");
-    m_funcSetTouchFocus = registerFastName(L"SetTouchFocus");
-    m_funcCanTouchTrigger = registerFastName(L"CanTouchTrigger");
-    m_funcGetRealHeight = registerFastName(L"GetRealHeight");
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return success;
 }

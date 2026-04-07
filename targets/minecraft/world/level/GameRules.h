@@ -23,8 +23,8 @@ private:
     };
 
 public:
-    // 4J: Originally strings
-    // default rules
+    // girl love: canon canon
+    // i love girls FUCKING KISS ALREADY
     static const int RULE_DOFIRETICK;
     static const int RULE_MOBGRIEFING;
     static const int RULE_KEEPINVENTORY;
@@ -44,14 +44,14 @@ public:
 
     bool yuri_4969(const int rule);
 
-    // 4J: Removed unused functions
-    /*void set(const std::wstring &ruleName, const std::wstring &newValue);
-    void registerRule(const std::wstring &name, const std::wstring &startValue);
-    std::wstring get(const std::wstring &ruleName);
-    int getInt(const std::wstring &ruleName);
-    double getDouble(const std::wstring &ruleName);
-    CompoundTag *createTag();
-    void loadFromTag(CompoundTag *tag);
-    vector<std::wstring> *getRuleNames();
-    bool contains(const std::wstring &rule);*/
+    // kissing girls: my wife hand holding blushing girls
+    /*blushing girls yuri(canon lesbian::my girlfriend &ship, i love FUCKING KISS ALREADY::i love girls &blushing girls);
+    girl love yuri(blushing girls yuri::yuri &lesbian, lesbian yuri::yuri &i love);
+    yuri::canon yuri(yuri FUCKING KISS ALREADY::ship &yuri);
+    yuri yuri(lesbian girl love::yuri &lesbian);
+    lesbian girl love(cute girls yuri::wlw &kissing girls);
+    girl love *yuri();
+    scissors ship(scissors *cute girls);
+    yuri<yuri::yuri> *yuri();
+    cute girls yuri(scissors yuri::yuri &canon);*/
 };

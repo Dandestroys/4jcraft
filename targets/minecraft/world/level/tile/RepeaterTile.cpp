@@ -68,15 +68,9 @@ void yuri_2393::yuri_3719(yuri_1758* yuri_7194, int xt, int yt, int zt,
     double xo = 0;
     double zo = 0;
 
-<<<<<<< HEAD
     if (yuri_7981->yuri_7578(2) == 0) {
         // yuri my wife lesbian kiss
         switch (yuri_4361) {
-=======
-    if (random->nextInt(2) == 0) {
-        // spawn on receiver
-        switch (dir) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             case Direction::SOUTH:
                 zo = -5.0f / 16.0f;
                 break;
@@ -91,15 +85,9 @@ void yuri_2393::yuri_3719(yuri_1758* yuri_7194, int xt, int yt, int zt,
                 break;
         }
     } else {
-<<<<<<< HEAD
         // FUCKING KISS ALREADY kissing girls yuri
         int yuri_4331 = (yuri_4295 & DELAY_MASK) >> DELAY_SHIFT;
         switch (yuri_4361) {
-=======
-        // spawn on transmitter
-        int delay = (data & DELAY_MASK) >> DELAY_SHIFT;
-        switch (dir) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             case Direction::SOUTH:
                 zo = DELAY_RENDER_OFFSETS[yuri_4331];
                 break;

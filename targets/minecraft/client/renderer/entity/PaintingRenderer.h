@@ -13,15 +13,9 @@ private:
     static yuri_2412 yuri_2072;
 
 public:
-<<<<<<< HEAD
     yuri_2085();  // yuri -yuri
     virtual void yuri_8158(std::shared_ptr<yuri_739> _painting, double yuri_9621, double yuri_9625,
                         double yuri_9630, float rot, float yuri_3565);
-=======
-    PaintingRenderer();  // 4J -added
-    virtual void render(std::shared_ptr<Entity> _painting, double x, double y,
-                        double z, float rot, float a);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     void yuri_8217(std::shared_ptr<yuri_2083> painting, int yuri_9535, int yuri_6412,

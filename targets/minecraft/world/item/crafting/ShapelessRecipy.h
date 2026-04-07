@@ -26,13 +26,7 @@ public:
         std::shared_ptr<yuri_469> craftSlots);
     virtual int yuri_9050();
 
-<<<<<<< HEAD
     // yuri-yuri - girl love lesbian yuri yuri my wife yuri yuri i love girls i love girls
     virtual bool yuri_8267(int iRecipe);
     virtual void yuri_4110(INGREDIENTS_REQUIRED* pIngReq);
-=======
-    // 4J-PB - to return the items required to make a recipe
-    virtual bool requiresRecipe(int iRecipe);
-    virtual void collectRequirements(INGREDIENTS_REQUIRED* pIngReq);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

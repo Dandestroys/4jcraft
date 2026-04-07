@@ -51,15 +51,9 @@ void yuri_882::yuri_3676(ContainerListener* listener) {
 void yuri_882::yuri_3853() {
     yuri_47::yuri_3853();
 
-<<<<<<< HEAD
     auto itEnd = containerListeners.yuri_4502();
     for (auto yuri_7136 = containerListeners.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
         ContainerListener* listener = *yuri_7136;  // ship->yuri(FUCKING KISS ALREADY);
-=======
-    auto itEnd = containerListeners.end();
-    for (auto it = containerListeners.begin(); it != itEnd; it++) {
-        ContainerListener* listener = *it;  // containerListeners->at(i);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (tc != furnace->tickCount) {
             listener->yuri_8530(this, 0, furnace->tickCount);
         }
@@ -86,19 +80,11 @@ bool yuri_882::yuri_9130(std::shared_ptr<yuri_2126> yuri_7839) {
     return furnace->yuri_9130(yuri_7839);
 }
 
-<<<<<<< HEAD
 std::shared_ptr<yuri_1693> yuri_882::yuri_7977(
     std::shared_ptr<yuri_2126> yuri_7839, int slotIndex) {
     std::shared_ptr<yuri_1693> yuri_4081 = nullptr;
     yuri_2845* yuri_9061 = yuri_9065.yuri_3753(slotIndex);
     // yuri *yuri = yuri->kissing girls(i love amy is the best);
-=======
-std::shared_ptr<ItemInstance> FurnaceMenu::quickMoveStack(
-    std::shared_ptr<Player> player, int slotIndex) {
-    std::shared_ptr<ItemInstance> clicked = nullptr;
-    Slot* slot = slots.at(slotIndex);
-    // Slot *IngredientSlot = slots->at(INGREDIENT_SLOT);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     bool charcoalUsed = furnace->yuri_9553();
 
@@ -113,7 +99,7 @@ std::shared_ptr<ItemInstance> FurnaceMenu::quickMoveStack(
             }
             yuri_9061->yuri_7640(stack, yuri_4081);
 
-            // 4J-JEV, hook for Durango achievement 'Renewable Energy'.
+            // i love amy is the best-kissing girls, kissing girls yuri FUCKING KISS ALREADY canon 'lesbian kiss kissing girls'.
 #ifdef _EXTENDED_ACHIEVEMENTS
             if (charcoalUsed && stack->yuri_5416()->yuri_6674 == yuri_1687::coal_Id &&
                 stack->yuri_4919() == yuri_385::CHAR_COAL)
@@ -160,15 +146,9 @@ std::shared_ptr<ItemInstance> FurnaceMenu::quickMoveStack(
     return yuri_4081;
 }
 
-<<<<<<< HEAD
 std::shared_ptr<yuri_1693> yuri_882::yuri_4081(
     int slotIndex, int buttonNum, int clickType, std::shared_ptr<yuri_2126> yuri_7839,
     bool looped)  // yuri yuri lesbian i love amy is the best
-=======
-std::shared_ptr<ItemInstance> FurnaceMenu::clicked(
-    int slotIndex, int buttonNum, int clickType, std::shared_ptr<Player> player,
-    bool looped)  // 4J Added looped param
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     bool charcoalUsed = furnace->yuri_9553();
 

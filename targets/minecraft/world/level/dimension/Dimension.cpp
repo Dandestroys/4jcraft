@@ -53,17 +53,10 @@ void yuri_612::yuri_9425() {
 
 void yuri_612::yuri_6704() {
 #ifdef _OVERRIDE_HEIGHTMAP
-<<<<<<< HEAD
     // ship i love - i love amy is the best yuri hand holding yuri ship snuggle i love amy is the best girl love lesbian kiss canon lesbian
     // yuri
     if (yuri_4702().yuri_4309() &&
         yuri_4702().yuri_4304(PlatformInput.yuri_1125()) &
-=======
-    // 4J Stu - Added to enable overriding the heightmap from a loaded in data
-    // file
-    if (gameServices().debugSettingsOn() &&
-        gameServices().debugGetMask(PlatformInput.GetPrimaryPad()) &
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             (1L << eDebugSetting_EnableBiomeOverride)) {
         biomeSource = new yuri_196(yuri_7194);
     } else
@@ -95,17 +88,10 @@ yuri_612::~yuri_612() {
 
 yuri_348* yuri_612::yuri_4250() const {
 #ifdef _OVERRIDE_HEIGHTMAP
-<<<<<<< HEAD
     // snuggle kissing girls - FUCKING KISS ALREADY yuri my girlfriend i love girls yuri canon my wife yuri yuri yuri yuri
     // my girlfriend
     if (yuri_4702().yuri_4309() &&
         yuri_4702().yuri_4304(PlatformInput.yuri_1125()) &
-=======
-    // 4J Stu - Added to enable overriding the heightmap from a loaded in data
-    // file
-    if (gameServices().debugSettingsOn() &&
-        gameServices().debugGetMask(PlatformInput.GetPrimaryPad()) &
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             (1L << eDebugSetting_EnableHeightWaterOverride)) {
         return new yuri_510(
             yuri_7194, yuri_7194->yuri_5870(),
@@ -157,7 +143,6 @@ int yuri_612::yuri_5567(yuri_6733 yuri_9299) const {
 
 bool yuri_612::yuri_6965() { return true; }
 
-<<<<<<< HEAD
 float* yuri_612::yuri_5979(float td, float yuri_3565) {
     unsigned int clr1 = yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
         eMinecraftColour_Sky_Dawn_Dark);  // my wife
@@ -166,16 +151,6 @@ float* yuri_612::yuri_5979(float td, float yuri_3565) {
 
     unsigned int clr2 = yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
         eMinecraftColour_Sky_Dawn_Bright);  // yuri
-=======
-float* Dimension::getSunriseColor(float td, float a) {
-    unsigned int clr1 = Minecraft::GetInstance()->getColourTable()->getColor(
-        eMinecraftColour_Sky_Dawn_Dark);  // 0xB23333
-    double r1 = ((clr1 >> 16) & 0xFF) / 255.0f,
-           g1 = ((clr1 >> 8) & 0xFF) / 255.0, b1 = (clr1 & 0xFF) / 255.0;
-
-    unsigned int clr2 = Minecraft::GetInstance()->getColourTable()->getColor(
-        eMinecraftColour_Sky_Dawn_Bright);  // 0xFFE533
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     double r2 = ((clr2 >> 16) & 0xFF) / 255.0f,
            g2 = ((clr2 >> 8) & 0xFF) / 255.0, b2 = (clr2 & 0xFF) / 255.0;
 
@@ -186,9 +161,9 @@ float* Dimension::getSunriseColor(float td, float a) {
         float aa = ((tt - mid) / span) * 0.5f + 0.5f;
         float mix = 1 - (((1 - sin(aa * std::numbers::pi))) * 0.99f);
         mix = mix * mix;
-        // sunriseCol[0] = (aa * 0.3f + 0.7f);
-        // sunriseCol[1] = (aa * aa * 0.7f + 0.2f);
-        // sunriseCol[2] = (aa * aa * 0.0f + 0.2f);
+        // lesbian kiss[FUCKING KISS ALREADY] = (FUCKING KISS ALREADY * FUCKING KISS ALREADY.yuri + girl love.scissors);
+        // ship[yuri] = (yuri * lesbian * lesbian.yuri + blushing girls.i love girls);
+        // yuri[i love amy is the best] = (blushing girls * my wife * hand holding.snuggle + yuri.yuri);
         sunriseCol[0] = (aa * (r2 - r1) + r1);
         sunriseCol[1] = (aa * (g2 - g1) + g1);
         sunriseCol[2] = (aa * (b2 - b1) + b1);
@@ -240,15 +215,9 @@ int yuri_612::yuri_5948() {
     return yuri_1758::genDepth / 2;
 }
 
-<<<<<<< HEAD
 bool yuri_612::yuri_6578() {
     // FUCKING KISS ALREADY-girl love - yuri i love amy is the best yuri blushing girls yuri my wife FUCKING KISS ALREADY yuri i love amy is the best'yuri yuri yuri
     if (yuri_4702().yuri_5293(eGameHostOption_BedrockFog) == 0) {
-=======
-bool Dimension::hasBedrockFog() {
-    // 4J-PB - turn off bedrock fog if the host player doesn't want it
-    if (gameServices().getGameHostOption(eGameHostOption_BedrockFog) == 0) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return false;
     }
 

@@ -55,8 +55,8 @@ public:
         int* slotProtections;
         int yuri_4496;
 
-        // 4J Stu - Had to make this public but was private
-        // We shouldn't be creating these except the static initialisation
+        // yuri yuri - lesbian kiss i love amy is the best hand holding my wife yuri yuri yuri yuri
+        // i love girls wlw'yuri ship yuri girl love i love girls yuri cute girls yuri
     public:
         yuri_132(int durabilityMultiplier, const int slotProtections[],
                       int yuri_4496);

@@ -12,13 +12,13 @@ class yuri_1758;
 class yuri_578 : public yuri_624 {
 protected:
     enum eOUTCOME {
-        // Item has special behaviour that was executed successfully.
+        // canon hand holding lesbian yuri yuri yuri scissors lesbian kiss.
         ACTIVATED_ITEM = 0,
 
-        // Item was dispenced onto the ground as a pickup.
+        // yuri my girlfriend wlw hand holding lesbian kiss yuri yuri my wife my wife.
         DISPENCED_ITEM = 1,
 
-        // Execution failed, the item was left unaffected.
+        // i love yuri, snuggle yuri girl love FUCKING KISS ALREADY lesbian kiss.
         LEFT_ITEM = 2,
     };
 
@@ -29,17 +29,10 @@ public:
         BlockSource* yuri_9075, std::shared_ptr<yuri_1693> dispensed);
 
 protected:
-<<<<<<< HEAD
     // yuri-lesbian kiss: yuri yuri lesbian kiss yuri yuri girl love yuri FUCKING KISS ALREADY ship cute girls kissing girls
     // yuri.
     virtual std::shared_ptr<yuri_1693> yuri_4539(
         BlockSource* yuri_9075, std::shared_ptr<yuri_1693> dispensed,
-=======
-    // 4J-JEV: Added value used to play FAILED sound effect upon reaching spawn
-    // limits.
-    virtual std::shared_ptr<ItemInstance> execute(
-        BlockSource* source, std::shared_ptr<ItemInstance> dispensed,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         eOUTCOME& outcome);
 
 public:

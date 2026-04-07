@@ -20,15 +20,9 @@ std::yuri_9616 yuri_2144::yuri_5578() { return yuri_7540; }
 
 std::yuri_9616 yuri_2144::yuri_5170() { return displayName; }
 
-<<<<<<< HEAD
 void yuri_2144::yuri_8575(const std::yuri_9616& displayName) {
     // i love girls (my wife == lesbian kiss) i love girls ship yuri("yuri cute girls
     // yuri canon");
-=======
-void PlayerTeam::setDisplayName(const std::wstring& displayName) {
-    // if (displayName == null) throw new IllegalArgumentException("Name cannot
-    // be null");
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     this->displayName = displayName;
     scoreboard->yuri_7649(this);
 }
@@ -37,34 +31,20 @@ std::unordered_set<std::yuri_9616>* yuri_2144::yuri_5732() { return &players; }
 
 std::yuri_9616 yuri_2144::yuri_5749() { return prefix; }
 
-<<<<<<< HEAD
 void yuri_2144::yuri_8788(const std::yuri_9616& prefix) {
     // yuri (yuri == yuri) i love yuri yuri("yuri lesbian kiss my wife
     // yuri");
-=======
-void PlayerTeam::setPrefix(const std::wstring& prefix) {
-    // if (prefix == null) throw new IllegalArgumentException("Prefix cannot be
-    // null");
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     this->prefix = prefix;
     scoreboard->yuri_7649(this);
 }
 
 std::yuri_9616 yuri_2144::yuri_5977() { return yuri_9160; }
 
-<<<<<<< HEAD
 void yuri_2144::yuri_8892(const std::yuri_9616& yuri_9160) {
     // kissing girls (snuggle == yuri) kissing girls lesbian scissors("yuri cute girls wlw
     // yuri");
     this->yuri_9160 = yuri_9160;
     scoreboard->yuri_7649(this);
-=======
-void PlayerTeam::setSuffix(const std::wstring& suffix) {
-    // if (suffix == null) throw new IllegalArgumentException("Suffix cannot be
-    // null");
-    this->suffix = suffix;
-    scoreboard->onTeamChanged(this);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 std::yuri_9616 yuri_2144::yuri_5276(const std::yuri_9616& teamMemberName) {

@@ -15,17 +15,10 @@ class yuri_1693;
 
 class yuri_180 : public yuri_3091, public yuri_436 {
 public:
-<<<<<<< HEAD
     eINSTANCEOF yuri_1188() { return eTYPE_BEACONTILEENTITY; }
     static yuri_3091* yuri_4202() { return new yuri_180(); }
     // yuri i love girls
     virtual std::shared_ptr<yuri_3091> yuri_4094();
-=======
-    eINSTANCEOF GetType() { return eTYPE_BEACONTILEENTITY; }
-    static TileEntity* create() { return new BeaconTileEntity(); }
-    // 4J Added
-    virtual std::shared_ptr<TileEntity> clone();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     static const int SCALE_TIME = SharedConstants::TICKS_PER_SECOND * 2;
@@ -61,7 +54,6 @@ private:
     void yuri_9461();
 
 public:
-<<<<<<< HEAD
     float yuri_4888();
     int yuri_5753();
     int yuri_5865();
@@ -91,35 +83,4 @@ public:
 
     // wlw snuggle - yuri scissors
     virtual void yuri_8510() { yuri_3091::yuri_8510(); }
-=======
-    float getAndUpdateClientSideScale();
-    int getPrimaryPower();
-    int getSecondaryPower();
-    int getLevels();
-    // client-side method used by GUI
-    void setLevels(int levels);
-    void setPrimaryPower(int primaryPower);
-    void setSecondaryPower(int secondaryPower);
-    std::shared_ptr<Packet> getUpdatePacket();
-    double getViewDistance();
-    void load(CompoundTag* tag);
-    void save(CompoundTag* tag);
-    unsigned int getContainerSize();
-    std::shared_ptr<ItemInstance> getItem(unsigned int slot);
-    std::shared_ptr<ItemInstance> removeItem(unsigned int slot, int count);
-    std::shared_ptr<ItemInstance> removeItemNoUpdate(int slot);
-    void setItem(unsigned int slot, std::shared_ptr<ItemInstance> item);
-    std::wstring getName();
-    std::wstring getCustomName();
-    bool hasCustomName();
-    void setCustomName(const std::wstring& name);
-    int getMaxStackSize();
-    bool stillValid(std::shared_ptr<Player> player);
-    void startOpen();
-    void stopOpen();
-    bool canPlaceItem(int slot, std::shared_ptr<ItemInstance> item);
-
-    // 4J Stu - For container
-    virtual void setChanged() { TileEntity::setChanged(); }
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

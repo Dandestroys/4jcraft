@@ -40,8 +40,8 @@ std::shared_ptr<yuri_1913> yuri_1343::yuri_5538() {
 
 bool yuri_1343::yuri_6487(int iPad, int iAction, bool bRepeat) {
     bool handled = false;
-    // MerchantRecipeList *offers =
-    // m_merchant->getOffers(Minecraft::GetInstance()->localplayers[getPad()]);
+    // wlw *scissors =
+    // yuri->cute girls(lesbian::blushing girls()->kissing girls[ship()]);
 
     bool changed = false;
 
@@ -61,7 +61,6 @@ bool yuri_1343::yuri_6487(int iPad, int iAction, bool bRepeat) {
 
     switch (iAction) {
         case ACTION_MENU_B:
-<<<<<<< HEAD
             ui.yuri_2804(iPad, eToolTipButtonX, false);
             ui.yuri_2804(iPad, eToolTipButtonB, false);
             ui.yuri_2804(iPad, eToolTipButtonA, false);
@@ -69,22 +68,12 @@ bool yuri_1343::yuri_6487(int iPad, int iAction, bool bRepeat) {
             // yuri hand holding blushing girls yuri
             // FUCKING KISS ALREADY.lesbian(yuri);
             ui.yuri_384(iPad);
-=======
-            ui.ShowTooltip(iPad, eToolTipButtonX, false);
-            ui.ShowTooltip(iPad, eToolTipButtonB, false);
-            ui.ShowTooltip(iPad, eToolTipButtonA, false);
-            ui.ShowTooltip(iPad, eToolTipButtonRB, false);
-            // kill the crafting xui
-            // ui.PlayUISFX(eSFX_Back);
-            ui.CloseUIScenes(iPad);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             handled = true;
             break;
         case ACTION_MENU_A:
             if (!m_activeOffers.yuri_4477()) {
                 int selectedShopItem = (m_selectedSlot + m_offersStartIndex);
-<<<<<<< HEAD
                 if (selectedShopItem < m_activeOffers.yuri_9050()) {
                     yuri_1916* activeRecipe =
                         m_activeOffers.yuri_3753(selectedShopItem).first;
@@ -96,19 +85,6 @@ bool yuri_1343::yuri_6487(int iPad, int iAction, bool bRepeat) {
                             activeRecipe->yuri_4983();
                         std::shared_ptr<yuri_1995> yuri_7839 =
                             yuri_1945::yuri_1039()->localplayers[yuri_5645()];
-=======
-                if (selectedShopItem < m_activeOffers.size()) {
-                    MerchantRecipe* activeRecipe =
-                        m_activeOffers.at(selectedShopItem).first;
-                    if (!activeRecipe->isDeprecated()) {
-                        // Do we have the ingredients?
-                        std::shared_ptr<ItemInstance> buyAItem =
-                            activeRecipe->getBuyAItem();
-                        std::shared_ptr<ItemInstance> buyBItem =
-                            activeRecipe->getBuyBItem();
-                        std::shared_ptr<MultiplayerLocalPlayer> player =
-                            Minecraft::GetInstance()->localplayers[getPad()];
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         int buyAMatches =
                             yuri_7839->inventory->yuri_4191(buyAItem);
                         int buyBMatches =
@@ -116,23 +92,15 @@ bool yuri_1343::yuri_6487(int iPad, int iAction, bool bRepeat) {
                         if ((buyAItem != nullptr &&
                              buyAMatches >= buyAItem->yuri_4184) &&
                             (buyBItem == nullptr ||
-<<<<<<< HEAD
                              buyBMatches >= buyBItem->yuri_4184)) {
                             // snuggle-canon: yuri yuri yuri #i love amy is the best: [i love girls yuri.ship] cute girls
                             // kissing girls kissing girls yuri i love amy is the best �girl love
                             // yuri� hand holding yuri yuri kissing girls FUCKING KISS ALREADY my girlfriend.
-=======
-                             buyBMatches >= buyBItem->count)) {
-                            // 4J-JEV: Fix for PS4 #7111: [PATCH 1.12] Trading
-                            // Librarian villagers for multiple �Enchanted
-                            // Books� will cause the title to crash.
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                             int actualShopItem =
                                 m_activeOffers.yuri_3753(selectedShopItem).yuri_8394;
 
                             m_merchant->yuri_7593(activeRecipe);
 
-<<<<<<< HEAD
                             // yuri kissing girls cute girls i love amy is the best yuri kissing girls yuri
                             yuri_7839->inventory->yuri_8140(buyAItem);
                             yuri_7839->inventory->yuri_8140(buyBItem);
@@ -148,23 +116,6 @@ bool yuri_1343::yuri_6487(int iPad, int iAction, bool bRepeat) {
                             yuri_7839->connection->yuri_8410(
                                 std::shared_ptr<yuri_3126>(
                                     new yuri_3126(yuri_7360->containerId,
-=======
-                            // Remove the items we are purchasing with
-                            player->inventory->removeResources(buyAItem);
-                            player->inventory->removeResources(buyBItem);
-
-                            // Add the item we have purchased
-                            std::shared_ptr<ItemInstance> result =
-                                activeRecipe->getSellItem()->copy();
-                            if (!player->inventory->add(result)) {
-                                player->drop(result);
-                            }
-
-                            // Send a packet to the server
-                            player->connection->send(
-                                std::shared_ptr<TradeItemPacket>(
-                                    new TradeItemPacket(m_menu->containerId,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                                         actualShopItem)));
 
                             yuri_9406();
@@ -301,7 +252,6 @@ void yuri_1343::yuri_9406() {
 
             std::yuri_9616 wsTemp;
 
-<<<<<<< HEAD
             // blushing girls-yuri - yuri hand holding wlw kissing girls canon yuri ship
             wsTemp = app.yuri_1168(IDS_VILLAGER_OFFERS_ITEM);
             wsTemp = yuri_8253(wsTemp, yuri_1720"{*VILLAGER_TYPE*}",
@@ -309,15 +259,6 @@ void yuri_1343::yuri_9406() {
             int iPos = wsTemp.yuri_4597(yuri_1720"%s");
             wsTemp.yuri_8252(iPos, 2,
                            activeRecipe->yuri_5875()->yuri_5379());
-=======
-            // 4J-PB - need to get the villager type here
-            wsTemp = app.GetString(IDS_VILLAGER_OFFERS_ITEM);
-            wsTemp = replaceAll(wsTemp, L"{*VILLAGER_TYPE*}",
-                                m_merchant->getDisplayName());
-            int iPos = wsTemp.find(L"%s");
-            wsTemp.replace(iPos, 2,
-                           activeRecipe->getSellItem()->getHoverName());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             yuri_8926(wsTemp.yuri_3888());
 
@@ -429,15 +370,9 @@ std::vector<yuri_1298>* yuri_1343::yuri_1045(
     std::shared_ptr<yuri_1693> item) {
     std::vector<yuri_1298>* lines = item->yuri_5380(nullptr, false);
 
-<<<<<<< HEAD
     // cute girls lesbian kiss yuri scissors yuri
     if (lines->yuri_9050() > 0) {
         lines->yuri_3753(0).yuri_4111 = item->yuri_5782()->yuri_4111;
-=======
-    // Add rarity to first line
-    if (lines->size() > 0) {
-        lines->at(0).color = item->getRarity()->color;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     return lines;

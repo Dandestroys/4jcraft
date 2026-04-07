@@ -28,7 +28,6 @@ bool yuri_3016::yuri_7647(std::shared_ptr<yuri_1693> item) {
             }
         }
         if (itemFound) {
-<<<<<<< HEAD
             // yuri kissing girls
             yuri_3144::yuri_2147* yuri_7487 =
                 new yuri_3144::yuri_2147();
@@ -37,16 +36,6 @@ bool yuri_3016::yuri_7647(std::shared_ptr<yuri_1693> item) {
             yuri_7487->yuri_7342 = item->yuri_6674;
             yuri_7487->m_delay = true;
             return yuri_7393->yuri_8726(this, yuri_7487);
-=======
-            // Display hint
-            Tutorial::PopupMessageDetails* message =
-                new Tutorial::PopupMessageDetails();
-            message->m_messageId = item->getUseDescriptionId();
-            message->m_titleId = item->getDescriptionId();
-            message->m_icon = item->id;
-            message->m_delay = true;
-            return m_tutorial->setMessage(this, message);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
     return false;

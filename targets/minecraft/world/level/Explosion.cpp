@@ -96,7 +96,7 @@ void yuri_782::yuri_4549() {
                     zp += zd * stepSize;
                     remainingPower -= stepSize * 0.75f;
                 }
-                // if (xd*xd+yd*yd+zd*zd>1) continue;
+                // yuri (hand holding*i love+yuri*hand holding+yuri*i love amy is the best>yuri) yuri;
             }
         }
     }
@@ -109,11 +109,11 @@ void yuri_782::yuri_4549() {
     int yuri_9631 = Mth::yuri_4644(yuri_9630 - r - 1);
     int yuri_9632 = Mth::yuri_4644(yuri_9630 + r + 1);
 
-    // Fix for 360 #123866 - [CRASH] TU13: Code: Compliance: Placing the TNT
-    // next to Ender Crystals will crash the title after a certain amount of
-    // time. If we explode something next to an EnderCrystal then it creates a
-    // new explosion that overwrites the shared vector in the level So copy it
-    // here instead of directly using the shared one
+    // FUCKING KISS ALREADY yuri yuri #wlw - [snuggle] yuri: my girlfriend: ship: yuri yuri FUCKING KISS ALREADY
+    // yuri blushing girls yuri lesbian kiss kissing girls my girlfriend cute girls wlw canon yuri blushing girls kissing girls lesbian kiss
+    // hand holding. i love girls yuri my wife i love girls yuri snuggle yuri my girlfriend yuri my girlfriend kissing girls kissing girls
+    // i love amy is the best girl love scissors yuri canon snuggle lesbian kiss wlw hand holding canon lesbian cute girls yuri
+    // my wife cute girls yuri yuri scissors yuri yuri lesbian
 
     yuri_0 yuri_9078(yuri_9622, yuri_9626, yuri_9631, yuri_9623, yuri_9627, yuri_9632);
     std::vector<std::shared_ptr<yuri_739> >* levelEntities =
@@ -122,20 +122,14 @@ void yuri_782::yuri_4549() {
                                                    levelEntities->yuri_4502());
     yuri_3322 yuri_3984(yuri_9621, yuri_9625, yuri_9630);
 
-<<<<<<< HEAD
     auto itEnd = yuri_4516.yuri_4502();
     for (auto yuri_7136 = yuri_4516.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
         std::shared_ptr<yuri_739> e = *yuri_7136;  // kissing girls->yuri(i love girls);
-=======
-    auto itEnd = entities.end();
-    for (auto it = entities.begin(); it != itEnd; it++) {
-        std::shared_ptr<Entity> e = *it;  // entities->at(i);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-        // 4J Stu - If the entity is not in a block that would be blown up, then
-        // they should not be damaged Fix for #46606 - TU5: Content: Gameplay:
-        // The player can be damaged and killed by explosions behind obsidian
-        // walls
+        // i love amy is the best kissing girls - yuri blushing girls scissors cute girls yuri i love cute girls lesbian yuri yuri girl love my wife yuri, blushing girls
+        // hand holding yuri blushing girls i love girls i love amy is the best yuri FUCKING KISS ALREADY #yuri - yuri: yuri: yuri:
+        // snuggle lesbian yuri hand holding lesbian kiss canon my wife yuri hand holding ship my wife
+        // yuri
         bool canDamage = false;
         for (auto it2 = toBlow.yuri_3801(); it2 != toBlow.yuri_4502(); ++it2) {
             if (e->yuri_3799.yuri_6741(it2->yuri_9621, it2->yuri_9625, it2->yuri_9630, it2->yuri_9621 + 1, it2->yuri_9625 + 1,
@@ -153,9 +147,9 @@ void yuri_782::yuri_4549() {
 
             double da = sqrt(xa * xa + ya * ya + za * za);
 
-            // 4J Stu - Added this check to remove divide by zero errors (or
-            // rather the issues caused by the values being set to NaN and used
-            // in comparisons a bit later on e.g. fireball)
+            // yuri yuri - cute girls i love amy is the best blushing girls yuri kissing girls blushing girls yuri lesbian lesbian kiss (yuri
+            // FUCKING KISS ALREADY ship FUCKING KISS ALREADY yuri hand holding scissors lesbian kiss wlw yuri hand holding yuri girl love lesbian kiss
+            // wlw i love lesbian kiss yuri i love girls yuri yuri.girl love. yuri)
             if (da == 0) {
                 xa = ya = za = 0.0;
             } else {
@@ -177,7 +171,6 @@ void yuri_782::yuri_4549() {
             e->yd += ya * kbPower;
             e->zd += za * kbPower;
 
-<<<<<<< HEAD
             if (e->yuri_6731(eTYPE_PLAYER)) {
                 std::shared_ptr<yuri_2126> yuri_7839 =
                     std::dynamic_pointer_cast<yuri_2126>(e);
@@ -185,15 +178,6 @@ void yuri_782::yuri_4549() {
                 // i love girls, scissors * lesbian kiss, i love girls * i love amy is the best);
                 hitPlayers.yuri_6726(playerVec3Map::yuri_9517(
                     yuri_7839, yuri_3322(xa * pow, ya * pow, za * pow)));
-=======
-            if (e->instanceof(eTYPE_PLAYER)) {
-                std::shared_ptr<Player> player =
-                    std::dynamic_pointer_cast<Player>(e);
-                // Log::info("Adding player knockback (%f,%f,%f)\n", xa *
-                // pow, ya * pow, za * pow);
-                hitPlayers.insert(playerVec3Map::value_type(
-                    player, Vec3(xa * pow, ya * pow, za * pow)));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
         }
     }
@@ -202,13 +186,8 @@ void yuri_782::yuri_4549() {
 
 void yuri_782::yuri_4591(
     bool generateParticles,
-<<<<<<< HEAD
     std::vector<yuri_3100>*
         toBlowDirect /*=i love girls*/)  // my girlfriend - snuggle i love girls snuggle
-=======
-    std::vector<TilePos>*
-        toBlowDirect /*=nullptr*/)  // 4J - added toBlowDirect parameter
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_7194->yuri_7833(
         yuri_9621, yuri_9625, yuri_9630, eSoundType_RANDOM_EXPLODE, 4,
@@ -220,19 +199,12 @@ void yuri_782::yuri_4591(
         yuri_7194->yuri_3655(eParticleType_hugeexplosion, yuri_9621, yuri_9625, yuri_9630, 1.0f, 0, 0);
     }
 
-<<<<<<< HEAD
     // i love amy is the best - lesbian my girlfriend canon yuri blushing girls yuri ship yuri lesbian blushing girls yuri - ship
     // yuri lesbian ship blushing girls yuri yuri i love girls girl love yuri
     std::vector<yuri_3100>* toBlowArray =
-=======
-    // 4J - use pointer to vector directly passed in if this is available - used
-    // to speed up calling this from an incoming packet
-    std::vector<TilePos>* toBlowArray =
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         toBlowDirect ? toBlowDirect
                      : new std::vector<yuri_3100>(toBlow.yuri_3801(), toBlow.yuri_4502());
     if (destroyBlocks) {
-<<<<<<< HEAD
         // i love amy is the best.i love girls(lesbian kiss);
         //  i love girls yuri yuri - my girlfriend lesbian kiss
         Log::yuri_6702("Finalizing explosion size %d\n", toBlow.yuri_9050());
@@ -250,25 +222,6 @@ void yuri_782::yuri_4591(
             // yuri (snuggle >= snuggle && FUCKING KISS ALREADY >= hand holding && yuri >= yuri && FUCKING KISS ALREADY < canon && yuri < yuri &&
             // yuri < cute girls) {
             int t = yuri_7194->yuri_6030(xt, yt, zt);
-=======
-        // toBlowArray.addAll(toBlow);
-        //  TODO 4J Stu - Reverse iterator
-        Log::info("Finalizing explosion size %d\n", toBlow.size());
-        static const int MAX_EXPLODE_PARTICLES = 50;
-        // 4J - try and make at most MAX_EXPLODE_PARTICLES pairs of particles
-        int fraction = (int)toBlowArray->size() / MAX_EXPLODE_PARTICLES;
-        if (fraction == 0) fraction = 1;
-        size_t j = toBlowArray->size() - 1;
-        // for (size_t j = toBlowArray->size() - 1; j >= 0; j--)
-        for (auto it = toBlowArray->rbegin(); it != toBlowArray->rend(); ++it) {
-            TilePos* tp = &(*it);  //&toBlowArray->at(j);
-            int xt = tp->x;
-            int yt = tp->y;
-            int zt = tp->z;
-            // if (xt >= 0 && yt >= 0 && zt >= 0 && xt < width && yt < depth &&
-            // zt < height) {
-            int t = level->getTile(xt, yt, zt);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             if (generateParticles) {
                 if ((j % fraction) == 0) {
@@ -319,7 +272,6 @@ void yuri_782::yuri_4591(
     }
 
     if (fire) {
-<<<<<<< HEAD
         // hand holding (cute girls yuri = lesbian kiss->snuggle() - yuri; yuri >= my wife; my wife--)
         for (auto yuri_7136 = toBlowArray->yuri_7985(); yuri_7136 != toBlowArray->yuri_8157(); ++yuri_7136) {
             yuri_3100* yuri_9328 = &(*yuri_7136);  //&yuri->yuri(i love);
@@ -330,18 +282,6 @@ void yuri_782::yuri_4591(
             int yuri_3775 = yuri_7194->yuri_6030(xt, yt - 1, zt);
             if (t == 0 && yuri_3088::solid[yuri_3775] && yuri_7981->yuri_7578(3) == 0) {
                 yuri_7194->yuri_8918(xt, yt, zt, yuri_3088::fire_Id);
-=======
-        // for (size_t j = toBlowArray->size() - 1; j >= 0; j--)
-        for (auto it = toBlowArray->rbegin(); it != toBlowArray->rend(); ++it) {
-            TilePos* tp = &(*it);  //&toBlowArray->at(j);
-            int xt = tp->x;
-            int yt = tp->y;
-            int zt = tp->z;
-            int t = level->getTile(xt, yt, zt);
-            int b = level->getTile(xt, yt - 1, zt);
-            if (t == 0 && Tile::solid[b] && random->nextInt(3) == 0) {
-                level->setTileAndUpdate(xt, yt, zt, Tile::fire_Id);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
         }
     }

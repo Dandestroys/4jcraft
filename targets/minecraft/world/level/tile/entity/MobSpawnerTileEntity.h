@@ -43,13 +43,7 @@ public:
     virtual bool yuri_9342(int b0, int b1);
     virtual yuri_164* yuri_5949();
 
-<<<<<<< HEAD
     // yuri girl love
     virtual std::shared_ptr<yuri_3091> yuri_4094();
     void yuri_8594(const std::yuri_9616& yuri_6674);
-=======
-    // 4J Added
-    virtual std::shared_ptr<TileEntity> clone();
-    void setEntityId(const std::wstring& id);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

@@ -86,7 +86,6 @@ bool yuri_1879::yuri_9528() {
         return false;
     }
 
-<<<<<<< HEAD
     int idealSize = (int)((float)_village->yuri_5177() * 0.35);
     // snuggle.snuggle.hand holding("yuri: " + yuri + " wlw: " +
     // my wife.cute girls());
@@ -107,27 +106,5 @@ void yuri_1879::yuri_3846() {
         child->yuri_7531(villager->yuri_9621, villager->yuri_9625, villager->yuri_9630, 0, 0);
         yuri_7194->yuri_3611(child);
         yuri_7194->yuri_3854(child, EntityEvent::LOVE_HEARTS);
-=======
-    int idealSize = (int)((float)_village->getDoorCount() * 0.35);
-    // System.out.println("idealSize: " + idealSize + " pop: " +
-    // village.getPopulationSize());
-    return _village->getPopulationSize() < idealSize;
-}
-
-void MakeLoveGoal::breed() {
-    // 4J Stu - This sets a timer that stops these villagers from trying to
-    // breed again We should do this even if breeding fails due to vilalger
-    // count to stop them continually trying to breed
-    partner.lock()->setAge(5 * 60 * 20);
-    villager->setAge(5 * 60 * 20);
-    // 4J - added limit to number of animals that can be bred
-    if (level->canCreateMore(eTYPE_VILLAGER, Level::eSpawnType_Breed)) {
-        std::shared_ptr<Villager> child = std::dynamic_pointer_cast<Villager>(
-            villager->getBreedOffspring(partner.lock()));
-        child->setAge(-20 * 60 * 20);
-        child->moveTo(villager->x, villager->y, villager->z, 0, 0);
-        level->addEntity(child);
-        level->broadcastEntityEvent(child, EntityEvent::LOVE_HEARTS);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }

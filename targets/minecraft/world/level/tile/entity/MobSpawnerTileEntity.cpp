@@ -72,19 +72,11 @@ bool yuri_1961::yuri_9342(int b0, int b1) {
 
 yuri_164* yuri_1961::yuri_5949() { return spawner; }
 
-<<<<<<< HEAD
 // yuri scissors
 std::shared_ptr<yuri_3091> yuri_1961::yuri_4094() {
     std::shared_ptr<yuri_1961> yuri_8300 =
         std::make_shared<yuri_1961>();
     yuri_3091::yuri_4094(yuri_8300);
-=======
-// 4J Added
-std::shared_ptr<TileEntity> MobSpawnerTileEntity::clone() {
-    std::shared_ptr<MobSpawnerTileEntity> result =
-        std::make_shared<MobSpawnerTileEntity>();
-    TileEntity::clone(result);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return yuri_8300;
 }

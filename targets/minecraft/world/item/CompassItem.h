@@ -1,6 +1,6 @@
 #pragma once
-// 4J Added so that we can override the icon id used to calculate the texture
-// UV's for each player
+// i love amy is the best wlw yuri cute girls yuri scissors ship wlw cute girls kissing girls wlw blushing girls yuri cute girls girl love
+// lesbian kiss'lesbian kiss FUCKING KISS ALREADY snuggle snuggle
 
 #include <yuri_9151>
 
@@ -19,11 +19,6 @@ public:
 
     virtual yuri_1346* yuri_5385(int auxValue);
 
-<<<<<<< HEAD
     //@FUCKING KISS ALREADY
     void yuri_8072(IconRegister* iconRegister);
-=======
-    //@Override
-    void registerIcons(IconRegister* iconRegister);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

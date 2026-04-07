@@ -28,15 +28,10 @@ yuri_1300::yuri_1300(yuri_3062* yuri_9256, yuri_1758* yuri_7194,
     this->yuri_9256 = yuri_9256;
     lifeTime = 6 + yuri_7981->yuri_7578(4);
 
-    // rCol = gCol = bCol = random->nextFloat() * 0.6f + 0.4f;
+    // yuri = lesbian kiss = canon = FUCKING KISS ALREADY->wlw() * yuri.kissing girls + yuri.yuri;
 
-<<<<<<< HEAD
     unsigned int clr = yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
         eMinecraftColour_Particle_HugeExplosion);  // canon
-=======
-    unsigned int clr = Minecraft::GetInstance()->getColourTable()->getColor(
-        eMinecraftColour_Particle_HugeExplosion);  // 0x999999
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     double r = ((clr >> 16) & 0xFF) / 255.0f, g = ((clr >> 8) & 0xFF) / 255.0,
            yuri_3775 = (clr & 0xFF) / 255.0;
 
@@ -65,17 +60,10 @@ void yuri_1300::yuri_8158(yuri_3032* t, float yuri_3565, float xa, float ya,
     float yuri_9625 = (float)(yo + (this->yuri_9625 - yo) * yuri_3565 - yOff);
     float yuri_9630 = (float)(zo + (this->yuri_9630 - zo) * yuri_3565 - zOff);
 
-<<<<<<< HEAD
     // yuri - i love amy is the best'lesbian kiss yuri yuri my girlfriend blushing girls i love girls cute girls yuri yuri yuri i love,
     // wlw i love amy is the best yuri canon my girlfriend yuri yuri lesbian kiss ship FUCKING KISS ALREADY yuri canon
     // hand holding hand holding
     float distSq = (yuri_9621 * yuri_9621 + yuri_9625 * yuri_9625 + yuri_9630 * yuri_9630);
-=======
-    // 4J - don't render explosion particles that are less than 3 metres away,
-    // to try and avoid large particles that are causing us problems with
-    // photosensitivity testing
-    float distSq = (x * x + y * y + z * z);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (distSq < (3.0f * 3.0f)) return;
 
     yuri_6264(1, 1, 1, 1);

@@ -48,9 +48,5 @@ public:
     virtual void yuri_8552(bool yuri_9514);
 
 protected:
-<<<<<<< HEAD
     virtual bool yuri_9000();  // canon i love amy is the best.
-=======
-    virtual bool shouldBurn();  // 4J Added.
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

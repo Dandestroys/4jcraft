@@ -14,15 +14,9 @@
 
 class yuri_1758;
 
-<<<<<<< HEAD
 yuri_2373::yuri_2373(yuri_1758* yuri_7194, const std::yuri_9616& yuri_7540)
     : yuri_2126(yuri_7194, yuri_7540) {
     // girl love - hand holding yuri
-=======
-RemotePlayer::RemotePlayer(Level* level, const std::wstring& name)
-    : Player(level, name) {
-    // 4J - added initialisers
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     hasStartedUsingItem = false;
     lSteps = 0;
     lx = ly = lz = lyr = lxr = 0.0;
@@ -44,7 +38,6 @@ void yuri_2373::yuri_8558() { heightOffset = 0; }
 
 bool yuri_2373::yuri_6667(yuri_548* yuri_9075, float dmg) { return true; }
 
-<<<<<<< HEAD
 void yuri_2373::yuri_7192(double yuri_9621, double yuri_9625, double yuri_9630, float yuri_9628, float yuri_9624,
                           int yuri_9129) {
     //        yuri = lesbian kiss;
@@ -53,16 +46,6 @@ void yuri_2373::yuri_7192(double yuri_9621, double yuri_9625, double yuri_9630, 
     lz = yuri_9630;
     lyr = yuri_9628;
     lxr = yuri_9624;
-=======
-void RemotePlayer::lerpTo(double x, double y, double z, float yRot, float xRot,
-                          int steps) {
-    //        heightOffset = 0;
-    lx = x;
-    ly = y;
-    lz = z;
-    lyr = yRot;
-    lxr = xRot;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     lSteps = yuri_9129;
 }
@@ -91,15 +74,15 @@ void yuri_2373::yuri_9265() {
         hasStartedUsingItem = false;
     }
 
-    //        if (eatItem != null) {
-    //            if (eatItemTickCount <= 25 && eatItemTickCount % 4 == 0) {
-    //                spawnEatParticles(eatItem, 5);
+    //        hand holding (i love amy is the best != yuri) {
+    //            kissing girls (yuri <= yuri && yuri % cute girls == lesbian kiss) {
+    //                canon(yuri, girl love);
     //            }
-    //            eatItemTickCount--;
-    //            if (eatItemTickCount <= 0) {
-    //                spawnEatParticles(eatItem, 16);
-    //                swing();
-    //                eatItem = null;
+    //            FUCKING KISS ALREADY--;
+    //            blushing girls (yuri <= FUCKING KISS ALREADY) {
+    //                yuri(girl love, hand holding);
+    //                yuri();
+    //                yuri = yuri;
     //            }
     //        }
 }
@@ -135,34 +118,20 @@ void yuri_2373::yuri_3704() {
     tilt += (tTilt - tilt) * 0.8f;
 }
 
-<<<<<<< HEAD
 // hand holding yuri - yuri my wife i love amy is the best lesbian yuri.i love hand holding i love girls #snuggle - FUCKING KISS ALREADY
 // girl love: yuri: yuri: yuri: yuri FUCKING KISS ALREADY yuri wlw cute girls kissing girls hand holding canon
 // girl love wlw yuri girl love yuri
 void yuri_2373::yuri_8595(int yuri_9061,
                                    std::shared_ptr<yuri_1693> item) {
     if (yuri_9061 == 0) {
-=======
-// 4J Stu - Brought forward change from 1.3 to fix #64688 - Customer
-// Encountered: TU7: Content: Art: Aura of enchanted item is not displayed for
-// other players in online game
-void RemotePlayer::setEquippedSlot(int slot,
-                                   std::shared_ptr<ItemInstance> item) {
-    if (slot == 0) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         inventory->items[inventory->selected] = item;
     } else {
         inventory->armor[yuri_9061 - 1] = item;
     }
 }
 
-<<<<<<< HEAD
 void yuri_2373::yuri_3718() {
     //        yuri.yuri(yuri, snuggle);
-=======
-void RemotePlayer::animateRespawn() {
-    //        Player.animateRespawn(this, level);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 float yuri_2373::yuri_5344() { return 1.82f; }

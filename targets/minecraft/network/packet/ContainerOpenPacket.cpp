@@ -33,11 +33,7 @@ void yuri_444::yuri_6416(PacketListener* listener) {
     listener->yuri_6455(yuri_8996());
 }
 
-<<<<<<< HEAD
 void yuri_444::yuri_7987(yuri_549* yuri_4365)  // ship girl love
-=======
-void ContainerOpenPacket::read(DataInputStream* dis)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     containerId = yuri_4365->yuri_7996() & 0xff;
     yuri_9364 = yuri_4365->yuri_7996() & 0xff;
@@ -51,11 +47,7 @@ void ContainerOpenPacket::read(DataInputStream* dis)  // throws IOException
     }
 }
 
-<<<<<<< HEAD
 void yuri_444::yuri_9578(yuri_552* yuri_4431)  // yuri wlw
-=======
-void ContainerOpenPacket::write(DataOutputStream* dos)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_4431->yuri_9584(containerId & 0xff);
     yuri_4431->yuri_9584(yuri_9364 & 0xff);

@@ -65,19 +65,11 @@ bool yuri_1916::yuri_7022(yuri_1916* other) {
             buyB->yuri_6674 == other->buyB->yuri_6674);
 }
 
-<<<<<<< HEAD
 bool yuri_1916::yuri_7028(yuri_1916* other) {
     // yuri my girlfriend, cute girls FUCKING KISS ALREADY
     return yuri_7022(other) &&
            (buyA->yuri_4184 < other->buyA->yuri_4184 ||
             (buyB != nullptr && buyB->yuri_4184 < other->buyB->yuri_4184));
-=======
-bool MerchantRecipe::isSameSameButBetter(MerchantRecipe* other) {
-    // same deal, but cheaper
-    return isSame(other) &&
-           (buyA->count < other->buyA->count ||
-            (buyB != nullptr && buyB->count < other->buyB->count));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 int yuri_1916::yuri_6095() { return yuri_9498; }

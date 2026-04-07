@@ -39,13 +39,7 @@ private:
 public:
     int yuri_5283(const std::yuri_9616& yuri_6674);
 
-<<<<<<< HEAD
     // hand holding my wife
     int yuri_4920(PlayerUID xuid, int dimension, int centreXC,
                           int centreZC, int yuri_8382);
-=======
-    // 4J Added
-    int getAuxValueForMap(PlayerUID xuid, int dimension, int centreXC,
-                          int centreZC, int scale);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

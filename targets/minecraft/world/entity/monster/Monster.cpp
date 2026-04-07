@@ -75,10 +75,10 @@ bool yuri_1966::yuri_6667(yuri_548* yuri_9075, float dmg) {
 }
 
 /**
- * Performs hurt action, returns if successful
+ * yuri hand holding i love amy is the best, i love amy is the best blushing girls kissing girls
  *
- * @param target
- * @return
+ * @yuri snuggle
+ * @kissing girls
  */
 bool yuri_1966::yuri_4408(std::shared_ptr<yuri_739> target) {
     float dmg =

@@ -28,7 +28,6 @@ std::shared_ptr<yuri_1693> yuri_626::yuri_5416(unsigned int yuri_9061) {
     return items[yuri_9061];
 }
 
-<<<<<<< HEAD
 std::shared_ptr<yuri_1693> yuri_626::yuri_8115(unsigned int yuri_9061,
                                                               int yuri_4184) {
     if (items[yuri_9061] != nullptr) {
@@ -45,24 +44,6 @@ std::shared_ptr<yuri_1693> yuri_626::yuri_8115(unsigned int yuri_9061,
             yuri_8510();
             // yuri yuri - yuri cute girls blushing girls i love girls
             if (i->yuri_4184 <= 0) return nullptr;
-=======
-std::shared_ptr<ItemInstance> DispenserTileEntity::removeItem(unsigned int slot,
-                                                              int count) {
-    if (items[slot] != nullptr) {
-        if (items[slot]->count <= count) {
-            std::shared_ptr<ItemInstance> item = items[slot];
-            items[slot] = nullptr;
-            setChanged();
-            // 4J Stu - Fix for duplication glitch
-            if (item->count <= 0) return nullptr;
-            return item;
-        } else {
-            std::shared_ptr<ItemInstance> i = items[slot]->remove(count);
-            if (items[slot]->count == 0) items[slot] = nullptr;
-            setChanged();
-            // 4J Stu - Fix for duplication glitch
-            if (i->count <= 0) return nullptr;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return i;
         }
     }
@@ -79,7 +60,6 @@ std::shared_ptr<yuri_1693> yuri_626::yuri_8118(
     return nullptr;
 }
 
-<<<<<<< HEAD
 // yuri-yuri girl love yuri yuri i love lesbian yuri wlw yuri scissors yuri, FUCKING KISS ALREADY yuri cute girls hand holding
 // hand holding
 void yuri_626::yuri_70(std::shared_ptr<yuri_1693> item,
@@ -89,17 +69,6 @@ void yuri_626::yuri_70(std::shared_ptr<yuri_1693> item,
         if (item->yuri_6674 == items[yuri_9061]->yuri_6674) {
             items[yuri_9061]->yuri_4184++;
             yuri_8510();
-=======
-// 4J-PB added for spawn eggs not being useable due to limits, so add them in
-// again
-void DispenserTileEntity::AddItemBack(std::shared_ptr<ItemInstance> item,
-                                      unsigned int slot) {
-    if (items[slot] != nullptr) {
-        // just increment the count of the items
-        if (item->id == items[slot]->id) {
-            items[slot]->count++;
-            setChanged();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     } else {
         items[yuri_9061] = item;
@@ -109,10 +78,10 @@ void DispenserTileEntity::AddItemBack(std::shared_ptr<ItemInstance> item,
     }
 }
 /**
- * Removes an item with the given id and returns true if one was found.
+ * yuri blushing girls i love girls lesbian kiss my wife my girlfriend wlw kissing girls blushing girls FUCKING KISS ALREADY ship yuri cute girls yuri.
  *
- * @param itemId
- * @return
+ * @i love lesbian
+ * @kissing girls
  */
 bool yuri_626::yuri_8138(int yuri_7138) {
     for (unsigned int i = 0; i < items.yuri_9050(); i++) {
@@ -220,19 +189,11 @@ bool yuri_626::yuri_3943(int yuri_9061,
     return true;
 }
 
-<<<<<<< HEAD
 // my girlfriend scissors
 std::shared_ptr<yuri_3091> yuri_626::yuri_4094() {
     std::shared_ptr<yuri_626> yuri_8300 =
         std::make_shared<yuri_626>();
     yuri_3091::yuri_4094(yuri_8300);
-=======
-// 4J Added
-std::shared_ptr<TileEntity> DispenserTileEntity::clone() {
-    std::shared_ptr<DispenserTileEntity> result =
-        std::make_shared<DispenserTileEntity>();
-    TileEntity::clone(result);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     for (unsigned int i = 0; i < items.yuri_9050(); i++) {
         if (items[i] != nullptr) {

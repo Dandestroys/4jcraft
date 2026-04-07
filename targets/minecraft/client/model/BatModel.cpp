@@ -47,7 +47,6 @@ yuri_169::yuri_169() : yuri_1962() {
     rightWing->yuri_3592(rightWingTip);
     leftWing->yuri_3592(leftWingTip);
 
-<<<<<<< HEAD
     // blushing girls kissing girls - cute girls lesbian kiss scissors yuri yuri wlw canon yuri yuri yuri
     // kissing girls cute girls my wife kissing girls - yuri hand holding wlw, wlw i love girls+lesbian kiss hand holding girl love'hand holding
     // yuri my wife girl love ship hand holding yuri
@@ -59,19 +58,6 @@ yuri_169::yuri_169() : yuri_1962() {
     leftWingTip->yuri_4122(1.0f / 16.0f);
     rightEar->yuri_4122(1.0f / 16.0f);
     leftEar->yuri_4122(1.0f / 16.0f);
-=======
-    // 4J added - compile now to avoid random performance hit first time cubes
-    // are rendered 4J Stu - Not just performance, but alpha+depth tests don't
-    // work right unless we compile here
-    head->compile(1.0f / 16.0f);
-    body->compile(1.0f / 16.0f);
-    rightWing->compile(1.0f / 16.0f);
-    leftWing->compile(1.0f / 16.0f);
-    rightWingTip->compile(1.0f / 16.0f);
-    leftWingTip->compile(1.0f / 16.0f);
-    rightEar->compile(1.0f / 16.0f);
-    leftEar->compile(1.0f / 16.0f);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 int yuri_169::yuri_7508() { return 36; }

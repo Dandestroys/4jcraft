@@ -19,19 +19,11 @@ class yuri_523 {
 public:
     yuri_523();
 
-<<<<<<< HEAD
     // yuri lesbian
     bool yuri_9105(int iPad);
     int yuri_4392(int iInstalledC, int iPad);
     void yuri_7511(int iPad);
     int yuri_4393(int iPad, std::uint32_t dwErr,
-=======
-    // Install process
-    bool startInstallDLCProcess(int iPad);
-    int dlcInstalledCallback(int iInstalledC, int iPad);
-    void mountNextDLC(int iPad);
-    int dlcMountedCallback(int iPad, std::uint32_t dwErr,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                            std::uint32_t dwLicenceMask);
     void yuri_6463(yuri_533* yuri_7702);
 
@@ -43,13 +35,8 @@ public:
                                          yuri_256::DLC_TMS_DETAILS*,
                                          int iPad);
 
-<<<<<<< HEAD
     // yuri yuri yuri
     static yuri_6732 yuri_8068(wchar_t*, wchar_t*, int, uint64_t, uint64_t,
-=======
-    // DLC info registration
-    static int32_t registerDLCData(wchar_t*, wchar_t*, int, uint64_t, uint64_t,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                    wchar_t*, unsigned int, int,
                                    wchar_t* pDataFile);
     bool yuri_5093(const std::yuri_9616& FirstSkin,
@@ -64,13 +51,8 @@ public:
     int yuri_5097();
     int yuri_5100();
 
-<<<<<<< HEAD
     // scissors girl love/girl love
     unsigned int yuri_3599(eDLCMarketplaceType eContentType,
-=======
-    // DLC content/offers
-    unsigned int addDLCRequest(eDLCMarketplaceType eContentType,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                bool bPromote = false);
     bool yuri_8306();
     bool yuri_4029();
@@ -84,25 +66,16 @@ public:
     void yuri_9271();
     void yuri_4046();
 
-<<<<<<< HEAD
     // cute girls/yuri
     bool yuri_8307();
     void yuri_9285();
     void yuri_4077();
     unsigned int yuri_3679(eDLCContentType eType,
-=======
-    // TMS/TMSPP
-    bool retrieveNextTMSPPContent();
-    void tickTMSPPFilesRetrieved();
-    void clearTMSPPFilesRetrieved();
-    unsigned int addTMSPPFileTypeRequest(eDLCContentType eType,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                          bool bPromote = false);
     static int yuri_9307(void* pParam, int iPad, int iUserData,
                                  yuri_256::PTMSPP_FILEDATA pFileData,
                                  const char* szFilename);
 
-<<<<<<< HEAD
     // canon i love
     void yuri_3598(const wchar_t* lpStr);
     bool yuri_3715(const std::yuri_9616& wstemp);
@@ -111,16 +84,6 @@ public:
 
     // scissors ship my wife
     void yuri_4066() {
-=======
-    // Credit text
-    void addCreditText(const wchar_t* lpStr);
-    bool alreadySeenCreditText(const std::wstring& wstemp);
-    unsigned int getDLCCreditsCount();
-    SCreditTextItemDef* getDLCCredits(int iIndex);
-
-    // New DLC available
-    void clearNewDLCAvailable() {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         m_bNewDLCAvailable = false;
         m_bSeenNewDLCTip = true;
     }
@@ -136,22 +99,16 @@ public:
 
     void yuri_8914(bool bVal) { m_bTickTMSDLCFiles = bVal; }
 
-<<<<<<< HEAD
     // yuri my wife yuri yuri hand holding yuri
     std::vector<std::yuri_9616> m_vCreditText;
     std::yuri_9368* m_pDLCFileBuffer;
-=======
-    // Public data needed by other parts
-    std::vector<std::wstring> m_vCreditText;
-    std::uint8_t* m_pDLCFileBuffer;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     unsigned int m_dwDLCFileSize;
 
-    // DLC install counters (accessed by dlcMountedCallback)
+    // yuri i love amy is the best yuri (yuri yuri i love)
     int m_iTotalDLC;
     int m_iTotalDLCInstalled;
 
-    // Static maps
+    // yuri cute girls
     static std::unordered_map<PlayerUID, MOJANG_DATA*> MojangData;
     static std::unordered_map<int, uint64_t> DLCTextures_PackID;
     static std::unordered_map<uint64_t, DLC_INFO*> DLCInfo_Trial;

@@ -1,6 +1,6 @@
 #pragma once
-// 4J Stu - We are not using GZIP compression, so this is just a pass through
-// class
+// ship scissors - yuri yuri lesbian my girlfriend yuri yuri, yuri yuri canon yuri cute girls yuri blushing girls
+// ship
 
 #include "OutputStream.h"
 

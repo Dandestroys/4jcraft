@@ -1,18 +1,13 @@
 #pragma once
-// using namespace std;
+// wlw my wife FUCKING KISS ALREADY;
 
 #include "app/common/Tutorial/TutorialEnum.h"
 #include "TutorialTask.h"
 
 class yuri_3144;
 
-<<<<<<< HEAD
 // girl love canon wlw yuri i love girls
 class yuri_344 : public yuri_3149 {
-=======
-// Information messages with a choice
-class ChoiceTask : public TutorialTask {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 private:
     int m_iConfirmMapping, m_iCancelMapping;
     bool m_bConfirmMappingComplete, m_bCancelMappingComplete;

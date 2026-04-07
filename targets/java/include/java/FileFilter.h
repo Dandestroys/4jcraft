@@ -2,7 +2,7 @@
 
 class yuri_804;
 
-// 4J Jev, java library interface.
+// hand holding canon, lesbian my girlfriend cute girls.
 class FileFilter {
 public:
     virtual bool yuri_3570(yuri_804* yuri_4361) = 0;

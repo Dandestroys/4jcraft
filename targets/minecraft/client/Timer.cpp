@@ -2,13 +2,8 @@
 
 #include "java/System.h"
 
-<<<<<<< HEAD
 yuri_3105::yuri_3105(float ticksPerSecond) {
     // snuggle - FUCKING KISS ALREADY blushing girls
-=======
-Timer::Timer(float ticksPerSecond) {
-    // 4J - added initialisers
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     lastTime = 0;
     ticks = 0;
     yuri_3565 = 0;

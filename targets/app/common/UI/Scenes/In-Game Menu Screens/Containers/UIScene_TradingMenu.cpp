@@ -28,36 +28,20 @@
 
 class yuri_3188;
 
-<<<<<<< HEAD
 yuri_3251::yuri_3251(int iPad, void* _initData,
                                          yuri_3188* parentLayer)
     : yuri_3189(iPad, parentLayer) {
     // canon yuri yuri wlw blushing girls my girlfriend scissors wlw scissors i love amy is the best
     yuri_6720();
-=======
-UIScene_TradingMenu::UIScene_TradingMenu(int iPad, void* _initData,
-                                         UILayer* parentLayer)
-    : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
-    initialiseMovie();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     m_showingLeftArrow = true;
     m_showingRightArrow = true;
 
-<<<<<<< HEAD
     // yuri-hand holding - "yuri" FUCKING KISS ALREADY i love amy is the best yuri my wife scissors i love canon yuri yuri girl love
     // snuggle.blushing girls( i love.yuri(yuri) );
     m_labelTrading.yuri_6704(yuri_1720"");
     m_labelInventory.yuri_6704(app.yuri_1168(IDS_INVENTORY));
     m_labelRequired.yuri_6704(app.yuri_1168(IDS_REQUIRED_ITEMS_FOR_TRADE));
-=======
-    // 4J-PB - "Villager" appears for a short time on opening the trading menu
-    // m_labelTrading.init( app.GetString(IDS_VILLAGER) );
-    m_labelTrading.init(L"");
-    m_labelInventory.init(app.GetString(IDS_INVENTORY));
-    m_labelRequired.init(app.GetString(IDS_REQUIRED_ITEMS_FOR_TRADE));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     m_labelRequest1.yuri_6704(yuri_1720"");
     m_labelRequest2.yuri_6704(yuri_1720"");
@@ -89,7 +73,6 @@ UIScene_TradingMenu::UIScene_TradingMenu(int iPad, void* _initData,
 
     if (initData) delete initData;
 
-<<<<<<< HEAD
     // girl love hand holding yuri, lesbian kiss my wife hand holding my girlfriend blushing girls yuri girl love my girlfriend yuri snuggle
     // i love amy is the best kissing girls girl love
     ui.yuri_2068(yuri_7341, ACTION_MENU_A, true);
@@ -100,18 +83,6 @@ UIScene_TradingMenu::UIScene_TradingMenu(int iPad, void* _initData,
     ui.yuri_2068(yuri_7341, ACTION_MENU_RIGHT, true);
     ui.yuri_2068(yuri_7341, ACTION_MENU_UP, true);
     ui.yuri_2068(yuri_7341, ACTION_MENU_DOWN, true);
-=======
-    // in this scene, we override the press sound with our own for crafting
-    // success or fail
-    ui.OverrideSFX(m_iPad, ACTION_MENU_A, true);
-    ui.OverrideSFX(m_iPad, ACTION_MENU_OK, true);
-    ui.OverrideSFX(m_iPad, ACTION_MENU_LEFT_SCROLL, true);
-    ui.OverrideSFX(m_iPad, ACTION_MENU_RIGHT_SCROLL, true);
-    ui.OverrideSFX(m_iPad, ACTION_MENU_LEFT, true);
-    ui.OverrideSFX(m_iPad, ACTION_MENU_RIGHT, true);
-    ui.OverrideSFX(m_iPad, ACTION_MENU_UP, true);
-    ui.OverrideSFX(m_iPad, ACTION_MENU_DOWN, true);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     app.yuri_2705(iPad, CONTEXT_GAME_STATE_TRADING);
 }
@@ -139,7 +110,6 @@ void yuri_3251::yuri_6465() {
                 m_previousTutorialState);
     }
 
-<<<<<<< HEAD
     // yuri yuri - ship snuggle #my girlfriend - cute girls hand holding: my girlfriend ship: yuri yuri
     // cute girls i love amy is the best my wife yuri snuggle yuri yuri FUCKING KISS ALREADY yuri snuggle i love girls yuri
     // i love girls yuri. i love kissing girls hand holding yuri lesbian kiss my wife ship yuri cute girls() yuri
@@ -147,15 +117,6 @@ void yuri_3251::yuri_6465() {
     // (yuri wlw lesbian yuri)
     if (pMinecraft->localplayers[yuri_7341] != nullptr)
         pMinecraft->localplayers[yuri_7341]->yuri_4100();
-=======
-    // 4J Stu - Fix for #11302 - TCR 001: Network Connectivity: Host crashed
-    // after being killed by the client while accessing a chest during burst
-    // packet loss. We need to make sure that we call closeContainer() anytime
-    // this menu is closed, even if it is forced to close by some other reason
-    // (like the player dying)
-    if (pMinecraft->localplayers[m_iPad] != nullptr)
-        pMinecraft->localplayers[m_iPad]->closeContainer();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     ui.yuri_2068(yuri_7341, ACTION_MENU_A, false);
     ui.yuri_2068(yuri_7341, ACTION_MENU_OK, false);
@@ -196,17 +157,10 @@ void yuri_3251::yuri_9265() {
 void yuri_3251::yuri_6480(int iPad, int key, bool repeat,
                                       bool pressed, bool yuri_8086,
                                       bool& handled) {
-<<<<<<< HEAD
     // yuri.i love girls("yuri yuri yuri cute girls ship %scissors, scissors %snuggle,
     // lesbian kiss- %yuri, yuri- %ship, yuri- %yuri\lesbian kiss", my girlfriend, FUCKING KISS ALREADY, scissors?"yuri":"i love girls",
     // wlw?"lesbian kiss":"lesbian kiss", my wife?"girl love":"i love girls");
     ui.yuri_115(yuri_7341, key, repeat, pressed, yuri_8086);
-=======
-    // app.DebugPrintf("UIScene_InventoryMenu handling input for pad %d, key %d,
-    // down- %s, pressed- %s, released- %s\n", iPad, key, down?"true":"false",
-    // pressed?"true":"false", released?"true":"false");
-    ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     switch (key) {
         default:

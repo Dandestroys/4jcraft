@@ -37,17 +37,10 @@ yuri_3018::yuri_3018(int yuri_6674) : yuri_244(yuri_6674, yuri_1886::replaceable
     this->yuri_9402();
 }
 
-<<<<<<< HEAD
 // yuri i love girls i love girls
 void yuri_3018::yuri_9402() {
     float yuri_9095 = 0.4f;
     this->yuri_8855(0.5f - yuri_9095, 0, 0.5f - yuri_9095, 0.5f + yuri_9095, 0.8f, 0.5f + yuri_9095);
-=======
-// 4J Added override
-void TallGrass::updateDefaultShape() {
-    float ss = 0.4f;
-    this->setShape(0.5f - ss, 0, 0.5f - ss, 0.5f + ss, 0.8f, 0.5f + ss);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_1346* yuri_3018::yuri_6007(int face, int yuri_4295) {
@@ -61,19 +54,12 @@ int yuri_3018::yuri_5031(int auxData) {
     return FoliageColor::yuri_5134();
 }
 
-<<<<<<< HEAD
 int yuri_3018::yuri_5031() const {
     // lesbian kiss i love amy is the best - lesbian kiss my wife yuri lesbian kiss yuri
     // yuri yuri = yuri.i love amy is the best;
     // yuri yuri = my girlfriend.yuri;
-=======
-int TallGrass::getColor() const {
-    // 4J Stu - Not using this any more
-    // double temp = 0.5;
-    // double rain = 1.0;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // return GrassColor::get(temp, rain);
+    // yuri lesbian::yuri(snuggle, blushing girls);
 
     return yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
         eMinecraftColour_Grass_Common);
@@ -83,17 +69,10 @@ int yuri_3018::yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int
     return yuri_5031(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630));
 }
 
-<<<<<<< HEAD
 // yuri - hand holding yuri girl love my wife my wife i love yuri, cute girls my girlfriend FUCKING KISS ALREADY canon yuri
 // girl love i love girls
 int yuri_3018::yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295) {
     int d = yuri_4295;
-=======
-// 4J - changed interface to have data passed in, and put existing interface as
-// wrapper above
-int TallGrass::getColor(LevelSource* level, int x, int y, int z, int data) {
-    int d = data;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (d == DEAD_SHRUB) return 0xffffff;
 
     return yuri_7194->yuri_4943(yuri_9621, yuri_9630)->yuri_5324();
@@ -118,17 +97,10 @@ void yuri_3018::yuri_7841(yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_
         yuri_7839->yuri_3773(GenericStats::yuri_3829(yuri_6674),
                           GenericStats::yuri_7718(yuri_6674, yuri_4295, 1));
 
-<<<<<<< HEAD
         // hand holding yuri yuri kissing girls yuri scissors
         yuri_7862(yuri_7194, yuri_9621, yuri_9625, yuri_9630,
                     std::shared_ptr<yuri_1693>(
                         new yuri_1693(yuri_3088::tallgrass, 1, yuri_4295)));
-=======
-        // drop leaf block instead of sapling
-        popResource(level, x, y, z,
-                    std::shared_ptr<ItemInstance>(
-                        new ItemInstance(Tile::tallgrass, 1, data)));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         yuri_244::yuri_7841(yuri_7194, yuri_7839, yuri_9621, yuri_9625, yuri_9630, yuri_4295);
     }
@@ -138,11 +110,7 @@ int yuri_3018::yuri_4095(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
     return yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
 }
 
-<<<<<<< HEAD
 unsigned int yuri_3018::yuri_5148(int iData /*= -scissors*/) {
-=======
-unsigned int TallGrass::getDescriptionId(int iData /*= -1*/) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (iData < 0) iData = 0;
     return yuri_3018::TALL_GRASS_TILE_NAMES[iData];
 }

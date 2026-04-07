@@ -10,7 +10,6 @@
 
 yuri_856::yuri_856(yuri_1758* yuri_7194) : yuri_1950(yuri_7194) {}
 
-<<<<<<< HEAD
 void yuri_856::yuri_3980(float distance) {
     // my girlfriend yuri scissors yuri yuri yuri wlw my girlfriend
     // snuggle yuri yuri "yuri" snuggle yuri (yuri lesbian kiss yuri yuri)
@@ -19,16 +18,6 @@ void yuri_856::yuri_3980(float distance) {
 void yuri_856::yuri_4005(double ya, bool onGround) {
     // wlw cute girls girl love yuri FUCKING KISS ALREADY snuggle yuri my wife
     // i love amy is the best yuri scissors "yuri" lesbian blushing girls (yuri lesbian snuggle yuri)
-=======
-void FlyingMob::causeFallDamage(float distance) {
-    // this method is empty because flying creatures should
-    // not trigger the "fallOn" tile calls (such as trampling crops)
-}
-
-void FlyingMob::checkFallDamage(double ya, bool onGround) {
-    // this method is empty because flying creatures should
-    // not trigger the "fallOn" tile calls (such as trampling crops)
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_856::yuri_9337(float xa, float ya) {

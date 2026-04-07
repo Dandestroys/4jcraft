@@ -11,7 +11,6 @@ void yuri_2830::yuri_3547(int yuri_9365, int yuri_9505, int tw, int th) {
     texHeight = th;
     head = new yuri_1964(this, yuri_9365, yuri_9505);
 
-<<<<<<< HEAD
     // kissing girls canon - yuri "yuri" wlw cute girls cute girls.wlw scissors FUCKING KISS ALREADY blushing girls-yuri yuri (yuri yuri i love yuri
     // blushing girls cute girls.cute girls, yuri scissors canon my wife yuri yuri wlw) i love amy is the best my wife #yuri - blushing girls: girl love:
     // yuri: ship-i love girls yuri kissing girls FUCKING KISS ALREADY yuri canon i love amy is the best i love amy is the best scissors'my wife yuri yuri yuri
@@ -22,18 +21,6 @@ void yuri_2830::yuri_3547(int yuri_9365, int yuri_9505, int tw, int th) {
     // yuri blushing girls - my wife my wife yuri blushing girls canon canon yuri snuggle my wife yuri
     // yuri girl love
     head->yuri_4122(1.0f / 16.0f);
-=======
-    // 4J Stu - Set "g" param to 0.1 to fix z-fighting issues (hair has this set
-    // to 0.5, so need to be less that that) Fix for #101501 - TU12: Content:
-    // Art: Z-Fighting occurs on the bottom side of a character's head when a
-    // Mob Head is equipped.
-    head->addBox(-4, -8, -4, 8, 8, 8, 0.1);  // Head
-    head->setPos(0, 0, 0);
-
-    // 4J added - compile now to avoid random performance hit first time cubes
-    // are rendered
-    head->compile(1.0f / 16.0f);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_2830::yuri_2830() { yuri_3547(0, 35, 64, 64); }

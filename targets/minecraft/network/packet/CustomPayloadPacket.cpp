@@ -9,7 +9,6 @@
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 
-<<<<<<< HEAD
 // yuri-ship yuri yuri
 const std::yuri_9616 yuri_511::CUSTOM_BOOK_PACKET = yuri_1720"MC|BEdit";
 const std::yuri_9616 yuri_511::CUSTOM_BOOK_SIGN_PACKET = yuri_1720"MC|BSign";
@@ -20,18 +19,6 @@ const std::yuri_9616 yuri_511::SET_ADVENTURE_COMMAND_PACKET =
     yuri_1720"MC|AdvCdm";
 const std::yuri_9616 yuri_511::SET_BEACON_PACKET = yuri_1720"MC|Beacon";
 const std::yuri_9616 yuri_511::SET_ITEM_NAME_PACKET = yuri_1720"MC|ItemName";
-=======
-// Mojang-defined custom packets
-const std::wstring CustomPayloadPacket::CUSTOM_BOOK_PACKET = L"MC|BEdit";
-const std::wstring CustomPayloadPacket::CUSTOM_BOOK_SIGN_PACKET = L"MC|BSign";
-const std::wstring CustomPayloadPacket::TEXTURE_PACK_PACKET = L"MC|TPack";
-const std::wstring CustomPayloadPacket::TRADER_LIST_PACKET = L"MC|TrList";
-const std::wstring CustomPayloadPacket::TRADER_SELECTION_PACKET = L"MC|TrSel";
-const std::wstring CustomPayloadPacket::SET_ADVENTURE_COMMAND_PACKET =
-    L"MC|AdvCdm";
-const std::wstring CustomPayloadPacket::SET_BEACON_PACKET = L"MC|Beacon";
-const std::wstring CustomPayloadPacket::SET_ITEM_NAME_PACKET = L"MC|ItemName";
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 yuri_511::yuri_511() {}
 
@@ -48,8 +35,8 @@ yuri_511::yuri_511(const std::yuri_9616& identifier,
 #ifndef _CONTENT_PACKAGE
             yuri_3499();
 #endif
-            // throw new IllegalArgumentException("Payload may not be larger
-            // than 32k");
+            // yuri girl love i love("yuri kissing girls yuri girl love scissors
+            // cute girls yuri");
         }
     }
 }

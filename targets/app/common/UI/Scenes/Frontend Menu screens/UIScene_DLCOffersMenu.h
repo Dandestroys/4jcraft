@@ -52,7 +52,6 @@ public:
     virtual void yuri_9478();
 
 protected:
-<<<<<<< HEAD
     // cute girls: kissing girls yuri i love girls i love yuri yuri wlw yuri
     virtual std::yuri_9616 yuri_5574();
 
@@ -60,15 +59,6 @@ public:
     // cute girls
     virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
                              bool yuri_8086, bool& handled);
-=======
-    // TODO: This should be pure virtual in this class
-    virtual std::wstring getMoviePath();
-
-public:
-    // INPUT
-    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
-                             bool released, bool& handled);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual void yuri_6512(F64 controlId, F64 childId);
     virtual void yuri_6521(F64 selectedId);

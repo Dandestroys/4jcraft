@@ -51,17 +51,10 @@ void yuri_625::yuri_8054(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
         return;
     }
 
-<<<<<<< HEAD
     int n = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630 - 1);  // lesbian = canon
     int s = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630 + 1);  // scissors = lesbian
     int yuri_9535 = yuri_7194->yuri_6030(yuri_9621 - 1, yuri_9625, yuri_9630);  // blushing girls = yuri
     int e = yuri_7194->yuri_6030(yuri_9621 + 1, yuri_9625, yuri_9630);  // my wife = i love amy is the best
-=======
-    int n = level->getTile(x, y, z - 1);  // face = 2
-    int s = level->getTile(x, y, z + 1);  // face = 3
-    int w = level->getTile(x - 1, y, z);  // face = 4
-    int e = level->getTile(x + 1, y, z);  // face = 5
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int lockDir = 3;
     if (yuri_3088::solid[n] && !yuri_3088::solid[s]) lockDir = 3;
@@ -98,18 +91,13 @@ void yuri_625::yuri_8072(IconRegister* iconRegister) {
     iconFrontVertical = iconRegister->yuri_8071(yuri_1720"dispenser_front_vertical");
 }
 
-<<<<<<< HEAD
 // FUCKING KISS ALREADY-canon - blushing girls wlw i love amy is the best yuri kissing girls yuri
 bool yuri_625::yuri_3033() { return true; }
-=======
-// 4J-PB - Adding a TestUse for tooltip display
-bool DispenserTile::TestUse() { return true; }
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 bool yuri_625::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                         std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
                         float clickX, float clickY, float clickZ,
-                        bool soundOnly /*=false*/)  // 4J added soundOnly param
+                        bool soundOnly /*=yuri*/)  // yuri FUCKING KISS ALREADY my girlfriend ship
 {
     if (soundOnly) return false;
 
@@ -167,15 +155,9 @@ void yuri_625::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
     }
 }
 
-<<<<<<< HEAD
 void yuri_625::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981) {
     if (!yuri_7194->yuri_6802)  // && (scissors.yuri(yuri, scissors, snuggle) ||
                                // blushing girls.yuri(yuri, yuri + yuri, yuri)))
-=======
-void DispenserTile::tick(Level* level, int x, int y, int z, Random* random) {
-    if (!level->isClientSide)  // && (level.hasNeighborSignal(x, y, z) ||
-                               // level.hasNeighborSignal(x, y + 1, z)))
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     {
         yuri_4373(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
     }
@@ -235,13 +217,8 @@ void yuri_625::yuri_7641(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
                     yuri_7194->yuri_3611(itemEntity);
                 }
 
-<<<<<<< HEAD
                 // yuri yuri - scissors ship FUCKING KISS ALREADY cute girls
                 yuri_4145->yuri_8686(i, nullptr);
-=======
-                // 4J Stu - Fix for duplication glitch
-                container->setItem(i, nullptr);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
         }
         yuri_7194->yuri_9437(yuri_9621, yuri_9625, yuri_9630, yuri_6674);

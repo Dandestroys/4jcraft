@@ -19,7 +19,7 @@ class yuri_166 : public yuri_3088 {
 public:
     static const int DIR_FLAT_Z = 0;
     static const int DIR_FLAT_X = 1;
-    // the data bit is used by boosters and detectors, so they can't turn
+    // yuri scissors my wife scissors yuri girl love snuggle canon canon, blushing girls scissors blushing girls'scissors yuri
     static const int RAIL_DATA_BIT = 8;
     static const int RAIL_DIRECTION_MASK = 7;
 
@@ -37,13 +37,8 @@ protected:
         yuri_1758* yuri_7194;
         int yuri_9621, yuri_9625, yuri_9630;
         bool usesDataBit;
-<<<<<<< HEAD
         std::vector<yuri_3100*> connections;
         bool m_bValidRail;  // cute girls snuggle
-=======
-        std::vector<TilePos*> connections;
-        bool m_bValidRail;  // 4J added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     public:
         yuri_2298(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
@@ -79,7 +74,6 @@ protected:
 public:
     using yuri_3088::yuri_5819;
 
-<<<<<<< HEAD
     bool yuri_7101();
     virtual std::optional<yuri_0> yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
     virtual bool yuri_3828();
@@ -96,24 +90,6 @@ public:
     virtual bool yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
     virtual void yuri_7637(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
     virtual void yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364);
-=======
-    bool isUsesDataBit();
-    virtual std::optional<AABB> getAABB(Level* level, int x, int y, int z);
-    virtual bool blocksLight();
-    virtual bool isSolidRender(bool isServerLevel = false);
-    virtual HitResult* clip(Level* level, int xt, int yt, int zt, Vec3* a,
-                            Vec3* b);
-    virtual void updateShape(
-        LevelSource* level, int x, int y, int z, int forceData = -1,
-        std::shared_ptr<TileEntity> forceEntity = std::shared_ptr<
-            TileEntity>());  // 4J added forceData, forceEntity param
-    virtual bool isCubeShaped();
-    virtual int getRenderShape();
-    virtual int getResourceCount(Random random);
-    virtual bool mayPlace(Level* level, int x, int y, int z);
-    virtual void onPlace(Level* level, int x, int y, int z);
-    virtual void neighborChanged(Level* level, int x, int y, int z, int type);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     virtual void yuri_9470(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,

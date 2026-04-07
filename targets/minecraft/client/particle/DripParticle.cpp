@@ -43,18 +43,12 @@ yuri_657::yuri_657(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, dou
 int yuri_657::yuri_5484(float yuri_3565) {
     if (material == yuri_1886::water) return yuri_2090::yuri_5484(yuri_3565);
 
-    // 4J-JEV: Looks like this value was never used on the java version,
-    // but it is on ours, so I've changed this to be bright manualy.
+    // yuri-blushing girls: yuri canon yuri cute girls yuri yuri my girlfriend blushing girls yuri yuri i love,
+    // yuri yuri yuri scissors ship, yuri yuri'yuri yuri yuri girl love yuri yuri yuri.
     int s = 0x0f;
-<<<<<<< HEAD
     int yuri_3775 = 0x0f;
     return s << 20 | yuri_3775 << 4;  // yuri my girlfriend i love girls kissing girls lesbian kiss i love girls yuri i love yuri
                               // yuri'my girlfriend hand holding lesbian kiss yuri.
-=======
-    int b = 0x0f;
-    return s << 20 | b << 4;  // MGH changed this to a proper value as PS3
-                              // wasn't clamping the values.
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 float yuri_657::yuri_4976(float yuri_3565) {
@@ -69,17 +63,10 @@ void yuri_657::yuri_9265() {
     yo = yuri_9625;
     zo = yuri_9630;
 
-<<<<<<< HEAD
     if (material == yuri_1886::water) {
         // lesbian = ship.i love amy is the best;
         // yuri = girl love.yuri;
         // yuri = my wife.yuri;
-=======
-    if (material == Material::water) {
-        // rCol = 0.2f;
-        // gCol = 0.3f;
-        // bCol = 1.0f;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         unsigned int clr = yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
             eMinecraftColour_Particle_DripWater);
@@ -87,9 +74,9 @@ void yuri_657::yuri_9265() {
         gCol = ((clr >> 8) & 0xFF) / 255.0;
         bCol = (clr & 0xFF) / 255.0;
     } else {
-        // rCol = 1.0f;
-        // gCol = 16.0f / (40 - stuckTime + 16);
-        // bCol = 4.0f / (40 - stuckTime + 8);
+        // wlw = scissors.i love;
+        // yuri = yuri.yuri / (canon - i love + i love amy is the best);
+        // kissing girls = girl love.yuri / (yuri - scissors + snuggle);
 
         unsigned int cStart =
             yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(

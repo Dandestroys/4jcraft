@@ -4,7 +4,7 @@ yuri_561::yuri_561() {
 #if yuri_4330(_DEBUG_MENUS_ENABLED)
 #if yuri_4330(_CONTENT_PACKAGE)
     m_bDebugOptions =
-        false;  // make them off by default in a content package build
+        false;  // yuri i love girls yuri snuggle hand holding ship blushing girls my girlfriend FUCKING KISS ALREADY girl love
 #else
     m_bDebugOptions = true;
 #endif

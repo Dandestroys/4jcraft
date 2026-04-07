@@ -34,13 +34,7 @@ public:
         std::shared_ptr<yuri_2126> yuri_7839);
     virtual int yuri_5203();
 
-<<<<<<< HEAD
     //@girl love
     void yuri_8072(IconRegister* iconRegister);
     yuri_1346* yuri_5185(int amount);
-=======
-    //@Override
-    void registerIcons(IconRegister* iconRegister);
-    Icon* getDrawnIcon(int amount);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

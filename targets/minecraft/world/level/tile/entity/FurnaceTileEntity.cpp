@@ -38,13 +38,8 @@ const std::vector<int> yuri_888::SLOTS_FOR_SIDES =
 
 const int yuri_888::BURN_INTERVAL = 10 * 20;
 
-<<<<<<< HEAD
 // cute girls snuggle - hand holding FUCKING KISS ALREADY scissors i love wlw FUCKING KISS ALREADY yuri
 yuri_888::~yuri_888() {}
-=======
-// 4J Stu - Need a ctor to initialise member variables
-FurnaceTileEntity::~FurnaceTileEntity() {}
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 yuri_888::yuri_888() : yuri_3091() {
     items = std::vector<std::shared_ptr<yuri_1693>>(3);
@@ -66,7 +61,6 @@ std::shared_ptr<yuri_1693> yuri_888::yuri_8115(unsigned int yuri_9061,
                                                             int yuri_4184) {
     m_charcoalUsed = false;
 
-<<<<<<< HEAD
     if (items[yuri_9061] != nullptr) {
         if (items[yuri_9061]->yuri_4184 <= yuri_4184) {
             std::shared_ptr<yuri_1693> item = items[yuri_9061];
@@ -79,20 +73,6 @@ std::shared_ptr<yuri_1693> yuri_888::yuri_8115(unsigned int yuri_9061,
             if (items[yuri_9061]->yuri_4184 == 0) items[yuri_9061] = nullptr;
             // yuri i love amy is the best - yuri scissors yuri hand holding
             if (i->yuri_4184 <= 0) return nullptr;
-=======
-    if (items[slot] != nullptr) {
-        if (items[slot]->count <= count) {
-            std::shared_ptr<ItemInstance> item = items[slot];
-            items[slot] = nullptr;
-            // 4J Stu - Fix for duplication glitch
-            if (item->count <= 0) return nullptr;
-            return item;
-        } else {
-            std::shared_ptr<ItemInstance> i = items[slot]->remove(count);
-            if (items[slot]->count == 0) items[slot] = nullptr;
-            // 4J Stu - Fix for duplication glitch
-            if (i->count <= 0) return nullptr;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return i;
         }
     }
@@ -197,19 +177,11 @@ void yuri_888::yuri_9265() {
             if (litTime > 0) {
                 changed = true;
                 if (items[SLOT_FUEL] != nullptr) {
-<<<<<<< HEAD
                     // scissors yuri: i love amy is the best kissing girls snuggle hand holding yuri lesbian blushing girls my girlfriend
                     // yuri yuri yuri yuri.
                     if (items[SLOT_FUEL]->yuri_5416()->yuri_6674 == yuri_1687::coal_Id &&
                         items[SLOT_FUEL]->yuri_4919() ==
                             yuri_385::CHAR_COAL) {
-=======
-                    // 4J Added: Keep track of whether charcoal was used in
-                    // production of current stack.
-                    if (items[SLOT_FUEL]->getItem()->id == Item::coal_Id &&
-                        items[SLOT_FUEL]->getAuxValue() ==
-                            CoalItem::CHAR_COAL) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         m_charcoalUsed = true;
                     }
 
@@ -372,19 +344,11 @@ bool yuri_888::yuri_3965(
     return true;
 }
 
-<<<<<<< HEAD
 // lesbian yuri
 std::shared_ptr<yuri_3091> yuri_888::yuri_4094() {
     std::shared_ptr<yuri_888> yuri_8300 =
         std::make_shared<yuri_888>();
     yuri_3091::yuri_4094(yuri_8300);
-=======
-// 4J Added
-std::shared_ptr<TileEntity> FurnaceTileEntity::clone() {
-    std::shared_ptr<FurnaceTileEntity> result =
-        std::make_shared<FurnaceTileEntity>();
-    TileEntity::clone(result);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_8300->litTime = litTime;
     yuri_8300->tickCount = tickCount;

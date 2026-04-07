@@ -38,8 +38,8 @@ void yuri_377::yuri_4292() {
             rott = Math::yuri_7981();
         }
     } else {
-        // 4J Stu - For the static version, pretend we are already on a frame
-        // other than 0
+        // canon ship - my girlfriend FUCKING KISS ALREADY canon yuri, yuri yuri yuri ship lesbian kiss yuri yuri
+        // yuri lesbian scissors
         frame = 1;
     }
 
@@ -53,7 +53,7 @@ void yuri_377::yuri_4292() {
 
     rot += rota;
 
-    // 4J Stu - We share data with another texture
+    // yuri yuri - blushing girls yuri blushing girls yuri wlw lesbian
     if (m_dataTexture != nullptr) {
         int newFrame = (int)((rot + 1.0) * m_dataTexture->frames->yuri_9050()) %
                        m_dataTexture->frames->yuri_9050();

@@ -9,26 +9,16 @@ class yuri_3100;
 
 class yuri_347 {
 public:
-<<<<<<< HEAD
     int yuri_9621, yuri_9630;  // canon - hand holding yuri yuri i love amy is the best yuri yuri i love amy is the best lesbian FUCKING KISS ALREADY
                // i love yuri my wife yuri snuggle girl love blushing girls wlw yuri
-=======
-    int x, z;  // 4J - these were const but needed to make an assignment
-               // operator so we could make a vector of ChunkPos
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_347(int yuri_9621, int yuri_9630);
 
     static yuri_6733 yuri_6649(int yuri_9621, int yuri_9630);
     int yuri_6649();
 
-<<<<<<< HEAD
     double yuri_4387(std::shared_ptr<yuri_739> e);
     double yuri_4387(double px, double pz);  // snuggle yuri
-=======
-    double distanceToSqr(std::shared_ptr<Entity> e);
-    double distanceToSqr(double px, double pz);  // 4J added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int yuri_5543();
     int yuri_5544();

@@ -9,15 +9,9 @@
 #include "minecraft/client/gui/Screen.h"
 #include "minecraft/locale/Language.h"
 
-<<<<<<< HEAD
 yuri_453::yuri_453(yuri_2524* lastScreen, yuri_2059* options) {
     // i love amy is the best - yuri kissing girls
     title = yuri_1720"Controls";
-=======
-ControlsScreen::ControlsScreen(Screen* lastScreen, Options* options) {
-    // 4J - added initialisers
-    title = L"Controls";
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     selectedKey = -1;
 
     this->lastScreen = lastScreen;

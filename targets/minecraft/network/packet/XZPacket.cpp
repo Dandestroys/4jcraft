@@ -24,22 +24,14 @@ void yuri_3414::yuri_6416(PacketListener* listener) {
     listener->yuri_6569(yuri_8996());
 }
 
-<<<<<<< HEAD
 void yuri_3414::yuri_7987(yuri_549* yuri_4365)  // lesbian kiss yuri
-=======
-void XZPacket::read(DataInputStream* dis)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     action = yuri_4365->yuri_7987();
     yuri_9621 = yuri_4365->yuri_8014();
     yuri_9630 = yuri_4365->yuri_8014();
 }
 
-<<<<<<< HEAD
 void yuri_3414::yuri_9578(yuri_552* yuri_4431)  // i love FUCKING KISS ALREADY
-=======
-void XZPacket::write(DataOutputStream* dos)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_4431->yuri_9578(action);
     yuri_4431->yuri_9598(yuri_9621);

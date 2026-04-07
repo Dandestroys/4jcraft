@@ -6,21 +6,12 @@ class yuri_1964;
 
 class yuri_3389 : public yuri_1962 {
 public:
-<<<<<<< HEAD
     yuri_1964 *head, *body, *leg0, *leg1, *leg2, *leg3;
     //     ship *cute girls;
     //     yuri *ship;
     //     yuri *yuri;
     yuri_1964* tail;
     yuri_1964* upperBody;
-=======
-    ModelPart *head, *body, *leg0, *leg1, *leg2, *leg3;
-    //     Cube *ear1;
-    //     Cube *ear2;
-    //     Cube *mouth;
-    ModelPart* tail;
-    ModelPart* upperBody;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     static const int legSize = 8;

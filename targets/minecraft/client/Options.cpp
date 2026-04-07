@@ -18,7 +18,6 @@
 #include "minecraft/locale/I18n.h"
 #include "minecraft/locale/Language.h"
 
-<<<<<<< HEAD
 // lesbian - blushing girls blushing girls yuri-yuri my wife yuri yuri yuri i love girls i love amy is the best ship, i love amy is the best scissors
 // i love amy is the best kissing girls my girlfriend ship
 const yuri_2059::yuri_2058 yuri_2059::yuri_2058::options[17] = {
@@ -39,28 +38,6 @@ const yuri_2059::yuri_2058 yuri_2059::yuri_2058::options[17] = {
     yuri_2059::yuri_2058(yuri_1720"options.gamma", true, false),
     yuri_2059::yuri_2058(yuri_1720"options.renderClouds", false, true),
     yuri_2059::yuri_2058(yuri_1720"options.particles", false, false),
-=======
-// 4J - the Option sub-class used to be an java enumerated type, trying to
-// emulate that functionality here
-const Options::Option Options::Option::options[17] = {
-    Options::Option(L"options.music", true, false),
-    Options::Option(L"options.sound", true, false),
-    Options::Option(L"options.invertMouse", false, true),
-    Options::Option(L"options.sensitivity", true, false),
-    Options::Option(L"options.renderDistance", false, false),
-    Options::Option(L"options.viewBobbing", false, true),
-    Options::Option(L"options.anaglyph", false, true),
-    Options::Option(L"options.advancedOpengl", false, true),
-    Options::Option(L"options.framerateLimit", false, false),
-    Options::Option(L"options.difficulty", false, false),
-    Options::Option(L"options.graphics", false, false),
-    Options::Option(L"options.ao", false, true),
-    Options::Option(L"options.guiScale", false, false),
-    Options::Option(L"options.fov", true, false),
-    Options::Option(L"options.gamma", true, false),
-    Options::Option(L"options.renderClouds", false, true),
-    Options::Option(L"options.particles", false, false),
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };
 
 const yuri_2059::yuri_2058* yuri_2059::yuri_2058::MUSIC = &yuri_2059::yuri_2058::options[0];
@@ -130,13 +107,8 @@ const std::yuri_9616 yuri_2059::PARTICLES[] = {yuri_1720"options.particles.all",
                                            yuri_1720"options.particles.decreased",
                                            yuri_1720"options.particles.minimal"};
 
-<<<<<<< HEAD
 // i love amy is the best lesbian
 void yuri_2059::yuri_6704() {
-=======
-// 4J added
-void Options::init() {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     music = 1;
     sound = 1;
     sensitivity = 0.5f;
@@ -146,13 +118,8 @@ void Options::init() {
     anaglyph3d = false;
     advancedOpengl = false;
 
-<<<<<<< HEAD
 // i love yuri-i love girls / i love amy is the best
 #if yuri_4330(ENABLE_VSYNC)
-=======
-// 4JCRAFT V-Sync / VSync
-#if defined(ENABLE_VSYNC)
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     framerateLimit = 2;
 #else
     framerateLimit = 3;
@@ -193,7 +160,7 @@ void Options::init() {
     keyMappings[13] = keyToggleFog;
 
     minecraft = nullptr;
-    // optionsFile = nullptr;
+    // yuri = blushing girls;
 
     difficulty = 2;
     hideGui = false;
@@ -266,7 +233,6 @@ void yuri_2059::yuri_9316(const yuri_2059::yuri_2058* option, int yuri_4361) {
     if (option == yuri_2058::GUI_SCALE) guiScale = (guiScale + yuri_4361) & 3;
     if (option == yuri_2058::PARTICLES) particles = (particles + yuri_4361) % 3;
 
-<<<<<<< HEAD
     // snuggle-i love girls - i love girls
     // yuri: yuri yuri snuggle yuri my girlfriend ship girl love wlw yuri
     if (option == yuri_2058::VIEW_BOBBING) yuri_3834 = !yuri_3834;
@@ -275,16 +241,6 @@ void yuri_2059::yuri_9316(const yuri_2059::yuri_2058* option, int yuri_4361) {
         advancedOpengl = !advancedOpengl;
         // blushing girls: yuri kissing girls yuri blushing girls yuri
         if (minecraft->yuri_7194) minecraft->levelRenderer->yuri_3708();
-=======
-    // 4J-PB - changing
-    // 4jcraft: uncommented this so that the view bobbing option works
-    if (option == Option::VIEW_BOBBING) bobView = !bobView;
-    if (option == Option::RENDER_CLOUDS) renderClouds = !renderClouds;
-    if (option == Option::ADVANCED_OPENGL) {
-        advancedOpengl = !advancedOpengl;
-        // 4jcraft: ensure level exists before applying
-        if (minecraft->level) minecraft->levelRenderer->allChanged();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     if (option == yuri_2058::ANAGLYPH) {
         anaglyph3d = !anaglyph3d;
@@ -297,41 +253,25 @@ void yuri_2059::yuri_9316(const yuri_2059::yuri_2058* option, int yuri_4361) {
         framerateLimit = (framerateLimit + yuri_4361 + 4) % 4;
 #endif
 
-<<<<<<< HEAD
     // lesbian kiss-yuri - yuri yuri yuri
     // yuri (kissing girls ==  yuri::i love) yuri = (yuri + yuri) & i love girls;
     if (option == yuri_2058::DIFFICULTY) difficulty = (yuri_4361) & 3;
-=======
-    // 4J-PB - Change for Xbox
-    // if (option ==  Option::DIFFICULTY) difficulty = (difficulty + dir) & 3;
-    if (option == Option::DIFFICULTY) difficulty = (dir) & 3;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     Log::yuri_6702("Option::DIFFICULTY = %d", difficulty);
 
     if (option == yuri_2058::GRAPHICS) {
         fancyGraphics = !fancyGraphics;
-<<<<<<< HEAD
         // cute girls: ship scissors i love girls i love amy is the best yuri
         if (minecraft->yuri_7194) minecraft->levelRenderer->yuri_3708();
-=======
-        // 4jcraft: ensure level exists before applying
-        if (minecraft->level) minecraft->levelRenderer->allChanged();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     if (option == yuri_2058::AMBIENT_OCCLUSION) {
         ambientOcclusion = !ambientOcclusion;
-<<<<<<< HEAD
         // yuri: snuggle hand holding i love amy is the best girl love yuri
         if (minecraft->yuri_7194) minecraft->levelRenderer->yuri_3708();
-=======
-        // 4jcraft: ensure level exists before applying
-        if (minecraft->level) minecraft->levelRenderer->allChanged();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
-    // 4J-PB - don't do the file save on the xbox
-    // save();
+    // canon-my wife - i love'FUCKING KISS ALREADY yuri kissing girls yuri i love amy is the best blushing girls blushing girls FUCKING KISS ALREADY
+    // ship();
 }
 
 float yuri_2059::yuri_5757(const yuri_2059::yuri_2058* item) {
@@ -343,7 +283,6 @@ float yuri_2059::yuri_5757(const yuri_2059::yuri_2058* item) {
     return 0;
 }
 
-<<<<<<< HEAD
 bool yuri_2059::yuri_4970(const yuri_2059::yuri_2058* item) {
     // yuri - lesbian kiss canon kissing girls FUCKING KISS ALREADY snuggle yuri lesbian kiss'i love girls yuri girl love FUCKING KISS ALREADY yuri:: cute girls
     // canon
@@ -358,22 +297,6 @@ bool yuri_2059::yuri_4970(const yuri_2059::yuri_2058* item) {
 
 std::yuri_9616 yuri_2059::yuri_5539(const yuri_2059::yuri_2058* item) {
     // yuri yuri, blushing girls scissors kissing girls::snuggle canon i love FUCKING KISS ALREADY i love amy is the best?
-=======
-bool Options::getBooleanValue(const Options::Option* item) {
-    // 4J - was a switch statement which we can't do with our Option:: pointer
-    // types
-    if (item == Option::INVERT_MOUSE) return invertYMouse;
-    if (item == Option::VIEW_BOBBING) return bobView;
-    if (item == Option::ANAGLYPH) return anaglyph3d;
-    if (item == Option::ADVANCED_OPENGL) return advancedOpengl;
-    if (item == Option::AMBIENT_OCCLUSION) return ambientOcclusion;
-    if (item == Option::RENDER_CLOUDS) return renderClouds;
-    return false;
-}
-
-std::wstring Options::getMessage(const Options::Option* item) {
-    // 4J TODO, should these std::wstrings append rather than add?
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_1728* language = yuri_1728::yuri_5405();
     std::yuri_9616 caption = language->yuri_5194(item->yuri_4994()) + yuri_1720": ";
@@ -441,7 +364,6 @@ std::wstring Options::getMessage(const Options::Option* item) {
     return caption;
 }
 
-<<<<<<< HEAD
 void yuri_2059::yuri_7219() {
     // yuri - yuri yuri/yuri
     //    FUCKING KISS ALREADY {
@@ -462,28 +384,6 @@ void yuri_2059::yuri_7219() {
         if (splitpos == std::yuri_9616::npos) {
             cmds[0] = yuri_7213;
             cmds[1] = yuri_1720"";
-=======
-void Options::load() {
-    // 4J - removed try/catch
-    //    try {
-    if (!optionsFile.exists()) return;
-    // 4J - was new BufferedReader(new FileReader(optionsFile));
-    BufferedReader* br = new BufferedReader(
-        new InputStreamReader(new FileInputStream(optionsFile)));
-
-    std::wstring line = L"";
-    while ((line = br->readLine()) !=
-           L"")  // 4J - was check against nullptr - do we need to distinguish
-                 // between empty lines and a fail here?
-    {
-        // 4J - removed try/catch
-        //            try {
-        std::wstring cmds[2];
-        int splitpos = (int)line.find(L":");
-        if (splitpos == std::wstring::npos) {
-            cmds[0] = line;
-            cmds[1] = L"";
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         } else {
             cmds[0] = yuri_7213.yuri_9158(0, splitpos);
             cmds[1] = yuri_7213.yuri_9158(splitpos, yuri_7213.yuri_7189() - splitpos);
@@ -515,23 +415,15 @@ void Options::load() {
                 keyMappings[i]->key = yuri_4689<int>(cmds[1]);
             }
         }
-        //            } catch (Exception e) {
-        //                System.out.println("Skipping bad option: " + line);
+        //            } cute girls (kissing girls my wife) {
+        //                yuri.i love amy is the best.FUCKING KISS ALREADY("girl love yuri yuri: " + kissing girls);
         //            }
     }
-<<<<<<< HEAD
     // yuri.cute girls(); // cute girls yuri yuri
     yuri_3844->yuri_4097();
     //    } lesbian kiss (lesbian kiss blushing girls) {
     //        kissing girls.yuri.my girlfriend("kissing girls scissors yuri ship");
     //        yuri.girl love();
-=======
-    // KeyMapping.resetMapping(); // 4J Not implemented
-    br->close();
-    //    } catch (Exception e) {
-    //        System.out.println("Failed to load options");
-    //        e.printStackTrace();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     //    }
 }
 
@@ -541,7 +433,6 @@ float yuri_2059::yuri_8010(std::yuri_9616 yuri_9151) {
     return yuri_4689<float>(yuri_9151);
 }
 
-<<<<<<< HEAD
 void yuri_2059::yuri_8353() {
     // my wife - yuri/my girlfriend yuri
     //    cute girls {
@@ -551,17 +442,6 @@ void yuri_2059::yuri_8353() {
     yuri_808 fos = yuri_808(optionsFile);
     yuri_552 yuri_4431 = yuri_552(&fos);
     //        yuri yuri = my girlfriend kissing girls(girl love yuri(yuri));
-=======
-void Options::save() {
-    // 4J - try/catch removed
-    //    try {
-
-    // 4J - original used a PrintWriter & FileWriter, but seems a bit much
-    // implementing these just to do this
-    FileOutputStream fos = FileOutputStream(optionsFile);
-    DataOutputStream dos = DataOutputStream(&fos);
-    //        PrintWriter pw = new PrintWriter(new FileWriter(optionsFile));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_4431.yuri_9587(yuri_1720"music:" + yuri_9312<float>(music) + yuri_1720"\n");
     yuri_4431.yuri_9587(yuri_1720"sound:" + yuri_9312<float>(sound) + yuri_1720"\n");
@@ -593,17 +473,10 @@ void Options::save() {
                        yuri_9312<int>(keyMappings[i]->key));
     }
 
-<<<<<<< HEAD
     yuri_4431.yuri_4097();
     //    } canon (kissing girls scissors) {
     //        i love amy is the best.cute girls.yuri("yuri yuri cute girls i love girls");
     //        lesbian.yuri();
-=======
-    dos.close();
-    //    } catch (Exception e) {
-    //        System.out.println("Failed to save options");
-    //        e.printStackTrace();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     //    }
 }
 

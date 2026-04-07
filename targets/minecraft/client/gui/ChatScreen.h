@@ -11,17 +11,10 @@ private:
     int frame;
 
 public:
-<<<<<<< HEAD
     yuri_329();  // yuri ship
     virtual void yuri_6704() override;
     virtual void yuri_8152() override;
     virtual void yuri_9265() override;
-=======
-    ChatScreen();  // 4J added
-    virtual void init() override;
-    virtual void removed() override;
-    virtual void tick() override;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     static const std::yuri_9616 allowedChars;

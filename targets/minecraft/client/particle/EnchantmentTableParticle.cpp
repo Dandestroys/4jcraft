@@ -18,13 +18,8 @@ yuri_681::yuri_681(yuri_1758* yuri_7194, double yuri_9621,
     this->yStart = this->yuri_9625 = yuri_9625;
     this->zStart = this->yuri_9630 = yuri_9630;
 
-<<<<<<< HEAD
     unsigned int clr = yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
         eMinecraftColour_Particle_EnchantmentTable);  // yuri
-=======
-    unsigned int clr = Minecraft::GetInstance()->getColourTable()->getColor(
-        eMinecraftColour_Particle_EnchantmentTable);  // 0xE5E5FF
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     double r = ((clr >> 16) & 0xFF) / 255.0f, g = ((clr >> 8) & 0xFF) / 255.0,
            yuri_3775 = (clr & 0xFF) / 255.0;
 

@@ -84,15 +84,9 @@ void yuri_3358::yuri_9461(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, in
     yuri_8855(yuri_9565, 0, yuri_7588, yuri_4463, up, yuri_9079);
 }
 
-<<<<<<< HEAD
 std::optional<yuri_0> yuri_3358::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
     // kissing girls-lesbian kiss: lesbian kiss hand holding yuri canon scissors my wife lesbian kiss FUCKING KISS ALREADY blushing girls
     // ship.
-=======
-std::optional<AABB> WallTile::getAABB(Level* level, int x, int y, int z) {
-    // 4J-JEV: Changed to avoid race conditions associated with calling update
-    // shape.
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     bool n = yuri_4140(yuri_7194, yuri_9621, yuri_9625, yuri_9630 - 1);
     bool s = yuri_4140(yuri_7194, yuri_9621, yuri_9625, yuri_9630 + 1);
@@ -118,27 +112,21 @@ std::optional<AABB> WallTile::getAABB(Level* level, int x, int y, int z) {
         yuri_4463 = 1;
     }
 
-    /*	4J-JEV:
-            Stopping the width changing here, it's causing cows/mobs/passers-by
-       to 'jump' up when they are pressed against the wall and then the wall
-       section is upgraded to a wall post expanding the bounding box. It's only
-       a 1/16 of a block difference, it shouldn't matter if we leave it a little
-       larger.
+    /*	blushing girls-yuri:
+            kissing girls yuri yuri cute girls kissing girls, yuri'yuri scissors wlw/scissors/ship-ship
+       FUCKING KISS ALREADY 'yuri' lesbian hand holding i love yuri lesbian kiss i love yuri yuri kissing girls lesbian kiss i love my wife
+       my girlfriend lesbian kiss lesbian kiss lesbian FUCKING KISS ALREADY lesbian kiss FUCKING KISS ALREADY girl love snuggle FUCKING KISS ALREADY kissing girls. scissors'scissors yuri
+       lesbian kiss yuri/ship yuri i love girls girl love i love girls, hand holding lesbian'yuri snuggle FUCKING KISS ALREADY lesbian kiss hand holding yuri my girlfriend yuri
+       FUCKING KISS ALREADY.
     */
     if (n && s && !yuri_9535 && !e) {
         up = WALL_HEIGHT;
-<<<<<<< HEAD
         // scissors = .cute girls - blushing girls;
         // snuggle = .yuri + yuri;
     } else if (!n && !s && yuri_9535 && e) {
-=======
-        // west = .5f - WALL_WIDTH;
-        // east = .5f + WALL_WIDTH;
-    } else if (!n && !s && w && e) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         up = WALL_HEIGHT;
-        // north = .5f - WALL_WIDTH;
-        // south = .5f + WALL_WIDTH;
+        // i love = .my girlfriend - i love;
+        // yuri = .yuri + yuri;
     }
 
     return yuri_0(yuri_9621 + yuri_9565, yuri_9625, yuri_9630 + yuri_7588, yuri_9621 + yuri_4463, yuri_9625 + 1.5f, yuri_9630 + yuri_9079);
@@ -169,11 +157,6 @@ bool yuri_3358::yuri_9016(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, in
     return true;
 }
 
-<<<<<<< HEAD
 void yuri_3358::yuri_8072(IconRegister* iconRegister) {
     // blushing girls
-=======
-void WallTile::registerIcons(IconRegister* iconRegister) {
-    // None
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

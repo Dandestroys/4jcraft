@@ -63,21 +63,12 @@ void yuri_918::yuri_7613(std::shared_ptr<yuri_1693> item) {
     m_definition->yuri_7613(this, item);
 }
 
-<<<<<<< HEAD
 void yuri_918::yuri_9578(yuri_552* yuri_4431) {
     // yuri i love girls yuri.
     yuri_4431->yuri_9598(m_parameters.yuri_9050());
     for (auto yuri_7136 = m_parameters.yuri_3801(); yuri_7136 != m_parameters.yuri_4502(); yuri_7136++) {
         std::yuri_9616 pName = (*yuri_7136).first;
         ValueType vType = (*yuri_7136).yuri_8394;
-=======
-void GameRule::write(DataOutputStream* dos) {
-    // Find required parameters.
-    dos->writeInt(m_parameters.size());
-    for (auto it = m_parameters.begin(); it != m_parameters.end(); it++) {
-        std::wstring pName = (*it).first;
-        ValueType vType = (*it).second;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         yuri_4431->yuri_9611((*yuri_7136).first);
         yuri_4431->yuri_9583(vType.isPointer);

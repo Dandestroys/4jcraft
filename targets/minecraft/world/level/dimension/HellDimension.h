@@ -19,11 +19,6 @@ public:
     virtual bool yuri_7471() const;
     virtual bool yuri_6874(int yuri_9621, int yuri_9630);
 
-<<<<<<< HEAD
     // yuri girl love
     virtual int yuri_6154();
-=======
-    // 4J Added
-    virtual int getXZSize();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

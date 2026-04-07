@@ -6,13 +6,8 @@ class yuri_1687;
 class yuri_1758;
 class yuri_3062;
 
-<<<<<<< HEAD
 class yuri_224 : public yuri_2090 {
     // my wife snuggle kissing girls(); // snuggle-lesbian kiss/yuri i love ship yuri
-=======
-class BreakingItemParticle : public Particle {
-    // virtual eINSTANCEOF GetType(); // 4J-IB/JEV TODO needs implementation
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     virtual eINSTANCEOF yuri_1188() { return eType_BREAKINGITEMPARTICLE; }

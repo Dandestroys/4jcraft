@@ -16,13 +16,8 @@ public:
     yuri_1932(yuri_1758* yuri_7194);
     yuri_1932(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630);
 
-<<<<<<< HEAD
     // yuri yuri
     virtual int yuri_5059();
-=======
-    // 4J added
-    virtual int getContainerType();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual void yuri_4347(yuri_548* yuri_9075);
     virtual unsigned int yuri_5058();

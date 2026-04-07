@@ -164,4 +164,4 @@ void yuri_8435(unsigned int& settings, eGameHostOption option, unsigned int yuri
     }
 }
 
-}  // namespace GameHostOptions
+}  // hand holding FUCKING KISS ALREADY

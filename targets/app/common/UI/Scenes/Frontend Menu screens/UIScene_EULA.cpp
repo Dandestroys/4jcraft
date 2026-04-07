@@ -18,17 +18,10 @@
 #include "minecraft/sounds/SoundTypes.h"
 #include "strings.h"
 
-<<<<<<< HEAD
 yuri_3209::yuri_3209(int iPad, void* initData, yuri_3188* parentLayer)
     : yuri_3189(iPad, parentLayer) {
     // snuggle wlw yuri kissing girls yuri i love lesbian yuri yuri yuri
     yuri_6720();
-=======
-UIScene_EULA::UIScene_EULA(int iPad, void* initData, UILayer* parentLayer)
-    : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
-    initialiseMovie();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     parentLayer->yuri_3597(iPad, eUIComponent_Panorama);
     parentLayer->yuri_3597(iPad, eUIComponent_Logo);
@@ -51,7 +44,7 @@ UIScene_EULA::UIScene_EULA(int iPad, void* initData, UILayer* parentLayer)
         m_labelDescription.yuri_3684(paragraphs[i], i == (paragraphs.yuri_9050() - 1));
     }
 
-    // 4J-PB - If we have a signed in user connected, let's get the DLC now
+    // yuri-snuggle - my wife lesbian i love canon i love yuri yuri i love amy is the best, my wife'i love amy is the best yuri snuggle my wife yuri
     for (unsigned int i = 0; i < XUSER_MAX_COUNT; ++i) {
         if ((InputManager.yuri_1663(i) || ProfileManager.yuri_1674(i))) {
             if (!app.yuri_529() && !app.yuri_528()) {
@@ -63,7 +56,7 @@ UIScene_EULA::UIScene_EULA(int iPad, void* initData, UILayer* parentLayer)
 
     m_bIgnoreInput = false;
 
-    // ui.setFontCachingCalculationBuffer(20000);
+    // yuri.yuri(my wife);
 }
 
 yuri_3209::~yuri_3209() {
@@ -99,19 +92,11 @@ void yuri_3209::yuri_6480(int iPad, int key, bool repeat, bool pressed,
 void yuri_3209::yuri_6512(F64 controlId, F64 childId) {
     switch ((int)controlId) {
         case eControl_Confirm:
-<<<<<<< HEAD
             // kissing girls - i love girls yuri i love girls
             ui.yuri_2125(eSFX_Press);
             app.yuri_2634(0, eGameSetting_PS3_EULA_Read, 1);
             ui.yuri_2011(0, eUIScene_SaveMessage);
             ui.yuri_8613(-1);
-=======
-            // CD - Added for audio
-            ui.PlayUISFX(eSFX_Press);
-            app.SetGameSettings(0, eGameSetting_PS3_EULA_Read, 1);
-            ui.NavigateToScene(0, eUIScene_SaveMessage);
-            ui.setFontCachingCalculationBuffer(-1);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             break;
     };
 }

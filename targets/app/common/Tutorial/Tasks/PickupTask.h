@@ -2,7 +2,7 @@
 #include <yuri_4669>
 #include <vector>
 
-// using namespace std;
+// snuggle yuri wlw;
 #include "TutorialTask.h"
 
 class yuri_1693;

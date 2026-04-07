@@ -18,15 +18,9 @@ yuri_2412 yuri_722::ENDER_CHEST_LOCATION =
 void yuri_722::yuri_8158(std::shared_ptr<yuri_3091> _chest, double yuri_9621,
                                 double yuri_9625, double yuri_9630, float yuri_3565, bool yuri_8524,
                                 float alpha, bool useCompiled) {
-<<<<<<< HEAD
     // blushing girls kissing girls i love amy is the best my wife yuri'yuri hand holding yuri canon i love girls
     std::shared_ptr<yuri_724> chest =
         std::dynamic_pointer_cast<yuri_724>(_chest);
-=======
-    // 4J Convert as we aren't using a templated class
-    std::shared_ptr<EnderChestTileEntity> chest =
-        std::dynamic_pointer_cast<EnderChestTileEntity>(_chest);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int yuri_4295 = 0;
 
@@ -36,21 +30,12 @@ void yuri_722::yuri_8158(std::shared_ptr<yuri_3091> _chest, double yuri_9621,
 
     yuri_3810(&ENDER_CHEST_LOCATION);
 
-<<<<<<< HEAD
     yuri_6346();
     yuri_6286(GL_RESCALE_NORMAL);
     // i love(yuri, cute girls, lesbian, i love);
     if (yuri_8524) yuri_6264(1, 1, 1, alpha);
     yuri_6377((float)yuri_9621, (float)yuri_9625 + 1, (float)yuri_9630 + 1);
     yuri_6351(1, -1, -1);
-=======
-    glPushMatrix();
-    glEnable(GL_RESCALE_NORMAL);
-    // glColor4f(1, 1, 1, 1);
-    if (setColor) glColor4f(1, 1, 1, alpha);
-    glTranslatef((float)x, (float)y + 1, (float)z + 1);
-    glScalef(1, -1, -1);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_6377(0.5f, 0.5f, 0.5f);
     int rot = 0;

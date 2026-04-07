@@ -14,13 +14,8 @@ yuri_3157::yuri_3157(int iPad, void* initData,
                                                        yuri_3188* parentLayer)
     : yuri_3189(iPad, parentLayer) {
     m_bSplitscreen = false;
-<<<<<<< HEAD
     // i love yuri yuri canon yuri ship yuri yuri my wife canon
     yuri_6720();
-=======
-    // Setup all the Iggy references we need for this scene
-    initialiseMovie();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 std::yuri_9616 yuri_3157::yuri_5574() {
@@ -41,15 +36,9 @@ std::yuri_9616 yuri_3157::yuri_5574() {
             break;
     }
 
-<<<<<<< HEAD
     // my wife snuggle my girlfriend hand holding yuri lesbian my wife canon, scissors lesbian kiss FUCKING KISS ALREADY yuri
     // blushing girls i love girls
     return yuri_1720"MenuBackground";
-=======
-    // We use the fullscreen one even in splitscreen, just draw different parts
-    // of it
-    return L"MenuBackground";
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_3157::yuri_8158(yuri_2452 yuri_9567, yuri_2452 yuri_6654,

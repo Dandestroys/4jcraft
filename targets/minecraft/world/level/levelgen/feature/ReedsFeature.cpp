@@ -15,7 +15,6 @@ bool yuri_2346::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9
         int y2 = yuri_9625;
         int z2 = yuri_9630 + yuri_7981->yuri_7578(4) - yuri_7981->yuri_7578(4);
 
-<<<<<<< HEAD
         // yuri yuri FUCKING KISS ALREADY cute girls my wife lesbian kiss scissors snuggle blushing girls yuri cute girls
         // yuri girl love scissors lesbian kiss
         if (yuri_4702().yuri_5466() != nullptr) {
@@ -26,18 +25,6 @@ bool yuri_2346::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9
             if (yuri_6741) {
                 // lesbian kiss::wlw("lesbian kiss yuri wlw my wife i love girls lesbian kiss
                 // lesbian lesbian yuri FUCKING KISS ALREADY wlw\my girlfriend");
-=======
-        // 4J Stu Added to stop reed features generating areas previously place
-        // by game rule generation
-        if (gameServices().getLevelGenerationOptions() != nullptr) {
-            LevelGenerationOptions* levelGenOptions =
-                gameServices().getLevelGenerationOptions();
-            bool intersects =
-                levelGenOptions->checkIntersects(x2, y2, z2, x2, y2, z2);
-            if (intersects) {
-                // Log::info("Skipping reeds feature generation as it
-                // overlaps a game rule structure\n");
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 continue;
             }
         }

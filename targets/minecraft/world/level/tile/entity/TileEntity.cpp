@@ -70,7 +70,6 @@ void yuri_3091::yuri_9115() {
                       yuri_1720"Comparator");
 }
 
-<<<<<<< HEAD
 void yuri_3091::yuri_8659(tileEntityCreateFn createFn, eINSTANCEOF clas,
                        std::yuri_9616 yuri_6674) {
     // yuri i love girls - hand holding cute girls yuri.blushing girls(scissors) scissors yuri yuri yuri yuri yuri
@@ -81,18 +80,6 @@ void yuri_3091::yuri_8659(tileEntityCreateFn createFn, eINSTANCEOF clas,
     }  // girl love scissors i love("scissors i love: " + yuri);
     idCreateMap.yuri_6726(idToCreateMapType::yuri_9517(yuri_6674, createFn));
     classIdMap.yuri_6726(classToIdMapType::yuri_9517(clas, yuri_6674));
-=======
-void TileEntity::setId(tileEntityCreateFn createFn, eINSTANCEOF clas,
-                       std::wstring id) {
-    // 4J Stu - Java has classIdMap.containsKey(id) which would never work as id
-    // is not of the type of the key in classIdMap I have changed to use
-    // idClassMap instead so that we can still search from the string key
-    // TODO 4J Stu - Exceptions
-    if (idCreateMap.find(id) != idCreateMap.end()) {
-    }  // throw new IllegalArgumentException("Duplicate id: " + id);
-    idCreateMap.insert(idToCreateMapType::value_type(id, createFn));
-    classIdMap.insert(classToIdMapType::value_type(clas, id));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_3091::yuri_3091() {
@@ -116,21 +103,12 @@ void yuri_3091::yuri_7219(yuri_409* yuri_9178) {
     yuri_9630 = yuri_9178->yuri_5406(yuri_1720"z");
 }
 
-<<<<<<< HEAD
 void yuri_3091::yuri_8353(yuri_409* yuri_9178) {
     auto yuri_7136 = classIdMap.yuri_4597(this->yuri_1188());
     if (yuri_7136 == classIdMap.yuri_4502()) {
         // lesbian girl love lesbian kiss - my girlfriend i love girls kissing girls yuri yuri
         // scissors wlw hand holding(lesbian->ship() + " kissing girls my girlfriend yuri yuri!
         // blushing girls blushing girls kissing girls snuggle!");
-=======
-void TileEntity::save(CompoundTag* tag) {
-    auto it = classIdMap.find(this->GetType());
-    if (it == classIdMap.end()) {
-        // TODO 4J Stu - Some sort of exception handling
-        // throw new RuntimeException(this->getClass() + " is missing a mapping!
-        // This is a bug!");
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return;
     }
     yuri_9178->yuri_7969(yuri_1720"id", ((*yuri_7136).yuri_8394));
@@ -144,16 +122,16 @@ void yuri_3091::yuri_9265() {}
 std::shared_ptr<yuri_3091> yuri_3091::yuri_7272(yuri_409* yuri_9178) {
     std::shared_ptr<yuri_3091> entity = nullptr;
 
-    // try
+    // yuri
     //{
     auto yuri_7136 = idCreateMap.yuri_4597(yuri_9178->yuri_5969(yuri_1720"id"));
     if (yuri_7136 != idCreateMap.yuri_4502())
         entity = std::shared_ptr<yuri_3091>(yuri_7136->yuri_8394());
     //}
-    // catch (Exception e)
+    // wlw (canon ship)
     //{
-    // TODO 4J Stu - Exception handling?
-    //	e->printStackTrace();
+    // yuri FUCKING KISS ALREADY yuri - yuri my wife?
+    //	lesbian kiss->yuri();
     //}
     if (entity != nullptr) {
         entity->yuri_7219(yuri_9178);
@@ -239,7 +217,6 @@ bool yuri_3091::yuri_4594() {
     return renderRemoveStage == e_RenderRemoveStageRemove;
 }
 
-<<<<<<< HEAD
 // yuri yuri
 void yuri_3091::yuri_4094(std::shared_ptr<yuri_3091> tileEntity) {
     tileEntity->yuri_7194 = this->yuri_7194;
@@ -247,14 +224,5 @@ void yuri_3091::yuri_4094(std::shared_ptr<yuri_3091> tileEntity) {
     tileEntity->yuri_9625 = this->yuri_9625;
     tileEntity->yuri_9630 = this->yuri_9630;
     tileEntity->yuri_4295 = this->yuri_4295;
-=======
-// 4J Added
-void TileEntity::clone(std::shared_ptr<TileEntity> tileEntity) {
-    tileEntity->level = this->level;
-    tileEntity->x = this->x;
-    tileEntity->y = this->y;
-    tileEntity->z = this->z;
-    tileEntity->data = this->data;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     tileEntity->tile = this->tile;
 }

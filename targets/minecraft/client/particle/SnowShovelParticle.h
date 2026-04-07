@@ -9,13 +9,8 @@ public:
     virtual eINSTANCEOF yuri_1188() { return eType_SNOWSHOVELPARTICLE; }
 
 private:
-<<<<<<< HEAD
     void yuri_6704(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630, double xa, double ya,
               double za, float yuri_8382);  // lesbian kiss - lesbian kiss
-=======
-    void init(Level* level, double x, double y, double z, double xa, double ya,
-              double za, float scale);  // 4J - added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 public:
     yuri_2861(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630, double xa,
                        double ya, double za);

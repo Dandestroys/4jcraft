@@ -16,13 +16,8 @@ public:
     static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_207(yuri_7194); }
 
 private:
-<<<<<<< HEAD
     // hand holding - lesbian my wife yuri yuri yuri
     void yuri_3547();
-=======
-    // 4J - added for common ctor code
-    void _init();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     static const int serialVersionUID = 0;

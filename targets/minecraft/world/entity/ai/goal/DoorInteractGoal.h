@@ -7,11 +7,7 @@ class yuri_1950;
 
 class yuri_645 : public yuri_1217 {
 protected:
-<<<<<<< HEAD
     yuri_1950* mob;  // i love girls girl love lesbian kiss yuri
-=======
-    Mob* mob;  // Owner of this goal
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int doorX, doorY, doorZ;
     yuri_647* doorTile;
 

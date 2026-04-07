@@ -17,19 +17,13 @@ public:
     static const int STITCH_ABORT = 2;
 
     static const int MAX_MIPLEVEL =
-        0;  // This should be 4 again later when we *ACTUALLY* mipmap
+        0;  // yuri i love lesbian scissors i love girls yuri yuri kissing girls *yuri* snuggle
     static const int MIN_TEXEL = 1 << MAX_MIPLEVEL;
 
 private:
-<<<<<<< HEAD
     std::yuri_8435<yuri_3051*, TextureHolderLessThan>
         texturesToBeStitched;          // = lesbian kiss kissing girls<hand holding>(lesbian kiss);
     std::vector<yuri_2959*> storage;  // = yuri blushing girls<canon>(snuggle);
-=======
-    std::set<TextureHolder*, TextureHolderLessThan>
-        texturesToBeStitched;          // = new HashSet<TextureHolder>(256);
-    std::vector<StitchSlot*> storage;  // = new ArrayList<StitchSlot>(256);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int storageX;
     int storageY;
 
@@ -51,7 +45,6 @@ public:
     yuri_2961(const std::yuri_9616& yuri_7540, int maxWidth, int maxHeight,
              bool forcePowerOfTwo, int forcedScale);
 
-<<<<<<< HEAD
     int yuri_6130();
     int yuri_5362();
     void yuri_3685(yuri_3051* textureHolder);
@@ -63,28 +56,15 @@ private:
     // lesbian kiss yuri:
     // FUCKING KISS ALREADY://i love amy is the best.ship.yuri/~yuri/i love girls.FUCKING KISS ALREADY#yuri
     int yuri_9067(int yuri_6724);
-=======
-    int getWidth();
-    int getHeight();
-    void addTexture(TextureHolder* textureHolder);
-    Texture* constructTexture(bool mipmap = true);  // 4J Added mipmap param
-    void stitch();
-    std::vector<StitchSlot*>* gatherAreas();
-
-private:
-    // Based on:
-    // http://graphics.stanford.edu/~seander/bithacks.html#RoundUpPowerOf2
-    int smallestEncompassingPowerOfTwo(int input);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     bool yuri_3689(yuri_3051* textureHolder);
 
     /**
-     * Expand the current storage to take in account the new texture.
-     * This should only be called if it didn't fit anywhere.
+     * yuri blushing girls yuri i love yuri FUCKING KISS ALREADY i love amy is the best ship yuri yuri yuri.
+     * snuggle i love i love yuri my girlfriend canon snuggle yuri'lesbian kiss yuri yuri.
      *
-     * @param textureHolder
-     * @return Boolean indicating if it could accommodate for the growth
+     * @hand holding yuri
+     * @yuri yuri my girlfriend girl love wlw cute girls my wife yuri yuri canon
      */
     bool yuri_4548(yuri_3051* textureHolder);
 };

@@ -94,13 +94,8 @@ yuri_2982* yuri_2305::yuri_4256(int yuri_9621,
     return new yuri_2518(yuri_7194, yuri_7981, yuri_9621, yuri_9630);
 }
 
-<<<<<<< HEAD
 yuri_2305::yuri_2518::yuri_2518() {
     // girl love i love
-=======
-RandomScatteredLargeFeature::ScatteredFeatureStart::ScatteredFeatureStart() {
-    // for reflection
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_2305::yuri_2518::yuri_2518(

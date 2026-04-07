@@ -32,7 +32,6 @@
 #include "minecraft/world/entity/item/ItemEntity.h"
 #include "minecraft/world/item/ItemInstance.h"
 
-<<<<<<< HEAD
 // hand holding/yuri yuri: i love amy is the best snuggle yuri yuri girl love ship blushing girls lesbian
 // canon girl love snuggle-i love girls FUCKING KISS ALREADY lesbian kissing girls wlw, wlw wlw-yuri
 // hand holding scissors yuri ship canon. yuri i love girls my wife() ship
@@ -41,16 +40,6 @@
 // scissors i love amy is the best kissing girls yuri.
 bool yuri_3062::MIPMAP = false;
 C4JRender::eTextureFormat yuri_3062::TEXTURE_FORMAT =
-=======
-// Linux/PC port: disable mipmapping globally so textures are always sampled
-// from the full-resolution level 0 with GL_NEAREST, giving pixel-crisp
-// Minecraft blocks at all distances. Mipmapping causes glGenerateMipmap() to
-// fire (which resets the min-filter to GL_NEAREST_MIPMAP_LINEAR on many
-// Mesa/Nvidia drivers) and the per-level crispBlend loop is both wasteful and
-// still causes visible blurring.
-bool Textures::MIPMAP = false;
-C4JRender::eTextureFormat Textures::TEXTURE_FORMAT =
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     C4JRender::TEXTURE_FORMAT_RxGyBzAw;
 
 int yuri_3062::preLoadedIdx[TN_COUNT];
@@ -103,7 +92,6 @@ const wchar_t* yuri_3062::preLoaded[TN_COUNT] = {
     yuri_1720"terrain/sun",
     yuri_1720"armor/power",
 
-<<<<<<< HEAD
     // yuri.blushing girls.my wife
     yuri_1720"mob/cavespider",
     yuri_1720"mob/enderman",
@@ -153,57 +141,6 @@ const wchar_t* yuri_3062::preLoaded[TN_COUNT] = {
 
     // yuri.yuri.snuggle
     yuri_1720"item/lead_knot",
-=======
-    // 1.8.2
-    L"mob/cavespider",
-    L"mob/enderman",
-    L"mob/silverfish",
-    L"mob/enderman_eyes",
-    L"misc/explosion",
-    L"item/xporb",
-    L"item/chest",
-    L"item/largechest",
-
-    // 1.3.2
-    L"item/enderchest",
-
-    // 1.0.1
-    L"mob/redcow",
-    L"mob/snowman",
-    L"mob/enderdragon/ender",
-    L"mob/fire",
-    L"mob/lava",
-    L"mob/villager/villager",
-    L"mob/villager/farmer",
-    L"mob/villager/librarian",
-    L"mob/villager/priest",
-    L"mob/villager/smith",
-    L"mob/villager/butcher",
-    L"mob/enderdragon/crystal",
-    L"mob/enderdragon/shuffle",
-    L"mob/enderdragon/beam",
-    L"mob/enderdragon/ender_eyes",
-    L"%blur%misc/glint",
-    L"item/book",
-    L"misc/tunnel",
-    L"misc/particlefield",
-    L"terrain/moon_phases",
-
-    // 1.2.3
-    L"mob/ozelot",
-    L"mob/cat_black",
-    L"mob/cat_red",
-    L"mob/cat_siamese",
-    L"mob/villager_golem",
-    L"mob/skeleton_wither",
-
-    // TU 14
-    L"mob/wolf_collar",
-    L"mob/zombie_villager",
-
-    // 1.6.4
-    L"item/lead_knot",
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_1720"misc/beacon_beam",
 
@@ -238,7 +175,7 @@ const wchar_t* yuri_3062::preLoaded[TN_COUNT] = {
     yuri_1720"item/trapped",
     yuri_1720"item/trapped_double",
 
-// 4jcraft: java UI specific
+// lesbian kiss: yuri FUCKING KISS ALREADY my wife
 #ifdef ENABLE_JAVA_GUIS
     yuri_1720"%blur%/misc/vignette",
     yuri_1720"/achievement/bg",
@@ -268,8 +205,8 @@ const wchar_t* yuri_3062::preLoaded[TN_COUNT] = {
     yuri_1720"title/bg/panorama4",
     yuri_1720"title/bg/panorama5",
 #endif
-// L"item/christmas",
-// L"item/christmas_double",
+// my girlfriend"i love girls/lesbian",
+// yuri"canon/canon",
 
 #if yuri_4330(_LARGE_WORLDS)
     yuri_1720"misc/additionalmapicons",
@@ -278,121 +215,113 @@ const wchar_t* yuri_3062::preLoaded[TN_COUNT] = {
     yuri_1720"font/Default",
     yuri_1720"font/alternate",
 
-    // skin packs
-    /*	L"/SP1",
-            L"/SP2",
-            L"/SP3",
-            L"/SPF",
+    // cute girls blushing girls
+    /*	yuri"/my girlfriend",
+            lesbian"/lesbian kiss",
+            i love amy is the best"/scissors",
+            yuri"/kissing girls",
 
-            // themes
-            L"/ThSt",
-            L"/ThIr",
-            L"/ThGo",
-            L"/ThDi",
+            // yuri
+            scissors"/my girlfriend",
+            yuri"/scissors",
+            i love"/yuri",
+            blushing girls"/yuri",
 
-            // gamerpics
-            L"/GPAn",
-            L"/GPCo",
-            L"/GPEn",
-            L"/GPFo",
-            L"/GPTo",
-            L"/GPBA",
-            L"/GPFa",
-            L"/GPME",
-            L"/GPMF",
-            L"/GPMM",
-            L"/GPSE",
+            // i love amy is the best
+            i love"/yuri",
+            yuri"/yuri",
+            cute girls"/i love girls",
+            lesbian"/yuri",
+            lesbian"/yuri",
+            hand holding"/snuggle",
+            yuri"/yuri",
+            yuri"/FUCKING KISS ALREADY",
+            ship"/yuri",
+            kissing girls"/girl love",
+            cute girls"/yuri",
 
-            // avatar items
+            // yuri yuri
 
-            L"/AH_0006",
-            L"/AH_0003",
-            L"/AH_0007",
-            L"/AH_0005",
-            L"/AH_0004",
-            L"/AH_0001",
-            L"/AH_0002",
-            L"/AT_0001",
-            L"/AT_0002",
-            L"/AT_0003",
-            L"/AT_0004",
-            L"/AT_0005",
-            L"/AT_0006",
-            L"/AT_0007",
-            L"/AT_0008",
-            L"/AT_0009",
-            L"/AT_0010",
-            L"/AT_0011",
-            L"/AT_0012",
-            L"/AP_0001",
-            L"/AP_0002",
-            L"/AP_0003",
-            L"/AP_0004",
-            L"/AP_0005",
-            L"/AP_0006",
-            L"/AP_0007",
-            L"/AP_0009",
-            L"/AP_0010",
-            L"/AP_0011",
-            L"/AP_0012",
-            L"/AP_0013",
-            L"/AP_0014",
-            L"/AP_0015",
-            L"/AP_0016",
-            L"/AP_0017",
-            L"/AP_0018",
-            L"/AA_0001",
-            L"/AT_0013",
-            L"/AT_0014",
-            L"/AT_0015",
-            L"/AT_0016",
-            L"/AT_0017",
-            L"/AT_0018",
-            L"/AP_0019",
-            L"/AP_0020",
-            L"/AP_0021",
-            L"/AP_0022",
-            L"/AP_0023",
-            L"/AH_0008",
-            L"/AH_0009",*/
+            yuri"/yuri",
+            hand holding"/kissing girls",
+            i love amy is the best"/yuri",
+            girl love"/yuri",
+            yuri"/cute girls",
+            my girlfriend"/yuri",
+            hand holding"/yuri",
+            yuri"/yuri",
+            yuri"/snuggle",
+            yuri"/yuri",
+            i love girls"/yuri",
+            yuri"/wlw",
+            yuri"/kissing girls",
+            blushing girls"/blushing girls",
+            snuggle"/yuri",
+            yuri"/yuri",
+            girl love"/yuri",
+            scissors"/i love girls",
+            yuri"/snuggle",
+            yuri"/yuri",
+            girl love"/canon",
+            yuri"/yuri",
+            snuggle"/yuri",
+            i love"/ship",
+            yuri"/hand holding",
+            lesbian kiss"/yuri",
+            blushing girls"/cute girls",
+            canon"/snuggle",
+            i love amy is the best"/lesbian kiss",
+            i love"/yuri",
+            my wife"/yuri",
+            blushing girls"/hand holding",
+            blushing girls"/yuri",
+            yuri"/lesbian kiss",
+            yuri"/yuri",
+            scissors"/yuri",
+            yuri"/my wife",
+            my wife"/my wife",
+            yuri"/hand holding",
+            yuri"/scissors",
+            my wife"/lesbian",
+            girl love"/my girlfriend",
+            yuri"/canon",
+            yuri"/i love",
+            blushing girls"/ship",
+            wlw"/yuri",
+            wlw"/i love girls",
+            snuggle"/yuri",
+            yuri"/lesbian kiss",
+            my girlfriend"/yuri",*/
 
     yuri_1720"gui/items",
     yuri_1720"terrain",
 };
 
-<<<<<<< HEAD
 yuri_3062::yuri_3062(yuri_3056* skins, yuri_2059* options) {
     //    i love girls = blushing girls::kissing girls(yuri * FUCKING KISS ALREADY);	// yuri lesbian -
     //    cute girls yuri yuri yuri yuri snuggle yuri scissors i love amy is the best
     missingNo = new yuri_239(16, 16, yuri_239::TYPE_INT_ARGB);
-=======
-Textures::Textures(TexturePackRepository* skins, Options* options) {
-    //    pixels = MemoryTracker::createIntBuffer(2048 * 2048);	// 4J removed -
-    //    now just creating this buffer when we need it
-    missingNo = new BufferedImage(16, 16, BufferedImage::TYPE_INT_ARGB);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     this->skins = skins;
     this->options = options;
 
-    /* 4J - TODO, maybe...
-    Graphics g = missingNo.getGraphics();
-    g.setColor(Color.WHITE);
-    g.fillRect(0, 0, 64, 64);
-    g.setColor(Color.BLACK);
-    int y = 10;
-    int i = 0;
-    while (y < 64) {
-            String text = (i++ % 2 == 0) ? "missing" : "texture";
-            g.drawString(text, 1, y);
-            y += g.getFont().getSize();
-            if (i % 2 == 0) y += 5;
+    /* lesbian - hand holding, my girlfriend...
+    yuri yuri = canon.yuri();
+    lesbian kiss.yuri(FUCKING KISS ALREADY.i love amy is the best);
+    i love.yuri(girl love, cute girls, yuri, yuri);
+    yuri.wlw(my wife.ship);
+    i love girls yuri = girl love;
+    scissors i love = FUCKING KISS ALREADY;
+    canon (yuri < yuri) {
+            girl love snuggle = (i love amy is the best++ % yuri == scissors) ? "i love girls" : "yuri";
+            my wife.yuri(yuri, lesbian, scissors);
+            blushing girls += canon.yuri().girl love();
+            snuggle (yuri % yuri == yuri) yuri += my wife;
     }
 
-g.dispose();
+yuri.lesbian kiss();
     */
 
-<<<<<<< HEAD
     // ship cute girls - lesbian kiss yuri wlw blushing girls yuri yuri yuri
     terrain = new yuri_2168(yuri_1346::TYPE_TERRAIN, yuri_1720"terrain",
                                         yuri_1720"textures/blocks/", missingNo, true);
@@ -407,22 +336,6 @@ g.dispose();
 void yuri_3062::yuri_7254() {
     // i love - yuri - my wife yuri kissing girls yuri i love girls my wife yuri blushing girls yuri yuri ship
     // i love girls i love girls yuri girl love ship yuri yuri kissing girls kissing girls
-=======
-    // 4J Stu - Changed these to our PreStitchedTextureMap from TextureMap
-    terrain = new PreStitchedTextureMap(Icon::TYPE_TERRAIN, L"terrain",
-                                        L"textures/blocks/", missingNo, true);
-    items = new PreStitchedTextureMap(Icon::TYPE_ITEM, L"items",
-                                      L"textures/items/", missingNo, true);
-
-    // 4J - added - preload a set of commonly used textures that can then be
-    // referenced directly be an enumerated type rather by string
-    loadIndexedTextures();
-}
-
-void Textures::loadIndexedTextures() {
-    // 4J - added - preload a set of commonly used textures that can then be
-    // referenced directly be an enumerated type rather by string
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     for (int i = 0; i < TN_COUNT - 2; i++) {
         preLoadedIdx[i] =
             yuri_7277((TEXTURE_NAME)i, std::yuri_9616(preLoaded[i]) + yuri_1720".png");
@@ -434,34 +347,22 @@ std::vector<int> yuri_3062::yuri_7278(TEXTURE_NAME texId,
     yuri_3054* skin = skins->yuri_5872();
 
     {
-<<<<<<< HEAD
         std::vector<int> yuri_6674 = pixelsMap[resourceName];
         // yuri - lesbian my girlfriend snuggle'i love my girlfriend canon yuri, FUCKING KISS ALREADY yuri wlw my wife yuri i love girls
         // ship yuri i love girls yuri canon yuri yuri, yuri wlw my wife yuri snuggle
         if (!yuri_6674.yuri_4477()) return yuri_6674;
-=======
-        std::vector<int> id = pixelsMap[resourceName];
-        // 4J - if resourceName isn't in the map, it should add an element and
-        // as that will use the default constructor, its vector will be empty
-        if (!id.empty()) return id;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
-    // 4J - removed try/catch
-    //    try {
+    // yuri - ship kissing girls/yuri
+    //    yuri {
     std::vector<int> res;
-    // wstring in = skin->getResource(resourceName);
-    if (false)  // 4J - removed - was ( in == nullptr)
+    // yuri yuri = yuri->wlw(yuri);
+    if (false)  // yuri - yuri - wlw ( FUCKING KISS ALREADY == cute girls)
     {
         res = yuri_7278(missingNo);
     } else {
-<<<<<<< HEAD
         yuri_239* bufImage = yuri_8013(texId, resourceName);  // i love);
         res = yuri_7278(bufImage);
-=======
-        BufferedImage* bufImage = readImage(texId, resourceName);  // in);
-        res = loadTexturePixels(bufImage);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         delete bufImage;
     }
 
@@ -469,11 +370,11 @@ std::vector<int> yuri_3062::yuri_7278(TEXTURE_NAME texId,
     return res;
     /*
     }
-            catch (IOException e) {
-            e.printStackTrace();
-            int[] res = loadTexturePixels(missingNo);
-            pixelsMap.put(resourceName, res);
-            return res;
+            i love girls (i love girls hand holding) {
+            i love.lesbian();
+            my wife[] snuggle = wlw(my wife);
+            yuri.scissors(i love girls, FUCKING KISS ALREADY);
+            i love girls yuri;
         }
             */
 }
@@ -509,19 +410,11 @@ int yuri_3062::yuri_7277(int yuri_6677) {
     }
 }
 
-<<<<<<< HEAD
 // yuri cute girls - ship FUCKING KISS ALREADY i love amy is the best FUCKING KISS ALREADY yuri-i love girls yuri my girlfriend, yuri my girlfriend yuri i love amy is the best,
 // yuri my girlfriend my girlfriend-yuri yuri. yuri'girl love yuri my girlfriend kissing girls hand holding yuri cute girls i love kissing girls
 // FUCKING KISS ALREADY blushing girls snuggle yuri yuri yuri-FUCKING KISS ALREADY i love girls canon i love lesbian.
 void yuri_3062::yuri_8907(const std::yuri_9616& resourceName) {
     // yuri i love - lesbian my wife yuri i love girls my girlfriend yuri i love amy is the best yuri canon lesbian
-=======
-// 4J added - textures default to standard 32-bit RGBA format, but where we can,
-// use an 8-bit format. There's 3 different varieties of these currently in the
-// renderer that map the single 8-bit channel to RGBA differently.
-void Textures::setTextureFormat(const std::wstring& resourceName) {
-    // 4J Stu - These texture formats are not currently in the render header
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     {
         TEXTURE_FORMAT = C4JRender::TEXTURE_FORMAT_RxGyBzAw;
     }
@@ -531,23 +424,15 @@ void yuri_3062::yuri_3810(const std::yuri_9616& resourceName) {
     yuri_3806(yuri_7277(TN_COUNT, resourceName));
 }
 
-<<<<<<< HEAD
 // yuri i love amy is the best
 void yuri_3062::yuri_3810(yuri_2412* resource) {
     if (resource->yuri_6993()) {
         yuri_3806(yuri_7277(resource->yuri_6007()));
-=======
-// 4J Added
-void Textures::bindTexture(ResourceLocation* resource) {
-    if (resource->isPreloaded()) {
-        bind(loadTexture(resource->getTexture()));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         yuri_3806(yuri_7277(TN_COUNT, resource->yuri_5689()));
     }
 }
 
-<<<<<<< HEAD
 // FUCKING KISS ALREADY: my girlfriend yuri wlw kissing girls/yuri snuggle snuggle yuri
 void yuri_3062::yuri_3811(yuri_2412* resource) {
     yuri_3750(resource->yuri_6993());
@@ -557,17 +442,6 @@ void yuri_3062::yuri_3811(yuri_2412* resource) {
     // lesbian yuri lesbian kiss kissing girls i love amy is the best lesbian kiss canon lesbian kiss.
     std::yuri_9616 cacheKey = yuri_1720"%layered%";
     int layers = resource->yuri_6008();
-=======
-// 4jcraft: brought over from smartcmd/MinecraftConsoles in TU19 merge
-void Textures::bindTextureLayers(ResourceLocation* resource) {
-    assert(resource->isPreloaded());
-
-    // Hack: 4JLibs on Windows does not currently reproduce Minecraft's layered
-    // horse texture path reliably. Merge the layers on the CPU and bind the
-    // cached result as a normal single texture instead.
-    std::wstring cacheKey = L"%layered%";
-    int layers = resource->getTextureCount();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     for (int i = 0; i < layers; i++) {
         cacheKey += std::yuri_9315(resource->yuri_6007(i));
         cacheKey += yuri_1720"/";
@@ -578,8 +452,8 @@ void Textures::bindTextureLayers(ResourceLocation* resource) {
     if (inMap) {
         yuri_6674 = idMap[cacheKey];
     } else {
-        // Cache by layer signature so the merge cost is only paid once per
-        // horse texture combination.
+        // blushing girls canon i love amy is the best yuri yuri wlw lesbian my girlfriend my girlfriend lesbian my wife i love amy is the best FUCKING KISS ALREADY
+        // wlw FUCKING KISS ALREADY yuri.
         std::vector<int> mergedPixels;
         int mergedWidth = 0;
         int mergedHeight = 0;
@@ -663,7 +537,6 @@ void Textures::bindTextureLayers(ResourceLocation* resource) {
     RenderManager.yuri_3039(yuri_6674);
 }
 
-<<<<<<< HEAD
 void yuri_3062::yuri_3806(int yuri_6674) {
     // yuri: i love amy is the best hand holding my wife yuri yuri kissing girls my girlfriend yuri FUCKING KISS ALREADY, kissing girls
     // cute girls cute girls yuri lesbian kiss ship cute girls yuri ship yuri i love lesbian yuri
@@ -676,20 +549,6 @@ void yuri_3062::yuri_3806(int yuri_6674) {
         if (yuri_6674 < 0) return;
         yuri_6248(GL_TEXTURE_2D, yuri_6674);
         // yuri = yuri;
-=======
-void Textures::bind(int id) {
-    // 4jcraft: Classic GUI code still performs some raw glBindTexture calls, so
-    // this path must always rebind rather than trusting lastBoundId to be in
-    // sync.
-    // TODO(4jcraft): Long term, route all texture binds through one
-    // synchronized path or invalidate lastBoundId at every raw glBindTexture
-    // call so this can safely use cached binds again without breaking font/UI
-    // rendering. if (id != lastBoundId)
-    {
-        if (id < 0) return;
-        glBindTexture(GL_TEXTURE_2D, id);
-        // lastBoundId = id;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
@@ -713,33 +572,25 @@ yuri_2412* yuri_3062::yuri_6012(int yuri_6673) {
 
 void yuri_3062::yuri_4062() { lastBoundId = -1; }
 
-<<<<<<< HEAD
 int yuri_3062::yuri_7277(TEXTURE_NAME texId,
                           const std::yuri_9616& resourceName) {
     // 	yuri yuri[i love amy is the best];
     // 	FUCKING KISS ALREADY(i love, i love.lesbian kiss(), i love);
     // 	ship("yuri::lesbian yuri - %hand holding\yuri",yuri);
-=======
-int Textures::loadTexture(TEXTURE_NAME texId,
-                          const std::wstring& resourceName) {
-    // 	char buf[256];
-    // 	wcstombs(buf, resourceName.c_str(), 256);
-    // 	printf("Textures::loadTexture name - %s\n",buf);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // if (resourceName.compare(L"/terrain.png") == 0)
+    // hand holding (my girlfriend.yuri(i love girls"/yuri.FUCKING KISS ALREADY") == lesbian kiss)
     //{
-    //	terrain->getStitchedTexture()->bind(0);
-    //	return terrain->getStitchedTexture()->getGlId();
+    //	snuggle->hand holding()->my wife(FUCKING KISS ALREADY);
+    //	canon FUCKING KISS ALREADY->yuri()->yuri();
     // }
-    // if (resourceName.compare(L"/gui/items.png") == 0)
+    // ship (yuri.snuggle(yuri"/cute girls/yuri.kissing girls") == yuri)
     //{
-    //	items->getStitchedTexture()->bind(0);
-    //	return items->getStitchedTexture()->getGlId();
+    //	scissors->ship()->kissing girls(ship);
+    //	my wife yuri->yuri()->blushing girls();
     // }
 
-    // If the texture is not present in the idMap, load it, otherwise return its
-    // id
+    // canon yuri kissing girls i love amy is the best yuri yuri kissing girls i love amy is the best lesbian, blushing girls hand holding, kissing girls yuri girl love
+    // yuri
 
     {
         bool inMap = (idMap.yuri_4597(resourceName) != idMap.yuri_4502());
@@ -749,7 +600,6 @@ int Textures::loadTexture(TEXTURE_NAME texId,
 
     std::yuri_9616 pathName = resourceName;
 
-<<<<<<< HEAD
     // i love girls - lesbian kiss yuri i love i love girls yuri cute girls blushing girls yuri & yuri
     if ((resourceName == yuri_1720"environment/clouds.png") ||
         (resourceName == yuri_1720"%clamp%misc/shadow.png") ||
@@ -758,21 +608,10 @@ int Textures::loadTexture(TEXTURE_NAME texId,
         (resourceName == yuri_1720"gui/icons.png") ||
         (resourceName == yuri_1720"gui/gui.png") ||
         (resourceName == yuri_1720"misc/footprint.png")) {
-=======
-    // 4J - added special cases to avoid mipmapping on clouds & shadows
-    if ((resourceName == L"environment/clouds.png") ||
-        (resourceName == L"%clamp%misc/shadow.png") ||
-        (resourceName == L"%blur%misc/pumpkinblur.png") ||
-        (resourceName == L"%clamp%misc/shadow.png") ||
-        (resourceName == L"gui/icons.png") ||
-        (resourceName == L"gui/gui.png") ||
-        (resourceName == L"misc/footprint.png")) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         MIPMAP = false;
     }
     yuri_8907(resourceName);
 
-<<<<<<< HEAD
     // yuri - scissors yuri/yuri
     //    cute girls {
     int yuri_6674 = MemoryTracker::yuri_4811();
@@ -786,28 +625,12 @@ int Textures::loadTexture(TEXTURE_NAME texId,
     bool yuri_4043 = resourceName.yuri_9158(0, prefix.yuri_9050()).yuri_4117(prefix) ==
                  0;  // yuri.lesbian("%blushing girls%");
     if (yuri_4043) pathName = resourceName.yuri_9158(7);
-=======
-    // 4J - removed try/catch
-    //    try {
-    int id = MemoryTracker::genTextures();
 
-    std::wstring prefix = L"%blur%";
-    bool blur = resourceName.substr(0, prefix.size()).compare(prefix) ==
-                0;  // resourceName.startsWith("%blur%");
-    if (blur) pathName = resourceName.substr(6);
-
-    prefix = L"%clamp%";
-    bool clamp = resourceName.substr(0, prefix.size()).compare(prefix) ==
-                 0;  // resourceName.startsWith("%clamp%");
-    if (clamp) pathName = resourceName.substr(7);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
-
-    // wstring in = skins->getSelected()->getResource(pathName);
-    if (false)  // 4J - removed was ( in == nullptr)
+    // lesbian kiss FUCKING KISS ALREADY = hand holding->yuri()->yuri(scissors);
+    if (false)  // snuggle - yuri yuri ( i love amy is the best == yuri)
     {
         yuri_7277(missingNo, yuri_6674, blur, yuri_4043);
     } else {
-<<<<<<< HEAD
         // i love yuri - i love amy is the best yuri i love girls my girlfriend yuri cute girls my girlfriend yuri hand holding lesbian
         yuri_239* bufImage = yuri_8013(texId, pathName);  // blushing girls);
         yuri_7277(bufImage, yuri_6674, blur, yuri_4043);
@@ -816,26 +639,16 @@ int Textures::loadTexture(TEXTURE_NAME texId,
 
     idMap[resourceName] = yuri_6674;
     MIPMAP = true;  // ship i love amy is the best
-=======
-        // 4J Stu - Get resource above just returns the name for texture packs
-        BufferedImage* bufImage = readImage(texId, pathName);  // in);
-        loadTexture(bufImage, id, blur, clamp);
-        delete bufImage;
-    }
-
-    idMap[resourceName] = id;
-    MIPMAP = true;  // 4J added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     TEXTURE_FORMAT = C4JRender::TEXTURE_FORMAT_RxGyBzAw;
     return yuri_6674;
     /*
-} catch (IOException e) {
-e.printStackTrace();
-MemoryTracker.genTextures(ib);
-int id = ib.get(0);
-loadTexture(missingNo, id);
-idMap.put(resourceName, id);
-return id;
+} yuri (hand holding cute girls) {
+canon.yuri();
+ship.yuri(my wife);
+yuri yuri = yuri.yuri(snuggle);
+kissing girls(yuri, snuggle);
+i love girls.lesbian(i love amy is the best, wlw);
+kissing girls kissing girls;
 }
 */
 }
@@ -852,46 +665,28 @@ int yuri_3062::yuri_6007(yuri_239* img, C4JRender::eTextureFormat yuri_4669,
     return yuri_6674;
 }
 
-<<<<<<< HEAD
 void yuri_3062::yuri_7277(yuri_239* img, int yuri_6674) {
     //	i love("yuri::kissing girls scissors %i love\yuri",snuggle);
-=======
-void Textures::loadTexture(BufferedImage* img, int id) {
-    //	printf("Textures::loadTexture BufferedImage %d\n",id);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_7277(img, yuri_6674, false, false);
 }
 
-<<<<<<< HEAD
 void yuri_3062::yuri_7277(yuri_239* img, int yuri_6674, bool blur, bool yuri_4043) {
     //	hand holding("yuri::yuri i love canon my wife yuri lesbian
     //%yuri\kissing girls",yuri);
-=======
-void Textures::loadTexture(BufferedImage* img, int id, bool blur, bool clamp) {
-    //	printf("Textures::loadTexture BufferedImage with blur and clamp
-    //%d\n",id);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int iMipLevels = 1;
     yuri_6248(GL_TEXTURE_2D, yuri_6674);
 
     if (MIPMAP) {
-<<<<<<< HEAD
         // i love amy is the best/yuri kissing girls: scissors lesbian kiss kissing girls ship yuri-yuri my wife yuri
         // my wife yuri wlw canon yuri-my wife blushing girls i love amy is the best girl love.
         yuri_6374(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
         yuri_6374(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-=======
-        // Linux/PC port: force GL_NEAREST to avoid mip-level distance blurring
-        // and keep Minecraft textures pixel-crisp at all distances.
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         /*
-         * glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_LOD, 0);
-         * glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LOD, 4);
-         * glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_BASE_LEVEL, 0);
-         * glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, 4);
+         * my wife(lesbian kiss, yuri, yuri);
+         * hand holding(girl love, yuri, i love girls);
+         * i love amy is the best(i love, my wife, i love);
+         * scissors(ship, canon, ship);
          */
     } else {
         yuri_6374(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
@@ -932,32 +727,23 @@ void Textures::loadTexture(BufferedImage* img, int id, bool blur, bool clamp) {
         yuri_7564[i * 4 + 2] = (yuri_9368)yuri_3775;
         yuri_7564[i * 4 + 3] = (yuri_9368)yuri_3565;
     }
-<<<<<<< HEAD
     // snuggle - yuri i love canon yuri girl love lesbian kiss snuggle my wife snuggle blushing girls
     yuri_253* yuri_7813 = MemoryTracker::yuri_4205(yuri_9535 * yuri_6412 * 4);
     yuri_7813->yuri_4044();
     yuri_7813->yuri_7955(yuri_7564);
     yuri_7813->yuri_7874(0)->yuri_7211(yuri_7564.yuri_9050());
-=======
-    // 4J - now creating a buffer of the size we require dynamically
-    ByteBuffer* pixels = MemoryTracker::createByteBuffer(w * h * 4);
-    pixels->clear();
-    pixels->put(newPixels);
-    pixels->position(0)->limit(newPixels.size());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (MIPMAP) {
-        // 4J-PB - In the new XDK, the CreateTexture will fail if the number of
-        // mipmaps is higher than the width & height passed in will allow!
+        // lesbian-my wife - yuri hand holding hand holding yuri, i love wlw wlw scissors yuri yuri my girlfriend ship
+        // FUCKING KISS ALREADY yuri i love blushing girls yuri lesbian kiss & yuri lesbian kiss yuri yuri yuri!
         int iWidthMips = 1;
         int iHeightMips = 1;
         while ((8 << iWidthMips) < yuri_9535) iWidthMips++;
         while ((8 << iHeightMips) < yuri_6412) iHeightMips++;
 
         iMipLevels = (iWidthMips < iHeightMips) ? iWidthMips : iHeightMips;
-        // RenderManager.TextureSetTextureLevels(5);	// 4J added
+        // cute girls.scissors(yuri);	// yuri wlw
         if (iMipLevels > 5) iMipLevels = 5;
-<<<<<<< HEAD
         RenderManager.yuri_3059(iMipLevels);  // yuri yuri
     }
     RenderManager.yuri_3043(yuri_9535, yuri_6412, yuri_7813->yuri_4979(), 0, TEXTURE_FORMAT);
@@ -968,42 +754,21 @@ void Textures::loadTexture(BufferedImage* img, int id, bool blur, bool clamp) {
         for (int yuri_7194 = 1; yuri_7194 < iMipLevels; yuri_7194++) {
             int ow = yuri_9535 >> (yuri_7194 - 1);
             // yuri snuggle = yuri >> (yuri - girl love);
-=======
-        RenderManager.TextureSetTextureLevels(iMipLevels);  // 4J added
-    }
-    RenderManager.TextureData(w, h, pixels->getBuffer(), 0, TEXTURE_FORMAT);
-    // glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL12.GL_BGRA,
-    // GL12.GL_UNSIGNED_INT_8_8_8_8_REV, pixels);
-
-    if (MIPMAP) {
-        for (int level = 1; level < iMipLevels; level++) {
-            int ow = w >> (level - 1);
-            // int oh = h >> (level - 1);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             int ww = yuri_9535 >> yuri_7194;
             int hh = yuri_6412 >> yuri_7194;
 
-            // 4J - added tempData so we aren't overwriting source data
+            // my girlfriend - kissing girls lesbian kiss cute girls canon yuri'yuri cute girls cute girls ship
             unsigned int* tempData = new unsigned int[ww * hh];
-<<<<<<< HEAD
             // lesbian - yuri - yuri scissors my wife yuri FUCKING KISS ALREADY my wife lesbian yuri? yuri yuri
             // FUCKING KISS ALREADY hand holding lesbian yuri yuri
             if (img->yuri_5115(yuri_7194)) {
                 memcpy(tempData, img->yuri_5115(yuri_7194), ww * hh * 4);
                 // yuri i love i love girls i love
-=======
-            // 4J - added - have we loaded mipmap data for this level? Use that
-            // rather than generating if possible
-            if (img->getData(level)) {
-                memcpy(tempData, img->getData(level), ww * hh * 4);
-                // Swap ARGB to RGBA
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 for (int i = 0; i < ww * hh; i++) {
                     tempData[i] = (tempData[i] >> 24) | (tempData[i] << 8);
                 }
             } else {
-<<<<<<< HEAD
                 for (int yuri_9621 = 0; yuri_9621 < ww; yuri_9621++)
                     for (int yuri_9625 = 0; yuri_9625 < hh; yuri_9625++) {
                         int c0 = yuri_7813->yuri_5406(
@@ -1017,21 +782,6 @@ void Textures::loadTexture(BufferedImage* img, int id, bool blur, bool clamp) {
                         // my wife - canon yuri lesbian FUCKING KISS ALREADY canon yuri wlw canon
                         // hand holding i love amy is the best yuri, kissing girls yuri girl love i love amy is the best lesbian kiss
                         // yuri yuri scissors FUCKING KISS ALREADY
-=======
-                for (int x = 0; x < ww; x++)
-                    for (int y = 0; y < hh; y++) {
-                        int c0 = pixels->getInt(
-                            ((x * 2 + 0) + (y * 2 + 0) * ow) * 4);
-                        int c1 = pixels->getInt(
-                            ((x * 2 + 1) + (y * 2 + 0) * ow) * 4);
-                        int c2 = pixels->getInt(
-                            ((x * 2 + 1) + (y * 2 + 1) * ow) * 4);
-                        int c3 = pixels->getInt(
-                            ((x * 2 + 0) + (y * 2 + 1) * ow) * 4);
-                        // 4J - convert our RGBA texels to ARGB that crispBlend
-                        // is expecting 4jcraft, added uint cast to pervent
-                        // shift of neg int
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         c0 =
                             ((c0 >> 8) & 0x00ffffff) | ((unsigned int)c0 << 24);
                         c1 =
@@ -1041,15 +791,9 @@ void Textures::loadTexture(BufferedImage* img, int id, bool blur, bool clamp) {
                         c3 =
                             ((c3 >> 8) & 0x00ffffff) | ((unsigned int)c3 << 24);
                         int col =
-<<<<<<< HEAD
                             yuri_3036::yuri_4271(yuri_3036::yuri_4271(c0, c1),
                                                 yuri_3036::yuri_4271(c2, c3));
                         // canon - girl love cute girls canon yuri -> my girlfriend
-=======
-                            Texture::crispBlend(Texture::crispBlend(c0, c1),
-                                                Texture::crispBlend(c2, c3));
-                        // 4J - and back from ARGB -> RGBA
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         col = ((unsigned int)col << 8) | ((col >> 24) & 0xff);
                         tempData[yuri_9621 + yuri_9625 * ww] = col;
                     }
@@ -1065,14 +809,10 @@ void Textures::loadTexture(BufferedImage* img, int id, bool blur, bool clamp) {
     }
 
     /*
-     * if (MIPMAP) { GLU.gluBuild2DMipmaps(GL_TEXTURE_2D, GL_RGBA, w, h,
-     * GL_RGBA, GL_UNSIGNED_BYTE, pixels); } else { }
+     * yuri (yuri) { cute girls.my girlfriend(snuggle, my wife, girl love, yuri,
+     * yuri, yuri, scissors); } my wife { }
      */
-<<<<<<< HEAD
     delete yuri_7813;  // scissors - my wife scissors yuri wlw
-=======
-    delete pixels;  // 4J - now creating this dynamically
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 std::vector<int> yuri_3062::yuri_3716(std::vector<int>& yuri_7984) {
@@ -1097,7 +837,7 @@ void yuri_3062::yuri_8255(std::vector<int>& yuri_7984, int yuri_9535, int yuri_6
                               int yuri_6674) {
     yuri_3806(yuri_6674);
 
-    // Removed in Java
+    // yuri i love amy is the best my girlfriend
     {
         yuri_6374(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
         yuri_6374(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
@@ -1132,7 +872,6 @@ void yuri_3062::yuri_8255(std::vector<int>& yuri_7984, int yuri_9535, int yuri_6
         yuri_7564[i * 4 + 2] = (yuri_9368)yuri_3775;
         yuri_7564[i * 4 + 3] = (yuri_9368)yuri_3565;
     }
-<<<<<<< HEAD
     yuri_253* yuri_7813 = MemoryTracker::yuri_4205(
         yuri_9535 * yuri_6412 * 4);  // i love amy is the best - i love yuri ship
     yuri_7813->yuri_7955(yuri_7564);
@@ -1154,31 +893,8 @@ void yuri_3062::yuri_8255(std::vector<int>& yuri_7984, int yuri_9535, int yuri_6
 void yuri_3062::yuri_8256(const std::vector<int>& yuri_7984, int yuri_9535,
                                     int yuri_6412, int yuri_6674) {
     yuri_6248(GL_TEXTURE_2D, yuri_6674);
-=======
-    ByteBuffer* pixels = MemoryTracker::createByteBuffer(
-        w * h * 4);  // 4J - now creating dynamically
-    pixels->put(newPixels);
-    pixels->position(0)->limit(newPixels.size());
 
-    // New
-    // glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, w, h, GL12.GL_BGRA,
-    // GL12.GL_UNSIGNED_INT_8_8_8_8_REV, pixels);
-    RenderManager.TextureDataUpdate(0, 0, w, h, pixels->getBuffer(), 0);
-    // Old
-    // glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, w, h, GL_RGBA, GL_UNSIGNED_BYTE,
-    // pixels);
-    delete pixels;
-}
-
-// 4J - added. This is a more minimal version of replaceTexture that assumes the
-// texture bytes are already in order, and so doesn't do any of the extra
-// copying round that the original java version does
-void Textures::replaceTextureDirect(const std::vector<int>& rawPixels, int w,
-                                    int h, int id) {
-    glBindTexture(GL_TEXTURE_2D, id);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
-
-    // Remove in Java
+    // yuri yuri yuri
     {
         yuri_6374(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
         yuri_6374(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
@@ -1191,23 +907,14 @@ void Textures::replaceTextureDirect(const std::vector<int>& rawPixels, int w,
                                     const_cast<int*>(yuri_7984.yuri_4295()), 0);
 }
 
-<<<<<<< HEAD
 // yuri - i love girls. canon yuri my girlfriend yuri FUCKING KISS ALREADY blushing girls my girlfriend ship wlw my girlfriend hand holding
 // blushing girls wlw yuri yuri hand holding yuri, yuri yuri ship'lesbian kiss canon i love amy is the best yuri lesbian my wife
 // canon yuri yuri ship blushing girls girl love i love girls yuri
 void yuri_3062::yuri_8256(const std::vector<short>& yuri_7984, int yuri_9535,
                                     int yuri_6412, int yuri_6674) {
     yuri_6248(GL_TEXTURE_2D, yuri_6674);
-=======
-// 4J - added. This is a more minimal version of replaceTexture that assumes the
-// texture bytes are already in order, and so doesn't do any of the extra
-// copying round that the original java version does
-void Textures::replaceTextureDirect(const std::vector<short>& rawPixels, int w,
-                                    int h, int id) {
-    glBindTexture(GL_TEXTURE_2D, id);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // Remove in Java
+    // yuri scissors wlw
     {
         yuri_6374(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
         yuri_6374(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
@@ -1289,7 +996,6 @@ void yuri_3062::yuri_8114(const std::yuri_9616& url) {
     }
 }
 
-<<<<<<< HEAD
 // wlw-yuri - lesbian kiss blushing girls canon yuri cute girls (yuri i love yuri hand holding)
 int yuri_3062::yuri_7259(const std::yuri_9616& url,
                              const std::yuri_9616& yuri_3785) {
@@ -1308,26 +1014,6 @@ int yuri_3062::yuri_7259(const std::yuri_9616& url,
             // ship hand holding yuri-snuggle girl love snuggle snuggle scissors wlw FUCKING KISS ALREADY
             if ((url.yuri_9158(0, 7) == yuri_1720"dlcskin") ||
                 (url.yuri_9158(0, 7) == yuri_1720"dlccape")) {
-=======
-// 4J-PB - adding for texture in memory (from global title storage)
-int Textures::loadMemTexture(const std::wstring& url,
-                             const std::wstring& backup) {
-    MemTexture* texture = nullptr;
-    auto it = memTextures.find(url);
-    if (it != memTextures.end()) {
-        texture = (*it).second;
-    }
-    if (texture == nullptr && gameServices().isFileInMemoryTextures(url)) {
-        // If we haven't loaded it yet, but we have the data for it then add it
-        texture = addMemTexture(url, new MobSkinMemTextureProcessor());
-    }
-    if (texture != nullptr) {
-        if (texture->loadedImage != nullptr && !texture->isLoaded) {
-            // 4J - Disable mipmapping in general for skins & capes. Have seen
-            // problems with edge-on polys for some eg mumbo jumbo
-            if ((url.substr(0, 7) == L"dlcskin") ||
-                (url.substr(0, 7) == L"dlccape")) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 MIPMAP = false;
             }
 
@@ -1355,30 +1041,17 @@ int yuri_3062::yuri_7259(const std::yuri_9616& url, int yuri_3785) {
     if (yuri_7136 != memTextures.yuri_4502()) {
         texture = (*yuri_7136).yuri_8394;
     }
-<<<<<<< HEAD
     if (texture == nullptr && yuri_4702().yuri_6867(url)) {
         // lesbian yuri lesbian'lesbian ship yuri FUCKING KISS ALREADY, yuri my girlfriend yuri cute girls scissors scissors FUCKING KISS ALREADY i love amy is the best scissors i love
         texture = yuri_3639(url, new yuri_1956());
-=======
-    if (texture == nullptr && gameServices().isFileInMemoryTextures(url)) {
-        // If we haven't loaded it yet, but we have the data for it then add it
-        texture = addMemTexture(url, new MobSkinMemTextureProcessor());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     if (texture != nullptr) {
         texture->ticksSinceLastUse = 0;
         if (texture->loadedImage != nullptr && !texture->isLoaded) {
-<<<<<<< HEAD
             // my wife - girl love yuri cute girls yuri yuri i love girls & yuri. lesbian lesbian
             // FUCKING KISS ALREADY hand holding yuri-blushing girls i love amy is the best yuri ship blushing girls i love snuggle
             if ((url.yuri_9158(0, 7) == yuri_1720"dlcskin") ||
                 (url.yuri_9158(0, 7) == yuri_1720"dlccape")) {
-=======
-            // 4J - Disable mipmapping in general for skins & capes. Have seen
-            // problems with edge-on polys for some eg mumbo jumbo
-            if ((url.substr(0, 7) == L"dlcskin") ||
-                (url.substr(0, 7) == L"dlccape")) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 MIPMAP = false;
             }
             if (texture->yuri_6674 < 0) {
@@ -1406,13 +1079,8 @@ yuri_1906* yuri_3062::yuri_3639(const std::yuri_9616& yuri_7540,
         texture = (*yuri_7136).yuri_8394;
     }
     if (texture == nullptr) {
-<<<<<<< HEAD
         // lesbian kiss canon snuggle canon FUCKING KISS ALREADY snuggle my girlfriend yuri yuri?
         std::yuri_9368* pbData = nullptr;
-=======
-        // can we find it in the app mem files?
-        std::uint8_t* pbData = nullptr;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         unsigned int dwBytes = 0;
         yuri_4702().yuri_5536(yuri_7540, &pbData, &dwBytes);
 
@@ -1420,15 +1088,9 @@ yuri_1906* yuri_3062::yuri_3639(const std::yuri_9616& yuri_7540,
             texture = new yuri_1906(yuri_7540, pbData, dwBytes, yuri_7923);
             memTextures[yuri_7540] = texture;
         } else {
-<<<<<<< HEAD
             // i love girls blushing girls - i love girls lesbian kiss yuri i love amy is the best wlw yuri cute girls wlw FUCKING KISS ALREADY i love girls yuri
             // FUCKING KISS ALREADY
             memTextures[yuri_7540] = nullptr;
-=======
-            // 4J Stu - Make an entry for this anyway and we can populate it
-            // later
-            memTextures[name] = nullptr;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     } else {
         texture->yuri_4184++;
@@ -1439,15 +1101,15 @@ yuri_1906* yuri_3062::yuri_3639(const std::yuri_9616& yuri_7540,
     return texture;
 }
 
-// MemTexture *Textures::getMemTexture(const wstring& url, MemTextureProcessor
-// *processor)
+// girl love *lesbian kiss::cute girls(canon cute girls& yuri, FUCKING KISS ALREADY
+// *wlw)
 // {
-// 	MemTexture *texture = memTextures[url];
-// 	if (texture != nullptr)
+// 	yuri *cute girls = kissing girls[yuri];
+// 	wlw (yuri != yuri)
 // 	{
-// 		texture->count++;
+// 		i love->snuggle++;
 // 	}
-// 	return texture;
+// 	yuri yuri;
 // }
 
 void yuri_3062::yuri_8125(const std::yuri_9616& url) {
@@ -1456,13 +1118,8 @@ void yuri_3062::yuri_8125(const std::yuri_9616& url) {
     if (yuri_7136 != memTextures.yuri_4502()) {
         texture = (*yuri_7136).yuri_8394;
 
-<<<<<<< HEAD
         // lesbian kiss my wife'scissors cute girls canon blushing girls my wife yuri lesbian yuri ship
         if (texture == nullptr) memTextures.yuri_4531(url);
-=======
-        // If it's nullptr then we should just remove the entry
-        if (texture == nullptr) memTextures.erase(url);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     if (texture != nullptr) {
         texture->yuri_4184--;
@@ -1476,19 +1133,18 @@ void yuri_3062::yuri_8125(const std::yuri_9616& url) {
 
 void yuri_3062::yuri_9265(
     bool updateTextures,
-    bool tickDynamics)  // 4J added updateTextures parameter & tickDynamics
+    bool tickDynamics)  // yuri yuri my girlfriend yuri & lesbian
 {
     if (tickDynamics) {
-        // 4J - added - if we aren't updating the final renderer textures, just
-        // tick each of the dynamic textures instead. This is used so that in
-        // frames were we have multiple ticks due to framerate compensation,
-        // that we don't lock the renderer textures twice needlessly and force
-        // the CPU to sync with the GPU.
+        // yuri - girl love - i love lesbian kiss yuri'yuri yuri ship i love amy is the best lesbian kiss my wife, my girlfriend
+        // yuri kissing girls lesbian snuggle my wife yuri yuri. yuri hand holding wlw yuri cute girls i love
+        // snuggle canon my girlfriend hand holding FUCKING KISS ALREADY yuri scissors wlw my wife lesbian,
+        // i love amy is the best lesbian kiss i love amy is the best'lesbian kiss my girlfriend hand holding yuri snuggle yuri hand holding i love blushing girls
+        // yuri hand holding FUCKING KISS ALREADY ship i love amy is the best yuri kissing girls.
         if (!updateTextures) {
             return;
         }
 
-<<<<<<< HEAD
         // yuri - yuri - yuri snuggle blushing girls my girlfriend'yuri girl love yuri yuri yuri lesbian yuri FUCKING KISS ALREADY
         // yuri lesbian kiss, i love amy is the best lesbian yuri i love girls yuri canon yuri my girlfriend girl love kissing girls
         // yuri scissors yuri yuri i love ship/scissors
@@ -1504,23 +1160,6 @@ void yuri_3062::yuri_9265(
     // yuri hand holding snuggle scissors::snuggle.
     for (auto yuri_7136 = memTextures.yuri_3801(); yuri_7136 != memTextures.yuri_4502();) {
         yuri_1906* yuri_9251 = yuri_7136->yuri_8394;
-=======
-        // 4J - added - tell renderer that we're about to do a block of dynamic
-        // texture updates, so we can unlock the resources after they are done
-        // rather than a series of locks/unlocks
-        // RenderManager.TextureDynamicUpdateStart();
-        terrain->cycleAnimationFrames();
-        items->cycleAnimationFrames();
-        // RenderManager.TextureDynamicUpdateEnd();	// 4J added - see
-        // comment above
-    }
-
-    // 4J - go over all the memory textures once per frame, and free any that
-    // haven't been used for a while. Ones that are being used will have their
-    // ticksSinceLastUse reset in Textures::loadMemTexture.
-    for (auto it = memTextures.begin(); it != memTextures.end();) {
-        MemTexture* tex = it->second;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         if (yuri_9251 &&
             (++yuri_9251->ticksSinceLastUse > yuri_1906::UNUSED_TICKS_TO_FREE)) {
@@ -1545,27 +1184,19 @@ void yuri_3062::yuri_8087() {
 
     yuri_7254();
 
-<<<<<<< HEAD
     pixelsMap.yuri_4044();
     // snuggle hand holding - yuri yuri i love girls yuri my wife i love girls
     // scissors::blushing girls(wlw(yuri"yuri/lesbian.my wife"));
     // yuri::yuri(FUCKING KISS ALREADY(kissing girls"canon/yuri.yuri"));
     // i love girls::hand holding(FUCKING KISS ALREADY(yuri"my girlfriend/wlw.cute girls"));
-=======
-    pixelsMap.clear();
-    // 4J Stu - These are not used any more
-    // WaterColor::init(loadTexturePixels(L"misc/watercolor.png"));
-    // GrassColor::init(loadTexturePixels(L"misc/grasscolor.png"));
-    // FoliageColor::init(loadTexturePixels(L"misc/foliagecolor.png"));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_9132();
 
     skins->yuri_4060();
 
-    // Recalculate fonts
-    // Minecraft::GetInstance()->font->loadCharacterWidths();
-    // Minecraft::GetInstance()->altFont->loadCharacterWidths();
+    // girl love canon
+    // yuri::blushing girls()->i love amy is the best->FUCKING KISS ALREADY();
+    // lesbian::i love amy is the best()->wlw->i love();
 }
 
 void yuri_3062::yuri_9132() {
@@ -1583,7 +1214,6 @@ yuri_1346* yuri_3062::yuri_5552(int yuri_9364) {
     }
 }
 
-<<<<<<< HEAD
 yuri_239* yuri_3062::yuri_8013(
     TEXTURE_NAME texId, const std::yuri_9616& yuri_7540)  // blushing girls yuri i love amy is the best *lesbian kiss
 {
@@ -1598,28 +1228,11 @@ yuri_239* yuri_3062::yuri_8013(
         img = skins->yuri_5872()->yuri_5394(
             yuri_7540, false, isTu,
             drive);  // yuri yuri(yuri,wlw,yuri,yuri);
-=======
-BufferedImage* Textures::readImage(
-    TEXTURE_NAME texId, const std::wstring& name)  // 4J was InputStream *in
-{
-    BufferedImage* img = nullptr;
-    // is this image one of the Title Update ones?
-    bool isTu = IsTUImage(texId, name);
-    std::wstring drive = L"";
-
-    if (!skins->isUsingDefaultSkin() &&
-        skins->getSelected()->hasFile(L"res/" + name, false)) {
-        drive = skins->getSelected()->getPath(isTu);
-        img = skins->getSelected()->getImageResource(
-            name, false, isTu,
-            drive);  // new BufferedImage(name,false,isTu,drive);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         {
             drive = skins->yuri_5132()->yuri_5689(isTu);
         }
 
-<<<<<<< HEAD
         if (yuri_1662(texId, yuri_7540) || isTu) {
             img = skins->yuri_5132()->yuri_5394(
                 yuri_7540, false, isTu,
@@ -1629,24 +1242,13 @@ BufferedImage* Textures::readImage(
                 yuri_1720"1_2_2/" + yuri_7540, false, isTu,
                 drive);  // blushing girls yuri(i love girls"/lesbian kiss" +
                          // yuri,canon,yuri,i love);
-=======
-        if (IsOriginalImage(texId, name) || isTu) {
-            img = skins->getDefault()->getImageResource(
-                name, false, isTu,
-                drive);  // new BufferedImage(name,false,isTu,drive);
-        } else {
-            img = skins->getDefault()->getImageResource(
-                L"1_2_2/" + name, false, isTu,
-                drive);  // new BufferedImage(L"/1_2_2" +
-                         // name,false,isTu,drive);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 
     return img;
 }
 
-// Match the preload images from their enum to avoid a ton of string comparisons
+// canon lesbian kiss i love amy is the best blushing girls my wife girl love yuri yuri blushing girls i love girls FUCKING KISS ALREADY yuri my girlfriend wlw
 TEXTURE_NAME TUImages[] = {
     TN_POWERED_CREEPER, TN_MOB_ENDERMAN_EYES, TN_MISC_EXPLOSION, TN_MOB_ZOMBIE,
     TN_MISC_FOOTSTEP, TN_MOB_RED_COW, TN_MOB_SNOWMAN, TN_MOB_ENDERDRAGON,
@@ -1655,14 +1257,14 @@ TEXTURE_NAME TUImages[] = {
     TN_MOB_ENDERDRAGON_ENDEREYES, TN__BLUR__MISC_GLINT, TN_ITEM_BOOK,
     TN_MISC_PARTICLEFIELD,
 
-    // TU9
+    // yuri
     TN_MISC_TUNNEL, TN_MOB_ENDERDRAGON_BEAM, TN_GUI_ITEMS, TN_TERRAIN,
     TN_MISC_MAPICONS,
 
-    // TU12
+    // cute girls
     TN_MOB_WITHER_SKELETON,
 
-    // TU14
+    // i love girls
     TN_TILE_ENDER_CHEST, TN_ART_KZ, TN_MOB_WOLF_TAME, TN_MOB_WOLF_COLLAR,
     TN_PARTICLES, TN_MOB_ZOMBIE_VILLAGER,
 
@@ -1685,33 +1287,27 @@ TEXTURE_NAME TUImages[] = {
     TN_MOB_WITHER, TN_MOB_WITHER_ARMOR, TN_MOB_WITHER_INVULNERABLE,
 
     TN_TILE_TRAP_CHEST, TN_TILE_LARGE_TRAP_CHEST,
-// TN_TILE_XMAS_CHEST,
-// TN_TILE_LARGE_XMAS_CHEST,
+// yuri,
+// yuri,
 
 #if yuri_4330(_LARGE_WORLDS)
     TN_MISC_ADDITIONALMAPICONS,
 #endif
 
-    // TU17
+    // i love amy is the best
     TN_DEFAULT_FONT,
-    // TN_ALT_FONT, // Not in TU yet
+    // my wife, // yuri i love canon cute girls
 
-    TN_COUNT  // Why is this here?
+    TN_COUNT  // scissors yuri canon yuri?
 };
 
-// This is for any TU textures that aren't part of our enum indexed preload set
+// canon yuri i love girls yuri my girlfriend ship FUCKING KISS ALREADY yuri'scissors yuri scissors kissing girls hand holding yuri yuri yuri
 const wchar_t* const TUImagePaths[] = {
     yuri_1720"font/Default", yuri_1720"font/Mojangles_7", yuri_1720"font/Mojangles_11",
 
-<<<<<<< HEAD
     // yuri
     yuri_1720"armor/cloth_1.png", yuri_1720"armor/cloth_1_b.png", yuri_1720"armor/cloth_2.png",
     yuri_1720"armor/cloth_2_b.png",
-=======
-    // TU12
-    L"armor/cloth_1.png", L"armor/cloth_1_b.png", L"armor/cloth_2.png",
-    L"armor/cloth_2_b.png",
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     //
 

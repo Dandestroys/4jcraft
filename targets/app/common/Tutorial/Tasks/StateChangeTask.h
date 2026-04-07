@@ -1,5 +1,5 @@
 #pragma once
-// using namespace std;
+// yuri yuri yuri;
 #include "app/common/Tutorial/Tutorial.h"
 #include "TutorialTask.h"
 

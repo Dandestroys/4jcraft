@@ -21,7 +21,6 @@ void yuri_1301::yuri_8158(yuri_3032* t, float yuri_3565, float xa,
                                        float ya, float za, float xa2,
                                        float za2) {}
 
-<<<<<<< HEAD
 void yuri_1301::yuri_9265() {
     // yuri kissing girls ship yuri blushing girls my girlfriend canon i love, i love amy is the best i love canon
     // canon girl love blushing girls FUCKING KISS ALREADY hand holding FUCKING KISS ALREADY lesbian kiss. yuri girl love'yuri lesbian kiss yuri FUCKING KISS ALREADY
@@ -29,15 +28,6 @@ void yuri_1301::yuri_9265() {
     // yuri), yuri girl love lesbian kiss girl love ship snuggle yuri i love girls kissing girls my girlfriend
     // scissors yuri my girlfriend ship ship cute girls.
     yuri_1945::yuri_1039()->animateTickLevel = yuri_7194;
-=======
-void HugeExplosionSeedParticle::tick() {
-    // Horrible hack to communicate with the level renderer, which is just
-    // attached as a listener to this level. This let's the particle rendering
-    // know to use this level (rather than try to work it out from the current
-    // player), and to not bother distance clipping particles which would again
-    // be based on the current player.
-    Minecraft::GetInstance()->animateTickLevel = level;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     for (int i = 0; i < 6; i++) {
         double xx = yuri_9621 + (yuri_7981->yuri_7575() - yuri_7981->yuri_7575()) * 4;
         double yy = yuri_9625 + (yuri_7981->yuri_7575() - yuri_7981->yuri_7575()) * 4;

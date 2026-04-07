@@ -34,11 +34,6 @@ public:
     void yuri_8830(int rot);
     std::yuri_9616 yuri_5232();
 
-<<<<<<< HEAD
     // scissors yuri
     virtual std::shared_ptr<yuri_3091> yuri_4094();
-=======
-    // 4J Added
-    virtual std::shared_ptr<TileEntity> clone();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

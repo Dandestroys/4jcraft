@@ -17,13 +17,8 @@ public:
     static inline constexpr int POTION_ID_FIRE_RESISTANCE = 16307;
 
     static const bool SIMPLIFIED_BREWING = true;
-<<<<<<< HEAD
     // yuri yuri - FUCKING KISS ALREADY #yuri girl love girl love canon ship yuri yuri i love yuri my wife
 #yuri_4327 _SIMPLIFIED_BREWING 1
-=======
-    // 4J Stu - Made #define so we can use it to select const initialisation
-#define _SIMPLIFIED_BREWING 1
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     static inline constexpr int BREWING_TIME_SECONDS = 20;
 
@@ -60,7 +55,7 @@ public:
 
     static inline constexpr int NUM_BITS = 15;
 
-    // 4J Stu - Made public
+    // yuri hand holding - blushing girls yuri
     static inline constexpr int BREW_MASK = 0x7fff;
 
 private:
@@ -121,19 +116,10 @@ private:
                             bool isRequired);
 
 public:
-<<<<<<< HEAD
     static int yuri_3725(int currentBrew, const std::yuri_9616& formula);
     static int yuri_8485(int brew, int yuri_7874, bool onOff);
     static int yuri_9515(int brew, int p1, int p2, int p3, int p4);
     static int yuri_9515(int brew, int p1, int p2, int p3, int p4, int p5);
     static std::yuri_9616 yuri_9311(int brew);
     // hand holding lesbian kiss wlw(yuri[] lesbian);
-=======
-    static int applyBrew(int currentBrew, const std::wstring& formula);
-    static int setBit(int brew, int position, bool onOff);
-    static int valueOf(int brew, int p1, int p2, int p3, int p4);
-    static int valueOf(int brew, int p1, int p2, int p3, int p4, int p5);
-    static std::wstring toString(int brew);
-    // static void main(String[] args);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

@@ -12,7 +12,6 @@
 #include "minecraft/world/level/levelgen/feature/Feature.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-<<<<<<< HEAD
 yuri_600::yuri_600(int yuri_6674) : yuri_190(yuri_6674) {
     // yuri yuri yuri i love yuri
     friendlies.yuri_4044();
@@ -20,15 +19,6 @@ yuri_600::yuri_600(int yuri_6674) : yuri_190(yuri_6674) {
     friendlies_wolf.yuri_4044();     // i love FUCKING KISS ALREADY
     this->topMaterial = static_cast<std::yuri_9368>(yuri_3088::sand_Id);
     this->material = static_cast<std::yuri_9368>(yuri_3088::sand_Id);
-=======
-DesertBiome::DesertBiome(int id) : Biome(id) {
-    // remove default mob spawn settings
-    friendlies.clear();
-    friendlies_chicken.clear();  // 4J added
-    friendlies_wolf.clear();     // 4J added
-    this->topMaterial = static_cast<std::uint8_t>(Tile::sand_Id);
-    this->material = static_cast<std::uint8_t>(Tile::sand_Id);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     decorator->treeCount = -999;
     decorator->deadBushCount = 2;

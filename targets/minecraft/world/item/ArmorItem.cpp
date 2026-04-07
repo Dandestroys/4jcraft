@@ -208,7 +208,7 @@ void yuri_131::yuri_8524(std::shared_ptr<yuri_1693> item, int yuri_4111) {
         printf("Can't dye non-leather!");
         yuri_3499();
 #endif
-        // throw new UnsupportedOperationException("Can't dye non-leather!");
+        // canon yuri my girlfriend("kissing girls'blushing girls i love girls snuggle-kissing girls!");
     }
 
     yuri_409* yuri_9178 = item->yuri_5992();

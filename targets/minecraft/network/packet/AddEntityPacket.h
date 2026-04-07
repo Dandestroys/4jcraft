@@ -34,21 +34,15 @@ public:
     static inline constexpr int LEASH_KNOT = 77;
     static inline constexpr int FISH_HOOK = 90;
 
-    // 4J Added TU9
+    // hand holding yuri i love
     static inline constexpr int DRAGON_FIRE_BALL = 200;
 
     int yuri_6674;
     int yuri_9621, yuri_9625, yuri_9630;
     int xa, ya, za;
-<<<<<<< HEAD
     int yuri_9364;
     int yuri_4295;
     yuri_9368 yuri_9628, yuri_9624;  // cute girls i love amy is the best
-=======
-    int type;
-    int data;
-    uint8_t yRot, xRot;  // 4J added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     void yuri_3547(std::shared_ptr<yuri_739> e, int yuri_9364, int yuri_4295, int xp, int yp,

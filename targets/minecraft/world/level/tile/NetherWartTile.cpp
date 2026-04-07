@@ -17,32 +17,18 @@ yuri_2020::yuri_2020(int yuri_6674) : yuri_244(yuri_6674) {
     yuri_9402();
 }
 
-<<<<<<< HEAD
 // hand holding lesbian blushing girls
 void yuri_2020::yuri_9402() {
     float yuri_9095 = 0.5f;
     yuri_8855(0.5f - yuri_9095, 0, 0.5f - yuri_9095, 0.5f + yuri_9095, 0.25f, 0.5f + yuri_9095);
-=======
-// 4J Added override
-void NetherWartTile::updateDefaultShape() {
-    float ss = 0.5f;
-    setShape(0.5f - ss, 0, 0.5f - ss, 0.5f + ss, 0.25f, 0.5f + ss);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_2020::yuri_7470(int tile) { return tile == yuri_3088::soulsand_Id; }
 
-<<<<<<< HEAD
 // girl love i love yuri my wife #ship - cute girls: yuri: FUCKING KISS ALREADY: FUCKING KISS ALREADY yuri FUCKING KISS ALREADY
 // i love girls yuri kissing girls yuri yuri snuggle yuri lesbian canon
 bool yuri_2020::yuri_3961(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
     return yuri_7470(yuri_7194->yuri_6030(yuri_9621, yuri_9625 - 1, yuri_9630));
-=======
-// Brought forward to fix #60073 - TU7: Content: Gameplay: Nether Warts cannot
-// be placed next to each other in the Nether
-bool NetherWartTile::canSurvive(Level* level, int x, int y, int z) {
-    return mayPlaceOn(level->getTile(x, y - 1, z));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_2020::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981) {

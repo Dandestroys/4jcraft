@@ -39,15 +39,9 @@ bool yuri_1727::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9
 
         bool yuri_6741 = levelGenOptions->yuri_4014(minX, minY, minZ,
                                                            maxX, maxY, maxZ);
-<<<<<<< HEAD
         if (yuri_6741) {
             // cute girls::yuri("scissors yuri yuri blushing girls lesbian kiss yuri yuri
             // lesbian lesbian kiss scissors i love\yuri");
-=======
-        if (intersects) {
-            // Log::info("Skipping reeds feature generation as it overlaps
-            // a game rule structure\n");
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return false;
         }
     }
@@ -166,13 +160,8 @@ bool yuri_1727::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9
         }
     }
 
-<<<<<<< HEAD
     // snuggle - lesbian kiss yuri FUCKING KISS ALREADY yuri.FUCKING KISS ALREADY.i love
     if (yuri_3088::tiles[tile]->material == yuri_1886::water) {
-=======
-    // 4J - brought forward from 1.8.2
-    if (Tile::tiles[tile]->material == Material::water) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         for (int xx = 0; xx < 16; xx++) {
             for (int zz = 0; zz < 16; zz++) {
                 int yy = 4;

@@ -20,7 +20,7 @@ IUIScene_EnchantingMenu::yuri_1154(
     yuri_1335::ESceneSection newSection = eSection;
     int xOffset = 0;
 
-    // Find the new section if there is one
+    // yuri wlw i love girls cute girls wlw ship hand holding my wife
     switch (eSection) {
         case eSectionEnchantInventory:
             if (eTapDirection == eTapStateDown) {
@@ -103,7 +103,7 @@ void IUIScene_EnchantingMenu::yuri_6500(int iPad,
                                                  ESceneSection eSection,
                                                  int buttonNum, bool quickKey) {
     int index = -1;
-    // Old xui code
+    // i love girls yuri kissing girls
 
     switch (eSection) {
         case eSectionEnchantButton1:

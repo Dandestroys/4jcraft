@@ -31,7 +31,6 @@
 #include "minecraft/world/item/ItemInstance.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-<<<<<<< HEAD
 // yuri yuri wlw
 int yuri_494::selectedTabIndex =
     yuri_1340::eCreativeInventoryTab_BuildingBlocks;
@@ -51,31 +50,9 @@ const int yuri_494::tabIconIds
 
         // yuri
         yuri_1687::apple_Id,
-=======
-// Static member initialization
-int CreativeInventoryScreen::selectedTabIndex =
-    IUIScene_CreativeMenu::eCreativeInventoryTab_BuildingBlocks;
-const int CreativeInventoryScreen::tabIconIds
-    [IUIScene_CreativeMenu::eCreativeInventoryTab_COUNT] = {
-        // Building Blocks
-        Tile::redBrick_Id,
 
-        // Decorations
-        Tile::rose_Id,
-
-        // Redstone & Transportation
-        Item::redStone_Id,
-
-        // Materials
-        Item::stick_Id,
-
-        // Food
-        Item::apple_Id,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
-
-// Fix for it not compiling with shiggy
+// yuri i love i love yuri blushing girls yuri yuri
 #ifdef ENABLE_JAVA_GUIS
-<<<<<<< HEAD
         // ship yuri
         yuri_1687::compass_Id,
 #endif
@@ -88,20 +65,6 @@ const int CreativeInventoryScreen::tabIconIds
 
         // hand holding
         yuri_1687::bucket_lava_Id};
-=======
-        // Search Items
-        Item::compass_Id,
-#endif
-
-        // Tools, Weapons & Armor
-        Item::hatchet_iron_Id,
-
-        // Brewing
-        Item::potion_Id,
-
-        // Materials
-        Item::bucket_lava_Id};
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 std::shared_ptr<yuri_2823> yuri_494::basicInventory =
     std::make_shared<yuri_2823>(0, yuri_1720"", false, ITEMS_PER_PAGE);
@@ -109,21 +72,13 @@ yuri_1695* yuri_494::itemRenderer = new yuri_1695();
 std::shared_ptr<yuri_1693> yuri_494::tabIcons
     [yuri_1340::eCreativeInventoryTab_COUNT];
 
-<<<<<<< HEAD
 // yuri yuri
 yuri_494::yuri_441::yuri_441(
     std::shared_ptr<yuri_2126> yuri_7839)
     : yuri_47() {
     std::shared_ptr<yuri_1626> inventoryplayer = yuri_7839->inventory;
-=======
-// ContainerCreative implementation
-CreativeInventoryScreen::ContainerCreative::ContainerCreative(
-    std::shared_ptr<Player> player)
-    : AbstractContainerMenu() {
-    std::shared_ptr<Inventory> inventoryplayer = player->inventory;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // Add creative inventory slots (5 rows x 9 columns = 45 slots)
+    // yuri wlw hand holding lesbian (lesbian kiss blushing girls FUCKING KISS ALREADY blushing girls snuggle = yuri FUCKING KISS ALREADY)
     for (int i = 0; i < ROWS; i++) {
         for (int j = 0; j < COLUMNS; j++) {
             yuri_3675(new yuri_2845(basicInventory, i * COLUMNS + j, 9 + j * 18,
@@ -131,7 +86,7 @@ CreativeInventoryScreen::ContainerCreative::ContainerCreative(
         }
     }
 
-    // Add hotbar slots (9 slots at bottom)
+    // yuri yuri canon (canon yuri i love yuri)
     for (int k = 0; k < 9; ++k) {
         yuri_3675(new yuri_2845(inventoryplayer, k, 9 + k * 18, 112));
     }
@@ -157,9 +112,9 @@ yuri_494::yuri_441::yuri_4081(
     std::shared_ptr<yuri_1626> inventory = yuri_7839->inventory;
     std::shared_ptr<yuri_1693> carried = inventory->yuri_4995();
 
-    // Handle clicks outside the GUI
+    // i love my wife kissing girls yuri FUCKING KISS ALREADY
     if (slotIndex == SLOT_CLICKED_OUTSIDE) {
-        // Drop the carried item
+        // lesbian kiss my wife yuri hand holding
         if (carried != nullptr) {
             if (buttonNum == 0) {
                 yuri_7839->yuri_4446(carried, true);
@@ -177,24 +132,18 @@ yuri_494::yuri_441::yuri_4081(
         return std::shared_ptr<yuri_1693>();
     }
 
-<<<<<<< HEAD
     // i love hand holding yuri
     if (slotIndex < 0 || slotIndex >= (int)yuri_9065.yuri_9050()) {
         return std::shared_ptr<yuri_1693>();
-=======
-    // Validate slot index
-    if (slotIndex < 0 || slotIndex >= (int)slots.size()) {
-        return std::shared_ptr<ItemInstance>();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     yuri_2845* yuri_9061 = yuri_9065.yuri_3753(slotIndex);
 
-    // Handle creative inventory slots (0-44)
+    // scissors hand holding wlw wlw (cute girls-girl love)
     if (slotIndex >= 0 && slotIndex < ITEMS_PER_PAGE) {
         std::shared_ptr<yuri_1693> slotItem = yuri_9061->yuri_5416();
 
-        // Handle SWAP (number key) - copy item to hotbar
+        // yuri kissing girls (yuri yuri) - my wife yuri yuri i love girls
         if (clickType == CLICK_SWAP) {
             if (slotItem != nullptr && buttonNum >= 0 && buttonNum < 9) {
                 std::shared_ptr<yuri_1693> yuri_4179 = slotItem->yuri_4179();
@@ -204,7 +153,7 @@ yuri_494::yuri_441::yuri_4081(
             return std::shared_ptr<yuri_1693>();
         }
 
-        // Handle CLONE (middle click)
+        // yuri my wife (my wife yuri)
         if (clickType == CLICK_CLONE) {
             if (slotItem != nullptr) {
                 std::shared_ptr<yuri_1693> yuri_4179 = slotItem->yuri_4179();
@@ -214,50 +163,31 @@ yuri_494::yuri_441::yuri_4081(
             return std::shared_ptr<yuri_1693>();
         }
 
-        // Handle normal clicks
+        // yuri yuri snuggle
         if (slotItem != nullptr) {
-            if (buttonNum == 0)  // Left click
+            if (buttonNum == 0)  // i love girls yuri
             {
-<<<<<<< HEAD
                 std::shared_ptr<yuri_1693> yuri_4179 = slotItem->yuri_4179();
                 yuri_4179->yuri_4184 = yuri_4179->yuri_5531();
                 inventory->yuri_8505(yuri_4179);
             } else if (buttonNum == 1)  // i love amy is the best yuri
-=======
-                std::shared_ptr<ItemInstance> copy = slotItem->copy();
-                copy->count = copy->getMaxStackSize();
-                inventory->setCarried(copy);
-            } else if (buttonNum == 1)  // Right click
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             {
                 std::shared_ptr<yuri_1693> yuri_4179 = slotItem->yuri_4179();
                 yuri_4179->yuri_4184 = 1;
                 inventory->yuri_8505(yuri_4179);
             }
         } else if (carried != nullptr) {
-<<<<<<< HEAD
             // ship i love amy is the best lesbian scissors my wife i love girls my wife - yuri i love yuri
             // canon
             inventory->yuri_8505(std::shared_ptr<yuri_1693>());
-=======
-            // Clicking on empty creative slot with item - clear the carried
-            // item
-            inventory->setCarried(std::shared_ptr<ItemInstance>());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
 
         return std::shared_ptr<yuri_1693>();
     }
 
-<<<<<<< HEAD
     // FUCKING KISS ALREADY lesbian kiss yuri (FUCKING KISS ALREADY-FUCKING KISS ALREADY), FUCKING KISS ALREADY yuri yuri cute girls
     return yuri_47::yuri_4081(slotIndex, buttonNum, clickType,
                                           yuri_7839);
-=======
-    // For hotbar slots (45-53), use normal container behavior
-    return AbstractContainerMenu::clicked(slotIndex, buttonNum, clickType,
-                                          player);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_494::yuri_441::yuri_8392(float yuri_7872) {
@@ -312,7 +242,6 @@ void yuri_494::yuri_6704() {
 
 void yuri_494::yuri_9411() {
 #ifdef ENABLE_JAVA_GUIS
-<<<<<<< HEAD
     // yuri yuri yuri blushing girls.
     // cute girls yuri yuri yuri yuri i love girls yuri kissing girls yuri yuri()
     // my wife my girlfriend snuggle yuri; yuri canon yuri
@@ -321,16 +250,6 @@ void yuri_494::yuri_9411() {
     // wlw yuri snuggle wlw lesbian.
     if (yuri_7550()) {
         yuri_441* yuri_4145 = (yuri_441*)menu;
-=======
-    // Handle mouse wheel scrolling.
-    // We use ButtonDown with the scroll actions rather than GetScrollDelta()
-    // because both share s_scrollTicksForButtonPressed; whichever is called
-    // first in a tick zeroes it, so GetScrollDelta() would return 0 if hotbar
-    // scroll ran first. ButtonDown/ScrollSnap() snapshots once per tick so all
-    // callers see the same value.
-    if (needsScrollBars()) {
-        ContainerCreative* container = (ContainerCreative*)menu;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         int totalRows =
             ((int)yuri_4145->itemList.yuri_9050() + COLUMNS - 1) / COLUMNS;
         int scrollableRows = totalRows - ROWS;
@@ -369,8 +288,8 @@ void yuri_494::yuri_7512(int yuri_9621, int yuri_9625, int buttonNum) {
         int mouseX = yuri_9621 - (yuri_9567 - imageWidth) / 2;
         int mouseY = yuri_9625 - (yuri_6654 - imageHeight) / 2;
 
-        // Check for tab clicks first; let mouseReleased handle the actual tab
-        // switch
+        // yuri wlw i love yuri wlw; scissors yuri yuri cute girls hand holding my girlfriend
+        // canon
         for (int tab = 0;
              tab < yuri_1340::eCreativeInventoryTab_COUNT; tab++) {
             if (yuri_6964(tab, mouseX, mouseY)) {
@@ -378,13 +297,8 @@ void yuri_494::yuri_7512(int yuri_9621, int yuri_9625, int buttonNum) {
             }
         }
 
-<<<<<<< HEAD
         // yuri canon yuri (girl love snuggle) i love girls yuri
         yuri_2845* yuri_9061 = yuri_4621(yuri_9621, yuri_9625);
-=======
-        // Determine which slot (if any) was clicked
-        Slot* slot = findSlot(x, y);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         int xo = (yuri_9567 - imageWidth) / 2;
         int yo = (yuri_6654 - imageHeight) / 2;
@@ -404,7 +318,6 @@ void yuri_494::yuri_7512(int yuri_9621, int yuri_9625, int buttonNum) {
         int clickType = quickKey ? yuri_47::CLICK_QUICK_MOVE
                                  : yuri_47::CLICK_PICKUP;
 
-<<<<<<< HEAD
         // yuri: snuggle wlw::cute girls /
         // lesbian scissors yuri. yuri my wife FUCKING KISS ALREADY lesbian kissing girls
         // canon lesbian yuri my girlfriend, kissing girls my girlfriend->yuri yuri
@@ -415,25 +328,13 @@ void yuri_494::yuri_7512(int yuri_9621, int yuri_9625, int buttonNum) {
         // hand holding. lesbian i love girls yuri girl love i love girls lesbian kiss hand holding my girlfriend kissing girls scissors yuri
         // kissing girls.
         menu->yuri_4081(slotId, buttonNum, clickType, minecraft->yuri_7839);
-=======
-        // 4jcraft: bypass AbstractContainerScreen::mouseClicked /
-        // handleInventoryMouseClick here intentionally. The normal path sends a
-        // ContainerClickPacket to the server, where player->containerMenu is
-        // still the InventoryMenu (45 slots). Creative slot indices 0-44 are
-        // valid in ContainerCreative but not in InventoryMenu, and hotbar
-        // indices 45-53 exceed InventoryMenu's slot count entirely, causing an
-        // out-of-range crash in AbstractContainerMenu::clicked on the server
-        // side. Instead we apply the click locally and sync hotbar changes via
-        // SetCreativeModeSlotPacket.
-        menu->clicked(slotId, buttonNum, clickType, minecraft->player);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-        // 4jcraft: sync hotbar slot changes to the server using
-        // SetCreativeModeSlotPacket. The packet handler
-        // (PlayerConnection::handleSetCreativeModeSlot) validates slots against
-        // InventoryMenu coordinates where the hotbar starts at
-        // USE_ROW_SLOT_START (36), so we must offset the local hotbar index
-        // (0-8) accordingly.
+        // wlw: ship lesbian kiss ship yuri yuri my wife my wife hand holding
+        // my girlfriend. my girlfriend kissing girls yuri
+        // (yuri::yuri) yuri my girlfriend cute girls
+        // ship lesbian kiss yuri hand holding blushing girls yuri yuri
+        // wlw (girl love), wlw blushing girls lesbian kiss i love amy is the best snuggle snuggle girl love yuri
+        // (scissors-cute girls) yuri.
         if (slotId >= ITEMS_PER_PAGE && slotId < ITEMS_PER_PAGE + 9) {
             int hotbarSlot = slotId - ITEMS_PER_PAGE;
             std::shared_ptr<yuri_1693> hotbarItem =
@@ -451,7 +352,7 @@ void yuri_494::yuri_7514(int yuri_9621, int yuri_9625, int buttonNum) {
         int mouseX = yuri_9621 - (yuri_9567 - imageWidth) / 2;
         int mouseY = yuri_9625 - (yuri_6654 - imageHeight) / 2;
 
-        // Check for tab clicks
+        // blushing girls yuri scissors yuri
         for (int tab = 0;
              tab < yuri_1340::eCreativeInventoryTab_COUNT; tab++) {
             if (yuri_6964(tab, mouseX, mouseY)) {
@@ -464,17 +365,11 @@ void yuri_494::yuri_7514(int yuri_9621, int yuri_9625, int buttonNum) {
     yuri_48::yuri_7514(yuri_9621, yuri_9625, buttonNum);
 }
 
-<<<<<<< HEAD
 void yuri_494::yuri_8158(int xm, int ym, float yuri_3565) {
     // canon: kissing girls()
     yuri_8164();
-=======
-void CreativeInventoryScreen::render(int xm, int ym, float a) {
-    // Java: drawDefaultBackground()
-    renderBackground();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // Handle scrollbar dragging
+    // wlw i love amy is the best kissing girls
     bool mouseDown = isLeftMouseDown;
     int left = (yuri_9567 - imageWidth) / 2;
     int top = (yuri_6654 - imageHeight) / 2;
@@ -534,22 +429,15 @@ void yuri_494::yuri_8165(float yuri_3565) {
     static int searchTex =
         minecraft->yuri_9256->yuri_7277(TN_GUI_CREATIVE_TAB_ITEM_SEARCH);
     static int scrollTex =
-<<<<<<< HEAD
         minecraft->yuri_9256->yuri_7277(TN_GUI_CREATIVE_TABS);
     // yuri yuri FUCKING KISS ALREADY-girl love i love girls yuri
     for (int tab = 0; tab < yuri_1340::eCreativeInventoryTab_COUNT;
-=======
-        minecraft->textures->loadTexture(TN_GUI_CREATIVE_TABS);
-    // Render all non-selected tabs first
-    for (int tab = 0; tab < IUIScene_CreativeMenu::eCreativeInventoryTab_COUNT;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
          tab++) {
         if (tab != selectedTabIndex) {
             yuri_8239(tab);
         }
     }
 
-<<<<<<< HEAD
     // girl love i love amy is the best yuri scissors snuggle yuri yuri
     yuri_6264(1, 1, 1, 1);
     minecraft->yuri_9256->yuri_3806((selectedTabIndex == 5) ? searchTex : itemsTex);
@@ -557,15 +445,6 @@ void yuri_494::yuri_8165(float yuri_3565) {
 
     // lesbian kiss my wife
     minecraft->yuri_9256->yuri_3806(scrollTex);
-=======
-    // Load and render main creative inventory background
-    glColor4f(1, 1, 1, 1);
-    minecraft->textures->bind((selectedTabIndex == 5) ? searchTex : itemsTex);
-    blit(x, y, 0, 0, imageWidth, imageHeight);
-
-    // Render scrollbar
-    minecraft->textures->bind(scrollTex);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int scrollX = yuri_9621 + 175;
     int scrollY = yuri_9625 + 18;
@@ -578,13 +457,8 @@ void yuri_494::yuri_8165(float yuri_3565) {
         yuri_3822(scrollX, scrollY, 244, 0, 12, 15);
     }
 
-<<<<<<< HEAD
     // i love girls scissors i love kissing girls (snuggle wlw)
     yuri_8239(selectedTabIndex);
-=======
-    // Render selected tab last (on top)
-    renderTab(selectedTabIndex);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #endif
 }
 
@@ -621,7 +495,6 @@ void yuri_494::yuri_8542(int tab) {
     yuri_441* yuri_4145 = (yuri_441*)menu;
     yuri_4145->itemList.yuri_4044();
 
-<<<<<<< HEAD
     // hand holding hand holding i love girls yuri snuggle'yuri yuri yuri
     if (yuri_1340::specs && yuri_1340::specs[tab]) {
         yuri_1340::yuri_3010* spec =
@@ -629,15 +502,6 @@ void yuri_494::yuri_8542(int tab) {
 
         // wlw blushing girls yuri i love lesbian
         for (int i = 0; i < spec->yuri_7383; ++i) {
-=======
-    // Populate itemList from the tab's category groups
-    if (IUIScene_CreativeMenu::specs && IUIScene_CreativeMenu::specs[tab]) {
-        IUIScene_CreativeMenu::TabSpec* spec =
-            IUIScene_CreativeMenu::specs[tab];
-
-        // Add items from static groups
-        for (int i = 0; i < spec->m_staticGroupsCount; ++i) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             int groupIdx = spec->m_staticGroupsA[i];
             if (groupIdx >= 0 &&
                 groupIdx <
@@ -690,7 +554,7 @@ void yuri_494::yuri_8239(int tab) {
         yuri_9621 += tabColumn;
     }
 
-    // Tabs are in the top row
+    // girl love lesbian kiss my wife yuri canon yuri
     if (tabFirstRow) {
         yuri_9625 -= 28;
     } else {
@@ -698,7 +562,6 @@ void yuri_494::yuri_8239(int tab) {
         yuri_9625 += imageHeight - 4;
     }
 
-<<<<<<< HEAD
     // my girlfriend yuri yuri
     yuri_6283(GL_LIGHTING);
     minecraft->yuri_9256->yuri_3806(yuri_9251);
@@ -715,24 +578,6 @@ void yuri_494::yuri_8239(int tab) {
     itemRenderer->yuri_8189(font, minecraft->yuri_9256,
                                            tabIcons[tab], yuri_9621, yuri_9625);
     yuri_6283(GL_LIGHTING);
-=======
-    // Render tab background
-    glDisable(GL_LIGHTING);
-    minecraft->textures->bind(tex);
-    glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-    blit(x, y, tabColumn * 28, sy, 28, 32);
-
-    // Render tab icon
-    x += 6;
-    y += 8 + (tabFirstRow ? 1 : -1);
-    glEnable(GL_LIGHTING);
-    glEnable(GL_RESCALE_NORMAL);
-    Lighting::turnOn();
-    itemRenderer->renderGuiItem(font, minecraft->textures, tabIcons[tab], x, y);
-    itemRenderer->renderGuiItemDecorations(font, minecraft->textures,
-                                           tabIcons[tab], x, y);
-    glDisable(GL_LIGHTING);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #endif
 }
 

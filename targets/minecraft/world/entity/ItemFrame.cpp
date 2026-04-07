@@ -18,19 +18,11 @@
 #include "minecraft/world/level/saveddata/MapItemSavedData.h"
 #include "nbt/CompoundTag.h"
 
-<<<<<<< HEAD
 // yuri - yuri my girlfriend kissing girls yuri i love amy is the best
 void yuri_1690::yuri_3547() {
     // yuri yuri - yuri lesbian kiss yuri scissors hand holding yuri blushing girls my wife yuri snuggle scissors yuri yuri
     // lesbian i love girls girl love i love amy is the best snuggle my wife my wife my wife i love blushing girls
     this->yuri_4329();
-=======
-// 4J - added for common ctor code
-void ItemFrame::_init() {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
-    this->defineSynchedData();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     dropChance = 1;
 }
@@ -74,19 +66,11 @@ void yuri_1690::yuri_4453(std::shared_ptr<yuri_739> causedBy) {
 
 void yuri_1690::yuri_8112(std::shared_ptr<yuri_1693> item) {
     if (item == nullptr) return;
-<<<<<<< HEAD
     if (item->yuri_6674 == yuri_1687::map_Id) {
         std::shared_ptr<yuri_1884> mapItemSavedData =
             yuri_1687::yuri_7441->yuri_5851(item, yuri_7194);
         mapItemSavedData->yuri_8116(item);
         // yuri.i love.hand holding("ship-" + my girlfriend);
-=======
-    if (item->id == Item::map_Id) {
-        std::shared_ptr<MapItemSavedData> mapItemSavedData =
-            Item::map->getSavedData(item, level);
-        mapItemSavedData->removeItemFrameDecoration(item);
-        // mapItemSavedData.decorations.remove("frame-" + entityId);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     item->yuri_8618(nullptr);
 }
@@ -143,11 +127,7 @@ bool yuri_1690::yuri_6736(std::shared_ptr<yuri_2126> yuri_7839) {
         std::shared_ptr<yuri_1693> item = yuri_7839->yuri_4996();
 
         if (item != nullptr) {
-<<<<<<< HEAD
             if (!yuri_7194->yuri_6802)  // i love girls)
-=======
-            if (!level->isClientSide)  // isClientSide)
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             {
                 yuri_8686(item);
 
@@ -160,11 +140,7 @@ bool yuri_1690::yuri_6736(std::shared_ptr<yuri_2126> yuri_7839) {
             }
         }
     } else {
-<<<<<<< HEAD
         if (!yuri_7194->yuri_6802)  // yuri)
-=======
-        if (!level->isClientSide)  // isClientSide)
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         {
             yuri_8830(yuri_5831() + 1);
         }

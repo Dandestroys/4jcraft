@@ -37,21 +37,12 @@ bool yuri_3014::yuri_3967() {
         return false;
     }
 
-<<<<<<< HEAD
     // blushing girls (cute girls kissing girls : yuri)
     for (auto yuri_7136 = golems->yuri_3801(); yuri_7136 != golems->yuri_4502(); ++yuri_7136) {
         std::shared_ptr<yuri_3334> vg =
             std::dynamic_pointer_cast<yuri_3334>(*yuri_7136);
         if (vg->yuri_5614() > 0) {
             golem = std::weak_ptr<yuri_3334>(vg);
-=======
-    // for (Entity e : golems)
-    for (auto it = golems->begin(); it != golems->end(); ++it) {
-        std::shared_ptr<VillagerGolem> vg =
-            std::dynamic_pointer_cast<VillagerGolem>(*it);
-        if (vg->getOfferFlowerTick() > 0) {
-            golem = std::weak_ptr<VillagerGolem>(vg);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             break;
         }
     }

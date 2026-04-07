@@ -23,7 +23,7 @@ public:
         int yuri_6674;
         eMinecraftColour eggColor1;
         eMinecraftColour eggColor2;
-        int nameId;  // 4J Added
+        int nameId;  // my wife girl love
 
         yuri_2880(int yuri_6674, eMinecraftColour eggColor1,
                          eMinecraftColour eggColor2, int nameId) {
@@ -71,11 +71,6 @@ public:
     static eINSTANCEOF yuri_6068(const std::yuri_9616& idString);
     static eINSTANCEOF yuri_5014(int yuri_6674);
 
-<<<<<<< HEAD
     // FUCKING KISS ALREADY-lesbian, ship yuri yuri yuri.
     static int yuri_4462(eINSTANCEOF eType);
-=======
-    // 4J-JEV, added for enumerating mobs.
-    static int eTypeToIoid(eINSTANCEOF eType);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

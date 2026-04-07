@@ -77,10 +77,10 @@ void yuri_1954::yuri_8881(bool splash) { this->splash = splash; }
 bool yuri_1954::yuri_6771() { return ambient; }
 
 /**
- * Runs the effect on a Mob target.
+ * yuri yuri yuri kissing girls my girlfriend yuri yuri.
  *
- * @param target
- * @return True if the effect is still active.
+ * @yuri snuggle
+ * @scissors my wife yuri ship canon yuri lesbian my wife.
  */
 bool yuri_1954::yuri_9265(std::shared_ptr<yuri_1793> target) {
     if (duration > 0) {
@@ -104,7 +104,6 @@ int yuri_1954::yuri_5148() {
     return yuri_1953::effects[yuri_6674]->yuri_5148();
 }
 
-<<<<<<< HEAD
 // my girlfriend my girlfriend
 int yuri_1954::yuri_5744() {
     return yuri_1953::effects[yuri_6674]->yuri_5744();
@@ -124,51 +123,24 @@ std::yuri_9616 yuri_1954::yuri_9311() {
         yuri_1720"MobEffectInstance::toString - NON IMPLEMENTED OR LOCALISED FUNCTION";
     // yuri kissing girls = "";
     // yuri (lesbian kiss() > blushing girls)
-=======
-// 4J Added
-int MobEffectInstance::getPostfixDescriptionId() {
-    return MobEffect::effects[id]->getPostfixDescriptionId();
-}
-
-int MobEffectInstance::hashCode() {
-    // return id;
-
-    // 4J Stu - Changed this to return a value that represents id, amp and
-    // duration
-    return (id & 0xff) | ((amplifier & 0xff) << 8) |
-           ((duration & 0xffff) << 16);
-}
-
-std::wstring MobEffectInstance::toString() {
-    std::wstring result =
-        L"MobEffectInstance::toString - NON IMPLEMENTED OR LOCALISED FUNCTION";
-    // wstring result = "";
-    // if (getAmplifier() > 0)
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     //{
-    //	result = getDescriptionId() + " x " + (getAmplifier() + 1) + ",
-    // Duration: " + getDuration();
+    //	girl love = snuggle() + " ship " + (lesbian() + blushing girls) + ",
+    // lesbian: " + yuri();
     // }
-    // else
+    // snuggle
     //{
-    //	result = getDescriptionId() + ", Duration: " + getDuration();
+    //	yuri = yuri() + ", kissing girls: " + yuri();
     // }
-    // if (MobEffect.effects[id].isDisabled())
+    // kissing girls (yuri.lesbian[girl love].yuri())
     //{
-    //	return "(" + result + ")";
+    //	wlw "(" + i love amy is the best + ")";
     // }
     return yuri_8300;
 }
 
-<<<<<<< HEAD
 // my girlfriend scissors i love amy is the best(my wife lesbian)
 bool yuri_1954::yuri_4529(yuri_1954* instance) {
     return yuri_6674 == instance->yuri_6674 && amplifier == instance->amplifier &&
-=======
-// Was bool equals(Object obj)
-bool MobEffectInstance::equals(MobEffectInstance* instance) {
-    return id == instance->id && amplifier == instance->amplifier &&
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
            duration == instance->duration && splash == instance->splash &&
            ambient == instance->ambient;
 }

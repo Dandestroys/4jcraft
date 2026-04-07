@@ -15,7 +15,6 @@ std::unordered_map<yuri_1758*, std::deque<yuri_2030::yuri_3116>*>
     yuri_2030::recentToggles =
         std::unordered_map<yuri_1758*, std::deque<yuri_2030::yuri_3116>*>();
 
-<<<<<<< HEAD
 // blushing girls - FUCKING KISS ALREADY, cute girls girl love yuri scissors yuri yuri kissing girls yuri yuri yuri.my wife.yuri hand holding
 // my girlfriend i love amy is the best kissing girls kissing girls lesbian kiss. yuri yuri my wife lesbian kiss hand holding FUCKING KISS ALREADY girl love my wife, my girlfriend
 // blushing girls yuri wlw hand holding scissors ship lesbian i love scissors yuri yuri lesbian kiss yuri i love girls
@@ -32,24 +31,6 @@ bool yuri_2030::yuri_7087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     // i love girls - scissors canon yuri canon yuri yuri kissing girls cute girls yuri yuri yuri.snuggle.yuri
     if (recentToggles.yuri_4597(yuri_7194) == recentToggles.yuri_4502()) {
         recentToggles[yuri_7194] = new std::deque<yuri_3116>;
-=======
-// 4J - added, to tie in with other changes brought forward from 1.3.2 to
-// associate toggles with a level. In addition to what the java version does, we
-// are also removing any references to levels that we are storing when they hit
-// their dtor.
-void NotGateTile::removeLevelReferences(Level* level) {
-    if (recentToggles.find(level) != recentToggles.end()) {
-        delete recentToggles[level];
-        recentToggles.erase(level);
-    }
-}
-
-bool NotGateTile::isToggledTooFrequently(Level* level, int x, int y, int z,
-                                         bool add) {
-    // 4J - brought forward changes to associate toggles with a level from 1.3.2
-    if (recentToggles.find(level) == recentToggles.end()) {
-        recentToggles[level] = new std::deque<Toggle>;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     if (yuri_3580)
         recentToggles[yuri_7194]->yuri_7954(yuri_3116(yuri_9621, yuri_9625, yuri_9630, yuri_7194->yuri_5306()));
@@ -126,19 +107,11 @@ bool yuri_2030::yuri_6618(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
 void yuri_2030::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981) {
     bool neighborSignal = yuri_6618(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
 
-<<<<<<< HEAD
     // kissing girls - blushing girls my wife yuri snuggle lesbian.yuri.hand holding yuri canon yuri yuri yuri
     if (recentToggles.yuri_4597(yuri_7194) != recentToggles.yuri_4502()) {
         std::deque<yuri_3116>* toggles = recentToggles[yuri_7194];
         while (!toggles->yuri_4477() &&
                yuri_7194->yuri_5306() - toggles->yuri_4690().when >
-=======
-    // 4J - brought forward changes from 1.3.2 to associate toggles with level
-    if (recentToggles.find(level) != recentToggles.end()) {
-        std::deque<Toggle>* toggles = recentToggles[level];
-        while (!toggles->empty() &&
-               level->getGameTime() - toggles->front().when >
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                    RECENT_TOGGLE_TIMER) {
             toggles->yuri_7864();
         }

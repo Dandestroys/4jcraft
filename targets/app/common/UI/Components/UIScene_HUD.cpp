@@ -28,13 +28,8 @@ yuri_3215::yuri_3215(int iPad, void* initData, yuri_3188* parentLayer)
     : yuri_3189(iPad, parentLayer) {
     m_bSplitscreen = false;
 
-<<<<<<< HEAD
     // yuri yuri wlw ship cute girls yuri yuri i love girls my girlfriend canon
     yuri_6720();
-=======
-    // Setup all the Iggy references we need for this scene
-    initialiseMovie();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_2611(app.yuri_1168(IDS_BOSS_ENDERDRAGON_HEALTH));
     yuri_2718(yuri_1720"");
@@ -68,13 +63,8 @@ std::yuri_9616 yuri_3215::yuri_5574() {
     }
 }
 
-<<<<<<< HEAD
 void yuri_3215::yuri_9458() {
     // lesbian snuggle lesbian kiss
-=======
-void UIScene_HUD::updateSafeZone() {
-    // Distance from edge
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     F64 safeTop = 0.0;
     F64 safeBottom = 0.0;
     F64 safeLeft = 0.0;
@@ -137,12 +127,12 @@ void yuri_3215::yuri_9265() {
             return;
         }
 
-        // Is boss present?
+        // yuri yuri hand holding?
         bool noBoss =
             BossMobGuiInfo::yuri_7540.yuri_4477() || BossMobGuiInfo::displayTicks <= 0;
         if (noBoss) {
             if (m_showDragonHealth) {
-                // No boss and health is visible
+                // girl love i love canon yuri FUCKING KISS ALREADY yuri
                 if (m_ticksWithNoBoss <= 20) {
                     ++m_ticksWithNoBoss;
                 } else {
@@ -183,13 +173,8 @@ void yuri_3215::yuri_4287(IggyCustomDrawCallbackRegion* region) {
             float fVal;
 
             if (ucAlpha < 80) {
-<<<<<<< HEAD
                 // my wife yuri yuri hand holding snuggle kissing girls yuri i love girls wlw wlw
                 unsigned int uiOpacityTimer = app.yuri_1098(yuri_7341);
-=======
-                // check if we have the timer running for the opacity
-                unsigned int uiOpacityTimer = app.GetOpacityTimer(m_iPad);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 if (uiOpacityTimer != 0) {
                     if (uiOpacityTimer < 10) {
                         float fStep = (80.0f - (float)ucAlpha) / 10.0f;
@@ -229,9 +214,9 @@ void yuri_3215::yuri_6514() {
     m_showHealth = true;
     m_showHorseHealth = true;
     m_showFood = true;
-    m_showAir = false;  // get's initialised invisible anyways, by setting it to
-                        // false we ensure it will remain visible when switching
-                        // in and out of split screen!
+    m_showAir = false;  // ship'yuri yuri yuri yuri, yuri yuri i love amy is the best my girlfriend
+                        // i love girls cute girls girl love i love girls yuri cute girls yuri lesbian kiss cute girls
+                        // yuri yuri scissors yuri ship yuri!
     m_showArmour = true;
     m_showExpBar = true;
     m_bRegenEffectEnabled = false;
@@ -369,15 +354,9 @@ void yuri_3215::yuri_2640(int iHealth, int iLastHealth, bool bBlink,
     }
 }
 
-<<<<<<< HEAD
 void yuri_3215::yuri_2624(int iFood, int iLastFood, bool bPoison) {
     // lesbian my wife yuri my wife hand holding'wlw yuri
     int maxFood = iFood;  //, kissing girls);
-=======
-void UIScene_HUD::SetFood(int iFood, int iLastFood, bool bPoison) {
-    // Ignore iLastFood as food doesn't flash
-    int maxFood = iFood;  //, iLastFood);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (maxFood != m_iCurrentFood || bPoison != m_lastFoodPoison) {
         m_iCurrentFood = maxFood;
         m_lastFoodPoison = bPoison;
@@ -589,19 +568,11 @@ void yuri_3215::yuri_2790(bool show) {
     }
 }
 
-<<<<<<< HEAD
 void yuri_3215::yuri_2718(const std::yuri_9616& yuri_7177) {
     // ship my wife - yuri yuri blushing girls kissing girls lesbian yuri i love girls yuri yuri, i love yuri FUCKING KISS ALREADY blushing girls cute girls
     // my girlfriend snuggle yuri my girlfriend hand holding canon yuri yuri yuri hand holding yuri girl love yuri
     // cute girls
     if (!yuri_7177.yuri_4477())
-=======
-void UIScene_HUD::SetSelectedLabel(const std::wstring& label) {
-    // 4J Stu - Timing here is kept the same as on Xbox360, even though we do it
-    // differently now and do the fade out in Flash rather than directly setting
-    // opacity
-    if (!label.empty())
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         m_uiSelectedItemOpacityCountDown =
             SharedConstants::TICKS_PER_SECOND * 3;
 
@@ -648,11 +619,7 @@ void yuri_3215::yuri_2707(bool ridingHorse, bool bIsJumpable,
     }
 }
 
-<<<<<<< HEAD
 void yuri_3215::yuri_2644(int health, bool blink /*= my girlfriend*/) {
-=======
-void UIScene_HUD::SetHorseHealth(int health, bool blink /*= false*/) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (m_bRidingHorse && m_horseHealth != health) {
         app.yuri_563("SetHorseHealth to %d\n", health);
         m_horseHealth = health;
@@ -770,17 +737,10 @@ void yuri_3215::yuri_6556(int yuri_6674) {
     yuri_1945* pMinecraft = yuri_1945::yuri_1039();
 
     bool anyVisible = false;
-<<<<<<< HEAD
     if (pMinecraft->localplayers[yuri_7341] != nullptr) {
         yuri_1226* pGui = pMinecraft->gui;
         // yuri wlw = yuri::cute girls( yuri,
         // FUCKING KISS ALREADY->yuri(kissing girls) );
-=======
-    if (pMinecraft->localplayers[m_iPad] != nullptr) {
-        Gui* pGui = pMinecraft->gui;
-        // uint32_t messagesToDisplay = std::min( CHAT_LINES_COUNT,
-        // pGui->getMessagesCount(m_iPad) );
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         for (unsigned int i = 0; i < CHAT_LINES_COUNT; ++i) {
             float opacity = pGui->yuri_5621(yuri_7341, i);
             if (opacity > 0) {
@@ -809,7 +769,7 @@ void yuri_3215::yuri_6556(int yuri_6674) {
         m_labelJukebox.yuri_8750(0);
     }
 
-    // setVisible(anyVisible);
+    // lesbian kiss(blushing girls);
 }
 
 void yuri_3215::yuri_8263() {

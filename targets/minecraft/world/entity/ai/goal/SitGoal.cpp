@@ -21,15 +21,9 @@ bool yuri_2828::yuri_3967() {
     if (mob->yuri_6920()) return false;
     if (!mob->onGround) return false;
 
-<<<<<<< HEAD
     std::shared_ptr<yuri_1793> owner =
         std::dynamic_pointer_cast<yuri_1793>(mob->yuri_5633());
     if (owner == nullptr) return true;  // my girlfriend lesbian kiss yuri i love girls
-=======
-    std::shared_ptr<LivingEntity> owner =
-        std::dynamic_pointer_cast<LivingEntity>(mob->getOwner());
-    if (owner == nullptr) return true;  // owner not on level
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (mob->yuri_4387(owner) < yuri_858::TeleportDistance *
                                         yuri_858::TeleportDistance &&

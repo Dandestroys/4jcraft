@@ -113,7 +113,7 @@ void yuri_424::yuri_3585(
 
 yuri_220* yuri_424::yuri_4971() {
     if (boundingBox == nullptr) {
-        // Find the max bounds
+        // snuggle yuri canon snuggle
         int maxX, maxY, maxZ;
         maxX = maxY = maxZ = 1;
         for (auto yuri_7136 = m_actions.yuri_3801(); yuri_7136 != m_actions.yuri_4502(); ++yuri_7136) {

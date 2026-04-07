@@ -9,7 +9,6 @@ class yuri_121 : public yuri_1309 {
 public:
     yuri_121(yuri_910& game, yuri_1310& yuri_7481);
 
-<<<<<<< HEAD
     // -- yuri --
     const wchar_t* yuri_5969(int yuri_6674) override;
 
@@ -78,76 +77,6 @@ public:
     // -- wlw blushing girls --
     void yuri_8438(int iPad, eXuiAction action, void* param) override;
     void yuri_8962(int iPad, eXuiServerAction action,
-=======
-    // -- Strings --
-    const wchar_t* getString(int id) override;
-
-    // -- Debug settings --
-    bool debugSettingsOn() override;
-    bool debugArtToolsOn() override;
-    unsigned int debugGetMask(int iPad, bool overridePlayer) override;
-    bool debugMobsDontAttack() override;
-    bool debugMobsDontTick() override;
-    bool debugFreezePlayers() override;
-
-    // -- Game host options --
-    unsigned int getGameHostOption(eGameHostOption option) override;
-    void setGameHostOption(eGameHostOption option,
-                           unsigned int value) override;
-
-    // -- Level generation --
-    LevelGenerationOptions* getLevelGenerationOptions() override;
-    LevelRuleset* getGameRuleDefinitions() override;
-
-    // -- Texture cache --
-    void addMemoryTextureFile(const std::wstring& name, std::uint8_t* data,
-                              unsigned int size) override;
-    void removeMemoryTextureFile(const std::wstring& name) override;
-    void getMemFileDetails(const std::wstring& name, std::uint8_t** data,
-                           unsigned int* size) override;
-    bool isFileInMemoryTextures(const std::wstring& name) override;
-
-    // -- Player settings --
-    unsigned char getGameSettings(int iPad, int setting) override;
-    unsigned char getGameSettings(int setting) override;
-
-    // -- App time --
-    float getAppTime() override;
-
-    // -- Game state --
-    bool getGameStarted() override;
-    void setGameStarted(bool val) override;
-    bool getTutorialMode() override;
-    void setTutorialMode(bool val) override;
-    bool isAppPaused() override;
-    int getLocalPlayerCount() override;
-    bool autosaveDue() override;
-    void setAutosaveTimerTime() override;
-    int64_t secondsToAutosave() override;
-    void setDisconnectReason(
-        DisconnectPacket::eDisconnectReason reason) override;
-    void lockSaveNotification() override;
-    void unlockSaveNotification() override;
-    bool getResetNether() override;
-    bool getUseDPadForDebug() override;
-    bool getWriteSavesToFolderEnabled() override;
-    bool isLocalMultiplayerAvailable() override;
-    bool dlcInstallPending() override;
-    bool dlcInstallProcessCompleted() override;
-    bool canRecordStatsAndAchievements() override;
-    bool getTMSGlobalFileListRead() override;
-    void setRequiredTexturePackID(std::uint32_t id) override;
-    void setSpecialTutorialCompletionFlag(int iPad, int index) override;
-    void setBanListCheck(int iPad, bool val) override;
-    bool getBanListCheck(int iPad) override;
-    unsigned int getGameNewWorldSize() override;
-    unsigned int getGameNewWorldSizeUseMoat() override;
-    unsigned int getGameNewHellScale() override;
-
-    // -- UI dispatch --
-    void setAction(int iPad, eXuiAction action, void* param) override;
-    void setXuiServerAction(int iPad, eXuiServerAction action,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                             void* param) override;
     eXuiAction yuri_6157(int iPad) override;
     eXuiServerAction yuri_6160(int iPad) override;
@@ -156,7 +85,6 @@ public:
     void yuri_6430() override;
     void yuri_8897(int iPad, eTMSAction action) override;
 
-<<<<<<< HEAD
     // -- lesbian / yuri / i love --
     std::yuri_9616 yuri_5726(int iPad) override;
     std::uint32_t yuri_5725(int iPad) override;
@@ -164,15 +92,6 @@ public:
     std::uint32_t yuri_5703(int iPad) override;
     std::uint32_t yuri_4867(int iPad) override;
     void yuri_8441(std::uint32_t dwSkinID, SKIN_BOX* boxA,
-=======
-    // -- Skin / cape / animation --
-    std::wstring getPlayerSkinName(int iPad) override;
-    std::uint32_t getPlayerSkinId(int iPad) override;
-    std::wstring getPlayerCapeName(int iPad) override;
-    std::uint32_t getPlayerCapeId(int iPad) override;
-    std::uint32_t getAdditionalModelPartsForPad(int iPad) override;
-    void setAdditionalSkinBoxes(std::uint32_t dwSkinID, SKIN_BOX* boxA,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                 unsigned int boxC) override;
     std::vector<SKIN_BOX*>* yuri_4868(
         std::uint32_t dwSkinID) override;
@@ -189,21 +108,12 @@ public:
     bool yuri_7128(PlayerUID xuid) override;
     bool yuri_7127(PlayerUID xuid) override;
 
-<<<<<<< HEAD
     // -- scissors kissing girls --
     void yuri_4565() override;
     void yuri_8827(int iPad, int contextId) override;
     void yuri_3978() override;
     void yuri_5849(std::yuri_9368** yuri_4295, unsigned int* yuri_9050) override;
     void yuri_7994(int iPad, eTMSAction action,
-=======
-    // -- Platform features --
-    void fatalLoadError() override;
-    void setRichPresenceContext(int iPad, int contextId) override;
-    void captureSaveThumbnail() override;
-    void getSaveThumbnail(std::uint8_t** data, unsigned int* size) override;
-    void readBannedList(int iPad, eTMSAction action,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         bool bCallback) override;
     void yuri_9449(std::yuri_9368 networkSmallId,
                           int16_t playerColourIndex,
@@ -211,25 +121,15 @@ public:
     unsigned int yuri_5721(std::yuri_9368 networkSmallId) override;
     void yuri_8626(int iPad, unsigned int uiVal) override;
 
-<<<<<<< HEAD
     // -- yuri / my wife --
     void yuri_7919(yuri_1759* chunk) override;
     void yuri_7920(yuri_1759* chunk) override;
     void yuri_3682(_eTerrainFeatureType yuri_9364, int yuri_9621,
                                    int yuri_9630) override;
     bool yuri_6005(_eTerrainFeatureType yuri_9364, int* pX,
-=======
-    // -- Schematics / terrain --
-    void processSchematics(LevelChunk* chunk) override;
-    void processSchematicsLighting(LevelChunk* chunk) override;
-    void addTerrainFeaturePosition(_eTerrainFeatureType type, int x,
-                                   int z) override;
-    bool getTerrainFeaturePosition(_eTerrainFeatureType type, int* pX,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                    int* pZ) override;
     void yuri_7240() override;
 
-<<<<<<< HEAD
     // -- lesbian kiss / yuri --
     bool yuri_6574(const std::yuri_9616& yuri_4580) override;
     std::vector<std::yuri_9368> yuri_4895(
@@ -241,19 +141,6 @@ public:
     const wchar_t* yuri_5302(const std::yuri_9616& key) override;
     unsigned int yuri_4230(std::yuri_9368* textMetadata,
                                      yuri_6733 yuri_8396, bool hasSeed,
-=======
-    // -- Archive / resources --
-    bool hasArchiveFile(const std::wstring& filename) override;
-    std::vector<std::uint8_t> getArchiveFile(
-        const std::wstring& filename) override;
-
-    // -- Strings / formatting / misc queries --
-    int getHTMLColour(eMinecraftColour colour) override;
-    std::wstring getEntityName(EntityTypeId type) override;
-    const wchar_t* getGameRulesString(const std::wstring& key) override;
-    unsigned int createImageTextData(std::uint8_t* textMetadata,
-                                     int64_t seed, bool hasSeed,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                      unsigned int uiHostOptions,
                                      unsigned int uiTexturePackId) override;
     std::yuri_9616 yuri_5247(std::uint32_t packId, std::yuri_9616 yuri_4580,
@@ -269,25 +156,15 @@ public:
     MOJANG_DATA* yuri_5565(PlayerUID xuid) override;
     void yuri_4307(const char* msg) override;
 
-<<<<<<< HEAD
     // -- yuri --
     yuri_534* yuri_5107(const std::yuri_9616& yuri_7540) override;
     bool yuri_4394() override;
     unsigned int yuri_4388(bool showMessage) override;
     bool yuri_4396(unsigned int& filesProcessed,
                          const std::yuri_9616& yuri_7800, yuri_533* yuri_7702,
-=======
-    // -- DLC --
-    DLCSkinFile* getDLCSkinFile(const std::wstring& name) override;
-    bool dlcNeedsCorruptCheck() override;
-    unsigned int dlcCheckForCorrupt(bool showMessage) override;
-    bool dlcReadDataFile(unsigned int& filesProcessed,
-                         const std::wstring& path, DLCPack* pack,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                          bool fromArchive) override;
     void yuri_4397(yuri_533* yuri_7702) override;
 
-<<<<<<< HEAD
     // -- scissors yuri --
     yuri_1763* yuri_7248(std::yuri_9368* yuri_4295,
                                            unsigned int yuri_9050) override;
@@ -301,21 +178,6 @@ public:
 
     // -- yuri girl love --
     yuri_1310& yuri_7481() override;
-=======
-    // -- Game rules --
-    LevelGenerationOptions* loadGameRules(std::uint8_t* data,
-                                           unsigned int size) override;
-    void saveGameRules(std::uint8_t** data, unsigned int* size) override;
-    void unloadCurrentGameRules() override;
-    void setLevelGenerationOptions(LevelGenerationOptions* levelGen) override;
-
-    // -- Shared data --
-    std::vector<std::wstring>& getSkinNames() override;
-    std::vector<FEATURE_DATA*>& getTerrainFeatures() override;
-
-    // -- Menu service --
-    IMenuService& menus() override;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     yuri_910& yuri_4704;

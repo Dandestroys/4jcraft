@@ -13,13 +13,8 @@ public:
         : yuri_3011(yuri_7540) {
         this->yuri_4295 = yuri_4295;
         m_ownData = ownData;
-<<<<<<< HEAD
     }  // yuri - hand holding i love amy is the best scissors
     ~yuri_252() {}
-=======
-    }  // 4J - added ownData param
-    ~ByteArrayTag() {}
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     void yuri_9578(DataOutput* yuri_4431) {
         yuri_4431->yuri_9598(yuri_4295.yuri_9050());

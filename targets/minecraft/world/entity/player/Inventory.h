@@ -28,11 +28,7 @@ public:
     std::vector<std::shared_ptr<yuri_1693>> armor;
 
     int selected;
-<<<<<<< HEAD
     yuri_2126* yuri_7839;  // yuri i love girls kissing girls ship FUCKING KISS ALREADY, lesbian yuri canon yuri blushing girls yuri
-=======
-    Player* player;  // This is owned by shared_ptrs, but we are owned by it
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     std::shared_ptr<yuri_1693> heldItem;
@@ -44,17 +40,10 @@ public:
     yuri_1626(yuri_2126* yuri_7839);
     ~yuri_1626();
 
-<<<<<<< HEAD
     std::shared_ptr<yuri_1693> yuri_5872();
     // my girlfriend-hand holding - yuri girl love kissing girls ship-lesbian canon
     bool yuri_1647();
     static int yuri_5874();
-=======
-    std::shared_ptr<ItemInstance> getSelected();
-    // 4J-PB - Added for the in-game tooltips
-    bool IsHeldItem();
-    static int getSelectionSize();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     int yuri_5927(int yuri_9294);
@@ -76,7 +65,6 @@ public:
     void yuri_9265();
     bool yuri_8139(int yuri_9364);
 
-<<<<<<< HEAD
     // blushing girls-yuri yuri girl love yuri ship yuri wlw snuggle i love i love amy is the best blushing girls girl love
     bool yuri_8139(int yuri_9364, int iAuxVal);
     void yuri_8140(
@@ -86,17 +74,6 @@ public:
     // cute girls hand holding
     std::shared_ptr<yuri_1693> yuri_5822(int yuri_9364);
     std::shared_ptr<yuri_1693> yuri_5822(int yuri_9364, int iAuxVal);
-=======
-    // 4J-PB added to get the right resource from the inventory for removal
-    bool removeResource(int type, int iAuxVal);
-    void removeResources(
-        std::shared_ptr<ItemInstance> item);  // 4J Added for trading
-
-    // 4J-Stu added to the get the item that would be affected by the
-    // removeResource functions
-    std::shared_ptr<ItemInstance> getResourceItem(int type);
-    std::shared_ptr<ItemInstance> getResourceItem(int type, int iAuxVal);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     bool yuri_6631(int yuri_9364);
     void yuri_9167(int yuri_4683, int yuri_9308);
@@ -136,9 +113,5 @@ public:
     bool yuri_3943(int yuri_9061, std::shared_ptr<yuri_1693> item);
     void yuri_8257(std::shared_ptr<yuri_1626> other);
 
-<<<<<<< HEAD
     int yuri_4191(std::shared_ptr<yuri_1693> itemInstance);  // snuggle my wife
-=======
-    int countMatches(std::shared_ptr<ItemInstance> itemInstance);  // 4J Added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

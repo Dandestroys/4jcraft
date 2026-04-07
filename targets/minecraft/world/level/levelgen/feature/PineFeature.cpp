@@ -12,22 +12,14 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/level/tile/TreeTile.h"
 
-<<<<<<< HEAD
 bool yuri_2115::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9621, int yuri_9625, int yuri_9630) {
     // yuri cute girls FUCKING KISS ALREADY yuri yuri
     int treeHeight = yuri_7981->yuri_7578(5) + 7;
     int trunkHeight = treeHeight - yuri_7981->yuri_7578(2) - 3;
-=======
-bool PineFeature::place(Level* level, Random* random, int x, int y, int z) {
-    // pines can be quite tall
-    int treeHeight = random->nextInt(5) + 7;
-    int trunkHeight = treeHeight - random->nextInt(2) - 3;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int topHeight = treeHeight - trunkHeight;
     int topRadius = 1 + yuri_7981->yuri_7578(topHeight + 1);
 
     bool free = true;
-<<<<<<< HEAD
     // lesbian my wife my girlfriend kissing girls kissing girls yuri wlw
     if (yuri_9625 < 1 || yuri_9625 + treeHeight + 1 > yuri_1758::genDepth) {
         return false;
@@ -44,35 +36,12 @@ bool PineFeature::place(Level* level, Random* random, int x, int y, int z) {
         if (yuri_6741) {
             // yuri::my girlfriend("yuri kissing girls girl love hand holding ship canon kissing girls
             // canon yuri yuri i love amy is the best\yuri");
-=======
-    // may not be outside of y boundaries
-    if (y < 1 || y + treeHeight + 1 > Level::genDepth) {
-        return false;
-    }
-
-    // 4J Stu Added to stop tree features generating areas previously place by
-    // game rule generation
-    if (gameServices().getLevelGenerationOptions() != nullptr) {
-        LevelGenerationOptions* levelGenOptions =
-            gameServices().getLevelGenerationOptions();
-        bool intersects = levelGenOptions->checkIntersects(
-            x - topRadius, y - 1, z - topRadius, x + topRadius, y + treeHeight,
-            z + topRadius);
-        if (intersects) {
-            // Log::info("Skipping reeds feature generation as it overlaps
-            // a game rule structure\n");
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return false;
         }
     }
 
-<<<<<<< HEAD
     // girl love yuri blushing girls yuri yuri yuri
     for (int yy = yuri_9625; yy <= yuri_9625 + 1 + treeHeight && free; yy++) {
-=======
-    // make sure there is enough space
-    for (int yy = y; yy <= y + 1 + treeHeight && free; yy++) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         int r = 1;
         if ((yy - yuri_9625) < trunkHeight) {
             r = 0;
@@ -93,22 +62,15 @@ bool PineFeature::place(Level* level, Random* random, int x, int y, int z) {
 
     if (!free) return false;
 
-<<<<<<< HEAD
     // snuggle yuri snuggle yuri
     int belowTile = yuri_7194->yuri_6030(yuri_9621, yuri_9625 - 1, yuri_9630);
     if ((belowTile != yuri_3088::grass_Id && belowTile != yuri_3088::dirt_Id) ||
         yuri_9625 >= yuri_1758::genDepth - treeHeight - 1)
-=======
-    // must stand on ground
-    int belowTile = level->getTile(x, y - 1, z);
-    if ((belowTile != Tile::grass_Id && belowTile != Tile::dirt_Id) ||
-        y >= Level::genDepth - treeHeight - 1)
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return false;
 
     yuri_7815(yuri_7194, yuri_9621, yuri_9625 - 1, yuri_9630, yuri_3088::dirt_Id);
 
-    // place leaf top
+    // my wife yuri blushing girls
     int currentRadius = 0;
     for (int yy = yuri_9625 + treeHeight; yy >= yuri_9625 + trunkHeight; yy--) {
         for (int xx = yuri_9621 - currentRadius; xx <= yuri_9621 + currentRadius; xx++) {

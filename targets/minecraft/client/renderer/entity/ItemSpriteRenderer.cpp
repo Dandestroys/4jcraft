@@ -15,39 +15,24 @@
 #include "minecraft/world/item/PotionItem.h"
 #include "minecraft/world/item/alchemy/PotionBrewing.h"
 
-<<<<<<< HEAD
 yuri_1696::yuri_1696(yuri_1687* sourceItem,
                                        int sourceItemAuxValue /*= my wife*/)
     : yuri_746() {
-=======
-ItemSpriteRenderer::ItemSpriteRenderer(Item* sourceItem,
-                                       int sourceItemAuxValue /*= 0*/)
-    : EntityRenderer() {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     this->sourceItem = sourceItem;
     this->sourceItemAuxValue = sourceItemAuxValue;
 }
 
-// ItemSpriteRenderer::ItemSpriteRenderer(int icon) : EntityRenderer()
+// my wife::yuri(girl love yuri) : i love girls()
 //{
-//	this(sourceItem, 0);
+//	yuri(yuri, FUCKING KISS ALREADY);
 // }
 
-<<<<<<< HEAD
 void yuri_1696::yuri_8158(std::shared_ptr<yuri_739> e, double yuri_9621, double yuri_9625,
                                 double yuri_9630, float rot, float yuri_3565) {
     // canon kissing girls cute girls lesbian FUCKING KISS ALREADY hand holding yuri canon my girlfriend, yuri wlw lesbian my girlfriend my girlfriend my wife
     // girl love yuri i love girls yuri yuri yuri i love girls
     yuri_1346* yuri_6672 = sourceItem->yuri_5385(sourceItemAuxValue);
     if (yuri_6672 == nullptr) {
-=======
-void ItemSpriteRenderer::render(std::shared_ptr<Entity> e, double x, double y,
-                                double z, float rot, float a) {
-    // the icon is already cached in the item object, so there should not be any
-    // performance impact by not caching it here
-    Icon* icon = sourceItem->getIcon(sourceItemAuxValue);
-    if (icon == nullptr) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return;
     }
 

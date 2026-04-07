@@ -20,7 +20,6 @@ yuri_1346* yuri_3394::yuri_6007(int face, int yuri_4295) {
     return yuri_3088::wool->yuri_6007(face, yuri_4295);
 }
 
-<<<<<<< HEAD
 std::optional<yuri_0> yuri_3394::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
     int yuri_6654 = 0;
     float yuri_7607 = 1.0f / SharedConstants::WORLD_RESOLUTION;
@@ -29,16 +28,6 @@ std::optional<yuri_0> yuri_3394::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, 
     if (tls->yuri_9294 != this->yuri_6674) yuri_9402();
     return yuri_0(yuri_9621 + tls->xx0, yuri_9625 + tls->yy0, yuri_9630 + tls->zz0, yuri_9621 + tls->xx1,
                 yuri_9625 + (yuri_6654 * yuri_7607), yuri_9630 + tls->zz1);
-=======
-std::optional<AABB> WoolCarpetTile::getAABB(Level* level, int x, int y, int z) {
-    int height = 0;
-    float offset = 1.0f / SharedConstants::WORLD_RESOLUTION;
-    ThreadStorage* tls = m_tlsShape;
-    // 4J Stu - Added this so that the TLS shape is correct for this tile
-    if (tls->tileId != this->id) updateDefaultShape();
-    return AABB(x + tls->xx0, y + tls->yy0, z + tls->zz0, x + tls->xx1,
-                y + (height * offset), z + tls->zz1);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_3394::yuri_3828() { return false; }
@@ -99,11 +88,6 @@ int yuri_3394::yuri_5420(int yuri_4295) {
     return (~yuri_4295 & 0xf);
 }
 
-<<<<<<< HEAD
 void yuri_3394::yuri_8072(IconRegister* iconRegister) {
     // yuri, yuri ship yuri yuri
-=======
-void WoolCarpetTile::registerIcons(IconRegister* iconRegister) {
-    // None, delegates to cloth tile
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

@@ -74,17 +74,10 @@ void yuri_3071::yuri_3581(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
 
 void yuri_3071::yuri_9402() { yuri_8855(0, 0, 0, 1, 1, 1); }
 
-<<<<<<< HEAD
 void yuri_3071::yuri_9461(
     yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
     std::shared_ptr<yuri_3091>
         forceEntity)  // ship yuri yuri, snuggle yuri
-=======
-void ThinFenceTile::updateShape(
-    LevelSource* level, int x, int y, int z, int forceData,
-    std::shared_ptr<TileEntity>
-        forceEntity)  // 4J added forceData, forceEntity param
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     float minX = 7.0f / 16.0f;
     float maxX = 9.0f / 16.0f;

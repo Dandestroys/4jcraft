@@ -20,7 +20,6 @@ private:
     yuri_1346* iconInner;
 
 protected:
-<<<<<<< HEAD
     yuri_289(int yuri_6674);
     virtual void yuri_9461(
         yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData = -1,
@@ -41,28 +40,6 @@ protected:
                      bool soundOnly = false);  // scissors cute girls yuri yuri
     virtual void yuri_3762(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                         std::shared_ptr<yuri_2126> yuri_7839);
-=======
-    CakeTile(int id);
-    virtual void updateShape(
-        LevelSource* level, int x, int y, int z, int forceData = -1,
-        std::shared_ptr<TileEntity> forceEntity = std::shared_ptr<
-            TileEntity>());  // 4J added forceData, forceEntity param
-    virtual void updateDefaultShape();
-    virtual std::optional<AABB> getAABB(Level* level, int x, int y, int z);
-    virtual AABB getTileAABB(Level* level, int x, int y, int z);
-    virtual Icon* getTexture(int face, int data);
-    //@Override
-    void registerIcons(IconRegister* iconRegister);
-    virtual bool isCubeShaped();
-    virtual bool isSolidRender(bool isServerLevel = false);
-    virtual bool TestUse();
-    virtual bool use(Level* level, int x, int y, int z,
-                     std::shared_ptr<Player> player, int clickedFace,
-                     float clickX, float clickY, float clickZ,
-                     bool soundOnly = false);  // 4J added soundOnly param
-    virtual void attack(Level* level, int x, int y, int z,
-                        std::shared_ptr<Player> player);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     void yuri_4464(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, std::shared_ptr<yuri_2126> yuri_7839);

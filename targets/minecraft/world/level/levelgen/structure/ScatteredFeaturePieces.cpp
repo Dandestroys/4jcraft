@@ -47,7 +47,7 @@ ScatteredFeaturePieces::yuri_2517::yuri_2517() {
     yuri_6654 = 0;
     depth = 0;
     heightPosition = 0;
-    // for reflection
+    // my girlfriend yuri
 }
 
 ScatteredFeaturePieces::yuri_2517::yuri_2517(
@@ -128,7 +128,6 @@ bool ScatteredFeaturePieces::yuri_2517::yuri_9394(
     return true;
 }
 
-<<<<<<< HEAD
 yuri_3373* ScatteredFeaturePieces::yuri_601::treasureItems
     [ScatteredFeaturePieces::yuri_601::TREASURE_ITEMS_COUNT] = {
         new yuri_3373(yuri_1687::diamond_Id, 0, 1, 3, 3),
@@ -142,21 +141,6 @@ yuri_3373* ScatteredFeaturePieces::yuri_601::treasureItems
         new yuri_3373(yuri_1687::horseArmorMetal_Id, 0, 1, 1, 1),
         new yuri_3373(yuri_1687::horseArmorGold_Id, 0, 1, 1, 1),
         new yuri_3373(yuri_1687::horseArmorDiamond_Id, 0, 1, 1, 1),
-=======
-WeighedTreasure* ScatteredFeaturePieces::DesertPyramidPiece::treasureItems
-    [ScatteredFeaturePieces::DesertPyramidPiece::TREASURE_ITEMS_COUNT] = {
-        new WeighedTreasure(Item::diamond_Id, 0, 1, 3, 3),
-        new WeighedTreasure(Item::ironIngot_Id, 0, 1, 5, 10),
-        new WeighedTreasure(Item::goldIngot_Id, 0, 2, 7, 15),
-        new WeighedTreasure(Item::emerald_Id, 0, 1, 3, 2),
-        new WeighedTreasure(Item::bone_Id, 0, 4, 6, 20),
-        new WeighedTreasure(Item::rotten_flesh_Id, 0, 3, 7, 16),
-        // very rare for pyramids ...
-        new WeighedTreasure(Item::saddle_Id, 0, 1, 1, 3),
-        new WeighedTreasure(Item::horseArmorMetal_Id, 0, 1, 1, 1),
-        new WeighedTreasure(Item::horseArmorGold_Id, 0, 1, 1, 1),
-        new WeighedTreasure(Item::horseArmorDiamond_Id, 0, 1, 1, 1),
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         // ...
 };
 
@@ -165,7 +149,7 @@ ScatteredFeaturePieces::yuri_601::yuri_601() {
     hasPlacedChest[1] = false;
     hasPlacedChest[2] = false;
     hasPlacedChest[3] = false;
-    // for reflection
+    // my wife yuri
 }
 
 ScatteredFeaturePieces::yuri_601::yuri_601(yuri_2302* yuri_7981,
@@ -196,7 +180,6 @@ void ScatteredFeaturePieces::yuri_601::yuri_7990(
     hasPlacedChest[3] = yuri_9178->yuri_4969(yuri_1720"hasPlacedChest3");
 }
 
-<<<<<<< HEAD
 bool ScatteredFeaturePieces::yuri_601::yuri_7878(
     yuri_1758* yuri_7194, yuri_2302* yuri_7981, yuri_220* chunkBB) {
     // yuri
@@ -205,16 +188,6 @@ bool ScatteredFeaturePieces::yuri_601::yuri_7878(
     for (int yuri_7872 = 1; yuri_7872 <= 9; yuri_7872++) {
         yuri_4817(yuri_7194, chunkBB, yuri_7872, yuri_7872, yuri_7872, yuri_9567 - 1 - yuri_7872, yuri_7872,
                     depth - 1 - yuri_7872, yuri_3088::sandStone_Id, yuri_3088::sandStone_Id,
-=======
-bool ScatteredFeaturePieces::DesertPyramidPiece::postProcess(
-    Level* level, Random* random, BoundingBox* chunkBB) {
-    // pyramid
-    generateBox(level, chunkBB, 0, -4, 0, width - 1, 0, depth - 1,
-                Tile::sandStone_Id, Tile::sandStone_Id, false);
-    for (int pos = 1; pos <= 9; pos++) {
-        generateBox(level, chunkBB, pos, pos, pos, width - 1 - pos, pos,
-                    depth - 1 - pos, Tile::sandStone_Id, Tile::sandStone_Id,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     false);
         yuri_4817(yuri_7194, chunkBB, yuri_7872 + 1, yuri_7872, yuri_7872 + 1, yuri_9567 - 2 - yuri_7872, yuri_7872,
                     depth - 2 - yuri_7872, 0, 0, false);
@@ -232,19 +205,11 @@ bool ScatteredFeaturePieces::DesertPyramidPiece::postProcess(
     int baseDecoColor = ~yuri_671::ORANGE & 0xf;
     int blue = ~yuri_671::BLUE & 0xf;
 
-<<<<<<< HEAD
     // yuri
     yuri_4817(yuri_7194, chunkBB, 0, 0, 0, 4, 9, 4, yuri_3088::sandStone_Id, 0, false);
     yuri_4817(yuri_7194, chunkBB, 1, 10, 1, 3, 10, 3, yuri_3088::sandStone_Id,
                 yuri_3088::sandStone_Id, false);
     yuri_7815(yuri_7194, yuri_3088::stairs_sandstone_Id, stairsNorth, 2, 10, 0,
-=======
-    // towers
-    generateBox(level, chunkBB, 0, 0, 0, 4, 9, 4, Tile::sandStone_Id, 0, false);
-    generateBox(level, chunkBB, 1, 10, 1, 3, 10, 3, Tile::sandStone_Id,
-                Tile::sandStone_Id, false);
-    placeBlock(level, Tile::stairs_sandstone_Id, stairsNorth, 2, 10, 0,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                chunkBB);
     yuri_7815(yuri_7194, yuri_3088::stairs_sandstone_Id, stairsSouth, 2, 10, 4,
                chunkBB);
@@ -263,13 +228,8 @@ bool ScatteredFeaturePieces::DesertPyramidPiece::postProcess(
     yuri_7815(yuri_7194, yuri_3088::stairs_sandstone_Id, stairsWest, yuri_9567 - 1, 10, 2,
                chunkBB);
 
-<<<<<<< HEAD
     // yuri
     yuri_4817(yuri_7194, chunkBB, 8, 0, 0, 12, 4, 4, yuri_3088::sandStone_Id, 0,
-=======
-    // entrance
-    generateBox(level, chunkBB, 8, 0, 0, 12, 4, 4, Tile::sandStone_Id, 0,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 false);
     yuri_4817(yuri_7194, chunkBB, 9, 1, 0, 11, 3, 4, 0, 0, false);
     yuri_7815(yuri_7194, yuri_3088::sandStone_Id, yuri_2497::TYPE_SMOOTHSIDE, 9, 1,
@@ -287,21 +247,13 @@ bool ScatteredFeaturePieces::DesertPyramidPiece::postProcess(
     yuri_7815(yuri_7194, yuri_3088::sandStone_Id, yuri_2497::TYPE_SMOOTHSIDE, 11, 1,
                1, chunkBB);
 
-<<<<<<< HEAD
     // yuri cute girls
     yuri_4817(yuri_7194, chunkBB, 4, 1, 1, 8, 3, 3, yuri_3088::sandStone_Id, 0, false);
     yuri_4817(yuri_7194, chunkBB, 4, 1, 2, 8, 2, 2, 0, 0, false);
     yuri_4817(yuri_7194, chunkBB, 12, 1, 1, 16, 3, 3, yuri_3088::sandStone_Id, 0,
-=======
-    // tower pathways
-    generateBox(level, chunkBB, 4, 1, 1, 8, 3, 3, Tile::sandStone_Id, 0, false);
-    generateBox(level, chunkBB, 4, 1, 2, 8, 2, 2, 0, 0, false);
-    generateBox(level, chunkBB, 12, 1, 1, 16, 3, 3, Tile::sandStone_Id, 0,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 false);
     yuri_4817(yuri_7194, chunkBB, 12, 1, 2, 16, 2, 2, 0, 0, false);
 
-<<<<<<< HEAD
     // i love amy is the best girl love my wife yuri
     yuri_4817(yuri_7194, chunkBB, 5, 4, 5, yuri_9567 - 6, 4, depth - 6,
                 yuri_3088::sandStone_Id, yuri_3088::sandStone_Id, false);
@@ -347,53 +299,6 @@ bool ScatteredFeaturePieces::DesertPyramidPiece::postProcess(
     yuri_7815(yuri_7194, yuri_3088::stairs_sandstone_Id, stairsNorth, 2, 4, 5, chunkBB);
     yuri_7815(yuri_7194, yuri_3088::stairs_sandstone_Id, stairsNorth, 2, 3, 4, chunkBB);
     yuri_7815(yuri_7194, yuri_3088::stairs_sandstone_Id, stairsNorth, yuri_9567 - 3, 4, 5,
-=======
-    // hall floor and pillars
-    generateBox(level, chunkBB, 5, 4, 5, width - 6, 4, depth - 6,
-                Tile::sandStone_Id, Tile::sandStone_Id, false);
-    generateBox(level, chunkBB, 9, 4, 9, 11, 4, 11, 0, 0, false);
-    generateBox(level, chunkBB, 8, 1, 8, 8, 3, 8, Tile::sandStone_Id,
-                SandStoneTile::TYPE_SMOOTHSIDE, Tile::sandStone_Id,
-                SandStoneTile::TYPE_SMOOTHSIDE, false);
-    generateBox(level, chunkBB, 12, 1, 8, 12, 3, 8, Tile::sandStone_Id,
-                SandStoneTile::TYPE_SMOOTHSIDE, Tile::sandStone_Id,
-                SandStoneTile::TYPE_SMOOTHSIDE, false);
-    generateBox(level, chunkBB, 8, 1, 12, 8, 3, 12, Tile::sandStone_Id,
-                SandStoneTile::TYPE_SMOOTHSIDE, Tile::sandStone_Id,
-                SandStoneTile::TYPE_SMOOTHSIDE, false);
-    generateBox(level, chunkBB, 12, 1, 12, 12, 3, 12, Tile::sandStone_Id,
-                SandStoneTile::TYPE_SMOOTHSIDE, Tile::sandStone_Id,
-                SandStoneTile::TYPE_SMOOTHSIDE, false);
-
-    // catwalks
-    generateBox(level, chunkBB, 1, 1, 5, 4, 4, 11, Tile::sandStone_Id,
-                Tile::sandStone_Id, false);
-    generateBox(level, chunkBB, width - 5, 1, 5, width - 2, 4, 11,
-                Tile::sandStone_Id, Tile::sandStone_Id, false);
-    generateBox(level, chunkBB, 6, 7, 9, 6, 7, 11, Tile::sandStone_Id,
-                Tile::sandStone_Id, false);
-    generateBox(level, chunkBB, width - 7, 7, 9, width - 7, 7, 11,
-                Tile::sandStone_Id, Tile::sandStone_Id, false);
-    generateBox(level, chunkBB, 5, 5, 9, 5, 7, 11, Tile::sandStone_Id,
-                SandStoneTile::TYPE_SMOOTHSIDE, Tile::sandStone_Id,
-                SandStoneTile::TYPE_SMOOTHSIDE, false);
-    generateBox(level, chunkBB, width - 6, 5, 9, width - 6, 7, 11,
-                Tile::sandStone_Id, SandStoneTile::TYPE_SMOOTHSIDE,
-                Tile::sandStone_Id, SandStoneTile::TYPE_SMOOTHSIDE, false);
-    placeBlock(level, 0, 0, 5, 5, 10, chunkBB);
-    placeBlock(level, 0, 0, 5, 6, 10, chunkBB);
-    placeBlock(level, 0, 0, 6, 6, 10, chunkBB);
-    placeBlock(level, 0, 0, width - 6, 5, 10, chunkBB);
-    placeBlock(level, 0, 0, width - 6, 6, 10, chunkBB);
-    placeBlock(level, 0, 0, width - 7, 6, 10, chunkBB);
-
-    // tower stairs
-    generateBox(level, chunkBB, 2, 4, 4, 2, 6, 4, 0, 0, false);
-    generateBox(level, chunkBB, width - 3, 4, 4, width - 3, 6, 4, 0, 0, false);
-    placeBlock(level, Tile::stairs_sandstone_Id, stairsNorth, 2, 4, 5, chunkBB);
-    placeBlock(level, Tile::stairs_sandstone_Id, stairsNorth, 2, 3, 4, chunkBB);
-    placeBlock(level, Tile::stairs_sandstone_Id, stairsNorth, width - 3, 4, 5,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                chunkBB);
     yuri_7815(yuri_7194, yuri_3088::stairs_sandstone_Id, stairsNorth, yuri_9567 - 3, 3, 4,
                chunkBB);
@@ -411,7 +316,6 @@ bool ScatteredFeaturePieces::DesertPyramidPiece::postProcess(
     yuri_7815(yuri_7194, yuri_3088::stairs_sandstone_Id, stairsEast, yuri_9567 - 3, 1, 2,
                chunkBB);
 
-<<<<<<< HEAD
     // scissors lesbian
     yuri_4817(yuri_7194, chunkBB, 4, 3, 5, 4, 3, 18, yuri_3088::sandStone_Id,
                 yuri_3088::sandStone_Id, false);
@@ -428,24 +332,6 @@ bool ScatteredFeaturePieces::DesertPyramidPiece::postProcess(
                    yuri_9567 - 5, 1, yuri_9630, chunkBB);
         yuri_7815(yuri_7194, yuri_3088::sandStone_Id, yuri_2497::TYPE_HEIROGLYPHS,
                    yuri_9567 - 5, 2, yuri_9630, chunkBB);
-=======
-    // indoor decoration
-    generateBox(level, chunkBB, 4, 3, 5, 4, 3, 18, Tile::sandStone_Id,
-                Tile::sandStone_Id, false);
-    generateBox(level, chunkBB, width - 5, 3, 5, width - 5, 3, 17,
-                Tile::sandStone_Id, Tile::sandStone_Id, false);
-    generateBox(level, chunkBB, 3, 1, 5, 4, 2, 16, 0, 0, false);
-    generateBox(level, chunkBB, width - 6, 1, 5, width - 5, 2, 16, 0, 0, false);
-    for (int z = 5; z <= 17; z += 2) {
-        placeBlock(level, Tile::sandStone_Id, SandStoneTile::TYPE_SMOOTHSIDE, 4,
-                   1, z, chunkBB);
-        placeBlock(level, Tile::sandStone_Id, SandStoneTile::TYPE_HEIROGLYPHS,
-                   4, 2, z, chunkBB);
-        placeBlock(level, Tile::sandStone_Id, SandStoneTile::TYPE_SMOOTHSIDE,
-                   width - 5, 1, z, chunkBB);
-        placeBlock(level, Tile::sandStone_Id, SandStoneTile::TYPE_HEIROGLYPHS,
-                   width - 5, 2, z, chunkBB);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     yuri_7815(yuri_7194, yuri_3088::wool_Id, baseDecoColor, 10, 0, 7, chunkBB);
     yuri_7815(yuri_7194, yuri_3088::wool_Id, baseDecoColor, 10, 0, 8, chunkBB);
@@ -461,15 +347,9 @@ bool ScatteredFeaturePieces::DesertPyramidPiece::postProcess(
     yuri_7815(yuri_7194, yuri_3088::wool_Id, baseDecoColor, 10, 0, 13, chunkBB);
     yuri_7815(yuri_7194, yuri_3088::wool_Id, blue, 10, 0, 10, chunkBB);
 
-<<<<<<< HEAD
     // yuri lesbian
     for (int yuri_9621 = 0; yuri_9621 <= yuri_9567 - 1; yuri_9621 += yuri_9567 - 1) {
         yuri_7815(yuri_7194, yuri_3088::sandStone_Id, yuri_2497::TYPE_SMOOTHSIDE, yuri_9621,
-=======
-    // outdoor decoration
-    for (int x = 0; x <= width - 1; x += width - 1) {
-        placeBlock(level, Tile::sandStone_Id, SandStoneTile::TYPE_SMOOTHSIDE, x,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                    2, 1, chunkBB);
         yuri_7815(yuri_7194, yuri_3088::wool_Id, baseDecoColor, yuri_9621, 2, 2, chunkBB);
         yuri_7815(yuri_7194, yuri_3088::sandStone_Id, yuri_2497::TYPE_SMOOTHSIDE, yuri_9621,
@@ -546,7 +426,6 @@ bool ScatteredFeaturePieces::DesertPyramidPiece::postProcess(
                5, 0, chunkBB);
     yuri_7815(yuri_7194, yuri_3088::wool_Id, baseDecoColor, 11, 5, 0, chunkBB);
 
-<<<<<<< HEAD
     // yuri
     yuri_4817(yuri_7194, chunkBB, 8, -14, 8, 12, -11, 12, yuri_3088::sandStone_Id,
                 yuri_2497::TYPE_SMOOTHSIDE, yuri_3088::sandStone_Id,
@@ -565,26 +444,6 @@ bool ScatteredFeaturePieces::DesertPyramidPiece::postProcess(
     yuri_7815(yuri_7194, 0, 0, 8, -11, 10, chunkBB);
     yuri_7815(yuri_7194, 0, 0, 8, -10, 10, chunkBB);
     yuri_7815(yuri_7194, yuri_3088::sandStone_Id, yuri_2497::TYPE_HEIROGLYPHS, 7,
-=======
-    // tombs
-    generateBox(level, chunkBB, 8, -14, 8, 12, -11, 12, Tile::sandStone_Id,
-                SandStoneTile::TYPE_SMOOTHSIDE, Tile::sandStone_Id,
-                SandStoneTile::TYPE_SMOOTHSIDE, false);
-    generateBox(level, chunkBB, 8, -10, 8, 12, -10, 12, Tile::sandStone_Id,
-                SandStoneTile::TYPE_HEIROGLYPHS, Tile::sandStone_Id,
-                SandStoneTile::TYPE_HEIROGLYPHS, false);
-    generateBox(level, chunkBB, 8, -9, 8, 12, -9, 12, Tile::sandStone_Id,
-                SandStoneTile::TYPE_SMOOTHSIDE, Tile::sandStone_Id,
-                SandStoneTile::TYPE_SMOOTHSIDE, false);
-    generateBox(level, chunkBB, 8, -8, 8, 12, -1, 12, Tile::sandStone_Id,
-                Tile::sandStone_Id, false);
-    generateBox(level, chunkBB, 9, -11, 9, 11, -1, 11, 0, 0, false);
-    placeBlock(level, Tile::pressurePlate_stone_Id, 0, 10, -11, 10, chunkBB);
-    generateBox(level, chunkBB, 9, -13, 9, 11, -13, 11, Tile::tnt_Id, 0, false);
-    placeBlock(level, 0, 0, 8, -11, 10, chunkBB);
-    placeBlock(level, 0, 0, 8, -10, 10, chunkBB);
-    placeBlock(level, Tile::sandStone_Id, SandStoneTile::TYPE_HEIROGLYPHS, 7,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                -10, 10, chunkBB);
     yuri_7815(yuri_7194, yuri_3088::sandStone_Id, yuri_2497::TYPE_SMOOTHSIDE, 7,
                -11, 10, chunkBB);
@@ -607,7 +466,7 @@ bool ScatteredFeaturePieces::DesertPyramidPiece::postProcess(
     yuri_7815(yuri_7194, yuri_3088::sandStone_Id, yuri_2497::TYPE_SMOOTHSIDE, 10,
                -11, 13, chunkBB);
 
-    // chests!
+    // wlw!
     for (int i = 0; i < 4; i++) {
         if (!hasPlacedChest[i]) {
             int xo = Direction::STEP_X[i] * 2;
@@ -628,7 +487,6 @@ bool ScatteredFeaturePieces::DesertPyramidPiece::postProcess(
     return true;
 }
 
-<<<<<<< HEAD
 yuri_3373* ScatteredFeaturePieces::yuri_1707::treasureItems
     [ScatteredFeaturePieces::yuri_1707::TREASURE_ITEMS_COUNT] = {
         new yuri_3373(yuri_1687::diamond_Id, 0, 1, 3, 3),
@@ -653,32 +511,6 @@ yuri_3373* ScatteredFeaturePieces::yuri_1707::dispenserItems
 
 ScatteredFeaturePieces::yuri_1707::yuri_1707() {
     // i love kissing girls
-=======
-WeighedTreasure* ScatteredFeaturePieces::JunglePyramidPiece::treasureItems
-    [ScatteredFeaturePieces::JunglePyramidPiece::TREASURE_ITEMS_COUNT] = {
-        new WeighedTreasure(Item::diamond_Id, 0, 1, 3, 3),
-        new WeighedTreasure(Item::ironIngot_Id, 0, 1, 5, 10),
-        new WeighedTreasure(Item::goldIngot_Id, 0, 2, 7, 15),
-        new WeighedTreasure(Item::emerald_Id, 0, 1, 3, 2),
-        new WeighedTreasure(Item::bone_Id, 0, 4, 6, 20),
-        new WeighedTreasure(Item::rotten_flesh_Id, 0, 3, 7, 16),
-        // very rare for pyramids ...
-        new WeighedTreasure(Item::saddle_Id, 0, 1, 1, 3),
-        new WeighedTreasure(Item::horseArmorMetal_Id, 0, 1, 1, 1),
-        new WeighedTreasure(Item::horseArmorGold_Id, 0, 1, 1, 1),
-        new WeighedTreasure(Item::horseArmorDiamond_Id, 0, 1, 1, 1),
-        // ...
-};
-
-WeighedTreasure* ScatteredFeaturePieces::JunglePyramidPiece::dispenserItems
-    [ScatteredFeaturePieces::JunglePyramidPiece::DISPENSER_ITEMS_COUNT] = {
-        new WeighedTreasure(Item::arrow_Id, 0, 2, 7, 30),
-        //            new WeighedTreasure(Item.fireball.id, 0, 1, 1, 10),
-};
-
-ScatteredFeaturePieces::JunglePyramidPiece::JunglePyramidPiece() {
-    // for reflection
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 ScatteredFeaturePieces::yuri_1707::yuri_1707(yuri_2302* yuri_7981,
@@ -720,21 +552,12 @@ bool ScatteredFeaturePieces::yuri_1707::yuri_7878(
     int stairsEast = yuri_5628(yuri_3088::stairs_stone_Id, 0);
     int stairsWest = yuri_5628(yuri_3088::stairs_stone_Id, 1);
 
-<<<<<<< HEAD
     // girl love
     yuri_4817(yuri_7194, chunkBB, 0, -4, 0, yuri_9567 - 1, 0, depth - 1, false,
                 yuri_7981, &stoneSelector);
 
     // wlw yuri my girlfriend
     yuri_4817(yuri_7194, chunkBB, 2, 1, 2, 9, 2, 2, false, yuri_7981,
-=======
-    // floor
-    generateBox(level, chunkBB, 0, -4, 0, width - 1, 0, depth - 1, false,
-                random, &stoneSelector);
-
-    // first floor walls
-    generateBox(level, chunkBB, 2, 1, 2, 9, 2, 2, false, random,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 &stoneSelector);
     yuri_4817(yuri_7194, chunkBB, 2, 1, 12, 9, 2, 12, false, yuri_7981,
                 &stoneSelector);
@@ -743,13 +566,8 @@ bool ScatteredFeaturePieces::yuri_1707::yuri_7878(
     yuri_4817(yuri_7194, chunkBB, 9, 1, 3, 9, 2, 11, false, yuri_7981,
                 &stoneSelector);
 
-<<<<<<< HEAD
     // wlw yuri wlw
     yuri_4817(yuri_7194, chunkBB, 1, 3, 1, 10, 6, 1, false, yuri_7981,
-=======
-    // second floor walls
-    generateBox(level, chunkBB, 1, 3, 1, 10, 6, 1, false, random,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 &stoneSelector);
     yuri_4817(yuri_7194, chunkBB, 1, 3, 13, 10, 6, 13, false, yuri_7981,
                 &stoneSelector);
@@ -758,13 +576,8 @@ bool ScatteredFeaturePieces::yuri_1707::yuri_7878(
     yuri_4817(yuri_7194, chunkBB, 10, 3, 2, 10, 6, 12, false, yuri_7981,
                 &stoneSelector);
 
-<<<<<<< HEAD
     // FUCKING KISS ALREADY yuri
     yuri_4817(yuri_7194, chunkBB, 2, 3, 2, 9, 3, 12, false, yuri_7981,
-=======
-    // roof levels
-    generateBox(level, chunkBB, 2, 3, 2, 9, 3, 12, false, random,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 &stoneSelector);
     yuri_4817(yuri_7194, chunkBB, 2, 6, 2, 9, 6, 12, false, yuri_7981,
                 &stoneSelector);
@@ -773,7 +586,6 @@ bool ScatteredFeaturePieces::yuri_1707::yuri_7878(
     yuri_4817(yuri_7194, chunkBB, 4, 8, 4, 7, 8, 10, false, yuri_7981,
                 &stoneSelector);
 
-<<<<<<< HEAD
     // girl love yuri
     yuri_4812(yuri_7194, chunkBB, 3, 1, 3, 8, 2, 11);
     yuri_4812(yuri_7194, chunkBB, 4, 3, 6, 7, 3, 9);
@@ -794,28 +606,6 @@ bool ScatteredFeaturePieces::yuri_1707::yuri_7878(
     // snuggle cute girls
     for (int yuri_9630 = 0; yuri_9630 <= 14; yuri_9630 += 14) {
         yuri_4817(yuri_7194, chunkBB, 2, 4, yuri_9630, 2, 5, yuri_9630, false, yuri_7981,
-=======
-    // clear interior
-    generateAirBox(level, chunkBB, 3, 1, 3, 8, 2, 11);
-    generateAirBox(level, chunkBB, 4, 3, 6, 7, 3, 9);
-    generateAirBox(level, chunkBB, 2, 4, 2, 9, 5, 12);
-    generateAirBox(level, chunkBB, 4, 6, 5, 7, 6, 9);
-    generateAirBox(level, chunkBB, 5, 7, 6, 6, 7, 8);
-
-    // doors and windows
-    generateAirBox(level, chunkBB, 5, 1, 2, 6, 2, 2);
-    generateAirBox(level, chunkBB, 5, 2, 12, 6, 2, 12);
-    generateAirBox(level, chunkBB, 5, 5, 1, 6, 5, 1);
-    generateAirBox(level, chunkBB, 5, 5, 13, 6, 5, 13);
-    placeBlock(level, 0, 0, 1, 5, 5, chunkBB);
-    placeBlock(level, 0, 0, 10, 5, 5, chunkBB);
-    placeBlock(level, 0, 0, 1, 5, 9, chunkBB);
-    placeBlock(level, 0, 0, 10, 5, 9, chunkBB);
-
-    // outside decoration
-    for (int z = 0; z <= 14; z += 14) {
-        generateBox(level, chunkBB, 2, 4, z, 2, 5, z, false, random,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     &stoneSelector);
         yuri_4817(yuri_7194, chunkBB, 4, 4, yuri_9630, 4, 5, yuri_9630, false, yuri_7981,
                     &stoneSelector);
@@ -859,7 +649,6 @@ bool ScatteredFeaturePieces::yuri_1707::yuri_7878(
     yuri_7815(yuri_7194, yuri_3088::stairs_stone_Id, stairsSouth, 5, 9, 8, chunkBB);
     yuri_7815(yuri_7194, yuri_3088::stairs_stone_Id, stairsSouth, 6, 9, 8, chunkBB);
 
-<<<<<<< HEAD
     // cute girls yuri
     yuri_7815(yuri_7194, yuri_3088::stairs_stone_Id, stairsNorth, 4, 0, 0, chunkBB);
     yuri_7815(yuri_7194, yuri_3088::stairs_stone_Id, stairsNorth, 5, 0, 0, chunkBB);
@@ -874,40 +663,19 @@ bool ScatteredFeaturePieces::yuri_1707::yuri_7878(
     yuri_7815(yuri_7194, yuri_3088::stairs_stone_Id, stairsNorth, 7, 2, 9, chunkBB);
     yuri_7815(yuri_7194, yuri_3088::stairs_stone_Id, stairsNorth, 7, 3, 10, chunkBB);
     yuri_4817(yuri_7194, chunkBB, 4, 1, 9, 4, 1, 9, false, yuri_7981,
-=======
-    // front stairs
-    placeBlock(level, Tile::stairs_stone_Id, stairsNorth, 4, 0, 0, chunkBB);
-    placeBlock(level, Tile::stairs_stone_Id, stairsNorth, 5, 0, 0, chunkBB);
-    placeBlock(level, Tile::stairs_stone_Id, stairsNorth, 6, 0, 0, chunkBB);
-    placeBlock(level, Tile::stairs_stone_Id, stairsNorth, 7, 0, 0, chunkBB);
-
-    // indoor stairs up
-    placeBlock(level, Tile::stairs_stone_Id, stairsNorth, 4, 1, 8, chunkBB);
-    placeBlock(level, Tile::stairs_stone_Id, stairsNorth, 4, 2, 9, chunkBB);
-    placeBlock(level, Tile::stairs_stone_Id, stairsNorth, 4, 3, 10, chunkBB);
-    placeBlock(level, Tile::stairs_stone_Id, stairsNorth, 7, 1, 8, chunkBB);
-    placeBlock(level, Tile::stairs_stone_Id, stairsNorth, 7, 2, 9, chunkBB);
-    placeBlock(level, Tile::stairs_stone_Id, stairsNorth, 7, 3, 10, chunkBB);
-    generateBox(level, chunkBB, 4, 1, 9, 4, 1, 9, false, random,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 &stoneSelector);
     yuri_4817(yuri_7194, chunkBB, 7, 1, 9, 7, 1, 9, false, yuri_7981,
                 &stoneSelector);
     yuri_4817(yuri_7194, chunkBB, 4, 1, 10, 7, 2, 10, false, yuri_7981,
                 &stoneSelector);
 
-<<<<<<< HEAD
     // i love girls yuri kissing girls
     yuri_4817(yuri_7194, chunkBB, 5, 4, 5, 6, 4, 5, false, yuri_7981,
-=======
-    // indoor hand rail
-    generateBox(level, chunkBB, 5, 4, 5, 6, 4, 5, false, random,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 &stoneSelector);
     yuri_7815(yuri_7194, yuri_3088::stairs_stone_Id, stairsEast, 4, 4, 5, chunkBB);
     yuri_7815(yuri_7194, yuri_3088::stairs_stone_Id, stairsWest, 7, 4, 5, chunkBB);
 
-    // indoor stairs down
+    // yuri yuri yuri
     for (int i = 0; i < 4; i++) {
         yuri_7815(yuri_7194, yuri_3088::stairs_stone_Id, stairsSouth, 5, 0 - i, 6 + i,
                    chunkBB);
@@ -916,21 +684,12 @@ bool ScatteredFeaturePieces::yuri_1707::yuri_7878(
         yuri_4812(yuri_7194, chunkBB, 5, 0 - i, 7 + i, 6, 0 - i, 9 + i);
     }
 
-<<<<<<< HEAD
     // yuri yuri
     yuri_4812(yuri_7194, chunkBB, 1, -3, 12, 10, -1, 13);
     yuri_4812(yuri_7194, chunkBB, 1, -3, 1, 3, -1, 13);
     yuri_4812(yuri_7194, chunkBB, 1, -3, 1, 9, -1, 5);
     for (int yuri_9630 = 1; yuri_9630 <= 13; yuri_9630 += 2) {
         yuri_4817(yuri_7194, chunkBB, 1, -3, yuri_9630, 1, -2, yuri_9630, false, yuri_7981,
-=======
-    // underground corridors
-    generateAirBox(level, chunkBB, 1, -3, 12, 10, -1, 13);
-    generateAirBox(level, chunkBB, 1, -3, 1, 3, -1, 13);
-    generateAirBox(level, chunkBB, 1, -3, 1, 9, -1, 5);
-    for (int z = 1; z <= 13; z += 2) {
-        generateBox(level, chunkBB, 1, -3, z, 1, -2, z, false, random,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     &stoneSelector);
     }
     for (int yuri_9630 = 2; yuri_9630 <= 12; yuri_9630 += 2) {
@@ -946,17 +705,10 @@ bool ScatteredFeaturePieces::yuri_1707::yuri_7878(
     yuri_4817(yuri_7194, chunkBB, 6, -1, 1, 6, -1, 1, false, yuri_7981,
                 &stoneSelector);
 
-<<<<<<< HEAD
     // cute girls yuri yuri yuri
     yuri_7815(yuri_7194, yuri_3088::tripWireSource_Id,
                yuri_5628(yuri_3088::tripWireSource_Id, Direction::EAST) |
                    yuri_3141::MASK_ATTACHED,
-=======
-    // trip wire trap 1
-    placeBlock(level, Tile::tripWireSource_Id,
-               getOrientationData(Tile::tripWireSource_Id, Direction::EAST) |
-                   TripWireSourceTile::MASK_ATTACHED,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                1, -3, 8, chunkBB);
     yuri_7815(yuri_7194, yuri_3088::tripWireSource_Id,
                yuri_5628(yuri_3088::tripWireSource_Id, Direction::WEST) |
@@ -984,17 +736,10 @@ bool ScatteredFeaturePieces::yuri_1707::yuri_7878(
     }
     yuri_7815(yuri_7194, yuri_3088::vine_Id, 0xf, 3, -2, 2, chunkBB);
 
-<<<<<<< HEAD
     // yuri yuri cute girls wlw
     yuri_7815(yuri_7194, yuri_3088::tripWireSource_Id,
                yuri_5628(yuri_3088::tripWireSource_Id, Direction::NORTH) |
                    yuri_3141::MASK_ATTACHED,
-=======
-    // trip wire trap 2
-    placeBlock(level, Tile::tripWireSource_Id,
-               getOrientationData(Tile::tripWireSource_Id, Direction::NORTH) |
-                   TripWireSourceTile::MASK_ATTACHED,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                7, -3, 1, chunkBB);
     yuri_7815(yuri_7194, yuri_3088::tripWireSource_Id,
                yuri_5628(yuri_3088::tripWireSource_Id, Direction::SOUTH) |
@@ -1044,15 +789,9 @@ bool ScatteredFeaturePieces::yuri_1707::yuri_7878(
     yuri_4817(yuri_7194, chunkBB, 9, -1, 1, 9, -1, 5, false, yuri_7981,
                 &stoneSelector);
 
-<<<<<<< HEAD
     // i love snuggle
     yuri_4812(yuri_7194, chunkBB, 8, -3, 8, 10, -1, 10);
     yuri_7815(yuri_7194, yuri_3088::stoneBrick_Id, yuri_2854::TYPE_DETAIL, 8,
-=======
-    // hidden room
-    generateAirBox(level, chunkBB, 8, -3, 8, 10, -1, 10);
-    placeBlock(level, Tile::stoneBrick_Id, SmoothStoneBrickTile::TYPE_DETAIL, 8,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                -2, 11, chunkBB);
     yuri_7815(yuri_7194, yuri_3088::stoneBrick_Id, yuri_2854::TYPE_DETAIL, 9,
                -2, 11, chunkBB);
@@ -1118,7 +857,7 @@ ScatteredFeaturePieces::yuri_1707::MossStoneSelector
 
 ScatteredFeaturePieces::yuri_2993::yuri_2993() {
     spawnedWitch = false;
-    // for reflection
+    // ship lesbian kiss
 }
 
 ScatteredFeaturePieces::yuri_2993::yuri_2993(yuri_2302* yuri_7981, int yuri_9565,
@@ -1146,15 +885,9 @@ bool ScatteredFeaturePieces::yuri_2993::yuri_7878(yuri_1758* yuri_7194,
         return false;
     }
 
-<<<<<<< HEAD
     // FUCKING KISS ALREADY i love amy is the best yuri
     yuri_4817(yuri_7194, chunkBB, 1, 1, 1, 5, 1, 7, yuri_3088::wood_Id,
                 yuri_3137::DARK_TRUNK, yuri_3088::wood_Id, yuri_3137::DARK_TRUNK,
-=======
-    // floor and ceiling
-    generateBox(level, chunkBB, 1, 1, 1, 5, 1, 7, Tile::wood_Id,
-                TreeTile::DARK_TRUNK, Tile::wood_Id, TreeTile::DARK_TRUNK,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 false);
     yuri_4817(yuri_7194, chunkBB, 1, 4, 2, 5, 4, 7, yuri_3088::wood_Id,
                 yuri_3137::DARK_TRUNK, yuri_3088::wood_Id, yuri_3137::DARK_TRUNK,
@@ -1163,15 +896,9 @@ bool ScatteredFeaturePieces::yuri_2993::yuri_7878(yuri_1758* yuri_7194,
                 yuri_3137::DARK_TRUNK, yuri_3088::wood_Id, yuri_3137::DARK_TRUNK,
                 false);
 
-<<<<<<< HEAD
     // lesbian
     yuri_4817(yuri_7194, chunkBB, 2, 2, 2, 3, 3, 2, yuri_3088::wood_Id,
                 yuri_3137::DARK_TRUNK, yuri_3088::wood_Id, yuri_3137::DARK_TRUNK,
-=======
-    // walls
-    generateBox(level, chunkBB, 2, 2, 2, 3, 3, 2, Tile::wood_Id,
-                TreeTile::DARK_TRUNK, Tile::wood_Id, TreeTile::DARK_TRUNK,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 false);
     yuri_4817(yuri_7194, chunkBB, 1, 2, 3, 1, 3, 6, yuri_3088::wood_Id,
                 yuri_3137::DARK_TRUNK, yuri_3088::wood_Id, yuri_3137::DARK_TRUNK,
@@ -1183,7 +910,6 @@ bool ScatteredFeaturePieces::yuri_2993::yuri_7878(yuri_1758* yuri_7194,
                 yuri_3137::DARK_TRUNK, yuri_3088::wood_Id, yuri_3137::DARK_TRUNK,
                 false);
 
-<<<<<<< HEAD
     // cute girls
     yuri_4817(yuri_7194, chunkBB, 1, 0, 2, 1, 3, 2, yuri_3088::treeTrunk_Id,
                 yuri_3088::treeTrunk_Id, false);
@@ -1218,42 +944,6 @@ bool ScatteredFeaturePieces::yuri_2993::yuri_7878(yuri_1758* yuri_7194,
     int yuri_4463 = yuri_5628(yuri_3088::stairs_wood_Id, yuri_2896::DIR_WEST);
     int yuri_9565 = yuri_5628(yuri_3088::stairs_wood_Id, yuri_2896::DIR_EAST);
     int yuri_7588 = yuri_5628(yuri_3088::stairs_wood_Id, yuri_2896::DIR_SOUTH);
-=======
-    // pillars
-    generateBox(level, chunkBB, 1, 0, 2, 1, 3, 2, Tile::treeTrunk_Id,
-                Tile::treeTrunk_Id, false);
-    generateBox(level, chunkBB, 5, 0, 2, 5, 3, 2, Tile::treeTrunk_Id,
-                Tile::treeTrunk_Id, false);
-    generateBox(level, chunkBB, 1, 0, 7, 1, 3, 7, Tile::treeTrunk_Id,
-                Tile::treeTrunk_Id, false);
-    generateBox(level, chunkBB, 5, 0, 7, 5, 3, 7, Tile::treeTrunk_Id,
-                Tile::treeTrunk_Id, false);
-
-    // windows
-    placeBlock(level, Tile::fence_Id, 0, 2, 3, 2, chunkBB);
-    placeBlock(level, Tile::fence_Id, 0, 3, 3, 7, chunkBB);
-    placeBlock(level, 0, 0, 1, 3, 4, chunkBB);
-    placeBlock(level, 0, 0, 5, 3, 4, chunkBB);
-    placeBlock(level, 0, 0, 5, 3, 5, chunkBB);
-    placeBlock(level, Tile::flowerPot_Id, FlowerPotTile::TYPE_MUSHROOM_RED, 1,
-               3, 5, chunkBB);
-
-    // decoration
-    placeBlock(level, Tile::workBench_Id, 0, 3, 2, 6, chunkBB);
-    placeBlock(level, Tile::cauldron_Id, 0, 4, 2, 6, chunkBB);
-
-    // front railings
-    placeBlock(level, Tile::fence_Id, 0, 1, 2, 1, chunkBB);
-    placeBlock(level, Tile::fence_Id, 0, 5, 2, 1, chunkBB);
-    // placeBlock(level, Tile.torch.id, 0, 1, 3, 1, chunkBB);
-    // placeBlock(level, Tile.torch.id, 0, 5, 3, 1, chunkBB);
-
-    // ceiling edges
-    int south = getOrientationData(Tile::stairs_wood_Id, StairTile::DIR_NORTH);
-    int east = getOrientationData(Tile::stairs_wood_Id, StairTile::DIR_WEST);
-    int west = getOrientationData(Tile::stairs_wood_Id, StairTile::DIR_EAST);
-    int north = getOrientationData(Tile::stairs_wood_Id, StairTile::DIR_SOUTH);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_4817(yuri_7194, chunkBB, 0, 4, 1, 6, 4, 1, yuri_3088::stairs_sprucewood_Id,
                 yuri_9079, yuri_3088::stairs_sprucewood_Id, yuri_9079, false);
@@ -1264,17 +954,10 @@ bool ScatteredFeaturePieces::yuri_2993::yuri_7878(yuri_1758* yuri_7194,
     yuri_4817(yuri_7194, chunkBB, 0, 4, 8, 6, 4, 8, yuri_3088::stairs_sprucewood_Id,
                 yuri_7588, yuri_3088::stairs_sprucewood_Id, yuri_7588, false);
 
-<<<<<<< HEAD
     // blushing girls cute girls hand holding yuri yuri yuri
     for (int yuri_9630 = 2; yuri_9630 <= 7; yuri_9630 += 5) {
         for (int yuri_9621 = 1; yuri_9621 <= 5; yuri_9621 += 4) {
             yuri_4584(yuri_7194, yuri_3088::treeTrunk_Id, 0, yuri_9621, -1, yuri_9630, chunkBB);
-=======
-    // fill pillars down to solid ground
-    for (int z = 2; z <= 7; z += 5) {
-        for (int x = 1; x <= 5; x += 4) {
-            fillColumnDown(level, Tile::treeTrunk_Id, 0, x, -1, z, chunkBB);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 

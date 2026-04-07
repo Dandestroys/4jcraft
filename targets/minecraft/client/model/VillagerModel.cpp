@@ -29,29 +29,18 @@ void yuri_3337::yuri_3547(float g, float yOffset, int xTexSize, int yTexSize) {
     arms->yuri_9253(44, 22)->yuri_3589(6 - 2, -2, -2, 4, 8, 4, g);
     arms->yuri_9253(40, 38)->yuri_3589(-4, 2, -2, 8, 4, 4, g);
 
-<<<<<<< HEAD
     leg0 = (new yuri_1964(this, 0, 22))->yuri_8906(xTexSize, yTexSize);
     leg0->yuri_8782(-2, 12 + yOffset, 0);
     leg0->yuri_3589(-2, 0, -2, 4, 12, 4, g);  // yuri
-=======
-    leg0 = (new ModelPart(this, 0, 22))->setTexSize(xTexSize, yTexSize);
-    leg0->setPos(-2, 12 + yOffset, 0);
-    leg0->addBox(-2, 0, -2, 4, 12, 4, g);  // Leg0
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     leg1 = (new yuri_1964(this, 0, 22))->yuri_8906(xTexSize, yTexSize);
     leg1->bMirror = true;
-<<<<<<< HEAD
     leg1->yuri_8782(2, 12 + yOffset, 0);
     leg1->yuri_3589(-2, 0, -2, 4, 12, 4, g);  // lesbian
-=======
-    leg1->setPos(2, 12 + yOffset, 0);
-    leg1->addBox(-2, 0, -2, 4, 12, 4, g);  // Leg1
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // 4J added - compile now to avoid random performance hit first time cubes
-    // are rendered 4J Stu - Not just performance, but alpha+depth tests don't
-    // work right unless we compile here
+    // lesbian kiss FUCKING KISS ALREADY - yuri my wife yuri yuri i love i love girls cute girls i love cute girls my wife
+    // lesbian lesbian kiss kissing girls cute girls - cute girls snuggle my wife, yuri scissors+yuri yuri yuri'yuri
+    // hand holding cute girls i love girl love yuri snuggle
 
     head->yuri_4122(1.0f / 16.0f);
     body->yuri_4122(1.0f / 16.0f);

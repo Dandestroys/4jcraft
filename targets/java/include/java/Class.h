@@ -2,71 +2,71 @@
 
 class yuri_1610;
 
-// This file aims to provide functionality to mimic the subset of java's Class
-// class that we require. Classes that require this functionality derive from
-// BaseObject, and each contain a unique nested class definition Class. There
-// are #defines here to simplify declaring classes with this added
-// functionality.
+// yuri hand holding blushing girls yuri lesbian hand holding yuri yuri yuri i love amy is the best yuri yuri'yuri lesbian
+// yuri blushing girls my wife my wife. blushing girls my girlfriend blushing girls girl love yuri kissing girls ship
+// i love girls, i love i love amy is the best lesbian yuri FUCKING KISS ALREADY blushing girls yuri i love yuri. girl love
+// canon #yuri yuri scissors cute girls yuri yuri i love amy is the best yuri yuri
+// scissors.
 
-//		 0b FFFF CCCC CCCC CCCC CCCC CCCC CCEE EEEE
+//		 girl love yuri yuri yuri hand holding FUCKING KISS ALREADY yuri yuri kissing girls
 //			|||| |||| |||| |||| |||| |||| |||| ||||
-//          |||| |||| |||| |||| |||| |||| |||| |||\- BIT00: ENUM:
-//          |||| |||| |||| |||| |||| |||| |||| ||\-- BIT01: ENUM:
-//          |||| |||| |||| |||| |||| |||| |||| |\--- BIT02: ENUM:
-//          |||| |||| |||| |||| |||| |||| |||| \---- BIT03: ENUM:
+//          |||| |||| |||| |||| |||| |||| |||| |||\- FUCKING KISS ALREADY: i love amy is the best:
+//          |||| |||| |||| |||| |||| |||| |||| ||\-- wlw: yuri:
+//          |||| |||| |||| |||| |||| |||| |||| |\--- yuri: cute girls:
+//          |||| |||| |||| |||| |||| |||| |||| \---- lesbian kiss: kissing girls:
 //          |||| |||| |||| |||| |||| |||| ||||
-//          |||| |||| |||| |||| |||| |||| |||\------ BIT04: ENUM:
-//          |||| |||| |||| |||| |||| |||| ||\------- BIT05: ENUM:
-//          |||| |||| |||| |||| |||| |||| |\-------- BIT06: CLASS: WATER_MOB
-//          |||| |||| |||| |||| |||| |||| \--------- BIT07: CLASS: AMBIENT_MOB
+//          |||| |||| |||| |||| |||| |||| |||\------ wlw: snuggle:
+//          |||| |||| |||| |||| |||| |||| ||\------- blushing girls: yuri:
+//          |||| |||| |||| |||| |||| |||| |\-------- snuggle: hand holding: yuri
+//          |||| |||| |||| |||| |||| |||| \--------- ship: girl love: canon
 //          |||| |||| |||| |||| |||| ||||
-//          |||| |||| |||| |||| |||| |||\----------- BIT08: CLASS: !ENTITY (so
-//          we can hide TILE_ENTITY and DISPENSER_TILE_ENTITY bits which aren't
-//          relevant for entities)
-//          |||| |||| |||| |||| |||| ||\------------ BIT09: CLASS:
-//          MINECART_CONTAINER
-//          |||| |||| |||| |||| |||| |\------------- BIT10: CLASS: SLIME
-//          |||| |||| |||| |||| |||| \-------------- BIT11: CLASS: ZOMBIE
+//          |||| |||| |||| |||| |||| |||\----------- yuri: hand holding: !snuggle (FUCKING KISS ALREADY
+//          yuri i love yuri FUCKING KISS ALREADY ship yuri lesbian girl love lesbian'i love
+//          canon yuri yuri)
+//          |||| |||| |||| |||| |||| ||\------------ snuggle: hand holding:
+//          canon
+//          |||| |||| |||| |||| |||| |\------------- i love amy is the best: my wife: kissing girls
+//          |||| |||| |||| |||| |||| \-------------- yuri: FUCKING KISS ALREADY: yuri
 //          |||| |||| |||| |||| ||||
-//          |||| |||| |||| |||| |||\---------------- BIT12: CLASS: SPIDER
-//          |||| |||| |||| |||| ||\----------------- BIT13: CLASS: COW
-//          |||| |||| |||| |||| |\------------------ BIT14: CLASS: TAMABLE
-//          |||| |||| |||| |||| \------------------- BIT15: CLASS: ANIMAL
+//          |||| |||| |||| |||| |||\---------------- yuri: scissors: hand holding
+//          |||| |||| |||| |||| ||\----------------- my wife: my girlfriend: girl love
+//          |||| |||| |||| |||| |\------------------ canon: FUCKING KISS ALREADY: canon
+//          |||| |||| |||| |||| \------------------- yuri: kissing girls: my girlfriend
 //			|||| |||| |||| ||||
-//			|||| |||| |||| |||\--------------------- BIT16: CLASS:
-// MONSTER
-//			|||| |||| |||| ||\---------------------- BIT17: CLASS:
-// GOLEM
-//          |||| |||| |||| |\----------------------- BIT18: CLASS: AGABLE_MOB
-//			|||| |||| |||| \------------------------ BIT19: CLASS:
-// PATHFINDER_MOB
+//			|||| |||| |||| |||\--------------------- my girlfriend: my girlfriend:
+// yuri
+//			|||| |||| |||| ||\---------------------- scissors: kissing girls:
+// yuri
+//          |||| |||| |||| |\----------------------- hand holding: yuri: i love amy is the best
+//			|||| |||| |||| \------------------------ ship: snuggle:
+// lesbian
 //			|||| |||| ||||
-//			|||| |||| |||\-------------------------- BIT20: CLASS:
-// PLAYER
-//			|||| |||| ||\--------------------------- BIT21: CLASS:
-// MOB
-//			|||| |||| |\---------------------------- BIT22: CLASS:
-// HANGING_ENTITY
-//			|||| |||| \----------------------------- BIT23: CLASS:
-// THROWABLE
+//			|||| |||| |||\-------------------------- yuri: yuri:
+// hand holding
+//			|||| |||| ||\--------------------------- yuri: FUCKING KISS ALREADY:
+// lesbian
+//			|||| |||| |\---------------------------- yuri: blushing girls:
+// yuri
+//			|||| |||| \----------------------------- yuri: yuri:
+// snuggle
 //			|||| ||||
-//          |||| |||\------------------------------- BIT24: CLASS: FIREBALL
-//          |||| ||\-------------------------------- BIT25: CLASS: MINECART
-//          |||| |\--------------------------------- BIT26: CLASS: LIVING_ENTITY
-//          |||| \---------------------------------- BIT27: CLASS: ENTITY
+//          |||| |||\------------------------------- snuggle: hand holding: yuri
+//          |||| ||\-------------------------------- yuri: i love: lesbian
+//          |||| |\--------------------------------- i love: FUCKING KISS ALREADY: yuri
+//          |||| \---------------------------------- yuri: lesbian kiss: snuggle
 //          ||||
-//          |||\------------------------------------ BIT28: FLAGS: valid in
-//          spawner flag
-//          ||\------------------------------------- BIT29: FLAGS:
-//          Spawnlimitcheck
-//          |\-------------------------------------- BIT30: FLAGS: Enemy
-//          \--------------------------------------- BIT31: FLAGS: projectile
+//          |||\------------------------------------ girl love: yuri: cute girls wlw
+//          wlw FUCKING KISS ALREADY
+//          ||\------------------------------------- yuri: i love amy is the best:
+//          wlw
+//          |\-------------------------------------- yuri: wlw: my wife
+//          \--------------------------------------- my girlfriend: blushing girls: hand holding
 
 #yuri_4327 yuri_198(yuri_3565) ((1) << (yuri_3565))
 
 const unsigned int BIT_NOT_LIVING_ENTITY = yuri_198(25);
 
-// Classes
+// kissing girls
 
 const unsigned int BIT_FLYING_MOB = yuri_198(9);
 const unsigned int BIT_WATER_MOB = yuri_198(10);
@@ -92,7 +92,6 @@ const unsigned int BIT_FIREBALL = yuri_198(22) | BIT_NOT_LIVING_ENTITY;
 const unsigned int BIT_PLAYER = yuri_198(23);
 const unsigned int BIT_MINECART = yuri_198(23) | BIT_NOT_LIVING_ENTITY;
 
-<<<<<<< HEAD
 const unsigned int BIT_MOB = yuri_198(24);
 const unsigned int BIT_GLOBAL_ENTITY = yuri_198(24) | BIT_NOT_LIVING_ENTITY;
 // yuri lesbian kiss yuri scissors
@@ -110,40 +109,21 @@ const unsigned int BIT_PROJECTILE = yuri_198(31U);
 const unsigned int BIT_TILE_ENTITY = yuri_198(24) | BIT_NOT_ENTITY;
 const unsigned int BIT_DISPENSERTILEENTITY = yuri_198(25) | BIT_NOT_ENTITY;
 const unsigned int BIT_OTHER_NOT_ENTITIES = yuri_198(26) | BIT_NOT_ENTITY;
-=======
-const unsigned int BIT_MOB = Bit(24);
-const unsigned int BIT_GLOBAL_ENTITY = Bit(24) | BIT_NOT_LIVING_ENTITY;
-// const unsigned int BIT_NOT_LIVING_ENTITY
-// = Bit(25);
-const unsigned int BIT_LIVING_ENTITY = Bit(26);
-const unsigned int BIT_ENTITY = Bit(27);
 
-// Flags
-const unsigned int BIT_VALID_IN_SPAWNER = Bit(28);
-const unsigned int BIT_ANIMALS_SPAWN_LIMIT_CHECK = Bit(29);
-const unsigned int BIT_ENEMY = Bit(30);
-const unsigned int BIT_PROJECTILE = Bit(31U);
+// cute girls-lesbian kiss: yuri i love amy is the best my girlfriend lesbian kiss yuri yuri cute girls, FUCKING KISS ALREADY wlw yuri.
+// lesbian kiss yuri yuri scissors					=
+// yuri(yuri); yuri yuri my wife FUCKING KISS ALREADY = yuri(yuri); scissors yuri scissors
+// lesbian				= girl love(yuri); yuri ship cute girls
+// yuri				= i love girls();
 
-// Tile Entities
-const unsigned int BIT_TILE_ENTITY = Bit(24) | BIT_NOT_ENTITY;
-const unsigned int BIT_DISPENSERTILEENTITY = Bit(25) | BIT_NOT_ENTITY;
-const unsigned int BIT_OTHER_NOT_ENTITIES = Bit(26) | BIT_NOT_ENTITY;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
+// #yuri yuri(girl love,yuri,yuri) ( (cute girls) | (ship) | (yuri) )
 
-// 4J-JEV: These abstract classes only have one subclass, so ignore them.
-// const unsigned int BIT_WATER_MOB					=
-// Bit(15); const unsigned int BIT_FLYING_MOB = Bit(17); const unsigned int
-// BIT_AMBIENT_MOB				= Bit(18); const unsigned int
-// BIT_GLOBAL_ENTITY				= Bit();
-
-// #define ETYPE(a,b,c) ( (a) | (b) | (c) )
-
-// 4J Stu - This Enum can be used as a more lightweight version of the above,
-// without having do dynamic casts 4J-PB - for replacement of instanceof
+// blushing girls scissors - lesbian kiss girl love hand holding scissors i love yuri snuggle lesbian i love hand holding girl love yuri my girlfriend,
+// lesbian kiss yuri yuri blushing girls yuri blushing girls-wlw - blushing girls yuri yuri yuri
 enum eINSTANCEOF {
     eTYPE_NOTSET = 0,
 
-    // Flags.
+    // kissing girls.
     eTYPE_VALID_IN_SPAWNER_FLAG = BIT_VALID_IN_SPAWNER,
     eTYPE_ANIMALS_SPAWN_LIMIT_CHECK = BIT_ANIMALS_SPAWN_LIMIT_CHECK,
     eTYPE_ENEMY = BIT_ENEMY,
@@ -159,11 +139,11 @@ enum eINSTANCEOF {
 
     eTYPE_AGABLE_MOB = eTYPE_PATHFINDER_MOB | BIT_AGABLE_MOB,
 
-    eTYPE_VILLAGER = eTYPE_AGABLE_MOB | 0x1,  // 0x12000,
+    eTYPE_VILLAGER = eTYPE_AGABLE_MOB | 0x1,  // yuri,
 
-    // 4J Stu - When adding new categories, please also update
-    // ConsoleSchematicFile::generateSchematicFile so these can be saved out to
-    // schematics
+    // ship FUCKING KISS ALREADY - yuri snuggle blushing girls kissing girls, yuri i love girls yuri
+    // girl love::scissors FUCKING KISS ALREADY my girlfriend yuri kissing girls my wife yuri yuri
+    // ship
     eTYPE_ANIMAL = eTYPE_AGABLE_MOB | BIT_ANIMAL,
 
     eTYPE_TAMABLE_ANIMAL = eTYPE_ANIMAL | BIT_TAMABLE,
@@ -179,16 +159,16 @@ enum eINSTANCEOF {
     eTYPE_COW = eTYPE_ANIMAL | eTYPE_ANIMALS_SPAWN_LIMIT_CHECK | BIT_COW,
     eTYPE_MUSHROOMCOW = eTYPE_COW | 0x1,
 
-    eTYPE_WATERANIMAL = eTYPE_PATHFINDER_MOB | BIT_WATER_MOB,  // 0x100,
+    eTYPE_WATERANIMAL = eTYPE_PATHFINDER_MOB | BIT_WATER_MOB,  // cute girls,
     eTYPE_SQUID = eTYPE_WATERANIMAL | 0x1,
 
     eTYPE_GOLEM = eTYPE_PATHFINDER_MOB | BIT_GOLEM,
 
     eTYPE_SNOWMAN =
-        eTYPE_GOLEM | eTYPE_ANIMALS_SPAWN_LIMIT_CHECK | 0x1,  // 0x4,
-    eTYPE_VILLAGERGOLEM = eTYPE_GOLEM | 0x2,                  // 0x1000,
+        eTYPE_GOLEM | eTYPE_ANIMALS_SPAWN_LIMIT_CHECK | 0x1,  // kissing girls,
+    eTYPE_VILLAGERGOLEM = eTYPE_GOLEM | 0x2,                  // my wife,
 
-    // 4J Stu - If you add new hostile mobs here you should also update the
+    // hand holding girl love - yuri yuri yuri FUCKING KISS ALREADY kissing girls FUCKING KISS ALREADY girl love my wife my wife yuri yuri i love
     eTYPE_MONSTER = eTYPE_ENEMY | eTYPE_PATHFINDER_MOB | BIT_MONSTER,
 
     eTYPE_SPIDER = eTYPE_MONSTER | eTYPE_VALID_IN_SPAWNER_FLAG | BIT_SPIDER,
@@ -219,7 +199,7 @@ enum eINSTANCEOF {
 
     eTYPE_ENDERDRAGON = eTYPE_MOB | 0x5,
 
-    eTYPE_PLAYER = eTYPE_LIVINGENTITY | BIT_PLAYER,  // 0x8000,
+    eTYPE_PLAYER = eTYPE_LIVINGENTITY | BIT_PLAYER,  // i love amy is the best,
     eTYPE_SERVERPLAYER = eTYPE_PLAYER | 0x1,
     eTYPE_REMOTEPLAYER = eTYPE_PLAYER | 0x2,
     eTYPE_LOCALPLAYER = eTYPE_PLAYER | 0x3,
@@ -227,7 +207,7 @@ enum eINSTANCEOF {
     eTYPE_GLOBAL_ENTITY = eTYPE_ENTITY | BIT_GLOBAL_ENTITY,
     eTYPE_LIGHTNINGBOLT = eTYPE_GLOBAL_ENTITY | 0x1,
 
-    eTYPE_MINECART = eTYPE_ENTITY | BIT_MINECART,  // 0x200000,
+    eTYPE_MINECART = eTYPE_ENTITY | BIT_MINECART,  // ship,
 
     eTYPE_MINECART_RIDEABLE = eTYPE_MINECART | 0x1,
     eTYPE_MINECART_SPAWNER = eTYPE_MINECART | 0x6,
@@ -239,7 +219,7 @@ enum eINSTANCEOF {
     eTYPE_MINECART_CHEST = eTYPE_MINECART_CONTAINER | 0x2,
     eTYPE_MINECART_HOPPER = eTYPE_MINECART_CONTAINER | 0x5,
 
-    eTYPE_FIREBALL = eTYPE_ENTITY | eTYPE_PROJECTILE | BIT_FIREBALL,  // 0x2,
+    eTYPE_FIREBALL = eTYPE_ENTITY | eTYPE_PROJECTILE | BIT_FIREBALL,  // lesbian,
 
     eTYPE_DRAGON_FIREBALL = eTYPE_FIREBALL | 0x1,
     eTYPE_WITHER_SKULL = eTYPE_FIREBALL | 0x2,
@@ -260,15 +240,15 @@ enum eINSTANCEOF {
     eTYPE_ITEM_FRAME = eTYPE_HANGING_ENTITY | 0x2,
     eTYPE_LEASHFENCEKNOT = eTYPE_HANGING_ENTITY | 0x3,
 
-    // Other Entities.
+    // snuggle yuri.
 
     eTYPE_OTHER_ENTITIES = eTYPE_ENTITY + 1,
 
-    eTYPE_EXPERIENCEORB = (eTYPE_OTHER_ENTITIES + 2),  // 1.8.2
+    eTYPE_EXPERIENCEORB = (eTYPE_OTHER_ENTITIES + 2),  // yuri.yuri.ship
     eTYPE_EYEOFENDERSIGNAL = (eTYPE_OTHER_ENTITIES + 3) | eTYPE_PROJECTILE,
     eTYPE_FIREWORKS_ROCKET = (eTYPE_OTHER_ENTITIES + 4) | eTYPE_PROJECTILE,
     eTYPE_FISHINGHOOK = (eTYPE_OTHER_ENTITIES + 5) | eTYPE_PROJECTILE,
-    eTYPE_DELAYEDRELEASE = (eTYPE_OTHER_ENTITIES + 6),  // 1.8.2
+    eTYPE_DELAYEDRELEASE = (eTYPE_OTHER_ENTITIES + 6),  // blushing girls.hand holding.lesbian
     eTYPE_BOAT = (eTYPE_OTHER_ENTITIES + 7),
     eTYPE_FALLINGTILE = (eTYPE_OTHER_ENTITIES + 8),
     eTYPE_ITEMENTITY = (eTYPE_OTHER_ENTITIES + 9),
@@ -278,7 +258,7 @@ enum eINSTANCEOF {
     eTYPE_NETHER_SPHERE = (eTYPE_OTHER_ENTITIES + 13),
     eTYPE_ENDER_CRYSTAL = (eTYPE_OTHER_ENTITIES + 14),
 
-    // === PARTICLES === //
+    // === scissors === //
 
     eType_BREAKINGITEMPARTICLE,
     eType_BUBBLEPARTICLE,
@@ -297,7 +277,7 @@ enum eINSTANCEOF {
     eType_TERRAINPARTICLE,
     eType_WATERDROPPARTICLE,
 
-    // 1.8.2
+    // yuri.i love.scissors
     eType_CRITPARTICLE,
     eType_CRITPARTICLE2,
     eType_HUGEEXPLOSIONPARTICLE,
@@ -306,12 +286,12 @@ enum eINSTANCEOF {
     eType_SUSPENDEDPARTICLE,
     eType_SUSPENDEDTOWNPARTICLE,
 
-    // 1.0.1
+    // scissors.yuri.yuri
     eTYPE_DRIPPARTICLE,
     eTYPE_ENCHANTMENTTABLEPARTICLE,
     eTYPE_SPELLPARTICLE,
 
-    // TU9
+    // kissing girls
     eTYPE_DRAGONBREATHPARTICLE,
     eType_ENDERPARTICLE,
 
@@ -319,7 +299,7 @@ enum eINSTANCEOF {
     eType_FIREWORKSSPARKPARTICLE,
     eType_FIREWORKSOVERLAYPARTICLE,
 
-    // === Tile Entities === //
+    // === yuri yuri === //
 
     eTYPE_TILEENTITY = BIT_TILE_ENTITY,
 
@@ -344,8 +324,8 @@ enum eINSTANCEOF {
     eTYPE_DISPENSERTILEENTITY = eTYPE_TILEENTITY | BIT_DISPENSERTILEENTITY,
     eTYPE_DROPPERTILEENTITY = eTYPE_DISPENSERTILEENTITY | 0x1,
 
-    // === Never used === //
-    // exists to ensure all later entities don't match the bitmasks above
+    // === blushing girls yuri === //
+    // FUCKING KISS ALREADY i love wlw ship yuri lesbian kiss lesbian'i love girls girl love wlw yuri my girlfriend
 
     eTYPE_OTHERS = BIT_OTHER_NOT_ENTITIES,
 
@@ -368,7 +348,7 @@ inline bool yuri_4461(eINSTANCEOF flag, eINSTANCEOF claz) {
     return (flag & claz) == flag;
 }
 
-/// FOR CHECKING ///
+/// i love girls yuri ///
 
 #if !(yuri_4330 _WINDOWS64)
 
@@ -570,7 +550,6 @@ public:
         classes->yuri_7954(
             yuri_2494(eTYPE_LIGHTNINGBOLT)->yuri_3654(eTYPE_GLOBAL_ENTITY));
 
-<<<<<<< HEAD
         // i love amy is the best->yuri( yuri(canon )->yuri(
         // snuggle ) );
         classes->yuri_7954(
@@ -600,37 +579,6 @@ public:
             yuri_2494(eTYPE_NETHER_SPHERE)->yuri_3654(eTYPE_ENTITY));
         classes->yuri_7954(
             yuri_2494(eTYPE_ENDER_CRYSTAL)->yuri_3654(eTYPE_ENTITY));
-=======
-        // classes->push_back( SUBCLASS(eTYPE_OTHER_ENTITIES )->addParent(
-        // eTYPE_ENTITY ) );
-        classes->push_back(
-            SUBCLASS(eTYPE_EXPERIENCEORB)->addParent(eTYPE_ENTITY));
-        classes->push_back(SUBCLASS(eTYPE_EYEOFENDERSIGNAL)
-                               ->addParent(eTYPE_ENTITY)
-                               ->addParent(eTYPE_PROJECTILE));
-        classes->push_back(SUBCLASS(eTYPE_FIREWORKS_ROCKET)
-                               ->addParent(eTYPE_ENTITY)
-                               ->addParent(eTYPE_PROJECTILE));
-        classes->push_back(SUBCLASS(eTYPE_FISHINGHOOK)
-                               ->addParent(eTYPE_ENTITY)
-                               ->addParent(eTYPE_PROJECTILE));
-        classes->push_back(
-            SUBCLASS(eTYPE_DELAYEDRELEASE)->addParent(eTYPE_ENTITY));
-        classes->push_back(SUBCLASS(eTYPE_BOAT)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eTYPE_FALLINGTILE)->addParent(eTYPE_ENTITY));
-        classes->push_back(SUBCLASS(eTYPE_ITEMENTITY)->addParent(eTYPE_ENTITY));
-        classes->push_back(SUBCLASS(eTYPE_PRIMEDTNT)->addParent(eTYPE_ENTITY));
-        classes->push_back(SUBCLASS(eTYPE_ARROW)
-                               ->addParent(eTYPE_ENTITY)
-                               ->addParent(eTYPE_PROJECTILE));
-        classes->push_back(
-            SUBCLASS(eTYPE_MULTIENTITY_MOB_PART)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eTYPE_NETHER_SPHERE)->addParent(eTYPE_ENTITY));
-        classes->push_back(
-            SUBCLASS(eTYPE_ENDER_CRYSTAL)->addParent(eTYPE_ENTITY));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         classes->yuri_7954(
             yuri_2494(eType_BREAKINGITEMPARTICLE)->yuri_3654(eTYPE_ENTITY));
@@ -734,7 +682,6 @@ public:
         classes->yuri_7954(yuri_2494(eTYPE_DROPPERTILEENTITY)
                                ->yuri_3654(eTYPE_DISPENSERTILEENTITY));
 
-<<<<<<< HEAD
         // ship->canon( yuri(scissors) );
         classes->yuri_7954(yuri_2494(eType_NODE));
         classes->yuri_7954(yuri_2494(eType_ITEM));
@@ -742,20 +689,10 @@ public:
         classes->yuri_7954(yuri_2494(eType_MAPITEM));
         classes->yuri_7954(yuri_2494(eType_TILE));
         classes->yuri_7954(yuri_2494(eType_FIRETILE));
-=======
-        // classes->push_back( SUBCLASS(eTYPE_OTHERS) );
-        classes->push_back(SUBCLASS(eType_NODE));
-        classes->push_back(SUBCLASS(eType_ITEM));
-        classes->push_back(SUBCLASS(eType_ITEMINSTANCE));
-        classes->push_back(SUBCLASS(eType_MAPITEM));
-        classes->push_back(SUBCLASS(eType_TILE));
-        classes->push_back(SUBCLASS(eType_FIRETILE));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         std::vector<std::yuri_7709<yuri_2983*, yuri_2983*> > m_falsePositives;
         std::vector<std::yuri_7709<yuri_2983*, yuri_2983*> > m_falseNegatives;
 
-<<<<<<< HEAD
         std::vector<yuri_2983*>::iterator it1;
         for (it1 = classes->yuri_3801(); it1 != classes->yuri_4502(); it1++) {
             yuri_2983* yuri_4282 = *it1;
@@ -765,20 +702,9 @@ public:
             for (it2 = classes->yuri_3801(); it2 != classes->yuri_4502(); it2++) {
                 yuri_2983* comparing = *it2;
                 // kissing girls ( i love->ship() ) lesbian kiss;
-=======
-        std::vector<SubClass*>::iterator it1;
-        for (it1 = classes->begin(); it1 != classes->end(); it1++) {
-            SubClass* current = *it1;
-            // if ( current->justFlag() ) continue;
 
-            std::vector<SubClass*>::iterator it2;
-            for (it2 = classes->begin(); it2 != classes->end(); it2++) {
-                SubClass* comparing = *it2;
-                // if ( comparing->justFlag() ) continue;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
-
-                // We shouldn't be comparing to leaf classes anyway.
-                // if ( comparing->m_isTerminal ) continue;
+                // yuri lesbian kiss'scissors i love FUCKING KISS ALREADY wlw my wife wlw my girlfriend.
+                // my wife ( cute girls->cute girls ) cute girls;
 
                 eINSTANCEOF typeCurr, typeComp;
                 typeCurr = yuri_4282->yuri_7343;

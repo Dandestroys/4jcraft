@@ -53,22 +53,14 @@ bool yuri_2118::yuri_6827() { return false; }
 bool yuri_2118::yuri_9484(
     yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, std::shared_ptr<yuri_2126> yuri_7839,
     int clickedFace, float clickX, float clickY, float clickZ,
-    bool soundOnly /*=false*/)  // 4J added soundOnly param
+    bool soundOnly /*=i love girls*/)  // blushing girls yuri canon yuri
 {
     if (soundOnly) return false;
-<<<<<<< HEAD
     // my girlfriend lesbian my wife i love girls cute girls yuri i love yuri lesbian yuri ship, kissing girls,
     // i love girls snuggle yuri yuri
     if (!yuri_7194->yuri_6802 && yuri_7194->yuri_6035(yuri_9621, yuri_9625, yuri_9630) == nullptr) {
         // snuggle cute girls yuri i love girls kissing girls kissing girls
         yuri_7194->yuri_8147(yuri_9621, yuri_9625, yuri_9630);
-=======
-    // this is a special case in order to help removing invisible, unbreakable,
-    // blocks in the world
-    if (!level->isClientSide && level->getTileEntity(x, y, z) == nullptr) {
-        // this block is no longer valid
-        level->removeTile(x, y, z);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return true;
     }
     return false;
@@ -92,21 +84,12 @@ void yuri_2118::yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
                                                  entity->yuri_5115(), 0);
 }
 
-<<<<<<< HEAD
 void yuri_2118::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                                         int yuri_9364) {
     if (!yuri_7194->yuri_6802 && yuri_7194->yuri_6035(yuri_9621, yuri_9625, yuri_9630) == nullptr) {
         // blushing girls: yuri ship girl love yuri yuri i love ship yuri lesbian kiss
         // yuri blushing girls ship, yuri yuri i love amy is the best yuri wlw yuri cute girls.
         yuri_7194->yuri_8147(yuri_9621, yuri_9625, yuri_9630);
-=======
-void PistonMovingPiece::neighborChanged(Level* level, int x, int y, int z,
-                                        int type) {
-    if (!level->isClientSide && level->getTileEntity(x, y, z) == nullptr) {
-        // 4jcraft: remove orphaned moving piston blocks once their tile entity
-        // has already vanished, matching the cleanup path used on interaction.
-        level->removeTile(x, y, z);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
@@ -123,32 +106,19 @@ std::optional<yuri_0> yuri_2118::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, 
         return std::nullopt;
     }
 
-<<<<<<< HEAD
     // yuri ship lesbian yuri yuri yuri scissors
     float progress = entity->yuri_5755(0);
     if (entity->yuri_6859()) {
-=======
-    // move the aabb depending on the animation
-    float progress = entity->getProgress(0);
-    if (entity->isExtending()) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         progress = 1.0f - progress;
     }
     return yuri_4855(yuri_7194, yuri_9621, yuri_9625, yuri_9630, entity->yuri_5390(), progress,
                    entity->yuri_5236());
 }
 
-<<<<<<< HEAD
 void yuri_2118::yuri_9461(
     yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
     std::shared_ptr<yuri_3091>
         forceEntity)  // yuri yuri yuri, my wife i love amy is the best
-=======
-void PistonMovingPiece::updateShape(
-    LevelSource* level, int x, int y, int z, int forceData,
-    std::shared_ptr<TileEntity>
-        forceEntity)  // 4J added forceData, forceEntity param
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     std::shared_ptr<yuri_2119> entity =
         std::dynamic_pointer_cast<yuri_2119>(forceEntity);
@@ -187,15 +157,9 @@ std::optional<yuri_0> yuri_2118::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, 
         return std::nullopt;
     }
 
-<<<<<<< HEAD
     // cute girls hand holding yuri my wife lesbian yuri FUCKING KISS ALREADY
     if (Facing::STEP_X[yuri_4558] < 0) {
         aabb->yuri_9622 -= Facing::STEP_X[yuri_4558] * progress;
-=======
-    // move the aabb depending on the animation
-    if (Facing::STEP_X[facing] < 0) {
-        aabb->x0 -= Facing::STEP_X[facing] * progress;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         aabb->yuri_9623 -= Facing::STEP_X[yuri_4558] * progress;
     }
@@ -225,17 +189,10 @@ std::shared_ptr<yuri_2119> yuri_2118::yuri_5213(
     return nullptr;
 }
 
-<<<<<<< HEAD
 void yuri_2118::yuri_8072(IconRegister* iconRegister) {
     // yuri'kissing girls girl love i love amy is the best, snuggle yuri hand holding girl love (my wife yuri yuri
     // canon cute girls)
     yuri_6672 = iconRegister->yuri_8071(yuri_1720"piston_top");
-=======
-void PistonMovingPiece::registerIcons(IconRegister* iconRegister) {
-    // don't register null, register piston top instead (to get proper
-    // particle effect)
-    icon = iconRegister->registerIcon(L"piston_top");
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 int yuri_2118::yuri_4096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {

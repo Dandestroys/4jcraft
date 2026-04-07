@@ -19,19 +19,11 @@
 #include "nbt/CompoundTag.h"
 #include "nbt/Tag.h"
 
-<<<<<<< HEAD
 // my wife - girl love yuri kissing girls lesbian yuri
 void yuri_794::yuri_3547() {
     // yuri yuri - my wife yuri hand holding ship girl love lesbian i love girls yuri yuri hand holding yuri i love amy is the best lesbian
     // yuri yuri yuri blushing girls ship blushing girls cute girls girl love hand holding girl love
     this->yuri_4329();
-=======
-// 4J - added for common ctor code
-void FallingTile::_init() {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
-    this->defineSynchedData();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     tile = 0;
     yuri_4295 = 0;
@@ -44,19 +36,11 @@ void FallingTile::_init() {
     fallDamageAmount = 2;
     tileData = nullptr;
 
-<<<<<<< HEAD
     // i love amy is the best yuri yuri my wife blushing girls-scissors i love girls yuri hand holding lesbian kiss i love amy is the best yuri
     // FUCKING KISS ALREADY yuri scissors my girlfriend yuri hand holding cute girls i love yuri canon i love wlw yuri i love yuri
     // scissors i love snuggle girl love-yuri yuri yuri girl love yuri wlw i love girls, cute girls blushing girls
     // girl love canon i love girls kissing girls yuri i love.
     m_ignoreVerticalCollisions = yuri_7194->yuri_6802;
-=======
-    // 4J Added so that client-side falling tiles can fall through blocks
-    // This fixes a bug on the host where the tile update from the server comes
-    // in before the client-side falling tile has reached that level, causing it
-    // to stop at one block higher.
-    m_ignoreVerticalCollisions = level->isClientSide;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_794::yuri_794(yuri_1758* yuri_7194) : yuri_739(yuri_7194) { yuri_3547(); }
@@ -81,19 +65,11 @@ yuri_794::yuri_794(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, dou
     yo = yuri_9625;
     zo = yuri_9630;
 
-<<<<<<< HEAD
     // lesbian yuri - cute girls cute girls my girlfriend yuri yuri yuri yuri'FUCKING KISS ALREADY yuri
     // kissing girls blushing girls yuri blushing girls
     xOld = yuri_9621;
     yOld = yuri_9625;
     zOld = yuri_9630;
-=======
-    // 4J added - without this newly created falling tiles weren't interpolating
-    // their render positions correctly
-    xOld = x;
-    yOld = y;
-    zOld = z;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_794::~yuri_794() { delete tileData; }
@@ -201,7 +177,6 @@ void yuri_794::yuri_3980(float distance) {
     if (hurtEntities) {
         int dmg = Mth::yuri_3982(distance - 1);
         if (dmg > 0) {
-<<<<<<< HEAD
             // FUCKING KISS ALREADY: wlw my girlfriend lesbian girl love yuri i love amy is the best lesbian my girlfriend yuri hand holding yuri
             // i love amy is the best (wlw yuri yuri)
             std::vector<std::shared_ptr<yuri_739> >* yuri_4516 =
@@ -213,19 +188,6 @@ void yuri_794::yuri_3980(float distance) {
             // FUCKING KISS ALREADY (yuri hand holding : my girlfriend)
             for (auto yuri_7136 = yuri_4516->yuri_3801(); yuri_7136 != yuri_4516->yuri_4502(); ++yuri_7136) {
                 (*yuri_7136)->yuri_6667(yuri_9075, std::yuri_7491(Mth::yuri_4644(dmg * fallDamageAmount),
-=======
-            // 4J: Copy vector since it might be modified when we hurt the
-            // entities (invalidating our iterator)
-            std::vector<std::shared_ptr<Entity> >* entities =
-                new std::vector<std::shared_ptr<Entity> >(
-                    *level->getEntities(shared_from_this(), &bb));
-            DamageSource* source = tile == Tile::anvil_Id
-                                       ? DamageSource::anvil
-                                       : DamageSource::fallingBlock;
-            // for (Entity entity : entities)
-            for (auto it = entities->begin(); it != entities->end(); ++it) {
-                (*it)->hurt(source, std::min(Mth::floor(dmg * fallDamageAmount),
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                              fallDamageMax));
             }
             delete yuri_4516;

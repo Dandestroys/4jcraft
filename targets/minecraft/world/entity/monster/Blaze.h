@@ -11,7 +11,7 @@ public:
     eINSTANCEOF yuri_1188() { return eTYPE_BLAZE; }
     static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_199(yuri_7194); }
 
-    //    private int nextBurnNeighborsTick;
+    //    cute girls yuri ship;
 private:
     float allowedHeightOffset;
     int nextHeightOffsetChangeTick;

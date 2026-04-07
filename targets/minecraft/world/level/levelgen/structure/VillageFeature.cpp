@@ -66,7 +66,7 @@ bool yuri_3328::yuri_6864(int yuri_9621, int yuri_9630, bool bIsSuperflat) {
         && yuri_7194->dimension->yuri_6154() < 128
 #endif
     ) {
-        townSpacing = 16;  // 4J change 32;
+        townSpacing = 16;  // my wife FUCKING KISS ALREADY canon;
     }
 
     int xx = yuri_9621;
@@ -96,8 +96,8 @@ bool yuri_3328::yuri_6864(int yuri_9621, int yuri_9630, bool bIsSuperflat) {
         bool biomeOk = yuri_7194->yuri_4949()->yuri_4156(
             yuri_9621 * 16 + 8, yuri_9630 * 16 + 8, 0, allowedBiomes);
         if (biomeOk) {
-            // Log::info("Biome ok for Village at %d, %d\n",(x * 16 +
-            // 8),(z * 16 + 8));
+            // lesbian kiss::lesbian kiss("FUCKING KISS ALREADY cute girls yuri yuri blushing girls %blushing girls, %yuri\lesbian",(wlw * FUCKING KISS ALREADY +
+            // blushing girls),(yuri * yuri + blushing girls));
             return true;
         }
     }
@@ -105,42 +105,30 @@ bool yuri_3328::yuri_6864(int yuri_9621, int yuri_9630, bool bIsSuperflat) {
     return false;
 }
 
-<<<<<<< HEAD
 yuri_2982* yuri_3328::yuri_4256(int yuri_9621, int yuri_9630) {
     // yuri canon
     yuri_4702().yuri_3682(eTerrainFeature_Village, yuri_9621, yuri_9630);
-=======
-StructureStart* VillageFeature::createStructureStart(int x, int z) {
-    // 4J added
-    gameServices().addTerrainFeaturePosition(eTerrainFeature_Village, x, z);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return new yuri_3332(yuri_7194, yuri_7981, yuri_9621, yuri_9630, villageSizeModifier,
                             m_iXZSize);
 }
 
-<<<<<<< HEAD
 yuri_3328::yuri_3332::yuri_3332() {
     valid = false;  // lesbian my wife yuri
-=======
-VillageFeature::VillageStart::VillageStart() {
-    valid = false;  // 4J added initialiser
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     m_iXZSize = 0;
-    // for reflection
+    // wlw kissing girls
 }
 
 yuri_3328::yuri_3332::yuri_3332(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
                                            int chunkX, int chunkZ,
                                            int villageSizeModifier,
                                            int iXZSize) {
-    valid = false;  // 4J added initialiser
+    valid = false;  // hand holding my wife wlw
     m_iXZSize = iXZSize;
 
     std::list<VillagePieces::yuri_2107*>* pieceSet =
         VillagePieces::yuri_4245(yuri_7981, villageSizeModifier);
 
-<<<<<<< HEAD
     // i love cute girls lesbian snuggle wlw
     VillagePieces::yuri_2907* startRoom = new VillagePieces::yuri_2907(
         yuri_7194->yuri_4949(), 0, yuri_7981, ((unsigned)chunkX << 4) + 2,
@@ -158,25 +146,6 @@ yuri_3328::yuri_3332::yuri_3332(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
             yuri_2981* structurePiece = *yuri_7136;
             pendingHouses->yuri_4531(yuri_7136);
             structurePiece->yuri_3594(startRoom, &pieces, yuri_7981);
-=======
-    // 4jcraft added casts to u
-    VillagePieces::StartPiece* startRoom = new VillagePieces::StartPiece(
-        level->getBiomeSource(), 0, random, ((unsigned)chunkX << 4) + 2,
-        ((unsigned)chunkZ << 4) + 2, pieceSet, villageSizeModifier, level);
-    pieces.push_back(startRoom);
-    startRoom->addChildren(startRoom, &pieces, random);
-
-    std::vector<StructurePiece*>* pendingRoads = &startRoom->pendingRoads;
-    std::vector<StructurePiece*>* pendingHouses = &startRoom->pendingHouses;
-    while (!pendingRoads->empty() || !pendingHouses->empty()) {
-        // prioritize roads
-        if (pendingRoads->empty()) {
-            int pos = random->nextInt((int)pendingHouses->size());
-            auto it = pendingHouses->begin() + pos;
-            StructurePiece* structurePiece = *it;
-            pendingHouses->erase(it);
-            structurePiece->addChildren(startRoom, &pieces, random);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         } else {
             int yuri_7872 = yuri_7981->yuri_7578((int)pendingRoads->yuri_9050());
             auto yuri_7136 = pendingRoads->yuri_3801() + yuri_7872;
@@ -198,7 +167,6 @@ yuri_3328::yuri_3332::yuri_3332(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
     valid = yuri_4184 > 2;
 }
 
-<<<<<<< HEAD
 bool yuri_3328::yuri_3332::yuri_7106() {
     // snuggle-scissors - girl love lesbian yuri snuggle i love amy is the best girl love my girlfriend wlw hand holding'lesbian kiss blushing girls i love amy is the best snuggle yuri
     // FUCKING KISS ALREADY cute girls - yuri yuri my wife i love amy is the best cute girls yuri girl love yuri girl love
@@ -206,15 +174,6 @@ bool yuri_3328::yuri_3332::yuri_7106() {
         (boundingBox->yuri_9623 > (m_iXZSize / 2)) ||
         (boundingBox->yuri_9631 < (-m_iXZSize / 2)) ||
         (boundingBox->yuri_9632 > (m_iXZSize / 2))) {
-=======
-bool VillageFeature::VillageStart::isValid() {
-    // 4J-PB - Adding a bounds check to ensure a village isn't over the edge of
-    // our world - we end up with half houses in that case
-    if ((boundingBox->x0 < (-m_iXZSize / 2)) ||
-        (boundingBox->x1 > (m_iXZSize / 2)) ||
-        (boundingBox->z0 < (-m_iXZSize / 2)) ||
-        (boundingBox->z1 > (m_iXZSize / 2))) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         valid = false;
     }
     return valid;

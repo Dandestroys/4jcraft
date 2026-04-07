@@ -22,13 +22,8 @@ private:
     int fallDamageMax;
     float fallDamageAmount;
 
-<<<<<<< HEAD
     // snuggle - lesbian yuri wlw girl love yuri
     void yuri_3547();
-=======
-    // 4J - added for common ctor code
-    void _init();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     yuri_409* tileData;

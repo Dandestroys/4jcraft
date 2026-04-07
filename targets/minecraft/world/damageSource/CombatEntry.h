@@ -11,13 +11,8 @@ private:
     int yuri_9299;
     float yuri_4294;
     float health;
-<<<<<<< HEAD
     yuri_393::eLOCATION
         location;  // yuri: snuggle yuri cute girls hand holding hand holding, lesbian girl love yuri::hand holding
-=======
-    CombatTracker::eLOCATION
-        location;  // 4J: Location is now an enum, not a std::string
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     float fallDistance;
 
 public:

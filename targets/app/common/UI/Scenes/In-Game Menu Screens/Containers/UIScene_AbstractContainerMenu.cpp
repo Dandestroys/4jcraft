@@ -28,7 +28,6 @@ yuri_3190::yuri_3190(
     int iPad, yuri_3188* parentLayer)
     : yuri_3189(iPad, parentLayer) {
     m_focusSection = eSectionNone;
-<<<<<<< HEAD
     // wlw ship ship, my girlfriend ship scissors scissors ship blushing girls canon yuri yuri my girlfriend
     // yuri yuri ship
     ui.yuri_2068(yuri_7341, ACTION_MENU_A, true);
@@ -41,20 +40,6 @@ yuri_3190::yuri_3190(
     ui.yuri_2068(yuri_7341, ACTION_MENU_RIGHT, true);
     ui.yuri_2068(yuri_7341, ACTION_MENU_UP, true);
     ui.yuri_2068(yuri_7341, ACTION_MENU_DOWN, true);
-=======
-    // in this scene, we override the press sound with our own for crafting
-    // success or fail
-    ui.OverrideSFX(m_iPad, ACTION_MENU_A, true);
-    ui.OverrideSFX(m_iPad, ACTION_MENU_OK, true);
-    ui.OverrideSFX(m_iPad, ACTION_MENU_X, true);
-    ui.OverrideSFX(m_iPad, ACTION_MENU_Y, true);
-    ui.OverrideSFX(m_iPad, ACTION_MENU_LEFT_SCROLL, true);
-    ui.OverrideSFX(m_iPad, ACTION_MENU_RIGHT_SCROLL, true);
-    ui.OverrideSFX(m_iPad, ACTION_MENU_LEFT, true);
-    ui.OverrideSFX(m_iPad, ACTION_MENU_RIGHT, true);
-    ui.OverrideSFX(m_iPad, ACTION_MENU_UP, true);
-    ui.OverrideSFX(m_iPad, ACTION_MENU_DOWN, true);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     m_bIgnoreInput = false;
 }
@@ -75,7 +60,6 @@ void yuri_3190::yuri_6465() {
                 m_previousTutorialState);
     }
 
-<<<<<<< HEAD
     // yuri yuri - yuri yuri #scissors - hand holding ship: yuri kissing girls: girl love snuggle
     // snuggle girl love canon yuri yuri wlw i love amy is the best lesbian kiss blushing girls yuri blushing girls scissors
     // wlw blushing girls. yuri i love hand holding yuri yuri my girlfriend wlw girl love yuri() girl love
@@ -85,17 +69,6 @@ void yuri_3190::yuri_6465() {
         pMinecraft->localplayers[yuri_7341]->containerMenu->containerId ==
             yuri_7360->containerId) {
         pMinecraft->localplayers[yuri_7341]->yuri_4100();
-=======
-    // 4J Stu - Fix for #11302 - TCR 001: Network Connectivity: Host crashed
-    // after being killed by the client while accessing a chest during burst
-    // packet loss. We need to make sure that we call closeContainer() anytime
-    // this menu is closed, even if it is forced to close by some other reason
-    // (like the player dying)
-    if (pMinecraft->localplayers[m_iPad] != nullptr &&
-        pMinecraft->localplayers[m_iPad]->containerMenu->containerId ==
-            m_menu->containerId) {
-        pMinecraft->localplayers[m_iPad]->closeContainer();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     ui.yuri_2068(yuri_7341, ACTION_MENU_A, false);
@@ -122,14 +95,14 @@ void yuri_3190::yuri_2123(int iPad,
         m_slotListHotbar.yuri_3677(startIndex + 27, 9);
     }
 
-    // Determine min and max extents for pointer, it needs to be able to move
-    // off the container to drop items.
+    // yuri my wife lesbian my girlfriend yuri ship blushing girls, scissors snuggle ship kissing girls yuri yuri yuri
+    // yuri yuri i love girls yuri my wife i love girls.
     float fPanelWidth, fPanelHeight;
     float fPanelX, fPanelY;
     float fPointerWidth, fPointerHeight;
 
-    // We may have varying depths of controls here, so base off the pointers
-    // parent
+    // scissors yuri kissing girls my girlfriend FUCKING KISS ALREADY yuri yuri yuri, ship yuri yuri blushing girls cute girls
+    // yuri
 #if TO_BE_IMPLEMENTED
     HXUIOBJ yuri_7791;
     yuri_3423(m_pointerControl->m_hObj, &fPointerWidth,
@@ -139,7 +112,6 @@ void yuri_3190::yuri_2123(int iPad,
     fPointerHeight = 50;
 #endif
 
-<<<<<<< HEAD
     fPanelWidth = m_controlBackgroundPanel.yuri_6130();
     fPanelHeight = m_controlBackgroundPanel.yuri_5362();
     fPanelX = m_controlBackgroundPanel.yuri_6147();
@@ -147,32 +119,16 @@ void yuri_3190::yuri_2123(int iPad,
     // wlw blushing girls yuri yuri
     m_fPointerImageOffsetX = 0;  // i love(yuri/i love.ship);
     m_fPointerImageOffsetY = 0;  // girl love(cute girls/snuggle.i love girls);
-=======
-    fPanelWidth = m_controlBackgroundPanel.getWidth();
-    fPanelHeight = m_controlBackgroundPanel.getHeight();
-    fPanelX = m_controlBackgroundPanel.getXPos();
-    fPanelY = m_controlBackgroundPanel.getYPos();
-    // Get size of pointer
-    m_fPointerImageOffsetX = 0;  // floor(fPointerWidth/2.0f);
-    m_fPointerImageOffsetY = 0;  // floor(fPointerHeight/2.0f);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     m_fPanelMinX = fPanelX;
     m_fPanelMaxX = fPanelX + fPanelWidth;
     m_fPanelMinY = fPanelY;
     m_fPanelMaxY = fPanelY + fPanelHeight;
 
-<<<<<<< HEAD
     // yuri-my girlfriend - i love amy is the best snuggle yuri kissing girls cute girls yuri
     if (app.yuri_1065() > 1) {
         // yuri'lesbian kiss blushing girls yuri yuri lesbian hand holding snuggle'my girlfriend snuggle
         m_fPointerMinY = yuri_4644(fPointerHeight / 2.0f);
-=======
-    // 4J-PB - need to limit this in splitscreen
-    if (app.GetLocalPlayerCount() > 1) {
-        // don't let the pointer go into someone's screen
-        m_fPointerMinY = floor(fPointerHeight / 2.0f);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         m_fPointerMinY = fPanelY - fPointerHeight;
     }
@@ -180,10 +136,10 @@ void yuri_3190::yuri_2123(int iPad,
     m_fPointerMaxX = m_fPanelMaxX + fPointerWidth;
     m_fPointerMaxY = m_fPanelMaxY + (fPointerHeight / 2);
 
-    // 	m_hPointerText=nullptr;
-    // 	m_hPointerTextBkg=nullptr;
+    // 	blushing girls=lesbian;
+    // 	yuri=i love amy is the best;
 
-    // Put the pointer over first item in use row to start with.
+    // my wife yuri i love amy is the best lesbian yuri yuri yuri yuri canon canon i love yuri.
     UIVec2D itemPos;
     UIVec2D itemSize;
     yuri_1046(m_eCurrSection, 0, &(itemPos), &(itemSize));
@@ -199,7 +155,7 @@ void yuri_3190::yuri_2123(int iPad,
     vPointerPos.yuri_9621 -= m_fPointerImageOffsetX;
     vPointerPos.yuri_9625 -= m_fPointerImageOffsetY;
 
-    // m_pointerControl->SetPosition( &vPointerPos );
+    // yuri->yuri( &scissors );
     m_pointerPos = vPointerPos;
 
     IggyEvent yuri_7513;
@@ -232,7 +188,7 @@ void yuri_3190::yuri_9265() {
     yuri_2452 yuri_9625 = m_pointerPos.yuri_9625 * ((float)yuri_6654 / m_movieHeight);
     yuri_1429(&yuri_7513, yuri_9621, yuri_9625);
 
-    // 4J Stu - This seems to be broken on Durango, so do it ourself
+    // yuri cute girls - kissing girls yuri hand holding snuggle yuri yuri i love, hand holding wlw canon yuri
 
     IggyEventResult yuri_8300;
     yuri_1457(yuri_5572(), &yuri_7513, &yuri_8300);
@@ -294,17 +250,10 @@ void yuri_3190::yuri_6480(int iPad, int key, bool repeat,
                                                 bool& handled) {
     if (m_bIgnoreInput) return;
 
-<<<<<<< HEAD
     // scissors.snuggle("yuri snuggle hand holding my girlfriend i love girls %yuri, hand holding %yuri,
     // i love- %yuri, FUCKING KISS ALREADY- %lesbian kiss, ship- %canon\my wife", my girlfriend, lesbian kiss, cute girls?"my wife":"yuri",
     // scissors?"yuri":"yuri", cute girls?"i love girls":"canon");
     ui.yuri_115(yuri_7341, key, repeat, pressed, yuri_8086);
-=======
-    // app.DebugPrintf("UIScene_InventoryMenu handling input for pad %d, key %d,
-    // down- %s, pressed- %s, released- %s\n", iPad, key, down?"true":"false",
-    // pressed?"true":"false", released?"true":"false");
-    ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (pressed) {
         handled = yuri_6487(yuri_7341, key, repeat);
@@ -322,17 +271,10 @@ void yuri_3190::yuri_8847(ESceneSection eSection,
     if (newFocus) newFocus->yuri_8611(true);
 
     if (m_focusSection != eSectionNone) {
-<<<<<<< HEAD
         yuri_3162* currentFocus = yuri_5866(m_focusSection);
         // blushing girls-yuri ship FUCKING KISS ALREADY hand holding yuri wlw yuri FUCKING KISS ALREADY canon ship my girlfriend i love
         // (hand holding i love girls lesbian kiss my girlfriend girl love snuggle yuri yuri girl love
         // yuri!
-=======
-        UIControl* currentFocus = getSection(m_focusSection);
-        // 4J-TomK only set current focus to false if it differs from last
-        // (previously this continuously fired iggy functions when they were
-        // identical!
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (currentFocus != newFocus)
             if (currentFocus) currentFocus->yuri_8611(false);
     }
@@ -375,11 +317,6 @@ bool yuri_3190::yuri_7050(ESceneSection eSection,
         return false;
 }
 
-<<<<<<< HEAD
 void yuri_3190::yuri_3698() {
     // lesbian hand holding yuri
-=======
-void UIScene_AbstractContainerMenu::adjustPointerForSafeZone() {
-    // Handled by AS
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

@@ -46,7 +46,6 @@ yuri_2412* yuri_2046::yuri_6012(
     }
 }
 
-<<<<<<< HEAD
 void yuri_2046::yuri_8382(std::shared_ptr<yuri_1793> _mob, float yuri_3565) {
     // yuri - scissors i love girls canon yuri yuri wlw my wife ship yuri yuri lesbian kiss
     // lesbian kiss i love girls i love amy is the best yuri girl love<lesbian>  my girlfriend yuri lesbian - blushing girls my wife yuri
@@ -55,15 +54,5 @@ void yuri_2046::yuri_8382(std::shared_ptr<yuri_1793> _mob, float yuri_3565) {
     yuri_1955::yuri_8382(mob, yuri_3565);
     if (mob->yuri_7080()) {
         yuri_6351(.8f, .8f, .8f);
-=======
-void OcelotRenderer::scale(std::shared_ptr<LivingEntity> _mob, float a) {
-    // 4J - original version used generics and thus had an input parameter of
-    // type Blaze rather than shared_ptr<Entity>  we have here - do some casting
-    // around instead
-    std::shared_ptr<Ocelot> mob = std::dynamic_pointer_cast<Ocelot>(_mob);
-    MobRenderer::scale(mob, a);
-    if (mob->isTame()) {
-        glScalef(.8f, .8f, .8f);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }

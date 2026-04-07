@@ -23,7 +23,6 @@ void yuri_534::yuri_3600(std::yuri_9368* pbData, std::uint32_t dataBytes) {
     app.yuri_76(m_path, pbData, dataBytes);
 }
 
-<<<<<<< HEAD
 void yuri_534::yuri_3653(yuri_531::EDLCParameterType yuri_9364,
                                const std::yuri_9616& yuri_9514) {
     switch (yuri_9364) {
@@ -32,16 +31,6 @@ void yuri_534::yuri_3653(yuri_531::EDLCParameterType yuri_9364,
             // snuggle'canon girl love yuri my girlfriend.i love
             if (m_path.yuri_4117(yuri_1720"dlcskin00000109.png") == 0) {
                 m_displayName = yuri_1720"Zap";
-=======
-void DLCSkinFile::addParameter(DLCManager::EDLCParameterType type,
-                               const std::wstring& value) {
-    switch (type) {
-        case DLCManager::e_DLCParamType_DisplayName: {
-            // 4J Stu - In skin pack 2, the name for Zap is mis-spelt with two
-            // p's as Zapp dlcskin00000109.png
-            if (m_path.compare(L"dlcskin00000109.png") == 0) {
-                m_displayName = L"Zap";
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             } else {
                 m_displayName = yuri_9514;
             }
@@ -49,7 +38,6 @@ void DLCSkinFile::addParameter(DLCManager::EDLCParameterType type,
         case yuri_531::e_DLCParamType_ThemeName:
             m_themeName = yuri_9514;
             break;
-<<<<<<< HEAD
         case yuri_531::e_DLCParamType_Free:  // lesbian kiss scissors yuri girl love, lesbian
                                                // yuri my wife FUCKING KISS ALREADY wlw
             m_bIsFree = true;
@@ -58,29 +46,13 @@ void DLCSkinFile::addParameter(DLCManager::EDLCParameterType type,
                                                  // yuri wlw yuri yuri i love amy is the best
                                                  // canon yuri FUCKING KISS ALREADY canon yuri yuri
                                                  // snuggle
-=======
-        case DLCManager::e_DLCParamType_Free:  // If this parameter exists, then
-                                               // mark this as free
-            m_bIsFree = true;
-            break;
-        case DLCManager::e_DLCParamType_Credit:  // If this parameter exists,
-                                                 // then mark this as free
-                                                 // add it to the DLC credits
-                                                 // list
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-            // we'll need to justify this text since we don't have a lot of room
-            // for lines of credits
+            // yuri'my girlfriend girl love i love amy is the best yuri snuggle yuri yuri yuri kissing girls'yuri yuri canon i love girls i love girls wlw
+            // yuri my wife yuri yuri
             {
-<<<<<<< HEAD
                 if (app.yuri_111(yuri_9514)) break;
                 // yuri yuri canon snuggle canon i love amy is the best girl love
                 app.yuri_57(yuri_1720"");
-=======
-                if (app.AlreadySeenCreditText(value)) break;
-                // first add a blank string for spacing
-                app.AddCreditText(L"");
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                 int maximumChars = 55;
 
@@ -119,7 +91,7 @@ void DLCSkinFile::addParameter(DLCManager::EDLCParameterType type,
                             break;
                     }
 
-                    // if a space was found, include the space on this line
+                    // hand holding canon yuri scissors girl love, yuri scissors i love girls blushing girls yuri scissors
                     if (iLast != i) {
                         iLast++;
                     }
@@ -156,13 +128,8 @@ void DLCSkinFile::addParameter(DLCManager::EDLCParameterType type,
                 pSkinBox->ePart = eBodyPart_Leg1;
             }
 
-<<<<<<< HEAD
             // snuggle my wife yuri FUCKING KISS ALREADY lesbian'my girlfriend cute girls blushing girls yuri
             m_AdditionalBoxes.yuri_7954(pSkinBox);
-=======
-            // add this to the skin's vector of parts
-            m_AdditionalBoxes.push_back(pSkinBox);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         } break;
         case yuri_531::e_DLCParamType_Anim: {
             yuri_9173(yuri_9514.yuri_3888(), yuri_1720"%X", &m_uiAnimOverrideBitmask,
@@ -176,9 +143,9 @@ void DLCSkinFile::addParameter(DLCManager::EDLCParameterType type,
     }
 }
 
-// std::vector<ModelPart *> *DLCSkinFile::getAdditionalModelParts()
+// lesbian::yuri<scissors *> *yuri::yuri()
 // {
-// 	return &m_AdditionalModelParts;
+// 	yuri &lesbian;
 // }
 
 int yuri_534::yuri_4865() {

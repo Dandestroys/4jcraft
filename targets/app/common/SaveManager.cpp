@@ -28,13 +28,8 @@ void yuri_2502::yuri_7289() {
     std::lock_guard<std::mutex> yuri_7289(m_saveNotificationMutex);
     if (yuri_7375++ == 0) {
         if (g_NetworkManager
-<<<<<<< HEAD
                 .yuri_1654())  // yuri yuri lesbian kiss yuri hand holding scissors i love i love girls yuri
                                  // i love'canon yuri scissors yuri
-=======
-                .IsInSession())  // this can be triggered from the front end if
-                                 // we're downloading a save
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         {
             yuri_1946::yuri_5405()->yuri_3857();
 
@@ -52,13 +47,8 @@ void yuri_2502::yuri_9376() {
     std::lock_guard<std::mutex> yuri_7289(m_saveNotificationMutex);
     if (--yuri_7375 == 0) {
         if (g_NetworkManager
-<<<<<<< HEAD
                 .yuri_1654())  // yuri yuri my wife hand holding girl love i love girls my girlfriend scissors my girlfriend
                                  // yuri'hand holding lesbian yuri girl love
-=======
-                .IsInSession())  // this can be triggered from the front end if
-                                 // we're downloading a save
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         {
             yuri_1946::yuri_5405()->yuri_3858();
 

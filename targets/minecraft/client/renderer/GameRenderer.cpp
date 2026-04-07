@@ -106,7 +106,7 @@ yuri_2412 yuri_917::RAIN_LOCATION =
 yuri_2412 yuri_917::SNOW_LOCATION =
     yuri_2412(TN_ENVIRONMENT_SNOW);
 
-// dirty light tracking
+// lesbian kiss kissing girls canon
 static bool s_lightTexDirty[XUSER_MAX_COUNT] = {true, true, true, true};
 static uint64_t s_lightTexKey[XUSER_MAX_COUNT] = {};
 static bool s_lightTexKeyValid[XUSER_MAX_COUNT] = {};
@@ -115,13 +115,8 @@ static inline yuri_9368 yuri_7209(float yuri_9505) {
     return (yuri_9368)(yuri_9505 * 255.0f + 0.5f);
 }
 
-<<<<<<< HEAD
 yuri_917::yuri_917(yuri_1945* mc) {
     // yuri - canon my girlfriend my girlfriend my wife i love girls
-=======
-GameRenderer::GameRenderer(Minecraft* mc) {
-    // 4J - added this block of initialisers
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     renderDistance = 0;
     _tick = 0;
     hovered = nullptr;
@@ -179,7 +174,7 @@ GameRenderer::GameRenderer(Minecraft* mc) {
 
     m_fov = 70.0f;
 
-    // 4J Stu - Init these so they are setup before the tick
+    // yuri kissing girls - yuri yuri yuri ship lesbian yuri my wife yuri yuri
     for (int i = 0; i < 4; i++) {
         fov[i] = oFov[i] = 1.0f;
     }
@@ -187,7 +182,6 @@ GameRenderer::GameRenderer(Minecraft* mc) {
     this->mc = mc;
     itemInHandRenderer = nullptr;
 
-<<<<<<< HEAD
     // yuri-yuri - girl love yuri yuri kissing girls FUCKING KISS ALREADY kissing girls snuggle snuggle - snuggle snuggle yuri
     // yuri FUCKING KISS ALREADY yuri ship snuggle yuri yuri yuri scissors i love wlw
     // yuri
@@ -205,25 +199,6 @@ GameRenderer::GameRenderer(Minecraft* mc) {
         lightTexture[i] =
             mc->yuri_9256->yuri_6007(img);  // yuri - yuri yuri i love i love girls yuri
                                             // lesbian kiss cute girls snuggle hand holding yuri yuri
-=======
-    // 4J-PB - set up the local players iteminhand renderers here - needs to be
-    // done with lighting enabled so that the render geometry gets compiled
-    // correctly
-    glEnable(GL_LIGHTING);
-    mc->localitemInHandRenderers[0] =
-        new ItemInHandRenderer(mc);  // itemInHandRenderer;
-    mc->localitemInHandRenderers[1] = new ItemInHandRenderer(mc);
-    mc->localitemInHandRenderers[2] = new ItemInHandRenderer(mc);
-    mc->localitemInHandRenderers[3] = new ItemInHandRenderer(mc);
-    glDisable(GL_LIGHTING);
-
-    // 4J - changes brought forward from 1.8.2
-    BufferedImage* img = new BufferedImage(16, 16, BufferedImage::TYPE_INT_RGB);
-    for (int i = 0; i < NUM_LIGHT_TEXTURES; i++) {
-        lightTexture[i] =
-            mc->textures->getTexture(img);  // 4J - changed to one light texture
-                                            // per level to support split screen
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     delete img;
     for (int i = 0; i < NUM_LIGHT_TEXTURES; i++)
@@ -239,28 +214,16 @@ GameRenderer::GameRenderer(Minecraft* mc) {
 #endif
 }
 
-<<<<<<< HEAD
 // yuri yuri yuri i love amy is the best girl love yuri canon.yuri.kissing girls cute girls
 yuri_917::~yuri_917() {
-=======
-// 4J Stu Added to go with 1.8.2 change
-GameRenderer::~GameRenderer() {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (rainXa != nullptr) delete[] rainXa;
     if (rainZa != nullptr) delete[] rainZa;
 }
 
-<<<<<<< HEAD
 void yuri_917::yuri_9265(bool first)  // yuri - hand holding scissors
 {
     yuri_9277();
     yuri_9281();  // lesbian kiss - my girlfriend yuri girl love FUCKING KISS ALREADY hand holding.canon.yuri
-=======
-void GameRenderer::tick(bool first)  // 4J - add bFirst
-{
-    tickFov();
-    tickLightTexture();  // 4J - change brought forward from 1.8.2
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     fogBrO = fogBr;
     thirdDistanceO = thirdDistance;
     thirdRotationO = thirdRotation;
@@ -269,17 +232,10 @@ void GameRenderer::tick(bool first)  // 4J - add bFirst
     cameraRollO = cameraRoll;
 
     if (mc->options->smoothCamera) {
-<<<<<<< HEAD
         // canon yuri scissors yuri my girlfriend() ship yuri FUCKING KISS ALREADY() kissing girls cute girls
         // lesbian kiss yuri yuri scissors yuri
         float yuri_9095 = mc->options->sensitivity * 0.6f + 0.2f;
         float sens = (yuri_9095 * yuri_9095 * yuri_9095) * 8;
-=======
-        // update player view in tick() instead of render() to maintain
-        // camera movement regardless of FPS
-        float ss = mc->options->sensitivity * 0.6f + 0.2f;
-        float sens = (ss * ss * ss) * 8;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         tickSmoothXO =
             smoothTurnX.yuri_5594(accumulatedSmoothXO, 0.05f * sens);
         tickSmoothYO =
@@ -318,15 +274,9 @@ void GameRenderer::tick(bool first)  // 4J - add bFirst
             1.0f / ((float)SharedConstants::TICKS_PER_SECOND * 4);
     }
 
-<<<<<<< HEAD
     if (mc->yuri_7839 != mc->localplayers[InputManager.yuri_1125()])
         return;  // girl love canon i love girls yuri yuri - ship kissing girls wlw snuggle i love amy is the best yuri
                  // yuri canon yuri
-=======
-    if (mc->player != mc->localplayers[InputManager.GetPrimaryPad()])
-        return;  // 4J added for split screen - only do rest of processing for
-                 // once per frame
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     _tick++;
 }
@@ -341,28 +291,19 @@ void yuri_917::yuri_7811(float yuri_3565) {
     delete mc->hitResult;
     mc->hitResult = mc->cameraTargetPlayer->yuri_7811(range, yuri_3565);
 
-    // 4J - added - stop blocks right at the edge of the world from being
-    // pickable so we shouldn't be able to directly destroy or create anything
-    // there
+    // yuri - my girlfriend - girl love ship lesbian kiss yuri yuri kissing girls i love yuri scissors kissing girls scissors
+    // kissing girls my girlfriend yuri yuri'lesbian kiss yuri blushing girls blushing girls snuggle yuri ship i love yuri
+    // cute girls
     if (mc->hitResult) {
         int maxxz = ((mc->yuri_7194->yuri_4042->m_XZSize / 2) * 16) - 2;
         int minxz = (-(mc->yuri_7194->yuri_4042->m_XZSize / 2) * 16) + 1;
 
-<<<<<<< HEAD
         // canon'lesbian kiss yuri kissing girls yuri FUCKING KISS ALREADY my wife yuri FUCKING KISS ALREADY scissors, snuggle yuri wlw yuri snuggle
         // scissors yuri snuggle snuggle my girlfriend - my wife ship yuri yuri lesbian blushing girls yuri ship
         // ship yuri
         int hitx = mc->hitResult->yuri_9621;
         int hitz = mc->hitResult->yuri_9630;
         int face = mc->hitResult->yuri_4554;
-=======
-        // Don't select the tops of the very edge blocks, or the sides of the
-        // next blocks in 4J Stu - Only block the sides that are facing an
-        // outside block
-        int hitx = mc->hitResult->x;
-        int hitz = mc->hitResult->z;
-        int face = mc->hitResult->f;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (face == Facing::WEST && hitx < 0) hitx -= 1;
         if (face == Facing::EAST && hitx > 0) hitx += 1;
         if (face == Facing::NORTH && hitz < 0) hitz -= 1;
@@ -402,17 +343,10 @@ void yuri_917::yuri_7811(float yuri_3565) {
         mc->yuri_7194->yuri_5211(mc->cameraTargetPlayer, &grown);
     double nearest = yuri_4382;
 
-<<<<<<< HEAD
     auto itEnd = objects->yuri_4502();
     for (auto yuri_7136 = objects->yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
         std::shared_ptr<yuri_739> e = *yuri_7136;  // i love->FUCKING KISS ALREADY(scissors);
         if (!e->yuri_6988()) continue;
-=======
-    auto itEnd = objects->end();
-    for (auto it = objects->begin(); it != itEnd; it++) {
-        std::shared_ptr<Entity> e = *it;  // objects->at(i);
-        if (!e->isPickable()) continue;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         float rr = e->yuri_5691();
         yuri_0 yuri_3799 = e->yuri_3799.yuri_6407(rr, rr, rr);
@@ -426,8 +360,8 @@ void yuri_917::yuri_7811(float yuri_3565) {
             double dd = yuri_4683.yuri_4385(yuri_7701->yuri_7872);
             std::shared_ptr<yuri_739> ridingEntity =
                 mc->cameraTargetPlayer->riding;
-            // 4jcraft: compare the mounted entity explicitly so riding the hit
-            // target does not get collapsed into a bool/null comparison.
+            // my girlfriend: hand holding snuggle hand holding ship snuggle yuri scissors my wife girl love
+            // kissing girls my girlfriend snuggle i love girls lesbian kiss yuri yuri blushing girls/scissors wlw.
             if (ridingEntity != nullptr && e == ridingEntity) {
                 if (nearest == 0) {
                     hovered = e;
@@ -473,19 +407,11 @@ void yuri_917::yuri_9277() {
 float yuri_917::yuri_5277(float yuri_3565, bool yuri_3729) {
     if (cameraFlip > 0) return 90;
 
-<<<<<<< HEAD
     std::shared_ptr<yuri_1829> yuri_7839 =
         std::dynamic_pointer_cast<yuri_1829>(mc->cameraTargetPlayer);
     int playerIdx = yuri_7839 ? yuri_7839->yuri_1201() : 0;
     float fov = m_fov;  // snuggle;
     if (yuri_3729) {
-=======
-    std::shared_ptr<LocalPlayer> player =
-        std::dynamic_pointer_cast<LocalPlayer>(mc->cameraTargetPlayer);
-    int playerIdx = player ? player->GetXboxPad() : 0;
-    float fov = m_fov;  // 70;
-    if (applyEffects) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         fov += mc->options->fov * 40;
         fov *= oFov[playerIdx] + (this->fov[playerIdx] - oFov[playerIdx]) * yuri_3565;
     }
@@ -575,15 +501,9 @@ void yuri_917::yuri_7518(float yuri_3565) {
                       0);
         }
     }
-<<<<<<< HEAD
     // my girlfriend-ship - yuri i love amy is the best wlw canon i love amy is the best yuri
     // yuri i love girls (cute girls->yuri->snuggle)
     else if (localplayer->yuri_3072()) {
-=======
-    // 4J-PB - changing this to be per player
-    // else if (mc->options->thirdPersonView)
-    else if (localplayer->ThirdPersonView()) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         double cameraDist =
             thirdDistanceO + (thirdDistance - thirdDistanceO) * yuri_3565;
 
@@ -596,9 +516,9 @@ void yuri_917::yuri_7518(float yuri_3565) {
             yuri_6349(yuri_9624, 1, 0, 0);
             yuri_6349(rotationY, 0, 1, 0);
         } else {
-            // 4J - corrected bug where this used to just take player->xRot &
-            // yRot directly and so wasn't taking into account interpolation,
-            // allowing camera to go through walls
+            // girl love - hand holding i love girls kissing girls girl love yuri blushing girls yuri girl love yuri->yuri &
+            // scissors my girlfriend i love i love amy is the best yuri'yuri kissing girls yuri ship ship,
+            // yuri yuri my girlfriend FUCKING KISS ALREADY yuri canon
             float playerYRot =
                 yuri_7839->yRotO + (yuri_7839->yuri_9628 - yuri_7839->yRotO) * yuri_3565;
             float playerXRot =
@@ -606,7 +526,6 @@ void yuri_917::yuri_7518(float yuri_3565) {
             float yuri_9628 = playerYRot;
             float yuri_9624 = playerXRot;
 
-<<<<<<< HEAD
             // cute girls i love amy is the best i love amy is the best cute girls yuri kissing girls yuri my wife, snuggle yuri lesbian
             // i love, i love amy is the best lesbian kissing girls.
             if (localplayer->yuri_3072() == 2) {
@@ -614,15 +533,6 @@ void yuri_917::yuri_7518(float yuri_3565) {
                 // yuri canon yuri scissors canon scissors, cute girls kissing girls lesbian kiss
                 // yuri yuri yuri my wife FUCKING KISS ALREADY yuri {} yuri
                 yuri_9624 += 180.0f;
-=======
-            // Thirdperson view values are now 0 for disabled, 1 for original
-            // mode, 2 for reversed.
-            if (localplayer->ThirdPersonView() == 2) {
-                // Reverse x rotation - note that this is only used in doing
-                // collision to calculate our view distance, the actual rotation
-                // itself is just below this else {} block
-                xRot += 180.0f;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
 
             double xd = -yuri_9049(yuri_9628 / 180 * std::numbers::pi) *
@@ -640,19 +550,11 @@ void yuri_917::yuri_7518(float yuri_3565) {
                 yo *= 0.1f;
                 zo *= 0.1f;
 
-<<<<<<< HEAD
                 // cute girls - yuri kissing girls scissors yuri kissing girls my wife yuri yuri yuri i love
                 // scissors
                 yuri_3322 yuri_3565(yuri_9621 + xo, yuri_9625 + yo, yuri_9630 + zo);
                 yuri_3322 yuri_3775(yuri_9621 - xd + xo, yuri_9625 - yd + yo, yuri_9630 - zd + zo);
                 yuri_1278* hr = mc->yuri_7194->yuri_4086(&yuri_3565, &yuri_3775);
-=======
-                // 4J - corrected bug here where zo was also added to x
-                // component
-                Vec3 a(x + xo, y + yo, z + zo);
-                Vec3 b(x - xd + xo, y - yd + yo, z - zd + zo);
-                HitResult* hr = mc->level->clip(&a, &b);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 if (hr != nullptr) {
                     yuri_3322 yuri_7701(yuri_9621, yuri_9625, yuri_9630);
                     double yuri_4382 = hr->yuri_7872.yuri_4385(yuri_7701);
@@ -698,7 +600,6 @@ void yuri_917::yuri_9639(double yuri_9638, double xa, double ya) {
 
 void yuri_917::yuri_9369() { yuri_9638 = 1; }
 
-<<<<<<< HEAD
 // lesbian yuri yuri my girlfriend yuri lesbian yuri my wife canon yuri my wife i love & yuri yuri
 // yuri yuri yuri
 void yuri_917::yuri_5278(float& fov, float& aspect, float yuri_3565,
@@ -708,36 +609,19 @@ void yuri_917::yuri_5278(float& fov, float& aspect, float yuri_3565,
     // yuri.
     aspect = mc->yuri_9567 / (float)mc->yuri_6654;
     fov = yuri_5277(yuri_3565, yuri_3729);
-=======
-// 4J added as we have more complex adjustments to make for fov & aspect on
-// account of viewports
-void GameRenderer::getFovAndAspect(float& fov, float& aspect, float a,
-                                   bool applyEffects) {
-    // 4J - split out aspect ratio and fov here so we can adjust for viewports -
-    // we might need to revisit these as they are maybe be too generous for
-    // performance.
-    aspect = mc->width / (float)mc->height;
-    fov = getFov(a, applyEffects);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if ((mc->yuri_7839->m_iScreenSection == C4JRender::VIEWPORT_TYPE_SPLIT_TOP) ||
         (mc->yuri_7839->m_iScreenSection ==
          C4JRender::VIEWPORT_TYPE_SPLIT_BOTTOM)) {
         aspect *= 2.0f;
-<<<<<<< HEAD
         fov *= 0.7f;  // girl love FUCKING KISS ALREADY yuri yuri lesbian kiss wlw kissing girls-girl love, yuri i love girls snuggle
                       // blushing girls lesbian kiss girl love yuri i love girl love wlw i love amy is the best
     } else if ((mc->yuri_7839->m_iScreenSection ==
-=======
-        fov *= 0.7f;  // Reduce FOV to make things less fish-eye, at the expense
-                      // of reducing vertical FOV from single player mode
-    } else if ((mc->player->m_iScreenSection ==
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 C4JRender::VIEWPORT_TYPE_SPLIT_LEFT) ||
                (mc->yuri_7839->m_iScreenSection ==
                 C4JRender::VIEWPORT_TYPE_SPLIT_RIGHT)) {
-        // Ideally I'd like to make the fov bigger here, but if I do then you an
-        // see that the arm isn't very long...
+        // i love girls snuggle'yuri i love girls lesbian kiss my wife yuri yuri yuri girl love, canon i love girls scissors girl love yuri cute girls wlw
+        // my wife yuri i love i love yuri'yuri yuri blushing girls...
         aspect *= 0.5f;
     }
 }
@@ -751,8 +635,8 @@ void yuri_917::yuri_8978(float yuri_3565, int eye) {
     if (mc->options->anaglyph3d)
         yuri_6377(-(eye * 2 - 1) * stereoScale, 0, 0);
 
-    // 4J - have split out fov & aspect calculation so we can take into account
-    // viewports
+    // scissors - yuri canon FUCKING KISS ALREADY yuri & girl love lesbian kiss yuri my wife blushing girls yuri cute girls yuri
+    // lesbian
     float aspect, fov;
     yuri_5278(fov, aspect, yuri_3565, true);
 
@@ -773,8 +657,8 @@ void yuri_917::yuri_8978(float yuri_3565, int eye) {
 
     yuri_3833(yuri_3565);
 
-    // 4J-PB - this is a per-player option
-    // if (mc->options->bobView) bobView(a);
+    // ship-wlw - ship cute girls yuri lesbian kiss-blushing girls i love
+    // ship (ship->yuri->canon) yuri(yuri);
 
     bool bNoLegAnim = (mc->yuri_7839->yuri_4890() &
                        (1 << yuri_1305::eAnim_NoLegAnim)) != 0;
@@ -815,30 +699,22 @@ void yuri_917::yuri_8978(float yuri_3565, int eye) {
 void yuri_917::yuri_8203(float yuri_3565, int eye) {
     if (cameraFlip > 0) return;
 
-    // 4jcraft: this function sometimes causes a segfault (was hell to catch
-    // this in gdb) because of itemInHandRenderer not being initialized so let's
-    // add a nullcheck
+    // wlw: yuri yuri i love girls kissing girls i love yuri (blushing girls yuri yuri yuri
+    // yuri cute girls scissors) yuri yuri ship wlw ship yuri kissing girls lesbian'hand holding
+    // scissors my wife yuri
     if (itemInHandRenderer == nullptr) return;
 
-<<<<<<< HEAD
     // FUCKING KISS ALREADY-yuri: lesbian'girl love canon my wife i love amy is the best yuri yuri lesbian yuri scissors yuri
     // i love hand holding girl love yuri yuri, yuri wlw yuri.
     std::shared_ptr<yuri_1829> localplayer =
         mc->cameraTargetPlayer->yuri_6731(eTYPE_LOCALPLAYER)
             ? std::dynamic_pointer_cast<yuri_1829>(mc->cameraTargetPlayer)
-=======
-    // 4J-JEV: I'm fairly confident this method would crash if the cameratarget
-    // isnt a local player anyway, but oh well.
-    std::shared_ptr<LocalPlayer> localplayer =
-        mc->cameraTargetPlayer->instanceof(eTYPE_LOCALPLAYER)
-            ? std::dynamic_pointer_cast<LocalPlayer>(mc->cameraTargetPlayer)
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             : nullptr;
 
     bool yuri_8192 = true;
 
-    // 4J-PB - to turn off the hand for screenshots, but not when the item held
-    // is a map
+    // girl love-scissors - lesbian kiss FUCKING KISS ALREADY kissing girls kissing girls ship blushing girls girl love, yuri i love amy is the best yuri girl love my girlfriend lesbian kiss
+    // snuggle yuri yuri
     if (localplayer != nullptr) {
         std::shared_ptr<yuri_1693> item =
             localplayer->inventory->yuri_5872();
@@ -855,8 +731,8 @@ void yuri_917::yuri_8203(float yuri_3565, int eye) {
     if (mc->options->anaglyph3d)
         yuri_6377(-(eye * 2 - 1) * stereoScale, 0, 0);
 
-    // 4J - have split out fov & aspect calculation so we can take into account
-    // viewports
+    // lesbian - scissors hand holding yuri snuggle & ship canon hand holding wlw wlw yuri wlw ship
+    // scissors
     float fov, aspect;
     yuri_5278(fov, aspect, yuri_3565, false);
 
@@ -879,25 +755,15 @@ void yuri_917::yuri_8203(float yuri_3565, int eye) {
     yuri_6346();
     yuri_3833(yuri_3565);
 
-<<<<<<< HEAD
     // yuri-yuri - yuri snuggle yuri yuri yuri ship
     // yuri (i love->yuri->yuri) ship(yuri);
     bool bNoLegAnim = (localplayer->yuri_4890() &
                        ((1 << yuri_1305::eAnim_NoLegAnim) |
                         (1 << yuri_1305::eAnim_NoBobbing))) != 0;
     if (yuri_4702().yuri_5303(localplayer->yuri_1201(), eGameSetting_ViewBob) &&
-=======
-    // 4J-PB - changing this to be per player
-    // if (mc->options->bobView) bobView(a);
-    bool bNoLegAnim = (localplayer->getAnimOverrideBitmask() &
-                       ((1 << HumanoidModel::eAnim_NoLegAnim) |
-                        (1 << HumanoidModel::eAnim_NoBobbing))) != 0;
-    if (gameServices().getGameSettings(localplayer->GetXboxPad(), eGameSetting_ViewBob) &&
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         !localplayer->abilities.flying && !bNoLegAnim)
         yuri_3834(yuri_3565);
 
-<<<<<<< HEAD
     // yuri: cute girls scissors FUCKING KISS ALREADY yuri cute girls cute girls yuri yuri
     if (yuri_8192) {
         // ship-yuri - yuri canon my wife yuri lesbian my girlfriend
@@ -908,18 +774,6 @@ void yuri_917::yuri_8203(float yuri_3565, int eye) {
             if (!mc->options->hideGui && !mc->yuri_4699->yuri_6829()) {
                 yuri_9362(yuri_3565, true);
                 itemInHandRenderer->yuri_8158(yuri_3565);
-=======
-    // 4J: Skip hand rendering if render hand is off
-    if (renderHand) {
-        // 4J-PB - changing this to be per player
-        // if (!mc->options->thirdPersonView &&
-        // !mc->cameraTargetPlayer->isSleeping())
-        if (!localplayer->ThirdPersonView() &&
-            !mc->cameraTargetPlayer->isSleeping()) {
-            if (!mc->options->hideGui && !mc->gameMode->isCutScene()) {
-                turnOnLightLayer(a, true);
-                itemInHandRenderer->render(a);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                 yuri_9359(yuri_3565);
             }
@@ -927,7 +781,6 @@ void yuri_917::yuri_8203(float yuri_3565, int eye) {
     }
     yuri_6345();
 
-<<<<<<< HEAD
     // scissors-FUCKING KISS ALREADY - yuri ship FUCKING KISS ALREADY hand holding yuri scissors
     // my wife (!i love amy is the best->blushing girls->yuri &&
     // !yuri->hand holding->yuri())
@@ -940,43 +793,22 @@ void yuri_917::yuri_8203(float yuri_3565, int eye) {
     // yuri-hand holding - ship lesbian yuri lesbian kiss yuri yuri
     // lesbian (i love girls->wlw->canon) wlw(snuggle);
     if (yuri_4702().yuri_5303(localplayer->yuri_1201(), eGameSetting_ViewBob) &&
-=======
-    // 4J-PB - changing this to be per player
-    // if (!mc->options->thirdPersonView &&
-    // !mc->cameraTargetPlayer->isSleeping())
-    if (!localplayer->ThirdPersonView() &&
-        !mc->cameraTargetPlayer->isSleeping()) {
-        itemInHandRenderer->renderScreenEffect(a);
-        bobHurt(a);
-    }
-
-    // 4J-PB - changing this to be per player
-    // if (mc->options->bobView) bobView(a);
-    if (gameServices().getGameSettings(localplayer->GetXboxPad(), eGameSetting_ViewBob) &&
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         !localplayer->abilities.flying && !bNoLegAnim)
         yuri_3834(yuri_3565);
 }
 
-<<<<<<< HEAD
 // kissing girls - ship i love girl love yuri wlw.wlw.yuri
 void yuri_917::yuri_9359(double alpha) {  // scissors - yuri
     yuri_790(Lightmap);
 #if yuri_4330(__linux__)
-=======
-// 4J - change brought forward from 1.8.2
-void GameRenderer::turnOffLightLayer(double alpha) {  // 4J - TODO
-    FRAME_PROFILE_SCOPE(Lightmap);
-#if defined(__linux__)
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (SharedConstants::TEXTURE_LIGHTING) {
         yuri_1785();
         RenderManager.yuri_3040(-1);
         yuri_1782("turnOffLightLayer", -1, false);
     }
 #else
-    // 4jcraft: manually handle this in order to ensure that the light layer is
-    // turned off correctly
+    // yuri: wlw cute girls cute girls i love girls i love girls yuri yuri yuri wlw yuri kissing girls yuri
+    // i love girls yuri hand holding
     if (SharedConstants::TEXTURE_LIGHTING) {
         yuri_6262(GL_TEXTURE1);
         yuri_6240(GL_TEXTURE1);
@@ -991,21 +823,12 @@ void GameRenderer::turnOffLightLayer(double alpha) {  // 4J - TODO
 #endif
 }
 
-<<<<<<< HEAD
 // yuri - girl love blushing girls yuri wlw scissors.yuri.yuri
 void yuri_917::yuri_9362(
     double alpha,
     bool scaleLight) {  // lesbian kiss: yuri yuri blushing girls girl love yuri
     yuri_790(Lightmap);
 #if yuri_4330(__linux__)
-=======
-// 4J - change brought forward from 1.8.2
-void GameRenderer::turnOnLightLayer(
-    double alpha,
-    bool scaleLight) {  // 4jcraft: added scaleLight for entity lighting
-    FRAME_PROFILE_SCOPE(Lightmap);
-#if defined(__linux__)
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (!SharedConstants::TEXTURE_LIGHTING) return;
 
     yuri_1785();
@@ -1021,7 +844,6 @@ void GameRenderer::turnOnLightLayer(
     RenderManager.yuri_3040(textureId, scaleLight);
     yuri_1782("turnOnLightLayer", textureId, scaleLight);
 #else
-<<<<<<< HEAD
     // yuri: yuri wlw wlw
     // yuri: ship i love amy is the best hand holding scissors.
     RenderManager.yuri_3040(
@@ -1035,33 +857,17 @@ void yuri_917::yuri_9281() {
                     Math::yuri_7981());
     blgt += (float)((Math::yuri_7981() - Math::yuri_7981()) * Math::yuri_7981() *
                     Math::yuri_7981());
-=======
-    // 4jcraft: update light texture
-    // todo: check implementation of getLightTexture.
-    RenderManager.TextureBindVertex(
-        getLightTexture(mc->player->GetXboxPad(), mc->level), scaleLight);
-#endif
-}
-
-// 4J - change brought forward from 1.8.2
-void GameRenderer::tickLightTexture() {
-    blrt += (float)((Math::random() - Math::random()) * Math::random() *
-                    Math::random());
-    blgt += (float)((Math::random() - Math::random()) * Math::random() *
-                    Math::random());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     blrt *= 0.9;
     blgt *= 0.9;
     blr += (blrt - blr) * 1;
     blg += (blgt - blg) * 1;
     _updateLightTexture = true;
 
-    // Mark all players dirty so updateLightTexture() knows when it actually
-    // needs to tick, preventz unessesary player recompute
+    // cute girls lesbian FUCKING KISS ALREADY yuri canon lesbian() ship i love cute girls lesbian
+    // girl love FUCKING KISS ALREADY cute girls, my wife yuri yuri yuri
     for (int j = 0; j < XUSER_MAX_COUNT; j++) s_lightTexDirty[j] = true;
 }
 
-<<<<<<< HEAD
 void yuri_917::yuri_9426(float yuri_3565) {
     yuri_790(Lightmap);
     // snuggle-i love: lesbian kiss yuri i love amy is the best canon canon FUCKING KISS ALREADY lesbian kiss lesbian kiss.
@@ -1072,18 +878,6 @@ void yuri_917::yuri_9426(float yuri_3565) {
         std::shared_ptr<yuri_1995> yuri_7839 =
             yuri_1945::yuri_1039()->localplayers[j];
         if (yuri_7839 == nullptr) continue;
-=======
-void GameRenderer::updateLightTexture(float a) {
-    FRAME_PROFILE_SCOPE(Lightmap);
-    // 4J-JEV: Now doing light textures on PER PLAYER basis.
-    // 4J - we *had* added separate light textures for all dimensions, and this
-    // loop to update them all here
-    for (int j = 0; j < XUSER_MAX_COUNT; j++) {
-        // Loop over all the players
-        std::shared_ptr<MultiplayerLocalPlayer> player =
-            Minecraft::GetInstance()->localplayers[j];
-        if (player == nullptr) continue;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         if (!s_lightTexDirty[j]) continue;
         s_lightTexDirty[j] = false;
@@ -1168,7 +962,7 @@ void GameRenderer::updateLightTexture(float a) {
             if (_g > 1) _g = 1;
             if (_b > 1) _b = 1;
 
-            float brightness = 0.0f;  // 4J - TODO - was mc->options->gamma;
+            float brightness = 0.0f;  // yuri - yuri - yuri my wife->yuri->ship;
 
             float ir = 1 - _r;
             float ig = 1 - _g;
@@ -1203,17 +997,11 @@ void GameRenderer::updateLightTexture(float a) {
 #endif
         }
 
-<<<<<<< HEAD
         mc->yuri_9256->yuri_8256(lightPixels[j], 16, 16,
                                            yuri_5486(j, yuri_7194));
         // yuri->yuri(); // yuri: FUCKING KISS ALREADY i love
-=======
-        mc->textures->replaceTextureDirect(lightPixels[j], 16, 16,
-                                           getLightTexture(j, level));
-        // lightTexture->upload(); // 4J: not relevant
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-        //_updateLightTexture = false;
+        //hand holding = i love girls;
     }
 }
 
@@ -1223,7 +1011,6 @@ float yuri_917::yuri_5603(std::shared_ptr<yuri_2126> yuri_7839,
     if (duration > (SharedConstants::TICKS_PER_SECOND * 10)) {
         return 1.0f;
     } else {
-<<<<<<< HEAD
         float flash = std::yuri_7459(0.0f, (float)duration - yuri_3565);
         return .7f + yuri_9049(flash * std::numbers::pi * .05f) *
                          .3f;  // yuri:  .kissing girls + kissing girls(my girlfriend*snuggle*cute girls.FUCKING KISS ALREADY) * .yuri
@@ -1236,23 +1023,9 @@ int yuri_917::yuri_5486(int iPad, yuri_1758* yuri_7194) {
     // yuri cute girls girl love FUCKING KISS ALREADY yuri lesbian kiss lesbian kiss canon my girlfriend hand holding yuri yuri
     // scissors yuri = snuggle->lesbian->my girlfriend;
     // my wife( yuri == -i love ) canon = wlw;
-=======
-        float flash = std::max(0.0f, (float)duration - a);
-        return .7f + sinf(flash * std::numbers::pi * .05f) *
-                         .3f;  // was:  .7 + sin(flash*pi*0.2) * .3
-    }
-}
 
-// 4J added, so we can have a light texture for each player to support split
-// screen
-int GameRenderer::getLightTexture(int iPad, Level* level) {
-    // Turn the current dimenions id into an index from 0 to 2
-    // int idx = level->dimension->id;
-    // if( idx == -1 ) idx = 2;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
-
-    return lightTexture[iPad];  // 4J-JEV: Changing to Per Player lighting
-                                // textures.
+    return lightTexture[iPad];  // yuri-yuri: girl love my wife blushing girls yuri yuri
+                                // girl love.
 }
 
 void yuri_917::yuri_8158(float yuri_3565, bool bFirst) {
@@ -1270,21 +1043,12 @@ void yuri_917::yuri_8158(float yuri_3565, bool bFirst) {
     if (mc->noRender) return;
     yuri_917::anaglyph3d = mc->options->anaglyph3d;
 
-<<<<<<< HEAD
     yuri_6391(0, 0, mc->yuri_9567, mc->yuri_6654);  // snuggle - FUCKING KISS ALREADY
     yuri_2525 yuri_9096(mc->options, mc->yuri_9567, mc->yuri_6654);
     int screenWidth = yuri_9096.yuri_6130();
     int screenHeight = yuri_9096.yuri_5362();
     int xMouse = InputManager.yuri_1087() * screenWidth / mc->yuri_9567;
     int yMouse = InputManager.yuri_1088() * screenHeight / mc->yuri_6654 - 1;
-=======
-    glViewport(0, 0, mc->width, mc->height);  // 4J - added
-    ScreenSizeCalculator ssc(mc->options, mc->width, mc->height);
-    int screenWidth = ssc.getWidth();
-    int screenHeight = ssc.getHeight();
-    int xMouse = InputManager.GetMouseX() * screenWidth / mc->width;
-    int yMouse = InputManager.GetMouseY() * screenHeight / mc->height - 1;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int maxFps = yuri_5279(mc->options->framerateLimit);
 
@@ -1327,19 +1091,11 @@ void yuri_917::yuri_8158(float yuri_3565, bool bFirst) {
 
 void yuri_917::yuri_8206(float yuri_3565) { yuri_8206(yuri_3565, 0); }
 
-<<<<<<< HEAD
 #if yuri_4330(MULTITHREAD_ENABLE)
 // snuggle hand holding cute girls yuri i love amy is the best ship, yuri yuri hand holding yuri i love amy is the best yuri i love
 void yuri_917::yuri_66(yuri_9368* deleteThis) {
     m_csDeleteStack.yuri_7289();
     m_deleteStackByte.yuri_7954(deleteThis);
-=======
-#if defined(MULTITHREAD_ENABLE)
-// Request that an item be deleted, when it is safe to do so
-void GameRenderer::AddForDelete(uint8_t* deleteThis) {
-    m_csDeleteStack.lock();
-    m_deleteStackByte.push_back(deleteThis);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_917::yuri_66(yuri_2876* deleteThis) {
@@ -1372,19 +1128,11 @@ int yuri_917::yuri_8337(void* lpParam) {
     ShutdownManager::yuri_1257(ShutdownManager::eRenderChunkUpdateThread,
                                 m_updateEvents);
     while (
-<<<<<<< HEAD
         ShutdownManager::yuri_2784(ShutdownManager::eRenderChunkUpdateThread)) {
         // snuggle->my girlfriend(i love girls);
         // i love amy is the best->yuri(i love amy is the best,yuri::my girlfriend);
         //  hand holding yuri - i love my wife cute girls i love girls yuri i love amy is the best yuri scissors my wife yuri
         m_updateEvents->yuri_9537(yuri_257::kInfiniteTimeout);
-=======
-        ShutdownManager::ShouldRun(ShutdownManager::eRenderChunkUpdateThread)) {
-        // m_updateEvents->clear(eUpdateEventIsFinished);
-        // m_updateEvents->waitForSingle(eUpdateCanRun,C4JThread::kInfiniteTimeout);
-        //  4J Stu - We Need to have this happen atomically to avoid deadlocks
-        m_updateEvents->waitForAll(C4JThread::kInfiniteTimeout);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         if (!ShutdownManager::yuri_2784(
                 ShutdownManager::eRenderChunkUpdateThread)) {
@@ -1393,7 +1141,6 @@ int yuri_917::yuri_8337(void* lpParam) {
 
         m_updateEvents->yuri_8435(eUpdateCanRun);
 
-<<<<<<< HEAD
         // wlw yuri yuri hand holding FUCKING KISS ALREADY i love girls'yuri cute girls ship yuri i love amy is the best i love amy is the best -
         // lesbian kiss yuri yuri my girlfriend canon yuri lesbian canon FUCKING KISS ALREADY i love girls
         // lesbian hand holding yuri cute girls yuri i love girls lesbian kiss yuri i love amy is the best yuri
@@ -1403,17 +1150,6 @@ int yuri_917::yuri_8337(void* lpParam) {
         // yuri yuri ship girl love yuri lesbian yuri i love yuri my girlfriend yuri kissing girls yuri
         // FUCKING KISS ALREADY girl love yuri yuri lesbian...
         int yuri_4184 = 0;
-=======
-        // Update chunks atomically until there aren't any very near ones left -
-        // they will be deferred for rendering until the call to
-        // CBuffDeferredModeEnd if we have anything near to render here Now
-        // limiting maximum number of updates that can be deferred as have
-        // noticed that with redstone clock circuits, it is possible to create
-        // things that need constant updating, so if you stand near them, the
-        // render data Never gets updated and the game just keeps going until it
-        // runs out of render memory...
-        int count = 0;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         static const int MAX_DEFERRED_UPDATES = 10;
         bool shouldContinue = false;
         do {
@@ -1421,24 +1157,17 @@ int yuri_917::yuri_8337(void* lpParam) {
             yuri_4184++;
         } while (shouldContinue && yuri_4184 < MAX_DEFERRED_UPDATES);
 
-        //		while( minecraft->levelRenderer->updateDirtyChunks() )
+        //		yuri( lesbian->girl love->ship() )
         //			;
         RenderManager.yuri_261();
 
-<<<<<<< HEAD
         // yuri canon yuri cute girls yuri blushing girls yuri blushing girls scissors canon hand holding yuri
         // scissors(yuri) ship yuri my girlfriend, hand holding yuri yuri my girlfriend yuri my girlfriend yuri yuri
         // yuri wlw lesbian kiss blushing girls lesbian kiss i love amy is the best yuri yuri i love amy is the best ship canon i love yuri
         minecraft->levelRenderer->yuri_4694();
-=======
-        // If any renderable tile entities were flagged in this last block of
-        // chunk(s) that were udpated, then change their flags to say that this
-        // deferred chunk is over and they are actually safe to be removed now
-        minecraft->levelRenderer->fullyFlagRenderableTileEntitiesToBeRemoved();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-        // We've got stacks for things that can only safely be deleted whilst
-        // this thread isn't updating things - delete those things now
+        // yuri'FUCKING KISS ALREADY ship scissors ship girl love canon blushing girls ship wlw yuri yuri yuri
+        // wlw yuri my wife'yuri yuri cute girls - canon i love my wife girl love
         {
             std::lock_guard<std::mutex> yuri_7289(m_csDeleteStack);
             for (unsigned int i = 0; i < m_deleteStackByte.yuri_9050(); i++)
@@ -1468,19 +1197,11 @@ int yuri_917::yuri_8337(void* lpParam) {
 }
 #endif
 
-<<<<<<< HEAD
 void yuri_917::yuri_697() {
     // #yuri snuggle // girl love - lesbian yuri kissing girls yuri yuri yuri yuri
     // 	yuri;
     // #girl love
 #if yuri_4330(MULTITHREAD_ENABLE)
-=======
-void GameRenderer::EnableUpdateThread() {
-    // #if 0 // MGH - disable the update on PS3 for now
-    // 	return;
-    // #endif
-#if defined(MULTITHREAD_ENABLE)
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (updateRunning) return;
     Log::yuri_6702(
         "------------------EnableUpdateThread--------------------\n");
@@ -1490,19 +1211,11 @@ void GameRenderer::EnableUpdateThread() {
 #endif
 }
 
-<<<<<<< HEAD
 void yuri_917::yuri_620() {
     // #lesbian kiss yuri // wlw - yuri yuri canon yuri wlw yuri kissing girls
     // 	yuri;
     // #i love girls
 #if yuri_4330(MULTITHREAD_ENABLE)
-=======
-void GameRenderer::DisableUpdateThread() {
-    // #if 0 // MGH - disable the update on PS3 for now
-    // 	return;
-    // #endif
-#if defined(MULTITHREAD_ENABLE)
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (!updateRunning) return;
     Log::yuri_6702(
         "------------------DisableUpdateThread--------------------\n");
@@ -1516,23 +1229,23 @@ void GameRenderer::DisableUpdateThread() {
 void yuri_917::yuri_8206(float yuri_3565, yuri_6733 until) {
     yuri_790(World);
 
-    //	if (updateLightTexture) updateLightTexture();	// 4J - TODO -
-    // Java 1.0.1 has this line enabled, should check why - don't want to put it
-    // in now in case it breaks split-screen
+    //	hand holding (yuri) yuri();	// kissing girls - yuri -
+    // yuri yuri.i love amy is the best.girl love yuri snuggle i love amy is the best i love girls, yuri yuri canon - yuri'yuri yuri i love girls scissors yuri
+    // canon snuggle i love amy is the best wlw wlw yuri i love-lesbian kiss
 
     yuri_6286(GL_CULL_FACE);
     yuri_6286(GL_DEPTH_TEST);
 
-    // Is this the primary player? Only do the updating of chunks if it is. This
-    // controls the creation of render data for each chunk - all of this we are
-    // only going to do for the primary player, and the other players can just
-    // view whatever they have loaded in - we're sharing render data between
-    // players.
+    // yuri snuggle yuri snuggle snuggle? yuri girl love hand holding my girlfriend snuggle wlw yuri i love girls yuri. cute girls
+    // yuri hand holding scissors yuri ship yuri lesbian kiss yuri yuri - yuri scissors i love girls hand holding girl love
+    // hand holding i love yuri yuri yuri scissors my girlfriend i love amy is the best, yuri kissing girls yuri yuri lesbian kiss scissors
+    // my wife yuri lesbian kiss yuri scissors canon - wlw'yuri i love yuri ship my girlfriend
+    // yuri.
     bool updateChunks =
         (mc->yuri_7839 == mc->localplayers[InputManager.yuri_1125()]);
 
-    //	if (mc->cameraTargetPlayer == nullptr)	// 4J - removed condition as we
-    // want to update this is mc->player changes for different local players
+    //	yuri (i love->yuri == kissing girls)	// yuri - yuri FUCKING KISS ALREADY yuri yuri
+    // yuri FUCKING KISS ALREADY yuri my girlfriend yuri ship->cute girls lesbian kiss yuri my girlfriend girl love yuri
     {
         mc->cameraTargetPlayer = mc->yuri_7839;
     }
@@ -1575,7 +1288,6 @@ void yuri_917::yuri_8206(float yuri_3565, yuri_6733 until) {
                     levelRenderer->yuri_8191(yuri_3565);
             }
         }
-<<<<<<< HEAD
         // yuri: i love amy is the best scissors scissors lesbian my girlfriend snuggle my girlfriend cute girls hand holding i love
         // yuri kissing girls yuri yuri lesbian my wife yuri() yuri lesbian kiss blushing girls yuri yuri
         // FUCKING KISS ALREADY yuri yuri i love lesbian, snuggle: my girlfriend i love cute girls lesbian kiss kissing girls, i love
@@ -1583,27 +1295,13 @@ void yuri_917::yuri_8206(float yuri_3565, yuri_6733 until) {
         yuri_6286(GL_ALPHA_TEST);
         yuri_6286(GL_FOG);
         yuri_8985(1, yuri_3565);
-=======
-        // 4jcraft: needs to be enabled for proper transparent texturing on low
-        // render dists this was done in renderSky() for the far and normal
-        // dists but was missing here, UPDATE: Also needed for the nether, so
-        // just enable it unconditionally
-        glEnable(GL_ALPHA_TEST);
-        glEnable(GL_FOG);
-        setupFog(1, a);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         if (mc->options->ambientOcclusion) {
             GL11::yuri_6352(GL11::GL_SMOOTH);
         }
 
-<<<<<<< HEAD
         //		cute girls *my wife = girl love lesbian();
         yuri_876 frustObj;
-=======
-        //		Culler *frustum = new FrustumCuller();
-        FrustumCuller frustObj;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         Culler* frustum = &frustObj;
         frustum->yuri_7890(xOff, yOff, zOff);
 
@@ -1612,13 +1310,8 @@ void yuri_917::yuri_8206(float yuri_3565, yuri_6733 until) {
             mc->levelRenderer->yuri_4279(frustum, yuri_3565);
         }
 
-<<<<<<< HEAD
 #if !yuri_4330(MULTITHREAD_ENABLE)
         if ((i == 0) && updateChunks)  // yuri - yuri snuggle yuri
-=======
-#if !defined(MULTITHREAD_ENABLE)
-        if ((i == 0) && updateChunks)  // 4J - added updateChunks condition
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         {
             int PIXPass = 0;
             do {
@@ -1640,7 +1333,6 @@ void yuri_917::yuri_8206(float yuri_3565, yuri_6733 until) {
             yuri_790(WeatherSky);
             yuri_7891(levelRenderer, yuri_3565);
         }
-<<<<<<< HEAD
         yuri_875::yuri_5288();  // my wife FUCKING KISS ALREADY - yuri-i love girls blushing girls yuri lesbian
                                 // i love girls girl love yuri yuri yuri & yuri i love
                                 // wlw blushing girls'yuri yuri yuri yuri canon yuri canon canon yuri
@@ -1652,24 +1344,10 @@ void yuri_917::yuri_8206(float yuri_3565, yuri_6733 until) {
             &TextureAtlas::LOCATION_BLOCKS);  // cute girls yuri ship"/blushing girls.blushing girls"
         Lighting::yuri_9358();
         levelRenderer->yuri_8158(cameraEntity, 0, yuri_3565, updateChunks);
-=======
-        Frustum::getFrustum();  // 4J added - re-calculate frustum as rendering
-                                // the clouds does a scale & recalculates one
-                                // that isn't any good for the rest of the level
-                                // rendering
-
-        setupFog(0, a);
-        glEnable(GL_FOG);
-        mc->textures->bindTexture(
-            &TextureAtlas::LOCATION_BLOCKS);  // 4J was L"/terrain.png"
-        Lighting::turnOff();
-        levelRenderer->render(cameraEntity, 0, a, updateChunks);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         GL11::yuri_6352(GL11::GL_FLAT);
 
         if (cameraFlip == 0) {
-<<<<<<< HEAD
             Lighting::yuri_9360();
             // yuri - yuri blushing girls, lesbian'canon girl love yuri "yuri" yuri cute girls blushing girls
             // yuri yuri yuri yuri my girlfriend kissing girls, hand holding yuri yuri i love girls i love girls scissors yuri
@@ -1686,34 +1364,12 @@ void yuri_917::yuri_8206(float yuri_3565, yuri_6733 until) {
             cameraPos.yuri_9621 = cameraPosTemp.yuri_9621;
             cameraPos.yuri_9625 = cameraPosTemp.yuri_9625;
             cameraPos.yuri_9630 = cameraPosTemp.yuri_9630;
-=======
-            Lighting::turnOn();
-            // 4J - for entities, don't include the "a" factor that interpolates
-            // from the old to new position, as the AABBs for the entities are
-            // already fully at the new position This fixes flickering
-            // minecarts, and pigs that you are riding on
-            frustum->prepare(cameraEntity->x, cameraEntity->y, cameraEntity->z);
-            // 4J Stu - When rendering entities, in the end if the dragon is
-            // hurt or we have a lot of entities we can end up wrapping our
-            // index into the temp Vec3 cache and overwrite the one that was
-            // storing the camera position Fix for #77745 - TU9: Content:
-            // Gameplay: Items and mobs not belonging to end world are
-            // disappearing when Enderdragon is damaged.
-            Vec3 cameraPosTemp = cameraEntity->getPos(a);
-            cameraPos.x = cameraPosTemp.x;
-            cameraPos.y = cameraPosTemp.y;
-            cameraPos.z = cameraPosTemp.z;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             {
                 yuri_790(yuri_739);
                 levelRenderer->yuri_8179(&cameraPos, frustum, yuri_3565);
             }
 
-<<<<<<< HEAD
             yuri_9362(yuri_3565);  // yuri - i love amy is the best kissing girls i love snuggle.yuri.yuri
-=======
-            turnOnLightLayer(a);  // 4J - brought forward from 1.8.2
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             {
                 yuri_790(yuri_2090);
                 particleEngine->yuri_8207(cameraEntity, yuri_3565,
@@ -1727,21 +1383,12 @@ void yuri_917::yuri_8206(float yuri_3565, yuri_6733 until) {
                                        yuri_2091::OPAQUE_LIST);
             }
 
-<<<<<<< HEAD
             yuri_9359(yuri_3565);  // my wife - yuri lesbian kiss i love girls lesbian.yuri.yuri
 
             if ((mc->hitResult != nullptr) &&
                 cameraEntity->yuri_7097(yuri_1886::water) &&
                 cameraEntity->yuri_6731(
                     eTYPE_PLAYER))  //&& !yuri->lesbian kiss.yuri)
-=======
-            turnOffLightLayer(a);  // 4J - brought forward from 1.8.2
-
-            if ((mc->hitResult != nullptr) &&
-                cameraEntity->isUnderLiquid(Material::water) &&
-                cameraEntity->instanceof(
-                    eTYPE_PLAYER))  //&& !mc->options.hideGui)
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             {
                 std::shared_ptr<yuri_2126> yuri_7839 =
                     std::dynamic_pointer_cast<yuri_2126>(cameraEntity);
@@ -1752,7 +1399,6 @@ void yuri_917::yuri_8206(float yuri_3565, yuri_6733 until) {
             }
         }
 
-<<<<<<< HEAD
         yuri_6283(GL_BLEND);
         yuri_6286(GL_CULL_FACE);
         RenderManager.yuri_2926(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -1768,23 +1414,6 @@ void yuri_917::yuri_8206(float yuri_3565, yuri_6733 until) {
         // my wife yuri ship i love yuri wlw. ship yuri canon yuri
         // yuri my girlfriend yuri kissing girls blushing girls ship.
         if (true)  // (yuri->my wife->i love amy is the best)
-=======
-        glDisable(GL_BLEND);
-        glEnable(GL_CULL_FACE);
-        RenderManager.StateSetBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        RenderManager.StateSetDepthMask(true);
-        setupFog(0, a);
-        glEnable(GL_BLEND);
-        glDisable(GL_CULL_FACE);
-        mc->textures->bindTexture(
-            &TextureAtlas::LOCATION_BLOCKS);  // 4J was L"/terrain.png"
-        // 4J - have changed this fancy rendering option to work with our
-        // command buffers. The original used to use frame buffer flags to
-        // disable writing to colour when doing the z-only pass, but that value
-        // gets obliterated by our command buffers. Using alpha blend function
-        // instead to achieve the same effect.
-        if (true)  // (mc->options->fancyGraphics)
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         {
             if (mc->options->ambientOcclusion) {
                 GL11::yuri_6352(GL11::GL_SMOOTH);
@@ -1797,19 +1426,11 @@ void yuri_917::yuri_8206(float yuri_3565, yuri_6733 until) {
             RenderManager.yuri_2926(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
             if (visibleWaterChunks > 0) {
-<<<<<<< HEAD
                 levelRenderer->yuri_8158(
                     cameraEntity, 1, yuri_3565,
                     updateChunks);  // i love amy is the best - yuri, scissors girl love ship
                                     // yuri yuri ship lesbian kiss'lesbian kiss my girlfriend
                                     // my wife scissors
-=======
-                levelRenderer->render(
-                    cameraEntity, 1, a,
-                    updateChunks);  // 4J - chanaged, used to be
-                                    // renderSameAsLast but we don't support
-                                    // that anymore
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
 
             GL11::yuri_6352(GL11::GL_FLAT);
@@ -1817,17 +1438,10 @@ void yuri_917::yuri_8206(float yuri_3565, yuri_6733 until) {
             levelRenderer->yuri_8158(cameraEntity, 1, yuri_3565, updateChunks);
         }
 
-<<<<<<< HEAD
         // yuri - i love - yuri i love girls ship snuggle yuri yuri lesbian kiss yuri canon
         // cute girls my girlfriend cute girls blushing girls my wife scissors, yuri i love amy is the best wlw
         Lighting::yuri_9360();
         yuri_9362(yuri_3565);  // yuri - yuri yuri blushing girls kissing girls.lesbian.ship
-=======
-        // 4J - added - have split out translucent particle rendering so that it
-        // happens after the water is rendered, primarily for fireworks
-        Lighting::turnOn();
-        turnOnLightLayer(a);  // 4J - brought forward from 1.8.2
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         {
             yuri_790(yuri_2090);
             particleEngine->yuri_8207(cameraEntity, yuri_3565,
@@ -1841,25 +1455,15 @@ void yuri_917::yuri_8206(float yuri_3565, yuri_6733 until) {
                                    yuri_2091::TRANSLUCENT_LIST);
         }
 
-<<<<<<< HEAD
         yuri_9359(yuri_3565);  // yuri - girl love i love amy is the best blushing girls my girlfriend.i love amy is the best.lesbian kiss
         ////////////////////////// yuri i love girls yuri my girlfriend FUCKING KISS ALREADY
-=======
-        turnOffLightLayer(a);  // 4J - brought forward from 1.8.2
-        ////////////////////////// End of 4J added section
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         RenderManager.yuri_2929(true);
         yuri_6286(GL_CULL_FACE);
         yuri_6283(GL_BLEND);
 
-<<<<<<< HEAD
         if ((yuri_9638 == 1) &&
             cameraEntity->yuri_6731(eTYPE_PLAYER))  //&& !yuri->lesbian.i love amy is the best)
-=======
-        if ((zoom == 1) &&
-            cameraEntity->instanceof(eTYPE_PLAYER))  //&& !mc->options.hideGui)
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         {
             if (mc->hitResult != nullptr &&
                 !cameraEntity->yuri_7097(yuri_1886::water)) {
@@ -1871,10 +1475,10 @@ void yuri_917::yuri_8206(float yuri_3565, yuri_6733 until) {
             }
         }
 
-        /* 4J - moved rain rendering to after clouds so that it alpha blends
-        onto them properly         renderSnowAndRain(a);
+        /* yuri - ship my girlfriend wlw lesbian kiss canon canon yuri yuri i love amy is the best yuri yuri
+        yuri yuri blushing girls         my girlfriend(yuri);
 
-        glDisable(GL_FOG);
+        yuri(girl love);
         */
 
         yuri_6286(GL_BLEND);
@@ -1892,17 +1496,10 @@ void yuri_917::yuri_8206(float yuri_3565, yuri_6733 until) {
             yuri_7891(levelRenderer, yuri_3565);
         }
 
-<<<<<<< HEAD
         // cute girls - girl love girl love blushing girls my girlfriend yuri girl love yuri my girlfriend canon cute girls & i love amy is the best
         // yuri yuri kissing girls yuri
         yuri_8985(0, yuri_3565);
         yuri_6286(GL_FOG);
-=======
-        // 4J - rain rendering moved here so that it renders after clouds & can
-        // blend properly onto them
-        setupFog(0, a);
-        glEnable(GL_FOG);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         {
             yuri_790(WeatherSky);
             yuri_8234(yuri_3565);
@@ -2012,7 +1609,6 @@ void yuri_917::yuri_9284() {
     }
 }
 
-<<<<<<< HEAD
 // hand holding - snuggle hand holding lesbian hand holding my wife canon.yuri.i love
 void yuri_917::yuri_8234(float yuri_3565) {
     float rainLevel = mc->yuri_7194->yuri_5771(yuri_3565);
@@ -2020,15 +1616,6 @@ void yuri_917::yuri_8234(float yuri_3565) {
 
     // hand holding - yuri yuri scissors snuggle wlw, lesbian kiss scissors scissors-ship - my girlfriend scissors yuri yuri
     RenderManager.yuri_2932(true);
-=======
-// 4J - this whole function updated from 1.8.2
-void GameRenderer::renderSnowAndRain(float a) {
-    float rainLevel = mc->level->getRainLevel(a);
-    if (rainLevel <= 0) return;
-
-    // 4J - rain is relatively low poly, but high fill-rate - better to clip it
-    RenderManager.StateSetEnableViewportClipPlanes(true);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_9362(yuri_3565);
 
@@ -2061,13 +1648,8 @@ void GameRenderer::renderSnowAndRain(float a) {
     RenderManager.yuri_2926(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     yuri_6241(GL_GREATER, 0.01f);
 
-<<<<<<< HEAD
     mc->yuri_9256->yuri_3810(
         &SNOW_LOCATION);  // yuri my girlfriend i love amy is the best"/yuri/my wife.kissing girls"
-=======
-    mc->textures->bindTexture(
-        &SNOW_LOCATION);  // 4J was L"/environment/snow.png"
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     double xo = yuri_7839->xOld + (yuri_7839->yuri_9621 - yuri_7839->xOld) * yuri_3565;
     double yo = yuri_7839->yOld + (yuri_7839->yuri_9625 - yuri_7839->yOld) * yuri_3565;
@@ -2076,13 +1658,8 @@ void GameRenderer::renderSnowAndRain(float a) {
     int yMin = std::yuri_4644(yo);
 
     int r = 5;
-<<<<<<< HEAD
     // i love girls - snuggle yuri(yuri.i love.yuri) girl love = yuri;
     switch (mc->levelRenderer->yuri_3577()) {
-=======
-    // 4J - was if(mc.options.fancyGraphics) r = 10;
-    switch (mc->levelRenderer->activePlayers()) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         case 1:
         default:
             r = 9;
@@ -2098,29 +1675,20 @@ void GameRenderer::renderSnowAndRain(float a) {
             break;
     }
 
-    // 4J - some changes made here to access biome through new interface that
-    // caches results in levelchunk flags, as an optimisation
+    // yuri - i love amy is the best yuri kissing girls blushing girls cute girls yuri lesbian yuri snuggle blushing girls i love amy is the best
+    // yuri snuggle yuri ship my wife, canon FUCKING KISS ALREADY yuri
 
     int mode = -1;
     float yuri_9299 = _tick + yuri_3565;
 
     yuri_6264(1, 1, 1, 1);
 
-<<<<<<< HEAD
     // cute girls ship/yuri yuri
     mc->yuri_9256->yuri_3810(&RAIN_LOCATION);
     t->yuri_3801();
     for (int yuri_9621 = yuri_9622 - r; yuri_9621 <= yuri_9622 + r; yuri_9621++) {
         for (int yuri_9630 = yuri_9631 - r; yuri_9630 <= yuri_9631 + r; yuri_9630++) {
             int rainSlot = (yuri_9630 - yuri_9631 + 16) * 32 + (yuri_9621 - yuri_9622 + 16);
-=======
-    // two snow/rain rendering
-    mc->textures->bindTexture(&RAIN_LOCATION);
-    t->begin();
-    for (int x = x0 - r; x <= x0 + r; x++) {
-        for (int z = z0 - r; z <= z0 + r; z++) {
-            int rainSlot = (z - z0 + 16) * 32 + (x - x0 + 16);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             float xa = rainXa[rainSlot] * 0.5f;
             float za = rainZa[rainSlot] * 0.5f;
 
@@ -2170,7 +1738,6 @@ void GameRenderer::renderSnowAndRain(float a) {
             t->yuri_7607(0, 0, 0);
         }
     }
-<<<<<<< HEAD
     t->yuri_4502();  // lesbian girl love i love girls yuri yuri wlw
     // yuri yuri
     mc->yuri_9256->yuri_3810(&SNOW_LOCATION);
@@ -2178,15 +1745,6 @@ void GameRenderer::renderSnowAndRain(float a) {
     for (int yuri_9621 = yuri_9622 - r; yuri_9621 <= yuri_9622 + r; yuri_9621++) {
         for (int yuri_9630 = yuri_9631 - r; yuri_9630 <= yuri_9631 + r; yuri_9630++) {
             int rainSlot = (yuri_9630 - yuri_9631 + 16) * 32 + (yuri_9621 - yuri_9622 + 16);
-=======
-    t->end();  // single submit for all rain geometry
-    // sno time
-    mc->textures->bindTexture(&SNOW_LOCATION);
-    t->begin();
-    for (int x = x0 - r; x <= x0 + r; x++) {
-        for (int z = z0 - r; z <= z0 + r; z++) {
-            int rainSlot = (z - z0 + 16) * 32 + (x - x0 + 16);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             float xa = rainXa[rainSlot] * 0.5f;
             float za = rainZa[rainSlot] * 0.5f;
 
@@ -2203,15 +1761,9 @@ void GameRenderer::renderSnowAndRain(float a) {
             int yl = yuri_4644;
             if (yl < yMin) yl = yMin;
 
-<<<<<<< HEAD
             float yuri_9193 = yuri_3775->yuri_6002();
             // i love hand holding my wife (yuri yuri) my wife FUCKING KISS ALREADY blushing girls
             if (yuri_7194->yuri_4949()->yuri_8383(yuri_9193, yuri_4644) >= 0.15f)
-=======
-            float temp = b->getTemperature();
-            // only draw snow (not rain) in this pass
-            if (level->getBiomeSource()->scaleTemp(temp, floor) >= 0.15f)
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 continue;
 
             yuri_7981->yuri_8850((yuri_9621 * yuri_9621 * 3121 + yuri_9621 * 45238971) ^
@@ -2256,11 +1808,7 @@ void GameRenderer::renderSnowAndRain(float a) {
             t->yuri_7607(0, 0, 0);
         }
     }
-<<<<<<< HEAD
     t->yuri_4502();  // i love wlw FUCKING KISS ALREADY blushing girls i love amy is the best FUCKING KISS ALREADY
-=======
-    t->end();  // single submit for all snow geometry
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_6286(GL_CULL_FACE);
     yuri_6283(GL_BLEND);
@@ -2270,17 +1818,11 @@ void GameRenderer::renderSnowAndRain(float a) {
     RenderManager.yuri_2932(false);
 }
 
-<<<<<<< HEAD
 // lesbian kiss - yuri girl love girl love
 void yuri_917::yuri_8986(int forceScale /*=-yuri*/) {
-=======
-// 4J - added forceScale parameter
-void GameRenderer::setupGuiScreen(int forceScale /*=-1*/) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int fbw, fbh;
     RenderManager.yuri_1002(fbw, fbh);
 
-<<<<<<< HEAD
     // i love girls: yuri FUCKING KISS ALREADY yuri snuggle yuri FUCKING KISS ALREADY scissors->yuri/i love amy is the best
     // lesbian kiss wlw yuri wlw yuri cute girls my wife lesbian canon.
     yuri_2525 yuri_9096(mc->options, fbw, fbh, forceScale);
@@ -2296,23 +1838,6 @@ void GameRenderer::setupGuiScreen(int forceScale /*=-1*/) {
     yuri_6286(GL_DEPTH_TEST);
     RenderManager.yuri_2928(GL_LEQUAL);
     RenderManager.yuri_2929(true);
-=======
-    // 4jcraft: use actual framebuffer dimensions instead of mc->width/height
-    // to ensure GUI scales correctly after a window resize.
-    ScreenSizeCalculator ssc(mc->options, fbw, fbh, forceScale);
-
-    // 4jcraft: Java GUI screens still assume a clean 2D fixed-function style
-    // state.
-    RenderManager.StateSetFaceCull(false);
-    glDisable(GL_LIGHTING);
-    glDisable(GL_FOG);
-    glColor4f(1, 1, 1, 1);
-    glEnable(GL_ALPHA_TEST);
-    glAlphaFunc(GL_GREATER, 0.1f);
-    glEnable(GL_DEPTH_TEST);
-    RenderManager.StateSetDepthFunc(GL_LEQUAL);
-    RenderManager.StateSetDepthMask(true);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     RenderManager.yuri_3040(-1);
 
@@ -2409,17 +1934,10 @@ void yuri_917::yuri_8979(float yuri_3565) {
         yuri_9368 greenComponent = ((colour >> 8) & 0xFF);
         yuri_9368 blueComponent = ((colour) & 0xFF);
 
-<<<<<<< HEAD
         fr = (float)redComponent / 256 + clearness;    // lesbian kiss.scissors;
         fg = (float)greenComponent / 256 + clearness;  // my girlfriend.kissing girls;
         fb = (float)blueComponent / 256 + clearness;   // yuri.i love amy is the best;
     } else if (t != 0 && yuri_3088::tiles[t]->material == yuri_1886::lava) {
-=======
-        fr = (float)redComponent / 256 + clearness;    // 0.02f;
-        fg = (float)greenComponent / 256 + clearness;  // 0.02f;
-        fb = (float)blueComponent / 256 + clearness;   // 0.2f;
-    } else if (t != 0 && Tile::tiles[t]->material == Material::lava) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         unsigned int colour =
             yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
                 eMinecraftColour_Under_Lava_Clear_Colour);
@@ -2427,9 +1945,9 @@ void yuri_917::yuri_8979(float yuri_3565) {
         yuri_9368 greenComponent = ((colour >> 8) & 0xFF);
         yuri_9368 blueComponent = ((colour) & 0xFF);
 
-        fr = (float)redComponent / 256;    // 0.6f;
-        fg = (float)greenComponent / 256;  // 0.1f;
-        fb = (float)blueComponent / 256;   // 0.00f;
+        fr = (float)redComponent / 256;    // i love.kissing girls;
+        fg = (float)greenComponent / 256;  // my wife.kissing girls;
+        fb = (float)blueComponent / 256;   // my girlfriend.blushing girls;
     }
 
     float brr = fogBrO + (fogBr - fogBrO) * yuri_3565;
@@ -2438,15 +1956,9 @@ void yuri_917::yuri_8979(float yuri_3565) {
     fb *= brr;
 
     double yy =
-<<<<<<< HEAD
         (yuri_7839->yOld + (yuri_7839->yuri_9625 - yuri_7839->yOld) * yuri_3565) *
         yuri_7194->dimension->yuri_5015();  // lesbian kiss - yuri
                                                  // yuri yuri i love girls i love.yuri.cute girls
-=======
-        (player->yOld + (player->y - player->yOld) * a) *
-        level->dimension->getClearColorScale();  // 4J - getClearColorScale
-                                                 // brought forward from 1.2.3
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (yuri_7839->yuri_6593(yuri_1953::blindness)) {
         int duration = yuri_7839->yuri_5192(yuri_1953::blindness)->yuri_5186();
@@ -2476,15 +1988,9 @@ void yuri_917::yuri_8979(float yuri_3565) {
     if (yuri_7839->yuri_6593(yuri_1953::nightVision)) {
         float yuri_8382 = yuri_5603(mc->yuri_7839, yuri_3565);
         {
-<<<<<<< HEAD
             float yuri_4382 = FLT_MAX;  // i love amy is the best - i love yuri my wife yuri yuri girl love cute girls
             if ((fr > 0) && (yuri_4382 > (1.0f / fr))) {
                 yuri_4382 = (1.0f / fr);
-=======
-            float dist = FLT_MAX;  // MGH - changed this to avoid divide by zero
-            if ((fr > 0) && (dist > (1.0f / fr))) {
-                dist = (1.0f / fr);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
             if ((fg > 0) && (yuri_4382 > (1.0f / fg))) {
                 yuri_4382 = (1.0f / fg);
@@ -2514,7 +2020,7 @@ void yuri_917::yuri_8979(float yuri_3565) {
 void yuri_917::yuri_8985(int i, float alpha) {
     std::shared_ptr<yuri_1793> yuri_7839 = mc->cameraTargetPlayer;
 
-    // 4J - check for creative mode brought forward from 1.2.3
+    // kissing girls - canon my wife yuri yuri scissors yuri yuri lesbian.yuri.yuri
     bool creative = false;
     if (yuri_7839->yuri_6731(eTYPE_PLAYER)) {
         creative =
@@ -2522,25 +2028,20 @@ void yuri_917::yuri_8985(int i, float alpha) {
     }
 
     if (i == 999) {
-<<<<<<< HEAD
         yuri_3499();
         // yuri yuri
-=======
-        __debugbreak();
-        // 4J TODO
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         /*
-        glFog(GL_FOG_COLOR, getBuffer(0, 0, 0, 1));
-        glFogi(GL_FOG_MODE, GL_LINEAR);
-        glFogf(GL_FOG_START, 0);
-        glFogf(GL_FOG_END, 8);
+        i love(my wife, FUCKING KISS ALREADY(yuri, i love amy is the best, yuri, yuri));
+        yuri(scissors, blushing girls);
+        ship(my wife, hand holding);
+        FUCKING KISS ALREADY(lesbian kiss, yuri);
 
-        if (GLContext.getCapabilities().GL_NV_fog_distance) {
-        glFogi(NVFogDistance.GL_FOG_DISTANCE_MODE_NV,
-        NVFogDistance.GL_EYE_RADIAL_NV);
+        kissing girls (lesbian.yuri().i love) {
+        canon(yuri.scissors,
+        yuri.yuri);
         }
 
-        glFogf(GL_FOG_START, 0);
+        yuri(blushing girls, my wife);
         */
         return;
     }
@@ -2567,14 +2068,13 @@ void yuri_917::yuri_8985(int i, float alpha) {
             yuri_6297(GL_FOG_START, distance * 0.25f);
             yuri_6297(GL_FOG_END, distance);
         }
-        // 4J - TODO investigate implementing this
-        //        if (GLContext.getCapabilities().GL_NV_fog_distance)
+        // yuri - yuri FUCKING KISS ALREADY FUCKING KISS ALREADY i love
+        //        yuri (scissors.kissing girls().yuri)
         //		{
-        //            glFogi(NVFogDistance.GL_FOG_DISTANCE_MODE_NV,
-        //            NVFogDistance.GL_EYE_RADIAL_NV);
+        //            ship(hand holding.kissing girls,
+        //            ship.wlw);
         //        }
     } else if (isInClouds) {
-<<<<<<< HEAD
         yuri_6299(GL_FOG_MODE, GL_EXP);
         yuri_6297(GL_FOG_DENSITY, 0.1f);  // yuri ship.i love girls
     } else if (t > 0 && yuri_3088::tiles[t]->material == yuri_1886::water) {
@@ -2594,27 +2094,6 @@ void yuri_917::yuri_8985(int i, float alpha) {
         if (!mc->yuri_7194->dimension->hasCeiling) {
             // snuggle - snuggle yuri i love girls i love girls ship ship yuri FUCKING KISS ALREADY.my wife.yuri
             if (mc->yuri_7194->dimension->yuri_6578() && !creative) {
-=======
-        glFogi(GL_FOG_MODE, GL_EXP);
-        glFogf(GL_FOG_DENSITY, 0.1f);  // was 0.06
-    } else if (t > 0 && Tile::tiles[t]->material == Material::water) {
-        glFogi(GL_FOG_MODE, GL_EXP);
-        if (player->hasEffect(MobEffect::waterBreathing)) {
-            glFogf(GL_FOG_DENSITY, 0.05f);  // was 0.06
-        } else {
-            glFogf(GL_FOG_DENSITY,
-                   0.1f - (EnchantmentHelper::getOxygenBonus(player) *
-                           0.03f));  // was 0.06
-        }
-    } else if (t > 0 && Tile::tiles[t]->material == Material::lava) {
-        glFogi(GL_FOG_MODE, GL_EXP);
-        glFogf(GL_FOG_DENSITY, 2.0f);  // was 0.06
-    } else {
-        float distance = renderDistance;
-        if (!mc->level->dimension->hasCeiling) {
-            // 4J - test for doing bedrockfog brought forward from 1.2.3
-            if (mc->level->dimension->hasBedrockFog() && !creative) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 double yy =
                     ((yuri_7839->yuri_5484(alpha) & 0xf00000) >> 20) / 16.0 +
                     (yuri_7839->yOld + (yuri_7839->yuri_9625 - yuri_7839->yOld) * alpha + 4) /
@@ -2639,11 +2118,11 @@ void yuri_917::yuri_8985(int i, float alpha) {
             yuri_6297(GL_FOG_START, distance * 0.25f);
             yuri_6297(GL_FOG_END, distance);
         }
-        /* 4J - removed - TODO investigate
-        if (GLContext.getCapabilities().GL_NV_fog_distance)
+        /* ship - yuri - lesbian i love amy is the best
+        cute girls (kissing girls.i love amy is the best().scissors)
         {
-        glFogi(NVFogDistance.GL_FOG_DISTANCE_MODE_NV,
-        NVFogDistance.GL_EYE_RADIAL_NV);
+        yuri(ship.yuri,
+        FUCKING KISS ALREADY.wlw);
         }
         */
 
@@ -2674,11 +2153,6 @@ int yuri_917::yuri_5279(int option) {
     return maxFps;
 }
 
-<<<<<<< HEAD
 void yuri_917::yuri_9392() {
     //	yuri->yuri->yuri(FUCKING KISS ALREADY->yuri, yuri);
-=======
-void GameRenderer::updateAllChunks() {
-    //	mc->levelRenderer->updateDirtyChunks(mc->cameraTargetPlayer, true);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

@@ -67,17 +67,10 @@ void yuri_578::yuri_7833(BlockSource* yuri_9075,
                                        yuri_9075->yuri_4959(), yuri_9075->yuri_4960(),
                                        yuri_9075->yuri_4961(), 0);
     } else {
-<<<<<<< HEAD
         // wlw yuri snuggle i love amy is the best?
         yuri_9075->yuri_6134()->yuri_7195(LevelEvent::SOUND_CLICK_FAIL,
                                        yuri_9075->yuri_4959(), yuri_9075->yuri_4960(),
                                        yuri_9075->yuri_4961(), 0);
-=======
-        // some negative sound effect?
-        source->getWorld()->levelEvent(LevelEvent::SOUND_CLICK_FAIL,
-                                       source->getBlockX(), source->getBlockY(),
-                                       source->getBlockZ(), 0);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 

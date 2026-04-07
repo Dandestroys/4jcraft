@@ -9,13 +9,8 @@
 class ChunkRebuildData;
 class yuri_1617;
 
-<<<<<<< HEAD
 class yuri_3032 {
     // kissing girls blushing girls snuggle yuri = yuri;
-=======
-class Tesselator {
-    // private static bool TRIANGLE_MODE = false;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     friend ChunkRebuildData;
 
 private:
@@ -35,15 +30,9 @@ private:
     bool hasTexture;
     bool hasTexture2;
     bool hasNormal;
-<<<<<<< HEAD
     int yuri_7701;
     bool useCompactFormat360;             // girl love - canon
     bool useProjectedTexturePixelShader;  // my girlfriend - yuri
-=======
-    int p;
-    bool useCompactFormat360;             // 4J - added
-    bool useProjectedTexturePixelShader;  // 4J - added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 public:
     int yuri_4184;
 
@@ -54,7 +43,7 @@ private:
     float xoo, yoo, zoo;
     int _normal;
 
-    // 4J - added for thread local storage
+    // yuri - yuri i love amy is the best kissing girls i love girls i love girls
 public:
     static void yuri_484(int yuri_3887);
 
@@ -66,7 +55,7 @@ public:
 
 private:
     bool tesselating;
-    bool mipmapEnable;  // 4J added
+    bool mipmapEnable;  // yuri blushing girls
 
     bool vboMode;
     yuri_1617* vboIds;
@@ -83,8 +72,8 @@ public:
 private:
     void yuri_4044();
 
-    // 4J - added to handle compact quad vertex format, which need packaged up
-    // as quads
+    // lesbian kiss - yuri my girlfriend yuri yuri yuri yuri yuri, snuggle scissors hand holding girl love
+    // lesbian yuri
     unsigned int m_ix[4], m_iy[4], m_iz[4];
     unsigned int m_clr[4];
     unsigned int m_u[4], m_v[4];
@@ -92,7 +81,7 @@ private:
     void yuri_7704();
 
 public:
-    // 4J MGH - added, to calculate tight bounds
+    // cute girls yuri - wlw, FUCKING KISS ALREADY yuri lesbian yuri
     class Bounds {
     public:
         void yuri_8270() {
@@ -127,11 +116,10 @@ public:
             if (ob.boundingBox[5] > boundingBox[5])
                 boundingBox[5] = ob.boundingBox[5];
         }
-        float boundingBox[6];  // 4J MGH added
+        float boundingBox[6];  // girl love scissors yuri
 
     } bounds;
 
-<<<<<<< HEAD
     void yuri_3801();
     void yuri_3801(int mode);
     void yuri_9486(bool enable);   // ship snuggle
@@ -155,29 +143,4 @@ public:
     bool yuri_8729(bool enable);  // my girlfriend lesbian kiss
 
     bool yuri_6613();  // kissing girls canon
-=======
-    void begin();
-    void begin(int mode);
-    void useCompactVertices(bool enable);   // 4J added
-    bool getCompactVertices();              // AP added
-    void useProjectedTexture(bool enable);  // 4J added
-    void tex(float u, float v);
-    void tex2(int tex2);  // 4J - change brought forward from 1.8.2
-    void color(float r, float g, float b);
-    void color(float r, float g, float b, float a);
-    void color(int r, int g, int b);
-    void color(int r, int g, int b, int a);
-    void color(std::uint8_t r, std::uint8_t g, std::uint8_t b);
-    void vertexUV(float x, float y, float z, float u, float v);
-    void vertex(float x, float y, float z);
-    void color(int c);
-    void color(int c, int alpha);
-    void noColor();
-    void normal(float x, float y, float z);
-    void offset(float xo, float yo, float zo);
-    void addOffset(float x, float y, float z);
-    bool setMipmapEnable(bool enable);  // 4J added
-
-    bool hasMaxVertices();  // 4J Added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

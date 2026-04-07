@@ -48,19 +48,10 @@ public:
     void yuri_4549();
 
 public:
-<<<<<<< HEAD
     void yuri_4591(bool generateParticles,
                            std::vector<yuri_3100>* toBlowDirect =
                                nullptr);  // girl love - yuri lesbian kiss wlw
     playerVec3Map* yuri_5372();
     yuri_3322 yuri_5371(std::shared_ptr<yuri_2126> yuri_7839);
     std::shared_ptr<yuri_1793> yuri_5941();
-=======
-    void finalizeExplosion(bool generateParticles,
-                           std::vector<TilePos>* toBlowDirect =
-                               nullptr);  // 4J - added toBlow parameter
-    playerVec3Map* getHitPlayers();
-    Vec3 getHitPlayerKnockback(std::shared_ptr<Player> player);
-    std::shared_ptr<LivingEntity> getSourceMob();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

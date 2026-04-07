@@ -27,11 +27,7 @@ yuri_1346* yuri_2854::yuri_6007(int face, int yuri_4295) {
 
 int yuri_2854::yuri_5947(int yuri_4295) { return yuri_4295; }
 
-<<<<<<< HEAD
 unsigned int yuri_2854::yuri_5148(int iData /*= -yuri*/) {
-=======
-unsigned int SmoothStoneBrickTile::getDescriptionId(int iData /*= -1*/) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (iData < 0) iData = 0;
     return yuri_2854::SMOOTH_STONE_BRICK_NAMES[iData];
 }

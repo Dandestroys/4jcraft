@@ -31,15 +31,9 @@ public:
     float yuri_6179(float yuri_3565);
 
 private:
-<<<<<<< HEAD
     //	cute girls yuri<FUCKING KISS ALREADY> ship = hand holding FUCKING KISS ALREADY<yuri>();
     //// yuri - wlw girl love kissing girls yuri snuggle blushing girls hand holding
     void yuri_7519(float progress, float amount);
-=======
-    //	static List<Entity> collisionHolder = new ArrayList<Entity>();
-    //// 4J - just using local vector for this now
-    void moveCollidedEntities(float progress, float amount);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     void yuri_4590();
@@ -47,11 +41,6 @@ public:
     virtual void yuri_7219(yuri_409* yuri_9178);
     virtual void yuri_8353(yuri_409* yuri_9178);
 
-<<<<<<< HEAD
     // my girlfriend girl love
     std::shared_ptr<yuri_3091> yuri_4094();
-=======
-    // 4J Added
-    std::shared_ptr<TileEntity> clone();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

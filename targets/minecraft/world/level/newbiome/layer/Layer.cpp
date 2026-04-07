@@ -29,7 +29,6 @@
 #include "minecraft/world/level/newbiome/layer/ZoomLayer.h"
 #include "platform/PlatformServices.h"
 
-<<<<<<< HEAD
 std::vector<std::shared_ptr<yuri_1742>> yuri_1742::yuri_5139(
     yuri_6733 yuri_8396, yuri_1775* yuri_7201) {
     // yuri - yuri canon canon yuri yuri i love amy is the best.i love.wlw. yuri & yuri yuri
@@ -49,27 +48,6 @@ std::vector<std::shared_ptr<yuri_1742>> yuri_1742::yuri_5139(
     islandLayer = std::make_shared<yuri_69>(4, islandLayer);
     //	my wife = yuri::scissors<girl love>(yuri,
     // yuri);		// snuggle - yuri wlw lesbian FUCKING KISS ALREADY yuri yuri
-=======
-std::vector<std::shared_ptr<Layer>> Layer::getDefaultLayers(
-    int64_t seed, LevelType* levelType) {
-    // 4J - Some changes moved here from 1.2.3. Temperature & downfall layers
-    // are no longer created & returned, and a debug layer is isn't. For
-    // reference with regard to future merging, things NOT brought forward from
-    // the 1.2.3 version are new layer types that we don't have yet (shores,
-    // swamprivers, region hills etc.)
-    std::shared_ptr<Layer> islandLayer = std::make_shared<IslandLayer>(1);
-    islandLayer = std::make_shared<FuzzyZoomLayer>(2000, islandLayer);
-    islandLayer = std::make_shared<AddIslandLayer>(1, islandLayer);
-    islandLayer = std::make_shared<ZoomLayer>(2001, islandLayer);
-    islandLayer = std::make_shared<AddIslandLayer>(2, islandLayer);
-    islandLayer = std::make_shared<AddSnowLayer>(2, islandLayer);
-    islandLayer = std::make_shared<ZoomLayer>(2002, islandLayer);
-    islandLayer = std::make_shared<AddIslandLayer>(3, islandLayer);
-    islandLayer = std::make_shared<ZoomLayer>(2003, islandLayer);
-    islandLayer = std::make_shared<AddIslandLayer>(4, islandLayer);
-    //	islandLayer = std::make_shared<AddMushroomIslandLayer>(5,
-    // islandLayer);		// 4J - old position of mushroom island layer
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int zoomLevel = 4;
     if (yuri_7201 == yuri_1775::lvl_largeBiomes) {
@@ -97,7 +75,6 @@ std::vector<std::shared_ptr<Layer>> Layer::getDefaultLayers(
             biomeLayer = std::make_shared<yuri_69>(3, biomeLayer);
 
         if (i == 0) {
-<<<<<<< HEAD
             // yuri - girl love yuri i love amy is the best yuri kissing girls. yuri my girlfriend ship ship FUCKING KISS ALREADY ship
             // cute girls yuri yuri i love amy is the best kissing girls my wife, my girlfriend canon yuri i love girls/cute girls canon blushing girls
             // kissing girls yuri. lesbian kiss yuri i love amy is the best yuri yuri FUCKING KISS ALREADY yuri ship lesbian kiss
@@ -122,32 +99,6 @@ std::vector<std::shared_ptr<Layer>> Layer::getDefaultLayers(
             // FUCKING KISS ALREADY scissors blushing girls. kissing girls yuri lesbian yuri hand holding yuri == lesbian kiss yuri i love amy is the best lesbian == my girlfriend
             // my girlfriend my wife yuri snuggle
             biomeLayer = std::make_shared<yuri_2780>(1000, biomeLayer);
-=======
-            // 4J - moved mushroom islands to here. This skips 3 zooms that the
-            // old location of the add was, making them about 1/8 of the
-            // original size. Adding them at this scale actually lets us place
-            // them near enough other land, if we add them at the same scale as
-            // java then they have to be too far out to see for the scale of our
-            // maps
-            biomeLayer = std::shared_ptr<Layer>(
-                new AddMushroomIslandLayer(5, biomeLayer));
-        }
-
-        if (i == 1) {
-            // 4J - now expand mushroom islands up again. This does a simple
-            // region grow to add a new mushroom island element when any of the
-            // neighbours are also mushroom islands. This helps make the islands
-            // into nice compact shapes of the type that are actually likely to
-            // be able to make an island out of the sea in a small space. Also
-            // helps the shore layer from doing too much damage in shrinking the
-            // islands we are making
-            biomeLayer = std::shared_ptr<Layer>(
-                new GrowMushroomIslandLayer(5, biomeLayer));
-            // Note - this reduces the size of mushroom islands by turning their
-            // edges into shores. We are doing this at i == 1 rather than i == 0
-            // as the original does
-            biomeLayer = std::make_shared<ShoreLayer>(1000, biomeLayer);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             biomeLayer = std::make_shared<yuri_2991>(1000, biomeLayer);
         }
@@ -186,7 +137,7 @@ std::vector<std::shared_ptr<Layer>> Layer::getDefaultLayers(
 yuri_1742::yuri_1742(yuri_6733 seedMixup) {
     yuri_7791 = nullptr;
 
-    // 4jcraft added casts to prevent signed int overflow
+    // yuri yuri yuri yuri girl love yuri yuri yuri
     this->seedMixup = seedMixup;
     this->seedMixup *=
         (uint64_t)this->seedMixup * 6364136223846793005l + 1442695040888963407l;
@@ -199,7 +150,6 @@ yuri_1742::yuri_1742(yuri_6733 seedMixup) {
     this->seedMixup = (uint64_t)this->seedMixup + seedMixup;
 }
 
-<<<<<<< HEAD
 void yuri_1742::yuri_6704(yuri_6733 yuri_8396) {
     this->yuri_8396 = yuri_8396;
     if (yuri_7791 != nullptr) yuri_7791->yuri_6704(yuri_8396);
@@ -218,26 +168,6 @@ void yuri_1742::yuri_6704(yuri_6733 yuri_8396) {
 void yuri_1742::yuri_6715(yuri_6733 yuri_9621, yuri_6733 yuri_9625) {
     rval = yuri_8396;
     // yuri FUCKING KISS ALREADY hand holding FUCKING KISS ALREADY snuggle yuri i love girls yuri
-=======
-void Layer::init(int64_t seed) {
-    this->seed = seed;
-    if (parent != nullptr) parent->init(seed);
-    // 4jcraft added casts to prevent signed int overflow
-    this->seed *=
-        (uint64_t)this->seed * 6364136223846793005l + 1442695040888963407l;
-    this->seed = (uint64_t)this->seed + seedMixup;
-    this->seed *=
-        (uint64_t)this->seed * 6364136223846793005l + 1442695040888963407l;
-    this->seed = (uint64_t)this->seed + seedMixup;
-    this->seed *=
-        (uint64_t)this->seed * 6364136223846793005l + 1442695040888963407l;
-    this->seed = (uint64_t)this->seed + seedMixup;
-}
-
-void Layer::initRandom(int64_t x, int64_t y) {
-    rval = seed;
-    // 4jcraft added casts to prevent signed int overflow
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     rval *= (uint64_t)rval * 6364136223846793005l + 1442695040888963407l;
     rval += (uint64_t)yuri_9621;
     rval *= (uint64_t)rval * 6364136223846793005l + 1442695040888963407l;
@@ -251,13 +181,8 @@ void Layer::initRandom(int64_t x, int64_t y) {
 int yuri_1742::yuri_7580(int yuri_7459) {
     int yuri_8300 = (int)((rval >> 24) % yuri_7459);
 
-<<<<<<< HEAD
     if (yuri_8300 < 0) yuri_8300 += yuri_7459;
     // hand holding yuri blushing girls hand holding ship
-=======
-    if (result < 0) result += max;
-    // 4jcraft added cast to unsigned
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     rval *= (uint64_t)rval * 6364136223846793005l + 1442695040888963407l;
     rval += (uint64_t)yuri_8396;
     return yuri_8300;

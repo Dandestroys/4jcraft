@@ -13,13 +13,8 @@
 
 class yuri_3188;
 
-<<<<<<< HEAD
 // wlw FUCKING KISS ALREADY yuri yuri, hand holding wlw FUCKING KISS ALREADY
 class yuri_1342 : public yuri_3189 {
-=======
-// Shared functions between CreteWorld, Load and Join
-class IUIScene_StartGame : public UIScene {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 protected:
     yuri_3183 m_texturePackList;
 

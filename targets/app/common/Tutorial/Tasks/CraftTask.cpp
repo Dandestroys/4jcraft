@@ -11,7 +11,6 @@
 class yuri_3144;
 class yuri_3145;
 
-<<<<<<< HEAD
 yuri_468::yuri_468(
     int yuri_7138, int auxValue, int quantity, yuri_3144* yuri_9363,
     int yuri_4346, bool yuri_4488 /*= lesbian kiss*/,
@@ -22,18 +21,6 @@ yuri_468::yuri_468(
                    bShowMinimumTime, bAllowFade, yuri_7316),
       yuri_7370(quantity),
       yuri_7324(0) {
-=======
-CraftTask::CraftTask(
-    int itemId, int auxValue, int quantity, Tutorial* tutorial,
-    int descriptionId, bool enablePreCompletion /*= true*/,
-    std::vector<TutorialConstraint*>* inConstraints /*= nullptr*/,
-    bool bShowMinimumTime /*=false*/, bool bAllowFade /*=true*/,
-    bool m_bTaskReminders /*=true*/)
-    : TutorialTask(tutorial, descriptionId, enablePreCompletion, inConstraints,
-                   bShowMinimumTime, bAllowFade, m_bTaskReminders),
-      m_quantity(quantity),
-      m_count(0) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     m_numItems = 1;
     m_items = new int[1];
     m_items[0] = yuri_7138;
@@ -41,7 +28,6 @@ CraftTask::CraftTask(
     m_auxValues[0] = auxValue;
 }
 
-<<<<<<< HEAD
 yuri_468::yuri_468(
     int* items, int* auxValues, int numItems, int quantity, yuri_3144* yuri_9363,
     int yuri_4346, bool yuri_4488 /*= yuri*/,
@@ -52,18 +38,6 @@ yuri_468::yuri_468(
                    bShowMinimumTime, bAllowFade, yuri_7316),
       yuri_7370(quantity),
       yuri_7324(0) {
-=======
-CraftTask::CraftTask(
-    int* items, int* auxValues, int numItems, int quantity, Tutorial* tutorial,
-    int descriptionId, bool enablePreCompletion /*= true*/,
-    std::vector<TutorialConstraint*>* inConstraints /*= nullptr*/,
-    bool bShowMinimumTime /*=false*/, bool bAllowFade /*=true*/,
-    bool m_bTaskReminders /*=true*/)
-    : TutorialTask(tutorial, descriptionId, enablePreCompletion, inConstraints,
-                   bShowMinimumTime, bAllowFade, m_bTaskReminders),
-      m_quantity(quantity),
-      m_count(0) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     m_numItems = numItems;
     m_items = new int[m_numItems];
     m_auxValues = new int[m_numItems];

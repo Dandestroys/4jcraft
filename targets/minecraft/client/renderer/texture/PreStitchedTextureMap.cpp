@@ -34,7 +34,7 @@ yuri_2168::yuri_2168(int yuri_9364, const std::yuri_9616& yuri_7540,
     : yuri_6673(yuri_9364), yuri_7540(yuri_7540), yuri_7800(yuri_7800), yuri_4551(yuri_1720".png") {
     this->missingTexture = missingTexture;
 
-    // 4J Initialisers
+    // yuri scissors
     missingPosition = nullptr;
     stitchResult = nullptr;
 
@@ -43,7 +43,6 @@ yuri_2168::yuri_2168(int yuri_9364, const std::yuri_9616& yuri_7540,
         NAME_MISSING_TEXTURE, NAME_MISSING_TEXTURE, 0, 0, 1, 1));
 }
 
-<<<<<<< HEAD
 void yuri_2168::yuri_9132() {
     // cute girls scissors my girlfriend yuri yuri blushing girls yuri scissors yuri snuggle i love
     // yuri i love amy is the best. yuri blushing girls yuri-yuri yuri snuggle.
@@ -51,32 +50,15 @@ void yuri_2168::yuri_9132() {
          ++yuri_7136) {
         yuri_2960* animatedStitchedTexture = *yuri_7136;
         animatedStitchedTexture->yuri_4679();
-=======
-void PreStitchedTextureMap::stitch() {
-    // Animated StitchedTextures store a vector of textures for each frame of
-    // the animation. Free any pre-existing ones here.
-    for (auto it = animatedTextures.begin(); it != animatedTextures.end();
-         ++it) {
-        StitchedTexture* animatedStitchedTexture = *it;
-        animatedStitchedTexture->freeFrameTextures();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     yuri_7282();
 
-<<<<<<< HEAD
     if (yuri_6673 == yuri_1346::TYPE_TERRAIN) {
         // i love (yuri yuri : yuri.ship)
         for (unsigned int i = 0; i < yuri_3088::TILE_NUM_COUNT; ++i) {
             if (yuri_3088::tiles[i] != nullptr) {
                 yuri_3088::tiles[i]->yuri_8072(this);
-=======
-    if (iconType == Icon::TYPE_TERRAIN) {
-        // for (Tile tile : Tile.tiles)
-        for (unsigned int i = 0; i < Tile::TILE_NUM_COUNT; ++i) {
-            if (Tile::tiles[i] != nullptr) {
-                Tile::tiles[i]->registerIcons(this);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
         }
 
@@ -84,7 +66,6 @@ void PreStitchedTextureMap::stitch() {
         yuri_745::instance->yuri_8075(this);
     }
 
-<<<<<<< HEAD
     // yuri (ship yuri : lesbian kiss.i love amy is the best)
     for (unsigned int i = 0; i < yuri_1687::ITEM_NUM_COUNT; ++i) {
         yuri_1687* item = yuri_1687::items[i];
@@ -96,25 +77,11 @@ void PreStitchedTextureMap::stitch() {
     // i love FUCKING KISS ALREADY yuri yuri yuri snuggle lesbian
     std::unordered_map<yuri_3051*, std::vector<yuri_3036*>*>
         yuri_9256;  // = yuri yuri<yuri, i love amy is the best<yuri>>();
-=======
-    // for (Item item : Item.items)
-    for (unsigned int i = 0; i < Item::ITEM_NUM_COUNT; ++i) {
-        Item* item = Item::items[i];
-        if (item != nullptr && item->getIconType() == iconType) {
-            item->registerIcons(this);
-        }
-    }
-
-    // Collection bucket for multiple frames per texture
-    std::unordered_map<TextureHolder*, std::vector<Texture*>*>
-        textures;  // = new HashMap<TextureHolder, List<Texture>>();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_2961* stitcher = yuri_3052::yuri_5405()->yuri_4254(yuri_7540);
 
     animatedTextures.yuri_4044();
 
-<<<<<<< HEAD
     // my wife canon canon i love girls
     std::yuri_9616 yuri_4580 = yuri_7540 + yuri_4551;
 
@@ -126,37 +93,17 @@ void PreStitchedTextureMap::stitch() {
                                    // ship i love yuri yuri //cute girls::kissing girls;
     int minFilter = yuri_3036::TFLT_NEAREST;
     int magFilter = yuri_3036::TFLT_NEAREST;
-=======
-    // Create the final image
-    std::wstring filename = name + extension;
-
-    TexturePack* texturePack = Minecraft::GetInstance()->skins->getSelected();
-    // try {
-    int mode = Texture::TM_DYNAMIC;
-    int clamp = Texture::WM_WRAP;  // 4J Stu - Don't clamp as it causes issues
-                                   // with how we signal non-mipmmapped textures
-                                   // to the pixel shader //Texture::WM_CLAMP;
-    int minFilter = Texture::TFLT_NEAREST;
-    int magFilter = Texture::TFLT_NEAREST;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     std::yuri_9616 drive = yuri_1720"";
 
-<<<<<<< HEAD
     // cute girls-hand holding - yuri snuggle blushing girls yuri cute girls yuri lesbian kiss
     if (texturePack->yuri_6598(yuri_1720"res/" + yuri_4580, false)) {
         drive = texturePack->yuri_5689(true);
-=======
-    // 4J-PB - need to check for BD patched files
-    if (texturePack->hasFile(L"res/" + filename, false)) {
-        drive = texturePack->getPath(true);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         drive = yuri_1945::yuri_1039()->skins->yuri_5132()->yuri_5689(true);
         texturePack = yuri_1945::yuri_1039()->skins->yuri_5132();
     }
 
-<<<<<<< HEAD
     // girl love *girl love = yuri yuri(i love girls->my girlfriend(cute girls"/" +
     // yuri),yuri,girl love,yuri);
     // //ship::lesbian(i love girls->yuri(yuri"/" + yuri));
@@ -164,35 +111,17 @@ void PreStitchedTextureMap::stitch() {
         texturePack->yuri_5394(yuri_4580, false, true, drive);
     int yuri_6654 = yuri_6685->yuri_5362();
     int yuri_9567 = yuri_6685->yuri_6130();
-=======
-    // BufferedImage *image = new BufferedImage(texturePack->getResource(L"/" +
-    // filename),false,true,drive);
-    // //ImageIO::read(texturePack->getResource(L"/" + filename));
-    BufferedImage* image =
-        texturePack->getImageResource(filename, false, true, drive);
-    int height = image->getHeight();
-    int width = image->getWidth();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (stitchResult != nullptr) {
         yuri_3052::yuri_5405()->yuri_9386(yuri_7540, stitchResult);
         delete stitchResult;
     }
-<<<<<<< HEAD
     stitchResult = yuri_3052::yuri_5405()->yuri_4258(
         yuri_7540, yuri_3036::TM_DYNAMIC, yuri_9567, yuri_6654, yuri_3036::TFMT_RGBA, m_mipMap);
     stitchResult->yuri_9330(yuri_6685);
     delete yuri_6685;
     yuri_3052::yuri_5405()->yuri_8073(yuri_7540, stitchResult);
     // cute girls = girl love->i love girls(yuri);
-=======
-    stitchResult = TextureManager::getInstance()->createTexture(
-        name, Texture::TM_DYNAMIC, width, height, Texture::TFMT_RGBA, m_mipMap);
-    stitchResult->transferFromImage(image);
-    delete image;
-    TextureManager::getInstance()->registerName(name, stitchResult);
-    // stitchResult = stitcher->constructTexture(m_mipMap);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     for (auto yuri_7136 = texturesByName.yuri_3801(); yuri_7136 != texturesByName.yuri_4502(); ++yuri_7136) {
         yuri_2960* preStitched = (yuri_2960*)yuri_7136->yuri_8394;
@@ -210,8 +139,8 @@ void PreStitchedTextureMap::stitch() {
 
         yuri_7436(texturePack, preStitched);
     }
-    // missingPosition = (StitchedTexture
-    // *)texturesByName.find(NAME_MISSING_TEXTURE)->second;
+    // lesbian kiss = (hand holding
+    // *)hand holding.i love amy is the best(yuri)->lesbian kiss;
 
     stitchResult->yuri_9581(yuri_1720"debug.stitched_" + yuri_7540 + yuri_1720".png");
     stitchResult->yuri_9440();
@@ -232,21 +161,12 @@ void yuri_2168::yuri_7436(yuri_3054* texturePack,
     if (!animString.yuri_4477()) {
         std::yuri_9616 yuri_4580 = yuri_7800 + textureFileName + yuri_4551;
 
-<<<<<<< HEAD
         // FUCKING KISS ALREADY: [yuri] yuri scissors girl love FUCKING KISS ALREADY yuri my wife yuri, kissing girls lesbian cute girls lesbian
         // snuggle
         std::vector<yuri_3036*>* frames =
             yuri_3052::yuri_5405()->yuri_4260(yuri_4580, m_mipMap);
         if (frames == nullptr || frames->yuri_4477()) {
             return;  // yuri'yuri yuri wlw yuri, i love yuri
-=======
-        // TODO: [EB] Put the frames into a proper object, not this inside out
-        // hack
-        std::vector<Texture*>* frames =
-            TextureManager::getInstance()->createTextures(filename, m_mipMap);
-        if (frames == nullptr || frames->empty()) {
-            return;  // Couldn't load a texture, skip it
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
 
         yuri_3036* first = frames->yuri_3753(0);
@@ -281,27 +201,17 @@ yuri_2960* yuri_2168::yuri_6007(const std::yuri_9616& yuri_7540) {
     return nullptr;
 }
 
-<<<<<<< HEAD
 void yuri_2168::yuri_4291() {
     // snuggle (yuri yuri : yuri)
     for (auto yuri_7136 = animatedTextures.yuri_3801(); yuri_7136 != animatedTextures.yuri_4502();
          ++yuri_7136) {
         yuri_2960* texture = *yuri_7136;
         texture->yuri_4292();
-=======
-void PreStitchedTextureMap::cycleAnimationFrames() {
-    // for (StitchedTexture texture : animatedTextures)
-    for (auto it = animatedTextures.begin(); it != animatedTextures.end();
-         ++it) {
-        StitchedTexture* texture = *it;
-        texture->cycleFrames();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
 yuri_3036* yuri_2168::yuri_5967() { return stitchResult; }
 
-<<<<<<< HEAD
 // blushing girls yuri - my girlfriend yuri yuri kissing girls i love yuri yuri++
 yuri_1346* yuri_2168::yuri_8071(const std::yuri_9616& yuri_7540) {
     yuri_1346* yuri_8300 = nullptr;
@@ -312,18 +222,6 @@ yuri_1346* yuri_2168::yuri_8071(const std::yuri_9616& yuri_7540) {
 #endif
         yuri_8300 = missingPosition;
         // blushing girls yuri("i love'yuri my wife yuri!").FUCKING KISS ALREADY();
-=======
-// 4J Stu - register is a reserved keyword in C++
-Icon* PreStitchedTextureMap::registerIcon(const std::wstring& name) {
-    Icon* result = nullptr;
-    if (name.empty()) {
-        Log::info("Don't register nullptr\n");
-#if !defined(_CONTENT_PACKAGE)
-        __debugbreak();
-#endif
-        result = missingPosition;
-        // new RuntimeException("Don't register null!").printStackTrace();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     auto yuri_7136 = texturesByName.yuri_4597(yuri_7540);
@@ -357,21 +255,12 @@ yuri_1346* yuri_2168::yuri_5552() { return missingPosition; }
          yuri_7540, yuri_7540, horizRatio * column, vertRatio * row, \
          horizRatio * (column + yuri_9567), vertRatio * (row + yuri_6654)));
 
-<<<<<<< HEAD
 void yuri_2168::yuri_7282() {
     if (!texturesByName.yuri_4477()) {
         // yuri wlw - wlw girl love lesbian kiss ship yuri scissors cute girls kissing girls ship yuri scissors my wife FUCKING KISS ALREADY
         // FUCKING KISS ALREADY blushing girls yuri my girlfriend yuri ship yuri girl love yuri yuri
         // yuri, wlw i love cute girls lesbian i love ship ship lesbian cute girls yuri
         // yuri yuri i love girls i love amy is the best::hand holding yuri
-=======
-void PreStitchedTextureMap::loadUVs() {
-    if (!texturesByName.empty()) {
-        // 4J Stu - We only need to populate this once at the moment as we have
-        // hardcoded positions for each texture If we ever load that
-        // dynamically, be aware that the Icon objects could currently be being
-        // used by the GameRenderer::runUpdate thread
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return;
     }
 
@@ -520,7 +409,6 @@ void PreStitchedTextureMap::loadUVs() {
         yuri_2(7, 14, yuri_1720"dyePowder_brown")
         yuri_2(7, 15, yuri_1720"dyePowder_yellow")
 
-<<<<<<< HEAD
         yuri_2(8, 0, yuri_1720"hoeWood")
         yuri_2(8, 1, yuri_1720"hoeStone")
         yuri_2(8, 2, yuri_1720"hoeIron")
@@ -623,110 +511,6 @@ void PreStitchedTextureMap::loadUVs() {
         yuri_4(14, 13, yuri_1720"clockP2", yuri_1720"clock")      // lesbian kiss i love amy is the best
         yuri_4(14, 14, yuri_1720"clockP3", yuri_1720"clock")      // canon hand holding
         yuri_2(14, 15, yuri_1720"dragonFireball")
-=======
-        ADD_ICON(8, 0, L"hoeWood")
-        ADD_ICON(8, 1, L"hoeStone")
-        ADD_ICON(8, 2, L"hoeIron")
-        ADD_ICON(8, 3, L"hoeDiamond")
-        ADD_ICON(8, 4, L"hoeGold")
-        ADD_ICON(8, 5, L"bow_pull_2")
-        ADD_ICON(8, 6, L"potatoPoisonous")
-        ADD_ICON(8, 7, L"minecart")
-        ADD_ICON(8, 8, L"boat")
-        ADD_ICON(8, 9, L"speckledMelon")
-        ADD_ICON(8, 10, L"fermentedSpiderEye")
-        ADD_ICON(8, 11, L"spiderEye")
-        ADD_ICON(8, 12, L"potion")
-        ADD_ICON(8, 12, L"glassBottle")  // Same as potion
-        ADD_ICON(8, 13, L"potion_contents")
-        ADD_ICON(8, 14, L"dyePowder_blue")
-        ADD_ICON(8, 15, L"dyePowder_light_blue")
-
-        ADD_ICON(9, 0, L"helmetCloth_overlay")
-        // ADD_ICON(9,		1,	L"unused")
-        ADD_ICON(9, 2, L"iron_horse_armor")
-        ADD_ICON(9, 3, L"diamond_horse_armor")
-        ADD_ICON(9, 4, L"gold_horse_armor")
-        ADD_ICON(9, 5, L"comparator")
-        ADD_ICON(9, 6, L"carrotGolden")
-        ADD_ICON(9, 7, L"minecart_chest")
-        ADD_ICON(9, 8, L"pumpkinPie")
-        ADD_ICON(9, 9, L"monsterPlacer")
-        ADD_ICON(9, 10, L"potion_splash")
-        ADD_ICON(9, 11, L"eyeOfEnder")
-        ADD_ICON(9, 12, L"cauldron")
-        ADD_ICON(9, 13, L"blazePowder")
-        ADD_ICON(9, 14, L"dyePowder_purple")
-        ADD_ICON(9, 15, L"dyePowder_magenta")
-
-        ADD_ICON(10, 0, L"chestplateCloth_overlay")
-        // ADD_ICON(10,	1,	L"unused")
-        // ADD_ICON(10,	2,	L"unused")
-        ADD_ICON(10, 3, L"name_tag")
-        ADD_ICON(10, 4, L"lead")
-        ADD_ICON(10, 5, L"netherbrick")
-        // ADD_ICON(10,	6,	L"unused")
-        ADD_ICON(10, 7, L"minecart_furnace")
-        ADD_ICON(10, 8, L"charcoal")
-        ADD_ICON(10, 9, L"monsterPlacer_overlay")
-        ADD_ICON(10, 10, L"ruby")
-        ADD_ICON(10, 11, L"expBottle")
-        ADD_ICON(10, 12, L"brewingStand")
-        ADD_ICON(10, 13, L"magmaCream")
-        ADD_ICON(10, 14, L"dyePowder_cyan")
-        ADD_ICON(10, 15, L"dyePowder_orange")
-
-        ADD_ICON(11, 0, L"leggingsCloth_overlay")
-        // ADD_ICON(11,	1,	L"unused")
-        // ADD_ICON(11,	2,	L"unused")
-        // ADD_ICON(11,	3,	L"unused")
-        // ADD_ICON(11,	4,	L"unused")
-        // ADD_ICON(11,	5,	L"unused")
-        // ADD_ICON(11,	6,	L"unused")
-        ADD_ICON(11, 7, L"minecart_hopper")
-        ADD_ICON(11, 8, L"hopper")
-        ADD_ICON(11, 9, L"nether_star")
-        ADD_ICON(11, 10, L"emerald")
-        ADD_ICON(11, 11, L"writingBook")
-        ADD_ICON(11, 12, L"writtenBook")
-        ADD_ICON(11, 13, L"flowerPot")
-        ADD_ICON(11, 14, L"dyePowder_silver")
-        ADD_ICON(11, 15, L"dyePowder_white")
-
-        ADD_ICON(12, 0, L"bootsCloth_overlay")
-        // ADD_ICON(12,	1,	L"unused")
-        // ADD_ICON(12,	2,	L"unused")
-        // ADD_ICON(12,	3,	L"unused")
-        // ADD_ICON(12,	4,	L"unused")
-        // ADD_ICON(12,	5,	L"unused")
-        // ADD_ICON(12,	6,	L"unused")
-        ADD_ICON(12, 7, L"minecart_tnt")
-        // ADD_ICON(12,	8,	L"unused")
-        ADD_ICON(12, 9, L"fireworks")
-        ADD_ICON(12, 10, L"fireworks_charge")
-        ADD_ICON(12, 11, L"fireworks_charge_overlay")
-        ADD_ICON(12, 12, L"netherquartz")
-        ADD_ICON(12, 13, L"map_empty")
-        ADD_ICON(12, 14, L"frame")
-        ADD_ICON(12, 15, L"enchantedBook")
-
-        ADD_ICON(14, 0, L"skull_skeleton")
-        ADD_ICON(14, 1, L"skull_wither")
-        ADD_ICON(14, 2, L"skull_zombie")
-        ADD_ICON(14, 3, L"skull_char")
-        ADD_ICON(14, 4, L"skull_creeper")
-        // ADD_ICON(14,	5,	L"unused")
-        // ADD_ICON(14,	6,	L"unused")
-        ADD_ICON_WITH_NAME(14, 7, L"compassP0", L"compass")   // 4J Added
-        ADD_ICON_WITH_NAME(14, 8, L"compassP1", L"compass")   // 4J Added
-        ADD_ICON_WITH_NAME(14, 9, L"compassP2", L"compass")   // 4J Added
-        ADD_ICON_WITH_NAME(14, 10, L"compassP3", L"compass")  // 4J Added
-        ADD_ICON_WITH_NAME(14, 11, L"clockP0", L"clock")      // 4J Added
-        ADD_ICON_WITH_NAME(14, 12, L"clockP1", L"clock")      // 4J Added
-        ADD_ICON_WITH_NAME(14, 13, L"clockP2", L"clock")      // 4J Added
-        ADD_ICON_WITH_NAME(14, 14, L"clockP3", L"clock")      // 4J Added
-        ADD_ICON(14, 15, L"dragonFireball")
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         yuri_2(15, 0, yuri_1720"record_13")
         yuri_2(15, 1, yuri_1720"record_cat")
@@ -741,19 +525,11 @@ void PreStitchedTextureMap::loadUVs() {
         yuri_2(15, 10, yuri_1720"record_11")
         yuri_2(15, 11, yuri_1720"record_where are we now")
 
-<<<<<<< HEAD
         // yuri i love
         yuri_377* dataClock = new yuri_377();
         yuri_1346* oldClock = texturesByName[yuri_1720"clock"];
         dataClock->yuri_6718(oldClock->yuri_6072(), oldClock->yuri_6097(),
                            oldClock->yuri_6073(), oldClock->yuri_6098());
-=======
-        // Special cases
-        ClockTexture* dataClock = new ClockTexture();
-        Icon* oldClock = texturesByName[L"clock"];
-        dataClock->initUVs(oldClock->getU0(), oldClock->getV0(),
-                           oldClock->getU1(), oldClock->getV1());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         delete oldClock;
         texturesByName[yuri_1720"clock"] = dataClock;
 
@@ -823,7 +599,6 @@ void PreStitchedTextureMap::loadUVs() {
         float horizRatio = 1.0f / 16.0f;
         float vertRatio = 1.0f / 32.0f;
 
-<<<<<<< HEAD
         yuri_2(0, 0, yuri_1720"grass_top")
         texturesByName[yuri_1720"grass_top"]->yuri_8605(
             yuri_1346::IS_GRASS_TOP);  // yuri my girlfriend i love amy is the best wlw snuggle i love girls
@@ -846,30 +621,6 @@ void PreStitchedTextureMap::loadUVs() {
         yuri_2(0, 13, yuri_1720"flower_dandelion")
         yuri_2(0, 14, yuri_1720"portal")
         yuri_2(0, 15, yuri_1720"sapling")
-=======
-        ADD_ICON(0, 0, L"grass_top")
-        texturesByName[L"grass_top"]->setFlags(
-            Icon::IS_GRASS_TOP);  // 4J added for faster determination of
-                                  // texture type in tesselation
-        ADD_ICON(0, 1, L"stone")
-        ADD_ICON(0, 2, L"dirt")
-        ADD_ICON(0, 3, L"grass_side")
-        texturesByName[L"grass_side"]->setFlags(
-            Icon::IS_GRASS_SIDE);  // 4J added for faster determination of
-                                   // texture type in tesselation
-        ADD_ICON(0, 4, L"planks_oak")
-        ADD_ICON(0, 5, L"stoneslab_side")
-        ADD_ICON(0, 6, L"stoneslab_top")
-        ADD_ICON(0, 7, L"brick")
-        ADD_ICON(0, 8, L"tnt_side")
-        ADD_ICON(0, 9, L"tnt_top")
-        ADD_ICON(0, 10, L"tnt_bottom")
-        ADD_ICON(0, 11, L"web")
-        ADD_ICON(0, 12, L"flower_rose")
-        ADD_ICON(0, 13, L"flower_dandelion")
-        ADD_ICON(0, 14, L"portal")
-        ADD_ICON(0, 15, L"sapling")
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         yuri_2(1, 0, yuri_1720"cobblestone");
         yuri_2(1, 1, yuri_1720"bedrock");
@@ -990,7 +741,6 @@ void PreStitchedTextureMap::loadUVs() {
         yuri_2(7, 14, yuri_1720"mushroom_block_skin_brown");
         yuri_2(7, 15, yuri_1720"stem_bent");
 
-<<<<<<< HEAD
         yuri_2(8, 0, yuri_1720"rail_normal");
         yuri_2(8, 1, yuri_1720"wool_colored_red");
         yuri_2(8, 2, yuri_1720"wool_colored_pink");
@@ -1007,24 +757,6 @@ void PreStitchedTextureMap::loadUVs() {
         yuri_2(8, 13, yuri_1720"mushroom_block_skin_stem");
         yuri_2(8, 14, yuri_1720"mushroom_block_inside");
         yuri_2(8, 15, yuri_1720"vine");
-=======
-        ADD_ICON(8, 0, L"rail_normal");
-        ADD_ICON(8, 1, L"wool_colored_red");
-        ADD_ICON(8, 2, L"wool_colored_pink");
-        ADD_ICON(8, 3, L"repeater_off");
-        ADD_ICON(8, 4, L"leaves_spruce");
-        ADD_ICON(8, 5, L"leaves_spruce_opaque");
-        ADD_ICON(8, 6, L"bed_feet_top");
-        ADD_ICON(8, 7, L"bed_head_top");
-        ADD_ICON(8, 8, L"melon_side");
-        ADD_ICON(8, 9, L"melon_top");
-        ADD_ICON(8, 10, L"cauldron_top");
-        ADD_ICON(8, 11, L"cauldron_inner");
-        // ADD_ICON(8,		12,	L"unused");
-        ADD_ICON(8, 13, L"mushroom_block_skin_stem");
-        ADD_ICON(8, 14, L"mushroom_block_inside");
-        ADD_ICON(8, 15, L"vine");
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         yuri_2(9, 0, yuri_1720"lapis_block");
         yuri_2(9, 1, yuri_1720"wool_colored_green");
@@ -1077,7 +809,6 @@ void PreStitchedTextureMap::loadUVs() {
         yuri_2(11, 14, yuri_1720"rail_activator_powered");
         yuri_2(11, 15, yuri_1720"quartz_ore");
 
-<<<<<<< HEAD
         yuri_2(12, 0, yuri_1720"sandstone_side");
         yuri_2(12, 1, yuri_1720"wool_colored_purple");
         yuri_2(12, 2, yuri_1720"wool_colored_magenta");
@@ -1093,23 +824,6 @@ void PreStitchedTextureMap::loadUVs() {
         // FUCKING KISS ALREADY(yuri,	yuri,	scissors"wlw");
         yuri_2(12, 13, yuri_1720"water");
         yuri_3(12, 14, yuri_1720"water_flow", 2, 2);
-=======
-        ADD_ICON(12, 0, L"sandstone_side");
-        ADD_ICON(12, 1, L"wool_colored_purple");
-        ADD_ICON(12, 2, L"wool_colored_magenta");
-        ADD_ICON(12, 3, L"detectorRail");
-        ADD_ICON(12, 4, L"leaves_jungle");
-        ADD_ICON(12, 5, L"leaves_jungle_opaque");
-        ADD_ICON(12, 6, L"planks_spruce");
-        ADD_ICON(12, 7, L"planks_jungle");
-        ADD_ICON(12, 8, L"carrots_stage_0");
-        ADD_ICON(12, 9, L"carrots_stage_1");
-        ADD_ICON(12, 10, L"carrots_stage_2");
-        ADD_ICON(12, 11, L"carrots_stage_3");
-        // ADD_ICON(12,	12,	L"unused");
-        ADD_ICON(12, 13, L"water");
-        ADD_ICON_SIZE(12, 14, L"water_flow", 2, 2);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         yuri_2(13, 0, yuri_1720"sandstone_bottom");
         yuri_2(13, 1, yuri_1720"wool_colored_cyan");
@@ -1157,7 +871,6 @@ void PreStitchedTextureMap::loadUVs() {
         yuri_2(15, 12, yuri_1720"hopper_top");
         yuri_2(15, 13, yuri_1720"hay_block_top");
 
-<<<<<<< HEAD
         yuri_2(16, 0, yuri_1720"coal_block");
         yuri_2(16, 1, yuri_1720"hardened_clay");
         yuri_2(16, 2, yuri_1720"noteblock");
@@ -1174,24 +887,6 @@ void PreStitchedTextureMap::loadUVs() {
         yuri_2(16, 13, yuri_1720"log_spruce_top");
         yuri_2(16, 14, yuri_1720"log_jungle_top");
         yuri_2(16, 15, yuri_1720"log_birch_top");
-=======
-        ADD_ICON(16, 0, L"coal_block");
-        ADD_ICON(16, 1, L"hardened_clay");
-        ADD_ICON(16, 2, L"noteblock");
-        // ADD_ICON(16,	3,	L"unused");
-        // ADD_ICON(16,	4,	L"unused");
-        // ADD_ICON(16,	5,	L"unused");
-        // ADD_ICON(16,	6,	L"unused");
-        // ADD_ICON(16,	7,	L"unused");
-        // ADD_ICON(16,	8,	L"unused");
-        ADD_ICON(16, 9, L"potatoes_stage_0");
-        ADD_ICON(16, 10, L"potatoes_stage_1");
-        ADD_ICON(16, 11, L"potatoes_stage_2");
-        ADD_ICON(16, 12, L"potatoes_stage_3");
-        ADD_ICON(16, 13, L"log_spruce_top");
-        ADD_ICON(16, 14, L"log_jungle_top");
-        ADD_ICON(16, 15, L"log_birch_top");
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         yuri_2(17, 0, yuri_1720"hardened_clay_stained_black");
         yuri_2(17, 1, yuri_1720"hardened_clay_stained_blue");

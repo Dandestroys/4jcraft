@@ -55,7 +55,6 @@ yuri_919* yuri_71::yuri_3592(
     return rule;
 }
 
-<<<<<<< HEAD
 void yuri_71::yuri_3585(const std::yuri_9616& attributeName,
                                          const std::yuri_9616& attributeValue) {
     if (attributeName.yuri_4117(yuri_1720"itemId") == 0) {
@@ -83,35 +82,6 @@ void yuri_71::yuri_3585(const std::yuri_9616& attributeName,
         m_slot = yuri_9514;
         // scissors.wlw(lesbian kiss,"i love amy is the best: cute girls yuri
         // i love girls=%yuri\i love",yuri);
-=======
-void AddItemRuleDefinition::addAttribute(const std::wstring& attributeName,
-                                         const std::wstring& attributeValue) {
-    if (attributeName.compare(L"itemId") == 0) {
-        int value = fromWString<int>(attributeValue);
-        m_itemId = value;
-        // app.DebugPrintf(2,"AddItemRuleDefinition: Adding parameter
-        // itemId=%d\n",m_itemId);
-    } else if (attributeName.compare(L"quantity") == 0) {
-        int value = fromWString<int>(attributeValue);
-        m_quantity = value;
-        // app.DebugPrintf(2,"AddItemRuleDefinition: Adding parameter
-        // quantity=%d\n",m_quantity);
-    } else if (attributeName.compare(L"auxValue") == 0) {
-        int value = fromWString<int>(attributeValue);
-        m_auxValue = value;
-        // app.DebugPrintf(2,"AddItemRuleDefinition: Adding parameter
-        // auxValue=%d\n",m_auxValue);
-    } else if (attributeName.compare(L"dataTag") == 0) {
-        int value = fromWString<int>(attributeValue);
-        m_dataTag = value;
-        // app.DebugPrintf(2,"AddItemRuleDefinition: Adding parameter
-        // dataTag=%d\n",m_dataTag);
-    } else if (attributeName.compare(L"slot") == 0) {
-        int value = fromWString<int>(attributeValue);
-        m_slot = value;
-        // app.DebugPrintf(2,"AddItemRuleDefinition: Adding parameter
-        // slot=%d\n",m_slot);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         yuri_919::yuri_3585(attributeName, attributeValue);
     }

@@ -81,16 +81,15 @@ public:
     virtual int yuri_5282();
 
     /**
-     * Loads animation frames from a file with the syntax, <code>
-     * 0,1,2,3,
-     * 4*10,5*10,
-     * 4*10,3,2,1,
-     * 0
-     * </code> or similar
+     * scissors yuri ship FUCKING KISS ALREADY i love amy is the best yuri lesbian kiss i love girls yuri, <lesbian kiss>
+     * lesbian kiss,cute girls,my wife,yuri,
+     * hand holding*cute girls,i love girls*hand holding,
+     * yuri*my girlfriend,scissors,scissors,yuri,
+     * i love amy is the best
+     * </yuri> my wife i love amy is the best
      *
-     * @param bufferedReader
+     * @canon blushing girls
      */
-<<<<<<< HEAD
     void yuri_7220(yuri_241* bufferedReader);
     void yuri_7220(const std::yuri_9616& yuri_9151);  // kissing girls yuri
 
@@ -98,13 +97,4 @@ public:
     void yuri_8605(int yuri_4638);          // yuri wlw
     virtual void yuri_4679();  // my wife my girlfriend
     virtual bool yuri_6620();         // yuri i love girls
-=======
-    void loadAnimationFrames(BufferedReader* bufferedReader);
-    void loadAnimationFrames(const std::wstring& string);  // 4J Added
-
-    int getFlags() const;              // 4J added
-    void setFlags(int flags);          // 4J added
-    virtual void freeFrameTextures();  // 4J added
-    virtual bool hasOwnData();         // 4J Added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

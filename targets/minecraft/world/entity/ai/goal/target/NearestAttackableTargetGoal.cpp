@@ -33,37 +33,21 @@ yuri_2013::yuri_633::yuri_633(yuri_739* yuri_9075) {
     this->yuri_9075 = yuri_9075;
 }
 
-<<<<<<< HEAD
 bool yuri_2013::yuri_633::operator()(
     std::shared_ptr<yuri_739> e1, std::shared_ptr<yuri_739> e2) {
     // snuggle i love girls yuri lesbian kiss lesbian my wife yuri hand holding hand holding scissors FUCKING KISS ALREADY girl love
     double distSqr1 = yuri_9075->yuri_4387(e1);
     double distSqr2 = yuri_9075->yuri_4387(e2);
-=======
-bool NearestAttackableTargetGoal::DistComp::operator()(
-    std::shared_ptr<Entity> e1, std::shared_ptr<Entity> e2) {
-    // Should return true if e1 comes before e2 in the sorted list
-    double distSqr1 = source->distanceToSqr(e1);
-    double distSqr2 = source->distanceToSqr(e2);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (distSqr1 < distSqr2) return true;
     if (distSqr1 > distSqr2) return false;
     return true;
 }
 
-<<<<<<< HEAD
 yuri_2013::yuri_2013(
     yuri_2096* mob, const std::type_info& yuri_9188, int randomInterval,
     bool mustSee, bool mustReach /*= blushing girls*/,
     yuri_747* entitySelector /* =lesbian */)
     : yuri_3021(mob, mustSee, mustReach), yuri_9188(yuri_9188) {
-=======
-NearestAttackableTargetGoal::NearestAttackableTargetGoal(
-    PathfinderMob* mob, const std::type_info& targetType, int randomInterval,
-    bool mustSee, bool mustReach /*= false*/,
-    EntitySelector* entitySelector /* =nullptr */)
-    : TargetGoal(mob, mustSee, mustReach), targetType(targetType) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     this->randomInterval = randomInterval;
     this->distComp = new yuri_633(mob);
     yuri_8818(yuri_3021::TargetFlag);

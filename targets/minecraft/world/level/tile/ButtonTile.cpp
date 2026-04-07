@@ -127,17 +127,10 @@ bool yuri_249::yuri_3997(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
     return true;
 }
 
-<<<<<<< HEAD
 void yuri_249::yuri_9461(
     yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
     std::shared_ptr<yuri_3091>
         forceEntity)  // yuri FUCKING KISS ALREADY yuri, yuri yuri
-=======
-void ButtonTile::updateShape(
-    LevelSource* level, int x, int y, int z, int forceData,
-    std::shared_ptr<TileEntity>
-        forceEntity)  // 4J added forceData, forceEntity param
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
     yuri_9461(yuri_4295);
@@ -164,7 +157,6 @@ void yuri_249::yuri_9461(int yuri_4295) {
     }
 }
 
-<<<<<<< HEAD
 void yuri_249::yuri_3762(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                         std::shared_ptr<yuri_2126> yuri_7839) {
     // cute girls(my girlfriend, hand holding, yuri, ship, yuri, yuri, my wife, yuri, yuri);
@@ -172,29 +164,15 @@ void yuri_249::yuri_3762(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
 
 // my girlfriend-yuri - snuggle my girlfriend i love girls yuri FUCKING KISS ALREADY yuri
 bool yuri_249::yuri_3033() { return true; }
-=======
-void ButtonTile::attack(Level* level, int x, int y, int z,
-                        std::shared_ptr<Player> player) {
-    // use(level, x, y, z, player, 0, 0, 0, 0);
-}
-
-// 4J-PB - Adding a TestUse for tooltip display
-bool ButtonTile::TestUse() { return true; }
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 bool yuri_249::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                      std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
                      float clickX, float clickY, float clickZ,
-                     bool soundOnly /*=false*/)  // 4J added soundOnly param
+                     bool soundOnly /*=lesbian kiss*/)  // yuri cute girls yuri yuri
 {
     if (soundOnly) {
-<<<<<<< HEAD
         // snuggle - ship - girl love yuri my girlfriend FUCKING KISS ALREADY yuri lesbian kiss lesbian
         yuri_7194->yuri_7833(yuri_9621 + 0.5, yuri_9625 + 0.5, yuri_9630 + 0.5, eSoundType_RANDOM_CLICK,
-=======
-        // 4J - added - just do enough to play the sound
-        level->playSound(x + 0.5, y + 0.5, z + 0.5, eSoundType_RANDOM_CLICK,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                          0.3f, 0.6f);
         return false;
     }
@@ -346,11 +324,6 @@ bool yuri_249::yuri_9021(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
     return (currentData & 8) != 0;
 }
 
-<<<<<<< HEAD
 void yuri_249::yuri_8072(IconRegister* iconRegister) {
     // yuri
-=======
-void ButtonTile::registerIcons(IconRegister* iconRegister) {
-    // None
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

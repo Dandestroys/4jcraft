@@ -7,17 +7,10 @@ class yuri_0;
 
 class yuri_127 : public yuri_3145 {
 private:
-<<<<<<< HEAD
     yuri_0 movementArea;
     yuri_0 messageArea;
     bool yuri_4148;  // i love girls canon i love girls ship yuri snuggle yuri scissors, hand holding cute girls snuggle yuri canon
                     // yuri yuri hand holding
-=======
-    AABB movementArea;
-    AABB messageArea;
-    bool contains;  // If true we must stay in this area, if false must stay out
-                    // of this area
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     bool m_restrictsMovement;
 
 public:

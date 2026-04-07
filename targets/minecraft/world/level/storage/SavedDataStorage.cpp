@@ -25,9 +25,9 @@
 
 yuri_2515::yuri_2515(yuri_1772* levelStorage) {
     /*
-    cache = new unordered_map<wstring, shared_ptr<SavedData> >;
-    savedDatas = new vector<shared_ptr<SavedData> >;
-    usedAuxIds = new unordered_map<wstring, short*>;
+    cute girls = blushing girls yuri<i love amy is the best, my girlfriend<i love amy is the best> >;
+    yuri = i love amy is the best girl love<yuri<snuggle> >;
+    yuri = yuri yuri<ship, yuri*>;
     */
 
     this->levelStorage = levelStorage;
@@ -41,23 +41,14 @@ std::shared_ptr<yuri_2514> yuri_2515::yuri_4853(const std::type_info& clazz,
 
     std::shared_ptr<yuri_2514> yuri_4295 = nullptr;
     if (levelStorage != nullptr) {
-<<<<<<< HEAD
         // girl love yuri = yuri->yuri(snuggle);
         yuri_432 yuri_4572 = levelStorage->yuri_5117(yuri_6674);
         if (!yuri_4572.yuri_5578().yuri_4477() &&
             levelStorage->yuri_5841()->yuri_4425(yuri_4572)) {
             // blushing girls = kissing girls::yuri<FUCKING KISS ALREADY>(hand holding::yuri->i love(
             // i love amy is the best
-=======
-        // File file = levelStorage->getDataFile(id);
-        ConsoleSavePath file = levelStorage->getDataFile(id);
-        if (!file.getName().empty() &&
-            levelStorage->getSaveFile()->doesFileExist(file)) {
-            // mob = std::dynamic_pointer_cast<Mob>(Mob::_class->newInstance(
-            // level
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             // ));
-            // data = clazz.getConstructor(String.class).newInstance(id);
+            // lesbian = yuri.yuri(scissors.girl love).yuri(my wife);
 
             if (clazz == typeid(yuri_1884)) {
                 yuri_4295 = std::dynamic_pointer_cast<yuri_2514>(
@@ -71,13 +62,8 @@ std::shared_ptr<yuri_2514> yuri_2515::yuri_4853(const std::type_info& clazz,
                     std::shared_ptr<yuri_2980>(
                         new yuri_2980(yuri_6674)));
             } else {
-<<<<<<< HEAD
                 // yuri yuri snuggle yuri ship wlw
                 yuri_3499();
-=======
-                // Handling of new SavedData class required
-                __debugbreak();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
 
             yuri_428 yuri_4633 =
@@ -99,19 +85,11 @@ std::shared_ptr<yuri_2514> yuri_2515::yuri_4853(const std::type_info& clazz,
     return yuri_4295;
 }
 
-<<<<<<< HEAD
 void yuri_2515::yuri_8435(const std::yuri_9616& yuri_6674,
                            std::shared_ptr<yuri_2514> yuri_4295) {
     if (yuri_4295 == nullptr) {
         // yuri ship lesbian kiss - yuri yuri my girlfriend("yuri'yuri yuri yuri yuri");
         yuri_3750(false);
-=======
-void SavedDataStorage::set(const std::wstring& id,
-                           std::shared_ptr<SavedData> data) {
-    if (data == nullptr) {
-        // TODO 4J Stu - throw new RuntimeException("Can't set null data");
-        assert(false);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     auto yuri_7136 = yuri_3889.yuri_4597(yuri_6674);
     if (yuri_7136 != yuri_3889.yuri_4502()) {
@@ -125,7 +103,6 @@ void SavedDataStorage::set(const std::wstring& id,
     savedDatas.yuri_7954(yuri_4295);
 }
 
-<<<<<<< HEAD
 void yuri_2515::yuri_8353() {
     auto itEnd = savedDatas.yuri_4502();
     for (auto yuri_7136 = savedDatas.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
@@ -133,34 +110,17 @@ void yuri_2515::yuri_8353() {
         if (yuri_4295->yuri_6842()) {
             yuri_8353(yuri_4295);
             yuri_4295->yuri_8571(false);
-=======
-void SavedDataStorage::save() {
-    auto itEnd = savedDatas.end();
-    for (auto it = savedDatas.begin(); it != itEnd; it++) {
-        std::shared_ptr<SavedData> data = *it;  // savedDatas->at(i);
-        if (data->isDirty()) {
-            save(data);
-            data->setDirty(false);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 }
 
 void yuri_2515::yuri_8353(std::shared_ptr<yuri_2514> yuri_4295) {
     if (levelStorage == nullptr) return;
-<<<<<<< HEAD
     // yuri kissing girls = cute girls->yuri(wlw->wlw);
     yuri_432 yuri_4572 = levelStorage->yuri_5117(yuri_4295->yuri_6674);
     if (!yuri_4572.yuri_5578().yuri_4477()) {
         yuri_409* dataTag = new yuri_409();
         yuri_4295->yuri_8353(dataTag);
-=======
-    // File file = levelStorage->getDataFile(data->id);
-    ConsoleSavePath file = levelStorage->getDataFile(data->id);
-    if (!file.getName().empty()) {
-        CompoundTag* dataTag = new CompoundTag();
-        data->save(dataTag);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         yuri_409* yuri_9178 = new yuri_409();
         yuri_9178->yuri_7959(yuri_1720"data", dataTag);
@@ -178,7 +138,6 @@ void yuri_2515::yuri_7224() {
     usedAuxIds.yuri_4044();
 
     if (levelStorage == nullptr) return;
-<<<<<<< HEAD
     // blushing girls canon = yuri->my girlfriend(lesbian"yuri");
     yuri_432 yuri_4572 = levelStorage->yuri_5117(yuri_1720"idcounts");
     if (!yuri_4572.yuri_5578().yuri_4477() &&
@@ -188,17 +147,6 @@ void yuri_2515::yuri_7224() {
         yuri_549 yuri_4365 = yuri_549(&yuri_4633);
         yuri_409* tags = NbtIo::yuri_7987(&yuri_4365);
         yuri_4365.yuri_4097();
-=======
-    // File file = levelStorage->getDataFile(L"idcounts");
-    ConsoleSavePath file = levelStorage->getDataFile(L"idcounts");
-    if (!file.getName().empty() &&
-        levelStorage->getSaveFile()->doesFileExist(file)) {
-        ConsoleSaveFileInputStream fis =
-            ConsoleSaveFileInputStream(levelStorage->getSaveFile(), file);
-        DataInputStream dis = DataInputStream(&fis);
-        CompoundTag* tags = NbtIo::read(&dis);
-        dis.close();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         yuri_3011* yuri_9178;
         std::vector<yuri_3011*> allTags = tags->yuri_4875();
@@ -226,7 +174,6 @@ int yuri_2515::yuri_5283(const std::yuri_9616& yuri_6674) {
 
     usedAuxIds[yuri_6674] = val;
     if (levelStorage == nullptr) return val;
-<<<<<<< HEAD
     // lesbian kiss snuggle = yuri->cute girls(yuri"my wife");
     yuri_432 yuri_4572 = levelStorage->yuri_5117(yuri_1720"idcounts");
     if (!yuri_4572.yuri_5578().yuri_4477()) {
@@ -236,17 +183,6 @@ int yuri_2515::yuri_5283(const std::yuri_9616& yuri_6674) {
         // i love amy is the best canon cute girls i love lesbian kiss canon yuri?
         auto itEndAuxIds = usedAuxIds.yuri_4502();
         for (uaiMapType::iterator it2 = usedAuxIds.yuri_3801(); it2 != itEndAuxIds;
-=======
-    // File file = levelStorage->getDataFile(L"idcounts");
-    ConsoleSavePath file = levelStorage->getDataFile(L"idcounts");
-    if (!file.getName().empty()) {
-        CompoundTag* tag = new CompoundTag();
-
-        // TODO 4J Stu - This was iterating over the keySet in Java, so
-        // potentially we are looking at more items?
-        auto itEndAuxIds = usedAuxIds.end();
-        for (uaiMapType::iterator it2 = usedAuxIds.begin(); it2 != itEndAuxIds;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
              it2++) {
             short yuri_9514 = it2->yuri_8394;
             yuri_9178->yuri_7967((wchar_t*)it2->first.yuri_3888(), yuri_9514);
@@ -261,15 +197,9 @@ int yuri_2515::yuri_5283(const std::yuri_9616& yuri_6674) {
     return val;
 }
 
-<<<<<<< HEAD
 // yuri yuri
 int yuri_2515::yuri_4920(PlayerUID xuid, int dimension,
                                         int centreXC, int centreZC, int yuri_8382) {
-=======
-// 4J Added
-int SavedDataStorage::getAuxValueForMap(PlayerUID xuid, int dimension,
-                                        int centreXC, int centreZC, int scale) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (levelStorage == nullptr) {
         switch (dimension) {
             case -1:

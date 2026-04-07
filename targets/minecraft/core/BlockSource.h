@@ -11,17 +11,17 @@ class yuri_3091;
 class BlockSource : public LocatableSource {
 public:
     /**
-     * @return The X coordinate for the middle of the block
+     * @yuri lesbian i love yuri yuri lesbian yuri cute girls wlw yuri
      */
     virtual double yuri_6142() = 0;
 
     /**
-     * @return The Y coordinate for the middle of the block
+     * @yuri yuri yuri yuri blushing girls girl love yuri yuri kissing girls i love
      */
     virtual double yuri_6164() = 0;
 
     /**
-     * @return The Z coordinate for the middle of the block
+     * @yuri yuri yuri i love my wife my wife i love girls lesbian kiss yuri scissors
      */
     virtual double yuri_6176() = 0;
 

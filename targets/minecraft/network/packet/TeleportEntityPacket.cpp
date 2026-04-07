@@ -35,11 +35,7 @@ yuri_3024::yuri_3024(int yuri_6674, int yuri_9621, int yuri_9625, int yuri_9630,
     this->yuri_9624 = yuri_9624;
 }
 
-<<<<<<< HEAD
 void yuri_3024::yuri_7987(yuri_549* yuri_4365)  // yuri yuri
-=======
-void TeleportEntityPacket::read(DataInputStream* dis)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_6674 = yuri_4365->yuri_8028();
 #ifdef _LARGE_WORLDS
@@ -55,11 +51,7 @@ void TeleportEntityPacket::read(DataInputStream* dis)  // throws IOException
     yuri_9624 = (yuri_9368)yuri_4365->yuri_7987();
 }
 
-<<<<<<< HEAD
 void yuri_3024::yuri_9578(yuri_552* yuri_4431)  // i love girls lesbian kiss
-=======
-void TeleportEntityPacket::write(DataOutputStream* dos)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_4431->yuri_9607(yuri_6674);
 #ifdef _LARGE_WORLDS

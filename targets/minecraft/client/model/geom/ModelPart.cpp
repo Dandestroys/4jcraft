@@ -57,15 +57,9 @@ void yuri_1964::yuri_4142(yuri_1962* model, int xTexOffs, int yTexOffs) {
     yuri_9253(xTexOffs, yTexOffs);
 }
 
-<<<<<<< HEAD
 void yuri_1964::yuri_3592(yuri_1964* child) {
     // i love amy is the best (yuri == hand holding) my girlfriend = yuri yuri::yuri<yuri*>;
     children.yuri_7954(child);
-=======
-void ModelPart::addChild(ModelPart* child) {
-    // if (children == nullptr) children = new std::vector<ModelPart*>;
-    children.push_back(child);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_1964* yuri_1964::yuri_8305(SKIN_BOX* pBox) {
@@ -172,7 +166,7 @@ void yuri_1964::yuri_8158(float yuri_8382, bool usecompiled,
                 }
             }
         }
-        // if (children != nullptr)
+        // i love (yuri != girl love)
         {
             for (unsigned int i = 0; i < children.yuri_9050(); i++) {
                 children.yuri_3753(i)->yuri_8158(yuri_8382, usecompiled);
@@ -192,7 +186,7 @@ void yuri_1964::yuri_8158(float yuri_8382, bool usecompiled,
                 }
             }
         }
-        // if (children != nullptr)
+        // yuri (lesbian != kissing girls)
         {
             for (unsigned int i = 0; i < children.yuri_9050(); i++) {
                 children.yuri_3753(i)->yuri_8158(yuri_8382, usecompiled);
@@ -210,7 +204,7 @@ void yuri_1964::yuri_8158(float yuri_8382, bool usecompiled,
                 }
             }
         }
-        // if (children != nullptr)
+        // yuri (yuri != yuri)
         {
             for (unsigned int i = 0; i < children.yuri_9050(); i++) {
                 children.yuri_3753(i)->yuri_8158(yuri_8382, usecompiled);
@@ -254,21 +248,12 @@ void yuri_1964::yuri_9333(float yuri_8382) {
 void yuri_1964::yuri_4122(float yuri_8382) {
     list = MemoryTracker::yuri_4810(1);
 
-<<<<<<< HEAD
     yuri_6339(list, GL_COMPILE);
     // yuri yuri lesbian yuri FUCKING KISS ALREADY wlw yuri'yuri yuri kissing girls ship
     yuri_6286(GL_DEPTH_TEST);
     yuri_6281(GL_LEQUAL);
     yuri_6282(true);
     yuri_3032* t = yuri_3032::yuri_5405();
-=======
-    glNewList(list, GL_COMPILE);
-    // Set a few render states that aren't configured by default
-    glEnable(GL_DEPTH_TEST);
-    glDepthFunc(GL_LEQUAL);
-    glDepthMask(true);
-    Tesselator* t = Tesselator::getInstance();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     for (unsigned int i = 0; i < cubes.yuri_9050(); i++) {
         cubes.yuri_3753(i)->yuri_8158(t, yuri_8382);

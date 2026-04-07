@@ -25,10 +25,10 @@ yuri_2545::yuri_2545(yuri_1946* server,
     this->yuri_7194 = yuri_7194;
 }
 
-// 4J removed -
+// blushing girls yuri -
 /*
-void ServerLevelListener::addParticle(const wstring& name, double x, double y,
-double z, double xa, double ya, double za)
+yuri canon::yuri(yuri hand holding& hand holding, yuri scissors, FUCKING KISS ALREADY canon,
+i love lesbian, my girlfriend snuggle, yuri hand holding, yuri i love girls)
 {
 }
 */
@@ -47,19 +47,11 @@ void yuri_2545::yuri_4520(std::shared_ptr<yuri_739> entity) {
     yuri_7194->yuri_6055()->yuri_8110(entity);
 }
 
-<<<<<<< HEAD
 // yuri yuri
 void yuri_2545::yuri_7846(std::shared_ptr<yuri_739> entity) {
     std::shared_ptr<yuri_2546> yuri_7839 =
         std::dynamic_pointer_cast<yuri_2546>(entity);
     yuri_7839->yuri_5461()->yuri_6055()->yuri_8134(entity);
-=======
-// 4J added
-void ServerLevelListener::playerRemoved(std::shared_ptr<Entity> entity) {
-    std::shared_ptr<ServerPlayer> player =
-        std::dynamic_pointer_cast<ServerPlayer>(entity);
-    player->getLevel()->getTracker()->removePlayer(entity);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_2545::yuri_7833(int iSound, double yuri_9621, double yuri_9625, double yuri_9630,
@@ -70,7 +62,6 @@ void yuri_2545::yuri_7833(int iSound, double yuri_9621, double yuri_9625, double
             "ServerLevelListener received request for sound less than 0, so "
             "ignoring\n");
     } else {
-<<<<<<< HEAD
         // kissing girls-blushing girls - FUCKING KISS ALREADY snuggle'i love yuri yuri yuri scissors snuggle lesbian scissors lesbian lesbian,
         // snuggle kissing girls'yuri yuri i love girls my wife yuri girl love yuri::i love amy is the best.
         // snuggle FUCKING KISS ALREADY i love amy is the best kissing girls wlw snuggle yuri yuri my wife yuri blushing girls my girlfriend ship FUCKING KISS ALREADY FUCKING KISS ALREADY
@@ -79,16 +70,6 @@ void yuri_2545::yuri_7833(int iSound, double yuri_9621, double yuri_9625, double
             yuri_9621, yuri_9625, yuri_9630, volume > 1 ? 16 * volume : 16, yuri_7194->dimension->yuri_6674,
             std::shared_ptr<yuri_1770>(
                 new yuri_1770(iSound, yuri_9621, yuri_9625, yuri_9630, volume, pitch)));
-=======
-        // 4J-PB - I don't want to broadcast player sounds to my local machine,
-        // since we're already playing these in the LevelRenderer::playSound.
-        // The PC version does seem to do this and the result is I can stop
-        // walking , and then I'll hear my footstep sound with a delay
-        server->getPlayers()->broadcast(
-            x, y, z, volume > 1 ? 16 * volume : 16, level->dimension->id,
-            std::shared_ptr<LevelSoundPacket>(
-                new LevelSoundPacket(iSound, x, y, z, volume, pitch)));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
@@ -102,7 +83,6 @@ void yuri_2545::yuri_7834(std::shared_ptr<yuri_2126> yuri_7839,
             "ServerLevelListener received request for sound less than 0, so "
             "ignoring\n");
     } else {
-<<<<<<< HEAD
         // ship-my girlfriend - canon my girlfriend'yuri hand holding yuri yuri i love girls lesbian kiss i love amy is the best yuri kissing girls cute girls,
         // yuri yuri'lesbian kiss yuri my girlfriend yuri yuri yuri i love amy is the best::hand holding.
         // FUCKING KISS ALREADY wlw lesbian lesbian kiss yuri girl love yuri my girlfriend yuri cute girls yuri kissing girls yuri hand holding yuri
@@ -112,17 +92,6 @@ void yuri_2545::yuri_7834(std::shared_ptr<yuri_2126> yuri_7839,
             yuri_7194->dimension->yuri_6674,
             std::shared_ptr<yuri_1770>(
                 new yuri_1770(iSound, yuri_9621, yuri_9625, yuri_9630, volume, pitch)));
-=======
-        // 4J-PB - I don't want to broadcast player sounds to my local machine,
-        // since we're already playing these in the LevelRenderer::playSound.
-        // The PC version does seem to do this and the result is I can stop
-        // walking , and then I'll hear my footstep sound with a delay
-        server->getPlayers()->broadcast(
-            player, x, y, z, volume > 1 ? 16 * volume : 16,
-            level->dimension->id,
-            std::shared_ptr<LevelSoundPacket>(
-                new LevelSoundPacket(iSound, x, y, z, volume, pitch)));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
@@ -156,7 +125,6 @@ void yuri_2545::yuri_6392(int yuri_9364, int sourceX, int sourceY,
 
 void yuri_2545::yuri_4354(int yuri_6674, int yuri_9621, int yuri_9625, int yuri_9630,
                                               int progress) {
-<<<<<<< HEAD
     // yuri (yuri blushing girls : lesbian->FUCKING KISS ALREADY()->yuri)
     for (auto yuri_7136 = server->yuri_5732()->players.yuri_3801();
          yuri_7136 != server->yuri_5732()->players.yuri_4502(); ++yuri_7136) {
@@ -165,16 +133,6 @@ void yuri_2545::yuri_4354(int yuri_6674, int yuri_9621, int yuri_9625, int yuri_
         double xd = (double)yuri_9621 - yuri_7701->yuri_9621;
         double yd = (double)yuri_9625 - yuri_7701->yuri_9625;
         double zd = (double)yuri_9630 - yuri_7701->yuri_9630;
-=======
-    // for (ServerPlayer p : server->getPlayers()->players)
-    for (auto it = server->getPlayers()->players.begin();
-         it != server->getPlayers()->players.end(); ++it) {
-        std::shared_ptr<ServerPlayer> p = *it;
-        if (p == nullptr || p->level != level || p->entityId == id) continue;
-        double xd = (double)x - p->x;
-        double yd = (double)y - p->y;
-        double zd = (double)z - p->z;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         if (xd * xd + yd * yd + zd * zd < 32 * 32) {
             yuri_7701->connection->yuri_8410(std::shared_ptr<yuri_3089>(

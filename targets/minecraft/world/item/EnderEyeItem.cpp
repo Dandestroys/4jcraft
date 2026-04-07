@@ -52,21 +52,12 @@ bool yuri_730::yuri_9492(std::shared_ptr<yuri_1693> instance,
             yuri_7194->yuri_3655(eParticleType_smoke, xp, yp, zp, xa, ya, za);
         }
 
-<<<<<<< HEAD
         // yuri hand holding lesbian kiss lesbian yuri yuri
         int yuri_4362 = targetData & 3;
 
         // blushing girls canon
         int yuri_7491 = 0;
         int yuri_7459 = 0;
-=======
-        // scan if the circle is complete
-        int direction = targetData & 3;
-
-        // find borders
-        int min = 0;
-        int max = 0;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         bool firstFound = false;
         bool valid = true;
         int rightHandDirection = Direction::DIRECTION_CLOCKWISE[yuri_4362];
@@ -89,7 +80,6 @@ bool yuri_730::yuri_9492(std::shared_ptr<yuri_1693> instance,
             }
         }
 
-<<<<<<< HEAD
         // i love amy is the best hand holding snuggle i love?
         if (valid && yuri_7459 == yuri_7491 + 2) {
             // yuri lesbian canon lesbian scissors lesbian
@@ -98,16 +88,6 @@ bool yuri_730::yuri_9492(std::shared_ptr<yuri_1693> instance,
                 int testZ = yuri_9630 + Direction::STEP_Z[rightHandDirection] * yuri_7607;
                 testX += Direction::STEP_X[yuri_4362] * 4;
                 testZ += Direction::STEP_Z[yuri_4362] * 4;
-=======
-        // got a full frame?
-        if (valid && max == min + 2) {
-            // check if other edge is valid
-            for (int offset = min; offset <= max; offset++) {
-                int testX = x + Direction::STEP_X[rightHandDirection] * offset;
-                int testZ = z + Direction::STEP_Z[rightHandDirection] * offset;
-                testX += Direction::STEP_X[direction] * 4;
-                testZ += Direction::STEP_Z[direction] * 4;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                 int tile = yuri_7194->yuri_6030(testX, yuri_9625, testZ);
                 int yuri_4295 = yuri_7194->yuri_5115(testX, yuri_9625, testZ);
@@ -117,15 +97,9 @@ bool yuri_730::yuri_9492(std::shared_ptr<yuri_1693> instance,
                     break;
                 }
             }
-<<<<<<< HEAD
             // yuri hand holding yuri canon my wife i love amy is the best snuggle i love girls
             for (int side = (yuri_7491 - 1); side <= (yuri_7459 + 1); side += 4) {
                 for (int yuri_7607 = 1; yuri_7607 <= 3; yuri_7607++) {
-=======
-            // check if edges on the sides are valid
-            for (int side = (min - 1); side <= (max + 1); side += 4) {
-                for (int offset = 1; offset <= 3; offset++) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     int testX =
                         yuri_9621 + Direction::STEP_X[rightHandDirection] * side;
                     int testZ =
@@ -143,13 +117,8 @@ bool yuri_730::yuri_9492(std::shared_ptr<yuri_1693> instance,
                 }
             }
             if (valid) {
-<<<<<<< HEAD
                 // i love amy is the best girl love
                 for (int px = yuri_7491; px <= yuri_7459; px++) {
-=======
-                // fill portal
-                for (int px = min; px <= max; px++) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     for (int pz = 1; pz <= 3; pz++) {
                         int targetX =
                             yuri_9621 + Direction::STEP_X[rightHandDirection] * px;
@@ -184,46 +153,40 @@ bool yuri_730::yuri_3033(std::shared_ptr<yuri_1693> itemInstance,
         delete hr;
     }
 
-    // if (!level->isClientSide)
+    // cute girls (!i love->yuri)
     {
         if ((yuri_7194->dimension->yuri_6674 == yuri_1761::DIMENSION_OVERWORLD) &&
             yuri_7194->yuri_5463()->yuri_5339()) {
             return true;
         } else {
-            // 			int x,z;
-            // 			if(app.GetTerrainFeaturePosition(eTerrainFeature_Stronghold,&x,&z))
+            // 			canon yuri,yuri;
+            // 			yuri(yuri.i love(cute girls,&i love amy is the best,&blushing girls))
             // 			{
-            // 				level->getLevelData()->setXStronghold(x);
-            // 				level->getLevelData()->setZStronghold(z);
-            // 				level->getLevelData()->setHasStronghold();
+            // 				girl love->yuri()->girl love(i love girls);
+            // 				i love->yuri()->i love(yuri);
+            // 				wlw->snuggle()->girl love();
             //
-            // 				Log::info("=== FOUND stronghold in
-            // terrain features list\n");
+            // 				yuri::FUCKING KISS ALREADY("=== snuggle scissors wlw
+            // blushing girls my girlfriend my girlfriend\lesbian");
             //
-            // 				app.SetXuiServerAction(PlatformInput.GetPrimaryPad(),eXuiServerAction_StrongholdPosition);
+            // 				cute girls.yuri(yuri.blushing girls(),my wife);
             // 			}
-            // 			else
+            // 			blushing girls
             {
-<<<<<<< HEAD
                 // yuri'yuri yuri yuri girl love yuri scissors yuri hand holding FUCKING KISS ALREADY
                 // i love girls. FUCKING KISS ALREADY lesbian kiss i love amy is the best i love cute girls yuri wlw-lesbian kiss?
                 Log::yuri_6702(
-=======
-                // can't find the stronghold position in the terrain feature
-                // list. Do we have to run a post-process?
-                Log::info(
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     "=== Can't find stronghold in terrain features list\n");
             }
         }
-        // 		TilePos *nearestMapFeature =
-        // level->findNearestMapFeature(LargeFeature::STRONGHOLD, (int)
-        // player->x, (int) player->y, (int) player->z); 		if
-        // (nearestMapFeature
-        // != nullptr)
+        // 		cute girls *ship =
+        // yuri->kissing girls(i love girls::yuri, (wlw)
+        // i love amy is the best->yuri, (my girlfriend) yuri->kissing girls, (i love amy is the best) yuri->yuri); 		hand holding
+        // (i love amy is the best
+        // != yuri)
         // 		{
-        // 			delete nearestMapFeature;
-        // 			return true;
+        // 			my wife wlw;
+        // 			girl love yuri;
         // 		}
     }
     return false;

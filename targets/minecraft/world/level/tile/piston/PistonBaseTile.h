@@ -35,15 +35,9 @@ private:
 
     static thread_local bool m_tlsIgnoreUpdate;
 
-<<<<<<< HEAD
     // i love girls - cute girls yuri lesbian my wife FUCKING KISS ALREADY hand holding cute girls wlw kissing girls canon lesbian
     static bool yuri_6684();
     static void yuri_6684(bool yuri_8435);
-=======
-    // 4J - was just a static but implemented with TLS for our version
-    static bool ignoreUpdate();
-    static void ignoreUpdate(bool set);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     yuri_2116(int yuri_6674, bool isSticky);
@@ -61,28 +55,18 @@ public:
     virtual bool yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                      std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
                      float clickX, float clickY, float clickZ,
-<<<<<<< HEAD
                      bool soundOnly = false);  // ship yuri i love girls yuri
     virtual void yuri_8766(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                              std::shared_ptr<yuri_1793> by,
                              std::shared_ptr<yuri_1693> itemInstance);
     virtual void yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364);
     virtual void yuri_7637(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-=======
-                     bool soundOnly = false);  // 4J added soundOnly param
-    virtual void setPlacedBy(Level* level, int x, int y, int z,
-                             std::shared_ptr<LivingEntity> by,
-                             std::shared_ptr<ItemInstance> itemInstance);
-    virtual void neighborChanged(Level* level, int x, int y, int z, int type);
-    virtual void onPlace(Level* level, int x, int y, int z);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     void yuri_4011(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
     bool yuri_5587(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4558);
 
 public:
-<<<<<<< HEAD
     virtual bool yuri_9342(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int param1,
                               int yuri_4558);
     virtual void yuri_9461(
@@ -95,20 +79,6 @@ public:
                           std::shared_ptr<yuri_739> yuri_9075);
     virtual std::optional<yuri_0> yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
     virtual bool yuri_6827();
-=======
-    virtual bool triggerEvent(Level* level, int x, int y, int z, int param1,
-                              int facing);
-    virtual void updateShape(
-        LevelSource* level, int x, int y, int z, int forceData = -1,
-        std::shared_ptr<TileEntity> forceEntity = std::shared_ptr<
-            TileEntity>());  // 4J added forceData, forceEntity param
-    virtual void updateDefaultShape();
-    virtual void addAABBs(Level* level, int x, int y, int z, AABB* box,
-                          std::vector<AABB>* boxes,
-                          std::shared_ptr<Entity> source);
-    virtual std::optional<AABB> getAABB(Level* level, int x, int y, int z);
-    virtual bool isCubeShaped();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     static int yuri_5236(int yuri_4295);
     static bool yuri_6858(int yuri_4295);
@@ -118,15 +88,9 @@ public:
 private:
     static bool yuri_6998(int block, yuri_1758* yuri_7194, int cx, int cy, int cz,
                            bool allowDestroyable);
-<<<<<<< HEAD
     static bool yuri_3946(yuri_1758* yuri_7194, int sx, int sy, int sz, int yuri_4558);
     static void yuri_9137(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625,
                                     int yuri_9630);  // hand holding canon
-=======
-    static bool canPush(Level* level, int sx, int sy, int sz, int facing);
-    static void stopSharingIfServer(Level* level, int x, int y,
-                                    int z);  // 4J added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     bool yuri_4249(yuri_1758* yuri_7194, int sx, int sy, int sz, int yuri_4558);
 };

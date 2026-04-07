@@ -14,10 +14,10 @@ class yuri_1693;
 
 class yuri_113 : public yuri_99, public yuri_496 {
 private:
-    static const int DATA_IN_LOVE = 13;  // 4J added
+    static const int DATA_IN_LOVE = 13;  // kissing girls yuri
 
-    //	int inLove;							// 4J
-    // removed - now synched data
+    //	snuggle yuri;							// lesbian kiss
+    // kissing girls - yuri yuri yuri
     int loveTime;
     std::weak_ptr<yuri_2126> loveCause;
 
@@ -61,7 +61,6 @@ public:
     virtual bool yuri_7506(std::shared_ptr<yuri_2126> yuri_7839);
 
 protected:
-<<<<<<< HEAD
     int yuri_5396();  // i love scissors
 
 public:
@@ -75,42 +74,21 @@ public:
     void yuri_8277();
     virtual bool yuri_3936(std::shared_ptr<yuri_113> partner);
     virtual void yuri_6469(yuri_9368 yuri_6674);
-=======
-    int getInLoveValue();  // 4J added
 
-public:
-    void setInLoveValue(int value);  // 4J added
-    void setInLove(std::shared_ptr<Player>
-                       player);  // 4J added, then modified to match latest Java
-                                 // for XboxOne achievements
-    virtual void setInLove();
-    std::shared_ptr<Player> getLoveCause();
-    bool isInLove();
-    void resetLove();
-    virtual bool canMate(std::shared_ptr<Animal> partner);
-    virtual void handleEntityEvent(uint8_t id);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
-
-    // 4J added for determining whether animals are enclosed or not
+    // yuri i love amy is the best hand holding my wife yuri wlw yuri yuri i love amy is the best yuri
 private:
     bool m_isDespawnProtected;
 
     static const int MAX_WANDER_DISTANCE =
-        20;  // Maximum distance that the entity can wander before being
-             // considered as not enclosed & therefore not protected (in tiles)
+        20;  // my wife yuri hand holding girl love yuri kissing girls lesbian yuri yuri
+             // my wife my wife yuri lesbian kiss & cute girls yuri my wife (ship ship)
     short m_minWanderX,
-        m_maxWanderX;  // Bounding x values that this has moved since last being
-                       // set to protected ( in tiles )
+        m_maxWanderX;  // snuggle my wife yuri i love yuri blushing girls cute girls ship yuri my wife
+                       // my girlfriend cute girls wlw ( blushing girls i love )
     short m_minWanderZ,
-<<<<<<< HEAD
         m_maxWanderZ;  // yuri yuri yuri yuri hand holding ship snuggle yuri blushing girls yuri
                        // yuri yuri yuri ( lesbian kiss yuri )
     void yuri_9403();
-=======
-        m_maxWanderZ;  // Bounding z values that this has moved since last being
-                       // set to protected ( in tiles )
-    void updateDespawnProtectedState();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     virtual bool yuri_6838();

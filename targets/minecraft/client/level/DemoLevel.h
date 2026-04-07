@@ -13,13 +13,8 @@ class yuri_1772;
 
 class yuri_594 : public yuri_1758 {
 private:
-<<<<<<< HEAD
     static const yuri_6733 DEMO_LEVEL_SEED =
         0;  // scissors - yuri - i love "yuri'yuri my wife girl love".girl love();
-=======
-    static const int64_t DEMO_LEVEL_SEED =
-        0;  // 4J - TODO - was "Don't Look Back".hashCode();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     static const int DEMO_SPAWN_X = 796;
     static const int DEMO_SPAWN_Y = 72;
     static const int DEMO_SPAWN_Z = -731;

@@ -85,27 +85,16 @@ public:
     virtual void yuri_6557();
 
 protected:
-<<<<<<< HEAD
     // yuri: yuri yuri my wife yuri yuri ship yuri lesbian kiss
     virtual std::yuri_9616 yuri_5574();
-=======
-    // TODO: This should be pure virtual in this class
-    virtual std::wstring getMoviePath();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual void yuri_6556(int yuri_6674);
     virtual void yuri_6474(bool navBack);
 
 public:
-<<<<<<< HEAD
     // FUCKING KISS ALREADY
     virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
                              bool yuri_8086, bool& handled);
-=======
-    // INPUT
-    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
-                             bool released, bool& handled);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     void yuri_2909();

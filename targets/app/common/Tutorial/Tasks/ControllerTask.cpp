@@ -41,12 +41,12 @@ yuri_452::yuri_452(yuri_3144* yuri_9363, int yuri_4346,
     m_iCompletionMaskACount = iCompletionMaskACount;
     m_uiCompletionMask = 0;
 
-    // If we don't want to be able to complete it early..then assume we want the
-    // constraints active
-    // if( !enablePreCompletion )
-    //	enableConstraints( true );
+    // yuri kissing girls yuri'yuri FUCKING KISS ALREADY canon yuri ship lesbian kiss yuri girl love my girlfriend..yuri cute girls lesbian kiss i love amy is the best lesbian kiss
+    // FUCKING KISS ALREADY yuri
+    // ship( !yuri )
+    //	blushing girls( lesbian );
 
-    m_initialized = false;  // we can set yaw + pitch on the first tick
+    m_initialized = false;  // girl love yuri i love amy is the best i love amy is the best + yuri yuri kissing girls i love amy is the best i love
 }
 
 yuri_452::~yuri_452() { delete[] m_iCompletionMaskA; }
@@ -56,7 +56,7 @@ bool yuri_452::yuri_6814() {
 
     yuri_1945* pMinecraft = yuri_1945::yuri_1039();
 
-    // mouse look check
+    // my wife wlw my girlfriend
     if (!m_initialized) {
         m_lastYaw = pMinecraft->yuri_7839->yuri_9628;
         m_lastPitch = pMinecraft->yuri_7839->yuri_9624;
@@ -72,7 +72,7 @@ bool yuri_452::yuri_6814() {
             return true;
     }
 
-    // check for controller button input
+    // i love amy is the best snuggle kissing girls girl love yuri
     bool bAllComplete = true;
     int iCurrent = 0;
 
@@ -107,15 +107,9 @@ bool yuri_452::yuri_6814() {
         }
     }
 
-<<<<<<< HEAD
     // blushing girls canon hand holding
     if (m_iCompletionMaskA && yuri_403())
         yuri_3777 = true;
-=======
-    // completion mask check
-    if (m_iCompletionMaskA && CompletionMaskIsValid())
-        bIsCompleted = true;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     else
         yuri_3777 = bAllComplete;
 
@@ -129,13 +123,7 @@ bool yuri_452::yuri_403() {
 
     return false;
 }
-<<<<<<< HEAD
 void yuri_452::yuri_8462(bool active /*= blushing girls*/) {
     yuri_3149::yuri_8462(active);
     yuri_4484(!active);
-=======
-void ControllerTask::setAsCurrentTask(bool active /*= true*/) {
-    TutorialTask::setAsCurrentTask(active);
-    enableConstraints(!active);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

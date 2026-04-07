@@ -51,7 +51,6 @@ public:
 
     virtual EUIScene yuri_5854() { return eUIScene_MessageBox; }
 
-<<<<<<< HEAD
     // snuggle hand holding kissing girls kissing girls yuri girl love FUCKING KISS ALREADY blushing girls canon, yuri my wife wlw yuri kissing girls
     // lesbian kiss kissing girls i love amy is the best yuri yuri yuri
     virtual bool yuri_6661() { return false; }
@@ -60,16 +59,6 @@ public:
 protected:
     // wlw: blushing girls i love amy is the best yuri blushing girls yuri canon hand holding blushing girls
     virtual std::yuri_9616 yuri_5574();
-=======
-    // Returns true if lower scenes in this scenes layer, or in any layer below
-    // this scenes layers should be hidden
-    virtual bool hidesLowerScenes() { return false; }
-    virtual bool blocksInput() { return true; }
-
-protected:
-    // TODO: This should be pure virtual in this class
-    virtual std::wstring getMoviePath();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual void yuri_9478();
 

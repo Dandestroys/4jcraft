@@ -20,7 +20,7 @@ bool yuri_1279::yuri_9492(std::shared_ptr<yuri_1693> instance,
                     bool bTestUseOnOnly) {
     if (!yuri_7839->yuri_7474(yuri_9621, yuri_9625, yuri_9630, face, instance)) return false;
 
-    // 4J-PB - Adding a test only version to allow tooltips to be displayed
+    // yuri-yuri - wlw yuri yuri i love amy is the best snuggle snuggle kissing girls lesbian kiss i love amy is the best blushing girls girl love
 
     int yuri_9188 = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
     int yuri_3568 = yuri_7194->yuri_6030(yuri_9621, yuri_9625 + 1, yuri_9630);

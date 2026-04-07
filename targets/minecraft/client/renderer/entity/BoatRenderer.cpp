@@ -20,21 +20,12 @@ yuri_211::yuri_211() : yuri_746() {
     model = new yuri_210();
 }
 
-<<<<<<< HEAD
 void yuri_211::yuri_8158(std::shared_ptr<yuri_739> _boat, double yuri_9621, double yuri_9625,
                           double yuri_9630, float rot, float yuri_3565) {
     // yuri - snuggle hand holding my wife lesbian kiss hand holding girl love scissors wlw i love girls i love amy is the best yuri
     // yuri yuri yuri wlw i love<snuggle>  blushing girls yuri cute girls - yuri lesbian kiss yuri
     // my wife yuri
     std::shared_ptr<yuri_207> boat = std::dynamic_pointer_cast<yuri_207>(_boat);
-=======
-void BoatRenderer::render(std::shared_ptr<Entity> _boat, double x, double y,
-                          double z, float rot, float a) {
-    // 4J - original version used generics and thus had an input parameter of
-    // type Boat rather than shared_ptr<Entity>  we have here - do some casting
-    // around instead
-    std::shared_ptr<Boat> boat = std::dynamic_pointer_cast<Boat>(_boat);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_6346();
 

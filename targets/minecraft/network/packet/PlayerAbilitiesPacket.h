@@ -27,7 +27,6 @@ public:
     yuri_2127();
     yuri_2127(yuri_44* abilities);
 
-<<<<<<< HEAD
     void yuri_7987(yuri_549* yuri_4365);
     void yuri_9578(yuri_552* yuri_4431);
     void yuri_6416(PacketListener* listener);
@@ -47,27 +46,6 @@ public:
     void yuri_8951(float walkingSpeed);
     bool yuri_3909();
     bool yuri_6931(std::shared_ptr<yuri_2081> packet);
-=======
-    void read(DataInputStream* dis);
-    void write(DataOutputStream* dos);
-    void handle(PacketListener* listener);
-    int getEstimatedSize();
-    // std::wstring getDebugInfo();
-    bool isInvulnerable();
-    void setInvulnerable(bool invulnerable);
-    bool isFlying();
-    void setFlying(bool flying);
-    bool canFly();
-    void setCanFly(bool canFly);
-    bool canInstabuild();
-    void setInstabuild(bool instabuild);
-    float getFlyingSpeed();
-    void setFlyingSpeed(float flySpeed);
-    float getWalkingSpeed();
-    void setWalkingSpeed(float walkingSpeed);
-    bool canBeInvalidated();
-    bool isInvalidatedBy(std::shared_ptr<Packet> packet);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     static std::shared_ptr<yuri_2081> yuri_4202() {

@@ -11,11 +11,7 @@ class yuri_739;
 
 class yuri_1838 : public yuri_1217 {
 private:
-<<<<<<< HEAD
     yuri_1950* mob;  // yuri canon my wife yuri
-=======
-    Mob* mob;  // Owner of this goal
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     std::weak_ptr<yuri_739> yuri_7300;

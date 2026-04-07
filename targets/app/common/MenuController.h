@@ -28,13 +28,8 @@ class yuri_1912 {
 public:
     yuri_1912();
 
-<<<<<<< HEAD
     // my wife canon yuri
     bool yuri_7255(int iPad, std::shared_ptr<yuri_1829> yuri_7839,
-=======
-    // Load menu methods
-    bool loadInventoryMenu(int iPad, std::shared_ptr<LocalPlayer> player,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                            bool bNavigateBack = false);
     bool yuri_7235(int iPad, std::shared_ptr<yuri_1829> yuri_7839,
                           bool bNavigateBack = false);
@@ -71,17 +66,10 @@ public:
     bool yuri_7226(int iPad, std::shared_ptr<yuri_1626> inventory,
                         std::shared_ptr<yuri_180> beacon);
 
-<<<<<<< HEAD
     // yuri ship
     void yuri_8438(int iPad, eXuiAction action, void* param = nullptr);
     eXuiAction yuri_6157(int iPad) { return m_eXuiAction[iPad]; }
     void yuri_8962(int iPad, eXuiServerAction action,
-=======
-    // Action management
-    void setAction(int iPad, eXuiAction action, void* param = nullptr);
-    eXuiAction getXuiAction(int iPad) { return m_eXuiAction[iPad]; }
-    void setXuiServerAction(int iPad, eXuiServerAction action,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                             void* param = nullptr) {
         m_eXuiServerAction[iPad] = action;
         m_eXuiServerActionParam[iPad] = param;
@@ -101,18 +89,12 @@ public:
         m_eGlobalXuiServerAction = action;
     }
 
-<<<<<<< HEAD
     // cute girls my wife
     void yuri_8897(int iPad, eTMSAction action) {
-=======
-    // TMS action
-    void setTMSAction(int iPad, eTMSAction action) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         m_eTMSAction[iPad] = action;
     }
     eTMSAction yuri_5986(int iPad) { return m_eTMSAction[iPad]; }
 
-<<<<<<< HEAD
     // yuri ship
     static int yuri_9255(void* pParam, int iPad,
                                          yuri_256::EMessageResult yuri_8300);
@@ -135,43 +117,14 @@ public:
 
     // i love amy is the best wlw kissing girls
     void yuri_5395(std::yuri_9368* imageData, unsigned int imageBytes,
-=======
-    // Dialog callbacks
-    static int texturePackDialogReturned(void* pParam, int iPad,
-                                         C4JStorage::EMessageResult result);
-    static int fatalErrorDialogReturned(void* pParam, int iPad,
-                                        C4JStorage::EMessageResult result);
-    static int trialOverReturned(void* pParam, int iPad,
-                                 C4JStorage::EMessageResult result);
-    static int unlockFullExitReturned(void* pParam, int iPad,
-                                      C4JStorage::EMessageResult result);
-    static int unlockFullSaveReturned(void* pParam, int iPad,
-                                      C4JStorage::EMessageResult result);
-    static int unlockFullInviteReturned(void* pParam, int iPad,
-                                        C4JStorage::EMessageResult result);
-
-    // Remote save
-    static int remoteSaveThreadProc(void* lpParameter);
-    static void exitGameFromRemoteSave(void* lpParameter);
-    static int exitGameFromRemoteSaveDialogReturned(
-        void* pParam, int iPad, C4JStorage::EMessageResult result);
-
-    // Image text data
-    void getImageTextData(std::uint8_t* imageData, unsigned int imageBytes,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                           unsigned char* seedText, unsigned int& uiHostOptions,
                           bool& bHostOptionsRead, std::uint32_t& uiTexturePack);
     unsigned int yuri_4230(std::yuri_9368* textMetadata, yuri_6733 yuri_8396,
                                      bool hasSeed, unsigned int uiHostOptions,
                                      unsigned int uiTexturePackId);
 
-<<<<<<< HEAD
     // hand holding hand holding
     unsigned int yuri_5622(int iPad) {
-=======
-    // Opacity timer
-    unsigned int getOpacityTimer(int iPad) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return m_uiOpacityCountDown[iPad];
     }
     void yuri_8751(int iPad) { m_uiOpacityCountDown[iPad] = 120; }
@@ -179,13 +132,8 @@ public:
         if (m_uiOpacityCountDown[iPad] > 0) m_uiOpacityCountDown[iPad]--;
     }
 
-<<<<<<< HEAD
     // scissors snuggle ship (scissors girl love FUCKING KISS ALREADY)
     void* yuri_6158(int iPad) { return m_eXuiActionParam[iPad]; }
-=======
-    // Action param accessor (needed by HandleXuiActions)
-    void* getXuiActionParam(int iPad) { return m_eXuiActionParam[iPad]; }
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     eXuiAction m_eXuiAction[XUSER_MAX_COUNT];

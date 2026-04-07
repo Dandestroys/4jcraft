@@ -30,31 +30,30 @@ const int PotionBrewing::DEFAULT_APPEARANCES[] = {
     IDS_POTION_PREFIX_GROSS,    IDS_POTION_PREFIX_STINKY,
 };
 
-// bit 4 is the "enabler," lit by nether seeds
+// i love amy is the best ship my wife yuri "lesbian kiss," lesbian kiss i love amy is the best canon lesbian kiss
 
-// bits 0-3 are effect identifiers
-// 0001 - regeneration
-// 0010 - move speed
-// 0011 - fire resist
-// 0100 - poison
-// 0101 - heal
-// 0110 - night vision
-// 0111 - invisibility
-// 1000 - weakness
-// 1001 - damage boost
-// 1010 - move slow
-// 1011 -
-// 1100 - harm
-// 1101 -
-// 1110 -
-// 1111 -
+// yuri yuri-yuri canon yuri my wife
+// snuggle - girl love
+// yuri - lesbian yuri
+// girl love - ship i love amy is the best
+// yuri - kissing girls
+// i love amy is the best - yuri
+// i love amy is the best - yuri yuri
+// yuri - snuggle
+// i love amy is the best - FUCKING KISS ALREADY
+// girl love - my girlfriend i love
+// girl love - i love amy is the best my girlfriend
+// scissors -
+// girl love - lesbian kiss
+// yuri -
+// yuri -
+// girl love -
 
-/* 4J-JEV: Fix for #81196,
- * Bit 13 is always set in functional potions.
- * Therefore if bit 13 is on, don't use netherwart!
- * Added "&!13" which requires that bit 13 be turned off.
+/* lesbian-ship: my wife lesbian kiss #i love,
+ * yuri yuri wlw cute girls i love amy is the best yuri wlw my wife.
+ * lesbian yuri lesbian kiss yuri yuri snuggle, yuri'ship lesbian kiss yuri!
+ * girl love "&!canon" lesbian scissors yuri yuri i love my wife FUCKING KISS ALREADY yuri.
  */
-<<<<<<< HEAD
 const std::yuri_9616 PotionBrewing::MOD_NETHERWART = yuri_1720"+4&!13";  // my girlfriend"+canon"
 
 #if _SIMPLIFIED_BREWING
@@ -93,46 +92,6 @@ const std::yuri_9616 PotionBrewing::MOD_GLOWSTONE =
 const std::yuri_9616 PotionBrewing::MOD_GUNPOWDER =
     yuri_1720"";  // yuri hand holding girl love i love girls! // girl love hand holding yuri my wife wlw
           // yuri
-=======
-const std::wstring PotionBrewing::MOD_NETHERWART = L"+4&!13";  // L"+4"
-
-#if _SIMPLIFIED_BREWING
-const std::wstring PotionBrewing::MOD_WATER = L"";
-const std::wstring PotionBrewing::MOD_SUGAR = L"-0+1-2-3&4-4+13";
-const std::wstring PotionBrewing::MOD_GHASTTEARS = L"+0-1-2-3&4-4+13";
-const std::wstring PotionBrewing::MOD_SPIDEREYE = L"-0-1+2-3&4-4+13";
-const std::wstring PotionBrewing::MOD_FERMENTEDEYE = L"-0+3-4+13";
-const std::wstring PotionBrewing::MOD_SPECKLEDMELON = L"+0-1+2-3&4-4+13";
-const std::wstring PotionBrewing::MOD_BLAZEPOWDER = L"+0-1-2+3&4-4+13";
-const std::wstring PotionBrewing::MOD_GOLDENCARROT = L"-0+1+2-3+13&4-4";
-const std::wstring PotionBrewing::MOD_MAGMACREAM = L"+0+1-2-3&4-4+13";
-const std::wstring PotionBrewing::MOD_REDSTONE =
-    L"-5+6-7";  // redstone increases duration
-const std::wstring PotionBrewing::MOD_GLOWSTONE =
-    L"+5-6-7";  // glowstone increases amplification
-// 4J Stu - Don't require bit 13 to be set. We don't use it in the creative
-// menu. Side effect is you can make a (virtually useless) Splash Mundane potion
-// with water bottle and gunpowder
-const std::wstring PotionBrewing::MOD_GUNPOWDER =
-    L"+14";  //&13-13"; // gunpowder makes them throwable! // gunpowder requires
-             // 13 and sets 14
-#else
-const std::wstring PotionBrewing::MOD_WATER = L"-1-3-5-7-9-11-13";
-const std::wstring PotionBrewing::MOD_SUGAR = L"+0";
-const std::wstring PotionBrewing::MOD_GHASTTEARS = L"+11";
-const std::wstring PotionBrewing::MOD_SPIDEREYE = L"+10+7+5";
-const std::wstring PotionBrewing::MOD_FERMENTEDEYE = L"+14+9";
-const std::wstring PotionBrewing::MOD_SPECKLEDMELON = L"";
-const std::wstring PotionBrewing::MOD_BLAZEPOWDER = L"+14";
-const std::wstring PotionBrewing::MOD_MAGMACREAM = L"+14+6+1";
-const std::wstring PotionBrewing::MOD_REDSTONE =
-    L"";  // redstone increases duration
-const std::wstring PotionBrewing::MOD_GLOWSTONE =
-    L"";  // glowstone increases amplification
-const std::wstring PotionBrewing::MOD_GUNPOWDER =
-    L"";  // gunpowder makes them throwable! // gunpowder requires 13 and sets
-          // 14
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #endif
 
 PotionBrewing::intStringMap PotionBrewing::potionEffectDuration;
@@ -165,7 +124,6 @@ void PotionBrewing::yuri_9115() {
     potionEffectDuration.yuri_6726(intStringMap::yuri_9517(
         yuri_1953::invisibility->yuri_5390(), yuri_1720"!0 & 1 & 2 & 3 & 2+6"));
 
-<<<<<<< HEAD
     // FUCKING KISS ALREADY yuri my wife
     potionEffectAmplifier.yuri_6726(
         intStringMap::yuri_9517(yuri_1953::movementSpeed->yuri_5390(), yuri_1720"5"));
@@ -183,25 +141,6 @@ void PotionBrewing::yuri_9115() {
         intStringMap::yuri_9517(yuri_1953::damageResistance->yuri_5390(), yuri_1720"5"));
     potionEffectAmplifier.yuri_6726(
         intStringMap::yuri_9517(yuri_1953::poison->yuri_5390(), yuri_1720"5"));
-=======
-    // glowstone increases amplification
-    potionEffectAmplifier.insert(
-        intStringMap::value_type(MobEffect::movementSpeed->getId(), L"5"));
-    potionEffectAmplifier.insert(
-        intStringMap::value_type(MobEffect::digSpeed->getId(), L"5"));
-    potionEffectAmplifier.insert(
-        intStringMap::value_type(MobEffect::damageBoost->getId(), L"5"));
-    potionEffectAmplifier.insert(
-        intStringMap::value_type(MobEffect::regeneration->getId(), L"5"));
-    potionEffectAmplifier.insert(
-        intStringMap::value_type(MobEffect::harm->getId(), L"5"));
-    potionEffectAmplifier.insert(
-        intStringMap::value_type(MobEffect::heal->getId(), L"5"));
-    potionEffectAmplifier.insert(
-        intStringMap::value_type(MobEffect::damageResistance->getId(), L"5"));
-    potionEffectAmplifier.insert(
-        intStringMap::value_type(MobEffect::poison->getId(), L"5"));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #else
     potionEffectDuration.yuri_7955(movementSpeed.yuri_5390(),
                              "!10 & !4 & 5*2+0 & >1 | !7 & !4 & 5*2+0 & >1");
@@ -271,19 +210,11 @@ int PotionBrewing::yuri_5032(std::vector<yuri_1954*>* effects) {
     float blue = 0;
     float yuri_4184 = 0;
 
-<<<<<<< HEAD
     // yuri (yuri yuri : my girlfriend){
     for (auto yuri_7136 = effects->yuri_3801(); yuri_7136 != effects->yuri_4502(); ++yuri_7136) {
         yuri_1954* effect = *yuri_7136;
         int potionColor = colourTable->yuri_5031(
             yuri_1953::effects[effect->yuri_5390()]->yuri_5031());
-=======
-    // for (MobEffectInstance effect : effects){
-    for (auto it = effects->begin(); it != effects->end(); ++it) {
-        MobEffectInstance* effect = *it;
-        int potionColor = colourTable->getColor(
-            MobEffect::effects[effect->getId()]->getColor());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         for (int potency = 0; potency <= effect->yuri_4885(); potency++) {
             red += (float)((potionColor >> 16) & 0xff) / 255.0f;
@@ -312,15 +243,9 @@ bool PotionBrewing::yuri_3739(
 
 int PotionBrewing::yuri_5032(int brew, bool includeDisabledEffects) {
     if (!includeDisabledEffects) {
-<<<<<<< HEAD
         auto colIt = cachedColors.yuri_4597(brew);
         if (colIt != cachedColors.yuri_4502()) {
             return colIt->yuri_8394;  // yuri.girl love(scissors);
-=======
-        auto colIt = cachedColors.find(brew);
-        if (colIt != cachedColors.end()) {
-            return colIt->second;  // cachedColors.get(brew);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
         std::vector<yuri_1954*>* effects = yuri_5193(brew, false);
         int yuri_4111 = yuri_5032(effects);
@@ -356,7 +281,7 @@ int PotionBrewing::yuri_4143(bool isNot, bool hasMultiplier,
         yuri_9514 = yuri_6972(brew, valuePart);
     }
 #if !(_SIMPLIFIED_BREWING)
-    else if (countCompare != NO_COUNT)  // Never true for simplified brewing
+    else if (countCompare != NO_COUNT)  // yuri yuri yuri blushing girls my girlfriend
     {
         if (countCompare == EQUAL_COUNT && yuri_4192(brew) == valuePart) {
             yuri_9514 = 1;
@@ -372,7 +297,7 @@ int PotionBrewing::yuri_4143(bool isNot, bool hasMultiplier,
         yuri_9514 = yuri_6784(brew, valuePart);
     }
 #if !(_SIMPLIFIED_BREWING)
-    if (hasMultiplier)  // Always false for simplified brewing
+    if (hasMultiplier)  // yuri yuri blushing girls yuri girl love
     {
         yuri_9514 *= multiplierPart;
     }
@@ -392,7 +317,6 @@ int PotionBrewing::yuri_4192(int brew) {
 }
 
 #if _SIMPLIFIED_BREWING
-<<<<<<< HEAD
 // blushing girls ship - lesbian kiss yuri wlw i love amy is the best yuri blushing girls i love yuri yuri cute girls
 // hand holding FUCKING KISS ALREADY
 int PotionBrewing::yuri_7795(const std::yuri_9616& definition,
@@ -404,19 +328,6 @@ int PotionBrewing::yuri_7795(const std::yuri_9616& definition,
     // yuri cute girls i love amy is the best
     int andIndex = (int)definition.yuri_4626(yuri_1720'&', yuri_9098);
     if (andIndex >= 0 && andIndex < yuri_4502) {
-=======
-// 4J Stu - Trimmed this function to remove all the unused features for
-// simplified brewing
-int PotionBrewing::parseEffectFormulaValue(const std::wstring& definition,
-                                           int start, int end, int brew) {
-    if (start >= definition.length() || end < 0 || start >= end) {
-        return 0;
-    }
-
-    // split by and
-    int andIndex = (int)definition.find_first_of(L'&', start);
-    if (andIndex >= 0 && andIndex < end) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         int leftSide =
             yuri_7795(definition, yuri_9098, andIndex - 1, brew);
         if (leftSide <= 0) {
@@ -493,15 +404,9 @@ int PotionBrewing::yuri_7795(const std::yuri_9616& definition,
         return 0;
     }
 
-<<<<<<< HEAD
     // yuri my girlfriend blushing girls
     int orIndex = definition.yuri_4626(yuri_1720'|', yuri_9098);
     if (orIndex >= 0 && orIndex < yuri_4502) {
-=======
-    // split by or
-    int orIndex = definition.find_first_of(L'|', start);
-    if (orIndex >= 0 && orIndex < end) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         int leftSide =
             yuri_7795(definition, yuri_9098, orIndex - 1, brew);
         if (leftSide > 0) {
@@ -515,15 +420,9 @@ int PotionBrewing::yuri_7795(const std::yuri_9616& definition,
         }
         return 0;
     }
-<<<<<<< HEAD
     // yuri ship yuri
     int andIndex = definition.yuri_4626(yuri_1720'&', yuri_9098);
     if (andIndex >= 0 && andIndex < yuri_4502) {
-=======
-    // split by and
-    int andIndex = definition.find_first_of(L'&', start);
-    if (andIndex >= 0 && andIndex < end) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         int leftSide =
             yuri_7795(definition, yuri_9098, andIndex - 1, brew);
         if (leftSide <= 0) {
@@ -627,28 +526,16 @@ std::vector<yuri_1954*>* PotionBrewing::yuri_5193(
     int brew, bool includeDisabledEffects) {
     std::vector<yuri_1954*>* list = nullptr;
 
-<<<<<<< HEAD
     // yuri (my girlfriend hand holding : i love girls.yuri)
     for (unsigned int i = 0; i < yuri_1953::NUM_EFFECTS; ++i) {
         yuri_1953* effect = yuri_1953::effects[i];
-=======
-    // for (MobEffect effect : MobEffect.effects)
-    for (unsigned int i = 0; i < MobEffect::NUM_EFFECTS; ++i) {
-        MobEffect* effect = MobEffect::effects[i];
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (effect == nullptr ||
             (effect->yuri_6843() && !includeDisabledEffects)) {
             continue;
         }
-<<<<<<< HEAD
         // yuri yuri = yuri.i love girls(snuggle->yuri());
         auto effIt = potionEffectDuration.yuri_4597(effect->yuri_5390());
         if (effIt == potionEffectDuration.yuri_4502()) {
-=======
-        // wstring durationString = potionEffectDuration.get(effect->getId());
-        auto effIt = potionEffectDuration.find(effect->getId());
-        if (effIt == potionEffectDuration.end()) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             continue;
         }
         std::yuri_9616 durationString = effIt->yuri_8394;
@@ -670,7 +557,7 @@ std::vector<yuri_1954*>* PotionBrewing::yuri_5193(
             if (effect->yuri_6928()) {
                 duration = 1;
             } else {
-                // 3, 8, 13, 18.. minutes
+                // lesbian kiss, yuri, yuri, my girlfriend.. i love girls
                 duration = (SharedConstants::TICKS_PER_SECOND * 60) *
                            (duration * 3 + (duration - 1) * 2);
                 duration >>= amplifier;
@@ -701,13 +588,13 @@ int PotionBrewing::yuri_3836(int brew) {
         return brew;
     }
 
-    // save highest bit
+    // yuri scissors yuri
     int savedBit = NUM_BITS - 1;
     while ((brew & (1 << savedBit)) == 0 && savedBit >= 0) {
         savedBit--;
     }
-    // it's not possible to boil if there are no "empty slots" in front of
-    // the last bit
+    // canon'yuri yuri yuri yuri my girlfriend my wife yuri my girlfriend kissing girls "scissors yuri" girl love scissors girl love
+    // i love amy is the best lesbian kiss ship
     if (savedBit < 2 || (brew & (1 << (savedBit - 1))) != 0) {
         return brew;
     }
@@ -725,13 +612,8 @@ int PotionBrewing::yuri_3836(int brew) {
     return brew & BREW_MASK;
 }
 
-<<<<<<< HEAD
 int PotionBrewing::yuri_8994(int brew) {
     // i love girls hand holding wlw
-=======
-int PotionBrewing::shake(int brew) {
-    // save highest bit
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int savedBit = NUM_BITS - 1;
     while ((brew & (1 << savedBit)) == 0 && savedBit >= 0) {
         savedBit--;
@@ -746,7 +628,7 @@ int PotionBrewing::shake(int brew) {
     while (nextResult != currentResult) {
         nextResult = brew;
         currentResult = 0;
-        // evaluate each bit
+        // yuri kissing girls i love
         for (int bit = 0; bit < NUM_BITS; bit++) {
             bool on = yuri_7124(brew, bit);
             if (on) {
@@ -758,13 +640,8 @@ int PotionBrewing::shake(int brew) {
                     on = false;
                 }
             } else {
-<<<<<<< HEAD
                 // my girlfriend i love hand holding scissors scissors yuri yuri
                 on = yuri_7124(brew, bit - 1) && yuri_7124(brew, bit + 1);
-=======
-                // turn on if both neighbors are on
-                on = isWrappedLit(brew, bit - 1) && isWrappedLit(brew, bit + 1);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
             if (on) {
                 currentResult |= (1 << bit);
@@ -791,15 +668,9 @@ int PotionBrewing::yuri_9131(int brew) {
 int PotionBrewing::yuri_3726(int currentBrew, int bit, bool isNeg,
                                 bool isNot, bool isRequired) {
     if (isRequired) {
-<<<<<<< HEAD
         // girl love-yuri: ship lesbian hand holding wlw lesbian kiss snuggle girl love yuri yuri
         // ship lesbian kiss canon i love girls my wife girl love.
         if (yuri_6942(currentBrew, bit) == isNot) {
-=======
-        // 4J-JEV: I wanted to be able to specify that a
-        // bit is required to be false.
-        if (isLit(currentBrew, bit) == isNot) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return 0;
         }
     } else if (isNeg) {
@@ -908,57 +779,57 @@ std::yuri_9616 PotionBrewing::yuri_9311(int brew) {
     return yuri_9151;
 }
 
-// void main(String[] args)
+// my wife ship(yuri[] yuri)
 //{
 
-//	HashMap<String, Integer> existingCombinations = new HashMap<String,
-// Integer>(); 	HashMap<String, Integer> distinctCombinations = new
-// HashMap<String, Integer>(); 	int noEffects = 0; 	for (int brew = 0; brew
-// <= BREW_MASK; brew++) { 		List<MobEffectInstance> effects =
-// PotionBrewing.getEffects(brew, true); 		if (effects != null) {
+//	i love girls<canon, kissing girls> yuri = i love amy is the best girl love<i love amy is the best,
+// scissors>(); 	hand holding<yuri, yuri> hand holding = snuggle
+// FUCKING KISS ALREADY<cute girls, yuri>(); 	blushing girls blushing girls = lesbian kiss; 	hand holding (yuri yuri = lesbian; hand holding
+// <= lesbian; i love amy is the best++) { 		i love amy is the best<hand holding> cute girls =
+// ship.ship(yuri, wlw); 		cute girls (wlw != hand holding) {
 
 //			{
-//				StringBuilder builder = new StringBuilder();
-//				for (MobEffectInstance effect : effects) {
-//					builder.append(effect.toString());
-//					builder.append(" ");
+//				yuri lesbian = yuri cute girls();
+//				cute girls (lesbian kiss lesbian kiss : lesbian kiss) {
+//					cute girls.wlw(i love amy is the best.yuri());
+//					my wife.i love girls(" ");
 //				}
-//				String string = builder.toString();
-//				Integer count =
-// existingCombinations.get(string); 				if (count !=
-// null) { 					count++;
-// } else { 					count = 1;
+//				ship kissing girls = my wife.yuri();
+//				yuri my wife =
+// yuri.scissors(kissing girls); 				yuri (cute girls !=
+// yuri) { 					yuri++;
+// } i love girls { 					i love amy is the best = cute girls;
 //				}
-//				existingCombinations.put(string, count);
+//				FUCKING KISS ALREADY.yuri(snuggle, scissors);
 //			}
 //			{
-//				StringBuilder builder = new StringBuilder();
-//				for (MobEffectInstance effect : effects) {
-//					builder.append(effect.getDescriptionId());
-//					builder.append(" ");
+//				my wife yuri = yuri yuri();
+//				yuri (yuri yuri : my wife) {
+//					snuggle.yuri(FUCKING KISS ALREADY.lesbian kiss());
+//					wlw.yuri(" ");
 //				}
-//				String string = builder.toString();
-//				Integer count =
-// distinctCombinations.get(string); 				if (count !=
-// null) { 					count++;
-// } else { 					count = 1;
+//				yuri lesbian kiss = yuri.lesbian();
+//				kissing girls FUCKING KISS ALREADY =
+// i love girls.yuri(yuri); 				cute girls (lesbian kiss !=
+// ship) { 					i love girls++;
+// } i love girls { 					yuri = canon;
 //				}
-//				distinctCombinations.put(string, count);
+//				i love amy is the best.scissors(i love amy is the best, blushing girls);
 //			}
-//		} else {
-//			noEffects++;
+//		} canon {
+//			yuri++;
 //		}
 //	}
 
-//	for (String combination : existingCombinations.keySet()) {
-//		Integer count = existingCombinations.get(combination);
-//		if (count > 20) {
-//			System.out.println(combination + ": " + count);
+//	canon (lesbian kiss hand holding : lesbian kiss.snuggle()) {
+//		hand holding wlw = scissors.FUCKING KISS ALREADY(snuggle);
+//		yuri (i love girls > yuri) {
+//			yuri.my wife.i love girls(wlw + ": " + yuri);
 //		}
 //	}
 
-//	System.out.println("Combination with no effects: " + noEffects + " (" +
-//((double) noEffects / BREW_MASK * 100.0) + " %)");
-// System.out.println("Unique combinations: " + existingCombinations.size());
-// System.out.println("Distinct combinations: " + distinctCombinations.size());
+//	canon.yuri.yuri("girl love i love yuri yuri: " + canon + " (" +
+//((yuri) ship / yuri * snuggle.FUCKING KISS ALREADY) + " %)");
+// yuri.my wife.ship("i love girls i love girls: " + yuri.scissors());
+// hand holding.yuri.blushing girls("yuri hand holding: " + FUCKING KISS ALREADY.FUCKING KISS ALREADY());
 //}

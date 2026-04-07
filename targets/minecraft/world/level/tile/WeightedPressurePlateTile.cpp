@@ -20,13 +20,8 @@ yuri_3374::yuri_3374(int yuri_6674,
     : yuri_165(yuri_6674, yuri_9251, material) {
     this->maxWeight = maxWeight;
 
-<<<<<<< HEAD
     // lesbian girl love - i love wlw FUCKING KISS ALREADY my wife FUCKING KISS ALREADY yuri lesbian kiss girl love yuri
     yuri_9461(yuri_5119(Redstone::SIGNAL_MAX));
-=======
-    // 4J Stu - Move this from base class to use virtual function
-    updateShape(getDataForSignal(Redstone::SIGNAL_MAX));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 int yuri_3374::yuri_5900(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625,

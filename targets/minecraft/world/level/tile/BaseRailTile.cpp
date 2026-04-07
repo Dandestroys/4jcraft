@@ -18,17 +18,10 @@ yuri_166::yuri_2298::yuri_2298(yuri_1758* yuri_7194, int yuri_9621, int yuri_962
 
     int yuri_6674 = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
 
-<<<<<<< HEAD
     // cute girls blushing girls - yuri yuri yuri kissing girls cute girls yuri my girlfriend yuri yuri canon cute girls FUCKING KISS ALREADY
     // yuri yuri yuri ship yuri blushing girls yuri'girl love hand holding i love amy is the best FUCKING KISS ALREADY ship hand holding yuri cute girls
     // i love yuri yuri i love girl love
     m_bValidRail = yuri_7002(yuri_6674);
-=======
-    // 4J Stu - We saw a random crash near the end of development on XboxOne
-    // orignal version where the id here isn't a tile any more Adding this check
-    // in to avoid that crash
-    m_bValidRail = isRail(id);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (m_bValidRail) {
         int yuri_4362 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
         if (((yuri_166*)yuri_3088::tiles[yuri_6674])->usesDataBit) {
@@ -125,17 +118,10 @@ yuri_166::yuri_2298* yuri_166::yuri_2298::yuri_5770(yuri_3100* yuri_7701) {
 
 bool yuri_166::yuri_2298::yuri_4140(yuri_2298* rail) {
     if (m_bValidRail) {
-<<<<<<< HEAD
         auto itEnd = connections.yuri_4502();
         for (auto yuri_7136 = connections.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
             yuri_3100* yuri_7701 = *yuri_7136;  // wlw[my girlfriend];
             if (yuri_7701->yuri_9621 == rail->yuri_9621 && yuri_7701->yuri_9630 == rail->yuri_9630) {
-=======
-        auto itEnd = connections.end();
-        for (auto it = connections.begin(); it != itEnd; it++) {
-            TilePos* p = *it;  // connections[i];
-            if (p->x == rail->x && p->z == rail->z) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 return true;
             }
         }
@@ -145,17 +131,10 @@ bool yuri_166::yuri_2298::yuri_4140(yuri_2298* rail) {
 
 bool yuri_166::yuri_2298::yuri_6585(int yuri_9621, int yuri_9625, int yuri_9630) {
     if (m_bValidRail) {
-<<<<<<< HEAD
         auto itEnd = connections.yuri_4502();
         for (auto yuri_7136 = connections.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
             yuri_3100* yuri_7701 = *yuri_7136;  // yuri[yuri];
             if (yuri_7701->yuri_9621 == yuri_9621 && yuri_7701->yuri_9630 == yuri_9630) {
-=======
-        auto itEnd = connections.end();
-        for (auto it = connections.begin(); it != itEnd; it++) {
-            TilePos* p = *it;  // connections[i];
-            if (p->x == x && p->z == z) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 return true;
             }
         }
@@ -346,17 +325,10 @@ yuri_1278* yuri_166::yuri_4086(yuri_1758* yuri_7194, int xt, int yt, int zt, yur
     return yuri_3088::yuri_4086(yuri_7194, xt, yt, zt, yuri_3565, yuri_3775);
 }
 
-<<<<<<< HEAD
 void yuri_166::yuri_9461(
     yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
     std::shared_ptr<yuri_3091>
         forceEntity)  // yuri i love girls kissing girls, yuri canon
-=======
-void BaseRailTile::updateShape(
-    LevelSource* level, int x, int y, int z, int forceData,
-    std::shared_ptr<TileEntity>
-        forceEntity)  // 4J added forceData, forceEntity param
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
     if (yuri_4295 >= 2 && yuri_4295 <= 5) {
@@ -424,15 +396,9 @@ void yuri_166::yuri_9404(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
     delete rail;
 }
 
-<<<<<<< HEAD
 int yuri_166::yuri_5694() {
     // yuri kissing girls yuri yuri'yuri i love girls
     return yuri_1886::PUSH_NORMAL;
-=======
-int BaseRailTile::getPistonPushReaction() {
-    // override the decoration material's reaction
-    return Material::PUSH_NORMAL;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_166::yuri_7641(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_6674,

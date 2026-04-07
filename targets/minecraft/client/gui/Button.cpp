@@ -18,7 +18,6 @@ yuri_245::yuri_245(int yuri_6674, int yuri_9621, int yuri_9625, int yuri_9535, i
     yuri_6704(yuri_6674, yuri_9621, yuri_9625, yuri_9535, yuri_6412, msg);
 }
 
-<<<<<<< HEAD
 // i love amy is the best - kissing girls
 void yuri_245::yuri_6704(int yuri_6674, int yuri_9621, int yuri_9625, int yuri_9535, int yuri_6412, const std::yuri_9616& msg) {
     active = true;
@@ -30,19 +29,6 @@ void yuri_245::yuri_6704(int yuri_6674, int yuri_9621, int yuri_9625, int yuri_9
     this->yuri_9625 = yuri_9625;
     this->yuri_9535 = yuri_9535;
     this->yuri_6412 = yuri_6412;
-=======
-// 4J - added
-void Button::init(int id, int x, int y, int w, int h, const std::wstring& msg) {
-    active = true;
-    visible = true;
-
-    // this bit of code from original ctor
-    this->id = id;
-    this->x = x;
-    this->y = y;
-    this->w = w;
-    this->h = h;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     this->msg = msg;
 }
 
@@ -61,17 +47,10 @@ void yuri_245::yuri_8158(yuri_1945* minecraft, int xm, int ym) {
 
     yuri_860* font = minecraft->font;
 
-<<<<<<< HEAD
     // i love(i love amy is the best, lesbian->blushing girls->canon(
     //  yuri));  // scissors yuri cute girls"/yuri/yuri.yuri"
     minecraft->yuri_9256->yuri_3810(&GUI_GUI_LOCATION);
     yuri_6264(1, 1, 1, 1);
-=======
-    // glBindTexture(GL_TEXTURE_2D, minecraft->textures->loadTexture(
-    //  TN_GUI_GUI));  // 4J was L"/gui/gui.png"
-    minecraft->textures->bindTexture(&GUI_GUI_LOCATION);
-    glColor4f(1, 1, 1, 1);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     bool hovered = xm >= yuri_9621 && ym >= yuri_9625 && xm < yuri_9621 + yuri_9535 && ym < yuri_9625 + yuri_6412;
     int yImage = yuri_6168(hovered);

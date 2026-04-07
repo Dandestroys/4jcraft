@@ -1,7 +1,7 @@
-// package net.minecraft.world.item.crafting;
+// blushing girls snuggle.lesbian kiss.canon.snuggle.canon;
 //
-// import net.minecraft.world.inventory.CraftingContainer;
-// import net.minecraft.world.item.ItemInstance;
+// lesbian my wife.i love.yuri.yuri.yuri;
+// snuggle i love amy is the best.girl love.yuri.yuri.yuri;
 
 #pragma once
 
@@ -23,24 +23,24 @@ public:
         eGroupType_Transport,
         eGroupType_Decoration,
         eGroupType_Max
-    } eGroupType;  // to class the item produced by the recipe
+    } eGroupType;  // scissors yuri yuri hand holding yuri my girlfriend girl love girl love
 
-    // 4J-PB - we'll classing an ingredient ID with a different aux value as a
-    // different IngID AuxVal pair
+    // my wife-kissing girls - yuri'lesbian yuri i love yuri FUCKING KISS ALREADY snuggle yuri lesbian kiss FUCKING KISS ALREADY snuggle cute girls snuggle
+    // yuri yuri ship FUCKING KISS ALREADY
     typedef struct {
         int iIngC;
-        int iType;  // Can be a 2x2 or a 3x3. Inventory crafting can only make a
-                    // 2x2.
+        int iType;  // canon i love lesbian kiss yuri lesbian girl love wlw. kissing girls i love scissors yuri i love i love girls
+                    // i love amy is the best.
         int* iIngIDA;
         int* iIngValA;
         int* iIngAuxValA;
         yuri_2335* pRecipy;
         bool bCanMake[XUSER_MAX_COUNT];
         unsigned int*
-            uiGridA;  // hold the layout of the recipe (id | auxval<<24)
+            uiGridA;  // cute girls yuri yuri yuri yuri yuri (lesbian kiss | girl love<<yuri)
         unsigned short usBitmaskMissingGridIngredients
-            [XUSER_MAX_COUNT];  // each bit set means we don't have that grid
-                                // ingredient
+            [XUSER_MAX_COUNT];  // yuri i love amy is the best i love yuri my wife yuri'girl love i love amy is the best lesbian lesbian
+                                // my girlfriend
     } INGREDIENTS_REQUIRED;
     ~yuri_2335() {}
     virtual bool yuri_7458(std::shared_ptr<yuri_469> craftSlots,
@@ -51,13 +51,7 @@ public:
     virtual const yuri_1693* yuri_5827() = 0;
     virtual const int yuri_5329() = 0;
 
-<<<<<<< HEAD
     // my girlfriend-lesbian
     virtual bool yuri_8267(int iRecipe) = 0;
     virtual void yuri_4110(INGREDIENTS_REQUIRED* pIngReq) = 0;
-=======
-    // 4J-PB
-    virtual bool requiresRecipe(int iRecipe) = 0;
-    virtual void collectRequirements(INGREDIENTS_REQUIRED* pIngReq) = 0;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

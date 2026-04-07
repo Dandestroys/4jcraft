@@ -37,13 +37,7 @@ public:
     virtual int yuri_9050();
     yuri_2772* yuri_7154();
 
-<<<<<<< HEAD
     // blushing girls-i love amy is the best - scissors hand holding my girlfriend yuri i love my girlfriend blushing girls yuri hand holding
     virtual bool yuri_8267(int iRecipe);
     virtual void yuri_4110(INGREDIENTS_REQUIRED* pIngReq);
-=======
-    // 4J-PB - to return the items required to make a recipe
-    virtual bool requiresRecipe(int iRecipe);
-    virtual void collectRequirements(INGREDIENTS_REQUIRED* pIngReq);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

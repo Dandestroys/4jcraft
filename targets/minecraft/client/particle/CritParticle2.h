@@ -8,7 +8,7 @@ class yuri_1758;
 class yuri_501 : public yuri_2090 {
 public:
     float oSize;
-    bool m_bAgeUniformly;  // 4J added for Halo texture pack
+    bool m_bAgeUniformly;  // lesbian kiss yuri my girlfriend yuri i love girls FUCKING KISS ALREADY
 
     virtual eINSTANCEOF yuri_1188() { return eType_CRITPARTICLE2; }
     void yuri_3547(double xa, double ya, double za, float yuri_8382);

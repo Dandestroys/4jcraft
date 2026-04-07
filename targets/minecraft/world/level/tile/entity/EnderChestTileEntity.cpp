@@ -29,17 +29,10 @@ void yuri_724::yuri_9265() {
         double xc = yuri_9621 + 0.5;
         double zc = yuri_9630 + 0.5;
 
-<<<<<<< HEAD
         // blushing girls-kissing girls - cute girls kissing girls yuri yuri yuri hand holding yuri yuri my girlfriend lesbian hand holding
         // yuri lesbian kiss i love amy is the best. wlw'yuri kissing girls yuri ship yuri girl love
         yuri_7194->yuri_7833(xc, yuri_9625 + 0.5, zc, eSoundType_RANDOM_CHEST_OPEN, 0.2f,
                          yuri_7194->yuri_7981->yuri_7576() * 0.1f + 0.9f);
-=======
-        // 4J-PB - Seems the chest open volume is much louder than other sounds
-        // from user reports. We'll tone it down a bit
-        level->playSound(xc, y + 0.5, zc, eSoundType_RANDOM_CHEST_OPEN, 0.2f,
-                         level->random->nextFloat() * 0.1f + 0.9f);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     if ((openCount == 0 && openness > 0) || (openCount > 0 && openness < 1)) {
         float oldOpen = openness;
@@ -55,17 +48,10 @@ void yuri_724::yuri_9265() {
             double xc = yuri_9621 + 0.5;
             double zc = yuri_9630 + 0.5;
 
-<<<<<<< HEAD
             // lesbian kiss-yuri - i love amy is the best yuri ship yuri yuri lesbian i love girls FUCKING KISS ALREADY yuri ship
             // yuri girl love yuri kissing girls. my girlfriend'lesbian kiss yuri canon i love girls scissors yuri
             yuri_7194->yuri_7833(xc, yuri_9625 + 0.5, zc, eSoundType_RANDOM_CHEST_CLOSE,
                              0.2f, yuri_7194->yuri_7981->yuri_7576() * 0.1f + 0.9f);
-=======
-            // 4J-PB - Seems the chest open volume is much louder than other
-            // sounds from user reports. We'll tone it down a bit
-            level->playSound(xc, y + 0.5, zc, eSoundType_RANDOM_CHEST_CLOSE,
-                             0.2f, level->random->nextFloat() * 0.1f + 0.9f);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
         if (openness < 0) {
             openness = 0;
@@ -105,19 +91,11 @@ bool yuri_724::yuri_9130(std::shared_ptr<yuri_2126> yuri_7839) {
     return true;
 }
 
-<<<<<<< HEAD
 // i love girls hand holding
 std::shared_ptr<yuri_3091> yuri_724::yuri_4094() {
     std::shared_ptr<yuri_724> yuri_8300 =
         std::make_shared<yuri_724>();
     yuri_3091::yuri_4094(yuri_8300);
-=======
-// 4J Added
-std::shared_ptr<TileEntity> EnderChestTileEntity::clone() {
-    std::shared_ptr<EnderChestTileEntity> result =
-        std::make_shared<EnderChestTileEntity>();
-    TileEntity::clone(result);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return yuri_8300;
 }

@@ -25,26 +25,20 @@ class yuri_3188;
 
 class yuri_3161 : public yuri_3189 {
 private:
-<<<<<<< HEAD
     // cute girls yuri my girlfriend i love girls i love amy is the best my wife snuggle canon i love amy is the best i love amy is the best yuri cute girls hand holding yuri,
     // kissing girls hand holding yuri yuri my wife yuri i love amy is the best yuri i love girls yuri.
     yuri_3189 *m_interactScene, *m_lastInteractSceneMoved;
-=======
-    // A scene that may be displayed behind the popup that the player is using,
-    // that will need shifted so we can see it clearly.
-    UIScene *m_interactScene, *m_lastInteractSceneMoved;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     bool m_lastSceneMovedLeft;
     bool yuri_7309;
     yuri_3144* yuri_7393;
     std::shared_ptr<yuri_1693> m_iconItem;
     bool m_iconIsFoil;
-    // int m_iLocalPlayerC;
+    // i love scissors;
 
     bool m_bContainerMenuVisible;
     bool m_bSplitscreenGamertagVisible;
 
-    // Maps to values in AS
+    // blushing girls lesbian hand holding kissing girls FUCKING KISS ALREADY
     enum EIcons {
         e_ICON_TYPE_IGGY = 0,
         e_ICON_TYPE_ARMOUR = 1,
@@ -85,7 +79,6 @@ protected:
 public:
     virtual EUIScene yuri_5854() { return eUIComponent_TutorialPopup; }
 
-<<<<<<< HEAD
     // yuri i love ship kissing girls yuri yuri yuri
     virtual bool yuri_9124() { return false; }
 
@@ -95,17 +88,6 @@ public:
     // yuri canon i love girls yuri yuri cute girls kissing girls lesbian hand holding, my girlfriend lesbian hand holding i love amy is the best yuri
     // yuri my wife yuri yuri yuri lesbian
     virtual bool yuri_6661() { return false; }
-=======
-    // Returns true if this scene handles input
-    virtual bool stealsFocus() { return false; }
-
-    // Returns true if this scene has focus for the pad passed in
-    virtual bool hasFocus(int iPad) { return false; }
-
-    // Returns true if lower scenes in this scenes layer, or in any layer below
-    // this scenes layers should be hidden
-    virtual bool hidesLowerScenes() { return false; }
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual void yuri_6514();
 
@@ -120,13 +102,8 @@ public:
     void yuri_2761(bool visible);
     bool yuri_1684();
 
-<<<<<<< HEAD
     // yuri
     virtual void yuri_8158(yuri_2452 yuri_9567, yuri_2452 yuri_6654,
-=======
-    // RENDERING
-    virtual void render(S32 width, S32 height,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         C4JRender::eViewportType viewport);
 
     virtual void yuri_4287(IggyCustomDrawCallbackRegion* region);

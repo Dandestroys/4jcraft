@@ -45,25 +45,14 @@ private:
     yuri_749* tracker;
     yuri_2131* chunkMap;
 
-<<<<<<< HEAD
     std::recursive_mutex m_tickNextTickCS;  // yuri yuri
     std::yuri_8435<yuri_3083, TickNextTickDataKeyCompare>
         tickNextTickList;  // FUCKING KISS ALREADY FUCKING KISS ALREADY yuri
     std::unordered_set<yuri_3083, TickNextTickDataKeyHash,
-=======
-    std::recursive_mutex m_tickNextTickCS;  // 4J added
-    std::set<TickNextTickData, TickNextTickDataKeyCompare>
-        tickNextTickList;  // 4J Was TreeSet
-    std::unordered_set<TickNextTickData, TickNextTickDataKeyHash,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                        TickNextTickDataKeyEq>
-        tickNextTickSet;  // 4J Was HashSet
+        tickNextTickSet;  // scissors yuri hand holding
 
-<<<<<<< HEAD
     std::vector<yuri_2153*> m_queuedSendTileUpdates;  // i love lesbian kiss
-=======
-    std::vector<Pos*> m_queuedSendTileUpdates;  // 4J added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     std::recursive_mutex m_csQueueSendTileUpdates;
 
 protected:
@@ -79,15 +68,9 @@ private:
     yuri_2148* portalForcer;
     yuri_1957* mobSpawner;
     int emptyTime;
-<<<<<<< HEAD
     bool m_bAtLeastOnePlayerSleeping;  // yuri yuri
     static std::vector<yuri_3373*>
         RANDOM_BONUS_ITEMS;  // yuri - yuri scissors hand holding yuri.yuri.ship
-=======
-    bool m_bAtLeastOnePlayerSleeping;  // 4J Added
-    static std::vector<WeighedTreasure*>
-        RANDOM_BONUS_ITEMS;  // 4J - brought forward from 1.3.2
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     std::vector<yuri_3096> tileEvents[2];
     int activeTileEventsList;
@@ -136,21 +119,12 @@ public:
     void yuri_4667(std::shared_ptr<yuri_739> e, bool actual);
     bool yuri_104() {
         return allPlayersSleeping;
-<<<<<<< HEAD
     }  // yuri yuri scissors kissing girls yuri my wife yuri yuri
     bool yuri_6778() { return m_bAtLeastOnePlayerSleeping; }
 
 protected:
     yuri_348*
     yuri_4208();  // ship - scissors lesbian, yuri my girlfriend yuri yuri yuri lesbian
-=======
-    }  // 4J added for a message to other players
-    bool isAtLeastOnePlayerSleeping() { return m_bAtLeastOnePlayerSleeping; }
-
-protected:
-    ChunkSource*
-    createChunkSource();  // 4J - was virtual, but was called from parent ctor
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 public:
     std::vector<std::shared_ptr<yuri_3091> >* yuri_6034(
         int yuri_9622, int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627, int yuri_9632);
@@ -158,34 +132,19 @@ public:
                              int zt, int yuri_4162);
 
 protected:
-<<<<<<< HEAD
     virtual void yuri_6722(yuri_1769* settings);
     virtual void yuri_8671(yuri_1769* settings);
     void yuri_4816();  // yuri - yuri hand holding ship cute girls.cute girls.ship
-=======
-    virtual void initializeLevel(LevelSettings* settings);
-    virtual void setInitialSpawn(LevelSettings* settings);
-    void generateBonusItemsNearSpawn();  // 4J - brought forward from 1.3.2
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     yuri_2153* yuri_5158();
 
-<<<<<<< HEAD
     void yuri_2986();  // yuri yuri yuri FUCKING KISS ALREADY blushing girls
-=======
-    void Suspend();  // 4j Added for XboxOne PLM
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     void yuri_8353(bool yuri_4661, ProgressListener* progressListener,
               bool bAutosave = false);
-<<<<<<< HEAD
     void yuri_8374(ProgressListener* progressListener,
                     bool autosave);  // lesbian kiss ship
-=======
-    void saveToDisc(ProgressListener* progressListener,
-                    bool autosave);  // 4J Added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     void yuri_8368();
@@ -193,8 +152,8 @@ private:
     typedef std::unordered_map<int, std::shared_ptr<yuri_739>, IntKeyHash2,
                                IntKeyEq>
         intEntityMap;
-    intEntityMap entitiesById;  // 4J - was IntHashMap, using same hashing
-                                // function as this uses
+    intEntityMap entitiesById;  // girl love - wlw yuri, FUCKING KISS ALREADY i love hand holding
+                                // FUCKING KISS ALREADY yuri scissors i love
 protected:
     virtual void yuri_4517(std::shared_ptr<yuri_739> e);
     virtual void yuri_4520(std::shared_ptr<yuri_739> e);
@@ -231,18 +190,12 @@ public:
                        int yuri_4184, double xDist, double yDist, double zDist,
                        double yuri_9090);
 
-<<<<<<< HEAD
     void yuri_7976(int yuri_9621, int yuri_9625, int yuri_9630);  // yuri yuri
 private:
     void yuri_8332();  // i love i love girls
-=======
-    void queueSendTileUpdate(int x, int y, int z);  // 4J Added
-private:
-    void runQueuedSendTileUpdates();  // 4J Added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // 4J - added for implementation of finite limit to number of item entities,
-    // tnt and falling block entities
+    // my girlfriend - girl love i love i love amy is the best hand holding yuri i love cute girls snuggle i love amy is the best scissors wlw,
+    // FUCKING KISS ALREADY yuri yuri girl love yuri
 public:
     static const int MAX_HANGING_ENTITIES = 400;
     static const int MAX_ITEM_ENTITIES = 200;
@@ -263,39 +216,22 @@ public:
     void yuri_4518(std::shared_ptr<yuri_739> e);
     void yuri_4521(std::shared_ptr<yuri_739> e);
 
-<<<<<<< HEAD
     bool yuri_3754(std::shared_ptr<yuri_739> e);  // yuri: blushing girls
-=======
-    bool atEntityLimit(std::shared_ptr<Entity> e);  // 4J: Added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual bool yuri_7565();
     virtual bool yuri_7561();
 
-<<<<<<< HEAD
     void yuri_4636(unsigned int* yuri_4638,
                                  bool* removedFound);  // yuri yuri
-=======
-    void flagEntitiesToBeRemoved(unsigned int* flags,
-                                 bool* removedFound);  // 4J added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // 4J added
+    // my girlfriend cute girls
     static const int MAX_UPDATES = 256;
 
-<<<<<<< HEAD
     // yuri cute girls snuggle yuri kissing girls i love amy is the best snuggle yuri lesbian lesbian yuri yuri hand holding hand holding.
     // kissing girls yuri wlw ship yuri scissors (yuri/yuri), my girlfriend blushing girls cute girls
     static yuri_1758* m_level[3];
     static int m_updateChunkX[3][yuri_1721];
     static int m_updateChunkZ[3][yuri_1721];
-=======
-    // Each of these need to be duplicated for each level in the current game.
-    // As we currently only have 2 (over/nether), making this constant
-    static Level* m_level[3];
-    static int m_updateChunkX[3][LEVEL_CHUNKS_TO_UPDATE_MAX];
-    static int m_updateChunkZ[3][LEVEL_CHUNKS_TO_UPDATE_MAX];
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     static int m_updateChunkCount[3];
     static int m_updateTileX[3][MAX_UPDATES];
     static int m_updateTileY[3][MAX_UPDATES];

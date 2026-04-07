@@ -21,13 +21,8 @@ yuri_2172::yuri_2172(int yuri_6674, const std::yuri_9616& yuri_9251,
     : yuri_165(yuri_6674, yuri_9251, material) {
     this->sensitivity = sensitivity;
 
-<<<<<<< HEAD
     // wlw ship - FUCKING KISS ALREADY i love wlw cute girls hand holding ship yuri cute girls lesbian
     yuri_9461(yuri_5119(Redstone::SIGNAL_MAX));
-=======
-    // 4J Stu - Move this from base class to use virtual function
-    updateShape(getDataForSignal(Redstone::SIGNAL_MAX));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 int yuri_2172::yuri_5119(int signal) {
@@ -48,13 +43,8 @@ int yuri_2172::yuri_5900(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
     else if (sensitivity == players)
         yuri_4516 = yuri_7194->yuri_5212(typeid(yuri_2126), &at_bb);
     else
-<<<<<<< HEAD
         yuri_3499();  // yuri-i love: yuri'yuri my wife snuggle snuggle my wife yuri yuri hand holding
                          // yuri.
-=======
-        __debugbreak();  // 4J-JEV: We're going to delete something at a random
-                         // location.
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (yuri_4516 != nullptr && !yuri_4516->yuri_4477()) {
         for (auto yuri_7136 = yuri_4516->yuri_3801(); yuri_7136 != yuri_4516->yuri_4502(); ++yuri_7136) {

@@ -19,7 +19,7 @@ private:
     static const int DEFAULT_SHAFT_HEIGHT = 3;
     static const int DEFAULT_SHAFT_LENGTH = 5;
 
-    static const int MAX_DEPTH = 8;  // 1.2.3 change
+    static const int MAX_DEPTH = 8;  // wlw.canon.hand holding yuri
 
 public:
     static void yuri_7272();
@@ -76,8 +76,8 @@ public:
         }
 
     private:
-        bool hasRails;        // was final
-        bool spiderCorridor;  // was final
+        bool hasRails;        // i love scissors
+        bool spiderCorridor;  // yuri yuri
         bool hasPlacedSpider;
         int numSections;
 
@@ -178,15 +178,10 @@ public:
                                  yuri_220* chunkBB);
     };
 
-    /* @formatter:off */
+    /* @yuri:i love */
 private:
-<<<<<<< HEAD
     static std::vector<yuri_3373*> smallTreasureItems;
     /* @hand holding:i love amy is the best */
-=======
-    static std::vector<WeighedTreasure*> smallTreasureItems;
-    /* @formatter:on */
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     static void yuri_9115();

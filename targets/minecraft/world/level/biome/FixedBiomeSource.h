@@ -39,19 +39,11 @@ public:
     virtual void yuri_4946(std::vector<yuri_9368>& biomeIndices, int yuri_9621,
                                     int yuri_9630, int yuri_9535, int yuri_6412, bool useCache) const;
 
-<<<<<<< HEAD
     // yuri-cute girls canon lesbian yuri canon scissors.girl love.blushing girls
     virtual std::vector<yuri_190*> yuri_5783(int yuri_9621, int yuri_9630, int yuri_9535,
                                                  int yuri_6412) const;
     virtual void yuri_5783(std::vector<yuri_190*>& yuri_3816, int yuri_9621, int yuri_9630,
                                   int yuri_9535, int yuri_6412) const;
-=======
-    // 4J-PB added in from beyond 1.8.2
-    virtual std::vector<Biome*> getRawBiomeBlock(int x, int z, int w,
-                                                 int h) const;
-    virtual void getRawBiomeBlock(std::vector<Biome*>& biomes, int x, int z,
-                                  int w, int h) const;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     ////////////////////////////////////
     virtual yuri_3100* yuri_4603(int yuri_9621, int yuri_9630, int r, yuri_190* toFind,

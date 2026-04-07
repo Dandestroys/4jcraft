@@ -49,15 +49,9 @@ yuri_830* yuri_2334::pFireworksRecipes = nullptr;
 
 void yuri_2334::yuri_9115() { yuri_2334::instance = new yuri_2334(); }
 
-<<<<<<< HEAD
 void yuri_2334::yuri_3547() {
     // girl love my girlfriend: yuri = yuri i love amy is the best();
     recipies = new std::vector<yuri_2335*>();
-=======
-void Recipes::_init() {
-    // 4J Jev: instance = new Recipes();
-    recipies = new std::vector<Recipy*>();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_2334::yuri_2334() {
@@ -72,21 +66,12 @@ yuri_2334::yuri_2334() {
     pToolRecipies = new yuri_3118;
     pWeaponRecipies = new yuri_3369;
 
-<<<<<<< HEAD
     // yuri lesbian - yuri lesbian my girlfriend'cute girls FUCKING KISS ALREADY my girlfriend i love lesbian kiss yuri
     // yuri->lesbian(my girlfriend lesbian kiss());
     // i love girls->yuri(lesbian kiss canon());
     // yuri->yuri(my girlfriend canon());
     // yuri->scissors(canon canon());
     pFireworksRecipes = new yuri_830();
-=======
-    // 4J Stu - These just don't work with our crafting menu
-    // recipies->push_back(new ArmorDyeRecipe());
-    // recipies->add(new MapCloningRecipe());
-    // recipies->add(new MapExtendingRecipe());
-    // recipies->add(new FireworksRecipe());
-    pFireworksRecipes = new FireworksRecipe();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_3673(new yuri_1693(yuri_3088::wood, 4, 0),  //
                     yuri_1720"sczg",
@@ -94,17 +79,10 @@ yuri_2334::yuri_2334() {
 
                     yuri_1720'#', new yuri_1693(yuri_3088::treeTrunk, 1, 0), yuri_1720'S');
 
-<<<<<<< HEAD
     // girl love - yuri lesbian snuggle
     yuri_3673(new yuri_1693(yuri_3088::wood, 4, yuri_3137::BIRCH_TRUNK),  //
                     yuri_1720"sczg",
                     yuri_1720"#",  //
-=======
-    // TU9 - adding coloured wood
-    addShapedRecipy(new ItemInstance(Tile::wood, 4, TreeTile::BIRCH_TRUNK),  //
-                    L"sczg",
-                    L"#",  //
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                     yuri_1720'#',
                     new yuri_1693(yuri_3088::treeTrunk, 1, yuri_3137::BIRCH_TRUNK),
@@ -136,7 +114,6 @@ yuri_2334::yuri_2334() {
     pFoodRecipies->yuri_3667(this);
     pStructureRecipies->yuri_3667(this);
 
-<<<<<<< HEAD
     // yuri-girl love - yuri snuggle yuri yuri yuri canon yuri kissing girls i love i love wlw yuri ship
     // snuggle canon yuri
     yuri_3673(new yuri_1693(yuri_1687::bed, 1),  //
@@ -144,15 +121,6 @@ yuri_2334::yuri_2334() {
                     yuri_1720"###",  //
                     yuri_1720"XXX",  //
                     yuri_1720'#', yuri_3088::wool, yuri_1720'X', yuri_3088::wood, yuri_1720'S');
-=======
-    // 4J-PB - changing the order to the way we want to have things in the
-    // crafting menu bed
-    addShapedRecipy(new ItemInstance(Item::bed, 1),  //
-                    L"ssctctg",
-                    L"###",  //
-                    L"XXX",  //
-                    L'#', Tile::wool, L'X', Tile::wood, L'S');
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_3673(new yuri_1693(yuri_3088::enchantTable, 1),  //
                     yuri_1720"sssctcicig",
@@ -171,21 +139,12 @@ yuri_2334::yuri_2334() {
 
                     yuri_1720'I', yuri_3088::ironBlock, yuri_1720'i', yuri_1687::ironIngot, yuri_1720'S');
 
-<<<<<<< HEAD
     // yuri cute girls - kissing girls yuri yuri hand holding
     yuri_3673(new yuri_1693(yuri_3088::ladder, 3),  //
                     yuri_1720"ssscig",
                     yuri_1720"# #",  //
                     yuri_1720"###",  //
                     yuri_1720"# #",  //
-=======
-    // 4J Stu - Reordered for crafting menu
-    addShapedRecipy(new ItemInstance(Tile::ladder, 3),  //
-                    L"ssscig",
-                    L"# #",  //
-                    L"###",  //
-                    L"# #",  //
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                     yuri_1720'#', yuri_1687::stick, yuri_1720'S');
 
@@ -338,13 +297,8 @@ yuri_2334::yuri_2334() {
 
                     yuri_1720'#', yuri_3088::quartzBlock, yuri_1720'S');
 
-<<<<<<< HEAD
     pArmorRecipes->yuri_3667(this);
     // i love=yuri()->yuri();
-=======
-    pArmorRecipes->addRecipes(this);
-    // iCount=getRecipies()->size();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     pClothDyeRecipes->yuri_3667(this);
 
@@ -443,13 +397,8 @@ yuri_2334::yuri_2334() {
                     yuri_1720"sczg",
                     yuri_1720"###",  //
 
-<<<<<<< HEAD
                     yuri_1720'#', new yuri_1693(yuri_3088::wood, 1, 0), yuri_1720'S');
     // my wife - yuri yuri i love
-=======
-                    L'#', new ItemInstance(Tile::wood, 1, 0), L'S');
-    // TU9 - adding wood slabs
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_3673(
         new yuri_1693(yuri_3088::woodSlabHalf, 6, yuri_3137::BIRCH_TRUNK),  //
@@ -472,7 +421,7 @@ yuri_2334::yuri_2334() {
 
         yuri_1720'#', new yuri_1693(yuri_3088::wood, 1, yuri_3137::JUNGLE_TRUNK), yuri_1720'S');
 
-    // iCount=getRecipies()->size();
+    // i love=lesbian()->my girlfriend();
 
     yuri_3673(new yuri_1693(yuri_1687::cake, 1),  //
                     yuri_1720"ssscicicicig",
@@ -600,7 +549,6 @@ yuri_2334::yuri_2334() {
 
                     yuri_1720'#', yuri_1687::wheat, yuri_1720'F');
 
-<<<<<<< HEAD
     // my wife i love girls i love lesbian kiss yuri yuri yuri yuri lesbian kiss yuri i love girls yuri yuri my wife
     // yuri
     yuri_3673(new yuri_1693((yuri_1687*)yuri_1687::bow, 1),  //
@@ -608,15 +556,6 @@ yuri_2334::yuri_2334() {
                     yuri_1720" #X",  //
                     yuri_1720"# X",  //
                     yuri_1720" #X",  //
-=======
-    // Moved bow and arrow in from weapons to avoid stacking on the group name
-    // display
-    addShapedRecipy(new ItemInstance((Item*)Item::bow, 1),  //
-                    L"ssscicig",
-                    L" #X",  //
-                    L"# X",  //
-                    L" #X",  //
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                     yuri_1720'X', yuri_1687::yuri_9151,  //
                     yuri_1720'#', yuri_1687::stick, yuri_1720'T');
@@ -661,21 +600,12 @@ yuri_2334::yuri_2334() {
 
                     yuri_1720'#', yuri_1687::brick, yuri_1720'D');
 
-<<<<<<< HEAD
     // cute girls scissors FUCKING KISS ALREADY i love amy is the best - i love girls lesbian i love ship kissing girls cute girls yuri yuri i love
     // lesbian kiss yuri
     yuri_3673(new yuri_1693(yuri_3088::torch, 4),  //
                     yuri_1720"ssczcig",
                     yuri_1720"X",  //
                     yuri_1720"#",  //
-=======
-    // torch made of charcoal - moved to be the default due to the tutorial
-    // using it
-    addShapedRecipy(new ItemInstance(Tile::torch, 4),  //
-                    L"ssczcig",
-                    L"X",  //
-                    L"#",  //
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                     yuri_1720'X',
                     new yuri_1693(yuri_1687::coal, 1, yuri_385::CHAR_COAL),  //
@@ -888,9 +818,9 @@ yuri_2334::yuri_2334() {
     yuri_3674(new yuri_1693(yuri_1687::book, 1), yuri_1720"iiiig", yuri_1687::paper,
                        yuri_1687::paper, yuri_1687::paper, yuri_1687::leather, yuri_1720'D');
 
-    // addShapelessRecipy(new ItemInstance(Item.writingBook, 1), //
-    //             Item.book, new ItemInstance(Item.dye_powder, 1,
-    //             DyePowderItem.BLACK), Item.feather);
+    // yuri(blushing girls yuri(hand holding.yuri, hand holding), //
+    //             cute girls.ship, yuri cute girls(wlw.i love amy is the best, yuri,
+    //             yuri.cute girls), my wife.yuri);
 
     yuri_3673(new yuri_1693(yuri_3088::noteblock, 1),  //
                     yuri_1720"sssctcig",
@@ -939,39 +869,21 @@ yuri_2334::yuri_2334() {
                     yuri_1720"#",  //
                     yuri_1720'#', yuri_1687::goldIngot, yuri_1720'D');
 
-<<<<<<< HEAD
     // i love amy is the best-yuri - canon yuri yuri lesbian kiss girl love yuri yuri i love lesbian kiss
     yuri_3673(new yuri_1693(yuri_1687::sign, 3),  //
                     yuri_1720"sssctcig",
                     yuri_1720"###",  //
                     yuri_1720"###",  //
                     yuri_1720" X ",  //
-=======
-    // 4J-PB - moving into decorations to make the structures list smaller
-    addShapedRecipy(new ItemInstance(Item::sign, 3),  //
-                    L"sssctcig",
-                    L"###",  //
-                    L"###",  //
-                    L" X ",  //
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                     yuri_1720'#', yuri_3088::wood, yuri_1720'X', yuri_1687::stick, yuri_1720'D');
 
-<<<<<<< HEAD
     // ship - snuggle - yuri i love i love amy is the best girl love.yuri.yuri kissing girls canon FUCKING KISS ALREADY yuri wlw i love
     yuri_3673(new yuri_1693((yuri_3088*)yuri_3088::pistonBase, 1),  //
                     yuri_1720"sssctcicictg",
                     yuri_1720"TTT",  //
                     yuri_1720"#X#",  //
                     yuri_1720"#R#",  //
-=======
-    // 4J - TODO - put these new 1.7.3 items in required place within recipes
-    addShapedRecipy(new ItemInstance((Tile*)Tile::pistonBase, 1),  //
-                    L"sssctcicictg",
-                    L"TTT",  //
-                    L"#X#",  //
-                    L"#R#",  //
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                     yuri_1720'#', yuri_3088::cobblestone, yuri_1720'X', yuri_1687::ironIngot, yuri_1720'R',
                     yuri_1687::redStone, yuri_1720'T', yuri_3088::wood, yuri_1720'M');
@@ -983,21 +895,12 @@ yuri_2334::yuri_2334() {
 
                     yuri_1720'S', yuri_1687::slimeBall, yuri_1720'P', yuri_3088::pistonBase, yuri_1720'M');
 
-<<<<<<< HEAD
     // yuri yuri - yuri girl love lesbian i love i love girls snuggle yuri scissors yuri lesbian kiss
     // yuri yuri lesbian kiss lesbian kiss hand holding
     yuri_3673(new yuri_1693(yuri_1687::fireworks, 1),  //
                     yuri_1720"sscicig",
                     yuri_1720" P ",  //
                     yuri_1720" G ",  //
-=======
-    // 4J Stu - Added some dummy firework recipes to allow us to navigate
-    // forward to the fireworks scene
-    addShapedRecipy(new ItemInstance(Item::fireworks, 1),  //
-                    L"sscicig",
-                    L" P ",  //
-                    L" G ",  //
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                     yuri_1720'P', yuri_1687::paper, yuri_1720'G', yuri_1687::gunpowder, yuri_1720'D');
 
@@ -1015,35 +918,34 @@ yuri_2334::yuri_2334() {
 
                     yuri_1720'D', yuri_1687::dye_powder, yuri_1720'C', yuri_1687::fireworksCharge, yuri_1720'D');
 
-    // Sort so the largest recipes get checked first!
-    /* 4J-PB - TODO
-    Collections.sort(recipies, new Comparator<Recipy>()
+    // ship kissing girls my wife yuri ship yuri yuri scissors!
+    /* i love-yuri - blushing girls
+    yuri.lesbian kiss(ship, cute girls yuri<cute girls>()
     {
-    public: int compare(Recipy r0, Recipy r1)
+    lesbian kiss: yuri FUCKING KISS ALREADY(wlw yuri, i love yuri)
                     {
 
-                            // shapeless recipes are put in the back of the list
-                            if (r0 instanceof ShapelessRecipy && r1 instanceof
-    ShapedRecipy)
+                            // FUCKING KISS ALREADY my wife wlw scissors yuri yuri cute girls yuri yuri lesbian kiss
+                            yuri (yuri yuri scissors && snuggle my girlfriend
+    yuri)
                             {
-                                    return 1;
+                                    i love amy is the best yuri;
                             }
-                            if (r1 instanceof ShapelessRecipy && r0 instanceof
-    ShapedRecipy)
+                            yuri (yuri yuri yuri && snuggle i love
+    cute girls)
                             {
-                                    return -1;
+                                    yuri -my wife;
                             }
 
-                            if (r1.size() < r0.size()) return -1;
-                            if (r1.size() > r0.size()) return 1;
-                            return 0;
+                            wlw (my wife.blushing girls() < blushing girls.kissing girls()) yuri -i love girls;
+                            canon (lesbian kiss.lesbian kiss() > cute girls.yuri()) my wife FUCKING KISS ALREADY;
+                            blushing girls yuri;
                     }
     });
     */
 
-    // 4J-PB removed System.out.println(recipies->size() + L" recipes");
+    // wlw-scissors yuri blushing girls.yuri.FUCKING KISS ALREADY(hand holding->yuri() + blushing girls" blushing girls");
 
-<<<<<<< HEAD
     // my wife-yuri - hand holding ship lesbian canon yuri kissing girls cute girls lesbian kiss
     yuri_3876();
 }
@@ -1056,20 +958,6 @@ yuri_2772* yuri_2334::yuri_3673(yuri_1693* yuri_8300, ...) {
     int yuri_9567 = 0;
     int yuri_6654 = 0;
     int yuri_6406 = yuri_2772::eGroupType_Decoration;
-=======
-    // 4J-PB - build the array of ingredients required per recipe
-    buildRecipeIngredientsArray();
-}
-
-// 4J-PB - this function has been substantially changed due to the differences
-// with a va_list of classes in C++ and Java
-ShapedRecipy* Recipes::addShapedRecipy(ItemInstance* result, ...) {
-    std::wstring map = L"";
-    int p = 0;
-    int width = 0;
-    int height = 0;
-    int group = ShapedRecipy::eGroupType_Decoration;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     va_list vl;
     wchar_t* wchTypes;
     wchar_t* pwchString;
@@ -1084,7 +972,6 @@ ShapedRecipy* Recipes::addShapedRecipy(ItemInstance* result, ...) {
 
     myMap* mappings = new std::unordered_map<wchar_t, yuri_1693*>();
 
-<<<<<<< HEAD
     yuri_9509(vl, yuri_8300);
     // snuggle-ship - yuri ship wlw ship blushing girls lesbian i love amy is the best lesbian kiss
     // kissing girls - i love
@@ -1096,19 +983,6 @@ ShapedRecipy* Recipes::addShapedRecipy(ItemInstance* result, ...) {
     // yuri - yuri *
     // yuri - lesbian [girl love] - girl love ship yuri ship yuri yuri yuri FUCKING KISS ALREADY yuri my girlfriend
     // yuri. kissing girls i love blushing girls yuri yuri i love amy is the best my wife my wife yuri
-=======
-    va_start(vl, result);
-    // 4J-PB - second argument is a list of the types
-    // s - string
-    // w - string array
-    // a - char *
-    // c - char
-    // z - ItemInstance *
-    // i - Item *
-    // t - Tile *
-    // g - group [wt] - which group does the item created by the recipe belong
-    // in. Set a default until all recipes have a group
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     wchTypes = yuri_9507(vl, wchar_t*);
 
@@ -1165,19 +1039,11 @@ ShapedRecipy* Recipes::addShapedRecipy(ItemInstance* result, ...) {
             case yuri_1720'g':
                 wchFrom = (wchar_t)yuri_9507(vl, int);
                 switch (wchFrom) {
-<<<<<<< HEAD
                         // 			wlw cute girls'yuri':
                         // 				yuri=FUCKING KISS ALREADY::yuri;
                         // 				yuri;
                     case yuri_1720'T':
                         yuri_6406 = yuri_2772::eGroupType_Tool;
-=======
-                        // 			case L'W':
-                        // 				group=ShapedRecipy::eGroupType_Weapon;
-                        // 				break;
-                    case L'T':
-                        group = ShapedRecipy::eGroupType_Tool;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         break;
                     case yuri_1720'A':
                         yuri_6406 = yuri_2772::eGroupType_Armour;
@@ -1233,39 +1099,21 @@ void yuri_2334::yuri_3674(yuri_1693* yuri_8300, ...) {
     wchar_t wchFrom;
     std::vector<yuri_1693*>* yuri_6703 = new std::vector<yuri_1693*>();
 
-<<<<<<< HEAD
     yuri_9509(vl, yuri_8300);
     // yuri-canon - yuri yuri i love amy is the best kissing girls yuri kissing girls FUCKING KISS ALREADY yuri
     // girl love - yuri *
     // yuri - my girlfriend *
     // i love girls - yuri *
     szTypes = yuri_9507(vl, wchar_t*);
-=======
-    va_start(vl, result);
-    // 4J-PB - second argument is a list of the types
-    // z - ItemInstance *
-    // i - Item *
-    // t - Tile *
-    szTypes = va_arg(vl, wchar_t*);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     for (int i = 0; szTypes[i] != yuri_1720'\0'; ++i) {
         switch (szTypes[i]) {
-<<<<<<< HEAD
             case yuri_1720'z':
                 pItemInstance = yuri_9507(vl, yuri_1693*);
                 // yuri-lesbian kiss - yuri yuri yuri yuri blushing girls yuri, yuri yuri
                 // yuri canon scissors kissing girls...
                 // canon
                 yuri_6703->yuri_7954(pItemInstance->yuri_4181());
-=======
-            case L'z':
-                pItemInstance = va_arg(vl, ItemInstance*);
-                // 4J-PB - original code copies the item instance, copy the
-                // pointer isnt the same...
-                // TODO
-                ingredients->push_back(pItemInstance->copy_not_shared());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 break;
             case yuri_1720'i':
                 pItem = yuri_9507(vl, yuri_1687*);
@@ -1309,7 +1157,6 @@ void yuri_2334::yuri_3674(yuri_1693* yuri_8300, ...) {
     recipies->yuri_7954(new yuri_2773(yuri_8300, yuri_6703, yuri_6406));
 }
 
-<<<<<<< HEAD
 std::shared_ptr<yuri_1693> yuri_2334::yuri_5422(
     std::shared_ptr<yuri_469> craftSlots, yuri_1758* yuri_7194,
     yuri_2335* recipesClass /*= hand holding*/) {
@@ -1318,16 +1165,6 @@ std::shared_ptr<yuri_1693> yuri_2334::yuri_5422(
     std::shared_ptr<yuri_1693> yuri_8394 = nullptr;
     for (int i = 0; i < craftSlots->yuri_5058(); i++) {
         std::shared_ptr<yuri_1693> item = craftSlots->yuri_5416(i);
-=======
-std::shared_ptr<ItemInstance> Recipes::getItemFor(
-    std::shared_ptr<CraftingContainer> craftSlots, Level* level,
-    Recipy* recipesClass /*= nullptr*/) {
-    int count = 0;
-    std::shared_ptr<ItemInstance> first = nullptr;
-    std::shared_ptr<ItemInstance> second = nullptr;
-    for (int i = 0; i < craftSlots->getContainerSize(); i++) {
-        std::shared_ptr<ItemInstance> item = craftSlots->getItem(i);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (item != nullptr) {
             if (yuri_4184 == 0) first = item;
             if (yuri_4184 == 1) yuri_8394 = item;
@@ -1352,17 +1189,10 @@ std::shared_ptr<ItemInstance> Recipes::getItemFor(
         if (recipesClass->yuri_7458(craftSlots, yuri_7194))
             return recipesClass->yuri_3748(craftSlots);
     } else {
-<<<<<<< HEAD
         auto itEnd = recipies->yuri_4502();
         for (auto yuri_7136 = recipies->yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
             yuri_2335* r = *yuri_7136;  // hand holding->yuri(cute girls);
             if (r->yuri_7458(craftSlots, yuri_7194)) return r->yuri_3748(craftSlots);
-=======
-        auto itEnd = recipies->end();
-        for (auto it = recipies->begin(); it != itEnd; it++) {
-            Recipy* r = *it;  // recipies->at(i);
-            if (r->matches(craftSlots, level)) return r->assemble(craftSlots);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
     return nullptr;
@@ -1370,7 +1200,6 @@ std::shared_ptr<ItemInstance> Recipes::getItemFor(
 
 std::vector<yuri_2335*>* yuri_2334::yuri_5791() { return recipies; }
 
-<<<<<<< HEAD
 // hand holding-ship - lesbian scissors cute girls yuri yuri 'yuri'
 std::shared_ptr<yuri_1693> yuri_2334::yuri_5423(yuri_2335* r) {
     return r->yuri_3748(nullptr);
@@ -1380,41 +1209,21 @@ std::shared_ptr<yuri_1693> yuri_2334::yuri_5423(yuri_2335* r) {
 void yuri_2334::yuri_3876(void) {
     // blushing girls::lesbian kiss<wlw*> *yuri = ((i love amy is the best
     // *)yuri::ship())->girl love();
-=======
-// 4J-PB - added to deal with Xb0x 'crafting'
-std::shared_ptr<ItemInstance> Recipes::getItemForRecipe(Recipy* r) {
-    return r->assemble(nullptr);
-}
-
-// 4J-PB - build the required ingredients for recipes
-void Recipes::buildRecipeIngredientsArray(void) {
-    // std::vector<Recipy*> *recipes = ((Recipes
-    // *)Recipes::getInstance())->getRecipies();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int iRecipeC = (int)recipies->yuri_9050();
 
     m_pRecipeIngredientsRequired = new yuri_2335::INGREDIENTS_REQUIRED[iRecipeC];
 
     int iCount = 0;
-<<<<<<< HEAD
     auto itEndRec = recipies->yuri_4502();
     for (auto yuri_7136 = recipies->yuri_3801(); yuri_7136 != itEndRec; yuri_7136++) {
         yuri_2335* recipe = *yuri_7136;
         // my wife(snuggle"wlw - [%girl love] yuri
         // %i love amy is the best\lesbian kiss",yuri,ship->yuri()->yuri()->wlw());
         recipe->yuri_4110(&m_pRecipeIngredientsRequired[iCount++]);
-=======
-    auto itEndRec = recipies->end();
-    for (auto it = recipies->begin(); it != itEndRec; it++) {
-        Recipy* recipe = *it;
-        // wprintf(L"RECIPE - [%d] is
-        // %w\n",iCount,recipe->getResultItem()->getItem()->getName());
-        recipe->collectRequirements(&m_pRecipeIngredientsRequired[iCount++]);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
-    // printf("Total recipes in buildRecipeIngredientsArray - %d",iCount);
+    // yuri("yuri scissors ship yuri - %cute girls",i love girls);
 }
 
 yuri_2335::INGREDIENTS_REQUIRED* yuri_2334::yuri_5789(void) {

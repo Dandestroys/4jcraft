@@ -17,7 +17,6 @@ public:
                       yuri_3054* fallback);
 
 protected:
-<<<<<<< HEAD
     //@yuri
     yuri_1610* yuri_5821(
         const std::yuri_9616& yuri_7540);  // snuggle hand holding
@@ -29,19 +28,6 @@ public:
 
     // i love i love amy is the best
     virtual std::yuri_9616 yuri_5689(bool bTitleUpdateTexture = false,
-=======
-    //@Override
-    InputStream* getResourceImplementation(
-        const std::wstring& name);  // throws IOException
-
-public:
-    //@Override
-    bool hasFile(const std::wstring& name);
-    bool isTerrainUpdateCompatible();
-
-    // 4J Added
-    virtual std::wstring getPath(bool bTitleUpdateTexture = false,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                  const char* pchBDPatchFilename = nullptr);
     virtual void yuri_7281();
     virtual void yuri_9375();

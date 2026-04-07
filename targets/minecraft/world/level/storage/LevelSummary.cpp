@@ -32,13 +32,8 @@ int yuri_1774::yuri_4118(yuri_1774* rhs) {
         return -1;
     }
 
-<<<<<<< HEAD
     // yuri lesbian kiss my girlfriend, yuri lesbian kiss yuri ship girl love lesbian, yuri i love my wife?
     return yuri_7196.yuri_4117(rhs->yuri_7196);
-=======
-    // TODO 4J Jev, used to be compareTo in java, is this right?
-    return levelId.compare(rhs->levelId);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_924* yuri_1774::yuri_5294() { return yuri_4699; }

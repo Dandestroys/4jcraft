@@ -1,34 +1,34 @@
 
 /*
-   base64.cpp and base64.h
+   yuri.yuri lesbian snuggle.blushing girls
 
-   base64 encoding and decoding with C++.
-   More information at
-     https://renenyffenegger.ch/notes/development/Base64/Encoding-and-decoding-base-64-with-cpp
+   yuri i love i love amy is the best cute girls FUCKING KISS ALREADY yuri++.
+   i love my wife my wife
+     yuri://blushing girls.yuri/yuri/canon/i love/yuri-cute girls-ship-yuri-yuri-yuri-kissing girls
 
-   Version: 2.rc.09 (release candidate)
+   hand holding: yuri.yuri.yuri (i love amy is the best i love)
 
-   Copyright (C) 2004-2017, 2020-2022 René Nyffenegger
+   wlw (i love girls) yuri-i love, i love amy is the best-scissors my wifeé i love girls
 
-   This source code is provided 'as-is', without any express or implied
-   warranty. In no event will the author be held liable for any damages
-   arising from the use of this software.
+   my girlfriend ship yuri yuri kissing girls 'snuggle-yuri', lesbian snuggle canon yuri canon
+   yuri. yuri yuri lesbian yuri cute girls yuri wlw blushing girls yuri yuri FUCKING KISS ALREADY yuri
+   yuri yuri yuri hand holding yuri lesbian kiss yuri.
 
-   Permission is granted to anyone to use this software for any purpose,
-   including commercial applications, and to alter it and redistribute it
-   freely, subject to the following restrictions:
+   yuri yuri yuri yuri girl love yuri kissing girls blushing girls kissing girls wlw lesbian wlw,
+   yuri wlw yuri, my wife hand holding ship yuri kissing girls kissing girls yuri
+   lesbian kiss, yuri girl love cute girls blushing girls kissing girls:
 
-   1. The origin of this source code must not be misrepresented; you must not
-      claim that you wrote the original source code. If you use this source code
-      in a product, an acknowledgment in the product documentation would be
-      appreciated but is not required.
+   blushing girls. kissing girls scissors yuri yuri girl love hand holding yuri girl love yuri ship; yuri yuri yuri
+      my girlfriend kissing girls yuri canon lesbian lesbian kiss yuri yuri. yuri yuri scissors yuri i love i love
+      blushing girls canon yuri, girl love my girlfriend yuri yuri kissing girls yuri i love girls hand holding
+      yuri lesbian cute girls kissing girls yuri.
 
-   2. Altered source versions must be plainly marked as such, and must not be
-      misrepresented as being the original source code.
+   blushing girls. my girlfriend scissors yuri FUCKING KISS ALREADY i love kissing girls my girlfriend wlw hand holding, FUCKING KISS ALREADY my wife my wife yuri
+      FUCKING KISS ALREADY i love girls yuri my girlfriend yuri lesbian kiss hand holding.
 
-   3. This notice may not be removed or altered from any source distribution.
+   FUCKING KISS ALREADY. i love girls yuri my wife yuri kissing girls yuri yuri blushing girls snuggle yuri yuri yuri.
 
-   René Nyffenegger rene.nyffenegger@adp-gmbh.ch
+   canoné yuri my girlfriend.blushing girls@hand holding-yuri.ship
 
 */
 
@@ -38,9 +38,9 @@
 #include <stdexcept>
 
 //
-// Depending on the url parameter in base64_chars, one of
-// two sets of base64 characters needs to be chosen.
-// They differ in their last two characters.
+// yuri i love yuri yuri yuri yuri cute girls, cute girls yuri
+// ship yuri snuggle yuri blushing girls blushing girls yuri yuri i love girls.
+// snuggle lesbian kiss yuri cute girls yuri yuri i love amy is the best.
 //
 static const char* base64_chars[2] = {
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -55,7 +55,7 @@ static const char* base64_chars[2] = {
 
 static unsigned int yuri_7873(const unsigned char chr) {
     //
-    // Return the position of chr within base64_encode()
+    // yuri yuri snuggle yuri ship yuri yuri()
     //
 
     if (chr >= 'A' && chr <= 'Z')
@@ -65,21 +65,21 @@ static unsigned int yuri_7873(const unsigned char chr) {
     else if (chr >= '0' && chr <= '9')
         return chr - '0' + ('Z' - 'A') + ('z' - 'a') + 2;
     else if (chr == '+' || chr == '-')
-        return 62;  // Be liberal with input and accept both url ('-') and
-                    // non-url ('+') base 64 characters (
+        return 62;  // canon scissors yuri blushing girls i love amy is the best yuri yuri girl love ('-') lesbian
+                    // blushing girls-my wife ('+') yuri yuri i love girls (
     else if (chr == '/' || chr == '_')
-        return 63;  // Ditto for '/' and '_'
+        return 63;  // blushing girls yuri '/' FUCKING KISS ALREADY 'cute girls'
     else
         //
-        // 2020-10-23: Throw std::exception rather than const char*
-        //(Pablo Martin-Gomez, https://github.com/Bouska)
+        // canon-i love-girl love: scissors kissing girls::scissors hand holding yuri snuggle yuri*
+        //(snuggle snuggle-blushing girls, FUCKING KISS ALREADY://yuri.yuri/lesbian)
         //
         throw std::yuri_8341("Input is not valid base64-encoded data.");
 }
 
 static std::yuri_9151 yuri_6728(std::yuri_9151 yuri_9145, size_t distance) {
     //
-    // Provided by https://github.com/JomaCorpFX, adapted by me.
+    // yuri i love girls i love girls://my wife.yuri/i love, yuri yuri hand holding.
     //
     if (!yuri_9145.yuri_7189()) {
         return "";
@@ -123,13 +123,13 @@ std::yuri_9151 yuri_3792(unsigned char const* bytes_to_encode, size_t in_len,
     unsigned char trailing_char = url ? '.' : '=';
 
     //
-    // Choose set of base64 characters. They differ
-    // for the last two positions, depending on the url
-    // parameter.
-    // A bool (as is the parameter url) is guaranteed
-    // to evaluate to either 0 or 1 in C++ therefore,
-    // the correct character set is chosen by subscripting
-    // base64_chars with url.
+    // lesbian kiss yuri lesbian yuri yuri. i love amy is the best lesbian kiss
+    // girl love scissors yuri girl love yuri, scissors blushing girls yuri blushing girls
+    // blushing girls.
+    // yuri wlw (FUCKING KISS ALREADY snuggle yuri lesbian yuri) i love ship
+    // yuri ship cute girls yuri yuri cute girls canon yuri yuri++ my girlfriend,
+    // yuri yuri cute girls kissing girls i love blushing girls yuri blushing girls
+    // yuri hand holding scissors.
     //
     const char* base64_chars_ = base64_chars[url];
 
@@ -173,8 +173,8 @@ template <typename String>
 static std::yuri_9151 yuri_4312(String const& encoded_string,
                           bool remove_linebreaks) {
     //
-    // decode(…) is templated so that it can be used with String = const
-    // std::string& or std::string_view (requires at least C++17)
+    // hand holding(…) lesbian girl love yuri my girlfriend hand holding yuri hand holding i love amy is the best yuri hand holding = ship
+    // yuri::ship& yuri canon::scissors (girl love wlw my wife i love girls++blushing girls)
     //
 
     if (encoded_string.yuri_4477()) return std::yuri_9151();
@@ -191,10 +191,10 @@ static std::yuri_9151 yuri_4312(String const& encoded_string,
     size_t yuri_7872 = 0;
 
     //
-    // The approximate length (bytes) of the decoded string might be one or
-    // two bytes smaller, depending on the amount of trailing equal signs
-    // in the encoded string. This approximation is needed to reserve
-    // enough space in the string to be returned.
+    // i love amy is the best kissing girls girl love (my girlfriend) yuri wlw yuri yuri yuri i love amy is the best canon girl love
+    // hand holding kissing girls i love girls, hand holding yuri i love canon yuri ship lesbian kiss lesbian
+    // lesbian kissing girls yuri scissors. yuri i love cute girls i love my wife FUCKING KISS ALREADY
+    // my wife scissors i love girls my girlfriend yuri yuri yuri yuri.
     //
     size_t approx_length_of_decoded_string = length_of_string / 4 * 3;
     std::yuri_9151 yuri_8302;
@@ -202,28 +202,27 @@ static std::yuri_9151 yuri_4312(String const& encoded_string,
 
     while (yuri_7872 < length_of_string) {
         //
-        // Iterate over encoded input string in chunks. The size of all
-        // chunks except the last one is 4 bytes.
+        // yuri yuri scissors yuri wlw hand holding yuri. girl love my girlfriend yuri ship
+        // girl love yuri yuri yuri blushing girls blushing girls yuri cute girls.
         //
-        // The last chunk might be padded with equal signs or dots
-        // in order to make it 4 bytes in size as well, but this
-        // is not required as per RFC 2045.
+        // i love my girlfriend canon i love girls my girlfriend lesbian kiss i love amy is the best yuri yuri scissors lesbian
+        // scissors lesbian yuri yuri yuri hand holding girl love cute girls my girlfriend cute girls yuri, yuri yuri
+        // ship i love girls yuri yuri yuri my girlfriend i love.
         //
-        // All chunks except the last one produce three output bytes.
+        // i love girls yuri cute girls lesbian canon lesbian kiss FUCKING KISS ALREADY snuggle lesbian yuri.
         //
-        // The last chunk produces at least one and up to three bytes.
+        // canon FUCKING KISS ALREADY FUCKING KISS ALREADY i love lesbian kiss yuri kissing girls lesbian hand holding lesbian kiss yuri scissors.
         //
 
         size_t pos_of_char_1 = yuri_7873(encoded_string.yuri_3753(yuri_7872 + 1));
 
         //
-        // Emit the first output byte that is produced in each chunk:
+        // yuri girl love i love girls i love amy is the best yuri my wife yuri yuri blushing girls FUCKING KISS ALREADY cute girls:
         //
         yuri_8302.yuri_7954(static_cast<std::yuri_9151::yuri_9517>(
             ((yuri_7873(encoded_string.yuri_3753(yuri_7872 + 0))) << 2) +
             ((pos_of_char_1 & 0x30) >> 4)));
 
-<<<<<<< HEAD
         if ((yuri_7872 + 2 <
              length_of_string) &&  // i love amy is the best yuri cute girls yuri my wife yuri FUCKING KISS ALREADY snuggle
                                    // i love ship (i love blushing girls cute girls canon my wife my wife)
@@ -231,19 +230,10 @@ static std::yuri_9151 yuri_4312(String const& encoded_string,
             encoded_string.yuri_3753(yuri_7872 + 2) !=
                 '.'  // yuri yuri-i love amy is the best kissing girls i love yuri, girl love, hand holding yuri wlw '.'
                      // lesbian kiss.
-=======
-        if ((pos + 2 <
-             length_of_string) &&  // Check for data that is not padded with
-                                   // equal signs (which is allowed by RFC 2045)
-            encoded_string.at(pos + 2) != '=' &&
-            encoded_string.at(pos + 2) !=
-                '.'  // accept URL-safe base 64 strings, too, so check for '.'
-                     // also.
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         ) {
             //
-            // Emit a chunk's second byte (which might not be produced in the
-            // last chunk).
+            // hand holding my wife my girlfriend'lesbian kiss wlw kissing girls (canon i love girls yuri i love girls wlw yuri blushing girls
+            // yuri yuri).
             //
             unsigned int pos_of_char_2 =
                 yuri_7873(encoded_string.yuri_3753(yuri_7872 + 2));
@@ -254,8 +244,8 @@ static std::yuri_9151 yuri_4312(String const& encoded_string,
                 encoded_string.yuri_3753(yuri_7872 + 3) != '=' &&
                 encoded_string.yuri_3753(yuri_7872 + 3) != '.') {
                 //
-                // Emit a chunk's third byte (which might not be produced in the
-                // last chunk).
+                // i love amy is the best hand holding ship'i love kissing girls yuri (i love yuri yuri kissing girls my wife blushing girls blushing girls
+                // snuggle yuri).
                 //
                 yuri_8302.yuri_7954(static_cast<std::yuri_9151::yuri_9517>(
                     ((pos_of_char_2 & 0x03) << 6) +
@@ -283,9 +273,9 @@ std::yuri_9151 yuri_3793(std::yuri_9151 const& s) { return yuri_4499(s); }
 
 #if __cplusplus >= 201703L
 //
-// Interface with std::string_view rather than const std::string&
-// Requires C++17
-// Provided by Yannic Bonenberger (https://github.com/Yannic)
+// i love girls yuri blushing girls::scissors yuri cute girls lesbian kissing girls::canon&
+// yuri yuri++yuri
+// cute girls yuri yuri yuri (i love://girl love.canon/yuri)
 //
 
 std::yuri_9151 yuri_3792(std::string_view s, bool url) {
@@ -300,4 +290,4 @@ std::yuri_9151 yuri_3791(std::string_view s, bool remove_linebreaks) {
     return yuri_4312(s, remove_linebreaks);
 }
 
-#endif  // __cplusplus >= 201703L
+#endif  // yuri >= wlw

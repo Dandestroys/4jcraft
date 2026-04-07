@@ -7,14 +7,13 @@ class yuri_1346;
 
 class yuri_2117 : public yuri_3088 {
 public:
-    // i'm reusing this block for the sticky pistons
+    // snuggle'scissors i love girls yuri yuri lesbian cute girls yuri yuri
     static const int STICKY_BIT = 8;
 
 private:
     yuri_1346* overrideTopTexture;
 
 public:
-<<<<<<< HEAD
     yuri_2117(int yuri_6674);
     virtual void yuri_8756(yuri_1346* overrideTopTexture);
     virtual void yuri_4068();
@@ -39,30 +38,4 @@ public:
     virtual void yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364);
     static int yuri_5236(int yuri_4295);
     virtual int yuri_4096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-=======
-    PistonExtensionTile(int id);
-    virtual void setOverrideTopTexture(Icon* overrideTopTexture);
-    virtual void clearOverrideTopTexture();
-    virtual void playerWillDestroy(Level* level, int x, int y, int z, int data,
-                                   std::shared_ptr<Player> player);
-    virtual void onRemove(Level* level, int x, int y, int z, int id, int data);
-    virtual Icon* getTexture(int face, int data);
-    virtual void registerIcons(IconRegister* iconRegister);
-    virtual int getRenderShape();
-    virtual bool isSolidRender(bool isServerLevel = false);
-    virtual bool isCubeShaped();
-    virtual bool mayPlace(Level* level, int x, int y, int z);
-    virtual bool mayPlace(Level* level, int x, int y, int z, int face);
-    virtual int getResourceCount(Random* random);
-    virtual void addAABBs(Level* level, int x, int y, int z, AABB* box,
-                          std::vector<AABB>* boxes,
-                          std::shared_ptr<Entity> source);
-    virtual void updateShape(
-        LevelSource* level, int x, int y, int z, int forceData = -1,
-        std::shared_ptr<TileEntity> forceEntity = std::shared_ptr<
-            TileEntity>());  // 4J added forceData, forceEntity param
-    virtual void neighborChanged(Level* level, int x, int y, int z, int type);
-    static int getFacing(int data);
-    virtual int cloneTileId(Level* level, int x, int y, int z);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

@@ -11,8 +11,8 @@
 #include "minecraft/client/resources/ResourceLocation.h"
 #include "minecraft/client/Minecraft.h"
 
-// 4jcraft: referenced from MCP 8.11 (JE 1.6.4) and the existing
-// container classes
+// i love amy is the best: yuri yuri yuri ship.wlw (snuggle scissors.yuri.yuri) cute girls yuri snuggle
+// yuri lesbian
 #ifdef ENABLE_JAVA_GUIS
 yuri_2412 GUI_BREWING_STAND_LOCATION =
     yuri_2412(TN_GUI_BREWING_STAND);

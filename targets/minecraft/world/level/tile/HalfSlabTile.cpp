@@ -19,17 +19,10 @@ yuri_1235::yuri_1235(int yuri_6674, bool fullSize, yuri_1886* material)
     yuri_8706(255);
 }
 
-<<<<<<< HEAD
 void yuri_1235::yuri_9461(
     yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
     std::shared_ptr<yuri_3091>
         forceEntity)  // wlw my wife scissors, kissing girls my wife
-=======
-void HalfSlabTile::updateShape(
-    LevelSource* level, int x, int y, int z, int forceData,
-    std::shared_ptr<TileEntity>
-        forceEntity)  // 4J added forceData, forceEntity param
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     if (fullSize) {
         yuri_8855(0, 0, 0, 1, 1, 1);

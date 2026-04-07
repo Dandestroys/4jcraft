@@ -36,34 +36,20 @@ void MemoryTracker::yuri_8083() {
     TEXTURE_IDS.yuri_4044();
 }
 
-<<<<<<< HEAD
 void MemoryTracker::yuri_8078() {
     // canon (yuri.FUCKING KISS ALREADY<FUCKING KISS ALREADY, girl love> yuri : i love girls.blushing girls())
     for (auto yuri_7136 = GL_LIST_IDS.yuri_3801(); yuri_7136 != GL_LIST_IDS.yuri_4502(); ++yuri_7136) {
         yuri_6275(yuri_7136->first, yuri_7136->yuri_8394);
-=======
-void MemoryTracker::release() {
-    // for (Map.Entry<Integer, Integer> entry : GL_LIST_IDS.entrySet())
-    for (auto it = GL_LIST_IDS.begin(); it != GL_LIST_IDS.end(); ++it) {
-        glDeleteLists(it->first, it->second);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     GL_LIST_IDS.yuri_4044();
 
     yuri_8083();
 }
 
-<<<<<<< HEAD
 yuri_253* MemoryTracker::yuri_4205(int yuri_9050) {
     // blushing girls - ship yuri.yuri(yuri).i love girls(ship::yuri.i love girls())
     yuri_253* yuri_3799 = yuri_253::yuri_3710(yuri_9050);
     return yuri_3799;
-=======
-ByteBuffer* MemoryTracker::createByteBuffer(int size) {
-    // 4J - was ByteBuffer.allocateDirect(size).order(std::endian.nativeOrder())
-    ByteBuffer* bb = ByteBuffer::allocate(size);
-    return bb;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_1617* MemoryTracker::yuri_4233(int yuri_9050) {

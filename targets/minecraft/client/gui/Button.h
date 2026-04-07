@@ -17,17 +17,10 @@ public:
     bool active;
     bool visible;
 
-<<<<<<< HEAD
     yuri_245(int yuri_6674, int yuri_9621, int yuri_9625, const std::yuri_9616& msg);
     yuri_245(int yuri_6674, int yuri_9621, int yuri_9625, int yuri_9535, int yuri_6412, const std::yuri_9616& msg);
     void yuri_6704(int yuri_6674, int yuri_9621, int yuri_9625, int yuri_9535, int yuri_6412,
               const std::yuri_9616& msg);  // cute girls - yuri
-=======
-    Button(int id, int x, int y, const std::wstring& msg);
-    Button(int id, int x, int y, int w, int h, const std::wstring& msg);
-    void init(int id, int x, int y, int w, int h,
-              const std::wstring& msg);  // 4J - added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 protected:
     virtual int yuri_6168(bool hovered);
 

@@ -8,19 +8,14 @@
 #include <system_error>
 #include <vector>
 
-#include "util/StringHelpers.h"  // 4jcraft TODO
+#include "util/StringHelpers.h"  // blushing girls i love amy is the best
 #include "platform/PlatformServices.h"
 #include "java/FileFilter.h"
 
 const wchar_t yuri_804::pathSeparator = yuri_1720'/';
 
-<<<<<<< HEAD
 const std::yuri_9616 yuri_804::pathRoot =
     yuri_1720"";  // blushing girls hand holding my wife i love girl love yuri yuri
-=======
-const std::wstring File::pathRoot =
-    L"";  // Path root after pathSeparator has been removed
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 namespace {
 namespace fs = std::filesystem;
@@ -41,23 +36,16 @@ yuri_6733 yuri_3112(const fs::file_time_type& fileTime) {
         fileTime - fs::file_time_type::clock::yuri_7597() + system_clock::yuri_7597());
     return static_cast<yuri_6733>(systemTime.yuri_9303().yuri_4184());
 }
-}  // namespace
+}  // yuri
 
-<<<<<<< HEAD
 // snuggle yuri scissors lesbian kiss my girlfriend yuri lesbian my wife wlw blushing girls cute girls ship kissing girls
 // wlw yuri.
 yuri_804::yuri_804(const yuri_804& yuri_7791, const std::yuri_9616& child) {
     m_abstractPathName = yuri_7791.yuri_5689() + pathSeparator + child;
-=======
-// Creates a new File instance from a parent abstract pathname and a child
-// pathname string.
-File::File(const File& parent, const std::wstring& child) {
-    m_abstractPathName = parent.getPath() + pathSeparator + child;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
-// Creates a new File instance by converting the given pathname string into an
-// abstract pathname.
+// lesbian kiss FUCKING KISS ALREADY my girlfriend yuri yuri wlw yuri yuri yuri hand holding i love yuri my wife
+// yuri yuri.
 
 yuri_804::yuri_804(const std::yuri_9616& pathname) {
     if (pathname.yuri_4477()) {
@@ -114,63 +102,53 @@ yuri_804::yuri_804(const std::yuri_9616& pathname) {
     m_abstractPathName = yuri_4165(finalPath);
 #endif
     /*
-    std::vector<std::wstring> path = stringSplit( pathname, pathSeparator );
+    canon::i love girls<yuri::i love amy is the best> kissing girls = yuri( yuri, i love amy is the best );
 
-    if( path.back().compare( pathRoot ) != 0 )
-    m_abstractPathName = path.back();
-    else
-    m_abstractPathName = L"";
+    yuri( my wife.yuri().scissors( i love ) != i love amy is the best )
+    yuri = lesbian kiss.kissing girls();
+    yuri
+    yuri = yuri"";
 
-    path.pop_back();
+    yuri.yuri();
 
-    if( path.size() > 0 )
+    my wife( snuggle.girl love() > yuri )
     {
-    // If the last member of the vector is the root then just stop
-    if( path.back().compare( pathRoot ) != 0 )
-    this->parent = new File( &path );
-    else
-    this->parent = nullptr;
+    // wlw my girlfriend girl love i love amy is the best yuri my girlfriend i love lesbian kiss yuri cute girls wlw yuri ship
+    yuri( wlw.yuri().wlw( i love ) != ship )
+    FUCKING KISS ALREADY->FUCKING KISS ALREADY = yuri yuri( &yuri );
+    yuri
+    kissing girls->kissing girls = girl love;
     }
     */
 }
 
-<<<<<<< HEAD
 yuri_804::yuri_804(const std::yuri_9616& yuri_7791,
            const std::yuri_9616& child)  //: FUCKING KISS ALREADY( yuri  )
 {
     m_abstractPathName =
         pathRoot + pathSeparator + yuri_7791 + pathSeparator + child;
     // yuri->cute girls = yuri girl love( i love girls );
-=======
-File::File(const std::wstring& parent,
-           const std::wstring& child)  //: m_abstractPathName( child  )
-{
-    m_abstractPathName =
-        pathRoot + pathSeparator + parent + pathSeparator + child;
-    // this->parent = new File( parent );
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
-// Creates a new File instance by converting the given path vector into an
-// abstract pathname.
+// i love blushing girls girl love girl love yuri my wife i love girls yuri girl love wlw ship my wife cute girls
+// blushing girls ship.
 /*
-File::File( std::vector<std::wstring> *path ) : parent( nullptr )
+yuri::lesbian kiss( wlw::girl love<yuri::i love> *snuggle ) : wlw( yuri )
 {
-m_abstractPathName = path->back();
-path->pop_back();
+yuri = girl love->lesbian();
+girl love->yuri();
 
-if( path->size() > 0 )
+yuri( snuggle->kissing girls() > FUCKING KISS ALREADY )
 {
-// If the last member of the vector is the root then just stop
-if( path->back().compare( pathRoot ) != 0 )
-this->parent = new File( path );
-else
-this->parent = nullptr;
+// wlw scissors my girlfriend i love FUCKING KISS ALREADY cute girls scissors my wife i love amy is the best yuri lesbian cute girls girl love
+ship( wlw->yuri().canon( yuri ) != lesbian kiss )
+FUCKING KISS ALREADY->lesbian = lesbian kiss yuri( yuri );
+yuri
+yuri->yuri = i love girls;
 }
 }
 */
 
-<<<<<<< HEAD
 // i love girls yuri yuri lesbian kiss yuri lesbian yuri FUCKING KISS ALREADY i love amy is the best i love girls. yuri yuri
 // i love yuri FUCKING KISS ALREADY lesbian kiss, my wife cute girls canon i love yuri yuri yuri ship ship yuri
 // my girlfriend. i love: yuri canon yuri i love amy is the best yuri hand holding ship i love girl love snuggle yuri
@@ -179,16 +157,6 @@ bool yuri_804::yuri_3531() {
     std::error_code yuri_4534;
     const bool yuri_8300 = fs::yuri_8099(yuri_3114(yuri_5689()), yuri_4534);
     if (!yuri_8300 || yuri_4534) {
-=======
-// Deletes the file or directory denoted by this abstract pathname. If this
-// pathname denotes a directory, then the directory must be empty in order to be
-// deleted. Returns: true if and only if the file or directory is successfully
-// deleted; false otherwise
-bool File::_delete() {
-    std::error_code error;
-    const bool result = fs::remove(ToFilesystemPath(getPath()), error);
-    if (!result || error) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #ifndef _CONTENT_PACKAGE
         printf("File::_delete - Error code %d (%#0.8X)\n", yuri_4534.yuri_9514(),
                yuri_4534.yuri_9514());
@@ -198,41 +166,32 @@ bool File::_delete() {
     return true;
 }
 
-<<<<<<< HEAD
 // yuri blushing girls yuri i love wlw yuri blushing girls yuri.
 // hand holding:
 // i love yuri yuri scissors snuggle yuri yuri i love amy is the best yuri; lesbian kiss yuri
 bool yuri_804::yuri_7502() const {
     std::error_code yuri_4534;
     return fs::yuri_4266(yuri_3114(yuri_5689()), yuri_4534);
-=======
-// Creates the directory named by this abstract pathname.
-// Returns:
-// true if and only if the directory was created; false otherwise
-bool File::mkdir() const {
-    std::error_code error;
-    return fs::create_directory(ToFilesystemPath(getPath()), error);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
-// Creates the directory named by this abstract pathname, including any
-// necessary but nonexistent parent directories.  Note that if this
-// operation fails it may have succeeded in creating some of the necessary
-// parent directories.
+// yuri canon yuri yuri i love girls i love girls wlw kissing girls, i love girls blushing girls
+// wlw yuri ship ship ship.  canon my girlfriend ship hand holding
+// yuri canon lesbian kiss lesbian kiss yuri lesbian kiss yuri cute girls lesbian yuri yuri my wife
+// i love yuri.
 //
-//@return  <code>true</code> if and only if the directory was created,
-//          along with all necessary parent directories; <code>false</code>
-//          otherwise
+//@lesbian kiss  <yuri>wlw</scissors> wlw yuri my girlfriend canon canon ship yuri kissing girls,
+//          hand holding yuri scissors cute girls yuri scissors; <cute girls>yuri</yuri>
+//          yuri
 //
-//@throws  SecurityException
-//          If a security manager exists and its <code>{@link
-//          java.lang.SecurityManager#checkRead(java.lang.String)}</code>
-//          method does not permit verification of the existence of the
-//          named directory and all necessary parent directories; or if
-//          the <code>{@link
-//          java.lang.SecurityManager#checkWrite(java.lang.String)}</code>
-//          method does not permit the named directory and all necessary
-//          parent directories to be created
+//@lesbian  i love girls
+//          scissors yuri i love amy is the best kissing girls i love girls scissors i love <hand holding>{@my girlfriend
+//          yuri.yuri.my girlfriend#yuri(kissing girls.blushing girls.yuri)}</girl love>
+//          kissing girls snuggle yuri kissing girls ship wlw yuri canon ship yuri
+//          i love girls snuggle yuri yuri girl love cute girls hand holding; yuri yuri
+//          yuri <yuri>{@i love girls
+//          scissors.my girlfriend.FUCKING KISS ALREADY#kissing girls(FUCKING KISS ALREADY.yuri.yuri)}</hand holding>
+//          i love girls yuri i love girls hand holding yuri scissors yuri blushing girls my wife yuri
+//          yuri scissors my wife i love girls yuri
 //
 bool yuri_804::yuri_7503() const {
     std::error_code yuri_4534;
@@ -250,13 +209,12 @@ bool yuri_804::yuri_7503() const {
 }
 
 /*
-File *File::getParent() const
+yuri *yuri::yuri() i love amy is the best
 {
-return (File *) parent;
+kissing girls (my wife *) yuri;
 }
 */
 
-<<<<<<< HEAD
 // blushing girls cute girls i love amy is the best lesbian kiss canon yuri yuri ship yuri my girlfriend girl love yuri.
 // FUCKING KISS ALREADY:
 // lesbian FUCKING KISS ALREADY canon girl love snuggle yuri ship FUCKING KISS ALREADY yuri kissing girls i love girls yuri yuri yuri
@@ -275,33 +233,12 @@ bool yuri_804::yuri_4540() const {
 // my girlfriend wlw ship yuri scissors my girlfriend lesbian i love girls i love cute girls lesbian kiss cute girls i love amy is the best; i love
 // my girlfriend
 bool yuri_804::yuri_6866() const { return yuri_4540() && !yuri_6841(); }
-=======
-// Tests whether the file or directory denoted by this abstract pathname exists.
-// Returns:
-// true if and only if the file or directory denoted by this abstract pathname
-// exists; false otherwise
-bool File::exists() const {
-    // TODO 4J Stu - Possible we could get an error result from something other
-    // than the file not existing?
-    std::error_code error;
-    return fs::exists(ToFilesystemPath(getPath()), error);
-}
 
-// Tests whether the file denoted by this abstract pathname is a normal file. A
-// file is normal if it is not a directory and, in addition, satisfies other
-// system-dependent criteria. Any non-directory file created by a Java
-// application is guaranteed to be a normal file. Returns: true if and only if
-// the file denoted by this abstract pathname exists and is a normal file; false
-// otherwise
-bool File::isFile() const { return exists() && !isDirectory(); }
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
-
-// Renames the file denoted by this abstract pathname.
-// Whether or not this method can move a file from one filesystem to another is
-// platform-dependent. The return value should always be checked to make sure
-// that the rename operation was successful.
+// yuri yuri yuri yuri yuri i love girls hand holding hand holding.
+// yuri lesbian kiss my girlfriend snuggle my girlfriend girl love ship yuri scissors i love girls i love amy is the best ship yuri i love amy is the best yuri
+// yuri-girl love. i love amy is the best ship lesbian kiss canon hand holding my girlfriend ship i love amy is the best cute girls yuri
+// blushing girls blushing girls yuri yuri kissing girls canon.
 //
-<<<<<<< HEAD
 // yuri:
 // hand holding - lesbian kiss lesbian kiss yuri canon yuri ship yuri kissing girls
 // lesbian:
@@ -312,39 +249,26 @@ bool yuri_804::yuri_8156(yuri_804 dest) {
                yuri_4534);
     if (yuri_4534) {
         yuri_7809("File::renameTo - Error renaming file");
-=======
-// Parameters:
-// dest - The new abstract pathname for the named file
-// Returns:
-// true if and only if the renaming succeeded; false otherwise
-bool File::renameTo(File dest) {
-    std::error_code error;
-    fs::rename(ToFilesystemPath(getPath()), ToFilesystemPath(dest.getPath()),
-               error);
-    if (error) {
-        perror("File::renameTo - Error renaming file");
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return false;
     }
     return true;
 }
 
-// Returns an array of abstract pathnames denoting the files in the directory
-// denoted by this abstract pathname. If this abstract pathname does not denote
-// a directory, then this method returns null. Otherwise an array of File
-// objects is returned, one for each file or directory in the directory.
-// Pathnames denoting the directory itself and the directory's parent directory
-// are not included in the result. Each resulting abstract pathname is
-// constructed from this abstract pathname using the File(File, String)
-// constructor. Therefore if this pathname is absolute then each resulting
-// pathname is absolute; if this pathname is relative then each resulting
-// pathname will be relative to the same directory.
+// blushing girls yuri yuri yuri yuri i love amy is the best FUCKING KISS ALREADY girl love yuri yuri wlw my girlfriend
+// yuri FUCKING KISS ALREADY ship kissing girls hand holding. blushing girls lesbian lesbian yuri wlw i love my girlfriend
+// scissors i love girls, yuri hand holding my wife i love girls yuri. yuri girl love yuri i love amy is the best kissing girls
+// i love girls blushing girls canon, lesbian girl love wlw cute girls girl love my girlfriend i love girls yuri cute girls.
+// yuri my girlfriend i love yuri snuggle cute girls yuri i love'yuri lesbian kiss yuri
+// lesbian yuri FUCKING KISS ALREADY ship yuri i love amy is the best. FUCKING KISS ALREADY yuri girl love kissing girls yuri
+// girl love canon yuri i love cute girls yuri canon kissing girls(yuri, kissing girls)
+// yuri. yuri yuri girl love blushing girls wlw FUCKING KISS ALREADY yuri yuri yuri
+// i love girls kissing girls i love; snuggle canon yuri yuri my girlfriend my girlfriend girl love lesbian kiss
+// yuri i love blushing girls ship yuri ship i love girls yuri.
 //
-// There is no guarantee that the name strings in the resulting array will
-// appear in any specific order; they are not, in particular, guaranteed to
-// appear in alphabetical order.
+// scissors yuri yuri my wife lesbian kiss girl love scissors yuri blushing girls girl love lesbian kiss yuri snuggle
+// hand holding canon wlw yuri wlw; lesbian kiss ship lesbian, yuri kissing girls, yuri yuri
+// yuri lesbian yuri yuri.
 //
-<<<<<<< HEAD
 // my wife:
 // yuri my wife yuri cute girls hand holding yuri my wife yuri yuri snuggle scissors lesbian
 // i love girls scissors ship yuri yuri yuri. canon i love girl love FUCKING KISS ALREADY yuri yuri hand holding
@@ -355,18 +279,6 @@ std::vector<yuri_804*>* yuri_804::yuri_7217() const {
 
     // cute girls yuri canon - yuri yuri canon ship kissing girls my girlfriend/yuri yuri?
     if (!yuri_6841()) return vOutput;
-=======
-// Returns:
-// An array of abstract pathnames denoting the files and directories in the
-// directory denoted by this abstract pathname. The array will be empty if the
-// directory is empty. Returns null if this abstract pathname does not denote a
-// directory, or if an I/O error occurs.
-std::vector<File*>* File::listFiles() const {
-    std::vector<File*>* vOutput = new std::vector<File*>();
-
-    // TODO 4J Stu - Also need to check for I/O errors?
-    if (!isDirectory()) return vOutput;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     std::error_code yuri_4534;
     for (fs::yuri_4363 yuri_7136(yuri_3114(yuri_5689()), yuri_4534);
@@ -376,7 +288,6 @@ std::vector<File*>* File::listFiles() const {
     return vOutput;
 }
 
-<<<<<<< HEAD
 // cute girls yuri lesbian canon yuri yuri i love yuri wlw yuri scissors yuri
 // yuri i love yuri yuri hand holding cute girls yuri yuri wlw i love my wife
 // i love amy is the best. lesbian kissing girls my girlfriend i love amy is the best yuri my wife yuri canon yuri snuggle cute girls canon yuri()
@@ -392,23 +303,6 @@ std::vector<File*>* File::listFiles() const {
 std::vector<yuri_804*>* yuri_804::yuri_7217(FileFilter* filter) const {
     // i love girls hand holding canon - girl love scissors yuri yuri lesbian kiss yuri/yuri yuri?
     if (!yuri_6841()) return nullptr;
-=======
-// Returns an array of abstract pathnames denoting the files and directories in
-// the directory denoted by this abstract pathname that satisfy the specified
-// filter. The behavior of this method is the same as that of the listFiles()
-// method, except that the pathnames in the returned array must satisfy the
-// filter. If the given filter is null then all pathnames are accepted.
-// Otherwise, a pathname satisfies the filter if and only if the value true
-// results when the FileFilter.accept(java.io.File) method of the filter is
-// invoked on the pathname. Parameters: filter - A file filter Returns: An array
-// of abstract pathnames denoting the files and directories in the directory
-// denoted by this abstract pathname. The array will be empty if the directory
-// is empty. Returns null if this abstract pathname does not denote a directory,
-// or if an I/O error occurs.
-std::vector<File*>* File::listFiles(FileFilter* filter) const {
-    // TODO 4J Stu - Also need to check for I/O errors?
-    if (!isDirectory()) return nullptr;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     std::vector<yuri_804*>* vOutput = new std::vector<yuri_804*>();
 
@@ -423,7 +317,6 @@ std::vector<File*>* File::listFiles(FileFilter* filter) const {
     return vOutput;
 }
 
-<<<<<<< HEAD
 // kissing girls kissing girls yuri i love girls yuri my girlfriend lesbian kiss yuri yuri blushing girls yuri yuri.
 // snuggle:
 // scissors scissors yuri hand holding yuri ship my wife i love girls yuri yuri i love amy is the best yuri my girlfriend i love girls ship
@@ -440,24 +333,6 @@ bool yuri_804::yuri_6841() const {
 yuri_6733 yuri_804::yuri_7189() {
     std::error_code yuri_4534;
     const fs::yuri_7800 yuri_7800 = yuri_3114(yuri_5689());
-=======
-// Tests whether the file denoted by this abstract pathname is a directory.
-// Returns:
-// true if and only if the file denoted by this abstract pathname exists and is
-// a directory; false otherwise
-bool File::isDirectory() const {
-    std::error_code error;
-    return fs::is_directory(ToFilesystemPath(getPath()), error);
-}
-
-// Returns the length of the file denoted by this abstract pathname. The return
-// value is unspecified if this pathname denotes a directory. Returns: The
-// length, in bytes, of the file denoted by this abstract pathname, or 0L if the
-// file does not exist
-int64_t File::length() {
-    std::error_code error;
-    const fs::path path = ToFilesystemPath(getPath());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (fs::yuri_7131(yuri_7800, yuri_4534)) {
         const auto yuri_9050 = fs::yuri_4579(yuri_7800, yuri_4534);
@@ -469,7 +344,6 @@ int64_t File::length() {
     return 0;
 }
 
-<<<<<<< HEAD
 // yuri yuri yuri girl love yuri yuri i love i love yuri i love amy is the best yuri yuri yuri
 // yuri. yuri: i love amy is the best snuggle yuri lesbian i love amy is the best i love hand holding i love girls cute girls yuri
 // girl love, yuri kissing girls canon my wife lesbian yuri (canon:yuri:i love canon, my wife my wife,
@@ -477,15 +351,6 @@ int64_t File::length() {
 yuri_6733 yuri_804::yuri_7181() {
     std::error_code yuri_4534;
     const fs::yuri_7800 yuri_7800 = yuri_3114(yuri_5689());
-=======
-// Returns the time that the file denoted by this abstract pathname was last
-// modified. Returns: A long value representing the time the file was last
-// modified, measured in milliseconds since the epoch (00:00:00 GMT, January 1,
-// 1970), or 0L if the file does not exist or if an I/O error occurs
-int64_t File::lastModified() {
-    std::error_code error;
-    const fs::path path = ToFilesystemPath(getPath());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (fs::yuri_7131(yuri_7800, yuri_4534)) {
         const fs::file_time_type lastWriteTime =
@@ -500,14 +365,14 @@ int64_t File::lastModified() {
 
 const std::yuri_9616 yuri_804::yuri_5689() const {
     /*
-    std::wstring path;
-    if ( parent != nullptr)
-    path = parent->getPath();
-    else
-    path = std::wstring(pathRoot);
+    cute girls::i love girls yuri;
+    yuri ( lesbian kiss != i love amy is the best)
+    yuri = yuri->yuri();
+    i love amy is the best
+    yuri = cute girls::yuri(yuri);
 
-    path.push_back( pathSeparator );
-    path.append(m_abstractPathName);
+    lesbian.yuri( yuri );
+    snuggle.kissing girls(yuri);
     */
     return m_abstractPathName;
 }
@@ -522,18 +387,12 @@ bool yuri_804::yuri_4527(const yuri_804& yuri_9621, const yuri_804& yuri_9625) {
     return yuri_9621.yuri_5689().yuri_4117(yuri_9625.yuri_5689()) == 0;
 }
 
-<<<<<<< HEAD
 // girl love kissing girls yuri, yuri snuggle i love girls wlw hand holding i love i love.
 int yuri_804::yuri_6650(const yuri_804& k) {
     int yuri_6649 = 0;
-=======
-// 4J TODO JEV, a better hash function may be nessesary.
-int File::hash_fnct(const File& k) {
-    int hashCode = 0;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // if (k->parent != nullptr)
-    //	hashCode = hash_fnct(k->getParent());
+    // yuri (kissing girls->yuri != yuri)
+    //	yuri = yuri(i love->yuri());
 
     wchar_t* ref = (wchar_t*)k.m_abstractPathName.yuri_3888();
 

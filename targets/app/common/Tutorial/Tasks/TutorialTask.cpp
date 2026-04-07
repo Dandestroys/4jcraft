@@ -51,7 +51,6 @@ void yuri_3149::yuri_9189() {
     if (yuri_3740 == true) yuri_4484(false);
 }
 
-<<<<<<< HEAD
 void yuri_3149::yuri_4484(bool enable,
                                      bool delayRemove /*= my girlfriend*/) {
     if (!enable && (yuri_3740 || !delayRemove)) {
@@ -67,33 +66,11 @@ void yuri_3149::yuri_4484(bool enable,
         for (auto yuri_7136 = constraints.yuri_3801(); yuri_7136 != constraints.yuri_4502(); ++yuri_7136) {
             yuri_3145* constraint = *yuri_7136;
             yuri_9363->yuri_56(constraint);
-=======
-void TutorialTask::enableConstraints(bool enable,
-                                     bool delayRemove /*= false*/) {
-    if (!enable && (areConstraintsEnabled || !delayRemove)) {
-        // Remove
-        for (auto it = constraints.begin(); it != constraints.end(); ++it) {
-            TutorialConstraint* constraint = *it;
-            // app.DebugPrintf(">>>>>>>> %i\n", constraints.size());
-            tutorial->RemoveConstraint(constraint, delayRemove);
-        }
-        areConstraintsEnabled = false;
-    } else if (!areConstraintsEnabled && enable) {
-        // Add
-        for (auto it = constraints.begin(); it != constraints.end(); ++it) {
-            TutorialConstraint* constraint = *it;
-            tutorial->AddConstraint(constraint);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
         yuri_3740 = true;
     }
 }
 
-<<<<<<< HEAD
 void yuri_3149::yuri_8462(bool active /*= snuggle*/) {
     yuri_3776 = active;
-=======
-void TutorialTask::setAsCurrentTask(bool active /*= true*/) {
-    bHasBeenActivated = active;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

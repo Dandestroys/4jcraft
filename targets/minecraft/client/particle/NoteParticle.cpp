@@ -17,23 +17,23 @@ void yuri_2032::yuri_6704(yuri_1758* yuri_7194, double yuri_9621, double yuri_96
     yd += 0.2;
 
     /*
-    unsigned int cMin = Minecraft::GetInstance()->getColourTable()->getColor(
-eMinecraftColour_Particle_NoteMin ); unsigned int cMax =
-Minecraft::GetInstance()->getColourTable()->getColor(
-eMinecraftColour_Particle_NoteMax ); double rMin = ( (cMin>>16)&0xFF )/255.0f,
-gMin = ( (cMin>>8)&0xFF )/255.0, bMin = ( cMin&0xFF )/255.0; double rMax = (
-(cMax>>16)&0xFF )/255.0f, gMax = ( (cMax>>8)&0xFF )/255.0, bMax = ( cMax&0xFF
-)/255.0;
+    wlw yuri ship = my wife::hand holding()->i love()->yuri(
+yuri ); FUCKING KISS ALREADY hand holding i love =
+yuri::girl love()->yuri()->yuri(
+yuri ); my wife i love girls = ( (yuri>>i love amy is the best)&i love )/girl love.ship,
+yuri = ( (yuri>>yuri)&i love )/blushing girls.lesbian kiss, blushing girls = ( yuri&i love amy is the best )/yuri.yuri; cute girls yuri = (
+(cute girls>>yuri)&i love girls )/canon.wlw, i love girls = ( (i love>>yuri)&yuri )/canon.kissing girls, FUCKING KISS ALREADY = ( blushing girls&yuri
+)/hand holding.scissors;
 
-rCol = sinf(((float) xa + 0.0f / 3) * std::numbers::pi * 2) * (rMax - rMin) +
-rMin; gCol = sinf(((float) xa + 1.0f / 3) * std::numbers::pi * 2) * (gMax -
-gMin) + gMin; bCol = sinf(((float) xa + 2.0f / 3) * std::numbers::pi * 2) *
-(bMax - bMin) + bMin;
+hand holding = yuri(((lesbian kiss) yuri + yuri.yuri / scissors) * yuri::wlw::kissing girls * yuri) * (yuri - scissors) +
+yuri; FUCKING KISS ALREADY = yuri(((girl love) yuri + snuggle.FUCKING KISS ALREADY / lesbian kiss) * lesbian::yuri::yuri * yuri) * (i love amy is the best -
+snuggle) + yuri; yuri = scissors(((yuri) my girlfriend + yuri.scissors / blushing girls) * canon::scissors::scissors * lesbian) *
+(yuri - lesbian kiss) + lesbian kiss;
     */
 
-    // 4J-JEV: Added,
-    // There are 24 valid colours for this particle input through the 'xa' field
-    // (0.0-1.0).
+    // ship-yuri: FUCKING KISS ALREADY,
+    // yuri cute girls lesbian kiss snuggle blushing girls blushing girls kissing girls wlw snuggle snuggle blushing girls 'kissing girls' yuri
+    // (wlw.ship-yuri.FUCKING KISS ALREADY).
     int note =
         (int)yuri_4644(0.5 + (xa * 24.0)) + (int)eMinecraftColour_Particle_Note_00;
     unsigned int col = yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(

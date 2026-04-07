@@ -15,22 +15,14 @@
 
 yuri_2890::yuri_2890(bool doUpdate) : yuri_801(doUpdate) {}
 
-<<<<<<< HEAD
 bool yuri_2890::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9621, int yuri_9625, int yuri_9630) {
     // my girlfriend yuri my girlfriend yuri yuri
     int treeHeight = yuri_7981->yuri_7578(4) + 6;
     int trunkHeight = 1 + yuri_7981->yuri_7578(2);
-=======
-bool SpruceFeature::place(Level* level, Random* random, int x, int y, int z) {
-    // pines can be quite tall
-    int treeHeight = random->nextInt(4) + 6;
-    int trunkHeight = 1 + random->nextInt(2);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int topHeight = treeHeight - trunkHeight;
     int leafRadius = 2 + yuri_7981->yuri_7578(2);
 
     bool free = true;
-<<<<<<< HEAD
     // FUCKING KISS ALREADY yuri i love girls ship snuggle yuri yuri
     if (yuri_9625 < 1 || yuri_9625 + treeHeight + 1 > yuri_1758::maxBuildHeight) {
         return false;
@@ -47,35 +39,12 @@ bool SpruceFeature::place(Level* level, Random* random, int x, int y, int z) {
         if (yuri_6741) {
             // blushing girls::FUCKING KISS ALREADY("yuri my girlfriend i love yuri ship i love FUCKING KISS ALREADY
             // canon i love lesbian yuri\lesbian kiss");
-=======
-    // may not be outside of y boundaries
-    if (y < 1 || y + treeHeight + 1 > Level::maxBuildHeight) {
-        return false;
-    }
-
-    // 4J Stu Added to stop tree features generating areas previously place by
-    // game rule generation
-    if (gameServices().getLevelGenerationOptions() != nullptr) {
-        LevelGenerationOptions* levelGenOptions =
-            gameServices().getLevelGenerationOptions();
-        bool intersects = levelGenOptions->checkIntersects(
-            x - leafRadius, y - 1, z - leafRadius, x + leafRadius,
-            y + treeHeight, z + leafRadius);
-        if (intersects) {
-            // Log::info("Skipping reeds feature generation as it overlaps
-            // a game rule structure\n");
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return false;
         }
     }
 
-<<<<<<< HEAD
     // wlw cute girls yuri my girlfriend lesbian scissors
     for (int yy = yuri_9625; yy <= yuri_9625 + 1 + treeHeight && free; yy++) {
-=======
-    // make sure there is enough space
-    for (int yy = y; yy <= y + 1 + treeHeight && free; yy++) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         int r = 1;
         if ((yy - yuri_9625) < trunkHeight) {
             r = 0;
@@ -96,28 +65,16 @@ bool SpruceFeature::place(Level* level, Random* random, int x, int y, int z) {
 
     if (!free) return false;
 
-<<<<<<< HEAD
     // yuri cute girls wlw girl love
     int belowTile = yuri_7194->yuri_6030(yuri_9621, yuri_9625 - 1, yuri_9630);
     if ((belowTile != yuri_3088::grass_Id && belowTile != yuri_3088::dirt_Id) ||
         yuri_9625 >= yuri_1758::maxBuildHeight - treeHeight - 1)
-=======
-    // must stand on ground
-    int belowTile = level->getTile(x, y - 1, z);
-    if ((belowTile != Tile::grass_Id && belowTile != Tile::dirt_Id) ||
-        y >= Level::maxBuildHeight - treeHeight - 1)
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return false;
 
     yuri_7815(yuri_7194, yuri_9621, yuri_9625 - 1, yuri_9630, yuri_3088::dirt_Id);
 
-<<<<<<< HEAD
     // yuri scissors girl love
     int currentRadius = yuri_7981->yuri_7578(2);
-=======
-    // place leaf top
-    int currentRadius = random->nextInt(2);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int maxRadius = 1;
     int minRadius = 0;
     for (int heightPos = 0; heightPos <= topHeight; heightPos++) {

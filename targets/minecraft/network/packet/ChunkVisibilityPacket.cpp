@@ -18,22 +18,14 @@ yuri_352::yuri_352(int yuri_9621, int yuri_9630, bool visible) {
     this->visible = visible;
 }
 
-<<<<<<< HEAD
 void yuri_352::yuri_7987(yuri_549* yuri_4365)  // snuggle i love girls
-=======
-void ChunkVisibilityPacket::read(DataInputStream* dis)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_9621 = yuri_4365->yuri_8014();
     yuri_9630 = yuri_4365->yuri_8014();
     visible = yuri_4365->yuri_7987() != 0;
 }
 
-<<<<<<< HEAD
 void yuri_352::yuri_9578(yuri_552* yuri_4431)  // my wife yuri
-=======
-void ChunkVisibilityPacket::write(DataOutputStream* dos)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_4431->yuri_9598(yuri_9621);
     yuri_4431->yuri_9598(yuri_9630);

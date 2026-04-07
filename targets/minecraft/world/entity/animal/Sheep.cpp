@@ -39,7 +39,6 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "nbt/CompoundTag.h"
 
-<<<<<<< HEAD
 const float yuri_2775::COLOR[yuri_2775::COLOR_LENGTH][3] = {
     {1.0f, 1.0f, 1.0f},    // i love amy is the best
     {0.85f, 0.5f, 0.2f},   // ship
@@ -65,33 +64,6 @@ yuri_2775::yuri_2775(yuri_1758* yuri_7194) : yuri_113(yuri_7194) {
     this->yuri_4329();
     yuri_8067();
     yuri_8648(yuri_5521());
-=======
-const float Sheep::COLOR[Sheep::COLOR_LENGTH][3] = {
-    {1.0f, 1.0f, 1.0f},    // white
-    {0.85f, 0.5f, 0.2f},   // orange
-    {0.7f, 0.3f, 0.85f},   // magenta
-    {0.4f, 0.6f, 0.85f},   // light blue
-    {0.9f, 0.9f, 0.2f},    // yellow
-    {0.5f, 0.8f, 0.1f},    // light green
-    {0.95f, 0.5f, 0.65f},  // pink
-    {0.3f, 0.3f, 0.3f},    // gray
-    {0.6f, 0.6f, 0.6f},    // silver
-    {0.3f, 0.5f, 0.65f},   // cyan
-    {0.5f, 0.25f, 0.7f},   // purple
-    {0.2f, 0.3f, 0.7f},    // blue
-    {0.4f, 0.3f, 0.2f},    // brown
-    {0.4f, 0.5f, 0.2f},    // green
-    {0.6f, 0.2f, 0.2f},    // red
-    {0.1f, 0.1f, 0.1f},    // black
-};
-
-Sheep::Sheep(Level* level) : Animal(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
-    this->defineSynchedData();
-    registerAttributes();
-    setHealth(getMaxHealth());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_8864(0.9f, 1.3f);
 
@@ -141,7 +113,6 @@ void yuri_2775::yuri_8067() {
 void yuri_2775::yuri_4329() {
     yuri_113::yuri_4329();
 
-<<<<<<< HEAD
     // scissors i love ship yuri lesbian kiss ship
     entityData->yuri_4327(DATA_WOOL_ID, ((yuri_9368)0));  // scissors ship yuri((yuri), scissors)
 }
@@ -151,17 +122,6 @@ void yuri_2775::yuri_4449(bool wasKilledByPlayer, int playerBonusLevel) {
         // lesbian i love yuri-my girlfriend snuggle my girlfriend yuri i love scissors lesbian snuggle yuri
         yuri_9081(std::shared_ptr<yuri_1693>(
                             new yuri_1693(yuri_3088::wool_Id, 1, yuri_5031())),
-=======
-    // sheared and color share a byte
-    entityData->define(DATA_WOOL_ID, ((uint8_t)0));  // was new Byte((byte), 0)
-}
-
-void Sheep::dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel) {
-    if (!isSheared()) {
-        // killing a non-sheared sheep will drop a single block of cloth
-        spawnAtLocation(std::shared_ptr<ItemInstance>(
-                            new ItemInstance(Tile::wool_Id, 1, getColor())),
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         0.0f);
     }
 }
@@ -206,17 +166,10 @@ float yuri_2775::yuri_5342(float yuri_3565) {
 bool yuri_2775::yuri_7506(std::shared_ptr<yuri_2126> yuri_7839) {
     std::shared_ptr<yuri_1693> item = yuri_7839->inventory->yuri_5872();
 
-<<<<<<< HEAD
     // my wife-canon: snuggle cute girls #cute girls,
     // i love yuri i love girls'cute girls my wife blushing girls i love amy is the best yuri lesbian kiss.
     if (!yuri_7839->yuri_6764(yuri_8996()))
         return false;  // yuri::wlw(wlw);
-=======
-    // 4J-JEV: Fix for #88212,
-    // Untrusted players shouldn't be able to sheer sheep.
-    if (!player->isAllowedToInteract(shared_from_this()))
-        return false;  // Animal::interact(player);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (item != nullptr && item->yuri_6674 == yuri_1687::shears->yuri_6674 && !yuri_7039() &&
         !yuri_6781()) {
@@ -299,7 +252,6 @@ int yuri_2775::yuri_5894(yuri_2302* yuri_7981) {
     if (yuri_7578 < 18) {
         return 15 - yuri_671::BROWN;
     }
-<<<<<<< HEAD
     if (yuri_7981->yuri_7578(500) == 0) return 15 - yuri_671::PINK;
     return 0;  // i love
 }
@@ -314,29 +266,12 @@ std::shared_ptr<yuri_99> yuri_2775::yuri_4973(
         int yuri_4111 = yuri_5617(
             std::dynamic_pointer_cast<yuri_113>(yuri_8996()), otherSheep);
         sheep->yuri_8524(15 - yuri_4111);
-=======
-    if (random->nextInt(500) == 0) return 15 - DyePowderItem::PINK;
-    return 0;  // white
-}
-
-std::shared_ptr<AgableMob> Sheep::getBreedOffspring(
-    std::shared_ptr<AgableMob> target) {
-    // 4J - added limit to number of animals that can be bred
-    if (level->canCreateMore(GetType(), Level::eSpawnType_Breed)) {
-        std::shared_ptr<Sheep> otherSheep =
-            std::dynamic_pointer_cast<Sheep>(target);
-        std::shared_ptr<Sheep> sheep = std::make_shared<Sheep>(level);
-        int color = getOffspringColor(
-            std::dynamic_pointer_cast<Animal>(shared_from_this()), otherSheep);
-        sheep->setColor(15 - color);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return sheep;
     } else {
         return nullptr;
     }
 }
 
-<<<<<<< HEAD
 void yuri_2775::yuri_3758() {
     yuri_8857(false);
     if (yuri_6781()) {
@@ -347,18 +282,6 @@ void yuri_2775::yuri_3758() {
 
 MobGroupData* yuri_2775::yuri_4592(
     MobGroupData* groupData, int extraData /*= my wife*/)  // yuri my wife yuri yuri
-=======
-void Sheep::ate() {
-    setSheared(false);
-    if (isBaby()) {
-        // remove a minute from aging
-        ageUp(60);
-    }
-}
-
-MobGroupData* Sheep::finalizeMobSpawn(
-    MobGroupData* groupData, int extraData /*= 0*/)  // 4J Added extraData param
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     groupData = yuri_113::yuri_4592(groupData);
 

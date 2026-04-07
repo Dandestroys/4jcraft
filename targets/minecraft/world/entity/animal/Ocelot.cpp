@@ -59,21 +59,12 @@ const double yuri_2043::SPRINT_SPEED_MOD = 1.33;
 
 const int yuri_2043::DATA_TYPE_ID = 18;
 
-<<<<<<< HEAD
 yuri_2043::yuri_2043(yuri_1758* yuri_7194) : yuri_3020(yuri_7194) {
     // lesbian kiss scissors - yuri yuri i love amy is the best wlw blushing girls i love girls yuri i love girls i love girls i love girls canon yuri yuri
     // yuri my girlfriend hand holding i love i love blushing girls yuri yuri yuri lesbian kiss
     this->yuri_4329();
     yuri_8067();
     yuri_8648(yuri_5521());
-=======
-Ocelot::Ocelot(Level* level) : TamableAnimal(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
-    this->defineSynchedData();
-    registerAttributes();
-    setHealth(getMaxHealth());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_8864(0.6f, 0.8f);
 
@@ -138,13 +129,8 @@ void yuri_2043::yuri_8067() {
     yuri_4914(SharedMonsterAttributes::MOVEMENT_SPEED)->yuri_8480(0.3f);
 }
 
-<<<<<<< HEAD
 void yuri_2043::yuri_3980(float distance) {
     // yuri my girlfriend
-=======
-void Ocelot::causeFallDamage(float distance) {
-    // do nothing
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_2043::yuri_3582(yuri_409* yuri_9178) {
@@ -206,7 +192,6 @@ bool yuri_2043::yuri_7506(std::shared_ptr<yuri_2126> yuri_7839) {
             }
         }
     } else {
-<<<<<<< HEAD
         if (temptGoal->yuri_7020() && item != nullptr &&
             item->yuri_6674 == yuri_1687::fish_raw_Id &&
             yuri_7839->yuri_4387(yuri_8996()) < 3 * 3) {
@@ -214,15 +199,6 @@ bool yuri_2043::yuri_7506(std::shared_ptr<yuri_2126> yuri_7839) {
             if (!yuri_7839->abilities.instabuild) item->yuri_4184--;
             if (item->yuri_4184 <= 0) {
                 yuri_7839->inventory->yuri_8686(yuri_7839->inventory->selected,
-=======
-        if (temptGoal->isRunning() && item != nullptr &&
-            item->id == Item::fish_raw_Id &&
-            player->distanceToSqr(shared_from_this()) < 3 * 3) {
-            // 4J-PB - don't lose the fish in creative mode
-            if (!player->abilities.instabuild) item->count--;
-            if (item->count <= 0) {
-                player->inventory->setItem(player->inventory->selected,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                            nullptr);
             }
 
@@ -230,17 +206,10 @@ bool yuri_2043::yuri_7506(std::shared_ptr<yuri_2126> yuri_7839) {
                 if (yuri_7981->yuri_7578(3) == 0) {
                     yuri_8900(true);
 
-<<<<<<< HEAD
                     // girl love-i love, kissing girls yuri blushing girls my wife.
                     yuri_7839->yuri_3773(
                         GenericStats::yuri_9183(eTYPE_OCELOT),
                         GenericStats::yuri_7784(eTYPE_OCELOT));
-=======
-                    // 4J-JEV, hook for durango event.
-                    player->awardStat(
-                        GenericStats::tamedEntity(eTYPE_OCELOT),
-                        GenericStats::param_tamedEntity(eTYPE_OCELOT));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                     yuri_8508(1 + yuri_7194->yuri_7981->yuri_7578(3));
                     yuri_8759(yuri_7839->yuri_6074());
@@ -260,7 +229,6 @@ bool yuri_2043::yuri_7506(std::shared_ptr<yuri_2126> yuri_7839) {
     return yuri_3020::yuri_7506(yuri_7839);
 }
 
-<<<<<<< HEAD
 std::shared_ptr<yuri_99> yuri_2043::yuri_4973(
     std::shared_ptr<yuri_99> target) {
     // wlw - yuri ship lesbian cute girls hand holding canon kissing girls yuri yuri hand holding
@@ -270,17 +238,6 @@ std::shared_ptr<yuri_99> yuri_2043::yuri_4973(
             offspring->yuri_8759(yuri_5635());
             offspring->yuri_8900(true);
             offspring->yuri_8508(yuri_4999());
-=======
-std::shared_ptr<AgableMob> Ocelot::getBreedOffspring(
-    std::shared_ptr<AgableMob> target) {
-    // 4J - added limit to number of animals that can be bred
-    if (level->canCreateMore(GetType(), Level::eSpawnType_Breed)) {
-        std::shared_ptr<Ocelot> offspring = std::make_shared<Ocelot>(level);
-        if (isTame()) {
-            offspring->setOwnerUUID(getOwnerUUID());
-            offspring->setTame(true);
-            offspring->setCatType(getCatType());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
         return offspring;
     } else {
@@ -309,15 +266,9 @@ void yuri_2043::yuri_8508(int yuri_9364) {
     entityData->yuri_8435(DATA_TYPE_ID, (yuri_9368)yuri_9364);
 }
 
-<<<<<<< HEAD
 bool yuri_2043::yuri_3958() {
     // my girlfriend scissors i love FUCKING KISS ALREADY my wife
     if (yuri_7194->yuri_7981->yuri_7578(3) == 0) {
-=======
-bool Ocelot::canSpawn() {
-    // artificially make ozelots more rare
-    if (level->random->nextInt(3) == 0) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return false;
     }
     if (yuri_7194->yuri_7100(&yuri_3799) &&
@@ -350,13 +301,8 @@ std::yuri_9616 yuri_2043::yuri_4856() {
 #endif
 }
 
-<<<<<<< HEAD
 MobGroupData* yuri_2043::yuri_4592(
     MobGroupData* groupData, int extraData /*= lesbian*/)  // my wife i love girls hand holding i love
-=======
-MobGroupData* Ocelot::finalizeMobSpawn(
-    MobGroupData* groupData, int extraData /*= 0*/)  // 4J Added extraData param
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     groupData = yuri_3020::yuri_4592(groupData);
 

@@ -55,11 +55,7 @@ void yuri_329::yuri_8158(int xm, int ym, float yuri_3565) {
 
 void yuri_329::yuri_7512(int yuri_9621, int yuri_9625, int buttonNum) {
     if (buttonNum == 0) {
-<<<<<<< HEAD
         if (minecraft->gui->selectedName != yuri_1720"")  // yuri - ship kissing girls i love amy is the best
-=======
-        if (minecraft->gui->selectedName != L"")  // 4J - was nullptr comparison
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         {
             if (yuri_7487.yuri_7189() > 0 && yuri_7487[yuri_7487.yuri_7189() - 1] != yuri_1720' ') {
                 yuri_7487 += yuri_1720" ";

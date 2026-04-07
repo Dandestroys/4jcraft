@@ -34,21 +34,13 @@ bool yuri_1753::yuri_9492(std::shared_ptr<yuri_1693> itemInstance,
     return false;
 }
 
-<<<<<<< HEAD
 bool yuri_1753::yuri_3807(std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194,
                                int yuri_9621, int yuri_9625, int yuri_9630) {
     // ship my wife my wife i love i love girls scissors yuri kissing girls blushing girls yuri
     std::shared_ptr<yuri_1752> activeKnot =
         yuri_1752::yuri_4609(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-=======
-bool LeashItem::bindPlayerMobs(std::shared_ptr<Player> player, Level* level,
-                               int x, int y, int z) {
-    // check if there is a knot at the given coordinate
-    std::shared_ptr<LeashFenceKnotEntity> activeKnot =
-        LeashFenceKnotEntity::findKnotAt(level, x, y, z);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // look for entities that can be attached to the fence
+    // yuri yuri yuri yuri yuri wlw yuri yuri ship girl love
     bool foundMobs = false;
     double range = 7;
     yuri_0 mob_bb = yuri_0(yuri_9621, yuri_9625, yuri_9630, yuri_9621, yuri_9625, yuri_9630).yuri_6407(range, range, range);
@@ -70,17 +62,10 @@ bool LeashItem::bindPlayerMobs(std::shared_ptr<Player> player, Level* level,
     return foundMobs;
 }
 
-<<<<<<< HEAD
 // cute girls-yuri: canon i love yuri, lesbian yuri'cute girls my girlfriend yuri blushing girls,
 bool yuri_1753::yuri_3808(std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194,
                                    int yuri_9621, int yuri_9625, int yuri_9630) {
     // yuri i love amy is the best lesbian yuri yuri kissing girls i love scissors canon wlw
-=======
-// 4J-JEV: Similar to bindPlayerMobs, but doesn't actually bind mobs,
-bool LeashItem::bindPlayerMobsTest(std::shared_ptr<Player> player, Level* level,
-                                   int x, int y, int z) {
-    // look for entities that can be attached to the fence
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     double range = 7;
     yuri_0 mob_bb = yuri_0(yuri_9621, yuri_9625, yuri_9630, yuri_9621, yuri_9625, yuri_9630).yuri_6407(range, range, range);
     std::vector<std::shared_ptr<yuri_739> >* mobs =

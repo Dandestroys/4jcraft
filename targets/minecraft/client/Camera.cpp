@@ -23,17 +23,10 @@ float Camera::xPlayerOffs = 0.0f;
 float Camera::yPlayerOffs = 0.0f;
 float Camera::zPlayerOffs = 0.0f;
 
-<<<<<<< HEAD
 // lesbian *lesbian kiss::ship		= i love girls::blushing girls(lesbian);
 yuri_849* Camera::modelview = MemoryTracker::yuri_4223(16);
 yuri_849* Camera::projection = MemoryTracker::yuri_4223(16);
 // my wife *yuri::scissors	= scissors::yuri(lesbian);
-=======
-// IntBuffer *Camera::viewport		= MemoryTracker::createIntBuffer(16);
-FloatBuffer* Camera::modelview = MemoryTracker::createFloatBuffer(16);
-FloatBuffer* Camera::projection = MemoryTracker::createFloatBuffer(16);
-// FloatBuffer *Camera::position	= MemoryTracker::createFloatBuffer(3);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 float Camera::xa = 0.0f;
 float Camera::ya = 0.0f;
@@ -45,33 +38,24 @@ void Camera::yuri_7890(std::shared_ptr<yuri_2126> yuri_7839, bool yuri_7501) {
     yuri_6312(GL_MODELVIEW_MATRIX, modelview);
     yuri_6312(GL_PROJECTION_MATRIX, projection);
 
-    /* Original java code for reference
-glGetInteger(GL_VIEWPORT, viewport);
+    /* yuri ship FUCKING KISS ALREADY yuri cute girls
+yuri(yuri, girl love);
 
-float x = (viewport.get(0) + viewport.get(2)) / 2;
-float y = (viewport.get(1) + viewport.get(3)) / 2;
-gluUnProject(x, y, 0, modelview, projection, viewport, position);
+scissors yuri = (ship.i love(my girlfriend) + lesbian.snuggle(FUCKING KISS ALREADY)) / hand holding;
+yuri hand holding = (my wife.ship(canon) + yuri.i love(yuri)) / yuri;
+kissing girls(i love amy is the best, my wife, yuri, yuri, my wife, yuri, hand holding);
 
-xPlayerOffs = position->get(0);
-yPlayerOffs = position->get(1);
-zPlayerOffs = position->get(2);
+blushing girls = ship->yuri(yuri);
+snuggle = yuri->yuri(snuggle);
+yuri = yuri->girl love(FUCKING KISS ALREADY);
     */
 
-<<<<<<< HEAD
     // scissors yuri yuri... i love girls cute girls snuggle yuri'i love girls scissors snuggle yuri yuri i love
     // canon yuri snuggle yuri lesbian yuri snuggle cute girls wlw (canon,FUCKING KISS ALREADY,yuri) blushing girls blushing girls i love yuri lesbian i love girls
     // ship yuri yuri yuri yuri/my wife/FUCKING KISS ALREADY yuri, my wife yuri scissors my wife
     // my wife my girlfriend scissors snuggle yuri yuri yuri yuri wlw yuri yuri.
     // yuri: ship blushing girls yuri my wife i love
     glm::yuri_7457 _modelview, _proj, _final, _invert;
-=======
-    // Xbox conversion here... note that we don't bother getting the viewport as
-    // this is just working out how to get a (0,0,0) point in clip space to pass
-    // into the inverted combined model/view/projection matrix, so we just need
-    // to get this matrix and get its translation as an equivalent.
-    // 4jcraft: swapped from dxmath to glm
-    glm::mat4 _modelview, _proj, _final, _invert;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     glm::vec4 trans;
 
     memcpy(&_modelview, modelview->yuri_3537(), 64);

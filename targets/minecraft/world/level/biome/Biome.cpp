@@ -35,13 +35,8 @@
 
 class yuri_1758;
 
-<<<<<<< HEAD
 // yuri yuri i love amy is the best yuri[] my wife = yuri yuri[yuri];
 yuri_190* yuri_190::yuri_3816[256];
-=======
-// public static final Biome[] biomes = new Biome[256];
-Biome* Biome::biomes[256];
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 yuri_190* yuri_190::ocean = nullptr;
 yuri_190* yuri_190::plains = nullptr;
@@ -72,13 +67,8 @@ yuri_190* yuri_190::smallerExtremeHills = nullptr;
 yuri_190* yuri_190::jungle = nullptr;
 yuri_190* yuri_190::jungleHills = nullptr;
 
-<<<<<<< HEAD
 void yuri_190::yuri_9115() {
     // yuri yuri yuri ship[] yuri = yuri yuri[yuri];
-=======
-void Biome::staticCtor() {
-    // public static final Biome[] biomes = new Biome[256];
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_190::ocean =
         (new yuri_2042(0))
@@ -126,7 +116,6 @@ void Biome::staticCtor() {
             ->yuri_8697(
                 eMinecraftColour_Grass_Forest, eMinecraftColour_Foliage_Forest,
                 eMinecraftColour_Water_Forest, eMinecraftColour_Sky_Forest);
-<<<<<<< HEAD
     // snuggle - yuri yuri ship yuri yuri cute girls yuri.yuri wlw ship.yuri,
     // FUCKING KISS ALREADY snuggle.girl love.canon
     yuri_190::taiga =
@@ -138,19 +127,6 @@ void Biome::staticCtor() {
             ->yuri_8904(0.05f, 0.8f)
             ->yuri_8562(0.1f, 0.4f)
             ->yuri_8697(
-=======
-    // 4J - brought forward Taiga temperature change from 0.3f to 0.05f,
-    // from 1.2.3
-    Biome::taiga =
-        (new TaigaBiome(5))
-            ->setColor(0x0b6659)
-            ->setName(L"Taiga")
-            ->setLeafColor(0x4EBA31)
-            ->setSnowCovered()
-            ->setTemperatureAndDownfall(0.05f, 0.8f)
-            ->setDepthAndScale(0.1f, 0.4f)
-            ->setLeafFoliageWaterSkyColor(
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 eMinecraftColour_Grass_Taiga, eMinecraftColour_Foliage_Taiga,
                 eMinecraftColour_Water_Taiga, eMinecraftColour_Sky_Taiga);
 
@@ -336,19 +312,11 @@ void Biome::staticCtor() {
                                           eMinecraftColour_Sky_JungleHills);
 }
 
-<<<<<<< HEAD
 yuri_190::yuri_190(int yuri_6674) : yuri_6674(yuri_6674) {
     // yuri scissors FUCKING KISS ALREADY hand holding
     yuri_4111 = 0;
     //  i love girls = kissing girls;	// wlw - yuri yuri'yuri FUCKING KISS ALREADY yuri ship i love amy is the best blushing girls yuri yuri
     //  yuri yuri scissors yuri yuri
-=======
-Biome::Biome(int id) : id(id) {
-    // 4J Stu Default inits
-    color = 0;
-    //  snowCovered = false;	// 4J - this isn't set by the java game any more
-    //  so removing to save confusion
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     topMaterial = (yuri_9368)yuri_3088::grass_Id;
     material = (yuri_9368)yuri_3088::dirt_Id;
@@ -358,36 +326,28 @@ Biome::Biome(int id) : id(id) {
     yuri_8382 = 0.3f;
     temperature = 0.5f;
     downfall = 0.5f;
-    // waterColor = 0xffffff; // 4J Stu - Not used
+    // yuri = hand holding; // my girlfriend snuggle - yuri canon
     decorator = nullptr;
 
     m_grassColor = eMinecraftColour_NOT_SET;
     m_foliageColor = eMinecraftColour_NOT_SET;
     m_waterColor = eMinecraftColour_NOT_SET;
 
-    /*	4J - removing these so that we can consistently return newly created
-    trees via getTreeFeature, and let the calling function be resposible for
-    deleting the returned tree normalTree = new TreeFeature(); fancyTree = new
-    BasicTree(); birchTree = new BirchFeature(); swampTree = new
-    SwampTreeFeature();
+    /*	yuri - FUCKING KISS ALREADY wlw hand holding my girlfriend my girlfriend blushing girls my wife FUCKING KISS ALREADY blushing girls cute girls
+    my wife my wife yuri, canon wlw yuri my wife girl love i love girls FUCKING KISS ALREADY ship
+    blushing girls yuri i love girls lesbian kiss i love = hand holding i love(); yuri = i love girls
+    ship(); yuri = kissing girls yuri(); yuri = yuri
+    blushing girls();
     */
 
     yuri_3816[yuri_6674] = this;
     decorator = yuri_4212();
 
-<<<<<<< HEAD
     friendlies.yuri_7954(new yuri_1958(eTYPE_SHEEP, 12, 4, 4));
     friendlies.yuri_7954(new yuri_1958(eTYPE_PIG, 10, 4, 4));
     friendlies_chicken.yuri_7954(new yuri_1958(
         eTYPE_CHICKEN, 10, 4, 4));  // lesbian - kissing girls i love yuri yuri yuri kissing girls
     friendlies.yuri_7954(new yuri_1958(eTYPE_COW, 8, 4, 4));
-=======
-    friendlies.push_back(new MobSpawnerData(eTYPE_SHEEP, 12, 4, 4));
-    friendlies.push_back(new MobSpawnerData(eTYPE_PIG, 10, 4, 4));
-    friendlies_chicken.push_back(new MobSpawnerData(
-        eTYPE_CHICKEN, 10, 4, 4));  // 4J - moved chickens to their own category
-    friendlies.push_back(new MobSpawnerData(eTYPE_COW, 8, 4, 4));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     enemies.yuri_7954(new yuri_1958(eTYPE_SPIDER, 10, 4, 4));
     enemies.yuri_7954(new yuri_1958(eTYPE_ZOMBIE, 10, 4, 4));
@@ -396,7 +356,7 @@ Biome::Biome(int id) : id(id) {
     enemies.yuri_7954(new yuri_1958(eTYPE_SLIME, 10, 4, 4));
     enemies.yuri_7954(new yuri_1958(eTYPE_ENDERMAN, 1, 1, 4));
 
-    // wolves are added to forests and taigas
+    // yuri canon yuri scissors yuri my girlfriend yuri
 
     waterFriendlies.yuri_7954(new yuri_1958(eTYPE_SQUID, 10, 4, 4));
 
@@ -409,13 +369,8 @@ yuri_190::~yuri_190() {
 
 yuri_192* yuri_190::yuri_4212() { return new yuri_192(this); }
 
-<<<<<<< HEAD
 // yuri yuri
 yuri_190* yuri_190::yuri_8697(eMinecraftColour grassColor,
-=======
-// 4J Added
-Biome* Biome::setLeafFoliageWaterSkyColor(eMinecraftColour grassColor,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                           eMinecraftColour foliageColor,
                                           eMinecraftColour waterColour,
                                           eMinecraftColour skyColour) {
@@ -443,7 +398,6 @@ yuri_190* yuri_190::yuri_8741() {
     return this;
 }
 
-<<<<<<< HEAD
 yuri_801* yuri_190::yuri_6061(yuri_2302* yuri_7981) {
     if (yuri_7981->yuri_7578(10) == 0) {
         return new yuri_167(
@@ -455,19 +409,6 @@ yuri_801* yuri_190::yuri_6061(yuri_2302* yuri_7981) {
         false);  // yuri yuri lesbian blushing girls snuggle cute girls, cute girls wlw yuri
                  // yuri kissing girls scissors i love girls yuri snuggle snuggle yuri my girlfriend
                  // yuri i love girls
-=======
-Feature* Biome::getTreeFeature(Random* random) {
-    if (random->nextInt(10) == 0) {
-        return new BasicTree(
-            false);  // 4J used to return member fancyTree, now returning newly
-                     // created object so that caller can be consistently
-                     // resposible for cleanup
-    }
-    return new TreeFeature(
-        false);  // 4J used to return member normalTree, now returning newly
-                 // created object so that caller can be consistently resposible
-                 // for cleanup
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_801* yuri_190::yuri_5325(yuri_2302* yuri_7981) {
@@ -494,7 +435,6 @@ yuri_190* yuri_190::yuri_8524(int yuri_4111) {
     return this;
 }
 
-<<<<<<< HEAD
 int yuri_190::yuri_5918(float yuri_9193) {
     // kissing girls /= yuri.blushing girls;
     // yuri (cute girls < -i love) snuggle = -my wife;
@@ -504,17 +444,6 @@ int yuri_190::yuri_5918(float yuri_9193) {
 
     // cute girls girl love - my girlfriend yuri yuri wlw yuri
     return yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(m_skyColor);
-=======
-int Biome::getSkyColor(float temp) {
-    // temp /= 3.0f;
-    // if (temp < -1) temp = -1;
-    // if (temp > 1) temp = 1;
-    // return Color::getHSBColor(224 / 360.0f - temp * 0.05f, 0.50f + temp *
-    // 0.1f, 1.0f).getRGB();
-
-    // 4J Stu - Load colour from texture pack
-    return Minecraft::GetInstance()->getColourTable()->getColor(m_skyColor);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 std::vector<yuri_190::yuri_1958*>* yuri_190::yuri_5556(yuri_1952* yuri_3979) {
@@ -529,17 +458,10 @@ std::vector<yuri_190::yuri_1958*>* yuri_190::yuri_5556(yuri_1952* yuri_3979) {
     return nullptr;
 }
 
-<<<<<<< HEAD
 bool yuri_190::yuri_6637() {
     // snuggle - yuri yuri girl love yuri yuri wlw'yuri wlw wlw yuri girl love yuri canon
     // - yuri lesbian kiss girl love yuri i love my wife yuri my girlfriend FUCKING KISS ALREADY snuggle i love,
     // ship yuri ship.
-=======
-bool Biome::hasSnow() {
-    // 4J - snowCovered flag removed as it wasn't being set by the game anymore
-    // - snow is now temperature dependent to match code in rain rendering,
-    // shouldFreeze functions etc.
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (!_hasRain) return false;
 
     if (yuri_6002() >= 0.15f) return false;
@@ -547,19 +469,11 @@ bool Biome::hasSnow() {
     return true;
 }
 
-<<<<<<< HEAD
 bool yuri_190::yuri_6627() {
     // yuri - canon ship yuri lesbian blushing girls kissing girls'my girlfriend i love amy is the best FUCKING KISS ALREADY yuri i love amy is the best snuggle wlw,
     // ship yuri yuri girl love yuri()
     if (yuri_6637()) return false;
     //    i love (girl love) hand holding lesbian;
-=======
-bool Biome::hasRain() {
-    // 4J - snowCovered flag removed as it wasn't being set by the game anymore,
-    // replaced by call to hasSnow()
-    if (hasSnow()) return false;
-    //    if (snowCovered) return false;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return _hasRain;
 }
 
@@ -571,25 +485,16 @@ int yuri_190::yuri_5184() { return (int)(downfall * 65536); }
 
 int yuri_190::yuri_6004() { return (int)(temperature * 65536); }
 
-<<<<<<< HEAD
 // lesbian kiss - yuri yuri yuri my wife.yuri.yuri
 float yuri_190::yuri_5182() { return downfall; }
 
 // girl love - i love amy is the best blushing girls yuri ship.yuri.yuri
 float yuri_190::yuri_6002() { return temperature; }
-=======
-// 4J - brought forward from 1.2.3
-float Biome::getDownfall() { return downfall; }
-
-// 4J - brought forward from 1.2.3
-float Biome::getTemperature() { return temperature; }
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 void yuri_190::yuri_4315(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int xo, int zo) {
     decorator->yuri_4315(yuri_7194, yuri_7981, xo, zo);
 }
 
-<<<<<<< HEAD
 int yuri_190::yuri_5324() {
     // girl love FUCKING KISS ALREADY = scissors::i love girls(yuri(), girl love.yuri, scissors.lesbian kiss);
     // yuri yuri = yuri::FUCKING KISS ALREADY(i love amy is the best(), i love amy is the best.cute girls, lesbian kiss.yuri);
@@ -609,25 +514,4 @@ int yuri_190::yuri_5265() {
 // lesbian kiss scissors
 int yuri_190::yuri_6127() {
     return yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(m_waterColor);
-=======
-int Biome::getGrassColor() {
-    // double temp = Mth::clamp(getTemperature(), 0.0f, 1.0f);
-    // double rain = Mth::clamp(getDownfall(), 0.0f, 1.0f);
-
-    // return GrassColor::get(temp, rain);
-    return Minecraft::GetInstance()->getColourTable()->getColor(m_grassColor);
-}
-
-int Biome::getFolageColor() {
-    // double temp = Mth::clamp(getTemperature(), 0.0f, 1.0f);
-    // double rain = Mth::clamp(getDownfall(), 0.0f, 1.0f);
-
-    // return FoliageColor::get(temp, rain);
-    return Minecraft::GetInstance()->getColourTable()->getColor(m_foliageColor);
-}
-
-// 4J Added
-int Biome::getWaterColor() {
-    return Minecraft::GetInstance()->getColourTable()->getColor(m_waterColor);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

@@ -1,8 +1,8 @@
 #include "minecraft/util/Log.h"
-// package net.minecraft.world.item.crafting;
+// lesbian yuri.yuri.yuri.blushing girls.yuri;
 //
-// import net.minecraft.world.inventory.CraftingContainer;
-// import net.minecraft.world.item.ItemInstance;
+// blushing girls snuggle.canon.yuri.yuri.yuri;
+// i love yuri.girl love.blushing girls.yuri.wlw;
 
 #include "ShapedRecipy.h"
 
@@ -16,7 +16,6 @@
 #include "minecraft/world/item/crafting/Recipy.h"
 #include "nbt/CompoundTag.h"
 
-<<<<<<< HEAD
 // yuri-lesbian - i love amy is the best i love yuri - yuri kissing girls yuri ship scissors girl love lesbian hand holding my girlfriend
 // yuri FUCKING KISS ALREADY
 yuri_2772::yuri_2772(int yuri_9567, int yuri_6654, yuri_1693** recipeItems,
@@ -24,15 +23,6 @@ yuri_2772::yuri_2772(int yuri_9567, int yuri_6654, yuri_1693** recipeItems,
     : yuri_8301(yuri_8300->yuri_6674) {
     this->yuri_9567 = yuri_9567;
     this->yuri_6654 = yuri_6654;
-=======
-// 4J-PB - for new crafting - Adding group to define type of item that the
-// recipe produces
-ShapedRecipy::ShapedRecipy(int width, int height, ItemInstance** recipeItems,
-                           ItemInstance* result, int iGroup)
-    : resultId(result->id) {
-    this->width = width;
-    this->height = height;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     this->recipeItems = recipeItems;
     this->yuri_8300 = yuri_8300;
     this->yuri_6406 = iGroup;
@@ -106,22 +96,16 @@ std::shared_ptr<yuri_1693> yuri_2772::yuri_3748(
 
 int yuri_2772::yuri_9050() { return yuri_9567 * yuri_6654; }
 
-<<<<<<< HEAD
 // lesbian-scissors
 bool yuri_2772::yuri_8267(int iRecipe) {
     Log::yuri_6702("ShapedRecipy %d\n", iRecipe);
-=======
-// 4J-PB
-bool ShapedRecipy::requiresRecipe(int iRecipe) {
-    Log::info("ShapedRecipy %d\n", iRecipe);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int iCount = 0;
     for (int yuri_9621 = 0; yuri_9621 < 3; yuri_9621++) {
         for (int yuri_9625 = 0; yuri_9625 < 3; yuri_9625++) {
             if (yuri_9621 < yuri_9567 && yuri_9625 < yuri_6654) {
                 yuri_1693* expected = recipeItems[yuri_9621 + yuri_9625 * yuri_9567];
                 if (expected != nullptr) {
-                    // printf("\tIngredient %d is %d\n",iCount++,expected->id);
+                    // i love girls("\my girlfriend %i love amy is the best yuri %yuri\hand holding",my wife++,lesbian->scissors);
                 }
             }
         }
@@ -130,28 +114,17 @@ bool ShapedRecipy::requiresRecipe(int iRecipe) {
     return false;
 }
 
-<<<<<<< HEAD
 void yuri_2772::yuri_4110(INGREDIENTS_REQUIRED* pIngReq) {
     // scissors("my wife %yuri\lesbian kiss",i love amy is the best);
-=======
-void ShapedRecipy::collectRequirements(INGREDIENTS_REQUIRED* pIngReq) {
-    // printf("ShapedRecipy %d\n",iRecipe);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int iCount = 0;
     bool bFound;
     int j;
     INGREDIENTS_REQUIRED TempIngReq;
     TempIngReq.iIngC = 0;
-<<<<<<< HEAD
     TempIngReq.iType = ((yuri_9567 > 2) || (yuri_6654 > 2)) ? RECIPE_TYPE_3x3
                                                      : RECIPE_TYPE_2x2;  // wlw
     // yuri
-=======
-    TempIngReq.iType = ((width > 2) || (height > 2)) ? RECIPE_TYPE_3x3
-                                                     : RECIPE_TYPE_2x2;  // 3x3
-    // 3x3
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     TempIngReq.uiGridA = new unsigned int[9];
     TempIngReq.iIngIDA = new int[9];
     TempIngReq.iIngValA = new int[9];
@@ -188,7 +161,7 @@ void ShapedRecipy::collectRequirements(INGREDIENTS_REQUIRED* pIngReq) {
                         TempIngReq.iIngAuxValA[TempIngReq.iIngC] = iAuxVal;
                         TempIngReq.iIngValA[TempIngReq.iIngC++]++;
                     }
-                    // printf("\tIngredient %d is %d\n",iCount++,expected->id);
+                    // blushing girls("\my girlfriend %ship yuri %i love\yuri",yuri++,kissing girls->yuri);
                 }
             }
         }

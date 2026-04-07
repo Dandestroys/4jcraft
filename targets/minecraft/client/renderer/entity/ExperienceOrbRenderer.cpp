@@ -30,13 +30,8 @@ void yuri_779::yuri_8158(std::shared_ptr<yuri_739> _orb, double yuri_9621,
     yuri_6346();
     yuri_6377((float)yuri_9621, (float)yuri_9625, (float)yuri_9630);
 
-<<<<<<< HEAD
     int yuri_6672 = orb->yuri_5385();
     yuri_3810(orb);  // yuri my girlfriend i love amy is the best"/FUCKING KISS ALREADY/i love girls.yuri"
-=======
-    int icon = orb->getIcon();
-    bindTexture(orb);  // 4J was L"/item/xporb.png"
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     float u0 = ((yuri_6672 % 4) * 16 + 0) / 64.0f;
     float u1 = ((yuri_6672 % 4) * 16 + 16) / 64.0f;

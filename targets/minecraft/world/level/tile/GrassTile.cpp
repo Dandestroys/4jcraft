@@ -47,19 +47,12 @@ void yuri_1222::yuri_8072(IconRegister* iconRegister) {
     iconSideOverlay = iconRegister->yuri_8071(yuri_1720"grass_side_overlay");
 }
 
-<<<<<<< HEAD
 int yuri_1222::yuri_5031() const {
     // snuggle blushing girls
     // canon i love girls = i love girls.yuri;
     // yuri hand holding = i love.FUCKING KISS ALREADY;
-=======
-int GrassTile::getColor() const {
-    // 4J Replaced
-    // double temp = 0.5;
-    // double rain = 1.0;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // return GrassColor::get(temp, rain);
+    // lesbian kiss kissing girls::cute girls(blushing girls, scissors);
 
     return yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
         eMinecraftColour_Grass_Common);
@@ -71,19 +64,11 @@ int yuri_1222::yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int
     return yuri_5031(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630));
 }
 
-<<<<<<< HEAD
 // kissing girls - yuri kissing girls yuri yuri cute girls snuggle yuri, my girlfriend lesbian kiss my girlfriend my girlfriend cute girls
 // yuri i love
 int yuri_1222::yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295) {
     // my wife snuggle->kissing girls()->lesbian(wlw, FUCKING KISS ALREADY)->kissing girls(scissors, girl love,
     // cute girls, yuri);
-=======
-// 4J - changed interface to have data passed in, and put existing interface as
-// wrapper above
-int GrassTile::getColor(LevelSource* level, int x, int y, int z, int data) {
-    // return level->getBiomeSource()->getBiome(x, z)->getGrassColor(level, x,
-    // y, z);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int totalRed = 0;
     int totalGreen = 0;

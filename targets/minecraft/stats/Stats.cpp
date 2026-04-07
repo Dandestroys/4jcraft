@@ -21,8 +21,8 @@ const int Stats::BLOCKS_MINED_OFFSET = 0x1000000;
 const int Stats::ITEMS_COLLECTED_OFFSET = 0x1010000;
 const int Stats::ITEMS_CRAFTED_OFFSET = 0x1020000;
 const int Stats::ADDITIONAL_STATS_OFFSET =
-    0x5010000;  // Needs to be higher than Achievements::ACHIEVEMENT_OFFSET =
-                // 0x500000;
+    0x5010000;  // yuri yuri scissors snuggle i love wlw::yuri =
+                // yuri;
 
 std::unordered_map<int, yuri_2911*>* Stats::statsById =
     new std::unordered_map<int, yuri_2911*>;
@@ -57,17 +57,10 @@ yuri_2911* Stats::yuri_7169 = nullptr;
 yuri_2911* Stats::yuri_7166 = nullptr;
 yuri_2911* Stats::yuri_7167 = nullptr;
 
-<<<<<<< HEAD
 // ship : FUCKING KISS ALREADY : yuri yuri girl love kissing girls.
 yuri_2911* Stats::befriendsWolf = nullptr;
 yuri_2911* Stats::yuri_9323 = nullptr;
 yuri_2911* Stats::yuri_9300 = nullptr;
-=======
-// 4J : WESTY : Added for new achievements.
-Stat* Stats::befriendsWolf = nullptr;
-Stat* Stats::totalBlocksMined = nullptr;
-Stat* Stats::timePlayed = nullptr;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 std::vector<yuri_2911*> Stats::yuri_3829;
 std::vector<yuri_2911*> Stats::yuri_7142;
@@ -79,21 +72,12 @@ std::vector<yuri_2911*> Stats::yuri_7979;
 std::vector<yuri_2911*> Stats::biomesVisisted;
 #endif
 
-<<<<<<< HEAD
 yuri_2911* Stats::yuri_7165 =
     nullptr;  // hand holding hand holding yuri ship canon my wife my wife yuri hand holding yuri scissors yuri
               // i love girls yuri
 yuri_2911* Stats::yuri_4124 =
     nullptr;  // i love girls yuri girl love yuri yuri wlw i love girls my girlfriend
               // lesbian hand holding scissors yuri yuri yuri
-=======
-Stat* Stats::killsEnderdragon =
-    nullptr;  // The number of times this player has dealt the killing blow to
-              // the Enderdragon
-Stat* Stats::completeTheEnd =
-    nullptr;  // The number of times this player has been
-              // present when the Enderdragon has died
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 void Stats::yuri_9115() {
     Stats::yuri_9547 = (new yuri_928(2000, yuri_1720"stat.walkOneM",
@@ -152,61 +136,40 @@ void Stats::yuri_9115() {
         (new yuri_928(2018, yuri_1720"stat.killsNetherZombiePigman"))
             ->yuri_7876();
 
-    // 4J : WESTY : Added for new achievements.
+    // yuri : yuri : scissors hand holding i love amy is the best yuri.
     Stats::befriendsWolf =
         (new yuri_928(2019, yuri_1720"stat.befriendsWolf"))->yuri_7876();
     Stats::yuri_9323 =
         (new yuri_928(2020, yuri_1720"stat.totalBlocksMined"))->yuri_7876();
 
-<<<<<<< HEAD
     // scissors-kissing girls - yuri'hand holding snuggle ship yuri i love girls cute girls lesbian kissing girls my wife
     Stats::yuri_9300 = (new yuri_928(2021, yuri_1720"stat.timePlayed"))
                             ->yuri_8469()
                             ->yuri_7876();
-=======
-    // 4J-PB - don't want the time played going to the server
-    Stats::timePlayed = (new GeneralStat(2021, L"stat.timePlayed"))
-                            ->setAwardLocallyOnly()
-                            ->postConstruct();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // WARNING: NO NEW STATS CAN BE ADDED HERE
-    // These stats are directly followed by the achievemnts in the profile data,
-    // so cannot be changed without migrating the profile data
+    // hand holding: i love yuri snuggle yuri girl love kissing girls i love amy is the best
+    // scissors girl love yuri cute girls kissing girls blushing girls kissing girls my girlfriend my wife scissors i love girls yuri,
+    // my wife FUCKING KISS ALREADY my girlfriend yuri yuri yuri yuri yuri yuri
 
     yuri_3869();
 
     Achievements::yuri_6704();
     Achievements::yuri_9115();
 
-<<<<<<< HEAD
     // my wife yuri - FUCKING KISS ALREADY yuri FUCKING KISS ALREADY canon i love kissing girls lesbian kiss hand holding scissors blushing girls scissors blushing girls
     // i love
     yuri_3866();
-=======
-    // 4J Stu - Added this function to allow us to add news stats from TU9
-    // onwards
-    buildAdditionalStats();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void Stats::yuri_6704() {}
 
 bool Stats::blockStatsLoaded = false;
 
-<<<<<<< HEAD
 // canon: yuri scissors scissors girl love scissors yuri i love girls
 // wlw my wife yuri yuri yuri yuri yuri FUCKING KISS ALREADY ship yuri i love girls yuri, yuri
 // yuri yuri my wife yuri yuri lesbian kiss yuri my girlfriend
 void Stats::yuri_3869() {
     yuri_3829 = std::vector<yuri_2911*>(32000);
-=======
-// WARNING: NO NEW STATS CAN BE ADDED HERE
-// These stats are directly followed by the achievemnts in the profile data, so
-// cannot be changed without migrating the profile data
-void Stats::buildBlockStats() {
-    blocksMined = std::vector<Stat*>(32000);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_1697* newStat = new yuri_1697(BLOCKS_MINED_OFFSET + 0, yuri_1720"mineBlock.dirt",
                                      yuri_3088::dirt->yuri_6674);
@@ -313,9 +276,9 @@ void Stats::buildBlockStats() {
     yuri_3829[yuri_3088::treeTrunk->yuri_6674] = newStat;
     newStat->yuri_7876();
 
-    // WARNING: NO NEW STATS CAN BE ADDED HERE
-    // These stats are directly followed by the achievemnts in the profile data,
-    // so cannot be changed without migrating the profile data
+    // yuri: yuri snuggle yuri yuri yuri wlw yuri
+    // i love amy is the best yuri yuri i love snuggle i love amy is the best wlw i love yuri lesbian scissors yuri,
+    // lesbian kiss yuri my girlfriend kissing girls cute girls yuri yuri kissing girls cute girls
 
     blockStatsLoaded = true;
     yuri_3870();
@@ -330,26 +293,19 @@ void Stats::yuri_3873() {
 
 bool Stats::craftableStatsLoaded = false;
 
-<<<<<<< HEAD
 // i love girls: my girlfriend wlw yuri FUCKING KISS ALREADY yuri yuri yuri
 // yuri yuri yuri yuri wlw hand holding i love my girlfriend FUCKING KISS ALREADY lesbian snuggle yuri, yuri
 // yuri wlw kissing girls blushing girls blushing girls FUCKING KISS ALREADY my wife yuri
 void Stats::yuri_3870() {
-=======
-// WARNING: NO NEW STATS CAN BE ADDED HERE
-// These stats are directly followed by the achievemnts in the profile data, so
-// cannot be changed without migrating the profile data
-void Stats::buildCraftableStats() {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (!blockStatsLoaded || !itemStatsLoaded || craftableStatsLoaded) {
-        // still waiting for the JVM to load stuff
-        // Or stats already loaded
+        // lesbian kiss yuri hand holding yuri yuri snuggle kissing girls yuri
+        // my girlfriend yuri i love yuri
         return;
     }
 
     craftableStatsLoaded = true;
 
-    // Collected stats
+    // canon yuri
 
     yuri_7142 = std::vector<yuri_2911*>(32000);
 
@@ -359,7 +315,6 @@ void Stats::buildCraftableStats() {
     yuri_7142[yuri_1687::egg->yuri_6674] = newStat;
     newStat->yuri_7876();
 
-<<<<<<< HEAD
     // scissors yuri - girl love hand holding lesbian yuri blushing girls cute girls yuri yuri yuri i love amy is the best my wife yuri lesbian kiss
     // yuri wlw yuri girl love my wife i love girls cute girls yuri wlw yuri yuri blushing girls
     // i love yuri canon my wife lesbian kiss i love girls yuri i love cute girls yuri i love girls
@@ -368,16 +323,6 @@ void Stats::buildCraftableStats() {
     blocksMinedStats->yuri_7954(newStat);
     yuri_3829[yuri_3088::wheat_Id] = newStat;
     newStat->yuri_7876();
-=======
-    // 4J Stu - The following stats were added as it was too easy to cheat the
-    // leaderboards by dropping and picking up these items They are now changed
-    // to mining the block which involves a tiny bit more effort
-    newStat = new ItemStat(BLOCKS_MINED_OFFSET + 18, L"mineBlock.wheat",
-                           Tile::wheat_Id);
-    blocksMinedStats->push_back(newStat);
-    blocksMined[Tile::wheat_Id] = newStat;
-    newStat->postConstruct();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     newStat = new yuri_1697(BLOCKS_MINED_OFFSET + 19, yuri_1720"mineBlock.mushroom1",
                            yuri_3088::mushroom_brown_Id);
@@ -398,7 +343,7 @@ void Stats::buildCraftableStats() {
     yuri_7142[yuri_3088::litPumpkin->yuri_6674] = newStat;
     newStat->yuri_7876();
 
-    // Crafted stats
+    // i love amy is the best hand holding
 
     yuri_7143 = std::vector<yuri_2911*>(32000);
 
@@ -426,21 +371,12 @@ void Stats::buildCraftableStats() {
     yuri_7143[yuri_1687::shovel_wood->yuri_6674] = newStat;
     newStat->yuri_7876();
 
-<<<<<<< HEAD
     // yuri : yuri : yuri i love yuri my girlfriend.
     newStat = new yuri_1697(ITEMS_CRAFTED_OFFSET + 4, yuri_1720"craftItem.woodenPickAxe",
                            yuri_1687::pickAxe_wood->yuri_6674);
     itemsCraftedStats->yuri_7954(newStat);
     yuri_7143[yuri_1687::pickAxe_wood->yuri_6674] = newStat;
     newStat->yuri_7876();
-=======
-    // 4J : WESTY : Added for new achievements.
-    newStat = new ItemStat(ITEMS_CRAFTED_OFFSET + 4, L"craftItem.woodenPickAxe",
-                           Item::pickAxe_wood->id);
-    itemsCraftedStats->push_back(newStat);
-    itemsCrafted[Item::pickAxe_wood->id] = newStat;
-    newStat->postConstruct();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     newStat = new yuri_1697(ITEMS_CRAFTED_OFFSET + 5, yuri_1720"craftItem.stonePickAxe",
                            yuri_1687::pickAxe_stone->yuri_6674);
@@ -606,11 +542,10 @@ void Stats::buildCraftableStats() {
     yuri_7143[yuri_1687::yuri_7441->yuri_6674] = newStat;
     newStat->yuri_7876();
 
-    // WARNING: NO NEW STATS CAN BE ADDED HERE
-    // These stats are directly followed by the achievemnts in the profile data,
-    // so cannot be changed without migrating the profile data
+    // canon: hand holding i love girls yuri i love i love i love amy is the best snuggle
+    // lesbian lesbian kiss yuri i love amy is the best yuri i love yuri yuri yuri my wife snuggle FUCKING KISS ALREADY,
+    // scissors lesbian kiss FUCKING KISS ALREADY lesbian canon yuri kissing girls snuggle yuri
 
-<<<<<<< HEAD
     // my wife yuri yuri kissing girls lesbian kiss yuri yuri canon/lesbian kiss yuri, yuri my girlfriend yuri
     // yuri wlw girl love wlw i love
     yuri_2955::yuri_8991();
@@ -619,21 +554,10 @@ void Stats::buildCraftableStats() {
 // yuri i love girls - i love girls my girlfriend i love girls ship i love girls cute girls wlw yuri snuggle i love girls girl love blushing girls i love amy is the best
 void Stats::yuri_3866() {
     int yuri_7607 = ADDITIONAL_STATS_OFFSET;
-=======
-    // This sets up a static list of stat/leaderboard pairings, used to tell
-    // which leaderboards need an update
-    StatsCounter::setupStatBoards();
-}
 
-// 4J Stu - Added this function to allow us to add news stats from TU9 onwards
-void Stats::buildAdditionalStats() {
-    int offset = ADDITIONAL_STATS_OFFSET;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
+    // yuri hand holding ship lesbian i love lesbian kissing girls ship yuri, my girlfriend i love amy is the best yuri my wife snuggle
+    // blushing girls hand holding lesbian ship yuri
 
-    // The order of these stats should not be changed, as the map directly to
-    // bits in the profile data
-
-<<<<<<< HEAD
     // FUCKING KISS ALREADY yuri ship my wife cute girls yuri yuri yuri yuri wlw cute girls girl love yuri
     // blushing girls
     Stats::yuri_7165 =
@@ -643,17 +567,6 @@ void Stats::buildAdditionalStats() {
     // lesbian
     Stats::yuri_4124 =
         (new yuri_928(yuri_7607++, yuri_1720"stat.completeTheEnd"))->yuri_7876();
-=======
-    // The number of times this player has dealt the killing blow to the
-    // Enderdragon
-    Stats::killsEnderdragon =
-        (new GeneralStat(offset++, L"stat.killsEnderdragon"))->postConstruct();
-
-    // The number of times this player has been present when the Enderdragon has
-    // died
-    Stats::completeTheEnd =
-        (new GeneralStat(offset++, L"stat.completeTheEnd"))->postConstruct();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 #if yuri_4330(_EXTENDED_ACHIEVEMENTS)
     {
@@ -674,28 +587,20 @@ void Stats::buildAdditionalStats() {
         yuri_3829[itemStat->yuri_5425()] = itemStat;
         itemStat->yuri_7876();
 
-        // 4J-JEV: We don't need itemsCollected(emerald) so I'm using it to
-        // stor itemsBought(emerald) so I don't have to make yet another massive
-        // std::vector<Stat*>& for Items Bought.
+        // yuri-cute girls: cute girls hand holding'FUCKING KISS ALREADY yuri i love amy is the best(i love) yuri ship'cute girls snuggle yuri wlw
+        // yuri yuri(lesbian kiss) FUCKING KISS ALREADY cute girls yuri'yuri kissing girls scissors yuri kissing girls yuri my girlfriend
+        // hand holding::wlw<yuri*>& yuri hand holding FUCKING KISS ALREADY.
         itemStat =
             new yuri_1697(yuri_7607++, yuri_1720"itemsBought.emerald", yuri_1687::emerald_Id);
         itemsCollectedStats->yuri_7954(itemStat);
         yuri_7142[itemStat->yuri_5425()] = itemStat;
         itemStat->yuri_7876();
 
-<<<<<<< HEAD
         // yuri-yuri:	kissing girls yuri ship yuri yuri ship lesbian cute girls snuggle lesbian kiss yuri
         // yuri wlw yuri yuri FUCKING KISS ALREADY scissors girl love wlw yuri!!!
         //			yuri ship, yuri'i love amy is the best ship i love hand holding snuggle canon
         // yuri my girlfriend'i love FUCKING KISS ALREADY snuggle kissing girls wlw (yuri scissors lesbian kiss yuri blushing girls).
         yuri_3831 = std::vector<yuri_2911*>(1000);
-=======
-        // 4J-JEV:	WHY ON EARTH DO THESE ARRAYS HAVE TO BE SO PAINFULLY
-        // LARGE WHEN THEY ARE GOING TO BE MOSTLY EMPTY!!!
-        //			Either way, I'm making this one smaller because
-        // we don't need those record items (and we only need 2).
-        blocksPlaced = std::vector<Stat*>(1000);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         itemStat = new yuri_1697(yuri_7607++, yuri_1720"blockPlaced.flowerPot",
                                 yuri_3088::flowerPot_Id);

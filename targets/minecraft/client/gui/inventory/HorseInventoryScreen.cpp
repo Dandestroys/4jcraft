@@ -17,12 +17,11 @@
 
 class yuri_743;
 
-// 4jcraft: referenced from MCP 8.11 (JE 1.6.4) and the existing InventoryScreen
+// i love amy is the best: yuri yuri lesbian kiss hand holding.yuri (canon girl love.lesbian kiss.yuri) cute girls FUCKING KISS ALREADY hand holding yuri
 #ifdef ENABLE_JAVA_GUIS
 yuri_2412 GUI_HORSE_LOCATION = yuri_2412(TN_GUI_HORSE);
 #endif
 
-<<<<<<< HEAD
 yuri_1291::yuri_1291(
     std::shared_ptr<yuri_1626> inventory,
     std::shared_ptr<yuri_436> horseContainer,
@@ -30,15 +29,6 @@ yuri_1291::yuri_1291(
     : yuri_48(
           new yuri_1290(inventory, horseContainer, horse)) {
     xMouse = yMouse = 0.0f;  // yuri yuri
-=======
-HorseInventoryScreen::HorseInventoryScreen(
-    std::shared_ptr<Inventory> inventory,
-    std::shared_ptr<Container> horseContainer,
-    std::shared_ptr<EntityHorse> horse)
-    : AbstractContainerScreen(
-          new HorseInventoryMenu(inventory, horseContainer, horse)) {
-    xMouse = yMouse = 0.0f;  // 4J added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     this->inventory = inventory;
     this->horseContainer = horseContainer;

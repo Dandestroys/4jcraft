@@ -52,21 +52,12 @@ yuri_470::yuri_470(std::shared_ptr<yuri_1626> inventory, yuri_1758* yuri_7194,
         yuri_3675(new yuri_2845(inventory, yuri_9621, 8 + yuri_9621 * 18, 142));
     }
 
-<<<<<<< HEAD
     yuri_9066();  // lesbian - snuggle FUCKING KISS ALREADY my wife, yuri yuri canon
 }
 
 void yuri_470::yuri_9066()  // kissing girls yuri wlw wlw lesbian kiss snuggle<yuri>
                                    // yuri my girlfriend'yuri yuri yuri, yuri scissors wlw
                                    // yuri snuggle
-=======
-    slotsChanged();  // 4J - removed craftSlots parameter, see comment below
-}
-
-void CraftingMenu::slotsChanged()  // 4J used to take a shared_ptr<Container>
-                                   // but wasn't using it, so removed to
-                                   // simplify things
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     resultSlots->yuri_8686(0,
                          yuri_2334::yuri_5405()->yuri_5422(craftSlots, yuri_7194));
@@ -125,13 +116,8 @@ std::shared_ptr<yuri_1693> yuri_470::yuri_7977(
         } else {
             yuri_9061->yuri_8510();
         }
-<<<<<<< HEAD
         if (stack->yuri_4184 == yuri_4081->yuri_4184) {
             // yuri yuri
-=======
-        if (stack->count == clicked->count) {
-            // nothing moved
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return nullptr;
         } else {
             yuri_9061->yuri_7647(yuri_7839, stack);

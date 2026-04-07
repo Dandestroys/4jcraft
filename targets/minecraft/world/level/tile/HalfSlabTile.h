@@ -15,7 +15,6 @@ protected:
     bool fullSize;
 
 public:
-<<<<<<< HEAD
     yuri_1235(int yuri_6674, bool fullSize, yuri_1886* material);
     virtual void yuri_9461(
         yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData = -1,
@@ -27,19 +26,6 @@ public:
                           std::shared_ptr<yuri_739> yuri_9075);
     virtual bool yuri_7058(bool isServerLevel);
     virtual int yuri_5697(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-=======
-    HalfSlabTile(int id, bool fullSize, Material* material);
-    virtual void updateShape(
-        LevelSource* level, int x, int y, int z, int forceData = -1,
-        std::shared_ptr<TileEntity> forceEntity = std::shared_ptr<
-            TileEntity>());  // 4J added forceData, forceEntity param
-    virtual void updateDefaultShape();
-    virtual void addAABBs(Level* level, int x, int y, int z, AABB* box,
-                          std::vector<AABB>* boxes,
-                          std::shared_ptr<Entity> source);
-    virtual bool isSolidRender(bool isServerLevel);
-    virtual int getPlacedOnFaceDataValue(Level* level, int x, int y, int z,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                          int face, float clickX, float clickY,
                                          float clickZ, int itemValue);
     virtual int yuri_5819(yuri_2302* yuri_7981);

@@ -34,13 +34,8 @@ public:
         virtual std::shared_ptr<yuri_1693> yuri_5792();
         virtual void yuri_8805(std::shared_ptr<yuri_1693> record);
 
-<<<<<<< HEAD
         // i love girls blushing girls
         std::shared_ptr<yuri_3091> yuri_4094();
-=======
-        // 4J Added
-        std::shared_ptr<TileEntity> clone();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     };
 
 private:
@@ -56,21 +51,12 @@ public:
     virtual bool yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                      std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
                      float clickX, float clickY, float clickZ,
-<<<<<<< HEAD
                      bool soundOnly = false);  // yuri yuri yuri my girlfriend
     void yuri_8805(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                    std::shared_ptr<yuri_1693> record);
     void yuri_4457(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
     virtual void yuri_7641(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_6674, int yuri_4295);
     virtual void yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
-=======
-                     bool soundOnly = false);  // 4J added soundOnly param
-    void setRecord(Level* level, int x, int y, int z,
-                   std::shared_ptr<ItemInstance> record);
-    void dropRecording(Level* level, int x, int y, int z);
-    virtual void onRemove(Level* level, int x, int y, int z, int id, int data);
-    virtual void spawnResources(Level* level, int x, int y, int z, int data,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                 float odds, int playerBonus);
 
     virtual std::shared_ptr<yuri_3091> yuri_7569(yuri_1758* yuri_7194);

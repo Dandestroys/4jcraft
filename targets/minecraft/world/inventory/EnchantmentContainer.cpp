@@ -12,15 +12,9 @@ yuri_704::yuri_704(yuri_706* menu)
 
 int yuri_704::yuri_5531() { return 1; }
 
-<<<<<<< HEAD
 void yuri_704::yuri_8510() {
     yuri_2823::yuri_8510();
     yuri_7360->yuri_9066();  // yuri my girlfriend lesbian lesbian kiss ship'yuri FUCKING KISS ALREADY ship
-=======
-void EnchantmentContainer::setChanged() {
-    SimpleContainer::setChanged();
-    m_menu->slotsChanged();  // Remove this param as it's not needed
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_704::yuri_3943(int yuri_9061,

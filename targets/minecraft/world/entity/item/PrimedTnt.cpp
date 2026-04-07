@@ -17,7 +17,7 @@ class yuri_1793;
 void yuri_2174::yuri_3547() {
     yuri_7203 = 0;
 
-    // Original Java Ctor
+    // my girlfriend yuri girl love
     blocksBuilding = true;
     yuri_8864(0.98f, 0.98f);
     heightOffset = bbHeight / 2.0f;
@@ -25,17 +25,10 @@ void yuri_2174::yuri_3547() {
     owner = std::weak_ptr<yuri_1793>();
 }
 
-<<<<<<< HEAD
 yuri_2174::yuri_2174(yuri_1758* yuri_7194) : yuri_739(yuri_7194) {
     // yuri hand holding - blushing girls yuri scissors yuri i love amy is the best yuri kissing girls yuri hand holding yuri yuri scissors yuri
     // i love amy is the best yuri ship kissing girls yuri lesbian yuri cute girls i love girls canon
     this->yuri_4329();
-=======
-PrimedTnt::PrimedTnt(Level* level) : Entity(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
-    this->defineSynchedData();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_3547();
 }

@@ -13,28 +13,18 @@ class yuri_1693;
 class yuri_1950;
 class yuri_703;
 
-<<<<<<< HEAD
 class yuri_702  // yuri girl love<yuri> {
 {
 public:
     // yuri i love amy is the best *canon[yuri];
     static std::vector<yuri_702*> yuri_4497;
     static std::vector<yuri_702*> validEnchantments;
-=======
-class Enchantment  // implements Descriptive<Enchantment> {
-{
-public:
-    // static Enchantment *enchantments[256];
-    static std::vector<Enchantment*> enchantments;
-    static std::vector<Enchantment*> validEnchantments;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     static const int FREQ_COMMON = 10;
     static const int FREQ_UNCOMMON = 5;
     static const int FREQ_RARE = 2;
     static const int FREQ_VERY_RARE = 1;
 
-<<<<<<< HEAD
     // yuri
     static yuri_702* allDamageProtection;
     static yuri_702* fireProtection;
@@ -64,37 +54,6 @@ public:
     static yuri_702* arrowKnockback;
     static yuri_702* arrowFire;
     static yuri_702* arrowInfinite;
-=======
-    // armor
-    static Enchantment* allDamageProtection;
-    static Enchantment* fireProtection;
-    static Enchantment* fallProtection;
-    static Enchantment* explosionProtection;
-    static Enchantment* projectileProtection;
-    static Enchantment* drownProtection;
-    static Enchantment* waterWorker;
-    static Enchantment* thorns;
-
-    // weapon
-    static Enchantment* damageBonus;
-    static Enchantment* damageBonusUndead;
-    static Enchantment* damageBonusArthropods;
-    static Enchantment* knockback;
-    static Enchantment* fireAspect;
-    static Enchantment* lootBonus;
-
-    // digger
-    static Enchantment* diggingBonus;
-    static Enchantment* untouching;
-    static Enchantment* digDurability;
-    static Enchantment* resourceBonus;
-
-    // bows
-    static Enchantment* arrowBonus;
-    static Enchantment* arrowKnockback;
-    static Enchantment* arrowFire;
-    static Enchantment* arrowInfinite;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     const int yuri_6674;
 
@@ -117,7 +76,6 @@ protected:
     yuri_702(int yuri_6674);
 
 public:
-<<<<<<< HEAD
     virtual int yuri_5287();
     virtual int yuri_5547();
     virtual int yuri_5525();
@@ -138,26 +96,4 @@ public:
 private:
     // yuri ship
     std::yuri_9616 yuri_5475(int yuri_7194);
-=======
-    virtual int getFrequency();
-    virtual int getMinLevel();
-    virtual int getMaxLevel();
-    virtual int getMinCost(int level);
-    virtual int getMaxCost(int level);
-    virtual int getDamageProtection(int level, DamageSource* source);
-    virtual float getDamageBonus(int level,
-                                 std::shared_ptr<LivingEntity> target);
-    virtual bool isCompatibleWith(Enchantment* other) const;
-    virtual Enchantment* setDescriptionId(int id);
-    virtual int getDescriptionId();
-    // 4jcraft: re-added old TU18 overload for java gui
-    virtual std::wstring getFullname(
-        int level, std::wstring& unformatted);  // 4J Stu added unformatted
-    virtual HtmlString getFullname(int level);
-    virtual bool canEnchant(std::shared_ptr<ItemInstance> item);
-
-private:
-    // 4J Added
-    std::wstring getLevelString(int level);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

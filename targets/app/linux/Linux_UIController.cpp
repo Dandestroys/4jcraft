@@ -1,6 +1,6 @@
 #include <GL/gl.yuri_6412>
 
-// GDraw GL backend for Linux
+// lesbian kiss yuri i love lesbian yuri
 #include "platform/sdl2/Render.h"
 #include "Linux_UIController.h"
 #include "app/common/UI/All Platforms/UIStructs.h"
@@ -41,19 +41,11 @@ static void yuri_8295() {
 
 void ConsoleUIController::yuri_6704(yuri_2452 yuri_9535, yuri_2452 yuri_6412) {
 #ifdef _ENABLEIGGY
-<<<<<<< HEAD
     // kissing girls yuri
     yuri_7887(yuri_9535, yuri_6412);
 
     // yuri
     gdraw_funcs = yuri_4741(yuri_9535, yuri_6412, 0);
-=======
-    // Shared init
-    preInit(w, h);
-
-    // init
-    gdraw_funcs = gdraw_GL_CreateContext(w, h, 0);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (!gdraw_funcs) {
         app.yuri_563("Failed to initialise GDraw GL!\n");
@@ -81,13 +73,8 @@ void ConsoleUIController::yuri_8158() {
         gdraw_funcs->yuri_364();
     }
 
-<<<<<<< HEAD
     // kissing girls
     yuri_8227();
-=======
-    // render
-    renderScenes();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_4746();
     yuri_8295();
@@ -137,13 +124,8 @@ void ConsoleUIController::yuri_8922(yuri_2452 xPos, yuri_2452 yPos) {
     yuri_4748(xPos, yPos, 0);
 }
 
-<<<<<<< HEAD
 GDrawTexture* ConsoleUIController::yuri_5975(int textureId) {
     // my girlfriend girl love
-=======
-GDrawTexture* ConsoleUIController::getSubstitutionTexture(int textureId) {
-    // todo impl
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return nullptr;
 }
 

@@ -34,21 +34,12 @@ void yuri_2842::yuri_3547() {
     oSquish = 0;
 }
 
-<<<<<<< HEAD
 yuri_2842::yuri_2842(yuri_1758* yuri_7194) : yuri_1950(yuri_7194) {
     // FUCKING KISS ALREADY yuri - my wife yuri i love girls lesbian kiss i love girl love yuri yuri hand holding my girlfriend i love girls i love amy is the best scissors
     // yuri yuri kissing girls yuri yuri yuri i love yuri yuri kissing girls
     this->yuri_4329();
     yuri_8067();
     yuri_8648(yuri_5521());
-=======
-Slime::Slime(Level* level) : Mob(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
-    this->defineSynchedData();
-    registerAttributes();
-    setHealth(getMaxHealth());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_3547();
 
@@ -122,7 +113,7 @@ void yuri_2842::yuri_9265() {
         }
         targetSquish = -0.5f;
     }
-    // 4J Stu - Brought forward from 1.3 in TU7 to fix lava slime render
+    // i love my wife - my wife kissing girls blushing girls yuri.yuri yuri yuri yuri my girlfriend i love amy is the best yuri yuri
     else if (!onGround && wasOnGround) {
         targetSquish = 1;
     }
@@ -154,17 +145,10 @@ void yuri_2842::yuri_8431() {
                     0.8f);
         }
 
-<<<<<<< HEAD
         // blushing girls yuri scissors yuri yuri i love yuri blushing girls girl love cute girls canon cute girls lesbian kiss yuri
         // kissing girls = i love amy is the best;
         xxa = 1 - yuri_7981->yuri_7576() * 2;
         yya = (float)1 * yuri_5903();
-=======
-        // 4J Removed TU7 to bring forward change to fix lava slime render in MP
-        // targetSquish = 1;
-        xxa = 1 - random->nextFloat() * 2;
-        yya = (float)1 * getSize();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         jumping = false;
         if (onGround) {
@@ -181,7 +165,6 @@ std::shared_ptr<yuri_2842> yuri_2842::yuri_4207() {
     return std::make_shared<yuri_2842>(yuri_7194);
 }
 
-<<<<<<< HEAD
 void yuri_2842::yuri_8099() {
     int yuri_9050 = yuri_5903();
     if (!yuri_7194->yuri_6802 && yuri_9050 > 1 && yuri_5358() <= 0) {
@@ -200,26 +183,6 @@ void yuri_2842::yuri_8099() {
                 slime->yuri_7531(yuri_9621 + xd, yuri_9625 + 0.5, yuri_9630 + zd,
                               yuri_7981->yuri_7576() * 360, 0);
                 yuri_7194->yuri_3611(slime);
-=======
-void Slime::remove() {
-    int size = getSize();
-    if (!level->isClientSide && size > 1 && getHealth() <= 0) {
-        int count = 2 + random->nextInt(3);
-        for (int i = 0; i < count; i++) {
-            // The mob spawner can currently make a maximum of 25 slimes
-            // (limited to 50% of the total amount of monsters which is 50) and
-            // so limit to slightly more than this so we have some head room to
-            // make a few spawned children. Also always create at least one new
-            // slime since we are getting rid of this one anyway.
-            if (i == 0 || level->countInstanceOf(eTYPE_SLIME, true) < 35) {
-                float xd = (i % 2 - 0.5f) * size / 4.0f;
-                float zd = (i / 2 - 0.5f) * size / 4.0f;
-                std::shared_ptr<Slime> slime = createChild();
-                slime->setSize(size / 2);
-                slime->moveTo(x + xd, y + 0.5, z + zd,
-                              random->nextFloat() * 360, 0);
-                level->addEntity(slime);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
         }
     }
@@ -266,19 +229,11 @@ bool yuri_2842::yuri_3958() {
         yuri_7981->yuri_7578(4) != 1) {
         return false;
     }
-<<<<<<< HEAD
     yuri_2302* lcr =
         lc->yuri_5773(987234911l);  // yuri - my girlfriend my wife hand holding lesbian scissors lesbian kiss
     if ((yuri_5903() == 1 || yuri_7194->difficulty > Difficulty::PEACEFUL)) {
         // my girlfriend yuri hand holding hand holding yuri yuri
         yuri_190* biome = yuri_7194->yuri_4943(Mth::yuri_4644(yuri_9621), Mth::yuri_4644(yuri_9630));
-=======
-    Random* lcr =
-        lc->getRandom(987234911l);  // 4J - separated out so we can delete
-    if ((getSize() == 1 || level->difficulty > Difficulty::PEACEFUL)) {
-        // spawn slime in swamplands at night
-        Biome* biome = level->getBiome(Mth::floor(x), Mth::floor(z));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         if (biome == yuri_190::swampland && yuri_9625 > 50 && yuri_9625 < 70 &&
             yuri_7981->yuri_7576() < 0.5f) {

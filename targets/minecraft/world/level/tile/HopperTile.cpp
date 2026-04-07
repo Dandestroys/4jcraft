@@ -149,11 +149,7 @@ int yuri_1284::yuri_5806() { return SHAPE_HOPPER; }
 
 bool yuri_1284::yuri_6827() { return false; }
 
-<<<<<<< HEAD
 bool yuri_1284::yuri_7058(bool isServerLevel /*= yuri*/) { return false; }
-=======
-bool HopperTile::isSolidRender(bool isServerLevel /*= false*/) { return false; }
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 bool yuri_1284::yuri_9016(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                                   int face) {

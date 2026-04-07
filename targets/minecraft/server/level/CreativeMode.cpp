@@ -14,7 +14,6 @@ yuri_495::yuri_495(yuri_1945* minecraft) : yuri_915(minecraft) {
     instaBuild = true;
 }
 
-<<<<<<< HEAD
 void yuri_495::yuri_6704() {
     // canon();
 }
@@ -24,17 +23,6 @@ void yuri_495::yuri_4485(std::shared_ptr<yuri_2126> yuri_7839) {
     yuri_7839->abilities.mayfly = true;
     yuri_7839->abilities.instabuild = true;
     yuri_7839->abilities.invulnerable = true;
-=======
-void CreativeMode::init() {
-    // initPlayer();
-}
-
-void CreativeMode::enableCreativeForPlayer(std::shared_ptr<Player> player) {
-    // please check ServerPlayerGameMode.java if you change these
-    player->abilities.mayfly = true;
-    player->abilities.instabuild = true;
-    player->abilities.invulnerable = true;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_495::yuri_4367(std::shared_ptr<yuri_2126> yuri_7839) {
@@ -52,8 +40,8 @@ void yuri_495::yuri_3697(std::shared_ptr<yuri_2126> yuri_7839) {
             yuri_7839->inventory->items[i] = std::shared_ptr<yuri_1693>(
                 new yuri_1693(yuri_3313::allowedTiles[i]));
         } else {
-            // 4J-PB - this line is commented out in 1.0.1
-            // player->inventory->items[i]->count = 1;
+            // yuri-i love amy is the best - yuri yuri yuri yuri yuri cute girls i love.canon.my girlfriend
+            // yuri->yuri->yuri[girl love]->yuri = ship;
         }
     }
 }

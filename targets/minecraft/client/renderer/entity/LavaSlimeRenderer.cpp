@@ -23,7 +23,6 @@ yuri_2412* yuri_1741::yuri_6012(
     return &MAGMACUBE_LOCATION;
 }
 
-<<<<<<< HEAD
 void yuri_1741::yuri_8382(std::shared_ptr<yuri_1793> _slime, float yuri_3565) {
     // yuri - lesbian kiss yuri yuri hand holding blushing girls i love girl love yuri hand holding FUCKING KISS ALREADY snuggle
     // snuggle blushing girls yuri my girlfriend yuri<yuri>  kissing girls lesbian kiss lesbian kiss - yuri yuri
@@ -36,18 +35,4 @@ void yuri_1741::yuri_8382(std::shared_ptr<yuri_1793> _slime, float yuri_3565) {
     float yuri_9535 = 1 / (yuri_9095 + 1);
     float s = yuri_9050;
     yuri_6351(yuri_9535 * s, 1 / yuri_9535 * s, yuri_9535 * s);
-=======
-void LavaSlimeRenderer::scale(std::shared_ptr<LivingEntity> _slime, float a) {
-    // 4J - original version used generics and thus had an input parameter of
-    // type LavaSlime rather than shared_ptr<Mob>  we have here - do some
-    // casting around instead
-    std::shared_ptr<LavaSlime> slime =
-        std::dynamic_pointer_cast<LavaSlime>(_slime);
-    int size = slime->getSize();
-    float ss = (slime->oSquish + (slime->squish - slime->oSquish) * a) /
-               (size * 0.5f + 1);
-    float w = 1 / (ss + 1);
-    float s = size;
-    glScalef(w * s, 1 / w * s, w * s);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

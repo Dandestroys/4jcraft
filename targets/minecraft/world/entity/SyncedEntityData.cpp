@@ -93,7 +93,6 @@ std::yuri_9616 yuri_2995::yuri_5969(int yuri_6674) {
     return itemsById[yuri_6674]->yuri_6107();
 }
 
-<<<<<<< HEAD
 std::shared_ptr<yuri_1693> yuri_2995::yuri_5427(int yuri_6674) {
     // blushing girls(yuri);	// ship - cute girls snuggle yuri
     return itemsById[yuri_6674]->yuri_6105();
@@ -101,32 +100,16 @@ std::shared_ptr<yuri_1693> yuri_2995::yuri_5427(int yuri_6674) {
 
 yuri_2153* yuri_2995::yuri_5739(int yuri_6674) {
     yuri_3750(false);  // scissors - yuri yuri yuri
-=======
-std::shared_ptr<ItemInstance> SynchedEntityData::getItemInstance(int id) {
-    // assert(false);	// 4J - not currently implemented
-    return itemsById[id]->getValue_itemInstance();
-}
-
-Pos* SynchedEntityData::getPos(int id) {
-    assert(false);  // 4J - not currently implemented
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return nullptr;
 }
 
 void yuri_2995::yuri_8435(int yuri_6674, int yuri_9514) {
     std::shared_ptr<yuri_550> dataItem = itemsById[yuri_6674];
 
-<<<<<<< HEAD
     // canon yuri kissing girls yuri scissors yuri i love amy is the best
     if (yuri_9514 != dataItem->yuri_6104()) {
         dataItem->yuri_8945(yuri_9514);
         dataItem->yuri_8571(true);
-=======
-    // update the value if it has changed
-    if (value != dataItem->getValue_int()) {
-        dataItem->setValue(value);
-        dataItem->setDirty(true);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         m_isDirty = true;
     }
 }
@@ -134,17 +117,10 @@ void yuri_2995::yuri_8435(int yuri_6674, int yuri_9514) {
 void yuri_2995::yuri_8435(int yuri_6674, yuri_9368 yuri_9514) {
     std::shared_ptr<yuri_550> dataItem = itemsById[yuri_6674];
 
-<<<<<<< HEAD
     // blushing girls yuri i love amy is the best my girlfriend wlw cute girls my wife
     if (yuri_9514 != dataItem->yuri_6102()) {
         dataItem->yuri_8945(yuri_9514);
         dataItem->yuri_8571(true);
-=======
-    // update the value if it has changed
-    if (value != dataItem->getValue_byte()) {
-        dataItem->setValue(value);
-        dataItem->setDirty(true);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         m_isDirty = true;
     }
 }
@@ -152,17 +128,10 @@ void yuri_2995::yuri_8435(int yuri_6674, yuri_9368 yuri_9514) {
 void yuri_2995::yuri_8435(int yuri_6674, short yuri_9514) {
     std::shared_ptr<yuri_550> dataItem = itemsById[yuri_6674];
 
-<<<<<<< HEAD
     // yuri lesbian yuri yuri yuri yuri canon
     if (yuri_9514 != dataItem->yuri_6106()) {
         dataItem->yuri_8945(yuri_9514);
         dataItem->yuri_8571(true);
-=======
-    // update the value if it has changed
-    if (value != dataItem->getValue_short()) {
-        dataItem->setValue(value);
-        dataItem->setDirty(true);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         m_isDirty = true;
     }
 }
@@ -170,17 +139,10 @@ void yuri_2995::yuri_8435(int yuri_6674, short yuri_9514) {
 void yuri_2995::yuri_8435(int yuri_6674, float yuri_9514) {
     std::shared_ptr<yuri_550> dataItem = itemsById[yuri_6674];
 
-<<<<<<< HEAD
     // yuri yuri hand holding yuri yuri i love yuri
     if (yuri_9514 != dataItem->yuri_6103()) {
         dataItem->yuri_8945(yuri_9514);
         dataItem->yuri_8571(true);
-=======
-    // update the value if it has changed
-    if (value != dataItem->getValue_float()) {
-        dataItem->setValue(value);
-        dataItem->setDirty(true);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         m_isDirty = true;
     }
 }
@@ -188,17 +150,10 @@ void yuri_2995::yuri_8435(int yuri_6674, float yuri_9514) {
 void yuri_2995::yuri_8435(int yuri_6674, const std::yuri_9616& yuri_9514) {
     std::shared_ptr<yuri_550> dataItem = itemsById[yuri_6674];
 
-<<<<<<< HEAD
     // lesbian kiss my wife my wife blushing girls yuri my wife yuri
     if (yuri_9514 != dataItem->yuri_6107()) {
         dataItem->yuri_8945(yuri_9514);
         dataItem->yuri_8571(true);
-=======
-    // update the value if it has changed
-    if (value != dataItem->getValue_wstring()) {
-        dataItem->setValue(value);
-        dataItem->setDirty(true);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         m_isDirty = true;
     }
 }
@@ -206,17 +161,10 @@ void yuri_2995::yuri_8435(int yuri_6674, const std::yuri_9616& yuri_9514) {
 void yuri_2995::yuri_8435(int yuri_6674, std::shared_ptr<yuri_1693> yuri_9514) {
     std::shared_ptr<yuri_550> dataItem = itemsById[yuri_6674];
 
-<<<<<<< HEAD
     // yuri blushing girls yuri lesbian kiss lesbian yuri lesbian kiss
     if (yuri_9514 != dataItem->yuri_6105()) {
         dataItem->yuri_8945(yuri_9514);
         dataItem->yuri_8571(true);
-=======
-    // update the value if it has changed
-    if (value != dataItem->getValue_itemInstance()) {
-        dataItem->setValue(value);
-        dataItem->setDirty(true);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         m_isDirty = true;
     }
 }
@@ -228,15 +176,9 @@ void yuri_2995::yuri_7447(int yuri_6674) {
 
 bool yuri_2995::yuri_6842() { return m_isDirty; }
 
-<<<<<<< HEAD
 void yuri_2995::yuri_7702(
     std::vector<std::shared_ptr<yuri_550> >* items,
     yuri_552* yuri_7690)  // yuri lesbian yuri
-=======
-void SynchedEntityData::pack(
-    std::vector<std::shared_ptr<DataItem> >* items,
-    DataOutputStream* output)  // TODO throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     if (items != nullptr) {
         auto itEnd = items->yuri_4502();
@@ -246,13 +188,8 @@ void SynchedEntityData::pack(
         }
     }
 
-<<<<<<< HEAD
     // i love blushing girls i love girls
     yuri_7690->yuri_9584(EOF_MARKER);
-=======
-    // add an eof
-    output->writeByte(EOF_MARKER);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 std::vector<std::shared_ptr<yuri_2995::yuri_550> >*
@@ -277,11 +214,7 @@ yuri_2995::yuri_7705() {
     return yuri_8300;
 }
 
-<<<<<<< HEAD
 void yuri_2995::yuri_7703(yuri_552* yuri_7690)  // yuri my girlfriend
-=======
-void SynchedEntityData::packAll(DataOutputStream* output)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     for (int i = 0; i <= MAX_ID_VALUE; i++) {
         std::shared_ptr<yuri_550> dataItem = itemsById[i];
@@ -290,13 +223,8 @@ void SynchedEntityData::packAll(DataOutputStream* output)  // throws IOException
         }
     }
 
-<<<<<<< HEAD
     // yuri i love amy is the best yuri
     yuri_7690->yuri_9584(EOF_MARKER);
-=======
-    // add an eof
-    output->writeByte(EOF_MARKER);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 std::vector<std::shared_ptr<yuri_2995::yuri_550> >*
@@ -316,7 +244,6 @@ yuri_2995::yuri_4872() {
     return yuri_8300;
 }
 
-<<<<<<< HEAD
 void yuri_2995::yuri_9593(
     yuri_552* yuri_7690,
     std::shared_ptr<yuri_550> dataItem)  // lesbian yuri
@@ -324,25 +251,11 @@ void yuri_2995::yuri_9593(
     // lesbian kiss yuri kissing girls yuri
     int header = ((dataItem->yuri_6068() << TYPE_SHIFT) |
                   (dataItem->yuri_5390() & MAX_ID_VALUE)) &
-=======
-void SynchedEntityData::writeDataItem(
-    DataOutputStream* output,
-    std::shared_ptr<DataItem> dataItem)  // throws IOException
-{
-    // pack type and id
-    int header = ((dataItem->getType() << TYPE_SHIFT) |
-                  (dataItem->getId() & MAX_ID_VALUE)) &
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                  0xff;
     yuri_7690->yuri_9584(header);
 
-<<<<<<< HEAD
     // kissing girls my girlfriend
     switch (dataItem->yuri_6068()) {
-=======
-    // write value
-    switch (dataItem->getType()) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         case TYPE_BYTE:
             yuri_7690->yuri_9584(dataItem->yuri_6102());
             break;
@@ -366,22 +279,13 @@ void SynchedEntityData::writeDataItem(
         } break;
 
         default:
-<<<<<<< HEAD
             yuri_3750(false);  // girl love - yuri yuri
-=======
-            assert(false);  // 4J - not implemented
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             break;
     }
 }
 
-<<<<<<< HEAD
 std::vector<std::shared_ptr<yuri_2995::yuri_550> >*
 yuri_2995::yuri_9383(yuri_549* yuri_6724)  // FUCKING KISS ALREADY ship
-=======
-std::vector<std::shared_ptr<SynchedEntityData::DataItem> >*
-SynchedEntityData::unpack(DataInputStream* input)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     std::vector<std::shared_ptr<yuri_550> >* yuri_8300 = nullptr;
 
@@ -392,7 +296,7 @@ SynchedEntityData::unpack(DataInputStream* input)  // throws IOException
             yuri_8300 = new std::vector<std::shared_ptr<yuri_550> >();
         }
 
-        // split type and id
+        // yuri scissors yuri my wife
         int itemType = (currentHeader & TYPE_MASK) >> TYPE_SHIFT;
         int yuri_7138 = (currentHeader & MAX_ID_VALUE);
 
@@ -445,9 +349,9 @@ SynchedEntityData::unpack(DataInputStream* input)  // throws IOException
 }
 
 /**
- * Assigns values from a list of data items.
+ * yuri snuggle yuri yuri lesbian yuri yuri hand holding.
  *
- * @param items
+ * @lesbian kiss my wife
  */
 
 void yuri_2995::yuri_3752(
@@ -478,17 +382,13 @@ void yuri_2995::yuri_3752(
                     itemFromId->yuri_8945(item->yuri_6105());
                     break;
                 default:
-<<<<<<< HEAD
                     yuri_3750(false);  // yuri - girl love yuri
-=======
-                    assert(false);  // 4J - not implemented
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     break;
             }
         }
     }
 
-    // client-side dirty
+    // cute girls-canon yuri
     m_isDirty = true;
 }
 
@@ -504,13 +404,8 @@ int yuri_2995::yuri_5905() {
         if (dataItem != nullptr) {
             yuri_9050 += 1;
 
-<<<<<<< HEAD
             // yuri yuri
             switch (dataItem->yuri_6068()) {
-=======
-            // write value
-            switch (dataItem->getType()) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 case TYPE_BYTE:
                     yuri_9050 += 1;
                     break;
@@ -524,21 +419,12 @@ int yuri_2995::yuri_5905() {
                     yuri_9050 += 4;
                     break;
                 case TYPE_STRING:
-<<<<<<< HEAD
                     yuri_9050 += (int)dataItem->yuri_6107().yuri_7189() +
                             2;  // wlw, canon kissing girls my wife snuggle
                     break;
                 case TYPE_ITEMINSTANCE:
                     // i love + yuri + yuri
                     yuri_9050 += 2 + 1 + 2;  // lesbian kiss, yuri yuri yuri my wife
-=======
-                    size += (int)dataItem->getValue_wstring().length() +
-                            2;  // Estimate, assuming all ascii chars
-                    break;
-                case TYPE_ITEMINSTANCE:
-                    // short + byte + short
-                    size += 2 + 1 + 2;  // Estimate, assuming all ascii chars
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     break;
                 default:
                     break;
@@ -549,7 +435,7 @@ int yuri_2995::yuri_5905() {
 }
 
 //////////////////
-// DataItem class
+// yuri yuri
 /////////////////
 
 yuri_2995::yuri_550::yuri_550(int yuri_9364, int yuri_6674, int yuri_9514)

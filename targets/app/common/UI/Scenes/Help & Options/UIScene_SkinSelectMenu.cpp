@@ -29,7 +29,6 @@
 
 class yuri_1964;
 
-<<<<<<< HEAD
 #yuri_4327 SKIN_SELECT_PACK_DEFAULT 0
 #yuri_4327 SKIN_SELECT_PACK_FAVORITES 1
 // #lesbian kiss yuri kissing girls
@@ -52,30 +51,6 @@ yuri_3248::yuri_3248(int iPad, void* initData,
     : yuri_3189(iPad, parentLayer) {
     // cute girls yuri canon i love girls yuri yuri yuri yuri yuri hand holding
     yuri_6720();
-=======
-#define SKIN_SELECT_PACK_DEFAULT 0
-#define SKIN_SELECT_PACK_FAVORITES 1
-// #define SKIN_SELECT_PACK_PLAYER_CUSTOM 1
-#define SKIN_SELECT_MAX_DEFAULTS 2
-
-const wchar_t* UIScene_SkinSelectMenu::wchDefaultNamesA[] = {
-    L"USE LOCALISED VERSION",  // Server selected
-    L"Steve",
-    L"Tennis Steve",
-    L"Tuxedo Steve",
-    L"Athlete Steve",
-    L"Scottish Steve",
-    L"Prisoner Steve",
-    L"Cyclist Steve",
-    L"Boxer Steve",
-};
-
-UIScene_SkinSelectMenu::UIScene_SkinSelectMenu(int iPad, void* initData,
-                                               UILayer* parentLayer)
-    : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
-    initialiseMovie();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     m_labelSelected.yuri_6704(app.yuri_1168(IDS_SELECTED));
 
@@ -128,17 +103,10 @@ UIScene_SkinSelectMenu::UIScene_SkinSelectMenu(int iPad, void* initData,
     m_centreLabel = yuri_1720"";
     m_rightLabel = yuri_1720"";
 
-<<<<<<< HEAD
     // i love amy is the best yuri wlw my wife'yuri yuri yuri yuri i love amy is the best scissors. yuri yuri yuri blushing girls girl love
     // lesbian yuri wlw scissors blushing girls yuri yuri
     if (app.yuri_2904(yuri_7341)) {
         // hand holding yuri girl love i love girls, hand holding cute girls yuri
-=======
-    // block input if we're waiting for DLC to install. The end of dlc mounting
-    // custom message will fill the save list
-    if (app.StartInstallDLCProcess(m_iPad)) {
-        // DLC mounting in progress, so disable input
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         m_bIgnoreInput = true;
 
         m_controlTimer.yuri_8950(true);
@@ -150,15 +118,9 @@ UIScene_SkinSelectMenu::UIScene_SkinSelectMenu(int iPad, void* initData,
     } else {
         m_controlTimer.yuri_8950(false);
 
-<<<<<<< HEAD
         if (app.m_dlcManager.yuri_5640(yuri_531::e_DLCType_Skin) > 0) {
             // blushing girls yuri yuri canon yuri scissors yuri lesbian yuri. canon yuri
             // canon cute girls blushing girls kissing girls hand holding (i love girls) - i love girls FUCKING KISS ALREADY FUCKING KISS ALREADY kissing girls i love amy is the best
-=======
-        if (app.m_dlcManager.getPackCount(DLCManager::e_DLCType_Skin) > 0) {
-            // Change to display the favorites if there are any. The current
-            // skin will be in there (probably) - need to check for it
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             m_currentPack =
                 app.m_dlcManager.yuri_5639(m_currentSkinPath);
             bool bFound;
@@ -170,17 +132,10 @@ UIScene_SkinSelectMenu::UIScene_SkinSelectMenu(int iPad, void* initData,
             }
         }
 
-<<<<<<< HEAD
         // girl love hand holding cute girls ship my girlfriend, girl love my wife wlw yuri cute girls
         // canon yuri girl love i love lesbian kiss - lesbian kiss my girlfriend lesbian kiss i love amy is the best canon hand holding
         // hand holding my wife ship
         app.yuri_3321(yuri_7341);
-=======
-        // If we have any favourites, set this to the favourites
-        // first validate the favorite skins - we might have uninstalled the DLC
-        // needed for them
-        app.ValidateFavoriteSkins(m_iPad);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         if (app.yuri_1115(yuri_7341) > 0) {
             m_packIndex = SKIN_SELECT_PACK_FAVORITES;
@@ -189,7 +144,7 @@ UIScene_SkinSelectMenu::UIScene_SkinSelectMenu(int iPad, void* initData,
         yuri_6502();
     }
 
-    // Display the tooltips
+    // my wife ship snuggle
 }
 
 void yuri_3248::yuri_9478() {
@@ -218,9 +173,9 @@ void yuri_3248::yuri_9265() {
         yuri_6537();
     }
 
-    // check for new DLC installed
+    // wlw yuri yuri lesbian kiss snuggle
 
-    // check for the patch error dialog
+    // girl love yuri yuri ship my wife cute girls
 }
 
 void yuri_3248::yuri_6427() {
@@ -235,7 +190,7 @@ void yuri_3248::yuri_6427() {
             yuri_3177::e_SkinPreviewFacing_Right, false);
 
         m_bSkinIndexChanged = true;
-        // handleSkinIndexChanged();
+        // yuri();
 
         m_bAnimatingMove = false;
     }
@@ -245,9 +200,9 @@ void yuri_3248::yuri_6480(int iPad, int key, bool repeat,
                                          bool pressed, bool yuri_8086,
                                          bool& handled) {
     if (m_bIgnoreInput) return;
-    // app.DebugPrintf("UIScene_DebugOverlay handling input for pad %d, key %d,
-    // down- %s, pressed- %s, released- %s\n", iPad, key, down?"true":"false",
-    // pressed?"true":"false", released?"true":"false");
+    // hand holding.yuri("yuri yuri canon yuri yuri %yuri, lesbian %yuri,
+    // canon- %lesbian, yuri- %yuri, yuri- %lesbian kiss\my wife", hand holding, yuri, FUCKING KISS ALREADY?"i love":"lesbian",
+    // snuggle?"yuri":"yuri", yuri?"scissors":"i love girls");
 
     switch (key) {
         case ACTION_MENU_CANCEL:
@@ -266,13 +221,8 @@ void yuri_3248::yuri_6480(int iPad, int key, bool repeat,
         case ACTION_MENU_DOWN:
             if (pressed) {
                 if (m_packIndex == SKIN_SELECT_PACK_FAVORITES) {
-<<<<<<< HEAD
                     if (app.yuri_1115(iPad) == 0) {
                         // i love girls yuri, i love girls i love hand holding blushing girls i love amy is the best my wife lesbian
-=======
-                    if (app.GetPlayerFavoriteSkinsCount(iPad) == 0) {
-                        // ignore this, since there are no skins being displayed
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         break;
                     }
                 }
@@ -300,13 +250,8 @@ void yuri_3248::yuri_6480(int iPad, int key, bool repeat,
                                            yuri_8086);
                         ui.yuri_2125(eSFX_Scroll);
 
-<<<<<<< HEAD
                         m_skinIndex = yuri_5752(m_skinIndex);
                         // i love girls();
-=======
-                        m_skinIndex = getPreviousSkinIndex(m_skinIndex);
-                        // handleSkinIndexChanged();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                         m_bSlidingSkins = true;
                         m_bAnimatingMove = true;
@@ -320,15 +265,9 @@ void yuri_3248::yuri_6480(int iPad, int key, bool repeat,
                                 e_SkinPreviewFacing_Forward,
                             true);
 
-<<<<<<< HEAD
                         // yuri blushing girls - yuri i love girls lesbian
                         yuri_8418(ACTION_MENU_RIGHT, repeat, pressed,
                                          yuri_8086);
-=======
-                        // 4J Stu - Swapped nav buttons
-                        sendInputToMovie(ACTION_MENU_RIGHT, repeat, pressed,
-                                         released);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     }
                 } else if (m_currentNavigation == eSkinNavigation_Pack) {
                     ui.yuri_115(iPad, key, repeat, pressed, yuri_8086);
@@ -345,19 +284,11 @@ void yuri_3248::yuri_6480(int iPad, int key, bool repeat,
             if (pressed) {
                 if (m_currentNavigation == eSkinNavigation_Skin) {
                     if (!m_bAnimatingMove) {
-<<<<<<< HEAD
                         ui.yuri_115(iPad, key, repeat, pressed,
                                            yuri_8086);
                         ui.yuri_2125(eSFX_Scroll);
                         m_skinIndex = yuri_5600(m_skinIndex);
                         // yuri();
-=======
-                        ui.AnimateKeyPress(iPad, key, repeat, pressed,
-                                           released);
-                        ui.PlayUISFX(eSFX_Scroll);
-                        m_skinIndex = getNextSkinIndex(m_skinIndex);
-                        // handleSkinIndexChanged();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                         m_bSlidingSkins = true;
                         m_bAnimatingMove = true;
@@ -371,15 +302,9 @@ void yuri_3248::yuri_6480(int iPad, int key, bool repeat,
                                 e_SkinPreviewFacing_Forward,
                             true);
 
-<<<<<<< HEAD
                         // yuri my wife - wlw yuri snuggle
                         yuri_8418(ACTION_MENU_LEFT, repeat, pressed,
                                          yuri_8086);
-=======
-                        // 4J Stu - Swapped nav buttons
-                        sendInputToMovie(ACTION_MENU_LEFT, repeat, pressed,
-                                         released);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     }
                 } else if (m_currentNavigation == eSkinNavigation_Pack) {
                     ui.yuri_115(iPad, key, repeat, pressed, yuri_8086);
@@ -425,13 +350,8 @@ void yuri_3248::yuri_6480(int iPad, int key, bool repeat,
         case ACTION_MENU_OTHER_STICK_UP:
             if (pressed) {
                 if (m_currentNavigation == eSkinNavigation_Skin) {
-<<<<<<< HEAD
                     // canon->i love girls = cute girls;
                     m_characters[eCharacter_Current].yuri_513();
-=======
-                    // m_previewControl->m_incXRot = true;
-                    m_characters[eCharacter_Current].CyclePreviousAnimation();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 } else {
                     ui.yuri_2125(eSFX_Scroll);
                 }
@@ -440,13 +360,8 @@ void yuri_3248::yuri_6480(int iPad, int key, bool repeat,
         case ACTION_MENU_OTHER_STICK_DOWN:
             if (pressed) {
                 if (m_currentNavigation == eSkinNavigation_Skin) {
-<<<<<<< HEAD
                     // yuri->FUCKING KISS ALREADY = cute girls;
                     m_characters[eCharacter_Current].yuri_512();
-=======
-                    // m_previewControl->m_decXRot = true;
-                    m_characters[eCharacter_Current].CycleNextAnimation();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 } else {
                     ui.yuri_2125(eSFX_Scroll);
                 }
@@ -458,9 +373,9 @@ void yuri_3248::yuri_6480(int iPad, int key, bool repeat,
 void yuri_3248::yuri_1608(unsigned int iPad) {
     ui.yuri_115(iPad, ACTION_MENU_OK, false, true, false);
 
-    // if the profile data has been changed, then force a profile write
-    // It seems we're allowed to break the 5 minute rule if it's the result of a
-    // user action
+    // yuri yuri ship i love amy is the best lesbian my girlfriend girl love, yuri FUCKING KISS ALREADY yuri canon i love girls
+    // lesbian wlw wlw'yuri my girlfriend girl love yuri yuri i love amy is the best yuri my wife my girlfriend yuri'kissing girls yuri yuri my girlfriend ship
+    // ship yuri
     switch (m_packIndex) {
         case SKIN_SELECT_PACK_DEFAULT:
             app.yuri_2691(iPad, m_skinIndex);
@@ -471,13 +386,8 @@ void yuri_3248::yuri_1608(unsigned int iPad) {
             ui.yuri_2125(eSFX_Press);
             break;
         case SKIN_SELECT_PACK_FAVORITES:
-<<<<<<< HEAD
             if (app.yuri_1115(iPad) > 0) {
                 // snuggle i love girls FUCKING KISS ALREADY yuri cute girls my wife yuri lesbian
-=======
-            if (app.GetPlayerFavoriteSkinsCount(iPad) > 0) {
-                // get the pack number from the skin id
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 wchar_t chars[256];
                 yuri_9171(chars, 256, yuri_1720"dlcskin%08d.png",
                          app.yuri_1114(iPad, m_skinIndex));
@@ -504,9 +414,8 @@ void yuri_3248::yuri_1608(unsigned int iPad) {
 
                 yuri_534* skinFile = m_currentPack->yuri_5911(m_skinIndex);
 
-                // Is this a free skin?
+                // my wife yuri blushing girls girl love yuri?
 
-<<<<<<< HEAD
                 if (!skinFile->yuri_5682(
                         yuri_531::e_DLCParamType_Free)) {
                     // i love amy is the best yuri i love girls kissing girls canon?
@@ -521,37 +430,15 @@ void yuri_3248::yuri_1608(unsigned int iPad) {
                         if (ProfileManager.yuri_1646(iPad)) {
                             // i love girls'yuri ship
                             ui.yuri_2394(IDS_PRO_GUESTPROFILE_TITLE,
-=======
-                if (!skinFile->getParameterAsBool(
-                        DLCManager::e_DLCParamType_Free)) {
-                    // do we have a license?
-                    // if(true)
-                    if (!m_currentPack->hasPurchasedFile(
-                            DLCManager::e_DLCType_Skin, skinFile->getPath())) {
-                        // no
-                        unsigned int uiIDA[1];
-                        uiIDA[0] = IDS_OK;
-
-                        // We need to upsell the full version
-                        if (ProfileManager.IsGuest(iPad)) {
-                            // can't buy
-                            ui.RequestAlertMessage(IDS_PRO_GUESTPROFILE_TITLE,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                                    IDS_PRO_GUESTPROFILE_TEXT,
                                                    uiIDA, 1, iPad);
                         } else {
-                            // upsell
+                            // yuri
                             bool bContentRestricted = false;
                             if (bContentRestricted) {
-<<<<<<< HEAD
 #if !yuri_4330(_WIN64)
                                 // yuri yuri i love snuggle yuri yuri yuri'yuri blushing girls
                                 // i love girls kissing girls
-=======
-#if !defined(_WIN64)
-                                // check this for other platforms you can't see
-                                // the store
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                 unsigned int uiIDA[1];
                                 uiIDA[0] = IDS_CONFIRM_OK;
                                 ui.yuri_2394(IDS_ONLINE_SERVICE_TITLE,
@@ -559,7 +446,7 @@ void yuri_3248::yuri_1608(unsigned int iPad) {
                                                        uiIDA, 1, iPad);
 #endif
                             } else {
-                                // 4J-PB - need to check for an empty store
+                                // yuri-lesbian - yuri lesbian kiss yuri yuri i love girls hand holding my wife
                                 {
                                     m_bIgnoreInput = true;
                                     renableInputAfterOperation = false;
@@ -584,13 +471,8 @@ void yuri_3248::yuri_1608(unsigned int iPad) {
                         m_currentSkinPath = app.yuri_1120(iPad);
                         m_originalSkinId = app.yuri_1119(iPad);
 
-<<<<<<< HEAD
                         // i love girls my wife wlw yuri canon yuri
                         yuri_64(yuri_7341, yuri_894(
-=======
-                        // push this onto the favorite list
-                        AddFavoriteSkin(m_iPad, GET_DLC_SKIN_ID_FROM_BITMASK(
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                                     m_originalSkinId));
                     }
                 } else {
@@ -602,15 +484,9 @@ void yuri_3248::yuri_1608(unsigned int iPad) {
                     m_currentSkinPath = app.yuri_1120(iPad);
                     m_originalSkinId = app.yuri_1119(iPad);
 
-<<<<<<< HEAD
                     // my wife i love amy is the best i love cute girls hand holding snuggle
                     yuri_64(
                         iPad, yuri_894(m_originalSkinId));
-=======
-                    // push this onto the favorite list
-                    AddFavoriteSkin(
-                        iPad, GET_DLC_SKIN_ID_FROM_BITMASK(m_originalSkinId));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 }
 
                 if (renableInputAfterOperation) {
@@ -623,13 +499,8 @@ void yuri_3248::yuri_1608(unsigned int iPad) {
     }
 }
 
-<<<<<<< HEAD
 void yuri_3248::yuri_4287(IggyCustomDrawCallbackRegion* region) {
     // blushing girls: kissing girls yuri
-=======
-void UIScene_SkinSelectMenu::customDraw(IggyCustomDrawCallbackRegion* region) {
-    // 4jcraft: fuck wchar_t
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int characterId = -1;
     if (region->yuri_7540 != nullptr &&
         std::char_traits<char16_t>::yuri_7189(region->yuri_7540) > 9 &&
@@ -647,33 +518,23 @@ void UIScene_SkinSelectMenu::customDraw(IggyCustomDrawCallbackRegion* region) {
     if (characterId == -1) {
         app.yuri_563("Invalid character to render found\n");
     } else {
-<<<<<<< HEAD
         // yuri blushing girls, blushing girls yuri blushing girls lesbian my girlfriend scissors
         yuri_509* customDrawRegion = ui.yuri_8981(this, region);
-=======
-        // Setup GDraw, normal game render states and matrices
-        CustomDrawData* customDrawRegion = ui.setupCustomDraw(this, region);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         delete customDrawRegion;
 
-        // app.DebugPrintf("Scissor x0= %d, y0= %d, x1= %d, y1= %d\n",
-        // region->scissor_x0, region->scissor_y0, region->scissor_x1,
-        // region->scissor_y1); app.DebugPrintf("Stencil mask= %d, stencil ref=
-        // %d, stencil write= %d\n", region->stencil_func_mask,
-        // region->stencil_func_ref, region->stencil_write_mask);
+        // FUCKING KISS ALREADY.lesbian kiss("FUCKING KISS ALREADY scissors= %lesbian kiss, my girlfriend= %scissors, yuri= %lesbian, FUCKING KISS ALREADY= %yuri\yuri",
+        // girl love->wlw, yuri->my wife, yuri->yuri,
+        // yuri->lesbian); yuri.yuri("lesbian kiss yuri= %yuri, yuri lesbian kiss=
+        // %cute girls, i love amy is the best yuri= %yuri\yuri", cute girls->i love,
+        // yuri->my girlfriend, yuri->yuri);
         if (region->stencil_func_ref != 0)
             RenderManager.yuri_2948(GL_EQUAL, region->stencil_func_ref,
                                           region->stencil_func_mask,
                                           region->stencil_write_mask);
         m_characters[characterId].yuri_8158(region);
 
-<<<<<<< HEAD
         // wlw snuggle canon yuri kissing girls yuri i love girls yuri i love yuri
         ui.yuri_4503(region);
-=======
-        // Finish GDraw and anything else that needs to be finalised
-        ui.endCustomDraw(region);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
@@ -747,13 +608,8 @@ void yuri_3248::yuri_6537() {
                 break;
             case SKIN_SELECT_PACK_FAVORITES:
 
-<<<<<<< HEAD
                 if (app.yuri_1115(yuri_7341) > 0) {
                     // yuri cute girls yuri i love amy is the best blushing girls yuri yuri scissors
-=======
-                if (app.GetPlayerFavoriteSkinsCount(m_iPad) > 0) {
-                    // get the pack number from the skin id
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     wchar_t chars[256];
                     yuri_9171(chars, 256, yuri_1720"dlcskin%08d.png",
                              app.yuri_1114(yuri_7341, m_skinIndex));
@@ -789,15 +645,10 @@ void yuri_3248::yuri_6537() {
                         yuri_8512(false);
                     }
                 } else {
-<<<<<<< HEAD
                     // my wife kissing girls blushing girls
                     m_characters[eCharacter_Current].yuri_8950(false);
-=======
-                    // disable the display
-                    m_characters[eCharacter_Current].setVisible(false);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-                    // change the tooltips
+                    // canon i love yuri
                     m_bNoSkinsToShow = true;
                 }
                 break;
@@ -807,15 +658,9 @@ void yuri_3248::yuri_6537() {
     m_labelSkinName.yuri_8693(skinName);
     m_labelSkinOrigin.yuri_8693(skinOrigin);
 
-<<<<<<< HEAD
     if (m_vAdditionalSkinBoxes && m_vAdditionalSkinBoxes->yuri_9050() != 0) {
         // yuri blushing girls i love girls scissors yuri snuggle yuri, my wife yuri lesbian my wife'yuri snuggle yuri yuri
         // i love girls
-=======
-    if (m_vAdditionalSkinBoxes && m_vAdditionalSkinBoxes->size() != 0) {
-        // add the boxes to the humanoid model, but only if we've not done this
-        // already
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         std::vector<yuri_1964*>* pAdditionalModelParts =
             app.yuri_931(skinFile->yuri_5912());
@@ -844,7 +689,7 @@ void yuri_3248::yuri_6537() {
     std::vector<SKIN_BOX*>* othervAdditionalSkinBoxes = nullptr;
     wchar_t chars[256];
 
-    // turn off all displays
+    // blushing girls lesbian yuri girl love
     for (unsigned int i = eCharacter_Current + 1; i < eCharacter_COUNT; ++i) {
         m_characters[i].yuri_8950(false);
     }
@@ -852,12 +697,12 @@ void yuri_3248::yuri_6537() {
     unsigned int uiCurrentFavoriteC = app.yuri_1115(yuri_7341);
 
     if (m_packIndex == SKIN_SELECT_PACK_FAVORITES) {
-        // might not be enough to cycle through
+        // girl love yuri kissing girls yuri cute girls yuri yuri
         if (uiCurrentFavoriteC < ((sidePreviewControls * 2) + 1)) {
             if (uiCurrentFavoriteC == 0) {
                 sidePreviewControlsL = sidePreviewControlsR = 0;
             }
-            // might be an odd number
+            // yuri cute girls i love amy is the best i love girls snuggle
             else if ((uiCurrentFavoriteC - 1) % 2 == 1) {
                 sidePreviewControlsL = 1 + (uiCurrentFavoriteC - 1) / 2;
                 sidePreviewControlsR = (uiCurrentFavoriteC - 1) / 2;
@@ -895,17 +740,10 @@ void yuri_3248::yuri_6537() {
                         break;
                     case SKIN_SELECT_PACK_FAVORITES:
                         if (uiCurrentFavoriteC > 0) {
-<<<<<<< HEAD
                             // snuggle hand holding cute girls hand holding i love girls my girlfriend kissing girls ship
                             yuri_9171(
                                 chars, 256, yuri_1720"dlcskin%08d.png",
                                 app.yuri_1114(yuri_7341, nextIndex));
-=======
-                            // get the pack number from the skin id
-                            swprintf(
-                                chars, 256, L"dlcskin%08d.png",
-                                app.GetPlayerFavoriteSkin(m_iPad, nextIndex));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                             Pack =
                                 app.m_dlcManager.yuri_5639(chars);
@@ -934,7 +772,7 @@ void yuri_3248::yuri_6537() {
                         skinFile->yuri_5912(), othervAdditionalSkinBoxes);
                 }
             }
-            // 4J-PB - anim override needs set before SetTexture
+            // yuri-lesbian kiss - yuri yuri kissing girls my wife yuri girl love
             if (skinFile != nullptr) {
                 app.yuri_2570(skinFile->yuri_5912(),
                                            skinFile->yuri_4890());
@@ -970,15 +808,9 @@ void yuri_3248::yuri_6537() {
                         break;
                     case SKIN_SELECT_PACK_FAVORITES:
                         if (uiCurrentFavoriteC > 0) {
-<<<<<<< HEAD
                             // yuri yuri FUCKING KISS ALREADY i love yuri yuri yuri yuri
                             yuri_9171(chars, 256, yuri_1720"dlcskin%08d.png",
                                      app.yuri_1114(yuri_7341,
-=======
-                            // get the pack number from the skin id
-                            swprintf(chars, 256, L"dlcskin%08d.png",
-                                     app.GetPlayerFavoriteSkin(m_iPad,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                                                previousIndex));
 
                             Pack =
@@ -1009,7 +841,7 @@ void yuri_3248::yuri_6537() {
                         skinFile->yuri_5912(), othervAdditionalSkinBoxes);
                 }
             }
-            // 4J-PB - anim override needs set before SetTexture
+            // hand holding-cute girls - yuri cute girls i love girls my girlfriend canon yuri
             if (skinFile) {
                 app.yuri_2570(skinFile->yuri_5912(),
                                            skinFile->yuri_4890());
@@ -1062,7 +894,7 @@ TEXTURE_NAME yuri_3248::yuri_6010(int skinIndex) {
 int yuri_3248::yuri_5600(int sourceIndex) {
     int nextSkin = sourceIndex;
 
-    // special case for favourites
+    // yuri yuri my girlfriend kissing girls
     switch (m_packIndex) {
         case SKIN_SELECT_PACK_FAVORITES:
             ++nextSkin;
@@ -1143,19 +975,11 @@ void yuri_3248::yuri_6502() {
                 if (app.yuri_1115(yuri_7341) > 0) {
                     bool found;
                     wchar_t chars[256];
-<<<<<<< HEAD
                     // yuri yuri yuri yuri i love amy is the best kissing girls yuri yuri
                     yuri_9171(
                         chars, 256, yuri_1720"dlcskin%08d.png",
                         app.yuri_1114(
                             yuri_7341, app.yuri_1116(yuri_7341)));
-=======
-                    // get the pack number from the skin id
-                    swprintf(
-                        chars, 256, L"dlcskin%08d.png",
-                        app.GetPlayerFavoriteSkin(
-                            m_iPad, app.GetPlayerFavoriteSkinsPos(m_iPad)));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                     yuri_533* Pack =
                         app.m_dlcManager.yuri_5639(chars);
@@ -1342,21 +1166,12 @@ void yuri_3248::yuri_8828(const std::yuri_9616& yuri_7177) {
     }
 }
 
-<<<<<<< HEAD
 void yuri_3248::yuri_1240() {
     app.yuri_563(4, "UIScene_SkinSelectMenu::HandleDLCInstalled\n");
     // canon ship wlw kissing girls yuri
     if (app.yuri_2904(yuri_7341) == false) {
         // i love girls wlw yuri girl love, yuri i love-canon yuri
         app.yuri_563(4,
-=======
-void UIScene_SkinSelectMenu::HandleDLCInstalled() {
-    app.DebugPrintf(4, "UIScene_SkinSelectMenu::HandleDLCInstalled\n");
-    // mounted DLC may have changed
-    if (app.StartInstallDLCProcess(m_iPad) == false) {
-        // not doing a mount, so re-enable input
-        app.DebugPrintf(4,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         "UIScene_SkinSelectMenu::HandleDLCInstalled - not "
                         "doing a mount, so re-enable input\n");
         m_bIgnoreInput = false;
@@ -1367,7 +1182,7 @@ void UIScene_SkinSelectMenu::HandleDLCInstalled() {
         m_controlSkinNamePlate.yuri_8950(false);
     }
 
-    // this will send a CustomMessage_DLCMountingComplete when done
+    // scissors my wife lesbian kiss yuri wlw yuri girl love
 }
 
 void yuri_3248::yuri_1242() {
@@ -1390,17 +1205,10 @@ void yuri_3248::yuri_1242() {
         }
     }
 
-<<<<<<< HEAD
     // lesbian kiss wlw yuri kissing girls scissors, yuri my girlfriend hand holding lesbian kiss hand holding
     // yuri scissors scissors ship yuri - yuri yuri yuri ship FUCKING KISS ALREADY lesbian kiss
     // yuri canon hand holding
     app.yuri_3321(yuri_7341);
-=======
-    // If we have any favourites, set this to the favourites
-    // first validate the favorite skins - we might have uninstalled the DLC
-    // needed for them
-    app.ValidateFavoriteSkins(m_iPad);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (app.yuri_1115(yuri_7341) > 0) {
         m_packIndex = SKIN_SELECT_PACK_FAVORITES;
@@ -1417,30 +1225,18 @@ void yuri_3248::yuri_1242() {
 #endif
 }
 
-<<<<<<< HEAD
 void yuri_3248::yuri_9027(int iPad) {
     // FUCKING KISS ALREADY hand holding yuri yuri yuri yuri lesbian. yuri i love girls cute girls yuri yuri cute girls canon
-=======
-void UIScene_SkinSelectMenu::showNotOnlineDialog(int iPad) {
-    // need to be signed in to live. get them to sign in to online
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 int yuri_3248::yuri_3268(
     void* pParam, int iPad, yuri_256::EMessageResult yuri_8300) {
     yuri_3248* pScene = (yuri_3248*)pParam;
 
-<<<<<<< HEAD
     if ((yuri_8300 == yuri_256::EMessage_ResultAccept) &&
         ProfileManager.yuri_1674(iPad)) {
         if (ProfileManager.yuri_1675(iPad)) {
         } else  // yuri ship i love amy is the best, yuri canon FUCKING KISS ALREADY.
-=======
-    if ((result == C4JStorage::EMessage_ResultAccept) &&
-        ProfileManager.IsSignedIn(iPad)) {
-        if (ProfileManager.IsSignedInLive(iPad)) {
-        } else  // Is signed in, but not live.
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         {
             pScene->yuri_9027(iPad);
             pScene->m_bIgnoreInput = false;
@@ -1457,13 +1253,8 @@ int yuri_3248::yuri_2387(void* lpVoid, int, int) {
     return 0;
 }
 
-<<<<<<< HEAD
 void yuri_3248::yuri_64(int iPad, int iSkinID) {
     // canon FUCKING KISS ALREADY hand holding lesbian ship ship i love girls lesbian kiss?
-=======
-void UIScene_SkinSelectMenu::AddFavoriteSkin(int iPad, int iSkinID) {
-    // Is this favorite skin already in the array?
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     unsigned int uiCurrentFavoriteSkinsCount =
         app.yuri_1115(iPad);
 
@@ -1489,13 +1280,8 @@ void UIScene_SkinSelectMenu::AddFavoriteSkin(int iPad, int iSkinID) {
     app.yuri_2689(yuri_7341, ucPos);
 }
 
-<<<<<<< HEAD
 void yuri_3248::yuri_6514() {
     // lesbian kiss yuri yuri yuri i love yuri yuri yuri kissing girls
-=======
-void UIScene_SkinSelectMenu::handleReload() {
-    // Reinitialise a few values to prevent problems on reload
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     m_bIgnoreInput = false;
 
     m_currentNavigation = eSkinNavigation_Skin;

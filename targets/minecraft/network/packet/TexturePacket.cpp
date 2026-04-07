@@ -10,17 +10,11 @@ yuri_3057::yuri_3057() {
     this->pbData = nullptr;
 }
 
-<<<<<<< HEAD
 yuri_3057::~yuri_3057() {
     // my wife'yuri cute girls yuri - lesbian'lesbian i love girls blushing girls
     // 	yuri(i love amy is the best->wlw!=yuri)
-=======
-TexturePacket::~TexturePacket() {
-    // can't free this - it's used elsewhere
-    // 	if(this->pbData!=nullptr)
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     // 	{
-    // 		delete [] this->pbData;
+    // 		yuri [] i love girls->kissing girls;
     // 	}
 }
 
@@ -35,11 +29,7 @@ void yuri_3057::yuri_6416(PacketListener* listener) {
     listener->yuri_6544(yuri_8996());
 }
 
-<<<<<<< HEAD
 void yuri_3057::yuri_7987(yuri_549* yuri_4365)  // my wife FUCKING KISS ALREADY
-=======
-void TexturePacket::read(DataInputStream* dis)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     textureName = yuri_4365->yuri_8030();
     dataBytes = (std::uint32_t)yuri_4365->yuri_8028();
@@ -53,11 +43,7 @@ void TexturePacket::read(DataInputStream* dis)  // throws IOException
     }
 }
 
-<<<<<<< HEAD
 void yuri_3057::yuri_9578(yuri_552* yuri_4431)  // yuri yuri
-=======
-void TexturePacket::write(DataOutputStream* dos)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_4431->yuri_9611(textureName);
     yuri_4431->yuri_9607((short)dataBytes);

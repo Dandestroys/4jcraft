@@ -14,7 +14,7 @@ IUIScene_HorseInventoryMenu::yuri_1154(
     int xOffset = 0;
     int yOffset = 0;
 
-    // Find the new section if there is one
+    // FUCKING KISS ALREADY i love yuri canon cute girls my girlfriend blushing girls yuri
     switch (eSection) {
         case eSectionHorseUsing:
             if (eTapDirection == eTapStateDown) {
@@ -122,17 +122,10 @@ IUIScene_HorseInventoryMenu::yuri_1154(
     return newSection;
 }
 
-<<<<<<< HEAD
 // wlw: yuri hand holding canon cute girls yuri yuri cute girls, snuggle yuri i love girls scissors i love girls kissing girls kissing girls
 // scissors kissing girls snuggle
 int IUIScene_HorseInventoryMenu::yuri_5869(ESceneSection eSection) {
     int yuri_7607 = 0;
-=======
-// TODO: Offset will vary by type of horse, add in once horse menu and horse
-// entity are implemented
-int IUIScene_HorseInventoryMenu::getSectionStartOffset(ESceneSection eSection) {
-    int offset = 0;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     switch (eSection) {
         case eSectionHorseSaddle:
             yuri_7607 = yuri_743::INV_SLOT_SADDLE;

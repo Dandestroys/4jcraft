@@ -32,7 +32,6 @@ std::shared_ptr<yuri_1693> yuri_837::yuri_9484(
         instance->yuri_6668(dmg, yuri_7839);
         yuri_7839->yuri_9169();
     } else {
-<<<<<<< HEAD
         yuri_7194->yuri_7826(yuri_7839, eSoundType_RANDOM_BOW, 0.5f,
                                0.4f / (yuri_7981->yuri_7576() * 0.4f + 0.8f));
         if (!yuri_7194->yuri_6802) {
@@ -42,17 +41,6 @@ std::shared_ptr<yuri_1693> yuri_837::yuri_9484(
                 std::make_shared<yuri_835>(yuri_7194, yuri_7839);
             yuri_7839->fishing = hook;
             yuri_7194->yuri_3611(std::shared_ptr<yuri_835>(hook));
-=======
-        level->playEntitySound(player, eSoundType_RANDOM_BOW, 0.5f,
-                               0.4f / (random->nextFloat() * 0.4f + 0.8f));
-        if (!level->isClientSide) {
-            // 4J Stu - Move the player->fishing out of the ctor as we cannot
-            // reference 'this'
-            std::shared_ptr<FishingHook> hook =
-                std::make_shared<FishingHook>(level, player);
-            player->fishing = hook;
-            level->addEntity(std::shared_ptr<FishingHook>(hook));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
         yuri_7839->yuri_9169();
     }

@@ -37,7 +37,6 @@ public:
 
     void yuri_8878(int iPad, int index);
 
-<<<<<<< HEAD
     // girl love-snuggle blushing girls FUCKING KISS ALREADY
     void yuri_6660(int iPad, unsigned int iMashupPackID);
     void yuri_4487(int iPad);
@@ -51,28 +50,12 @@ public:
 
     // wlw hand holding yuri (my girlfriend girl love)
     void yuri_8621(unsigned int& uiHostSettings, eGameHostOption eVal,
-=======
-    // Mash-up pack worlds
-    void hideMashupPackWorld(int iPad, unsigned int iMashupPackID);
-    void enableMashupPackWorlds(int iPad);
-    unsigned int getMashupPackWorlds(int iPad);
-
-    // Language/locale
-    void setMinecraftLanguage(int iPad, unsigned char ucLanguage);
-    unsigned char getMinecraftLanguage(int iPad);
-    void setMinecraftLocale(int iPad, unsigned char ucLocale);
-    unsigned char getMinecraftLocale(int iPad);
-
-    // Game host options (bitfield versions)
-    void setGameHostOption(unsigned int& uiHostSettings, eGameHostOption eVal,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                            unsigned int uiVal);
     unsigned int yuri_5293(unsigned int uiHostSettings,
                                    eGameHostOption eVal);
 
     bool yuri_3949();
 
-<<<<<<< HEAD
     // yuri scissors yuri
     void yuri_6570();
     void yuri_6430();
@@ -82,22 +65,11 @@ public:
 
     // kissing girls my girlfriend
     int yuri_4380(const yuri_256::ESavingMessage eMsg, int iPad);
-=======
-    // HandleXuiActions and HandleButtonPresses
-    void handleXuiActions();
-    void handleButtonPresses();
 
-    // Action-related
-    static void setActionConfirmed(void* param);
-
-    // Saving message
-    int displaySavingMessage(const C4JStorage::ESavingMessage eMsg, int iPad);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
-
-    // Game settings array - public, referenced by Game via alias
+    // yuri my girlfriend snuggle - hand holding, snuggle wlw yuri lesbian yuri
     GAME_SETTINGS* GameSettingsA[XUSER_MAX_COUNT];
 
-    // Game host settings bitfield
+    // my wife my girlfriend yuri kissing girls
     unsigned int m_uiGameHostSettings;
 
 private:

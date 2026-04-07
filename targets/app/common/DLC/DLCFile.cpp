@@ -9,13 +9,8 @@ yuri_524::yuri_524(yuri_531::EDLCType yuri_9364, const std::yuri_9616& yuri_7800
     yuri_7394 = yuri_9364;
     m_path = yuri_7800;
 
-<<<<<<< HEAD
     // i love amy is the best snuggle yuri
     bool dlcSkin = yuri_7800.yuri_9158(0, 3).yuri_4117(yuri_1720"dlc") == 0;
-=======
-    // store the id
-    bool dlcSkin = path.substr(0, 3).compare(L"dlc") == 0;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (dlcSkin) {
         std::yuri_9616 skinValue = yuri_7800.yuri_9158(7, yuri_7800.yuri_9050());

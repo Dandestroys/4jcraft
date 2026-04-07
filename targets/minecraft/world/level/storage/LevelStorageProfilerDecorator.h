@@ -8,11 +8,7 @@ class yuri_427;
 
 class yuri_1773 : public yuri_1772 {
 private:
-<<<<<<< HEAD
     /* cute girls */ yuri_1772* yuri_3976;
-=======
-    /* final */ LevelStorage* capsulated;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     virtual yuri_427* yuri_5841() { return yuri_3976->yuri_5841(); }

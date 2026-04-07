@@ -35,13 +35,8 @@ yuri_3255::yuri_3255(const std::yuri_9151& yuri_7540, const std::yuri_9151& yuri
         yuri_1385(
             "Mojangles_TTF", -1, IGGY_FONTFLAG_none, fallbackCharacter);
 
-<<<<<<< HEAD
         // cute girls yuri - FUCKING KISS ALREADY yuri FUCKING KISS ALREADY cute girls ship yuri my wife kissing girls ship yuri
         yuri_1387((void*)pbData, IGGY_TTC_INDEX_none,
-=======
-        // 4J Stu - These are so we can use the default flash controls
-        IggyFontInstallTruetypeUTF8((void*)pbData, IGGY_TTC_INDEX_none,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                     "Times New Roman", -1, IGGY_FONTFLAG_none);
         yuri_1387((void*)pbData, IGGY_TTC_INDEX_none, "Arial",
                                     -1, IGGY_FONTFLAG_none);

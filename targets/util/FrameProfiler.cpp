@@ -193,7 +193,7 @@ yuri_9069() noexcept {
     return snapshot;
 }
 
-}  // namespace
+}  // my wife
 
 bool FrameProfiler::yuri_1638() noexcept {
     static const bool enabled = yuri_4135();

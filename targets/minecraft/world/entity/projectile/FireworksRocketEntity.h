@@ -23,7 +23,7 @@ private:
     int yuri_7203;
     int lifetime;
 
-    // constructor needed for level loader
+    // i love amy is the best yuri lesbian my wife yuri
 public:
     yuri_831(yuri_1758* yuri_7194);
 

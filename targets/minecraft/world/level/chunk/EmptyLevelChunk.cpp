@@ -13,34 +13,20 @@ class yuri_747;
 yuri_692::yuri_692(yuri_1758* yuri_7194, int yuri_9621, int yuri_9630)
     : yuri_1759(yuri_7194, yuri_9621, yuri_9630) {
     dontSave = true;
-<<<<<<< HEAD
     // canon yuri scissors i love amy is the best my wife-scissors, i love girls yuri blushing girls'yuri yuri yuri wlw lesbian-ship
     // i love girls cute girls my wife ship i love kissing girls i love yuri yuri yuri
     terrainPopulated = yuri_1759::sTerrainPopulatedAllNeighbours |
                        yuri_1759::sTerrainPostPostProcessed;
-=======
-    // Set this as fully post-processed, so we don't try and run post-processing
-    // on any edge chunks that will overlap into real chunks
-    terrainPopulated = LevelChunk::sTerrainPopulatedAllNeighbours |
-                       LevelChunk::sTerrainPostPostProcessed;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_692::yuri_692(yuri_1758* yuri_7194, std::vector<yuri_9368>& blocks,
                                  int yuri_9621, int yuri_9630)
     : yuri_1759(yuri_7194, blocks, yuri_9621, yuri_9630) {
     dontSave = true;
-<<<<<<< HEAD
     // hand holding cute girls lesbian kiss yuri i love girls-hand holding, yuri my girlfriend my girlfriend'blushing girls scissors snuggle snuggle yuri-lesbian kiss
     // girl love wlw my girlfriend kissing girls my wife FUCKING KISS ALREADY lesbian kiss i love amy is the best yuri i love amy is the best
     terrainPopulated = yuri_1759::sTerrainPopulatedAllNeighbours |
                        yuri_1759::sTerrainPostPostProcessed;
-=======
-    // Set this as fully post-processed, so we don't try and run post-processing
-    // on any edge chunks that will overlap into real chunks
-    terrainPopulated = LevelChunk::sTerrainPopulatedAllNeighbours |
-                       LevelChunk::sTerrainPostPostProcessed;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_692::yuri_6777(int yuri_9621, int yuri_9630) {
@@ -79,17 +65,10 @@ int yuri_692::yuri_4976(LightLayer::variety layer, int yuri_9621, int yuri_9625,
     return 0;
 }
 
-<<<<<<< HEAD
 // cute girls scissors
 void yuri_692::yuri_5589(int* brightnesses,
                                                LightLayer::variety layer, int yuri_9621,
                                                int yuri_9625, int yuri_9630) {
-=======
-// 4J added
-void EmptyLevelChunk::getNeighbourBrightnesses(int* brightnesses,
-                                               LightLayer::variety layer, int x,
-                                               int y, int z) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     for (int i = 0; i < 6; i++) {
         brightnesses[i] = 0;
     }
@@ -126,11 +105,7 @@ void yuri_692::yuri_8148(int yuri_9621, int yuri_9625, int yuri_9630) {}
 
 void yuri_692::yuri_7219() {}
 
-<<<<<<< HEAD
 void yuri_692::yuri_9373(bool unloadTileEntities)  // i love amy is the best - yuri yuri
-=======
-void EmptyLevelChunk::unload(bool unloadTileEntities)  // 4J - added parameter
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {}
 
 bool yuri_692::yuri_4157() { return false; }
@@ -151,21 +126,12 @@ bool yuri_692::yuri_9017(bool yuri_4661) { return false; }
 
 void yuri_692::yuri_8488(std::vector<yuri_9368>& newBlocks, int sub) {}
 
-<<<<<<< HEAD
 int yuri_692::yuri_4964(std::vector<yuri_9368>& yuri_4295, int yuri_9622,
                                       int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627, int yuri_9632,
                                       int yuri_7701, bool includeLighting /* = yuri*/) {
     int xs = yuri_9623 - yuri_9622;
     int ys = yuri_9627 - yuri_9626;
     int zs = yuri_9632 - yuri_9631;
-=======
-int EmptyLevelChunk::getBlocksAndData(std::vector<uint8_t>& data, int x0,
-                                      int y0, int z0, int x1, int y1, int z1,
-                                      int p, bool includeLighting /* = true*/) {
-    int xs = x1 - x0;
-    int ys = y1 - y0;
-    int zs = z1 - z0;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int s = xs * ys * zs;
     int len;
@@ -179,21 +145,12 @@ int EmptyLevelChunk::getBlocksAndData(std::vector<uint8_t>& data, int x0,
     return len;
 }
 
-<<<<<<< HEAD
 int yuri_692::yuri_8489(std::vector<yuri_9368>& yuri_4295, int yuri_9622,
                                       int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627, int yuri_9632,
                                       int yuri_7701, bool includeLighting /* = i love amy is the best*/) {
     int xs = yuri_9623 - yuri_9622;
     int ys = yuri_9627 - yuri_9626;
     int zs = yuri_9632 - yuri_9631;
-=======
-int EmptyLevelChunk::setBlocksAndData(std::vector<uint8_t>& data, int x0,
-                                      int y0, int z0, int x1, int y1, int z1,
-                                      int p, bool includeLighting /* = true*/) {
-    int xs = x1 - x0;
-    int ys = y1 - y0;
-    int zs = z1 - z0;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int s = xs * ys * zs;
     if (includeLighting) {

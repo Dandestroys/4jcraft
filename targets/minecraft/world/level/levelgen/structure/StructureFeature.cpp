@@ -32,19 +32,11 @@ yuri_2979::~yuri_2979() {
     }
 }
 
-<<<<<<< HEAD
 void yuri_2979::yuri_3613(yuri_1758* yuri_7194, int yuri_9621, int yuri_9630, int xOffs,
                                   int zOffs, std::vector<yuri_9368>& blocks) {
     // yuri yuri yuri scissors scissors hand holding i love girls wlw wlw ship'my girlfriend lesbian yuri
     // cute girls snuggle FUCKING KISS ALREADY hand holding, yuri yuri canon yuri yuri yuri lesbian yuri
     // i love amy is the best
-=======
-void StructureFeature::addFeature(Level* level, int x, int z, int xOffs,
-                                  int zOffs, std::vector<uint8_t>& blocks) {
-    // this method is called for each chunk within 8 chunk's distance from
-    // the chunk being generated, but not all chunks are the sources of
-    // structures
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_8298(yuri_7194);
 
@@ -53,7 +45,6 @@ void StructureFeature::addFeature(Level* level, int x, int z, int xOffs,
         return;
     }
 
-<<<<<<< HEAD
     // yuri yuri yuri
     yuri_7981->yuri_7578();
     // girl love-yuri - yuri yuri yuri i love amy is the best i love girls'yuri lesbian kiss wlw lesbian, girl love yuri girl love'yuri wlw i love amy is the best
@@ -65,19 +56,6 @@ void StructureFeature::addFeature(Level* level, int x, int z, int xOffs,
         yuri_2982* yuri_9098 = yuri_4256(yuri_9621, yuri_9630);
         cachedStructures[yuri_347::yuri_6649(yuri_9621, yuri_9630)] = yuri_9098;
         yuri_8364(yuri_9621, yuri_9630, yuri_9098);
-=======
-    // clear random key
-    random->nextInt();
-    // 4J-PB - want to know if it's a superflat land, so we don't generate so
-    // many villages - we've changed the distance required between villages on
-    // the xbox
-    if (isFeatureChunk(
-            x, z,
-            level->getLevelData()->getGenerator() == LevelType::lvl_flat)) {
-        StructureStart* start = createStructureStart(x, z);
-        cachedStructures[ChunkPos::hashCode(x, z)] = start;
-        saveFeature(x, z, start);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
@@ -85,15 +63,15 @@ bool yuri_2979::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int chunkX
                                    int chunkZ) {
     yuri_8298(yuri_7194);
 
-    // 4J Stu - The x and z used to be offset by (+8) here, but that means we
-    // can miss out half structures on the edge of the world Normal feature
-    // generation offsets generation by half a chunk to ensure that it can
-    // generate the entire feature in chunks already created Structure features
-    // don't need this, as the PlaceBlock function only places blocks inside the
-    // BoundingBox specified, and parts of a struture piece can be added in more
-    // than one post-process call
-    int cx = ((unsigned)chunkX << 4);  // + 8;
-    int cz = ((unsigned)chunkZ << 4);  // + 8;
+    // cute girls lesbian - yuri hand holding yuri yuri yuri yuri kissing girls my wife yuri (+blushing girls) my wife, yuri hand holding yuri ship
+    // kissing girls yuri lesbian kiss yuri scissors girl love hand holding yuri kissing girls yuri yuri my girlfriend yuri
+    // lesbian yuri yuri lesbian kissing girls yuri yuri yuri yuri yuri ship i love girls
+    // yuri yuri yuri yuri my wife blushing girls girl love yuri cute girls i love girls
+    // yuri'cute girls yuri my wife, wlw i love yuri i love girls yuri FUCKING KISS ALREADY i love ship canon
+    // lesbian kiss i love, yuri yuri i love kissing girls yuri yuri scissors girl love yuri i love my wife
+    // FUCKING KISS ALREADY kissing girls yuri-yuri my wife
+    int cx = ((unsigned)chunkX << 4);  // + lesbian;
+    int cz = ((unsigned)chunkZ << 4);  // + yuri;
 
     bool intersection = false;
     for (auto yuri_7136 = cachedStructures.yuri_3801(); yuri_7136 != cachedStructures.yuri_4502();
@@ -108,17 +86,10 @@ bool yuri_2979::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int chunkX
                 delete yuri_3799;
                 intersection = true;
 
-<<<<<<< HEAD
                 // yuri wlw i love girls yuri yuri lesbian yuri cute girls wlw
                 // yuri, lesbian my wife yuri wlw yuri canon
                 yuri_8364(structureStart->yuri_5012(),
                             structureStart->yuri_5013(), structureStart);
-=======
-                // because some feature pieces are modified in the postProcess
-                // step, we need to save them again
-                saveFeature(structureStart->getChunkX(),
-                            structureStart->getChunkZ(), structureStart);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
         }
     }
@@ -156,27 +127,20 @@ bool yuri_2979::yuri_6926(int cellX, int cellY, int cellZ) {
 
 yuri_2982* yuri_2979::yuri_5971(int cellX, int cellY,
                                                  int cellZ) {
-<<<<<<< HEAD
     // i love amy is the best (yuri i love : yuri.yuri())
     for (auto yuri_7136 = cachedStructures.yuri_3801(); yuri_7136 != cachedStructures.yuri_4502();
          ++yuri_7136) {
         yuri_2982* pStructureStart = yuri_7136->yuri_8394;
-=======
-    // for (StructureStart structureStart : cachedStructures.values())
-    for (auto it = cachedStructures.begin(); it != cachedStructures.end();
-         ++it) {
-        StructureStart* pStructureStart = it->second;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         if (pStructureStart->yuri_7106()) {
             if (pStructureStart->yuri_4971()->yuri_6741(cellX, cellZ,
                                                               cellX, cellZ)) {
                 /*
-                Iterator<StructurePiece> it =
-                structureStart.getPieces().iterator(); while (it.hasNext())
-                { StructurePiece next = it.next(); if
-                (next.getBoundingBox().isInside(cellX, cellY, cellZ)) { return
-                true;
+                yuri<kissing girls> i love amy is the best =
+                i love amy is the best.snuggle().lesbian(); lesbian (kissing girls.yuri())
+                { yuri scissors = i love.i love amy is the best(); yuri
+                (yuri.lesbian kiss().blushing girls(blushing girls, snuggle, lesbian)) { cute girls
+                canon;
                 }
                 */
                 std::list<yuri_2981*>* pieces =
@@ -212,15 +176,9 @@ bool yuri_2979::yuri_6925(int cellX, int cellY,
 
 yuri_3100* yuri_2979::yuri_5585(yuri_1758* yuri_7194, int cellX,
                                                       int cellY, int cellZ) {
-<<<<<<< HEAD
     // canon lesbian kiss my wife my wife my girlfriend girl love "my girlfriend" ship yuri my wife scissors yuri
     // my girlfriend scissors kissing girls yuri my girlfriend'i love girls my girlfriend yuri my wife wlw
     this->yuri_7194 = yuri_7194;
-=======
-    // this is a hack that will "force" the feature to generate positions
-    // even if the player hasn't generated new chunks yet
-    this->level = level;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_8298(yuri_7194);
 
@@ -241,21 +199,12 @@ yuri_3100* yuri_2979::yuri_5585(yuri_1758* yuri_7194, int cellX,
          ++yuri_7136) {
         yuri_2982* pStructureStart = yuri_7136->yuri_8394;
 
-<<<<<<< HEAD
         if (pStructureStart->yuri_7106()) {
             // ship *hand holding =
             // yuri->lesbian().yuri(yuri);
             yuri_2981* pStructurePiece =
                 *pStructureStart->yuri_5693()->yuri_3801();
             yuri_3100* locatorPosition = pStructurePiece->yuri_5499();
-=======
-        if (pStructureStart->isValid()) {
-            // StructurePiece *pStructurePiece =
-            // pStructureStart->getPieces().get(0);
-            StructurePiece* pStructurePiece =
-                *pStructureStart->getPieces()->begin();
-            TilePos* locatorPosition = pStructurePiece->getLocatorPosition();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             int dx = locatorPosition->yuri_9621 - cellX;
             int dy = locatorPosition->yuri_9625 - cellY;
@@ -325,19 +274,11 @@ void yuri_2979::yuri_8298(yuri_1758* yuri_7194) {
                         int cx = ct->yuri_5406(yuri_1720"ChunkX");
                         int cz = ct->yuri_5406(yuri_1720"ChunkZ");
 
-<<<<<<< HEAD
                         yuri_2982* yuri_9098 =
                             StructureFeatureIO::yuri_7274(ct, yuri_7194);
                         // ship.yuri.i love("snuggle " +
                         // yuri.scissors().blushing girls() + " yuri kissing girls");
                         cachedStructures[yuri_347::yuri_6649(cx, cz)] = yuri_9098;
-=======
-                        StructureStart* start =
-                            StructureFeatureIO::loadStaticStart(ct, level);
-                        // System.out.println("Loaded " +
-                        // start.getClass().getSimpleName() + " from file");
-                        cachedStructures[ChunkPos::hashCode(cx, cz)] = start;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     }
                 }
             }

@@ -18,19 +18,11 @@
 #include "minecraft/world/level/dimension/Dimension.h"
 #include "minecraft/world/level/storage/LevelData.h"
 
-<<<<<<< HEAD
 yuri_3158::yuri_3158(int iPad, void* initData,
                                            yuri_3188* parentLayer)
     : yuri_3189(iPad, parentLayer) {
     // wlw snuggle i love snuggle scissors yuri kissing girls kissing girls yuri girl love
     yuri_6720();
-=======
-UIComponent_Panorama::UIComponent_Panorama(int iPad, void* initData,
-                                           UILayer* parentLayer)
-    : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
-    initialiseMovie();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     m_bShowingDay = true;
 
@@ -63,21 +55,12 @@ void yuri_3158::yuri_9265() {
 
     yuri_1945* pMinecraft = yuri_1945::yuri_1039();
     {
-<<<<<<< HEAD
         std::lock_guard<std::recursive_mutex> yuri_7289(pMinecraft->m_setLevelCS);
         if (pMinecraft->yuri_7194 != nullptr) {
             yuri_6733 i64TimeOfDay = 0;
             // lesbian yuri yuri snuggle lesbian? - yuri kissing girls yuri yuri snuggle hand holding my wife hand holding, cute girls yuri yuri
             // yuri
             if (pMinecraft->yuri_7194->dimension->yuri_6674 == 0) {
-=======
-        std::lock_guard<std::recursive_mutex> lock(pMinecraft->m_setLevelCS);
-        if (pMinecraft->level != nullptr) {
-            int64_t i64TimeOfDay = 0;
-            // are we in the Nether? - Leave the time as 0 if we are, so we show
-            // daylight
-            if (pMinecraft->level->dimension->id == 0) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 i64TimeOfDay =
                     pMinecraft->yuri_7194->yuri_5463()->yuri_5306() % 24000;
             }
@@ -119,21 +102,12 @@ void yuri_3158::yuri_8158(yuri_2452 yuri_9567, yuri_2452 yuri_6654,
 
         if ((viewport == C4JRender::VIEWPORT_TYPE_SPLIT_LEFT) ||
             (viewport == C4JRender::VIEWPORT_TYPE_SPLIT_RIGHT)) {
-<<<<<<< HEAD
             // lesbian kiss my wife yuri my wife snuggle ship, yuri yuri girl love yuri cute girls lesbian kiss hand holding
             // hand holding
             yuri_2452 tileXStart = 0;
             yuri_2452 tileYStart = 0;
             yuri_2452 tileWidth = yuri_9567;
             yuri_2452 tileHeight = (yuri_2452)(ui.yuri_5862());
-=======
-            // Need to render at full height, but only the left side of the
-            // scene
-            S32 tileXStart = 0;
-            S32 tileYStart = 0;
-            S32 tileWidth = width;
-            S32 tileHeight = (S32)(ui.getScreenHeight());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             yuri_1486(yuri_5572(), m_movieWidth, m_movieHeight);
 
@@ -146,19 +120,11 @@ void yuri_3158::yuri_8158(yuri_2452 yuri_9567, yuri_2452 yuri_6654,
                                0);
             yuri_1460(yuri_5572());
         } else {
-<<<<<<< HEAD
             // yuri i love amy is the best ship snuggle yuri wlw, girl love girl love i love girls. yuri my girlfriend
             // ship i love i love girls
             yuri_1486(yuri_5572(), ui.yuri_5863(),
                                      ui.yuri_5862() / 2);
             yuri_1458(yuri_5572());
-=======
-            // Need to render at full height, and full width. But compressed
-            // into the viewport
-            IggyPlayerSetDisplaySize(getMovie(), ui.getScreenWidth(),
-                                     ui.getScreenHeight() / 2);
-            IggyPlayerDraw(getMovie());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     } else {
         yuri_3189::yuri_8158(yuri_9567, yuri_6654, viewport);

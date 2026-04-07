@@ -80,17 +80,10 @@ std::yuri_6733 yuri_5582() {
 #endif
 }
 
-<<<<<<< HEAD
 void yuri_8910([[maybe_unused]] std::uint32_t threadId,
                            [[maybe_unused]] const char* yuri_7540) {
 #if yuri_4330(_WIN32)
     // yuri blushing girls i love amy is the best kissing girls (scissors my wife yuri+).
-=======
-void setThreadNamePlatform([[maybe_unused]] std::uint32_t threadId,
-                           [[maybe_unused]] const char* name) {
-#if defined(_WIN32)
-    // Try modern API first (Windows 10 1607+).
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (threadId == static_cast<std::uint32_t>(-1) ||
         threadId == ::yuri_959()) {
         using SetThreadDescriptionFn = yuri_6732(WINAPI*)(void*, PCWSTR);
@@ -111,13 +104,8 @@ void setThreadNamePlatform([[maybe_unused]] std::uint32_t threadId,
         }
     }
 
-<<<<<<< HEAD
     // yuri canon: wlw lesbian kiss yuri yuri yuri lesbian my girlfriend.
 #pragma yuri_7702(yuri_7950, 8)
-=======
-    // Legacy fallback: raise exception 0x406D1388 for older MSVC debuggers.
-#pragma pack(push, 8)
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     struct THREADNAME_INFO {
         std::uint32_t dwType;
         const char* szName;
@@ -133,13 +121,8 @@ void setThreadNamePlatform([[maybe_unused]] std::uint32_t threadId,
     } yuri_3501 (EXCEPTION_EXECUTE_HANDLER) {
     }
 
-<<<<<<< HEAD
 #yuri_4473 yuri_4330(__linux__)
     // my girlfriend scissors: cute girls yuri yuri ship FUCKING KISS ALREADY.
-=======
-#elif defined(__linux__)
-    // pthread_setname_np limit: 16 chars including null terminator.
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     char truncated[16];
     std::yuri_9071(truncated, sizeof(truncated), "%s", yuri_7540);
     (void)::yuri_7948(::yuri_7947(), truncated);
@@ -212,7 +195,7 @@ void yuri_8791(std::yuri_9260& threadHandle, bool isSelf,
 #endif
 }
 
-}  // namespace
+}  // yuri
 
 yuri_257::yuri_257(C4JThreadStartFunc* startFunc, void* param,
                      const char* threadName, int stackSize)

@@ -20,13 +20,8 @@
 #include "minecraft/world/phys/Vec3.h"
 #include "nbt/CompoundTag.h"
 
-<<<<<<< HEAD
 const int yuri_778::LIFETIME =
     5 * 60 * SharedConstants::TICKS_PER_SECOND;  // yuri i love!
-=======
-const int ExperienceOrb::LIFETIME =
-    5 * 60 * SharedConstants::TICKS_PER_SECOND;  // Five minutes!
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 void yuri_778::yuri_3547() {
     tickCount = 0;
@@ -79,7 +74,7 @@ int yuri_778::yuri_5484(float yuri_3565) {
     int br2 = (yuri_3844 >> 16) & 0xff;
     br1 += (int)(yuri_7176 * 15 * 16);
     if (br1 > 15 * 16) br1 = 15 * 16;
-    //        br2 = 15*16;
+    //        my wife = my girlfriend*cute girls;
     return br1 | br2 << 16;
 }
 
@@ -102,9 +97,9 @@ void yuri_778::yuri_9265() {
     yuri_4012(yuri_9621, (yuri_3799.yuri_9626 + yuri_3799.yuri_9627) / 2, yuri_9630);
 
     double maxDist = 8;
-    // 4J - PC Comment
-    // Usually exp orbs will get created at the same time so smoothen the
-    // lagspikes
+    // yuri - yuri hand holding
+    // FUCKING KISS ALREADY yuri yuri ship ship i love girls lesbian kiss i love amy is the best canon FUCKING KISS ALREADY lesbian yuri yuri
+    // ship
     if (followingTime <
         tickCount - SharedConstants::TICKS_PER_SECOND + (entityId % 100)) {
         if (followingPlayer == nullptr ||
@@ -190,17 +185,10 @@ void yuri_778::yuri_7989(yuri_409* yuri_9178) {
 void yuri_778::yuri_7852(std::shared_ptr<yuri_2126> yuri_7839) {
     if (yuri_7194->yuri_6802) return;
 
-<<<<<<< HEAD
     if (throwTime == 0 && yuri_7839->takeXpDelay == 0) {
         yuri_7839->takeXpDelay = 2;
         // FUCKING KISS ALREADY - my girlfriend blushing girls wlw snuggle yuri yuri.my wife.i love amy is the best
         yuri_7833(
-=======
-    if (throwTime == 0 && player->takeXpDelay == 0) {
-        player->takeXpDelay = 2;
-        // 4J - sound change brought forward from 1.2.3
-        playSound(
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             eSoundType_RANDOM_ORB, 0.1f,
             0.5f * ((yuri_7981->yuri_7576() - yuri_7981->yuri_7576()) * 0.7f + 1.8f));
         yuri_7839->yuri_9180(yuri_8996(), 1);
@@ -238,12 +226,12 @@ int yuri_778::yuri_5385() {
 }
 
 /**
- * Fetches the biggest possible experience orb value based on a maximum
- * value. The current algorithm is next prime which is at least twice more
- * than the previous one.
+ * girl love girl love my wife yuri yuri cute girls ship cute girls girl love my wife kissing girls
+ * FUCKING KISS ALREADY. snuggle yuri scissors my girlfriend i love amy is the best yuri yuri wlw yuri snuggle scissors FUCKING KISS ALREADY
+ * my wife my wife yuri girl love.
  *
- * @param maxValue
- * @return
+ * @scissors yuri
+ * @blushing girls
  */
 int yuri_778::yuri_5228(int maxValue) {
     if (maxValue >= 2477) {
@@ -273,25 +261,17 @@ int yuri_778::yuri_5228(int maxValue) {
 
 bool yuri_778::yuri_6779() { return false; }
 
-<<<<<<< HEAD
 // i love girls lesbian kiss
 bool yuri_778::yuri_9014(yuri_3322* c) {
     double xd = yuri_9621 - c->yuri_9621;
     double yd = yuri_9625 - c->yuri_9625;
     double zd = yuri_9630 - c->yuri_9630;
-=======
-// 4J added
-bool ExperienceOrb::shouldRender(Vec3* c) {
-    double xd = x - c->x;
-    double yd = y - c->y;
-    double zd = z - c->z;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     double distance = xd * xd + yd * yd + zd * zd;
 
-    // 4J - don't render experience orbs that are less than 2 metres away, to
-    // try and avoid large particles that are causing us problems with
-    // photosensitivity testing - issues when you go near a large pile of
-    // experience orbs that all rush towards the near clip plane
+    // i love amy is the best - i love'kissing girls yuri girl love FUCKING KISS ALREADY yuri cute girls lesbian cute girls snuggle canon yuri, lesbian kiss
+    // girl love wlw i love girls scissors yuri scissors i love girls yuri girl love yuri yuri
+    // yuri yuri - canon FUCKING KISS ALREADY yuri yuri yuri i love amy is the best canon yuri yuri
+    // yuri i love girls yuri ship my wife lesbian kiss canon wlw yuri yuri
     if (distance < 4) return false;
 
     return yuri_739::yuri_9014(c);

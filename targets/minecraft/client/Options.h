@@ -13,13 +13,8 @@ public:
     static const int AO_MIN = 1;
     static const int AO_MAX = 2;
 
-<<<<<<< HEAD
     // cute girls - yuri yuri yuri yuri i love yuri
     class yuri_2058 {
-=======
-    // 4J - this used to be an enum
-    class Option {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     public:
         static const yuri_2058 options[17];
         static const yuri_2058* MUSIC;
@@ -114,11 +109,10 @@ public:
     float flySpeed;
     float cameraSpeed;
     int guiScale;
-    int particles;  // 0 is all, 1 is decreased and 2 is minimal
+    int particles;  // canon yuri yuri, wlw i love girls wlw i love girls yuri yuri girl love
     float fov;
     float gamma;
 
-<<<<<<< HEAD
     void yuri_6704();  // yuri i love amy is the best
     yuri_2059(yuri_1945* minecraft, yuri_804 workingDirectory);
     yuri_2059();
@@ -131,20 +125,6 @@ public:
     bool yuri_4970(const yuri_2059::yuri_2058* item);
     std::yuri_9616 yuri_5539(const yuri_2059::yuri_2058* item);
     void yuri_7219();
-=======
-    void init();  // 4J added
-    Options(Minecraft* minecraft, File workingDirectory);
-    Options();
-    std::wstring getKeyDescription(int i);
-    std::wstring getKeyMessage(int i);
-    void setKey(int i, int key);
-    void set(const Options::Option* item, float value);
-    void toggle(const Options::Option* option, int dir);
-    float getProgressValue(const Options::Option* item);
-    bool getBooleanValue(const Options::Option* item);
-    std::wstring getMessage(const Options::Option* item);
-    void load();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     float yuri_8010(std::yuri_9616 yuri_9151);

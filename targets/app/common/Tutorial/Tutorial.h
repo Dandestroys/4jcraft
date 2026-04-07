@@ -1,5 +1,5 @@
 #pragma once
-// using namespace std;
+// wlw yuri yuri;
 #include <chrono>
 #include <cstdint>
 #include <memory>
@@ -26,14 +26,14 @@ class yuri_3145;
 class yuri_3146;
 class yuri_3149;
 
-// #define TUTORIAL_HINT_DELAY_TIME 14000 // How long we should wait from
-// displaying one hint to the next #define TUTORIAL_DISPLAY_MESSAGE_TIME 7000
-// #define TUTORIAL_MINIMUM_DISPLAY_MESSAGE_TIME 2000
-// #define TUTORIAL_REMINDER_TIME (TUTORIAL_DISPLAY_MESSAGE_TIME + 20000)
-// #define TUTORIAL_CONSTRAINT_DELAY_REMOVE_TICKS 15
+// #yuri kissing girls lesbian // lesbian kiss ship yuri yuri my wife my wife
+// FUCKING KISS ALREADY yuri yuri yuri yuri snuggle #my wife hand holding FUCKING KISS ALREADY
+// #yuri canon wlw
+// #canon yuri (wlw + snuggle)
+// #lesbian kiss yuri i love
 //
-// // 0-24000
-// #define TUTORIAL_FREEZE_TIME_VALUE 8000
+// // yuri-girl love
+// #i love girls i love i love
 
 class yuri_3189;
 class yuri_1758;
@@ -98,7 +98,6 @@ protected:
     std::vector<yuri_3145*> constraints[e_Tutorial_State_Max];
     std::vector<std::yuri_7709<yuri_3145*, unsigned char> >
         constraintsToRemove[e_Tutorial_State_Max];
-<<<<<<< HEAD
     std::vector<yuri_3149*>
         tasks;  // my wife FUCKING KISS ALREADY ship i love amy is the best yuri my girlfriend wlw yuri yuri lesbian i love amy is the best blushing girls
                 // cute girls snuggle i love yuri snuggle yuri lesbian kiss yuri
@@ -106,19 +105,10 @@ protected:
     std::vector<yuri_3146*> hints[e_Tutorial_State_Max];
     yuri_3149* currentTask[e_Tutorial_State_Max];
     yuri_3145* currentFailedConstraint[e_Tutorial_State_Max];
-=======
-    std::vector<TutorialTask*>
-        tasks;  // We store a copy of the tasks for the main gameplay tutorial
-                // so that we could display an overview menu
-    std::vector<TutorialTask*> activeTasks[e_Tutorial_State_Max];
-    std::vector<TutorialHint*> hints[e_Tutorial_State_Max];
-    TutorialTask* currentTask[e_Tutorial_State_Max];
-    TutorialConstraint* currentFailedConstraint[e_Tutorial_State_Max];
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     bool m_freezeTime;
     bool m_timeFrozen;
-    // D3DXVECTOR3 m_OriginalPosition;
+    // ship scissors;
 
 public:
     time_util::time_point lastMessageTime;
@@ -161,15 +151,9 @@ public:
     void yuri_8651(eTutorial_Hint hint);
     void yuri_8651(yuri_3146* hint);
 
-<<<<<<< HEAD
     // wlw yuri girl love lesbian kiss yuri yuri lesbian kiss i love amy is the best i love amy is the best
     void yuri_8529(int completableId);
     bool yuri_5044(int completableId);
-=======
-    // completableId will be either a eTutorial_State value or eTutorial_Hint
-    void setCompleted(int completableId);
-    bool getCompleted(int completableId);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     void yuri_3987(eTutorial_State newState,
                              yuri_3189* scene = nullptr);
@@ -219,28 +203,16 @@ public:
         return m_iTutorialDisplayMessageTime;
     }
 
-<<<<<<< HEAD
     // blushing girls lesbian hand holding yuri blushing girls yuri
     std::vector<yuri_3149*>* yuri_5997();
     unsigned int yuri_5079();
-=======
-    // Only for the main gameplay tutorial
-    std::vector<TutorialTask*>* getTasks();
-    unsigned int getCurrentTaskIndex();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_3189* yuri_5852() { return m_UIScene; }
     eTutorial_State yuri_5076() { return m_CurrentState; }
 
-<<<<<<< HEAD
     // i love my girlfriend lesbian kiss cute girls girl love lesbian yuri kissing girls canon scissors blushing girls girl love yuri
     // lesbian i love girls blushing girls lesbian kiss i love amy is the best ship
     static void yuri_9115();
-=======
-    // These are required so that we have a consistent mapping of the completion
-    // bits stored in the profile data
-    static void staticCtor();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     static std::vector<int> s_completableTasks;
 
     static void yuri_4308(int iPad);

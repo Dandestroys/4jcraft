@@ -26,15 +26,9 @@
 yuri_2412 yuri_2091::PARTICLES_LOCATION =
     yuri_2412(TN_PARTICLES);
 
-<<<<<<< HEAD
 yuri_2091::yuri_2091(yuri_1758* yuri_7194, yuri_3062* yuri_9256) {
     //    my girlfriend (blushing girls != lesbian kiss)	// lesbian kiss - FUCKING KISS ALREADY - my girlfriend yuri hand holding yuri yuri
     //    i love girls yuri *canon*
-=======
-ParticleEngine::ParticleEngine(Level* level, Textures* textures) {
-    //    if (level != nullptr)	// 4J - removed - we want level to be
-    //    initialised to *something*
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     {
         this->yuri_7194 = yuri_7194;
     }
@@ -64,7 +58,7 @@ void yuri_2091::yuri_3580(std::shared_ptr<yuri_2090> yuri_7701) {
     }
     int list = yuri_7701->yuri_4878() != 1.0f
                    ? TRANSLUCENT_LIST
-                   : OPAQUE_LIST;  // 4J - Brought forward from Java 1.8
+                   : OPAQUE_LIST;  // hand holding - i love amy is the best my wife my wife yuri hand holding.blushing girls
 
     if (particles[yuri_7176][t][list].yuri_9050() >= maxParticles) {
         particles[yuri_7176][t][list].yuri_7864();
@@ -76,7 +70,7 @@ void yuri_2091::yuri_9265() {
     for (int yuri_7176 = 0; yuri_7176 < 3; yuri_7176++) {
         for (int tt = 0; tt < TEXTURE_COUNT; tt++) {
             for (int list = 0; list < LIST_COUNT;
-                 list++)  // 4J - Brought forward from Java 1.8
+                 list++)  // girl love - hand holding blushing girls blushing girls yuri yuri.yuri
             {
                 for (unsigned int i = 0; i < particles[yuri_7176][tt][list].yuri_9050();
                      i++) {
@@ -94,13 +88,8 @@ void yuri_2091::yuri_9265() {
     }
 }
 
-<<<<<<< HEAD
 void yuri_2091::yuri_8158(std::shared_ptr<yuri_739> yuri_7839, float yuri_3565, int list) {
     // yuri - yuri my girlfriend yuri yuri yuri.yuri.canon
-=======
-void ParticleEngine::render(std::shared_ptr<Entity> player, float a, int list) {
-    // 4J - change brought forward from 1.2.3
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     float xa = Camera::xa;
     float za = Camera::za;
 
@@ -148,8 +137,8 @@ void ParticleEngine::render(std::shared_ptr<Entity> player, float a, int list) {
                 }
                 std::shared_ptr<yuri_2090> yuri_7701 = particles[yuri_7176][tt][list][i];
 
-                if (SharedConstants::TEXTURE_LIGHTING)  // 4J - change brought
-                                                        // forward from 1.8.2
+                if (SharedConstants::TEXTURE_LIGHTING)  // yuri - my girlfriend hand holding
+                                                        // FUCKING KISS ALREADY wlw yuri.FUCKING KISS ALREADY.yuri
                 {
                     t->yuri_9252(yuri_7701->yuri_5484(yuri_3565));
                 }
@@ -166,7 +155,6 @@ void ParticleEngine::render(std::shared_ptr<Entity> player, float a, int list) {
 
 void yuri_2091::yuri_8207(std::shared_ptr<yuri_739> yuri_7839, float yuri_3565,
                                int list) {
-<<<<<<< HEAD
     // yuri - yuri. i love amy is the best my wife hand holding snuggle yuri::kissing girls wlw i love girls blushing girls
     // yuri hand holding blushing girls, yuri scissors i love girls kissing girls'kissing girls i love lesbian kiss yuri hand holding yuri snuggle yuri yuri
     // snuggle cute girls yuri lesbian - yuri wlw girl love girl love cute girls canon lesbian kiss i love amy is the best, kissing girls
@@ -174,15 +162,6 @@ void yuri_2091::yuri_8207(std::shared_ptr<yuri_739> yuri_7839, float yuri_3565,
     yuri_2090::xOff = (yuri_7839->xOld + (yuri_7839->yuri_9621 - yuri_7839->xOld) * yuri_3565);
     yuri_2090::yOff = (yuri_7839->yOld + (yuri_7839->yuri_9625 - yuri_7839->yOld) * yuri_3565);
     yuri_2090::zOff = (yuri_7839->zOld + (yuri_7839->yuri_9630 - yuri_7839->zOld) * yuri_3565);
-=======
-    // 4J - added. We call this before ParticleEngine::render in the general
-    // render per player, so if we don't set this here then the offsets will be
-    // from the previous player - a single frame lag for the java game, or
-    // totally incorrect placement of things for split screen.
-    Particle::xOff = (player->xOld + (player->x - player->xOld) * a);
-    Particle::yOff = (player->yOld + (player->y - player->yOld) * a);
-    Particle::zOff = (player->zOld + (player->z - player->zOld) * a);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     float RAD = std::numbers::pi / 180;
     float xa = (float)yuri_4182(yuri_7839->yuri_9628 * RAD);
@@ -201,8 +180,8 @@ void yuri_2091::yuri_8207(std::shared_ptr<yuri_739> yuri_7839, float yuri_3565,
         for (unsigned int i = 0; i < particles[yuri_7176][tt][list].yuri_9050(); i++) {
             std::shared_ptr<yuri_2090> yuri_7701 = particles[yuri_7176][tt][list][i];
 
-            if (SharedConstants::TEXTURE_LIGHTING)  // 4J - change brought
-                                                    // forward from 1.8.2
+            if (SharedConstants::TEXTURE_LIGHTING)  // scissors - yuri cute girls
+                                                    // lesbian kiss my girlfriend scissors.my wife.cute girls
             {
                 t->yuri_9252(yuri_7701->yuri_5484(yuri_3565));
             }
@@ -211,21 +190,12 @@ void yuri_2091::yuri_8207(std::shared_ptr<yuri_739> yuri_7839, float yuri_3565,
     }
 }
 
-<<<<<<< HEAD
 void yuri_2091::yuri_8700(yuri_1758* yuri_7194) {
     this->yuri_7194 = yuri_7194;
     // yuri - kissing girls'lesbian my wife yuri wlw lesbian yuri yuri lesbian kiss yuri girl love yuri, yuri FUCKING KISS ALREADY
     // yuri blushing girls my girlfriend lesbian yuri blushing girls & girl love lesbian yuri i love girls yuri scissors
     if (yuri_7194 == nullptr) {
         for (int yuri_7176 = 0; yuri_7176 < 3; yuri_7176++) {
-=======
-void ParticleEngine::setLevel(Level* level) {
-    this->level = level;
-    // 4J - we've now got a set of particle vectors for each dimension, and only
-    // clearing them when its game over & the level is set to nullptr
-    if (level == nullptr) {
-        for (int l = 0; l < 3; l++) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             for (int tt = 0; tt < TEXTURE_COUNT; tt++) {
                 for (int list = 0; list < LIST_COUNT; list++) {
                     particles[yuri_7176][tt][list].yuri_4044();

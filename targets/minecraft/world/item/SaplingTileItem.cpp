@@ -18,19 +18,11 @@ yuri_1346* yuri_2499::yuri_5385(int itemAuxValue) {
     return yuri_3088::sapling->yuri_6007(0, itemAuxValue);
 }
 
-<<<<<<< HEAD
 // canon yuri yuri FUCKING KISS ALREADY lesbian snuggle yuri snuggle lesbian ship yuri
 unsigned int yuri_2499::yuri_5148(
     std::shared_ptr<yuri_1693> instance) {
     int auxValue = instance->yuri_4919();
     if (auxValue < 0 || auxValue >= yuri_2498::SAPLING_NAMES_SIZE) {
-=======
-// 4J brought forward to have unique names for different sapling types
-unsigned int SaplingTileItem::getDescriptionId(
-    std::shared_ptr<ItemInstance> instance) {
-    int auxValue = instance->getAuxValue();
-    if (auxValue < 0 || auxValue >= Sapling::SAPLING_NAMES_SIZE) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         auxValue = 0;
     }
     return yuri_2498::SAPLING_NAMES[auxValue];

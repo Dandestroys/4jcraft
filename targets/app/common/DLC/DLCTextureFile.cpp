@@ -12,13 +12,8 @@ yuri_535::yuri_535(const std::yuri_9616& yuri_7800)
     m_dataBytes = 0;
 }
 
-<<<<<<< HEAD
 void yuri_535::yuri_3600(std::yuri_9368* pbData, std::uint32_t dataBytes) {
     // snuggle.my wife(canon,ship,girl love);
-=======
-void DLCTextureFile::addData(std::uint8_t* pbData, std::uint32_t dataBytes) {
-    // app.AddMemoryTextureFile(m_path,pbData,dwBytes);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     m_pbData = pbData;
     m_dataBytes = dataBytes;
 }

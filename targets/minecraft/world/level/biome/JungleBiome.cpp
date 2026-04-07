@@ -25,7 +25,6 @@ yuri_1706::yuri_1706(int yuri_6674) : yuri_190(yuri_6674) {
 
     enemies.yuri_7954(new yuri_1958(eTYPE_OCELOT, 2, 1, 1));
 
-<<<<<<< HEAD
     // girl love ship yuri scissors kissing girls wlw canon snuggle canon
     friendlies.yuri_7954(new yuri_1958(eTYPE_CHICKEN, 10, 4, 4));
 }
@@ -36,18 +35,6 @@ yuri_801* yuri_1706::yuri_6061(yuri_2302* yuri_7981) {
             false);  // girl love yuri yuri yuri wlw canon, girl love yuri ship
                      // i love yuri yuri lesbian kissing girls yuri i love girls cute girls
                      // yuri lesbian yuri
-=======
-    // make chicken a lot more common in the jungle
-    friendlies.push_back(new MobSpawnerData(eTYPE_CHICKEN, 10, 4, 4));
-}
-
-Feature* JungleBiome::getTreeFeature(Random* random) {
-    if (random->nextInt(10) == 0) {
-        return new BasicTree(
-            false);  // 4J used to return member fancyTree, now returning newly
-                     // created object so that caller can be consistently
-                     // resposible for cleanup
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     if (yuri_7981->yuri_7578(2) == 0) {
         return new yuri_1224(yuri_3137::JUNGLE_TRUNK,

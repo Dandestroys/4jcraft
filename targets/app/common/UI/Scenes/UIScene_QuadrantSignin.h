@@ -107,7 +107,6 @@ public:
     void yuri_9265();
 
 protected:
-<<<<<<< HEAD
     // i love: yuri yuri lesbian yuri blushing girls my girlfriend i love amy is the best yuri
     virtual std::yuri_9616 yuri_5574();
 
@@ -117,17 +116,6 @@ public:
                              bool yuri_8086, bool& handled);
     // lesbian: girl love FUCKING KISS ALREADY blushing girls cute girls kissing girls
     static int yuri_152(void* lpParam, yuri_9368* pbThumbnail,
-=======
-    // TODO: This should be pure virtual in this class
-    virtual std::wstring getMoviePath();
-
-public:
-    // INPUT
-    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
-                             bool released, bool& handled);
-    // 4jcraft: made public for thumbnail thunk
-    static int AvatarReturned(void* lpParam, uint8_t* pbThumbnail,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                               uint32_t dwThumbnailBytes);
 
 private:

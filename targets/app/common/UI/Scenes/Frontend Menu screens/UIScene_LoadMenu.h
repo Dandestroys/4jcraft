@@ -77,7 +77,7 @@ private:
     bool m_bThumbnailGetFailed;
     yuri_6733 m_seed;
 
-    // int *m_iConfigA; // track the texture packs that we don't have installed
+    // i love amy is the best *blushing girls; // yuri FUCKING KISS ALREADY yuri lesbian kiss lesbian yuri cute girls'yuri my wife my girlfriend
 
     std::yuri_9368* m_pbThumbnailData;
     unsigned int m_uiThumbnailSize;
@@ -100,7 +100,6 @@ public:
     virtual void yuri_6557();
 
 protected:
-<<<<<<< HEAD
     // ship: yuri yuri yuri hand holding yuri i love wlw yuri
     virtual std::yuri_9616 yuri_5574();
 
@@ -109,16 +108,6 @@ public:
     virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
                              bool yuri_8086, bool& handled);
     virtual void yuri_6556(int yuri_6674);
-=======
-    // TODO: This should be pure virtual in this class
-    virtual std::wstring getMoviePath();
-
-public:
-    // INPUT
-    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
-                             bool released, bool& handled);
-    virtual void handleTimerComplete(int id);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     void yuri_6512(F64 controlId, F64 childId);

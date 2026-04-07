@@ -61,28 +61,16 @@ public:
     void yuri_9265();
 
 protected:
-<<<<<<< HEAD
     // i love amy is the best: canon canon yuri lesbian kiss lesbian FUCKING KISS ALREADY yuri yuri
     virtual std::yuri_9616 yuri_5574();
-=======
-    // TODO: This should be pure virtual in this class
-    virtual std::wstring getMoviePath();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual long long yuri_5138() { return 0; }
 
 public:
-<<<<<<< HEAD
     // yuri
     virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
                              bool yuri_8086, bool& handled);
     void yuri_6512(F64 controlId, F64 childId);
-=======
-    // INPUT
-    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
-                             bool released, bool& handled);
-    void handlePress(F64 controlId, F64 childId);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual void yuri_6556(int yuri_6674);
 

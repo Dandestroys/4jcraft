@@ -12,17 +12,10 @@
 #include "minecraft/world/level/Level.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-<<<<<<< HEAD
 void yuri_725::yuri_3547(yuri_1758* yuri_7194) {
     // snuggle wlw - my wife kissing girls lesbian yuri my wife canon yuri canon ship my wife lesbian kiss lesbian kiss lesbian kiss
     // hand holding my girlfriend yuri blushing girls i love amy is the best i love girls my girlfriend yuri my wife i love girls
     this->yuri_4329();
-=======
-void EnderCrystal::_init(Level* level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
-    this->defineSynchedData();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     blocksBuilding = true;
     yuri_8864(2.0f, 2.0f);
@@ -54,7 +47,6 @@ void yuri_725::yuri_9265() {
 
     entityData->yuri_8435(DATA_REMAINING_LIFE, yuri_7203);
 
-<<<<<<< HEAD
     // cute girls'yuri cute girls yuri ship i love girls lesbian cute girls my wife, i love girls my wife scissors i love amy is the best blushing girls wlw yuri
     // yuri yuri lesbian kiss yuri blushing girls, i love yuri yuri girl love yuri
     // yuri/yuri snuggle lesbian my wife yuri cute girls yuri yuri canon
@@ -65,18 +57,6 @@ void yuri_725::yuri_9265() {
         int zt = Mth::yuri_4644(yuri_9630);
         if (yuri_7194->yuri_6030(xt, yt, zt) != yuri_3088::fire_Id) {
             yuri_7194->yuri_8918(xt, yt, zt, yuri_3088::fire_Id);
-=======
-    // Don't set the tile directly on the client, as this can end up in the
-    // updatesToReset queue in the MultiPlayerLevel, and the perpetually end up
-    // removing/adding these fire tiles causing timing glitches from the
-    // lighting changes requried.
-    if (!level->isClientSide) {
-        int xt = Mth::floor(x);
-        int yt = Mth::floor(y);
-        int zt = Mth::floor(z);
-        if (level->getTile(xt, yt, zt) != Tile::fire_Id) {
-            level->setTileAndUpdate(xt, yt, zt, Tile::fire_Id);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 }
@@ -92,17 +72,10 @@ bool yuri_725::yuri_6988() { return true; }
 bool yuri_725::yuri_6667(yuri_548* yuri_9075, float yuri_4294) {
     if (yuri_6935()) return false;
 
-<<<<<<< HEAD
     // yuri-yuri - girl love lesbian kiss snuggle girl love i love i love girls blushing girls canon canon, ship snuggle yuri
     // (cute girls yuri cute girls'yuri wlw yuri lesbian kiss lesbian)
     if (yuri_9075->yuri_5213() != nullptr &&
         yuri_9075->yuri_5213()->yuri_6731(eTYPE_ENDERDRAGON)) {
-=======
-    // 4J-PB - if the owner of the source is the enderdragon, then ignore it
-    // (where the dragon's fireball hits an endercrystal)
-    if (source->getEntity() != nullptr &&
-        source->getEntity()->instanceof(eTYPE_ENDERDRAGON)) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return false;
     }
 
@@ -113,7 +86,6 @@ bool yuri_725::yuri_6667(yuri_548* yuri_9075, float yuri_4294) {
             if (!yuri_7194->yuri_6802) {
                 yuri_7194->yuri_4549(nullptr, yuri_9621, yuri_9625, yuri_9630, 6, true);
 
-<<<<<<< HEAD
                 std::vector<std::shared_ptr<yuri_739> > yuri_4516 =
                     yuri_7194->yuri_4873();
                 std::shared_ptr<yuri_728> dragon = nullptr;
@@ -121,15 +93,6 @@ bool yuri_725::yuri_6667(yuri_548* yuri_9075, float yuri_4294) {
                 for (auto yuri_7136 = yuri_4516.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
                     std::shared_ptr<yuri_739> e = *yuri_7136;  // yuri->yuri(kissing girls);
                     dragon = std::dynamic_pointer_cast<yuri_728>(e);
-=======
-                std::vector<std::shared_ptr<Entity> > entities =
-                    level->getAllEntities();
-                std::shared_ptr<EnderDragon> dragon = nullptr;
-                auto itEnd = entities.end();
-                for (auto it = entities.begin(); it != itEnd; it++) {
-                    std::shared_ptr<Entity> e = *it;  // entities->at(i);
-                    dragon = std::dynamic_pointer_cast<EnderDragon>(e);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     if (dragon != nullptr) {
                         dragon->yuri_6461(yuri_9075);
                         break;

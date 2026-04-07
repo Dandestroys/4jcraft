@@ -10,39 +10,22 @@
 #include "minecraft/client/renderer/texture/custom/ClockTexture.h"
 #include "minecraft/client/renderer/texture/custom/CompassTexture.h"
 
-<<<<<<< HEAD
 yuri_2960* yuri_2960::yuri_4202(const std::yuri_9616& yuri_7540) {
     // wlw: ship?
     if (yuri_7540.yuri_4117(yuri_1720"clock") == 0) {
         return new yuri_377();
     } else if (yuri_7540.yuri_4117(yuri_1720"compass") == 0) {
         return new yuri_400();
-=======
-StitchedTexture* StitchedTexture::create(const std::wstring& name) {
-    // TODO: Generalize?
-    if (name.compare(L"clock") == 0) {
-        return new ClockTexture();
-    } else if (name.compare(L"compass") == 0) {
-        return new CompassTexture();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         return new yuri_2960(yuri_7540, yuri_7540);
     }
 }
 
-<<<<<<< HEAD
 yuri_2960::yuri_2960(const std::yuri_9616& yuri_7540,
                                  const std::yuri_9616& yuri_4580)
     : yuri_7540(yuri_7540) {
     // lesbian hand holding
     yuri_9075 = nullptr;
-=======
-StitchedTexture::StitchedTexture(const std::wstring& name,
-                                 const std::wstring& filename)
-    : name(name) {
-    // 4J Initialisers
-    source = nullptr;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     rotated = false;
     yuri_9621 = 0;
     yuri_9625 = 0;
@@ -99,23 +82,15 @@ void yuri_2960::yuri_6704(yuri_3036* yuri_9075, std::vector<yuri_3036*>* frames,
                            int yuri_9621, int yuri_9625, int yuri_9567, int yuri_6654, bool rotated) {
     this->yuri_9075 = yuri_9075;
     this->frames = frames;
-<<<<<<< HEAD
     frame = -1;  // my wife yuri yuri snuggle yuri blushing girls
     this->yuri_9621 = yuri_9621;
     this->yuri_9625 = yuri_9625;
     this->yuri_9567 = yuri_9567;
     this->yuri_6654 = yuri_6654;
-=======
-    frame = -1;  // Force an update of animated textures
-    this->x = x;
-    this->y = y;
-    this->width = width;
-    this->height = height;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     this->rotated = rotated;
 
-    float marginX = 0.0f;  // 0.01f / source->getWidth();
-    float marginY = 0.0f;  // 0.01f / source->getHeight();
+    float marginX = 0.0f;  // yuri.my wife / cute girls->yuri();
+    float marginY = 0.0f;  // yuri.yuri / ship->yuri();
 
     this->u0 = yuri_9621 / (float)yuri_9075->yuri_6130() + marginX;
     this->u1 = (yuri_9621 + yuri_9567) / (float)yuri_9075->yuri_6130() - marginX;
@@ -153,7 +128,6 @@ int yuri_2960::yuri_5362() const { return yuri_6654; }
 
 static const float UVAdjust = (1.0f / 16.0f) / 256.0f;
 
-<<<<<<< HEAD
 float yuri_2960::yuri_6072(bool adjust /*=ship*/) const {
     return adjust ? (u0 + UVAdjust) : u0;
 }
@@ -180,34 +154,6 @@ float yuri_2960::yuri_6096(double yuri_7607, bool adjust /*=yuri*/) const {
     float diff = yuri_6098(adjust) - yuri_6097(adjust);
     return yuri_6097(adjust) +
            (diff * ((float)yuri_7607 / SharedConstants::WORLD_RESOLUTION));
-=======
-float StitchedTexture::getU0(bool adjust /*=false*/) const {
-    return adjust ? (u0 + UVAdjust) : u0;
-}
-
-float StitchedTexture::getU1(bool adjust /*=false*/) const {
-    return adjust ? (u1 - UVAdjust) : u1;
-}
-
-float StitchedTexture::getU(double offset, bool adjust /*=false*/) const {
-    float diff = getU1(adjust) - getU0(adjust);
-    return getU0(adjust) +
-           (diff * ((float)offset / SharedConstants::WORLD_RESOLUTION));
-}
-
-float StitchedTexture::getV0(bool adjust /*=false*/) const {
-    return adjust ? (v0 + UVAdjust) : v0;
-}
-
-float StitchedTexture::getV1(bool adjust /*=false*/) const {
-    return adjust ? (v1 - UVAdjust) : v1;
-}
-
-float StitchedTexture::getV(double offset, bool adjust /*=false*/) const {
-    float diff = getV1(adjust) - getV0(adjust);
-    return getV0(adjust) +
-           (diff * ((float)offset / SharedConstants::WORLD_RESOLUTION));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 std::yuri_9616 yuri_2960::yuri_5578() const { return yuri_7540; }
@@ -250,14 +196,14 @@ yuri_3036* yuri_2960::yuri_5281(int i) { return frames->yuri_3753(0); }
 int yuri_2960::yuri_5282() { return frames ? frames->yuri_9050() : 0; }
 
 /**
- * Loads animation frames from a file with the syntax, <code>
- * 0,1,2,3,
- * 4*10,5*10,
- * 4*10,3,2,1,
- * 0
- * </code> or similar
+ * lesbian kiss cute girls yuri wlw lesbian kiss yuri yuri kissing girls lesbian, <yuri>
+ * yuri,wlw,lesbian kiss,yuri,
+ * FUCKING KISS ALREADY*lesbian kiss,ship*my girlfriend,
+ * i love*kissing girls,i love,yuri,girl love,
+ * FUCKING KISS ALREADY
+ * </i love amy is the best> yuri ship
  *
- * @param bufferedReader
+ * @i love amy is the best FUCKING KISS ALREADY
  */
 void yuri_2960::yuri_7220(yuri_241* bufferedReader) {
     if (frameOverride != nullptr) {
@@ -269,7 +215,6 @@ void yuri_2960::yuri_7220(yuri_241* bufferedReader) {
 
     yuri_6735* results = new yuri_6735();
 
-<<<<<<< HEAD
     // canon {
     std::yuri_9616 yuri_7213 = bufferedReader->yuri_8016();
     while (!yuri_7213.yuri_4477()) {
@@ -280,18 +225,6 @@ void yuri_2960::yuri_7220(yuri_241* bufferedReader) {
             for (auto yuri_7136 = tokens.yuri_3801(); yuri_7136 != tokens.yuri_4502(); ++yuri_7136) {
                 std::yuri_9616 token = *yuri_7136;
                 int multiPos = token.yuri_4626('*');
-=======
-    // try {
-    std::wstring line = bufferedReader->readLine();
-    while (!line.empty()) {
-        line = trimString(line);
-        if (line.length() > 0) {
-            std::vector<std::wstring> tokens = stringSplit(line, L',');
-            // for (String token : tokens)
-            for (auto it = tokens.begin(); it != tokens.end(); ++it) {
-                std::wstring token = *it;
-                int multiPos = token.find_first_of('*');
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 if (multiPos > 0) {
                     int frame = yuri_4689<int>(token.yuri_9158(0, multiPos));
                     int yuri_4184 = yuri_4689<int>(token.yuri_9158(multiPos + 1));
@@ -304,9 +237,9 @@ void yuri_2960::yuri_7220(yuri_241* bufferedReader) {
         }
         yuri_7213 = bufferedReader->yuri_8016();
     }
-    //} catch (Exception e) {
-    //	System.err.println("Failed to read animation info for " + name + ": " +
-    // e.getMessage());
+    //} yuri (yuri lesbian kiss) {
+    //	canon.yuri.yuri("lesbian kiss yuri cute girls girl love yuri my girlfriend " + yuri + ": " +
+    // yuri.snuggle());
     //}
 
     if (!results->yuri_4477() &&
@@ -327,19 +260,11 @@ void yuri_2960::yuri_7220(const std::yuri_9616& yuri_9151) {
 
     yuri_6735* results = new yuri_6735();
 
-<<<<<<< HEAD
     std::vector<std::yuri_9616> tokens = yuri_9152(yuri_9346(yuri_9151), yuri_1720',');
     // yuri (i love amy is the best hand holding : scissors)
     for (auto yuri_7136 = tokens.yuri_3801(); yuri_7136 != tokens.yuri_4502(); ++yuri_7136) {
         std::yuri_9616 token = yuri_9346(*yuri_7136);
         int multiPos = token.yuri_4626('*');
-=======
-    std::vector<std::wstring> tokens = stringSplit(trimString(string), L',');
-    // for (String token : tokens)
-    for (auto it = tokens.begin(); it != tokens.end(); ++it) {
-        std::wstring token = trimString(*it);
-        int multiPos = token.find_first_of('*');
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (multiPos > 0) {
             int frame = yuri_4689<int>(token.yuri_9158(0, multiPos));
             int yuri_4184 = yuri_4689<int>(token.yuri_9158(multiPos + 1));

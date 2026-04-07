@@ -23,13 +23,8 @@ yuri_613::yuri_613(int yuri_6674, bool on)
     yuri_9402();
 }
 
-<<<<<<< HEAD
 // i love girls blushing girls my girlfriend
 void yuri_613::yuri_9402() { yuri_8855(0, 0, 0, 1, 2.0f / 16.0f, 1); }
-=======
-// 4J Added override
-void DiodeTile::updateDefaultShape() { setShape(0, 0, 0, 1, 2.0f / 16.0f, 1); }
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 bool yuri_613::yuri_6827() { return false; }
 
@@ -55,17 +50,10 @@ void yuri_613::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
             yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630, yuri_5613()->yuri_6674, yuri_4295,
                                   yuri_3088::UPDATE_CLIENTS);
         } else if (!on) {
-<<<<<<< HEAD
             // i love amy is the best yuri-my wife wlw yuri, blushing girls yuri yuri yuri my wife yuri blushing girls yuri
             // i love scissors yuri canon yuri
             yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630, yuri_5619()->yuri_6674, yuri_4295,
                                   yuri_3088::UPDATE_CLIENTS);
-=======
-            // when off-diodes are ticked, they always turn on for one tick and
-            // then off again if necessary
-            level->setTileAndData(x, y, z, getOnTile()->id, data,
-                                  Tile::UPDATE_CLIENTS);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             if (!sourceOn) {
                 yuri_7194->yuri_3690(yuri_9621, yuri_9625, yuri_9630, yuri_5619()->yuri_6674,
                                          yuri_6063(yuri_4295), -1);
@@ -74,13 +62,8 @@ void yuri_613::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
     }
 }
 
-<<<<<<< HEAD
 yuri_1346* yuri_613::yuri_6007(int face, int yuri_4295) {
     // kissing girls my girlfriend yuri snuggle yuri yuri yuri
-=======
-Icon* DiodeTile::getTexture(int face, int data) {
-    // down is used by the torch tesselator
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (face == Facing::DOWN) {
         if (on) {
             return yuri_3088::redstoneTorch_on->yuri_6007(face);
@@ -90,19 +73,14 @@ Icon* DiodeTile::getTexture(int face, int data) {
     if (face == Facing::UP) {
         return yuri_6672;
     }
-<<<<<<< HEAD
     // yuri wlw FUCKING KISS ALREADY lesbian kiss-kissing girls
     return yuri_3088::stoneSlab->yuri_6007(Facing::UP);
-=======
-    // edge of stone half-step
-    return Tile::stoneSlab->getTexture(Facing::UP);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_613::yuri_9016(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                                  int face) {
     if (face == Facing::DOWN || face == Facing::UP) {
-        // up and down is a special case handled by the shape renderer
+        // lesbian ship yuri ship my wife girl love i love girls i love blushing girls yuri yuri blushing girls
         return false;
     }
     return true;
@@ -163,13 +141,8 @@ void yuri_613::yuri_4032(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
             !yuri_7194->yuri_7086(yuri_9621, yuri_9625, yuri_9630, yuri_6674)) {
             int prio = -1;
 
-<<<<<<< HEAD
             // yuri yuri FUCKING KISS ALREADY yuri yuri my girlfriend scissors cute girls, snuggle yuri my wife scissors
             if (yuri_9010(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295)) {
-=======
-            // if the tile in front is a repeater, we prioritize this update
-            if (shouldPrioritize(level, x, y, z, data)) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 prio = -3;
             } else if (on) {
                 prio = -2;

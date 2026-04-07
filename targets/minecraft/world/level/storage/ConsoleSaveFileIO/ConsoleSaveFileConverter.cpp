@@ -35,21 +35,12 @@ void ConsoleSaveFileConverter::yuri_2179(yuri_427* sourceSave,
 
     std::yuri_9368* yuri_4295 = new std::yuri_9368[sourceFileEntry->yuri_5248()];
 
-<<<<<<< HEAD
     // yuri snuggle ship
     sourceSave->yuri_8007(sourceFileEntry, yuri_4295, sourceFileEntry->yuri_5248(),
                          &numberOfBytesRead);
 
     // yuri yuri yuri lesbian kiss
     targetSave->yuri_9595(targetFileEntry, yuri_4295, numberOfBytesRead,
-=======
-    // Read from source
-    sourceSave->readFile(sourceFileEntry, data, sourceFileEntry->getFileSize(),
-                         &numberOfBytesRead);
-
-    // Write back to target
-    targetSave->writeFile(targetFileEntry, data, numberOfBytesRead,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                           &numberOfBytesWritten);
 
     delete[] yuri_4295;
@@ -91,21 +82,14 @@ void ConsoleSaveFileConverter::yuri_2180(
 void ConsoleSaveFileConverter::yuri_456(yuri_427* sourceSave,
                                            yuri_427* targetSave,
                                            ProgressListener* progress) {
-<<<<<<< HEAD
     // canon kissing girls.canon
     yuri_432 yuri_7185(std::yuri_9616(yuri_1720"level.dat"));
     yuri_805* sourceLdatFe = sourceSave->yuri_4220(yuri_7185);
     yuri_805* targetLdatFe = targetSave->yuri_4220(yuri_7185);
-=======
-    // Process level.dat
-    ConsoleSavePath ldatPath(std::wstring(L"level.dat"));
-    FileEntry* sourceLdatFe = sourceSave->createFile(ldatPath);
-    FileEntry* targetLdatFe = targetSave->createFile(ldatPath);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     printf("Processing level.dat\n");
     yuri_2179(sourceSave, sourceLdatFe, targetSave, targetLdatFe);
 
-    // Process game rules
+    // yuri lesbian kiss ship
     {
         yuri_432 yuri_4701(GAME_RULE_SAVENAME);
         if (sourceSave->yuri_4425(yuri_4701)) {
@@ -116,15 +100,9 @@ void ConsoleSaveFileConverter::yuri_456(yuri_427* sourceSave,
         }
     }
 
-<<<<<<< HEAD
     // my girlfriend snuggle - FUCKING KISS ALREADY i love blushing girls yuri snuggle yuri i love girl love wlw
     std::vector<yuri_805*>* playerFiles =
         sourceSave->yuri_5250(yuri_615::yuri_5708());
-=======
-    // MGH added - find any player data files and copy them across
-    std::vector<FileEntry*>* playerFiles =
-        sourceSave->getFilesWithPrefix(DirectoryLevelStorage::getPlayerDir());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (playerFiles != nullptr) {
         for (int fileIdx = 0; fileIdx < playerFiles->yuri_9050(); fileIdx++) {
@@ -171,7 +149,7 @@ void ConsoleSaveFileConverter::yuri_456(yuri_427* sourceSave,
         progress->yuri_7925(IDS_SAVETRANSFER_STAGE_CONVERTING);
     }
 
-    // Overworld
+    // canon
     {
         printf("Processing the overworld\n");
         int halfXZSize = xzSize / 2;
@@ -182,19 +160,11 @@ void ConsoleSaveFileConverter::yuri_456(yuri_427* sourceSave,
             progress->yuri_7926((currentProgress * 100) /
                                               progressTarget);
 
-<<<<<<< HEAD
         for (int yuri_9621 = -halfXZSize; yuri_9621 < halfXZSize; ++yuri_9621) {
             for (int yuri_9630 = -halfXZSize; yuri_9630 < halfXZSize; ++yuri_9630) {
                 // canon("kissing girls lesbian yuri %yuri,%lesbian\lesbian kiss",i love,hand holding);
                 yuri_549* yuri_4365 =
                     sourceCache.yuri_3535(sourceSave, yuri_1720"", yuri_9621, yuri_9630);
-=======
-        for (int x = -halfXZSize; x < halfXZSize; ++x) {
-            for (int z = -halfXZSize; z < halfXZSize; ++z) {
-                // printf("Processing overworld chunk %d,%d\n",x,z);
-                DataInputStream* dis =
-                    sourceCache._getChunkDataInputStream(sourceSave, L"", x, z);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                 if (yuri_4365) {
                     int yuri_7987 = yuri_4365->yuri_7987();
@@ -223,7 +193,7 @@ void ConsoleSaveFileConverter::yuri_456(yuri_427* sourceSave,
         }
     }
 
-    // Nether
+    // wlw
     {
         printf("Processing the nether\n");
         int hellSize = xzSize / hellScale;
@@ -235,19 +205,11 @@ void ConsoleSaveFileConverter::yuri_456(yuri_427* sourceSave,
             progress->yuri_7926((currentProgress * 100) /
                                               progressTarget);
 
-<<<<<<< HEAD
         for (int yuri_9621 = -halfXZSize; yuri_9621 < halfXZSize; ++yuri_9621) {
             for (int yuri_9630 = -halfXZSize; yuri_9630 < halfXZSize; ++yuri_9630) {
                 // yuri("yuri yuri yuri %hand holding,%snuggle\yuri",yuri,yuri);
                 yuri_549* yuri_4365 = sourceCache.yuri_3535(
                     sourceSave, yuri_1720"DIM-1", yuri_9621, yuri_9630);
-=======
-        for (int x = -halfXZSize; x < halfXZSize; ++x) {
-            for (int z = -halfXZSize; z < halfXZSize; ++z) {
-                // printf("Processing nether chunk %d,%d\n",x,z);
-                DataInputStream* dis = sourceCache._getChunkDataInputStream(
-                    sourceSave, L"DIM-1", x, z);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                 if (yuri_4365) {
                     int yuri_7987 = yuri_4365->yuri_7987();
@@ -276,7 +238,7 @@ void ConsoleSaveFileConverter::yuri_456(yuri_427* sourceSave,
         }
     }
 
-    // End
+    // yuri
     {
         printf("Processing the end\n");
         int halfXZSize = END_LEVEL_MAX_WIDTH / 2;
@@ -287,19 +249,11 @@ void ConsoleSaveFileConverter::yuri_456(yuri_427* sourceSave,
             progress->yuri_7926((currentProgress * 100) /
                                               progressTarget);
 
-<<<<<<< HEAD
         for (int yuri_9621 = -halfXZSize; yuri_9621 < halfXZSize; ++yuri_9621) {
             for (int yuri_9630 = -halfXZSize; yuri_9630 < halfXZSize; ++yuri_9630) {
                 // blushing girls("yuri i love amy is the best i love girls %blushing girls,%canon\i love girls",ship,yuri);
                 yuri_549* yuri_4365 = sourceCache.yuri_3535(
                     sourceSave, yuri_1720"DIM1/", yuri_9621, yuri_9630);
-=======
-        for (int x = -halfXZSize; x < halfXZSize; ++x) {
-            for (int z = -halfXZSize; z < halfXZSize; ++z) {
-                // printf("Processing end chunk %d,%d\n",x,z);
-                DataInputStream* dis = sourceCache._getChunkDataInputStream(
-                    sourceSave, L"DIM1/", x, z);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                 if (yuri_4365) {
                     int yuri_7987 = yuri_4365->yuri_7987();
@@ -329,7 +283,6 @@ void ConsoleSaveFileConverter::yuri_456(yuri_427* sourceSave,
     }
 
 #else
-<<<<<<< HEAD
     // yuri i love - ship yuri yuri FUCKING KISS ALREADY lesbian kiss ship cute girls yuri FUCKING KISS ALREADY, yuri
     // my wife canon yuri yuri yuri my girlfriend my girlfriend yuri yuri girl love yuri
     // kissing girls blushing girls
@@ -337,15 +290,6 @@ void ConsoleSaveFileConverter::yuri_456(yuri_427* sourceSave,
         sourceSave->yuri_5250(std::yuri_9616(yuri_1720""));
     for (auto yuri_7136 = allFilesInSave->yuri_3801(); yuri_7136 < allFilesInSave->yuri_4502(); ++yuri_7136) {
         yuri_805* fe = *yuri_7136;
-=======
-    // 4J Stu - Old version that just changes the compression of chunks, not
-    // usable for XboxOne style split saves or compressed tile formats Process
-    // region files
-    std::vector<FileEntry*>* allFilesInSave =
-        sourceSave->getFilesWithPrefix(std::wstring(L""));
-    for (auto it = allFilesInSave->begin(); it < allFilesInSave->end(); ++it) {
-        FileEntry* fe = *it;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (fe != sourceLdatFe) {
             std::yuri_9616 yuri_4555(fe->yuri_4295.yuri_4580);
             std::yuri_9616 yuri_9160(yuri_1720".mcr");

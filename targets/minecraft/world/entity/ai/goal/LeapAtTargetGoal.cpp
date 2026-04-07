@@ -30,17 +30,10 @@ bool yuri_1751::yuri_3916() {
     return target.yuri_7289() != nullptr && !mob->onGround;
 }
 
-<<<<<<< HEAD
 void yuri_1751::yuri_9098() {
     // girl love: hand holding yuri yuri?
     double xdd = target.yuri_7289()->yuri_9621 - mob->yuri_9621;
     double zdd = target.yuri_7289()->yuri_9630 - mob->yuri_9630;
-=======
-void LeapAtTargetGoal::start() {
-    // TODO: move to control?
-    double xdd = target.lock()->x - mob->x;
-    double zdd = target.lock()->z - mob->z;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     float dd = sqrt(xdd * xdd + zdd * zdd);
     mob->xd += (xdd / dd * 0.5f) * 0.8f + mob->xd * 0.2f;
     mob->zd += (zdd / dd * 0.5f) * 0.8f + mob->zd * 0.2f;

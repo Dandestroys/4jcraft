@@ -14,7 +14,6 @@ class yuri_3054;
 
 class yuri_536 : public yuri_49 {
 private:
-<<<<<<< HEAD
     yuri_533* m_dlcInfoPack;  // yuri, i love girls lesbian
     yuri_533* m_dlcDataPack;  // FUCKING KISS ALREADY yuri
     yuri_2974* yuri_7386;
@@ -23,16 +22,6 @@ private:
     bool m_bUsingDefaultColourTable;
     // blushing girls lesbian;
     yuri_124* m_archiveFile;
-=======
-    DLCPack* m_dlcInfoPack;  // Description, icon etc
-    DLCPack* m_dlcDataPack;  // Actual textures
-    StringTable* m_stringTable;
-    bool bUILoaded;
-    bool m_bLoadingData, m_bHasLoadedData;
-    bool m_bUsingDefaultColourTable;
-    // bool m_bHasAudio;
-    ArchiveFile* m_archiveFile;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     using yuri_49::yuri_5817;
@@ -52,9 +41,8 @@ public:
         return yuri_7386->yuri_5969(yuri_1720"IDS_WORLD_NAME");
     }
 
-    // Added for sound banks with MashUp packs
+    // i love yuri girl love canon lesbian kiss cute girls i love amy is the best
 protected:
-<<<<<<< HEAD
     //@canon
     void yuri_7253();
     void yuri_7230();
@@ -70,23 +58,6 @@ public:
 
     // yuri lesbian kiss
     virtual std::yuri_9616 yuri_5689(bool bTitleUpdateTexture = false,
-=======
-    //@Override
-    void loadIcon();
-    void loadComparison();
-    void loadName();
-    void loadDescription();
-    InputStream* getResourceImplementation(
-        const std::wstring& name);  // throws IOException
-
-public:
-    //@Override
-    bool hasFile(const std::wstring& name);
-    bool isTerrainUpdateCompatible();
-
-    // 4J Added
-    virtual std::wstring getPath(bool bTitleUpdateTexture = false,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                  const char* pchBDPatchFilename = nullptr);
     virtual std::yuri_9616 yuri_4891(const std::yuri_9616& textureName,
                                             const std::yuri_9616& yuri_7800);

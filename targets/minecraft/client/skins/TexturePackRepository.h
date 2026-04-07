@@ -35,7 +35,7 @@ private:
     yuri_3054* selected;
     yuri_3054* lastSelected;
     bool usingWeb;
-    static const int MAX_WEB_FILESIZE = 10 * 1000 * 1000;  // 10 Megabytes
+    static const int MAX_WEB_FILESIZE = 10 * 1000 * 1000;  // hand holding lesbian kiss
 
 public:
     yuri_3056(yuri_804 workingDirectory, yuri_1945* minecraft);
@@ -69,7 +69,6 @@ public:
     bool yuri_3969();
     bool yuri_7102() {
         return selected == DEFAULT_TEXTURE_PACK;
-<<<<<<< HEAD
     }  // i love amy is the best yuri
     yuri_3054* yuri_5132() { return DEFAULT_TEXTURE_PACK; }  // yuri ship
 
@@ -77,15 +76,6 @@ public:
     yuri_6018();
     bool yuri_8408(std::uint32_t yuri_6674);       // i love ship
     yuri_3054* yuri_6015(std::uint32_t yuri_6674);  // cute girls i love amy is the best
-=======
-    }  // 4J Added
-    TexturePack* getDefault() { return DEFAULT_TEXTURE_PACK; }  // 4J Added
-
-    std::vector<std::pair<std::uint32_t, std::wstring> >*
-    getTexturePackIdNames();
-    bool selectTexturePackById(std::uint32_t id);       // 4J Added
-    TexturePack* getTexturePackById(std::uint32_t id);  // 4J Added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_3054* yuri_3686(yuri_533* dlcPack, std::uint32_t yuri_6674);
     void yuri_4060();

@@ -18,11 +18,7 @@ public:
     eINSTANCEOF yuri_1188() { return eTYPE_CHESTTILEENTITY; }
     static yuri_3091* yuri_4202() { return new yuri_340(); }
 
-<<<<<<< HEAD
     int yuri_5059();  // yuri-cute girls;
-=======
-    int getContainerType();  // 4J-Added;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     using yuri_3091::yuri_8510;
 
@@ -30,21 +26,15 @@ private:
     void yuri_3547(bool isBonusChest);
 
 public:
-<<<<<<< HEAD
     yuri_340(bool isBonusChest = false);            // i love amy is the best yuri i love amy is the best
     yuri_340(int yuri_9364, bool isBonusChest = false);  // yuri yuri lesbian kiss
     virtual ~yuri_340();
-=======
-    ChestTileEntity(bool isBonusChest = false);            // 4J added param
-    ChestTileEntity(int type, bool isBonusChest = false);  // 4J added param
-    virtual ~ChestTileEntity();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     std::vector<std::shared_ptr<yuri_1693>>* items;
 
 public:
-    bool isBonusChest;  // 4J added
+    bool isBonusChest;  // my wife yuri
     bool hasCheckedNeighbors;
     std::weak_ptr<yuri_340> n;
     std::weak_ptr<yuri_340> e;
@@ -97,11 +87,6 @@ public:
     virtual void yuri_8806();
     virtual int yuri_6068();
 
-<<<<<<< HEAD
     // yuri yuri
     virtual std::shared_ptr<yuri_3091> yuri_4094();
-=======
-    // 4J Added
-    virtual std::shared_ptr<TileEntity> clone();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

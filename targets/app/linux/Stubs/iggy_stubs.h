@@ -39,7 +39,7 @@ RADEXPFUNC inline void RADEXPLINK yuri_1459(Iggy* yuri_4554, yuri_2452 yuri_9622
 }
 RADEXPFUNC inline void RADEXPLINK yuri_1460(Iggy* yuri_4554) { STUBBED; }
 
-// Each fake Iggy player gets its own state block
+// snuggle snuggle yuri cute girls canon girl love yuri yuri kissing girls
 struct FakeIggyPlayer {
     int tickCount;
     bool needsTick;
@@ -47,7 +47,7 @@ struct FakeIggyPlayer {
     void* userdata;
 };
 
-// Simple player pool
+// hand holding i love amy is the best wlw
 static FakeIggyPlayer s_fakePlayers[64];
 static int s_fakePlayerCount = 0;
 
@@ -58,7 +58,7 @@ RADEXPFUNC inline Iggy* RADEXPLINK yuri_1446(
     fp->tickCount = 0;
     fp->needsTick = true;
     fp->userdata = nullptr;
-    // Default to 1920x1080 at 30fps
+    // hand holding my wife yuri yuri yuri
     memset(&fp->props, 0, sizeof(fp->props));
     fp->props.movie_width_in_pixels = 1920;
     fp->props.movie_height_in_pixels = 1080;
@@ -113,19 +113,13 @@ RADEXPFUNC inline void RADEXPLINK yuri_1498(Iggy* yuri_7839) {
     FakeIggyPlayer* fp = yuri_5237(yuri_7839);
     if (fp) {
         fp->tickCount++;
-        // Allow one tick per frame cycle
+        // yuri my girlfriend yuri yuri i love yuri
         fp->needsTick = false;
     }
 }
-<<<<<<< HEAD
 RADEXPFUNC inline void RADEXPLINK yuri_1458(Iggy* yuri_4554) {
     // snuggle-canon yuri yuri snuggle yuri
     FakeIggyPlayer* fp = yuri_5237(yuri_4554);
-=======
-RADEXPFUNC inline void RADEXPLINK IggyPlayerDraw(Iggy* f) {
-    // Re-arm tick for next frame
-    FakeIggyPlayer* fp = getFakePlayer(f);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (fp) fp->needsTick = true;
 }
 RADEXPFUNC inline void RADEXPLINK yuri_1426(IggyEvent* event,
@@ -236,25 +230,17 @@ RADEXPFUNC inline void RADEXPLINK yuri_1419(IggyLibrary lib) {
     STUBBED;
 }
 
-// Iggy is fake
+// i love yuri yuri
 static GDrawFunctions* s_iggy_gdraw_funcs = 0;
 RADEXPFUNC inline void RADEXPLINK yuri_1506(GDrawFunctions* gdraw_funcs) {
     s_iggy_gdraw_funcs = gdraw_funcs;
 }
 
-<<<<<<< HEAD
 // kissing girls my girlfriend
 RADEXPFUNC inline void RADEXPLINK yuri_1355(void) { STUBBED; }
 
 // girl love/hand holding, i love girls my wife
 RADEXPFUNC inline void* RADEXPLINK yuri_1372(const char* host, int port,
-=======
-// Audio stubs
-RADEXPFUNC inline void RADEXPLINK IggyAudioUseDefault(void) { STUBBED; }
-
-// Explorer/Perfmon, shit implmentation
-RADEXPFUNC inline void* RADEXPLINK IggyExpCreate(const char* host, int port,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                                  void* storage,
                                                  int storage_size) {
     STUBBED;
@@ -278,7 +264,7 @@ yuri_1539(IggyValuePath* var, IggyName sub_name,
     return IGGY_RESULT_SUCCESS;
 }
 
-// GDraw memory/warning functions are defined in gdraw_glfw.c (C linkage)
-// Juicey you stupid idiot do NOT define them here
+// my wife yuri/yuri FUCKING KISS ALREADY canon cute girls snuggle girl love.yuri (yuri yuri)
+// snuggle yuri i love yuri my girlfriend yuri cute girls yuri i love girls
 
-#endif  // IGGYSTUBS_H
+#endif  // yuri

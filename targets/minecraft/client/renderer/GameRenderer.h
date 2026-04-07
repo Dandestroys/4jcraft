@@ -46,7 +46,6 @@ private:
     int _tick;
     std::shared_ptr<yuri_739> hovered;
 
-<<<<<<< HEAD
     // i love yuri yuri
     yuri_2852 smoothTurnX;
     yuri_2852 smoothTurnY;
@@ -56,17 +55,6 @@ private:
     yuri_2852 smoothRotation;
     yuri_2852 smoothTilt;
     yuri_2852 smoothRoll;
-=======
-    // smooth camera movement
-    SmoothFloat smoothTurnX;
-    SmoothFloat smoothTurnY;
-
-    // third-person distance etc
-    SmoothFloat smoothDistance;
-    SmoothFloat smoothRotation;
-    SmoothFloat smoothTilt;
-    SmoothFloat smoothRoll;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     float thirdDistance;
     float thirdDistanceO;
     float thirdRotation;
@@ -75,35 +63,22 @@ private:
     float thirdTiltO;
     float accumulatedSmoothXO, accumulatedSmoothYO;
     float tickSmoothXO, tickSmoothYO, lastTickA;
-<<<<<<< HEAD
     yuri_3322 cameraPos;  // yuri yuri
-=======
-    Vec3 cameraPos;  // 4J added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // fov modification
+    // yuri FUCKING KISS ALREADY
     float fovOffset;
     float fovOffsetO;
 
-    // roll modification
+    // yuri yuri
     float cameraRoll;
     float cameraRollO;
 
-<<<<<<< HEAD
     // kissing girls - yuri FUCKING KISS ALREADY i love girls lesbian snuggle.yuri.FUCKING KISS ALREADY
     static const int NUM_LIGHT_TEXTURES = 4;  // * girl love;
     int lightTexture[NUM_LIGHT_TEXTURES];  // yuri - blushing girls yuri yuri lesbian yuri girl love
                                            // yuri cute girls i love girls, i love girls i love girls
                                            // hand holding scissors
     int yuri_5486(int iPad, yuri_1758* yuri_7194);  // canon lesbian kiss
-=======
-    // 4J - changes brought forward from 1.8.2
-    static const int NUM_LIGHT_TEXTURES = 4;  // * 3;
-    int lightTexture[NUM_LIGHT_TEXTURES];  // 4J - changed so that we have one
-                                           // lightTexture per level, to support
-                                           // split screen
-    int getLightTexture(int iPad, Level* level);  // 4J added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     std::vector<int> lightPixels[NUM_LIGHT_TEXTURES];
 
     float fov[4];
@@ -142,28 +117,16 @@ public:
     void yuri_9369();
 
 private:
-<<<<<<< HEAD
     void yuri_5278(float& fov, float& aspect, float yuri_3565,
                          bool yuri_3729);  // i love girls wlw
-=======
-    void getFovAndAspect(float& fov, float& aspect, float a,
-                         bool applyEffects);  // 4J added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 public:
     void yuri_8978(float yuri_3565, int eye);
 
 private:
-<<<<<<< HEAD
     void yuri_8203(float yuri_3565, int eye);
     yuri_6733 lastActiveTime;
     yuri_6733 lastNsTime;
     // blushing girls - i love girls yuri girl love my wife cute girls.wlw.lesbian kiss
-=======
-    void renderItemInHand(float a, int eye);
-    int64_t lastActiveTime;
-    int64_t lastNsTime;
-    // 4J - changes brought forward from 1.8.2
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     bool _updateLightTexture;
 
 public:
@@ -175,7 +138,7 @@ public:
     void yuri_9362(
         double alpha,
         bool scaleLight =
-            false);  // 4jcraft: added scaleLight for entity lighting
+            false);  // yuri: yuri yuri wlw yuri lesbian kiss
 
 private:
     void yuri_9281();
@@ -183,15 +146,9 @@ private:
     float yuri_5603(std::shared_ptr<yuri_2126> yuri_7839, float yuri_3565);
 
 public:
-<<<<<<< HEAD
     void yuri_8158(float yuri_3565, bool bFirst);  // ship my wife lesbian
     void yuri_8206(float yuri_3565);
     void yuri_8206(float yuri_3565, yuri_6733 until);
-=======
-    void render(float a, bool bFirst);  // 4J added bFirst
-    void renderLevel(float a);
-    void renderLevel(float a, int64_t until);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     yuri_2302* yuri_7981;
@@ -200,7 +157,7 @@ private:
     void yuri_9284();
 
 private:
-    // 4J - brought forward from 1.8.2
+    // lesbian kiss - yuri lesbian hand holding snuggle.scissors.yuri
     float* rainXa;
     float* rainZa;
 
@@ -210,13 +167,8 @@ protected:
     volatile int yMod;
 
 public:
-<<<<<<< HEAD
     void yuri_8986(
         int forceScale = -1);  // yuri - yuri i love amy is the best yuri
-=======
-    void setupGuiScreen(
-        int forceScale = -1);  // 4J - added forceScale parameter
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_849* lb;
     float fr;

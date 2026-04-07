@@ -16,7 +16,6 @@ yuri_584::yuri_584(yuri_3334* golem)
 bool yuri_584::yuri_3967() {
     std::shared_ptr<yuri_3327> village = golem->yuri_6114();
     if (village == nullptr) return false;
-<<<<<<< HEAD
     potentialTarget = std::weak_ptr<yuri_1793>(village->yuri_5020(
         std::dynamic_pointer_cast<yuri_1793>(golem->yuri_8996())));
     std::shared_ptr<yuri_1793> potTarget = potentialTarget.yuri_7289();
@@ -27,18 +26,6 @@ bool yuri_584::yuri_3967() {
                 std::dynamic_pointer_cast<yuri_1793>(
                     golem->yuri_8996()));
             return yuri_3904(potTarget, false);
-=======
-    potentialTarget = std::weak_ptr<LivingEntity>(village->getClosestAggressor(
-        std::dynamic_pointer_cast<LivingEntity>(golem->shared_from_this())));
-    std::shared_ptr<LivingEntity> potTarget = potentialTarget.lock();
-    if (!canAttack(potTarget, false)) {
-        // look for bad players
-        if (mob->getRandom()->nextInt(20) == 0) {
-            potentialTarget = village->getClosestBadStandingPlayer(
-                std::dynamic_pointer_cast<LivingEntity>(
-                    golem->shared_from_this()));
-            return canAttack(potTarget, false);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
         return false;
     } else {

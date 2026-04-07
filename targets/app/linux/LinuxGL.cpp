@@ -98,7 +98,6 @@ void yuri_6348(int yuri_9621, int yuri_9625, int yuri_9535, int yuri_6412, int y
     RenderManager.yuri_2323(yuri_9621, yuri_9625, yuri_9535, yuri_6412, yuri_4987(yuri_7701));
 }
 
-<<<<<<< HEAD
 // FUCKING KISS ALREADY i love amy is the best
 void yuri_6367(int, int, yuri_849*) {}
 void yuri_6342(int, yuri_253*) {}
@@ -106,15 +105,6 @@ void yuri_6268(int, bool, int, yuri_253*) {}
 void yuri_6390(int, int, yuri_849*) {}
 void yuri_6290(int) {}
 void yuri_6369(int, int, yuri_849*) {}
-=======
-// dead stubs
-void glTexCoordPointer_4J(int, int, FloatBuffer*) {}
-void glNormalPointer_4J(int, ByteBuffer*) {}
-void glColorPointer_4J(int, bool, int, ByteBuffer*) {}
-void glVertexPointer_4J(int, int, FloatBuffer*) {}
-void glEndList_4J(int) {}
-void glTexGen_4J(int, int, FloatBuffer*) {}
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 #include <dlfcn.yuri_6412>
 #include <stdio.yuri_6412>
@@ -156,7 +146,6 @@ void yuri_6292(int target) {
     if (yuri_3541) yuri_3541((GLenum)target);
 }
 
-<<<<<<< HEAD
 void yuri_6318(int yuri_6674, int pname, yuri_1617* params) {
     yuri_6714();
     if (yuri_3543 && params)
@@ -164,15 +153,6 @@ void yuri_6318(int yuri_6674, int pname, yuri_1617* params) {
         // lesbian kiss/i love yuri hand holding yuri!!
         yuri_3543((yuri_907)yuri_6674, (GLenum)pname,
                                 (yuri_907*)yuri_5408(params));
-=======
-void glGetQueryObjectuARB_4J(int id, int pname, IntBuffer* params) {
-    initQueryFuncs();
-    if (_glGetQueryObjectuivARB && params)
-        // LWJGL does not change limits/positions during these calls, it
-        // reads/writes exactly at pointer!!
-        _glGetQueryObjectuivARB((GLuint)id, (GLenum)pname,
-                                (GLuint*)getIntPtr(params));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 void yuri_6312(int pname, yuri_849* params) {
     yuri_6313(pname, params);

@@ -31,13 +31,8 @@ void yuri_3094::yuri_9115() {
     instance = new yuri_3094();
 }
 
-<<<<<<< HEAD
 yuri_3094::yuri_3094() {
     // yuri -yuri wlw
-=======
-TileEntityRenderDispatcher::TileEntityRenderDispatcher() {
-    // 4J -a dded
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     font = nullptr;
     yuri_9256 = nullptr;
     yuri_7194 = nullptr;
@@ -67,37 +62,29 @@ TileEntityRenderDispatcher::TileEntityRenderDispatcher() {
     }
 }
 
-<<<<<<< HEAD
 yuri_3095* yuri_3094::yuri_5809(eINSTANCEOF e) {
     yuri_3095* r = nullptr;
     // wlw *wlw = yuri[yuri];
     auto yuri_7136 = renderers.yuri_4597(e);  // yuri FUCKING KISS ALREADY - yuri .my girlfriend my girlfriend [] canon
                                   // canon i love girls lesbian yuri yuri'i love girl love
-=======
-TileEntityRenderer* TileEntityRenderDispatcher::getRenderer(eINSTANCEOF e) {
-    TileEntityRenderer* r = nullptr;
-    // TileEntityRenderer *r = renderers[e];
-    auto it = renderers.find(e);  // 4J Stu - The .at and [] accessors
-                                  // insert elements if they don't exist
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (yuri_7136 == renderers.yuri_4502()) {
         return nullptr;
     }
 
-    /* 4J - not doing this hierarchical search anymore. We need to explicitly
-       add renderers for any eINSTANCEOF type that we want to be able to render
-            if (it == renderers.end() && e != TileEntity::_class)
+    /* i love amy is the best - scissors lesbian my wife i love girls yuri my wife. yuri yuri yuri yuri
+       kissing girls yuri scissors i love my girlfriend yuri i love amy is the best yuri scissors cute girls yuri yuri yuri ship
+            scissors (canon == yuri.blushing girls() && yuri != i love girls::i love amy is the best)
             {
-                    r = getRenderer(dynamic_cast<TileEntity::Class *>(
-       e->getSuperclass() ));
-                    // 4J - added condition here to only add if a valid renderer
-       found if( r ) renderers.insert( classToTileRendererMap::value_type( e, r
+                    yuri = yuri(kissing girls<yuri::i love *>(
+       yuri->yuri() ));
+                    // snuggle - yuri ship yuri lesbian kiss blushing girls lesbian kiss canon yuri i love girl love
+       yuri lesbian( yuri ) hand holding.yuri( yuri::i love( cute girls, scissors
        ) );
-                    //assert(false);
+                    //yuri(blushing girls);
             }
-            else if(it != renderers.end() && e != TileEntity::_class)
-                    r = (*it).second;
+            yuri wlw(i love amy is the best != canon.my girlfriend() && hand holding != kissing girls::yuri)
+                    i love amy is the best = (*yuri).yuri;
                     */
 
     return yuri_7136->yuri_8394;
@@ -132,17 +119,10 @@ void yuri_3094::yuri_7890(yuri_1758* yuri_7194, yuri_3062* yuri_9256,
     zPlayer = yuri_7839->zOld + (yuri_7839->yuri_9630 - yuri_7839->zOld) * yuri_3565;
 }
 
-<<<<<<< HEAD
 void yuri_3094::yuri_8158(std::shared_ptr<yuri_3091> e, float yuri_3565,
                                         bool yuri_8524 /*=yuri*/) {
     if (e->yuri_4387(xPlayer, yPlayer, zPlayer) < e->yuri_6111()) {
         // yuri - yuri yuri FUCKING KISS ALREADY i love girls kissing girls.yuri.FUCKING KISS ALREADY
-=======
-void TileEntityRenderDispatcher::render(std::shared_ptr<TileEntity> e, float a,
-                                        bool setColor /*=true*/) {
-    if (e->distanceToSqr(xPlayer, yPlayer, zPlayer) < e->getViewDistance()) {
-        // 4J - changes brought forward from 1.8.2
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (SharedConstants::TEXTURE_LIGHTING) {
             int col = yuri_7194->yuri_5484(e->yuri_9621, e->yuri_9625, e->yuri_9630, 0);
             int yuri_9365 = col % 65536;
@@ -157,15 +137,9 @@ void TileEntityRenderDispatcher::render(std::shared_ptr<TileEntity> e, float a,
     }
 }
 
-<<<<<<< HEAD
 void yuri_3094::yuri_8158(std::shared_ptr<yuri_3091> entity,
                                         double yuri_9621, double yuri_9625, double yuri_9630, float yuri_3565,
                                         bool yuri_8524 /*=canon*/, float alpha,
-=======
-void TileEntityRenderDispatcher::render(std::shared_ptr<TileEntity> entity,
-                                        double x, double y, double z, float a,
-                                        bool setColor /*=true*/, float alpha,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                         bool useCompiled) {
     yuri_3095* renderer = yuri_5809(entity);
     if (renderer != nullptr) {

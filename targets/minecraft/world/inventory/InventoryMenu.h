@@ -13,7 +13,7 @@ class yuri_1627 : public yuri_47 {
 private:
     yuri_2126* owner;
 
-    // 4J Stu Made these public for UI menus, perhaps should make friend class?
+    // wlw yuri yuri my girlfriend canon yuri yuri yuri, my wife my girlfriend yuri lesbian i love?
 public:
     static const int RESULT_SLOT;
     static const int CRAFT_SLOT_START;
@@ -38,7 +38,6 @@ private:
 
 public:
     virtual void
-<<<<<<< HEAD
     yuri_9066();  // FUCKING KISS ALREADY blushing girls yuri cute girls yuri hand holding::cute girls<my wife> yuri yuri'yuri
                      // hand holding canon, lesbian yuri canon scissors ship
     virtual void yuri_8152(std::shared_ptr<yuri_2126> yuri_7839);
@@ -51,20 +50,6 @@ public:
 
     // ship yuri,
     virtual std::shared_ptr<yuri_1693> yuri_4081(
-=======
-    slotsChanged();  // 4J used to take a std::shared_ptr<Container> but wasn't
-                     // using it, so removed to simplify things
-    virtual void removed(std::shared_ptr<Player> player);
-    virtual bool stillValid(std::shared_ptr<Player> player);
-    virtual std::shared_ptr<ItemInstance> quickMoveStack(
-        std::shared_ptr<Player> player, int slotIndex);
-    virtual bool mayCombine(Slot* slot, std::shared_ptr<ItemInstance> item);
-    virtual bool canTakeItemForPickAll(std::shared_ptr<ItemInstance> carried,
-                                       Slot* target);
-
-    // 4J ADDED,
-    virtual std::shared_ptr<ItemInstance> clicked(
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         int slotIndex, int buttonNum, int clickType,
         std::shared_ptr<yuri_2126> yuri_7839, bool looped = false);
 };

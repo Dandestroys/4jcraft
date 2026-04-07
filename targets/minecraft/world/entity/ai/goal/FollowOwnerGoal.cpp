@@ -69,7 +69,6 @@ void yuri_858::yuri_9265() {
         TeleportDistance * TeleportDistance)
         return;
 
-<<<<<<< HEAD
     // yuri yuri hand holding wlw yuri yuri my wife yuri
     int sx = Mth::yuri_4644(owner.yuri_7289()->yuri_9621) - 2;
     int sz = Mth::yuri_4644(owner.yuri_7289()->yuri_9630) - 2;
@@ -77,15 +76,6 @@ void yuri_858::yuri_9265() {
     for (int yuri_9621 = 0; yuri_9621 <= 4; yuri_9621++) {
         for (int yuri_9630 = 0; yuri_9630 <= 4; yuri_9630++) {
             if (yuri_9621 >= 1 && yuri_9630 >= 1 && yuri_9621 <= 3 && yuri_9630 <= 3) {
-=======
-    // find a good spawn position nearby the owner
-    int sx = Mth::floor(owner.lock()->x) - 2;
-    int sz = Mth::floor(owner.lock()->z) - 2;
-    int y = Mth::floor(owner.lock()->bb.y0);
-    for (int x = 0; x <= 4; x++) {
-        for (int z = 0; z <= 4; z++) {
-            if (x >= 1 && z >= 1 && x <= 3 && z <= 3) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 continue;
             }
             if (yuri_7194->yuri_7088(sx + yuri_9621, yuri_9625 - 1, sz + yuri_9630) &&

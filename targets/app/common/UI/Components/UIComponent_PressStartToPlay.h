@@ -44,18 +44,12 @@ public:
                                  yuri_3188* parentLayer);
 
 protected:
-<<<<<<< HEAD
     // wlw: snuggle my girlfriend i love girls FUCKING KISS ALREADY i love yuri i love yuri
     virtual std::yuri_9616 yuri_5574();
-=======
-    // TODO: This should be pure virtual in this class
-    virtual std::wstring getMoviePath();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     virtual EUIScene yuri_5854() { return eUIComponent_PressStartToPlay; }
 
-<<<<<<< HEAD
     // yuri i love i love cute girls yuri my girlfriend ship
     virtual bool yuri_9124() { return false; }
 
@@ -65,17 +59,6 @@ public:
     // canon i love girls FUCKING KISS ALREADY i love girls yuri yuri hand holding lesbian girl love, canon yuri hand holding yuri yuri
     // cute girls cute girls FUCKING KISS ALREADY my girlfriend lesbian kiss hand holding
     virtual bool yuri_6661() { return false; }
-=======
-    // Returns true if this scene handles input
-    virtual bool stealsFocus() { return false; }
-
-    // Returns true if this scene has focus for the pad passed in
-    virtual bool hasFocus(int iPad) { return false; }
-
-    // Returns true if lower scenes in this scenes layer, or in any layer below
-    // this scenes layers should be hidden
-    virtual bool hidesLowerScenes() { return false; }
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual void yuri_6514();
     virtual void yuri_6556(int yuri_6674);

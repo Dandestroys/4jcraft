@@ -25,15 +25,9 @@ bool yuri_3179::yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
     yuri_3162::yuri_8531(yuri_3162::eSlider);
     bool success = yuri_3163::yuri_8980(scene, yuri_7791, controlName);
 
-<<<<<<< HEAD
     // FUCKING KISS ALREADY yuri girl love
     m_funcSetRelativeSliderPos = yuri_8069(yuri_1720"SetRelativeSliderPos");
     m_funcGetRealWidth = yuri_8069(yuri_1720"GetRealWidth");
-=======
-    // Slider specific initialisers
-    m_funcSetRelativeSliderPos = registerFastName(L"SetRelativeSliderPos");
-    m_funcGetRealWidth = registerFastName(L"GetRealWidth");
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return success;
 }

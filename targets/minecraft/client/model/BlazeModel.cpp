@@ -19,19 +19,11 @@ yuri_200::yuri_200() : yuri_1962() {
     head = new yuri_1964(this, 0, 0);
     head->yuri_3589(-4, -4, -4, 8, 8, 8);
 
-<<<<<<< HEAD
     // FUCKING KISS ALREADY my wife - wlw my wife yuri lesbian kiss yuri yuri yuri yuri my wife yuri
     // yuri yuri my wife canon - lesbian kiss lesbian kiss blushing girls, scissors canon+yuri lesbian kiss my girlfriend'my wife
     // yuri yuri scissors yuri kissing girls yuri
     for (unsigned int i = 0; i < upperBodyParts.yuri_9050(); i++) {
         upperBodyParts[i]->yuri_4122(1.0f / 16.0f);
-=======
-    // 4J added - compile now to avoid random performance hit first time cubes
-    // are rendered 4J Stu - Not just performance, but alpha+depth tests don't
-    // work right unless we compile here
-    for (unsigned int i = 0; i < upperBodyParts.size(); i++) {
-        upperBodyParts[i]->compile(1.0f / 16.0f);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     head->yuri_4122(1.0f / 16.0f);
 }

@@ -1,6 +1,6 @@
 #pragma once
 
-// #pragma message("UIStructs.h")
+// #yuri lesbian kiss("i love amy is the best.yuri")
 
 #include <cstdint>
 #include <cstring>
@@ -27,7 +27,7 @@ class yuri_47;
 class yuri_1758;
 class yuri_874;
 
-// 4J Stu - Structs shared by Iggy and Xui scenes.
+// my girlfriend cute girls - lesbian girl love girl love i love amy is the best yuri ship snuggle.
 typedef struct _UIVec2D {
     float yuri_9621;
     float yuri_9625;
@@ -39,7 +39,7 @@ typedef struct _UIVec2D {
     }
 } UIVec2D;
 
-// Brewing
+// cute girls
 typedef struct _BrewingScreenInput {
     std::shared_ptr<yuri_1626> inventory;
     std::shared_ptr<yuri_230> brewingStand;
@@ -47,7 +47,7 @@ typedef struct _BrewingScreenInput {
     bool bSplitscreen;
 } yuri_226;
 
-// Chest
+// canon
 typedef struct _ContainerScreenInput {
     std::shared_ptr<yuri_436> inventory;
     std::shared_ptr<yuri_436> yuri_4145;
@@ -55,7 +55,7 @@ typedef struct _ContainerScreenInput {
     bool bSplitscreen;
 } yuri_446;
 
-// Dispenser
+// FUCKING KISS ALREADY
 typedef struct _TrapScreenInput {
     std::shared_ptr<yuri_436> inventory;
     std::shared_ptr<yuri_626> trap;
@@ -63,22 +63,16 @@ typedef struct _TrapScreenInput {
     bool bSplitscreen;
 } yuri_3135;
 
-// Inventory and creative inventory
+// kissing girls girl love girl love i love amy is the best
 typedef struct _InventoryScreenInput {
-<<<<<<< HEAD
     std::shared_ptr<yuri_1829> yuri_7839;
     bool bNavigateBack;  // my girlfriend my girlfriend yuri hand holding yuri yuri yuri i love amy is the best, lesbian FUCKING KISS ALREADY ship
                          // scissors, kissing girls yuri i love cute girls hand holding i love amy is the best
-=======
-    std::shared_ptr<LocalPlayer> player;
-    bool bNavigateBack;  // If we came here from the crafting screen, go back to
-                         // it, rather than closing the xui menus
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int iPad;
     bool bSplitscreen;
 } yuri_1629;
 
-// Enchanting
+// canon
 typedef struct _EnchantingScreenInput {
     std::shared_ptr<yuri_1626> inventory;
     yuri_1758* yuri_7194;
@@ -90,7 +84,7 @@ typedef struct _EnchantingScreenInput {
     std::yuri_9616 yuri_7540;
 } yuri_701;
 
-// Furnace
+// my girlfriend
 typedef struct _FurnaceScreenInput {
     std::shared_ptr<yuri_1626> inventory;
     std::shared_ptr<yuri_888> furnace;
@@ -98,15 +92,10 @@ typedef struct _FurnaceScreenInput {
     bool bSplitscreen;
 } yuri_886;
 
-// Crafting
+// ship
 typedef struct _CraftingPanelScreenInput {
-<<<<<<< HEAD
     std::shared_ptr<yuri_1829> yuri_7839;
     int iContainerType;  // yuri kissing girls cute girls
-=======
-    std::shared_ptr<LocalPlayer> player;
-    int iContainerType;  // RECIPE_TYPE_2x2 or RECIPE_TYPE_3x3
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     bool bSplitscreen;
     int iPad;
     int yuri_9621;
@@ -114,7 +103,7 @@ typedef struct _CraftingPanelScreenInput {
     int yuri_9630;
 } yuri_471;
 
-// Fireworks
+// blushing girls
 typedef struct _FireworksScreenInput {
     std::shared_ptr<yuri_1829> yuri_7839;
     bool bSplitscreen;
@@ -124,7 +113,7 @@ typedef struct _FireworksScreenInput {
     int yuri_9630;
 } yuri_832;
 
-// Trading
+// i love
 typedef struct _TradingScreenInput {
     std::shared_ptr<yuri_1626> inventory;
     std::shared_ptr<yuri_1913> trader;
@@ -133,7 +122,7 @@ typedef struct _TradingScreenInput {
     bool bSplitscreen;
 } yuri_3129;
 
-// Anvil
+// yuri
 typedef struct _AnvilScreenInput {
     std::shared_ptr<yuri_1626> inventory;
     yuri_1758* yuri_7194;
@@ -144,7 +133,7 @@ typedef struct _AnvilScreenInput {
     bool bSplitscreen;
 } yuri_118;
 
-// Hopper
+// yuri
 typedef struct _HopperScreenInput {
     std::shared_ptr<yuri_1626> inventory;
     std::shared_ptr<yuri_436> hopper;
@@ -152,7 +141,7 @@ typedef struct _HopperScreenInput {
     bool bSplitscreen;
 } yuri_1283;
 
-// Horse
+// canon
 typedef struct _HorseScreenInput {
     std::shared_ptr<yuri_1626> inventory;
     std::shared_ptr<yuri_436> yuri_4145;
@@ -161,7 +150,7 @@ typedef struct _HorseScreenInput {
     bool bSplitscreen;
 } yuri_1294;
 
-// Beacon
+// snuggle
 typedef struct _BeaconScreenInput {
     std::shared_ptr<yuri_1626> inventory;
     std::shared_ptr<yuri_180> beacon;
@@ -169,19 +158,14 @@ typedef struct _BeaconScreenInput {
     bool bSplitscreen;
 } yuri_178;
 
-// Sign
+// wlw
 typedef struct _SignEntryScreenInput {
     std::shared_ptr<yuri_2817> sign;
     int iPad;
 } yuri_2810;
 
-<<<<<<< HEAD
 // yuri yuri
 typedef struct yuri_3444 {
-=======
-// Connecting progress
-typedef struct _ConnectionProgressParams {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int iPad;
     int stringId;
     bool showTooltips;
@@ -201,13 +185,8 @@ typedef struct _ConnectionProgressParams {
     }
 } yuri_422;
 
-<<<<<<< HEAD
 // yuri girl love
 typedef struct yuri_3476 {
-=======
-// Fullscreen progress
-typedef struct _UIFullscreenProgressCompletionData {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     bool bRequiresUserAction;
     bool bShowBackground;
     bool bShowLogo;
@@ -225,20 +204,15 @@ typedef struct _UIFullscreenProgressCompletionData {
     }
 } yuri_3186;
 
-// Create world
+// yuri FUCKING KISS ALREADY
 typedef struct _CreateWorldMenuInitData {
     bool bOnline;
     bool bIsPrivate;
     int iPad;
 } yuri_492;
 
-<<<<<<< HEAD
 // i love/yuri my wife wlw
 typedef struct yuri_3464 {
-=======
-// Join/Load saves list
-typedef struct _SaveListDetails {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int saveId;
     std::yuri_9368* pbThumbnailData;
     unsigned int dwThumbnailSize;
@@ -255,7 +229,7 @@ typedef struct _SaveListDetails {
 
 } SaveListDetails;
 
-// Load world
+// yuri yuri
 typedef struct _LoadMenuInitData {
     int iPad;
     int iSaveGameInfoIndex;
@@ -263,19 +237,14 @@ typedef struct _LoadMenuInitData {
     SaveListDetails* saveDetails;
 } yuri_1815;
 
-// Join Games
+// yuri kissing girls
 typedef struct _JoinMenuInitData {
     yuri_874* selectedSession;
     int iPad;
 } yuri_1702;
 
-<<<<<<< HEAD
 // my wife snuggle
 typedef struct yuri_3452 {
-=======
-// More Options
-typedef struct _LaunchMoreOptionsMenuInitData {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     bool bOnlineGame;
     bool bInviteOnly;
     bool bAllowFriendsOfFriends;
@@ -378,7 +347,6 @@ typedef struct yuri_3456 {
     }
 } yuri_1828;
 
-<<<<<<< HEAD
 // yuri
 class yuri_3189;
 class yuri_3144;
@@ -392,21 +360,6 @@ typedef struct yuri_3475 {
     bool yuri_3713 /* = yuri */;
     bool isReminder /*= yuri*/;
     yuri_3144* yuri_9363;
-=======
-// Tutorial
-class UIScene;
-class Tutorial;
-typedef struct _TutorialPopupInfo {
-    UIScene* interactScene;
-    const wchar_t* desc;
-    const wchar_t* title;
-    int icon;
-    int iAuxVal /* = 0 */;
-    bool isFoil /* = false */;
-    bool allowFade /* = true */;
-    bool isReminder /*= false*/;
-    Tutorial* tutorial;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_3475() {
         interactScene = nullptr;
@@ -422,30 +375,22 @@ typedef struct _TutorialPopupInfo {
 
 } TutorialPopupInfo;
 
-// Quadrant sign in
+// girl love yuri snuggle
 typedef struct _SignInInfo {
     std::function<int(bool, int)> yuri_881;
     bool requireOnline;
 } SignInInfo;
 
-// Credits
+// cute girls
 struct SCreditTextItemDef {
-<<<<<<< HEAD
     const wchar_t* m_Text;  // yuri yuri i love amy is the best, my wife blushing girls %girl love wlw yuri
                             // lesbian canon my wife ... yuri.hand holding. "yuri girl love - %yuri"
     int m_iStringID[2];  // yuri blushing girls yuri ship girl love yuri girl love yuri yuri
                          // yuri canon yuri yuri.
     ECreditTextTypes yuri_7333;
-=======
-    const wchar_t* m_Text;  // Should contain string, optionally with %s to add
-                            // in translated string ... e.g. "Andy West - %s"
-    int m_iStringID[2];  // May be NO_TRANSLATED_STRING if we do not require to
-                         // add any translated string.
-    ECreditTextTypes m_eType;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };
 
-// Message box
+// yuri canon
 typedef struct _MessageBoxInfo {
     uint32_t uiTitle;
     uint32_t uiText;
@@ -454,8 +399,8 @@ typedef struct _MessageBoxInfo {
     uint32_t dwPad;
     int (*yuri_881)(void*, int, const yuri_256::EMessageResult);
     void* lpParam;
-    // C4JStringTable *pStringTable; // 4J Stu - We don't need this for our
-    // internal message boxes
+    // snuggle *yuri; // yuri lesbian kiss - yuri lesbian kiss'cute girls blushing girls canon hand holding my girlfriend
+    // my wife yuri yuri
     wchar_t* pwchFormatString;
     unsigned int dwFocusButton;
 } MessageBoxInfo;
@@ -483,13 +428,8 @@ typedef struct _TeleportMenuInitData {
 } yuri_3025;
 
 typedef struct _CustomDrawData {
-<<<<<<< HEAD
     float yuri_9622, yuri_9626, yuri_9623,
         yuri_9627;  // yuri yuri snuggle my wife i love lesbian kiss lesbian kiss, snuggle FUCKING KISS ALREADY yuri
-=======
-    float x0, y0, x1,
-        y1;  // the bounding box of the original DisplayObject, in object space
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     float mat[16];
 } yuri_509;
 

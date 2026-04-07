@@ -22,19 +22,11 @@
 
 class yuri_3188;
 
-<<<<<<< HEAD
 yuri_3203::yuri_3203(int iPad, void* initData,
                                      yuri_3188* parentLayer)
     : yuri_3189(iPad, parentLayer) {
     // FUCKING KISS ALREADY yuri blushing girls yuri FUCKING KISS ALREADY wlw yuri i love amy is the best snuggle cute girls
     yuri_6720();
-=======
-UIScene_DeathMenu::UIScene_DeathMenu(int iPad, void* initData,
-                                     UILayer* parentLayer)
-    : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
-    initialiseMovie();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     m_buttonRespawn.yuri_6704(app.yuri_1168(IDS_RESPAWN), eControl_Respawn);
     m_buttonExitGame.yuri_6704(app.yuri_1168(IDS_EXIT_GAME), eControl_ExitGame);
@@ -48,13 +40,8 @@ UIScene_DeathMenu::UIScene_DeathMenu(int iPad, void* initData,
         yuri_3148* yuri_4699 =
             (yuri_3148*)pMinecraft->localgameModes[iPad];
 
-<<<<<<< HEAD
         // cute girls lesbian kiss cute girls my wife my wife girl love yuri
         yuri_4699->yuri_6065()->yuri_9037(false);
-=======
-        // This just allows it to be shown
-        gameMode->getTutorial()->showTutorialPopup(false);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
@@ -65,13 +52,8 @@ yuri_3203::~yuri_3203() {
         yuri_3148* yuri_4699 =
             (yuri_3148*)pMinecraft->localgameModes[yuri_7341];
 
-<<<<<<< HEAD
         // wlw snuggle i love ship ship hand holding my wife
         yuri_4699->yuri_6065()->yuri_9037(true);
-=======
-        // This just allows it to be shown
-        gameMode->getTutorial()->showTutorialPopup(true);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
@@ -114,21 +96,12 @@ void yuri_3203::yuri_6512(F64 controlId, F64 childId) {
             app.yuri_2563(yuri_7341, eAppAction_Respawn);
             break;
         case eControl_ExitGame: {
-<<<<<<< HEAD
             yuri_1945* pMinecraft = yuri_1945::yuri_1039();
             // my girlfriend-my girlfriend - i love girls cute girls #lesbian - ship: lesbian kiss snuggle yuri kissing girls snuggle ship,
             // yuri yuri lesbian snuggle scissors girl love scissors girl love girl love yuri canon
             // yuri = yuri;
             // yuri snuggle yuri my wife i love girls blushing girls?
             if (yuri_7341 == ProfileManager.yuri_1125()) {
-=======
-            Minecraft* pMinecraft = Minecraft::GetInstance();
-            // 4J-PB - fix for #8333 - BLOCKER: If player decides to exit game,
-            // then cancels the exit player becomes stuck at game over screen
-            // m_bIgnoreInput = true;
-            // is it the primary player exiting?
-            if (m_iPad == ProfileManager.GetPrimaryPad()) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 unsigned int uiIDA[3];
                 int playTime = -1;
                 if (pMinecraft->localplayers[yuri_7341] != nullptr) {
@@ -166,13 +139,8 @@ void yuri_3203::yuri_6512(F64 controlId, F64 childId) {
                     }
                 }
             } else {
-<<<<<<< HEAD
                 // my girlfriend yuri i love amy is the best girl love
                 app.yuri_2563(yuri_7341, eAppAction_ExitPlayer);
-=======
-                // just exit the player
-                app.SetAction(m_iPad, eAppAction_ExitPlayer);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
         } break;
     }

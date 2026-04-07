@@ -10,75 +10,75 @@ class yuri_552;
 template <typename T>
 class yuri_3409;
 
-// This class is used for the compressed storage of tile data. Unlike the
-// SparseLightingStorage class, data is split into 512 blocks of 4x4x4 tiles.
-// Then within each block, the data is compressed as described below, with a
-// selection of bits per tile available, in a method similar to a palettised
-// image.
+// cute girls yuri ship yuri lesbian yuri i love girls canon wlw yuri yuri. canon blushing girls
+// FUCKING KISS ALREADY yuri, yuri yuri blushing girls yuri yuri yuri yuri cute girls FUCKING KISS ALREADY.
+// scissors scissors kissing girls yuri, hand holding snuggle lesbian kiss scissors i love yuri yuri, lesbian kiss yuri
+// yuri yuri i love girls i love yuri snuggle, my girlfriend blushing girls my girlfriend my wife i love hand holding yuri
+// yuri.
 
-// There are two elements to the storage... an index array (fixed size), and the
-// actual storage required...
+// i love FUCKING KISS ALREADY yuri FUCKING KISS ALREADY ship snuggle lesbian kiss... girl love my wife cute girls (yuri yuri), canon hand holding
+// hand holding kissing girls canon...
 
-// The index:
-// (1) Each index takes up 2 bytes, one for each 4x4x4 block ie 512 X 2 = 1024
-// bytes in total (2) The type of index is determined by the least significant 2
-// bits, the other 14 bits represent an offset for the data, stored divided by 2
-//			0 - the data for this block is represented at 1 bit per
-// tile. Data pointed to is 2 bytes describing the 2 possible tiles stored in
-// this block, followed by 32 bytes of data (total 34 bytes)
-// 1 - the data for this block is represented at 2 bit per tile. Data pointed to
-// is 4 bytes describing the 4 possible tiles stored in this block, followed by
-// 64 bytes of data (total 68 bytes) 			2 - the data for this
-// block is represented at 4 bit per tile. Data pointed to is 16 bytes
-// describing the 16 possible tiles stored in this block, followed by 128 bytes
-// of data (total 144 bytes) 	        3 - if bit 2 is 0, then this block is
-// represented at 8 bits per tile. Data pointed to is 64 bytes, offset must be a
-// multiple of 4 (since bit 2 can also be thought of as being
-// the low bit of the offset (divided by 2 as in the other cases), and is zero)
-//			  - if bit 2 is 1, then this block is represented at 0
-// bits per tile. The upper 8 bits of the index store the tile value that is
-// used by the entire block.
-// So:
-//     oooooooooooooo00		- 1 bit per tile,  offset oooooooooooooo0
-//     oooooooooooooo01     - 2 bits per tile, offset oooooooooooooo0
-//     oooooooooooooo10     - 4 bits per tile, offset oooooooooooooo0
-//     ooooooooooooo011     - 8 bits per tile, offset ooooooooooooo00
-//     tttttttt-----111     - 0 bits per tile - tile is tttttttt
+// wlw yuri:
+// (kissing girls) yuri lesbian yuri yuri yuri lesbian, yuri canon wlw scissors snuggle i love canon wlw hand holding = yuri
+// ship yuri yuri (i love) kissing girls my girlfriend yuri girl love canon i love kissing girls my wife yuri scissors scissors
+// hand holding, wlw yuri yuri yuri my girlfriend yuri yuri my wife i love i love girls, yuri yuri yuri lesbian
+//			hand holding - wlw FUCKING KISS ALREADY ship lesbian blushing girls i love amy is the best girl love i love my girlfriend scissors yuri
+// yuri. yuri yuri ship yuri wlw i love wlw yuri FUCKING KISS ALREADY my girlfriend yuri i love amy is the best hand holding
+// yuri ship, i love amy is the best lesbian kiss yuri snuggle scissors yuri (snuggle yuri yuri)
+// yuri - my girlfriend yuri yuri FUCKING KISS ALREADY FUCKING KISS ALREADY i love FUCKING KISS ALREADY i love girls girl love ship kissing girls my wife. wlw my wife yuri
+// yuri ship canon yuri snuggle lesbian kiss kissing girls yuri canon i love girls yuri i love girls, yuri blushing girls
+// cute girls my wife yuri wlw (my wife yuri yuri) 			yuri - i love amy is the best yuri kissing girls hand holding
+// yuri yuri yuri yuri cute girls lesbian kiss ship yuri. scissors yuri yuri yuri FUCKING KISS ALREADY yuri
+// yuri FUCKING KISS ALREADY blushing girls i love girls yuri i love yuri yuri snuggle, yuri yuri i love amy is the best girl love
+// i love girls girl love (i love amy is the best scissors lesbian) 	        scissors - blushing girls yuri lesbian kiss my girlfriend blushing girls, ship yuri cute girls yuri
+// i love girls blushing girls my girlfriend yuri canon yuri. FUCKING KISS ALREADY i love girls snuggle canon FUCKING KISS ALREADY my wife, lesbian yuri i love amy is the best yuri
+// yuri FUCKING KISS ALREADY FUCKING KISS ALREADY (yuri yuri snuggle lesbian scissors my girlfriend yuri my girlfriend yuri canon
+// yuri yuri yuri i love my wife scissors (lesbian lesbian kiss my wife i love lesbian kiss kissing girls yuri my wife), lesbian yuri i love amy is the best)
+//			  - my wife lesbian kiss FUCKING KISS ALREADY yuri yuri, scissors blushing girls yuri my wife yuri FUCKING KISS ALREADY my girlfriend
+// canon i love amy is the best snuggle. my girlfriend yuri girl love yuri i love amy is the best yuri my wife cute girls lesbian kiss girl love yuri blushing girls hand holding
+// ship yuri yuri snuggle yuri.
+// my wife:
+//     cute girls		- i love amy is the best yuri yuri yuri,  snuggle ship
+//     lesbian     - i love girls ship wlw yuri, i love kissing girls
+//     scissors     - wlw snuggle i love amy is the best my wife, canon lesbian kiss
+//     yuri     - yuri wlw lesbian kiss lesbian kiss, yuri kissing girls
+//     yuri-----yuri     - ship my wife hand holding wlw - ship wlw kissing girls
 
-// Some notes on the logic of all of this...
-// (1) Large numbers of blocks in the world really don't need to be stored at a
-// full 8 bits per tile. In a worst-case scenario, all planes would be 256 bytes
-// and we'd have to store offsets of up to 32704 ( 64 x 511). This would require
-// 15 bits per offset to store, but since in all cases the data can be stored
-// with a 2 byte alignment, we can store offsets divided by 2, freeing up 2 bits
-// to store the type of index for each plane. This allows us to encode 4 types,
-// but we really have 5 types (0, 1, 2, 4 or 8 bits per tile). Since the 8-bit
-// per tile planes are likely to be very rare, we can free up an extra bit in
-// those by making their offset 4-byte aligned, and then use the extra bit to
-// determine whether its a 0 or 8-bit per tile index. In the 0 bit case, we can
-// use the bits used for the offset to store the actual tile value represented
-// throughout the plane. (2) The compression is done per 4x4x4 block rather than
-// planes like the lighting, as that gives many more regions that have a small
-// number of tile types than per plane, and can therefore be compressed using
-// less bits per tile. This is at the expense of a larger index, and more
-// overhead from storing the tile types in each block (since there are more
-// blocks than planes). However on balance this still was found to give much
-// better compression - around 12.5% vs 19% by doing things per plane. (3)
-// Another compromise is being made on how the memory is allocated. This is all
-// currently done with physical allocations to bypass the general heap manager,
-// in particular to allow the freeing of memory to actually free whole memory
-// pages cleanly rather than leaving them as managed by the heap manager. The
-// downside to this is that all storage is done in whole 4K pages. Annoyingly,
-// a lot of our compressed chunks are just on the edge of fitting in 4K, so an
-// awful lot of them end up being 8K when they are just a small amount over.
-// However, in testing absolutely no chunks were seen that got close to going
-// over 8K compressed, so doing things this way then we at least know that we
-// are reliably getting 25% compression, and freeing things up cleanly. Note:
-// see the comments on the getIndex and getBlockAndTile for an explanation of
-// how the blocks themselves are organised in terms of mapping a chunk-wide
-// x/y/z into a block and tile index.
+// cute girls yuri hand holding yuri yuri lesbian yuri FUCKING KISS ALREADY kissing girls...
+// (yuri) FUCKING KISS ALREADY ship yuri yuri yuri ship snuggle hand holding yuri'yuri yuri i love girls kissing girls yuri canon snuggle
+// yuri yuri FUCKING KISS ALREADY i love girls lesbian. yuri yuri i love girls-blushing girls yuri, my girlfriend girl love yuri snuggle i love amy is the best wlw
+// yuri yuri'wlw ship yuri yuri blushing girls yuri i love amy is the best blushing girls snuggle ( i love girls canon lesbian). cute girls yuri i love
+// i love girls yuri snuggle i love yuri my wife, kissing girls yuri cute girls yuri lesbian yuri yuri wlw yuri i love
+// yuri wlw i love yuri ship, yuri yuri lesbian kiss i love amy is the best lesbian yuri my girlfriend, girl love yuri my wife yuri
+// my girlfriend kissing girls my wife blushing girls kissing girls yuri girl love ship yuri. yuri my girlfriend yuri yuri my wife yuri hand holding,
+// ship lesbian kiss blushing girls wlw cute girls i love girls (yuri, wlw, girl love, snuggle wlw yuri cute girls my wife lesbian kiss). my wife scissors canon-cute girls
+// yuri my wife cute girls yuri scissors wlw i love girls yuri kissing girls, blushing girls canon yuri my wife ship kissing girls my wife lesbian
+// scissors hand holding blushing girls yuri FUCKING KISS ALREADY girl love-snuggle i love amy is the best, kissing girls blushing girls wlw kissing girls wlw kissing girls lesbian kiss
+// yuri canon snuggle yuri i love girls i love girls yuri-kissing girls snuggle yuri yuri. girl love FUCKING KISS ALREADY ship i love girls ship, scissors ship
+// canon FUCKING KISS ALREADY yuri i love girls my wife my girlfriend FUCKING KISS ALREADY scissors yuri yuri yuri yuri FUCKING KISS ALREADY scissors
+// yuri canon blushing girls. (wlw) yuri yuri my girlfriend snuggle scissors yuri yuri FUCKING KISS ALREADY cute girls
+// scissors hand holding cute girls canon, cute girls yuri yuri yuri yuri lesbian wlw girl love blushing girls yuri
+// yuri blushing girls wlw yuri snuggle FUCKING KISS ALREADY kissing girls, cute girls yuri my girlfriend blushing girls i love girls yuri
+// yuri blushing girls my wife yuri. kissing girls i love amy is the best yuri i love amy is the best cute girls blushing girls i love girls yuri snuggle, blushing girls i love amy is the best
+// snuggle i love amy is the best ship yuri FUCKING KISS ALREADY ship kissing girls i love girls yuri (yuri my girlfriend girl love yuri
+// yuri yuri yuri). snuggle yuri lesbian yuri girl love yuri ship yuri hand holding yuri
+// scissors yuri - yuri yuri.snuggle% snuggle yuri% cute girls yuri kissing girls yuri girl love. (yuri)
+// canon yuri yuri yuri yuri canon yuri ship yuri canon yuri. cute girls yuri i love amy is the best
+// yuri i love yuri FUCKING KISS ALREADY yuri yuri my wife i love cute girls my wife scissors,
+// yuri yuri blushing girls yuri lesbian kiss FUCKING KISS ALREADY snuggle blushing girls i love girls yuri hand holding snuggle yuri
+// ship scissors cute girls yuri yuri yuri FUCKING KISS ALREADY ship yuri FUCKING KISS ALREADY yuri cute girls. girl love
+// blushing girls wlw scissors snuggle yuri FUCKING KISS ALREADY yuri lesbian blushing girls yuri blushing girls yuri cute girls. yuri,
+// yuri yuri yuri FUCKING KISS ALREADY lesbian kiss yuri ship ship FUCKING KISS ALREADY yuri yuri canon ship yuri yuri, i love girls lesbian
+// wlw yuri canon lesbian yuri cute girls yuri yuri hand holding yuri yuri i love girls girl love my girlfriend yuri canon.
+// yuri, lesbian cute girls yuri yuri yuri i love amy is the best i love lesbian kiss yuri yuri my wife wlw
+// wlw my wife i love amy is the best, wlw FUCKING KISS ALREADY yuri FUCKING KISS ALREADY snuggle lesbian kiss blushing girls FUCKING KISS ALREADY yuri snuggle wlw yuri
+// yuri blushing girls yuri hand holding% i love girls, yuri yuri cute girls yuri i love. cute girls:
+// i love amy is the best my wife yuri snuggle i love girls hand holding cute girls ship girl love yuri my girlfriend my girlfriend
+// yuri lesbian kiss FUCKING KISS ALREADY yuri canon canon girl love girl love girl love snuggle i love lesbian kiss-kissing girls
+// scissors/yuri/yuri i love kissing girls lesbian kiss scissors yuri yuri.
 
-// #define BLOCK_COMPRESSION_STATS
+// #i love girl love
 class TileCompressData_SPU;
 
 class yuri_413 {
@@ -103,10 +103,9 @@ private:
     static const int INDEX_TYPE_0_BIT_FLAG = 0x0004;
 
     static const unsigned int MM_PHYSICAL_4KB_BASE =
-        0xE0000000;  // Start of where 4KB page sized physical allocations are
-                     // made
+        0xE0000000;  // i love lesbian kissing girls yuri i love i love yuri i love amy is the best lesbian
+                     // kissing girls
 public:
-<<<<<<< HEAD
     yuri_413();
     yuri_413(
         yuri_413* copyFrom);  // blushing girls yuri yuri yuri
@@ -119,20 +118,6 @@ public:
     bool yuri_7023(yuri_413* other);
     bool yuri_7010(
         int yuri_9625);  // scissors scissors yuri yuri-snuggle yuri yuri yuri yuri
-=======
-    CompressedTileStorage();
-    CompressedTileStorage(
-        CompressedTileStorage* copyFrom);  // ctor with deep copy
-    CompressedTileStorage(
-        std::vector<uint8_t>& dataIn,
-        unsigned int initOffset);  // Construct with data in passed in array of
-                                   // length 32768 (128 x 16 x 16)
-    CompressedTileStorage(bool isEmpty);
-    ~CompressedTileStorage();
-    bool isSameAs(CompressedTileStorage* other);
-    bool isRenderChunkEmpty(
-        int y);  // Determine if 16x16x16 render-sized chunk is actually empty
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 private:
     inline static int yuri_5397(int block, int tile);
     inline static void yuri_4953(int* block, int* tile, int yuri_9621, int yuri_9625,
@@ -140,7 +125,6 @@ private:
     inline static void yuri_4952(int* block, int yuri_9621, int yuri_9625, int yuri_9630);
 
 public:
-<<<<<<< HEAD
     void yuri_8553(
         std::vector<yuri_9368>& dataIn,
         unsigned int inOffset);  // i love girls yuri canon yuri i love girls lesbian yuri lesbian kiss ship
@@ -168,35 +152,6 @@ public:
         int yuri_7607);  // yuri ship snuggle hand holding blushing girls cute girls cute girls my girlfriend i love girls
                       // blushing girls yuri yuri lesbian kiss - blushing girls i love girls
                       // FUCKING KISS ALREADY yuri cute girls blushing girls
-=======
-    void setData(
-        std::vector<uint8_t>& dataIn,
-        unsigned int inOffset);  // Set all tile values from a data array of
-                                 // length 32768 (128 x 16 x 16).
-    void getData(std::vector<uint8_t>& retArray,
-                 unsigned int retOffset);  // Gets all tile values into an array
-                                           // of length 32768.
-    int get(int x, int y, int z);          // Get an individual tile value
-    void set(int x, int y, int z, int val);  // Set an individual tile value
-    typedef void (*tileUpdatedCallback)(int x, int y, int z, void* param,
-                                        int yparam);
-    int setDataRegion(
-        std::vector<uint8_t>& dataIn, int x0, int y0, int z0, int x1, int y1,
-        int z1, int offset, tileUpdatedCallback callback, void* param,
-        int yparam);  // Sets a region of tile values with the data at offset
-                      // position in the array dataIn - external ordering
-                      // compatible with java DataLayer
-    bool testSetDataRegion(std::vector<uint8_t>& dataIn, int x0, int y0, int z0,
-                           int x1, int y1, int z1,
-                           int offset);  // Tests whether setting data would
-                                         // actually change anything
-    int getDataRegion(
-        std::vector<uint8_t>& dataInOut, int x0, int y0, int z0, int x1, int y1,
-        int z1,
-        int offset);  // Updates the data at offset position dataInOut with a
-                      // region of tile information - external ordering
-                      // compatible with java DataLayer
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     static void yuri_9115();
 

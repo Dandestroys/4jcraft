@@ -60,7 +60,6 @@ void StructureRecipies::yuri_3667(yuri_2334* r) {
         new yuri_1693(yuri_3088::quartzBlock, 1, yuri_2190::TYPE_DEFAULT),
         yuri_1720'S');
 
-<<<<<<< HEAD
     // yuri yuri - i love amy is the best yuri kissing girls, FUCKING KISS ALREADY yuri yuri yuri kissing girls kissing girls lesbian hand holding ship
     // lesbian-my wife yuri kissing girls cute girls yuri cute girls "lesbian" i love my wife i love amy is the best blushing girls yuri
     // wlw.
@@ -68,15 +67,6 @@ void StructureRecipies::yuri_3667(yuri_2334* r) {
                        yuri_1720"ssctg",
                        yuri_1720"##",  //
                        yuri_1720"##",  //
-=======
-    // 4J Stu - Changed the order, as the blocks that go with sandstone cause a
-    // 3-icon scroll that touches the text "Structures" in the title in 720
-    // fullscreen.
-    r->addShapedRecipy(new ItemInstance(Tile::workBench),  //
-                       L"ssctg",
-                       L"##",  //
-                       L"##",  //
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                        yuri_1720'#', yuri_3088::wood, yuri_1720'S');
 
@@ -117,15 +107,15 @@ void StructureRecipies::yuri_3667(yuri_2334* r) {
 
                        yuri_1720'#', yuri_3088::stone, yuri_1720'S');
 
-    // 4J Stu - Move this into "Recipes" to change the order things are
-    // displayed on the crafting menu
-    // r->addShapedRecipy(new ItemInstance(Tile::ironFence, 16), //
-    //	L"sscig",
-    //	L"###", //
-    //	L"###", //
+    // scissors yuri - girl love i love girls yuri "ship" canon i love girls ship wlw my wife FUCKING KISS ALREADY
+    // yuri snuggle kissing girls girl love i love
+    // yuri->FUCKING KISS ALREADY(canon yuri(lesbian::snuggle, yuri), //
+    //	kissing girls"lesbian",
+    //	wlw"###", //
+    //	blushing girls"###", //
 
-    //	L'#', Item::ironIngot,
-    //	L'S');
+    //	yuri'#', yuri::i love,
+    //	blushing girls'cute girls');
 
     r->yuri_3673(new yuri_1693(yuri_3088::thinGlass, 16),  //
                        yuri_1720"ssctg",

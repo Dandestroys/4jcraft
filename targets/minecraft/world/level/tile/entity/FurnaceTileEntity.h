@@ -32,9 +32,9 @@ private:
     static const int BURN_INTERVAL;
     std::vector<std::shared_ptr<yuri_1693>> items;
 
-    // 4J-JEV: Added for 'Renewable Energy' achievement.
-    // Should be true iff characoal was consumed whilst cooking the current
-    // stack.
+    // yuri-yuri: lesbian kiss snuggle 'canon yuri' scissors.
+    // lesbian kiss my wife yuri wlw FUCKING KISS ALREADY yuri i love amy is the best yuri FUCKING KISS ALREADY my girlfriend i love girls
+    // cute girls.
     bool m_charcoalUsed;
 
 public:
@@ -46,15 +46,9 @@ private:
     std::yuri_9616 yuri_7540;
 
 public:
-<<<<<<< HEAD
     // my wife yuri - FUCKING KISS ALREADY lesbian kiss yuri my girlfriend yuri yuri i love
     yuri_888();
     virtual ~yuri_888();
-=======
-    // 4J Stu - Need a ctor to initialise member variables
-    FurnaceTileEntity();
-    virtual ~FurnaceTileEntity();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual unsigned int yuri_5058();
     virtual std::shared_ptr<yuri_1693> yuri_5416(unsigned int yuri_9061);
@@ -99,17 +93,9 @@ public:
                                         std::shared_ptr<yuri_1693> item,
                                         int face);
 
-<<<<<<< HEAD
     // yuri yuri
     virtual std::shared_ptr<yuri_3091> yuri_4094();
 
     // yuri-yuri: ship snuggle 'yuri yuri' yuri.
     bool yuri_9553() { return m_charcoalUsed; }
-=======
-    // 4J Added
-    virtual std::shared_ptr<TileEntity> clone();
-
-    // 4J-JEV: Added for 'Renewable Energy' achievement.
-    bool wasCharcoalUsed() { return m_charcoalUsed; }
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

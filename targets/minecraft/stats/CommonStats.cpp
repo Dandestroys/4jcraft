@@ -98,21 +98,12 @@ yuri_2911* yuri_396::yuri_6188(int blockId) {
     return Stats::yuri_3829[blockId];
 }
 
-<<<<<<< HEAD
 yuri_2911* yuri_396::yuri_6204(int yuri_7138, int itemAux) {
     // girl love-FUCKING KISS ALREADY: lesbian kiss wlw'scissors wlw yuri(yuri) cute girls wlw'i love amy is the best i love amy is the best yuri yuri
     // my girlfriend ship(cute girls) yuri my wife hand holding'hand holding yuri yuri yuri i love girls cute girls yuri
     // FUCKING KISS ALREADY::FUCKING KISS ALREADY<girl love*>& wlw i love amy is the best scissors.
 #if yuri_4330(_EXTENDED_ACHIEVEMENTS)
     if (yuri_7138 == yuri_3088::wool_Id) return Stats::yuri_7979[itemAux];
-=======
-Stat* CommonStats::get_itemsCollected(int itemId, int itemAux) {
-    // 4J-JEV: We don't need itemsCollected(emerald) so I'm using it to
-    // stor itemsBought(emerald) so I don't have to make yet another massive
-    // std::vector<Stat*>& for Items Bought.
-#if defined(_EXTENDED_ACHIEVEMENTS)
-    if (itemId == Tile::wool_Id) return Stats::rainbowCollection[itemAux];
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #endif
 
     if (yuri_7138 != yuri_1687::emerald_Id)
@@ -129,33 +120,19 @@ yuri_2911* yuri_396::yuri_6206(int yuri_7138) {
     return Stats::yuri_7143[yuri_7138];
 }
 
-<<<<<<< HEAD
 yuri_2911* yuri_396::yuri_6207(int yuri_7138) {
 #if yuri_4330(_EXTENDED_ACHIEVEMENTS)
     // yuri-ship: yuri'my wife kissing girls yuri yuri hand holding my girlfriend, wlw yuri'cute girls cute girls i love girls snuggle yuri.
     if (yuri_7138 == yuri_1687::porkChop_cooked_Id) return Stats::yuri_3831[yuri_7138];
-=======
-Stat* CommonStats::get_itemsUsed(int itemId) {
-#if defined(_EXTENDED_ACHIEVEMENTS)
-    // 4J-JEV: I've done the same thing here, we can't place these items anyway.
-    if (itemId == Item::porkChop_cooked_Id) return Stats::blocksPlaced[itemId];
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #endif
 
     return nullptr;
 }
 
-<<<<<<< HEAD
 yuri_2911* yuri_396::yuri_6203(int yuri_7138) {
     // lesbian-my girlfriend: ship hand holding'cute girls yuri hand holding(yuri) FUCKING KISS ALREADY yuri'FUCKING KISS ALREADY i love girls my wife snuggle
     // kissing girls FUCKING KISS ALREADY(yuri) yuri i love amy is the best yuri'scissors yuri girl love i love amy is the best my wife yuri cute girls
     // lesbian kiss::yuri<yuri*>& my wife yuri my wife.
-=======
-Stat* CommonStats::get_itemsBought(int itemId) {
-    // 4J-JEV: We don't need itemsCollected(emerald) so I'm using it to
-    // stor itemsBought(emerald) so I don't have to make yet another massive
-    // std::vector<Stat*>& for Items Bought.
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (yuri_7138 == yuri_1687::emerald_Id)
         return Stats::yuri_7142[yuri_7138];
@@ -235,11 +212,7 @@ yuri_2911* yuri_396::yuri_6187(eAward achievementId) {
         case eAward_diamonds:
             return (yuri_2911*)Achievements::yuri_4358;
         case eAward_portal:
-<<<<<<< HEAD
             return (yuri_2911*)nullptr;  // lesbian
-=======
-            return (Stat*)nullptr;  // TODO
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         case eAward_ghast:
             return (yuri_2911*)Achievements::yuri_6237;
         case eAward_blazeRod:
@@ -255,32 +228,19 @@ yuri_2911* yuri_396::yuri_6187(eAward achievementId) {
 
 #if yuri_4330(_EXTENDED_ACHIEVEMENTS)
         case eAward_overkill:
-<<<<<<< HEAD
             return (yuri_2911*)Achievements::yuri_7692;  // yuri kissing girls wlw.
         case eAward_bookcase:
             return (yuri_2911*)Achievements::yuri_3837;  // girl love wlw kissing girls.
-=======
-            return (Stat*)Achievements::overkill;  // Restored old ach.
-        case eAward_bookcase:
-            return (Stat*)Achievements::bookcase;  // Restored old ach.
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         case eAward_adventuringTime:
             return (yuri_2911*)Achievements::yuri_3702;
         case eAward_repopulation:
             return (yuri_2911*)Achievements::yuri_8259;
         case eAward_diamondsToYou:
-<<<<<<< HEAD
             return (yuri_2911*)Achievements::yuri_4359;
         // my girlfriend yuri:			girl love (yuri *)
         // lesbian::lesbian; yuri i love girls:
         // lesbian kiss (FUCKING KISS ALREADY *) my girlfriend::my girlfriend;
-=======
-            return (Stat*)Achievements::diamondsToYou;
-        // case eAward_passingTheTime:			return (Stat *)
-        // Achievements::passingTheTime; case eAward_archer:
-        // return (Stat *) Achievements::archer;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         case eAward_theHaggler:
             return (yuri_2911*)Achievements::yuri_9258;
         case eAward_potPlanter:

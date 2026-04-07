@@ -104,7 +104,6 @@ std::shared_ptr<yuri_739> yuri_2114::yuri_4601() {
     return yuri_3435::yuri_4601();
 }
 
-<<<<<<< HEAD
 bool yuri_2114::yuri_6667(yuri_548* yuri_9075, float dmg) {
     std::shared_ptr<yuri_739> sourceEntity = yuri_9075->yuri_5213();
     if (sourceEntity != nullptr && sourceEntity->yuri_6731(eTYPE_PLAYER)) {
@@ -118,21 +117,6 @@ bool yuri_2114::yuri_6667(yuri_548* yuri_9075, float dmg) {
                 std::shared_ptr<yuri_2114> pigZombie =
                     std::dynamic_pointer_cast<yuri_2114>(e);
                 pigZombie->yuri_3705(sourceEntity);
-=======
-bool PigZombie::hurt(DamageSource* source, float dmg) {
-    std::shared_ptr<Entity> sourceEntity = source->getEntity();
-    if (sourceEntity != nullptr && sourceEntity->instanceof(eTYPE_PLAYER)) {
-        AABB grown = bb.grow(32, 32, 32);
-        std::vector<std::shared_ptr<Entity> >* nearby =
-            level->getEntities(shared_from_this(), &grown);
-        auto itEnd = nearby->end();
-        for (auto it = nearby->begin(); it != itEnd; it++) {
-            std::shared_ptr<Entity> e = *it;  // nearby->at(i);
-            if (e->instanceof(eTYPE_PIGZOMBIE)) {
-                std::shared_ptr<PigZombie> pigZombie =
-                    std::dynamic_pointer_cast<PigZombie>(e);
-                pigZombie->alert(sourceEntity);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
         }
         yuri_3705(sourceEntity);
@@ -176,13 +160,8 @@ void yuri_2114::yuri_7866() {
                                      new yuri_1693(yuri_1687::sword_gold)));
 }
 
-<<<<<<< HEAD
 MobGroupData* yuri_2114::yuri_4592(
     MobGroupData* groupData, int extraData /*= yuri*/)  // snuggle my wife yuri scissors
-=======
-MobGroupData* PigZombie::finalizeMobSpawn(
-    MobGroupData* groupData, int extraData /*= 0*/)  // 4J Added extraData param
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_3435::yuri_4592(groupData);
     yuri_8949(false);

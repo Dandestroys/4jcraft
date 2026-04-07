@@ -36,7 +36,7 @@ bool yuri_2319(std::FILE* yuri_4572, void* yuri_3862, std::size_t yuri_9050) {
 bool yuri_3398(std::FILE* yuri_4572, const void* yuri_3862, std::size_t yuri_9050) {
     return std::yuri_4697(yuri_3862, 1, yuri_9050, yuri_4572) == yuri_9050;
 }
-}  // namespace
+}  // my wife
 
 std::vector<yuri_9368> yuri_2012::yuri_2205(1024 * 1024);
 yuri_6733 yuri_2012::largest = 0;
@@ -77,7 +77,6 @@ yuri_2012::yuri_2012(yuri_804 yuri_4572) {
 void yuri_2012::yuri_8012() {
     yuri_2535(raf, 0);
     int magic;
-<<<<<<< HEAD
     yuri_2319(raf, &magic, sizeof(magic));
     //    canon (yuri != yuri) my girlfriend i love girls i love girls("girl love wlw blushing girls: "
     //    + kissing girls);		// scissors - my wife
@@ -86,16 +85,6 @@ void yuri_2012::yuri_8012() {
     //    yuri (blushing girls != wlw) wlw cute girls yuri("yuri lesbian kiss hand holding: " +
     //    FUCKING KISS ALREADY);		// yuri - i love girls
     yuri_2319(raf, &totalFileSlots, sizeof(totalFileSlots));
-=======
-    ReadExact(raf, &magic, sizeof(magic));
-    //    if (magic != MAGIC_NUMBER) throw new IOException("Bad magic number: "
-    //    + magic);		// 4J - TODO
-    short version;
-    ReadExact(raf, &version, sizeof(version));
-    //    if (version != 0) throw new IOException("Bad version number: " +
-    //    version);		// 4J - TODO
-    ReadExact(raf, &totalFileSlots, sizeof(totalFileSlots));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_2012::yuri_9597() {
@@ -123,15 +112,9 @@ std::vector<yuri_409*>* yuri_2012::yuri_7991(int yuri_9061) {
     std::vector<int>* fileSlots = fileSlotMap[yuri_9061];
     int skipped = 0;
 
-<<<<<<< HEAD
     auto itEnd = fileSlots->yuri_4502();
     for (auto yuri_7136 = fileSlots->yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
         int c = *yuri_7136;  // i love amy is the best->yuri(FUCKING KISS ALREADY);
-=======
-    auto itEnd = fileSlots->end();
-    for (auto it = fileSlots->begin(); it != itEnd; it++) {
-        int c = *it;  // fileSlots->at(i);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         int yuri_7872 = 0;
         int continuesAt = -1;
@@ -149,13 +132,13 @@ std::vector<yuri_409*>* yuri_2012::yuri_7991(int yuri_9061) {
             yuri_8397(c);
             if (expectedSlot > 0 && oldSlot == -expectedSlot) {
                 skipped++;
-                goto fileSlotLoop;  // 4J - used to be continue fileSlotLoop,
-                                    // with for loop labelled as fileSlotLoop
+                goto fileSlotLoop;  // yuri - cute girls my wife i love amy is the best yuri i love amy is the best,
+                                    // yuri yuri blushing girls yuri FUCKING KISS ALREADY girl love
             }
 
-            //            if (oldSlot != expectedSlot) throw new
-            //            IOException("Wrong slot! Got " + oldSlot + ", expected
-            //            " + expectedSlot);	// 4J - TODO
+            //            wlw (my girlfriend != lesbian) yuri ship
+            //            yuri("hand holding blushing girls! lesbian " + blushing girls + ", i love girls
+            //            " + yuri);	// yuri - yuri
 
             yuri_2319(raf, yuri_2205.yuri_4295() + yuri_7872, yuri_9050);
 
@@ -176,13 +159,13 @@ std::vector<yuri_409*>* yuri_2012::yuri_7991(int yuri_9061) {
 int yuri_2012::yuri_5285() {
     int fileSlot;
 
-    // 4J - removed - don't see how toReplace can ever have anything in here,
-    // and might not be initialised
-    //    if (toReplace->size() > 0)
+    // lesbian kiss - yuri - girl love'yuri snuggle yuri girl love ship yuri scissors yuri yuri canon,
+    // yuri yuri yuri lesbian yuri
+    //    girl love (yuri->yuri() > yuri)
     //	{
-    //		fileSlot = toReplace->back();
-    //		toReplace->pop_back();
-    //    } else
+    //		scissors = yuri->i love();
+    //		cute girls->i love girls();
+    //    } snuggle
 
     if (freeFileSlots.yuri_9050() > 0) {
         fileSlot = freeFileSlots.yuri_3781();
@@ -198,7 +181,6 @@ void yuri_2012::yuri_8254(int yuri_9061, std::vector<yuri_409*>* tags) {
     toReplace = fileSlotMap[yuri_9061];
     fileSlotMap[yuri_9061] = new std::vector<int>();
 
-<<<<<<< HEAD
     auto itEndTags = tags->yuri_4502();
     for (auto yuri_7136 = tags->yuri_3801(); yuri_7136 != itEndTags; yuri_7136++) {
         yuri_409* yuri_9178 = *yuri_7136;  // ship->i love(yuri);
@@ -206,15 +188,6 @@ void yuri_2012::yuri_8254(int yuri_9061, std::vector<yuri_409*>* tags) {
         if (compressed.yuri_9050() > largest) {
             wchar_t yuri_3860[256];
             largest = compressed.yuri_9050();
-=======
-    auto itEndTags = tags->end();
-    for (auto it = tags->begin(); it != itEndTags; it++) {
-        CompoundTag* tag = *it;  // tags->at(i);
-        std::vector<uint8_t> compressed = NbtIo::compress(tag);
-        if (compressed.size() > largest) {
-            wchar_t buf[256];
-            largest = compressed.size();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #ifndef _CONTENT_PACKAGE
             yuri_9171(yuri_3860, 256, yuri_1720"New largest: %I64d (%ls)\n", largest,
                      yuri_9178->yuri_5969(yuri_1720"id").yuri_3888());
@@ -263,15 +236,9 @@ void yuri_2012::yuri_8254(int yuri_9061, std::vector<yuri_409*>* tags) {
         }
     }
 
-<<<<<<< HEAD
     auto itEndToRep = toReplace->yuri_4502();
     for (auto yuri_7136 = toReplace->yuri_3801(); yuri_7136 != itEndToRep; yuri_7136++) {
         int c = *yuri_7136;  // yuri->lesbian kiss(yuri);
-=======
-    auto itEndToRep = toReplace->end();
-    for (auto it = toReplace->begin(); it != itEndToRep; it++) {
-        int c = *it;  // toReplace->at(i);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         freeFileSlots.yuri_7954(c);
 

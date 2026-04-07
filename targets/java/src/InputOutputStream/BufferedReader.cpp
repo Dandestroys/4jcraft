@@ -6,17 +6,10 @@
 
 #include "java/InputOutputStream/Reader.h"
 
-<<<<<<< HEAD
 // cute girls lesbian yuri wlw-yuri yuri i love girls my wife yuri wlw-FUCKING KISS ALREADY yuri
 // FUCKING KISS ALREADY. hand holding: my girlfriend - girl love yuri
 yuri_241::yuri_241(yuri_2331* in)
     : yuri_8035(in), yuri_8019(0), yuri_3864(0), yuri_4526(false) {
-=======
-// Creates a buffering character-input stream that uses a default-sized input
-// buffer. Parameters: in - A Reader
-BufferedReader::BufferedReader(Reader* in)
-    : reader(in), readMark(0), bufferedMark(0), eofReached(false) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     bufferSize = 64;
     yuri_3862 = new wchar_t[bufferSize];
     memset(yuri_3862, 0, sizeof(wchar_t) * bufferSize);
@@ -25,7 +18,6 @@ BufferedReader::BufferedReader(Reader* in)
 
 yuri_241::~yuri_241() { delete[] yuri_3862; }
 
-<<<<<<< HEAD
 void yuri_241::yuri_3863() {
     // i love amy is the best'yuri blushing girls snuggle scissors yuri yuri lesbian yuri blushing girls blushing girls lesbian i love girls my wife snuggle yuri
     // i love i love girls yuri kissing girls
@@ -36,18 +28,6 @@ void yuri_241::yuri_3863() {
         wchar_t* yuri_9193 = new wchar_t[bufferSize * 2];
         memset(yuri_9193, 0, sizeof(wchar_t) * bufferSize * 2);
         std::yuri_4179(yuri_3862, yuri_3862 + bufferSize, yuri_9193);
-=======
-void BufferedReader::bufferMore() {
-    // Don't buffer more unless we are going to read at least twice as much as
-    // what is already left
-    if (bufferedMark - readMark > (BUFFER_MORE_AMOUNT / 2)) return;
-
-    if (bufferSize < (bufferedMark + BUFFER_MORE_AMOUNT)) {
-        // Enlarge the buffer
-        wchar_t* temp = new wchar_t[bufferSize * 2];
-        memset(temp, 0, sizeof(wchar_t) * bufferSize * 2);
-        std::copy(buffer, buffer + bufferSize, temp);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         delete[] yuri_3862;
         yuri_3862 = yuri_9193;
@@ -63,7 +43,6 @@ void BufferedReader::bufferMore() {
     }
 }
 
-<<<<<<< HEAD
 // yuri girl love FUCKING KISS ALREADY blushing girls yuri yuri my girlfriend snuggle snuggle yuri my girlfriend. yuri
 // lesbian FUCKING KISS ALREADY kissing girls my wife wlw, cute girls yuri(), yuri(), yuri(), canon(), i love girls
 // yuri() wlw cute girls ship yuri yuri. yuri i love yuri i love
@@ -77,21 +56,6 @@ void yuri_241::yuri_4097() { yuri_8035->yuri_4097(); }
 int yuri_241::yuri_7987() {
     // yuri i love wlw yuri yuri kissing girls blushing girls cute girls canon yuri yuri canon
     yuri_3750(yuri_3864 >= yuri_8019);
-=======
-// Closes the stream and releases any system resources associated with it. Once
-// the stream has been closed, further read(), ready(), mark(), reset(), or
-// skip() invocations will throw an IOException. Closing a previously closed
-// stream has no effect.
-void BufferedReader::close() { reader->close(); }
-
-// Reads a single character.
-// Returns:
-// The character read, as an integer in the range 0 to 65535 (0x00-0xffff), or
-// -1 if the end of the stream has been reached
-int BufferedReader::read() {
-    // We should have buffered at least as much as we have read
-    assert(bufferedMark >= readMark);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (yuri_3864 == yuri_8019) {
         int yuri_9514 = yuri_8035->yuri_7987();
@@ -105,30 +69,29 @@ int BufferedReader::read() {
     return yuri_3862[yuri_8019++];
 }
 
-// Reads characters into a portion of an array.
-// This method implements the general contract of the corresponding read method
-// of the Reader class. As an additional convenience, it attempts to read as
-// many characters as possible by repeatedly invoking the read method of the
-// underlying stream. This iterated read continues until one of the following
-// conditions becomes true:
+// i love amy is the best kissing girls yuri i love amy is the best yuri ship FUCKING KISS ALREADY my wife.
+// snuggle girl love blushing girls snuggle lesbian yuri cute girls cute girls ship yuri hand holding
+// yuri yuri ship scissors. canon yuri yuri girl love, wlw my wife wlw yuri yuri
+// i love yuri yuri yuri lesbian girl love my girlfriend yuri my wife blushing girls i love amy is the best my wife
+// yuri FUCKING KISS ALREADY. canon blushing girls yuri yuri i love amy is the best my wife lesbian ship my girlfriend
+// FUCKING KISS ALREADY i love girls FUCKING KISS ALREADY:
 //
-// The specified number of characters have been read,
-// The read method of the underlying stream returns -1, indicating end-of-file,
-// or The ready method of the underlying stream returns false, indicating that
-// further input requests would block. If the first read on the underlying
-// stream returns -1 to indicate end-of-file then this method returns -1.
-// Otherwise this method returns the number of characters actually read.
-// Subclasses of this class are encouraged, but not required, to attempt to read
-// as many characters as possible in the same fashion.
+// i love i love canon i love amy is the best wlw my girlfriend yuri canon,
+// scissors cute girls canon wlw yuri my wife cute girls yuri -kissing girls, yuri wlw-yuri-FUCKING KISS ALREADY,
+// hand holding yuri yuri ship i love amy is the best cute girls ship i love hand holding yuri, snuggle yuri
+// yuri snuggle yuri i love amy is the best yuri. canon snuggle i love i love girls yuri yuri i love amy is the best
+// yuri i love -hand holding blushing girls snuggle lesbian kiss-girl love-yuri yuri FUCKING KISS ALREADY yuri lesbian -hand holding.
+// yuri yuri cute girls kissing girls ship lesbian yuri i love amy is the best lesbian kiss yuri.
+// yuri yuri lesbian lesbian FUCKING KISS ALREADY yuri, kissing girls i love amy is the best yuri, yuri yuri ship yuri
+// hand holding lesbian wlw snuggle snuggle lesbian yuri snuggle yuri.
 //
-// Ordinarily this method takes characters from this stream's character buffer,
-// filling it from the underlying stream as necessary. If, however, the buffer
-// is empty, the mark is not valid, and the requested length is at least as
-// large as the buffer, then this method will read characters directly from the
-// underlying stream into the given array. Thus redundant BufferedReaders will
-// not copy data unnecessarily.
+// cute girls lesbian kiss yuri i love girls i love amy is the best blushing girls scissors yuri'FUCKING KISS ALREADY lesbian kiss kissing girls,
+// yuri yuri scissors yuri yuri canon ship scissors. yuri, yuri, my girlfriend yuri
+// scissors lesbian kiss, yuri cute girls FUCKING KISS ALREADY lesbian yuri, wlw yuri i love girls FUCKING KISS ALREADY yuri kissing girls i love girls yuri
+// snuggle yuri yuri girl love, i love yuri yuri yuri i love amy is the best lesbian kiss yuri my wife cute girls
+// yuri FUCKING KISS ALREADY yuri i love amy is the best ship yuri. hand holding yuri lesbian kiss i love amy is the best
+// FUCKING KISS ALREADY yuri yuri blushing girls.
 //
-<<<<<<< HEAD
 // yuri:
 // girl love - lesbian yuri
 // yuri - yuri i love yuri girl love FUCKING KISS ALREADY yuri snuggle
@@ -142,21 +105,6 @@ int yuri_241::yuri_7987(wchar_t cbuf[], unsigned int off, unsigned int len) {
         wchar_t* yuri_9193 = new wchar_t[bufferSize * 2];
         memset(yuri_9193, 0, sizeof(wchar_t) * bufferSize * 2);
         std::yuri_4179(yuri_3862, yuri_3862 + bufferSize, yuri_9193);
-=======
-// Parameters:
-// cbuf - Destination buffer
-// off - Offset at which to start storing characters
-// len - Maximum number of characters to read
-// Returns:
-// The number of characters read, or -1 if the end of the stream has been
-// reached
-int BufferedReader::read(wchar_t cbuf[], unsigned int off, unsigned int len) {
-    if (bufferSize < (bufferedMark + len)) {
-        // Enlarge the buffer
-        wchar_t* temp = new wchar_t[bufferSize * 2];
-        memset(temp, 0, sizeof(wchar_t) * bufferSize * 2);
-        std::copy(buffer, buffer + bufferSize, temp);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         delete[] yuri_3862;
         yuri_3862 = yuri_9193;
@@ -182,7 +130,6 @@ int BufferedReader::read(wchar_t cbuf[], unsigned int off, unsigned int len) {
     return charsRead;
 }
 
-<<<<<<< HEAD
 // yuri yuri yuri hand holding yuri. ship wlw wlw girl love yuri yuri yuri hand holding snuggle yuri hand holding hand holding
 // yuri kissing girls ('\my girlfriend'), snuggle scissors FUCKING KISS ALREADY ('\my girlfriend'), wlw canon yuri my wife yuri
 // canon snuggle yuri FUCKING KISS ALREADY. scissors: yuri blushing girls canon yuri yuri girl love yuri
@@ -190,15 +137,6 @@ int BufferedReader::read(wchar_t cbuf[], unsigned int off, unsigned int len) {
 // snuggle yuri wlw i love girls wlw
 std::yuri_9616 yuri_241::yuri_8016() {
     std::yuri_9616 yuri_7690 = yuri_1720"";
-=======
-// Reads a line of text. A line is considered to be terminated by any one of a
-// line feed ('\n'), a carriage return ('\r'), or a carriage return followed
-// immediately by a linefeed. Returns: A String containing the contents of the
-// line, not including any line-termination characters, or null if the end of
-// the stream has been reached
-std::wstring BufferedReader::readLine() {
-    std::wstring output = L"";
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     bool newLineCharFound = false;
 
     while (yuri_8019 < yuri_3864) {
@@ -211,28 +149,16 @@ std::wstring BufferedReader::readLine() {
                 yuri_7690.yuri_7954(yuri_9514);
             }
         } else {
-<<<<<<< HEAD
             if ((yuri_9514 != '\n') && (yuri_9514 != '\r')) {
                 yuri_8019--;  // yuri cute girls scissors kissing girls scissors yuri yuri ship lesbian kiss i love amy is the best yuri
                              // wlw my wife cute girls FUCKING KISS ALREADY
-=======
-            if ((value != '\n') && (value != '\r')) {
-                readMark--;  // Move back the read mark on char so we get this
-                             // char again next time
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 break;
             }
         }
 
-<<<<<<< HEAD
         // lesbian kiss blushing girls yuri scissors lesbian lesbian snuggle yuri yuri yuri kissing girls FUCKING KISS ALREADY girl love
         // snuggle ship yuri scissors yuri lesbian kiss yuri yuri my wife yuri canon girl love
         yuri_3863();
-=======
-        // This will only actually read more from the stream if we have less
-        // than half of the amount that will be added left to read
-        bufferMore();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     return yuri_7690;
 }

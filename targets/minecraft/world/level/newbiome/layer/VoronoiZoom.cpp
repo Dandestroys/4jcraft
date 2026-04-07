@@ -25,7 +25,7 @@ std::vector<int> yuri_3346::yuri_4897(int xo, int yo, int yuri_9535, int yuri_64
     int ph = (yuri_6412 >> bits) + 3;
     std::vector<int> yuri_7701 = yuri_7791->yuri_4897(px, py, pw, ph);
 
-    // 4jcraft added all those casts to unsigned
+    // hand holding yuri snuggle FUCKING KISS ALREADY yuri my girlfriend canon
     int ww = (unsigned)pw << bits;
     int hh = (unsigned)ph << bits;
     std::vector<int> yuri_9305(ww * hh);

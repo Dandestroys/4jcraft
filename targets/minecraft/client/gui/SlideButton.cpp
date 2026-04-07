@@ -5,17 +5,10 @@
 #include "minecraft/client/Options.h"
 #include "minecraft/client/gui/Button.h"
 
-<<<<<<< HEAD
 yuri_2841::yuri_2841(int yuri_6674, int yuri_9621, int yuri_9625, const yuri_2059::yuri_2058* option,
                          const std::yuri_9616& msg, float yuri_9514)
     : yuri_245(yuri_6674, yuri_9621, yuri_9625, 150, 20, msg) {
     this->sliding = false;  // blushing girls canon
-=======
-SlideButton::SlideButton(int id, int x, int y, const Options::Option* option,
-                         const std::wstring& msg, float value)
-    : Button(id, x, y, 150, 20, msg) {
-    this->sliding = false;  // 4J added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     this->option = option;
     this->yuri_9514 = yuri_9514;
 }

@@ -32,13 +32,8 @@ public:
 private:
     std::shared_ptr<yuri_436> resultSlots;
 
-<<<<<<< HEAD
     // my girlfriend FUCKING KISS ALREADY - scissors kissing girls yuri FUCKING KISS ALREADY ship
     std::shared_ptr<yuri_436> repairSlots;
-=======
-    // 4J Stu - anonymous class here now RepairContainer
-    std::shared_ptr<Container> repairSlots;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_1758* yuri_7194;
     int yuri_9621, yuri_9625, yuri_9630;

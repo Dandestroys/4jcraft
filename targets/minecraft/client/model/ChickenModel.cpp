@@ -11,7 +11,6 @@
 
 yuri_342::yuri_342() : yuri_1962() {
     int yo = 16;
-<<<<<<< HEAD
     head = new yuri_1964(this, 0, 0);
     head->yuri_3589(-2.0f, -6.0f, -2.0f, 4, 6, 3, 0.0f);  // lesbian
     head->yuri_8782(0, (float)(-1 + yo), -4);
@@ -54,50 +53,6 @@ yuri_342::yuri_342() : yuri_1962() {
     leg1->yuri_4122(1.0f / 16.0f);
     wing0->yuri_4122(1.0f / 16.0f);
     wing1->yuri_4122(1.0f / 16.0f);
-=======
-    head = new ModelPart(this, 0, 0);
-    head->addBox(-2.0f, -6.0f, -2.0f, 4, 6, 3, 0.0f);  // Head
-    head->setPos(0, (float)(-1 + yo), -4);
-
-    beak = new ModelPart(this, 14, 0);
-    beak->addBox(-2.0f, -4.0f, -4.0f, 4, 2, 2, 0.0f);  // Beak
-    beak->setPos(0, (float)(-1 + yo), -4);
-
-    redThing = new ModelPart(this, 14, 4);
-    redThing->addBox(-1.0f, -2.0f, -3.0f, 2, 2, 2, 0.0f);  // Beak
-    redThing->setPos(0, (float)(-1 + yo), -4);
-
-    body = new ModelPart(this, 0, 9);
-    body->addBox(-3.0f, -4.0f, -3.0f, 6, 8, 6, 0.0f);  // Body
-    body->setPos(0, (float)(0 + yo), 0);
-
-    leg0 = new ModelPart(this, 26, 0);
-    leg0->addBox(-1.0f, 0.0f, -3.0f, 3, 5, 3);  // Leg0
-    leg0->setPos(-2, (float)(3 + yo), 1);
-
-    leg1 = new ModelPart(this, 26, 0);
-    leg1->addBox(-1.0f, 0.0f, -3.0f, 3, 5, 3);  // Leg1
-    leg1->setPos(1, (float)(3 + yo), 1);
-
-    wing0 = new ModelPart(this, 24, 13);
-    wing0->addBox(0.0f, 0.0f, -3.0f, 1, 4, 6);  // Wing0
-    wing0->setPos(-4, (float)(-3 + yo), 0);
-
-    wing1 = new ModelPart(this, 24, 13);
-    wing1->addBox(-1.0f, 0.0f, -3.0f, 1, 4, 6);  // Wing1
-    wing1->setPos(4, (float)(-3 + yo), 0);
-
-    // 4J added - compile now to avoid random performance hit first time cubes
-    // are rendered
-    head->compile(1.0f / 16.0f);
-    beak->compile(1.0f / 16.0f);
-    redThing->compile(1.0f / 16.0f);
-    body->compile(1.0f / 16.0f);
-    leg0->compile(1.0f / 16.0f);
-    leg1->compile(1.0f / 16.0f);
-    wing0->compile(1.0f / 16.0f);
-    wing1->compile(1.0f / 16.0f);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_342::yuri_8158(std::shared_ptr<yuri_739> entity, float yuri_9299, float r,

@@ -38,13 +38,8 @@ public:
 
     C4JStringTable* yuri_1169() { return nullptr; }
 
-<<<<<<< HEAD
     // cute girls i love girls
     virtual void yuri_3028();
-=======
-    // original code
-    virtual void TemporaryCreateGameStart();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };
 
 extern yuri_1783 app;

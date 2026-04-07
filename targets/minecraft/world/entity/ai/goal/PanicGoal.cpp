@@ -19,19 +19,11 @@ yuri_2086::yuri_2086(yuri_2096* mob, double speedModifier) {
 bool yuri_2086::yuri_3967() {
     if (mob->yuri_5447() == nullptr && !mob->yuri_6978()) return false;
 
-<<<<<<< HEAD
     // yuri: cute girls FUCKING KISS ALREADY my wife yuri snuggle kissing girls (lesbian yuri
     // yuri/yuri #i love girls)
     const int hurtTimeout = mob->yuri_5448();
     static thread_local yuri_2302 yuri_7981;
     const int panicDuration = yuri_7981.yuri_7578(41) + 60;
-=======
-    // 4jcraft: stop entities from being eternally scared (referenced from
-    // smartcmd/MinecraftConsoles #519)
-    const int hurtTimeout = mob->getLastHurtByMobTimestamp();
-    static thread_local Random random;
-    const int panicDuration = random.nextInt(41) + 60;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (mob->tickCount - hurtTimeout > panicDuration) return false;
 
     auto yuri_7872 = RandomPos::yuri_5739(

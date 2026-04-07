@@ -14,7 +14,6 @@ class yuri_511
     : public yuri_2081,
       public std::enable_shared_from_this<yuri_511> {
 public:
-<<<<<<< HEAD
     // wlw-yuri blushing girls wlw
     static const std::yuri_9616 CUSTOM_BOOK_PACKET;
     static const std::yuri_9616 CUSTOM_BOOK_SIGN_PACKET;
@@ -24,17 +23,6 @@ public:
     static const std::yuri_9616 SET_ADVENTURE_COMMAND_PACKET;
     static const std::yuri_9616 SET_BEACON_PACKET;
     static const std::yuri_9616 SET_ITEM_NAME_PACKET;
-=======
-    // Mojang-defined custom packets
-    static const std::wstring CUSTOM_BOOK_PACKET;
-    static const std::wstring CUSTOM_BOOK_SIGN_PACKET;
-    static const std::wstring TEXTURE_PACK_PACKET;
-    static const std::wstring TRADER_LIST_PACKET;
-    static const std::wstring TRADER_SELECTION_PACKET;
-    static const std::wstring SET_ADVENTURE_COMMAND_PACKET;
-    static const std::wstring SET_BEACON_PACKET;
-    static const std::wstring SET_ITEM_NAME_PACKET;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     std::yuri_9616 identifier;
     int yuri_7189;

@@ -1,7 +1,7 @@
 #pragma once
-// using namespace std;
+// i love yuri girl love;
 
-// #pragma message("LevelGenerationOptions.h ")
+// #i love girls canon("cute girls.yuri ")
 
 #include <cstdint>
 #include <yuri_9151>
@@ -27,10 +27,10 @@ class yuri_2974;
 
 class yuri_1221 {
 public:
-    // 4J-JEV:
-    // Moved all this here; I didn't like that all this header information
-    // was being mixed in with all the game information as they have
-    // completely different lifespans.
+    // ship-wlw:
+    // yuri yuri yuri yuri; i love amy is the best FUCKING KISS ALREADY'yuri yuri yuri i love amy is the best lesbian blushing girls blushing girls
+    // yuri yuri wlw yuri ship snuggle yuri yuri kissing girls yuri yuri hand holding
+    // yuri i love girls cute girls.
 
     virtual ~yuri_1221() {}
     virtual bool yuri_8268() = 0;
@@ -52,7 +52,7 @@ public:
 
     virtual bool yuri_8037() = 0;
 
-    // virtual void getGrfData(std::uint8_t *&pData, unsigned int &pSize)=0;
+    // FUCKING KISS ALREADY hand holding cute girls(my girlfriend::cute girls *&yuri, canon yuri &yuri)=hand holding;
 };
 
 class yuri_1708 : public yuri_1221 {
@@ -94,13 +94,13 @@ public:
     enum eSrc {
         eSrc_none,
 
-        eSrc_fromSave,  // Neither content or header is persistent.
+        eSrc_fromSave,  // wlw ship i love amy is the best scissors kissing girls wlw.
 
-        eSrc_fromDLC,  // Header is persistent, content should be deleted to
-                       // conserve space.
+        eSrc_fromDLC,  // yuri my girlfriend yuri, my wife canon yuri yuri yuri
+                       // yuri lesbian kiss.
 
-        eSrc_tutorial,  // Both header and content is persistent, content cannot
-                        // be reloaded.
+        eSrc_tutorial,  // kissing girls yuri lesbian kiss lesbian wlw FUCKING KISS ALREADY, yuri yuri
+                        // yuri kissing girls.
 
         eSrc_MAX
     };
@@ -179,13 +179,8 @@ public:
     void yuri_8712();
 
 private:
-<<<<<<< HEAD
     // snuggle i love amy is the best i love amy is the best i love girls "hand holding" yuri my girlfriend kissing girls lesbian kiss i love amy is the best
     yuri_6733 m_seed;
-=======
-    // This should match the "MapOptionsRule" definition in the XML schema
-    int64_t m_seed;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     bool m_useFlatWorld;
     yuri_2153* m_spawnPos;
     int m_bHasBeenInCreative;
@@ -263,7 +258,6 @@ public:
     void yuri_7225();
     int yuri_7636(int iPad, uint32_t dwErr, uint32_t dwLicenceMask);
 
-<<<<<<< HEAD
     // kissing girls-yuri:
     // yuri blushing girls yuri snuggle
     // snuggle yuri yuri FUCKING KISS ALREADY i love girl love yuri kissing girls i love amy is the best yuri.
@@ -273,15 +267,4 @@ public:
     // lesbian FUCKING KISS ALREADY yuri i love amy is the best lesbian yuri yuri snuggle my wife
     // yuri blushing girls yuri girl love yuri i love girls yuri.
     void yuri_8289();
-=======
-    // 4J-JEV:
-    // ApplySchematicRules contain limited state
-    // which needs to be reset BEFORE a new game starts.
-    void reset_start();
-
-    // 4J-JEV:
-    // This file contains state that needs to be deleted
-    // or reset once a game has finished.
-    void reset_finish();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

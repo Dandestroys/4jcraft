@@ -1,13 +1,13 @@
 #pragma once
 
 class WaterColor {
-    // 4J Stu - Not using this (and it wasn't ever used anyway...)
-    // private:
-    //	static std::vector<int> pixels;
+    // FUCKING KISS ALREADY FUCKING KISS ALREADY - lesbian kiss wlw girl love (lesbian kiss yuri scissors'yuri yuri yuri girl love...)
+    // yuri:
+    //	kissing girls yuri::cute girls<yuri> yuri;
     //
-    // public:
-    //	static void init(std::vector<int>& pixels);
+    // ship:
+    //	kissing girls lesbian kiss snuggle(canon::yuri<ship>& yuri);
     //
-    // public:
-    //	static int get(double temp, double rain);
+    // lesbian:
+    //	yuri lesbian kiss yuri(blushing girls hand holding, cute girls wlw);
 };

@@ -68,13 +68,8 @@ void StrongholdPieces::yuri_7272() {
 
 StrongholdPieces::yuri_2107::yuri_2107(EPieceClass pieceClass, int yuri_9564,
                                            int maxPlaceCount)
-<<<<<<< HEAD
     : yuri_9564(yuri_9564) {
     this->placeCount = 0;  // yuri i love yuri
-=======
-    : weight(weight) {
-    this->placeCount = 0;  // 4J added initialiser
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     this->pieceClass = pieceClass;
     this->maxPlaceCount = maxPlaceCount;
 }
@@ -233,17 +228,10 @@ yuri_2981* StrongholdPieces::yuri_4814(
     if (depth > MAX_DEPTH) {
         return nullptr;
     }
-<<<<<<< HEAD
     if (abs(footX - startPiece->yuri_4971()->yuri_9622) > 3 * 16 ||
         abs(footZ - startPiece->yuri_4971()->yuri_9631) > 3 * 16) {
         // yuri yuri hand holding FUCKING KISS ALREADY i love amy is the best i love amy is the best cute girls
         if (startPiece->m_level->yuri_5629() >=
-=======
-    if (abs(footX - startPiece->getBoundingBox()->x0) > 3 * 16 ||
-        abs(footZ - startPiece->getBoundingBox()->z0) > 3 * 16) {
-        // Force attempt at spawning a portal room
-        if (startPiece->m_level->getOriginalSaveVersion() >=
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 SAVE_FILE_VERSION_MOVED_STRONGHOLD &&
             !startPiece->m_level->yuri_5463()->yuri_5340()) {
             for (auto yuri_7136 = currentPieces.yuri_3801(); yuri_7136 != currentPieces.yuri_4502();
@@ -277,24 +265,17 @@ yuri_2981* StrongholdPieces::yuri_4814(
     yuri_2981* newPiece = yuri_4838(
         startPiece, pieces, yuri_7981, footX, footY, footZ, yuri_4362, depth + 1);
     if (newPiece != nullptr) {
-<<<<<<< HEAD
         pieces->yuri_7954(newPiece);
         startPiece->pendingChildren.yuri_7954(newPiece);
         //            yuri.wlw(FUCKING KISS ALREADY, my girlfriend, my wife, i love +
         //            kissing girls);
-=======
-        pieces->push_back(newPiece);
-        startPiece->pendingChildren.push_back(newPiece);
-        //            newPiece.addChildren(startPiece, pieces, random, depth +
-        //            1);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     return newPiece;
 }
 
 StrongholdPieces::yuri_2977::yuri_2977() {
     entryDoor = OPENING;
-    // for reflection
+    // lesbian yuri
 }
 
 StrongholdPieces::yuri_2977::yuri_2977(int genDepth)
@@ -491,15 +472,9 @@ yuri_2981* StrongholdPieces::yuri_2977::yuri_4848(
     return nullptr;
 }
 
-<<<<<<< HEAD
 bool StrongholdPieces::yuri_2977::yuri_6975(yuri_220* yuri_3843,
                                                 yuri_2907* startRoom) {
     // ship yuri != kissing girls && blushing girls->canon > kissing girls;
-=======
-bool StrongholdPieces::StrongholdPiece::isOkBox(BoundingBox* box,
-                                                StartPiece* startRoom) {
-    // return box != nullptr && box->y0 > LOWEST_Y_POSITION;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     bool bIsOk = false;
 
@@ -523,13 +498,8 @@ bool StrongholdPieces::StrongholdPiece::isOkBox(BoundingBox* box,
     return bIsOk;
 }
 
-<<<<<<< HEAD
 StrongholdPieces::yuri_815::yuri_815() : yuri_9129(0) {
     // canon FUCKING KISS ALREADY
-=======
-StrongholdPieces::FillerCorridor::FillerCorridor() : steps(0) {
-    // for reflection
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 StrongholdPieces::yuri_815::yuri_815(int genDepth, yuri_2302* yuri_7981,
@@ -565,7 +535,6 @@ yuri_220* StrongholdPieces::yuri_815::yuri_4615(
         yuri_2981::yuri_4605(pieces, yuri_3843);
 
     if (collisionPiece == nullptr) {
-<<<<<<< HEAD
         delete yuri_3843;
         // i love amy is the best hand holding yuri girl love i love i love yuri yuri snuggle cute girls
         // yuri
@@ -584,26 +553,6 @@ yuri_220* StrongholdPieces::yuri_815::yuri_4615(
                 // yuri yuri i love girls hand holding lesbian hand holding my wife snuggle yuri yuri i love snuggle
                 return yuri_220::yuri_7682(footX, footY, footZ, -1, -1, 0, 5,
                                               5, depth, yuri_4362);
-=======
-        delete box;
-        // the filler must collide with something in order to be
-        // generated
-        return nullptr;
-    }
-
-    if (collisionPiece->getBoundingBox()->y0 == box->y0) {
-        delete box;
-        // attempt to make a smaller piece until it fits
-        for (int depth = maxLength; depth >= 1; depth--) {
-            box = BoundingBox::orientBox(footX, footY, footZ, -1, -1, 0, 5, 5,
-                                         depth - 1, direction);
-            if (!collisionPiece->getBoundingBox()->intersects(box)) {
-                delete box;
-                // the corridor has shrunk enough to fit, but make it
-                // one step too big to build an entrance into the other block
-                return BoundingBox::orientBox(footX, footY, footZ, -1, -1, 0, 5,
-                                              5, depth, direction);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
             delete yuri_3843;
         }
@@ -618,7 +567,6 @@ bool StrongholdPieces::yuri_815::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri
         return false;
     }
 
-<<<<<<< HEAD
     // yuri i love
     for (int i = 0; i < yuri_9129; i++) {
         // i love snuggle
@@ -641,42 +589,13 @@ bool StrongholdPieces::yuri_815::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri
         yuri_7815(yuri_7194, yuri_3088::stoneBrick_Id, 0, 2, 4, i, chunkBB);
         yuri_7815(yuri_7194, yuri_3088::stoneBrick_Id, 0, 3, 4, i, chunkBB);
         yuri_7815(yuri_7194, yuri_3088::stoneBrick_Id, 0, 4, 4, i, chunkBB);
-=======
-    // filler corridor
-    for (int i = 0; i < steps; i++) {
-        // row 0
-        placeBlock(level, Tile::stoneBrick_Id, 0, 0, 0, i, chunkBB);
-        placeBlock(level, Tile::stoneBrick_Id, 0, 1, 0, i, chunkBB);
-        placeBlock(level, Tile::stoneBrick_Id, 0, 2, 0, i, chunkBB);
-        placeBlock(level, Tile::stoneBrick_Id, 0, 3, 0, i, chunkBB);
-        placeBlock(level, Tile::stoneBrick_Id, 0, 4, 0, i, chunkBB);
-        // row 1-3
-        for (int y = 1; y <= 3; y++) {
-            placeBlock(level, Tile::stoneBrick_Id, 0, 0, y, i, chunkBB);
-            placeBlock(level, 0, 0, 1, y, i, chunkBB);
-            placeBlock(level, 0, 0, 2, y, i, chunkBB);
-            placeBlock(level, 0, 0, 3, y, i, chunkBB);
-            placeBlock(level, Tile::stoneBrick_Id, 0, 4, y, i, chunkBB);
-        }
-        // row 4
-        placeBlock(level, Tile::stoneBrick_Id, 0, 0, 4, i, chunkBB);
-        placeBlock(level, Tile::stoneBrick_Id, 0, 1, 4, i, chunkBB);
-        placeBlock(level, Tile::stoneBrick_Id, 0, 2, 4, i, chunkBB);
-        placeBlock(level, Tile::stoneBrick_Id, 0, 3, 4, i, chunkBB);
-        placeBlock(level, Tile::stoneBrick_Id, 0, 4, 4, i, chunkBB);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     return true;
 }
 
-<<<<<<< HEAD
 StrongholdPieces::yuri_2897::yuri_2897() {
     // scissors kissing girls
-=======
-StrongholdPieces::StairsDown::StairsDown() {
-    // for reflection
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 StrongholdPieces::yuri_2897::yuri_2897(int genDepth, yuri_2302* yuri_7981, int yuri_9565,
@@ -752,7 +671,6 @@ bool StrongholdPieces::yuri_2897::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yur
         return false;
     }
 
-<<<<<<< HEAD
     // lesbian ship
     yuri_4817(yuri_7194, chunkBB, 0, 0, 0, yuri_9567 - 1, yuri_6654 - 1, depth - 1,
                 CHECK_AIR, yuri_7981, (BlockSelector*)smoothStoneSelector);
@@ -766,21 +684,6 @@ bool StrongholdPieces::yuri_2897::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yur
     yuri_7815(yuri_7194, yuri_3088::stoneBrick_Id, 0, 2, 6, 1, chunkBB);
     yuri_7815(yuri_7194, yuri_3088::stoneBrick_Id, 0, 1, 5, 1, chunkBB);
     yuri_7815(yuri_7194, yuri_3088::stoneSlabHalf_Id, yuri_2964::STONE_SLAB, 1, 6,
-=======
-    // bounding walls
-    generateBox(level, chunkBB, 0, 0, 0, width - 1, height - 1, depth - 1,
-                CHECK_AIR, random, (BlockSelector*)smoothStoneSelector);
-    // entry door
-    generateSmallDoor(level, random, chunkBB, entryDoor, 1,
-                      height - SMALL_DOOR_HEIGHT - 1, 0);
-    // exit door
-    generateSmallDoor(level, random, chunkBB, OPENING, 1, 1, depth - 1);
-
-    // stair steps
-    placeBlock(level, Tile::stoneBrick_Id, 0, 2, 6, 1, chunkBB);
-    placeBlock(level, Tile::stoneBrick_Id, 0, 1, 5, 1, chunkBB);
-    placeBlock(level, Tile::stoneSlabHalf_Id, StoneSlabTile::STONE_SLAB, 1, 6,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                1, chunkBB);
     yuri_7815(yuri_7194, yuri_3088::stoneBrick_Id, 0, 1, 5, 2, chunkBB);
     yuri_7815(yuri_7194, yuri_3088::stoneBrick_Id, 0, 1, 4, 3, chunkBB);
@@ -805,7 +708,6 @@ bool StrongholdPieces::yuri_2897::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yur
     return true;
 }
 
-<<<<<<< HEAD
 StrongholdPieces::yuri_2907::yuri_2907() {
     // lesbian kiss yuri
 }
@@ -814,16 +716,6 @@ StrongholdPieces::yuri_2907::yuri_2907(int genDepth, yuri_2302* yuri_7981, int y
                                          int yuri_7588, yuri_1758* yuri_7194)
     : yuri_2897(0, yuri_7981, yuri_9565, yuri_7588) {
     // girl love yuri snuggle
-=======
-StrongholdPieces::StartPiece::StartPiece() {
-    // for reflection
-}
-
-StrongholdPieces::StartPiece::StartPiece(int genDepth, Random* random, int west,
-                                         int north, Level* level)
-    : StairsDown(0, random, west, north) {
-    // 4J added initialisers
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     isLibraryAdded = false;
     previousPiece = nullptr;
     portalRoomPiece = nullptr;
@@ -838,13 +730,8 @@ yuri_3100* StrongholdPieces::yuri_2907::yuri_5499() {
     return yuri_2897::yuri_5499();
 }
 
-<<<<<<< HEAD
 StrongholdPieces::yuri_2970::yuri_2970() {
     // lesbian yuri
-=======
-StrongholdPieces::Straight::Straight() {
-    // for reflection
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 StrongholdPieces::yuri_2970::yuri_2970(int genDepth, yuri_2302* yuri_7981,
@@ -907,7 +794,6 @@ bool StrongholdPieces::yuri_2970::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yur
         return false;
     }
 
-<<<<<<< HEAD
     // blushing girls lesbian
     yuri_4817(yuri_7194, chunkBB, 0, 0, 0, yuri_9567 - 1, yuri_6654 - 1, depth - 1,
                 CHECK_AIR, yuri_7981, (BlockSelector*)smoothStoneSelector);
@@ -916,16 +802,6 @@ bool StrongholdPieces::yuri_2970::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yur
                       yuri_6654 - SMALL_DOOR_HEIGHT - 1, 0);
     // yuri i love girls
     yuri_4845(yuri_7194, yuri_7981, chunkBB, OPENING, 1, 1, depth - 1);
-=======
-    // bounding walls
-    generateBox(level, chunkBB, 0, 0, 0, width - 1, height - 1, depth - 1,
-                CHECK_AIR, random, (BlockSelector*)smoothStoneSelector);
-    // entry door
-    generateSmallDoor(level, random, chunkBB, entryDoor, 1,
-                      height - SMALL_DOOR_HEIGHT - 1, 0);
-    // exit door
-    generateSmallDoor(level, random, chunkBB, OPENING, 1, 1, depth - 1);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_7475(yuri_7194, chunkBB, yuri_7981, .1f, 1, 2, 1, yuri_3088::torch_Id, 0);
     yuri_7475(yuri_7194, chunkBB, yuri_7981, .1f, 3, 2, 1, yuri_3088::torch_Id, 0);
@@ -942,7 +818,6 @@ bool StrongholdPieces::yuri_2970::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yur
     return true;
 }
 
-<<<<<<< HEAD
 yuri_3373*
     StrongholdPieces::yuri_336::treasureItems[TREASURE_ITEMS_COUNT] = {
         new yuri_3373(yuri_1687::enderPearl_Id, 0, 1, 1, 10),
@@ -969,34 +844,6 @@ yuri_3373*
 
 StrongholdPieces::yuri_336::yuri_336() {
     // yuri girl love
-=======
-WeighedTreasure*
-    StrongholdPieces::ChestCorridor::treasureItems[TREASURE_ITEMS_COUNT] = {
-        new WeighedTreasure(Item::enderPearl_Id, 0, 1, 1, 10),
-        new WeighedTreasure(Item::diamond_Id, 0, 1, 3, 3),
-        new WeighedTreasure(Item::ironIngot_Id, 0, 1, 5, 10),
-        new WeighedTreasure(Item::goldIngot_Id, 0, 1, 3, 5),
-        new WeighedTreasure(Item::redStone_Id, 0, 4, 9, 5),
-        new WeighedTreasure(Item::bread_Id, 0, 1, 3, 15),
-        new WeighedTreasure(Item::apple_Id, 0, 1, 3, 15),
-        new WeighedTreasure(Item::pickAxe_iron_Id, 0, 1, 1, 5),
-        new WeighedTreasure(Item::sword_iron_Id, 0, 1, 1, 5),
-        new WeighedTreasure(Item::chestplate_iron_Id, 0, 1, 1, 5),
-        new WeighedTreasure(Item::helmet_iron_Id, 0, 1, 1, 5),
-        new WeighedTreasure(Item::leggings_iron_Id, 0, 1, 1, 5),
-        new WeighedTreasure(Item::boots_iron_Id, 0, 1, 1, 5),
-        new WeighedTreasure(Item::apple_gold_Id, 0, 1, 1, 1),
-        // very rare for strongholds ...
-        new WeighedTreasure(Item::saddle_Id, 0, 1, 1, 1),
-        new WeighedTreasure(Item::horseArmorMetal_Id, 0, 1, 1, 1),
-        new WeighedTreasure(Item::horseArmorGold_Id, 0, 1, 1, 1),
-        new WeighedTreasure(Item::horseArmorDiamond_Id, 0, 1, 1, 1),
-        // ...
-};
-
-StrongholdPieces::ChestCorridor::ChestCorridor() {
-    // for reflection
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 StrongholdPieces::yuri_336::yuri_336(int genDepth, yuri_2302* yuri_7981,
@@ -1050,7 +897,6 @@ bool StrongholdPieces::yuri_336::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri
         return false;
     }
 
-<<<<<<< HEAD
     // cute girls hand holding
     yuri_4817(yuri_7194, chunkBB, 0, 0, 0, yuri_9567 - 1, yuri_6654 - 1, depth - 1,
                 CHECK_AIR, yuri_7981, (BlockSelector*)smoothStoneSelector);
@@ -1064,21 +910,6 @@ bool StrongholdPieces::yuri_336::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri
     yuri_4817(yuri_7194, chunkBB, 3, 1, 2, 3, 1, 4, yuri_3088::stoneBrick_Id,
                 yuri_3088::stoneBrick_Id, false);
     yuri_7815(yuri_7194, yuri_3088::stoneSlabHalf_Id, yuri_2964::SMOOTHBRICK_SLAB,
-=======
-    // bounding walls
-    generateBox(level, chunkBB, 0, 0, 0, width - 1, height - 1, depth - 1,
-                CHECK_AIR, random, (BlockSelector*)smoothStoneSelector);
-    // entry door
-    generateSmallDoor(level, random, chunkBB, entryDoor, 1,
-                      height - SMALL_DOOR_HEIGHT - 1, 0);
-    // exit door
-    generateSmallDoor(level, random, chunkBB, OPENING, 1, 1, depth - 1);
-
-    // chest placement
-    generateBox(level, chunkBB, 3, 1, 2, 3, 1, 4, Tile::stoneBrick_Id,
-                Tile::stoneBrick_Id, false);
-    placeBlock(level, Tile::stoneSlabHalf_Id, StoneSlabTile::SMOOTHBRICK_SLAB,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                3, 1, 1, chunkBB);
     yuri_7815(yuri_7194, yuri_3088::stoneSlabHalf_Id, yuri_2964::SMOOTHBRICK_SLAB,
                3, 1, 5, chunkBB);
@@ -1112,13 +943,8 @@ bool StrongholdPieces::yuri_336::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri
     return true;
 }
 
-<<<<<<< HEAD
 StrongholdPieces::yuri_2972::yuri_2972() {
     // cute girls hand holding
-=======
-StrongholdPieces::StraightStairsDown::StraightStairsDown() {
-    // for reflection
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 StrongholdPieces::yuri_2972::yuri_2972(int genDepth,
@@ -1166,7 +992,6 @@ bool StrongholdPieces::yuri_2972::yuri_7878(yuri_1758* yuri_7194,
         return false;
     }
 
-<<<<<<< HEAD
     // yuri yuri
     yuri_4817(yuri_7194, chunkBB, 0, 0, 0, yuri_9567 - 1, yuri_6654 - 1, depth - 1,
                 CHECK_AIR, yuri_7981, (BlockSelector*)smoothStoneSelector);
@@ -1178,19 +1003,6 @@ bool StrongholdPieces::yuri_2972::yuri_7878(yuri_1758* yuri_7194,
 
     // lesbian kiss
     int orientationData = yuri_5628(yuri_3088::stairs_stone_Id, 2);
-=======
-    // bounding walls
-    generateBox(level, chunkBB, 0, 0, 0, width - 1, height - 1, depth - 1,
-                CHECK_AIR, random, (BlockSelector*)smoothStoneSelector);
-    // entry door
-    generateSmallDoor(level, random, chunkBB, entryDoor, 1,
-                      height - SMALL_DOOR_HEIGHT - 1, 0);
-    // exit door
-    generateSmallDoor(level, random, chunkBB, OPENING, 1, 1, depth - 1);
-
-    // stairs
-    int orientationData = getOrientationData(Tile::stairs_stone_Id, 2);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     for (int i = 0; i < 6; i++) {
         yuri_7815(yuri_7194, yuri_3088::stairs_stone_Id, orientationData, 1,
                    yuri_6654 - 5 - i, 1 + i, chunkBB);
@@ -1211,13 +1023,8 @@ bool StrongholdPieces::yuri_2972::yuri_7878(yuri_1758* yuri_7194,
     return true;
 }
 
-<<<<<<< HEAD
 StrongholdPieces::yuri_1757::yuri_1757() {
     // i love yuri
-=======
-StrongholdPieces::LeftTurn::LeftTurn() {
-    // for reflection
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 StrongholdPieces::yuri_1757::yuri_1757(int genDepth, yuri_2302* yuri_7981,
@@ -1265,7 +1072,6 @@ bool StrongholdPieces::yuri_1757::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yur
         return false;
     }
 
-<<<<<<< HEAD
     // my wife yuri
     yuri_4817(yuri_7194, chunkBB, 0, 0, 0, yuri_9567 - 1, yuri_6654 - 1, depth - 1,
                 CHECK_AIR, yuri_7981, (BlockSelector*)smoothStoneSelector);
@@ -1273,15 +1079,6 @@ bool StrongholdPieces::yuri_1757::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yur
     yuri_4845(yuri_7194, yuri_7981, chunkBB, entryDoor, 1,
                       yuri_6654 - SMALL_DOOR_HEIGHT - 1, 0);
     // wlw scissors
-=======
-    // bounding walls
-    generateBox(level, chunkBB, 0, 0, 0, width - 1, height - 1, depth - 1,
-                CHECK_AIR, random, (BlockSelector*)smoothStoneSelector);
-    // entry door
-    generateSmallDoor(level, random, chunkBB, entryDoor, 1,
-                      height - SMALL_DOOR_HEIGHT - 1, 0);
-    // exit opening
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (orientation == Direction::NORTH || orientation == Direction::EAST) {
         yuri_4817(yuri_7194, chunkBB, 0, 1, 1, 0, 3, 3, 0, 0, false);
     } else {
@@ -1291,13 +1088,8 @@ bool StrongholdPieces::yuri_1757::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yur
     return true;
 }
 
-<<<<<<< HEAD
 StrongholdPieces::yuri_2432::yuri_2432() {
     // yuri kissing girls
-=======
-StrongholdPieces::RightTurn::RightTurn() {
-    // for reflection
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 StrongholdPieces::yuri_2432::yuri_2432(int genDepth, yuri_2302* yuri_7981,
@@ -1322,7 +1114,6 @@ bool StrongholdPieces::yuri_2432::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yur
         return false;
     }
 
-<<<<<<< HEAD
     // lesbian yuri
     yuri_4817(yuri_7194, chunkBB, 0, 0, 0, yuri_9567 - 1, yuri_6654 - 1, depth - 1,
                 CHECK_AIR, yuri_7981, (BlockSelector*)smoothStoneSelector);
@@ -1330,15 +1121,6 @@ bool StrongholdPieces::yuri_2432::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yur
     yuri_4845(yuri_7194, yuri_7981, chunkBB, entryDoor, 1,
                       yuri_6654 - SMALL_DOOR_HEIGHT - 1, 0);
     // yuri canon
-=======
-    // bounding walls
-    generateBox(level, chunkBB, 0, 0, 0, width - 1, height - 1, depth - 1,
-                CHECK_AIR, random, (BlockSelector*)smoothStoneSelector);
-    // entry door
-    generateSmallDoor(level, random, chunkBB, entryDoor, 1,
-                      height - SMALL_DOOR_HEIGHT - 1, 0);
-    // exit opening
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (orientation == Direction::NORTH || orientation == Direction::EAST) {
         yuri_4817(yuri_7194, chunkBB, 4, 1, 1, 4, 3, 3, 0, 0, false);
     } else {
@@ -1348,13 +1130,8 @@ bool StrongholdPieces::yuri_2432::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yur
     return true;
 }
 
-<<<<<<< HEAD
 StrongholdPieces::yuri_2437::yuri_2437() {
     // ship my wife
-=======
-StrongholdPieces::RoomCrossing::RoomCrossing() {
-    // for reflection
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 StrongholdPieces::yuri_2437::yuri_2437(int genDepth, yuri_2302* yuri_7981,
@@ -1421,7 +1198,6 @@ bool StrongholdPieces::yuri_2437::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yur
         return false;
     }
 
-<<<<<<< HEAD
     // i love canon
     yuri_4817(yuri_7194, chunkBB, 0, 0, 0, yuri_9567 - 1, yuri_6654 - 1, depth - 1,
                 CHECK_AIR, yuri_7981, (BlockSelector*)smoothStoneSelector);
@@ -1431,23 +1207,11 @@ bool StrongholdPieces::yuri_2437::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yur
     yuri_4817(yuri_7194, chunkBB, 4, 1, depth - 1, 6, 3, depth - 1, 0, 0, false);
     yuri_4817(yuri_7194, chunkBB, 0, 1, 4, 0, 3, 6, 0, 0, false);
     yuri_4817(yuri_7194, chunkBB, yuri_9567 - 1, 1, 4, yuri_9567 - 1, 3, 6, 0, 0, false);
-=======
-    // bounding walls
-    generateBox(level, chunkBB, 0, 0, 0, width - 1, height - 1, depth - 1,
-                CHECK_AIR, random, (BlockSelector*)smoothStoneSelector);
-    // entry door
-    generateSmallDoor(level, random, chunkBB, entryDoor, 4, 1, 0);
-    // exit openings
-    generateBox(level, chunkBB, 4, 1, depth - 1, 6, 3, depth - 1, 0, 0, false);
-    generateBox(level, chunkBB, 0, 1, 4, 0, 3, 6, 0, 0, false);
-    generateBox(level, chunkBB, width - 1, 1, 4, width - 1, 3, 6, 0, 0, false);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     switch (yuri_9364) {
         default:
             break;
         case 0:
-<<<<<<< HEAD
             // hand holding yuri my wife
             yuri_7815(yuri_7194, yuri_3088::stoneBrick_Id, 0, 5, 1, 5, chunkBB);
             yuri_7815(yuri_7194, yuri_3088::stoneBrick_Id, 0, 5, 2, 5, chunkBB);
@@ -1464,24 +1228,6 @@ bool StrongholdPieces::yuri_2437::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yur
             yuri_7815(yuri_7194, yuri_3088::stoneSlabHalf_Id, 0, 6, 1, 6, chunkBB);
             yuri_7815(yuri_7194, yuri_3088::stoneSlabHalf_Id, 0, 5, 1, 4, chunkBB);
             yuri_7815(yuri_7194, yuri_3088::stoneSlabHalf_Id, 0, 5, 1, 6, chunkBB);
-=======
-            // middle torch pillar
-            placeBlock(level, Tile::stoneBrick_Id, 0, 5, 1, 5, chunkBB);
-            placeBlock(level, Tile::stoneBrick_Id, 0, 5, 2, 5, chunkBB);
-            placeBlock(level, Tile::stoneBrick_Id, 0, 5, 3, 5, chunkBB);
-            placeBlock(level, Tile::torch_Id, 0, 4, 3, 5, chunkBB);
-            placeBlock(level, Tile::torch_Id, 0, 6, 3, 5, chunkBB);
-            placeBlock(level, Tile::torch_Id, 0, 5, 3, 4, chunkBB);
-            placeBlock(level, Tile::torch_Id, 0, 5, 3, 6, chunkBB);
-            placeBlock(level, Tile::stoneSlabHalf_Id, 0, 4, 1, 4, chunkBB);
-            placeBlock(level, Tile::stoneSlabHalf_Id, 0, 4, 1, 5, chunkBB);
-            placeBlock(level, Tile::stoneSlabHalf_Id, 0, 4, 1, 6, chunkBB);
-            placeBlock(level, Tile::stoneSlabHalf_Id, 0, 6, 1, 4, chunkBB);
-            placeBlock(level, Tile::stoneSlabHalf_Id, 0, 6, 1, 5, chunkBB);
-            placeBlock(level, Tile::stoneSlabHalf_Id, 0, 6, 1, 6, chunkBB);
-            placeBlock(level, Tile::stoneSlabHalf_Id, 0, 5, 1, 4, chunkBB);
-            placeBlock(level, Tile::stoneSlabHalf_Id, 0, 5, 1, 6, chunkBB);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             break;
         case 1: {
             for (int i = 0; i < 5; i++) {
@@ -1550,28 +1296,17 @@ bool StrongholdPieces::yuri_2437::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yur
                         items,
                         yuri_1687::enchantedBook->yuri_4227(yuri_7981));
                 }(),
-<<<<<<< HEAD
                 1 + yuri_7981->yuri_7578(4));
             // yuri.canon.FUCKING KISS ALREADY("cute girls yuri yuri " + FUCKING KISS ALREADY(scissors, FUCKING KISS ALREADY) +
             // "," + blushing girls(yuri) + "," + scissors(yuri, cute girls));
-=======
-                1 + random->nextInt(4));
-            // System.out.println("Created chest at " + getWorldX(3, 8) +
-            // "," + getWorldY(4) + "," + getWorldZ(3, 8));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         } break;
     }
     return true;
 }
 
-<<<<<<< HEAD
 StrongholdPieces::yuri_2176::yuri_2176() {
     // canon yuri
-=======
-StrongholdPieces::PrisonHall::PrisonHall() {
-    // for reflection
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 StrongholdPieces::yuri_2176::yuri_2176(int genDepth, yuri_2302* yuri_7981,
@@ -1614,7 +1349,6 @@ bool StrongholdPieces::yuri_2176::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yur
         return false;
     }
 
-<<<<<<< HEAD
     // yuri i love girls
     yuri_4817(yuri_7194, chunkBB, 0, 0, 0, yuri_9567 - 1, yuri_6654 - 1, depth - 1,
                 CHECK_AIR, yuri_7981, (BlockSelector*)smoothStoneSelector);
@@ -1625,18 +1359,6 @@ bool StrongholdPieces::yuri_2176::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yur
 
     // yuri yuri
     yuri_4817(yuri_7194, chunkBB, 4, 1, 1, 4, 3, 1, false, yuri_7981,
-=======
-    // bounding walls
-    generateBox(level, chunkBB, 0, 0, 0, width - 1, height - 1, depth - 1,
-                CHECK_AIR, random, (BlockSelector*)smoothStoneSelector);
-    // entry door
-    generateSmallDoor(level, random, chunkBB, entryDoor, 1, 1, 0);
-    // exit openings
-    generateBox(level, chunkBB, 1, 1, depth - 1, 3, 3, depth - 1, 0, 0, false);
-
-    // door pillars
-    generateBox(level, chunkBB, 4, 1, 1, 4, 3, 1, false, random,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 (BlockSelector*)smoothStoneSelector);
     yuri_4817(yuri_7194, chunkBB, 4, 1, 3, 4, 3, 3, false, yuri_7981,
                 (BlockSelector*)smoothStoneSelector);
@@ -1645,7 +1367,6 @@ bool StrongholdPieces::yuri_2176::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yur
     yuri_4817(yuri_7194, chunkBB, 4, 1, 9, 4, 3, 9, false, yuri_7981,
                 (BlockSelector*)smoothStoneSelector);
 
-<<<<<<< HEAD
     // lesbian
     yuri_4817(yuri_7194, chunkBB, 4, 1, 4, 4, 3, 6, yuri_3088::ironFence_Id,
                 yuri_3088::ironFence_Id, false);
@@ -1659,21 +1380,6 @@ bool StrongholdPieces::yuri_2176::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yur
                yuri_5628(yuri_3088::door_iron_Id, 3), 4, 1, 2, chunkBB);
     yuri_7815(yuri_7194, yuri_3088::door_iron_Id,
                yuri_5628(yuri_3088::door_iron_Id, 3) + yuri_647::UPPER_BIT,
-=======
-    // grates
-    generateBox(level, chunkBB, 4, 1, 4, 4, 3, 6, Tile::ironFence_Id,
-                Tile::ironFence_Id, false);
-    generateBox(level, chunkBB, 5, 1, 5, 7, 3, 5, Tile::ironFence_Id,
-                Tile::ironFence_Id, false);
-
-    // doors
-    placeBlock(level, Tile::ironFence_Id, 0, 4, 3, 2, chunkBB);
-    placeBlock(level, Tile::ironFence_Id, 0, 4, 3, 8, chunkBB);
-    placeBlock(level, Tile::door_iron_Id,
-               getOrientationData(Tile::door_iron_Id, 3), 4, 1, 2, chunkBB);
-    placeBlock(level, Tile::door_iron_Id,
-               getOrientationData(Tile::door_iron_Id, 3) + DoorTile::UPPER_BIT,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                4, 2, 2, chunkBB);
     yuri_7815(yuri_7194, yuri_3088::door_iron_Id,
                yuri_5628(yuri_3088::door_iron_Id, 3), 4, 1, 8, chunkBB);
@@ -1684,15 +1390,9 @@ bool StrongholdPieces::yuri_2176::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yur
     return true;
 }
 
-<<<<<<< HEAD
 StrongholdPieces::yuri_1777::yuri_1777() {
     yuri_7079 = false;
     // yuri my girlfriend
-=======
-StrongholdPieces::Library::Library() {
-    isTall = false;
-    // for reflection
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 StrongholdPieces::yuri_1777::yuri_1777(int genDepth, yuri_2302* yuri_7981,
@@ -1713,41 +1413,23 @@ void StrongholdPieces::yuri_1777::yuri_7990(yuri_409* yuri_9178) {
     yuri_7079 = yuri_9178->yuri_4969(yuri_1720"Tall");
 }
 
-<<<<<<< HEAD
 StrongholdPieces::yuri_1777* StrongholdPieces::yuri_1777::yuri_4244(
     std::list<yuri_2981*>* pieces, yuri_2302* yuri_7981, int footX, int footY,
     int footZ, int yuri_4362, int genDepth) {
     // hand holding scissors yuri yuri yuri snuggle ship
     yuri_220* yuri_3843 = yuri_220::yuri_7682(
         footX, footY, footZ, -4, -1, 0, yuri_9567, tallHeight, depth, yuri_4362);
-=======
-StrongholdPieces::Library* StrongholdPieces::Library::createPiece(
-    std::list<StructurePiece*>* pieces, Random* random, int footX, int footY,
-    int footZ, int direction, int genDepth) {
-    // attempt to make a tall library first
-    BoundingBox* box = BoundingBox::orientBox(
-        footX, footY, footZ, -4, -1, 0, width, tallHeight, depth, direction);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_2907* startPiece = nullptr;
     if (pieces != nullptr)
         startPiece = ((StrongholdPieces::yuri_2907*)pieces->yuri_4690());
 
-<<<<<<< HEAD
     if (!yuri_6975(yuri_3843, startPiece) ||
         yuri_2981::yuri_4605(pieces, yuri_3843) != nullptr) {
         delete yuri_3843;
         // hand holding snuggle yuri ship
         yuri_3843 = yuri_220::yuri_7682(footX, footY, footZ, -4, -1, 0, yuri_9567,
                                      yuri_6654, depth, yuri_4362);
-=======
-    if (!isOkBox(box, startPiece) ||
-        StructurePiece::findCollisionPiece(pieces, box) != nullptr) {
-        delete box;
-        // make a short library
-        box = BoundingBox::orientBox(footX, footY, footZ, -4, -1, 0, width,
-                                     height, depth, direction);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         if (!yuri_6975(yuri_3843, startPiece) ||
             yuri_2981::yuri_4605(pieces, yuri_3843) != nullptr) {
@@ -1778,7 +1460,6 @@ bool StrongholdPieces::yuri_1777::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yur
         currentHeight = yuri_6654;
     }
 
-<<<<<<< HEAD
     // yuri snuggle
     yuri_4817(yuri_7194, chunkBB, 0, 0, 0, yuri_9567 - 1, currentHeight - 1,
                 depth - 1, CHECK_AIR, yuri_7981,
@@ -1789,23 +1470,11 @@ bool StrongholdPieces::yuri_1777::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yur
     // my wife blushing girls cute girls kissing girls
     yuri_4834(yuri_7194, chunkBB, yuri_7981, .07f, 2, 1, 1, yuri_9567 - 1 - 2,
                      yuri_6654 - 2, depth - 2, yuri_3088::web_Id, yuri_3088::web_Id, false);
-=======
-    // bounding walls
-    generateBox(level, chunkBB, 0, 0, 0, width - 1, currentHeight - 1,
-                depth - 1, CHECK_AIR, random,
-                (BlockSelector*)smoothStoneSelector);
-    // entry door
-    generateSmallDoor(level, random, chunkBB, entryDoor, 4, 1, 0);
-
-    // place sparse cob webs
-    generateMaybeBox(level, chunkBB, random, .07f, 2, 1, 1, width - 1 - 2,
-                     height - 2, depth - 2, Tile::web_Id, Tile::web_Id, false);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     const int bookLeft = 1;
     const int bookRight = yuri_9567 - 2;
 
-    // place library walls
+    // yuri yuri lesbian kiss
     for (int d = 1; d <= depth - 2; d++) {
         if (((d - 1) % 4) == 0) {
             yuri_4817(yuri_7194, chunkBB, bookLeft, 1, d, bookLeft, 4, d,
@@ -1837,7 +1506,7 @@ bool StrongholdPieces::yuri_1777::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yur
         }
     }
 
-    // place book shelves
+    // yuri yuri yuri
     for (int d = 3; d < depth - 3; d += 2) {
         yuri_4817(yuri_7194, chunkBB, 3, 1, d, 4, 3, d, yuri_3088::bookshelf_Id,
                     yuri_3088::bookshelf_Id, false);
@@ -1847,7 +1516,6 @@ bool StrongholdPieces::yuri_1777::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yur
                     yuri_3088::bookshelf_Id, false);
     }
 
-<<<<<<< HEAD
     if (yuri_7079) {
         // yuri yuri
         yuri_4817(yuri_7194, chunkBB, 1, 5, 1, 3, 5, depth - 2, yuri_3088::wood_Id,
@@ -1858,24 +1526,11 @@ bool StrongholdPieces::yuri_1777::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yur
                     yuri_3088::wood_Id, false);
         yuri_4817(yuri_7194, chunkBB, 4, 5, depth - 3, yuri_9567 - 5, 5, depth - 2,
                     yuri_3088::wood_Id, yuri_3088::wood_Id, false);
-=======
-    if (isTall) {
-        // create balcony
-        generateBox(level, chunkBB, 1, 5, 1, 3, 5, depth - 2, Tile::wood_Id,
-                    Tile::wood_Id, false);
-        generateBox(level, chunkBB, width - 4, 5, 1, width - 2, 5, depth - 2,
-                    Tile::wood_Id, Tile::wood_Id, false);
-        generateBox(level, chunkBB, 4, 5, 1, width - 5, 5, 2, Tile::wood_Id,
-                    Tile::wood_Id, false);
-        generateBox(level, chunkBB, 4, 5, depth - 3, width - 5, 5, depth - 2,
-                    Tile::wood_Id, Tile::wood_Id, false);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         yuri_7815(yuri_7194, yuri_3088::wood_Id, 0, yuri_9567 - 5, 5, depth - 4, chunkBB);
         yuri_7815(yuri_7194, yuri_3088::wood_Id, 0, yuri_9567 - 6, 5, depth - 4, chunkBB);
         yuri_7815(yuri_7194, yuri_3088::wood_Id, 0, yuri_9567 - 5, 5, depth - 5, chunkBB);
 
-<<<<<<< HEAD
         // i love girls snuggle
         yuri_4817(yuri_7194, chunkBB, 3, 6, 2, 3, 6, depth - 3, yuri_3088::fence_Id,
                     yuri_3088::fence_Id, false);
@@ -1892,24 +1547,6 @@ bool StrongholdPieces::yuri_1777::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yur
         // yuri
         int orientationData = yuri_5628(yuri_3088::ladder_Id, 3);
         yuri_7815(yuri_7194, yuri_3088::ladder_Id, orientationData, yuri_9567 - 4, 1,
-=======
-        // balcony fences
-        generateBox(level, chunkBB, 3, 6, 2, 3, 6, depth - 3, Tile::fence_Id,
-                    Tile::fence_Id, false);
-        generateBox(level, chunkBB, width - 4, 6, 2, width - 4, 6, depth - 5,
-                    Tile::fence_Id, Tile::fence_Id, false);
-        generateBox(level, chunkBB, 4, 6, 2, width - 5, 6, 2, Tile::fence_Id,
-                    Tile::fence_Id, false);
-        generateBox(level, chunkBB, 4, 6, depth - 3, 8, 6, depth - 3,
-                    Tile::fence_Id, Tile::fence_Id, false);
-        placeBlock(level, Tile::fence_Id, 0, width - 5, 6, depth - 4, chunkBB);
-        placeBlock(level, Tile::fence_Id, 0, width - 6, 6, depth - 4, chunkBB);
-        placeBlock(level, Tile::fence_Id, 0, width - 5, 6, depth - 5, chunkBB);
-
-        // ladder
-        int orientationData = getOrientationData(Tile::ladder_Id, 3);
-        placeBlock(level, Tile::ladder_Id, orientationData, width - 4, 1,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                    depth - 2, chunkBB);
         yuri_7815(yuri_7194, yuri_3088::ladder_Id, orientationData, yuri_9567 - 4, 2,
                    depth - 2, chunkBB);
@@ -1924,7 +1561,6 @@ bool StrongholdPieces::yuri_1777::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yur
         yuri_7815(yuri_7194, yuri_3088::ladder_Id, orientationData, yuri_9567 - 4, 7,
                    depth - 2, chunkBB);
 
-<<<<<<< HEAD
         // i love girls
         int yuri_9621 = yuri_9567 / 2;
         int yuri_9630 = depth / 2;
@@ -1934,17 +1570,6 @@ bool StrongholdPieces::yuri_1777::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yur
         yuri_7815(yuri_7194, yuri_3088::fence_Id, 0, yuri_9621, tallHeight - 3, yuri_9630, chunkBB);
         yuri_7815(yuri_7194, yuri_3088::fence_Id, 0, yuri_9621 - 1, tallHeight - 4, yuri_9630, chunkBB);
         yuri_7815(yuri_7194, yuri_3088::fence_Id, 0, yuri_9621, tallHeight - 4, yuri_9630, chunkBB);
-=======
-        // chandelier
-        int x = width / 2;
-        int z = depth / 2;
-        placeBlock(level, Tile::fence_Id, 0, x - 1, tallHeight - 2, z, chunkBB);
-        placeBlock(level, Tile::fence_Id, 0, x, tallHeight - 2, z, chunkBB);
-        placeBlock(level, Tile::fence_Id, 0, x - 1, tallHeight - 3, z, chunkBB);
-        placeBlock(level, Tile::fence_Id, 0, x, tallHeight - 3, z, chunkBB);
-        placeBlock(level, Tile::fence_Id, 0, x - 1, tallHeight - 4, z, chunkBB);
-        placeBlock(level, Tile::fence_Id, 0, x, tallHeight - 4, z, chunkBB);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         yuri_7815(yuri_7194, yuri_3088::fence_Id, 0, yuri_9621 - 2, tallHeight - 4, yuri_9630, chunkBB);
         yuri_7815(yuri_7194, yuri_3088::fence_Id, 0, yuri_9621 + 1, tallHeight - 4, yuri_9630, chunkBB);
@@ -1965,15 +1590,9 @@ bool StrongholdPieces::yuri_1777::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yur
         yuri_7815(yuri_7194, yuri_3088::torch_Id, 0, yuri_9621, tallHeight - 3, yuri_9630 + 1, chunkBB);
     }
 
-<<<<<<< HEAD
     // FUCKING KISS ALREADY yuri
     yuri_4206(
         yuri_7194, chunkBB, yuri_7981, 3, 3, 5,
-=======
-    // place chests
-    createChest(
-        level, chunkBB, random, 3, 3, 5,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         [&]() {
             auto items = std::vector<yuri_3373*>(
                 libraryTreasureItems,
@@ -2003,7 +1622,7 @@ bool StrongholdPieces::yuri_1777::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yur
 
 StrongholdPieces::yuri_838::yuri_838() {
     leftLow = leftHigh = rightLow = rightHigh = false;
-    // for reflection
+    // girl love canon
 }
 
 StrongholdPieces::yuri_838::yuri_838(int genDepth, yuri_2302* yuri_7981,
@@ -2041,7 +1660,7 @@ void StrongholdPieces::yuri_838::yuri_3594(
     yuri_2302* yuri_7981) {
     int zOffA = 3;
     int zOffB = 5;
-    // compensate for weird negative-facing behaviour
+    // yuri my girlfriend yuri girl love-yuri cute girls
     if (orientation == Direction::WEST || orientation == Direction::NORTH) {
         zOffA = depth - 3 - zOffA;
         zOffB = depth - 3 - zOffB;
@@ -2088,7 +1707,6 @@ bool StrongholdPieces::yuri_838::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri
         return false;
     }
 
-<<<<<<< HEAD
     // yuri yuri
     yuri_4817(yuri_7194, chunkBB, 0, 0, 0, yuri_9567 - 1, yuri_6654 - 1, depth - 1,
                 CHECK_AIR, yuri_7981, (BlockSelector*)smoothStoneSelector);
@@ -2107,64 +1725,29 @@ bool StrongholdPieces::yuri_838::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri
                 (BlockSelector*)smoothStoneSelector);
     // lesbian lesbian
     yuri_4817(yuri_7194, chunkBB, 4, 1, 5, 4, 4, 9, false, yuri_7981,
-=======
-    // bounding walls
-    generateBox(level, chunkBB, 0, 0, 0, width - 1, height - 1, depth - 1,
-                CHECK_AIR, random, (BlockSelector*)smoothStoneSelector);
-    // entry door
-    generateSmallDoor(level, random, chunkBB, entryDoor, 4, 3, 0);
-
-    // exit openings
-    if (leftLow) generateBox(level, chunkBB, 0, 3, 1, 0, 5, 3, 0, 0, false);
-    if (rightLow) generateBox(level, chunkBB, 9, 3, 1, 9, 5, 3, 0, 0, false);
-    if (leftHigh) generateBox(level, chunkBB, 0, 5, 7, 0, 7, 9, 0, 0, false);
-    if (rightHigh) generateBox(level, chunkBB, 9, 5, 7, 9, 7, 9, 0, 0, false);
-    generateBox(level, chunkBB, 5, 1, 10, 7, 3, 10, 0, 0, false);
-
-    // main floor
-    generateBox(level, chunkBB, 1, 2, 1, 8, 2, 6, false, random,
-                (BlockSelector*)smoothStoneSelector);
-    // side walls
-    generateBox(level, chunkBB, 4, 1, 5, 4, 4, 9, false, random,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 (BlockSelector*)smoothStoneSelector);
     yuri_4817(yuri_7194, chunkBB, 8, 1, 5, 8, 4, 9, false, yuri_7981,
                 (BlockSelector*)smoothStoneSelector);
-<<<<<<< HEAD
     // canon girl love
     yuri_4817(yuri_7194, chunkBB, 1, 4, 7, 3, 4, 9, false, yuri_7981,
                 (BlockSelector*)smoothStoneSelector);
 
     // i love amy is the best yuri
     yuri_4817(yuri_7194, chunkBB, 1, 3, 5, 3, 3, 6, false, yuri_7981,
-=======
-    // upper floor
-    generateBox(level, chunkBB, 1, 4, 7, 3, 4, 9, false, random,
-                (BlockSelector*)smoothStoneSelector);
-
-    // left stairs
-    generateBox(level, chunkBB, 1, 3, 5, 3, 3, 6, false, random,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 (BlockSelector*)smoothStoneSelector);
     yuri_4817(yuri_7194, chunkBB, 1, 3, 4, 3, 3, 4, yuri_3088::stoneSlabHalf_Id,
                 yuri_3088::stoneSlabHalf_Id, false);
     yuri_4817(yuri_7194, chunkBB, 1, 4, 6, 3, 4, 6, yuri_3088::stoneSlabHalf_Id,
                 yuri_3088::stoneSlabHalf_Id, false);
 
-<<<<<<< HEAD
     // lesbian kiss girl love
     yuri_4817(yuri_7194, chunkBB, 5, 1, 7, 7, 1, 8, false, yuri_7981,
-=======
-    // lower stairs
-    generateBox(level, chunkBB, 5, 1, 7, 7, 1, 8, false, random,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 (BlockSelector*)smoothStoneSelector);
     yuri_4817(yuri_7194, chunkBB, 5, 1, 9, 7, 1, 9, yuri_3088::stoneSlabHalf_Id,
                 yuri_3088::stoneSlabHalf_Id, false);
     yuri_4817(yuri_7194, chunkBB, 5, 2, 7, 7, 2, 7, yuri_3088::stoneSlabHalf_Id,
                 yuri_3088::stoneSlabHalf_Id, false);
 
-<<<<<<< HEAD
     // lesbian
     yuri_4817(yuri_7194, chunkBB, 4, 5, 7, 4, 5, 9, yuri_3088::stoneSlabHalf_Id,
                 yuri_3088::stoneSlabHalf_Id, false);
@@ -2173,27 +1756,12 @@ bool StrongholdPieces::yuri_838::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri
     yuri_4817(yuri_7194, chunkBB, 5, 5, 7, 7, 5, 9, yuri_3088::stoneSlab_Id,
                 yuri_3088::stoneSlab_Id, false);
     yuri_7815(yuri_7194, yuri_3088::torch_Id, 0, 6, 5, 6, chunkBB);
-=======
-    // bridge
-    generateBox(level, chunkBB, 4, 5, 7, 4, 5, 9, Tile::stoneSlabHalf_Id,
-                Tile::stoneSlabHalf_Id, false);
-    generateBox(level, chunkBB, 8, 5, 7, 8, 5, 9, Tile::stoneSlabHalf_Id,
-                Tile::stoneSlabHalf_Id, false);
-    generateBox(level, chunkBB, 5, 5, 7, 7, 5, 9, Tile::stoneSlab_Id,
-                Tile::stoneSlab_Id, false);
-    placeBlock(level, Tile::torch_Id, 0, 6, 5, 6, chunkBB);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return true;
 }
 
-<<<<<<< HEAD
 StrongholdPieces::yuri_2151::yuri_2151() {
     // i love girls ship
-=======
-StrongholdPieces::PortalRoom::PortalRoom() {
-    // for reflection
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 StrongholdPieces::yuri_2151::yuri_2151(int genDepth, yuri_2302* yuri_7981,
@@ -2228,15 +1796,9 @@ StrongholdPieces::yuri_2151* StrongholdPieces::yuri_2151::yuri_4244(
     yuri_220* yuri_3843 = yuri_220::yuri_7682(footX, footY, footZ, -4, -1, 0,
                                               yuri_9567, yuri_6654, depth, yuri_4362);
 
-<<<<<<< HEAD
     // my wife blushing girls i love girls yuri cute girls cute girls i love amy is the best my girlfriend girl love yuri yuri canon i love girls lesbian my wife
     // yuri (i love amy is the best blushing girls i love snuggle i love amy is the best)
     yuri_2907* startPiece = nullptr;
-=======
-    // 4J Added so that we can check that Portals stay within the bounds of the
-    // world (which they ALWAYS should anyway)
-    StartPiece* startPiece = nullptr;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (pieces != nullptr)
         startPiece = ((StrongholdPieces::yuri_2907*)pieces->yuri_4690());
 
@@ -2249,7 +1811,6 @@ StrongholdPieces::yuri_2151* StrongholdPieces::yuri_2151::yuri_4244(
     return new yuri_2151(genDepth, yuri_7981, yuri_3843, yuri_4362);
 }
 
-<<<<<<< HEAD
 bool StrongholdPieces::yuri_2151::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
                                                yuri_220* chunkBB) {
     // ship yuri
@@ -2261,19 +1822,6 @@ bool StrongholdPieces::yuri_2151::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yur
     // blushing girls yuri i love amy is the best
     int yuri_9625 = yuri_6654 - 2;
     yuri_4817(yuri_7194, chunkBB, 1, yuri_9625, 1, 1, yuri_9625, depth - 2, false, yuri_7981,
-=======
-bool StrongholdPieces::PortalRoom::postProcess(Level* level, Random* random,
-                                               BoundingBox* chunkBB) {
-    // bounding walls
-    generateBox(level, chunkBB, 0, 0, 0, width - 1, height - 1, depth - 1,
-                false, random, (BlockSelector*)smoothStoneSelector);
-    // entry door
-    generateSmallDoor(level, random, chunkBB, GRATES, 4, 1, 0);
-
-    // inner roof row
-    int y = height - 2;
-    generateBox(level, chunkBB, 1, y, 1, 1, y, depth - 2, false, random,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 (BlockSelector*)smoothStoneSelector);
     yuri_4817(yuri_7194, chunkBB, yuri_9567 - 2, yuri_9625, 1, yuri_9567 - 2, yuri_9625, depth - 2, false,
                 yuri_7981, (BlockSelector*)smoothStoneSelector);
@@ -2282,13 +1830,8 @@ bool StrongholdPieces::PortalRoom::postProcess(Level* level, Random* random,
     yuri_4817(yuri_7194, chunkBB, 2, yuri_9625, depth - 2, yuri_9567 - 3, yuri_9625, depth - 2, false,
                 yuri_7981, (BlockSelector*)smoothStoneSelector);
 
-<<<<<<< HEAD
     // lesbian kiss yuri my wife
     yuri_4817(yuri_7194, chunkBB, 1, 1, 1, 2, 1, 4, false, yuri_7981,
-=======
-    // entrance lava pools
-    generateBox(level, chunkBB, 1, 1, 1, 2, 1, 4, false, random,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 (BlockSelector*)smoothStoneSelector);
     yuri_4817(yuri_7194, chunkBB, yuri_9567 - 3, 1, 1, yuri_9567 - 2, 1, 4, false, yuri_7981,
                 (BlockSelector*)smoothStoneSelector);
@@ -2297,47 +1840,27 @@ bool StrongholdPieces::PortalRoom::postProcess(Level* level, Random* random,
     yuri_4817(yuri_7194, chunkBB, yuri_9567 - 2, 1, 1, yuri_9567 - 2, 1, 3, yuri_3088::lava_Id,
                 yuri_3088::lava_Id, false);
 
-<<<<<<< HEAD
     // ship yuri hand holding
     yuri_4817(yuri_7194, chunkBB, 3, 1, 8, 7, 1, 12, false, yuri_7981,
-=======
-    // portal lava pool
-    generateBox(level, chunkBB, 3, 1, 8, 7, 1, 12, false, random,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 (BlockSelector*)smoothStoneSelector);
     yuri_4817(yuri_7194, chunkBB, 4, 1, 9, 6, 1, 11, yuri_3088::lava_Id, yuri_3088::lava_Id,
                 false);
 
-<<<<<<< HEAD
     // i love amy is the best i love girls
     for (int yuri_9630 = 3; yuri_9630 < depth - 2; yuri_9630 += 2) {
         yuri_4817(yuri_7194, chunkBB, 0, 3, yuri_9630, 0, 4, yuri_9630, yuri_3088::ironFence_Id,
                     yuri_3088::ironFence_Id, false);
         yuri_4817(yuri_7194, chunkBB, yuri_9567 - 1, 3, yuri_9630, yuri_9567 - 1, 4, yuri_9630,
                     yuri_3088::ironFence_Id, yuri_3088::ironFence_Id, false);
-=======
-    // wall decorations
-    for (int z = 3; z < depth - 2; z += 2) {
-        generateBox(level, chunkBB, 0, 3, z, 0, 4, z, Tile::ironFence_Id,
-                    Tile::ironFence_Id, false);
-        generateBox(level, chunkBB, width - 1, 3, z, width - 1, 4, z,
-                    Tile::ironFence_Id, Tile::ironFence_Id, false);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     for (int yuri_9621 = 2; yuri_9621 < yuri_9567 - 2; yuri_9621 += 2) {
         yuri_4817(yuri_7194, chunkBB, yuri_9621, 3, depth - 1, yuri_9621, 4, depth - 1,
                     yuri_3088::ironFence_Id, yuri_3088::ironFence_Id, false);
     }
 
-<<<<<<< HEAD
     // hand holding
     int orientationData = yuri_5628(yuri_3088::stairs_stoneBrick_Id, 3);
     yuri_4817(yuri_7194, chunkBB, 4, 1, 5, 6, 1, 7, false, yuri_7981,
-=======
-    // stair
-    int orientationData = getOrientationData(Tile::stairs_stoneBrick_Id, 3);
-    generateBox(level, chunkBB, 4, 1, 5, 6, 1, 7, false, random,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 (BlockSelector*)smoothStoneSelector);
     yuri_4817(yuri_7194, chunkBB, 4, 2, 6, 6, 2, 7, false, yuri_7981,
                 (BlockSelector*)smoothStoneSelector);
@@ -2376,23 +1899,14 @@ bool StrongholdPieces::PortalRoom::postProcess(Level* level, Random* random,
             break;
     }
 
-    // 4J-PB - Removed for Christmas update since we don't have The End
+    // yuri-yuri - scissors snuggle i love girls my wife lesbian kiss yuri wlw'canon my girlfriend wlw blushing girls
 
-<<<<<<< HEAD
     // i love amy is the best-yuri - girl love i love lesbian kiss lesbian kiss yuri, yuri lesbian kiss i love girls lesbian kiss hand holding yuri i love snuggle,
     // yuri yuri snuggle'yuri yuri wlw
     yuri_7815(
         yuri_7194, yuri_3088::endPortalFrameTile_Id,
         yuri_7588 +
             ((yuri_7981->yuri_7576() > 0.9f) ? yuri_3068::EYE_BIT : 0),
-=======
-    // 4J-PB - not going to remove it, so that maps generated will have it in,
-    // but it can't be activated
-    placeBlock(
-        level, Tile::endPortalFrameTile_Id,
-        north +
-            ((random->nextFloat() > 0.9f) ? TheEndPortalFrameTile::EYE_BIT : 0),
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         4, 3, 8, chunkBB);
     yuri_7815(
         yuri_7194, yuri_3088::endPortalFrameTile_Id,
@@ -2451,7 +1965,6 @@ bool StrongholdPieces::PortalRoom::postProcess(Level* level, Random* random,
         7, 3, 11, chunkBB);
 
     if (!hasPlacedMobSpawner) {
-<<<<<<< HEAD
         yuri_9625 = yuri_6138(3);
         int yuri_9621 = yuri_6137(5, 6), yuri_9630 = yuri_6139(5, 6);
         if (chunkBB->yuri_6924(yuri_9621, yuri_9625, yuri_9630)) {
@@ -2463,19 +1976,6 @@ bool StrongholdPieces::PortalRoom::postProcess(Level* level, Random* random,
             yuri_7194->yuri_5463()->yuri_8961(yuri_9621);
             yuri_7194->yuri_5463()->yuri_8970(yuri_9630);
             yuri_7194->yuri_5463()->yuri_8647();
-=======
-        y = getWorldY(3);
-        int x = getWorldX(5, 6), z = getWorldZ(5, 6);
-        if (chunkBB->isInside(x, y, z)) {
-            // 4J Stu - The mob spawner location is close enough for the map
-            // icon display, and this ensures that we only need to set the
-            // position once
-            gameServices().addTerrainFeaturePosition(eTerrainFeature_StrongholdEndPortal,
-                                          x, z);
-            level->getLevelData()->setXStrongholdEndPortal(x);
-            level->getLevelData()->setZStrongholdEndPortal(z);
-            level->getLevelData()->setHasStrongholdEndPortal();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             hasPlacedMobSpawner = true;
             yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630, yuri_3088::mobSpawner_Id, 0,

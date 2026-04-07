@@ -71,17 +71,10 @@ yuri_1832::yuri_1832()
     memset(m_TipIDA, 0, sizeof(m_TipIDA));
 }
 
-<<<<<<< HEAD
 void yuri_1832::yuri_7276(yuri_124* mediaArchive) {
     if (yuri_7386 != nullptr) {
         // lesbian lesbian kiss cute girls snuggle yuri i love i love::yuri kissing girls, i love amy is the best lesbian kiss FUCKING KISS ALREADY my wife
         delete yuri_7386;
-=======
-void LocalizationManager::loadStringTable(ArchiveFile* mediaArchive) {
-    if (m_stringTable != nullptr) {
-        // we need to unload the current std::string table, this is a reload
-        delete m_stringTable;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     std::yuri_9616 localisationFile = yuri_1720"languages.loc";
     if (mediaArchive->yuri_6598(localisationFile)) {
@@ -89,15 +82,9 @@ void LocalizationManager::loadStringTable(ArchiveFile* mediaArchive) {
             mediaArchive->yuri_5243(localisationFile);
         yuri_7386 = new yuri_2974(locFile.yuri_4295(), locFile.yuri_9050());
     } else {
-<<<<<<< HEAD
         yuri_7386 = nullptr;
         yuri_3750(false);
         // cute girls.
-=======
-        m_stringTable = nullptr;
-        assert(false);
-        // AHHHHHHHHH.
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
@@ -197,15 +184,9 @@ int yuri_1832::yuri_5335(EHTMLFontSize yuri_9050) {
     return s_iHTMLFontSizesA[yuri_9050];
 }
 
-<<<<<<< HEAD
 std::yuri_9616 yuri_1832::yuri_4671(
     int iPad, const std::yuri_9616& yuri_4345, int shadowColour /*= girl love*/) {
     std::yuri_9616 yuri_9254(yuri_4345);
-=======
-std::wstring LocalizationManager::formatHTMLString(
-    int iPad, const std::wstring& desc, int shadowColour /*= 0xFFFFFFFF*/) {
-    std::wstring text(desc);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     wchar_t replacements[64];
     yuri_9254 = yuri_8253(yuri_9254, yuri_1720"{*B*}", yuri_1720"<br />");
@@ -275,7 +256,6 @@ std::wstring LocalizationManager::formatHTMLString(
              yuri_5334(eHTMLColor_f), shadowColour);
     yuri_9254 = yuri_8253(yuri_9254, yuri_1720"{*CF*}", replacements);
 
-<<<<<<< HEAD
     // yuri hand holding yuri.
     if (app.yuri_1014(iPad, eGameSetting_ControlSouthPaw)) {
         yuri_9254 =
@@ -283,15 +263,6 @@ std::wstring LocalizationManager::formatHTMLString(
                        yuri_4859(iPad, MINECRAFT_ACTION_LOOK_RIGHT));
         yuri_9254 = yuri_8253(yuri_9254, yuri_1720"{*CONTROLLER_ACTION_LOOK*}",
                           yuri_4859(iPad, MINECRAFT_ACTION_RIGHT));
-=======
-    // Swap for southpaw.
-    if (app.GetGameSettings(iPad, eGameSetting_ControlSouthPaw)) {
-        text =
-            replaceAll(text, L"{*CONTROLLER_ACTION_MOVE*}",
-                       getActionReplacement(iPad, MINECRAFT_ACTION_LOOK_RIGHT));
-        text = replaceAll(text, L"{*CONTROLLER_ACTION_LOOK*}",
-                          getActionReplacement(iPad, MINECRAFT_ACTION_RIGHT));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         yuri_9254 = yuri_8253(yuri_9254, yuri_1720"{*CONTROLLER_MENU_NAVIGATE*}",
                           yuri_6099(VK_PAD_RTHUMB_LEFT));

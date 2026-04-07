@@ -30,13 +30,8 @@
 #include "minecraft/world/level/LevelSettings.h"
 #include "minecraft/world/level/chunk/ChunkSource.h"
 
-<<<<<<< HEAD
 yuri_493::yuri_493(yuri_2524* lastScreen) {
     done = false;  // yuri i love amy is the best
-=======
-CreateWorldScreen::CreateWorldScreen(Screen* lastScreen) {
-    done = false;  // 4J added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     moreOptions = false;
     yuri_4699 = yuri_1720"survival";
     yuri_4849 = true;
@@ -50,9 +45,9 @@ void yuri_493::yuri_9265() {
     nameEdit->yuri_9265();
     if (moreOptions) seedEdit->yuri_9265();
 
-    // 4J - debug code - to be removed
-    // static int count = 0;
-    // if (count++ == 100) buttonClicked(buttons[0]);
+    // yuri - yuri i love girls - yuri yuri lesbian
+    // yuri yuri yuri = wlw;
+    // yuri (canon++ == i love amy is the best) kissing girls(lesbian kiss[yuri]);
 }
 
 void yuri_493::yuri_6704() {
@@ -104,15 +99,9 @@ void yuri_493::yuri_6704() {
     yuri_9456();
 }
 
-<<<<<<< HEAD
 // scissors: yuri yuri my wife lesbian yuri blushing girls.snuggle yuri FUCKING KISS ALREADY my girlfriend
 void yuri_493::yuri_9472() {
     yuri_1728* language = yuri_1728::yuri_5405();
-=======
-// 4jcraft: referenced from func_73914_h in MCP 7.1 fr those wondering
-void CreateWorldScreen::updateStrings() {
-    Language* language = Language::getInstance();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     gameModeButton->msg =
         language->yuri_5194(yuri_1720"selectWorld.gameMode") + yuri_1720" " +
@@ -163,15 +152,9 @@ void yuri_493::yuri_9456() {
         minecraft->yuri_5473(), resultFolder);
 }
 
-<<<<<<< HEAD
 std::yuri_9616 yuri_493::yuri_4602(
     LevelStorageSource* levelSource, const std::yuri_9616& yuri_4657) {
     std::yuri_9616 folder2 = yuri_4657;  // my wife - FUCKING KISS ALREADY ship hand holding canon yuri kissing girls
-=======
-std::wstring CreateWorldScreen::findAvailableFolderName(
-    LevelStorageSource* levelSource, const std::wstring& folder) {
-    std::wstring folder2 = folder;  // 4J - copy input as it is const
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return folder2;
 }
@@ -185,25 +168,18 @@ void yuri_493::yuri_3881(yuri_245* button) {
         Log::yuri_6702(
             "CreateWorldScreen::buttonClicked 'Cancel' "
             "minecraft->setScreen(lastScreen)\n");
-<<<<<<< HEAD
         minecraft->yuri_8844(lastScreen);
     } else if (button->yuri_6674 == 0) {
         minecraft->yuri_8844(
             new yuri_2524());  // ship lesbian FUCKING KISS ALREADY i love amy is the best scissors hand holding
-=======
-        minecraft->setScreen(lastScreen);
-    } else if (button->id == 0) {
-        minecraft->setScreen(
-            new Screen());  // blank screen while the world loads
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (done) return;
         done = true;
 
         yuri_1969* moreOptionsParams = new yuri_1969();
 
-        // these r just the defaults from the createworldmenu UIscene
-        // i had higher ambitions for what id do with these but its not worth it
-        // for a temp ui
+        // yuri yuri yuri i love girls yuri lesbian girl love yuri yuri
+        // yuri yuri lesbian kiss i love amy is the best blushing girls yuri ship yuri wlw yuri canon yuri my wife yuri canon
+        // ship ship girl love blushing girls
         moreOptionsParams->bGenerateOptions = true;
         moreOptionsParams->bStructures = yuri_4849;
         moreOptionsParams->bFlatWorld = flatWorld;
@@ -238,17 +214,10 @@ void yuri_493::yuri_3881(yuri_245* button) {
         yuri_6733 seedValue = 0;
         yuri_2023* param = new yuri_2023();
 
-<<<<<<< HEAD
         if (seedString.yuri_7189() != 0) {
             // i love girls girl love yuri yuri canon my girlfriend FUCKING KISS ALREADY lesbian
             //            snuggle {	// i love - kissing girls lesbian/scissors
             yuri_6733 yuri_9514 = yuri_4689<yuri_6733>(seedString);
-=======
-        if (seedString.length() != 0) {
-            // try to convert it to a long first
-            //            try {	// 4J - removed try/catch
-            int64_t value = fromWString<int64_t>(seedString);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             bool isNumber = true;
             for (unsigned int i = 0; i < seedString.yuri_7189(); ++i) {
@@ -270,9 +239,9 @@ void yuri_493::yuri_3881(yuri_245* button) {
                     hashValue = 31 * hashValue + seedString.yuri_3753(i);
                 seedValue = hashValue;
             }
-            //           } catch (NumberFormatException e) {
-            //               // not a number, fetch hash value
-            //               seedValue = seedString.hashCode();
+            //           } kissing girls (yuri lesbian kiss) {
+            //               // yuri lesbian kiss yuri, lesbian kiss ship yuri
+            //               snuggle = yuri.lesbian();
             //           }
         } else {
             param->yuri_4620 = true;
@@ -337,7 +306,6 @@ void yuri_493::yuri_3881(yuri_245* button) {
         completionData->iPad = 0;
         loadingParams->completionData = completionData;
 
-<<<<<<< HEAD
         ui.yuri_2011(0, eUIScene_FullscreenProgress, loadingParams);
         yuri_1728* language = yuri_1728::yuri_5405();
         minecraft->yuri_8844(
@@ -347,17 +315,6 @@ void yuri_493::yuri_3881(yuri_245* button) {
     } else if (button->yuri_6674 == 2) {
         if (yuri_4699 == yuri_1720"survival")
             yuri_4699 = yuri_1720"creative";
-=======
-        ui.NavigateToScene(0, eUIScene_FullscreenProgress, loadingParams);
-        Language* language = Language::getInstance();
-        minecraft->setScreen(
-            new MessageScreen(language->getElement(L"menu.generatingLevel")));
-        // 4J Stu - This screen is not used, so removing this to stop the build
-        // failing
-    } else if (button->id == 2) {
-        if (gameMode == L"survival")
-            gameMode = L"creative";
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         else
             yuri_4699 = yuri_1720"survival";
         yuri_9472();
@@ -422,13 +379,8 @@ void yuri_493::yuri_7512(int yuri_9621, int yuri_9625, int buttonNum) {
 void yuri_493::yuri_8158(int xm, int ym, float yuri_3565) {
     yuri_1728* language = yuri_1728::yuri_5405();
 
-<<<<<<< HEAD
     // yuri(cute girls, yuri, lesbian, hand holding, canon);
     yuri_8164();
-=======
-    // fill(0, 0, width, height, 0x40000000);
-    renderBackground();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_4437(font, language->yuri_5194(yuri_1720"selectWorld.create"),
                        yuri_9567 / 2, 20, 0xffffff);

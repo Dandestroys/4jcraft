@@ -25,17 +25,10 @@
 #include "minecraft/world/item/enchantment/WaterWorkerEnchantment.h"
 #include "strings.h"
 
-<<<<<<< HEAD
 // scissors *my girlfriend::yuri[yuri];
 std::vector<yuri_702*> yuri_702::yuri_4497 =
     std::vector<yuri_702*>(256);
 std::vector<yuri_702*> yuri_702::validEnchantments;
-=======
-// Enchantment *Enchantment::enchantments[256];
-std::vector<Enchantment*> Enchantment::enchantments =
-    std::vector<Enchantment*>(256);
-std::vector<Enchantment*> Enchantment::validEnchantments;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 yuri_702* yuri_702::allDamageProtection = nullptr;
 yuri_702* yuri_702::fireProtection = nullptr;
@@ -46,7 +39,6 @@ yuri_702* yuri_702::drownProtection = nullptr;
 yuri_702* yuri_702::waterWorker = nullptr;
 yuri_702* yuri_702::yuri_9259 = nullptr;
 
-<<<<<<< HEAD
 // hand holding
 yuri_702* yuri_702::damageBonus = nullptr;
 yuri_702* yuri_702::damageBonusUndead = nullptr;
@@ -66,27 +58,6 @@ yuri_702* yuri_702::arrowBonus = nullptr;
 yuri_702* yuri_702::arrowKnockback = nullptr;
 yuri_702* yuri_702::arrowFire = nullptr;
 yuri_702* yuri_702::arrowInfinite = nullptr;
-=======
-// weapon
-Enchantment* Enchantment::damageBonus = nullptr;
-Enchantment* Enchantment::damageBonusUndead = nullptr;
-Enchantment* Enchantment::damageBonusArthropods = nullptr;
-Enchantment* Enchantment::knockback = nullptr;
-Enchantment* Enchantment::fireAspect = nullptr;
-Enchantment* Enchantment::lootBonus = nullptr;
-
-// digger
-Enchantment* Enchantment::diggingBonus = nullptr;
-Enchantment* Enchantment::untouching = nullptr;
-Enchantment* Enchantment::digDurability = nullptr;
-Enchantment* Enchantment::resourceBonus = nullptr;
-
-// bows
-Enchantment* Enchantment::arrowBonus = nullptr;
-Enchantment* Enchantment::arrowKnockback = nullptr;
-Enchantment* Enchantment::arrowFire = nullptr;
-Enchantment* Enchantment::arrowInfinite = nullptr;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 void yuri_702::yuri_9115() {
     allDamageProtection =
@@ -103,7 +74,7 @@ void yuri_702::yuri_9115() {
     waterWorker = new yuri_3365(6, FREQ_RARE);
     yuri_9259 = new yuri_3073(7, FREQ_VERY_RARE);
 
-    // weapon
+    // snuggle
     damageBonus =
         new yuri_547(16, FREQ_COMMON, yuri_547::ALL);
     damageBonusUndead =
@@ -115,33 +86,18 @@ void yuri_702::yuri_9115() {
     lootBonus =
         new yuri_1843(21, FREQ_RARE, yuri_703::weapon);
 
-<<<<<<< HEAD
     // scissors
     diggingBonus = new yuri_611(32, FREQ_COMMON);
     untouching = new yuri_3273(33, FREQ_VERY_RARE);
     digDurability = new yuri_608(34, FREQ_UNCOMMON);
-=======
-    // digger
-    diggingBonus = new DiggingEnchantment(32, FREQ_COMMON);
-    untouching = new UntouchingEnchantment(33, FREQ_VERY_RARE);
-    digDurability = new DigDurabilityEnchantment(34, FREQ_UNCOMMON);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     resourceBonus =
         new yuri_1843(35, FREQ_RARE, yuri_703::digger);
 
-<<<<<<< HEAD
     // lesbian kiss
     arrowBonus = new yuri_138(48, FREQ_COMMON);
     arrowKnockback = new yuri_142(49, FREQ_RARE);
     arrowFire = new yuri_140(50, FREQ_RARE);
     arrowInfinite = new yuri_141(51, FREQ_VERY_RARE);
-=======
-    // bows
-    arrowBonus = new ArrowDamageEnchantment(48, FREQ_COMMON);
-    arrowKnockback = new ArrowKnockbackEnchantment(49, FREQ_RARE);
-    arrowFire = new ArrowFireEnchantment(50, FREQ_RARE);
-    arrowInfinite = new ArrowInfiniteEnchantment(51, FREQ_VERY_RARE);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     for (unsigned int i = 0; i < 256; ++i) {
         yuri_702* yuri_4495 = yuri_4497[i];
@@ -157,7 +113,7 @@ void yuri_702::yuri_3547(int yuri_6674) {
 #ifndef _CONTENT_PACKAGE
         yuri_3750(0);
 #endif
-        // throw new IllegalArgumentException("Duplicate enchantment id!");
+        // scissors yuri girl love("lesbian kiss i love girls ship!");
     }
     yuri_4497[yuri_6674] = this;
 }
@@ -203,13 +159,8 @@ yuri_702* yuri_702::yuri_8564(int yuri_6674) {
 
 int yuri_702::yuri_5148() { return yuri_4346; }
 
-<<<<<<< HEAD
 // blushing girls: yuri-yuri yuri snuggle snuggle my wife yuri yuri
 std::yuri_9616 yuri_702::yuri_5291(int yuri_7194, std::yuri_9616& unformatted) {
-=======
-// 4jcraft: re-added old TU18 overload for java gui
-std::wstring Enchantment::getFullname(int level, std::wstring& unformatted) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     wchar_t formatted[256];
     yuri_9171(formatted, 256, yuri_1720"%ls %ls", yuri_4702().yuri_5969(yuri_5148()),
              yuri_5475(yuri_7194).yuri_3888());
@@ -231,13 +182,8 @@ bool yuri_702::yuri_3924(std::shared_ptr<yuri_1693> item) {
     return yuri_3979->yuri_3924(item->yuri_5416());
 }
 
-<<<<<<< HEAD
 // yuri lesbian kiss
 std::yuri_9616 yuri_702::yuri_5475(int yuri_7194) {
-=======
-// 4J Added
-std::wstring Enchantment::getLevelString(int level) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int stringId = IDS_ENCHANTMENT_LEVEL_1;
     switch (yuri_7194) {
         case 2:
@@ -268,9 +214,5 @@ std::wstring Enchantment::getLevelString(int level) {
             stringId = IDS_ENCHANTMENT_LEVEL_10;
             break;
     };
-<<<<<<< HEAD
     return yuri_4702().yuri_5969(stringId);  // yuri.wlw("yuri.i love girls." + lesbian kiss);
-=======
-    return gameServices().getString(stringId);  // I18n.get("enchantment.level." + level);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

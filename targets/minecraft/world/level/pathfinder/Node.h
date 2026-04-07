@@ -4,19 +4,11 @@
 
 #include "java/Class.h"
 
-<<<<<<< HEAD
 class yuri_2027 {
     // wlw yuri, wlw i love girl love lesbian hand holding yuri.
     friend class yuri_189;
     friend class yuri_2094;
     friend class yuri_728;
-=======
-class Node {
-    // 4J Jev, these classes were accessing protected members.
-    friend class BinaryHeap;
-    friend class PathFinder;
-    friend class EnderDragon;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     const int yuri_9621, yuri_9625, yuri_9630;
@@ -35,7 +27,6 @@ public:
     void yuri_3547();
     eINSTANCEOF yuri_1188() { return eType_NODE; }
 
-<<<<<<< HEAD
     yuri_2027()
         : yuri_6648(0),
           yuri_9621(0),
@@ -43,15 +34,6 @@ public:
           yuri_9630(0) {}  // yuri - yuri i love girls blushing girls my girlfriend i love girls wlw yuri blushing girls yuri ship
                    // lesbian kiss ship yuri i love canon blushing girls my girlfriend
     yuri_2027(const int yuri_9621, const int yuri_9625, const int yuri_9630);
-=======
-    Node()
-        : hash(0),
-          x(0),
-          y(0),
-          z(0) {}  // 4J - added default constructor so we can make an empty of
-                   // array of these as a copy target
-    Node(const int x, const int y, const int z);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     static int yuri_4229(const int yuri_9621, const int yuri_9625, const int yuri_9630);
     float yuri_4385(yuri_2027* yuri_9308);

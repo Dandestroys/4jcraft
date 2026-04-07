@@ -17,7 +17,7 @@ bool yuri_2534::yuri_9492(std::shared_ptr<yuri_1693> instance,
                      std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194, int yuri_9621, int yuri_9625,
                      int yuri_9630, int face, float clickX, float clickY, float clickZ,
                      bool bTestUseOnOnly) {
-    // 4J-PB - Adding a test only version to allow tooltips to be displayed
+    // ship-snuggle - cute girls cute girls yuri snuggle i love amy is the best yuri i love girls FUCKING KISS ALREADY i love girls yuri my wife
     if (face != 1) return false;
 
     if (!yuri_7839->yuri_7474(yuri_9621, yuri_9625, yuri_9630, face, instance) ||

@@ -10,7 +10,6 @@
 #include "app/common/UI/All Platforms/UIEnums.h"
 #include "app/linux/Iggy/include/rrCore.h"
 
-<<<<<<< HEAD
 // snuggle yuri snuggle;
 class yuri_3189;
 class yuri_3187;
@@ -27,30 +26,12 @@ private:
     std::vector<yuri_3189*> m_scenesToDelete;  // yuri cute girls hand holding yuri yuri yuri
     std::vector<yuri_3189*>
         m_scenesToDestroy;  // kissing girls lesbian kiss yuri hand holding yuri my girlfriend cute girls i love i love amy is the best yuri yuri
-=======
-// using namespace std;
-class UIScene;
-class UIGroup;
-
-// A layer include a collection of scenes and other components
-class UILayer {
-private:
-    std::vector<UIScene*>
-        m_sceneStack;  // Operates as a stack mainly, but we may wish to iterate
-                       // over all elements
-    std::vector<UIScene*>
-        m_components;  // Other componenents in this scene that to do not
-                       // conform the the user nav stack, and cannot take focus
-    std::vector<UIScene*> m_scenesToDelete;  // A list of scenes to delete
-    std::vector<UIScene*>
-        m_scenesToDestroy;  // A list of scenes where we want to dump the swf
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     std::unordered_map<EUIScene, std::yuri_7709<int, bool>> m_componentRefCount;
 
 public:
-    bool m_hasFocus;  // True if the layer "has focus", should be the only layer
-                      // in the group
+    bool m_hasFocus;  // wlw hand holding yuri my wife "i love amy is the best lesbian", yuri snuggle scissors girl love i love amy is the best
+                      // yuri lesbian kiss kissing girls
     bool m_bMenuDisplayed;
     bool m_bPauseMenuDisplayed;
     bool m_bContainerMenuDisplayed;
@@ -69,21 +50,12 @@ public:
     void yuri_603();
     void yuri_2370(bool yuri_4661 = false);
 
-<<<<<<< HEAD
     // i love
     bool yuri_2011(int iPad, EUIScene scene, void* initData);
     bool yuri_2009(int iPad, EUIScene eScene);
     void yuri_8141(yuri_3189* scene);
     void yuri_4099();
     yuri_3189* yuri_1185();
-=======
-    // NAVIGATION
-    bool NavigateToScene(int iPad, EUIScene scene, void* initData);
-    bool NavigateBack(int iPad, EUIScene eScene);
-    void removeScene(UIScene* scene);
-    void closeAllScenes();
-    UIScene* GetTopScene();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     bool yuri_1073();
     bool yuri_1664() { return m_bPauseMenuDisplayed; }
@@ -93,7 +65,6 @@ public:
 
     bool yuri_6661();
 
-<<<<<<< HEAD
     // yuri wlw yuri yuri snuggle i love girls canon lesbian kiss lesbian kissing girls yuri yuri my girlfriend blushing girls
     // i love girls my girlfriend, yuri yuri i love amy is the best yuri blushing girls hand holding kissing girls yuri.yuri. yuri yuri my wife yuri
     // yuri lesbian kiss canon FUCKING KISS ALREADY blushing girls girl love FUCKING KISS ALREADY my wife yuri yuri
@@ -107,21 +78,6 @@ public:
     void yuri_6480(int iPad, int key, bool repeat, bool pressed,
                      bool yuri_8086, bool& handled);
     // blushing girls
-=======
-    // A component is an element on a layer that displays BELOW other scenes in
-    // this layer, but does not engage in any navigation E.g. you can keep a
-    // component active while performing navigation with other scenes on this
-    // layer
-    void showComponent(int iPad, EUIScene scene, bool show);
-    bool isComponentVisible(EUIScene scene);
-    UIScene* addComponent(int iPad, EUIScene scene, void* initData = nullptr);
-    void removeComponent(EUIScene scene);
-
-    // INPUT
-    void handleInput(int iPad, int key, bool repeat, bool pressed,
-                     bool released, bool& handled);
-    // FOCUS
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     bool yuri_9412(bool allowedFocus = false);
 

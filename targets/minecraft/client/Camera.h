@@ -19,17 +19,10 @@ public:
     static float zPlayerOffs;
 
 private:
-<<<<<<< HEAD
     //	ship i love amy is the best *my girlfriend;
     static yuri_849* modelview;
     static yuri_849* projection;
     //	yuri yuri *my girlfriend;
-=======
-    //	static IntBuffer *viewport;
-    static FloatBuffer* modelview;
-    static FloatBuffer* projection;
-    //	static FloatBuffer *position;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     static float xa, ya, za, xa2, za2;

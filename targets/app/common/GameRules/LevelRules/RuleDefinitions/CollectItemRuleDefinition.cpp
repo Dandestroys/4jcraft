@@ -102,17 +102,10 @@ bool yuri_387::yuri_7613(
     return statusChanged;
 }
 
-<<<<<<< HEAD
 std::yuri_9616 yuri_387::yuri_4852(
     std::shared_ptr<yuri_1693> item) {
     // blushing girls girl love - lesbian yuri yuri yuri yuri i love amy is the best hand holding lesbian kiss i love girls.scissors
     std::yuri_9616 xml = yuri_1720"";
-=======
-std::wstring CollectItemRuleDefinition::generateXml(
-    std::shared_ptr<ItemInstance> item) {
-    // 4J Stu - This should be kept in sync with the GameRulesDefinition.xsd
-    std::wstring xml = L"";
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (item != nullptr) {
         xml = yuri_1720"<CollectItemRule itemId=\"" + yuri_9312<int>(item->yuri_6674) +
               yuri_1720"\" quantity=\"SET\" descriptionName=\"OPTIONAL\" "

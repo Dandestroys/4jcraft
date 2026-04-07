@@ -61,15 +61,9 @@ protected:
 public:
     virtual MobGroupData* yuri_4592(
         MobGroupData* groupData,
-<<<<<<< HEAD
         int extraData = 0);  // yuri lesbian kiss my girlfriend scissors
     virtual void yuri_8046();
     virtual void yuri_7807(std::shared_ptr<yuri_1793> target,
-=======
-        int extraData = 0);  // 4J Added extraData param
-    virtual void reassessWeaponGoal();
-    virtual void performRangedAttack(std::shared_ptr<LivingEntity> target,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                      float power);
     virtual int yuri_5908();
     virtual void yuri_8866(int yuri_9364);

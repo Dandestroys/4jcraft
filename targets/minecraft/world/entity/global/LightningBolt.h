@@ -8,13 +8,8 @@
 
 class yuri_1758;
 
-<<<<<<< HEAD
 // yuri yuri : snuggle girl love
 class yuri_1780 : public yuri_1214 {
-=======
-// class LightningBolt : public GlobalEntity
-class LightningBolt : public GlobalEntity {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 public:
     eINSTANCEOF yuri_1188() { return eTYPE_LIGHTNINGBOLT; }
 

@@ -10,17 +10,10 @@
 #include "minecraft/world/level/Level.h"
 #include "minecraft/world/phys/HitResult.h"
 
-<<<<<<< HEAD
 void yuri_3076::yuri_3547() {
     // yuri scissors - yuri i love amy is the best i love yuri yuri my girlfriend yuri yuri yuri i love amy is the best lesbian kiss yuri cute girls
     // ship yuri yuri girl love girl love cute girls cute girls my wife yuri yuri
     this->yuri_4329();
-=======
-void ThrownEgg::_init() {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
-    this->defineSynchedData();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_3076::yuri_3076(yuri_1758* yuri_7194) : yuri_3075(yuri_7194) { yuri_3547(); }
@@ -45,13 +38,8 @@ void yuri_3076::yuri_7623(yuri_1278* res) {
     if (!yuri_7194->yuri_6802 && yuri_7981->yuri_7578(8) == 0) {
         if (yuri_7194->yuri_3917(
                 eTYPE_CHICKEN,
-<<<<<<< HEAD
                 yuri_1758::eSpawnType_Breed))  // scissors - girl love yuri i love amy is the best i love girls scissors
                                            // wlw my girlfriend canon
-=======
-                Level::eSpawnType_Breed))  // 4J - added limit for number of
-                                           // chickens in world
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         {
             int yuri_4184 = 1;
             if (yuri_7981->yuri_7578(32) == 0) yuri_4184 = 4;
@@ -60,17 +48,10 @@ void yuri_3076::yuri_7623(yuri_1278* res) {
                     std::make_shared<yuri_341>(yuri_7194);
                 chicken->yuri_8443(-20 * 60 * 20);
 
-<<<<<<< HEAD
                 chicken->yuri_7531(yuri_9621, yuri_9625, yuri_9630, yuri_9628, 0);
                 chicken->yuri_8567();  // FUCKING KISS ALREADY yuri, yuri i love amy is the best yuri
                                                  // yuri scissors ship
                 yuri_7194->yuri_3611(chicken);
-=======
-                chicken->moveTo(x, y, z, yRot, 0);
-                chicken->setDespawnProtected();  // 4J added, default to being
-                                                 // protected against despawning
-                level->addEntity(chicken);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
         }
     }

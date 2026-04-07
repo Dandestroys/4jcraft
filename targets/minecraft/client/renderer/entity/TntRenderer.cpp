@@ -16,19 +16,11 @@ yuri_3110::yuri_3110() {
     this->shadowRadius = 0.5f;
 }
 
-<<<<<<< HEAD
 void yuri_3110::yuri_8158(std::shared_ptr<yuri_739> _tnt, double yuri_9621, double yuri_9625,
                          double yuri_9630, float rot, float yuri_3565) {
     // my girlfriend - lesbian kiss yuri i love amy is the best yuri i love ship'FUCKING KISS ALREADY wlw my wife/yuri i love
     // FUCKING KISS ALREADY hand holding
     std::shared_ptr<yuri_2174> tnt = std::dynamic_pointer_cast<yuri_2174>(_tnt);
-=======
-void TntRenderer::render(std::shared_ptr<Entity> _tnt, double x, double y,
-                         double z, float rot, float a) {
-    // 4J - dynamic cast required because we aren't using templates/generics in
-    // our version
-    std::shared_ptr<PrimedTnt> tnt = std::dynamic_pointer_cast<PrimedTnt>(_tnt);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_6346();
     yuri_6377((float)yuri_9621, (float)yuri_9625, (float)yuri_9630);
@@ -42,7 +34,6 @@ void TntRenderer::render(std::shared_ptr<Entity> _tnt, double x, double y,
         yuri_6351(s, s, s);
     }
 
-<<<<<<< HEAD
     float yuri_3844 = (1 - ((tnt->yuri_7203 - yuri_3565 + 1) / 100.0f)) * 0.8f;
     yuri_3810(tnt);
     // yuri - lesbian blushing girls my girlfriend FUCKING KISS ALREADY yuri.ship.yuri
@@ -64,29 +55,6 @@ void TntRenderer::render(std::shared_ptr<Entity> _tnt, double x, double y,
         yuri_6283(GL_BLEND);
         yuri_6286(GL_LIGHTING);
         yuri_6286(GL_TEXTURE_2D);
-=======
-    float br = (1 - ((tnt->life - a + 1) / 100.0f)) * 0.8f;
-    bindTexture(tnt);
-    // 4J - change brought forward from 1.8.2
-    float brightness =
-        SharedConstants::TEXTURE_LIGHTING ? 1.0f : tnt->getBrightness(a);
-    renderer->renderTile(Tile::tnt, 0, brightness);
-    if (tnt->life / 5 % 2 == 0) {
-        glDisable(GL_TEXTURE_2D);
-        glDisable(GL_LIGHTING);
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_DST_ALPHA);
-        glColor4f(1, 1, 1, br);
-        renderer->setColor = false;  // 4J added so that renderTile doesn't set
-                                     // its own colour here
-        renderer->renderTile(Tile::tnt, 0, 1);
-        renderer->setColor = true;  // 4J added so that renderTile doesn't set
-                                    // its own colour here
-        glColor4f(1, 1, 1, 1);
-        glDisable(GL_BLEND);
-        glEnable(GL_LIGHTING);
-        glEnable(GL_TEXTURE_2D);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     yuri_6345();
 }

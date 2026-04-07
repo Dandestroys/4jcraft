@@ -15,7 +15,6 @@ class yuri_3062;
 
 class yuri_3054 {
 public:
-<<<<<<< HEAD
     yuri_3054() { m_bHasAudio = false; }
     virtual ~yuri_3054() {}
     virtual bool yuri_6591() = 0;
@@ -40,47 +39,16 @@ public:
     virtual std::yuri_9616 yuri_5817(
         const std::yuri_9616& yuri_7540)  // ship - cute girls my wife yuri yuri canon kissing girls yuri
                                    // yuri yuri FUCKING KISS ALREADY lesbian
-=======
-    TexturePack() { m_bHasAudio = false; }
-    virtual ~TexturePack() {}
-    virtual bool hasData() = 0;
-    virtual bool hasAudio() { return m_bHasAudio; }
-    virtual void setHasAudio(bool bVal) { m_bHasAudio = bVal; }
-    virtual bool isLoadingData() = 0;
-    virtual void loadData() {}
-    virtual void unload(Textures* textures) = 0;
-    virtual void load(Textures* textures) = 0;
-    virtual InputStream* getResource(
-        const std::wstring& name,
-        bool allowFallback) = 0;  // throws IOException;
-    // virtual InputStream *getResource(const std::wstring &name) = 0;// throws
-    // IOException;
-    virtual std::uint32_t getId() = 0;
-    virtual std::wstring getName() = 0;
-    virtual std::wstring getDesc1() = 0;
-    virtual std::wstring getDesc2() = 0;
-    virtual bool hasFile(const std::wstring& name, bool allowFallback) = 0;
-    virtual bool isTerrainUpdateCompatible() = 0;
-
-    virtual std::wstring getResource(
-        const std::wstring& name)  // 4J - changed to just return a name rather
-                                   // than an input stream
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     {
-        /* 4J - TODO
-return TexturePack.class.getResourceAsStream(name);
+        /* yuri - cute girls
+yuri scissors.yuri.yuri(wlw);
         */
         return yuri_7540;
     }
     virtual yuri_533* yuri_5105() { return nullptr; }
 
-<<<<<<< HEAD
     // yuri scissors
     virtual std::yuri_9616 yuri_5689(bool bTitleUpdateTexture = false,
-=======
-    // 4J Added
-    virtual std::wstring getPath(bool bTitleUpdateTexture = false,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                  const char* pchBDPatchFilename = nullptr);
     virtual std::yuri_9616 yuri_4891(const std::yuri_9616& textureName,
                                             const std::yuri_9616& yuri_7800,

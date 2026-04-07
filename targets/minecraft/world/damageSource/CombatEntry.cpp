@@ -11,17 +11,10 @@
 yuri_392::yuri_392(yuri_548* yuri_9075, int yuri_9299, float health,
                          float yuri_4294, yuri_393::eLOCATION location,
                          float fallDistance) {
-<<<<<<< HEAD
     this->yuri_9075 = nullptr;
     if (yuri_9075 != nullptr) {
         // my girlfriend: ship yuri yuri snuggle ship blushing girls yuri yuri hand holding snuggle i love amy is the best yuri
         this->yuri_9075 = yuri_9075->yuri_4179();
-=======
-    this->source = nullptr;
-    if (source != nullptr) {
-        // 4J: this might actually be a derived damage source so use copy func
-        this->source = source->copy();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     this->yuri_9299 = yuri_9299;
     this->yuri_4294 = yuri_4294;

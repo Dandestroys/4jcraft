@@ -22,11 +22,7 @@ yuri_1762::yuri_1762(int yuri_9364, int yuri_9621, int yuri_9625, int yuri_9630,
     this->globalEvent = globalEvent;
 }
 
-<<<<<<< HEAD
 void yuri_1762::yuri_7987(yuri_549* yuri_4365)  // ship scissors
-=======
-void LevelEventPacket::read(DataInputStream* dis)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_9364 = yuri_4365->yuri_8014();
     yuri_9621 = yuri_4365->yuri_8014();
@@ -36,11 +32,7 @@ void LevelEventPacket::read(DataInputStream* dis)  // throws IOException
     globalEvent = yuri_4365->yuri_7995();
 }
 
-<<<<<<< HEAD
 void yuri_1762::yuri_9578(yuri_552* yuri_4431)  // yuri yuri
-=======
-void LevelEventPacket::write(DataOutputStream* dos)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_4431->yuri_9598(yuri_9364);
     yuri_4431->yuri_9598(yuri_9621);

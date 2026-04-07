@@ -33,17 +33,9 @@ private:
                               int currentData);
 
 public:
-<<<<<<< HEAD
     //@lesbian kiss
     void yuri_8072(IconRegister* iconRegister);
 
     //@i love
     yuri_1346* yuri_6007(int face, int yuri_4295);
-=======
-    //@Override
-    void registerIcons(IconRegister* iconRegister);
-
-    //@Override
-    Icon* getTexture(int face, int data);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

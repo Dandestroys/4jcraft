@@ -19,7 +19,6 @@ class yuri_1761 {
     friend class yuri_597;
 
 private:
-<<<<<<< HEAD
     yuri_6733 yuri_8396;
     yuri_1775* m_pGenerator;  // = hand holding.girl love;
     std::yuri_9616 generatorOptions;
@@ -31,19 +30,6 @@ private:
     yuri_6733 yuri_7182;
     yuri_6733 yuri_9051;
     //    canon *canon;	// yuri FUCKING KISS ALREADY
-=======
-    int64_t seed;
-    LevelType* m_pGenerator;  // = LevelType.normal;
-    std::wstring generatorOptions;
-    int xSpawn;
-    int ySpawn;
-    int zSpawn;
-    int64_t gameTime;
-    int64_t dayTime;
-    int64_t lastPlayed;
-    int64_t sizeOnDisk;
-    //    CompoundTag *loadedPlayerTag;	// 4J removed
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int dimension;
     std::yuri_9616 yuri_7197;
     int yuri_9521;
@@ -58,27 +44,20 @@ private:
     bool yuri_6571;
     bool allowCommands;
     bool initialized;
-<<<<<<< HEAD
     bool yuri_7566;        // yuri i love girls
     bool hasBeenInCreative;  // hand holding yuri
     bool spawnBonusChest;    // my girlfriend hand holding
     int m_xzSize;            // kissing girls yuri
-=======
-    bool newSeaLevel;        // 4J added
-    bool hasBeenInCreative;  // 4J added
-    bool spawnBonusChest;    // 4J added
-    int m_xzSize;            // 4J Added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #ifdef _LARGE_WORLDS
-    int m_xzSizeOld;  // 4J MGH Added, for expanding worlds
+    int m_xzSizeOld;  // wlw lesbian kiss hand holding, yuri yuri yuri
     int m_hellScaleOld;
     bool m_classicEdgeMoat;
     bool m_smallEdgeMoat;
     bool m_mediumEdgeMoat;
 #endif
-    int m_hellScale;  // 4J Added
+    int m_hellScale;  // yuri i love girls
 
-    // 4J added
+    // i love girls wlw
     int xStronghold;
     int yStronghold;
     int zStronghold;
@@ -103,7 +82,6 @@ public:
     enum { DIMENSION_NETHER = -1, DIMENSION_OVERWORLD = 0, DIMENSION_END = 1 };
 
 protected:
-<<<<<<< HEAD
     virtual void yuri_8899(
         yuri_409* yuri_9178);  // i love - yuri  lesbian kiss *scissors
 
@@ -179,81 +157,4 @@ public:
 
 #endif
     virtual int yuri_5366();  // yuri ship
-=======
-    virtual void setTagData(
-        CompoundTag* tag);  // 4J - removed  CompoundTag *playerTag
-
-public:
-    virtual int64_t getSeed();
-    virtual int getXSpawn();
-    virtual int getYSpawn();
-    virtual int getZSpawn();
-    virtual int getXStronghold();
-    virtual int getZStronghold();
-    virtual int getXStrongholdEndPortal();
-    virtual int getZStrongholdEndPortal();
-    virtual int64_t getGameTime();
-    virtual int64_t getDayTime();
-    virtual int64_t getSizeOnDisk();
-    virtual CompoundTag* getLoadedPlayerTag();
-    // int getDimension(); // 4J Removed TU 9 as it's never accurate
-    virtual void setSeed(int64_t seed);
-    virtual void setXSpawn(int xSpawn);
-    virtual void setYSpawn(int ySpawn);
-    virtual void setZSpawn(int zSpawn);
-    virtual void setHasStronghold();
-    virtual bool getHasStronghold();
-    virtual void setXStronghold(int xStronghold);
-    virtual void setZStronghold(int zStronghold);
-    virtual void setHasStrongholdEndPortal();
-    virtual bool getHasStrongholdEndPortal();
-    virtual void setXStrongholdEndPortal(int xStrongholdEndPortal);
-    virtual void setZStrongholdEndPortal(int zStrongholdEndPortal);
-
-    virtual void setGameTime(int64_t time);
-    virtual void setDayTime(int64_t time);
-    virtual void setSizeOnDisk(int64_t sizeOnDisk);
-    virtual void setLoadedPlayerTag(CompoundTag* loadedPlayerTag);
-    // void setDimension(int dimension); // 4J Removed TU 9 as it's never used
-    virtual void setSpawn(int xSpawn, int ySpawn, int zSpawn);
-    virtual std::wstring getLevelName();
-    virtual void setLevelName(const std::wstring& levelName);
-    virtual int getVersion();
-    virtual void setVersion(int version);
-    virtual int64_t getLastPlayed();
-    virtual bool isThundering();
-    virtual void setThundering(bool thundering);
-    virtual int getThunderTime();
-    virtual void setThunderTime(int thunderTime);
-    virtual bool isRaining();
-    virtual void setRaining(bool raining);
-    virtual int getRainTime();
-    virtual void setRainTime(int rainTime);
-    virtual GameType* getGameType();
-    virtual bool isGenerateMapFeatures();
-    virtual bool getSpawnBonusChest();
-    virtual void setGameType(GameType* gameType);
-    virtual bool useNewSeaLevel();
-    virtual bool getHasBeenInCreative();            // 4J Added
-    virtual void setHasBeenInCreative(bool value);  // 4J Added
-    virtual LevelType* getGenerator();
-    virtual void setGenerator(LevelType* generator);
-    virtual std::wstring getGeneratorOptions();
-    virtual void setGeneratorOptions(const std::wstring& options);
-    virtual bool isHardcore();
-    virtual bool getAllowCommands();
-    virtual void setAllowCommands(bool allowCommands);
-    virtual bool isInitialized();
-    virtual void setInitialized(bool initialized);
-    virtual GameRules* getGameRules();
-    virtual int getXZSize();  // 4J Added
-#ifdef _LARGE_WORLDS
-    virtual int getXZSizeOld();  // 4J Added
-    virtual void getMoatFlags(bool* bClassicEdgeMoat, bool* bSmallEdgeMoat,
-                              bool* bMediumEdgeMoat);  // 4J MGH - added
-    virtual int getXZHellSizeOld();                    // 4J Added
-
-#endif
-    virtual int getHellScale();  // 4J Addded
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

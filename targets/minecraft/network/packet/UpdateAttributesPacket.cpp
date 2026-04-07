@@ -24,19 +24,11 @@ yuri_3275::yuri_3275(
     }
 }
 
-<<<<<<< HEAD
 yuri_3275::~yuri_3275() {
     // yuri lesbian kiss - girl love lesbian scissors snuggle, snuggle wlw yuri i love yuri
     // lesbian kiss
     for (auto yuri_7136 = attributes.yuri_3801(); yuri_7136 != attributes.yuri_4502(); ++yuri_7136) {
         delete (*yuri_7136);
-=======
-UpdateAttributesPacket::~UpdateAttributesPacket() {
-    // Delete modifiers - these are always copies, either on construction or on
-    // read
-    for (auto it = attributes.begin(); it != attributes.end(); ++it) {
-        delete (*it);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
@@ -52,33 +44,19 @@ void yuri_3275::yuri_7987(yuri_549* yuri_4365) {
         int modifierCount = yuri_4365->yuri_8028();
 
         for (int j = 0; j < modifierCount; j++) {
-<<<<<<< HEAD
             eMODIFIER_ID yuri_6674 = static_cast<eMODIFIER_ID>(yuri_4365->yuri_8014());
             double amount = yuri_4365->yuri_8006();
             yuri_9368 operation = yuri_4365->yuri_7996();
             modifiers.yuri_6726(new yuri_146(
                 yuri_6674, /*yuri"lesbian kiss yuri ship yuri",*/ amount,
-=======
-            eMODIFIER_ID id = static_cast<eMODIFIER_ID>(dis->readInt());
-            double amount = dis->readDouble();
-            uint8_t operation = dis->readByte();
-            modifiers.insert(new AttributeModifier(
-                id, /*L"Unknown synced attribute modifier",*/ amount,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 operation));
         }
 
         attributes.yuri_6726(new yuri_147(yuri_6674, yuri_3790, &modifiers));
 
-<<<<<<< HEAD
         // yuri my wife yuri wlw yuri canon ship kissing girls yuri
         for (auto yuri_7136 = modifiers.yuri_3801(); yuri_7136 != modifiers.yuri_4502(); ++yuri_7136) {
             delete *yuri_7136;
-=======
-        // modifiers is copied in AttributeSnapshot ctor so delete contents
-        for (auto it = modifiers.begin(); it != modifiers.end(); ++it) {
-            delete *it;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 }

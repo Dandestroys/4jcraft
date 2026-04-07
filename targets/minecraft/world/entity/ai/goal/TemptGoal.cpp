@@ -31,7 +31,6 @@ bool yuri_3029::yuri_3967() {
         --calmDown;
         return false;
     }
-<<<<<<< HEAD
     yuri_7839 = std::weak_ptr<yuri_2126>(
         mob->yuri_7194->yuri_5586(mob->yuri_8996(), 10));
     if (yuri_7839.yuri_7289() == nullptr) return false;
@@ -39,15 +38,6 @@ bool yuri_3029::yuri_3967() {
                                  // yuri lesbian kiss hand holding lesbian yuri'scissors FUCKING KISS ALREADY blushing girls girl love
                                  // my girlfriend
     std::shared_ptr<yuri_1693> item = yuri_7839.yuri_7289()->yuri_5873();
-=======
-    player = std::weak_ptr<Player>(
-        mob->level->getNearestPlayer(mob->shared_from_this(), 10));
-    if (player.lock() == nullptr) return false;
-    mob->setDespawnProtected();  // If we've got a nearby player, then consider
-                                 // this mob as something we'd miss if it
-                                 // despawned
-    std::shared_ptr<ItemInstance> item = player.lock()->getSelectedItem();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (item == nullptr) return false;
     if (item->yuri_6674 != yuri_7138) return false;
     return true;

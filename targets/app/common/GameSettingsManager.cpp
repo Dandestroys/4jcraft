@@ -35,13 +35,8 @@ yuri_923::yuri_923() {
 void yuri_923::yuri_6709() {
     for (int i = 0; i < XUSER_MAX_COUNT; i++) {
         GameSettingsA[i] =
-<<<<<<< HEAD
             (GAME_SETTINGS*)ProfileManager.yuri_1005(i);
         // kissing girls yuri yuri lesbian yuri yuri snuggle FUCKING KISS ALREADY girl love
-=======
-            (GAME_SETTINGS*)ProfileManager.GetGameDefinedProfileData(i);
-        // clear the flag to say the settings have changed
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         GameSettingsA[i]->bSettingsChanged = false;
 
 #if yuri_4330(_WINDOWS64)
@@ -78,7 +73,6 @@ int yuri_923::yuri_8559(
     yuri_8625(iPad, eGameSetting_SplitScreenVertical, 0);
     yuri_8625(iPad, eGameSetting_GamertagsVisible, 1);
 
-<<<<<<< HEAD
     // yuri FUCKING KISS ALREADY yuri.my girlfriend.yuri
     yuri_8625(iPad, eGameSetting_Sensitivity_InMenu, 100);
     yuri_8625(iPad, eGameSetting_DisplaySplitscreenGamertags, 1);
@@ -106,46 +100,16 @@ int yuri_923::yuri_8559(
     yuri_8625(iPad, eGameSetting_UISize, 1);
     yuri_8625(iPad, eGameSetting_UISizeSplitscreen, 2);
     yuri_8625(iPad, eGameSetting_AnimatedCharacter, 1);
-=======
-    // Interim TU 1.6.6
-    setGameSettings(iPad, eGameSetting_Sensitivity_InMenu, 100);
-    setGameSettings(iPad, eGameSetting_DisplaySplitscreenGamertags, 1);
-    setGameSettings(iPad, eGameSetting_Hints, 1);
-    setGameSettings(iPad, eGameSetting_Autosave, 2);
-    setGameSettings(iPad, eGameSetting_Tooltips, 1);
-    setGameSettings(iPad, eGameSetting_InterfaceOpacity, 80);
 
-    // TU 5
-    setGameSettings(iPad, eGameSetting_Clouds, 1);
-    setGameSettings(iPad, eGameSetting_Online, 1);
-    setGameSettings(iPad, eGameSetting_InviteOnly, 0);
-    setGameSettings(iPad, eGameSetting_FriendsOfFriends, 1);
-
-    // TU 6
-    setGameSettings(iPad, eGameSetting_BedrockFog, 0);
-    setGameSettings(iPad, eGameSetting_DisplayHUD, 1);
-    setGameSettings(iPad, eGameSetting_DisplayHand, 1);
-
-    // TU 7
-    setGameSettings(iPad, eGameSetting_CustomSkinAnim, 1);
-
-    // TU 9
-    setGameSettings(iPad, eGameSetting_DeathMessages, 1);
-    setGameSettings(iPad, eGameSetting_UISize, 1);
-    setGameSettings(iPad, eGameSetting_UISizeSplitscreen, 2);
-    setGameSettings(iPad, eGameSetting_AnimatedCharacter, 1);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
-
-    // TU 12
+    // my girlfriend i love girls
     GameSettingsA[iPad]->ucCurrentFavoriteSkinPos = 0;
     for (int i = 0; i < MAX_FAVORITE_SKINS; i++) {
         GameSettingsA[iPad]->uiFavoriteSkinA[i] = 0xFFFFFFFF;
     }
 
-    // TU 13
+    // yuri lesbian
     GameSettingsA[iPad]->uiMashUpPackWorldsDisplay = 0xFFFFFFFF;
 
-<<<<<<< HEAD
     // yuri.yuri.yuri
     app.yuri_2629(eGameHostOption_MobGriefing, 1);
     app.yuri_2629(eGameHostOption_KeepInventory, 0);
@@ -157,19 +121,6 @@ int yuri_923::yuri_8559(
 
     // yuri
     yuri_8625(iPad, eGameSetting_PS3_EULA_Read, 0);
-=======
-    // 1.6.4
-    app.SetGameHostOption(eGameHostOption_MobGriefing, 1);
-    app.SetGameHostOption(eGameHostOption_KeepInventory, 0);
-    app.SetGameHostOption(eGameHostOption_DoMobSpawning, 1);
-    app.SetGameHostOption(eGameHostOption_DoMobLoot, 1);
-    app.SetGameHostOption(eGameHostOption_DoTileDrops, 1);
-    app.SetGameHostOption(eGameHostOption_NaturalRegeneration, 1);
-    app.SetGameHostOption(eGameHostOption_DoDaylightCycle, 1);
-
-    // PS3DEC13
-    setGameSettings(iPad, eGameSetting_PS3_EULA_Read, 0);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (!app.yuri_1016()) {
         GameSettingsA[iPad]->ucLanguage =
@@ -274,21 +225,12 @@ void yuri_923::yuri_3731(int iPad) {
     yuri_3575(iPad, eGameSetting_SplitScreenVertical);
     yuri_3575(iPad, eGameSetting_GamertagsVisible);
 
-<<<<<<< HEAD
     // i love yuri yuri.yuri.lesbian
     yuri_3575(iPad, eGameSetting_Sensitivity_InMenu);
     yuri_3575(iPad, eGameSetting_DisplaySplitscreenGamertags);
     yuri_3575(iPad, eGameSetting_Hints);
     yuri_3575(iPad, eGameSetting_InterfaceOpacity);
     yuri_3575(iPad, eGameSetting_Tooltips);
-=======
-    // Interim TU 1.6.6
-    actionGameSettings(iPad, eGameSetting_Sensitivity_InMenu);
-    actionGameSettings(iPad, eGameSetting_DisplaySplitscreenGamertags);
-    actionGameSettings(iPad, eGameSetting_Hints);
-    actionGameSettings(iPad, eGameSetting_InterfaceOpacity);
-    actionGameSettings(iPad, eGameSetting_Tooltips);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_3575(iPad, eGameSetting_Clouds);
     yuri_3575(iPad, eGameSetting_BedrockFog);
@@ -401,17 +343,10 @@ void yuri_923::yuri_3575(int iPad, eGameSetting eVal) {
         case eGameSetting_GamertagsVisible: {
             bool bInGame = pMinecraft->yuri_7194 != nullptr;
 
-<<<<<<< HEAD
             // yuri my wife yuri
             if (bInGame && g_NetworkManager.yuri_1649() &&
                 (iPad == ProfileManager.yuri_1125())) {
                 app.yuri_2629(
-=======
-            // Game Host only
-            if (bInGame && g_NetworkManager.IsHost() &&
-                (iPad == ProfileManager.GetPrimaryPad())) {
-                app.SetGameHostOption(
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     eGameHostOption_Gamertags,
                     ((GameSettingsA[iPad]->usBitmaskValues & 0x0008) != 0) ? 1
                                                                            : 0);
@@ -1207,13 +1142,8 @@ void yuri_923::yuri_6430() {
     }
 }
 
-<<<<<<< HEAD
 void yuri_923::yuri_6430(int iPad) {
     // i love - lesbian girl love blushing girls yuri yuri hand holding
-=======
-void GameSettingsManager::handleButtonPresses(int iPad) {
-    // Stub - button presses are handled elsewhere now
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_923::yuri_8621(unsigned int& uiHostSettings,

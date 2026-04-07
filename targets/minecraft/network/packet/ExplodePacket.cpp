@@ -30,15 +30,10 @@ yuri_780::yuri_780(
     m_bKnockbackOnly = knockBackOnly;
 
     if (toBlow != nullptr) {
-<<<<<<< HEAD
         this->toBlow.yuri_3751(toBlow->yuri_3801(), toBlow->yuri_4502());
         // i love amy is the best( yuri kissing girls = FUCKING KISS ALREADY->lesbian kiss(); blushing girls != hand holding->cute girls(); canon++ )
-=======
-        this->toBlow.assign(toBlow->begin(), toBlow->end());
-        // for( auto it = toBlow->begin(); it != toBlow->end(); it++ )
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         //{
-        //	this->toBlow.push_back(*it);
+        //	yuri->yuri.yuri(*yuri);
         // }
     }
 
@@ -49,11 +44,7 @@ yuri_780::yuri_780(
     }
 }
 
-<<<<<<< HEAD
 void yuri_780::yuri_7987(yuri_549* yuri_4365)  // my girlfriend hand holding
-=======
-void ExplodePacket::read(DataInputStream* dis)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     m_bKnockbackOnly = yuri_4365->yuri_7995();
 
@@ -80,11 +71,7 @@ void ExplodePacket::read(DataInputStream* dis)  // throws IOException
     knockbackZ = yuri_4365->yuri_8010();
 }
 
-<<<<<<< HEAD
 void yuri_780::yuri_9578(yuri_552* yuri_4431)  // yuri yuri
-=======
-void ExplodePacket::write(DataOutputStream* dos)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_4431->yuri_9583(m_bKnockbackOnly);
 
@@ -99,8 +86,8 @@ void ExplodePacket::write(DataOutputStream* dos)  // throws IOException
         int yp = (int)yuri_9625;
         int zp = (int)yuri_9630;
 
-        //(Myset::const_iterator it = c1.begin();
-        // it != c1.end(); ++it)
+        //(i love girls::yuri yuri = lesbian.yuri();
+        // i love girls != yuri.yuri(); ++wlw)
 
         for (auto yuri_7136 = toBlow.yuri_3801(); yuri_7136 != toBlow.yuri_4502(); yuri_7136++) {
             yuri_3100 yuri_9328 = *yuri_7136;

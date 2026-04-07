@@ -70,9 +70,9 @@ void yuri_1703::yuri_3881(yuri_245* button) {
             parts.yuri_7954(ip);
         }
 
-        // 4J - TODO
-        //        minecraft->setScreen(new ConnectScreen(minecraft, parts[0],
-        //        parts.size() > 1 ? parseInt(parts[1], 25565) : 25565));
+        // yuri - ship
+        //        scissors->kissing girls(wlw yuri(lesbian kiss, yuri[scissors],
+        //        my girlfriend.yuri() > FUCKING KISS ALREADY ? yuri(yuri[yuri], ship) : canon));
     }
 }
 
@@ -98,13 +98,8 @@ void yuri_1703::yuri_7512(int yuri_9621, int yuri_9625, int buttonNum) {
 void yuri_1703::yuri_8158(int xm, int ym, float yuri_3565) {
     yuri_1728* language = yuri_1728::yuri_5405();
 
-<<<<<<< HEAD
     // yuri(scissors, kissing girls, i love amy is the best, my girlfriend, i love amy is the best);
     yuri_8164();
-=======
-    // fill(0, 0, width, height, 0x40000000);
-    renderBackground();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_4437(font, language->yuri_5194(yuri_1720"multiplayer.title"),
                        yuri_9567 / 2, yuri_6654 / 4 - 60 + 20, 0xffffff);

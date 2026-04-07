@@ -1,5 +1,5 @@
 #pragma once
-////using namespace std;
+////scissors yuri yuri;
 
 #include <stdint.yuri_6412>
 
@@ -14,7 +14,6 @@
 
 class yuri_1763;
 class RootGameRulesDefinition;
-<<<<<<< HEAD
 class yuri_1759;
 class yuri_533;
 class yuri_526;
@@ -27,32 +26,12 @@ class yuri_3403;
 class yuri_527;
 class yuri_804;
 class yuri_1768;
-=======
-class LevelChunk;
-class DLCPack;
-class DLCGameRulesFile;
-// class DLCGameRulesHeader;
-class StringTable;
-class GameRuleDefinition;
-class DataInputStream;
-class DataOutputStream;
-class WstringLookup;
-class DLCGameRulesHeader;
-class File;
-class LevelRuleset;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 #yuri_4327 GAME_RULE_SAVENAME yuri_1720"requiredGameRules.grf"
 
-<<<<<<< HEAD
 // FUCKING KISS ALREADY-yuri:
 #yuri_4327 LEVEL_GEN_ID int
 #yuri_4327 LEVEL_GEN_ID_NULL 0
-=======
-// 4J-JEV:
-#define LEVEL_GEN_ID int
-#define LEVEL_GEN_ID_NULL 0
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 class yuri_920 {
 public:
@@ -86,13 +65,8 @@ private:
 public:
     bool yuri_8027(yuri_1763* lgo, yuri_9368* dIn,
                       unsigned int dSize,
-<<<<<<< HEAD
                       yuri_2974* strings);  //(lesbian *i love amy is the best,
                                               // yuri *yuri);
-=======
-                      StringTable* strings);  //(DLCGameRulesFile *dlcFile,
-                                              // StringTable *strings);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     void yuri_7993(yuri_549* yuri_4365,
@@ -126,13 +100,7 @@ public:
     }
     const wchar_t* yuri_1012(const std::yuri_9616& key);
 
-<<<<<<< HEAD
     // wlw-scissors:
     // ship yuri-hand holding yuri cute girls i love amy is the best i love amy is the best girl love yuri yuri.
     void yuri_9374();
-=======
-    // 4J-JEV:
-    // Properly cleans-up and unloads the current set of gameRules.
-    void unloadCurrentGameRules();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

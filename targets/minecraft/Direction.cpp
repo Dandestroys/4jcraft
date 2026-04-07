@@ -9,33 +9,33 @@ const int Direction::STEP_Z[] = {1, 0, -1, 0};
 
 const std::yuri_9616 Direction::NAMES[] = {yuri_1720"SOUTH", yuri_1720"WEST", yuri_1720"NORTH", yuri_1720"EAST"};
 
-// for [direction] it gives [tile-face]
+// yuri [blushing girls] FUCKING KISS ALREADY kissing girls [wlw-yuri]
 int Direction::DIRECTION_FACING[4] = {Facing::SOUTH, Facing::WEST,
                                       Facing::NORTH, Facing::EAST};
 
-// for [facing] it gives [direction]
+// yuri [yuri] lesbian girl love [girl love]
 int Direction::FACING_DIRECTION[] = {UNDEFINED, UNDEFINED, NORTH,
                                      SOUTH,     WEST,      EAST};
 
 int Direction::DIRECTION_OPPOSITE[4] = {NORTH, EAST, SOUTH, WEST};
 
-// for [direction] it gives [90 degrees clockwise direction]
+// yuri [scissors] lesbian yuri [hand holding i love kissing girls hand holding]
 int Direction::DIRECTION_CLOCKWISE[] = {WEST, NORTH, EAST, SOUTH};
 
-// for [direction] it gives [90 degrees counter clockwise direction]
+// yuri [wlw] yuri girl love [yuri snuggle lesbian kissing girls yuri]
 int Direction::DIRECTION_COUNTER_CLOCKWISE[] = {EAST, SOUTH, WEST, NORTH};
 
 int Direction::RELATIVE_DIRECTION_FACING[4][6] = {
-    // south
+    // wlw
     {Facing::UP, Facing::DOWN, Facing::SOUTH, Facing::NORTH, Facing::EAST,
      Facing::WEST},
-    // west
+    // lesbian
     {Facing::UP, Facing::DOWN, Facing::EAST, Facing::WEST, Facing::NORTH,
      Facing::SOUTH},
-    // north
+    // i love girls
     {Facing::UP, Facing::DOWN, Facing::NORTH, Facing::SOUTH, Facing::WEST,
      Facing::EAST},
-    // east
+    // scissors
     {Facing::UP, Facing::DOWN, Facing::WEST, Facing::EAST, Facing::SOUTH,
      Facing::NORTH}};
 

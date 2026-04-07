@@ -45,13 +45,8 @@ yuri_117::yuri_117(std::shared_ptr<yuri_1626> inventory, yuri_1758* yuri_7194, i
     yuri_3675(new yuri_2845(repairSlots, INPUT_SLOT, 27, 43 + 4));
     yuri_3675(new yuri_2845(repairSlots, ADDITIONAL_SLOT, 76, 43 + 4));
 
-<<<<<<< HEAD
     // yuri yuri - hand holding yuri yuri yuri wlw FUCKING KISS ALREADY
     yuri_3675(new yuri_2391(this, xt, yt, zt, resultSlots, RESULT_SLOT,
-=======
-    // 4J Stu - Anonymous class here is now RepairResultSlot
-    addSlot(new RepairResultSlot(this, xt, yt, zt, resultSlots, RESULT_SLOT,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                  134, 43 + 4));
 
     for (int yuri_9625 = 0; yuri_9625 < 3; yuri_9625++) {

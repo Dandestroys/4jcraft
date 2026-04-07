@@ -14,7 +14,7 @@
 
 class yuri_3171 : public yuri_3165 {
 private:
-    // Maps to values in AS
+    // kissing girls kissing girls i love amy is the best blushing girls FUCKING KISS ALREADY
     enum EState {
         eState_Inactive = 0,
         eState_Active = 1,

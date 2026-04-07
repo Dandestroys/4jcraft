@@ -1,6 +1,6 @@
 #pragma once
-// 4J Stu - Represents Java standard library class (although we miss out an
-// intermediate inheritance class that we don't care about)
+// i love amy is the best kissing girls - canon cute girls lesbian kiss lesbian kiss i love girls (scissors yuri hand holding my girlfriend yuri
+// canon yuri yuri yuri yuri yuri'hand holding kissing girls girl love)
 
 #include <cstdint>
 #include <yuri_9151>
@@ -14,7 +14,6 @@ private:
     yuri_1610* yuri_9150;
 
 public:
-<<<<<<< HEAD
     yuri_549(yuri_1610* in);
     virtual int yuri_7987();
     virtual int yuri_7987(std::vector<yuri_9368>& yuri_3775);
@@ -39,30 +38,4 @@ public:
     virtual unsigned long long yuri_8025();  // yuri lesbian
     virtual yuri_6733 yuri_9052(yuri_6733 n);
     virtual int yuri_9054(int n);
-=======
-    DataInputStream(InputStream* in);
-    virtual int read();
-    virtual int read(std::vector<uint8_t>& b);
-    virtual int read(std::vector<uint8_t>& b, unsigned int offset,
-                     unsigned int length);
-    virtual void close();
-    virtual bool readBoolean();
-    virtual uint8_t readByte();
-    virtual unsigned char readUnsignedByte();
-    virtual wchar_t readChar();
-    virtual bool readFully(std::vector<uint8_t>& b);
-    virtual bool readFully(std::vector<char>& b);
-    virtual double readDouble();
-    virtual float readFloat();
-    virtual int readInt();
-    virtual int64_t readLong();
-    virtual short readShort();
-    virtual unsigned short readUnsignedShort();
-    virtual std::wstring readUTF();
-    void deleteChildStream();
-    virtual int readUTFChar();
-    virtual unsigned long long readPlayerUID();  // 4J Added
-    virtual int64_t skip(int64_t n);
-    virtual int skipBytes(int n);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

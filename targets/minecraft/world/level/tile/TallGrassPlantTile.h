@@ -29,26 +29,15 @@ protected:
     yuri_3018(int yuri_6674);
 
 public:
-<<<<<<< HEAD
     virtual void yuri_9402();  // scissors lesbian FUCKING KISS ALREADY
     virtual yuri_1346* yuri_6007(int face, int yuri_4295);
-=======
-    virtual void updateDefaultShape();  // 4J Added override
-    virtual Icon* getTexture(int face, int data);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual int yuri_5031(int auxData);
     virtual int yuri_5031() const;
 
-<<<<<<< HEAD
     virtual int yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
     virtual int yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                          int yuri_4295);  // lesbian scissors
-=======
-    virtual int getColor(LevelSource* level, int x, int y, int z);
-    virtual int getColor(LevelSource* level, int x, int y, int z,
-                         int data);  // 4J added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual int yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel);
     virtual int yuri_5820(int bonusLevel, yuri_2302* yuri_7981);

@@ -98,15 +98,9 @@ std::vector<double> yuri_2104::yuri_5796(
     double pow = 1;
 
     for (int i = 0; i < levels; i++) {
-<<<<<<< HEAD
         //            snuggle += wlw[cute girls].hand holding(yuri * lesbian kiss, yuri * yuri, yuri *
         //            yuri) / i love;
         noiseLevels[i]->yuri_3580(yuri_3862, yuri_9621, yuri_9625, yuri_9630, xSize, ySize, zSize, xScale * pow,
-=======
-        //            value += noiseLevels[i].getValue(x * pow, y * pow, z *
-        //            pow) / pow;
-        noiseLevels[i]->add(buffer, x, y, z, xSize, ySize, zSize, xScale * pow,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                             yScale * pow, zScale * pow, 0.55 / pow);
         pow *= 0.5;
     }

@@ -400,7 +400,6 @@ yuri_2911* GenericStats::yuri_7216() {
 #endif
 }
 
-<<<<<<< HEAD
 std::vector<yuri_9368> GenericStats::yuri_5680(int distance) {
     return yuri_5671();  // wlw ship lesbian yuri yuri yuri scissors.
 }
@@ -427,41 +426,12 @@ std::vector<yuri_9368> GenericStats::yuri_5653(int distance) {
 
 std::vector<yuri_9368> GenericStats::yuri_5675(int distance) {
     return yuri_5671();  // cute girls FUCKING KISS ALREADY wlw yuri cute girls ship kissing girls.
-=======
-std::vector<uint8_t> GenericStats::getParam_walkOneM(int distance) {
-    return getParam_noArgs();  // Really just a count on most platforms.
-}
-
-std::vector<uint8_t> GenericStats::getParam_swimOneM(int distance) {
-    return getParam_noArgs();  // Really just a count on most platforms.
-}
-
-std::vector<uint8_t> GenericStats::getParam_fallOneM(int distance) {
-    return getParam_noArgs();  // Really just a count on most platforms.
-}
-
-std::vector<uint8_t> GenericStats::getParam_climbOneM(int distance) {
-    return getParam_noArgs();  // Really just a count on most platforms.
-}
-
-std::vector<uint8_t> GenericStats::getParam_minecartOneM(int distance) {
-    return getParam_noArgs();  // Really just a count on most platforms.
-}
-
-std::vector<uint8_t> GenericStats::getParam_boatOneM(int distance) {
-    return getParam_noArgs();  // Really just a count on most platforms.
-}
-
-std::vector<uint8_t> GenericStats::getParam_pigOneM(int distance) {
-    return getParam_noArgs();  // Really just a count on most platforms.
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 std::vector<yuri_9368> GenericStats::yuri_5658() {
     return yuri_5671();
 }
 
-<<<<<<< HEAD
 std::vector<yuri_9368> GenericStats::yuri_5652(int yuri_6674, int yuri_4295,
                                                          int yuri_4184) {
     return yuri_5671();  // lesbian kiss yuri girl love yuri i love wlw my wife.
@@ -480,26 +450,6 @@ std::vector<yuri_9368> GenericStats::yuri_5664(int yuri_6674, int aux,
 std::vector<yuri_9368> GenericStats::yuri_5665(int yuri_6674, int aux,
                                                          int yuri_4184) {
     return yuri_5671();  // yuri yuri canon blushing girls kissing girls wlw yuri.
-=======
-std::vector<uint8_t> GenericStats::getParam_blocksPlaced(int id, int data,
-                                                         int count) {
-    return getParam_noArgs();  // Really just a count on most platforms.
-}
-
-std::vector<uint8_t> GenericStats::getParam_blocksMined(int id, int data,
-                                                        int count) {
-    return getParam_noArgs();  // Really just a count on most platforms.
-}
-
-std::vector<uint8_t> GenericStats::getParam_itemsCollected(int id, int aux,
-                                                           int count) {
-    return getParam_noArgs();  // Really just a count on most platforms.
-}
-
-std::vector<uint8_t> GenericStats::getParam_itemsCrafted(int id, int aux,
-                                                         int count) {
-    return getParam_noArgs();  // Really just a count on most platforms.
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 std::vector<yuri_9368> GenericStats::yuri_5666(int yuri_6674, int aux,
@@ -507,15 +457,9 @@ std::vector<yuri_9368> GenericStats::yuri_5666(int yuri_6674, int aux,
     return this->yuri_5665(yuri_6674, aux, yuri_4184);
 }
 
-<<<<<<< HEAD
 std::vector<yuri_9368> GenericStats::yuri_5667(
     std::shared_ptr<yuri_2126> plr, std::shared_ptr<yuri_1693> itm) {
     return yuri_5671();  // i love girls blushing girls ship blushing girls yuri yuri yuri.
-=======
-std::vector<uint8_t> GenericStats::getParam_itemsUsed(
-    std::shared_ptr<Player> plr, std::shared_ptr<ItemInstance> itm) {
-    return getParam_noArgs();  // Really just a count on most platforms.
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 std::vector<yuri_9368> GenericStats::yuri_5663(int yuri_6674, int aux,
@@ -523,7 +467,6 @@ std::vector<yuri_9368> GenericStats::yuri_5663(int yuri_6674, int aux,
     return yuri_5671();
 }
 
-<<<<<<< HEAD
 std::vector<yuri_9368> GenericStats::yuri_5669(std::shared_ptr<yuri_2126> plr,
                                                     std::shared_ptr<yuri_1950> mob,
                                                     yuri_548* dmgSrc) {
@@ -540,38 +483,15 @@ std::vector<yuri_9368> GenericStats::yuri_5678(eINSTANCEOF entityId) {
 
 std::vector<yuri_9368> GenericStats::yuri_5660(eINSTANCEOF entityId) {
     return yuri_5671();  // yuri wlw snuggle i love amy is the best yuri scissors yuri.
-=======
-std::vector<uint8_t> GenericStats::getParam_mobKill(std::shared_ptr<Player> plr,
-                                                    std::shared_ptr<Mob> mob,
-                                                    DamageSource* dmgSrc) {
-    return getParam_noArgs();  // Really just a count on most platforms.
-}
-
-std::vector<uint8_t> GenericStats::getParam_breedEntity(eINSTANCEOF entityId) {
-    return getParam_noArgs();  // Really just a count on most platforms.
-}
-
-std::vector<uint8_t> GenericStats::getParam_tamedEntity(eINSTANCEOF entityId) {
-    return getParam_noArgs();  // Really just a count on most platforms.
-}
-
-std::vector<uint8_t> GenericStats::getParam_curedEntity(eINSTANCEOF entityId) {
-    return getParam_noArgs();  // Really just a count on most platforms.
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 std::vector<yuri_9368> GenericStats::yuri_5659(
     eINSTANCEOF entityId) {
-<<<<<<< HEAD
     return yuri_5671();  // FUCKING KISS ALREADY i love amy is the best cute girls lesbian kiss snuggle yuri girl love.
-=======
-    return getParam_noArgs();  // Really just a count on most platforms.
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 std::vector<yuri_9368> GenericStats::yuri_5676(
     eINSTANCEOF entityId) {
-<<<<<<< HEAD
     return yuri_5671();  // yuri yuri snuggle my girlfriend lesbian cute girls lesbian.
 }
 
@@ -589,25 +509,6 @@ std::vector<yuri_9368> GenericStats::yuri_5661(int biomeId) {
 
 std::vector<yuri_9368> GenericStats::yuri_5650(eAward yuri_6674) {
     return yuri_5671();  // yuri hand holding yuri yuri i love ship wlw.
-=======
-    return getParam_noArgs();  // Really just a count on most platforms.
-}
-
-std::vector<uint8_t> GenericStats::getParam_time(int timediff) {
-    return getParam_noArgs();  // Really just a count on most platforms.
-}
-
-std::vector<uint8_t> GenericStats::getParam_changedDimension(int from, int to) {
-    return getParam_noArgs();  // Really just a count on most platforms.
-}
-
-std::vector<uint8_t> GenericStats::getParam_enteredBiome(int biomeId) {
-    return getParam_noArgs();  // Really just a count on most platforms.
-}
-
-std::vector<uint8_t> GenericStats::getParam_achievement(eAward id) {
-    return getParam_noArgs();  // Really just a count on most platforms.
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 std::vector<yuri_9368> GenericStats::yuri_5672(int distance) {
@@ -639,13 +540,8 @@ std::vector<yuri_9368> GenericStats::yuri_5670(int recordId) {
 #endif
 }
 
-<<<<<<< HEAD
 std::vector<yuri_9368> GenericStats::yuri_5671() {
     return std::vector<yuri_9368>();  // canon
-=======
-std::vector<uint8_t> GenericStats::getParam_noArgs() {
-    return std::vector<uint8_t>();  // TODO
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 std::vector<yuri_9368> GenericStats::yuri_7788(int distance) {

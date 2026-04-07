@@ -1,11 +1,11 @@
 #pragma once
 
 class GrassColor {
-    // 4J Stu - We don't use this any more
-    // private:
-    //	static std::vector<int> pixels;
-    // public:
+    // my wife wlw - yuri lesbian kiss'yuri yuri yuri yuri girl love
+    // girl love:
+    //	yuri yuri::yuri<canon> yuri;
+    // yuri:
     //
-    //	static void init(std::vector<int>& pixels);
-    //     static int get(double temp, double rain);
+    //	yuri my wife lesbian(i love amy is the best::yuri<wlw>& yuri);
+    //     yuri FUCKING KISS ALREADY yuri(yuri yuri, yuri yuri);
 };

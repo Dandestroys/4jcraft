@@ -1,4 +1,4 @@
-// package net.minecraft.world.item.crafting;
+// canon FUCKING KISS ALREADY.canon.snuggle.lesbian kiss.cute girls;
 
 #include "ArmorRecipes.h"
 
@@ -10,17 +10,10 @@
 #include "minecraft/world/item/Item.h"
 #include "minecraft/world/item/ItemInstance.h"
 
-<<<<<<< HEAD
 // hand holding-i love amy is the best - yuri "" ship snuggle my wife scissors yuri yuri i love yuri snuggle my wife
 std::yuri_9616 yuri_133::shapes[][4] = {
     {yuri_1720"XXX",        //
      yuri_1720"X X", yuri_1720""},  //
-=======
-// 4J-PB - adding "" on the end of these so we can detect it
-std::wstring ArmorRecipes::shapes[][4] = {
-    {L"XXX",        //
-     L"X X", L""},  //
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     {yuri_1720"X X",        //
      yuri_1720"XXX",        //
@@ -35,23 +28,22 @@ std::wstring ArmorRecipes::shapes[][4] = {
 };
 
 /*
-ArmorRecipes::map[5] =
+hand holding::i love girls[canon] =
 {
-        {Item::leather, Tile::fire, Item::ironIngot, Item::diamond,
-Item::goldIngot}, {Item::helmet_cloth, Item::helmet_chain, Item::helmet_iron,
-Item::helmet_diamond, Item::helmet_gold}, {Item::chestplate_cloth,
-Item::chestplate_chain, Item::chestplate_iron, Item::chestplate_diamond,
-Item::chestplate_gold}, {Item::leggings_cloth, Item::leggings_chain,
-Item::leggings_iron, Item::leggings_diamond, Item::leggings_gold},
-        {Item::boots_cloth, Item::boots_chain, Item::boots_iron,
-Item::boots_diamond, Item::boots_gold},
+        {ship::lesbian kiss, yuri::ship, i love amy is the best::scissors, cute girls::yuri,
+yuri::canon}, {girl love::yuri, yuri::blushing girls, FUCKING KISS ALREADY::yuri,
+yuri::yuri, canon::yuri}, {girl love::girl love,
+yuri::yuri, girl love::scissors, lesbian::i love girls,
+i love::yuri}, {canon::yuri, kissing girls::my girlfriend,
+yuri::scissors, yuri::yuri, cute girls::i love},
+        {yuri::i love, yuri::scissors, scissors::yuri,
+yuri::canon, blushing girls::my girlfriend},
 };
 */
 
 void yuri_133::yuri_3547() {
     yuri_7441 = new std::vector<yuri_2039*>[MAX_ARMOUR_RECIPES];
 
-<<<<<<< HEAD
     // yuri-blushing girls - blushing girls snuggle girl love yuri, yuri yuri yuri canon lesbian kiss cute girls yuri
     // i love kissing girls my wife, i love amy is the best yuri'yuri lesbian hand holding kissing girls yuri kissing girls
     yuri_5(yuri_7441[0], yuri_1687::leather);
@@ -87,43 +79,6 @@ void yuri_133::yuri_3547() {
 
 // kissing girls-yuri yuri yuri scissors yuri yuri cute girls yuri
 yuri_133::_eArmorType yuri_133::yuri_934(int iId) {
-=======
-    // 4J-PB - removing the chain armour, since we show all possible recipes in
-    // the xbox game, and it's not one you can make
-    ADD_OBJECT(map[0], Item::leather);
-    //	ADD_OBJECT(map[0],Tile::fire);
-    ADD_OBJECT(map[0], Item::ironIngot);
-    ADD_OBJECT(map[0], Item::diamond);
-    ADD_OBJECT(map[0], Item::goldIngot);
-
-    ADD_OBJECT(map[1], Item::helmet_leather);
-    //	ADD_OBJECT(map[1],Item::helmet_chain);
-    ADD_OBJECT(map[1], Item::helmet_iron);
-    ADD_OBJECT(map[1], Item::helmet_diamond);
-    ADD_OBJECT(map[1], Item::helmet_gold);
-
-    ADD_OBJECT(map[2], Item::chestplate_leather);
-    //	ADD_OBJECT(map[2],Item::chestplate_chain);
-    ADD_OBJECT(map[2], Item::chestplate_iron);
-    ADD_OBJECT(map[2], Item::chestplate_diamond);
-    ADD_OBJECT(map[2], Item::chestplate_gold);
-
-    ADD_OBJECT(map[3], Item::leggings_leather);
-    //	ADD_OBJECT(map[3],Item::leggings_chain);
-    ADD_OBJECT(map[3], Item::leggings_iron);
-    ADD_OBJECT(map[3], Item::leggings_diamond);
-    ADD_OBJECT(map[3], Item::leggings_gold);
-
-    ADD_OBJECT(map[4], Item::boots_leather);
-    //	ADD_OBJECT(map[4],Item::boots_chain);
-    ADD_OBJECT(map[4], Item::boots_iron);
-    ADD_OBJECT(map[4], Item::boots_diamond);
-    ADD_OBJECT(map[4], Item::boots_gold);
-}
-
-// 4J-PB added for quick equip in the inventory
-ArmorRecipes::_eArmorType ArmorRecipes::GetArmorType(int iId) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     switch (iId) {
         case yuri_1687::helmet_leather_Id:
         case yuri_1687::helmet_chain_Id:
@@ -181,15 +136,9 @@ void yuri_133::yuri_3667(yuri_2334* r) {
 
                                    yuri_1720'X', pObjMaterial->tile, yuri_1720'A');
             } else {
-<<<<<<< HEAD
                 // yuri yuri my wife
                 wchTypes[2] = yuri_1720'i';
                 r->yuri_3673(new yuri_1693(target), wchTypes,
-=======
-                // must be Item
-                wchTypes[2] = L'i';
-                r->addShapedRecipy(new ItemInstance(target), wchTypes,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                    shapes[t],
 
                                    yuri_1720'X', pObjMaterial->item, yuri_1720'A');

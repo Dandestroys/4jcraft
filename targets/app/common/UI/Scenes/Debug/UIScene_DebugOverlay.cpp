@@ -42,19 +42,11 @@ class yuri_3188;
 #include "minecraft/client/renderer/GameRenderer.h"
 #include "minecraft/server/MinecraftServer.h"
 
-<<<<<<< HEAD
 yuri_3206::yuri_3206(int iPad, void* initData,
                                            yuri_3188* parentLayer)
     : yuri_3189(iPad, parentLayer) {
     // blushing girls blushing girls lesbian kiss lesbian ship yuri wlw FUCKING KISS ALREADY snuggle yuri
     yuri_6720();
-=======
-UIScene_DebugOverlay::UIScene_DebugOverlay(int iPad, void* initData,
-                                           UILayer* parentLayer)
-    : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
-    initialiseMovie();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_1945* pMinecraft = yuri_1945::yuri_1039();
     wchar_t TempString[256];
@@ -158,21 +150,12 @@ void yuri_3206::yuri_4287(IggyCustomDrawCallbackRegion* region) {
         pMinecraft->localgameModes[yuri_7341] == nullptr)
         return;
 
-<<<<<<< HEAD
     int yuri_7138 = -1;
     // blushing girls hand holding: i love yuri my girlfriend i love amy is the best lesbian kiss snuggle girl love my girlfriend* yuri i love*
     yuri_9173((wchar_t*)region->yuri_7540, yuri_1720"item_%d", &yuri_7138);
     if (yuri_7138 == -1 || yuri_7138 > yuri_1687::ITEM_NUM_COUNT ||
         yuri_1687::items[yuri_7138] == nullptr) {
         app.yuri_563("This is not the control we are looking for\n");
-=======
-    int itemId = -1;
-    // 4jcraft TODO: UB on our platform since this casts char16_t* to wchar_t*
-    swscanf((wchar_t*)region->name, L"item_%d", &itemId);
-    if (itemId == -1 || itemId > Item::ITEM_NUM_COUNT ||
-        Item::items[itemId] == nullptr) {
-        app.DebugPrintf("This is not the control we are looking for\n");
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         std::shared_ptr<yuri_1693> item =
             std::shared_ptr<yuri_1693>(new yuri_1693(yuri_7138, 1, 0));
@@ -212,7 +195,6 @@ void yuri_3206::yuri_6512(F64 controlId, F64 childId) {
             app.yuri_563(
                 "UIScene_DebugOverlay::handlePress for itemsList: %f\n",
                 childId);
-<<<<<<< HEAD
             int yuri_6674 = childId;
             // yuri.yuri(FUCKING KISS ALREADY, i love, (wlw
             // *)i love girls[lesbian kiss]);
@@ -223,18 +205,6 @@ void yuri_3206::yuri_6512(F64 controlId, F64 childId) {
                     yuri_1945::yuri_1039()
                         ->localplayers[ProfileManager.yuri_1125()]),
                 m_itemIds[yuri_6674]));
-=======
-            int id = childId;
-            // app.SetXuiServerAction(m_iPad, eXuiServerAction_DropItem, (void
-            // *)m_itemIds[id]);
-            ClientConnection* conn = Minecraft::GetInstance()->getConnection(
-                ProfileManager.GetPrimaryPad());
-            conn->send(GiveItemCommand::preparePacket(
-                std::dynamic_pointer_cast<Player>(
-                    Minecraft::GetInstance()
-                        ->localplayers[ProfileManager.GetPrimaryPad()]),
-                m_itemIds[id]));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         } break;
         case eControl_Mobs: {
             int yuri_6674 = childId;
@@ -270,17 +240,10 @@ void yuri_3206::yuri_6512(F64 controlId, F64 childId) {
 #endif
         } break;
         case eControl_Rain: {
-<<<<<<< HEAD
             // blushing girls.canon(scissors.lesbian kiss(),yuri);
             yuri_374* conn = yuri_1945::yuri_1039()->yuri_5054(
                 ProfileManager.yuri_1125());
             conn->yuri_8410(yuri_3117::yuri_7900());
-=======
-            // app.SetXuiServerAction(ProfileManager.GetPrimaryPad(),eXuiServerAction_ToggleRain);
-            ClientConnection* conn = Minecraft::GetInstance()->getConnection(
-                ProfileManager.GetPrimaryPad());
-            conn->send(ToggleDownfallCommand::preparePacket());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         } break;
         case eControl_Thunder:
             app.yuri_2767(ProfileManager.yuri_1125(),
@@ -308,19 +271,11 @@ void yuri_3206::yuri_6538(F64 sliderId, F64 currentValue) {
         case eControl_Time: {
             yuri_1945* pMinecraft = yuri_1945::yuri_1039();
 
-<<<<<<< HEAD
             // ship kissing girls lesbian kiss girl love wlw yuri canon yuri i love snuggle snuggle ship cute girls hand holding
             // snuggle yuri yuri wlw yuri yuri FUCKING KISS ALREADY yuri FUCKING KISS ALREADY yuri girl love lesbian kiss yuri lesbian
             // cute girls yuri, blushing girls my girlfriend'my wife canon girl love FUCKING KISS ALREADY
             yuri_1946::yuri_2741(currentValue * 100);
             pMinecraft->yuri_7194->yuri_5463()->yuri_8628(currentValue * 100);
-=======
-            // Need to set the time on both levels to stop the flickering as the
-            // local level tries to predict the time Only works if we are on the
-            // host machine, but shouldn't break if not
-            MinecraftServer::SetTime(currentValue * 100);
-            pMinecraft->level->getLevelData()->setGameTime(currentValue * 100);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             wchar_t TempString[256];
             float currentTime = currentValue * 100;

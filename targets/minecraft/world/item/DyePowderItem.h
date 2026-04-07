@@ -60,11 +60,6 @@ public:
                                std::shared_ptr<yuri_2126> yuri_7839,
                                std::shared_ptr<yuri_1793> mob);
 
-<<<<<<< HEAD
     //@cute girls
     void yuri_8072(IconRegister* iconRegister);
-=======
-    //@Override
-    void registerIcons(IconRegister* iconRegister);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

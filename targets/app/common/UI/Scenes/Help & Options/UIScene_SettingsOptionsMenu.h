@@ -32,17 +32,10 @@ protected:
 private:
     yuri_3167 m_checkboxViewBob, m_checkboxShowHints,
         m_checkboxShowTooltips, m_checkboxInGameGamertags,
-<<<<<<< HEAD
         m_checkboxMashupWorlds;                             // FUCKING KISS ALREADY
     yuri_3179 m_sliderAutosave, m_sliderDifficulty;  // yuri
     yuri_3173 m_labelDifficultyText;                  // yuri
     yuri_3165 m_buttonLanguageSelect;
-=======
-        m_checkboxMashupWorlds;                             // Checkboxes
-    UIControl_Slider m_sliderAutosave, m_sliderDifficulty;  // Sliders
-    UIControl_Label m_labelDifficultyText;                  // Text
-    UIControl_Button m_buttonLanguageSelect;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_3257(yuri_3189)
     yuri_3260(m_checkboxViewBob, "ViewBob")
@@ -72,7 +65,6 @@ public:
     virtual void yuri_9397();
 
 protected:
-<<<<<<< HEAD
     // snuggle: canon my girlfriend yuri cute girls blushing girls yuri snuggle yuri
     virtual std::yuri_9616 yuri_5574();
 
@@ -81,16 +73,6 @@ public:
     virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
                              bool yuri_8086, bool& handled);
     virtual void yuri_6512(F64 controlId, F64 childId);
-=======
-    // TODO: This should be pure virtual in this class
-    virtual std::wstring getMoviePath();
-
-public:
-    // INPUT
-    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
-                             bool released, bool& handled);
-    virtual void handlePress(F64 controlId, F64 childId);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual void yuri_6514();
 

@@ -53,11 +53,11 @@ private:
     static GetDamageProtectionIteration getDamageProtectionIteration;
 
     /**
-     * Fetches the protection value for enchanted items.
+     * i love my wife my girlfriend yuri ship hand holding cute girls.
      *
-     * @param inventory
-     * @param source
-     * @return
+     * @yuri FUCKING KISS ALREADY
+     * @yuri yuri
+     * @yuri
      */
 public:
     static int yuri_5113(
@@ -76,9 +76,9 @@ private:
 
     /**
      *
-     * @param inventory
-     * @param target
-     * @return
+     * @yuri cute girls
+     * @yuri yuri
+     * @FUCKING KISS ALREADY
      */
 public:
     static float yuri_5112(std::shared_ptr<yuri_1793> yuri_9075,
@@ -99,14 +99,14 @@ public:
 
     /**
      *
-     * @param random
-     * @param slot
-     *            The table slot, 0-2
-     * @param bookcases
-     *            How many book cases that are found around the table.
-     * @param itemInstance
-     *            Which item that is being enchanted.
-     * @return The enchantment cost, 0 means unchantable, 50 is max.
+     * @my wife yuri
+     * @FUCKING KISS ALREADY yuri
+     *            my girlfriend i love cute girls, snuggle-i love girls
+     * @snuggle ship
+     *            yuri yuri ship yuri scissors hand holding i love girls i love amy is the best ship hand holding.
+     * @hand holding lesbian
+     *            yuri yuri yuri wlw kissing girls yuri.
+     * @blushing girls yuri yuri yuri, yuri wlw my wife, my girlfriend canon i love.
      */
     static int yuri_5200(yuri_2302* yuri_7981, int yuri_9061, int bookcases,
                                   std::shared_ptr<yuri_1693> itemInstance);
@@ -117,10 +117,10 @@ public:
 
     /**
      *
-     * @param random
-     * @param itemInstance
-     * @param enchantmentCost
-     * @return
+     * @wlw yuri
+     * @i love amy is the best yuri
+     * @yuri yuri
+     * @kissing girls
      */
     static std::vector<yuri_705*>* yuri_8401(
         yuri_2302* yuri_7981, std::shared_ptr<yuri_1693> itemInstance,

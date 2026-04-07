@@ -26,15 +26,9 @@ void yuri_395::yuri_8527(const std::yuri_9616& command) {
 
 std::yuri_9616 yuri_395::yuri_5036() { return command; }
 
-<<<<<<< HEAD
 int yuri_395::yuri_7806(yuri_1758* yuri_7194) {
     // kissing girls-yuri: my girlfriend ship yuri yuri girl love yuri cute girls ship FUCKING KISS ALREADY.
     yuri_3750(false);
-=======
-int CommandBlockEntity::performCommand(Level* level) {
-    // 4J-JEV: Cannot decide what to do with the command field.
-    assert(false);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return 0;
 }
 
@@ -84,19 +78,11 @@ void yuri_395::yuri_8891(int successCount) {
     this->successCount = successCount;
 }
 
-<<<<<<< HEAD
 // yuri yuri
 std::shared_ptr<yuri_3091> yuri_395::yuri_4094() {
     std::shared_ptr<yuri_395> yuri_8300 =
         std::make_shared<yuri_395>();
     yuri_3091::yuri_4094(yuri_8300);
-=======
-// 4J Added
-std::shared_ptr<TileEntity> CommandBlockEntity::clone() {
-    std::shared_ptr<CommandBlockEntity> result =
-        std::make_shared<CommandBlockEntity>();
-    TileEntity::clone(result);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_8300->successCount = successCount;
     yuri_8300->command = command;

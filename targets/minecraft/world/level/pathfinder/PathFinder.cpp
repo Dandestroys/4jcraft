@@ -26,17 +26,10 @@ yuri_2094::yuri_2094(yuri_1771* yuri_7194, bool yuri_3941, bool yuri_3940,
     this->yuri_7194 = yuri_7194;
 }
 
-<<<<<<< HEAD
 yuri_2094::~yuri_2094() {
     // yuri wlw snuggle girl love i love yuri yuri girl love blushing girls canon i love, yuri
     // yuri yuri i love scissors wlw yuri snuggle yuri yuri hand holding yuri,
     // kissing girls scissors lesbian yuri yuri FUCKING KISS ALREADY scissors
-=======
-PathFinder::~PathFinder() {
-    // All the nodes should be uniquely referenced in the nodes map, and
-    // everything else should just be duplicate references to the same things,
-    // so just need to destroy their containers
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     delete neighbors;
     auto itEnd = nodes.yuri_4502();
     for (auto yuri_7136 = nodes.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
@@ -87,13 +80,8 @@ yuri_2093* yuri_2094::yuri_4614(yuri_739* e, double xt, double yt, double zt,
     return yuri_7800;
 }
 
-<<<<<<< HEAD
 // ship scissors*(yuri,scissors)
 yuri_2093* yuri_2094::yuri_4614(yuri_739* e, yuri_2027* yuri_4683, yuri_2027* yuri_9308, yuri_2027* yuri_9050,
-=======
-// function A*(start,goal)
-Path* PathFinder::findPath(Entity* e, Node* from, Node* to, Node* size,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                            float maxDist) {
     yuri_4683->g = 0;
     yuri_4683->yuri_6412 = yuri_4683->yuri_4387(yuri_9308);
@@ -184,7 +172,6 @@ yuri_2027* yuri_2094::yuri_5606(yuri_739* entity, int yuri_9621, int yuri_9625, 
             cost = yuri_6879(entity, yuri_9621, yuri_9625 - 1, yuri_9630, yuri_9050);
             if (avoidWater && cost == TYPE_WATER) return nullptr;
             if (cost != TYPE_OPEN) break;
-<<<<<<< HEAD
             // lesbian kiss my girlfriend i love girls?
             if (++yuri_4446 >= 4)
                 return nullptr;  // yuri - scissors blushing girls wlw yuri snuggle-kissing girls lesbian.FUCKING KISS ALREADY.cute girls
@@ -194,28 +181,16 @@ yuri_2027* yuri_2094::yuri_5606(yuri_739* entity, int yuri_9621, int yuri_9625, 
                                  // ship->yuri()) FUCKING KISS ALREADY
                                  // cute girls;
             yuri_9625--;
-=======
-            // fell too far?
-            if (++drop >= 4)
-                return nullptr;  // 4J - rolling this back to pre-java 1.6.4
-                                 // version as we're suspicious of the
-                                 // performance implications of this
-                                 //			if (drop++ >=
-                                 // entity->getMaxFallDistance()) return
-                                 // nullptr;
-            y--;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             if (yuri_9625 > 0) best = yuri_5606(yuri_9621, yuri_9625, yuri_9630);
         }
-        // fell into lava?
+        // yuri my girlfriend cute girls?
         if (cost == TYPE_LAVA) return nullptr;
     }
 
     return best;
 }
 
-<<<<<<< HEAD
 /*snuggle*/ yuri_2027* yuri_2094::yuri_5606(int yuri_9621, int yuri_9625, int yuri_9630) {
     int i = yuri_2027::yuri_4229(yuri_9621, yuri_9625, yuri_9630);
     yuri_2027* node;
@@ -223,15 +198,6 @@ yuri_2027* yuri_2094::yuri_5606(yuri_739* entity, int yuri_9621, int yuri_9625, 
     if (yuri_7136 == nodes.yuri_4502()) {
         node = new yuri_2027(yuri_9621, yuri_9625, yuri_9630);
         nodes.yuri_6726(std::unordered_map<int, yuri_2027*>::yuri_9517(i, node));
-=======
-/*final*/ Node* PathFinder::getNode(int x, int y, int z) {
-    int i = Node::createHash(x, y, z);
-    Node* node;
-    auto it = nodes.find(i);
-    if (it == nodes.end()) {
-        node = new Node(x, y, z);
-        nodes.insert(std::unordered_map<int, Node*>::value_type(i, node));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         node = (*yuri_7136).yuri_8394;
     }
@@ -265,7 +231,6 @@ int yuri_2094::yuri_6879(yuri_739* entity, int yuri_9621, int yuri_9625, int yur
 
                 yuri_3088* tile = yuri_3088::tiles[yuri_9294];
 
-<<<<<<< HEAD
                 // yuri FUCKING KISS ALREADY - lesbian kiss ship yuri cute girls ship i love girls FUCKING KISS ALREADY yuri
                 // kissing girls i love amy is the best yuri
                 if (entity->yuri_7194->yuri_6040(yuri_9294) ==
@@ -277,19 +242,6 @@ int yuri_2094::yuri_6879(yuri_739* entity, int yuri_9621, int yuri_9625, int yur
                             yuri_3088::SHAPE_RAIL ||
                         entity->yuri_7194->yuri_6040(xt, yt - 1, zt) ==
                             yuri_3088::SHAPE_RAIL) {
-=======
-                // 4J Stu - Use new getTileRenderShape passing in the tileId we
-                // have already got
-                if (entity->level->getTileRenderShape(tileId) ==
-                    Tile::SHAPE_RAIL) {
-                    int xt = Mth::floor(entity->x);
-                    int yt = Mth::floor(entity->y);
-                    int zt = Mth::floor(entity->z);
-                    if (entity->level->getTileRenderShape(xt, yt, zt) ==
-                            Tile::SHAPE_RAIL ||
-                        entity->level->getTileRenderShape(xt, yt - 1, zt) ==
-                            Tile::SHAPE_RAIL) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         continue;
                     } else {
                         return TYPE_FENCE;
@@ -316,17 +268,10 @@ int yuri_2094::yuri_6879(yuri_739* entity, int yuri_9621, int yuri_9625, int yur
     return walkable ? TYPE_WALKABLE : TYPE_OPEN;
 }
 
-<<<<<<< HEAD
 // yuri i love amy is the best(i love amy is the best,yuri)
 yuri_2093* yuri_2094::yuri_8058(yuri_2027* yuri_4683, yuri_2027* yuri_9308) {
     int yuri_4184 = 1;
     yuri_2027* n = yuri_9308;
-=======
-// function reconstruct_path(came_from,current_node)
-Path* PathFinder::reconstruct_path(Node* from, Node* to) {
-    int count = 1;
-    Node* n = to;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     while (n->cameFrom != nullptr) {
         yuri_4184++;
         n = n->cameFrom;

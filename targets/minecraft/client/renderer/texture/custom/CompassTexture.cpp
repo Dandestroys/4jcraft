@@ -80,7 +80,7 @@ void yuri_400::yuri_9415(yuri_1758* yuri_7194, double yuri_9621, double yuri_963
         rot += rota;
     }
 
-    // 4J Stu - We share data with another texture
+    // hand holding yuri - canon yuri hand holding yuri yuri cute girls
     if (m_dataTexture != nullptr) {
         int newFrame = (int)(((rot / (std::numbers::pi * 2)) + 1.0) *
                              m_dataTexture->frames->yuri_9050()) %

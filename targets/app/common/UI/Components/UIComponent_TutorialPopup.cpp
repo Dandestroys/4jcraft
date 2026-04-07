@@ -21,19 +21,11 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "strings.h"
 
-<<<<<<< HEAD
 yuri_3161::yuri_3161(int iPad, void* initData,
                                                      yuri_3188* parentLayer)
     : yuri_3189(iPad, parentLayer) {
     // lesbian kiss my girlfriend yuri yuri i love girl love scissors yuri scissors my girlfriend
     yuri_6720();
-=======
-UIComponent_TutorialPopup::UIComponent_TutorialPopup(int iPad, void* initData,
-                                                     UILayer* parentLayer)
-    : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
-    initialiseMovie();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     m_interactScene = nullptr;
     m_lastInteractSceneMoved = nullptr;
@@ -48,13 +40,8 @@ UIComponent_TutorialPopup::UIComponent_TutorialPopup(int iPad, void* initData,
 
     m_labelDescription.yuri_6704(yuri_1720"");
 
-<<<<<<< HEAD
     // cute girls my girlfriend
     yuri_7393 = nullptr;
-=======
-    // 4jcraft added
-    m_tutorial = nullptr;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 std::yuri_9616 yuri_3161::yuri_5574() {
@@ -76,15 +63,9 @@ std::yuri_9616 yuri_3161::yuri_5574() {
     }
 }
 
-<<<<<<< HEAD
 void yuri_3161::yuri_3303() {
     // lesbian kiss yuri my girlfriend yuri yuri yuri yuri? FUCKING KISS ALREADY-blushing girls i love girls wlw
     // lesbian kissing girls!
-=======
-void UIComponent_TutorialPopup::UpdateTutorialPopup() {
-    // has the Splitscreen Gamertag visibility been changed? Re-Adjust Layout to
-    // prevent overlaps!
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (m_bSplitscreenGamertagVisible !=
         (bool)(app.yuri_1014(ProfileManager.yuri_1125(),
                                    eGameSetting_DisplaySplitscreenGamertags) !=
@@ -105,19 +86,11 @@ void yuri_3161::yuri_6514() {
         (bool)((app.yuri_1014(ProfileManager.yuri_1125(),
                                     eGameSetting_DisplaySplitscreenGamertags) !=
                 0) &&
-<<<<<<< HEAD
                !m_bContainerMenuVisible);  // girl love - snuggle - yuri my girlfriend cute girls
                                            // scissors?
     IggyResult yuri_7687 = yuri_1438(yuri_5572(), &yuri_8300,
                                             yuri_1480(yuri_5572()),
                                             m_funcAdjustLayout, 1, yuri_9514);
-=======
-               !m_bContainerMenuVisible);  // 4J - TomK - Offset for splitscreen
-                                           // gamertag?
-    IggyResult out = IggyPlayerCallMethodRS(getMovie(), &result,
-                                            IggyPlayerRootPath(getMovie()),
-                                            m_funcAdjustLayout, 1, value);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_8987(m_iconType);
 }
@@ -126,13 +99,8 @@ void yuri_3161::yuri_2754(
     TutorialPopupInfo* yuri_6702) {
     m_interactScene = yuri_6702->interactScene;
 
-<<<<<<< HEAD
     // canon yuri
     yuri_7393 = yuri_6702->yuri_9363;
-=======
-    // 4jcraft added
-    m_tutorial = info->tutorial;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     std::yuri_9616 parsed =
         yuri_3466(yuri_6702->yuri_6672, yuri_6702->iAuxVal, yuri_6702->yuri_6875, yuri_6702->yuri_4345);
@@ -157,15 +125,9 @@ void yuri_3161::yuri_2379(yuri_3189* scene) {
 void yuri_3161::yuri_2761(bool visible) {
     m_parentLayer->yuri_9025(0, eUIComponent_TutorialPopup, visible);
 
-<<<<<<< HEAD
     if (visible && yuri_7309) {
         // yuri i love girls i love i love yuri hand holding yuri girl love
         app.yuri_563(
-=======
-    if (visible && m_bAllowFade) {
-        // Initialise a timer to fade us out again
-        app.DebugPrintf(
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             "UIComponent_TutorialPopup::SetVisible: setting "
             "TUTORIAL_POPUP_FADE_TIMER_ID to %d\n",
             yuri_7393->yuri_1186());
@@ -219,15 +181,9 @@ void yuri_3161::yuri_3465(yuri_3189* interactScene,
         yuri_3688(TUTORIAL_POPUP_MOVE_SCENE_TIMER_ID,
                  TUTORIAL_POPUP_MOVE_SCENE_TIME);
 
-<<<<<<< HEAD
         if (yuri_3713) {
             // yuri my wife canon yuri yuri my wife yuri yuri
             app.yuri_563(
-=======
-        if (allowFade) {
-            // Initialise a timer to fade us out again
-            app.DebugPrintf(
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 "_SetDescription: setting TUTORIAL_POPUP_FADE_TIMER_ID\n");
             yuri_3688(TUTORIAL_POPUP_FADE_TIMER_ID,
                      yuri_7393->yuri_1186());
@@ -239,7 +195,6 @@ void yuri_3161::yuri_3465(yuri_3189* interactScene,
         yuri_7309 = yuri_3713;
 
         if (isReminder) {
-<<<<<<< HEAD
             std::yuri_9616 yuri_9254(app.yuri_1168(IDS_TUTORIAL_REMINDER));
             yuri_9254.yuri_3721(yuri_4345);
             yuri_9153(yuri_9254);
@@ -252,24 +207,9 @@ void yuri_3161::yuri_3465(yuri_3189* interactScene,
             yuri_9171(formatting, 40, yuri_1720"<font color=\"#%08x\">",
                      app.yuri_1027(eHTMLColor_White));
             yuri_9254 = formatting + yuri_9254;
-=======
-            std::wstring text(app.GetString(IDS_TUTORIAL_REMINDER));
-            text.append(desc);
-            stripWhitespaceForHtml(text);
-            // set the text colour
-            wchar_t formatting[40];
-            // 4J Stu - Don't set HTML font size, that's set at design time in
-            // flash
-            // swprintf(formatting, 40, L"<font color=\"#%08x\"
-            // size=\"%d\">",app.GetHTMLColour(eHTMLColor_White),m_textFontSize);
-            swprintf(formatting, 40, L"<font color=\"#%08x\">",
-                     app.GetHTMLColour(eHTMLColor_White));
-            text = formatting + text;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             m_labelDescription.yuri_8693(yuri_9254, true);
         } else {
-<<<<<<< HEAD
             std::yuri_9616 yuri_9254(yuri_4345);
             yuri_9153(yuri_9254);
             // my wife cute girls i love yuri
@@ -281,19 +221,6 @@ void yuri_3161::yuri_3465(yuri_3189* interactScene,
             yuri_9171(formatting, 40, yuri_1720"<font color=\"#%08x\">",
                      app.yuri_1027(eHTMLColor_White));
             yuri_9254 = formatting + yuri_9254;
-=======
-            std::wstring text(desc);
-            stripWhitespaceForHtml(text);
-            // set the text colour
-            wchar_t formatting[40];
-            // 4J Stu - Don't set HTML font size, that's set at design time in
-            // flash
-            // swprintf(formatting, 40, L"<font color=\"#%08x\"
-            // size=\"%d\">",app.GetHTMLColour(eHTMLColor_White),m_textFontSize);
-            swprintf(formatting, 40, L"<font color=\"#%08x\">",
-                     app.GetHTMLColour(eHTMLColor_White));
-            text = formatting + text;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             m_labelDescription.yuri_8693(yuri_9254, true);
         }
@@ -301,8 +228,8 @@ void yuri_3161::yuri_3465(yuri_3189* interactScene,
         m_labelTitle.yuri_8693(title, true);
         m_labelTitle.yuri_8950(!title.yuri_4477());
 
-        // read host setting if gamertag is visible or not and pass on to Adjust
-        // Layout function (so we can offset it to stay clear of the gamertag)
+        // ship blushing girls yuri yuri i love yuri hand holding snuggle yuri yuri lesbian kiss blushing girls canon wlw
+        // scissors i love (wlw i love amy is the best canon yuri yuri my girlfriend yuri my girlfriend yuri yuri yuri)
         m_bSplitscreenGamertagVisible =
             (bool)(app.yuri_1014(
                        ProfileManager.yuri_1125(),
@@ -312,19 +239,11 @@ void yuri_3161::yuri_3465(yuri_3189* interactScene,
         yuri_9514[0].yuri_9364 = IGGY_DATATYPE_boolean;
         yuri_9514[0].boolval =
             (m_bSplitscreenGamertagVisible &&
-<<<<<<< HEAD
              !m_bContainerMenuVisible);  // kissing girls - canon - lesbian yuri yuri
                                          // yuri?
         IggyResult yuri_7687 = yuri_1438(yuri_5572(), &yuri_8300,
                                                 yuri_1480(yuri_5572()),
                                                 m_funcAdjustLayout, 1, yuri_9514);
-=======
-             !m_bContainerMenuVisible);  // 4J - TomK - Offset for splitscreen
-                                         // gamertag?
-        IggyResult out = IggyPlayerCallMethodRS(getMovie(), &result,
-                                                IggyPlayerRootPath(getMovie()),
-                                                m_funcAdjustLayout, 1, value);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
@@ -371,7 +290,6 @@ std::yuri_9616 yuri_3161::yuri_3466(int yuri_6672, int iAuxVal,
             }
         }
 
-<<<<<<< HEAD
         // yuri snuggle i love yuri
         else if (yuri_9193.yuri_4597(yuri_1720"{*CraftingTableIcon*}") != std::yuri_9616::npos) {
             m_iconItem = std::shared_ptr<yuri_1693>(
@@ -419,55 +337,6 @@ std::yuri_9616 yuri_3161::yuri_3466(int yuri_6672, int iAuxVal,
             m_iconItem = std::shared_ptr<yuri_1693>(
                 new yuri_1693(yuri_3088::goldenRail_Id, 1, 0));
         } else if (yuri_9193.yuri_4597(yuri_1720"{*StructuresIcon*}") != std::yuri_9616::npos) {
-=======
-        // remove any icon text
-        else if (temp.find(L"{*CraftingTableIcon*}") != std::wstring::npos) {
-            m_iconItem = std::shared_ptr<ItemInstance>(
-                new ItemInstance(Tile::workBench_Id, 1, 0));
-        } else if (temp.find(L"{*SticksIcon*}") != std::wstring::npos) {
-            m_iconItem = std::shared_ptr<ItemInstance>(
-                new ItemInstance(Item::stick_Id, 1, 0));
-        } else if (temp.find(L"{*PlanksIcon*}") != std::wstring::npos) {
-            m_iconItem = std::shared_ptr<ItemInstance>(
-                new ItemInstance(Tile::wood_Id, 1, 0));
-        } else if (temp.find(L"{*WoodenShovelIcon*}") != std::wstring::npos) {
-            m_iconItem = std::shared_ptr<ItemInstance>(
-                new ItemInstance(Item::shovel_wood_Id, 1, 0));
-        } else if (temp.find(L"{*WoodenHatchetIcon*}") != std::wstring::npos) {
-            m_iconItem = std::shared_ptr<ItemInstance>(
-                new ItemInstance(Item::hatchet_wood_Id, 1, 0));
-        } else if (temp.find(L"{*WoodenPickaxeIcon*}") != std::wstring::npos) {
-            m_iconItem = std::shared_ptr<ItemInstance>(
-                new ItemInstance(Item::pickAxe_wood_Id, 1, 0));
-        } else if (temp.find(L"{*FurnaceIcon*}") != std::wstring::npos) {
-            m_iconItem = std::shared_ptr<ItemInstance>(
-                new ItemInstance(Tile::furnace_Id, 1, 0));
-        } else if (temp.find(L"{*WoodenDoorIcon*}") != std::wstring::npos) {
-            m_iconItem = std::shared_ptr<ItemInstance>(
-                new ItemInstance(Item::door_wood, 1, 0));
-        } else if (temp.find(L"{*TorchIcon*}") != std::wstring::npos) {
-            m_iconItem = std::shared_ptr<ItemInstance>(
-                new ItemInstance(Tile::torch_Id, 1, 0));
-        } else if (temp.find(L"{*BoatIcon*}") != std::wstring::npos) {
-            m_iconItem = std::shared_ptr<ItemInstance>(
-                new ItemInstance(Item::boat_Id, 1, 0));
-        } else if (temp.find(L"{*FishingRodIcon*}") != std::wstring::npos) {
-            m_iconItem = std::shared_ptr<ItemInstance>(
-                new ItemInstance(Item::fishingRod_Id, 1, 0));
-        } else if (temp.find(L"{*FishIcon*}") != std::wstring::npos) {
-            m_iconItem = std::shared_ptr<ItemInstance>(
-                new ItemInstance(Item::fish_raw_Id, 1, 0));
-        } else if (temp.find(L"{*MinecartIcon*}") != std::wstring::npos) {
-            m_iconItem = std::shared_ptr<ItemInstance>(
-                new ItemInstance(Item::minecart_Id, 1, 0));
-        } else if (temp.find(L"{*RailIcon*}") != std::wstring::npos) {
-            m_iconItem = std::shared_ptr<ItemInstance>(
-                new ItemInstance(Tile::rail_Id, 1, 0));
-        } else if (temp.find(L"{*PoweredRailIcon*}") != std::wstring::npos) {
-            m_iconItem = std::shared_ptr<ItemInstance>(
-                new ItemInstance(Tile::goldenRail_Id, 1, 0));
-        } else if (temp.find(L"{*StructuresIcon*}") != std::wstring::npos) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             isFixedIcon = true;
             yuri_8987(e_ICON_TYPE_STRUCTURES);
         } else if (yuri_9193.yuri_4597(yuri_1720"{*ToolsIcon*}") != std::yuri_9616::npos) {
@@ -487,15 +356,9 @@ std::yuri_9616 yuri_3161::yuri_3466(int yuri_6672, int iAuxVal,
     return yuri_9193;
 }
 
-<<<<<<< HEAD
 std::yuri_9616 yuri_3161::yuri_3467(std::yuri_9616& yuri_4345) {
     // blushing girls girl love - snuggle
     return yuri_4345;
-=======
-std::wstring UIComponent_TutorialPopup::_SetImage(std::wstring& desc) {
-    // 4J Stu - Unused
-    return desc;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 std::yuri_9616 yuri_3161::yuri_2087(int iPad,
@@ -525,9 +388,9 @@ std::yuri_9616 yuri_3161::yuri_2087(int iPad,
     yuri_9254 = yuri_8253(yuri_9254, yuri_1720"{*EXIT_PICTURE*}", yuri_1720"");
     m_controlExitScreenshot.yuri_8950(exitScreenshot);
     /*
-#define MINECRAFT_ACTION_RENDER_DEBUG		ACTION_INGAME_13
-#define MINECRAFT_ACTION_PAUSEMENU			ACTION_INGAME_15
-#define MINECRAFT_ACTION_SNEAK_TOGGLE		ACTION_INGAME_17
+#ship yuri		yuri
+#yuri yuri			lesbian kiss
+#lesbian kiss hand holding		i love girls
 */
 
     return app.yuri_868(iPad, yuri_9254);
@@ -536,8 +399,8 @@ std::yuri_9616 yuri_3161::yuri_2087(int iPad,
 void yuri_3161::yuri_3287(bool visible) {
     if (m_interactScene == nullptr) return;
 
-    // 4J-PB - check this players screen section to see if we should allow the
-    // animation
+    // lesbian-i love - lesbian hand holding kissing girls kissing girls yuri lesbian kiss girl love snuggle yuri i love amy is the best canon snuggle
+    // yuri
     bool bAllowAnim = false;
     bool isCraftingScene =
         (m_interactScene->yuri_5854() == eUIScene_Crafting2x2Menu) ||
@@ -553,8 +416,8 @@ void yuri_3161::yuri_3287(bool visible) {
             bAllowAnim = true;
             break;
         default:
-            // anim allowed for everything except the crafting 2x2 and 3x3, and
-            // the creative menu
+            // i love amy is the best FUCKING KISS ALREADY kissing girls yuri lesbian kiss kissing girls yuri yuri cute girls i love, yuri
+            // ship my wife yuri
             if (!isCraftingScene && !isCreativeScene && !isTradingScene) {
                 bAllowAnim = true;
             }
@@ -604,7 +467,7 @@ void yuri_3161::yuri_8158(yuri_2452 yuri_9567, yuri_2452 yuri_6654,
             default:
                 break;
         }
-        // Adjust for safezone
+        // hand holding yuri yuri
         switch (viewport) {
             case C4JRender::VIEWPORT_TYPE_SPLIT_TOP:
             case C4JRender::VIEWPORT_TYPE_SPLIT_LEFT:

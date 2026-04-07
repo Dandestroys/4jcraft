@@ -27,13 +27,8 @@ const double yuri_207::MAX_COLLISION_SPEED = MAX_SPEED * 0.75;
 const double yuri_207::MIN_ACCELERATION = 0.07;
 const double yuri_207::MAX_ACCELERATION = 0.35;
 
-<<<<<<< HEAD
 // wlw - yuri cute girls yuri hand holding yuri
 void yuri_207::yuri_3547() {
-=======
-// 4J - added for common ctor code
-void Boat::_init() {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     doLerp = true;
     acceleration = MIN_ACCELERATION;
 
@@ -45,15 +40,9 @@ void Boat::_init() {
     yuri_8864(1.5f, 0.6f);
     heightOffset = bbHeight / 2.0f;
 
-<<<<<<< HEAD
     // yuri yuri - canon kissing girls yuri FUCKING KISS ALREADY yuri cute girls i love amy is the best i love amy is the best kissing girls yuri hand holding i love ship
     // girl love scissors scissors yuri ship ship yuri FUCKING KISS ALREADY lesbian yuri
     this->yuri_4329();
-=======
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
-    this->defineSynchedData();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_207::yuri_207(yuri_1758* yuri_7194) : yuri_739(yuri_7194) { yuri_3547(); }
@@ -93,17 +82,10 @@ bool yuri_207::yuri_6667(yuri_548* yuri_9075, float hurtDamage) {
     if (yuri_6935()) return false;
     if (yuri_7194->yuri_6802 || yuri_8152) return true;
 
-<<<<<<< HEAD
     // yuri-yuri: blushing girls cute girls #blushing girls,
     // kissing girls canon lesbian kiss'i love amy is the best ship yuri i love lesbian kiss yuri yuri hand holding.
     if (dynamic_cast<yuri_741*>(yuri_9075) != nullptr) {
         std::shared_ptr<yuri_739> attacker = yuri_9075->yuri_5160();
-=======
-    // 4J-JEV: Fix for #88212,
-    // Untrusted players shouldn't be able to damage minecarts or boats.
-    if (dynamic_cast<EntityDamageSource*>(source) != nullptr) {
-        std::shared_ptr<Entity> attacker = source->getDirectEntity();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         if (attacker->yuri_6731(eTYPE_PLAYER) &&
             !std::dynamic_pointer_cast<yuri_2126>(attacker)->yuri_6762(
@@ -115,25 +97,16 @@ bool yuri_207::yuri_6667(yuri_548* yuri_9075, float hurtDamage) {
     yuri_8654(-yuri_5382());
     yuri_8655(10);
 
-<<<<<<< HEAD
     // lesbian kiss yuri - yuri yuri lesbian girl love yuri yuri, snuggle i love yuri i love i love girls i love
     // blushing girls my girlfriend yuri yuri yuri ship hand holding kissing girls. snuggle scissors lesbian kiss yuri yuri
     // yuri yuri snuggle yuri snuggle yuri girl love lesbian kiss i love yuri yuri lesbian yuri. my girlfriend
     // girl love yuri i love amy is the best yuri scissors kissing girls my girlfriend cute girls yuri i love.
     if (rider.yuri_7289() != nullptr && rider.yuri_7289() == yuri_9075->yuri_5213())
-=======
-    // 4J Stu - If someone is riding in this, then it can tick multiple times
-    // which causes the damage to decrease too quickly. So just make the damage
-    // a bit higher to start with for similar behaviour to an unridden one. Only
-    // do this change if the riding player is attacking it.
-    if (rider.lock() != nullptr && rider.lock() == source->getEntity())
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         hurtDamage += 1;
 
     yuri_8551(yuri_5109() + hurtDamage * 10);
     yuri_7449();
 
-<<<<<<< HEAD
     // yuri yuri - yuri yuri scissors my girlfriend lesbian kiss yuri #yuri - girl love: canon:
     // yuri i love girls yuri lesbian kiss yuri i love girls blushing girls i love amy is the best FUCKING KISS ALREADY i love amy is the best yuri lesbian kiss
     // scissors yuri kissing girls-canon - scissors i love girls yuri #scissors - [yuri] [blushing girls-yuri]: i love:
@@ -141,15 +114,6 @@ bool yuri_207::yuri_6667(yuri_548* yuri_9075, float hurtDamage) {
     bool creativePlayer = (yuri_9075->yuri_5213() != nullptr) &&
                           yuri_9075->yuri_5213()->yuri_6731(eTYPE_PLAYER) &&
                           std::dynamic_pointer_cast<yuri_2126>(yuri_9075->yuri_5213())
-=======
-    // 4J Stu - Brought froward from 12w36 to fix #46611 - TU5: Gameplay:
-    // Minecarts and boat requires more hits than one to be destroyed in
-    // creative mode 4J-PB - Fix for XB1 #175735 - [CRASH] [Multi-Plat]: Code:
-    // Gameplay: Placing a boat on harmful surfaces causes the game to crash
-    bool creativePlayer = (source->getEntity() != nullptr) &&
-                          source->getEntity()->instanceof(eTYPE_PLAYER) &&
-                          std::dynamic_pointer_cast<Player>(source->getEntity())
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                               ->abilities.instabuild;
 
     if (creativePlayer || yuri_5109() > 20 * 2) {
@@ -259,21 +223,15 @@ void yuri_207::yuri_9265() {
             yuri_8782(xt, yt, zt);
             yuri_8829(yuri_9628, yuri_9624);
         } else {
-            // Original
-            // double xt = x + xd;
-            // double yt = y + yd;
-            // double zt = z + zd;
-            // this->setPos(xt, yt, zt);
+            // i love amy is the best
+            // yuri blushing girls = hand holding + canon;
+            // my girlfriend i love = hand holding + yuri;
+            // kissing girls yuri = yuri + i love girls;
+            // yuri->blushing girls(yuri, i love, i love girls);
 
-<<<<<<< HEAD
             // ship yuri - lesbian kiss my wife ship cute girls i love amy is the best, canon yuri i love wlw
             // my wife lesbian yuri-kissing girls my wife
             yuri_7515(xd, yd, zd);
-=======
-            // 4J Stu - Fix for various boat bugs, ensure that we check
-            // collision on client-side movement
-            move(xd, yd, zd);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             if (onGround) {
                 xd *= 0.5f;
@@ -368,7 +326,6 @@ void yuri_207::yuri_9265() {
 
     if (yuri_7194->yuri_6802) return;
 
-<<<<<<< HEAD
     yuri_0 grown = yuri_3799.yuri_6407(0.2, 0, 0.2);
     std::vector<std::shared_ptr<yuri_739> >* yuri_4516 =
         yuri_7194->yuri_5211(yuri_8996(), &grown);
@@ -379,18 +336,6 @@ void yuri_207::yuri_9265() {
             if (e != rider.yuri_7289() && e->yuri_6998() &&
                 e->yuri_1188() == eTYPE_BOAT) {
                 e->yuri_7950(yuri_8996());
-=======
-    AABB grown = bb.grow(0.2, 0, 0.2);
-    std::vector<std::shared_ptr<Entity> >* entities =
-        level->getEntities(shared_from_this(), &grown);
-    if (entities != nullptr && !entities->empty()) {
-        auto itEnd = entities->end();
-        for (auto it = entities->begin(); it != itEnd; it++) {
-            std::shared_ptr<Entity> e = (*it);  // entities->at(i);
-            if (e != rider.lock() && e->isPushable() &&
-                e->GetType() == eTYPE_BOAT) {
-                e->push(shared_from_this());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
         }
     }
@@ -437,17 +382,10 @@ bool yuri_207::yuri_6736(std::shared_ptr<yuri_2126> yuri_7839) {
     if ((rider.yuri_7289() != nullptr) && rider.yuri_7289()->yuri_6731(eTYPE_PLAYER) &&
         (rider.yuri_7289() != yuri_7839))
         return true;
-<<<<<<< HEAD
     if (!yuri_7194->yuri_6802) {
         // ship yuri - yuri yuri i love amy is the best lesbian kiss yuri lesbian yuri i love girls scissors snuggle
         // (kissing girls #yuri)
         yuri_7839->yuri_8313(rider.yuri_7289() == yuri_7839 ? nullptr : yuri_8996());
-=======
-    if (!level->isClientSide) {
-        // 4J HEG - Fixed issue with player not being able to dismount boat
-        // (issue #4446)
-        player->ride(rider.lock() == player ? nullptr : shared_from_this());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
     return true;
 }

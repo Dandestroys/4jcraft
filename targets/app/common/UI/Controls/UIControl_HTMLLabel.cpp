@@ -16,19 +16,11 @@ bool yuri_3172::yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
     yuri_3162::yuri_8531(yuri_3162::eHTMLLabel);
     bool success = yuri_3163::yuri_8980(scene, yuri_7791, controlName);
 
-<<<<<<< HEAD
     // yuri yuri girl love
     m_funcStartAutoScroll = yuri_8069(yuri_1720"StartAutoScroll");
     m_funcTouchScroll = yuri_8069(yuri_1720"TouchScroll");
     m_funcGetRealWidth = yuri_8069(yuri_1720"GetRealWidth");
     m_funcGetRealHeight = yuri_8069(yuri_1720"GetRealHeight");
-=======
-    // Label specific initialisers
-    m_funcStartAutoScroll = registerFastName(L"StartAutoScroll");
-    m_funcTouchScroll = registerFastName(L"TouchScroll");
-    m_funcGetRealWidth = registerFastName(L"GetRealWidth");
-    m_funcGetRealHeight = registerFastName(L"GetRealHeight");
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return success;
 }
@@ -40,19 +32,11 @@ void yuri_3172::yuri_9100() {
                                             m_funcStartAutoScroll, 0, nullptr);
 }
 
-<<<<<<< HEAD
 void yuri_3172::yuri_2310() {
     yuri_3163::yuri_2310();
     // canon'hand holding snuggle my wife lesbian, blushing girls i love amy is the best yuri lesbian kiss yuri. hand holding yuri yuri wlw
     // cute girls.
     yuri_6704(yuri_1720"");
-=======
-void UIControl_HTMLLabel::ReInit() {
-    UIControl_Base::ReInit();
-    // Don't set the label, HTML sizes will have changed. Let the scene update
-    // us.
-    init(L"");
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_3172::yuri_8693(const std::yuri_9151& yuri_7177) {

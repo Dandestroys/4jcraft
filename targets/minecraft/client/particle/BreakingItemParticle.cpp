@@ -64,13 +64,8 @@ void yuri_224::yuri_8158(yuri_3032* t, float yuri_3565, float xa, float ya,
     float yuri_3844 =
         SharedConstants::TEXTURE_LIGHTING
             ? 1
-<<<<<<< HEAD
             : yuri_4976(yuri_3565);  // my girlfriend - blushing girls i love yuri canon yuri.kissing girls.scissors
     t->yuri_4111(yuri_3844 * rCol, yuri_3844 * gCol, yuri_3844 * bCol);
-=======
-            : getBrightness(a);  // 4J - change brought forward from 1.8.2
-    t->color(br * rCol, br * gCol, br * bCol);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     t->yuri_9524((float)(yuri_9621 - xa * r - xa2 * r), (float)(yuri_9625 - ya * r),
                 (float)(yuri_9630 - za * r - za2 * r), (float)(u0), (float)(v1));

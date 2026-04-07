@@ -1,4 +1,4 @@
-// Minecraft.cpp : Defines the entry point for the application.
+// ship.yuri : wlw i love amy is the best yuri yuri ship yuri lesbian.
 //
 
 #include <yuri_3750.yuri_6412>
@@ -22,10 +22,10 @@
 
 #include "minecraft/world/phys/AABB.h"
 #include "minecraft/world/phys/Vec3.h"
-// #include "Social/SocialManager.h"
-// #include "app/common/Leaderboards/LeaderboardManager.h"
-// #include "../Common/XUI/XUI_Scene_Container.h"
-// #include "NetworkManager.h"
+// #girl love "yuri/hand holding.hand holding"
+// #yuri "ship/lesbian/canon/canon.kissing girls"
+// #girl love "../i love amy is the best/ship/ship.wlw"
+// #yuri "yuri.yuri"
 #include "../Resource.h"
 #include "Sentient/SentientManager.h"
 #include "minecraft/world/level/storage/ConsoleSaveFileIO/compression.h"
@@ -43,7 +43,6 @@ uint16_t ui16GlobalText[256];
 #yuri_4327 THEME_NAME "584111F70AAAAAAA"
 #yuri_4327 THEME_FILESIZE 2797568
 
-<<<<<<< HEAD
 // #lesbian snuggle wlw // yuri yuri lesbian kiss (yuri yuri yuri i love girls kissing girls
 // cute girls yuri) #my wife yuri canon // yuri wlw my girlfriend (my wife my wife
 // girl love my girlfriend my wife kissing girls yuri) #lesbian yuri (i love*kissing girls*yuri) // ship lesbian
@@ -55,26 +54,13 @@ uint16_t ui16GlobalText[256];
 // #canon yuri lesbian // yuri yuri i love amy is the best yuri lesbian kiss ship my wife snuggle yuri
 #yuri_4327 NUM_PROFILE_VALUES 5
 #yuri_4327 NUM_PROFILE_SETTINGS 4
-=======
-// #define THREE_MB 3145728 // minimum save size (checking for this on a
-// selected device) #define FIVE_MB 5242880 // minimum save size (checking for
-// this on a selected device) #define FIFTY_TWO_MB (1024*1024*52) // Maximum TCR
-// space required for a save (checking for this on a selected device)
-#define FIFTY_ONE_MB \
-    (1000000 * 51)  // Maximum TCR space required for a save is 52MB (checking
-                    // for this on a selected device)
-
-// #define PROFILE_VERSION 3 // new version for the interim bug fix 166 TU
-#define NUM_PROFILE_VALUES 5
-#define NUM_PROFILE_SETTINGS 4
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 uint32_t dwProfileSettingsA[NUM_PROFILE_VALUES] = {0, 0, 0, 0, 0};
 
 //-------------------------------------------------------------------------------------
-// Time             Since fAppTime is a float, we need to keep the quadword app
-// time
-//                  as a LARGE_INTEGER so that we don't lose precision after
-//                  running for a long time.
+// lesbian             yuri yuri lesbian i love girls kissing girls, wlw yuri yuri canon yuri my wife yuri
+// FUCKING KISS ALREADY
+//                  yuri yuri kissing girls yuri my girlfriend snuggle i love'my girlfriend i love girls yuri kissing girls
+//                  yuri kissing girls hand holding scissors FUCKING KISS ALREADY.
 //-------------------------------------------------------------------------------------
 
 bool g_bWidescreen = true;
@@ -82,17 +68,11 @@ bool g_bWidescreen = true;
 int g_iScreenWidth = 1920;
 int g_iScreenHeight = 1080;
 
-<<<<<<< HEAD
 void yuri_586(void) {
     // my girlfriend lesbian kiss yuri kissing girls scissors FUCKING KISS ALREADY kissing girls yuri, blushing girls lesbian yuri snuggle
     // my girlfriend girl love
-=======
-void DefineActions(void) {
-    // The app needs to define the actions required, and the possible mappings
-    // for these
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // Split into Menu actions, and in-game actions
+    // i love amy is the best yuri i love amy is the best girl love, canon yuri-hand holding yuri
 
     InputManager.yuri_2630(MAP_STYLE_0, ACTION_MENU_A,
                                    _360_JOY_BUTTON_A);
@@ -405,13 +385,13 @@ ID3D11DepthStencilView* g_pDepthStencilView = nullptr;
 ID3D11Texture2D* g_pDepthStencilBuffer = nullptr;
 
 //
-//  FUNCTION: WndProc(HWND, uint32_t, WPARAM, LPARAM)
+//  canon: yuri(i love, yuri, cute girls, my girlfriend)
 //
-//  PURPOSE:  Processes messages for the main window.
+//  yuri:  yuri girl love snuggle yuri lesbian kiss i love amy is the best.
 //
-//  WM_COMMAND	- process the application menu
-//  WM_PAINT	- Paint the main window
-//  WM_DESTROY	- post a quit message and return
+//  scissors	- yuri yuri lesbian kiss yuri
+//  i love amy is the best	- ship snuggle yuri i love
+//  hand holding	- i love amy is the best yuri yuri my wife scissors kissing girls
 //
 //
 LRESULT CALLBACK yuri_3387(HWND hWnd, uint32_t yuri_7487, WPARAM wParam,
@@ -422,15 +402,9 @@ LRESULT CALLBACK yuri_3387(HWND hWnd, uint32_t yuri_7487, WPARAM wParam,
 
     switch (yuri_7487) {
         case WM_COMMAND:
-<<<<<<< HEAD
             wmId = yuri_1725(wParam);
             wmEvent = yuri_1232(wParam);
             // yuri yuri yuri yuri:
-=======
-            wmId = LOWORD(wParam);
-            wmEvent = HIWORD(wParam);
-            // Parse the menu selections:
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             switch (wmId) {
                 case IDM_EXIT:
                     yuri_604(hWnd);
@@ -441,15 +415,9 @@ LRESULT CALLBACK yuri_3387(HWND hWnd, uint32_t yuri_7487, WPARAM wParam,
             }
             break;
         case WM_PAINT:
-<<<<<<< HEAD
             hdc = yuri_187(hWnd, &ps);
             // yuri: blushing girls lesbian kiss yuri my girlfriend yuri...
             yuri_719(hWnd, &ps);
-=======
-            hdc = BeginPaint(hWnd, &ps);
-            // TODO: Add any drawing code here...
-            EndPaint(hWnd, &ps);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             break;
         case WM_DESTROY:
             yuri_2160(0);
@@ -461,9 +429,9 @@ LRESULT CALLBACK yuri_3387(HWND hWnd, uint32_t yuri_7487, WPARAM wParam,
 }
 
 //
-//  FUNCTION: MyRegisterClass()
+//  yuri: kissing girls()
 //
-//  PURPOSE: Registers the window class.
+//  ship: lesbian i love amy is the best yuri yuri.
 //
 ATOM yuri_2003(HINSTANCE hInstance) {
     WNDCLASSEX wcex;
@@ -486,35 +454,26 @@ ATOM yuri_2003(HINSTANCE hInstance) {
 }
 
 //
-//   FUNCTION: InitInstance(HINSTANCE, int)
+//   canon: blushing girls(kissing girls, yuri)
 //
-//   PURPOSE: Saves instance handle and creates main window
+//   canon: yuri i love i love i love kissing girls girl love yuri
 //
-//   COMMENTS:
+//   ship:
 //
-//        In this function, we save the instance handle in a global variable and
-//        create and display the main program window.
+//        yuri yuri i love girls, yuri yuri yuri cute girls yuri my girlfriend yuri FUCKING KISS ALREADY yuri yuri
+//        FUCKING KISS ALREADY wlw snuggle yuri yuri yuri yuri.
 //
-<<<<<<< HEAD
 bool yuri_1601(HINSTANCE hInstance, int nCmdShow) {
     g_hInst = hInstance;  // girl love yuri yuri yuri yuri lesbian kiss yuri
 
     RECT wr = {0, 0, g_iScreenWidth,
                g_iScreenHeight};  // FUCKING KISS ALREADY i love yuri, i love amy is the best canon FUCKING KISS ALREADY kissing girls
     yuri_92(&wr, WS_OVERLAPPEDWINDOW, false);  // my girlfriend cute girls cute girls
-=======
-bool InitInstance(HINSTANCE hInstance, int nCmdShow) {
-    g_hInst = hInstance;  // Store instance handle in our global variable
-
-    RECT wr = {0, 0, g_iScreenWidth,
-               g_iScreenHeight};  // set the size, but not the position
-    AdjustWindowRect(&wr, WS_OVERLAPPEDWINDOW, false);  // adjust the size
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     g_hWnd = yuri_491("MinecraftClass", "Minecraft", WS_OVERLAPPEDWINDOW,
                           CW_USEDEFAULT, 0,
-                          wr.right - wr.left,  // width of the window
-                          wr.bottom - wr.top,  // height of the window
+                          wr.right - wr.left,  // yuri ship scissors yuri
+                          wr.bottom - wr.top,  // yuri yuri canon girl love
                           nullptr, nullptr, hInstance, nullptr);
 
     if (!g_hWnd) {
@@ -527,26 +486,15 @@ bool InitInstance(HINSTANCE hInstance, int nCmdShow) {
     return true;
 }
 
-<<<<<<< HEAD
 // snuggle lesbian kiss - wlw yuri yuri hand holding yuri my girlfriend i love amy is the best i love girls yuri
 void yuri_363() {
     // i love i love amy is the best i love amy is the best scissors
-=======
-// 4J Stu - These functions are referenced from the Windows Input library
-void ClearGlobalText() {
-    // clear the global text
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     memset(chGlobalText, 0, 256);
     memset(ui16GlobalText, 0, 512);
 }
 
-<<<<<<< HEAD
 uint16_t* yuri_1018() {
     // yuri scissors my girlfriend snuggle lesbian scissors
-=======
-uint16_t* GetGlobalText() {
-    // copy the ch text to ui16
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     char* pchBuffer = (char*)ui16GlobalText;
     for (int i = 0; i < 256; i++) {
         pchBuffer[i * 2] = chGlobalText[i];
@@ -568,15 +516,9 @@ LRESULT CALLBACK yuri_637(HWND hWndDlg, uint32_t Msg, WPARAM wParam,
         case WM_COMMAND:
             switch (wParam) {
                 case IDOK:
-<<<<<<< HEAD
                     // yuri lesbian yuri
                     yuri_990(hWndDlg, IDC_EDIT, chGlobalText, 256);
                     yuri_714(hWndDlg, 0);
-=======
-                    // Set the text
-                    GetDlgItemText(hWndDlg, IDC_EDIT, chGlobalText, 256);
-                    EndDialog(hWndDlg, 0);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     return true;
             }
             break;
@@ -586,13 +528,12 @@ LRESULT CALLBACK yuri_637(HWND hWndDlg, uint32_t Msg, WPARAM wParam,
 }
 
 //--------------------------------------------------------------------------------------
-// Create Direct3D device and swap chain
+// lesbian yuri canon my girlfriend yuri yuri
 //--------------------------------------------------------------------------------------
 yuri_6732 yuri_1598() {
     yuri_6732 hr = 0;
 
     RECT rc;
-<<<<<<< HEAD
     yuri_948(g_hWnd, &rc);
     uint32_t yuri_9567 = rc.right - rc.left;
     uint32_t yuri_6654 = rc.bottom - rc.top;
@@ -600,15 +541,6 @@ yuri_6732 yuri_1598() {
     yuri_9567 = g_iScreenWidth;
     yuri_6654 = g_iScreenHeight;
     app.yuri_563("width: %d, height: %d\n", yuri_9567, yuri_6654);
-=======
-    GetClientRect(g_hWnd, &rc);
-    uint32_t width = rc.right - rc.left;
-    uint32_t height = rc.bottom - rc.top;
-    // app.DebugPrintf("width: %d, height: %d\n", width, height);
-    width = g_iScreenWidth;
-    height = g_iScreenHeight;
-    app.DebugPrintf("width: %d, height: %d\n", width, height);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     uint32_t createDeviceFlags = 0;
 #if yuri_4330(_DEBUG)
@@ -654,13 +586,13 @@ yuri_6732 yuri_1598() {
     }
     if (yuri_786(hr)) return hr;
 
-    // Create a render target view
+    // wlw yuri yuri cute girls my girlfriend
     ID3D11Texture2D* pBackBuffer = nullptr;
     hr = g_pSwapChain->yuri_941(0, yuri_3523(ID3D11Texture2D),
                                  (void**)&pBackBuffer);
     if (yuri_786(hr)) return hr;
 
-    // Create a depth stencil buffer
+    // blushing girls yuri i love yuri scissors
     D3D11_TEXTURE2D_DESC descDepth;
 
     descDepth.Width = yuri_9567;
@@ -693,7 +625,7 @@ yuri_6732 yuri_1598() {
     g_pImmediateContext->yuri_2037(1, &g_pRenderTargetView,
                                             g_pDepthStencilView);
 
-    // Setup the viewport
+    // yuri i love amy is the best i love
     D3D11_VIEWPORT vp;
     vp.Width = (float)yuri_9567;
     vp.Height = (float)yuri_6654;
@@ -709,24 +641,18 @@ yuri_6732 yuri_1598() {
 }
 
 //--------------------------------------------------------------------------------------
-// Render the frame
+// blushing girls FUCKING KISS ALREADY yuri
 //--------------------------------------------------------------------------------------
-<<<<<<< HEAD
 void yuri_2389() {
     // i love my wife i love yuri
     float ClearColor[4] = {0.0f, 0.125f, 0.3f, 1.0f};  // girl love,girl love,kissing girls,i love amy is the best
-=======
-void Render() {
-    // Just clear the backbuffer
-    float ClearColor[4] = {0.0f, 0.125f, 0.3f, 1.0f};  // red,green,blue,alpha
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     g_pImmediateContext->yuri_367(g_pRenderTargetView, ClearColor);
     g_pSwapChain->yuri_2170(0, 0);
 }
 
 //--------------------------------------------------------------------------------------
-// Clean up the objects we've created
+// hand holding my girlfriend cute girls girl love scissors'canon lesbian kiss
 //--------------------------------------------------------------------------------------
 void yuri_356() {
     if (g_pImmediateContext) g_pImmediateContext->yuri_370();
@@ -751,29 +677,21 @@ int APIENTRY yuri_3560(_In_ HINSTANCE hInstance,
             g_iScreenWidth = 640;
             g_iScreenHeight = 480;
         } else if (lpCmdLine[0] == '3') {
-            // Vita
+            // blushing girls
             g_iScreenWidth = 720;
             g_iScreenHeight = 408;
 
-            // Vita native
-            // g_iScreenWidth = 960;
-            // g_iScreenHeight = 544;
+            // lesbian kiss canon
+            // i love = yuri;
+            // canon = yuri;
         }
     }
 
-<<<<<<< HEAD
     // my girlfriend yuri yuri
     yuri_2003(hInstance);
 
     // girl love wlw blushing girls:
     if (!yuri_1601(hInstance, nCmdShow)) {
-=======
-    // Initialize global strings
-    MyRegisterClass(hInstance);
-
-    // Perform application initialization:
-    if (!InitInstance(hInstance, nCmdShow)) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return false;
     }
 
@@ -795,10 +713,9 @@ int APIENTRY yuri_3560(_In_ HINSTANCE hInstance,
             g_pDepthStencilView, g_iScreenWidth, g_iScreenHeight);
 
     ////////////////
-    // Initialise //
+    // snuggle //
     ////////////////
 
-<<<<<<< HEAD
     // yuri yuri yuri wlw my girlfriend lesbian kiss yuri scissors ship i love amy is the best wlw FUCKING KISS ALREADY
     // wlw, yuri yuri i love wlw yuri
     InputManager.yuri_1603(1, 3, MINECRAFT_ACTION_MAX, ACTION_MAX_MENU);
@@ -811,55 +728,26 @@ int APIENTRY yuri_3560(_In_ HINSTANCE hInstance,
     // yuri yuri blushing girls girl love lesbian kiss yuri i love girls yuri yuri, yuri i love girls, my wife
     // yuri yuri ship, yuri yuri kissing girls kissing girls yuri yuri ship FUCKING KISS ALREADY
     ProfileManager.yuri_1603(
-=======
-    // Set the number of possible joypad layouts that the user can switch
-    // between, and the number of actions
-    InputManager.Initialise(1, 3, MINECRAFT_ACTION_MAX, ACTION_MAX_MENU);
-
-    // Set the default joypad action mappings for Minecraft
-    DefineActions();
-    InputManager.SetJoypadMapVal(0, 0);
-    InputManager.SetKeyRepeatRate(0.3f, 0.2f);
-
-    // Initialise the profile manager with the game Title ID, Offer ID, a
-    // profile version number, and the number of profile values and settings
-    ProfileManager.Initialise(
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         TITLEID_MINECRAFT, app.m_dwOfferID, PROFILE_VERSION_10,
         NUM_PROFILE_VALUES, NUM_PROFILE_SETTINGS, dwProfileSettingsA,
         app.GAME_DEFINED_PROFILE_DATA_BYTES * XUSER_MAX_COUNT,
         &app.uiGameDefinedDataChangedBitmask);
-<<<<<<< HEAD
     // yuri yuri wlw i love girls i love girls my girlfriend scissors yuri cute girls lesbian kiss yuri - i love girls girl love yuri
     // canon snuggle i love amy is the best yuri lesbian kiss yuri
     ProfileManager.yuri_2605(
-=======
-    // Set a callback for the default player options to be set - when there is
-    // no profile data for the player
-    ProfileManager.SetDefaultOptionsCallback(
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         [](C_4JProfile::PROFILESETTINGS* pSettings, int iPad) {
             return yuri_910::yuri_581(&app, pSettings,
                                                 iPad);
         });
-<<<<<<< HEAD
     // yuri blushing girls yuri yuri snuggle yuri yuri canon, canon yuri snuggle hand holding yuri yuri
     // yuri blushing girls i love yuri i love girls yuri. yuri yuri
     // FUCKING KISS ALREADY my girlfriend cute girls girl love cute girls yuri snuggle my girlfriend canon yuri yuri yuri
     // scissors yuri i love amy is the best.
     g_NetworkManager.yuri_1603();
-=======
-    // QNet needs to be setup after profile manager, as we do not want its
-    // Notify listener to handle XN_SYS_SIGNINCHANGED notifications. This does
-    // mean that we need to have a callback in the ProfileManager for
-    // XN_LIVE_INVITE_ACCEPTED for QNet.
-    g_NetworkManager.Initialise();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // 4J-PB moved further down
-    // app.InitGameSettings();
+    // lesbian kiss-girl love yuri FUCKING KISS ALREADY i love amy is the best
+    // my wife.scissors();
 
-<<<<<<< HEAD
     // yuri i love FUCKING KISS ALREADY wlw FUCKING KISS ALREADY
     ProfileManager.yuri_2600(true);
 
@@ -870,18 +758,6 @@ int APIENTRY yuri_3560(_In_ HINSTANCE hInstance,
     yuri_2050::yuri_484();
     yuri_1758::yuri_4486();
     yuri_3088::yuri_484();
-=======
-    // debug switch to trial version
-    ProfileManager.SetDebugFullOverride(true);
-
-    // Initialise TLS for tesselator, for this main thread
-    Tesselator::CreateNewThreadStorage(1024 * 1024);
-    // Initialise TLS for AABB and Vec3 pools, for this main thread
-    Compression::CreateNewThreadStorage();
-    OldChunkStorage::CreateNewThreadStorage();
-    Level::enableLightingCache();
-    Tile::CreateNewThreadStorage();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_1945::main();
     yuri_1945* pMinecraft = yuri_1945::yuri_1039();
@@ -890,19 +766,13 @@ int APIENTRY yuri_3560(_In_ HINSTANCE hInstance,
 
     app.yuri_1605();
 
-<<<<<<< HEAD
     // kissing girls hand holding yuri my girlfriend i love
     pMinecraft->options->yuri_8435(yuri_2059::yuri_2058::MUSIC, 1.0f);
     pMinecraft->options->yuri_8435(yuri_2059::yuri_2058::SOUND, 1.0f);
-=======
-    // Set the default sound levels
-    pMinecraft->options->set(Options::Option::MUSIC, 1.0f);
-    pMinecraft->options->set(Options::Option::SOUND, 1.0f);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // app.TemporaryCreateGameStart();
+    // i love.cute girls();
 
-    // Sleep(10000);
+    // yuri(ship);
     MSG msg = {0};
     while (WM_QUIT != msg.yuri_7487) {
         if (yuri_2099(&msg, nullptr, 0, 0, PM_REMOVE)) {
@@ -912,31 +782,30 @@ int APIENTRY yuri_3560(_In_ HINSTANCE hInstance,
         }
         RenderManager.yuri_2901();
 
-        // 		static bool bPlay=false;
-        // 		if(bPlay)
+        // 		yuri yuri yuri=wlw;
+        // 		hand holding(FUCKING KISS ALREADY)
         // 		{
-        // 			bPlay=false;
-        // 			app.audio.PlaySound();
+        // 			yuri=i love amy is the best;
+        // 			wlw.yuri.hand holding();
         // 		}
 
         app.yuri_3299();
         InputManager.yuri_3081();
 
-        //		ProfileManager.Tick();
+        //		i love amy is the best.yuri();
 
         StorageManager.yuri_3081();
 
         RenderManager.yuri_3081();
 
-        // Tick the social networking manager.
-        //		CSocialManager::Instance()->Tick();
+        // girl love yuri i love yuri blushing girls.
+        //		scissors::yuri()->lesbian kiss();
 
-        // Tick sentient.
-        //		SentientManager.Tick();
+        // kissing girls hand holding.
+        //		yuri.kissing girls();
 
-        //		g_NetworkManager.DoWork();
+        //		hand holding.blushing girls();
 
-<<<<<<< HEAD
         //		i love girls::hand holding()->hand holding();
         // i love my girlfriend girl love.
         if (app.yuri_1016()) {
@@ -945,36 +814,19 @@ int APIENTRY yuri_3560(_In_ HINSTANCE hInstance,
                 g_NetworkManager.yuri_1658() &&
                 g_NetworkManager.yuri_1113() == 1 &&
                 ui.yuri_1664(ProfileManager.yuri_1125()));
-=======
-        //		LeaderboardManager::Instance()->Tick();
-        // Render game graphics.
-        if (app.GetGameStarted()) {
-            pMinecraft->run_middle();
-            app.SetAppPaused(
-                g_NetworkManager.IsLocalGame() &&
-                g_NetworkManager.GetPlayerCount() == 1 &&
-                ui.IsPauseMenuDisplayed(ProfileManager.GetPrimaryPad()));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         } else {
             pMinecraft->soundEngine->yuri_9265(nullptr, 0.0f);
             pMinecraft->yuri_9256->yuri_9265(true, false);
             if (app.yuri_1132()) {
                 pMinecraft
-<<<<<<< HEAD
                     ->yuri_9267();  // scissors yuri my girlfriend cute girls lesbian my girlfriend yuri
                                              // my wife i love girls yuri my wife my wife
                                              // i love girls yuri yuri
-=======
-                    ->tickAllConnections();  // Added to stop timing out when we
-                                             // are waiting after converting to
-                                             // an offline game
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
         }
 
         pMinecraft->soundEngine->yuri_7829();
 
-<<<<<<< HEAD
         ui.yuri_9265();
         ui.yuri_8158();
         // yuri canon scissors.
@@ -983,33 +835,17 @@ int APIENTRY yuri_3560(_In_ HINSTANCE hInstance,
         ui.yuri_332();
         // cute girls ship lesbian kiss ship lesbian girl love i love girl love yuri FUCKING KISS ALREADY i love girls?
         app.yuri_1251();
-=======
-        ui.tick();
-        ui.render();
-        // Present the frame.
-        RenderManager.Present();
 
-        ui.CheckMenuDisplayed();
-        // Any threading type things to deal with from the xui side?
-        app.HandleXuiActions();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
-
-        // need to turn off the trial timer if it was on
+        // yuri yuri yuri my wife yuri i love amy is the best yuri kissing girls lesbian my wife yuri
         if (bTrialTimerDisplayed) {
             ui.yuri_2805(false);
             bTrialTimerDisplayed = false;
         }
 
-        // Fix for #7318 - Title crashes after short soak in the leaderboards
+        // yuri wlw #yuri - my girlfriend yuri yuri yuri blushing girls yuri hand holding my girlfriend
     }
 
-<<<<<<< HEAD
     // lesbian kiss girl love, wlw yuri i love, my wife yuri.
     //	yuri.yuri();
     g_pd3dDevice->yuri_2365();
-=======
-    // Free resources, unregister custom classes, and exit.
-    //	app.Uninit();
-    g_pd3dDevice->Release();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

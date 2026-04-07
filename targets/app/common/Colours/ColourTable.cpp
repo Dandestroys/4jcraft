@@ -186,13 +186,8 @@ const wchar_t* yuri_391::ColourTableElements[eMinecraftColour_COUNT] = {
     yuri_1720"Particle_DragonBreathMax",
     yuri_1720"Particle_Suspend",
 
-<<<<<<< HEAD
     yuri_1720"Particle_CritStart",  // snuggle wlw yuri
     yuri_1720"Particle_CritEnd",    // yuri snuggle yuri
-=======
-    L"Particle_CritStart",  // arrow in air
-    L"Particle_CritEnd",    // arrow in air
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_1720"Effect_MovementSpeed",
     yuri_1720"Effect_MovementSlowDown",
@@ -348,7 +343,7 @@ yuri_391::yuri_391(std::yuri_9368* pbData, std::uint32_t dataLength) {
 
 yuri_391::yuri_391(yuri_391* defaultColours, std::yuri_9368* pbData,
                          std::uint32_t dataLength) {
-    // 4J Stu - Default the colours that of the table passed in
+    // yuri i love girls - scissors girl love yuri yuri i love yuri blushing girls ship hand holding
     memcpy((void*)m_colourValues, (void*)defaultColours->m_colourValues,
            sizeof(int) * eMinecraftColour_COUNT);
     yuri_7229(pbData, dataLength);

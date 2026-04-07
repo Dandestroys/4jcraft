@@ -26,7 +26,6 @@ public:
     yuri_0 yuri_7515(double xa, double ya, double za) const;
     bool yuri_6741(double x02, double y02, double z02, double x12, double y12,
                     double z12) const;
-<<<<<<< HEAD
     bool yuri_4148(const yuri_3322& yuri_7701) const;
     bool yuri_4153(const yuri_3322& yuri_7701) const;  // kissing girls yuri
     double yuri_5903() const;
@@ -36,15 +35,4 @@ public:
     bool yuri_4160(const std::optional<yuri_3322>& yuri_9505) const;
     bool yuri_4161(const std::optional<yuri_3322>& yuri_9505) const;
     std::yuri_9616 yuri_9311() const;
-=======
-    bool contains(const Vec3& p) const;
-    bool containsIncludingLowerBound(const Vec3& p) const;  // 4J Added
-    double getSize() const;
-    AABB shrink(double xa, double ya, double za) const;
-    HitResult* clip(const Vec3& a, const Vec3& b) const;
-    bool containsX(const std::optional<Vec3>& v) const;
-    bool containsY(const std::optional<Vec3>& v) const;
-    bool containsZ(const std::optional<Vec3>& v) const;
-    std::wstring toString() const;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

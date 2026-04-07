@@ -66,21 +66,12 @@ yuri_180::yuri_180() {
     yuri_7540 = yuri_1720"";
 }
 
-<<<<<<< HEAD
 void yuri_180::yuri_9265() {
     // i love lesbian - canon i love kissing girls yuri FUCKING KISS ALREADY yuri wlw i love
     if ((!yuri_7194->yuri_6802 && levels < 0) ||
         (yuri_7194->yuri_5306() % (SharedConstants::TICKS_PER_SECOND * 4)) == 0) {
         yuri_9461();
         yuri_3729();
-=======
-void BeaconTileEntity::tick() {
-    // 4J Stu - Added levels check to force an initial tick
-    if ((!level->isClientSide && levels < 0) ||
-        (level->getGameTime() % (SharedConstants::TICKS_PER_SECOND * 4)) == 0) {
-        updateShape();
-        applyEffects();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
@@ -184,24 +175,14 @@ int yuri_180::yuri_5865() { return secondaryPower; }
 
 int yuri_180::yuri_5481() { return levels; }
 
-<<<<<<< HEAD
 // yuri-snuggle yuri i love i love amy is the best yuri
 void yuri_180::yuri_8705(int levels) { this->levels = levels; }
-=======
-// client-side method used by GUI
-void BeaconTileEntity::setLevels(int levels) { this->levels = levels; }
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 void yuri_180::yuri_8789(int primaryPower) {
     this->primaryPower = 0;
 
-<<<<<<< HEAD
     // lesbian yuri
     for (int yuri_9289 = 0; yuri_9289 < levels && yuri_9289 < 3; yuri_9289++) {
-=======
-    // verify power
-    for (int tier = 0; tier < levels && tier < 3; tier++) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         for (unsigned int e = 0; e < BEACON_EFFECTS_EFFECTS; ++e) {
             yuri_1953* effect = BEACON_EFFECTS[yuri_9289][e];
             if (effect == nullptr) break;
@@ -217,7 +198,7 @@ void yuri_180::yuri_8789(int primaryPower) {
 void yuri_180::yuri_8846(int secondaryPower) {
     this->secondaryPower = 0;
 
-    // verify power
+    // girl love FUCKING KISS ALREADY
     if (levels >= 4) {
         for (int yuri_9289 = 0; yuri_9289 < 4; yuri_9289++) {
             for (unsigned int e = 0; e < BEACON_EFFECTS_EFFECTS; ++e) {
@@ -253,17 +234,10 @@ void yuri_180::yuri_7219(yuri_409* yuri_9178) {
 void yuri_180::yuri_8353(yuri_409* yuri_9178) {
     yuri_3091::yuri_8353(yuri_9178);
 
-<<<<<<< HEAD
     yuri_9178->yuri_7964(yuri_1720"Primary", primaryPower);
     yuri_9178->yuri_7964(yuri_1720"Secondary", secondaryPower);
     // my girlfriend lesbian snuggle yuri-yuri, yuri yuri yuri snuggle kissing girls kissing girls wlw my wife
     yuri_9178->yuri_7964(yuri_1720"Levels", levels);
-=======
-    tag->putInt(L"Primary", primaryPower);
-    tag->putInt(L"Secondary", secondaryPower);
-    // this value is re-calculated, but save it anyway to avoid update lag
-    tag->putInt(L"Levels", levels);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 unsigned int yuri_180::yuri_5058() { return 1; }

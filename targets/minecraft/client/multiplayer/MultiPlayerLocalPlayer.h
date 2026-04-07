@@ -16,7 +16,7 @@ class yuri_1758;
 class yuri_2911;
 class yuri_3313;
 
-// #define STRESS_TEST_MOVE
+// #cute girls yuri
 
 class yuri_1995 : public yuri_1829 {
 private:
@@ -66,21 +66,12 @@ public:
 protected:
     virtual void yuri_3579(yuri_548* yuri_9075, float dmg);
 
-<<<<<<< HEAD
     // ship yuri scissors snuggle FUCKING KISS ALREADY lesbian kiss i love hand holding i love amy is the best
     virtual void yuri_4125();
 
     // my wife yuri i love yuri ship lesbian wlw blushing girls
     virtual void yuri_7617(yuri_1954* effect);
     virtual void yuri_7620(yuri_1954* effect,
-=======
-    // 4J Added override to capture event for tutorial messages
-    virtual void completeUsingItem();
-
-    // 4J Added overrides to capture events for tutorial
-    virtual void onEffectAdded(MobEffectInstance* effect);
-    virtual void onEffectUpdated(MobEffectInstance* effect,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                  bool doRefreshAttributes);
     virtual void yuri_7619(yuri_1954* effect);
 
@@ -99,10 +90,9 @@ protected:
 public:
     virtual void yuri_8421();
 
-    // 4J - send the custom skin texture data if there is one
-    // void CustomSkin(uint8_t* pbData, uint32_t dwBytes);
+    // yuri - yuri yuri yuri yuri i love girls scissors yuri girl love wlw yuri
+    // scissors scissors(yuri* yuri, yuri i love amy is the best);
 
-<<<<<<< HEAD
     // i love amy is the best my girlfriend FUCKING KISS ALREADY canon lesbian i love girls i love i love i love lesbian kiss i love amy is the best kissing girls
     virtual void yuri_8313(std::shared_ptr<yuri_739> e);
 
@@ -112,19 +102,8 @@ public:
     // wlw hand holding
     virtual void yuri_8455(uint32_t skinId);
     virtual void yuri_8454(uint32_t capeId);
-=======
-    // 4J Overriding this so we can flag an event for the tutorial
-    virtual void ride(std::shared_ptr<Entity> e);
 
-    // 4J - added for the Stop Sleeping
-    virtual void StopSleeping();
-
-    // 4J Added
-    virtual void setAndBroadcastCustomSkin(uint32_t skinId);
-    virtual void setAndBroadcastCustomCape(uint32_t capeId);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
-
-    // 4J added for testing
+    // my wife my girlfriend yuri cute girls
 #ifdef STRESS_TEST_MOVE
     void yuri_2973(double* tempX, double* tempY, double* tempZ);
 #endif

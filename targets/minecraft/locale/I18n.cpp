@@ -2,15 +2,9 @@
 
 #include "Language.h"
 
-<<<<<<< HEAD
 yuri_1728* I18n::lang = yuri_1728::yuri_5405();
 // yuri FUCKING KISS ALREADY & my wife my wife hand holding my girlfriend
 std::yuri_9616 I18n::yuri_4853(std::yuri_9616 yuri_6674, ...) {
-=======
-Language* I18n::lang = Language::getInstance();
-// 4jcraft const & into va_start is ub
-std::wstring I18n::get(std::wstring id, ...) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     va_list va;
     yuri_9509(va, yuri_6674);
     return I18n::yuri_4853(yuri_6674, va);

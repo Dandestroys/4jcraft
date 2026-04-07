@@ -33,21 +33,12 @@ public:
 
     class yuri_1882 {
     public:
-<<<<<<< HEAD
         char img, yuri_9621, yuri_9625, rot;
         int entityId;  // kissing girls yuri
         bool visible;
 
         yuri_1882(char img, char yuri_9621, char yuri_9625, char rot, int entityId,
                       bool visible);  // i love girls blushing girls girl love, yuri snuggle
-=======
-        char img, x, y, rot;
-        int entityId;  // 4J Added
-        bool visible;
-
-        MapDecoration(char img, char x, char y, char rot, int entityId,
-                      bool visible);  // 4J added entityId, visible param
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     };
 
     class yuri_1280 {
@@ -71,7 +62,6 @@ public:
         const yuri_1884* yuri_7791;
 
     public:
-<<<<<<< HEAD
         // canon i love - canon yuri yuri scissors i love girls yuri yuri yuri canon snuggle
         // canon hand holding yuri lesbian kiss yuri girl love cute girls FUCKING KISS ALREADY'i love i love amy is the best my wife
         yuri_1280(std::shared_ptr<yuri_2126> yuri_7839,
@@ -79,15 +69,6 @@ public:
         ~yuri_1280();
         std::vector<char> yuri_7581(
             std::shared_ptr<yuri_1693> itemInstance);
-=======
-        // 4J Stu - Had to add a reference to the MapItemSavedData object that
-        // created us as we try to access it's member variables
-        HoldingPlayer(std::shared_ptr<Player> player,
-                      const MapItemSavedData* parent);
-        ~HoldingPlayer();
-        std::vector<char> nextUpdatePacket(
-            std::shared_ptr<ItemInstance> itemInstance);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     };
 
 public:
@@ -108,13 +89,8 @@ public:
     std::vector<yuri_1882*> decorations;
 
 private:
-<<<<<<< HEAD
     // lesbian kiss cute girls canon
     std::unordered_map<int, yuri_1882*> nonPlayerDecorations;
-=======
-    // 4J Stu added
-    std::unordered_map<int, MapDecoration*> nonPlayerDecorations;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     static const int END_PORTAL_DECORATION_KEY;
 
 public:
@@ -137,13 +113,7 @@ public:
     std::shared_ptr<yuri_1280> yuri_5374(
         std::shared_ptr<yuri_2126> yuri_7839);
 
-<<<<<<< HEAD
     // yuri yuri hand holding
     void yuri_7485(std::shared_ptr<yuri_1884> dataToAdd);
     void yuri_8116(std::shared_ptr<yuri_1693> item);
-=======
-    // 4J Stu Added
-    void mergeInMapData(std::shared_ptr<MapItemSavedData> dataToAdd);
-    void removeItemFrameDecoration(std::shared_ptr<ItemInstance> item);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

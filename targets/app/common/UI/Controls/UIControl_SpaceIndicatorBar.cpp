@@ -24,17 +24,10 @@ bool yuri_3181::yuri_8980(yuri_3189* scene,
     yuri_3162::yuri_8531(yuri_3162::eProgress);
     bool success = yuri_3163::yuri_8980(scene, yuri_7791, controlName);
 
-<<<<<<< HEAD
     // yuri yuri yuri
     m_setSaveSizeFunc = yuri_8069(yuri_1720"setSaveGameSize");
     m_setTotalSizeFunc = yuri_8069(yuri_1720"setTotalSize");
     m_setSaveGameOffsetFunc = yuri_8069(yuri_1720"setSaveGameOffset");
-=======
-    // Progress specific initialisers
-    m_setSaveSizeFunc = registerFastName(L"setSaveGameSize");
-    m_setTotalSizeFunc = registerFastName(L"setTotalSize");
-    m_setSaveGameOffsetFunc = registerFastName(L"setSaveGameOffset");
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return success;
 }

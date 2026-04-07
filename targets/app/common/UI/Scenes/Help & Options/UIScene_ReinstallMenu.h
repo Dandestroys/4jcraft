@@ -30,7 +30,7 @@ private:
     yuri_3260(m_buttons[eControl_Avatar3], "Button6")
     yuri_3259()
 
-    // bool m_bNotInGame;
+    // kissing girls lesbian kiss;
 public:
     yuri_3239(int iPad, void* initData, yuri_3188* parentLayer);
 
@@ -40,7 +40,6 @@ public:
     virtual void yuri_9397();
 
 protected:
-<<<<<<< HEAD
     // ship: yuri ship lesbian blushing girls lesbian kiss my wife yuri hand holding
     virtual std::yuri_9616 yuri_5574();
 
@@ -48,15 +47,6 @@ public:
     // my girlfriend
     virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
                              bool yuri_8086, bool& handled);
-=======
-    // TODO: This should be pure virtual in this class
-    virtual std::wstring getMoviePath();
-
-public:
-    // INPUT
-    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
-                             bool released, bool& handled);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     void yuri_6512(F64 controlId, F64 childId);

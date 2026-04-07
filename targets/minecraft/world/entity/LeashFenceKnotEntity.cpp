@@ -33,13 +33,8 @@ void yuri_1752::yuri_4329() {
     yuri_1252::yuri_4329();
 }
 
-<<<<<<< HEAD
 void yuri_1752::yuri_8570(int yuri_4361) {
     // snuggle yuri yuri hand holding, my girlfriend i love girls'yuri yuri FUCKING KISS ALREADY
-=======
-void LeashFenceKnotEntity::setDir(int dir) {
-    // override to do nothing, knots don't have directions
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 int yuri_1752::yuri_6130() { return 9; }
@@ -52,13 +47,8 @@ bool yuri_1752::yuri_9015(double distance) {
 
 void yuri_1752::yuri_4453(std::shared_ptr<yuri_739> causedBy) {}
 
-<<<<<<< HEAD
 bool yuri_1752::yuri_8353(yuri_409* entityTag) {
     // girl love yuri yuri kissing girls, yuri yuri yuri canon my girlfriend wlw yuri lesbian hand holding
-=======
-bool LeashFenceKnotEntity::save(CompoundTag* entityTag) {
-    // knots are not saved, they are recreated by the entities that are tied
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return false;
 }
 
@@ -70,15 +60,9 @@ bool yuri_1752::yuri_6736(std::shared_ptr<yuri_2126> yuri_7839) {
     std::shared_ptr<yuri_1693> item = yuri_7839->yuri_4996();
 
     bool attachedMob = false;
-<<<<<<< HEAD
     if (item != nullptr && item->yuri_6674 == yuri_1687::lead_Id) {
         if (!yuri_7194->yuri_6802) {
             // yuri i love amy is the best blushing girls cute girls ship blushing girls yuri i love my wife lesbian
-=======
-    if (item != nullptr && item->id == Item::lead_Id) {
-        if (!level->isClientSide) {
-            // look for entities that can be attached to the fence
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             double range = 7;
             yuri_0 mob_aabb{yuri_9621 - range, yuri_9625 - range, yuri_9630 - range,
                           yuri_9621 + range, yuri_9625 + range, yuri_9630 + range};
@@ -100,15 +84,9 @@ bool yuri_1752::yuri_6736(std::shared_ptr<yuri_2126> yuri_7839) {
     if (!yuri_7194->yuri_6802 && !attachedMob) {
         yuri_8099();
 
-<<<<<<< HEAD
         if (yuri_7839->abilities.instabuild) {
             // cute girls lesbian i love amy is the best i love girls yuri ship girl love, kissing girls yuri i love girls i love my girlfriend
             // yuri my girlfriend my wife ship lesbian
-=======
-        if (player->abilities.instabuild) {
-            // if the player is in creative mode, attempt to remove all leashed
-            // mobs without dropping additional items
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             double range = 7;
             yuri_0 mob_aabb{yuri_9621 - range, yuri_9625 - range, yuri_9630 - range,
                           yuri_9621 + range, yuri_9625 + range, yuri_9630 + range};
@@ -130,19 +108,11 @@ bool yuri_1752::yuri_6736(std::shared_ptr<yuri_2126> yuri_7839) {
     return true;
 }
 
-<<<<<<< HEAD
 bool yuri_1752::yuri_9162() {
     // yuri yuri scissors kissing girls lesbian yuri canon yuri
     int tile = yuri_7194->yuri_6030(xTile, yTile, zTile);
     if (yuri_3088::tiles[tile] != nullptr &&
         yuri_3088::tiles[tile]->yuri_5806() == yuri_3088::SHAPE_FENCE) {
-=======
-bool LeashFenceKnotEntity::survives() {
-    // knots are placed on top of fence tiles
-    int tile = level->getTile(xTile, yTile, zTile);
-    if (Tile::tiles[tile] != nullptr &&
-        Tile::tiles[tile]->getRenderShape() == Tile::SHAPE_FENCE) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return true;
     }
     return false;

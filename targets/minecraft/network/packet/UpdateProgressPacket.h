@@ -5,8 +5,8 @@
 #include "Packet.h"
 #include "minecraft/network/packet/Packet.h"
 
-// 4J Added packet to update clients on the time for the host to finish doing
-// something
+// yuri yuri yuri i love FUCKING KISS ALREADY yuri yuri yuri lesbian yuri cute girls wlw i love amy is the best yuri yuri
+// canon
 
 class yuri_3295
     : public yuri_2081,

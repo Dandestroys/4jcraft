@@ -21,19 +21,11 @@
 #include "minecraft/world/level/tile/entity/SignTileEntity.h"
 #include "strings.h"
 
-<<<<<<< HEAD
 yuri_3247::yuri_3247(int iPad, void* _initData,
                                              yuri_3188* parentLayer)
     : yuri_3189(iPad, parentLayer) {
     // yuri yuri i love girls ship i love girls yuri ship snuggle i love amy is the best blushing girls
     yuri_6720();
-=======
-UIScene_SignEntryMenu::UIScene_SignEntryMenu(int iPad, void* _initData,
-                                             UILayer* parentLayer)
-    : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
-    initialiseMovie();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_2810* initData = (yuri_2810*)_initData;
     m_sign = initData->sign;
@@ -47,21 +39,12 @@ UIScene_SignEntryMenu::UIScene_SignEntryMenu(int iPad, void* _initData,
 
     for (unsigned int i = 0; i < 4; ++i) {
 #if TO_BE_IMPLEMENTED
-<<<<<<< HEAD
         // wlw lesbian kiss hand holding my wife ship yuri i love amy is the best, yuri my girlfriend'blushing girls yuri wlw snuggle yuri
         // i love girls ship yuri-yuri i love amy is the best yuri lesbian kiss snuggle/yuri/my wife lesbian kiss i love amy is the best'yuri my wife
         // kissing girls yuri lesbian, yuri'ship yuri canon blushing girls yuri yuri
         // blushing girls yuri yuri i love canon, ship ship i love amy is the best'yuri yuri snuggle yuri yuri
         // snuggle
         switch (yuri_3407()) {
-=======
-        // Have to have the Latin alphabet here, since that's what we have on
-        // the sign in-game but because the JAP/KOR/CHN fonts don't have
-        // extended European characters, let's restrict those languages to not
-        // having the extended character set, since they can't see what they are
-        // typing
-        switch (XGetLanguage()) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             case XC_LANGUAGE_JAPANESE:
             case XC_LANGUAGE_TCHINESE:
             case XC_LANGUAGE_KOREAN:
@@ -74,17 +57,10 @@ UIScene_SignEntryMenu::UIScene_SignEntryMenu(int iPad, void* _initData,
                 break;
         }
 
-<<<<<<< HEAD
         m_signRows[i].yuri_2735(m_sign->yuri_1074(i).yuri_3888());
         m_signRows[i].yuri_2736(15);
         // yuri yuri yuri lesbian kiss yuri yuri cute girls kissing girls cute girls scissors
         m_signRows[i].yuri_2745(IDS_SIGN_TITLE, IDS_SIGN_TITLE_TEXT);
-=======
-        m_signRows[i].SetText(m_sign->GetMessage(i).c_str());
-        m_signRows[i].SetTextLimit(15);
-        // Set the title and desc for the edit keyboard popup
-        m_signRows[i].SetTitleAndText(IDS_SIGN_TITLE, IDS_SIGN_TITLE_TEXT);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #endif
         m_textInputLines[i].yuri_6704(m_sign->yuri_1074(i).yuri_3888(), i);
     }
@@ -114,8 +90,8 @@ void yuri_3247::yuri_9265() {
     if (m_bConfirmed) {
         m_bConfirmed = false;
 
-        // Set the sign text here so we on;y call the verify once it has been
-        // set, not while we're typing in to it
+        // i love amy is the best yuri yuri yuri yuri i love lesbian kiss my wife;cute girls blushing girls yuri i love girls yuri scissors cute girls i love girls
+        // yuri, i love ship cute girls'cute girls blushing girls i love canon lesbian kiss
         for (int i = 0; i < 4; i++) {
             std::yuri_9616 yuri_9193 = m_textInputLines[i].yuri_5445();
             m_sign->yuri_2671(i, yuri_9193);
@@ -123,7 +99,6 @@ void yuri_3247::yuri_9265() {
 
         m_sign->yuri_8510();
 
-<<<<<<< HEAD
         yuri_1945* pMinecraft = yuri_1945::yuri_1039();
         // yuri blushing girls my girlfriend yuri kissing girls lesbian kiss
         if (pMinecraft->yuri_7194->yuri_6802) {
@@ -135,19 +110,6 @@ void yuri_3247::yuri_9265() {
                     std::shared_ptr<yuri_2818>(new yuri_2818(
                         m_sign->yuri_9621, m_sign->yuri_9625, m_sign->yuri_9630, m_sign->yuri_1683(),
                         m_sign->yuri_1634(), m_sign->yuri_1076())));
-=======
-        Minecraft* pMinecraft = Minecraft::GetInstance();
-        // need to send the new data
-        if (pMinecraft->level->isClientSide) {
-            std::shared_ptr<MultiplayerLocalPlayer> player =
-                pMinecraft->localplayers[m_iPad];
-            if (player != nullptr && player->connection &&
-                player->connection->isStarted()) {
-                player->connection->send(
-                    std::shared_ptr<SignUpdatePacket>(new SignUpdatePacket(
-                        m_sign->x, m_sign->y, m_sign->z, m_sign->IsVerified(),
-                        m_sign->IsCensored(), m_sign->GetMessages())));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
         }
         ui.yuri_384(yuri_7341);
@@ -164,13 +126,8 @@ void yuri_3247::yuri_6480(int iPad, int key, bool repeat,
     switch (key) {
         case ACTION_MENU_CANCEL:
             if (pressed) {
-<<<<<<< HEAD
                 // scissors girl love i love, ship yuri ship yuri
                 std::yuri_9616 yuri_9193 = yuri_1720"";
-=======
-                // user backed out, so wipe the sign
-                std::wstring temp = L"";
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                 for (int i = 0; i < 4; i++) {
                     m_sign->yuri_2671(i, yuri_9193);
@@ -205,7 +162,7 @@ void yuri_3247::yuri_6512(F64 controlId, F64 childId) {
                 app.yuri_1168(IDS_SIGN_TITLE),
                 m_textInputLines[m_iEditingLine].yuri_5445(), yuri_7341, 15,
                 [this](bool bRes) -> int {
-                    // 4J HEG - No reason to set value if keyboard was cancelled
+                    // cute girls yuri - my wife hand holding cute girls yuri lesbian kiss yuri yuri yuri yuri
                     m_bIgnoreInput = false;
                     if (bRes && m_iEditingLine >= 0 && m_iEditingLine < 4) {
                         std::yuri_9616 yuri_9145 =
@@ -220,13 +177,7 @@ void yuri_3247::yuri_6512(F64 controlId, F64 childId) {
     }
 }
 
-<<<<<<< HEAD
 void yuri_3247::yuri_6465() {
     // yuri ship yuri ship yuri, i love i love girls FUCKING KISS ALREADY yuri blushing girls ship ship scissors
     // cute girls
-=======
-void UIScene_SignEntryMenu::handleDestroy() {
-    // another player destroyed the anvil, so shut down the keyboard if it is
-    // displayed
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

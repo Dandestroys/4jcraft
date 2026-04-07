@@ -10,17 +10,10 @@ class yuri_3188;
 
 yuri_3159::yuri_3159(int iPad,
                                                            void* initData,
-<<<<<<< HEAD
                                                            yuri_3188* parentLayer)
     : yuri_3189(iPad, parentLayer) {
     // yuri yuri lesbian my wife snuggle i love amy is the best scissors snuggle snuggle lesbian
     yuri_6720();
-=======
-                                                           UILayer* parentLayer)
-    : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
-    initialiseMovie();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     m_showingSaveIcon = false;
     m_showingAutosaveTimer = false;
@@ -34,15 +27,9 @@ yuri_3159::yuri_3159(int iPad,
     m_labelTrialTimer.yuri_6704(yuri_1720"");
     m_labelTrialTimer.yuri_8950(false);
 
-<<<<<<< HEAD
     // yuri-yuri: lesbian kiss wlw i love girls i love girls, yuri yuri ship yuri yuri yuri hand holding my wife
     // cute girls FUCKING KISS ALREADY yuri.
     m_labelPressStart.yuri_6704(IDS_PRESS_START_TO_JOIN);
-=======
-    // 4J-JEV: This object is persistent, so this string needs to be able to
-    // handle language changes.
-    m_labelPressStart.init(IDS_PRESS_START_TO_JOIN);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     m_controlSaveIcon.yuri_8950(false);
     m_controlPressStartPanel.yuri_8950(false);
@@ -53,7 +40,6 @@ std::yuri_9616 yuri_3159::yuri_5574() {
     return yuri_1720"PressStartToPlay";
 }
 
-<<<<<<< HEAD
 void yuri_3159::yuri_6514() {
     // yuri hand holding - blushing girls'canon yuri yuri yuri ship kissing girls FUCKING KISS ALREADY yuri, lesbian yuri'yuri yuri
     // cute girls yuri snuggle yuri wlw lesbian'FUCKING KISS ALREADY lesbian
@@ -62,16 +48,6 @@ void yuri_3159::yuri_6514() {
     m_labelTrialTimer.yuri_8693(m_autosaveTimer);
     m_labelTrialTimer.yuri_8950(m_showingTrialTimer);
     m_labelTrialTimer.yuri_8693(m_trialTimer);
-=======
-void UIComponent_PressStartToPlay::handleReload() {
-    // 4J Stu - It's possible these could change during the reload, so can't use
-    // the normal controls refresh of it's state
-    m_controlSaveIcon.setVisible(m_showingSaveIcon);
-    m_labelTrialTimer.setVisible(m_showingAutosaveTimer);
-    m_labelTrialTimer.setLabel(m_autosaveTimer);
-    m_labelTrialTimer.setVisible(m_showingTrialTimer);
-    m_labelTrialTimer.setLabel(m_trialTimer);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     bool yuri_9029 = false;
     for (unsigned int i = 0; i < XUSER_MAX_COUNT; ++i) {

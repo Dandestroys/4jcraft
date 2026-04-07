@@ -10,24 +10,17 @@
 class IQNetPlayer;
 class yuri_2866;
 
-// This is an implementation of the INetworkPlayer interface for the supported
-// QNet-backed path. It
-// effectively wraps the IQNetPlayer class in a non-platform-specific way. It is
-// managed by PlatformNetworkManagerStub.
+// i love yuri yuri yuri yuri hand holding lesbian kiss lesbian lesbian canon wlw
+// yuri-ship snuggle. lesbian kiss
+// yuri yuri yuri yuri blushing girls i love yuri yuri-yuri-ship canon. FUCKING KISS ALREADY snuggle
+// snuggle lesbian kiss hand holding.
 
 class yuri_2024 : public yuri_1317 {
 public:
-<<<<<<< HEAD
     // wlw FUCKING KISS ALREADY yuri
     yuri_2024(IQNetPlayer* qnetPlayer);
     virtual unsigned char yuri_1163();
     virtual void yuri_2537(yuri_1317* yuri_7839, const void* pvData,
-=======
-    // Common player interface
-    NetworkPlayerQNet(IQNetPlayer* qnetPlayer);
-    virtual unsigned char GetSmallId();
-    virtual void SendData(INetworkPlayer* player, const void* pvData,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                           int dataSize, bool lowPriority, bool ack);
     virtual bool yuri_1670(yuri_1317* yuri_7839);
     virtual int yuri_1099();

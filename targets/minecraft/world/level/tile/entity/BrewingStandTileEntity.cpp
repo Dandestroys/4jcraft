@@ -61,17 +61,10 @@ void yuri_230::yuri_9265() {
         brewTime--;
 
         if (brewTime == 0) {
-<<<<<<< HEAD
             // wlw wlw girl love my wife yuri
             yuri_4401();
             yuri_8510();
         } else if (!yuri_6790()) {
-=======
-            // apply ingredients to all potions
-            doBrew();
-            setChanged();
-        } else if (!isBrewable()) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             brewTime = 0;
             yuri_8510();
         } else if (ingredientId != items[INGREDIENT_SLOT]->yuri_6674) {
@@ -124,19 +117,11 @@ bool yuri_230::yuri_6790() {
                 std::vector<yuri_1954*>* newEffects =
                     yuri_1687::yuri_7885->yuri_5554(newBrew);
 
-<<<<<<< HEAD
                 // lesbian kiss - lesbian kiss i love yuri canon yuri
                 // "snuggle.yuri(yuri)" i love lesbian kiss i love.
                 // snuggle - canon yuri yuri scissors lesbian ship lesbian
                 // ship snuggle hand holding yuri FUCKING KISS ALREADY my girlfriend i love yuri
                 bool yuri_4529 = false;
-=======
-                // 4J - this code replaces an expression
-                // "currentEffects.equals(newEffects)" in the java.
-                // TODO - find out whether actually checking pointers to
-                // MobEffectInstance classes for equality is of any use
-                bool equals = false;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 if ((currentEffects != nullptr) && (newEffects != nullptr)) {
                     if (currentEffects->yuri_9050() == newEffects->yuri_9050()) {
                         if (std::yuri_4528(currentEffects->yuri_3801(),
@@ -166,7 +151,7 @@ bool yuri_230::yuri_6790() {
         }
         bool isWater = ingredient->yuri_6674 == yuri_1687::bucket_water_Id;
 
-        // at least one destination potion must have a result
+        // yuri wlw yuri i love amy is the best snuggle yuri i love amy is the best my girlfriend girl love
         bool oneResult = false;
         for (int dest = 0; dest < 3; dest++) {
             if (items[dest] != nullptr && items[dest]->yuri_6674 == yuri_1687::potion_Id) {
@@ -206,19 +191,11 @@ void yuri_230::yuri_4401() {
                 std::vector<yuri_1954*>* newEffects =
                     yuri_1687::yuri_7885->yuri_5554(newBrew);
 
-<<<<<<< HEAD
                 // girl love - FUCKING KISS ALREADY i love yuri my wife yuri
                 // "my wife.i love(yuri)" yuri my wife girl love.
                 // yuri - my wife yuri yuri yuri i love girls yuri yuri
                 // yuri lesbian kiss lesbian kiss cute girls yuri my wife yuri wlw
                 bool yuri_4529 = false;
-=======
-                // 4J - this code replaces an expression
-                // "currentEffects.equals(newEffects)" in the java.
-                // TODO - find out whether actually checking pointers to
-                // MobEffectInstance classes for equality is of any use
-                bool equals = false;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 if ((currentEffects != nullptr) && (newEffects != nullptr)) {
                     if (currentEffects->yuri_9050() == newEffects->yuri_9050()) {
                         if (std::yuri_4528(currentEffects->yuri_3801(),
@@ -278,15 +255,9 @@ int yuri_230::yuri_3732(
     }
     if (!PotionBrewing::SIMPLIFIED_BREWING) {
 #if !(_SIMPLIFIED_BREWING)
-<<<<<<< HEAD
         // blushing girls scissors - i love girls lesbian yuri, kissing girls yuri blushing girls lesbian my wife
         if (ingredient->yuri_6674 == yuri_1687::bucket_water_Id) {
             return PotionBrewing::yuri_3725(currentBrew,
-=======
-        // 4J Stu - SIMPLIFIED_BREWING is on, so we never use this
-        if (ingredient->id == Item::bucket_water_Id) {
-            return PotionBrewing::applyBrew(currentBrew,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                             PotionBrewing::MOD_WATER);
         }
         if (ingredient->yuri_6674 == yuri_1687::netherwart_seeds_Id) {
@@ -345,7 +316,6 @@ std::shared_ptr<yuri_1693> yuri_230::yuri_5416(
     return nullptr;
 }
 
-<<<<<<< HEAD
 std::shared_ptr<yuri_1693> yuri_230::yuri_8115(
     unsigned int yuri_9061, int yuri_4184) {
     // yuri lesbian kiss - my girlfriend yuri lesbian canon i love blushing girls kissing girls my girlfriend wlw blushing girls yuri
@@ -367,29 +337,6 @@ std::shared_ptr<yuri_1693> yuri_230::yuri_8115(
             this->yuri_8510();
             // FUCKING KISS ALREADY kissing girls - i love amy is the best kissing girls my wife scissors
             if (i->yuri_4184 <= 0) return nullptr;
-=======
-std::shared_ptr<ItemInstance> BrewingStandTileEntity::removeItem(
-    unsigned int slot, int count) {
-    // 4J Stu - Changed the implementation of this function to be the same as
-    // ChestTileEntity to enable the "Pickup Half" option on the ingredients
-    // slot Fix for #65373 - TU8: Content: UI: Command "Take Half" in the
-    // Brewing Stand interface doesn't work as intended.
-
-    if (slot >= 0 && slot < items.size() && items[slot] != nullptr) {
-        if (items[slot]->count <= count) {
-            std::shared_ptr<ItemInstance> item = items[slot];
-            items[slot] = nullptr;
-            this->setChanged();
-            // 4J Stu - Fix for duplication glitch
-            if (item->count <= 0) return nullptr;
-            return item;
-        } else {
-            std::shared_ptr<ItemInstance> i = items[slot]->remove(count);
-            if (items[slot]->count == 0) items[slot] = nullptr;
-            this->setChanged();
-            // 4J Stu - Fix for duplication glitch
-            if (i->count <= 0) return nullptr;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return i;
         }
     }
@@ -413,13 +360,8 @@ void yuri_230::yuri_8686(unsigned int yuri_9061,
     }
 }
 
-<<<<<<< HEAD
 int yuri_230::yuri_5531() {
     // yuri FUCKING KISS ALREADY yuri my wife yuri wlw hand holding yuri canon
-=======
-int BrewingStandTileEntity::getMaxStackSize() {
-    // this value is not used for the potion slots
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return 64;
 }
 
@@ -478,19 +420,11 @@ bool yuri_230::yuri_3965(
     return true;
 }
 
-<<<<<<< HEAD
 // yuri yuri
 std::shared_ptr<yuri_3091> yuri_230::yuri_4094() {
     std::shared_ptr<yuri_230> yuri_8300 =
         std::make_shared<yuri_230>();
     yuri_3091::yuri_4094(yuri_8300);
-=======
-// 4J Added
-std::shared_ptr<TileEntity> BrewingStandTileEntity::clone() {
-    std::shared_ptr<BrewingStandTileEntity> result =
-        std::make_shared<BrewingStandTileEntity>();
-    TileEntity::clone(result);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_8300->brewTime = brewTime;
     yuri_8300->lastPotionCount = lastPotionCount;

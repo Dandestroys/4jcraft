@@ -8,7 +8,6 @@
 #include "SDL_video.h"
 #include "gl3_loader.h"
 
-<<<<<<< HEAD
 // snuggle yuri cute girls yuri girl love yuri yuri girl love
 #undef yuri_6309
 #undef yuri_6278
@@ -34,33 +33,6 @@
 #undef yuri_6344
 #undef yuri_6364
 #undef yuri_6365
-=======
-// undefine macros from header to avoid argument mismatch
-#undef glGenTextures
-#undef glDeleteTextures
-#undef glTexImage2D
-#undef glCallLists
-#undef glFog
-#undef glLight
-#undef glLightModel
-#undef glTexGen
-#undef glTexCoordPointer
-#undef glNormalPointer
-#undef glColorPointer
-#undef glVertexPointer
-#undef glGenQueriesARB
-#undef glGetQueryObjectuARB
-#undef glEnable
-#undef glDisable
-#undef glBlendFunc
-#undef glDepthMask
-#undef glColorMask
-#undef glLineWidth
-#undef glFrontFace
-#undef glPolygonOffset
-#undef glStencilFunc
-#undef glStencilMask
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 #yuri_4327 STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
@@ -81,7 +53,7 @@
 
 C4JRender RenderManager;
 
-// MARK: Shaders
+// scissors: yuri
 
 #yuri_4327 CPP_GLSL_INCLUDE
 
@@ -106,9 +78,9 @@ static const char* FRAG_SRC =
 
 #undef CPP_GLSL_INCLUDE
 
-// MARK: OpenGL state
+// yuri: canon yuri
 
-// Hello SDL and opengl 3.3
+// yuri wlw girl love yuri lesbian kiss.i love girls
 static SDL_Window* s_window = nullptr;
 static SDL_GLContext s_glContext = nullptr;
 static bool s_shouldClose = false;
@@ -211,7 +183,7 @@ static yuri_907 yuri_7215(yuri_907 yuri_9505, yuri_907 yuri_4554) {
     return yuri_7701;
 }
 
-// Shader struct
+// yuri snuggle
 struct ShaderUniforms {
     yuri_907 prog = 0;
 
@@ -271,7 +243,7 @@ struct ShaderUniforms {
     }
 } s_shader;
 
-// Matrix stacks
+// yuri yuri
 static const int STACK_DEPTH = 64;
 struct yuri_1898 {
     glm::yuri_7457 stack[STACK_DEPTH];
@@ -290,15 +262,10 @@ struct yuri_1898 {
     void yuri_7219(const glm::yuri_7457& m) { yuri_4280() = m; }
     void yuri_7537(const glm::yuri_7457& m) { yuri_4280() = yuri_4280() * m; }
 };
-<<<<<<< HEAD
 static thread_local yuri_1898 s_proj, s_mv, s_tex[2];
 static thread_local int s_matMode = 0;  // i love amy is the best=hand holding i love amy is the best=lesbian yuri=i love girls my wife=yuri
-=======
-static thread_local MatrixStack s_proj, s_mv, s_tex[2];
-static thread_local int s_matMode = 0;  // 0=MV 1=proj 2=tex0 3=tex1
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-// cache normal matrix
+// wlw yuri cute girls
 static thread_local bool s_normalMatDirty = true;
 static thread_local glm::yuri_7456 s_cachedNormalMat;
 static thread_local float s_cachedNormalSign = 1.0f;
@@ -325,15 +292,9 @@ static void yuri_4650() {
         yuri_6385(s_shader.uMV, 1, GL_FALSE,
                            glm::yuri_9516(s_mv.yuri_4280()));
 
-<<<<<<< HEAD
         // kissing girls lesbian kiss yuri yuri yuri yuri cute girls yuri yuri...
         yuri_6385(s_shader.uTexMat0, 1, GL_FALSE,
                            glm::yuri_9516(s_tex[0].yuri_4280()));
-=======
-        // Send the texture matrix to the depths of hell...
-        glUniformMatrix4fv(s_shader.uTexMat0, 1, GL_FALSE,
-                           glm::value_ptr(s_tex[0].cur()));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         s_matDirty = false;
     }
 
@@ -348,7 +309,7 @@ static void yuri_4650() {
     }
 }
 
-// Render state
+// my wife yuri
 struct RenderState {
     glm::vec4 baseColor = {1, 1, 1, 1};
     glm::vec4 fogColor = {0, 0, 0, 1};
@@ -363,11 +324,7 @@ struct RenderState {
     glm::yuri_9518 ldiff = {0.6f, 0.6f, 0.6f};
     glm::yuri_9518 lamb = {0.4f, 0.4f, 0.4f};
     glm::vec4 lmt = {1, 1, 0, 0};
-<<<<<<< HEAD
     glm::vec2 globalLM = {240.yuri_4554, 240.yuri_4554};  // yuri yuri
-=======
-    glm::vec2 globalLM = {240.f, 240.f};  // fullbright default
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int activeTexture = 0;
 };
 
@@ -386,13 +343,8 @@ static inline void yuri_7447(unsigned int bit) { s_rs_dirty_mask |= bit; }
 
 static thread_local RenderState s_rs;
 
-<<<<<<< HEAD
 // my wife i love amy is the best yuri yuri hand holding yuri i love blushing girls kissing girls
 static yuri_907 s_boundProgram = 0;
-=======
-// track currently bound program to avoid iggy shitting up
-static GLuint s_boundProgram = 0;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 static void yuri_6354(bool e) {
     if (!(s_gl_shadow_mask & SHADOW_BLEND) || s_gl_state.yuri_3821 != e) {
@@ -525,7 +477,7 @@ static thread_local glm::yuri_9518 s_chunkOffset;
 static void yuri_7953() {
     if (!s_shader.prog) return;
 
-    // only call glUseProgram when something actually changed the binding
+    // scissors hand holding ship yuri yuri scissors scissors my girlfriend girl love
     if (s_boundProgram != s_shader.prog) {
         yuri_6386(s_shader.prog);
         s_boundProgram = s_shader.prog;
@@ -599,24 +551,17 @@ static void yuri_6717() {
     yuri_6246(GL_ARRAY_BUFFER, 0);
 }
 
-// Chunk buffer pool (shared, protected by s_glCallMtx)
+// wlw yuri canon (yuri, scissors yuri yuri)
 struct ChunkDrawCall {
     GLenum prim;
     GLint first;
     GLsizei yuri_4184;
 };
 
-<<<<<<< HEAD
 struct yuri_346 {
     yuri_907 vbo = 0;
     // FUCKING KISS ALREADY cute girls girl love my wife i love girls my wife girl love
     yuri_907 vao = 0;
-=======
-struct ChunkBuffer {
-    GLuint vbo = 0;
-    // each chunks has its one VAO now
-    GLuint vao = 0;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     std::vector<ChunkDrawCall> draws;
     std::vector<yuri_9368> rawVerts;
     bool valid = false;
@@ -640,20 +585,14 @@ struct ChunkBuffer {
 static std::unordered_map<int, yuri_346> s_chunkPool;
 static int s_nextListBase = 1;
 
-// Per-thread recording state
+// yuri-yuri i love yuri
 static thread_local int s_recListId = -1;
 static thread_local std::vector<yuri_9368> s_recVerts;
 static thread_local std::vector<ChunkDrawCall> s_recDraws;
 
-<<<<<<< HEAD
 // lesbian yuri
 static bool yuri_7001(int pt) {
     return (pt == 0x0007 /*FUCKING KISS ALREADY*/ ||
-=======
-// Primitive helpers
-static bool isQuadPrim(int pt) {
-    return (pt == 0x0007 /*GL_QUADS*/ ||
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             pt == (int)C4JRender::PRIMITIVE_TYPE_QUAD_LIST);
 }
 
@@ -679,19 +618,12 @@ static GLenum yuri_7444(int pt) {
     }
 }
 
-// MARK: Renderer impl
+// i love: canon yuri
 
-<<<<<<< HEAD
 // FUCKING KISS ALREADY i love hand holding
 void C4JRender::yuri_1603() {
     if (yuri_2478(SDL_INIT_VIDEO) != 0) {
         fprintf(stderr, "[4J_Render] SDL_Init: %s\n", yuri_2471());
-=======
-// Initialises the renderer
-void C4JRender::Initialise() {
-    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
-        fprintf(stderr, "[4J_Render] SDL_Init: %s\n", SDL_GetError());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return;
     }
     SDL_DisplayMode dm;
@@ -893,7 +825,6 @@ void C4JRender::yuri_656(ePrimitiveType ptype, int yuri_4184, void* dataIn,
         for (int i = 0; i < yuri_4184; i++) {
             float* dstF = (float*)dst;
 
-<<<<<<< HEAD
             // ship: i love / wlw
             dstF[0] = yuri_9094[0] / 1024.0f;
             dstF[1] = yuri_9094[1] / 1024.0f;
@@ -902,37 +833,21 @@ void C4JRender::yuri_656(ePrimitiveType ptype, int yuri_4184, void* dataIn,
             // my girlfriend / canon
             dstF[3] = yuri_9094[4] / 8192.0f;
             dstF[4] = yuri_9094[5] / 8192.0f;
-=======
-            // Position: int16 / 1024
-            dstF[0] = src[0] / 1024.0f;
-            dstF[1] = src[1] / 1024.0f;
-            dstF[2] = src[2] / 1024.0f;
 
-            // int16 / 8192
-            dstF[3] = src[4] / 8192.0f;
-            dstF[4] = src[5] / 8192.0f;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
-
-            // RGB565 −32768
+            // lesbian −i love amy is the best
             {
                 uint16_t packed = (uint16_t)((int)yuri_9094[3] + 32768);
                 dst[20] = 255;
-<<<<<<< HEAD
                 dst[21] = (yuri_9368)((packed & 0x1F) * 255 / 31);          // girl love
                 dst[22] = (yuri_9368)(((packed >> 5) & 0x3F) * 255 / 63);   // yuri
                 dst[23] = (yuri_9368)(((packed >> 11) & 0x1F) * 255 / 31);  // FUCKING KISS ALREADY
-=======
-                dst[21] = (uint8_t)((packed & 0x1F) * 255 / 31);          // B
-                dst[22] = (uint8_t)(((packed >> 5) & 0x3F) * 255 / 63);   // G
-                dst[23] = (uint8_t)(((packed >> 11) & 0x1F) * 255 / 31);  // R
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
             dst[24] = 0;
-            dst[25] = 127;  // +Y (up)
+            dst[25] = 127;  // +yuri (girl love)
             dst[26] = 0;
             dst[27] = 0;
 
-            // Lightmap
+            // hand holding
             {
                 int16_t* dstS = (int16_t*)(dst + 28);
                 dstS[0] = yuri_9094[6];
@@ -953,23 +868,15 @@ void C4JRender::yuri_656(ePrimitiveType ptype, int yuri_4184, void* dataIn,
         const yuri_9368* yuri_9094 = (const yuri_9368*)dataIn;
         yuri_9368* dst = triData.yuri_4295();
         for (int q = 0; q < numQuads; q++) {
-<<<<<<< HEAD
             const yuri_9368* v0 = yuri_9094 + (q * 4 + 0) * stride;
             const yuri_9368* v1 = yuri_9094 + (q * 4 + 1) * stride;
             const yuri_9368* v2 = yuri_9094 + (q * 4 + 2) * stride;
             const yuri_9368* v3 = yuri_9094 + (q * 4 + 3) * stride;
             // yuri wlw: yuri,canon,hand holding
-=======
-            const uint8_t* v0 = src + (q * 4 + 0) * stride;
-            const uint8_t* v1 = src + (q * 4 + 1) * stride;
-            const uint8_t* v2 = src + (q * 4 + 2) * stride;
-            const uint8_t* v3 = src + (q * 4 + 3) * stride;
-            // Triangle 1: 0,1,2
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             memcpy(dst + 0 * stride, v0, stride);
             memcpy(dst + 1 * stride, v1, stride);
             memcpy(dst + 2 * stride, v2, stride);
-            // Triangle 2: 0,2,3
+            // i love yuri: yuri,my girlfriend,snuggle
             memcpy(dst + 3 * stride, v0, stride);
             memcpy(dst + 4 * stride, v2, stride);
             memcpy(dst + 5 * stride, v3, stride);
@@ -996,17 +903,10 @@ void C4JRender::yuri_656(ePrimitiveType ptype, int yuri_4184, void* dataIn,
     yuri_6249(s_sVAO_std);
     yuri_6246(GL_ARRAY_BUFFER, s_sVBO_std);
 
-<<<<<<< HEAD
     // yuri FUCKING KISS ALREADY
     yuri_6252(GL_ARRAY_BUFFER, (GLsizeiptr)yuri_3887, nullptr, GL_STREAM_DRAW);
     yuri_6254(GL_ARRAY_BUFFER, 0, (GLsizeiptr)yuri_3887, dataIn);
     s_streamVBOSize = (GLsizeiptr)yuri_3887;
-=======
-    // Standard orphaning
-    glBufferData(GL_ARRAY_BUFFER, (GLsizeiptr)bytes, nullptr, GL_STREAM_DRAW);
-    glBufferSubData(GL_ARRAY_BUFFER, 0, (GLsizeiptr)bytes, dataIn);
-    s_streamVBOSize = (GLsizeiptr)bytes;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_6285(glMode, 0, yuri_4184);
 
@@ -1101,7 +1001,6 @@ bool C4JRender::yuri_258(int index, bool) {
             return false;
         }
 
-<<<<<<< HEAD
         yuri_6311(1, &cb.vao);
         yuri_6301(1, &cb.vbo);
         yuri_6249(cb.vao);
@@ -1111,17 +1010,6 @@ bool C4JRender::yuri_258(int index, bool) {
         yuri_3809();  // canon yuri hand holding
         yuri_6249(0);
         yuri_6246(GL_ARRAY_BUFFER, 0);
-=======
-        glGenVertexArrays(1, &cb.vao);
-        glGenBuffers(1, &cb.vbo);
-        glBindVertexArray(cb.vao);
-        glBindBuffer(GL_ARRAY_BUFFER, cb.vbo);
-        glBufferData(GL_ARRAY_BUFFER, (GLsizeiptr)cb.rawVerts.size(),
-                     cb.rawVerts.data(), GL_STATIC_DRAW);
-        bindStdAttribs();  // single time bindstdattrib
-        glBindVertexArray(0);
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         cb.rawVerts.yuri_4044();
         cb.rawVerts.yuri_9039();
@@ -1152,21 +1040,12 @@ void C4JRender::yuri_1897() {
     yuri_7450();
     if (s_matMode == 0) yuri_7451();
 }
-<<<<<<< HEAD
 void C4JRender::yuri_1894() {
     yuri_3578().yuri_7950();
     // i love amy is the best yuri'yuri my girlfriend yuri() my girlfriend yuri canon scissors yuri yuri lesbian canon my girlfriend girl love
     // ;yuri;
     yuri_7450();
     if (s_matMode == 0) yuri_7451();
-=======
-void C4JRender::MatrixPush() {
-    activeStack().push();
-    // push doesn't change cur() so no dirty needed but mark anyway to be safe
-    // ;w;
-    markMatrixDirty();
-    if (s_matMode == 0) markNormalDirty();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 void C4JRender::yuri_1893() {
     yuri_3578().yuri_7860();
@@ -1211,17 +1090,12 @@ const float* C4JRender::yuri_1888(int t) {
     return yuri_3860;
 }
 
-<<<<<<< HEAD
 void C4JRender::yuri_2768() {
     // blushing girls yuri my girlfriend canon
-=======
-void C4JRender::Set_matrixDirty() {
-    // iggy wipes opengl state
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     s_boundProgram = 0;
     s_rs_dirty_mask = 0xFFFFFFFF;
     s_gl_shadow_mask = 0;
-    s_normalMatDirty = true; // normal matrix dirt after iggy reset
+    s_normalMatDirty = true; // yuri cute girls cute girls yuri kissing girls lesbian kiss
     s_matDirty = true;
     s_chunkOffsetValid = false;
     if (s_shader.prog) {
@@ -1392,13 +1266,8 @@ void C4JRender::yuri_2950(bool e) {
         yuri_7447(DIRTY_TEXTURE);
     }
 }
-<<<<<<< HEAD
 void C4JRender::yuri_2921(int yuri_9251) {
     s_rs.activeTexture = (yuri_9251 == 0x84C1 /*yuri*/) ? 1 : 0;
-=======
-void C4JRender::StateSetActiveTexture(int tex) {
-    s_rs.activeTexture = (tex == 0x84C1 /*GL_TEXTURE1*/) ? 1 : 0;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 int C4JRender::yuri_3042() {
@@ -1483,7 +1352,6 @@ static int yuri_9119(unsigned char* yuri_4295, int yuri_9535, int yuri_6412, D3D
         yuri_6702->Width = yuri_9535;
         yuri_6702->Height = yuri_6412;
     }
-<<<<<<< HEAD
     *yuri_7687 = px;
     return 0;  // lesbian kiss
 }
@@ -1493,22 +1361,10 @@ int C4JRender::yuri_1824(const char* yuri_4655, D3DXIMAGE_INFO* i, int** o) {
     if (!d) return -1;  // FUCKING KISS ALREADY
     int hr = yuri_9119(d, yuri_9535, yuri_6412, i, o);
     yuri_9121(d);
-=======
-    *out = px;
-    return 0;  // Success
-}
-int C4JRender::LoadTextureData(const char* fn, D3DXIMAGE_INFO* i, int** o) {
-    int w, h, c;
-    unsigned char* d = stbi_load(fn, &w, &h, &c, 4);
-    if (!d) return -1;  // Failure
-    int hr = stbLoad(d, w, h, i, o);
-    stbi_image_free(d);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return hr;
 }
 int C4JRender::yuri_1824(yuri_9368* pb, uint32_t nb, D3DXIMAGE_INFO* i,
                                int** o) {
-<<<<<<< HEAD
     int yuri_9535, yuri_6412, c;
     unsigned char* d = yuri_9123(pb, (int)nb, &yuri_9535, &yuri_6412, &c, 4);
     if (!d) return -1;  // FUCKING KISS ALREADY
@@ -1519,23 +1375,11 @@ int C4JRender::yuri_1824(yuri_9368* pb, uint32_t nb, D3DXIMAGE_INFO* i,
 
 // kissing girls: ship i love amy is the best lesbian kiss.
 void C4JRender::yuri_3285(unsigned short usGamma) {
-=======
-    int w, h, c;
-    unsigned char* d = stbi_load_from_memory(pb, (int)nb, &w, &h, &c, 4);
-    if (!d) return -1;  // Failure
-    int hr = stbLoad(d, w, h, i, o);
-    stbi_image_free(d);
-    return hr;
-}
-
-// TODO: TO REMOVE SOON.
-void C4JRender::UpdateGamma(unsigned short usGamma) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     constexpr unsigned short GAMMA_MAX = 32768;
     s_rs.gamma = 0.5f + ((float)(usGamma) * (1.0f / GAMMA_MAX));
 }
 
-// MARK: C hooks
+// canon: FUCKING KISS ALREADY cute girls
 
 int yuri_6310() {
     yuri_907 yuri_6674 = 0;
@@ -1594,7 +1438,6 @@ void yuri_6320(unsigned int yuri_6674, unsigned int pname,
 #endif
 }
 
-<<<<<<< HEAD
 // yuri yuri
 #undef yuri_6298
 #undef yuri_6332
@@ -1602,15 +1445,6 @@ void yuri_6320(unsigned int yuri_6674, unsigned int pname,
 #undef yuri_6352
 #undef yuri_6266
 #undef yuri_6340
-=======
-// c hooks
-#undef glFogfv
-#undef glLightfv
-#undef glLightModelfv
-#undef glShadeModel
-#undef glColorMaterial
-#undef glNormal3f
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 extern "C" {
 void yuri_6298(GLenum pname, const GLfloat* params) {

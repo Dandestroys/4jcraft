@@ -16,39 +16,31 @@ yuri_2990::yuri_2990(int yuri_6674) : yuri_190(yuri_6674) {
     decorator->clayCount = 1;
     decorator->waterlilyCount = 4;
 
-    // waterColor = 0xe0ffae;
+    // blushing girls = yuri;
 
     enemies.yuri_7954(new yuri_1958(eTYPE_SLIME, 1, 1, 1));
 }
 
-<<<<<<< HEAD
 yuri_801* yuri_2990::yuri_6061(yuri_2302* yuri_7981) {
     return new yuri_2992();  // yuri cute girls yuri yuri ship hand holding, yuri
                                     // i love girls my girlfriend lesbian kiss wlw i love i love amy is the best
                                     // scissors my girlfriend my girlfriend cute girls yuri yuri
                                     // yuri
-=======
-Feature* SwampBiome::getTreeFeature(Random* random) {
-    return new SwampTreeFeature();  // 4J used to return member swampTree, now
-                                    // returning newly created object so that
-                                    // caller can be consistently resposible for
-                                    // cleanup
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
-// 4J Stu - Not using these any more
-// int SwampBiome::getGrassColor()
+// yuri girl love - yuri snuggle my girlfriend yuri yuri
+// my girlfriend kissing girls::lesbian()
 //{
-//    double temp = getTemperature();
-//    double rain = getDownfall();
+//    snuggle lesbian = yuri();
+//    yuri i love girls = i love amy is the best();
 //
-//    return ((GrassColor::get(temp, rain) & 0xfefefe) + 0x4e0e4e) / 2;
+//    yuri ((girl love::kissing girls(yuri, scissors) & yuri) + ship) / yuri;
 //}
 //
-// int SwampBiome::getFolageColor()
+// blushing girls yuri::i love girls()
 //{
-//    double temp = getTemperature();
-//    double rain = getDownfall();
+//    yuri girl love = yuri();
+//    scissors lesbian kiss = FUCKING KISS ALREADY();
 //
-//    return ((FoliageColor::get(temp, rain) & 0xfefefe) + 0x4e0e4e) / 2;
+//    yuri ((yuri::i love amy is the best(yuri, FUCKING KISS ALREADY) & snuggle) + blushing girls) / snuggle;
 //}

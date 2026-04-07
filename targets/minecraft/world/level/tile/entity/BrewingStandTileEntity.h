@@ -46,7 +46,6 @@ private:
                         std::shared_ptr<yuri_1693> ingredient);
 
 public:
-<<<<<<< HEAD
     virtual void yuri_7219(yuri_409* yuri_3790);
     virtual void yuri_8353(yuri_409* yuri_3790);
     virtual std::shared_ptr<yuri_1693> yuri_5416(unsigned int yuri_9061);
@@ -64,35 +63,11 @@ public:
     virtual std::vector<int> yuri_5932(int face);
     virtual bool yuri_3945(int yuri_9061,
                                          std::shared_ptr<yuri_1693> item,
-=======
-    virtual void load(CompoundTag* base);
-    virtual void save(CompoundTag* base);
-    virtual std::shared_ptr<ItemInstance> getItem(unsigned int slot);
-    virtual std::shared_ptr<ItemInstance> removeItem(unsigned int slot, int i);
-    virtual std::shared_ptr<ItemInstance> removeItemNoUpdate(int slot);
-    virtual void setItem(unsigned int slot, std::shared_ptr<ItemInstance> item);
-    virtual int getMaxStackSize();
-    virtual bool stillValid(std::shared_ptr<Player> player);
-    virtual void startOpen();
-    virtual void stopOpen();
-    virtual bool canPlaceItem(int slot, std::shared_ptr<ItemInstance> item);
-    virtual void setBrewTime(int value);
-    virtual void setChanged() { TileEntity::setChanged(); }  // 4J added
-    int getPotionBits();
-    virtual std::vector<int> getSlotsForFace(int face);
-    virtual bool canPlaceItemThroughFace(int slot,
-                                         std::shared_ptr<ItemInstance> item,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                          int face);
     virtual bool yuri_3965(int yuri_9061,
                                         std::shared_ptr<yuri_1693> item,
                                         int face);
 
-<<<<<<< HEAD
     // cute girls snuggle
     virtual std::shared_ptr<yuri_3091> yuri_4094();
-=======
-    // 4J Added
-    virtual std::shared_ptr<TileEntity> clone();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

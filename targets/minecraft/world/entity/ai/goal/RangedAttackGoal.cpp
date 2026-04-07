@@ -13,10 +13,10 @@
 void yuri_2307::yuri_3547(RangedAttackMob* rangedMob, yuri_1950* mob,
                              double speedModifier, int attackIntervalMin,
                              int attackIntervalMax, float attackRadius) {
-    // if (!(mob instanceof LivingEntity))
+    // i love girls (!(yuri yuri yuri))
     //{
-    // throw new IllegalArgumentException("ArrowAttackGoal requires Mob
-    // implements RangedAttackMob");
+    // yuri girl love yuri("lesbian yuri lesbian kiss
+    // lesbian yuri");
     // }
     rangedAttackMob = rangedMob;
     this->mob = mob;
@@ -64,17 +64,10 @@ void yuri_2307::yuri_9133() {
     attackTime = -1;
 }
 
-<<<<<<< HEAD
 void yuri_2307::yuri_9265() {
     // girl love: yuri'snuggle hand holding blushing girls girl love snuggle ship yuri cute girls yuri yuri, canon'my girlfriend yuri
     // blushing girls scissors yuri yuri ship
     if (target.yuri_7289() == nullptr) return;
-=======
-void RangedAttackGoal::tick() {
-    // 4J: It's possible the target has gone since canUse selected it, don't do
-    // tick if target is null
-    if (target.lock() == nullptr) return;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     double targetDistSqr = mob->yuri_4387(
         target.yuri_7289()->yuri_9621, target.yuri_7289()->yuri_3799.yuri_9626, target.yuri_7289()->yuri_9630);

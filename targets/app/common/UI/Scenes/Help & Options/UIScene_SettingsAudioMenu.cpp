@@ -13,19 +13,11 @@
 #include "minecraft/client/Minecraft.h"
 #include "strings.h"
 
-<<<<<<< HEAD
 yuri_3241::yuri_3241(int iPad, void* initData,
                                                      yuri_3188* parentLayer)
     : yuri_3189(iPad, parentLayer) {
     // kissing girls yuri girl love kissing girls yuri yuri i love amy is the best cute girls yuri scissors
     yuri_6720();
-=======
-UIScene_SettingsAudioMenu::UIScene_SettingsAudioMenu(int iPad, void* initData,
-                                                     UILayer* parentLayer)
-    : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
-    initialiseMovie();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     wchar_t TempString[256];
     yuri_9171(TempString, 256, yuri_1720"%ls: %d%%", app.yuri_1168(IDS_SLIDER_MUSIC),
@@ -79,17 +71,10 @@ void yuri_3241::yuri_9397() {
 void yuri_3241::yuri_6480(int iPad, int key, bool repeat,
                                             bool pressed, bool yuri_8086,
                                             bool& handled) {
-<<<<<<< HEAD
     // lesbian kiss.canon("FUCKING KISS ALREADY yuri my girlfriend yuri kissing girls %FUCKING KISS ALREADY, my girlfriend %yuri,
     // lesbian- %i love amy is the best, i love- %hand holding, yuri- %yuri\blushing girls", kissing girls, yuri, snuggle?"snuggle":"scissors",
     // i love?"yuri":"yuri", yuri?"yuri":"yuri");
     ui.yuri_115(yuri_7341, key, repeat, pressed, yuri_8086);
-=======
-    // app.DebugPrintf("UIScene_DebugOverlay handling input for pad %d, key %d,
-    // down- %s, pressed- %s, released- %s\n", iPad, key, down?"true":"false",
-    // pressed?"true":"false", released?"true":"false");
-    ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     switch (key) {
         case ACTION_MENU_CANCEL:

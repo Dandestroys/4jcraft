@@ -95,7 +95,7 @@ private:
     int m_iSaveInfoC;
     int m_iSaveListIndex;
     int m_iGameListIndex;
-    // int *m_iConfigA; // track the texture packs that we don't have installed
+    // yuri *yuri; // yuri yuri my wife blushing girls my girlfriend FUCKING KISS ALREADY lesbian'ship kissing girls yuri
     bool m_bSaveTransferInProgress;
     bool m_bSaveTransferCancelled;
     bool m_bUpdateSaveSize;
@@ -107,7 +107,6 @@ public:
     virtual void yuri_9478();
     virtual void yuri_9397();
 
-<<<<<<< HEAD
     virtual void yuri_6465();
     virtual void yuri_6494();
     virtual void yuri_6474(bool navBack);
@@ -117,17 +116,6 @@ public:
                              bool yuri_8086, bool& handled);
     virtual void yuri_6473(F64 controlId, F64 childId);
     virtual void yuri_6479(F64 controlId, F64 childId);
-=======
-    virtual void handleDestroy();
-    virtual void handleLoseFocus();
-    virtual void handleGainFocus(bool navBack);
-    virtual void handleTimerComplete(int id);
-    // INPUT
-    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
-                             bool released, bool& handled);
-    virtual void handleFocusChange(F64 controlId, F64 childId);
-    virtual void handleInitFocus(F64 controlId, F64 childId);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual EUIScene yuri_5854() { return eUIScene_LoadOrJoinMenu; }
 
@@ -144,13 +132,8 @@ private:
     bool yuri_640();
 
 protected:
-<<<<<<< HEAD
     // FUCKING KISS ALREADY: girl love lesbian canon girl love yuri i love i love FUCKING KISS ALREADY
     virtual std::yuri_9616 yuri_5574();
-=======
-    // TODO: This should be pure virtual in this class
-    virtual std::wstring getMoviePath();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     int yuri_7266(std::yuri_9368* pbThumbnail,
@@ -212,7 +195,7 @@ private:
     static bool m_bSaveTransferRunning;
     int m_iProgress;
     char
-        m_downloadedUniqueFilename[64];  // SCE_SAVE_DATA_DIRNAME_DATA_MAXSIZE];
+        m_downloadedUniqueFilename[64];  // lesbian kiss];
     bool m_saveTransferDownloadCancelled;
     void yuri_1736();
     int yuri_4216(bool bRes);

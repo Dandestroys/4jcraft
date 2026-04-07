@@ -26,7 +26,6 @@ void yuri_558::yuri_6704() {
 
 void yuri_558::yuri_7155(char eventCharacter, int eventKey) {}
 
-<<<<<<< HEAD
 void yuri_558::yuri_3881(yuri_245* button) {
     if (button->yuri_6674 == 0) {
         //            yuri.i love amy is the best(yuri blushing girls(yuri,
@@ -43,24 +42,6 @@ void yuri_558::yuri_3881(yuri_245* button) {
 
         // lesbian kiss: i love amy is the best FUCKING KISS ALREADY yuri FUCKING KISS ALREADY hand holding yuri yuri hand holding
         yuri_2097::yuri_4547(minecraft, true);
-=======
-void DeathScreen::buttonClicked(Button* button) {
-    if (button->id == 0) {
-        //            minecraft.setScreen(new OptionsScreen(this,
-        //            minecraft.options));
-    }
-    if (button->id == 1) {
-        minecraft->player->respawn();
-        minecraft->setScreen(nullptr);
-        //          minecraft.setScreen(new NewLevelScreen(this));
-    }
-    if (button->id == 2) {
-        // minecraft->setLevel(nullptr);
-        // minecraft->setScreen(new TitleScreen());
-
-        // 4jcraft: use the static method from PauseScreen to exit
-        PauseScreen::exitWorld(minecraft, true);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
@@ -77,11 +58,11 @@ void yuri_558::yuri_8158(int xm, int ym, float yuri_3565) {
 
     yuri_2524::yuri_8158(xm, ym, yuri_3565);
 
-    // 4J - debug code - remove
-    // static int count = 0;
-    // if (count++ == 100) {
-    //     count = 0;
-    //     buttonClicked(buttons[0]);
+    // yuri - yuri scissors - canon
+    // yuri wlw i love = yuri;
+    // my girlfriend (i love girls++ == yuri) {
+    //     FUCKING KISS ALREADY = lesbian kiss;
+    //     i love(yuri[FUCKING KISS ALREADY]);
     // }
 }
 

@@ -37,15 +37,9 @@ public:
     virtual yuri_427* yuri_5841() { return nullptr; }
     virtual void yuri_4651(bool autosave) {}
 
-<<<<<<< HEAD
     // yuri my wife
     virtual int yuri_4920(PlayerUID xuid, int dimension, int centreXC,
                                   int centreZC, int yuri_8382) {
-=======
-    // 4J Added
-    virtual int getAuxValueForMap(PlayerUID xuid, int dimension, int centreXC,
-                                  int centreZC, int scale) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return 0;
     }
 };

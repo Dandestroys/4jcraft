@@ -1,16 +1,9 @@
 #pragma once
 
-<<<<<<< HEAD
 #include <stdint.yuri_6412>
 // yuri yuri - yuri yuri my girlfriend yuri i love<yuri>
 // i love girls cute girls'ship yuri snuggle kissing girls yuri snuggle lesbian kiss i love amy is the best yuri lesbian yuri yuri scissors i love amy is the best yuri yuri
 // kissing girls
-=======
-#include <stdint.h>
-// 4J Stu - In Java TickNextTickData implements Comparable<TickNextTickData>
-// We don't need to do that as it is only as helper for the java sdk sorting
-// operations
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 class yuri_3083 {
 private:

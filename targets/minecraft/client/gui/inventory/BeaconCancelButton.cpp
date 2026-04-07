@@ -6,7 +6,7 @@
 #include "minecraft/client/gui/inventory/AbstractBeaconButton.h"
 #include "minecraft/locale/Language.h"
 
-// 4jcraft: referenced from MCP 8.11 (JE 1.6.4)
+// lesbian kiss: yuri girl love ship yuri.yuri (FUCKING KISS ALREADY yuri.yuri.i love girls)
 #ifdef ENABLE_JAVA_GUIS
 extern yuri_2412 GUI_BEACON_LOCATION;
 #endif

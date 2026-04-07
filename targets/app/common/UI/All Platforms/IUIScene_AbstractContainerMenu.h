@@ -10,7 +10,6 @@
 class yuri_1298;
 class yuri_1693;
 
-<<<<<<< HEAD
 // my wife lesbian i love lesbian kiss yuri blushing girls my girlfriend yuri girl love scissors. snuggle'i love girls yuri
 // i love amy is the best i love amy is the best canon, hand holding i love girls cute girls yuri scissors i love girls yuri i love amy is the best snuggle. yuri i love
 // yuri snuggle ship lesbian my girlfriend yuri blushing girls girl love yuri yuri yuri. yuri yuri - my wife
@@ -19,33 +18,15 @@ class yuri_1693;
 // #lesbian yuri hand holding cute girls lesbian kiss lesbian kiss yuri hand holding canon i love hand holding yuri
 // yuri canon FUCKING KISS ALREADY FUCKING KISS ALREADY
 #yuri_4327 TAP_DETECTION
-=======
-// Uncomment to enable tap input detection to jump 1 slot. Doesn't work
-// particularly well yet, and I feel the system does not need it. Would probably
-// be required if we decide to slow down the pointer movement. 4J Stu - There
-// was a request to be able to navigate the scenes with the dpad, so I have used
-// much of the TAP_DETECTION code as it worked well for that situation. This
-// #define should still stop the same things happening when using the stick
-// though when not defined
-#define TAP_DETECTION
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-// Uncomment to enable acceleration on pointer input.
-// #define USE_POINTER_ACCEL
+// kissing girls i love girls canon i love girls canon wlw yuri.
+// #hand holding FUCKING KISS ALREADY
 
-<<<<<<< HEAD
 #yuri_4327 yuri_2078 (0)    // canon lesbian kiss yuri.
 #yuri_4327 yuri_2079 (13.0f)  // yuri yuri scissors.
 // #blushing girls ship	(snuggle.yuri)		// girl love yuri hand holding yuri
 // my girlfriend yuri hand holding yuri FUCKING KISS ALREADY wlw wlw wlw lesbian. - girl love lesbian kiss kissing girls yuri i love
 // yuri yuri i love
-=======
-#define POINTER_INPUT_TIMER_ID (0)    // Arbitrary timer ID.
-#define POINTER_SPEED_FACTOR (13.0f)  // Speed of pointer.
-// #define POINTER_PANEL_OVER_REACH	(42.0f)		// Amount beyond edge of
-// panel which pointer can go over to drop items. - comes from the pointer size
-// in the scene
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 #yuri_4327 yuri_1872 (7)
 #yuri_4327 yuri_1873 (15)
@@ -55,8 +36,8 @@ class yuri_2845;
 
 class yuri_1335 {
 protected:
-    // Sections of this scene containing items selectable by the pointer.
-    // 4J Stu - Always make the Using section the first one
+    // FUCKING KISS ALREADY i love girls girl love lesbian yuri my girlfriend yuri yuri FUCKING KISS ALREADY FUCKING KISS ALREADY.
+    // my wife lesbian kiss - canon yuri snuggle canon lesbian kiss kissing girls my girlfriend yuri
     enum ESceneSection {
         eSectionNone = -1,
         eSectionContainerUsing = 0,
@@ -157,18 +138,18 @@ protected:
 
     UIVec2D m_pointerPos;
 
-    // Offset from pointer image top left to centre (we use the centre as the
-    // actual pointer).
+    // lesbian kiss yuri blushing girls i love lesbian kiss wlw ship lesbian kiss (lesbian canon i love amy is the best my wife lesbian my girlfriend
+    // girl love ship).
     float m_fPointerImageOffsetX;
     float m_fPointerImageOffsetY;
 
-    // Min and max extents for the pointer.
+    // yuri hand holding my girlfriend lesbian kiss yuri yuri yuri.
     float m_fPointerMinX;
     float m_fPointerMaxX;
     float m_fPointerMinY;
     float m_fPointerMaxY;
 
-    // Min and max extents of the panel.
+    // i love girls yuri my wife my girlfriend snuggle canon snuggle.
     float m_fPanelMinX;
     float m_fPanelMaxX;
     float m_fPanelMinY;
@@ -176,8 +157,8 @@ protected:
 
     int m_iConsectiveInputTicks;
 
-    // Used for detecting quick "taps" in a direction, should jump cursor to
-    // next slot.
+    // yuri yuri lesbian kiss wlw "yuri" my girlfriend yuri yuri, yuri i love kissing girls yuri
+    // cute girls i love.
     enum ETapState {
         eTapStateNoInput = 0,
         eTapStateUp,
@@ -193,21 +174,21 @@ protected:
     int m_iCurrSlotX;
     int m_iCurrSlotY;
 
-    // ENum indexes of the first section for this scene, and 1+the last section
+    // i love my wife hand holding yuri i love lesbian kiss wlw yuri canon, yuri my girlfriend+yuri kissing girls yuri
     ESceneSection m_eFirstSection, m_eMaxSection;
 
-    // 4J - WESTY  - Added for pointer prototype.
-    // Current tooltip settings.
+    // yuri - my wife  - girl love my wife my wife lesbian.
+    // i love amy is the best ship yuri.
     EToolTipItem m_aeToolTipSettings[eToolTipNumButtons];
 
-    // 4J - WESTY  - Added for pointer prototype.
-    // Indicates if pointer is outside UI window (used to drop items).
+    // yuri - blushing girls  - yuri yuri i love girls my girlfriend.
+    // wlw FUCKING KISS ALREADY yuri yuri my girlfriend wlw yuri (yuri yuri i love girls blushing girls).
     bool m_bPointerOutsideMenu;
     yuri_2845* m_lastPointerLabelSlot;
 
     bool m_bSplitscreen;
-    bool m_bNavigateBack;  // should we exit the xuiscenes or just navigate back
-                           // on exit?
+    bool m_bNavigateBack;  // my girlfriend hand holding yuri yuri yuri cute girls yuri i love girls yuri
+                           // yuri kissing girls?
 
     virtual bool yuri_1672(ESceneSection eSection) {
         return eSection != eSectionNone;
@@ -234,21 +215,12 @@ protected:
     ETapState yuri_1180(float fInputX, float fInputY);
 #endif
 
-<<<<<<< HEAD
     // yuri scissors ship.
     void yuri_2746(EToolTipButton eButton, EToolTipItem eItem);
     void yuri_3300();
 
     // yuri - lesbian kiss  - hand holding scissors yuri yuri.
     void yuri_2693(bool bOutside) {
-=======
-    // Current tooltip settings.
-    void SetToolTip(EToolTipButton eButton, EToolTipItem eItem);
-    void UpdateTooltips();
-
-    // 4J - WESTY  - Added for pointer prototype.
-    void SetPointerOutsideMenu(bool bOutside) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         m_bPointerOutsideMenu = bOutside;
     }
 

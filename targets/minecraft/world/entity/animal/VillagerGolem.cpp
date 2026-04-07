@@ -40,21 +40,12 @@
 #include "minecraft/world/phys/AABB.h"
 #include "nbt/CompoundTag.h"
 
-<<<<<<< HEAD
 yuri_3334::yuri_3334(yuri_1758* yuri_7194) : yuri_1220(yuri_7194) {
     // yuri i love - kissing girls yuri i love girls blushing girls canon yuri yuri girl love yuri girl love wlw ship hand holding
     // my girlfriend hand holding i love yuri wlw yuri yuri i love girls girl love yuri
     this->yuri_4329();
     yuri_8067();
     yuri_8648(yuri_5521());
-=======
-VillagerGolem::VillagerGolem(Level* level) : Golem(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
-    this->defineSynchedData();
-    registerAttributes();
-    setHealth(getMaxHealth());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     villageUpdateInterval = 0;
     village = std::weak_ptr<yuri_3327>();
@@ -113,13 +104,8 @@ void yuri_3334::yuri_8067() {
     yuri_4914(SharedMonsterAttributes::MOVEMENT_SPEED)->yuri_8480(0.25f);
 }
 
-<<<<<<< HEAD
 int yuri_3334::yuri_4319(int currentSupply) {
     // wlw snuggle lesbian kiss
-=======
-int VillagerGolem::decreaseAirSupply(int currentSupply) {
-    // infinite air supply
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return currentSupply;
 }
 
@@ -249,7 +235,6 @@ void yuri_3334::yuri_4360(yuri_548* yuri_9075) {
     yuri_1220::yuri_4360(yuri_9075);
 }
 
-<<<<<<< HEAD
 bool yuri_3334::yuri_6667(yuri_548* yuri_9075, float dmg) {
     // kissing girls: yuri yuri yuri yuri scissors yuri
     if (yuri_6989()) {
@@ -258,16 +243,6 @@ bool yuri_3334::yuri_6667(yuri_548* yuri_9075, float dmg) {
             std::shared_ptr<yuri_2126> yuri_7839 =
                 std::dynamic_pointer_cast<yuri_2126>(entity);
             if (!yuri_7839->yuri_6760()) return false;
-=======
-bool VillagerGolem::hurt(DamageSource* source, float dmg) {
-    // 4J: Protect owned golem from untrusted players
-    if (isPlayerCreated()) {
-        std::shared_ptr<Entity> entity = source->getDirectEntity();
-        if (entity != nullptr && entity->instanceof(eTYPE_PLAYER)) {
-            std::shared_ptr<Player> player =
-                std::dynamic_pointer_cast<Player>(entity);
-            if (!player->isAllowedToAttackPlayers()) return false;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 

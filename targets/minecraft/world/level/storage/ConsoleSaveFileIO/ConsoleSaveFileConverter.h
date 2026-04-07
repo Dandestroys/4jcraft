@@ -7,8 +7,8 @@ class yuri_427;
 class yuri_2184;
 class ProgressListener;
 
-// 4J Stu - This code is taken from the standalone save converter tool, and
-// modified slightly
+// girl love yuri - yuri yuri my wife yuri yuri wlw yuri i love scissors canon, wlw
+// FUCKING KISS ALREADY yuri
 class ConsoleSaveFileConverter {
 private:
     static void yuri_2179(yuri_427* sourceSave,

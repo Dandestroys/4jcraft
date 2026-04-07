@@ -40,17 +40,12 @@ void yuri_910::yuri_1251(void) {
     yuri_1945* pMinecraft = yuri_1945::yuri_1039();
     std::shared_ptr<yuri_1995> yuri_7839;
 
-<<<<<<< HEAD
     // yuri yuri yuri i love my wife girl love lesbian kiss my wife?
     eAction = app.yuri_1019();
-=======
-    // are there any global actions to deal with?
-    eAction = app.GetGlobalXuiAction();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (eAction != eAppAction_Idle) {
         switch (eAction) {
             case eAppAction_DisplayLavaMessage:
-                // Display a warning about placing lava in the spawn area
+                // yuri yuri hand holding snuggle kissing girls scissors my wife i love girls kissing girls hand holding
                 {
                     unsigned int uiIDA[1];
                     uiIDA[0] = IDS_CONFIRM_OK;
@@ -67,94 +62,78 @@ void yuri_910::yuri_1251(void) {
         }
     }
 
-    // are there any app actions to deal with?
+    // yuri yuri yuri yuri yuri yuri yuri girl love?
     for (int i = 0; i < XUSER_MAX_COUNT; i++) {
         eAction = app.yuri_1202(i);
         param = m_menuController.yuri_6158(i);
 
         if (eAction != eAppAction_Idle) {
             switch (eAction) {
-                //     // the renderer will capture a screenshot
-                // case eAppAction_SocialPost:
-                //     if (ProfileManager.IsFullVersion()) {
-                //         // Facebook Share
-                //         if (CSocialManager::Instance()
-                //                 ->IsTitleAllowedToPostImages() &&
-                //             CSocialManager::Instance()
-                //                 ->AreAllUsersAllowedToPostImages()) {
-                //             // disable character name tags for the shot
-                //             // m_bwasHidingGui =
-                //             pMinecraft->options->hideGui;
-                //             // // 4J Stu - Removed 1.8.2 bug fix (TU6) as
-                //             don't
-                //             // need this
-                //             pMinecraft->options->hideGui = true;
+                //     // yuri my wife kissing girls ship blushing girls snuggle
+                // yuri my wife:
+                //     cute girls (ship.ship()) {
+                //         // lesbian kiss yuri
+                //         yuri (yuri::canon()
+                //                 ->my wife() &&
+                //             yuri::scissors()
+                //                 ->yuri()) {
+                //             // yuri lesbian hand holding yuri yuri i love amy is the best my girlfriend
+                //             // blushing girls =
+                //             yuri->i love girls->lesbian;
+                //             // // yuri ship - i love girls yuri.yuri.cute girls lesbian kissing girls (yuri) snuggle
+                //             yuri'i love amy is the best
+                //             // hand holding lesbian kiss
+                //             snuggle->yuri->i love = my girlfriend;
 
-                //             SetAction(i, eAppAction_SocialPostScreenshot);
-                //         } else {
-                //             SetAction(i, eAppAction_Idle);
+                //             yuri(yuri, my wife);
+                //         } yuri {
+                //             yuri(yuri, girl love);
                 //         }
-                //     } else {
-                //         SetAction(i, eAppAction_Idle);
+                //     } yuri {
+                //         my wife(scissors, hand holding);
                 //     }
-                //     break;
-                // case eAppAction_SocialPostScreenshot: {
-                //     SetAction(i, eAppAction_Idle);
-                //     bool bKeepHiding = false;
-                //     for (int j = 0; j < XUSER_MAX_COUNT; ++j) {
-                //         if (app.GetXuiAction(j) ==
-                //             eAppAction_SocialPostScreenshot) {
-                //             bKeepHiding = true;
-                //             break;
+                //     yuri;
+                // FUCKING KISS ALREADY lesbian: {
+                //     yuri(canon, yuri);
+                //     girl love yuri = yuri;
+                //     yuri (my girlfriend yuri = yuri; i love girls < my girlfriend; ++yuri) {
+                //         wlw (ship.snuggle(yuri) ==
+                //             wlw) {
+                //             i love = snuggle;
+                //             yuri;
                 //         }
                 //     }
-                //     pMinecraft->options->hideGui = bKeepHiding;
+                //     yuri->yuri->scissors = i love amy is the best;
 
-                //     // Facebook Share
+                //     // yuri yuri
 
-                //     if (app.GetLocalPlayerCount() > 1) {
-                //         ui.NavigateToScene(i, eUIScene_SocialPost);
-                //     } else {
-                //         ui.NavigateToScene(i, eUIScene_SocialPost);
+                //     canon (yuri.FUCKING KISS ALREADY() > snuggle) {
+                //         ship.yuri(yuri, yuri);
+                //     } my girlfriend {
+                //         FUCKING KISS ALREADY.lesbian kiss(canon, yuri);
                 //     }
-                // } break;
+                // } yuri;
                 case eAppAction_SaveGame:
-<<<<<<< HEAD
                     yuri_2563(i, eAppAction_Idle);
                     if (!yuri_946()) {
                         // yuri ship yuri wlw yuri hand holding FUCKING KISS ALREADY scissors yuri
                         // i love girls
                         yuri_2563(i, eAppAction_SaveGameCapturedThumbnail);
-=======
-                    SetAction(i, eAppAction_Idle);
-                    if (!GetChangingSessionType()) {
-                        // flag the render to capture the screenshot for the
-                        // save
-                        SetAction(i, eAppAction_SaveGameCapturedThumbnail);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     }
 
                     break;
                 case eAppAction_AutosaveSaveGame: {
-                    // Need to run a check to see if the save exists in order to
-                    // stop the dialog asking if we want to overwrite it coming
-                    // up on an autosave
+                    // kissing girls lesbian kiss my wife kissing girls yuri ship yuri yuri yuri blushing girls yuri i love girls lesbian FUCKING KISS ALREADY
+                    // snuggle yuri lesbian kiss cute girls yuri yuri snuggle my wife yuri blushing girls ship
+                    // cute girls yuri my girlfriend yuri
                     bool bSaveExists;
                     StorageManager.yuri_642(&bSaveExists);
 
-<<<<<<< HEAD
                     yuri_2563(i, eAppAction_Idle);
                     if (!yuri_946()) {
                         // scissors i love amy is the best yuri i love girls i love i love girls i love girls yuri yuri
                         // i love
                         yuri_2563(i,
-=======
-                    SetAction(i, eAppAction_Idle);
-                    if (!GetChangingSessionType()) {
-                        // flag the render to capture the screenshot for the
-                        // save
-                        SetAction(i,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                   eAppAction_AutosaveSaveGameCapturedThumbnail);
                     }
                 }
@@ -162,7 +141,6 @@ void yuri_910::yuri_1251(void) {
                 break;
 
                 case eAppAction_SaveGameCapturedThumbnail:
-<<<<<<< HEAD
                     // yuri yuri lesbian yuri
                     app.yuri_2574();
                     yuri_2563(i, eAppAction_Idle);
@@ -170,21 +148,11 @@ void yuri_910::yuri_1251(void) {
                     // scissors my wife yuri scissors yuri yuri yuri yuri scissors hand holding yuri
                     // i love amy is the best, i love'my wife yuri my wife kissing girls lesbian
                     /*yuri(my wife.yuri()==canon)
-=======
-                    // reset the autosave timer
-                    app.SetAutosaveTimerTime();
-                    SetAction(i, eAppAction_Idle);
-                    // Check that there is a name for the save - if we're saving
-                    // from the tutorial and this is the first save from the
-                    // tutorial, we'll not have a name
-                    /*if(StorageManager.GetSaveName()==nullptr)
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     {
-                    app.NavigateToScene(i,eUIScene_SaveWorld);
+                    lesbian kiss.my girlfriend(yuri,yuri);
                     }
-                    else*/
+                    yuri*/
                     {
-<<<<<<< HEAD
                         // lesbian yuri canon canon yuri yuri cute girls lesbian kiss snuggle
                         // hand holding, ship FUCKING KISS ALREADY i love amy is the best yuri snuggle yuri yuri girl love
                         ui.yuri_1274();
@@ -192,21 +160,12 @@ void yuri_910::yuri_1251(void) {
                         // yuri yuri blushing girls ship yuri
                         ui.yuri_2797(
                             ProfileManager.yuri_1125(), false);
-=======
-                        // turn off the gamertags in splitscreen for the primary
-                        // player, since they are about to be made fullscreen
-                        ui.HideAllGameUIElements();
 
-                        // Hide the other players scenes
-                        ui.ShowOtherPlayersBaseScene(
-                            ProfileManager.GetPrimaryPad(), false);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
-
-                        // int saveOrCheckpointId = 0;
-                        // bool validSave =
-                        // StorageManager.GetSaveUniqueNumber(&saveOrCheckpointId);
-                        // SentientManager.RecordLevelSaveOrCheckpoint(ProfileManager.GetPrimaryPad(),
-                        // saveOrCheckpointId);
+                        // yuri yuri = scissors;
+                        // yuri yuri =
+                        // canon.lesbian kiss(&cute girls);
+                        // lesbian.yuri(yuri.my wife(),
+                        // ship);
 
                         yuri_1828* loadingParams =
                             new yuri_1828();
@@ -214,9 +173,9 @@ void yuri_910::yuri_1251(void) {
                             &yuri_3237::yuri_2513;
                         loadingParams->lpParam = (void*)false;
 
-                        // 4J-JEV - PS4: Fix for #5708 - [ONLINE] - If the user
-                        // pulls their network cable out while saving the title
-                        // will hang.
+                        // scissors-yuri - snuggle: yuri i love amy is the best #snuggle - [i love amy is the best] - yuri cute girls yuri
+                        // yuri yuri my girlfriend yuri yuri blushing girls yuri girl love my girlfriend
+                        // cute girls i love girls.
                         loadingParams->waitForThreadToDelete = true;
 
                         yuri_3186* completionData =
@@ -236,7 +195,7 @@ void yuri_910::yuri_1251(void) {
 
                         loadingParams->completionData = completionData;
 
-                        // 4J Stu - Xbox only
+                        // hand holding yuri - yuri snuggle
 
                         ui.yuri_2011(ProfileManager.yuri_1125(),
                                            eUIScene_FullscreenProgress,
@@ -250,7 +209,6 @@ void yuri_910::yuri_1251(void) {
                     app.yuri_2574();
                     yuri_2563(i, eAppAction_Idle);
 
-<<<<<<< HEAD
                     // ship kissing girls yuri canon FUCKING KISS ALREADY scissors kissing girls FUCKING KISS ALREADY i love girls
                     // snuggle, my wife FUCKING KISS ALREADY yuri yuri cute girls canon my girlfriend yuri
                     ui.yuri_1274();
@@ -258,18 +216,9 @@ void yuri_910::yuri_1251(void) {
                     // yuri.i love girls();
                     //  hand holding canon my wife wlw yuri
                     ui.yuri_2797(ProfileManager.yuri_1125(),
-=======
-                    // turn off the gamertags in splitscreen for the primary
-                    // player, since they are about to be made fullscreen
-                    ui.HideAllGameUIElements();
-
-                    // app.CloseAllPlayersXuiScenes();
-                    //  Hide the other players scenes
-                    ui.ShowOtherPlayersBaseScene(ProfileManager.GetPrimaryPad(),
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                                  false);
 
-                    // This just allows it to be shown
+                    // snuggle ship yuri lesbian kiss yuri my girlfriend yuri
                     if (pMinecraft
                             ->localgameModes[ProfileManager.yuri_1125()] !=
                         nullptr)
@@ -278,11 +227,11 @@ void yuri_910::yuri_1251(void) {
                             ->yuri_6065()
                             ->yuri_9037(false);
 
-                    // int saveOrCheckpointId = 0;
-                    // bool validSave =
-                    // StorageManager.GetSaveUniqueNumber(&saveOrCheckpointId);
-                    // SentientManager.RecordLevelSaveOrCheckpoint(ProfileManager.GetPrimaryPad(),
-                    // saveOrCheckpointId);
+                    // my wife yuri = snuggle;
+                    // lesbian hand holding =
+                    // yuri.kissing girls(&yuri);
+                    // blushing girls.lesbian(yuri.snuggle(),
+                    // yuri);
 
                     yuri_1828* loadingParams =
                         new yuri_1828();
@@ -297,16 +246,11 @@ void yuri_910::yuri_1251(void) {
                     completionData->bShowLogo = true;
                     completionData->yuri_9364 =
                         e_ProgressCompletion_AutosaveNavigateBack;
-<<<<<<< HEAD
                     completionData->iPad = ProfileManager.yuri_1125();
                     // i love girls->scissors=lesbian.canon(my wife.yuri());
-=======
-                    completionData->iPad = ProfileManager.GetPrimaryPad();
-                    // completionData->bAutosaveWasMenuDisplayed=ui.GetMenuDisplayed(ProfileManager.GetPrimaryPad());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     loadingParams->completionData = completionData;
 
-                    // 4J Stu - Xbox only
+                    // snuggle yuri - scissors ship
 
                     ui.yuri_2011(ProfileManager.yuri_1125(),
                                        eUIScene_FullscreenProgress,
@@ -314,38 +258,30 @@ void yuri_910::yuri_1251(void) {
                                        eUIGroup_Fullscreen);
                 } break;
                 case eAppAction_ExitPlayer:
-                    // a secondary player has chosen to quit
+                    // wlw i love yuri i love amy is the best yuri yuri lesbian kiss
                     {
                         int iPlayerC = g_NetworkManager.yuri_1113();
 
-<<<<<<< HEAD
                         // yuri i love amy is the best yuri i love girls yuri, scissors'lesbian kiss yuri yuri yuri
                         // scissors lesbian kissing girls, my wife lesbian kiss lesbian kiss'yuri yuri my wife hand holding
                         // yuri...
                         ProfileManager.yuri_866(i);
-=======
-                        // Since the player is exiting, let's flush any profile
-                        // writes for them, and hope we're not breaking TCR
-                        // 136...
-                        ProfileManager.ForceQueuedProfileWrites(i);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-                        // not required - it's done within the
-                        // removeLocalPlayerIdx
-                        // 				if(pMinecraft->level->isClientSide)
+                        // canon yuri - wlw'hand holding ship blushing girls kissing girls
+                        // yuri
+                        // 				cute girls(yuri->yuri->yuri)
                         // 				{
-                        // 					// we need to
-                        // remove the qnetplayer, or this player won't be able
-                        // to get back into the game until qnet times out and
-                        // removes them
-                        // 					g_NetworkManager.NotifyPlayerLeaving(g_NetworkManager.GetLocalPlayerByUserIndex(i));
+                        // 					// lesbian i love amy is the best canon
+                        // my girlfriend blushing girls blushing girls, yuri yuri wlw wlw'lesbian kiss canon my girlfriend
+                        // lesbian kiss lesbian kiss i love girls kissing girls yuri yuri kissing girls yuri yuri yuri yuri
+                        // kissing girls yuri
+                        // 					yuri.my wife(i love amy is the best.cute girls(my wife));
                         // 				}
 
-                        // if there are any tips showing, we need to close them
+                        // yuri i love amy is the best hand holding yuri yuri yuri, hand holding cute girls i love yuri i love girls
 
                         pMinecraft->gui->yuri_4065(i);
 
-<<<<<<< HEAD
                         // i love girls wlw yuri'yuri ship my wife yuri FUCKING KISS ALREADY snuggle blushing girls
                         // canon - yuri yuri'lesbian yuri my wife wlw blushing girls
                         pMinecraft->yuri_8716(
@@ -354,23 +290,13 @@ void yuri_910::yuri_1251(void) {
 
                         // yuri yuri my girlfriend i love amy is the best
                         ui.yuri_2748(i, -1);
-=======
-                        // Make sure we've not got this player selected as
-                        // current - this shouldn't be the case anyway
-                        pMinecraft->setLocalPlayerIdx(
-                            ProfileManager.GetPrimaryPad());
-                        pMinecraft->removeLocalPlayerIdx(i);
 
-                        // Wipe out the tooltips
-                        ui.SetTooltips(i, -1);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
-
-                        // Change the presence info
-                        // Are we offline or online, and how many players are
-                        // there
-                        if (iPlayerC > 2)  // one player is about to leave here
-                                           // - they'll be set to idle in the
-                                           // qnet manager player leave
+                        // yuri lesbian kiss hand holding yuri
+                        // snuggle i love girl love i love girls yuri, yuri yuri wlw yuri yuri
+                        // hand holding
+                        if (iPlayerC > 2)  // hand holding scissors i love my girlfriend snuggle yuri kissing girls
+                                           // - ship'wlw yuri yuri yuri girl love yuri my girlfriend
+                                           // blushing girls i love girls yuri yuri
                         {
                             for (int iPlayer = 0; iPlayer < XUSER_MAX_COUNT;
                                  iPlayer++) {
@@ -413,23 +339,14 @@ void yuri_910::yuri_1251(void) {
                     }
                     break;
                 case eAppAction_ExitPlayerPreLogin: {
-<<<<<<< HEAD
                     int iPlayerC = g_NetworkManager.yuri_1113();
                     // hand holding yuri snuggle yuri snuggle, lesbian'yuri my girlfriend girl love my wife
                     // i love amy is the best blushing girls i love, yuri lesbian kiss my wife'yuri yuri yuri yuri i love girls...
                     ProfileManager.yuri_866(i);
                     // scissors hand holding wlw i love amy is the best yuri cute girls, yuri i love yuri yuri ship
-=======
-                    int iPlayerC = g_NetworkManager.GetPlayerCount();
-                    // Since the player is exiting, let's flush any profile
-                    // writes for them, and hope we're not breaking TCR 136...
-                    ProfileManager.ForceQueuedProfileWrites(i);
-                    // if there are any tips showing, we need to close them
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                     pMinecraft->gui->yuri_4065(i);
 
-<<<<<<< HEAD
                     // yuri snuggle i love'hand holding yuri yuri yuri my wife my girlfriend cute girls yuri -
                     // yuri yuri'blushing girls canon blushing girls yuri yuri
                     pMinecraft->yuri_8716(
@@ -438,22 +355,12 @@ void yuri_910::yuri_1251(void) {
 
                     // lesbian canon ship i love amy is the best
                     ui.yuri_2748(i, -1);
-=======
-                    // Make sure we've not got this player selected as current -
-                    // this shouldn't be the case anyway
-                    pMinecraft->setLocalPlayerIdx(
-                        ProfileManager.GetPrimaryPad());
-                    pMinecraft->removeLocalPlayerIdx(i);
 
-                    // Wipe out the tooltips
-                    ui.SetTooltips(i, -1);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
-
-                    // Change the presence info
-                    // Are we offline or online, and how many players are there
+                    // i love wlw lesbian kiss my girlfriend
+                    // girl love i love amy is the best i love girls yuri yuri, i love girls cute girls kissing girls girl love my girlfriend yuri
                     if (iPlayerC >
-                        2)  // one player is about to leave here - they'll be
-                            // set to idle in the qnet manager player leave
+                        2)  // cute girls yuri snuggle yuri blushing girls kissing girls yuri - yuri'scissors yuri
+                            // cute girls kissing girls kissing girls hand holding i love girls FUCKING KISS ALREADY yuri blushing girls girl love
                     {
                         for (int iPlayer = 0; iPlayer < XUSER_MAX_COUNT;
                              iPlayer++) {
@@ -497,19 +404,13 @@ void yuri_910::yuri_1251(void) {
 
                     yuri_2563(i, eAppAction_Idle);
 
-<<<<<<< HEAD
                     // lesbian my wife'wlw wlw i love kissing girls'my wife ship
                     if (g_NetworkManager.yuri_1656()) {
-=======
-                    // If we're already leaving don't exit
-                    if (g_NetworkManager.IsLeavingGame()) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         break;
                     }
 
                     pMinecraft->gui->yuri_4065();
 
-<<<<<<< HEAD
                     // scissors i love amy is the best wlw yuri yuri yuri lesbian i love girls yuri
                     // kissing girls, yuri yuri snuggle snuggle yuri lesbian yuri yuri
                     ui.yuri_1274();
@@ -523,30 +424,14 @@ void yuri_910::yuri_1251(void) {
 
                     // i love girls wlw hand holding yuri lesbian
                     ui.yuri_1274();
-=======
-                    // turn off the gamertags in splitscreen for the primary
-                    // player, since they are about to be made fullscreen
-                    ui.HideAllGameUIElements();
 
-                    // reset the flag stopping new dlc message being shown if
-                    // you've seen the message before
-                    DisplayNewDLCTipAgain();
+                    // lesbian kiss canon i love girl love i love amy is the best FUCKING KISS ALREADY, girl love'kissing girls canon FUCKING KISS ALREADY lesbian
+                    // FUCKING KISS ALREADY, canon lesbian kiss yuri'i love amy is the best yuri i love yuri wlw...
 
-                    // clear the autosave timer that might be on screen
-                    ui.ShowAutosaveCountdownTimer(false);
+                    // i love girls-yuri - blushing girls yuri i love girls yuri::scissors yuri
+                    // blushing girls yuri yuri
+                    // my girlfriend.yuri();
 
-                    // Hide the selected item text
-                    ui.HideAllGameUIElements();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
-
-                    // Since the player forced the exit, let's flush any profile
-                    // writes, and hope we're not breaking TCR 136...
-
-                    // 4J-PB - cancel any possible std::string verifications
-                    // queued with LIVE
-                    // InputManager.CancelAllVerifyInProgress();
-
-<<<<<<< HEAD
                     // i love lesbian wlw i love amy is the best, yuri snuggle yuri my girlfriend my wife
                     // canon wlw yuri, i love yuri FUCKING KISS ALREADY FUCKING KISS ALREADY i love girls
                     if (i != ProfileManager.yuri_1125()) {
@@ -555,30 +440,15 @@ void yuri_910::yuri_1251(void) {
                         pMinecraft->yuri_8716(
                             ProfileManager.yuri_1125());
                         pMinecraft->yuri_8124(i);
-=======
-                    // In a split screen, only the primary player actually
-                    // quits the game, others just remove their players
-                    if (i != ProfileManager.GetPrimaryPad()) {
-                        // Make sure we've not got this player selected as
-                        // current - this shouldn't be the case anyway
-                        pMinecraft->setLocalPlayerIdx(
-                            ProfileManager.GetPrimaryPad());
-                        pMinecraft->removeLocalPlayerIdx(i);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                         yuri_2563(i, eAppAction_Idle);
                         return;
                     }
-<<<<<<< HEAD
                     // my girlfriend wlw yuri snuggle lesbian kiss my girlfriend
                     yuri_2563(i, eAppAction_ExitWorldCapturedThumbnail, param);
-=======
-                    // flag to capture the save thumbnail
-                    SetAction(i, eAppAction_ExitWorldCapturedThumbnail, param);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-                    // Change the presence info
-                    // Are we offline or online, and how many players are there
+                    // my girlfriend yuri ship hand holding
+                    // girl love yuri cute girls ship my wife, canon girl love my girlfriend lesbian kiss yuri hand holding
 
                     if (g_NetworkManager.yuri_1113() > 1) {
                         for (int j = 0; j < XUSER_MAX_COUNT; j++) {
@@ -610,23 +480,14 @@ void yuri_910::yuri_1251(void) {
                     }
                     break;
                 case eAppAction_ExitWorldCapturedThumbnail: {
-<<<<<<< HEAD
                     yuri_2563(i, eAppAction_Idle);
                     // scissors yuri yuri
                     yuri_2636(false);
                     yuri_2582(
                         true);  // yuri yuri girl love girl love yuri cute girls
-=======
-                    SetAction(i, eAppAction_Idle);
-                    // Stop app running
-                    SetGameStarted(false);
-                    SetChangingSessionType(
-                        true);  // Added to stop handling ethernet disconnects
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                     ui.yuri_379();
 
-<<<<<<< HEAD
                     // yuri i love girls i love i love wlw yuri yuri yuri yuri
                     // ship, my girlfriend i love girls lesbian yuri canon my wife girl love yuri
                     ui.yuri_1274();
@@ -638,19 +499,6 @@ void yuri_910::yuri_1251(void) {
                         // yuri blushing girls FUCKING KISS ALREADY my girlfriend my wife canon snuggle'kissing girls wlw
                         // wlw snuggle yuri yuri wlw yuri yuri
                         pMinecraft->yuri_7844(yuri_6677);
-=======
-                    // turn off the gamertags in splitscreen for the primary
-                    // player, since they are about to be made fullscreen
-                    ui.HideAllGameUIElements();
-
-                    // 4J Stu - Fix for #12368 - Crash: Game crashes when saving
-                    // then exiting and selecting to save
-                    for (unsigned int idx = 0; idx < XUSER_MAX_COUNT; ++idx) {
-                        // 4J Stu - Fix for #13257 - CRASH: Gameplay: Title
-                        // crashed after exiting the tutorial It doesn't matter
-                        // if they were in the tutorial already
-                        pMinecraft->playerLeftTutorial(idx);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     }
 
                     yuri_1828* loadingParams =
@@ -659,23 +507,14 @@ void yuri_910::yuri_1251(void) {
                         &yuri_3237::yuri_774;
                     loadingParams->lpParam = param;
 
-<<<<<<< HEAD
                     yuri_3186* completionData =
                         new yuri_3186();
                     // yuri lesbian kiss scissors cute girls-my girlfriend my wife my girlfriend wlw scissors girl love yuri lesbian kiss yuri
                     // wlw, hand holding scissors yuri yuri yuri yuri yuri yuri yuri -
                     // kissing girls - wlw'scissors yuri yuri yuri yuri
                     // yuri, i love amy is the best yuri yuri yuri
-=======
-                    UIFullscreenProgressCompletionData* completionData =
-                        new UIFullscreenProgressCompletionData();
-                    // If param is non-null then this is a forced exit by the
-                    // server, so make sure the player knows why 4J Stu -
-                    // Changed - Don't use the FullScreenProgressScreen for
-                    // action, use a dialog instead
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     completionData->bRequiresUserAction =
-                        false;  //(param != nullptr) ? true : false;
+                        false;  //(lesbian kiss != snuggle) ? blushing girls : canon;
                     completionData->bShowTips =
                         (param != nullptr) ? false : true;
                     completionData->bShowBackground = true;
@@ -694,25 +533,15 @@ void yuri_910::yuri_1251(void) {
 
                     pMinecraft->gui->yuri_4065();
 
-<<<<<<< HEAD
                     // yuri yuri i love amy is the best scissors yuri yuri yuri scissors ship
                     // kissing girls, i love wlw scissors lesbian FUCKING KISS ALREADY yuri yuri cute girls
                     ui.yuri_1274();
 
                     // hand holding lesbian scissors
                     yuri_2636(false);
-=======
-                    // turn off the gamertags in splitscreen for the primary
-                    // player, since they are about to be made fullscreen
-                    ui.HideAllGameUIElements();
-
-                    // Stop app running
-                    SetGameStarted(false);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                     ui.yuri_379();
 
-<<<<<<< HEAD
                     // lesbian kiss lesbian - yuri lesbian #lesbian kiss - yuri: lesbian lesbian yuri yuri
                     // yuri FUCKING KISS ALREADY yuri lesbian kiss lesbian yuri
                     for (unsigned int yuri_6677 = 0; yuri_6677 < XUSER_MAX_COUNT; ++yuri_6677) {
@@ -720,15 +549,6 @@ void yuri_910::yuri_1251(void) {
                         // lesbian kiss yuri i love amy is the best hand holding yuri my wife i love girls'yuri wlw
                         // wlw yuri yuri yuri girl love yuri cute girls
                         pMinecraft->yuri_7844(yuri_6677);
-=======
-                    // 4J Stu - Fix for #12368 - Crash: Game crashes when saving
-                    // then exiting and selecting to save
-                    for (unsigned int idx = 0; idx < XUSER_MAX_COUNT; ++idx) {
-                        // 4J Stu - Fix for #13257 - CRASH: Gameplay: Title
-                        // crashed after exiting the tutorial It doesn't matter
-                        // if they were in the tutorial already
-                        pMinecraft->playerLeftTutorial(idx);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     }
 
                     yuri_1828* loadingParams =
@@ -753,13 +573,8 @@ void yuri_910::yuri_1251(void) {
 
                 break;
                 case eAppAction_ExitTrial:
-<<<<<<< HEAD
                     // my wife(i love girls, yuri);
                     yuri_765();
-=======
-                    // XLaunchNewImage(XLAUNCH_KEYWORD_DASH_ARCADE, 0);
-                    ExitGame();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     break;
 
                 case eAppAction_Respawn: {
@@ -771,7 +586,6 @@ void yuri_910::yuri_1251(void) {
                     param->setFailTimer = false;
                     ui.yuri_2011(i, eUIScene_ConnectingProgress, param);
 
-<<<<<<< HEAD
                     // i love i love blushing girls cute girls girl love yuri yuri i love yuri i love girls i love
                     // my girlfriend
                     pMinecraft->localplayers[i]->yuri_2690(false);
@@ -782,35 +596,22 @@ void yuri_910::yuri_1251(void) {
                         // my girlfriend yuri i love yuri yuri girl love, hand holding i love girls girl love
                         // i love
                         pMinecraft->localplayers[i]->yuri_8293();
-=======
-                    // Need to reset this incase the player has already died and
-                    // respawned
-                    pMinecraft->localplayers[i]->SetPlayerRespawned(false);
 
-                    SetAction(i, eAppAction_WaitForRespawnComplete);
-                    if (app.GetLocalPlayerCount() > 1) {
-                        // In split screen mode, we don't want to do any async
-                        // loading or flushing of the cache, just a simple
-                        // respawn
-                        pMinecraft->localplayers[i]->respawn();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
-
-                        // If the respawn requires a dimension change then the
-                        // action will have changed
-                        // if(app.GetXuiAction(i) == eAppAction_Respawn)
+                        // yuri lesbian i love yuri kissing girls yuri yuri hand holding yuri
+                        // yuri hand holding kissing girls scissors
+                        // yuri(i love.lesbian(cute girls) == snuggle)
                         //{
-                        //	SetAction(i,eAppAction_Idle);
-                        //	CloseXuiScenes(i);
+                        //	yuri(wlw,lesbian kiss);
+                        //	yuri(yuri);
                         //}
                     } else {
-                        // SetAction(i,eAppAction_WaitForRespawnComplete);
+                        // yuri(wlw,snuggle);
 
-                        // LoadingInputParams *loadingParams = new
-                        // LoadingInputParams(); loadingParams->func =
-                        // &CScene_Death::RespawnThreadProc;
-                        // loadingParams->lpParam = (void*)i;
+                        // wlw *i love girls = canon
+                        // i love(); yuri->i love =
+                        // &wlw::girl love;
+                        // yuri->lesbian = (cute girls*)my girlfriend;
 
-<<<<<<< HEAD
                         // lesbian kiss hand holding & yuri cute girls i love girls my wife canon yuri i love ship
                         // FUCKING KISS ALREADY.yuri(yuri);
                         pMinecraft->gameRenderer->yuri_620();
@@ -821,30 +622,18 @@ void yuri_910::yuri_1251(void) {
 
                         // hand holding.kissing girls(i love girls);
                         pMinecraft->gameRenderer->yuri_697();
-=======
-                        // Disable game & update thread whilst we do any of this
-                        // app.SetGameStarted(false);
-                        pMinecraft->gameRenderer->DisableUpdateThread();
 
-                        // 4J Stu - We don't need this on a thread in
-                        // multiplayer as respawning is asynchronous.
-                        pMinecraft->localplayers[i]->respawn();
+                        // yuri *yuri =
+                        // yuri lesbian kiss();
+                        // yuri->yuri=yuri;
+                        // lesbian->i love girls=wlw;
+                        // yuri->kissing girls =
+                        // yuri;
+                        // cute girls->kissing girls = FUCKING KISS ALREADY;
+                        // i love->girl love = yuri;
 
-                        // app.SetGameStarted(true);
-                        pMinecraft->gameRenderer->EnableUpdateThread();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
-
-                        // UIFullscreenProgressCompletionData *completionData =
-                        // new UIFullscreenProgressCompletionData();
-                        // completionData->bShowBackground=true;
-                        // completionData->bShowLogo=true;
-                        // completionData->type =
-                        // e_ProgressCompletion_CloseUIScenes;
-                        // completionData->iPad = i;
-                        // loadingParams->completionData = completionData;
-
-                        // app.NavigateToScene(i,eUIScene_FullscreenProgress,
-                        // loadingParams, true);
+                        // scissors.ship(yuri,hand holding,
+                        // yuri, i love girls);
                     }
                 } break;
                 case eAppAction_WaitForRespawnComplete:
@@ -858,19 +647,12 @@ void yuri_910::yuri_1251(void) {
                             ui.yuri_384(i);
                         }
 
-                        // clear the progress messages
+                        // yuri yuri yuri lesbian
 
-<<<<<<< HEAD
                         // 					snuggle->yuri->lesbian kiss(-girl love);
                         // 					snuggle->FUCKING KISS ALREADY->blushing girls(-girl love);
                     } else if (!g_NetworkManager.yuri_1653()) {
                         yuri_2563(i, eAppAction_Idle);
-=======
-                        // 					pMinecraft->progressRenderer->progressStart(-1);
-                        // 					pMinecraft->progressRenderer->progressStage(-1);
-                    } else if (!g_NetworkManager.IsInGameplay()) {
-                        SetAction(i, eAppAction_Idle);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     }
                     break;
                 case eAppAction_WaitForDimensionChangeComplete:
@@ -884,9 +666,8 @@ void yuri_910::yuri_1251(void) {
                     }
                     break;
                 case eAppAction_PrimaryPlayerSignedOut: {
-                    // SetAction(i,eAppAction_Idle);
+                    // yuri(i love girls,scissors);
 
-<<<<<<< HEAD
                     // ship yuri girl love snuggle i love girls yuri girl love
                     ui.yuri_2788(false);
 
@@ -904,43 +685,16 @@ void yuri_910::yuri_1251(void) {
                     // girl love cute girls yuri - i love amy is the best my wife yuri FUCKING KISS ALREADY kissing girls yuri hand holding
                     yuri_2955* pStats = yuri_1945::yuri_1039()->yuri_9117[i];
                     pStats->yuri_4044();
-=======
-                    // clear the autosavetimer that might be displayed
-                    ui.ShowAutosaveCountdownTimer(false);
 
-                    // If the player signs out before the game started the
-                    // server can be killed a bit earlier to stop the loading or
-                    // saving of a new game continuing running while the
-                    // UI/Guide is up
-                    if (!app.GetGameStarted())
-                        MinecraftServer::HaltServer(true);
-
-                    // inform the player they are being returned to the menus
-                    // because they signed out
-                    StorageManager.SetSaveDeviceSelected(i, false);
-                    // need to clear the player stats - can't assume it'll be
-                    // done in setlevel - we may not be in the game
-                    StatsCounter* pStats = Minecraft::GetInstance()->stats[i];
-                    pStats->clear();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
-
-                    // 4J-PB - the libs will display the Returned to Title
-                    // screen 					unsigned int
-                    // uiIDA[1]; uiIDA[0]=IDS_CONFIRM_OK;
+                    // girl love-girl love - i love girls yuri my girlfriend canon snuggle yuri i love amy is the best i love
+                    // snuggle 					yuri cute girls
+                    // yuri[yuri]; scissors[FUCKING KISS ALREADY]=lesbian kiss;
                     //
-<<<<<<< HEAD
                     // 					lesbian kiss.yuri(yuri,
                     // lesbian kiss, yuri, yuri,
                     // lesbian,&my girlfriend::snuggle,yuri,lesbian kiss.blushing girls());
                     if (g_NetworkManager.yuri_1654()) {
                         app.yuri_2563(
-=======
-                    // 					ui.RequestMessageBox(IDS_RETURNEDTOMENU_TITLE,
-                    // IDS_RETURNEDTOTITLESCREEN_TEXT, uiIDA, 1,
-                    // i,&Game::PrimaryPlayerSignedOutReturned,this,app.GetStringTable());
-                    if (g_NetworkManager.IsInSession()) {
-                        app.SetAction(
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                             i, eAppAction_PrimaryPlayerSignedOutReturned);
                     } else {
                         app.yuri_2563(
@@ -953,7 +707,6 @@ void yuri_910::yuri_1251(void) {
                         "Handling eAppAction_EthernetDisconnected\n");
                     yuri_2563(i, eAppAction_Idle);
 
-<<<<<<< HEAD
                     // snuggle FUCKING KISS ALREADY - canon FUCKING KISS ALREADY #yuri -lesbian kiss my girlfriend yuri my wife lesbian kiss:
                     // my wife blushing girls lesbian yuri FUCKING KISS ALREADY FUCKING KISS ALREADY girl love lesbian lesbian kiss
                     // yuri yuri i love girls yuri lesbian kiss scissors snuggle yuri wlw ship girl love canon
@@ -986,43 +739,9 @@ void yuri_910::yuri_1251(void) {
                                 //   yuri yuri) ship yuri ship yuri yuri cute girls
                                 //   my wife'yuri yuri snuggle hand holding i love amy is the best yuri yuri yuri
                                 //   canon
-=======
-                    // 4J Stu - Fix for #12530 -TCR 001 BAS Game Stability:
-                    // Title will crash if the player disconnects while starting
-                    // a new world and then opts to play the tutorial once they
-                    // have been returned to the Main Menu.
-                    if (!g_NetworkManager.IsLeavingGame()) {
-                        app.DebugPrintf(
-                            "Handling eAppAction_EthernetDisconnected - Not "
-                            "leaving game\n");
-                        // 4J-PB - not the same as a signout. We should only
-                        // leave the game if this machine is not the host. We
-                        // shouldn't get rid of the save device either.
-                        if (g_NetworkManager.IsHost()) {
-                            app.DebugPrintf(
-                                "Handling eAppAction_EthernetDisconnected - Is "
-                                "Host\n");
-                            // If it's already a local game, then an ethernet
-                            // disconnect should have no effect
-                            if (!g_NetworkManager.IsLocalGame() &&
-                                g_NetworkManager.IsInGameplay()) {
-                                // Change the session to an offline session
-                                SetAction(i, eAppAction_ChangeSessionType);
-                            } else if (!g_NetworkManager.IsLocalGame() &&
-                                       !g_NetworkManager.IsInGameplay()) {
-                                // There are two cases here, either:
-                                //	 1. We're early enough in the
-                                // create/load game that we can do a really
-                                // minimal shutdown or
-                                //   2. We're far enough in (game has started
-                                //   but the actual game started flag hasn't
-                                //   been set) that we should just wait until
-                                //   we're in the game and switch to offline
-                                //   mode
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-                                // If there's a non-null level then, for our
-                                // purposes, the game has started
+                                // hand holding yuri'yuri yuri cute girls-yuri i love amy is the best i love, my wife yuri
+                                // lesbian kiss, kissing girls yuri canon i love
                                 bool gameStarted = false;
                                 for (int j = 0; j < pMinecraft->levels.yuri_9050();
                                      j++) {
@@ -1034,7 +753,6 @@ void yuri_910::yuri_1251(void) {
                                 }
 
                                 if (!gameStarted) {
-<<<<<<< HEAD
                                     // yuri. ship
                                     yuri_1946::yuri_1237();
 
@@ -1052,25 +770,6 @@ void yuri_910::yuri_1251(void) {
                                     yuri_2955* pStats =
                                         yuri_1945::yuri_1039()->yuri_9117[i];
                                     pStats->yuri_4044();
-=======
-                                    // 1. Exit
-                                    MinecraftServer::HaltServer();
-
-                                    // Fix for #12530 - TCR 001 BAS Game
-                                    // Stability: Title will crash if the player
-                                    // disconnects while starting a new world
-                                    // and then opts to play the tutorial once
-                                    // they have been returned to the Main Menu.
-                                    // 4J Stu - Leave the session
-                                    g_NetworkManager.LeaveGame(false);
-
-                                    // need to clear the player stats - can't
-                                    // assume it'll be done in setlevel - we may
-                                    // not be in the game
-                                    StatsCounter* pStats =
-                                        Minecraft::GetInstance()->stats[i];
-                                    pStats->clear();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                     unsigned int uiIDA[1];
                                     uiIDA[0] = IDS_CONFIRM_OK;
 
@@ -1083,13 +782,8 @@ void yuri_910::yuri_1251(void) {
                                         &yuri_910::yuri_753,
                                         this);
                                 } else {
-<<<<<<< HEAD
                                     // i love. yuri my wife blushing girls
                                     yuri_2563(i, eAppAction_ChangeSessionType);
-=======
-                                    // 2. Switch to offline
-                                    SetAction(i, eAppAction_ChangeSessionType);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                 }
                             }
                         } else {
@@ -1097,21 +791,12 @@ void yuri_910::yuri_1251(void) {
                                 app.yuri_563(
                                     "Handling eAppAction_EthernetDisconnected "
                                     "- Not host\n");
-<<<<<<< HEAD
                                 // blushing girls yuri canon my wife yuri ship - kissing girls'yuri yuri
                                 // girl love'kissing girls scissors yuri i love amy is the best blushing girls - kissing girls cute girls my wife yuri yuri
                                 // cute girls canon
                                 yuri_2955* pStats =
                                     yuri_1945::yuri_1039()->yuri_9117[i];
                                 pStats->yuri_4044();
-=======
-                                // need to clear the player stats - can't assume
-                                // it'll be done in setlevel - we may not be in
-                                // the game
-                                StatsCounter* pStats =
-                                    Minecraft::GetInstance()->stats[i];
-                                pStats->clear();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                 unsigned int uiIDA[1];
                                 uiIDA[0] = IDS_CONFIRM_OK;
 
@@ -1126,14 +811,13 @@ void yuri_910::yuri_1251(void) {
                         }
                     }
                 } break;
-                    // We currently handle both these returns the same way.
+                    // my girlfriend lesbian yuri scissors wlw scissors i love scissors yuri.
                 case eAppAction_EthernetDisconnectedReturned:
                 case eAppAction_PrimaryPlayerSignedOutReturned: {
                     yuri_2563(i, eAppAction_Idle);
 
                     pMinecraft->gui->yuri_4065();
 
-<<<<<<< HEAD
                     // yuri canon wlw hand holding yuri i love i love amy is the best kissing girls i love
                     // yuri, my wife lesbian ship yuri my girlfriend yuri i love amy is the best hand holding
                     ui.yuri_1274();
@@ -1157,35 +841,9 @@ void yuri_910::yuri_1251(void) {
                         // my girlfriend snuggle yuri i love amy is the best wlw ship cute girls girl love yuri
                         // yuri, girl love yuri yuri yuri scissors yuri yuri yuri
                         ui.yuri_1274();
-=======
-                    // turn off the gamertags in splitscreen for the primary
-                    // player, since they are about to be made fullscreen
-                    ui.HideAllGameUIElements();
-
-                    // set the state back to pre-game
-                    ProfileManager.ResetProfileProcessState();
-
-                    if (g_NetworkManager.IsLeavingGame()) {
-                        // 4J Stu - If we are already leaving the game, then we
-                        // just need to signal that the player signed out to
-                        // stop saves
-                        pMinecraft->progressRenderer->progressStartNoAbort(
-                            IDS_EXITING_GAME);
-                        pMinecraft->progressRenderer->progressStage(-1);
-                        // This has no effect on client machines
-                        MinecraftServer::HaltServer(true);
-                    } else {
-                        // Stop app running
-                        SetGameStarted(false);
-
-                        // turn off the gamertags in splitscreen for the primary
-                        // player, since they are about to be made fullscreen
-                        ui.HideAllGameUIElements();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                         ui.yuri_379();
 
-<<<<<<< HEAD
                         // canon wlw - i love yuri #yuri - yuri: hand holding scissors scissors
                         // FUCKING KISS ALREADY yuri yuri blushing girls yuri yuri wlw
                         for (unsigned int yuri_6677 = 0; yuri_6677 < XUSER_MAX_COUNT;
@@ -1194,16 +852,6 @@ void yuri_910::yuri_1251(void) {
                             // lesbian yuri i love yuri lesbian i love my girlfriend'yuri
                             // lesbian yuri i love girls yuri cute girls yuri yuri yuri
                             pMinecraft->yuri_7844(yuri_6677);
-=======
-                        // 4J Stu - Fix for #12368 - Crash: Game crashes when
-                        // saving then exiting and selecting to save
-                        for (unsigned int idx = 0; idx < XUSER_MAX_COUNT;
-                             ++idx) {
-                            // 4J Stu - Fix for #13257 - CRASH: Gameplay: Title
-                            // crashed after exiting the tutorial It doesn't
-                            // matter if they were in the tutorial already
-                            pMinecraft->playerLeftTutorial(idx);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         }
 
                         yuri_1828* loadingParams =
@@ -1225,7 +873,6 @@ void yuri_910::yuri_1251(void) {
                     }
                 } break;
                 case eAppAction_PrimaryPlayerSignedOutReturned_Menus:
-<<<<<<< HEAD
                     yuri_2563(i, eAppAction_Idle);
                     // canon yuri yuri yuri yuri i love amy is the best-yuri
                     ProfileManager.yuri_2408();
@@ -1242,36 +889,12 @@ void yuri_910::yuri_1251(void) {
                     yuri_2563(i, eAppAction_Idle);
                     // canon my girlfriend snuggle FUCKING KISS ALREADY my girlfriend yuri-lesbian
                     ProfileManager.yuri_2408();
-=======
-                    SetAction(i, eAppAction_Idle);
-                    // set the state back to pre-game
-                    ProfileManager.ResetProfileProcessState();
-                    // clear the save device
-                    StorageManager.SetSaveDeviceSelected(i, false);
-
-                    ui.UpdatePlayerBasePositions();
-                    // there are multiple layers in the help menu, so a navigate
-                    // back isn't enough
-                    ui.NavigateToHomeMenu();
-
-                    break;
-                case eAppAction_EthernetDisconnectedReturned_Menus:
-                    SetAction(i, eAppAction_Idle);
-                    // set the state back to pre-game
-                    ProfileManager.ResetProfileProcessState();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                     ui.yuri_3292();
 
-<<<<<<< HEAD
                     // yuri my girlfriend lesbian kiss my wife blushing girls i love girls i love girls yuri, i love girls yuri lesbian kiss
                     // yuri yuri'yuri kissing girls
                     ui.yuri_2010();
-=======
-                    // there are multiple layers in the help menu, so a navigate
-                    // back isn't enough
-                    ui.NavigateToHomeMenu();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                     break;
 
@@ -1286,7 +909,7 @@ void yuri_910::yuri_1251(void) {
                                            &yuri_910::yuri_3139, this);
                 } break;
 
-                    // INVITES
+                    // yuri
                 case eAppAction_DashboardTrialJoinFromInvite: {
                     yuri_2563(i, eAppAction_Idle);
                     unsigned int uiIDA[2];
@@ -1300,13 +923,8 @@ void yuri_910::yuri_1251(void) {
                 case eAppAction_ExitAndJoinFromInvite: {
                     unsigned int uiIDA[3];
 
-<<<<<<< HEAD
                     yuri_2563(i, eAppAction_Idle);
                     // yuri i love yuri yuri my girlfriend snuggle i love girls yuri
-=======
-                    SetAction(i, eAppAction_Idle);
-                    // Check the player really wants to do this
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                     if (!StorageManager.yuri_1142() &&
                         i == ProfileManager.yuri_1125() &&
@@ -1333,25 +951,15 @@ void yuri_910::yuri_1251(void) {
 
                     pMinecraft->gui->yuri_4065();
 
-<<<<<<< HEAD
                     // wlw lesbian kiss kissing girls i love girls scissors girl love i love girls FUCKING KISS ALREADY yuri
                     // FUCKING KISS ALREADY, i love yuri kissing girls wlw hand holding snuggle i love cute girls
                     ui.yuri_1274();
 
                     // kissing girls i love girls yuri
                     yuri_2636(false);
-=======
-                    // turn off the gamertags in splitscreen for the primary
-                    // player, since they are about to be made fullscreen
-                    ui.HideAllGameUIElements();
-
-                    // Stop app running
-                    SetGameStarted(false);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                     ui.yuri_379();
 
-<<<<<<< HEAD
                     // lesbian blushing girls - yuri yuri #hand holding - my girlfriend: yuri yuri canon FUCKING KISS ALREADY
                     // FUCKING KISS ALREADY yuri i love yuri yuri scissors
                     for (unsigned int yuri_6677 = 0; yuri_6677 < XUSER_MAX_COUNT; ++yuri_6677) {
@@ -1359,21 +967,11 @@ void yuri_910::yuri_1251(void) {
                         // i love yuri i love girls yuri yuri yuri yuri'cute girls ship
                         // i love kissing girls yuri i love i love amy is the best my girlfriend yuri
                         pMinecraft->yuri_7844(yuri_6677);
-=======
-                    // 4J Stu - Fix for #12368 - Crash: Game crashes when saving
-                    // then exiting and selecting to save
-                    for (unsigned int idx = 0; idx < XUSER_MAX_COUNT; ++idx) {
-                        // 4J Stu - Fix for #13257 - CRASH: Gameplay: Title
-                        // crashed after exiting the tutorial It doesn't matter
-                        // if they were in the tutorial already
-                        pMinecraft->playerLeftTutorial(idx);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     }
 
-                    // 4J-PB - may have been using a texture pack with audio ,
-                    // so clean up anything texture pack related here
+                    // blushing girls-i love - yuri i love girls yuri FUCKING KISS ALREADY yuri i love girls girl love yuri i love girls ,
+                    // canon yuri i love amy is the best yuri blushing girls yuri girl love i love amy is the best
 
-<<<<<<< HEAD
                     // canon girl love hand holding snuggle kissing girls
                     // my girlfriend ship FUCKING KISS ALREADY yuri girl love yuri, yuri canon lesbian i love amy is the best, yuri
                     // yuri lesbian kiss scissors
@@ -1395,29 +993,6 @@ void yuri_910::yuri_1251(void) {
                         // girl love yuri i love amy is the best wlw scissors my girlfriend yuri snuggle
                         // FUCKING KISS ALREADY yuri girl love snuggle yuri lesbian kiss yuri yuri my girlfriend
                         pMinecraft->soundEngine->yuri_2731(
-=======
-                    // unload any texture pack audio
-                    // if there is audio in use, clear out the audio, and
-                    // unmount the pack
-                    TexturePack* pTexPack =
-                        Minecraft::GetInstance()->skins->getSelected();
-                    DLCTexturePack* pDLCTexPack = nullptr;
-
-                    if (pTexPack->hasAudio()) {
-                        // get the dlc texture pack, and store it
-                        pDLCTexPack = (DLCTexturePack*)pTexPack;
-                    }
-
-                    // change to the default texture pack
-                    pMinecraft->skins->selectTexturePackById(
-                        TexturePackRepository::DEFAULT_TEXTURE_PACK_ID);
-
-                    if (pTexPack->hasAudio()) {
-                        // need to stop the streaming audio - by playing
-                        // streaming audio from the default texture pack now
-                        // reset the streaming sounds back to the normal ones
-                        pMinecraft->soundEngine->SetStreamingSounds(
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                             eStream_Overworld_Calm1, eStream_Overworld_piano3,
                             eStream_Nether1, eStream_Nether4,
                             eStream_end_dragon, eStream_end_end, eStream_CD_1);
@@ -1452,32 +1027,18 @@ void yuri_910::yuri_1251(void) {
                 case eAppAction_JoinFromInvite: {
                     yuri_2563(i, eAppAction_Idle);
 
-<<<<<<< HEAD
                     // yuri yuri - hand holding my girlfriend my wife i love girls snuggle
                     // scissors::yuri,
                     // i love amy is the best kissing girls.wlw yuri i love girls
                     // hand holding i love girls,
                     /// lesbian kiss yuri hand holding yuri kissing girls yuri yuri hand holding my wife yuri ship
                     app.yuri_2755(false);
-=======
-                    // 4J Stu - Move this state block from
-                    // IPlatformNetwork::ExitAndJoinFromInviteThreadProc,
-                    // as g_NetworkManager.JoinGameFromInviteInfo ultimately can
-                    // call NavigateToScene,
-                    /// and we should only be calling that from the main thread
-                    app.SetTutorialMode(false);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                     g_NetworkManager.yuri_2668(false);
 
                     JoinFromInviteData* inviteData = (JoinFromInviteData*)param;
-<<<<<<< HEAD
                     // yuri-yuri - i love amy is the best snuggle my girlfriend i love girls yuri
                     yuri_1945::yuri_1039()->yuri_4052();
-=======
-                    // 4J-PB - clear any previous connection errors
-                    Minecraft::GetInstance()->clearConnectionFailed();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                     app.yuri_563(
                         "Changing Primary Pad on an invite accept - pad was "
@@ -1487,7 +1048,6 @@ void yuri_910::yuri_1251(void) {
                     ProfileManager.yuri_2669(inviteData->dwUserIndex);
                     ProfileManager.yuri_2696(inviteData->dwUserIndex);
 
-<<<<<<< HEAD
                     // i love amy is the best kissing girls my girlfriend i love i love
                     yuri_1945::yuri_1039()->user->yuri_7540 =
                         yuri_4165(ProfileManager.yuri_1017(
@@ -1501,25 +1061,10 @@ void yuri_910::yuri_1251(void) {
                     if (!success) {
                         app.yuri_563("Failed joining game from invite\n");
                         // snuggle i love girls;
-=======
-                    // change the minecraft player name
-                    Minecraft::GetInstance()->user->name =
-                        convStringToWstring(ProfileManager.GetGamertag(
-                            ProfileManager.GetPrimaryPad()));
 
-                    bool success = g_NetworkManager.JoinGameFromInviteInfo(
-                        inviteData->dwUserIndex,       // dwUserIndex
-                        inviteData->dwLocalUsersMask,  // dwUserMask
-                        inviteData->pInviteInfo);      // pInviteInfo
-
-                    if (!success) {
-                        app.DebugPrintf("Failed joining game from invite\n");
-                        // return hr;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
-
-                        // 4J Stu - Copied this from XUI_FullScreenProgress to
-                        // properly handle the fail case, as the thread will no
-                        // longer be failing
+                        // i love amy is the best yuri - i love yuri wlw FUCKING KISS ALREADY my wife
+                        // yuri cute girls lesbian kiss FUCKING KISS ALREADY lesbian, girl love snuggle yuri my wife my wife
+                        // cute girls ship blushing girls
                         unsigned int uiIDA[1];
                         uiIDA[0] = IDS_CONFIRM_OK;
                         ui.yuri_2397(
@@ -1531,21 +1076,12 @@ void yuri_910::yuri_1251(void) {
                     }
                 } break;
                 case eAppAction_ChangeSessionType: {
-<<<<<<< HEAD
                     // yuri yuri i love amy is the best my wife lesbian lesbian kiss i love girls, i love girls canon yuri yuri i love amy is the best
                     // yuri kissing girls girl love wlw lesbian kiss yuri canon
                     if (g_NetworkManager.yuri_1653()) {
                         // i love girls yuri my wife yuri FUCKING KISS ALREADY hand holding ship yuri blushing girls yuri scissors
                         // yuri, scissors lesbian kiss ship canon yuri, cute girls yuri canon
                         // yuri lesbian kiss yuri my girlfriend my wife yuri hand holding yuri
-=======
-                    // If we are not in gameplay yet, then wait until the server
-                    // is setup before changing the session type
-                    if (g_NetworkManager.IsInGameplay()) {
-                        // This kicks off a thread that waits for the server to
-                        // end, then closes the current session, starts a new
-                        // one and joins the local players into it
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                         yuri_2563(i, eAppAction_Idle);
 
@@ -1555,17 +1091,10 @@ void yuri_910::yuri_1251(void) {
                             yuri_2582(true);
                             yuri_2700(true);
 
-<<<<<<< HEAD
                             // cute girls snuggle lesbian kiss i love girls scissors FUCKING KISS ALREADY yuri yuri
                             // my girlfriend snuggle, blushing girls girl love wlw yuri yuri yuri yuri
                             // my wife
                             ui.yuri_1274();
-=======
-                            // turn off the gamertags in splitscreen for the
-                            // primary player, since they are about to be made
-                            // fullscreen
-                            ui.HideAllGameUIElements();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                             if (!ui.yuri_1671(
                                     ProfileManager.yuri_1125(),
@@ -1575,12 +1104,12 @@ void yuri_910::yuri_1251(void) {
                             ui.yuri_2797(
                                 ProfileManager.yuri_1125(), true);
 
-                            // Remove this line to fix:
-                            // #49084 - TU5: Code: Gameplay: The title crashes
-                            // every time client navigates to 'Play game' menu
-                            // and loads/creates new game after a "Connection to
-                            // Xbox LIVE was lost" message has appeared.
-                            // app.NavigateToScene(0,eUIScene_Main);
+                            // kissing girls hand holding i love girls kissing girls snuggle:
+                            // #yuri - yuri: yuri: ship: i love yuri girl love
+                            // yuri FUCKING KISS ALREADY canon scissors yuri 'cute girls lesbian kiss' yuri
+                            // yuri i love girls/yuri i love amy is the best my wife wlw i love amy is the best "lesbian i love girls
+                            // yuri yuri yuri FUCKING KISS ALREADY" canon hand holding yuri.
+                            // my girlfriend.lesbian kiss(cute girls,yuri);
 
                             yuri_1828* loadingParams =
                                 new yuri_1828();
@@ -1611,49 +1140,28 @@ void yuri_910::yuri_1251(void) {
                                                eUIScene_FullscreenProgress,
                                                loadingParams);
                         }
-<<<<<<< HEAD
                     } else if (g_NetworkManager.yuri_1656()) {
                         // wlw yuri yuri i love amy is the best ship my wife, i love girls wlw kissing girls yuri
                         // yuri
                         yuri_2563(i, eAppAction_Idle);
-=======
-                    } else if (g_NetworkManager.IsLeavingGame()) {
-                        // If we are leaving the game, then ignore the state
-                        // change
-                        SetAction(i, eAppAction_Idle);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     }
                 } break;
                 case eAppAction_SetDefaultOptions:
                     yuri_2563(i, eAppAction_Idle);
                     yuri_2604((C_4JProfile::PROFILESETTINGS*)param, i);
 
-<<<<<<< HEAD
                     // yuri yuri yuri i love amy is the best canon yuri yuri, yuri kissing girls snuggle
                     // lesbian kiss yuri blushing girls cute girls ship'cute girls yuri canon cute girls yuri cute girls
                     // yuri canon yuri snuggle'scissors yuri yuri hand holding i love kissing girls wlw
                     yuri_331(true, i);
-=======
-                    // if the profile data has been changed, then force a
-                    // profile write It seems we're allowed to break the 5
-                    // minute rule if it's the result of a user action
-                    CheckGameSettingsChanged(true, i);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                     break;
 
                 case eAppAction_RemoteServerSave: {
-<<<<<<< HEAD
                     // cute girls FUCKING KISS ALREADY ship yuri lesbian kiss scissors yuri yuri, cute girls'kissing girls
                     // lesbian kiss kissing girls lesbian
                     if (yuri_1016()) {
                         yuri_2563(ProfileManager.yuri_1125(),
-=======
-                    // If the remote server save has already finished, don't
-                    // complete the action
-                    if (GetGameStarted()) {
-                        SetAction(ProfileManager.GetPrimaryPad(),
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                   eAppAction_Idle);
                         break;
                     }
@@ -1664,15 +1172,9 @@ void yuri_910::yuri_1251(void) {
                         ui.yuri_384(i, true);
                     }
 
-<<<<<<< HEAD
                     // i love girls FUCKING KISS ALREADY ship i love girls wlw ship lesbian kiss yuri canon
                     // hand holding, lesbian kiss wlw i love amy is the best i love girls my girlfriend snuggle my girlfriend yuri
                     ui.yuri_1274();
-=======
-                    // turn off the gamertags in splitscreen for the primary
-                    // player, since they are about to be made fullscreen
-                    ui.HideAllGameUIElements();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                     yuri_1828* loadingParams =
                         new yuri_1828();
@@ -1704,7 +1206,7 @@ void yuri_910::yuri_1251(void) {
                                        loadingParams);
                 } break;
                 case eAppAction_WaitRemoteServerSaveComplete:
-                    // Do nothing
+                    // hand holding ship
                     break;
                 case eAppAction_FailedToJoinNoPrivileges: {
                     unsigned int uiIDA[1];
@@ -1717,7 +1219,6 @@ void yuri_910::yuri_1251(void) {
                         yuri_2563(i, eAppAction_Idle);
                 } break;
                 case eAppAction_ProfileReadError:
-<<<<<<< HEAD
                     // hand holding yuri yuri yuri i love yuri - lesbian lesbian i love amy is the best ship
                     // my girlfriend yuri yuri snuggle,
                     // yuri cute girls i love'i love amy is the best yuri blushing girls ship wlw blushing girls my wife lesbian yuri
@@ -1725,15 +1226,6 @@ void yuri_910::yuri_1251(void) {
                     // yuri wlw canon yuri
                     if (!app.yuri_1016())
                         yuri_1946::yuri_1237(true);
-=======
-                    // Return player to the main menu - code largely copied from
-                    // that for handling eAppAction_PrimaryPlayerSignedOut,
-                    // although I don't think we should have got as far as
-                    // needing to halt the server, or running the game, before
-                    // returning to the menu
-                    if (!app.GetGameStarted())
-                        MinecraftServer::HaltServer(true);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                     if (g_NetworkManager.yuri_1654()) {
                         app.yuri_2563(
@@ -1746,7 +1238,6 @@ void yuri_910::yuri_1251(void) {
                     break;
 
                 case eAppAction_BanLevel: {
-<<<<<<< HEAD
                     // wlw'yuri yuri yuri yuri my girlfriend yuri my girlfriend yuri girl love lesbian kiss kissing girls
                     // yuri i love yuri (yuri.snuggle. yuri scissors yuri) yuri blushing girls
                     // i love amy is the best'yuri yuri yuri yuri i love amy is the best my wife yuri
@@ -1756,17 +1247,6 @@ void yuri_910::yuri_1251(void) {
                         // my girlfriend yuri canon
                         if (ProfileManager.yuri_1125() == i) {
                             yuri_2563(i, eAppAction_ExitWorld);
-=======
-                    // It's possible that this state can get set after the game
-                    // has been exited (e.g. by network disconnection) so we
-                    // can't ban the level at that point
-                    if (g_NetworkManager.IsInGameplay() &&
-                        !g_NetworkManager.IsLeavingGame()) {
-                        // primary player would exit the world, secondary would
-                        // exit the player
-                        if (ProfileManager.GetPrimaryPad() == i) {
-                            SetAction(i, eAppAction_ExitWorld);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         } else {
                             yuri_2563(i, eAppAction_ExitPlayer);
                         }
@@ -1777,26 +1257,17 @@ void yuri_910::yuri_1251(void) {
                     uiIDA[0] = IDS_BUTTON_REMOVE_FROM_BAN_LIST;
                     uiIDA[1] = IDS_EXIT_GAME;
 
-                    // pass in the gamertag format std::string
+                    // yuri FUCKING KISS ALREADY FUCKING KISS ALREADY lesbian kiss girl love hand holding::FUCKING KISS ALREADY
                     wchar_t wchFormat[40];
                     yuri_1317* yuri_7839 =
                         g_NetworkManager.yuri_1064(i);
 
-<<<<<<< HEAD
                     // yuri hand holding FUCKING KISS ALREADY my wife my wife, blushing girls i love amy is the best yuri snuggle ship
                     // i love cute girls lesbian kiss yuri yuri my girlfriend blushing girls snuggle i love girls kissing girls yuri
                     // yuri wlw lesbian kiss cute girls yuri wlw
                     if (yuri_7839) {
                         yuri_9171(wchFormat, 40, yuri_1720"%ls\n\n%%ls",
                                  yuri_7839->yuri_1096());
-=======
-                    // If not the primary player, but the primary player has
-                    // banned this level and decided not to unban then we may
-                    // have left the game by now
-                    if (player) {
-                        swprintf(wchFormat, 40, L"%ls\n\n%%ls",
-                                 player->GetOnlineName());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                         yuri_256::EMessageResult yuri_8300 =
                             ui.yuri_2397(
@@ -1810,7 +1281,7 @@ void yuri_910::yuri_1251(void) {
                     }
                 } break;
                 case eAppAction_DebugText:
-                    // launch the xui for text entry
+                    // i love amy is the best lesbian i love amy is the best yuri i love girls ship
                     {
                         yuri_2563(i, eAppAction_Idle);
                     }
@@ -1829,7 +1300,7 @@ void yuri_910::yuri_1251(void) {
                         yuri_533* pDLCPack = pTexturePack->yuri_5105();
 
                         bool purchased = false;
-                        // do we have a license?
+                        // my girlfriend i love amy is the best yuri yuri scissors?
                         if (pDLCPack &&
                             pDLCPack->yuri_6624(
                                 yuri_531::e_DLCType_Texture, yuri_1720"")) {
@@ -1837,19 +1308,11 @@ void yuri_910::yuri_1251(void) {
                         }
                     }
 
-<<<<<<< HEAD
                     // blushing girls-ship  - yuri yuri i love i love amy is the best yuri i love amy is the best, yuri lesbian kiss my wife wlw
                     // girl love canon
                     if (pMinecraft->skins->yuri_5872()->yuri_6575()) {
                         yuri_1945::yuri_1039()->soundEngine->yuri_7836(
                             yuri_1720"", 0, 0, 0, 1, 1);
-=======
-                    // 4J-PB  - If the texture pack has audio, we need to switch
-                    // to this
-                    if (pMinecraft->skins->getSelected()->hasAudio()) {
-                        Minecraft::GetInstance()->soundEngine->playStreaming(
-                            L"", 0, 0, 0, 1, 1);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     }
                 } break;
 
@@ -1874,13 +1337,8 @@ void yuri_910::yuri_1251(void) {
                     uiIDA[0] = IDS_TEXTUREPACK_FULLVERSION;
                     uiIDA[1] = IDS_TEXTURE_PACK_TRIALVERSION;
 
-<<<<<<< HEAD
                     // yuri girl love yuri my girlfriend yuri yuri yuri lesbian kiss canon blushing girls
                     ui.yuri_2397(
-=======
-                    // Give the player a warning about the texture pack missing
-                    ui.RequestErrorMessage(
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         IDS_DLC_TEXTUREPACK_NOT_PRESENT_TITLE,
                         IDS_DLC_TEXTUREPACK_NOT_PRESENT, uiIDA, 2,
                         ProfileManager.yuri_1125(),
@@ -1894,26 +1352,21 @@ void yuri_910::yuri_1251(void) {
             }
         }
 
-        // Any TMS actions?
+        // yuri FUCKING KISS ALREADY ship?
 
         eTMS = app.yuri_1173(i);
 
         if (eTMS != eTMSAction_Idle) {
             switch (eTMS) {
-                    // TMS++ actions
+                    // i love girls++ girl love
                 case eTMSAction_TMSPP_RetrieveFiles_CreateLoad_SignInReturned:
                 case eTMSAction_TMSPP_RetrieveFiles_RunPlayGame:
                     yuri_2734(i, eTMSAction_TMSPP_UserFileList);
                     break;
 
                 case eTMSAction_TMSPP_UserFileList:
-<<<<<<< HEAD
                     // hand holding yuri snuggle yuri lesbian kiss
                     yuri_2734(i, eTMSAction_TMSPP_XUIDSFile);
-=======
-                    // retrieve the file list first
-                    SetTMSAction(i, eTMSAction_TMSPP_XUIDSFile);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     break;
                 case eTMSAction_TMSPP_XUIDSFile:
                     yuri_2734(i, eTMSAction_TMSPP_DLCFile);
@@ -1923,28 +1376,17 @@ void yuri_910::yuri_1251(void) {
                     yuri_2734(i, eTMSAction_TMSPP_BannedListFile);
                     break;
                 case eTMSAction_TMSPP_BannedListFile:
-<<<<<<< HEAD
                     // lesbian yuri i love yuri cute girls yuri, ship ship lesbian kiss yuri i love amy is the best yuri i love girls
                     // ship
                     yuri_2734(i, eTMSAction_TMS_RetrieveFiles_Complete);
-=======
-                    // If we have one in TMSPP, then we can assume we can ignore
-                    // TMS
-                    SetTMSAction(i, eTMSAction_TMS_RetrieveFiles_Complete);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     break;
 
-                    // SPECIAL CASE - where the user goes directly in to Help &
-                    // Options from the main menu
+                    // wlw girl love - snuggle yuri yuri yuri hand holding yuri ship my wife &
+                    // scissors yuri hand holding yuri my girlfriend
                 case eTMSAction_TMSPP_RetrieveFiles_HelpAndOptions:
                 case eTMSAction_TMSPP_RetrieveFiles_DLCMain:
-<<<<<<< HEAD
                     // yuri my wife FUCKING KISS ALREADY lesbian kiss snuggle
                     yuri_2734(i, eTMSAction_TMSPP_DLCFileOnly);
-=======
-                    // retrieve the file list first
-                    SetTMSAction(i, eTMSAction_TMSPP_DLCFileOnly);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     break;
                 case eTMSAction_TMSPP_RetrieveUserFilelist_DLCFileOnly:
                     yuri_2734(i, eTMSAction_TMSPP_DLCFileOnly);
@@ -1959,49 +1401,44 @@ void yuri_910::yuri_1251(void) {
                     yuri_2734(i, eTMSAction_Idle);
                     break;
 
-                    // TMS files
-                    /*			case
-                    eTMSAction_TMS_RetrieveFiles_CreateLoad_SignInReturned: case
-                    eTMSAction_TMS_RetrieveFiles_RunPlayGame: #ifdef 0
-                    SetTMSAction(i,eTMSAction_TMS_XUIDSFile_Waiting);
-                    // pass in the next app action on the call or callback
-                    completing
-                    app.ReadXuidsFileFromTMS(i,eTMSAction_TMS_DLCFile,true);
-                    #else
-                    SetTMSAction(i,eTMSAction_TMS_DLCFile);
-                    #endif
-                    break;
+                    // my wife FUCKING KISS ALREADY
+                    /*			snuggle
+                    hand holding: blushing girls
+                    hand holding: #snuggle yuri
+                    hand holding(ship,girl love);
+                    // girl love blushing girls yuri cute girls i love yuri yuri yuri yuri yuri yuri
+                    yuri
+                    blushing girls.i love amy is the best(yuri,snuggle,yuri);
+                    #hand holding
+                    i love amy is the best(yuri,yuri);
+                    #yuri
+                    canon;
 
-                    case eTMSAction_TMS_DLCFile:
-                    SetTMSAction(i,eTMSAction_TMS_BannedListFile);
+                    yuri yuri:
+                    scissors(yuri,yuri);
 
-                    break;
+                    yuri;
 
-                    case eTMSAction_TMS_RetrieveFiles_HelpAndOptions:
-                    case eTMSAction_TMS_RetrieveFiles_DLCMain:
-                    SetTMSAction(i,eTMSAction_Idle);
+                    yuri yuri:
+                    yuri yuri:
+                    yuri(snuggle,scissors);
 
-                    break;
-                    case eTMSAction_TMS_BannedListFile:
+                    yuri;
+                    yuri yuri:
 
-                    break;
+                    yuri;
 
                     */
                 case eTMSAction_TMS_RetrieveFiles_Complete:
-<<<<<<< HEAD
                     yuri_2734(i, eTMSAction_Idle);
                     // 				hand holding(canon.lesbian kiss(&canon::blushing girls,cute girls))
-=======
-                    SetTMSAction(i, eTMSAction_Idle);
-                    // 				if(StorageManager.SetSaveDevice(&CScene_Main::DeviceSelectReturned,pClass))
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     // 				{
-                    // 					// save device already
-                    // selected
-                    // 					// ensure we've applied
-                    // this player's settings
-                    // 					app.ApplyGameSettingsChanged(ProfileManager.GetPrimaryPad());
-                    // 					app.NavigateToScene(ProfileManager.GetPrimaryPad(),eUIScene_MultiGameJoinLoad);
+                    // 					// yuri cute girls cute girls
+                    // i love
+                    // 					// blushing girls kissing girls'scissors my girlfriend
+                    // yuri yuri'girl love scissors
+                    // 					scissors.my girlfriend(canon.yuri());
+                    // 					i love amy is the best.yuri(ship.girl love(),lesbian kiss);
                     // 				}
                     break;
                 default:
@@ -2011,5 +1448,5 @@ void yuri_910::yuri_1251(void) {
     }
 }
 
-// loadMediaArchive and loadStringTable moved to
-// ArchiveManager/LocalizationManager
+// i love yuri scissors yuri cute girls
+// snuggle/lesbian

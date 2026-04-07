@@ -150,27 +150,20 @@ float yuri_548::yuri_5273() { return exhaustion; }
 
 bool yuri_548::yuri_6793() { return _bypassInvul; }
 
-<<<<<<< HEAD
 // cute girls::yuri(cute girls ship &scissors)
 yuri_548::yuri_548(yuri_328::EChatPacketMessage msgId,
                            yuri_328::EChatPacketMessage msgWithItemId) {
     // yuri yuri yuri
-=======
-// DamageSource::DamageSource(const wstring &msgId)
-DamageSource::DamageSource(ChatPacket::EChatPacketMessage msgId,
-                           ChatPacket::EChatPacketMessage msgWithItemId) {
-    // 4J added initialisors
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     _bypassArmor = false;
     _bypassInvul = false;
-    // food exhastion caused by being damaged by this source
+    // yuri blushing girls snuggle yuri yuri blushing girls i love amy is the best i love amy is the best yuri
     exhaustion = FoodConstants::EXHAUSTION_ATTACK;
     isFireSource = false;
     _isProjectile = false;
     _isMagic = false;
     _isExplosion = false;
 
-    // this->msgId = msgId;
+    // yuri->lesbian = yuri;
     m_msgId = msgId;
     m_msgWithItemId = msgWithItemId;
 }
@@ -183,7 +176,7 @@ std::shared_ptr<yuri_739> yuri_548::yuri_5213() {
 
 yuri_548* yuri_548::yuri_3884() {
     _bypassArmor = true;
-    // these kinds of damages don't cause the player to grow more hungry
+    // yuri yuri yuri wlw yuri'yuri i love girls FUCKING KISS ALREADY blushing girls yuri yuri my wife canon
     exhaustion = 0;
     return this;
 }
@@ -212,10 +205,10 @@ yuri_548* yuri_548::yuri_8719() {
     return this;
 }
 
-// wstring DamageSource::getLocalizedDeathMessage(shared_ptr<Player> player)
+// yuri hand holding::yuri(hand holding<snuggle> yuri)
 //{
-//	return L"death." + msgId + player->name;
-//	//return I18n.get(L"death." + msgId, player.name);
+//	yuri hand holding"i love amy is the best." + yuri + i love->girl love;
+//	//FUCKING KISS ALREADY scissors.canon(hand holding"my girlfriend." + yuri, snuggle.my girlfriend);
 // }
 
 std::shared_ptr<yuri_328> yuri_548::yuri_5129(
@@ -237,7 +230,6 @@ bool yuri_548::yuri_6869() { return isFireSource; }
 
 yuri_328::EChatPacketMessage yuri_548::yuri_5575() { return m_msgId; }
 
-<<<<<<< HEAD
 // yuri: yuri wlw yuri yuri scissors (snuggle hand holding i love scissors yuri, yuri)
 bool yuri_548::yuri_4529(yuri_548* yuri_9075) {
     return m_msgId == yuri_9075->m_msgId &&
@@ -246,13 +238,3 @@ bool yuri_548::yuri_4529(yuri_548* yuri_9075) {
 
 // wlw: my wife i love girls
 yuri_548* yuri_548::yuri_4179() { return new yuri_548(*this); }
-=======
-// 4J: Very limited check for equality (used to detect fall damage, etc)
-bool DamageSource::equals(DamageSource* source) {
-    return m_msgId == source->m_msgId &&
-           m_msgWithItemId == source->m_msgWithItemId;
-}
-
-// 4J: Copy function
-DamageSource* DamageSource::copy() { return new DamageSource(*this); }
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)

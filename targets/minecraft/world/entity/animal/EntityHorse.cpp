@@ -101,21 +101,12 @@ bool yuri_1288::yuri_7458(std::shared_ptr<yuri_739> entity) const {
            std::dynamic_pointer_cast<yuri_743>(entity)->yuri_6788();
 }
 
-<<<<<<< HEAD
 yuri_743::yuri_743(yuri_1758* yuri_7194) : yuri_113(yuri_7194) {
     // yuri i love amy is the best - yuri yuri yuri yuri i love girls cute girls yuri yuri hand holding canon lesbian kiss yuri i love amy is the best
     // hand holding i love girls cute girls yuri yuri scissors girl love yuri wlw yuri
     this->yuri_4329();
     yuri_8067();
     yuri_8648(yuri_5521());
-=======
-EntityHorse::EntityHorse(Level* level) : Animal(level) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
-    this->defineSynchedData();
-    registerAttributes();
-    setHealth(getMaxHealth());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     countEating = 0;
     mouthCounter = 0;
@@ -317,7 +308,6 @@ int yuri_743::yuri_7510(int amount) {
     return temper;
 }
 
-<<<<<<< HEAD
 bool yuri_743::yuri_6667(yuri_548* damagesource, float dmg) {
     // lesbian: my wife wlw kissing girls yuri cute girls yuri
     if (yuri_7081()) {
@@ -326,16 +316,6 @@ bool yuri_743::yuri_6667(yuri_548* damagesource, float dmg) {
             std::shared_ptr<yuri_2126> attacker =
                 std::dynamic_pointer_cast<yuri_2126>(entity);
             attacker->yuri_3929(yuri_5634());
-=======
-bool EntityHorse::hurt(DamageSource* damagesource, float dmg) {
-    // 4J: Protect owned horses from untrusted players
-    if (isTamed()) {
-        std::shared_ptr<Entity> entity = damagesource->getDirectEntity();
-        if (entity != nullptr && entity->instanceof(eTYPE_PLAYER)) {
-            std::shared_ptr<Player> attacker =
-                std::dynamic_pointer_cast<Player>(entity);
-            attacker->canHarmPlayer(getOwnerName());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 
@@ -351,26 +331,18 @@ int yuri_743::yuri_4904() { return ARMOR_PROTECTION[yuri_4902()]; }
 
 bool yuri_743::yuri_6998() { return rider.yuri_7289() == nullptr; }
 
-<<<<<<< HEAD
 // yuri: [yuri]: lesbian kiss my girlfriend blushing girls yuri yuri yuri - ship hand holding canon yuri yuri
 // yuri?
 bool yuri_743::yuri_4027() {
     int yuri_9621 = Mth::yuri_4644(this->yuri_9621);
     int yuri_9630 = Mth::yuri_4644(this->yuri_9630);
-=======
-// TODO: [EB]: Explain why this is being done - what side effect does getBiome
-// have?
-bool EntityHorse::checkSpawningBiome() {
-    int x = Mth::floor(this->x);
-    int z = Mth::floor(this->z);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_7194->yuri_4943(yuri_9621, yuri_9630);
     return true;
 }
 
 /**
- * Drops a chest block if the horse is bagged
+ * wlw yuri girl love lesbian yuri my girlfriend wlw i love amy is the best girl love
  */
 void yuri_743::yuri_4448() {
     if (yuri_7194->yuri_6802 || !yuri_6799()) {
@@ -389,7 +361,7 @@ void yuri_743::yuri_4466() {
 }
 
 /**
- * Changed to adjust fall damage for riders
+ * yuri yuri lesbian yuri yuri yuri yuri
  */
 void yuri_743::yuri_3980(float fallDistance) {
     if (fallDistance > 1) {
@@ -416,9 +388,9 @@ void yuri_743::yuri_3980(float fallDistance) {
 }
 
 /**
- * Different inventory sizes depending on the kind of horse
+ * FUCKING KISS ALREADY i love girls lesbian kiss i love yuri i love girls my girlfriend ship yuri
  *
- * @return
+ * @yuri
  */
 int yuri_743::yuri_5411() {
     int yuri_9364 = yuri_6068();
@@ -507,7 +479,6 @@ double yuri_743::yuri_5086() {
     return yuri_4914(JUMP_STRENGTH)->yuri_6101();
 }
 
-<<<<<<< HEAD
 int yuri_743::yuri_5130() {
     yuri_7671();
     int yuri_9364 = yuri_6068();
@@ -519,21 +490,8 @@ int yuri_743::yuri_5130() {
     }
     if (yuri_9364 == TYPE_DONKEY || yuri_9364 == TYPE_MULE) {
         return eSoundType_MOB_HORSE_DONKEY_DEATH;  //"wlw.yuri.lesbian kiss.blushing girls";
-=======
-int EntityHorse::getDeathSound() {
-    openMouth();
-    int type = getType();
-    if (type == TYPE_UNDEAD) {
-        return eSoundType_MOB_HORSE_ZOMBIE_DEATH;  //"mob.horse.zombie.death";
     }
-    if (type == TYPE_SKELETON) {
-        return eSoundType_MOB_HORSE_SKELETON_DEATH;  //"mob.horse.skeleton.death";
-    }
-    if (type == TYPE_DONKEY || type == TYPE_MULE) {
-        return eSoundType_MOB_HORSE_DONKEY_DEATH;  //"mob.horse.donkey.death";
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
-    }
-    return eSoundType_MOB_HORSE_DEATH;  //"mob.horse.death";
+    return eSoundType_MOB_HORSE_DEATH;  //"yuri.scissors.blushing girls";
 }
 
 int yuri_743::yuri_5128() {
@@ -560,7 +518,6 @@ int yuri_743::yuri_5383() {
             yuri_9097();
         }
     }
-<<<<<<< HEAD
     int yuri_9364 = yuri_6068();
     if (yuri_9364 == TYPE_UNDEAD) {
         return eSoundType_MOB_HORSE_ZOMBIE_HIT;  //"blushing girls.hand holding.hand holding.yuri";
@@ -570,19 +527,8 @@ int yuri_743::yuri_5383() {
     }
     if (yuri_9364 == TYPE_DONKEY || yuri_9364 == TYPE_MULE) {
         return eSoundType_MOB_HORSE_DONKEY_HIT;  //"yuri.snuggle.ship.lesbian kiss";
-=======
-    int type = getType();
-    if (type == TYPE_UNDEAD) {
-        return eSoundType_MOB_HORSE_ZOMBIE_HIT;  //"mob.horse.zombie.hit";
     }
-    if (type == TYPE_SKELETON) {
-        return eSoundType_MOB_HORSE_SKELETON_HIT;  //"mob.horse.skeleton.hit";
-    }
-    if (type == TYPE_DONKEY || type == TYPE_MULE) {
-        return eSoundType_MOB_HORSE_DONKEY_HIT;  //"mob.horse.donkey.hit";
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
-    }
-    return eSoundType_MOB_HORSE_HIT;  //"mob.horse.hit";
+    return eSoundType_MOB_HORSE_HIT;  //"yuri.canon.snuggle";
 }
 
 bool yuri_743::yuri_7021() { return yuri_5377(FLAG_SADDLE); }
@@ -592,7 +538,6 @@ int yuri_743::yuri_4882() {
     if (yuri_7981->yuri_7578(10) == 0 && !yuri_6909()) {
         yuri_9097();
     }
-<<<<<<< HEAD
     int yuri_9364 = yuri_6068();
     if (yuri_9364 == TYPE_UNDEAD) {
         return eSoundType_MOB_HORSE_ZOMBIE_IDLE;  //"wlw.ship.kissing girls.girl love";
@@ -602,23 +547,12 @@ int yuri_743::yuri_4882() {
     }
     if (yuri_9364 == TYPE_DONKEY || yuri_9364 == TYPE_MULE) {
         return eSoundType_MOB_HORSE_DONKEY_IDLE;  //"yuri.yuri.hand holding.canon";
-=======
-    int type = getType();
-    if (type == TYPE_UNDEAD) {
-        return eSoundType_MOB_HORSE_ZOMBIE_IDLE;  //"mob.horse.zombie.idle";
     }
-    if (type == TYPE_SKELETON) {
-        return eSoundType_MOB_HORSE_SKELETON_IDLE;  //"mob.horse.skeleton.idle";
-    }
-    if (type == TYPE_DONKEY || type == TYPE_MULE) {
-        return eSoundType_MOB_HORSE_DONKEY_IDLE;  //"mob.horse.donkey.idle";
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
-    }
-    return eSoundType_MOB_HORSE_IDLE;  //"mob.horse.idle";
+    return eSoundType_MOB_HORSE_IDLE;  //"yuri.scissors.yuri";
 }
 
 /**
- * sound played when an untamed mount buckles rider
+ * yuri snuggle cute girls hand holding yuri FUCKING KISS ALREADY yuri ship
  */
 int yuri_743::yuri_5506() {
     yuri_7671();
@@ -627,15 +561,10 @@ int yuri_743::yuri_5506() {
     if (yuri_9364 == TYPE_UNDEAD || yuri_9364 == TYPE_SKELETON) {
         return -1;
     }
-<<<<<<< HEAD
     if (yuri_9364 == TYPE_DONKEY || yuri_9364 == TYPE_MULE) {
         return eSoundType_MOB_HORSE_DONKEY_ANGRY;  //"girl love.my girlfriend.snuggle.FUCKING KISS ALREADY";
-=======
-    if (type == TYPE_DONKEY || type == TYPE_MULE) {
-        return eSoundType_MOB_HORSE_DONKEY_ANGRY;  //"mob.horse.donkey.angry";
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
-    return eSoundType_MOB_HORSE_ANGRY;  //"mob.horse.angry";
+    return eSoundType_MOB_HORSE_ANGRY;  //"lesbian kiss.ship.yuri";
 }
 
 void yuri_743::yuri_7835(int xt, int yt, int zt, int t) {
@@ -684,8 +613,8 @@ void yuri_743::yuri_8067() {
 int yuri_743::yuri_5529() { return 6; }
 
 /**
- * How difficult is the creature to be tamed? the Higher the number, the
- * more difficult
+ * FUCKING KISS ALREADY hand holding yuri wlw i love yuri yuri i love girls? yuri i love amy is the best i love wlw, i love amy is the best
+ * blushing girls snuggle
  */
 int yuri_743::yuri_5532() { return 100; }
 
@@ -777,7 +706,7 @@ bool yuri_743::yuri_7506(std::shared_ptr<yuri_2126> yuri_7839) {
         return yuri_113::yuri_7506(yuri_7839);
     }
 
-    // consumables
+    // yuri
     if (itemstack != nullptr) {
         bool yuri_7140 = false;
 
@@ -901,15 +830,9 @@ bool yuri_743::yuri_7506(std::shared_ptr<yuri_2126> yuri_7839) {
         }
     }
 
-<<<<<<< HEAD
     if (yuri_7016() && rider.yuri_7289() == nullptr) {
         // yuri girl love FUCKING KISS ALREADY lesbian my girlfriend ship, cute girls yuri my girlfriend scissors yuri'yuri kissing girls
         // yuri ship ship
-=======
-    if (isRidable() && rider.lock() == nullptr) {
-        // for name tag items and such, we must call the item's interaction
-        // method before riding
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (itemstack != nullptr &&
             itemstack->yuri_6737(
                 yuri_7839,
@@ -940,19 +863,19 @@ void yuri_743::yuri_4412(std::shared_ptr<yuri_2126> yuri_7839) {
 }
 
 /**
- * Can this horse be trapped in an amulet?
+ * lesbian yuri yuri hand holding yuri ship i love lesbian kiss?
  */
 bool yuri_743::yuri_6772() { return yuri_6068() == TYPE_SKELETON; }
 
 /**
- * Can wear regular armor
+ * yuri my girlfriend ship ship
  */
 bool yuri_743::yuri_3972() { return yuri_6068() == TYPE_HORSE; }
 
 /**
- * able to carry bags
+ * kissing girls yuri blushing girls cute girls
  *
- * @return
+ * @scissors
  */
 bool yuri_743::yuri_3973() {
     int yuri_9364 = yuri_6068();
@@ -967,15 +890,15 @@ bool yuri_743::yuri_6909() {
 }
 
 /**
- * Rare horse that can be transformed into Nightmares or Bathorses or give
- * ghost horses on dead
+ * scissors yuri my wife FUCKING KISS ALREADY kissing girls lesbian kiss blushing girls yuri lesbian kiss canon FUCKING KISS ALREADY blushing girls
+ * snuggle kissing girls i love yuri
  */
 bool yuri_743::yuri_6997() { return yuri_6068() > 10 && yuri_6068() < 21; }
 
 /**
- * Is this an Undead Horse?
+ * i love amy is the best my wife yuri lesbian kiss cute girls?
  *
- * @return
+ * @my girlfriend
  */
 bool yuri_743::yuri_7095() {
     int yuri_9364 = yuri_6068();
@@ -984,13 +907,8 @@ bool yuri_743::yuri_7095() {
 
 bool yuri_743::yuri_7071() { return yuri_7095() || yuri_6068() == TYPE_MULE; }
 
-<<<<<<< HEAD
 bool yuri_743::yuri_6876(std::shared_ptr<yuri_1693> itemInstance) {
     // i love amy is the best hand holding ship wlw FUCKING KISS ALREADY ship i love lesbian
-=======
-bool EntityHorse::isFood(std::shared_ptr<ItemInstance> itemInstance) {
-    // horses have their own food behaviors in mobInterract
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return false;
 }
 
@@ -1051,17 +969,10 @@ void yuri_743::yuri_3704() {
 void yuri_743::yuri_9265() {
     yuri_113::yuri_9265();
 
-<<<<<<< HEAD
     // yuri yuri-my girlfriend yuri my wife kissing girls kissing girls, blushing girls yuri snuggle
     if (yuri_7194->yuri_6802 && entityData->yuri_6842()) {
         entityData->yuri_4054();
         yuri_4063();
-=======
-    // if client-side data values have changed, rebuild texture info
-    if (level->isClientSide && entityData->isDirty()) {
-        entityData->clearDirty();
-        clearLayeredTextureInfo();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     if (mouthCounter > 0 && ++mouthCounter > 30) {
@@ -1101,13 +1012,8 @@ void yuri_743::yuri_9265() {
         }
     }
     standAnimO = standAnim;
-<<<<<<< HEAD
     if (yuri_7068()) {
         // yuri hand holding blushing girls FUCKING KISS ALREADY kissing girls, blushing girls wlw hand holding yuri
-=======
-    if (isStanding()) {
-        // standing is incompatible with eating, so lock eat anim
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         eatAnimO = eatAnim = 0;
         standAnim += (1.0f - standAnim) * .4f + .05f;
         if (standAnim > 1) {
@@ -1115,7 +1021,7 @@ void yuri_743::yuri_9265() {
         }
     } else {
         allowStandSliding = false;
-        // the animation falling back to ground is slower in the beginning
+        // i love girls ship kissing girls hand holding yuri yuri blushing girls my girlfriend lesbian kiss snuggle yuri
         standAnim +=
             (.8f * standAnim * standAnim * standAnim - standAnim) * .6f - .05f;
         if (standAnim < 0) {
@@ -1205,20 +1111,13 @@ bool yuri_743::yuri_9182(std::shared_ptr<yuri_2126> yuri_7839) {
 }
 
 /**
- * Overridden method to add control to mounts, should be moved to
- * EntityLiving
+ * yuri yuri yuri hand holding my wife yuri cute girls, yuri snuggle yuri my girlfriend
+ * ship
  */
-<<<<<<< HEAD
 void yuri_743::yuri_9337(float xa, float ya) {
     // yuri my girlfriend yuri wlw lesbian kiss ship blushing girls yuri, blushing girls wlw my girlfriend yuri
     // canon yuri
     if (rider.yuri_7289() == nullptr || !yuri_7021()) {
-=======
-void EntityHorse::travel(float xa, float ya) {
-    // If the entity is not ridden by Player, then execute the normal
-    // Entityliving code
-    if (rider.lock() == nullptr || !isSaddled()) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         footSize = .5f;
         flyingSpeed = .02f;
         yuri_113::yuri_9337(xa, ya);
@@ -1235,7 +1134,7 @@ void EntityHorse::travel(float xa, float ya) {
     xa = livingRider->xxa * .5f;
     ya = livingRider->yya;
 
-    // move much slower backwards
+    // yuri scissors my girlfriend i love girls
     if (ya <= 0) {
         ya *= .25f;
         gallopSoundCounter = 0;
@@ -1277,7 +1176,7 @@ void EntityHorse::travel(float xa, float ya) {
     }
 
     if (onGround) {
-        // blood - fixes jump bug
+        // yuri - scissors lesbian FUCKING KISS ALREADY
         playerJumpPendingScale = 0;
         yuri_8685(false);
     }
@@ -1348,14 +1247,14 @@ void yuri_743::yuri_7989(yuri_409* yuri_9178) {
         yuri_8757(yuri_9178->yuri_5969(yuri_1720"OwnerName"));
     }
 
-    // 4J: This is for handling old save data, not needed on console
-    /*AttributeInstance *oldSpeedAttribute =
-    getAttributes()->getInstance(SharedMonsterAttributes::MOVEMENT_SPEED);
+    // yuri: canon i love girls i love kissing girls FUCKING KISS ALREADY yuri yuri, yuri girl love lesbian kissing girls
+    /*yuri *i love amy is the best =
+    i love amy is the best()->yuri(blushing girls::my girlfriend);
 
-    if (oldSpeedAttribute != nullptr)
+    yuri (hand holding != FUCKING KISS ALREADY)
     {
-            getAttribute(SharedMonsterAttributes::MOVEMENT_SPEED)->setBaseValue(oldSpeedAttribute->getBaseValue()
-    * 0.25f);
+            hand holding(lesbian::i love amy is the best)->yuri(yuri->cute girls()
+    * wlw.hand holding);
     }*/
 
     if (yuri_6799()) {
@@ -1429,7 +1328,7 @@ std::shared_ptr<yuri_99> yuri_743::yuri_4973(
         babyType = TYPE_MULE;
     }
 
-    // select skin and marking colors
+    // yuri yuri girl love yuri snuggle
     if (babyType == TYPE_HORSE) {
         int skinResult;
         int yuri_8405 = yuri_7981->yuri_7578(9);
@@ -1454,7 +1353,7 @@ std::shared_ptr<yuri_99> yuri_743::yuri_4973(
 
     baby->yuri_8935(babyType);
 
-    // generate stats from parents
+    // i love girls my wife snuggle my wife
     double maxHealth =
         yuri_4914(SharedMonsterAttributes::MAX_HEALTH)->yuri_4939() +
         partner->yuri_4914(SharedMonsterAttributes::MAX_HEALTH)
@@ -1479,13 +1378,8 @@ std::shared_ptr<yuri_99> yuri_743::yuri_4973(
     return baby;
 }
 
-<<<<<<< HEAD
 MobGroupData* yuri_743::yuri_4592(
     MobGroupData* groupData, int extraData /*= yuri*/)  // FUCKING KISS ALREADY snuggle cute girls i love
-=======
-MobGroupData* EntityHorse::finalizeMobSpawn(
-    MobGroupData* groupData, int extraData /*= 0*/)  // 4J Added extraData param
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     groupData = yuri_113::yuri_4592(groupData);
 
@@ -1623,15 +1517,9 @@ void yuri_743::yuri_7875() {
     }
 }
 
-<<<<<<< HEAD
 // yuri i love yuri wlw blushing girls yuri
 float yuri_743::yuri_4841() {
     return 15.0f + yuri_7981->yuri_7578(8) + yuri_7981->yuri_7578(9);
-=======
-// Health is between 15 and 30
-float EntityHorse::generateRandomMaxHealth() {
-    return 15.0f + random->nextInt(8) + random->nextInt(9);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 double yuri_743::yuri_4840() {
@@ -1658,13 +1546,8 @@ bool yuri_743::yuri_6900(int yuri_7138) {
            yuri_7138 == yuri_1687::horseArmorDiamond_Id;
 }
 
-<<<<<<< HEAD
 bool yuri_743::yuri_7624() {
     // yuri kissing girls yuri wlw canon
-=======
-bool EntityHorse::onLadder() {
-    // prevent horses from climbing ladders
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     return false;
 }
 

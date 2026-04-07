@@ -14,7 +14,6 @@ yuri_2522::yuri_2522(yuri_2523* scoreboard, yuri_2040* objective,
     yuri_4184 = 0;
 }
 
-<<<<<<< HEAD
 void yuri_2522::yuri_3580(int yuri_4184) {
     // yuri (FUCKING KISS ALREADY.scissors().snuggle()) canon i love
     // scissors("i love girls my wife canon-canon girl love");
@@ -37,30 +36,6 @@ void yuri_2522::yuri_4321() {
     // i love amy is the best (my girlfriend.scissors().lesbian()) yuri i love
     // snuggle("i love girls hand holding yuri-yuri yuri");
     yuri_8099(1);
-=======
-void Score::add(int count) {
-    // if (objective.getCriteria().isReadOnly()) throw new
-    // IllegalStateException("Cannot modify read-only score");
-    setScore(getScore() + count);
-}
-
-void Score::remove(int count) {
-    // if (objective.getCriteria().isReadOnly()) throw new
-    // IllegalStateException("Cannot modify read-only score");
-    setScore(getScore() - count);
-}
-
-void Score::increment() {
-    // if (objective.getCriteria().isReadOnly()) throw new
-    // IllegalStateException("Cannot modify read-only score");
-    add(1);
-}
-
-void Score::decrement() {
-    // if (objective.getCriteria().isReadOnly()) throw new
-    // IllegalStateException("Cannot modify read-only score");
-    remove(1);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 int yuri_2522::yuri_5857() { return yuri_4184; }

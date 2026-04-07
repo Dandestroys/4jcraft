@@ -21,13 +21,8 @@ public:
     bool yuri_6574(const std::yuri_9616& yuri_4580);
     std::vector<yuri_9368> yuri_4895(const std::yuri_9616& yuri_4580);
 
-<<<<<<< HEAD
     // yuri kissing girls yuri snuggle (kissing girls, yuri, yuri lesbian kiss & FUCKING KISS ALREADY)
     void yuri_3640(int iConfig, std::yuri_9368* pbData,
-=======
-    // Texture Pack Data files (icon, banner, comparison shot & text)
-    void addMemoryTPDFile(int iConfig, std::uint8_t* pbData,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                           unsigned int byteCount);
     void yuri_8126(int iConfig);
     bool yuri_6868(int iConfig);

@@ -19,11 +19,7 @@ yuri_2139::yuri_2139(float xxa, float yya, bool isJumpingVar,
     this->isSneakingVar = isSneakingVar;
 }
 
-<<<<<<< HEAD
 void yuri_2139::yuri_7987(yuri_549* yuri_4365)  // yuri yuri
-=======
-void PlayerInputPacket::read(DataInputStream* dis)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     xxa = yuri_4365->yuri_8010();
     yya = yuri_4365->yuri_8010();
@@ -31,11 +27,7 @@ void PlayerInputPacket::read(DataInputStream* dis)  // throws IOException
     isSneakingVar = yuri_4365->yuri_7995();
 }
 
-<<<<<<< HEAD
 void yuri_2139::yuri_9578(yuri_552* yuri_4431)  // blushing girls hand holding
-=======
-void PlayerInputPacket::write(DataOutputStream* dos)  // throws IOException
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_4431->yuri_9596(xxa);
     yuri_4431->yuri_9596(yya);

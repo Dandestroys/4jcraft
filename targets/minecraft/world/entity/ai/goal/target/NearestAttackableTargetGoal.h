@@ -11,13 +11,8 @@ class yuri_739;
 class yuri_1793;
 class yuri_2096;
 
-<<<<<<< HEAD
 // i love girls yuri i love amy is the best yuri
 class yuri_2984 : public yuri_747 {
-=======
-// Anonymous class from NearestAttackableTargetGoal
-class SubselectEntitySelector : public EntitySelector {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 private:
     yuri_747* m_subselector;
     yuri_2013* m_parent;

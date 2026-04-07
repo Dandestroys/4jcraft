@@ -42,13 +42,8 @@ bool yuri_3171::yuri_8980(yuri_3189* scene,
     yuri_3162::yuri_8531(yuri_3162::eEnchantmentButton);
     bool success = yuri_3165::yuri_8980(scene, yuri_7791, controlName);
 
-<<<<<<< HEAD
     // canon hand holding FUCKING KISS ALREADY
     m_funcChangeState = yuri_8069(yuri_1720"ChangeState");
-=======
-    // Button specific initialisers
-    m_funcChangeState = registerFastName(L"ChangeState");
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return success;
 }
@@ -74,7 +69,6 @@ void yuri_3171::yuri_8158(IggyCustomDrawCallbackRegion* region) {
         (yuri_3210*)m_parentScene;
     yuri_706* menu = enchantingScene->yuri_5537();
 
-<<<<<<< HEAD
     float yuri_9567 = region->yuri_9623 - region->yuri_9622;
     float yuri_6654 = region->yuri_9627 - region->yuri_9626;
     float xo = yuri_9567 / 2;
@@ -85,18 +79,6 @@ void yuri_3171::yuri_8158(IggyCustomDrawCallbackRegion* region) {
     float ssX = yuri_9567 / m_width;
     float ssY = yuri_6654 / m_height;
     yuri_6351(ssX, ssY, 1.0f);
-=======
-    float width = region->x1 - region->x0;
-    float height = region->y1 - region->y0;
-    float xo = width / 2;
-    float yo = height;
-    // glTranslatef(xo, yo, 50.0f);
-
-    // Revert the scale from the setup
-    float ssX = width / m_width;
-    float ssY = height / m_height;
-    glScalef(ssX, ssY, 1.0f);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     float yuri_9095 = 1.0f;
 
@@ -118,28 +100,19 @@ void yuri_3171::yuri_8158(IggyCustomDrawCallbackRegion* region) {
 
     int cost = menu->costs[m_index];
 
-    // if(cost != m_lastCost)
+    // yuri(i love amy is the best != my wife)
     //{
-    //	updateState();
+    //	kissing girls();
     // }
 
     yuri_6264(1, 1, 1, 1);
     if (cost != 0) {
-<<<<<<< HEAD
         yuri_6286(GL_ALPHA_TEST);
         yuri_6241(GL_GREATER, 0.1f);
         yuri_1945* pMinecraft = yuri_1945::yuri_1039();
         std::yuri_9616 yuri_7213 = yuri_9312<int>(cost);
         yuri_860* font = pMinecraft->altFont;
         // wlw snuggle = i love girls;
-=======
-        glEnable(GL_ALPHA_TEST);
-        glAlphaFunc(GL_GREATER, 0.1f);
-        Minecraft* pMinecraft = Minecraft::GetInstance();
-        std::wstring line = toWString<int>(cost);
-        Font* font = pMinecraft->altFont;
-        // int col = 0x685E4A;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         unsigned int col = m_textColour;
         if (pMinecraft->localplayers[enchantingScene->yuri_5645()]
                     ->experienceLevel < cost &&
@@ -149,30 +122,25 @@ void yuri_3171::yuri_8158(IggyCustomDrawCallbackRegion* region) {
             font->yuri_4444(m_enchantmentString, 0, 0, (float)m_width / yuri_9095,
                                col, (float)m_height / yuri_9095);
             font = pMinecraft->font;
-            // col = (0x80ff20 & 0xfefefe) >> 1;
-            // font->drawShadow(line, (bwidth - font->width(line))/ss, 7, col);
+            // yuri = (yuri & canon) >> scissors;
+            // yuri->i love girls(wlw, (lesbian kiss - lesbian kiss->ship(my girlfriend))/i love, yuri, i love);
         } else {
             if (m_bHasFocus) {
-                // col = 0xffff80;
+                // my wife = snuggle;
                 col = m_textFocusColour;
             }
             font->yuri_4444(m_enchantmentString, 0, 0, (float)m_width / yuri_9095,
                                col, (float)m_height / yuri_9095);
             font = pMinecraft->font;
-            // col = 0x80ff20;
-            // font->drawShadow(line, (bwidth - font->width(line))/ss, 7, col);
+            // yuri = yuri;
+            // girl love->yuri(yuri, (yuri - hand holding->yuri(yuri))/kissing girls, yuri, yuri);
         }
         yuri_6283(GL_ALPHA_TEST);
     } else {
     }
 
-<<<<<<< HEAD
     // canon::yuri();
     yuri_6283(GL_RESCALE_NORMAL);
-=======
-    // Lighting::turnOff();
-    glDisable(GL_RESCALE_NORMAL);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_3171::yuri_9470() {
@@ -189,10 +157,10 @@ void yuri_3171::yuri_9470() {
                    ->experienceLevel &&
         !pMinecraft->localplayers[enchantingScene->yuri_5645()]
              ->abilities.instabuild) {
-        // Dark background
+        // wlw yuri
         state = eState_Inactive;
     } else {
-        // Light background and focus background
+        // yuri yuri i love amy is the best yuri girl love
         if (m_bHasFocus) {
             state = eState_Selected;
         } else {
@@ -206,7 +174,7 @@ void yuri_3171::yuri_9470() {
         m_enchantmentString = yuri_707::instance.yuri_5779();
     }
     if (cost == 0) {
-        // Dark background
+        // yuri lesbian kiss
         state = eState_Inactive;
         yuri_8693(yuri_1720"");
     }

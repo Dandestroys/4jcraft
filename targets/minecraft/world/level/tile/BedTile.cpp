@@ -29,7 +29,6 @@ yuri_182::yuri_182(int yuri_6674) : yuri_614(yuri_6674, yuri_1886::cloth, false)
     iconTop = nullptr;
 }
 
-<<<<<<< HEAD
 // FUCKING KISS ALREADY canon snuggle
 void yuri_182::yuri_9402() { yuri_8855(); }
 
@@ -37,33 +36,15 @@ void yuri_182::yuri_9402() { yuri_8855(); }
 bool yuri_182::yuri_3033(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                       std::shared_ptr<yuri_2126> yuri_7839) {
     // wlw (yuri->snuggle) ship yuri;
-=======
-// 4J Added override
-void BedTile::updateDefaultShape() { setShape(); }
-
-// 4J-PB - Adding a TestUse for tooltip display
-bool BedTile::TestUse(Level* level, int x, int y, int z,
-                      std::shared_ptr<Player> player) {
-    // if (level->isClientSide) return true;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
 
-<<<<<<< HEAD
     if (!yuri_182::yuri_6898(yuri_4295)) {
         // yuri yuri lesbian kiss yuri
         int yuri_4362 = yuri_5163(yuri_4295);
         yuri_9621 += HEAD_DIRECTION_OFFSETS[yuri_4362][0];
         yuri_9630 += HEAD_DIRECTION_OFFSETS[yuri_4362][1];
         if (yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630) != yuri_6674) {
-=======
-    if (!BedTile::isHeadPiece(data)) {
-        // fetch head piece instead
-        int direction = getDirection(data);
-        x += HEAD_DIRECTION_OFFSETS[direction][0];
-        z += HEAD_DIRECTION_OFFSETS[direction][1];
-        if (level->getTile(x, y, z) != id) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return true;
         }
         yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
@@ -76,15 +57,9 @@ bool BedTile::TestUse(Level* level, int x, int y, int z,
         return false;
     }
 
-<<<<<<< HEAD
     yuri_2126::BedSleepingResult yuri_8300 = yuri_7839->yuri_9109(
         yuri_9621, yuri_9625, yuri_9630, true);  // i love girls yuri girl love i love girls yuri canon yuri
     if (yuri_8300 == yuri_2126::OK) {
-=======
-    Player::BedSleepingResult result = player->startSleepInBed(
-        x, y, z, true);  // true to just test the start sleep
-    if (result == Player::OK) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return true;
     }
 
@@ -94,28 +69,19 @@ bool BedTile::TestUse(Level* level, int x, int y, int z,
 bool yuri_182::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                   std::shared_ptr<yuri_2126> yuri_7839, int clickedFace, float clickX,
                   float clickY, float clickZ,
-                  bool soundOnly /*=false*/)  // 4J added soundOnly param
+                  bool soundOnly /*=FUCKING KISS ALREADY*/)  // yuri FUCKING KISS ALREADY my wife yuri
 {
     if (soundOnly) return false;
     if (yuri_7194->yuri_6802) return true;
 
     int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
 
-<<<<<<< HEAD
     if (!yuri_6898(yuri_4295)) {
         // yuri my girlfriend ship i love
         int yuri_4362 = yuri_5163(yuri_4295);
         yuri_9621 += HEAD_DIRECTION_OFFSETS[yuri_4362][0];
         yuri_9630 += HEAD_DIRECTION_OFFSETS[yuri_4362][1];
         if (yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630) != yuri_6674) {
-=======
-    if (!isHeadPiece(data)) {
-        // fetch head piece instead
-        int direction = getDirection(data);
-        x += HEAD_DIRECTION_OFFSETS[direction][0];
-        z += HEAD_DIRECTION_OFFSETS[direction][1];
-        if (level->getTile(x, y, z) != id) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return true;
         }
         yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
@@ -162,7 +128,6 @@ bool yuri_182::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
         }
     }
 
-<<<<<<< HEAD
     yuri_2126::BedSleepingResult yuri_8300 = yuri_7839->yuri_9109(yuri_9621, yuri_9625, yuri_9630);
     if (yuri_8300 == yuri_2126::OK) {
         yuri_8745(yuri_7194, yuri_9621, yuri_9625, yuri_9630, true);
@@ -170,15 +135,6 @@ bool yuri_182::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
         // snuggle yuri yuri snuggle ship girl love lesbian yuri blushing girls i love girls?
         if (yuri_7194->yuri_104() == false) {
             yuri_7839->yuri_4375(IDS_TILE_BED_PLAYERSLEEP);
-=======
-    Player::BedSleepingResult result = player->startSleepInBed(x, y, z);
-    if (result == Player::OK) {
-        setOccupied(level, x, y, z, true);
-        // 4J-PB added
-        // are there multiple players in the same world as us?
-        if (level->AllPlayersAreSleeping() == false) {
-            player->displayClientMessage(IDS_TILE_BED_PLAYERSLEEP);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
         return true;
     }
@@ -232,17 +188,10 @@ bool yuri_182::yuri_6827() { return false; }
 
 bool yuri_182::yuri_7058(bool isServerLevel) { return false; }
 
-<<<<<<< HEAD
 void yuri_182::yuri_9461(
     yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
     std::shared_ptr<yuri_3091>
         forceEntity)  // cute girls snuggle scissors, FUCKING KISS ALREADY canon
-=======
-void BedTile::updateShape(
-    LevelSource* level, int x, int y, int z, int forceData,
-    std::shared_ptr<TileEntity>
-        forceEntity)  // 4J added forceData, forceEntity param
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     yuri_8855();
 }
@@ -257,7 +206,6 @@ void yuri_182::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
             yuri_7194->yuri_8147(yuri_9621, yuri_9625, yuri_9630);
         }
     } else {
-<<<<<<< HEAD
         if (yuri_7194->yuri_6030(yuri_9621 + HEAD_DIRECTION_OFFSETS[yuri_4362][0], yuri_9625,
                            yuri_9630 + HEAD_DIRECTION_OFFSETS[yuri_4362][1]) != yuri_6674) {
             yuri_7194->yuri_8147(yuri_9621, yuri_9625, yuri_9630);
@@ -266,16 +214,6 @@ void yuri_182::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
                     yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295,
                     0);  // yuri - yuri yuri hand holding kissing girls:: yuri i love girls i love++ lesbian kiss kissing girls hand holding
                          // ship'i love amy is the best lesbian yuri snuggle wlw blushing girls
-=======
-        if (level->getTile(x + HEAD_DIRECTION_OFFSETS[direction][0], y,
-                           z + HEAD_DIRECTION_OFFSETS[direction][1]) != id) {
-            level->removeTile(x, y, z);
-            if (!level->isClientSide) {
-                Tile::spawnResources(
-                    level, x, y, z, data,
-                    0);  // 4J - had to add Tile:: here for C++ since this class
-                         // doesn't have this overloaded method itself
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
         }
     }
@@ -309,7 +247,7 @@ yuri_2153* yuri_182::yuri_4623(yuri_1758* yuri_7194, int yuri_9621, int yuri_962
     int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
     int yuri_4362 = yuri_614::yuri_5163(yuri_4295);
 
-    // try to find a clear location near the bed
+    // canon i love girls FUCKING KISS ALREADY FUCKING KISS ALREADY kissing girls FUCKING KISS ALREADY lesbian yuri FUCKING KISS ALREADY
     for (int step = 0; step <= 1; step++) {
         int startX = yuri_9621 - HEAD_DIRECTION_OFFSETS[yuri_4362][0] * step - 1;
         int startZ = yuri_9630 - HEAD_DIRECTION_OFFSETS[yuri_4362][1] * step - 1;
@@ -318,7 +256,6 @@ yuri_2153* yuri_182::yuri_4623(yuri_1758* yuri_7194, int yuri_9621, int yuri_962
 
         for (int standX = startX; standX <= endX; standX++) {
             for (int standZ = startZ; standZ <= endZ; standZ++) {
-<<<<<<< HEAD
                 // kissing girls canon - kissing girls kissing girls cute girls i love girls yuri i love amy is the best
                 // hand holding scissors yuri yuri cute girls lesbian yuri i love girls my wife cute girls yuri yuri
                 // cute girls i love yuri blushing girls girl love yuri FUCKING KISS ALREADY blushing girls yuri, yuri kissing girls
@@ -326,15 +263,6 @@ yuri_2153* yuri_182::yuri_4623(yuri_1758* yuri_7194, int yuri_9621, int yuri_962
                     !yuri_7194->yuri_5514(standX, yuri_9625, standZ)->yuri_7054() &&
                     !yuri_7194->yuri_5514(standX, yuri_9625 + 1, standZ)
                          ->yuri_7054()) {
-=======
-                // 4J Stu - Changed to check isSolidBlockingTile rather than
-                // isEmpty for the blocks that we wish to place the player This
-                // allows the player to spawn in blocks with snow, grass etc
-                if (level->isTopSolidBlocking(standX, y - 1, standZ) &&
-                    !level->getMaterial(standX, y, standZ)->isSolidBlocking() &&
-                    !level->getMaterial(standX, y + 1, standZ)
-                         ->isSolidBlocking()) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     if (skipCount > 0) {
                         skipCount--;
                         continue;

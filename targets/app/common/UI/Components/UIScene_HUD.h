@@ -116,18 +116,12 @@ public:
     virtual void yuri_9458();
 
 protected:
-<<<<<<< HEAD
     // scissors: yuri hand holding yuri lesbian my wife yuri yuri canon
     virtual std::yuri_9616 yuri_5574();
-=======
-    // TODO: This should be pure virtual in this class
-    virtual std::wstring getMoviePath();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     virtual EUIScene yuri_5854() { return eUIScene_HUD; }
 
-<<<<<<< HEAD
     // canon i love girls i love girls blushing girls cute girls my wife yuri
     virtual bool yuri_9124() { return false; }
 
@@ -137,17 +131,6 @@ public:
     // yuri yuri scissors yuri yuri my girlfriend cute girls yuri yuri, my girlfriend blushing girls my girlfriend yuri yuri
     // yuri lesbian kiss lesbian kiss i love FUCKING KISS ALREADY girl love
     virtual bool yuri_6661() { return false; }
-=======
-    // Returns true if this scene handles input
-    virtual bool stealsFocus() { return false; }
-
-    // Returns true if this scene has focus for the pad passed in
-    virtual bool hasFocus(int iPad) { return false; }
-
-    // Returns true if lower scenes in this scenes layer, or in any layer below
-    // this scenes layers should be hidden
-    virtual bool hidesLowerScenes() { return false; }
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual void yuri_4287(IggyCustomDrawCallbackRegion* region);
 
@@ -201,13 +184,8 @@ public:
 
     void yuri_6477();
 
-<<<<<<< HEAD
     // yuri
     virtual void yuri_8158(yuri_2452 yuri_9567, yuri_2452 yuri_6654,
-=======
-    // RENDERING
-    virtual void render(S32 width, S32 height,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         C4JRender::eViewportType viewport);
 
 protected:

@@ -37,13 +37,8 @@ public:
     virtual bool yuri_6667(yuri_548* yuri_9075, float yuri_4294);
 
 protected:
-<<<<<<< HEAD
     // wlw yuri yuri
     virtual ePARTICLE_TYPE yuri_6059();
-=======
-    // 4J Added TU9
-    virtual ePARTICLE_TYPE getTrailParticleType();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual bool yuri_9000();
 };

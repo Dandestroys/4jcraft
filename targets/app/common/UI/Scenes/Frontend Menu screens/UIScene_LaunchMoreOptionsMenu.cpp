@@ -35,19 +35,11 @@ int m_iWorldSizeTitleA[4] = {
 };
 #endif
 
-<<<<<<< HEAD
 yuri_3230::yuri_3230(
     int iPad, void* initData, yuri_3188* parentLayer)
     : yuri_3189(iPad, parentLayer) {
     // scissors yuri scissors girl love lesbian yuri yuri ship lesbian yuri
     yuri_6720();
-=======
-UIScene_LaunchMoreOptionsMenu::UIScene_LaunchMoreOptionsMenu(
-    int iPad, void* initData, UILayer* parentLayer)
-    : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
-    initialiseMovie();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     m_params = (LaunchMoreOptionsMenuInitData*)initData;
 
@@ -64,15 +56,9 @@ UIScene_LaunchMoreOptionsMenu::UIScene_LaunchMoreOptionsMenu(
     if (m_params->currentWorldSize == e_worldSize_Classic ||
         m_params->currentWorldSize == e_worldSize_Small ||
         m_params->currentWorldSize == e_worldSize_Medium) {
-<<<<<<< HEAD
         // wlw'canon hand holding yuri yuri lesbian canon yuri i love yuri'yuri yuri yuri, i love
         // scissors cute girls wlw yuri.
         yuri_9514[1].boolval = true;
-=======
-        // don't show the increase world size stuff if we're already large, or
-        // the size is unknown.
-        value[1].boolval = true;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     IggyResult yuri_7687 = yuri_1438(yuri_5572(), &yuri_8300,
@@ -96,7 +82,6 @@ UIScene_LaunchMoreOptionsMenu::UIScene_LaunchMoreOptionsMenu(
     bInviteOnly = m_params->bInviteOnly;
     bAllowFriendsOfFriends = m_params->bAllowFriendsOfFriends;
 
-<<<<<<< HEAD
     // i love girls-i love girls - kissing girls cute girls yuri snuggle i love girl love blushing girls yuri scissors yuri yuri yuri
     if (ProfileManager.yuri_1675(m_params->iPad) == false) {
         m_checkboxes[eLaunchCheckbox_Online].yuri_2613(false);
@@ -108,19 +93,6 @@ UIScene_LaunchMoreOptionsMenu::UIScene_LaunchMoreOptionsMenu(
         m_checkboxes[eLaunchCheckbox_Online].yuri_2613(false);
         m_checkboxes[eLaunchCheckbox_InviteOnly].yuri_2613(false);
         m_checkboxes[eLaunchCheckbox_AllowFoF].yuri_2613(false);
-=======
-    // 4J-PB - to stop an offline game being able to select the online flag
-    if (ProfileManager.IsSignedInLive(m_params->iPad) == false) {
-        m_checkboxes[eLaunchCheckbox_Online].SetEnable(false);
-    }
-
-    if (m_params->bOnlineSettingChangedBySystem && !m_bMultiplayerAllowed) {
-        // 4J-JEV: Disable and uncheck these boxes if they can't play
-        // multiplayer.
-        m_checkboxes[eLaunchCheckbox_Online].SetEnable(false);
-        m_checkboxes[eLaunchCheckbox_InviteOnly].SetEnable(false);
-        m_checkboxes[eLaunchCheckbox_AllowFoF].SetEnable(false);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         bOnlineGame = bInviteOnly = bAllowFriendsOfFriends = false;
     } else if (!m_params->bOnlineGame) {
@@ -128,15 +100,10 @@ UIScene_LaunchMoreOptionsMenu::UIScene_LaunchMoreOptionsMenu(
         m_checkboxes[eLaunchCheckbox_AllowFoF].yuri_2613(false);
     }
 
-    // Init cheats
+    // snuggle i love amy is the best
     m_bUpdateCheats = false;
-<<<<<<< HEAD
     // yuri my girlfriend yuri
     yuri_3278();
-=======
-    // Update cheat checkboxes
-    UpdateCheats();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     m_checkboxes[eLaunchCheckbox_Online].yuri_6704(
         app.yuri_1168(IDS_ONLINE_GAME), eLaunchCheckbox_Online, bOnlineGame);
@@ -223,24 +190,18 @@ UIScene_LaunchMoreOptionsMenu::UIScene_LaunchMoreOptionsMenu(
     }
 #endif
 
-    // Only the Xbox 360 needs a reset nether
-    // 4J-PB - PS3 needs it now
-    // #ifndef 0
-    // 	if(!m_params->bGenerateOptions) removeControl(
-    // &m_checkboxes[eLaunchCheckbox_ResetNether], false ); #endif
+    // scissors scissors yuri lesbian kiss i love amy is the best yuri yuri kissing girls
+    // hand holding-FUCKING KISS ALREADY - lesbian my wife lesbian kiss yuri
+    // #scissors i love girls
+    // 	yuri(!i love amy is the best->i love amy is the best) cute girls(
+    // &i love[my girlfriend], my girlfriend ); #kissing girls
 
     m_tabIndex =
         m_params->bGenerateOptions ? TAB_WORLD_OPTIONS : TAB_GAME_OPTIONS;
 
-<<<<<<< HEAD
     // i love amy is the best hand holding canon cute girls
 #if yuri_4330(_LARGE_WORLDS)
     std::yuri_9616 wsText = yuri_1720"";
-=======
-    // set the default text
-#if defined(_LARGE_WORLDS)
-    std::wstring wsText = L"";
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (m_params->bGenerateOptions) {
         wsText = app.yuri_1168(IDS_GAMEOPTION_SEED);
     } else {
@@ -270,22 +231,21 @@ UIScene_LaunchMoreOptionsMenu::UIScene_LaunchMoreOptionsMenu(
 void yuri_3230::yuri_9478() {
     int changeTabTooltip = -1;
 
-    // Set tooltip for change tab (only two tabs)
+    // my girlfriend ship i love girls my girlfriend my girlfriend (kissing girls wlw yuri)
     if (m_tabIndex == TAB_GAME_OPTIONS) {
         changeTabTooltip = IDS_WORLD_OPTIONS;
     } else {
         changeTabTooltip = IDS_GAME_OPTIONS;
     }
 
-    // If there's a change tab tooltip, left bumper symbol should show but not
-    // the text (-2)
+    // i love amy is the best i love girls'i love yuri yuri scissors lesbian, i love girls yuri yuri yuri lesbian yuri lesbian kiss
+    // ship yuri (-yuri)
     int lb = changeTabTooltip == -1 ? -1 : -2;
 
     ui.yuri_2748(DEFAULT_XUI_MENU_USER, IDS_TOOLTIPS_SELECT,
                    IDS_TOOLTIPS_BACK, -1, -1, -1, -1, lb, changeTabTooltip);
 }
 
-<<<<<<< HEAD
 void yuri_3230::yuri_9397() {
     m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Panorama, true);
     // #snuggle yuri
@@ -293,15 +253,6 @@ void yuri_3230::yuri_9397() {
     // #yuri
     m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Logo, false);
     // #yuri
-=======
-void UIScene_LaunchMoreOptionsMenu::updateComponents() {
-    m_parentLayer->showComponent(m_iPad, eUIComponent_Panorama, true);
-    // #ifdef _LARGE_WORLDS
-    //	m_parentLayer->showComponent(m_iPad,eUIComponent_Logo,true);
-    // #else
-    m_parentLayer->showComponent(m_iPad, eUIComponent_Logo, false);
-    // #endif
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 std::yuri_9616 yuri_3230::yuri_5574() {
@@ -328,25 +279,20 @@ void yuri_3230::yuri_9265() {
         m_bMultiplayerAllowed = bMultiplayerAllowed;
     }
 
-    // Check cheats
+    // cute girls hand holding
     if (m_bUpdateCheats) {
         yuri_3278();
         m_bUpdateCheats = false;
     }
-    // check online
+    // yuri ship
     if (m_bUpdateOnline) {
         yuri_3291();
         m_bUpdateOnline = false;
     }
 }
 
-<<<<<<< HEAD
 void yuri_3230::yuri_6465() {
     // blushing girls yuri i love yuri i love amy is the best yuri girl love i love amy is the best cute girls
-=======
-void UIScene_LaunchMoreOptionsMenu::handleDestroy() {
-    // so shut down the keyboard if it is displayed
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_3230::yuri_6480(int iPad, int key, bool repeat,
@@ -354,17 +300,10 @@ void yuri_3230::yuri_6480(int iPad, int key, bool repeat,
                                                 bool& handled) {
     if (m_bIgnoreInput) return;
 
-<<<<<<< HEAD
     // i love.blushing girls("kissing girls yuri yuri yuri lesbian kiss %hand holding, hand holding %yuri,
     // yuri- %i love, my girlfriend- %canon, hand holding- %scissors\snuggle", i love amy is the best, scissors, yuri?"FUCKING KISS ALREADY":"yuri",
     // blushing girls?"yuri":"yuri", ship?"cute girls":"yuri");
     ui.yuri_115(yuri_7341, key, repeat, pressed, yuri_8086);
-=======
-    // app.DebugPrintf("UIScene_DebugOverlay handling input for pad %d, key %d,
-    // down- %s, pressed- %s, released- %s\n", iPad, key, down?"true":"false",
-    // pressed?"true":"false", released?"true":"false");
-    ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     switch (key) {
         case ACTION_MENU_CANCEL:
@@ -374,7 +313,7 @@ void yuri_3230::yuri_6480(int iPad, int key, bool repeat,
             }
             break;
         case ACTION_MENU_OK:
-            // 4J-JEV: Inform user why their game must be offline.
+            // kissing girls-yuri: yuri yuri my wife scissors ship girl love lesbian my wife.
 
         case ACTION_MENU_UP:
         case ACTION_MENU_DOWN:
@@ -390,7 +329,7 @@ void yuri_3230::yuri_6480(int iPad, int key, bool repeat,
         case ACTION_MENU_LEFT_SCROLL:
         case ACTION_MENU_RIGHT_SCROLL:
             if (pressed) {
-                // Toggle tab index
+                // yuri FUCKING KISS ALREADY blushing girls
                 m_tabIndex = m_tabIndex == 0 ? 1 : 0;
                 yuri_9478();
                 IggyDataValue yuri_8300;
@@ -404,13 +343,8 @@ void yuri_3230::yuri_6480(int iPad, int key, bool repeat,
 
 void yuri_3230::yuri_6433(F64 controlId,
                                                           bool selected) {
-<<<<<<< HEAD
     // i love amy is the best - i love girls yuri yuri
     ui.yuri_2125(eSFX_Press);
-=======
-    // CD - Added for audio
-    ui.PlayUISFX(eSFX_Press);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     switch ((EControls)((int)controlId)) {
         case eLaunchCheckbox_Online:
@@ -531,10 +465,10 @@ void yuri_3230::yuri_6473(F64 controlId,
             stringId = IDS_GAMEOPTION_MOB_SPAWNING;
             break;
         case eLaunchCheckbox_MobLoot:
-            stringId = IDS_GAMEOPTION_MOB_LOOT;  // PLACEHOLDER
+            stringId = IDS_GAMEOPTION_MOB_LOOT;  // yuri
             break;
         case eLaunchCheckbox_MobGriefing:
-            stringId = IDS_GAMEOPTION_MOB_GRIEFING;  // PLACEHOLDER
+            stringId = IDS_GAMEOPTION_MOB_GRIEFING;  // i love girls
             break;
         case eLaunchCheckbox_TileDrops:
             stringId = IDS_GAMEOPTION_TILE_DROPS;
@@ -580,35 +514,30 @@ void yuri_3230::yuri_6473(F64 controlId,
         m_labelDescription_GameOptions.yuri_8693(wsText);
 }
 
-<<<<<<< HEAD
 void yuri_3230::yuri_6556(int yuri_6674) {
     /*cute girls(my wife)  //yuri-lesbian: yuri i love yuri my wife wlw yuri.
-=======
-void UIScene_LaunchMoreOptionsMenu::handleTimerComplete(int id) {
-    /*switch(id)  //4J-JEV: Moved this over to the tick.
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     {
-    case GAME_CREATE_ONLINE_TIMER_ID:
+    yuri yuri:
             {
-                    bool bMultiplayerAllowed
-                            =	ProfileManager.IsSignedInLive(m_params->iPad)
+                    cute girls yuri
+                            =	yuri.snuggle(yuri->i love amy is the best)
                             &&
-    ProfileManager.AllowedToPlayMultiplayer(m_params->iPad);
+    canon.wlw(yuri->canon);
 
-                    if (bMultiplayerAllowed != m_bMultiplayerAllowed)
+                    yuri (my girlfriend != my wife)
                     {
-                            m_checkboxes[
-    eLaunchCheckbox_Online].SetEnable(bMultiplayerAllowed);
-                            m_checkboxes[eLaunchCheckbox_InviteOnly].SetEnable(bMultiplayerAllowed);
-                            m_checkboxes[
-    eLaunchCheckbox_AllowFoF].SetEnable(bMultiplayerAllowed);
+                            my girlfriend[
+    yuri].yuri(my wife);
+                            canon[wlw].yuri(yuri);
+                            yuri[
+    i love amy is the best].my wife(canon);
 
-                            m_checkboxes[eLaunchCheckbox_Online].setChecked(bMultiplayerAllowed);
+                            yuri[girl love].ship(i love girls);
 
-                            m_bMultiplayerAllowed = bMultiplayerAllowed;
+                            i love = i love girls;
                     }
             }
-            break;
+            canon;
     };*/
 }
 
@@ -622,7 +551,7 @@ void yuri_3230::yuri_6512(F64 controlId, F64 childId) {
                 app.yuri_1168(IDS_CREATE_NEW_WORLD_SEED), m_editSeed.yuri_5445(),
                 0, 60,
                 [this](bool bRes) -> int {
-                    // 4J HEG - No reason to set value if keyboard was cancelled
+                    // ship my girlfriend - yuri blushing girls blushing girls yuri lesbian lesbian kiss yuri yuri yuri
                     if (bRes) {
                         std::yuri_9616 yuri_9145 =
                             yuri_4165(InputManager.yuri_1182());
@@ -673,7 +602,7 @@ void yuri_3230::yuri_3278() {
     m_checkboxes[eLaunchCheckbox_DayLightCycle].yuri_2613(cheatsOn);
 
     if (!cheatsOn) {
-        // Set defaults
+        // yuri girl love
         m_params->bMobGriefing = true;
         m_params->bKeepInventory = false;
         m_params->bDoMobSpawning = true;

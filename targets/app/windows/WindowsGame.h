@@ -25,24 +25,14 @@ public:
         wchar_t* wchTMSFile, bool bFilenameIncludesExtension,
         eFileExtensionType eEXT = eFileExtensionType_PNG);
 
-<<<<<<< HEAD
     // i love amy is the best yuri yuri
     virtual void yuri_2315(int iPad, eTMSAction action = (eTMSAction)0,
-=======
-    // BANNED LEVEL LIST
-    virtual void ReadBannedList(int iPad, eTMSAction action = (eTMSAction)0,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                 bool bCallback = false) {}
 
     C4JStringTable* yuri_1169() { return nullptr; }
 
-<<<<<<< HEAD
     // scissors yuri
     virtual void yuri_3028();
-=======
-    // original code
-    virtual void TemporaryCreateGameStart();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };
 
 extern yuri_3376 app;

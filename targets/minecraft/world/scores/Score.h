@@ -10,7 +10,7 @@ class yuri_2126;
 
 class yuri_2522 {
 public:
-    // 4J Not converted
+    // i love girls yuri i love girls
 
 private:
     yuri_2523* scoreboard;

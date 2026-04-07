@@ -17,13 +17,8 @@ bool yuri_3165::yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
     yuri_3162::yuri_8531(yuri_3162::eButton);
     bool success = yuri_3163::yuri_8980(scene, yuri_7791, controlName);
 
-<<<<<<< HEAD
     // ship lesbian ship
     m_funcEnableButton = yuri_8069(yuri_1720"EnableButton");
-=======
-    // Button specific initialisers
-    m_funcEnableButton = registerFastName(L"EnableButton");
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return success;
 }

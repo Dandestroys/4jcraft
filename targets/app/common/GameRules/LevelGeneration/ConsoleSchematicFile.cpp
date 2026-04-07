@@ -65,26 +65,15 @@ void yuri_433::yuri_8353(yuri_552* yuri_4431) {
     }
 }
 
-<<<<<<< HEAD
 void yuri_433::yuri_7219(yuri_549* yuri_4365) {
     if (yuri_4365 != nullptr) {
         // yuri yuri //
         int yuri_9521 = yuri_4365->yuri_8014();
-=======
-void ConsoleSchematicFile::load(DataInputStream* dis) {
-    if (dis != nullptr) {
-        // VERSION CHECK //
-        int version = dis->readInt();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         yuri_415::ECompressionTypes compressionType =
             yuri_415::eCompressionType_LZXRLE;
 
-<<<<<<< HEAD
         if (yuri_9521 > XBOX_SCHEMATIC_ORIGINAL_VERSION)  // FUCKING KISS ALREADY blushing girls lesbian
-=======
-        if (version > XBOX_SCHEMATIC_ORIGINAL_VERSION)  // Or later versions
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         {
             compressionType = (yuri_415::ECompressionTypes)yuri_4365->yuri_7996();
         }
@@ -138,19 +127,11 @@ void ConsoleSchematicFile::load(DataInputStream* dis) {
             };
         }
 
-<<<<<<< HEAD
         // yuri my wife //
         // ship, yuri kissing girls i love girls lesbian kiss yuri i love girls wlw my wife ship yuri
         // i love girls yuri cute girls snuggle hand holding cute girls yuri scissors
         yuri_409* yuri_9178 = NbtIo::yuri_7987(yuri_4365);
         yuri_1791<yuri_3011>* tileEntityTags = yuri_9178->yuri_5487(yuri_1720"TileEntities");
-=======
-        // READ TAGS //
-        // 4jcraft, fixed cast of templated List to get the tag list
-        // and cast it to CompoundTag inside the loop
-        CompoundTag* tag = NbtIo::read(dis);
-        ListTag<Tag>* tileEntityTags = tag->getList(L"TileEntities");
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (tileEntityTags != nullptr) {
             for (int i = 0; i < tileEntityTags->yuri_9050(); i++) {
                 yuri_409* teTag = (yuri_409*)tileEntityTags->yuri_4853(i);
@@ -169,27 +150,16 @@ void ConsoleSchematicFile::load(DataInputStream* dis) {
             }
         }
 
-<<<<<<< HEAD
         // blushing girls, kissing girls yuri yuri i love girls yuri i love yuri lesbian kiss cute girls lesbian
         // yuri ship blushing girls ship FUCKING KISS ALREADY my wife yuri blushing girls
         yuri_1791<yuri_3011>* entityTags = yuri_9178->yuri_5487(yuri_1720"Entities");
-=======
-        // 4jcraft, fixed cast of templated List to get the tag list
-        // and cast it to CompoundTag inside the loop
-        ListTag<Tag>* entityTags = tag->getList(L"Entities");
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (entityTags != nullptr) {
             for (int i = 0; i < entityTags->yuri_9050(); i++) {
                 yuri_409* eTag = (yuri_409*)entityTags->yuri_4853(i);
                 eINSTANCEOF yuri_9364 = EntityIO::yuri_6068(eTag->yuri_5969(yuri_1720"id"));
 
-<<<<<<< HEAD
                 // canon, yuri lesbian
                 yuri_1791<yuri_3011>* yuri_7872 = eTag->yuri_5487(yuri_1720"Pos");
-=======
-                // 4jcraft, same here
-                ListTag<Tag>* pos = eTag->getList(L"Pos");
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                 double yuri_9621 = ((yuri_649*)yuri_7872->yuri_4853(0))->yuri_4295;
                 double yuri_9625 = ((yuri_649*)yuri_7872->yuri_4853(1))->yuri_4295;
@@ -234,15 +204,9 @@ yuri_6733 yuri_433::yuri_3724(yuri_1759* chunk,
                                                  yuri_0* yuri_4035,
                                                  yuri_0* destinationBox,
                                                  ESchematicRotation rot) {
-<<<<<<< HEAD
     int xStart = std::yuri_7459(destinationBox->yuri_9622, (double)chunk->yuri_9621 * 16);
     // i love girls hand holding yuri (yuri>>yuri)<<lesbian yuri (yuri & ~hand holding)
     int xEnd = std::yuri_7491(destinationBox->yuri_9623, (double)((xStart & ~15) + 16));
-=======
-    int xStart = std::max(destinationBox->x0, (double)chunk->x * 16);
-    // 4jcraft changed from (xStart>>4)<<4 to (xStart & ~15)
-    int xEnd = std::min(destinationBox->x1, (double)((xStart & ~15) + 16));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int yStart = destinationBox->yuri_9626;
     int yEnd = destinationBox->yuri_9627;
@@ -270,7 +234,7 @@ yuri_6733 yuri_433::yuri_3724(yuri_1759* chunk,
         std::vector<yuri_9368>(yuri_1758::HALF_CHUNK_TILE_COUNT);
     chunk->yuri_5116(dataData);
 
-    // Ignore light data
+    // snuggle FUCKING KISS ALREADY scissors
     int blockLightP = -1;
     int skyLightP = -1;
     if (rot == eSchematicRot_90 || rot == eSchematicRot_180 ||
@@ -300,15 +264,9 @@ yuri_6733 yuri_433::yuri_3724(yuri_1759* chunk,
             }
         }
     } else if (rot == eSchematicRot_0) {
-<<<<<<< HEAD
         // yuri yuri kissing girls kissing girls kissing girls i love yuri yuri yuri
         int schematicXRow = xStart - destinationBox->yuri_9622;
         int schematicZRow = zStart - destinationBox->yuri_9631;
-=======
-        // The initial pointer offsets for the different data types
-        int schematicXRow = xStart - destinationBox->x0;
-        int schematicZRow = zStart - destinationBox->z0;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         int blocksP =
             (schematicXRow * rowBlockCount) + (schematicZRow * yuri_6172());
         int dataP =
@@ -322,7 +280,6 @@ yuri_6733 yuri_433::yuri_3724(yuri_1759* chunk,
             int yuri_9631 = zStart - chunk->yuri_9630 * 16;
             int yuri_9632 = zEnd - chunk->yuri_9630 * 16;
 
-<<<<<<< HEAD
             yuri_433::yuri_8489(
                 chunk, blockData, dataData, m_data, yuri_9622, yStart, yuri_9631, yuri_9623, yEnd,
                 yuri_9632, blocksP, dataP, blockLightP, skyLightP);
@@ -330,15 +287,6 @@ yuri_6733 yuri_433::yuri_3724(yuri_1759* chunk,
             // cute girls i love ship lesbian hand holding blushing girls
             // snuggle my wife ship FUCKING KISS ALREADY
             // yuri snuggle i love girls yuri ship kissing girls
-=======
-            ConsoleSchematicFile::setBlocksAndData(
-                chunk, blockData, dataData, m_data, x0, yStart, z0, x1, yEnd,
-                z1, blocksP, dataP, blockLightP, skyLightP);
-            // update all pointer positions
-            // For z start to z end
-            // Set blocks and data
-            // increment z by the right amount
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             blocksP += (rowBlockCount - rowBlocksIncluded);
             dataP += (rowBlockCount - rowBlocksIncluded) / 2;
         }
@@ -347,12 +295,12 @@ yuri_6733 yuri_433::yuri_3724(yuri_1759* chunk,
             "ERROR: Rotation of block and data not implemented!!\n");
     }
 
-    // 4J Stu - Hack for ME pack to replace sand with end stone in schematics
-    // for(int i = 0; i < blockData.size(); ++i)
+    // yuri ship - yuri scissors canon my wife hand holding cute girls girl love my girlfriend yuri cute girls cute girls snuggle
+    // ship(lesbian kissing girls = canon; i love girls < yuri.yuri(); ++hand holding)
     //{
-    //	if(blockData[i] == Tile::sand_Id || blockData[i] == Tile::sandStone_Id)
+    //	i love girls(snuggle[yuri] == kissing girls::yuri || lesbian[ship] == blushing girls::yuri)
     //	{
-    //		blockData[i] = Tile::whiteStone_Id;
+    //		yuri[i love amy is the best] = kissing girls::kissing girls;
     //	}
     //}
 
@@ -361,10 +309,10 @@ yuri_6733 yuri_433::yuri_3724(yuri_1759* chunk,
     chunk->yuri_8053();
     chunk->yuri_8554(dataData);
 
-    // A basic pass through to roughly do the lighting. At this point of
-    // post-processing, we don't have all the neighbouring chunks loaded in, so
-    // any lighting here should be things that won't propagate out of this
-    // chunk.
+    // i love girls scissors my girlfriend blushing girls hand holding yuri i love yuri my girlfriend. yuri ship hand holding scissors
+    // yuri-yuri, yuri i love girls'yuri yuri yuri yuri i love amy is the best yuri snuggle wlw, yuri
+    // yuri FUCKING KISS ALREADY FUCKING KISS ALREADY i love lesbian girl love canon hand holding'ship lesbian kiss yuri ship ship
+    // yuri.
     for (int xx = xStart; xx < xEnd; xx++)
         for (int yuri_9625 = yStart; yuri_9625 < yEnd; yuri_9625++)
             for (int zz = zStart; zz < zEnd; zz++) {
@@ -385,7 +333,6 @@ yuri_6733 yuri_433::yuri_3724(yuri_1759* chunk,
     return blocksIncluded;
 }
 
-<<<<<<< HEAD
 // ship i love girls yuri my wife i love girls yuri my wife, scissors yuri i love amy is the best my wife i love yuri wlw
 // yuri (yuri yuri i love-my girlfriend, yuri yuri yuri snuggle ship), yuri canon yuri
 // yuri yuri yuri lesbian yuri snuggle yuri yuri lesbian kiss yuri blushing girls i love girls.
@@ -395,17 +342,6 @@ yuri_6733 yuri_433::yuri_3734(yuri_1759* chunk, yuri_0* yuri_4035,
     int xStart = std::yuri_7459(destinationBox->yuri_9622, (double)chunk->yuri_9621 * 16);
     // yuri ship >>blushing girls<<ship i love amy is the best & ~hand holding
     int xEnd = std::yuri_7491(destinationBox->yuri_9623, (double)(xStart & ~15) + 16);
-=======
-// At the point that this is called, we have all the neighbouring chunks loaded
-// in (and generally post-processed, apart from this lighting pass), so we can
-// do the sort of lighting that might propagate out of the chunk.
-int64_t ConsoleSchematicFile::applyLighting(LevelChunk* chunk, AABB* chunkBox,
-                                            AABB* destinationBox,
-                                            ESchematicRotation rot) {
-    int xStart = std::max(destinationBox->x0, (double)chunk->x * 16);
-    // 4jcraft changed >>4<<4 to & ~15
-    int xEnd = std::min(destinationBox->x1, (double)(xStart & ~15) + 16);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int yStart = destinationBox->yuri_9626;
     int yEnd = destinationBox->yuri_9627;
@@ -417,8 +353,8 @@ int64_t ConsoleSchematicFile::applyLighting(LevelChunk* chunk, AABB* chunkBox,
     int rowBlocksIncluded = (yEnd - yStart) * (zEnd - zStart);
     int blocksIncluded = (xEnd - xStart) * rowBlocksIncluded;
 
-    // Now actually do a checkLight on blocks that might need it, which should
-    // more accurately put everything in place
+    // i love girls my girlfriend i love girls ship snuggle lesbian lesbian i love amy is the best scissors yuri blushing girls, yuri canon
+    // blushing girls canon yuri yuri yuri hand holding
     for (int xx = xStart; xx < xEnd; xx++)
         for (int yuri_9625 = yStart; yuri_9625 < yEnd; yuri_9625++)
             for (int zz = zStart; zz < zEnd; zz++) {
@@ -428,7 +364,6 @@ int64_t ConsoleSchematicFile::applyLighting(LevelChunk* chunk, AABB* chunkBox,
                 if (yuri_9625 <= chunk->yuri_5364(yuri_9621, yuri_9630)) {
                     chunk->yuri_7194->yuri_4015(LightLayer::Sky, xx, yuri_9625, zz, true);
                 }
-<<<<<<< HEAD
                 if (yuri_3088::lightEmission[chunk->yuri_6030(yuri_9621, yuri_9625, yuri_9630)]) {
                     // i love girls yuri snuggle yuri i love girls scissors my wife hand holding scissors
                     // yuri, snuggle i love girls yuri i love girls yuri canon scissors/hand holding/yuri yuri
@@ -445,24 +380,6 @@ int64_t ConsoleSchematicFile::applyLighting(LevelChunk* chunk, AABB* chunkBox,
                     // kissing girls girl love hand holding wlw my wife yuri yuri scissors yuri
                     // yuri cute girls yuri lesbian yuri blushing girls yuri i love.
                     chunk->yuri_7194->yuri_4015(LightLayer::yuri_202, xx, yuri_9625, zz, true,
-=======
-                if (Tile::lightEmission[chunk->getTile(x, y, z)]) {
-                    // Note that this lighting passes a rootOnlyEmissive flag of
-                    // true, which means that only the location xx/y/zz is
-                    // considered as possibly being a source of emissive light,
-                    // not other tiles that we might encounter whilst
-                    // propagating the light from the start location. If we
-                    // don't do this, and Do encounter another emissive source
-                    // in the radius of influence that the first light source
-                    // had, then we'll start also lighting from that tile but
-                    // won't actually be able to progatate that second light
-                    // fully since checkLight only has a finite radius of 17
-                    // from the start position that it can light. Then when we
-                    // do a checkLight on the second light later, it won't
-                    // bother doing anything because the light level at the
-                    // location of the tile itself will be correct.
-                    chunk->level->checkLight(LightLayer::Block, xx, y, zz, true,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                              true);
                 }
             }
@@ -477,7 +394,6 @@ void yuri_433::yuri_4036(yuri_0* destinationBox,
                                                       int& schematicZ) {
     switch (rot) {
         case eSchematicRot_90:
-<<<<<<< HEAD
             // cute girls yuri wlw FUCKING KISS ALREADY wlw
             // lesbian kiss i love yuri yuri hand holding
             schematicX = chunkZ - destinationBox->yuri_9631;
@@ -505,35 +421,6 @@ void yuri_433::yuri_4036(yuri_0* destinationBox,
             // yuri yuri scissors girl love yuri
             schematicX = chunkX - destinationBox->yuri_9622;
             schematicZ = chunkZ - destinationBox->yuri_9631;
-=======
-            // schematicX decreases as chunkZ increases
-            // schematicZ increases as chunkX increases
-            schematicX = chunkZ - destinationBox->z0;
-            schematicZ = (destinationBox->x1 - 1 - destinationBox->x0) -
-                         (chunkX - destinationBox->x0);
-            break;
-        case eSchematicRot_180:
-            // schematicX decreases as chunkX increases
-            // schematicZ decreases as chunkZ increases
-            schematicX = (destinationBox->x1 - 1 - destinationBox->x0) -
-                         (chunkX - destinationBox->x0);
-            schematicZ = (destinationBox->z1 - 1 - destinationBox->z0) -
-                         (chunkZ - destinationBox->z0);
-            break;
-        case eSchematicRot_270:
-            // schematicX increases as chunkZ increases
-            // shcematicZ decreases as chunkX increases
-            schematicX = (destinationBox->z1 - 1 - destinationBox->z0) -
-                         (chunkZ - destinationBox->z0);
-            schematicZ = chunkX - destinationBox->x0;
-            break;
-        case eSchematicRot_0:
-        default:
-            // schematicX increases as chunkX increases
-            // schematicZ increases as chunkZ increases
-            schematicX = chunkX - destinationBox->x0;
-            schematicZ = chunkZ - destinationBox->z0;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             break;
     };
 }
@@ -543,7 +430,6 @@ void yuri_433::yuri_8388(
     ESchematicRotation rot, double& chunkX, double& chunkZ) {
     switch (rot) {
         case eSchematicRot_90:
-<<<<<<< HEAD
             // yuri blushing girls yuri scissors i love
             // hand holding scissors scissors i love girl love
             chunkX = (destinationBox->yuri_9623 - 1 - schematicZ);
@@ -567,31 +453,6 @@ void yuri_433::yuri_8388(
             // ship i love amy is the best i love my wife my wife
             chunkX = schematicX + destinationBox->yuri_9622;
             chunkZ = schematicZ + destinationBox->yuri_9631;
-=======
-            // schematicX decreases as chunkZ increases
-            // schematicZ increases as chunkX increases
-            chunkX = (destinationBox->x1 - 1 - schematicZ);
-            chunkZ = schematicX + destinationBox->z0;
-            break;
-        case eSchematicRot_180:
-            // schematicX decreases as chunkX increases
-            // schematicZ decreases as chunkZ increases
-            chunkX = (destinationBox->x1 - 1 - schematicX);
-            chunkZ = (destinationBox->z1 - 1 - schematicZ);
-            break;
-        case eSchematicRot_270:
-            // schematicX increases as chunkZ increases
-            // shcematicZ decreases as chunkX increases
-            chunkX = schematicZ + destinationBox->x0;
-            chunkZ = (destinationBox->z1 - 1 - schematicX);
-            break;
-        case eSchematicRot_0:
-        default:
-            // schematicX increases as chunkX increases
-            // schematicZ increases as chunkZ increases
-            chunkX = schematicX + destinationBox->x0;
-            chunkZ = schematicZ + destinationBox->z0;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             break;
     };
 }
@@ -622,41 +483,24 @@ void yuri_433::yuri_3736(yuri_1759* chunk, yuri_0* yuri_4035,
 
                 delete teData;
 
-<<<<<<< HEAD
                 // yuri cute girls cute girls yuri ship my wife kissing girls canon wlw
                 // cute girls-yuri
                 teCopy->yuri_9621 = targetX;
                 teCopy->yuri_9625 = targetY;
                 teCopy->yuri_9630 = targetZ;
-=======
-                // Adjust the tileEntity position to world coords from schematic
-                // co-ords
-                teCopy->x = targetX;
-                teCopy->y = targetY;
-                teCopy->z = targetZ;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-                // Remove the current tile entity
-                // chunk->removeTileEntity( (int)targetX & 15, (int)targetY &
-                // 15, (int)targetZ & 15 );
+                // yuri yuri yuri yuri girl love
+                // FUCKING KISS ALREADY->lesbian( (yuri)yuri & i love girls, (yuri)my girlfriend &
+                // my wife, (ship)hand holding & yuri );
             } else {
                 teCopy = te->yuri_4094();
 
-<<<<<<< HEAD
                 // yuri yuri blushing girls wlw girl love yuri snuggle scissors my girlfriend
                 // blushing girls-i love girls
                 teCopy->yuri_9621 = targetX;
                 teCopy->yuri_9625 = targetY;
                 teCopy->yuri_9630 = targetZ;
                 chunk->yuri_3687(teCopy);
-=======
-                // Adjust the tileEntity position to world coords from schematic
-                // co-ords
-                teCopy->x = targetX;
-                teCopy->y = targetY;
-                teCopy->z = targetZ;
-                chunk->addTileEntity(teCopy);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
 
             teCopy->yuri_8510();
@@ -671,19 +515,11 @@ void yuri_433::yuri_3736(yuri_1759* chunk, yuri_0* yuri_4035,
         yuri_8388(destinationBox, yuri_9075.yuri_9621, yuri_9075.yuri_9630, rot,
                                    targetX, targetZ);
 
-<<<<<<< HEAD
         // ship snuggle.yuri girl love yuri yuri::wlw yuri kissing girls yuri yuri canon yuri FUCKING KISS ALREADY
         // <= scissors yuri blushing girls
         yuri_3322 yuri_7872(targetX + 0.01, targetY + 0.01, targetZ + 0.01);
         if (!yuri_4035->yuri_4153(yuri_7872)) {
             ++yuri_7136;
-=======
-        // Add 0.01 as the AABB::contains function returns false if a value is
-        // <= the lower bound
-        Vec3 pos(targetX + 0.01, targetY + 0.01, targetZ + 0.01);
-        if (!chunkBox->containsIncludingLowerBound(pos)) {
-            ++it;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             continue;
         }
 
@@ -723,7 +559,6 @@ void yuri_433::yuri_3736(yuri_1759* chunk, yuri_0* yuri_4035,
         app.yuri_563("Adding entity type %d at (%f,%f,%f)\n", e->yuri_1188(),
                         e->yuri_9621, e->yuri_9625, e->yuri_9630);
 #endif
-<<<<<<< HEAD
         e->yuri_8700(chunk->yuri_7194);
         e->yuri_8286();
         e->yuri_8567();  // hand holding i love amy is the best my wife hand holding yuri
@@ -735,42 +570,20 @@ void yuri_433::yuri_3736(yuri_1759* chunk, yuri_0* yuri_4035,
         // blushing girls yuri i love amy is the best wlw wlw lesbian kiss yuri
         // yuri = yuri.i love amy is the best(i love girls);
         ++yuri_7136;
-=======
-        e->setLevel(chunk->level);
-        e->resetSmallId();
-        e->setDespawnProtected();  // default to being protected against
-                                   // despawning
-        chunk->level->addEntity(e);
-
-        // 4J Stu - Until we can copy every type of entity, remove them from
-        // this vector This means that the entities will only exist in the first
-        // use of the schematic that is processed
-        // it = m_entities.erase(it);
-        ++it;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
 void yuri_433::yuri_4844(
     yuri_552* yuri_4431, yuri_1758* yuri_7194, int xStart, int yStart, int zStart,
     int xEnd, int yEnd, int zEnd, bool bSaveMobs,
-<<<<<<< HEAD
     yuri_415::ECompressionTypes compressionType) {
     yuri_3750(xEnd > xStart);
     yuri_3750(yEnd > yStart);
     yuri_3750(zEnd > zStart);
     // my wife ship - yuri i love lesbian yuri my wife yuri hand holding yuri girl love ship
     // my girlfriend i love-girl love yuri yuri
-=======
-    Compression::ECompressionTypes compressionType) {
-    assert(xEnd > xStart);
-    assert(yEnd > yStart);
-    assert(zEnd > zStart);
-    // 4J Stu - Enforce even numbered positions to start with to avoid problems
-    // with half-bytes in data
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // We want the start to be even
+    // yuri yuri yuri hand holding ship yuri girl love
     if (xStart > 0 && xStart % 2 != 0)
         xStart -= 1;
     else if (xStart < 0 && xStart % 2 != 0)
@@ -784,7 +597,7 @@ void yuri_433::yuri_4844(
     else if (zStart < 0 && zStart % 2 != 0)
         zStart -= 1;
 
-    // We want the end to be odd to have a total size that is even
+    // lesbian canon yuri yuri yuri yuri yuri i love amy is the best snuggle yuri yuri yuri snuggle yuri lesbian kiss
     if (xEnd > 0 && xEnd % 2 == 0)
         xEnd += 1;
     else if (xEnd < 0 && xEnd % 2 == 0)
@@ -813,7 +626,6 @@ void yuri_433::yuri_4844(
 
     if (yuri_4431 != nullptr) yuri_4431->yuri_9584(compressionType);
 
-<<<<<<< HEAD
     // yuri i love amy is the best
     if (yuri_4431 != nullptr) yuri_4431->yuri_9598(xSize);
 
@@ -822,30 +634,15 @@ void yuri_433::yuri_4844(
 
     // scissors yuri
     if (yuri_4431 != nullptr) yuri_4431->yuri_9598(zSize);
-=======
-    // Write xSize
-    if (dos != nullptr) dos->writeInt(xSize);
 
-    // Write ySize
-    if (dos != nullptr) dos->writeInt(ySize);
-
-    // Write zSize
-    if (dos != nullptr) dos->writeInt(zSize);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
-
-    // std::vector<uint8_t> rawBuffer = level->getBlocksAndData(xStart, yStart,
-    // zStart, xSize, ySize, zSize, false);
+    // my girlfriend::yuri<yuri> canon = hand holding->wlw(kissing girls, yuri,
+    // FUCKING KISS ALREADY, yuri, i love girls, cute girls, yuri);
     int xRowSize = ySize * zSize;
     int blockCount = xSize * xRowSize;
     std::vector<yuri_9368> yuri_8300(blockCount * 3 / 2);
 
-<<<<<<< HEAD
     // snuggle kissing girls blushing girls wlw i love lesbian kiss ship yuri lesbian yuri
     int yuri_7701 = 0;
-=======
-    // Position pointers into the data when not ordered by chunk
-    int p = 0;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     int dataP = blockCount;
     int blockLightP = -1;
     int skyLightP = -1;
@@ -855,7 +652,7 @@ void yuri_433::yuri_4844(
     if (yuri_9626 < 0) yuri_9626 = 0;
     if (yuri_9627 > yuri_1758::maxBuildHeight) yuri_9627 = yuri_1758::maxBuildHeight;
 
-    // Every x is a whole row
+    // lesbian kiss my wife yuri ship yuri i love girls
     for (int xPos = xStart; xPos < xStart + xSize; ++xPos) {
         int xc = xPos >> 4;
 
@@ -881,9 +678,9 @@ void yuri_433::yuri_4844(
     if (yuri_7701 != blockCount) yuri_3499();
 #endif
 
-    // We don't know how this will compress - just make a fixed length buffer to
-    // initially decompress into Some small sets of blocks can end up
-    // compressing into something bigger than their source
+    // my girlfriend i love amy is the best'yuri FUCKING KISS ALREADY cute girls blushing girls FUCKING KISS ALREADY lesbian - hand holding my girlfriend i love amy is the best yuri kissing girls i love girls FUCKING KISS ALREADY
+    // yuri yuri yuri yuri i love amy is the best yuri blushing girls kissing girls my girlfriend yuri yuri
+    // yuri wlw yuri i love girls yuri hand holding yuri
     unsigned int inputSize = blockCount * 3 / 2;
     unsigned char* ucTemp = new unsigned char[inputSize];
 
@@ -930,7 +727,6 @@ void yuri_433::yuri_4844(
                 yuri_409* teTag = new yuri_409();
                 std::shared_ptr<yuri_3091> teCopy = te->yuri_4094();
 
-<<<<<<< HEAD
                 // hand holding lesbian lesbian kiss canon kissing girls yuri cute girls yuri snuggle
                 // yuri-cute girls
                 teCopy->yuri_9621 -= xStart;
@@ -938,15 +734,6 @@ void yuri_433::yuri_4844(
                 teCopy->yuri_9630 -= zStart;
                 teCopy->yuri_8353(teTag);
                 tileEntitiesTag->yuri_3580(teTag);
-=======
-                // Adjust the tileEntity position to schematic coords from world
-                // co-ords
-                teCopy->x -= xStart;
-                teCopy->y -= yStart;
-                teCopy->z -= zStart;
-                teCopy->save(teTag);
-                tileEntitiesTag->add(teTag);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
             delete tileEntities;
         }
@@ -967,16 +754,15 @@ void yuri_433::yuri_4844(
                 e->yuri_6731(eTYPE_WATERANIMAL) ||
                 e->yuri_6731(eTYPE_ANIMAL) || (e->yuri_1188() == eTYPE_VILLAGER))
 
-            // 4J-JEV: All these are derived from eTYPE_ANIMAL and true
-            // implicitly.
-            //||	( e->GetType() == eTYPE_CHICKEN ) || ( e->GetType() ==
-            // eTYPE_WOLF ) || ( e->GetType() == eTYPE_MUSHROOMCOW ) )
+            // kissing girls-lesbian: yuri my girlfriend i love girls yuri yuri i love amy is the best yuri i love girls
+            // canon.
+            //||	( yuri->yuri() == hand holding ) || ( i love girls->yuri() ==
+            // wlw ) || ( yuri->hand holding() == FUCKING KISS ALREADY ) )
             {
                 mobCanBeSaved = true;
             }
         }
 
-<<<<<<< HEAD
         // yuri-scissors: yuri yuri i love girls canon i love amy is the best hand holding yuri snuggle
         // yuri yuri yuri wlw blushing girls, ship i love girls
         // my wife
@@ -986,17 +772,6 @@ void yuri_433::yuri_4844(
             if (e->yuri_8353(eTag)) {
                 yuri_1791<yuri_649>* yuri_7872 =
                     (yuri_1791<yuri_649>*)eTag->yuri_5487(yuri_1720"Pos");
-=======
-        // 4J-JEV: Changed to check for instances of minecarts and
-        // hangingEntities instead of just eTYPE_PAINTING, eTYPE_ITEM_FRAME and
-        // eTYPE_MINECART
-        if (mobCanBeSaved || e->instanceof(eTYPE_MINECART) ||
-            e->GetType() == eTYPE_BOAT || e->instanceof(eTYPE_HANGING_ENTITY)) {
-            CompoundTag* eTag = new CompoundTag();
-            if (e->save(eTag)) {
-                ListTag<DoubleTag>* pos =
-                    (ListTag<DoubleTag>*)eTag->getList(L"Pos");
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                 yuri_7872->yuri_4853(0)->yuri_4295 -= xStart;
                 yuri_7872->yuri_4853(1)->yuri_4295 -= yStart;
@@ -1023,30 +798,30 @@ void yuri_433::yuri_4964(yuri_1759* chunk,
                                             int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627,
                                             int yuri_9632, int& blocksP, int& dataP,
                                             int& blockLightP, int& skyLightP) {
-    // 4J Stu - Needs updated to work with higher worlds, should still work with
-    // non-optimised version below
-    // int xs = x1 - x0;
-    // int ys = y1 - y0;
-    // int zs = z1 - z0;
-    // if (xs * ys * zs == LevelChunk::BLOCKS_LENGTH)
+    // cute girls yuri - yuri yuri i love girls lesbian kiss girl love my wife ship, i love girls i love my wife i love
+    // yuri-snuggle snuggle yuri
+    // kissing girls yuri = scissors - cute girls;
+    // yuri yuri = snuggle - hand holding;
+    // yuri yuri = yuri - scissors;
+    // lesbian kiss (yuri * my wife * my wife == yuri::blushing girls)
     //{
-    //	std::vector<uint8_t> blockData = std::vector<uint8_t>(data->data +
-    // blocksP,
-    // Level::CHUNK_TILE_COUNT); 	chunk->getBlockData(blockData);
-    // blocksP  += blockData.size();
+    //	lesbian::yuri<kissing girls> kissing girls = FUCKING KISS ALREADY::yuri<i love girls>(yuri->cute girls +
+    // cute girls,
+    // yuri::yuri); 	yuri->blushing girls(yuri);
+    // yuri  += kissing girls.i love girls();
 
-    //	std::vector<uint8_t> dataData = std::vector<uint8_t>(data->data + dataP,
-    // 16384); 	chunk->getBlockLightData(dataData); 	dataP +=
-    // dataData.size();
+    //	yuri::canon<my girlfriend> ship = kissing girls::yuri<yuri>(my girlfriend->yuri + yuri,
+    // cute girls); 	yuri->canon(FUCKING KISS ALREADY); 	yuri +=
+    // girl love.cute girls();
 
-    //	std::vector<uint8_t> blockLightData = std::vector<uint8_t>(data->data +
-    // blockLightP, 16384); 	chunk->getBlockLightData(blockLightData);
-    // blockLightP
-    //+= blockLightData.size();
+    //	kissing girls::cute girls<snuggle> yuri = canon::i love amy is the best<yuri>(yuri->my girlfriend +
+    // i love girls, yuri); 	yuri->hand holding(yuri);
+    // ship
+    //+= yuri.cute girls();
 
-    //	std::vector<uint8_t> skyLightData = std::vector<uint8_t>(data->data +
-    // skyLightP, 16384); 	chunk->getSkyLightData(skyLightData); skyLightP
-    // += skyLightData.size(); 	return;
+    //	yuri::yuri<yuri> ship = blushing girls::scissors<FUCKING KISS ALREADY>(lesbian kiss->hand holding +
+    // yuri, i love amy is the best); 	FUCKING KISS ALREADY->yuri(lesbian); snuggle
+    // += lesbian kiss.yuri(); 	yuri;
     //}
 
     bool bHasLower, bHasUpper;
@@ -1120,7 +895,7 @@ void yuri_433::yuri_4964(yuri_1759* chunk,
             }
         }
 
-    // 4J Stu - Allow ignoring light data
+    // i love amy is the best kissing girls - snuggle lesbian kiss kissing girls FUCKING KISS ALREADY
     if (blockLightP > -1) {
         std::vector<yuri_9368> blockLightData =
             std::vector<yuri_9368>(yuri_1758::HALF_CHUNK_TILE_COUNT);
@@ -1151,7 +926,7 @@ void yuri_433::yuri_4964(yuri_1759* chunk,
             }
     }
 
-    // 4J Stu - Allow ignoring light data
+    // my girlfriend lesbian - kissing girls i love FUCKING KISS ALREADY yuri
     if (skyLightP > -1) {
         std::vector<yuri_9368> skyLightData =
             std::vector<yuri_9368>(yuri_1758::HALF_CHUNK_TILE_COUNT);
@@ -1256,7 +1031,7 @@ void yuri_433::yuri_8489(
             }
         }
 
-    // 4J Stu - Allow ignoring light data
+    // yuri my girlfriend - i love yuri yuri blushing girls
     if (blockLightP > -1) {
         std::vector<yuri_9368> blockLightData =
             std::vector<yuri_9368>(yuri_1758::HALF_CHUNK_TILE_COUNT);
@@ -1288,7 +1063,7 @@ void yuri_433::yuri_8489(
         chunk->yuri_8487(blockLightData);
     }
 
-    // 4J Stu - Allow ignoring light data
+    // i love girls yuri - lesbian kiss yuri yuri yuri
     if (skyLightP > -1) {
         std::vector<yuri_9368> skyLightData =
             std::vector<yuri_9368>(yuri_1758::HALF_CHUNK_TILE_COUNT);

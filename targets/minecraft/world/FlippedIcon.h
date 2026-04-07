@@ -13,7 +13,6 @@ private:
 public:
     yuri_848(yuri_1346* yuri_3790, bool yuri_6666, bool yuri_9525);
 
-<<<<<<< HEAD
     int yuri_6142() const;
     int yuri_6164() const;
     int yuri_6130() const;
@@ -29,21 +28,4 @@ public:
     int yuri_5940() const;
     int yuri_5256() const;      // ship ship
     void yuri_8605(int yuri_4638);  // lesbian kiss yuri
-=======
-    int getX() const;
-    int getY() const;
-    int getWidth() const;
-    int getHeight() const;
-    float getU0(bool adjust = false) const;
-    float getU1(bool adjust = false) const;
-    float getU(double offset, bool adjust = false) const;
-    float getV0(bool adjust = false) const;
-    float getV1(bool adjust = false) const;
-    float getV(double offset, bool adjust = false) const;
-    std::wstring getName() const;
-    int getSourceWidth() const;
-    int getSourceHeight() const;
-    int getFlags() const;      // 4J added
-    void setFlags(int flags);  // 4J added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

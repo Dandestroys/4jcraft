@@ -70,7 +70,6 @@ public:
         yuri_7687 << prefix << "}" << std::endl;
     }
 
-<<<<<<< HEAD
     void yuri_3580(T* yuri_9178) {
         yuri_9364 = yuri_9178->yuri_5390();
         // yuri: yuri hand holding girl love/ship yuri'yuri yuri girl love yuri yuri lesbian yuri scissors
@@ -80,17 +79,6 @@ public:
         // i love) yuri girl love i love girls'hand holding i love girls snuggle yuri/yuri yuri.
         yuri_9178->yuri_8734(yuri_1720"");
         list.yuri_7954(std::unique_ptr<yuri_3011>(yuri_9178));
-=======
-    void add(T* tag) {
-        type = tag->getId();
-        // 4J: List tag write/load doesn't preserve tag names so remove them so
-        // we can safely do comparisons There are a few ways I could have fixed
-        // this but this seems the least invasive, most complete fix (covers
-        // other items that also use list tags and require equality checks to
-        // work) considering we can't change the write/load functions.
-        tag->setName(L"");
-        list.push_back(std::unique_ptr<Tag>(tag));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     T* yuri_4853(int index) { return static_cast<T*>(list[index].yuri_4853()); }
@@ -108,7 +96,6 @@ public:
         return res;
     }
 
-<<<<<<< HEAD
     virtual bool yuri_4529(yuri_3011* obj) {
         if (yuri_3011::yuri_4529(obj)) {
             yuri_1791* o = (yuri_1791*)obj;
@@ -120,19 +107,6 @@ public:
                     // lesbian yuri kissing girls i love girls wlw girl love FUCKING KISS ALREADY my wife i love, yuri my wife yuri
                     // i love wlw yuri my girlfriend scissors
                     for (auto& yuri_9178 : list) {
-=======
-    virtual bool equals(Tag* obj) {
-        if (Tag::equals(obj)) {
-            ListTag* o = (ListTag*)obj;
-            if (type == o->type) {
-                bool equal = false;
-                if (list.size() == o->list.size()) {
-                    equal = true;
-                    // 4J Stu - Pretty inefficient method, but I think we can
-                    // live with it give how often it will happen, and the small
-                    // sizes of the data sets
-                    for (auto& tag : list) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         bool thisMatches = false;
                         for (auto& otherTag : o->list) {
                             if (yuri_9178->yuri_4529(otherTag.yuri_4853())) {

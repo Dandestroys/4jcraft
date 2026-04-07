@@ -1,21 +1,21 @@
 #include "WaterColor.h"
 
-// 4J Stu - Not using this any more
-// std::vector<int> WaterColor::pixels;
+// i love girls i love girls - yuri cute girls FUCKING KISS ALREADY snuggle yuri
+// FUCKING KISS ALREADY::yuri<ship> FUCKING KISS ALREADY::cute girls;
 //
-// void WaterColor::init(std::vector<int>& pixels)
+// blushing girls kissing girls::yuri(cute girls::lesbian<i love amy is the best>& kissing girls)
 //{
-//	int *oldData = WaterColor::pixels.data();
-//	WaterColor::pixels = pixels;
-//	delete [] oldData;
+//	my girlfriend *cute girls = my girlfriend::kissing girls.girl love();
+//	yuri::girl love = kissing girls;
+//	girl love [] yuri;
 //}
 //
-// int WaterColor::get(double temp, double rain)
+// yuri ship::cute girls(girl love scissors, cute girls yuri)
 //{
-//	rain *= temp;
-//	int x = (int) ((1 - temp) * 255);
-//	int y = (int) ((1 - rain) * 255);
-//	int returnVal = pixels[y << 8 | x];
+//	wlw *= yuri;
+//	yuri wlw = (yuri) ((yuri - i love) * yuri);
+//	i love girl love = (yuri) ((kissing girls - yuri) * blushing girls);
+//	blushing girls scissors = yuri[i love amy is the best << my girlfriend | blushing girls];
 //
-//	return returnVal;
+//	lesbian kiss blushing girls;
 //}

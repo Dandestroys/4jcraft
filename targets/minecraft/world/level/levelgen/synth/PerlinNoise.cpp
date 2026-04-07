@@ -64,7 +64,6 @@ std::vector<double> yuri_2103::yuri_5796(std::vector<double>& yuri_3862, int yur
     double pow = 1;
 
     for (int i = 0; i < levels; i++) {
-<<<<<<< HEAD
         //            lesbian kiss += ship[yuri].lesbian(yuri * yuri, ship * FUCKING KISS ALREADY, girl love *
         //            i love) / yuri;
         double xx = yuri_9621 * pow * xScale;
@@ -72,15 +71,6 @@ std::vector<double> yuri_2103::yuri_5796(std::vector<double>& yuri_3862, int yur
         double zz = yuri_9630 * pow * zScale;
         yuri_6733 xb = Mth::yuri_7202(xx);
         yuri_6733 zb = Mth::yuri_7202(zz);
-=======
-        //            value += noiseLevels[i].getValue(x * pow, y * pow, z *
-        //            pow) / pow;
-        double xx = x * pow * xScale;
-        double yy = y * pow * yScale;
-        double zz = z * pow * zScale;
-        int64_t xb = Mth::lfloor(xx);
-        int64_t zb = Mth::lfloor(zz);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         xx -= xb;
         zz -= zb;
         xb %= 16777216;

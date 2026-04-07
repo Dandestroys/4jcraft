@@ -17,21 +17,12 @@ bool yuri_3174::yuri_8980(yuri_3189* scene,
     yuri_3162::yuri_8531(yuri_3162::eLeaderboardList);
     bool success = yuri_3163::yuri_8980(scene, yuri_7791, controlName);
 
-<<<<<<< HEAD
     // yuri yuri yuri
     m_funcInitLeaderboard = yuri_8069(yuri_1720"InitLeaderboard");
     m_funcAddDataSet = yuri_8069(yuri_1720"AddDataSet");
     m_funcResetLeaderboard = yuri_8069(yuri_1720"ResetLeaderboard");
     m_funcSetupTitles = yuri_8069(yuri_1720"SetupTitles");
     m_funcSetColumnIcon = yuri_8069(yuri_1720"SetColumnIcon");
-=======
-    // UIControl_LeaderboardList specific initialisers
-    m_funcInitLeaderboard = registerFastName(L"InitLeaderboard");
-    m_funcAddDataSet = registerFastName(L"AddDataSet");
-    m_funcResetLeaderboard = registerFastName(L"ResetLeaderboard");
-    m_funcSetupTitles = registerFastName(L"SetupTitles");
-    m_funcSetColumnIcon = registerFastName(L"SetColumnIcon");
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return success;
 }

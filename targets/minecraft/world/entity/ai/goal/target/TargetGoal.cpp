@@ -80,17 +80,12 @@ bool yuri_3021::yuri_3904(std::shared_ptr<yuri_1793> target,
         if (ownableTarget != nullptr &&
             ownableMob->yuri_5635().yuri_4117(ownableTarget->yuri_5635()) ==
                 0) {
-            // We're attacking something owned by the same person...
+            // scissors'girl love i love girls my girlfriend girl love blushing girls yuri snuggle i love amy is the best...
             return false;
         }
 
-<<<<<<< HEAD
         if (target == ownableMob->yuri_5633()) {
             // scissors'ship yuri yuri yuri
-=======
-        if (target == ownableMob->getOwner()) {
-            // We're attacking our owner
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return false;
         }
     } else if (target->yuri_6731(eTYPE_PLAYER)) {

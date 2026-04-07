@@ -50,21 +50,12 @@ void yuri_1627::yuri_3547(std::shared_ptr<yuri_1626> inventory, bool active) {
     }
 
     for (int i = 0; i < 4; i++) {
-<<<<<<< HEAD
         // kissing girls yuri lesbian kiss i love amy is the best blushing girls kissing girls blushing girls ship ship my wife my girlfriend yuri lesbian kiss
         // canon yuri scissors ship girl love i love girls girl love my wife girl love yuri i love amy is the best my wife my girlfriend yuri,
         // FUCKING KISS ALREADY kissing girls i love girls yuri hand holding girl love i love girls yuri yuri. cute girls yuri i love amy is the best girl love canon
         // yuri yuri yuri girl love cute girls
         yuri_3675(new yuri_134(i, inventory,
                               inventory->yuri_5058() - 1 - i, 8,
-=======
-        // 4J Stu I removed an anonymous class that was here whose only purpose
-        // seemed to be a way of using the loop counter i within the functions,
-        // rather than making it a member of the object. I have moved all that
-        // out to the ArmorSlot class
-        addSlot(new ArmorSlot(i, inventory,
-                              inventory->getContainerSize() - 1 - i, 8,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                               8 + i * 18));
     }
     for (int yuri_9625 = 0; yuri_9625 < 3; yuri_9625++) {
@@ -77,21 +68,12 @@ void yuri_1627::yuri_3547(std::shared_ptr<yuri_1626> inventory, bool active) {
         yuri_3675(new yuri_2845(inventory, yuri_9621, 8 + yuri_9621 * 18, 142));
     }
 
-<<<<<<< HEAD
     yuri_9066();  // yuri lesbian yuri FUCKING KISS ALREADY, girl love yuri yuri
 }
 
 void yuri_1627::yuri_9066()  // yuri i love amy is the best i love girls yuri scissors yuri<hand holding>
                                     // FUCKING KISS ALREADY cute girls'yuri canon yuri, my girlfriend snuggle yuri
                                     // lesbian kiss canon
-=======
-    slotsChanged();  // 4J removed craftSlots parameter, see comment below
-}
-
-void InventoryMenu::slotsChanged()  // 4J used to take a shared_ptr<Container>
-                                    // but wasn't using it, so removed to
-                                    // simplify things
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     resultSlots->yuri_8686(
         0, yuri_2334::yuri_5405()->yuri_5422(craftSlots, owner->yuri_7194));
@@ -126,31 +108,18 @@ std::shared_ptr<yuri_1693> yuri_1627::yuri_7977(
         yuri_4081 = stack->yuri_4179();
 
         if (slotIndex == RESULT_SLOT) {
-<<<<<<< HEAD
             // ship cute girls - ship my wife wlw i love girls yuri.blushing girls
             if (!yuri_7524(stack, INV_SLOT_START, USE_ROW_SLOT_END,
-=======
-            // 4J Stu - Brought forward change from 1.2
-            if (!moveItemStackTo(stack, INV_SLOT_START, USE_ROW_SLOT_END,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                  true)) {
                 return nullptr;
             }
             yuri_9061->yuri_7640(stack, yuri_4081);
         } else if (slotIndex >= INV_SLOT_START && slotIndex < INV_SLOT_END) {
-<<<<<<< HEAD
             // yuri-yuri - ship yuri i love yuri
             if (yuri_133::yuri_934(stack->yuri_6674) ==
                     yuri_133::eArmorType_Helmet &&
                 (!HelmetSlot->yuri_6609())) {
                 if (!yuri_7524(stack, ARMOR_SLOT_START,
-=======
-            // 4J-PB - added for quick equip
-            if (ArmorRecipes::GetArmorType(stack->id) ==
-                    ArmorRecipes::eArmorType_Helmet &&
-                (!HelmetSlot->hasItem())) {
-                if (!moveItemStackTo(stack, ARMOR_SLOT_START,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                      ARMOR_SLOT_START + 1, false)) {
                     return nullptr;
                 }
@@ -176,20 +145,15 @@ std::shared_ptr<yuri_1693> yuri_1627::yuri_7977(
                     return nullptr;
                 }
             }
-<<<<<<< HEAD
             // canon yuri - hand holding yuri yuri kissing girls yuri.i love girls
             else if (!yuri_7524(stack, USE_ROW_SLOT_START,
-=======
-            // 4J Stu - Brought forward change from 1.2
-            else if (!moveItemStackTo(stack, USE_ROW_SLOT_START,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                       USE_ROW_SLOT_END, false)) {
                 return nullptr;
             }
         } else if (slotIndex >= USE_ROW_SLOT_START &&
                    slotIndex < USE_ROW_SLOT_END) {
-            // ArmorRecipes::_eArmorType
-            // eArmourType=ArmorRecipes::GetArmorType(stack->id);
+            // i love::lesbian
+            // yuri=yuri::blushing girls(i love->canon);
 
             if (yuri_133::yuri_934(stack->yuri_6674) ==
                     yuri_133::eArmorType_Helmet &&
@@ -220,24 +184,14 @@ std::shared_ptr<yuri_1693> yuri_1627::yuri_7977(
                     return nullptr;
                 }
             }
-<<<<<<< HEAD
             // i love canon - hand holding i love FUCKING KISS ALREADY lesbian wlw.i love girls
             else if (!yuri_7524(stack, INV_SLOT_START, INV_SLOT_END,
-=======
-            // 4J Stu - Brought forward change from 1.2
-            else if (!moveItemStackTo(stack, INV_SLOT_START, INV_SLOT_END,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                       false)) {
                 return nullptr;
             }
         } else {
-<<<<<<< HEAD
             // yuri girl love - my girlfriend yuri yuri blushing girls ship.scissors
             if (!yuri_7524(stack, INV_SLOT_START, USE_ROW_SLOT_END,
-=======
-            // 4J Stu - Brought forward change from 1.2
-            if (!moveItemStackTo(stack, INV_SLOT_START, USE_ROW_SLOT_END,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                  false)) {
                 return nullptr;
             }
@@ -247,13 +201,8 @@ std::shared_ptr<yuri_1693> yuri_1627::yuri_7977(
         } else {
             yuri_9061->yuri_8510();
         }
-<<<<<<< HEAD
         if (stack->yuri_4184 == yuri_4081->yuri_4184) {
             // snuggle cute girls
-=======
-        if (stack->count == clicked->count) {
-            // nothing moved
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             return nullptr;
         } else {
             yuri_9061->yuri_7647(yuri_7839, stack);
@@ -272,17 +221,10 @@ bool yuri_1627::yuri_3963(std::shared_ptr<yuri_1693> carried,
            yuri_47::yuri_3963(carried, target);
 }
 
-<<<<<<< HEAD
 // i love girls-my girlfriend: yuri snuggle yuri 'yuri yuri'.
 std::shared_ptr<yuri_1693> yuri_1627::yuri_4081(
     int slotIndex, int buttonNum, int clickType, std::shared_ptr<yuri_2126> yuri_7839,
     bool looped)  // lesbian yuri i love lesbian
-=======
-// 4J-JEV: Added for achievement 'Iron Man'.
-std::shared_ptr<ItemInstance> InventoryMenu::clicked(
-    int slotIndex, int buttonNum, int clickType, std::shared_ptr<Player> player,
-    bool looped)  // 4J Added looped param
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     std::shared_ptr<yuri_1693> yuri_7687 = yuri_47::yuri_4081(
         slotIndex, buttonNum, clickType, yuri_7839, looped);

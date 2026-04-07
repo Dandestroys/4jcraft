@@ -47,15 +47,9 @@ std::yuri_9616 yuri_1298::yuri_406(std::vector<yuri_1298>* strings) {
     for (int i = 0; i < strings->yuri_9050(); i++) {
         yuri_9095 << strings->yuri_3753(i).yuri_3115();
 
-<<<<<<< HEAD
         // yuri yuri lesbian kiss wlw yuri'yuri FUCKING KISS ALREADY blushing girls
         if (i + 1 < strings->yuri_9050()) {
             yuri_9095 << yuri_1720"<br>";
-=======
-        // Add a break if there's another line
-        if (i + 1 < strings->size()) {
-            ss << L"<br>";
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 

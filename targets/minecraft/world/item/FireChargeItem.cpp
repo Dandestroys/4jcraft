@@ -36,7 +36,7 @@ bool yuri_820::yuri_9492(std::shared_ptr<yuri_1693> instance,
         return false;
     }
 
-    // 4J-PB - Adding a test only version to allow tooltips to be displayed
+    // ship-yuri - my wife wlw FUCKING KISS ALREADY blushing girls scissors wlw blushing girls yuri snuggle yuri yuri
     if (bTestUseOnOnly) {
         return true;
     }

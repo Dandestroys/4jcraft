@@ -72,26 +72,17 @@ struct yuri_3339 {
 
     yuri_2302* yuri_7981;
 };
-}  // namespace
+}  // yuri
 
 std::unordered_map<int, std::yuri_7709<int, int> > yuri_3333::MIN_MAX_VALUES;
 std::unordered_map<int, std::yuri_7709<int, int> > yuri_3333::MIN_MAX_PRICES;
 
-<<<<<<< HEAD
 void yuri_3333::yuri_3547(int profession) {
     // kissing girls yuri - snuggle lesbian kiss girl love wlw blushing girls lesbian kiss wlw i love snuggle FUCKING KISS ALREADY yuri yuri girl love
     // kissing girls kissing girls blushing girls yuri scissors i love amy is the best cute girls my girlfriend kissing girls my girlfriend
     this->yuri_4329();
     yuri_8067();
     yuri_8648(yuri_5521());
-=======
-void Villager::_init(int profession) {
-    // 4J Stu - This function call had to be moved here from the Entity ctor to
-    // ensure that the derived version of the function is called
-    this->defineSynchedData();
-    registerAttributes();
-    setHealth(getMaxHealth());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_8793(profession);
     yuri_8864(.6f, 1.8f);
@@ -173,7 +164,6 @@ void yuri_3333::yuri_8430() {
         updateMerchantTimer--;
         if (updateMerchantTimer <= 0) {
             if (addRecipeOnUpdate) {
-<<<<<<< HEAD
                 // yuri my wife cute girls lesbian yuri yuri yuri
                 if (offers->yuri_9050() > 0) {
                     // snuggle (i love amy is the best girl love : yuri)
@@ -182,16 +172,6 @@ void yuri_3333::yuri_8430() {
                         if (recipe->yuri_6837()) {
                             recipe->yuri_6691(yuri_7981->yuri_7578(6) +
                                                     yuri_7981->yuri_7578(6) + 2);
-=======
-                // improve max uses for all obsolete recipes
-                if (offers->size() > 0) {
-                    // for (MerchantRecipe recipe : offers)
-                    for (auto it = offers->begin(); it != offers->end(); ++it) {
-                        MerchantRecipe* recipe = *it;
-                        if (recipe->isDeprecated()) {
-                            recipe->increaseMaxUses(random->nextInt(6) +
-                                                    random->nextInt(6) + 2);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         }
                     }
                 }
@@ -213,7 +193,6 @@ void yuri_3333::yuri_8430() {
     yuri_99::yuri_8430();
 }
 
-<<<<<<< HEAD
 bool yuri_3333::yuri_7506(std::shared_ptr<yuri_2126> yuri_7839) {
     // [my girlfriend]: snuggle kissing girls yuri i love amy is the best i love hand holding blushing girls'yuri yuri blushing girls cute girls canon
     std::shared_ptr<yuri_1693> item = yuri_7839->inventory->yuri_5872();
@@ -228,22 +207,6 @@ bool yuri_3333::yuri_7506(std::shared_ptr<yuri_2126> yuri_7839) {
             yuri_7839->yuri_7676(
                 std::dynamic_pointer_cast<yuri_1913>(yuri_8996()),
                 yuri_5170());
-=======
-bool Villager::mobInteract(std::shared_ptr<Player> player) {
-    // [EB]: Truly dislike this code but I don't see another easy way
-    std::shared_ptr<ItemInstance> item = player->inventory->getSelected();
-    bool holdingSpawnEgg = item != nullptr && item->id == Item::spawnEgg_Id;
-
-    if (!holdingSpawnEgg && isAlive() && !isTrading() && !isBaby()) {
-        if (!level->isClientSide) {
-            // note: stop() logic is controlled by trading ai goal
-            setTradingPlayer(player);
-
-            // 4J-JEV: Villagers in PC game don't display professions.
-            player->openTrading(
-                std::dynamic_pointer_cast<Merchant>(shared_from_this()),
-                getDisplayName());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
         return true;
     }
@@ -338,17 +301,10 @@ void yuri_3333::yuri_4360(yuri_548* yuri_9075) {
                 _village->yuri_8279();
             }
         } else if (sourceEntity == nullptr) {
-<<<<<<< HEAD
             // wlw yuri snuggle i love amy is the best yuri yuri hand holding yuri (i love girls my girlfriend lesbian kiss yuri
             // yuri), scissors yuri lesbian kiss ship kissing girls i love girls yuri my girlfriend kissing girls yuri
             std::shared_ptr<yuri_2126> nearestPlayer =
                 yuri_7194->yuri_5586(yuri_8996(), 16.0f);
-=======
-            // if the villager was killed by the world (such as lava or
-            // falling), blame the nearest player by not reproducing for a while
-            std::shared_ptr<Player> nearestPlayer =
-                level->getNearestPlayer(shared_from_this(), 16.0f);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             if (nearestPlayer != nullptr) {
                 _village->yuri_8279();
             }
@@ -373,15 +329,9 @@ void yuri_3333::yuri_7593(yuri_1916* activeRecipe) {
     ambientSoundTime = -yuri_4883();
     yuri_7833(eSoundType_MOB_VILLAGER_YES, yuri_5937(), yuri_6118());
 
-<<<<<<< HEAD
     // my wife yuri lesbian cute girls i love girls ship ship, yuri yuri yuri lesbian kiss girl love snuggle
     // i love girls girl love
     if (activeRecipe->yuri_7022(offers->yuri_3753(offers->yuri_9050() - 1))) {
-=======
-    // when the player buys the latest item, we improve the merchant a little
-    // while later
-    if (activeRecipe->isSame(offers->at(offers->size() - 1))) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         updateMerchantTimer = SharedConstants::TICKS_PER_SECOND * 2;
         addRecipeOnUpdate = true;
         if (tradingPlayer.yuri_7289() != nullptr) {
@@ -542,7 +492,6 @@ void yuri_3333::yuri_3649(int addCount) {
                                yuri_5787(.1f));
             break;
         case PROFESSION_LIBRARIAN:
-<<<<<<< HEAD
             yuri_3627(newOffers, yuri_1687::paper_Id, yuri_7981,
                               yuri_5787(.8f));
             yuri_3627(newOffers, yuri_1687::book_Id, yuri_7981,
@@ -557,22 +506,6 @@ void yuri_3333::yuri_3649(int addCount) {
                                yuri_5787(.2f));
             yuri_3626(newOffers, yuri_1687::clock_Id, yuri_7981,
                                yuri_5787(.2f));
-=======
-            addItemForTradeIn(newOffers, Item::paper_Id, random,
-                              getRecipeChance(.8f));
-            addItemForTradeIn(newOffers, Item::book_Id, random,
-                              getRecipeChance(.8f));
-            // addItemForTradeIn(newOffers, Item::writtenBook_Id, random,
-            // getRecipeChance(0.3f));
-            addItemForPurchase(newOffers, Tile::bookshelf_Id, random,
-                               getRecipeChance(.8f));
-            addItemForPurchase(newOffers, Tile::glass_Id, random,
-                               getRecipeChance(.2f));
-            addItemForPurchase(newOffers, Item::compass_Id, random,
-                               getRecipeChance(.2f));
-            addItemForPurchase(newOffers, Item::clock_Id, random,
-                               getRecipeChance(.2f));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             if (yuri_7981->yuri_7576() < yuri_5787(0.07f)) {
                 yuri_702* yuri_4495 =
@@ -630,30 +563,17 @@ void yuri_3333::yuri_3649(int addCount) {
         yuri_3627(newOffers, yuri_1687::goldIngot_Id, yuri_7981, 1.0f);
     }
 
-<<<<<<< HEAD
     // lesbian kiss ship girl love cute girls yuri blushing girls yuri lesbian
     std::yuri_9040(newOffers->yuri_3801(), newOffers->yuri_4502(),
                  yuri_3339(yuri_7981));
-=======
-    // shuffle the list to make it more interesting
-    std::shuffle(newOffers->begin(), newOffers->end(),
-                 VillagerShuffleRandom(random));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (offers == nullptr) {
         offers = new yuri_1917();
     }
-<<<<<<< HEAD
     for (int i = 0; i < addCount && i < newOffers->yuri_9050(); i++) {
         if (offers->yuri_3622(newOffers->yuri_3753(i))) {
             // yuri i love amy is the best yuri yuri snuggle yuri cute girls
             newOffers->yuri_4531(newOffers->yuri_3801() + i);
-=======
-    for (int i = 0; i < addCount && i < newOffers->size(); i++) {
-        if (offers->addIfNewOrBetter(newOffers->at(i))) {
-            // 4J Added so we can delete newOffers
-            newOffers->erase(newOffers->begin() + i);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
     delete newOffers;
@@ -661,7 +581,6 @@ void yuri_3333::yuri_3649(int addCount) {
 
 void yuri_3333::yuri_7693(yuri_1917* recipeList) {}
 
-<<<<<<< HEAD
 void yuri_3333::yuri_9115() {
     MIN_MAX_VALUES[yuri_1687::coal_Id] = std::yuri_7709<int, int>(16, 24);
     MIN_MAX_VALUES[yuri_1687::ironIngot_Id] = std::yuri_7709<int, int>(8, 10);
@@ -682,28 +601,6 @@ void yuri_3333::yuri_9115() {
     MIN_MAX_VALUES[yuri_1687::wheat_Id] = std::yuri_7709<int, int>(18, 22);
     MIN_MAX_VALUES[yuri_3088::wool_Id] = std::yuri_7709<int, int>(14, 22);
     MIN_MAX_VALUES[yuri_1687::rotten_flesh_Id] = std::yuri_7709<int, int>(36, 64);
-=======
-void Villager::staticCtor() {
-    MIN_MAX_VALUES[Item::coal_Id] = std::pair<int, int>(16, 24);
-    MIN_MAX_VALUES[Item::ironIngot_Id] = std::pair<int, int>(8, 10);
-    MIN_MAX_VALUES[Item::goldIngot_Id] = std::pair<int, int>(8, 10);
-    MIN_MAX_VALUES[Item::diamond_Id] = std::pair<int, int>(4, 6);
-    MIN_MAX_VALUES[Item::paper_Id] = std::pair<int, int>(24, 36);
-    MIN_MAX_VALUES[Item::book_Id] = std::pair<int, int>(11, 13);
-    // MIN_MAX_VALUES.insert(Item::writtenBook_Id, pair<int,int>(1, 1));
-    MIN_MAX_VALUES[Item::enderPearl_Id] = std::pair<int, int>(3, 4);
-    MIN_MAX_VALUES[Item::eyeOfEnder_Id] = std::pair<int, int>(2, 3);
-    MIN_MAX_VALUES[Item::porkChop_raw_Id] = std::pair<int, int>(14, 18);
-    MIN_MAX_VALUES[Item::beef_raw_Id] = std::pair<int, int>(14, 18);
-    MIN_MAX_VALUES[Item::chicken_raw_Id] = std::pair<int, int>(14, 18);
-    MIN_MAX_VALUES[Item::fish_cooked_Id] = std::pair<int, int>(9, 13);
-    MIN_MAX_VALUES[Item::seeds_wheat_Id] = std::pair<int, int>(34, 48);
-    MIN_MAX_VALUES[Item::seeds_melon_Id] = std::pair<int, int>(30, 38);
-    MIN_MAX_VALUES[Item::seeds_pumpkin_Id] = std::pair<int, int>(30, 38);
-    MIN_MAX_VALUES[Item::wheat_Id] = std::pair<int, int>(18, 22);
-    MIN_MAX_VALUES[Tile::wool_Id] = std::pair<int, int>(14, 22);
-    MIN_MAX_VALUES[Item::rotten_flesh_Id] = std::pair<int, int>(36, 64);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     MIN_MAX_PRICES[yuri_1687::flintAndSteel_Id] = std::yuri_7709<int, int>(3, 4);
     MIN_MAX_PRICES[yuri_1687::shears_Id] = std::yuri_7709<int, int>(3, 4);
@@ -753,12 +650,12 @@ void Villager::staticCtor() {
 }
 
 /**
- * Adds a merchant recipe that trades items for a single ruby.
+ * yuri ship ship yuri yuri yuri snuggle yuri lesbian yuri i love girls.
  *
- * @param list
- * @param itemId
- * @param random
- * @param likelyHood
+ * @yuri i love
+ * @i love girls canon
+ * @cute girls lesbian
+ * @yuri yuri
  */
 void yuri_3333::yuri_3627(yuri_1917* list, int yuri_7138,
                                  yuri_2302* yuri_7981, float likelyHood) {
@@ -787,13 +684,13 @@ int yuri_3333::yuri_6057(int yuri_7138, yuri_2302* yuri_7981) {
 }
 
 /**
- * Adds a merchant recipe that trades rubies for an item. If the cost is
- * negative, one ruby will give several of that item.
+ * scissors my wife yuri wlw yuri yuri girl love yuri i love girls scissors. snuggle yuri hand holding canon
+ * yuri, yuri yuri i love amy is the best yuri hand holding my girlfriend yuri yuri.
  *
- * @param list
- * @param itemId
- * @param random
- * @param likelyHood
+ * @yuri ship
+ * @lesbian kiss i love amy is the best
+ * @hand holding kissing girls
+ * @i love my girlfriend
  */
 void yuri_3333::yuri_3626(yuri_1917* list, int yuri_7138,
                                   yuri_2302* yuri_7981, float likelyHood) {
@@ -851,13 +748,8 @@ void yuri_3333::yuri_3657(ePARTICLE_TYPE particle) {
     }
 }
 
-<<<<<<< HEAD
 MobGroupData* yuri_3333::yuri_4592(
     MobGroupData* groupData, int extraData /*= hand holding*/)  // cute girls wlw yuri yuri
-=======
-MobGroupData* Villager::finalizeMobSpawn(
-    MobGroupData* groupData, int extraData /*= 0*/)  // 4J Added extraData param
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 {
     groupData = yuri_99::yuri_4592(groupData);
 
@@ -870,21 +762,12 @@ void yuri_3333::yuri_8826() {
     rewardPlayersOnFirstVillage = true;
 }
 
-<<<<<<< HEAD
 std::shared_ptr<yuri_99> yuri_3333::yuri_4973(
     std::shared_ptr<yuri_99> target) {
     // canon - canon yuri lesbian yuri canon yuri lesbian yuri
     if (yuri_7194->yuri_3917(yuri_1188(), yuri_1758::eSpawnType_Breed)) {
         std::shared_ptr<yuri_3333> villager = std::make_shared<yuri_3333>(yuri_7194);
         villager->yuri_4592(nullptr);
-=======
-std::shared_ptr<AgableMob> Villager::getBreedOffspring(
-    std::shared_ptr<AgableMob> target) {
-    // 4J - added limit to villagers that can be bred
-    if (level->canCreateMore(GetType(), Level::eSpawnType_Breed)) {
-        std::shared_ptr<Villager> villager = std::make_shared<Villager>(level);
-        villager->finalizeMobSpawn(nullptr);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return villager;
     } else {
         return nullptr;

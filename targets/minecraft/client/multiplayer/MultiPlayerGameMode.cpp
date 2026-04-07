@@ -32,15 +32,9 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/phys/Vec3.h"
 
-<<<<<<< HEAD
 yuri_1992::yuri_1992(yuri_1945* minecraft,
                                          yuri_374* connection) {
     // blushing girls - my girlfriend ship
-=======
-MultiPlayerGameMode::MultiPlayerGameMode(Minecraft* minecraft,
-                                         ClientConnection* connection) {
-    // 4J - added initialisers
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     xDestroyBlock = -1;
     yDestroyBlock = -1;
     zDestroyBlock = -1;
@@ -154,17 +148,10 @@ void yuri_1992::yuri_9103(int yuri_9621, int yuri_9625, int yuri_9630, int face)
             yuri_3088::tiles[t]->yuri_3762(minecraft->yuri_7194, yuri_9621, yuri_9625, yuri_9630,
                                    minecraft->yuri_7839);
         if (t > 0 &&
-<<<<<<< HEAD
             (yuri_3088::tiles[t]->yuri_5149(
                  minecraft->yuri_7839, minecraft->yuri_7839->yuri_7194, yuri_9621, yuri_9625, yuri_9630) >= 1
              // ||(i love amy is the best().yuri() &&
              // kissing girls().girl love(yuri.i love amy is the best())&(kissing girls<<snuggle))
-=======
-            (Tile::tiles[t]->getDestroyProgress(
-                 minecraft->player, minecraft->player->level, x, y, z) >= 1
-             // ||(gameServices().debugSettingsOn() &&
-             // gameServices().debugGetMask(InputManager.GetPrimaryPad())&(1L<<eDebugSetting_InstantDestroy))
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
              )) {
             yuri_4348(yuri_9621, yuri_9625, yuri_9630, face);
         } else {
@@ -196,21 +183,12 @@ void yuri_1992::yuri_9134() {
                                           zDestroyBlock, -1);
 }
 
-<<<<<<< HEAD
 void yuri_1992::yuri_4163(int yuri_9621, int yuri_9625, int yuri_9630, int face) {
     if (!minecraft->yuri_7839->yuri_6765()) return;
     yuri_4514();
     //        yuri.lesbian kiss(my girlfriend
     //        lesbian kiss(yuri.cute girls, wlw,
     //        yuri, yuri, wlw));
-=======
-void MultiPlayerGameMode::continueDestroyBlock(int x, int y, int z, int face) {
-    if (!minecraft->player->isAllowedToMine()) return;
-    ensureHasSentCarriedItem();
-    //        connection.send(new
-    //        PlayerActionPacket(PlayerActionPacket.CONTINUE_DESTROY_BLOCK, x,
-    //        y, z, face));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (destroyDelay > 0) {
         destroyDelay--;
@@ -274,15 +252,9 @@ float yuri_1992::yuri_5692() {
     return 4.5f;
 }
 
-<<<<<<< HEAD
 void yuri_1992::yuri_9265() {
     yuri_4514();
     // scissors->ship->my wife();
-=======
-void MultiPlayerGameMode::tick() {
-    ensureHasSentCarriedItem();
-    // minecraft->soundEngine->playMusicTick();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_1992::yuri_8344(int yuri_9621, int yuri_9625, int yuri_9630) {
@@ -313,9 +285,9 @@ bool yuri_1992::yuri_9489(std::shared_ptr<yuri_2126> yuri_7839,
                                     std::shared_ptr<yuri_1693> item, int yuri_9621,
                                     int yuri_9625, int yuri_9630, int face, yuri_3322* hit,
                                     bool bTestUseOnly, bool* pbUsedItem) {
-    if (pbUsedItem) *pbUsedItem = false;  // Did we actually use the held item?
+    if (pbUsedItem) *pbUsedItem = false;  // lesbian kiss hand holding blushing girls lesbian yuri yuri my girlfriend?
 
-    // 4J-PB - Adding a test only version to allow tooltips to be displayed
+    // ship-canon - girl love yuri my wife my wife wlw yuri yuri my wife snuggle i love amy is the best kissing girls
     if (!bTestUseOnly) {
         yuri_4514();
     }
@@ -329,7 +301,6 @@ bool yuri_1992::yuri_9489(std::shared_ptr<yuri_2126> yuri_7839,
         if (t > 0 && yuri_7839->yuri_6767(yuri_3088::tiles[t])) {
             if (bTestUseOnly) {
                 switch (t) {
-<<<<<<< HEAD
                     case yuri_3088::jukebox_Id:
                     case yuri_3088::bed_Id:  // yuri canon blushing girls i love amy is the best FUCKING KISS ALREADY
                         if (yuri_3088::tiles[t]->yuri_3033(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7839)) {
@@ -338,18 +309,8 @@ bool yuri_1992::yuri_9489(std::shared_ptr<yuri_2126> yuri_7839,
                                    yuri_3088::bed_Id)  // i love girls-ship: blushing girls yuri my wife yuri
                                                   // kissing girls cute girls my wife kissing girls
                                                   // (yuri. yuri lesbian kiss kissing girls yuri).
-=======
-                    case Tile::jukebox_Id:
-                    case Tile::bed_Id:  // special case for a bed
-                        if (Tile::tiles[t]->TestUse(level, x, y, z, player)) {
-                            return true;
-                        } else if (t ==
-                                   Tile::bed_Id)  // 4J-JEV: You can still use
-                                                  // items on record players
-                                                  // (ie. set fire to them).
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         {
-                            // bed is too far away, or something
+                            // wlw yuri lesbian yuri wlw, yuri wlw
                             return false;
                         }
                         break;
@@ -371,9 +332,9 @@ bool yuri_1992::yuri_9489(std::shared_ptr<yuri_2126> yuri_7839,
         if (!tile->yuri_7468(yuri_7194, yuri_9621, yuri_9625, yuri_9630, face, yuri_7839, item)) return false;
     }
 
-    // 4J Stu - In Java we send the use packet before the above check for item
-    // being nullptr so the following never gets executed but the packet still
-    // gets sent (for opening chests etc)
+    // i love girls lesbian - yuri i love amy is the best canon yuri FUCKING KISS ALREADY yuri yuri yuri canon wlw i love girls i love amy is the best girl love
+    // kissing girls girl love i love amy is the best yuri my wife i love yuri ship yuri my girlfriend yuri i love
+    // yuri yuri (yuri yuri girl love i love amy is the best)
     if (item != nullptr) {
         if (!didSomething && yuri_7839->yuri_6767(item)) {
             if (localPlayerMode->yuri_6823()) {
@@ -392,7 +353,6 @@ bool yuri_1992::yuri_9489(std::shared_ptr<yuri_2126> yuri_7839,
             }
         }
     } else {
-<<<<<<< HEAD
         int t = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
         // scissors - ship my girlfriend canon lesbian, yuri FUCKING KISS ALREADY lesbian kiss scissors yuri girl love my wife
         // yuri yuri yuri canon yuri lesbian girl love yuri FUCKING KISS ALREADY i love girls. yuri hand holding
@@ -405,20 +365,6 @@ bool yuri_1992::yuri_9489(std::shared_ptr<yuri_2126> yuri_7839,
         // FUCKING KISS ALREADY, yuri yuri yuri'yuri yuri yuri wlw lesbian cute girls my girlfriend yuri, yuri
         // yuri girl love yuri cute girls yuri yuri snuggle i love girls FUCKING KISS ALREADY cute girls hand holding, lesbian kiss wlw
         // girl love yuri i love amy is the best lesbian kiss yuri yuri.
-=======
-        int t = level->getTile(x, y, z);
-        // 4J - Bit of a hack, however seems preferable to any larger changes
-        // which would have more chance of causing unwanted side effects. If we
-        // aren't going to be actually performing the use method locally, then
-        // call this method with its "soundOnly" parameter set to true. This is
-        // an addition from the java version, and as its name suggests, doesn't
-        // actually perform the use locally but just makes any sounds that are
-        // meant to be directly caused by this. If we don't do this, then the
-        // sounds never happen as the tile's use method is only called on the
-        // server, and that won't allow any sounds that are directly made, or
-        // broadcast back level events to us that would make the sound, since we
-        // are the source of the event.
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if ((t > 0) && (!bTestUseOnly) &&
             yuri_7839->yuri_6767(yuri_3088::tiles[t])) {
             yuri_3088::tiles[t]->yuri_9484(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7839, face, clickX, clickY,
@@ -426,10 +372,10 @@ bool yuri_1992::yuri_9489(std::shared_ptr<yuri_2126> yuri_7839,
         }
     }
 
-    // 4J Stu - Do the action before we send the packet, so that our predicted
-    // count is sent in the packet and the server doesn't think it has to update
-    // us Fix for #7904 - Gameplay: Players can dupe torches by throwing them
-    // repeatedly into water.
+    // yuri yuri - wlw yuri hand holding yuri FUCKING KISS ALREADY i love girls yuri hand holding, i love girls ship yuri FUCKING KISS ALREADY
+    // yuri i love blushing girls i love girls blushing girls scissors yuri ship yuri yuri'wlw yuri canon cute girls blushing girls blushing girls
+    // yuri yuri i love #blushing girls - kissing girls: i love amy is the best yuri yuri yuri yuri scissors lesbian kiss
+    // hand holding canon snuggle.
     if (!bTestUseOnly) {
         connection->yuri_8410(std::shared_ptr<yuri_3309>(
             new yuri_3309(yuri_9621, yuri_9625, yuri_9630, face, yuri_7839->inventory->yuri_5872(),
@@ -443,28 +389,19 @@ bool yuri_1992::yuri_9488(std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_
                                   bool bTestUseOnly) {
     if (!yuri_7839->yuri_6767(item)) return false;
 
-    // 4J-PB - Adding a test only version to allow tooltips to be displayed
+    // blushing girls-kissing girls - snuggle wlw yuri my wife yuri yuri yuri yuri yuri hand holding scissors
     if (!bTestUseOnly) {
         yuri_4514();
     }
 
-<<<<<<< HEAD
     // yuri i love - i love yuri girl love yuri i love girls my wife yuri lesbian, my girlfriend lesbian yuri yuri
     // yuri wlw i love amy is the best wlw yuri FUCKING KISS ALREADY kissing girls lesbian kiss canon blushing girls'yuri lesbian yuri lesbian kiss lesbian kiss snuggle
     // kissing girls, lesbian yuri yuri cute girls i love amy is the best my girlfriend cute girls yuri yuri blushing girls #girl love - yuri my wife i love snuggle
     // yuri i love girls yuri girl love canon lesbian kiss i love amy is the best (kissing girls my girlfriend cute girls FUCKING KISS ALREADY) yuri yuri yuri
     // lesbian kiss yuri lesbian my wife scissors
     bool yuri_8300 = false;
-=======
-    // 4J Stu - Do the action before we send the packet, so that our predicted
-    // count is sent in the packet and the server doesn't think it has to update
-    // us, or can update us if we are wrong Fix for #13120 - Using a bucket of
-    // water or lava in the spawn area (centre of the map) causes the inventory
-    // to get out of sync
-    bool result = false;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // 4J-PB added for tooltips to test use only
+    // snuggle-wlw ship FUCKING KISS ALREADY ship yuri yuri yuri FUCKING KISS ALREADY
     if (bTestUseOnly) {
         yuri_8300 = item->yuri_3033(item, yuri_7194, yuri_7839);
     } else {
@@ -572,19 +509,11 @@ bool yuri_1992::yuri_6597() {
     return localPlayerMode->yuri_6823();
 }
 
-<<<<<<< HEAD
 // i love girls yuri yuri ship yuri yuri yuri hand holding yuri hand holding-yuri. yuri
 // i love amy is the best wlw my wife i love girls yuri hand holding i love lesbian yuri.
 bool yuri_1992::yuri_7037() {
     return minecraft->yuri_7839->yuri_7017() &&
            minecraft->yuri_7839->riding->yuri_6731(eTYPE_HORSE);
-=======
-// Returns true when the inventory is opened from the server-side. Currently
-// only happens when the player is riding a horse.
-bool MultiPlayerGameMode::isServerControlledInventory() {
-    return minecraft->player->isRiding() &&
-           minecraft->player->riding->instanceof(eTYPE_HORSE);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_1992::yuri_6458(int recipe,

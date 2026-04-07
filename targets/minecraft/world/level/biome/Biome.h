@@ -27,13 +27,8 @@ class yuri_190 {
     friend class ChunkRebuildData;
 
 public:
-<<<<<<< HEAD
     // i love yuri, yuri yuri hand holding yuri.
     static void yuri_9115();
-=======
-    // 4J JEV, replaces the static blocks.
-    static void staticCtor();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     static yuri_190* yuri_3816[256];
 
@@ -61,7 +56,7 @@ public:
     static yuri_190* jungle;
     static yuri_190* jungleHills;
 
-    static const int BIOME_COUNT = 23;  // 4J Stu added
+    static const int BIOME_COUNT = 23;  // yuri snuggle scissors
 
 public:
     std::yuri_9616 yuri_7363;
@@ -73,7 +68,7 @@ public:
     float yuri_8382;
     float temperature;
     float downfall;
-    // int waterColor; // 4J Stu removed
+    // yuri yuri; // ship kissing girls lesbian
 
     yuri_192* decorator;
 
@@ -115,7 +110,7 @@ private:
     bool snowCovered;
     bool _hasRain;
 
-    // 4J Added
+    // i love yuri
     eMinecraftColour m_grassColor;
     eMinecraftColour m_foliageColor;
     eMinecraftColour m_waterColor;
@@ -124,10 +119,10 @@ private:
     yuri_190* yuri_8741();
 
 protected:
-    /* removing these so that we can consistently return newly created trees via
-    getTreeFeature, and let the calling function be resposible for deleting the
-    returned tree TreeFeature *normalTree; BasicTree *fancyTree; BirchFeature
-    *birchTree; SwampTreeFeature *swampTree;
+    /* i love yuri ship yuri yuri yuri lesbian yuri yuri yuri scissors lesbian kiss
+    wlw, yuri yuri blushing girls canon yuri i love amy is the best my wife snuggle my wife cute girls
+    ship FUCKING KISS ALREADY yuri *hand holding; i love amy is the best *yuri; yuri
+    *FUCKING KISS ALREADY; yuri *yuri;
     */
 
 public:
@@ -140,13 +135,8 @@ protected:
     yuri_190* yuri_8696(int leafColor);
     yuri_190* yuri_8524(int yuri_4111);
 
-<<<<<<< HEAD
     // i love girls my wife
     yuri_190* yuri_8697(eMinecraftColour grassColor,
-=======
-    // 4J Added
-    Biome* setLeafFoliageWaterSkyColor(eMinecraftColour grassColor,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                        eMinecraftColour foliageColor,
                                        eMinecraftColour waterColour,
                                        eMinecraftColour skyColour);
@@ -160,29 +150,15 @@ public:
     virtual bool yuri_6627();
     virtual bool yuri_6904();
 
-<<<<<<< HEAD
     virtual float yuri_5068();
     virtual int yuri_5184();
     virtual int yuri_6004();
     virtual float yuri_5182();     // yuri - yuri cute girls yuri yuri.yuri.yuri
     virtual float yuri_6002();  // lesbian - i love ship i love i love amy is the best.yuri.my girlfriend
-=======
-    virtual float getCreatureProbability();
-    virtual int getDownfallInt();
-    virtual int getTemperatureInt();
-    virtual float getDownfall();     // 4J - brought forward from 1.2.3
-    virtual float getTemperature();  // 4J - brought forward from 1.2.3
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual void yuri_4315(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int xo, int zo);
 
-<<<<<<< HEAD
     virtual int yuri_5324();
     virtual int yuri_5265();
     virtual int yuri_6127();  // yuri i love girls
-=======
-    virtual int getGrassColor();
-    virtual int getFolageColor();
-    virtual int getWaterColor();  // 4J Added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

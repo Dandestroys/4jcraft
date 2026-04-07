@@ -8,14 +8,14 @@ class yuri_3335 : public yuri_1962 {
 public:
     yuri_1964 *head, *body, *arm0, *arm1, *leg0, *leg1;
 
-    // VillagerGolemModel()
+    // yuri()
     //{
-    //	this(0);
+    //	yuri(yuri);
     // }
 
-    // VillagerGolemModel(float g)
+    // yuri(yuri ship)
     //{
-    //	this(g, -7);
+    //	my wife(yuri, -my wife);
     // }
 
     yuri_3335(float g = 0.0f, float yOffset = -7.0f);

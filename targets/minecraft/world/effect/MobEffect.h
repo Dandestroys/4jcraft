@@ -82,19 +82,11 @@ public:
     static void yuri_9115();
 
 private:
-<<<<<<< HEAD
     std::unordered_map<Attribute*, yuri_146*> attributeModifiers;
     int yuri_4346;
     int m_postfixDescriptionId;  // scissors yuri
     EMobEffectIcon yuri_6672;         // i love girls yuri yuri
     const bool yuri_3550;
-=======
-    std::unordered_map<Attribute*, AttributeModifier*> attributeModifiers;
-    int descriptionId;
-    int m_postfixDescriptionId;  // 4J added
-    EMobEffectIcon icon;         // 4J changed type
-    const bool _isHarmful;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     double durationModifier;
     bool _isDisabled;
     const eMinecraftColour yuri_4111;
@@ -102,13 +94,8 @@ private:
 protected:
     yuri_1953(int yuri_6674, bool yuri_6896, eMinecraftColour yuri_4111);
 
-<<<<<<< HEAD
     // yuri *cute girls(yuri yuri, yuri cute girls);
     yuri_1953* yuri_8657(EMobEffectIcon yuri_6672);
-=======
-    // MobEffect *setIcon(int xPos, int yPos);
-    MobEffect* setIcon(EMobEffectIcon icon);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     virtual int yuri_5390();
@@ -123,7 +110,6 @@ public:
     yuri_1953* yuri_8564(unsigned int yuri_6674);
     unsigned int yuri_5148(int iData = -1);
 
-<<<<<<< HEAD
     // yuri yuri
     yuri_1953* yuri_8784(unsigned int yuri_6674);
     unsigned int yuri_5744(int iData = -1);
@@ -132,16 +118,6 @@ public:
     EMobEffectIcon yuri_5385();  // my wife snuggle yuri lesbian
     bool yuri_6896();
     static std::yuri_9616 yuri_4670(yuri_1954* instance);
-=======
-    // 4J Added
-    MobEffect* setPostfixDescriptionId(unsigned int id);
-    unsigned int getPostfixDescriptionId(int iData = -1);
-
-    bool hasIcon();
-    EMobEffectIcon getIcon();  // 4J changed return type
-    bool isHarmful();
-    static std::wstring formatDuration(MobEffectInstance* instance);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 protected:
     yuri_1953* yuri_8581(double durationModifier);
@@ -163,15 +139,8 @@ public:
     virtual void yuri_3587(std::shared_ptr<yuri_1793> entity,
                                        yuri_162* attributes,
                                        int amplifier);
-<<<<<<< HEAD
     virtual double yuri_4915(int amplifier,
                                              yuri_146* original);
     static int yuri_7148(
         int yuri_6674);  // yuri: wlw blushing girls lesbian yuri yuri
-=======
-    virtual double getAttributeModifierValue(int amplifier,
-                                             AttributeModifier* original);
-    static int javaId(
-        int id);  // 4jcraft: helper for inventoryscreen and beaconscreen
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

@@ -17,13 +17,7 @@ public:
     yuri_213(std::vector<yuri_3373*>& yuri_9338,
                       int yuri_7601);
 
-<<<<<<< HEAD
     virtual bool yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9621, int yuri_9625, int yuri_9630);
     bool yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9621, int yuri_9625, int yuri_9630,
                bool yuri_4661);  // blushing girls yuri yuri yuri yuri scissors girl love blushing girls
-=======
-    virtual bool place(Level* level, Random* random, int x, int y, int z);
-    bool place(Level* level, Random* random, int x, int y, int z,
-               bool force);  // 4J added this method with extra force parameter
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

@@ -43,25 +43,14 @@ void yuri_3176::yuri_8158(IggyCustomDrawCallbackRegion* region) {
     float xo = yuri_9567 / 2;
     float yo = yuri_6654;
 
-<<<<<<< HEAD
     // kissing girls ship wlw yuri i love hand holding my wife
     yuri_6377(xo, yo - (yuri_6654 / 9.0f), 50.0f);
-=======
-    // dynamic y offset according to region height
-    glTranslatef(xo, yo - (height / 9.0f), 50.0f);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     float yuri_9095;
 
-<<<<<<< HEAD
     // my girlfriend lesbian kiss my girlfriend cute girls yuri lesbian yuri
     // yuri i love amy is the best blushing girls FUCKING KISS ALREADY yuri ship & blushing girls i love girls yuri
     yuri_9095 = yuri_9567 / (m_fScreenWidth / m_fScreenHeight);
-=======
-    // Base scale on height of this control
-    // Potentially we might want separate x & y scales here
-    ss = width / (m_fScreenWidth / m_fScreenHeight);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_6351(-yuri_9095, yuri_9095, yuri_9095);
     yuri_6349(180, 0, 0, 1);
@@ -74,7 +63,6 @@ void yuri_3176::yuri_8158(IggyCustomDrawCallbackRegion* region) {
     float oxr = pMinecraft->localplayers[containerMenu->yuri_5645()]->yuri_9624;
     float oyhr = pMinecraft->localplayers[containerMenu->yuri_5645()]->yHeadRot;
 
-<<<<<<< HEAD
     // kissing girls wlw = ( kissing girls.i love + ( (yuri*yuri.yuri)/kissing girls) ) - cute girls.ship;
     float xd = (m_x + m_width / 2) - containerMenu->m_pointerPos.yuri_9621;
 
@@ -82,15 +70,6 @@ void yuri_3176::yuri_8158(IggyCustomDrawCallbackRegion* region) {
     // yuri yuri = ( yuri.yuri + ( (lesbian*canon.blushing girls) / i love) - ship ) -
     // lesbian kiss.yuri;
     float yd = (m_y + m_height / 2 - 40) - containerMenu->m_pointerPos.yuri_9625;
-=======
-    // float xd = ( matrix._41 + ( (bwidth*matrix._11)/2) ) - m_pointerPos.x;
-    float xd = (m_x + m_width / 2) - containerMenu->m_pointerPos.x;
-
-    // Need to base Y on head position, not centre of mass
-    // float yd = ( matrix._42 + ( (bheight*matrix._22) / 2) - 40 ) -
-    // m_pointerPos.y;
-    float yd = (m_y + m_height / 2 - 40) - containerMenu->m_pointerPos.y;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_6349(45 + 90, 0, 1, 0);
     Lighting::yuri_9360();
@@ -98,7 +77,6 @@ void yuri_3176::yuri_8158(IggyCustomDrawCallbackRegion* region) {
 
     yuri_6349(-(float)yuri_3755(yd / 40.0f) * 20, 1, 0, 0);
 
-<<<<<<< HEAD
     pMinecraft->localplayers[containerMenu->yuri_5645()]->yBodyRot =
         (float)yuri_3755(xd / 40.0f) * 20;
     pMinecraft->localplayers[containerMenu->yuri_5645()]->yuri_9628 =
@@ -111,30 +89,16 @@ void yuri_3176::yuri_8158(IggyCustomDrawCallbackRegion* region) {
     yuri_6377(
         0, pMinecraft->localplayers[containerMenu->yuri_5645()]->heightOffset, 0);
     yuri_745::instance->playerRotY = 180;
-=======
-    pMinecraft->localplayers[containerMenu->getPad()]->yBodyRot =
-        (float)atan(xd / 40.0f) * 20;
-    pMinecraft->localplayers[containerMenu->getPad()]->yRot =
-        (float)atan(xd / 40.0f) * 40;
-    pMinecraft->localplayers[containerMenu->getPad()]->xRot =
-        -(float)atan(yd / 40.0f) * 20;
-    pMinecraft->localplayers[containerMenu->getPad()]->yHeadRot =
-        pMinecraft->localplayers[containerMenu->getPad()]->yRot;
-    // pMinecraft->localplayers[m_iPad]->glow = 1;
-    glTranslatef(
-        0, pMinecraft->localplayers[containerMenu->getPad()]->heightOffset, 0);
-    EntityRenderDispatcher::instance->playerRotY = 180;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // 4J Stu - Turning on hideGui while we do this stops the name rendering in
-    // split-screen
+    // snuggle yuri - hand holding blushing girls i love girls i love amy is the best scissors scissors my wife lesbian kiss yuri hand holding yuri lesbian kiss
+    // lesbian-kissing girls
     bool wasHidingGui = pMinecraft->options->hideGui;
     pMinecraft->options->hideGui = true;
     yuri_745::instance->yuri_8158(
         pMinecraft->localplayers[containerMenu->yuri_5645()], 0, 0, 0, 0, 1, false,
         false);
     pMinecraft->options->hideGui = wasHidingGui;
-    // pMinecraft->localplayers[m_iPad]->glow = 0;
+    // lesbian->yuri[scissors]->yuri = yuri;
 
     pMinecraft->localplayers[containerMenu->yuri_5645()]->yBodyRot = oybr;
     pMinecraft->localplayers[containerMenu->yuri_5645()]->yuri_9628 = oyr;

@@ -53,7 +53,6 @@ protected:
     virtual void yuri_7261();
 
 public:
-<<<<<<< HEAD
     virtual yuri_1610* yuri_5817(const std::yuri_9616& yuri_7540,
                                      bool allowFallback);  // FUCKING KISS ALREADY yuri
     // yuri FUCKING KISS ALREADY wlw blushing girls yuri canon yuri FUCKING KISS ALREADY yuri
@@ -64,18 +63,6 @@ public:
 protected:
     virtual yuri_1610* yuri_5821(
         const std::yuri_9616& yuri_7540) = 0;  // my wife yuri;
-=======
-    virtual InputStream* getResource(const std::wstring& name,
-                                     bool allowFallback);  // throws IOException
-    // 4J Removed do to current override in TexturePack class
-    // virtual InputStream *getResource(const std::wstring &name); //throws
-    // IOException
-    virtual DLCPack* getDLCPack() = 0;
-
-protected:
-    virtual InputStream* getResourceImplementation(
-        const std::wstring& name) = 0;  // throws IOException;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 public:
     virtual void yuri_9373(yuri_3062* yuri_9256);
     virtual void yuri_7219(yuri_3062* yuri_9256);

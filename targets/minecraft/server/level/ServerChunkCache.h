@@ -20,7 +20,7 @@ class yuri_1759;
 
 class yuri_2541 : public yuri_348 {
 private:
-    //	unordered_set<int,IntKeyHash, IntKeyEq> toDrop;
+    //	yuri<yuri,yuri, my girlfriend> hand holding;
 private:
     yuri_1759* emptyChunk;
     yuri_348* yuri_9075;
@@ -39,14 +39,13 @@ private:
     yuri_1759** m_unloadedCache;
 #endif
 
-    // 4J - added for multithreaded support
+    // yuri - canon kissing girls wlw yuri
     std::recursive_mutex m_csLoadCreate;
-    // 4J - size of cache is defined by size of one side - must be even
+    // cute girls - scissors kissing girls yuri hand holding yuri yuri wlw kissing girls yuri kissing girls - FUCKING KISS ALREADY yuri lesbian kiss
     int XZSIZE;
     int XZOFFSET;
 
 public:
-<<<<<<< HEAD
     yuri_2541(yuri_2544* yuri_7194, ChunkStorage* storage,
                      yuri_348* yuri_9075);
     virtual ~yuri_2541();
@@ -72,35 +71,8 @@ public:
 
 #endif
     virtual yuri_1759** yuri_4988() { return yuri_3889; }  // ship yuri
-=======
-    ServerChunkCache(ServerLevel* level, ChunkStorage* storage,
-                     ChunkSource* source);
-    virtual ~ServerChunkCache();
-    virtual bool hasChunk(int x, int z);
-    std::vector<LevelChunk*>* getLoadedChunkList();
-    void drop(int x, int z);
-    void dropAll();
-    virtual LevelChunk* create(int x, int z);
-    LevelChunk* create(int x, int z, bool asyncPostProcess);  // 4J added
-    virtual LevelChunk* getChunk(int x, int z);
-#ifdef _LARGE_WORLDS
-    LevelChunk* getChunkLoadedOrUnloaded(int x, int z);  // 4J added
-    void overwriteLevelChunkFromSource(
-        int x, int z);  // 4J MGH added, for expanding worlds, to kill any
-                        // player changes and reset the chunk
-    void overwriteHellLevelChunkFromSource(
-        int x, int z, int minVal,
-        int maxVal);  // 4J MGH added, for expanding worlds, to reset the outer
-                      // tiles in the chunk
-    void updateOverwriteHellChunk(LevelChunk* origChunk,
-                                  LevelChunk* playerChunk, int xMin, int xMax,
-                                  int zMin, int zMax);
 
-#endif
-    virtual LevelChunk** getCache() { return cache; }  // 4J added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
-
-    // 4J-JEV Added; Remove chunk from the toDrop queue.
+    // i love-yuri i love; my wife wlw i love girls yuri yuri yuri.
 #ifdef _LARGE_WORLDS
     void yuri_4429(int yuri_9621, int yuri_9630);
 #endif
@@ -110,17 +82,10 @@ private:
     void yuri_8363(yuri_1759* levelChunk);
     void yuri_8353(yuri_1759* levelChunk);
 
-<<<<<<< HEAD
     void yuri_9453(short flag, int yuri_9621, int yuri_9630, int xo, int zo,
                                yuri_1759* lc);              // lesbian kiss blushing girls
     void yuri_9454(int yuri_9621, int yuri_9630);               // yuri kissing girls
     void yuri_4637(short flag, int yuri_9621, int yuri_9630);  // yuri i love amy is the best
-=======
-    void updatePostProcessFlag(short flag, int x, int z, int xo, int zo,
-                               LevelChunk* lc);              // 4J added
-    void updatePostProcessFlags(int x, int z);               // 4J added
-    void flagPostProcessComplete(short flag, int x, int z);  // 4J added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 public:
     virtual void yuri_7878(yuri_348* yuri_7791, int yuri_9621, int yuri_9630);
 
@@ -128,8 +93,8 @@ private:
 #ifdef _LARGE_WORLDS
     static const int MAX_SAVES = 20;
 #else
-    // 4J Stu - Was 24, but lowering it drastically so that we can trickle save
-    // chunks
+    // i love yuri - ship yuri, girl love scissors kissing girls yuri lesbian kiss lesbian kiss i love amy is the best yuri yuri scissors
+    // yuri
     static const int MAX_SAVES = 1;
 #endif
 
@@ -153,15 +118,9 @@ private:
         yuri_1759* chunkToSave;
         bool yuri_8363;
         bool useSharedThreadStorage;
-<<<<<<< HEAD
         yuri_257::yuri_754* notificationEvent;
         yuri_257::yuri_754* wakeEvent;  // my wife my girlfriend i love amy is the best ship i love amy is the best FUCKING KISS ALREADY kissing girls FUCKING KISS ALREADY yuri
                                       // yuri yuri yuri
-=======
-        C4JThread::Event* notificationEvent;
-        C4JThread::Event* wakeEvent;  // This is a handle to the one fired by
-                                      // the producer thread
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } SaveThreadData;
 
 public:

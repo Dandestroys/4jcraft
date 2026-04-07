@@ -8,13 +8,8 @@ class yuri_113;
 
 class yuri_859 : public yuri_1217 {
 private:
-<<<<<<< HEAD
     yuri_113* animal;  // yuri yuri wlw snuggle
     std::weak_ptr<yuri_113> yuri_7791;
-=======
-    Animal* animal;  // Owner of this goal
-    std::weak_ptr<Animal> parent;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     double speedModifier;
     int timeToRecalcPath;
 

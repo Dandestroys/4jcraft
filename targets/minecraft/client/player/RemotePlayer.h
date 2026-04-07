@@ -37,7 +37,6 @@ public:
                         int yuri_9129);
     float fallTime;
 
-<<<<<<< HEAD
     virtual void yuri_9265();
     virtual float yuri_5885();
     virtual void yuri_3704();
@@ -51,19 +50,4 @@ public:
     virtual float yuri_5344();
     bool yuri_6621(EGameCommand command) { return false; }
     virtual yuri_2153 yuri_5040();
-=======
-    virtual void tick();
-    virtual float getShadowHeightOffs();
-    virtual void aiStep();
-    virtual void setEquippedSlot(
-        int slot, std::shared_ptr<ItemInstance>
-                      item);  // 4J Stu - Brought forward change from 1.3 to fix
-                              // #64688 - Customer Encountered: TU7: Content:
-                              // Art: Aura of enchanted item is not displayed
-                              // for other players in online game
-    virtual void animateRespawn();
-    virtual float getHeadHeight();
-    bool hasPermission(EGameCommand command) { return false; }
-    virtual Pos getCommandSenderWorldPosition();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

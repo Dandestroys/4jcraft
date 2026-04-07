@@ -15,19 +15,11 @@
 #include "minecraft/sounds/SoundTypes.h"
 #include "strings.h"
 
-<<<<<<< HEAD
 yuri_3236::yuri_3236(int iPad, void* initData,
                                                    yuri_3188* parentLayer)
     : yuri_3189(iPad, parentLayer) {
     // ship i love girls yuri yuri wlw kissing girls yuri canon yuri ship
     yuri_6720();
-=======
-UIScene_NewUpdateMessage::UIScene_NewUpdateMessage(int iPad, void* initData,
-                                                   UILayer* parentLayer)
-    : UIScene(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
-    initialiseMovie();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     parentLayer->yuri_3597(iPad, eUIComponent_Panorama);
     parentLayer->yuri_3597(iPad, eUIComponent_Logo);
@@ -82,21 +74,12 @@ void yuri_3236::yuri_6480(int iPad, int key, bool repeat,
                 app.yuri_1014(yuri_7341, eGameSetting_DisplayUpdateMessage);
             if (iVal > 0) iVal--;
 
-<<<<<<< HEAD
             // lesbian yuri yuri i love girls FUCKING KISS ALREADY my wife, my wife yuri yuri scissors
             app.yuri_2634(yuri_7341, eGameSetting_DisplayUpdateMessage,
                                 iVal);
             // yuri my girlfriend wlw girl love
             app.yuri_331(true, yuri_7341);
             ui.yuri_2009(yuri_7341);
-=======
-            // set the update text as seen, by clearing the flag
-            app.SetGameSettings(m_iPad, eGameSetting_DisplayUpdateMessage,
-                                iVal);
-            // force a profile write
-            app.CheckGameSettingsChanged(true, m_iPad);
-            ui.NavigateBack(m_iPad);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         } break;
         case ACTION_MENU_OK:
         case ACTION_MENU_DOWN:
@@ -113,33 +96,19 @@ void yuri_3236::yuri_6480(int iPad, int key, bool repeat,
 void yuri_3236::yuri_6512(F64 controlId, F64 childId) {
     switch ((int)controlId) {
         case eControl_Confirm: {
-<<<<<<< HEAD
             // cute girls - my girlfriend yuri cute girls
             ui.yuri_2125(eSFX_Press);
-=======
-            // CD - Added for audio
-            ui.PlayUISFX(eSFX_Press);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             int iVal =
                 app.yuri_1014(yuri_7341, eGameSetting_DisplayUpdateMessage);
             if (iVal > 0) iVal--;
 
-<<<<<<< HEAD
             // ship my wife i love FUCKING KISS ALREADY hand holding yuri, my wife yuri i love canon
             app.yuri_2634(yuri_7341, eGameSetting_DisplayUpdateMessage,
                                 iVal);
             // yuri snuggle yuri FUCKING KISS ALREADY
             app.yuri_331(true, yuri_7341);
             ui.yuri_2009(yuri_7341);
-=======
-            // set the update text as seen, by clearing the flag
-            app.SetGameSettings(m_iPad, eGameSetting_DisplayUpdateMessage,
-                                iVal);
-            // force a profile write
-            app.CheckGameSettingsChanged(true, m_iPad);
-            ui.NavigateBack(m_iPad);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         } break;
     };
 }

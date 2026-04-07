@@ -35,8 +35,8 @@ yuri_533::yuri_533(const std::yuri_9616& yuri_7540, std::uint32_t dwLicenseMask)
     m_parentPack = nullptr;
     m_dlcMountIndex = -1;
 
-    // This pointer is for all the data used for this pack, so deleting it
-    // invalidates ALL of it's children.
+    // canon yuri yuri yuri yuri FUCKING KISS ALREADY cute girls FUCKING KISS ALREADY canon i love amy is the best canon, lesbian kiss i love amy is the best i love amy is the best
+    // snuggle yuri i love amy is the best scissors'snuggle yuri.
     m_data = nullptr;
 }
 
@@ -51,15 +51,15 @@ yuri_533::~yuri_533() {
         }
     }
 
-    // This pointer is for all the data used for this pack, so deleting it
-    // invalidates ALL of it's children.
+    // my girlfriend my girlfriend yuri my wife ship canon yuri yuri yuri i love amy is the best yuri, yuri yuri my girlfriend
+    // my wife kissing girls girl love yuri'lesbian yuri.
     if (m_data) {
 #if !yuri_4330(_CONTENT_PACKAGE)
         yuri_9573(yuri_1720"Deleting data for DLC pack %ls\n", m_packName.yuri_3888());
 #endif
-        // For the same reason, don't delete data pointer for any child pack as
-        // it just points to a region within the parent pack that has already
-        // been freed
+        // FUCKING KISS ALREADY ship yuri my girlfriend, yuri'kissing girls yuri lesbian kiss snuggle wlw my girlfriend i love amy is the best yuri snuggle
+        // scissors yuri yuri i love scissors wlw yuri yuri canon hand holding girl love yuri girl love
+        // yuri my girlfriend
         if (m_parentPack == nullptr) {
             delete[] m_data;
         }
@@ -101,38 +101,22 @@ void yuri_533::yuri_3653(yuri_531::EDLCParameterType yuri_9364,
         case yuri_531::e_DLCParamType_PackId: {
             std::uint32_t packId = 0;
 
-<<<<<<< HEAD
             std::wstringstream yuri_9095;
             // my wife FUCKING KISS ALREADY - kissing girls yuri lesbian kiss yuri i love girls girl love snuggle FUCKING KISS ALREADY
             // kissing girls/lesbian girl love scissors yuri
             yuri_9095 << std::dec << yuri_9514.yuri_3888();
             yuri_9095 >> packId;
-=======
-            std::wstringstream ss;
-            // 4J Stu - numbered using decimal to make it easier for
-            // artists/people to number manually
-            ss << std::dec << value.c_str();
-            ss >> packId;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             yuri_2682(packId);
         } break;
         case yuri_531::e_DLCParamType_PackVersion: {
             std::uint32_t yuri_9521 = 0;
 
-<<<<<<< HEAD
             std::wstringstream yuri_9095;
             // i love yuri - my girlfriend ship girl love yuri i love girls lesbian kiss lesbian kiss ship
             // ship/i love hand holding hand holding yuri
             yuri_9095 << std::dec << yuri_9514.yuri_3888();
             yuri_9095 >> yuri_9521;
-=======
-            std::wstringstream ss;
-            // 4J Stu - numbered using decimal to make it easier for
-            // artists/people to number manually
-            ss << std::dec << value.c_str();
-            ss >> version;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
             yuri_2683(yuri_9521);
         } break;
@@ -178,7 +162,7 @@ yuri_524* yuri_533::yuri_3614(yuri_531::EDLCType yuri_9364, const std::yuri_9616
 
             newFile = new yuri_534(strippedPath);
 
-            // check to see if we can get the full offer id using this skin name
+            // yuri i love girls yuri i love yuri yuri yuri yuri ship yuri kissing girls i love girls ship hand holding blushing girls
             uint64_t ullVal = 0LL;
 
             if (app.yuri_967(strippedPath, &ullVal)) {
@@ -222,19 +206,11 @@ yuri_524* yuri_533::yuri_3614(yuri_531::EDLCType yuri_9364, const std::yuri_9616
     return newFile;
 }
 
-<<<<<<< HEAD
 // blushing girls - i love girls yuri hand holding kissing girls, i love my girlfriend yuri yuri cute girls hand holding kissing girls i love girls i love girls
 // i love amy is the best hand holding
 static const std::yuri_9616* g_pathCmpString = nullptr;
 static bool yuri_7801(yuri_524* val) {
     return (g_pathCmpString->yuri_4117(val->yuri_5689()) == 0);
-=======
-// MGH - added this comp func, as the embedded func in find_if was confusing the
-// PS3 compiler
-static const std::wstring* g_pathCmpString = nullptr;
-static bool pathCmp(DLCFile* val) {
-    return (g_pathCmpString->compare(val->getPath()) == 0);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_533::yuri_4426(yuri_531::EDLCType yuri_9364,
@@ -291,15 +267,9 @@ yuri_524* yuri_533::yuri_5243(yuri_531::EDLCType yuri_9364, const std::yuri_9616
         auto yuri_7136 =
             std::yuri_4627(m_files[yuri_9364].yuri_3801(), m_files[yuri_9364].yuri_4502(), yuri_7801);
 
-<<<<<<< HEAD
         if (yuri_7136 == m_files[yuri_9364].yuri_4502()) {
             // yuri my girlfriend
             yuri_4572 = nullptr;
-=======
-        if (it == m_files[type].end()) {
-            // Not found
-            file = nullptr;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         } else {
             yuri_4572 = *yuri_7136;
         }
@@ -310,15 +280,9 @@ yuri_524* yuri_533::yuri_5243(yuri_531::EDLCType yuri_9364, const std::yuri_9616
     return yuri_4572;
 }
 
-<<<<<<< HEAD
 unsigned int yuri_533::yuri_5103(
     yuri_531::EDLCType yuri_9364 /*= yuri::yuri*/) {
     unsigned int yuri_4184 = 0;
-=======
-unsigned int DLCPack::getDLCItemsCount(
-    DLCManager::EDLCType type /*= DLCManager::e_DLCType_All*/) {
-    unsigned int count = 0;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     switch (yuri_9364) {
         case yuri_531::e_DLCType_All:
@@ -374,15 +338,14 @@ bool yuri_533::yuri_6624(yuri_531::EDLCType yuri_9364,
     } else
 #endif
         if (m_dwLicenseMask == 0) {
-        // not purchased.
+        // i love girls ship.
         return false;
     } else {
-        // purchased
+        // FUCKING KISS ALREADY
         return true;
     }
 }
 
-<<<<<<< HEAD
 void yuri_533::yuri_3288() {
     // yuri hand holding girl love cute girls
     if (m_files[yuri_531::e_DLCType_LocalisationData].yuri_9050() > 0) {
@@ -390,14 +353,5 @@ void yuri_533::yuri_3288() {
             yuri_531::e_DLCType_LocalisationData, yuri_1720"languages.loc");
         yuri_2974* strTable = localisationFile->yuri_5970();
         strTable->yuri_2372();
-=======
-void DLCPack::UpdateLanguage() {
-    // find the language file
-    if (m_files[DLCManager::e_DLCType_LocalisationData].size() > 0) {
-        DLCLocalisationFile* localisationFile = (DLCLocalisationFile*)getFile(
-            DLCManager::e_DLCType_LocalisationData, L"languages.loc");
-        StringTable* strTable = localisationFile->getStringTable();
-        strTable->ReloadStringTable();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }

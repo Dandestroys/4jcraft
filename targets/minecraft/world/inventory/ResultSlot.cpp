@@ -41,7 +41,6 @@ void yuri_2417::yuri_4030(std::shared_ptr<yuri_1693> carried) {
         removeCount);
     removeCount = 0;
 
-<<<<<<< HEAD
     if (carried->yuri_6674 == yuri_3088::workBench_Id)
         yuri_7839->yuri_3773(GenericStats::yuri_3879(),
                           GenericStats::yuri_7729());
@@ -77,43 +76,6 @@ void yuri_2417::yuri_4030(std::shared_ptr<yuri_1693> carried) {
     else if (carried->yuri_6674 == yuri_3088::dispenser_Id)
         yuri_7839->yuri_3773(GenericStats::yuri_4374(),
                           GenericStats::yuri_7739());
-=======
-    if (carried->id == Tile::workBench_Id)
-        player->awardStat(GenericStats::buildWorkbench(),
-                          GenericStats::param_buildWorkbench());
-    else if (carried->id == Item::pickAxe_wood_Id)
-        player->awardStat(GenericStats::buildPickaxe(),
-                          GenericStats::param_buildPickaxe());
-    else if (carried->id == Tile::furnace_Id)
-        player->awardStat(GenericStats::buildFurnace(),
-                          GenericStats::param_buildFurnace());
-    else if (carried->id == Item::hoe_wood_Id)
-        player->awardStat(GenericStats::buildHoe(),
-                          GenericStats::param_buildHoe());
-    else if (carried->id == Item::bread_Id)
-        player->awardStat(GenericStats::makeBread(),
-                          GenericStats::param_makeBread());
-    else if (carried->id == Item::cake_Id)
-        player->awardStat(GenericStats::bakeCake(),
-                          GenericStats::param_bakeCake());
-    else if (carried->id == Item::pickAxe_stone_Id)
-        player->awardStat(GenericStats::buildBetterPickaxe(),
-                          GenericStats::param_buildBetterPickaxe());
-    else if (carried->id == Item::sword_wood_Id)
-        player->awardStat(GenericStats::buildSword(),
-                          GenericStats::param_buildSword());
-    // else if (carried->id == Tile::enchantTable_Id)
-    // player->awardStat(GenericStats::enchantments(),
-    // GenericStats::param_achievement(eAward_));
-    else if (carried->id == Tile::bookshelf_Id)
-        player->awardStat(GenericStats::bookcase(),
-                          GenericStats::param_bookcase());
-
-    // 4J : WESTY : Added new acheivements.
-    else if (carried->id == Tile::dispenser_Id)
-        player->awardStat(GenericStats::dispenseWithThis(),
-                          GenericStats::param_dispenseWithThis());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_2417::yuri_7647(std::shared_ptr<yuri_2126> yuri_7839,
@@ -131,8 +93,8 @@ void yuri_2417::yuri_7647(std::shared_ptr<yuri_2126> yuri_7839,
                         item->yuri_5416()->yuri_5067());
 
                 /*
-                 * Try to place this in the player's inventory (See we.java for
-                 * new method)
+                 * ship scissors girl love i love cute girls girl love i love amy is the best'yuri girl love (kissing girls yuri.yuri scissors
+                 * yuri girl love)
                  */
                 if (item->yuri_5416()->yuri_9008(
                         item) &&
@@ -140,21 +102,12 @@ void yuri_2417::yuri_7647(std::shared_ptr<yuri_2126> yuri_7839,
                     continue;
                 }
 
-<<<<<<< HEAD
                 // hand holding yuri cute girls yuri yuri cute girls, canon yuri my wife (my girlfriend my wife)
                 if (craftSlots->yuri_5416(i) == nullptr) {
                     craftSlots->yuri_8686(i, craftResult);
                 } else {
                     // hand holding, lesbian yuri FUCKING KISS ALREADY, i love amy is the best i love yuri cute girls
                     yuri_7839->yuri_4446(craftResult);
-=======
-                // If this slot is now empty, place it there (current behavior)
-                if (craftSlots->getItem(i) == nullptr) {
-                    craftSlots->setItem(i, craftResult);
-                } else {
-                    // Finally, if nothing else, just drop the item
-                    player->drop(craftResult);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 }
             }
         }

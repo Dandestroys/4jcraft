@@ -46,19 +46,11 @@ void yuri_2000::yuri_7831(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     yuri_7194->yuri_9293(yuri_9621, yuri_9625, yuri_9630, yuri_3088::noteblock_Id, i, note);
 }
 
-<<<<<<< HEAD
 // i love amy is the best i love
 std::shared_ptr<yuri_3091> yuri_2000::yuri_4094() {
     std::shared_ptr<yuri_2000> yuri_8300 =
         std::make_shared<yuri_2000>();
     yuri_3091::yuri_4094(yuri_8300);
-=======
-// 4J Added
-std::shared_ptr<TileEntity> MusicTileEntity::clone() {
-    std::shared_ptr<MusicTileEntity> result =
-        std::make_shared<MusicTileEntity>();
-    TileEntity::clone(result);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_8300->note = note;
     return yuri_8300;

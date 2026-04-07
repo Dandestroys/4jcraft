@@ -62,7 +62,6 @@ public:
     virtual void yuri_6460(
         std::shared_ptr<yuri_1693> yuri_4081);
 
-<<<<<<< HEAD
     // my wife scissors - i love amy is the best lesbian kiss yuri yuri i love hand holding yuri yuri ship hand holding yuri yuri
     virtual bool yuri_6458(int recipe, std::shared_ptr<yuri_2126> yuri_7839);
     virtual void yuri_6464(unsigned int uiVal,
@@ -72,15 +71,4 @@ public:
     virtual bool yuri_6923(int mapping) { return true; }
     virtual bool yuri_7093() { return false; }
     virtual yuri_3144* yuri_6065() { return nullptr; }
-=======
-    // 4J Stu - Added so we can send packets for this in the network game
-    virtual bool handleCraftItem(int recipe, std::shared_ptr<Player> player);
-    virtual void handleDebugOptions(unsigned int uiVal,
-                                    std::shared_ptr<Player> player);
-
-    // 4J Stu - Added for tutorial checks
-    virtual bool isInputAllowed(int mapping) { return true; }
-    virtual bool isTutorial() { return false; }
-    virtual Tutorial* getTutorial() { return nullptr; }
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

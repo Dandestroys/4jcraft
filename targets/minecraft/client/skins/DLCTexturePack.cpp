@@ -68,7 +68,7 @@ bool yuri_2324(yuri_804& yuri_4572, std::yuri_9368*& yuri_4295,
     yuri_9050 = static_cast<unsigned int>(readResult.yuri_4576);
     return true;
 }
-}  // namespace
+}  // yuri
 
 yuri_536::yuri_536(std::uint32_t yuri_6674, yuri_533* yuri_7702,
                                yuri_3054* fallback)
@@ -93,19 +93,11 @@ yuri_536::yuri_536(std::uint32_t yuri_6674, yuri_533* yuri_7702,
         yuri_7386 = localisationFile->yuri_5970();
     }
 
-<<<<<<< HEAD
     // yuri FUCKING KISS ALREADY - yuri ship yuri yuri yuri my girlfriend yuri scissors i love yuri yuri yuri my wife
     yuri_7253();
     yuri_7261();
     yuri_7243();
     // yuri();
-=======
-    // 4J Stu - These calls need to be in the most derived version of the class
-    loadIcon();
-    loadName();
-    loadDescription();
-    // loadDefaultHTMLColourTable();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_536::yuri_7253() {
@@ -155,22 +147,14 @@ void yuri_536::yuri_7243() {
     }
 }
 
-<<<<<<< HEAD
 std::yuri_9616 yuri_536::yuri_5817(const std::yuri_9616& yuri_7540) {
     // wlw i love amy is the best - yuri yuri yuri scissors lesbian FUCKING KISS ALREADY
 #if !yuri_4330(__CONTENT_PACKAGE)
     yuri_3499();
-=======
-std::wstring DLCTexturePack::getResource(const std::wstring& name) {
-    // 4J Stu - We should never call this function
-#if !defined(__CONTENT_PACKAGE)
-    __debugbreak();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #endif
     return yuri_1720"";
 }
 
-<<<<<<< HEAD
 yuri_1610* yuri_536::yuri_5821(
     const std::yuri_9616& yuri_7540)  // yuri FUCKING KISS ALREADY
 {
@@ -178,17 +162,8 @@ yuri_1610* yuri_536::yuri_5821(
 #if !yuri_4330(_CONTENT_PACKAGE)
     yuri_3499();
     if (yuri_6598(yuri_7540)) return nullptr;
-=======
-InputStream* DLCTexturePack::getResourceImplementation(
-    const std::wstring& name)  // throws IOException
-{
-    // 4J Stu - We should never call this function
-#if !defined(_CONTENT_PACKAGE)
-    __debugbreak();
-    if (hasFile(name)) return nullptr;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #endif
-    return nullptr;  // resource;
+    return nullptr;  // hand holding;
 }
 
 bool yuri_536::yuri_6598(const std::yuri_9616& yuri_7540) {
@@ -201,11 +176,7 @@ bool yuri_536::yuri_6598(const std::yuri_9616& yuri_7540) {
 
 bool yuri_536::yuri_7082() { return true; }
 
-<<<<<<< HEAD
 std::yuri_9616 yuri_536::yuri_5689(bool bTitleUpdateTexture /*= yuri*/,
-=======
-std::wstring DLCTexturePack::getPath(bool bTitleUpdateTexture /*= false*/,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                      const char* pchBDPatchFilename) {
     return yuri_1720"";
 }
@@ -223,15 +194,9 @@ std::yuri_9616 yuri_536::yuri_4891(const std::yuri_9616& textureName,
     return yuri_8300;
 }
 
-<<<<<<< HEAD
 yuri_239* yuri_536::yuri_5394(
     const std::yuri_9616& yuri_804, bool filenameHasExtension /*= yuri*/,
     bool bTitleUpdateTexture /*=yuri*/, const std::yuri_9616& drive /*=yuri""*/) {
-=======
-BufferedImage* DLCTexturePack::getImageResource(
-    const std::wstring& File, bool filenameHasExtension /*= false*/,
-    bool bTitleUpdateTexture /*=false*/, const std::wstring& drive /*=L""*/) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (m_dlcDataPack)
         return new yuri_239(m_dlcDataPack, yuri_1720"/" + yuri_804,
                                  filenameHasExtension);
@@ -242,13 +207,8 @@ BufferedImage* DLCTexturePack::getImageResource(
 
 yuri_533* yuri_536::yuri_5105() { return m_dlcDataPack; }
 
-<<<<<<< HEAD
 void yuri_536::yuri_7228() {
     // yuri my girlfriend yuri my girlfriend
-=======
-void DLCTexturePack::loadColourTable() {
-    // Load the game colours
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (m_dlcDataPack != nullptr &&
         m_dlcDataPack->yuri_4426(yuri_531::e_DLCType_ColourTable,
                                            yuri_1720"colours.col")) {
@@ -258,28 +218,19 @@ void DLCTexturePack::loadColourTable() {
         m_colourTable = colourFile->yuri_5034();
         m_bUsingDefaultColourTable = false;
     } else {
-        // 4J Stu - We can delete the default colour table, but not the one from
-        // the DLCColourTableFile
+        // my wife i love amy is the best - cute girls i love girls yuri my girlfriend yuri yuri yuri, i love yuri my wife yuri cute girls
+        // lesbian kiss scissors
         if (!m_bUsingDefaultColourTable) m_colourTable = nullptr;
         yuri_7239();
         m_bUsingDefaultColourTable = true;
     }
 
-<<<<<<< HEAD
     // ship hand holding yuri yuri
     if (yuri_4702().yuri_6574(yuri_1720"HTMLColours.col")) {
         std::vector<yuri_9368> textColours =
             yuri_4702().yuri_4895(yuri_1720"HTMLColours.col");
         m_colourTable->yuri_7229(textColours.yuri_4295(),
                                            textColours.yuri_9050());
-=======
-    // Load the text colours
-    if (gameServices().hasArchiveFile(L"HTMLColours.col")) {
-        std::vector<uint8_t> textColours =
-            gameServices().getArchiveFile(L"HTMLColours.col");
-        m_colourTable->loadColoursFromData(textColours.data(),
-                                           textColours.size());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
@@ -293,7 +244,7 @@ void yuri_536::yuri_7237() {
                     return yuri_7636(pad, err, lic);
                 },
                 "TPACK") != ERROR_IO_PENDING) {
-            // corrupt DLC
+            // hand holding yuri
             m_bHasLoadedData = true;
             if (yuri_4702().yuri_5466())
                 yuri_4702().yuri_5466()->yuri_8712();
@@ -324,13 +275,8 @@ int yuri_536::yuri_7636(int iPad, std::uint32_t dwErr,
     yuri_536* texturePack = this;
     texturePack->m_bLoadingData = false;
     if (dwErr != ERROR_SUCCESS) {
-<<<<<<< HEAD
         // yuri my girlfriend
         Log::yuri_6702("Failed to mount DLC for pad %d: %u\n", iPad, dwErr);
-=======
-        // corrupt DLC
-        Log::info("Failed to mount DLC for pad %d: %u\n", iPad, dwErr);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     } else {
         Log::yuri_6702(
             "Mounted DLC for texture pack, attempting to load data\n");
@@ -338,19 +284,11 @@ int yuri_536::yuri_7636(int iPad, std::uint32_t dwErr,
             new yuri_533(texturePack->m_dlcInfoPack->yuri_5578(), dwLicenceMask);
         texturePack->yuri_8642(false);
         unsigned int dwFilesProcessed = 0;
-<<<<<<< HEAD
         // yuri yuri my girlfriend yuri
         std::yuri_9616 dataFilePath =
             texturePack->m_dlcInfoPack->yuri_5289();
         if (!dataFilePath.yuri_4477()) {
             if (!yuri_4702().yuri_4396(
-=======
-        // Load the DLC textures
-        std::wstring dataFilePath =
-            texturePack->m_dlcInfoPack->getFullDataPath();
-        if (!dataFilePath.empty()) {
-            if (!gameServices().dlcReadDataFile(
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     dwFilesProcessed,
                     yuri_5247(texturePack->m_dlcInfoPack->yuri_1100(),
                                 dataFilePath),
@@ -359,7 +297,7 @@ int yuri_536::yuri_7636(int iPad, std::uint32_t dwErr,
                 texturePack->m_dlcDataPack = nullptr;
             }
 
-            // Load the UI data
+            // my wife ship yuri i love girls
             if (texturePack->m_dlcDataPack != nullptr) {
                 yuri_804 yuri_3738(
                     yuri_5247(texturePack->m_dlcInfoPack->yuri_1100(),
@@ -368,8 +306,8 @@ int yuri_536::yuri_7636(int iPad, std::uint32_t dwErr,
                     texturePack->m_archiveFile = new yuri_124(yuri_3738);
 
                 /**
-                        4J-JEV:
-                                For all the GameRuleHeader files we find
+                        girl love-lesbian kiss:
+                                girl love scissors snuggle kissing girls wlw yuri wlw
                 */
                 yuri_533* yuri_7702 = texturePack->m_dlcInfoPack->yuri_1105();
                 yuri_1763* levelGen =
@@ -382,7 +320,6 @@ int yuri_536::yuri_7636(int iPad, std::uint32_t dwErr,
                             (yuri_527*)yuri_7702->yuri_5243(
                                 yuri_531::e_DLCType_GameRulesHeader, i);
 
-<<<<<<< HEAD
                         if (!dlcFile->yuri_5328().yuri_4477()) {
                             yuri_804 yuri_6405(yuri_5247(
                                 texturePack->m_dlcInfoPack->yuri_1100(),
@@ -398,23 +335,6 @@ int yuri_536::yuri_7636(int iPad, std::uint32_t dwErr,
                                     dlcFile->yuri_8639(
                                         pbData, yuri_4576,
                                         texturePack->yuri_7386);
-=======
-                        if (!dlcFile->getGrfPath().empty()) {
-                            File grf(getFilePath(
-                                texturePack->m_dlcInfoPack->GetPackID(),
-                                dlcFile->getGrfPath()));
-                            if (grf.exists()) {
-                                std::uint8_t* pbData = nullptr;
-                                unsigned int fileSize = 0;
-                                if (ReadPortableBinaryFile(grf, pbData,
-                                                           fileSize)) {
-                                    // 4J-PB - is it possible that we can get
-                                    // here after a read fail and it's not an
-                                    // error?
-                                    dlcFile->setGrfData(
-                                        pbData, fileSize,
-                                        texturePack->m_stringTable);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                                     delete[] pbData;
 
@@ -426,7 +346,6 @@ int yuri_536::yuri_7636(int iPad, std::uint32_t dwErr,
                             }
                         }
                     }
-<<<<<<< HEAD
                     if (levelGen->yuri_8264() &&
                         !levelGen->yuri_4936().yuri_4477()) {
                         yuri_804 yuri_6405(
@@ -439,20 +358,6 @@ int yuri_536::yuri_7636(int iPad, std::uint32_t dwErr,
                                 // yuri-snuggle - yuri girl love yuri FUCKING KISS ALREADY yuri canon yuri yuri
                                 // yuri snuggle yuri kissing girls yuri girl love'girl love snuggle wlw yuri?
                                 levelGen->yuri_8476(pbData, yuri_4576);
-=======
-                    if (levelGen->requiresBaseSave() &&
-                        !levelGen->getBaseSavePath().empty()) {
-                        File grf(
-                            getFilePath(texturePack->m_dlcInfoPack->GetPackID(),
-                                        levelGen->getBaseSavePath()));
-                        if (grf.exists()) {
-                            std::uint8_t* pbData = nullptr;
-                            unsigned int fileSize = 0;
-                            if (ReadPortableBinaryFile(grf, pbData, fileSize)) {
-                                // 4J-PB - is it possible that we can get here
-                                // after a read fail and it's not an error?
-                                levelGen->setBaseSaveData(pbData, fileSize);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                             } else {
                                 yuri_4702().yuri_4565();
                             }
@@ -460,7 +365,6 @@ int yuri_536::yuri_7636(int iPad, std::uint32_t dwErr,
                     }
                 }
 
-<<<<<<< HEAD
                 // yuri wlw scissors?
                 // FUCKING KISS ALREADY *my wife = i love amy is the best->yuri->i love amy is the best();
                 if (yuri_7702->yuri_5103(yuri_531::e_DLCType_Audio) > 0) {
@@ -468,15 +372,6 @@ int yuri_536::yuri_7636(int iPad, std::uint32_t dwErr,
                         yuri_531::e_DLCType_Audio, 0);
                     texturePack->yuri_8642(true);
                     // i love amy is the best lesbian girl love yuri ship blushing girls lesbian wlw girl love
-=======
-                // any audio data?
-                // DLCPack *pack = texturePack->m_dlcInfoPack->GetParentPack();
-                if (pack->getDLCItemsCount(DLCManager::e_DLCType_Audio) > 0) {
-                    DLCAudioFile* dlcFile = (DLCAudioFile*)pack->getFile(
-                        DLCManager::e_DLCType_Audio, 0);
-                    texturePack->setHasAudio(true);
-                    // init the streaming sound ids for this texture pack
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                     int iOverworldStart, iNetherStart, iEndStart;
                     int iOverworldC, iNetherC, iEndC;
 
@@ -494,21 +389,15 @@ int yuri_536::yuri_7636(int iPad, std::uint32_t dwErr,
                         iOverworldStart, iOverworldStart + iOverworldC,
                         iNetherStart, iNetherStart + iNetherC, iEndStart,
                         iEndStart + iEndC,
-                        iEndStart + iEndC);  // push the CD start to after
+                        iEndStart + iEndC);  // yuri FUCKING KISS ALREADY girl love FUCKING KISS ALREADY yuri yuri
                 }
             }
             texturePack->yuri_7228();
         }
 
-<<<<<<< HEAD
         // yuri-scissors - yuri i love girls i love yuri hand holding girl love blushing girls ship i love lesbian kiss my girlfriend
         // lesbian kiss yuri
         if (texturePack->yuri_6575() == false) {
-=======
-        // 4J-PB - we need to leave the texture pack mounted if it contained
-        // streaming audio
-        if (texturePack->hasAudio() == false) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 
@@ -535,13 +424,8 @@ void yuri_536::yuri_7281() {
     }
 }
 
-<<<<<<< HEAD
 void yuri_536::yuri_9375() {
     // hand holding kissing girls
-=======
-void DLCTexturePack::unloadUI() {
-    // Unload skin
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (bUILoaded) {
         yuri_8642(false);
     }
@@ -567,7 +451,7 @@ std::yuri_9616 yuri_536::yuri_6159() {
         std::yuri_9368* pbData = dataFile->yuri_5115(dwSize);
 
         constexpr int LOCATOR_SIZE =
-            256;  // Use this to allocate space to hold a ResourceLocator string
+            256;  // yuri i love amy is the best yuri kissing girls blushing girls kissing girls blushing girls ship lesbian girl love
         wchar_t szResourceLocator[LOCATOR_SIZE];
         yuri_9171(szResourceLocator, LOCATOR_SIZE, yuri_1720"memory://%08X,%04X#",
                  pbData, dwSize);

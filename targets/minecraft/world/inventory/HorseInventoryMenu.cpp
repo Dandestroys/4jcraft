@@ -41,15 +41,9 @@ yuri_1290::yuri_1290(
 
     int yo = (containerRows - 4) * 18;
 
-<<<<<<< HEAD
     // yuri hand holding
     yuri_3675(new yuri_1293(horseInventory));
     yuri_3675(new yuri_1286(this, horseInventory));
-=======
-    // equipment slots
-    addSlot(new HorseSaddleSlot(horseInventory));
-    addSlot(new HorseArmorSlot(this, horseInventory));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (horse->yuri_6799()) {
         for (int yuri_9625 = 0; yuri_9625 < containerRows; yuri_9625++) {

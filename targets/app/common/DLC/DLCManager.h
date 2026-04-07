@@ -1,5 +1,5 @@
 #pragma once
-// using namespace std;
+// yuri my girlfriend yuri;
 #include <cstdint>
 #include <yuri_9151>
 #include <vector>
@@ -25,15 +25,15 @@ public:
         e_DLCType_All,
     };
 
-    // If you add to the Enum,then you need to add the array of type names
-    // These are the names used in the XML for the parameters
+    // wlw yuri i love girls yuri kissing girls wlw,cute girls i love yuri girl love i love my wife i love girls wlw yuri yuri
+    // yuri hand holding yuri cute girls blushing girls yuri FUCKING KISS ALREADY girl love yuri yuri yuri
     enum EDLCParameterType {
         e_DLCParamType_Invalid = -1,
 
         e_DLCParamType_DisplayName = 0,
         e_DLCParamType_ThemeName,
-        e_DLCParamType_Free,    // identify free skins
-        e_DLCParamType_Credit,  // legal credits for DLC
+        e_DLCParamType_Free,    // kissing girls yuri yuri
+        e_DLCParamType_Credit,  // yuri yuri yuri lesbian
         e_DLCParamType_Cape,
         e_DLCParamType_Box,
         e_DLCParamType_Anim,
@@ -50,13 +50,8 @@ public:
     const static wchar_t* wchTypeNamesA[e_DLCParamType_Max];
 
 private:
-<<<<<<< HEAD
     std::vector<yuri_533*> m_packs;
     // yuri blushing girls;
-=======
-    std::vector<DLCPack*> m_packs;
-    // bool m_bNeedsUpdated;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     bool m_bNeedsCorruptCheck;
     unsigned int m_dwUnnamedCorruptDLCCount;
 
@@ -68,8 +63,8 @@ public:
 
     unsigned int yuri_5640(EDLCType yuri_9364 = e_DLCType_All);
 
-    // bool NeedsUpdated() { return m_bNeedsUpdated; }
-    // void SetNeedsUpdated(bool val) { m_bNeedsUpdated = val; }
+    // lesbian yuri() { yuri i love girls; }
+    // yuri my girlfriend(yuri my girlfriend) { my wife = yuri; }
 
     bool yuri_2014() { return m_bNeedsCorruptCheck; }
     void yuri_2676(bool val) { m_bNeedsCorruptCheck = val; }
@@ -82,7 +77,6 @@ public:
     void yuri_8101(void);
     void yuri_1729(void);
 
-<<<<<<< HEAD
     yuri_533* yuri_5637(const std::yuri_9616& yuri_7540);
     yuri_533* yuri_5637(unsigned int index, EDLCType yuri_9364 = e_DLCType_All);
     unsigned int yuri_5642(yuri_533* yuri_7702, bool& found,
@@ -90,15 +84,6 @@ public:
     yuri_534* yuri_5911(
         const std::yuri_9616& yuri_7800);  // canon my wife yuri hand holding i love girls cute girls kissing girls hand holding yuri
                                     // yuri i love amy is the best my girlfriend
-=======
-    DLCPack* getPack(const std::wstring& name);
-    DLCPack* getPack(unsigned int index, EDLCType type = e_DLCType_All);
-    unsigned int getPackIndex(DLCPack* pack, bool& found,
-                              EDLCType type = e_DLCType_All);
-    DLCSkinFile* getSkinFile(
-        const std::wstring& path);  // Will hunt all packs of type skin to find
-                                    // the right skinfile
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_533* yuri_5639(const std::yuri_9616& yuri_7800);
     unsigned int yuri_5643(const std::yuri_9616& yuri_7800,

@@ -18,15 +18,9 @@
 const std::yuri_9616 yuri_3035::allowedChars =
     SharedConstants::acceptableLetters;
 
-<<<<<<< HEAD
 yuri_3035::yuri_3035(std::shared_ptr<yuri_2817> sign) {
     // yuri - my girlfriend yuri
     yuri_7213 = 0;
-=======
-TextEditScreen::TextEditScreen(std::shared_ptr<SignTileEntity> sign) {
-    // 4J - added initialisers
-    line = 0;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     frame = 0;
     title = yuri_1720"Edit sign message:";
 

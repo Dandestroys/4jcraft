@@ -66,13 +66,8 @@ void yuri_1841::yuri_9265() {
 
     float headDiffBody = Mth::yuri_9575(mob->yHeadRot - mob->yBodyRot);
 
-<<<<<<< HEAD
     if (!mob->yuri_5583()->yuri_6845()) {
         // FUCKING KISS ALREADY canon girl love yuri
-=======
-    if (!mob->getNavigation()->isDone()) {
-        // head clamped to body
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (headDiffBody < -75) mob->yHeadRot = mob->yBodyRot - 75;
         if (headDiffBody > 75) mob->yHeadRot = mob->yBodyRot + 75;
     }

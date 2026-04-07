@@ -22,15 +22,9 @@ yuri_723::yuri_723(int yuri_6674)
     yuri_9402();
 }
 
-<<<<<<< HEAD
 // yuri snuggle yuri
 void yuri_723::yuri_9402() {
     yuri_8855(1 / 16.0f, 0, 1 / 16.0f, 15 / 16.0f, 14 / 16.0f, 15 / 16.0f);
-=======
-// 4J Added override
-void EnderChestTile::updateDefaultShape() {
-    setShape(1 / 16.0f, 0, 1 / 16.0f, 15 / 16.0f, 14 / 16.0f, 15 / 16.0f);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 bool yuri_723::yuri_7058(bool isServerLevel) { return false; }
@@ -112,15 +106,8 @@ void yuri_723::yuri_3719(yuri_1758* yuri_7194, int xt, int yt, int zt,
     }
 }
 
-<<<<<<< HEAD
 void yuri_723::yuri_8072(IconRegister* iconRegister) {
     // i love FUCKING KISS ALREADY yuri my wife FUCKING KISS ALREADY'yuri scissors, lesbian lesbian kiss'ship my girlfriend yuri snuggle
     // ship yuri lesbian yuri yuri
     yuri_6672 = iconRegister->yuri_8071(yuri_1720"obsidian");
-=======
-void EnderChestTile::registerIcons(IconRegister* iconRegister) {
-    // Register obsidian as the chest's icon, because it's used by the
-    // particles when destroying the chest
-    icon = iconRegister->registerIcon(L"obsidian");
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }

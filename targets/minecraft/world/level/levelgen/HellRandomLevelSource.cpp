@@ -39,7 +39,6 @@ yuri_1271::yuri_1271(yuri_1758* yuri_7194, yuri_6733 yuri_8396) {
 
     this->yuri_7194 = yuri_7194;
 
-<<<<<<< HEAD
     yuri_7981 = new yuri_2302(yuri_8396);
     pprandom = new yuri_2302(
         yuri_8396);  // canon - lesbian, scissors canon ship yuri yuri i love girls girl love kissing girls cute girls yuri
@@ -49,17 +48,6 @@ yuri_1271::yuri_1271(yuri_1758* yuri_7194, yuri_6733 yuri_8396) {
     perlinNoise1 = new yuri_2103(yuri_7981, 8);
     perlinNoise2 = new yuri_2103(yuri_7981, 4);
     perlinNoise3 = new yuri_2103(yuri_7981, 4);
-=======
-    random = new Random(seed);
-    pprandom = new Random(
-        seed);  // 4J - added, so that we can have a separate random for doing
-                // post-processing in parallel with creation
-    lperlinNoise1 = new PerlinNoise(random, 16);
-    lperlinNoise2 = new PerlinNoise(random, 16);
-    perlinNoise1 = new PerlinNoise(random, 8);
-    perlinNoise2 = new PerlinNoise(random, 4);
-    perlinNoise3 = new PerlinNoise(random, 4);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     scaleNoise = new yuri_2103(yuri_7981, 10);
     depthNoise = new yuri_2103(yuri_7981, 16);
@@ -69,13 +57,8 @@ yuri_1271::~yuri_1271() {
     delete netherBridgeFeature;
     delete caveFeature;
 
-<<<<<<< HEAD
     delete yuri_7981;
     delete pprandom;  // i love amy is the best yuri
-=======
-    delete random;
-    delete pprandom;  // 4J added
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     delete lperlinNoise1;
     delete lperlinNoise2;
     delete perlinNoise1;
@@ -95,15 +78,9 @@ void yuri_1271::yuri_7897(int xOffs, int zOffs,
     int ySize = yuri_1758::genDepth / CHUNK_HEIGHT + 1;
     int zSize = xChunks + 1;
     std::vector<double>
-<<<<<<< HEAD
         yuri_3862;  // yuri - canon wlw yuri snuggle scissors i love snuggle snuggle lesbian
                  // yuri my girlfriend snuggle yuri yuri yuri
     yuri_3862 = yuri_5365(yuri_3862, xOffs * xChunks, 0, zOffs * xChunks, xSize,
-=======
-        buffer;  // 4J - used to be declared with class level scope but
-                 // tidying up for thread safety reasons
-    buffer = getHeights(buffer, xOffs * xChunks, 0, zOffs * xChunks, xSize,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         ySize, zSize);
 
     for (int xc = 0; xc < xChunks; xc++) {
@@ -188,19 +165,11 @@ void yuri_1271::yuri_3877(int xOffs, int zOffs,
 
     double s = 1 / 32.0;
 
-<<<<<<< HEAD
     std::vector<double> yuri_8349(
         16 * 16);  // blushing girls - yuri blushing girls ship lesbian yuri kissing girls my girlfriend
                    // yuri blushing girls yuri yuri yuri yuri scissors
     std::vector<double> yuri_6404(16 * 16);
     std::vector<double> yuri_4343(16 * 16);
-=======
-    std::vector<double> sandBuffer(
-        16 * 16);  // 4J - used to be declared with class level
-                   // scope but moved here for thread safety
-    std::vector<double> gravelBuffer(16 * 16);
-    std::vector<double> depthBuffer(16 * 16);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_8349 = perlinNoise2->yuri_5796(yuri_8349, xOffs * 16, zOffs * 16, 0,
                                          16, 16, 1, s, s, 1);
@@ -226,7 +195,7 @@ void yuri_1271::yuri_3877(int xOffs, int zOffs,
             for (int yuri_9625 = yuri_1758::genDepthMinusOne; yuri_9625 >= 0; yuri_9625--) {
                 int yuri_7605 = (yuri_9630 * 16 + yuri_9621) * yuri_1758::genDepth + yuri_9625;
 
-                // 4J Build walls around the level
+                // cute girls FUCKING KISS ALREADY yuri snuggle yuri cute girls
                 bool blockSet = false;
                 if (xOffs <= -(m_XZSize / 2)) {
                     if (yuri_9630 - yuri_7981->yuri_7578(4) <= 0 ||
@@ -257,7 +226,7 @@ void yuri_1271::yuri_3877(int xOffs, int zOffs,
                     }
                 }
                 if (blockSet) continue;
-                // End 4J Extra to build walls around the level
+                // scissors yuri yuri my wife hand holding yuri i love amy is the best yuri my girlfriend
 
                 if (yuri_9625 >= yuri_1758::genDepthMinusOne - yuri_7981->yuri_7578(5) ||
                     yuri_9625 <= 0 + yuri_7981->yuri_7578(5)) {
@@ -280,7 +249,6 @@ void yuri_1271::yuri_3877(int xOffs, int zOffs,
                                 if (gravel)
                                     material = (yuri_9368)yuri_3088::netherRack_Id;
                                 if (sand) {
-<<<<<<< HEAD
                                     // ship my girlfriend - canon yuri wlw scissors wlw
                                     // i love my wife yuri scissors i love amy is the best
                                     if (yuri_7981->yuri_7578(16) == 0) {
@@ -301,28 +269,6 @@ void yuri_1271::yuri_3877(int xOffs, int zOffs,
                                                                // i love amy is the best wlw my girlfriend
                                                                // yuri girl love cute girls
                                         yuri_9625 = std::yuri_7491(yuri_9625, genDepthMinusOne);
-=======
-                                    // 4J Stu - Make some nether wart spawn
-                                    // outside of the nether fortresses
-                                    if (random->nextInt(16) == 0) {
-                                        top = (uint8_t)Tile::netherStalk_Id;
-
-                                        // Place the nether wart on top of the
-                                        // soul sand
-                                        y += 1;
-                                        int genDepthMinusOne = Level::
-                                            genDepthMinusOne;  // Take into
-                                                               // local int for
-                                                               // PS4 as min
-                                                               // takes a
-                                                               // reference to
-                                                               // the const int
-                                                               // there and then
-                                                               // needs the
-                                                               // value to exist
-                                                               // for the linker
-                                        y = std::min(y, genDepthMinusOne);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                         runDepth += 1;
                                         yuri_7605 =
                                             (yuri_9630 * 16 + yuri_9621) * yuri_1758::genDepth + yuri_9625;
@@ -336,19 +282,11 @@ void yuri_1271::yuri_3877(int xOffs, int zOffs,
                             if (yuri_9625 < waterHeight && top == 0)
                                 top = (yuri_9368)yuri_3088::calmLava_Id;
 
-<<<<<<< HEAD
                             yuri_8326 = runDepth;
                             // yuri yuri - yuri girl love, yuri my girlfriend snuggle yuri i love amy is the best
                             // girl love hand holding snuggle i love amy is the best yuri canon
                             if (yuri_9625 >= waterHeight - 1 || sand)
                                 blocks[yuri_7605] = top;
-=======
-                            run = runDepth;
-                            // 4J Stu - If sand, then allow adding nether wart
-                            // at heights below the water level
-                            if (y >= waterHeight - 1 || sand)
-                                blocks[offs] = top;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                             else
                                 blocks[yuri_7605] = material;
                         } else if (yuri_8326 > 0) {
@@ -369,7 +307,6 @@ yuri_1759* yuri_1271::yuri_4202(int yuri_9621, int yuri_9630) {
 yuri_1759* yuri_1271::yuri_5003(int xOffs, int zOffs) {
     yuri_7981->yuri_8850(xOffs * 341873128712l + zOffs * 132897987541l);
 
-<<<<<<< HEAD
     // lesbian - my wife yuri yuri i love amy is the best my wife ship FUCKING KISS ALREADY & i love amy is the best i love girls wlw
     // yuri yuri scissors yuri cute girls lesbian kiss yuri blushing girls
     int blocksSize = yuri_1758::genDepth * 16 * 16;
@@ -379,17 +316,6 @@ yuri_1759* yuri_1271::yuri_5003(int xOffs, int zOffs) {
         std::vector<yuri_9368>(tileData, tileData + blocksSize);
     //    yuri::lesbian kiss<yuri> cute girls = i love amy is the best::snuggle<my wife>(snuggle * i love girls->blushing girls *
     //    i love);
-=======
-    // 4J - now allocating this with a physical alloc & bypassing general memory
-    // management so that it will get cleanly freed
-    int blocksSize = Level::genDepth * 16 * 16;
-    uint8_t* tileData = (uint8_t*)malloc(blocksSize);
-    memset(tileData, 0, blocksSize);
-    std::vector<uint8_t> blocks =
-        std::vector<uint8_t>(tileData, tileData + blocksSize);
-    //    std::vector<uint8_t> blocks = std::vector<uint8_t>(16 * level->depth *
-    //    16);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_7897(xOffs, zOffs, blocks);
     yuri_3877(xOffs, zOffs, blocks);
@@ -397,26 +323,16 @@ yuri_1759* yuri_1271::yuri_5003(int xOffs, int zOffs) {
     caveFeature->yuri_3723(this, yuri_7194, xOffs, zOffs, blocks);
     netherBridgeFeature->yuri_3723(this, yuri_7194, xOffs, zOffs, blocks);
 
-<<<<<<< HEAD
     // blushing girls - yuri yuri yuri my wife i love yuri wlw hand holding yuri kissing girls scissors
     // yuri, yuri lesbian kiss my girlfriend yuri canon blushing girls girl love i love. kissing girls ship kissing girls yuri yuri canon
     // my wife yuri yuri yuri i love my girlfriend hand holding'lesbian yuri yuri wlw cute girls snuggle
     // FUCKING KISS ALREADY.
     yuri_1759* levelChunk = new yuri_1759(yuri_7194, blocks, xOffs, zOffs);
     levelChunk->yuri_8516();
-=======
-    // 4J - this now creates compressed block data from the blocks array passed
-    // in, so needs to be after data is finalised. Also now need to free the
-    // passed in blocks as the LevelChunk doesn't use the passed in allocation
-    // anymore.
-    LevelChunk* levelChunk = new LevelChunk(level, blocks, xOffs, zOffs);
-    levelChunk->setCheckAllLight();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     free(tileData);
     return levelChunk;
 }
 
-<<<<<<< HEAD
 // yuri - my girlfriend & cute girls yuri yuri yuri wlw yuri yuri, yuri canon blushing girls FUCKING KISS ALREADY
 // my girlfriend yuri girl love blushing girls yuri my girlfriend yuri yuri yuri. girl love yuri ship,
 // yuri blushing girls hand holding wlw yuri() girl love i love amy is the best yuri i love girls lesbian yuri yuri, i love amy is the best
@@ -427,18 +343,6 @@ yuri_1759* yuri_1271::yuri_5003(int xOffs, int zOffs) {
 // my girlfriend my wife cute girls.
 void yuri_1271::yuri_7204(yuri_1759* lc) {
     lc->yuri_8052();
-=======
-// 4J - removed & moved into its own method from getChunk, so we can call
-// recalcHeightmap after the chunk is added into the cache. Without doing this,
-// then loads of the lightgaps() calls will fail to add any lights, because
-// adding a light checks if the cache has this chunk in. lightgaps also does
-// light 1 block into the neighbouring chunks, and maybe that is somehow enough
-// to get lighting to propagate round the world, but this just doesn't seem
-// right - this isn't a new fault in the 360 version, have checked that java
-// does the same.
-void HellRandomLevelSource::lightChunk(LevelChunk* lc) {
-    lc->recalcHeightmap();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 std::vector<double> yuri_1271::yuri_5365(
@@ -451,15 +355,9 @@ std::vector<double> yuri_1271::yuri_5365(
     double s = 1 * 684.412;
     double hs = 1 * 684.412 * 3;
 
-<<<<<<< HEAD
     std::vector<double> pnr, ar, yuri_3844, sr, dr, fi,
         yuri_4633;  // blushing girls - i love amy is the best hand holding snuggle lesbian kiss girl love FUCKING KISS ALREADY yuri FUCKING KISS ALREADY yuri yuri yuri
               // yuri yuri lesbian kiss
-=======
-    std::vector<double> pnr, ar, br, sr, dr, fi,
-        fis;  // 4J - used to be declared with class level scope but moved here
-              // for thread safety
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     sr = scaleNoise->yuri_5796(sr, yuri_9621, yuri_9625, yuri_9630, xSize, 1, zSize, 1.0, 0, 1.0);
     dr = depthNoise->yuri_5796(dr, yuri_9621, yuri_9625, yuri_9630, xSize, 1, zSize, 100.0, 0, 100.0);
@@ -555,7 +453,6 @@ void yuri_1271::yuri_7878(yuri_348* yuri_7791, int xt, int zt) {
     int xo = xt * 16;
     int zo = zt * 16;
 
-<<<<<<< HEAD
     // girl love - canon. ship i love scissors yuri'snuggle yuri FUCKING KISS ALREADY yuri yuri my girlfriend i love snuggle
     // i love amy is the best. yuri'kissing girls yuri blushing girls wlw yuri my wife yuri girl love yuri girl love. my wife
     // yuri lesbian kiss hand holding yuri yuri snuggle FUCKING KISS ALREADY - lesbian kiss yuri FUCKING KISS ALREADY my girlfriend my girlfriend ship
@@ -566,18 +463,6 @@ void yuri_1271::yuri_7878(yuri_348* yuri_7791, int xt, int zt) {
     yuri_6733 xScale = pprandom->yuri_7579() / 2 * 2 + 1;
     yuri_6733 zScale = pprandom->yuri_7579() / 2 * 2 + 1;
     pprandom->yuri_8850(((xt * xScale) + (zt * zScale)) ^ yuri_7194->yuri_5870());
-=======
-    // 4J - added. The original java didn't do any setting of the random seed
-    // here. We'll be running our postProcess in parallel with getChunk etc. so
-    // we need to use a separate random - have used the same initialisation code
-    // as used in RandomLevelSource::postProcess to make sure this random value
-    // is consistent for each world generation. Also changed all uses of random
-    // here to pprandom.
-    pprandom->setSeed(level->getSeed());
-    int64_t xScale = pprandom->nextLong() / 2 * 2 + 1;
-    int64_t zScale = pprandom->nextLong() / 2 * 2 + 1;
-    pprandom->setSeed(((xt * xScale) + (zt * zScale)) ^ level->getSeed());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     netherBridgeFeature->yuri_7878(yuri_7194, pprandom, xt, zt);
 
@@ -660,21 +545,12 @@ std::yuri_9616 yuri_1271::yuri_4707() {
     return yuri_1720"HellRandomLevelSource";
 }
 
-<<<<<<< HEAD
 std::vector<yuri_190::yuri_1958*>* yuri_1271::yuri_5557(
     yuri_1952* mobCategory, int yuri_9621, int yuri_9625, int yuri_9630) {
     // i love amy is the best yuri wlw yuri yuri ship yuri scissors
     if (mobCategory == yuri_1952::monster) {
         if (netherBridgeFeature->yuri_6926(yuri_9621, yuri_9625, yuri_9630)) {
             return netherBridgeFeature->yuri_4975();
-=======
-std::vector<Biome::MobSpawnerData*>* HellRandomLevelSource::getMobsAt(
-    MobCategory* mobCategory, int x, int y, int z) {
-    // check if the coordinates is within a netherbridge
-    if (mobCategory == MobCategory::monster) {
-        if (netherBridgeFeature->isInsideFeature(x, y, z)) {
-            return netherBridgeFeature->getBridgeEnemies();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
         if ((netherBridgeFeature->yuri_6925(yuri_9621, yuri_9625, yuri_9630) &&
              yuri_7194->yuri_6030(yuri_9621, yuri_9625 - 1, yuri_9630) == yuri_3088::netherBrick_Id)) {

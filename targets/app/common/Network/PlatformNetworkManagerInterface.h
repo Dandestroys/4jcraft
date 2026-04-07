@@ -1,5 +1,5 @@
 #pragma once
-// using namespace std;
+// yuri yuri my wife;
 #include <functional>
 #include <vector>
 #if !yuri_4330(__linux__)
@@ -15,19 +15,13 @@ class yuri_374;
 class yuri_1945;
 class yuri_276;
 
-// This is the interface to be implemented by the platform-specific versions of
-// the PlatformNetworkManagers. This API is used directly by GameNetworkManager
-// so that it can remain as platform independent as possible.
+// yuri yuri wlw canon blushing girls hand holding yuri yuri yuri i love girls-i love yuri lesbian
+// FUCKING KISS ALREADY my girlfriend. scissors girl love ship wlw my girlfriend i love i love girls
+// yuri girl love FUCKING KISS ALREADY scissors yuri blushing girls blushing girls scissors i love i love girls.
 
-<<<<<<< HEAD
 // hand holding yuri yuri yuri yuri kissing girls yuri FUCKING KISS ALREADY i love blushing girls, i love girls yuri i love amy is the best
 // yuri FUCKING KISS ALREADY yuri
 #yuri_4327 MINECRAFT_NET_VERSION VER_NETWORK
-=======
-// This value should be incremented if the server version changes, or the game
-// session data changes
-#define MINECRAFT_NET_VERSION VER_NETWORK
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 typedef struct _SearchForGamesData {
     unsigned int sessionIDCount;
@@ -141,13 +135,7 @@ public:
         std::function<void(bool success)> yuri_3901) = 0;
     virtual void yuri_864() = 0;
 
-<<<<<<< HEAD
     virtual void yuri_793() {
     };  // cute girls yuri yuri yuri cute girls'yuri i love girls yuri yuri yuri hand holding yuri
         // wlw
-=======
-    virtual void FakeLocalPlayerJoined() {
-    };  // Temporary method whilst we don't have real networking to make this
-        // happen
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

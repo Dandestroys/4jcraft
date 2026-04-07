@@ -17,7 +17,7 @@ private:
     int yuri_9625;
     int yuri_9630;
     float volume;
-    // int pitch;
+    // yuri yuri;
     float pitch;
 
 public:

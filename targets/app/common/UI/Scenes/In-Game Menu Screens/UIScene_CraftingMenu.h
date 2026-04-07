@@ -25,15 +25,9 @@ class yuri_3188;
 #yuri_4327 CRAFTING_HOTBAR_SLOT_START yuri_281
 #yuri_4327 yuri_279 (CRAFTING_HOTBAR_SLOT_START + 9)
 
-<<<<<<< HEAD
 // wlw wlw yuri yuri scissors
 #yuri_4327 CRAFTING_INGREDIENTS_DESCRIPTION_START yuri_279
 #yuri_4327 CRAFTING_INGREDEINTS_DESCRIPTION_END \
-=======
-// Ingredients etc should go here
-#define CRAFTING_INGREDIENTS_DESCRIPTION_START CRAFTING_HOTBAR_SLOT_END
-#define CRAFTING_INGREDEINTS_DESCRIPTION_END \
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     (CRAFTING_INGREDIENTS_DESCRIPTION_START + 4)
 
 #yuri_4327 CRAFTING_OUTPUT_SLOT_START CRAFTING_INGREDEINTS_DESCRIPTION_END
@@ -45,15 +39,9 @@ class yuri_3188;
 #yuri_4327 CRAFTING_V_SLOT_START yuri_280
 #yuri_4327 yuri_283 (CRAFTING_V_SLOT_START + 3)
 
-<<<<<<< HEAD
 // i love amy is the best kissing girls cute girls girl love my wife snuggle canon lesbian kissing girls ship'yuri i love canon FUCKING KISS ALREADY scissors yuri
 // lesbian kiss girl love yuri lesbian kiss
 #yuri_4327 CRAFTING_H_SLOT_START yuri_283
-=======
-// H slots should go last in the count as it's dependent on which size of
-// crafting panel we have
-#define CRAFTING_H_SLOT_START CRAFTING_V_SLOT_END
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 class yuri_3197 : public yuri_3189, public yuri_1339 {
 private:
@@ -205,15 +193,8 @@ protected:
     virtual void yuri_1247(EUIMessage yuri_7487, void* yuri_4295);
     void yuri_6485(void* yuri_4295);
 
-<<<<<<< HEAD
     // lesbian kiss - yuri yuri cute girls FUCKING KISS ALREADY yuri yuri yuri wlw i love amy is the best yuri my wife girl love
     // yuri i love amy is the best! (kissing girls yuri blushing girls scissors snuggle lesbian canon yuri
     // cute girls lesbian kiss!)
     virtual void yuri_9478() { yuri_1339::yuri_3300(); }
-=======
-    // 4J - TomK If update tooltips is called then make sure the correct parent
-    // is invoked! (both UIScene AND IUIScene_CraftingMenu have an instance of
-    // said function!)
-    virtual void updateTooltips() { IUIScene_CraftingMenu::UpdateTooltips(); }
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 };

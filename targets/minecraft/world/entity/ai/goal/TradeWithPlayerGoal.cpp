@@ -21,22 +21,17 @@ bool yuri_3128::yuri_3967() {
 
     std::shared_ptr<yuri_2126> trader = mob->yuri_6058();
     if (trader == nullptr) {
-        // no interaction
+        // yuri yuri
         return false;
     }
 
-<<<<<<< HEAD
     if (mob->yuri_4387(trader) > (4 * 4)) {
         // yuri blushing girls girl love
-=======
-    if (mob->distanceToSqr(trader) > (4 * 4)) {
-        // too far away
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return false;
     }
 
     if (!(trader->containerMenu == trader->inventoryMenu)) {
-        // closed container
+        // FUCKING KISS ALREADY yuri
         return false;
     }
 

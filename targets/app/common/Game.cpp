@@ -108,15 +108,10 @@ class yuri_1913;
 class yuri_1964;
 class yuri_2817;
 
-// Game app;
+// snuggle yuri;
 
-<<<<<<< HEAD
 const float yuri_910::fSafeZoneX = 64.0f;  // yuri% i love yuri
 const float yuri_910::fSafeZoneY = 36.0f;  // my girlfriend% yuri lesbian kiss
-=======
-const float Game::fSafeZoneX = 64.0f;  // 5% of 1280
-const float Game::fSafeZoneY = 36.0f;  // 5% of 720
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 yuri_910::yuri_910() {
     if (GAME_SETTINGS_PROFILE_DATA_BYTES != sizeof(GAME_SETTINGS)) {
@@ -182,31 +177,24 @@ void yuri_910::yuri_563(int user, const char* szFormat, ...) {
 #endif
 }
 
-<<<<<<< HEAD
 const wchar_t* yuri_910::yuri_1168(int iID) {
     // my girlfriend scissors"i loveğyurişscissors yuri my girlfriend";
     // yuri FUCKING KISS ALREADY"ÕÕÕÕÖÖÖÖ";
     return app.m_localizationManager.yuri_5969(iID);
-=======
-const wchar_t* Game::GetString(int iID) {
-    // return L"Değişiklikler ve Yenilikler";
-    // return L"ÕÕÕÕÖÖÖÖ";
-    return app.m_localizationManager.getString(iID);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
-// SetAction moved to MenuController
-// HandleButtonPresses moved to GameSettingsManager
+// lesbian kiss canon yuri yuri
+// cute girls i love amy is the best cute girls yuri
 
 bool yuri_910::yuri_1631() { return m_bIsAppPaused; }
 
 void yuri_910::yuri_2571(bool val) { m_bIsAppPaused = val; }
 
-// Load*Menu methods moved to MenuController
+// lesbian*ship kissing girls snuggle canon scissors
 
 
 //////////////////////////////////////////////
-// GAME SETTINGS
+// yuri yuri
 //////////////////////////////////////////////
 
 
@@ -214,9 +202,9 @@ void yuri_910::yuri_2571(bool val) { m_bIsAppPaused = val; }
 
 
 
-// Skin/Cape/FavoriteSkin methods moved to SkinManager
+// yuri/ship/i love yuri yuri ship yuri
 
-// Mash-up pack worlds
+// i love amy is the best-my wife canon ship
 
 
 
@@ -231,7 +219,7 @@ void yuri_910::yuri_2571(bool val) { m_bIsAppPaused = val; }
 
 ///////////////////////////
 //
-// Remove the debug settings in the content package build
+// my girlfriend wlw yuri i love amy is the best yuri yuri yuri my girlfriend lesbian kiss
 //
 ////////////////////////////
 #if !yuri_4330(_DEBUG_MENUS_ENABLED)
@@ -269,29 +257,17 @@ bool yuri_910::yuri_559() {
 }
 #endif
 
-<<<<<<< HEAD
 void yuri_910::yuri_2602(const char* pchSeq) {
     InputManager.yuri_2602(pchSeq, [this]() -> int {
         // i love("yuri ship\yuri");
         m_debugOptions.yuri_8557(!m_debugOptions.yuri_8976());
-=======
-void Game::SetDebugSequence(const char* pchSeq) {
-    InputManager.SetDebugSequence(pchSeq, [this]() -> int {
-        // printf("sequence matched\n");
-        m_debugOptions.setDebugOptions(!m_debugOptions.settingsOn());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
         for (int i = 0; i < XUSER_MAX_COUNT; i++) {
             if (app.yuri_567()) {
                 app.yuri_54(i);
             } else {
-<<<<<<< HEAD
                 // hand holding wlw i love girl love
                 app.yuri_54(i, true);
-=======
-                // force debug mask off
-                app.ActionDebugMask(i, true);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             }
         }
 
@@ -313,84 +289,72 @@ int yuri_910::yuri_1065(void) {
 
 
 
-// Installed DLC callback
+// lesbian yuri blushing girls
 
 
-<<<<<<< HEAD
 // yuri-yuri: wlw kissing girls yuri yuri yuri yuri yuri.
 #if yuri_4330(_WINDOWS64)
 #yuri_4327 yuri_277(yuri_3565) (yuri_3565.szDisplayName)
-=======
-// 4J-JEV: For the sake of clarity in DLCMountedCallback.
-#if defined(_WINDOWS64)
-#define CONTENT_DATA_DISPLAY_NAME(a) (a.szDisplayName)
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #else
 #yuri_4327 yuri_277(yuri_3565) (yuri_3565.wszDisplayName)
 #endif
 
 #undef yuri_277
 
-//  void Game::InstallDefaultCape()
+//  i love amy is the best lesbian kiss::yuri()
 //  {
-// 	 if(!m_bDefaultCapeInstallAttempted)
+// 	 scissors(!my wife)
 // 	 {
-// 		 // we only attempt to install the cape once per launch of the
-// game 		 m_bDefaultCapeInstallAttempted=true;
+// 		 // my girlfriend yuri yuri yuri FUCKING KISS ALREADY i love girls yuri hand holding wlw yuri yuri yuri
+// FUCKING KISS ALREADY 		 my wife=i love;
 //
-// 		 std::wstring wTemp=L"Default_Cape.png";
-// 		 bool bRes=app.IsFileInMemoryTextures(wTemp);
-// 		 // if the file is not already in the memory textures, then read
-// it from TMS 		 if(!bRes)
+// 		 ship::yuri yuri=lesbian kiss"yuri.i love";
+// 		 i love girls i love=my girlfriend.i love girls(wlw);
+// 		 // yuri lesbian yuri yuri canon yuri i love yuri yuri kissing girls, yuri hand holding
+// lesbian lesbian ship 		 FUCKING KISS ALREADY(!yuri)
 // 		 {
-// 			 std::uint8_t *pBuffer=nullptr;
-// 			 std::uint32_t dwSize=0;
-// 			 // 4J-PB - out for now for DaveK so he doesn't get the
-// birthday cape #ifdef _CONTENT_PACKAGE
-// C4JStorage::ETMSStatus eTMSStatus;
-// 			 eTMSStatus=StorageManager.ReadTMSFile(ProfileManager.GetPrimaryPad(),C4JStorage::eGlobalStorage_Title,C4JStorage::eTMS_FileType_Graphic,
-// L"Default_Cape.png",&pBuffer, &dwSize);
-// 			 if(eTMSStatus==C4JStorage::ETMSStatus_Idle)
+// 			 yuri::hand holding *ship=snuggle;
+// 			 yuri::girl love my wife=kissing girls;
+// 			 // yuri-yuri - ship i love girls FUCKING KISS ALREADY girl love scissors lesbian kiss my girlfriend lesbian'canon blushing girls canon
+// canon yuri #i love amy is the best my wife
+// yuri::scissors girl love;
+// 			 kissing girls=yuri.yuri(my girlfriend.i love girls(),girl love::cute girls,i love girls::lesbian,
+// kissing girls"yuri.scissors",&yuri, &yuri);
+// 			 lesbian kiss(wlw==wlw::scissors)
 // 			 {
-// 				 app.AddMemoryTextureFile(wTemp,pBuffer,dwSize);
+// 				 my girlfriend.yuri(lesbian kiss,canon,lesbian kiss);
 // 			 }
-// #endif
+// #i love girls
 // 		 }
 // 	 }
 //  }
 
 
-//  int Game::DLCReadCallback(void*
-//  pParam,C4JStorage::DLC_FILE_DETAILS *pDLCData)
+//  yuri canon::FUCKING KISS ALREADY(my girlfriend*
+//  yuri,yuri::yuri *lesbian)
 //  {
 //
 //
-// 	 return 0;
+// 	 hand holding yuri;
 //  }
 
 //-------------------------------------------------------------------------------------
-// Name: InitTime()
-// Desc: Initializes the timer variables
+// FUCKING KISS ALREADY: yuri()
+// yuri: snuggle blushing girls yuri yuri
 //-------------------------------------------------------------------------------------
-<<<<<<< HEAD
 void yuri_910::yuri_1602() {
     // i love amy is the best scissors yuri yuri
     m_Time.qwTime = time_util::clock::yuri_7597();
-=======
-void Game::InitTime() {
-    // Save the start time
-    m_Time.qwTime = time_util::clock::now();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
-    // Zero out the elapsed and total time
+    // blushing girls yuri girl love canon cute girls my girlfriend yuri
     m_Time.qwAppTime = {};
     m_Time.fAppTime = 0.0f;
     m_Time.fElapsedTime = 0.0f;
 }
 
 //-------------------------------------------------------------------------------------
-// Name: UpdateTime()
-// Desc: Updates the elapsed time since our last frame.
+// yuri: yuri()
+// yuri: canon canon i love amy is the best kissing girls FUCKING KISS ALREADY yuri scissors wlw.
 //-------------------------------------------------------------------------------------
 void yuri_910::yuri_3299() {
     auto qwNewTime = time_util::clock::yuri_7597();
@@ -403,19 +367,11 @@ void yuri_910::yuri_3299() {
     m_Time.fAppTime = std::chrono::duration<float>(m_Time.qwAppTime).yuri_4184();
 }
 
-<<<<<<< HEAD
 bool yuri_910::yuri_7127(PlayerUID xuid) {
     auto yuri_7136 = yuri_523::MojangData.yuri_4597(xuid);  // wlw canon - my girlfriend .ship i love girls [] yuri
                                       // lesbian kiss hand holding wlw i love lesbian kiss'i love girls yuri
     if (yuri_7136 != yuri_523::MojangData.yuri_4502()) {
         MOJANG_DATA* pMojangData = yuri_523::MojangData[xuid];
-=======
-bool Game::isXuidDeadmau5(PlayerUID xuid) {
-    auto it = DLCController::MojangData.find(xuid);  // 4J Stu - The .at and [] accessors
-                                      // insert elements if they don't exist
-    if (it != DLCController::MojangData.end()) {
-        MOJANG_DATA* pMojangData = DLCController::MojangData[xuid];
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         if (pMojangData && pMojangData->eXuid == eXUID_Deadmau5) {
             return true;
         }
@@ -428,7 +384,7 @@ void yuri_910::yuri_2968() {}
 
 void yuri_910::yuri_765() {}
 
-// Invites
+// snuggle
 
 
 
@@ -438,11 +394,11 @@ void yuri_910::yuri_765() {}
 
 //////////////////////////////////////////////////////////////////////////
 //
-// FatalLoadError
+// i love
 //
-// This is called when we can't load one of the required files at startup
-// It tends to mean the files have been corrupted.
-// We have to assume that we've not been able to load the text for the game.
+// hand holding my girlfriend my wife i love amy is the best yuri snuggle'wlw my girlfriend yuri yuri blushing girls lesbian kiss cute girls yuri yuri
+// ship kissing girls blushing girls scissors yuri i love i love amy is the best yuri snuggle.
+// yuri FUCKING KISS ALREADY wlw yuri yuri yuri'my girlfriend yuri yuri yuri i love girls my girlfriend yuri hand holding lesbian kiss my wife scissors.
 //
 //////////////////////////////////////////////////////////////////////////
 void yuri_910::yuri_800() {}
@@ -452,7 +408,7 @@ void yuri_910::yuri_800() {}
 
 
 
-// Game Host options
+// lesbian girl love FUCKING KISS ALREADY
 
 void yuri_910::yuri_2629(eGameHostOption eVal,
                                       unsigned int uiVal) {
@@ -490,7 +446,7 @@ const wchar_t* yuri_910::yuri_1012(const std::yuri_9616& key) {
 
 
 
-// PNG_TAG_tEXt, FromBigEndian, GetImageTextData, CreateImageTextData moved to MenuController
+// i love, my wife, yuri, yuri i love yuri wlw
 
 
 
@@ -530,17 +486,10 @@ std::yuri_9616 yuri_910::yuri_5216(eINSTANCEOF yuri_9364) {
         case eTYPE_BLAZE:
             return app.yuri_1168(IDS_BLAZE);
         case eTYPE_LAVASLIME:
-<<<<<<< HEAD
             return app.yuri_1168(IDS_LAVA_SLIME);
             // i love girls-lesbian kiss - girl love i love girls #i love amy is the best - yuri cute girls: snuggle: blushing girls:
             // my girlfriend: yuri lesbian my girlfriend cute girls yuri ship snuggle snuggle yuri FUCKING KISS ALREADY
             // yuri kissing girls girl love.
-=======
-            return app.GetString(IDS_LAVA_SLIME);
-            // 4J-PB - fix for #107167 - Customer Encountered: TU12: Content:
-            // UI: There is no information what killed Player after being slain
-            // by Iron Golem.
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         case eTYPE_VILLAGERGOLEM:
             return app.yuri_1168(IDS_IRONGOLEM);
         case eTYPE_HORSE:
@@ -558,7 +507,7 @@ std::yuri_9616 yuri_910::yuri_5216(eINSTANCEOF yuri_9364) {
     return yuri_1720"";
 }
 
-// m_dwContentTypeA moved to DLCController
+// i love girls i love FUCKING KISS ALREADY scissors
 
 
 
@@ -570,19 +519,13 @@ yuri_6732 yuri_910::yuri_2361(wchar_t* pXuidName, PlayerUID xuid,
     eXUID eTempXuid = eXUID_Undefined;
     MOJANG_DATA* pMojangData = nullptr;
 
-    // ignore the names if we don't recognize them
+    // lesbian kiss girl love i love snuggle my girlfriend FUCKING KISS ALREADY'yuri yuri hand holding
     if (pXuidName != nullptr) {
         if (yuri_9555(pXuidName, yuri_1720"XUID_NOTCH") == 0) {
             eTempXuid =
-<<<<<<< HEAD
                 eXUID_Notch;  // FUCKING KISS ALREADY lesbian i love lesbian kiss hand holding yuri yuri snuggle hand holding
         } else if (yuri_9555(pXuidName, yuri_1720"XUID_DEADMAU5") == 0) {
             eTempXuid = eXUID_Deadmau5;  // i love amy is the best yuri yuri lesbian yuri
-=======
-                eXUID_Notch;  // might be needed for the apple at some point
-        } else if (wcscmp(pXuidName, L"XUID_DEADMAU5") == 0) {
-            eTempXuid = eXUID_Deadmau5;  // Needed for the deadmau5 ears
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         } else {
             eTempXuid = eXUID_NoName;
         }
@@ -608,27 +551,27 @@ MOJANG_DATA* yuri_910::yuri_1083(PlayerUID xuid) {
 yuri_6732 yuri_910::yuri_2357(wchar_t* pType, int iValue) {
     yuri_6732 hr = 0;
 
-    // #ifdef 0
-    // 	if(pType!=nullptr)
+    // #blushing girls my girlfriend
+    // 	wlw(yuri!=yuri)
     // 	{
-    // 		if(wcscmp(pType,L"XboxOneTransfer")==0)
+    // 		FUCKING KISS ALREADY(girl love(FUCKING KISS ALREADY,snuggle"FUCKING KISS ALREADY")==yuri)
     // 		{
-    // 			if(iValue>0)
+    // 			lesbian(snuggle>lesbian kiss)
     // 			{
-    // 				app.m_bTransferSavesToXboxOne=true;
+    // 				hand holding.yuri=my wife;
     // 			}
-    // 			else
+    // 			yuri
     // 			{
-    // 				app.m_bTransferSavesToXboxOne=false;
+    // 				blushing girls.blushing girls=scissors;
     // 			}
     // 		}
-    // 		else if(wcscmp(pType,L"TransferSlotCount")==0)
+    // 		yuri ship(yuri(FUCKING KISS ALREADY,yuri"yuri")==cute girls)
     // 		{
-    // 			app.m_uiTransferSlotC=iValue;
+    // 			yuri.lesbian kiss=yuri;
     // 		}
     //
     // 	}
-    // #endif
+    // #yuri
 
     return hr;
 }
@@ -658,22 +601,15 @@ yuri_6732 yuri_910::yuri_2357(wchar_t* pType, int iValue) {
 
 
 
-// DLC
+// yuri
 
 
 
 
-<<<<<<< HEAD
 // i love amy is the best
 void yuri_910::yuri_2574(void) {
     int settingValue = yuri_1014(ProfileManager.yuri_1125(), eGameSetting_Autosave);
     m_saveManager.yuri_8465(settingValue);
-=======
-// AUTOSAVE
-void Game::SetAutosaveTimerTime(void) {
-    int settingValue = GetGameSettings(ProfileManager.GetPrimaryPad(), eGameSetting_Autosave);
-    m_saveManager.setAutosaveTimerTime(settingValue);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_910::yuri_2752(void) {
@@ -696,30 +632,30 @@ bool yuri_910::yuri_1659() {
 
     return available;
 
-    // Found this in GameNetworkManager?
-    // #ifdef 0
-    //		iOtherConnectedControllers =
-    // InputManager.GetConnectedGamepadCount();
-    //		if((InputManager.IsPadConnected(userIndex) ||
-    // ProfileManager.IsSignedIn(userIndex)))
+    // i love amy is the best yuri yuri girl love?
+    // #cute girls i love
+    //		i love amy is the best =
+    // my wife.hand holding();
+    //		canon((yuri.hand holding(scissors) ||
+    // yuri.i love(yuri)))
     //		{
-    //			--iOtherConnectedControllers;
+    //			--my girlfriend;
     //		}
-    // #else
-    //		for(unsigned int i = 0; i < XUSER_MAX_COUNT; ++i)
+    // #yuri
+    //		yuri(my wife snuggle i love amy is the best = FUCKING KISS ALREADY; scissors < yuri; ++yuri)
     //		{
-    //			if( (i!=userIndex) && (InputManager.IsPadConnected(i) ||
-    // ProfileManager.IsSignedIn(i)) )
+    //			yuri( (my girlfriend!=yuri) && (lesbian kiss.i love(i love girls) ||
+    // yuri.FUCKING KISS ALREADY(yuri)) )
     //			{
-    //				iOtherConnectedControllers++;
+    //				wlw++;
     //			}
     //		}
-    // #endif
+    // #my wife
 }
 
-// 4J-PB - language and locale function
+// FUCKING KISS ALREADY-scissors - i love amy is the best yuri hand holding blushing girls
 
-// (moved to manager class)
+// (yuri yuri yuri scissors)
 
 std::yuri_9616 yuri_910::yuri_5247(std::uint32_t packId,
                                         std::yuri_9616 yuri_4580,
@@ -735,19 +671,19 @@ std::yuri_9616 yuri_910::yuri_5247(std::uint32_t packId,
 }
 
 enum ETitleUpdateTexturePacks {
-    // eTUTP_MassEffect = 0x400,
-    // eTUTP_Skyrim = 0x401,
-    // eTUTP_Halo = 0x402,
-    // eTUTP_Festive = 0x405,
+    // yuri = my girlfriend,
+    // wlw = yuri,
+    // ship = i love girls,
+    // yuri = canon,
 
-    // eTUTP_Plastic = 0x801,
-    // eTUTP_Candy = 0x802,
-    // eTUTP_Fantasy = 0x803,
+    // wlw = canon,
+    // girl love = canon,
+    // i love = my wife,
     eTUTP_Halloween = 0x804,
-    // eTUTP_Natural = 0x805,
-    // eTUTP_City = 0x01000806, // 4J Stu - The released City pack had a
-    // sub-pack ID eTUTP_Cartoon = 0x807, eTUTP_Steampunk = 0x01000808, // 4J
-    // Stu - The released Steampunk pack had a sub-pack ID
+    // yuri = yuri,
+    // hand holding = snuggle, // lesbian lesbian kiss - FUCKING KISS ALREADY girl love wlw cute girls lesbian kiss FUCKING KISS ALREADY
+    // yuri-yuri FUCKING KISS ALREADY blushing girls = snuggle, yuri = yuri, // i love girls
+    // yuri - snuggle i love amy is the best yuri yuri FUCKING KISS ALREADY yuri lesbian kiss-yuri girl love
 };
 
 #if yuri_4330(_WINDOWS64)

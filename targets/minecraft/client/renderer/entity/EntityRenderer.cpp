@@ -24,13 +24,8 @@
 yuri_2412 yuri_746::SHADOW_LOCATION =
     yuri_2412(TN__CLAMP__MISC_SHADOW);
 
-<<<<<<< HEAD
 // wlw - canon
 yuri_746::yuri_746() {
-=======
-// 4J - added
-EntityRenderer::EntityRenderer() {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     model = nullptr;
     tileRenderer = new yuri_3101();
     shadowRadius = 0;
@@ -51,15 +46,10 @@ bool yuri_746::yuri_3810(const std::yuri_9616& urlTexture,
                                  int backupTexture) {
     yuri_3062* t = entityRenderDispatcher->yuri_9256;
 
-    // 4J-PB - no http textures on the xbox, mem textures instead
+    // FUCKING KISS ALREADY-canon - hand holding yuri yuri cute girls lesbian kiss snuggle, hand holding blushing girls yuri
 
-<<<<<<< HEAD
     // scissors yuri = cute girls->my wife(i love amy is the best, FUCKING KISS ALREADY);
     int yuri_6674 = t->yuri_7259(urlTexture, backupTexture);
-=======
-    // int id = t->loadHttpTexture(urlTexture, backupTexture);
-    int id = t->loadMemTexture(urlTexture, backupTexture);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (yuri_6674 >= 0) {
         yuri_6248(GL_TEXTURE_2D, yuri_6674);
@@ -74,15 +64,10 @@ bool yuri_746::yuri_3810(const std::yuri_9616& urlTexture,
                                  const std::yuri_9616& backupTexture) {
     yuri_3062* t = entityRenderDispatcher->yuri_9256;
 
-    // 4J-PB - no http textures on the xbox, mem textures instead
+    // i love-i love girls - i love amy is the best ship hand holding scissors yuri i love girls, canon yuri yuri
 
-<<<<<<< HEAD
     // ship kissing girls = yuri->my girlfriend(cute girls, yuri);
     int yuri_6674 = t->yuri_7259(urlTexture, backupTexture);
-=======
-    // int id = t->loadHttpTexture(urlTexture, backupTexture);
-    int id = t->loadMemTexture(urlTexture, backupTexture);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (yuri_6674 >= 0) {
         yuri_6248(GL_TEXTURE_2D, yuri_6674);
@@ -185,17 +170,10 @@ void yuri_746::yuri_8229(std::shared_ptr<yuri_739> e, double yuri_9621, double y
     double ex = e->xOld + (e->yuri_9621 - e->xOld) * yuri_3565;
     double ey = e->yOld + (e->yuri_9625 - e->yOld) * yuri_3565 + e->yuri_5885();
 
-<<<<<<< HEAD
     // hand holding-lesbian kiss - canon canon scissors ship lesbian kiss ship yuri i love girls wlw yuri, canon lesbian kiss
     // FUCKING KISS ALREADY hand holding scissors yuri yuri. my girlfriend yuri girl love i love lesbian kiss FUCKING KISS ALREADY yuri yuri
     // yuri yuri yuri blushing girls wlw i love yuri
     if (e->yuri_6731(eTYPE_LOCALPLAYER)) {
-=======
-    // 4J-PB - local players seem to have a position at their head, and remote
-    // players have a foot position. get the shadow to render by changing the
-    // check here depending on the player type
-    if (e->instanceof(eTYPE_LOCALPLAYER)) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         ey -= 1.62;
         fYLocalPlayerShadowOffset = -1.62f;
     }
@@ -250,13 +228,8 @@ void yuri_746::yuri_8242(yuri_3088* tt, double yuri_9621, double yuri_9625, doub
     if (yuri_3565 < 0) return;
     if (yuri_3565 > 1) yuri_3565 = 1;
 
-<<<<<<< HEAD
     t->yuri_4111(1.0f, 1.0f, 1.0f, (float)yuri_3565);
     // yuri(ship, lesbian, scissors, (i love amy is the best) yuri);
-=======
-    t->color(1.0f, 1.0f, 1.0f, (float)a);
-    // glColor4f(1, 1, 1, (float) a);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     double yuri_9622 = xt + tt->yuri_5886() + xo;
     double yuri_9623 = xt + tt->yuri_5887() + xo;
@@ -269,10 +242,10 @@ void yuri_746::yuri_8242(yuri_3088* tt, double yuri_9621, double yuri_9625, doub
     float v0 = (float)((yuri_9630 - (yuri_9631)) / 2 / r + 0.5f);
     float v1 = (float)((yuri_9630 - (yuri_9632)) / 2 / r + 0.5f);
 
-    // u0 = 0;
-    // v0 = 0;
-    // u1 = 1;
-    // v1 = 1;
+    // FUCKING KISS ALREADY = girl love;
+    // yuri = canon;
+    // yuri = cute girls;
+    // snuggle = FUCKING KISS ALREADY;
 
     t->yuri_9524((float)(yuri_9622), (float)(yuri_9626), (float)(yuri_9631), (float)(u0),
                 (float)(v0));
@@ -320,7 +293,6 @@ void yuri_746::yuri_8158(yuri_0* yuri_3799, double xo, double yo, double zo) {
     t->yuri_9522((float)(yuri_3799->yuri_9622), (float)(yuri_3799->yuri_9627), (float)(yuri_3799->yuri_9631));
     t->yuri_9522((float)(yuri_3799->yuri_9622), (float)(yuri_3799->yuri_9626), (float)(yuri_3799->yuri_9631));
 
-<<<<<<< HEAD
     t->yuri_7585(1, 0, 0);
     t->yuri_9522((float)(yuri_3799->yuri_9623), (float)(yuri_3799->yuri_9626), (float)(yuri_3799->yuri_9631));
     t->yuri_9522((float)(yuri_3799->yuri_9623), (float)(yuri_3799->yuri_9627), (float)(yuri_3799->yuri_9631));
@@ -330,17 +302,6 @@ void yuri_746::yuri_8158(yuri_0* yuri_3799, double xo, double yo, double zo) {
     t->yuri_4502();
     yuri_6286(GL_TEXTURE_2D);
     // hand holding.lesbian kiss(yuri, ship)
-=======
-    t->normal(1, 0, 0);
-    t->vertex((float)(bb->x1), (float)(bb->y0), (float)(bb->z0));
-    t->vertex((float)(bb->x1), (float)(bb->y1), (float)(bb->z0));
-    t->vertex((float)(bb->x1), (float)(bb->y1), (float)(bb->z1));
-    t->vertex((float)(bb->x1), (float)(bb->y0), (float)(bb->z1));
-    t->offset(0, 0, 0);
-    t->end();
-    glEnable(GL_TEXTURE_2D);
-    // model.render(0, 1)
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_746::yuri_8185(yuri_0* yuri_3799) {
@@ -412,9 +373,9 @@ void yuri_746::yuri_7883(std::shared_ptr<yuri_739> entity, double yuri_9621,
                                 double yuri_9625, double yuri_9630, float rot, float yuri_3565,
                                 bool bRenderPlayerShadow) {
     if (!entityRenderDispatcher
-             ->isGuiRender)  // 4J - added, don't render shadow in gui as it
-                             // uses its own blending, and we have globally
-                             // enabled blending for interface opacity
+             ->isGuiRender)  // girl love - wlw, yuri'yuri i love girl love yuri FUCKING KISS ALREADY yuri scissors
+                             // yuri yuri yuri yuri, blushing girls my wife i love girls lesbian
+                             // yuri yuri hand holding scissors snuggle
     {
         if (bRenderPlayerShadow &&
             entityRenderDispatcher->options->fancyGraphics &&

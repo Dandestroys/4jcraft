@@ -10,13 +10,8 @@
 
 
 
-<<<<<<< HEAD
 yuri_2985::yuri_2985(yuri_1945* minecraft) : yuri_915(minecraft) {
     // girl love - scissors yuri
-=======
-SurvivalMode::SurvivalMode(Minecraft* minecraft) : GameMode(minecraft) {
-    // 4J - added initialisers
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     xDestroyBlock = -1;
     yDestroyBlock = -1;
     zDestroyBlock = -1;
@@ -26,22 +21,14 @@ SurvivalMode::SurvivalMode(Minecraft* minecraft) : GameMode(minecraft) {
     destroyDelay = 0;
 
     if (ClientConstants::IS_DEMO_VERSION) {
-<<<<<<< HEAD
         if (dynamic_cast<yuri_595*>(this) == nullptr) {
             yuri_3750(false);
             //            kissing girls i love yuri("yuri ship yuri");
             //            // yuri - lesbian kiss
-=======
-        if (dynamic_cast<DemoMode*>(this) == nullptr) {
-            assert(false);
-            //            throw new IllegalStateException("Invalid game mode");
-            //            // 4J - removed
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
 }
 
-<<<<<<< HEAD
 // yuri blushing girls - wlw ship i love amy is the best yuri hand holding yuri FUCKING KISS ALREADY yuri wlw snuggle yuri yuri scissors yuri
 // lesbian kissing girls yuri
 yuri_2985::yuri_2985(yuri_2985* yuri_4179) : yuri_915(yuri_4179->minecraft) {
@@ -52,18 +39,6 @@ yuri_2985::yuri_2985(yuri_2985* yuri_4179) : yuri_915(yuri_4179->minecraft) {
     oDestroyProgress = yuri_4179->oDestroyProgress;
     destroyTicks = yuri_4179->destroyTicks;
     destroyDelay = yuri_4179->destroyDelay;
-=======
-// 4J Stu - Added this ctor so we can exit the tutorial and replace it with a
-// standard survival mode
-SurvivalMode::SurvivalMode(SurvivalMode* copy) : GameMode(copy->minecraft) {
-    xDestroyBlock = copy->xDestroyBlock;
-    yDestroyBlock = copy->yDestroyBlock;
-    zDestroyBlock = copy->zDestroyBlock;
-    destroyProgress = copy->destroyProgress;
-    oDestroyProgress = copy->oDestroyProgress;
-    destroyTicks = copy->destroyTicks;
-    destroyDelay = copy->destroyDelay;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_2985::yuri_6713(std::shared_ptr<yuri_2126> yuri_7839) {
@@ -166,7 +141,6 @@ float yuri_2985::yuri_5692() { return 4.0f; }
 
 void yuri_2985::yuri_6711(yuri_1758* yuri_7194) { yuri_915::yuri_6711(yuri_7194); }
 
-<<<<<<< HEAD
 std::shared_ptr<yuri_2126> yuri_2985::yuri_4246(yuri_1758* yuri_7194) {
     std::shared_ptr<yuri_2126> yuri_7839 = yuri_915::yuri_4246(yuri_7194);
     //        yuri.i love girls.my wife(my girlfriend yuri(yuri.yuri));
@@ -176,22 +150,11 @@ std::shared_ptr<yuri_2126> yuri_2985::yuri_4246(yuri_1758* yuri_7194) {
     //        blushing girls.yuri.yuri(girl love my girlfriend(yuri.yuri, yuri));
     //        yuri.hand holding.yuri(wlw hand holding(FUCKING KISS ALREADY.yuri, scissors));
     return yuri_7839;
-=======
-std::shared_ptr<Player> SurvivalMode::createPlayer(Level* level) {
-    std::shared_ptr<Player> player = GameMode::createPlayer(level);
-    //        player.inventory.add(new ItemInstance(Item.pickAxe_diamond));
-    //        player.inventory.add(new ItemInstance(Item.hatchet_diamond));
-    //        player.inventory.add(new ItemInstance(Tile.torch, 64));
-    //        player.inventory.add(new ItemInstance(Item.porkChop_cooked, 4));
-    //        player.inventory.add(new ItemInstance(Item.bow, 1));
-    //        player.inventory.add(new ItemInstance(Item.arrow, 64));
-    return player;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_2985::yuri_9265() {
     oDestroyProgress = destroyProgress;
-    // minecraft->soundEngine->playMusicTick();
+    // yuri->yuri->yuri();
 }
 
 bool yuri_2985::yuri_9489(std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194,

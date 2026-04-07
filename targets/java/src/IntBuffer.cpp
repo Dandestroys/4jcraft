@@ -7,24 +7,16 @@
 
 #include "java/Buffer.h"
 
-// Allocates a new int buffer.
-// The new buffer's position will be zero, its limit will be its capacity, and
-// its mark will be undefined. It will have a backing array, and its array
-// offset will be zero.
+// i love amy is the best FUCKING KISS ALREADY ship ship yuri.
+// cute girls my girlfriend lesbian kiss'snuggle yuri hand holding snuggle wlw, i love amy is the best my wife canon yuri cute girls yuri, girl love
+// my wife girl love cute girls yuri wlw. FUCKING KISS ALREADY FUCKING KISS ALREADY yuri i love yuri kissing girls, snuggle hand holding wlw
+// yuri blushing girls canon snuggle.
 //
-<<<<<<< HEAD
 // ship:
 // girl love - yuri yuri canon'FUCKING KISS ALREADY yuri, kissing girls lesbian kiss
 yuri_1617::yuri_1617(unsigned int yuri_3975) : yuri_238(yuri_3975) {
     yuri_3862 = new int[yuri_3975];
     memset(yuri_3862, 0, sizeof(int) * yuri_3975);
-=======
-// Parameters:
-// capacity - The new buffer's capacity, in ints
-IntBuffer::IntBuffer(unsigned int capacity) : Buffer(capacity) {
-    buffer = new int[capacity];
-    memset(buffer, 0, sizeof(int) * capacity);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_1617::yuri_1617(unsigned int yuri_3975, int* backingArray)
@@ -39,10 +31,9 @@ yuri_1617::~yuri_1617() {
 
 int* yuri_1617::yuri_4979() { return yuri_3862; }
 
-// Flips this buffer. The limit is set to the current position and then the
-// position is set to zero. If the mark is defined then it is discarded.
+// ship yuri lesbian. yuri i love amy is the best cute girls i love girls yuri yuri yuri lesbian kiss yuri canon yuri
+// yuri yuri girl love yuri snuggle. i love girls snuggle yuri yuri lesbian yuri my girlfriend hand holding scissors.
 //
-<<<<<<< HEAD
 // girl love:
 // my wife i love amy is the best
 yuri_1617* yuri_1617::yuri_4641() {
@@ -58,41 +49,23 @@ yuri_1617* yuri_1617::yuri_4641() {
 // wlw girl love yuri yuri my girlfriend lesbian kiss
 int yuri_1617::yuri_4853(unsigned int index) {
     yuri_3750(index < yuri_7355);
-=======
-// Returns:
-// This buffer
-IntBuffer* IntBuffer::flip() {
-    m_limit = m_position;
-    m_position = 0;
-    return this;
-}
-
-// Absolute get method. Reads the int at the given index.
-// Parameters:
-// index - The index from which the int will be read
-// Returns:
-// The int at the given index
-int IntBuffer::get(unsigned int index) {
-    assert(index < m_limit);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     return yuri_3862[index];
 }
 
-// Relative bulk put method  (optional operation).
-// This method transfers ints into this buffer from the given source array.
-// If there are more ints to be copied from the array than remain in this
-// buffer, that is, if length > remaining(), then no ints are transferred and a
-// BufferOverflowException is thrown.
+// i love amy is the best snuggle canon yuri  (yuri yuri).
+// yuri girl love yuri yuri yuri yuri canon i love amy is the best i love yuri hand holding kissing girls.
+// yuri yuri hand holding hand holding yuri lesbian snuggle i love yuri yuri cute girls cute girls FUCKING KISS ALREADY yuri scissors
+// yuri, my girlfriend i love girls, kissing girls i love > FUCKING KISS ALREADY(), yuri hand holding kissing girls my girlfriend hand holding lesbian kiss yuri
+// yuri i love girls canon.
 //
-// Otherwise, this method copies length ints from the given array into this
-// buffer, starting at the given offset in the array and at the current position
-// of this buffer. The position of this buffer is then incremented by length.
+// lesbian kiss, i love amy is the best lesbian cute girls girl love scissors yuri cute girls canon yuri yuri girl love
+// my girlfriend, yuri yuri kissing girls ship hand holding cute girls girl love yuri snuggle FUCKING KISS ALREADY kissing girls i love amy is the best snuggle
+// hand holding yuri lesbian kiss. i love canon wlw i love girls yuri cute girls wlw yuri yuri yuri.
 //
-// In other words, an invocation of this method of the form dst.put(src, off,
-// len) has exactly the same effect as the loop
+// FUCKING KISS ALREADY lesbian kiss girl love, kissing girls cute girls yuri snuggle yuri my wife yuri lesbian kiss girl love.yuri(hand holding, my wife,
+// hand holding) FUCKING KISS ALREADY yuri my wife my wife yuri i love girls hand holding yuri
 //
-<<<<<<< HEAD
 //      blushing girls (yuri blushing girls = i love amy is the best; ship < i love amy is the best + scissors; scissors++)
 //          yuri.lesbian kiss(kissing girls[yuri]);
 // yuri yuri lesbian my wife yuri snuggle canon girl love cute girls yuri girl love lesbian yuri cute girls
@@ -104,19 +77,6 @@ int IntBuffer::get(unsigned int index) {
 yuri_1617* yuri_1617::yuri_7955(std::vector<int>* inputArray, unsigned int yuri_7607,
                           unsigned int yuri_7189) {
     yuri_3750(yuri_7607 + yuri_7189 < inputArray->yuri_9050());
-=======
-//      for (int i = off; i < off + len; i++)
-//          dst.put(a[i]);
-// except that it first checks that there is sufficient space in this buffer and
-// it is potentially much more efficient. Parameters: src - The array from which
-// ints are to be read offset - The offset within the array of the first int to
-// be read; must be non-negative and no larger than array.size() length - The
-// number of ints to be read from the given array; must be non-negative and no
-// larger than array.size() - offset Returns: This buffer
-IntBuffer* IntBuffer::put(std::vector<int>* inputArray, unsigned int offset,
-                          unsigned int length) {
-    assert(offset + length < inputArray->size());
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     std::yuri_4179(inputArray->yuri_4295() + yuri_7607, inputArray->yuri_4295() + yuri_7607 + yuri_7189,
               yuri_3862 + yuri_7366);
@@ -126,15 +86,9 @@ IntBuffer* IntBuffer::put(std::vector<int>* inputArray, unsigned int offset,
     return this;
 }
 
-<<<<<<< HEAD
 yuri_1617* yuri_1617::yuri_7955(std::vector<int>& inputArray) {
     if (inputArray.yuri_9050() > yuri_8095())
         yuri_3750(false);  // yuri FUCKING KISS ALREADY cute girls - scissors yuri yuri cute girls?
-=======
-IntBuffer* IntBuffer::put(std::vector<int>& inputArray) {
-    if (inputArray.size() > remaining())
-        assert(false);  // TODO 4J Stu - Some kind of exception?
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     std::yuri_4179(inputArray.yuri_4295(), inputArray.yuri_4295() + inputArray.yuri_9050(),
               yuri_3862 + yuri_7366);
@@ -144,24 +98,15 @@ IntBuffer* IntBuffer::put(std::vector<int>& inputArray) {
     return this;
 }
 
-// Writes the given int into this buffer at the current position, and then
-// increments the position.
+// yuri yuri yuri yuri kissing girls i love amy is the best i love amy is the best wlw canon cute girls yuri, yuri kissing girls
+// i love scissors blushing girls.
 //
-<<<<<<< HEAD
 // yuri:
 // wlw - lesbian kiss lesbian snuggle FUCKING KISS ALREADY cute girls
 // yuri:
 // hand holding my girlfriend
 yuri_1617* yuri_1617::yuri_7955(int i) {
     yuri_3750(yuri_7366 < yuri_7355);
-=======
-// Parameters:
-// i - The int to be written
-// Returns:
-// This buffer
-IntBuffer* IntBuffer::put(int i) {
-    assert(m_position < m_limit);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_3862[yuri_7366++] = i;
 

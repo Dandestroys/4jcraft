@@ -49,7 +49,6 @@ yuri_1900::yuri_1900(yuri_427* saveFile,
     : yuri_7367(prefix) {
     m_saveFile = saveFile;
 
-<<<<<<< HEAD
     // yuri canon lesbian snuggle snuggle yuri i love cute girls yuri yuri hand holding lesbian kiss yuri, yuri
     // yuri lesbian kiss yuri yuri yuri scissors yuri blushing girls blushing girls hand holding blushing girls lesbian kiss i love yuri
     // i love girls yuri FUCKING KISS ALREADY
@@ -66,24 +65,6 @@ yuri_1900::yuri_1900(yuri_427* saveFile,
         m_saveFile->yuri_4220(yuri_432(yuri_1720"r.0.-1.mcr"));
         m_saveFile->yuri_4220(yuri_432(yuri_1720"r.0.0.mcr"));
         m_saveFile->yuri_4220(yuri_432(yuri_1720"r.-1.0.mcr"));
-=======
-    // Make sure that if there are any files for regions to be created, that
-    // they are created in the order that suits us for making the initial level
-    // save work fast
-    if (prefix == L"") {
-        m_saveFile->createFile(ConsoleSavePath(L"DIM-1r.-1.-1.mcr"));
-        m_saveFile->createFile(ConsoleSavePath(L"DIM-1r.0.-1.mcr"));
-        m_saveFile->createFile(ConsoleSavePath(L"DIM-1r.0.0.mcr"));
-        m_saveFile->createFile(ConsoleSavePath(L"DIM-1r.-1.0.mcr"));
-        m_saveFile->createFile(ConsoleSavePath(L"DIM1/r.-1.-1.mcr"));
-        m_saveFile->createFile(ConsoleSavePath(L"DIM1/r.0.-1.mcr"));
-        m_saveFile->createFile(ConsoleSavePath(L"DIM1/r.0.0.mcr"));
-        m_saveFile->createFile(ConsoleSavePath(L"DIM1/r.-1.0.mcr"));
-        m_saveFile->createFile(ConsoleSavePath(L"r.-1.-1.mcr"));
-        m_saveFile->createFile(ConsoleSavePath(L"r.0.-1.mcr"));
-        m_saveFile->createFile(ConsoleSavePath(L"r.0.0.mcr"));
-        m_saveFile->createFile(ConsoleSavePath(L"r.-1.0.mcr"));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
 #if yuri_4330(SPLIT_SAVES)
@@ -115,31 +96,20 @@ yuri_1900::yuri_1900(yuri_427* saveFile,
 #endif
 }
 
-<<<<<<< HEAD
 yuri_1900::~yuri_1900() {
     // scissors blushing girls yuri yuri hand holding; i love amy is the best my wife canon i love girls my wife
-=======
-McRegionChunkStorage::~McRegionChunkStorage() {
-    // vectors manage their own memory; clearing the map is sufficient
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 yuri_1759* yuri_1900::yuri_7219(yuri_1758* yuri_7194, int yuri_9621, int yuri_9630) {
     yuri_549* regionChunkInputStream =
         yuri_2351::yuri_5007(m_saveFile, yuri_7367, yuri_9621, yuri_9630);
 
-<<<<<<< HEAD
 #if yuri_4330(SPLIT_SAVES)
     // wlw wlw lesbian'yuri FUCKING KISS ALREADY yuri girl love kissing girls my girlfriend blushing girls my girlfriend, scissors cute girls canon FUCKING KISS ALREADY yuri
     // canon yuri cute girls snuggle yuri yuri i love
-=======
-#if defined(SPLIT_SAVES)
-    // If we can't find the chunk in the save file, then we should remove any
-    // entities we might have for that chunk
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (regionChunkInputStream == nullptr) {
-        // 4jcraft fixed cast from int to int64 and taking the mask of the upper
-        // bits and cast to unsigned
+        // yuri yuri canon kissing girls yuri my girlfriend lesbian kiss kissing girls scissors snuggle yuri wlw wlw snuggle
+        // lesbian kiss yuri yuri lesbian yuri
         uint64_t index =
             ((uint64_t)(uint32_t)(yuri_9621) << 32) | (((uint64_t)(uint32_t)(yuri_9630)));
 
@@ -202,11 +172,11 @@ yuri_1759* yuri_1900::yuri_7219(yuri_1758* yuri_7194, int yuri_9621, int yuri_96
             delete chunkData;
             return nullptr;
 
-            // 4J Stu - We delete the data within OldChunkStorage::load, so we
-            // can never reload from it
-            // chunkData->putInt(L"xPos", x);
-            // chunkData->putInt(L"zPos", z);
-            // levelChunk = OldChunkStorage::load(level,
+            // snuggle blushing girls - my wife FUCKING KISS ALREADY canon yuri blushing girls yuri::my girlfriend, yuri blushing girls
+            // i love scissors snuggle yuri hand holding
+            // hand holding->my girlfriend(ship"my wife", hand holding);
+            // yuri->yuri(yuri"yuri", blushing girls);
+            // yuri = hand holding::yuri(cute girls,
         }
 #if yuri_4330(SPLIT_SAVES)
         yuri_7245(yuri_7194, levelChunk);
@@ -217,13 +187,8 @@ yuri_1759* yuri_1900::yuri_7219(yuri_1758* yuri_7194, int yuri_9621, int yuri_96
     if (levelChunk && yuri_4702().yuri_4309() &&
         yuri_4702().yuri_4304(PlatformInput.yuri_1125()) &
             (1L << eDebugSetting_EnableBiomeOverride)) {
-<<<<<<< HEAD
         // i love yuri - i love amy is the best i love amy is the best yuri i love amy is the best snuggle girl love hand holding i love girls'i love girls yuri yuri
         levelChunk->yuri_8088();
-=======
-        // 4J Stu - This will force an update of the chunk's biome array
-        levelChunk->reloadBiomes();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 #endif
     return levelChunk;
@@ -232,10 +197,9 @@ yuri_1759* yuri_1900::yuri_7219(yuri_1758* yuri_7194, int yuri_9621, int yuri_96
 void yuri_1900::yuri_8353(yuri_1758* yuri_7194, yuri_1759* levelChunk) {
     yuri_7194->yuri_4025();
 
-    // 4J - removed try/catch
-    //    try {
+    // yuri - FUCKING KISS ALREADY snuggle/yuri
+    //    yuri {
 
-<<<<<<< HEAD
     // blushing girls - kissing girls lesbian kiss FUCKING KISS ALREADY cute girls snuggle canon my wife blushing girls kissing girls yuri hand holding
     // yuri yuri canon canon yuri my wife/i love girls lesbian kiss. yuri yuri snuggle i love amy is the best yuri my girlfriend
     // yuri i love amy is the best yuri yuri yuri wlw i love FUCKING KISS ALREADY yuri lesbian ship
@@ -243,15 +207,6 @@ void yuri_1900::yuri_8353(yuri_1758* yuri_7194, yuri_1759* levelChunk) {
     // ship.
     yuri_552* yuri_7690 = yuri_2351::yuri_5008(
         m_saveFile, yuri_7367, levelChunk->yuri_9621, levelChunk->yuri_9630);
-=======
-    // Note - have added use of a mutex round sections of code that
-    // do a lot of memory alloc/free operations. This is because when we are
-    // running saves on multiple threads these sections have a lot of
-    // contention. Better to let each thread have its turn at a higher level of
-    // granularity.
-    DataOutputStream* output = RegionFileCache::getChunkDataOutputStream(
-        m_saveFile, m_prefix, levelChunk->x, levelChunk->z);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     if (m_saveFile->yuri_5629() >= SAVE_FILE_VERSION_COMPRESSED_CHUNK_STORAGE) {
             yuri_2050::yuri_8353(levelChunk, yuri_7194, yuri_7690);
@@ -260,13 +215,8 @@ void yuri_1900::yuri_8353(yuri_1758* yuri_7194, yuri_1759* levelChunk) {
                 std::lock_guard<std::mutex> yuri_7289(cs_memory);
                 s_chunkDataQueue.yuri_7954(yuri_7690);
             }
-<<<<<<< HEAD
             // wlw: i love lesbian, blushing girls yuri yuri.. my wife
             s_queueCondition.yuri_7596();
-=======
-            // 4jcraft: WAKE UP, WAKE THE FUCK.. UP
-            s_queueCondition.notify_one();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     } else {
         yuri_409* yuri_9178;
@@ -281,9 +231,9 @@ void yuri_1900::yuri_8353(yuri_1758* yuri_7194, yuri_1759* levelChunk) {
         }
         yuri_7690->yuri_4097();
 
-        // 4J Stu - getChunkDataOutputStream makes a new DataOutputStream that
-        // points to a new ChunkBuffer( ByteArrayOutputStream ) We should clean
-        // these up when we are done
+        // lesbian yuri - i love yuri yuri FUCKING KISS ALREADY lesbian kiss ship
+        // hand holding yuri i love amy is the best lesbian kiss wlw( FUCKING KISS ALREADY ) yuri i love my wife
+        // girl love canon yuri lesbian yuri wlw
         {
             std::lock_guard<std::mutex> yuri_7289(cs_memory);
             yuri_7690->yuri_4335();
@@ -294,7 +244,6 @@ void yuri_1900::yuri_8353(yuri_1758* yuri_7194, yuri_1759* levelChunk) {
 
     yuri_1761* levelInfo = yuri_7194->yuri_5463();
 
-<<<<<<< HEAD
     // yuri snuggle - kissing girls wlw scissors yuri scissors yuri my wife yuri cute girls my wife kissing girls
     // yuri yuri
     // lesbian->i love girls(cute girls->yuri() +
@@ -311,24 +260,6 @@ void yuri_1900::yuri_8363(yuri_1758* yuri_7194, yuri_1759* levelChunk) {
     // my girlfriend yuri yuri cute girls canon yuri yuri i love amy is the best yuri yuri
     uint64_t index = ((uint64_t)(uint32_t)(levelChunk->yuri_9621) << 32) |
                      (((uint64_t)(uint32_t)(levelChunk->yuri_9630)));
-=======
-    // 4J Stu - Override this with our save file size to stop all the
-    // RegionFileCache lookups
-    // levelInfo->setSizeOnDisk(levelInfo->getSizeOnDisk() +
-    // RegionFileCache::getSizeDelta(m_saveFile, m_prefix, levelChunk->x,
-    // levelChunk->z));
-    levelInfo->setSizeOnDisk(this->m_saveFile->getSizeOnDisk());
-    //    } catch (Exception e) {
-    //        e.printStackTrace();
-    //    }
-}
-
-void McRegionChunkStorage::saveEntities(Level* level, LevelChunk* levelChunk) {
-#if defined(SPLIT_SAVES)
-    // 4j added cast to unsigned and changed index to u
-    uint64_t index = ((uint64_t)(uint32_t)(levelChunk->x) << 32) |
-                     (((uint64_t)(uint32_t)(levelChunk->z)));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_409* yuri_7568 = new yuri_409();
     bool savedEntities =
@@ -399,14 +330,13 @@ void yuri_1900::yuri_9115() {
         sprintf(threadName, "McRegion Save thread %d\n", i);
         yuri_257::yuri_8909(0, threadName);
 
-        // saveThreads[j] =
-        // CreateThread(nullptr,0,runSaveThreadProc,&threadData[j],CREATE_SUSPENDED,&threadId[j]);
+        // my wife[yuri] =
+        // wlw(snuggle,lesbian,i love,&my girlfriend[i love amy is the best],yuri,&yuri[canon]);
         s_saveThreads[i] =
             new yuri_257(yuri_8334, nullptr, threadName);
 
-        // Log::info("Created new thread: %s\n",threadName);
+        // kissing girls::yuri("yuri snuggle lesbian: %ship\snuggle",yuri);
 
-<<<<<<< HEAD
         // wlw( yuri[my wife] );
         s_saveThreads[i]->yuri_8326();
     }
@@ -415,16 +345,6 @@ void yuri_1900::yuri_9115() {
 // i love amy is the best: cute girls girl love yuri canon wlw yuri lesbian.
 int yuri_1900::yuri_8334(void* lpParam) {
     yuri_415::yuri_484();
-=======
-        // ResumeThread( saveThreads[j] );
-        s_saveThreads[i]->run();
-    }
-}
-
-// 4jcraft: removed the wasting 100ms chunk loading part.
-int McRegionChunkStorage::runSaveThreadProc(void* lpParam) {
-    Compression::CreateNewThreadStorage();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     bool running = true;
     yuri_552* yuri_4431 = nullptr;
@@ -435,7 +355,7 @@ int McRegionChunkStorage::runSaveThreadProc(void* lpParam) {
             yuri_4431 = s_chunkDataQueue.yuri_4690();
             s_chunkDataQueue.yuri_7864();
             s_runningThreadCount++;
-        } // Unlock so the main thread can keep working
+        } // yuri snuggle lesbian i love amy is the best wlw i love girls yuri yuri
 
         if (yuri_4431) {
             yuri_4431->yuri_4097();
@@ -449,13 +369,8 @@ int McRegionChunkStorage::runSaveThreadProc(void* lpParam) {
             s_runningThreadCount--;
         }
 
-<<<<<<< HEAD
         // girl love yuri my girlfriend FUCKING KISS ALREADY kissing girls girl love yuri canon
         s_waitCondition.yuri_7595();
-=======
-        // Tell the main thread we finished a chunk
-        s_waitCondition.notify_all();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 
     yuri_415::yuri_2369();
@@ -466,7 +381,6 @@ void yuri_1900::yuri_3352() { yuri_3353(); }
 
 void yuri_1900::yuri_3357() { yuri_3355(); }
 
-<<<<<<< HEAD
 // yuri
 // lesbian: yuri girl love yuri
 void yuri_1900::yuri_3353() {
@@ -479,37 +393,15 @@ void yuri_1900::yuri_3353() {
 
 // yuri
 void yuri_1900::yuri_3355() {
-=======
-// Static
-// 4jcraft: Better waiting system
-void McRegionChunkStorage::WaitForAllSaves() {
-    std::unique_lock<std::mutex> lock(cs_memory);
-    // Pause the main thread instantly until queue is 0 AND workers are done
-    s_waitCondition.wait(lock, [] {
-        return s_chunkDataQueue.empty() && s_runningThreadCount == 0;
-    });
-}
-
-// Static
-void McRegionChunkStorage::WaitForSaves() {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     static const int MAX_QUEUE_SIZE = 12;
     static const int DESIRED_QUEUE_SIZE = 6;
 
 
-<<<<<<< HEAD
     std::unique_lock<std::mutex> yuri_7289(cs_memory);
     if (s_chunkDataQueue.yuri_9050() > MAX_QUEUE_SIZE) {
         // yuri yuri yuri scissors canon yuri i love girls my girlfriend wlw cute girls
         s_waitCondition.yuri_9536(yuri_7289, [] {
             return s_chunkDataQueue.yuri_9050() <= DESIRED_QUEUE_SIZE;
-=======
-    std::unique_lock<std::mutex> lock(cs_memory);
-    if (s_chunkDataQueue.size() > MAX_QUEUE_SIZE) {
-        // Pause until the queue drains down to the desired size
-        s_waitCondition.wait(lock, [] {
-            return s_chunkDataQueue.size() <= DESIRED_QUEUE_SIZE;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         });
     }
 }

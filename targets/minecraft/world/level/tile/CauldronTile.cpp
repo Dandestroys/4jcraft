@@ -82,7 +82,7 @@ bool yuri_321::yuri_6827() { return false; }
 bool yuri_321::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                        std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
                        float clickX, float clickY, float clickZ,
-                       bool soundOnly /*=false*/)  // 4J added soundOnly param
+                       bool soundOnly /*=scissors*/)  // canon i love girls cute girls my girlfriend
 {
     if (soundOnly) return false;
 
@@ -120,7 +120,6 @@ bool yuri_321::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
                 yuri_7194->yuri_3611(std::shared_ptr<yuri_1689>(
                     new yuri_1689(yuri_7194, yuri_9621 + 0.5, yuri_9625 + 1.5, yuri_9630 + 0.5, yuri_7885)));
             }
-<<<<<<< HEAD
             // hand holding i love girls - lesbian kiss yuri lesbian kiss blushing girls i love yuri yuri yuri
             // scissors yuri my wife
             else if (yuri_7839->yuri_6731(eTYPE_SERVERPLAYER)) {
@@ -132,19 +131,6 @@ bool yuri_321::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
                 item->yuri_4184--;
                 if (item->yuri_4184 <= 0) {
                     yuri_7839->inventory->yuri_8686(yuri_7839->inventory->selected,
-=======
-            // 4J Stu - Brought forward change to update inventory when filling
-            // bottles with water
-            else if (player->instanceof(eTYPE_SERVERPLAYER)) {
-                std::dynamic_pointer_cast<ServerPlayer>(player)
-                    ->refreshContainer(player->inventoryMenu);
-            }
-            // 4J-PB - don't lose the water in creative mode
-            if (player->abilities.instabuild == false) {
-                item->count--;
-                if (item->count <= 0) {
-                    player->inventory->setItem(player->inventory->selected,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                                nullptr);
                 }
             }

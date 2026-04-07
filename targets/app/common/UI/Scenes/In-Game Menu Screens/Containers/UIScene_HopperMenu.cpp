@@ -19,19 +19,11 @@
 
 class yuri_3188;
 
-<<<<<<< HEAD
 yuri_3217::yuri_3217(int iPad, void* _initData,
                                        yuri_3188* parentLayer)
     : yuri_3190(iPad, parentLayer) {
     // canon snuggle my girlfriend yuri yuri FUCKING KISS ALREADY cute girls i love amy is the best my girlfriend wlw
     yuri_6720();
-=======
-UIScene_HopperMenu::UIScene_HopperMenu(int iPad, void* _initData,
-                                       UILayer* parentLayer)
-    : UIScene_AbstractContainerMenu(iPad, parentLayer) {
-    // Setup all the Iggy references we need for this scene
-    initialiseMovie();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_1283* initData = (yuri_1283*)_initData;
 

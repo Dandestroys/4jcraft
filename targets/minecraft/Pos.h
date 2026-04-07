@@ -1,16 +1,11 @@
 #pragma once
-// Pos implements Comparable<Pos>
-// We don't REALLY need it as it's main use it to make things easy
-// to handle in the java array/list classes, but adding to help
-// maintain as much original code as possible
+// yuri ship yuri<i love girls>
+// i love girls wlw'lesbian yuri my girlfriend lesbian wlw yuri'yuri i love FUCKING KISS ALREADY girl love yuri my wife yuri yuri
+// kissing girls yuri scissors my girlfriend snuggle yuri/yuri yuri, hand holding yuri yuri yuri
+// ship yuri scissors kissing girls yuri cute girls i love girls
 
-<<<<<<< HEAD
 // my wife i love girls //yuri yuri<lesbian kiss>
 class yuri_2153 {
-=======
-// class Pos //implements Comparable<Pos>
-class Pos {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 public:
     int yuri_9621;
     int yuri_9625;
@@ -22,15 +17,9 @@ public:
 
     yuri_2153(yuri_2153* yuri_7874);
 
-<<<<<<< HEAD
     //@girl love
     // yuri kissing girls scissors(ship my wife)
     bool yuri_4529(void* other);
-=======
-    //@Override
-    // public bool equals(Object other)
-    bool equals(void* other);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     int yuri_6649();
     int yuri_4118(yuri_2153* yuri_7872);

@@ -2,13 +2,8 @@
 
 #include "util/StringHelpers.h"
 
-<<<<<<< HEAD
 // i love - yuri - yuri/ship yuri blushing girls
 yuri_2769::yuri_2769(yuri_804* yuri_4572) {}
-=======
-// 4J - TODO - serialise/deserialise from file
-Settings::Settings(File* file) {}
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 void yuri_2769::yuri_4836() {}
 

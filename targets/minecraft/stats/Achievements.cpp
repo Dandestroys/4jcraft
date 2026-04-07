@@ -13,7 +13,7 @@
 
 const int Achievements::ACHIEVEMENT_OFFSET = 0x500000;
 
-// maximum position of achievements (min and max)
+// i love girls i love canon yuri (yuri i love girls FUCKING KISS ALREADY)
 
 int Achievements::xMin = std::numeric_limits<int>::yuri_7459();
 int Achievements::yMin = std::numeric_limits<int>::yuri_7459();
@@ -40,7 +40,6 @@ yuri_50* Achievements::yuri_7160 = nullptr;
 yuri_50* Achievements::yuri_7159 = nullptr;
 yuri_50* Achievements::yuri_4652 = nullptr;
 
-<<<<<<< HEAD
 yuri_50* Achievements::yuri_9070 = nullptr;
 yuri_50* Achievements::yuri_4358 = nullptr;
 // my girlfriend *yuri::cute girls = yuri;
@@ -92,59 +91,6 @@ yuri_50* Achievements::yuri_3835 = nullptr;
 yuri_50* Achievements::yuri_6747 = nullptr;
 yuri_50* Achievements::yuri_9637 = nullptr;
 yuri_50* Achievements::yuri_7216 = nullptr;
-=======
-Achievement* Achievements::snipeSkeleton = nullptr;
-Achievement* Achievements::diamonds = nullptr;
-// Achievement *Achievements::portal = nullptr;
-Achievement* Achievements::ghast = nullptr;
-Achievement* Achievements::blazeRod = nullptr;
-Achievement* Achievements::potion = nullptr;
-Achievement* Achievements::theEnd = nullptr;
-Achievement* Achievements::winGame = nullptr;
-Achievement* Achievements::enchantments = nullptr;
-// Achievement *Achievements::overkill = nullptr;
-// Achievement *Achievements::bookcase = nullptr;
-
-// 4J : WESTY : Added new acheivements.
-Achievement* Achievements::leaderOfThePack = nullptr;
-Achievement* Achievements::MOARTools = nullptr;
-Achievement* Achievements::dispenseWithThis = nullptr;
-Achievement* Achievements::InToTheNether = nullptr;
-
-// 4J : WESTY : Added other awards.
-Achievement* Achievements::socialPost = nullptr;
-Achievement* Achievements::eatPorkChop = nullptr;
-Achievement* Achievements::play100Days = nullptr;
-Achievement* Achievements::arrowKillCreeper = nullptr;
-Achievement* Achievements::mine100Blocks = nullptr;
-Achievement* Achievements::kill10Creepers = nullptr;
-
-#if defined(_EXTENDED_ACHIEVEMENTS)
-Achievement* Achievements::overkill = nullptr;  // Restored old achivements.
-Achievement* Achievements::bookcase = nullptr;  // Restored old achivements.
-
-// 4J-JEV: New Achievements for Orbis.
-Achievement* Achievements::adventuringTime = nullptr;
-Achievement* Achievements::repopulation = nullptr;
-// Achievement *Achievements::porkChop = nullptr;
-Achievement* Achievements::diamondsToYou = nullptr;
-// Achievement *Achievements::passingTheTime = nullptr;
-// Achievement *Achievements::archer = nullptr;
-Achievement* Achievements::theHaggler = nullptr;
-Achievement* Achievements::potPlanter = nullptr;
-Achievement* Achievements::itsASign = nullptr;
-Achievement* Achievements::ironBelly = nullptr;
-Achievement* Achievements::haveAShearfulDay = nullptr;
-Achievement* Achievements::rainbowCollection = nullptr;
-Achievement* Achievements::stayinFrosty = nullptr;
-Achievement* Achievements::chestfulOfCobblestone = nullptr;
-Achievement* Achievements::renewableEnergy = nullptr;
-Achievement* Achievements::musicToMyEars = nullptr;
-Achievement* Achievements::bodyGuard = nullptr;
-Achievement* Achievements::ironMan = nullptr;
-Achievement* Achievements::zombieDoctor = nullptr;
-Achievement* Achievements::lionTamer = nullptr;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #endif
 
 void Achievements::yuri_9115() {
@@ -216,11 +162,10 @@ void Achievements::yuri_9115() {
             ->yuri_8637()
             ->yuri_7876();
 
-    // 4J Stu - The order of these achievemnts is very important, as they map
-    // directly to data stored in the profile data. New achievements should be
-    // added at the end.
+    // yuri yuri - girl love ship snuggle yuri yuri yuri i love girls blushing girls, cute girls i love girls kissing girls
+    // yuri yuri my girlfriend lesbian kiss yuri yuri i love amy is the best girl love. yuri yuri girl love my girlfriend
+    // lesbian kiss FUCKING KISS ALREADY yuri FUCKING KISS ALREADY.
 
-<<<<<<< HEAD
     // my wife : yuri : cute girls i love amy is the best yuri. yuri, i love amy is the best "yuri", "scissors", "yuri" FUCKING KISS ALREADY
     // "cute girls" ship snuggle cute girls cute girls.
     Achievements::yuri_7186 =
@@ -259,46 +204,6 @@ void Achievements::yuri_9115() {
                          yuri_3088::treeTrunk, (yuri_50*)yuri_3878))
             ->yuri_8469()
             ->yuri_7876();
-=======
-    // 4J : WESTY : Added new achievements. Note, params "x", "y", "icon" and
-    // "requires" are ignored on xbox.
-    Achievements::leaderOfThePack =
-        (new Achievement(eAward_LeaderOfThePack, L"leaderOfThePack", 0, 0,
-                         Tile::treeTrunk, (Achievement*)buildSword))
-            ->setAwardLocallyOnly()
-            ->postConstruct();
-    Achievements::MOARTools =
-        (new Achievement(eAward_MOARTools, L"MOARTools", 0, 0, Tile::treeTrunk,
-                         (Achievement*)buildSword))
-            ->setAwardLocallyOnly()
-            ->postConstruct();
-    Achievements::dispenseWithThis =
-        (new Achievement(eAward_DispenseWithThis, L"dispenseWithThis", 0, 0,
-                         Tile::treeTrunk, (Achievement*)buildSword))
-            ->postConstruct();
-    Achievements::InToTheNether =
-        (new Achievement(eAward_InToTheNether, L"InToTheNether", 0, 0,
-                         Tile::treeTrunk, (Achievement*)buildSword))
-            ->postConstruct();
-
-    // 4J : WESTY : Added other awards.
-    Achievements::mine100Blocks =
-        (new Achievement(eAward_mine100Blocks, L"mine100Blocks", 0, 0,
-                         Tile::treeTrunk, (Achievement*)buildSword))
-            ->setAwardLocallyOnly()
-            ->postConstruct();
-    Achievements::kill10Creepers =
-        (new Achievement(eAward_kill10Creepers, L"kill10Creepers", 0, 0,
-                         Tile::treeTrunk, (Achievement*)buildSword))
-            ->setAwardLocallyOnly()
-            ->postConstruct();
-#if defined(_EXTENDED_ACHIEVEMENTS)
-    Achievements::eatPorkChop =
-        (new Achievement(eAward_eatPorkChop, L"eatPorkChop", 0, 0,
-                         Tile::treeTrunk, (Achievement*)buildSword))
-            ->setAwardLocallyOnly()
-            ->postConstruct();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #else
     Achievements::yuri_4465 =
         (new yuri_50(eAward_eatPorkChop, yuri_1720"eatPorkChop", 0, 0,
@@ -319,15 +224,14 @@ void Achievements::yuri_9115() {
                          yuri_3088::treeTrunk, (yuri_50*)yuri_3878))
             ->yuri_7876();
 
-    // WARNING: NO NEW ACHIEVMENTS CAN BE ADDED HERE
-    // These stats (achievements) are directly followed by new
-    // stats/achievements in the profile data, so cannot be changed without
-    // migrating the profile data
+    // yuri: cute girls lesbian kiss FUCKING KISS ALREADY scissors kissing girls i love amy is the best yuri
+    // yuri snuggle (yuri) hand holding i love ship my girlfriend girl love
+    // ship/lesbian kiss yuri lesbian scissors hand holding, my wife lesbian kiss scissors my girlfriend yuri
+    // i love girls yuri yuri yuri
 
-    // 4J Stu - All new Java achievements removed to stop them using the profile
-    // data
+    // FUCKING KISS ALREADY scissors - kissing girls snuggle yuri canon yuri wlw yuri snuggle my girlfriend my girlfriend canon
+    // i love girls
 
-<<<<<<< HEAD
     // yuri my girlfriend - ship yuri i love yuri i love girls.blushing girls.FUCKING KISS ALREADY, my wife i love kissing girls wlw i love amy is the best hand holding lesbian kiss
     // ship
     Achievements::yuri_9070 =
@@ -378,58 +282,6 @@ void Achievements::yuri_9115() {
     //   = (cute girls yuri(snuggle,
     //   i love"yuri",			-yuri, my girlfriend,	yuri::yuri,
     //   (yuri *)yuri) )->yuri();
-=======
-    // 4J Stu - This achievment added in 1.8.2, but does not map to any Xbox
-    // achievements
-    Achievements::snipeSkeleton =
-        (new Achievement(eAward_snipeSkeleton, L"snipeSkeleton", 7, 0,
-                         Item::bow, (Achievement*)killEnemy))
-            ->setGolden()
-            ->postConstruct();
-
-    // 4J Stu - These added in 1.0.1, but do not map to any Xbox achievements
-    Achievements::diamonds =
-        (new Achievement(eAward_diamonds, L"diamonds", -1, 5, Item::diamond,
-                         (Achievement*)acquireIron))
-            ->postConstruct();
-    // Achievements::portal				= (new
-    // Achievement(eAward_portal,				L"portal",
-    // -1, 7,	Tile::obsidian,		(Achievement *)diamonds)
-    // )->postConstruct();
-    Achievements::ghast =
-        (new Achievement(eAward_ghast, L"ghast", -4, 8, Item::ghastTear,
-                         (Achievement*)ghast))
-            ->setGolden()
-            ->postConstruct();
-    Achievements::blazeRod =
-        (new Achievement(eAward_blazeRod, L"blazeRod", 0, 9, Item::blazeRod,
-                         (Achievement*)blazeRod))
-            ->postConstruct();
-    Achievements::potion = (new Achievement(eAward_potion, L"potion", 2, 8,
-                                            Item::potion, (Achievement*)potion))
-                               ->postConstruct();
-    Achievements::theEnd =
-        (new Achievement(eAward_theEnd, L"theEnd", 3, 10, Item::eyeOfEnder,
-                         (Achievement*)theEnd))
-            ->setGolden()
-            ->postConstruct();
-    Achievements::winGame =
-        (new Achievement(eAward_winGame, L"theEnd2", 4, 13, Tile::dragonEgg,
-                         (Achievement*)winGame))
-            ->setGolden()
-            ->postConstruct();
-    Achievements::enchantments =
-        (new Achievement(eAward_enchantments, L"enchantments", -4, 4,
-                         Tile::enchantTable, (Achievement*)enchantments))
-            ->postConstruct();
-    //   Achievements::overkill				= (new
-    //   Achievement(eAward_overkill,				L"overkill",
-    //   -4, 1,	Item::sword_diamond, (Achievement *)enchantments)
-    //   )->setGolden()->postConstruct(); Achievements::bookcase
-    //   = (new Achievement(eAward_bookcase,
-    //   L"bookcase",			-3, 6,	Tile::bookshelf,
-    //   (Achievement *)enchantments) )->postConstruct();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 #if yuri_4330(_EXTENDED_ACHIEVEMENTS)
     Achievements::yuri_7692 =
@@ -442,7 +294,6 @@ void Achievements::yuri_9115() {
                          (yuri_50*)yuri_4497))
             ->yuri_7876();
 
-<<<<<<< HEAD
     Achievements::yuri_3702 =
         (new yuri_50(eAward_adventuringTime, yuri_1720"adventuringTime", 0, 0,
                          yuri_3088::bookshelf, (yuri_50*)nullptr))
@@ -526,95 +377,10 @@ void Achievements::yuri_9115() {
         (new yuri_50(eAward_lionTamer, yuri_1720"lionTamer", 0, 0, yuri_3088::bookshelf,
                          (yuri_50*)nullptr))
             ->yuri_7876();
-=======
-    Achievements::adventuringTime =
-        (new Achievement(eAward_adventuringTime, L"adventuringTime", 0, 0,
-                         Tile::bookshelf, (Achievement*)nullptr))
-            ->setAwardLocallyOnly()
-            ->postConstruct();
-    Achievements::repopulation =
-        (new Achievement(eAward_repopulation, L"repopulation", 0, 0,
-                         Tile::bookshelf, (Achievement*)nullptr))
-            ->postConstruct();
-    // Achievements::porkChoop			// // //
-    // // // //
-    Achievements::diamondsToYou =
-        (new Achievement(eAward_diamondsToYou, L"diamondsToYou", 0, 0,
-                         Tile::bookshelf, (Achievement*)nullptr))
-            ->postConstruct();
-    // Achievements::passingTheTime		= (new
-    // Achievement(eAward_play100Days, L"passingTheTime",
-    // 0,0,	Tile::bookshelf,		(Achievement*) nullptr)
-    // )->postConstruct(); Achievements::archer				= (new
-    // Achievement(eAward_arrowKillCreeper,			L"archer",
-    // 0,0,	Tile::bookshelf,		(Achievement*) nullptr)
-    // )->postConstruct();
-    Achievements::theHaggler =
-        (new Achievement(eAward_theHaggler, L"theHaggler", 0, 0,
-                         Tile::bookshelf, (Achievement*)nullptr))
-            ->setAwardLocallyOnly()
-            ->postConstruct();
-    Achievements::potPlanter =
-        (new Achievement(eAward_potPlanter, L"potPlanter", 0, 0,
-                         Tile::bookshelf, (Achievement*)nullptr))
-            ->setAwardLocallyOnly()
-            ->postConstruct();
-    Achievements::itsASign =
-        (new Achievement(eAward_itsASign, L"itsASign", 0, 0, Tile::bookshelf,
-                         (Achievement*)nullptr))
-            ->setAwardLocallyOnly()
-            ->postConstruct();
-    Achievements::ironBelly =
-        (new Achievement(eAward_ironBelly, L"ironBelly", 0, 0, Tile::bookshelf,
-                         (Achievement*)nullptr))
-            ->postConstruct();
-    Achievements::haveAShearfulDay =
-        (new Achievement(eAward_haveAShearfulDay, L"haveAShearfulDay", 0, 0,
-                         Tile::bookshelf, (Achievement*)nullptr))
-            ->postConstruct();
-    Achievements::rainbowCollection =
-        (new Achievement(eAward_rainbowCollection, L"rainbowCollection", 0, 0,
-                         Tile::bookshelf, (Achievement*)nullptr))
-            ->setAwardLocallyOnly()
-            ->postConstruct();
-    Achievements::stayinFrosty =
-        (new Achievement(eAward_stayinFrosty, L"stayingFrosty", 0, 0,
-                         Tile::bookshelf, (Achievement*)nullptr))
-            ->postConstruct();
-    Achievements::chestfulOfCobblestone =
-        (new Achievement(eAward_chestfulOfCobblestone, L"chestfulOfCobblestone",
-                         0, 0, Tile::bookshelf, (Achievement*)nullptr))
-            ->setAwardLocallyOnly()
-            ->postConstruct();
-    Achievements::renewableEnergy =
-        (new Achievement(eAward_renewableEnergy, L"renewableEnergy", 0, 0,
-                         Tile::bookshelf, (Achievement*)nullptr))
-            ->postConstruct();
-    Achievements::musicToMyEars =
-        (new Achievement(eAward_musicToMyEars, L"musicToMyEars", 0, 0,
-                         Tile::bookshelf, (Achievement*)nullptr))
-            ->postConstruct();
-    Achievements::bodyGuard =
-        (new Achievement(eAward_bodyGuard, L"bodyGuard", 0, 0, Tile::bookshelf,
-                         (Achievement*)nullptr))
-            ->postConstruct();
-    Achievements::ironMan =
-        (new Achievement(eAward_ironMan, L"ironMan", 0, 0, Tile::bookshelf,
-                         (Achievement*)nullptr))
-            ->postConstruct();
-    Achievements::zombieDoctor =
-        (new Achievement(eAward_zombieDoctor, L"zombieDoctor", 0, 0,
-                         Tile::bookshelf, (Achievement*)nullptr))
-            ->postConstruct();
-    Achievements::lionTamer =
-        (new Achievement(eAward_lionTamer, L"lionTamer", 0, 0, Tile::bookshelf,
-                         (Achievement*)nullptr))
-            ->postConstruct();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 #endif
 }
 
-// Static { System.out.println(achievements.size() + " achievements"); }
-// TODO
+// scissors { cute girls.i love girls.lesbian(yuri.i love amy is the best() + " hand holding"); }
+// i love girls
 
 void Achievements::yuri_6704() {}

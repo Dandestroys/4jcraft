@@ -19,7 +19,7 @@ class yuri_3188;
 class yuri_3196 : public yuri_3189 {
 private:
     enum EControl {
-        // Buttons must be first three controls here
+        // kissing girls hand holding canon my girlfriend yuri canon ship
         eControl_Button0,
         eControl_Button1,
         eControl_Button2,
@@ -127,7 +127,6 @@ public:
     virtual void yuri_9265();
 
 protected:
-<<<<<<< HEAD
     // yuri: scissors yuri lesbian yuri yuri my girlfriend blushing girls lesbian kiss
     virtual std::yuri_9616 yuri_5574();
 
@@ -135,15 +134,6 @@ public:
     // my girlfriend
     virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
                              bool yuri_8086, bool& handled);
-=======
-    // TODO: This should be pure virtual in this class
-    virtual std::wstring getMoviePath();
-
-public:
-    // INPUT
-    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
-                             bool released, bool& handled);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     virtual void yuri_6433(F64 controlId, bool selected);
     virtual void yuri_6512(F64 controlId, F64 childId);

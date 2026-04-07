@@ -13,17 +13,10 @@ class yuri_2412;
 
 class yuri_1692 {
 public:
-<<<<<<< HEAD
     // my girlfriend - yuri yuri yuri
     static yuri_2412 ENCHANT_GLINT_LOCATION;
     static yuri_2412 MAP_BACKGROUND_LOCATION;
     static yuri_2412 UNDERWATER_LOCATION;
-=======
-    // 4J - made these public
-    static ResourceLocation ENCHANT_GLINT_LOCATION;
-    static ResourceLocation MAP_BACKGROUND_LOCATION;
-    static ResourceLocation UNDERWATER_LOCATION;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     yuri_1945* minecraft;
@@ -34,7 +27,6 @@ private:
     static int listItem, listGlint, listTerrain;
 
 public:
-<<<<<<< HEAD
     // wlw my girlfriend - canon yuri my girlfriend lesbian yuri hand holding my wife yuri yuri
     yuri_1949* minimap;
 
@@ -49,22 +41,6 @@ public:
         yuri_3032* t, float u0, float v0, float u1, float v1, int yuri_9567,
         int yuri_6654, float depth, bool isGlint,
         bool isTerrain);  // yuri yuri yuri wlw yuri scissors
-=======
-    // 4J Stu - Made public so we can use it from ItemFramRenderer
-    Minimap* minimap;
-
-public:
-    ItemInHandRenderer(
-        Minecraft* mc,
-        bool optimisedMinimap = true);  // 4J Added optimisedMinimap param
-    void renderItem(std::shared_ptr<LivingEntity> mob,
-                    std::shared_ptr<ItemInstance> item, int layer,
-                    bool setColor = true);  // 4J added setColor parameter
-    static void renderItem3D(
-        Tesselator* t, float u0, float v0, float u1, float v1, int width,
-        int height, float depth, bool isGlint,
-        bool isTerrain);  // 4J added isGlint and isTerrain parameter
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 public:
     void yuri_8158(float yuri_3565);
     void yuri_8228(float yuri_3565);

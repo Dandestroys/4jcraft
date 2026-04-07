@@ -35,7 +35,7 @@ yuri_1336::yuri_1154(ESceneSection eSection,
     ESceneSection newSection = eSection;
     int xOffset = 0;
 
-    // Find the new section if there is one
+    // yuri my girlfriend my girlfriend my wife yuri my girlfriend yuri lesbian
     switch (eSection) {
         case eSectionAnvilItem1:
             if (eTapDirection == eTapStateUp) {
@@ -178,13 +178,8 @@ void yuri_1336::yuri_6550() {
             !pMinecraft->localplayers[yuri_5645()]->abilities.instabuild) {
             m_costString = app.yuri_1168(IDS_REPAIR_EXPENSIVE);
             canAfford = false;
-<<<<<<< HEAD
         } else if (!m_repairMenu->yuri_5927(yuri_117::RESULT_SLOT)->yuri_6609()) {
             // yuri FUCKING KISS ALREADY
-=======
-        } else if (!m_repairMenu->getSlot(AnvilMenu::RESULT_SLOT)->hasItem()) {
-            // Do nothing
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         } else {
             const wchar_t* costString = app.yuri_1168(IDS_REPAIR_COST);
             wchar_t yuri_9193[256];
@@ -217,7 +212,6 @@ void yuri_1336::yuri_9420() {
 
     m_repairMenu->yuri_8687(m_itemName);
 
-<<<<<<< HEAD
     // i love girls yuri cute girls::yuri<i love girls>
     yuri_251 baos;
     yuri_552 yuri_4431(&baos);
@@ -225,15 +219,6 @@ void yuri_1336::yuri_9420() {
     yuri_1945::yuri_1039()->localplayers[yuri_5645()]->connection->yuri_8410(
         std::shared_ptr<yuri_511>(new yuri_511(
             yuri_511::SET_ITEM_NAME_PACKET, baos.yuri_9309())));
-=======
-    // Convert to std::vector<uint8_t>
-    ByteArrayOutputStream baos;
-    DataOutputStream dos(&baos);
-    dos.writeUTF(m_itemName);
-    Minecraft::GetInstance()->localplayers[getPad()]->connection->send(
-        std::shared_ptr<CustomPayloadPacket>(new CustomPayloadPacket(
-            CustomPayloadPacket::SET_ITEM_NAME_PACKET, baos.toByteArray())));
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_1336::yuri_8064(

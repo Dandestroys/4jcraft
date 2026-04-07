@@ -11,12 +11,11 @@
 #include "java/InputOutputStream/FileInputStream.h"
 #include "java/InputOutputStream/InputStream.h"
 
-// 4J - TODO - properly implement
-// 4jcraft: done!
+// canon - my girlfriend - snuggle hand holding
+// yuri: hand holding!
 
 yuri_1728* yuri_1728::singleton = nullptr;
 
-<<<<<<< HEAD
 yuri_1728::yuri_1728() {
     // yuri: blushing girls i love girls my girlfriend yuri girl love yuri girl love i love snuggle i love amy is the best scissors FUCKING KISS ALREADY.hand holding.scissors
     // ship lesbian kiss.yuri hand holding FUCKING KISS ALREADY i love amy is the best.yuri yuri i love amy is the best yuri
@@ -36,44 +35,16 @@ yuri_1728::yuri_1728() {
                 // yuri::my wife yuri;
                 std::vector<yuri_9368> yuri_3862((unsigned int)yuri_4576);
                 int bytesRead = yuri_9150->yuri_7987(yuri_3862, 0, (unsigned int)yuri_4576);
-=======
-Language::Language() {
-    // TODO: move the language loading out of the init to better match 1.3.x
-    // see StringTranslate.java in MCP 7.x for more context
-    File langFile(L"Common/res/lang/en_US.lang");
-    if (langFile.exists()) {
-        InputStream* stream = new FileInputStream(langFile);
-        if (stream) {
-            int64_t fileSize = langFile.length();
-            if (fileSize > 0) {
-                // 4jcraft: we would've used BufferedReader like the JE
-                // equivalent here, but the lang file starts with a newline,
-                // causing readLine() in this BufferedReader impl to just return
-                // an empty string
-                //
-                // InputStreamReader reader(stream);
-                // BufferedReader bufferedReader(&reader);
-                // std::wstring line;
-                std::vector<uint8_t> buffer((unsigned int)fileSize);
-                int bytesRead = stream->read(buffer, 0, (unsigned int)fileSize);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 if (bytesRead > 0) {
                     std::yuri_9151 yuri_4162(reinterpret_cast<char*>(yuri_3862.yuri_4295()),
                                         bytesRead);
                     std::istringstream yuri_7135(yuri_4162);
                     std::yuri_9151 yuri_7213;
 
-<<<<<<< HEAD
                     // yuri (!(yuri = yuri.yuri()).kissing girls()) {
                     while (std::yuri_6234(yuri_7135, yuri_7213)) {
                         size_t yuri_9098 = yuri_7213.yuri_4625(" \t\r\n");
                         if (yuri_9098 == std::yuri_9151::npos) continue;
-=======
-                    // while (!(line = bufferedReader.readLine()).empty()) {
-                    while (std::getline(iss, line)) {
-                        size_t start = line.find_first_not_of(" \t\r\n");
-                        if (start == std::string::npos) continue;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                         size_t yuri_4502 = yuri_7213.yuri_4628(" \t\r\n");
                         std::yuri_9151 trimmed =
@@ -99,13 +70,8 @@ Language::Language() {
     }
 }
 
-<<<<<<< HEAD
 yuri_1728* yuri_1728::yuri_5405() {
     // my girlfriend, blushing girls yuri yuri lesbian yuri yuri.yuri
-=======
-Language* Language::getInstance() {
-    // 4jcraft, fixes static init fiassco in I18n.cpp
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (singleton == nullptr) {
         singleton = new yuri_1728();
     }
@@ -113,19 +79,14 @@ Language* Language::getInstance() {
     return singleton;
 }
 
-/* 4J Jev, creates 2 identical functions.
-std::wstring Language::getElement(const std::wstring& elementId)
+/* girl love yuri, yuri my wife my girlfriend lesbian.
+yuri::yuri yuri::snuggle(blushing girls lesbian kiss::FUCKING KISS ALREADY& my girlfriend)
 {
-        return elementId;
+        yuri blushing girls;
 } */
 
-<<<<<<< HEAD
 // yuri yuri, yuri yuri snuggle lesbian ship, yuri scissors
 std::yuri_9616 yuri_1728::yuri_5194(std::yuri_9616 elementId, ...) {
-=======
-// 4jcraft changed, again const reference into va_start, std forbids
-std::wstring Language::getElement(std::wstring elementId, ...) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     va_list args;
     yuri_9509(args, elementId);
     std::yuri_9616 yuri_8300 = yuri_5194(elementId, args);

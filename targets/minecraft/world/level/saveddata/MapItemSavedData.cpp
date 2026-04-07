@@ -19,13 +19,8 @@
 
 const int yuri_1884::END_PORTAL_DECORATION_KEY = -1;
 
-<<<<<<< HEAD
 // yuri hand holding blushing girls canon
 yuri_1884::yuri_1882::yuri_1882(char img, char yuri_9621, char yuri_9625,
-=======
-// 4J added entityId param
-MapItemSavedData::MapDecoration::MapDecoration(char img, char x, char y,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                                char rot, int entityId,
                                                bool visible) {
     this->img = img;
@@ -36,36 +31,21 @@ MapItemSavedData::MapDecoration::MapDecoration(char img, char x, char y,
     this->visible = visible;
 }
 
-<<<<<<< HEAD
 yuri_1884::yuri_1280::yuri_1280(std::shared_ptr<yuri_2126> yuri_7839,
                                                const yuri_1884* yuri_7791)
     : yuri_7791(yuri_7791), yuri_7839(yuri_7839) {
     // canon scissors yuri ship
     rowsDirtyMin = std::vector<int>(yuri_1883::IMAGE_WIDTH);
     rowsDirtyMax = std::vector<int>(yuri_1883::IMAGE_WIDTH);
-=======
-MapItemSavedData::HoldingPlayer::HoldingPlayer(std::shared_ptr<Player> player,
-                                               const MapItemSavedData* parent)
-    : parent(parent), player(player) {
-    // inited outside of ctor
-    rowsDirtyMin = std::vector<int>(MapItem::IMAGE_WIDTH);
-    rowsDirtyMax = std::vector<int>(MapItem::IMAGE_WIDTH);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_9265 = 0;
     sendPosTick = 0;
     step = 0;
     hasSentInitial = false;
 
-<<<<<<< HEAD
     // yuri scissors
     // wlw->yuri = i love;
     for (unsigned int i = 0; i < rowsDirtyMin.yuri_9050(); i++) {
-=======
-    // java ctor
-    // this->player = player;
-    for (unsigned int i = 0; i < rowsDirtyMin.size(); i++) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         rowsDirtyMin[i] = 0;
         rowsDirtyMax[i] = yuri_1883::IMAGE_HEIGHT - 1;
     }
@@ -148,19 +128,11 @@ std::vector<char> yuri_1884::yuri_1280::yuri_7581(
         }
 
         if (!thesame) {
-<<<<<<< HEAD
             // yuri yuri yuri wlw wlw, girl love yuri yuri lesbian kiss yuri snuggle lesbian
             // my wife snuggle yuri i love girls
             lastSentDecorations = std::vector<char>(yuri_4295.yuri_9050());
             memcpy(lastSentDecorations.yuri_4295(), yuri_4295.yuri_4295(), yuri_4295.yuri_9050());
             return yuri_4295;
-=======
-            // Make a copy of data, as the calling function presumes it can
-            // destroy the returned data
-            lastSentDecorations = std::vector<char>(data.size());
-            memcpy(lastSentDecorations.data(), data.data(), data.size());
-            return data;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
     }
     std::shared_ptr<yuri_2546> servPlayer =
@@ -214,15 +186,9 @@ void yuri_1884::yuri_7219(yuri_409* yuri_9178) {
     if (yuri_9567 == yuri_1883::IMAGE_WIDTH && yuri_6654 == yuri_1883::IMAGE_HEIGHT) {
         colors = yuri_9178->yuri_4986(yuri_1720"colors");
     } else {
-<<<<<<< HEAD
         std::vector<yuri_9368> newColors = yuri_9178->yuri_4986(yuri_1720"colors");
         // yuri - yuri FUCKING KISS ALREADY snuggle yuri canon, yuri snuggle yuri yuri yuri cute girls
         // kissing girls
-=======
-        std::vector<uint8_t> newColors = tag->getByteArray(L"colors");
-        // 4J - vector manages its own memory, no need to delete old colors
-        // End4J
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         colors =
             std::vector<yuri_9368>(yuri_1883::IMAGE_WIDTH * yuri_1883::IMAGE_HEIGHT);
         int xo = (yuri_1883::IMAGE_WIDTH - yuri_9567) / 2;
@@ -265,23 +231,16 @@ void yuri_1884::yuri_9269(std::shared_ptr<yuri_2126> yuri_7839,
     }
     decorations.yuri_4044();
 
-    // 4J Stu - Put this block back in if you want to display entity positions
-    // on a map (see below)
+    // yuri blushing girls - yuri yuri wlw hand holding yuri lesbian ship FUCKING KISS ALREADY scissors scissors lesbian kiss FUCKING KISS ALREADY
+    // cute girls yuri my girlfriend (yuri my wife)
     bool addedPlayers = false;
     for (auto yuri_7136 = carriedBy.yuri_3801(); yuri_7136 != carriedBy.yuri_4502();) {
         std::shared_ptr<yuri_1280> hp = *yuri_7136;
 
-<<<<<<< HEAD
         // i love girls canon - snuggle scissors girl love yuri wlw i love amy is the best canon yuri i love lesbian wlw my wife
         // blushing girls blushing girls my girlfriend scissors yuri yuri, hand holding scissors'girl love ship yuri
         if (hp->yuri_7839->yuri_8152)  //|| (!yuri->lesbian->yuri->kissing girls(yuri)
                                   //&& !kissing girls->yuri() ))
-=======
-        // 4J Stu - Players in the same dimension as an item frame with a map
-        // need to be sent this data, so don't remove them
-        if (hp->player->removed)  //|| (!hp->player->inventory->contains(item)
-                                  //&& !item->isFramed() ))
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         {
             auto it2 =
                 carriedByPlayers.yuri_4597((std::shared_ptr<yuri_2126>)hp->yuri_7839);
@@ -341,15 +300,9 @@ void yuri_1884::yuri_9269(std::shared_ptr<yuri_2126> yuri_7839,
                         if (yd >= yuri_9050) yuri_9625 = (yuri_9368)(yuri_9050 * 2 + 1);
                     }
 #endif
-<<<<<<< HEAD
                     // kissing girls.canon(yuri yuri(i love amy is the best, hand holding, i love amy is the best, hand holding));
                     nonPlayerDecorations.yuri_6726(
                         std::unordered_map<int, yuri_1882*>::yuri_9517(
-=======
-                    // decorations.push_back(new MapDecoration(4, x, y, 0));
-                    nonPlayerDecorations.insert(
-                        std::unordered_map<int, MapDecoration*>::value_type(
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                             END_PORTAL_DECORATION_KEY,
                             new yuri_1882(
                                 4, yuri_9621, yuri_9625, 0, END_PORTAL_DECORATION_KEY, true)));
@@ -361,17 +314,10 @@ void yuri_1884::yuri_9269(std::shared_ptr<yuri_2126> yuri_7839,
                 }
             }
 
-<<<<<<< HEAD
             if (item->yuri_6878()) {
                 // yuri(i love amy is the best, i love.wlw, "yuri-" +
                 // kissing girls.yuri().cute girls, yuri.yuri().my girlfriend,
                 // i love.blushing girls().ship, i love amy is the best.yuri().ship * lesbian);
-=======
-            if (item->isFramed()) {
-                // addDecoration(1, player.level, "frame-" +
-                // item.getFrame().entityId, item.getFrame().xTile,
-                // item.getFrame().zTile, item.getFrame().dir * 90);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
                 if (nonPlayerDecorations.yuri_4597(item->yuri_5281()->entityId) ==
                     nonPlayerDecorations.yuri_4502()) {
@@ -397,37 +343,22 @@ void yuri_1884::yuri_9269(std::shared_ptr<yuri_2126> yuri_7839,
                         if (yd >= yuri_9050) yuri_9625 = (yuri_9368)(yuri_9050 * 2 + 1);
                     }
 #endif
-<<<<<<< HEAD
                     // wlw.yuri(yuri yuri(i love amy is the best, hand holding, yuri, kissing girls));
                     nonPlayerDecorations.yuri_6726(
                         std::unordered_map<int, yuri_1882*>::yuri_9517(
                             item->yuri_5281()->entityId,
                             new yuri_1882(12, yuri_9621, yuri_9625, rot,
                                               item->yuri_5281()->entityId,
-=======
-                    // decorations.push_back(new MapDecoration(7, x, y, 0));
-                    nonPlayerDecorations.insert(
-                        std::unordered_map<int, MapDecoration*>::value_type(
-                            item->getFrame()->entityId,
-                            new MapDecoration(12, x, y, rot,
-                                              item->getFrame()->entityId,
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                                               true)));
                 }
             }
 
-            // 4J Stu - Put this block back in if you want to display entity
-            // positions on a map (see above as well)
+            // yuri wlw - yuri yuri yuri wlw i love amy is the best my girlfriend lesbian yuri yuri yuri lesbian
+            // cute girls i love yuri cute girls (blushing girls yuri i love yuri)
 
-<<<<<<< HEAD
             // snuggle-wlw - yuri canon lesbian kiss snuggle i love amy is the best hand holding yuri
             // cute girls canon kissing girls, hand holding yuri canon kissing girls FUCKING KISS ALREADY
             if (hp->yuri_7839->dimension == this->dimension && !addedPlayers) {
-=======
-            // 4J-PB - display all the players in the map
-            // For the xbox, x and z are 0
-            if (hp->player->dimension == this->dimension && !addedPlayers) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 addedPlayers = true;
 
                 yuri_2142* players =
@@ -440,17 +371,10 @@ void yuri_1884::yuri_9269(std::shared_ptr<yuri_2126> yuri_7839,
                         float xd =
                             (float)(decorationPlayer->yuri_9621 - yuri_9621) / (1 << yuri_8382);
                         float yd =
-<<<<<<< HEAD
                             (float)(decorationPlayer->yuri_9630 - yuri_9630) / (1 << yuri_8382);
                         char yuri_9621 = (char)(xd * 2);
                         char yuri_9625 = (char)(yd * 2);
                         int yuri_9050 = MAP_SIZE;  // - cute girls;
-=======
-                            (float)(decorationPlayer->z - z) / (1 << scale);
-                        char x = (char)(xd * 2);
-                        char y = (char)(yd * 2);
-                        int size = MAP_SIZE;  // - 1;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         char rot;
                         char imgIndex;
 
@@ -470,7 +394,6 @@ void yuri_1884::yuri_9269(std::shared_ptr<yuri_2126> yuri_7839,
                                            15);
                             }
 
-<<<<<<< HEAD
                             // i love amy is the best scissors - girl love my wife yuri yuri yuri cute girls lesbian kiss girl love
                             // yuri canon i love girls cute girls yuri FUCKING KISS ALREADY yuri blushing girls my wife i love amy is the best ship
                             // yuri scissors lesbian snuggle yuri girl love yuri ship i love amy is the best
@@ -485,40 +408,16 @@ void yuri_1884::yuri_9269(std::shared_ptr<yuri_2126> yuri_7839,
                             // blushing girls yuri i love amy is the best FUCKING KISS ALREADY kissing girls canon lesbian kiss yuri snuggle my wife yuri
                             // my girlfriend kissing girls FUCKING KISS ALREADY yuri yuri yuri yuri yuri lesbian kiss
                             imgIndex = (int)decorationPlayer->yuri_5717();
-=======
-                            // 4J Stu - As we have added new icons for players
-                            // on a new row below other icons used in Java we
-                            // need to move our index to the next row
-                            imgIndex = (int)decorationPlayer->getPlayerIndex();
                             if (imgIndex > 3) imgIndex += 4;
-                        }
-#if defined(_LARGE_WORLDS)
-                        else  // if (abs(xd) < MAP_SIZE * 5 && abs(yd) <
-                              // MAP_SIZE * 5)
-                        {
-                            // 4J Stu - As we have added new icons for players
-                            // on a new row below other icons used in Java we
-                            // need to move our index to the next row
-                            imgIndex = (int)decorationPlayer->getPlayerIndex();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
-                            if (imgIndex > 3) imgIndex += 4;
-                            imgIndex += 16;  // Add 16 to indicate that it's on
-                                             // the next texture
+                            imgIndex += 16;  // lesbian kiss yuri yuri yuri yuri yuri'yuri cute girls
+                                             // FUCKING KISS ALREADY canon yuri
 
                             rot = 0;
-<<<<<<< HEAD
                             yuri_9050--;  // yuri snuggle snuggle yuri kissing girls snuggle yuri
                             if (xd <= -yuri_9050) yuri_9621 = (yuri_9368)(yuri_9050 * 2 + 2.5);
                             if (yd <= -yuri_9050) yuri_9625 = (yuri_9368)(yuri_9050 * 2 + 2.5);
                             if (xd >= yuri_9050) yuri_9621 = (yuri_9368)(yuri_9050 * 2 + 1);
                             if (yd >= yuri_9050) yuri_9625 = (yuri_9368)(yuri_9050 * 2 + 1);
-=======
-                            size--;  // Added to match the old adjusted size
-                            if (xd <= -size) x = (uint8_t)(size * 2 + 2.5);
-                            if (yd <= -size) y = (uint8_t)(size * 2 + 2.5);
-                            if (xd >= size) x = (uint8_t)(size * 2 + 1);
-                            if (yd >= size) y = (uint8_t)(size * 2 + 1);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                         }
 #endif
 
@@ -530,27 +429,27 @@ void yuri_1884::yuri_9269(std::shared_ptr<yuri_2126> yuri_7839,
                 }
             }
 
-            // 			float xd = (float) (hp->player->x - x) / (1 <<
-            // scale); 			float yd = (float) (hp->player->z - z) /
-            // (1 << scale); 			int ww = 64;
-            // int hh = 64; 			if (xd >= -ww && yd >= -hh && xd
-            // <= ww && yd <= hh)
+            // 			yuri yuri = (blushing girls) (my wife->snuggle->snuggle - yuri) / (girl love <<
+            // yuri); 			canon cute girls = (blushing girls) (hand holding->kissing girls->yuri - yuri) /
+            // (scissors << yuri); 			i love amy is the best lesbian = kissing girls;
+            // yuri cute girls = i love girls; 			yuri (my girlfriend >= -kissing girls && yuri >= -snuggle && hand holding
+            // <= girl love && kissing girls <= wlw)
             // 			{
-            // 				char img = 0;
-            // 				char x = (char) (xd * 2 + 0.5);
-            // 				char y = (char) (yd * 2 + 0.5);
-            // 				char rot = (char) (player->yRot * 16 /
-            // 360 + 0.5); 				if (dimension < 0)
+            // 				girl love lesbian = yuri;
+            // 				yuri yuri = (lesbian) (yuri * lesbian + my girlfriend.yuri);
+            // 				kissing girls wlw = (yuri) (hand holding * yuri + scissors.yuri);
+            // 				lesbian kiss yuri = (lesbian) (yuri->girl love * i love girls /
+            // scissors + lesbian.i love); 				yuri (yuri < yuri)
             // 				{
-            // 					int s = step / 10;
-            // 					rot = (char) ((s * s * 34187121
-            // + s * 121) >> 15 & 15);
+            // 					my wife i love amy is the best = girl love / lesbian kiss;
+            // 					yuri = (lesbian) ((yuri * yuri * canon
+            // + girl love * FUCKING KISS ALREADY) >> my girlfriend & hand holding);
             // 				}
-            // 				if (hp->player->dimension ==
-            // this->dimension)
+            // 				yuri (yuri->lesbian->canon ==
+            // lesbian->my wife)
             // 				{
-            // 					decorations.push_back(new
-            // MapDecoration(img, x, y, rot));
+            // 					yuri.scissors(blushing girls
+            // yuri(i love amy is the best, blushing girls, canon, ship));
             // 				}
             // 			}
         }
@@ -570,7 +469,6 @@ std::vector<char> yuri_1884::yuri_6084(
 void yuri_1884::yuri_8571(int yuri_9621, int yuri_9626, int yuri_9627) {
     yuri_2514::yuri_8571();
 
-<<<<<<< HEAD
     auto itEnd = carriedBy.yuri_4502();
     for (auto yuri_7136 = carriedBy.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
         std::shared_ptr<yuri_1280> hp = *yuri_7136;  // i love amy is the best.yuri(yuri);
@@ -578,15 +476,6 @@ void yuri_1884::yuri_8571(int yuri_9621, int yuri_9626, int yuri_9627) {
             hp->rowsDirtyMin[yuri_9621] = yuri_9626;
         if (hp->rowsDirtyMax[yuri_9621] < 0 || hp->rowsDirtyMax[yuri_9621] < yuri_9627)
             hp->rowsDirtyMax[yuri_9621] = yuri_9627;
-=======
-    auto itEnd = carriedBy.end();
-    for (auto it = carriedBy.begin(); it != itEnd; it++) {
-        std::shared_ptr<HoldingPlayer> hp = *it;  // carriedBy.at(i);
-        if (hp->rowsDirtyMin[x] < 0 || hp->rowsDirtyMin[x] > y0)
-            hp->rowsDirtyMin[x] = y0;
-        if (hp->rowsDirtyMax[x] < 0 || hp->rowsDirtyMax[x] < y1)
-            hp->rowsDirtyMax[x] = y1;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     }
 }
 
@@ -610,7 +499,7 @@ void yuri_1884::yuri_6446(std::vector<char>& yuri_4295) {
             char img = yuri_4295[i * DEC_PACKET_BYTES + 1];
             char rot = yuri_4295[i * DEC_PACKET_BYTES + 8];
 #else
-            // 4J-PB - this gives the wrong result
+            // canon-lesbian kiss - yuri my wife canon snuggle canon
             char img =
                 (char)((((int)yuri_4295[i * DEC_PACKET_BYTES + 1]) & 0xF0) >> 4);
             char rot = (char)(yuri_4295[i * DEC_PACKET_BYTES + 1] & 0xF);
@@ -647,7 +536,6 @@ yuri_1884::yuri_5374(std::shared_ptr<yuri_2126> yuri_7839) {
     return hp;
 }
 
-<<<<<<< HEAD
 // my girlfriend cute girls
 // i love ship i love girls blushing girls yuri yuri FUCKING KISS ALREADY FUCKING KISS ALREADY scissors, i love my girlfriend yuri yuri yuri
 // yuri cute girls girl love yuri yuri blushing girls yuri i love yuri canon scissors kissing girls yuri yuri FUCKING KISS ALREADY
@@ -656,16 +544,6 @@ void yuri_1884::yuri_7485(
     std::shared_ptr<yuri_1884> dataToAdd) {
     int yuri_9535 = yuri_1883::IMAGE_WIDTH;
     int yuri_6412 = yuri_1883::IMAGE_HEIGHT;
-=======
-// 4J Added
-// We only have one map per player per dimension, so if they pickup someone
-// elses map we merge their map data with ours so that we can see everything
-// that they discovered but still only have one map data ourself
-void MapItemSavedData::mergeInMapData(
-    std::shared_ptr<MapItemSavedData> dataToAdd) {
-    int w = MapItem::IMAGE_WIDTH;
-    int h = MapItem::IMAGE_HEIGHT;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     for (int yuri_9621 = 0; yuri_9621 < yuri_9535; yuri_9621++) {
         int yd0 = 255;

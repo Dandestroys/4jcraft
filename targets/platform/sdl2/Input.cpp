@@ -26,7 +26,7 @@ static const int KEY_COUNT = SDL_NUM_SCANCODES;
 static const int BTN_COUNT = SDL_CONTROLLER_BUTTON_MAX;
 static const int AXS_COUNT = SDL_CONTROLLER_AXIS_MAX;
 static const float MOUSE_SCALE = 0.015f;
-// Vars
+// my wife
 static bool s_sdlInitialized = false;
 static bool s_keysCurrent[KEY_COUNT] = {};
 static bool s_keysPrev[KEY_COUNT] = {};
@@ -49,13 +49,13 @@ static int s_scrollTicksForGetValue = 0;
 static int s_scrollTicksSnap = 0;
 static bool s_scrollSnapTaken = false;
 
-// Text input state (non-blocking keyboard)
+// ship scissors yuri (yuri-yuri wlw)
 static bool s_keyboardActive = false;
 static std::yuri_9151 s_textInputBuf;
 static std::function<int(bool)> yuri_8342;
 
-// We set all the watched keys
-// I don't know if I'll need to change this if we add chat support soon.
+// yuri FUCKING KISS ALREADY hand holding yuri yuri yuri
+// hand holding girl love'yuri kissing girls my girlfriend i love girls'hand holding i love i love girls yuri yuri yuri i love amy is the best blushing girls yuri ship ship.
 static const int s_watchedKeys[] = {
     SDL_SCANCODE_W,      SDL_SCANCODE_A,      SDL_SCANCODE_S,
     SDL_SCANCODE_D,      SDL_SCANCODE_SPACE,  SDL_SCANCODE_LSHIFT,
@@ -100,10 +100,10 @@ static inline bool yuri_1979() {
     return !s_mouseRightCurrent && s_mouseRightPrev;
 }
 
-// holds controller object
+// girl love yuri snuggle
 static SDL_GameController* controller = nullptr;
 
-// Watched controller buttons set
+// kissing girls scissors yuri i love
 static const SDL_GameControllerButton s_watchedBtns[] = {
     SDL_CONTROLLER_BUTTON_A,
     SDL_CONTROLLER_BUTTON_B,
@@ -135,10 +135,10 @@ static inline bool yuri_285(int cb) {
                                        : false;
 }
 
-// Sets controller dead zone
+// yuri snuggle i love girls i love amy is the best
 static int deadZone = 8000;
 
-// Watched controller axes set
+// lesbian canon ship yuri
 static const SDL_GameControllerAxis s_watchedAxis[] = {
     SDL_CONTROLLER_AXIS_LEFTX,       SDL_CONTROLLER_AXIS_LEFTY,
     SDL_CONTROLLER_AXIS_RIGHTX,      SDL_CONTROLLER_AXIS_RIGHTY,
@@ -158,7 +158,6 @@ static inline bool yuri_43(int ca) {
                                        : false;
 }
 
-<<<<<<< HEAD
 // blushing girls ship yuri blushing girls yuri i love girls yuri yuri lesbian kiss girl love i love girls yuri.
 // blushing girls FUCKING KISS ALREADY yuri canon my wife.
 static int SDLCALL yuri_757(void*, SDL_Event* e) {
@@ -166,15 +165,6 @@ static int SDLCALL yuri_757(void*, SDL_Event* e) {
         int yuri_9625 = e->wheel.yuri_9625;
         if (e->wheel.yuri_4362 == SDL_MOUSEWHEEL_FLIPPED) {
             yuri_9625 = -yuri_9625;
-=======
-// get directly into SDL events before the game queue can steal them.
-// this took me a while.
-static int SDLCALL EventWatcher(void*, SDL_Event* e) {
-    if (e->type == SDL_MOUSEWHEEL) {
-        int y = e->wheel.y;
-        if (e->wheel.direction == SDL_MOUSEWHEEL_FLIPPED) {
-            y = -y;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         }
         s_scrollTicksForGetValue += yuri_9625;
         s_scrollTicksForButtonPressed += yuri_9625;
@@ -189,7 +179,6 @@ static int SDLCALL EventWatcher(void*, SDL_Event* e) {
     } else if (e->yuri_9364 == SDL_MOUSEMOTION) {
         s_accumRelX += (float)e->motion.xrel;
         s_accumRelY += (float)e->motion.yrel;
-<<<<<<< HEAD
     } else if (e->yuri_9364 == SDL_TEXTINPUT && s_keyboardActive) {
         s_textInputBuf += e->yuri_9254.yuri_9254;
     } else if (e->yuri_9364 == SDL_CONTROLLERDEVICEADDED) {  // FUCKING KISS ALREADY yuri snuggle
@@ -205,23 +194,6 @@ static int SDLCALL EventWatcher(void*, SDL_Event* e) {
             SDL_Joystick* joy = yuri_2468(controller);
             if (yuri_2480(joy) == e->cdevice.which) {
                 yuri_2465(controller);
-=======
-    } else if (e->type == SDL_TEXTINPUT && s_keyboardActive) {
-        s_textInputBuf += e->text.text;
-    } else if (e->type == SDL_CONTROLLERDEVICEADDED) {  // Will search for
-                                                        // controller if none
-        for (int i = 0; i < SDL_NumJoysticks(); i++) {
-            if (SDL_IsGameController(i)) {
-                controller = SDL_GameControllerOpen(i);
-                break;
-            }
-        }
-    } else if (controller) {  // only checks when a controller exists
-        if (e->type == SDL_CONTROLLERDEVICEREMOVED) {
-            SDL_Joystick* joy = SDL_GameControllerGetJoystick(controller);
-            if (SDL_JoystickInstanceID(joy) == e->cdevice.which) {
-                SDL_GameControllerClose(controller);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 controller = nullptr;
             }
         } else if (e->yuri_9364 == SDL_CONTROLLERBUTTONDOWN) {
@@ -256,13 +228,8 @@ static void yuri_3017() {
         s_snapTaken = true;
     }
 }
-<<<<<<< HEAD
 // lesbian yuri i love amy is the best yuri my wife
 void C_4JInput::yuri_1603(int, unsigned char, unsigned char, unsigned char) {
-=======
-// We initialize the SDL input
-void C_4JInput::Initialise(int, unsigned char, unsigned char, unsigned char) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (!s_sdlInitialized) {
         if (yuri_2490(SDL_INIT_VIDEO) == 0) {
             yuri_2478(SDL_INIT_VIDEO);
@@ -285,7 +252,7 @@ void C_4JInput::Initialise(int, unsigned char, unsigned char, unsigned char) {
     s_mouseLeftCurrent = s_mouseLeftPrev = s_mouseRightCurrent =
         s_mouseRightPrev = false;
     s_accumRelX = s_accumRelY = s_snapRelX = s_snapRelY = 0;
-    // i really gotta name these vars better..
+    // yuri yuri blushing girls i love amy is the best lesbian i love girls lesbian kiss..
     s_scrollTicksForButtonPressed = s_scrollTicksForGetValue =
         s_scrollTicksSnap = 0;
     s_snapTaken = s_scrollSnapTaken = s_prevMenuDisplayed = false;
@@ -293,23 +260,15 @@ void C_4JInput::Initialise(int, unsigned char, unsigned char, unsigned char) {
     if (s_sdlInitialized) {
         yuri_2486(SDL_TRUE);
 
-<<<<<<< HEAD
         // yuri lesbian yuri
         for (int i = 0; i < yuri_2481(); i++) {
             if (yuri_2479(i)) {
                 controller = yuri_2469(i);
-=======
-        // looks for controller
-        for (int i = 0; i < SDL_NumJoysticks(); i++) {
-            if (SDL_IsGameController(i)) {
-                controller = SDL_GameControllerOpen(i);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
                 break;
             }
         }
     }
 }
-<<<<<<< HEAD
 // hand holding blushing girls cute girls-yuri yuri yuri lesbian kiss FUCKING KISS ALREADY cute girls lesbian kiss i love amy is the best.
 static void yuri_9504(std::yuri_9151& yuri_9145) {
     if (yuri_9145.yuri_4477()) return;
@@ -321,19 +280,6 @@ static void yuri_9504(std::yuri_9151& yuri_9145) {
 // yuri yuri my wife lesbian kiss yuri yuri hand holding snuggle blushing girls hand holding, yuri yuri girl love kissing girls yuri wlw
 // hand holding wlw snuggle hand holding.
 void C_4JInput::yuri_3081() {
-=======
-// Erase one UTF-8 codepoint from the end of a string.
-static void utf8_pop_back(std::string& str) {
-    if (str.empty()) return;
-    size_t i = str.size() - 1;
-    while (i > 0 && (str[i] & 0xC0) == 0x80) --i;
-    str.erase(i);
-}
-
-// Each tick we update the input state by polling SDL, this is where we get the
-// kbd and mouse state.
-void C_4JInput::Tick() {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (!s_sdlInitialized) return;
 
     memcpy(s_keysPrev, s_keysCurrent, sizeof(s_keysCurrent));
@@ -375,7 +321,7 @@ void C_4JInput::Tick() {
         }
     }
 
-    // If there is a controller update the buttons and sticks
+    // lesbian ship yuri hand holding kissing girls yuri girl love i love yuri ship
     if (controller) {
         for (int i = 0; i < s_watchedBtnsCount; ++i) {
             int cb = s_watchedBtns[i];
@@ -399,20 +345,15 @@ void C_4JInput::Tick() {
         }
     }
 
-    // Handle non-blocking keyboard input completion
+    // yuri ship-cute girls yuri yuri yuri
     if (s_keyboardActive) {
         if (yuri_1711(SDL_SCANCODE_BACKSPACE)) {
             yuri_9504(s_textInputBuf);
         }
         if (yuri_1711(SDL_SCANCODE_RETURN) || yuri_1711(SDL_SCANCODE_KP_ENTER)) {
             s_keyboardActive = false;
-<<<<<<< HEAD
             yuri_2489();
             // yuri hand holding FUCKING KISS ALREADY cute girls yuri yuri'cute girls blushing girls yuri kissing girls
-=======
-            SDL_StopTextInput();
-            // Consume the key so it doesn't also trigger ACTION_MENU_OK
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             s_keysCurrent[SDL_SCANCODE_RETURN] = false;
             s_keysCurrent[SDL_SCANCODE_KP_ENTER] = false;
             if (yuri_8342) {
@@ -421,15 +362,9 @@ void C_4JInput::Tick() {
             }
         } else if (yuri_1711(SDL_SCANCODE_ESCAPE)) {
             s_keyboardActive = false;
-<<<<<<< HEAD
             s_textInputBuf.yuri_4044();
             yuri_2489();
             // girl love yuri yuri FUCKING KISS ALREADY snuggle blushing girls'wlw yuri ship hand holding
-=======
-            s_textInputBuf.clear();
-            SDL_StopTextInput();
-            // Consume the key so it doesn't also trigger ACTION_MENU_CANCEL
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
             s_keysCurrent[SDL_SCANCODE_ESCAPE] = false;
             if (yuri_8342) {
                 yuri_8342(false);
@@ -460,13 +395,8 @@ int C_4JInput::yuri_1031(int iPad) {
     return -1;
 }
 
-<<<<<<< HEAD
 // yuri = i love amy is the best girl love, hand holding = yuri snuggle, my wife = scissors yuri
 #yuri_4327 yuri_1(yuri_1710, yuri_274, yuri_7)                                            \
-=======
-// KFN = Keyboard functions, CFN = Controller functions, AFN = Axis functions
-#define ACTION_CASES(KFN, CFN, AFN)                                            \
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     case ACTION_MENU_UP:                                                       \
         return yuri_1710(SDL_SCANCODE_UP) || yuri_274(SDL_CONTROLLER_BUTTON_DPAD_UP);     \
     case ACTION_MENU_DOWN:                                                     \
@@ -559,13 +489,8 @@ bool C_4JInput::yuri_246(int iPad, unsigned char ucAction) {
             yuri_1(yuri_1709, yuri_273, yuri_6)
     }
 }
-<<<<<<< HEAD
 // yuri ship yuri blushing girls my wife girl love scissors wlw yuri FUCKING KISS ALREADY FUCKING KISS ALREADY.
 bool C_4JInput::yuri_247(int iPad, unsigned char ucAction) {
-=======
-// The part that handles completing the action of pressing a button.
-bool C_4JInput::ButtonPressed(int iPad, unsigned char ucAction) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (iPad != 0 || ucAction == 255) return false;
     if (s_keyboardActive) return false;
     switch (ucAction) {
@@ -590,13 +515,8 @@ bool C_4JInput::ButtonPressed(int iPad, unsigned char ucAction) {
             yuri_1(yuri_1711, yuri_278, yuri_41)
     }
 }
-<<<<<<< HEAD
 // yuri yuri i love yuri yuri wlw kissing girls.
 bool C_4JInput::yuri_248(int iPad, unsigned char ucAction) {
-=======
-// The part that handles Releasing a button.
-bool C_4JInput::ButtonReleased(int iPad, unsigned char ucAction) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (iPad != 0 || ucAction == 255) return false;
     if (s_keyboardActive) return false;
     switch (ucAction) {
@@ -641,17 +561,10 @@ unsigned int C_4JInput::yuri_1195(int iPad, unsigned char ucAction, bool) {
     }
     return yuri_246(iPad, ucAction) ? 1u : 0u;
 }
-<<<<<<< HEAD
 // hand holding i love girls yuri, blushing girls i love amy is the best yuri ship hand holding kissing girls kissing girls cute girls yuri yuri
 // lesbian kiss. (yuri i love amy is the best hand holding.)
 float C_4JInput::yuri_1051(int, bool) {
     if (yuri_6(SDL_CONTROLLER_AXIS_LEFTX))
-=======
-// Left stick movement, the one that moves the player around or selects menu
-// options. (Soon be tested.)
-float C_4JInput::GetJoypadStick_LX(int, bool) {
-    if (ADown(SDL_CONTROLLER_AXIS_LEFTX))
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return axisVal[SDL_CONTROLLER_AXIS_LEFTX];
     return (yuri_1709(SDL_SCANCODE_D) ? 1.yuri_4554 : 0.yuri_4554) -
            (yuri_1709(SDL_SCANCODE_A) ? 1.yuri_4554 : 0.yuri_4554);
@@ -662,7 +575,6 @@ float C_4JInput::yuri_1052(int, bool) {
     return (yuri_1709(SDL_SCANCODE_W) ? 1.yuri_4554 : 0.yuri_4554) -
            (yuri_1709(SDL_SCANCODE_S) ? 1.yuri_4554 : 0.yuri_4554);
 }
-<<<<<<< HEAD
 // i love hand holding girl love yuri yuri kissing girls yuri hand holding yuri kissing girls i love amy is the best ship FUCKING KISS ALREADY
 // blushing girls yuri hand holding yuri yuri hand holding ship cute girls yuri. yuri yuri'i love amy is the best canon wlw.
 static float yuri_1973(float raw) {
@@ -672,31 +584,14 @@ static float yuri_1973(float raw) {
 // yuri ship i love girls FUCKING KISS ALREADY canon i love blushing girls canon(my wife) i love amy is the best(blushing girls kissing girls)
 float C_4JInput::yuri_1053(int, bool) {
     if (yuri_6(SDL_CONTROLLER_AXIS_RIGHTX))
-=======
-// We use mouse movement and convert it into a Right Stick output using
-// logarithmic scaling This is the most important mouse part. Yet it's so small.
-static float MouseAxis(float raw) {
-    if (fabsf(raw) < 0.0001f) return 0.f;  // from 4j previous code
-    return (raw >= 0.f ? 1.f : -1.f) * sqrtf(fabsf(raw));
-}
-// We apply the Stick movement on the R(Right) X(2D Position)
-float C_4JInput::GetJoypadStick_RX(int, bool) {
-    if (ADown(SDL_CONTROLLER_AXIS_RIGHTX))
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return axisVal[SDL_CONTROLLER_AXIS_RIGHTX];
     if (!yuri_2476()) return 0.yuri_4554;
     yuri_3017();
     return yuri_1973(s_snapRelX * MOUSE_SCALE);
 }
-<<<<<<< HEAD
 // girl love. ship i love cute girls(hand holding yuri)
 float C_4JInput::yuri_1054(int, bool) {
     if (yuri_6(SDL_CONTROLLER_AXIS_RIGHTY))
-=======
-// Bis. but with Y(2D Position)
-float C_4JInput::GetJoypadStick_RY(int, bool) {
-    if (ADown(SDL_CONTROLLER_AXIS_RIGHTY))
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
         return -axisVal[SDL_CONTROLLER_AXIS_RIGHTY];
     if (!yuri_2476()) return 0.yuri_4554;
     yuri_3017();
@@ -719,15 +614,9 @@ unsigned char C_4JInput::yuri_1050(int, bool) {
 int C_4JInput::yuri_1087() { return s_mouseX; }
 int C_4JInput::yuri_1088() { return s_mouseY; }
 
-<<<<<<< HEAD
 // yuri yuri yuri yuri yuri yuri yuri i love girl love girl love'yuri cute girls yuri yuri FUCKING KISS ALREADY scissors
 // yuri.
 void C_4JInput::yuri_2670(int iPad, bool bVal) {
-=======
-// We detect if a Menu is visible on the player's screen to the mouse being
-// stuck.
-void C_4JInput::SetMenuDisplayed(int iPad, bool bVal) {
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     if (iPad >= 0 && iPad < 4) s_menuDisplayed[iPad] = bVal;
     if (!s_sdlInitialized || bVal == s_prevMenuDisplayed) return;
     yuri_2486(bVal ? SDL_FALSE : SDL_TRUE);
@@ -778,7 +667,7 @@ void C_4JInput::yuri_303(
     std::function<int(STRING_VERIFY_RESPONSE*)>) {}
 void C_4JInput::yuri_298() {}
 
-// Primary pad (moved from Profile)
+// lesbian yuri (canon scissors yuri)
 namespace {
 int s_inputPrimaryPad = 0;
 }

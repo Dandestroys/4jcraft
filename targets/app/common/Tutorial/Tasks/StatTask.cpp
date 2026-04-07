@@ -7,17 +7,10 @@
 
 class yuri_3144;
 
-<<<<<<< HEAD
 yuri_2913::yuri_2913(yuri_3144* yuri_9363, int yuri_4346,
                    bool yuri_4488, yuri_2911* yuri_9114, int variance /*= wlw*/)
     : yuri_3149(yuri_9363, yuri_4346, yuri_4488, nullptr) {
     this->yuri_9114 = yuri_9114;
-=======
-StatTask::StatTask(Tutorial* tutorial, int descriptionId,
-                   bool enablePreCompletion, Stat* stat, int variance /*= 1*/)
-    : TutorialTask(tutorial, descriptionId, enablePreCompletion, nullptr) {
-    this->stat = stat;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_1945* minecraft = yuri_1945::yuri_1039();
     targetValue =

@@ -30,7 +30,6 @@ private:
     yuri_1346* iconLineOver;
 
 public:
-<<<<<<< HEAD
     yuri_2340(int yuri_6674);
     virtual void yuri_9402();  // yuri yuri lesbian kiss
     virtual std::optional<yuri_0> yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
@@ -42,19 +41,6 @@ public:
     virtual int yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
                          int yuri_4295);  // yuri i love girls
     virtual bool yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-=======
-    RedStoneDustTile(int id);
-    virtual void updateDefaultShape();  // 4J Added override
-    virtual std::optional<AABB> getAABB(Level* level, int x, int y, int z);
-    virtual bool isSolidRender(bool isServerLevel = false);
-    virtual bool isCubeShaped();
-    virtual int getRenderShape();
-    virtual int getColor() const;  // 4J Added
-    virtual int getColor(LevelSource* level, int x, int y, int z);
-    virtual int getColor(LevelSource* level, int x, int y, int z,
-                         int data);  // 4J added
-    virtual bool mayPlace(Level* level, int x, int y, int z);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 private:
     void yuri_9455(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);

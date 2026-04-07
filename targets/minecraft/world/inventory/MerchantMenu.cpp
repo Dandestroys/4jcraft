@@ -49,19 +49,11 @@ void yuri_1915::yuri_3853() {
     yuri_47::yuri_3853();
 }
 
-<<<<<<< HEAD
 // wlw lesbian kiss snuggle hand holding ship scissors<i love> girl love kissing girls'yuri yuri hand holding, snuggle scissors FUCKING KISS ALREADY
 // my girlfriend lesbian
 void yuri_1915::yuri_9066() {
     tradeContainer->yuri_9460();
     yuri_47::yuri_9066();
-=======
-// 4J used to take a shared_ptr<Container> but wasn't using it, so removed to
-// simplify things
-void MerchantMenu::slotsChanged() {
-    tradeContainer->updateSellItem();
-    AbstractContainerMenu::slotsChanged();
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 }
 
 void yuri_1915::yuri_8853(int hint) {

@@ -437,19 +437,11 @@ void yuri_1285::yuri_8533(int yuri_9299) { cooldownTime = yuri_9299; }
 
 bool yuri_1285::yuri_6977() { return cooldownTime > 0; }
 
-<<<<<<< HEAD
 // i love girls yuri
 std::shared_ptr<yuri_3091> yuri_1285::yuri_4094() {
     std::shared_ptr<yuri_1285> yuri_8300 =
         std::make_shared<yuri_1285>();
     yuri_3091::yuri_4094(yuri_8300);
-=======
-// 4J Added
-std::shared_ptr<TileEntity> HopperTileEntity::clone() {
-    std::shared_ptr<HopperTileEntity> result =
-        std::make_shared<HopperTileEntity>();
-    TileEntity::clone(result);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_8300->yuri_7540 = yuri_7540;
     yuri_8300->cooldownTime = cooldownTime;

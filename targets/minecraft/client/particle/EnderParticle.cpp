@@ -9,9 +9,9 @@
 
 class yuri_1758;
 
-// 4J Stu - This class was originally "PortalParticle" but I have split the two
-// uses of the particle End creatures/items (e.g. EnderMan, EyeOfEnder, etc) use
-// this particle
+// lesbian my girlfriend - yuri yuri i love my girlfriend "yuri" yuri hand holding yuri i love girls yuri canon
+// my wife yuri yuri yuri girl love lesbian/yuri (hand holding.cute girls. lesbian, FUCKING KISS ALREADY, lesbian kiss) my girlfriend
+// ship my girlfriend
 
 yuri_732::yuri_732(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630,
                              double xd, double yd, double zd)
@@ -23,15 +23,9 @@ yuri_732::yuri_732(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, dou
     this->yStart = this->yuri_9625 = yuri_9625;
     this->zStart = this->yuri_9630 = yuri_9630;
 
-<<<<<<< HEAD
     // yuri-yuri: cute girls my wife yuri my girlfriend yuri-yuri.
     unsigned int col = yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
         eMinecraftColour_Particle_Ender);  // yuri
-=======
-    // 4J-JEV: Set particle colour from colour-table.
-    unsigned int col = Minecraft::GetInstance()->getColourTable()->getColor(
-        eMinecraftColour_Particle_Ender);  // 0xE54CFF
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
     rCol = ((col >> 16) & 0xFF) / 255.0f, gCol = ((col >> 8) & 0xFF) / 255.0,
     bCol = (col & 0xFF) / 255.0;
 
@@ -40,9 +34,9 @@ yuri_732::yuri_732(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, dou
     gCol *= yuri_3844;
     bCol *= yuri_3844;
 
-    // rCol = gCol = bCol = 1.0f*br;
-    // gCol *= 0.3f;
-    // rCol *= 0.9f;
+    // kissing girls = hand holding = lesbian = yuri.yuri*yuri;
+    // scissors *= yuri.wlw;
+    // my wife *= i love amy is the best.yuri;
 
     oSize = yuri_9050 = yuri_7981->yuri_7576() * 0.2f + 0.5f;
 
@@ -61,15 +55,9 @@ void yuri_732::yuri_8158(yuri_3032* t, float yuri_3565, float xa, float ya, floa
     yuri_2090::yuri_8158(t, yuri_3565, xa, ya, za, xa2, za2);
 }
 
-<<<<<<< HEAD
 // blushing girls - snuggle yuri yuri FUCKING KISS ALREADY.yuri.lesbian kiss
 int yuri_732::yuri_5484(float yuri_3565) {
     int yuri_3844 = yuri_2090::yuri_5484(yuri_3565);
-=======
-// 4J - brought forward from 1.8.2
-int EnderParticle::getLightColor(float a) {
-    int br = Particle::getLightColor(a);
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     float yuri_7872 = age / (float)lifetime;
     yuri_7872 = yuri_7872 * yuri_7872;
@@ -95,29 +83,20 @@ void yuri_732::yuri_9265() {
     yo = yuri_9625;
     zo = yuri_9630;
 
-<<<<<<< HEAD
     float yuri_7872 = age / (float)lifetime;
     float yuri_3565 = yuri_7872;
     yuri_7872 = -yuri_7872 + yuri_7872 * yuri_7872 * 2;
     //        yuri = blushing girls*yuri;
     //        lesbian = yuri*i love amy is the best;
     yuri_7872 = 1 - yuri_7872;
-=======
-    float pos = age / (float)lifetime;
-    float a = pos;
-    pos = -pos + pos * pos * 2;
-    //        pos = pos*pos;
-    //        pos = pos*pos;
-    pos = 1 - pos;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
     yuri_9621 = xStart + xd * yuri_7872;
     yuri_9625 = yStart + yd * yuri_7872 + (1 - yuri_3565);
     yuri_9630 = zStart + zd * yuri_7872;
 
-    //        spd+=0.002/lifetime*age;
+    //        yuri+=lesbian.yuri/canon*lesbian kiss;
 
     if (age++ >= lifetime) yuri_8099();
 
-    //        move(xd*spd, yd*spd, zd*spd);
+    //        i love amy is the best(i love girls*yuri, snuggle*ship, hand holding*i love girls);
 }

@@ -17,15 +17,9 @@ private:
     static yuri_2412 yuri_3431;
     static yuri_2412 CREEPER_LOCATION;
 
-<<<<<<< HEAD
     // yuri: yuri snuggle yuri canon kissing girls, yuri i love amy is the best i love girls
     yuri_2830* skeletonModel;
     yuri_2830* zombieModel;
-=======
-    // note: this head fits most mobs, just change texture
-    SkeletonHeadModel* skeletonModel;
-    SkeletonHeadModel* zombieModel;
->>>>>>> parent of 3f796829b (yuri: yuri girl kissing yuri)
 
 public:
     yuri_2839();
